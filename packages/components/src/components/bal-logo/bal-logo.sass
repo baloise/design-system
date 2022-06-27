@@ -1,7 +1,15 @@
 +block(logo)
   position: static
   display: block
+  height: 2rem
   +fillSvg($blue)
+  & > div
+    height: 2rem
   // colors
-  +modifier(has-color-white)
+  +modifier('white')
     +fillSvg($white)
+  // sizes
+  +modifier(small)
+    height: 1.25rem
+    & > div
+      height: 1.25rem

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../helpers/helpers'
-import { Props } from '../../props'
 import { BEM } from '../../utils/bem'
+import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
@@ -29,6 +29,11 @@ export class Tag {
   @Prop() closable = false
 
   /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled = false
+
+  /**
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
@@ -43,7 +48,7 @@ export class Tag {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<MouseEvent>
+  @Event() balCloseClick!: EventEmitter<Events.BalTagCloseClickDetail>
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])
@@ -56,13 +61,17 @@ export class Tag {
     const sizeClass = `is-${this.size}`
     const hasColor = this.color !== ''
     const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled
 
     return (
       <Host
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
           ...block.modifier(sizeClass).class(hasSize),
           ...block.modifier(colorClass).class(hasColor),
+          ...block.modifier(disabledClass).class(hasDisabled),
         }}
         {...this.inheritedAttributes}
       >
@@ -80,10 +89,10 @@ export class Tag {
             ...block.element('close').class(),
           }}
           style={{
-            display: this.closable ? 'flex' : 'none',
+            display: this.closable && !this.disabled ? 'flex' : 'none',
           }}
           size={this.size}
-          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger', ''].includes(this.color) && !this.light}
+          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger'].includes(this.color) && !this.light}
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
         ></bal-close>
       </Host>

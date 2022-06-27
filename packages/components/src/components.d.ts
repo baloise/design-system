@@ -5,12 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
-import { Props as Props1 } from "./props";
+import { Events, Props } from "./types";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
-import { Props as Props2 } from ".";
+import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -167,9 +167,17 @@ export namespace Components {
     }
     interface BalButtonGroup {
         /**
+          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+         */
+        "direction": Props.BalButtonGroupDirection;
+        /**
           * The value of the button, which is submitted with the form data.
          */
         "position": Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse": boolean;
     }
     interface BalCard {
         /**
@@ -200,6 +208,10 @@ export namespace Components {
           * If `true` the card gets a light background to indicate a selection.
          */
         "selected": boolean;
+        /**
+          * Defines the space of the card content.
+         */
+        "space": Props.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
          */
@@ -313,6 +325,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -373,6 +389,10 @@ export namespace Components {
         "horizontal": boolean;
     }
     interface BalDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
         /**
           * If `true` the item gets a lighter font color.
          */
@@ -634,7 +654,7 @@ export namespace Components {
         /**
           * If `true` the component gets a invalid style.
          */
-        "weight": Props.BalFieldLabelWeight;
+        "weight": Props1.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -712,6 +732,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Overrides the default subtitle file size
          */
         "subTitle"?: (file: File) => string;
@@ -733,6 +757,11 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size": Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -815,6 +844,8 @@ export namespace Components {
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
+    }
+    interface BalImageSlider {
     }
     interface BalInput {
         /**
@@ -1080,6 +1111,10 @@ export namespace Components {
           * Defines the color of the logo.
          */
         "color": Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size": Props.BalLogoSize;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -1105,10 +1140,6 @@ export namespace Components {
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop": boolean;
-        /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface": Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -1142,34 +1173,38 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+         */
+        "interface": Props.BalNavbarInterface;
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light": boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger": boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href": string;
+        "interface": Props1.BalNavbarInterface;
         /**
-          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple": boolean;
     }
     interface BalNavbarMenu {
+        "interface": Props.BalNavbarInterface;
         "toggle": (isMenuActive: boolean) => Promise<void>;
     }
     interface BalNavbarMenuEnd {
+        "interface": Props.BalNavbarInterface;
     }
     interface BalNavbarMenuStart {
+        "interface": Props.BalNavbarInterface;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -1352,6 +1387,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -1477,6 +1516,10 @@ export namespace Components {
          */
         "remote": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Defines the height of the popover list.
          */
         "scrollable": number;
@@ -1514,6 +1557,20 @@ export namespace Components {
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value"?: string;
+    }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color": Props.BalShapeColor;
+        /**
+          * The shape rotation
+         */
+        "rotation"?: Props.BalShapeRotation;
+        /**
+          * The shape variation
+         */
+        "variation": Props.BalShapeVariation;
     }
     interface BalSheet {
     }
@@ -1635,6 +1692,10 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
+          * class to set the container width
+         */
+        "containerClass": string;
+        /**
           * If true the Baloise Shape is set
          */
         "hasShape": boolean;
@@ -1749,6 +1810,11 @@ export namespace Components {
          */
         "interface": Props.BalTabsInterface;
         /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted": boolean;
+        "renderLine": () => Promise<void>;
+        /**
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
@@ -1760,11 +1826,7 @@ export namespace Components {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical": boolean;
-        /**
-          * If `true` tabs are align vertically on the mobile.
-         */
-        "verticalOnMobile": boolean;
+        "vertical": boolean | 'mobile' | 'tablet';
     }
     interface BalTag {
         /**
@@ -1775,6 +1837,10 @@ export namespace Components {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color": Props.BalTagColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -1947,6 +2013,114 @@ export namespace Components {
          */
         "message": string;
     }
+}
+export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalAccordionElement;
+}
+export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalButtonElement;
+}
+export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCheckboxElement;
+}
+export interface BalCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCheckboxGroupElement;
+}
+export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDataValueElement;
+}
+export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDatepickerElement;
+}
+export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalFileUploadElement;
+}
+export interface BalInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalInputElement;
+}
+export interface BalInputStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalInputStepperElement;
+}
+export interface BalListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalListItemElement;
+}
+export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalListItemAccordionHeadElement;
+}
+export interface BalModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalModalElement;
+}
+export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavbarBrandElement;
+}
+export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNumberInputElement;
+}
+export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalPaginationElement;
+}
+export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalPopoverElement;
+}
+export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalRadioElement;
+}
+export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalRadioGroupElement;
+}
+export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSelectElement;
+}
+export interface BalSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSliderElement;
+}
+export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalSnackbarElement;
+}
+export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTabItemElement;
+}
+export interface BalTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTabsElement;
+}
+export interface BalTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTagElement;
+}
+export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTextareaElement;
+}
+export interface BalTimeinputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTimeinputElement;
+}
+export interface BalToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalToastElement;
 }
 declare global {
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
@@ -2201,6 +2375,18 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
+    }
+    var HTMLBalFormColElement: {
+        prototype: HTMLBalFormColElement;
+        new (): HTMLBalFormColElement;
+    };
+    interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
+    }
+    var HTMLBalFormGridElement: {
+        prototype: HTMLBalFormGridElement;
+        new (): HTMLBalFormGridElement;
+    };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
     var HTMLBalHeadingElement: {
@@ -2230,6 +2416,12 @@ declare global {
     var HTMLBalIconElement: {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
+    };
+    interface HTMLBalImageSliderElement extends Components.BalImageSlider, HTMLStencilElement {
+    }
+    var HTMLBalImageSliderElement: {
+        prototype: HTMLBalImageSliderElement;
+        new (): HTMLBalImageSliderElement;
     };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
@@ -2417,6 +2609,12 @@ declare global {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
     };
+    interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
+    }
+    var HTMLBalShapeElement: {
+        prototype: HTMLBalShapeElement;
+        new (): HTMLBalShapeElement;
+    };
     interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
     }
     var HTMLBalSheetElement: {
@@ -2568,11 +2766,14 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form-col": HTMLBalFormColElement;
+        "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-image-slider": HTMLBalImageSliderElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
@@ -2604,6 +2805,7 @@ declare global {
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
@@ -2645,7 +2847,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -2739,19 +2941,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: BalButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has been  rendered.
          */
-        "onBalDidRender"?: (event: CustomEvent<void>) => void;
+        "onBalDidRender"?: (event: BalButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: BalButtonCustomEvent<void>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalButtonCustomEvent<MouseEvent>) => void;
         /**
           * If `true` the button is outlined
          */
@@ -2787,9 +2989,17 @@ declare namespace LocalJSX {
     }
     interface BalButtonGroup {
         /**
+          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+         */
+        "direction"?: Props.BalButtonGroupDirection;
+        /**
           * The value of the button, which is submitted with the form data.
          */
         "position"?: Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse"?: boolean;
     }
     interface BalCard {
         /**
@@ -2820,6 +3030,10 @@ declare namespace LocalJSX {
           * If `true` the card gets a light background to indicate a selection.
          */
         "selected"?: boolean;
+        /**
+          * Defines the space of the card content.
+         */
+        "space"?: Props.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
          */
@@ -2927,23 +3141,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalCheckboxCustomEvent<Events.BalCheckboxChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalCheckboxCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -2965,7 +3183,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * If `true`, the user cannot interact with the radios.
          */
@@ -3001,6 +3219,10 @@ declare namespace LocalJSX {
     }
     interface BalDataItem {
         /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
+        /**
           * If `true` the item gets a lighter font color.
          */
         "disabled"?: boolean;
@@ -3027,15 +3249,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the edit button loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: BalDataValueCustomEvent<void>) => void;
         /**
           * Emitted when the edit button has focus.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalDataValueCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the edit button has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: BalDataValueCustomEvent<void>) => void;
     }
     interface BalDatepicker {
         /**
@@ -3093,23 +3315,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerInputDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -3269,7 +3491,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the component gets a invalid style.
          */
-        "weight"?: Props.BalFieldLabelWeight;
+        "weight"?: Props1.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -3341,23 +3563,27 @@ declare namespace LocalJSX {
         /**
           * Triggers when a file is added or removed.
          */
-        "onBalChange"?: (event: CustomEvent<File[]>) => void;
+        "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
         /**
           * Triggers when a file is added.
          */
-        "onBalFilesAdded"?: (event: CustomEvent<File[]>) => void;
+        "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<File[]>) => void;
         /**
           * Triggers when a file is removed.
          */
-        "onBalFilesRemoved"?: (event: CustomEvent<File[]>) => void;
+        "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<File[]>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
-        "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+        "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<FileUploadRejectedFile>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Overrides the default subtitle file size
          */
@@ -3380,6 +3606,11 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size"?: Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -3450,6 +3681,8 @@ declare namespace LocalJSX {
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
+    }
+    interface BalImageSlider {
     }
     interface BalInput {
         /**
@@ -3536,27 +3769,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalInputCustomEvent<Events.BalInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalInputCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalInputCustomEvent<Events.BalInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalInputCustomEvent<KeyboardEvent>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -3636,11 +3869,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has decreased.
+         */
+        "onBalDecrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has increased.
+         */
+        "onBalIncrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperInputDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -3696,7 +3937,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -3720,7 +3961,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion state is changed
          */
-        "onBalAccordionChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
     }
@@ -3739,6 +3980,10 @@ declare namespace LocalJSX {
           * Defines the color of the logo.
          */
         "color"?: Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size"?: Props.BalLogoSize;
     }
     interface BalModal {
         /**
@@ -3760,10 +4005,6 @@ declare namespace LocalJSX {
          */
         "hasBackdrop"?: boolean;
         /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface"?: Props.BalModalInterface;
-        /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable"?: boolean;
@@ -3774,19 +4015,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the modal has dismissed.
          */
-        "onBalModalDidDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        "onBalModalDidDismiss"?: (event: BalModalCustomEvent<OverlayEventDetail>) => void;
         /**
           * Emitted after the modal has presented.
          */
-        "onBalModalDidPresent"?: (event: CustomEvent<void>) => void;
+        "onBalModalDidPresent"?: (event: BalModalCustomEvent<void>) => void;
         /**
           * Emitted before the modal has dismissed.
          */
-        "onBalModalWillDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        "onBalModalWillDismiss"?: (event: BalModalCustomEvent<OverlayEventDetail>) => void;
         /**
           * Emitted before the modal has presented.
          */
-        "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
+        "onBalModalWillPresent"?: (event: BalModalCustomEvent<void>) => void;
         "overlayIndex": number;
         /**
           * Defines the space/padding of the modal
@@ -3799,37 +4040,41 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+         */
+        "interface"?: Props.BalNavbarInterface;
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light"?: boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger"?: boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href"?: string;
+        "interface"?: Props1.BalNavbarInterface;
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
         /**
-          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple"?: boolean;
     }
     interface BalNavbarMenu {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavbarMenuEnd {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavbarMenuStart {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -3868,27 +4113,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalNumberInputCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalNumberInputCustomEvent<KeyboardEvent>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -3918,7 +4163,7 @@ declare namespace LocalJSX {
         /**
           * Triggers when a page change happens
          */
-        "onBalChange"?: (event: CustomEvent<number>) => void;
+        "onBalChange"?: (event: BalPaginationCustomEvent<number>) => void;
         /**
           * Specify the max visible pages before and after the selected page
          */
@@ -3948,8 +4193,8 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
-        "onBalPopoverPrepare"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
+        "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
           * If `true` the field spans over the whole width.
          */
@@ -4011,23 +4256,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalRadioCustomEvent<Events.BalRadioChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalRadioCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -4053,7 +4302,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
+        "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4119,31 +4368,31 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the user cancels the input.
          */
-        "onBalCancel"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalCancel"?: (event: BalSelectCustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | string[] | undefined>) => void;
+        "onBalChange"?: (event: BalSelectCustomEvent<Events.BalSelectChangeDetail>) => void;
         /**
           * Emitted when the input got clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: BalSelectCustomEvent<string>) => void;
         /**
           * Emitted when the input has focus and key from the keyboard go hit.
          */
-        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalSelectCustomEvent<KeyboardEvent>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -4156,6 +4405,10 @@ declare namespace LocalJSX {
           * If `true` the filtering is done outside the component.
          */
         "remote"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -4186,6 +4439,20 @@ declare namespace LocalJSX {
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value"?: string;
+    }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color"?: Props.BalShapeColor;
+        /**
+          * The shape rotation
+         */
+        "rotation"?: Props.BalShapeRotation;
+        /**
+          * The shape variation
+         */
+        "variation"?: Props.BalShapeVariation;
     }
     interface BalSheet {
     }
@@ -4221,27 +4488,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalSliderCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: BalSliderCustomEvent<Events.BalSliderChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalSliderCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalSliderCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalInput"?: (event: BalSliderCustomEvent<string | number | null>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalSliderCustomEvent<KeyboardEvent>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4289,11 +4556,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button is clicked
          */
-        "onBalAction"?: (event: CustomEvent<string>) => void;
+        "onBalAction"?: (event: BalSnackbarCustomEvent<string>) => void;
         /**
           * Emitted when snackbar is closed
          */
-        "onBalClose"?: (event: CustomEvent<string>) => void;
+        "onBalClose"?: (event: BalSnackbarCustomEvent<string>) => void;
         /**
           * The subject of the snackbar header
          */
@@ -4322,6 +4589,10 @@ declare namespace LocalJSX {
           * Defines the background color of the stage section
          */
         "color"?: Props.BalStageColor;
+        /**
+          * class to set the container width
+         */
+        "containerClass"?: string;
         /**
           * If true the Baloise Shape is set
          */
@@ -4387,7 +4658,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent | CustomEvent>) => void;
+        "onBalNavigate"?: (event: BalTabItemCustomEvent<MouseEvent | CustomEvent>) => void;
         /**
           * Tell's if the linking is done by a router.
          */
@@ -4433,9 +4704,13 @@ declare namespace LocalJSX {
          */
         "interface"?: Props.BalTabsInterface;
         /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted"?: boolean;
+        /**
           * Emitted when the changes has finished.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: BalTabsCustomEvent<string>) => void;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */
@@ -4444,11 +4719,7 @@ declare namespace LocalJSX {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical"?: boolean;
-        /**
-          * If `true` tabs are align vertically on the mobile.
-         */
-        "verticalOnMobile"?: boolean;
+        "vertical"?: boolean | 'mobile' | 'tablet';
     }
     interface BalTag {
         /**
@@ -4460,13 +4731,17 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalTagColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
           * If `true` a light version of the color is displayed
          */
         "light"?: boolean;
         /**
           * Emitted when the input got clicked.
          */
-        "onBalCloseClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
         /**
           * The size of the tag element
          */
@@ -4556,27 +4831,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalTextareaCustomEvent<Events.BalTextareaChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalTextareaCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalTextareaCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalTextareaCustomEvent<Events.BalTextareaInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalTextareaCustomEvent<KeyboardEvent>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -4622,11 +4897,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when either the hour or minute input field loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalTimeinputCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when either the hour or the minute input has changed. It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: BalTimeinputCustomEvent<string>) => void;
         /**
           * The value of the datepicker with the format `hh:mm`.
          */
@@ -4649,7 +4924,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when toast is closed
          */
-        "onBalClose"?: (event: CustomEvent<string>) => void;
+        "onBalClose"?: (event: BalToastCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
@@ -4694,11 +4969,14 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form-col": BalFormCol;
+        "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
+        "bal-image-slider": BalImageSlider;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
         "bal-input-stepper": BalInputStepper;
@@ -4730,6 +5008,7 @@ declare namespace LocalJSX {
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-shape": BalShape;
         "bal-sheet": BalSheet;
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
@@ -4796,11 +5075,14 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
+            "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-image-slider": LocalJSX.BalImageSlider & JSXBase.HTMLAttributes<HTMLBalImageSliderElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
@@ -4832,6 +5114,7 @@ declare module "@stencil/core" {
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;

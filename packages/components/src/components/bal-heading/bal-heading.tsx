@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-heading',
@@ -39,7 +39,7 @@ export class Heading {
 
   get fontSize(): string {
     const isHeading = (size: string) => size.startsWith('h')
-    const parseDisplay = (size: string) => (size === 'display' ? 'display-1' : size)
+    const parseDisplay = (size: string) => (size === 'display' ? 'display' : size)
     const parseSize = (size: string) => (isHeading(size) ? size.replace('h', '') : parseDisplay(size))
     const formatSize = (size: string) => `is-size-${parseSize(size)}`
 

@@ -1,0 +1,115 @@
++block(navbar)
+  +unselectable
+  position: relative
+  display: block
+  +modifiers(context-app, context-simple)
+    background: var(--bal-color-primary)
+  +modifiers(context-app, context-simple)
+    height: 64px
+    max-height: 64px
+    +desktop
+      height: 80px
+      max-height: 80px
+  nav
+    display: flex
+    height: 100%
+    gap: 1rem
+
+  +element(brand)
+    flex: 1
+    gap: 2rem
+    +desktop
+      flex: initial
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    & > a
+      display: flex
+      align-items: center
+    +element(title)
+      display: none
+      & > bal-logo
+        display: none
+      +tablet
+        display: inline-block
+        font-size: 1rem
+        font-family: var(--bal-font-family-title)
+        font-weight: 800
+        color: var(--bal-color-primary-inverted)
+      +desktop
+        font-size: 1.25rem
+    +element(burger)
+      margin-left: auto
+      +desktop
+        display: none
+
+    +modifiers(context-app, context-simple)
+      color: var(--bal-color-primary-inverted)
+      & > a
+        color: var(--bal-color-primary-inverted)
+
+  +element(menu)
+    position: static
+    display: none
+
+    +modifier(active)
+      +touch
+        position: fixed
+        display: block
+        background: var(--bal-color-white)
+
+    +modifiers(context-app)
+      +touch
+        padding: 1rem
+        overflow-y: auto
+        flex-direction: column-reverse
+        top: 64px
+        left: 0
+        bottom: 0
+        right: 0
+
+    +desktop
+      display: flex
+      flex: 1
+      gap: 1rem
+
+    +modifier(context-simple)
+      display: flex
+      justify-content: flex-end
+      flex: 1
+      gap: 1rem
+
+    +element(start)
+      display: block
+      margin-bottom: 1rem
+
+      +desktop
+        display: flex
+        flex: 1
+        justify-content: center
+        align-items: center
+        gap: .5rem
+        margin-bottom: 0
+
+      +modifier(context-simple)
+        display: none
+
+      +modifiers(context-meta)
+        justify-content: flex-start
+
+    +element(end)
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      gap: .5rem
+      +modifier(context-simple)
+        > .field
+          flex-shrink: 0
+          justify-content: flex-end
+          align-items: center
+      > .field
+        flex: 1
+        +desktop
+          flex-shrink: 0
+          justify-content: flex-end
+          align-items: center

@@ -42,7 +42,6 @@
     align-items: center
     display: inline-flex
     justify-content: center
-    margin-top: -3px
   .icon-left
     margin-right: 8px
   .icon-right
@@ -197,6 +196,28 @@
       border-color: var(--bal-color-danger-6)
       color: var(--bal-color-white)
       +fillSvg(var(--bal-color-white))
+  &.is-light
+    background: var(--bal-color-grey-2)
+    border-color: var(--bal-color-grey-2)
+    color: var(--bal-color-blue)
+    +fillSvg(var(--bal-color-blue))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-light-blue-1)
+      border-color: var(--bal-color-light-blue-1)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
+    &:focus-visible,
+    &.is-focused
+      &:not(:active)
+        @extend %focus-inverted-shadow
+    &:active,
+    &.is-active
+      background: var(--bal-color-light-blue-2)
+      border-color: var(--bal-color-light-blue-2)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
   &.is-inverted
     background: transparent
     border-color: var(--bal-color-white)
@@ -253,28 +274,28 @@
         background: transparent
         border-color: transparent
         color: var(--bal-color-info-3)
-  &.is-light
-    background: var(--bal-color-blue-3)
-    border-color: var(--bal-color-blue-3)
-    color: var(--bal-color-white)
-    +fillSvg(var(--bal-color-white))
-    // States
-    &:hover,
-    &.is-hovered
-      background: var(--bal-color-light-blue-2)
-      border-color: var(--bal-color-light-blue-2)
-      color: var(--bal-color-blue)
-      +fillSvg(var(--bal-color-blue))
-    &:focus-visible,
-    &.is-focused
-      &:not(:active)
-        @extend %focus-inverted-shadow
-    &:active,
-    &.is-active
-      background: var(--bal-color-white)
-      border-color: var(--bal-color-white)
-      color: var(--bal-color-blue)
-      +fillSvg(var(--bal-color-blue))
+    &.is-light
+      background: var(--bal-color-blue-4)
+      border-color: var(--bal-color-blue-4)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+      // States
+      &:hover,
+      &.is-hovered
+        background: var(--bal-color-light-blue-2)
+        border-color: var(--bal-color-light-blue-2)
+        color: var(--bal-color-blue)
+        +fillSvg(var(--bal-color-blue))
+      &:focus-visible,
+      &.is-focused
+        &:not(:active)
+          @extend %focus-shadow
+      &:active,
+      &.is-active
+        background: var(--bal-color-white)
+        border-color: var(--bal-color-white)
+        color: var(--bal-color-blue)
+        +fillSvg(var(--bal-color-blue))
   // Disabled
   &.is-disabled.is-inverted,
   &.is-disabled,

@@ -92,7 +92,7 @@ In Vue the the events are written with the `@` simple similar to Angular.
 ```html
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { BalInput, BalText } from '@baloise/design-system-components-vue'
+  import { BalInput, BalText } from '@baloise/design-system-next-components-vue'
 
   const myName = ref<string | undefined>()
 
@@ -114,7 +114,7 @@ Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
 
 ```tsx
 import { useState } from 'react'
-import { BalInput, BalText } from '@baloise/design-system-components-react'
+import { BalInput, BalText } from '@baloise/design-system-next-components-react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()

@@ -6,7 +6,7 @@ import navbarMenu from '../bal-navbar-menu/readme.md'
 import navbarMenuStart from '../bal-navbar-menu-start/readme.md'
 import navbarMenuEnd from '../bal-navbar-menu-end/readme.md'
 
-<bal-doc-banner id="story--components-navbar--basic">Navbar</bal-doc-banner>
+<bal-doc-banner id="story--components-navbar--basic" status="rebranded,css">Navbar</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-navbar--basic">Overview</a>
@@ -21,7 +21,7 @@ import navbarMenuEnd from '../bal-navbar-menu-end/readme.md'
   A responsive horizontal <b>Navbar</b> that can support logos, buttons, and dropdowns.
 </bal-doc-lead>
 
-<Canvas withSource="open">
+<Canvas withSource="open" className="has-visible-overflow">
   <Story id="components-navbar--basic" />
 </Canvas>
 
@@ -37,12 +37,15 @@ import navbarMenuEnd from '../bal-navbar-menu-end/readme.md'
 
 ## Examples
 
-<span id="story--components-navbar--navbar-combi" style={{ opacity: 0 }}></span>
+<span id="story--components-navbar--simple" style={{ opacity: 0 }}></span>
 
-### Navbar Combi
+### Simple Header
 
-<Canvas>
-  <Story id="components-navbar--navbar-combi" />
+The simple header is designed for the calculator applications or other simple applications, which
+do not have a tab page routing.
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-navbar--simple" />
 </Canvas>
 
 ## Component Api

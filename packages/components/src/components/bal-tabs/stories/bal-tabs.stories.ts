@@ -28,10 +28,12 @@ Basic.args = {
   fullwidth: true,
   expanded: false,
   vertical: false,
-  verticalOnMobile: false,
-  selectOnMobile: true,
+  selectOnMobile: false,
 }
 Basic.parameters = {
+  // viewport: {
+  //   defaultViewport: 'small',
+  // },
   ...component.sourceCode(Basic),
   controls: { exclude: ['clickable'] },
 }
@@ -56,6 +58,10 @@ Mobile.args = {
   verticalOnMobile: false,
 }
 Mobile.parameters = {
+  viewport: {
+    defaultViewport: 'small',
+  },
+  layout: 'fullscreen',
   ...component.sourceCode(Mobile),
   controls: { exclude: ['clickable'] },
 }

@@ -84,17 +84,17 @@ export const NativeList = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<div>
-  <ul class="is-list mb-4">
+  <ul class="is-list">
     <li>List Item 1</li>
     <li>List Item 2</li>
     <li>List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-circle mb-4">
+  <ul class="is-list has-bullet-circle">
     <li>List Item 1</li>
     <li>List Item 2</li>
     <li>List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-check mb-4">
+  <ul class="is-list has-bullet-check">
     <li>List Item 1</li>
     <li>List Item 2</li>
     <li>List Item 3</li>
@@ -234,6 +234,8 @@ export const AccordionList = args => ({
       <p class="pb-4">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
+      <a class="is-link">Link</a>
+      <button class="button">Button</button>
     </bal-list-item-accordion-body>
   </bal-list-item>
   <bal-list-item accordion>

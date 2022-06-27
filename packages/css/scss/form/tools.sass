@@ -17,7 +17,7 @@
 .help
   display: block
   margin-top: 2px
-  font-size: var(--bal-size-7)
+  font-size: var(--bal-size-small)
   color: var(--bal-color-text-help)
   &.is-danger
     color: var(--bal-color-text-danger)
@@ -164,7 +164,7 @@
   margin-right: 8px
 
 +mobile()
-  .field.is-grouped
+  .field.has-direction-auto.is-grouped
     flex-wrap: wrap
     flex-direction: column
     .control
@@ -176,3 +176,9 @@
         min-width: 100%
       &:not(:last-child)
         margin-bottom: 8px
+    &.is-reverse
+      flex-direction: column-reverse
+      .control
+        &:not(:last-child)
+          margin-top: 8px
+          margin-bottom: 0

@@ -1,11 +1,15 @@
 export namespace Props {
   export type BalAccordionColor = 'primary' | 'info'
 
+  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
 
   export type BalButtonGroupPosition = 'right' | 'center' | ''
+  export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
+
   export type BalButtonColor =
     | 'text'
     | 'primary'
@@ -14,6 +18,7 @@ export namespace Props {
     | 'warning'
     | 'danger'
     | 'link'
+    | 'light'
     | 'primary-light'
     | 'info-light'
   export type BalButtonElementType = 'button' | 'reset' | 'submit'
@@ -23,6 +28,7 @@ export namespace Props {
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
+  export type BalCardSpace = 'small' | '' | 'medium' | 'large'
   export type BalCardColor =
     | 'white'
     | 'primary'
@@ -58,7 +64,10 @@ export namespace Props {
   export type BalListSize = 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
 
+  export type BalNavbarInterface = 'app' | 'simple'
+
   export type BalLogoColor = 'blue' | 'white'
+  export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
   export type BalPopoverPlacement =
@@ -81,7 +90,7 @@ export namespace Props {
   export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
-  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
+  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
 
   export type BalTagColor =
@@ -114,7 +123,7 @@ export namespace Props {
     | ''
 
   export type BalModalInterface = 'light' | 'card'
-  export type BalModalSpace = 'small' | 'medium' | 'large'
+  export type BalModalSpace = 'small' | '' | 'medium'
   export type ComponentProps = { [key: string]: any }
   // eslint-disable-next-line
   export type ComponentRef = Function | HTMLElement | string | null
@@ -225,4 +234,16 @@ export namespace Props {
     | 'impp'
     | 'url'
     | 'photo'
+
+  export type BalShapeVariation = '1' | '2' | '3'
+  export type BalShapeColor =
+    | 'green'
+    | 'green-light'
+    | 'red'
+    | 'red-light'
+    | 'purple'
+    | 'purple-light'
+    | 'tangerine'
+    | 'tangerine-light'
+  export type BalShapeRotation = '0' | '90' | '180' | '270'
 }

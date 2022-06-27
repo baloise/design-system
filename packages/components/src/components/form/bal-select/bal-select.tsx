@@ -25,7 +25,8 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Props } from '../../../props'
+import { Props, Events } from '../../../types'
+import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -117,6 +118,11 @@ export class Select {
   @Prop() readonly = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * @deprecated  Set this to `true` when the component is placed on a dark background.
    * Set this to `true` when the component is placed on a dark background.
    */
@@ -178,7 +184,7 @@ export class Select {
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<string | string[] | undefined>
+  @Event() balChange!: EventEmitter<Events.BalSelectChangeDetail>
 
   /**
    * Emitted when the input got clicked.
@@ -683,6 +689,8 @@ export class Select {
   }
 
   private handleInputClick = async (event: MouseEvent) => {
+    stopEventBubbling(event)
+
     if (this.disabled || this.readonly) {
       preventDefault(event)
     } else {
@@ -744,12 +752,7 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag
-        color="primary"
-        size="small"
-        closable={!this.disabled}
-        onBalCloseClick={_ => this.removeValue(props.value)}
-      >
+      <bal-tag closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )
@@ -767,7 +770,7 @@ export class Select {
           'is-inverted': this.inverted,
         }}
       >
-        <select class="is-hidden" name={this.name} multiple={this.multiple}>
+        <select class="is-hidden" name={this.name} multiple={this.multiple} required={this.required}>
           {valuesArray.map((value: string) => (
             <option value={value} selected>
               {value}

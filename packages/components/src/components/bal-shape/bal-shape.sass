@@ -1,0 +1,63 @@
++block(shape)
+  display: flex
+  flex-wrap: wrap
+  border-radius: 4px
+  overflow: hidden
+  width: 66px
+  height: 66px
+  +tablet
+    width: 120px
+    height: 120px
+  +desktop
+    width: 198px
+    height: 198px
+  span
+    width: calc(100% / 3)
+    height: calc(100% / 3)
+
+  // color variations
+  +modifier(is-green)
+    span
+      background-color: var(--bal-color-green-6)
+  +modifier(is-green-light)
+    span
+      background-color: var(--bal-color-green-3)
+  +modifier(is-red)
+    span
+      background-color: var(--bal-color-red-5)
+  +modifier(is-red-light)
+    span
+      background-color: var(--bal-color-red-3)
+  +modifier(is-purple)
+    span
+      background-color: var(--bal-color-purple-6)
+  +modifier(is-purple-light)
+    span
+      background-color: var(--bal-color-purple-3)
+  +modifier(is-tangerine)
+    span
+      background-color: var(--bal-color-yellow-5)
+  +modifier(is-tangerine-light)
+    span
+      background-color: var(--bal-color-yellow-3)
+  // shape variations
+  +modifier(is-variation-1)
+    span:nth-child(6),
+    span:nth-child(7),
+    span:nth-child(8)
+      background-color: transparent
+  +modifier(is-variation-2)
+    span:nth-child(2),
+    span:nth-child(4)
+      background-color: transparent
+  +modifier(is-variation-3)
+    span:nth-child(3),
+    span:nth-child(4)
+      background-color: transparent
+  // rotation variations
+  +modifier(is-90-deg)
+    transform: rotate(90deg)
+  +modifier(is-180-deg)
+    transform: rotate(180deg)
+  +modifier(is-270-deg)
+    transform: rotate(270deg)

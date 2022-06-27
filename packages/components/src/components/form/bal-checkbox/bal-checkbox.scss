@@ -40,7 +40,6 @@ bal-checkbox {
       contain: layout style;
 
       display: flex;
-      align-self: baseline;
       align-items: center;
       justify-content: flex-start;
       text-align: left;
@@ -82,7 +81,6 @@ bal-checkbox {
     label::before {
       content: '';
       left: 0;
-      top: 0;
       height: 24px;
       width: 24px;
       border: 2px solid $blue;
@@ -92,9 +90,9 @@ bal-checkbox {
     label::after {
       content: none;
       left: 9px;
-      top: 4px;
       width: 7px;
       height: 13px;
+      margin-top: -4px;
       border-bottom: 2px solid $white;
       border-right: 2px solid $white;
       border-radius: 1px;

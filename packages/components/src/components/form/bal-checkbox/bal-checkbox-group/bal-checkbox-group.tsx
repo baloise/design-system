@@ -12,6 +12,7 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
+import { Events } from '../../../../types'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
 
@@ -89,7 +90,7 @@ export class CheckboxGroup implements ComponentInterface {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<any[]>
+  @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

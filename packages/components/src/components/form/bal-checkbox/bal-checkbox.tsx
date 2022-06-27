@@ -20,7 +20,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
-import { Props } from '../../../props'
+import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-checkbox',
@@ -78,6 +78,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() readonly = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * If `true`, the value will not be send with a form submit
    */
   @Prop() hidden = false
@@ -95,7 +100,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   /**
    * Emitted when the value property has changed.
    */
-  @Event() balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
   /**
    * Emitted when the toggle has focus.
@@ -199,6 +204,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           type="checkbox"
           id={this.inputId}
           name={this.name}
+          required={this.required}
           tabindex={-1}
           checked={this.checked}
           value={this.value}

@@ -4,7 +4,7 @@ import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { StepList } from './components/steps'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../'
 import { Platforms } from '../../types'
@@ -43,6 +43,11 @@ export class Tabs {
   @Prop() expanded = false
 
   /**
+   * If `true` the field expands over the whole width.
+   */
+  @Prop() inverted = false
+
+  /**
    * If `true` the tabs is a block element and uses 100% of the width
    */
   @Prop() fullwidth = false
@@ -65,12 +70,7 @@ export class Tabs {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical = false
-
-  /**
-   * If `true` tabs are align vertically on the mobile.
-   */
-  @Prop() verticalOnMobile = false
+  @Prop() vertical: boolean | 'mobile' | 'tablet' = false
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -147,6 +147,15 @@ export class Tabs {
     this.value = tab.value
   }
 
+  /**
+   * @internal
+   * Rerenders the line to mark the active tab.
+   */
+  @Method()
+  async renderLine() {
+    this.moveLine(this.getTargetElement(this.value), 100)
+  }
+
   private get tabs(): HTMLBalTabItemElement[] {
     return Array.from(this.el.querySelectorAll('bal-tab-item'))
   }
@@ -166,7 +175,6 @@ export class Tabs {
     }
   }
 
-  // private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
   private async onSelectTab(event: MouseEvent | CustomEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
@@ -184,32 +192,39 @@ export class Tabs {
     }
   }
 
-  private moveLine(element: HTMLElement) {
+  private moveLine(element: HTMLElement, timeout = 0) {
     setTimeout(() => {
-      if (this.interface === 'tabs' || this.interface === 'tabs-sub') {
+      if (this.interface !== 'steps' && this.interface !== 'o-steps') {
         if (element) {
           const listElement = element.closest('li')
 
-          if (this.vertical || (isPlatform('mobile') && this.verticalOnMobile)) {
+          const isMobile = isPlatform('mobile')
+          const isTablet = isPlatform('tablet')
+          const isVertical = this.vertical === true
+          const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
+          const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
+          const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+          if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
             if (listElement?.clientHeight !== undefined) {
-              this.lineHeight = listElement.clientHeight - 16
+              this.lineHeight = listElement.clientHeight - 8
             }
 
             if (listElement?.offsetTop !== undefined) {
-              this.lineOffsetTop = listElement.offsetTop + 8
+              this.lineOffsetTop = listElement.offsetTop + 4
             }
           } else {
             if (listElement?.clientWidth !== undefined) {
-              this.lineWidth = listElement.clientWidth - 32
+              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : 32)
             }
 
             if (listElement?.offsetLeft !== undefined) {
-              this.lineOffsetLeft = listElement.offsetLeft + 16
+              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
             }
           }
         }
       }
-    }, 0)
+    }, timeout)
   }
 
   private getTargetElement(value?: string) {
@@ -230,14 +245,8 @@ export class Tabs {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier(`context-${this.interface}`).class(),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
-          // 'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
-          // 'bal-steps': this.interface === 'steps',
-          // 'bal-o-steps': this.interface === 'o-steps',
-          // 'is-sub-navigation': this.interface === 'tabs-sub',
-          // 'is-navbar-tabs': this.interface === 'navbar',
-          // 'is-vertical': this.vertical,
-          // 'is-vertical-on-mobile': this.verticalOnMobile,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -250,22 +259,20 @@ export class Tabs {
       >
         <Tabs
           value={this.value}
+          context={this.interface}
+          inverted={this.inverted}
           tabs={this.tabsOptions}
           border={this.border}
           expanded={this.expanded}
           clickable={this.clickable}
           isReady={this.isReady}
           iconPosition={this.iconPosition}
-          // action={this.action}
-          // actionLabel={this.actionLabel}
-          // onActionClick={e => this.actionHasClicked.emit(e)}
           onSelectTab={(e, t) => this.onSelectTab(e, t)}
           lineWidth={this.lineWidth}
           lineOffsetLeft={this.lineOffsetLeft}
           lineHeight={this.lineHeight}
           lineOffsetTop={this.lineOffsetTop}
-          vertical={this.vertical}
-          verticalOnMobile={this.verticalOnMobile}
+          vertical={this.interface === 'navbar' ? 'tablet' : this.vertical}
           selectOnMobile={this.selectOnMobile}
         ></Tabs>
         <slot></slot>

@@ -151,15 +151,15 @@ Download the following font for print usage. For web development please continue
 
 ## Install web font
 
-Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). With the font files also css and sass files are delivered.
+Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-next-fonts). With the font files also css and sass files are delivered.
 
 > **TIP**
-> The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+> The font package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
 
 To install the fonts directly to your project, run the following command:
 
 ```bash
-npm install @baloise/design-system-fonts
+npm install @baloise/design-system-next-fonts
 ```
 
 ### Usage
@@ -177,7 +177,7 @@ The downloaded fonts have to be placed in a folder in the public area. The path 
 ```scss
 $font-path: 'assets/fonts';
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 ```
 
 > **TIP for Angular apps**
@@ -189,7 +189,7 @@ $font-path: 'assets/fonts';
 > ```scss
 > $font-path: '~assets/fonts';
 >
-> @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+> @import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 > ```
 
 Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
@@ -197,7 +197,7 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
 }
 ```
 
@@ -208,10 +208,10 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 
 Configure the fonts in a css file.
 
-The package `@baloise/design-system-fonts` also delivers a css file with the config for typography. Add the `fonts.css` into the `head` of the webpage.
+The package `@baloise/design-system-next-fonts` also delivers a css file with the config for typography. Add the `fonts.css` into the `head` of the webpage.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-fonts/lib/fonts.css" />
 ```
 
 Next [download the font](/design/typography.html#download) to use it with the CDN setup and put them into the path `/assets/fonts` of the webpage.
@@ -221,7 +221,7 @@ Next [download the font](/design/typography.html#download) to use it with the CD
 Import the css directly into your main TypeScript or JavaScript file.
 
 ```typescript
-import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
+import '@baloise/design-system-next-components/dist/design-system-fonts/lib/fonts.css'
 ```
 
 <bal-doc-github link="/stories/design/02-typography.stories.mdx"></bal-doc-github>

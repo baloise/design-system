@@ -1,0 +1,94 @@
+@import './bal-input-group.mixins.scss'
+
++block(input-group)
+  +unselectable
+  position: relative
+  display: flex
+  width: 100%
+  align-items: center
+  gap: 4px
+  border: 2px solid var(--bal-color-grey-2)
+  border-radius: var(--bal-radius-small)
+  background: var(--bal-color-white)
+
+  .input
+    min-height: 44px
+    border: none
+    border-radius: 0
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: calc(0.5em - 2px)
+    padding-top: calc(0.5em - 2px)
+
+  .bal-select__slot
+    border: none
+
+  .bal-icon
+    min-width: 48px
+
+  & > *:first-child.bal-input
+    .input
+      padding-left: calc(0.75em - 1px)
+
+  & > *:last-child.bal-input
+    .input
+      padding-right: calc(0.75em - 1px)
+
+  & > *:first-child.input
+    padding-left: calc(0.75em - 1px)
+
+  & > *:last-child.input
+    padding-right: calc(0.75em - 1px)
+
+  & > *:last-child.bal-tag
+    margin-right: calc(0.75em - 1px)
+
+  & > *:first-child.bal-tag
+    margin-left: calc(0.75em - 1px)
+  
+  &.is-hovered,
+  &:hover
+    &,
+    .input
+      background: var(--bal-color-grey-1)
+
+  +modifier(is-danger)
+    &,
+    .input
+      border-color: $danger-dark
+      background: var(--bal-color-danger-1)
+
+    svg
+      g,
+      path,
+      circle
+        fill: var(--bal-color-danger-dark)
+  
+  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-danger-dark))
+  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-success-dark))
+  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-warning-dark))
+  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-grey-5))
+
+  +modifier(is-disabled)
+    &,
+    .input
+      cursor: default
+      pointer-events: none
+      user-select: none
+      color: var(--bal-color-grey-5)
+
+      ::placeholder
+        color: var(--bal-color-grey-5)
+
+    .tag
+      background-color: var(--bal-color-grey-5)
+
+      span
+        color: var(--bal-color-white)
+
+      .delete
+        display: none
+
+  &:not(.bal-input-group--is-disabled)
+    &:focus-within
+      border-color: var(--bal-color-primary)

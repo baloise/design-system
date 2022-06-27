@@ -23,6 +23,7 @@ import {
   detachComponentToConfig,
 } from '../../../config'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
+import { Events } from '../../../events'
 import {
   FormInput,
   getInputTarget,
@@ -41,6 +42,7 @@ import {
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { getDecimalSeparator } from '../../../utils/number.util'
 import { formatInputValue } from './bal-input.utils'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-number-input',
@@ -121,12 +123,12 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<number | undefined>
+  @Event() balInput!: EventEmitter<Events.BalInputNumberInputDetail>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<number | undefined>
+  @Event() balChange!: EventEmitter<Events.BalInputNumberChangeDetail>
 
   /**
    * Emitted when the input loses focus.
@@ -294,12 +296,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
       label.htmlFor = this.inputId
     }
 
+    const block = BEM.block('number-input')
+
     return (
       <Host
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
         }}
       >
         <input

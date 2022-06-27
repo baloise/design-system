@@ -53,7 +53,7 @@ npm start
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/design-system-components-angular --save
+npm install @baloise/design-system-next-components-angular --save
 ```
 
 > **Recommendations**
@@ -68,7 +68,7 @@ To use/ignore deep imports in an Angular applications create a file called `ngcc
 ```javascript
 module.exports = {
   packages: {
-    '@baloise/design-system-components-angular': {
+    '@baloise/design-system-next-components-angular': {
       ignorableDeepImportMatchers: [/@baloise\//],
     },
   },
@@ -77,7 +77,7 @@ module.exports = {
 
 ### Install fonts
 
-The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
+The font package is included in the @baloise/design-system-next-components package and also in the proxy libraries.
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
 
@@ -90,7 +90,7 @@ After installing our copyfiles dependency we need to define the copy command in 
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* src/assets/fonts"
 }
 ```
 
@@ -113,7 +113,7 @@ Import the `global.scss` Sass file into the main `.scss` file of your applicatio
 // change variable before the import
 $font-path: '~assets/fonts';
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 
 // add custom styles below
 ```
@@ -135,7 +135,7 @@ import {
   BalButtonModule,
   BalHeadingModule,
   BalFooterModule,
-} from '@baloise/design-system-components-angular'
+} from '@baloise/design-system-next-components-angular'
 
 import { AppComponent } from './app.component'
 

@@ -58,71 +58,78 @@ A basic form field has his container element `bal-field` and 3 child elements:
 </bal-field>
 ```
 
-### Combine fields
+## Form Grid
 
-With the help of our [CSS Grid](?path=/docs/design-grid--page) we can assemble the form fields to nice looking form.
-
-- First we add the container element `<form class="columns is-multiline mt-0">`
-  - `is-multiline` enables us to have multiple rows in our form grid
-  - `mt-0` resets the margin top to 0px
-- Each field is used as a column `<bal-field class="column is-full py-0">`
-  - `is-full` takes the full width
-  - `py-0` removes the padding on top and bottom
+To combine form fields / controls to a bigger form use the [Form Grid component](?path=/docs/components-form-form-grid--basic).
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <form className="columns is-multiline mt-0 has-background-white">
-      <bal-field class="column is-full py-0">
-        <bal-field-control>
-          <bal-radio-group>
-            <bal-radio name="gender" value="male">
-              Male
-            </bal-radio>
-            <bal-radio name="gender" value="female">
-              Female
-            </bal-radio>
-          </bal-radio-group>
-        </bal-field-control>
-      </bal-field>
-      <bal-field class="column is-half py-0">
-        <bal-field-label>Firstname</bal-field-label>
-        <bal-field-control>
-          <bal-input placeholder="Enter your firstname"></bal-input>
-        </bal-field-control>
-      </bal-field>
-      <bal-field class="column is-half py-0">
-        <bal-field-label>Lastname</bal-field-label>
-        <bal-field-control>
-          <bal-input placeholder="Enter your lastname"></bal-input>
-        </bal-field-control>
-      </bal-field>
+    <form className="has-background-white">
+      <bal-form-grid>
+        <bal-form-col>
+          <bal-field>
+            <bal-field-control>
+              <bal-radio-group>
+                <bal-radio name="gender" value="male">
+                  Male
+                </bal-radio>
+                <bal-radio name="gender" value="female">
+                  Female
+                </bal-radio>
+              </bal-radio-group>
+            </bal-field-control>
+          </bal-field>
+        </bal-form-col>
+        <bal-form-col size="half">
+          <bal-field>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+          </bal-field>
+        </bal-form-col>
+        <bal-form-col size="half">
+          <bal-field>
+            <bal-field-label>Lastname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Enter your lastname"></bal-input>
+            </bal-field-control>
+          </bal-field>
+        </bal-form-col>
+      </bal-form-grid>
     </form>
   </bal-doc-app>
 </Canvas>
 
 ```html
-<form class="columns is-multiline mt-0">
-  <bal-field class="column is-full py-0">
-    <bal-field-control>
-      <bal-radio-group>
-        <bal-radio name="gender" value="male">Male</bal-radio>
-        <bal-radio name="gender" value="female">Female</bal-radio>
-      </bal-radio-group>
-    </bal-field-control>
-  </bal-field>
-  <bal-field class="column is-half py-0">
-    <bal-field-label>Firstname</bal-field-label>
-    <bal-field-control>
-      <bal-input placeholder="Enter your firstname"></bal-input>
-    </bal-field-control>
-  </bal-field>
-  <bal-field class="column is-half py-0">
-    <bal-field-label>Lastname</bal-field-label>
-    <bal-field-control>
-      <bal-input placeholder="Enter your lastname"></bal-input>
-    </bal-field-control>
-  </bal-field>
-</form>
+<bal-form-grid>
+  <bal-form-col>
+    <bal-field>
+      <bal-field-control>
+        <bal-radio-group>
+          <bal-radio name="gender" value="male"> Male </bal-radio>
+          <bal-radio name="gender" value="female"> Female </bal-radio>
+        </bal-radio-group>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+  <bal-form-col size="half">
+    <bal-field>
+      <bal-field-label>Firstname</bal-field-label>
+      <bal-field-control>
+        <bal-input placeholder="Enter your firstname"></bal-input>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+  <bal-form-col size="half">
+    <bal-field>
+      <bal-field-label>Lastname</bal-field-label>
+      <bal-field-control>
+        <bal-input placeholder="Enter your lastname"></bal-input>
+      </bal-field-control>
+    </bal-field>
+  </bal-form-col>
+</bal-form-grid>
 ```
 
 #### More examples
@@ -186,6 +193,100 @@ export class FormPageComponent {
 
 ## Usage with Vue
 
+> Use the package `@baloise/web-app-form-vue`
+
+Delivers utility components to create forms that follow the guides of the Baloise Design System.
+Moreover it extends the useField function to work as smooth as possible with the Baloise Design System and defines Baloise specific yup schema validations.
+
+### Installation
+
+For Vue we use the library [VeeValidate](https://vee-validate.logaretm.com/v4/) together with the [Yup Schema Validation](https://github.com/jquense/yup).
+
+```bash
+npm install @baloise/web-app-form-vue vee-validate@next yup vue-i18n
+```
+
+```typescript
+import { baloiseForm } from '@baloise/web-app-form-vue'
+import App from './App.vue'
+
+// the error message of the form fields are directly translated
+// with the vue-i18n library
+export const i18n = createI18n({
+  ...
+})
+
+createApp(App).use(baloiseForm, { i18n }).mount('#app')
+```
+
+### Define Form Schema
+
+Based on the domain model create a form schema with the tool [Yup Schema Validation](https://github.com/jquense/yup).
+
+```typescript
+import { object, string, SchemaOf } from 'yup'
+
+export type Pokemon = {
+  name: string
+  frontImage?: string
+  backImage?: string
+}
+
+export function usePokemonSchema(): SchemaOf<Pokemon> {
+  return object({
+    name: string().defined().required(),
+    frontImage: string(),
+    backImage: string(),
+  })
+}
+```
+
+### Define Form Field
+
+Instead of using the `useField` from **Vee-Validate** use the wrapper `useBalField`.
+This extends the **Vee-Validate** implementation with the property invalid and
+message from the yup schema validations.
+
+- [Vee-Validate useField API](https://vee-validate.logaretm.com/v4/api/use-field)
+
+```vue
+<script setup lang="ts">
+...
+import { useForm, handleSubmit } from 'vee-validate'
+import { useBalField } from '@baloise/web-app-form-vue'
+
+const { handleSubmit, isSubmitting } = useForm<Pokemon>({
+  // the computed is used to have the schema dynamic and
+  // can be altered during runtime.
+  validationSchema: computed(() => usePokemonSchema()),
+})
+
+// onSubmit will be called when the from schema is valid
+const onSubmit = handleSubmit((values) => /* Use the values to submit it to an api */)
+
+const { value } = useField<string>('name')
+const { invalid, message } = useBalField('name')
+</script>
+
+<template>
+  <form novalidate @submit="onSubmit">
+    <BalFormGrid>
+      <BalFormCol>
+        <BalField :invalid="invalid">
+          <BalFieldLabel :required="true">My name label</BalFieldLabel>
+          <BalFieldControl>
+            <BalInput v-model="value" />
+          </BalFieldControl>
+          <BalFieldMessage>
+            {{ message }}
+          </BalFieldMessage>
+        </BalField>
+      </BalFormCol>
+    </BalFormGrid>
+  </from>
+</template>
+```
+
 For Vue we use the library [VeeValidate](https://vee-validate.logaretm.com/v4/) together with the [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html).
 
 First install VeeValidate (Version >= 4.x.x).
@@ -242,7 +343,7 @@ Now we have to define the logic of our form with the help of VeeValidate.
 
 ```typescript
 import { ref } from 'vue'
-import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/design-system-components-vue'
+import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/design-system-next-components-vue'
 import { rules } from '@baloise/web-app-validators-vue'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
 import { isRequired } from '../helpers/validators'

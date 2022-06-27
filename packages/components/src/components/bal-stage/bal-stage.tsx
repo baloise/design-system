@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { isPlatform } from '../../'
 import { Platforms, PlatformSrcSet } from '../../types'
 
@@ -31,6 +31,11 @@ export class Stage implements ComponentInterface {
    * src-set string for the css background-image
    */
   @Prop() images?: string
+
+  /**
+   * class to set the container width
+   */
+  @Prop() containerClass = 'is-wide'
 
   setImageSrc() {
     const images = this.images?.split(',')
@@ -89,8 +94,8 @@ export class Stage implements ComponentInterface {
           <slot></slot>
         </section>
         {this.hasShape && (
-          <div class="bal-stage-shape container">
-            <div>Shape Placeholder</div>
+          <div class={`bal-stage-shape container ${this.containerClass}`}>
+            <slot name="shape"></slot>
           </div>
         )}
       </Host>

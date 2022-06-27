@@ -34,7 +34,7 @@ This example below is for HTML5 applications.
 However, for Angular, Vue or React there are usage examples below.
 
 ```typescript
-import { initialize } from '@baloise/design-system-components'
+import { initialize } from '@baloise/design-system-next-components'
 
 initialize({
   region: 'CH',
@@ -50,7 +50,7 @@ In the Angular framework define them with the module.
 ```typescript
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BalCoreModule } from '@baloise/design-system-components-angular'
+import { BalCoreModule } from '@baloise/design-system-next-components-angular'
 
 import { AppComponent } from './app.component'
 
@@ -79,7 +79,7 @@ Simply pass the default config value through the plugin.
 
 ```typescript
 import './main.scss'
-import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+import { BaloiseDesignSystem } from '@baloise/design-system-next-components-vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -102,7 +102,7 @@ createApp(App)
 Import the **useBaloiseDesignSystem** function and pass the default values of the config.
 
 ```typescript
-import { useBaloiseDesignSystem } from '@baloise/design-system-components-react'
+import { useBaloiseDesignSystem } from '@baloise/design-system-next-components-react'
 
 useBaloiseDesignSystem({
   defaults: {
@@ -118,7 +118,7 @@ useBaloiseDesignSystem({
 To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
 
 ```typescript
-import { updateBalAllowedLanguages, updateBalLanguage, updateBalRegion } from '@baloise/design-system-components'
+import { updateBalAllowedLanguages, updateBalLanguage, updateBalRegion } from '@baloise/design-system-next-components'
 
 updateBalLanguage('de')
 updateBalRegion('CH')
@@ -128,7 +128,7 @@ updateBalAllowedLanguages(['fr', 'it'])
 The config can be accessed with `useConfig`.
 
 ```typescript
-import { useConfig } from '@baloise/design-system-components'
+import { useConfig } from '@baloise/design-system-next-components'
 
 const config = useConfig()
 config.language = 'de'
@@ -142,7 +142,7 @@ Both variants have the same effect.
 
 ```typescript
 import { Component, OnInit } from '@angular/core'
-import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-next-components'
 
 @Component({
   selector: 'app-app-tab-a',
@@ -159,7 +159,7 @@ export class AppTabAComponent {
 ### Vue
 
 ```typescript
-import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-next-components'
 
 const changeLang = (lang: BalSwissLanguage) {
   updateBalLanguage(lang)
@@ -171,7 +171,7 @@ const changeLang = (lang: BalSwissLanguage) {
 To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
 
 ```typescript
-import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-next-components'
 
 onBalConfigChange((config: BalConfigState) => {
   // do something with the updated config here
@@ -182,7 +182,7 @@ onBalConfigChange((config: BalConfigState) => {
 
 ```typescript
 import { Component, OnInit } from '@angular/core'
-import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-next-components'
 
 @Component({
   selector: 'app-sample',
@@ -205,7 +205,7 @@ export class SampleComponent implements OnInit {
 ### Vue
 
 ```typescript
-import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-next-components'
 
 onBalConfigChange((config: BalConfigState) => {
   // handle the change of the language here

@@ -98,10 +98,10 @@ export const selectors = {
     main: '.bal-notices > .bal-snackbar',
   },
   pagination: {
-    next: 'bal-button.pagination-next',
-    previous: 'bal-button.pagination-previous',
-    pages: '.pagination-list > li > bal-button',
-    button: '.pagination-list > li > bal-button > button',
+    next: '.bal-pagination__nav__pagination-next',
+    previous: '.bal-pagination__nav__pagination-previous',
+    pages: '.bal-pagination__nav__pagination-list > li > bal-button',
+    button: '.bal-pagination__nav__pagination-list > li > bal-button > button',
   },
   hint: {
     trigger: '.data-test-hint-trigger',
@@ -124,6 +124,7 @@ export const wrapCommand = (
   return (selector: string) => {
     return cy
       .wrapComponent(element as any, { log: false })
+      .waitForComponents()
       .find(selector, { log: false })
       .then($el => {
         Cypress.log({

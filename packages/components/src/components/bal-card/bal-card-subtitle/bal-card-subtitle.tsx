@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-card-subtitle',
@@ -22,7 +22,7 @@ export class CardSubtitle {
 
   render() {
     return (
-      <Host class="bal-card-subtitle mx-5">
+      <Host class="bal-card-subtitle">
         <bal-text bold={this.bold} space="none" color={this.inverted ? 'white' : this.color}>
           <slot></slot>
         </bal-text>

@@ -72,8 +72,8 @@ To access the method of the component use the reference directly.
 
 ```ts
 import { Component, ViewChild } from '@angular/core'
-import type { Components } from '@baloise/design-system-components'
-import { ProxyComponent } from '@baloise/design-system-components-angular'
+import type { Components } from '@baloise/design-system-next-components'
+import { ProxyComponent } from '@baloise/design-system-next-components-angular'
 
 @Component({
   selector: 'app-method',
@@ -97,8 +97,8 @@ After that the methods of the components can be used directly.
 ```html
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-vue'
-  import { Components } from '@baloise/design-system-components'
+  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-next-components-vue'
+  import { Components } from '@baloise/design-system-next-components'
 
   const mySelect = ref<ProxyComponent<Components.BalSelect>>()
 
@@ -123,7 +123,7 @@ To access the component use [useRef](https://reactjs.org/docs/hooks-reference.ht
 Link then the ref with the element, after that the methods of the component can be accessed.
 
 ```tsx
-import { BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-react'
+import { BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-next-components-react'
 import { useRef } from 'react'
 
 function MethodComponent() {
