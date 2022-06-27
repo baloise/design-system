@@ -148,7 +148,7 @@ ${indent}.is-size-${key}
 
   for (const k in sizes) {
     const sizeMobile = sizes[k].mobile
-    const spaceMobile = spacing.mobile[sizeMobile.spacing]
+    const spaceMobile = spacing[sizeMobile.spacing].mobile
     lines.push(createCssClasses(k, sizeMobile.fontSize, sizeMobile.lineHeight, spaceMobile))
   }
 
@@ -156,7 +156,7 @@ ${indent}.is-size-${key}
   lines.push('+tablet')
   for (const k in sizes) {
     const sizeTablet = sizes[k].tablet
-    const spaceTablet = spacing.tablet[sizeTablet.spacing]
+    const spaceTablet = spacing[sizeTablet.spacing].tablet
     lines.push(createCssClasses(k, sizeTablet.fontSize, sizeTablet.lineHeight, spaceTablet))
   }
 
@@ -164,7 +164,7 @@ ${indent}.is-size-${key}
   lines.push('+desktop')
   for (const k in sizes) {
     const sizeDesktop = sizes[k].desktop
-    const spaceDesktop = spacing.desktop[sizeDesktop.spacing]
+    const spaceDesktop = spacing[sizeDesktop.spacing].desktop
     lines.push(createCssClasses(k, sizeDesktop.fontSize, sizeDesktop.lineHeight, spaceDesktop))
   }
 

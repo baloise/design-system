@@ -70,6 +70,14 @@ p
   p
     +bottomSpacing($space-4)
 
+.is-regular,
+span.is-regular,
+p.is-regular,
+a.is-regular,
+.is-text-regular,
+.is-text-regular span
+  font-weight: var(--bal-weight-regular)
+
 .is-bold,
 span.is-bold,
 p.is-bold,
@@ -77,6 +85,14 @@ a.is-bold,
 .is-text-bold,
 .is-text-bold span
   font-weight: var(--bal-weight-bold)
+
+.is-light,
+span.is-light,
+p.is-light,
+a.is-light,
+.is-text-light,
+.is-text-light span
+  font-weight: var(--bal-weight-light)
 
 p,
 a
@@ -94,10 +110,9 @@ a
 .has-font-title
   font-family: $font-family-title
 
-
 /**
-  LEGACY
-  */
+ LEGACY
+ */
 span.is-small,
 p.is-small,
 a.is-small,
@@ -113,3 +128,11 @@ p.is-lead > a
   +desktop
     font-size: var(--bal-size-desktop-large)
     line-height: var(--bal-line-desktop-height-large)
+
+p.is-block,
+p.is-block > a
+  font-size: var(--bal-size-medium)
+  line-height: var(--bal-line-height-medium)
+  +desktop
+    font-size: var(--bal-size-desktop-medium)
+    line-height: var(--bal-line-desktop-height-medium)

@@ -94,6 +94,7 @@
     "Viewports",
     "vite",
     "vue",
-    "WCAG"
+    "WCAG",
+    "xsmall"
   ]
 }
