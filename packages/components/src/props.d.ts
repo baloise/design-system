@@ -243,7 +243,7 @@ export namespace Props {
     | 'red-light'
     | 'purple'
     | 'purple-light'
-    | 'tangerine'
-    | 'tangerine-light'
+    | 'yellow'
+    | 'yellow-light'
   export type BalShapeRotation = '0' | '90' | '180' | '270'
 }
