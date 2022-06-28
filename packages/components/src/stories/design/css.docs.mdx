@@ -1,0 +1,308 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs'
+
+<Meta title="Design/CSS-Framework" />
+
+<bal-doc-banner subtitle="Design">CSS - Framework</bal-doc-banner>
+
+<bal-doc-lead>
+  The Baloise Design System CSS Framework includes a wide range of shorthand utility classes and some basic HTML element
+  styles like form and buttons. The CSS Framework is builded on top of Design Tokens.
+</bal-doc-lead>
+
+The following features are supported by the CSS Framework:
+
+- [Breakpoints](#breakpoints)
+- [Container](#container)
+- [Gird](#gird)
+- [Spacing](#spacing)
+- [Colors](#colors)
+- [Typography](#typography)
+- [List](#list)
+- [Border & Radius](#border-radius)
+- [Table](#table)
+- [Shadow](#shadow)
+- [Buttons](#buttons)
+- [Form](#form)
+- [Installation](#installation)
+
+<br />
+<br />
+
+<h2 id="breakpoints">Breakpoints</h2>
+
+TODO Link to tokens
+
+There are nine responsive mixins, which can be easily used in your sass files.
+
+Use the scss mixins in your application the following:
+
+```css
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.utilities';
+
+.bal-element {
+  width: 100%;
+}
+
+@include tablet() {
+  .bal-element {
+    width: 380px;
+  }
+}
+
+@include desktop() {
+  .bal-element {
+    width: 570px;
+  }
+}
+```
+
+The file `global.utilities` provides all defined scss variables like [colors](?path=/docs/design-colors--page) and also the mixins.
+
+<h2 id="container">Container</h2>
+
+The usage of the container is documented on the [Page Layout Page](?path=/docs/design-page-layout--page).
+
+| container       | css                        | usage                                                       | max-width |
+| --------------- | -------------------------- | ----------------------------------------------------------- | --------- |
+| **default**     | `container`                | Default container for the most use cases.                   | 992px     |
+| **detail-page** | `container is-detail-page` | Special use case for the website.                           | 744px     |
+| **compact**     | `container is-compact`     | Should be used for sales funnels and small forms.           | 896px     |
+| **blog-page**   | `container is-blog-page`   | Special use case for the website.                           | 984px     |
+| **wide**        | `container is-wide`        | Should be used to table based applications.                 | 984px     |
+| **fluid**       | `container is-fluid`       | For large application to use the whole width of the screen. | 100%      |
+
+<Canvas>
+  <Story id="design-css-framework--container" />
+</Canvas>
+
+<h2 id="grid">Gird</h2>
+
+Grids are a simple way to build responsive layouts with css-classes powered by flexbox.
+
+This grid is built on the solution of Bulma, so please have a look here:
+
+[Go to the bulma documentation](http://bulma.io/documentation/columns/basics/)
+
+### Basics
+
+Building a columns layout with Bulma is very simple:
+
+1. Add a columns container
+2. Add as many column elements as you want
+
+Each column will have an equal width, no matter the number of columns.
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--grid" />
+</Canvas>
+
+### Multiple Rows
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--grid-multiple-rows" />
+</Canvas>
+
+### Nested
+
+You can nest columns to have more flexibility in your design. You only need to follow this structure:
+
+- columns: top-level columns container
+  - column
+    - columns: nested columns
+      - column and so on…
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--grid-nested" />
+</Canvas>
+
+### More Documentation
+
+- [Column sizes](https://bulma.io/documentation/columns/sizes/)
+- [Columns responsiveness](https://bulma.io/documentation/columns/responsiveness/)
+- [Column nesting](https://bulma.io/documentation/columns/nesting/)
+- [Columns gap](https://bulma.io/documentation/columns/gap/)
+- [Column options](https://bulma.io/documentation/columns/options/)
+
+<h2 id="spacing">Spacing</h2>
+
+The CSS Framework provides **margin** `m*` and **padding** `p*` helpers for all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+You need to combine a **margin/padding** prefix with a direction suffix. For example:
+
+- for a `margin-top`, use `mt-*`
+- for a `padding-bottom`, use `pb-_`
+- for both margin-left and margin-right, use `mx-_`
+
+For **flexbox** there are spacing values also available as `gaps`.
+
+- for a `gap`, use `fg-*`
+
+The **values (\*)** are documented in the token section
+
+- [Spacing Tokens](?path=/docs/design-tokens--page#spacing)
+
+### Usage of Spacing
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--spacing" />
+</Canvas>
+
+### Spacing Sizes
+
+For each [Spacing Tokens](?path=/docs/design-tokens--page#spacing) there is a CSS utility class.
+
+<Canvas>
+  <Story id="design-css-framework--spacings" />
+</Canvas>
+
+<h2 id="colors">Colors</h2>
+
+We created for each color token the according css class.
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--colors" />
+</Canvas>
+
+### Background Colors
+
+For each color there is a helper css class for background colors.
+
+`has-background-*`
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--background-colors" />
+</Canvas>
+
+### Text Colors
+
+For each color there is a helper css class for text colors.
+
+`has-text-*`
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--text-colors" />
+</Canvas>
+
+<h2 id="typography">Typography</h2>
+
+We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise the font has a margin-top of around 2px.
+
+- [Heading](?path=/docs/Components-heading--basic)
+- [Text](?path=/docs/Components-text--basic)
+
+### Titles / Headlines
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--typography-titles" />
+</Canvas>
+
+### Texts / Paragraphs
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--typography-texts" />
+</Canvas>
+
+### Links
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--typography-link" />
+</Canvas>
+
+<h2 id="list">List</h2>
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--list" />
+</Canvas>
+
+<h2 id="border-radius">Border & Radius</h2>
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--border-and-radius" />
+</Canvas>
+
+<h2 id="table">Table</h2>
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--table" />
+</Canvas>
+
+<h2 id="shadow">Shadow</h2>
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--shadows" />
+</Canvas>
+
+<h2 id="buttons">Buttons</h2>
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--buttons" />
+</Canvas>
+
+<h2 id="form">Form</h2>
+
+<Canvas>
+  <Story id="design-css-framework--form" />
+</Canvas>
+
+<h2 id="visibility">Visibility</h2>
+
+Show/hide content depending on the width of the viewport.
+
+- [Breakpoints](http://localhost:6006/?path=/docs/design-breakpoints--viewports)
+- [Bulma Documentation](https://bulma.io/documentation/helpers/visibility-helpers/)
+
+<Canvas>
+  <Story id="design-css-framework--visibility" />
+</Canvas>
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(VisibilityHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${VisibilityHelpers}
+  `}
+/>
+
+## Flexbox
+
+Helpers for all flexbox properties
+
+- [Bulma Documentation](https://bulma.io/documentation/helpers/flexbox-helpers/)
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(FlexboxHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${FlexboxHelpers}
+  `}
+/>
+
+## Opacity
+
+Add opacity effect to an element with the class `has-opacity-**`.
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(OpacityHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${OpacityHelpers}
+  `}
+/>
+
+<bal-doc-github link="/stories/design/css.docs.mdx"></bal-doc-github>

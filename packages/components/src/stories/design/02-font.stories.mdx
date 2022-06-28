@@ -1,7 +1,7 @@
 import { Meta, Canvas, Source } from '@storybook/addon-docs'
 
 <Meta
-  title="Design/Typography"
+  title="Design/Font"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -10,132 +10,29 @@ import { Meta, Canvas, Source } from '@storybook/addon-docs'
   }}
 />
 
-# Typography
+<bal-doc-banner subtitle="Design">Font</bal-doc-banner>
 
-We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise the font has a margin-top of around 2px.
+<bal-doc-lead>The Baloise Design System uses a custom font for headings and body texts.</bal-doc-lead>
+
+## Usage
+
+Key values of the font are stored in our Design Tokens.
+
+- [Font Family](?path=/docs/design-tokens--page#font)
+- [Font Sizes](?path=/docs/design-tokens--page#font-sizes)
+- [Font Wight](?path=/docs/design-tokens--page#font-weight)
+
+The CSS-Framework links the tokens to the HTML elements and provides CSS utility classes to modify text elements.
+
+- [Titles / Headings](?path=/docs/design-css-framework--typography-titles)
+- [Texts / Paragraphs](?path=/docs/design-css-framework--typography-texts)
+- [Links](?path=/docs/design-css-framework--typography-texts#links)
+- [Text Colors](?path=/docs/design-css-framework--text-colors)
+
+In the Design System Component Library there are two main components for the font / typography.
 
 - [Heading](?path=/docs/Components-heading--basic)
 - [Text](?path=/docs/Components-text--basic)
-
-import { typographyHelper } from './02-typography.templates.ts'
-import { html } from '../utils'
-import dedent from 'ts-dedent'
-
-## Headings
-
-### Display
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <bal-heading level="display">Display (H1) Bold</bal-heading>
-    <bal-heading subtitle level="display">
-      Display (H1) Light
-    </bal-heading>
-  </bal-doc-app>
-</Canvas>
-
-### Heading 1
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <bal-heading level="h1">Heading 1 Bold</bal-heading>
-    <bal-heading subtitle level="h1">
-      Heading 1 Light
-    </bal-heading>
-  </bal-doc-app>
-</Canvas>
-
-### Heading 2
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <bal-heading level="h2">Heading 2 Bold</bal-heading>
-    <bal-heading subtitle level="h2">
-      Heading 2 Light
-    </bal-heading>
-  </bal-doc-app>
-</Canvas>
-
-### Heading 3
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <bal-heading level="h3">Heading 3 Bold</bal-heading>
-  </bal-doc-app>
-</Canvas>
-
-### Heading 4
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <bal-heading level="h4">Heading 4 Bold</bal-heading>
-  </bal-doc-app>
-</Canvas>
-
-## Paragraphs & Link
-
-### Lead
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <p className="is-lead is-bold">Paragraph Lead Bold</p>
-    <p className="is-lead">Paragraph Lead</p>
-    <a className="is-lead is-link" href="">
-      Lead Link
-    </a>
-  </bal-doc-app>
-</Canvas>
-
-### Regular / Normal
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <p className="is-bold">Paragraph Bold</p>
-    <p>Paragraph</p>
-    <a className="is-link" href="">
-      Link
-    </a>
-  </bal-doc-app>
-</Canvas>
-
-### Small Text
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <p className="is-small is-bold">Paragraph Small Bold</p>
-    <p className="is-small">Paragraph Small</p>
-    <a className="is-small is-link" href="">
-      Small Link
-    </a>
-  </bal-doc-app>
-</Canvas>
-
-## Others
-
-<Canvas withSource="none">
-  <bal-doc-app>
-    <label className="label">Label</label>
-    <br />
-    <span className="is-small has-text-info">Field Message</span>
-  </bal-doc-app>
-</Canvas>
-
-## CSS Helper Classes
-
-Out of the typography tokens a collection of helper css classes is created.
-
-[Go to the Bulma documentation](https://bulma.io/documentation/helpers/typography-helpers/)
-
-<Canvas withSource="none">
-  <bal-doc-app>{html(`<div>${typographyHelper}</div>`)}</bal-doc-app>
-</Canvas>
-
-<Source
-  language="html"
-  code={dedent`
-     ${typographyHelper}
-  `}
-/>
 
 ## Download
 

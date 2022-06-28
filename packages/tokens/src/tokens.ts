@@ -326,12 +326,12 @@ const tokens = {
         },
         tablet: {
           fontSize: '1.125rem',
-          lineHeight: '2rem',
+          lineHeight: '1.625rem',
           spacing: '2',
         },
         desktop: {
           fontSize: '1.125rem',
-          lineHeight: '2rem',
+          lineHeight: '1.625rem',
           spacing: '2',
         },
       },
