@@ -13,7 +13,7 @@ The following features are supported by the CSS Framework:
 
 - [Breakpoints](#breakpoints)
 - [Container](#container)
-- [Gird](#gird)
+- [Grid](#grid)
 - [Spacing](#spacing)
 - [Colors](#colors)
 - [Typography](#typography)
@@ -253,48 +253,34 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
 
 <h2 id="visibility">Visibility</h2>
 
-Show/hide content depending on the width of the viewport.
+Show/hide content depending on the width of the viewport. The visibility helpers are based on the
+Bulma Responsive helpers.
 
-- [Breakpoints](http://localhost:6006/?path=/docs/design-breakpoints--viewports)
 - [Bulma Documentation](https://bulma.io/documentation/helpers/visibility-helpers/)
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="design-css-framework--visibility" />
 </Canvas>
 
-<Canvas withSource="none">
-  <bal-doc-app>{html(VisibilityHelpers)}</bal-doc-app>
-</Canvas>
+<h2 id="flexbox">Flexbox</h2>
 
-<Source
-  language="html"
-  code={dedent`
-     ${VisibilityHelpers}
-  `}
-/>
-
-## Flexbox
-
-Helpers for all flexbox properties
+Our flexbox helper classes are based on the bulma framework
 
 - [Bulma Documentation](https://bulma.io/documentation/helpers/flexbox-helpers/)
 
-<Canvas withSource="none">
-  <bal-doc-app>{html(FlexboxHelpers)}</bal-doc-app>
+<Canvas withSource="open">
+  <Story id="design-css-framework--flexbox" />
 </Canvas>
-
-<Source
-  language="html"
-  code={dedent`
-     ${FlexboxHelpers}
-  `}
-/>
 
 ## Opacity
 
 Add opacity effect to an element with the class `has-opacity-**`.
 
-<Canvas withSource="none">
+<Canvas withSource="open">
+  <Story id="design-css-framework--opacity" />
+</Canvas>
+
+<!-- {/* <Canvas withSource="none">
   <bal-doc-app>{html(OpacityHelpers)}</bal-doc-app>
 </Canvas>
 
@@ -303,6 +289,6 @@ Add opacity effect to an element with the class `has-opacity-**`.
   code={dedent`
      ${OpacityHelpers}
   `}
-/>
+/> -->
 
 <bal-doc-github link="/stories/design/css.docs.mdx"></bal-doc-github>

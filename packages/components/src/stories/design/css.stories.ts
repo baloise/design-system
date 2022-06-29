@@ -7,18 +7,10 @@ export default {
     docs: {
       page: docs,
     },
-    // layout: 'fullscreen',
     status: {
       type: 'stable',
     },
   },
-  // argTypes: {
-  //   container: {
-  //     options: ['default', 'detail-page', 'compact', 'blog-page', 'wide', 'fluid'],
-  //     description: 'Size of the container. Use `compact` for calculators.',
-  //     control: { type: 'radio', defaultValue: 'default' },
-  //   },
-  // },
 }
 
 export const Container = args => ({
@@ -102,8 +94,8 @@ export const GridNested = args => ({
   setup: () => ({ args }),
   template: `<div class="columns">
   <div class="column is-half has-background-green">Half column</div>
-  <div class="column is-half has-background-red pb-0">
-    <div class="columns is-mobile">
+  <div class="column is-half has-background-red p-none">
+    <div class="columns is-mobile m-none">
       <div class="column is-half has-background-purple">Half column</div>
       <div class="column is-half has-background-yellow">Half column</div>
     </div>
@@ -524,5 +516,58 @@ export const Spacings = args => ({
 Spacings.args = {}
 Spacings.parameters = {
   ...sourceCode(Spacings, Spacings.args, {}),
+  controls: { exclude: [] },
+}
+
+export const Visibility = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div class="columns">
+  <div class="column is-hidden-mobile has-background-success"><p>is-hidden-mobile</p></div>
+  <div class="column is-hidden-tablet has-background-warning"><p>is-hidden-tablet</p></div>
+  <div class="column is-hidden-desktop has-background-danger"><p>is-hidden-desktop</p></div>
+</div>`,
+})
+Visibility.args = {}
+Visibility.parameters = {
+  ...sourceCode(Visibility, Visibility.args, {}),
+  controls: { exclude: [] },
+}
+
+export const Flexbox = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div class="has-background-blue p-4 is-flex is-justify-content-center is-align-items-center">
+  <p class="has-text-white">is-flex is-justify-content-center is-align-items-center</p>
+</div>`,
+})
+Flexbox.args = {}
+Flexbox.parameters = {
+  ...sourceCode(Flexbox, Flexbox.args, {}),
+  controls: { exclude: [] },
+}
+
+export const Opacity = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div class="p-4 has-background-blue has-opacity-100">
+  <p class="has-text-white">Has opacity 1</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-80">
+  <p class="has-text-white">Has opacity 0.8</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-60">
+  <p class="has-text-white">Has opacity 0.6</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-30">
+  <p class="has-text-white">Has opacity 0.3</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-0">
+  <p class="has-text-white">Has opacity 0</p>
+</div>`,
+})
+Opacity.args = {}
+Opacity.parameters = {
+  ...sourceCode(Opacity, Opacity.args, {}),
   controls: { exclude: [] },
 }

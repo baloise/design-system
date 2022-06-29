@@ -41,6 +41,9 @@ export const AngularGenerator = () =>
       'bal-checkbox': {
         components: ['bal-checkbox-group'],
       },
+      'bal-form-grid': {
+        components: ['bal-form-col'],
+      },
       'bal-tag': {
         components: ['bal-tag-group'],
       },
@@ -58,6 +61,15 @@ export const AngularGenerator = () =>
           'bal-data-item',
           'bal-data-label',
           'bal-data-value',
+        ],
+      },
+      'bal-stage': {
+        components: [
+          'bal-stage-back-link',
+          'bal-stage-body',
+          'bal-stage-foot',
+          'bal-stage-head',
+          'bal-stage-image',
         ],
       },
       'bal-hint': {
