@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.14.1](https://github.com/baloise-incubator/design-system/compare/v10.14.0...v10.14.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **css:** add legacy vars ([8c0ce60](https://github.com/baloise-incubator/design-system/commit/8c0ce604a3d38b63e3fda77ed826b8319ea79fed))
+* **css:** add legacy vars ([7bba30c](https://github.com/baloise-incubator/design-system/commit/7bba30c44c8b088eb5fad9cadf54c01261922992))
+* **css:** add legacy vars and use math.div instead of calc ([3c5805e](https://github.com/baloise-incubator/design-system/commit/3c5805e5acb5562225c5b22a18f9b2edefeff0dd))
+* **grid:** use --columnGap again. Closes [#142](https://github.com/baloise-incubator/design-system/issues/142) ([b393feb](https://github.com/baloise-incubator/design-system/commit/b393feb47881e2967066b8d88ad4d30dcfdbbe22))
+* **grid:** use negative css var. Closes [#142](https://github.com/baloise-incubator/design-system/issues/142) ([da24b3e](https://github.com/baloise-incubator/design-system/commit/da24b3e32be02040dd98641d14524d4752ce320e))
+
+
+
 ## [10.14.0](https://github.com/baloise-incubator/design-system/compare/v10.13.2...v10.14.0) (2022-06-28)
 
 
