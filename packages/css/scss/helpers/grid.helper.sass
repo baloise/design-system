@@ -435,11 +435,11 @@
         +ltr-property("margin", percentage(math.div($i,12)), false)
 
 .columns
-  +ltr-property("margin", (var(--bal-column-gap)), false)
-  +ltr-property("margin", (var(--bal-column-gap)))
-  margin-top: (var(--bal-column-gap))
+  +ltr-property("margin", (calc(var(--bal-column-gap) * -1)), false)
+  +ltr-property("margin", (calc(var(--bal-column-gap) * -1)))
+  margin-top: (calc(var(--bal-column-gap) * -1))
   &:last-child
-    margin-bottom: (var(--bal-column-gap))
+    margin-bottom: (calc(var(--bal-column-gap) * -1))
   &:not(:last-child)
     margin-bottom: calc(1.5rem - #{var(--bal-column-gap)})
   // Modifiers
@@ -474,11 +474,11 @@
 @if $variable-columns
   .columns.is-variable
     --columnGap: 0.75rem
-    +ltr-property("margin", calc(-1 * var(--bal-column-gap)), false)
-    +ltr-property("margin", calc(-1 * var(--bal-column-gap)))
+    +ltr-property("margin", calc(-1 * var(--columnGap)), false)
+    +ltr-property("margin", calc(-1 * var(--columnGap)))
     > .column
-      padding-left: var(--bal-column-gap)
-      padding-right: var(--bal-column-gap)
+      padding-left: var(--columnGap)
+      padding-right: var(--columnGap)
     @for $i from 0 through 8
       &.is-#{$i}
         --columnGap: #{$i * 0.25rem}
