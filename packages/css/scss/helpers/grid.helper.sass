@@ -435,11 +435,11 @@
         +ltr-property("margin", percentage(math.div($i,12)), false)
 
 .columns
-  +ltr-property("margin", (-var(--bal-column-gap)), false)
-  +ltr-property("margin", (-var(--bal-column-gap)))
-  margin-top: (-var(--bal-column-gap))
+  +ltr-property("margin", (calc(var(--bal-column-gap) * -1)), false)
+  +ltr-property("margin", (calc(var(--bal-column-gap) * -1)))
+  margin-top: (calc(var(--bal-column-gap) * -1))
   &:last-child
-    margin-bottom: (-var(--bal-column-gap))
+    margin-bottom: (calc(var(--bal-column-gap) * -1))
   &:not(:last-child)
     margin-bottom: calc(1.5rem - #{var(--bal-column-gap)})
   // Modifiers
