@@ -4,10 +4,17 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs'
 
 <bal-doc-banner subtitle="Design">CSS - Framework</bal-doc-banner>
 
+<bal-doc-tabs>
+  <a href="#features">Features</a>
+  <a href="#installation">Installation</a>
+</bal-doc-tabs>
+
 <bal-doc-lead>
   The Baloise Design System CSS Framework includes a wide range of shorthand utility classes and some basic HTML element
   styles like form and buttons. The CSS Framework is builded on top of Design Tokens.
 </bal-doc-lead>
+
+# Features
 
 The following features are supported by the CSS Framework:
 
@@ -23,7 +30,8 @@ The following features are supported by the CSS Framework:
 - [Shadow](#shadow)
 - [Buttons](#buttons)
 - [Form](#form)
-- [Installation](#installation)
+- [Flexbox](#flexbox)
+- [Opacity](#opacity)
 
 <br />
 <br />
@@ -58,6 +66,8 @@ Use the scss mixins in your application the following:
 
 The file `global.utilities` provides all defined scss variables like [colors](?path=/docs/design-colors--page) and also the mixins.
 
+<span id="story--design-css-framework--container" style={{ opacity: 0 }}></span>
+
 <h2 id="container">Container</h2>
 
 The usage of the container is documented on the [Page Layout Page](?path=/docs/design-page-layout--page).
@@ -74,6 +84,8 @@ The usage of the container is documented on the [Page Layout Page](?path=/docs/d
 <Canvas>
   <Story id="design-css-framework--container" />
 </Canvas>
+
+<span id="story--design-css-framework--grid" style={{ opacity: 0 }}></span>
 
 <h2 id="grid">Gird</h2>
 
@@ -123,6 +135,8 @@ You can nest columns to have more flexibility in your design. You only need to f
 - [Columns gap](https://bulma.io/documentation/columns/gap/)
 - [Column options](https://bulma.io/documentation/columns/options/)
 
+<span id="story--design-css-framework--spacing" style={{ opacity: 0 }}></span>
+
 <h2 id="spacing">Spacing</h2>
 
 The CSS Framework provides **margin** `m*` and **padding** `p*` helpers for all directions:
@@ -162,6 +176,8 @@ For each [Spacing Tokens](?path=/docs/design-tokens--page#spacing) there is a CS
   <Story id="design-css-framework--spacings" />
 </Canvas>
 
+<span id="story--design-css-framework--colors" style={{ opacity: 0 }}></span>
+
 <h2 id="colors">Colors</h2>
 
 We created for each color token the according css class.
@@ -190,6 +206,8 @@ For each color there is a helper css class for text colors.
   <Story id="design-css-framework--text-colors" />
 </Canvas>
 
+<span id="story--design-css-framework--typography-titles" style={{ opacity: 0 }}></span>
+
 <h2 id="typography">Typography</h2>
 
 We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise the font has a margin-top of around 2px.
@@ -215,11 +233,15 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
   <Story id="design-css-framework--typography-link" />
 </Canvas>
 
+<span id="story--design-css-framework--list" style={{ opacity: 0 }}></span>
+
 <h2 id="list">List</h2>
 
 <Canvas withSource="open">
   <Story id="design-css-framework--list" />
 </Canvas>
+
+<span id="story--design-css-framework--border-and-radius" style={{ opacity: 0 }}></span>
 
 <h2 id="border-radius">Border & Radius</h2>
 
@@ -227,11 +249,15 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
   <Story id="design-css-framework--border-and-radius" />
 </Canvas>
 
+<span id="story--design-css-framework--table" style={{ opacity: 0 }}></span>
+
 <h2 id="table">Table</h2>
 
 <Canvas withSource="open">
   <Story id="design-css-framework--table" />
 </Canvas>
+
+<span id="story--design-css-framework--shadow" style={{ opacity: 0 }}></span>
 
 <h2 id="shadow">Shadow</h2>
 
@@ -239,17 +265,23 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
   <Story id="design-css-framework--shadows" />
 </Canvas>
 
+<span id="story--design-css-framework--buttons" style={{ opacity: 0 }}></span>
+
 <h2 id="buttons">Buttons</h2>
 
 <Canvas withSource="open">
   <Story id="design-css-framework--buttons" />
 </Canvas>
 
+<span id="story--design-css-framework--form" style={{ opacity: 0 }}></span>
+
 <h2 id="form">Form</h2>
 
 <Canvas>
   <Story id="design-css-framework--form" />
 </Canvas>
+
+<span id="story--design-css-framework--visibility" style={{ opacity: 0 }}></span>
 
 <h2 id="visibility">Visibility</h2>
 
@@ -262,15 +294,50 @@ Bulma Responsive helpers.
   <Story id="design-css-framework--visibility" />
 </Canvas>
 
+<span id="story--design-css-framework--flexbox" style={{ opacity: 0 }}></span>
+
 <h2 id="flexbox">Flexbox</h2>
 
-Our flexbox helper classes are based on the bulma framework
+Helpers for all Flexbox properties
 
-- [Bulma Documentation](https://bulma.io/documentation/helpers/flexbox-helpers/)
+Combined with `is-flex`, all of the Flexbox CSS properties are available as CSS helpers:
+
+- flex-direction
+- flex-wrap
+- justify-content
+- align-content
+- align-items
+- align-self
+- flex-grow
+- flex-shrink
+
+> These helpers are based on the [Bulma CSS Framework](https://bulma.io/documentation/helpers/flexbox-helpers/).
+
+### Usage
+
+This section has some examples how to use the provided flexbox css class helpers.
+
+#### Centered
+
+To center a child in a parent element use the following classes:
+
+- `is-flex` to enable display flex
+- `is-justify-content-center` to set the child horizontally to center
+- `is-align-items-center` to set the child vertically to center
 
 <Canvas withSource="open">
   <Story id="design-css-framework--flexbox" />
 </Canvas>
+
+#### Flexbox Spacing Gaps
+
+On top of the provided flexbox helpers of Bulma we added the flexbox gap classes `fb-*`.
+
+<Canvas withSource="open">
+  <Story id="design-css-framework--flexbox-gap" />
+</Canvas>
+
+<span id="story--design-css-framework--opacity" style={{ opacity: 0 }}></span>
 
 ## Opacity
 
@@ -280,15 +347,41 @@ Add opacity effect to an element with the class `has-opacity-**`.
   <Story id="design-css-framework--opacity" />
 </Canvas>
 
-<!-- {/* <Canvas withSource="none">
-  <bal-doc-app>{html(OpacityHelpers)}</bal-doc-app>
-</Canvas>
+# Installation
 
-<Source
-  language="html"
-  code={dedent`
-     ${OpacityHelpers}
-  `}
-/> -->
+The CSS Framework is provided as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-next-css).
+
+> **TIP**
+> The CSS Framework package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
+
+To install the CSS Framework directly to your project, run the following command:
+
+```bash
+npm install @baloise/design-system-next-css
+```
+
+After the installation include the provided CSS or Sass file into your project.
+
+Here is a basic HTML5 example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Framework - Example</title>
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-next-css/css/baloise-design-system.css" />
+  </head>
+  <body class="bal-app has-sticky-footer has-background-grey-0">
+    <main class="container py-4">
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Hello World</h1>
+      </section>
+    </main>
+  </body>
+</html>
+```
 
 <bal-doc-github link="/stories/design/css.docs.mdx"></bal-doc-github>

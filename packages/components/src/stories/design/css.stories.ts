@@ -537,13 +537,33 @@ Visibility.parameters = {
 export const Flexbox = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div class="has-background-blue p-4 is-flex is-justify-content-center is-align-items-center">
-  <p class="has-text-white">is-flex is-justify-content-center is-align-items-center</p>
+  template: `<div className="has-background-blue is-flex is-justify-content-center	is-align-items-center p-3">
+  <div className="has-background-danger p-3"></div>
 </div>`,
 })
 Flexbox.args = {}
 Flexbox.parameters = {
   ...sourceCode(Flexbox, Flexbox.args, {}),
+  controls: { exclude: [] },
+}
+
+export const FlexboxGap = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div className="has-background-danger is-flex fg-5">
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+</div>
+<div className="has-background-danger is-flex fg-8 mt-3">
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+</div>`,
+})
+FlexboxGap.args = {}
+FlexboxGap.parameters = {
+  ...sourceCode(FlexboxGap, FlexboxGap.args, {}),
   controls: { exclude: [] },
 }
 
