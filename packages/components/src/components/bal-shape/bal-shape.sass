@@ -1,3 +1,5 @@
+@use "sass:math"
+
 +block(shape)
   display: flex
   flex-wrap: wrap
@@ -12,8 +14,8 @@
     width: 198px
     height: 198px
   span
-    width: calc(100% / 3)
-    height: calc(100% / 3)
+    width: math.div(100%,3)
+    height: math.div(100%,3)
 
   // color variations
   +modifier(is-green)
