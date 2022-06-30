@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.15.1](https://github.com/baloise-incubator/design-system/compare/v10.15.0...v10.15.1) (2022-06-30)
+
+
+### Features
+
+* **bal-stage:** size prop added ([#146](https://github.com/baloise-incubator/design-system/issues/146)) ([ebbb922](https://github.com/baloise-incubator/design-system/commit/ebbb922b6c5808cead50854228e1469d55156cfb))
+
+
+### Bug Fixes
+
+* **tabs:** also accept boolean strings. Closes [#141](https://github.com/baloise-incubator/design-system/issues/141) ([#147](https://github.com/baloise-incubator/design-system/issues/147)) ([4f136f7](https://github.com/baloise-incubator/design-system/commit/4f136f72246f45544c42ba2c03c56089b6703e9e))
+
+
+
 ## [10.15.0](https://github.com/baloise-incubator/design-system/compare/v10.14.1...v10.15.0) (2022-06-30)
 
 
