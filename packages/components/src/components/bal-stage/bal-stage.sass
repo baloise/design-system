@@ -1,6 +1,5 @@
 .bal-stage
   position: relative
-
   .bal-stage-content
     position: relative
     display: block
@@ -21,6 +20,7 @@
           max-width: calc(100% - 120px)
         +desktop
           max-width: calc(100% - 198px)
+    // Color modifiers
     +modifier(is-blue)
       .bal-stage-body
         background: var(--bal-color-primary-5)
@@ -56,7 +56,6 @@
       &:hover
         opacity: .5
 
-  // !! Placeholder Styling - will be replaced when shape is implemented !! //
   .bal-stage-shape
     bal-shape
       position: absolute
@@ -64,6 +63,16 @@
       right: 1rem
       +desktop
         right: 2rem
+  // Size Modifiers
+  +modifier(is-large)
+    .bal-stage-content
+      .bal-stage-body
+        min-height: 375px
+        +tablet
+          min-height: 560px
+        +desktop
+          padding: 12rem 0
+          min-height: 840px
 
 .has-background-image
   .bal-stage-body
