@@ -3,6 +3,402 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.0](https://github.com/baloise-incubator/design-system/compare/v10.14.1...v10.15.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* **css:** add legacy vars ([8c0ce60](https://github.com/baloise-incubator/design-system/commit/8c0ce604a3d38b63e3fda77ed826b8319ea79fed))
+* **css:** add legacy vars ([7bba30c](https://github.com/baloise-incubator/design-system/commit/7bba30c44c8b088eb5fad9cadf54c01261922992))
+* **css:** add legacy vars and use math.div instead of calc ([3c5805e](https://github.com/baloise-incubator/design-system/commit/3c5805e5acb5562225c5b22a18f9b2edefeff0dd))
+* **form:** adjust border color and message position ([4bc8849](https://github.com/baloise-incubator/design-system/commit/4bc8849f4f7577863bc7139d0ea85c93eb67d3b1))
+* **grid:** use --columnGap again. Closes [#142](https://github.com/baloise-incubator/design-system/issues/142) ([b393feb](https://github.com/baloise-incubator/design-system/commit/b393feb47881e2967066b8d88ad4d30dcfdbbe22))
+* **grid:** use negative css var. Closes [#142](https://github.com/baloise-incubator/design-system/issues/142) ([da24b3e](https://github.com/baloise-incubator/design-system/commit/da24b3e32be02040dd98641d14524d4752ce320e))
+
+## [10.14.0](https://github.com/baloise-incubator/design-system/compare/v10.13.2...v10.14.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **bal-shape:** color name ([#137](https://github.com/baloise-incubator/design-system/issues/137)) ([96df2ce](https://github.com/baloise-incubator/design-system/commit/96df2cea24268a606e2cedf31c8b5aa68654fae5))
+* stencil fix minor version ([0fca259](https://github.com/baloise-incubator/design-system/commit/0fca2592b454a438b75242e17c7da6407bece189))
+
+### [10.13.2](https://github.com/baloise-incubator/design-system/compare/v10.13.1...v10.13.2) (2022-06-28)
+
+
+### Features
+
+* added cypress test ([678ff07](https://github.com/baloise-incubator/design-system/commit/678ff07b403100a188a08c4075623a726277aa2c))
+* **bal-product-slider:** updated the package lock file ([314a068](https://github.com/baloise-incubator/design-system/commit/314a06801785d704fe6e5e928577ac22d30e2387))
+* **slider:** updated package-lock files ([0e4af10](https://github.com/baloise-incubator/design-system/commit/0e4af103a88516f00eee726baff0f4a21e15151c))
+* **tokens:** add docs ([b6b486f](https://github.com/baloise-incubator/design-system/commit/b6b486f052aa0317021c31cc8fa0a4af949a9d29))
+* **tokens:** add docs ([a16c292](https://github.com/baloise-incubator/design-system/commit/a16c2921684cf71df11bb89de57a00a6734001ee))
+
+
+### Bug Fixes
+
+* **button:** add new sizes ([a044781](https://github.com/baloise-incubator/design-system/commit/a044781cd7263dc44d8093b5ae96a2fe2f992ac6))
+* **typo:** add new sizes ([217161f](https://github.com/baloise-incubator/design-system/commit/217161fb2c31a0c4ba45a7f247a5154945895b82))
+* **typo:** add new sizes ([0d9dc42](https://github.com/baloise-incubator/design-system/commit/0d9dc42d505622980b396ca68702cb1708046a69))
+
+### [10.13.1](https://github.com/baloise-incubator/design-system/compare/v10.13.0...v10.13.1) (2022-06-23)
+
+
+### Bug Fixes
+
+* **list:** adjust spacing native list. Closes [#115](https://github.com/baloise-incubator/design-system/issues/115) ([c176fec](https://github.com/baloise-incubator/design-system/commit/c176fec732bbec2c67681c9ad6931734339043e1))
+
+## [10.13.0](https://github.com/baloise-incubator/design-system/compare/v10.12.4...v10.13.0) (2022-06-22)
+
+
+### Features
+
+* move bal-data to sass ([15e89b8](https://github.com/baloise-incubator/design-system/commit/15e89b8703549a131ae90fad2f8eca753b46801f))
+
+
+### Bug Fixes
+
+* **accordion:** remove double line for links and buttons. Closes: [#127](https://github.com/baloise-incubator/design-system/issues/127) ([5c8e8c6](https://github.com/baloise-incubator/design-system/commit/5c8e8c6e93d04abdac121f24b3cdca36d3dec403))
+* **container-classes:** padding width added to content width ([7eae8bb](https://github.com/baloise-incubator/design-system/commit/7eae8bb71dea66744173549f60185a96d88a358e))
+* **form:** adjust form message position ([899ff7a](https://github.com/baloise-incubator/design-system/commit/899ff7a00c92224c48917572fd965841c1bf2d7a))
+* **testing:** update deps ([e55e44d](https://github.com/baloise-incubator/design-system/commit/e55e44ddc17b503f1a99275dd6070130cfc4bc81))
+* **testing:** update deps ([3c55606](https://github.com/baloise-incubator/design-system/commit/3c556061cc87f26cd971ee9669a1d46445ebc4dc))
+* **testing:** update deps ([9da47f5](https://github.com/baloise-incubator/design-system/commit/9da47f588acd266e55d1662b092c48f2e274ba94))
+
+### [10.12.4](https://github.com/baloise-incubator/design-system/compare/v10.12.1...v10.12.4) (2022-06-20)
+
+
+### Features
+
+* **form-gird:** add form grid component ([99de015](https://github.com/baloise-incubator/design-system/commit/99de015619b13c3dc4af98a41e6599c8c51708d1))
+* **input-stepper:** add increase and decrease event ([11a186c](https://github.com/baloise-incubator/design-system/commit/11a186c56c2b231a6530e58fff99f4ad58d3d578))
+* **slider:** added documentation and mobile realated changes ([3cd6843](https://github.com/baloise-incubator/design-system/commit/3cd6843c1b52eb2211f3013c9dfdd96cd5041f56))
+* **slider:** added initial slider component ([d2adc72](https://github.com/baloise-incubator/design-system/commit/d2adc72106709f3ce5226615bc32240e9037a5c7))
+* **slider:** changes to product slider ([dc62d7b](https://github.com/baloise-incubator/design-system/commit/dc62d7b1549ff9a795a489b84ee953e07e3fc4fe))
+
+
+### Bug Fixes
+
+* **#632:** enable X to be entered as last character in claim number ([26606b5](https://github.com/baloise-incubator/design-system/commit/26606b5bd19ce72128bbe14df61db53bd81727b7)), closes [#632](https://github.com/baloise-incubator/design-system/issues/632)
+* **button:** rename type to element-type closes [#75](https://github.com/baloise-incubator/design-system/issues/75) ([a7ebb57](https://github.com/baloise-incubator/design-system/commit/a7ebb57c2910a970319a78ebb97c5972b5232190))
+* **modal:** remove promise rejection when no overlay exists bc promise should only be rejected when an error appears during dismiss of an existing overlay ([15671a3](https://github.com/baloise-incubator/design-system/commit/15671a37ab9f99635cf4eedddfac617df78a0d8e))
+* **popover:** handlePopoverPrepare uses event now ([aaee8a8](https://github.com/baloise-incubator/design-system/commit/aaee8a8a8e59b7d923e560db65275ac462727621))
+* **select:** stop click event bubbeling ([df25293](https://github.com/baloise-incubator/design-system/commit/df25293c6cd3cf878bda08b8471c0ae77a3ca86e))
+* **testing:** do not assume that an element exist when it was used ([d1f516c](https://github.com/baloise-incubator/design-system/commit/d1f516cc28bd290b29a7eaeca1edfd27cc96cb92))
+* **vue:** add data-testid prop type ([b2c761a](https://github.com/baloise-incubator/design-system/commit/b2c761ad0a60ac75c0889c417e1bac32d216eb8d))
+
+### [10.12.1](https://github.com/baloise-incubator/design-system/compare/v10.12.0...v10.12.1) (2022-06-03)
+
+
+### Features
+
+* add event types for the main events ([fe13251](https://github.com/baloise-incubator/design-system/commit/fe1325158592f310def478a319756edd3740d8ac))
+
+
+### Bug Fixes
+
+* **field:** add css class for messages ([42f8d98](https://github.com/baloise-incubator/design-system/commit/42f8d98404af820fb359c6719febe03b599817cb))
+* **tabs:** adjust cypress tests ([62dc1ca](https://github.com/baloise-incubator/design-system/commit/62dc1cad83a757cf242c301a804e26abbc749453))
+* **tabs:** rebraned steps ([35132a8](https://github.com/baloise-incubator/design-system/commit/35132a812215a9677960f4584d5470e2755b67c2))
+* **typo:** pinterest icon typo fixed ([e3762c4](https://github.com/baloise-incubator/design-system/commit/e3762c4a373287f32e8cfcff2b4e62f7e5310ba4))
+* **vue:** adjust event emitting ([e6b7bdc](https://github.com/baloise-incubator/design-system/commit/e6b7bdc32bd3d11f3811f103d90f6dde3c9d3dc5))
+* **vue:** pass emitted events ([6287435](https://github.com/baloise-incubator/design-system/commit/6287435eb0aa5a4cedcfeec8203a53882514ad35))
+
+## [10.12.0](https://github.com/baloise-incubator/design-system/compare/v10.11.3...v10.12.0) (2022-05-24)
+
+
+### Features
+
+* **bal-hint:** use sass insted of scss and add bem ([fc36de4](https://github.com/baloise-incubator/design-system/commit/fc36de4815d456a16c53abd010ffc09d684f6598))
+* **bal-hint:** use variables in sass ([5f0a1ab](https://github.com/baloise-incubator/design-system/commit/5f0a1ab17472ae1d5bb6496e5baaac2100362c6f))
+* **bal-hint:** use variables in sass ([f4d2f81](https://github.com/baloise-incubator/design-system/commit/f4d2f813b1766f7dbada8e83dd92337809a4f18b))
+* **container:** add new classes for max-width ([71f85de](https://github.com/baloise-incubator/design-system/commit/71f85def8318e683ee88cbecf5cadf89710b1f05))
+* **css:** add sass mixins for space rules ([a160895](https://github.com/baloise-incubator/design-system/commit/a160895f8d019ffe5f149e3b8d101bff4a168b5e))
+
+
+### Bug Fixes
+
+* [#43](https://github.com/baloise-incubator/design-system/issues/43) fix policy format to be the one needed by aperto ([09180de](https://github.com/baloise-incubator/design-system/commit/09180de67fa6e15da466aff5539b395f7b4b4c0a))
+* **bal-field-hint:** fix position of the hint icon ([0d5e0c1](https://github.com/baloise-incubator/design-system/commit/0d5e0c1917700270ccebcf2952ed7858e086dfca))
+* **bal-input:** contract has now 10 digits and for contacts with 9 digits use offer-number mask ([293837b](https://github.com/baloise-incubator/design-system/commit/293837bca2a3a352990d8d86a51dd470d559b707))
+* **bal-upload:** name attribute as prop ([#64](https://github.com/baloise-incubator/design-system/issues/64)) ([7e8cd7e](https://github.com/baloise-incubator/design-system/commit/7e8cd7e28da20cef081ff22f481a831b2e60e8bd))
+* **field:** add missing required propset required to true as default and if false add optional label ([0c278fc](https://github.com/baloise-incubator/design-system/commit/0c278fc01c81eeb51728ecdf8ebe523b6de3bdc2))
+* **i18n:** adjust german ([1fd1c6a](https://github.com/baloise-incubator/design-system/commit/1fd1c6a7bc8d7c61ed556af77827a2ca2e7958c2))
+* **list:** adjust dark border color ([33fc5ed](https://github.com/baloise-incubator/design-system/commit/33fc5edbff4ba5c3a02493090330fdd31cbb5053))
+* **list:** make items more flexible with padding ([579dadc](https://github.com/baloise-incubator/design-system/commit/579dadc584915a67c39f912ec728994113d0e472))
+* **modal:** add css var --bal-modal-width ([3c5a92f](https://github.com/baloise-incubator/design-system/commit/3c5a92f8d1e48204c78fc1ba2cd3918d7aecdf99))
+* **modal:** add non breaking change ([e2b6db8](https://github.com/baloise-incubator/design-system/commit/e2b6db882ec101668890aa3dab2f53dbcc44cc74))
+* **platform:** breakpoints overlapping ([0e825a0](https://github.com/baloise-incubator/design-system/commit/0e825a0fa685cff8a7ec76209b8a28535b689a39))
+* **tabs:** add select on mobile ([e178995](https://github.com/baloise-incubator/design-system/commit/e1789957e05c54dad221beadb4560cc3351e48a5))
+* **testing:** change visit command to visitBalApp ([348bd4f](https://github.com/baloise-incubator/design-system/commit/348bd4f1925c9af100e3dc98cc57a3bcbd3e0415))
+* **tokens:** adjust spacing ([6951637](https://github.com/baloise-incubator/design-system/commit/695163743e0c3b6cb6fdc95c1dbec1b109fee2b9))
+* **typo:** remove invalid display-2 ([f225573](https://github.com/baloise-incubator/design-system/commit/f22557313fc2821530622733371acc2ff51417c3))
+* **typo:** remove invalid display-2 ([bac6b1a](https://github.com/baloise-incubator/design-system/commit/bac6b1a256259ed118bbb66cd9a9b004b5cac406))
+
+### [10.11.3](https://github.com/baloise-incubator/design-system/compare/v10.11.2...v10.11.3) (2022-05-19)
+
+### [10.11.2](https://github.com/baloise-incubator/design-system/compare/v10.10.9...v10.11.2) (2022-05-18)
+
+
+### Features
+
+* **bal-hint:** change file to sass ([44f8d3f](https://github.com/baloise-incubator/design-system/commit/44f8d3f5914a362b3b86fcca3d03664770c89006))
+* **field:** add weight prop ([4649a6c](https://github.com/baloise-incubator/design-system/commit/4649a6cca223a5d0b083b5742e6d439a57cf088e))
+* **modal:** add dismissAll function ([b4e935a](https://github.com/baloise-incubator/design-system/commit/b4e935aeab9cb283a68c2f32741b5468c5adf8d6))
+* **select:** add remote solution and adds starts with filter ([1db5cd7](https://github.com/baloise-incubator/design-system/commit/1db5cd7200072ac9dd3ea9a18cb4176be1d81d9a))
+
+
+### Bug Fixes
+
+* **button:** set flex 1 for expanded buttons ([1068613](https://github.com/baloise-incubator/design-system/commit/10686134f65d592d00be1927aa05710ed16e40e9))
+* **field:** only set field props when defined to child components ([117326b](https://github.com/baloise-incubator/design-system/commit/117326b5d7ba74a977b9d6601f36df5c2ba66484))
+* **form:** wait for next tick when setting focus ([a4d742e](https://github.com/baloise-incubator/design-system/commit/a4d742ee3c1611ddc2c1e31a542ba21b510ea123))
+* **select:** updateRawValue can handle objects ([33957af](https://github.com/baloise-incubator/design-system/commit/33957af3dd89ff3d1a067718fb3e7072a41cb26c))
+* **tag:** add relative position on bal-card element ([064623a](https://github.com/baloise-incubator/design-system/commit/064623abb918d1534c62f4c8abfb3d9110e912aa))
+* **testing:** adjust text and heading contains command ([d8035d3](https://github.com/baloise-incubator/design-system/commit/d8035d3c0da6ceb761c893839740b4c9bfb6bccd))
+* **testing:** adjust text and heading contains command ([646204c](https://github.com/baloise-incubator/design-system/commit/646204c956087861750e08e28685f17a88a1b6be))
+* **vue:** reduce payload ([8f36f8d](https://github.com/baloise-incubator/design-system/commit/8f36f8d10a7b1af438a7e2bc6e6ece84bedfcb05))
+* **vue:** reduce payload ([7a216a2](https://github.com/baloise-incubator/design-system/commit/7a216a276c4a061e93c7042724f1ea9a30f15328))
+* **vue:** register components ([854c353](https://github.com/baloise-incubator/design-system/commit/854c3530718609bbbbdb4bab3e2bc7d4371eca11))
+* **vue:** try to reduce payload ([b994637](https://github.com/baloise-incubator/design-system/commit/b994637382f3eb164540a217a0a12688ab6bdcac))
+* **vue:** use stencil output ([6815b8f](https://github.com/baloise-incubator/design-system/commit/6815b8f66645a84335ab34b5ac2f69c9d8a1c67e))
+* **vue:** use stencil output ([ab16e1a](https://github.com/baloise-incubator/design-system/commit/ab16e1a256e5af8bcc55dd2e274c4afa5a6cc527))
+
+### [10.10.9](https://github.com/baloise-incubator/design-system/compare/v10.0.0...v10.10.9) (2022-05-05)
+
+
+### Features
+
+* add contract-number mask in bal-input component ([e4ebdb6](https://github.com/baloise-incubator/design-system/commit/e4ebdb68d2dd6d08c37a0f706cc41dc60aee7a3c))
+* add format offer option for bal-input ([bec0c3e](https://github.com/baloise-incubator/design-system/commit/bec0c3e46fce102299fbef957e6259a782d923a7))
+* **badge:** add new component ([1be6bb6](https://github.com/baloise-incubator/design-system/commit/1be6bb6d347d821932ae760b9611acfde035c48e))
+* **badge:** add postion for button, tabs and card ([e250a99](https://github.com/baloise-incubator/design-system/commit/e250a994fc6c8cc9402f7685fd6e25c2e5d28301))
+* **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise-incubator/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
+* **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise-incubator/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
+* **card:** cards can have a hover effect and a selected background ([8cc7182](https://github.com/baloise-incubator/design-system/commit/8cc71827324566f82c78c1053345b2d95c87e88e))
+* **checkbox:** add new prop hidden ([2b3eb8d](https://github.com/baloise-incubator/design-system/commit/2b3eb8d8ec7d7cf8de5897de7ebfa6e33245a588))
+* **checkbox:** add vertical prop ([85fab4e](https://github.com/baloise-incubator/design-system/commit/85fab4e6dd3320ed4d2df5f61668491cf8e2e57e))
+* **checkbox:** group can act as a form control ([55b718f](https://github.com/baloise-incubator/design-system/commit/55b718fe7c493744976a28f3a61e3aa8aec638b4))
+* **close:** add new component ([9376e65](https://github.com/baloise-incubator/design-system/commit/9376e6541c7a138264d3d23db1b63a459f57916a))
+* **data:** add multiline prop ([cc93a3a](https://github.com/baloise-incubator/design-system/commit/cc93a3a37ea725c66ad9d00b14bcc7f76f182bb8))
+* export prop types ([6eb0939](https://github.com/baloise-incubator/design-system/commit/6eb093919f230434dec69c11b8b26380e46d8930))
+* **file-upload:** add events balFilesAdded and balFilesRemoved ([8c869d7](https://github.com/baloise-incubator/design-system/commit/8c869d77be3dbde2bbe1e23a28e5845d888ad87d))
+* **file-upload:** add loading state ([37e60dd](https://github.com/baloise-incubator/design-system/commit/37e60ddabdbf7f6262835f6d96cb8fc3fad98bd2))
+* **form:** add prop readonly ([03ff671](https://github.com/baloise-incubator/design-system/commit/03ff671b7ca90fa5da388a9554dd51ca8f6e5dcc))
+* **icon:** add new icon logout, youtube and web ([ec7bdbf](https://github.com/baloise-incubator/design-system/commit/ec7bdbf7a75c5928306d7f79f5e694f26d4db502))
+* **icon:** inline prop to set display inline-flex ([16f7865](https://github.com/baloise-incubator/design-system/commit/16f78657fd5ab10959e207cb45ca628aa77f03bd))
+* **icons:** add new settings icon ([f48ee52](https://github.com/baloise-incubator/design-system/commit/f48ee529f388a524ae6fc2008bead367f35e6439))
+* **input-group:** add new component ([368846f](https://github.com/baloise-incubator/design-system/commit/368846f0f2c7daafff45aa2b063046d1c84d7069))
+* **input-stepper:** add new component ([5b053c2](https://github.com/baloise-incubator/design-system/commit/5b053c299b5ba177d75d7b82221e295ea33d89c1))
+* **input:** only trigger change on user change events ([59913d3](https://github.com/baloise-incubator/design-system/commit/59913d365ad1e135a59662a775ddc7d70cdf1199))
+* **inputs:** adjust input events ([6d9e1c7](https://github.com/baloise-incubator/design-system/commit/6d9e1c79427b11935d2fffa1516797be176c753e))
+* **logo:** add new component ([525aef6](https://github.com/baloise-incubator/design-system/commit/525aef6fd260fa7200b258b253ac64b277821225)), closes [#484](https://github.com/baloise-incubator/design-system/issues/484)
+* **modal:** add space property ([103348d](https://github.com/baloise-incubator/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
+* **navbar:** support tabs and popover ([924db93](https://github.com/baloise-incubator/design-system/commit/924db93b6af64a83c31e823d7e771d9901408f6b))
+* **number-input:** create new component to improve type safty ([cf6a4db](https://github.com/baloise-incubator/design-system/commit/cf6a4db744496e22326652897d3402dac8ef3bed))
+* **popover:** add prop expanded to use the fullwidth ([9b4dfa6](https://github.com/baloise-incubator/design-system/commit/9b4dfa607af52402e7758ac0ef38b30224a4e20c))
+* **radio:** add vertical prop ([ed63b7e](https://github.com/baloise-incubator/design-system/commit/ed63b7ef8ca50f9b7d94a701677fd3cb54df7488))
+* **react:** add custom output ([53d6547](https://github.com/baloise-incubator/design-system/commit/53d6547763b262494b3b7051edc23b1f56b5f22e))
+* **select:** can be combined with icons and other inputs ([d35aff4](https://github.com/baloise-incubator/design-system/commit/d35aff4f989202060a2654b7149539238acef89a))
+* **select:** list of options in a typeahead can be uses as a proposal ([ac6f2f2](https://github.com/baloise-incubator/design-system/commit/ac6f2f2d8165b10ea5ad1f3deffea6b576da5483))
+* **snackbar:** button can also be a link ([57ba176](https://github.com/baloise-incubator/design-system/commit/57ba1763332d54b6d2667ba52a6ffe062b759bef))
+* **spacing:** add mt-auto ([82d71a0](https://github.com/baloise-incubator/design-system/commit/82d71a090613aa50f1754d848d0099fe44f82fe8))
+* **stage:** add new component ([7f07b50](https://github.com/baloise-incubator/design-system/commit/7f07b501bf1262d65daf53284b941a3fc7973282))
+* **stage:** add prop rounded to change the border-radius ([fb8a8e6](https://github.com/baloise-incubator/design-system/commit/fb8a8e63cb716c9832dc75997081a11ee5659d0f))
+* **style:** add opacity css helpers ([d3fd351](https://github.com/baloise-incubator/design-system/commit/d3fd3516f70bf83ab45d953b065d7e437ef55051))
+* **tabs:** can have a bottom border ([e4e6967](https://github.com/baloise-incubator/design-system/commit/e4e69675eba25b354d5d325978df56fd96ac11d4))
+* **tag:** add light variant and combination with the card component ([c0811df](https://github.com/baloise-incubator/design-system/commit/c0811dfe831c276af7578b47e2c203add73822cd))
+* **testing:** add command to find open modal ([7783760](https://github.com/baloise-incubator/design-system/commit/778376011042c3c192f0e7e30f551d1a31886d55))
+* **testing:** add legacy accessors ([82f3023](https://github.com/baloise-incubator/design-system/commit/82f3023b99320bea0f94e711e954ef06798f4341))
+* **testing:** add legacy mixins ([d1c1fc6](https://github.com/baloise-incubator/design-system/commit/d1c1fc65a854db8cee02eed0f8428969e63cf1c0))
+* **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise-incubator/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
+* **testing:** add new cypress commands ([86b05d9](https://github.com/baloise-incubator/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
+* update allowed hosts for footer links ([05fea7a](https://github.com/baloise-incubator/design-system/commit/05fea7a260390d1dbc802ca7b4aa956b69c97d00))
+* update dependencies ([9d76470](https://github.com/baloise-incubator/design-system/commit/9d764700d2174aff19a3e74b5694cc2364f5309a))
+
+
+### Bug Fixes
+
+* add es5 build to support no module scripts ([5daf384](https://github.com/baloise-incubator/design-system/commit/5daf38499626f55778c07d214d3dadfcb09b4303))
+* **angular:** add missing child components to the modules ([7e30eec](https://github.com/baloise-incubator/design-system/commit/7e30eecf612be3a6a5b6488a3c0d7527ce69959c))
+* **angular:** add missing child components to the modules ([942fb79](https://github.com/baloise-incubator/design-system/commit/942fb79c8ff2fb991d815f91ffee0bb95ea6756f))
+* **angular:** add missing child components to the modules ([a7ab7b1](https://github.com/baloise-incubator/design-system/commit/a7ab7b1ccecc90e169f4c1a7903dbe4374390c27))
+* **angular:** add missing child components to the modules ([f1beac1](https://github.com/baloise-incubator/design-system/commit/f1beac1820bd30cb0a9ce13331a6f5d3178e8212))
+* **angular:** add missing child components to the modules ([339a766](https://github.com/baloise-incubator/design-system/commit/339a76635a9e4f43808a88d6c48ad95118977a20))
+* **angular:** add new output ([7c196bf](https://github.com/baloise-incubator/design-system/commit/7c196bf14f780e3ce2ab77e2c8fec2d21e5f9c2f))
+* **angular:** add shared module to each component ([f6d7fa2](https://github.com/baloise-incubator/design-system/commit/f6d7fa2991473bf6a0bf1bf10cd433244ac11354))
+* **angular:** add shared module to each component ([3eca007](https://github.com/baloise-incubator/design-system/commit/3eca007fe0be1b4be040c2f1c49810d62622911b))
+* **angular:** create shared module to have access to the value accessors ([4c37480](https://github.com/baloise-incubator/design-system/commit/4c374802455ca68bf850944cfc4c71d5ffa27a0e))
+* **angular:** filter errorType key of the ng-error component ([54c0869](https://github.com/baloise-incubator/design-system/commit/54c0869c6886795bb9d9adb2a0be248300dc1b5b))
+* **angular:** update angular output lib ([2fd80a8](https://github.com/baloise-incubator/design-system/commit/2fd80a8f53acf48d8855c13410a69a8890a14d8a))
+* **angular:** update angular output lib ([222d792](https://github.com/baloise-incubator/design-system/commit/222d79278b302eb4eaaf476f34e8d5a94b8ddc2b))
+* attach controllers to the window ([f946e22](https://github.com/baloise-incubator/design-system/commit/f946e22ae077ab6068bdce926e46cf56f7b5c3e1))
+* **button-group:** use whole width ([a481f87](https://github.com/baloise-incubator/design-system/commit/a481f874c591e934833a049219933557b7a18f66))
+* **button:** adjust style for danger outlined button ([c901e47](https://github.com/baloise-incubator/design-system/commit/c901e479e8590c7c36a013f6fc914d32588b8c94))
+* **button:** adjust styles for info ([3a95df1](https://github.com/baloise-incubator/design-system/commit/3a95df1eeda6bf0856e050e8eb57d32bd8e92aa7))
+* **button:** enable custom content for square buttons ([ea1b7d6](https://github.com/baloise-incubator/design-system/commit/ea1b7d673a58a8f6b33e8571a058f8ae60f773f2))
+* **button:** hide slot content when square prop is set ([90ced0a](https://github.com/baloise-incubator/design-system/commit/90ced0ad8bba8a973f70c82deda808db6d91bd2c))
+* **button:** remove 100% width use flexbox instead ([653a2b6](https://github.com/baloise-incubator/design-system/commit/653a2b60e0a641809a3ab37908723c76ac6a49ff))
+* **button:** remove unused css for button in order to fix bal-badge ([3b61c18](https://github.com/baloise-incubator/design-system/commit/3b61c187e3c00a8efd0c742a69e30d8de5931f1d))
+* **card:** add auto height ([07c8f2d](https://github.com/baloise-incubator/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
+* **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise-incubator/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
+* **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise-incubator/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
+* **card:** remove inner p to simplify usage ([0a27202](https://github.com/baloise-incubator/design-system/commit/0a27202e3620fddc245a31eaab4a5fef595d0b08))
+* **card:** remove usless margin bottom ([d31f5a8](https://github.com/baloise-incubator/design-system/commit/d31f5a83f5b117f76c85772fed0da9ad34075726))
+* **card:** reset spacing of the batton-group ([4775a85](https://github.com/baloise-incubator/design-system/commit/4775a85f6111d6fd003d6998a8cc8bab8cedf874))
+* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise-incubator/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+* change spacing variables to use rem instead of px ([7b4a1b7](https://github.com/baloise-incubator/design-system/commit/7b4a1b723f6b98392cca95885379bb44b156babb))
+* **checkbox-group:** add missing readonly prop ([bd63b9a](https://github.com/baloise-incubator/design-system/commit/bd63b9aeb296896119c2788807c90e51aa1b62c0))
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise-incubator/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **checkbox:** remove opacity from hidden option ([ac49eae](https://github.com/baloise-incubator/design-system/commit/ac49eae3d32fbb93e6d60089bc93c6affc631dc8))
+* **close:** add button type ([b9fbfe8](https://github.com/baloise-incubator/design-system/commit/b9fbfe87bee21547df1efac90161a99b3a33cea3))
+* **config:** do not notify after initialize ([521cd21](https://github.com/baloise-incubator/design-system/commit/521cd211d50acd712331f850eecfab78f53a233a))
+* **data:** alignment horizontal ([cdfbf84](https://github.com/baloise-incubator/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise-incubator/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+* **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise-incubator/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
+* **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise-incubator/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
+* **datepicker:** adjust spacing to level 5 ([ca45062](https://github.com/baloise-incubator/design-system/commit/ca45062ec94d84cd9e9bfc22af1a5280263ff0a9))
+* **datepicker:** enable locale typing ([2ed6004](https://github.com/baloise-incubator/design-system/commit/2ed60043cf32238595b8a7515f75a8176f30f49e))
+* **datepicker:** improve mobile layout ([16d4e1f](https://github.com/baloise-incubator/design-system/commit/16d4e1f4b0a8f11dce56e7c17e95e408250aef2d))
+* **datepicker:** set week start to monday instead of sunday ([66ceaf0](https://github.com/baloise-incubator/design-system/commit/66ceaf00003a41f21cab49c32d9defa02d3897b0))
+* **field:** add more space for error message ([e09d751](https://github.com/baloise-incubator/design-system/commit/e09d751120751cf8e9deca319ad3eaa247f75271))
+* **field:** only add margin to addon button ([d840066](https://github.com/baloise-incubator/design-system/commit/d8400668d28a65581a492628b4a9dd909f45a8e7))
+* **file-upload:** adjust styles for field usage ([a3d95df](https://github.com/baloise-incubator/design-system/commit/a3d95dfa402be98245a377b536124f5cbf9a3d8c))
+* **file-upload:** label text breaks if to long ([4c66172](https://github.com/baloise-incubator/design-system/commit/4c66172b6a3d525a54b4f4add12939ec61de8c5b))
+* **font:** move css files to a css folder ([8e20378](https://github.com/baloise-incubator/design-system/commit/8e203782ae556b17b179409f5ca700e17eb32676))
+* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise-incubator/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+* **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise-incubator/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
+* **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise-incubator/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
+* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise-incubator/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+* **heading:** add missing styles for h6 ([067153b](https://github.com/baloise-incubator/design-system/commit/067153b79308bd923b1af2abae9eb32db4d9ea8b))
+* **heading:** center text with icons ([d1ae35a](https://github.com/baloise-incubator/design-system/commit/d1ae35aba5d36724b6537e309313c57aaa46ed95))
+* **heading:** set to display block ([9b831df](https://github.com/baloise-incubator/design-system/commit/9b831df9774335e7faf430e414e2219eba9ae41c))
+* **hint:** adjust spacing to level 5 ([5bc5f21](https://github.com/baloise-incubator/design-system/commit/5bc5f213cf42e5da741309edc00450198800b5bd))
+* **hint:** close label is now optional ([04cd2b3](https://github.com/baloise-incubator/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
+* **hint:** make subject on field hint optional ([6fe3eae](https://github.com/baloise-incubator/design-system/commit/6fe3eaeb3b4b729da9477de42332d302b1118705))
+* **i18n:** notify component always ([05217a8](https://github.com/baloise-incubator/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
+* if readonly do not react on user interactions ([aa844de](https://github.com/baloise-incubator/design-system/commit/aa844ded9c413cc806954b58ab3803209e70b9dc))
+* initialize for ssr ([b68a1ee](https://github.com/baloise-incubator/design-system/commit/b68a1ee694fbd3a5f637be2317900d3b65a4cac9))
+* **input-group:** add missing prop ([4a821dd](https://github.com/baloise-incubator/design-system/commit/4a821dd3041883f7f7e77d26c6b3bc38ebb95dcd))
+* **input-group:** set to width 100% ([44c37ff](https://github.com/baloise-incubator/design-system/commit/44c37ff3f0ec95af28ed16a1b8f0408ea83391a2))
+* **input-stepper:** switch buttons ([866b718](https://github.com/baloise-incubator/design-system/commit/866b718d55c727f2ad1147eccf4bf25899735e4e))
+* **input:** set placeholder color for readonly and disabled ([23606e1](https://github.com/baloise-incubator/design-system/commit/23606e1e6dc486da2c4d4781e660a6a8bcddb0b2))
+* **integration:** update lock ([12fbb96](https://github.com/baloise-incubator/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+* **list:** add large size ([55d6dcf](https://github.com/baloise-incubator/design-system/commit/55d6dcfeee47ece4944e0aa9ba3ba90697ac097b))
+* **list:** adjust spacing for content items ([50e21a0](https://github.com/baloise-incubator/design-system/commit/50e21a0f4d92912b663e4d436e7c48b8fa5e031b))
+* **list:** change role to list ([d3a6e14](https://github.com/baloise-incubator/design-system/commit/d3a6e14a00953724c6cd0092709f5aa26d11cecc))
+* **list:** rework flexbox ([0c422b5](https://github.com/baloise-incubator/design-system/commit/0c422b58da537a98ee4a4642bcd30d4710e9dacf))
+* **modal:** adjust spacing to level 5 ([59b8630](https://github.com/baloise-incubator/design-system/commit/59b86303fb4cf88a089a2ebe8ce1989d38660b27))
+* **modal:** adjust tesing commands ([00b0f7e](https://github.com/baloise-incubator/design-system/commit/00b0f7eaa50e7064d50567a7effe8926fef5b5c3))
+* **modal:** body and header can be used in nested elements ([dbda58b](https://github.com/baloise-incubator/design-system/commit/dbda58b47017250fc8b472d7e08e34fd5489861c))
+* **modal:** disable scroll on body ([b09bd81](https://github.com/baloise-incubator/design-system/commit/b09bd81bce780b38297f16011adb73d77d787680))
+* **modal:** hide close button when modal is not closable ([2c57eb9](https://github.com/baloise-incubator/design-system/commit/2c57eb93abd4cd2c8956fa367c8fdf5353def19a))
+* **modal:** on mobile buttons are at the bottom ([ff93cde](https://github.com/baloise-incubator/design-system/commit/ff93cde897fc687b208333d6e7c697f7436df6e1))
+* **modal:** reduce spacing header ([924236d](https://github.com/baloise-incubator/design-system/commit/924236d3d1a22fd678702c6d59f30b3bc1fc9bef))
+* **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise-incubator/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
+* **modal:** set space as optional ([de62b2d](https://github.com/baloise-incubator/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
+* **navbar:** remove ie11 support ([900d76d](https://github.com/baloise-incubator/design-system/commit/900d76df88c3a2f94d9a3a220b28e3e3c7b99dc6))
+* **notification:** adjust spacing to level 5 ([d61024c](https://github.com/baloise-incubator/design-system/commit/d61024c72480948956053878a1363a7c9cad4a46))
+* **pagination:** use bal-button ([540cc3f](https://github.com/baloise-incubator/design-system/commit/540cc3f40eb73e74deab91cce41f7c04e16bbacb))
+* **radio:** adjust alignment ([8cc37fa](https://github.com/baloise-incubator/design-system/commit/8cc37fa55281d1a6f5118f888cae8b22992a380a))
+* **radio:** enable boolean ([c834292](https://github.com/baloise-incubator/design-system/commit/c834292e524fe160d793453c034860d443ef13b5))
+* **react:** auto define components ([2060327](https://github.com/baloise-incubator/design-system/commit/2060327c97339ea7247f47aa3e3fa650a952a143))
+* **react:** change .mjs to .esm.js ([7d2f7e5](https://github.com/baloise-incubator/design-system/commit/7d2f7e549a1dcff250ef57c214c25ca83e58c634))
+* **react:** use fragment for inner child elements ([86d4986](https://github.com/baloise-incubator/design-system/commit/86d49867c5f14c2fbad0db0020d2c754589a76c8))
+* **select-button:** add support for mobile devices ([75647d2](https://github.com/baloise-incubator/design-system/commit/75647d2a8424e80b012650b78329f9d86aeedac6))
+* **select-button:** add vertical style ([26199e8](https://github.com/baloise-incubator/design-system/commit/26199e818656f8addca35757a2d9465a3e94be64))
+* **select-button:** adjust for long labels ([c4496c8](https://github.com/baloise-incubator/design-system/commit/c4496c8c38a7c51e0239b78392366945c59b2c2b))
+* **select:** basic select opens and closes on input click ([21aa983](https://github.com/baloise-incubator/design-system/commit/21aa98386cc74fb93e0dab750f62d438a057521b))
+* **select:** check if option is there ([1fc58d9](https://github.com/baloise-incubator/design-system/commit/1fc58d9e9ebd5cd586a96d9216592dbb56b7dd51))
+* **select:** enable form submitting ([0d56e7f](https://github.com/baloise-incubator/design-system/commit/0d56e7fa20e99f59d845d440184b7041b92bb2f8))
+* **select:** remove duplicated id ([f585255](https://github.com/baloise-incubator/design-system/commit/f585255dd29e7331890318ea4e8e162b53fd84a1))
+* **sheet:** adjust spacing to level 5 ([454ca7e](https://github.com/baloise-incubator/design-system/commit/454ca7e4704c32e283f36dfa58e0b2cc34e39032))
+* simplify theme customization ([e90e095](https://github.com/baloise-incubator/design-system/commit/e90e09514cfc1164ceb04f1e968ca864da38c2bb))
+* simplify theme customization ([1e66023](https://github.com/baloise-incubator/design-system/commit/1e6602388dd6881402edeee8201982d8634f4227))
+* **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise-incubator/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
+* **snackbar:** adjust spacing to level 5 ([bb63127](https://github.com/baloise-incubator/design-system/commit/bb63127b7fdb713824659dcad72ad4a200b4830b))
+* **stage:** center image ([2f36bdb](https://github.com/baloise-incubator/design-system/commit/2f36bdbccd1e6978dace9f465f248ea910d4beec))
+* **stage:** create angular component set ([0f14d51](https://github.com/baloise-incubator/design-system/commit/0f14d51c03d03d2672968291d181694bc64b3ddd))
+* **steps:** override clickable when disabled ([642406a](https://github.com/baloise-incubator/design-system/commit/642406adb80f990353e636b0ad8fa45e0a68b332))
+* **table:** set text align default to left and add spacing for buttons ([015a81e](https://github.com/baloise-incubator/design-system/commit/015a81e4c86cd9588538de20c0457fa0225d4e22))
+* **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise-incubator/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
+* **testing:** add missing hint commands ([547f420](https://github.com/baloise-incubator/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
+* **testing:** fix input selector for number-inputs ([dc643d7](https://github.com/baloise-incubator/design-system/commit/dc643d79d853db66d420db1c8e3ff415db4610fc))
+* **testing:** set waitForComponents to optional ([a1e33c7](https://github.com/baloise-incubator/design-system/commit/a1e33c79b69f87ff5327eac6218b6f5d28fc082e))
+* **testing:** wait until ce is ready ([a8f7531](https://github.com/baloise-incubator/design-system/commit/a8f7531f51938a5ee02eac1706e615e82a63d330))
+* trigger globalscript in bal-app ([6d0070a](https://github.com/baloise-incubator/design-system/commit/6d0070ac26b957642ae39abc2061507a89733b81))
+* try to fix file upload by adding passive:false to drag and drop events ([62c8390](https://github.com/baloise-incubator/design-system/commit/62c839037e184f330f6a02eeb2ad937e79fc7819))
+* **typography:** use rem instead of px, add mobile size variant ([0f5ed12](https://github.com/baloise-incubator/design-system/commit/0f5ed128794419b1a52bdeff69c79d89f5a48479))
+* use default cursor for disabled controls ([2668fb5](https://github.com/baloise-incubator/design-system/commit/2668fb51d74b8da8c6172e889e6462083ee5a528))
+* use utils from web-app-utils ([ef7432c](https://github.com/baloise-incubator/design-system/commit/ef7432c02cec65a6ea09a63ac8869e7f919f83bf))
+* **viewport:** set tablet breakpoint to 768px ([dd4e0b6](https://github.com/baloise-incubator/design-system/commit/dd4e0b618abd6a5d7a501124f03d567167c9ae98))
+
+## [10.0.0](https://github.com/baloise-incubator/design-system/compare/v9.2.2...v10.0.0) (2022-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **checkbox:** use checked as the new value property
+
+### Features
+
+* **field:** add hint props to bal-flield-hint ([a4ee057](https://github.com/baloise-incubator/design-system/commit/a4ee057abd1261e136997add251ebfeb58b600e8))
+* **footer:** display language selection ([7cf914f](https://github.com/baloise-incubator/design-system/commit/7cf914f69a88b0f0bb4960c90efd1bcb059f11c9))
+* **footer:** make language selection hideable ([7bd9926](https://github.com/baloise-incubator/design-system/commit/7bd9926dbb35ba50722d24a6b75bfbfbd6048d5c))
+* **footer:** start to include language links ([4706e85](https://github.com/baloise-incubator/design-system/commit/4706e85a2b38e7faca90d6bd5dd9b319c127a729))
+* **i18n:** onBalConfigChange ([87af016](https://github.com/baloise-incubator/design-system/commit/87af0165b49352befbc26b68cd29239ac4f5c514))
+* **list:** add native ul & ol styles ([3f3f375](https://github.com/baloise-incubator/design-system/commit/3f3f375f11baa0cb431504657baa2df041f851a4))
+
+
+### Bug Fixes
+
+* **button:** adjust spacing for mobile ([ec73ebd](https://github.com/baloise-incubator/design-system/commit/ec73ebd97910470788dae08497ebc5c32dd71bad))
+* **checkbox:** enable grouped checkboxes ([b004c35](https://github.com/baloise-incubator/design-system/commit/b004c350587872c08e8619a1bc2dc5f7ebf58e8b)), closes [#497](https://github.com/baloise-incubator/design-system/issues/497)
+* **heading:** enable visual headings ([cc27093](https://github.com/baloise-incubator/design-system/commit/cc270937f90917226d6adc1ea3a6ca247cb4a03d))
+* **i18n:** fix typo in updateBalLanguage ([e3612de](https://github.com/baloise-incubator/design-system/commit/e3612deaa30ade446dd278e42ccdacd2f940a6bc))
+* **input:** always return the raw value ([50294d2](https://github.com/baloise-incubator/design-system/commit/50294d2b8d9280b1b6b2ff8425f5d6d5f875e364))
+* **vue:** improve exports ([be51095](https://github.com/baloise-incubator/design-system/commit/be51095ac1032fffbdf492cbbc96f3aaf34bba42))
+
+### [9.2.2](https://github.com/baloise-incubator/design-system/compare/v9.0.7...v9.2.2) (2022-02-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **angular:** rename core module and need to add the used component modules.
+
+### Features
+
+* **angular:** component based modules instead of one ([5395696](https://github.com/baloise-incubator/design-system/commit/5395696d3d659928a67bebfff216615a9bf6a98a))
+
+
+### Bug Fixes
+
+* **form:** improve invalid style ([cf9902f](https://github.com/baloise-incubator/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
+* **form:** improve sync of props ([98db4a1](https://github.com/baloise-incubator/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
+* **navbar:** remove margin bottom ([a22a072](https://github.com/baloise-incubator/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
+* **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise-incubator/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
+
+### [9.0.7](https://github.com/baloise-incubator/design-system/compare/v9.0.6...v9.0.7) (2022-01-27)
+
+
+### Features
+
+* add internationalization ([d50e3ca](https://github.com/baloise-incubator/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
+* **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise-incubator/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
+
+
+### Bug Fixes
+
+* **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise-incubator/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise-incubator/design-system/issues/475)
+* **data:** adjust mobile view ([9e3921f](https://github.com/baloise-incubator/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise-incubator/design-system/issues/461) [#477](https://github.com/baloise-incubator/design-system/issues/477)
+* **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise-incubator/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise-incubator/design-system/issues/445)
+* **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise-incubator/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise-incubator/design-system/issues/476)
+* **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise-incubator/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise-incubator/design-system/issues/386)
+
+### 9.0.6 (2022-01-25)
+
+
+
 ### [10.14.1](https://github.com/baloise-incubator/design-system/compare/v10.14.0...v10.14.1) (2022-06-29)
 
 

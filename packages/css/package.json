@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-css",
-  "version": "10.14.1",
+  "version": "10.15.0",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-fonts": "10.14.1",
-    "@baloise/design-system-next-tokens": "10.14.1"
+    "@baloise/design-system-next-fonts": "10.15.0",
+    "@baloise/design-system-next-tokens": "10.15.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
