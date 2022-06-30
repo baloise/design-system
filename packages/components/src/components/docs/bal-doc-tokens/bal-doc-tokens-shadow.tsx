@@ -16,7 +16,6 @@ export class DocTokensBorderShadow implements ComponentInterface {
         value: shadow[k],
       })
     }
-    console.log(sizes)
     return (
       <Host>
         <bal-doc-app>

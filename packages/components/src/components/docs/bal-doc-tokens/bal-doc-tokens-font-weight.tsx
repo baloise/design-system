@@ -11,12 +11,6 @@ export class DocTokensFontWeight implements ComponentInterface {
     const typography = tokens.typography as any
     const weights = []
 
-    // weights: {
-    //   bold: 700,
-    //   regular: 400,
-    //   light: 300,
-    // },
-
     for (const k in typography.weights) {
       weights.push({
         name: k,

@@ -30,7 +30,6 @@ export class DocTokensBorder implements ComponentInterface {
         })
       }
     }
-    console.log(sizes)
     return (
       <Host>
         <bal-doc-app>

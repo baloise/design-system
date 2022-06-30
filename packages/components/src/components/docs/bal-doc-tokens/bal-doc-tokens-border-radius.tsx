@@ -16,7 +16,6 @@ export class DocTokensBorderRadius implements ComponentInterface {
         value: radius[k],
       })
     }
-    console.log(sizes)
     return (
       <Host>
         <bal-doc-app>

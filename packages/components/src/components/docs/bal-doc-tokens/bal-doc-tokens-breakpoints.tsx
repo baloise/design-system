@@ -31,7 +31,6 @@ export class DocTokensBreakpoints implements ComponentInterface {
               <tr>
                 <td style={{ verticalAlign: 'top' }}>
                   <p class="is-bold is-size-large mt-0 mb-2">mobile</p>
-                  {/* <p class="m-0 is-size-small"></p> */}
                 </td>
                 <td style={{ verticalAlign: 'top' }}></td>
                 <td style={{ verticalAlign: 'top' }}>
@@ -42,7 +41,6 @@ export class DocTokensBreakpoints implements ComponentInterface {
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="is-bold is-size-large mt-0 mb-2">{c.name}</p>
-                    {/* <p class="m-0 is-size-small"></p> */}
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">

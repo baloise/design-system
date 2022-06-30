@@ -6,12 +6,6 @@ import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
 export class DocTokensFont implements ComponentInterface {
   @Element() el!: HTMLElement
 
-  // weights: {
-  //   bold: 700,
-  //   regular: 400,
-  //   light: 300,
-  // },
-
   render() {
     return (
       <Host>
