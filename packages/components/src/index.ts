@@ -8,6 +8,7 @@ export * from './config'
  */
 export { Components, JSX } from './components'
 export { Props } from './props'
+export { Events } from './events'
 
 /**
  * Types

@@ -1,5 +1,5 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Props } from '../props'
+import { Props } from '../types'
 
 export interface BalNoticeOptions {
   message: string
