@@ -1842,7 +1842,7 @@ export namespace Components {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical": boolean | 'mobile' | 'tablet';
+        "vertical": Props.BalTabsVertical;
     }
     interface BalTag {
         /**
@@ -4814,7 +4814,7 @@ declare namespace LocalJSX {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical"?: boolean | 'mobile' | 'tablet';
+        "vertical"?: Props.BalTabsVertical;
     }
     interface BalTag {
         /**

@@ -92,6 +92,7 @@ export namespace Props {
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
+  export type BalTabsVertical = boolean | 'mobile' | 'tablet'
 
   export type BalTagColor =
     | 'blue'
