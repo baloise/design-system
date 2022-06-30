@@ -16,7 +16,7 @@ bal-select,
     display: flex;
     border-width: 2px;
     border-style: solid;
-    border-color: $grey-2;
+    border-color: var(--bal-color-border-normal);
     border-radius: $radius;
     background: $white;
     font-size: $size-normal;

@@ -149,7 +149,6 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
     }
   }
 
-  console.log('render line')
   return (
     <div
       class={{

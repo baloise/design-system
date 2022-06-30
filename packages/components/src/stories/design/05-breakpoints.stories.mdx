@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Design/Platform"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Platform
+
+`isPlatform` returns a boolean if the Design System is running in the given **device**.
+
+```typescript
+import { isPlatform } from '@baloise/design-system-next-components'
+
+isPlatform(window, 'mobile')
+isPlatform(window, 'tablet')
+isPlatform(window, 'desktop')
+isPlatform(window, 'widescreen')
+isPlatform(window, 'fullhd')
+```
+
+<bal-doc-github link="/stories/design/05-breakpoints.stories.mdx"></bal-doc-github>

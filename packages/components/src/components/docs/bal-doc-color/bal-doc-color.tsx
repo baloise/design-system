@@ -12,12 +12,9 @@ export class BalDocColor {
   @Prop() color = ''
   @Prop() subject = ''
   @Prop() description = ''
-  @Prop() scssVars = ''
-  @Prop() hexVars = ''
 
   render() {
     const subject = this.subject !== '' ? this.subject : this.color
-    const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
     return (
       <Host class="bal-app">
         <div class="has-radius-large has-shadow">
@@ -36,8 +33,6 @@ export class BalDocColor {
             <bal-text size="small" style={{ textAlign: 'center' }}>
               {this.description}
             </bal-text>
-            <p class="has-text-grey-5 is-small m-0">{this.hexVars}</p>
-            <p class="has-text-grey-5 is-small m-0">{scssVars}</p>
           </div>
         </div>
       </Host>

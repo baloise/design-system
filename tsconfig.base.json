@@ -6,6 +6,7 @@
     "allowUnreachableCode": false,
     "declaration": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
     "esModuleInterop": true,
