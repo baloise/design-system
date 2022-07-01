@@ -39,7 +39,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['name']
+const excludedControls = ['name', 'hidden']
 
 export const Basic = args => ({
   components: {
