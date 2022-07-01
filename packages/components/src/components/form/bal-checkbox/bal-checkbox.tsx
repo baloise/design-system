@@ -199,7 +199,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           ...block.class(),
           ...block.modifier(flatClass).class(hasFlat),
           ...block.modifier(disabledClass).class(hasDisabled),
-          'is-focused': this.hasFocus, // remove it
         }}
         {...this.inheritedAttributes}
       >
@@ -207,7 +206,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elInput.class(),
             ...elInput.modifier(disabledClass).class(hasDisabled),
-            'is-disabled-hidden': this.hidden, // remove class -- select needs to work when hidden prop is on
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
@@ -229,7 +227,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elLabel.class(),
             ...elLabel.modifier(disabledClass).class(hasDisabled),
-            'option-label': true, // ??
+            // 'option-label': true, // not used
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
@@ -237,9 +235,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           <bal-text
             inline
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            class={{
-              'has-padding-left': !this.labelHidden, // ??
-            }}
+            class={
+              {
+                // 'has-padding-left': !this.labelHidden, // not used in checkbox, only in radio sass
+              }
+            }
           >
             <slot></slot>
           </bal-text>
