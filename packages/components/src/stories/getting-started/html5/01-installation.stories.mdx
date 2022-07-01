@@ -26,7 +26,7 @@ npm init
 Now lets install the Baloise Design System.
 
 ```bash
-npm install @baloise/design-system-components --save
+npm install @baloise/design-system-next-components --save
 ```
 
 After that we create a `index.html` file and add the following 2 references to your `<head></head>`.
@@ -43,16 +43,16 @@ Add the `bal-app` to your root element. Within this component we are able to use
     <title>Baloise Design System</title>
     <link
       rel="stylesheet"
-      href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
+      href="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.css"
     />
 
     <script
       type="module"
-      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+      src="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.esm.js"
     ></script>
     <script
       nomodule
-      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+      src="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.js"
     ></script>
   </head>
   <body>
@@ -85,7 +85,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
 
 ## Install Fonts
 
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+The font package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
 
@@ -100,7 +100,7 @@ Place the downloaded fonts into a folder in the public area. Configure the path 
 ```scss
 // change scss variable before importing the design system
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 
 // add custom application styles here after the design system
 ```
@@ -113,7 +113,7 @@ Then we add the defined script copy:fonts in our postinstall script. Every time 
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
 }
 ```
 
@@ -126,23 +126,23 @@ An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
 
 > **TIP**
 > It is recommended to use the version directly and not the latest version to avoid incoming breaking changes.
-> Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts@10/lib/fonts.cdn.css`
+> Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-next-fonts@10/lib/fonts.cdn.css`
 
 Add the following 4 references to your `<head></head>`
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
+  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-components/dist/design-system-components/design-system-components.css"
 />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-fonts/lib/fonts.cdn.css" />
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-components/dist/design-system-components/design-system-components.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```
 

@@ -5,11 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
+import { Events, Props } from "./types";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -208,6 +209,10 @@ export namespace Components {
          */
         "selected": boolean;
         /**
+          * Defines the space of the card content.
+         */
+        "space": Props.BalCardSpace;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -320,6 +325,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -380,6 +389,10 @@ export namespace Components {
         "horizontal": boolean;
     }
     interface BalDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
         /**
           * If `true` the item gets a lighter font color.
          */
@@ -516,9 +529,7 @@ export namespace Components {
         "background": boolean;
         "color": string;
         "description": string;
-        "hexVars": string;
         "inverted": boolean;
-        "scssVars": string;
         "subject": string;
     }
     interface BalDocDownload {
@@ -555,6 +566,24 @@ export namespace Components {
         "color": string;
     }
     interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
     }
     interface BalDocUsage {
     }
@@ -719,6 +748,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Overrides the default subtitle file size
          */
         "subTitle"?: (file: File) => string;
@@ -740,6 +773,11 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size": Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -1325,6 +1363,8 @@ export namespace Components {
          */
         "scrollable": number;
     }
+    interface BalProductSlider {
+    }
     interface BalRadio {
         /**
           * If `true`, the radio is selected.
@@ -1362,6 +1402,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -1488,6 +1532,10 @@ export namespace Components {
          */
         "remote": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Defines the height of the popover list.
          */
         "scrollable": number;
@@ -1525,6 +1573,20 @@ export namespace Components {
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value"?: string;
+    }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color": Props.BalShapeColor;
+        /**
+          * The shape rotation
+         */
+        "rotation"?: Props.BalShapeRotation;
+        /**
+          * The shape variation
+         */
+        "variation": Props.BalShapeVariation;
     }
     interface BalSheet {
     }
@@ -1646,6 +1708,10 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
+          * class to set the container width
+         */
+        "containerClass": string;
+        /**
           * If true the Baloise Shape is set
          */
         "hasShape": boolean;
@@ -1657,6 +1723,10 @@ export namespace Components {
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
+        /**
+          * Defines size of the stage
+         */
+        "size": Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
@@ -1776,7 +1846,7 @@ export namespace Components {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical": boolean | 'mobile' | 'tablet';
+        "vertical": Props.BalTabsVertical;
     }
     interface BalTag {
         /**
@@ -2271,6 +2341,60 @@ declare global {
         prototype: HTMLBalDocTabsElement;
         new (): HTMLBalDocTabsElement;
     };
+    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderElement: {
+        prototype: HTMLBalDocTokensBorderElement;
+        new (): HTMLBalDocTokensBorderElement;
+    };
+    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBreakpointsElement: {
+        prototype: HTMLBalDocTokensBreakpointsElement;
+        new (): HTMLBalDocTokensBreakpointsElement;
+    };
+    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensColorsElement: {
+        prototype: HTMLBalDocTokensColorsElement;
+        new (): HTMLBalDocTokensColorsElement;
+    };
+    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontElement: {
+        prototype: HTMLBalDocTokensFontElement;
+        new (): HTMLBalDocTokensFontElement;
+    };
+    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontSizesElement: {
+        prototype: HTMLBalDocTokensFontSizesElement;
+        new (): HTMLBalDocTokensFontSizesElement;
+    };
+    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontWeightElement: {
+        prototype: HTMLBalDocTokensFontWeightElement;
+        new (): HTMLBalDocTokensFontWeightElement;
+    };
+    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensRadiusElement: {
+        prototype: HTMLBalDocTokensRadiusElement;
+        new (): HTMLBalDocTokensRadiusElement;
+    };
+    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensShadowElement: {
+        prototype: HTMLBalDocTokensShadowElement;
+        new (): HTMLBalDocTokensShadowElement;
+    };
+    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingElement: {
+        prototype: HTMLBalDocTokensSpacingElement;
+        new (): HTMLBalDocTokensSpacingElement;
+    };
     interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
     }
     var HTMLBalDocUsageElement: {
@@ -2324,6 +2448,18 @@ declare global {
     var HTMLBalFooterElement: {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
+    };
+    interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
+    }
+    var HTMLBalFormColElement: {
+        prototype: HTMLBalFormColElement;
+        new (): HTMLBalFormColElement;
+    };
+    interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
+    }
+    var HTMLBalFormGridElement: {
+        prototype: HTMLBalFormGridElement;
+        new (): HTMLBalFormGridElement;
     };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
@@ -2517,6 +2653,12 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalProductSliderElement extends Components.BalProductSlider, HTMLStencilElement {
+    }
+    var HTMLBalProductSliderElement: {
+        prototype: HTMLBalProductSliderElement;
+        new (): HTMLBalProductSliderElement;
+    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -2540,6 +2682,12 @@ declare global {
     var HTMLBalSelectOptionElement: {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
+    };
+    interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
+    }
+    var HTMLBalShapeElement: {
+        prototype: HTMLBalShapeElement;
+        new (): HTMLBalShapeElement;
     };
     interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
     }
@@ -2683,6 +2831,15 @@ declare global {
         "bal-doc-shades": HTMLBalDocShadesElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
+        "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
+        "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
+        "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
+        "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
+        "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
+        "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
+        "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
+        "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
+        "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
         "bal-doc-usage": HTMLBalDocUsageElement;
         "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
@@ -2692,6 +2849,8 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form-col": HTMLBalFormColElement;
+        "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -2724,10 +2883,12 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-product-slider": HTMLBalProductSliderElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
@@ -2769,7 +2930,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: BalAccordionCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -2953,6 +3114,10 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
         /**
+          * Defines the space of the card content.
+         */
+        "space"?: Props.BalCardSpace;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -3063,7 +3228,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value property has changed.
          */
-        "onBalChange"?: (event: BalCheckboxCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalCheckboxCustomEvent<Events.BalCheckboxChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3076,6 +3241,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -3097,7 +3266,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<any[]>) => void;
+        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * If `true`, the user cannot interact with the radios.
          */
@@ -3132,6 +3301,10 @@ declare namespace LocalJSX {
         "horizontal"?: boolean;
     }
     interface BalDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
         /**
           * If `true` the item gets a lighter font color.
          */
@@ -3229,7 +3402,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: BalDatepickerCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3241,7 +3414,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalDatepickerCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerInputDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -3276,9 +3449,7 @@ declare namespace LocalJSX {
         "background"?: boolean;
         "color"?: string;
         "description"?: string;
-        "hexVars"?: string;
         "inverted"?: boolean;
-        "scssVars"?: string;
         "subject"?: string;
     }
     interface BalDocDownload {
@@ -3315,6 +3486,24 @@ declare namespace LocalJSX {
         "color"?: string;
     }
     interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
     }
     interface BalDocUsage {
     }
@@ -3491,6 +3680,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
           * Overrides the default subtitle file size
          */
         "subTitle"?: (file: File) => string;
@@ -3512,6 +3705,11 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size"?: Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -3674,7 +3872,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalInputCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalInputCustomEvent<Events.BalInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3686,7 +3884,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalInputCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalInputCustomEvent<Events.BalInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3770,11 +3968,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalInputStepperCustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has decreased.
+         */
+        "onBalDecrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has increased.
+         */
+        "onBalIncrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: BalInputStepperCustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperInputDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4010,7 +4216,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalNumberInputCustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4022,7 +4228,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalNumberInputCustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -4086,7 +4292,7 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: BalPopoverCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
           * If `true` the field spans over the whole width.
@@ -4110,6 +4316,8 @@ declare namespace LocalJSX {
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+    }
+    interface BalProductSlider {
     }
     interface BalRadio {
         /**
@@ -4151,7 +4359,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalRadioCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalRadioCustomEvent<Events.BalRadioChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4164,6 +4372,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -4189,7 +4401,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalRadioGroupCustomEvent<number | string | boolean>) => void;
+        "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4263,7 +4475,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: BalSelectCustomEvent<string | string[] | undefined>) => void;
+        "onBalChange"?: (event: BalSelectCustomEvent<Events.BalSelectChangeDetail>) => void;
         /**
           * Emitted when the input got clicked.
          */
@@ -4292,6 +4504,10 @@ declare namespace LocalJSX {
           * If `true` the filtering is done outside the component.
          */
         "remote"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -4322,6 +4538,20 @@ declare namespace LocalJSX {
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value"?: string;
+    }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color"?: Props.BalShapeColor;
+        /**
+          * The shape rotation
+         */
+        "rotation"?: Props.BalShapeRotation;
+        /**
+          * The shape variation
+         */
+        "variation"?: Props.BalShapeVariation;
     }
     interface BalSheet {
     }
@@ -4361,7 +4591,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalSliderCustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: BalSliderCustomEvent<Events.BalSliderChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4459,6 +4689,10 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
+          * class to set the container width
+         */
+        "containerClass"?: string;
+        /**
           * If true the Baloise Shape is set
          */
         "hasShape"?: boolean;
@@ -4470,6 +4704,10 @@ declare namespace LocalJSX {
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
+        /**
+          * Defines size of the stage
+         */
+        "size"?: Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
@@ -4584,7 +4822,7 @@ declare namespace LocalJSX {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical"?: boolean | 'mobile' | 'tablet';
+        "vertical"?: Props.BalTabsVertical;
     }
     interface BalTag {
         /**
@@ -4606,7 +4844,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input got clicked.
          */
-        "onBalCloseClick"?: (event: BalTagCustomEvent<MouseEvent>) => void;
+        "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
         /**
           * The size of the tag element
          */
@@ -4700,7 +4938,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: BalTextareaCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalTextareaCustomEvent<Events.BalTextareaChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4712,7 +4950,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalTextareaCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalTextareaCustomEvent<Events.BalTextareaInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -4825,6 +5063,15 @@ declare namespace LocalJSX {
         "bal-doc-shades": BalDocShades;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tabs": BalDocTabs;
+        "bal-doc-tokens-border": BalDocTokensBorder;
+        "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
+        "bal-doc-tokens-colors": BalDocTokensColors;
+        "bal-doc-tokens-font": BalDocTokensFont;
+        "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
+        "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
+        "bal-doc-tokens-radius": BalDocTokensRadius;
+        "bal-doc-tokens-shadow": BalDocTokensShadow;
+        "bal-doc-tokens-spacing": BalDocTokensSpacing;
         "bal-doc-usage": BalDocUsage;
         "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
@@ -4834,6 +5081,8 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form-col": BalFormCol;
+        "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -4866,10 +5115,12 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-product-slider": BalProductSlider;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-shape": BalShape;
         "bal-sheet": BalSheet;
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
@@ -4927,6 +5178,15 @@ declare module "@stencil/core" {
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
+            "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
+            "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
+            "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
+            "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
+            "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
+            "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
+            "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
+            "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
+            "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
             "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
             "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
@@ -4936,6 +5196,8 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
+            "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
@@ -4968,10 +5230,12 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-product-slider": LocalJSX.BalProductSlider & JSXBase.HTMLAttributes<HTMLBalProductSliderElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;

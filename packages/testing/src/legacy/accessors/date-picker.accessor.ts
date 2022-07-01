@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 import { Accessor, createAccessor, Mixin, MixinContext } from './mixins/mixins'
-import { format } from '@baloise/web-app-utils'
 
 export interface DatePickerAccessorType {
   write(date: string): DatePickerAccessorType
@@ -41,7 +40,10 @@ export const DatePickerOpenableMixin: Mixin = <T>({ selector, creator }: MixinCo
 
 export const DatePickerShouldHaveValueAssertableMixin: Mixin = ({ selector, creator }) => ({
   shouldHaveValue: (date: Date) => {
-    cy.get(selector).should('have.value', format('de-CH', date))
+    const day = `${date.getDate()}`
+    const month = `${date.getDate()}`
+    const pad = (text: string) => (text.length === 1 ? `0${text}` : text)
+    cy.get(selector).should('have.value', `${pad(day)}.${pad(month)}.${date.getFullYear()}`)
     return creator()
   },
 })

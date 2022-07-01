@@ -19,7 +19,7 @@ const Template = args => ({
 export const Basic = Template.bind({})
 Basic.args = {
   name: 'info-circle',
-  size: 'xlarge',
+  size: 'large',
   color: 'primary',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
@@ -29,7 +29,7 @@ const svg = `<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path f
 export const SVG = Template.bind({})
 SVG.args = {
   svg,
-  size: 'xlarge',
+  size: 'large',
   color: 'primary',
 }
 SVG.parameters = { ...component.sourceCode(SVG) }

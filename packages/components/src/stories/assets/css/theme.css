@@ -383,9 +383,13 @@ a.feature h2 img {
   vertical-align: middle;
 }
 
-a.sbdocs.sbdocs-a,
+a.sbdocs.sbdocs-a:not(.button),
 p.sbdocs.sbdocs-p,
 li.sbdocs.sbdocs-li {
   font-size: 16px;
   line-height: 32px;
+}
+
+.link-list > .sbdocs-a {
+  text-decoration: none;
 }

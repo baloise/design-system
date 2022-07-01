@@ -35,6 +35,15 @@ export interface BalComponentStoryType {
   sourceCode(variant: (args: any) => { template: string }): any
 }
 
+export const sourceCode = (
+  variant: (args: any) => { template: string; components: any },
+  argTypes: any,
+  args: any,
+): { docs: { source: { code: string } } } => {
+  const template = variant({}).template
+  return withSourceCode(template, argTypes, { ...args, ...(variant as any).args }, [])
+}
+
 export const BalComponentStory = (story: BalComponentStoryOptions): BalComponentStoryType => {
   const argTypes = {
     ...stencilArgType(story.component),

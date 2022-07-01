@@ -1,7 +1,7 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../helpers/helpers'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
+import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
@@ -48,7 +48,7 @@ export class Tag {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<MouseEvent>
+  @Event() balCloseClick!: EventEmitter<Events.BalTagCloseClickDetail>
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])

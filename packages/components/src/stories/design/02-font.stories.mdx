@@ -1,0 +1,124 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+
+<Meta
+  title="Design/Font"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    status: { type: 'stable' },
+  }}
+/>
+
+<bal-doc-banner subtitle="Design">Font</bal-doc-banner>
+
+<bal-doc-lead>The Baloise Design System uses a custom font for headings and body texts.</bal-doc-lead>
+
+## Usage
+
+Key values of the font are stored in our Design Tokens.
+
+- [Font Family](?path=/docs/design-tokens--page#font)
+- [Font Sizes](?path=/docs/design-tokens--page#font-sizes)
+- [Font Wight](?path=/docs/design-tokens--page#font-weight)
+
+The CSS-Framework links the tokens to the HTML elements and provides CSS utility classes to modify text elements.
+
+- [Titles / Headings](?path=/docs/design-css-framework--typography-titles)
+- [Texts / Paragraphs](?path=/docs/design-css-framework--typography-texts)
+- [Links](?path=/docs/design-css-framework--typography-texts#links)
+- [Text Colors](?path=/docs/design-css-framework--text-colors)
+
+In the Design System Component Library there are two main components for the font / typography.
+
+- [Heading](?path=/docs/Components-heading--basic)
+- [Text](?path=/docs/Components-text--basic)
+
+## Download
+
+Download the following font for print usage. For web development please continue reading.
+
+<bal-doc-app>
+  <bal-doc-download
+    subject="fonts.zip"
+    subtitle="Our typography files"
+    link="/assets/download/fonts.zip"
+  ></bal-doc-download>
+</bal-doc-app>
+
+## Install web font
+
+Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-next-fonts). With the font files also css and sass files are delivered.
+
+> **TIP**
+> The font package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
+
+To install the fonts directly to your project, run the following command:
+
+```bash
+npm install @baloise/design-system-next-fonts
+```
+
+### Usage
+
+In a next step the fonts have to be provided for the web application. It is recommended to use following tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your assets folder.
+
+```bash
+npm install copyfiles --save-dev
+```
+
+After installing the copyfiles dependency the copy command needs to be defined in our **package.json** file. Therefore a new script called `copy:fonts` has to be added and the second path to your application has to be adapted.
+
+The downloaded fonts have to be placed in a folder in the public area. The path with the sass variable `$font-path` has to be configured or the default `assets/fonts` has to be used.
+
+```scss
+$font-path: 'assets/fonts';
+
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+```
+
+> **TIP for Angular apps**
+> For angular apps the default path would be `src/assets/fonts` instead of **public/assets/fonts**
+
+> **TIP Relative Path**
+> To serve the fonts from a relative path inside a Angular application adjust `$font-path` variable to `'~assets/fonts'`.
+>
+> ```scss
+> $font-path: '~assets/fonts';
+>
+> @import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+> ```
+
+Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
+}
+```
+
+> **TIP CI&CD**
+> It might be that inside the docker container the `postinstall` does not get executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+
+### CDN
+
+Configure the fonts in a css file.
+
+The package `@baloise/design-system-next-fonts` also delivers a css file with the config for typography. Add the `fonts.css` into the `head` of the webpage.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-fonts/lib/fonts.css" />
+```
+
+Next [download the font](/design/typography.html#download) to use it with the CDN setup and put them into the path `/assets/fonts` of the webpage.
+
+### Webpack
+
+Import the css directly into your main TypeScript or JavaScript file.
+
+```typescript
+import '@baloise/design-system-next-components/dist/design-system-fonts/lib/fonts.css'
+```
+
+<bal-doc-github link="/stories/design/02-font.stories.mdx"></bal-doc-github>

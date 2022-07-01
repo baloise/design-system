@@ -89,8 +89,8 @@ export const CardTitle = args => ({
   <bal-card-title>
     BaloiseCombi
     <bal-tag-group>
-      <bal-tag color="yellow">My Tag 1</bal-tag>
-      <bal-tag color="green">My Tag 2</bal-tag>
+      <bal-tag size="small" color="yellow">My Tag 1</bal-tag>
+      <bal-tag size="small" color="green">My Tag 2</bal-tag>
     </bal-tag-group>
     <bal-button-group position="right">
       <bal-button>Button 1</bal-button>

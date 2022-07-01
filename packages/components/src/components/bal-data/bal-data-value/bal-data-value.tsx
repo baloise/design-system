@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
 import isNil from 'lodash.isnil'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-value',
@@ -46,12 +47,13 @@ export class DataValue {
   }
 
   render() {
+    const element = BEM.block('data-value')
     return (
       <Host
         class={{
-          'bal-data-value': true,
-          'is-editable': this.editable,
-          'is-multiline': this.multiline,
+          ...element.class(),
+          ...element.modifier('is-editable').class(this.editable),
+          ...element.modifier('is-multiline').class(this.multiline),
         }}
       >
         <div>

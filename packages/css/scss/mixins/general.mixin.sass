@@ -1,5 +1,6 @@
 @use "sass:map"
 @use "sass:string"
+@use "sass:math"
 
 =overflow-touch
   -webkit-overflow-scrolling: touch
@@ -104,11 +105,11 @@
 =center($width, $height: 0)
   position: absolute
   @if $height != 0
-    left: calc(50% - (#{$width} / 2))
-    top: calc(50% - (#{$height} / 2))
+    left: calc(50% - math.div(#{$width},2))
+    top: calc(50% - math.div(#{$height},2))
   @else
-    left: calc(50% - (#{$width} / 2))
-    top: calc(50% - (#{$width} / 2))
+    left: calc(50% - math.div(#{$width},2))
+    top: calc(50% - math.div(#{$width},2))
 
 =property($prop, $top, $end: $top, $bottom: $top, $start: $end)
   +property-horizontal($prop, $start, $end)

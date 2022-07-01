@@ -13,6 +13,11 @@ export class Stage implements ComponentInterface {
   @State() imageSrc: PlatformSrcSet = {}
 
   /**
+   * Defines size of the stage
+   */
+  @Prop() size: Props.BalStageSize = ''
+
+  /**
    * Defines the background color of the stage section
    */
   @Prop() color: Props.BalStageColor = 'red'
@@ -31,6 +36,11 @@ export class Stage implements ComponentInterface {
    * src-set string for the css background-image
    */
   @Prop() images?: string
+
+  /**
+   * class to set the container width
+   */
+  @Prop() containerClass = 'is-wide'
 
   setImageSrc() {
     const images = this.images?.split(',')
@@ -74,6 +84,7 @@ export class Stage implements ComponentInterface {
       <Host
         class={{
           'bal-stage': true,
+          [`bal-stage--is-${this.size}`]: this.size != '',
           'has-background-image': !!this.images,
           'has-shape': this.hasShape,
         }}
@@ -89,8 +100,8 @@ export class Stage implements ComponentInterface {
           <slot></slot>
         </section>
         {this.hasShape && (
-          <div class="bal-stage-shape container">
-            <div>Shape Placeholder</div>
+          <div class={`bal-stage-shape container ${this.containerClass}`}>
+            <slot name="shape"></slot>
           </div>
         )}
       </Host>

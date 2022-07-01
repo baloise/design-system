@@ -23,7 +23,7 @@ Cypress.Commands.add(
   (element, options?: Partial<Cypress.Loggable>) => {
     log('wrapComponent', '', element, options)
     const o = wrapOptions(options)
-    return cy.wrap(element, o).waitForComponents(o)
+    return cy.wrap(element, o)
   },
 )
 

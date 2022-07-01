@@ -1,6 +1,8 @@
 export namespace Props {
   export type BalAccordionColor = 'primary' | 'info'
 
+  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
@@ -26,6 +28,7 @@ export namespace Props {
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
+  export type BalCardSpace = 'small' | '' | 'medium' | 'large'
   export type BalCardColor =
     | 'white'
     | 'primary'
@@ -89,6 +92,7 @@ export namespace Props {
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
+  export type BalTabsVertical = boolean | 'mobile' | 'tablet'
 
   export type BalTagColor =
     | 'blue'
@@ -105,7 +109,7 @@ export namespace Props {
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
 
-  export type BalTextSize = 'small' | 'lead' | ''
+  export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
     | 'white'
@@ -231,4 +235,16 @@ export namespace Props {
     | 'impp'
     | 'url'
     | 'photo'
+
+  export type BalShapeVariation = '1' | '2' | '3'
+  export type BalShapeColor =
+    | 'green'
+    | 'green-light'
+    | 'red'
+    | 'red-light'
+    | 'purple'
+    | 'purple-light'
+    | 'yellow'
+    | 'yellow-light'
+  export type BalShapeRotation = '0' | '90' | '180' | '270'
 }

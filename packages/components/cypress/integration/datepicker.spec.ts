@@ -1,6 +1,14 @@
-import { now, formatDateString, format } from '@baloise/web-app-utils'
-import { addDays, addWeeks, subDays, subWeeks } from 'date-fns'
+import { addDays, addWeeks, formatISO, subDays, subWeeks } from 'date-fns'
 import { byTestId, DatePickerAccessor } from '../../../testing/src'
+
+const now = () => new Date()
+const formatDateString = (date: Date) => formatISO(date, { representation: 'date' })
+const format = (date: Date) => {
+  const day = `${date.getDate()}`
+  const month = `${date.getMonth() + 1}`
+
+  return `${day}.${month}.${date.getFullYear()}`
+}
 
 describe('Datepicker', () => {
   beforeEach(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
@@ -13,7 +21,7 @@ describe('Datepicker', () => {
 
   describe('type', () => {
     it('should type the date in datepicker and fire one change event', () => {
-      const today = format('de-CH', now())
+      const today = format(now())
       cy.getByTestId('basic').spyEvent('balChange').type(`${today}{enter}`).blur().contains(today)
 
       cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
@@ -30,7 +38,7 @@ describe('Datepicker', () => {
         .balDatepickerToggle()
         .balDatepickerPick(now())
         .balDatepickerIsClosed()
-        .contains(format('de-CH', now()))
+        .contains(format(now()))
 
       cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
 

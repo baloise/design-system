@@ -14,7 +14,16 @@ const decodeOptions = prop => {
 }
 
 const decodeEnumType = prop => {
-  return prop.type.split(' | ').map(o => o.replaceAll('"', ''))
+  return prop.type
+    .split(' | ')
+    .map(o => o.replaceAll('"', ''))
+    .reduce((acc, val) => {
+      if (val === 'boolean') {
+        return [...acc, true, false]
+      } else {
+        return [...acc, val]
+      }
+    }, [])
 }
 
 const getControl = prop => {

@@ -26,17 +26,32 @@ import { Meta } from '@storybook/addon-docs'
 
 To access the Baloise Design System Figma Library please contact [Laurent Tauber](https://github.com/Gagne87) or [Gery Hirschfeld](https://github.com/hirsch88).
 
-[Figma Downloads](https://www.figma.com/downloads/)
+<br />
+
+<bal-doc-app>
+  <a class="button is-primary is-inline" href="https://www.figma.com/downloads/" target="_blank">
+    Figma Downloads
+  </a>
+</bal-doc-app>
+
+<br />
+<br />
 
 ## Design Tokens
 
 Design tokens are needed to construct the Baloise Design System. Values like colors, typography, spacing and more.
 Moreover, tokens are tech-agnostic so they can be used across multiple platforms such as Web or Mobile.
 
-- [Colors](?path=/story/design-colors--page)
-- [Typography](?path=/story/design-typography--page)
-- [Spacing](?path=/story/design-spacing--page)
-- [Breakpoints](?path=/story/design-breakpoints--page)
+<br />
+
+<bal-doc-app>
+  <a class="button is-primary is-inline" href="?path=/docs/design-tokens--page">
+    Go the Tokens
+  </a>
+</bal-doc-app>
+
+<br />
+<br />
 
 ## CSS Framework
 
@@ -45,47 +60,15 @@ included from Bulma. We try to keep the CSS file as small as possible.
 
 Get started with a wide range of shorthand utility classes to modify an element’s appearance in your own application.
 
-- [Grid](?path=/story/design-grid--page)
-- [Layout](?path=/story/design-page-layout--page)
-- [Form](?path=/story/design-form--page)
-- [CSS Helpers](?path=/story/design-css-helpers--page)
-- [Flexbox Helpers](?path=/story/design-flexbox-helpers--page)
+<br />
 
-### Installation
+<bal-doc-app>
+  <a class="button is-primary is-inline" href="?path=/docs/design-css-framework--container">
+    Go the CSS-Framework
+  </a>
+</bal-doc-app>
 
-The CSS Framework is provided as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts).
-
-> **TIP**
-> The CSS Framework package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
-
-To install the CSS Framework directly to your project, run the following command:
-
-```bash
-npm install @baloise/design-system-next-css
-```
-
-After the installation include the provided CSS or Sass file into your project.
-
-Here is a basic HTML5 example:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS Framework - Example</title>
-    <link rel="stylesheet" href="node_modules/@baloise/design-system-next-css/css/baloise-design-system.css" />
-  </head>
-  <body class="bal-app has-sticky-footer has-background-grey-0">
-    <main class="container py-4">
-      <section class="has-background-white has-radius has-shadow p-4 mb-4">
-        <h1 class="title is-3">Hello World</h1>
-      </section>
-    </main>
-  </body>
-</html>
-```
+<br />
+<br />
 
 <bal-doc-github link="/stories/design/00-overview.stories.mdx"></bal-doc-github>

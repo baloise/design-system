@@ -4,10 +4,9 @@ import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { StepList } from './components/steps'
-import { Props } from '../../types'
+import { Props, Platforms } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../'
-import { Platforms } from '../../types'
 import { getPlatforms } from '../../'
 
 @Component({
@@ -70,7 +69,7 @@ export class Tabs {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical: boolean | 'mobile' | 'tablet' = false
+  @Prop() vertical: Props.BalTabsVertical = false
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -192,6 +191,17 @@ export class Tabs {
     }
   }
 
+  private parseVertical(): Props.BalTabsVertical {
+    if ((this.vertical as any) === 'true' || (this.vertical as any) === '') {
+      return true
+    }
+    if ((this.vertical as any) === 'false' || (this.vertical as any) === undefined) {
+      return false
+    }
+
+    return this.vertical
+  }
+
   private moveLine(element: HTMLElement, timeout = 0) {
     setTimeout(() => {
       if (this.interface !== 'steps' && this.interface !== 'o-steps') {
@@ -200,7 +210,7 @@ export class Tabs {
 
           const isMobile = isPlatform('mobile')
           const isTablet = isPlatform('tablet')
-          const isVertical = this.vertical === true
+          const isVertical = this.parseVertical() === true
           const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
           const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
           const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
@@ -272,7 +282,7 @@ export class Tabs {
           lineOffsetLeft={this.lineOffsetLeft}
           lineHeight={this.lineHeight}
           lineOffsetTop={this.lineOffsetTop}
-          vertical={this.interface === 'navbar' ? 'tablet' : this.vertical}
+          vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
           selectOnMobile={this.selectOnMobile}
         ></Tabs>
         <slot></slot>

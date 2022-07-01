@@ -1,6 +1,4 @@
-// @use 'sass:math'
-
-=card-spacing($spacing: 1.25rem)
+=card-spacing($spacing: 1rem)
   & > :not(bal-badge):not(bal-tag):first-child
     padding-top: $spacing
   & > :not(bal-badge):not(bal-tag):last-child
@@ -16,6 +14,13 @@
     padding-top: $spacing
   & > bal-accordion
     padding-bottom: 0 !important
+  & bal-card-title,
+  & bal-card-subtitle,
+  & bal-card-content,
+  & bal-card-actions,
+  & bal-card-button
+    padding-left: $spacing
+    padding-right: $spacing
 
 +block(card)
   position: static
@@ -23,6 +28,7 @@
   background: transparent
   box-shadow: var(--bal-shadow)
   border-radius: var(--bal-radius-large)
+  //
   // Colors
   +modifier(is-white)
     background: var(--bal-color-white)
@@ -58,6 +64,7 @@
     background: var(--bal-color-green-light)
   +modifier(is-grey-light)
     background: var(--bal-color-grey-light)
+  //
   // Modifier
   +modifier(has-fullheight)
     &,
@@ -79,10 +86,25 @@
     &:hover
       box-shadow: var(--bal-shadow-large)
       transform: translate3d(0, -2px, 0)
-  // spacing
+  //
+  // Spacing
   +card-spacing
-  +desktop
+  +tablet
     +card-spacing(1.5rem)
+  +modifier(is-small)
+    +tablet
+      +card-spacing
+  +modifier(is-medium)
+    +tablet
+      +card-spacing(1.5rem)
+    +desktop
+      +card-spacing(2rem)
+  +modifier(is-large)
+    +tablet
+      +card-spacing(2rem)
+    +desktop
+      +card-spacing(4rem)
+  //
   // tag placment
   & > .bal-tag
     position: absolute
@@ -94,10 +116,6 @@
 +block(card-title)
   display: block
   position: static
-  .bal-tag-group,
-  .bal-button-group,
-  .field.is-grouped
-    margin-top: 8px
   +tablet
     .bal-tag-group
       display: inline-flex
@@ -118,8 +136,6 @@
     .field.is-grouped
       flex: 1
       margin-top: -7px
-    .bal-tag-group
-      margin-top: 5px
 
 +block(card-subtitle)
   display: block

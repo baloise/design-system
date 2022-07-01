@@ -146,32 +146,26 @@ ${indent}.is-size-${key}
   ${indent}+typography(${fontSize}, ${lineHeight}, ${space})`
   }
 
-  for (const k in sizes.mobile) {
-    const s = sizes.mobile[k]
-    const space = spacing.mobile[s.spacing]
-    lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space))
+  for (const k in sizes) {
+    const sizeMobile = sizes[k].mobile
+    const spaceMobile = spacing[sizeMobile.spacing].mobile
+    lines.push(createCssClasses(k, sizeMobile.fontSize, sizeMobile.lineHeight, spaceMobile))
   }
 
-  if (Object.keys(sizes.tablet).length > 0) {
-    lines.push('')
-    lines.push('+tablet')
-    for (const k in sizes.tablet) {
-      const s = sizes.tablet[k]
-      const space = spacing.tablet[s.spacing]
-      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space, '  '))
-    }
-    lines.push('')
+  lines.push('')
+  lines.push('+tablet')
+  for (const k in sizes) {
+    const sizeTablet = sizes[k].tablet
+    const spaceTablet = spacing[sizeTablet.spacing].tablet
+    lines.push(createCssClasses(k, sizeTablet.fontSize, sizeTablet.lineHeight, spaceTablet))
   }
 
-  if (Object.keys(sizes.desktop).length > 0) {
-    lines.push('')
-    lines.push('+desktop')
-    for (const k in sizes.desktop) {
-      const s = sizes.desktop[k]
-      const space = spacing.desktop[s.spacing]
-      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space, '  '))
-    }
-    lines.push('')
+  lines.push('')
+  lines.push('+desktop')
+  for (const k in sizes) {
+    const sizeDesktop = sizes[k].desktop
+    const spaceDesktop = spacing[sizeDesktop.spacing].desktop
+    lines.push(createCssClasses(k, sizeDesktop.fontSize, sizeDesktop.lineHeight, spaceDesktop))
   }
 
   await file.write(path.join(SASS_PATH, 'typography.helpers.sass'), [...lines, ''].join('\n'))

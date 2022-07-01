@@ -31,10 +31,22 @@ Basic.args = {
   selectOnMobile: false,
 }
 Basic.parameters = {
-  // viewport: {
-  //   defaultViewport: 'small',
-  // },
   ...component.sourceCode(Basic),
+  controls: { exclude: ['clickable'] },
+}
+
+export const Vertical = Basic.bind({})
+Vertical.args = {
+  interface: 'tabs',
+  value: 'tab-b',
+  border: true,
+  fullwidth: true,
+  expanded: false,
+  vertical: true,
+  selectOnMobile: false,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
   controls: { exclude: ['clickable'] },
 }
 

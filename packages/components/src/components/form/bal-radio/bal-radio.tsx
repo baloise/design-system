@@ -21,7 +21,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { isDescendant } from '../../../helpers/helpers'
-import { Props } from '../../../types'
+import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-radio',
@@ -87,6 +87,11 @@ export class Radio implements ComponentInterface, FormInput<any> {
   @Prop() readonly = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * If `true`, the control works on dark background.
    */
   @Prop() inverted = false
@@ -104,7 +109,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
 
   /**
    * Emitted when the input has clicked.
@@ -219,6 +224,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           value={value}
           disabled={this.disabled}
           readonly={this.readonly}
+          required={this.required}
           checked={this.checked}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
