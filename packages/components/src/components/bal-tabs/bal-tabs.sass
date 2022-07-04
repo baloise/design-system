@@ -12,7 +12,11 @@
     width: 100%
   +modifier(vertical)
     display: flex
-    direction: row
+    flex-direction: row
+    align-items: flex-start
+    +element(tabs) 
+      +element(item)
+        width: 100%
 
   +element(tabs)
     +overflow-touch
@@ -234,6 +238,9 @@
           width: 2px
           top: 0
           left: 0
+
+.bal-tabs__item
+  width: 100%
 
 // bal-tabs.bal-tabs {
 //   .tabs {
