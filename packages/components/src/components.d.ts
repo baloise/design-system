@@ -1833,6 +1833,10 @@ export namespace Components {
           * If `true` the field expands over the whole width.
          */
         "inverted": boolean;
+        /**
+          * If 'true" the tab-items will be rendered next to the tabs
+         */
+        "renderItemsVertical": boolean;
         "renderLine": () => Promise<void>;
         /**
           * Go to tab with the given value
@@ -4814,6 +4818,10 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<string>) => void;
+        /**
+          * If 'true" the tab-items will be rendered next to the tabs
+         */
+        "renderItemsVertical"?: boolean;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */

@@ -72,6 +72,11 @@ export class Tabs {
   @Prop() vertical: Props.BalTabsVertical = false
 
   /**
+   * If 'true" the tab-items will be rendered next to the tabs
+   */
+  @Prop() renderItemsVertical = false
+
+  /**
    * If `true` the tabs are shown as a select component on mobile
    */
   @Prop() selectOnMobile = false
@@ -256,6 +261,7 @@ export class Tabs {
         class={{
           ...block.class(),
           ...block.modifier(`context-${this.interface}`).class(),
+          ...block.modifier('vertical').class(this.renderItemsVertical === true && this.parseVertical() === true),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
         }}
         data-value={this.tabsOptions
