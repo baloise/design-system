@@ -99,10 +99,15 @@ export class TabItem {
 
   render() {
     return (
-      <Host>
-        <div style={{ display: this.isActive ? 'block' : 'none' }}>
-          <slot />
-        </div>
+      <Host
+        class={{
+          'bal-tabs-item': true,
+          'bal-tabs-item--active': this.isActive,
+        }}
+      >
+        <slot />
+        {/* <div style={{ display: this.isActive ? 'block' : 'none' }}>
+        </div> */}
       </Host>
     )
   }

@@ -1847,6 +1847,10 @@ export namespace Components {
           * If `true` tabs are align vertically.
          */
         "vertical": Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize": Props.BalTabsColSize;
     }
     interface BalTag {
         /**
@@ -4823,6 +4827,10 @@ declare namespace LocalJSX {
           * If `true` tabs are align vertically.
          */
         "vertical"?: Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize"?: Props.BalTabsColSize;
     }
     interface BalTag {
         /**
