@@ -1833,10 +1833,6 @@ export namespace Components {
           * If `true` the field expands over the whole width.
          */
         "inverted": boolean;
-        /**
-          * If 'true" the tab-items will be rendered next to the tabs
-         */
-        "renderItemsVertical": boolean;
         "renderLine": () => Promise<void>;
         /**
           * Go to tab with the given value
@@ -1851,6 +1847,10 @@ export namespace Components {
           * If `true` tabs are align vertically.
          */
         "vertical": Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize": Props.BalTabsColSize;
     }
     interface BalTag {
         /**
@@ -4819,10 +4819,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalTabsCustomEvent<string>) => void;
         /**
-          * If 'true" the tab-items will be rendered next to the tabs
-         */
-        "renderItemsVertical"?: boolean;
-        /**
           * If `true` the tabs are shown as a select component on mobile
          */
         "selectOnMobile"?: boolean;
@@ -4831,6 +4827,10 @@ declare namespace LocalJSX {
           * If `true` tabs are align vertically.
          */
         "vertical"?: Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize"?: Props.BalTabsColSize;
     }
     interface BalTag {
         /**

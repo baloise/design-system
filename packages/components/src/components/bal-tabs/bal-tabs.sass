@@ -3,6 +3,8 @@
 +block(tabs)
   display: inline-block
   position: static
+  & > .columns
+    width: 100%
   +modifiers(context-meta, context-navbar)
     +desktop
       margin-left: -1rem
@@ -10,13 +12,22 @@
     display: block
     flex: 1
     width: 100%
-  +modifier(vertical)
-    display: flex
-    flex-direction: row
-    align-items: flex-start
-    +element(tabs) 
-      +element(item)
-        width: 100%
+
+  +element(col-items)
+    padding-bottom: 0 !important
+    +modifier(vertical)
+      +tablet
+        padding-bottom: var(--bal-column-gap) !important
+  +element(col-content)
+    padding-top: 0 !important
+    padding-bottom: 0 !important
+    +modifier(vertical)
+      +tablet
+        padding-top: var(--bal-column-gap) !important
+        padding-bottom: var(--bal-column-gap) !important
+    +modifier(full)
+      padding-top: 0 !important
+      padding-bottom: 0 !important
 
   +element(tabs)
     +overflow-touch
@@ -239,321 +250,8 @@
           top: 0
           left: 0
 
-.bal-tabs__item
++block(tabs-item)
   width: 100%
-
-// bal-tabs.bal-tabs {
-//   .tabs {
-//     margin: 0 !important;
-//     position: relative;
-
-//     & > ul {
-//       margin: 0;
-//       padding: 0;
-//     }
-
-//     .selected-tab-line {
-//       height: 3px;
-//       bottom: 0;
-//       background: $blue;
-//       position: absolute;
-//       z-index: 1;
-//       border-radius: 10px;
-//     }
-
-//     .line {
-//       width: 100%;
-//       height: 2px;
-//       background: $grey-2;
-//       position: absolute;
-//       bottom: 0;
-//     }
-
-//     & > ul > li {
-//       position: relative;
-//       padding-top: 8px;
-//       padding-bottom: 8px;
-
-//       @include tablet() {
-//         &.is-right {
-//           position: absolute;
-//           right: 40px;
-//         }
-//       }
-
-//       span.bubble {
-//         background: $danger;
-//         height: 8px;
-//         width: 8px;
-//         border-radius: 50%;
-//         position: absolute;
-//         display: block;
-//         top: 12px;
-//         right: 4px;
-//       }
-
-//       & > a {
-//         min-height: 48px !important;
-//         padding: 16px;
-//         line-height: 1.2;
-//         text-decoration: none;
-
-//         color: $text-light;
-//         font-family: $title-family;
-//         font-weight: bold;
-//         font-size: 16px;
-//         line-height: 1.125;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//       }
-
-//       &.is-active > a {
-//         color: $blue;
-//       }
-
-//       & > a:hover {
-//         color: $blue;
-//       }
-
-//       &.is-disabled > a,
-//       &.is-disabled > a:hover {
-//         color: $blue;
-//         cursor: default;
-//         opacity: 0.5;
-//       }
-//     }
-//   }
-//   &.is-ready {
-//     .selected-tab-line {
-//       transition: 0.4s;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation {
-//   .tabs {
-//     & > ul > li {
-//       padding-top: 0;
-//       padding-bottom: 0;
-
-//       &.is-right {
-//         display: none !important;
-//       }
-
-//       span.bubble {
-//         height: 8px;
-//         width: 8px;
-//         top: 12px;
-//         right: 4px;
-//       }
-
-//       & > a {
-//         min-height: 48px;
-//         padding: 16px !important;
-//         font-size: 16px !important;
-//       }
-//     }
-
-//     .bottom-line {
-//       width: 100%;
-//       height: 3px;
-//       border-bottom: 2px solid $grey-2;
-//     }
-//   }
-// }
-
-// bal-tab-item {
-//   display: block;
-//   position: static;
-// }
-
-// @import './bal-o-steps';
-
-// bal-tabs.bal-tabs.is-vertical {
-//   .tabs {
-//     margin: 0 !important;
-//     position: relative;
-
-//     & > ul {
-//       margin: 0;
-//       padding: 0;
-
-//       align-items: center;
-//       border-bottom-color: #b3b6d4;
-//       border-bottom-style: solid;
-//       border-bottom-width: 0;
-//       display: flex;
-//       flex-grow: unset;
-//       flex-shrink: 0;
-//       justify-content: flex-start;
-//       flex-direction: column;
-
-//       li {
-//         padding-top: 0;
-//         padding-bottom: 0;
-
-//         & > a {
-//           min-height: 24px !important;
-//           height: 24px !important;
-//         }
-
-//         bal-badge {
-//           right: 4px !important;
-//           top: 4px !important;
-//         }
-//       }
-//     }
-
-//     .selected-tab-vertical-line {
-//       width: 3px;
-//       left: 0;
-//       background: $blue;
-//       position: absolute;
-//       z-index: 1;
-//       border-radius: 10px;
-//     }
-
-//     .line {
-//       width: 3px;
-//       height: 100%;
-//       background: $grey-2;
-//       position: absolute;
-//       bottom: 0;
-//     }
-//   }
-
-//   &.is-ready {
-//     .selected-tab-vertical-line {
-//       transition: 0.8s;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation.is-vertical {
-//   .tabs {
-//     & > ul > li {
-//       &.is-right {
-//         display: none !important;
-//       }
-
-//       & > a {
-//         min-height: 24px !important;
-//         height: 24px !important;
-//         padding: 16px !important;
-//         font-size: 16px !important;
-//       }
-
-//       bal-badge {
-//         right: 4px !important;
-//         top: 4px !important;
-//       }
-//     }
-
-//     .bottom-line {
-//       width: 100%;
-//       height: 3px;
-//       border-bottom: 2px solid $grey-2;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-vertical-on-mobile {
-//   @include mobile() {
-//     .tabs {
-//       margin: 0 !important;
-//       position: relative;
-
-//       .selected-tab-line {
-//         display: none !important;
-//       }
-
-//       & > ul {
-//         margin: 0;
-//         padding: 0;
-
-//         align-items: center;
-//         border-bottom-color: #b3b6d4;
-//         border-bottom-style: solid;
-//         border-bottom-width: 0;
-//         display: flex;
-//         flex-grow: unset;
-//         flex-shrink: 0;
-//         justify-content: flex-start;
-//         flex-direction: column;
-
-//         li {
-//           padding-top: 0;
-//           padding-bottom: 0;
-
-//           & > a {
-//             min-height: 24px !important;
-//             height: 24px !important;
-//           }
-
-//           bal-badge {
-//             right: 4px !important;
-//             top: 4px !important;
-//           }
-//         }
-//       }
-
-//       .selected-tab-vertical-line {
-//         width: 3px;
-//         left: 0;
-//         background: $blue;
-//         position: absolute;
-//         z-index: 1;
-//         border-radius: 10px;
-//       }
-
-//       .line {
-//         width: 3px;
-//         height: 100%;
-//         background: $grey-2;
-//         position: absolute;
-//         bottom: 0;
-//       }
-//     }
-
-//     &.is-ready {
-//       .selected-tab-vertical-line {
-//         transition: 0.8s;
-//       }
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation.is-vertical-on-mobile {
-//   @include mobile() {
-//     .tabs {
-//       .selected-tab-line {
-//         display: none !important;
-//       }
-
-//       & > ul > li {
-//         &.is-right {
-//           display: none !important;
-//         }
-
-//         & > a {
-//           min-height: 24px !important;
-//           height: 24px !important;
-//           padding: 16px !important;
-//           font-size: 16px !important;
-//         }
-
-//         bal-badge {
-//           right: 4px !important;
-//           top: 4px !important;
-//         }
-//       }
-
-//       .bottom-line {
-//         width: 100%;
-//         height: 3px;
-//         border-bottom: 2px solid $grey-2;
-//       }
-//     }
-//   }
-// }
+  display: none
+  +modifier(active)
+    display: block

@@ -101,12 +101,13 @@ export class TabItem {
     return (
       <Host
         class={{
-          'bal-tabs__item': this.isActive,
+          'bal-tabs-item': true,
+          'bal-tabs-item--active': this.isActive,
         }}
       >
-        <div style={{ display: this.isActive ? 'block' : 'none' }}>
-          <slot />
-        </div>
+        <slot />
+        {/* <div style={{ display: this.isActive ? 'block' : 'none' }}>
+        </div> */}
       </Host>
     )
   }
