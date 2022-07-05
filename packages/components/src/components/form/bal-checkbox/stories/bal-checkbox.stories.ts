@@ -219,7 +219,7 @@ export const Box = args => ({
         <p class="has-text-blue is-bold mb-0">Title</p>
         <p class="has-text-blue mb-3">Subtitle</p>
         <p class="has-text-blue-light-text is-size-6 mb-4">More Description</p>
-        <bal-checkbox ref="elementA" class="mb-3" v-bind="args" v-model="selectedA">Add</bal-checkbox>
+        <bal-checkbox ref="elementA" class="mb-3" v-bind="args" v-model="selectedA"></bal-checkbox>
       </div>
     </div>
     <div class="column">
@@ -228,7 +228,7 @@ export const Box = args => ({
       <p class="has-text-blue is-bold mb-0">Title</p>
       <p class="has-text-blue mb-3">Subtitle</p>
       <p class="has-text-blue-light-text is-size-6 mb-4">More Description</p>
-      <bal-checkbox ref="elementB" class="mb-3" v-bind="args" v-model="selectedB">Add</bal-checkbox>
+      <bal-checkbox ref="elementB" class="mb-3" v-bind="args" v-model="selectedB"></bal-checkbox>
     </div>
   </div>
   </div>`,

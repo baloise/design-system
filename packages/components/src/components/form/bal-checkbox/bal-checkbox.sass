@@ -61,10 +61,11 @@
     color: var(--bal-color-primary)
     font-family: var(--bal-family-primary)
 
-    bal-text
-      padding-left: 2rem
+    +element(text)
+      +modifier(has-padding-left)
+        padding-left: 2rem
 
-    bal-text:empty
+    bal-text:empty // refactor
       padding-left: 0
 
     +desktop

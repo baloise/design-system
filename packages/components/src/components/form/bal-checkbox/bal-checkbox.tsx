@@ -184,9 +184,12 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     const flatClass = 'is-flat'
     const hasFlat = this.flat
     const elLabel = block.element('label')
+    const elText = elLabel.element('text')
     const elInput = block.element('input')
     const disabledClass = 'is-disabled'
     const hasDisabled = this.disabled || this.readonly
+    const paddingLeftClass = 'has-padding-left'
+    const hasPaddingLeft = !this.labelHidden
 
     return (
       <Host
@@ -227,7 +230,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elLabel.class(),
             ...elLabel.modifier(disabledClass).class(hasDisabled),
-            // 'option-label': true, // not used
+            'option-label': true, // refactor
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
@@ -235,11 +238,10 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           <bal-text
             inline
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            class={
-              {
-                // 'has-padding-left': !this.labelHidden, // not used in checkbox, only in radio sass
-              }
-            }
+            class={{
+              ...elText.class(),
+              ...elText.modifier(paddingLeftClass).class(hasPaddingLeft),
+            }}
           >
             <slot></slot>
           </bal-text>
