@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.15.2](https://github.com/baloise-incubator/design-system/compare/v10.15.1...v10.15.2) (2022-07-05)
+
+
+### Features
+
+* added prop to set the boolean value for vertical rendering ([2878df8](https://github.com/baloise-incubator/design-system/commit/2878df86af3260e77332c88fd41d6b007b6ee32e))
+* added styling for vertical aligment ([826fff5](https://github.com/baloise-incubator/design-system/commit/826fff59c85374e90c67a89ed9856b3061c3876b))
+* added width construction for vertical tab alignment ([332e919](https://github.com/baloise-incubator/design-system/commit/332e919453fa914eed881673f737bda44e94f774))
+* **tabs:** place content to the right when vertical and not on mobile ([0381f7c](https://github.com/baloise-incubator/design-system/commit/0381f7c655faf8caac8b49b011e9b0e903b12492))
+
+
+### Bug Fixes
+
+* **field:** add missing loading styles. Closes [#153](https://github.com/baloise-incubator/design-system/issues/153) ([3c52516](https://github.com/baloise-incubator/design-system/commit/3c52516963f1c699be28e864f1dada7c0d0a9d7c))
+* **modal:** adjust container selector ([ba3d306](https://github.com/baloise-incubator/design-system/commit/ba3d306c398fa692607ff91a2f30dfce6883da7d))
+
+
+
 ### [10.15.1](https://github.com/baloise-incubator/design-system/compare/v10.15.0...v10.15.1) (2022-06-30)
 
 
