@@ -72,6 +72,11 @@ export class Tabs {
   @Prop() vertical: Props.BalTabsVertical = false
 
   /**
+   * The col size of the tabs on vertical mode.
+   */
+  @Prop() verticalColSize: Props.BalTabsColSize = 'one-third'
+
+  /**
    * If `true` the tabs are shown as a select component on mobile
    */
   @Prop() selectOnMobile = false
@@ -251,11 +256,20 @@ export class Tabs {
     const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
     const Tabs = isSteps ? StepList : TabList
 
+    const isMobile = isPlatform('mobile')
+    const isTablet = isPlatform('tablet')
+    const isPropVertical = this.parseVertical() === true
+    const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
+    const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+    const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
+
     return (
       <Host
         class={{
           ...block.class(),
           ...block.modifier(`context-${this.interface}`).class(),
+          ...block.modifier('vertical').class(this.parseVertical() === true),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
         }}
         data-value={this.tabsOptions
@@ -267,25 +281,47 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <Tabs
-          value={this.value}
-          context={this.interface}
-          inverted={this.inverted}
-          tabs={this.tabsOptions}
-          border={this.border}
-          expanded={this.expanded}
-          clickable={this.clickable}
-          isReady={this.isReady}
-          iconPosition={this.iconPosition}
-          onSelectTab={(e, t) => this.onSelectTab(e, t)}
-          lineWidth={this.lineWidth}
-          lineOffsetLeft={this.lineOffsetLeft}
-          lineHeight={this.lineHeight}
-          lineOffsetTop={this.lineOffsetTop}
-          vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
-          selectOnMobile={this.selectOnMobile}
-        ></Tabs>
-        <slot></slot>
+        <div class="columns is-multiline">
+          <div
+            class={{
+              'column': true,
+              'is-full': !isVertical,
+              [`is-${this.verticalColSize}`]: isVertical,
+              'bal-tabs__col-items': true,
+              'bal-tabs__col-items--vertical': isVertical,
+            }}
+          >
+            <Tabs
+              value={this.value}
+              context={this.interface}
+              inverted={this.inverted}
+              tabs={this.tabsOptions}
+              border={this.border}
+              expanded={this.expanded}
+              clickable={this.clickable}
+              isReady={this.isReady}
+              iconPosition={this.iconPosition}
+              onSelectTab={(e, t) => this.onSelectTab(e, t)}
+              lineWidth={this.lineWidth}
+              lineOffsetLeft={this.lineOffsetLeft}
+              lineHeight={this.lineHeight}
+              lineOffsetTop={this.lineOffsetTop}
+              vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
+              selectOnMobile={this.selectOnMobile}
+            ></Tabs>
+          </div>
+          <div
+            class={{
+              'column': true,
+              'is-full': !isVertical,
+              'bal-tabs__col-content': true,
+              'bal-tabs__col-content--vertical': isVertical,
+              'bal-tabs__col-content--full': this.verticalColSize === 'full',
+            }}
+          >
+            <slot></slot>
+          </div>
+        </div>
       </Host>
     )
   }

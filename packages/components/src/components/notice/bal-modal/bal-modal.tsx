@@ -14,6 +14,7 @@ import { Props } from '../../../types'
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement
   private modalContentElement?: HTMLElement
+  private modalContainerElement?: HTMLElement
   private modalBackgroundElement?: HTMLElement
 
   @State() presented = false
@@ -145,7 +146,7 @@ export class Modal implements OverlayInterface {
       return
     }
 
-    const container = this.el.querySelector(`.modal-wrapper`)
+    const container = this.el.querySelector(`.bal-modal__content`)
     if (!container) {
       throw new Error('container is undefined')
     }
@@ -154,7 +155,6 @@ export class Modal implements OverlayInterface {
       modal: this.el,
     }
     this.usersElement = await attachComponent(this.delegate, container, this.component, [], componentProps)
-    this.usersElement.classList.add('modal-card')
     await this.open()
   }
 
@@ -281,17 +281,20 @@ export class Modal implements OverlayInterface {
             'bal-modal__background': true,
             'is-hidden': !this.hasBackdrop,
           }}
+          ref={div => (this.modalBackgroundElement = div)}
         ></div>
         <div
           class={{
             'bal-modal__container': true,
           }}
+          ref={div => (this.modalContainerElement = div)}
         >
           <div
             class={{
               'bal-modal__content': true,
               [`bal-modal__content--has-spacing-${this.space}`]: true,
             }}
+            ref={div => (this.modalContentElement = div)}
           >
             <slot></slot>
           </div>
