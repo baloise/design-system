@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.13.5](https://github.com/baloise/design-system/compare/v10.13.4...v10.13.5) (2022-07-05)
+
+
+### Bug Fixes
+
+* claim number formatter can accept small x and transfer it uppercase ([4b4b3e7](https://github.com/baloise/design-system/commit/4b4b3e7d43427e41ae39cc185042e5c6680a0c0c))
+
+
+
 ### [10.13.4](https://github.com/baloise/design-system/compare/v10.13.3...v10.13.4) (2022-06-23)
 
 
