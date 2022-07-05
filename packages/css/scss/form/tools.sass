@@ -159,6 +159,13 @@
   font-size: var(--bal-size-normal)
   position: relative
   text-align: inherit
+  &.is-loading
+    &::after
+      @extend %loader
+      position: absolute !important
+      +ltr-position(0.875rem)
+      top: 0.875rem
+      z-index: 4
 
 .field.is-grouped .control:not(:last-child)
   margin-right: 8px
