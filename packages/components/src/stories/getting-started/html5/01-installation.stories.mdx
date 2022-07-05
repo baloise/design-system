@@ -43,16 +43,16 @@ Add the `bal-app` to your root element. Within this component we are able to use
     <title>Baloise Design System</title>
     <link
       rel="stylesheet"
-      href="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.css"
+      href="node_modules/@baloise/design-system-next-components/dist/design-system-next-components/design-system-next-components.css"
     />
 
     <script
       type="module"
-      src="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.esm.js"
+      src="node_modules/@baloise/design-system-next-components/dist/design-system-next-components/design-system-next-components.esm.js"
     ></script>
     <script
       nomodule
-      src="node_modules/@baloise/design-system-next-components/dist/design-system-components/design-system-components.js"
+      src="node_modules/@baloise/design-system-next-components/dist/design-system-next-components/design-system-next-components.js"
     ></script>
   </head>
   <body>
@@ -76,7 +76,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
 > After that add define the start script with the http-server package.
 >
 > ```json
->   "script": {
+>   "scripts": {
 >      "start": "http-server"
 >   }
 > ```
@@ -95,16 +95,6 @@ npm install copyfiles --save-dev
 
 After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called `copy:fonts` and adjust the second path to your application.
 
-Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
-
-```scss
-// change scss variable before importing the design system
-
-@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
-
-// add custom application styles here after the design system
-```
-
 > **CSS**
 > If you use the styles with css than just put the fonts into a public/static folder with the path `assets/fonts`.
 
@@ -113,12 +103,15 @@ Then we add the defined script copy:fonts in our postinstall script. Every time 
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* assets/fonts"
 }
 ```
 
 > **TIP**
 > It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+
+<!--
+TODO: Only works when we are public
 
 ## CDN
 
@@ -144,6 +137,6 @@ Add the following 4 references to your `<head></head>`
   nomodule
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-next-components/dist/design-system-components/design-system-components.js"
 ></script>
-```
+``` -->
 
 <bal-doc-github link="/stories/getting-started/html5/01-installation.stories.mdx"></bal-doc-github>
