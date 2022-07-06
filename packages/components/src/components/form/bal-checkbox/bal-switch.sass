@@ -75,3 +75,6 @@
 
   input[type='checkbox'] + label.bal-switch__label--is-disabled::after
     background: var(--bal-color-grey-5)
+  
+  input[type='checkbox'].bal-switch__input--is-invalid + label:before // should we cover checked case?
+    border-color: var(--bal-color-danger-4)

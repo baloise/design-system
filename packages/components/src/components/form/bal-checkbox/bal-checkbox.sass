@@ -137,4 +137,7 @@
   input[type='checkbox']:focus-visible + label::before
     box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important
 
+  input[type='checkbox'].bal-checkbox__input--is-invalid + label:before // should we cover checked case?
+    border-color: var(--bal-color-danger-4)
+
 @import './bal-switch'

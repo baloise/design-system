@@ -190,6 +190,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     const hasDisabled = this.disabled || this.readonly
     const paddingLeftClass = 'has-padding-left'
     const hasPaddingLeft = !this.labelHidden
+    const invalidClass = 'is-invalid'
+    const hasInvalid = this.invalid
 
     return (
       <Host
@@ -202,6 +204,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           ...block.class(),
           ...block.modifier(flatClass).class(hasFlat),
           ...block.modifier(disabledClass).class(hasDisabled),
+          ...block.modifier(invalidClass).class(hasInvalid),
         }}
         {...this.inheritedAttributes}
       >
@@ -209,6 +212,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elInput.class(),
             ...elInput.modifier(disabledClass).class(hasDisabled),
+            ...elInput.modifier(invalidClass).class(hasInvalid),
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
@@ -230,7 +234,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elLabel.class(),
             ...elLabel.modifier(disabledClass).class(hasDisabled),
-            'option-label': true, // refactor
+            'option-label': true, // refactor - we dont have a style for this class
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
