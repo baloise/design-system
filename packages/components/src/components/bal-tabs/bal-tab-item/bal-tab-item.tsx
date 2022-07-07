@@ -62,7 +62,7 @@ export class TabItem {
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent | CustomEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   /**
    * Options of the tab like label, value etc.
@@ -106,8 +106,6 @@ export class TabItem {
         }}
       >
         <slot />
-        {/* <div style={{ display: this.isActive ? 'block' : 'none' }}>
-        </div> */}
       </Host>
     )
   }

@@ -179,7 +179,7 @@ export class Tabs {
     }
   }
 
-  private async onSelectTab(event: MouseEvent | CustomEvent, tab: BalTabOption) {
+  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()

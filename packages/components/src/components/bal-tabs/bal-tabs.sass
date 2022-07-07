@@ -3,9 +3,14 @@
 +block(tabs)
   display: inline-block
   position: static
-  +modifiers(context-meta, context-navbar)
+  +modifier(context-meta)
     +desktop
       margin-left: -1rem
+  +modifier(context-navbar)
+    +desktop
+      height: 80px
+      .bal-tabs__tabs > ul
+        justify-content: flex-end
   +modifier(fullwidth)
     display: block
     flex: 1

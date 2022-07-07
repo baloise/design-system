@@ -1,0 +1,41 @@
+import { Component, h, ComponentInterface, Host, Prop, Method, Event, EventEmitter, Element } from '@stencil/core'
+import { LevelInfo, readSubLevels } from '../utils/level.utils'
+import { Events } from '../../../types'
+
+@Component({
+  tag: 'bal-navigation-level-meta',
+})
+export class NavigationLevelMeta implements ComponentInterface {
+  @Element() el!: HTMLElement
+
+  @Prop() label = ''
+  @Prop() value = `meta-value-${navigationLevelMetaIds++}`
+  @Prop() link?: string = undefined
+  @Prop() linkLabel?: string = undefined
+
+  @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
+
+  @Method() async getLevelInfo(): Promise<LevelInfo> {
+    const subLevels = await readSubLevels(this.el, 'bal-navigation-level-main')
+
+    return {
+      type: 'meta',
+      value: this.value,
+      label: this.label,
+      link: this.link,
+      linkLabel: this.linkLabel,
+      subLevels,
+      onClick: (event: MouseEvent) => this.balClick.emit(event),
+    }
+  }
+
+  render() {
+    return (
+      <Host>
+        <slot></slot>
+      </Host>
+    )
+  }
+}
+
+let navigationLevelMetaIds = 0

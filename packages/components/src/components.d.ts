@@ -10,6 +10,7 @@ import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal
 import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1222,6 +1223,42 @@ export namespace Components {
     interface BalNavbarMenuStart {
         "interface": Props.BalNavbarInterface;
     }
+    interface BalNavigation {
+        "mainValue"?: string;
+        "metaValue"?: string;
+    }
+    interface BalNavigationLevelBlock {
+        "color": 'white' | 'grey';
+        "getLevelInfo": () => Promise<LevelInfo>;
+        "label": string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "value": string;
+    }
+    interface BalNavigationLevelBlockItem {
+        "getLevelInfo": () => Promise<LevelInfo>;
+        "label": string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "value": string;
+    }
+    interface BalNavigationLevelMain {
+        "getLevelInfo": () => Promise<LevelInfo>;
+        "label": string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "value": string;
+    }
+    interface BalNavigationLevelMeta {
+        "getLevelInfo": () => Promise<LevelInfo>;
+        "label": string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "value": string;
+    }
+    interface BalNavigationLevels {
+        "getLevelInfos": () => Promise<LevelInfo[]>;
+    }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
     }
@@ -2090,6 +2127,22 @@ export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
 }
+export interface BalNavigationLevelBlockCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationLevelBlockElement;
+}
+export interface BalNavigationLevelBlockItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationLevelBlockItemElement;
+}
+export interface BalNavigationLevelMainCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationLevelMainElement;
+}
+export interface BalNavigationLevelMetaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationLevelMetaElement;
+}
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNumberInputElement;
@@ -2621,6 +2674,42 @@ declare global {
         prototype: HTMLBalNavbarMenuStartElement;
         new (): HTMLBalNavbarMenuStartElement;
     };
+    interface HTMLBalNavigationElement extends Components.BalNavigation, HTMLStencilElement {
+    }
+    var HTMLBalNavigationElement: {
+        prototype: HTMLBalNavigationElement;
+        new (): HTMLBalNavigationElement;
+    };
+    interface HTMLBalNavigationLevelBlockElement extends Components.BalNavigationLevelBlock, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLevelBlockElement: {
+        prototype: HTMLBalNavigationLevelBlockElement;
+        new (): HTMLBalNavigationLevelBlockElement;
+    };
+    interface HTMLBalNavigationLevelBlockItemElement extends Components.BalNavigationLevelBlockItem, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLevelBlockItemElement: {
+        prototype: HTMLBalNavigationLevelBlockItemElement;
+        new (): HTMLBalNavigationLevelBlockItemElement;
+    };
+    interface HTMLBalNavigationLevelMainElement extends Components.BalNavigationLevelMain, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLevelMainElement: {
+        prototype: HTMLBalNavigationLevelMainElement;
+        new (): HTMLBalNavigationLevelMainElement;
+    };
+    interface HTMLBalNavigationLevelMetaElement extends Components.BalNavigationLevelMeta, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLevelMetaElement: {
+        prototype: HTMLBalNavigationLevelMetaElement;
+        new (): HTMLBalNavigationLevelMetaElement;
+    };
+    interface HTMLBalNavigationLevelsElement extends Components.BalNavigationLevels, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLevelsElement: {
+        prototype: HTMLBalNavigationLevelsElement;
+        new (): HTMLBalNavigationLevelsElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -2881,6 +2970,12 @@ declare global {
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
         "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
+        "bal-navigation": HTMLBalNavigationElement;
+        "bal-navigation-level-block": HTMLBalNavigationLevelBlockElement;
+        "bal-navigation-level-block-item": HTMLBalNavigationLevelBlockItemElement;
+        "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
+        "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
+        "bal-navigation-levels": HTMLBalNavigationLevelsElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -4179,6 +4274,41 @@ declare namespace LocalJSX {
     interface BalNavbarMenuStart {
         "interface"?: Props.BalNavbarInterface;
     }
+    interface BalNavigation {
+        "mainValue"?: string;
+        "metaValue"?: string;
+    }
+    interface BalNavigationLevelBlock {
+        "color"?: 'white' | 'grey';
+        "label"?: string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "value"?: string;
+    }
+    interface BalNavigationLevelBlockItem {
+        "label"?: string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "value"?: string;
+    }
+    interface BalNavigationLevelMain {
+        "label"?: string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "value"?: string;
+    }
+    interface BalNavigationLevelMeta {
+        "label"?: string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "value"?: string;
+    }
+    interface BalNavigationLevels {
+    }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
     }
@@ -4765,7 +4895,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalTabItemCustomEvent<MouseEvent | CustomEvent>) => void;
+        "onBalNavigate"?: (event: BalTabItemCustomEvent<MouseEvent>) => void;
         /**
           * Tell's if the linking is done by a router.
          */
@@ -5117,6 +5247,12 @@ declare namespace LocalJSX {
         "bal-navbar-menu": BalNavbarMenu;
         "bal-navbar-menu-end": BalNavbarMenuEnd;
         "bal-navbar-menu-start": BalNavbarMenuStart;
+        "bal-navigation": BalNavigation;
+        "bal-navigation-level-block": BalNavigationLevelBlock;
+        "bal-navigation-level-block-item": BalNavigationLevelBlockItem;
+        "bal-navigation-level-main": BalNavigationLevelMain;
+        "bal-navigation-level-meta": BalNavigationLevelMeta;
+        "bal-navigation-levels": BalNavigationLevels;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5232,6 +5368,12 @@ declare module "@stencil/core" {
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
             "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
+            "bal-navigation": LocalJSX.BalNavigation & JSXBase.HTMLAttributes<HTMLBalNavigationElement>;
+            "bal-navigation-level-block": LocalJSX.BalNavigationLevelBlock & JSXBase.HTMLAttributes<HTMLBalNavigationLevelBlockElement>;
+            "bal-navigation-level-block-item": LocalJSX.BalNavigationLevelBlockItem & JSXBase.HTMLAttributes<HTMLBalNavigationLevelBlockItemElement>;
+            "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
+            "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
+            "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
