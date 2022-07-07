@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Prop, Watch, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 
 @Component({
@@ -7,16 +7,35 @@ import { LevelInfo, observeLevels } from './utils/level.utils'
 export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
-
-  @Prop() metaValue?: string
-  @Prop() mainValue?: string
+  private mainNavElement!: HTMLDivElement
 
   @State() levels: LevelInfo[] = []
-  @State() selectedMeta = 0
-  @State() selectedMain = 0
+  @State() selectedMetaIndex = 0
+  @State() selectedMainIndex = 0
+  @State() isMainBodyOpen = false
 
-  connectedCallback() {
-    this.readSubLevels()
+  @Prop() metaValue?: string
+  @Watch('metaValue')
+  metaValueHandler() {
+    this.updateIndexes()
+  }
+
+  @Prop() mainValue?: string
+  @Watch('mainValue')
+  mainValueHandler() {
+    this.updateIndexes()
+  }
+
+  @Listen('click', { target: 'document' })
+  clickOnOutside(event: UIEvent) {
+    if (!this.mainNavElement.contains(event.target as Node) && this.isMainBodyOpen) {
+      this.isMainBodyOpen = false
+    }
+  }
+
+  async connectedCallback() {
+    await this.readSubLevels()
+    this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
   }
 
@@ -27,30 +46,54 @@ export class Navigation implements ComponentInterface {
     }
   }
 
+  private updateIndexes() {
+    if (this.levels && this.levels.length > 0) {
+      const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
+      this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
+
+      const selectedMainIndex =
+        this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
+      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
+    }
+    console.log('updateIndexes', this.metaValue)
+    console.log('updateIndexes', this.mainValue)
+    console.log('updateIndexes', this.selectedMetaIndex)
+    console.log('updateIndexes', this.selectedMainIndex)
+  }
+
   private async readSubLevels() {
     const levelEl = this.el.querySelector('bal-navigation-levels')
-    console.log('levelEl', levelEl)
     const levels = await levelEl?.getLevelInfos()
     if (levels) {
       this.levels = levels
-      console.log('levels', levels)
     }
   }
 
   render() {
-    console.log('render navigation')
+    console.log('render navigation', this.selectedMetaIndex, this.selectedMainIndex)
+
+    const selectedMetaLevel = this.levels[this.selectedMetaIndex]
+    const selectedMetaValue = selectedMetaLevel.value
+    const selectedMainValue = selectedMetaLevel.subLevels
+      ? selectedMetaLevel.subLevels[this.selectedMainIndex].value
+      : ''
+
     return (
       <Host>
         {/* TODO: Create custom component for meta navigation desktop */}
-        <div class="has-background-primary is-hidden-mobile" style={{ height: '48px' }}>
+        <div class="has-background-primary is-hidden-mobile mb-6" style={{ height: '48px' }}>
           <div class="container is-flex">
             <div class="is-flex-grow-1 has-text-white">
-              <bal-tabs interface="meta" inverted value="Private">
-                {this.levels.map(meta => (
+              <bal-tabs interface="meta" inverted value={selectedMetaValue}>
+                {this.levels.map((meta, index) => (
                   <bal-tab-item
                     label={meta.label}
-                    value={meta.label}
-                    onBalNavigate={ev => meta.onClick(ev.detail)}
+                    value={meta.value}
+                    onBalNavigate={ev => {
+                      meta.onClick(ev.detail)
+                      this.selectedMetaIndex = index
+                      this.isMainBodyOpen = false
+                    }}
                   ></bal-tab-item>
                 ))}
               </bal-tabs>
@@ -62,57 +105,74 @@ export class Navigation implements ComponentInterface {
         </div>
 
         {/* TODO: Create custom component for main navigation desktop */}
-        <div class="is-hidden-mobile container has-background-white has-radius has-shadow mt-6">
-          <div class="is-flex is-align-items-center" style={{ height: '80px' }}>
-            <div class="is-flex">
-              <bal-logo></bal-logo>
-            </div>
-            <div class="is-flex-grow-1 is-flex is-justify-content-end">
-              <bal-tabs interface="navbar" value="Versichern">
-                {this.levels[this.selectedMeta].subLevels?.map(main => (
-                  <bal-tab-item
-                    label={main.label}
-                    value={main.label}
-                    onBalNavigate={ev => main.onClick(ev.detail)}
-                  ></bal-tab-item>
-                ))}
-              </bal-tabs>
+        <div ref={el => (this.mainNavElement = el as HTMLDivElement)}>
+          <div class="is-hidden-mobile container has-background-white has-radius has-shadow">
+            <div class="is-flex is-align-items-center" style={{ height: '80px' }}>
+              <div class="is-flex">
+                <bal-logo></bal-logo>
+              </div>
+              <div class="is-flex-grow-1 is-flex is-justify-content-end">
+                <bal-tabs interface="navbar" value={selectedMainValue}>
+                  {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => (
+                    <bal-tab-item
+                      label={main.label}
+                      value={main.value}
+                      onBalNavigate={ev => {
+                        main.onClick(ev.detail)
+                        this.selectedMainIndex = index
+                        this.isMainBodyOpen = true
+                      }}
+                    ></bal-tab-item>
+                  ))}
+                </bal-tabs>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="has-background-white has-shadow has-radius container py-4">
-          {this.levels
-            .filter((_, index) => index === this.selectedMeta)
-            .map(meta => (
-              <div class="py-4">
-                {meta.subLevels
-                  ?.filter((_, mainIndex) => this.selectedMain === mainIndex)
-                  .map(main => (
-                    <div>
-                      <p>{main.linkLabel}</p>
-                      <div class="columns">
-                        {main.subLevels?.map((block, _, list) => (
-                          <bal-card
-                            class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}
-                            color={block.color || 'white'}
-                            flat
-                            space="small"
-                          >
-                            <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>
-                              <h4 class="title is-size-4">{block.label}</h4>
-                              {block.subLevels?.map(item => (
-                                <a class="is-link" onClick={ev => main.onClick(ev)}>
-                                  {item.label}
-                                </a>
-                              ))}
-                            </bal-card-content>
-                          </bal-card>
-                        ))}
+          <div
+            class={{
+              'has-background-white has-shadow has-radius container py-4': true,
+              'is-hidden': !this.isMainBodyOpen,
+            }}
+          >
+            {this.levels
+              .filter((_, index) => index === this.selectedMetaIndex)
+              .map(meta => (
+                <div class="py-4">
+                  {meta.subLevels
+                    ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
+                    .map(main => (
+                      <div>
+                        <p>{main.linkLabel}</p>
+                        <div class="columns is-multiline">
+                          {main.subLevels?.map((block, _, list) => (
+                            <bal-card
+                              class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}
+                              color={block.color || 'white'}
+                              flat
+                              space="small"
+                            >
+                              <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>
+                                <h4 class="title is-size-4">{block.label}</h4>
+                                {block.subLevels?.map(item => (
+                                  <a
+                                    class="is-link is-block py-1"
+                                    onClick={ev => {
+                                      main.onClick(ev)
+                                      this.isMainBodyOpen = false
+                                    }}
+                                  >
+                                    {item.label}
+                                  </a>
+                                ))}
+                              </bal-card-content>
+                            </bal-card>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-              </div>
-            ))}
+                    ))}
+                </div>
+              ))}
+          </div>
         </div>
 
         {/* <hr class="my-8" /> */}

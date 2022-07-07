@@ -14,27 +14,42 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-navigation v-bind="args" meta-value="private" main-value="0">
+  template: `<bal-navigation v-bind="args" meta-value="meta-1" main-value="meta-1-main-2">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
-    <bal-navigation-level-meta value="private" label="Private" link="http://" linkLabel="Zur Privatkundenübersicht">
-      <bal-navigation-level-main label="Versichern" link="http://" linkLabel="Alle Versicherungslösungen">
-        <bal-navigation-level-block label="Wohnen & Recht" link="http://">
-          <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://"></bal-navigation-level-block-item>
+    <bal-navigation-level-meta value="meta-1" label="Meta 1" link="http://" linkLabel="Go to Meta 1 Overview">
+      <bal-navigation-level-main value="meta-1-main-1" label="Meta Main 1" link="http://" linkLabel="Go to Main 1">
+        <bal-navigation-level-block label="Meta 1 Main 1 Block 1" link="http://">
+          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+        </bal-navigation-level-block>
+        <bal-navigation-level-block label="Meta 1 Main 1 Block 2" link="http://">
+          <bal-navigation-level-block-item label="Item 3" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
         <bal-navigation-level-block color="grey" label="Services">
-          <bal-navigation-level-block-item label="Beratung vereinbaren" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Service A" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Service B" link="http://"></bal-navigation-level-block-item>
+        </bal-navigation-level-block>
+        <bal-navigation-level-block label="Meta 1 Main 1 Block 2" link="http://">
+          <bal-navigation-level-block-item label="Item 4" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Item 5" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Item 6" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
-      <bal-navigation-level-main label="Versichern 2" link="http://" linkLabel="Alle Versicherungslösungen">
-        <bal-navigation-level-block label="Wohnen & Recht" link="http://">
-          <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://"></bal-navigation-level-block-item>
-        </bal-navigation-level-block>
-        <bal-navigation-level-block color="grey" label="Services">
-          <bal-navigation-level-block-item label="Beratung vereinbaren" link="http://"></bal-navigation-level-block-item>
+
+      <bal-navigation-level-main value="meta-1-main-2" label="Meta 1 Main 2" link="http://" linkLabel="Go to Main 1">
+        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
-    <bal-navigation-level-meta label="Unternehmen" link="http://" linkLabel="Zur Unternehmensübersicht">
+
+    <bal-navigation-level-meta value="meta-2" label="Meta 2" link="http://" linkLabel="Go to Meta 1 Overview">
+      <bal-navigation-level-main value="meta-2-main-1" label="Meta 2 Main 1" link="http://" linkLabel="Go to Main 1">
+        <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
+          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+          <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+        </bal-navigation-level-block>
+      </bal-navigation-level-main>
     </bal-navigation-level-meta>
   </bal-navigation-levels>
   <bal-button-group slot="meta-actions">
