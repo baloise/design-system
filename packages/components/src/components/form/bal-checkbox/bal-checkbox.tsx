@@ -234,7 +234,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           class={{
             ...elLabel.class(),
             ...elLabel.modifier(disabledClass).class(hasDisabled),
-            'option-label': true, // refactor - we dont have a style for this class
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
