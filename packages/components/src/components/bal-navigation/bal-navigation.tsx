@@ -80,29 +80,26 @@ export class Navigation implements ComponentInterface {
 
     return (
       <Host>
-        {/* TODO: Create custom component for meta navigation desktop */}
-        <div class="has-background-primary is-hidden-mobile mb-6" style={{ height: '48px' }}>
-          <div class="container is-flex">
-            <div class="is-flex-grow-1 has-text-white">
-              <bal-tabs interface="meta" inverted value={selectedMetaValue}>
-                {this.levels.map((meta, index) => (
-                  <bal-tab-item
-                    label={meta.label}
-                    value={meta.value}
-                    onBalNavigate={ev => {
-                      meta.onClick(ev.detail)
-                      this.selectedMetaIndex = index
-                      this.isMainBodyOpen = false
-                    }}
-                  ></bal-tab-item>
-                ))}
-              </bal-tabs>
-            </div>
-            <div class="is-flex-grow-1 is-flex is-justify-content-end has-text-white py-2">
-              <slot name="meta-actions" />
-            </div>
-          </div>
-        </div>
+        <bal-navigation-meta class="is-hidden-touch">
+          <bal-navigation-meta-start>
+            <bal-tabs interface="meta" inverted value={selectedMetaValue}>
+              {this.levels.map((meta, index) => (
+                <bal-tab-item
+                  label={meta.label}
+                  value={meta.value}
+                  href={meta.link}
+                  onBalNavigate={ev => {
+                    meta.onClick(ev.detail)
+                    this.selectedMetaIndex = index
+                  }}
+                ></bal-tab-item>
+              ))}
+            </bal-tabs>
+          </bal-navigation-meta-start>
+          <bal-navigation-meta-end>
+            <slot name="meta-actions" />
+          </bal-navigation-meta-end>
+        </bal-navigation-meta>
 
         {/* TODO: Create custom component for main navigation desktop */}
         <div ref={el => (this.mainNavElement = el as HTMLDivElement)}>

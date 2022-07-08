@@ -1,0 +1,300 @@
++block(nav)
+  +desktop
+    position: fixed
+    top: 0
+    left: 0
+    transition: transform .8s ease-in-out
+    width: 100vw
+  +modifier(translated)
+    transform: translateY(-48px)
+  +element(meta)
+    +unselectable
+    background: var(--bal-color-primary)
+    height: 48px
+    max-height: 48px
+    display: block
+
+    nav
+      display: flex
+      height: 100%
+      gap: .5rem
+      align-items: center
+      margin: 0 auto
+      width: calc(100vw - (96px - 2rem))
+      padding: 0
+      +widescreen
+        width: calc(100vw - (208px + 2rem))
+      +fullhd
+        width: calc(100vw - 304px)
+        max-width: calc(1824px + 1rem)
+
+      +element(start)
+        display: flex
+        flex-grow: 1
+        align-items: center
+        gap: .5rem
+
+      +element(end)
+        display: flex
+        flex-grow: 1
+        justify-content: flex-end
+        align-items: center
+        gap: .5rem
+        padding-right: 1rem
+
+  // TODO: removed after all the navigation will be done
+  //+desktop
+  //  position: fixed
+  //  top: 0
+  //  left: 0
+  //  transition: transform .8s ease-in-out
+  //  width: 100vw
+  //+modifier(translated)
+  //  transform: translateY(-48px)
+  //+element(metabar)
+  //  +unselectable
+  //  position: relative
+  //  display: block
+  //  background: var(--bal-color-primary-inverted)
+  //  height: 64px
+  //  max-height: 64px
+  //  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+  //  transition: transform .8s ease-in-out
+  //  +desktop
+  //    background: var(--bal-color-primary)
+  //    height: 48px
+  //    max-height: 48px
+  //    box-shadow: none
+  //  +modifier(translated)
+  //    transform: translateY(-100%)
+  //  +modifier(fixed)
+  //    position: fixed
+  //    left: 0
+  //    top: 0
+  //    width: 100vw
+  //  nav
+  //    display: flex
+  //    height: 100%
+  //    gap: .5rem
+  //    align-items: center
+  //    margin: 0 auto
+  //    padding: 0 1rem
+  //
+  //    +tablet
+  //      padding: 0 48px
+  //    +desktop
+  //      //padding: 0 48.5px
+  //      width: calc(100vw - (96px - 2rem))
+  //      padding: 0
+  //    +widescreen
+  //      //padding: 0 120px
+  //      padding: 0
+  //      width: calc(100vw - (208px + 2rem))
+  //    +fullhd
+  //      width: calc(100vw - 304px)
+  //      max-width: calc(1824px + 1rem)
+  //  +element(actions)
+  //    display: flex
+  //    flex-shrink: 0
+  //    justify-content: flex-end
+  //    align-items: center
+  //    margin-left: auto
+  //    gap: .5rem
+  //    +desktop
+  //      padding-right: 1rem
+  //  +element(menu)
+  //    position: static
+  //    display: none
+  //
+  //    +modifier(active)
+  //      +touch
+  //        position: fixed
+  //        display: block
+  //        background: var(--bal-color-white)
+  //    +touch
+  //      overflow-y: auto
+  //      flex-direction: column-reverse
+  //      top: 64px
+  //      left: 0
+  //      bottom: 0
+  //      right: 0
+  //      z-index: -1
+  //
+  //    +desktop
+  //      display: flex
+  //      flex: 1
+  //      gap: 1rem
+  //
+  //    +element(content)
+  //      display: block
+  //      padding: 0 1rem 64px
+  //
+  //      +tablet
+  //        padding: 0 3rem 64px
+  //
+  //      +element(panel)
+  //        > a
+  //          margin-bottom: 1.5rem
+  //          +tablet
+  //            margin-bottom: 2.5rem
+  //          +desktop
+  //            margin-bottom: 2rem
+  //        > div > div:first-of-type > div
+  //          +widescreen
+  //            display: flex
+  //            flex-wrap: wrap
+  //
+  //        +element(list)
+  //          position: relative
+  //          +tablet-only
+  //            padding-top: 2.5rem
+  //
+  //            &:after
+  //              content: ''
+  //              background: $grey-2
+  //              height: 2px
+  //              width: 100%
+  //              border-radius: $radius
+  //              position: absolute
+  //              top: 0
+  //              left: 0
+  //              right: 0
+  //
+  //          +modifier(context-default)
+  //            +widescreen
+  //              width: calc(50% - 30px)
+  //              &:nth-child(odd)
+  //                margin-right: 60px
+  //
+  //    +element(buttons)
+  //      display: flex
+  //      align-items: center
+  //      gap: .5rem
+  //
+  //      +touch
+  //        position: fixed
+  //        bottom: 0
+  //        left: 0
+  //        width: 100vw
+  //        justify-content: center
+  //        background: var(--bal-color-grey-2)
+  //        padding: 0.5rem
+  //
+  //      +desktop
+  //        margin-left: auto
+  //
+  //      > .field
+  //        flex: 1
+  //        +desktop
+  //          flex-shrink: 0
+  //          align-items: center
+  //
+  //      > bal-modal > div.bal-modal__container > div.bal-modal__content
+  //
+  //        +desktop
+  //          position: absolute
+  //          right: 48.5px
+  //
+  //        +widescreen
+  //          right: 120px
+  //
+  //+element(mainbar)
+  //  +unselectable
+  //  display: block
+  //  height: auto
+  //  z-index: 1000
+  //  transition: top .8s ease-in-out
+  //  +until-widescreen
+  //    width: 100vw
+  //    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+  //  nav
+  //    display: flex
+  //    justify-content: space-between
+  //    flex-wrap: wrap
+  //    align-items: center
+  //    padding: 0 48px
+  //    background-color: var(--bal-color-white)
+  //    position: relative
+  //    +until-widescreen
+  //      width: 100vw !important
+  //      max-width: none
+  //  +widescreen
+  //    margin: 1rem auto 0
+  //    width: calc(100vw - 160px)
+  //    nav
+  //      border-radius: 12px
+  //      transition: border-radius .8s ease-in-out
+  //      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+  //      &.active-navbar
+  //        border-bottom-left-radius: 0
+  //        border-bottom-right-radius: 0
+  //      > a
+  //        padding-left: .5rem
+  //        padding-right: .5rem
+  //  +fullhd
+  //    margin: 1.5rem auto 0
+  //    width: calc(100vw - 240px)
+  //    max-width: 1920px
+  //  +modifier(fixed)
+  //    position: fixed
+  //    top: 0
+  //  +block(tabs)
+  //    +modifier(context-header)
+  //      .bal-tabs__tabs
+  //        > ul
+  //          width: 100%
+  //      .bal-tabs__tabs__item
+  //        margin-right: 2rem
+  //        &:last-child
+  //          margin-right: 0
+  //      bal-tab-item
+  //        position: absolute
+  //        top: 100%
+  //        left: 0
+  //        right: 0
+  //        bottom: auto
+  //        width: 100%
+  //        pointer-events: none
+  //        height: 0
+  //        transition: border-radius .8s ease-in-out
+  //        background-color: var(--bal-color-white)
+  //        transform-origin: top center
+  //        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+  //        z-index: -1000
+  //        +widescreen
+  //          z-index: 1000
+  //          border-radius: 12px
+  //          top: calc(100% + 1px)
+  //
+  //          &::before
+  //            content: ''
+  //            display: block
+  //            position: absolute
+  //            opacity: 0
+  //            box-shadow: none
+  //            height: 1px
+  //            background-color: var(--bal-color-grey-3)
+  //            top: -1px
+  //            left: 12px
+  //            width: calc(100% - 24px)
+  //            transition: opacity .8s ease-in-out, width .8s ease-in-out, left .4s ease-in-out
+  //        > *
+  //          width: 100%
+  //          padding: 1rem 3rem
+  //          opacity: 0
+  //          transition: opacity .4s ease-in-out
+  //        //TODO add large-desktop viewport
+  //        &.bal-tab-item--active-tab
+  //          pointer-events: auto
+  //          border-top-left-radius: 0
+  //          border-top-right-radius: 0
+  //          transition: border-radius .8s ease-in-out
+  //          +widescreen
+  //            &::before
+  //              opacity: 1
+  //              width: 100%
+  //              left: 0
+  //              transition: opacity .4s ease-in-out, width .8s ease-in-out, left .8s  ease-in-out
+  //          > *
+  //            opacity: 1
+  //            transition: opacity .6s .4s ease-in-out
