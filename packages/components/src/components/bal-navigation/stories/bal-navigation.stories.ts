@@ -14,7 +14,7 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-navigation v-bind="args" meta-value="meta-1" main-value="meta-1-main-2">
+  template: `<bal-navigation v-bind="args" meta-value="meta-1" main-value="meta-1-main-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Meta 1" link="http://" linkLabel="Go to Meta 1 Overview">
       <bal-navigation-level-main value="meta-1-main-1" label="Meta Main 1" link="http://" linkLabel="Go to Main 1">
