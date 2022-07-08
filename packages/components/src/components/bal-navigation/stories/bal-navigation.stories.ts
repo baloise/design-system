@@ -40,7 +40,7 @@ export const Basic = args => ({
   },
   template: `<bal-navigation v-bind="args" meta-value="meta-1" main-value="meta-1-main-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
-    <bal-navigation-level-meta value="meta-1" label="Meta 1" link="http://" linkLabel="Go to Meta 1 Overview">
+    <bal-navigation-level-meta value="meta-1" label="Meta 1" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 1 Overview">
       <bal-navigation-level-main value="meta-1-main-1" label="Meta Main 1" link="http://" linkLabel="Go to Main 1">
         <bal-navigation-level-block label="Meta 1 Main 1 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -65,7 +65,7 @@ export const Basic = args => ({
         </bal-navigation-level-block>
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
-    <bal-navigation-level-meta value="meta-2" label="Meta 2" link="http://" linkLabel="Go to Meta 1 Overview">
+    <bal-navigation-level-meta value="meta-2" label="Meta 2" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 1 Overview">
       <bal-navigation-level-main value="meta-2-main-1" label="Meta 2 Main 1" link="http://" linkLabel="Go to Main 1">
         <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>

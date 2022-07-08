@@ -3,10 +3,8 @@
     position: fixed
     top: 0
     left: 0
-    transition: transform .8s ease-in-out
     width: 100vw
-  +modifier(translated)
-    transform: translateY(-48px)
+
   +element(meta)
     +unselectable
     background: var(--bal-color-primary)
@@ -28,19 +26,19 @@
         width: calc(100vw - 304px)
         max-width: calc(1824px + 1rem)
 
-      +element(start)
-        display: flex
-        flex-grow: 1
-        align-items: center
-        gap: .5rem
+    +element(start)
+      display: flex
+      flex-grow: 1
+      align-items: center
+      gap: .5rem
 
-      +element(end)
-        display: flex
-        flex-grow: 1
-        justify-content: flex-end
-        align-items: center
-        gap: .5rem
-        padding-right: 1rem
+    +element(end)
+      display: flex
+      flex-grow: 1
+      justify-content: flex-end
+      align-items: center
+      gap: .5rem
+      padding-right: 1rem
 
   // TODO: removed after all the navigation will be done
   //+desktop

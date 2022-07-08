@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Watch, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-navigation',
@@ -71,7 +72,7 @@ export class Navigation implements ComponentInterface {
 
   render() {
     console.log('render navigation', this.selectedMetaIndex, this.selectedMainIndex)
-
+    const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
     const selectedMainValue = selectedMetaLevel.subLevels
@@ -79,20 +80,16 @@ export class Navigation implements ComponentInterface {
       : ''
 
     return (
-      <Host>
+      <Host
+        class={{
+          ...navigationEl.class(),
+        }}
+      >
         <bal-navigation-meta class="is-hidden-touch">
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted value={selectedMetaValue}>
-              {this.levels.map((meta, index) => (
-                <bal-tab-item
-                  label={meta.label}
-                  value={meta.value}
-                  href={meta.link}
-                  onBalNavigate={ev => {
-                    meta.onClick(ev.detail)
-                    this.selectedMetaIndex = index
-                  }}
-                ></bal-tab-item>
+              {this.levels.map(meta => (
+                <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
               ))}
             </bal-tabs>
           </bal-navigation-meta-start>
