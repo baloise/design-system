@@ -281,51 +281,20 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        {this.interface !== 'meta' ? (
-          <div class="columns is-multiline">
-            <div
-              class={{
-                'column': true,
-                'is-full': !isVertical,
-                [`is-${this.verticalColSize}`]: isVertical,
-                'bal-tabs__col-items': true,
-                'bal-tabs__col-items--vertical': isVertical,
-              }}
-            >
-              <Tabs
-                value={this.value}
-                context={this.interface}
-                inverted={this.inverted}
-                tabs={this.tabsOptions}
-                border={this.border}
-                expanded={this.expanded}
-                clickable={this.clickable}
-                isReady={this.isReady}
-                iconPosition={this.iconPosition}
-                onSelectTab={(e, t) => this.onSelectTab(e, t)}
-                lineWidth={this.lineWidth}
-                lineOffsetLeft={this.lineOffsetLeft}
-                lineHeight={this.lineHeight}
-                lineOffsetTop={this.lineOffsetTop}
-                vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
-                selectOnMobile={this.selectOnMobile}
-              ></Tabs>
-            </div>
-
-            <div
-              class={{
-                'column': true,
-                'is-full': !isVertical,
-                'bal-tabs__col-content': true,
-                'bal-tabs__col-content--vertical': isVertical,
-                'bal-tabs__col-content--full': this.verticalColSize === 'full',
-              }}
-            >
-              <slot></slot>
-            </div>
-          </div>
-        ) : (
-          <div>
+        <div
+          class={{
+            'columns is-multiline': this.interface !== 'meta',
+          }}
+        >
+          <div
+            class={{
+              'column': this.interface !== 'meta',
+              'is-full': !isVertical,
+              [`is-${this.verticalColSize}`]: isVertical,
+              'bal-tabs__col-items': true,
+              'bal-tabs__col-items--vertical': isVertical,
+            }}
+          >
             <Tabs
               value={this.value}
               context={this.interface}
@@ -341,12 +310,22 @@ export class Tabs {
               lineOffsetLeft={this.lineOffsetLeft}
               lineHeight={this.lineHeight}
               lineOffsetTop={this.lineOffsetTop}
-              vertical={this.parseVertical()}
+              vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
               selectOnMobile={this.selectOnMobile}
             ></Tabs>
+          </div>
+          <div
+            class={{
+              'column': this.interface !== 'meta',
+              'is-full': !isVertical,
+              'bal-tabs__col-content': true,
+              'bal-tabs__col-content--vertical': isVertical,
+              'bal-tabs__col-content--full': this.verticalColSize === 'full',
+            }}
+          >
             <slot></slot>
           </div>
-        )}
+        </div>
       </Host>
     )
   }
