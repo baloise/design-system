@@ -1265,6 +1265,18 @@ export namespace Components {
     }
     interface BalNavigationMainHead {
     }
+    interface BalNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalNavigationMenuPanelList {
+        "color": 'white' | 'grey';
+        "headline"?: string;
+        "href"?: string;
+    }
+    interface BalNavigationMenuPanelListItem {
+        "href"?: string;
+    }
     interface BalNavigationMeta {
     }
     interface BalNavigationMetaEnd {
@@ -2740,6 +2752,24 @@ declare global {
         prototype: HTMLBalNavigationMainHeadElement;
         new (): HTMLBalNavigationMainHeadElement;
     };
+    interface HTMLBalNavigationMenuPanelElement extends Components.BalNavigationMenuPanel, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelElement: {
+        prototype: HTMLBalNavigationMenuPanelElement;
+        new (): HTMLBalNavigationMenuPanelElement;
+    };
+    interface HTMLBalNavigationMenuPanelListElement extends Components.BalNavigationMenuPanelList, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelListElement: {
+        prototype: HTMLBalNavigationMenuPanelListElement;
+        new (): HTMLBalNavigationMenuPanelListElement;
+    };
+    interface HTMLBalNavigationMenuPanelListItemElement extends Components.BalNavigationMenuPanelListItem, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelListItemElement: {
+        prototype: HTMLBalNavigationMenuPanelListItemElement;
+        new (): HTMLBalNavigationMenuPanelListItemElement;
+    };
     interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
     }
     var HTMLBalNavigationMetaElement: {
@@ -3027,6 +3057,9 @@ declare global {
         "bal-navigation-main": HTMLBalNavigationMainElement;
         "bal-navigation-main-body": HTMLBalNavigationMainBodyElement;
         "bal-navigation-main-head": HTMLBalNavigationMainHeadElement;
+        "bal-navigation-menu-panel": HTMLBalNavigationMenuPanelElement;
+        "bal-navigation-menu-panel-list": HTMLBalNavigationMenuPanelListElement;
+        "bal-navigation-menu-panel-list-item": HTMLBalNavigationMenuPanelListItemElement;
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
@@ -4369,6 +4402,18 @@ declare namespace LocalJSX {
     }
     interface BalNavigationMainHead {
     }
+    interface BalNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalNavigationMenuPanelList {
+        "color"?: 'white' | 'grey';
+        "headline"?: string;
+        "href"?: string;
+    }
+    interface BalNavigationMenuPanelListItem {
+        "href"?: string;
+    }
     interface BalNavigationMeta {
     }
     interface BalNavigationMetaEnd {
@@ -5322,6 +5367,9 @@ declare namespace LocalJSX {
         "bal-navigation-main": BalNavigationMain;
         "bal-navigation-main-body": BalNavigationMainBody;
         "bal-navigation-main-head": BalNavigationMainHead;
+        "bal-navigation-menu-panel": BalNavigationMenuPanel;
+        "bal-navigation-menu-panel-list": BalNavigationMenuPanelList;
+        "bal-navigation-menu-panel-list-item": BalNavigationMenuPanelListItem;
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
@@ -5449,6 +5497,9 @@ declare module "@stencil/core" {
             "bal-navigation-main": LocalJSX.BalNavigationMain & JSXBase.HTMLAttributes<HTMLBalNavigationMainElement>;
             "bal-navigation-main-body": LocalJSX.BalNavigationMainBody & JSXBase.HTMLAttributes<HTMLBalNavigationMainBodyElement>;
             "bal-navigation-main-head": LocalJSX.BalNavigationMainHead & JSXBase.HTMLAttributes<HTMLBalNavigationMainHeadElement>;
+            "bal-navigation-menu-panel": LocalJSX.BalNavigationMenuPanel & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelElement>;
+            "bal-navigation-menu-panel-list": LocalJSX.BalNavigationMenuPanelList & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelListElement>;
+            "bal-navigation-menu-panel-list-item": LocalJSX.BalNavigationMenuPanelListItem & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelListItemElement>;
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
