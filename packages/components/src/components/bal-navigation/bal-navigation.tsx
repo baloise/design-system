@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Watch, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
+import { isPlatform } from '../../utils/platform'
 
 @Component({
   tag: 'bal-navigation',
@@ -9,11 +10,17 @@ export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
   private mainNavElement!: HTMLBalNavigationMainElement
+  private previousY = 0
+  private scrolling = false
 
+  @State() isTranslated = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
   @State() isMainBodyOpen = false
+  @State() isWideOrFullHd = false
+
+  @Prop() logoPath?: string = '/'
 
   @Prop() metaValue?: string
   @Watch('metaValue')
@@ -34,10 +41,33 @@ export class Navigation implements ComponentInterface {
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.isTranslated = false
+    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
+  }
+
+  @Listen('scroll', { target: 'window', passive: true })
+  handleScroll() {
+    this.scrolling = true
+  }
+
+  translateMainNav() {
+    this.isTranslated = window.scrollY > this.previousY
+    this.previousY = window.scrollY
+  }
+
   async connectedCallback() {
+    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
+    setInterval(() => {
+      if (this.scrolling) {
+        this.scrolling = false
+        this.translateMainNav()
+      }
+    }, 300)
   }
 
   disconnectedCallback() {
@@ -56,10 +86,6 @@ export class Navigation implements ComponentInterface {
         this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
       this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
     }
-    console.log('updateIndexes', this.metaValue)
-    console.log('updateIndexes', this.mainValue)
-    console.log('updateIndexes', this.selectedMetaIndex)
-    console.log('updateIndexes', this.selectedMainIndex)
   }
 
   private async readSubLevels() {
@@ -83,6 +109,7 @@ export class Navigation implements ComponentInterface {
       <Host
         class={{
           ...navigationEl.class(),
+          'bal-nav--translated': this.isTranslated,
         }}
       >
         <bal-navigation-meta class="is-hidden-touch">
@@ -108,16 +135,24 @@ export class Navigation implements ComponentInterface {
         </bal-navigation-meta>
 
         {/* TODO: Create custom component for main navigation desktop */}
-        <bal-navigation-main ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}>
+        <bal-navigation-main
+          class="is-hidden-touch"
+          ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
+        >
           <bal-navigation-main-head
             slot="main-head"
-            class="is-hidden-mobile container has-background-white has-radius has-shadow"
+            class={{
+              'has-radius-large': this.isWideOrFullHd,
+              'is-hidden-mobile has-background-white has-shadow is-block': true,
+            }}
           >
-            <div class="is-flex is-align-items-center" style={{ height: '80px' }}>
-              <div class="is-flex">
-                <bal-logo></bal-logo>
+            <div class="is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-space-between">
+              <div class="is-flex mr-4">
+                <a href={this.logoPath} class="bal-nav__main-head-logo py-4">
+                  <bal-logo color="blue"></bal-logo>
+                </a>
               </div>
-              <div class="is-flex-grow-1 is-flex is-justify-content-end">
+              <div class="is-flex">
                 <bal-tabs interface="navbar" value={selectedMainValue}>
                   {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => (
                     <bal-tab-item
@@ -137,7 +172,7 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-body
             slot="main-body"
             class={{
-              'has-background-white has-shadow has-radius container py-4': true,
+              'has-background-white has-shadow has-radius py-4': true,
               'is-hidden': !this.isMainBodyOpen,
             }}
           >

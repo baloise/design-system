@@ -4,6 +4,9 @@
     top: 0
     left: 0
     width: 100vw
+    transition: transform .3s ease-in-out
+  +modifier(translated)
+    transform: translateY(-48px)
 
   +element(meta)
     +unselectable
@@ -40,6 +43,45 @@
       gap: .5rem
       padding-right: 1rem
 
+  +element(main)
+    +unselectable
+    display: block
+    height: auto
+    z-index: 1000
+    transition: top .3s ease-in-out
+    +until-widescreen
+      width: 100vw
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    .bal-nav__main-head
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      align-items: center
+      padding: 0 3rem
+      //background-color: var(--bal-color-white)
+      position: relative
+      +until-widescreen
+        width: 100vw !important
+        max-width: none
+    +widescreen
+      margin: 1rem auto 0
+      width: calc(100vw - 160px)
+      .bal-nav__main-head
+        transition: border-radius .3s ease-in-out
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+        &.active-navbar
+          border-bottom-left-radius: 0
+          border-bottom-right-radius: 0
+        .bal-nav__main-head-logo
+          padding-left: .5rem
+          padding-right: .5rem
+    +fullhd
+      margin: 1.5rem auto 0
+      width: calc(100vw - 240px)
+      max-width: 1920px
+    //TODO check tabs context
+    .bal-tabs--context-navbar .bal-tabs__tabs > ul
+      margin: 0 0 0 -1rem
   // TODO: removed after all the navigation will be done
   //+desktop
   //  position: fixed

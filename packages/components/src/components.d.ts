@@ -1224,6 +1224,7 @@ export namespace Components {
         "interface": Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        "logoPath"?: string;
         "mainValue"?: string;
         "metaValue"?: string;
     }
@@ -4362,6 +4363,7 @@ declare namespace LocalJSX {
         "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        "logoPath"?: string;
         "mainValue"?: string;
         "metaValue"?: string;
     }

@@ -283,12 +283,12 @@ export class Tabs {
       >
         <div
           class={{
-            'columns is-multiline': this.interface !== 'meta',
+            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navbar',
           }}
         >
           <div
             class={{
-              'column': this.interface !== 'meta',
+              'column': this.interface !== 'meta' && this.interface !== 'navbar',
               'is-full': !isVertical,
               [`is-${this.verticalColSize}`]: isVertical,
               'bal-tabs__col-items': true,
@@ -316,7 +316,7 @@ export class Tabs {
           </div>
           <div
             class={{
-              'column': this.interface !== 'meta',
+              'column': this.interface !== 'meta' && this.interface !== 'navbar',
               'is-full': !isVertical,
               'bal-tabs__col-content': true,
               'bal-tabs__col-content--vertical': isVertical,
