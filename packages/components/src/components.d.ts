@@ -1259,6 +1259,12 @@ export namespace Components {
     interface BalNavigationLevels {
         "getLevelInfos": () => Promise<LevelInfo[]>;
     }
+    interface BalNavigationMain {
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
     interface BalNavigationMeta {
     }
     interface BalNavigationMetaEnd {
@@ -2716,6 +2722,24 @@ declare global {
         prototype: HTMLBalNavigationLevelsElement;
         new (): HTMLBalNavigationLevelsElement;
     };
+    interface HTMLBalNavigationMainElement extends Components.BalNavigationMain, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainElement: {
+        prototype: HTMLBalNavigationMainElement;
+        new (): HTMLBalNavigationMainElement;
+    };
+    interface HTMLBalNavigationMainBodyElement extends Components.BalNavigationMainBody, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainBodyElement: {
+        prototype: HTMLBalNavigationMainBodyElement;
+        new (): HTMLBalNavigationMainBodyElement;
+    };
+    interface HTMLBalNavigationMainHeadElement extends Components.BalNavigationMainHead, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainHeadElement: {
+        prototype: HTMLBalNavigationMainHeadElement;
+        new (): HTMLBalNavigationMainHeadElement;
+    };
     interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
     }
     var HTMLBalNavigationMetaElement: {
@@ -3000,6 +3024,9 @@ declare global {
         "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
         "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
         "bal-navigation-levels": HTMLBalNavigationLevelsElement;
+        "bal-navigation-main": HTMLBalNavigationMainElement;
+        "bal-navigation-main-body": HTMLBalNavigationMainBodyElement;
+        "bal-navigation-main-head": HTMLBalNavigationMainHeadElement;
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
@@ -4336,6 +4363,12 @@ declare namespace LocalJSX {
     }
     interface BalNavigationLevels {
     }
+    interface BalNavigationMain {
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
     interface BalNavigationMeta {
     }
     interface BalNavigationMetaEnd {
@@ -5286,6 +5319,9 @@ declare namespace LocalJSX {
         "bal-navigation-level-main": BalNavigationLevelMain;
         "bal-navigation-level-meta": BalNavigationLevelMeta;
         "bal-navigation-levels": BalNavigationLevels;
+        "bal-navigation-main": BalNavigationMain;
+        "bal-navigation-main-body": BalNavigationMainBody;
+        "bal-navigation-main-head": BalNavigationMainHead;
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
@@ -5410,6 +5446,9 @@ declare module "@stencil/core" {
             "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
             "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
             "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
+            "bal-navigation-main": LocalJSX.BalNavigationMain & JSXBase.HTMLAttributes<HTMLBalNavigationMainElement>;
+            "bal-navigation-main-body": LocalJSX.BalNavigationMainBody & JSXBase.HTMLAttributes<HTMLBalNavigationMainBodyElement>;
+            "bal-navigation-main-head": LocalJSX.BalNavigationMainHead & JSXBase.HTMLAttributes<HTMLBalNavigationMainHeadElement>;
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;

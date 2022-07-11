@@ -8,7 +8,7 @@ import { BEM } from '../../utils/bem'
 export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
-  private mainNavElement!: HTMLDivElement
+  private mainNavElement!: HTMLBalNavigationMainElement
 
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -108,8 +108,11 @@ export class Navigation implements ComponentInterface {
         </bal-navigation-meta>
 
         {/* TODO: Create custom component for main navigation desktop */}
-        <div ref={el => (this.mainNavElement = el as HTMLDivElement)}>
-          <div class="is-hidden-mobile container has-background-white has-radius has-shadow">
+        <bal-navigation-main ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}>
+          <bal-navigation-main-head
+            slot="main-head"
+            class="is-hidden-mobile container has-background-white has-radius has-shadow"
+          >
             <div class="is-flex is-align-items-center" style={{ height: '80px' }}>
               <div class="is-flex">
                 <bal-logo></bal-logo>
@@ -130,8 +133,9 @@ export class Navigation implements ComponentInterface {
                 </bal-tabs>
               </div>
             </div>
-          </div>
-          <div
+          </bal-navigation-main-head>
+          <bal-navigation-main-body
+            slot="main-body"
             class={{
               'has-background-white has-shadow has-radius container py-4': true,
               'is-hidden': !this.isMainBodyOpen,
@@ -175,8 +179,8 @@ export class Navigation implements ComponentInterface {
                     ))}
                 </div>
               ))}
-          </div>
-        </div>
+          </bal-navigation-main-body>
+        </bal-navigation-main>
 
         {/* <hr class="my-8" /> */}
 
