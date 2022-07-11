@@ -89,7 +89,16 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted value={selectedMetaValue}>
               {this.levels.map(meta => (
-                <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
+                // TODO: decide if we need to add the href prop: href={meta.link}
+                <bal-tab-item
+                  label={meta.label}
+                  value={meta.value}
+                  onBalNavigate={ev => {
+                    meta.onClick(ev.detail)
+                    this.metaValue = meta.value
+                    this.isMainBodyOpen = false
+                  }}
+                />
               ))}
             </bal-tabs>
           </bal-navigation-meta-start>
