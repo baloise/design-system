@@ -56,10 +56,6 @@ export class Navigation implements ComponentInterface {
         this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
       this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
     }
-    console.log('updateIndexes', this.metaValue)
-    console.log('updateIndexes', this.mainValue)
-    console.log('updateIndexes', this.selectedMetaIndex)
-    console.log('updateIndexes', this.selectedMainIndex)
   }
 
   private async readSubLevels() {
