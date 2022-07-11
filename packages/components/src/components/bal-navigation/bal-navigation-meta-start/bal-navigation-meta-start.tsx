@@ -1,5 +1,5 @@
 import { Component, h, Host } from '@stencil/core'
-import { BEM } from '../../../../../../../../../../Downloads/design-system-feat-bal-main-navigation/packages/components/src/utils/bem'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-meta-start',
