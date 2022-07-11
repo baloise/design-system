@@ -1,0 +1,153 @@
+@import './bal-checkbox-group/bal-checkbox-group';
+
+bal-checkbox {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  outline: none;
+  min-width: 24px;
+  min-height: 48px;
+
+  &.is-flat {
+    min-height: 24px;
+  }
+
+  &.bal-checkbox {
+    input[type='checkbox'] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      outline: 0;
+    }
+
+    input[type='checkbox'] + label {
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    label {
+      @include font-smoothing();
+      @include margin(0);
+
+      line-height: 24px;
+      contain: layout style;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+
+      min-height: 24px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: $blue;
+      font-family: $family-primary;
+
+      bal-text {
+        padding-left: 32px;
+      }
+
+      bal-text:empty {
+        padding-left: 0;
+      }
+    }
+
+    @include desktop() {
+      label {
+        font-size: $size-normal;
+      }
+    }
+
+    label::before,
+    label::after {
+      display: inline-block;
+      position: absolute;
+      background-color: transparent;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 24px 24px;
+    }
+
+    label::before {
+      content: '';
+      left: 0;
+      height: 24px;
+      width: 24px;
+      border: 2px solid $blue;
+      border-radius: $radius;
+    }
+
+    label::after {
+      content: none;
+      left: 9px;
+      width: 7px;
+      height: 13px;
+      margin-top: -4px;
+      border-bottom: 2px solid $white;
+      border-right: 2px solid $white;
+      border-radius: 1px;
+      border-top: 0;
+      border-left: 0;
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    input[type='checkbox']:not(.is-disabled) + label:hover {
+      &::before {
+        background: $grey-1;
+        border-color: $light-blue-dark;
+      }
+    }
+
+    input[type='checkbox']:checked:not(.is-disabled) + label:hover {
+      &::before {
+        border-color: $light-blue-dark;
+        background: $light-blue-dark;
+      }
+    }
+
+    input[type='checkbox']:checked + label::before {
+      background: $blue;
+    }
+
+    input[type='checkbox']:checked + label::after {
+      content: '';
+    }
+
+    input[type='checkbox'].is-disabled + label {
+      cursor: default;
+    }
+
+    input[type='checkbox'].is-disabled + label:before {
+      background: $grey-2;
+      border-color: $grey-2;
+    }
+
+    input[type='checkbox']:checked.is-disabled + label:before {
+      background: $grey-2;
+    }
+
+    input[type='checkbox']:checked.is-disabled + label:after {
+      border-color: $grey-5;
+    }
+
+    input[type='checkbox']:focus-visible + label::before {
+      box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important;
+    }
+  }
+}
+
+@import './bal-switch';
