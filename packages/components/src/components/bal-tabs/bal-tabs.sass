@@ -8,6 +8,13 @@
       height: 80px
       .bal-tabs__tabs > ul
         justify-content: flex-end
+  +modifier(context-header)
+    height: 64px
+    +widescreen
+      height: 80px
+    .bal-tabs__tabs > ul
+      justify-content: flex-end
+      margin: 0 0 0 -1rem
   +modifier(fullwidth)
     display: block
     flex: 1
@@ -184,6 +191,10 @@
           margin-top: -1px
         +modifier(context-navbar)
           +desktop
+            height: 80px
+        +modifier(context-header)
+          height: 64px
+          +widescreen
             height: 80px
         +modifier(context-meta)
           height: 48px

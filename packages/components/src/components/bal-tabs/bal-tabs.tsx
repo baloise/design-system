@@ -113,9 +113,11 @@ export class Tabs {
     this.debounceChanged()
     this.updateTabs()
 
-    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-      this.updateTabs()
-    })
+    if (this.interface !== 'header') {
+      this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+        this.updateTabs()
+      })
+    }
   }
 
   disconnectedCallback() {
@@ -128,13 +130,12 @@ export class Tabs {
   componentDidLoad() {
     this.didInit = true
     let value = this.value
-    if (value === undefined || value === '') {
+    if ((value === undefined || value === '') && this.interface !== 'header') {
       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
       if (availableTabs.length > 0) {
         value = availableTabs[0].value
       }
     }
-
     this.value = value
     this.valueChanged(value, this.value)
   }
@@ -191,9 +192,29 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
+          this.interface === 'header' && this.setActiveNav(true, event)
+        } else {
+          if (this.interface === 'header') {
+            if (tab.value === this.value) {
+              this.value = ''
+              this.balChange.emit(this.value)
+              this.setActiveNav(false, event)
+            }
+          }
         }
       }
     }
+  }
+
+  private setActiveNav(active: boolean, event: MouseEvent | CustomEvent) {
+    console.log('SET ACTIVE NAV', active)
+    console.log('SET ACTIVE NAV ev', event)
+    //REFACTOR
+    /*const target = event.target as HTMLElement
+    const parentNav = target ? target.closest('nav') : null
+    if (!!parentNav) {
+      active ? parentNav.classList.add('active-navbar') : parentNav.classList.remove('active-navbar')
+    }*/
   }
 
   private parseVertical(): Props.BalTabsVertical {
@@ -237,6 +258,8 @@ export class Tabs {
               this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
             }
           }
+        } else {
+          this.lineWidth = 0
         }
       }
     }, timeout)
@@ -283,12 +306,12 @@ export class Tabs {
       >
         <div
           class={{
-            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navbar',
+            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'header',
           }}
         >
           <div
             class={{
-              'column': this.interface !== 'meta' && this.interface !== 'navbar',
+              'column': this.interface !== 'meta' && this.interface !== 'header',
               'is-full': !isVertical,
               [`is-${this.verticalColSize}`]: isVertical,
               'bal-tabs__col-items': true,
@@ -316,7 +339,7 @@ export class Tabs {
           </div>
           <div
             class={{
-              'column': this.interface !== 'meta' && this.interface !== 'navbar',
+              'column': this.interface !== 'meta' && this.interface !== 'header',
               'is-full': !isVertical,
               'bal-tabs__col-content': true,
               'bal-tabs__col-content--vertical': isVertical,

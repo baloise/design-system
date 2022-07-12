@@ -19,6 +19,7 @@ export class Navigation implements ComponentInterface {
   @State() selectedMainIndex = 0
   @State() isMainBodyOpen = false
   @State() isWideOrFullHd = false
+  @State() selectedMainValue?: string = ''
 
   @Prop() logoPath?: string = '/'
 
@@ -38,6 +39,7 @@ export class Navigation implements ComponentInterface {
   clickOnOutside(event: UIEvent) {
     if (!this.mainNavElement.contains(event.target as Node) && this.isMainBodyOpen) {
       this.isMainBodyOpen = false
+      this.selectedMainValue = ''
     }
   }
 
@@ -77,14 +79,18 @@ export class Navigation implements ComponentInterface {
     }
   }
 
+  componentDidRender() {
+    this.mainNavElement = this.el.querySelector('bal-navigation-main') as HTMLBalNavigationMainElement
+  }
+
   private updateIndexes() {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
       this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
 
-      const selectedMainIndex =
+      /*const selectedMainIndex =
         this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
-      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
+      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0*/
     }
   }
 
@@ -97,12 +103,15 @@ export class Navigation implements ComponentInterface {
   }
 
   render() {
+    //console.log('render navigation', this.selectedMetaIndex, this.selectedMainIndex)
+    console.log('render navigation', this.selectedMetaIndex)
+    console.log('render this.selectedMainValue', this.selectedMainValue)
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
-    const selectedMainValue = selectedMetaLevel.subLevels
+    /*const selectedMainValue = selectedMetaLevel.subLevels
       ? selectedMetaLevel.subLevels[this.selectedMainIndex].value
-      : ''
+      : ''*/
 
     return (
       <Host
@@ -139,7 +148,7 @@ export class Navigation implements ComponentInterface {
         {/* TODO: Create custom component for main navigation desktop */}
         <bal-navigation-main
           class="is-hidden-touch"
-          ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
+          //ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
         >
           <bal-navigation-main-head
             slot="main-head"
@@ -155,14 +164,15 @@ export class Navigation implements ComponentInterface {
                 </a>
               </div>
               <div class="is-flex">
-                <bal-tabs interface="navbar" value={selectedMainValue}>
-                  {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => (
+                <bal-tabs interface="header" value={this.selectedMainValue}>
+                  {this.levels[this.selectedMetaIndex].subLevels?.map(main => (
                     <bal-tab-item
                       label={main.label}
                       value={main.value}
                       onBalNavigate={ev => {
                         main.onClick(ev.detail)
-                        this.selectedMainIndex = index
+                        //this.selectedMainIndex = index
+                        this.selectedMainValue = main.value
                         this.isMainBodyOpen = true
                       }}
                     ></bal-tab-item>

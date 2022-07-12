@@ -90,7 +90,7 @@ export namespace Props {
   export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
-  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
+  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'header'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
   export type BalTabsVertical = boolean | 'mobile' | 'tablet'
   // export type BalTabsColSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'
