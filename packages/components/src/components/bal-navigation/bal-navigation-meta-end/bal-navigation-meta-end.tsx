@@ -3,8 +3,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-meta-end',
-  scoped: false,
-  shadow: false,
 })
 export class NavigationMetaEnd {
   render() {

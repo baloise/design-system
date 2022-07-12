@@ -10,8 +10,9 @@ export class NavigationLevelMeta implements ComponentInterface {
 
   @Prop() label = ''
   @Prop() value = `meta-value-${navigationLevelMetaIds++}`
-  @Prop() link?: string = undefined
-  @Prop() linkLabel?: string = undefined
+  @Prop() link?: string
+  @Prop() linkLabel?: string
+  @Prop() metaLink?: string
 
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
@@ -24,6 +25,7 @@ export class NavigationLevelMeta implements ComponentInterface {
       label: this.label,
       link: this.link,
       linkLabel: this.linkLabel,
+      metaLink: this.metaLink,
       subLevels,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }
