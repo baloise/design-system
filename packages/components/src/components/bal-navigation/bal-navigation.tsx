@@ -165,13 +165,13 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {this.levels[this.selectedMetaIndex].subLevels?.map(main => (
+                  {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => (
                     <bal-tab-item
                       label={main.label}
                       value={main.value}
                       onBalNavigate={ev => {
                         main.onClick(ev.detail)
-                        //this.selectedMainIndex = index
+                        this.selectedMainIndex = index
                         this.selectedMainValue = main.value
                         this.isMainBodyOpen = true
                       }}
