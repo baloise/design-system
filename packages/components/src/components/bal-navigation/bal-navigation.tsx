@@ -172,48 +172,91 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-body
             slot="main-body"
             class={{
-              'has-background-white has-shadow has-radius py-4': true,
               'is-hidden': !this.isMainBodyOpen,
             }}
           >
             {this.levels
               .filter((_, index) => index === this.selectedMetaIndex)
-              .map(meta => (
-                <div class="py-4">
-                  {meta.subLevels
-                    ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
-                    .map(main => (
-                      <div>
-                        <p>{main.linkLabel}</p>
-                        <div class="columns is-multiline">
-                          {main.subLevels?.map((block, _, list) => (
-                            <bal-card
-                              class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}
-                              color={block.color || 'white'}
-                              flat
-                              space="small"
-                            >
-                              <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>
-                                <h4 class="title is-size-4">{block.label}</h4>
+              .map(meta =>
+                meta.subLevels
+                  ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
+                  .map(main => (
+                    <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
+                      <div slot="left">
+                        {main.subLevels
+                          ?.filter(subLevel => subLevel.color !== 'grey')
+                          .map(block => (
+                            <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
+                              <div slot="links">
                                 {block.subLevels?.map(item => (
-                                  <a
-                                    class="is-link is-block py-1"
-                                    onClick={ev => {
-                                      main.onClick(ev)
-                                      this.isMainBodyOpen = false
-                                    }}
-                                  >
+                                  <bal-navigation-menu-panel-list-item href={item.link}>
                                     {item.label}
-                                  </a>
+                                  </bal-navigation-menu-panel-list-item>
                                 ))}
-                              </bal-card-content>
-                            </bal-card>
+                              </div>
+                            </bal-navigation-menu-panel-list>
                           ))}
-                        </div>
                       </div>
-                    ))}
-                </div>
-              ))}
+                      <div slot="right">
+                        {main.subLevels
+                          ?.filter(subLevel => subLevel.color === 'grey')
+                          .map(block => (
+                            <bal-navigation-menu-panel-list
+                              headline={block.label}
+                              href={block.link}
+                              color={block.color}
+                            >
+                              <div slot="links">
+                                {block.subLevels?.map(item => (
+                                  <bal-navigation-menu-panel-list-item href={item.link}>
+                                    {item.label}
+                                  </bal-navigation-menu-panel-list-item>
+                                ))}
+                              </div>
+                            </bal-navigation-menu-panel-list>
+                          ))}
+                      </div>
+                    </bal-navigation-menu-panel>
+                  )),
+              )}
+            {/*{this.levels*/}
+            {/*  .filter((_, index) => index === this.selectedMetaIndex)*/}
+            {/*  .map(meta => (*/}
+            {/*    <div class="py-4">*/}
+            {/*      {meta.subLevels*/}
+            {/*        ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)*/}
+            {/*        .map(main => (*/}
+            {/*          <div>*/}
+            {/*            <p>{main.linkLabel}</p>*/}
+            {/*            <div class="columns is-multiline">*/}
+            {/*              {main.subLevels?.map((block, _, list) => (*/}
+            {/*                <bal-card*/}
+            {/*                  class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}*/}
+            {/*                  color={block.color || 'white'}*/}
+            {/*                  flat*/}
+            {/*                  space="small"*/}
+            {/*                >*/}
+            {/*                  <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>*/}
+            {/*                    <h4 class="title is-size-4">{block.label}</h4>*/}
+            {/*                    {block.subLevels?.map(item => (*/}
+            {/*                      <a*/}
+            {/*                        class="is-link is-block py-1"*/}
+            {/*                        onClick={ev => {*/}
+            {/*                          main.onClick(ev)*/}
+            {/*                          this.isMainBodyOpen = false*/}
+            {/*                        }}*/}
+            {/*                      >*/}
+            {/*                        {item.label}*/}
+            {/*                      </a>*/}
+            {/*                    ))}*/}
+            {/*                  </bal-card-content>*/}
+            {/*                </bal-card>*/}
+            {/*              ))}*/}
+            {/*            </div>*/}
+            {/*          </div>*/}
+            {/*        ))}*/}
+            {/*    </div>*/}
+            {/*  ))}*/}
           </bal-navigation-main-body>
         </bal-navigation-main>
 
