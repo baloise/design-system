@@ -179,7 +179,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   }
 
   render() {
-    const type = this.interface === 'checkbox' ? 'checkbox' : 'switch'
+    const type = this.interface
     const block = BEM.block(type)
     const flatClass = 'is-flat'
     const hasFlat = this.flat
