@@ -83,18 +83,21 @@ export class Navigation implements ComponentInterface {
         <bal-navigation-meta class="is-hidden-touch">
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted value={selectedMetaValue}>
-              {this.levels.map(meta => (
-                // TODO: decide if we need to add the href prop: href={meta.link}
-                <bal-tab-item
-                  label={meta.label}
-                  value={meta.value}
-                  onBalNavigate={ev => {
-                    meta.onClick(ev.detail)
-                    this.metaValue = meta.value
-                    this.isMainBodyOpen = false
-                  }}
-                />
-              ))}
+              {this.levels.map(meta =>
+                meta.metaLink ? (
+                  <bal-tab-item label={meta.label} value={meta.value} href={meta.metaLink} />
+                ) : (
+                  <bal-tab-item
+                    label={meta.label}
+                    value={meta.value}
+                    onBalNavigate={ev => {
+                      meta.onClick(ev.detail)
+                      this.metaValue = meta.value
+                      this.isMainBodyOpen = false
+                    }}
+                  />
+                ),
+              )}
             </bal-tabs>
           </bal-navigation-meta-start>
           <bal-navigation-meta-end>

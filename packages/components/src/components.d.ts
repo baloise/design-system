@@ -1254,6 +1254,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "metaLink"?: string;
         "value": string;
     }
     interface BalNavigationLevels {
@@ -4331,6 +4332,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
+        "metaLink"?: string;
         "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
         "value"?: string;
     }
