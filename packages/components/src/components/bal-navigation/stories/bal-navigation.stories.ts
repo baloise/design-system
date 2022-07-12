@@ -1,7 +1,7 @@
 import docs from './bal-navigation.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
 import { BalNavigation, BalNavigationLevels, BalNavigationLevelMeta } from '../../../../.storybook/vue/components'
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 
 const component = BalComponentStory({
   title: 'Components/Navigation',
@@ -15,26 +15,14 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => {
-    const isActive = ref(true)
     const modal = ref()
-
-    function openModal() {
+    const openModal = () => {
       modal.value?.open()
     }
 
-    const toggle = () => {
-      isActive.value = !isActive.value
-    }
-
-    watchEffect(() => {
-      isActive.value = args.value
-    })
-
     return {
       args,
-      isActive,
       modal,
-      toggle,
       openModal,
     }
   },
@@ -137,15 +125,7 @@ export const Basic = args => ({
     </bal-modal>
     <bal-button square size="small" color="light" inverted icon="location"></bal-button>
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-    <bal-popover v-model="isActive">
-      <bal-button bal-popover-trigger color="light" inverted size="small" icon="account" @click="toggle()">Login</bal-button>
-      <bal-popover-content class="p-2 mt-2" style="border-radius: 12px;">
-        <bal-tabs slot="account" border fullwidth interface="tabs" value="tab-a">
-          <bal-tab-item value="tab-a" label="myBaloise">Content of Tab A</bal-tab-item>
-          <bal-tab-item value="tab-b" label="E-Banking">Content of Tab B</bal-tab-item>
-        </bal-tabs>
-      </bal-popover-content>
-    </bal-popover>
+    <bal-button color="light" inverted size="small" icon="account" href="/">Login</bal-button>
   </bal-button-group>
 </bal-navigation>`,
 })
