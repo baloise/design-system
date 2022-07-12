@@ -67,7 +67,6 @@ export class Navigation implements ComponentInterface {
   }
 
   render() {
-    console.log('render navigation', this.selectedMetaIndex, this.selectedMainIndex)
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
