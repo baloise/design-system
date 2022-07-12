@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Watch, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-navigation',
@@ -55,10 +56,6 @@ export class Navigation implements ComponentInterface {
         this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
       this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
     }
-    console.log('updateIndexes', this.metaValue)
-    console.log('updateIndexes', this.mainValue)
-    console.log('updateIndexes', this.selectedMetaIndex)
-    console.log('updateIndexes', this.selectedMainIndex)
   }
 
   private async readSubLevels() {
@@ -70,8 +67,7 @@ export class Navigation implements ComponentInterface {
   }
 
   render() {
-    console.log('render navigation', this.selectedMetaIndex, this.selectedMainIndex)
-
+    const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
     const selectedMainValue = selectedMetaLevel.subLevels
@@ -79,30 +75,35 @@ export class Navigation implements ComponentInterface {
       : ''
 
     return (
-      <Host>
-        {/* TODO: Create custom component for meta navigation desktop */}
-        <div class="has-background-primary is-hidden-mobile mb-6" style={{ height: '48px' }}>
-          <div class="container is-flex">
-            <div class="is-flex-grow-1 has-text-white">
-              <bal-tabs interface="meta" inverted value={selectedMetaValue}>
-                {this.levels.map((meta, index) => (
+      <Host
+        class={{
+          ...navigationEl.class(),
+        }}
+      >
+        <bal-navigation-meta class="is-hidden-touch">
+          <bal-navigation-meta-start>
+            <bal-tabs interface="meta" inverted value={selectedMetaValue}>
+              {this.levels.map(meta =>
+                meta.metaLink ? (
+                  <bal-tab-item label={meta.label} value={meta.value} href={meta.metaLink} />
+                ) : (
                   <bal-tab-item
                     label={meta.label}
                     value={meta.value}
                     onBalNavigate={ev => {
                       meta.onClick(ev.detail)
-                      this.selectedMetaIndex = index
+                      this.metaValue = meta.value
                       this.isMainBodyOpen = false
                     }}
-                  ></bal-tab-item>
-                ))}
-              </bal-tabs>
-            </div>
-            <div class="is-flex-grow-1 is-flex is-justify-content-end has-text-white py-2">
-              <slot name="meta-actions" />
-            </div>
-          </div>
-        </div>
+                  />
+                ),
+              )}
+            </bal-tabs>
+          </bal-navigation-meta-start>
+          <bal-navigation-meta-end>
+            <slot name="meta-actions" />
+          </bal-navigation-meta-end>
+        </bal-navigation-meta>
 
         {/* TODO: Create custom component for main navigation desktop */}
         <div ref={el => (this.mainNavElement = el as HTMLDivElement)}>

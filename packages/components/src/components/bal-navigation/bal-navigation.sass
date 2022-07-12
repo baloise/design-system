@@ -1,0 +1,41 @@
++block(nav)
+  +desktop
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+
+  +element(meta)
+    +unselectable
+    background: var(--bal-color-primary)
+    height: 48px
+    max-height: 48px
+    display: block
+
+    nav
+      display: flex
+      height: 100%
+      gap: .5rem
+      align-items: center
+      margin: 0 auto
+      width: calc(100vw - (96px - 2rem))
+      padding: 0
+      +widescreen
+        width: calc(100vw - (208px + 2rem))
+      +fullhd
+        width: calc(100vw - 304px)
+        max-width: calc(1824px + 1rem)
+
+    +element(start)
+      display: flex
+      flex-grow: 1
+      align-items: center
+      gap: .5rem
+
+    +element(end)
+      display: flex
+      flex-grow: 1
+      justify-content: flex-end
+      align-items: center
+      gap: .5rem
+      padding-right: 1rem

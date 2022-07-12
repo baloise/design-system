@@ -1254,10 +1254,17 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "metaLink"?: string;
         "value": string;
     }
     interface BalNavigationLevels {
         "getLevelInfos": () => Promise<LevelInfo[]>;
+    }
+    interface BalNavigationMeta {
+    }
+    interface BalNavigationMetaEnd {
+    }
+    interface BalNavigationMetaStart {
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -2710,6 +2717,24 @@ declare global {
         prototype: HTMLBalNavigationLevelsElement;
         new (): HTMLBalNavigationLevelsElement;
     };
+    interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaElement: {
+        prototype: HTMLBalNavigationMetaElement;
+        new (): HTMLBalNavigationMetaElement;
+    };
+    interface HTMLBalNavigationMetaEndElement extends Components.BalNavigationMetaEnd, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaEndElement: {
+        prototype: HTMLBalNavigationMetaEndElement;
+        new (): HTMLBalNavigationMetaEndElement;
+    };
+    interface HTMLBalNavigationMetaStartElement extends Components.BalNavigationMetaStart, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaStartElement: {
+        prototype: HTMLBalNavigationMetaStartElement;
+        new (): HTMLBalNavigationMetaStartElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -2976,6 +3001,9 @@ declare global {
         "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
         "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
         "bal-navigation-levels": HTMLBalNavigationLevelsElement;
+        "bal-navigation-meta": HTMLBalNavigationMetaElement;
+        "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
+        "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -4304,10 +4332,17 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
+        "metaLink"?: string;
         "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
         "value"?: string;
     }
     interface BalNavigationLevels {
+    }
+    interface BalNavigationMeta {
+    }
+    interface BalNavigationMetaEnd {
+    }
+    interface BalNavigationMetaStart {
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -5253,6 +5288,9 @@ declare namespace LocalJSX {
         "bal-navigation-level-main": BalNavigationLevelMain;
         "bal-navigation-level-meta": BalNavigationLevelMeta;
         "bal-navigation-levels": BalNavigationLevels;
+        "bal-navigation-meta": BalNavigationMeta;
+        "bal-navigation-meta-end": BalNavigationMetaEnd;
+        "bal-navigation-meta-start": BalNavigationMetaStart;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5374,6 +5412,9 @@ declare module "@stencil/core" {
             "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
             "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
             "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
+            "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
+            "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
+            "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;

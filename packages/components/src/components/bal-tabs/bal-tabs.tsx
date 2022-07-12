@@ -281,10 +281,14 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <div class="columns is-multiline">
+        <div
+          class={{
+            'columns is-multiline': this.interface !== 'meta',
+          }}
+        >
           <div
             class={{
-              'column': true,
+              'column': this.interface !== 'meta',
               'is-full': !isVertical,
               [`is-${this.verticalColSize}`]: isVertical,
               'bal-tabs__col-items': true,
@@ -312,7 +316,7 @@ export class Tabs {
           </div>
           <div
             class={{
-              'column': true,
+              'column': this.interface !== 'meta',
               'is-full': !isVertical,
               'bal-tabs__col-content': true,
               'bal-tabs__col-content--vertical': isVertical,

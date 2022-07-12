@@ -3,9 +3,6 @@
 +block(tabs)
   display: inline-block
   position: static
-  +modifier(context-meta)
-    +desktop
-      margin-left: -1rem
   +modifier(context-navbar)
     +desktop
       height: 80px
@@ -21,6 +18,8 @@
     +modifier(vertical)
       +tablet
         padding-bottom: var(--bal-column-gap) !important
+    +modifier(context-meta)
+      padding: 0 !important
   +element(col-content)
     padding-top: 0 !important
     padding-bottom: 0 !important
