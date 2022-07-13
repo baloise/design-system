@@ -87,7 +87,7 @@ export namespace Props {
     | 'left-start'
     | 'left-end'
 
-  export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
+  export type BalStageColor = 'blue' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'

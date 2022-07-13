@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.15.4](https://github.com/baloise-incubator/design-system/compare/v10.15.3...v10.15.4) (2022-07-12)
+
+
+### Bug Fixes
+
+* removed the width definition ([6af80d5](https://github.com/baloise-incubator/design-system/commit/6af80d54b7b5c402d11015e470b76a4e704b9c61))
+
+### 10.15.2 (2022-07-05)
+
+
+
+### [10.15.3](https://github.com/baloise-incubator/design-system/compare/v10.15.2...v10.15.3) (2022-07-07)
+
+
+### Bug Fixes
+
+* removed the width definition ([6af80d5](https://github.com/baloise-incubator/design-system/commit/6af80d54b7b5c402d11015e470b76a4e704b9c61))
+
+
+
 ### [10.15.2](https://github.com/baloise-incubator/design-system/compare/v10.15.1...v10.15.2) (2022-07-05)
 
 
