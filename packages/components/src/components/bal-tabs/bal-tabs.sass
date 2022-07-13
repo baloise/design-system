@@ -10,11 +10,14 @@
         justify-content: flex-end
   +modifier(context-header)
     height: 64px
+    +desktop
+      .bal-tabs__tabs > ul
+        justify-content: flex-end
+        margin: 0 -1rem
     +widescreen
       height: 80px
-    .bal-tabs__tabs > ul
-      justify-content: flex-end
-      margin: 0 0 0 -1rem
+      .bal-tabs__tabs > ul
+        margin: 0
   +modifier(fullwidth)
     display: block
     flex: 1

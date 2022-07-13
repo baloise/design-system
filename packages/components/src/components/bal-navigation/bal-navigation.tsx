@@ -12,7 +12,6 @@ export class Navigation implements ComponentInterface {
   private mainNavElement!: HTMLBalNavigationMainElement
   private previousY = 0
   private scrolling = false
-
   @State() isTranslated = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -81,6 +80,10 @@ export class Navigation implements ComponentInterface {
 
   componentDidRender() {
     this.mainNavElement = this.el.querySelector('bal-navigation-main') as HTMLBalNavigationMainElement
+  }
+
+  componentDidUpdate(): Promise<void> | void {
+    console.log('MAIN NAV CLIENT HEIGHT DID', this.mainNavElement.clientHeight)
   }
 
   private updateIndexes() {
@@ -152,7 +155,8 @@ export class Navigation implements ComponentInterface {
             slot="main-head"
             class={{
               'has-radius-large': this.isWideOrFullHd,
-              'is-hidden-mobile has-background-white has-shadow is-block': true,
+              'is-hidden-mobile has-background-white is-block': true,
+              'is-active': this.isMainBodyOpen,
             }}
           >
             <div class="is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-space-between">
@@ -163,7 +167,7 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {console.log('sub levels', selectedMetaLevel.subLevels)}
+                  {/*{console.log('sub levels', selectedMetaLevel.subLevels)}*/}
                   {selectedMetaLevel.subLevels?.map((main, index) => {
                     return (
                       <bal-tab-item
@@ -185,8 +189,10 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-body
             slot="main-body"
             class={{
-              'is-hidden': !this.isMainBodyOpen,
+              //'is-hidden': !this.isMainBodyOpen,
+              'is-active': this.isMainBodyOpen,
             }}
+            aria-hidden={!this.isMainBodyOpen}
           >
             {this.levels
               .filter((_, index) => index === this.selectedMetaIndex)
