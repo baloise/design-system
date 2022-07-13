@@ -113,11 +113,11 @@ export class Tabs {
     this.debounceChanged()
     this.updateTabs()
 
-    if (this.interface !== 'header') {
-      this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-        this.updateTabs()
-      })
-    }
+    //if (this.interface !== 'header') {
+    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+      this.updateTabs()
+    })
+    //}
   }
 
   disconnectedCallback() {
