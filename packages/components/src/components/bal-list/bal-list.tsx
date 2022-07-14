@@ -38,6 +38,11 @@ export class List {
    */
   @Prop() size: Props.BalListSize = ''
 
+  /**
+   * If `true` the list can be used as an accordion in meta nav
+   */
+  @Prop() mainNavAccordion = false
+
   render() {
     return (
       <Host
@@ -48,6 +53,7 @@ export class List {
           'has-border': this.border,
           'has-size-large': this.size === 'large',
           [`is-on-background-${this.background}`]: true,
+          'is-in-main-nav': this.mainNavAccordion,
         }}
       >
         <slot></slot>

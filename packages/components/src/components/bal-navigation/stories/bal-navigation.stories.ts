@@ -248,6 +248,10 @@ export const MetaWithLinks = args => ({
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
     <bal-button color="light" inverted size="small" icon="account" href="/">Login</bal-button>
   </bal-button-group>
+  <bal-button-group slot="meta-actions-mobile">
+    <bal-button square size="small" color="light" inverted icon="search"></bal-button>
+    <bal-button color="light" inverted size="small" icon="account" href="/">Login</bal-button>
+  </bal-button-group>
 </bal-navigation></div>`,
 })
 MetaWithLinks.args = {}

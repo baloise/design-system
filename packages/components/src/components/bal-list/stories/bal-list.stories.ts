@@ -261,3 +261,49 @@ AccordionList.args = {
   size: 'large',
 }
 AccordionList.parameters = { ...component.sourceCode(AccordionList), controls: { exclude: excludedControls } }
+
+export const MetaAccordionList = args => ({
+  components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
+  setup: () => ({ args }),
+  template: `<bal-list class="px-4" border meta-nav-accordion size="large">
+          <bal-list-item accordion>
+            <bal-list-item-accordion-head>
+              <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item-accordion-head>
+            <bal-list-item-accordion-body>
+              <bal-list-item accordion sub-accordion-item>
+            <bal-list-item-accordion-head>
+              <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item-accordion-head>
+            <bal-list-item-accordion-body>
+              <p class="pb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </bal-list-item-accordion-body>
+          </bal-list-item>
+            </bal-list-item-accordion-body>
+          </bal-list-item>
+          <bal-list-item accordion>
+            <bal-list-item-accordion-head>
+              <bal-list-item-content>
+                <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                <bal-list-item-subtitle>With subtitle</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item-accordion-head>
+            <bal-list-item-accordion-body>
+              <p class="pb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </bal-list-item-accordion-body>
+          </bal-list-item>
+        </bal-list>`,
+})
+MetaAccordionList.args = {
+  border: true,
+  size: 'large',
+}
+MetaAccordionList.parameters = { ...component.sourceCode(MetaAccordionList), controls: { exclude: excludedControls } }

@@ -1069,6 +1069,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "mainNavAccordion": boolean;
+        /**
           * Defines the min height of the list item
          */
         "size": Props.BalListSize;
@@ -1094,6 +1098,10 @@ export namespace Components {
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
+        /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem": boolean;
         /**
           * Specifies where to open the linked document
          */
@@ -1132,6 +1140,12 @@ export namespace Components {
           * Defines the size of the logo.
          */
         "size": Props.BalLogoSize;
+    }
+    interface BalMainMobile {
+    }
+    interface BalMetaMobileFoot {
+    }
+    interface BalMetaMobileHead {
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -2652,6 +2666,24 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
+    interface HTMLBalMainMobileElement extends Components.BalMainMobile, HTMLStencilElement {
+    }
+    var HTMLBalMainMobileElement: {
+        prototype: HTMLBalMainMobileElement;
+        new (): HTMLBalMainMobileElement;
+    };
+    interface HTMLBalMetaMobileFootElement extends Components.BalMetaMobileFoot, HTMLStencilElement {
+    }
+    var HTMLBalMetaMobileFootElement: {
+        prototype: HTMLBalMetaMobileFootElement;
+        new (): HTMLBalMetaMobileFootElement;
+    };
+    interface HTMLBalMetaMobileHeadElement extends Components.BalMetaMobileHead, HTMLStencilElement {
+    }
+    var HTMLBalMetaMobileHeadElement: {
+        prototype: HTMLBalMetaMobileHeadElement;
+        new (): HTMLBalMetaMobileHeadElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -3042,6 +3074,9 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
+        "bal-main-mobile": HTMLBalMainMobileElement;
+        "bal-meta-mobile-foot": HTMLBalMetaMobileFootElement;
+        "bal-meta-mobile-head": HTMLBalMetaMobileHeadElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -4200,6 +4235,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "mainNavAccordion"?: boolean;
+        /**
           * Defines the min height of the list item
          */
         "size"?: Props.BalListSize;
@@ -4229,6 +4268,10 @@ declare namespace LocalJSX {
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
+        /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem"?: boolean;
         /**
           * Specifies where to open the linked document
          */
@@ -4271,6 +4314,12 @@ declare namespace LocalJSX {
           * Defines the size of the logo.
          */
         "size"?: Props.BalLogoSize;
+    }
+    interface BalMainMobile {
+    }
+    interface BalMetaMobileFoot {
+    }
+    interface BalMetaMobileHead {
     }
     interface BalModal {
         /**
@@ -5354,6 +5403,9 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
+        "bal-main-mobile": BalMainMobile;
+        "bal-meta-mobile-foot": BalMetaMobileFoot;
+        "bal-meta-mobile-head": BalMetaMobileHead;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -5484,6 +5536,9 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
+            "bal-main-mobile": LocalJSX.BalMainMobile & JSXBase.HTMLAttributes<HTMLBalMainMobileElement>;
+            "bal-meta-mobile-foot": LocalJSX.BalMetaMobileFoot & JSXBase.HTMLAttributes<HTMLBalMetaMobileFootElement>;
+            "bal-meta-mobile-head": LocalJSX.BalMetaMobileHead & JSXBase.HTMLAttributes<HTMLBalMetaMobileHeadElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;

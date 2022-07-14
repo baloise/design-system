@@ -96,6 +96,9 @@
     "vue",
     "WCAG",
     "Versichern",
-    "xsmall"
+    "xsmall",
+    "footmobile",
+    "mainmobile",
+    "metamobile"
   ]
 }

@@ -28,6 +28,11 @@ export class ListItem {
   @Prop() accordion = false
 
   /**
+   * If `true` the list item can be used as an accordion inside another accordion
+   */
+  @Prop() subAccordionItem = false
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -42,6 +47,8 @@ export class ListItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  private isInMainNav = false
+
   connectedCallback() {
     const accordionHead = this.findAccordionHead()
     if (accordionHead) {
@@ -49,6 +56,7 @@ export class ListItem {
         this.updateState(event.detail),
       )
     }
+    this.isInMainNav = this.el.closest('bal-list')?.mainNavAccordion ?? false
   }
 
   disconnectedCallback() {
@@ -129,10 +137,10 @@ export class ListItem {
         <Host
           role="listitem"
           class={{
-            'bal-list-item': true,
-            'is-accordion': this.accordion,
+            'bal-list-item is-accordion is-list-item-clickable': true,
             'is-disabled': this.disabled,
-            'is-list-item-clickable': this.accordion,
+            'is-sub-accordion-item': this.subAccordionItem,
+            'is-in-main-nav': this.isInMainNav,
           }}
         >
           <div>

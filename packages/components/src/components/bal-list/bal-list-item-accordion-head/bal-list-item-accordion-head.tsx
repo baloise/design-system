@@ -22,7 +22,12 @@ export class ListItemAccordionHead {
    */
   @Event() balAccordionChange!: EventEmitter<boolean>
 
+  private list?: HTMLBalListElement | null
+  private iconName!: string
+
   connectedCallback() {
+    this.list = this.el.closest('bal-list')
+    this.iconName = this.list?.classList.contains('is-in-main-nav') ? 'nav-go-down' : 'plus'
     this.balAccordionChange.emit(this.accordionOpen)
   }
 
@@ -49,7 +54,7 @@ export class ListItemAccordionHead {
       >
         <slot></slot>
         <bal-list-item-icon right>
-          <bal-icon class="trigger-icon" name="plus" size="small"></bal-icon>
+          <bal-icon class="trigger-icon" name={this.iconName} size="small"></bal-icon>
         </bal-list-item-icon>
       </Host>
     )

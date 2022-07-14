@@ -10,6 +10,7 @@ export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
   private mainNavElement!: HTMLBalNavigationMainElement
+  private metaNavMobileElement!: HTMLBalMetaMobileHeadElement
   private previousY = 0
   private scrolling = false
   @State() isTranslated = false
@@ -36,9 +37,11 @@ export class Navigation implements ComponentInterface {
 
   @Listen('click', { target: 'document' })
   clickOnOutside(event: UIEvent) {
-    if (!this.mainNavElement.contains(event.target as Node) && this.isMainBodyOpen) {
-      this.isMainBodyOpen = false
-      this.selectedMainValue = ''
+    if (isPlatform('desktop')) {
+      if (!this.mainNavElement.contains(event.target as Node) && this.isMainBodyOpen) {
+        this.isMainBodyOpen = false
+        this.selectedMainValue = ''
+      }
     }
   }
 
@@ -80,6 +83,7 @@ export class Navigation implements ComponentInterface {
 
   componentDidRender() {
     this.mainNavElement = this.el.querySelector('bal-navigation-main') as HTMLBalNavigationMainElement
+    this.metaNavMobileElement = this.el.querySelector('bal-meta-mobile-head') as HTMLBalMetaMobileHeadElement
   }
 
   componentDidUpdate(): Promise<void> | void {
@@ -238,68 +242,65 @@ export class Navigation implements ComponentInterface {
                     </bal-navigation-menu-panel>
                   )),
               )}
-            {/*{this.levels*/}
-            {/*  .filter((_, index) => index === this.selectedMetaIndex)*/}
-            {/*  .map(meta => (*/}
-            {/*    <div class="py-4">*/}
-            {/*      {meta.subLevels*/}
-            {/*        ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)*/}
-            {/*        .map(main => (*/}
-            {/*          <div>*/}
-            {/*            <p>{main.linkLabel}</p>*/}
-            {/*            <div class="columns is-multiline">*/}
-            {/*              {main.subLevels?.map((block, _, list) => (*/}
-            {/*                <bal-card*/}
-            {/*                  class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}*/}
-            {/*                  color={block.color || 'white'}*/}
-            {/*                  flat*/}
-            {/*                  space="small"*/}
-            {/*                >*/}
-            {/*                  <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>*/}
-            {/*                    <h4 class="title is-size-4">{block.label}</h4>*/}
-            {/*                    {block.subLevels?.map(item => (*/}
-            {/*                      <a*/}
-            {/*                        class="is-link is-block py-1"*/}
-            {/*                        onClick={ev => {*/}
-            {/*                          main.onClick(ev)*/}
-            {/*                          this.isMainBodyOpen = false*/}
-            {/*                        }}*/}
-            {/*                      >*/}
-            {/*                        {item.label}*/}
-            {/*                      </a>*/}
-            {/*                    ))}*/}
-            {/*                  </bal-card-content>*/}
-            {/*                </bal-card>*/}
-            {/*              ))}*/}
-            {/*            </div>*/}
-            {/*          </div>*/}
-            {/*        ))}*/}
-            {/*    </div>*/}
-            {/*  ))}*/}
           </bal-navigation-main-body>
         </bal-navigation-main>
 
-        {/* <hr class="my-8" /> */}
-
-        {/* {this.levels.map(meta => (
-          <p>
-            {meta.label}
-            {meta.subLevels?.map(main => (
-              <p class="ml-2">
-                {main.label}
-                {main.subLevels?.map(block => (
-                  <p class="ml-2">
-                    {block.label}
-                    {block.subLevels?.map(item => (
-                      <p class="ml-2">{item.label}</p>
-                    ))}
-                  </p>
-                ))}
-              </p>
+        <bal-meta-mobile-head>
+          <a slot="logo" href={this.logoPath} class="bal-nav__main-head-logo py-4">
+            <bal-logo color="blue"></bal-logo>
+          </a>
+          <div slot="meta-actions-mobile">
+            <slot name="meta-actions-mobile" />
+          </div>
+          <bal-button
+            slot="burger"
+            color="light"
+            square
+            icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
+            onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
+          />
+        </bal-meta-mobile-head>
+        <bal-main-mobile class={{ 'is-hidden': !this.isMainBodyOpen }}>
+          <bal-list border main-nav-accordion size="large">
+            {this.levels.map(meta => (
+              <bal-list-item accordion>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                    <bal-list-item-title>{meta.label}</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body>
+                  {meta.subLevels?.map(main => (
+                    <bal-list-item accordion sub-accordion-item>
+                      <bal-list-item-accordion-head>
+                        <bal-list-item-content>
+                          <bal-list-item-title>{main.label}</bal-list-item-title>
+                        </bal-list-item-content>
+                      </bal-list-item-accordion-head>
+                      <bal-list-item-accordion-body>
+                        <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
+                          <div slot="left">
+                            {main.subLevels?.map(block => (
+                              <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
+                                <div slot="links">
+                                  {block.subLevels?.map(item => (
+                                    <bal-navigation-menu-panel-list-item href={item.link}>
+                                      {item.label}
+                                    </bal-navigation-menu-panel-list-item>
+                                  ))}
+                                </div>
+                              </bal-navigation-menu-panel-list>
+                            ))}
+                          </div>
+                        </bal-navigation-menu-panel>
+                      </bal-list-item-accordion-body>
+                    </bal-list-item>
+                  ))}
+                </bal-list-item-accordion-body>
+              </bal-list-item>
             ))}
-          </p>
-        ))} */}
-        <slot></slot>
+          </bal-list>
+        </bal-main-mobile>
       </Host>
     )
   }

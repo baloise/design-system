@@ -70,6 +70,12 @@
   flex: 1;
 }
 
+.bal-list-item.is-sub-accordion-item {
+  @include touch() {
+    padding-left: 1rem;
+  }
+}
+
 .bal-list-item-content {
   justify-content: center;
 }
@@ -82,10 +88,14 @@
 }
 
 .bal-list.has-size-large {
+  .bal-list-item:not(.is-in-main-nav) > a,
+  .bal-list-item:not(.is-in-main-nav) > div,
+  .bal-list-item:not(.is-in-main-nav) > button {
+    min-height: 72px;
+  }
   .bal-list-item > a,
   .bal-list-item > div,
   .bal-list-item > button {
-    min-height: 72px;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -217,7 +227,7 @@
   }
 }
 
-.bal-list.has-border .bal-list-item {
+.bal-list.has-border .bal-list-item:not(.is-sub-accordion-item) {
   padding-bottom: 2px;
 
   & > div:after,
@@ -231,6 +241,16 @@
     bottom: 0;
     left: 0;
     right: 0;
+  }
+}
+
+bal-list.has-border.is-in-main-nav .bal-list-item {
+  &:last-child {
+    & > div:after,
+    a:after,
+    button:after {
+      display: none;
+    }
   }
 }
 
@@ -394,7 +414,12 @@ bal-card > bal-list.p-0 {
   }
 
   &.is-open bal-icon.trigger-icon {
-    transform: rotate(45deg);
+    bal-list.is-in-main-nav & {
+      transform: rotate(180deg);
+    }
+    bal-list:not(.is-in-main-nav) & {
+      transform: rotate(45deg);
+    }
   }
 }
 

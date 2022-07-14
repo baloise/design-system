@@ -151,3 +151,23 @@
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
+  +element(metamobile)
+    display: block
+    background: var(--bal-color-primary-inverted)
+    height: 64px
+    max-height: 64px
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+
+    nav
+      display: flex
+      height: 100%
+      gap: .5rem
+      align-items: center
+      margin: 0 auto
+      padding: 0 1rem
+
+      +tablet
+        padding: 0 48px
+    +element(burger)
+  +element(mainmobile)
+  +element(footmobile)
