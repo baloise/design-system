@@ -159,9 +159,9 @@ export class Navigation implements ComponentInterface {
               'is-active': this.isMainBodyOpen,
             }}
           >
-            <div class="is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-space-between">
+            <div class="is-flex is-align-items-start is-flex-wrap-wrap is-justify-content-space-between">
               <div class="is-flex mr-4">
-                <a href={this.logoPath} class="bal-nav__main-head-logo py-4">
+                <a href={this.logoPath} class="bal-nav__main-head-logo mt-4">
                   <bal-logo color="blue"></bal-logo>
                 </a>
               </div>
