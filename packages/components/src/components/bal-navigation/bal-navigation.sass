@@ -72,14 +72,21 @@
     padding: 0 3rem
     position: relative
     transition: border-radius .3s ease-in-out
+    > div
+      align-items: start
     +until-widescreen
       width: 100vw
       max-width: none
     +widescreen
+      > div
+        align-items: center
       &.is-active
         border-bottom-left-radius: 0 !important
         border-bottom-right-radius: 0 !important
         transition: border-radius .3s ease-in-out
+  .bal-nav__main-head-logo
+    +until-widescreen
+      margin-top: 1rem
   +element(main-body)
     position: relative
     display: block
