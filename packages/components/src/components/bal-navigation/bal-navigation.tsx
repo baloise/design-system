@@ -148,7 +148,7 @@ export class Navigation implements ComponentInterface {
 
         {/* TODO: Create custom component for main navigation desktop */}
         <bal-navigation-main
-          class="is-hidden-touch"
+          class={{ 'is-hidden-touch': true, 'is-expanded': this.isMainBodyOpen }}
           //ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
         >
           <bal-navigation-main-head

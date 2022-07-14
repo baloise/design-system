@@ -70,17 +70,17 @@ export const Basic = args => ({
         </bal-navigation-level-block>
       </bal-navigation-level-main>
       <bal-navigation-level-main value="meta-1-main-3" label="Anlegen & Vorsorgen" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+        <bal-navigation-level-block label="Meta 1 Main 3 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
       <bal-navigation-level-main value="meta-1-main-4" label="Kontakt & Services" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+        <bal-navigation-level-block label="Meta 1 Main 4 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
       <bal-navigation-level-main value="meta-1-main-5" label="Magazin" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+        <bal-navigation-level-block label="Meta 1 Main 5 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
