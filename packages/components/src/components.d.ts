@@ -1224,6 +1224,8 @@ export namespace Components {
         "interface": Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        "ariaLabelMain"?: string;
+        "ariaLabelMeta"?: string;
         "logoPath"?: string;
         "mainValue"?: string;
         "metaValue"?: string;
@@ -1262,6 +1264,7 @@ export namespace Components {
         "getLevelInfos": () => Promise<LevelInfo[]>;
     }
     interface BalNavigationMain {
+        "ariaLabelMain"?: string;
     }
     interface BalNavigationMainBody {
     }
@@ -1280,6 +1283,7 @@ export namespace Components {
         "href"?: string;
     }
     interface BalNavigationMeta {
+        "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
     }
@@ -4364,6 +4368,8 @@ declare namespace LocalJSX {
         "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        "ariaLabelMain"?: string;
+        "ariaLabelMeta"?: string;
         "logoPath"?: string;
         "mainValue"?: string;
         "metaValue"?: string;
@@ -4401,6 +4407,7 @@ declare namespace LocalJSX {
     interface BalNavigationLevels {
     }
     interface BalNavigationMain {
+        "ariaLabelMain"?: string;
     }
     interface BalNavigationMainBody {
     }
@@ -4419,6 +4426,7 @@ declare namespace LocalJSX {
         "href"?: string;
     }
     interface BalNavigationMeta {
+        "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
     }

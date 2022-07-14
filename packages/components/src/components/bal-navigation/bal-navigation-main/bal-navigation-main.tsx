@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -7,11 +7,15 @@ import { BEM } from '../../../utils/bem'
 export class NavigationMain implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @Prop() ariaLabelMain?: string = ''
+
   render() {
     const mainEl = BEM.block('nav').element('main')
     return (
       <Host class={{ ...mainEl.class() }}>
-        <slot name="main-head" />
+        <nav role="navigation" aria-label={this.ariaLabelMain}>
+          <slot name="main-head" />
+        </nav>
         <slot name="main-body" />
       </Host>
     )
