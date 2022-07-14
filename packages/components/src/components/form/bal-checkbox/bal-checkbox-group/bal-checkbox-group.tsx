@@ -15,6 +15,7 @@ import {
 import { Events } from '../../../../types'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
+import { BEM } from '../../../../utils/bem'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -172,16 +173,29 @@ export class CheckboxGroup implements ComponentInterface {
   render() {
     const label = findItemLabel(this.el)
 
+    const block = BEM.block('checkbox-group')
+    const elWrapper = block.element('wrapper')
+    const verticalClass = 'is-vertical'
+    const hasVertical = this.vertical
+
     return (
       <Host
-        class={{ 'is-vertical': this.vertical }}
+        class={{
+          ...block.class(),
+          ...block.modifier(verticalClass).class(hasVertical),
+        }}
         role="group"
         aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
         {...this.inheritedAttributes}
       >
-        <div>
+        <div
+          class={{
+            ...elWrapper.class(),
+            ...block.modifier(verticalClass).class(hasVertical),
+          }}
+        >
           <slot></slot>
         </div>
       </Host>

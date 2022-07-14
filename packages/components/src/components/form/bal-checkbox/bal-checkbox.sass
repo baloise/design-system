@@ -1,0 +1,154 @@
+@import './bal-checkbox-group/bal-checkbox-group'
+
++block(switch)
+  +unselectable
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 24px
+  min-height: 48px
+
+  +modifier(is-flat)
+    min-height: 1.5rem
+
++block(checkbox)
+  +unselectable
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 1.5rem
+  min-height: 3rem
+
+  +modifier(is-flat)
+    min-height: 1.5rem
+
+  input[type='checkbox']
+    position: absolute
+    left: 0
+    top: 0
+    margin: 0
+    padding: 0
+    opacity: 0
+    outline: 0
+
+  input[type='checkbox'] + label
+    cursor: pointer
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+  +element(label)
+    @include font-smoothing()
+    @include margin(0)
+
+    line-height: 1.5rem
+    contain: layout style
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    text-align: left
+    min-height: 1.5rem
+    cursor: pointer
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    color: var(--bal-color-primary)
+    font-family: var(--bal-family-primary)
+
+    +element(text)
+      padding-left: 2rem
+
+    bal-text:empty
+      padding-left: 0
+
+    +desktop
+      font-size: var(--bal-size-normal)
+
+  label::before,
+  label::after
+    display: inline-block
+    position: absolute
+    background-color: transparent
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 1.5rem 1.5rem
+
+  label::before
+    content: ''
+    left: 0
+    height: 1.5rem
+    width: 1.5rem
+    border: 2px solid var(--bal-color-primary)
+    border-radius: var(--bal-radius-small)
+
+  label::after
+    content: none
+    left: 9px
+    width: 7px
+    height: 13px
+    margin-top: -4px
+    border-bottom: 2px solid var(--bal-color-white)
+    border-right: 2px solid var(--bal-color-white)
+    border-radius: 1px
+    border-top: 0
+    border-left: 0
+    -moz-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    -o-transform: rotate(45deg)
+    -webkit-transform: rotate(45deg)
+    transform: rotate(45deg)
+
+  input[type='checkbox']:not(.bal-checkbox__input--is-disabled) + label:hover
+    &::before
+      background: var(--bal-color-grey-1)
+      border-color: var(--bal-color-light-blue-dark)
+
+  input[type='checkbox']:checked:not(.bal-checkbox__input--is-disabled) + label:hover
+    &::before
+      border-color: var(--bal-color-light-blue-dark)
+      background: var(--bal-color-light-blue-dark)
+
+  input[type='checkbox']:checked + label::before
+    background: var(--bal-color-primary)
+
+  input[type='checkbox']:checked + label::after
+    content: ''
+
+  input[type='checkbox'].bal-checkbox__input--is-disabled + label
+    cursor: default
+
+  input[type='checkbox'].bal-checkbox__input--is-disabled + label:before
+    background: var(--bal-color-grey-2)
+    border-color: var(--bal-color-grey-2)
+
+  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:before
+    background: var(--bal-color-grey-2)
+
+  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:after
+    border-color: var(--bal-color-grey-5)
+
+  input[type='checkbox']:focus-visible + label::before
+    box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important
+
+  input[type='checkbox'].bal-checkbox__input--is-invalid + label:before
+    border-color: var(--bal-color-danger-4)
+    background: var(--bal-color-red-2)
+
+  input[type='checkbox'].bal-checkbox__input--is-invalid + label:after
+    border-color: var(--bal-color-primary)
+
+  input[type='checkbox'].bal-checkbox__input--is-invalid + label:hover:before
+    border-color: var(--bal-color-danger-4)
+    background: var(--bal-color-red-2)
+
+  input[type='checkbox']:checked.bal-checkbox__input--is-invalid + label:hover:before
+    border-color: var(--bal-color-danger-4)
+    background: var(--bal-color-red-2) !important
+
+@import './bal-switch'
