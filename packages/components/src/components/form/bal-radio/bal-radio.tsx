@@ -245,6 +245,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
             color={this.getTextColor()}
             class={{
               'has-padding-left': !this.labelHidden && this.interface !== 'select-button',
+              'is-invalid': this.invalid,
             }}
           >
             <slot></slot>

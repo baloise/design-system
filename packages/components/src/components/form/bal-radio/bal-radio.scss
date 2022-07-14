@@ -28,6 +28,16 @@ bal-radio.bal-radio:not(.bal-select-button) {
     outline: 0;
   }
 
+  .option-label {
+    .is-invalid {
+      span {
+        a {
+          color: var(--bal-color-danger-4);
+        }
+      }
+    }
+  }
+
   input[type='radio'] + label {
     @include font-smoothing();
     @include margin(0);
