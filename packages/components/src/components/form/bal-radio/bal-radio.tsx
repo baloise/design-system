@@ -206,6 +206,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           'is-inverted': this.inverted,
           'is-disabled': this.disabled || this.readonly,
           'is-focused': this.hasFocus,
+          'is-invalid': this.invalid,
         }}
         onClick={this.onClick}
         onFocus={this.onInputFocus}
@@ -216,6 +217,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           class={{
             'is-disabled': this.disabled || this.readonly,
             'data-test-radio-input': true,
+            'is-invalid': this.invalid,
           }}
           type="radio"
           id={inputId}
@@ -243,6 +245,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
             color={this.getTextColor()}
             class={{
               'has-padding-left': !this.labelHidden && this.interface !== 'select-button',
+              'is-invalid': this.invalid,
             }}
           >
             <slot></slot>
