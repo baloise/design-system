@@ -29,9 +29,11 @@ export class NavigationMenuPanel {
         }}
       >
         {this.linkHref && (
-          <a class="is-block is-small mt-4" href={this.linkHref}>
-            {this.linkName}
-          </a>
+          <div class="panel-link-wrapper is-block mt-4">
+            <a class="is-size-x-small panel-link is-bold" href={this.linkHref}>
+              {this.linkName}
+            </a>
+          </div>
         )}
         <div class="columns is-multiline">
           <div class={{ 'column is-full is-6-desktop is-two-thirds-widescreen': true, 'py-0': this.isTouch }}>
