@@ -1790,9 +1790,9 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
-          * class to set the container width
+          * Defines content width of the stage
          */
-        "containerClass": string;
+        "containerSize": '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */
@@ -1804,7 +1804,15 @@ export namespace Components {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted": undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
         /**
           * Defines size of the stage
          */
@@ -1817,10 +1825,6 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass": string;
     }
     interface BalStageFoot {
     }
@@ -4997,9 +5001,9 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
-          * class to set the container width
+          * Defines content width of the stage
          */
-        "containerClass"?: string;
+        "containerSize"?: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */
@@ -5011,7 +5015,15 @@ declare namespace LocalJSX {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
         /**
           * Defines size of the stage
          */
@@ -5024,10 +5036,6 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass"?: string;
     }
     interface BalStageFoot {
     }
