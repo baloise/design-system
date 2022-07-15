@@ -122,8 +122,8 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted value={selectedMetaValue}>
               {this.levels.map((meta, index) =>
-                meta.metaLink ? (
-                  <bal-tab-item label={meta.label} value={meta.value} href={meta.metaLink} />
+                meta.tabLink ? (
+                  <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
                 ) : (
                   <bal-tab-item
                     label={meta.label}
@@ -159,7 +159,7 @@ export class Navigation implements ComponentInterface {
             }}
           >
             <div class="is-flex is-align-items-start is-flex-wrap-wrap is-justify-content-space-between">
-              <div class="is-flex px-4">
+              <div class="is-flex">
                 <a href={this.logoPath} class="bal-nav__main-head-logo">
                   <bal-logo color="blue"></bal-logo>
                 </a>
@@ -167,11 +167,15 @@ export class Navigation implements ComponentInterface {
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
                   {/*{console.log('sub levels', selectedMetaLevel.subLevels)}*/}
-                  {selectedMetaLevel.subLevels?.map((main, index) => {
-                    return (
+                  {selectedMetaLevel.subLevels?.map((main, index) =>
+                    main.tabLink ? (
+                      <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
+                    ) : (
                       <bal-tab-item
                         label={main.label}
                         value={main.value}
+                        href={main.tabLink}
+                        icon="nav-go-down"
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
                           this.selectedMainIndex = index
@@ -179,8 +183,8 @@ export class Navigation implements ComponentInterface {
                           this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
                         }}
                       />
-                    )
-                  })}
+                    ),
+                  )}
                 </bal-tabs>
               </div>
             </div>

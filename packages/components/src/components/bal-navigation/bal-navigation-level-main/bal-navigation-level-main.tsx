@@ -12,6 +12,7 @@ export class NavigationLevelMain implements ComponentInterface {
   @Prop() value = `main-value-${navigationLevelMainIds++}`
   @Prop() link?: string = undefined
   @Prop() linkLabel?: string = undefined
+  @Prop() tabLink?: string
 
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
@@ -24,6 +25,7 @@ export class NavigationLevelMain implements ComponentInterface {
       label: this.label,
       link: this.link,
       linkLabel: this.linkLabel,
+      tabLink: this.tabLink,
       subLevels,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }

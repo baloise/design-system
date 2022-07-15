@@ -20,7 +20,7 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - (96px - 2rem))
+      width: calc(100vw - 65px)
       padding: 0
       +widescreen
         width: calc(100vw - 240px)
@@ -86,8 +86,11 @@
     +fullhd
       padding: 0 1.5rem
   .bal-nav__main-head-logo
-    +until-widescreen
-      margin-top: 1rem
+    margin-top: 1rem
+    margin-right: 1rem
+    +widescreen
+      margin: 0
+      padding: 0 1rem
   +element(main-body)
     position: relative
     display: block
