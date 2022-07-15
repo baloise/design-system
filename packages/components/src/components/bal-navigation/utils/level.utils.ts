@@ -25,7 +25,7 @@ export interface LevelInfo {
   type: 'meta' | 'main' | 'block' | 'block-item'
   value: string
   label: string
-  metaLink?: string
+  tabLink?: string
   link?: string
   linkLabel?: string
   color?: 'white' | 'grey'

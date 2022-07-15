@@ -26,7 +26,7 @@ export const Basic = args => ({
       openModal,
     }
   },
-  template: `<div style="height: 3000px"><bal-navigation v-bind="args" meta-value="meta-1">
+  template: `<div style="height: 3000px"><bal-navigation v-bind="args" meta-value="meta-1" aria-label-meta="aria label meta" aria-label-main="aria label main">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">
       <bal-navigation-level-main value="meta-1-main-1" label="Versichern" link="http://" linkLabel="Alle Versicherungslösungen">
@@ -70,19 +70,16 @@ export const Basic = args => ({
         </bal-navigation-level-block>
       </bal-navigation-level-main>
       <bal-navigation-level-main value="meta-1-main-3" label="Anlegen & Vorsorgen" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+        <bal-navigation-level-block label="Meta 1 Main 3 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
       <bal-navigation-level-main value="meta-1-main-4" label="Kontakt & Services" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+        <bal-navigation-level-block label="Meta 1 Main 4 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-5" label="Magazin" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
-          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
-        </bal-navigation-level-block>
+      <bal-navigation-level-main value="meta-1-main-5" label="Magazin" tabLink="#">
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
     <bal-navigation-level-meta value="meta-2" label="Unternehmen" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview">
@@ -167,7 +164,7 @@ export const MetaWithLinks = args => ({
   template: `<div style="height: 3000px">
 <bal-navigation v-bind="args" meta-value="meta-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
-    <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht" metaLink="#">
+    <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht" tabLink="#">
       <bal-navigation-level-main value="meta-1-main-1" label="Versichern" link="http://" linkLabel="Alle Versicherungslösungen">
         <bal-navigation-level-block label="Wohnen & Recht" link="http://">
           <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://"></bal-navigation-level-block-item>
@@ -218,13 +215,10 @@ export const MetaWithLinks = args => ({
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-5" label="Magazin" link="http://" linkLabel="Go to Main 1">
-        <bal-navigation-level-block label="Meta 1 Main 5 Block 1" link="http://">
-          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
-        </bal-navigation-level-block>
+      <bal-navigation-level-main value="meta-1-main-5" label="Magazin" tabLink="#test">
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
-    <bal-navigation-level-meta value="meta-2" label="Unternehmen" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" metaLink="#">
+    <bal-navigation-level-meta value="meta-2" label="Unternehmen" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" tabLink="#">
       <bal-navigation-level-main value="meta-2-main-1" label="Meta 2 Main 1" link="http://" linkLabel="Go to Main 1">
         <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -232,7 +226,7 @@ export const MetaWithLinks = args => ({
         </bal-navigation-level-block>
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
-    <bal-navigation-level-meta value="meta-3" label="Institutionelle Anleger" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" metaLink="#">
+    <bal-navigation-level-meta value="meta-3" label="Institutionelle Anleger" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" tabLink="#">
       <bal-navigation-level-main value="meta-3-main-1" label="Meta 3 Main 1" link="http://" linkLabel="Go to Main 1">
         <bal-navigation-level-block label="Meta 3 Main 1 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -240,7 +234,7 @@ export const MetaWithLinks = args => ({
         </bal-navigation-level-block>
       </bal-navigation-level-main>
     </bal-navigation-level-meta>
-    <bal-navigation-level-meta value="meta-4" label="Über uns" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" metaLink="#">
+    <bal-navigation-level-meta value="meta-4" label="Über uns" link="/?path=/story/components-navigation--basic" linkLabel="Go to Meta 2 Overview" tabLink="#">
       <bal-navigation-level-main value="meta-4-main-1" label="Meta 4 Main 1" link="http://" linkLabel="Go to Main 1">
         <bal-navigation-level-block label="Meta 4 Main 1 Block 1" link="http://">
           <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>

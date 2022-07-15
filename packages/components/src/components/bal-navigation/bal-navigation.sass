@@ -1,12 +1,11 @@
 +block(nav)
-  position: fixed
+  position: sticky
   top: 0
   left: 0
   width: 100vw
-  transition: transform .3s ease-in-out
+  transition: top .3s ease-in-out
   +modifier(translated)
-    transform: translateY(-48px)
-
+    top: -3rem
   +element(meta)
     +unselectable
     background: var(--bal-color-primary)
@@ -20,13 +19,13 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - (96px - 2rem))
+      width: calc(100vw - 65px)
       padding: 0
       +widescreen
-        width: calc(100vw - (208px + 2rem))
+        width: calc(100vw - 240px)
       +fullhd
-        width: calc(100vw - 304px)
-        max-width: calc(1360px + 2rem)
+        width: calc(100vw - 489px)
+        max-width: 1431px
 
     +element(start)
       display: flex
@@ -47,40 +46,59 @@
     display: block
     height: auto
     z-index: 1000
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
-      width: 100vw
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+      width: 100%
+      //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+      &.is-expanded
+        border-bottom-left-radius: 12px
+        border-bottom-right-radius: 12px
     +widescreen
       margin: 1rem auto 0
       width: calc(100vw - 160px)
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+      //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
       border-radius: 12px
     +fullhd
       margin: 1.5rem auto 0
-      width: calc(100vw - 240px)
+      width: 1480px
       max-width: 1480px
   +element(main-head)
     display: flex
     justify-content: space-between
     flex-wrap: wrap
     align-items: center
-    padding: 0 3rem
+    padding: 0 2rem
+    position: relative
     transition: border-radius .3s ease-in-out
+    > div
+      align-items: start
     +until-widescreen
-      width: 100vw
-      max-width: none
+      width: 100%
     +widescreen
+      padding: 0 2.5rem
+      > div
+        align-items: center
       &.is-active
         border-bottom-left-radius: 0 !important
         border-bottom-right-radius: 0 !important
         transition: border-radius .3s ease-in-out
+    +fullhd
+      padding: 0 1.5rem
+  .bal-nav__main-head-logo
+    margin-top: 1rem
+    margin-right: 1rem
+    +widescreen
+      margin: 0
+      padding: 0 1rem
   +element(main-body)
     position: relative
     display: block
-    height: 0
+    min-height: 0 !important
+    max-height: 0
+    overflow: hidden
     pointer-events: none
     opacity: 0
-    transition: opacity .3s ease
+    transition: opacity .3s ease-in-out
     &::before
       position: absolute
       content: ''
@@ -90,24 +108,22 @@
       height: 1px
       background-color: var(--bal-color-grey)
       opacity: 0
-      transition: opacity .3s ease
+      transition: opacity .3s ease-in-out
     .bal-nav__panel
-      height: 0
       opacity: 0
-      transition: opacity .3s .3s ease, height .3s ease
+      transition: opacity .3s ease-in-out .1s
     &.is-active
+      overflow: scroll
       opacity: 1
-      height: auto
       pointer-events: all
-      transition: opacity .3s ease
+      max-height: 100%
+      transition: opacity .3s ease-in-out
       &::before
         opacity: 1
-        transition: opacity .3s ease
+        transition: opacity .3s ease-in-out
       .bal-nav__panel
-        pointer-events: all
-        height: 100%
         opacity: 1
-        transition: opacity .3s ease, height .3s ease
+        transition: opacity .3s ease-in-out .1s
   +element(panel)
     padding: 1rem 1rem 4rem
     +tablet
@@ -122,12 +138,6 @@
       +widescreen
         display: flex
         flex-wrap: wrap
-    +desktop
-      height: 0
-      opacity: 0
-      display: block
-      pointer-events: none
-      transition: height .3s ease, opacity .3s ease
     +element(list)
       position: relative
       +tablet-only
@@ -149,6 +159,7 @@
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
+
   +element(metamobile)
     display: block
     background: var(--bal-color-primary-inverted)

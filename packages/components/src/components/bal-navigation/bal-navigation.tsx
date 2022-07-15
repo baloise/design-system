@@ -22,6 +22,8 @@ export class Navigation implements ComponentInterface {
   @State() selectedMainValue?: string = ''
 
   @Prop() logoPath?: string = '/'
+  @Prop() ariaLabelMeta?: string = ''
+  @Prop() ariaLabelMain?: string = ''
 
   @Prop() metaValue?: string
   @Watch('metaValue')
@@ -86,10 +88,6 @@ export class Navigation implements ComponentInterface {
     this.metaNavMobileElement = this.el.querySelector('bal-meta-mobile-head') as HTMLBalMetaMobileHeadElement
   }
 
-  componentDidUpdate(): Promise<void> | void {
-    console.log('MAIN NAV CLIENT HEIGHT DID', this.mainNavElement.clientHeight)
-  }
-
   private updateIndexes() {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
@@ -124,12 +122,12 @@ export class Navigation implements ComponentInterface {
           'bal-nav--translated': this.isTranslated,
         }}
       >
-        <bal-navigation-meta class="is-hidden-touch">
+        <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted value={selectedMetaValue}>
               {this.levels.map((meta, index) =>
-                meta.metaLink ? (
-                  <bal-tab-item label={meta.label} value={meta.value} href={meta.metaLink} />
+                meta.tabLink ? (
+                  <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
                 ) : (
                   <bal-tab-item
                     label={meta.label}
@@ -152,8 +150,9 @@ export class Navigation implements ComponentInterface {
 
         {/* TODO: Create custom component for main navigation desktop */}
         <bal-navigation-main
-          class="is-hidden-touch"
+          class={{ 'is-hidden-touch': true, 'is-expanded': this.isMainBodyOpen }}
           //ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
+          aria-label-main={this.ariaLabelMain}
         >
           <bal-navigation-main-head
             slot="main-head"
@@ -163,20 +162,24 @@ export class Navigation implements ComponentInterface {
               'is-active': this.isMainBodyOpen,
             }}
           >
-            <div class="is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-space-between">
-              <div class="is-flex mr-4">
-                <a href={this.logoPath} class="bal-nav__main-head-logo py-4">
+            <div class="is-flex is-align-items-start is-flex-wrap-wrap is-justify-content-space-between">
+              <div class="is-flex">
+                <a href={this.logoPath} class="bal-nav__main-head-logo">
                   <bal-logo color="blue"></bal-logo>
                 </a>
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
                   {/*{console.log('sub levels', selectedMetaLevel.subLevels)}*/}
-                  {selectedMetaLevel.subLevels?.map((main, index) => {
-                    return (
+                  {selectedMetaLevel.subLevels?.map((main, index) =>
+                    main.tabLink ? (
+                      <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
+                    ) : (
                       <bal-tab-item
                         label={main.label}
                         value={main.value}
+                        href={main.tabLink}
+                        icon="nav-go-down"
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
                           this.selectedMainIndex = index
@@ -184,8 +187,8 @@ export class Navigation implements ComponentInterface {
                           this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
                         }}
                       />
-                    )
-                  })}
+                    ),
+                  )}
                 </bal-tabs>
               </div>
             </div>
@@ -196,7 +199,7 @@ export class Navigation implements ComponentInterface {
               //'is-hidden': !this.isMainBodyOpen,
               'is-active': this.isMainBodyOpen,
             }}
-            aria-hidden={!this.isMainBodyOpen}
+            aria-hidden={this.isMainBodyOpen ? 'false' : 'true'}
           >
             {this.levels
               .filter((_, index) => index === this.selectedMetaIndex)

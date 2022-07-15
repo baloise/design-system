@@ -18,6 +18,10 @@
       height: 80px
       .bal-tabs__tabs > ul
         margin: 0
+    .bal-tabs__tabs
+      ul li:last-child
+        .bal-tabs__tabs__item__button--context-header
+          margin-right: .25rem
   +modifier(fullwidth)
     display: block
     flex: 1
@@ -197,8 +201,18 @@
             height: 80px
         +modifier(context-header)
           height: 64px
+          flex-direction: row-reverse
+          padding: 1rem .75rem
+          bal-icon
+            margin-left: 3px
+            transition: transform .3s ease-in-out
           +widescreen
             height: 80px
+            bal-icon
+              margin-left: 7px
+          &.bal-tabs__tabs__item__button--active
+            bal-icon
+              transform: rotateX(-180deg)
         +modifier(context-meta)
           height: 48px
           font-size: 14px
@@ -265,6 +279,10 @@
           width: 2px
           top: 0
           left: 0
+      +modifier(context-header)
+        &.bal-tabs__tabs__line--ready
+          transition-duration: .3s
+
 
 +block(tabs-item)
   width: 100%
