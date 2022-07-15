@@ -11,7 +11,7 @@ export class MainMobile implements ComponentInterface {
     const mainEl = BEM.block('nav').element('mainmobile')
 
     return (
-      <Host class={{ ...mainEl.class() }}>
+      <Host class={{ ...mainEl.class(), 'is-hidden-desktop': true }}>
         <slot></slot>
       </Host>
     )
