@@ -36,9 +36,11 @@ export interface LevelInfo {
 export const readSubLevels = async (element: HTMLElement, target: string): Promise<LevelInfo[]> => {
   const subLevels = Array.from(element.querySelectorAll<any>(target)) as any[]
   const levels: LevelInfo[] = []
-  subLevels.forEach(async level => {
+  for (const level of subLevels) {
     const info = await level.getLevelInfo()
+    console.log('INFO ', info)
     levels.push(info)
-  })
+  }
+  console.log('levels ', levels)
   return levels
 }
