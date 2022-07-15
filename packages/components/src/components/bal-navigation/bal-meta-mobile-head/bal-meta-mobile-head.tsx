@@ -14,7 +14,9 @@ export class MetaMobileHead implements ComponentInterface {
       <Host class={{ ...metaEl.class(), 'is-hidden-desktop': true }}>
         <nav role="navigation" aria-label="TODO i18n meta nav">
           <slot name="logo" />
-          <slot name="meta-mobile-actions" />
+          <div class={{ ...metaEl.element('actions').class() }}>
+            <slot name="meta-actions-mobile" />
+          </div>
           <slot name="burger" />
         </nav>
       </Host>

@@ -249,9 +249,7 @@ export class Navigation implements ComponentInterface {
           <a slot="logo" href={this.logoPath} class="bal-nav__main-head-logo py-4">
             <bal-logo color="blue"></bal-logo>
           </a>
-          <div slot="meta-actions-mobile">
-            <slot name="meta-actions-mobile" />
-          </div>
+          <slot name="meta-actions-mobile" />
           <bal-button
             slot="burger"
             color="light"
@@ -301,6 +299,9 @@ export class Navigation implements ComponentInterface {
             ))}
           </bal-list>
         </bal-main-mobile>
+        <bal-meta-mobile-foot class={{ 'is-hidden': !this.isMainBodyOpen }}>
+          <slot name="meta-mobile-foot" />
+        </bal-meta-mobile-foot>
       </Host>
     )
   }

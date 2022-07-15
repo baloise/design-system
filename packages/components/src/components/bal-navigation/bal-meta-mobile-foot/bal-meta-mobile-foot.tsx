@@ -11,7 +11,7 @@ export class MetaMobileFoot implements ComponentInterface {
     const footEl = BEM.block('nav').element('footmobile')
 
     return (
-      <Host class={{ ...footEl.class() }}>
+      <Host class={{ ...footEl.class(), 'is-hidden-desktop': true }}>
         <slot></slot>
       </Host>
     )

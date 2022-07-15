@@ -1,10 +1,9 @@
 +block(nav)
-  +desktop
-    position: fixed
-    top: 0
-    left: 0
-    width: 100vw
-    transition: transform .3s ease-in-out
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  transition: transform .3s ease-in-out
   +modifier(translated)
     transform: translateY(-48px)
 
@@ -66,7 +65,6 @@
     flex-wrap: wrap
     align-items: center
     padding: 0 3rem
-    position: relative
     transition: border-radius .3s ease-in-out
     +until-widescreen
       width: 100vw
@@ -168,6 +166,31 @@
 
       +tablet
         padding: 0 48px
-    +element(burger)
+    +element(actions)
+      margin-left: auto
+      > div
+        display: flex
+        gap: .5rem
   +element(mainmobile)
+    display: block
+    padding: 0 1rem
+    +tablet
+      padding: 0 3rem
   +element(footmobile)
+    position: fixed
+    bottom: 0
+    //left: 0
+    width: 100vw
+    background: var(--bal-color-grey-2)
+    padding: .5rem
+
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: .5rem
+
+    //> div > bal-modal > div.bal-modal__container > div.bal-modal__content
+        //width: 100vw
+        //transform: translateY(-64px)
+        //margin-bottom: 64px
