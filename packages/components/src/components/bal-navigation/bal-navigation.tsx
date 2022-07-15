@@ -88,10 +88,6 @@ export class Navigation implements ComponentInterface {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
       this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
-
-      /*const selectedMainIndex =
-        this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
-      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0*/
     }
   }
 
@@ -107,9 +103,6 @@ export class Navigation implements ComponentInterface {
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
-    /*const selectedMainValue = selectedMetaLevel.subLevels
-      ? selectedMetaLevel.subLevels[this.selectedMainIndex].value
-      : ''*/
 
     return (
       <Host
@@ -144,10 +137,8 @@ export class Navigation implements ComponentInterface {
           </bal-navigation-meta-end>
         </bal-navigation-meta>
 
-        {/* TODO: Create custom component for main navigation desktop */}
         <bal-navigation-main
           class={{ 'is-hidden-touch': true, 'is-expanded': this.isMainBodyOpen }}
-          //ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
           aria-label-main={this.ariaLabelMain}
         >
           <bal-navigation-main-head
@@ -166,7 +157,6 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {/*{console.log('sub levels', selectedMetaLevel.subLevels)}*/}
                   {selectedMetaLevel.subLevels?.map((main, index) =>
                     main.tabLink ? (
                       <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
@@ -192,7 +182,6 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-body
             slot="main-body"
             class={{
-              //'is-hidden': !this.isMainBodyOpen,
               'is-active': this.isMainBodyOpen,
             }}
             aria-hidden={this.isMainBodyOpen ? 'false' : 'true'}
@@ -241,67 +230,8 @@ export class Navigation implements ComponentInterface {
                     </bal-navigation-menu-panel>
                   )),
               )}
-            {/*{this.levels*/}
-            {/*  .filter((_, index) => index === this.selectedMetaIndex)*/}
-            {/*  .map(meta => (*/}
-            {/*    <div class="py-4">*/}
-            {/*      {meta.subLevels*/}
-            {/*        ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)*/}
-            {/*        .map(main => (*/}
-            {/*          <div>*/}
-            {/*            <p>{main.linkLabel}</p>*/}
-            {/*            <div class="columns is-multiline">*/}
-            {/*              {main.subLevels?.map((block, _, list) => (*/}
-            {/*                <bal-card*/}
-            {/*                  class={`column is-${list.length === 1 ? '12' : list.length === 2 ? '6' : '4'}`}*/}
-            {/*                  color={block.color || 'white'}*/}
-            {/*                  flat*/}
-            {/*                  space="small"*/}
-            {/*                >*/}
-            {/*                  <bal-card-content class={`${block.color === 'grey' ? '' : 'px-0'}`}>*/}
-            {/*                    <h4 class="title is-size-4">{block.label}</h4>*/}
-            {/*                    {block.subLevels?.map(item => (*/}
-            {/*                      <a*/}
-            {/*                        class="is-link is-block py-1"*/}
-            {/*                        onClick={ev => {*/}
-            {/*                          main.onClick(ev)*/}
-            {/*                          this.isMainBodyOpen = false*/}
-            {/*                        }}*/}
-            {/*                      >*/}
-            {/*                        {item.label}*/}
-            {/*                      </a>*/}
-            {/*                    ))}*/}
-            {/*                  </bal-card-content>*/}
-            {/*                </bal-card>*/}
-            {/*              ))}*/}
-            {/*            </div>*/}
-            {/*          </div>*/}
-            {/*        ))}*/}
-            {/*    </div>*/}
-            {/*  ))}*/}
           </bal-navigation-main-body>
         </bal-navigation-main>
-
-        {/* <hr class="my-8" /> */}
-
-        {/* {this.levels.map(meta => (
-          <p>
-            {meta.label}
-            {meta.subLevels?.map(main => (
-              <p class="ml-2">
-                {main.label}
-                {main.subLevels?.map(block => (
-                  <p class="ml-2">
-                    {block.label}
-                    {block.subLevels?.map(item => (
-                      <p class="ml-2">{item.label}</p>
-                    ))}
-                  </p>
-                ))}
-              </p>
-            ))}
-          </p>
-        ))} */}
         <slot></slot>
       </Host>
     )
