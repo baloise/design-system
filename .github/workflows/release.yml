@@ -74,3 +74,16 @@ jobs:
           message: 'chore(): update lock files'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_ICON: https://github.com/baloise.png?size=48
+          SLACK_COLOR: good
+          SLACK_USERNAME: Design-System-Next-ReleaseBot
+          SLACK_TITLE: New Release available
+          SLACK_MESSAGE: 'Find the latest release ${{ env.GITHUB_REF_NAME }}: https://github.com/baloise-incubator/design-system/releases'
+          SLACK_FOOTER: Get it while it's hot!
+          MSG_MINIMAL: true
+

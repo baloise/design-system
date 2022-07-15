@@ -1,87 +1,96 @@
-.bal-stage
-  position: relative
-  .bal-stage-content
-    position: relative
++block(stage)
+  display: block
+  // Color modifiers
+  +modifier(is-blue)
+    background: var(--bal-color-primary-5)
+  +modifier(is-purple)
+    background: var(--bal-color-purple-3)
+  +modifier(is-green)
+    background: var(--bal-color-green-3)
+  +modifier(is-red)
+    background: var(--bal-color-red-3)
+  +modifier(is-yellow)
+    background: var(--bal-color-yellow-3)
+    
+  +block(stage-content)
     display: block
-    overflow: hidden
 
-    .bal-stage-body
+    +block(stage-body)
       display: flex
-      align-items: center
-      padding: 4rem 0
+      flex-direction: column
+      justify-content: center
+      padding-top: 4rem
+      padding-bottom: 4rem
       +desktop
         min-height: 400px
-        align-items: flex-end
-        padding: 6rem 0
+        justify-content: flex-end
+        padding-top: 6rem
+        padding-bottom: 6rem
 
-      .container > *
-        max-width: calc(100% - 66px)
-        +tablet
-          max-width: calc(100% - 120px)
-        +desktop
-          max-width: calc(100% - 198px)
-    // Color modifiers
-    +modifier(is-blue)
-      .bal-stage-body
-        background: var(--bal-color-primary-5)
-    +modifier(is-purple)
-      .bal-stage-body
-        background: var(--bal-color-purple-3)
-    +modifier(is-green)
-      .bal-stage-body
-        background: var(--bal-color-green-3)
-    +modifier(is-red)
-      .bal-stage-body
-        background: var(--bal-color-red-3)
-    +modifier(is-yellow)
-      .bal-stage-body
-        background: var(--bal-color-yellow-3)
+    +block(stage-back-link)
+      a
+        display: inline-flex
+        align-items: center
+        font-family: var(--bal-font-family-title)
+        font-weight: 700
+        opacity: 1
+        transition: opacity .2s ease-in
+        &:hover
+          opacity: .5
+        &:focus-visible
+          outline: none
+          border: 2px solid transparent
+          border-radius: 5px
+          outline: 3px solid var(--bal-color-purple-dark)
+
     +modifier(is-inverted)
-      .bal-stage-body
+      +block(stage-body)
         h1
           color: var(--bal-color-white)
         h2
           color: var(--bal-color-white)
-        bal-stage-backlink a
-          color: var(--bal-color-white)
-          +fillSvg(var(--bal-color-white))
+        +block(stage-back-link)
+          a
+            color: var(--bal-color-white)
+            +fillSvg(var(--bal-color-white))
 
-    .bal-stage-back-link a
-      display: inline-flex
-      align-items: center
-      font-family: var(--bal-font-family-title)
-      font-weight: 700
-      opacity: 1
-      transition: opacity .2s ease-in
-      &:hover
-        opacity: .5
-
-  .bal-stage-shape
-    bal-shape
-      position: absolute
-      bottom: 0
-      right: 1rem
-      +desktop
-        right: 2rem
+      
   // Size Modifiers
   +modifier(is-large)
-    .bal-stage-content
-      .bal-stage-body
+    +block(stage-content)
+      +block(stage-body)
         min-height: 375px
         +tablet
           min-height: 560px
         +desktop
-          padding: 12rem 0
+          justify-content: center
+          padding-top: 10rem
+          padding-bottom: 10rem
           min-height: 840px
 
-.has-background-image
-  .bal-stage-body
+  +modifier(has-background-image)
     background: no-repeat center/cover var(--bal-background-image)
 
-.has-shape
-  section
-    margin-bottom: 22px
-    +tablet
-      margin-bottom: 40px
-    +desktop
-      margin-bottom: 66px
+  +modifier(has-shape)
+    +block(stage-content)
+      margin-bottom: 22px
+      +tablet
+        margin-bottom: 40px
+      +desktop
+        margin-bottom: 66px
+      +block(stage-body) 
+        & > *
+          max-width: calc(100% - 66px)
+          +tablet
+            max-width: calc(100% - 120px)
+          +desktop
+            max-width: calc(100% - 198px)
+      +block(shape)
+        position: absolute
+        bottom: -22px
+        right: 1rem
+        +tablet
+          bottom: -40px
+        +desktop
+          right: 2rem
+          bottom: -66px

@@ -20,6 +20,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
+import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
 
 @Component({
@@ -178,6 +179,20 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   }
 
   render() {
+    const type = this.interface
+    const block = BEM.block(type)
+    const flatClass = 'is-flat'
+    const hasFlat = this.flat
+    const elLabel = block.element('label')
+    const elText = elLabel.element('text')
+    const elInput = block.element('input')
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled || this.readonly
+    const paddingLeftClass = 'has-padding-left'
+    const hasPaddingLeft = !this.labelHidden
+    const invalidClass = 'is-invalid'
+    const hasInvalid = this.invalid
+
     return (
       <Host
         role="checkbox"
@@ -186,19 +201,18 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
-          'is-flat': this.flat,
-          'is-inverted': this.inverted,
-          'is-disabled': this.disabled || this.readonly,
-          'is-focused': this.hasFocus,
-          'bal-checkbox': this.interface === 'checkbox',
-          'bal-switch': this.interface === 'switch',
+          ...block.class(),
+          ...block.modifier(flatClass).class(hasFlat),
+          ...block.modifier(disabledClass).class(hasDisabled),
+          ...block.modifier(invalidClass).class(hasInvalid),
         }}
         {...this.inheritedAttributes}
       >
         <input
           class={{
-            'is-disabled': this.disabled || this.readonly,
-            'is-disabled-hidden': this.hidden,
+            ...elInput.class(),
+            ...elInput.modifier(disabledClass).class(hasDisabled),
+            ...elInput.modifier(invalidClass).class(hasInvalid),
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
@@ -218,8 +232,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         />
         <label
           class={{
-            'option-label': true,
-            'is-disabled': this.disabled || this.readonly,
+            ...elLabel.class(),
+            ...elLabel.modifier(disabledClass).class(hasDisabled),
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
@@ -228,7 +242,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
             inline
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
             class={{
-              'has-padding-left': !this.labelHidden,
+              ...elText.class(),
+              ...elText.modifier(paddingLeftClass).class(hasPaddingLeft),
             }}
           >
             <slot></slot>
