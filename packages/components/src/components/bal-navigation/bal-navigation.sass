@@ -49,14 +49,12 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%
-      //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
       &.is-expanded
         border-bottom-left-radius: 12px
         border-bottom-right-radius: 12px
     +widescreen
       margin: 1rem auto 0
       width: calc(100vw - 160px)
-      //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
       border-radius: 12px
     +fullhd
       margin: 1.5rem auto 0
@@ -128,12 +126,24 @@
     padding: 1rem 1rem 4rem
     +tablet
       padding: 2rem 3rem 4rem
-    > a
+    +desktop
+      padding: 2rem 3rem 0
+    .panel-link-wrapper
       margin-bottom: 1.5rem
       +tablet
         margin-bottom: 2.5rem
       +desktop
         margin-bottom: 2rem
+    .panel-link
+      color: var(--bal-color-blue)
+      position: relative
+      padding-right: 17px
+      &::before
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
+        content: '\279E'
     > div > div:first-of-type > div
       +widescreen
         display: flex

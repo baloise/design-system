@@ -92,10 +92,6 @@ export class Navigation implements ComponentInterface {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
       this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
-
-      /*const selectedMainIndex =
-        this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
-      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0*/
     }
   }
 
@@ -111,9 +107,6 @@ export class Navigation implements ComponentInterface {
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
-    /*const selectedMainValue = selectedMetaLevel.subLevels
-      ? selectedMetaLevel.subLevels[this.selectedMainIndex].value
-      : ''*/
 
     return (
       <Host
@@ -148,10 +141,8 @@ export class Navigation implements ComponentInterface {
           </bal-navigation-meta-end>
         </bal-navigation-meta>
 
-        {/* TODO: Create custom component for main navigation desktop */}
         <bal-navigation-main
           class={{ 'is-hidden-touch': true, 'is-expanded': this.isMainBodyOpen }}
-          //ref={el => (this.mainNavElement = el as HTMLBalNavigationMainElement)}
           aria-label-main={this.ariaLabelMain}
         >
           <bal-navigation-main-head
@@ -170,7 +161,6 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {/*{console.log('sub levels', selectedMetaLevel.subLevels)}*/}
                   {selectedMetaLevel.subLevels?.map((main, index) =>
                     main.tabLink ? (
                       <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
@@ -196,7 +186,6 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-body
             slot="main-body"
             class={{
-              //'is-hidden': !this.isMainBodyOpen,
               'is-active': this.isMainBodyOpen,
             }}
             aria-hidden={this.isMainBodyOpen ? 'false' : 'true'}
