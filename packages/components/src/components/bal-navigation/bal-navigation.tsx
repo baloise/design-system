@@ -62,6 +62,7 @@ export class Navigation implements ComponentInterface {
 
   async connectedCallback() {
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
+    //await this.readSubLevels()
     await this.readSubLevels().then(() => this.updateIndexes())
     //this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', async () => await this.readSubLevels())
@@ -71,6 +72,10 @@ export class Navigation implements ComponentInterface {
         this.translateMainNav()
       }
     }, 300)
+  }
+
+  componentWillLoad() {
+    console.log('this.levels WILL LOAD', this.levels)
   }
 
   disconnectedCallback() {
