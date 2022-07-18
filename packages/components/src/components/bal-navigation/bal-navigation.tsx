@@ -60,13 +60,11 @@ export class Navigation implements ComponentInterface {
     this.previousY = window.scrollY
   }
 
-  //async connectedCallback() {
-  connectedCallback() {
+  async connectedCallback() {
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
-    //await this.readSubLevels()
-    this.readSubLevels()
-    this.updateIndexes()
-    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
+    await this.readSubLevels().then(() => this.updateIndexes())
+    //this.updateIndexes()
+    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', async () => await this.readSubLevels())
     setInterval(() => {
       if (this.scrolling) {
         this.scrolling = false
@@ -104,12 +102,17 @@ export class Navigation implements ComponentInterface {
       console.log('LEVELS new', levels)
       this.levels = levels
     }
+    console.log('THIS.LEVELS', this.levels)
+    console.log('THIS.LEVELS[0]', this.levels[0])
   }
 
   render() {
+    console.log('render this.levels', this.levels)
+    console.log('render selectedMetaIndex', this.selectedMetaIndex)
+    console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
-    const selectedMetaValue = selectedMetaLevel?.value
+    const selectedMetaValue = selectedMetaLevel.value
 
     return (
       <Host
