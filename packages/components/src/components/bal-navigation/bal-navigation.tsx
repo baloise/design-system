@@ -60,9 +60,11 @@ export class Navigation implements ComponentInterface {
     this.previousY = window.scrollY
   }
 
-  async connectedCallback() {
+  //async connectedCallback() {
+  connectedCallback() {
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
-    await this.readSubLevels()
+    //await this.readSubLevels()
+    this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
     setInterval(() => {
@@ -88,6 +90,10 @@ export class Navigation implements ComponentInterface {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
       this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
+
+      const selectedMainIndex =
+        this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
+      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
     }
   }
 
@@ -95,6 +101,7 @@ export class Navigation implements ComponentInterface {
     const levelEl = this.el.querySelector('bal-navigation-levels')
     const levels = await levelEl?.getLevelInfos()
     if (levels) {
+      console.log('LEVELS new', levels)
       this.levels = levels
     }
   }
@@ -102,7 +109,7 @@ export class Navigation implements ComponentInterface {
   render() {
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
-    const selectedMetaValue = selectedMetaLevel.value
+    const selectedMetaValue = selectedMetaLevel?.value
 
     return (
       <Host
@@ -113,7 +120,7 @@ export class Navigation implements ComponentInterface {
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
-            <bal-tabs interface="meta" inverted value={selectedMetaValue}>
+            <bal-tabs interface="meta" inverted={true} value={selectedMetaValue}>
               {this.levels.map((meta, index) =>
                 meta.tabLink ? (
                   <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
@@ -126,6 +133,7 @@ export class Navigation implements ComponentInterface {
                       this.selectedMetaIndex = index
                       this.metaValue = meta.value
                       this.isMainBodyOpen = false
+                      this.selectedMainValue = ''
                     }}
                   />
                 ),
@@ -164,7 +172,6 @@ export class Navigation implements ComponentInterface {
                       <bal-tab-item
                         label={main.label}
                         value={main.value}
-                        href={main.tabLink}
                         icon="nav-go-down"
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
