@@ -60,7 +60,7 @@ export class Navigation implements ComponentInterface {
     this.previousY = window.scrollY
   }
 
-  async connectedCallback() {
+  /*async connectedCallback() {
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
     //await this.readSubLevels()
     await this.readSubLevels().then(() => this.updateIndexes())
@@ -72,9 +72,20 @@ export class Navigation implements ComponentInterface {
         this.translateMainNav()
       }
     }, 300)
-  }
+  }*/
 
-  componentWillLoad() {
+  async componentWillLoad() {
+    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
+    //await this.readSubLevels()
+    await this.readSubLevels().then(() => this.updateIndexes())
+    //this.updateIndexes()
+    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', async () => await this.readSubLevels())
+    setInterval(() => {
+      if (this.scrolling) {
+        this.scrolling = false
+        this.translateMainNav()
+      }
+    }, 300)
     console.log('this.levels WILL LOAD', this.levels)
   }
 
