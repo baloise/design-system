@@ -62,10 +62,9 @@ export class Navigation implements ComponentInterface {
 
   async connectedCallback() {
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
-    //await this.readSubLevels()
-    await this.readSubLevels().then(() => this.updateIndexes())
-    //this.updateIndexes()
-    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', async () => await this.readSubLevels())
+    await this.readSubLevels()
+    this.updateIndexes()
+    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
     setInterval(() => {
       if (this.scrolling) {
         this.scrolling = false
@@ -73,21 +72,6 @@ export class Navigation implements ComponentInterface {
       }
     }, 300)
   }
-
-  /*  async componentWillLoad() {
-    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
-    //await this.readSubLevels()
-    await this.readSubLevels().then(() => this.updateIndexes())
-    //this.updateIndexes()
-    this.mutationO = observeLevels(this.el, 'bal-navigation-levels', async () => await this.readSubLevels())
-    setInterval(() => {
-      if (this.scrolling) {
-        this.scrolling = false
-        this.translateMainNav()
-      }
-    }, 300)
-    console.log('this.levels WILL LOAD', this.levels)
-  }*/
 
   disconnectedCallback() {
     if (this.mutationO) {
@@ -124,8 +108,8 @@ export class Navigation implements ComponentInterface {
 
   render() {
     console.log('render this.levels', this.levels)
-    console.log('render selectedMetaIndex', this.selectedMetaIndex)
-    console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])
+    /*console.log('render selectedMetaIndex', this.selectedMetaIndex)
+    console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])*/
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
@@ -140,8 +124,8 @@ export class Navigation implements ComponentInterface {
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
             <bal-tabs interface="meta" inverted={true} value={selectedMetaValue}>
-              {this.levels.map((meta, index) =>
-                meta.tabLink ? (
+              {this.levels.map((meta, index) => {
+                return meta.tabLink ? (
                   <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
                 ) : (
                   <bal-tab-item
@@ -155,8 +139,8 @@ export class Navigation implements ComponentInterface {
                       this.selectedMainValue = ''
                     }}
                   />
-                ),
-              )}
+                )
+              })}
             </bal-tabs>
           </bal-navigation-meta-start>
           <bal-navigation-meta-end>
@@ -184,8 +168,8 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {selectedMetaLevel.subLevels?.map((main, index) =>
-                    main.tabLink ? (
+                  {selectedMetaLevel.subLevels?.map((main, index) => {
+                    return main.tabLink ? (
                       <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
                     ) : (
                       <bal-tab-item
@@ -199,8 +183,8 @@ export class Navigation implements ComponentInterface {
                           this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
                         }}
                       />
-                    ),
-                  )}
+                    )
+                  })}
                 </bal-tabs>
               </div>
             </div>
