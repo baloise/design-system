@@ -7,13 +7,13 @@ import { Component, h, ComponentInterface, Host, Element, State } from '@stencil
 export class ImageSlider implements ComponentInterface {
   @Element() host!: HTMLBalImageSliderElement
   @State() slideIndex = 0
-  private images!: NodeListOf<HTMLImageElement>
+  private images!: NodeListOf<HTMLDivElement>
   private imageContainer!: HTMLDivElement
 
   connectedCallback() {
     this.imageContainer = this.host.querySelector('[slot="images"]') as HTMLDivElement
     this.imageContainer.classList.add('bal-image-slider__image-container')
-    this.images = this.imageContainer?.querySelectorAll(':scope > img') as NodeListOf<HTMLImageElement>
+    this.images = this.imageContainer?.querySelectorAll('div.bal-image-slider__item') as NodeListOf<HTMLDivElement>
   }
 
   /**
@@ -65,7 +65,7 @@ export class ImageSlider implements ComponentInterface {
           <slot name="images"></slot>
         </div>
         <div class="bal-image-slider__controls is-flex is-justify-content-center is-align-items-center">
-          {this.slideIndex > 0 ? (
+          {
             <bal-button
               class="mt-4"
               onClick={() => this.setSlide(this.slideIndex - 1)}
@@ -74,14 +74,12 @@ export class ImageSlider implements ComponentInterface {
               icon="caret-left"
               flat={true}
             />
-          ) : (
-            <div class="bal-button-placeholder" />
-          )}
+          }
 
           <div class="bal-image-slider__dot-container is-flex is-justify-content-center is-align-items-center">
             {this.getControls()}
           </div>
-          {this.slideIndex < this.images.length - 1 ? (
+          {
             <bal-button
               class="mt-4"
               onClick={() => this.setSlide(this.slideIndex + 1)}
@@ -90,9 +88,7 @@ export class ImageSlider implements ComponentInterface {
               icon="caret-right"
               flat={true}
             />
-          ) : (
-            <div class="bal-button-placeholder" />
-          )}
+          }
         </div>
       </Host>
     )

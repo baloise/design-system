@@ -23,6 +23,10 @@ bal-image-slider {
   right: 0;
 }
 
+.bal-image-slider__item {
+  width: max-content;
+}
+
 .bal-image-slider__image-container {
   display: flex;
   flex-direction: row;
@@ -61,9 +65,4 @@ bal-image-slider {
   &.inactive {
     background-color: #fff;
   }
-}
-
-.bal-button-placeholder {
-  width: 52px;
-  height: 32px;
 }
