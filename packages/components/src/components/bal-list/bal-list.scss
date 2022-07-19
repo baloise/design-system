@@ -72,7 +72,7 @@
 
 .bal-list-item.is-sub-accordion-item {
   @include touch() {
-    padding-left: 1rem;
+    padding: 0 1rem;
   }
 }
 

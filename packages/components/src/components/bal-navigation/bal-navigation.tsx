@@ -68,12 +68,14 @@ export class Navigation implements ComponentInterface {
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
-    setInterval(() => {
-      if (this.scrolling) {
-        this.scrolling = false
-        this.translateMainNav()
-      }
-    }, 300)
+    if (this.isWideOrFullHd) {
+      setInterval(() => {
+        if (this.scrolling) {
+          this.scrolling = false
+          this.translateMainNav()
+        }
+      }, 300)
+    }
   }
 
   disconnectedCallback() {
@@ -239,7 +241,7 @@ export class Navigation implements ComponentInterface {
 
         <bal-meta-mobile-head>
           <a slot="logo" href={this.logoPath} class="bal-nav__main-head-logo py-4">
-            <bal-logo color="blue"></bal-logo>
+            <bal-logo color="blue" size="small"></bal-logo>
           </a>
           <slot name="meta-actions-mobile" />
           <bal-button

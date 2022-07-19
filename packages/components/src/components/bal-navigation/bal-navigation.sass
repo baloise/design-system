@@ -1,9 +1,11 @@
 +block(nav)
-  position: sticky
-  top: 0
-  left: 0
+  position: relative
   width: 100vw
-  transition: top .3s ease-in-out
+  +desktop
+    position: sticky
+    top: 0
+    left: 0
+    transition: top .3s ease-in-out
   +modifier(translated)
     top: -3rem
   +element(meta)
@@ -83,8 +85,9 @@
     +fullhd
       padding: 0 1.5rem
   .bal-nav__main-head-logo
-    margin-top: 1rem
-    margin-right: 1rem
+    +desktop
+      margin-top: 1rem
+      margin-right: 1rem
     +widescreen
       margin: 0
       padding: 0 1rem
@@ -200,7 +203,7 @@
   +element(footmobile)
     position: fixed
     bottom: 0
-    //left: 0
+    left: 0
     width: 100vw
     background: var(--bal-color-grey-2)
     padding: .5rem
