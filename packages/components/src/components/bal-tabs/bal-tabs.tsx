@@ -4,10 +4,9 @@ import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { StepList } from './components/steps'
-import { Props } from '../../types'
+import { Props, Platforms } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../'
-import { Platforms } from '../../types'
 import { getPlatforms } from '../../'
 
 @Component({
@@ -70,7 +69,12 @@ export class Tabs {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical: boolean | 'mobile' | 'tablet' = false
+  @Prop() vertical: Props.BalTabsVertical = false
+
+  /**
+   * The col size of the tabs on vertical mode.
+   */
+  @Prop() verticalColSize: Props.BalTabsColSize = 'one-third'
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -192,6 +196,17 @@ export class Tabs {
     }
   }
 
+  private parseVertical(): Props.BalTabsVertical {
+    if ((this.vertical as any) === 'true' || (this.vertical as any) === '') {
+      return true
+    }
+    if ((this.vertical as any) === 'false' || (this.vertical as any) === undefined) {
+      return false
+    }
+
+    return this.vertical
+  }
+
   private moveLine(element: HTMLElement, timeout = 0) {
     setTimeout(() => {
       if (this.interface !== 'steps' && this.interface !== 'o-steps') {
@@ -200,7 +215,7 @@ export class Tabs {
 
           const isMobile = isPlatform('mobile')
           const isTablet = isPlatform('tablet')
-          const isVertical = this.vertical === true
+          const isVertical = this.parseVertical() === true
           const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
           const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
           const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
@@ -241,11 +256,20 @@ export class Tabs {
     const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
     const Tabs = isSteps ? StepList : TabList
 
+    const isMobile = isPlatform('mobile')
+    const isTablet = isPlatform('tablet')
+    const isPropVertical = this.parseVertical() === true
+    const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
+    const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+    const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
+
     return (
       <Host
         class={{
           ...block.class(),
           ...block.modifier(`context-${this.interface}`).class(),
+          ...block.modifier('vertical').class(this.parseVertical() === true),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
         }}
         data-value={this.tabsOptions
@@ -257,25 +281,47 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <Tabs
-          value={this.value}
-          context={this.interface}
-          inverted={this.inverted}
-          tabs={this.tabsOptions}
-          border={this.border}
-          expanded={this.expanded}
-          clickable={this.clickable}
-          isReady={this.isReady}
-          iconPosition={this.iconPosition}
-          onSelectTab={(e, t) => this.onSelectTab(e, t)}
-          lineWidth={this.lineWidth}
-          lineOffsetLeft={this.lineOffsetLeft}
-          lineHeight={this.lineHeight}
-          lineOffsetTop={this.lineOffsetTop}
-          vertical={this.interface === 'navbar' ? 'tablet' : this.vertical}
-          selectOnMobile={this.selectOnMobile}
-        ></Tabs>
-        <slot></slot>
+        <div class="columns is-multiline">
+          <div
+            class={{
+              'column': true,
+              'is-full': !isVertical,
+              [`is-${this.verticalColSize}`]: isVertical,
+              'bal-tabs__col-items': true,
+              'bal-tabs__col-items--vertical': isVertical,
+            }}
+          >
+            <Tabs
+              value={this.value}
+              context={this.interface}
+              inverted={this.inverted}
+              tabs={this.tabsOptions}
+              border={this.border}
+              expanded={this.expanded}
+              clickable={this.clickable}
+              isReady={this.isReady}
+              iconPosition={this.iconPosition}
+              onSelectTab={(e, t) => this.onSelectTab(e, t)}
+              lineWidth={this.lineWidth}
+              lineOffsetLeft={this.lineOffsetLeft}
+              lineHeight={this.lineHeight}
+              lineOffsetTop={this.lineOffsetTop}
+              vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
+              selectOnMobile={this.selectOnMobile}
+            ></Tabs>
+          </div>
+          <div
+            class={{
+              'column': true,
+              'is-full': !isVertical,
+              'bal-tabs__col-content': true,
+              'bal-tabs__col-content--vertical': isVertical,
+              'bal-tabs__col-content--full': this.verticalColSize === 'full',
+            }}
+          >
+            <slot></slot>
+          </div>
+        </div>
       </Host>
     )
   }

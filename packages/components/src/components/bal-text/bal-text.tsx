@@ -59,6 +59,7 @@ export class Text {
             [`has-text-${this.color}`]: this.color !== '',
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
+            'is-block': this.size === 'block',
             'is-bold': this.bold,
             'is-family-title': this.heading,
             'm-0': true,

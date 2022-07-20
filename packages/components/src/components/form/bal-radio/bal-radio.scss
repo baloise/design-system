@@ -28,6 +28,16 @@ bal-radio.bal-radio:not(.bal-select-button) {
     outline: 0;
   }
 
+  .option-label {
+    .is-invalid {
+      span {
+        a {
+          color: var(--bal-color-danger-4);
+        }
+      }
+    }
+  }
+
   input[type='radio'] + label {
     @include font-smoothing();
     @include margin(0);
@@ -102,5 +112,19 @@ bal-radio.bal-radio:not(.bal-select-button) {
 
   input[type='radio']:focus-visible + label::before {
     box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important;
+  }
+
+  input[type='radio'].is-invalid + label:before {
+    border-color: var(--bal-color-danger-4);
+    background: var(--bal-color-red-2);
+  }
+
+  input[type='radio'].is-invalid + label:after {
+    background: var(--bal-color-primary);
+  }
+
+  input[type='radio'].is-invalid + label:hover:before {
+    border-color: var(--bal-color-danger-4);
+    background: var(--bal-color-red-2);
   }
 }

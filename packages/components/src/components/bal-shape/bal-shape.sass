@@ -1,3 +1,5 @@
+@use "sass:math"
+
 +block(shape)
   display: flex
   flex-wrap: wrap
@@ -12,8 +14,8 @@
     width: 198px
     height: 198px
   span
-    width: calc(100% / 3)
-    height: calc(100% / 3)
+    width: math.div(100%,3)
+    height: math.div(100%,3)
 
   // color variations
   +modifier(is-green)
@@ -34,10 +36,10 @@
   +modifier(is-purple-light)
     span
       background-color: var(--bal-color-purple-3)
-  +modifier(is-tangerine)
+  +modifier(is-yellow)
     span
       background-color: var(--bal-color-yellow-5)
-  +modifier(is-tangerine-light)
+  +modifier(is-yellow-light)
     span
       background-color: var(--bal-color-yellow-3)
   // shape variations

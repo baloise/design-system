@@ -529,9 +529,7 @@ export namespace Components {
         "background": boolean;
         "color": string;
         "description": string;
-        "hexVars": string;
         "inverted": boolean;
-        "scssVars": string;
         "subject": string;
     }
     interface BalDocDownload {
@@ -568,6 +566,24 @@ export namespace Components {
         "color": string;
     }
     interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
     }
     interface BalDocUsage {
     }
@@ -1692,9 +1708,9 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
-          * class to set the container width
+          * Defines content width of the stage
          */
-        "containerClass": string;
+        "containerSize": '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */
@@ -1706,7 +1722,19 @@ export namespace Components {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted": undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
+        /**
+          * Defines size of the stage
+         */
+        "size": Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
@@ -1715,10 +1743,6 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass": string;
     }
     interface BalStageFoot {
     }
@@ -1826,7 +1850,11 @@ export namespace Components {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical": boolean | 'mobile' | 'tablet';
+        "vertical": Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize": Props.BalTabsColSize;
     }
     interface BalTag {
         /**
@@ -2321,6 +2349,60 @@ declare global {
         prototype: HTMLBalDocTabsElement;
         new (): HTMLBalDocTabsElement;
     };
+    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderElement: {
+        prototype: HTMLBalDocTokensBorderElement;
+        new (): HTMLBalDocTokensBorderElement;
+    };
+    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBreakpointsElement: {
+        prototype: HTMLBalDocTokensBreakpointsElement;
+        new (): HTMLBalDocTokensBreakpointsElement;
+    };
+    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensColorsElement: {
+        prototype: HTMLBalDocTokensColorsElement;
+        new (): HTMLBalDocTokensColorsElement;
+    };
+    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontElement: {
+        prototype: HTMLBalDocTokensFontElement;
+        new (): HTMLBalDocTokensFontElement;
+    };
+    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontSizesElement: {
+        prototype: HTMLBalDocTokensFontSizesElement;
+        new (): HTMLBalDocTokensFontSizesElement;
+    };
+    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontWeightElement: {
+        prototype: HTMLBalDocTokensFontWeightElement;
+        new (): HTMLBalDocTokensFontWeightElement;
+    };
+    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensRadiusElement: {
+        prototype: HTMLBalDocTokensRadiusElement;
+        new (): HTMLBalDocTokensRadiusElement;
+    };
+    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensShadowElement: {
+        prototype: HTMLBalDocTokensShadowElement;
+        new (): HTMLBalDocTokensShadowElement;
+    };
+    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingElement: {
+        prototype: HTMLBalDocTokensSpacingElement;
+        new (): HTMLBalDocTokensSpacingElement;
+    };
     interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
     }
     var HTMLBalDocUsageElement: {
@@ -2757,6 +2839,15 @@ declare global {
         "bal-doc-shades": HTMLBalDocShadesElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
+        "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
+        "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
+        "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
+        "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
+        "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
+        "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
+        "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
+        "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
+        "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
         "bal-doc-usage": HTMLBalDocUsageElement;
         "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
@@ -3366,9 +3457,7 @@ declare namespace LocalJSX {
         "background"?: boolean;
         "color"?: string;
         "description"?: string;
-        "hexVars"?: string;
         "inverted"?: boolean;
-        "scssVars"?: string;
         "subject"?: string;
     }
     interface BalDocDownload {
@@ -3405,6 +3494,24 @@ declare namespace LocalJSX {
         "color"?: string;
     }
     interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
     }
     interface BalDocUsage {
     }
@@ -4590,9 +4697,9 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
-          * class to set the container width
+          * Defines content width of the stage
          */
-        "containerClass"?: string;
+        "containerSize"?: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */
@@ -4604,7 +4711,19 @@ declare namespace LocalJSX {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
+        /**
+          * Defines size of the stage
+         */
+        "size"?: Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
@@ -4613,10 +4732,6 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass"?: string;
     }
     interface BalStageFoot {
     }
@@ -4719,7 +4834,11 @@ declare namespace LocalJSX {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical"?: boolean | 'mobile' | 'tablet';
+        "vertical"?: Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize"?: Props.BalTabsColSize;
     }
     interface BalTag {
         /**
@@ -4960,6 +5079,15 @@ declare namespace LocalJSX {
         "bal-doc-shades": BalDocShades;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tabs": BalDocTabs;
+        "bal-doc-tokens-border": BalDocTokensBorder;
+        "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
+        "bal-doc-tokens-colors": BalDocTokensColors;
+        "bal-doc-tokens-font": BalDocTokensFont;
+        "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
+        "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
+        "bal-doc-tokens-radius": BalDocTokensRadius;
+        "bal-doc-tokens-shadow": BalDocTokensShadow;
+        "bal-doc-tokens-spacing": BalDocTokensSpacing;
         "bal-doc-usage": BalDocUsage;
         "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
@@ -5066,6 +5194,15 @@ declare module "@stencil/core" {
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
+            "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
+            "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
+            "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
+            "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
+            "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
+            "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
+            "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
+            "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
+            "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
             "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
             "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;

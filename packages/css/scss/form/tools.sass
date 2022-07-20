@@ -1,8 +1,8 @@
 .label
   color: var(--bal-color-blue)
   display: block
-  font-size: var(--bal-size-5)
-  font-weight: $weight-bold
+  font-size: var(--bal-size-small)
+  font-weight: var(--bal-weight-bold)
   &:not(:last-child)
     margin-bottom: 4px
   &.is-danger
@@ -16,8 +16,8 @@
 
 .help
   display: block
-  margin-top: 2px
-  font-size: var(--bal-size-small)
+  margin-top: -2px
+  font-size: var(--bal-size-x-small)
   color: var(--bal-color-text-help)
   &.is-danger
     color: var(--bal-color-text-danger)
@@ -159,6 +159,13 @@
   font-size: var(--bal-size-normal)
   position: relative
   text-align: inherit
+  &.is-loading
+    &::after
+      @extend %loader
+      position: absolute !important
+      +ltr-position(0.875rem)
+      top: 0.875rem
+      z-index: 4
 
 .field.is-grouped .control:not(:last-child)
   margin-right: 8px

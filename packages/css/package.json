@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-css",
-  "version": "10.13.1",
+  "version": "10.15.5",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
-    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)"
   ],
   "keywords": [
     "design-system",
@@ -37,8 +38,8 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-fonts": "10.13.1",
-    "@baloise/design-system-next-tokens": "10.13.1"
+    "@baloise/design-system-next-fonts": "10.15.5",
+    "@baloise/design-system-next-tokens": "10.15.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",

@@ -38,10 +38,18 @@ export const parameters = {
         },
         type: 'desktop',
       },
-      'x-large': {
-        name: 'X-Large (Desktop)',
+      'widescreen': {
+        name: 'Widescreen (Desktop)',
         styles: {
-          width: '1408px',
+          width: '1440px',
+          height: '801px',
+        },
+        type: 'desktop',
+      },
+      'fullhd': {
+        name: 'FullHD (Desktop)',
+        styles: {
+          width: '1920px',
           height: '801px',
         },
         type: 'desktop',
@@ -105,7 +113,7 @@ export const parameters = {
         ['Overview', 'How to use Storybook', 'Figma', 'HTML5', 'Angular', 'Vue', 'React'],
         'Implementation',
         'Design',
-        ['Overview','Colors', 'Typography', 'Spacing', 'Breakpoints', 'Icons', 'Grid', 'Page Layout', 'Templates', 'Form'],
+        ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons', 'Platform', 'Page Layout', 'Templates'],
         'Components',
         'Templates',
         'Contributing',

@@ -87,11 +87,14 @@ export namespace Props {
     | 'left-start'
     | 'left-end'
 
-  export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
+  export type BalStageColor = 'blue' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
+  export type BalTabsVertical = boolean | 'mobile' | 'tablet'
+  // export type BalTabsColSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'
+  export type BalTabsColSize = 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
 
   export type BalTagColor =
     | 'blue'
@@ -108,7 +111,7 @@ export namespace Props {
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
 
-  export type BalTextSize = 'small' | 'lead' | ''
+  export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
     | 'white'
@@ -243,7 +246,7 @@ export namespace Props {
     | 'red-light'
     | 'purple'
     | 'purple-light'
-    | 'tangerine'
-    | 'tangerine-light'
+    | 'yellow'
+    | 'yellow-light'
   export type BalShapeRotation = '0' | '90' | '180' | '270'
 }

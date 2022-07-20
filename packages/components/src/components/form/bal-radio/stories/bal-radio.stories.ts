@@ -50,10 +50,10 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `
   <bal-radio-group v-bind="args" v-model="args.value">
-    <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-    <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+    <bal-radio name="radio-example" value="1" :invalid="args.invalid">Label 1</bal-radio>
+    <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
     <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
-    <bal-radio name="radio-example" value="4">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+    <bal-radio name="radio-example" value="4" :invalid="args.invalid">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
   </bal-radio-group>`,
 })
 Basic.args = {}

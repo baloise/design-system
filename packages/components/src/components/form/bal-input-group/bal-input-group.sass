@@ -7,7 +7,7 @@
   width: 100%
   align-items: center
   gap: 4px
-  border: 2px solid var(--bal-color-grey-2)
+  border: 2px solid var(--bal-color-border-normal)
   border-radius: var(--bal-radius-small)
   background: var(--bal-color-white)
 
@@ -45,7 +45,7 @@
 
   & > *:first-child.bal-tag
     margin-left: calc(0.75em - 1px)
-  
+
   &.is-hovered,
   &:hover
     &,
@@ -63,7 +63,7 @@
       path,
       circle
         fill: var(--bal-color-danger-dark)
-  
+
   @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-danger-dark))
   @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-success-dark))
   @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-warning-dark))
