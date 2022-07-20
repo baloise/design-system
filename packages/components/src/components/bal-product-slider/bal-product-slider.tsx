@@ -8,6 +8,7 @@ export class ProductSlider implements ComponentInterface {
   @Element() host!: HTMLBalProductSliderElement
   @State() slideIndex = 0
   @State() lastSlide = 0
+  @State() sliderLength = 0
   private images!: NodeListOf<HTMLImageElement>
   private productContainer!: HTMLDivElement
 
@@ -38,16 +39,20 @@ export class ProductSlider implements ComponentInterface {
    */
   @Listen('balChange')
   onBalChange(event: CustomEvent<string>) {
+    this.sliderLength = 0
     for (let i = 0; i <= this.images.length; i++) {
-      if (this.images[i].dataset.category === event.detail) {
-        this.setSlide(i <= this.lastSlide ? i : this.lastSlide)
-        break
+      if (this.images[i].dataset.category === event.detail || event.detail === 'all') {
+        this.images[i].style.display = ''
+        this.sliderLength++
+      } else {
+        this.images[i].style.display = 'none'
       }
+      this.setSlide(0)
     }
   }
 
   render() {
-    this.lastSlide = Math.ceil(this.images.length - this.host.offsetWidth / 180)
+    this.lastSlide = Math.ceil(this.sliderLength || this.images.length - this.host.offsetWidth / 180)
 
     return (
       <Host>
@@ -58,29 +63,29 @@ export class ProductSlider implements ComponentInterface {
           <div class="bal-product-slider_viewport-container">
             <slot name="images"></slot>
           </div>
-        </div>
-        <div class="bal-product-slider__control-container-box">
-          <div class="bal-product-slider__control-container left">
-            <bal-button
-              class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
-              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
-              color="link"
-              size="small"
-              icon="caret-left"
-              flat={true}
-            />
-          </div>
-          <div class="bal-product-slider__control-container right">
-            <bal-button
-              class={`bal-product-slider__control right custom-color ${
-                this.slideIndex < this.lastSlide ? '' : 'inactive'
-              }`}
-              onClick={() => this.setSlide(this.slideIndex + 2)}
-              color="link"
-              size="small"
-              icon="caret-right"
-              flat={true}
-            />
+          <div class="bal-product-slider__control-container-box">
+            <div class="bal-product-slider__control-container left">
+              <bal-button
+                class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
+                onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
+                color="link"
+                size="small"
+                icon="caret-left"
+                flat={true}
+              />
+            </div>
+            <div class="bal-product-slider__control-container right">
+              <bal-button
+                class={`bal-product-slider__control right custom-color ${
+                  this.slideIndex < this.lastSlide ? '' : 'inactive'
+                }`}
+                onClick={() => this.setSlide(this.slideIndex + 2)}
+                color="link"
+                size="small"
+                icon="caret-right"
+                flat={true}
+              />
+            </div>
           </div>
         </div>
       </Host>
