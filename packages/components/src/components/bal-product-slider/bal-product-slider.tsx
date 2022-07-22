@@ -11,6 +11,7 @@ export class ProductSlider implements ComponentInterface {
   @State() sliderLength = 0
   private images!: NodeListOf<HTMLImageElement>
   private productContainer!: HTMLDivElement
+  private productWidth = 180
 
   connectedCallback() {
     this.productContainer = this.host.querySelector('[slot="images"]') as HTMLDivElement
@@ -27,7 +28,7 @@ export class ProductSlider implements ComponentInterface {
       this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
       this.productContainer.style.transitionDuration = '1.2s'
       this.productContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
-      this.productContainer.style.transform = `translate(-${this.slideIndex * 180}px)`
+      this.productContainer.style.transform = `translate(-${this.slideIndex * this.productWidth}px)`
     } else {
       return
     }
@@ -52,7 +53,7 @@ export class ProductSlider implements ComponentInterface {
   }
 
   render() {
-    this.lastSlide = Math.ceil(this.sliderLength || this.images.length - this.host.offsetWidth / 180)
+    this.lastSlide = Math.ceil(this.sliderLength || this.images.length - this.host.offsetWidth / this.productWidth)
 
     return (
       <Host>
