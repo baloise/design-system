@@ -1,19 +1,41 @@
 import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
+import { isNil } from 'lodash'
+import { BEM } from '../../utils/bem'
+import { observeItems } from '../../utils/observer'
 
 @Component({
   tag: 'bal-image-slider',
-  styleUrl: 'bal-image-slider.scss',
 })
 export class ImageSlider implements ComponentInterface {
-  @Element() host!: HTMLBalImageSliderElement
+  @Element() el!: HTMLBalImageSliderElement
+
+  private mutationO?: MutationObserver
+
   @State() slideIndex = 0
-  private images!: NodeListOf<HTMLDivElement>
-  private imageContainer!: HTMLDivElement
+  @State() images!: HTMLBalImageSliderItemElement[]
 
   connectedCallback() {
-    this.imageContainer = this.host.querySelector('[slot="images"]') as HTMLDivElement
-    this.imageContainer.classList.add('bal-image-slider__image-container')
-    this.images = this.imageContainer?.querySelectorAll('div.bal-image-slider__item') as NodeListOf<HTMLDivElement>
+    this.mutationO = observeItems(this.el, 'bal-image-slider-item', () => this.updateImages())
+    this.updateImages()
+  }
+
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
+  }
+
+  private getChildItems() {
+    return Array.from(this.el.querySelectorAll<HTMLBalImageSliderItemElement>('bal-image-slider-item'))
+  }
+
+  private getImageContainer() {
+    return this.el.querySelector<HTMLDivElement>('.bal-image-slider__container__images')
+  }
+
+  private updateImages() {
+    this.images = this.getChildItems()
   }
 
   /**
@@ -21,12 +43,13 @@ export class ImageSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
+    const container = this.getImageContainer()
     const slideWidth = this.images[0].clientWidth
-    if (slide >= 0 && slide !== this.images.length) {
+    if (container && slide >= 0 && slide !== this.images.length) {
       this.slideIndex = slide
-      this.imageContainer.style.transitionDuration = '1.2s'
-      this.imageContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
-      this.imageContainer.style.transform = `translate(-${this.slideIndex * slideWidth}px)`
+      container.style.transitionDuration = '1.2s'
+      container.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
+      container.style.transform = `translate(-${this.slideIndex * slideWidth}px)`
     } else {
       return
     }
@@ -38,36 +61,54 @@ export class ImageSlider implements ComponentInterface {
    * < 5 = dots control
    */
   private getControls = () => {
-    if (this.images.length <= 5) {
-      const dots = []
-      for (let i = 1; i <= this.images.length; i++) {
-        dots.push(
-          <span
-            class={`bal-image-slider__dot ${this.slideIndex + 1 === i ? 'active' : 'inactive'}`}
-            onClick={() => this.setSlide(i - 1)}
-          ></span>,
+    const dot = BEM.block('image-slider').element('controls').element('dots').element('dot')
+
+    if (!isNil(this.images)) {
+      if (this.images.length <= 5) {
+        const dots = []
+        for (let i = 1; i <= this.images.length; i++) {
+          const isActive = this.slideIndex + 1 === i
+          dots.push(
+            <span
+              class={{
+                ...dot.class(),
+                ...dot.modifier('active').class(isActive),
+                ...dot.modifier('inactive').class(!isActive),
+              }}
+              onClick={() => this.setSlide(i - 1)}
+            ></span>,
+          )
+        }
+        return dots.map(dot => dot)
+      } else {
+        return (
+          <bal-text space="none" class="is-size-5" color="blue">
+            {this.slideIndex + 1 + '/' + this.images.length}
+          </bal-text>
         )
       }
-      return dots.map(dot => dot)
-    } else {
-      return (
-        <bal-text space="none" class="is-size-5" color="blue">
-          {this.slideIndex + 1 + '/' + this.images.length}
-        </bal-text>
-      )
     }
   }
 
   render() {
+    const block = BEM.block('image-slider')
+    const container = block.element('container')
+    const containerImages = container.element('images')
+    const controls = block.element('controls')
+    const controlNavigation = controls.element('navigation')
+    const controlDots = controls.element('dots')
+
     return (
-      <Host class="bal-image-slider__container">
-        <div class="bal-image-slider_viewport-container">
-          <slot name="images"></slot>
+      <Host class={{ ...block.class() }}>
+        <div class={{ ...container.class() }}>
+          <div class={{ ...containerImages.class() }}>
+            <slot></slot>
+          </div>
         </div>
-        <div class="bal-image-slider__controls is-flex is-justify-content-center is-align-items-center">
+        <div class={{ ...controls.class() }}>
           {
             <bal-button
-              class="mt-4"
+              class={{ ...controlNavigation.class() }}
               onClick={() => this.setSlide(this.slideIndex - 1)}
               color="link"
               size="small"
@@ -76,12 +117,10 @@ export class ImageSlider implements ComponentInterface {
             />
           }
 
-          <div class="bal-image-slider__dot-container is-flex is-justify-content-center is-align-items-center">
-            {this.getControls()}
-          </div>
+          <div class={{ ...controlDots.class() }}>{this.getControls()}</div>
           {
             <bal-button
-              class="mt-4"
+              class={{ ...controlNavigation.class() }}
               onClick={() => this.setSlide(this.slideIndex + 1)}
               color="link"
               size="small"

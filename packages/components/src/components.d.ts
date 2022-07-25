@@ -863,6 +863,12 @@ export namespace Components {
     }
     interface BalImageSlider {
     }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+    }
     interface BalInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -1364,6 +1370,16 @@ export namespace Components {
         "scrollable": number;
     }
     interface BalProductSlider {
+    }
+    interface BalProductSliderItem {
+        /**
+          * Label or title of the product
+         */
+        "label"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
     }
     interface BalRadio {
         /**
@@ -2505,6 +2521,12 @@ declare global {
         prototype: HTMLBalImageSliderElement;
         new (): HTMLBalImageSliderElement;
     };
+    interface HTMLBalImageSliderItemElement extends Components.BalImageSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalImageSliderItemElement: {
+        prototype: HTMLBalImageSliderItemElement;
+        new (): HTMLBalImageSliderItemElement;
+    };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
     var HTMLBalInputElement: {
@@ -2666,6 +2688,12 @@ declare global {
     var HTMLBalProductSliderElement: {
         prototype: HTMLBalProductSliderElement;
         new (): HTMLBalProductSliderElement;
+    };
+    interface HTMLBalProductSliderItemElement extends Components.BalProductSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalProductSliderItemElement: {
+        prototype: HTMLBalProductSliderItemElement;
+        new (): HTMLBalProductSliderItemElement;
     };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
@@ -2865,6 +2893,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-image-slider": HTMLBalImageSliderElement;
+        "bal-image-slider-item": HTMLBalImageSliderItemElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
@@ -2892,6 +2921,7 @@ declare global {
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
         "bal-product-slider": HTMLBalProductSliderElement;
+        "bal-product-slider-item": HTMLBalProductSliderItemElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
@@ -3791,6 +3821,12 @@ declare namespace LocalJSX {
     }
     interface BalImageSlider {
     }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+    }
     interface BalInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -4326,6 +4362,16 @@ declare namespace LocalJSX {
         "scrollable"?: number;
     }
     interface BalProductSlider {
+    }
+    interface BalProductSliderItem {
+        /**
+          * Label or title of the product
+         */
+        "label"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
     }
     interface BalRadio {
         /**
@@ -5105,6 +5151,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-image-slider": BalImageSlider;
+        "bal-image-slider-item": BalImageSliderItem;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
         "bal-input-stepper": BalInputStepper;
@@ -5132,6 +5179,7 @@ declare namespace LocalJSX {
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
         "bal-product-slider": BalProductSlider;
+        "bal-product-slider-item": BalProductSliderItem;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
@@ -5220,6 +5268,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-image-slider": LocalJSX.BalImageSlider & JSXBase.HTMLAttributes<HTMLBalImageSliderElement>;
+            "bal-image-slider-item": LocalJSX.BalImageSliderItem & JSXBase.HTMLAttributes<HTMLBalImageSliderItemElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
@@ -5247,6 +5296,7 @@ declare module "@stencil/core" {
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
             "bal-product-slider": LocalJSX.BalProductSlider & JSXBase.HTMLAttributes<HTMLBalProductSliderElement>;
+            "bal-product-slider-item": LocalJSX.BalProductSliderItem & JSXBase.HTMLAttributes<HTMLBalProductSliderItemElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;

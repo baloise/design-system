@@ -1,5 +1,5 @@
 {
-  "version": "10.15.5",
+  "version": "10.15.6",
   "granularPathspec": false,
   "packages": [
     "packages/*"
