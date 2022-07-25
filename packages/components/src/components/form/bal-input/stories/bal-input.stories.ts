@@ -27,6 +27,7 @@ const component = BalComponentStory({
     invalid: false,
     loading: false,
     hasFieldMessage: true,
+    label: 'Label',
     placeholder: 'Enter a text',
     disabled: false,
     readonly: false,
@@ -93,7 +94,7 @@ const Template = args => ({
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
-    <bal-field-label>Label</bal-field-label>
+    <bal-field-label>{{ args.label }}</bal-field-label>
     <bal-field-control :loading="args.loading">
     <bal-input v-bind="args" v-model="args.value"></bal-input>
     </bal-field-control>
@@ -160,6 +161,21 @@ OfferNumberInput.args = {
 }
 OfferNumberInput.parameters = {
   ...component.sourceCode(OfferNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const PostalCodeInput = Template.bind({})
+PostalCodeInput.args = {
+  value: '4000',
+  label: 'PostalCode',
+  maxLength: 4,
+  pattern: '[0-9]*',
+  hasFieldMessage: false,
+}
+PostalCodeInput.parameters = {
+  ...component.sourceCode(PostalCodeInput),
   controls: {
     exclude: excludedControls,
   },
