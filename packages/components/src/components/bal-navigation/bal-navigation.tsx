@@ -94,6 +94,10 @@ export class Navigation implements ComponentInterface {
     if (this.levels && this.levels.length > 0) {
       const selectedMetaIndex = this.levels.findIndex(meta => meta.value === this.metaValue)
       this.selectedMetaIndex = selectedMetaIndex !== -1 ? selectedMetaIndex : 0
+
+      const selectedMainIndex =
+        this.levels[this.selectedMetaIndex].subLevels?.findIndex(main => main.value === this.mainValue) || 0
+      this.selectedMainIndex = selectedMainIndex !== -1 ? selectedMainIndex : 0
     }
   }
 
@@ -101,11 +105,17 @@ export class Navigation implements ComponentInterface {
     const levelEl = this.el.querySelector('bal-navigation-levels')
     const levels = await levelEl?.getLevelInfos()
     if (levels) {
+      console.log('LEVELS new', levels)
       this.levels = levels
     }
+    console.log('THIS.LEVELS', this.levels)
+    console.log('THIS.LEVELS[0]', this.levels[0])
   }
 
   render() {
+    console.log('render this.levels', this.levels)
+    /*console.log('render selectedMetaIndex', this.selectedMetaIndex)
+    console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])*/
     const navigationEl = BEM.block('nav')
     const selectedMetaLevel = this.levels[this.selectedMetaIndex]
     const selectedMetaValue = selectedMetaLevel.value
@@ -119,9 +129,9 @@ export class Navigation implements ComponentInterface {
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
-            <bal-tabs interface="meta" inverted value={selectedMetaValue}>
-              {this.levels.map((meta, index) =>
-                meta.tabLink ? (
+            <bal-tabs interface="meta" inverted={true} value={selectedMetaValue}>
+              {this.levels.map((meta, index) => {
+                return meta.tabLink ? (
                   <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
                 ) : (
                   <bal-tab-item
@@ -132,10 +142,11 @@ export class Navigation implements ComponentInterface {
                       this.selectedMetaIndex = index
                       this.metaValue = meta.value
                       this.isMainBodyOpen = false
+                      this.selectedMainValue = ''
                     }}
                   />
-                ),
-              )}
+                )
+              })}
             </bal-tabs>
           </bal-navigation-meta-start>
           <bal-navigation-meta-end>
@@ -163,14 +174,13 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {selectedMetaLevel.subLevels?.map((main, index) =>
-                    main.tabLink ? (
+                  {selectedMetaLevel.subLevels?.map((main, index) => {
+                    return main.tabLink ? (
                       <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
                     ) : (
                       <bal-tab-item
                         label={main.label}
                         value={main.value}
-                        href={main.tabLink}
                         icon="nav-go-down"
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
@@ -179,8 +189,8 @@ export class Navigation implements ComponentInterface {
                           this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
                         }}
                       />
-                    ),
-                  )}
+                    )
+                  })}
                 </bal-tabs>
               </div>
             </div>
