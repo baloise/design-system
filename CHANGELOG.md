@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.15.6](https://github.com/baloise-incubator/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ### [10.15.5](https://github.com/baloise-incubator/design-system/compare/v10.15.4...v10.15.5) (2022-07-14)
 
 ### [10.15.3](https://github.com/baloise-incubator/design-system/compare/v10.15.2...v10.15.3) (2022-07-07)
