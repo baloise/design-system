@@ -9,6 +9,7 @@ export class NavigationLevels implements ComponentInterface {
 
   @Method() async getLevelInfos(): Promise<LevelInfo[]> {
     const subLevels = await readSubLevels(this.el, 'bal-navigation-level-meta')
+    console.log('Meta levels ', subLevels)
     return subLevels
   }
 
