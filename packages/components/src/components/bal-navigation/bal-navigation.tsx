@@ -95,12 +95,12 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  private async readSubLevels() {
+  private readSubLevels = () => {
     const levelEl = this.el.querySelector('bal-navigation-levels')
-    const levels = await levelEl?.getLevelInfos()
+    const levels = levelEl?.getLevelInfos()
     if (levels) {
       console.log('LEVELS new', levels)
-      this.levels = levels
+      levels.then(data => (this.levels = data))
     }
     console.log('THIS.LEVELS', this.levels)
     console.log('THIS.LEVELS[0]', this.levels[0])
@@ -111,8 +111,8 @@ export class Navigation implements ComponentInterface {
     /*console.log('render selectedMetaIndex', this.selectedMetaIndex)
     console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])*/
     const navigationEl = BEM.block('nav')
-    const selectedMetaLevel = this.levels[this.selectedMetaIndex]
-    const selectedMetaValue = selectedMetaLevel.value
+    // const selectedMetaLevel = this.levels[this.selectedMetaIndex]
+    // const selectedMetaValue = selectedMetaLevel.value
 
     return (
       <Host
@@ -123,7 +123,7 @@ export class Navigation implements ComponentInterface {
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
-            <bal-tabs interface="meta" inverted={true} value={selectedMetaValue}>
+            <bal-tabs interface="meta" inverted={true} value={this.levels[this.selectedMetaIndex].value}>
               {this.levels.map((meta, index) => {
                 return meta.tabLink ? (
                   <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
@@ -168,7 +168,8 @@ export class Navigation implements ComponentInterface {
               </div>
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {selectedMetaLevel.subLevels?.map((main, index) => {
+                  {console.log('selected meta!!!!!! ', this.levels[this.selectedMetaIndex])}
+                  {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                     return main.tabLink ? (
                       <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
                     ) : (
