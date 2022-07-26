@@ -1373,13 +1373,45 @@ export namespace Components {
     }
     interface BalProductSliderItem {
         /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * Label or title of the product
          */
         "label"?: string;
         /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
           * Src path to the image
          */
         "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalRadio {
         /**
@@ -2121,6 +2153,10 @@ export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
+}
+export interface BalProductSliderItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalProductSliderItemElement;
 }
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4365,13 +4401,57 @@ declare namespace LocalJSX {
     }
     interface BalProductSliderItem {
         /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * Label or title of the product
          */
         "label"?: string;
         /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: BalProductSliderItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: BalProductSliderItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalNavigate"?: (event: BalProductSliderItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
           * Src path to the image
          */
         "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalRadio {
         /**

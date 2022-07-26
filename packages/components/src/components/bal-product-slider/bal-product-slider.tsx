@@ -1,14 +1,8 @@
-import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { observeItems } from '../../utils/observer'
+import { observeHasClassActive, observeItems } from '../../utils/observer'
+import { isPlatform } from '../../utils/platform'
 
-/**
- * TODOs
- * [] Scss to Sass
- * [] remove slots
- * [] get tabs outside
- * [] create custom item component
- */
 @Component({
   tag: 'bal-product-slider',
 })
@@ -16,15 +10,26 @@ export class ProductSlider implements ComponentInterface {
   @Element() el!: HTMLBalProductSliderElement
 
   private mutationO?: MutationObserver
-  private productWidth = 180
+  private mutationTabO?: MutationObserver
+  private productWidth = 176
 
   @State() items!: HTMLBalProductSliderItemElement[]
   @State() slideIndex = 0
   @State() lastSlide = 0
   @State() sliderLength = 0
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.setSlide(0)
+    this.calculateLastSlide()
+  }
+
   connectedCallback() {
     this.mutationO = observeItems(this.el, 'bal-product-slider-item', () => this.updateItems())
+    const parentTabItem = this.el.closest('bal-tab-item')
+    if (parentTabItem) {
+      this.mutationTabO = observeHasClassActive(parentTabItem, () => this.calculateLastSlide())
+    }
     this.updateItems()
   }
 
@@ -32,6 +37,10 @@ export class ProductSlider implements ComponentInterface {
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
+    }
+    if (this.mutationTabO) {
+      this.mutationTabO.disconnect()
+      this.mutationTabO = undefined
     }
   }
 
@@ -61,6 +70,26 @@ export class ProductSlider implements ComponentInterface {
     }
   }
 
+  private getParentWidth(element: any): number {
+    const parentWidth = (element.parentNode as any).offsetWidth
+    if (parentWidth === 0) {
+      return this.getParentWidth(element.parentNode.parentNode)
+    }
+    return parentWidth
+  }
+
+  private getOffsetWidth() {
+    const elementOffsetWidth = this.el.offsetWidth
+    if (elementOffsetWidth === 0) {
+      return this.getParentWidth(this.el.parentNode)
+    }
+    return elementOffsetWidth
+  }
+
+  private calculateLastSlide() {
+    this.lastSlide = Math.ceil(this.sliderLength || this.items.length - this.getOffsetWidth() / this.productWidth)
+  }
+
   render() {
     const block = BEM.block('product-slider')
     const container = block.element('container')
@@ -68,7 +97,11 @@ export class ProductSlider implements ComponentInterface {
     const controls = block.element('controls')
     const controlButton = controls.element('button')
 
-    this.lastSlide = Math.ceil(this.sliderLength || this.items.length - this.el.offsetWidth / this.productWidth)
+    this.calculateLastSlide()
+
+    const leftControlIsDisabled = this.slideIndex === 0
+    const rightControlIsDisabled = this.slideIndex >= this.lastSlide
+    const steps = isPlatform('mobile') ? 1 : 2
 
     return (
       <Host class={{ ...block.class() }}>
@@ -77,25 +110,27 @@ export class ProductSlider implements ComponentInterface {
             <slot></slot>
           </div>
         </div>
-        <div class={{ ...controls.class() }}>
-          <bal-button
-            class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}
-            disabled={this.slideIndex === 0}
-            onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
-            color="primary"
-            square
-            rounded
-            icon="caret-left"
-          />
-          <bal-button
-            class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}
-            disabled={this.slideIndex >= this.lastSlide}
-            onClick={() => this.setSlide(this.slideIndex + 2)}
-            color="primary"
-            square
-            rounded
-            icon="caret-right"
-          />
+        <div class={{ ...controls.class(), 'is-hidden': leftControlIsDisabled && rightControlIsDisabled }}>
+          <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
+            <bal-button
+              disabled={leftControlIsDisabled}
+              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - steps : 0)}
+              color="primary"
+              square
+              rounded
+              icon="caret-left"
+            />
+          </div>
+          <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
+            <bal-button
+              disabled={rightControlIsDisabled}
+              onClick={() => this.setSlide(this.slideIndex + steps)}
+              color="primary"
+              square
+              rounded
+              icon="caret-right"
+            />
+          </div>
         </div>
       </Host>
     )
