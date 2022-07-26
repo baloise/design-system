@@ -5,7 +5,7 @@ import { BalImageSlider, BalImageSliderItem } from '../../../../.storybook/vue/c
 const component = BalComponentStory({
   title: 'Components/Image Slider',
   component: BalImageSlider,
-  subComponents: { BalImageSliderItem },
+  subcomponents: { BalImageSliderItem },
   docs,
 })
 
@@ -42,7 +42,7 @@ export const Numbers = args => ({
 Numbers.args = {}
 Numbers.parameters = { ...component.sourceCode(Numbers) }
 
-export const SlottedImages = args => ({
+export const CustomContent = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
@@ -51,12 +51,33 @@ export const SlottedImages = args => ({
       <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
     </bal-image-slider-item>
     <bal-image-slider-item>
-    <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
+      <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
     </bal-image-slider-item>
     <bal-image-slider-item>
       <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
     </bal-image-slider-item>
   </bal-image-slider>`,
 })
-SlottedImages.args = {}
-SlottedImages.parameters = { ...component.sourceCode(SlottedImages) }
+CustomContent.args = {}
+CustomContent.parameters = { ...component.sourceCode(CustomContent) }
+
+export const WithGrid = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+  <div class="columns">
+    <div class="column is-4">
+      <bal-image-slider>
+        <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
+        <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
+        <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
+      </bal-image-slider>
+    </div>
+    <div class="column is-8">
+      <h3 class="title is-size-3">Title</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus dignissim orci. Mauris sit amet nisi pretium sem blandit pharetra. Sed fringilla dolor ut arcu blandit, sed pharetra orci placerat. Integer sed luctus enim. Suspendisse non placerat lorem. Praesent dignissim mi nec quam malesuada tincidunt. Duis metus nulla, aliquet sed volutpat vitae, gravida nec leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus tristique suscipit risus vel suscipit. Pellentesque condimentum congue blandit.</p>
+    </div>
+  </div>`,
+})
+WithGrid.args = {}
+WithGrid.parameters = { ...component.sourceCode(WithGrid) }
