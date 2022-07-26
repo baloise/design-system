@@ -111,8 +111,9 @@ export class Navigation implements ComponentInterface {
     /*console.log('render selectedMetaIndex', this.selectedMetaIndex)
     console.log('render selectedMetaLevel', this.levels[this.selectedMetaIndex])*/
     const navigationEl = BEM.block('nav')
+    const hasLevels = this.levels.length > 0
     // const selectedMetaLevel = this.levels[this.selectedMetaIndex]
-    // const selectedMetaValue = selectedMetaLevel.value
+    // const selectedMetaValue = selectedMetaLevel?.value
 
     return (
       <Host
@@ -123,25 +124,27 @@ export class Navigation implements ComponentInterface {
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
-            <bal-tabs interface="meta" inverted={true} value={this.levels[this.selectedMetaIndex].value}>
-              {this.levels.map((meta, index) => {
-                return meta.tabLink ? (
-                  <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
-                ) : (
-                  <bal-tab-item
-                    label={meta.label}
-                    value={meta.value}
-                    onBalNavigate={ev => {
-                      meta.onClick(ev.detail)
-                      this.selectedMetaIndex = index
-                      this.metaValue = meta.value
-                      this.isMainBodyOpen = false
-                      this.selectedMainValue = ''
-                    }}
-                  />
-                )
-              })}
-            </bal-tabs>
+            {hasLevels && (
+              <bal-tabs interface="meta" inverted={true} value={this.levels[this.selectedMetaIndex].value}>
+                {this.levels.map((meta, index) => {
+                  return meta.tabLink ? (
+                    <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
+                  ) : (
+                    <bal-tab-item
+                      label={meta.label}
+                      value={meta.value}
+                      onBalNavigate={ev => {
+                        meta.onClick(ev.detail)
+                        this.selectedMetaIndex = index
+                        this.metaValue = meta.value
+                        this.isMainBodyOpen = false
+                        this.selectedMainValue = ''
+                      }}
+                    />
+                  )
+                })}
+              </bal-tabs>
+            )}
           </bal-navigation-meta-start>
           <bal-navigation-meta-end>
             <slot name="meta-actions" />
@@ -169,23 +172,24 @@ export class Navigation implements ComponentInterface {
               <div class="is-flex">
                 <bal-tabs interface="header" value={this.selectedMainValue}>
                   {console.log('selected meta!!!!!! ', this.levels[this.selectedMetaIndex])}
-                  {this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
-                    return main.tabLink ? (
-                      <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
-                    ) : (
-                      <bal-tab-item
-                        label={main.label}
-                        value={main.value}
-                        icon="nav-go-down"
-                        onBalNavigate={ev => {
-                          main.onClick(ev.detail)
-                          this.selectedMainIndex = index
-                          this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
-                          this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
-                        }}
-                      />
-                    )
-                  })}
+                  {hasLevels &&
+                    this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
+                      return main.tabLink ? (
+                        <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
+                      ) : (
+                        <bal-tab-item
+                          label={main.label}
+                          value={main.value}
+                          icon="nav-go-down"
+                          onBalNavigate={ev => {
+                            main.onClick(ev.detail)
+                            this.selectedMainIndex = index
+                            this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
+                            this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
+                          }}
+                        />
+                      )
+                    })}
                 </bal-tabs>
               </div>
             </div>
