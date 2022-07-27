@@ -55,7 +55,6 @@ import {
 import {
   FormInput,
   getInputTarget,
-  inputHandleBlur,
   inputHandleFocus,
   inputHandleHostClick,
   inputListenOnClick,
@@ -64,6 +63,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { Props, Events } from '../../../types'
+import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-datepicker',
@@ -488,7 +488,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
     this.isPopoverOpen = event.detail
-    event.stopPropagation()
+    preventDefault(event)
+
+    if (!this.isPopoverOpen) {
+      this.balBlur.emit()
+    }
   }
 
   private onInput = (event: Event) => {
@@ -578,7 +582,10 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
-  private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
+  private onInputBlur = (event: FocusEvent) => {
+    preventDefault(event)
+    this.hasFocus = false
+  }
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
