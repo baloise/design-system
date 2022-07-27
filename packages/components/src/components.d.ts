@@ -612,7 +612,7 @@ export namespace Components {
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
          */
-        "required": boolean;
+        "required"?: boolean;
         /**
           * If `true` the component gets a valid green style.
          */

@@ -157,7 +157,7 @@ ${indent}.is-size-${key}
   for (const k in sizes) {
     const sizeTablet = sizes[k].tablet
     const spaceTablet = spacing[sizeTablet.spacing].tablet
-    lines.push(createCssClasses(k, sizeTablet.fontSize, sizeTablet.lineHeight, spaceTablet))
+    lines.push(createCssClasses(k, sizeTablet.fontSize, sizeTablet.lineHeight, spaceTablet, '  '))
   }
 
   lines.push('')
@@ -165,7 +165,7 @@ ${indent}.is-size-${key}
   for (const k in sizes) {
     const sizeDesktop = sizes[k].desktop
     const spaceDesktop = spacing[sizeDesktop.spacing].desktop
-    lines.push(createCssClasses(k, sizeDesktop.fontSize, sizeDesktop.lineHeight, spaceDesktop))
+    lines.push(createCssClasses(k, sizeDesktop.fontSize, sizeDesktop.lineHeight, spaceDesktop, '  '))
   }
 
   await file.write(path.join(SASS_PATH, 'typography.helpers.sass'), [...lines, ''].join('\n'))
