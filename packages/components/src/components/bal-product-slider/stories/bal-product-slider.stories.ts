@@ -17,7 +17,7 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-<bal-product-slider class="mt-5">
+<bal-product-slider class="mt-6">
   <bal-product-slider-item color="green" label="Auto" src="assets/images/brand/car.svg" />
   <bal-product-slider-item color="yellow" label="Haushalt" src="assets/images/brand/lamp.svg" />
   <bal-product-slider-item color="purple" label="Hypothek" src="assets/images/brand/home.svg" />
@@ -40,7 +40,7 @@ export const WithTabs = args => ({
   template: `
 <bal-tabs border fullwidth interface="tabs" select-on-mobile value="all">
   <bal-tab-item value="all" label="Alle Angebote">
-    <bal-product-slider class="mt-5">
+    <bal-product-slider class="mt-6">
       <bal-product-slider-item color="green" label="Auto" src="assets/images/brand/car.svg" />
       <bal-product-slider-item color="yellow" label="Haushalt" src="assets/images/brand/lamp.svg" />
       <bal-product-slider-item color="purple" label="Hypothek" src="assets/images/brand/home.svg" />
@@ -55,20 +55,20 @@ export const WithTabs = args => ({
     </bal-product-slider>
   </bal-tab-item>
   <bal-tab-item value="tab-a" label="Fahrzeuge & Reisen">
-    <bal-product-slider class="mt-5">
+    <bal-product-slider class="mt-6">
       <bal-product-slider-item color="green" label="Auto" src="assets/images/brand/car.svg" />
       <bal-product-slider-item color="purple" label="Motorrad & Roller" src="assets/images/brand/roller.svg" />
     </bal-product-slider>
   </bal-tab-item>
   <bal-tab-item value="tab-b" label="Wohnen & Eigenheim">
-    <bal-product-slider class="mt-5">
+    <bal-product-slider class="mt-6">
       <bal-product-slider-item color="yellow" label="Haushalt" src="assets/images/brand/lamp.svg" />
       <bal-product-slider-item color="purple" label="Hypothek" src="assets/images/brand/home.svg" />
       <bal-product-slider-item color="yellow" label="Alle Gegenstände" src="assets/images/brand/items.svg" />
     </bal-product-slider>
   </bal-tab-item>
   <bal-tab-item value="tab-c" label="Zahlen & Sparen">
-    <bal-product-slider class="mt-5">
+    <bal-product-slider class="mt-6">
       <bal-product-slider-item color="red" label="Pensionsplanung" src="assets/images/brand/bars.svg" />
       <bal-product-slider-item color="green" label="Anlegen" src="assets/images/brand/plant.svg" />
       <bal-product-slider-item color="yellow" label="Finanzplanung" src="assets/images/brand/pie.svg" />
