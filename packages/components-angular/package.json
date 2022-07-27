@@ -25,7 +25,8 @@
     "build:compile": "ng-packagr -p ng-package.json",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -56,11 +57,20 @@
     "dist/"
   ],
   "main": "dist/bundles/baloise-design-system-next-components-angular.umd.js",
+  "module_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "module": "dist/fesm2015/baloise-design-system-next-components-angular.js",
+  "es2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "es2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
   "esm2015": "dist/esm2015/baloise-design-system-next-components-angular.js",
+  "fesm2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "fesm2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
   "typings": "dist/baloise-design-system-next-components-angular.d.ts",
   "metadata": "dist/baloise-design-system-next-components-angular.metadata.json",
-  "sideEffects": false
+  "sideEffects": false,
+  "__processed_by_ivy_ngcc__": {
+    "es2015": "14.0.3",
+    "fesm2015": "14.0.3",
+    "module": "14.0.3",
+    "typings": "14.0.3"
+  }
 }
