@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-angular",
-  "version": "10.15.8-beta.8+90755fb1",
+  "version": "10.15.8-beta.10+bb993a62",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -25,12 +25,11 @@
     "build:compile": "ng-packagr -p ng-package.json",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-components": "10.15.8-beta.8+90755fb1",
+    "@baloise/design-system-next-components": "10.15.8-beta.10+bb993a62",
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
@@ -40,7 +39,7 @@
     "@angular/platform-browser": ">=10.2.4",
     "zone.js": ">=0.8.26"
   },
-  "gitHead": "90755fb16e78c429aa37660eabfe54630ffc386e",
+  "gitHead": "bb993a622896f20bce53f1e0029e90d1549847e5",
   "devDependencies": {
     "@angular/common": "^10.2.5",
     "@angular/compiler": "^10.2.5",
