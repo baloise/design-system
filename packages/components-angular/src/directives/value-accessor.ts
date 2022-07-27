@@ -22,7 +22,7 @@ export class ValueAccessor implements ControlValueAccessor {
   }
 
   @HostListener('focusout')
-  _handleBlurEvent() {
+  handleBlurEvent() {
     this.onTouched();
   }
 
