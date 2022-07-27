@@ -587,7 +587,6 @@ export class Select {
 
   private blurSelect() {
     this.popoverElement.dismiss()
-    this.balBlur.emit()
   }
 
   private optionSelected(selectedOption: BalOptionController) {
@@ -680,6 +679,7 @@ export class Select {
       if (this.multiple && this.typeahead) {
         this.updateInputValue('')
       }
+      this.balBlur.emit()
     }
     event.stopPropagation()
   }
