@@ -20,8 +20,8 @@ export class ProductSlider implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.setSlide(0)
     this.calculateLastSlide()
+    this.setSlide(0)
   }
 
   connectedCallback() {
@@ -99,7 +99,7 @@ export class ProductSlider implements ComponentInterface {
 
     this.calculateLastSlide()
 
-    const leftControlIsDisabled = this.slideIndex === 0
+    const leftControlIsDisabled = this.slideIndex <= 0
     const rightControlIsDisabled = this.slideIndex >= this.lastSlide
     const steps = isPlatform('mobile') ? 1 : 2
 
