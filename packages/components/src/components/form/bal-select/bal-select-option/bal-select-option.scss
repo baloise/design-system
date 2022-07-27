@@ -47,16 +47,16 @@
     }
   }
 
-  &:hover,
-  &.is-focused {
-    background: $grey-2;
-  }
-
   &.is-selected {
     background: $blue-1;
 
     .label {
       font-weight: $weight-bold;
     }
+  }
+
+  &:hover,
+  &.is-focused {
+    background: $grey-2;
   }
 }

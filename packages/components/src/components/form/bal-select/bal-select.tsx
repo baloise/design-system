@@ -156,14 +156,15 @@ export class Select {
 
   @Watch('value')
   valueWatcher() {
-    this.updateRawValue()
+    this.updateRawValue(false)
   }
 
   @Watch('rawValue')
-  rawValueWatcher(newValue: string[], oldValue: string[]) {
-    if (!areArraysEqual(newValue, oldValue)) {
+  rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
+    this.rawValue = newValue
+    if (!areArraysEqual(newValue, oldValue || [])) {
       this.syncNativeInput()
-      if (this.didInit) {
+      if (this.didInit && isHuman) {
         if (this.multiple) {
           if (isNil(this.rawValue)) {
             this.balChange.emit([])
@@ -279,7 +280,7 @@ export class Select {
   }
 
   componentWillLoad() {
-    this.updateRawValue()
+    this.updateRawValue(false)
 
     if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
       const firstOption = this.options.get(this.rawValue[0])
@@ -374,7 +375,7 @@ export class Select {
   @Method()
   async close(): Promise<void> {
     if (!this.disabled && !this.readonly && !isNil(this.popoverElement)) {
-      await this.popoverElement.dismiss()
+      this.blurSelect()
     }
   }
 
@@ -571,16 +572,22 @@ export class Select {
    * VALUE & FILTER & SELECTION
    ********************************************************/
 
-  private updateRawValue() {
-    if (isNil(this.value)) {
-      this.rawValue = []
-    } else {
+  private updateRawValue(isHuman = true) {
+    let newValue: string[] = []
+    if (!isNil(this.value)) {
       if (isArray(this.value)) {
-        this.rawValue = [...this.value.filter(v => !isNil(v))]
+        newValue = [...this.value.filter(v => !isNil(v))]
       } else {
-        this.rawValue = [this.value]
+        newValue = [this.value]
       }
     }
+
+    this.rawValueWatcher(newValue, this.rawValue, isHuman)
+  }
+
+  private blurSelect() {
+    this.popoverElement.dismiss()
+    this.balBlur.emit()
   }
 
   private optionSelected(selectedOption: BalOptionController) {
@@ -589,7 +596,7 @@ export class Select {
     this.updateValue(selectedOption.value, !isAlreadySelected)
 
     if (!this.multiple) {
-      this.popoverElement.dismiss()
+      this.blurSelect()
     } else {
       if (this.typeahead) {
         this.setFocus()
@@ -678,8 +685,9 @@ export class Select {
   }
 
   private handleInputBlur = (event: FocusEvent) => {
+    preventDefault(event)
     this.validateAfterBlur()
-    this.balBlur.emit(event)
+    // this.balBlur.emit(event)
     this.hasFocus = false
   }
 
@@ -752,7 +760,7 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
+      <bal-tag size="small" closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )
