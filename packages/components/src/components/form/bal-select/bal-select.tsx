@@ -687,7 +687,6 @@ export class Select {
   private handleInputBlur = (event: FocusEvent) => {
     preventDefault(event)
     this.validateAfterBlur()
-    // this.balBlur.emit(event)
     this.hasFocus = false
   }
 
