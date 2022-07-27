@@ -10,7 +10,7 @@ export class Field {
    * If `true` the form control needs to be filled. If it is set to
    * `false` an optional label is added to the label..
    */
-  @Prop() required = true
+  @Prop() required?: boolean = undefined
 
   /**
    * If `true` the component gets a invalid red style.
