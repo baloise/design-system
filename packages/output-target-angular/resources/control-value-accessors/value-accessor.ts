@@ -24,9 +24,11 @@ export class ValueAccessor implements ControlValueAccessor {
     }
   }
 
-  @HostListener('focusout')
-  handleBlurEvent() {
-    this.onTouched()
+  @HostListener('balBlur', ['$event.target'])
+  handleBlurEvent(el: any) {
+    if (el === this.el.nativeElement) {
+      this.onTouched()
+    }
   }
 
   registerOnChange(fn: (value: any) => void) {

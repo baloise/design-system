@@ -2,7 +2,8 @@ import { dashToPascalCase } from './utils'
 import type { ComponentCompilerMeta } from '@stencil/core/internal'
 
 export const createComponentDefinition =
-  (componentCorePackage: string /*, distTypesDir: string, rootDir: string*/) => (cmpMeta: ComponentCompilerMeta) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+  (componentCorePackage: string, distTypesDir: string, rootDir: string) => (cmpMeta: ComponentCompilerMeta) => {
     // Collect component meta
     const inputs = [
       ...cmpMeta.properties.filter(prop => !prop.internal).map(prop => prop.name),

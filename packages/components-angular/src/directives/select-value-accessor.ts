@@ -8,7 +8,6 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-radio-group, bal-checkbox-group, bal-select, bal-datepicker, bal-timeinput, bal-tabs',
   host: {
     '(balChange)': 'handleChangeEvent($event.detail)',
-    '(balBlur)': 'handleBlurEvent()',
   },
   providers: [
     {

@@ -8,7 +8,6 @@ import { ValueAccessor } from './value-accessor'
   selector: '<VALUE_ACCESSOR_SELECTORS>',
   host: {
     '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event.detail)',
-    '(balBlur)': 'handleBlurEvent()',
   },
   providers: [
     {
