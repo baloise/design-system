@@ -1,18 +1,18 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<bal-doc-banner id="story--components-product-slider--basic">Product Slider</bal-doc-banner>
+<bal-doc-banner id="story--components-product-slider--basic" status="rebranded,css">Product Slider</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-accordion--basic">Overview</a>
-  {/* <a href="#examples">Examples</a> */}
+  <a href="#examples">Examples</a>
   <a href="#component-api">API</a>
   {/* <a href="#usage">Usage</a> */}
   <a href="#integration">Integration</a>
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
 
-<bal-doc-lead>The Product Slider component is used to display a longer list of products in a slider. It's using the "bal-tabs" component for the tabs switching between different categories of products. The value attribute of a tab must be passed as data-category="value" to each product in the slider.</bal-doc-lead>
+<bal-doc-lead>The Product Slider component is used to display a longer list of products in a slider.</bal-doc-lead>
 
 <Canvas withSource="open">
   <Story id="components-product-slider--basic" />
@@ -25,6 +25,18 @@ import readme from '../readme.md'
     </a>
   </bal-button-group>
 </bal-doc-app>
+
+## Examples
+
+<span id="story--components-product-slider--with-tabs" style={{ opacity: 0 }}></span>
+
+### With Tabs
+
+Use "bal-tabs" component for switching between categories of products.
+
+<Canvas>
+  <Story id="components-product-slider--with-tabs" />
+</Canvas>
 
 ## Component Api
 
