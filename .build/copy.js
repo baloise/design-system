@@ -13,6 +13,8 @@ async function main() {
   await copyReadme('packages/icons')
   await copyReadme('packages/fonts')
   await copyReadme('packages/testing')
+  await copyReadme('packages/output-target-angular')
+  await copyReadme('packages/output-target-vue')
   log.success('Resources are copied')
 }
 

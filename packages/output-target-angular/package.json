@@ -1,7 +1,29 @@
 {
   "name": "@baloise/design-system-next-output-target-angular",
   "version": "10.15.8-beta.10+bb993a62",
-  "description": "Angular output target for @stencil/core components.",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
+  "homepage": "https://design.baloise.dev",
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
+  ],
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs"
+  ],
+  "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,19 +41,6 @@
     "release": "np",
     "test": "jest --passWithNoTests",
     "test.watch": "jest --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/baloise/stencil-ds-output-targets.git"
-  },
-  "author": {
-    "name": "Gery Hirschfeld",
-    "email": "gerhard.hirschfeld@baloise.ch",
-    "url": "https://github.com/hirsch88"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/baloise/stencil-ds-output-targets/issues"
   },
   "devDependencies": {
     "@angular/common": "^10.2.5",

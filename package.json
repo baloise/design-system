@@ -1,13 +1,27 @@
 {
   "name": "root",
   "private": true,
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
   "homepage": "https://design.baloise.dev",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)"
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
+  ],
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs"
   ],
   "license": "Apache-2.0",
   "scripts": {
@@ -35,10 +49,11 @@
     "build": "npm run build:clean && npm run build:pre && npm run build:css && npm run build:components && npm run build:post",
     "build:clean": "rimraf ./packages/components-vue/src/proxies",
     "build:pre": "node .build/banner.js build:pre && concurrently \"npm:build:pre:*\"",
-    "build:pre:fonts_": "npm --prefix packages/fonts run build",
-    "build:pre:icons_": "npm --prefix packages/icons run build",
-    "build:pre:tokens": "npm --prefix packages/tokens run build",
-    "build:pre:out-ng": "npm --prefix packages/output-target-angular run build",
+    "build:pre:fonts__": "npm --prefix packages/fonts run build",
+    "build:pre:icons__": "npm --prefix packages/icons run build",
+    "build:pre:tokens_": "npm --prefix packages/tokens run build",
+    "build:pre:out-ng_": "npm --prefix packages/output-target-angular run build",
+    "build:pre:out-vue": "npm --prefix packages/output-target-vue run build",
     "build:css": "node .build/banner.js build:css && npm --prefix packages/css run build",
     "build:components": "node .build/banner.js build:components && npm --prefix packages/components run build",
     "build:post": "node .build/banner.js build:post && concurrently \"npm:build:post:*\"",
@@ -71,6 +86,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/jest": "^28.1.6",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "axe-core": "^4.4.1",
