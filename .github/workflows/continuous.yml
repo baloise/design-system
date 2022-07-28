@@ -128,5 +128,5 @@ jobs:
       - name: Vue build
         run: npm --prefix packages/vue-output-target run build
 
-      - name: Vue test
-        run: npm --prefix packages/vue-output-target run test
+      # - name: Vue test
+      #   run: npm --prefix packages/vue-output-target run test
