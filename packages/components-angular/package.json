@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-angular",
-  "version": "10.15.8-beta.10+bb993a62",
+  "version": "10.15.7",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-components": "10.15.8-beta.10+bb993a62",
+    "@baloise/design-system-next-components": "10.15.7",
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
@@ -39,7 +39,7 @@
     "@angular/platform-browser": ">=10.2.4",
     "zone.js": ">=0.8.26"
   },
-  "gitHead": "bb993a622896f20bce53f1e0029e90d1549847e5",
+  "gitHead": "df90f3fa5195dbd86fc976cee801397e0d72a51b",
   "devDependencies": {
     "@angular/common": "^10.2.5",
     "@angular/compiler": "^10.2.5",
@@ -56,20 +56,11 @@
     "dist/"
   ],
   "main": "dist/bundles/baloise-design-system-next-components-angular.umd.js",
-  "module_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "module": "dist/fesm2015/baloise-design-system-next-components-angular.js",
-  "es2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "es2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
   "esm2015": "dist/esm2015/baloise-design-system-next-components-angular.js",
-  "fesm2015_ivy_ngcc": "__ivy_ngcc__/dist/fesm2015/baloise-design-system-next-components-angular.js",
   "fesm2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
   "typings": "dist/baloise-design-system-next-components-angular.d.ts",
   "metadata": "dist/baloise-design-system-next-components-angular.metadata.json",
-  "sideEffects": false,
-  "__processed_by_ivy_ngcc__": {
-    "es2015": "14.0.3",
-    "fesm2015": "14.0.3",
-    "module": "14.0.3",
-    "typings": "14.0.3"
-  }
+  "sideEffects": false
 }

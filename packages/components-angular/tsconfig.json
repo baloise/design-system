@@ -19,7 +19,7 @@
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": false,
     "enableResourceInlining": true,
-    "enableIvy": true
+    "enableIvy": false
   },
   "exclude": ["node_modules", "src/schematics"],
   "files": ["src/index.ts"]
