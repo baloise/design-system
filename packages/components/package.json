@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components",
-  "version": "10.15.8-beta.3+1249f1b1",
+  "version": "10.15.8-beta.4+49ffc9d4",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -74,10 +74,10 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --config testFiles=\"visual/*spec.ts\""
   },
   "dependencies": {
-    "@baloise/design-system-next-css": "10.15.8-beta.3+1249f1b1",
-    "@baloise/design-system-next-fonts": "10.15.8-beta.3+1249f1b1",
-    "@baloise/design-system-next-icons": "10.15.8-beta.3+1249f1b1",
-    "@baloise/design-system-next-tokens": "10.15.8-beta.3+1249f1b1",
+    "@baloise/design-system-next-css": "10.15.8-beta.4+49ffc9d4",
+    "@baloise/design-system-next-fonts": "10.15.8-beta.4+49ffc9d4",
+    "@baloise/design-system-next-icons": "10.15.8-beta.4+49ffc9d4",
+    "@baloise/design-system-next-tokens": "10.15.8-beta.4+49ffc9d4",
     "@baloise/web-app-utils": "^3.4.0",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "~2.16.1",
@@ -103,10 +103,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
-    "@baloise/design-system-next-output-target-angular": "10.15.8-beta.3+1249f1b1",
-    "@baloise/design-system-next-output-target-vue": "10.15.8-beta.3+1249f1b1",
+    "@baloise/design-system-next-output-target-angular": "10.15.8-beta.4+49ffc9d4",
+    "@baloise/design-system-next-output-target-vue": "10.15.8-beta.4+49ffc9d4",
     "@baloise/react-output-target": "^0.4.8",
-    "@baloise/stencil-vite-fix-next": "10.15.8-beta.3+1249f1b1",
+    "@baloise/stencil-vite-fix-next": "10.15.8-beta.4+49ffc9d4",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^1.5.2",
@@ -164,5 +164,5 @@
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
   },
-  "gitHead": "1249f1b1739f7ccca345af0d544df747ac239d08"
+  "gitHead": "49ffc9d4c8e70df82d75ddf58e0d6059b2ed9a6e"
 }

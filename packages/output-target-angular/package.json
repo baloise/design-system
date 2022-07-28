@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-output-target-angular",
-  "version": "10.15.8-beta.3+1249f1b1",
+  "version": "10.15.8-beta.4+49ffc9d4",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -68,5 +68,5 @@
     ],
     "testURL": "http://localhost"
   },
-  "gitHead": "1249f1b1739f7ccca345af0d544df747ac239d08"
+  "gitHead": "49ffc9d4c8e70df82d75ddf58e0d6059b2ed9a6e"
 }
