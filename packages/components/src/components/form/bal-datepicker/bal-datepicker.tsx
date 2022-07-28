@@ -55,7 +55,6 @@ import {
 import {
   FormInput,
   getInputTarget,
-  inputHandleBlur,
   inputHandleFocus,
   inputHandleHostClick,
   inputListenOnClick,
@@ -64,6 +63,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { Props, Events } from '../../../types'
+import { preventDefault } from '../bal-select/utils/utils'
 
 @Component({
   tag: 'bal-datepicker',
@@ -255,7 +255,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     this.selectedDate = this.value
     this.updatePointerDates()
-    this.updateValue(this.value)
+    this.updateValue(this.value, false)
   }
 
   disconnectedCallback() {
@@ -352,7 +352,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
-  private updateValue(dateString: string | undefined) {
+  private updateValue(dateString: string | undefined, isHuman = true) {
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined
@@ -363,7 +363,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      this.balChange.emit(this.value)
+      if (isHuman) {
+        this.balChange.emit(this.value)
+      }
     }
   }
 
@@ -488,7 +490,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
     this.isPopoverOpen = event.detail
-    event.stopPropagation()
+    preventDefault(event)
+
+    if (!this.isPopoverOpen) {
+      this.balBlur.emit()
+    }
   }
 
   private onInput = (event: Event) => {
@@ -578,7 +584,10 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
-  private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
+  private onInputBlur = (event: FocusEvent) => {
+    preventDefault(event)
+    this.hasFocus = false
+  }
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
