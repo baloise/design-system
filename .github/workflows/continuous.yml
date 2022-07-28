@@ -85,4 +85,48 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  OutputTargets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Node Version
+        run: node -v
+
+      - name: NPM Version
+        run: npm -v
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Update npm registry
+        run: npm run update:registry
+
+      - name: Angular install dependencies
+        run: npm --prefix packages/output-target-angular ci
+
+      - name: Angular build
+        run: npm --prefix packages/output-target-angular build
+
+      - name: Angular test
+        run: npm --prefix packages/output-target-angular test
+
+      - name: Vue install dependencies
+        run: npm --prefix packages/output-target-vue ci
+
+      - name: Vue build
+        run: npm --prefix packages/output-target-vue build
+
+      - name: Vue test
+        run: npm --prefix packages/output-target-vue test
