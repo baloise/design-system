@@ -255,7 +255,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     this.selectedDate = this.value
     this.updatePointerDates()
-    this.updateValue(this.value)
+    this.updateValue(this.value, false)
   }
 
   disconnectedCallback() {
@@ -352,7 +352,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
-  private updateValue(dateString: string | undefined) {
+  private updateValue(dateString: string | undefined, isHuman = true) {
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined
@@ -363,7 +363,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      this.balChange.emit(this.value)
+      if (isHuman) {
+        this.balChange.emit(this.value)
+      }
     }
   }
 
