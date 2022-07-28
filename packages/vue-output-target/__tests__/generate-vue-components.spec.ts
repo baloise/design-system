@@ -13,7 +13,6 @@ describe('createComponentDefinition', () => {
 export const MyComponent = /*@__PURE__*/ defineContainer<Components.MyComponent>('my-component', undefined);
 `)
   })
-
   it('should create a Vue component with custom element support', () => {
     const generateComponentDefinition = createComponentDefinition('Components', [], true)
     const output = generateComponentDefinition({

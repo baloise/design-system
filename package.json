@@ -53,7 +53,7 @@
     "build:pre:icons__": "npm --prefix packages/icons run build",
     "build:pre:tokens_": "npm --prefix packages/tokens run build",
     "build:pre:out-ng_": "npm --prefix packages/output-target-angular run build",
-    "build:pre:out-vue": "npm --prefix packages/output-target-vue run build",
+    "build:pre:out-vue": "npm --prefix packages/vue-output-target run build",
     "build:css": "node .build/banner.js build:css && npm --prefix packages/css run build",
     "build:components": "node .build/banner.js build:components && npm --prefix packages/components run build",
     "build:post": "node .build/banner.js build:post && concurrently \"npm:build:post:*\"",
