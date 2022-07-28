@@ -117,16 +117,16 @@ jobs:
         run: npm --prefix packages/output-target-angular ci
 
       - name: Angular build
-        run: npm --prefix packages/output-target-angular build
+        run: npm --prefix packages/output-target-angular run build
 
       - name: Angular test
-        run: npm --prefix packages/output-target-angular test
+        run: npm --prefix packages/output-target-angular run test
 
       - name: Vue install dependencies
         run: npm --prefix packages/output-target-vue ci
 
       - name: Vue build
-        run: npm --prefix packages/output-target-vue build
+        run: npm --prefix packages/output-target-vue run build
 
       - name: Vue test
-        run: npm --prefix packages/output-target-vue test
+        run: npm --prefix packages/output-target-vue run test
