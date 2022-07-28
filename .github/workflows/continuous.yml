@@ -123,10 +123,10 @@ jobs:
         run: npm --prefix packages/output-target-angular run test
 
       - name: Vue install dependencies
-        run: npm --prefix packages/output-target-vue ci
+        run: npm --prefix packages/vue-output-target ci
 
       - name: Vue build
-        run: npm --prefix packages/output-target-vue run build
+        run: npm --prefix packages/vue-output-target run build
 
       - name: Vue test
-        run: npm --prefix packages/output-target-vue run test
+        run: npm --prefix packages/vue-output-target run test
