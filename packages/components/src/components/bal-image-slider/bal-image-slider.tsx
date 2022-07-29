@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
@@ -10,6 +10,7 @@ export class ImageSlider implements ComponentInterface {
   @Element() el!: HTMLBalImageSliderElement
 
   private mutationO?: MutationObserver
+  private xPos = 0
 
   @State() slideIndex = 0
   @State() images!: HTMLBalImageSliderItemElement[]
@@ -23,6 +24,20 @@ export class ImageSlider implements ComponentInterface {
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
+    }
+  }
+
+  @Listen('touchstart')
+  touchStart(event: TouchEvent) {
+    this.xPos = event.touches[0].pageX
+  }
+
+  @Listen('touchend')
+  touchEnd(event: TouchEvent) {
+    if (event.changedTouches[0].pageX < this.xPos) {
+      this.setSlide(this.slideIndex + 1)
+    } else {
+      this.setSlide(this.slideIndex - 1)
     }
   }
 
