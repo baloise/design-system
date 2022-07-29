@@ -1160,10 +1160,6 @@ export namespace Components {
          */
         "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
-          * If `true`, the modal indicates its trigger, when there are several nearby triggers
-         */
-        "hasArrow"?: false;
-        /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop": boolean;
@@ -4371,10 +4367,6 @@ declare namespace LocalJSX {
         "cssClass"?: string | string[];
         "dataTestId"?: string;
         "delegate"?: Props.FrameworkDelegate;
-        /**
-          * If `true`, the modal indicates its trigger, when there are several nearby triggers
-         */
-        "hasArrow"?: false;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */

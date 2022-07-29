@@ -13,7 +13,7 @@ export class NavigationLevels implements ComponentInterface {
 
   render() {
     return (
-      <Host style={{ display: 'none' }}>
+      <Host class="is-hidden">
         <slot></slot>
       </Host>
     )
