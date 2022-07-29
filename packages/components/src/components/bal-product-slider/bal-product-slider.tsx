@@ -12,6 +12,8 @@ export class ProductSlider implements ComponentInterface {
   private mutationO?: MutationObserver
   private mutationTabO?: MutationObserver
   private productWidth = 176
+  private steps = isPlatform('mobile') ? 1 : 2
+  private xPos = 0
 
   @State() items!: HTMLBalProductSliderItemElement[]
   @State() slideIndex = 0
@@ -22,6 +24,22 @@ export class ProductSlider implements ComponentInterface {
   async resizeHandler() {
     this.calculateLastSlide()
     this.setSlide(0)
+  }
+
+  @Listen('touchstart')
+  touchStart(event: TouchEvent) {
+    console.log('event :>> ', event)
+    this.xPos = event.touches[0].pageX
+  }
+
+  @Listen('touchend')
+  touchEnd(event: TouchEvent) {
+    console.log('event :>> ', event)
+    if (event.changedTouches[0].pageX < this.xPos) {
+      this.setSlide(this.slideIndex + this.steps)
+    } else {
+      this.setSlide(this.slideIndex - this.steps)
+    }
   }
 
   connectedCallback() {
@@ -101,7 +119,6 @@ export class ProductSlider implements ComponentInterface {
 
     const leftControlIsDisabled = this.slideIndex <= 0
     const rightControlIsDisabled = this.slideIndex >= this.lastSlide
-    const steps = isPlatform('mobile') ? 1 : 2
 
     return (
       <Host class={{ ...block.class() }}>
@@ -114,7 +131,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
             <bal-button
               disabled={leftControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - steps : 0)}
+              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - this.steps : 0)}
               color="primary"
               square
               rounded
@@ -124,7 +141,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
             <bal-button
               disabled={rightControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex + steps)}
+              onClick={() => this.setSlide(this.slideIndex + this.steps)}
               color="primary"
               square
               rounded
