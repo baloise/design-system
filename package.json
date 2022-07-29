@@ -38,6 +38,7 @@
     "build:pre:fonts_": "npm --prefix packages/fonts run build",
     "build:pre:icons_": "npm --prefix packages/icons run build",
     "build:pre:tokens": "npm --prefix packages/tokens run build",
+    "build:pre:out-ng": "npm --prefix packages/output-target-angular run build",
     "build:css": "node .build/banner.js build:css && npm --prefix packages/css run build",
     "build:components": "node .build/banner.js build:components && npm --prefix packages/components run build",
     "build:post": "node .build/banner.js build:post && concurrently \"npm:build:post:*\"",

@@ -1,0 +1,61 @@
++block(image-slider)
+  display: block
+  position: relative
+  width: 100%
+  padding-top: 52.5%
+  max-width: 1400px
+
+  +element(container)
+    position: absolute
+    overflow: hidden
+    max-width: 1400px
+    max-height: 788px
+    top: 0
+    left: 0
+    bottom: 45px
+    right: 0
+
+    +element(images)
+      display: flex
+      flex-direction: row
+      width: fit-content
+      height: 100%
+
+  +element(controls)
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 200px
+    margin: auto
+    margin-top: 48px
+
+    +element(navigation)
+      margin-top: 1rem
+
+    +element(dots)
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 24px
+      max-width: 88px
+      min-width: 63px
+      margin-top: 14px
+      padding: 8px
+      gap: 8px
+      background: #e8e8e8
+      border-radius: 4px
+
+      +element(dot)
+        cursor: pointer
+        height: 8px
+        width: 8px
+        gap: 30px
+        border-radius: 50%
+        display: inline-block
+        +modifier(active)
+          background-color: var(--bal-color-primary)
+        +modifier(inactive)
+          background-color: var(--bal-color-white)
+
++block(image-slider-item)
+  width: max-content
