@@ -1,0 +1,123 @@
++block(product-slider)
+  display: block
+  position: relative
+  width: 100%
+  height: 152px
+
+  +element(container)
+    position: absolute
+    overflow: hidden
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    padding-left: 1px
+    padding-right: 1px
+
+    +element(products)
+      display: flex
+      justify-content: flex-start
+      flex-direction: row
+      width: fit-content
+      height: 152px
+      gap: 1rem
+
+  +element(controls)
+    position: relative
+    height: 48px
+    width: 100%
+    +mobile
+      top: 172px
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 2rem
+    +tablet
+      top: 0
+      height: 0
+      display: block
+      +element(button)
+        position: absolute
+        height: 152px
+        display: flex
+        justify-content: center
+        align-items: center
+        +modifier(left)
+          left: 0
+          background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+        +modifier(right)
+          right: 0
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+
++block(product-slider-item)
+  display: flex
+  width: 160px
+  height: 152px
+  text-align: center
+  padding-top: 6px
+  padding-bottom: 6px
+  user-select: none
+  user-zoom: fixed
+
+  +tablet
+    &:first-child
+      margin-left: 32px
+
+  +element(button)
+    display: flex
+    flex: 1
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    border-radius: var(--bal-radius-large)
+    padding: var(--bal-size-x-small)
+    border: none
+    cursor: pointer
+    user-select: none
+    outline: none
+    background: var(--bal-color-white)
+
+    &:focus-visible:not(:active)
+      +focus-shadow
+
+    +modifier(color-green)
+      +touch
+        background: var(--bal-color-green-1)
+      +desktop
+        &:hover
+          background: var(--bal-color-green-1)
+        &:active
+          background: var(--bal-color-green-2)
+    +modifier(color-red)
+      +touch
+        background: var(--bal-color-red-1)
+      +desktop
+        &:hover
+          background: var(--bal-color-red-1)
+        &:active
+          background: var(--bal-color-red-2)
+    +modifier(color-yellow)
+      +touch
+        background: var(--bal-color-yellow-1)
+      +desktop
+        &:hover
+          background: var(--bal-color-yellow-1)
+        &:active
+          background: var(--bal-color-yellow-2)
+    +modifier(color-purple)
+      +touch
+        background: var(--bal-color-purple-1)
+      +desktop
+        &:hover
+          background: var(--bal-color-purple-1)
+        &:active
+          background: var(--bal-color-purple-2)
+
+    +element(image)
+      width: 80px
+      height: 80px
+      pointer-events: none
+
+    +element(label)
+      font-weight: var(--bal-weight-bold)
+      color: var(--bal-color-primary)

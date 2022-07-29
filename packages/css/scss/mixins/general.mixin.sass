@@ -2,6 +2,10 @@
 @use "sass:string"
 @use "sass:math"
 
+=hover
+  @media(hover: hover) and (pointer: fine)
+    @content
+
 =overflow-touch
   -webkit-overflow-scrolling: touch
 
@@ -99,7 +103,7 @@
   user-select: none
 
 =disabled
-  cursor: not-allowed !important
+  cursor: default !important
   pointer-events: none !important
 
 =center($width, $height: 0)
@@ -281,3 +285,4 @@
     min-height: 32px
     min-width: 32px
     width: 32px
+

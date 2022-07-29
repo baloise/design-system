@@ -1,6 +1,6 @@
 import { app } from '../support/app'
 
-describe('ProductSlider', () => {
+describe.skip('ProductSlider', () => {
   const page = app.getProductSliderPage()
 
   it('should have text', () => {
