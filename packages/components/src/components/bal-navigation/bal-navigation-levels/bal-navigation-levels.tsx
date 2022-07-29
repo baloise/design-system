@@ -8,9 +8,7 @@ export class NavigationLevels implements ComponentInterface {
   @Element() el!: HTMLElement
 
   @Method() async getLevelInfos(): Promise<LevelInfo[]> {
-    const subLevels = await readSubLevels(this.el, 'bal-navigation-level-meta')
-    console.log('Meta levels ', subLevels)
-    return subLevels
+    return await readSubLevels(this.el, 'bal-navigation-level-meta')
   }
 
   render() {

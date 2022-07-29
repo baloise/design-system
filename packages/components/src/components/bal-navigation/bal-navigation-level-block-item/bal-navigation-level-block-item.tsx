@@ -14,16 +14,13 @@ export class NavigationLevelBlockItem implements ComponentInterface {
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
   @Method() async getLevelInfo(): Promise<LevelInfo> {
-    const itemLevel: LevelInfo = {
+    return {
       type: 'block-item',
       value: this.value,
       label: this.label,
       link: this.link,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }
-
-    console.log('Item level ', itemLevel)
-    return itemLevel
   }
 
   render() {

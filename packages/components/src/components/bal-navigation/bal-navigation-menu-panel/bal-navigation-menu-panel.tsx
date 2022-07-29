@@ -29,7 +29,7 @@ export class NavigationMenuPanel {
         }}
       >
         {this.linkHref && (
-          <div class="panel-link-wrapper is-block mt-4">
+          <div class="panel-link-wrapper is-block">
             <a class="is-size-x-small panel-link is-bold" href={this.linkHref}>
               {this.linkName}
             </a>

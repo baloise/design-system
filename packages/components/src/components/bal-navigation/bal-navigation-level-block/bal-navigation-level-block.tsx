@@ -18,9 +18,8 @@ export class NavigationLevelBlock implements ComponentInterface {
 
   @Method() async getLevelInfo(): Promise<LevelInfo> {
     const subLevels = await readSubLevels(this.el, 'bal-navigation-level-block-item')
-    console.log('Block sub levels ', subLevels)
 
-    const blockLevel: LevelInfo = {
+    return {
       type: 'block',
       value: this.value,
       label: this.label,
@@ -30,8 +29,6 @@ export class NavigationLevelBlock implements ComponentInterface {
       subLevels,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }
-    console.log('Block Level ', blockLevel)
-    return blockLevel
   }
 
   render() {

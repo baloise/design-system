@@ -1154,6 +1154,10 @@ export namespace Components {
          */
         "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
+          * If `true`, the modal indicates its trigger, when there are several nearby triggers
+         */
+        "hasArrow"?: false;
+        /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop": boolean;
@@ -1227,7 +1231,6 @@ export namespace Components {
         "ariaLabelMain"?: string;
         "ariaLabelMeta"?: string;
         "logoPath"?: string;
-        "mainValue"?: string;
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -4297,6 +4300,10 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "delegate"?: Props.FrameworkDelegate;
         /**
+          * If `true`, the modal indicates its trigger, when there are several nearby triggers
+         */
+        "hasArrow"?: false;
+        /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop"?: boolean;
@@ -4376,7 +4383,6 @@ declare namespace LocalJSX {
         "ariaLabelMain"?: string;
         "ariaLabelMeta"?: string;
         "logoPath"?: string;
-        "mainValue"?: string;
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {

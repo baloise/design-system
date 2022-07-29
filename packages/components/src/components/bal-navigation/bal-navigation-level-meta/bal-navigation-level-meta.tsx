@@ -18,8 +18,8 @@ export class NavigationLevelMeta implements ComponentInterface {
 
   @Method() async getLevelInfo(): Promise<LevelInfo> {
     const subLevels = await readSubLevels(this.el, 'bal-navigation-level-main')
-    console.log('Meta subLevels ', subLevels)
-    const metaLevel: LevelInfo = {
+
+    return {
       type: 'meta',
       value: this.value,
       label: this.label,
@@ -29,8 +29,6 @@ export class NavigationLevelMeta implements ComponentInterface {
       subLevels,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }
-    console.log('Meta Level ', metaLevel)
-    return metaLevel
   }
 
   render() {
