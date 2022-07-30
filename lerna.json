@@ -2,7 +2,8 @@
   "version": "10.15.7",
   "granularPathspec": false,
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/output-targets/*"
   ],
   "command": {
     "version": {
