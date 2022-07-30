@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-output-target-react",
-  "version": "10.15.8-beta.4+49ffc9d4",
+  "version": "10.15.8-beta.20+2bbab92d",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -48,11 +48,11 @@
   "devDependencies": {
     "@types/react": "^16.7.0",
     "@types/react-dom": "^16.7.0",
+    "jest": "^26.6.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-testing-library": "^7.0.0",
     "rimraf": "^3.0.2",
-    "jest": "^26.6.3",
     "rollup": "^2.56.3",
     "typescript": "^4.0.8"
   },
@@ -70,5 +70,5 @@
     ],
     "testURL": "http://localhost"
   },
-  "gitHead": "a3588e905186a0e86e7f88418fd5b2f9531b55e0"
+  "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
 }
