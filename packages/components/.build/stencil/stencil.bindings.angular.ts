@@ -1,4 +1,4 @@
-import { ValueAccessorConfig, angularOutputTarget } from '@baloise/design-system-next-output-target-angular'
+import { ValueAccessorConfig, angularOutputTarget } from '@baloise/angular-output-target'
 import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
