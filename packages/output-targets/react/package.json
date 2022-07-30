@@ -50,7 +50,8 @@
     "@types/react-dom": "^16.7.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-testing-library": "^7.0.0"
+    "react-testing-library": "^7.0.0",
+    "rimraf": "^3.0.2"
   },
   "jest": {
     "transform": {
