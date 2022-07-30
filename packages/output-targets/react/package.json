@@ -1,0 +1,70 @@
+{
+  "name": "@baloise/design-system-next-output-target-react",
+  "version": "10.15.8-beta.4+49ffc9d4",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
+  "homepage": "https://design.baloise.dev",
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
+  ],
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "react-component-lib/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf ./dist",
+    "build": "tsc && npm run rollup",
+    "watch": "tsc --watch",
+    "rollup": "rollup -c",
+    "version": "npm run build",
+    "release": "np",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "@stencil/core": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.0",
+    "@types/react-dom": "^16.7.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-testing-library": "^7.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|ts|tsx)$": "<rootDir>/test/jest.preprocessor.js"
+    },
+    "testRegex": "(\\.(test|spec))\\.(ts?|tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ],
+    "testURL": "http://localhost"
+  },
+  "gitHead": "a3588e905186a0e86e7f88418fd5b2f9531b55e0"
+}

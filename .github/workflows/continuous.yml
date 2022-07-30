@@ -114,19 +114,28 @@ jobs:
         run: npm run update:registry
 
       - name: Angular install dependencies
-        run: npm --prefix packages/output-target-angular ci
+        run: npm --prefix packages/output-targets/angular ci
 
       - name: Angular build
-        run: npm --prefix packages/output-target-angular run build
+        run: npm --prefix packages/output-targets/angular run build
 
       - name: Angular test
-        run: npm --prefix packages/output-target-angular run test
+        run: npm --prefix packages/output-targets/angular run test
 
       - name: Vue install dependencies
-        run: npm --prefix packages/vue-output-target ci
+        run: npm --prefix packages/output-targets/vue ci
 
       - name: Vue build
-        run: npm --prefix packages/vue-output-target run build
+        run: npm --prefix packages/output-targets/vue run build
 
-      # - name: Vue test
-      #   run: npm --prefix packages/vue-output-target run test
+      - name: Vue test
+        run: npm --prefix packages/output-targets/vue run test
+
+      - name: React install dependencies
+        run: npm --prefix packages/output-targets/react ci
+
+      - name: React build
+        run: npm --prefix packages/output-targets/react run build
+
+      - name: React test
+        run: npm --prefix packages/output-targets/react run test
