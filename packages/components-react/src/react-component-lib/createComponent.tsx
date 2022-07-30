@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { createElement, Fragment } from 'react'
 
 import { attachProps, camelToDashCase, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils'
@@ -15,7 +16,7 @@ export const createReactComponent = <
   PropType,
   ElementType extends HTMLStencilElement,
   ContextStateType = {},
-  ExpandedPropsTypes = {}
+  ExpandedPropsTypes = {},
 >(
   tagName: string,
   ReactComponentContext?: React.Context<ContextStateType>,
@@ -50,6 +51,7 @@ export const createReactComponent = <
     }
 
     render() {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
       const { children, forwardedRef, style, className, ref, ...cProps } = this.props
 
       let propsToPass = Object.keys(cProps).reduce((acc: any, name) => {
