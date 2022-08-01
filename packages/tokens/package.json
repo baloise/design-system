@@ -41,13 +41,7 @@
     "dist/"
   ],
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.56.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "sass": "^1.51.0",
-    "typescript": "^4.3.5"
+    "sass": "~1.54.0"
   },
   "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
 }
