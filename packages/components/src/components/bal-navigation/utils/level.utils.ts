@@ -38,9 +38,7 @@ export const readSubLevels = async (element: HTMLElement, target: string): Promi
   const levels: LevelInfo[] = []
   for (const level of subLevels) {
     const info = await level.getLevelInfo()
-    console.info('INFO ', info)
     levels.push(info)
   }
-  console.info('levels ', levels)
   return levels
 }

@@ -1,11 +1,10 @@
 +block(nav)
-  position: relative
-  width: 100vw
   +desktop
     position: sticky
     display: block
     top: 0
     left: 0
+    width: 100%
     transition: top .3s ease-in-out
   +modifier(translated)
     top: -3rem
@@ -35,14 +34,6 @@
       flex-grow: 1
       align-items: center
       gap: .5rem
-
-    +element(end)
-      display: flex
-      flex-grow: 1
-      justify-content: flex-end
-      align-items: center
-      gap: .5rem
-      padding-right: 1rem
 
   +element(main)
     +unselectable
@@ -130,7 +121,7 @@
     +tablet
       padding: 2rem 3rem 4rem
     +desktop
-      padding: 2rem 3rem 0
+      padding: 40px 3rem 0
     .panel-link-wrapper
       margin-bottom: 1.5rem
       +tablet
@@ -147,6 +138,8 @@
         top: 50%
         transform: translateY(-50%)
         content: '\279E'
+      &:hover
+        color: var(--bal-color-light-blue-dark)
     > div > div:first-of-type > div
       +widescreen
         display: flex
@@ -167,7 +160,14 @@
           left: 0
           right: 0
 
-      +modifier(context-default)
+      > bal-card > bal-card-content > a:hover > bal-heading > h4
+        color: var(--bal-color-light-blue-dark)
+
+      +element(item)
+        > a:hover
+          color: var(--bal-color-light-blue-dark)
+
+      +modifier(context-white)
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)

@@ -613,7 +613,7 @@ export namespace Components {
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
          */
-        "required": boolean;
+        "required"?: boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -863,6 +863,12 @@ export namespace Components {
         "turn": boolean;
     }
     interface BalImageSlider {
+    }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
     }
     interface BalInput {
         /**
@@ -1241,7 +1247,6 @@ export namespace Components {
         "ariaLabelMain"?: string;
         "ariaLabelMeta"?: string;
         "logoPath"?: string;
-        "mainValue"?: string;
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -1446,6 +1451,48 @@ export namespace Components {
         "scrollable": number;
     }
     interface BalProductSlider {
+    }
+    interface BalProductSliderItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label or title of the product
+         */
+        "label"?: string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalRadio {
         /**
@@ -2204,6 +2251,10 @@ export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
 }
+export interface BalProductSliderItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalProductSliderItemElement;
+}
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
@@ -2603,6 +2654,12 @@ declare global {
         prototype: HTMLBalImageSliderElement;
         new (): HTMLBalImageSliderElement;
     };
+    interface HTMLBalImageSliderItemElement extends Components.BalImageSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalImageSliderItemElement: {
+        prototype: HTMLBalImageSliderItemElement;
+        new (): HTMLBalImageSliderItemElement;
+    };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
     var HTMLBalInputElement: {
@@ -2873,6 +2930,12 @@ declare global {
         prototype: HTMLBalProductSliderElement;
         new (): HTMLBalProductSliderElement;
     };
+    interface HTMLBalProductSliderItemElement extends Components.BalProductSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalProductSliderItemElement: {
+        prototype: HTMLBalProductSliderItemElement;
+        new (): HTMLBalProductSliderItemElement;
+    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -3071,6 +3134,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-image-slider": HTMLBalImageSliderElement;
+        "bal-image-slider-item": HTMLBalImageSliderItemElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
@@ -3116,6 +3180,7 @@ declare global {
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
         "bal-product-slider": HTMLBalProductSliderElement;
+        "bal-product-slider-item": HTMLBalProductSliderItemElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
@@ -4015,6 +4080,12 @@ declare namespace LocalJSX {
     }
     interface BalImageSlider {
     }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+    }
     interface BalInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -4425,7 +4496,6 @@ declare namespace LocalJSX {
         "ariaLabelMain"?: string;
         "ariaLabelMeta"?: string;
         "logoPath"?: string;
-        "mainValue"?: string;
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -4630,6 +4700,60 @@ declare namespace LocalJSX {
         "scrollable"?: number;
     }
     interface BalProductSlider {
+    }
+    interface BalProductSliderItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label or title of the product
+         */
+        "label"?: string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: BalProductSliderItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: BalProductSliderItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalNavigate"?: (event: BalProductSliderItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalRadio {
         /**
@@ -5409,6 +5533,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-image-slider": BalImageSlider;
+        "bal-image-slider-item": BalImageSliderItem;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
         "bal-input-stepper": BalInputStepper;
@@ -5454,6 +5579,7 @@ declare namespace LocalJSX {
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
         "bal-product-slider": BalProductSlider;
+        "bal-product-slider-item": BalProductSliderItem;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
@@ -5542,6 +5668,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-image-slider": LocalJSX.BalImageSlider & JSXBase.HTMLAttributes<HTMLBalImageSliderElement>;
+            "bal-image-slider-item": LocalJSX.BalImageSliderItem & JSXBase.HTMLAttributes<HTMLBalImageSliderItemElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
@@ -5587,6 +5714,7 @@ declare module "@stencil/core" {
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
             "bal-product-slider": LocalJSX.BalProductSlider & JSXBase.HTMLAttributes<HTMLBalProductSliderElement>;
+            "bal-product-slider-item": LocalJSX.BalProductSliderItem & JSXBase.HTMLAttributes<HTMLBalProductSliderItemElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;

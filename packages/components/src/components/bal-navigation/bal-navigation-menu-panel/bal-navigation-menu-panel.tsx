@@ -4,8 +4,6 @@ import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-navigation-menu-panel',
-  scoped: false,
-  shadow: false,
 })
 export class NavigationMenuPanel {
   @Element() el!: HTMLBalNavigationMenuPanelElement
@@ -29,7 +27,7 @@ export class NavigationMenuPanel {
         }}
       >
         {this.linkHref && (
-          <div class="panel-link-wrapper is-block mt-4">
+          <div class="panel-link-wrapper is-block">
             <a class="is-size-x-small panel-link is-bold" href={this.linkHref}>
               {this.linkName}
             </a>

@@ -319,6 +319,15 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     const input = getInputTarget(ev)
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
+
+    if (this.pattern && input && !this.mask) {
+      const regex = new RegExp('^' + this.pattern + '$')
+      this.inputValue = input.value = input.value
+        .split('')
+        .filter(val => regex.test(val))
+        .join('')
+    }
+
     if (input) {
       switch (this.mask) {
         case 'contract-number': {
@@ -411,6 +420,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
         )
       ) {
         // do not trigger next event -> on input
+        return stopEventBubbling(event)
+      }
+    }
+
+    if (this.pattern && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      const regex = new RegExp('^' + this.pattern + '$')
+      if (!regex.test(event.key) && ![...ACTION_KEYS].includes(event.key)) {
         return stopEventBubbling(event)
       }
     }

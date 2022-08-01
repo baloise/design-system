@@ -25,6 +25,8 @@ export namespace Props {
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
 
+  export type BalProductSliderItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
+
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
