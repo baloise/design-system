@@ -137,6 +137,8 @@
         top: 50%
         transform: translateY(-50%)
         content: '\279E'
+      &:hover
+        color: var(--bal-color-light-blue-dark)
     > div > div:first-of-type > div
       +widescreen
         display: flex
@@ -157,7 +159,14 @@
           left: 0
           right: 0
 
-      +modifier(context-default)
+      > bal-card > bal-card-content > a:hover > bal-heading > h4
+        color: var(--bal-color-light-blue-dark)
+
+      +element(item)
+        > a:hover
+          color: var(--bal-color-light-blue-dark)
+
+      +modifier(context-white)
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)

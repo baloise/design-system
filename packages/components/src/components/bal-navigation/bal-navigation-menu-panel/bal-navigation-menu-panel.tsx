@@ -4,8 +4,6 @@ import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-navigation-menu-panel',
-  scoped: false,
-  shadow: false,
 })
 export class NavigationMenuPanel {
   @Element() el!: HTMLBalNavigationMenuPanelElement

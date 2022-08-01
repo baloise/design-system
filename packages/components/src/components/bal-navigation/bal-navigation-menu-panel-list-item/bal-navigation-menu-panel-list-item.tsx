@@ -3,8 +3,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-menu-panel-list-item',
-  scoped: false,
-  shadow: false,
 })
 export class NavigationMenuPanelListItem {
   @Element() el!: HTMLBalNavigationMenuPanelListItemElement

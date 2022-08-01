@@ -4,8 +4,6 @@ import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-navigation-menu-panel-list',
-  scoped: false,
-  shadow: false,
 })
 export class NavigationMenuPanelList {
   @Element() el!: HTMLBalNavigationMenuPanelListElement
@@ -27,16 +25,22 @@ export class NavigationMenuPanelList {
         class={{
           'is-block mb-7': true,
           ...navMenuPanelListEl.class(),
-          ...navMenuPanelListEl.modifier(`context-${this.color === 'grey' ? 'service' : 'default'}`).class(),
+          ...navMenuPanelListEl.modifier(`context-${this.color}`).class(),
         }}
       >
         <bal-card class="m-0" flat color={this.color}>
           <bal-card-content class={{ 'py-0': this.color !== 'grey', 'px-0': !this.isMobile && this.color !== 'grey' }}>
-            <a href={this.href}>
-              <bal-heading class="mb-4" level="h5" space="none">
+            {this.href ? (
+              <a href={this.href}>
+                <bal-heading class="mb-4" level="h4" space="none">
+                  {this.headline}
+                </bal-heading>
+              </a>
+            ) : (
+              <bal-heading class="mb-4" level="h4" space="none">
                 {this.headline}
               </bal-heading>
-            </a>
+            )}
             <slot name="links"></slot>
           </bal-card-content>
         </bal-card>
