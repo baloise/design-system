@@ -252,7 +252,10 @@ export class Navigation implements ComponentInterface {
             onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
           />
         </bal-meta-mobile-head>
-        <bal-main-mobile class={{ 'is-hidden': !this.isMainBodyOpen }}>
+        <bal-main-mobile
+          class={{ 'is-hidden': !this.isMainBodyOpen, 'is-active': this.isMainBodyOpen }}
+          aria-hidden={!this.isMainBodyOpen}
+        >
           <bal-list border main-nav-accordion size="large">
             {this.levels.map(meta => (
               <bal-list-item accordion>
@@ -262,32 +265,62 @@ export class Navigation implements ComponentInterface {
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
                 <bal-list-item-accordion-body>
-                  {meta.subLevels?.map(main => (
-                    <bal-list-item accordion sub-accordion-item>
-                      <bal-list-item-accordion-head>
-                        <bal-list-item-content>
-                          <bal-list-item-title>{main.label}</bal-list-item-title>
-                        </bal-list-item-content>
-                      </bal-list-item-accordion-head>
-                      <bal-list-item-accordion-body>
-                        <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
-                          <div slot="left">
-                            {main.subLevels?.map(block => (
-                              <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
-                                <div slot="links">
-                                  {block.subLevels?.map(item => (
-                                    <bal-navigation-menu-panel-list-item href={item.link}>
-                                      {item.label}
-                                    </bal-navigation-menu-panel-list-item>
-                                  ))}
-                                </div>
-                              </bal-navigation-menu-panel-list>
-                            ))}
-                          </div>
-                        </bal-navigation-menu-panel>
-                      </bal-list-item-accordion-body>
-                    </bal-list-item>
-                  ))}
+                  <div>
+                    {meta.link && (
+                      <div class="panel-link-wrapper is-block">
+                        <a class="is-size-x-small panel-link is-bold" href={meta.link}>
+                          {meta.linkLabel}
+                        </a>
+                      </div>
+                    )}
+                    {meta.subLevels?.map(main => (
+                      <bal-list-item accordion sub-accordion-item>
+                        <bal-list-item-accordion-head>
+                          <bal-list-item-content>
+                            <bal-list-item-title>{main.label}</bal-list-item-title>
+                          </bal-list-item-content>
+                        </bal-list-item-accordion-head>
+                        <bal-list-item-accordion-body>
+                          <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
+                            <div slot="left">
+                              {main.subLevels
+                                ?.filter(subLevel => subLevel.color !== 'grey')
+                                .map(block => (
+                                  <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
+                                    <div slot="links">
+                                      {block.subLevels?.map(item => (
+                                        <bal-navigation-menu-panel-list-item href={item.link}>
+                                          {item.label}
+                                        </bal-navigation-menu-panel-list-item>
+                                      ))}
+                                    </div>
+                                  </bal-navigation-menu-panel-list>
+                                ))}
+                            </div>
+                            <div slot="right">
+                              {main.subLevels
+                                ?.filter(subLevel => subLevel.color === 'grey')
+                                .map(block => (
+                                  <bal-navigation-menu-panel-list
+                                    headline={block.label}
+                                    href={block.link}
+                                    color={block.color}
+                                  >
+                                    <div slot="links">
+                                      {block.subLevels?.map(item => (
+                                        <bal-navigation-menu-panel-list-item href={item.link}>
+                                          {item.label}
+                                        </bal-navigation-menu-panel-list-item>
+                                      ))}
+                                    </div>
+                                  </bal-navigation-menu-panel-list>
+                                ))}
+                            </div>
+                          </bal-navigation-menu-panel>
+                        </bal-list-item-accordion-body>
+                      </bal-list-item>
+                    ))}
+                  </div>
                 </bal-list-item-accordion-body>
               </bal-list-item>
             ))}

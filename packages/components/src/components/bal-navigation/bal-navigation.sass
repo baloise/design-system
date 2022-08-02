@@ -117,9 +117,6 @@
         opacity: 1
         transition: opacity .3s ease-in-out .1s
   +element(panel)
-    padding: 1rem 1rem 4rem
-    +tablet
-      padding: 2rem 3rem 4rem
     +desktop
       padding: 40px 3rem 0
     .panel-link-wrapper
@@ -131,7 +128,7 @@
     .panel-link
       color: var(--bal-color-blue)
       position: relative
-      padding-right: 17px
+      padding-right: 1rem
       &::before
         position: absolute
         right: 0
@@ -146,7 +143,7 @@
         flex-wrap: wrap
     +element(list)
       position: relative
-      +tablet-only
+      +touch
         padding-top: 2.5rem
 
         &:after
@@ -198,8 +195,42 @@
   +element(mainmobile)
     display: block
     padding: 0 1rem
+    opacity: 0
+    transition: opacity .3s ease-in-out
     +tablet
       padding: 0 3rem
+    .panel-link-wrapper
+      margin-bottom: 1.5rem
+      +tablet
+        margin-bottom: 2.5rem
+      +desktop
+        margin-bottom: 2rem
+    .panel-link
+      color: var(--bal-color-blue)
+      position: relative
+      padding-right: 1rem
+      &::before
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
+        content: '\279E'
+      &:hover
+        color: var(--bal-color-light-blue-dark)
+    .bal-list
+      opacity: 0
+      transition: opacity .3s ease-in-out .1s
+    &.is-active
+      opacity: 1
+      pointer-events: all
+      max-height: 100%
+      transition: opacity .3s ease-in-out
+      &::before
+        opacity: 1
+        transition: opacity .3s ease-in-out
+      .bal-list
+        opacity: 1
+        transition: opacity .3s ease-in-out .1s
   +element(footmobile)
     position: fixed
     bottom: 0
@@ -213,8 +244,3 @@
       align-items: center
       justify-content: center
       gap: .5rem
-
-    //> div > bal-modal > div.bal-modal__container > div.bal-modal__content
-        //width: 100vw
-        //transform: translateY(-64px)
-        //margin-bottom: 64px
