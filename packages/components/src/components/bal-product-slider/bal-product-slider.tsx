@@ -12,8 +12,8 @@ export class ProductSlider implements ComponentInterface {
   private mutationO?: MutationObserver
   private mutationTabO?: MutationObserver
   private productWidth = 176
-  private steps = isPlatform('mobile') ? 1 : 2
-  private xPos = 0
+  private steps = 2
+  private xPosition = 0
 
   @State() items!: HTMLBalProductSliderItemElement[]
   @State() slideIndex = 0
@@ -28,17 +28,21 @@ export class ProductSlider implements ComponentInterface {
 
   @Listen('touchstart')
   touchStart(event: TouchEvent) {
-    console.log('event :>> ', event)
-    this.xPos = event.touches[0].pageX
+    const productContainer = this.getProductContainer()
+    if (productContainer?.contains(event.target as HTMLElement)) {
+      this.xPosition = event.touches[0].pageX
+    }
   }
 
   @Listen('touchend')
   touchEnd(event: TouchEvent) {
-    console.log('event :>> ', event)
-    if (event.changedTouches[0].pageX < this.xPos) {
-      this.setSlide(this.slideIndex + this.steps)
-    } else {
-      this.setSlide(this.slideIndex - this.steps)
+    const productContainer = this.getProductContainer()
+    if (productContainer?.contains(event.target as HTMLElement)) {
+      if (event.changedTouches[0].pageX < this.xPosition) {
+        this.setSlide(this.slideIndex + this.steps)
+      } else {
+        this.setSlide(this.slideIndex - this.steps)
+      }
     }
   }
 
@@ -115,6 +119,7 @@ export class ProductSlider implements ComponentInterface {
     const controls = block.element('controls')
     const controlButton = controls.element('button')
 
+    this.steps = isPlatform('mobile') ? 1 : 2
     this.calculateLastSlide()
 
     const leftControlIsDisabled = this.slideIndex <= 0
