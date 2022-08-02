@@ -3,10 +3,10 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({
-  tag: 'bal-navigation-menu-panel-list',
+  tag: 'bal-navigation-menu-list',
 })
-export class NavigationMenuPanelList {
-  @Element() el!: HTMLBalNavigationMenuPanelListElement
+export class NavigationMenuList {
+  @Element() el!: HTMLBalNavigationMenuListElement
   @Prop() color: 'white' | 'grey' = 'white'
   @Prop() headline?: string
   @Prop() href?: string
@@ -18,14 +18,14 @@ export class NavigationMenuPanelList {
   }
 
   render() {
-    const navMenuPanelListEl = BEM.block('nav').element('panel').element('list')
+    const navMenuListEl = BEM.block('nav').element('menu').element('list')
 
     return (
       <Host
         class={{
           'is-block mb-7': true,
-          ...navMenuPanelListEl.class(),
-          ...navMenuPanelListEl.modifier(`context-${this.color}`).class(),
+          ...navMenuListEl.class(),
+          ...navMenuListEl.modifier(`context-${this.color}`).class(),
         }}
       >
         <bal-card class="m-0" flat color={this.color}>

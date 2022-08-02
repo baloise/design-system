@@ -185,22 +185,22 @@ export class Navigation implements ComponentInterface {
                 meta.subLevels
                   ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
                   .map(main => (
-                    <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
+                    <bal-navigation-menu link-href={main.link} link-name={main.linkLabel}>
                       <div slot="left">
                         {main.subLevels
                           ?.filter(subLevel => subLevel.color !== 'grey')
                           .map(block => {
                             return (
                               block && (
-                                <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
+                                <bal-navigation-menu-list headline={block.label} href={block.link}>
                                   <div slot="links">
                                     {block.subLevels?.map(item => (
-                                      <bal-navigation-menu-panel-list-item href={item.link}>
+                                      <bal-navigation-menu-list-item href={item.link}>
                                         {item.label}
-                                      </bal-navigation-menu-panel-list-item>
+                                      </bal-navigation-menu-list-item>
                                     ))}
                                   </div>
-                                </bal-navigation-menu-panel-list>
+                                </bal-navigation-menu-list>
                               )
                             )
                           })}
@@ -209,22 +209,18 @@ export class Navigation implements ComponentInterface {
                         {main.subLevels
                           ?.filter(subLevel => subLevel.color === 'grey')
                           .map(block => (
-                            <bal-navigation-menu-panel-list
-                              headline={block.label}
-                              href={block.link}
-                              color={block.color}
-                            >
+                            <bal-navigation-menu-list headline={block.label} href={block.link} color={block.color}>
                               <div slot="links">
                                 {block.subLevels?.map(item => (
-                                  <bal-navigation-menu-panel-list-item href={item.link}>
+                                  <bal-navigation-menu-list-item href={item.link}>
                                     {item.label}
-                                  </bal-navigation-menu-panel-list-item>
+                                  </bal-navigation-menu-list-item>
                                 ))}
                               </div>
-                            </bal-navigation-menu-panel-list>
+                            </bal-navigation-menu-list>
                           ))}
                       </div>
-                    </bal-navigation-menu-panel>
+                    </bal-navigation-menu>
                   )),
               )}
           </bal-navigation-main-body>

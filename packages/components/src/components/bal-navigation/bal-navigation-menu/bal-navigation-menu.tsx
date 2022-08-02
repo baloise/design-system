@@ -3,10 +3,10 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({
-  tag: 'bal-navigation-menu-panel',
+  tag: 'bal-navigation-menu',
 })
-export class NavigationMenuPanel {
-  @Element() el!: HTMLBalNavigationMenuPanelElement
+export class NavigationMenu {
+  @Element() el!: HTMLBalNavigationMenuElement
   @Prop() linkHref?: string
   @Prop() linkName?: string
   @State() isTouch: boolean = isPlatform('touch')
@@ -17,18 +17,18 @@ export class NavigationMenuPanel {
   }
 
   render() {
-    const navMenuPanelEl = BEM.block('nav').element('panel')
+    const navMenuEl = BEM.block('nav').element('menu')
 
     return (
       <Host
         class={{
           'is-block': true,
-          ...navMenuPanelEl.class(),
+          ...navMenuEl.class(),
         }}
       >
         {this.linkHref && (
-          <div class="panel-link-wrapper is-block">
-            <a class="is-size-x-small panel-link is-bold" href={this.linkHref}>
+          <div class="menu-link-wrapper is-block">
+            <a class="is-size-x-small menu-link is-bold" href={this.linkHref}>
               {this.linkName}
             </a>
           </div>
