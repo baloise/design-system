@@ -8,7 +8,7 @@ export class NavigationMainBody implements ComponentInterface {
   @Element() el!: HTMLElement
 
   render() {
-    const mainBodyEl = BEM.block('nav').element('main-body')
+    const mainBodyEl = BEM.block('nav').element('main').element('body')
 
     return (
       <Host class={{ ...mainBodyEl.class() }}>
