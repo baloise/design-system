@@ -49,7 +49,12 @@ export class NavigationMenu {
           </div>
         )}
         <div class="columns is-multiline my-0">
-          <div class={{ 'column is-full is-6-desktop is-two-thirds-widescreen': true, 'py-0': this.isTouch }}>
+          <div
+            class={{
+              'column is-full is-6-desktop is-two-thirds-widescreen is-flex-widescreen is-flex-wrap-wrap': true,
+              'py-0': this.isTouch,
+            }}
+          >
             {this._menuElements
               ?.filter(subLevel => subLevel.color !== 'grey')
               .map(block => {
