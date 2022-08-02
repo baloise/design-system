@@ -1,3 +1,5 @@
+import { Props } from '../../../props'
+
 export const observeLevels = (target: Node, level: string, notify: () => void) => {
   /* tslint:disable-next-line */
   if (typeof MutationObserver === 'undefined') {
@@ -27,6 +29,7 @@ export interface LevelInfo {
   label: string
   tabLink?: string
   link?: string
+  target?: Props.BalButtonTarget
   linkLabel?: string
   color?: 'white' | 'grey'
   subLevels?: LevelInfo[]

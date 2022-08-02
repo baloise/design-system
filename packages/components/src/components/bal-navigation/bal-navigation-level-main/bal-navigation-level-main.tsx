@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
-import { Events } from '../../../types'
+import { Events, Props } from '../../../types'
 
 @Component({
   tag: 'bal-navigation-level-main',
@@ -13,7 +13,7 @@ export class NavigationLevelMain implements ComponentInterface {
   @Prop() link?: string = undefined
   @Prop() linkLabel?: string = undefined
   @Prop() tabLink?: string
-
+  @Prop() target: Props.BalButtonTarget = '_self'
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
   @Method() async getLevelInfo(): Promise<LevelInfo> {
@@ -24,6 +24,7 @@ export class NavigationLevelMain implements ComponentInterface {
       value: this.value,
       label: this.label,
       link: this.link,
+      target: this.target,
       linkLabel: this.linkLabel,
       tabLink: this.tabLink,
       subLevels,

@@ -1,6 +1,7 @@
 import { Component, h, Host, Element, Prop, Listen, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-navigation-menu-list',
@@ -10,6 +11,7 @@ export class NavigationMenuList {
   @Prop() color: 'white' | 'grey' = 'white'
   @Prop() headline?: string
   @Prop() href?: string
+  @Prop() target: Props.BalButtonTarget = '_self'
   @State() isMobile: boolean = isPlatform('mobile')
 
   @Listen('resize', { target: 'window' })
@@ -31,7 +33,7 @@ export class NavigationMenuList {
         <bal-card class="m-0" flat color={this.color}>
           <bal-card-content class={{ 'py-0': this.color !== 'grey', 'px-0': !this.isMobile && this.color !== 'grey' }}>
             {this.href ? (
-              <a href={this.href}>
+              <a href={this.href} target={this.target}>
                 <bal-heading class="mb-4" level="h4" space="none">
                   {this.headline}
                 </bal-heading>

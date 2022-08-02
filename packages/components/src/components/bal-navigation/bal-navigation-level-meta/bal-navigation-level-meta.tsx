@@ -10,8 +10,15 @@ export class NavigationLevelMeta implements ComponentInterface {
 
   @Prop() label = ''
   @Prop() value = `meta-value-${navigationLevelMetaIds++}`
+  /**
+   * sub link of the meta tab, rendered on touch resolution
+   */
   @Prop() link?: string
   @Prop() linkLabel?: string
+  /**
+   * The href of the meta item,
+   * when this should be used as a link and not as a tab
+   */
   @Prop() tabLink?: string
 
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>

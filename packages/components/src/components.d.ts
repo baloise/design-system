@@ -11,6 +11,7 @@ import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { Props as Props2 } from "./props";
 import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1241,6 +1242,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelBlockItem {
@@ -1248,6 +1250,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMain {
@@ -1256,13 +1259,20 @@ export namespace Components {
         "link"?: string;
         "linkLabel"?: string;
         "tabLink"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMeta {
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
+        /**
+          * sub link of the meta tab, rendered on touch resolution
+         */
         "link"?: string;
         "linkLabel"?: string;
+        /**
+          * The href of the meta item, when this should be used as a link and not as a tab
+         */
         "tabLink"?: string;
         "value": string;
     }
@@ -1279,14 +1289,17 @@ export namespace Components {
     interface BalNavigationMenu {
         "linkHref"?: string;
         "linkName"?: string;
+        "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
         "color": 'white' | 'grey';
         "headline"?: string;
         "href"?: string;
+        "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
+        "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMeta {
         "ariaLabelMeta"?: string;
@@ -4455,6 +4468,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelBlockItem {
@@ -4462,6 +4476,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMain {
@@ -4470,13 +4485,20 @@ declare namespace LocalJSX {
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
         "tabLink"?: string;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMeta {
         "label"?: string;
+        /**
+          * sub link of the meta tab, rendered on touch resolution
+         */
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        /**
+          * The href of the meta item, when this should be used as a link and not as a tab
+         */
         "tabLink"?: string;
         "value"?: string;
     }
@@ -4492,14 +4514,17 @@ declare namespace LocalJSX {
     interface BalNavigationMenu {
         "linkHref"?: string;
         "linkName"?: string;
+        "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
         "color"?: 'white' | 'grey';
         "headline"?: string;
         "href"?: string;
+        "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
+        "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMeta {
         "ariaLabelMeta"?: string;
