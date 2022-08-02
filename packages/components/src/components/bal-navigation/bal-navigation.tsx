@@ -61,7 +61,6 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    console.log('componentDidLoad this.previousY', this.previousY)
   }
 
   componentDidUpdate() {
