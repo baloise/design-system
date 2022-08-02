@@ -1289,6 +1289,7 @@ export namespace Components {
     interface BalNavigationMenu {
         "linkHref"?: string;
         "linkName"?: string;
+        "menuElements"?: string;
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
@@ -4514,6 +4515,7 @@ declare namespace LocalJSX {
     interface BalNavigationMenu {
         "linkHref"?: string;
         "linkName"?: string;
+        "menuElements"?: string;
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
