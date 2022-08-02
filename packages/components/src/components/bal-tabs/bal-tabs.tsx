@@ -128,7 +128,7 @@ export class Tabs {
   componentDidLoad() {
     this.didInit = true
     let value = this.value
-    if ((value === undefined || value === '') && this.interface !== 'header') {
+    if ((value === undefined || value === '') && this.interface !== 'navigation') {
       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
       if (availableTabs.length > 0) {
         value = availableTabs[0].value
@@ -190,7 +190,7 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
-        } else if (this.interface === 'header' && tab.value === this.value) {
+        } else if (this.interface === 'navigation' && tab.value === this.value) {
           this.value = ''
           this.balChange.emit(this.value)
         }
@@ -287,12 +287,12 @@ export class Tabs {
       >
         <div
           class={{
-            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'header',
+            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navigation',
           }}
         >
           <div
             class={{
-              'column': this.interface !== 'meta' && this.interface !== 'header',
+              'column': this.interface !== 'meta' && this.interface !== 'navigation',
               'is-full': !isVertical,
               [`is-${this.verticalColSize}`]: isVertical,
               'bal-tabs__col-items': true,
@@ -320,7 +320,7 @@ export class Tabs {
           </div>
           <div
             class={{
-              'column': this.interface !== 'meta' && this.interface !== 'header',
+              'column': this.interface !== 'meta' && this.interface !== 'navigation',
               'is-full': !isVertical,
               'bal-tabs__col-content': true,
               'bal-tabs__col-content--vertical': isVertical,

@@ -8,7 +8,7 @@
       height: 80px
       .bal-tabs__tabs > ul
         justify-content: flex-end
-  +modifier(context-header)
+  +modifier(context-navigation)
     height: 64px
     +desktop
       .bal-tabs__tabs > ul
@@ -20,7 +20,7 @@
         margin: 0
     .bal-tabs__tabs
       ul li:last-child
-        .bal-tabs__tabs__item__button--context-header
+        .bal-tabs__tabs__item__button--context-navigation
           margin-right: .25rem
   +modifier(fullwidth)
     display: block
@@ -199,7 +199,7 @@
         +modifier(context-navbar)
           +desktop
             height: 80px
-        +modifier(context-header)
+        +modifier(context-navigation)
           height: 64px
           flex-direction: row-reverse
           padding: 1rem .75rem
@@ -279,7 +279,7 @@
           width: 2px
           top: 0
           left: 0
-      +modifier(context-header)
+      +modifier(context-navigation)
         &.bal-tabs__tabs__line--ready
           transition-duration: .3s
 

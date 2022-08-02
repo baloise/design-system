@@ -142,7 +142,7 @@ export class Navigation implements ComponentInterface {
                 </a>
               </div>
               <div class="is-flex">
-                <bal-tabs interface="header" value={this.selectedMainValue}>
+                <bal-tabs interface="navigation" value={this.selectedMainValue}>
                   {hasLevels &&
                     this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                       return main.tabLink ? (
