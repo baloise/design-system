@@ -41,6 +41,8 @@
     height: auto
     z-index: 1000
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    +desktop
+      position: relative
     +until-widescreen
       width: 100%
       &.is-expanded
@@ -91,6 +93,13 @@
       pointer-events: none
       opacity: 0
       transition: opacity .3s ease-in-out
+      background-color: var(--bal-color-white)
+      +desktop
+        position: absolute
+        width: 100%
+      +widescreen
+        border-bottom-left-radius: 12px
+        border-bottom-right-radius: 12px
       &::before
         position: absolute
         content: ''
@@ -109,6 +118,9 @@
         pointer-events: all
         max-height: 100%
         transition: opacity .3s ease-in-out
+        +desktop
+          max-height: calc(100vh - 4rem)
+          overflow-y: auto
         &::before
           opacity: 1
           transition: opacity .3s ease-in-out
