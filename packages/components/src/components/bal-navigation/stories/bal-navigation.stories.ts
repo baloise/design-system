@@ -134,12 +134,6 @@ export const Basic = args => ({
           <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
         </bal-navigation-level-block>
       </bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-4-main-4" label="Meta 4 Main 4" link="http://" linkLabel="Go to Main 4">
-        <bal-navigation-level-block label="Meta 4 Main 4 Block 1" link="http://">
-          <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
-          <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
-        </bal-navigation-level-block>
-      </bal-navigation-level-main>
     </bal-navigation-level-meta>
   </bal-navigation-levels>
 
