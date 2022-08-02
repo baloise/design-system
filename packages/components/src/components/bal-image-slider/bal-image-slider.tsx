@@ -10,7 +10,7 @@ export class ImageSlider implements ComponentInterface {
   @Element() el!: HTMLBalImageSliderElement
 
   private mutationO?: MutationObserver
-  private xPos = 0
+  private xPosition = 0
 
   @State() slideIndex = 0
   @State() images!: HTMLBalImageSliderItemElement[]
@@ -29,20 +29,30 @@ export class ImageSlider implements ComponentInterface {
 
   @Listen('touchstart')
   touchStart(event: TouchEvent) {
-    this.xPos = event.touches[0].pageX
+    const imageContainer = this.getSliderContainer()
+    if (imageContainer?.contains(event.target as HTMLElement)) {
+      this.xPosition = event.touches[0].pageX
+    }
   }
 
   @Listen('touchend')
   touchEnd(event: TouchEvent) {
-    if (event.changedTouches[0].pageX < this.xPos) {
-      this.setSlide(this.slideIndex + 1)
-    } else {
-      this.setSlide(this.slideIndex - 1)
+    const imageContainer = this.getSliderContainer()
+    if (imageContainer?.contains(event.target as HTMLElement)) {
+      if (event.changedTouches[0].pageX < this.xPosition) {
+        this.setSlide(this.slideIndex + 1)
+      } else {
+        this.setSlide(this.slideIndex - 1)
+      }
     }
   }
 
   private getChildItems() {
     return Array.from(this.el.querySelectorAll<HTMLBalImageSliderItemElement>('bal-image-slider-item'))
+  }
+
+  private getSliderContainer() {
+    return this.el.querySelector<HTMLDivElement>('.bal-image-slider__container')
   }
 
   private getImageContainer() {
