@@ -1,6 +1,5 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
-import { colors, closable } from './bal-tag.templates.ts'
 import readme from '../readme.md'
 import dedent from 'ts-dedent'
 
@@ -33,10 +32,12 @@ import dedent from 'ts-dedent'
 
 ## Examples
 
+<span id="story--components-tag--colors" style={{ opacity: 0 }}></span>
+
 ### Colors
 
-<Canvas mdxSource={colors}>
-  <bal-doc-app>{html(colors)}</bal-doc-app>
+<Canvas withSource="open">
+  <Story id="components-tag--colors" />
 </Canvas>
 
 <span id="story--components-tag--tag-card" style={{ opacity: 0 }}></span>

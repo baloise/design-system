@@ -59,3 +59,29 @@ TagCard.args = {
   closable: false,
 }
 TagCard.parameters = { ...component.sourceCode(TagCard) }
+
+export const Colors = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+  <bal-tag color="" class="mr-1">Default</bal-tag>
+  <bal-tag color="primary" class="mr-1">Primary</bal-tag>
+  <bal-tag color="info" class="mr-1">Info</bal-tag>
+  <bal-tag color="success" class="mr-1">Success</bal-tag>
+  <bal-tag color="warning" class="mr-1">Warning</bal-tag>
+  <bal-tag color="danger">Danger</bal-tag>
+  <br>
+  <br>
+  <bal-tag color="purple" class="mr-1">Purple</bal-tag>
+  <bal-tag color="red" class="mr-1">Red</bal-tag>
+  <bal-tag color="yellow" class="mr-1">Yellow</bal-tag>
+  <bal-tag color="green" class="mr-1">Green</bal-tag>`,
+})
+Colors.args = {
+  content: 'Bestseller',
+  color: 'success',
+  light: true,
+  size: 'small',
+  closable: false,
+}
+Colors.parameters = { ...component.sourceCode(Colors) }
