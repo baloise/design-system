@@ -11,7 +11,6 @@ export class Navigation implements ComponentInterface {
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
-  private scrolling = false
   @State() isTranslated = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -41,10 +40,6 @@ export class Navigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    this.scrolling = true
-  }
-
-  translateMainNav() {
     this.isTranslated = window.scrollY > this.previousY
     this.previousY = window.scrollY
   }
@@ -55,12 +50,6 @@ export class Navigation implements ComponentInterface {
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
-    setInterval(() => {
-      if (this.scrolling) {
-        this.scrolling = false
-        this.translateMainNav()
-      }
-    }, 300)
   }
 
   disconnectedCallback() {
@@ -68,6 +57,10 @@ export class Navigation implements ComponentInterface {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
+  }
+
+  componentDidLoad() {
+    this.previousY = window.scrollY
   }
 
   componentDidUpdate() {
