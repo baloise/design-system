@@ -27,7 +27,7 @@ export interface LevelInfo {
   type: 'meta' | 'main' | 'block' | 'block-item'
   value: string
   label: string
-  tabLink?: string
+  isTabLink?: boolean
   link?: string
   target?: Props.BalButtonTarget
   linkLabel?: string

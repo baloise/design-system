@@ -12,7 +12,10 @@ export class NavigationLevelMain implements ComponentInterface {
   @Prop() value = `main-value-${navigationLevelMainIds++}`
   @Prop() link?: string = undefined
   @Prop() linkLabel?: string = undefined
-  @Prop() tabLink?: string
+  /**
+   * It is 'true' when the meta item is used as a link and not as a tab
+   */
+  @Prop() isTabLink?: boolean
   @Prop() target: Props.BalButtonTarget = '_self'
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
@@ -26,7 +29,7 @@ export class NavigationLevelMain implements ComponentInterface {
       link: this.link,
       target: this.target,
       linkLabel: this.linkLabel,
-      tabLink: this.tabLink,
+      isTabLink: this.isTabLink,
       subLevels,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }

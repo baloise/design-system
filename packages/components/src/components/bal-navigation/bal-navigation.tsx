@@ -98,8 +98,8 @@ export class Navigation implements ComponentInterface {
             {hasLevels && (
               <bal-tabs interface="meta" inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
-                  return meta.tabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
+                  return meta.isTabLink ? (
+                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
                   ) : (
                     <bal-tab-item
                       label={meta.label}
@@ -145,8 +145,8 @@ export class Navigation implements ComponentInterface {
                 <bal-tabs interface="navigation" value={this.selectedMainValue}>
                   {hasLevels &&
                     this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
-                      return main.tabLink ? (
-                        <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
+                      return main.isTabLink ? (
+                        <bal-tab-item label={main.label} value={main.value} href={main.link} />
                       ) : (
                         <bal-tab-item
                           label={main.label}

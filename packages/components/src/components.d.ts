@@ -1255,25 +1255,28 @@ export namespace Components {
     }
     interface BalNavigationLevelMain {
         "getLevelInfo": () => Promise<LevelInfo>;
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "tabLink"?: string;
         "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMeta {
         "getLevelInfo": () => Promise<LevelInfo>;
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label": string;
         /**
           * sub link of the meta tab, rendered on touch resolution
          */
         "link"?: string;
         "linkLabel"?: string;
-        /**
-          * The href of the meta item, when this should be used as a link and not as a tab
-         */
-        "tabLink"?: string;
         "value": string;
     }
     interface BalNavigationLevels {
@@ -4481,15 +4484,22 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalNavigationLevelMain {
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
-        "tabLink"?: string;
         "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMeta {
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label"?: string;
         /**
           * sub link of the meta tab, rendered on touch resolution
@@ -4497,10 +4507,6 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
-        /**
-          * The href of the meta item, when this should be used as a link and not as a tab
-         */
-        "tabLink"?: string;
         "value"?: string;
     }
     interface BalNavigationLevels {
