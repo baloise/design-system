@@ -1,10 +1,13 @@
 {
   "name": "@baloise/design-system-next-testing",
-  "version": "10.15.8-beta.10+bb993a62",
-  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "version": "10.15.8",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
   },
   "homepage": "https://design.baloise.dev",
   "contributors": [
@@ -12,14 +15,15 @@
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)"
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
   ],
   "keywords": [
     "design-system",
     "web-components",
-    "stenciljs",
-    "bulma-css"
+    "stenciljs"
   ],
+  "license": "Apache-2.0",
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
@@ -33,26 +37,18 @@
     "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-components": "10.15.8-beta.10+bb993a62",
-    "date-fns": "^2.28.0"
+    "@baloise/design-system-next-components": "10.15.8",
+    "date-fns": "~2.29.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@types/chai": "^4.2.22",
-    "@types/jquery": "^3.5.6",
-    "@types/node": "^14.17.21",
-    "cypress": "^9.5.4",
-    "cypress-file-upload": "^5.0.8",
-    "http-server": "^13.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.58.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "start-server-and-test": "^1.14.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.4.3"
+    "@types/chai": "~4.3.1",
+    "@types/jquery": "~3.5.6",
+    "@types/node": "~18.6.3",
+    "cypress": "~9.5.4",
+    "cypress-file-upload": "~5.0.8",
+    "start-server-and-test": "~1.14.0",
+    "ts-node": "~10.9.1"
   },
-  "gitHead": "bb993a622896f20bce53f1e0029e90d1549847e5"
+  "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
 }

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.8](https://github.com/baloise/design-system/compare/v10.15.7...v10.15.8) (2022-08-03)
+
+
+### Features
+
+* changed touch target and cleanup ([620fe10](https://github.com/baloise/design-system/commit/620fe10fbc4b184da103816ccdbe37b9e83b963c))
+* changed touch target and cleanup ([8529caa](https://github.com/baloise/design-system/commit/8529caae92b784049559172b39a9aaa083340dba))
+
+
+### Bug Fixes
+
+* **angular:** adjust datepicker change ([15f2954](https://github.com/baloise/design-system/commit/15f2954421b16e297b0ec5feefcbc4ae781441bf))
+* **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
+* **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
+* **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+
+
+
 ### [10.15.7](https://github.com/baloise-incubator/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
 

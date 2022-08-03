@@ -1,13 +1,27 @@
 {
   "name": "root",
   "private": true,
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
   "homepage": "https://design.baloise.dev",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)"
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
+  ],
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs"
   ],
   "license": "Apache-2.0",
   "scripts": {
@@ -32,13 +46,14 @@
     "components:start": "node .build/banner.js components:start && npm --prefix packages/components run start",
     "components:serve": "node .build/banner.js components:serve && npm --prefix packages/components run serve",
     "==================== BUILD ====================": "================================",
-    "build": "npm run build:clean && npm run build:pre && npm run build:css && npm run build:components && npm run build:post",
-    "build:clean": "rimraf ./packages/components-vue/src/proxies",
+    "build": "npm run build:pre && npm run build:css && npm run build:components && npm run build:post",
     "build:pre": "node .build/banner.js build:pre && concurrently \"npm:build:pre:*\"",
-    "build:pre:fonts_": "npm --prefix packages/fonts run build",
-    "build:pre:icons_": "npm --prefix packages/icons run build",
-    "build:pre:tokens": "npm --prefix packages/tokens run build",
-    "build:pre:out-ng": "npm --prefix packages/output-target-angular run build",
+    "build:pre:fonts____": "npm --prefix packages/fonts run build",
+    "build:pre:icons____": "npm --prefix packages/icons run build",
+    "build:pre:tokens___": "npm --prefix packages/tokens run build",
+    "build:pre:out-ng___": "npm --prefix packages/output-targets/angular run build",
+    "build:pre:out-vue__": "npm --prefix packages/output-targets/vue run build",
+    "build:pre:out-react": "npm --prefix packages/output-targets/react run build",
     "build:css": "node .build/banner.js build:css && npm --prefix packages/css run build",
     "build:components": "node .build/banner.js build:components && npm --prefix packages/components run build",
     "build:post": "node .build/banner.js build:post && concurrently \"npm:build:post:*\"",
@@ -69,28 +84,30 @@
     "storybook:start": "node .build/banner.js storybook:start && http-server storybook -p 8080"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
-    "axe-core": "^4.4.1",
-    "chalk": "^4.1.2",
-    "concurrently": "^7.0.0",
-    "conventional-changelog-conventionalcommits": "^4.6.3",
-    "cspell": "^5.18.4",
-    "cypress-axe": "^0.14.0",
-    "eslint": "^8.5.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "figlet": "^1.5.2",
-    "fs-extra": "^10.0.0",
-    "glob": "^7.2.0",
-    "http-server": "^14.0.0",
-    "husky": "^7.0.0",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.2.1",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "typescript": "4.3.5"
+    "@commitlint/cli": "~17.0.3",
+    "@commitlint/config-conventional": "~17.0.3",
+    "@rollup/plugin-commonjs": "~22.0.1",
+    "@rollup/plugin-node-resolve": "~13.3.0",
+    "@typescript-eslint/eslint-plugin": "~5.32.0",
+    "@typescript-eslint/parser": "~5.32.0",
+    "chalk": "~4.1.2",
+    "concurrently": "~7.3.0",
+    "conventional-changelog-conventionalcommits": "~5.0.0",
+    "cspell": "~6.5.0",
+    "eslint": "~8.21.0",
+    "eslint-config-prettier": "~8.5.0",
+    "eslint-plugin-prettier": "~4.2.1",
+    "figlet": "~1.5.2",
+    "fs-extra": "~10.1.0",
+    "glob": "~8.0.3",
+    "http-server": "~14.1.1",
+    "husky": "~8.0.1",
+    "lerna": "~4.0.0",
+    "lint-staged": "~13.0.0",
+    "prettier": "~2.7.1",
+    "rimraf": "~3.0.2",
+    "rollup": "~2.77.2",
+    "rollup-plugin-peer-deps-external": "~2.2.4",
+    "typescript": "~4.3.5"
   }
 }

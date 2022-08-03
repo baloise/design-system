@@ -1,4 +1,4 @@
-import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
+import { ComponentModelConfig, vueOutputTarget } from '@baloise/design-system-next-output-target-vue'
 import { docComponents } from './doc.components'
 
 export const vueComponentModels: ComponentModelConfig[] = [
