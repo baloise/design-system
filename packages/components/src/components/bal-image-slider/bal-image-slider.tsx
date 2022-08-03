@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
@@ -10,6 +10,7 @@ export class ImageSlider implements ComponentInterface {
   @Element() el!: HTMLBalImageSliderElement
 
   private mutationO?: MutationObserver
+  private xPosition = 0
 
   @State() slideIndex = 0
   @State() images!: HTMLBalImageSliderItemElement[]
@@ -26,8 +27,32 @@ export class ImageSlider implements ComponentInterface {
     }
   }
 
+  @Listen('touchstart')
+  touchStart(event: TouchEvent) {
+    const imageContainer = this.getSliderContainer()
+    if (imageContainer?.contains(event.target as HTMLElement)) {
+      this.xPosition = event.touches[0].pageX
+    }
+  }
+
+  @Listen('touchend')
+  touchEnd(event: TouchEvent) {
+    const imageContainer = this.getSliderContainer()
+    if (imageContainer?.contains(event.target as HTMLElement)) {
+      if (event.changedTouches[0].pageX < this.xPosition) {
+        this.setSlide(this.slideIndex + 1)
+      } else {
+        this.setSlide(this.slideIndex - 1)
+      }
+    }
+  }
+
   private getChildItems() {
     return Array.from(this.el.querySelectorAll<HTMLBalImageSliderItemElement>('bal-image-slider-item'))
+  }
+
+  private getSliderContainer() {
+    return this.el.querySelector<HTMLDivElement>('.bal-image-slider__container')
   }
 
   private getImageContainer() {
