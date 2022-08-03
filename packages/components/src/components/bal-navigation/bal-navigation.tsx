@@ -11,7 +11,7 @@ export class Navigation implements ComponentInterface {
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
-  @State() isTranslated = false
+  @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
@@ -34,13 +34,13 @@ export class Navigation implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isTranslated = false
+    this.isTransformed = false
     this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
   }
 
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    this.isTranslated = window.scrollY > this.previousY
+    this.isTransformed = window.scrollY > this.previousY
     this.previousY = window.scrollY
   }
 
@@ -90,7 +90,7 @@ export class Navigation implements ComponentInterface {
       <Host
         class={{
           ...navigationEl.class(),
-          'bal-nav--translated': this.isTranslated,
+          'bal-nav--transformed': this.isTransformed,
         }}
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
