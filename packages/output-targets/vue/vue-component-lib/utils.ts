@@ -208,6 +208,7 @@ export const defineContainer = <Props>(
   }
 
   Container.displayName = name
+  // @ts-ignore:next-line
   Container.name = toPascalCase(name)
 
   Container.props = {

@@ -38,7 +38,7 @@
     "scss": "scss"
   },
   "devDependencies": {
-    "archiver": "^5.3.0"
+    "archiver": "~5.3.0"
   },
   "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
 }
