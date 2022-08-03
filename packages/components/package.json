@@ -132,6 +132,7 @@
     "@types/lodash.trim": "~4.5.6",
     "@types/lodash.upperfirst": "~4.3.6",
     "@types/puppeteer": "~5.4.4",
+    "ag-grid-community": "~26.0.0",
     "axe-core": "~4.4.3",
     "babel-loader": "~8.2.3",
     "cypress": "~9.5.3",
@@ -151,13 +152,10 @@
     "react": "~17.0.2",
     "react-dom": "~17.0.2",
     "react-syntax-highlighter": "~15.4.5",
-    "replace-in-file": "~6.3.2",
     "serve-index": "~1.9.1",
     "storybook-addon-designs": "~6.2.0",
     "storybook-addon-outline": "~1.4.2",
-    "ts-dedent": "~2.2.0",
     "vue": "~3.2.31",
-    "vue-loader": "~16.8.3",
     "workbox-build": "~4.3.1"
   },
   "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
