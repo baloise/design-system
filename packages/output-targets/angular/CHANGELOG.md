@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.8](https://github.com/baloise/design-system/compare/v10.15.7...v10.15.8) (2022-08-03)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-angular
+
 ## [1.2.16](https://github.com/baloise/stencil-ds-output-targets/compare/@baloise/angular-output-target@1.2.15...@baloise/angular-output-target@1.2.16) (2022-06-05)
 
 **Note:** Version bump only for package @baloise/angular-output-target

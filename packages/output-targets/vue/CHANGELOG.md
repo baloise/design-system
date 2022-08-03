@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.8](https://github.com/baloise/design-system/compare/v10.15.7...v10.15.8) (2022-08-03)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-vue
+
 ## [0.9.7](https://github.com/baloise/stencil-ds-output-targets/compare/@baloise/vue-output-target@0.9.6...@baloise/vue-output-target@0.9.7) (2022-06-05)
 
 ### Bug Fixes

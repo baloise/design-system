@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-table",
-  "version": "10.15.8-beta.20+2bbab92d",
+  "version": "10.15.8",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -54,10 +54,10 @@
     "sass": "~1.54.0"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.15.8-beta.20+2bbab92d",
-    "@baloise/design-system-next-css": "10.15.8-beta.20+2bbab92d",
-    "@baloise/design-system-next-fonts": "10.15.8-beta.20+2bbab92d",
-    "@baloise/design-system-next-tokens": "10.15.8-beta.20+2bbab92d",
+    "@baloise/design-system-next-components": "10.15.8",
+    "@baloise/design-system-next-css": "10.15.8",
+    "@baloise/design-system-next-fonts": "10.15.8",
+    "@baloise/design-system-next-tokens": "10.15.8",
     "lodash.isnil": "~4.0.0"
   },
   "peerDependencies": {
