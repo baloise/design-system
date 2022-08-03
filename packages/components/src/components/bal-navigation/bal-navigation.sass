@@ -1,20 +1,19 @@
 +block(nav)
-  +desktop
-    position: sticky
-    display: block
-    top: 0
-    left: 0
-    width: 100%
-    transition: top .3s ease-in-out
+  position: sticky
+  display: block
+  top: 0
+  left: 0
+  width: 100%
+  transition: top .3s ease-in-out
   +modifier(transformed)
     top: -3rem
+
   +element(meta)
     +unselectable
     background: var(--bal-color-primary)
     height: 48px
     max-height: 48px
     display: block
-
     nav
       display: flex
       height: 100%
@@ -54,6 +53,7 @@
       margin: 1.5rem auto 0
       width: 1480px
       max-width: 1480px
+
     +element(head)
       display: flex
       justify-content: space-between
@@ -76,12 +76,14 @@
           transition: border-radius .3s ease-in-out
       +fullhd
         padding: 0 1.5rem
+
     .bal-nav__main-head-logo
       margin-top: 1rem
       margin-right: 1rem
       +widescreen
         margin: 0
         padding: 0 1rem
+
     +element(body)
       position: relative
       display: block
@@ -115,18 +117,11 @@
         .bal-nav__menu
           opacity: 1
           transition: opacity .3s ease-in-out .1s
+
   +element(menu)
-    padding: 1rem 1rem 4rem
-    +tablet
-      padding: 2rem 3rem 4rem
-    +desktop
-      padding: 40px 3rem 0
+    padding: 40px 3rem 0
     .menu-link-wrapper
-      margin-bottom: 1.5rem
-      +tablet
-        margin-bottom: 2.5rem
-      +desktop
-        margin-bottom: 2rem
+      margin-bottom: 2rem
     .menu-link
       color: var(--bal-color-blue)
       position: relative
@@ -143,15 +138,14 @@
       +widescreen
         display: flex
         flex-wrap: wrap
+
     +element(list)
       position: relative
-
       +modifier(context-white)
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
-
       > bal-card > bal-card-content > a:hover > bal-heading > h4
         color: var(--bal-color-light-blue-dark)
 
