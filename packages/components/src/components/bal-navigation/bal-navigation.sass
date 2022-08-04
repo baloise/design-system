@@ -5,6 +5,7 @@
   left: 0
   width: 100%
   transition: top .3s ease-in-out
+  z-index: 100
   +modifier(transformed)
     top: -3rem
 
@@ -37,8 +38,10 @@
   +element(main)
     +unselectable
     display: block
+    position: absolute
+    right: 0
+    left: 0
     height: auto
-    z-index: 1000
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%

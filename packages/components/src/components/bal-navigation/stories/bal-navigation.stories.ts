@@ -143,7 +143,8 @@ export const Basic = args => ({
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
-</bal-navigation></div>`,
+</bal-navigation>
+<div style="height: 500px; background: red;"></div></div>`,
 })
 Basic.args = {
   metaValue: 'meta-1',
