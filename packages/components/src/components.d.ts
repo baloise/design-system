@@ -1231,9 +1231,21 @@ export namespace Components {
         "interface": Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        /**
+          * Aria label for the main-navigation-wrapper
+         */
         "ariaLabelMain"?: string;
+        /**
+          * Aria label for the meta-navigation-wrapper
+         */
         "ariaLabelMeta"?: string;
+        /**
+          * Path to the logo-image
+         */
         "logoPath"?: string;
+        /**
+          * Defines the initially active meta-navigation-item
+         */
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -4461,9 +4473,21 @@ declare namespace LocalJSX {
         "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavigation {
+        /**
+          * Aria label for the main-navigation-wrapper
+         */
         "ariaLabelMain"?: string;
+        /**
+          * Aria label for the meta-navigation-wrapper
+         */
         "ariaLabelMeta"?: string;
+        /**
+          * Path to the logo-image
+         */
         "logoPath"?: string;
+        /**
+          * Defines the initially active meta-navigation-item
+         */
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {

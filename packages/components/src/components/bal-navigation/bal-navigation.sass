@@ -39,8 +39,10 @@
     +unselectable
     display: block
     position: absolute
-    right: 0
-    left: 0
+    left: 50%
+    top: 100%
+    transform: translateX(-50%)
+    z-index: 9000
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
@@ -97,7 +99,6 @@
       opacity: 0
       transition: opacity .3s ease-in-out
       background: var(--bal-color-white)
-
       +widescreen
         border-bottom-left-radius: 12px
         border-bottom-right-radius: 12px
@@ -117,11 +118,14 @@
       &.is-active
         opacity: 1
         pointer-events: all
-        max-height: 100%
         transition: opacity .3s ease-in-out
+        overflow-y: auto
+        max-height: calc(100vh - 160px)
         &::before
           opacity: 1
           transition: opacity .3s ease-in-out
+        +fullhd
+          max-height: calc(100vh - 176px)
         .bal-nav__menu
           opacity: 1
           transition: opacity .3s ease-in-out .1s
