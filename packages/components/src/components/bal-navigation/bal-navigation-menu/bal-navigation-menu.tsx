@@ -1,6 +1,5 @@
-import { Component, h, Host, Prop, State, Listen, Watch } from '@stencil/core'
+import { Component, h, Host, Prop, Watch } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
 import { Props } from '../../../props'
 import { LevelInfo } from '../utils/level.utils'
 
@@ -12,7 +11,6 @@ export class NavigationMenu {
   @Prop() linkName?: string
   @Prop() target: Props.BalButtonTarget = '_self'
   @Prop() menuElements?: string
-  @State() isTouch: boolean = isPlatform('touch')
   private _menuElements?: LevelInfo[]
 
   componentWillLoad() {
@@ -26,53 +24,62 @@ export class NavigationMenu {
     }
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.isTouch = isPlatform('touch')
-  }
-
   render() {
     const navMenuEl = BEM.block('nav').element('menu')
     return (
       <Host
         class={{
-          'is-block': true,
           ...navMenuEl.class(),
         }}
       >
         {this.linkHref && (
-          <div class="menu-link-wrapper is-block">
-            <a class="is-size-x-small menu-link is-bold" href={this.linkHref} target={this.target}>
+          <div
+            class={{
+              ...navMenuEl.element('link').class(),
+            }}
+          >
+            <a href={this.linkHref} target={this.target}>
               {this.linkName}
             </a>
           </div>
         )}
-        <div class="columns is-multiline my-0">
+        <div
+          class={{
+            'columns is-multiline': true,
+            ...navMenuEl.element('wrapper').class(),
+          }}
+        >
           <div
             class={{
-              'column is-full is-6-desktop is-two-thirds-widescreen is-flex-widescreen is-flex-wrap-wrap': true,
-              'py-0': this.isTouch,
+              'column is-full is-6-desktop is-two-thirds-widescreen': true,
             }}
           >
-            {this._menuElements
-              ?.filter(subLevel => subLevel.color !== 'grey')
-              .map(block => {
-                return (
-                  block && (
-                    <bal-navigation-menu-list headline={block.label} href={block.link} target={block.target}>
-                      <div slot="links">
-                        {block.subLevels?.map(item => (
-                          <bal-navigation-menu-list-item href={item.link} target={item.target}>
-                            {item.label}
-                          </bal-navigation-menu-list-item>
-                        ))}
-                      </div>
-                    </bal-navigation-menu-list>
+            <div class={{ ...navMenuEl.element('white-list').class() }}>
+              {this._menuElements
+                ?.filter(subLevel => subLevel.color !== 'grey')
+                .map(block => {
+                  return (
+                    block && (
+                      <bal-navigation-menu-list headline={block.label} href={block.link} target={block.target}>
+                        <div slot="links">
+                          {block.subLevels?.map(item => (
+                            <bal-navigation-menu-list-item href={item.link} target={item.target}>
+                              {item.label}
+                            </bal-navigation-menu-list-item>
+                          ))}
+                        </div>
+                      </bal-navigation-menu-list>
+                    )
                   )
-                )
-              })}
+                })}
+            </div>
           </div>
-          <div class={{ 'column is-full is-6-desktop is-one-third-widescreen': true, 'pt-0': this.isTouch }}>
+          <div
+            class={{
+              'column is-full is-6-desktop is-one-third-widescreen': true,
+              ...navMenuEl.element('grey-list').class(),
+            }}
+          >
             {this._menuElements
               ?.filter(subLevel => subLevel.color === 'grey')
               .map(block => (

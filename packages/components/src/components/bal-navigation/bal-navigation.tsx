@@ -1,7 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/platform'
 
 @Component({
   tag: 'bal-navigation',
@@ -16,7 +15,6 @@ export class Navigation implements ComponentInterface {
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
   @State() isMainBodyOpen = false
-  @State() isWideOrFullHd = false
   @State() selectedMetaValue?: string = ''
   @State() selectedMainValue?: string = ''
   /**
@@ -47,7 +45,6 @@ export class Navigation implements ComponentInterface {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
-    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
   }
 
   @Listen('scroll', { target: 'window', passive: true })
@@ -58,7 +55,6 @@ export class Navigation implements ComponentInterface {
 
   async connectedCallback() {
     this.selectedMetaValue = this.metaValue
-    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
@@ -142,39 +138,34 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-head
             slot="main-head"
             class={{
-              'has-radius-large': this.isWideOrFullHd,
-              'is-hidden-mobile has-background-white is-block': true,
+              'is-hidden-mobile': true,
               'is-active': this.isMainBodyOpen,
             }}
           >
-            <div class="is-flex is-align-items-start is-flex-wrap-wrap is-justify-content-space-between">
-              <div class="is-flex">
-                <a href={this.logoPath} class="bal-nav__main-head-logo">
-                  <bal-logo color="blue"></bal-logo>
-                </a>
-              </div>
-              <div class="is-flex">
-                <bal-tabs interface="navigation" value={this.selectedMainValue}>
-                  {hasLevels &&
-                    this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
-                      return main.isTabLink ? (
-                        <bal-tab-item label={main.label} value={main.value} href={main.link} />
-                      ) : (
-                        <bal-tab-item
-                          label={main.label}
-                          value={main.value}
-                          icon="nav-go-down"
-                          onBalNavigate={ev => {
-                            main.onClick(ev.detail)
-                            this.selectedMainIndex = index
-                            this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
-                            this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
-                          }}
-                        />
-                      )
-                    })}
-                </bal-tabs>
-              </div>
+            <div>
+              <a href={this.logoPath} class="bal-nav__main-head-logo">
+                <bal-logo color="blue"></bal-logo>
+              </a>
+              <bal-tabs interface="navigation" value={this.selectedMainValue}>
+                {hasLevels &&
+                  this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
+                    return main.isTabLink ? (
+                      <bal-tab-item label={main.label} value={main.value} href={main.link} />
+                    ) : (
+                      <bal-tab-item
+                        label={main.label}
+                        value={main.value}
+                        icon="nav-go-down"
+                        onBalNavigate={ev => {
+                          main.onClick(ev.detail)
+                          this.selectedMainIndex = index
+                          this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
+                          this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
+                        }}
+                      />
+                    )
+                  })}
+              </bal-tabs>
             </div>
           </bal-navigation-main-head>
           <bal-navigation-main-body

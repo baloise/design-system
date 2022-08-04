@@ -15,11 +15,16 @@ export class NavigationMenuListItem {
     return (
       <Host
         class={{
-          'is-block': true,
           ...navMenuListItemEl.class(),
         }}
       >
-        <a class="is-block mt-2" href={this.href} target={this.target}>
+        <a
+          class={{
+            ...navMenuListItemEl.element('link').class(),
+          }}
+          href={this.href}
+          target={this.target}
+        >
           <slot></slot>
         </a>
       </Host>
