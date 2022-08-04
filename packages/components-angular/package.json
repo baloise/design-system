@@ -44,15 +44,15 @@
   },
   "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd",
   "devDependencies": {
-    "@angular/common": "~10.2.5",
-    "@angular/compiler": "~10.2.5",
-    "@angular/compiler-cli": "~10.2.5",
-    "@angular/core": "~10.2.5",
-    "@angular/forms": "~10.2.5",
-    "@angular/platform-browser": "~10.2.5",
-    "ng-packagr": "~10.1.2",
-    "typescript": "~4.0.7",
-    "zone.js": "~0.10.3"
+    "@angular/common": "~12.2.16",
+    "@angular/compiler": "~12.2.16",
+    "@angular/compiler-cli": "~12.2.16",
+    "@angular/core": "~12.2.16",
+    "@angular/forms": "~12.2.16",
+    "@angular/platform-browser": "~12.2.16",
+    "ng-packagr": "~12.1.1",
+    "typescript": "~4.3.5",
+    "zone.js": "~0.11.4"
   },
   "files": [
     "dist/"
