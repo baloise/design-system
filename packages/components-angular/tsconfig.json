@@ -17,7 +17,8 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "compilationMode": "partial"
   },
   "exclude": ["node_modules", "src/schematics"],
   "files": ["src/index.ts"]
