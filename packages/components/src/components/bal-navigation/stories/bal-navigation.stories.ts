@@ -143,18 +143,7 @@ export const Basic = args => ({
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
-</bal-navigation>
-<div style="height: 500px; background: red;">ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha
-ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha
-ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha
-ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha
-ham bam sjgajdgagdgjagdv dkhkdhkahkdhkahkhdkhakjhd dkhakhdkjhakdh dkahdkhakjhdkha dkahdkahkdhakhd dkahdkh
-dagdkjgakghdkjahkdjh dkhakdhkjahdkjhk dkahkdhkajhd dahdjkhakjdhkj dkahdkha</div></div>`,
+</bal-navigation></div>`,
 })
 Basic.args = {
   metaValue: 'meta-1',
