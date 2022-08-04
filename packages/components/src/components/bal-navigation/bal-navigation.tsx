@@ -19,9 +19,21 @@ export class Navigation implements ComponentInterface {
   @State() isWideOrFullHd = false
   @State() selectedMetaValue?: string = ''
   @State() selectedMainValue?: string = ''
+  /**
+   * Path to the logo-image
+   */
   @Prop() logoPath?: string = '/'
+  /**
+   * Aria label for the meta-navigation-wrapper
+   */
   @Prop() ariaLabelMeta?: string = ''
+  /**
+   * Aria label for the main-navigation-wrapper
+   */
   @Prop() ariaLabelMain?: string = ''
+  /**
+   * Defines the initially active meta-navigation-item
+   */
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })

@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Listen, Watch } from '@stencil/core'
+import { Component, h, Host, Prop, State, Listen, Watch } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 import { Props } from '../../../props'
@@ -8,7 +8,6 @@ import { LevelInfo } from '../utils/level.utils'
   tag: 'bal-navigation-menu',
 })
 export class NavigationMenu {
-  @Element() el!: HTMLBalNavigationMenuElement
   @Prop() linkHref?: string
   @Prop() linkName?: string
   @Prop() target: Props.BalButtonTarget = '_self'

@@ -1,12 +1,10 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-main',
 })
 export class NavigationMain implements ComponentInterface {
-  @Element() el!: HTMLElement
-
   @Prop() ariaLabelMain?: string = ''
 
   render() {
