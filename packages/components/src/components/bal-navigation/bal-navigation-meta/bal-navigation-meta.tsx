@@ -5,6 +5,9 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-navigation-meta',
 })
 export class NavigationMeta implements ComponentInterface {
+  /**
+   * aria label for meta navigation bar
+   */
   @Prop() ariaLabelMeta?: string = ''
 
   render() {

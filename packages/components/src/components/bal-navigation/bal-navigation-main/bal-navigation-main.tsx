@@ -5,6 +5,9 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-navigation-main',
 })
 export class NavigationMain implements ComponentInterface {
+  /**
+   * aria label for main navigation bar
+   */
   @Prop() ariaLabelMain?: string = ''
 
   render() {

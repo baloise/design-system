@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Props } from '../../../props'
 
@@ -6,7 +6,6 @@ import { Props } from '../../../props'
   tag: 'bal-navigation-menu-list',
 })
 export class NavigationMenuList {
-  @Element() el!: HTMLBalNavigationMenuListElement
   @Prop() color: 'white' | 'grey' = 'white'
   @Prop() headline?: string
   @Prop() href?: string
