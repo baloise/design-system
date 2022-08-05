@@ -1305,6 +1305,7 @@ export namespace Components {
     interface BalNavigationMainHead {
     }
     interface BalNavigationMenu {
+        "elements": LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
         "target": Props2.BalButtonTarget;
@@ -4551,6 +4552,7 @@ declare namespace LocalJSX {
     interface BalNavigationMainHead {
     }
     interface BalNavigationMenu {
+        "elements"?: LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
         "target"?: Props2.BalButtonTarget;
