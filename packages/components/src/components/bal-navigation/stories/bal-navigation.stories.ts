@@ -18,7 +18,7 @@ export const Basic = args => ({
       args,
     }
   },
-  template: `<div style="height: 3000px"><bal-navigation v-bind="args" meta-value="meta-1">
+  template: `<div style="height: 1000px"><bal-navigation v-bind="args" meta-value="meta-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">
       <bal-navigation-level-main value="meta-1-main-1" label="Versichern" link="http://" linkLabel="Alle Versicherungslösungen">
@@ -159,7 +159,7 @@ export const MetaWithLinks = args => ({
       args,
     }
   },
-  template: `<div style="height: 3000px">
+  template: `<div style="height: 1000px">
 <bal-navigation v-bind="args" meta-value="meta-1" aria-label-meta="aria label meta" aria-label-main="aria label main">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht" isTabLink={true}>
@@ -261,7 +261,7 @@ export const WithStage = args => ({
       args,
     }
   },
-  template: `<div style="height: 3000px">
+  template: `<div style="height: 1000px">
 <bal-navigation v-bind="args" meta-value="meta-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">

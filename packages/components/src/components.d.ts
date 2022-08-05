@@ -1234,15 +1234,15 @@ export namespace Components {
         /**
           * Aria label for the main-navigation-wrapper
          */
-        "ariaLabelMain"?: string;
+        "ariaLabelMain": string;
         /**
           * Aria label for the meta-navigation-wrapper
          */
-        "ariaLabelMeta"?: string;
+        "ariaLabelMeta": string;
         /**
           * Path to the logo-image
          */
-        "logoPath"?: string;
+        "logoPath": string;
         /**
           * Defines the initially active meta-navigation-item
          */
@@ -1295,6 +1295,9 @@ export namespace Components {
         "getLevelInfos": () => Promise<LevelInfo[]>;
     }
     interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
         "ariaLabelMain"?: string;
     }
     interface BalNavigationMainBody {
@@ -1317,6 +1320,9 @@ export namespace Components {
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
         "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
@@ -4535,6 +4541,9 @@ declare namespace LocalJSX {
     interface BalNavigationLevels {
     }
     interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
         "ariaLabelMain"?: string;
     }
     interface BalNavigationMainBody {
@@ -4557,6 +4566,9 @@ declare namespace LocalJSX {
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
         "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
