@@ -168,28 +168,64 @@ export class Navigation implements ComponentInterface {
               </bal-tabs>
             </div>
           </bal-navigation-main-head>
-          <bal-navigation-main-body
-            slot="main-body"
-            class={{
-              'is-active': this.isMainBodyOpen,
-            }}
-            aria-hidden={!this.isMainBodyOpen}
-          >
-            {this.levels
-              .filter((_, index) => index === this.selectedMetaIndex)
-              .map(meta =>
-                meta.subLevels
-                  ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
-                  .map(main => (
-                    <bal-navigation-menu
-                      menu-elements={JSON.stringify(main.subLevels)}
-                      link-href={main.link}
-                      link-name={main.linkLabel}
-                      target={main.target}
-                    />
-                  )),
-              )}
-          </bal-navigation-main-body>
+          {this.isMainBodyOpen && (
+            <bal-navigation-main-body
+              slot="main-body"
+              class={{
+                'is-active': this.isMainBodyOpen,
+              }}
+              aria-hidden={!this.isMainBodyOpen}
+            >
+              {this.levels
+                .filter((_, index) => index === this.selectedMetaIndex)
+                .map(meta =>
+                  meta.subLevels
+                    ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
+                    .map(main => (
+                      <bal-navigation-menu link-href={main.link} link-name={main.linkLabel} target={main.target}>
+                        <div slot="left" class={{ ...navigationEl.element('menu').element('white-list').class() }}>
+                          {main.subLevels
+                            ?.filter(subLevel => subLevel.color !== 'grey')
+                            .map(block => {
+                              return (
+                                block && (
+                                  <bal-navigation-menu-list
+                                    headline={block.label}
+                                    href={block.link}
+                                    target={block.target}
+                                  >
+                                    <div slot="links">
+                                      {block.subLevels?.map(item => (
+                                        <bal-navigation-menu-list-item href={item.link} target={item.target}>
+                                          {item.label}
+                                        </bal-navigation-menu-list-item>
+                                      ))}
+                                    </div>
+                                  </bal-navigation-menu-list>
+                                )
+                              )
+                            })}
+                        </div>
+                        <div slot="right" class={{ ...navigationEl.element('menu').element('grey-list').class() }}>
+                          {main.subLevels
+                            ?.filter(subLevel => subLevel.color === 'grey')
+                            .map(block => (
+                              <bal-navigation-menu-list headline={block.label} href={block.link} color={block.color}>
+                                <div slot="links">
+                                  {block.subLevels?.map(item => (
+                                    <bal-navigation-menu-list-item href={item.link}>
+                                      {item.label}
+                                    </bal-navigation-menu-list-item>
+                                  ))}
+                                </div>
+                              </bal-navigation-menu-list>
+                            ))}
+                        </div>
+                      </bal-navigation-menu>
+                    )),
+                )}
+            </bal-navigation-main-body>
+          )}
         </bal-navigation-main>
         <slot></slot>
       </Host>
