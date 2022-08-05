@@ -1,3 +1,5 @@
+import { Props } from '../../../props'
+
 export const observeLevels = (target: Node, level: string, notify: () => void) => {
   /* tslint:disable-next-line */
   if (typeof MutationObserver === 'undefined') {
@@ -25,8 +27,9 @@ export interface LevelInfo {
   type: 'meta' | 'main' | 'block' | 'block-item'
   value: string
   label: string
-  metaLink?: string
+  isTabLink?: boolean
   link?: string
+  target?: Props.BalButtonTarget
   linkLabel?: string
   color?: 'white' | 'grey'
   subLevels?: LevelInfo[]
@@ -34,11 +37,11 @@ export interface LevelInfo {
 }
 
 export const readSubLevels = async (element: HTMLElement, target: string): Promise<LevelInfo[]> => {
-  const subLevels = element.querySelectorAll<any>(target)
+  const subLevels = Array.from(element.querySelectorAll<any>(target)) as any[]
   const levels: LevelInfo[] = []
-  subLevels.forEach(async level => {
+  for (const level of subLevels) {
     const info = await level.getLevelInfo()
     levels.push(info)
-  })
+  }
   return levels
 }

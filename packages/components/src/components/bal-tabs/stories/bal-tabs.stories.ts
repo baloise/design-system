@@ -101,3 +101,26 @@ Steps.parameters = {
     exclude: ['expanded', 'selectOnMobile', 'iconPosition', 'fullwidth', 'vertical', 'verticalOnMobile', 'border'],
   },
 }
+
+export const Navigation = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+  <bal-tab-item value="tab-a" label="Tab A" icon="nav-go-down">Content of Tab A</bal-tab-item>
+  <bal-tab-item value="tab-b" label="Tab B" icon="nav-go-down">Content of Tab B</bal-tab-item>
+  <bal-tab-item value="tab-c" label="Tab C" icon="nav-go-down">Content of Tab C</bal-tab-item>
+</bal-tabs>`,
+})
+Navigation.args = {
+  interface: 'navigation',
+  value: 'tab-a',
+  border: true,
+  fullwidth: true,
+  expanded: false,
+  vertical: false,
+  selectOnMobile: false,
+}
+Basic.parameters = {
+  ...component.sourceCode(Navigation),
+  controls: { exclude: ['clickable'] },
+}

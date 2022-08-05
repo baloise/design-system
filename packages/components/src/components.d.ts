@@ -11,6 +11,7 @@ import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { Props as Props2 } from "./props";
 import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1230,7 +1231,21 @@ export namespace Components {
         "interface": Props.BalNavbarInterface;
     }
     interface BalNavigation {
-        "mainValue"?: string;
+        /**
+          * Aria label for the main-navigation-wrapper
+         */
+        "ariaLabelMain": string;
+        /**
+          * Aria label for the meta-navigation-wrapper
+         */
+        "ariaLabelMeta": string;
+        /**
+          * Path to the logo-image
+         */
+        "logoPath": string;
+        /**
+          * Defines the initially active meta-navigation-item
+         */
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -1239,6 +1254,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelBlockItem {
@@ -1246,27 +1262,69 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMain {
         "getLevelInfo": () => Promise<LevelInfo>;
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMeta {
         "getLevelInfo": () => Promise<LevelInfo>;
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label": string;
+        /**
+          * sub link of the meta tab, rendered on touch resolution
+         */
         "link"?: string;
         "linkLabel"?: string;
-        "metaLink"?: string;
         "value": string;
     }
     interface BalNavigationLevels {
         "getLevelInfos": () => Promise<LevelInfo[]>;
     }
+    interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
+        "ariaLabelMain"?: string;
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
+    interface BalNavigationMenu {
+        "elements": LevelInfo[];
+        "linkHref"?: string;
+        "linkName"?: string;
+        "target": Props2.BalButtonTarget;
+    }
+    interface BalNavigationMenuList {
+        "color": 'white' | 'grey';
+        "headline"?: string;
+        "href"?: string;
+        "target": Props2.BalButtonTarget;
+    }
+    interface BalNavigationMenuListItem {
+        "href"?: string;
+        "target": Props2.BalButtonTarget;
+    }
     interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
+        "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
     }
@@ -2779,6 +2837,42 @@ declare global {
         prototype: HTMLBalNavigationLevelsElement;
         new (): HTMLBalNavigationLevelsElement;
     };
+    interface HTMLBalNavigationMainElement extends Components.BalNavigationMain, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainElement: {
+        prototype: HTMLBalNavigationMainElement;
+        new (): HTMLBalNavigationMainElement;
+    };
+    interface HTMLBalNavigationMainBodyElement extends Components.BalNavigationMainBody, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainBodyElement: {
+        prototype: HTMLBalNavigationMainBodyElement;
+        new (): HTMLBalNavigationMainBodyElement;
+    };
+    interface HTMLBalNavigationMainHeadElement extends Components.BalNavigationMainHead, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainHeadElement: {
+        prototype: HTMLBalNavigationMainHeadElement;
+        new (): HTMLBalNavigationMainHeadElement;
+    };
+    interface HTMLBalNavigationMenuElement extends Components.BalNavigationMenu, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuElement: {
+        prototype: HTMLBalNavigationMenuElement;
+        new (): HTMLBalNavigationMenuElement;
+    };
+    interface HTMLBalNavigationMenuListElement extends Components.BalNavigationMenuList, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuListElement: {
+        prototype: HTMLBalNavigationMenuListElement;
+        new (): HTMLBalNavigationMenuListElement;
+    };
+    interface HTMLBalNavigationMenuListItemElement extends Components.BalNavigationMenuListItem, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuListItemElement: {
+        prototype: HTMLBalNavigationMenuListItemElement;
+        new (): HTMLBalNavigationMenuListItemElement;
+    };
     interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
     }
     var HTMLBalNavigationMetaElement: {
@@ -3070,6 +3164,12 @@ declare global {
         "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
         "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
         "bal-navigation-levels": HTMLBalNavigationLevelsElement;
+        "bal-navigation-main": HTMLBalNavigationMainElement;
+        "bal-navigation-main-body": HTMLBalNavigationMainBodyElement;
+        "bal-navigation-main-head": HTMLBalNavigationMainHeadElement;
+        "bal-navigation-menu": HTMLBalNavigationMenuElement;
+        "bal-navigation-menu-list": HTMLBalNavigationMenuListElement;
+        "bal-navigation-menu-list-item": HTMLBalNavigationMenuListItemElement;
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
@@ -4379,7 +4479,21 @@ declare namespace LocalJSX {
         "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavigation {
-        "mainValue"?: string;
+        /**
+          * Aria label for the main-navigation-wrapper
+         */
+        "ariaLabelMain"?: string;
+        /**
+          * Aria label for the meta-navigation-wrapper
+         */
+        "ariaLabelMeta"?: string;
+        /**
+          * Path to the logo-image
+         */
+        "logoPath"?: string;
+        /**
+          * Defines the initially active meta-navigation-item
+         */
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
@@ -4388,6 +4502,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelBlockItem {
@@ -4395,26 +4510,68 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMain {
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
         "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMeta {
+        /**
+          * It is 'true' when the meta item is used as a link and not as a tab
+         */
+        "isTabLink"?: boolean;
         "label"?: string;
+        /**
+          * sub link of the meta tab, rendered on touch resolution
+         */
         "link"?: string;
         "linkLabel"?: string;
-        "metaLink"?: string;
         "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
         "value"?: string;
     }
     interface BalNavigationLevels {
     }
+    interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
+        "ariaLabelMain"?: string;
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
+    interface BalNavigationMenu {
+        "elements"?: LevelInfo[];
+        "linkHref"?: string;
+        "linkName"?: string;
+        "target"?: Props2.BalButtonTarget;
+    }
+    interface BalNavigationMenuList {
+        "color"?: 'white' | 'grey';
+        "headline"?: string;
+        "href"?: string;
+        "target"?: Props2.BalButtonTarget;
+    }
+    interface BalNavigationMenuListItem {
+        "href"?: string;
+        "target"?: Props2.BalButtonTarget;
+    }
     interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
+        "ariaLabelMeta"?: string;
     }
     interface BalNavigationMetaEnd {
     }
@@ -5423,6 +5580,12 @@ declare namespace LocalJSX {
         "bal-navigation-level-main": BalNavigationLevelMain;
         "bal-navigation-level-meta": BalNavigationLevelMeta;
         "bal-navigation-levels": BalNavigationLevels;
+        "bal-navigation-main": BalNavigationMain;
+        "bal-navigation-main-body": BalNavigationMainBody;
+        "bal-navigation-main-head": BalNavigationMainHead;
+        "bal-navigation-menu": BalNavigationMenu;
+        "bal-navigation-menu-list": BalNavigationMenuList;
+        "bal-navigation-menu-list-item": BalNavigationMenuListItem;
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
@@ -5549,6 +5712,12 @@ declare module "@stencil/core" {
             "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
             "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
             "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
+            "bal-navigation-main": LocalJSX.BalNavigationMain & JSXBase.HTMLAttributes<HTMLBalNavigationMainElement>;
+            "bal-navigation-main-body": LocalJSX.BalNavigationMainBody & JSXBase.HTMLAttributes<HTMLBalNavigationMainBodyElement>;
+            "bal-navigation-main-head": LocalJSX.BalNavigationMainHead & JSXBase.HTMLAttributes<HTMLBalNavigationMainHeadElement>;
+            "bal-navigation-menu": LocalJSX.BalNavigationMenu & JSXBase.HTMLAttributes<HTMLBalNavigationMenuElement>;
+            "bal-navigation-menu-list": LocalJSX.BalNavigationMenuList & JSXBase.HTMLAttributes<HTMLBalNavigationMenuListElement>;
+            "bal-navigation-menu-list-item": LocalJSX.BalNavigationMenuListItem & JSXBase.HTMLAttributes<HTMLBalNavigationMenuListItemElement>;
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
