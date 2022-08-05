@@ -128,13 +128,12 @@ export class Tabs {
   componentDidLoad() {
     this.didInit = true
     let value = this.value
-    if (value === undefined || value === '') {
+    if ((value === undefined || value === '') && this.interface !== 'navigation') {
       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
       if (availableTabs.length > 0) {
         value = availableTabs[0].value
       }
     }
-
     this.value = value
     this.valueChanged(value, this.value)
   }
@@ -179,7 +178,7 @@ export class Tabs {
     }
   }
 
-  private async onSelectTab(event: MouseEvent | CustomEvent, tab: BalTabOption) {
+  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()
@@ -191,6 +190,9 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
+        } else if (this.interface === 'navigation' && tab.value === this.value) {
+          this.value = ''
+          this.balChange.emit(this.value)
         }
       }
     }
@@ -237,6 +239,8 @@ export class Tabs {
               this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
             }
           }
+        } else {
+          this.lineWidth = 0
         }
       }
     }, timeout)
@@ -281,10 +285,14 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <div class="columns is-multiline">
+        <div
+          class={{
+            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navigation',
+          }}
+        >
           <div
             class={{
-              'column': true,
+              'column': this.interface !== 'meta' && this.interface !== 'navigation',
               'is-full': !isVertical,
               [`is-${this.verticalColSize}`]: isVertical,
               'bal-tabs__col-items': true,
@@ -312,7 +320,7 @@ export class Tabs {
           </div>
           <div
             class={{
-              'column': true,
+              'column': this.interface !== 'meta' && this.interface !== 'navigation',
               'is-full': !isVertical,
               'bal-tabs__col-content': true,
               'bal-tabs__col-content--vertical': isVertical,
