@@ -1234,15 +1234,15 @@ export namespace Components {
         /**
           * Aria label for the main-navigation-wrapper
          */
-        "ariaLabelMain"?: string;
+        "ariaLabelMain": string;
         /**
           * Aria label for the meta-navigation-wrapper
          */
-        "ariaLabelMeta"?: string;
+        "ariaLabelMeta": string;
         /**
           * Path to the logo-image
          */
-        "logoPath"?: string;
+        "logoPath": string;
         /**
           * Defines the initially active meta-navigation-item
          */

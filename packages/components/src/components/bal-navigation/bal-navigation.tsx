@@ -15,20 +15,20 @@ export class Navigation implements ComponentInterface {
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
   @State() isMainBodyOpen = false
-  @State() selectedMetaValue?: string = ''
-  @State() selectedMainValue?: string = ''
+  @State() selectedMetaValue? = ''
+  @State() selectedMainValue? = ''
   /**
    * Path to the logo-image
    */
-  @Prop() logoPath?: string = '/'
+  @Prop() logoPath = '/'
   /**
    * Aria label for the meta-navigation-wrapper
    */
-  @Prop() ariaLabelMeta?: string = ''
+  @Prop() ariaLabelMeta = ''
   /**
    * Aria label for the main-navigation-wrapper
    */
-  @Prop() ariaLabelMain?: string = ''
+  @Prop() ariaLabelMain = ''
   /**
    * Defines the initially active meta-navigation-item
    */
