@@ -413,8 +413,8 @@ export class Select {
 
     return options.filter(option =>
       this.filter === 'includes'
-        ? includes(option.textContent, this.inputValue)
-        : startsWith(option.textContent, this.inputValue),
+        ? includes(option.textContent.toLocaleUpperCase(), this.inputValue.toLocaleUpperCase())
+        : startsWith(option.textContent.toLocaleUpperCase(), this.inputValue.toLocaleUpperCase()),
     )
   }
 
@@ -539,6 +539,7 @@ export class Select {
   }
 
   private async selectLabel(label: string) {
+    console.log('selectLabel')
     if (label !== ' ') {
       const option = this.optionArray.find(o => startsWith(o.label || '', label))
       if (!isNil(option) && option.id) {
@@ -554,6 +555,7 @@ export class Select {
   }
 
   private async scrollToLabel(label: string) {
+    console.log('scrollToLabel')
     if (label !== ' ') {
       const option = this.optionArray.find(o => startsWith(o.label || '', label))
       if (!isNil(option) && option.id) {
@@ -751,6 +753,7 @@ export class Select {
   }
 
   render() {
+    console.log('render', this.optionArray)
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
