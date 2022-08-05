@@ -119,16 +119,6 @@
       +widescreen
         border-bottom-left-radius: 12px
         border-bottom-right-radius: 12px
-      //&::before
-      //  position: absolute
-      //  content: ''
-      //  top: 0
-      //  left: 0
-      //  width: 100%
-      //  height: 1px
-      //  background-color: var(--bal-color-grey)
-      //  opacity: 0
-      //  transition: opacity .3s ease-in-out
       .bal-nav__menu
         opacity: 0
         transition: opacity .3s ease-in-out .1s
@@ -138,9 +128,6 @@
         transition: opacity .3s ease-in-out
         overflow-y: auto
         max-height: calc(100vh - 160px)
-        //&::before
-        //  opacity: 1
-        //  transition: opacity .3s ease-in-out
         +fullhd
           max-height: calc(100vh - 176px)
         .bal-nav__menu
@@ -150,6 +137,9 @@
   +element(menu)
     display: block
     padding: 40px 3rem 0
+    .bal-nav__menu__wrapper.columns
+      margin-bottom: 0
+      margin-top: 0
     +element(link)
       display: block
       margin-bottom: 1rem
@@ -168,9 +158,6 @@
           content: '\279E'
         &:hover
           color: var(--bal-color-light-blue-dark)
-    +element(wrapper)
-      margin-bottom: 0
-      margin-top: 0
     +element(white-list)
       +widescreen
         display: flex
