@@ -393,3 +393,8 @@ li.sbdocs.sbdocs-li {
 .link-list > .sbdocs-a {
   text-decoration: none;
 }
+
+.docs-story .bal-nav__meta nav,
+.docs-story .bal-nav__main {
+  width: 100%;
+}
