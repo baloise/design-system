@@ -71,18 +71,31 @@
         flex-wrap: wrap
         align-items: start
         width: 100%
-
       +until-widescreen
         width: 100%
       +widescreen
         padding: 0 2.5rem
         border-radius: 12px
+        &::after
+          position: absolute
+          content: ''
+          top: 100%
+          left: 0
+          width: 100%
+          height: 1px
+          background-color: var(--bal-color-grey)
+          opacity: 0
+          z-index: 1
+          transition: opacity .3s ease-in-out
         > div
           align-items: center
         &.is-active
           border-bottom-left-radius: 0 !important
           border-bottom-right-radius: 0 !important
           transition: border-radius .3s ease-in-out
+          &::after
+            opacity: 1
+            transition: opacity .3s ease-in-out
       +fullhd
         padding: 0 1.5rem
 
@@ -106,16 +119,16 @@
       +widescreen
         border-bottom-left-radius: 12px
         border-bottom-right-radius: 12px
-      &::before
-        position: absolute
-        content: ''
-        top: 0
-        left: 0
-        width: 100%
-        height: 1px
-        background-color: var(--bal-color-grey)
-        opacity: 0
-        transition: opacity .3s ease-in-out
+      //&::before
+      //  position: absolute
+      //  content: ''
+      //  top: 0
+      //  left: 0
+      //  width: 100%
+      //  height: 1px
+      //  background-color: var(--bal-color-grey)
+      //  opacity: 0
+      //  transition: opacity .3s ease-in-out
       .bal-nav__menu
         opacity: 0
         transition: opacity .3s ease-in-out .1s
@@ -125,9 +138,9 @@
         transition: opacity .3s ease-in-out
         overflow-y: auto
         max-height: calc(100vh - 160px)
-        &::before
-          opacity: 1
-          transition: opacity .3s ease-in-out
+        //&::before
+        //  opacity: 1
+        //  transition: opacity .3s ease-in-out
         +fullhd
           max-height: calc(100vh - 176px)
         .bal-nav__menu
