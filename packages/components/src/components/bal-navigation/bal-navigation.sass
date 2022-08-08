@@ -72,9 +72,7 @@
         width: 100%
       +until-widescreen
         width: 100%
-      +widescreen
-        padding: 0 2.5rem
-        border-radius: 12px
+      +desktop
         &::after
           position: absolute
           content: ''
@@ -86,15 +84,19 @@
           opacity: 0
           z-index: 1
           transition: opacity .3s ease-in-out
+        &.is-active
+          &::after
+            opacity: 1
+            transition: opacity .3s ease-in-out
+      +widescreen
+        padding: 0 2.5rem
+        border-radius: 12px
         > div
           align-items: center
         &.is-active
           border-bottom-left-radius: 0 !important
           border-bottom-right-radius: 0 !important
           transition: border-radius .3s ease-in-out
-          &::after
-            opacity: 1
-            transition: opacity .3s ease-in-out
       +fullhd
         padding: 0 1.5rem
 
