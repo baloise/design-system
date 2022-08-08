@@ -31,6 +31,8 @@ jobs:
     needs: Install
     runs-on: ubuntu-latest
     steps:
+      - name: List
+        run: ls -a
       - name: Format
         run: npm run format:check
 
