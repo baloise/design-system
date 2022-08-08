@@ -13,6 +13,8 @@ Thanks in advance for your feedback!
 
 ## Summary
 
+<!-- Please describe your request in one or two sentences. -->
+
 ## Relevant information
 
 <!-- Provide as much useful information as you can -->
