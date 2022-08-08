@@ -1,7 +1,4 @@
 import isNil from 'lodash.isnil'
-import lowerCase from 'lodash.lowercase'
-import trim from 'lodash.trim'
-
 import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {
@@ -86,14 +83,14 @@ export function findLabelByValue(options: Map<string, BalOptionController>, valu
 }
 
 export function startsWith(text: string, input: string): boolean {
-  const content = lowerCase(trim(text))
-  const value = lowerCase(trim(input))
+  const content = text.trim().toLowerCase()
+  const value = input.trim().toLowerCase()
   return content.startsWith(value)
 }
 
 export function includes(text: string, input: string): boolean {
-  const content = lowerCase(trim(text))
-  const value = lowerCase(trim(input))
+  const content = text.trim().toLowerCase()
+  const value = input.trim().toLowerCase()
   return content.includes(value)
 }
 

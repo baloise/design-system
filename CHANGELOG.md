@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.9](https://github.com/baloise/design-system/compare/v10.15.8...v10.15.9) (2022-08-08)
+
+
+### Features
+
+* **main nav desktop:** adjusted the bal-nav container width ([6277aee](https://github.com/baloise/design-system/commit/6277aee32570ca1e5b7d58f470b1d25cb556b933))
+* **main nav desktop:** cleanup and refactoring ([920f12a](https://github.com/baloise/design-system/commit/920f12a1d5223a7a63dca8dcbc1f40c9d4257fe4))
+* **main nav desktop:** hover effect for menu panel elements, panel list headline font adjustments ([f59d568](https://github.com/baloise/design-system/commit/f59d568707cb72fcc286f5dd9f17c86312ba3168))
+* **main nav desktop:** replaced the style with the class attr ([03357a6](https://github.com/baloise/design-system/commit/03357a64f75122519e54f7bfe676ada116cb6f38))
+* **main nav desktop:** updated dependencies ([acb084d](https://github.com/baloise/design-system/commit/acb084d28ba0357a7dd5df3eefeb34f740a3f782))
+* **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
+* **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
+* **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
+* **main-nav-desktop:** move line on main head ([a7002bc](https://github.com/baloise/design-system/commit/a7002bc36cc0b02a2173de00fb372e1f6db41400))
+* **nav desktop:** added a story with stage ([37898aa](https://github.com/baloise/design-system/commit/37898aa921b7f517030b26682466082ec0854768))
+* **nav desktop:** added description for aria labels props and removed unused variables ([24dbfc7](https://github.com/baloise/design-system/commit/24dbfc7f1c4ad4a38cd0bb0159fc5e3236e91087))
+* **nav desktop:** added target property for level link ([b3e41ec](https://github.com/baloise/design-system/commit/b3e41ec97b89417cbd9b8d55e88b07b4fe871144))
+* **nav desktop:** added white background for the body and another test content ([94bf569](https://github.com/baloise/design-system/commit/94bf569703f64c27e41f7a6a4d6655fed04448d1))
+* **nav desktop:** adjusted the elements structure for the main component ([c9af9ff](https://github.com/baloise/design-system/commit/c9af9ff2872494971ee599f4bf6e615eb0ea145a))
+* **nav desktop:** console.log cleanup ([f60432d](https://github.com/baloise/design-system/commit/f60432d8609acd0ae511e85ad485856034a979b5))
+* **nav desktop:** display the menu content in three columns for widescreen ([f80c3eb](https://github.com/baloise/design-system/commit/f80c3eb3794823647d494aef1c291c04a022fc76))
+* **nav desktop:** fixed the border radius for body and removed the test content ([3d6cbfd](https://github.com/baloise/design-system/commit/3d6cbfdb2599e37d1c158499f6b6ad87f7649b33))
+* **nav desktop:** mobile styles cleanup ([8e4757f](https://github.com/baloise/design-system/commit/8e4757f8a8322a3368a8ef19136d1f67b7db162f))
+* **nav desktop:** prevent content-reflow on navOpen ([531de3f](https://github.com/baloise/design-system/commit/531de3f44995ed876c41e048975caf4840f48586))
+* **nav desktop:** refactored setInterval to no-timer solution ([6488348](https://github.com/baloise/design-system/commit/648834826ec9fc3c24783d2ae0687432ecd93b5d))
+* **nav desktop:** refactored the bal navigation menu component ([ce6d61d](https://github.com/baloise/design-system/commit/ce6d61dbdb25fc52c99151cdb01eaf406a9ebe7f))
+* **nav desktop:** reintegrated the named slots for the menu panel component ([742e868](https://github.com/baloise/design-system/commit/742e868ab9488c8fbf328e23bc979c36533e9322))
+* **nav desktop:** remove the panel word from the components naming ([166cb40](https://github.com/baloise/design-system/commit/166cb40305486b2c2d905971fdecf7e78decee0f))
+* **nav desktop:** remove unnecessary props, add prop descriptions, fixed docs-file ([9dc3109](https://github.com/baloise/design-system/commit/9dc310987a280e99c875684b13e363700f04706b))
+* **nav desktop:** removed .DS_Store file ([3420125](https://github.com/baloise/design-system/commit/342012571fd3acea688254286bf0e1deb62b9a4c))
+* **nav desktop:** removed helper classes ([34c0556](https://github.com/baloise/design-system/commit/34c05566b8fca35e7ef915cc3d9b253972c78827))
+* **nav desktop:** removed unused styles ([4c1ccdc](https://github.com/baloise/design-system/commit/4c1ccdcda264eed0cbc0dc1e822490ac0e413499))
+* **nav desktop:** renamed the tabs header interface and created a story for it ([2d1188d](https://github.com/baloise/design-system/commit/2d1188d96aebe49defca8150cb563971394c8edc))
+* **nav desktop:** replace the tabLink prop with the isTabLink boolean for LevelInfo interface ([d9871ad](https://github.com/baloise/design-system/commit/d9871ad2096d2f5853a0636f720d1e6b772edb49))
+* **nav desktop:** replaced isTranslated with isTransformed ([35b9841](https://github.com/baloise/design-system/commit/35b9841fad89ab87542814159746ba85188ba70b))
+* **nav desktop:** updated package-locks with node16.16 ([5b16826](https://github.com/baloise/design-system/commit/5b16826b2fe479263f29761941306f32d58e7568))
+* **nav desktop:** updated package.locks ([64c8110](https://github.com/baloise/design-system/commit/64c8110a196de4020a4da7b12862425bb8072db8))
+* **nav desktop:** updated the docs ([1d0656e](https://github.com/baloise/design-system/commit/1d0656e45b5413c82993d465f5a7a560817b7aad))
+* **nav desktop:** updated the navigation stories ([d85b601](https://github.com/baloise/design-system/commit/d85b601bb4e1cfe6c08dd131167bf8c37da500db))
+* **nav desktop:** used absolute position for main nav and set a z-index for the navigation element ([cfc068b](https://github.com/baloise/design-system/commit/cfc068b13ffa98791879036de1d5476c9c471250))
+
+
+### Bug Fixes
+
+* **angular:** adjust datepicker change ([15f2954](https://github.com/baloise/design-system/commit/15f2954421b16e297b0ec5feefcbc4ae781441bf))
+* **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
+* **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
+* **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* removed lodash trim and lowerCase from bal-select utils ([c2005d4](https://github.com/baloise/design-system/commit/c2005d4b4101b9b9138dea9dda3f0042b7018b8c))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+
+## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
+
+
+### Features
+
+* **main nav desktop:** added the expeted checks when the levels are empty ([5c70e4c](https://github.com/baloise/design-system/commit/5c70e4cd5e71d375d2e407d8e9c4e7025a659156))
+* **main nav desktop:** logged the sub levels for debugging purposes ([d80bc88](https://github.com/baloise/design-system/commit/d80bc883a389f4c9f390f42587de035bd38ead82))
+* **main nav desktop:** other test ([7cc4394](https://github.com/baloise/design-system/commit/7cc439496b2e5d3c37383853a25950f4dae74794))
+* **main nav desktop:** updated dependencies ([35973d0](https://github.com/baloise/design-system/commit/35973d002d0cdcfa49e393198a1baf1d8e609166))
+
+
+### Bug Fixes
+
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+
+## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
+
+
+### Features
+
+* **main nav desktop:** cleanup ([783c42d](https://github.com/baloise/design-system/commit/783c42d51464a0f804a76962e47a73b32e452f90))
+* **main nav desktop:** read sub levels updates ([fc65f68](https://github.com/baloise/design-system/commit/fc65f6862dba92a8f10664dc8abe5c3598276fda))
+* **main nav desktop:** test ([ec54048](https://github.com/baloise/design-system/commit/ec540485b78be8d6552d351b8c92b81329ab216a))
+* **main nav desktop:** testing commit ([a10c7ef](https://github.com/baloise/design-system/commit/a10c7ef1d6048f4aeb5b5af66b6c8778596c736e))
+* **main-nav-desktop:** add aria-label props and fix styles ([0ac7be4](https://github.com/baloise/design-system/commit/0ac7be4400e5e32512e3ecc3256c0e84a8331a7c))
+* **main-nav-desktop:** add new styles for panel inner first link, fix panel bottom spacing ([3ad70c2](https://github.com/baloise/design-system/commit/3ad70c2f6c3c229dd0a639189e609708eaededf8))
+* **main-nav-desktop:** align main nav items to the top ([1410707](https://github.com/baloise/design-system/commit/14107074f17d887b90f7cc96ad3e4a4a21eedce5))
+* **main-nav-desktop:** comment out componentWillLoad ([c7998ca](https://github.com/baloise/design-system/commit/c7998ca1d07db4e83508e8319fe5fce52458ba2d))
+* **main-nav-desktop:** fix main nav items and logo alignment on widescreen and fullhd viewports ([d712fda](https://github.com/baloise/design-system/commit/d712fda7760b3c6ccdd527c2028e6f6f158984f7))
+* **main-nav-desktop:** fix sticky on safari and test small changes ([9fd92c4](https://github.com/baloise/design-system/commit/9fd92c411dabc24441888a964b462ac2ebeea5df))
+* **main-nav-desktop:** fix styles, add tabLink prop, add icons ([824a3c7](https://github.com/baloise/design-system/commit/824a3c7a2b8c31df10d026232aa9b2fdd09e4db6))
+* **main-nav-desktop:** test console and move updateIndexes ([612659c](https://github.com/baloise/design-system/commit/612659c1f9ad8e25ada112c7f3c2b3ff5c45b41b))
+* **main-nav-desktop:** test remove async on conncectedCallback ([1796a9f](https://github.com/baloise/design-system/commit/1796a9f7f9b9a5aa9abf6456c43c062775c91458))
+* **main-nav-desktop:** test this levels in componentWillload ([92eac26](https://github.com/baloise/design-system/commit/92eac26272ccb54d39ec7a1ac61fae161ac3bae8))
+* **main-nav-desktop:** test Will load ([b1c139c](https://github.com/baloise/design-system/commit/b1c139c05873f0794428dceeeb2c5b295e30f764))
+
+## [10.15.5](https://github.com/baloise/design-system/compare/v10.15.2...v10.15.5) (2022-07-14)
+
+
+### Features
+
+* **main nav desktop:** added the menu panel for main nav body ([412cb6f](https://github.com/baloise/design-system/commit/412cb6f11b52f84617109fb97ca51ae5584f0011))
+* **main nav desktop:** close the menu panel when click on the activ tab ([8e2b6f9](https://github.com/baloise/design-system/commit/8e2b6f950edee60df18c5194b3ebf18ec1393488))
+* **main nav desktop:** created the main structure of the main navigation component, desktop version ([2dbe8e6](https://github.com/baloise/design-system/commit/2dbe8e66e0b07d89c39f1236eaba0f77c783bb52))
+* **main nav desktop:** implemented the menu panel ([b268171](https://github.com/baloise/design-system/commit/b268171abaeb038ee89230ded3b14908214027da))
+* **main-nav-desktop:** add main nav styles and open/close animation wip ([d8c1a7c](https://github.com/baloise/design-system/commit/d8c1a7c738efc178c8dd2edc0529fb776005c32c))
+* **main-nav-desktop:** add styles for desktop and fix stories content ([1d6cd0a](https://github.com/baloise/design-system/commit/1d6cd0aee18e29f1e624c540546f75ed48b3f56f))
+* **main-nav-desktop:** add wip main head styles and main nav scroll behaviour ([9021a4d](https://github.com/baloise/design-system/commit/9021a4d9a85a8096faa8067bd9e059e1462bf010))
+* **main-nav-desktop:** delete condition for observer ([f5f4b14](https://github.com/baloise/design-system/commit/f5f4b14a09e83b5244e3089dad6bd01064751c8e))
+* **main-nav-desktop:** update stories and delete comment ([209de78](https://github.com/baloise/design-system/commit/209de78e537f8bddc08477c76d3884c0cfb17a7a))
+* **main-nav-desktop:** wip fix active behaviours ([47856b6](https://github.com/baloise/design-system/commit/47856b692d4de00aafbff7c30f7daaf2d66df197))
+* **main-nav-desktop:** wip manage main nav active state and behaviours ([f7f9c1a](https://github.com/baloise/design-system/commit/f7f9c1ab1300c066ff66b52e36dcd58eb28321f2))
+* **meta nav:** added the meta link property for meta level, updated the stories ([34f6396](https://github.com/baloise/design-system/commit/34f639665902c653da59764821af05e5d5eac4d8))
+* **meta nav:** cleanup comments and unused code, added arrow function ([a707528](https://github.com/baloise/design-system/commit/a707528ba92be7ef4d50833e2b1a21a9ada2f0e4))
+* **meta nav:** created the meta nav component and its subcomponents ([76e6120](https://github.com/baloise/design-system/commit/76e6120ba53956e46f0229ddeb87efdbf42decb8))
+* **meta nav:** removed console log ([0e56e16](https://github.com/baloise/design-system/commit/0e56e166b56c776d66c27058059f56ce83db97dc))
+* **meta nav:** removed console logs ([b201baa](https://github.com/baloise/design-system/commit/b201baa3a1d1c04b73db9cb34dcf41b9251d4efe))
+* **meta nav:** styles adjustments ([dec0da8](https://github.com/baloise/design-system/commit/dec0da88df2cc68793bfbd2096c9385dbf19610a))
+* **meta nav:** updated the stories and replaced the href logic with the navigate event ([95c4177](https://github.com/baloise/design-system/commit/95c4177c7734a28dd2d52f270d4f09e5176af03a))
+* **meta nav:** updated the tabs component structure for the meta interface ([b83d361](https://github.com/baloise/design-system/commit/b83d36176fbae2639e2ec22fc7afbc5ac3dcc7b9))
+* **meta-nav:** fix BEM path ([4a729af](https://github.com/baloise/design-system/commit/4a729afb65cf31146ed8eef411e825a4d76bd5d4))
+* **meta-nav:** fix tabs columns classes rendering ([abf6080](https://github.com/baloise/design-system/commit/abf6080607b787b036ffeda39761cb7848c6b415))
+* **nav:** add navigation and open logic ([91a529a](https://github.com/baloise/design-system/commit/91a529a19e9ff4c021d50d9bfe14a04f7b28b300))
+* **nav:** first draft ([c830521](https://github.com/baloise/design-system/commit/c8305210ab777cda59d35f85e463fdef63d26a75))
+
+
+### Bug Fixes
+
+* removed the width definition ([6af80d5](https://github.com/baloise/design-system/commit/6af80d54b7b5c402d11015e470b76a4e704b9c61))
+
+## 10.15.2 (2022-07-05)
+
+
+
 ## [10.15.8](https://github.com/baloise/design-system/compare/v10.15.7...v10.15.8) (2022-08-03)
 
 

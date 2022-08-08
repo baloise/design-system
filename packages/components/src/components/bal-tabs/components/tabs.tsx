@@ -28,7 +28,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
       const selectedTabs = tabs.filter(tab => tab.value === event.detail)
       if (selectedTabs.length > 0) {
-        onSelectTab(event, selectedTabs[0])
+        onSelectTab(event as any, selectedTabs[0])
       }
     }
     return (
