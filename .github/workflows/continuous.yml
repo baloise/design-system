@@ -18,7 +18,8 @@ jobs:
       - name: Restore lerna
         uses: actions/cache@v3
         with:
-          path: **/node_modules
+          path: |
+            **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Update NPM registry
