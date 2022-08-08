@@ -2,6 +2,9 @@ export namespace Events {
   export type BalAccordionChangeDetail = boolean
   export type BalAccordionChange = CustomEvent<BalAccordionChangeDetail>
 
+  export type BalNavigationLevelClickDetail = MouseEvent
+  export type BalNavigationLEvelCloseClick = CustomEvent<BalNavigationLevelClickDetail>
+
   export type BalTagCloseClickDetail = MouseEvent
   export type BalTagCloseClick = CustomEvent<BalTagCloseClickDetail>
 

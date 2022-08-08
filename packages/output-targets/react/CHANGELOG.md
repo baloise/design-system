@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.15.9](https://github.com/baloise/design-system/compare/v10.15.8...v10.15.9) (2022-08-08)
+
+### Features
+
+- **nav desktop:** updated package.locks ([64c8110](https://github.com/baloise/design-system/commit/64c8110a196de4020a4da7b12862425bb8072db8))
+
 ## [10.15.8](https://github.com/baloise/design-system/compare/v10.15.7...v10.15.8) (2022-08-03)
 
 **Note:** Version bump only for package @baloise/design-system-next-output-target-react
