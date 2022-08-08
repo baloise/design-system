@@ -1,21 +1,6 @@
-import { Props } from '../../src'
-import { testOnPlatforms } from '../../../testing/src'
+import { Props } from '../../../src'
 
 describe('Tag', () => {
-  testOnPlatforms(['mobile', 'desktop'], () => {
-    beforeEach(() => cy.page('/components/bal-tag/test/bal-tag.cy.html'))
-
-    it('should have content', () => {
-      cy.getByTestId('tag').contains('My tag')
-    })
-
-    it('should fire close event', () => {
-      cy.getByTestId('tag').setProperty('closable', true).spyEvent('balCloseClick').find('bal-close').click()
-
-      cy.get('@balCloseClick').should('have.been.calledOnce')
-    })
-  })
-
   context('a11y', () => {
     before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 

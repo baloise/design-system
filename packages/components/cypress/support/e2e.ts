@@ -13,7 +13,12 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-/// <reference types="cypress" />
+import './commands'
+
+import '../../../testing/src'
+
+import 'cypress-file-upload'
+import 'cypress-axe'
 
 import type { RunOptions } from 'axe-core'
 
@@ -63,19 +68,13 @@ declare global {
   }
 }
 
-import './commands'
-
-import '../../../testing/src'
-
-import 'cypress-file-upload'
-import 'cypress-axe'
-
 import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
 const compareSnapshotCommandAsAny = compareSnapshotCommand as any
+
 compareSnapshotCommandAsAny({
   capture: 'fullPage',
 })
 
-import * as installLogsCollector from 'cypress-terminal-report/src/installLogsCollector'
-const installLogs = installLogsCollector as any
-installLogs()
+// import * as installLogsCollector from 'cypress-terminal-report/src/installLogsCollector'
+// const installLogs = installLogsCollector as any
+// installLogs()

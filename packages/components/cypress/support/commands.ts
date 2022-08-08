@@ -25,13 +25,9 @@ Cypress.Commands.add('pageA11y', (url: string) => {
   cy.injectAxe()
 })
 
-Cypress.Commands.add('pageVisual', (url: string) => {
-  cy.page(url)
-})
-
 Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options = null) => {
   cy.checkA11y(
-    subject,
+    subject as any,
     {
       ...options,
       runOnly: {
@@ -63,17 +59,17 @@ Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: st
     asEventName = event
   }
   Cypress.log({
-    $el: subject,
+    $el: subject as any,
     type: 'parent',
     displayName: 'spyEvent',
     message: `${event} as @${asEventName}`,
   })
-  return cy.wrap(subject, { log: false }).then($el => $el.on(event, cy.spy().as(asEventName)))
+  return cy.wrap(subject, { log: false }).then($el => $el.on(event, cy.spy().as(asEventName))) as any
 })
 
 Cypress.Commands.add('shouldHaveEventDetail', { prevSubject: 'optional' }, (subject, value: any, time = 0) => {
   Cypress.log({
-    $el: subject,
+    $el: subject as any,
     type: 'parent',
     displayName: 'hasEventDetail',
     message: value,
@@ -81,7 +77,7 @@ Cypress.Commands.add('shouldHaveEventDetail', { prevSubject: 'optional' }, (subj
   return cy.wrap(subject, { log: false }).then(event => {
     const spy = event as any as sinon.SinonSpy
     expect(spy.getCall(time).args[0].detail).deep.equal(value)
-  })
+  }) as any
 })
 
 Cypress.Commands.add('setProperty', { prevSubject: 'element' }, (subject, attr: string, value: any) => {
@@ -95,7 +91,7 @@ Cypress.Commands.add('setProperty', { prevSubject: 'element' }, (subject, attr: 
     .wrapComponent(subject, { log: false })
     .invoke({ log: false }, 'attr', attr, value)
     .waitForComponents()
-    .wait(1, { log: false })
+    .wait(1, { log: false }) as any
 })
 
 Cypress.Commands.add('hasProperty', { prevSubject: 'element' }, (subject, attr: string, value: any) => {
@@ -105,12 +101,12 @@ Cypress.Commands.add('hasProperty', { prevSubject: 'element' }, (subject, attr: 
     displayName: 'hasProp',
     message: `${attr}="${value}"`,
   })
-  return cy.wrapComponent(subject, { log: false }).should('have.attr', attr, value).waitForComponents()
+  return cy.wrapComponent(subject, { log: false }).should('have.attr', attr, value).waitForComponents() as any
 })
 
 Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, attr: string) => {
   Cypress.log({
-    $el: subject,
+    $el: subject as any,
     type: 'parent',
     displayName: 'removeProp',
     message: attr,
@@ -119,5 +115,5 @@ Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, att
     .wrapComponent(subject, { log: false })
     .invoke({ log: false }, 'removeAttr', attr)
     .waitForComponents()
-    .wait(1, { log: false })
+    .wait(1, { log: false }) as any
 })
