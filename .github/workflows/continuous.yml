@@ -6,24 +6,22 @@ jobs:
   Install:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Restore lerna
         uses: actions/cache@v3
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Update npm registry
+      - name: Update NPM registry
         run: npm run update:registry
 
       - name: Install dependencies
