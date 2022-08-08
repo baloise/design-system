@@ -4,19 +4,7 @@ import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 export const config: Config = {
   ...StencilBaseConfig,
-  enableCache: true,
   outputTargets: [
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements',
-    },
-    {
-      type: 'docs-json',
-      file: './generated/components.json',
-    },
     VueGenerator('../..', './.storybook/vue/components.ts', []),
     {
       type: 'www',
