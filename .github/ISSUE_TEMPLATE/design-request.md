@@ -1,8 +1,8 @@
 ---
-name: Design Request
+name: Design Request 🎨
 about: Questions to the new branding and components
-labels: 'design question'
-assignees: ''
+labels: '🎨 Design Support'
+assignees: 'Gagne87, clastzoo'
 ---
 
 <!--
