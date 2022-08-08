@@ -3,107 +3,20 @@ name: Continuous
 on: [push]
 
 jobs:
-  BuildAndTest:
+  Install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '16'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Node Version
-        run: node -v
-
-      - name: NPM Version
-        run: npm -v
-
-      # - name: Restore lerna
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: |
-      #       node_modules
-      #       */*/node_modules
-      #     key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Update npm registry
-        run: npm run update:registry
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Format
-        run: npm run format:check
-
-      - name: Lint
-        run: npm run lint:check
-
-      - name: Spell Check
-        run: npm run spell
-
-      - name: Test
-        run: npm run test
-
-      - name: Install Cypress
-        run: npm run test:cy:install
-
-      - uses: cypress-io/github-action@v2
-        with:
-          build: npm run cy:build
-          start: npm run cy:start
-          wait-on: 'http://localhost:3333'
-          working-directory: packages/components
-          browser: chrome
-          env: type=actual
-          install: false
-        env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-snapshots
-          path: packages/components/cypress/snapshots
-        env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/components/cypress/videos
-        env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  OutputTargets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Node Version
-        run: node -v
-
-      - name: NPM Version
-        run: npm -v
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -113,29 +26,121 @@ jobs:
       - name: Update npm registry
         run: npm run update:registry
 
-      - name: Angular install dependencies
-        run: npm --prefix packages/output-targets/angular ci
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Angular build
-        run: npm --prefix packages/output-targets/angular run build
+      # - name: Build
+      #   run: npm run build
 
-      - name: Angular test
-        run: npm --prefix packages/output-targets/angular run test
+      # - uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: cypress-snapshots
+      #     path: packages/components/cypress/snapshots
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Vue install dependencies
-        run: npm --prefix packages/output-targets/vue ci
+      # - name: Format
+      #   run: npm run format:check
 
-      - name: Vue build
-        run: npm --prefix packages/output-targets/vue run build
+      # - name: Lint
+      #   run: npm run lint:check
 
-      - name: Vue test
-        run: npm --prefix packages/output-targets/vue run test
+      # - name: Spell Check
+      #   run: npm run spell
 
-      - name: React install dependencies
-        run: npm --prefix packages/output-targets/react ci
+      # - name: Test
+      #   run: npm run test
 
-      - name: React build
-        run: npm --prefix packages/output-targets/react run build
+      # - name: Install Cypress
+      #   run: npm run test:cy:install
 
-      - name: React test
-        run: npm --prefix packages/output-targets/react run test
+      # - uses: cypress-io/github-action@v2
+      #   with:
+      #     build: npm run cy:build
+      #     start: npm run cy:start
+      #     wait-on: 'http://localhost:3333'
+      #     working-directory: packages/components
+      #     browser: chrome
+      #     env: type=actual
+      #     install: false
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: cypress-snapshots
+      #     path: packages/components/cypress/snapshots
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: cypress-videos
+      #     path: packages/components/cypress/videos
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # OutputTargets:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v2
+
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #         registry-url: 'https://registry.npmjs.org'
+
+  #     - name: Node Version
+  #       run: node -v
+
+  #     - name: NPM Version
+  #       run: npm -v
+
+  #     - name: Restore lerna
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: |
+  #           node_modules
+  #           */*/node_modules
+  #         key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+  #     - name: Update npm registry
+  #       run: npm run update:registry
+
+  #     - name: Angular install dependencies
+  #       run: npm --prefix packages/output-targets/angular ci
+
+  #     - name: Angular build
+  #       run: npm --prefix packages/output-targets/angular run build
+
+  #     - name: Angular test
+  #       run: npm --prefix packages/output-targets/angular run test
+
+  #     - name: Vue install dependencies
+  #       run: npm --prefix packages/output-targets/vue ci
+
+  #     - name: Vue build
+  #       run: npm --prefix packages/output-targets/vue run build
+
+  #     - name: Vue test
+  #       run: npm --prefix packages/output-targets/vue run test
+
+  #     - name: React install dependencies
+  #       run: npm --prefix packages/output-targets/react ci
+
+  #     - name: React build
+  #       run: npm --prefix packages/output-targets/react run build
+
+  #     - name: React test
+  #       run: npm --prefix packages/output-targets/react run test

@@ -1,6 +1,7 @@
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
+  projectId: 'dnm1ky',
   video: false,
   screenshotOnRunFailure: true,
   screenshotsFolder: './cypress/snapshots/actual',

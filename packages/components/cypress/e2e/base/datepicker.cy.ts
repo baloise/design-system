@@ -1,5 +1,5 @@
 import { addDays, addWeeks, formatISO, subDays, subWeeks } from 'date-fns'
-import { byTestId, DatePickerAccessor } from '../../../testing/src'
+import { byTestId, DatePickerAccessor } from '../../../../testing/src'
 
 const now = () => new Date()
 const formatDateString = (date: Date) => formatISO(date, { representation: 'date' })

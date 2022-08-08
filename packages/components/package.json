@@ -68,8 +68,10 @@
     "cy:build": "npm run www",
     "cy:start": "node ./web-server.js",
     "cy:install": "cypress install",
+    "cy:dashboard": "cypress run --record --key b7277e23-8658-44f8-94c0-9585ffb73e5a",
     "cy:run": "cypress run --browser chrome --config excludeSpecPattern=\"cypress/e2e/visual/*cy.ts\"",
     "cy:open": "cypress open --browser chrome --config excludeSpecPattern=\"cypress/e2e/visual/*cy.ts\"",
+    "cy:component:run": "cypress run --browser chrome --component --config excludeSpecPattern=\"cypress/e2e/visual/*cy.ts\"",
     "cy:visual:base": "cypress run --browser chrome --env type=base --spec \"cypress/e2e/visual/*cy.ts\" --config screenshotsFolder=cypress/snapshots/base",
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/*cy.ts\""
   },

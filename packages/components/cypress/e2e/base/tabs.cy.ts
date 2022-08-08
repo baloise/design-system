@@ -1,4 +1,4 @@
-import { testOnPlatforms } from '../../../testing/src'
+import { testOnPlatforms } from '../../../../testing/src'
 
 describe('Tabs', () => {
   testOnPlatforms(['mobile', 'desktop'], platform => {
