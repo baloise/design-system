@@ -108,8 +108,6 @@ packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
 
-packages/vite
-
 packages/components-table/css
 packages/components-vue/src/components.ts
 packages/components-vue/src/proxies
