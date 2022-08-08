@@ -1,11 +1,11 @@
 +block(nav)
-  position: sticky
+  position: fixed
   display: block
   top: 0
   left: 0
   width: 100%
   transition: top .3s ease-in-out
-  z-index: 100
+  z-index: 30
   +modifier(transformed)
     top: -3rem
 
@@ -42,7 +42,6 @@
     left: 50%
     top: 100%
     transform: translateX(-50%)
-    z-index: 9000
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
