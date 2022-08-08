@@ -1,4 +1,4 @@
-import { app } from '../support/app'
+import { app } from '../../support/app'
 
 describe('Textarea', () => {
   const page = app.getTextareaPage()

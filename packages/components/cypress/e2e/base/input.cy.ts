@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { app } from '../support/app'
+import { app } from '../../support/app'
 
 describe('Input', () => {
   const page = app.getInputPage()

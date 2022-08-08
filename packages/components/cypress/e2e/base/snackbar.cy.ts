@@ -1,4 +1,4 @@
-import { app } from '../support/app'
+import { app } from '../../support/app'
 
 describe('Snackbar', () => {
   const page = app.getSnackbarPage()
