@@ -1,6 +1,5 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
-import { sizes, colors, custom } from './bal-icon.templates.ts'
 import readme from '../readme.md'
 
 <bal-doc-banner id="story--components-icon--basic" status="rebranded,css">Icon</bal-doc-banner>
@@ -35,26 +34,22 @@ import readme from '../readme.md'
 
 ## Examples
 
+<span id="story--components-icon--sizes" style={{ opacity: 0 }}></span>
+
 ### Sizes
 
 Here is how you can change the size:
 
-<Canvas mdxSource={sizes}>
-  <bal-doc-app>{html(sizes)}</bal-doc-app>
+<Canvas withSource="open">
+  <Story id="components-icon--sizes" />
 </Canvas>
+
+<span id="story--components-icon--colors" style={{ opacity: 0 }}></span>
 
 ### Colors
 
-<Canvas mdxSource={colors}>
-  <bal-doc-app>{html(colors)}</bal-doc-app>
-</Canvas>
-
-### Custom Color
-
-Here is how you can change the color:
-
-<Canvas mdxSource={custom}>
-  <bal-doc-app>{html(custom)}</bal-doc-app>
+<Canvas withSource="open">
+  <Story id="components-icon--colors" />
 </Canvas>
 
 ### Component Api

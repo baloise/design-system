@@ -1,25 +1,29 @@
 {
   "name": "@baloise/design-system-next-components-react",
-  "version": "10.15.8-beta.10+bb993a62",
-  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "version": "10.15.9",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
-  "homepage": "https://design.baloise.dev.sh",
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
+  "homepage": "https://design.baloise.dev",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)"
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
   ],
   "keywords": [
     "design-system",
     "web-components",
-    "stenciljs",
-    "bulma-css"
+    "stenciljs"
   ],
+  "license": "Apache-2.0",
   "scripts": {
     "build": "npm run build:clean && npm run build:compile",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
@@ -34,23 +38,12 @@
   "files": [
     "dist/"
   ],
-  "license": "Apache-2.0",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@types/node": "^15.14.9",
-    "@types/react": "^17.0.22",
-    "@types/react-dom": "^17.0.9",
-    "ag-grid-community": "^25.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.56.3",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "^4.4.3"
+    "@types/node": "~15.14.9",
+    "@types/react": "~17.0.22",
+    "@types/react-dom": "~17.0.9",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
   },
   "peerDependencies": {
     "@types/react": ">=17.0.0",
@@ -59,7 +52,7 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.15.8-beta.10+bb993a62"
+    "@baloise/design-system-next-components": "10.15.9"
   },
-  "gitHead": "bb993a622896f20bce53f1e0029e90d1549847e5"
+  "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
 }

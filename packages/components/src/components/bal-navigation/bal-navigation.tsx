@@ -12,18 +12,28 @@ export class Navigation implements ComponentInterface {
   private mainNavElement?: HTMLBalNavigationMainElement
   private metaNavMobileElement!: HTMLBalMetaMobileHeadElement
   private previousY = 0
-  private scrolling = false
-  @State() isTranslated = false
+  @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
   @State() isMainBodyOpen = false
-  @State() isWideOrFullHd = false
-  @State() selectedMetaValue?: string = ''
-  @State() selectedMainValue?: string = ''
-  @Prop() logoPath?: string = '/'
-  @Prop() ariaLabelMeta?: string = ''
-  @Prop() ariaLabelMain?: string = ''
+  @State() selectedMetaValue? = ''
+  @State() selectedMainValue? = ''
+  /**
+   * Path to the logo-image
+   */
+  @Prop() logoPath = '/'
+  /**
+   * Aria label for the meta-navigation-wrapper
+   */
+  @Prop() ariaLabelMeta = ''
+  /**
+   * Aria label for the main-navigation-wrapper
+   */
+  @Prop() ariaLabelMain = ''
+  /**
+   * Defines the initially active meta-navigation-item
+   */
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })
@@ -38,34 +48,20 @@ export class Navigation implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isTranslated = false
-    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
+    this.isTransformed = false
   }
 
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    this.scrolling = true
-  }
-
-  translateMainNav() {
-    this.isTranslated = window.scrollY > this.previousY
+    this.isTransformed = window.scrollY > this.previousY
     this.previousY = window.scrollY
   }
 
   async connectedCallback() {
     this.selectedMetaValue = this.metaValue
-    this.isWideOrFullHd = isPlatform('widescreen') || isPlatform('fullhd')
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
-    if (this.isWideOrFullHd) {
-      setInterval(() => {
-        if (this.scrolling) {
-          this.scrolling = false
-          this.translateMainNav()
-        }
-      }, 300)
-    }
   }
 
   disconnectedCallback() {
@@ -73,6 +69,10 @@ export class Navigation implements ComponentInterface {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
+  }
+
+  componentDidLoad() {
+    this.previousY = window.scrollY
   }
 
   componentDidUpdate() {
@@ -106,7 +106,7 @@ export class Navigation implements ComponentInterface {
       <Host
         class={{
           ...navigationEl.class(),
-          'bal-nav--translated': this.isTranslated,
+          'bal-nav--transformed': this.isTransformed,
         }}
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
@@ -114,8 +114,8 @@ export class Navigation implements ComponentInterface {
             {hasLevels && (
               <bal-tabs interface="meta" inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
-                  return meta.tabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.tabLink} />
+                  return meta.isTabLink ? (
+                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
                   ) : (
                     <bal-tab-item
                       label={meta.label}
@@ -146,97 +146,60 @@ export class Navigation implements ComponentInterface {
           <bal-navigation-main-head
             slot="main-head"
             class={{
-              'has-radius-large': this.isWideOrFullHd,
-              'is-hidden-mobile has-background-white is-block': true,
+              'is-hidden-mobile': true,
               'is-active': this.isMainBodyOpen,
             }}
           >
-            <div class="is-flex is-align-items-start is-flex-wrap-wrap is-justify-content-space-between">
-              <div class="is-flex">
-                <a href={this.logoPath} class="bal-nav__main-head-logo">
-                  <bal-logo color="blue"></bal-logo>
-                </a>
-              </div>
-              <div class="is-flex">
-                <bal-tabs interface="header" value={this.selectedMainValue}>
-                  {hasLevels &&
-                    this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
-                      return main.tabLink ? (
-                        <bal-tab-item label={main.label} value={main.value} href={main.tabLink} />
-                      ) : (
-                        <bal-tab-item
-                          label={main.label}
-                          value={main.value}
-                          icon="nav-go-down"
-                          onBalNavigate={ev => {
-                            main.onClick(ev.detail)
-                            this.selectedMainIndex = index
-                            this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
-                            this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
-                          }}
-                        />
-                      )
-                    })}
-                </bal-tabs>
-              </div>
+            <div>
+              <a href={this.logoPath} class="bal-nav__main-head-logo">
+                <bal-logo color="blue"></bal-logo>
+              </a>
+              <bal-tabs interface="navigation" value={this.selectedMainValue}>
+                {hasLevels &&
+                  this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
+                    return main.isTabLink ? (
+                      <bal-tab-item label={main.label} value={main.value} href={main.link} />
+                    ) : (
+                      <bal-tab-item
+                        label={main.label}
+                        value={main.value}
+                        icon="nav-go-down"
+                        onBalNavigate={ev => {
+                          main.onClick(ev.detail)
+                          this.selectedMainIndex = index
+                          this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
+                          this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
+                        }}
+                      />
+                    )
+                  })}
+              </bal-tabs>
             </div>
           </bal-navigation-main-head>
-          <bal-navigation-main-body
-            slot="main-body"
-            class={{
-              'is-active': this.isMainBodyOpen,
-            }}
-            aria-hidden={!this.isMainBodyOpen}
-          >
-            {this.levels
-              .filter((_, index) => index === this.selectedMetaIndex)
-              .map(meta =>
-                meta.subLevels
-                  ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
-                  .map(main => (
-                    <bal-navigation-menu-panel link-href={main.link} link-name={main.linkLabel}>
-                      <div slot="left">
-                        {main.subLevels
-                          ?.filter(subLevel => subLevel.color !== 'grey')
-                          .map(block => {
-                            return (
-                              block && (
-                                <bal-navigation-menu-panel-list headline={block.label} href={block.link}>
-                                  <div slot="links">
-                                    {block.subLevels?.map(item => (
-                                      <bal-navigation-menu-panel-list-item href={item.link}>
-                                        {item.label}
-                                      </bal-navigation-menu-panel-list-item>
-                                    ))}
-                                  </div>
-                                </bal-navigation-menu-panel-list>
-                              )
-                            )
-                          })}
-                      </div>
-                      <div slot="right">
-                        {main.subLevels
-                          ?.filter(subLevel => subLevel.color === 'grey')
-                          .map(block => (
-                            <bal-navigation-menu-panel-list
-                              headline={block.label}
-                              href={block.link}
-                              color={block.color}
-                            >
-                              <div slot="links">
-                                {block.subLevels?.map(item => (
-                                  <bal-navigation-menu-panel-list-item href={item.link}>
-                                    {item.label}
-                                  </bal-navigation-menu-panel-list-item>
-                                ))}
-                              </div>
-                            </bal-navigation-menu-panel-list>
-                          ))}
-                      </div>
-                    </bal-navigation-menu-panel>
-                  )),
-              )}
-          </bal-navigation-main-body>
+          {this.isMainBodyOpen && (
+            <bal-navigation-main-body
+              slot="main-body"
+              class={{
+                'is-active': this.isMainBodyOpen,
+              }}
+              aria-hidden={!this.isMainBodyOpen}
+            >
+              {this.levels
+                .filter((_, index) => index === this.selectedMetaIndex)
+                .map(meta =>
+                  meta.subLevels
+                    ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
+                    .map(main => (
+                      <bal-navigation-menu
+                        link-href={main.link}
+                        link-name={main.linkLabel}
+                        target={main.target}
+                        elements={main.subLevels}
+                      ></bal-navigation-menu>
+                    )),
+                )}
+            </bal-navigation-main-body>
+          )}
         </bal-navigation-main>
 
         <bal-meta-mobile-head>

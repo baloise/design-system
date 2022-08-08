@@ -1,20 +1,20 @@
 +block(nav)
-  +desktop
-    position: sticky
-    display: block
-    top: 0
-    left: 0
-    width: 100%
-    transition: top .3s ease-in-out
-  +modifier(translated)
+  position: sticky
+  display: block
+  top: 0
+  left: 0
+  width: 100%
+  transition: top .3s ease-in-out
+  z-index: 100
+  +modifier(transformed)
     top: -3rem
+
   +element(meta)
     +unselectable
     background: var(--bal-color-primary)
     height: 48px
     max-height: 48px
     display: block
-
     nav
       display: flex
       height: 100%
@@ -38,8 +38,12 @@
   +element(main)
     +unselectable
     display: block
+    position: absolute
+    left: 50%
+    top: 100%
+    transform: translateX(-50%)
+    z-index: 9000
     height: auto
-    z-index: 1000
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%
@@ -54,95 +58,115 @@
       margin: 1.5rem auto 0
       width: 1480px
       max-width: 1480px
-  +element(main-head)
-    display: flex
-    justify-content: space-between
-    flex-wrap: wrap
-    align-items: center
-    padding: 0 2rem
-    position: relative
-    transition: border-radius .3s ease-in-out
-    > div
-      align-items: start
-    +until-widescreen
-      width: 100%
-    +widescreen
-      padding: 0 2.5rem
+
+    +element(head)
+      display: block
+      padding: 0 2rem
+      position: relative
+      transition: border-radius .3s ease-in-out
+      background-color: var(--bal-color-background)
       > div
-        align-items: center
-      &.is-active
-        border-bottom-left-radius: 0 !important
-        border-bottom-right-radius: 0 !important
-        transition: border-radius .3s ease-in-out
-    +fullhd
-      padding: 0 1.5rem
-  .bal-nav__main-head-logo
-    +desktop
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        align-items: start
+        width: 100%
+      +until-widescreen
+        width: 100%
+      +widescreen
+        padding: 0 2.5rem
+        border-radius: 12px
+        &::after
+          position: absolute
+          content: ''
+          top: 100%
+          left: 0
+          width: 100%
+          height: 1px
+          background-color: var(--bal-color-grey)
+          opacity: 0
+          z-index: 1
+          transition: opacity .3s ease-in-out
+        > div
+          align-items: center
+        &.is-active
+          border-bottom-left-radius: 0 !important
+          border-bottom-right-radius: 0 !important
+          transition: border-radius .3s ease-in-out
+          &::after
+            opacity: 1
+            transition: opacity .3s ease-in-out
+      +fullhd
+        padding: 0 1.5rem
+
+    .bal-nav__main-head-logo
       margin-top: 1rem
       margin-right: 1rem
-    +widescreen
-      margin: 0
-      padding: 0 1rem
-  +element(main-body)
-    position: relative
-    display: block
-    min-height: 0 !important
-    max-height: 0
-    overflow: hidden
-    pointer-events: none
-    opacity: 0
-    transition: opacity .3s ease-in-out
-    &::before
-      position: absolute
-      content: ''
-      top: 0
-      left: 0
-      width: 100%
-      height: 1px
-      background-color: var(--bal-color-grey)
-      opacity: 0
-      transition: opacity .3s ease-in-out
-    .bal-nav__panel
-      opacity: 0
-      transition: opacity .3s ease-in-out .1s
-    &.is-active
-      opacity: 1
-      pointer-events: all
-      max-height: 100%
-      transition: opacity .3s ease-in-out
-      &::before
-        opacity: 1
-        transition: opacity .3s ease-in-out
-      .bal-nav__panel
-        opacity: 1
-        transition: opacity .3s ease-in-out .1s
-  +element(panel)
-    +desktop
-      padding: 40px 3rem 0
-    .panel-link-wrapper
-      margin-bottom: 1.5rem
-      +tablet
-        margin-bottom: 2.5rem
-      +desktop
-        margin-bottom: 2rem
-    .panel-link
-      color: var(--bal-color-blue)
+      +widescreen
+        margin: 0
+        padding: 0 1rem
+
+    +element(body)
       position: relative
-      padding-right: 1rem
-      &::before
-        position: absolute
-        right: 0
-        top: 50%
-        transform: translateY(-50%)
-        content: '\279E'
-      &:hover
-        color: var(--bal-color-light-blue-dark)
-    > div > div:first-of-type > div
+      display: block
+      min-height: 0 !important
+      max-height: 0
+      overflow: hidden
+      pointer-events: none
+      opacity: 0
+      transition: opacity .3s ease-in-out
+      background: var(--bal-color-white)
+      +widescreen
+        border-bottom-left-radius: 12px
+        border-bottom-right-radius: 12px
+      .bal-nav__menu
+        opacity: 0
+        transition: opacity .3s ease-in-out .1s
+      &.is-active
+        opacity: 1
+        pointer-events: all
+        transition: opacity .3s ease-in-out
+        overflow-y: auto
+        max-height: calc(100vh - 160px)
+        +fullhd
+          max-height: calc(100vh - 176px)
+        .bal-nav__menu
+          opacity: 1
+          transition: opacity .3s ease-in-out .1s
+
+  +element(menu)
+    display: block
+    padding: 40px 3rem 0
+    .bal-nav__menu__wrapper.columns
+      margin-bottom: 0
+      margin-top: 0
+    +element(link)
+      display: block
+      margin-bottom: 1rem
+      > a
+        color: var(--bal-color-blue)
+        position: relative
+        padding-right: 17px
+        font-size: 0.75rem
+        line-height: 1rem
+        font-weight: var(--bal-weight-bold)
+        &::before
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-50%)
+          content: '\279E'
+        &:hover
+          color: var(--bal-color-light-blue-dark)
+    +element(white-list)
       +widescreen
         display: flex
         flex-wrap: wrap
+
     +element(list)
+      display: block
       position: relative
+      margin-bottom: 3rem
       +touch
         padding-top: 2.5rem
 
@@ -156,19 +180,28 @@
           top: 0
           left: 0
           right: 0
-
-      > bal-card > bal-card-content > a:hover > bal-heading > h4
-        color: var(--bal-color-light-blue-dark)
-
-      +element(item)
-        > a:hover
-          color: var(--bal-color-light-blue-dark)
-
       +modifier(context-white)
+        > bal-card > bal-card-content
+          padding: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
+      > bal-card > bal-card-content > a:hover > bal-heading > h4
+        color: var(--bal-color-light-blue-dark)
+
+      +element(item)
+        display: block
+        +element(link)
+          display: block
+          margin-top: .5rem
+          &:hover
+            color: var(--bal-color-light-blue-dark)
+
+      +element(card)
+        margin: 0
+        +element(heading)
+          margin-bottom: 1rem
 
   +element(metamobile)
     display: block
