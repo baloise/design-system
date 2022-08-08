@@ -1,5 +1,4 @@
 import { Config } from '@stencil/core'
-import { CustomDocumentationGenerator } from './.build/readme/custom-documentation'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
@@ -18,7 +17,6 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    CustomDocumentationGenerator,
     VueGenerator('../..', './.storybook/vue/components.ts', []),
     {
       type: 'www',
@@ -27,6 +25,11 @@ export const config: Config = {
         { src: 'stories/assets/css', dest: 'assets/css', warn: true },
         { src: 'stories/assets/images', dest: 'assets/images', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+        {
+          src: '../../components-table/css/design-system-table.css',
+          dest: 'assets/css/design-system-table.css',
+          warn: true,
+        },
         {
           src: '../../fonts/generated/fonts.zip',
           dest: 'assets/download/fonts.zip',
