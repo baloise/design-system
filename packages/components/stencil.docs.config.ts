@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core'
+import { CustomDocumentationGenerator } from './.build/readme/custom-documentation'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
@@ -17,6 +18,7 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
+    CustomDocumentationGenerator,
     VueGenerator('../..', './.storybook/vue/components.ts', []),
     {
       type: 'www',
