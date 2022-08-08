@@ -1,7 +1,7 @@
 ---
-name: Question
+name: Question ❓
 about: Usage question or discussion about the Baloise Design System.
-labels: '❔Question '
+labels: '❓ Question '
 assignees: ''
 ---
 
