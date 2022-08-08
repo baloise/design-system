@@ -31,6 +31,7 @@ export const StageWithImage = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
+  <bal-stage-image src-set="https://via.placeholder.com/768x250 768w, https://via.placeholder.com/1536x500 1536w, https://via.placeholder.com/1023x300 1023w, https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg 2400w"></bal-stage-image>
   <bal-stage-body>
     <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
     <bal-heading class="mb-2" space="none">Title</bal-heading>
@@ -38,10 +39,7 @@ export const StageWithImage = args => ({
   </bal-stage-body>
 </bal-stage>`,
 })
-StageWithImage.args = {
-  images:
-    'https://via.placeholder.com/320x180 mobile, https://via.placeholder.com/769x250 tablet, https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg desktop',
-}
+StageWithImage.args = {}
 StageWithImage.parameters = { ...component.sourceCode(StageWithImage) }
 
 export const StageWithShape = args => ({
