@@ -124,7 +124,7 @@ jobs:
       - name: Install Cypress
         run: npm run test:cy:install
 
-      - uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@v4
         with:
           build: npm run cy:build
           start: npm run cy:start
