@@ -46,7 +46,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%
-      &.is-expanded
+      +modifier(expanded)
         border-bottom-left-radius: var(--bal-radius-large)
         border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
@@ -84,7 +84,7 @@
           opacity: 0
           z-index: 1
           transition: opacity .3s ease-in-out
-        &.is-active
+        +modifier(active)
           &::after
             opacity: 1
             transition: opacity .3s ease-in-out
@@ -93,7 +93,7 @@
         border-radius: var(--bal-radius-large)
         > div
           align-items: center
-        &.is-active
+        +modifier(active)
           border-bottom-left-radius: 0 !important
           border-bottom-right-radius: 0 !important
           transition: border-radius .3s ease-in-out
@@ -110,40 +110,26 @@
     +element(body)
       position: relative
       display: block
-      min-height: 0 !important
-      max-height: 0
-      overflow: hidden
-      pointer-events: none
-      opacity: 0
-      transition: opacity .3s ease-in-out
+      max-height: calc(100vh - 160px)
+      overflow-y: auto
       background: var(--bal-color-white)
       +widescreen
         border-bottom-left-radius: var(--bal-radius-large)
         border-bottom-right-radius: var(--bal-radius-large)
-      .bal-nav__menu
-        opacity: 0
-        transition: opacity .3s ease-in-out .1s
-      &.is-active
-        opacity: 1
-        pointer-events: all
-        transition: opacity .3s ease-in-out
-        overflow-y: auto
-        max-height: calc(100vh - 160px)
-        +fullhd
-          max-height: calc(100vh - 176px)
-        .bal-nav__menu
-          opacity: 1
-          transition: opacity .3s ease-in-out .1s
-
+      +fullhd
+        max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 40px 3rem 0
+    padding: 40px 3rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
+      .column
+        padding-top: 0
+        padding-bottom: 0
     +element(link)
       display: block
-      margin-bottom: 1rem
+      margin-bottom: .5rem
       > a
         color: var(--bal-color-blue)
         position: relative
@@ -170,7 +156,7 @@
     +element(list)
       display: block
       position: relative
-      margin-bottom: 3rem
+      margin-bottom: .5rem
       +modifier(context-white)
         > bal-card > bal-card-content
           padding: 0

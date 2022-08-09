@@ -129,7 +129,7 @@ export class Navigation implements ComponentInterface {
         </bal-navigation-meta>
 
         <bal-navigation-main
-          class={{ 'is-hidden-touch': true, 'is-expanded': this.isMainBodyOpen }}
+          class={{ 'is-hidden-touch': true, 'bal-nav__main--expanded': this.isMainBodyOpen }}
           ref={el => {
             this.mainNavElement = el
           }}
@@ -139,7 +139,7 @@ export class Navigation implements ComponentInterface {
             slot="main-head"
             class={{
               'is-hidden-mobile': true,
-              'is-active': this.isMainBodyOpen,
+              'bal-nav__main__head--active': this.isMainBodyOpen,
             }}
           >
             <div>
@@ -169,13 +169,7 @@ export class Navigation implements ComponentInterface {
             </div>
           </bal-navigation-main-head>
           {this.isMainBodyOpen && (
-            <bal-navigation-main-body
-              slot="main-body"
-              class={{
-                'is-active': this.isMainBodyOpen,
-              }}
-              aria-hidden={!this.isMainBodyOpen}
-            >
+            <bal-navigation-main-body slot="main-body">
               {this.levels
                 .filter((_, index) => index === this.selectedMetaIndex)
                 .map(meta =>
