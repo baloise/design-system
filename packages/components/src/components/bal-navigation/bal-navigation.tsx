@@ -234,23 +234,31 @@ export class Navigation implements ComponentInterface {
                         <a href={meta.link}>{meta.linkLabel}</a>
                       </div>
                     )}
-                    {meta.subLevels?.map(main => (
-                      <bal-list-item accordion sub-accordion-item>
-                        <bal-list-item-accordion-head>
+                    {meta.subLevels?.map(main => {
+                      return main.isTabLink ? (
+                        <bal-list-item sub-accordion-item href={main.link} target={main.target}>
                           <bal-list-item-content>
                             <bal-list-item-title>{main.label}</bal-list-item-title>
                           </bal-list-item-content>
-                        </bal-list-item-accordion-head>
-                        <bal-list-item-accordion-body>
-                          <bal-navigation-menu
-                            link-href={main.link}
-                            link-name={main.linkLabel}
-                            target={main.target}
-                            elements={main.subLevels}
-                          />
-                        </bal-list-item-accordion-body>
-                      </bal-list-item>
-                    ))}
+                        </bal-list-item>
+                      ) : (
+                        <bal-list-item accordion sub-accordion-item>
+                          <bal-list-item-accordion-head>
+                            <bal-list-item-content>
+                              <bal-list-item-title>{main.label}</bal-list-item-title>
+                            </bal-list-item-content>
+                          </bal-list-item-accordion-head>
+                          <bal-list-item-accordion-body>
+                            <bal-navigation-menu
+                              link-href={main.link}
+                              link-name={main.linkLabel}
+                              target={main.target}
+                              elements={main.subLevels}
+                            />
+                          </bal-list-item-accordion-body>
+                        </bal-list-item>
+                      )
+                    })}
                   </div>
                 </bal-list-item-accordion-body>
               </bal-list-item>

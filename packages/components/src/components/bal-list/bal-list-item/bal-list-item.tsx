@@ -91,6 +91,7 @@ export class ListItem {
           class={{
             'bal-list-item': true,
             'is-accordion': this.accordion,
+            'is-sub-accordion-item': this.subAccordionItem,
             'is-disabled': this.disabled,
             'is-selected': this.selected,
             'is-list-item-clickable': this.clickable || this.href.length > 0,
