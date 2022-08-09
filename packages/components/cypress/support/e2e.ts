@@ -74,7 +74,3 @@ const compareSnapshotCommandAsAny = compareSnapshotCommand as any
 compareSnapshotCommandAsAny({
   capture: 'fullPage',
 })
-
-// import * as installLogsCollector from 'cypress-terminal-report/src/installLogsCollector'
-// const installLogs = installLogsCollector as any
-// installLogs()
