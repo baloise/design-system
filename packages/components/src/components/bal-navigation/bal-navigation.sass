@@ -120,7 +120,7 @@
         max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 40px 3rem .5rem
+    padding: 2.5rem 3rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -144,8 +144,7 @@
           transform: translateY(-50%)
           content: '\279E'
         +hover
-          &:hover,
-          &.is-hovered
+          &:hover
             color: var(--bal-color-light-blue-dark)
             text-decoration: underline
     +element(white-list)
@@ -170,8 +169,7 @@
             margin-right: 60px
       > bal-card > bal-card-content > a
         +hover
-          &:hover,
-          &.is-hovered
+          &:hover
             > bal-heading > h4
               color: var(--bal-color-light-blue-dark)
               text-decoration: underline
@@ -181,8 +179,7 @@
           display: block
           margin-top: .5rem
           +hover
-            &:hover,
-            &.is-hovered
+            &:hover
               color: var(--bal-color-light-blue-dark)
               text-decoration: underline
       +element(card)
