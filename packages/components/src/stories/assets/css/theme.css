@@ -397,6 +397,11 @@ li.sbdocs.sbdocs-li {
 .docs-story .bal-nav {
   position: relative;
 }
+
+.docs-story .bal-nav.bal-nav--transformed {
+  transform: none;
+}
+
 .docs-story .bal-nav__meta nav,
 .docs-story .bal-nav__main {
   width: 100%;
