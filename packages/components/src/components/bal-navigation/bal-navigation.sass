@@ -156,10 +156,14 @@
     +element(list)
       display: block
       position: relative
-      margin-bottom: .5rem
+      > bal-card >:not(bal-badge):not(bal-tag):last-child
+        padding-bottom: 1rem
+      > bal-card >:not(bal-badge):not(bal-tag):first-child
+        padding-top: 1rem
       +modifier(context-white)
         > bal-card > bal-card-content
-          padding: 0
+          padding-left: 0
+          padding-right: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
