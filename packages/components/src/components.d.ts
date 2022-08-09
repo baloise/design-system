@@ -1153,6 +1153,10 @@ export namespace Components {
     interface BalMetaMobileFoot {
     }
     interface BalMetaMobileHead {
+        /**
+          * aria label for mobile meta navigation
+         */
+        "ariaLabelMobileHead": string;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -4448,6 +4452,10 @@ declare namespace LocalJSX {
     interface BalMetaMobileFoot {
     }
     interface BalMetaMobileHead {
+        /**
+          * aria label for mobile meta navigation
+         */
+        "ariaLabelMobileHead"?: string;
     }
     interface BalModal {
         /**

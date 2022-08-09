@@ -10,7 +10,7 @@ export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
-  private metaNavMobileElement!: HTMLBalMetaMobileHeadElement
+  //private metaNavMobileElement!: HTMLBalMetaMobileHeadElement
   private previousY = 0
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
@@ -79,9 +79,9 @@ export class Navigation implements ComponentInterface {
     this.updateIndexes()
   }
 
-  componentDidRender() {
+  /*  componentDidRender() {
     this.metaNavMobileElement = this.el.querySelector('bal-meta-mobile-head') as HTMLBalMetaMobileHeadElement
-  }
+  }*/
 
   private updateIndexes() {
     if (this.levels?.length > 0) {
@@ -196,7 +196,7 @@ export class Navigation implements ComponentInterface {
           )}
         </bal-navigation-main>
 
-        <bal-meta-mobile-head aria-label={this.ariaLabelMeta}>
+        <bal-meta-mobile-head aria-label-mobile-head={this.ariaLabelMeta}>
           <a slot="logo" href={this.logoPath} class="bal-nav__mainmobile__logo">
             <bal-logo color="blue" size="small"></bal-logo>
           </a>
