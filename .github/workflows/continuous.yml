@@ -56,8 +56,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build:e2e
 
       # - name: Install Cypress
       #   run: npm run test:cy:install
@@ -113,8 +113,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Build
-      #   run: npm run build:e2e
+      - name: Build
+        run: npm run build:e2e
 
       # - name: Install Cypress
       #   run: npm run test:cy:install
