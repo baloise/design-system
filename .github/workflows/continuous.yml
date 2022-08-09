@@ -3,32 +3,20 @@ name: Continuous
 on: [push]
 
 jobs:
-  BuildAndTest:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Node Version
-        run: node -v
-
-      - name: NPM Version
-        run: npm -v
-
-      # - name: Restore lerna
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: |
-      #       node_modules
-      #       */*/node_modules
-      #     key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Update npm registry
+      - name: Update NPM registry
         run: npm run update:registry
 
       - name: Install dependencies
@@ -49,66 +37,192 @@ jobs:
       - name: Test
         run: npm run test
 
+  Component:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:e2e
+
       - name: Install Cypress
         run: npm run test:cy:install
 
-      - uses: cypress-io/github-action@v2
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
         with:
           build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
-          browser: chrome
-          env: type=actual
           install: false
+          browser: chrome
+          component: true
+          env: type=actual
         env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-snapshots
           path: packages/components/cypress/snapshots
         env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-videos
           path: packages/components/cypress/videos
         env:
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  Visual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:e2e
+
+      - name: Install Cypress
+        run: npm run test:cy:install
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run cy:build
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          install: false
+          browser: chrome
+          env: type=actual
+          spec: |
+            cypress/e2e/visual/*.cy.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: packages/components/cypress/snapshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/components/cypress/videos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  TestingLib:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:e2e
+
+      - name: Install Cypress
+        run: npm run test:cy:install
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run cy:build
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          install: false
+          browser: chrome
+          env: type=actual
+          spec: |
+            cypress/e2e/base/*.cy.ts
+            cypress/e2e/legacy/*.cy.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: packages/components/cypress/snapshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/components/cypress/videos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   OutputTargets:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Node Version
-        run: node -v
-
-      - name: NPM Version
-        run: npm -v
-
-      - name: Restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Update npm registry
         run: npm run update:registry

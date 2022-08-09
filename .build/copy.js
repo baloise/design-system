@@ -9,7 +9,6 @@ async function main() {
   await copyReadme('packages/components-table')
   await copyReadme('packages/components-vue')
   await copyReadme('packages/components-react')
-  await copyReadme('packages/stencil-vite-fix')
   await copyReadme('packages/icons')
   await copyReadme('packages/fonts')
   await copyReadme('packages/testing')

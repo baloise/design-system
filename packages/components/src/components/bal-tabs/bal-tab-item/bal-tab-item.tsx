@@ -17,12 +17,12 @@ export class TabItem {
   /**
    * This is the key of the tab.
    */
-  @Prop() value = ''
+  @Prop({ reflect: true }) value = ''
 
   /**
    * Label for the tab.
    */
-  @Prop() label = ''
+  @Prop({ reflect: true }) label = ''
 
   /**
    * Link to path.

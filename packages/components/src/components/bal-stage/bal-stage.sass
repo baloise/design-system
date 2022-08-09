@@ -14,8 +14,21 @@
     
   +block(stage-content)
     display: block
+    position: static
+
+    +block(stage-image)
+      overflow: hidden
+
+      img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        object-fit: cover
 
     +block(stage-body)
+      position: relative
       display: flex
       flex-direction: column
       justify-content: center
@@ -67,10 +80,8 @@
           padding-top: 10rem
           padding-bottom: 10rem
           min-height: 840px
-
-  +modifier(has-background-image)
-    background: no-repeat center/cover var(--bal-background-image)
-
+          
+  // Shape Modifier
   +modifier(has-shape)
     +block(stage-content)
       margin-bottom: 22px
@@ -94,3 +105,6 @@
         +desktop
           right: 2rem
           bottom: -66px
+        @include from(1467px)
+          right: calc((100vw - var(--bal-stage-container-width)) / 2)
+        
