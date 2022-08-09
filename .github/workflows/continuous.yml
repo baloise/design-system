@@ -17,12 +17,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Update NPM registry
         run: npm run update:registry
