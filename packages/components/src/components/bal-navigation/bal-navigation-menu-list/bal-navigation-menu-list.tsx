@@ -1,6 +1,7 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Props } from '../../../props'
+import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-navigation-menu-list',
@@ -10,6 +11,24 @@ export class NavigationMenuList {
   @Prop() headline?: string
   @Prop() href?: string
   @Prop() target: Props.BalButtonTarget = '_self'
+  @State() headingLevel!: 'h4' | 'h5'
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.setHeadingLevel()
+  }
+
+  connectedCallback() {
+    this.setHeadingLevel()
+  }
+
+  setHeadingLevel = () => {
+    if (isPlatform('touch')) {
+      this.headingLevel = 'h5'
+      return
+    }
+    this.headingLevel = 'h4'
+  }
 
   render() {
     const navMenuListEl = BEM.block('nav').element('menu').element('list')
@@ -27,7 +46,7 @@ export class NavigationMenuList {
               <a href={this.href} target={this.target}>
                 <bal-heading
                   class={{ ...navMenuListEl.element('card').element('heading').class() }}
-                  level="h4"
+                  level={this.headingLevel}
                   space="none"
                 >
                   {this.headline}
@@ -36,7 +55,7 @@ export class NavigationMenuList {
             ) : (
               <bal-heading
                 class={{ ...navMenuListEl.element('card').element('heading').class() }}
-                level="h4"
+                level={this.headingLevel}
                 space="none"
               >
                 {this.headline}

@@ -20,6 +20,11 @@ export class ListItemAccordionBody {
     this.calcContentHeight()
   }
 
+  @Listen('balAccordionChange', { target: 'window' })
+  async listenToAccordionChanges() {
+    this.calcContentHeight()
+  }
+
   componentDidRender() {
     this.calcContentHeight()
   }

@@ -92,12 +92,25 @@
   .bal-list-item:not(.is-in-main-nav) > div,
   .bal-list-item:not(.is-in-main-nav) > button {
     min-height: 72px;
-  }
-  .bal-list-item > a,
-  .bal-list-item > div,
-  .bal-list-item > button {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+  .bal-list-item:not(.is-in-main-nav) > a,
+  .bal-list-item:not(.is-in-main-nav) > div,
+  .bal-list-item:not(.is-in-main-nav) > button {
+    min-height: 72px;
+  }
+  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > a,
+  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > div,
+  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .bal-list-item.is-sub-accordion-item > a,
+  .bal-list-item.is-sub-accordion-item > div,
+  .bal-list-item.is-sub-accordion-item > button {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 }
 
@@ -228,15 +241,13 @@
 }
 
 .bal-list.has-border .bal-list-item:not(.is-sub-accordion-item) {
-  padding-bottom: 2px;
-
   & > div:after,
   a:not(.is-link):after,
   button:not(.button):after {
     content: '';
-    height: 2px;
+    background: var(--bal-color-grey);
+    height: 1px;
     width: 100%;
-    border-radius: $radius;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -435,4 +446,21 @@ bal-card > bal-list.p-0 {
 
 .bal-list.is-on-background-dark bal-list-item-accordion-body bal-list-item-content > p {
   color: $white;
+}
+
+.bal-list-item.is-sub-accordion-item {
+  .bal-list-item-accordion-body {
+    padding-top: 2px;
+
+    &:after {
+      content: '';
+      background: var(--bal-color-grey);
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
 }
