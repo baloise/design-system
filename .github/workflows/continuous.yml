@@ -3,7 +3,7 @@ name: Continuous
 on: [push]
 
 jobs:
-  Component:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -37,8 +37,30 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Install Cypress
-        run: npm run test:cy:install
+  Component:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      # - name: Build
+      #   run: npm run build
+
+      # - name: Install Cypress
+      #   run: npm run test:cy:install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
@@ -47,7 +69,7 @@ jobs:
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
-          install: false
+          # install: false
           browser: chrome
           component: true
           env: type=actual
@@ -91,11 +113,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build:e2e
+      # - name: Build
+      #   run: npm run build:e2e
 
-      - name: Install Cypress
-        run: npm run test:cy:install
+      # - name: Install Cypress
+      #   run: npm run test:cy:install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
@@ -104,7 +126,7 @@ jobs:
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
-          install: false
+          # install: false
           browser: chrome
           env: type=actual
           spec: |
