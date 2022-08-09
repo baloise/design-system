@@ -16,7 +16,7 @@ export class ProductSliderItem implements ComponentInterface {
   /**
    * Label or title of the product
    */
-  @Prop() label?: string
+  @Prop({ reflect: true }) label?: string
 
   /**
    * The type of button.
@@ -26,12 +26,12 @@ export class ProductSliderItem implements ComponentInterface {
   /**
    * The name of the button, which is submitted with the form data.
    */
-  @Prop() name?: string = ''
+  @Prop({ reflect: true }) name?: string = ''
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() value?: string | number = ''
+  @Prop({ reflect: true }) value?: string | number = ''
 
   /**
    * Specifies the URL of the page the link goes to
