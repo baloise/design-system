@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Update NPM registry
         run: npm run update:registry
@@ -43,11 +43,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Update NPM registry
