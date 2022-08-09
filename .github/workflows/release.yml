@@ -17,14 +17,16 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           fetch-depth: '0'
 
-      - uses: actions/setup-node@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '16'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Git Identity
@@ -69,7 +71,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - uses: EndBug/add-and-commit@v5
+      - name: Commit release
+        uses: EndBug/add-and-commit@v5
         with:
           message: 'chore(): update lock files'
         env:

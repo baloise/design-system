@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
+import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 export const config: Config = {
   ...StencilBaseConfig,
@@ -8,6 +9,7 @@ export const config: Config = {
     modulePathIgnorePatterns: ['cypress'],
   },
   outputTargets: [
+    VueGenerator('../..', './.storybook/vue/components.ts', []),
     {
       type: 'www',
       dir: 'www',
