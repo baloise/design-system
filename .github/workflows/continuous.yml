@@ -192,27 +192,15 @@ jobs:
   OutputTargets:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Node Version
-        run: node -v
-
-      - name: NPM Version
-        run: npm -v
-
-      - name: Restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Update npm registry
         run: npm run update:registry
