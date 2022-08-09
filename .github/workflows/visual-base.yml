@@ -23,19 +23,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - uses: cypress-io/github-action@v2
+      - name: Install Cypress
+        run: npm run test:cy:install
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
         with:
           build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
+          install: false
           browser: chrome
           env: type=base
-          spec: cypress/e2e/visual/*
+          spec: |
+            cypress/e2e/visual/*.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-snapshots
