@@ -25,13 +25,12 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:vite && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.build/web-types.js",
     "build:vetur": "node ./.build/vetur.js",
-    "build:vite": "baloiseStencilViteFix",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.esm.js",
@@ -42,7 +41,6 @@
   ],
   "devDependencies": {
     "@babel/types": "~7.18.10",
-    "@baloise/stencil-vite-fix-next": "10.15.9",
     "@types/lodash.camelcase": "~4.3.7",
     "@types/lodash.upperfirst": "~4.3.7",
     "ag-grid-community": "~26.2.1",
