@@ -1,13 +1,18 @@
 +block(nav)
-  position: fixed
+  position: relative
   display: block
-  top: 0
-  left: 0
   width: 100%
-  transition: transform .3s ease-in-out
   z-index: 30
+  padding-bottom: 4rem
+  +desktop
+    padding-bottom: 0
+    position: fixed
+    top: 0
+    left: 0
+    transition: transform .3s ease-in-out
   +modifier(transformed)
-    transform: translateY(-3rem)
+    +desktop
+      transform: translateY(-3rem)
 
   +element(meta)
     +unselectable
@@ -160,6 +165,10 @@
         padding-bottom: 1rem
       > bal-card >:not(bal-badge):not(bal-tag):first-child
         padding-top: 1rem
+      +modifier(context-grey)
+        +touch
+          padding-bottom: 1rem
+          padding-top: 1rem
       +modifier(context-white)
         +desktop
           > bal-card > bal-card-content
@@ -203,9 +212,8 @@
       align-items: center
       margin: 0 auto
       padding: 0 1rem
-
       +tablet
-        padding: 0 48px
+        padding: 0 3rem
     +element(actions)
       margin-left: auto
       > div
@@ -245,12 +253,13 @@
           top: 50%
           transform: translateY(-50%)
           content: '\279E'
-        &:hover
-          color: var(--bal-color-light-blue-dark)
+        +hover
+          &:hover
+            color: var(--bal-color-light-blue-dark)
     .bal-list
       opacity: 0
       transition: opacity .3s ease-in-out .1s
-    &.is-active
+    +modifier(active)
       opacity: 1
       pointer-events: all
       max-height: 100%
@@ -268,7 +277,7 @@
     position: fixed
     bottom: 0
     left: 0
-    width: 100vw
+    width: 100%
     background: var(--bal-color-grey-2)
     padding: .5rem
 
