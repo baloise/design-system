@@ -286,11 +286,6 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
       }
     }
 
-    /*& > div:hover:after,
-    a:not(.is-link):hover:after,
-    button:not(.button):hover:after {
-      background: $blue-5;
-    }*/
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after {
