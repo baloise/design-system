@@ -115,8 +115,12 @@ export const DataTypes = args => ({
       </bal-data-item>
       <bal-data-item>
         <bal-data-label>Editable</bal-data-label>
-        <bal-data-value editable>Value</bal-data-value>
+        <bal-data-value editable>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
       </bal-data-item>
+      <bal-data-item>
+      <bal-data-label>Editable Multiline</bal-data-label>
+      <bal-data-value multiline editable>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
+    </bal-data-item>
       <bal-data-item disabled>
         <bal-data-label>Disabled</bal-data-label>
         <bal-data-value>Value</bal-data-value>
