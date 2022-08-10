@@ -63,13 +63,13 @@ export class AngularFrameworkDelegate implements FrameworkDelegate {
 }
 
 export const attachView = (
-  zone: NgZone,
+  _zone: NgZone,
   resolver: ComponentFactoryResolver,
   injector: Injector,
   location: ViewContainerRef | undefined,
   appRef: ApplicationRef,
   elRefMap: WeakMap<HTMLElement, any>,
-  elEventsMap: WeakMap<HTMLElement, () => void>,
+  _elEventsMap: WeakMap<HTMLElement, () => void>,
   container: any,
   component: any,
   params: any,
