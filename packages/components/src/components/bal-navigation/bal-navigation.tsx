@@ -210,7 +210,7 @@ export class Navigation implements ComponentInterface {
           />
         </bal-meta-mobile-head>
         <bal-main-mobile
-          class={{ 'is-hidden': !this.isMainBodyOpen, 'is-active': this.isMainBodyOpen }}
+          class={{ 'is-hidden': !this.isMainBodyOpen, 'bal-nav__mainmobile--active': this.isMainBodyOpen }}
           aria-hidden={!this.isMainBodyOpen}
         >
           <bal-list border main-nav-accordion size="large">
