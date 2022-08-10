@@ -864,6 +864,10 @@ export namespace Components {
         "turn": boolean;
     }
     interface BalImageSlider {
+        /**
+          * value to set the images aspect ratio
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
     }
     interface BalImageSliderItem {
         /**
@@ -4092,6 +4096,10 @@ declare namespace LocalJSX {
         "turn"?: boolean;
     }
     interface BalImageSlider {
+        /**
+          * value to set the images aspect ratio
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
     }
     interface BalImageSliderItem {
         /**

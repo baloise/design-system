@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/baloise/design-system/issues"
   },
