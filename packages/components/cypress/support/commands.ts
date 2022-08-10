@@ -76,7 +76,6 @@ Cypress.Commands.add('shouldHaveEventDetail', { prevSubject: 'optional' }, (subj
   })
   return cy.wrap(subject, { log: false }).then(event => {
     const spy = event as any as sinon.SinonSpy
-    console.log(time, spy.getCall(time))
     expect(spy.getCall(time).args[0].detail).deep.equal(value)
   }) as any
 })
