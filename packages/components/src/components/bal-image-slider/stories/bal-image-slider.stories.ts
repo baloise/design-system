@@ -15,20 +15,22 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-image-slider>
+  <bal-image-slider v-bind="args">
     <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
     <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
     <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
   </bal-image-slider>`,
 })
-Basic.args = {}
+Basic.args = {
+  aspectRatio: '16by9',
+}
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Numbers = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-image-slider>
+  <bal-image-slider v-bind="args">
     <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
     <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
     <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
@@ -39,26 +41,30 @@ export const Numbers = args => ({
     <bal-image-slider-item src="https://i.picsum.photos/id/115/1280/720.jpg?hmac=GOG9AmYyg9CR0FiDq-hEVsqLBO9rLH93kliNgEcHaG8"></bal-image-slider-item>
   </bal-image-slider>`,
 })
-Numbers.args = {}
+Numbers.args = {
+  aspectRatio: '16by9',
+}
 Numbers.parameters = { ...component.sourceCode(Numbers) }
 
 export const CustomContent = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-image-slider>
+  <bal-image-slider v-bind="args">
     <bal-image-slider-item>
-      <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
+      <img src="https://i.picsum.photos/id/1022/1000/1000.jpg?hmac=tmaFiBYWbQ3U_yOm3WHEFt_ZNJNkVDojQBy9vXUZd70" />
     </bal-image-slider-item>
     <bal-image-slider-item>
-      <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
+      <img src="https://i.picsum.photos/id/235/1000/1000.jpg?hmac=Of5tErj6Ycj_VJNGohIzGzzs37NpCUEllDPDtClgUrU" />
     </bal-image-slider-item>
     <bal-image-slider-item>
-      <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
+      <img src="https://i.picsum.photos/id/10/1000/1000.jpg?hmac=8imXWM_Cxe6_cWjyUbT2Vh7oxwiz12HfzJHp6CLoGwM" />
     </bal-image-slider-item>
   </bal-image-slider>`,
 })
-CustomContent.args = {}
+CustomContent.args = {
+  aspectRatio: '1by1',
+}
 CustomContent.parameters = { ...component.sourceCode(CustomContent) }
 
 export const WithGrid = args => ({
@@ -67,7 +73,7 @@ export const WithGrid = args => ({
   template: `
   <div class="columns">
     <div class="column is-4">
-      <bal-image-slider>
+      <bal-image-slider v-bind="args">
         <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
         <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
         <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
@@ -79,5 +85,7 @@ export const WithGrid = args => ({
     </div>
   </div>`,
 })
-WithGrid.args = {}
+WithGrid.args = {
+  aspectRatio: '16by9',
+}
 WithGrid.parameters = { ...component.sourceCode(WithGrid) }

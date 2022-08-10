@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
-  "repository": {
+    "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
@@ -65,11 +65,10 @@
     "build:docs": "npm run build:pre && npm run build:css && npm run build:components && npm run build:post:table__ && npm --prefix packages/components run build:docs",
     "build:e2e": "npm run build:pre && npm run build:css && npm run build:components && npm run build:post:testing",
     "==================== TEST ====================": "================================",
-    "test": "npm run test:components",
+    "test": "node .build/banner.js test && npm --prefix packages/components test",
     "test:e2e": "node .build/banner.js cypress && concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:test:e2e:cy\" \"npm:test:e2e:app\"",
     "test:e2e:app": "npm --prefix packages/components run serve",
     "test:e2e:cy": "npm --prefix packages/components run cy:open",
-    "test:components": "node .build/banner.js test:components && cd packages/components && npm run test",
     "test:cypress": "node .build/banner.js test:cypress && npm --prefix packages/components run cy:run",
     "test:build-server": "npm --prefix packages/components run www",
     "test:start-server": "http-server packages/components/www -p 3333 -c-1 --silent",
