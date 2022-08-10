@@ -1,5 +1,6 @@
 {
-  "version": "10.15.9",
+  "version": "10.16.1",
+  "granularPathspec": false,
   "packages": [
     "packages/*",
     "packages/output-targets/*"
@@ -10,7 +11,29 @@
       "allowBranch": "next",
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
-      "exact": true
+      "createRelease": "github",
+      "exact": true,
+      "forcePublish": true
+    },
+    "publish": {
+      "tempTag": true
     }
-  }
+  },
+  "ignoreChanges": [
+    ".build/**",
+    ".github/**",
+    ".husky/**",
+    "resources/**",
+    "**/.build/**",
+    "**/generated/**",
+    "**/stories/**",
+    "**/test/**",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.e2e.ts",
+    "**/*.md",
+    "**/*.mdx",
+    "**/*.stories.ts",
+    "**/*.html"
+  ]
 }

@@ -1,5 +1,5 @@
 <a href="https://design.baloise.dev" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/design-system/design-system/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
+    <img src="https://raw.githubusercontent.com/baloise-incubator/design-system/next/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
 
 <br>
