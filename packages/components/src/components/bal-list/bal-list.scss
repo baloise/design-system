@@ -276,15 +276,27 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 
   .bal-list-item:not(.is-disabled).is-list-item-clickable {
-    & > div:hover:after,
+    & > div,
+    a:not(.is-link),
+    button:not(.button) {
+      @include hover() {
+        &:hover:after {
+          background: $blue-5;
+        }
+      }
+    }
+
+    /*& > div:hover:after,
     a:not(.is-link):hover:after,
     button:not(.button):hover:after {
       background: $blue-5;
-    }
+    }*/
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after {
-      background: $blue-5;
+      @media only screen and (min-width: 1025px) {
+        background: $blue-5;
+      }
     }
   }
 
