@@ -32,8 +32,8 @@ export class ListItemAccordionBody {
   calcContentHeight() {
     const inner = this.el.querySelector('.inner')
     if (inner) {
-      //this.contentHeight = inner.scrollHeight + 'px'
-      this.contentHeight = '100%'
+      this.contentHeight = inner.scrollHeight + 'px'
+      //this.contentHeight = '100%'
     }
   }
 
@@ -44,8 +44,8 @@ export class ListItemAccordionBody {
           'bal-list-item-accordion-body bal-list-item': true,
           'is-open': this.open,
         }}
-        //style={{ maxHeight: this.open ? this.contentHeight : '0' }}
-        style={{ height: this.open ? this.contentHeight : '0', maxHeight: this.open ? 'inherit' : '0' }}
+        style={{ maxHeight: this.open ? this.contentHeight : '0' }}
+        //style={{ height: this.open ? this.contentHeight : '0', maxHeight: this.open ? 'inherit' : '0' }}
       >
         <bal-list-item-content class="inner">
           <slot></slot>
