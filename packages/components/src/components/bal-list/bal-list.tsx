@@ -52,6 +52,7 @@ export class List {
           'is-disabled': this.disabled,
           'has-border': this.border,
           'has-size-large': this.size === 'large',
+          'has-size-small': this.size === 'small',
           [`is-on-background-${this.background}`]: true,
           'is-in-main-nav': this.mainNavAccordion,
         }}

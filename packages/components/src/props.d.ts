@@ -63,7 +63,7 @@ export namespace Props {
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
-  export type BalListSize = 'large' | ''
+  export type BalListSize = 'small' | 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
 
   export type BalNavbarInterface = 'app' | 'simple'

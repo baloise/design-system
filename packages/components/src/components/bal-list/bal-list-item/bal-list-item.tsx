@@ -95,6 +95,7 @@ export class ListItem {
             'is-disabled': this.disabled,
             'is-selected': this.selected,
             'is-list-item-clickable': this.clickable || this.href.length > 0,
+            'is-in-main-nav': this.isInMainNav,
           }}
         >
           <a

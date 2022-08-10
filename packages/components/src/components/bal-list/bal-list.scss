@@ -45,6 +45,9 @@
 
 .bal-list-item {
   position: relative;
+}
+
+.bal-list-item:not(.is-in-main-nav) {
   & > a,
   & > div,
   & > button {
@@ -70,9 +73,15 @@
   flex: 1;
 }
 
-.bal-list-item.is-sub-accordion-item {
+.bal-list-item.is-in-main-nav {
   @include touch() {
-    padding: 0 1rem;
+    padding: 1rem 0;
+    &.is-sub-accordion-item {
+      padding: 0 1rem 1rem;
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
   }
 }
 
@@ -87,30 +96,23 @@
   align-items: center;
 }
 
+.bal-list.has-size-small {
+  .bal-list-item,
+  .bal-list-item > a,
+  .bal-list-item > div,
+  .bal-list-item > button,
+  .bal-list-item-icon {
+    min-height: 24px;
+  }
+}
+
 .bal-list.has-size-large {
-  .bal-list-item:not(.is-in-main-nav) > a,
-  .bal-list-item:not(.is-in-main-nav) > div,
-  .bal-list-item:not(.is-in-main-nav) > button {
+  .bal-list-item > a,
+  .bal-list-item > div,
+  .bal-list-item > button {
     min-height: 72px;
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-  .bal-list-item:not(.is-in-main-nav) > a,
-  .bal-list-item:not(.is-in-main-nav) > div,
-  .bal-list-item:not(.is-in-main-nav) > button {
-    min-height: 72px;
-  }
-  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > a,
-  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > div,
-  .bal-list-item.is-in-main-nav:not(.is-sub-accordion-item) > button {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-  .bal-list-item.is-sub-accordion-item > a,
-  .bal-list-item.is-sub-accordion-item > div,
-  .bal-list-item.is-sub-accordion-item > button {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
   }
 }
 
