@@ -78,7 +78,6 @@
     "test:visual:actual": "npm --prefix packages/components run cy:visual:actual",
     "==================== RELEASE ====================": "================================",
     "release:canary": "lerna publish prepatch --canary --preid beta --dist-tag beta --yes --no-changelog",
-    "release": "lerna publish --no-private --yes",
     "==================== DOCUMENTATION ====================": "================================",
     "storybook": "node .build/banner.js storybook:build && npm run build:docs",
     "storybook:start": "node .build/banner.js storybook:start && http-server storybook -p 8080"
@@ -102,7 +101,7 @@
     "glob": "~8.0.3",
     "http-server": "~14.1.1",
     "husky": "~8.0.1",
-    "lerna": "^5.4.0",
+    "lerna": "^4.0.0",
     "lint-staged": "~13.0.0",
     "prettier": "~2.7.1",
     "rimraf": "~3.0.2",

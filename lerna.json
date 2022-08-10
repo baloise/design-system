@@ -1,5 +1,6 @@
 {
   "version": "10.16.1",
+  "granularPathspec": false,
   "packages": [
     "packages/*",
     "packages/output-targets/*"
@@ -7,11 +8,32 @@
   "command": {
     "version": {
       "message": "chore(release): %s",
-      "allowBranch": "next",
+      "allowBranch": "master",
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
+      "createRelease": "github",
       "exact": true,
       "forcePublish": true
+    },
+    "publish": {
+      "tempTag": true
     }
-  }
+  },
+  "ignoreChanges": [
+    ".build/**",
+    ".github/**",
+    ".husky/**",
+    "resources/**",
+    "**/.build/**",
+    "**/generated/**",
+    "**/stories/**",
+    "**/test/**",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.e2e.ts",
+    "**/*.md",
+    "**/*.mdx",
+    "**/*.stories.ts",
+    "**/*.html"
+  ]
 }
