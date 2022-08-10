@@ -222,8 +222,6 @@
   +element(mainmobile)
     display: block
     padding: 1.5rem 1rem 0
-    opacity: 0
-    transition: opacity .3s ease-in-out
     +tablet
       padding: 0 3rem
     +element(link)
@@ -256,20 +254,6 @@
         +hover
           &:hover
             color: var(--bal-color-light-blue-dark)
-    .bal-list
-      opacity: 0
-      transition: opacity .3s ease-in-out .1s
-    +modifier(active)
-      opacity: 1
-      pointer-events: all
-      max-height: 100%
-      transition: opacity .3s ease-in-out
-      &::before
-        opacity: 1
-        transition: opacity .3s ease-in-out
-      .bal-list
-        opacity: 1
-        transition: opacity .3s ease-in-out .1s
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem

@@ -10,7 +10,6 @@ export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
-  //private metaNavMobileElement!: HTMLBalMetaMobileHeadElement
   private previousY = 0
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
@@ -53,8 +52,10 @@ export class Navigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    this.isTransformed = window.scrollY > this.previousY
-    this.previousY = window.scrollY
+    if (isPlatform('desktop')) {
+      this.isTransformed = window.scrollY > this.previousY
+      this.previousY = window.scrollY
+    }
   }
 
   async connectedCallback() {
@@ -78,10 +79,6 @@ export class Navigation implements ComponentInterface {
   componentDidUpdate() {
     this.updateIndexes()
   }
-
-  /*  componentDidRender() {
-    this.metaNavMobileElement = this.el.querySelector('bal-meta-mobile-head') as HTMLBalMetaMobileHeadElement
-  }*/
 
   private updateIndexes() {
     if (this.levels?.length > 0) {
@@ -204,66 +201,68 @@ export class Navigation implements ComponentInterface {
           <bal-button
             slot="burger"
             color="light"
-            square
+            square={true}
             icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
             onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
+            inverted={this.isMainBodyOpen}
           />
         </bal-meta-mobile-head>
-        <bal-main-mobile
-          class={{ 'is-hidden': !this.isMainBodyOpen, 'bal-nav__mainmobile--active': this.isMainBodyOpen }}
-          aria-hidden={!this.isMainBodyOpen}
-        >
-          <bal-list border main-nav-accordion size="small">
-            {this.levels.map(meta => (
-              <bal-list-item accordion>
-                <bal-list-item-accordion-head>
-                  <bal-list-item-content>
-                    <bal-list-item-title>{meta.label}</bal-list-item-title>
-                  </bal-list-item-content>
-                </bal-list-item-accordion-head>
-                <bal-list-item-accordion-body>
-                  <div>
-                    {meta.link && (
-                      <div class="bal-nav__mainmobile__link">
-                        <a href={meta.link}>{meta.linkLabel}</a>
-                      </div>
-                    )}
-                    <bal-list border main-nav-accordion class="pt-4" size="small">
-                      {meta.subLevels?.map(main => {
-                        return main.isTabLink ? (
-                          <bal-list-item sub-accordion-item href={main.link} target={main.target}>
-                            <bal-list-item-content>
-                              <bal-list-item-title>{main.label}</bal-list-item-title>
-                            </bal-list-item-content>
-                          </bal-list-item>
-                        ) : (
-                          <bal-list-item accordion sub-accordion-item>
-                            <bal-list-item-accordion-head>
+        {this.isMainBodyOpen && (
+          <bal-main-mobile>
+            <bal-list border main-nav-accordion size="small">
+              {this.levels.map(meta => (
+                <bal-list-item accordion>
+                  <bal-list-item-accordion-head>
+                    <bal-list-item-content>
+                      <bal-list-item-title>{meta.label}</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item-accordion-head>
+                  <bal-list-item-accordion-body>
+                    <div>
+                      {meta.link && (
+                        <div class="bal-nav__mainmobile__link">
+                          <a href={meta.link}>{meta.linkLabel}</a>
+                        </div>
+                      )}
+                      <bal-list border main-nav-accordion class="pt-4" size="small">
+                        {meta.subLevels?.map(main => {
+                          return main.isTabLink ? (
+                            <bal-list-item sub-accordion-item href={main.link} target={main.target}>
                               <bal-list-item-content>
                                 <bal-list-item-title>{main.label}</bal-list-item-title>
                               </bal-list-item-content>
-                            </bal-list-item-accordion-head>
-                            <bal-list-item-accordion-body>
-                              <bal-navigation-menu
-                                link-href={main.link}
-                                link-name={main.linkLabel}
-                                target={main.target}
-                                elements={main.subLevels}
-                              />
-                            </bal-list-item-accordion-body>
-                          </bal-list-item>
-                        )
-                      })}
-                    </bal-list>
-                  </div>
-                </bal-list-item-accordion-body>
-              </bal-list-item>
-            ))}
-          </bal-list>
-        </bal-main-mobile>
-        <bal-meta-mobile-foot class={{ 'is-hidden': !this.isMainBodyOpen }}>
-          <slot name="meta-mobile-foot" />
-        </bal-meta-mobile-foot>
+                            </bal-list-item>
+                          ) : (
+                            <bal-list-item accordion sub-accordion-item>
+                              <bal-list-item-accordion-head>
+                                <bal-list-item-content>
+                                  <bal-list-item-title>{main.label}</bal-list-item-title>
+                                </bal-list-item-content>
+                              </bal-list-item-accordion-head>
+                              <bal-list-item-accordion-body>
+                                <bal-navigation-menu
+                                  link-href={main.link}
+                                  link-name={main.linkLabel}
+                                  target={main.target}
+                                  elements={main.subLevels}
+                                />
+                              </bal-list-item-accordion-body>
+                            </bal-list-item>
+                          )
+                        })}
+                      </bal-list>
+                    </div>
+                  </bal-list-item-accordion-body>
+                </bal-list-item>
+              ))}
+            </bal-list>
+          </bal-main-mobile>
+        )}
+        {this.isMainBodyOpen && (
+          <bal-meta-mobile-foot>
+            <slot name="meta-mobile-foot" />
+          </bal-meta-mobile-foot>
+        )}
         <slot></slot>
       </Host>
     )
