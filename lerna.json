@@ -1,5 +1,5 @@
 {
-  "version": "10.15.9",
+  "version": "10.16.1",
   "packages": [
     "packages/*",
     "packages/output-targets/*"
@@ -10,7 +10,8 @@
       "allowBranch": "next",
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
-      "exact": true
+      "exact": true,
+      "forcePublish": true
     }
   }
 }
