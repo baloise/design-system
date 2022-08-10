@@ -8,7 +8,7 @@
   "command": {
     "version": {
       "message": "chore(release): %s",
-      "allowBranch": "master",
+      "allowBranch": "next",
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
       "createRelease": "github",
