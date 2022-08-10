@@ -120,7 +120,8 @@
         max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 2.5rem 3rem .5rem
+    +desktop
+      padding: 2.5rem 3rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -160,9 +161,10 @@
       > bal-card >:not(bal-badge):not(bal-tag):first-child
         padding-top: 1rem
       +modifier(context-white)
-        > bal-card > bal-card-content
-          padding-left: 0
-          padding-right: 0
+        +desktop
+          > bal-card > bal-card-content
+            padding-left: 0
+            padding-right: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
