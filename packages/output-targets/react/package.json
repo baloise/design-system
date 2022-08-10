@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-output-target-react",
-  "version": "10.15.9",
+  "version": "10.16.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -33,9 +33,6 @@
     "dist/",
     "react-component-lib/"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "tsc && npm run rollup",

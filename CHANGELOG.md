@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.16.0](https://github.com/baloise/design-system/compare/v10.15.9...v10.16.0) (2022-08-10)
+
+
+### Bug Fixes
+
+* **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
+* **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+
+## 10.15.8 (2022-08-03)
+
+
+
 ## [10.15.9](https://github.com/baloise/design-system/compare/v10.15.8...v10.15.9) (2022-08-08)
 
 
