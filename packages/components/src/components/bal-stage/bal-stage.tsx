@@ -1,18 +1,11 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { Props } from '../../types'
-import { isPlatform } from '../../'
-import { Platforms, PlatformSrcSet } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-stage',
 })
 export class Stage implements ComponentInterface {
-  @Element() el!: HTMLElement
-
-  @State() viewPort: Platforms = 'mobile'
-  @State() imageSrc: PlatformSrcSet = {}
-
   /**
    * Defines content width of the stage
    */
@@ -48,45 +41,20 @@ export class Stage implements ComponentInterface {
    */
   @Prop() inverted?: boolean = false
 
-  /**
-   * src-set string for the css background-image
-   */
-  @Prop() images?: string
-
-  setImageSrc() {
-    const images = this.images?.split(',')
-    let srcObj = {}
-    images?.forEach(image => {
-      const string = image.trim()
-      const key = string.substring(string.indexOf(' ') + 1)
-      const value = string.substring(0, string.indexOf(' '))
-      srcObj = { ...srcObj, ...{ [key]: value } }
-    })
-    this.imageSrc = srcObj
-    this.viewPort = 'mobile'
-  }
-
-  getImageSrc() {
-    if (isPlatform('mobile') && 'mobile' in this.imageSrc) {
-      this.viewPort = 'mobile'
-    } else if (isPlatform('tablet') && 'tablet' in this.imageSrc) {
-      this.viewPort = 'tablet'
-    } else if (isPlatform('desktop') && 'desktop' in this.imageSrc) {
-      this.viewPort = 'desktop'
-    }
-  }
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    if (this.images) {
-      this.getImageSrc()
-    }
-  }
-
-  componentDidLoad() {
-    if (this.images) {
-      this.setImageSrc()
-      this.getImageSrc()
+  getContainerWidth = () => {
+    switch (this.containerSize) {
+      case 'is-fluid':
+        return '100%'
+      case 'is-detail-page':
+        return '680px'
+      case 'is-compact':
+        return '832px'
+      case 'is-blog-page':
+        return '920px'
+      case 'is-wide':
+        return '1400px'
+      default:
+        return '100vw'
     }
   }
 
@@ -98,14 +66,10 @@ export class Stage implements ComponentInterface {
         class={{
           ...block.class(),
           ...block.modifier(`is-${this.size}`).class(!!this.size),
-          ...block.modifier(`is-${this.color}`).class(!!this.color && !this.images),
-          ...block.modifier('has-background-image').class(!!this.images),
+          ...block.modifier(`is-${this.color}`).class(!!this.color),
           ...block.modifier('has-shape').class(!!this.hasShape),
         }}
-        style={{
-          '--bal-background-image':
-            Object.keys(this.imageSrc).length > 0 ? `url('${this.imageSrc[this.viewPort]}')` : '',
-        }}
+        style={{ '--bal-stage-container-width': this.getContainerWidth() }}
       >
         <section
           class={{
