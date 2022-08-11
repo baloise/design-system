@@ -34,7 +34,7 @@ jobs:
       - name: Spell Check
         run: npm run spell
 
-      - name: Test
+      - name: Unit tests
         run: npm run test
 
   Component:

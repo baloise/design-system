@@ -1,25 +1,37 @@
 +block(image-slider)
-  display: block
-  position: relative
-  width: 100%
-  padding-top: 52.5%
-  max-width: 1400px
 
   +element(container)
-    position: absolute
+    display: block
+    position: relative
+    // width: 100%
     overflow: hidden
-    max-width: 1400px
-    max-height: 788px
-    top: 0
-    left: 0
-    bottom: 45px
-    right: 0
+    border-radius: 4px
+
+    +modifier(is-1by1)
+      padding-top: 100%
+    +modifier(is-16by9)
+      padding-top: 56.25%
+    +modifier(is-3by2)
+      padding-top: 66.66%
+    +modifier(is-4by3)
+      padding-top: 75%
 
     +element(images)
+      position: absolute
+      top: 0
+      left: 0
       display: flex
       flex-direction: row
-      width: fit-content
       height: 100%
+
+      +block(image-slider-item)
+        position: relative
+        flex: 0 0 100%
+
+        & > img
+          height: 100%
+          width: 100%
+          object-fit: cover
 
   +element(controls)
     display: flex
@@ -27,10 +39,13 @@
     align-items: center
     width: 200px
     margin: auto
-    margin-top: 48px
 
     +element(navigation)
       margin-top: 1rem
+      &[disabled]
+        button,
+        button:hover
+          background-color: transparent
 
     +element(dots)
       display: flex
@@ -39,7 +54,7 @@
       height: 24px
       max-width: 88px
       min-width: 63px
-      margin-top: 14px
+      margin: 14px 20px 0
       padding: 8px
       gap: 8px
       background: #e8e8e8
@@ -56,6 +71,3 @@
           background-color: var(--bal-color-primary)
         +modifier(inactive)
           background-color: var(--bal-color-white)
-
-+block(image-slider-item)
-  width: max-content
