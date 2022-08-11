@@ -3,7 +3,7 @@ bal-popover,
   display: block;
   @include mobile() {
     .popover-content {
-      min-width: 100%;
+      min-width: 100vw !important;
     }
   }
 }

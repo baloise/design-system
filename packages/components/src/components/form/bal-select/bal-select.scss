@@ -25,6 +25,7 @@ bal-select,
     outline: none;
     box-shadow: none;
     padding-right: calc(0.75em - 1px);
+    min-height: 48px;
 
     & > bal-icon {
       min-height: 100%;
@@ -39,10 +40,11 @@ bal-select,
       outline-width: 0;
       flex: 1;
       min-height: 44px !important;
-      padding-bottom: calc(0.5em - 3px);
+      height: 44px;
+      padding-bottom: calc(0.5em - 5px);
       padding-left: calc(0.75em - 1px);
       padding-right: calc(0.75em - 1px);
-      padding-top: calc(0.5em - 3px);
+      padding-top: calc(0.5em - 5px);
 
       &:read-only {
         user-select: none !important;
@@ -66,12 +68,18 @@ bal-select,
       line-height: 18px;
       max-width: 100%;
       min-width: 0;
-      gap: 4px;
+      gap: 0;
     }
 
-    bal-tag:first-child {
-      margin-left: calc(0.75em - 1px);
+    bal-tag {
+      margin-left: 4px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
+
+    // bal-tag:first-child {
+    //   margin-left: calc(0.75em - 1px);
+    // }
 
     bal-tag + .input {
       padding-left: calc(0.75em - 8px);
