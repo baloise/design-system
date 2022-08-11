@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components",
-  "version": "10.17.1",
+  "version": "10.17.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -73,10 +73,10 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/*cy.ts\""
   },
   "dependencies": {
-    "@baloise/design-system-next-css": "10.17.1",
-    "@baloise/design-system-next-fonts": "10.17.1",
-    "@baloise/design-system-next-icons": "10.17.1",
-    "@baloise/design-system-next-tokens": "10.17.1",
+    "@baloise/design-system-next-css": "10.17.2",
+    "@baloise/design-system-next-fonts": "10.17.2",
+    "@baloise/design-system-next-icons": "10.17.2",
+    "@baloise/design-system-next-tokens": "10.17.2",
     "@baloise/web-app-utils": "~3.6.1",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.16.1",
@@ -99,9 +99,9 @@
   },
   "devDependencies": {
     "@babel/core": "~7.18.10",
-    "@baloise/design-system-next-output-target-angular": "10.17.1",
-    "@baloise/design-system-next-output-target-react": "10.17.1",
-    "@baloise/design-system-next-output-target-vue": "10.17.1",
+    "@baloise/design-system-next-output-target-angular": "10.17.2",
+    "@baloise/design-system-next-output-target-react": "10.17.2",
+    "@baloise/design-system-next-output-target-vue": "10.17.2",
     "@etchteam/storybook-addon-status": "~4.2.0",
     "@stencil/postcss": "~2.1.0",
     "@stencil/sass": "~1.5.2",
