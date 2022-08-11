@@ -1,13 +1,13 @@
 +block(nav)
-  position: sticky
+  position: fixed
   display: block
   top: 0
   left: 0
   width: 100%
-  transition: top .3s ease-in-out
-  z-index: 100
+  transition: transform .3s ease-in-out
+  z-index: 30
   +modifier(transformed)
-    top: -3rem
+    transform: translateY(-3rem)
 
   +element(meta)
     +unselectable
@@ -42,18 +42,17 @@
     left: 50%
     top: 100%
     transform: translateX(-50%)
-    z-index: 9000
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%
-      &.is-expanded
-        border-bottom-left-radius: 12px
-        border-bottom-right-radius: 12px
+      +modifier(expanded)
+        border-bottom-left-radius: var(--bal-radius-large)
+        border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
       margin: 1rem auto 0
       width: calc(100vw - 160px)
-      border-radius: 12px
+      border-radius: var(--bal-radius-large)
     +fullhd
       margin: 1.5rem auto 0
       width: 1480px
@@ -73,9 +72,7 @@
         width: 100%
       +until-widescreen
         width: 100%
-      +widescreen
-        padding: 0 2.5rem
-        border-radius: 12px
+      +desktop
         &::after
           position: absolute
           content: ''
@@ -87,15 +84,19 @@
           opacity: 0
           z-index: 1
           transition: opacity .3s ease-in-out
-        > div
-          align-items: center
-        &.is-active
-          border-bottom-left-radius: 0 !important
-          border-bottom-right-radius: 0 !important
-          transition: border-radius .3s ease-in-out
+        +modifier(active)
           &::after
             opacity: 1
             transition: opacity .3s ease-in-out
+      +widescreen
+        padding: 0 2.5rem
+        border-radius: var(--bal-radius-large)
+        > div
+          align-items: center
+        +modifier(active)
+          border-bottom-left-radius: 0 !important
+          border-bottom-right-radius: 0 !important
+          transition: border-radius .3s ease-in-out
       +fullhd
         padding: 0 1.5rem
 
@@ -109,40 +110,26 @@
     +element(body)
       position: relative
       display: block
-      min-height: 0 !important
-      max-height: 0
-      overflow: hidden
-      pointer-events: none
-      opacity: 0
-      transition: opacity .3s ease-in-out
+      max-height: calc(100vh - 160px)
+      overflow-y: auto
       background: var(--bal-color-white)
       +widescreen
-        border-bottom-left-radius: 12px
-        border-bottom-right-radius: 12px
-      .bal-nav__menu
-        opacity: 0
-        transition: opacity .3s ease-in-out .1s
-      &.is-active
-        opacity: 1
-        pointer-events: all
-        transition: opacity .3s ease-in-out
-        overflow-y: auto
-        max-height: calc(100vh - 160px)
-        +fullhd
-          max-height: calc(100vh - 176px)
-        .bal-nav__menu
-          opacity: 1
-          transition: opacity .3s ease-in-out .1s
-
+        border-bottom-left-radius: var(--bal-radius-large)
+        border-bottom-right-radius: var(--bal-radius-large)
+      +fullhd
+        max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 40px 3rem 0
+    padding: 2.5rem 3rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
+      .column
+        padding-top: 0
+        padding-bottom: 0
     +element(link)
       display: block
-      margin-bottom: 1rem
+      margin-bottom: .5rem
       > a
         color: var(--bal-color-blue)
         position: relative
@@ -156,8 +143,10 @@
           top: 50%
           transform: translateY(-50%)
           content: '\279E'
-        &:hover
-          color: var(--bal-color-light-blue-dark)
+        +hover
+          &:hover
+            color: var(--bal-color-light-blue-dark)
+            text-decoration: underline
     +element(white-list)
       +widescreen
         display: flex
@@ -166,25 +155,33 @@
     +element(list)
       display: block
       position: relative
-      margin-bottom: 3rem
+      > bal-card >:not(bal-badge):not(bal-tag):last-child
+        padding-bottom: 1rem
+      > bal-card >:not(bal-badge):not(bal-tag):first-child
+        padding-top: 1rem
       +modifier(context-white)
         > bal-card > bal-card-content
-          padding: 0
+          padding-left: 0
+          padding-right: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
-      > bal-card > bal-card-content > a:hover > bal-heading > h4
-        color: var(--bal-color-light-blue-dark)
-
+      > bal-card > bal-card-content > a
+        +hover
+          &:hover
+            > bal-heading > h4
+              color: var(--bal-color-light-blue-dark)
+              text-decoration: underline
       +element(item)
         display: block
         +element(link)
           display: block
           margin-top: .5rem
-          &:hover
-            color: var(--bal-color-light-blue-dark)
-
+          +hover
+            &:hover
+              color: var(--bal-color-light-blue-dark)
+              text-decoration: underline
       +element(card)
         margin: 0
         +element(heading)
