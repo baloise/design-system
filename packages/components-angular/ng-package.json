@@ -102,5 +102,5 @@
       "@baloise/design-system-next-components/dist/components/bal-stage-back-link": "BalStageBackLint"
     }
   },
-  "whitelistedNonPeerDependencies": ["@baloise/design-system-next-components"]
+  "allowedNonPeerDependencies": ["@baloise/design-system-next-components"]
 }
