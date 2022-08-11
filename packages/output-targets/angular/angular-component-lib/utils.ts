@@ -26,7 +26,7 @@ export const proxyMethods = (Cmp: any, methods: string[]) => {
   })
 }
 
-export const proxyOutputs = (instance: any, el: HTMLElement, events: string[]) => {
+export const proxyOutputs = (instance: any, _el: HTMLElement, events: string[]) => {
   events.forEach(eventName => {
     instance[eventName] = new EventEmitter()
   })
