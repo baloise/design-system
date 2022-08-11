@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.17.1](https://github.com/baloise/design-system/compare/v10.16.2...v10.17.1) (2022-08-11)
+
+## 10.16.0 (2022-08-10)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-angular
+
+## [10.16.2](https://github.com/baloise/design-system/compare/v10.16.0...v10.16.2) (2022-08-10)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-angular
+
+## [10.16.1](https://github.com/baloise/design-system/compare/v10.16.0...v10.16.1) (2022-08-10)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-angular
+
+## [10.16.0](https://github.com/baloise/design-system/compare/v10.15.9...v10.16.0) (2022-08-10)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-angular
+
 ## [10.15.9](https://github.com/baloise/design-system/compare/v10.15.8...v10.15.9) (2022-08-08)
 
 **Note:** Version bump only for package @baloise/design-system-next-output-target-angular

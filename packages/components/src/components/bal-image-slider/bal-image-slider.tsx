@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
 import { isNil } from 'lodash'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
@@ -14,6 +14,16 @@ export class ImageSlider implements ComponentInterface {
 
   @State() slideIndex = 0
   @State() images!: HTMLBalImageSliderItemElement[]
+
+  /**
+   * value to set the images aspect ratio
+   */
+  @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.setSlide(this.slideIndex)
+  }
 
   connectedCallback() {
     this.mutationO = observeItems(this.el, 'bal-image-slider-item', () => this.updateImages())
@@ -108,7 +118,8 @@ export class ImageSlider implements ComponentInterface {
       } else {
         return (
           <bal-text space="none" class="is-size-5" color="blue">
-            {this.slideIndex + 1 + '/' + this.images.length}
+            <span class="has-text-weight-bold">{this.slideIndex + 1}</span>
+            {' / ' + this.images.length}
           </bal-text>
         )
       }
@@ -125,7 +136,12 @@ export class ImageSlider implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        <div class={{ ...container.class() }}>
+        <div
+          class={{
+            ...container.class(),
+            ...container.modifier(`is-${this.aspectRatio}`).class(),
+          }}
+        >
           <div class={{ ...containerImages.class() }}>
             <slot></slot>
           </div>
@@ -138,7 +154,9 @@ export class ImageSlider implements ComponentInterface {
               color="link"
               size="small"
               icon="caret-left"
+              square
               flat={true}
+              disabled={this.slideIndex < 1}
             />
           }
 
@@ -150,7 +168,9 @@ export class ImageSlider implements ComponentInterface {
               color="link"
               size="small"
               icon="caret-right"
+              square
               flat={true}
+              disabled={this.slideIndex + 1 === this.images.length}
             />
           }
         </div>
