@@ -73,9 +73,9 @@ export const TagCardCentered = args => ({
 })
 TagCardCentered.args = {
   content: 'Bestseller',
-  color: 'success',
-  light: true,
-  size: 'small',
+  color: 'danger',
+  light: false,
+  size: 'medium',
   closable: false,
 }
 TagCardCentered.parameters = { ...component.sourceCode(TagCardCentered) }
