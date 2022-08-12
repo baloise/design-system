@@ -34,6 +34,10 @@ export class Tag {
   @Prop() disabled = false
 
   /**
+   * Choosing left or center the tag is aligned to that side in the bal-card.
+   */
+  @Prop() position: Props.BalTagPlacement = 'left'
+  /**
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
@@ -63,6 +67,8 @@ export class Tag {
     const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
     const disabledClass = 'is-disabled'
     const hasDisabled = this.disabled
+    const positionClass = `is-${this.position}`
+    const hasPosition = this.position !== undefined
 
     return (
       <Host
@@ -72,6 +78,7 @@ export class Tag {
           ...block.modifier(sizeClass).class(hasSize),
           ...block.modifier(colorClass).class(hasColor),
           ...block.modifier(disabledClass).class(hasDisabled),
+          ...block.modifier(positionClass).class(hasPosition),
         }}
         {...this.inheritedAttributes}
       >

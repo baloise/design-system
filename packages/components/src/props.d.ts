@@ -251,4 +251,5 @@ export namespace Props {
     | 'yellow'
     | 'yellow-light'
   export type BalShapeRotation = '0' | '90' | '180' | '270'
+  export type BalTagPlacement = 'left' | 'center'
 }

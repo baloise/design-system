@@ -60,6 +60,26 @@ TagCard.args = {
 }
 TagCard.parameters = { ...component.sourceCode(TagCard) }
 
+export const TagCardCentered = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-card class="mt-4">
+  <bal-tag v-bind="args" position="center">{{ args.content }}</bal-tag>
+  <bal-card-title>Title</bal-card-title>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+</bal-card>`,
+})
+TagCardCentered.args = {
+  content: 'Bestseller',
+  color: 'success',
+  light: true,
+  size: 'small',
+  closable: false,
+}
+TagCardCentered.parameters = { ...component.sourceCode(TagCardCentered) }
+
 export const Colors = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
