@@ -149,16 +149,7 @@ export const Basic = args => ({
   </div>
   <div slot="meta-mobile-foot">
     <bal-button href="tel://00800 24 800 800" square inverted icon="call"></bal-button>
-    <bal-button square inverted icon="web" @click="openModal()"></bal-button>
-    <bal-modal ref="modal">
-      <bal-modal-header>Modal Title</bal-modal-header>
-      <bal-modal-body>
-        <bal-heading class="is-flex is-justify-content-center" level="h4">Sprache wählen</bal-heading>
-        <bal-button class="mb-2" expanded color="light">English</bal-button>
-        <bal-button class="mb-2" expanded color="light">Deutsch</bal-button>
-        <bal-button class="mb-2" expanded color="light">Français</bal-button>
-      </bal-modal-body>
-    </bal-modal>
+    <bal-button square inverted icon="web"></bal-button>
     <bal-button square inverted icon="location"></bal-button>
   </div>
 </bal-navigation></div>`,
@@ -265,12 +256,17 @@ export const MetaWithLinks = args => ({
     <bal-button square size="small" color="light" inverted icon="web"></bal-button>
     <bal-button square size="small" color="light" inverted icon="location"></bal-button>
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-    <bal-button color="light" inverted size="small" icon="account" href="/">Login</bal-button>
+    <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
-  <bal-button-group slot="meta-actions-mobile">
-    <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-    <bal-button color="light" inverted size="small" icon="account" href="/">Login</bal-button>
-  </bal-button-group>
+  <div slot="meta-actions-mobile">
+    <bal-button square color="light"icon="search"></bal-button>
+    <bal-button square color="light" icon="account"></bal-button>
+  </div>
+  <div slot="meta-mobile-foot">
+    <bal-button href="tel://00800 24 800 800" square inverted icon="call"></bal-button>
+    <bal-button square inverted icon="web"></bal-button>
+    <bal-button square inverted icon="location"></bal-button>
+  </div>
 </bal-navigation></div>`,
 })
 MetaWithLinks.args = {}
@@ -409,6 +405,15 @@ export const WithStage = args => ({
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
+  <div slot="meta-actions-mobile">
+    <bal-button square color="light"icon="search"></bal-button>
+    <bal-button square color="light" icon="account"></bal-button>
+  </div>
+  <div slot="meta-mobile-foot">
+    <bal-button href="tel://00800 24 800 800" square inverted icon="call"></bal-button>
+    <bal-button square inverted icon="web"></bal-button>
+    <bal-button square inverted icon="location"></bal-button>
+  </div>
 </bal-navigation>
 <bal-stage color="red" inverted=false>
   <bal-stage-body>

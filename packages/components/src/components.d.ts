@@ -1333,9 +1333,21 @@ export namespace Components {
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color": 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Optional target of the menu list card headline target as link
+         */
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
@@ -4636,9 +4648,21 @@ declare namespace LocalJSX {
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color"?: 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Optional target of the menu list card headline target as link
+         */
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {

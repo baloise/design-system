@@ -7,9 +7,21 @@ import { isPlatform } from '../../../utils/platform'
   tag: 'bal-navigation-menu-list',
 })
 export class NavigationMenuList {
+  /**
+   * Color of the menu list card background
+   */
   @Prop() color: 'white' | 'grey' = 'white'
+  /**
+   * Optional headline of the menu list card
+   */
   @Prop() headline?: string
+  /**
+   * Optional href of the menu list card headline as link
+   */
   @Prop() href?: string
+  /**
+   * Optional target of the menu list card headline target as link
+   */
   @Prop() target: Props.BalButtonTarget = '_self'
   @State() headingLevel!: 'h4' | 'h5'
 
