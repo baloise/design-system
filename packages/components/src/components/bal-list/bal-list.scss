@@ -247,13 +247,22 @@
   a:not(.is-link):after,
   button:not(.button):after {
     content: '';
-    background: var(--bal-color-grey);
-    height: 1px;
+    height: 2px;
+    border-radius: $radius;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+  }
+}
+
+.bal-list.has-border.is-in-main-nav .bal-list-item:not(.is-sub-accordion-item) {
+  & > div:after,
+  a:not(.is-link):after,
+  button:not(.button):after {
+    background: var(--bal-color-grey);
+    height: 1px;
   }
 }
 
