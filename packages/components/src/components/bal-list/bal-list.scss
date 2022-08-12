@@ -283,7 +283,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     button:not(.button) {
       @include hover() {
         &:hover:after {
-          background: $blue-5;
+          background: var(--bal-color-blue-5);
         }
       }
     }
@@ -292,7 +292,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     a:not(.is-link):active:after,
     button:not(.button):active:after {
       @media only screen and (min-width: 1025px) {
-        background: $blue-5;
+        background: var(--bal-color-blue-5);
       }
     }
   }
