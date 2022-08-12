@@ -34,6 +34,13 @@ export class ListItemAccordionBody {
     if (inner) {
       this.contentHeight = inner.scrollHeight + 'px'
       //this.contentHeight = '100%'
+      const parent = this.el.closest('.parent') as HTMLElement
+      const parentHeight = parent ? parent.scrollHeight : 0
+      const parentIsThereAndIsOpen = parent && parentHeight > 0 && parent.classList.contains('is-open')
+      const childIsOpen = this.el.classList.contains('is-open')
+      if (parentIsThereAndIsOpen && childIsOpen) {
+        parent.style.maxHeight = parentHeight + inner.scrollHeight + 'px'
+      }
     }
   }
 
