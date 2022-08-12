@@ -144,7 +144,7 @@ export const Basic = args => ({
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
   <div slot="meta-actions-mobile">
-    <bal-button square color="light"icon="search"></bal-button>
+    <bal-button square color="light" icon="search"></bal-button>
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
@@ -259,7 +259,7 @@ export const MetaWithLinks = args => ({
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
   <div slot="meta-actions-mobile">
-    <bal-button square color="light"icon="search"></bal-button>
+    <bal-button square color="light" icon="search"></bal-button>
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
@@ -406,7 +406,7 @@ export const WithStage = args => ({
     <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
   </bal-button-group>
   <div slot="meta-actions-mobile">
-    <bal-button square color="light"icon="search"></bal-button>
+    <bal-button square color="light" icon="search"></bal-button>
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
