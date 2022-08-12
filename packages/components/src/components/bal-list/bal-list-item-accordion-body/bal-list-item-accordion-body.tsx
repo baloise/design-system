@@ -33,7 +33,6 @@ export class ListItemAccordionBody {
     const inner = this.el.querySelector('.inner')
     if (inner) {
       this.contentHeight = inner.scrollHeight + 'px'
-      //this.contentHeight = '100%'
       const parent = this.el.closest('.parent') as HTMLElement
       const parentHeight = parent ? parent.scrollHeight : 0
       const parentIsThereAndIsOpen = parent && parentHeight > 0 && parent.classList.contains('is-open')
@@ -52,7 +51,6 @@ export class ListItemAccordionBody {
           'is-open': this.open,
         }}
         style={{ maxHeight: this.open ? this.contentHeight : '0' }}
-        //style={{ height: this.open ? this.contentHeight : '0', maxHeight: this.open ? 'inherit' : '0' }}
       >
         <bal-list-item-content class="inner">
           <slot></slot>
