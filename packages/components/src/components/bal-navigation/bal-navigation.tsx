@@ -209,7 +209,7 @@ export class Navigation implements ComponentInterface {
         </bal-meta-mobile-head>
         {this.isMainBodyOpen && (
           <bal-main-mobile>
-            <bal-list border main-nav-accordion size="small">
+            <bal-list border in-main-nav={true} size="small">
               {this.levels.map(meta => (
                 <bal-list-item accordion in-main-nav={true}>
                   <bal-list-item-accordion-head icon="nav-go-down">
@@ -224,7 +224,7 @@ export class Navigation implements ComponentInterface {
                           <a href={meta.link}>{meta.linkLabel}</a>
                         </div>
                       )}
-                      <bal-list border main-nav-accordion class="pt-4" size="small">
+                      <bal-list border in-main-nav={true} class="pt-4" size="small">
                         {meta.subLevels?.map(main => {
                           return main.isTabLink ? (
                             <bal-list-item sub-accordion-item href={main.link} target={main.target} in-main-nav={true}>

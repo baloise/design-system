@@ -1076,13 +1076,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav": boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "mainNavAccordion": boolean;
         /**
           * Defines the min height of the list item
          */
@@ -4399,13 +4399,13 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav"?: boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "mainNavAccordion"?: boolean;
         /**
           * Defines the min height of the list item
          */
