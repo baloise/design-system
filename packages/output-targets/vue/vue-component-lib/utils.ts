@@ -108,7 +108,11 @@ export const defineContainer = <Props>(
           componentEvents.forEach(componentEvent => {
             if (vnode.el) {
               vnode.el.addEventListener(componentEvent, (event: CustomEvent<any>) => {
-                emit(componentEvent, event)
+                emit(componentEvent, {
+                  detail: event.detail,
+                  preventDefault: event.preventDefault,
+                  stopPropagation: event.stopPropagation,
+                })
               })
             }
           })

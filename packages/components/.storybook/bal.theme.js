@@ -1,5 +1,5 @@
 import { create, themes } from '@storybook/theming'
-import Logo from '../src/stories/assets/images/logo.svg'
+import Logo from '../src/stories/assets/images/storybook.svg'
 
 export default create({
   ...themes.dark,

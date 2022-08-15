@@ -45,7 +45,7 @@ export const Basic = args => ({
       args: reduceConfigArgs(args),
     }
   },
-  template: `<bal-datepicker v-bind="args" v-model="args.value"></bal-datepicker>`,
+  template: `<div class="container"><bal-datepicker v-bind="args" v-model="args.value"></bal-datepicker></div>`,
 })
 Basic.args = {
   placeholder: 'Pick a date',

@@ -19,7 +19,7 @@ export class BalDocGithub {
           <a
             class="is-link"
             target="_blank"
-            href={'https://github.com/baloise/design-system/blob/master/packages/components/src' + this.link}
+            href={'https://github.com/baloise-incubator/design-system/blob/master/packages/components/src' + this.link}
           >
             Improve this page on GitHub
           </a>

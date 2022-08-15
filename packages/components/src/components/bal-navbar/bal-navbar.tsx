@@ -29,7 +29,7 @@ export class Navbar {
   }
 
   /**
-   * TODO: describe
+   * Sets the content content width with the regular container classes
    */
   @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
 
@@ -52,7 +52,13 @@ export class Navbar {
     const navbarEl = BEM.block('navbar')
 
     return (
-      <Host class={{ ...navbarEl.class(), ...navbarEl.modifier(`context-${this.interface}`).class() }}>
+      <Host
+        class={{
+          ...navbarEl.class(),
+          ...navbarEl.modifier(`context-${this.interface}`).class(),
+          ...navbarEl.modifier(`is-light`).class(this.light),
+        }}
+      >
         <nav
           role="navigation"
           aria-label="main navigation"

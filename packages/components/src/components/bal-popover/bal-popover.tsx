@@ -165,12 +165,12 @@ export class Popover {
   componentWillLoad() {
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
-        placement: 'bottom-start',
+        placement: 'auto-start',
         modifiers: [
           {
             name: 'offset',
             options: {
-              offset: [this.offsetX, this.offsetY],
+              offset: [this.offsetX, this.offsetY + 4],
             },
           },
         ],

@@ -3,7 +3,8 @@
   position: relative
   display: block
   +modifiers(context-app, context-simple)
-    background: var(--bal-color-primary)
+    &:not(.bal-navbar--is-light)
+      background: var(--bal-color-primary)
   +modifiers(context-app, context-simple)
     height: 64px
     max-height: 64px
@@ -113,3 +114,10 @@
           flex-shrink: 0
           justify-content: flex-end
           align-items: center
+  // Styling for light (white) background
+  +modifiers(is-light)
+    background-color: var(--bal-color-white)
+    .bal-navbar__brand__title
+      color: var(--bal-color-primary)
+    bal-logo
+      +fillSvg(var(--bal-color-primary))
