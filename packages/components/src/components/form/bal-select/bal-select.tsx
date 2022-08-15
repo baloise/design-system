@@ -704,7 +704,7 @@ export class Select {
       this.focusIndex = 0
       this.balClick.emit(event)
 
-      if (this.multiple || this.typeahead) {
+      if (this.typeahead) {
         await this.popoverElement?.present()
       } else {
         if (this.isPopoverOpen) {
@@ -796,7 +796,13 @@ export class Select {
               'is-focused': this.isPopoverOpen,
             }}
           >
-            <div class="bal-select__selections">
+            <div
+              class={{
+                'bal-select__selections': true,
+                'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
+              }}
+              onClick={this.handleInputClick}
+            >
               {valuesArray
                 .filter(_ => this.multiple)
                 .map((value: string) => (
@@ -807,6 +813,7 @@ export class Select {
                 class={{
                   'input': true,
                   'is-inverted': this.inverted,
+                  'is-hidden': this.multiple && !this.typeahead,
                   'is-danger': this.invalid,
                   'is-disabled': this.disabled || this.readonly,
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
@@ -828,7 +835,10 @@ export class Select {
               />
             </div>
             <bal-icon
-              class={{ 'is-hidden': this.loading }}
+              class={{
+                'is-hidden': this.loading,
+                'is-clickable': !this.disabled && !this.readonly,
+              }}
               name="caret-down"
               size="xsmall"
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}

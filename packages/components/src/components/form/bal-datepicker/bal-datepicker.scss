@@ -1,6 +1,5 @@
 bal-datepicker {
   display: block;
-  position: relative;
   font-family: $family-primary;
   width: 100%;
 
@@ -49,15 +48,27 @@ bal-datepicker {
     flex-shrink: 1;
     flex-basis: auto;
     min-width: 50%;
-    min-height: 48px;
+    min-height: 32px;
+
+    .select {
+      min-height: 32px;
+
+      &::after {
+        margin-top: -0.9rem !important;
+      }
+    }
 
     .select select {
       border-radius: $radius;
+      background: transparent;
       border: none;
-      min-height: 48px;
+      min-height: 32px;
+      height: 32px;
       color: $blue;
       font-size: 1rem;
       font-weight: $weight-bold;
+      padding-top: 0;
+      padding-bottom: 0;
 
       &:hover {
         background-color: $light-blue;
@@ -78,7 +89,7 @@ bal-datepicker {
   }
 
   .datepicker-popup {
-    padding: 26px 20px;
+    padding: 16px;
     width: 100%;
     user-select: none;
     background-color: $grey-1;

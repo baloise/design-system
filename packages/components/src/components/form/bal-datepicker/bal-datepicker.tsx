@@ -719,9 +719,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
         <div class="pagination field">
           <bal-button
             square
-            inverted
-            rounded
-            color="primary"
+            size="small"
+            color="info"
             icon="nav-go-left"
             disabled={this.isPreviousMonthDisabled}
             onClick={() => this.previousMonth()}
@@ -752,9 +751,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           </div>
           <bal-button
             square
-            inverted
-            rounded
-            color="primary"
+            size="small"
+            color="info"
             icon="nav-go-right"
             disabled={this.isNextMonthDisabled}
             onClick={() => this.nextMonth()}
