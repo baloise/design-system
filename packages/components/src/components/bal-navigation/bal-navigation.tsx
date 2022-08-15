@@ -229,14 +229,14 @@ export class Navigation implements ComponentInterface {
                           return main.isTabLink ? (
                             <bal-list-item sub-accordion-item href={main.link} target={main.target}>
                               <bal-list-item-content>
-                                <bal-list-item-title>{main.label}</bal-list-item-title>
+                                <bal-list-item-title heading-level="h5">{main.label}</bal-list-item-title>
                               </bal-list-item-content>
                             </bal-list-item>
                           ) : (
                             <bal-list-item accordion sub-accordion-item>
                               <bal-list-item-accordion-head icon="nav-go-down">
                                 <bal-list-item-content>
-                                  <bal-list-item-title>{main.label}</bal-list-item-title>
+                                  <bal-list-item-title heading-level="h5">{main.label}</bal-list-item-title>
                                 </bal-list-item-content>
                               </bal-list-item-accordion-head>
                               <bal-list-item-accordion-body>

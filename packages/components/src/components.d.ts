@@ -1145,6 +1145,10 @@ export namespace Components {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Optional heading level with value 'h4' on default
+         */
+        "headingLevel"?: BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -4464,6 +4468,10 @@ declare namespace LocalJSX {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Optional heading level with value 'h4' on default
+         */
+        "headingLevel"?: BalHeadingLevel;
     }
     interface BalLogo {
         /**
