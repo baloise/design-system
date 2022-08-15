@@ -94,7 +94,7 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* src/assets/fonts"
 }
 ```
 
