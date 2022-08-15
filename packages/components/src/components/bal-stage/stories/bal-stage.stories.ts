@@ -25,7 +25,10 @@ Basic.args = {
   color: 'red',
   inverted: false,
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(Basic),
+}
 
 export const StageWithImage = args => ({
   components: { ...component.components },
@@ -40,7 +43,10 @@ export const StageWithImage = args => ({
 </bal-stage>`,
 })
 StageWithImage.args = {}
-StageWithImage.parameters = { ...component.sourceCode(StageWithImage) }
+StageWithImage.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(StageWithImage),
+}
 
 export const StageWithShape = args => ({
   components: { ...component.components },
@@ -60,4 +66,7 @@ StageWithShape.args = {
   shapeVariation: '2',
   shapeRotation: '90',
 }
-StageWithShape.parameters = { ...component.sourceCode(StageWithShape) }
+StageWithShape.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(StageWithShape),
+}
