@@ -30,7 +30,7 @@ describe('bal-select.cy.ts', () => {
   it('should fire a balChange event when selecting multiple options', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
+    cy.get('bal-select').find('.bal-select__selections').click()
     cy.get('.bal-select__option').eq(1).click()
     cy.get('.bal-select__option').eq(2).click()
 
