@@ -300,7 +300,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after {
-      @media only screen and (min-width: 1025px) {
+      @include desktop() {
         background: var(--bal-color-blue-5);
       }
     }
