@@ -465,8 +465,6 @@ bal-card > bal-list.p-0 {
 
 .bal-list-item.is-sub-accordion-item {
   .bal-list-item-accordion-body {
-    padding-top: 2px;
-
     &:after {
       content: '';
       background: var(--bal-color-grey);
