@@ -212,7 +212,7 @@ export class Navigation implements ComponentInterface {
             <bal-list border main-nav-accordion size="small">
               {this.levels.map(meta => (
                 <bal-list-item accordion>
-                  <bal-list-item-accordion-head>
+                  <bal-list-item-accordion-head icon="nav-go-down">
                     <bal-list-item-content>
                       <bal-list-item-title>{meta.label}</bal-list-item-title>
                     </bal-list-item-content>
@@ -234,7 +234,7 @@ export class Navigation implements ComponentInterface {
                             </bal-list-item>
                           ) : (
                             <bal-list-item accordion sub-accordion-item>
-                              <bal-list-item-accordion-head>
+                              <bal-list-item-accordion-head icon="nav-go-down">
                                 <bal-list-item-content>
                                   <bal-list-item-title>{main.label}</bal-list-item-title>
                                 </bal-list-item-content>

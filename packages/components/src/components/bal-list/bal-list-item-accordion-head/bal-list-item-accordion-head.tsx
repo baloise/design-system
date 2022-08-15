@@ -12,6 +12,11 @@ export class ListItemAccordionHead {
    * If `true` the list accordion is open
    */
   @Prop() accordionOpen = false
+  /**
+   * Optional icon name string with value 'plus' on default
+   */
+  @Prop() icon? = 'plus'
+
   @Watch('accordionOpen')
   accordionOpenHandler() {
     this.balAccordionChange.emit(this.accordionOpen)
@@ -21,13 +26,7 @@ export class ListItemAccordionHead {
    * Emitted when the accordion state is changed
    */
   @Event() balAccordionChange!: EventEmitter<boolean>
-
-  private list?: HTMLBalListElement | null
-  private iconName!: string
-
   connectedCallback() {
-    this.list = this.el.closest('bal-list')
-    this.iconName = this.list?.classList.contains('is-in-main-nav') ? 'nav-go-down' : 'plus'
     this.balAccordionChange.emit(this.accordionOpen)
   }
 
@@ -54,7 +53,7 @@ export class ListItemAccordionHead {
       >
         <slot></slot>
         <bal-list-item-icon right>
-          <bal-icon class="trigger-icon" name={this.iconName} size="small"></bal-icon>
+          <bal-icon class="trigger-icon" name={this.icon} size="small"></bal-icon>
         </bal-list-item-icon>
       </Host>
     )

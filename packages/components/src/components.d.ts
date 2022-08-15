@@ -1129,6 +1129,10 @@ export namespace Components {
           * If `true` the list accordion is open
          */
         "accordionOpen": boolean;
+        /**
+          * Optional icon name string with value 'plus' on default
+         */
+        "icon"?: string | undefined;
     }
     interface BalListItemContent {
     }
@@ -4440,6 +4444,10 @@ declare namespace LocalJSX {
           * If `true` the list accordion is open
          */
         "accordionOpen"?: boolean;
+        /**
+          * Optional icon name string with value 'plus' on default
+         */
+        "icon"?: string | undefined;
         /**
           * Emitted when the accordion state is changed
          */
