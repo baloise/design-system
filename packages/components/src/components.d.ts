@@ -1106,6 +1106,10 @@ export namespace Components {
          */
         "href": string;
         /**
+          * True when item is used in the main navigation
+         */
+        "inMainNav": boolean;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
@@ -1148,7 +1152,7 @@ export namespace Components {
         /**
           * Optional heading level with value 'h4' on default
          */
-        "headingLevel"?: BalHeadingLevel;
+        "level"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -4421,6 +4425,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * True when item is used in the main navigation
+         */
+        "inMainNav"?: boolean;
+        /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
@@ -4471,7 +4479,7 @@ declare namespace LocalJSX {
         /**
           * Optional heading level with value 'h4' on default
          */
-        "headingLevel"?: BalHeadingLevel;
+        "level"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**

@@ -43,11 +43,14 @@ export class ListItem {
   @Prop() target: Props.BalListItemTarget = '_self'
 
   /**
+   * True when item is used in the main navigation
+   */
+  @Prop() inMainNav = false
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
-
-  private isInMainNav = false
 
   connectedCallback() {
     const accordionHead = this.findAccordionHead()
@@ -56,7 +59,6 @@ export class ListItem {
         this.updateState(event.detail),
       )
     }
-    this.isInMainNav = this.el.closest('bal-list')?.mainNavAccordion ?? false
   }
 
   disconnectedCallback() {
@@ -95,7 +97,7 @@ export class ListItem {
             'is-disabled': this.disabled,
             'is-selected': this.selected,
             'is-list-item-clickable': this.clickable || this.href.length > 0,
-            'is-in-main-nav': this.isInMainNav,
+            'is-in-main-nav': this.inMainNav,
           }}
         >
           <a
@@ -142,7 +144,7 @@ export class ListItem {
             'bal-list-item is-accordion is-list-item-clickable': true,
             'is-disabled': this.disabled,
             'is-sub-accordion-item': this.subAccordionItem,
-            'is-in-main-nav': this.isInMainNav,
+            'is-in-main-nav': this.inMainNav,
           }}
         >
           <div>

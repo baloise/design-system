@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
-import { Props } from '../../../props'
-import BalHeadingLevel = Props.BalHeadingLevel
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-list-item-title',
@@ -11,12 +10,12 @@ export class ListItemTitle {
   /**
    * Optional heading level with value 'h4' on default
    */
-  @Prop() headingLevel?: BalHeadingLevel = 'h4'
+  @Prop() level?: Props.BalHeadingLevel = 'h4'
 
   render() {
     return (
       <Host class="bal-list-item-title">
-        <bal-heading level={this.headingLevel} space="none">
+        <bal-heading level={this.level} space="none">
           <slot></slot>
         </bal-heading>
       </Host>
