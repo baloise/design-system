@@ -443,10 +443,6 @@ bal-card > bal-list.p-0 {
   }
 
   &.is-open bal-icon.trigger-icon {
-    bal-list.is-in-main-nav & {
-      transform: rotateX(180deg);
-    }
-
     bal-list:not(.is-in-main-nav) & {
       transform: rotate(45deg);
     }

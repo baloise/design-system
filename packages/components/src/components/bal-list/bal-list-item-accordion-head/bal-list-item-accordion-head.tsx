@@ -53,7 +53,7 @@ export class ListItemAccordionHead {
       >
         <slot></slot>
         <bal-list-item-icon right>
-          <bal-icon class="trigger-icon" name={this.icon} size="small"></bal-icon>
+          <bal-icon class="trigger-icon" name={this.icon} size="small" turn={this.accordionOpen}></bal-icon>
         </bal-list-item-icon>
       </Host>
     )
