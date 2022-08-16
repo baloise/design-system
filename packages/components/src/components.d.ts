@@ -1620,6 +1620,10 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
+          * Tells if the item is hidden.
+         */
+        "hidden": boolean;
+        /**
           * Link to path.
          */
         "href": string;
@@ -4180,6 +4184,10 @@ declare namespace LocalJSX {
           * If `true` the step is marked as failed.
          */
         "failed"?: boolean;
+        /**
+          * Tells if the item is hidden.
+         */
+        "hidden"?: boolean;
         /**
           * Link to path.
          */
