@@ -9,6 +9,7 @@ export interface BalTabOption {
   active: boolean
   disabled: boolean
   done: boolean
+  hidden: boolean
   failed: boolean
   passed: boolean
   bubble: boolean | string
@@ -32,6 +33,8 @@ export interface TabProps {
   value: string | undefined
   expanded: boolean
   border: boolean
+  float: Props.BalTabsFloat
+  spaceless: boolean
   clickable: boolean
   isReady: boolean
   inverted: boolean

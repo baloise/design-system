@@ -1942,6 +1942,10 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
+          * If `true` the step is hidden.
+         */
+        "hidden": boolean;
+        /**
           * Link to path.
          */
         "href": string;
@@ -1990,6 +1994,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "float": Props.BalTabsFloat;
+        /**
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
@@ -2014,6 +2022,10 @@ export namespace Components {
           * If `true` the tabs are shown as a select component on mobile
          */
         "selectOnMobile": boolean;
+        /**
+          * If `true` the tabs container does not have a padding left or right.
+         */
+        "spaceless": boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -5250,6 +5262,10 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
+          * If `true` the step is hidden.
+         */
+        "hidden"?: boolean;
+        /**
           * Link to path.
          */
         "href"?: string;
@@ -5298,6 +5314,10 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "float"?: Props.BalTabsFloat;
+        /**
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
@@ -5321,6 +5341,10 @@ declare namespace LocalJSX {
           * If `true` the tabs are shown as a select component on mobile
          */
         "selectOnMobile"?: boolean;
+        /**
+          * If `true` the tabs container does not have a padding left or right.
+         */
+        "spaceless"?: boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.

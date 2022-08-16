@@ -45,6 +45,11 @@ export class TabItem {
   @Prop() done = false
 
   /**
+   * If `true` the step is hidden.
+   */
+  @Prop() hidden = false
+
+  /**
    * If `true` the step is marked as failed.
    */
   @Prop() failed = false
@@ -89,6 +94,7 @@ export class TabItem {
       active: this.active,
       disabled: this.disabled,
       done: this.done,
+      hidden: this.hidden,
       failed: this.failed,
       bubble: this.bubble,
       passed: false,
