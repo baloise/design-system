@@ -47,7 +47,7 @@
   position: relative;
 }
 
-.bal-list-item:not(.is-in-main-nav) {
+.bal-list:not(.is-in-main-nav) .bal-list-item {
   & > a,
   & > div,
   & > button {
@@ -73,7 +73,7 @@
   flex: 1;
 }
 
-.bal-list-item.is-in-main-nav {
+.bal-list.is-in-main-nav .bal-list-item {
   @include touch() {
     padding: 1rem 0;
     &.is-sub-accordion-item {

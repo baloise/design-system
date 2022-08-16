@@ -8,7 +8,7 @@ import { Props } from '../../../types'
 })
 export class ListItemTitle {
   /**
-   * Optional heading level with value 'h4' on default
+   * Heading level with value 'h4' on default
    */
   @Prop() level: Props.BalHeadingLevel = 'h4'
 

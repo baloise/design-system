@@ -1106,10 +1106,6 @@ export namespace Components {
          */
         "href": string;
         /**
-          * True when item is used in the main navigation
-         */
-        "inMainNav": boolean;
-        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
@@ -1134,7 +1130,7 @@ export namespace Components {
          */
         "accordionOpen": boolean;
         /**
-          * Optional icon name string with value 'plus' on default
+          * Icon name string with value 'plus' on default
          */
         "icon": string;
     }
@@ -1150,7 +1146,7 @@ export namespace Components {
     }
     interface BalListItemTitle {
         /**
-          * Optional heading level with value 'h4' on default
+          * Heading level with value 'h4' on default
          */
         "level": Props.BalHeadingLevel;
     }
@@ -1356,7 +1352,7 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * Optional target of the menu list card headline target as link
+          * Target of the menu list card headline target as link
          */
         "target": Props2.BalButtonTarget;
     }
@@ -4414,10 +4410,6 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * True when item is used in the main navigation
-         */
-        "inMainNav"?: boolean;
-        /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
@@ -4446,7 +4438,7 @@ declare namespace LocalJSX {
          */
         "accordionOpen"?: boolean;
         /**
-          * Optional icon name string with value 'plus' on default
+          * Icon name string with value 'plus' on default
          */
         "icon"?: string;
         /**
@@ -4466,7 +4458,7 @@ declare namespace LocalJSX {
     }
     interface BalListItemTitle {
         /**
-          * Optional heading level with value 'h4' on default
+          * Heading level with value 'h4' on default
          */
         "level"?: Props.BalHeadingLevel;
     }
@@ -4672,7 +4664,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Optional target of the menu list card headline target as link
+          * Target of the menu list card headline target as link
          */
         "target"?: Props2.BalButtonTarget;
     }

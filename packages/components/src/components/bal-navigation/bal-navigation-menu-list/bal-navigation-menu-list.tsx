@@ -20,7 +20,7 @@ export class NavigationMenuList {
    */
   @Prop() href?: string
   /**
-   * Optional target of the menu list card headline target as link
+   * Target of the menu list card headline target as link
    */
   @Prop() target: Props.BalButtonTarget = '_self'
   @State() headingLevel!: 'h4' | 'h5'

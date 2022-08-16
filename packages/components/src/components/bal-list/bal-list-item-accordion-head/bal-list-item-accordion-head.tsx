@@ -13,7 +13,7 @@ export class ListItemAccordionHead {
    */
   @Prop() accordionOpen = false
   /**
-   * Optional icon name string with value 'plus' on default
+   * Icon name string with value 'plus' on default
    */
   @Prop() icon = 'plus'
 
