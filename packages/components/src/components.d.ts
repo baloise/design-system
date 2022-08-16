@@ -1152,7 +1152,7 @@ export namespace Components {
         /**
           * Optional heading level with value 'h4' on default
          */
-        "level"?: Props.BalHeadingLevel;
+        "level": Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
