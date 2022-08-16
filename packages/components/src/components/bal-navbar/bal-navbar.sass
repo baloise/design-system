@@ -27,6 +27,12 @@
     & > a
       display: flex
       align-items: center
+
+    +element(logo)
+      height: calc(100% - 16px)
+      +desktop
+        height: calc(100% - 32px)
+
     +element(title)
       display: none
       & > bal-logo
