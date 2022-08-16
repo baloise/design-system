@@ -56,6 +56,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
         class={{ ...buttonEl.element('icon').class() }}
         name={icon}
         size="small"
+        turn={active}
         style={{ display: icon ? 'flex' : 'none' }}
         turn={active}
       ></bal-icon>

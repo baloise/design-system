@@ -109,7 +109,7 @@ export class Navigation implements ComponentInterface {
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
             {hasLevels && (
-              <bal-tabs interface="meta" inverted={true} value={this.selectedMetaValue}>
+              <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
                     <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
@@ -151,7 +151,7 @@ export class Navigation implements ComponentInterface {
               <a href={this.logoPath} class="bal-nav__main-head-logo">
                 <bal-logo color="blue"></bal-logo>
               </a>
-              <bal-tabs interface="navigation" value={this.selectedMainValue}>
+              <bal-tabs interface="navigation" float="right" spaceless value={this.selectedMainValue}>
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                     return main.isTabLink ? (

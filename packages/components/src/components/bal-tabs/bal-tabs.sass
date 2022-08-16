@@ -10,10 +10,6 @@
         justify-content: flex-end
   +modifier(context-navigation)
     height: 64px
-    +desktop
-      .bal-tabs__tabs > ul
-        justify-content: flex-end
-        margin: 0 -.75rem
     +widescreen
       height: 80px
   +modifier(fullwidth)
@@ -54,6 +50,9 @@
       flex-grow: 1
       flex-shrink: 0
       justify-content: flex-start
+    +modifier(float-right)
+      ul
+        justify-content: flex-end
     +modifier(vertical)
       ul
         flex-direction: column
@@ -76,6 +75,8 @@
       justify-content: center
       align-items: center
       display: flex
+      +modifier(hidden)
+        display: none
       +modifier(fullwidth)
         flex-grow: 1
         flex-basis: 0
@@ -106,7 +107,7 @@
         font-family: var(--bal-font-family-title)
         font-weight: 700
         gap: .25rem
-        padding: 1rem
+        padding: 1rem .75rem
         flex-grow: 1
         flex-basis: 0
         width: 100%
@@ -196,21 +197,25 @@
         +modifier(context-navigation)
           height: 64px
           flex-direction: row-reverse
-          padding: 1rem .75rem
-          bal-icon
-            margin-left: 3px
-            transition: transform .3s ease-in-out
           +widescreen
             height: 80px
-            bal-icon
-              margin-left: 7px
         +modifier(context-meta)
           height: 48px
-          font-size: 14px
+          font-size: var(--bal-size-small)
           font-family: var(--bal-font-family-text)
-          font-weight: 400
+          font-weight: var(--bal-weight-regular)
           &.bal-tabs__tabs__item__button--active
-            font-weight: 700
+            font-weight: var(--bal-weight-bold)
+
+    .bal-tabs__tabs__item--spaceless:first-child:not(.bal-tabs__tabs__item__button--vertical-on-tablet):not(.bal-tabs__tabs__item__button--vertical-on-mobile)
+      & > .bal-tabs__tabs__item__button--context-tabs,
+      & > .bal-tabs__tabs__item__button--context-navigation
+        padding-left: 0
+
+    .bal-tabs__tabs__item--spaceless:last-child:not(.bal-tabs__tabs__item__button--vertical-on-tablet):not(.bal-tabs__tabs__item__button--vertical-on-mobile)
+      & > .bal-tabs__tabs__item__button--context-tabs,
+      & > .bal-tabs__tabs__item__button--context-navigation
+        padding-right: 0
 
     +element(border)
       position: absolute
@@ -270,10 +275,6 @@
           width: 2px
           top: 0
           left: 0
-      +modifier(context-navigation)
-        &.bal-tabs__tabs__line--ready
-          transition-duration: .3s
-
 
 +block(tabs-item)
   width: 100%
