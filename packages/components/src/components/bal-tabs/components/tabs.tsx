@@ -11,7 +11,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
   value,
   expanded,
   border,
+  float,
   tabs,
+  spaceless,
   onSelectTab,
   isReady,
   iconPosition,
@@ -46,6 +48,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
     <div
       class={{
         ...tabsEl.class(),
+        ...tabsEl.modifier(`float-${float}`).class(),
         ...tabsEl.modifier('vertical').class(vertical === true),
         ...tabsEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
         ...tabsEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
@@ -58,7 +61,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
               ...tabItemEl.class(),
               ...tabItemEl.modifier('active').class(tab.value === value),
               ...tabItemEl.modifier('disabled').class(tab.disabled),
+              ...tabItemEl.modifier('hidden').class(tab.hidden),
               ...tabItemEl.modifier('fullwidth').class(expanded),
+              ...tabItemEl.modifier('spaceless').class(spaceless && !vertical),
               ...tabItemEl.modifier('vertical').class(vertical === true),
               ...tabItemEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
               ...tabItemEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
