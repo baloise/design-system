@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
+
+
+### Features
+
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+
+
+### Bug Fixes
+
+* form elements height and placement ([f4f9861](https://github.com/baloise/design-system/commit/f4f9861770afee56dbc2a087fb8a08430969a7dd))
+
+## 10.17.1 (2022-08-11)
+
+
+
 ## [10.17.2](https://github.com/baloise/design-system/compare/v10.17.1...v10.17.2) (2022-08-11)
 
 

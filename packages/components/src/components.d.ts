@@ -1217,8 +1217,12 @@ export namespace Components {
         /**
           * Link of the logo / title.
          */
-        "href": string;
+        "href"?: string;
         "interface": Props1.BalNavbarInterface;
+        /**
+          * Link target
+         */
+        "linkTarget": string;
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -4497,6 +4501,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         "interface"?: Props1.BalNavbarInterface;
+        /**
+          * Link target
+         */
+        "linkTarget"?: string;
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
