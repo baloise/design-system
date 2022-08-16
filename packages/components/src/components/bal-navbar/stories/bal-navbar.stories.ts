@@ -73,7 +73,7 @@ export const Basic = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>App Header</bal-navbar-brand>
+  <bal-navbar-brand href="/">App Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
       <bal-tabs interface="navbar" inverted v-model="myActiveTab">
@@ -168,7 +168,7 @@ export const Simple = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>Simple Header</bal-navbar-brand>
+  <bal-navbar-brand href="/">Simple Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
@@ -252,7 +252,7 @@ export const Light = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand logo='https://via.placeholder.com/120x25'>Partner Page</bal-navbar-brand>
+  <bal-navbar-brand logo='https://via.placeholder.com/200x50'>Partner Page</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
@@ -285,6 +285,7 @@ export const Light = args => ({
 })
 Light.args = {
   interface: 'simple',
+  light: 'true',
 }
 Light.parameters = {
   layout: 'fullscreen',

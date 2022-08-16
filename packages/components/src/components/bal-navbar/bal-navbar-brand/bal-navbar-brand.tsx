@@ -16,7 +16,12 @@ export class NavbarBrand {
   /**
    * Link of the logo / title.
    */
-  @Prop() href = '/'
+  @Prop() href?: string
+
+  /**
+   * Link target
+   */
+  @Prop() linkTarget = '_blank'
 
   /**
    * @deprecated Use interface on bal-navbar instead.
@@ -78,6 +83,12 @@ export class NavbarBrand {
   render() {
     const navbarBrandEl = BEM.block('navbar').element('brand')
 
+    const logoTemplate = this.logo ? (
+      <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
+    ) : (
+      <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
+    )
+
     return (
       <Host
         class={{
@@ -85,13 +96,13 @@ export class NavbarBrand {
           ...navbarBrandEl.modifier(`context-${this.interface}`).class(),
         }}
       >
-        <a href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          {this.logo ? (
-            <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
-          ) : (
-            <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
-          )}
-        </a>
+        {this.href ? (
+          <a href={this.href} target={this.linkTarget} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+            {logoTemplate}
+          </a>
+        ) : (
+          logoTemplate
+        )}
         <span class={{ ...navbarBrandEl.element('title').class() }}>
           <slot></slot>
         </span>
