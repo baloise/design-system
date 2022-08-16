@@ -15,7 +15,7 @@ export class ListItemAccordionHead {
   /**
    * Optional icon name string with value 'plus' on default
    */
-  @Prop() icon? = 'plus'
+  @Prop() icon = 'plus'
 
   @Watch('accordionOpen')
   accordionOpenHandler() {

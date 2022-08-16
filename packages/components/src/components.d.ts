@@ -1136,7 +1136,7 @@ export namespace Components {
         /**
           * Optional icon name string with value 'plus' on default
          */
-        "icon"?: string | undefined;
+        "icon": string;
     }
     interface BalListItemContent {
     }
@@ -4436,7 +4436,7 @@ declare namespace LocalJSX {
         /**
           * Optional icon name string with value 'plus' on default
          */
-        "icon"?: string | undefined;
+        "icon"?: string;
         /**
           * Emitted when the accordion state is changed
          */
