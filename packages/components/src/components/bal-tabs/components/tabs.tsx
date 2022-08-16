@@ -24,6 +24,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
           class={{
             'is-active': tab.value === value,
             'is-disabled': tab.disabled,
+            'is-hidden': tab.hidden,
             'data-test-tab-item': true,
           }}
           data-label={tab.label}

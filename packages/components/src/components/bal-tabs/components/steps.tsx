@@ -20,6 +20,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, tabs, onSelectT
             'is-active': tab.value === value,
             'is-disabled': tab.disabled,
             'is-done': tab.done,
+            'is-hidden': tab.hidden,
             'is-failed': tab.failed,
             'data-test-tab-item': true,
           }}

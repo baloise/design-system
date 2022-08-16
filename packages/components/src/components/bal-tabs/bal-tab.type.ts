@@ -11,6 +11,7 @@ export interface BalTabOption {
   hasBubble: boolean
   prevent: boolean
   navigate: EventEmitter<MouseEvent>
+  hidden: boolean
 }
 
 export interface TabProps {

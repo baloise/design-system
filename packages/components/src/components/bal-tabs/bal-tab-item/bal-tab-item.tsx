@@ -55,6 +55,11 @@ export class TabItem {
   @Prop() prevent = false
 
   /**
+   * Tells if the item is hidden.
+   */
+  @Prop() hidden = false
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
@@ -87,6 +92,7 @@ export class TabItem {
       hasBubble: this.bubble,
       prevent: this.prevent,
       navigate: this.balNavigate,
+      hidden: this.hidden,
     }
   }
 
