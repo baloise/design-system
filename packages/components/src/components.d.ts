@@ -1164,16 +1164,6 @@ export namespace Components {
          */
         "size": Props.BalLogoSize;
     }
-    interface BalMainMobile {
-    }
-    interface BalMetaMobileFoot {
-    }
-    interface BalMetaMobileHead {
-        /**
-          * aria label for mobile meta navigation
-         */
-        "ariaLabelMobileHead": string;
-    }
     interface BalModal {
         "close": () => Promise<void>;
         /**
@@ -2809,24 +2799,6 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
-    interface HTMLBalMainMobileElement extends Components.BalMainMobile, HTMLStencilElement {
-    }
-    var HTMLBalMainMobileElement: {
-        prototype: HTMLBalMainMobileElement;
-        new (): HTMLBalMainMobileElement;
-    };
-    interface HTMLBalMetaMobileFootElement extends Components.BalMetaMobileFoot, HTMLStencilElement {
-    }
-    var HTMLBalMetaMobileFootElement: {
-        prototype: HTMLBalMetaMobileFootElement;
-        new (): HTMLBalMetaMobileFootElement;
-    };
-    interface HTMLBalMetaMobileHeadElement extends Components.BalMetaMobileHead, HTMLStencilElement {
-    }
-    var HTMLBalMetaMobileHeadElement: {
-        prototype: HTMLBalMetaMobileHeadElement;
-        new (): HTMLBalMetaMobileHeadElement;
-    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -3230,9 +3202,6 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
-        "bal-main-mobile": HTMLBalMainMobileElement;
-        "bal-meta-mobile-foot": HTMLBalMetaMobileFootElement;
-        "bal-meta-mobile-head": HTMLBalMetaMobileHeadElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -4495,16 +4464,6 @@ declare namespace LocalJSX {
          */
         "size"?: Props.BalLogoSize;
     }
-    interface BalMainMobile {
-    }
-    interface BalMetaMobileFoot {
-    }
-    interface BalMetaMobileHead {
-        /**
-          * aria label for mobile meta navigation
-         */
-        "ariaLabelMobileHead"?: string;
-    }
     interface BalModal {
         /**
           * The component to display inside of the modal.
@@ -5706,9 +5665,6 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
-        "bal-main-mobile": BalMainMobile;
-        "bal-meta-mobile-foot": BalMetaMobileFoot;
-        "bal-meta-mobile-head": BalMetaMobileHead;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -5842,9 +5798,6 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-main-mobile": LocalJSX.BalMainMobile & JSXBase.HTMLAttributes<HTMLBalMainMobileElement>;
-            "bal-meta-mobile-foot": LocalJSX.BalMetaMobileFoot & JSXBase.HTMLAttributes<HTMLBalMetaMobileFootElement>;
-            "bal-meta-mobile-head": LocalJSX.BalMetaMobileHead & JSXBase.HTMLAttributes<HTMLBalMetaMobileHeadElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;

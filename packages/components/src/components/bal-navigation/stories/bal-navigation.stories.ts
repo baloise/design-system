@@ -7,6 +7,7 @@ const component = BalComponentStory({
   component: BalNavigation,
   subcomponents: { BalNavigationLevels, BalNavigationLevelMeta },
   docs,
+  layout: 'fullscreen',
 })
 
 export default component.story

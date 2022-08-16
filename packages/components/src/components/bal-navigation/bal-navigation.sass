@@ -202,14 +202,15 @@
         +element(heading)
           margin-bottom: 1rem
 
-  +element(metamobile)
+  .bal-nav__metamobile
     display: block
     background: var(--bal-color-primary-inverted)
     height: 64px
     max-height: 64px
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     z-index: 30
-
+    +desktop
+      display: none
     nav
       display: flex
       height: 100%
@@ -219,17 +220,19 @@
       padding: 0 1rem
       +tablet
         padding: 0 3rem
-    +element(actions)
+    .bal-nav__metamobile__actions
       margin-left: auto
       > div
         display: flex
         gap: .5rem
-  +element(mainmobile)
+  .bal-nav__mainmobile
     display: block
     padding: 1.5rem 1rem 0
     z-index: 29
     +tablet
       padding: 0 3rem
+    +desktop
+      display: none
     +element(link)
       display: block
       padding-bottom: 1rem
@@ -263,14 +266,15 @@
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem
-  +element(footmobile)
+  .bal-nav__footmobile
     position: fixed
     bottom: 0
     left: 0
     width: 100%
     background: var(--bal-color-grey-2)
     padding: .5rem
-
+    +desktop
+      display: none
     > div
       display: flex
       align-items: center

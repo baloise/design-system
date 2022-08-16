@@ -193,22 +193,26 @@ export class Navigation implements ComponentInterface {
           )}
         </bal-navigation-main>
 
-        <bal-meta-mobile-head aria-label-mobile-head={this.ariaLabelMeta}>
-          <a slot="logo" href={this.logoPath} class="bal-nav__mainmobile__logo">
-            <bal-logo color="blue" size="small"></bal-logo>
-          </a>
-          <slot name="meta-actions-mobile" />
-          <bal-button
-            slot="burger"
-            color="light"
-            square={true}
-            icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
-            onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
-            inverted={this.isMainBodyOpen}
-          />
-        </bal-meta-mobile-head>
+        <div class="bal-nav__metamobile">
+          <nav role="navigation" aria-label={this.ariaLabelMeta}>
+            <a href={this.logoPath} class="bal-nav__mainmobile__logo">
+              <bal-logo color="blue" size="small"></bal-logo>
+            </a>
+            <div class="bal-nav__metamobile__actions">
+              <slot name="meta-actions-mobile" />
+            </div>
+            <bal-button
+              slot="burger"
+              color="light"
+              square={true}
+              icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
+              onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
+              inverted={this.isMainBodyOpen}
+            />
+          </nav>
+        </div>
         {this.isMainBodyOpen && (
-          <bal-main-mobile>
+          <div class="bal-nav__mainmobile">
             <bal-list border in-main-nav={true} size="small">
               {this.levels.map(meta => (
                 <bal-list-item accordion in-main-nav={true}>
@@ -256,12 +260,12 @@ export class Navigation implements ComponentInterface {
                 </bal-list-item>
               ))}
             </bal-list>
-          </bal-main-mobile>
+          </div>
         )}
         {this.isMainBodyOpen && (
-          <bal-meta-mobile-foot>
+          <div class="bal-nav__footmobile">
             <slot name="meta-mobile-foot" />
-          </bal-meta-mobile-foot>
+          </div>
         )}
         <slot></slot>
       </Host>
