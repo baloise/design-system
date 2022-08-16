@@ -233,14 +233,14 @@ export class Tabs {
           if (listElement) {
             paddingLeft = parseInt(
               window
-                .getComputedStyle(element.firstChild as Element)
+                .getComputedStyle(listElement.firstChild as Element)
                 .getPropertyValue('padding-left')
                 .slice(0, -2),
               10,
             )
             paddingRight = parseInt(
               window
-                .getComputedStyle(element.firstChild as Element)
+                .getComputedStyle(listElement.firstChild as Element)
                 .getPropertyValue('padding-right')
                 .slice(0, -2),
               10,
