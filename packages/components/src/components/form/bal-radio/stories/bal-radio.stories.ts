@@ -184,16 +184,17 @@ export const SelectButton = args => ({
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
-      <bal-radio name="radio-example" value="yes">Yes</bal-radio>
-      <bal-radio name="radio-example" value="no">No</bal-radio>
+      <bal-radio name="select-button-example" value="yes">Yes</bal-radio>
+      <bal-radio name="select-button-example" value="no">No</bal-radio>
     </bal-radio-group>
   </bal-field-control>
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
 </bal-field>`,
 })
 SelectButton.args = {
-  value: '1',
   interface: 'select-button',
+  value: 'yes',
+  // invalid: true,
 }
 SelectButton.parameters = {
   ...component.sourceCode(SelectButton),

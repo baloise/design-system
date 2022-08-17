@@ -1,0 +1,126 @@
++block(radio-group)
+  display: inline-block
+  position: relative
+  width: 100%
+  +element(inner)
+    display: flex
+    flex-direction: row
+    gap: var(--bal-space-normal)
+    +modifier(select-button)
+      flex-wrap: wrap
+      flex: 1
+      flex-direction: column
+      gap: var(--bal-space-x-small)
+    +modifier(vertical)
+      flex-direction: column
+      border-radius: var(--bal-radius)
+      gap: var(--bal-space-none)
+    +modifier(vertical-mobile)
+      flex-direction: column
+      border-radius: var(--bal-radius)
+      gap: var(--bal-space-none)
+
++block(radio)
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 24px
+  min-height: 48px
+
+  +element(input)
+    position: absolute
+    left: 0
+    top: 0
+    margin: 0
+    padding: 0
+    opacity: 0
+    outline: 0
+
+  &__input:focus-visible + &__label::before
+    @extend %focus-shadow
+
+  +element(label)
+    +font-smoothing()
+    +margin(0)
+    line-height: 24px
+    contain: layout style
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: left
+    min-height: 24px
+    cursor: pointer
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    color: var(--bal-color-primary)
+    font-family: $family-primary
+    &::before,
+    &::after
+      display: inline-block
+      position: absolute
+      left: 0
+      height: 24px
+      width: 24px
+      border-radius: 50%
+    &::before
+      content: ''
+      border: 2px solid var(--bal-color-primary)
+    &::after
+      content: none
+      background: $white
+      transform: scale(0.25)
+      left: 0
+    &:not(&--disabled)
+      +hover
+        &:hover
+          &::before
+            border: 2px solid var(--bal-color-light-blue-5)
+          &--text
+            color: var(--bal-color-light-blue-5)
+        &:active
+          &::before
+            border: 2px solid var(--bal-color-blue-6)
+          &--text
+            color: var(--bal-color-blue-6)
+    &--checked
+      &::after
+        content: ''
+    &--checked:not(#{&}--disabled)
+      &::before
+        background: var(--bal-color-primary)
+      &:hover
+        &::before
+          background: var(--bal-color-light-blue-5)
+      &:active
+        &::before
+          background: var(--bal-color-blue-6)
+    &--invalid
+      &::before
+        border-color: var(--bal-color-danger-4)
+        background: var(--bal-color-red-2)
+    &--checked#{&}--invalid:not(#{&}--disabled)
+      &::before
+        background: var(--bal-color-red-4)
+    +modifier(disabled)
+      opacity: 1
+      cursor: default
+      &::before
+        cursor: default
+        background: $grey-2
+        border-color: $grey-2
+    &--checked#{&}--disabled
+      &::after
+        cursor: default
+        background: $grey-5
+
+    +element(text)
+      padding-left: 2rem
+      +modifier(hidden)
+        padding-left: 0
+      +modifier(invalid)
+        span, a
+          color: var(--bal-color-danger-4)
