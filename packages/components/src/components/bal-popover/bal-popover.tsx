@@ -3,6 +3,8 @@ import { createPopper, Instance } from '@popperjs/core'
 import { Props } from '../../types'
 import { Events } from '../../events'
 import { BEM } from '../../utils/bem'
+import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
+import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -19,6 +21,11 @@ export class Popover {
   private backdropElement?: HTMLDivElement
 
   @Element() element!: HTMLElement
+
+  /**
+   * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+   */
+  @Prop() hint = false
 
   /**
    * If `true` the popover shows on hover
@@ -49,6 +56,11 @@ export class Popover {
    * Define the offset of the popover content.
    */
   @Prop() offsetY = 0
+
+  /**
+   * Define padding of the overflow
+   */
+  @Prop() padding = 0
 
   /**
    * Define the position of the popover content.
@@ -118,7 +130,16 @@ export class Popover {
 
   componentDidRender() {
     if (this.popperInstance) {
-      this.popperInstance.forceUpdate()
+      this.popperInstance.setOptions((options: any) => ({
+        ...options,
+        placement: this.tooltip ? 'bottom' : this.position,
+        modifiers: [
+          ...options.modifiers.filter((m: any) => m.name !== 'offset' && m.name !== 'preventOverflow'),
+          this.modifierOffset,
+          this.modifierPreventOverflow,
+        ],
+      }))
+      this.updatePopper()
     }
   }
 
@@ -126,21 +147,7 @@ export class Popover {
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
         placement: this.tooltip ? 'bottom' : this.position,
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [this.offsetX, this.offsetY + (this.tooltip || this.arrow ? 8 : 4)],
-            },
-          },
-          {
-            name: 'preventOverflow',
-            options: {
-              padding: this.arrow || this.tooltip ? 8 : 0,
-              altAxis: true,
-            },
-          },
-        ],
+        modifiers: [this.modifierOffset, this.modifierPreventOverflow],
       })
       let showEvents: string[] = []
       let hideEvents: string[] = []
@@ -177,7 +184,7 @@ export class Popover {
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: true }],
       }))
-      this.popperInstance.update()
+      this.updatePopper()
 
       if (!options.noEmit) {
         this.balChange.emit(this.value)
@@ -197,7 +204,7 @@ export class Popover {
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: false }],
       }))
-      this.popperInstance.update()
+      this.updatePopper()
 
       if (!options.noEmit) {
         this.balChange.emit(this.value)
@@ -217,18 +224,38 @@ export class Popover {
     }
   }
 
-  /**
-   * Returns the `HTMLDivElement` of the menu element
-   */
-  async getMenuElement(): Promise<HTMLElement | null> {
-    return this.menuElement
+  private updatePopper() {
+    this.popperInstance.update()
+
+    // to trigger a popper rerender
+    window.scrollTo(window.scrollX, window.scrollY - 1)
+    window.scrollTo(window.scrollX, window.scrollY + 1)
   }
 
-  get triggerElement(): HTMLElement | null {
+  private get modifierOffset(): Partial<OffsetModifier> {
+    return {
+      name: 'offset',
+      options: {
+        offset: [this.offsetX, this.offsetY + (this.tooltip || this.arrow ? 8 : 4)],
+      },
+    }
+  }
+
+  private get modifierPreventOverflow(): Partial<PreventOverflowModifier> {
+    return {
+      name: 'preventOverflow',
+      options: {
+        padding: this.arrow || this.tooltip ? 8 : this.padding,
+        altAxis: true,
+      },
+    }
+  }
+
+  private get triggerElement(): HTMLElement | null {
     return this.element.querySelector('[bal-popover-trigger]')
   }
 
-  get menuElement(): HTMLElement | null {
+  private get menuElement(): HTMLElement | null {
     return this.element.querySelector('bal-popover-content')
   }
 
@@ -244,6 +271,7 @@ export class Popover {
           ...block.modifier('active').class(this.value),
           ...block.modifier('tooltip').class(this.tooltip),
           ...block.modifier('arrow').class(this.arrow),
+          ...block.modifier('hint').class(this.hint),
         }}
       >
         <slot></slot>
