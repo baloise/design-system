@@ -140,7 +140,6 @@ export class Popover {
         ],
       }))
       this.updatePopper()
-      console.log('componentDidRender', this.popperInstance.state)
     }
   }
 

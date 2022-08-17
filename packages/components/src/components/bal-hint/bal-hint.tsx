@@ -65,7 +65,6 @@ export class Hint implements BalConfigObserver {
    */
   @Method()
   async toggle(): Promise<void> {
-    console.log('toggle', this.isActive)
     if (this.isActive) {
       this.dismiss()
     } else {
