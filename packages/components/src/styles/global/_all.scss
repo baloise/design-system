@@ -1,3 +1,17 @@
-// @import 'extends';
 @import 'notices';
-// @import 'sticky-footer';
+
+.is-one-pixel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+input.is-one-pixel,
+select.is-one-pixel {
+  top: 32px;
+  left: 50%;
+}

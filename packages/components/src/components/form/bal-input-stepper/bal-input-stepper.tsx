@@ -118,6 +118,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     inputListenOnClick(this, event)
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = 0
+    }
+  }
+
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
