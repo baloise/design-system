@@ -28,13 +28,13 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - 4rem)
+      width: calc(100vw - 6rem)
       padding: 0
       +widescreen
         width: calc(100vw - 15rem)
       +fullhd
-        width: calc(100vw - 30rem)
-        max-width: 1430px
+        width: calc(100vw - 32.5rem)
+        max-width: 1400px
 
     +element(start)
       display: flex
@@ -68,7 +68,7 @@
 
     +element(head)
       display: block
-      padding: 0 2rem
+      padding: 0 3rem
       position: relative
       transition: border-radius .3s ease-in-out
       background-color: var(--bal-color-background)
@@ -97,16 +97,14 @@
             opacity: 1
             transition: opacity .3s ease-in-out
       +widescreen
-        padding: 0 2.5rem
         border-radius: var(--bal-radius-large)
+        padding: 0 2.5rem
         > div
           align-items: center
         +modifier(active)
           border-bottom-left-radius: 0 !important
           border-bottom-right-radius: 0 !important
           transition: border-radius .3s ease-in-out
-      +fullhd
-        padding: 0 1.5rem
 
     .bal-nav__main-head-logo
       margin-top: 1rem
@@ -130,6 +128,8 @@
     display: block
     +desktop
       padding: 2.5rem 3rem .5rem
+    +widescreen
+      padding: 2.5rem 2.5rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
