@@ -8,7 +8,6 @@
   background-color: var(--bal-color-background)
   +desktop
     background-color: transparent
-    padding-bottom: 0
     position: fixed
     top: 0
     left: 0
@@ -29,19 +28,20 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - 65px)
+      width: calc(100vw - 6rem)
       padding: 0
       +widescreen
-        width: calc(100vw - 240px)
+        width: calc(100vw - 15rem)
       +fullhd
-        width: calc(100vw - 489px)
-        max-width: 1431px
+        width: calc(100vw - 32.5rem)
+        max-width: 1400px
 
     +element(start)
       display: flex
       flex-grow: 1
       align-items: center
       gap: .5rem
+      margin-left: -.75rem
 
   +element(main)
     +unselectable
@@ -59,7 +59,7 @@
         border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
       margin: 1rem auto 0
-      width: calc(100vw - 160px)
+      width: calc(100vw - 10rem)
       border-radius: var(--bal-radius-large)
     +fullhd
       margin: 1.5rem auto 0
@@ -68,7 +68,7 @@
 
     +element(head)
       display: block
-      padding: 0 2rem
+      padding: 0 3rem
       position: relative
       transition: border-radius .3s ease-in-out
       background-color: var(--bal-color-background)
@@ -76,7 +76,7 @@
         display: flex
         justify-content: space-between
         flex-wrap: wrap
-        align-items: start
+        align-items: flex-start
         width: 100%
       +until-widescreen
         width: 100%
@@ -97,23 +97,21 @@
             opacity: 1
             transition: opacity .3s ease-in-out
       +widescreen
-        padding: 0 2.5rem
         border-radius: var(--bal-radius-large)
+        padding: 0 2.5rem
         > div
           align-items: center
         +modifier(active)
           border-bottom-left-radius: 0 !important
           border-bottom-right-radius: 0 !important
           transition: border-radius .3s ease-in-out
-      +fullhd
-        padding: 0 1.5rem
 
     .bal-nav__main-head-logo
       margin-top: 1rem
       margin-right: 1rem
       +widescreen
         margin: 0
-        padding: 0 1rem
+        padding: 0
 
     +element(body)
       position: relative
@@ -130,6 +128,8 @@
     display: block
     +desktop
       padding: 2.5rem 3rem .5rem
+    +widescreen
+      padding: 2.5rem 2.5rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
