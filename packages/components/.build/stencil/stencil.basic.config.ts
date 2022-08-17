@@ -8,6 +8,10 @@ export const StencilBaseConfig: Config = {
   globalStyle: 'src/styles/global.scss',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
+  extras: {
+    appendChildSlotFix: true,
+    cloneNodeFix: true,
+  },
   plugins: [
     postcss({
       plugins: [autoprefixer()],

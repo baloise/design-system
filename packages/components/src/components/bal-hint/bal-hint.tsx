@@ -1,17 +1,20 @@
-import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stencil/core'
+import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../config'
-import { Props } from '../../types'
+import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
+import { preventDefault } from '../form/bal-select/utils/utils'
 
 @Component({
   tag: 'bal-hint',
 })
 export class Hint implements BalConfigObserver {
   @Element() element!: HTMLElement
-  @State() innerCloseLabel = 'Close'
-  @State() isActive = false
-  @State() placement: Props.BalHintPlacement = 'right'
 
+  private popoverElement!: HTMLBalPopoverElement
+
+  @State() isActive = false
+  @State() innerCloseLabel = 'Close'
+  @State() isMobile = isPlatform('mobile')
   /**
    * Text for the close button.
    */
@@ -22,29 +25,9 @@ export class Hint implements BalConfigObserver {
    */
   @Prop() small = false
 
-  @Listen('keyup', { target: 'document' })
-  handleKeyUp(event: KeyboardEvent) {
-    if (event.key === 'Escape' || event.key === 'Esc') {
-      event.preventDefault()
-      this.dismiss()
-    }
-  }
-
-  @Listen('click', { target: 'document' })
-  clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as Node) && this.isActive) {
-      this.toggle()
-    }
-  }
-
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.calcIsDropDownContentUp()
-  }
-
-  @Listen('scroll', { target: 'window' })
-  async scrollHandler() {
-    this.calcIsDropDownContentUp()
+    this.isMobile = isPlatform('mobile')
   }
 
   connectedCallback() {
@@ -77,20 +60,17 @@ export class Hint implements BalConfigObserver {
     }
   }
 
-  private calcIsDropDownContentUp() {
-    const box = this.element.getBoundingClientRect()
-    const hint = this.element.querySelector('.bal-hint-content')
-    const width = hint?.clientWidth === 0 ? 464 : hint?.clientWidth || 0
-    this.placement = window.innerWidth < box.right + width ? 'left' : 'right'
-  }
-
   /**
    * Toggles the hint box.
    */
   @Method()
   async toggle(): Promise<void> {
-    this.calcIsDropDownContentUp()
-    this.isActive = !this.isActive
+    console.log('toggle', this.isActive)
+    if (this.isActive) {
+      this.dismiss()
+    } else {
+      this.present()
+    }
   }
 
   /**
@@ -98,6 +78,9 @@ export class Hint implements BalConfigObserver {
    */
   @Method()
   async present(): Promise<void> {
+    if (this.popoverElement) {
+      this.popoverElement.present()
+    }
     this.isActive = true
   }
 
@@ -106,58 +89,59 @@ export class Hint implements BalConfigObserver {
    */
   @Method()
   async dismiss(): Promise<void> {
+    if (this.popoverElement) {
+      this.popoverElement.dismiss()
+    }
     this.isActive = false
+  }
+
+  private onPopoverChange = (event: CustomEvent<boolean>) => {
+    this.isActive = event.detail
+    preventDefault(event)
   }
 
   render() {
     const block = BEM.block('hint')
-    const hasSize = this.small
-    const sizeClass = 'is-small'
-    const hasPlacement = true
-    const placementClass = `is-placed-${this.placement}`
-    const elContent = block.element('content')
     const elIcon = block.element('icon')
+    const elContent = block.element('content')
     const elButtons = elContent.element('buttons')
-    const rowReverseClass = 'is-row-reverse'
-    const hasRowReverse = true
-    const hiddenDesktopClass = 'is-hidden-desktop'
-    const hasHiddenDesktop = this.small
 
-    return (
-      <Host
-        class={{
-          ...block.class(),
-          ...block.modifier(placementClass).class(hasPlacement),
-          ...block.modifier(sizeClass).class(hasSize),
-        }}
-        data-visible={this.isActive}
-      >
+    const padding = this.isMobile ? 0 : 8
+    const offsetY = this.isMobile ? 0 : 16
+
+    const TriggerIcon: FunctionalComponent = () => {
+      return (
         <bal-icon
           class={{
             ...elIcon.class(),
             'data-test-hint-trigger': true,
           }}
+          bal-popover-trigger
+          aria-haspopup="true"
           role="button"
           name="info-circle"
           size="small"
           onClick={() => this.toggle()}
         ></bal-icon>
+      )
+    }
 
+    const HintContent: FunctionalComponent = () => {
+      return (
         <div
           class={{
             ...elContent.class(),
-            ...elContent.modifier(placementClass).class(hasPlacement),
-            'data-test-hint-content': true,
             'p-5': true,
+            'data-test-hint-content': true,
           }}
-          style={{ display: this.isActive ? 'flex' : 'none' }}
         >
-          <slot></slot>
+          <div>
+            <slot></slot>
+          </div>
           <bal-button-group
             class={{
               ...elButtons.class(),
-              ...elButtons.modifier(rowReverseClass).class(hasRowReverse),
-              ...elButtons.modifier(hiddenDesktopClass).class(hasHiddenDesktop),
+              ...elButtons.modifier('is-hidden-desktop').class(this.small),
             }}
           >
             <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
@@ -165,6 +149,66 @@ export class Hint implements BalConfigObserver {
             </bal-button>
           </bal-button-group>
         </div>
+      )
+    }
+
+    const MobileOverlay: FunctionalComponent = () => {
+      const elOverlay = block.element('overlay')
+      return (
+        <div
+          class={{
+            ...elOverlay.class(),
+          }}
+        >
+          <TriggerIcon></TriggerIcon>
+          <div
+            class={{
+              ...elOverlay.element('content').class(),
+              ...elOverlay.element('content').modifier('active').class(this.isActive),
+            }}
+          >
+            <HintContent>
+              <slot></slot>
+            </HintContent>
+          </div>
+        </div>
+      )
+    }
+
+    const Popover: FunctionalComponent = () => {
+      return (
+        <div class={{ ...block.element('popover').class() }}>
+          <bal-popover
+            hint
+            position="right"
+            offsetX={0}
+            offsetY={offsetY}
+            padding={padding}
+            ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
+            onBalChange={this.onPopoverChange}
+          >
+            <TriggerIcon></TriggerIcon>
+            <bal-popover-content color="grey">
+              <HintContent>
+                <slot></slot>
+              </HintContent>
+            </bal-popover-content>
+          </bal-popover>
+        </div>
+      )
+    }
+
+    const HintElement = this.isMobile ? MobileOverlay : Popover
+
+    return (
+      <Host
+        class={{
+          ...block.class(),
+        }}
+      >
+        <HintElement>
+          <slot></slot>
+        </HintElement>
       </Host>
     )
   }
