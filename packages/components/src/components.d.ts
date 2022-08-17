@@ -1478,6 +1478,10 @@ export namespace Components {
          */
         "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
         /**
+          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+         */
+        "hint": boolean;
+        /**
           * If `true` the popover shows on hover
          */
         "hover": boolean;
@@ -1489,6 +1493,10 @@ export namespace Components {
           * Define the offset of the popover content.
          */
         "offsetY": number;
+        /**
+          * Define padding of the overflow
+         */
+        "padding": number;
         /**
           * Define the position of the popover content.
          */
@@ -1511,6 +1519,10 @@ export namespace Components {
         "value": boolean;
     }
     interface BalPopoverContent {
+        /**
+          * Defines background color of the content.
+         */
+        "color": Props2.BalPopoverContentColor;
         /**
           * Define the max width of the popover content.
          */
@@ -4806,6 +4818,10 @@ declare namespace LocalJSX {
          */
         "backdrop"?: boolean;
         /**
+          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+         */
+        "hint"?: boolean;
+        /**
           * If `true` the popover shows on hover
          */
         "hover"?: boolean;
@@ -4823,6 +4839,10 @@ declare namespace LocalJSX {
         "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
+          * Define padding of the overflow
+         */
+        "padding"?: number;
+        /**
           * Define the position of the popover content.
          */
         "position"?: Props.BalPopoverPlacement;
@@ -4836,6 +4856,10 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalPopoverContent {
+        /**
+          * Defines background color of the content.
+         */
+        "color"?: Props2.BalPopoverContentColor;
         /**
           * Define the max width of the popover content.
          */

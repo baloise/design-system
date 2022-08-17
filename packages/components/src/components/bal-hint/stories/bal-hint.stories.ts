@@ -38,7 +38,7 @@ export const Basic = args => ({
       args: reduceConfigArgs(args),
     }
   },
-  template: `<bal-hint v-bind="args" class="mt-6">
+  template: `<bal-hint v-bind="args" class="mt-8">
   <bal-hint-title>Spider-Man</bal-hint-title>
   <bal-hint-text>
     Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15

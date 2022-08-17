@@ -7,6 +7,16 @@
   +modifier(active)
     .bal-popover__content
       display: block
+  +modifier(hint)
+    .bal-popover__content
+      +mobile
+        min-height: 100vh
+        .bal-popover__content__inner
+          min-height: 100vh
+      +tablet
+        max-width: 20rem
+      +desktop
+        max-width: 30rem
 
   +element(backdrop)
     @extend %overlay
@@ -25,8 +35,8 @@
       display: block
     +modifier(expanded)
       min-width: 100%
-    +element(inner)
-
+    +modifier(color-grey)
+      background: var(--bal-color-grey-2)
     +element(arrow)
       visibility: hidden
       display: none

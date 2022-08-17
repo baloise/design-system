@@ -1,4 +1,5 @@
 import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../../props'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -16,6 +17,11 @@ export class PopoverContent {
    * Define the max width of the popover content.
    */
   @Prop() contentWidth = 0
+
+  /**
+   * Defines background color of the content.
+   */
+  @Prop() color: Props.BalPopoverContentColor = 'white'
 
   /**
    * If `true` the content has a min width of 100%.
@@ -57,6 +63,7 @@ export class PopoverContent {
         class={{
           ...block.class(),
           ...block.modifier('expanded').class(this.expanded),
+          ...block.modifier(`color-${this.color}`).class(),
         }}
         role="tooltip"
         style={this.contentStyle}
