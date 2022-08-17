@@ -1,0 +1,77 @@
+
++block(popover)
+  display: block
+  +mobile
+    .bal-popover__content
+      min-width: 100vw !important
+  +modifier(active)
+    .bal-popover__content
+      display: block
+
+  +element(backdrop)
+    @extend %overlay
+    z-index: 10
+    position: fixed
+    background-color: rgba($blue-dark, .8)
+
+  +element(content)
+    display: none
+    z-index: 20
+    min-width: 260px
+    box-shadow: var(--bal-shadow)
+    background: var(--bal-color-white)
+    border-radius: var(--bal-radius)
+    &[data-show]
+      display: block
+    +modifier(expanded)
+      min-width: 100%
+    +element(inner)
+
+    +element(arrow)
+      visibility: hidden
+      display: none
+      &,
+      &:before
+        position: absolute
+        width: 8px
+        height: 8px
+        background: inherit
+      &:before
+        visibility: visible
+        content: ''
+        transform: rotate(45deg)
+
+    &[data-popper-placement^='top'] > .bal-popover__content__arrow
+      bottom: -4px
+
+    &[data-popper-placement^='bottom'] > .bal-popover__content__arrow
+      top: -4px
+
+    &[data-popper-placement^='left'] > .bal-popover__content__arrow
+      right: -4px
+
+    &[data-popper-placement^='right'] > .bal-popover__content__arrow
+      left: -4px
+
++block(popover)
+  +modifier(arrow)
+    .bal-popover__content__arrow
+      display: block
+  +modifier(tooltip)
+    .bal-popover__content
+      min-width: unset
+      padding: var(--bal-space-x-small)
+      background: var(--bal-color-blue-6)
+      color: var(--bal-color-white)
+      font-family: var(--bal-font-family-text)
+      font-size: var(--bal-size-small)
+
+.popover-item
+  padding-right: 3rem
+  text-align: inherit
+  white-space: nowrap
+  width: 100%
+  display: block
+
+[bal-popover-trigger]
+  z-index: 15

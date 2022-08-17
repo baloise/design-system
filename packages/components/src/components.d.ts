@@ -13,6 +13,7 @@ import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Props as Props2 } from "./props";
 import { Events as Events1 } from "./events";
+import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -1437,33 +1438,45 @@ export namespace Components {
     }
     interface BalPopover {
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * If `true` an little arrow is added, which points to the trigger element
          */
-        "debounce": number;
+        "arrow": boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
         /**
           * Closes the popover
          */
-        "dismiss": () => Promise<void>;
+        "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
         /**
-          * If `true` the field spans over the whole width.
+          * If `true` the popover shows on hover
+         */
+        "hover": boolean;
+        /**
+          * Define the offset of the popover content.
          */
         "offsetX": number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the offset of the popover content.
          */
         "offsetY": number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the position of the popover content.
          */
         "position": Props.BalPopoverPlacement;
         /**
           * Open the popover
          */
-        "present": () => Promise<void>;
+        "present": (options?: PopoverPresentOptions) => Promise<void>;
         /**
           * Open or closes the popover
          */
-        "toggle": () => Promise<void>;
+        "toggle": (options?: PopoverPresentOptions) => Promise<void>;
+        /**
+          * If `true` the popover is shown as a tooltip
+         */
+        "tooltip": boolean;
         /**
           * If `true` the popover content is open.
          */
@@ -4729,15 +4742,23 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * If `true` an little arrow is added, which points to the trigger element
          */
-        "debounce"?: number;
+        "arrow"?: boolean;
         /**
-          * If `true` the field spans over the whole width.
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true` the popover shows on hover
+         */
+        "hover"?: boolean;
+        /**
+          * Define the offset of the popover content.
          */
         "offsetX"?: number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the offset of the popover content.
          */
         "offsetY"?: number;
         /**
@@ -4746,9 +4767,13 @@ declare namespace LocalJSX {
         "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the position of the popover content.
          */
         "position"?: Props.BalPopoverPlacement;
+        /**
+          * If `true` the popover is shown as a tooltip
+         */
+        "tooltip"?: boolean;
         /**
           * If `true` the popover content is open.
          */

@@ -1,4 +1,5 @@
 import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-popover-content',
@@ -49,18 +50,21 @@ export class PopoverContent {
   }
 
   render() {
+    const block = BEM.block('popover').element('content')
+
     return (
       <Host
         class={{
-          'popover-content has-background-white has-radius-normal has-shadow': true,
-          'is-expanded': this.expanded,
+          ...block.class(),
+          ...block.modifier('expanded').class(this.expanded),
         }}
-        role="menu"
+        role="tooltip"
         style={this.contentStyle}
       >
-        <div class="inner" style={this.innerStyle}>
+        <div class={{ ...block.element('inner').class() }} style={this.innerStyle}>
           <slot></slot>
         </div>
+        <div class={{ ...block.element('arrow').class() }} data-popper-arrow></div>
       </Host>
     )
   }
