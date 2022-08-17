@@ -1,13 +1,21 @@
 +block(nav)
-  position: fixed
+  position: absolute
   display: block
+  width: 100%
+  z-index: 30
   top: 0
   left: 0
-  width: 100%
-  transition: transform .3s ease-in-out
-  z-index: 30
+  background-color: var(--bal-color-background)
+  +desktop
+    background-color: transparent
+    padding-bottom: 0
+    position: fixed
+    top: 0
+    left: 0
+    transition: transform .3s ease-in-out
   +modifier(transformed)
-    transform: translateY(-3rem)
+    +desktop
+      transform: translateY(-3rem)
 
   +element(meta)
     +unselectable
@@ -120,7 +128,8 @@
         max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 2.5rem 3rem .5rem
+    +desktop
+      padding: 2.5rem 3rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -159,10 +168,17 @@
         padding-bottom: 1rem
       > bal-card >:not(bal-badge):not(bal-tag):first-child
         padding-top: 1rem
+      +modifier(context-grey)
+        +touch
+          padding-bottom: 1rem
+          padding-top: 1rem
+        +desktop
+          margin: 0 0 .5rem
       +modifier(context-white)
-        > bal-card > bal-card-content
-          padding-left: 0
-          padding-right: 0
+        +desktop
+          > bal-card > bal-card-content
+            padding-left: 0
+            padding-right: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
@@ -186,3 +202,82 @@
         margin: 0
         +element(heading)
           margin-bottom: 1rem
+
+  .bal-nav__metamobile
+    display: block
+    background: var(--bal-color-primary-inverted)
+    height: 64px
+    max-height: 64px
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    z-index: 30
+    +desktop
+      display: none
+    nav
+      display: flex
+      height: 100%
+      gap: .5rem
+      align-items: center
+      margin: 0 auto
+      padding: 0 1rem
+      +tablet
+        padding: 0 3rem
+    .bal-nav__metamobile__actions
+      margin-left: auto
+      > div
+        display: flex
+        gap: .5rem
+  .bal-nav__mainmobile
+    display: block
+    padding: 1.5rem 1rem 4rem
+    z-index: 29
+    +tablet
+      padding: 0 3rem
+    +desktop
+      display: none
+    +element(link)
+      display: block
+      padding-bottom: 1rem
+      position: relative
+
+      &:after
+        content: ''
+        background: var(--bal-color-grey)
+        height: 1px
+        width: 100%
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+      > a
+        color: var(--bal-color-blue)
+        font-size: 0.75rem
+        font-weight: var(--bal-weight-bold)
+        line-height: 1rem
+        padding-right: 1rem
+        position: relative
+        &::before
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-50%)
+          content: '\279E'
+        +hover
+          &:hover
+            color: var(--bal-color-light-blue-dark)
+    +element(logo)
+      padding-top: 1rem
+      padding-bottom: 1rem
+  .bal-nav__footmobile
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+    background: var(--bal-color-grey-2)
+    padding: .5rem
+    +desktop
+      display: none
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: .5rem

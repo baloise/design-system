@@ -1077,6 +1077,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav": boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
@@ -1107,6 +1111,10 @@ export namespace Components {
          */
         "selected": boolean;
         /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem": boolean;
+        /**
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
@@ -1122,6 +1130,10 @@ export namespace Components {
           * If `true` the list accordion is open
          */
         "accordionOpen": boolean;
+        /**
+          * Icon name string with value 'plus' on default
+         */
+        "icon": string;
     }
     interface BalListItemContent {
     }
@@ -1134,6 +1146,10 @@ export namespace Components {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Heading level with value 'h4' on default
+         */
+        "level": Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -1324,9 +1340,21 @@ export namespace Components {
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color": 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
@@ -4365,6 +4393,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav"?: boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
@@ -4399,6 +4431,10 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
         /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem"?: boolean;
+        /**
           * Specifies where to open the linked document
          */
         "target"?: Props.BalListItemTarget;
@@ -4415,6 +4451,10 @@ declare namespace LocalJSX {
          */
         "accordionOpen"?: boolean;
         /**
+          * Icon name string with value 'plus' on default
+         */
+        "icon"?: string;
+        /**
           * Emitted when the accordion state is changed
          */
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
@@ -4430,6 +4470,10 @@ declare namespace LocalJSX {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Heading level with value 'h4' on default
+         */
+        "level"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -4620,9 +4664,21 @@ declare namespace LocalJSX {
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color"?: 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {

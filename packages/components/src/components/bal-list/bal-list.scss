@@ -45,6 +45,9 @@
 
 .bal-list-item {
   position: relative;
+}
+
+.bal-list:not(.is-in-main-nav) .bal-list-item {
   & > a,
   & > div,
   & > button {
@@ -70,6 +73,18 @@
   flex: 1;
 }
 
+.bal-list.is-in-main-nav bal-list-item {
+  @include touch() {
+    padding: 1rem 0;
+    &.is-sub-accordion-item {
+      padding: 0 1rem 1rem;
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
 .bal-list-item-content {
   justify-content: center;
 }
@@ -79,6 +94,16 @@
   min-height: 48px;
   justify-content: center;
   align-items: center;
+}
+
+.bal-list.has-size-small {
+  .bal-list-item,
+  .bal-list-item > a,
+  .bal-list-item > div,
+  .bal-list-item > button,
+  .bal-list-item-icon {
+    min-height: 1.5rem;
+  }
 }
 
 .bal-list.has-size-large {
@@ -217,20 +242,37 @@
   }
 }
 
-.bal-list.has-border .bal-list-item {
-  padding-bottom: 2px;
-
+.bal-list.has-border .bal-list-item:not(.is-sub-accordion-item) {
   & > div:after,
   a:not(.is-link):after,
   button:not(.button):after {
     content: '';
     height: 2px;
-    width: 100%;
     border-radius: $radius;
+    width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+  }
+}
+
+.bal-list.has-border.is-in-main-nav .bal-list-item:not(.is-sub-accordion-item) {
+  & > div:after,
+  a:not(.is-link):after,
+  button:not(.button):after {
+    background: var(--bal-color-grey);
+    height: 1px;
+  }
+}
+
+bal-list.has-border.is-in-main-nav .bal-list-item {
+  &:last-child {
+    & > div:after,
+    a:after,
+    button:after {
+      display: none;
+    }
   }
 }
 
@@ -245,15 +287,22 @@
   }
 
   .bal-list-item:not(.is-disabled).is-list-item-clickable {
-    & > div:hover:after,
-    a:not(.is-link):hover:after,
-    button:not(.button):hover:after {
-      background: $blue-5;
+    & > div,
+    a:not(.is-link),
+    button:not(.button) {
+      @include hover() {
+        &:hover:after {
+          background: var(--bal-color-blue-5);
+        }
+      }
     }
+
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after {
-      background: $blue-5;
+      @include desktop() {
+        background: var(--bal-color-blue-5);
+      }
     }
   }
 
@@ -394,7 +443,9 @@ bal-card > bal-list.p-0 {
   }
 
   &.is-open bal-icon.trigger-icon {
-    transform: rotate(45deg);
+    bal-list:not(.is-in-main-nav) & {
+      transform: rotate(45deg);
+    }
   }
 }
 
@@ -410,4 +461,29 @@ bal-card > bal-list.p-0 {
 
 .bal-list.is-on-background-dark bal-list-item-accordion-body bal-list-item-content > p {
   color: $white;
+}
+
+.bal-list-item.is-sub-accordion-item {
+  .bal-list-item-accordion-body {
+    &:after {
+      content: '';
+      background: var(--bal-color-grey);
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &:last-child {
+    .bal-list-item-accordion-body {
+      padding-top: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
 }

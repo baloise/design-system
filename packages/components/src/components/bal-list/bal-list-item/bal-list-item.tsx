@@ -28,6 +28,11 @@ export class ListItem {
   @Prop() accordion = false
 
   /**
+   * If `true` the list item can be used as an accordion inside another accordion
+   */
+  @Prop() subAccordionItem = false
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -83,6 +88,7 @@ export class ListItem {
           class={{
             'bal-list-item': true,
             'is-accordion': this.accordion,
+            'is-sub-accordion-item': this.subAccordionItem,
             'is-disabled': this.disabled,
             'is-selected': this.selected,
             'is-list-item-clickable': this.clickable || this.href.length > 0,
@@ -129,10 +135,9 @@ export class ListItem {
         <Host
           role="listitem"
           class={{
-            'bal-list-item': true,
-            'is-accordion': this.accordion,
+            'bal-list-item is-accordion is-list-item-clickable': true,
             'is-disabled': this.disabled,
-            'is-list-item-clickable': this.accordion,
+            'is-sub-accordion-item': this.subAccordionItem,
           }}
         >
           <div>
