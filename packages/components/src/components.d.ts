@@ -1640,6 +1640,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded": boolean;
+        /**
           * Defines the layout of the radio button
          */
         "interface": Props.BalRadioGroupInterface;
@@ -4996,6 +5000,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded"?: boolean;
         /**
           * Defines the layout of the radio button
          */

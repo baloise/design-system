@@ -6,12 +6,14 @@ export const ContactFormTemplate = `
 
         <bal-form-col>
           <bal-field>
+            <bal-field-label required>Gender</bal-field-label>
             <bal-field-control>
               <bal-radio-group>
                 <bal-radio name="gender" value="male">Male</bal-radio>
                 <bal-radio name="gender" value="female">Female</bal-radio>
               </bal-radio-group>
             </bal-field-control>
+            <bal-field-message>Field Message</bal-field-message>
           </bal-field>
         </bal-form-col>
 
@@ -21,6 +23,7 @@ export const ContactFormTemplate = `
             <bal-field-control>
               <bal-input name="firstname" placeholder="Enter your firstname" required></bal-input>
             </bal-field-control>
+            <bal-field-message>Field Message</bal-field-message>
           </bal-field>
         </bal-form-col>
         <bal-form-col size="half">
@@ -29,6 +32,7 @@ export const ContactFormTemplate = `
             <bal-field-control>
               <bal-input name="lastname" placeholder="Enter your lastname" required></bal-input>
             </bal-field-control>
+            <bal-field-message>Field Message</bal-field-message>
           </bal-field>
         </bal-form-col>
 

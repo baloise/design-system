@@ -7,7 +7,6 @@ import { BalComponentStory } from '../../../stories/utils/story'
 const component = BalComponentStory({
   component: BalPopover,
   subcomponents: { BalPopoverContent },
-  status: 'stable',
   argTypes: {
     ...withContent(),
   },

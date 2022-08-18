@@ -17,7 +17,6 @@ import {
 
 const component = BalComponentStory({
   component: BalApp,
-  status: 'stable',
   argTypes: {
     hasStickyFooter: {
       description: 'Sets the footer sticky to the bottom',

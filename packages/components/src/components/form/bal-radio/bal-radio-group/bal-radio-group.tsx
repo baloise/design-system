@@ -46,6 +46,11 @@ export class RadioGroup implements ComponentInterface {
   @Prop() vertical = false
 
   /**
+   * Uses the whole width for the select-buttons
+   */
+  @Prop() expanded = false
+
+  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled?: boolean = undefined
@@ -160,19 +165,16 @@ export class RadioGroup implements ComponentInterface {
         onClick={this.onClick}
         class={{
           ...block.class(),
-          // [`bal-${this.interface}`]: true,
-          // 'is-vertical-mobile': this.verticalOnMobile,
-          // 'is-vertical': this.vertical,
         }}
         {...this.inheritedAttributes}
       >
-        {/* <div class="fg-2"> */}
         <div
           class={{
             ...innerEl.class(),
             ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
             ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
             ...innerEl.modifier('vertical').class(this.vertical),
+            ...innerEl.modifier('expanded').class(this.expanded),
           }}
         >
           <slot></slot>

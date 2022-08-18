@@ -33,7 +33,6 @@ const component = BalComponentStory({
     BalFieldMessage,
   },
   docs,
-  status: 'stable',
   argTypes: {
     hasFieldMessage: {
       description: 'Show a hint or validation message below the control',

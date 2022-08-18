@@ -184,10 +184,6 @@ export class Radio implements ComponentInterface, FormInput<any> {
 
   private getTextColor() {
     return this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'
-    // if (this.interface === 'radio') {
-    // } else {
-    //   return this.disabled || this.readonly ? 'grey' : this.checked ? 'white' : 'primary'
-    // }
   }
 
   render() {
@@ -212,6 +208,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           ...block.modifier('inverted').class(this.inverted),
           ...block.modifier('focused').class(this.hasFocus),
           ...block.modifier('invalid').class(this.invalid),
+          ...block.modifier('checked').class(this.checked),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
         onClick={this.onClick}
@@ -222,15 +219,11 @@ export class Radio implements ComponentInterface, FormInput<any> {
         <input
           class={{
             ...inputEl.class(),
-            ...inputEl.modifier('checked').class(this.checked),
-            ...inputEl.modifier('invalid').class(this.invalid),
-            ...inputEl.modifier('disabled').class(this.disabled || this.readonly),
             'data-test-radio-input': true,
           }}
           type="radio"
           id={inputId}
           name={this.name}
-          // tabindex={-1}
           value={value}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -244,23 +237,18 @@ export class Radio implements ComponentInterface, FormInput<any> {
           class={{
             ...labelEl.class(),
             ...labelEl.modifier('checked').class(this.checked),
-            ...labelEl.modifier('invalid').class(this.invalid),
-            ...labelEl.modifier('disabled').class(this.disabled || this.readonly),
             'data-test-radio-label': true,
           }}
           htmlFor={inputId}
         >
-          <bal-text
-            inline
-            color={this.getTextColor()}
+          <span
             class={{
               ...labelTextEl.class(),
               ...labelTextEl.modifier('hidden').class(this.labelHidden),
-              ...labelTextEl.modifier('invalid').class(this.invalid),
             }}
           >
             <slot></slot>
-          </bal-text>
+          </span>
         </label>
       </Host>
     )

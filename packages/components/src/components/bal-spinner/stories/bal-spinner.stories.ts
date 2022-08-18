@@ -5,7 +5,6 @@ import { BalSpinner, BalCard, BalCardContent } from '../../../../.storybook/vue/
 const component = BalComponentStory({
   component: BalSpinner,
   docs,
-  status: 'stable',
 })
 
 export default component.story
