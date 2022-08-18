@@ -224,6 +224,15 @@ export class Select {
     }
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = undefined
+      this.rawValue = []
+    }
+  }
+
   @Listen('keydown', { target: 'window' })
   async handleKeyDown(event: KeyboardEvent) {
     if (this.isPopoverOpen) {
@@ -777,7 +786,7 @@ export class Select {
           'is-inverted': this.inverted,
         }}
       >
-        <select class="is-hidden" name={this.name} multiple={this.multiple} required={this.required}>
+        <select class="is-one-pixel" name={this.name} multiple={this.multiple} required={this.required}>
           {valuesArray.map((value: string) => (
             <option value={value} selected>
               {value}

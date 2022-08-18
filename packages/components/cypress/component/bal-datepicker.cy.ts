@@ -14,7 +14,7 @@ describe('bal-datepicker.cy.ts', () => {
     })
 
     cy.get('bal-datepicker')
-      .find('input')
+      .find('input.input')
       .type('{2}')
       .type('{.}')
       .type('{1}')
@@ -40,10 +40,10 @@ describe('bal-datepicker.cy.ts', () => {
       },
     })
 
-    cy.get('bal-datepicker').find('input').click()
+    cy.get('bal-datepicker').find('input.input').click()
     cy.get('bal-datepicker').find('.is-today').click()
 
-    cy.get('bal-datepicker').find('input').should('have.value', format('de-CH', now()))
+    cy.get('bal-datepicker').find('input.input').should('have.value', format('de-CH', now()))
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balInput').should('not.have.been.called')
   })
@@ -60,7 +60,7 @@ describe('bal-datepicker.cy.ts', () => {
       },
     })
 
-    cy.get('bal-datepicker').find('input').should('have.value', '')
+    cy.get('bal-datepicker').find('input.input').should('have.value', '')
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balInput').should('not.have.been.called')
   })
@@ -74,7 +74,14 @@ describe('bal-datepicker.cy.ts', () => {
       },
     })
 
-    cy.get('bal-datepicker').find('input').type('{2}').type('{.}').type('{2}').type('{.}').type('{1}').type('{enter}')
+    cy.get('bal-datepicker')
+      .find('input.input')
+      .type('{2}')
+      .type('{.}')
+      .type('{2}')
+      .type('{.}')
+      .type('{1}')
+      .type('{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
   })
@@ -86,6 +93,6 @@ describe('bal-datepicker.cy.ts', () => {
       },
     })
 
-    cy.get('bal-datepicker').find('input').should('have.attr', 'disabled')
+    cy.get('bal-datepicker').find('input.input').should('have.attr', 'disabled')
   })
 })

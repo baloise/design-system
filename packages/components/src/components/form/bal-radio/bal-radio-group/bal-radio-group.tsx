@@ -105,6 +105,15 @@ export class RadioGroup implements ComponentInterface {
     }
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = ''
+      this.sync()
+    }
+  }
+
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
     this.sync()

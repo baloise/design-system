@@ -80,7 +80,7 @@ export const selectors = {
   radio: {
     input: 'input.data-test-radio-input',
     label: 'label.data-test-radio-label',
-    text: 'label.data-test-radio-label > bal-text',
+    text: 'label.data-test-radio-label > span',
   },
   select: {
     input: 'input.data-test-select-input',
