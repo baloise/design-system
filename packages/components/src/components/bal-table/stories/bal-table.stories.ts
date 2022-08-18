@@ -15,7 +15,6 @@ import {
 const component = BalComponentStory({
   component: BalTable,
   docs,
-  status: 'stable',
   layout: 'fullscreen',
 })
 

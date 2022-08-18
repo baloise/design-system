@@ -22,6 +22,7 @@ import {
 } from '../../../helpers/form-input.helpers'
 import { isDescendant } from '../../../helpers/helpers'
 import { Props, Events } from '../../../types'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-radio',
@@ -182,14 +183,15 @@ export class Radio implements ComponentInterface, FormInput<any> {
   }
 
   private getTextColor() {
-    if (this.interface === 'radio') {
-      return this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'
-    } else {
-      return this.disabled || this.readonly ? 'grey' : this.checked ? 'white' : 'primary'
-    }
+    return this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'
   }
 
   render() {
+    const block = BEM.block('radio')
+    const inputEl = block.element('input')
+    const labelEl = block.element('label')
+    const labelTextEl = labelEl.element('text')
+
     const { inputId } = this
     const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
 
@@ -201,12 +203,13 @@ export class Radio implements ComponentInterface, FormInput<any> {
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
-          'bal-radio': this.interface === 'radio',
-          'bal-select-button': this.interface === 'select-button',
-          'is-inverted': this.inverted,
-          'is-disabled': this.disabled || this.readonly,
-          'is-focused': this.hasFocus,
-          'is-invalid': this.invalid,
+          ...block.class(),
+          ...block.modifier('select-button').class(this.interface === 'select-button'),
+          ...block.modifier('inverted').class(this.inverted),
+          ...block.modifier('focused').class(this.hasFocus),
+          ...block.modifier('invalid').class(this.invalid),
+          ...block.modifier('checked').class(this.checked),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
         onClick={this.onClick}
         onFocus={this.onInputFocus}
@@ -215,14 +218,12 @@ export class Radio implements ComponentInterface, FormInput<any> {
       >
         <input
           class={{
-            'is-disabled': this.disabled || this.readonly,
+            ...inputEl.class(),
             'data-test-radio-input': true,
-            'is-invalid': this.invalid,
           }}
           type="radio"
           id={inputId}
           name={this.name}
-          tabindex={-1}
           value={value}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -234,22 +235,20 @@ export class Radio implements ComponentInterface, FormInput<any> {
         />
         <label
           class={{
-            'option-label': true,
-            'is-disabled': this.disabled || this.readonly,
+            ...labelEl.class(),
+            ...labelEl.modifier('checked').class(this.checked),
             'data-test-radio-label': true,
           }}
           htmlFor={inputId}
         >
-          <bal-text
-            inline
-            color={this.getTextColor()}
+          <span
             class={{
-              'has-padding-left': !this.labelHidden && this.interface !== 'select-button',
-              'is-invalid': this.invalid,
+              ...labelTextEl.class(),
+              ...labelTextEl.modifier('hidden').class(this.labelHidden),
             }}
           >
             <slot></slot>
-          </bal-text>
+          </span>
         </label>
       </Host>
     )

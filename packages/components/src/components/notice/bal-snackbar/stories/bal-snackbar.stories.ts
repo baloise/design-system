@@ -6,7 +6,6 @@ import docs from './bal-snackbar.docs.mdx'
 const component = BalComponentStory({
   title: 'Components/Notice/Snackbar',
   component: BalSnackbar,
-  status: 'stable',
   args: {
     message: 'Hello World',
     duration: 2000,

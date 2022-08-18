@@ -6,7 +6,6 @@ import docs from './bal-toast.docs.mdx'
 const component = BalComponentStory({
   title: 'Components/Notice/Toast',
   component: BalToast,
-  status: 'stable',
   args: {
     message: '<b>Message: </b>Hello World Hello World Hello World Hello World Hello World Hello World Hello World',
     duration: 2000,

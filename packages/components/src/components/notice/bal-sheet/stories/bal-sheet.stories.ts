@@ -13,7 +13,6 @@ import {
 const component = BalComponentStory({
   title: 'Components/Notice/Sheet',
   component: BalSheet,
-  status: 'stable',
   argTypes: {
     ...withContent(),
   },

@@ -14,7 +14,6 @@ const component = BalComponentStory({
     ...withContent(),
   },
   docs,
-  status: 'stable',
 })
 
 export default component.story

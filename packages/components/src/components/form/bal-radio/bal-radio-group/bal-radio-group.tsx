@@ -14,6 +14,7 @@ import {
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
 import { Props, Events } from '../../../../types'
+import { BEM } from '../../../../utils/bem'
 
 @Component({
   tag: 'bal-radio-group',
@@ -43,6 +44,11 @@ export class RadioGroup implements ComponentInterface {
    * Displays the checkboxes vertically
    */
   @Prop() vertical = false
+
+  /**
+   * Uses the whole width for the select-buttons
+   */
+  @Prop() expanded = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -156,7 +162,10 @@ export class RadioGroup implements ComponentInterface {
   }
 
   render() {
+    const block = BEM.block('radio-group')
+    const innerEl = block.element('inner')
     const label = findItemLabel(this.el)
+
     return (
       <Host
         role="radiogroup"
@@ -164,13 +173,19 @@ export class RadioGroup implements ComponentInterface {
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
         class={{
-          [`bal-${this.interface}`]: true,
-          'is-vertical-mobile': this.verticalOnMobile,
-          'is-vertical': this.vertical,
+          ...block.class(),
         }}
         {...this.inheritedAttributes}
       >
-        <div class="fg-2">
+        <div
+          class={{
+            ...innerEl.class(),
+            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
+            ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
+            ...innerEl.modifier('vertical').class(this.vertical),
+            ...innerEl.modifier('expanded').class(this.expanded),
+          }}
+        >
           <slot></slot>
         </div>
       </Host>

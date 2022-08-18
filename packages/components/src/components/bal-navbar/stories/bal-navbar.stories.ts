@@ -24,7 +24,6 @@ import { isPlatform } from '../../../../dist'
 
 const component = BalComponentStory({
   component: BalNavbar,
-  status: 'stable',
   subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   docs,
   args: {

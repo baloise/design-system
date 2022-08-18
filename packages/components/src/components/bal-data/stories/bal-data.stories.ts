@@ -20,7 +20,6 @@ const component = BalComponentStory({
     BalDataLabel,
     BalDataValue,
   },
-  status: 'stable',
   docs,
 })
 
