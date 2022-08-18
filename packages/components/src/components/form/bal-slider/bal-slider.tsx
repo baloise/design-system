@@ -7,7 +7,8 @@ import { debounceEvent } from '../../../helpers/helpers'
   tag: 'bal-slider',
 })
 export class Slider {
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
+
   private inputId = `bal-slider-${SliderIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
@@ -105,9 +106,17 @@ export class Slider {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if ((this.disabled || this.readonly) && ev.target && ev.target === this.element) {
+    if ((this.disabled || this.readonly) && ev.target && ev.target === this.el) {
       ev.preventDefault()
       ev.stopPropagation()
+    }
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = undefined
     }
   }
 

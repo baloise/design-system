@@ -129,6 +129,14 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     }
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.checked = false
+    }
+  }
+
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
