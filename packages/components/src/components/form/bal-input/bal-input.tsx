@@ -325,7 +325,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   }
 
   private onInput = (ev: InputEvent) => {
-    console.log('onInput')
     const input = getInputTarget(ev)
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
