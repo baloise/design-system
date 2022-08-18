@@ -23,6 +23,8 @@
     z-index: 10
     position: fixed
     background-color: rgba($blue-dark, .8)
+    height: calc(100vh + 3rem)
+    width: 100vw
 
   +element(content)
     display: none
@@ -30,11 +32,16 @@
     min-width: 260px
     box-shadow: var(--bal-shadow)
     background: var(--bal-color-white)
-    border-radius: var(--bal-radius)
     &[data-show]
       display: block
     +modifier(expanded)
       min-width: 100%
+    +modifier(radius-normal)
+      border-radius: var(--bal-radius)
+    +modifier(radius-large)
+      border-radius: var(--bal-radius-large)
+    +modifier(radius-none)
+      border-radius: var(--bal-radius-none)
     +modifier(color-grey)
       background: var(--bal-color-grey-2)
     +element(arrow)

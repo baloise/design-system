@@ -1532,6 +1532,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Defines border-radius of popover content.
+         */
+        "radius": Props2.BalPopoverContentRadius;
+        /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable": number;
@@ -4868,6 +4872,10 @@ declare namespace LocalJSX {
           * If `true` the content has a min width of 100%.
          */
         "expanded"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "radius"?: Props2.BalPopoverContentRadius;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */

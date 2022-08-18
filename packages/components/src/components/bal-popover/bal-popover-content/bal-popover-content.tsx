@@ -28,6 +28,11 @@ export class PopoverContent {
    */
   @Prop() expanded = false
 
+  /**
+   * Defines border-radius of popover content.
+   */
+  @Prop() radius: Props.BalPopoverContentRadius = 'normal'
+
   get innerStyle() {
     let scrollable = {}
 
@@ -63,6 +68,7 @@ export class PopoverContent {
         class={{
           ...block.class(),
           ...block.modifier('expanded').class(this.expanded),
+          ...block.modifier(`radius-${this.radius}`).class(),
           ...block.modifier(`color-${this.color}`).class(),
         }}
         role="tooltip"
