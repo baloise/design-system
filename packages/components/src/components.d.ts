@@ -1167,6 +1167,10 @@ export namespace Components {
     }
     interface BalLogo {
         /**
+          * Defines if the animation should be active
+         */
+        "animation": boolean;
+        /**
           * Defines the color of the logo.
          */
         "color": Props.BalLogoColor;
@@ -4539,6 +4543,10 @@ declare namespace LocalJSX {
         "level"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
+        /**
+          * Defines if the animation should be active
+         */
+        "animation"?: boolean;
         /**
           * Defines the color of the logo.
          */
