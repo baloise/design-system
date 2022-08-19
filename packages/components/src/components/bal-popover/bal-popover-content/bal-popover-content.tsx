@@ -73,8 +73,6 @@ export class PopoverContent {
 
   render() {
     const block = BEM.block('popover').element('content')
-    console.log('this.contentStyle', this.contentStyle)
-    console.log('this.contentWidth', this.contentWidth)
 
     return (
       <Host
