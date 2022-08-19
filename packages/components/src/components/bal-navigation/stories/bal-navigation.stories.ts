@@ -593,10 +593,10 @@ export const WithPopover = args => ({
           @click="toggle()"
           aria-haspopup="true"
         ></bal-button>
-        <bal-popover-content radius="large">
+        <bal-popover-content radius="large" content-width={320}>
           <div class="p-5">
               <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-                <bal-heading space="none" level="h4" class="mr-5">24h Kundenservice</bal-heading>
+                <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
                 <bal-close @click="toggle()"></bal-close>
               </div>
               <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
@@ -635,6 +635,7 @@ WithPopover.args = {
   arrow: true,
   position: 'bottom-start',
   offsetY: 13,
+  contentWidth: 320,
   content:
     'hereLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 }

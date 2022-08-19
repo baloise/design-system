@@ -178,6 +178,7 @@ export class Popover {
   async present(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (!this.value || options.force) {
       this.menuElement?.setAttribute('data-show', '')
+      this.menuElement?.setAttribute('aria-hidden', 'false')
       this.balPopoverPrepare.emit(this.popoverId)
       this.value = true
       this.popperInstance.setOptions((options: any) => ({
@@ -199,6 +200,7 @@ export class Popover {
   async dismiss(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (this.value || options.force) {
       this.menuElement?.removeAttribute('data-show')
+      this.menuElement?.setAttribute('aria-hidden', 'true')
       this.value = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
