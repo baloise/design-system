@@ -76,7 +76,6 @@
       "@baloise/design-system-next-components/dist/components/bal-tag-group": "BalTagGroup",
       "@baloise/design-system-next-components/dist/components/bal-text": "BalText",
       "@baloise/design-system-next-components/dist/components/bal-textarea": "BalTextarea",
-      "@baloise/design-system-next-components/dist/components/bal-timeinput": "BalTimeinput",
       "@baloise/design-system-next-components/dist/components/bal-toast": "BalToast",
       "@baloise/design-system-next-components/dist/components/bal-input-stepper": "BalInputStepper",
       "@baloise/design-system-next-components/dist/components/bal-doc-tokens-border": "BalDocTokensBorder",
