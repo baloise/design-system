@@ -1524,6 +1524,10 @@ export namespace Components {
          */
         "color": Props2.BalPopoverContentColor;
         /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
           * Define the max width of the popover content.
          */
         "contentWidth": number;
@@ -4864,6 +4868,10 @@ declare namespace LocalJSX {
           * Defines background color of the content.
          */
         "color"?: Props2.BalPopoverContentColor;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
         /**
           * Define the max width of the popover content.
          */

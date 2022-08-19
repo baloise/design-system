@@ -19,6 +19,11 @@ export class PopoverContent {
   @Prop() contentWidth = 0
 
   /**
+   * Define the min width of the popover content.
+   */
+  @Prop() contentMinWidth = 0
+
+  /**
    * Defines background color of the content.
    */
   @Prop() color: Props.BalPopoverContentColor = 'white'
@@ -50,18 +55,26 @@ export class PopoverContent {
 
   get contentStyle() {
     let contentWidth = {}
+    let contentMinWidth = {}
 
     if (this.contentWidth > 0) {
       contentWidth = { 'max-width': `${this.contentWidth}px` }
     }
 
+    if (this.contentMinWidth > 0) {
+      contentMinWidth = { 'min-width': `${this.contentMinWidth}px` }
+    }
+
     return {
       ...contentWidth,
+      ...contentMinWidth,
     }
   }
 
   render() {
     const block = BEM.block('popover').element('content')
+    console.log('this.contentStyle', this.contentStyle)
+    console.log('this.contentWidth', this.contentWidth)
 
     return (
       <Host
