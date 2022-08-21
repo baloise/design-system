@@ -42,9 +42,9 @@ const write = async (filePath, data) => {
 }
 
 const scan = async filePath => {
-  // glop always returns forward slashes
+  // glop always returns and works with forward slashes
   return new Promise((resolve, reject) => {
-    glob(filePath, (err, filterFilePaths) => {
+    glob(filePath.replace(/\\/g, '\/'), (err, filterFilePaths) => {
       if (err) {
         return reject(err)
       }
