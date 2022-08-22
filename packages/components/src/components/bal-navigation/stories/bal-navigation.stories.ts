@@ -19,6 +19,7 @@ const component = BalComponentStory({
   argTypes: {
     ...withContent(),
   },
+  layout: 'fullscreen',
 })
 
 export default component.story
@@ -602,8 +603,8 @@ export const WithPopover = args => ({
           @click="toggle()"
           aria-haspopup="true"
         ></bal-button>
-        <bal-popover-content radius="large" content-width=320 content-min-width=320>
-          <div class="p-5">
+        <bal-popover-content radius="large" content-width=440 content-min-width=440>
+          <div class="p-6">
               <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
                 <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
                 <bal-close @click="toggle()"></bal-close>
@@ -631,8 +632,8 @@ export const WithPopover = args => ({
           @click="toggleMobile()"
           aria-haspopup="true"
         ></bal-button>
-        <bal-popover-content radius="large-bottom-none" expanded={true}>
-          <div class="p-5">
+        <bal-popover-content radius="large-bottom-none" expanded={true} no-shadow={true}>
+          <div class="p-6">
               <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
                 <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
                 <bal-close @click="toggleMobile()"></bal-close>

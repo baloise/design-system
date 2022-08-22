@@ -1466,6 +1466,10 @@ export namespace Components {
     }
     interface BalPopover {
         /**
+          * Allows the scrolling on the body element
+         */
+        "allowScrollingBody": () => Promise<void>;
+        /**
           * If `true` an little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
@@ -1473,6 +1477,10 @@ export namespace Components {
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
+        /**
+          * Blocks the scrolling on the body element
+         */
+        "blockScrollingBody": () => Promise<void>;
         /**
           * Closes the popover
          */
@@ -1510,6 +1518,10 @@ export namespace Components {
          */
         "toggle": (options?: PopoverPresentOptions) => Promise<void>;
         /**
+          * Toggles the scrolling on the body element
+         */
+        "toggleScrollingBody": () => Promise<void>;
+        /**
           * If `true` the popover is shown as a tooltip
          */
         "tooltip": boolean;
@@ -1535,6 +1547,10 @@ export namespace Components {
           * If `true` the content has a min width of 100%.
          */
         "expanded": boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow": boolean;
         /**
           * Defines border-radius of popover content.
          */
@@ -4880,6 +4896,10 @@ declare namespace LocalJSX {
           * If `true` the content has a min width of 100%.
          */
         "expanded"?: boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow"?: boolean;
         /**
           * Defines border-radius of popover content.
          */

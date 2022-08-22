@@ -19,6 +19,7 @@ export class Popover {
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
+  private body!: HTMLBodyElement
 
   @Element() element!: HTMLElement
 
@@ -145,6 +146,7 @@ export class Popover {
 
   componentDidLoad() {
     if (this.triggerElement && this.menuElement) {
+      this.body = document.querySelector('body') as HTMLBodyElement
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
         placement: this.tooltip ? 'bottom' : this.position,
         modifiers: [this.modifierOffset, this.modifierPreventOverflow],
@@ -177,6 +179,7 @@ export class Popover {
   @Method()
   async present(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (!this.value || options.force) {
+      await this.toggleScrollingBody()
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
       this.balPopoverPrepare.emit(this.popoverId)
@@ -199,6 +202,7 @@ export class Popover {
   @Method()
   async dismiss(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (this.value || options.force) {
+      await this.toggleScrollingBody()
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
       this.value = false
@@ -224,6 +228,40 @@ export class Popover {
     } else {
       await this.present(options)
     }
+  }
+
+  /**
+   * Toggles the scrolling on the body element
+   */
+  @Method()
+  async toggleScrollingBody() {
+    if (this.value) {
+      await this.blockScrollingBody()
+    } else {
+      await this.allowScrollingBody()
+    }
+  }
+
+  /**
+   * Allows the scrolling on the body element
+   */
+  @Method()
+  async allowScrollingBody() {
+    console.log('ALLOW SCROLL ON BODY', this.body)
+    this.body.style.position = 'relative'
+    this.body.style.width = 'auto'
+    this.body.style.overflowY = 'auto'
+  }
+
+  /**
+   * Blocks the scrolling on the body element
+   */
+  @Method()
+  async blockScrollingBody() {
+    console.log('BLOCK SCROLL ON BODY', this.body)
+    this.body.style.position = 'fixed'
+    this.body.style.width = '100%'
+    this.body.style.overflowY = 'hidden'
   }
 
   private updatePopper() {

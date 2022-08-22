@@ -38,6 +38,11 @@ export class PopoverContent {
    */
   @Prop() radius: Props.BalPopoverContentRadius = 'normal'
 
+  /**
+   * If `true` the popover does not have the shadow
+   */
+  @Prop() noShadow = false
+
   get innerStyle() {
     let scrollable = {}
 
@@ -79,6 +84,7 @@ export class PopoverContent {
         class={{
           ...block.class(),
           ...block.modifier('expanded').class(this.expanded),
+          ...block.modifier('no-shadow').class(this.noShadow),
           ...block.modifier(`radius-${this.radius}`).class(),
           ...block.modifier(`color-${this.color}`).class(),
         }}
