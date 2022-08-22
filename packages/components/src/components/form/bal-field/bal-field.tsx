@@ -85,6 +85,7 @@ export class Field {
       <Host
         class={{
           'is-invalid': this.invalid === true,
+          'bal-field--invalid': this.invalid === true,
         }}
       >
         <div
