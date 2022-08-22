@@ -98,6 +98,7 @@ export class Field {
         class={{
           'bal-field': true,
           'field': true,
+          'bal-field--invalid': this.invalid === true,
         }}
       >
         <slot></slot>
