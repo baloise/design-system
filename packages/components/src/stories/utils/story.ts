@@ -1,5 +1,5 @@
 import { stencilArgType } from './args'
-import { withSourceCode } from './parameter'
+import { SourceCodeOptions, withSourceCode } from './parameter'
 
 export type ComponentStatus = 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
 
@@ -32,7 +32,7 @@ export interface BalComponentStoryType {
     }
   }
   components: any
-  sourceCode(variant: (args: any) => { template: string }): any
+  sourceCode(variant: (args: any) => { template: string }, options?: SourceCodeOptions): any
 }
 
 export const sourceCode = (
@@ -71,10 +71,11 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
     components,
     sourceCode: (
       variant: (args: any) => { template: string; components: any },
+      options?: SourceCodeOptions,
     ): { docs: { source: { code: string } } } => {
       const template = variant({}).template
       const cs = Object.values(variant({}).components).map((c: any) => toPascalCase(c.name))
-      return withSourceCode(template, argTypes, { ...story.args, ...(variant as any).args }, cs)
+      return withSourceCode(template, argTypes, { ...story.args, ...(variant as any).args }, cs, options)
     },
   }
 }

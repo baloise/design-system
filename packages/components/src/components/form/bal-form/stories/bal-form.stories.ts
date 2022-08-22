@@ -78,7 +78,7 @@ export const Basic = args => ({
       ${inputTemplate({ invalid: true })}
     </bal-form-col>
     <bal-form-col>
-    ${inputTemplate()}
+      ${inputTemplate()}
     </bal-form-col>
     <bal-form-col>
       ${inputTemplate({ invalid: true })}
@@ -92,6 +92,22 @@ export const Basic = args => ({
 </bal-form>`,
 })
 Basic.args = {
-  native: true,
+  native: false,
+  novalidate: false,
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = {
+  ...component.sourceCode(Basic, {
+    vue: `import { element } from '@baloise/design-system-next-components-vue'
+import type { Components } from '@baloise/design-system-next-components'
+
+const form = ref(null)
+
+function submit() {
+  if (form.value) {
+    const formEl = element<Components.BalForm>(form)
+    formEl.scrollToFirstInvalidField()
+  }
+}
+`,
+  }),
+}
