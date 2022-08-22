@@ -690,6 +690,20 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
     }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native": boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate": boolean;
+        /**
+          * Scrolls to the first invalid field inside this form component.
+         */
+        "scrollToFirstInvalidField": () => Promise<void>;
+    }
     interface BalFormCol {
         "size": Props.BalFormColSize;
     }
@@ -2087,6 +2101,12 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormElement extends Components.BalForm, HTMLStencilElement {
+    }
+    var HTMLBalFormElement: {
+        prototype: HTMLBalFormElement;
+        new (): HTMLBalFormElement;
+    };
     interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
     }
     var HTMLBalFormColElement: {
@@ -2445,6 +2465,7 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form": HTMLBalFormElement;
         "bal-form-col": HTMLBalFormColElement;
         "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
@@ -3213,6 +3234,16 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native"?: boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate"?: boolean;
     }
     interface BalFormCol {
         "size"?: Props.BalFormColSize;
@@ -4480,6 +4511,7 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form": BalForm;
         "bal-form-col": BalFormCol;
         "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
@@ -4578,6 +4610,7 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form": LocalJSX.BalForm & JSXBase.HTMLAttributes<HTMLBalFormElement>;
             "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
             "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
