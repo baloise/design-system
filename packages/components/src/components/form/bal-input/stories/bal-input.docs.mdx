@@ -1,4 +1,8 @@
-import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { Canvas, Description, Story } from '@storybook/addon-docs'
+import readme from '../readme.md'
+import IconDocument from '../../../../../../icons/svg/document.svg'
+import IconAccount from '../../../../../../icons/svg/account.svg'
+import testing from './testing.md'
 
 <bal-doc-banner id="story--components-form-input--basic" status="rebranded">Input</bal-doc-banner>
 
@@ -77,6 +81,8 @@ Combine the component with the `bal-field` components to add a label, validation
   <Story id="components-form-input--offer-number-input" />
 </Canvas>
 
+<span id="story--components-form-input--simple-phone-number-input" style={{ opacity: 0 }}></span>
+
 ### Simple Phone Number Input
 
 Suggestion how to make phone number input field until new phone input component has been created:
@@ -86,8 +92,6 @@ Suggestion how to make phone number input field until new phone input component 
 </Canvas>
 
 ## Component Api
-
-import readme from '../readme.md'
 
 <Description markdown={readme} />
 
@@ -131,9 +135,6 @@ setValue(value: string | undefined) {
 A list of tutorials how to use or create this component and templates to see how it can
 be combined with other components.
 
-import IconDocument from '../../../../../../icons/svg/document.svg'
-import IconAccount from '../../../../../../icons/svg/account.svg'
-
 <bal-doc-link-list one-column>
   <a href="?path=/story/implementation-form--page">
     <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
@@ -147,8 +148,6 @@ import IconAccount from '../../../../../../icons/svg/account.svg'
   </a>
 
 </bal-doc-link-list>
-
-import testing from './testing.md'
 
 <Description markdown={testing} />
 
