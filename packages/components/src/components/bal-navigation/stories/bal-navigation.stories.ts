@@ -452,14 +452,23 @@ export const WithPopover = args => ({
       isActive.value = !isActive.value
     }
 
+    const isActiveMobile = ref(true)
+
+    const toggleMobile = () => {
+      isActiveMobile.value = !isActiveMobile.value
+    }
+
     watchEffect(() => {
       isActive.value = args.value
+      isActiveMobile.value = args.value
     })
 
     return {
       args,
       isActive,
+      isActiveMobile,
       toggle,
+      toggleMobile,
     }
   },
   template: `<div style="height: 1000px">
@@ -613,20 +622,20 @@ export const WithPopover = args => ({
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
-    <bal-popover backdrop={true} position='top'>
+    <bal-popover v-model="isActiveMobile" backdrop={true} position='top'>
         <bal-button
           square
           inverted
           icon="call"
           bal-popover-trigger
-          @click="toggle()"
+          @click="toggleMobile()"
           aria-haspopup="true"
         ></bal-button>
         <bal-popover-content radius="large-bottom-none" expanded={true}>
           <div class="p-5">
               <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
                 <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
-                <bal-close @click="toggle()"></bal-close>
+                <bal-close @click="toggleMobile()"></bal-close>
               </div>
               <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
           </div>
