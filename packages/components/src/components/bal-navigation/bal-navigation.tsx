@@ -203,11 +203,10 @@ export class Navigation implements ComponentInterface {
             </div>
             <bal-button
               slot="burger"
-              color="light"
+              color={this.isMainBodyOpen ? 'primary' : 'light'}
               square={true}
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
               onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
-              inverted={this.isMainBodyOpen}
             />
           </nav>
         </div>
