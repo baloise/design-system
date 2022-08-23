@@ -26,6 +26,11 @@ export class NavigationPopover implements ComponentInterface {
   @Prop() backdrop = false
 
   /**
+   * Defines the size of the button
+   */
+  @Prop() size: Props.BalButtonSize = ''
+
+  /**
    * Color style of the button when the popover is closed.
    */
   @Prop() inactiveColor: Props.BalButtonColor = 'light'
@@ -47,6 +52,7 @@ export class NavigationPopover implements ComponentInterface {
           <bal-button
             bal-popover-trigger
             icon={this.icon}
+            size={this.size}
             inverted={this.inverted}
             color={this.isActive ? this.activeColor : this.inactiveColor}
             square={this.label === ''}

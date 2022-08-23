@@ -1410,6 +1410,10 @@ export namespace Components {
           * Defines the label of the button
          */
         "label": string;
+        /**
+          * Defines the size of the button
+         */
+        "size": Props.BalButtonSize;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -4771,6 +4775,10 @@ declare namespace LocalJSX {
           * Defines the label of the button
          */
         "label"?: string;
+        /**
+          * Defines the size of the button
+         */
+        "size"?: Props.BalButtonSize;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';

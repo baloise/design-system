@@ -130,7 +130,6 @@ export class Hint implements BalConfigObserver {
         <div
           class={{
             ...elContent.class(),
-            'p-5': true,
             'data-test-hint-content': true,
           }}
         >
