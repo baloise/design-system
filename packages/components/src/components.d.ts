@@ -777,6 +777,20 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
     }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native": boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate": boolean;
+        /**
+          * Scrolls to the first invalid field inside this form component.
+         */
+        "scrollToFirstInvalidField": () => Promise<void>;
+    }
     interface BalFormCol {
         "size": Props.BalFormColSize;
     }
@@ -1371,6 +1385,36 @@ export namespace Components {
     }
     interface BalNavigationMetaStart {
     }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor": Props.BalButtonColor;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor": Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted": boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label": string;
+        /**
+          * Defines the size of the button
+         */
+        "size": Props.BalButtonSize;
+    }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
     }
@@ -1559,6 +1603,10 @@ export namespace Components {
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable": number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless": boolean;
     }
     interface BalProductSlider {
     }
@@ -1663,6 +1711,10 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded": boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -2253,28 +2305,6 @@ export namespace Components {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
-    interface BalTimeinput {
-        /**
-          * If `true` the button is disabled
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted": boolean;
-        /**
-          * Latest date available for selection
-         */
-        "maxTime": string;
-        /**
-          * Earliest date available for selection
-         */
-        "minTime": string;
-        /**
-          * The value of the datepicker with the format `hh:mm`.
-         */
-        "value": string;
-    }
     interface BalToast {
         /**
           * Closes this toast
@@ -2418,10 +2448,6 @@ export interface BalTagCustomEvent<T> extends CustomEvent<T> {
 export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTextareaElement;
-}
-export interface BalTimeinputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTimeinputElement;
 }
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2734,6 +2760,12 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormElement extends Components.BalForm, HTMLStencilElement {
+    }
+    var HTMLBalFormElement: {
+        prototype: HTMLBalFormElement;
+        new (): HTMLBalFormElement;
+    };
     interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
     }
     var HTMLBalFormColElement: {
@@ -2998,6 +3030,12 @@ declare global {
         prototype: HTMLBalNavigationMetaStartElement;
         new (): HTMLBalNavigationMetaStartElement;
     };
+    interface HTMLBalNavigationPopoverElement extends Components.BalNavigationPopover, HTMLStencilElement {
+    }
+    var HTMLBalNavigationPopoverElement: {
+        prototype: HTMLBalNavigationPopoverElement;
+        new (): HTMLBalNavigationPopoverElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -3178,12 +3216,6 @@ declare global {
         prototype: HTMLBalTextareaElement;
         new (): HTMLBalTextareaElement;
     };
-    interface HTMLBalTimeinputElement extends Components.BalTimeinput, HTMLStencilElement {
-    }
-    var HTMLBalTimeinputElement: {
-        prototype: HTMLBalTimeinputElement;
-        new (): HTMLBalTimeinputElement;
-    };
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
     }
     var HTMLBalToastElement: {
@@ -3242,6 +3274,7 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form": HTMLBalFormElement;
         "bal-form-col": HTMLBalFormColElement;
         "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
@@ -3286,6 +3319,7 @@ declare global {
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
+        "bal-navigation-popover": HTMLBalNavigationPopoverElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -3316,7 +3350,6 @@ declare global {
         "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
-        "bal-timeinput": HTMLBalTimeinputElement;
         "bal-toast": HTMLBalToastElement;
     }
 }
@@ -4117,6 +4150,16 @@ declare namespace LocalJSX {
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
     }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native"?: boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate"?: boolean;
+    }
     interface BalFormCol {
         "size"?: Props.BalFormColSize;
     }
@@ -4731,6 +4774,36 @@ declare namespace LocalJSX {
     }
     interface BalNavigationMetaStart {
     }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor"?: Props.BalButtonColor;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor"?: Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label"?: string;
+        /**
+          * Defines the size of the button
+         */
+        "size"?: Props.BalButtonSize;
+    }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
     }
@@ -4908,6 +4981,10 @@ declare namespace LocalJSX {
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless"?: boolean;
     }
     interface BalProductSlider {
     }
@@ -5032,6 +5109,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded"?: boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -5652,36 +5733,6 @@ declare namespace LocalJSX {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
-    interface BalTimeinput {
-        /**
-          * If `true` the button is disabled
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted"?: boolean;
-        /**
-          * Latest date available for selection
-         */
-        "maxTime"?: string;
-        /**
-          * Earliest date available for selection
-         */
-        "minTime"?: string;
-        /**
-          * Emitted when either the hour or minute input field loses focus.
-         */
-        "onBalBlur"?: (event: BalTimeinputCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when either the hour or the minute input has changed. It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
-         */
-        "onBalChange"?: (event: BalTimeinputCustomEvent<string>) => void;
-        /**
-          * The value of the datepicker with the format `hh:mm`.
-         */
-        "value"?: string;
-    }
     interface BalToast {
         "closeHandler"?: () => void;
         /**
@@ -5753,6 +5804,7 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form": BalForm;
         "bal-form-col": BalFormCol;
         "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
@@ -5797,6 +5849,7 @@ declare namespace LocalJSX {
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
+        "bal-navigation-popover": BalNavigationPopover;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5827,7 +5880,6 @@ declare namespace LocalJSX {
         "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
-        "bal-timeinput": BalTimeinput;
         "bal-toast": BalToast;
     }
 }
@@ -5886,6 +5938,7 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form": LocalJSX.BalForm & JSXBase.HTMLAttributes<HTMLBalFormElement>;
             "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
             "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
@@ -5930,6 +5983,7 @@ declare module "@stencil/core" {
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
+            "bal-navigation-popover": LocalJSX.BalNavigationPopover & JSXBase.HTMLAttributes<HTMLBalNavigationPopoverElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
@@ -5960,7 +6014,6 @@ declare module "@stencil/core" {
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
-            "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
         }
     }

@@ -1,12 +1,25 @@
 import docs from './bal-navigation.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalNavigation, BalNavigationLevels, BalNavigationLevelMeta } from '../../../../.storybook/vue/components'
+import {
+  BalNavigation,
+  BalNavigationLevels,
+  BalNavigationLevelMeta,
+  BalPopover,
+  BalPopoverContent,
+  BalButton,
+} from '../../../../.storybook/vue/components'
+import { ref, watchEffect } from 'vue'
+import { withContent } from '../../../stories/utils'
 
 const component = BalComponentStory({
   title: 'Components/Navigation',
   component: BalNavigation,
-  subcomponents: { BalNavigationLevels, BalNavigationLevelMeta },
+  subcomponents: { BalNavigationLevels, BalNavigationLevelMeta, BalPopover, BalPopoverContent, BalButton },
   docs,
+  argTypes: {
+    ...withContent(),
+  },
+  layout: 'fullscreen',
 })
 
 export default component.story
