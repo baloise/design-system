@@ -592,27 +592,29 @@ export const WithPopover = args => ({
   </bal-navigation-levels>
 
   <bal-button-group slot="meta-actions">
-    <bal-popover v-model="isActive" backdrop={true}  arrow={true} position='bottom' offsetY=13>
-        <bal-button
-          square
-          size="small"
-          color="light"
-          inverted
-          icon="call"
-          bal-popover-trigger
-          @click="toggle()"
-          aria-haspopup="true"
-        ></bal-button>
-        <bal-popover-content radius="large" content-width=440 content-min-width=440>
-          <div class="p-6">
-              <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-                <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
-                <bal-close @click="toggle()"></bal-close>
-              </div>
-              <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
+    <bal-navigation-popover
+      v-model="isActive"
+      backdrop={true}
+      icon="call"
+      size="small"
+      inactive-color="light"
+      active-color="white"
+      inverted={true}
+      square={true}
+      content-radius="large"
+      position="bottom"
+      content-width=440
+      content-min-width=440
+      offsetY=13
+      >
+        <div>
+          <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
+            <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
+            <bal-close @click="toggle()"></bal-close>
           </div>
-        </bal-popover-content>
-    </bal-popover>
+          <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
+        </div>
+    </bal-navigation-popover>
     <bal-button square size="small" color="light" inverted icon="web"></bal-button>
     <bal-button square size="small" color="light" inverted icon="location"></bal-button>
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
@@ -623,25 +625,28 @@ export const WithPopover = args => ({
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
-    <bal-popover v-model="isActiveMobile" backdrop={true} position='top' offsetY=3>
-        <bal-button
-          square
-          inverted
-          icon="call"
-          bal-popover-trigger
-          @click="toggleMobile()"
-          aria-haspopup="true"
-        ></bal-button>
-        <bal-popover-content radius="large-bottom-none" expanded={true} no-shadow={true}>
-          <div class="p-6">
-              <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-                <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
-                <bal-close @click="toggleMobile()"></bal-close>
-              </div>
-              <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
+    <bal-navigation-popover
+      v-model="isActiveMobile"
+      backdrop={true}
+      position="top"
+      square={true}
+      icon="call"
+      bal-popover-trigger
+      content-radius="large-bottom-none"
+      content-no-shadow={true}
+      inverted={true}
+      active-color="light"
+      inactive-color="primary"
+      offsetY=3
+      >
+        <div>
+          <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
+            <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
+            <bal-close @click="toggleMobile()"></bal-close>
           </div>
-        </bal-popover-content>
-    </bal-popover>
+          <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
+        </div>
+    </bal-navigation-popover>
     <bal-button square inverted icon="web"></bal-button>
     <bal-button square inverted icon="location"></bal-button>
   </div>

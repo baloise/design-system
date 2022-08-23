@@ -40,14 +40,51 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() activeColor: Props.BalButtonColor = 'primary'
 
+  /**
+   * Defines border-radius of popover content.
+   */
+  @Prop() contentRadius: Props.BalPopoverContentRadius = 'normal'
+
+  /**
+   * Define the position of the popover content.
+   */
+  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+
+  /**
+   * Define the max width of the popover content.
+   */
+  @Prop() contentWidth = 0
+
+  /**
+   * Define the min width of the popover content.
+   */
+  @Prop() contentMinWidth = 0
+
+  /**
+   * Define the offset of the popover content.
+   */
+  @Prop() offsetY = 0
+
+  /**
+   * If `true` the width of the buttons is limited
+   */
+  @Prop() square = false
+
+  /**
+   * If `true` the popover does not have the shadow
+   */
+  @Prop() contentNoShadow = false
+
   render() {
     return (
       <Host>
         <bal-popover
           value={this.isActive}
           onBalChange={event => (this.isActive = event.detail)}
-          arrow
+          arrow={true}
           backdrop={this.backdrop}
+          position={this.position}
+          offsetY={this.offsetY}
         >
           <bal-button
             bal-popover-trigger
@@ -55,12 +92,18 @@ export class NavigationPopover implements ComponentInterface {
             size={this.size}
             inverted={this.inverted}
             color={this.isActive ? this.activeColor : this.inactiveColor}
-            square={this.label === ''}
+            square={this.square}
             onClick={() => (this.isActive = !this.isActive)}
+            aria-haspopup="true"
           >
             {this.label}
           </bal-button>
-          <bal-popover-content>
+          <bal-popover-content
+            radius={this.contentRadius}
+            content-width={this.contentWidth}
+            content-min-width={this.contentMinWidth}
+            no-shadow={this.contentNoShadow}
+          >
             <slot></slot>
           </bal-popover-content>
         </bal-popover>

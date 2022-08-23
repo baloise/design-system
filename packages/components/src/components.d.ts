@@ -1395,6 +1395,22 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius": Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth": number;
+        /**
           * Defines the icon of the trigger button.
          */
         "icon"?: string;
@@ -1411,9 +1427,21 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Define the offset of the popover content.
+         */
+        "offsetY": number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position": Props.BalPopoverPlacement;
+        /**
           * Defines the size of the button
          */
         "size": Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -4784,6 +4812,22 @@ declare namespace LocalJSX {
          */
         "backdrop"?: boolean;
         /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius"?: Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth"?: number;
+        /**
           * Defines the icon of the trigger button.
          */
         "icon"?: string;
@@ -4800,9 +4844,21 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Define the offset of the popover content.
+         */
+        "offsetY"?: number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position"?: Props.BalPopoverPlacement;
+        /**
           * Defines the size of the button
          */
         "size"?: Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
