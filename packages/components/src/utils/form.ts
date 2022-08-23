@@ -1,14 +1,21 @@
 interface ScrollToFirstInvalidFieldOptions {
   formEl: HTMLElement
+  selector?: string
 }
 
 export const scrollToFirstInvalidField = (options: ScrollToFirstInvalidFieldOptions) => {
-  const invalidFieldNodes = options.formEl.querySelectorAll('.bal-field--invalid')
+  const selector = options.selector || '.bal-field--invalid'
+  const invalidFieldNodes = options.formEl.querySelectorAll(selector)
   const invalidFields = Array.from(invalidFieldNodes)
+
   if (invalidFields.length > 0) {
     const firstInvalidField = invalidFields[0]
-    if (firstInvalidField && firstInvalidField.scrollIntoView) {
-      firstInvalidField.scrollIntoView()
+    if (firstInvalidField) {
+      const invalidField = firstInvalidField.closest('bal-field')
+
+      if (invalidField && invalidField.scrollIntoView) {
+        invalidField.scrollIntoView()
+      }
     }
   }
 }

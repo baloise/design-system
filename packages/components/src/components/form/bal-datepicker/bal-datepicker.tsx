@@ -64,6 +64,8 @@ import {
 } from '../../../helpers/form-input.helpers'
 import { Props, Events } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
+import { BEM } from '../../../utils/bem'
+import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-datepicker',
@@ -80,7 +82,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
-
+  @State() isMobile = isPlatform('mobile')
   @State() hasFocus = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
@@ -249,6 +251,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.isMobile = isPlatform('mobile')
+  }
+
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
@@ -280,10 +287,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
    */
   @Method()
   async open(): Promise<void> {
-    if (this.disabled) {
-      return
-    }
-    if (this.popoverElement) {
+    if (!this.disabled && this.popoverElement) {
       this.popoverElement.present()
     }
   }
@@ -293,10 +297,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
    */
   @Method()
   async close(): Promise<void> {
-    if (this.disabled) {
-      return undefined
-    }
-    if (this.popoverElement) {
+    if (!this.disabled && this.popoverElement) {
       this.popoverElement.dismiss()
     }
   }
@@ -456,7 +457,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             label: getDate(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected:
-              parse(this.selectedDate as string) &&
+              parse(this.selectedDate as string) !== undefined &&
               isSameDay(dayDatePointer, parse(this.selectedDate as string) as Date),
             isDisabled: !this.getAllowedDates(dayDatePointer) || !this.isDateInRange(dayDatePointer),
             isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !this.isDateInRange(dayDatePointer),
@@ -600,17 +601,24 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
+    const block = BEM.block('datepicker')
+    const native = block.element('native')
+    const popup = block.element('popup')
+    const popupBody = popup.element('body')
+    const popupFooter = popup.element('footer')
+
     return (
       <Host
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
       >
         <input
           type="date"
-          class="is-one-pixel"
+          class={{ ...native.class() }}
           name={this.name}
           value={this.value}
           min={this.min}
@@ -619,10 +627,10 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
           <bal-popover-content>
-            <div class="datepicker-popup">
+            <div class={{ ...popup.class() }}>
               {this.renderHeader()}
-              {this.renderBody()}
-              <div class="datepicker-footer">
+              <div class={{ ...popupBody.class() }}>{this.renderGrid()}</div>
+              <div class={{ ...popupFooter.class() }}>
                 <slot></slot>
               </div>
             </div>
@@ -688,60 +696,77 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     )
   }
 
-  renderBody() {
+  renderGrid() {
+    const block = BEM.block('datepicker-grid')
+    const rowEl = block.element('row')
+    const cellEl = block.element('cell')
+
     return (
-      <section class="datepicker-table">
+      <div class={{ ...block.class() }}>
         {this.renderWeekDayHeader()}
-        <div class="datepicker-body">
-          {this.calendarGrid.map(row => (
-            <div class="datepicker-row">
-              {row.map(cell => (
-                <div
-                  data-date={cell.dateString}
-                  onClick={() => this.onClickDateCell(cell)}
-                  class={{
-                    'datepicker-cell': true,
-                    'is-today': cell.isToday,
-                    'is-selected': cell.isSelected,
-                    'is-outdated': cell.isOutdated,
-                    'is-disabled': cell.isDisabled,
-                    'is-selectable': !cell.isDisabled,
-                  }}
-                >
-                  <div class="inner">{cell.label}</div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+        {this.calendarGrid.map(row => (
+          <div class={{ ...rowEl.class() }}>
+            {row.map(cell => (
+              <button
+                data-date={cell.dateString}
+                onClick={() => this.onClickDateCell(cell)}
+                disabled={cell.isDisabled}
+                class={{
+                  ...cellEl.class(),
+                  'button': true,
+                  'is-text': !cell.isDisabled && !cell.isSelected,
+                  'is-primary': cell.isSelected && cell.isSelected,
+                  'is-disabled': cell.isDisabled || cell.isOutdated,
+                  ...cellEl.modifier('today').class(cell.isToday),
+                  ...cellEl.modifier('selectable').class(!cell.isDisabled && !cell.isOutdated),
+                  ...cellEl.modifier('disabled').class(cell.isDisabled || cell.isOutdated),
+                  ...cellEl.modifier('selected').class(cell.isSelected),
+                }}
+              >
+                <span>{cell.label}</span>
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
     )
   }
 
   renderWeekDayHeader() {
+    const block = BEM.block('datepicker-grid')
+    const headerEl = block.element('header')
+    const cellEl = block.element('cell')
+
     return (
-      <header class="datepicker-header">
+      <header class={{ ...headerEl.class() }}>
         {this.weekDays.map(weekday => (
-          <div class="datepicker-cell">{weekday}</div>
+          <div class={{ ...cellEl.class(), ...cellEl.modifier('header').class() }}>
+            <span>{weekday}</span>
+          </div>
         ))}
       </header>
     )
   }
 
   renderHeader() {
+    const block = BEM.block('datepicker-pagination')
+    const innerEl = block.element('inner')
+    const monthAndYearEl = block.element('month-and-year')
+    const selectEl = monthAndYearEl.element('select')
+
     return (
-      <header class="datepicker-header">
-        <div class="pagination field">
+      <header class={{ ...block.class() }}>
+        <div class={{ ...innerEl.class() }}>
           <bal-button
             square
-            size="small"
+            size={this.isMobile ? 'small' : ''}
             color="info"
             icon="nav-go-left"
             disabled={this.isPreviousMonthDisabled}
             onClick={() => this.previousMonth()}
           ></bal-button>
-          <div class="pagination-list">
-            <div class="month-select">
+          <div class={{ ...monthAndYearEl.class() }}>
+            <div class={{ ...selectEl.class() }}>
               <div class="select">
                 <select onInput={this.onMonthSelect}>
                   {this.months.map(month => (
@@ -752,7 +777,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
                 </select>
               </div>
             </div>
-            <div class="year-select">
+            <div class={{ ...selectEl.class() }}>
               <div class="select">
                 <select onInput={this.onYearSelect}>
                   {this.years.map(year => (
@@ -766,7 +791,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           </div>
           <bal-button
             square
-            size="small"
+            size={this.isMobile ? 'small' : ''}
             color="info"
             icon="nav-go-right"
             disabled={this.isNextMonthDisabled}

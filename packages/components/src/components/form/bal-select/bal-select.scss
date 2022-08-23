@@ -24,7 +24,7 @@ bal-select,
     color: $text;
     outline: none;
     box-shadow: none;
-    padding-right: calc(0.75em - 1px);
+    padding-right: 1rem;
     min-height: 48px;
 
     & > bal-icon {
@@ -42,8 +42,8 @@ bal-select,
       min-height: 44px !important;
       height: 44px;
       padding-bottom: calc(0.5em - 5px);
-      padding-left: calc(0.75em - 1px);
-      padding-right: calc(0.75em - 1px);
+      padding-left: 1rem;
+      padding-right: 1rem;
       padding-top: calc(0.5em - 5px);
 
       &:read-only {
