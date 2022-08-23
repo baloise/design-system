@@ -623,7 +623,7 @@ export const WithPopover = args => ({
     <bal-button square color="light" icon="account"></bal-button>
   </div>
   <div slot="meta-mobile-foot">
-    <bal-popover v-model="isActiveMobile" backdrop={true} position='top'>
+    <bal-popover v-model="isActiveMobile" backdrop={true} position='top' offsetY=3>
         <bal-button
           square
           inverted
