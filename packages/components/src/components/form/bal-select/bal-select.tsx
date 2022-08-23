@@ -27,6 +27,7 @@ import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
 import { Props, Events } from '../../../types'
 import { stopEventBubbling } from '../../../helpers/form-input.helpers'
+import { BEM } from '../../../utils/bem'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -775,6 +776,19 @@ export class Select {
 
     const valuesArray = getValues(this.rawValue)
 
+    const block = BEM.block('select')
+    const nativeEl = block.element('native')
+    const controlEl = block.element('control')
+    const controlIconEl = controlEl.element('icon')
+    const controlSelectionsEl = controlEl.element('selections')
+    const controlInputEl = controlEl.element('input')
+    const popoverContentEl = block.element('popover')
+    const popoverContentEmptyEl = popoverContentEl.element('empty')
+    const optionEl = block.element('option')
+    const optionContentEl = optionEl.element('content')
+    const optionContentCheckboxEl = optionContentEl.element('checkbox')
+    const optionContentLabelEl = optionContentEl.element('label')
+
     return (
       <Host
         role="listbox"
@@ -782,11 +796,12 @@ export class Select {
         aria-disabled={this.disabled ? 'true' : null}
         data-value={this.rawValue?.map(v => findLabelByValue(this.options, v)).join(',')}
         class={{
-          'is-disabled': this.disabled || this.readonly,
-          'is-inverted': this.inverted,
+          ...block.class(),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
+          ...block.modifier('inverted').class(this.inverted),
         }}
       >
-        <select class="is-one-pixel" name={this.name} multiple={this.multiple} required={this.required}>
+        <select class={{ ...nativeEl.class() }} name={this.name} multiple={this.multiple} required={this.required}>
           {valuesArray.map((value: string) => (
             <option value={value} selected>
               {value}
@@ -800,15 +815,18 @@ export class Select {
           <div
             bal-popover-trigger
             class={{
-              'bal-select__slot': true,
-              'is-danger': this.invalid,
-              'is-focused': this.isPopoverOpen,
+              ...controlEl.class(),
+              ...controlEl.modifier('invalid').class(this.invalid),
+              ...controlEl.modifier('disabled').class(this.disabled || this.readonly),
+              ...controlEl.modifier('focused').class(this.isPopoverOpen),
             }}
           >
             <div
               class={{
-                'bal-select__selections': true,
-                'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
+                ...controlSelectionsEl.class(),
+                ...controlSelectionsEl
+                  .modifier('clickable')
+                  .class(!this.isPopoverOpen && !this.disabled && !this.readonly),
               }}
               onClick={this.handleInputClick}
             >
@@ -820,6 +838,7 @@ export class Select {
               <input
                 type="text"
                 class={{
+                  ...controlInputEl.class(),
                   'input': true,
                   'is-inverted': this.inverted,
                   'is-hidden': this.multiple && !this.typeahead,
@@ -845,8 +864,9 @@ export class Select {
             </div>
             <bal-icon
               class={{
-                'is-hidden': this.loading,
-                'is-clickable': !this.disabled && !this.readonly,
+                ...controlIconEl.class(),
+                ...controlIconEl.modifier('loading').class(this.loading),
+                ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
               name="caret-down"
               size="xsmall"
@@ -855,7 +875,7 @@ export class Select {
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
-          <bal-popover-content scrollable={this.scrollable} expanded>
+          <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"
@@ -864,20 +884,23 @@ export class Select {
                 data-value={option.value}
                 data-label={option.label}
                 class={{
-                  'bal-select__option ': true,
-                  'popover-item': true,
-                  'is-selected': valuesArray.includes(option.value),
-                  'is-focused': this.focusIndex === index,
-                  'has-checkbox': this.multiple,
-                  'is-disabled': option.disabled === true,
+                  ...optionEl.class(),
+                  ...optionEl.modifier('selected').class(valuesArray.includes(option.value)),
+                  ...optionEl.modifier('focused').class(this.focusIndex === index),
+                  ...optionEl.modifier('checkbox').class(this.multiple),
+                  ...optionEl.modifier('disabled').class(option.disabled === true),
+                  'popover-item': true, // Todo: what is that ?
                 }}
                 disabled={option.disabled}
                 tabIndex={-1}
                 onMouseEnter={() => this.handleOptionMouseEnter(index)}
                 onClick={() => this.optionSelected(option)}
               >
-                <div class="select-option__content">
-                  <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
+                <div class={{ ...optionContentEl.class() }}>
+                  <span
+                    class={{ ...optionContentCheckboxEl.class() }}
+                    style={{ display: this.multiple ? 'flex' : 'none' }}
+                  >
                     <bal-checkbox
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
@@ -886,15 +909,18 @@ export class Select {
                       onBalChange={preventDefault}
                     ></bal-checkbox>
                   </span>
-                  <span class="label" innerHTML={option.innerHTML}></span>
+                  <span class={{ ...optionContentLabelEl.class() }} innerHTML={option.innerHTML}></span>
                 </div>
               </button>
             ))}
             <div
               class={{
-                'bal-select__empty': true,
-                'is-hidden':
-                  this.noDataLabel === undefined || this.hasOptions() || !this.typeahead || this.selectionOptional,
+                ...popoverContentEmptyEl.class(),
+                ...popoverContentEmptyEl
+                  .modifier('hidden')
+                  .class(
+                    this.noDataLabel === undefined || this.hasOptions() || !this.typeahead || this.selectionOptional,
+                  ),
               }}
             >
               {this.noDataLabel}
