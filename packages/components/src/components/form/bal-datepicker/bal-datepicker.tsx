@@ -702,32 +702,34 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     const cellEl = block.element('cell')
 
     return (
-      <div class={{ ...block.class() }}>
+      <div>
         {this.renderWeekDayHeader()}
-        {this.calendarGrid.map(row => (
-          <div class={{ ...rowEl.class() }}>
-            {row.map(cell => (
-              <button
-                data-date={cell.dateString}
-                onClick={() => this.onClickDateCell(cell)}
-                disabled={cell.isDisabled}
-                class={{
-                  ...cellEl.class(),
-                  'button': true,
-                  'is-text': !cell.isDisabled && !cell.isSelected,
-                  'is-primary': cell.isSelected && cell.isSelected,
-                  'is-disabled': cell.isDisabled || cell.isOutdated,
-                  ...cellEl.modifier('today').class(cell.isToday),
-                  ...cellEl.modifier('selectable').class(!cell.isDisabled && !cell.isOutdated),
-                  ...cellEl.modifier('disabled').class(cell.isDisabled || cell.isOutdated),
-                  ...cellEl.modifier('selected').class(cell.isSelected),
-                }}
-              >
-                <span>{cell.label}</span>
-              </button>
-            ))}
-          </div>
-        ))}
+        <div class={{ ...block.class() }}>
+          {this.calendarGrid.map(row => (
+            <div class={{ ...rowEl.class() }}>
+              {row.map(cell => (
+                <button
+                  data-date={cell.dateString}
+                  onClick={() => this.onClickDateCell(cell)}
+                  disabled={cell.isDisabled}
+                  class={{
+                    ...cellEl.class(),
+                    'button': true,
+                    'is-text': !cell.isDisabled && !cell.isSelected,
+                    'is-primary': cell.isSelected && cell.isSelected,
+                    'is-disabled': cell.isDisabled || cell.isOutdated,
+                    ...cellEl.modifier('today').class(cell.isToday),
+                    ...cellEl.modifier('selectable').class(!cell.isDisabled && !cell.isOutdated),
+                    ...cellEl.modifier('disabled').class(cell.isDisabled || cell.isOutdated),
+                    ...cellEl.modifier('selected').class(cell.isSelected),
+                  }}
+                >
+                  <span>{cell.label}</span>
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
