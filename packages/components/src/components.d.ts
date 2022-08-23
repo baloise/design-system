@@ -1385,6 +1385,32 @@ export namespace Components {
     }
     interface BalNavigationMetaStart {
     }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor": Props.BalButtonColor;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor": Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted": boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label": string;
+    }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
     }
@@ -1549,6 +1575,10 @@ export namespace Components {
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable": number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless": boolean;
     }
     interface BalProductSlider {
     }
@@ -2972,6 +3002,12 @@ declare global {
         prototype: HTMLBalNavigationMetaStartElement;
         new (): HTMLBalNavigationMetaStartElement;
     };
+    interface HTMLBalNavigationPopoverElement extends Components.BalNavigationPopover, HTMLStencilElement {
+    }
+    var HTMLBalNavigationPopoverElement: {
+        prototype: HTMLBalNavigationPopoverElement;
+        new (): HTMLBalNavigationPopoverElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -3255,6 +3291,7 @@ declare global {
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
+        "bal-navigation-popover": HTMLBalNavigationPopoverElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -4709,6 +4746,32 @@ declare namespace LocalJSX {
     }
     interface BalNavigationMetaStart {
     }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor"?: Props.BalButtonColor;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor"?: Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label"?: string;
+    }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
     }
@@ -4874,6 +4937,10 @@ declare namespace LocalJSX {
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless"?: boolean;
     }
     interface BalProductSlider {
     }
@@ -5738,6 +5805,7 @@ declare namespace LocalJSX {
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
+        "bal-navigation-popover": BalNavigationPopover;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5871,6 +5939,7 @@ declare module "@stencil/core" {
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
+            "bal-navigation-popover": LocalJSX.BalNavigationPopover & JSXBase.HTMLAttributes<HTMLBalNavigationPopoverElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
