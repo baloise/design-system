@@ -34,8 +34,14 @@
     min-width: 260px
     box-shadow: var(--bal-shadow)
     background: var(--bal-color-white)
+    //border-radius: var(--bal-radius)
+    padding: 1rem
+    +tablet
+      padding: 1.5rem
     &[data-show]
       display: block
+    +modifier(spaceless)
+      padding: 0
     +modifier(expanded)
       min-width: 100%
     +modifier(no-shadow)

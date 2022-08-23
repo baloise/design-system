@@ -241,6 +241,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     inputListenOnClick(this, event)
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = undefined
+    }
+  }
+
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
@@ -600,9 +608,17 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           'is-disabled': this.disabled || this.readonly,
         }}
       >
+        <input
+          type="date"
+          class="is-one-pixel"
+          name={this.name}
+          value={this.value}
+          min={this.min}
+          max={this.max}
+        ></input>
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
-          <bal-popover-content>
+          <bal-popover-content spaceless>
             <div class="datepicker-popup">
               {this.renderHeader()}
               {this.renderBody()}
@@ -642,7 +658,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             type="text"
             maxlength="10"
             autoComplete="off"
-            name={this.name}
             value={format(this.getLocale(), parse(this.value || ''))}
             required={this.required}
             disabled={this.disabled}

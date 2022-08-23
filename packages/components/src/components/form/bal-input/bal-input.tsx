@@ -21,6 +21,7 @@ import {
   inputHandleClick,
   inputHandleFocus,
   inputHandleHostClick,
+  inputHandleReset,
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
@@ -263,6 +264,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
     inputListenOnClick(this, event)
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      inputHandleReset(this)
+    }
   }
 
   connectedCallback() {

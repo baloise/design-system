@@ -3,7 +3,11 @@ import { pascalCase } from 'pascal-case'
 import { htmlBeautify } from './html'
 import ComponentJson from '../../../generated/components.json'
 
-export const withSourceCode = (code: string, argTypes = {}, args = {}, comps = []) => {
+export interface SourceCodeOptions {
+  vue?: string
+}
+
+export const withSourceCode = (code: string, argTypes = {}, args = {}, comps = [], options: SourceCodeOptions = {}) => {
   const template = htmlBeautify(filterVueSpecific(code, argTypes, args))
   return {
     docs: {
@@ -12,11 +16,11 @@ export const withSourceCode = (code: string, argTypes = {}, args = {}, comps = [
       },
     },
     mySource: template,
-    vueSource: htmlBeautify(vueCode(code, argTypes, args, comps)),
+    vueSource: vueCode(code, argTypes, args, comps, options.vue),
   }
 }
 
-const vueCode = (templateSource: string, argTypes = {}, args = {}, comps = []): string => {
+const vueCode = (templateSource: string, argTypes = {}, args = {}, comps = [], setup = ''): string => {
   const replacing = ' v-bind="args"'
   const componentArgs = {}
   for (const [k, t] of Object.entries(argTypes)) {
@@ -66,13 +70,20 @@ const vueCode = (templateSource: string, argTypes = {}, args = {}, comps = []): 
     source = source.replaceAll(`</${tag}>`, `</${pascalCase(tag)}>`)
   }
 
+  setup = setup.replaceAll(`Object(vue__WEBPACK_IMPORTED_MODULE_4__["ref"])`, `ref`)
+  setup = setup.replaceAll(
+    `Object(_components_vue_src_helpers__WEBPACK_IMPORTED_MODULE_5__[ /* element */ "a"])`,
+    `element`,
+  )
+
   return `<script setup lang="ts">
 import {
 ${comps.map(c => `  ${c},`).join('\n')}
 } from '@baloise/design-system-next-components-vue'
+${setup}
 </script>
 <template>
-  ${source}
+  ${htmlBeautify(source)}
 </template>`
 }
 

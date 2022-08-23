@@ -73,6 +73,11 @@ export const inputHandleFocus = <Value>(component: FormInput<Value>, event: Focu
   }
 }
 
+export const inputHandleReset = <Value>(component: FormInput<Value>, defaultValue: Value | undefined = undefined) => {
+  component.value = defaultValue
+  component.inputValue = component.value
+}
+
 export const inputHandleBlur = <Value>(component: FormInput<Value>, event: FocusEvent) => {
   component.hasFocus = false
   if (!component.disabled && component.balBlur) {

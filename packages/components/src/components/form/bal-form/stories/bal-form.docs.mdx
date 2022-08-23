@@ -1,30 +1,28 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
-import { html } from '../../../../stories/utils'
 import readme from '../readme.md'
 
-<bal-doc-banner id="story--components-form-time-input--basic" status="">Time Input (WIP)</bal-doc-banner>
+<bal-doc-banner id="story--components-form-form--basic" status="rebranded, css">Form</bal-doc-banner>
 
 <bal-doc-tabs>
-  <a href="#story--components-form-time-input--basic">Overview</a>
+  <a href="#story--components-form-form--basic">Overview</a>
   {/* <a href="#examples">Examples</a> */}
   <a href="#component-api">API</a>
   {/* <a href="#usage">Usage</a> */}
   <a href="#integration">Integration</a>
-  <a href="#tutorials-and-templates">Tutorials and Templates</a>
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
 
 <bal-doc-lead>
-  <b>Time Input</b> allows the user to enter a valid time.
+  The `bal-form` wraps the form section. It helps to scroll to the first invalid field after a failed submit.
 </bal-doc-lead>
 
 <Canvas withSource="open">
-  <Story id="components-form-time-input--basic" />
+  <Story id="components-form-form--basic" />
 </Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-6" position="center">
-    <a class="button is-primary" href="?path=/story/components-form-time-input--basic">
+    <a class="button is-info is-outlined" href="?path=/story/components-form-form--basic">
       Go to playground (Canvas)
     </a>
   </bal-button-group>
@@ -55,29 +53,8 @@ This documentation explains how to implement and use Baloise Design System compo
   </a>
 </bal-doc-link-list>
 
-## Tutorials and Templates
-
-A list of tutorials how to use or create this component and templates to see how it can
-be combined with other components.
-
-import IconDocument from '../../../../../../icons/svg/document.svg'
-import IconAccount from '../../../../../../icons/svg/account.svg'
-
-<bal-doc-link-list one-column>
-  <a href="?path=/story/implementation-form--page">
-    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
-      Documentation how to build forms and how to use the components.
-    </bal-doc-link-list-item>
-  </a>
-  <a href="?path=/story/design-common-templates--contact-form">
-    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
-      A template with to illustrate the structure of a form.
-    </bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
-
 import testing from './testing.md'
 
 <Description markdown={testing} />
 
-<bal-doc-github link="/components/form/bal-timeinput/stories/bal-timeinput.docs.mdx"></bal-doc-github>
+<bal-doc-github link="/components/form/bal-form/stories/bal-form.docs.mdx"></bal-doc-github>

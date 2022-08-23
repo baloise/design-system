@@ -9,6 +9,11 @@ export class PopoverContent {
   @Element() el!: HTMLElement
 
   /**
+   * If `true` the popover has no padding space.
+   */
+  @Prop() spaceless = false
+
+  /**
    * Limit the height of the popover content. Pass the amount of pixel.
    */
   @Prop() scrollable = 0
@@ -84,6 +89,7 @@ export class PopoverContent {
         class={{
           ...block.class(),
           ...block.modifier('expanded').class(this.expanded),
+          ...block.modifier('spaceless').class(this.spaceless),
           ...block.modifier('no-shadow').class(this.noShadow),
           ...block.modifier(`radius-${this.radius}`).class(),
           ...block.modifier(`color-${this.color}`).class(),

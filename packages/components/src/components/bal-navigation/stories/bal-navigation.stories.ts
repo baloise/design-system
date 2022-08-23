@@ -1,25 +1,12 @@
 import docs from './bal-navigation.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { withContent } from '../../../stories/utils'
-import {
-  BalNavigation,
-  BalNavigationLevels,
-  BalNavigationLevelMeta,
-  BalPopover,
-  BalPopoverContent,
-  BalButton,
-} from '../../../../.storybook/vue/components'
-import { ref, watchEffect } from 'vue'
+import { BalNavigation, BalNavigationLevels, BalNavigationLevelMeta } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Navigation',
   component: BalNavigation,
-  subcomponents: { BalNavigationLevels, BalNavigationLevelMeta, BalPopover, BalPopoverContent, BalButton },
+  subcomponents: { BalNavigationLevels, BalNavigationLevelMeta },
   docs,
-  argTypes: {
-    ...withContent(),
-  },
-  layout: 'fullscreen',
 })
 
 export default component.story
@@ -661,3 +648,23 @@ WithPopover.args = {
   ariaLabelMain: 'aria label main',
 }
 WithPopover.parameters = { ...component.sourceCode(WithPopover) }
+
+export const NavigationPopover = args => ({
+  components: { ...component.components },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<bal-navigation-popover v-bind="args">
+  Hello World
+  </bal-navigation-popover>`,
+})
+NavigationPopover.args = {
+  icon: 'account',
+  label: 'Username',
+  activeColor: 'primary',
+  inactiveColor: 'light',
+  inverted: false,
+}
+NavigationPopover.parameters = { ...component.sourceCode(NavigationPopover) }

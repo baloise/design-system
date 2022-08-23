@@ -22,7 +22,6 @@ const component = BalComponentStory({
     BalListItemSubtitle,
   },
   docs,
-  status: 'stable',
   args: {
     inverted: false,
     disabled: false,

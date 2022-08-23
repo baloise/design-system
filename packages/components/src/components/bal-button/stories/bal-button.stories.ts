@@ -5,7 +5,6 @@ import docs from './bal-button.docs.mdx'
 const component = BalComponentStory({
   component: BalButton,
   docs,
-  status: 'stable',
   args: {
     content: 'Primary',
     color: 'primary',

@@ -1,6 +1,13 @@
 module.exports = {
   stories: ['../src/**/intro.stories.mdx', '../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y', '@etchteam/storybook-addon-status', './addons/source/index.js', './addons/vue-source/index.js'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@etchteam/storybook-addon-status',
+    './addons/source/index.js',
+    './addons/vue-source/index.js',
+  ],
   features: {
     postcss: false,
   },

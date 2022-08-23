@@ -17,6 +17,7 @@ const descriptions = {
 
 const tokens = {
   color: {
+    'transparent': { hex: 'transparent', inverted: 'transparent', description: descriptions.color.neutral },
     'white': { hex: '#ffffff', inverted: 'primary', description: descriptions.color.neutral },
     'black': { hex: '#000000', inverted: 'primary-inverted', description: descriptions.color.neutral },
 

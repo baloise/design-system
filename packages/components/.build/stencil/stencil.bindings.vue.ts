@@ -6,7 +6,6 @@ export const vueComponentModels: ComponentModelConfig[] = [
     elements: [
       'bal-radio-group',
       'bal-datepicker',
-      'bal-timeinput',
       'bal-select',
       'bal-accordion',
       'bal-popover',

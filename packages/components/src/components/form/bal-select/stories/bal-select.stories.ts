@@ -18,7 +18,6 @@ const component = BalComponentStory({
   component: BalSelect,
   subcomponents: { BalSelectOption },
   docs,
-  status: 'stable',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
