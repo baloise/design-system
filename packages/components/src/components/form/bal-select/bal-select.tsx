@@ -855,7 +855,7 @@ export class Select {
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
-          <bal-popover-content scrollable={this.scrollable} expanded>
+          <bal-popover-content scrollable={this.scrollable} expanded spaceless>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"
