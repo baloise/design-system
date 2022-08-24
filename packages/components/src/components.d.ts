@@ -1275,6 +1275,10 @@ export namespace Components {
     }
     interface BalNavigation {
         /**
+          * Allows the scrolling on the body element
+         */
+        "allowScrollingBody": () => Promise<void>;
+        /**
           * Aria label for the main-navigation-wrapper
          */
         "ariaLabelMain": string;
@@ -1283,6 +1287,10 @@ export namespace Components {
          */
         "ariaLabelMeta": string;
         /**
+          * Blocks the scrolling on the body element
+         */
+        "blockScrollingBody": () => Promise<void>;
+        /**
           * Path to the logo-image
          */
         "logoPath": string;
@@ -1290,6 +1298,10 @@ export namespace Components {
           * Defines the initially active meta-navigation-item
          */
         "metaValue"?: string;
+        /**
+          * Toggles the scrolling on the body element
+         */
+        "toggleScrollingBody": () => Promise<void>;
     }
     interface BalNavigationLevelBlock {
         "color": 'white' | 'grey';

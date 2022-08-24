@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen, Method } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
@@ -14,6 +14,7 @@ export class Navigation implements ComponentInterface {
   private mainNavMobile?: HTMLElement
   private mainNavFootMobile?: HTMLElement
   private burgerIconBtn?: HTMLBalButtonElement
+  private body!: HTMLBodyElement
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -95,6 +96,7 @@ export class Navigation implements ComponentInterface {
     this.mainNavMobile = this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
     this.mainNavFootMobile = this.el.querySelector('.bal-nav__footmobile') as HTMLElement
     this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
+    this.body = document.querySelector('body') as HTMLBodyElement
   }
 
   componentDidUpdate() {
@@ -114,6 +116,38 @@ export class Navigation implements ComponentInterface {
     if (levels) {
       this.levels = levels
     }
+  }
+
+  /**
+   * Toggles the scrolling on the body element
+   */
+  @Method()
+  async toggleScrollingBody() {
+    if (this.isMainBodyOpen) {
+      await this.blockScrollingBody()
+    } else {
+      await this.allowScrollingBody()
+    }
+  }
+
+  /**
+   * Allows the scrolling on the body element
+   */
+  @Method()
+  async allowScrollingBody() {
+    this.body.style.position = 'relative'
+    this.body.style.width = 'auto'
+    this.body.style.overflowY = 'auto'
+  }
+
+  /**
+   * Blocks the scrolling on the body element
+   */
+  @Method()
+  async blockScrollingBody() {
+    this.body.style.position = 'fixed'
+    this.body.style.width = '100%'
+    this.body.style.overflowY = 'hidden'
   }
 
   render() {
@@ -227,7 +261,10 @@ export class Navigation implements ComponentInterface {
               color={this.isMainBodyOpen ? 'primary' : 'light'}
               square={true}
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
-              onClick={() => (this.isMainBodyOpen = !this.isMainBodyOpen)}
+              onClick={async () => {
+                this.isMainBodyOpen = !this.isMainBodyOpen
+                await this.toggleScrollingBody()
+              }}
             />
           </nav>
         </div>

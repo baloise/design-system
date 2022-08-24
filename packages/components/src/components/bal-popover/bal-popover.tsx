@@ -252,7 +252,6 @@ export class Popover {
    */
   @Method()
   async allowScrollingBody() {
-    console.log('ALLOW SCROLL ON BODY', this.body)
     this.body.style.position = 'relative'
     this.body.style.width = 'auto'
     this.body.style.overflowY = 'auto'
@@ -263,7 +262,6 @@ export class Popover {
    */
   @Method()
   async blockScrollingBody() {
-    console.log('BLOCK SCROLL ON BODY', this.body)
     this.body.style.position = 'fixed'
     this.body.style.width = '100%'
     this.body.style.overflowY = 'hidden'

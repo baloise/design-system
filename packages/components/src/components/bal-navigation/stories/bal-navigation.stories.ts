@@ -630,7 +630,7 @@ export const WithPopover = args => ({
       active-color="primary"
       inactive-color="light"
       heading="Suche"
-      offsetY=3
+      offsetY=8
       mobile-top={true}
       >
         <div>
