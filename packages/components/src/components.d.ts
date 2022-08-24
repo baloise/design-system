@@ -1403,10 +1403,6 @@ export namespace Components {
          */
         "closable": boolean;
         /**
-          * Defines the heading of the popover
-         */
-        "heading"?: string;
-        /**
           * If `true` the content has a min width of 100%.
          */
         "contentExpanded": boolean;
@@ -1426,6 +1422,10 @@ export namespace Components {
           * Define the max width of the popover content.
          */
         "contentWidth": number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
         /**
           * Defines the icon of the trigger button.
          */
@@ -4848,10 +4848,6 @@ declare namespace LocalJSX {
          */
         "closable"?: boolean;
         /**
-          * Defines the heading of the popover
-         */
-        "heading"?: string;
-        /**
           * If `true` the content has a min width of 100%.
          */
         "contentExpanded"?: boolean;
@@ -4871,6 +4867,10 @@ declare namespace LocalJSX {
           * Define the max width of the popover content.
          */
         "contentWidth"?: number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
         /**
           * Defines the icon of the trigger button.
          */
