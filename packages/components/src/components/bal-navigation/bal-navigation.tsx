@@ -11,6 +11,9 @@ export class Navigation implements ComponentInterface {
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
+  private mainNavMobile?: HTMLElement
+  private mainNavFootMobile?: HTMLElement
+  private burgerIconBtn?: HTMLBalButtonElement
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -39,6 +42,21 @@ export class Navigation implements ComponentInterface {
   clickOnOutside(event: UIEvent) {
     if (isPlatform('desktop')) {
       if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
+        this.isMainBodyOpen = false
+        this.selectedMainValue = ''
+      }
+    }
+
+    if (isPlatform('touch')) {
+      this.mainNavMobile = this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
+      this.mainNavFootMobile = this.el.querySelector('.bal-nav__footmobile') as HTMLElement
+      if (
+        !this.mainNavMobile?.contains(event.target as Node) &&
+        !this.burgerIconBtn?.contains(event.target as Node) &&
+        !this.mainNavFootMobile?.contains(event.target as Node) &&
+        this.isMainBodyOpen &&
+        this.mainNavMobile
+      ) {
         this.isMainBodyOpen = false
         this.selectedMainValue = ''
       }
@@ -74,6 +92,9 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
+    this.mainNavMobile = this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
+    this.mainNavFootMobile = this.el.querySelector('.bal-nav__footmobile') as HTMLElement
+    this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
   }
 
   componentDidUpdate() {
