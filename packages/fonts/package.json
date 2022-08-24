@@ -28,20 +28,15 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "node .build/archive.js",
+    "build": "npm run build:clean && npm run build:archive",
+    "build:clean": "rimraf ./dist",
+    "build:archive": "node ../../.build/archive-font.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./lib/fonts.css",
   "files": [
-    "lib/",
-    "scss/"
+    "dist/",
+    "src/"
   ],
-  "directories": {
-    "lib": "lib",
-    "scss": "scss"
-  },
-  "devDependencies": {
-    "archiver": "~5.3.0"
-  },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }
