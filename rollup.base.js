@@ -33,7 +33,7 @@ const banner = `/*!
   */`
 
 export default {
-  input: 'src/tokens.ts',
+  input: 'src/index.ts',
   output: [
     {
       dir: 'dist/',
@@ -53,7 +53,7 @@ export default {
     },
   ],
   external: id => {
-    return id.startsWith('lodash') || id.startsWith('@baloise')
+    return id.startsWith('lodash') || id.startsWith('@baloise') || id.startsWith('cypress')
   },
   plugins: [
     cleaner({ targets: ['dist/'] }),

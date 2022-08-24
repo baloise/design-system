@@ -34,9 +34,9 @@
     "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "dist/tokens.js",
-  "module": "dist/tokens.esm.js",
-  "types": "dist/tokens.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "style": "dist/tokens.css",
   "files": [
     "dist/",

@@ -1,6 +1,6 @@
 const path = require('path')
 const file = require('./file.js')
-const BaloiseDesignToken = require('../packages/tokens/dist/tokens.js').BaloiseDesignToken
+const BaloiseDesignToken = require('../packages/tokens/dist/index.js').BaloiseDesignToken
 
 const DIST_PATH = path.join(__dirname, '..', 'packages/tokens/dist')
 
