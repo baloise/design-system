@@ -635,7 +635,7 @@ export const WithPopover = args => ({
       active-color="primary"
       inactive-color="light"
       offsetY=3
-      is-on-top={true}
+      mobile-top={true}
       >
         <div>
           <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">

@@ -76,7 +76,7 @@ export class Popover {
   /**
    * If `true` there will be no backdrop
    */
-  @Prop() isOnTop = false
+  @Prop() mobileTop = false
 
   /**
    * Update the native input element when the value changes
@@ -320,7 +320,7 @@ export class Popover {
         }}
       >
         <slot></slot>
-        {!this.isOnTop && (
+        {!this.mobileTop && (
           <div
             ref={el => {
               this.backdropElement = el

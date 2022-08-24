@@ -1431,13 +1431,13 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` its content will have a divider line on top
-         */
-        "isOnTop": boolean;
-        /**
           * Defines the label of the button
          */
         "label": string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop": boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -1580,7 +1580,7 @@ export namespace Components {
         /**
           * If `true` there will be no backdrop
          */
-        "isOnTop": boolean;
+        "mobileTop": boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -1638,7 +1638,7 @@ export namespace Components {
         /**
           * If `true` the content will have a divider line on top
          */
-        "isOnTop": boolean;
+        "mobileTop": boolean;
         /**
           * If `true` the popover does not have the shadow
          */
@@ -4868,13 +4868,13 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` its content will have a divider line on top
-         */
-        "isOnTop"?: boolean;
-        /**
           * Defines the label of the button
          */
         "label"?: string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -5013,7 +5013,7 @@ declare namespace LocalJSX {
         /**
           * If `true` there will be no backdrop
          */
-        "isOnTop"?: boolean;
+        "mobileTop"?: boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -5064,7 +5064,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the content will have a divider line on top
          */
-        "isOnTop"?: boolean;
+        "mobileTop"?: boolean;
         /**
           * If `true` the popover does not have the shadow
          */

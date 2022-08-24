@@ -88,7 +88,7 @@ export class NavigationPopover implements ComponentInterface {
   /**
    * If `true` its content will have a divider line on top
    */
-  @Prop() isOnTop = false
+  @Prop() mobileTop = false
 
   render() {
     return (
@@ -100,7 +100,7 @@ export class NavigationPopover implements ComponentInterface {
           backdrop={this.backdrop}
           position={this.position}
           offsetY={this.offsetY}
-          is-on-top={this.isOnTop}
+          mobile-top={this.mobileTop}
         >
           <bal-button
             bal-popover-trigger
@@ -121,7 +121,7 @@ export class NavigationPopover implements ComponentInterface {
             content-min-width={this.contentMinWidth}
             no-shadow={this.contentNoShadow}
             expanded={this.contentExpanded}
-            is-on-top={this.isOnTop}
+            mobile-top={this.mobileTop}
           >
             <slot></slot>
           </bal-popover-content>
