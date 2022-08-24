@@ -448,11 +448,11 @@ NavigationPopover.args = {
   activeColor: 'primary',
   inactiveColor: 'light',
   inverted: false,
-  hasClosingBtn: false,
+  closable: false,
 }
 NavigationPopover.parameters = { ...component.sourceCode(NavigationPopover) }
 
-export const NavigationPopoverWithHeadingAndClosingBtn = args => ({
+export const NavigationPopoverClosable = args => ({
   components: { ...component.components },
   setup: () => {
     return {
@@ -463,7 +463,7 @@ export const NavigationPopoverWithHeadingAndClosingBtn = args => ({
   Hello World
   </bal-navigation-popover>`,
 })
-NavigationPopoverWithHeadingAndClosingBtn.args = {
+NavigationPopoverClosable.args = {
   heading: 'Heading',
   icon: 'account',
   label: 'Username',
@@ -471,6 +471,6 @@ NavigationPopoverWithHeadingAndClosingBtn.args = {
   inactiveColor: 'light',
   inverted: false,
 }
-NavigationPopoverWithHeadingAndClosingBtn.parameters = {
-  ...component.sourceCode(NavigationPopoverWithHeadingAndClosingBtn),
+NavigationPopoverClosable.parameters = {
+  ...component.sourceCode(NavigationPopoverClosable),
 }
