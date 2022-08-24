@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
 import { Props } from '../../../types'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-popover',
@@ -40,9 +41,25 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() activeColor: Props.BalButtonColor = 'primary'
 
+  /**
+   * Defines the heading of the popover
+   */
+  @Prop() heading?: string
+
+  /**
+   * If 'false', the closing button is not displayed
+   */
+  @Prop() closable = true
+
   render() {
+    const navPopoverEl = BEM.block('nav').element('popover')
+
     return (
-      <Host>
+      <Host
+        class={{
+          ...navPopoverEl.class(),
+        }}
+      >
         <bal-popover
           value={this.isActive}
           onBalChange={event => (this.isActive = event.detail)}
@@ -61,6 +78,20 @@ export class NavigationPopover implements ComponentInterface {
             {this.label}
           </bal-button>
           <bal-popover-content>
+            {(this.closable || this.heading) && (
+              <div
+                class={{
+                  ...navPopoverEl.element('head').class(),
+                }}
+              >
+                {this.heading && (
+                  <bal-heading space="none" level="h4">
+                    {this.heading}
+                  </bal-heading>
+                )}
+                {this.closable && <bal-close onClick={() => (this.isActive = !this.isActive)} />}
+              </div>
+            )}
             <slot></slot>
           </bal-popover-content>
         </bal-popover>

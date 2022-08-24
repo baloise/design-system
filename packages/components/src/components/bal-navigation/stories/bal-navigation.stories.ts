@@ -448,5 +448,29 @@ NavigationPopover.args = {
   activeColor: 'primary',
   inactiveColor: 'light',
   inverted: false,
+  closable: false,
 }
 NavigationPopover.parameters = { ...component.sourceCode(NavigationPopover) }
+
+export const NavigationPopoverClosable = args => ({
+  components: { ...component.components },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<bal-navigation-popover v-bind="args">
+  Hello World
+  </bal-navigation-popover>`,
+})
+NavigationPopoverClosable.args = {
+  heading: 'Heading',
+  icon: 'account',
+  label: 'Username',
+  activeColor: 'primary',
+  inactiveColor: 'light',
+  inverted: false,
+}
+NavigationPopoverClosable.parameters = {
+  ...component.sourceCode(NavigationPopoverClosable),
+}
