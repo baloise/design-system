@@ -2,7 +2,6 @@ import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-doc-shades',
-  styleUrl: 'bal-doc-shades.scss',
 })
 export class BalDocShades {
   @Prop() color = ''

@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 
 @Component({
   tag: 'bal-doc-link-list-item',
-  styleUrl: 'bal-doc-link-list-item.scss',
+  styleUrl: 'bal-doc-link-list-item.sass',
 })
 export class DocLinkListItem implements ComponentInterface {
   @Element() el!: HTMLElement
@@ -39,7 +39,7 @@ export class DocLinkListItem implements ComponentInterface {
     }
 
     return (
-      <Host>
+      <Host class="bal-doc-link-list-item">
         <img src={image} alt={subject} />
         <span>
           <strong>{subject}</strong>

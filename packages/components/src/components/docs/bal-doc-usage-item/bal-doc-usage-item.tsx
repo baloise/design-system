@@ -16,7 +16,7 @@ export class DocUsageItem implements ComponentInterface {
     const title = this.subject ? this.subject : this.theme === 'do' ? 'When to use' : 'When not to use'
 
     return (
-      <Host class="column">
+      <Host class="column bal-doc-usage-item">
         <div
           class={{
             'p-4': true,
