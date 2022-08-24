@@ -75,13 +75,23 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() contentNoShadow = false
 
+  /**
+   * If `true` the content has a min width of 100%.
+   */
+  @Prop() contentExpanded = false
+
+  /**
+   * If `true` an little arrow is added, which points to the trigger element
+   */
+  @Prop() arrow = false
+
   render() {
     return (
       <Host>
         <bal-popover
           value={this.isActive}
           onBalChange={event => (this.isActive = event.detail)}
-          arrow={true}
+          arrow={this.arrow}
           backdrop={this.backdrop}
           position={this.position}
           offsetY={this.offsetY}
@@ -103,6 +113,7 @@ export class NavigationPopover implements ComponentInterface {
             content-width={this.contentWidth}
             content-min-width={this.contentMinWidth}
             no-shadow={this.contentNoShadow}
+            expanded={this.contentExpanded}
           >
             <slot></slot>
           </bal-popover-content>

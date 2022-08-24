@@ -601,6 +601,7 @@ export const WithPopover = args => ({
       active-color="white"
       inverted={true}
       square={true}
+      arrow={true}
       content-radius="large"
       position="bottom"
       content-width=440
@@ -634,6 +635,7 @@ export const WithPopover = args => ({
       bal-popover-trigger
       content-radius="large-bottom-none"
       content-no-shadow={true}
+      content-expanded={true}
       inverted={true}
       active-color="light"
       inactive-color="primary"

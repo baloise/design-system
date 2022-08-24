@@ -1391,9 +1391,17 @@ export namespace Components {
          */
         "activeColor": Props.BalButtonColor;
         /**
+          * If `true` an little arrow is added, which points to the trigger element
+         */
+        "arrow": boolean;
+        /**
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded": boolean;
         /**
           * Define the min width of the popover content.
          */
@@ -4808,9 +4816,17 @@ declare namespace LocalJSX {
          */
         "activeColor"?: Props.BalButtonColor;
         /**
+          * If `true` an little arrow is added, which points to the trigger element
+         */
+        "arrow"?: boolean;
+        /**
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded"?: boolean;
         /**
           * Define the min width of the popover content.
          */
