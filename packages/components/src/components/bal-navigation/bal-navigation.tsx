@@ -55,10 +55,10 @@ export class Navigation implements ComponentInterface {
         !this.burgerIconBtn?.contains(event.target as Node) &&
         !this.mainNavFootMobile?.contains(event.target as Node) &&
         this.isMainBodyOpen &&
-        this.mainNavMobile
+        this.mainNavMobile &&
+        this.mainNavFootMobile
       ) {
         this.isMainBodyOpen = false
-        this.selectedMainValue = ''
       }
     }
   }
