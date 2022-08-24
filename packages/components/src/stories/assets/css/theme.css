@@ -406,3 +406,7 @@ li.sbdocs.sbdocs-li {
 .docs-story .bal-nav__main {
   width: 100%;
 }
+
+.sb-show-main {
+  height: 100vh;
+}

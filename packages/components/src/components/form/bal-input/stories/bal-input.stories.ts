@@ -179,3 +179,18 @@ PostalCodeInput.parameters = {
     exclude: excludedControls,
   },
 }
+
+export const SimplePhoneNumberInput = Template.bind({})
+SimplePhoneNumberInput.args = {
+  value: '0041665554433',
+  label: 'Simple phone number input',
+  type: 'tel',
+  pattern: '[0-9]',
+  hasFieldMessage: false,
+}
+SimplePhoneNumberInput.parameters = {
+  ...component.sourceCode(SimplePhoneNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
