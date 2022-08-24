@@ -1,8 +1,16 @@
-const path = require('path')
-const file = require('../../../.build/file.js')
-const BaloiseDesignToken = require('../node_modules/@baloise/design-system-next-tokens/dist/tokens').BaloiseDesignToken
+/**
+ * generate sass util classes
+ * --------------------------------------
+ * This script creates from the design tokens some css helper classes
+ */
 
-const SASS_PATH = path.join(__dirname, '..', 'scss/generated')
+const path = require('path')
+const file = require('./file.js')
+const BaloiseDesignToken = require('../packages/tokens/dist').BaloiseDesignToken
+
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/css");
+const SASS_PATH = path.join(PACKAGE, 'scss/generated')
 
 async function main() {
   generateBackgroundColors()
