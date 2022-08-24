@@ -1431,6 +1431,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` its content will have a divider line on top
+         */
+        "isOnTop": boolean;
+        /**
           * Defines the label of the button
          */
         "label": string;
@@ -1574,6 +1578,10 @@ export namespace Components {
          */
         "hover": boolean;
         /**
+          * If `true` there will be no backdrop
+         */
+        "isOnTop": boolean;
+        /**
           * Define the offset of the popover content.
          */
         "offsetX": number;
@@ -1627,6 +1635,10 @@ export namespace Components {
           * If `true` the content has a min width of 100%.
          */
         "expanded": boolean;
+        /**
+          * If `true` the content will have a divider line on top
+         */
+        "isOnTop": boolean;
         /**
           * If `true` the popover does not have the shadow
          */
@@ -4856,6 +4868,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` its content will have a divider line on top
+         */
+        "isOnTop"?: boolean;
+        /**
           * Defines the label of the button
          */
         "label"?: string;
@@ -4995,6 +5011,10 @@ declare namespace LocalJSX {
          */
         "hover"?: boolean;
         /**
+          * If `true` there will be no backdrop
+         */
+        "isOnTop"?: boolean;
+        /**
           * Define the offset of the popover content.
          */
         "offsetX"?: number;
@@ -5041,6 +5061,10 @@ declare namespace LocalJSX {
           * If `true` the content has a min width of 100%.
          */
         "expanded"?: boolean;
+        /**
+          * If `true` the content will have a divider line on top
+         */
+        "isOnTop"?: boolean;
         /**
           * If `true` the popover does not have the shadow
          */

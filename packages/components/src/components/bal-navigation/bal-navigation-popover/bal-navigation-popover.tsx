@@ -85,6 +85,11 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() arrow = false
 
+  /**
+   * If `true` its content will have a divider line on top
+   */
+  @Prop() isOnTop = false
+
   render() {
     return (
       <Host>
@@ -95,6 +100,7 @@ export class NavigationPopover implements ComponentInterface {
           backdrop={this.backdrop}
           position={this.position}
           offsetY={this.offsetY}
+          is-on-top={this.isOnTop}
         >
           <bal-button
             bal-popover-trigger
@@ -105,6 +111,7 @@ export class NavigationPopover implements ComponentInterface {
             square={this.square}
             onClick={() => (this.isActive = !this.isActive)}
             aria-haspopup="true"
+            class={`bal-navigation-popover__button-${this.isActive ? this.activeColor : this.inactiveColor}`}
           >
             {this.label}
           </bal-button>
@@ -114,6 +121,7 @@ export class NavigationPopover implements ComponentInterface {
             content-min-width={this.contentMinWidth}
             no-shadow={this.contentNoShadow}
             expanded={this.contentExpanded}
+            is-on-top={this.isOnTop}
           >
             <slot></slot>
           </bal-popover-content>

@@ -48,6 +48,11 @@ export class PopoverContent {
    */
   @Prop() noShadow = false
 
+  /**
+   * If `true` the content will have a divider line on top
+   */
+  @Prop() isOnTop = false
+
   get innerStyle() {
     let scrollable = {}
 
@@ -93,6 +98,7 @@ export class PopoverContent {
           ...block.modifier('no-shadow').class(this.noShadow),
           ...block.modifier(`radius-${this.radius}`).class(),
           ...block.modifier(`color-${this.color}`).class(),
+          ...block.modifier('on-top').class(this.isOnTop),
         }}
         role="tooltip"
         style={this.contentStyle}

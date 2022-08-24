@@ -74,6 +74,11 @@ export class Popover {
   @Prop({ mutable: true, reflect: true }) value = false
 
   /**
+   * If `true` there will be no backdrop
+   */
+  @Prop() isOnTop = false
+
+  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
@@ -315,12 +320,16 @@ export class Popover {
         }}
       >
         <slot></slot>
-        <div
-          ref={el => {
-            this.backdropElement = el
-          }}
-          class={{ ...block.element('backdrop').class(this.backdrop && this.value) }}
-        ></div>
+        {!this.isOnTop && (
+          <div
+            ref={el => {
+              this.backdropElement = el
+            }}
+            class={{
+              ...block.element('backdrop').class(this.backdrop && this.value),
+            }}
+          ></div>
+        )}
       </Host>
     )
   }
