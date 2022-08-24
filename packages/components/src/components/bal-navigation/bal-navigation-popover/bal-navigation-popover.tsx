@@ -47,7 +47,7 @@ export class NavigationPopover implements ComponentInterface {
   @Prop() heading?: string
 
   /**
-   * If 'false', the closing button is not rendered
+   * If 'false', the closing button is not displayed
    */
   @Prop() closable = true
 

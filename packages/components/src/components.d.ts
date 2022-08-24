@@ -1395,7 +1395,7 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
-          * If 'false', the closing button is not rendered
+          * If 'false', the closing button is not displayed
          */
         "closable": boolean;
         /**
@@ -4768,7 +4768,7 @@ declare namespace LocalJSX {
          */
         "backdrop"?: boolean;
         /**
-          * If 'false', the closing button is not rendered
+          * If 'false', the closing button is not displayed
          */
         "closable"?: boolean;
         /**
