@@ -31,7 +31,7 @@ describe('Select', () => {
     })
   })
 
-  describe.only('multiple', () => {
+  describe('multiple', () => {
     it('should ', () => {
       page.open()
       cy.get(page.multiple)
