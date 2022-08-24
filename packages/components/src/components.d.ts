@@ -1395,6 +1395,14 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
+          * If 'false', the closing button is not rendered
+         */
+        "hasClosingBtn": boolean;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
           * Defines the icon of the trigger button.
          */
         "icon"?: string;
@@ -4759,6 +4767,14 @@ declare namespace LocalJSX {
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
+        /**
+          * If 'false', the closing button is not rendered
+         */
+        "hasClosingBtn"?: boolean;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
         /**
           * Defines the icon of the trigger button.
          */
