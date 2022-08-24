@@ -1391,7 +1391,7 @@ export namespace Components {
          */
         "activeColor": Props.BalButtonColor;
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
         /**
@@ -1550,7 +1550,7 @@ export namespace Components {
          */
         "allowScrollingBody": () => Promise<void>;
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
         /**
@@ -4816,7 +4816,7 @@ declare namespace LocalJSX {
          */
         "activeColor"?: Props.BalButtonColor;
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow"?: boolean;
         /**
@@ -4979,7 +4979,7 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow"?: boolean;
         /**

@@ -81,7 +81,7 @@ export class NavigationPopover implements ComponentInterface {
   @Prop() contentExpanded = false
 
   /**
-   * If `true` an little arrow is added, which points to the trigger element
+   * If `true` a little arrow is added, which points to the trigger element
    */
   @Prop() arrow = false
 
