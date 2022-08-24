@@ -1,8 +1,8 @@
 const path = require('path')
-const file = require('../../../.build/file.js')
-const BaloiseDesignToken = require('../dist/tokens.js').BaloiseDesignToken
+const file = require('./file.js')
+const BaloiseDesignToken = require('../packages/tokens/dist/tokens.js').BaloiseDesignToken
 
-const DIST_PATH = path.join(__dirname, '..', 'dist')
+const DIST_PATH = path.join(__dirname, '..', 'packages/tokens/dist')
 
 async function main() {
   // JSON

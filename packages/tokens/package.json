@@ -28,23 +28,19 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle && npm run build:tokens && npm run build:css",
-    "build:tokens": "node ./.build/generator.js",
+    "build": "npm run build:bundle && npm run build:tokens && npm run build:css",
+    "build:tokens": "node ../../.build/tokens-generator.js",
     "build:css": "sass ./dist/tokens.sass ./dist/tokens.css",
-    "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "dist/tokens.js",
   "module": "dist/tokens.esm.js",
-  "types": "dist/types/tokens.d.ts",
+  "types": "dist/tokens.d.ts",
   "style": "dist/tokens.css",
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ],
-  "devDependencies": {
-    "sass": "~1.54.0"
-  },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }
