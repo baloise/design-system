@@ -607,14 +607,9 @@ export const WithPopover = args => ({
       content-width=440
       content-min-width=440
       offsetY=13
+      heading="24h Kundenservice"
       >
-        <div>
-          <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-            <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
-            <bal-close @click="toggle()"></bal-close>
-          </div>
-          <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
-        </div>
+        <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
     </bal-navigation-popover>
     <bal-button square size="small" color="light" inverted icon="web"></bal-button>
     <bal-button square size="small" color="light" inverted icon="location"></bal-button>
@@ -634,25 +629,20 @@ export const WithPopover = args => ({
       content-expanded={true}
       active-color="primary"
       inactive-color="light"
+      heading="Suche"
       offsetY=3
       mobile-top={true}
       >
         <div>
-          <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-            <bal-heading space="none" level="h4">Suche</bal-heading>
-            <bal-close @click="toggleMobile()"></bal-close>
-          </div>
-          <div>
-            Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          </div>
+          Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
         </div>
     </bal-navigation-popover>
     <bal-button square color="light" icon="account"></bal-button>
@@ -671,14 +661,9 @@ export const WithPopover = args => ({
       active-color="primary"
       inactive-color="white"
       offsetY=3
+      heading="24h Kundenservice"
       >
-        <div>
-          <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-            <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
-            <bal-close @click="toggleMobile()"></bal-close>
-          </div>
-          <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
-        </div>
+        <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
     </bal-navigation-popover>
     <bal-button square inverted icon="web"></bal-button>
     <bal-button square inverted icon="location"></bal-button>
