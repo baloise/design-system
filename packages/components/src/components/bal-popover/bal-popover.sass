@@ -31,8 +31,13 @@
     box-shadow: var(--bal-shadow)
     background: var(--bal-color-white)
     border-radius: var(--bal-radius)
+    padding: 1rem
+    +tablet
+      padding: 1.5rem
     &[data-show]
       display: block
+    +modifier(spaceless)
+      padding: 0
     +modifier(expanded)
       min-width: 100%
     +modifier(color-grey)
@@ -75,13 +80,6 @@
       color: var(--bal-color-white)
       font-family: var(--bal-font-family-text)
       font-size: var(--bal-size-small)
-
-.popover-item
-  padding-right: 3rem
-  text-align: inherit
-  white-space: nowrap
-  width: 100%
-  display: block
 
 [bal-popover-trigger]
   z-index: 15

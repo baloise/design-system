@@ -430,3 +430,23 @@ WithStage.args = {
   ariaLabelMain: 'aria label main',
 }
 WithStage.parameters = { ...component.sourceCode(WithStage) }
+
+export const NavigationPopover = args => ({
+  components: { ...component.components },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<bal-navigation-popover v-bind="args">
+  Hello World
+  </bal-navigation-popover>`,
+})
+NavigationPopover.args = {
+  icon: 'account',
+  label: 'Username',
+  activeColor: 'primary',
+  inactiveColor: 'light',
+  inverted: false,
+}
+NavigationPopover.parameters = { ...component.sourceCode(NavigationPopover) }

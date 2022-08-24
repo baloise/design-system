@@ -875,7 +875,7 @@ export class Select {
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
-          <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} expanded>
+          <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"
@@ -889,7 +889,6 @@ export class Select {
                   ...optionEl.modifier('focused').class(this.focusIndex === index),
                   ...optionEl.modifier('checkbox').class(this.multiple),
                   ...optionEl.modifier('disabled').class(option.disabled === true),
-                  'popover-item': true, // Todo: what is that ?
                 }}
                 disabled={option.disabled}
                 tabIndex={-1}
