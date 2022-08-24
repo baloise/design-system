@@ -7,12 +7,15 @@
 const fs = require('fs')
 const path = require('path')
 const archiver = require('archiver')
-const log = require('../../../.build/log')
+const log = require('./log')
+
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/icons");
 
 const main = async () => {
   await log.title('icons: archive')
 
-  const docsDir = path.join(__dirname, '../generated')
+  const docsDir = path.join(PACKAGE, 'dist')
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir)
   }
@@ -28,7 +31,7 @@ const main = async () => {
 
   archive.pipe(output)
 
-  archive.glob('*.svg', { cwd: path.join(__dirname, '../svg') })
+  archive.glob('*.svg', { cwd: path.join(PACKAGE, 'src/assets') })
   archive.finalize()
 }
 

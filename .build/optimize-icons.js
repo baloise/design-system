@@ -9,11 +9,12 @@ const path = require('path')
 const svgo = require('svgo')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
-const file = require('../../../.build/file')
-const log = require('../../../.build/log')
-const { NEWLINE } = require('../../../.build/constants')
+const file = require('./file')
+const log = require('./log')
+const { NEWLINE } = require('./constants')
 
-const DIRNAME = path.normalize(__dirname)
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/icons");
 
 const readSVG = async (name, filePath) => {
   let svgContent = ''
@@ -32,7 +33,7 @@ const readSVG = async (name, filePath) => {
           params: { attrs: '(stroke|fill)' },
         },
         {
-          name: 'removeStyleElement',
+          name: 'removeStyleElement'
         },
         {
           name: 'removeDimensions',
@@ -41,7 +42,7 @@ const readSVG = async (name, filePath) => {
       ],
     })
     svgContent = svg.data
-    svgContent = svgContent.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '')
+    svgContent = svgContent.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '');
   } catch (error) {
     log.error(`Could not optimize the file ${filePath}`, error)
     process.exit(0)
@@ -53,7 +54,7 @@ const readSVG = async (name, filePath) => {
 const main = async () => {
   await log.title('icons: optimize')
 
-  const pathToSvgs = path.join(DIRNAME, '..', 'svg', '*.svg')
+  const pathToSvgs = path.join(PACKAGE, 'src/assets/*.svg')
   let filePaths = []
   try {
     filePaths = await file.scan(pathToSvgs)
@@ -69,20 +70,28 @@ const main = async () => {
     const fileName = path.parse(filePath).name
     svgContent = await readSVG(fileName, filePath)
     contents.set(fileName, svgContent)
-    await file.save(path.join(__dirname, '..', 'svg', `${fileName}.svg`), svgContent)
+    await file.save(path.join(PACKAGE, 'src/assets', `${fileName}.svg`), svgContent)
   }
 
-  const lines = ['// generated file by .build/optimize.js', '']
+  const lines = [
+    '/* eslint-disable prettier/prettier */',
+    '// generated file by .build/optimize-icons.js',
+    '',
+  ]
 
   contents.forEach((value, key) => {
     lines.push(`export const balIcon${upperFirst(camelCase(key))} = '${value}';`)
     lines.push(``)
   })
-  await file.save(path.join(DIRNAME, '..', 'src', 'icons.ts'), lines.join(NEWLINE))
-  await file.save(path.join(DIRNAME, '..', 'generated', 'icons.json'), JSON.stringify([...contents.keys()]))
+
+  await file.save(path.join(PACKAGE, 'src/index.ts'), lines.join(NEWLINE))
+  await file.save(
+    path.join(PACKAGE, 'src/icons.json'),
+    JSON.stringify([...contents.keys()]),
+  )
 
   contents.forEach(async (value, key) => {
-    await file.save(path.join(DIRNAME, '..', 'svg', `${key}.svg`), value)
+    await file.save(path.join(PACKAGE, 'src/assets', `${key}.svg`), value)
   })
 }
 
