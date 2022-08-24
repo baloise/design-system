@@ -1397,7 +1397,7 @@ export namespace Components {
         /**
           * If 'false', the closing button is not rendered
          */
-        "hasClosingBtn": boolean;
+        "closable": boolean;
         /**
           * Defines the heading of the popover
          */
@@ -4770,7 +4770,7 @@ declare namespace LocalJSX {
         /**
           * If 'false', the closing button is not rendered
          */
-        "hasClosingBtn"?: boolean;
+        "closable"?: boolean;
         /**
           * Defines the heading of the popover
          */

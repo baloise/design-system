@@ -49,7 +49,7 @@ export class NavigationPopover implements ComponentInterface {
   /**
    * If 'false', the closing button is not rendered
    */
-  @Prop() isClosable = true
+  @Prop() closable = true
 
   render() {
     const navPopoverEl = BEM.block('nav').element('popover')
@@ -78,7 +78,7 @@ export class NavigationPopover implements ComponentInterface {
             {this.label}
           </bal-button>
           <bal-popover-content>
-            {(this.isClosable || this.heading) && (
+            {(this.closable || this.heading) && (
               <div
                 class={{
                   ...navPopoverEl.element('head').class(),
@@ -89,7 +89,7 @@ export class NavigationPopover implements ComponentInterface {
                     {this.heading}
                   </bal-heading>
                 )}
-                {this.isClosable && <bal-close onClick={() => (this.isActive = !this.isActive)} />}
+                {this.closable && <bal-close onClick={() => (this.isActive = !this.isActive)} />}
               </div>
             )}
             <slot></slot>
