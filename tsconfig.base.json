@@ -4,7 +4,7 @@
   "compilerOptions": {
     "strict": true,
     "alwaysStrict": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": true,
     "experimentalDecorators": true,
