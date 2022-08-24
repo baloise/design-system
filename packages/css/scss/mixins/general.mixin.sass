@@ -181,7 +181,6 @@
     +desktop
       #{$prop}-bottom: $value-desktop
 
-
 =property-horizontal($prop, $start, $end: $start)
   @if $start == 0 and $end == 0
     #{$prop}-left: $start
@@ -228,6 +227,9 @@
   padding: 0
   opacity: 0
   outline: 0
+  border: none
+  width: 1px
+  height: 1px
 
 =delete
   +unselectable
@@ -294,4 +296,3 @@
     min-height: 32px
     min-width: 32px
     width: 32px
-
