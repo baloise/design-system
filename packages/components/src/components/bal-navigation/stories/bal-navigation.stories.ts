@@ -639,10 +639,12 @@ export const WithPopover = args => ({
       >
         <div>
           <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
-            <bal-heading space="none" level="h4">24h Kundenservice</bal-heading>
+            <bal-heading space="none" level="h4">Suche</bal-heading>
             <bal-close @click="toggleMobile()"></bal-close>
           </div>
-          <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
+          <div>
+            Lorem ipsum Lorem ipsum Lorem ipsum
+          </div>
         </div>
     </bal-navigation-popover>
     <bal-button square color="light" icon="account"></bal-button>
