@@ -41,7 +41,7 @@ describe('bal-datepicker.cy.ts', () => {
     })
 
     cy.get('bal-datepicker').find('input.input').click()
-    cy.get('bal-datepicker').find('.is-today').click()
+    cy.get('bal-datepicker').find('.bal-datepicker-grid__cell--today').click()
 
     cy.get('bal-datepicker').find('input.input').should('have.value', format('de-CH', now()))
     cy.get('@balChange').should('have.been.calledOnce')

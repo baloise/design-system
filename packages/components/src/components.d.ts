@@ -1399,6 +1399,14 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable": boolean;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
           * If `true` the content has a min width of 100%.
          */
         "contentExpanded": boolean;
@@ -4835,6 +4843,14 @@ declare namespace LocalJSX {
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
+        /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable"?: boolean;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
         /**
           * If `true` the content has a min width of 100%.
          */

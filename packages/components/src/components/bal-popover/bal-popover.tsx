@@ -281,7 +281,7 @@ export class Popover {
     return {
       name: 'offset',
       options: {
-        offset: [this.offsetX, this.offsetY + (this.tooltip || this.arrow ? 8 : 4)],
+        offset: [this.offsetX, this.offsetY + (this.tooltip || this.arrow ? 8 : 0)],
       },
     }
   }

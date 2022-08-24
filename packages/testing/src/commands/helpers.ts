@@ -85,7 +85,7 @@ export const selectors = {
   select: {
     input: 'input.data-test-select-input',
     options: 'button.bal-select__option',
-    chips: '.bal-select__selections > bal-tag',
+    chips: '.bal-select__control__selections > .bal-tag',
   },
   tabs: {
     tabItems: 'li.data-test-tab-item',

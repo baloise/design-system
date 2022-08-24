@@ -1,0 +1,119 @@
++block(datepicker)
+  display: block
+  font-family: var(--bal-font-family-text)
+  width: 100%
+
+  +element(native)
+    +hidden-input
+
+  +element(popup)
+    padding: 1rem
+    width: 100%
+    +tablet
+      max-width: 392px
+    user-select: none
+    background-color: var(--bal-color-grey-2)
+
+    +element(body)
+      max-width: 360px
+      margin: 0 auto 0 auto
+      margin-top: 0.75rem
+
++block(datepicker-pagination)
+  max-width: 360px
+  margin: 0 auto 0 auto
+  +element(inner)
+    display: flex
+    gap: .5rem
+  +element(month-and-year)
+    display: flex
+    flex: 1
+    gap: .5rem
+    +element(select)
+      flex: 1
+      .select,
+      .select select
+        padding-top: 0
+        padding-bottom: 0
+        text-align: center
+        height: 2rem
+        +tablet
+          height: 3rem
+
++block(datepicker-grid)
+  display: table
+  border-collapse: collapse
+  width: 100%
+  table-layout: fixed
+
+  +element(body)
+    display: table-row-group
+
+  +element(row)
+    display: table-row
+    .bal-datepicker-grid__cell
+      margin-bottom: 0.25rem
+    &:last-child
+      .bal-datepicker-grid__cell
+        margin-bottom: 0
+
+  +element(header)
+    display: table-header-group
+    max-width: 360px
+    margin: 0 auto 0 auto
+    .bal-datepicker-grid__cell
+      background: transparent
+      span
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 100%
+        width: 100%
+
+  +element(cell)
+    position: relative
+    text-align: center
+    vertical-align: middle
+    display: table-cell
+    width: 13%
+    padding: 0 !important
+    height: 3rem
+    min-height: 3rem
+    min-width: 2.25rem
+    appearance: auto !important
+    margin-right: 0.25rem
+    background: var(--bal-color-white)
+    &:last-child
+      margin-right: 0
+    & > span
+      font-family: var(--bal-font-family-text)
+      font-weight: var(--bal-weight-regular)
+    +tablet
+      width: 3rem
+      min-width: 3rem !important
+    +modifier(disabled)
+      border-color: transparent !important
+      background: transparent !important
+    &--today:not(#{&}--outdated)
+      & > span
+        font-weight: var(--bal-weight-bold)
+    &--today:not(#{&}--outdated)::after
+      content: ''
+      position: absolute
+      display: block
+      width: 4px
+      height: 4px
+      background: var(--bal-color-primary)
+      border-radius: var(--bal-radius-rounded)
+      margin-left: -2px
+      left: 50%
+      bottom: 6px
+    &--today#{&}--selected:not(#{&}--outdated)::after
+      background: var(--bal-color-primary-inverted)
+    +modifier(header)
+      & > span
+        border: none
+        background: transparent
+        color: var(--bal-color-primary)
+        font-weight: var(--bal-weight-bold)
+        cursor: default
