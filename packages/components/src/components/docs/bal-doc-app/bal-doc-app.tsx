@@ -5,7 +5,7 @@ import globalScript from '../../../global'
   tag: 'bal-doc-app',
   scoped: false,
   shadow: false,
-  styleUrl: '../../../styles/global.scss',
+  styleUrl: '../../../styles/global.sass',
 })
 export class DocApp {
   connectedCallback() {

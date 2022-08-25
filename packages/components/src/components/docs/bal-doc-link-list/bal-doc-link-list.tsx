@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 
 @Component({
   tag: 'bal-doc-link-list',
-  styleUrl: 'bal-doc-link-list.scss',
+  styleUrl: 'bal-doc-link-list.sass',
 })
 export class DocLinkList implements ComponentInterface {
   @Element() el!: HTMLElement
@@ -13,6 +13,7 @@ export class DocLinkList implements ComponentInterface {
     return (
       <Host
         class={{
+          'bal-doc-link-list': true,
           'link-list': true,
           'has-one-column': this.oneColumn,
         }}
