@@ -252,9 +252,9 @@ export class Popover {
    */
   @Method()
   async allowScrollingBody() {
-    this.body.style.position = 'relative'
-    this.body.style.width = 'auto'
-    this.body.style.overflowY = 'auto'
+    this.body.style.position = 'static'
+    this.body.style.width = '100%'
+    this.body.style.overflowY = 'visible'
   }
 
   /**

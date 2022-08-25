@@ -571,12 +571,11 @@ export const WithPopover = args => ({
 
   <bal-button-group slot="meta-actions">
     <bal-navigation-popover
-      v-model="isActive"
       backdrop={true}
       icon="call"
       size="small"
       inactive-color="light"
-      active-color="white"
+      active-color="primary"
       inverted={true}
       square={true}
       arrow={true}
@@ -596,7 +595,6 @@ export const WithPopover = args => ({
   </bal-button-group>
   <div slot="meta-actions-mobile">
     <bal-navigation-popover
-      v-model="isActiveMobile"
       backdrop={true}
       position="bottom"
       square={true}
@@ -627,7 +625,6 @@ export const WithPopover = args => ({
   </div>
   <div slot="meta-mobile-foot">
     <bal-navigation-popover
-      v-model="isActiveMobile"
       backdrop={true}
       position="top"
       square={true}
