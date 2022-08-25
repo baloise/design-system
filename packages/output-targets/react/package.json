@@ -40,13 +40,9 @@
     "test.watch": "jest --watch"
   },
   "peerDependencies": {
-    "@stencil/core": "^2.9.0"
-  },
-  "devDependencies": {
-    "@types/react": "^16.7.0",
-    "@types/react-dom": "^16.7.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "@stencil/core": "^2.9.0",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

@@ -40,9 +40,7 @@
     "test.watch": "jest --watch"
   },
   "peerDependencies": {
-    "@stencil/core": "^2.9.0"
-  },
-  "devDependencies": {
+    "@stencil/core": "^2.9.0",
     "vue": "^3.2.37"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"

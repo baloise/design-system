@@ -42,16 +42,12 @@
     "test.watch": "jest --watch"
   },
   "peerDependencies": {
-    "@stencil/core": "^2.9.0"
-  },
-  "devDependencies": {
-    "@angular/common": "^10.2.5",
-    "@angular/core": "^10.2.5",
-    "@angular/forms": "^10.2.5",
-    "@angular/platform-browser": "^10.2.5",
-    "rxjs": "^6.6.7",
-    "typescript": "^4.0.8",
-    "zone.js": "^0.10.3"
+    "@stencil/core": "^2.9.0",
+    "@angular/common": ">=12.2.16",
+    "@angular/core": ">=12.2.16",
+    "@angular/forms": ">=12.2.16",
+    "@angular/platform-browser": ">=12.2.16",
+    "zone.js": ">=0.11.4"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

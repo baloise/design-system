@@ -1,11 +1,11 @@
 import { Config } from '@stencil/core'
-import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
-import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
+
+import { StencilBaseConfig } from './config/stencil.basic.config'
 
 export const config: Config = {
   ...StencilBaseConfig,
   outputTargets: [
-    VueGenerator('../..', './.storybook/vue/components.ts', []),
+    ...(StencilBaseConfig.outputTargets as any),
     {
       type: 'www',
       dir: 'public',
