@@ -8,7 +8,6 @@ import {
   BalPopoverContent,
   BalButton,
 } from '../../../../.storybook/vue/components'
-import { ref, watchEffect } from 'vue'
 import { withContent } from '../../../stories/utils'
 
 const component = BalComponentStory({
@@ -447,29 +446,8 @@ WithStage.parameters = { ...component.sourceCode(WithStage) }
 export const WithPopover = args => ({
   components: { ...component.components, BalButton, BalPopover, BalPopoverContent },
   setup: () => {
-    const isActive = ref(true)
-
-    const toggle = () => {
-      isActive.value = !isActive.value
-    }
-
-    const isActiveMobile = ref(true)
-
-    const toggleMobile = () => {
-      isActiveMobile.value = !isActiveMobile.value
-    }
-
-    watchEffect(() => {
-      isActive.value = args.value
-      isActiveMobile.value = args.value
-    })
-
     return {
       args,
-      isActive,
-      isActiveMobile,
-      toggle,
-      toggleMobile,
     }
   },
   template: `<div style="height: 1000px">
