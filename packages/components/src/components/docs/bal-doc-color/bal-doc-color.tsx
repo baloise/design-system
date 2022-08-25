@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-doc-color',
-  styleUrl: 'bal-doc-color.scss',
+  styleUrl: 'bal-doc-color.sass',
   shadow: false,
   scoped: true,
 })
