@@ -240,7 +240,6 @@ export class Popover {
    */
   @Method()
   async toggleScrollingBody() {
-    console.log('CALLED FROM BAL POPOVER')
     if (this.value) {
       await this.blockScrollingBody()
     } else {

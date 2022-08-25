@@ -123,7 +123,6 @@ export class Navigation implements ComponentInterface {
    */
   @Method()
   async toggleScrollingBody() {
-    console.log('CALLED NAVIGATION toggle scroll MAIN BODY OPEN', this.isMainBodyOpen)
     if (this.isMainBodyOpen) {
       await this.blockScrollingBody()
     } else {
