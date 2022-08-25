@@ -184,7 +184,7 @@ export class Popover {
   @Method()
   async present(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (!this.value || options.force) {
-      await this.toggleScrollingBody()
+      this.mobileTop && (await this.toggleScrollingBody())
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
       this.balPopoverPrepare.emit(this.popoverId)
@@ -207,7 +207,7 @@ export class Popover {
   @Method()
   async dismiss(options: PopoverPresentOptions = { force: false, noEmit: false }) {
     if (this.value || options.force) {
-      await this.toggleScrollingBody()
+      this.mobileTop && (await this.toggleScrollingBody())
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
       this.value = false
@@ -240,6 +240,7 @@ export class Popover {
    */
   @Method()
   async toggleScrollingBody() {
+    console.log('CALLED FROM BAL POPOVER')
     if (this.value) {
       await this.blockScrollingBody()
     } else {
@@ -253,7 +254,7 @@ export class Popover {
   @Method()
   async allowScrollingBody() {
     this.body.style.position = 'static'
-    this.body.style.width = '100%'
+    this.body.style.width = 'auto'
     this.body.style.overflowY = 'visible'
   }
 
