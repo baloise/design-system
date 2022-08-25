@@ -132,3 +132,4 @@ packages/components-vue/src/proxies.ts
 packages/components-vue/src/vue-component-lib
 packages/components/.storybook/vue
 packages/components/cypress/screenshots
+packages/components/src/stories/assets/data

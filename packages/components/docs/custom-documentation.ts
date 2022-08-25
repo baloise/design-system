@@ -7,8 +7,8 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import testingCommands from '../../generated/commands.json'
-import contributors from '../../generated/contributors.json'
+import testingCommands from '../src/stories/assets/data/commands.json'
+import contributors from '../src/stories/assets/data/contributors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -24,19 +24,19 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       const componentApi = [...props, ...events, ...methods, ...slots]
       const hasComponentApi = componentApi.length > 0
 
-      let content = []
+      let content: string[] = []
 
       if (hasComponentApi) {
         content = [`### ${component.tag}`, SPACE, ...componentApi, SPACE]
       }
 
       try {
-        writeFileSync(component.readmePath, content.join(NEWLINE))
+        writeFileSync(component.readmePath || '', content.join(NEWLINE))
       } catch (err) {
         console.error(err)
       }
 
-      const docsPath = path.join(component.dirPath, 'generated')
+      const docsPath = path.join(component.dirPath || '', 'generated')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -50,7 +50,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
           }
 
           const markdownLines = file.split(NEWLINE)
-          const humanLines = []
+          const humanLines: string[] = []
           let hasReachedHumanPart = false
           for (let index = 0; index < markdownLines.length; index++) {
             const line = markdownLines[index]
@@ -103,7 +103,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     const contributorsContent = [`<div class="features">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
 
     try {
-      writeFileSync(path.join(__dirname, '../../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
+      writeFileSync(path.join(__dirname, '../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
     } catch (err) {
       console.error(err)
     }

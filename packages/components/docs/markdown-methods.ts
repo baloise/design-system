@@ -9,7 +9,9 @@ export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
 
   content.push(`#### Methods`)
   content.push(``)
-  content.push(`Follow the [Method Usage](https://design.baloise.dev/?path=/docs/implementation-method--page) guide to learn how to call component methods.`)
+  content.push(
+    `Follow the [Method Usage](https://design.baloise.dev/?path=/docs/implementation-method--page) guide to learn how to call component methods.`,
+  )
   content.push(``)
 
   methods.forEach(method => {
@@ -49,5 +51,9 @@ export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
 }
 
 const getDocsField = (prop: d.JsonDocsMethod) => {
-  return `${prop.deprecation !== undefined ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>` : ''}${prop.docs}`
+  return `${
+    prop.deprecation !== undefined
+      ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>`
+      : ''
+  }${prop.docs}`
 }

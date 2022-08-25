@@ -1,7 +1,7 @@
-import { ComponentModelConfig, vueOutputTarget } from '@baloise/design-system-next-output-target-vue'
+import { vueOutputTarget } from '@baloise/design-system-next-output-target-vue'
 import { docComponents } from './doc.components'
 
-export const vueComponentModels: ComponentModelConfig[] = [
+export const vueComponentModels: any[] = [
   {
     elements: [
       'bal-radio-group',
@@ -17,9 +17,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: 'value',
   },
   {
-    elements: [
-      'bal-checkbox',
-    ],
+    elements: ['bal-checkbox'],
     event: 'balChange',
     targetAttr: 'checked',
   },
@@ -34,7 +32,7 @@ export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-next-components',
   proxiesFile = '../components-vue/src/proxies.ts',
   excludeComponents = docComponents,
-) =>
+): any =>
   vueOutputTarget({
     includeImportCustomElements: true,
     includePolyfills: false,
@@ -43,6 +41,5 @@ export const VueGenerator = (
     componentCorePackage,
     componentModels: vueComponentModels,
     excludeComponents,
-    customElementsDir: 'dist/components'
+    customElementsDir: 'dist/components',
   })
-

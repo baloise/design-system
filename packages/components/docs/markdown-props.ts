@@ -9,7 +9,9 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
 
   content.push(`#### Properties`)
   content.push(``)
-  content.push(`Follow the [Property Usage](https://design.baloise.dev/?path=/docs/implementation-property--page) guide to learn how to change properties of the component.`)
+  content.push(
+    `Follow the [Property Usage](https://design.baloise.dev/?path=/docs/implementation-property--page) guide to learn how to change properties of the component.`,
+  )
   content.push(``)
 
   const table = new MarkdownTable()
@@ -17,7 +19,13 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
   table.addHeader(['Property', 'Attribute', 'Description', 'Type', 'Default'])
 
   props.forEach(prop => {
-    table.addRow([getPropertyField(prop), getAttributeField(prop), getDocsField(prop), getPropertyType(prop), `\`${prop.default}\``])
+    table.addRow([
+      getPropertyField(prop),
+      getAttributeField(prop),
+      getDocsField(prop),
+      getPropertyType(prop),
+      `\`${prop.default}\``,
+    ])
   })
 
   content.push(...table.toMarkdown())
@@ -46,5 +54,9 @@ const getAttributeField = (prop: d.JsonDocsProp) => {
 }
 
 const getDocsField = (prop: d.JsonDocsProp) => {
-  return `${prop.deprecation !== undefined ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>` : ''}${prop.docs}`
+  return `${
+    prop.deprecation !== undefined
+      ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>`
+      : ''
+  }${prop.docs}`
 }

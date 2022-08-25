@@ -7,9 +7,13 @@
  */
 
 const path = require('path')
-const file = require('../../../.build/file')
-const log = require('../../../.build/log')
-const { createSourceFile, parseFunctionComment, filterModuleDeclaration, filterInterfaceDeclaration } = require('../../../.build/typescript')
+const file = require('./file')
+const log = require('./log')
+const { createSourceFile, parseFunctionComment, filterModuleDeclaration, filterInterfaceDeclaration } = require('./typescript')
+
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/components");
+const PACKAGE_TESTING = path.join(DIRNAME, "../packages/testing");
 
 const parseTypes = (fileContent, filePath) => {
   const sourceFile = createSourceFile(fileContent)
@@ -35,7 +39,7 @@ const parseTypes = (fileContent, filePath) => {
 const run = async () => {
   await log.title('testing : docs-json')
 
-  const pathToTypes = '../testing/src/commands/**/bal-**.types.ts'
+  const pathToTypes = path.join(PACKAGE_TESTING, 'src/commands/**/bal-**.types.ts')
   let typeFilePaths = []
   let typeFileContents = []
   let commands = []
@@ -54,17 +58,15 @@ const run = async () => {
 
   commands = typeFileContents.map((m, i) => parseTypes(m, typeFilePaths[i])).reduce((acc, item) => [...acc, ...item], [])
 
-  log.info(`Found ${commands.length} commands:`)
+  log.info(`Found ${commands.length} commands`)
   commands.forEach((c, i) => {
-    log.list(`${c.name}`)
-
     if (c.description.length === 0) {
       log.warn(`Please add a description to the custom command ${c.name}.`)
     }
   })
 
-  await file.makeDir(path.join(__dirname, '../generated'))
-  await file.save(path.join(__dirname, '../generated/commands.json'), JSON.stringify(commands))
+  await file.makeDir(path.join(PACKAGE, 'src/stories/assets/data'))
+  await file.save(path.join(PACKAGE, 'src/stories/assets/data/commands.json'), JSON.stringify(commands))
 }
 
 run()

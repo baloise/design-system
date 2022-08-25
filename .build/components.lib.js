@@ -1,9 +1,9 @@
 const path = require('path')
-const file = require('../../../.build/file')
-const log = require('../../../.build/log')
+const file = require('./file')
+const log = require('./log')
 
 const components = async () => {
-  const filePath = path.join(__dirname, '../generated/components.json')
+  const filePath = path.join(__dirname, '../src/stories/assets/data/components.json')
   try {
     const content = await file.read(filePath)
     const json = JSON.parse(content)

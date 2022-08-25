@@ -21,7 +21,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'number',
   },
   {
-    elementSelectors: ['bal-input','bal-textarea', 'bal-slider'],
+    elementSelectors: ['bal-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
     type: 'text',
@@ -48,35 +48,16 @@ export const AngularGenerator = () =>
         components: ['bal-tag-group'],
       },
       'bal-card': {
-        components: [
-          'bal-card-title',
-          'bal-card-subtitle',
-          'bal-card-content',
-          'bal-card-actions',
-          'bal-card-button',
-        ],
+        components: ['bal-card-title', 'bal-card-subtitle', 'bal-card-content', 'bal-card-actions', 'bal-card-button'],
       },
       'bal-data': {
-        components: [
-          'bal-data-item',
-          'bal-data-label',
-          'bal-data-value',
-        ],
+        components: ['bal-data-item', 'bal-data-label', 'bal-data-value'],
       },
       'bal-stage': {
-        components: [
-          'bal-stage-back-link',
-          'bal-stage-body',
-          'bal-stage-foot',
-          'bal-stage-head',
-          'bal-stage-image',
-        ],
+        components: ['bal-stage-back-link', 'bal-stage-body', 'bal-stage-foot', 'bal-stage-head', 'bal-stage-image'],
       },
       'bal-hint': {
-        components: [
-          'bal-hint-title',
-          'bal-hint-text',
-        ],
+        components: ['bal-hint-title', 'bal-hint-text'],
       },
       'bal-list': {
         components: [
@@ -90,65 +71,53 @@ export const AngularGenerator = () =>
         ],
       },
       'bal-navbar': {
-        components: [
-          'bal-navbar-brand',
-          'bal-navbar-menu',
-          'bal-navbar-menu-start',
-          'bal-navbar-menu-end',
-        ],
+        components: ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
       },
       'bal-popover': {
-        components: [
-          'bal-popover-content',
-        ],
+        components: ['bal-popover-content'],
       },
       'bal-tabs': {
-        components: [
-          'bal-tab-item',
-        ],
+        components: ['bal-tab-item'],
       },
       'bal-field': {
-        components: [
-          'bal-field-label',
-          'bal-field-control',
-          'bal-field-hint',
-          'bal-field-message',
-        ],
+        components: ['bal-field-label', 'bal-field-control', 'bal-field-hint', 'bal-field-message'],
         declarations: [
           {
             name: 'BalNgErrorComponent',
-            import: 'components/error/error.component.ts'
-          }
-        ]
+            import: 'components/error/error.component.ts',
+          },
+        ],
       },
       'bal-radio': {
-        components: [
-          'bal-radio-group',
-        ],
+        components: ['bal-radio-group'],
       },
       'bal-select': {
-        components: [
-          'bal-select-option',
-        ],
+        components: ['bal-select-option'],
       },
       'bal-modal': {
         components: ['bal-modal-header', 'bal-modal-body'],
-        providers: [{
-          name: 'BalModalService',
-          import: 'overlays/modal.service.ts'
-        }]
+        providers: [
+          {
+            name: 'BalModalService',
+            import: 'overlays/modal.service.ts',
+          },
+        ],
       },
       'bal-toast': {
-        providers: [{
-          name: 'BalToastService',
-          import: 'overlays/toast.service.ts'
-        }],
+        providers: [
+          {
+            name: 'BalToastService',
+            import: 'overlays/toast.service.ts',
+          },
+        ],
       },
       'bal-snackbar': {
-        providers: [{
-          name: 'BalSnackbarService',
-          import: 'overlays/snackbar.service.ts'
-        }],
-      }
-    }
+        providers: [
+          {
+            name: 'BalSnackbarService',
+            import: 'overlays/snackbar.service.ts',
+          },
+        ],
+      },
+    },
   })

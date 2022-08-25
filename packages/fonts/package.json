@@ -33,7 +33,7 @@
     "build:archive": "node ../../.build/archive-font.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./lib/fonts.css",
+  "main": "./src/fonts.css",
   "files": [
     "dist/",
     "src/"

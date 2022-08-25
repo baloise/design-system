@@ -1,8 +1,15 @@
-const path = require('path')
-const file = require('../../../.build/file')
-const log = require('../../../.build/log')
+/**
+ * github
+ * --------------------------------------
+ * This script adds a GitHub link to each documentation file.
+ */
 
-const DIRNAME = path.normalize(__dirname)
+const path = require('path')
+const file = require('./file')
+const log = require('./log')
+
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/components");
 
 function appendGithubTag(content) {
   return `${content}
@@ -12,14 +19,14 @@ function appendGithubTag(content) {
 }
 
 function prepareLink(storyPath) {
-  const normalizedDirPath = process.platform === 'win32' ? path.join(__dirname, '..', 'src').replace(/\\/g, '\/') : path.join(__dirname, '..', 'src');
+  const normalizedDirPath = process.platform === 'win32' ? path.join(PACKAGE, 'src').replace(/\\/g, '\/') : path.join(PACKAGE, 'src');
   const newLink = storyPath.replace(normalizedDirPath, '')
   return newLink
 }
 
 async function run() {
-  log.title('Github Links')
-  const pathToSource = path.join(__dirname, '..', 'src')
+  log.title('Github - edit links')
+  const pathToSource = path.join(PACKAGE, 'src')
   const stories = await file.scan(path.join(pathToSource, '**' + path.sep + '*.mdx'))
 
   const regex = new RegExp('<bal-doc-github link="\s*.*"><\/bal-doc-github>')
@@ -44,8 +51,10 @@ async function run() {
         }
       }
     }
-
   }
+
+  log.info(`Found ${stories.length} stories`)
+  log.success('All stories are up to date')
 }
 
 run()
