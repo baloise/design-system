@@ -37,22 +37,22 @@ export class TabItem {
   /**
    * If `true` the tab is disabled.
    */
-  @Prop() disabled = false
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * If `true` the step is marked as done.
    */
-  @Prop() done = false
+  @Prop({ reflect: true }) done = false
 
   /**
    * If `true` the step is hidden.
    */
-  @Prop() hidden = false
+  @Prop({ reflect: true }) hidden = false
 
   /**
    * If `true` the step is marked as failed.
    */
-  @Prop() failed = false
+  @Prop({ reflect: true }) failed = false
 
   /**
    * Tell's if the linking is done by a router.
