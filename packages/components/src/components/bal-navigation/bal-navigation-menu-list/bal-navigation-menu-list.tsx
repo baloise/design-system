@@ -52,7 +52,11 @@ export class NavigationMenuList {
           ...navMenuListEl.modifier(`context-${this.color}`).class(),
         }}
       >
-        <bal-card class={{ ...navMenuListEl.element('card').class() }} flat color={this.color}>
+        <bal-card
+          class={{ ...navMenuListEl.element('card').class() }}
+          flat
+          color={this.color === 'grey' ? this.color : ''}
+        >
           <bal-card-content>
             {this.href ? (
               <a href={this.href} target={this.target}>

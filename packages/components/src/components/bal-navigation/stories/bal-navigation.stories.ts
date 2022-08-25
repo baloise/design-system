@@ -635,7 +635,7 @@ export const WithPopover = args => ({
       content-expanded={true}
       active-color="primary"
       inactive-color="white"
-      offsetY=3
+      offsetY=7
       heading="24h Kundenservice"
       >
         <bal-button expanded={true} href="tel://00800 24 800 800" icon="call">00800 24 800 800</bal-button>
