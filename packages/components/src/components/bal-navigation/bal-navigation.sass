@@ -298,3 +298,9 @@
       align-items: center
       justify-content: space-between
       margin-bottom: .75rem
+    .bal-popover__backdrop
+      +touch()
+        height: calc(100vh - 4rem)
+      +desktop()
+        top: 3rem
+        height: calc(100vh - 3rem)
