@@ -91,7 +91,7 @@ const main = async () => {
   )
 
   contents.forEach(async (value, key) => {
-    await file.save(path.join(PACKAGE, 'src/assets', `${key}.svg`), value)
+    await file.save(path.join(PACKAGE, 'src/assets', `${key}.svg`), value, false)
   })
 }
 

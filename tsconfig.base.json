@@ -16,6 +16,7 @@
     "module": "esnext",
     "target": "es2017",
     "moduleResolution": "node",
+    "declarationDir": "dist/types",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": false,

@@ -82,9 +82,6 @@
   },
   "devDependencies": {
     "@babel/core": "~7.18.10",
-    "@baloise/design-system-next-output-target-angular": "10.18.0",
-    "@baloise/design-system-next-output-target-react": "10.18.0",
-    "@baloise/design-system-next-output-target-vue": "10.18.0",
     "@commitlint/cli": "~17.0.3",
     "@commitlint/config-conventional": "~17.0.3",
     "@etchteam/storybook-addon-status": "~4.2.0",
@@ -164,6 +161,8 @@
     "vue": "^3.2.37",
     "react-syntax-highlighter": "~15.4.5",
     "rimraf": "~3.0.2",
+    "@babel/types": "~7.18.10",
+    "change-case": "~4.1.2",
     "rollup": "~2.77.2",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-peer-deps-external": "~2.2.4",
@@ -185,6 +184,7 @@
     "@angular/forms": "~12.2.16",
     "@angular/platform-browser": "~12.2.16",
     "ng-packagr": "~12.1.1",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "rollup-plugin-scss": "~3.0.0"
   }
 }

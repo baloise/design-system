@@ -1,9 +1,12 @@
 const fs = require('fs')
 const { pascalCase } = require('change-case')
-const libaryLib = require('../../components/.build/components.lib')
+const libraryLib = require('./components.lib')
+const log = require('./log')
 
 async function main() {
-  const docsComponents = await libaryLib.components()
+  log.title('vue - generate web types')
+
+  const docsComponents = await libraryLib.components()
 
   const components = []
 

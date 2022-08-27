@@ -93,5 +93,10 @@
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1"
   },
+  "devDependencies": {
+    "@baloise/design-system-next-output-target-angular": "10.18.0",
+    "@baloise/design-system-next-output-target-react": "10.18.0",
+    "@baloise/design-system-next-output-target-vue": "10.18.0"
+  },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

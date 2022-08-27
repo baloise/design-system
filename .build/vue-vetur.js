@@ -2,7 +2,8 @@ const fs = require('fs')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
 const { paramCase } = require('change-case')
-const libaryLib = require('../../components/.build/components.lib')
+const libraryLib = require('./components.lib')
+const log = require('./log')
 
 const generateTags = components => {
   const tagsObject = {}
@@ -34,11 +35,12 @@ const generateAttributes = components => {
 }
 
 const main = async () => {
+  log.title('vue - generate vetur definitions')
   if (!fs.existsSync('./dist/vetur')) {
     fs.mkdirSync('./dist/vetur')
   }
 
-  const components = await libaryLib.components()
+  const components = await libraryLib.components()
 
   generateTags(components)
   generateAttributes(components)

@@ -53,7 +53,13 @@ export default {
     },
   ],
   external: id => {
-    return id.startsWith('lodash') || id.startsWith('@baloise') || id.startsWith('cypress')
+    return (
+      id.startsWith('lodash') ||
+      id.startsWith('@baloise') ||
+      id.startsWith('cypress') ||
+      id.startsWith('vue') ||
+      id.startsWith('react')
+    )
   },
   plugins: [
     cleaner({ targets: ['dist/'] }),

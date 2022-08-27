@@ -65,10 +65,12 @@ const remove = async filePath => {
   }
 }
 
-const save = async (filePath, content) => {
+const save = async (filePath, content, verbose = true) => {
   try {
     await write(filePath, content)
-    log.success(`Successfully updated ${path.basename(filePath)}`)
+    if(verbose){
+      log.success(`Successfully updated ${path.basename(filePath)}`)
+    }
   } catch (error) {
     log.error(`Could not save ${filePath}`, error)
     setTimeout(() => process.exit(1), 0)
