@@ -1,4 +1,4 @@
-export const LogoAnimationData = {
+export const LogoAnimationData = (_color = '#151f6d') => ({
   v: '5.9.4',
   fr: 25,
   ip: 0,
@@ -3712,4 +3712,4 @@ export const LogoAnimationData = {
     },
   ],
   markers: [],
-}
+})

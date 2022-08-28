@@ -45,9 +45,9 @@ export class Logo implements ComponentInterface {
       this.animationItem = Lottie.loadAnimation({
         container: this.animatedLogoElement,
         renderer: 'svg',
-        loop: true,
+        loop: false,
         autoplay: true,
-        animationData: LogoAnimationData,
+        animationData: LogoAnimationData(),
       })
     }
   }
@@ -118,11 +118,19 @@ export class Logo implements ComponentInterface {
           ...logoBlock.modifier(this.size).class(),
         }}
       >
-        <div
-          ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
-          onMouseEnter={() => this.resetAnimation()}
-        ></div>
-        <div>{this.size === 'normal' ? logoNormal : logoSmall}</div>
+        {this.animation ? (
+          <div
+            style={{
+              width: this.size === 'normal' ? '158px' : '100px',
+              height: this.size === 'normal' ? '32px' : '22px',
+            }}
+            ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
+            onMouseEnter={() => this.resetAnimation()}
+          ></div>
+        ) : (
+          ''
+        )}
+        {!this.animation ? <div>{this.size === 'normal' ? logoNormal : logoSmall}</div> : ''}
       </Host>
     )
   }
