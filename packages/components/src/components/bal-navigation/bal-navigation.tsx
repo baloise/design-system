@@ -49,8 +49,8 @@ export class Navigation implements ComponentInterface {
     }
 
     if (isPlatform('touch')) {
-      this.mainNavMobile = this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
-      this.mainNavFootMobile = this.el.querySelector('.bal-nav__footmobile') as HTMLElement
+      this.mainNavMobile = this.getMobileNavElement('.bal-nav__mainmobile')
+      this.mainNavFootMobile = this.getMobileNavElement('.bal-nav__footmobile')
       if (
         !this.mainNavMobile?.contains(event.target as Node) &&
         !this.burgerIconBtn?.contains(event.target as Node) &&
@@ -62,6 +62,10 @@ export class Navigation implements ComponentInterface {
         this.isMainBodyOpen = false
       }
     }
+  }
+
+  getMobileNavElement(selector: string) {
+    return this.el.querySelector(selector) as HTMLElement
   }
 
   @Listen('resize', { target: 'window' })
@@ -93,8 +97,8 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.mainNavMobile = this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
-    this.mainNavFootMobile = this.el.querySelector('.bal-nav__footmobile') as HTMLElement
+    this.mainNavMobile = this.getMobileNavElement('.bal-nav__mainmobile')
+    this.mainNavFootMobile = this.getMobileNavElement('.bal-nav__footmobile')
     this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
     this.body = document.querySelector('body') as HTMLBodyElement
   }

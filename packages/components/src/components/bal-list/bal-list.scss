@@ -129,18 +129,20 @@
   bal-list-item-accordion-head,
   a:not(.is-link),
   button:not(.button) {
-    &:hover {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
-        color: $light-blue-dark !important;
-      }
+    @include hover() {
+      &:hover {
+        .bal-list-item-title h5,
+        .bal-list-item-subtitle p {
+          color: $light-blue-dark !important;
+        }
 
-      .bal-list-item-icon {
-        svg,
-        svg g,
-        svg path,
-        svg circle {
-          fill: $light-blue-dark !important;
+        .bal-list-item-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-dark !important;
+          }
         }
       }
     }
@@ -148,7 +150,9 @@
     &:active {
       .bal-list-item-title h5,
       .bal-list-item-subtitle p {
-        color: $blue-dark !important;
+        @include desktop() {
+          color: $blue-dark !important;
+        }
       }
 
       .bal-list-item-icon {
@@ -156,7 +160,9 @@
         svg g,
         svg path,
         svg circle {
-          fill: $blue-dark !important;
+          @include desktop() {
+            fill: $blue-dark !important;
+          }
         }
       }
     }
@@ -190,18 +196,20 @@
   bal-list-item-accordion-head,
   a:not(.is-link),
   button:not(.button) {
-    &:hover {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
-        color: $light-blue-2 !important;
-      }
+    @include hover() {
+      &:hover {
+        .bal-list-item-title h5,
+        .bal-list-item-subtitle p {
+          color: $light-blue-2 !important;
+        }
 
-      .bal-list-item-icon {
-        svg,
-        svg g,
-        svg path,
-        svg circle {
-          fill: $light-blue-2 !important;
+        .bal-list-item-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-2 !important;
+          }
         }
       }
     }
@@ -209,7 +217,9 @@
     &:active {
       .bal-list-item-title h5,
       .bal-list-item-subtitle p {
-        color: $light-blue-4 !important;
+        @include desktop() {
+          color: $light-blue-4 !important;
+        }
       }
 
       .bal-list-item-icon {
@@ -217,7 +227,9 @@
         svg g,
         svg path,
         svg circle {
-          fill: $light-blue-4 !important;
+          @include desktop() {
+            fill: $light-blue-4 !important;
+          }
         }
       }
     }
