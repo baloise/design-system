@@ -171,9 +171,11 @@
 }
 
 .bal-list.is-on-background-dark {
-  .bal-list-item-title h5,
-  .bal-list-item-subtitle p {
-    color: $white;
+  .bal-list-item {
+    .bal-list-item-title .title,
+    .bal-list-item-subtitle p {
+      color: $white;
+    }
   }
 
   .bal-list-item-icon {
@@ -191,7 +193,7 @@
   a:not(.is-link),
   button:not(.button) {
     &:hover {
-      .bal-list-item-title h5,
+      .bal-list-item-title .title,
       .bal-list-item-subtitle p {
         color: $light-blue-2 !important;
       }
@@ -245,7 +247,7 @@
 .bal-list.has-border .bal-list-item:not(.is-sub-accordion-item) {
   & > div:after,
   a:not(.is-link):after,
-  button:not(.button):after {
+  button:not(.button):not([type='button']):after {
     content: '';
     height: 2px;
     border-radius: $radius;
@@ -260,7 +262,7 @@
 .bal-list.has-border.is-in-main-nav .bal-list-item:not(.is-sub-accordion-item) {
   & > div:after,
   a:not(.is-link):after,
-  button:not(.button):after {
+  button:not(.button):not([type='button']):after {
     background: var(--bal-color-grey);
     height: 1px;
   }
@@ -281,7 +283,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   .bal-list-item.is-disabled {
     & > div:after,
     a:not(.is-link):after,
-    button:not(.button):after {
+    button:not(.button):not([type='button']):after {
       background: $grey-2;
     }
   }
