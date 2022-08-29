@@ -269,10 +269,6 @@ export class Popover {
 
   private updatePopper() {
     this.popperInstance.update()
-
-    // to trigger a popper rerender
-    /*window.scrollTo(window.scrollX, window.scrollY - 1)
-    window.scrollTo(window.scrollX, window.scrollY + 1)*/
   }
 
   private get modifierOffset(): Partial<OffsetModifier> {
