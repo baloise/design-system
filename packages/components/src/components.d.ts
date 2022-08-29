@@ -1275,10 +1275,6 @@ export namespace Components {
     }
     interface BalNavigation {
         /**
-          * Allows the scrolling on the body element
-         */
-        "allowScrollingBody": () => Promise<void>;
-        /**
           * Aria label for the main-navigation-wrapper
          */
         "ariaLabelMain": string;
@@ -1287,10 +1283,6 @@ export namespace Components {
          */
         "ariaLabelMeta": string;
         /**
-          * Blocks the scrolling on the body element
-         */
-        "blockScrollingBody": () => Promise<void>;
-        /**
           * Path to the logo-image
          */
         "logoPath": string;
@@ -1298,10 +1290,6 @@ export namespace Components {
           * Defines the initially active meta-navigation-item
          */
         "metaValue"?: string;
-        /**
-          * Toggles the scrolling on the body element
-         */
-        "toggleScrollingBody": () => Promise<void>;
     }
     interface BalNavigationLevelBlock {
         "color": 'white' | 'grey';
@@ -1570,10 +1558,6 @@ export namespace Components {
     }
     interface BalPopover {
         /**
-          * Allows the scrolling on the body element
-         */
-        "allowScrollingBody": () => Promise<void>;
-        /**
           * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
@@ -1581,10 +1565,6 @@ export namespace Components {
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
-        /**
-          * Blocks the scrolling on the body element
-         */
-        "blockScrollingBody": () => Promise<void>;
         /**
           * Closes the popover
          */
@@ -1625,10 +1605,6 @@ export namespace Components {
           * Open or closes the popover
          */
         "toggle": (options?: PopoverPresentOptions) => Promise<void>;
-        /**
-          * Toggles the scrolling on the body element
-         */
-        "toggleScrollingBody": () => Promise<void>;
         /**
           * If `true` the popover is shown as a tooltip
          */

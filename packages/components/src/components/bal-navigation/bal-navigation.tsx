@@ -1,7 +1,8 @@
-import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen, Method } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
+import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-navigation',
@@ -40,7 +41,7 @@ export class Navigation implements ComponentInterface {
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })
-  clickOnOutside(event: UIEvent) {
+  async clickOnOutside(event: UIEvent) {
     if (isPlatform('desktop')) {
       if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
         this.isMainBodyOpen = false
@@ -120,38 +121,6 @@ export class Navigation implements ComponentInterface {
     if (levels) {
       this.levels = levels
     }
-  }
-
-  /**
-   * Toggles the scrolling on the body element
-   */
-  @Method()
-  async toggleScrollingBody() {
-    if (this.isMainBodyOpen) {
-      await this.blockScrollingBody()
-    } else {
-      await this.allowScrollingBody()
-    }
-  }
-
-  /**
-   * Allows the scrolling on the body element
-   */
-  @Method()
-  async allowScrollingBody() {
-    this.body.style.position = 'static'
-    this.body.style.width = 'auto'
-    this.body.style.overflowY = 'visible'
-  }
-
-  /**
-   * Blocks the scrolling on the body element
-   */
-  @Method()
-  async blockScrollingBody() {
-    this.body.style.position = 'fixed'
-    this.body.style.width = '100%'
-    this.body.style.overflowY = 'hidden'
   }
 
   render() {
@@ -267,7 +236,9 @@ export class Navigation implements ComponentInterface {
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
               onClick={async () => {
                 this.isMainBodyOpen = !this.isMainBodyOpen
-                await this.toggleScrollingBody()
+                //await this.toggleScrollingBody()
+                console.log('this.isMainBodyOpen BURGER ICON touch', this.isMainBodyOpen)
+                await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
               }}
             />
           </nav>
