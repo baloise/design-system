@@ -50,8 +50,8 @@ export class Navigation implements ComponentInterface {
     }
 
     if (isPlatform('touch')) {
-      this.mainNavMobile = this.getMobileNavElement('.bal-nav__mainmobile')
-      this.mainNavFootMobile = this.getMobileNavElement('.bal-nav__footmobile')
+      this.mainNavMobile = this.getMainMobileNavElement()
+      this.mainNavFootMobile = this.getMainMobileFootElement()
       if (
         !this.mainNavMobile?.contains(event.target as Node) &&
         !this.burgerIconBtn?.contains(event.target as Node) &&
@@ -65,8 +65,12 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  getMobileNavElement(selector: string) {
-    return this.el.querySelector(selector) as HTMLElement
+  getMainMobileNavElement() {
+    return this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
+  }
+
+  getMainMobileFootElement() {
+    return this.el.querySelector('.bal-nav__footmobile') as HTMLElement
   }
 
   @Listen('resize', { target: 'window' })
@@ -98,8 +102,8 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.mainNavMobile = this.getMobileNavElement('.bal-nav__mainmobile')
-    this.mainNavFootMobile = this.getMobileNavElement('.bal-nav__footmobile')
+    this.mainNavMobile = this.getMainMobileNavElement()
+    this.mainNavFootMobile = this.getMainMobileFootElement()
     this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
     this.body = document.querySelector('body') as HTMLBodyElement
   }
@@ -236,15 +240,18 @@ export class Navigation implements ComponentInterface {
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
               onClick={async () => {
                 this.isMainBodyOpen = !this.isMainBodyOpen
-                //await this.toggleScrollingBody()
-                console.log('this.isMainBodyOpen BURGER ICON touch', this.isMainBodyOpen)
                 await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
               }}
             />
           </nav>
         </div>
         {this.isMainBodyOpen && (
-          <div class="bal-nav__mainmobile">
+          <div
+            class="bal-nav__mainmobile"
+            style={{
+              '--bal-nav__mainmobile-height': `${(window.innerHeight - 64) / 16}rem`,
+            }}
+          >
             <bal-list border in-main-nav={true} size="small">
               {this.levels.map(meta => (
                 <bal-list-item accordion>

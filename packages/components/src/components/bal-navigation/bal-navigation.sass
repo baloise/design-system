@@ -1,3 +1,4 @@
+$mainMobileHeight: var(--bal-nav__mainmobile-height, 100vh) !default
 +block(nav)
   position: absolute
   display: block
@@ -208,8 +209,8 @@
   .bal-nav__metamobile
     display: block
     background: var(--bal-color-primary-inverted)
-    height: 64px
-    max-height: 64px
+    height: 4rem
+    max-height: 4rem
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     z-index: 30
     +desktop
@@ -232,7 +233,7 @@
     display: block
     padding: 1.5rem 1rem 4rem
     z-index: 29
-    height: calc(100vh - 4rem)
+    height: $mainMobileHeight
     overflow-y: auto
     +tablet
       padding: 0 3rem
