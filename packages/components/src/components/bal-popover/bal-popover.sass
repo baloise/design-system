@@ -1,4 +1,4 @@
-
+$backdropHeight: var(--bal-popover__backdrop-height, 100vh) !default
 +block(popover)
   display: block
   +mobile
@@ -23,7 +23,7 @@
     z-index: 10
     position: fixed
     background-color: rgba($blue-dark, .8)
-    height: 100vh
+    height: $backdropHeight
     width: 100vw
 
   +element(content)

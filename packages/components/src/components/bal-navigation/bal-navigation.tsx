@@ -16,6 +16,7 @@ export class Navigation implements ComponentInterface {
   private mainNavFootMobile?: HTMLElement
   private burgerIconBtn?: HTMLBalButtonElement
   private body!: HTMLBodyElement
+  @State() mainMobileHeight = 0
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -50,8 +51,8 @@ export class Navigation implements ComponentInterface {
     }
 
     if (isPlatform('touch')) {
-      this.mainNavMobile = this.getMainMobileNavElement()
-      this.mainNavFootMobile = this.getMainMobileFootElement()
+      this.mainNavMobile = this.mainMobileNavElement as HTMLElement
+      this.mainNavFootMobile = this.mainMobileFootElement as HTMLElement
       if (
         !this.mainNavMobile?.contains(event.target as Node) &&
         !this.burgerIconBtn?.contains(event.target as Node) &&
@@ -65,17 +66,18 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  getMainMobileNavElement() {
+  private get mainMobileNavElement(): HTMLElement | null {
     return this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
   }
 
-  getMainMobileFootElement() {
+  private get mainMobileFootElement(): HTMLElement | null {
     return this.el.querySelector('.bal-nav__footmobile') as HTMLElement
   }
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
+    this.mainMobileHeight = this.getMainMobileHeight()
   }
 
   @Listen('scroll', { target: 'window', passive: true })
@@ -102,10 +104,11 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.mainNavMobile = this.getMainMobileNavElement()
-    this.mainNavFootMobile = this.getMainMobileFootElement()
+    this.mainNavMobile = this.mainMobileNavElement as HTMLElement
+    this.mainNavFootMobile = this.mainMobileFootElement as HTMLElement
     this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
     this.body = document.querySelector('body') as HTMLBodyElement
+    this.mainMobileHeight = this.getMainMobileHeight()
   }
 
   componentDidUpdate() {
@@ -125,6 +128,10 @@ export class Navigation implements ComponentInterface {
     if (levels) {
       this.levels = levels
     }
+  }
+
+  private getMainMobileHeight() {
+    return (window.innerHeight - 64) / 16
   }
 
   render() {
@@ -249,7 +256,7 @@ export class Navigation implements ComponentInterface {
           <div
             class="bal-nav__mainmobile"
             style={{
-              '--bal-nav__mainmobile-height': `${(window.innerHeight - 64) / 16}rem`,
+              '--bal-nav__mainmobile-height': `${this.mainMobileHeight}rem`,
             }}
           >
             <bal-list border in-main-nav={true} size="small">

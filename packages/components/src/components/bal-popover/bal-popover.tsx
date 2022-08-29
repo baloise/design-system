@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter } from '@stencil/core'
+import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { Props } from '../../types'
 import { Events } from '../../events'
@@ -6,6 +6,7 @@ import { BEM } from '../../utils/bem'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
+import { isPlatform } from '../../utils/platform'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -22,6 +23,10 @@ export class Popover {
   private body!: HTMLBodyElement
 
   @Element() element!: HTMLElement
+
+  @State() isTouch = isPlatform('touch')
+  @State() isInMainNav = false
+  @State() backdropHeight = 0
 
   /**
    * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
@@ -134,6 +139,13 @@ export class Popover {
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.isTouch = isPlatform('touch')
+    this.isInMainNav = this.footMobileNav !== null
+    this.backdropHeight = this.getBackdropHeight()
+  }
+
   componentDidRender() {
     if (this.popperInstance) {
       this.popperInstance.setOptions((options: any) => ({
@@ -149,7 +161,14 @@ export class Popover {
     }
   }
 
+  private get footMobileNav(): HTMLElement | null {
+    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
+  }
+
   componentDidLoad() {
+    this.isInMainNav = this.footMobileNav !== null
+    this.isTouch = isPlatform('touch')
+    this.backdropHeight = this.getBackdropHeight()
     if (this.triggerElement && this.menuElement) {
       this.body = document.querySelector('body') as HTMLBodyElement
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
@@ -266,6 +285,10 @@ export class Popover {
     return this.element.querySelector('bal-popover-content')
   }
 
+  private getBackdropHeight() {
+    return this.isInMainNav ? (window.innerHeight - (this.isTouch ? 64 : 48)) / 16 : window.innerHeight / 16
+  }
+
   render() {
     const block = BEM.block('popover')
 
@@ -289,6 +312,9 @@ export class Popover {
             }}
             class={{
               ...block.element('backdrop').class(this.backdrop && this.value),
+            }}
+            style={{
+              '--bal-popover__backdrop-height': `${this.backdropHeight}rem`,
             }}
           ></div>
         )}
