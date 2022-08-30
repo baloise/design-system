@@ -256,7 +256,7 @@ export class Navigation implements ComponentInterface {
           class="bal-nav__mainmobile"
           style={{
             '--bal-nav__mainmobile-height': `${this.mainMobileHeight}rem`,
-            'display': this.isMainBodyOpen ? 'block' : 'none',
+            'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}
         >
           <bal-list border in-main-nav={true} size="small">
@@ -310,7 +310,7 @@ export class Navigation implements ComponentInterface {
         <div
           class="bal-nav__footmobile"
           style={{
-            display: this.isMainBodyOpen ? 'block' : 'none',
+            display: this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}
         >
           <slot name="meta-mobile-foot" />
