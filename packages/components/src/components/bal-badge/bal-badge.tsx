@@ -50,7 +50,7 @@ export class Badge implements ComponentInterface {
             'bal-badge__icon': true,
             'is-hidden': !this.icon || this.size === 'small',
           }}
-          size={this.size === '' ? 'xsmall' : 'small'}
+          size={this.size === '' ? 'small' : ''}
           name={this.icon}
           color="white"
         ></bal-icon>

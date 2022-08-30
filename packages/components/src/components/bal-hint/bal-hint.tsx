@@ -119,7 +119,7 @@ export class Hint implements BalConfigObserver {
           aria-haspopup="true"
           role="button"
           name="info-circle"
-          size="small"
+          // size="small"
           onClick={() => this.toggle()}
         ></bal-icon>
       )

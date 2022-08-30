@@ -8,7 +8,7 @@
   align-items: center
   position: static
   pointer-events: visible
-  +iconSize(1rem)
+  +iconSize(18px)
   +fillSvg(var(--bal-color-blue))
   //
   // modifiers
@@ -20,7 +20,9 @@
     display: block
     position: static
     transition: transform .2s ease-in-out
-    +iconSize(1rem)
+    padding: 1px
+    // +iconSize(1rem)
+    +iconSize(18px)
     +modifier(turn)
       transform: rotate(180deg)
     & > svg
@@ -28,13 +30,13 @@
   //
   // sizes
   +modifier(is-xsmall)
-    +iconSize(0.625rem)
+    +iconSize(12px)
   +modifier(is-small)
-    +iconSize(0.75rem)
+    +iconSize(14px)
   +modifier(is-medium)
-    +iconSize(1.5rem)
+    +iconSize(26px)
   +modifier(is-large)
-    +iconSize(3rem)
+    +iconSize(50px)
   +modifier(is-xlarge)
     +iconSize(4rem)
   //
