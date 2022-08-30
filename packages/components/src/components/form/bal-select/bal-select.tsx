@@ -869,7 +869,6 @@ export class Select {
                 ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
               name="caret-down"
-              // size="xsmall"
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
               onClick={this.handleInputClick}
