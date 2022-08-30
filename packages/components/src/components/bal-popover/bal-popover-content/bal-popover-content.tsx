@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
 import { Props } from '../../../props'
 import { BEM } from '../../../utils/bem'
 
@@ -53,6 +53,13 @@ export class PopoverContent {
    */
   @Prop() mobileTop = false
 
+  @State() contentHeightOnTop = 0
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.contentHeightOnTop = window.innerHeight - 64
+  }
+
   get innerStyle() {
     let scrollable = {}
 
@@ -71,6 +78,9 @@ export class PopoverContent {
   get contentStyle() {
     let contentWidth = {}
     let contentMinWidth = {}
+    const contentHeightOnTopNav = {
+      '--bal-popover__content-height-top-nav': `${this.contentHeightOnTop / 16}rem`,
+    }
 
     if (this.contentWidth > 0) {
       contentWidth = { 'max-width': `${this.contentWidth}px` }
@@ -83,7 +93,12 @@ export class PopoverContent {
     return {
       ...contentWidth,
       ...contentMinWidth,
+      ...contentHeightOnTopNav,
     }
+  }
+
+  componentDidLoad() {
+    this.contentHeightOnTop = window.innerHeight - 64
   }
 
   render() {

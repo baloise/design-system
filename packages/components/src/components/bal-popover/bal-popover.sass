@@ -1,4 +1,5 @@
 $backdropHeight: var(--bal-popover__backdrop-height, 100vh) !default
+$contentHeightOnTop: var(--bal-popover__content-height-top-nav, 100vh) !default
 +block(popover)
   display: block
   +mobile
@@ -67,7 +68,7 @@ $backdropHeight: var(--bal-popover__backdrop-height, 100vh) !default
       border-top-right-radius: 0
     +modifier(on-top)
       border-top: 1px solid var(--bal-color-grey-2)
-      height: calc(100vh - 4rem)
+      height: $contentHeightOnTop
       overflow-y: auto
     +modifier(color-grey)
       background: var(--bal-color-grey-2)
