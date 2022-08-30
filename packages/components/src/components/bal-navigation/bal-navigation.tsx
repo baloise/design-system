@@ -252,67 +252,69 @@ export class Navigation implements ComponentInterface {
             />
           </nav>
         </div>
-        {this.isMainBodyOpen && (
-          <div
-            class="bal-nav__mainmobile"
-            style={{
-              '--bal-nav__mainmobile-height': `${this.mainMobileHeight}rem`,
-            }}
-          >
-            <bal-list border in-main-nav={true} size="small">
-              {this.levels.map(meta => (
-                <bal-list-item accordion>
-                  <bal-list-item-accordion-head icon="nav-go-down">
-                    <bal-list-item-content>
-                      <bal-list-item-title>{meta.label}</bal-list-item-title>
-                    </bal-list-item-content>
-                  </bal-list-item-accordion-head>
-                  <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
-                    <div>
-                      {meta.link && (
-                        <div class="bal-nav__mainmobile__link">
-                          <a href={meta.link}>{meta.linkLabel}</a>
-                        </div>
-                      )}
-                      <bal-list border in-main-nav={true} class="pt-4" size="small">
-                        {meta.subLevels?.map(main => {
-                          return main.isTabLink ? (
-                            <bal-list-item sub-accordion-item href={main.link} target={main.target}>
+        <div
+          class="bal-nav__mainmobile"
+          style={{
+            '--bal-nav__mainmobile-height': `${this.mainMobileHeight}rem`,
+            'display': this.isMainBodyOpen ? 'block' : 'none',
+          }}
+        >
+          <bal-list border in-main-nav={true} size="small">
+            {this.levels.map(meta => (
+              <bal-list-item accordion>
+                <bal-list-item-accordion-head icon="nav-go-down">
+                  <bal-list-item-content>
+                    <bal-list-item-title>{meta.label}</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
+                  <div>
+                    {meta.link && (
+                      <div class="bal-nav__mainmobile__link">
+                        <a href={meta.link}>{meta.linkLabel}</a>
+                      </div>
+                    )}
+                    <bal-list border in-main-nav={true} class="pt-4" size="small">
+                      {meta.subLevels?.map(main => {
+                        return main.isTabLink ? (
+                          <bal-list-item sub-accordion-item href={main.link} target={main.target}>
+                            <bal-list-item-content>
+                              <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
+                            </bal-list-item-content>
+                          </bal-list-item>
+                        ) : (
+                          <bal-list-item accordion sub-accordion-item>
+                            <bal-list-item-accordion-head icon="nav-go-down">
                               <bal-list-item-content>
                                 <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
                               </bal-list-item-content>
-                            </bal-list-item>
-                          ) : (
-                            <bal-list-item accordion sub-accordion-item>
-                              <bal-list-item-accordion-head icon="nav-go-down">
-                                <bal-list-item-content>
-                                  <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
-                                </bal-list-item-content>
-                              </bal-list-item-accordion-head>
-                              <bal-list-item-accordion-body>
-                                <bal-navigation-menu
-                                  link-href={main.link}
-                                  link-name={main.linkLabel}
-                                  target={main.target}
-                                  elements={main.subLevels}
-                                />
-                              </bal-list-item-accordion-body>
-                            </bal-list-item>
-                          )
-                        })}
-                      </bal-list>
-                    </div>
-                  </bal-list-item-accordion-body>
-                </bal-list-item>
-              ))}
-            </bal-list>
-          </div>
-        )}
-        {this.isMainBodyOpen && (
-          <div class="bal-nav__footmobile">
-            <slot name="meta-mobile-foot" />
-          </div>
-        )}
+                            </bal-list-item-accordion-head>
+                            <bal-list-item-accordion-body>
+                              <bal-navigation-menu
+                                link-href={main.link}
+                                link-name={main.linkLabel}
+                                target={main.target}
+                                elements={main.subLevels}
+                              />
+                            </bal-list-item-accordion-body>
+                          </bal-list-item>
+                        )
+                      })}
+                    </bal-list>
+                  </div>
+                </bal-list-item-accordion-body>
+              </bal-list-item>
+            ))}
+          </bal-list>
+        </div>
+        <div
+          class="bal-nav__footmobile"
+          style={{
+            display: this.isMainBodyOpen ? 'block' : 'none',
+          }}
+        >
+          <slot name="meta-mobile-foot" />
+        </div>
         <slot></slot>
       </Host>
     )
