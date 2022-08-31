@@ -64,7 +64,7 @@ export const TagCardCentered = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-card class="mt-4">
-  <bal-tag v-bind="args" position="center">{{ args.content }}</bal-tag>
+  <bal-tag v-bind="args">{{ args.content }}</bal-tag>
   <bal-card-title>Title</bal-card-title>
   <bal-card-content>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -77,6 +77,7 @@ TagCardCentered.args = {
   light: false,
   size: 'medium',
   closable: false,
+  position: 'center',
 }
 TagCardCentered.parameters = { ...component.sourceCode(TagCardCentered) }
 

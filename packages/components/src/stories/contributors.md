@@ -101,6 +101,12 @@
     </h2>
     <h4>Flapmax</h4>
   </a>
+  <a href="https://github.com/whvneo" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/17461225?v=4" alt="whvneo" style="width: 64px;">
+    </h2>
+    <h4>whvneo</h4>
+  </a>
   <a href="https://github.com/aymenfurter" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/20464460?v=4" alt="aymenfurter" style="width: 64px;">
@@ -142,12 +148,6 @@
       <img src="https://avatars.githubusercontent.com/u/39954544?v=4" alt="jochenpilger" style="width: 64px;">
     </h2>
     <h4>jochenpilger</h4>
-  </a>
-  <a href="https://github.com/whvneo" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/17461225?v=4" alt="whvneo" style="width: 64px;">
-    </h2>
-    <h4>whvneo</h4>
   </a>
 </div>
  
