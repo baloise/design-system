@@ -1,3 +1,6 @@
+:root
+  --bal-nav-main-mobile-height: 100vh
+
 +block(nav)
   position: absolute
   display: block
@@ -208,8 +211,8 @@
   .bal-nav__metamobile
     display: block
     background: var(--bal-color-primary-inverted)
-    height: 64px
-    max-height: 64px
+    height: 4rem
+    max-height: 4rem
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     z-index: 30
     +desktop
@@ -228,10 +231,12 @@
       > div
         display: flex
         gap: .5rem
-  .bal-nav__mainmobile
+  .bal-nav__main-mobile
     display: block
     padding: 1.5rem 1rem 4rem
     z-index: 29
+    height: var(--bal-nav-main-mobile-height)
+    overflow-y: auto
     +tablet
       padding: 0 3rem
     +desktop
@@ -269,7 +274,7 @@
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem
-  .bal-nav__footmobile
+  .bal-nav__foot-mobile
     position: fixed
     bottom: 0
     left: 0
@@ -283,9 +288,19 @@
       align-items: center
       justify-content: center
       gap: .5rem
+  .bal-navigation-popover__button-white
+    .button
+      background-color: var(--bal-color-background)
+      border-color: var(--bal-color-background)
+  [bal-popover-trigger]
+    z-index: 0
+
   +element(popover)
     +element(head)
       display: flex
       align-items: center
       justify-content: space-between
       margin-bottom: .75rem
+    .bal-popover__backdrop
+      +desktop()
+        top: 3rem
