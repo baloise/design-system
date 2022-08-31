@@ -79,7 +79,7 @@ export class PopoverContent {
     let contentWidth = {}
     let contentMinWidth = {}
     const contentHeightOnTopNav = {
-      '--bal-popover__content-height-top-nav': `${this.contentHeightOnTop / 16}rem`,
+      '--bal-popover-content-height-top-nav': `${this.contentHeightOnTop / 16}rem`,
     }
 
     if (this.contentWidth > 0) {

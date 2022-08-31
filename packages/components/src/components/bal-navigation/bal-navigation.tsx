@@ -62,11 +62,11 @@ export class Navigation implements ComponentInterface {
   }
 
   private get mainMobileNavElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__mainmobile') as HTMLElement
+    return this.el.querySelector('.bal-nav__main-mobile') as HTMLElement
   }
 
   private get mainMobileFootElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__footmobile') as HTMLElement
+    return this.el.querySelector('.bal-nav__foot-mobile') as HTMLElement
   }
 
   @Listen('resize', { target: 'window' })
@@ -249,7 +249,7 @@ export class Navigation implements ComponentInterface {
 
         <div class="bal-nav__metamobile">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
-            <a href={this.logoPath} class="bal-nav__mainmobile__logo">
+            <a href={this.logoPath} class="bal-nav__main-mobile__logo">
               <bal-logo color="blue" size="small"></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">
@@ -265,9 +265,9 @@ export class Navigation implements ComponentInterface {
           </nav>
         </div>
         <div
-          class="bal-nav__mainmobile"
+          class="bal-nav__main-mobile"
           style={{
-            '--bal-nav__mainmobile-height': `${this.mainMobileHeight}rem`,
+            '--bal-nav-main-mobile-height': `${this.mainMobileHeight}rem`,
             'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}
         >
@@ -282,7 +282,7 @@ export class Navigation implements ComponentInterface {
                 <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
                   <div>
                     {meta.link && (
-                      <div class="bal-nav__mainmobile__link">
+                      <div class="bal-nav__main-mobile__link">
                         <a href={meta.link}>{meta.linkLabel}</a>
                       </div>
                     )}
@@ -320,7 +320,7 @@ export class Navigation implements ComponentInterface {
           </bal-list>
         </div>
         <div
-          class="bal-nav__footmobile"
+          class="bal-nav__foot-mobile"
           style={{
             display: this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}

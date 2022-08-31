@@ -18,7 +18,6 @@ export class Popover {
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
-  private body!: HTMLBodyElement
 
   @Element() element!: HTMLElement
 
@@ -175,7 +174,6 @@ export class Popover {
     this.isTouch = isPlatform('touch')
     this.backdropHeight = this.getBackdropHeight()
     if (this.triggerElement && this.menuElement) {
-      this.body = document.querySelector('body') as HTMLBodyElement
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
         placement: this.tooltip ? 'bottom' : this.position,
         modifiers: [this.modifierOffset, this.modifierPreventOverflow],
@@ -313,7 +311,7 @@ export class Popover {
               ...block.element('backdrop').class(this.backdrop && this.value),
             }}
             style={{
-              '--bal-popover__backdrop-height': `${this.backdropHeight}rem`,
+              '--bal-popover-backdrop-height': `${this.backdropHeight}rem`,
             }}
           ></div>
         )}

@@ -1,4 +1,6 @@
-$mainMobileHeight: var(--bal-nav__mainmobile-height, 100vh) !default
+:root
+  --bal-nav-main-mobile-height: 100vh
+
 +block(nav)
   position: absolute
   display: block
@@ -229,11 +231,11 @@ $mainMobileHeight: var(--bal-nav__mainmobile-height, 100vh) !default
       > div
         display: flex
         gap: .5rem
-  .bal-nav__mainmobile
+  .bal-nav__main-mobile
     display: block
     padding: 1.5rem 1rem 4rem
     z-index: 29
-    height: $mainMobileHeight
+    height: var(--bal-nav-main-mobile-height)
     overflow-y: auto
     +tablet
       padding: 0 3rem
@@ -272,7 +274,7 @@ $mainMobileHeight: var(--bal-nav__mainmobile-height, 100vh) !default
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem
-  .bal-nav__footmobile
+  .bal-nav__foot-mobile
     position: fixed
     bottom: 0
     left: 0
