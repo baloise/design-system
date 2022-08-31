@@ -1566,10 +1566,6 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
-          * If `true` a outside click can close the popover
-         */
-        "closable": boolean;
-        /**
           * Closes the popover
          */
         "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
@@ -5010,10 +5006,6 @@ declare namespace LocalJSX {
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
-        /**
-          * If `true` a outside click can close the popover
-         */
-        "closable"?: boolean;
         /**
           * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
          */

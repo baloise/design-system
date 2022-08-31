@@ -81,11 +81,6 @@ export class Popover {
   @Prop() mobileTop = false
 
   /**
-   * If `true` a outside click can close the popover
-   */
-  @Prop() closable = true
-
-  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
@@ -117,13 +112,13 @@ export class Popover {
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (this.value && this.closable) {
+    if (this.value) {
       if (!this.element.contains(event.target as Node)) {
-        await this.dismiss()
+        this.value = false
       }
 
       if (this.backdropElement?.isEqualNode(event.target as Node)) {
-        await this.dismiss()
+        this.value = false
       }
     }
   }
