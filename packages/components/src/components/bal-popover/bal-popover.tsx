@@ -5,7 +5,6 @@ import { Events } from '../../events'
 import { BEM } from '../../utils/bem'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
-import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
 import { isPlatform } from '../../utils/platform'
 
 export interface PopoverPresentOptions {
@@ -209,7 +208,6 @@ export class Popover {
   @Method()
   async present(options: PopoverPresentOptions = { force: false }) {
     if (!this.value || options.force) {
-      this.mobileTop && (await toggleScrollingBody({ bodyEl: this.body, value: true }))
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
       this.balPopoverPrepare.emit(this.popoverId)
@@ -230,7 +228,6 @@ export class Popover {
   @Method()
   async dismiss(options: PopoverPresentOptions = { force: false }) {
     if (this.value || options.force) {
-      this.mobileTop && (await toggleScrollingBody({ bodyEl: this.body, value: false }))
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
       this.value = false

@@ -10,13 +10,12 @@ import { Events } from '../../types'
 })
 export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
+
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
-  private mainNavMobile?: HTMLElement
-  private mainNavFootMobile?: HTMLElement
-  private burgerIconBtn?: HTMLBalButtonElement
   private body!: HTMLBodyElement
+
   @State() mainMobileHeight = 0
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
@@ -101,9 +100,6 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.mainNavMobile = this.mainMobileNavElement as HTMLElement
-    this.mainNavFootMobile = this.mainMobileFootElement as HTMLElement
-    this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
     this.body = document.querySelector('body') as HTMLBodyElement
     this.mainMobileHeight = this.getMainMobileHeight()
 
@@ -117,6 +113,8 @@ export class Navigation implements ComponentInterface {
   private listenToPopoverChangeEvent = (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
+    toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen })
+
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
     }

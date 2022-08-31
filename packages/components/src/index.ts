@@ -25,6 +25,7 @@ export * from './components/form/bal-select/utils/bal-option.util'
 export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './helpers/helpers'
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { scrollToFirstInvalidField } from './utils/form'
+export { toggleScrollingBody } from './utils/toggle-scrolling-body'
 
 /**
  * Controllers
