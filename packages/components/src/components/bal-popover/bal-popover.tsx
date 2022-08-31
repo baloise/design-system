@@ -10,7 +10,6 @@ import { isPlatform } from '../../utils/platform'
 
 export interface PopoverPresentOptions {
   force: boolean
-  noEmit: boolean
 }
 
 @Component({
@@ -84,14 +83,19 @@ export class Popover {
   @Prop() mobileTop = false
 
   /**
+   * If `true` a outside click can close the popover
+   */
+  @Prop() closable = true
+
+  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected async valueChanged(newValue: boolean, oldValue: boolean) {
     if (newValue === true && newValue !== oldValue) {
-      this.present({ force: true, noEmit: true })
+      this.present({ force: true })
     } else {
-      this.dismiss({ force: true, noEmit: true })
+      this.dismiss({ force: true })
     }
   }
 
@@ -115,12 +119,14 @@ export class Popover {
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as Node) && this.value) {
-      await this.toggle()
-    }
+    if (this.value && this.closable) {
+      if (!this.element.contains(event.target as Node)) {
+        await this.dismiss()
+      }
 
-    if (this.backdropElement?.isEqualNode(event.target as Node)) {
-      await this.dismiss()
+      if (this.backdropElement?.isEqualNode(event.target as Node)) {
+        await this.dismiss()
+      }
     }
   }
 
@@ -201,7 +207,7 @@ export class Popover {
    * Open the popover
    */
   @Method()
-  async present(options: PopoverPresentOptions = { force: false, noEmit: false }) {
+  async present(options: PopoverPresentOptions = { force: false }) {
     if (!this.value || options.force) {
       this.mobileTop && (await toggleScrollingBody({ bodyEl: this.body, value: true }))
       this.menuElement?.setAttribute('data-show', '')
@@ -214,9 +220,7 @@ export class Popover {
       }))
       this.updatePopper()
 
-      if (!options.noEmit) {
-        this.balChange.emit(this.value)
-      }
+      this.balChange.emit(this.value)
     }
   }
 
@@ -224,7 +228,7 @@ export class Popover {
    * Closes the popover
    */
   @Method()
-  async dismiss(options: PopoverPresentOptions = { force: false, noEmit: false }) {
+  async dismiss(options: PopoverPresentOptions = { force: false }) {
     if (this.value || options.force) {
       this.mobileTop && (await toggleScrollingBody({ bodyEl: this.body, value: false }))
       this.menuElement?.removeAttribute('data-show')
@@ -236,9 +240,7 @@ export class Popover {
       }))
       this.updatePopper()
 
-      if (!options.noEmit) {
-        this.balChange.emit(this.value)
-      }
+      this.balChange.emit(this.value)
     }
   }
 
@@ -246,7 +248,7 @@ export class Popover {
    * Open or closes the popover
    */
   @Method()
-  async toggle(options: PopoverPresentOptions = { force: false, noEmit: false }) {
+  async toggle(options: PopoverPresentOptions = { force: false }) {
     if (this.value) {
       await this.dismiss(options)
     } else {

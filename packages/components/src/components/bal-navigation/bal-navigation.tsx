@@ -3,6 +3,7 @@ import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
 import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
+import { Events } from '../../types'
 
 @Component({
   tag: 'bal-navigation',
@@ -51,19 +52,14 @@ export class Navigation implements ComponentInterface {
     }
 
     if (isPlatform('touch')) {
-      this.mainNavMobile = this.mainMobileNavElement as HTMLElement
-      this.mainNavFootMobile = this.mainMobileFootElement as HTMLElement
-      if (
-        !this.mainNavMobile?.contains(event.target as Node) &&
-        !this.burgerIconBtn?.contains(event.target as Node) &&
-        !this.mainNavFootMobile?.contains(event.target as Node) &&
-        this.isMainBodyOpen &&
-        this.mainNavMobile &&
-        this.mainNavFootMobile
-      ) {
+      if (this.metaMobileActionsElement?.contains(event.target as Node)) {
         this.isMainBodyOpen = false
       }
     }
+  }
+
+  private get metaMobileActionsElement(): HTMLElement | null {
+    return this.el.querySelector('.bal-nav__metamobile__actions') as HTMLElement
   }
 
   private get mainMobileNavElement(): HTMLElement | null {
@@ -100,6 +96,7 @@ export class Navigation implements ComponentInterface {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
+    this.metaMobileActionsElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidLoad() {
@@ -109,10 +106,20 @@ export class Navigation implements ComponentInterface {
     this.burgerIconBtn = this.el.querySelector("[slot='burger']") as HTMLBalButtonElement
     this.body = document.querySelector('body') as HTMLBodyElement
     this.mainMobileHeight = this.getMainMobileHeight()
+
+    this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidUpdate() {
     this.updateIndexes()
+  }
+
+  private listenToPopoverChangeEvent = (event: Event) => {
+    const customEvent = event as Events.BalPopoverChange
+    const isNavPopoverOpen = customEvent.detail
+    if (isNavPopoverOpen) {
+      this.isMainBodyOpen = false
+    }
   }
 
   private updateIndexes() {
@@ -132,6 +139,16 @@ export class Navigation implements ComponentInterface {
 
   private getMainMobileHeight() {
     return (window.innerHeight - 64) / 16
+  }
+
+  private onBurgerButtonClick = async (): Promise<void> => {
+    const popoverElements = this.metaMobileActionsElement?.querySelectorAll('bal-popover')
+    popoverElements?.forEach(popoverEl => {
+      popoverEl.value = false
+    })
+
+    this.isMainBodyOpen = !this.isMainBodyOpen
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
   }
 
   render() {
@@ -245,10 +262,7 @@ export class Navigation implements ComponentInterface {
               color={this.isMainBodyOpen ? 'primary' : 'light'}
               square={true}
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
-              onClick={async () => {
-                this.isMainBodyOpen = !this.isMainBodyOpen
-                await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
-              }}
+              onClick={() => this.onBurgerButtonClick()}
             />
           </nav>
         </div>

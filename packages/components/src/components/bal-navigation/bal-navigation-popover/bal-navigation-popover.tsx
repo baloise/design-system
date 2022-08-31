@@ -117,6 +117,7 @@ export class NavigationPopover implements ComponentInterface {
           backdrop={this.backdrop}
           position={this.position}
           offsetY={this.offsetY}
+          closable={false}
           mobile-top={this.mobileTop}
         >
           <bal-button

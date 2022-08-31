@@ -7,6 +7,16 @@ import {
   BalPopover,
   BalPopoverContent,
   BalButton,
+  BalCard,
+  BalStage,
+  BalStageBody,
+  BalStageBackLink,
+  BalButtonGroup,
+  BalNavigationPopover,
+  BalNavigationLevelBlock,
+  BalNavigationLevelMain,
+  BalNavigationLevelBlockItem,
+  BalHeading,
 } from '../../../../.storybook/vue/components'
 import { withContent } from '../../../stories/utils'
 
@@ -285,7 +295,7 @@ MetaWithLinks.args = {}
 MetaWithLinks.parameters = { ...component.sourceCode(MetaWithLinks) }
 
 export const WithStage = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalCard },
   setup: () => {
     return {
       args,
@@ -444,7 +454,21 @@ WithStage.args = {
 WithStage.parameters = { ...component.sourceCode(WithStage) }
 
 export const WithPopover = args => ({
-  components: { ...component.components, BalButton, BalPopover, BalPopoverContent },
+  components: {
+    ...component.components,
+    BalButton,
+    BalPopover,
+    BalPopoverContent,
+    BalStage,
+    BalStageBody,
+    BalStageBackLink,
+    BalButtonGroup,
+    BalNavigationPopover,
+    BalNavigationLevelBlock,
+    BalNavigationLevelMain,
+    BalNavigationLevelBlockItem,
+    BalHeading,
+  },
   setup: () => {
     return {
       args,
