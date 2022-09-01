@@ -18,16 +18,14 @@ export const toggleScrollingBody = async (options: ToggleScrollingBodyOptions) =
  * Blocks the scrolling on the body element
  */
 const blockScrollingBody = async (body: HTMLBodyElement) => {
-  //body.style.position = 'fixed'
-  //body.style.width = '100%'
   body.style.overflowY = 'hidden'
+  body.style.height = '100vh'
 }
 
 /**
  * Allows the scrolling on the body element
  */
 const allowScrollingBody = async (body: HTMLBodyElement) => {
-  //body.style.position = 'static'
-  //body.style.width = 'auto'
   body.style.overflowY = 'visible'
+  body.style.height = 'auto'
 }
