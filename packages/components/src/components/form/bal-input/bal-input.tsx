@@ -222,7 +222,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string = undefined
+  @Prop({ mutable: true, reflect: true }) value?: string = undefined
 
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.

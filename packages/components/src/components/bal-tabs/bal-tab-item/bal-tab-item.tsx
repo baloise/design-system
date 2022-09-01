@@ -12,7 +12,7 @@ export class TabItem {
   /**
    * Tells if this route is active and overrides the bal-tabs value property.
    */
-  @Prop() active = false
+  @Prop({ reflect: true }) active = false
 
   /**
    * This is the key of the tab.
@@ -27,32 +27,32 @@ export class TabItem {
   /**
    * Link to path.
    */
-  @Prop() href = ''
+  @Prop({ reflect: true }) href = ''
 
   /**
    * If `true` a small red bubble is added to the tab.
    */
-  @Prop() bubble: boolean | string = false
+  @Prop({ reflect: true }) bubble: boolean | string = false
 
   /**
    * If `true` the tab is disabled.
    */
-  @Prop() disabled = false
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * If `true` the step is marked as done.
    */
-  @Prop() done = false
+  @Prop({ reflect: true }) done = false
 
   /**
    * If `true` the step is hidden.
    */
-  @Prop() hidden = false
+  @Prop({ reflect: true }) hidden = false
 
   /**
    * If `true` the step is marked as failed.
    */
-  @Prop() failed = false
+  @Prop({ reflect: true }) failed = false
 
   /**
    * Tell's if the linking is done by a router.
@@ -62,7 +62,7 @@ export class TabItem {
   /**
    * Tab icon not available for the steps.
    */
-  @Prop() icon?: string = undefined
+  @Prop({ reflect: true }) icon?: string = undefined
 
   /**
    * Emitted when the link element has clicked
