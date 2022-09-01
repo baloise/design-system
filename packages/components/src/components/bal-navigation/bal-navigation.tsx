@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
+//import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
 import { Events } from '../../types'
 
 @Component({
@@ -61,18 +61,11 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('.bal-nav__metamobile__actions') as HTMLElement
   }
 
-  private get mainMobileNavElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__main-mobile') as HTMLElement
-  }
-
-  private get mainMobileFootElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__foot-mobile') as HTMLElement
-  }
-
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
     this.mainMobileHeight = this.getMainMobileHeight()
+    this.isMainBodyOpen = false
   }
 
   @Listen('scroll', { target: 'window', passive: true })
@@ -113,7 +106,7 @@ export class Navigation implements ComponentInterface {
   private listenToPopoverChangeEvent = (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen })
+    //toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen })
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -146,7 +139,7 @@ export class Navigation implements ComponentInterface {
     })
 
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
+    //await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
   }
 
   render() {
