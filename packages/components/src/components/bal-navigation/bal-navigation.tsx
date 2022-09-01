@@ -64,7 +64,7 @@ export class Navigation implements ComponentInterface {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
-    this.mainMobileHeight = this.getMainMobileHeight()
+    this.mainMobileHeight = this.getMaxHeight()
     this.isMainBodyOpen = false
   }
 
@@ -94,7 +94,7 @@ export class Navigation implements ComponentInterface {
   componentDidLoad() {
     this.previousY = window.scrollY
     this.body = document.querySelector('body') as HTMLBodyElement
-    this.mainMobileHeight = this.getMainMobileHeight()
+    this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
   }
@@ -106,7 +106,7 @@ export class Navigation implements ComponentInterface {
   private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    await toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen })
+    await toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen, height: this.getMaxHeight() })
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -128,7 +128,7 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  private getMainMobileHeight() {
+  private getMaxHeight() {
     return (window.innerHeight - 64) / 16
   }
 
@@ -139,7 +139,7 @@ export class Navigation implements ComponentInterface {
     })
 
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
   }
 
   render() {
