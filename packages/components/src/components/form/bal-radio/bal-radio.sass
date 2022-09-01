@@ -12,6 +12,9 @@
   +element(inner)
     display: flex
     flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    flex-wrap: wrap
     gap: var(--bal-space-normal)
     //
     // transform the radios into buttons
@@ -22,7 +25,7 @@
       gap: var(--bal-space-x-small)
       +tablet
         flex-direction: row
-    &--select-button#{&}--expanded
+    +modifier(expanded)
       .bal-radio
         flex: 1
     &--select-button#{&}--vertical
@@ -91,6 +94,7 @@
     &::after
       display: inline-block
       position: absolute
+      top: 0px
       left: 0
       height: 24px
       width: 24px

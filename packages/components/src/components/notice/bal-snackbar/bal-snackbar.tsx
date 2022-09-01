@@ -124,7 +124,7 @@ export class Snackbar {
           <div class="bal-snackbar__header">
             <span class="icon-text is-small">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
-                <bal-icon name={this.icon} color={'primary'} size="small"></bal-icon>
+                <bal-icon name={this.icon} color={'primary'}></bal-icon>
               </span>
               <bal-heading level="h5" space="none">
                 {this.subject}
