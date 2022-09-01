@@ -39,6 +39,7 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { BEM } from '../../../utils/bem'
+
 @Component({
   tag: 'bal-input',
 })
@@ -338,61 +339,65 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     }
 
     if (input) {
-      switch (this.mask) {
-        case 'contract-number': {
-          this.inputValue = input.value.replace(/\D/g, '')
-          if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+      if (input.value) {
+        switch (this.mask) {
+          case 'contract-number': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+            }
+            input.value = formatPolicy(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          input.value = formatPolicy(this.inputValue)
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          case 'offer-number': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+            }
+            input.value = formatOffer(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          break
-        }
-        case 'offer-number': {
-          this.inputValue = input.value.replace(/\D/g, '')
-          if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-          }
-          input.value = formatOffer(this.inputValue)
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-          }
-          break
-        }
-        case 'claim-number': {
-          this.inputValue = input.value.replace(/[^\dX]/g, '')
-          const inputParts = [
-            this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-          ].filter(val => val.length > 0)
-          switch (inputParts.length) {
-            case 1:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
-              break
-            case 2:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-              break
-            default:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
-                /\D/g,
-                '',
-              )}`
-          }
-          if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-          }
-          input.value = formatClaim(this.inputValue)
+          case 'claim-number': {
+            this.inputValue = input.value.replace(/[^\dX]/g, '')
+            const inputParts = [
+              this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+            ].filter(val => val.length > 0)
+            switch (inputParts.length) {
+              case 1:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
+                break
+              case 2:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+                break
+              default:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
+                  /\D/g,
+                  '',
+                )}`
+            }
+            if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+            }
+            input.value = formatClaim(this.inputValue)
 
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          break
+          default:
+            this.inputValue = input.value
         }
-        default:
-          this.inputValue = input.value
+      } else {
+        this.inputValue = input.value
       }
     }
 
