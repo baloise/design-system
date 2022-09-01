@@ -18,7 +18,7 @@ export const config: Config = {
         {
           src: 'components.d.ts',
         },
-        { src: '../../fonts/src/assets', dest: 'assets/fonts', warn: true },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
   ],

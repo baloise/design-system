@@ -33,12 +33,11 @@
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
-  "styles": "./dist/styles.css",
+  "types": "./dist/types/index.d.ts",
+  "styles": "./css/design-system-table.css",
   "files": [
     "dist/",
     "css/",
-    "src/",
     "scss/"
   ],
   "dependencies": {

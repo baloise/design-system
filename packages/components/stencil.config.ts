@@ -38,7 +38,7 @@ export const config: Config = {
       copy: [
         { src: 'stories/assets/css', dest: 'assets/css', warn: true },
         { src: 'stories/assets/images', dest: 'assets/images', warn: true },
-        { src: '../../fonts/src/assets', dest: 'assets/fonts', warn: true },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
         {
           src: '../../components-table/css/design-system-table.css',
           dest: 'assets/css/design-system-table.css',

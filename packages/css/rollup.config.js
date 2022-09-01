@@ -1,3 +1,7 @@
 import config from '../../rollup.base'
 
-export default Object.assign(config)
+export default Object.assign(
+  config({
+    styleOutput: 'css/baloise-design-system.css',
+  }),
+)

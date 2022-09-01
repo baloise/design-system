@@ -30,16 +30,16 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:scss && npm run build:bundle && npm run build:index",
     "build:clean": "rimraf scss/generated",
-    "build:index": "rimraf dist/index*",
+    "build:index": "rimraf dist",
     "build:scss": "node ../../.build/generate-css-utils.js",
     "build:bundle": "rollup --config rollup.config.js",
     "serve": "npm run serve:fonts && npm run serve:http",
-    "serve:fonts": "copyfiles --flat ../fonts/src/assets/* assets/fonts",
+    "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "scss/baloise-design-system.sass",
-  "style": "dist/style.css",
+  "style": "css/baloise-design-system.css",
   "files": [
     "css/",
     "scss/"

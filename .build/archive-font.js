@@ -31,7 +31,7 @@ const main = async () => {
 
   archive.pipe(output);
 
-  archive.glob("*", { cwd: path.join(PACKAGE, "src/assets") });
+  archive.glob("*", { cwd: path.join(PACKAGE, "lib") });
 
   archive.finalize();
 };

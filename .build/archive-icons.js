@@ -31,7 +31,7 @@ const main = async () => {
 
   archive.pipe(output)
 
-  archive.glob('*.svg', { cwd: path.join(PACKAGE, 'src/assets') })
+  archive.glob('*.svg', { cwd: path.join(PACKAGE, 'svg') })
   archive.finalize()
 }
 

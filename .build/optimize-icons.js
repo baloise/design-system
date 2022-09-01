@@ -54,7 +54,7 @@ const readSVG = async (name, filePath) => {
 const main = async () => {
   await log.title('icons: optimize')
 
-  const pathToSvgs = path.join(PACKAGE, 'src/assets/*.svg')
+  const pathToSvgs = path.join(PACKAGE, 'svg/*.svg')
   let filePaths = []
   try {
     filePaths = await file.scan(pathToSvgs)
@@ -70,7 +70,7 @@ const main = async () => {
     const fileName = path.parse(filePath).name
     svgContent = await readSVG(fileName, filePath)
     contents.set(fileName, svgContent)
-    await file.save(path.join(PACKAGE, 'src/assets', `${fileName}.svg`), svgContent)
+    await file.save(path.join(PACKAGE, 'svg', `${fileName}.svg`), svgContent)
   }
 
   const lines = [
@@ -91,7 +91,7 @@ const main = async () => {
   )
 
   contents.forEach(async (value, key) => {
-    await file.save(path.join(PACKAGE, 'src/assets', `${key}.svg`), value, false)
+    await file.save(path.join(PACKAGE, 'svg', `${key}.svg`), value, false)
   })
 }
 
