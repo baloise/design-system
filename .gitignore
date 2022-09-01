@@ -96,7 +96,6 @@ cypress/videos
 # Design System
 storybook/
 packages/*/CHANGELOG.md
-package-lock.json-e
 
 packages/components/loader/
 packages/components/lib/
