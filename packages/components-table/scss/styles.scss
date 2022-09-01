@@ -1,7 +1,7 @@
-@import 'node_modules/@baloise/design-system-next-css/scss/baloise-design-system.utilities.sass';
-@import 'node_modules/ag-grid-community/dist/styles/mixins/_ag-theme-params.scss';
-@import 'node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss';
-@import 'node_modules/ag-grid-community/src/styles/ag-grid.scss';
+@import 'node_modules/@baloise/design-system-next-css/scss/baloise-design-system.utilities';
+@import 'node_modules/ag-grid-community/dist/styles/mixins/_ag-theme-params';
+@import 'node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin';
+@import 'node_modules/ag-grid-community/src/styles/ag-grid';
 
 .ag-theme-alpine {
   @include ag-theme-alpine(

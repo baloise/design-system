@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import { Props } from '@baloise/design-system-next-components'
+import type { Props } from '@baloise/design-system-next-components'
 import isNil from 'lodash.isnil'
 
 interface BalTableButtonRendererOptions {

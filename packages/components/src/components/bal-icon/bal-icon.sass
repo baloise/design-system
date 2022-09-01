@@ -1,6 +1,8 @@
-=iconSize($size: 1rem)
+=iconSize($size: 1rem, $p: 1px)
   width: $size
   max-height: $size
+  padding: $p
+
 
 +block(icon)
   display: flex
@@ -8,7 +10,7 @@
   align-items: center
   position: static
   pointer-events: visible
-  +iconSize(1rem)
+  +iconSize(18px, 2px)
   +fillSvg(var(--bal-color-blue))
   //
   // modifiers
