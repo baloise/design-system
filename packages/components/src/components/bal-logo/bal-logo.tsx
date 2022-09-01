@@ -109,7 +109,11 @@ export class Logo implements ComponentInterface {
         />
       </svg>
     )
-
+    // const svgElement = this.el.closest('svg')
+    // if (svgElement != null) {
+    //   svgElement.setAttribute('width', this.size === 'normal' ? '158px' : '100px')
+    //   svgElement.setAttribute('height', this.size === 'normal' ? '32px' : '22px')
+    // }
     return (
       <Host
         class={{
