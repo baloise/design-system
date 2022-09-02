@@ -19,17 +19,17 @@ export const config: Config = {
           warn: true,
         },
         {
-          src: '../../fonts/generated/fonts.zip',
+          src: '../../fonts/dist/fonts.zip',
           dest: 'assets/download/fonts.zip',
           warn: true,
         },
         {
-          src: '../../icons/generated/icons.zip',
+          src: '../../icons/dist/icons.zip',
           dest: 'assets/download/icons.zip',
           warn: true,
         },
         {
-          src: '../../icons/generated/icons.json',
+          src: '../../icons/dist/icons.json',
           dest: '../generated/icons.json',
           warn: true,
         },
