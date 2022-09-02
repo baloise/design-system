@@ -116,7 +116,7 @@ export class Navigation implements ComponentInterface {
   private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    await toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen, height: this.getMaxHeight() })
+    await toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen, mobile: isPlatform('touch') })
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -149,7 +149,7 @@ export class Navigation implements ComponentInterface {
     })
 
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, mobile: true })
   }
 
   render() {

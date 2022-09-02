@@ -1,7 +1,8 @@
 interface ToggleScrollingBodyOptions {
   bodyEl: HTMLBodyElement
   value: boolean
-  height: number
+  height?: number
+  mobile?: boolean
 }
 
 /**
@@ -9,7 +10,7 @@ interface ToggleScrollingBodyOptions {
  */
 export const toggleScrollingBody = async (options: ToggleScrollingBodyOptions) => {
   if (options.value) {
-    await blockScrollingBody(options.bodyEl, options.height)
+    await blockScrollingBody(options.bodyEl, options.height, options.mobile)
   } else {
     await allowScrollingBody(options.bodyEl)
   }
@@ -18,9 +19,9 @@ export const toggleScrollingBody = async (options: ToggleScrollingBodyOptions) =
 /**
  * Blocks the scrolling on the body element
  */
-const blockScrollingBody = async (body: HTMLBodyElement, height: number) => {
+const blockScrollingBody = async (body: HTMLBodyElement, height?: number, mobile?: boolean) => {
   body.style.overflowY = 'hidden'
-  body.style.height = `${height}rem`
+  body.style.height = mobile ? '100vh' : `${height}rem`
 }
 
 /**
