@@ -1,10 +1,11 @@
-export const LogoAnimationData = (_color = '#151f6d') => ({
+export const LogoAnimationData = (color = '#000d6e') => ({
   v: '5.9.4',
   fr: 25,
   ip: 0,
   op: 49,
   w: 2500,
   h: 550,
+  asdf: color,
   nm: 'BAL_Logo_for_Code',
   ddd: 0,
   assets: [

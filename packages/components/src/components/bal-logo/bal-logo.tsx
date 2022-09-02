@@ -47,7 +47,7 @@ export class Logo implements ComponentInterface {
         renderer: 'svg',
         loop: false,
         autoplay: true,
-        animationData: LogoAnimationData(),
+        animationData: LogoAnimationData(this.color),
       })
     }
   }
