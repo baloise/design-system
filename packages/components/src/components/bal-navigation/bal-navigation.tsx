@@ -203,7 +203,7 @@ export class Navigation implements ComponentInterface {
           >
             <div>
               <a href={this.logoPath} class="bal-nav__main-head-logo">
-                <bal-logo color="blue"></bal-logo>
+                <bal-logo color="blue" animation={true}></bal-logo>
               </a>
               <bal-tabs interface="navigation" float="right" spaceless value={this.selectedMainValue}>
                 {hasLevels &&
