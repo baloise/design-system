@@ -61,6 +61,10 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('.bal-nav__metamobile__actions') as HTMLElement
   }
 
+  private get metaDesktopEndElement(): HTMLElement | null {
+    return this.el.querySelector('bal-navigation-meta-end') as HTMLElement
+  }
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
@@ -93,6 +97,7 @@ export class Navigation implements ComponentInterface {
       this.mutationO = undefined
     }
     this.metaMobileActionsElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
+    this.metaDesktopEndElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidLoad() {
@@ -101,6 +106,7 @@ export class Navigation implements ComponentInterface {
     this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
+    this.metaDesktopEndElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidUpdate() {
