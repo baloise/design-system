@@ -74,6 +74,7 @@ export class Navigation implements ComponentInterface {
   @Listen('orientationchange', { target: 'window' })
   async orientationHandler() {
     this.isMainBodyOpen = false
+    this.dismissPopover()
   }
 
   @Listen('scroll', { target: 'window', passive: true })
@@ -116,7 +117,13 @@ export class Navigation implements ComponentInterface {
   private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    await toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen, mobile: isPlatform('touch') })
+    const target = event.target as HTMLBalPopoverElement
+
+    await toggleScrollingBody({
+      bodyEl: this.body,
+      value: isNavPopoverOpen,
+      height: target.mobileTop ? '100vh' : `${this.getMaxHeight()}rem`,
+    })
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -142,14 +149,17 @@ export class Navigation implements ComponentInterface {
     return (window.innerHeight - 64) / 16
   }
 
-  private onBurgerButtonClick = async (): Promise<void> => {
+  private dismissPopover() {
     const popoverElements = this.metaMobileActionsElement?.querySelectorAll('bal-popover')
     popoverElements?.forEach(popoverEl => {
       popoverEl.value = false
     })
+  }
 
+  private onBurgerButtonClick = async (): Promise<void> => {
+    this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, mobile: true })
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: `${this.getMaxHeight()}rem` })
   }
 
   render() {
