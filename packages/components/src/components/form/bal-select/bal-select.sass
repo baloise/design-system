@@ -35,7 +35,14 @@
     box-shadow: none
     padding-right: 1rem
     min-height: 3rem
-    +modifier(invalid)
+    +modifier(focused)
+      border-color: var(--bal-color-primary)
+    &:focus-within
+      border-color: var(--bal-color-primary)
+    &:not(#{&}--disabled):not(#{&}--invalid):hover
+      border-color: var(--bal-color-border-normal)
+      background-color: var(--bal-color-grey-1)
+    &--invalid:not(#{&}--disabled)
       border-color: var(--bal-color-border-danger)
       background: var(--bal-color-danger-light)
     +modifier(disabled)
@@ -51,13 +58,6 @@
         background-color: $grey-5 !important
         span
           color: var(--bal-color-primary-inverted) !important
-    +modifier(focused)
-      border-color: var(--bal-color-primary)
-    &:focus-within
-      border-color: var(--bal-color-primary)
-    &:hover
-      border-color: var(--bal-color-border-normal)
-      background-color: var(--bal-color-grey-1)
     //
     // trigger icon on the right
     +element(icon)

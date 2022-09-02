@@ -1395,6 +1395,10 @@ export namespace Components {
          */
         "activeColor": Props.BalButtonColor;
         /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow": boolean;
+        /**
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
@@ -1402,6 +1406,26 @@ export namespace Components {
           * If 'false', the closing button is not displayed
          */
         "closable": boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded": boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius": Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth": number;
         /**
           * Defines the heading of the popover
          */
@@ -1423,9 +1447,25 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop": boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY": number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position": Props.BalPopoverPlacement;
+        /**
           * Defines the size of the button
          */
         "size": Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -1522,13 +1562,17 @@ export namespace Components {
     }
     interface BalPopover {
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
         /**
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
+        /**
+          * If `true` a outside click can close the popover
+         */
+        "closable": boolean;
         /**
           * Closes the popover
          */
@@ -1541,6 +1585,10 @@ export namespace Components {
           * If `true` the popover shows on hover
          */
         "hover": boolean;
+        /**
+          * If `true` there will be no backdrop
+         */
+        "mobileTop": boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -1580,6 +1628,10 @@ export namespace Components {
          */
         "color": Props2.BalPopoverContentColor;
         /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
           * Define the max width of the popover content.
          */
         "contentWidth": number;
@@ -1587,6 +1639,18 @@ export namespace Components {
           * If `true` the content has a min width of 100%.
          */
         "expanded": boolean;
+        /**
+          * If `true` the content will have a divider line on top
+         */
+        "mobileTop": boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "radius": Props2.BalPopoverContentRadius;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
@@ -4772,6 +4836,10 @@ declare namespace LocalJSX {
          */
         "activeColor"?: Props.BalButtonColor;
         /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow"?: boolean;
+        /**
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
@@ -4779,6 +4847,26 @@ declare namespace LocalJSX {
           * If 'false', the closing button is not displayed
          */
         "closable"?: boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded"?: boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius"?: Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth"?: number;
         /**
           * Defines the heading of the popover
          */
@@ -4800,9 +4888,25 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY"?: number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position"?: Props.BalPopoverPlacement;
+        /**
           * Defines the size of the button
          */
         "size"?: Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -4907,13 +5011,17 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
-          * If `true` an little arrow is added, which points to the trigger element
+          * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow"?: boolean;
         /**
           * If `true` a backdrop is added
          */
         "backdrop"?: boolean;
+        /**
+          * If `true` a outside click can close the popover
+         */
+        "closable"?: boolean;
         /**
           * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
          */
@@ -4922,6 +5030,10 @@ declare namespace LocalJSX {
           * If `true` the popover shows on hover
          */
         "hover"?: boolean;
+        /**
+          * If `true` there will be no backdrop
+         */
+        "mobileTop"?: boolean;
         /**
           * Define the offset of the popover content.
          */
@@ -4958,6 +5070,10 @@ declare namespace LocalJSX {
          */
         "color"?: Props2.BalPopoverContentColor;
         /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
+        /**
           * Define the max width of the popover content.
          */
         "contentWidth"?: number;
@@ -4965,6 +5081,18 @@ declare namespace LocalJSX {
           * If `true` the content has a min width of 100%.
          */
         "expanded"?: boolean;
+        /**
+          * If `true` the content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "radius"?: Props2.BalPopoverContentRadius;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */

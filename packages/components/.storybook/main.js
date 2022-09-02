@@ -15,5 +15,6 @@ module.exports = {
   previewHead: head => `
     ${head}
     <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />`,
+    <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />`,
 }

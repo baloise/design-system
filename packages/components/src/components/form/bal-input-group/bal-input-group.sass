@@ -22,12 +22,15 @@
     padding-bottom: calc(0.5em - 5px)
     padding-top: calc(0.5em - 5px)
 
-  .bal-select__slot
+  .bal-select__control
     border: none
     min-height: 44px
 
   .bal-icon
     min-width: 48px
+
+  & > *:first-child.bal-select .bal-select__control
+    padding-left: 1rem
 
   & > *:first-child.bal-input
     .input
@@ -52,7 +55,8 @@
   &.is-hovered,
   &:hover
     &,
-    .input
+    .input,
+    .bal-select__control
       background: var(--bal-color-grey-1)
 
   +modifier(is-danger)

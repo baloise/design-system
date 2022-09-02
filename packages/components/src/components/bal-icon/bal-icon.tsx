@@ -46,6 +46,13 @@ export class Icon {
 
   private get svgContent() {
     if (balIcons && this.name && this.name.length > 0) {
+      // We are doing this to avoid breaking change.
+      if (this.name.startsWith('alert')) {
+        this.name = 'alert-triangle'
+      }
+      if (this.name.startsWith('info')) {
+        this.name = 'info-circle'
+      }
       const icon: string | undefined = (balIcons as { [key: string]: string })[
         `balIcon${upperFirst(camelCase(this.name))}`
       ]

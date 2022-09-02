@@ -67,7 +67,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickabl
                   ...stepItemButtonIndexEl.element('icon').class(),
                 }}
                 style={{ display: tab.done ? 'block' : 'none' }}
-                size={isPlatform('mobile') ? 'xsmall' : 'small'}
+                size={isPlatform('mobile') ? 'small' : ''}
                 color="white"
                 name="check"
               ></bal-icon>
