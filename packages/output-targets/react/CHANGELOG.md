@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.20.2](https://github.com/baloise/design-system/compare/v10.20.1...v10.20.2) (2022-09-02)
+
+**Note:** Version bump only for package @baloise/design-system-next-output-target-react
+
 ## [10.20.1](https://github.com/baloise/design-system/compare/v10.20.0...v10.20.1) (2022-09-01)
 
 **Note:** Version bump only for package @baloise/design-system-next-output-target-react
