@@ -138,3 +138,11 @@ export const NativeLink = args => ({
 })
 NativeLink.args = {}
 NativeLink.parameters = { ...component.sourceCode(NativeLink), controls: { exclude: excludedControls } }
+
+export const NativeAnimatedLink = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<a class="is-animated-link">Link</a>`,
+})
+NativeAnimatedLink.args = {}
+NativeAnimatedLink.parameters = { ...component.sourceCode(NativeAnimatedLink), controls: { exclude: excludedControls } }
