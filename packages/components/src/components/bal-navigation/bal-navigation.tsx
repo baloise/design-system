@@ -63,9 +63,12 @@ export class Navigation implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    console.log('RESIZE')
     this.isTransformed = false
     this.mainMobileHeight = this.getMaxHeight()
+  }
+
+  @Listen('orientationchange', { target: 'window' })
+  async orientationHandler() {
     this.isMainBodyOpen = false
   }
 
