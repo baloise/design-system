@@ -16,7 +16,7 @@ export class Navigation implements ComponentInterface {
   private previousY = 0
   private body!: HTMLBodyElement
 
-  @State() mainMobileHeight = 0
+  @State() mainMobileHeight = ''
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -122,7 +122,7 @@ export class Navigation implements ComponentInterface {
     await toggleScrollingBody({
       bodyEl: this.body,
       value: isNavPopoverOpen,
-      height: target.mobileTop ? '100vh' : `${this.getMaxHeight()}rem`,
+      height: target.mobileTop ? '100vh' : this.getMaxHeight(),
     })
 
     if (isNavPopoverOpen) {
@@ -146,11 +146,11 @@ export class Navigation implements ComponentInterface {
   }
 
   private getMaxHeight() {
-    return (window.innerHeight - 64) / 16
+    return `${(window.innerHeight - 64) / 16}rem`
   }
 
   private dismissPopover() {
-    const popoverElements = this.metaMobileActionsElement?.querySelectorAll('bal-popover')
+    const popoverElements = this.el.querySelectorAll('bal-popover')
     popoverElements?.forEach(popoverEl => {
       popoverEl.value = false
     })
@@ -159,7 +159,7 @@ export class Navigation implements ComponentInterface {
   private onBurgerButtonClick = async (): Promise<void> => {
     this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: `${this.getMaxHeight()}rem` })
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
   }
 
   render() {
@@ -280,7 +280,7 @@ export class Navigation implements ComponentInterface {
         <div
           class="bal-nav__main-mobile"
           style={{
-            '--bal-nav-main-mobile-height': `${this.mainMobileHeight}rem`,
+            '--bal-nav-main-mobile-height': this.mainMobileHeight,
             'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}
         >
