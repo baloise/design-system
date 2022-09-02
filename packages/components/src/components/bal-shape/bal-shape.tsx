@@ -52,7 +52,7 @@ export class Shape implements ComponentInterface {
         color = BaloiseDesignToken.color['yellow-3'].hex
         break
       default:
-        color = '#000000'
+        color = BaloiseDesignToken.color['grey-4'].hex
     }
     return color
   }
