@@ -24,8 +24,8 @@ const excludedControls = ['bottomRounded', 'download', 'isActive', 'name', 'rel'
 
 const Template = args => ({
   components: { ...component.components },
-  setup: () => ({ args }),
   template: `<bal-button v-bind="args">{{ args.content }}</bal-button>`,
+  setup: () => ({ args }),
 })
 
 export const Basic = Template.bind({})

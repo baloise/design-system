@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
 import { Props } from '../../../props'
 import { BEM } from '../../../utils/bem'
 
@@ -24,6 +24,11 @@ export class PopoverContent {
   @Prop() contentWidth = 0
 
   /**
+   * Define the min width of the popover content.
+   */
+  @Prop() contentMinWidth = 0
+
+  /**
    * Defines background color of the content.
    */
   @Prop() color: Props.BalPopoverContentColor = 'white'
@@ -32,6 +37,28 @@ export class PopoverContent {
    * If `true` the content has a min width of 100%.
    */
   @Prop() expanded = false
+
+  /**
+   * Defines border-radius of popover content.
+   */
+  @Prop() radius: Props.BalPopoverContentRadius = 'normal'
+
+  /**
+   * If `true` the popover does not have the shadow
+   */
+  @Prop() noShadow = false
+
+  /**
+   * If `true` the content will have a divider line on top
+   */
+  @Prop() mobileTop = false
+
+  @State() contentHeightOnTop = 0
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.contentHeightOnTop = window.innerHeight - 64
+  }
 
   get innerStyle() {
     let scrollable = {}
@@ -50,14 +77,28 @@ export class PopoverContent {
 
   get contentStyle() {
     let contentWidth = {}
+    let contentMinWidth = {}
+    const contentHeightOnTopNav = {
+      '--bal-popover-content-height-top-nav': `${this.contentHeightOnTop / 16}rem`,
+    }
 
     if (this.contentWidth > 0) {
       contentWidth = { 'max-width': `${this.contentWidth}px` }
     }
 
+    if (this.contentMinWidth > 0) {
+      contentMinWidth = { 'min-width': `${this.contentMinWidth}px` }
+    }
+
     return {
       ...contentWidth,
+      ...contentMinWidth,
+      ...contentHeightOnTopNav,
     }
+  }
+
+  componentDidLoad() {
+    this.contentHeightOnTop = window.innerHeight - 64
   }
 
   render() {
@@ -69,7 +110,10 @@ export class PopoverContent {
           ...block.class(),
           ...block.modifier('expanded').class(this.expanded),
           ...block.modifier('spaceless').class(this.spaceless),
+          ...block.modifier('no-shadow').class(this.noShadow),
+          ...block.modifier(`radius-${this.radius}`).class(),
           ...block.modifier(`color-${this.color}`).class(),
+          ...block.modifier('on-top').class(this.mobileTop),
         }}
         role="tooltip"
         style={this.contentStyle}
