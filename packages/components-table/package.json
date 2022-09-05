@@ -46,13 +46,16 @@
     "scss": "scss"
   },
   "devDependencies": {
-    "@baloise/design-system-next-css": "10.20.2",
-    "@baloise/design-system-next-components": "10.20.2"
+    "@baloise/design-system-next-components": "10.20.2",
+    "@baloise/design-system-next-css": "10.20.2"
   },
   "peerDependencies": {
-    "@baloise/design-system-next-css": "10.20.2",
     "@baloise/design-system-next-components": "10.20.2",
+    "@baloise/design-system-next-css": "10.20.2",
     "ag-grid-community": ">=25.2.1"
   },
-  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
+  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40",
+  "dependencies": {
+    "lodash.isnil": "^4.0.0"
+  }
 }

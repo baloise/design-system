@@ -11,7 +11,7 @@
     background: var(--bal-color-red-2)
   +modifier(is-yellow)
     background: var(--bal-color-yellow-2)
-    
+
   +block(stage-content)
     display: block
     position: static
@@ -67,8 +67,19 @@
             color: var(--bal-color-white)
             +fillSvg(var(--bal-color-white))
 
-      
+
   // Size Modifiers
+  +modifier(is-small)
+    +block(stage-content)
+      +block(stage-body)
+        min-height: 176px - 128px
+        +tablet
+          min-height: 240px - 128px
+        +desktop
+          justify-content: center
+          padding-top: 4rem
+          padding-bottom: 4rem
+          min-height: 392px - 128px
   +modifier(is-large)
     +block(stage-content)
       +block(stage-body)
@@ -80,7 +91,7 @@
           padding-top: 10rem
           padding-bottom: 10rem
           min-height: 840px
-          
+
   // Shape Modifier
   +modifier(has-shape)
     +block(stage-content)
@@ -89,7 +100,7 @@
         margin-bottom: 40px
       +desktop
         margin-bottom: 66px
-      +block(stage-body) 
+      +block(stage-body)
         & > *
           max-width: calc(100% - 66px)
           +tablet
@@ -107,4 +118,4 @@
           bottom: -66px
         @include from(1467px)
           right: calc((100vw - var(--bal-stage-container-width)) / 2)
-        
+
