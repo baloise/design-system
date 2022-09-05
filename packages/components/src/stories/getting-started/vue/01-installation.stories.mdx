@@ -22,7 +22,7 @@ Depending on your use case and preference, you can use Vue setup the application
 
 ## With the Baloise Template
 
-<img width="120px" src="https://github.com/baloise/vue-starter-kit/raw/master/src/assets/logo.svg" />
+<img width="260px" src="https://raw.githubusercontent.com/baloise/vue-starter-kit/master/logo-dark.svg" />
 
 The big advantage of using the template is that the Design System is already included.
 
@@ -40,12 +40,12 @@ npm install
 npm run dev
 ```
 
-## With create vue cli
+## With Vite
 
-Follow the instructions of the official Vue page [Quick Start - With Build Tools](https://staging.vuejs.org/guide/quick-start.html#with-build-tools)
+Follow the instructions of the official Vite page [Scaffolding Your First Vite Project](https://vitejs.dev/guide/)
 
 ```sh
-npm init vue@latest
+npm create vite@latest
 ```
 
 This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official
@@ -53,14 +53,8 @@ Vue project scaffolding tool. Below are the recommended prompts.
 
 ```sh
 ✔ Project name: … <your-project-name>
-✔ Add TypeScript? … Yes
-✔ Add JSX Support? … No
-✔ Add Vue Router for Single Page Application development? … Yes
-✔ Add Pinia for state management? … Yes
-✔ Add Cypress for testing? … Yes
-
-Scaffolding project in ./<your-project-name>...
-Done.
+✔ Select a framework? … Vue
+✔ Select a variant? … TypeScript
 ```
 
 Once the project is created, follow the instructions to install dependencies and start the dev server:
@@ -73,8 +67,29 @@ npm run dev
 
 > **Recommendations**
 >
-> - Install **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+> - Install **SASS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 > - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+Install the needed dev dependencies.
+To provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
+
+```bash
+npm install sass copyfiles --save-dev
+```
+
+To resolve the node_modules path with the char ~ add the below config to the vite defineConfig function.
+
+```javascript
+resolve: {
+  alias: [
+    {
+      // this is required for the SCSS modules
+      find: /^~(.*)$/,
+      replacement: "$1",
+    },
+  ],
+},
+```
 
 ### Install Baloise Design System
 
@@ -90,12 +105,6 @@ npm install @baloise/design-system-next-components-vue --save
 #### Import fonts
 
 The font package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
-
-Next step is to provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
-
-```bash
-npm install copyfiles --save-dev
-```
 
 After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called copy:fonts and adjust the second path to your application.
 
@@ -118,12 +127,6 @@ npm run copy:fonts
 > - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
 #### Import styles
-
-If `sass` is yet not installed run:
-
-```sh
-npm add -D sass
-```
 
 Then create a new file called `main.scss` in the `src` folder.
 
