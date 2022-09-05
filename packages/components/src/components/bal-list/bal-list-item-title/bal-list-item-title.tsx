@@ -10,7 +10,7 @@ export class ListItemTitle {
   /**
    * Heading level with value 'h4' on default
    */
-  @Prop() level: Props.BalHeadingLevel = 'h4'
+  @Prop() level: Props.BalHeadingLevel = 'h5'
 
   render() {
     return (
