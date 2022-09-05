@@ -1,15 +1,3 @@
-// {
-//   "extends": "../../tsconfig.base.json",
-//   "compilerOptions": {
-//     "esModuleInterop": true,
-//     "outDir": "dist-transpiled",
-//     "declarationDir": "dist/types",
-//     "jsx": "react"
-//   },
-//   "include": ["src/**/*.ts", "src/**/*.tsx"],
-//   "exclude": ["node_modules"]
-// }
-
 {
   "extends": "../../tsconfig.base.json",
   "include": ["."],
