@@ -9,9 +9,9 @@ const path = require('path')
 const svgo = require('svgo')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
-const file = require('./file')
-const log = require('./log')
-const { NEWLINE } = require('./constants')
+const file = require('./utils/file')
+const log = require('./utils/log')
+const { NEWLINE } = require('./utils/constants')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/icons");

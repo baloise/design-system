@@ -1,9 +1,15 @@
+/**
+ * component lib
+ * --------------------------------------
+ * Helper script to read the component build information
+ */
+
 const path = require('path')
 const file = require('./file')
 const log = require('./log')
 
 const DIRNAME = path.normalize(__dirname);
-const PACKAGE = path.join(DIRNAME, "../packages/components");
+const PACKAGE = path.join(DIRNAME, "../../packages/components");
 
 const components = async () => {
   const filePath = path.join(PACKAGE, 'src/stories/assets/data/components.json')

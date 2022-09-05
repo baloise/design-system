@@ -5,8 +5,8 @@
  */
 
 const path = require('path')
-const file = require('./file')
-const log = require('./log')
+const file = require('./utils/file')
+const log = require('./utils/log')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/components");

@@ -7,7 +7,7 @@
 const fs = require('fs')
 const path = require('path')
 const archiver = require('archiver')
-const log = require('./log')
+const log = require('./utils/log')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/icons");

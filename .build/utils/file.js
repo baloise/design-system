@@ -1,3 +1,9 @@
+/**
+ * file
+ * --------------------------------------
+ * Helper function to work with files.
+ */
+
 const fs = require('fs')
 const fse = require('fs-extra')
 const glob = require('glob')

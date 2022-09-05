@@ -1,3 +1,9 @@
+/**
+ * banner
+ * --------------------------------------
+ * Displays an ASCI banner text to the console to show the current npm script name
+ */
+
 const figlet = require('figlet')
 const chalk = require('chalk')
 const log = require('./log')

@@ -7,9 +7,9 @@
  */
 
 const path = require('path')
-const file = require('./file')
-const log = require('./log')
-const { createSourceFile, parseFunctionComment, filterModuleDeclaration, filterInterfaceDeclaration } = require('./typescript')
+const file = require('./utils/file')
+const log = require('./utils/log')
+const { createSourceFile, parseFunctionComment, filterModuleDeclaration, filterInterfaceDeclaration } = require('./utils/typescript')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/components");

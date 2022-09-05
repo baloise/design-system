@@ -1,5 +1,11 @@
+/**
+ * design token - css generator
+ * --------------------------------------
+ * Generates css helper classes for some of the design tokens.
+ */
+
 const path = require('path')
-const file = require('./file.js')
+const file = require('./utils/file.js')
 const BaloiseDesignToken = require('../packages/tokens/dist/index.js').BaloiseDesignToken
 
 const DIST_PATH = path.join(__dirname, '..', 'packages/tokens/dist')

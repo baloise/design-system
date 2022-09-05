@@ -1,7 +1,13 @@
+/**
+ * Web Types
+ * --------------------------------------
+ * Generates helper json files for better ide support.
+ */
+
 const fs = require('fs')
 const { pascalCase } = require('change-case')
-const libraryLib = require('./components.lib')
-const log = require('./log')
+const libraryLib = require('./utils/components.lib')
+const log = require('./utils/log')
 
 async function main() {
   log.title('vue - generate web types')

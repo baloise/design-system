@@ -1,9 +1,15 @@
+/**
+ * Vue Vetur
+ * --------------------------------------
+ * Generates helper json file for the vetur extension.
+ */
+
 const fs = require('fs')
 const camelCase = require('lodash.camelcase')
 const upperFirst = require('lodash.upperfirst')
 const { paramCase } = require('change-case')
-const libraryLib = require('./components.lib')
-const log = require('./log')
+const libraryLib = require('./utils/components.lib')
+const log = require('./utils/log')
 
 const generateTags = components => {
   const tagsObject = {}
