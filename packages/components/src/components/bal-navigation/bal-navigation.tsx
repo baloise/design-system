@@ -289,7 +289,7 @@ export class Navigation implements ComponentInterface {
               <bal-list-item accordion>
                 <bal-list-item-accordion-head icon="nav-go-down">
                   <bal-list-item-content>
-                    <bal-list-item-title>{meta.label}</bal-list-item-title>
+                    <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
                 <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">

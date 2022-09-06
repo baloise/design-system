@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-vue",
-  "version": "10.20.0",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,12 +28,10 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
-    "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:compile": "tsc -p .",
+    "build": "npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:web-types": "node ./.build/web-types.js",
-    "build:vetur": "node ./.build/vetur.js",
+    "build:web-types": "node ../../.build/vue-web-types.js",
+    "build:vetur": "node ../.././.build/vue-vetur.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.esm.js",
@@ -42,27 +40,18 @@
   "files": [
     "dist/"
   ],
-  "devDependencies": {
-    "@babel/types": "~7.18.10",
-    "@types/lodash.camelcase": "~4.3.7",
-    "@types/lodash.upperfirst": "~4.3.7",
-    "ag-grid-community": "~26.2.1",
-    "change-case": "~4.1.2",
-    "copyfiles": "~2.4.1",
-    "lodash.camelcase": "~4.3.0",
-    "lodash.upperfirst": "~4.3.1",
-    "vue": "~3.2.33"
+  "dependencies": {
+    "@baloise/design-system-next-components": "10.20.2"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"
   },
-  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40",
   "vetur": {
     "tags": "dist/vetur/tags.json",
     "attributes": "dist/vetur/attributes.json"
   },
   "web-types": "dist/web-types.json",
   "dependencies": {
-    "@baloise/design-system-next-components": "10.20.0"
+    "@baloise/design-system-next-components": "10.20.2"
   }
 }

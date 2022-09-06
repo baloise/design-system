@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-output-target-vue",
-  "version": "10.20.0",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -26,44 +26,22 @@
     "web-components",
     "stenciljs"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
     "vue-component-lib/"
   ],
   "scripts": {
-    "prebuild": "rimraf ./dist",
-    "build": "tsc && npm run rollup",
-    "watch": "tsc --watch",
-    "rollup": "rollup -c",
-    "version": "npm run build",
-    "release": "np",
-    "test": "jest"
+    "build": "npm run build:bundle",
+    "build:bundle": "rollup --config rollup.config.js",
+    "test": "jest",
+    "test.watch": "jest --watch"
   },
   "peerDependencies": {
-    "@stencil/core": ">=2.9.0"
-  },
-  "devDependencies": {
-    "@stencil/core": "^2.17.1",
-    "jest": "^26.6.3",
-    "rollup": "^2.56.3",
-    "typescript": "^4.0.8"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.(js|ts|tsx)$": "<rootDir>/test/jest.preprocessor.js"
-    },
-    "testRegex": "(\\.(test|spec))\\.(ts?|tsx?|jsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json",
-      "jsx"
-    ],
-    "testURL": "http://localhost"
+    "@stencil/core": "^2.9.0",
+    "vue": "^3.2.37"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

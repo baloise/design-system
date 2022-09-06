@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-testing",
-  "version": "10.20.0",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -34,24 +34,13 @@
     "dist/"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
-    "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
-    "build:compile": "tsc -p tsconfig.build.json",
+    "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.20.0",
+    "@baloise/design-system-next-components": "10.20.2",
     "date-fns": "~2.29.1"
-  },
-  "devDependencies": {
-    "@types/chai": "~4.3.1",
-    "@types/jquery": "~3.5.6",
-    "@types/node": "~18.6.3",
-    "cypress": "~9.5.4",
-    "cypress-file-upload": "~5.0.8",
-    "start-server-and-test": "~1.14.0",
-    "ts-node": "~10.9.1"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

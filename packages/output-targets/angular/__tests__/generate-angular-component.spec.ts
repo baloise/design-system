@@ -1,4 +1,4 @@
-import { ComponentCompilerMeta, ComponentCompilerTypeReferences } from '@stencil/core/internal'
+import { ComponentCompilerTypeReferences } from '@stencil/core/internal'
 import { createComponentDefinition } from '../src/generate-angular-component'
 
 describe('createComponentDefinition', () => {
@@ -13,7 +13,7 @@ describe('createComponentDefinition', () => {
       methods: [],
       sourceFilePath: '',
       componentClassName: 'MyComponent',
-    } as ComponentCompilerMeta)
+    } as any)
     expect(finalText).toEqual(`
 
 export declare interface MyComponent extends Components.MyComponent {}
@@ -59,7 +59,7 @@ export class MyComponent {
       methods: [],
       sourceFilePath: '',
       componentClassName: 'MyComponent',
-    } as ComponentCompilerMeta)
+    } as any)
     expect(finalText).toEqual(`
 
 export declare interface MyComponent extends Components.MyComponent {}
@@ -133,7 +133,7 @@ export class MyComponent {
       methods: [],
       sourceFilePath: '',
       componentClassName: 'MyComponent',
-    } as ComponentCompilerMeta)
+    } as any)
 
     expect(finalText).toEqual(`
 import { BalTabOption } from 'component-library';
@@ -192,7 +192,7 @@ export class MyComponent {
       methods: [],
       sourceFilePath: '',
       componentClassName: 'MyComponent',
-    } as ComponentCompilerMeta)
+    } as any)
 
     expect(finalText).toEqual(`
 
