@@ -13,7 +13,7 @@ type NormalizedValueAccessors = {
 
 export default async function generateValueAccessors(
   compilerCtx: CompilerCtx,
-  components: ComponentCompilerMeta[],
+  _components: ComponentCompilerMeta[],
   outputTarget: OutputTargetAngular,
   config: Config,
 ) {

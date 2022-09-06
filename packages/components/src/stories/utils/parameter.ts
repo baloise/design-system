@@ -1,7 +1,7 @@
 import { paramCase } from 'param-case'
 import { pascalCase } from 'pascal-case'
 import { htmlBeautify } from './html'
-import ComponentJson from '../../../generated/components.json'
+import ComponentJson from '../assets/data/components.json'
 
 export interface SourceCodeOptions {
   vue?: string

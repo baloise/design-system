@@ -148,7 +148,7 @@ export const MyComponent = /*@__PURE__*/ defineContainer<Components.MyComponent>
   })
 
   it('should pass event references to the createCommonRender function', () => {
-    const generateComponentDefinition = createComponentDefinition('Components')
+    const generateComponentDefinition = createComponentDefinition('Components', [])
     const output = generateComponentDefinition({
       properties: [],
       tagName: 'my-component',
@@ -182,7 +182,7 @@ export const MyComponent = /*@__PURE__*/ defineContainer<Components.MyComponent>
   })
 
   it('should add a prop with Reference to the original component library prop type', () => {
-    const generateComponentDefinition = createComponentDefinition('Components')
+    const generateComponentDefinition = createComponentDefinition('Components', [])
     const output = generateComponentDefinition({
       properties: [
         {

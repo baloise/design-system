@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-table",
-  "version": "10.20.0",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,10 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
-    "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:compile": "tsc -p .",
-    "build:bundle": "rollup --config rollup.config.js",
+    "build": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
@@ -49,22 +46,16 @@
     "scss": "scss"
   },
   "devDependencies": {
-    "@types/lodash.isnil": "~4.0.6",
-    "ag-grid-community": "~26.0.0",
-    "autoprefixer": "~10.4.8",
-    "postcss": "~8.4.14",
-    "rollup-plugin-scss": "~3.0.0",
-    "sass": "~1.54.0"
-  },
-  "dependencies": {
-    "@baloise/design-system-next-components": "10.20.0",
-    "@baloise/design-system-next-css": "10.20.0",
-    "@baloise/design-system-next-fonts": "10.20.0",
-    "@baloise/design-system-next-tokens": "10.20.0",
-    "lodash.isnil": "~4.0.0"
+    "@baloise/design-system-next-components": "10.20.2",
+    "@baloise/design-system-next-css": "10.20.2"
   },
   "peerDependencies": {
+    "@baloise/design-system-next-components": "10.20.2",
+    "@baloise/design-system-next-css": "10.20.2",
     "ag-grid-community": ">=25.2.1"
   },
-  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
+  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40",
+  "dependencies": {
+    "lodash.isnil": "^4.0.0"
+  }
 }
