@@ -34,6 +34,7 @@ export class ButtonGroup implements ComponentInterface {
         }}
       >
         <slot />
+        <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
       </Host>
     )
   }

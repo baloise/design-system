@@ -102,6 +102,7 @@ export class Field {
         }}
       >
         <slot></slot>
+        <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
       </Host>
     )
   }
