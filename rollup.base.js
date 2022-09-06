@@ -1,5 +1,15 @@
 import pkg from './package.json'
-import lerna from './lerna.json'
+
+import path from 'path'
+import resolve from '@rollup/plugin-node-resolve'
+import cleaner from 'rollup-plugin-cleaner'
+import commonjs from '@rollup/plugin-commonjs'
+import typescript from '@rollup/plugin-typescript'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import sass from 'rollup-plugin-sass'
+import terser from 'rollup-plugin-terser'
+import postcss from 'postcss'
+import autoprefixer from 'autoprefixer'
 
 function getAuthors(pkg) {
   const { contributors } = pkg
@@ -17,13 +27,13 @@ function getAuthors(pkg) {
 }
 
 const banner = `/*!
-  * Baloise Design System v${lerna.version}
+  * Baloise Design System
   * (c) ${new Date().getFullYear()} ${getAuthors(pkg)}
   * @license ${pkg.license}
   */`
 
-export default {
-  input: 'dist-transpiled/index.js',
+export default ({ styleOutput, declarationDir, cleanTargets } = {}) => ({
+  input: 'src/index.ts',
   output: [
     {
       dir: 'dist/',
@@ -42,4 +52,32 @@ export default {
       sourcemap: true,
     },
   ],
-}
+  external: id => {
+    return (
+      id.startsWith('lodash') ||
+      id.startsWith('@baloise') ||
+      id.startsWith('cypress') ||
+      id.startsWith('vue') ||
+      id.startsWith('react')
+    )
+  },
+  plugins: [
+    cleaner({ targets: cleanTargets || ['dist/'] }),
+    resolve(),
+    commonjs(),
+    peerDepsExternal(),
+    typescript({ declaration: true, declarationDir: declarationDir || 'dist/types', outDir: 'dist' }),
+    sass({
+      output: styleOutput || 'dist/styles.css',
+      options: {
+        outputStyle: 'compressed',
+        includePaths: [path.join(__dirname, '../../node_modules/'), 'node_modules/'],
+      },
+      processor: css =>
+        postcss([autoprefixer])
+          .process(css, { from: undefined, map: { inline: false } })
+          .then(result => result.css),
+    }),
+    terser.terser(),
+  ],
+})

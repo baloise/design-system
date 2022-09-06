@@ -43,20 +43,10 @@
     "@angular/core": ">=12.2.16",
     "@angular/forms": ">=12.2.16",
     "@angular/platform-browser": ">=12.2.16",
+    "typescript": ">=4.3.5",
     "zone.js": ">=0.11.4"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40",
-  "devDependencies": {
-    "@angular/common": "~12.2.16",
-    "@angular/compiler": "~12.2.16",
-    "@angular/compiler-cli": "~12.2.16",
-    "@angular/core": "~12.2.16",
-    "@angular/forms": "~12.2.16",
-    "@angular/platform-browser": "~12.2.16",
-    "ng-packagr": "~12.1.1",
-    "typescript": "~4.3.5",
-    "zone.js": "~0.11.4"
-  },
   "files": [
     "dist/"
   ],

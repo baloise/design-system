@@ -1,8 +1,3 @@
-import baseConfig from '../../rollup.base'
+import config from '../../rollup.base'
 
-export default {
-  ...baseConfig,
-  external: id => {
-    return id.startsWith('vue') || id.startsWith('@baloise')
-  },
-}
+export default Object.assign(config())

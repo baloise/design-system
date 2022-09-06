@@ -33,3 +33,5 @@ packages/components-angular/src/directives/proxies-list.ts
 packages/components-angular/src/directives/proxies.module.ts
 packages/css/css
 packages/components-vue/src/proxies.ts
+packages/components/src/stories/assets/data
+packages/icons/src/index.ts

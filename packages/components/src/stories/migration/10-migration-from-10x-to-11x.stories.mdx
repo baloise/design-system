@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from 10.x to 11.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 10.x to 11.x
+
+The following workflow walks you through the migration steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Improved SASS styles
+
+In the new version 11 we introduced the packages tokens and css. Those are build on SASS not SCSS and
+provide a lot of CSS-Variables.
+
+Therefore, update your `global.scss` import to just `global` or `global.sass`.
+Moreover, change the import path to the alias `~` instead of using a relative path to the installed package.
+
+```sass
+<!-- - old -->
+@import '../node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+
+
+<!-- - new -->
+@import '~@baloise/design-system-next-components/src/styles/global';
+```
+
+### Vue / Vite
+
+In order to get the `~` alias working, update the vite.config.ts file and add the resolve config
+to the defineConfig function.
+
+```typescript
+  resolve: {
+    alias: [
+      {
+        // this is required for the SCSS modules
+        find: /^~(.*)$/,
+        replacement: "$1",
+      },
+    ],
+  },
+```
+
+<bal-doc-github link="/stories/migration/10-migration-from-10x-to-11x.stories.mdx"></bal-doc-github>
