@@ -709,6 +709,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             <div class={{ ...rowEl.class() }}>
               {row.map(cell => (
                 <button
+                  type="button"
                   data-date={cell.dateString}
                   onClick={() => this.onClickDateCell(cell)}
                   disabled={cell.isDisabled}
