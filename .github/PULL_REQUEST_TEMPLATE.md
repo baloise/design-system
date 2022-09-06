@@ -26,6 +26,8 @@ Closes #
         - [ ] Edge
         - [ ] Safari
         - [ ] Firefox
+    - Tablet
+        - [ ] iPad (Landscape / Portrait)
     - Mobile
         - [ ] Safari iOS
         - [ ] Chrome Preview
