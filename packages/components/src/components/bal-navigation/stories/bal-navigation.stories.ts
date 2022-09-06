@@ -637,7 +637,26 @@ export const WithPopover = args => ({
     <bal-button square size="small" color="light" inverted icon="location"></bal-button>
 
     <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-    <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
+    <bal-navigation-popover
+      backdrop={true}
+      icon="account"
+      size="small"
+      inactive-color="light"
+      active-color="primary"
+      inverted={true}
+      arrow={true}
+      content-radius="large"
+      position="bottom"
+      content-width=440
+      content-min-width=440
+      offsetY=13
+      heading="Baloise Login"
+      label="login"
+      >
+        <ul class="is-flex is-flex-direction-column" style="gap: 1rem">
+          <li class="p-4" style="background-color:lightgrey;padding:.75rem;color:#000D6E;text-align:center;border-radius:4px">Login</li>
+        </ul>
+    </bal-navigation-popover>
   </bal-button-group>
   <div slot="meta-actions-mobile">
     <bal-navigation-popover
