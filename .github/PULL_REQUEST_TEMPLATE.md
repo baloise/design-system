@@ -2,7 +2,7 @@ Closes #
 
 {{short description}}
 
-#### Changelog
+### Changelog
 
 **New**
 
@@ -15,3 +15,18 @@ Closes #
 **Removed**
 
 - {{removed thing}}
+
+### Acceptance Criteria
+
+[] Design Review by @Gagne87, @clastzoo
+[] Technical Review by @hirsch88, @mladenplaninicic, @nobilo
+
+- Browser Testing by @hirsch88, @nobilo, @mladenplaninicic, @Gagne87, @clastzoo
+    - Desktop
+        [] Chrome
+        [] Edge
+        [] Safari
+        [] Firefox
+    - Mobile
+        [] Safari iOS
+        [] Chrome Preview
