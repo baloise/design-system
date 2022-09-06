@@ -145,6 +145,11 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Prop() pattern?: string
 
   /**
+   * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+   */
+  @Prop() allowedKeyPress?: string
+
+  /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() required = false
@@ -329,8 +334,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
 
-    if (this.pattern && input && !this.mask) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && input && !this.mask) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       this.inputValue = input.value = input.value
         .split('')
         .filter(val => regex.test(val))
@@ -433,8 +438,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
       }
     }
 
-    if (this.pattern && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       if (!regex.test(event.key) && ![...ACTION_KEYS].includes(event.key)) {
         return stopEventBubbling(event)
       }
