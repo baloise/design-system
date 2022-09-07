@@ -19,6 +19,8 @@ async function main() {
   await copyToPackage('packages/icons')
   await copyToPackage('packages/fonts')
   await copyToPackage('packages/testing')
+  await copyToPackage('packages/tokens')
+  await copyToPackage('packages/css')
   await copyToPackage('packages/output-targets/angular')
   await copyToPackage('packages/output-targets/vue')
   await copyToPackage('packages/output-targets/react')
