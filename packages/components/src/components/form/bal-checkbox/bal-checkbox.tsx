@@ -200,6 +200,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
       this.checked = !this.checked
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+      ev.preventDefault()
     } else {
       stopEventBubbling(ev)
     }

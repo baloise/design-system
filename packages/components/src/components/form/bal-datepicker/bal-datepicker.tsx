@@ -623,6 +623,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           value={this.value}
           min={this.min}
           max={this.max}
+          tabindex={-1}
         ></input>
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}

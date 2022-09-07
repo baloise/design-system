@@ -195,7 +195,7 @@ export const FormStructure = args => ({
           <bal-field :invalid="invalid" :disabled="disabled" required>
             <bal-field-label>Multiple Select</bal-field-label>
             <bal-field-control>
-              <bal-select multiple typeahead placeholder="Placeholder">
+              <bal-select multiple typeahead placeholder="Placeholder" value="AG,SO">
               <bal-select-option value="AG" label="Argau">Argau</bal-select-option>
               <bal-select-option value="BS" label="Basel">Basel</bal-select-option>
               <bal-select-option value="BL" label="Basel-Land">Basel-Land</bal-select-option>

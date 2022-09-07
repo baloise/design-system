@@ -12,6 +12,7 @@ export class Tag {
   @Element() el!: HTMLElement
 
   private inheritedAttributes: { [k: string]: any } = {}
+  private inheritedAttributesClose: { [k: string]: any } = {}
 
   /**
    * The theme type of the tag. Given by bulma our css framework.
@@ -57,6 +58,7 @@ export class Tag {
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])
+    this.inheritedAttributesClose = inheritAttributes(this.el, ['tabindex'])
   }
 
   render() {
@@ -105,6 +107,7 @@ export class Tag {
             this.invalid
           }
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
+          {...this.inheritedAttributesClose}
         ></bal-close>
       </Host>
     )

@@ -207,6 +207,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+      ev.preventDefault()
     } else {
       stopEventBubbling(ev)
     }

@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
-import { findItemLabel } from '../../../helpers/helpers'
+import { findItemLabel, isDescendant } from '../../../helpers/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -43,6 +43,7 @@ export class Select {
 
   private inputElement!: HTMLInputElement
   private popoverElement!: HTMLBalPopoverElement
+  private selectionEl!: HTMLDivElement
   private didInit = false
   private inputId = `bal-select-${selectIds++}`
   private clearScrollToValue!: NodeJS.Timeout
@@ -301,7 +302,9 @@ export class Select {
   }
 
   componentDidLoad() {
-    this.inputElement.value = this.inputValue
+    if (!this.multiple) {
+      this.inputElement.value = this.inputValue
+    }
     this.didInit = true
   }
 
@@ -588,7 +591,11 @@ export class Select {
       if (isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
-        newValue = [this.value]
+        if (this.value.split('').includes(',')) {
+          newValue = [...this.value.split(',')]
+        } else {
+          newValue = [this.value]
+        }
       }
     }
 
@@ -705,8 +712,27 @@ export class Select {
     this.hasFocus = true
   }
 
+  private isChipClicked(event: MouseEvent) {
+    let isChipClicked = false
+    if (this.multiple) {
+      const chips = this.selectionEl.querySelectorAll('bal-tag')
+      const target = event.target as HTMLElement
+      chips.forEach(chip => {
+        const isChip = isDescendant(chip, target) || chip === target
+        if (isChip) {
+          isChipClicked = isChip
+        }
+      })
+    }
+    return isChipClicked
+  }
+
   private handleInputClick = async (event: MouseEvent) => {
     stopEventBubbling(event)
+
+    if (this.isChipClicked(event)) {
+      return
+    }
 
     if (this.disabled || this.readonly) {
       preventDefault(event)
@@ -774,6 +800,7 @@ export class Select {
         closable={!this.disabled}
         disabled={this.disabled}
         invalid={this.invalid}
+        tabindex={-1}
         onBalCloseClick={_ => this.removeValue(props.value)}
       >
         {findLabelByValue(this.options, props.value) || props.value}
@@ -807,7 +834,13 @@ export class Select {
           ...block.modifier('inverted').class(this.inverted),
         }}
       >
-        <select class={{ ...nativeEl.class() }} name={this.name} multiple={this.multiple} required={this.required}>
+        <select
+          class={{ ...nativeEl.class() }}
+          name={this.name}
+          multiple={this.multiple}
+          required={this.required}
+          tabindex={-1}
+        >
           {valuesArray.map((value: string) => (
             <option value={value} selected>
               {value}
@@ -835,6 +868,7 @@ export class Select {
                   .class(!this.isPopoverOpen && !this.disabled && !this.readonly),
               }}
               onClick={this.handleInputClick}
+              ref={el => (this.selectionEl = el as HTMLDivElement)}
             >
               {valuesArray
                 .filter(_ => this.multiple)
@@ -847,7 +881,7 @@ export class Select {
                   ...controlInputEl.class(),
                   'input': true,
                   'is-inverted': this.inverted,
-                  'is-hidden': this.multiple && !this.typeahead,
+                  // 'is-hidden': this.multiple && !this.typeahead,
                   'is-danger': this.invalid,
                   'is-disabled': this.disabled || this.readonly,
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
