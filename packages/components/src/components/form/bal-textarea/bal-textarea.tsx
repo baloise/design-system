@@ -288,6 +288,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           aria-labelledby={labelId}
           disabled={this.disabled}
           readonly={this.readonly}
+          required={this.required}
           autoCapitalize={this.autocapitalize}
           autoFocus={this.autofocus}
           minLength={this.minLength}

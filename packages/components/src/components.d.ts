@@ -904,6 +904,10 @@ export namespace Components {
          */
         "accept"?: string;
         /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize": string;
@@ -4324,6 +4328,10 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
