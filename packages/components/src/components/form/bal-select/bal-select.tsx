@@ -49,6 +49,7 @@ export class Select {
   private clearScrollToValue!: NodeJS.Timeout
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
+  private initialValue = this.value
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -230,8 +231,8 @@ export class Select {
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = undefined
-      this.rawValue = []
+      this.value = this.initialValue
+      this.updateRawValue(false)
     }
   }
 

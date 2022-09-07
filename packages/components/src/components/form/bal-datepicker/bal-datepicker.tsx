@@ -77,6 +77,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   nativeInput!: HTMLInputElement
   inputValue = this.value
+  initialValue = this.value
 
   @Element() el!: HTMLElement
 
@@ -247,7 +248,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = undefined
+      this.value = this.initialValue
     }
   }
 

@@ -68,6 +68,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true }) checked = false
+  private initialValue = this.checked
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -129,7 +130,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.checked = false
+      this.checked = this.initialValue
     }
   }
 

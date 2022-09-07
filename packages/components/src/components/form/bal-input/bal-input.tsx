@@ -49,6 +49,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   nativeInput?: HTMLInputElement
   inputValue = this.value
+  initialValue = this.value
 
   @Element() el!: HTMLElement
 
@@ -276,7 +277,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this)
+      inputHandleReset(this, this.initialValue)
     }
   }
 

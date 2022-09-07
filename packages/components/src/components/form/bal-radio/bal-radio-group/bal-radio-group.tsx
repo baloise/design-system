@@ -82,7 +82,7 @@ export class RadioGroup implements ComponentInterface {
    * The value of the control.
    */
   @Prop({ mutable: true }) value: number | string | boolean = ''
-
+  private initialValue = this.value
   @Watch('value')
   valueChanged(value: number | string | boolean, oldValue: number | string | boolean) {
     if (value !== oldValue) {
@@ -106,7 +106,7 @@ export class RadioGroup implements ComponentInterface {
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = ''
+      this.value = this.initialValue
       this.sync()
     }
   }
