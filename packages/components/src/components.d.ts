@@ -2233,7 +2233,7 @@ export namespace Components {
         /**
           * The font weight of the tag text.
          */
-        "fontWeight": Props.BalFontWeight;
+        "fontWeight": Props.BalTagFontWeight;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -5717,7 +5717,7 @@ declare namespace LocalJSX {
         /**
           * The font weight of the tag text.
          */
-        "fontWeight"?: Props.BalFontWeight;
+        "fontWeight"?: Props.BalTagFontWeight;
         /**
           * If `true` a light version of the color is displayed
          */

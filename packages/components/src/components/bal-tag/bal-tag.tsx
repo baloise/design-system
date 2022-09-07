@@ -45,7 +45,7 @@ export class Tag {
   /**
    * The font weight of the tag text.
    */
-  @Prop() fontWeight: Props.BalFontWeight = 'bold'
+  @Prop() fontWeight: Props.BalTagFontWeight = 'bold'
 
   /**
    * @deprecated

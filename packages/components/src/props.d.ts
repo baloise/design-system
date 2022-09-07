@@ -122,7 +122,7 @@ export namespace Props {
     | 'purple'
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large'
-  export type BalFontWeight = 'regular' | 'bold'
+  export type BalTagFontWeight = 'regular' | 'bold'
 
   export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
