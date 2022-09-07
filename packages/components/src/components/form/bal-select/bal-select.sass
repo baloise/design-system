@@ -43,11 +43,11 @@
       border-color: var(--bal-color-border-normal)
       background-color: var(--bal-color-grey-1)
     &--invalid:not(#{&}--disabled)
-      border-color: var(--bal-color-border-danger)
-      background: var(--bal-color-danger-light)
+      border-color: var(--bal-color-border-danger) !important
+      background: var(--bal-color-danger-light) !important
     +modifier(disabled)
-      background-color: var(--bal-color-disabled)
-      border-color: var(--bal-color-border-disabled)
+      background-color: var(--bal-color-disabled) !important
+      border-color: var(--bal-color-border-disabled) !important
       &,
       & input
         cursor: default !important

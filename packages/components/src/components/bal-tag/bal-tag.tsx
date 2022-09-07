@@ -86,6 +86,7 @@ export class Tag {
             ...elLabel.class(),
             ...elLabel.modifier(sizeClass).class(hasSize),
             ...elLabel.modifier(colorClass).class(hasColor),
+            ...elLabel.modifier(disabledClass).class(hasDisabled),
             ...elLabel.modifier('is-invalid').class(this.invalid),
           }}
         >

@@ -311,6 +311,7 @@ export class FileUpload {
           class={{
             'file': true,
             'is-disabled': this.disabled || this.readonly || this.loading,
+            'is-danger': this.invalid,
           }}
         >
           <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
@@ -336,7 +337,9 @@ export class FileUpload {
                   <bal-icon
                     name="upload"
                     size="medium"
-                    color={this.disabled || this.loading || this.readonly ? 'grey-light' : 'blue'}
+                    color={
+                      this.disabled || this.loading || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'blue'
+                    }
                   ></bal-icon>
                 </span>
                 <span class="file-label">{this.label}</span>

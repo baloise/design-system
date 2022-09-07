@@ -13,18 +13,6 @@
   border-radius: var(--bal-radius-rounded)
   white-space: nowrap
 
-  +modifier(is-disabled)
-    cursor: default
-    pointer-events: none
-    user-select: none
-    background-color: var(--bal-color-border-disabled)
-    border-color: var(--bal-color-border-disabled)
-    box-shadow: none
-    color: var(--bal-color-white)
-
-    & > span
-      color: var(--bal-color-white)
-
   // sizes
   +modifier(is-small)
     height: 1.5rem
@@ -112,6 +100,21 @@
       color: var(--bal-color-green-light-inverted)
     +modifier(is-invalid)
       background: var(--bal-color-border-invalid)
+      color: var(--bal-color-white)
+    +modifier(is-disabled)
+      background-color: var(--bal-color-border-disabled)
+      border-color: var(--bal-color-border-disabled)
+
+  +modifier(is-disabled)
+    cursor: default
+    pointer-events: none
+    user-select: none
+    background-color: var(--bal-color-border-disabled)
+    border-color: var(--bal-color-border-disabled)
+    box-shadow: none
+    color: var(--bal-color-white)
+
+    & > span
       color: var(--bal-color-white)
   //
   // close button

@@ -626,7 +626,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
         ></input>
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
-          <bal-popover-content spaceless>
+          <bal-popover-content spaceless contentMinWidth={392}>
             <div class={{ ...popup.class() }}>
               {this.renderHeader()}
               <div class={{ ...popupBody.class() }}>{this.renderGrid()}</div>

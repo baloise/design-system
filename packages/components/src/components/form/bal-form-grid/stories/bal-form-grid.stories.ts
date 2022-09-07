@@ -52,6 +52,7 @@ export const FormStructure = args => ({
         <bal-form-col size="half">
           <bal-field :invalid="invalid" :disabled="disabled" required>
             <bal-field-label>Input</bal-field-label>
+            <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
             <bal-field-control>
               <bal-input placeholder="Placeholder"></bal-input>
             </bal-field-control>
@@ -271,7 +272,7 @@ export const FormStructure = args => ({
 
         <bal-form-col>
           <bal-field :invalid="invalid" :disabled="disabled" required>
-            <bal-field-label>Radio</bal-field-label>
+            <bal-field-label>Radio <a href="http://www.google.ch">Bubu</a></bal-field-label>
             <bal-field-control>
               <bal-radio-group value="2">
                 <bal-radio value="1">Label</bal-radio>
@@ -331,81 +332,3 @@ export const FormStructure = args => ({
 })
 FormStructure.args = {}
 FormStructure.parameters = { ...component.sourceCode(FormStructure) }
-
-//<bal-form-col size="half">
-// <bal-field :invalid="invalid" :disabled="disabled" required>
-//   <bal-field-label>Firstname</bal-field-label>
-//   <bal-field-control>
-//     <bal-input name="firstname" placeholder="Enter your firstname"></bal-input>
-//   </bal-field-control>
-//   <bal-field-message v-if="invalid">Field Message</bal-field-message>
-// </bal-field>
-// </bal-form-col>
-// <bal-form-col size="half">
-// <bal-field :invalid="invalid" :disabled="disabled" required>
-//   <bal-field-label>Lastname</bal-field-label>
-//   <bal-field-control>
-//     <bal-input name="lastname" placeholder="Enter your lastname"></bal-input>
-//   </bal-field-control>
-//   <bal-field-message v-if="invalid">Field Message</bal-field-message>
-// </bal-field>
-// </bal-form-col>
-// <bal-form-col size="half">
-//         <bal-field :invalid="invalid" :disabled="disabled" required>
-//           <bal-field-label>Street</bal-field-label>
-//           <bal-field-control>
-//             <bal-input name="street" placeholder="Enter your street"></bal-input>
-//           </bal-field-control>
-//           <bal-field-message v-if="invalid">Field Message</bal-field-message>
-//         </bal-field>
-//       </bal-form-col>
-//       <bal-form-col size="half">
-//         <bal-form-grid>
-//           <bal-form-col size="one-third">
-//             <bal-field :invalid="invalid" :disabled="disabled" required>
-//               <bal-field-label>Postal Code</bal-field-label>
-//               <bal-field-control>
-//                 <bal-input name="postalCode" placeholder="4000"></bal-input>
-//               </bal-field-control>
-//               <bal-field-message v-if="invalid">Field Message</bal-field-message>
-//             </bal-field>
-//           </bal-form-col>
-//           <bal-form-col size="two-thirds">
-//             <bal-field :invalid="invalid" :disabled="disabled" required>
-//               <bal-field-label>City</bal-field-label>
-//               <bal-field-control>
-//                 <bal-input name="city" placeholder="Basel"></bal-input>
-//               </bal-field-control>
-//               <bal-field-message v-if="invalid">Field Message</bal-field-message>
-//             </bal-field>
-//           </bal-form-col>
-//         </bal-form-grid>
-//       </bal-form-col>
-
-//       <bal-form-col size="half">
-//         <bal-field :invalid="invalid" :disabled="disabled" required>
-//           <bal-field-label>Birthdate</bal-field-label>
-//           <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
-//           <bal-field-control>
-//             <bal-datepicker min="2022-08-21" name="birthdate" placeholder="Select your birthdate"></bal-datepicker>
-//           </bal-field-control>
-//           <bal-field-message v-if="invalid">Field Message</bal-field-message>
-//         </bal-field>
-//       </bal-form-col>
-
-// <bal-form-col>
-// <bal-field :invalid="invalid" :disabled="disabled" required="false">
-//   <bal-field-label>Comment</bal-field-label>
-//   <bal-field-control>
-//     <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
-//   </bal-field-control>
-//   <bal-field-message v-if="invalid">Field Message</bal-field-message>
-// </bal-field>
-// </bal-form-col>
-
-// <bal-card-actions>
-// <bal-button element-type="submit">Submit</bal-button>
-// <bal-button element-type="reset" color="link">Reset</bal-button>
-// <bal-button color="link" @click="() => invalid = !invalid">Toggle invalid</bal-button>
-// <bal-button color="link" @click="() => disabled = !disabled">Toggle disabled</bal-button>
-// </bal-card-actions>
