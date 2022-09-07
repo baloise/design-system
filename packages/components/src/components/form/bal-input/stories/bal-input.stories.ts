@@ -170,7 +170,8 @@ PostalCodeInput.args = {
   value: '4000',
   label: 'PostalCode',
   maxLength: 4,
-  pattern: '[0-9]*',
+  allowedKeyPress: '[0-9]',
+  pattern: '[0-9]{4}',
   hasFieldMessage: false,
 }
 PostalCodeInput.parameters = {
@@ -185,7 +186,7 @@ SimplePhoneNumberInput.args = {
   value: '0041665554433',
   label: 'Simple phone number input',
   type: 'tel',
-  pattern: '[0-9]',
+  allowedKeyPress: '[0-9]',
   hasFieldMessage: false,
 }
 SimplePhoneNumberInput.parameters = {
