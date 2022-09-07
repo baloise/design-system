@@ -210,7 +210,6 @@ export class CheckboxGroup implements ComponentInterface {
   }
 
   render() {
-    console.log('render', this.interface)
     const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
