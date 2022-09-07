@@ -2231,6 +2231,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The font weight of the tag text.
+         */
+        "fontWeight": Props.BalFontWeight;
+        /**
           * If `true` a light version of the color is displayed
          */
         "light": boolean;
@@ -5710,6 +5714,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * The font weight of the tag text.
+         */
+        "fontWeight"?: Props.BalFontWeight;
         /**
           * If `true` a light version of the color is displayed
          */

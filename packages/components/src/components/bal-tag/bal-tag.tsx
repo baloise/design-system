@@ -43,6 +43,11 @@ export class Tag {
   @Prop() light = false
 
   /**
+   * The font weight of the tag text.
+   */
+  @Prop() fontWeight: Props.BalFontWeight = 'bold'
+
+  /**
    * @deprecated
    * @internal
    * Sets background color to transparent
@@ -69,6 +74,8 @@ export class Tag {
     const hasDisabled = this.disabled
     const positionClass = `is-${this.position}`
     const hasPosition = this.position !== undefined
+    const fontWeightClass = `is-${this.fontWeight}`
+    const hasFontWeight = this.fontWeight !== undefined
 
     return (
       <Host
@@ -87,6 +94,7 @@ export class Tag {
             ...elLabel.class(),
             ...elLabel.modifier(sizeClass).class(hasSize),
             ...elLabel.modifier(colorClass).class(hasColor),
+            ...elLabel.modifier(fontWeightClass).class(hasFontWeight),
           }}
         >
           <slot />
