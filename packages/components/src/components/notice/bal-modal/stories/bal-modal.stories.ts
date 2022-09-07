@@ -12,7 +12,6 @@ import docs from './bal-modal.docs.mdx'
 const component = BalComponentStory({
   title: 'Components/Notice/Modal',
   component: BalModal,
-  status: 'stable',
   subcomponents: { BalModalHeader, BalModalBody },
   docs,
   layout: 'fullscreen',

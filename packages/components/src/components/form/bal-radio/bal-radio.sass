@@ -1,0 +1,183 @@
+@import './bal-radio.mixins'
+
+//
+//
+// radio group
++block(radio-group)
+  display: inline-block
+  position: relative
+  width: 100%
+  //
+  // inner group element
+  +element(inner)
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    flex-wrap: wrap
+    gap: var(--bal-space-normal)
+    //
+    // transform the radios into buttons
+    +modifier(select-button)
+      flex-direction: column
+      flex-wrap: wrap
+      flex: 1
+      gap: var(--bal-space-x-small)
+      +tablet
+        flex-direction: row
+    +modifier(expanded)
+      .bal-radio
+        flex: 1
+    &--select-button#{&}--vertical
+      gap: var(--bal-space-x-small)
+    //
+    // shows the radios verically
+    +modifier(vertical)
+      +radioGroupVertical
+    //
+    // only shows the radios verically on mobile
+    +modifier(vertical-mobile)
+      +mobile
+        +radioGroupVertical
+//
+//
+// radio item
++block(radio)
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 24px
+  min-height: 48px
+  //
+  // hide native input
+  +element(input)
+    +hidden-input
+  //
+  // set cursor
+  &:not(#{&}--disabled)
+    &,
+    input[type='radio'],
+    input[type='radio'] + label,
+    input[type='radio'] + label > span
+      cursor: pointer
+  //
+  // handle visible focus for key navigation
+  &--select-button:focus-within
+    @extend %focus-shadow
+  &__input:focus-visible:not(&__input--select-button) + &__label::before
+    @extend %focus-shadow
+  //
+  // label of the radio with the icon and the text
+  +element(label)
+    +font-smoothing()
+    +margin(0)
+    +unselectable
+    line-height: 24px
+    contain: layout style
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: left
+    min-height: 24px
+    font-family: var(--bal-font-family-text)
+    //
+    // inner text span element
+    +element(text)
+      padding-left: 2rem
+      +modifier(hidden)
+        padding-left: 0
+    //
+    // radio circle icon
+    &::before,
+    &::after
+      display: inline-block
+      position: absolute
+      top: 0px
+      left: 0
+      height: 24px
+      width: 24px
+      border-radius: 50%
+    //
+    // radio circle border & background
+    &::before
+      content: ''
+      border-width: 2px
+      border-style: solid
+    // radio dot
+    &::after
+      content: none
+      transform: scale(0.25)
+      left: 0
+    &--checked
+      &::after
+        content: ''
+        background: var(--bal-color-primary-inverted)
+  //
+  // label text colors
+  +radioTextLabel(--bal-color-primary, --bal-color-light-blue-5, --bal-color-blue-6)
+  &--invalid:not(#{&}--disabled)
+    +radioTextLabel(--bal-color-danger-4, --bal-color-danger-5, --bal-color-danger-6)
+  &--disabled
+    +radioTextLabel(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)
+  //
+  // radio circle border
+  +radioCircleBorder(--bal-color-primary, --bal-color-light-blue-5, --bal-color-blue-6)
+  &--invalid:not(#{&}--disabled)
+    +radioCircleBorder(--bal-color-danger-4, --bal-color-danger-5, --bal-color-danger-6)
+  &--disabled
+    +radioCircleBorder(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)
+  //
+  // checked radio circle background
+  &--checked
+    +radioCircleBackground(--bal-color-primary, --bal-color-primary, --bal-color-primary)
+  &--checked#{&}--invalid:not(#{&}--disabled)
+    +radioCircleBackground(--bal-color-danger-4, --bal-color-danger-4, --bal-color-danger-4)
+  &--checked#{&}--disabled
+    +radioCircleBackground(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)
+  //
+  //
+  // select button style
+  &--select-button
+    padding-left: 0.75rem
+    padding-right: 0.75rem
+    min-width: 3rem
+    border-width: 2px
+    border-style: solid
+    border-radius: var(--bal-radius)
+  //
+  // border style
+  &--select-button
+    +radioSelectButtonBorder(--bal-color-primary, --bal-color-light-blue-5, --bal-color-blue-6)
+  &--select-button#{&}--invalid:not(#{&}--disabled)
+    +radioSelectButtonBorder(--bal-color-danger-4, --bal-color-danger-5, --bal-color-danger-6)
+  &--select-button#{&}--disabled
+    +radioSelectButtonBorder(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)
+  //
+  // background style
+  &--select-button
+    +radioSelectButtonBackground(--bal-color-transparent, --bal-color-light-blue, --bal-color-light-blue)
+  &--select-button#{&}--invalid:not(#{&}--disabled)
+    +radioSelectButtonBackground(--bal-color-danger-1, --bal-color-danger-1, --bal-color-danger-1)
+  &--select-button#{&}--disabled
+    +radioSelectButtonBackground(--bal-color-grey-2, --bal-color-grey-2, --bal-color-grey-2)
+  //
+  // checked background style
+  &--select-button#{&}--checked
+    +radioSelectButtonBackground(--bal-color-primary, --bal-color-primary, --bal-color-primary)
+  &--select-button#{&}--checked#{&}--invalid:not(#{&}--disabled)
+    +radioSelectButtonBackground(--bal-color-danger-1, --bal-color-danger-1, --bal-color-danger-1)
+  &--select-button#{&}--checked#{&}--disabled
+    +radioSelectButtonBackground(--bal-color-grey-2, --bal-color-grey-2, --bal-color-grey-2)
+  //
+  // checked label circle border style
+  &--select-button#{&}--checked
+    +radioCircleBorder(--bal-color-white, --bal-color-white, --bal-color-white)
+    +radioTextLabel(--bal-color-white, --bal-color-white, --bal-color-white)
+  &--select-button#{&}--checked#{&}--invalid:not(#{&}--disabled)
+    +radioCircleBorder(--bal-color-danger-4, --bal-color-danger-5, --bal-color-danger-6)
+    +radioTextLabel(--bal-color-danger-4, --bal-color-danger-5, --bal-color-danger-6)
+  &--select-button#{&}--checked#{&}--disabled
+    +radioCircleBorder(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)
+    +radioTextLabel(--bal-color-grey-5, --bal-color-grey-5, --bal-color-grey-5)

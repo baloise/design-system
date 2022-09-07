@@ -19,7 +19,6 @@ const component = BalComponentStory({
   component: BalCheckbox,
   subcomponents: { BalCheckboxGroup },
   docs,
-  status: 'stable',
   argTypes: {
     ...balCheckboxGroupArgTypes,
     invalid: balFieldArgTypes.invalid,

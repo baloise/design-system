@@ -63,7 +63,7 @@ export namespace Props {
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
-  export type BalListSize = 'large' | ''
+  export type BalListSize = 'small' | 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
 
   export type BalNavbarInterface = 'app' | 'simple'
@@ -72,6 +72,15 @@ export namespace Props {
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
+  export type BalPopoverContentRadius =
+    | 'normal'
+    | 'large'
+    | 'none'
+    | 'normal-bottom-none'
+    | 'normal-top-none'
+    | 'large-bottom-none'
+    | 'large-top-none'
+  export type BalPopoverContentColor = 'white' | 'grey'
   export type BalPopoverPlacement =
     | 'auto'
     | 'auto-start'
@@ -95,6 +104,7 @@ export namespace Props {
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
   export type BalTabsVertical = boolean | 'mobile' | 'tablet'
+  export type BalTabsFloat = 'left' | 'right'
   // export type BalTabsColSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12'
   export type BalTabsColSize = 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
 

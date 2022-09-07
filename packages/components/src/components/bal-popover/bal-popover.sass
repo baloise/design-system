@@ -1,0 +1,117 @@
+:root
+  --bal-popover-backdrop-height: 100vh
+  --bal-popover-content-height-top-nav: 100vh
+
++block(popover)
+  display: block
+  +mobile
+    .bal-popover__content
+      min-width: 100vw !important
+  +modifier(active)
+    .bal-popover__content
+      display: block
+  +modifier(hint)
+    .bal-popover__content
+      +mobile
+        min-height: 100vh
+        .bal-popover__content__inner
+          min-height: 100vh
+      +tablet
+        max-width: 20rem
+      +desktop
+        max-width: 30rem
+
+  +element(backdrop)
+    @extend %overlay
+    z-index: 10
+    position: fixed
+    background-color: rgba($blue-dark, .8)
+    height: var(--bal-popover-backdrop-height)
+    width: 100vw
+
+  +element(content)
+    display: none
+    z-index: 20
+    min-width: 260px
+    box-shadow: var(--bal-shadow)
+    background: var(--bal-color-white)
+    padding: 1rem
+    +tablet
+      padding: 1.5rem
+    &[data-show]
+      display: block
+    +modifier(spaceless)
+      padding: 0
+    +modifier(expanded)
+      min-width: 100%
+    +modifier(no-shadow)
+      box-shadow: none
+    +modifier(radius-normal)
+      border-radius: var(--bal-radius)
+    +modifier(radius-large)
+      border-radius: var(--bal-radius-large)
+    +modifier(radius-none)
+      border-radius: var(--bal-radius-none)
+    +modifier(radius-normal-bottom-none)
+      border-radius: var(--bal-radius)
+      border-bottom-right-radius: 0
+      border-bottom-left-radius: 0
+    +modifier(radius-normal-top-none)
+      border-radius: var(--bal-radius)
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+    +modifier(radius-large-bottom-none)
+      border-radius: var(--bal-radius-large)
+      border-bottom-right-radius: 0
+      border-bottom-left-radius: 0
+    +modifier(radius-large-top-none)
+      border-radius: var(--bal-radius-large)
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+    +modifier(on-top)
+      border-top: 1px solid var(--bal-color-grey-2)
+      height: var(--bal-popover-content-height-top-nav)
+      overflow-y: auto
+    +modifier(color-grey)
+      background: var(--bal-color-grey-2)
+    +element(arrow)
+      visibility: hidden
+      display: none
+      &,
+      &:before
+        position: absolute
+        width: 8px
+        height: 8px
+        background: inherit
+      &:before
+        visibility: visible
+        content: ''
+        transform: rotate(45deg)
+
+    &[data-popper-placement^='top'] > .bal-popover__content__arrow
+      bottom: -4px
+
+    &[data-popper-placement^='bottom'] > .bal-popover__content__arrow
+      top: -4px
+
+    &[data-popper-placement^='left'] > .bal-popover__content__arrow
+      right: -4px
+
+    &[data-popper-placement^='right'] > .bal-popover__content__arrow
+      left: -4px
+
++block(popover)
+  +modifier(arrow)
+    .bal-popover__content__arrow
+      display: block
+  +modifier(tooltip)
+    .bal-popover__content
+      min-width: unset
+      padding: var(--bal-space-x-small)
+      background: var(--bal-color-blue-6)
+      color: var(--bal-color-white)
+      font-family: var(--bal-font-family-text)
+      font-size: var(--bal-size-small)
+
+[bal-popover-trigger]
+  z-index: 15

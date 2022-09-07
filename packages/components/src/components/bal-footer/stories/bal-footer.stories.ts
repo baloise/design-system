@@ -10,7 +10,6 @@ const component = BalComponentStory({
     ...configArgTypes,
   },
   docs,
-  status: 'stable',
   args: {
     ...configDefaultArgs,
   },

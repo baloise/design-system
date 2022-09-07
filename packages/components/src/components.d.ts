@@ -13,6 +13,7 @@ import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Props as Props2 } from "./props";
 import { Events as Events1 } from "./events";
+import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -776,6 +777,20 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
     }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native": boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate": boolean;
+        /**
+          * Scrolls to the first invalid field inside this form component.
+         */
+        "scrollToFirstInvalidField": () => Promise<void>;
+    }
     interface BalFormCol {
         "size": Props.BalFormColSize;
     }
@@ -880,6 +895,10 @@ export namespace Components {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -1076,6 +1095,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav": boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
@@ -1106,6 +1129,10 @@ export namespace Components {
          */
         "selected": boolean;
         /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem": boolean;
+        /**
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
@@ -1121,6 +1148,10 @@ export namespace Components {
           * If `true` the list accordion is open
          */
         "accordionOpen": boolean;
+        /**
+          * Icon name string with value 'plus' on default
+         */
+        "icon": string;
     }
     interface BalListItemContent {
     }
@@ -1133,6 +1164,10 @@ export namespace Components {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Heading level with value 'h4' on default
+         */
+        "level": Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -1201,7 +1236,7 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
-          * TODO: describe
+          * Sets the content content width with the regular container classes
          */
         "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
@@ -1217,8 +1252,16 @@ export namespace Components {
         /**
           * Link of the logo / title.
          */
-        "href": string;
+        "href"?: string;
         "interface": Props1.BalNavbarInterface;
+        /**
+          * Link target
+         */
+        "linkTarget": string;
+        /**
+          * Src to display a logo -> replaces the default Baloise Logo
+         */
+        "logo"?: string;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -1315,9 +1358,21 @@ export namespace Components {
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color": 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
         "target": Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
@@ -1333,6 +1388,84 @@ export namespace Components {
     interface BalNavigationMetaEnd {
     }
     interface BalNavigationMetaStart {
+    }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor": Props.BalButtonColor;
+        /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow": boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
+        /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable": boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded": boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius": Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth": number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor": Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted": boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label": string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop": boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY": number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position": Props.BalPopoverPlacement;
+        /**
+          * Defines the size of the button
+         */
+        "size": Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -1429,39 +1562,75 @@ export namespace Components {
     }
     interface BalPopover {
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * If `true` a little arrow is added, which points to the trigger element
          */
-        "debounce": number;
+        "arrow": boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
+        /**
+          * If `true` a outside click can close the popover
+         */
+        "closable": boolean;
         /**
           * Closes the popover
          */
-        "dismiss": () => Promise<void>;
+        "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
         /**
-          * If `true` the field spans over the whole width.
+          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+         */
+        "hint": boolean;
+        /**
+          * If `true` the popover shows on hover
+         */
+        "hover": boolean;
+        /**
+          * If `true` there will be no backdrop
+         */
+        "mobileTop": boolean;
+        /**
+          * Define the offset of the popover content.
          */
         "offsetX": number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the offset of the popover content.
          */
         "offsetY": number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define padding of the overflow
+         */
+        "padding": number;
+        /**
+          * Define the position of the popover content.
          */
         "position": Props.BalPopoverPlacement;
         /**
           * Open the popover
          */
-        "present": () => Promise<void>;
+        "present": (options?: PopoverPresentOptions) => Promise<void>;
         /**
           * Open or closes the popover
          */
-        "toggle": () => Promise<void>;
+        "toggle": (options?: PopoverPresentOptions) => Promise<void>;
+        /**
+          * If `true` the popover is shown as a tooltip
+         */
+        "tooltip": boolean;
         /**
           * If `true` the popover content is open.
          */
         "value": boolean;
     }
     interface BalPopoverContent {
+        /**
+          * Defines background color of the content.
+         */
+        "color": Props2.BalPopoverContentColor;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
         /**
           * Define the max width of the popover content.
          */
@@ -1471,9 +1640,25 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the content will have a divider line on top
+         */
+        "mobileTop": boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "radius": Props2.BalPopoverContentRadius;
+        /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable": number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless": boolean;
     }
     interface BalProductSlider {
     }
@@ -1578,6 +1763,10 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded": boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -1934,6 +2123,10 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
+          * If `true` the step is hidden.
+         */
+        "hidden": boolean;
+        /**
           * Link to path.
          */
         "href": string;
@@ -1982,6 +2175,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "float": Props.BalTabsFloat;
+        /**
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
@@ -2006,6 +2203,10 @@ export namespace Components {
           * If `true` the tabs are shown as a select component on mobile
          */
         "selectOnMobile": boolean;
+        /**
+          * If `true` the tabs container does not have a padding left or right.
+         */
+        "spaceless": boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -2160,28 +2361,6 @@ export namespace Components {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
-    interface BalTimeinput {
-        /**
-          * If `true` the button is disabled
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted": boolean;
-        /**
-          * Latest date available for selection
-         */
-        "maxTime": string;
-        /**
-          * Earliest date available for selection
-         */
-        "minTime": string;
-        /**
-          * The value of the datepicker with the format `hh:mm`.
-         */
-        "value": string;
-    }
     interface BalToast {
         /**
           * Closes this toast
@@ -2325,10 +2504,6 @@ export interface BalTagCustomEvent<T> extends CustomEvent<T> {
 export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTextareaElement;
-}
-export interface BalTimeinputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalTimeinputElement;
 }
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2641,6 +2816,12 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormElement extends Components.BalForm, HTMLStencilElement {
+    }
+    var HTMLBalFormElement: {
+        prototype: HTMLBalFormElement;
+        new (): HTMLBalFormElement;
+    };
     interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
     }
     var HTMLBalFormColElement: {
@@ -2905,6 +3086,12 @@ declare global {
         prototype: HTMLBalNavigationMetaStartElement;
         new (): HTMLBalNavigationMetaStartElement;
     };
+    interface HTMLBalNavigationPopoverElement extends Components.BalNavigationPopover, HTMLStencilElement {
+    }
+    var HTMLBalNavigationPopoverElement: {
+        prototype: HTMLBalNavigationPopoverElement;
+        new (): HTMLBalNavigationPopoverElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -3085,12 +3272,6 @@ declare global {
         prototype: HTMLBalTextareaElement;
         new (): HTMLBalTextareaElement;
     };
-    interface HTMLBalTimeinputElement extends Components.BalTimeinput, HTMLStencilElement {
-    }
-    var HTMLBalTimeinputElement: {
-        prototype: HTMLBalTimeinputElement;
-        new (): HTMLBalTimeinputElement;
-    };
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
     }
     var HTMLBalToastElement: {
@@ -3149,6 +3330,7 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form": HTMLBalFormElement;
         "bal-form-col": HTMLBalFormColElement;
         "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
@@ -3193,6 +3375,7 @@ declare global {
         "bal-navigation-meta": HTMLBalNavigationMetaElement;
         "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
         "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
+        "bal-navigation-popover": HTMLBalNavigationPopoverElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -3223,7 +3406,6 @@ declare global {
         "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
-        "bal-timeinput": HTMLBalTimeinputElement;
         "bal-toast": HTMLBalToastElement;
     }
 }
@@ -4024,6 +4206,16 @@ declare namespace LocalJSX {
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
     }
+    interface BalForm {
+        /**
+          * If `true` a native form element is added as a wrapper of the slot.
+         */
+        "native"?: boolean;
+        /**
+          * If `true` it adds the novalidate attribute to the native form element.
+         */
+        "novalidate"?: boolean;
+    }
     interface BalFormCol {
         "size"?: Props.BalFormColSize;
     }
@@ -4116,6 +4308,10 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -4336,6 +4532,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "inMainNav"?: boolean;
+        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
@@ -4370,6 +4570,10 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
         /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem"?: boolean;
+        /**
           * Specifies where to open the linked document
          */
         "target"?: Props.BalListItemTarget;
@@ -4386,6 +4590,10 @@ declare namespace LocalJSX {
          */
         "accordionOpen"?: boolean;
         /**
+          * Icon name string with value 'plus' on default
+         */
+        "icon"?: string;
+        /**
           * Emitted when the accordion state is changed
          */
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
@@ -4401,6 +4609,10 @@ declare namespace LocalJSX {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+        /**
+          * Heading level with value 'h4' on default
+         */
+        "level"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -4467,7 +4679,7 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
-          * TODO: describe
+          * Sets the content content width with the regular container classes
          */
         "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
@@ -4485,6 +4697,14 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         "interface"?: Props1.BalNavbarInterface;
+        /**
+          * Link target
+         */
+        "linkTarget"?: string;
+        /**
+          * Src to display a logo -> replaces the default Baloise Logo
+         */
+        "logo"?: string;
         /**
           * Emitted when the link element has clicked
          */
@@ -4583,9 +4803,21 @@ declare namespace LocalJSX {
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
         "color"?: 'white' | 'grey';
+        /**
+          * Optional headline of the menu list card
+         */
         "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
         "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
         "target"?: Props2.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
@@ -4601,6 +4833,84 @@ declare namespace LocalJSX {
     interface BalNavigationMetaEnd {
     }
     interface BalNavigationMetaStart {
+    }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor"?: Props.BalButtonColor;
+        /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable"?: boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded"?: boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius"?: Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth"?: number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor"?: Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label"?: string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY"?: number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position"?: Props.BalPopoverPlacement;
+        /**
+          * Defines the size of the button
+         */
+        "size"?: Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -4705,15 +5015,35 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * If `true` a little arrow is added, which points to the trigger element
          */
-        "debounce"?: number;
+        "arrow"?: boolean;
         /**
-          * If `true` the field spans over the whole width.
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true` a outside click can close the popover
+         */
+        "closable"?: boolean;
+        /**
+          * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
+         */
+        "hint"?: boolean;
+        /**
+          * If `true` the popover shows on hover
+         */
+        "hover"?: boolean;
+        /**
+          * If `true` there will be no backdrop
+         */
+        "mobileTop"?: boolean;
+        /**
+          * Define the offset of the popover content.
          */
         "offsetX"?: number;
         /**
-          * If `true` the field spans over the whole width.
+          * Define the offset of the popover content.
          */
         "offsetY"?: number;
         /**
@@ -4722,15 +5052,31 @@ declare namespace LocalJSX {
         "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
-          * If `true` the field spans over the whole width.
+          * Define padding of the overflow
+         */
+        "padding"?: number;
+        /**
+          * Define the position of the popover content.
          */
         "position"?: Props.BalPopoverPlacement;
+        /**
+          * If `true` the popover is shown as a tooltip
+         */
+        "tooltip"?: boolean;
         /**
           * If `true` the popover content is open.
          */
         "value"?: boolean;
     }
     interface BalPopoverContent {
+        /**
+          * Defines background color of the content.
+         */
+        "color"?: Props2.BalPopoverContentColor;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
         /**
           * Define the max width of the popover content.
          */
@@ -4740,9 +5086,25 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "noShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "radius"?: Props2.BalPopoverContentRadius;
+        /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+        /**
+          * If `true` the popover has no padding space.
+         */
+        "spaceless"?: boolean;
     }
     interface BalProductSlider {
     }
@@ -4867,6 +5229,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width for the select-buttons
+         */
+        "expanded"?: boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -5238,6 +5604,10 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
+          * If `true` the step is hidden.
+         */
+        "hidden"?: boolean;
+        /**
           * Link to path.
          */
         "href"?: string;
@@ -5286,6 +5656,10 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "float"?: Props.BalTabsFloat;
+        /**
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
@@ -5309,6 +5683,10 @@ declare namespace LocalJSX {
           * If `true` the tabs are shown as a select component on mobile
          */
         "selectOnMobile"?: boolean;
+        /**
+          * If `true` the tabs container does not have a padding left or right.
+         */
+        "spaceless"?: boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -5479,36 +5857,6 @@ declare namespace LocalJSX {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
-    interface BalTimeinput {
-        /**
-          * If `true` the button is disabled
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted"?: boolean;
-        /**
-          * Latest date available for selection
-         */
-        "maxTime"?: string;
-        /**
-          * Earliest date available for selection
-         */
-        "minTime"?: string;
-        /**
-          * Emitted when either the hour or minute input field loses focus.
-         */
-        "onBalBlur"?: (event: BalTimeinputCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when either the hour or the minute input has changed. It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
-         */
-        "onBalChange"?: (event: BalTimeinputCustomEvent<string>) => void;
-        /**
-          * The value of the datepicker with the format `hh:mm`.
-         */
-        "value"?: string;
-    }
     interface BalToast {
         "closeHandler"?: () => void;
         /**
@@ -5580,6 +5928,7 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form": BalForm;
         "bal-form-col": BalFormCol;
         "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
@@ -5624,6 +5973,7 @@ declare namespace LocalJSX {
         "bal-navigation-meta": BalNavigationMeta;
         "bal-navigation-meta-end": BalNavigationMetaEnd;
         "bal-navigation-meta-start": BalNavigationMetaStart;
+        "bal-navigation-popover": BalNavigationPopover;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5654,7 +6004,6 @@ declare namespace LocalJSX {
         "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
-        "bal-timeinput": BalTimeinput;
         "bal-toast": BalToast;
     }
 }
@@ -5713,6 +6062,7 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form": LocalJSX.BalForm & JSXBase.HTMLAttributes<HTMLBalFormElement>;
             "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
             "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
@@ -5757,6 +6107,7 @@ declare module "@stencil/core" {
             "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
             "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
             "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
+            "bal-navigation-popover": LocalJSX.BalNavigationPopover & JSXBase.HTMLAttributes<HTMLBalNavigationPopoverElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
@@ -5787,7 +6138,6 @@ declare module "@stencil/core" {
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
-            "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
         }
     }

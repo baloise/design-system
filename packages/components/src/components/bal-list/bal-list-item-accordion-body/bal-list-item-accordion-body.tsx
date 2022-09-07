@@ -28,6 +28,12 @@ export class ListItemAccordionBody {
     const inner = this.el.querySelector('.inner')
     if (inner) {
       this.contentHeight = inner.scrollHeight + 'px'
+      const parent = this.el.closest('.bal-list-item-accordion-body__parent') as HTMLBalListItemAccordionBodyElement
+      const parentHeight = parent ? parent.scrollHeight : 0
+      const parentIsThereAndIsOpen = parent && parentHeight > 0 && parent.open
+      if (parentIsThereAndIsOpen && this.open) {
+        parent.style.maxHeight = parentHeight + inner.scrollHeight + 'px'
+      }
     }
   }
 

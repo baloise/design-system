@@ -74,7 +74,7 @@ The downloaded fonts have to be placed in a folder in the public area. The path 
 ```scss
 $font-path: 'assets/fonts';
 
-@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global';
 ```
 
 > **TIP for Angular apps**
@@ -86,7 +86,7 @@ $font-path: 'assets/fonts';
 > ```scss
 > $font-path: '~assets/fonts';
 >
-> @import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+> @import 'node_modules/@baloise/design-system-next-components/src/styles/global';
 > ```
 
 Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
@@ -94,7 +94,7 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* src/assets/fonts"
 }
 ```
 

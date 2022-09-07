@@ -1,4 +1,4 @@
-@import './bal-input-group.mixins.scss'
+@import './bal-input-group.mixins'
 
 +block(input-group)
   +unselectable
@@ -6,6 +6,7 @@
   display: flex
   width: 100%
   align-items: center
+  min-height: 48px
   gap: 4px
   border: 2px solid var(--bal-color-border-normal)
   border-radius: var(--bal-radius-small)
@@ -13,43 +14,49 @@
 
   .input
     min-height: 44px
+    height: 44px
     border: none
     border-radius: 0
     padding-left: 0
     padding-right: 0
-    padding-bottom: calc(0.5em - 2px)
-    padding-top: calc(0.5em - 2px)
+    padding-bottom: calc(0.5em - 5px)
+    padding-top: calc(0.5em - 5px)
 
-  .bal-select__slot
+  .bal-select__control
     border: none
+    min-height: 44px
 
   .bal-icon
     min-width: 48px
 
+  & > *:first-child.bal-select .bal-select__control
+    padding-left: 1rem
+
   & > *:first-child.bal-input
     .input
-      padding-left: calc(0.75em - 1px)
+      padding-left: 1rem
 
   & > *:last-child.bal-input
     .input
-      padding-right: calc(0.75em - 1px)
+      padding-right: 1rem
 
   & > *:first-child.input
-    padding-left: calc(0.75em - 1px)
+    padding-left: 1rem
 
   & > *:last-child.input
-    padding-right: calc(0.75em - 1px)
+    padding-right: 1rem
 
   & > *:last-child.bal-tag
-    margin-right: calc(0.75em - 1px)
+    margin-right: 1rem
 
   & > *:first-child.bal-tag
-    margin-left: calc(0.75em - 1px)
+    margin-left: 1rem
 
   &.is-hovered,
   &:hover
     &,
-    .input
+    .input,
+    .bal-select__control
       background: var(--bal-color-grey-1)
 
   +modifier(is-danger)

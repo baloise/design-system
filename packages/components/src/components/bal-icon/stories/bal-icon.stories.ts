@@ -5,7 +5,6 @@ import { BalIcon } from '../../../../.storybook/vue/components'
 const component = BalComponentStory({
   component: BalIcon,
   docs,
-  status: 'stable',
 })
 
 export default component.story

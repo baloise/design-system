@@ -11,9 +11,9 @@ $font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-bold.woff2', $font-
   font-display: fallback;
   src: local('BaloiseCreateHeadline');
   src: local('BaloiseCreateHeadline-bold');
-  src: url($font-heading-bold-ttf) format('truetype');
-  src: url($font-heading-bold-woff2) format('woff2');
-  src: url($font-heading-bold-woff) format('woff');
+  src: url('#{$font-heading-bold-ttf}') format('truetype');
+  src: url('#{$font-heading-bold-woff2}') format('woff2');
+  src: url('#{$font-heading-bold-woff}') format('woff');
 }
 
 $font-heading-light-ttf: str-insert('/BaloiseCreateHeadline-light.ttf', $font-path, 0);
@@ -26,9 +26,9 @@ $font-heading-light-woff2: str-insert('/BaloiseCreateHeadline-light.woff2', $fon
   font-weight: 300;
   font-display: fallback;
   src: local('BaloiseCreateHeadline-light');
-  src: url($font-heading-light-ttf) format('truetype');
-  src: url($font-heading-light-woff2) format('woff2');
-  src: url($font-heading-light-woff) format('woff');
+  src: url('#{$font-heading-light-ttf}') format('truetype');
+  src: url('#{$font-heading-light-woff2}') format('woff2');
+  src: url('#{$font-heading-light-woff}') format('woff');
 }
 
 $font-text-bold-ttf: str-insert('/BaloiseCreateText-bold.ttf', $font-path, 0);
@@ -41,9 +41,9 @@ $font-text-bold-woff2: str-insert('/BaloiseCreateText-bold.woff2', $font-path, 0
   font-weight: 700;
   font-display: fallback;
   src: local('BaloiseCreateText-bold');
-  src: url($font-text-bold-ttf) format('truetype');
-  src: url($font-text-bold-woff2) format('woff2');
-  src: url($font-text-bold-woff) format('woff');
+  src: url('#{$font-text-bold-ttf}') format('truetype');
+  src: url('#{$font-text-bold-woff2}') format('woff2');
+  src: url('#{$font-text-bold-woff}') format('woff');
 }
 
 $font-text-regular-ttf: str-insert('/BaloiseCreateText-regular.ttf', $font-path, 0);
@@ -57,7 +57,7 @@ $font-text-regular-woff2: str-insert('/BaloiseCreateText-regular.woff2', $font-p
   font-display: fallback;
   src: local('BaloiseCreateText');
   src: local('BaloiseCreateText-regular');
-  src: url($font-text-regular-ttf) format('truetype');
-  src: url($font-text-regular-woff2) format('woff2');
-  src: url($font-text-regular-woff) format('woff');
+  src: url('#{$font-text-regular-ttf}') format('truetype');
+  src: url('#{$font-text-regular-woff2}') format('woff2');
+  src: url('#{$font-text-regular-woff}') format('woff');
 }

@@ -17,6 +17,7 @@ export class Tabs {
 
   private didInit = false
   private mutationO?: MutationObserver
+  private timeoutTimer?: NodeJS.Timer
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -37,9 +38,19 @@ export class Tabs {
   @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
 
   /**
+   * Defines the layout of the tabs.
+   */
+  @Prop() float: Props.BalTabsFloat = 'left'
+
+  /**
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false
+
+  /**
+   * If `true` the tabs container does not have a padding left or right.
+   */
+  @Prop() spaceless = false
 
   /**
    * If `true` the field expands over the whole width.
@@ -210,10 +221,31 @@ export class Tabs {
   }
 
   private moveLine(element: HTMLElement, timeout = 0) {
-    setTimeout(() => {
+    if (this.timeoutTimer) {
+      clearTimeout(this.timeoutTimer)
+    }
+    this.timeoutTimer = setTimeout(() => {
       if (this.interface !== 'steps' && this.interface !== 'o-steps') {
         if (element) {
+          let paddingLeft = 0
+          let paddingRight = 0
           const listElement = element.closest('li')
+          if (listElement) {
+            paddingLeft = parseInt(
+              window
+                .getComputedStyle(listElement.firstChild as Element)
+                .getPropertyValue('padding-left')
+                .slice(0, -2),
+              10,
+            )
+            paddingRight = parseInt(
+              window
+                .getComputedStyle(listElement.firstChild as Element)
+                .getPropertyValue('padding-right')
+                .slice(0, -2),
+              10,
+            )
+          }
 
           const isMobile = isPlatform('mobile')
           const isTablet = isPlatform('tablet')
@@ -232,11 +264,11 @@ export class Tabs {
             }
           } else {
             if (listElement?.clientWidth !== undefined) {
-              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : 32)
+              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : paddingLeft + paddingRight)
             }
 
             if (listElement?.offsetLeft !== undefined) {
-              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
+              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : paddingLeft)
             }
           }
         } else {
@@ -303,8 +335,10 @@ export class Tabs {
               value={this.value}
               context={this.interface}
               inverted={this.inverted}
+              spaceless={this.spaceless}
               tabs={this.tabsOptions}
               border={this.border}
+              float={this.float}
               expanded={this.expanded}
               clickable={this.clickable}
               isReady={this.isReady}

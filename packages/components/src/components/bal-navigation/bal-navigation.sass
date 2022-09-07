@@ -1,13 +1,23 @@
+:root
+  --bal-nav-main-mobile-height: 100vh
+
 +block(nav)
-  position: sticky
+  position: absolute
   display: block
+  width: 100%
+  z-index: 30
   top: 0
   left: 0
-  width: 100%
-  transition: top .3s ease-in-out
-  z-index: 100
+  background-color: var(--bal-color-background)
+  +desktop
+    background-color: transparent
+    position: fixed
+    top: 0
+    left: 0
+    transition: transform .3s ease-in-out
   +modifier(transformed)
-    top: -3rem
+    +desktop
+      transform: translateY(-3rem)
 
   +element(meta)
     +unselectable
@@ -21,19 +31,20 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - 65px)
+      width: calc(100vw - 6rem)
       padding: 0
       +widescreen
-        width: calc(100vw - 240px)
+        width: calc(100vw - 15rem)
       +fullhd
-        width: calc(100vw - 489px)
-        max-width: 1431px
+        width: calc(100vw - 32.5rem)
+        max-width: 1400px
 
     +element(start)
       display: flex
       flex-grow: 1
       align-items: center
       gap: .5rem
+      margin-left: -.75rem
 
   +element(main)
     +unselectable
@@ -42,18 +53,17 @@
     left: 50%
     top: 100%
     transform: translateX(-50%)
-    z-index: 9000
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     +until-widescreen
       width: 100%
-      &.is-expanded
-        border-bottom-left-radius: 12px
-        border-bottom-right-radius: 12px
+      +modifier(expanded)
+        border-bottom-left-radius: var(--bal-radius-large)
+        border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
       margin: 1rem auto 0
-      width: calc(100vw - 160px)
-      border-radius: 12px
+      width: calc(100vw - 10rem)
+      border-radius: var(--bal-radius-large)
     +fullhd
       margin: 1.5rem auto 0
       width: 1480px
@@ -61,7 +71,7 @@
 
     +element(head)
       display: block
-      padding: 0 2rem
+      padding: 0 3rem
       position: relative
       transition: border-radius .3s ease-in-out
       background-color: var(--bal-color-background)
@@ -69,13 +79,11 @@
         display: flex
         justify-content: space-between
         flex-wrap: wrap
-        align-items: start
+        align-items: flex-start
         width: 100%
       +until-widescreen
         width: 100%
-      +widescreen
-        padding: 0 2.5rem
-        border-radius: 12px
+      +desktop
         &::after
           position: absolute
           content: ''
@@ -87,62 +95,53 @@
           opacity: 0
           z-index: 1
           transition: opacity .3s ease-in-out
-        > div
-          align-items: center
-        &.is-active
-          border-bottom-left-radius: 0 !important
-          border-bottom-right-radius: 0 !important
-          transition: border-radius .3s ease-in-out
+        +modifier(active)
           &::after
             opacity: 1
             transition: opacity .3s ease-in-out
-      +fullhd
-        padding: 0 1.5rem
+      +widescreen
+        border-radius: var(--bal-radius-large)
+        padding: 0 2.5rem
+        > div
+          align-items: center
+        +modifier(active)
+          border-bottom-left-radius: 0 !important
+          border-bottom-right-radius: 0 !important
+          transition: border-radius .3s ease-in-out
 
     .bal-nav__main-head-logo
       margin-top: 1rem
       margin-right: 1rem
       +widescreen
         margin: 0
-        padding: 0 1rem
+        padding: 0
 
     +element(body)
       position: relative
       display: block
-      min-height: 0 !important
-      max-height: 0
-      overflow: hidden
-      pointer-events: none
-      opacity: 0
-      transition: opacity .3s ease-in-out
+      max-height: calc(100vh - 160px)
+      overflow-y: auto
       background: var(--bal-color-white)
       +widescreen
-        border-bottom-left-radius: 12px
-        border-bottom-right-radius: 12px
-      .bal-nav__menu
-        opacity: 0
-        transition: opacity .3s ease-in-out .1s
-      &.is-active
-        opacity: 1
-        pointer-events: all
-        transition: opacity .3s ease-in-out
-        overflow-y: auto
-        max-height: calc(100vh - 160px)
-        +fullhd
-          max-height: calc(100vh - 176px)
-        .bal-nav__menu
-          opacity: 1
-          transition: opacity .3s ease-in-out .1s
-
+        border-bottom-left-radius: var(--bal-radius-large)
+        border-bottom-right-radius: var(--bal-radius-large)
+      +fullhd
+        max-height: calc(100vh - 176px)
   +element(menu)
     display: block
-    padding: 40px 3rem 0
+    +desktop
+      padding: 2.5rem 3rem .5rem
+    +widescreen
+      padding: 2.5rem 2.5rem .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
+      .column
+        padding-top: 0
+        padding-bottom: 0
     +element(link)
       display: block
-      margin-bottom: 1rem
+      margin-bottom: .5rem
       > a
         color: var(--bal-color-blue)
         position: relative
@@ -156,8 +155,10 @@
           top: 50%
           transform: translateY(-50%)
           content: '\279E'
-        &:hover
-          color: var(--bal-color-light-blue-dark)
+        +hover
+          &:hover
+            color: var(--bal-color-light-blue-dark)
+            text-decoration: underline
     +element(white-list)
       +widescreen
         display: flex
@@ -166,26 +167,140 @@
     +element(list)
       display: block
       position: relative
-      margin-bottom: 3rem
+      > bal-card >:not(bal-badge):not(bal-tag):last-child
+        padding-bottom: 1rem
+      > bal-card >:not(bal-badge):not(bal-tag):first-child
+        padding-top: 1rem
+      +modifier(context-grey)
+        +touch
+          padding-bottom: 1rem
+          padding-top: 1rem
+        +desktop
+          margin: 0 0 1rem
+          &:last-child
+            margin: 0 0 .5rem
       +modifier(context-white)
-        > bal-card > bal-card-content
-          padding: 0
+        +desktop
+          > bal-card > bal-card-content
+            padding-left: 0
+            padding-right: 0
         +widescreen
           width: calc(50% - 30px)
           &:nth-child(odd)
             margin-right: 60px
-      > bal-card > bal-card-content > a:hover > bal-heading > h4
-        color: var(--bal-color-light-blue-dark)
-
+      > bal-card > bal-card-content > a
+        +hover
+          &:hover
+            > bal-heading > h4
+              color: var(--bal-color-light-blue-dark)
+              text-decoration: underline
       +element(item)
         display: block
         +element(link)
           display: block
           margin-top: .5rem
-          &:hover
-            color: var(--bal-color-light-blue-dark)
-
+          +hover
+            &:hover
+              color: var(--bal-color-light-blue-dark)
+              text-decoration: underline
       +element(card)
         margin: 0
         +element(heading)
           margin-bottom: 1rem
+
+  .bal-nav__metamobile
+    display: block
+    background: var(--bal-color-primary-inverted)
+    height: 4rem
+    max-height: 4rem
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    z-index: 30
+    +desktop
+      display: none
+    nav
+      display: flex
+      height: 100%
+      gap: .5rem
+      align-items: center
+      margin: 0 auto
+      padding: 0 1rem
+      +tablet
+        padding: 0 3rem
+    .bal-nav__metamobile__actions
+      margin-left: auto
+      > div
+        display: flex
+        gap: .5rem
+  .bal-nav__main-mobile
+    display: block
+    padding: 1.5rem 1rem 4rem
+    z-index: 29
+    height: var(--bal-nav-main-mobile-height)
+    overflow-y: auto
+    +tablet
+      padding: 0 3rem
+    +desktop
+      display: none
+    +element(link)
+      display: block
+      padding-bottom: 1rem
+      position: relative
+
+      &:after
+        content: ''
+        background: var(--bal-color-grey)
+        height: 1px
+        width: 100%
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+      > a
+        color: var(--bal-color-blue)
+        font-size: 0.75rem
+        font-weight: var(--bal-weight-bold)
+        line-height: 1rem
+        padding-right: 1rem
+        position: relative
+        &::before
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-50%)
+          content: '\279E'
+        +hover
+          &:hover
+            color: var(--bal-color-light-blue-dark)
+    +element(logo)
+      padding-top: 1rem
+      padding-bottom: 1rem
+  .bal-nav__foot-mobile
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+    background: var(--bal-color-grey-2)
+    padding: .5rem
+    +desktop
+      display: none
+    > div
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: .5rem
+  .bal-navigation-popover__button-white
+    .button
+      background-color: var(--bal-color-background)
+      border-color: var(--bal-color-background)
+  [bal-popover-trigger]
+    z-index: 0
+
+  +element(popover)
+    +element(head)
+      display: flex
+      align-items: center
+      justify-content: space-between
+      margin-bottom: .75rem
+    .bal-popover__backdrop
+      +desktop()
+        top: 3rem

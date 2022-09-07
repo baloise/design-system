@@ -28,8 +28,8 @@
 
   input[type='checkbox']
     position: absolute
-    left: 0
-    top: 0
+    left: 6px
+    top: 24px
     margin: 0
     padding: 0
     opacity: 0
@@ -43,8 +43,8 @@
     user-select: none
 
   +element(label)
-    @include font-smoothing()
-    @include margin(0)
+    +font-smoothing()
+    +margin(0)
 
     line-height: 1.5rem
     contain: layout style
@@ -64,7 +64,7 @@
     +element(text)
       padding-left: 2rem
 
-    bal-text:empty
+    bal-text: empty
       padding-left: 0
 
     +desktop

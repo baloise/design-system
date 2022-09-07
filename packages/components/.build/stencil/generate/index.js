@@ -69,7 +69,7 @@ const toStoryId = value => {
       message: 'Which additional files do you want to generate',
       choices: [
         { title: 'Storybook (/stories)', value: 'story', selected: true },
-        { title: 'Stylesheet (.scss)', value: 'style', selected: true },
+        { title: 'Stylesheet (.sass)', value: 'style', selected: true },
         { title: 'E2E Test (/test)', value: 'test', selected: true },
         { title: 'Unit Test (/test)', value: 'unit', selected: false },
       ],
@@ -87,8 +87,7 @@ const toStoryId = value => {
 `)
 
   if (response.extras.includes('style')) {
-    await file.write(path.join(componentFolder, `${tag}.vars.scss`), StyleVarsTemplate(tag))
-    await file.write(path.join(componentFolder, `${tag}.scss`), StyleMainTemplate(tag))
+    await file.write(path.join(componentFolder, `${tag}.sass`), StyleMainTemplate(tag))
   }
 
   if (response.extras.includes('test')) {
@@ -132,23 +131,13 @@ export class ${toClassName(tag)} implements ComponentInterface {
 `
 }
 
-function StyleVarsTemplate(tag) {
-  return `// define variables for your component here with !default.
-
-// $${tag.replace('bal-', '')}-color: $text !default;
-
-`
-}
-
 function StyleMainTemplate(tag) {
-  return `@import './${tag}.vars.scss';
+  return `// TODO: import this stylesheet in src/styles/components/_all.sass
 
-// TODO: import this stylesheet in src/styles/components/_all.scss
++block(${tag.replace('bal-', '')})
+  position: static
+  display: block
 
-${tag} {
-  position: static;
-  display: block;
-}
 `
 }
 

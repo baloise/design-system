@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-fonts",
-  "version": "10.15.9",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,20 +28,17 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "node .build/archive.js",
+    "build": "npm run build:clean && npm run build:archive",
+    "build:clean": "rimraf ./dist",
+    "build:archive": "node ../../.build/archive-font.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./lib/fonts.css",
+  "main": "./css/fonts.css",
   "files": [
-    "lib/",
-    "scss/"
+    "dist/",
+    "css/",
+    "scss/",
+    "lib/"
   ],
-  "directories": {
-    "lib": "lib",
-    "scss": "scss"
-  },
-  "devDependencies": {
-    "archiver": "~5.3.0"
-  },
-  "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
+  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

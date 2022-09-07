@@ -1,0 +1,11 @@
+@use "sass:map"
+
+@import '~@baloise/design-system-next-css/scss/baloise-design-system.utilities'
+@import '~ag-grid-community/src/styles/mixins/_ag-theme-params'
+@import '~ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss'
+@import '~ag-grid-community/src/styles/ag-grid'
+
+$ag-theme-alpine-params: ( header-background-color: $grey-1, borders: false, borders-critical: true, border-color: $blue, header-foreground-color: $blue, header-column-separator: false, row-border-color: $grey-2, selected-row-background-color: $blue-1, odd-row-background-color: null, row-hover-color: $grey-1, range-selection-border-color: $primary, checkbox-border-radius: 4px, checkbox-checked-color: $blue, checkbox-unchecked-color: $grey-2)
+
+.ag-theme-alpine
+  +ag-theme-alpine($ag-theme-alpine-params)

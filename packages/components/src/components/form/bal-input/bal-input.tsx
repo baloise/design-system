@@ -21,6 +21,7 @@ import {
   inputHandleClick,
   inputHandleFocus,
   inputHandleHostClick,
+  inputHandleReset,
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
@@ -38,6 +39,7 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { BEM } from '../../../utils/bem'
+
 @Component({
   tag: 'bal-input',
 })
@@ -144,6 +146,11 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Prop() pattern?: string
 
   /**
+   * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+   */
+  @Prop() allowedKeyPress?: string
+
+  /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() required = false
@@ -220,7 +227,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string = undefined
+  @Prop({ mutable: true, reflect: true }) value?: string = undefined
 
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
@@ -263,6 +270,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
     inputListenOnClick(this, event)
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      inputHandleReset(this)
+    }
   }
 
   connectedCallback() {
@@ -320,8 +335,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
 
-    if (this.pattern && input && !this.mask) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && input && !this.mask) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       this.inputValue = input.value = input.value
         .split('')
         .filter(val => regex.test(val))
@@ -329,61 +344,65 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     }
 
     if (input) {
-      switch (this.mask) {
-        case 'contract-number': {
-          this.inputValue = input.value.replace(/\D/g, '')
-          if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+      if (input.value) {
+        switch (this.mask) {
+          case 'contract-number': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+            }
+            input.value = formatPolicy(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          input.value = formatPolicy(this.inputValue)
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          case 'offer-number': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+            }
+            input.value = formatOffer(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          break
-        }
-        case 'offer-number': {
-          this.inputValue = input.value.replace(/\D/g, '')
-          if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-          }
-          input.value = formatOffer(this.inputValue)
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
-          }
-          break
-        }
-        case 'claim-number': {
-          this.inputValue = input.value.replace(/[^\dX]/g, '')
-          const inputParts = [
-            this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-          ].filter(val => val.length > 0)
-          switch (inputParts.length) {
-            case 1:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
-              break
-            case 2:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-              break
-            default:
-              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
-                /\D/g,
-                '',
-              )}`
-          }
-          if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-          }
-          input.value = formatClaim(this.inputValue)
+          case 'claim-number': {
+            this.inputValue = input.value.replace(/[^\dX]/g, '')
+            const inputParts = [
+              this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+            ].filter(val => val.length > 0)
+            switch (inputParts.length) {
+              case 1:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
+                break
+              case 2:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+                break
+              default:
+                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
+                  /\D/g,
+                  '',
+                )}`
+            }
+            if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+            }
+            input.value = formatClaim(this.inputValue)
 
-          if (cursorPositionStart < this.inputValue.length) {
-            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
           }
-          break
+          default:
+            this.inputValue = input.value
         }
-        default:
-          this.inputValue = input.value
+      } else {
+        this.inputValue = input.value
       }
     }
 
@@ -424,8 +443,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
       }
     }
 
-    if (this.pattern && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       if (!regex.test(event.key) && ![...ACTION_KEYS].includes(event.key)) {
         return stopEventBubbling(event)
       }

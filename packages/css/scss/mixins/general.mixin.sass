@@ -87,7 +87,7 @@
   content: " "
   display: block
   height: 0.625em
-  margin-top: -0.6rem
+  margin-top: -0.4rem
   pointer-events: none
   position: absolute
   top: 50%
@@ -181,7 +181,6 @@
     +desktop
       #{$prop}-bottom: $value-desktop
 
-
 =property-horizontal($prop, $start, $end: $start)
   @if $start == 0 and $end == 0
     #{$prop}-left: $start
@@ -219,6 +218,18 @@
   position: absolute
   right: $offset
   top: $offset
+
+=hidden-input
+  position: absolute
+  left: 0
+  top: 0
+  margin: 0
+  padding: 0
+  opacity: 0
+  outline: 0
+  border: none
+  width: 1px
+  height: 1px
 
 =delete
   +unselectable
@@ -285,4 +296,3 @@
     min-height: 32px
     min-width: 32px
     width: 32px
-

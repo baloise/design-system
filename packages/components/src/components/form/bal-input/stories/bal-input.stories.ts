@@ -13,7 +13,6 @@ const balFieldArgTypes = stencilArgType(BalField)
 const component = BalComponentStory({
   title: 'Components/Form/Input',
   component: BalInput,
-  status: 'stable',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
@@ -171,11 +170,27 @@ PostalCodeInput.args = {
   value: '4000',
   label: 'PostalCode',
   maxLength: 4,
-  pattern: '[0-9]*',
+  allowedKeyPress: '[0-9]',
+  pattern: '[0-9]{4}',
   hasFieldMessage: false,
 }
 PostalCodeInput.parameters = {
   ...component.sourceCode(PostalCodeInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const SimplePhoneNumberInput = Template.bind({})
+SimplePhoneNumberInput.args = {
+  value: '0041665554433',
+  label: 'Simple phone number input',
+  type: 'tel',
+  allowedKeyPress: '[0-9]',
+  hasFieldMessage: false,
+}
+SimplePhoneNumberInput.parameters = {
+  ...component.sourceCode(SimplePhoneNumberInput),
   controls: {
     exclude: excludedControls,
   },

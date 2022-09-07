@@ -6,7 +6,6 @@ import { balToastController } from '../../../../../dist/design-system-next-compo
 const component = BalComponentStory({
   title: 'Components/Form/FileUpload',
   component: BalFileUpload,
-  status: 'stable',
   docs,
 })
 

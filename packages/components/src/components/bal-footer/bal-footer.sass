@@ -1,34 +1,34 @@
 +block(footer)
-    +unselectable
-    display: block
-    position: static
+  +unselectable
+  display: block
+  position: static
 
-    +element(inner)
-        position: relative
-        font-family: var(--bal-family-primary)
-        background-color: var(--bal-color-blue)
-        color: var(--bal-color-white)
-        padding: var(--bal-space-7)
+  +element(inner)
+    position: relative
+    font-family: var(--bal-family-primary)
+    background-color: var(--bal-color-blue)
+    color: var(--bal-color-white)
+    padding: var(--bal-space-7)
 
-        +element(links-container)
-            display: flex
-            justify-content: space-between
-            flex-wrap: wrap
+    +element(links-container)
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
 
-            +element(legal-links)
-                display: flex
-                flex-wrap: wrap
+      +element(legal-links)
+        display: flex
+        flex-wrap: wrap
 
-                & > a
-                    white-space: nowrap
-                    &.is-current
-                        text-decoration: underline
+        & > a
+          white-space: nowrap
+          &.is-current
+            text-decoration: underline
 
-            +element(language-links)
-                & > a
-                    white-space: nowrap
-                    &.is-current
-                        text-decoration: underline
+          +element(language-links)
+            & > a
+              white-space: nowrap
+              &.is-current
+                text-decoration: underline
 
-            +tablet
-                flex-wrap: nowrap
+          +tablet
+            flex-wrap: nowrap

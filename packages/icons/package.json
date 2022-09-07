@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-icons",
-  "version": "10.15.9",
+  "version": "10.20.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,12 +28,11 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:icons && npm run build:compile && npm run build:bundle && npm run build:archive",
-    "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:icons": "node .build/optimize.js",
-    "build:compile": "tsc -p .",
+    "build": "npm run build:icons && npm run build:bundle && npm run build:archive && npm run build:copy",
+    "build:icons": "node ../../.build/optimize-icons.js",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:archive": "node .build/archive.js",
+    "build:archive": "node ../../.build/archive-icons.js",
+    "build:copy": "copyfiles --flat ./src/icons.json ./dist && rimraf ./src/icons.json",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
@@ -41,13 +40,8 @@
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist/",
+    "src/",
     "svg/"
   ],
-  "devDependencies": {
-    "archiver": "~5.3.0",
-    "lodash.camelcase": "~4.3.0",
-    "lodash.upperfirst": "~4.3.1",
-    "svgo": "~2.8.0"
-  },
-  "gitHead": "2bbab92d8cb613be35deecb8d261ec1dc7e398fd"
+  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

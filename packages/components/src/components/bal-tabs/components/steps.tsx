@@ -10,7 +10,7 @@ const stepItemButtonIndexEl = stepItemButtonEl.element('index')
 const stepItemButtonIndexLabelEl = stepItemButtonIndexEl.element('label')
 const stepItemButtonLabelEl = stepItemButtonEl.element('label')
 
-export const StepList: FunctionalComponent<TabProps> = ({ value, clickable, tabs, onSelectTab }) => {
+export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickable, tabs, onSelectTab }) => {
   let hasPassed = true
   tabs = tabs
     .map(tab => ({ ...tab, active: tab.value === value }))
@@ -25,12 +25,14 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, clickable, tabs
     <ul
       class={{
         ...stepsEl.class(),
+        ...stepsEl.modifier(`float-${float}`).class(),
       }}
     >
       {tabs.map((tab, index) => (
         <li
           class={{
             ...stepItemEl.class(),
+            ...stepItemEl.modifier('hidden').class(tab.hidden),
             ...stepItemEl.modifier('active').class(tab.active),
             ...stepItemEl.modifier('passed').class(tab.passed),
             ...stepItemEl.modifier('disabled').class(tab.disabled),
@@ -65,7 +67,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, clickable, tabs
                   ...stepItemButtonIndexEl.element('icon').class(),
                 }}
                 style={{ display: tab.done ? 'block' : 'none' }}
-                size={isPlatform('mobile') ? 'xsmall' : 'small'}
+                size={isPlatform('mobile') ? 'small' : ''}
                 color="white"
                 name="check"
               ></bal-icon>

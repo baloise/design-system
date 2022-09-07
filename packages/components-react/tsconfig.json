@@ -1,9 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "importHelpers": true,
-    "outDir": "dist-transpiled",
-    "declarationDir": "dist/types",
     "jsx": "react"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

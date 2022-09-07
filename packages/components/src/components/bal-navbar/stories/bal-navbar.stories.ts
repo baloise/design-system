@@ -24,11 +24,11 @@ import { isPlatform } from '../../../../dist'
 
 const component = BalComponentStory({
   component: BalNavbar,
-  status: 'stable',
   subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   docs,
   args: {
     expanded: false,
+    light: true,
   },
 })
 
@@ -72,7 +72,7 @@ export const Basic = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>App Header</bal-navbar-brand>
+  <bal-navbar-brand href="/">App Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
       <bal-tabs interface="navbar" inverted v-model="myActiveTab">
@@ -167,7 +167,7 @@ export const Simple = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>Simple Header</bal-navbar-brand>
+  <bal-navbar-brand href="/">Simple Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
@@ -205,6 +205,88 @@ Simple.args = {
   interface: 'simple',
 }
 Simple.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const Light = args => ({
+  components: {
+    ...component.components,
+    BalLogo,
+    BalText,
+    BalButton,
+    BalButtonGroup,
+    BalPopover,
+    BalPopoverContent,
+    BalList,
+    BalListItem,
+    BalListItemContent,
+    BalListItemTitle,
+  },
+  setup: () => {
+    const isActive = ref(true)
+    const square = ref(isPlatform('mobile'))
+
+    const toggle = () => {
+      isActive.value = !isActive.value
+    }
+
+    watchEffect(() => {
+      isActive.value = args.value
+    })
+
+    onMounted(() => window.addEventListener('resize', onResize))
+    onUnmounted(() => window.removeEventListener('resize', onResize))
+
+    function onResize() {
+      square.value = isPlatform('mobile')
+    }
+
+    return {
+      args,
+      square,
+      isActive,
+      toggle,
+    }
+  },
+  template: `<bal-navbar v-bind="args">
+  <bal-navbar-brand logo='https://via.placeholder.com/200x50'>Partner Page</bal-navbar-brand>
+  <bal-navbar-menu>
+    <bal-navbar-menu-end>
+      <bal-popover v-model="isActive">
+        <bal-button bal-popover-trigger :square="square" color="light" icon="web" inverted @click="toggle()">
+          <span class="is-hidden-mobile">DE</span>
+        </bal-button>
+        <bal-popover-content class="p-2">
+          <bal-list border>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>English</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Français</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Italiano</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </bal-popover-content>
+      </bal-popover>
+    </bal-navbar-menu-end>
+  </bal-navbar-menu>
+</bal-navbar>`,
+})
+Light.args = {
+  interface: 'simple',
+  light: 'true',
+}
+Light.parameters = {
   layout: 'fullscreen',
   ...component.sourceCode(Basic),
   controls: { exclude: excludedControls },

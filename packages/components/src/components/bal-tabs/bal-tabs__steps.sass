@@ -5,6 +5,8 @@
     +unselectable
     display: flex
     list-style: none
+    +modifier(float-right)
+      justify-content: flex-end
 
     +element(item)
       flex-basis: 1rem
@@ -27,6 +29,8 @@
           top: 1rem
           margin-left: 22px
           margin-right: 24px
+      +modifier(hidden)
+        display: none
       +modifier(passed)
         &:not(:last-child):after
           background-color: var(--bal-color-border-primary)
@@ -112,8 +116,3 @@
             font-weight: 700
             text-align: center
             width: 100%
-
-            // margin-top: 2rem
-            // margin-left: 0.5em
-            // margin-right: 0.5em
-            // padding-top: 0.2em

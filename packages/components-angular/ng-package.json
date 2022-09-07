@@ -76,7 +76,6 @@
       "@baloise/design-system-next-components/dist/components/bal-tag-group": "BalTagGroup",
       "@baloise/design-system-next-components/dist/components/bal-text": "BalText",
       "@baloise/design-system-next-components/dist/components/bal-textarea": "BalTextarea",
-      "@baloise/design-system-next-components/dist/components/bal-timeinput": "BalTimeinput",
       "@baloise/design-system-next-components/dist/components/bal-toast": "BalToast",
       "@baloise/design-system-next-components/dist/components/bal-input-stepper": "BalInputStepper",
       "@baloise/design-system-next-components/dist/components/bal-doc-tokens-border": "BalDocTokensBorder",
@@ -99,8 +98,26 @@
       "@baloise/design-system-next-components/dist/components/bal-stage-body": "BalStageBody",
       "@baloise/design-system-next-components/dist/components/bal-stage-foot": "BalStageFoot",
       "@baloise/design-system-next-components/dist/components/bal-stage-head": "BalStageHead",
-      "@baloise/design-system-next-components/dist/components/bal-stage-back-link": "BalStageBackLint"
+      "@baloise/design-system-next-components/dist/components/bal-stage-back-link": "BalStageBackLint",
+      "@baloise/design-system-next-components/dist/components/bal-form": "BalForm",
+      "@baloise/design-system-next-components/dist/components/bal-navigation": "BalNavigation",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-level-block": "BalNavigationLevelBlock",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-level-block-item": "BalNavigationLevelBlockItem",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-level-main": "BalNavigationLevelMain",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-level-meta": "BalNavigationLevelMeta",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-levels": "BalNavigationLevels",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-main": "BalNavigationMain",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-main-body": "BalNavigationMainBody",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-main-head": "BalNavigationMainHead",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-menu": "BalNavigationMenu",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-menu-list": "BalNavigationMenuList",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-menu-list-item": "BalNavigationMenuListItem",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-meta": "BalNavigationMeta",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-meta-end": "BalNavigationMetaEnd",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-meta-start": "BalNavigationMetaStart",
+      "@baloise/design-system-next-components/dist/components/bal-navigation-popover": "BalNavigationPopover",
+      "@baloise/design-system-next-components/dist/components/bal-stage-image": "BalStageImage"
     }
   },
-  "whitelistedNonPeerDependencies": ["@baloise/design-system-next-components"]
+  "allowedNonPeerDependencies": ["@baloise/design-system-next-components"]
 }

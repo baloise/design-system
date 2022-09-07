@@ -20,6 +20,7 @@ import {
   inputHandleClick,
   inputHandleFocus,
   inputHandleHostClick,
+  inputHandleReset,
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
@@ -174,6 +175,14 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     inputListenOnClick(this, event)
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      inputHandleReset(this)
+    }
+  }
+
   connectedCallback() {
     this.debounceChanged()
   }
@@ -279,6 +288,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           aria-labelledby={labelId}
           disabled={this.disabled}
           readonly={this.readonly}
+          required={this.required}
           autoCapitalize={this.autocapitalize}
           autoFocus={this.autofocus}
           minLength={this.minLength}
