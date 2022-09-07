@@ -54,10 +54,6 @@
         user-select: none !important
         pointer-events: none !important
         color: var(--bal-color-text-disabled)
-      .bal-tag
-        background-color: $grey-5 !important
-        span
-          color: var(--bal-color-primary-inverted) !important
     //
     // trigger icon on the right
     +element(icon)
@@ -79,9 +75,11 @@
       min-width: 0
       gap: 0
       .bal-tag
-        margin-left: 0.25rem
+        margin-left: 0.625rem
+        margin-top: 10px
+        margin-bottom: 10px
       .bal-tag + .input
-        padding-left: 1rem
+        padding-left: 0.625rem
     //
     // selection part for multiple
     +element(input)
@@ -93,8 +91,8 @@
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
       height: calc(3rem - 0.25rem)
-      padding-left: 1rem
-      padding-right: 1rem
+      padding-left: 0.625rem
+      padding-right: 0.625rem
       &:read-only
         user-select: none !important
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0)

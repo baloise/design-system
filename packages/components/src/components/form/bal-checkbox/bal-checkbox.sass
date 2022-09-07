@@ -23,10 +23,19 @@
   min-width: 1.5rem
   min-height: 3rem
 
+  //
+  // set cursor
+  &:not(#{&}--disabled)
+    &,
+    input[type='checkbox'],
+    input[type='checkbox'] + label,
+    input[type='checkbox'] + label > span
+      cursor: pointer
+
   +modifier(is-flat)
     min-height: 1.5rem
 
-  input[type='checkbox']
+  &__input
     position: absolute
     left: 6px
     top: 24px
@@ -35,8 +44,7 @@
     opacity: 0
     outline: 0
 
-  input[type='checkbox'] + label
-    cursor: pointer
+  &__input + &__label
     -webkit-user-select: none
     -moz-user-select: none
     -ms-user-select: none
@@ -53,7 +61,6 @@
     justify-content: flex-start
     text-align: left
     min-height: 1.5rem
-    cursor: pointer
     -webkit-user-select: none
     -moz-user-select: none
     -ms-user-select: none
@@ -70,85 +77,125 @@
     +desktop
       font-size: var(--bal-size-normal)
 
-  label::before,
-  label::after
-    display: inline-block
-    position: absolute
-    background-color: transparent
-    background-position: center
-    background-repeat: no-repeat
-    background-size: 1.5rem 1.5rem
+  // &__label::before,
+  // &__label::after
+  //   display: inline-block
+  //   position: absolute
+  //   background-color: transparent
+  //   background-position: center
+  //   background-repeat: no-repeat
+  //   background-size: 1.5rem 1.5rem
 
-  label::before
-    content: ''
-    left: 0
-    height: 1.5rem
-    width: 1.5rem
-    border: 2px solid var(--bal-color-primary)
-    border-radius: var(--bal-radius-small)
+  // &__label::before
+  //   content: ''
+  //   left: 0
+  //   height: 1.5rem
+  //   width: 1.5rem
+  //   border: 2px solid var(--bal-color-primary)
+  //   border-radius: var(--bal-radius-small)
 
-  label::after
-    content: none
-    left: 9px
-    width: 7px
-    height: 13px
-    margin-top: -4px
-    border-bottom: 2px solid var(--bal-color-white)
-    border-right: 2px solid var(--bal-color-white)
-    border-radius: 1px
-    border-top: 0
-    border-left: 0
-    -moz-transform: rotate(45deg)
-    -ms-transform: rotate(45deg)
-    -o-transform: rotate(45deg)
-    -webkit-transform: rotate(45deg)
-    transform: rotate(45deg)
+  // &__label::after
+  //   content: none
+  //   left: 9px
+  //   width: 7px
+  //   height: 13px
+  //   margin-top: -4px
+  //   border-bottom: 2px solid var(--bal-color-white)
+  //   border-right: 2px solid var(--bal-color-white)
+  //   border-radius: 1px
+  //   border-top: 0
+  //   border-left: 0
+  //   -moz-transform: rotate(45deg)
+  //   -ms-transform: rotate(45deg)
+  //   -o-transform: rotate(45deg)
+  //   -webkit-transform: rotate(45deg)
+  //   transform: rotate(45deg)
 
-  input[type='checkbox']:not(.bal-checkbox__input--is-disabled) + label:hover
+  // &__input:focus-visible + &__label::before
+  //   @extend %focus-shadow
+
+  // not checked default styles
+  &__input + &__label:hover
+    color: var(--bal-color-light-blue-dark)
     &::before
-      background: var(--bal-color-grey-1)
+      background: var(--bal-color-grey-2)
       border-color: var(--bal-color-light-blue-dark)
+  &__input + &__label:active
+    color: var(--bal-color-blue-dark)
+    &::before
+      border-color: var(--bal-color-blue-dark)
 
-  input[type='checkbox']:checked:not(.bal-checkbox__input--is-disabled) + label:hover
+  // checked default styles
+  &__input:checked + &__label:hover
     &::before
       border-color: var(--bal-color-light-blue-dark)
       background: var(--bal-color-light-blue-dark)
+  &__input:checked + &__label:active
+    &::before
+      border-color: var(--bal-color-blue-dark)
+      background: var(--bal-color-blue-dark)
 
-  input[type='checkbox']:checked + label::before
+  // check sign
+  &__input:checked + &__label::before
     background: var(--bal-color-primary)
-
-  input[type='checkbox']:checked + label::after
+  &__input:checked + &__label::after
     content: ''
 
-  input[type='checkbox'].bal-checkbox__input--is-disabled + label
-    cursor: default
+  &--invalid
+    .bal-checkbox__label
+      color: var(--bal-color-border-invalid)
+      &:before
+        background: var(--bal-color-invalid)
+        border-color: var(--bal-color-border-invalid)
+    .bal-checkbox__input + .bal-checkbox__label:hover
+      color: var(--bal-color-danger-5)
+      &:before
+        background: var(--bal-color-invalid)
+        border-color: var(--bal-color-danger-5)
+    .bal-checkbox__input + .bal-checkbox__label:active
+      color: var(--bal-color-danger-6)
+      &:before
+        background: var(--bal-color-invalid)
+        border-color: var(--bal-color-danger-6)
 
-  input[type='checkbox'].bal-checkbox__input--is-disabled + label:before
-    background: var(--bal-color-grey-2)
-    border-color: var(--bal-color-grey-2)
+  &--invalid#{&}--checked
+    .bal-checkbox__label
+      &:before
+        background: var(--bal-color-border-invalid)
+    .bal-checkbox__input + .bal-checkbox__label:hover
+      &:before
+        background: var(--bal-color-danger-5)
+    .bal-checkbox__input + .bal-checkbox__label:active
+      &:before
+        background: var(--bal-color-danger-6)
 
-  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:before
-    background: var(--bal-color-grey-2)
+  &--disabled
+    .bal-checkbox__label
+      color: var(--bal-color-text-disabled)
+      &:before
+        background: var(--bal-color-disabled)
+        border-color: var(--bal-color-border-disabled)
+    .bal-checkbox__input + .bal-checkbox__label:hover
+      color: var(--bal-color-text-disabled)
+      &:before
+        background: var(--bal-color-disabled)
+        border-color: var(--bal-color-border-disabled)
+    .bal-checkbox__input + .bal-checkbox__label:active
+      color: var(--bal-color-text-disabled)
+      &:before
+        background: var(--bal-color-disabled)
+        border-color: var(--bal-color-border-disabled)
 
-  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:after
-    border-color: var(--bal-color-grey-5)
-
-  input[type='checkbox']:focus-visible + label::before
-    box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important
-
-  input[type='checkbox'].bal-checkbox__input--is-invalid + label:before
-    border-color: var(--bal-color-danger-4)
-    background: var(--bal-color-red-2)
-
-  input[type='checkbox'].bal-checkbox__input--is-invalid + label:after
-    border-color: var(--bal-color-primary)
-
-  input[type='checkbox'].bal-checkbox__input--is-invalid + label:hover:before
-    border-color: var(--bal-color-danger-4)
-    background: var(--bal-color-red-2)
-
-  input[type='checkbox']:checked.bal-checkbox__input--is-invalid + label:hover:before
-    border-color: var(--bal-color-danger-4)
-    background: var(--bal-color-red-2) !important
+  &--disabled#{&}--checked
+    .bal-checkbox__label
+      color: var(--bal-color-text-disabled)
+      &:before
+        background: var(--bal-color-border-disabled)
+    .bal-checkbox__input + .bal-checkbox__label:hover
+      &:before
+        background: var(--bal-color-border-disabled)
+    .bal-checkbox__input + .bal-checkbox__label:active
+      &:before
+        background: var(--bal-color-border-disabled)
 
 @import './bal-switch'

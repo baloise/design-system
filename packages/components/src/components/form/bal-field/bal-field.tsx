@@ -38,7 +38,18 @@ export class Field {
   @Prop() loading?: boolean = undefined
 
   private formControlElement = ['bal-field-control']
-  private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker', 'bal-checkbox', 'bal-radio']
+  private inputElements = [
+    'bal-input',
+    'bal-number-input',
+    'bal-textarea',
+    'bal-select',
+    'bal-datepicker',
+    'bal-checkbox',
+    'bal-radio',
+    'bal-input-group',
+    'bal-input-stepper',
+    'bal-file-upload',
+  ]
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
   private updateProps(selectors: string[], key: string) {
@@ -65,12 +76,12 @@ export class Field {
 
   @Watch('readonly')
   readonlyHandler() {
-    this.updateProps([...this.inputElements, ...this.formControlElement], 'readonly')
+    this.updateProps([...this.inputElements, ...this.formElements], 'readonly')
   }
 
   @Watch('disabled')
   disabledHandler() {
-    this.updateProps([...this.inputElements, ...this.formControlElement], 'disabled')
+    this.updateProps([...this.inputElements, ...this.formElements], 'disabled')
   }
 
   @Watch('loading')

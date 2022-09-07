@@ -336,7 +336,7 @@ export class FileUpload {
                   <bal-icon
                     name="upload"
                     size="medium"
-                    color={this.disabled || this.loading || this.readonly ? 'grey' : 'blue'}
+                    color={this.disabled || this.loading || this.readonly ? 'grey-light' : 'blue'}
                   ></bal-icon>
                 </span>
                 <span class="file-label">{this.label}</span>

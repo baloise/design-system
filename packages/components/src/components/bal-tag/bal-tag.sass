@@ -17,8 +17,8 @@
     cursor: default
     pointer-events: none
     user-select: none
-    background-color: var(--bal-color-grey-dark)
-    border-color: var(--bal-color-grey-dark)
+    background-color: var(--bal-color-border-disabled)
+    border-color: var(--bal-color-border-disabled)
     box-shadow: none
     color: var(--bal-color-white)
 
@@ -62,6 +62,9 @@
     background: var(--bal-color-yellow-light)
   +modifier(is-green-light)
     background: var(--bal-color-green-light)
+  +modifier(is-invalid)
+    background: var(--bal-color-border-invalid)
+    color: var(--bal-color-white)
   //
   // tag label
   +element(label)
@@ -107,6 +110,9 @@
       color: var(--bal-color-yellow-light-inverted)
     +modifier(is-green-light)
       color: var(--bal-color-green-light-inverted)
+    +modifier(is-invalid)
+      background: var(--bal-color-border-invalid)
+      color: var(--bal-color-white)
   //
   // close button
   +element(close)

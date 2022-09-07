@@ -20,7 +20,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-import { isDescendant } from '../../../helpers/helpers'
+import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
 import { Props, Events } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -39,21 +39,6 @@ export class Radio implements ComponentInterface, FormInput<any> {
   @State() hasLabel = true
 
   /**
-   * The name of the control, which is submitted with the form data.
-   */
-  @Prop() name: string = this.inputId
-
-  /**
-   * Defines the layout of the radio button
-   */
-  @Prop() interface: Props.BalRadioInterface = 'radio'
-
-  /**
-   * The tabindex of the control.
-   */
-  @Prop() value: number | string | boolean = ''
-
-  /**
    * @deprecated If `true` the radio has no label
    */
   @Prop() isEmpty = false
@@ -63,9 +48,29 @@ export class Radio implements ComponentInterface, FormInput<any> {
   }
 
   /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.inputId
+
+  /**
    * If `true` the radio has no label
    */
   @Prop() labelHidden = false
+
+  /**
+   * If `true` the control is no padding
+   */
+  @Prop() flat = false
+
+  /**
+   * Defines the layout of the radio button
+   */
+  @Prop() interface: Props.BalRadioInterface = 'radio'
+
+  /**
+   * Value of the radio item, if checked the whole group has this value.
+   */
+  @Prop() value: number | string | boolean = ''
 
   /**
    * If `true`, the radio is selected.
@@ -78,11 +83,6 @@ export class Radio implements ComponentInterface, FormInput<any> {
   @Prop() disabled = false
 
   /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() invalid = false
-
-  /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop() readonly = false
@@ -93,9 +93,14 @@ export class Radio implements ComponentInterface, FormInput<any> {
   @Prop() required = false
 
   /**
-   * If `true`, the control works on dark background.
+   * If `true`, the value will not be send with a form submit
    */
-  @Prop() inverted = false
+  @Prop() hidden = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
 
   /**
    * Emitted when the toggle has focus.
@@ -128,6 +133,31 @@ export class Radio implements ComponentInterface, FormInput<any> {
     }
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.checked = false
+    }
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  connectedCallback() {
+    if (this.group) {
+      this.updateState()
+      this.group.addEventListener('balChange', () => this.updateState())
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.group) {
+      this.group.removeEventListener('balChange', () => this.updateState())
+    }
+  }
+
   /**
    * Sets the focus on the checkbox input element.
    */
@@ -146,26 +176,21 @@ export class Radio implements ComponentInterface, FormInput<any> {
     inputSetBlur<any>(this)
   }
 
-  get radioGroup(): HTMLBalRadioGroupElement | null {
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement | undefined> {
+    return Promise.resolve(this.nativeInput)
+  }
+
+  get group(): HTMLBalRadioGroupElement | null {
     return this.el.closest('bal-radio-group')
   }
 
-  connectedCallback() {
-    if (this.radioGroup) {
-      this.updateState()
-      this.radioGroup.addEventListener('balChange', () => this.updateState())
-    }
-  }
-
-  disconnectedCallback() {
-    if (this.radioGroup) {
-      this.radioGroup.removeEventListener('balChange', () => this.updateState())
-    }
-  }
-
   private updateState = () => {
-    if (this.radioGroup) {
-      this.checked = this.radioGroup.value === this.value
+    if (this.group) {
+      this.checked = this.group.value === this.value
     }
   }
 
@@ -174,7 +199,12 @@ export class Radio implements ComponentInterface, FormInput<any> {
   private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
 
   private onClick = (ev: MouseEvent) => {
-    if (!this.disabled && !this.readonly) {
+    const element = ev.target as HTMLAnchorElement
+    if (element.href) {
+      return
+    }
+
+    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
     } else {
@@ -182,17 +212,12 @@ export class Radio implements ComponentInterface, FormInput<any> {
     }
   }
 
-  private getTextColor() {
-    return this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'
-  }
-
   render() {
-    const block = BEM.block('radio')
+    const block = BEM.block('radio-checkbox')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
     const labelTextEl = labelEl.element('text')
 
-    const { inputId } = this
     const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
 
     return (
@@ -204,11 +229,12 @@ export class Radio implements ComponentInterface, FormInput<any> {
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
           ...block.class(),
+          ...block.modifier('radio').class(),
           ...block.modifier('select-button').class(this.interface === 'select-button'),
-          ...block.modifier('inverted').class(this.inverted),
           ...block.modifier('focused').class(this.hasFocus),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
+          ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
         onClick={this.onClick}
@@ -219,27 +245,30 @@ export class Radio implements ComponentInterface, FormInput<any> {
         <input
           class={{
             ...inputEl.class(),
+            ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
             'data-test-radio-input': true,
           }}
           type="radio"
-          id={inputId}
+          id={this.inputId}
           name={this.name}
           value={value}
+          checked={this.checked}
+          aria-checked={`${this.checked}`}
           disabled={this.disabled}
           readonly={this.readonly}
           required={this.required}
-          checked={this.checked}
-          onFocus={e => this.onInputFocus(e)}
-          onBlur={e => this.onInputBlur(e)}
+          onFocus={this.onInputFocus}
+          onBlur={this.onInputBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
           class={{
             ...labelEl.class(),
             ...labelEl.modifier('checked').class(this.checked),
+            ...labelEl.modifier('radio').class(),
             'data-test-radio-label': true,
           }}
-          htmlFor={inputId}
+          htmlFor={this.inputId}
         >
           <span
             class={{

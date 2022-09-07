@@ -769,7 +769,13 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag size="small" closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
+      <bal-tag
+        size="small"
+        closable={!this.disabled}
+        disabled={this.disabled}
+        invalid={this.invalid}
+        onBalCloseClick={_ => this.removeValue(props.value)}
+      >
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )
@@ -869,7 +875,7 @@ export class Select {
                 ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
               name="caret-down"
-              color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
+              color={this.disabled || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
               onClick={this.handleInputClick}
             ></bal-icon>
