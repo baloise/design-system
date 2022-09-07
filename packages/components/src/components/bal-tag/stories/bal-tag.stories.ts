@@ -75,7 +75,7 @@ TagCardCentered.args = {
   content: 'Bestseller',
   color: 'danger',
   light: false,
-  size: 'medium',
+  size: 'small',
   closable: false,
   position: 'center',
 }

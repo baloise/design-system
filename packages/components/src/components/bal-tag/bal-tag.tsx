@@ -21,7 +21,7 @@ export class Tag {
   /**
    * The size of the tag element
    */
-  @Prop() size: Props.BalTagSize = ''
+  @Prop() size: Props.BalTagSize = 'small'
 
   /**
    * The theme type of the tag. Given by bulma our css framework.
@@ -61,8 +61,8 @@ export class Tag {
   render() {
     const block = BEM.block('tag')
     const elLabel = block.element('label')
-    const hasSize = this.size !== ''
     const sizeClass = `is-${this.size}`
+    const hasSize = this.size !== undefined
     const hasColor = this.color !== ''
     const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
     const disabledClass = 'is-disabled'
