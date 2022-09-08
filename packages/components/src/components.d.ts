@@ -1181,15 +1181,11 @@ export namespace Components {
         /**
           * Defines if the animation should be active
          */
-        "animation": boolean;
+        "animated": boolean;
         /**
           * Defines the color of the logo.
          */
         "color": Props.BalLogoColor;
-        /**
-          * Defines the size of the logo.
-         */
-        "size": Props.BalLogoSize;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -4642,15 +4638,11 @@ declare namespace LocalJSX {
         /**
           * Defines if the animation should be active
          */
-        "animation"?: boolean;
+        "animated"?: boolean;
         /**
           * Defines the color of the logo.
          */
         "color"?: Props.BalLogoColor;
-        /**
-          * Defines the size of the logo.
-         */
-        "size"?: Props.BalLogoSize;
     }
     interface BalModal {
         /**

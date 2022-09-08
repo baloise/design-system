@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import Lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
@@ -11,20 +11,17 @@ import { isPlatform } from '../../'
 export class Logo implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @State() isTouch = isPlatform('touch')
+
   /**
    * Defines the color of the logo.
    */
   @Prop() color: Props.BalLogoColor = 'blue'
 
   /**
-   * Defines the size of the logo.
-   */
-  @Prop() size: Props.BalLogoSize = 'normal'
-
-  /**
    * Defines if the animation should be active
    */
-  @Prop() animation = false
+  @Prop() animated = false
 
   animationItem!: AnimationItem
 
@@ -39,7 +36,7 @@ export class Logo implements ComponentInterface {
   }
 
   resetAnimation() {
-    if (this.animation) {
+    if (this.animated) {
       if (this.animationItem) {
         this.animationItem.destroy()
       }
@@ -61,11 +58,10 @@ export class Logo implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.size = isPlatform('mobile') ? 'small' : 'normal'
+    this.isTouch = isPlatform('touch')
   }
 
   render() {
-    this.size = isPlatform('mobile') ? 'small' : 'normal'
     const logoBlock = BEM.block('logo')
 
     const logoSmall = (
@@ -94,21 +90,20 @@ export class Logo implements ComponentInterface {
         class={{
           ...logoBlock.class(),
           ...logoBlock.modifier(this.color).class(),
-          ...logoBlock.modifier(this.size).class(),
         }}
       >
-        {this.animation ? (
+        {this.animated ? (
           <div
             style={{
-              width: this.size === 'normal' ? '158px' : '100px',
-              height: this.size === 'normal' ? '32px' : '22px',
+              width: this.isTouch ? '100px' : '158px',
+              height: this.isTouch ? '22px' : '32px',
             }}
             ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
           ></div>
         ) : (
           ''
         )}
-        {!this.animation ? <div>{this.size === 'normal' ? logoNormal : logoSmall}</div> : ''}
+        {!this.animated ? <div>{this.isTouch ? logoSmall : logoNormal}</div> : ''}
       </Host>
     )
   }
