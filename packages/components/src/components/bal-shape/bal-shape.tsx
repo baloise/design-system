@@ -52,7 +52,7 @@ export class Shape implements ComponentInterface {
         color = BaloiseDesignToken.color['yellow-3'].hex
         break
       default:
-        color = '#000000'
+        color = BaloiseDesignToken.color['grey-4'].hex
     }
     return color
   }
@@ -95,16 +95,10 @@ export class Shape implements ComponentInterface {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier(`is-rotation-${this.rotation}`).class(),
         }}
       >
-        <svg
-          version="1.1"
-          x="0px"
-          y="0px"
-          viewBox="0 0 198 198"
-          fill={this.getHex()}
-          transform={`rotate(${this.rotation})`}
-        >
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 198 198" fill={this.getHex()}>
           {shapes[parseInt(this.variation) - 1]}
         </svg>
       </Host>

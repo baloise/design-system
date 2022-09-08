@@ -10,7 +10,7 @@ describe('createComponentDefinition', () => {
         tagName: 'my-component',
         methods: [],
         events: [],
-      },
+      } as any,
       true,
     )
     expect(output[0]).toEqual(
@@ -24,7 +24,7 @@ describe('createComponentDefinition', () => {
       tagName: 'my-component',
       methods: [],
       events: [],
-    })
+    } as any)
     expect(output[0]).toEqual(
       `export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');`,
     )
@@ -174,7 +174,7 @@ describe('getPathToCorePackageLoader', () => {
   })
 
   it('should use default w/ null output targets', () => {
-    config.outputTargets = null
+    ;(config as any).outputTargets = null
     const p = getPathToCorePackageLoader(config, outputTarget)
     expect(p).toBe('my-library/dist/loader')
   })

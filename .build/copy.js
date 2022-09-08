@@ -1,24 +1,34 @@
+/**
+ * copy task
+ * --------------------------------------
+ * Copies the README to each package to avoid managing duplicates.
+ */
+
 const path = require('path')
-const log = require('./log')
-const file = require('./file')
+const log = require('./utils/log')
+const file = require('./utils/file')
 
 async function main() {
-  log.title('copy readme')
-  await copyReadme('packages/components')
-  await copyReadme('packages/components-angular')
-  await copyReadme('packages/components-table')
-  await copyReadme('packages/components-vue')
-  await copyReadme('packages/components-react')
-  await copyReadme('packages/icons')
-  await copyReadme('packages/fonts')
-  await copyReadme('packages/testing')
-  await copyReadme('packages/output-targets/angular')
-  await copyReadme('packages/output-targets/vue')
-  await copyReadme('packages/output-targets/react')
+  log.title('copy files to packages')
+
+  await copyToPackage('packages/components')
+  await copyToPackage('packages/components-angular')
+  await copyToPackage('packages/components-table')
+  await copyToPackage('packages/components-vue')
+  await copyToPackage('packages/components-react')
+  await copyToPackage('packages/icons')
+  await copyToPackage('packages/fonts')
+  await copyToPackage('packages/testing')
+  await copyToPackage('packages/tokens')
+  await copyToPackage('packages/css')
+  await copyToPackage('packages/output-targets/angular')
+  await copyToPackage('packages/output-targets/vue')
+  await copyToPackage('packages/output-targets/react')
   log.success('Resources are copied')
 }
 
-async function copyReadme(dest) {
+async function copyToPackage(dest) {
+  await file.copy(path.join(__dirname, '../LICENSE'), path.join(__dirname, `../${dest}/LICENSE`))
   await file.copy(path.join(__dirname, '../README.md'), path.join(__dirname, `../${dest}/README.md`))
 }
 

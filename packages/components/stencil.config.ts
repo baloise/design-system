@@ -1,34 +1,36 @@
 import { Config } from '@stencil/core'
-import { CustomDocumentationGenerator } from './.build/readme/custom-documentation'
-import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
-import { AngularGenerator } from './.build/stencil/stencil.bindings.angular'
-import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
-import { ReactGenerator } from './.build/stencil/stencil.bindings.react'
+
+import { CustomDocumentationGenerator } from './docs/custom-documentation'
+import { StencilBaseConfig } from './config/stencil.basic.config'
+import { AngularGenerator } from './config/stencil.bindings.angular'
+import { VueGenerator } from './config/stencil.bindings.vue'
+import { ReactGenerator } from './config/stencil.bindings.react'
 
 export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    ...StencilBaseConfig.extras,
     dynamicImportShim: true,
     safari10: false,
     scriptDataOpts: true,
+    appendChildSlotFix: true,
+    cloneNodeFix: true,
   },
   outputTargets: [
+    ...(StencilBaseConfig.outputTargets as any),
+    /**
+     * Library outputs
+     */
     {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
-    {
-      type: 'dist-custom-elements',
-    },
-    {
-      type: 'docs-json',
-      file: './generated/components.json',
-    },
-    CustomDocumentationGenerator,
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),
+    /**
+     * Documentation outputs
+     */
+    CustomDocumentationGenerator,
   ],
 }

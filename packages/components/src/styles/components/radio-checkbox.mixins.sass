@@ -1,0 +1,26 @@
+=radioGroupVertical
+  flex-direction: column
+  border-radius: var(--bal-radius)
+  gap: var(--bal-space-none)
+
+=radioCheckboxSymbol($color, $border, $inverted, $background)
+  .bal-radio-checkbox__label:not(.bal-radio-checkbox__label--switch)
+    &::before
+      border-color: var(#{$border})
+      background: var(#{$background})
+    &.bal-radio-checkbox__label--radio.bal-radio-checkbox__label--checked
+      &::after
+        background: var(#{$inverted})
+      &::before
+        background: var(#{$color})
+    &.bal-radio-checkbox__label--checkbox
+      &::after
+        border-right-color: var(#{$inverted})
+        border-bottom-color: var(#{$inverted})
+    &.bal-radio-checkbox__label--checkbox.bal-radio-checkbox__label--checked
+      &::before
+        background: var(#{$color})
+
+=radioCheckboxLabel($color)
+  .bal-radio-checkbox__label .bal-radio-checkbox__label__text
+    color: var(#{$color})

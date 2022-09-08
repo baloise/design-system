@@ -38,6 +38,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
 
   nativeInput?: HTMLTextAreaElement
   inputValue = this.value
+  initialValue = this.value
 
   @Element() el!: HTMLElement
 
@@ -179,7 +180,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this)
+      inputHandleReset(this, this.initialValue)
     }
   }
 
@@ -288,6 +289,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           aria-labelledby={labelId}
           disabled={this.disabled}
           readonly={this.readonly}
+          required={this.required}
           autoCapitalize={this.autocapitalize}
           autoFocus={this.autofocus}
           minLength={this.minLength}

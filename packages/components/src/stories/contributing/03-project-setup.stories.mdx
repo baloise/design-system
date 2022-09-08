@@ -97,8 +97,8 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  │        │  ├── bal-<component>.e2e.ts   # E2E test file
 │  │        │  └── bal-<component>.spec.ts  # Unit test file
 │  │        │
-│  │        ├── bal-<component>.vars.scss # Sass variables
-│  │        ├── bal-<component>.scss      # Specific component style
+│  │        ├── bal-<component>.sass      # Specific component style
+│  │        ├── bal-<component>.vars.sass # Sass variables
 │  │        ├── bal-<component>.tsx       # Component logic
 │  │        ├── index.html                # Examples for the cypress tests: <deprecated> use storybook instead.
 │  │        └── readme.md                 # generated Readme with the components api
@@ -106,8 +106,8 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  ├── constants                  # global constants.
 │  ├── helpers                    # global helper functions.
 │  ├── styles                     # global styles which extends the bulma sass files
-│  │  ├── global.scss             # global stylesheet of the Design System
-│  │  └── global.utilities.scss   # exports variables, mixins... (no-styles)
+│  │  ├── global.sass             # global stylesheet of the Design System
+│  │  └── global.utilities.sass   # exports variables, mixins... (no-styles)
 │  │
 │  ├── types      # global types for all the components like colors.
 │  └── config.ts  # global config definitions for the angular module and the vue plugin.
