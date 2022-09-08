@@ -9,6 +9,8 @@ a.is-link:not(.button)
 
   &:hover
     text-decoration: underline
+    text-decoration-thickness: 2px
+    text-underline-offset: 4px
     color: var(--bal-color-light-blue-dark)
     +fillSvg(var(--bal-color-light-blue-dark))
 
@@ -17,6 +19,8 @@ a.is-link:not(.button)
 
   &:active
     text-decoration: underline
+    text-decoration-thickness: 2px
+    text-underline-offset: 4px
     color: var(--bal-color-blue-dark)
     +fillSvg(var(--bal-color-blue-dark))
 
@@ -37,45 +41,46 @@ a.is-link:not(.button)
       color: var(--bal-color-info-3)
       +fillSvg(var(--bal-color-info-3))
 
-a.is-animated-link:not(.button)
-  font-weight: $weight-bold
-  text-underline-offset: 4px
-  text-decoration-thickness: 2px
-  background-image: linear-gradient(#fff, #fff), linear-gradient(rgba(0, 20, 170, 1), rgba(0, 20, 170, 1)), linear-gradient(#fff, #fff)
-  background-size: 20px 4px, 100% 4px, 0 4px
-  background-position: calc(20px * -1) 100%, 100% 100%, 0 100%
-  background-repeat: no-repeat
-  transition: background-size 400ms ease-in-out, background-position 400ms ease-out
-  color: var(--bal-color-blue)
-  +fillSvg(var(--bal-color-blue))
-
-  &:hover
-    background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%
-    transition: background-size 400ms ease-in-out, background-position 400ms ease-out
-    color: var(--bal-color-light-blue-dark)
-    +fillSvg(var(--bal-color-light-blue-dark))
-
-  &:focus-visible
-    @extend %focus-shadow
-
-  &:active
-    text-decoration: underline
-    color: var(--bal-color-blue-dark)
-    +fillSvg(var(--bal-color-blue-dark))
-
-  &.is-inverted
-    color: var(--bal-color-white)
-    +fillSvg(var(--bal-color-white))
-
-    &:hover
-      text-decoration: underline
-      color: var(--bal-color-light-blue-2)
-      +fillSvg(var(--bal-color-light-blue-2))
-
-    &:focus-visible
-      @extend %focus-inverted-shadow
-
-    &:active
-      text-decoration: underline
-      color: var(--bal-color-info-3)
-      +fillSvg(var(--bal-color-info-3))
+      copy
+//a.is-animated-link:not(.button)
+//  font-weight: $weight-bold
+//  text-underline-offset: 4px
+//  text-decoration-thickness: 2px
+//  background-image: linear-gradient(#fff, #fff), linear-gradient(rgba(0, 20, 170, 1), rgba(0, 20, 170, 1)), linear-gradient(#fff, #fff)
+//  background-size: 20px 2px, 100% 2px, 0 2px
+//  background-position: calc(20px * -1) 100%, 100% 100%, 0 100%
+//  background-repeat: no-repeat
+//  transition: background-size 400ms ease-in-out, background-position 400ms ease-out
+//  color: var(--bal-color-blue)
+//  +fillSvg(var(--bal-color-blue))
+//
+//  &:hover
+//    background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%
+//    transition: background-size 400ms ease-in-out, background-position 400ms ease-out
+//    color: var(--bal-color-light-blue-dark)
+//    +fillSvg(var(--bal-color-light-blue-dark))
+//
+//  &:focus-visible
+//    @extend %focus-shadow
+//
+//  &:active
+//    text-decoration: underline
+//    color: var(--bal-color-blue-dark)
+//    +fillSvg(var(--bal-color-blue-dark))
+//
+//  &.is-inverted
+//    color: var(--bal-color-white)
+//    +fillSvg(var(--bal-color-white))
+//
+//    &:hover
+//      text-decoration: underline
+//      color: var(--bal-color-light-blue-2)
+//      +fillSvg(var(--bal-color-light-blue-2))
+//
+//    &:focus-visible
+//      @extend %focus-inverted-shadow
+//
+//    &:active
+//      text-decoration: underline
+//      color: var(--bal-color-info-3)
+//      +fillSvg(var(--bal-color-info-3))
