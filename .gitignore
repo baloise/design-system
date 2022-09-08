@@ -96,10 +96,8 @@ cypress/videos
 # Design System
 storybook/
 packages/**/CHANGELOG.md
-packages/**/readme.md
 packages/**/README.md
 packages/**/LICENSE
-packages/**/LICENSE.md
 
 packages/components/loader/
 packages/components/lib/
