@@ -76,6 +76,11 @@ export const inputHandleFocus = <Value>(component: FormInput<Value>, event: Focu
 export const inputHandleReset = <Value>(component: FormInput<Value>, defaultValue: Value | undefined = undefined) => {
   component.value = defaultValue
   component.inputValue = component.value
+  setTimeout(() => {
+    if (component.nativeInput) {
+      component.nativeInput.value = component.value as any
+    }
+  })
 }
 
 export const inputHandleBlur = <Value>(component: FormInput<Value>, event: FocusEvent) => {

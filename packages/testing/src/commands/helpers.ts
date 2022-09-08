@@ -50,7 +50,7 @@ export const selectors = {
   checkbox: {
     input: 'input.data-test-checkbox-input',
     label: 'label.data-test-checkbox-label',
-    text: 'label.data-test-checkbox-label > bal-text',
+    text: 'label.data-test-checkbox-label > span',
   },
   datepicker: {
     input: 'input.data-test-input',

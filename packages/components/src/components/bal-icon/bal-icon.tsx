@@ -65,7 +65,9 @@ export class Icon {
   }
 
   render() {
-    const color = ['white', 'blue', 'grey', 'danger', 'warning', 'success'].includes(this.color) ? this.color : 'blue'
+    const color = ['white', 'blue', 'grey', 'danger', 'warning', 'success', 'grey-light'].includes(this.color)
+      ? this.color
+      : 'blue'
 
     const block = BEM.block('icon')
 

@@ -23,17 +23,19 @@ export class ButtonGroup implements ComponentInterface {
 
   render() {
     return (
-      <Host
-        class={{
-          'field': true,
-          'is-grouped': true,
-          'is-reverse': this.reverse,
-          [`has-direction-${this.direction}`]: true,
-          'is-grouped-right': this.position === 'right',
-          'is-grouped-centered': this.position === 'center',
-        }}
-      >
-        <slot />
+      <Host>
+        <div
+          class={{
+            'field': true,
+            'is-grouped': true,
+            'is-reverse': this.reverse,
+            [`has-direction-${this.direction}`]: true,
+            'is-grouped-right': this.position === 'right',
+            'is-grouped-centered': this.position === 'center',
+          }}
+        >
+          <slot />
+        </div>
       </Host>
     )
   }

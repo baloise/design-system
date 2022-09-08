@@ -95,7 +95,9 @@ cypress/videos
 
 # Design System
 storybook/
-packages/*/CHANGELOG.md
+packages/**/CHANGELOG.md
+packages/**/README.md
+packages/**/LICENSE
 
 packages/components/loader/
 packages/components/lib/
@@ -103,12 +105,10 @@ packages/components/www/
 packages/components/.storybook/vue/components.ts
 packages/components/.storybook/vue/components
 packages/components/src/assets/fonts
-packages/components/src/components/**/readme.md
-packages/components/src/components/**/README.md
-packages/components/src/components/**/LICENSE
 packages/components/src/components/**/CHANGELOG.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
+
 
 packages/components-table/css
 packages/components-vue/src/components.ts

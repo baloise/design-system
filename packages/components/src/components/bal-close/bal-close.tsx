@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { inheritAttributes } from '../../helpers/helpers'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
@@ -7,6 +8,8 @@ import { BEM } from '../../utils/bem'
 })
 export class Close implements ComponentInterface {
   @Element() el!: HTMLElement
+
+  private inheritedAttributes: { [k: string]: any } = {}
 
   /**
    * Define the size of badge. Small is recommended for tabs.
@@ -17,6 +20,10 @@ export class Close implements ComponentInterface {
    * If `true` it supports dark backgrounds.
    */
   @Prop() inverted = false
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
+  }
 
   render() {
     const blockEl = BEM.block('close')
@@ -32,6 +39,7 @@ export class Close implements ComponentInterface {
             ...buttonEl.modifier('inverted').class(this.inverted),
             ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
           }}
+          {...this.inheritedAttributes}
         ></button>
       </Host>
     )

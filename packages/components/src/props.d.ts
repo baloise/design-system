@@ -59,7 +59,7 @@ export namespace Props {
   export type BalSelectFilter = 'includes' | 'starts-with'
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | '' | string
+  export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | 'grey-light' | '' | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
@@ -152,12 +152,13 @@ export namespace Props {
   export type BalTostColor = BalNotificationColor
   export type BalSnackbarColor = BalNotificationColor
 
-  export type BalCheckboxInterface = 'checkbox' | 'switch'
-
   export type BalDatepickerCallback = (dateString: string) => boolean
 
   export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
+
+  export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
+  export type BalCheckboxInterface = BalCheckboxGroupInterface
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'
   export type BalRadioInterface = BalRadioGroupInterface
