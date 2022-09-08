@@ -25,6 +25,6 @@ Basic.parameters = { ...component.sourceCode(Basic) }
 export const Animated = Template.bind({})
 Animated.args = {
   color: 'blue',
-  animation: true,
+  animated: true,
 }
 Animated.parameters = { ...component.sourceCode(Animated) }

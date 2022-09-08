@@ -1,4 +1,14 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } from '@stencil/core'
+import {
+  Component,
+  h,
+  ComponentInterface,
+  Host,
+  Element,
+  Prop,
+  Listen,
+  State,
+  FunctionalComponent,
+} from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import Lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
@@ -85,6 +95,25 @@ export class Logo implements ComponentInterface {
         />
       </svg>
     )
+
+    const AnimatedLogo: FunctionalComponent = () => {
+      return (
+        <div
+          style={{
+            width: this.isTouch ? '100px' : '158px',
+            height: this.isTouch ? '22px' : '32px',
+          }}
+          ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
+        ></div>
+      )
+    }
+
+    const NonAnimatedLogo: FunctionalComponent = () => {
+      return <div>{this.isTouch ? logoSmall : logoNormal}</div>
+    }
+
+    const LogoElement = this.animated ? AnimatedLogo : NonAnimatedLogo
+
     return (
       <Host
         class={{
@@ -92,18 +121,7 @@ export class Logo implements ComponentInterface {
           ...logoBlock.modifier(this.color).class(),
         }}
       >
-        {this.animated ? (
-          <div
-            style={{
-              width: this.isTouch ? '100px' : '158px',
-              height: this.isTouch ? '22px' : '32px',
-            }}
-            ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
-          ></div>
-        ) : (
-          ''
-        )}
-        {!this.animated ? <div>{this.isTouch ? logoSmall : logoNormal}</div> : ''}
+        <LogoElement></LogoElement>
       </Host>
     )
   }
