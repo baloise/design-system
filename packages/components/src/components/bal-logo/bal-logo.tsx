@@ -1,8 +1,9 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import Lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { LogoAnimationData } from './bal-logo.animation'
+import { isPlatform } from '../../'
 
 @Component({
   tag: 'bal-logo',
@@ -58,7 +59,13 @@ export class Logo implements ComponentInterface {
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.size = isPlatform('mobile') ? 'small' : 'normal'
+  }
+
   render() {
+    this.size = isPlatform('mobile') ? 'small' : 'normal'
     const logoBlock = BEM.block('logo')
 
     const logoSmall = (
