@@ -108,9 +108,12 @@ export class Tag {
           style={{
             display: this.closable && !this.disabled ? 'flex' : 'none',
           }}
-          size={this.size}
+          size={this.size === 'small' ? 'small' : ''}
           inverted={
-            (['blue', 'primary', 'info', 'success', 'warning', 'danger'].includes(this.color) && !this.light) ||
+            (['blue', 'primary', 'info', 'success', 'warning', 'danger', 'red', 'purple', 'yellow', 'green'].includes(
+              this.color,
+            ) &&
+              !this.light) ||
             this.invalid
           }
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
