@@ -12,9 +12,9 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
-import { Events } from '../../../../types'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
+import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 
 @Component({
@@ -27,9 +27,9 @@ export class CheckboxGroup implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
-   * Displays the checkboxes vertically
+   * Defines the layout of the checkbox button
    */
-  @Prop() vertical = false
+  @Prop() interface?: Props.BalCheckboxGroupInterface = undefined
 
   /**
    * If `true` it acts as the main form control
@@ -42,7 +42,22 @@ export class CheckboxGroup implements ComponentInterface {
   @Prop() name: string = this.inputId
 
   /**
-   * If `true`, the user cannot interact with the radios.
+   * Displays the checkboxes vertically
+   */
+  @Prop() vertical = false
+
+  /**
+   * If `true`, the controls will be vertically on mobile devices.
+   */
+  @Prop() verticalOnMobile = false
+
+  /**
+   * Uses the whole width
+   */
+  @Prop() expanded = false
+
+  /**
+   * If `true`, the user cannot interact with the checkboxes.
    */
   @Prop() disabled?: boolean = undefined
 
@@ -50,15 +65,15 @@ export class CheckboxGroup implements ComponentInterface {
   disabledChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(radio => {
-          radio.disabled = value
+        this.children.forEach(child => {
+          child.disabled = value
         })
       }
     }
   }
 
   /**
-   * If `true`, the user cannot interact with the radios.
+   * If `true`, the user cannot interact with the checkboxes.
    */
   @Prop() readonly?: boolean = undefined
 
@@ -66,8 +81,8 @@ export class CheckboxGroup implements ComponentInterface {
   readonlyChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(radio => {
-          radio.readonly = value
+        this.children.forEach(child => {
+          child.readonly = value
         })
       }
     }
@@ -79,12 +94,13 @@ export class CheckboxGroup implements ComponentInterface {
   @Prop({ mutable: true }) value: any[] = []
 
   @Watch('value')
-  valueChanged(value: any[], oldValue: any[]) {
+  valueChanged(_value: any[], oldValue: any[]) {
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
         this.sync()
       }
-      setTimeout(() => this.balChange.emit(value))
+    } else {
+      this.sync()
     }
   }
 
@@ -102,13 +118,24 @@ export class CheckboxGroup implements ComponentInterface {
     }
   }
 
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      if (this.control) {
+        this.value = []
+      }
+      this.sync()
+    }
+  }
+
   componentWillLoad() {
     if (this.control) {
       this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-      this.sync()
       this.disabledChanged(this.disabled)
       this.readonlyChanged(this.readonly)
     }
+    this.sync()
   }
 
   private get children(): HTMLBalCheckboxElement[] {
@@ -125,18 +152,26 @@ export class CheckboxGroup implements ComponentInterface {
 
   private sync() {
     if (this.control) {
-      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
-        checkbox.checked = false
-      })
-      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+      const isChecked = (checkbox: HTMLBalCheckboxElement) => {
         for (let index = 0; index < this.value.length; index++) {
           const item = this.value[index]
           if (item.toString() === checkbox.value.toString()) {
-            checkbox.checked = true
+            return true
           }
         }
+        return false
+      }
+
+      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+        checkbox.checked = isChecked(checkbox)
       })
     }
+
+    this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+      if (this.interface) {
+        checkbox.interface = this.interface
+      }
+    })
   }
 
   private onClick = (ev: Event) => {
@@ -148,18 +183,21 @@ export class CheckboxGroup implements ComponentInterface {
     if (element.href) {
       return
     }
-    stopEventBubbling(ev)
+    ev.preventDefault()
 
     // toggle clicked checkbox
     const selectedCheckbox = ev.target && (ev.target as HTMLElement).closest('bal-checkbox')
     if (selectedCheckbox) {
+      if (selectedCheckbox.disabled || selectedCheckbox.readonly) {
+        ev.stopPropagation()
+        return
+      }
       selectedCheckbox.checked = !selectedCheckbox.checked
     }
 
     // generate new value array out of the checked checkboxes
-    const checkboxes = this.children
     const newValue: any[] = []
-    checkboxes.forEach(cb => {
+    this.children.forEach(cb => {
       if (cb.checked) {
         newValue.push(cb.value)
       }
@@ -167,22 +205,19 @@ export class CheckboxGroup implements ComponentInterface {
 
     if (!areArraysEqual(this.value, newValue)) {
       this.value = [...newValue]
+      this.balChange.emit(this.value)
     }
   }
 
   render() {
     const label = findItemLabel(this.el)
-
-    const block = BEM.block('checkbox-group')
-    const elWrapper = block.element('wrapper')
-    const verticalClass = 'is-vertical'
-    const hasVertical = this.vertical
+    const block = BEM.block('radio-checkbox-group')
+    const innerEl = block.element('inner')
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(verticalClass).class(hasVertical),
         }}
         role="group"
         aria-labelledby={label?.id}
@@ -192,8 +227,11 @@ export class CheckboxGroup implements ComponentInterface {
       >
         <div
           class={{
-            ...elWrapper.class(),
-            ...block.modifier(verticalClass).class(hasVertical),
+            ...innerEl.class(),
+            ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
+            ...innerEl.modifier('vertical').class(this.vertical),
+            ...innerEl.modifier('expanded').class(this.expanded),
+            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
           }}
         >
           <slot></slot>

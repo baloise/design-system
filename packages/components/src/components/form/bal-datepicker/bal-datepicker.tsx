@@ -77,6 +77,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   nativeInput!: HTMLInputElement
   inputValue = this.value
+  initialValue = this.value
 
   @Element() el!: HTMLElement
 
@@ -247,7 +248,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = undefined
+      this.value = this.initialValue
     }
   }
 
@@ -623,10 +624,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           value={this.value}
           min={this.min}
           max={this.max}
+          tabindex={-1}
         ></input>
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
-          <bal-popover-content spaceless>
+          <bal-popover-content spaceless contentMinWidth={392}>
             <div class={{ ...popup.class() }}>
               {this.renderHeader()}
               <div class={{ ...popupBody.class() }}>{this.renderGrid()}</div>
@@ -709,6 +711,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             <div class={{ ...rowEl.class() }}>
               {row.map(cell => (
                 <button
+                  type="button"
                   data-date={cell.dateString}
                   onClick={() => this.onClickDateCell(cell)}
                   disabled={cell.isDisabled}

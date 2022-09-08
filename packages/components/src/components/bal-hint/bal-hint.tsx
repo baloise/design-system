@@ -3,6 +3,7 @@ import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachCompo
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
+import { allowScrollingBody, blockScrollingBody } from '../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-hint',
@@ -11,6 +12,8 @@ export class Hint implements BalConfigObserver {
   @Element() element!: HTMLElement
 
   private popoverElement!: HTMLBalPopoverElement
+  private slotWrapperEl?: HTMLDivElement
+  private hintContentEl?: HTMLDivElement
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
@@ -27,7 +30,11 @@ export class Hint implements BalConfigObserver {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isMobile = isPlatform('mobile')
+    const isCurrentMobile = isPlatform('mobile')
+    if (isCurrentMobile !== this.isMobile) {
+      this.isActive = false
+    }
+    this.isMobile = isCurrentMobile
   }
 
   connectedCallback() {
@@ -36,6 +43,10 @@ export class Hint implements BalConfigObserver {
 
   disconnectedCallback() {
     detachComponentToConfig(this)
+  }
+
+  componentDidRender() {
+    this.updateContent()
   }
 
   configChanged(state: BalConfigState): void {
@@ -80,6 +91,9 @@ export class Hint implements BalConfigObserver {
     if (this.popoverElement) {
       this.popoverElement.present()
     }
+    if (this.isMobile) {
+      blockScrollingBody()
+    }
     this.isActive = true
   }
 
@@ -91,12 +105,21 @@ export class Hint implements BalConfigObserver {
     if (this.popoverElement) {
       this.popoverElement.dismiss()
     }
+    if (this.isMobile) {
+      allowScrollingBody()
+    }
     this.isActive = false
   }
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
     this.isActive = event.detail
     preventDefault(event)
+  }
+
+  private updateContent() {
+    if (this.hintContentEl && this.slotWrapperEl) {
+      this.hintContentEl.innerHTML = this.slotWrapperEl.innerHTML
+    }
   }
 
   render() {
@@ -132,9 +155,7 @@ export class Hint implements BalConfigObserver {
             'data-test-hint-content': true,
           }}
         >
-          <div>
-            <slot></slot>
-          </div>
+          <div ref={el => (this.hintContentEl = el)}></div>
           <bal-button-group
             class={{
               ...elButtons.class(),
@@ -164,9 +185,7 @@ export class Hint implements BalConfigObserver {
               ...elOverlay.element('content').modifier('active').class(this.isActive),
             }}
           >
-            <HintContent>
-              <slot></slot>
-            </HintContent>
+            <HintContent></HintContent>
           </div>
         </div>
       )
@@ -186,9 +205,7 @@ export class Hint implements BalConfigObserver {
           >
             <TriggerIcon></TriggerIcon>
             <bal-popover-content color="grey">
-              <HintContent>
-                <slot></slot>
-              </HintContent>
+              <HintContent></HintContent>
             </bal-popover-content>
           </bal-popover>
         </div>
@@ -203,9 +220,11 @@ export class Hint implements BalConfigObserver {
           ...block.class(),
         }}
       >
-        <HintElement>
+        <HintElement></HintElement>
+
+        <div ref={el => (this.slotWrapperEl = el)} style={{ display: 'none' }}>
           <slot></slot>
-        </HintElement>
+        </div>
       </Host>
     )
   }

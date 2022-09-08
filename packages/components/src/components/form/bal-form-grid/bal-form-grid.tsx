@@ -6,7 +6,7 @@ import { Component, h, ComponentInterface, Host } from '@stencil/core'
 export class FormGrid implements ComponentInterface {
   render() {
     return (
-      <Host class="columns is-multiline my-0 py-0">
+      <Host class="bal-form-grid columns is-multiline my-0 py-0">
         <slot></slot>
       </Host>
     )

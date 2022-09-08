@@ -15,6 +15,7 @@ export class FormCol implements ComponentInterface {
         class={{
           'column': true,
           'py-0': true,
+          'is-12-touch': true,
           'is-12': this.size === 'fullwidth' || this.size === undefined,
           'is-6': this.size === 'half',
           'is-4': this.size === 'one-third',

@@ -30,27 +30,27 @@
     min-width: 48px
 
   & > *:first-child.bal-select .bal-select__control
-    padding-left: 1rem
+    padding-left: 0.625rem
 
   & > *:first-child.bal-input
     .input
-      padding-left: 1rem
+      padding-left: 0.625rem
 
   & > *:last-child.bal-input
     .input
-      padding-right: 1rem
+      padding-right: 0.625rem
 
   & > *:first-child.input
-    padding-left: 1rem
+    padding-left: 0.625rem
 
   & > *:last-child.input
-    padding-right: 1rem
+    padding-right: 0.625rem
 
   & > *:last-child.bal-tag
-    margin-right: 1rem
+    margin-right: 0.625rem
 
   & > *:first-child.bal-tag
-    margin-left: 1rem
+    margin-left: 0.625rem
 
   &.is-hovered,
   &:hover
@@ -62,19 +62,19 @@
   +modifier(is-danger)
     &,
     .input
-      border-color: $danger-dark
-      background: var(--bal-color-danger-1)
+      border-color: var(--bal-color-border-danger)
+      background: var(--bal-color-danger-light)
 
     svg
       g,
       path,
       circle
-        fill: var(--bal-color-danger-dark)
+        fill: var(--bal-color-border-danger)
 
-  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-danger-dark))
-  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-success-dark))
-  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-warning-dark))
-  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-grey-5))
+  @include inputGroupTheme('danger', var(--bal-color-danger-light), var(--bal-color-border-danger))
+  @include inputGroupTheme('success', var(--bal-color-success-light), var(--bal-color-border-success))
+  @include inputGroupTheme('warning', var(--bal-color-warning-light), var(--bal-color-border-warning))
+  @include inputGroupTheme('disabled', var(--bal-color-disabled), var(--bal-color-border-disabled))
 
   +modifier(is-disabled)
     &,
