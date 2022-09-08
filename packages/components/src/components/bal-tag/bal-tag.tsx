@@ -22,7 +22,7 @@ export class Tag {
   /**
    * The size of the tag element
    */
-  @Prop() size: Props.BalTagSize = 'small'
+  @Prop() size: Props.BalTagSize = ''
 
   /**
    * The theme type of the tag. Given by bulma our css framework.
@@ -47,11 +47,6 @@ export class Tag {
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
-
-  /**
-   * The font weight of the tag text.
-   */
-  @Prop() fontWeight: Props.BalTagFontWeight = 'bold'
 
   /**
    * @deprecated
@@ -81,8 +76,6 @@ export class Tag {
     const hasDisabled = this.disabled
     const positionClass = `is-${this.position}`
     const hasPosition = this.position !== undefined
-    const fontWeightClass = `is-${this.fontWeight}`
-    const hasFontWeight = this.fontWeight !== undefined
 
     return (
       <Host
@@ -102,7 +95,6 @@ export class Tag {
             ...elLabel.class(),
             ...elLabel.modifier(sizeClass).class(hasSize),
             ...elLabel.modifier(colorClass).class(hasColor),
-            ...elLabel.modifier(fontWeightClass).class(hasFontWeight),
             ...elLabel.modifier(disabledClass).class(hasDisabled),
             ...elLabel.modifier('is-invalid').class(this.invalid),
           }}

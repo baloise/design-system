@@ -4,7 +4,10 @@
   display: inline-flex
   align-items: center
   justify-content: center
-  padding: 0.25rem 0.75rem 0.25rem 0.75rem
+  max-height: 2rem
+  line-height: 1.5
+  padding-left: 0.75rem
+  padding-right: 0.75rem
   background-color: var(--bal-color-grey)
   border-radius: var(--bal-radius-rounded)
   white-space: nowrap
@@ -57,22 +60,20 @@
   +element(label)
     font-family: var(--bal-font-family-text)
     color: var(--bal-color-grey-inverted)
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-weight-regular)
     display: inline-flex
     align-items: center
     gap: .25rem
-    // font weight
-    +modifier(is-regular)
-      font-weight: var(--bal-weight-regular)
-    +modifier(is-bold)
-      font-weight: var(--bal-weight-bold)
     // sizes
     +modifier(is-small)
       font-size: var(--bal-size-medium) !important
+      font-weight: var(--bal-weight-regular)
     +modifier(is-medium)
       font-size: var(--bal-size-medium) !important
+      font-weight: var(--bal-weight-bold)
     +modifier(is-large)
       font-size: var(--bal-size-medium) !important
+      font-weight: var(--bal-weight-bold)
     // colors
     +modifier(is-primary)
       color: var(--bal-color-primary-inverted)
