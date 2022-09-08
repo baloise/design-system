@@ -33,7 +33,10 @@ export const Basic = args => ({
   </bal-form-grid>`,
 })
 Basic.args = {}
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(Basic),
+}
 
 export const FormStructure = args => ({
   components: { ...component.components, BalInput },
@@ -331,4 +334,7 @@ export const FormStructure = args => ({
 `,
 })
 FormStructure.args = {}
-FormStructure.parameters = { ...component.sourceCode(FormStructure) }
+FormStructure.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(FormStructure),
+}
