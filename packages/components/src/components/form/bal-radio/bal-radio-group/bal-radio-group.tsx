@@ -28,7 +28,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: Props.BalRadioGroupInterface = 'radio'
+  @Prop() interface?: Props.BalRadioGroupInterface = undefined
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -36,17 +36,17 @@ export class RadioGroup implements ComponentInterface {
   @Prop() name: string = this.inputId
 
   /**
-   * If `true` the component can be used on dark background
-   */
-  @Prop() inverted = false
-
-  /**
    * Displays the checkboxes vertically
    */
   @Prop() vertical = false
 
   /**
-   * Uses the whole width for the select-buttons
+   * If `true`, the controls will be vertically on mobile devices.
+   */
+  @Prop() verticalOnMobile = false
+
+  /**
+   * Uses the whole width
    */
   @Prop() expanded = false
 
@@ -54,11 +54,12 @@ export class RadioGroup implements ComponentInterface {
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled?: boolean = undefined
+
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
-      this.radios.forEach(radio => {
-        radio.disabled = value
+      this.children.forEach(child => {
+        child.disabled = value
       })
     }
   }
@@ -67,25 +68,21 @@ export class RadioGroup implements ComponentInterface {
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop() readonly?: boolean = undefined
+
   @Watch('readonly')
   readonlyChanged(value: boolean | undefined) {
     if (value !== undefined) {
-      this.radios.forEach(radio => {
-        radio.readonly = value
+      this.children.forEach(child => {
+        child.readonly = value
       })
     }
   }
 
   /**
-   * If `true`, the controls will be vertically on mobile devices.
-   */
-  @Prop() verticalOnMobile = false
-
-  /**
    * The value of the control.
    */
   @Prop({ mutable: true }) value: number | string | boolean = ''
-
+  private initialValue = this.value
   @Watch('value')
   valueChanged(value: number | string | boolean, oldValue: number | string | boolean) {
     if (value !== oldValue) {
@@ -109,7 +106,7 @@ export class RadioGroup implements ComponentInterface {
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = ''
+      this.value = this.initialValue
       this.sync()
     }
   }
@@ -121,7 +118,7 @@ export class RadioGroup implements ComponentInterface {
     this.readonlyChanged(this.readonly)
   }
 
-  private get radios(): HTMLBalRadioElement[] {
+  private get children(): HTMLBalRadioElement[] {
     return Array.from(this.el.querySelectorAll('bal-radio'))
   }
 
@@ -132,9 +129,10 @@ export class RadioGroup implements ComponentInterface {
   }
 
   private sync() {
-    this.radios.forEach((radio: HTMLBalRadioElement) => {
-      radio.interface = this.interface
-      radio.inverted = this.inverted
+    this.children.forEach((radio: HTMLBalRadioElement) => {
+      if (this.interface) {
+        radio.interface = this.interface
+      }
       radio.checked = radio.value === this.value
     })
   }
@@ -152,6 +150,7 @@ export class RadioGroup implements ComponentInterface {
         ev.stopPropagation()
         return
       }
+
       const currentValue = this.value
       const newValue = selectedRadio.value
       if (newValue !== currentValue) {
@@ -162,28 +161,28 @@ export class RadioGroup implements ComponentInterface {
   }
 
   render() {
-    const block = BEM.block('radio-group')
-    const innerEl = block.element('inner')
     const label = findItemLabel(this.el)
+    const block = BEM.block('radio-checkbox-group')
+    const innerEl = block.element('inner')
 
     return (
       <Host
+        class={{
+          ...block.class(),
+        }}
         role="radiogroup"
         aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
-        class={{
-          ...block.class(),
-        }}
         {...this.inheritedAttributes}
       >
         <div
           class={{
             ...innerEl.class(),
-            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
             ...innerEl.modifier('vertical-mobile').class(this.verticalOnMobile),
             ...innerEl.modifier('vertical').class(this.vertical),
             ...innerEl.modifier('expanded').class(this.expanded),
+            ...innerEl.modifier('select-button').class(this.interface === 'select-button'),
           }}
         >
           <slot></slot>

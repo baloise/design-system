@@ -8,7 +8,7 @@ describe('generateProxies', () => {
     types: 'dist/types/index.d.ts',
   }
   const rootDir = ''
-  const config: Config = { outputTargets: [] }
+  const config = { outputTargets: [] }
 
   it('should include both polyfills and definCustomElements when both are true in the outputTarget', () => {
     const outputTarget: OutputTargetVue = {

@@ -312,11 +312,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true`, the control works on dark background.
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the radio has no label
+          * If `true` the checkbox has no label
          */
         "labelHidden": boolean;
         /**
@@ -350,15 +346,23 @@ export namespace Components {
          */
         "control": boolean;
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the user cannot interact with the checkboxes.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width
+         */
+        "expanded": boolean;
+        /**
+          * Defines the layout of the checkbox button
+         */
+        "interface"?: Props.BalCheckboxGroupInterface;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the user cannot interact with the checkboxes.
          */
         "readonly"?: boolean;
         "setValue": (value: any[]) => Promise<void>;
@@ -370,6 +374,10 @@ export namespace Components {
           * Displays the checkboxes vertically
          */
         "vertical": boolean;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalClose {
         /**
@@ -895,6 +903,10 @@ export namespace Components {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -1710,6 +1722,18 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the control is no padding
+         */
+        "flat": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden": boolean;
+        /**
           * Defines the layout of the radio button
          */
         "interface": Props.BalRadioInterface;
@@ -1717,10 +1741,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * If `true`, the control works on dark background.
-         */
-        "inverted": boolean;
         /**
           * @deprecated If `true` the radio has no label
          */
@@ -1750,7 +1770,7 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * The tabindex of the control.
+          * Value of the radio item, if checked the whole group has this value.
          */
         "value": number | string | boolean;
     }
@@ -1760,17 +1780,13 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Uses the whole width for the select-buttons
+          * Uses the whole width
          */
         "expanded": boolean;
         /**
           * Defines the layout of the radio button
          */
-        "interface": Props.BalRadioGroupInterface;
-        /**
-          * If `true` the component can be used on dark background
-         */
-        "inverted": boolean;
+        "interface"?: Props.BalRadioGroupInterface;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2226,6 +2242,10 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
+        /**
+          * Overwrites the default color to invalid style
+         */
+        "invalid": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -3702,11 +3722,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true`, the control works on dark background.
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` the radio has no label
+          * If `true` the checkbox has no label
          */
         "labelHidden"?: boolean;
         /**
@@ -3748,9 +3764,17 @@ declare namespace LocalJSX {
          */
         "control"?: boolean;
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the user cannot interact with the checkboxes.
          */
         "disabled"?: boolean;
+        /**
+          * Uses the whole width
+         */
+        "expanded"?: boolean;
+        /**
+          * Defines the layout of the checkbox button
+         */
+        "interface"?: Props.BalCheckboxGroupInterface;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3760,7 +3784,7 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the user cannot interact with the checkboxes.
          */
         "readonly"?: boolean;
         /**
@@ -3771,6 +3795,10 @@ declare namespace LocalJSX {
           * Displays the checkboxes vertically
          */
         "vertical"?: boolean;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalClose {
         /**
@@ -4300,6 +4328,10 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
+        /**
+          * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+         */
+        "allowedKeyPress"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -5160,6 +5192,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the control is no padding
+         */
+        "flat"?: boolean;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden"?: boolean;
+        /**
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioInterface;
@@ -5167,10 +5207,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true`, the control works on dark background.
-         */
-        "inverted"?: boolean;
         /**
           * @deprecated If `true` the radio has no label
          */
@@ -5208,7 +5244,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * The tabindex of the control.
+          * Value of the radio item, if checked the whole group has this value.
          */
         "value"?: number | string | boolean;
     }
@@ -5218,17 +5254,13 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Uses the whole width for the select-buttons
+          * Uses the whole width
          */
         "expanded"?: boolean;
         /**
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
-        /**
-          * If `true` the component can be used on dark background
-         */
-        "inverted"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -5698,6 +5730,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * Overwrites the default color to invalid style
+         */
+        "invalid"?: boolean;
         /**
           * If `true` a light version of the color is displayed
          */

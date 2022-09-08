@@ -288,9 +288,15 @@ export class FileUpload {
                   {this.subTitle ? this.subTitle(file) : fileSize(file.size)}
                 </bal-list-item-subtitle>
               </bal-list-item-content>
-              <bal-list-item-icon right class="file-remove clickable" onClick={() => this.removeFile(index)}>
+              <bal-list-item-icon
+                right
+                class={{
+                  'file-remove': true,
+                  'is-clickable': !this.disabled && !this.readonly,
+                }}
+                onClick={() => this.removeFile(index)}
+              >
                 <bal-icon
-                  size="small"
                   name="trash"
                   color={this.disabled || this.loading || this.readonly ? 'grey' : 'danger'}
                 ></bal-icon>
@@ -311,6 +317,7 @@ export class FileUpload {
           class={{
             'file': true,
             'is-disabled': this.disabled || this.readonly || this.loading,
+            'is-danger': this.invalid,
           }}
         >
           <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
@@ -336,7 +343,9 @@ export class FileUpload {
                   <bal-icon
                     name="upload"
                     size="medium"
-                    color={this.disabled || this.loading || this.readonly ? 'grey' : 'blue'}
+                    color={
+                      this.disabled || this.loading || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'blue'
+                    }
                   ></bal-icon>
                 </span>
                 <span class="file-label">{this.label}</span>

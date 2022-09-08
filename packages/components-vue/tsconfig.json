@@ -1,13 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "outDir": "dist-transpiled",
-    "declarationDir": "dist/types"
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["./node_modules"],
-  "compileOnSave": false,
-  "buildOnSave": false
+  "include": ["."],
+  "exclude": ["dist", "node_modules"]
 }

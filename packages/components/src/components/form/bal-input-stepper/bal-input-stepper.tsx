@@ -92,6 +92,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    * The value of the input. Only allows values in the range of the min max attribute.
    */
   @Prop({ mutable: true }) value = 0
+  initialValue = this.value
 
   /**
    * Emitted when the input value has changed.
@@ -122,7 +123,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = 0
+      this.value = this.initialValue
     }
   }
 
@@ -153,22 +154,26 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   }
 
   increase() {
-    const newValue = new Big(this.value).plus(this.steps).toNumber()
-    if (newValue <= this.max) {
-      this.value = newValue
-      this.balInput.emit(newValue)
-      this.balChange.emit(newValue)
-      this.balIncrease.emit(newValue)
+    if (!this.disabled && !this.readonly) {
+      const newValue = new Big(this.value).plus(this.steps).toNumber()
+      if (newValue <= this.max) {
+        this.value = newValue
+        this.balInput.emit(newValue)
+        this.balChange.emit(newValue)
+        this.balIncrease.emit(newValue)
+      }
     }
   }
 
   decrease() {
-    const newValue = new Big(this.value).minus(this.steps).toNumber()
-    if (newValue >= this.min) {
-      this.value = newValue
-      this.balInput.emit(newValue)
-      this.balChange.emit(newValue)
-      this.balDecrease.emit(newValue)
+    if (!this.disabled && !this.readonly) {
+      const newValue = new Big(this.value).minus(this.steps).toNumber()
+      if (newValue >= this.min) {
+        this.value = newValue
+        this.balInput.emit(newValue)
+        this.balChange.emit(newValue)
+        this.balDecrease.emit(newValue)
+      }
     }
   }
 

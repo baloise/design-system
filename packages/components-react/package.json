@@ -28,34 +28,21 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile",
-    "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:compile": "npm run tsc && rollup -c",
-    "tsc": "tsc -p .",
+    "build": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
-  "typings": "dist/types/index.d.ts",
   "files": [
     "dist/"
   ],
-  "devDependencies": {
-    "@types/node": "~15.14.9",
-    "@types/react": "~17.0.22",
-    "@types/react-dom": "~17.0.9",
-    "react": "~17.0.2",
-    "react-dom": "~17.0.2"
-  },
-  "peerDependencies": {
-    "@types/react": ">=17.0.0",
-    "@types/react-dom": ">=17.0.0",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
-  },
   "dependencies": {
     "@baloise/design-system-next-components": "10.20.2"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
 }

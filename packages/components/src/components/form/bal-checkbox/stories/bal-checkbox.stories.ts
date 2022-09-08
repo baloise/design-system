@@ -125,16 +125,16 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-checkbox-group :vertical="args.vertical">
-        <bal-checkbox v-bind="args" v-model="args.checked">
+      <bal-checkbox-group :vertical="args.vertical" v-bind="args">
+        <bal-checkbox checked="args.checked">
           Label
         </bal-checkbox>
-        <bal-checkbox v-bind="args" v-model="args.checked">
-        Label
-      </bal-checkbox>
-      <bal-checkbox v-bind="args" v-model="args.checked">
-        Label
-      </bal-checkbox>
+        <bal-checkbox>
+          Label
+        </bal-checkbox>
+        <bal-checkbox>
+         Label
+        </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
@@ -167,6 +167,16 @@ Vertical.args = {
 }
 Vertical.parameters = {
   ...component.sourceCode(Vertical),
+  controls: { exclude: excludedControls },
+}
+
+export const FilterButtons = Template.bind({})
+FilterButtons.args = {
+  content: 'Label',
+  interface: 'select-button',
+}
+FilterButtons.parameters = {
+  ...component.sourceCode(FilterButtons),
   controls: { exclude: excludedControls },
 }
 
