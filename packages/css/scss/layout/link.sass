@@ -43,12 +43,15 @@ a.is-link:not(.button)
 
 a.is-animated-link:not(.button)
   position: relative
-  padding: 0.1rem 0.2rem 4px 0.1rem
+  padding: 0.1rem 0.2rem 0 0.1rem
   white-space: pre
   text-decoration: none
   font-weight: $weight-bold
   border-radius: var(--bal-radius-small)
   color: var(--bal-color-blue)
+
+  &:hover
+    color: var(--bal-color-light-blue-dark)
 
   &:focus-visible
     @extend %focus-shadow
@@ -80,10 +83,13 @@ a.is-animated-link:not(.button)
     transform: scaleX(1)
 
   &:active
-    background-color: var(--bal-color-blue-dark)
+    color: var(--bal-color-blue-dark)
 
   &.is-inverted
     color: var(--bal-color-white)
+
+    &:hover
+      color: var(--bal-color-light-blue-2)
 
     &::after, &::before
       background-color: var(--bal-color-light-blue-2)
@@ -92,7 +98,7 @@ a.is-animated-link:not(.button)
       @extend %focus-inverted-shadow
 
     &:active
-      background-color: var(--bal-color-info-3)
+      color: var(--bal-color-info-3)
 
 //a.is-animated-link:not(.button)
 //  font-weight: $weight-bold
