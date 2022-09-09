@@ -3,10 +3,10 @@ export const LogoAnimationData = (color = '#000d6e') => ({
   fr: 25,
   ip: 0,
   op: 49,
-  w: 2500,
-  h: 550,
-  asdf: color,
+  w: 2463,
+  h: 530,
   nm: 'BAL_Logo_for_Code',
+  asdf: color,
   ddd: 0,
   assets: [
     {
@@ -2584,6 +2584,7 @@ export const LogoAnimationData = (color = '#000d6e') => ({
       ind: 1,
       ty: 0,
       nm: 'Shapes_Logo',
+      parent: 2,
       refId: 'comp_0',
       sr: 0.63,
       ks: {
@@ -2655,9 +2656,9 @@ export const LogoAnimationData = (color = '#000d6e') => ({
           ],
           ix: 10,
         },
-        p: { a: 0, k: [278, 278, 0], ix: 2, l: 2 },
+        p: { a: 0, k: [426.714, 548.196, 0], ix: 2, l: 2 },
         a: { a: 0, k: [1280, 1280, 0], ix: 1, l: 2 },
-        s: { a: 0, k: [16.6, 16.6, 100], ix: 6, l: 2 },
+        s: { a: 0, k: [9.07, 9.07, 100], ix: 6, l: 2 },
       },
       ao: 0,
       w: 2560,
@@ -2676,7 +2677,7 @@ export const LogoAnimationData = (color = '#000d6e') => ({
       ks: {
         o: { a: 0, k: 100, ix: 11 },
         r: { a: 0, k: 0, ix: 10 },
-        p: { a: 0, k: [1254, 263, 0], ix: 2, l: 2 },
+        p: { a: 0, k: [1240.5, 253, 0], ix: 2, l: 2 },
         a: { a: 0, k: [960, 540, 0], ix: 1, l: 2 },
         s: { a: 0, k: [183.016, 183.016, 100], ix: 6, l: 2 },
       },

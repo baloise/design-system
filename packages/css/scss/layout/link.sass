@@ -41,7 +41,59 @@ a.is-link:not(.button)
       color: var(--bal-color-info-3)
       +fillSvg(var(--bal-color-info-3))
 
-      copy
+a.is-animated-link:not(.button)
+  position: relative
+  padding: 0.1rem 0.2rem 4px 0.1rem
+  white-space: pre
+  text-decoration: none
+  font-weight: $weight-bold
+  border-radius: var(--bal-radius-small)
+  color: var(--bal-color-blue)
+
+  &:focus-visible
+    @extend %focus-shadow
+
+  &::after
+    transform-origin: center right
+    transition: all cubic-bezier(0.58, 0.77, 0.07, 0.97) .8s
+
+  &::before
+    transform-origin: center left
+    transform: scaleX(0)
+    transition: transform cubic-bezier(0.58, 0.77, 0.07, 0.97) .6s
+
+  &::after, &::before
+    content: ""
+    position: absolute
+    background-color: var(--bal-color-blue)
+    height: 2px
+    width: 100%
+    left: 0
+    bottom: 0
+
+  &:hover:after
+    transform: scaleX(0)
+    transition: transform cubic-bezier(0.58, 0.77, 0.07, 0.97) .3s
+    background-color: var(--bal-color-light-blue-dark)
+
+  &:hover:before
+    transform: scaleX(1)
+
+  &:active
+    background-color: var(--bal-color-blue-dark)
+
+  &.is-inverted
+    color: var(--bal-color-white)
+
+    &::after, &::before
+      background-color: var(--bal-color-light-blue-2)
+
+    &:focus-visible
+      @extend %focus-inverted-shadow
+
+    &:active
+      background-color: var(--bal-color-info-3)
+
 //a.is-animated-link:not(.button)
 //  font-weight: $weight-bold
 //  text-underline-offset: 4px
