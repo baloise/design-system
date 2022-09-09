@@ -103,6 +103,11 @@ export class Popover {
   @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
 
   /**
+   * Listen when the popover opens or closes. Returns the current value.
+   */
+  @Event() balPopoverOpen!: EventEmitter<string>
+
+  /**
    * @internal - Use this to close unused popovers.
    */
   @Event() balPopoverPrepare!: EventEmitter<string>
@@ -217,6 +222,7 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
+      this.balPopoverOpen.emit()
     }
   }
 
