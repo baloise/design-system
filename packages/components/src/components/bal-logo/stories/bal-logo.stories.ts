@@ -21,3 +21,10 @@ Basic.args = {
   color: 'blue',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const Animated = Template.bind({})
+Animated.args = {
+  color: 'blue',
+  animated: true,
+}
+Animated.parameters = { ...component.sourceCode(Animated) }

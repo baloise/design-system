@@ -97,6 +97,7 @@ cypress/videos
 storybook/
 packages/**/CHANGELOG.md
 packages/**/README.md
+packages/**/readme.md
 packages/**/LICENSE
 
 packages/components/loader/
@@ -106,6 +107,7 @@ packages/components/.storybook/vue/components.ts
 packages/components/.storybook/vue/components
 packages/components/src/assets/fonts
 packages/components/src/components/**/CHANGELOG.md
+packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
 

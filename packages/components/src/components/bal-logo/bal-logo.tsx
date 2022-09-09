@@ -1,6 +1,19 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import {
+  Component,
+  h,
+  ComponentInterface,
+  Host,
+  Element,
+  Prop,
+  Listen,
+  State,
+  FunctionalComponent,
+} from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
+import Lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
+import { LogoAnimationData } from './bal-logo.animation'
+import { isPlatform } from '../../'
 
 @Component({
   tag: 'bal-logo',
@@ -8,15 +21,55 @@ import { BEM } from '../../utils/bem'
 export class Logo implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @State() isTouch = isPlatform('touch')
+
   /**
    * Defines the color of the logo.
    */
   @Prop() color: Props.BalLogoColor = 'blue'
 
   /**
-   * Defines the size of the logo.
+   * Defines if the animation should be active
    */
-  @Prop() size: Props.BalLogoSize = 'normal'
+  @Prop() animated = false
+
+  animationItem!: AnimationItem
+
+  animatedLogoElement!: HTMLDivElement
+
+  componentDidUpdate() {
+    this.resetAnimation()
+  }
+
+  componentDidLoad() {
+    this.resetAnimation()
+  }
+
+  resetAnimation() {
+    if (this.animated) {
+      if (this.animationItem) {
+        this.animationItem.destroy()
+      }
+      this.animationItem = Lottie.loadAnimation({
+        container: this.animatedLogoElement,
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        animationData: LogoAnimationData(this.color),
+      })
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.animationItem && this.animationItem.destroy) {
+      this.animationItem.destroy()
+    }
+  }
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.isTouch = isPlatform('touch')
+  }
 
   render() {
     const logoBlock = BEM.block('logo')
@@ -43,15 +96,32 @@ export class Logo implements ComponentInterface {
       </svg>
     )
 
+    const AnimatedLogo: FunctionalComponent = () => {
+      return (
+        <div
+          style={{
+            width: this.isTouch ? '100px' : '158px',
+            height: this.isTouch ? '22px' : '32px',
+          }}
+          ref={el => (this.animatedLogoElement = el as HTMLDivElement)}
+        ></div>
+      )
+    }
+
+    const NonAnimatedLogo: FunctionalComponent = () => {
+      return <div>{this.isTouch ? logoSmall : logoNormal}</div>
+    }
+
+    const LogoElement = this.animated ? AnimatedLogo : NonAnimatedLogo
+
     return (
       <Host
         class={{
           ...logoBlock.class(),
           ...logoBlock.modifier(this.color).class(),
-          ...logoBlock.modifier(this.size).class(),
         }}
       >
-        <div>{this.size === 'normal' ? logoNormal : logoSmall}</div>
+        <LogoElement></LogoElement>
       </Host>
     )
   }
