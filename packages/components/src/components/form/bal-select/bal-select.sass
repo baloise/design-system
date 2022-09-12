@@ -43,21 +43,17 @@
       border-color: var(--bal-color-border-normal)
       background-color: var(--bal-color-grey-1)
     &--invalid:not(#{&}--disabled)
-      border-color: var(--bal-color-border-danger)
-      background: var(--bal-color-danger-light)
+      border-color: var(--bal-color-border-danger) !important
+      background: var(--bal-color-danger-light) !important
     +modifier(disabled)
-      background-color: var(--bal-color-disabled)
-      border-color: var(--bal-color-border-disabled)
+      background-color: var(--bal-color-disabled) !important
+      border-color: var(--bal-color-border-disabled) !important
       &,
       & input
         cursor: default !important
         user-select: none !important
         pointer-events: none !important
         color: var(--bal-color-text-disabled)
-      .bal-tag
-        background-color: $grey-5 !important
-        span
-          color: var(--bal-color-primary-inverted) !important
     //
     // trigger icon on the right
     +element(icon)
@@ -78,10 +74,14 @@
       max-width: 100%
       min-width: 0
       gap: 0
+      padding-left: 0.375rem
       .bal-tag
+        // margin-left: 0.625rem
         margin-left: 0.25rem
+        margin-top: 0.375rem
+        margin-bottom: 0.375rem
       .bal-tag + .input
-        padding-left: 1rem
+        padding-left: 0.625rem
     //
     // selection part for multiple
     +element(input)
@@ -93,8 +93,9 @@
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
       height: calc(3rem - 0.25rem)
-      padding-left: 1rem
-      padding-right: 1rem
+      // padding-left: 0.625rem
+      padding-left: 0.25rem
+      padding-right: 0.625rem
       &:read-only
         user-select: none !important
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0)

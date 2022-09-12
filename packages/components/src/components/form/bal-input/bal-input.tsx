@@ -49,6 +49,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   nativeInput?: HTMLInputElement
   inputValue = this.value
+  initialValue = this.value
 
   @Element() el!: HTMLElement
 
@@ -144,6 +145,11 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
    */
   @Prop() pattern?: string
+
+  /**
+   * A regular expression that the key of the key press event is checked against and if not matching the expression the event will be prevented.
+   */
+  @Prop() allowedKeyPress?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -271,7 +277,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this)
+      inputHandleReset(this, this.initialValue)
     }
   }
 
@@ -330,8 +336,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
 
-    if (this.pattern && input && !this.mask) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && input && !this.mask) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       this.inputValue = input.value = input.value
         .split('')
         .filter(val => regex.test(val))
@@ -438,8 +444,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
       }
     }
 
-    if (this.pattern && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
-      const regex = new RegExp('^' + this.pattern + '$')
+    if (this.allowedKeyPress && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      const regex = new RegExp('^' + this.allowedKeyPress + '$')
       if (!regex.test(event.key) && ![...ACTION_KEYS].includes(event.key)) {
         return stopEventBubbling(event)
       }

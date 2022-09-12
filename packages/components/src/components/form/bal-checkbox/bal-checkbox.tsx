@@ -35,6 +35,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Element() el!: HTMLElement
 
   @State() hasFocus = false
+  @State() hasLabel = true
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -42,7 +43,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() name: string = this.inputId
 
   /**
-   * If `true` the radio has no label
+   * If `true` the checkbox has no label
    */
   @Prop() labelHidden = false
 
@@ -52,6 +53,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() flat = false
 
   /**
+   * Defines the layout of the checkbox button
+   */
+  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
+
+  /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
@@ -59,14 +65,10 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() value: string | number = 'on'
 
   /**
-   * Defines the layout of the checkbox button
-   */
-  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
-
-  /**
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true }) checked = false
+  private initialValue = this.checked
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -89,19 +91,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() hidden = false
 
   /**
-   * If `true`, the control works on dark background.
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
-
-  /**
-   * Emitted when the value property has changed.
-   */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
   /**
    * Emitted when the toggle has focus.
@@ -112,6 +104,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * Emitted when the toggle loses focus.
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the value property has changed.
+   */
+  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
   /**
    * Emitted when the input has clicked.
@@ -133,12 +130,25 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.checked = false
+      this.checked = this.initialValue
     }
   }
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  connectedCallback() {
+    if (this.group) {
+      this.updateState()
+      this.group.addEventListener('balChange', () => this.updateState())
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.group) {
+      this.group.removeEventListener('balChange', () => this.updateState())
+    }
   }
 
   /**
@@ -167,6 +177,16 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     return Promise.resolve(this.nativeInput)
   }
 
+  get group(): HTMLBalCheckboxGroupElement | null {
+    return this.el.closest('bal-checkbox-group')
+  }
+
+  private updateState = () => {
+    if (this.group && this.group.control) {
+      this.checked = this.group.value.includes(this.value)
+    }
+  }
+
   private onInputFocus = (ev: FocusEvent) => inputHandleFocus<any>(this, ev)
 
   private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
@@ -177,29 +197,21 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
       return
     }
 
-    if (!this.disabled && !this.readonly) {
+    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+      ev.preventDefault()
     } else {
       stopEventBubbling(ev)
     }
   }
 
   render() {
-    const type = this.interface
-    const block = BEM.block(type)
-    const flatClass = 'is-flat'
-    const hasFlat = this.flat
-    const elLabel = block.element('label')
-    const elText = elLabel.element('text')
-    const elInput = block.element('input')
-    const disabledClass = 'is-disabled'
-    const hasDisabled = this.disabled || this.readonly
-    const paddingLeftClass = 'has-padding-left'
-    const hasPaddingLeft = !this.labelHidden
-    const invalidClass = 'is-invalid'
-    const hasInvalid = this.invalid
+    const block = BEM.block('radio-checkbox')
+    const inputEl = block.element('input')
+    const labelEl = block.element('label')
+    const labelTextEl = labelEl.element('text')
 
     return (
       <Host
@@ -210,52 +222,57 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
           ...block.class(),
-          ...block.modifier(flatClass).class(hasFlat),
-          ...block.modifier(disabledClass).class(hasDisabled),
-          ...block.modifier(invalidClass).class(hasInvalid),
+          ...block.modifier('checkbox').class(),
+          ...block.modifier('select-button').class(this.interface === 'select-button'),
+          ...block.modifier('switch').class(this.interface === 'switch'),
+          ...block.modifier('focused').class(this.hasFocus),
+          ...block.modifier('invalid').class(this.invalid),
+          ...block.modifier('checked').class(this.checked),
+          ...block.modifier('flat').class(this.flat),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
+        onClick={this.onClick}
+        onFocus={this.onInputFocus}
+        onBlur={this.onInputBlur}
         {...this.inheritedAttributes}
       >
         <input
           class={{
-            ...elInput.class(),
-            ...elInput.modifier(disabledClass).class(hasDisabled),
-            ...elInput.modifier(invalidClass).class(hasInvalid),
+            ...inputEl.class(),
+            ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
           id={this.inputId}
           name={this.name}
-          required={this.required}
-          tabindex={-1}
-          checked={this.checked}
           value={this.value}
+          checked={this.checked}
           aria-checked={`${this.checked}`}
           disabled={this.disabled || this.hidden}
           readonly={this.readonly}
-          onFocus={e => this.onInputFocus(e)}
-          onBlur={e => this.onInputBlur(e)}
-          onClick={this.onClick}
+          required={this.required}
+          onFocus={this.onInputFocus}
+          onBlur={this.onInputBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
           class={{
-            ...elLabel.class(),
-            ...elLabel.modifier(disabledClass).class(hasDisabled),
+            ...labelEl.class(),
+            ...labelEl.modifier('checked').class(this.checked),
+            ...labelEl.modifier('switch').class(this.interface === 'switch'),
+            ...labelEl.modifier('checkbox').class(),
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
         >
-          <bal-text
-            inline
-            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
+          <span
             class={{
-              ...elText.class(),
-              ...elText.modifier(paddingLeftClass).class(hasPaddingLeft),
+              ...labelTextEl.class(),
+              ...labelTextEl.modifier('hidden').class(this.labelHidden),
             }}
           >
             <slot></slot>
-          </bal-text>
+          </span>
         </label>
       </Host>
     )

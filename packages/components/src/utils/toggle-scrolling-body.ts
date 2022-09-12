@@ -1,7 +1,7 @@
 interface ToggleScrollingBodyOptions {
-  bodyEl: HTMLBodyElement
+  bodyEl: HTMLElement
   value: boolean
-  height: string
+  height?: string
 }
 
 /**
@@ -18,15 +18,21 @@ export const toggleScrollingBody = async (options: ToggleScrollingBodyOptions) =
 /**
  * Blocks the scrolling on the body element
  */
-const blockScrollingBody = async (body: HTMLBodyElement, height: string) => {
+export const blockScrollingBody = async (body: HTMLElement = document.body, height?: string) => {
+  body.style.position = 'fixed'
+  body.style.width = '100%'
   body.style.overflowY = 'hidden'
-  body.style.height = height
+  if (height) {
+    body.style.height = height
+  }
 }
 
 /**
  * Allows the scrolling on the body element
  */
-const allowScrollingBody = async (body: HTMLBodyElement) => {
+export const allowScrollingBody = async (body: HTMLElement = document.body) => {
   body.style.overflowY = 'visible'
   body.style.height = 'auto'
+  body.style.position = 'static'
+  body.style.width = 'auto'
 }
