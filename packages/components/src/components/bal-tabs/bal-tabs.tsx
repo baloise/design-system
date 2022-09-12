@@ -102,13 +102,11 @@ export class Tabs {
 
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
-    console.log('valueChanged newValue', newValue)
-    console.log('valueChanged oldValue', oldValue)
+    console.trace('valueChanged')
+    console.log('valueChanged', newValue, oldValue)
     this.tabs.forEach(t => t.setActive(t.value === this.value))
 
     if (this.didInit && newValue !== oldValue) {
-      console.log('valueChanged if')
-      // this.value = oldValue
       this.isReady = true
     }
   }
@@ -120,16 +118,16 @@ export class Tabs {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
+    console.log('resizeHandler')
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
-    console.log('resizeHandler')
   }
 
   @Listen('balPopoverPrepare', { target: 'window' })
   async popoverHandler() {
+    console.log('popoverHandler')
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
-    console.log('popoverHandler')
   }
 
   connectedCallback() {
@@ -144,6 +142,7 @@ export class Tabs {
   }
 
   disconnectedCallback() {
+    console.log('disconnectedCallback')
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -291,14 +290,10 @@ export class Tabs {
           } else {
             if (listElement?.clientWidth !== undefined) {
               this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : paddingLeft + paddingRight)
-              console.log('clientWidth ', listElement.clientWidth)
-              console.log('lineWidth ', this.lineWidth)
             }
 
             if (listElement?.offsetLeft !== undefined) {
               this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : paddingLeft)
-              console.log('offsetLeft ', listElement.offsetLeft)
-              console.log('lineOffsetLeft ', this.lineOffsetLeft)
             }
           }
         } else {
@@ -318,6 +313,7 @@ export class Tabs {
   }
 
   render() {
+    console.log('render tabs', this.value)
     const block = BEM.block('tabs')
     const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
     const Tabs = isSteps ? StepList : TabList

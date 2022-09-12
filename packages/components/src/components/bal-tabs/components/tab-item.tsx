@@ -50,7 +50,10 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
       {...hrefAttribute}
       aria-disabled={`${disabled}`}
       aria-current="page"
-      onClick={e => onSelectTab(e)}
+      onClick={e => {
+        console.log('click tab', e)
+        onSelectTab(e)
+      }}
     >
       <bal-icon
         class={{ ...buttonEl.element('icon').class() }}

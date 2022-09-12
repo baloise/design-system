@@ -23,9 +23,10 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalButton },
+  components: { ...component.components, BalButton, BalTabs, BalTabItem },
   setup: () => {
     const isActive = ref(true)
+    const myTab = ref('tab-b')
 
     const toggle = () => {
       isActive.value = !isActive.value
@@ -39,6 +40,7 @@ export const Basic = args => ({
       args,
       isActive,
       toggle,
+      myTab,
     }
   },
   template: `<bal-popover v-bind="args" v-model="isActive">
@@ -46,23 +48,24 @@ export const Basic = args => ({
     Trigger
   </bal-button>
   <bal-popover-content>
-  <div class="p-3">
-  <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
-    dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
-    error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
-  </p>
-</div>
-    <bal-tabs border fullwidth interface="tabs" value="tab-b">
-      <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-      <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-      <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-      <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
-      <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
-    </bal-tabs>
+    <div class="p-3">
+      <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
+        dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
+        error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
+      </p>
+      <bal-tabs spaceless border fullwidth interface="tabs" v-model="myTab">
+        <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+        <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+        <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+        <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+        <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+      </bal-tabs>
+    </div>
   </bal-popover-content>
-  </bal-popover>`,
+  </bal-popover>
+`,
 })
 Basic.args = {
   content:
