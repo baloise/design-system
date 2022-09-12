@@ -119,6 +119,12 @@ export class Tabs {
     this.moveLine(this.getTargetElement(this.value))
   }
 
+  @Listen('balPopoverPrepare', { target: 'window' })
+  async popoverHandler() {
+    this.platform = getPlatforms()
+    this.moveLine(this.getTargetElement(this.value))
+  }
+
   connectedCallback() {
     this.platform = getPlatforms()
     this.debounceChanged()

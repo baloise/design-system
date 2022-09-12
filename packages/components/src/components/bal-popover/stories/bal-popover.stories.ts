@@ -1,12 +1,19 @@
 import { ref, watchEffect } from 'vue'
 import docs from './bal-popover.docs.mdx'
 import { withContent } from '../../../stories/utils'
-import { BalPopover, BalPopoverContent, BalButton, BalClose } from '../../../../.storybook/vue/components'
+import {
+  BalPopover,
+  BalPopoverContent,
+  BalButton,
+  BalClose,
+  BalTabs,
+  BalTabItem,
+} from '../../../../.storybook/vue/components'
 import { BalComponentStory } from '../../../stories/utils/story'
 
 const component = BalComponentStory({
   component: BalPopover,
-  subcomponents: { BalPopoverContent },
+  subcomponents: { BalPopoverContent, BalTabs, BalTabItem },
   argTypes: {
     ...withContent(),
   },
@@ -16,9 +23,10 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalButton },
+  components: { ...component.components, BalButton, BalTabs, BalTabItem },
   setup: () => {
     const isActive = ref(true)
+    const myTab = ref('tab-b')
 
     const toggle = () => {
       isActive.value = !isActive.value
@@ -32,6 +40,7 @@ export const Basic = args => ({
       args,
       isActive,
       toggle,
+      myTab,
     }
   },
   template: `<bal-popover v-bind="args" v-model="isActive">
@@ -46,9 +55,17 @@ export const Basic = args => ({
         dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
         error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
       </p>
+      <bal-tabs spaceless border fullwidth interface="tabs" v-model="myTab">
+        <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+        <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+        <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+        <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+        <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+      </bal-tabs>
     </div>
   </bal-popover-content>
-  </bal-popover>`,
+  </bal-popover>
+`,
 })
 Basic.args = {
   content:
