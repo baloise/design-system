@@ -14,7 +14,7 @@ export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellR
   Renderer.prototype.init = function (params: ICellRendererParams): void {
     this.params = params
     this.element = document.createElement('bal-tag')
-    this.element.setAttribute('size', 'small')
+    this.element.setAttribute('size', '')
     this.element.innerHTML = params.value
     this.update()
   }

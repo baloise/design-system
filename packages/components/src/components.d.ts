@@ -1578,10 +1578,6 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
-          * If `true` a outside click can close the popover
-         */
-        "closable": boolean;
-        /**
           * Closes the popover
          */
         "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
@@ -2250,6 +2246,10 @@ export namespace Components {
           * If `true` a light version of the color is displayed
          */
         "light": boolean;
+        /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position": Props.BalTagPlacement;
         /**
           * The size of the tag element
          */
@@ -5043,10 +5043,6 @@ declare namespace LocalJSX {
          */
         "backdrop"?: boolean;
         /**
-          * If `true` a outside click can close the popover
-         */
-        "closable"?: boolean;
-        /**
           * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
          */
         "hint"?: boolean;
@@ -5742,6 +5738,10 @@ declare namespace LocalJSX {
           * Emitted when the input got clicked.
          */
         "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
+        /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position"?: Props.BalTagPlacement;
         /**
           * The size of the tag element
          */

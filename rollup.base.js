@@ -32,11 +32,11 @@ const banner = `/*!
   * @license ${pkg.license}
   */`
 
-export default ({ styleOutput, declarationDir, cleanTargets } = {}) => ({
-  input: 'src/index.ts',
+export default ({ styleOutput, declarationDir, cleanTargets, input, target } = {}) => ({
+  input: input || 'src/index.ts',
   output: [
     {
-      dir: 'dist/',
+      dir: target || 'dist/',
       entryFileNames: '[name].esm.js',
       chunkFileNames: '[name]-[hash].esm.js',
       format: 'es',
@@ -44,7 +44,7 @@ export default ({ styleOutput, declarationDir, cleanTargets } = {}) => ({
       sourcemap: true,
     },
     {
-      dir: 'dist/',
+      dir: target || 'dist/',
       entryFileNames: '[name].js',
       chunkFileNames: '[name]-[hash].js',
       format: 'cjs',
@@ -66,11 +66,11 @@ export default ({ styleOutput, declarationDir, cleanTargets } = {}) => ({
     resolve(),
     commonjs(),
     peerDepsExternal(),
-    typescript({ declaration: true, declarationDir: declarationDir || 'dist/types', outDir: 'dist' }),
+    typescript({ declaration: true, declarationDir: declarationDir || 'dist/types', outDir: target || 'dist' }),
     sass({
       output: styleOutput || 'dist/styles.css',
       options: {
-        outputStyle: 'compressed',
+        outputStyle: 'expanded',
         includePaths: [path.join(__dirname, '../../node_modules/'), 'node_modules/'],
       },
       processor: css =>

@@ -122,6 +122,7 @@ export namespace Props {
     | 'purple'
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
+  export type BalTagFontWeight = 'regular' | 'bold'
 
   export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
@@ -262,4 +263,5 @@ export namespace Props {
     | 'yellow'
     | 'yellow-light'
   export type BalShapeRotation = '0' | '90' | '180' | '270'
+  export type BalTagPlacement = 'left' | 'center'
 }

@@ -10,7 +10,7 @@ $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
 
 @each $property, $shortcut in $spacing-shortcuts
-  @each $name, $value in $spacing-values
+  @each $name, $value in $bal-spacing-values
     // All directions
     .#{$shortcut}-#{$name}
       #{$property}: $value !important
@@ -34,7 +34,7 @@ $spacing-vertical: "y" !default
 
 @include tablet()
   @each $property, $shortcut in $spacing-shortcuts
-    @each $name, $value in $spacing-values-tablet
+    @each $name, $value in $bal-spacing-values-tablet
       // All directions
       .#{$shortcut}-#{$name}
         #{$property}: $value !important
@@ -58,7 +58,7 @@ $spacing-vertical: "y" !default
 
 @include desktop()
   @each $property, $shortcut in $spacing-shortcuts
-    @each $name, $value in $spacing-values-desktop
+    @each $name, $value in $bal-spacing-values-desktop
       // All directions
       .#{$shortcut}-#{$name}
         #{$property}: $value !important
