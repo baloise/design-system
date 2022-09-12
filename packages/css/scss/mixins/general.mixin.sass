@@ -128,9 +128,9 @@
 
 =spacing($prop: 'margin', $level: 2, $position: '')
   $key: string.quote(#{$level})
-  $value: map.get($spacing-values, $key)
-  $value-tablet: map.get($spacing-values-tablet, $key)
-  $value-desktop: map.get($spacing-values-desktop, $key)
+  $value: map.get($bal-spacing-values, $key)
+  $value-tablet: map.get($bal-spacing-values-tablet, $key)
+  $value-desktop: map.get($bal-spacing-values-desktop, $key)
 
   @if $position == ''
     #{$prop}: $value

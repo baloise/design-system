@@ -16,11 +16,17 @@ const descriptions = {
 }
 
 const tokens = {
+  /**
+   * COLORS
+   */
   color: {
+    //
+    // BASE
     'transparent': { hex: 'transparent', inverted: 'transparent', description: descriptions.color.neutral },
     'white': { hex: '#ffffff', inverted: 'primary', description: descriptions.color.neutral },
-    'black': { hex: '#000000', inverted: 'primary-inverted', description: descriptions.color.neutral },
-
+    'black': { hex: '#000000', inverted: 'white', description: descriptions.color.neutral },
+    //
+    // GREY
     'grey-1': {
       hex: '#fafafa',
       inverted: 'primary',
@@ -29,78 +35,88 @@ const tokens = {
     'grey-2': { hex: '#f6f6f6', inverted: 'primary', description: descriptions.color.neutral },
     'grey-3': { hex: '#e8e8e8', inverted: 'primary', description: descriptions.color.neutral },
     'grey-4': { hex: '#b6b6b6', inverted: 'primary', description: descriptions.color.neutral },
-    'grey-5': { hex: '#747474', inverted: 'primary-inverted', description: descriptions.color.neutral },
-    'grey-6': { hex: '#313131', inverted: 'primary-inverted', description: descriptions.color.neutral },
-
+    'grey-5': { hex: '#747474', inverted: 'white', description: descriptions.color.neutral },
+    'grey-6': { hex: '#313131', inverted: 'white', description: descriptions.color.neutral },
+    //
+    // BLUE
     'blue-1': { hex: '#e5e7f0', inverted: 'primary', description: descriptions.color.accent }, // blue -0.10
     'blue-2': { hex: '#b3b6d4', inverted: 'primary', description: descriptions.color.accent }, // #293485
     'blue-3': { hex: '#656ea8', inverted: 'primary', description: descriptions.color.accent },
-    'blue-4': { hex: '#293485', inverted: 'primary-inverted', description: descriptions.color.accent },
-    'blue-5': { hex: '#000d6e', inverted: 'primary-inverted', description: descriptions.color.accent },
-    'blue-6': { hex: '#000739', inverted: 'primary-inverted', description: descriptions.color.accent },
-
+    'blue-4': { hex: '#293485', inverted: 'white', description: descriptions.color.accent },
+    'blue-5': { hex: '#000d6e', inverted: 'white', description: descriptions.color.accent },
+    'blue-6': { hex: '#000739', inverted: 'white', description: descriptions.color.accent },
+    //
+    // LIGHT BLUE
     'light-blue-1': { hex: '#e5f1fe', inverted: 'primary', description: descriptions.color.functional }, // blue 3 70%
     'light-blue-2': { hex: '#a7d1fa', inverted: 'primary', description: descriptions.color.functional }, // blue 3
     'light-blue-3': { hex: '#56a7f5', inverted: 'primary', description: descriptions.color.functional },
-    'light-blue-4': { hex: '#6672cc', inverted: 'primary-inverted', description: descriptions.color.functional },
-    'light-blue-5': { hex: '#0014aa', inverted: 'primary-inverted', description: descriptions.color.functional }, // hover blue
-    'light-blue-6': { hex: '#000a55', inverted: 'primary-inverted', description: descriptions.color.functional },
-
+    'light-blue-4': { hex: '#6672cc', inverted: 'white', description: descriptions.color.functional },
+    'light-blue-5': { hex: '#0014aa', inverted: 'white', description: descriptions.color.functional }, // hover blue
+    'light-blue-6': { hex: '#000a55', inverted: 'white', description: descriptions.color.functional },
+    //
+    // PURPLE
     'purple-1': { hex: '#f9f3ff', inverted: 'primary', description: descriptions.color.primary },
     'purple-2': { hex: '#e1d9ff', inverted: 'primary', description: descriptions.color.primary },
     'purple-3': { hex: '#b8b2ff', inverted: 'primary', description: descriptions.color.primary },
-    'purple-4': { hex: '#be82fa', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'purple-5': { hex: '#9f52cc', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'purple-6': { hex: '#6c2273', inverted: 'primary-inverted', description: descriptions.color.primary },
-
+    'purple-4': { hex: '#be82fa', inverted: 'white', description: descriptions.color.primary },
+    'purple-5': { hex: '#9f52cc', inverted: 'white', description: descriptions.color.primary },
+    'purple-6': { hex: '#6c2273', inverted: 'white', description: descriptions.color.primary },
+    //
+    // GREEN
     'green-1': { hex: '#e9fbf7', inverted: 'primary', description: descriptions.color.primary },
     'green-2': { hex: '#cbf2ec', inverted: 'primary', description: descriptions.color.primary },
     'green-3': { hex: '#94e3d4', inverted: 'primary', description: descriptions.color.primary },
-    'green-4': { hex: '#21d9ac', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'green-5': { hex: '#00b28f', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'green-6': { hex: '#1b5951', inverted: 'primary-inverted', description: descriptions.color.primary },
-
+    'green-4': { hex: '#21d9ac', inverted: 'white', description: descriptions.color.primary },
+    'green-5': { hex: '#00b28f', inverted: 'white', description: descriptions.color.primary },
+    'green-6': { hex: '#1b5951', inverted: 'white', description: descriptions.color.primary },
+    //
+    // YELLOW / TANGERINE
     'yellow-1': { hex: '#fff9e8', inverted: 'primary', description: descriptions.color.primary },
     'yellow-2': { hex: '#ffecbc', inverted: 'primary', description: descriptions.color.primary },
     'yellow-3': { hex: '#fae052', inverted: 'primary', description: descriptions.color.primary },
-    'yellow-4': { hex: '#ffbe19', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'yellow-5': { hex: '#fa9319', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'yellow-6': { hex: '#b24a00', inverted: 'primary-inverted', description: descriptions.color.primary },
-
+    'yellow-4': { hex: '#ffbe19', inverted: 'white', description: descriptions.color.primary },
+    'yellow-5': { hex: '#fa9319', inverted: 'white', description: descriptions.color.primary },
+    'yellow-6': { hex: '#b24a00', inverted: 'white', description: descriptions.color.primary },
+    //
+    // RED
     'red-1': { hex: '#ffeef1', inverted: 'primary', description: descriptions.color.primary },
     'red-2': { hex: '#ffd7d7', inverted: 'primary', description: descriptions.color.primary },
     'red-3': { hex: '#ffaca6', inverted: 'primary', description: descriptions.color.primary },
-    'red-4': { hex: '#ff596f', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'red-5': { hex: '#d9304c', inverted: 'primary-inverted', description: descriptions.color.primary },
-    'red-6': { hex: '#99172d', inverted: 'primary-inverted', description: descriptions.color.primary },
-
+    'red-4': { hex: '#ff596f', inverted: 'white', description: descriptions.color.primary },
+    'red-5': { hex: '#d9304c', inverted: 'white', description: descriptions.color.primary },
+    'red-6': { hex: '#99172d', inverted: 'white', description: descriptions.color.primary },
+    //
+    // INFO
     'info-1': { hex: '#e8f1fb', inverted: 'primary', description: descriptions.color.alert },
     'info-2': { hex: '#a4c9ed', inverted: 'primary', description: descriptions.color.alert },
     'info-3': { hex: '#60a0e0', inverted: 'primary', description: descriptions.color.alert },
-    'info-4': { hex: '#1c77d2', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'info-5': { hex: '#155ba3', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'info-6': { hex: '#0e457b', inverted: 'primary-inverted', description: descriptions.color.alert },
-
+    'info-4': { hex: '#1c77d2', inverted: 'white', description: descriptions.color.alert },
+    'info-5': { hex: '#155ba3', inverted: 'white', description: descriptions.color.alert },
+    'info-6': { hex: '#0e457b', inverted: 'white', description: descriptions.color.alert },
+    //
+    // SUCCESS
     'success-1': { hex: '#e8f3ec', inverted: 'primary', description: descriptions.color.alert },
     'success-2': { hex: '#a1cfb3', inverted: 'primary', description: descriptions.color.alert },
     'success-3': { hex: '#5bab7a', inverted: 'primary', description: descriptions.color.alert },
-    'success-4': { hex: '#168741', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'success-5': { hex: '#116b34', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'success-6': { hex: '#0b5227', inverted: 'primary-inverted', description: descriptions.color.alert },
-
+    'success-4': { hex: '#168741', inverted: 'white', description: descriptions.color.alert },
+    'success-5': { hex: '#116b34', inverted: 'white', description: descriptions.color.alert },
+    'success-6': { hex: '#0b5227', inverted: 'white', description: descriptions.color.alert },
+    //
+    // WARNING
     'warning-1': { hex: '#fff9e8', inverted: 'primary', description: descriptions.color.alert },
     'warning-2': { hex: '#ffe5a3', inverted: 'primary', description: descriptions.color.alert },
     'warning-3': { hex: '#ffd25e', inverted: 'primary', description: descriptions.color.alert },
     'warning-4': { hex: '#ffbe19', inverted: 'primary', description: descriptions.color.alert },
-    'warning-5': { hex: '#f99319', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'warning-6': { hex: '#c97612', inverted: 'primary-inverted', description: descriptions.color.alert },
-
+    'warning-5': { hex: '#f99319', inverted: 'white', description: descriptions.color.alert },
+    'warning-6': { hex: '#c97612', inverted: 'white', description: descriptions.color.alert },
+    //
+    // DANGER
     'danger-1': { hex: '#fce8e6', inverted: 'primary', description: descriptions.color.alert },
     'danger-2': { hex: '#f7a299', inverted: 'primary', description: descriptions.color.alert },
     'danger-3': { hex: '#f05d4d', inverted: 'primary', description: descriptions.color.alert },
-    'danger-4': { hex: '#ea1800', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'danger-5': { hex: '#cb1501', inverted: 'primary-inverted', description: descriptions.color.alert },
-    'danger-6': { hex: '#a01100', inverted: 'primary-inverted', description: descriptions.color.alert },
+    'danger-4': { hex: '#ea1800', inverted: 'white', description: descriptions.color.alert },
+    'danger-5': { hex: '#cb1501', inverted: 'white', description: descriptions.color.alert },
+    'danger-6': { hex: '#a01100', inverted: 'white', description: descriptions.color.alert },
   },
   breakpoint: {
     tablet: '769px',
@@ -198,9 +214,9 @@ const tokens = {
     familyTitle: 'BaloiseCreateHeadline, Arial, sans-serif',
     familyText: 'BaloiseCreateText, Arial, sans-serif',
     weights: {
-      bold: 700,
-      regular: 400,
-      light: 300,
+      bold: '700',
+      regular: '400',
+      light: '300',
     },
     sizes: {
       'xxxxx-large': {
@@ -443,95 +459,113 @@ const tokens = {
  * Aliases
  *
  ***********************************************************/
-tokens.color['primary-1'] = tokens.color['blue-1']
-tokens.color['primary-2'] = tokens.color['blue-2']
-tokens.color['primary-3'] = tokens.color['blue-3']
-tokens.color['primary-4'] = tokens.color['blue-4']
-tokens.color['primary-5'] = tokens.color['blue-5']
-tokens.color['primary-6'] = tokens.color['blue-6']
+const colorAlias = (target: string, source: string) => {
+  tokens.color[target] = {
+    ...tokens.color[source],
+    alias: source,
+  }
+}
 
-tokens.color['primary'] = tokens.color['primary-5']
-tokens.color['primary-inverted'] = tokens.color['white']
-tokens.color['primary-light'] = tokens.color['primary-1']
-tokens.color['primary-dark'] = tokens.color['primary-6']
+colorAlias('primary-1', 'blue-1')
+colorAlias('primary-2', 'blue-2')
+colorAlias('primary-3', 'blue-3')
+colorAlias('primary-4', 'blue-4')
+colorAlias('primary-5', 'blue-5')
+colorAlias('primary-6', 'blue-6')
 
-tokens.color['grey-light'] = tokens.color['grey-1']
-tokens.color['grey-dark'] = tokens.color['grey-5']
-tokens.color['grey'] = tokens.color['grey-3']
+colorAlias('primary', 'primary-5')
+colorAlias('primary-light', 'primary-1')
+colorAlias('primary-dark', 'primary-6')
 
-tokens.color['blue-light'] = tokens.color['blue-1']
-tokens.color['blue-dark'] = tokens.color['blue-6']
-tokens.color['blue'] = tokens.color['blue-5']
+colorAlias('grey-light', 'grey-1')
+colorAlias('grey-dark', 'grey-5')
+colorAlias('grey', 'grey-3')
 
-tokens.color['primary-hover'] = tokens.color['light-blue-5']
-tokens.color['primary-active'] = tokens.color['primary-6']
+colorAlias('blue-light', 'blue-1')
+colorAlias('blue-dark', 'blue-6')
+colorAlias('blue', 'blue-5')
 
-tokens.color['light-blue'] = tokens.color['light-blue-1']
-tokens.color['light-blue-dark'] = tokens.color['light-blue-5']
-tokens.color['light-blue-hover'] = tokens.color['light-blue-1']
-tokens.color['light-blue-active'] = tokens.color['light-blue-1']
+colorAlias('primary-hover', 'light-blue-5')
+colorAlias('primary-active', 'primary-6')
 
-tokens.color['purple-light'] = tokens.color['purple-1']
-tokens.color['purple-dark'] = tokens.color['purple-6']
-tokens.color['purple'] = tokens.color['purple-3']
+colorAlias('light-blue', 'light-blue-1')
+colorAlias('light-blue-dark', 'light-blue-5')
+colorAlias('light-blue-hover', 'light-blue-1')
+colorAlias('light-blue-active', 'light-blue-1')
 
-tokens.color['green-light'] = tokens.color['green-1']
-tokens.color['green-dark'] = tokens.color['green-6']
-tokens.color['green'] = tokens.color['green-3']
+colorAlias('purple-light', 'purple-1')
+colorAlias('purple-dark', 'purple-6')
+colorAlias('purple', 'purple-3')
 
-tokens.color['yellow-light'] = tokens.color['yellow-1']
-tokens.color['yellow-dark'] = tokens.color['yellow-6']
-tokens.color['yellow'] = tokens.color['yellow-3']
+colorAlias('green-light', 'green-1')
+colorAlias('green-dark', 'green-6')
+colorAlias('green', 'green-3')
 
-tokens.color['red-light'] = tokens.color['red-1']
-tokens.color['red-dark'] = tokens.color['red-6']
-tokens.color['red'] = tokens.color['red-3']
+colorAlias('yellow-light', 'yellow-1')
+colorAlias('yellow-dark', 'yellow-6')
+colorAlias('yellow', 'yellow-3')
 
-tokens.color['info-light'] = tokens.color['info-1']
-tokens.color['info'] = tokens.color['info-3']
-tokens.color['info-dark'] = tokens.color['info-6']
+colorAlias('red-light', 'red-1')
+colorAlias('red-dark', 'red-6')
+colorAlias('red', 'red-3')
 
-tokens.color['success-light'] = tokens.color['success-1']
-tokens.color['success'] = tokens.color['success-3']
-tokens.color['success-dark'] = tokens.color['success-6']
+colorAlias('info-light', 'info-1')
+colorAlias('info', 'info-3')
+colorAlias('info-dark', 'info-6')
 
-tokens.color['warning-light'] = tokens.color['warning-1']
-tokens.color['warning'] = tokens.color['warning-3']
-tokens.color['warning-dark'] = tokens.color['warning-6']
+colorAlias('success-light', 'success-1')
+colorAlias('success', 'success-3')
+colorAlias('success-dark', 'success-6')
 
-tokens.color['danger-light'] = tokens.color['danger-1']
-tokens.color['danger'] = tokens.color['danger-3']
-tokens.color['danger-dark'] = tokens.color['danger-6']
+colorAlias('warning-light', 'warning-1')
+colorAlias('warning', 'warning-3')
+colorAlias('warning-dark', 'warning-6')
 
-tokens.color['valid'] = tokens.color['success-light']
-tokens.color['invalid'] = tokens.color['danger-light']
-tokens.color['disabled'] = tokens.color['grey-2']
+colorAlias('danger-light', 'danger-1')
+colorAlias('danger', 'danger-3')
+colorAlias('danger-dark', 'danger-6')
 
-tokens.color['background'] = tokens.color['white']
-tokens.color['background-light'] = tokens.color['grey-light']
+colorAlias('valid', 'success-light')
+colorAlias('invalid', 'danger-light')
+colorAlias('disabled', 'grey-2')
+
+colorAlias('background', 'white')
+colorAlias('background-light', 'grey-light')
 
 //
 // Legacy
-tokens.typography.sizes['display'] = tokens.typography.sizes['xxxxx-large']
-tokens.typography.sizes['1'] = tokens.typography.sizes['xxxx-large']
-tokens.typography.sizes['2'] = tokens.typography.sizes['xxx-large']
-tokens.typography.sizes['3'] = tokens.typography.sizes['xx-large']
-tokens.typography.sizes['4'] = tokens.typography.sizes['x-large']
-tokens.typography.sizes['5'] = tokens.typography.sizes['normal']
-tokens.typography.sizes['6'] = tokens.typography.sizes['small']
-tokens.typography.sizes['7'] = tokens.typography.sizes['x-small']
+const typographyAlias = (target: string, source: string) => {
+  tokens.typography.sizes[target] = {
+    ...tokens.typography.sizes[source],
+    alias: source,
+  }
+}
+typographyAlias('display', 'xxxxx-large')
+typographyAlias('1', 'xxxx-large')
+typographyAlias('2', 'xxx-large')
+typographyAlias('3', 'xx-large')
+typographyAlias('4', 'x-large')
+typographyAlias('5', 'normal')
+typographyAlias('6', 'small')
+typographyAlias('7', 'x-small')
 
-tokens.spacing['0'] = tokens.spacing['none']
-tokens.spacing['1'] = tokens.spacing['xx-small']
-tokens.spacing['2'] = tokens.spacing['x-small']
-tokens.spacing['3'] = tokens.spacing['small']
-tokens.spacing['4'] = tokens.spacing['normal']
-tokens.spacing['5'] = tokens.spacing['medium']
-tokens.spacing['6'] = tokens.spacing['large']
-tokens.spacing['7'] = tokens.spacing['x-large']
-tokens.spacing['8'] = tokens.spacing['xx-large']
-tokens.spacing['9'] = tokens.spacing['xxx-large']
-tokens.spacing['10'] = tokens.spacing['xxxx-large']
+const spacingAlias = (target: string, source: string) => {
+  tokens.spacing[target] = {
+    ...tokens.spacing[source],
+    alias: source,
+  }
+}
+spacingAlias('0', 'none')
+spacingAlias('1', 'xx-small')
+spacingAlias('2', 'x-small')
+spacingAlias('3', 'small')
+spacingAlias('4', 'normal')
+spacingAlias('5', 'medium')
+spacingAlias('6', 'large')
+spacingAlias('7', 'x-large')
+spacingAlias('8', 'xx-large')
+spacingAlias('9', 'xxx-large')
+spacingAlias('10', 'xxxx-large')
 
 /************************************************************
  * Export
@@ -557,6 +591,7 @@ export interface BaloiseDesignTokens {
       mobile: string
       tablet: string
       desktop: string
+      alias?: string
     }
   }
   border: {
@@ -588,6 +623,7 @@ export interface BaloiseDesignTokens {
           lineHeight: string
           spacing: string
         }
+        alias?: string
       }
     }
   }
@@ -602,10 +638,11 @@ export interface BaloiseDesignTokenColors {
 }
 
 export interface BaloiseDesignTokenColor {
+  hex: string
   description?: string
   inverted?: string
   rgba?: string
-  hex: string
+  alias?: string
 }
 
 export interface BaloiseDesignTokenValue {
