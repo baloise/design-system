@@ -110,8 +110,19 @@
     position: absolute
     left: 1rem
     top: -1rem
+
     +desktop
       left: 1.5rem
+    +modifier(is-left)
+      left: 1rem
+      +desktop
+        left: 1.5rem
+    +modifier(is-center)
+      left: 50%
+      transform: translateX(-50%)
+      +desktop
+        left: 50%
+        transform: translateX(-50%)
 
 +block(card-title)
   display: block

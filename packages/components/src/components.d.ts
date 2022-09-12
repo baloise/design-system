@@ -2247,6 +2247,10 @@ export namespace Components {
          */
         "light": boolean;
         /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position": Props.BalTagPlacement;
+        /**
           * The size of the tag element
          */
         "size": Props.BalTagSize;
@@ -5734,6 +5738,10 @@ declare namespace LocalJSX {
           * Emitted when the input got clicked.
          */
         "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
+        /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position"?: Props.BalTagPlacement;
         /**
           * The size of the tag element
          */

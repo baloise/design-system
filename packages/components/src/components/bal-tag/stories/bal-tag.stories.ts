@@ -52,35 +52,57 @@ export const TagCard = args => ({
 })
 TagCard.args = {
   content: 'Bestseller',
-  color: 'success',
-  light: true,
-  size: 'small',
-  closable: false,
+  color: 'red',
 }
 TagCard.parameters = { ...component.sourceCode(TagCard) }
+
+export const TagCardCentered = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-card class="mt-4">
+  <bal-tag v-bind="args">{{ args.content }}</bal-tag>
+  <bal-card-title>Title</bal-card-title>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+</bal-card>`,
+})
+TagCardCentered.args = {
+  content: 'Bestseller',
+  color: 'red',
+  size: 'large',
+  position: 'center',
+}
+TagCardCentered.parameters = { ...component.sourceCode(TagCardCentered) }
 
 export const Colors = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-tag color="" class="mr-1">Default</bal-tag>
-  <bal-tag color="primary" class="mr-1">Primary</bal-tag>
-  <bal-tag color="info" class="mr-1">Info</bal-tag>
-  <bal-tag color="success" class="mr-1">Success</bal-tag>
-  <bal-tag color="warning" class="mr-1">Warning</bal-tag>
-  <bal-tag color="danger">Danger</bal-tag>
+  <bal-tag color="" :closable="args.closable" :size="args.size" class="mr-1">Default</bal-tag>
+  <bal-tag color="primary" :closable="args.closable" :size="args.size" class="mr-1">Primary</bal-tag>
+  <bal-tag color="info" :closable="args.closable" :size="args.size" class="mr-1">Info</bal-tag>
+  <bal-tag color="success" :closable="args.closable" :size="args.size" class="mr-1">Success</bal-tag>
+  <bal-tag color="warning" :closable="args.closable" :size="args.size" class="mr-1">Warning</bal-tag>
+  <bal-tag color="danger" :closable="args.closable" :size="args.size">Danger</bal-tag>
   <br>
   <br>
-  <bal-tag color="purple" class="mr-1">Purple</bal-tag>
-  <bal-tag color="red" class="mr-1">Red</bal-tag>
-  <bal-tag color="yellow" class="mr-1">Yellow</bal-tag>
-  <bal-tag color="green" class="mr-1">Green</bal-tag>`,
+  <bal-tag color="purple" :closable="args.closable" :size="args.size" class="mr-1">Purple</bal-tag>
+  <bal-tag color="red" :closable="args.closable" :size="args.size" class="mr-1">Red</bal-tag>
+  <bal-tag color="yellow" :closable="args.closable" :size="args.size" class="mr-1">Yellow</bal-tag>
+  <bal-tag color="green" :closable="args.closable" :size="args.size" class="mr-1">Green</bal-tag>
+  <br>
+  <br>
+  <bal-tag color="purple" :closable="args.closable" :size="args.size" light class="mr-1">Purple</bal-tag>
+  <bal-tag color="red" :closable="args.closable" :size="args.size" light class="mr-1">Red</bal-tag>
+  <bal-tag color="yellow" :closable="args.closable" :size="args.size" light class="mr-1">Yellow</bal-tag>
+  <bal-tag color="green" :closable="args.closable" :size="args.size" light class="mr-1">Green</bal-tag>
+  <br>
+  <br>
+  <bal-tag invalid :closable="args.closable" :size="args.size" class="mr-1">Invalid</bal-tag>
+  <bal-tag disabled :closable="args.closable" :size="args.size" class="mr-1">Disabled</bal-tag>`,
 })
 Colors.args = {
-  content: 'Bestseller',
-  color: 'success',
-  light: true,
-  size: 'small',
   closable: false,
 }
 Colors.parameters = { ...component.sourceCode(Colors) }
