@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Listen } from '@stencil/core'
-import { isPlatform, Props } from '../../../'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
+import { Props } from '../../../'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -11,7 +11,6 @@ export class NavbarBrand {
   @Element() el!: HTMLElement
 
   @State() isMenuActive = false
-  @State() isDesktop = false
 
   /**
    * Link of the logo / title.
@@ -47,13 +46,7 @@ export class NavbarBrand {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.isDesktop = isPlatform('desktop')
-  }
-
   componentWillLoad() {
-    this.resizeHandler()
     if (window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
@@ -86,7 +79,7 @@ export class NavbarBrand {
     const logoTemplate = this.logo ? (
       <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
-      <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
+      <bal-logo animated color={'white'}></bal-logo>
     )
 
     return (
