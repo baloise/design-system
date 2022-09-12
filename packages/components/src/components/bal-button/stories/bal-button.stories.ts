@@ -70,6 +70,7 @@ export const AlertButtons = args => ({
   components: { ...component.components, BalButtonGroup },
   setup: () => ({ args }),
   template: `<bal-button-group>
+  <bal-button v-bind="args" color="info-light">Info</bal-button>
   <bal-button v-bind="args" color="success">Success</bal-button>
   <bal-button v-bind="args" color="warning">Warning</bal-button>
   <bal-button v-bind="args" color="danger">Danger</bal-button>
