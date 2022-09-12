@@ -192,7 +192,6 @@ export class CheckboxGroup implements ComponentInterface {
         ev.stopPropagation()
         return
       }
-      selectedCheckbox.checked = !selectedCheckbox.checked
     }
 
     // generate new value array out of the checked checkboxes
