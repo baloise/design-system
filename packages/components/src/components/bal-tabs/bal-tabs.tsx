@@ -94,7 +94,6 @@ export class Tabs {
 
   @Watch('debounce')
   protected debounceChanged() {
-    console.log('debounceChanged')
     this.balChange = debounceEvent(this.balChange, this.debounce)
   }
 
@@ -102,8 +101,6 @@ export class Tabs {
 
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
-    console.trace('valueChanged')
-    console.log('valueChanged', newValue, oldValue)
     this.tabs.forEach(t => t.setActive(t.value === this.value))
 
     if (this.didInit && newValue !== oldValue) {
@@ -118,20 +115,17 @@ export class Tabs {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    console.log('resizeHandler')
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
   }
 
   @Listen('balPopoverPrepare', { target: 'window' })
   async popoverHandler() {
-    console.log('popoverHandler')
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
   }
 
   connectedCallback() {
-    console.log('connectedCallback')
     this.platform = getPlatforms()
     this.debounceChanged()
     this.updateTabs()
@@ -142,7 +136,6 @@ export class Tabs {
   }
 
   disconnectedCallback() {
-    console.log('disconnectedCallback')
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -150,7 +143,6 @@ export class Tabs {
   }
 
   componentDidLoad() {
-    console.log('componentDidLoad')
     this.didInit = true
     let value = this.value
     if ((value === undefined || value === '') && this.interface !== 'navigation') {
@@ -165,7 +157,6 @@ export class Tabs {
 
   componentDidRender() {
     this.moveLine(this.getTargetElement(this.value))
-    console.log('componentDidRender')
   }
 
   /**
@@ -173,7 +164,6 @@ export class Tabs {
    */
   @Method()
   async select(tab: BalTabOption) {
-    console.log('select')
     this.value = tab.value
   }
 
@@ -191,16 +181,13 @@ export class Tabs {
   }
 
   private async updateTabs() {
-    console.log('updateTabs')
     try {
       await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-        console.log('updateTabs promise')
         this.tabsOptions = tabsOptions
       })
       const activeTabs = this.tabsOptions.filter(t => t.active)
       if (activeTabs.length > 0) {
         const firstActiveTab = activeTabs[0]
-        console.log('updateTabs - value change')
         this.value = firstActiveTab.value
       }
     } catch (e) {
@@ -209,7 +196,6 @@ export class Tabs {
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
-    console.log('onSelectTab')
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()
@@ -218,14 +204,10 @@ export class Tabs {
     if (!tab.disabled) {
       tab.navigate.emit(event)
       if (this.clickable) {
-        console.log('onSelectTab - tab.value ', tab.value)
-        console.log('onSelectTab - this.value ', this.value)
         if (tab.value !== this.value) {
-          console.log('onSelectTab - if ', this.value)
           this.balChange.emit(tab.value)
           await this.select(tab)
         } else if (this.interface === 'navigation' && tab.value === this.value) {
-          console.log('onSelectTab - value change ')
           this.value = ''
           this.balChange.emit(this.value)
         }
@@ -245,7 +227,6 @@ export class Tabs {
   }
 
   private moveLine(element: HTMLElement, timeout = 0) {
-    console.log('moveLine')
     if (this.timeoutTimer) {
       clearTimeout(this.timeoutTimer)
     }
@@ -313,7 +294,6 @@ export class Tabs {
   }
 
   render() {
-    console.log('render tabs', this.value)
     const block = BEM.block('tabs')
     const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
     const Tabs = isSteps ? StepList : TabList

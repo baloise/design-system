@@ -102,11 +102,6 @@ export class Popover {
    */
   @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
 
-  // /**
-  //  * Listen when the popover opens or closes. Returns the current value.
-  //  */
-  // @Event() balPopoverOpen!: EventEmitter<string>
-
   /**
    * @internal - Use this to close unused popovers.
    */

@@ -26,7 +26,6 @@ export const TabList: FunctionalComponent<TabProps> = ({
   context,
   inverted,
 }) => {
-  // console.log('tabs')
   if (isPlatform('mobile') && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
       const selectedTabs = tabs.filter(tab => tab.value === event.detail)
@@ -56,44 +55,40 @@ export const TabList: FunctionalComponent<TabProps> = ({
       }}
     >
       <ul>
-        {tabs.map((tab, index) => {
-          // console.log('tab.value ', tab.value)
-          // console.log('value ', value)
-          return (
-            <li
-              class={{
-                ...tabItemEl.class(),
-                ...tabItemEl.modifier('active').class(tab.value === value),
-                ...tabItemEl.modifier('disabled').class(tab.disabled),
-                ...tabItemEl.modifier('hidden').class(tab.hidden),
-                ...tabItemEl.modifier('fullwidth').class(expanded),
-                ...tabItemEl.modifier('spaceless').class(spaceless && !vertical),
-                ...tabItemEl.modifier('vertical').class(vertical === true),
-                ...tabItemEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
-                ...tabItemEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
-                'data-test-tab-item': true,
-              }}
-              data-label={tab.label}
-              data-value={tab.value}
-              data-index={index}
-            >
-              <TabItem
-                icon={tab.icon}
-                active={tab.value === value}
-                inverted={inverted}
-                context={context}
-                vertical={vertical}
-                expanded={expanded}
-                iconPosition={iconPosition}
-                disabled={tab.disabled}
-                href={tab.href}
-                label={tab.label}
-                bubble={tab.bubble}
-                onSelectTab={e => onSelectTab(e, tab)}
-              ></TabItem>
-            </li>
-          )
-        })}
+        {tabs.map((tab, index) => (
+          <li
+            class={{
+              ...tabItemEl.class(),
+              ...tabItemEl.modifier('active').class(tab.value === value),
+              ...tabItemEl.modifier('disabled').class(tab.disabled),
+              ...tabItemEl.modifier('hidden').class(tab.hidden),
+              ...tabItemEl.modifier('fullwidth').class(expanded),
+              ...tabItemEl.modifier('spaceless').class(spaceless && !vertical),
+              ...tabItemEl.modifier('vertical').class(vertical === true),
+              ...tabItemEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
+              ...tabItemEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
+              'data-test-tab-item': true,
+            }}
+            data-label={tab.label}
+            data-value={tab.value}
+            data-index={index}
+          >
+            <TabItem
+              icon={tab.icon}
+              active={tab.value === value}
+              inverted={inverted}
+              context={context}
+              vertical={vertical}
+              expanded={expanded}
+              iconPosition={iconPosition}
+              disabled={tab.disabled}
+              href={tab.href}
+              label={tab.label}
+              bubble={tab.bubble}
+              onSelectTab={e => onSelectTab(e, tab)}
+            ></TabItem>
+          </li>
+        ))}
       </ul>
       <div
         class={{
