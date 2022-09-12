@@ -217,7 +217,6 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
-      // this.balPopoverOpen.emit()
     }
   }
 
