@@ -99,7 +99,8 @@ export namespace Props {
     | 'left-end'
 
   export type BalStageColor = 'blue' | 'purple' | 'green' | 'red' | 'yellow'
-  export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
+  export type BalStageSize = 'small' | '' | 'large'
+  export type BalStageContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | string
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'

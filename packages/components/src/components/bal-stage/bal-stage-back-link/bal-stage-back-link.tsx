@@ -17,7 +17,7 @@ export class StageBackLink implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        <a href={this.href}>
+        <a class="is-link" href={this.href}>
           <bal-icon class="mr-2" name="caret-left" size="xsmall"></bal-icon>
           <slot></slot>
         </a>
