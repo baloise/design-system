@@ -17,6 +17,11 @@ export class FieldControl {
   @Prop() iconLeft = ''
 
   /**
+   * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+   */
+  @Prop() expandedOnMobile?: boolean = undefined
+
+  /**
    * If `true` a loading spinner is visible at the end of the input
    */
   @Prop() loading = false
@@ -44,6 +49,7 @@ export class FieldControl {
           'has-icons-left': !!this.iconLeft,
           'has-icons-right': !!this.iconRight || this.loading,
           'is-loading': this.loading,
+          'bal-field-control--expanded-on-mobile': !!this.expandedOnMobile,
         }}
       >
         <slot></slot>

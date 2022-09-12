@@ -88,6 +88,25 @@ export const Addon = args => ({
 Addon.args = {}
 Addon.parameters = { ...component.sourceCode(Addon) }
 
+export const AddonExpandedOnMobile = args => ({
+  components: { ...component.components, BalButton, BalInput },
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<bal-field v-bind="args">
+  <bal-field-label required>Search</bal-field-label>
+  <bal-field-control expanded-on-mobile>
+    <bal-input name="search" placeholder="Search..."></bal-input>
+    <bal-button color="primary">Search</bal-button>
+  </bal-field-control>
+  </bal-field>`,
+})
+AddonExpandedOnMobile.args = {}
+AddonExpandedOnMobile.parameters = { ...component.sourceCode(AddonExpandedOnMobile) }
+
 export const WithGrid = args => ({
   components: {
     ...component.components,
