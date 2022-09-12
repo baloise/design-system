@@ -94,6 +94,7 @@ export class Tabs {
 
   @Watch('debounce')
   protected debounceChanged() {
+    console.log('debounceChanged')
     this.balChange = debounceEvent(this.balChange, this.debounce)
   }
 
@@ -106,6 +107,8 @@ export class Tabs {
     this.tabs.forEach(t => t.setActive(t.value === this.value))
 
     if (this.didInit && newValue !== oldValue) {
+      console.log('valueChanged if')
+      // this.value = oldValue
       this.isReady = true
     }
   }
@@ -192,6 +195,7 @@ export class Tabs {
     console.log('updateTabs')
     try {
       await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
+        console.log('updateTabs promise')
         this.tabsOptions = tabsOptions
       })
       const activeTabs = this.tabsOptions.filter(t => t.active)
@@ -310,7 +314,6 @@ export class Tabs {
   }
 
   private isTabActive(tab: BalTabOption): boolean {
-    console.log('isTabActive')
     return tab.value === this.value
   }
 

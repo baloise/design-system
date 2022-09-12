@@ -1,12 +1,19 @@
 import { ref, watchEffect } from 'vue'
 import docs from './bal-popover.docs.mdx'
 import { withContent } from '../../../stories/utils'
-import { BalPopover, BalPopoverContent, BalButton, BalClose } from '../../../../.storybook/vue/components'
+import {
+  BalPopover,
+  BalPopoverContent,
+  BalButton,
+  BalClose,
+  BalTabs,
+  BalTabItem,
+} from '../../../../.storybook/vue/components'
 import { BalComponentStory } from '../../../stories/utils/story'
 
 const component = BalComponentStory({
   component: BalPopover,
-  subcomponents: { BalPopoverContent },
+  subcomponents: { BalPopoverContent, BalTabs, BalTabItem },
   argTypes: {
     ...withContent(),
   },

@@ -26,7 +26,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
   context,
   inverted,
 }) => {
-  console.log('tabs')
+  // console.log('tabs')
   if (isPlatform('mobile') && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
       const selectedTabs = tabs.filter(tab => tab.value === event.detail)
@@ -57,7 +57,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
     >
       <ul>
         {tabs.map((tab, index) => {
-          console.log('tab.value ', tab.value)
+          // console.log('tab.value ', tab.value)
           // console.log('value ', value)
           return (
             <li
