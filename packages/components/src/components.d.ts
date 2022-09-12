@@ -631,6 +631,10 @@ export namespace Components {
     }
     interface BalFieldControl {
         /**
+          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+         */
+        "expandedOnMobile"?: boolean;
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft": string;
@@ -4059,6 +4063,10 @@ declare namespace LocalJSX {
         "valid"?: boolean;
     }
     interface BalFieldControl {
+        /**
+          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+         */
+        "expandedOnMobile"?: boolean;
         /**
           * Baloise icon for the left side of the input
          */
