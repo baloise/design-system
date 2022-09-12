@@ -74,6 +74,13 @@ export class Stage implements ComponentInterface {
     }
   }
 
+  private get containerClass(): string {
+    if (this.containerSize.startsWith('is-')) {
+      return this.containerSize
+    }
+    return `is-${this.containerSize}`
+  }
+
   render() {
     const block = BEM.block('stage')
     const element = BEM.block('stage-content')
@@ -92,7 +99,7 @@ export class Stage implements ComponentInterface {
           class={{
             ...element.class(),
             ...element.modifier('is-inverted').class(this.inverted),
-            [`container ${this.containerSize}`]: this.containerSize !== '',
+            [`container ${this.containerClass}`]: this.containerSize !== '',
           }}
         >
           <slot></slot>

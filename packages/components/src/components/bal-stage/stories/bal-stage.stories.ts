@@ -15,28 +15,6 @@ export default component.story
 
 const excludedControls = ['hasShape']
 
-export const Basic = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-stage v-bind="args">
-  <bal-stage-body>
-    <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
-    <bal-heading class="mb-2" space="none">{{ args.content }}</bal-heading>
-    </bal-stage-body>
-</bal-stage>`,
-})
-Basic.args = {
-  content: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ae',
-  size: '',
-  color: 'green',
-  shape: true,
-}
-Basic.parameters = {
-  layout: 'fullscreen',
-  ...component.sourceCode(Basic),
-  controls: { exclude: excludedControls },
-}
-
 export const SimpleStage = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
@@ -48,14 +26,36 @@ export const SimpleStage = args => ({
 </bal-stage>`,
 })
 SimpleStage.args = {
-  content: 'Small title',
-  size: 'small',
-  color: 'purple',
+  content: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ae',
+  size: '',
+  color: 'green',
   shape: true,
 }
 SimpleStage.parameters = {
   layout: 'fullscreen',
   ...component.sourceCode(SimpleStage),
+  controls: { exclude: excludedControls },
+}
+
+export const SmallStage = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-stage v-bind="args">
+  <bal-stage-body>
+    <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
+    <bal-heading class="mb-2" space="none">{{ args.content }}</bal-heading>
+    </bal-stage-body>
+</bal-stage>`,
+})
+SmallStage.args = {
+  content: 'Small title',
+  size: 'small',
+  color: 'purple',
+  shape: true,
+}
+SmallStage.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(SmallStage),
   controls: { exclude: excludedControls },
 }
 
@@ -96,6 +96,7 @@ export const StageWithImage = args => ({
 })
 StageWithImage.args = {
   content: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ae',
+  size: 'large',
 }
 StageWithImage.parameters = {
   layout: 'fullscreen',
