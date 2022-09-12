@@ -125,7 +125,7 @@ export class Tabs {
     console.log('resizeHandler')
   }
 
-  @Listen('balPopoverOpen', { target: 'window' })
+  @Listen('balPopoverPrepare', { target: 'window' })
   async popoverHandler() {
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
