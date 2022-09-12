@@ -16,7 +16,7 @@ export class Navigation implements ComponentInterface {
   private previousY = 0
   private body!: HTMLBodyElement
 
-  @State() mainMobileHeight = 0
+  @State() mainMobileHeight = ''
   @State() isTransformed = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
@@ -61,18 +61,20 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('.bal-nav__metamobile__actions') as HTMLElement
   }
 
-  private get mainMobileNavElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__main-mobile') as HTMLElement
-  }
-
-  private get mainMobileFootElement(): HTMLElement | null {
-    return this.el.querySelector('.bal-nav__foot-mobile') as HTMLElement
+  private get metaDesktopEndElement(): HTMLElement | null {
+    return this.el.querySelector('bal-navigation-meta-end') as HTMLElement
   }
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.isTransformed = false
-    this.mainMobileHeight = this.getMainMobileHeight()
+    this.mainMobileHeight = this.getMaxHeight()
+  }
+
+  @Listen('orientationchange', { target: 'window' })
+  async orientationHandler() {
+    this.isMainBodyOpen = false
+    this.dismissPopover()
   }
 
   @Listen('scroll', { target: 'window', passive: true })
@@ -96,24 +98,32 @@ export class Navigation implements ComponentInterface {
       this.mutationO = undefined
     }
     this.metaMobileActionsElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
+    this.metaDesktopEndElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidLoad() {
     this.previousY = window.scrollY
     this.body = document.querySelector('body') as HTMLBodyElement
-    this.mainMobileHeight = this.getMainMobileHeight()
+    this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
+    this.metaDesktopEndElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
   }
 
   componentDidUpdate() {
     this.updateIndexes()
   }
 
-  private listenToPopoverChangeEvent = (event: Event) => {
+  private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    toggleScrollingBody({ bodyEl: this.body, value: isNavPopoverOpen })
+    const target = event.target as HTMLBalPopoverElement
+
+    await toggleScrollingBody({
+      bodyEl: this.body,
+      value: isNavPopoverOpen,
+      height: target.mobileTop ? '100vh' : this.getMaxHeight(),
+    })
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -135,18 +145,21 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  private getMainMobileHeight() {
-    return (window.innerHeight - 64) / 16
+  private getMaxHeight() {
+    return `${(window.innerHeight - 64) / 16}rem`
   }
 
-  private onBurgerButtonClick = async (): Promise<void> => {
-    const popoverElements = this.metaMobileActionsElement?.querySelectorAll('bal-popover')
+  private dismissPopover() {
+    const popoverElements = this.el.querySelectorAll('bal-popover')
     popoverElements?.forEach(popoverEl => {
       popoverEl.value = false
     })
+  }
 
+  private onBurgerButtonClick = async (): Promise<void> => {
+    this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen })
+    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
   }
 
   render() {
@@ -267,7 +280,7 @@ export class Navigation implements ComponentInterface {
         <div
           class="bal-nav__main-mobile"
           style={{
-            '--bal-nav-main-mobile-height': `${this.mainMobileHeight}rem`,
+            '--bal-nav-main-mobile-height': this.mainMobileHeight,
             'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
           }}
         >
