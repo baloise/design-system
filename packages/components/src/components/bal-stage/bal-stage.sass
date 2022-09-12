@@ -1,16 +1,15 @@
 +block(stage)
   display: block
+  //
   // Color modifiers
-  +modifier(is-blue)
-    background: var(--bal-color-primary-5)
   +modifier(is-purple)
-    background: var(--bal-color-purple-2)
+    background: var(--bal-color-purple-3)
   +modifier(is-green)
-    background: var(--bal-color-green-2)
+    background: var(--bal-color-green-3)
   +modifier(is-red)
-    background: var(--bal-color-red-2)
+    background: var(--bal-color-red-3)
   +modifier(is-yellow)
-    background: var(--bal-color-yellow-2)
+    background: var(--bal-color-yellow-3)
 
   +block(stage-content)
     display: block
@@ -32,29 +31,34 @@
       display: flex
       flex-direction: column
       justify-content: center
-      padding-top: 4rem
-      padding-bottom: 4rem
+      padding-top: calc(var(--bal-space-xxxx-large) + 4rem)
+      padding-bottom: var(--bal-space-xx-large)
+      +tablet
+        padding-top: calc(var(--bal-space-tablet-xxxx-large) + 4rem)
+        padding-bottom: var(--bal-space-tablet-xx-large)
       +desktop
-        min-height: 400px
-        justify-content: flex-end
-        padding-top: 6rem
-        padding-bottom: 6rem
+        padding-top: calc(var(--bal-space-desktop-xxxx-large) + 3rem)
+        padding-bottom: var(--bal-space-desktop-xx-large)
 
     +block(stage-back-link)
-      a
-        display: inline-flex
-        align-items: center
-        font-family: var(--bal-font-family-title)
-        font-weight: 700
-        opacity: 1
-        transition: opacity .2s ease-in
-        &:hover
-          opacity: .5
-        &:focus-visible
-          outline: none
-          border: 2px solid transparent
-          border-radius: 5px
-          outline: 3px solid var(--bal-color-purple-dark)
+      +touch
+        display: none
+      +desktop
+        a
+          display: inline-flex
+          align-items: center
+          font-family: var(--bal-font-family-title)
+          font-weight: 700
+          text-decoration: none
+          &:hover
+            text-decoration: underline
+          &:active
+            text-decoration: underline
+          &:focus-visible
+            outline: none
+            border: 2px solid transparent
+            border-radius: 5px
+            outline: 3px solid var(--bal-color-purple-dark)
 
     +modifier(is-inverted)
       +block(stage-body)
@@ -67,19 +71,13 @@
             color: var(--bal-color-white)
             +fillSvg(var(--bal-color-white))
 
-
+  //
   // Size Modifiers
-  +modifier(is-small)
+  +modifier(is-medium)
     +block(stage-content)
       +block(stage-body)
-        min-height: 176px - 128px
-        +tablet
-          min-height: 240px - 128px
         +desktop
-          justify-content: center
-          padding-top: 4rem
-          padding-bottom: 4rem
-          min-height: 392px - 128px
+          min-height: 400px
   +modifier(is-large)
     +block(stage-content)
       +block(stage-body)
@@ -87,9 +85,6 @@
         +tablet
           min-height: 560px
         +desktop
-          justify-content: center
-          padding-top: 10rem
-          padding-bottom: 10rem
           min-height: 840px
 
   // Shape Modifier
@@ -116,6 +111,5 @@
         +desktop
           right: 2rem
           bottom: -66px
-        @include from(1467px)
+        +from(1467px)
           right: calc((100vw - var(--bal-stage-container-width)) / 2)
-
