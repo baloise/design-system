@@ -41,21 +41,24 @@
         padding-bottom: var(--bal-space-desktop-xx-large)
 
     +block(stage-back-link)
-      a
-        display: inline-flex
-        align-items: center
-        font-family: var(--bal-font-family-title)
-        font-weight: 700
-        text-decoration: none
-        &:hover
-          text-decoration: underline
-        &:active
-          text-decoration: underline
-        &:focus-visible
-          outline: none
-          border: 2px solid transparent
-          border-radius: 5px
-          outline: 3px solid var(--bal-color-purple-dark)
+      +touch
+        display: none
+      +desktop
+        a
+          display: inline-flex
+          align-items: center
+          font-family: var(--bal-font-family-title)
+          font-weight: 700
+          text-decoration: none
+          &:hover
+            text-decoration: underline
+          &:active
+            text-decoration: underline
+          &:focus-visible
+            outline: none
+            border: 2px solid transparent
+            border-radius: 5px
+            outline: 3px solid var(--bal-color-purple-dark)
 
     +modifier(is-inverted)
       +block(stage-body)
