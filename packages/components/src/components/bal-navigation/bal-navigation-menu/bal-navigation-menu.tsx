@@ -27,7 +27,7 @@ export class NavigationMenu {
             }}
           >
             <a href={this.linkHref} target={this.target}>
-              {this.linkName}
+              {this.linkName} ➞
             </a>
           </div>
         )}

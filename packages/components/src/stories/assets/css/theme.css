@@ -1,6 +1,6 @@
 html {
-  scroll-behavior: smooth !important;
-  scroll-padding-top: 64px !important;
+  /* scroll-behavior: smooth !important; */
+  /* scroll-padding-top: 64px !important; */
   overflow-y: auto;
 }
 

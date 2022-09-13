@@ -128,7 +128,9 @@ export class NavigationPopover implements ComponentInterface {
             square={this.square}
             onClick={() => (this.isActive = !this.isActive)}
             aria-haspopup="true"
-            class={`bal-navigation-popover__button-${this.isActive ? this.activeColor : this.inactiveColor}`}
+            class={`bal-navigation-popover__button bal-navigation-popover__button-${
+              this.isActive ? this.activeColor : this.inactiveColor
+            }`}
           >
             {this.label}
           </bal-button>

@@ -2,8 +2,8 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
 import { Events } from '../../types'
+import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-navigation',
@@ -14,7 +14,8 @@ export class Navigation implements ComponentInterface {
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
-  private body!: HTMLBodyElement
+
+  private bodyScrollBlocker = BodyScrollBlocker()
 
   @State() mainMobileHeight = ''
   @State() isTransformed = false
@@ -77,10 +78,16 @@ export class Navigation implements ComponentInterface {
     this.dismissPopover()
   }
 
-  @Listen('scroll', { target: 'window', passive: true })
-  handleScroll() {
-    if (isPlatform('desktop')) {
-      this.isTransformed = window.scrollY > this.previousY
+  @Listen('scroll', { target: 'window', passive: false })
+  handleScroll(event: Event) {
+    if (isPlatform('desktop') && !this.bodyScrollBlocker.isBlocked()) {
+      const didMoveDownwards = window.scrollY > this.previousY
+      if (this.isTransformed === false && didMoveDownwards) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      this.isTransformed = didMoveDownwards
       this.previousY = window.scrollY
     }
   }
@@ -103,7 +110,6 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.body = document.querySelector('body') as HTMLBodyElement
     this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
@@ -114,16 +120,17 @@ export class Navigation implements ComponentInterface {
     this.updateIndexes()
   }
 
+  bodyOffset = 0
+
   private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    const target = event.target as HTMLBalPopoverElement
 
-    await toggleScrollingBody({
-      bodyEl: this.body,
-      value: isNavPopoverOpen,
-      height: target.mobileTop ? '100vh' : this.getMaxHeight(),
-    })
+    if (isNavPopoverOpen) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -159,7 +166,11 @@ export class Navigation implements ComponentInterface {
   private onBurgerButtonClick = async (): Promise<void> => {
     this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
+    if (this.isMainBodyOpen) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
   }
 
   render() {
@@ -176,7 +187,7 @@ export class Navigation implements ComponentInterface {
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
             {hasLevels && (
-              <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
+              <bal-tabs interface="meta" spaceless inverted={true} fullwidth value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
                     <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
@@ -218,7 +229,7 @@ export class Navigation implements ComponentInterface {
               <a href={this.logoPath} class="bal-nav__main-head-logo">
                 <bal-logo color="blue" animated></bal-logo>
               </a>
-              <bal-tabs interface="navigation" float="right" spaceless value={this.selectedMainValue}>
+              <bal-tabs interface="navigation" float="right" fullwidth spaceless value={this.selectedMainValue}>
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                     return main.isTabLink ? (

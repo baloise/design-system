@@ -45,6 +45,12 @@
       align-items: center
       gap: .5rem
       margin-left: -.75rem
+    +element(end)
+      position: relative
+      z-index: 20
+      .bal-button
+        position: relative
+        z-index: 20
 
   +element(main)
     +unselectable
@@ -77,10 +83,13 @@
       background-color: var(--bal-color-background)
       > div
         display: flex
-        justify-content: space-between
-        flex-wrap: wrap
-        align-items: flex-start
-        width: 100%
+        gap: 1rem
+        justify-content: flex-start
+        align-items: center
+        .bal-tabs--context-navigation
+          flex: 1
+          overflow: hidden
+          overflow-x: auto
       +until-widescreen
         width: 100%
       +desktop
@@ -110,8 +119,6 @@
           transition: border-radius .3s ease-in-out
 
     .bal-nav__main-head-logo
-      margin-top: 1rem
-      margin-right: 1rem
       +widescreen
         margin: 0
         padding: 0
@@ -149,12 +156,6 @@
         font-size: 0.75rem
         line-height: 1rem
         font-weight: var(--bal-weight-bold)
-        &::before
-          position: absolute
-          right: 0
-          top: 50%
-          transform: translateY(-50%)
-          content: '\279E'
         +hover
           &:hover
             color: var(--bal-color-light-blue-dark)
@@ -296,11 +297,11 @@
     z-index: 0
 
   +element(popover)
+    .bal-navigation-popover__button
+      position: relative
+      z-index: 20
     +element(head)
       display: flex
       align-items: center
       justify-content: space-between
       margin-bottom: .75rem
-    .bal-popover__backdrop
-      +desktop()
-        top: 3rem
