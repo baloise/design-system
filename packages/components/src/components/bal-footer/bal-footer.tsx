@@ -113,6 +113,7 @@ export class Footer implements BalConfigObserver {
                     'pr-4': true,
                   }}
                   href={link.link}
+                  target="_blank"
                 >
                   {link.label}
                 </a>
