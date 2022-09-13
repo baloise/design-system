@@ -246,22 +246,10 @@ export class Modal implements OverlayInterface {
 
   private setModalActiveOnBody() {
     this.bodyScrollBlocker.block()
-    // if (document && document.documentElement && !document.documentElement.classList.contains('bal-modal-active')) {
-    //   document.documentElement.classList.add('bal-modal-active')
-    // }
-    // if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
-    //   document.body.classList.add('bal-modal-active')
-    // }
   }
 
   private unsetModalActiveOnBody() {
     this.bodyScrollBlocker.allow()
-    // if (document && document.documentElement) {
-    //   document.documentElement.classList.remove('bal-modal-active')
-    // }
-    // if (document && document.body) {
-    //   document.body.classList.remove('bal-modal-active')
-    // }
   }
 
   render() {
