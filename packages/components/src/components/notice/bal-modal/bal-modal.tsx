@@ -5,6 +5,7 @@ import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
 import { Props } from '../../../types'
+import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-modal',
@@ -16,6 +17,8 @@ export class Modal implements OverlayInterface {
   private modalContentElement?: HTMLElement
   private modalContainerElement?: HTMLElement
   private modalBackgroundElement?: HTMLElement
+
+  private bodyScrollBlocker = BodyScrollBlocker()
 
   @State() presented = false
 
@@ -242,21 +245,23 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
-    if (document && document.documentElement && !document.documentElement.classList.contains('bal-modal-active')) {
-      document.documentElement.classList.add('bal-modal-active')
-    }
-    if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
-      document.body.classList.add('bal-modal-active')
-    }
+    this.bodyScrollBlocker.block()
+    // if (document && document.documentElement && !document.documentElement.classList.contains('bal-modal-active')) {
+    //   document.documentElement.classList.add('bal-modal-active')
+    // }
+    // if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
+    //   document.body.classList.add('bal-modal-active')
+    // }
   }
 
   private unsetModalActiveOnBody() {
-    if (document && document.documentElement) {
-      document.documentElement.classList.remove('bal-modal-active')
-    }
-    if (document && document.body) {
-      document.body.classList.remove('bal-modal-active')
-    }
+    this.bodyScrollBlocker.allow()
+    // if (document && document.documentElement) {
+    //   document.documentElement.classList.remove('bal-modal-active')
+    // }
+    // if (document && document.body) {
+    //   document.body.classList.remove('bal-modal-active')
+    // }
   }
 
   render() {

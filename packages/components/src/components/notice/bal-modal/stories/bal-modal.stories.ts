@@ -52,7 +52,8 @@ export const Basic = args => ({
     </bal-button-group>
   </bal-modal-body>
 </bal-modal>
-<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
+<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>
+`,
 })
 Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
