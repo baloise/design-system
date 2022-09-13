@@ -108,6 +108,7 @@ export class NavigationPopover implements ComponentInterface {
       <Host
         class={{
           ...navPopoverEl.class(),
+          control: true,
         }}
       >
         <bal-popover
