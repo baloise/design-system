@@ -631,6 +631,10 @@ export namespace Components {
     }
     interface BalFieldControl {
         /**
+          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+         */
+        "expandedOnMobile"?: boolean;
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft": string;
@@ -1578,10 +1582,6 @@ export namespace Components {
          */
         "backdrop": boolean;
         /**
-          * If `true` a outside click can close the popover
-         */
-        "closable": boolean;
-        /**
           * Closes the popover
          */
         "dismiss": (options?: PopoverPresentOptions) => Promise<void>;
@@ -2065,15 +2065,19 @@ export namespace Components {
         /**
           * Defines content width of the stage
          */
-        "containerSize": '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        "containerSize": Props.BalStageContainer;
         /**
-          * If true the Baloise Shape is set
+          * @deprecated If true the Baloise Shape is set
          */
         "hasShape": boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
+        /**
+          * If true the Baloise Shape is set
+         */
+        "shape": boolean;
         /**
           * Shape Rotation
          */
@@ -2250,6 +2254,10 @@ export namespace Components {
           * If `true` a light version of the color is displayed
          */
         "light": boolean;
+        /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position": Props.BalTagPlacement;
         /**
           * The size of the tag element
          */
@@ -4060,6 +4068,10 @@ declare namespace LocalJSX {
     }
     interface BalFieldControl {
         /**
+          * If `true` on mobile devices the form control children are aligned verticaly and expanded to the full width
+         */
+        "expandedOnMobile"?: boolean;
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
@@ -5043,10 +5055,6 @@ declare namespace LocalJSX {
          */
         "backdrop"?: boolean;
         /**
-          * If `true` a outside click can close the popover
-         */
-        "closable"?: boolean;
-        /**
           * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
          */
         "hint"?: boolean;
@@ -5558,15 +5566,19 @@ declare namespace LocalJSX {
         /**
           * Defines content width of the stage
          */
-        "containerSize"?: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        "containerSize"?: Props.BalStageContainer;
         /**
-          * If true the Baloise Shape is set
+          * @deprecated If true the Baloise Shape is set
          */
         "hasShape"?: boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
+        /**
+          * If true the Baloise Shape is set
+         */
+        "shape"?: boolean;
         /**
           * Shape Rotation
          */
@@ -5742,6 +5754,10 @@ declare namespace LocalJSX {
           * Emitted when the input got clicked.
          */
         "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
+        /**
+          * Choosing left or center the tag is aligned to that side in the bal-card.
+         */
+        "position"?: Props.BalTagPlacement;
         /**
           * The size of the tag element
          */

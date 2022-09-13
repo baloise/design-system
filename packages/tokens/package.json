@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-tokens",
-  "version": "10.20.3",
+  "version": "10.21.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,15 +28,15 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:bundle && npm run build:tokens && npm run build:css",
+    "build": "npm run rollup:pre && npm run build:tokens && npm run rollup:post",
     "build:tokens": "node ../../.build/tokens-generator.js",
-    "build:css": "sass ./dist/tokens.sass ./dist/tokens.css",
-    "build:bundle": "rollup --config rollup.config.js",
+    "rollup:pre": "rollup --config rollup.config.js",
+    "rollup:post": "rollup --config rollup.config.tokens.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/tokens.js",
+  "module": "dist/tokens.esm.js",
+  "types": "dist/types/tokens.d.ts",
   "style": "dist/tokens.css",
   "files": [
     "dist/",

@@ -23,10 +23,18 @@
 +block(field-control)
   display: flex
   align-items: center
-  .bal-input + .bal-button
-    margin-left: .5rem
+  flex-direction: row
+  gap: 0.5rem
   .bal-input
     flex: 1
+
+  +modifier(expanded-on-mobile)
+    +mobile
+      flex-direction: column
+      .bal-button
+        &,
+        .button
+          width: 100%
 
 .bal-field-control
   padding-bottom: 22px

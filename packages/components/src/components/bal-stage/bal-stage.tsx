@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop, Watch } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
@@ -9,7 +9,7 @@ export class Stage implements ComponentInterface {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide' = 'is-wide'
+  @Prop() containerSize: Props.BalStageContainer = 'wide'
 
   /**
    * Defines size of the stage
@@ -19,12 +19,24 @@ export class Stage implements ComponentInterface {
   /**
    * Defines the background color of the stage section
    */
-  @Prop() color: Props.BalStageColor = 'red'
+  @Prop() color: Props.BalStageColor = 'purple'
 
   /**
    * If true the Baloise Shape is set
    */
+  @Prop() shape = false
+
+  /**
+   * @deprecated If true the Baloise Shape is set
+   */
   @Prop() hasShape = false
+  @Watch('hasShape')
+  hasShapeHandler() {
+    console.warn('[DEPRECATED] - Please use the property shape instead')
+    if (this.hasShape === true) {
+      this.shape = this.hasShape
+    }
+  }
 
   /**
    * Shape Variation
@@ -43,43 +55,55 @@ export class Stage implements ComponentInterface {
 
   getContainerWidth = () => {
     switch (this.containerSize) {
-      case 'is-fluid':
-        return '100%'
       case 'is-detail-page':
+      case 'detail-page':
         return '680px'
       case 'is-compact':
+      case 'compact':
         return '832px'
       case 'is-blog-page':
+      case 'blog-page':
         return '920px'
       case 'is-wide':
+      case 'wide':
         return '1400px'
+      case 'is-fluid':
+      case 'fluid':
       default:
         return '100vw'
     }
   }
 
+  private get containerClass(): string {
+    if (this.containerSize.startsWith('is-')) {
+      return this.containerSize
+    }
+    return `is-${this.containerSize}`
+  }
+
   render() {
     const block = BEM.block('stage')
     const element = BEM.block('stage-content')
+
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`is-${this.size}`).class(!!this.size),
+          ...block.modifier(`is-${this.size === '' ? 'medium' : this.size}`).class(),
           ...block.modifier(`is-${this.color}`).class(!!this.color),
-          ...block.modifier('has-shape').class(!!this.hasShape),
+          ...block.modifier('has-shape').class(!!this.shape),
         }}
         style={{ '--bal-stage-container-width': this.getContainerWidth() }}
       >
         <section
           class={{
             ...element.class(),
-            ...element.modifier('is-inverted').class(this.inverted === true || this.color === 'blue'),
-            [`container ${this.containerSize}`]: this.containerSize !== '',
+            ...element.modifier('is-inverted').class(this.inverted),
+            [`container ${this.containerClass}`]: this.containerSize !== '',
           }}
         >
           <slot></slot>
-          {this.hasShape && (
+          {this.shape && (
             <bal-shape
               color={this.color as Props.BalShapeColor}
               variation={this.shapeVariation}

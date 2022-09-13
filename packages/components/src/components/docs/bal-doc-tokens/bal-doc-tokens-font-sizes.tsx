@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
-import tokens from '@baloise/design-system-next-tokens/dist/tokens.json'
+import tokens from '@baloise/design-system-next-tokens/dist/tokens.docs.json'
 
 @Component({
   tag: 'bal-doc-tokens-font-sizes',

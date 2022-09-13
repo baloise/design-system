@@ -4,22 +4,22 @@
   display: inline-flex
   align-items: center
   justify-content: center
-  height: 2rem
   max-height: 2rem
-  line-height: 1.5
-  padding-left: 0.75rem
-  padding-right: 0.75rem
+  line-height: 1.5rem
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem
   background-color: var(--bal-color-grey)
   border-radius: var(--bal-radius-rounded)
   white-space: nowrap
 
   // sizes
   +modifier(is-small)
-    height: 1.5rem
+    padding: 0 0.75rem 0 0.75rem
   +modifier(is-medium)
-    height: 2.5rem
+    max-height: 2.5rem
+    padding: 0.5rem 1rem 0.5rem 1rem
   +modifier(is-large)
-    height: 3rem
+    max-height: 3rem
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem
   // colors
   +modifier(is-primary)
     background: var(--bal-color-primary)
@@ -30,26 +30,25 @@
   +modifier(is-info)
     background: var(--bal-color-info-4)
   +modifier(is-warning)
-    background: var(--bal-color-warning)
-    color: var(--bal-color-blue)
+    background: var(--bal-color-warning-5)
   +modifier(is-danger)
     background: var(--bal-color-danger-4)
   +modifier(is-purple)
-    background: var(--bal-color-purple)
+    background: var(--bal-color-purple-5)
   +modifier(is-red)
-    background: var(--bal-color-red)
+    background: var(--bal-color-red-5)
   +modifier(is-yellow)
-    background: var(--bal-color-yellow)
+    background: var(--bal-color-yellow-5)
   +modifier(is-green)
-    background: var(--bal-color-green)
+    background: var(--bal-color-green-5)
   +modifier(is-purple-light)
-    background: var(--bal-color-purple-light)
+    background: var(--bal-color-purple-2)
   +modifier(is-red-light)
-    background: var(--bal-color-red-light)
+    background: var(--bal-color-red-2)
   +modifier(is-yellow-light)
-    background: var(--bal-color-yellow-light)
+    background: var(--bal-color-yellow-2)
   +modifier(is-green-light)
-    background: var(--bal-color-green-light)
+    background: var(--bal-color-green-2)
   +modifier(is-invalid)
     background: var(--bal-color-border-invalid)
     color: var(--bal-color-white)
@@ -58,17 +57,19 @@
   +element(label)
     font-family: var(--bal-font-family-text)
     color: var(--bal-color-grey-inverted)
-    font-weight: $weight-bold !important
+    font-weight: var(--bal-weight-bold)
+    font-size: var(--bal-size-normal) !important
     display: inline-flex
     align-items: center
     gap: .25rem
     // sizes
     +modifier(is-small)
       font-size: var(--bal-size-small) !important
+      font-weight: var(--bal-weight-regular) !important
     +modifier(is-medium)
       font-size: var(--bal-size-medium) !important
     +modifier(is-large)
-      font-size: var(--bal-size-large) !important
+      font-size: var(--bal-size-medium) !important
     // colors
     +modifier(is-primary)
       color: var(--bal-color-primary-inverted)
@@ -79,25 +80,25 @@
     +modifier(is-info)
       color: var(--bal-color-info-4-inverted)
     +modifier(is-warning)
-      color: var(--bal-color-warning-inverted)
+      color: var(--bal-color-warning-5-inverted)
     +modifier(is-danger)
       color: var(--bal-color-danger-4-inverted)
     +modifier(is-purple)
-      color: var(--bal-color-purple-inverted)
+      color: var(--bal-color-purple-5-inverted)
     +modifier(is-red)
-      color: var(--bal-color-red-inverted)
+      color: var(--bal-color-red-5-inverted)
     +modifier(is-yellow)
-      color: var(--bal-color-yellow-inverted)
+      color: var(--bal-color-yellow-5-inverted)
     +modifier(is-green)
-      color: var(--bal-color-green-inverted)
+      color: var(--bal-color-green-5-inverted)
     +modifier(is-purple-light)
-      color: var(--bal-color-purple-light-inverted)
+      color: var(--bal-color-purple-2-inverted)
     +modifier(is-red-light)
-      color: var(--bal-color-red-light-inverted)
+      color: var(--bal-color-red-2-inverted)
     +modifier(is-yellow-light)
-      color: var(--bal-color-yellow-light-inverted)
+      color: var(--bal-color-yellow-2-inverted)
     +modifier(is-green-light)
-      color: var(--bal-color-green-light-inverted)
+      color: var(--bal-color-green-2-inverted)
     +modifier(is-invalid)
       background: var(--bal-color-border-invalid)
       color: var(--bal-color-white)

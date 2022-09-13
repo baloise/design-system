@@ -38,6 +38,7 @@ typings/
 
 # TypeScript cache
 *.tsbuildinfo
+.tmp/
 
 # Optional npm cache directory
 .npm
@@ -110,7 +111,7 @@ packages/components/src/components/**/CHANGELOG.md
 packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
-
+packages/tokens/src/tokens.ts
 
 packages/components-table/css
 packages/components-vue/src/components.ts
@@ -120,7 +121,6 @@ packages/components-react/src/components.ts
 packages/components-angular/src/directives/proxies.ts
 packages/components-angular/src/directives/proxies-list.ts
 packages/components-angular/src/directives/proxies.module.ts
-
 packages/testing/cypress/snapshots/actual
 packages/testing/cypress/snapshots/diff
 
@@ -132,6 +132,7 @@ packages/icons/docs/icons.json
 packages/icons/docs/icons.zip
 packages/components/cypress/videos
 packages/css/css
+packages/css/assets/fonts
 packages/components-vue/src/proxies.ts
 packages/components-vue/src/vue-component-lib
 packages/components/.storybook/vue

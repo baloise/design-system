@@ -8,10 +8,8 @@ $font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-bold.woff2', $font-
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateHeadline');
-  src: local('BaloiseCreateHeadline-bold');
-  src: url('#{$font-heading-bold-woff2}') format('woff2');
-  src: url('#{$font-heading-bold-woff}') format('woff');
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
+    url('#{$font-heading-bold-woff2}') format('woff2'), url('#{$font-heading-bold-woff}') format('woff');
 }
 
 $font-heading-light-woff: str-insert('/BaloiseCreateHeadline-light.woff', $font-path, 0);
@@ -22,9 +20,8 @@ $font-heading-light-woff2: str-insert('/BaloiseCreateHeadline-light.woff2', $fon
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('BaloiseCreateHeadline-light');
-  src: url('#{$font-heading-light-woff2}') format('woff2');
-  src: url('#{$font-heading-light-woff}') format('woff');
+  src: local('BaloiseCreateHeadline-light'), url('#{$font-heading-light-woff2}') format('woff2'),
+    url('#{$font-heading-light-woff}') format('woff');
 }
 
 $font-text-bold-woff: str-insert('/BaloiseCreateText-bold.woff', $font-path, 0);
@@ -35,9 +32,8 @@ $font-text-bold-woff2: str-insert('/BaloiseCreateText-bold.woff2', $font-path, 0
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateText-bold');
-  src: url('#{$font-text-bold-woff2}') format('woff2');
-  src: url('#{$font-text-bold-woff}') format('woff');
+  src: local('BaloiseCreateText-bold'), url('#{$font-text-bold-woff2}') format('woff2'),
+    url('#{$font-text-bold-woff}') format('woff');
 }
 
 $font-text-regular-woff: str-insert('/BaloiseCreateText-regular.woff', $font-path, 0);
@@ -48,8 +44,6 @@ $font-text-regular-woff2: str-insert('/BaloiseCreateText-regular.woff2', $font-p
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('BaloiseCreateText');
-  src: local('BaloiseCreateText-regular');
-  src: url('#{$font-text-regular-woff2}') format('woff2');
-  src: url('#{$font-text-regular-woff}') format('woff');
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
+    url('#{$font-text-regular-woff2}') format('woff2'), url('#{$font-text-regular-woff}') format('woff');
 }

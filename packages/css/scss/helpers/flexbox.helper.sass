@@ -34,16 +34,16 @@ $flex-operators: grow, shrink
     .is-flex-#{$operator}-#{$i}
       flex-#{$operator}: $i
 
-@each $name, $value in $spacing-values
+@each $name, $value in $bal-spacing-values
   .fg-#{$name}
     gap: $value
 
 @include tablet()
-  @each $name, $value in $spacing-values-tablet
+  @each $name, $value in $bal-spacing-values-tablet
     .fg-#{$name}
       gap: $value
 
 @include desktop()
-  @each $name, $value in $spacing-values-desktop
+  @each $name, $value in $bal-spacing-values-desktop
     .fg-#{$name}
       gap: $value

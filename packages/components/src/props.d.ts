@@ -99,7 +99,8 @@ export namespace Props {
     | 'left-end'
 
   export type BalStageColor = 'blue' | 'purple' | 'green' | 'red' | 'yellow'
-  export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
+  export type BalStageSize = 'small' | '' | 'large'
+  export type BalStageContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | string
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
@@ -122,6 +123,7 @@ export namespace Props {
     | 'purple'
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
+  export type BalTagFontWeight = 'regular' | 'bold'
 
   export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
@@ -262,4 +264,5 @@ export namespace Props {
     | 'yellow'
     | 'yellow-light'
   export type BalShapeRotation = '0' | '90' | '180' | '270'
+  export type BalTagPlacement = 'left' | 'center'
 }

@@ -797,7 +797,7 @@ export class Select {
 
     const Chip = (props: { value: string }) => (
       <bal-tag
-        size="small"
+        size=""
         closable={!this.disabled}
         disabled={this.disabled}
         invalid={this.invalid}
