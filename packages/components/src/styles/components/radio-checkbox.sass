@@ -73,8 +73,9 @@
   // handle visible focus for key navigation
   &--select-button:focus-within
     @extend %focus-shadow
-  &__input:focus-visible:not(&__input--select-button) + &__label::before
+  &__input:focus:not(&__input--select-button) + &__label::before
     @extend %focus-shadow
+
   //
   // label of the radio with the icon and the text
   +element(label)

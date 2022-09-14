@@ -31,23 +31,23 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      width: calc(100vw - 6rem)
-      padding: 0
-      +widescreen
-        width: calc(100vw - 15rem)
-      +fullhd
-        width: calc(100vw - 32.5rem)
-        max-width: 1400px
 
     +element(start)
       display: flex
       flex-grow: 1
       align-items: center
       gap: .5rem
-      margin-left: -.75rem
+      // margin-left: -.75rem
+    +element(end)
+      position: relative
+      z-index: 20
+      .bal-button
+        position: relative
+        z-index: 20
 
   +element(main)
     +unselectable
+    padding: 0
     display: block
     position: absolute
     left: 50%
@@ -55,6 +55,8 @@
     transform: translateX(-50%)
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    background: var(--bal-color-white)
+    transition: border-radius .3s ease-in-out
     +until-widescreen
       width: 100%
       +modifier(expanded)
@@ -62,46 +64,46 @@
         border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
       margin: 1rem auto 0
-      width: calc(100vw - 10rem)
       border-radius: var(--bal-radius-large)
-    +fullhd
-      margin: 1.5rem auto 0
-      width: 1480px
-      max-width: 1480px
 
     +element(head)
       display: block
-      padding: 0 3rem
       position: relative
-      transition: border-radius .3s ease-in-out
-      background-color: var(--bal-color-background)
+      padding-left: 1rem
+      padding-right: 1rem
+      +tablet
+        padding-left: 2.5rem
+        padding-right: 2.5rem
+      +desktop
+        padding-left: 3rem
+        padding-right: 3rem
       > div
         display: flex
-        justify-content: space-between
-        flex-wrap: wrap
-        align-items: flex-start
-        width: 100%
+        gap: 1rem
+        justify-content: flex-start
+        align-items: center
+        .bal-tabs--context-navigation
+          flex: 1
+          overflow: hidden
+          overflow-x: auto
       +until-widescreen
         width: 100%
       +desktop
         &::after
           position: absolute
           content: ''
-          top: 100%
-          left: 0
           width: 100%
+          left: 0
+          top: 100%
           height: 1px
           background-color: var(--bal-color-grey)
           opacity: 0
           z-index: 1
-          transition: opacity .3s ease-in-out
         +modifier(active)
           &::after
             opacity: 1
-            transition: opacity .3s ease-in-out
       +widescreen
         border-radius: var(--bal-radius-large)
-        padding: 0 2.5rem
         > div
           align-items: center
         +modifier(active)
@@ -110,8 +112,6 @@
           transition: border-radius .3s ease-in-out
 
     .bal-nav__main-head-logo
-      margin-top: 1rem
-      margin-right: 1rem
       +widescreen
         margin: 0
         padding: 0
@@ -122,6 +122,14 @@
       max-height: calc(100vh - 160px)
       overflow-y: auto
       background: var(--bal-color-white)
+      padding-left: 1rem
+      padding-right: 1rem
+      +tablet
+        padding-left: 2.5rem
+        padding-right: 2.5rem
+      +desktop
+        padding-left: 3rem
+        padding-right: 3rem
       +widescreen
         border-bottom-left-radius: var(--bal-radius-large)
         border-bottom-right-radius: var(--bal-radius-large)
@@ -130,9 +138,8 @@
   +element(menu)
     display: block
     +desktop
-      padding: 2.5rem 3rem .5rem
-    +widescreen
-      padding: 2.5rem 2.5rem .5rem
+      padding-top: 2.5rem
+      padding-bottom: .5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -149,12 +156,6 @@
         font-size: 0.75rem
         line-height: 1rem
         font-weight: var(--bal-weight-bold)
-        &::before
-          position: absolute
-          right: 0
-          top: 50%
-          transform: translateY(-50%)
-          content: '\279E'
         +hover
           &:hover
             color: var(--bal-color-light-blue-dark)
@@ -296,11 +297,13 @@
     z-index: 0
 
   +element(popover)
+    .bal-navigation-popover__button
+      position: relative
+      z-index: 20
+    .control
+      margin: 0 !important
     +element(head)
       display: flex
       align-items: center
       justify-content: space-between
       margin-bottom: .75rem
-    .bal-popover__backdrop
-      +desktop()
-        top: 3rem

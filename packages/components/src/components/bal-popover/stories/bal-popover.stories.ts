@@ -93,7 +93,7 @@ export const Arrow = args => ({
     }
   },
   template: `<bal-popover v-bind="args" v-model="isActive">
-  <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true" color="info">
+  <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true">
     Trigger
   </bal-button>
   <bal-popover-content>
@@ -103,9 +103,7 @@ export const Arrow = args => ({
         <bal-close @click="toggle()"></bal-close>
       </div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
-        dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
-        error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
     </div>
   </bal-popover-content>

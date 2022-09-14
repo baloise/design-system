@@ -294,6 +294,7 @@ export class Popover {
           ...block.modifier('tooltip').class(this.tooltip),
           ...block.modifier('arrow').class(this.arrow),
           ...block.modifier('hint').class(this.hint),
+          ...block.modifier('backdrop').class(this.backdrop),
         }}
       >
         <slot></slot>

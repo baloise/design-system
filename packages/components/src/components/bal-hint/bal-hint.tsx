@@ -3,7 +3,7 @@ import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachCompo
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { allowScrollingBody, blockScrollingBody } from '../../utils/toggle-scrolling-body'
+import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-hint',
@@ -14,6 +14,8 @@ export class Hint implements BalConfigObserver {
   private popoverElement!: HTMLBalPopoverElement
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
+
+  private bodyScrollBlocker = BodyScrollBlocker()
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
@@ -92,7 +94,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.present()
     }
     if (this.isMobile) {
-      blockScrollingBody()
+      this.bodyScrollBlocker.block()
     }
     this.isActive = true
   }
@@ -106,7 +108,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.dismiss()
     }
     if (this.isMobile) {
-      allowScrollingBody()
+      this.bodyScrollBlocker.allow()
     }
     this.isActive = false
   }

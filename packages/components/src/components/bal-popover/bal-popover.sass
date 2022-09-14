@@ -10,6 +10,10 @@
   +modifier(active)
     .bal-popover__content
       display: block
+  +modifier(backdrop)
+    [bal-popover-trigger]
+      z-index: 20
+      position: relative
   +modifier(hint)
     .bal-popover__content
       +mobile
@@ -32,16 +36,11 @@
   +element(content)
     display: none
     z-index: 20
-    min-width: 260px
     box-shadow: var(--bal-shadow)
     background: var(--bal-color-white)
-    padding: 1rem
-    +tablet
-      padding: 1.5rem
+    min-width: 16.25rem
     &[data-show]
       display: block
-    +modifier(spaceless)
-      padding: 0
     +modifier(expanded)
       min-width: 100%
     +modifier(no-shadow)
@@ -74,9 +73,20 @@
       overflow-y: auto
     +modifier(color-grey)
       background: var(--bal-color-grey-2)
+    +element(inner)
+      max-height: calc(100vh - 8rem)
+      overflow: auto
+      +tablet
+        padding: 1.5rem
+    +modifier(spaceless)
+      .bal-popover__content__inner
+        padding: 0
+    [data-popper-arrow]
+      display: none
     +element(arrow)
       visibility: hidden
-      display: none
+      [data-popper-arrow]
+        display: block
       &,
       &:before
         position: absolute
@@ -112,6 +122,3 @@
       color: var(--bal-color-white)
       font-family: var(--bal-font-family-text)
       font-size: var(--bal-size-small)
-
-[bal-popover-trigger]
-  z-index: 15
