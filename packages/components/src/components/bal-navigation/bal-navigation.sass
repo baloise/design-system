@@ -215,7 +215,6 @@
     height: 4rem
     max-height: 4rem
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
-    z-index: 30
     +desktop
       display: none
     nav
@@ -224,9 +223,6 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      padding: 0 1rem
-      +tablet
-        padding: 0 3rem
     .bal-nav__metamobile__actions
       margin-left: auto
       > div
@@ -234,12 +230,13 @@
         gap: .5rem
   .bal-nav__main-mobile
     display: block
-    padding: 1.5rem 1rem 4rem
-    z-index: 29
+    padding-top: 1.5rem
+    padding-bottom: 4rem
     height: var(--bal-nav-main-mobile-height)
     overflow-y: auto
     +tablet
-      padding: 0 3rem
+      padding-top: 0
+      padding-bottom: 0
     +desktop
       display: none
     +element(link)
@@ -297,6 +294,15 @@
     z-index: 0
 
   +element(popover)
+    .bal-popover__content
+      +tablet
+        width: 100vw
+    .bal-popover__content__inner
+      padding: 1rem
+      +tablet
+        padding: 2rem 2.5rem
+      +desktop
+        padding: 1.5rem
     .bal-navigation-popover__button
       position: relative
       z-index: 20
