@@ -81,8 +81,12 @@
     +modifier(spaceless)
       .bal-popover__content__inner
         padding: 0
+    [data-popper-arrow]
+      display: none
     +element(arrow)
       visibility: hidden
+      [data-popper-arrow]
+        display: block
       &,
       &:before
         position: absolute
