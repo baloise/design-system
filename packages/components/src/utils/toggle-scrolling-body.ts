@@ -5,6 +5,9 @@ const getBodyTopOffset = () => {
 
 export const BodyScrollBlocker = () => {
   const body = document.body
+  const html = document.firstChild?.nextSibling as HTMLElement
+  const htmlStyle = getComputedStyle(html)
+  const hasScrollSmoothOnHtml = htmlStyle.scrollBehavior === 'smooth'
 
   let isBlocked = false
   let bodyTopOffset = getBodyTopOffset()
@@ -15,6 +18,9 @@ export const BodyScrollBlocker = () => {
       isBlocked = true
       bodyTopOffset = getBodyTopOffset()
       body.style.scrollBehavior = 'auto'
+      if (hasScrollSmoothOnHtml) {
+        html.style.scrollBehavior = 'auto'
+      }
       body.style.position = 'fixed'
       body.style.width = '100%'
       body.style.top = `-${bodyTopOffset}px`
@@ -27,6 +33,9 @@ export const BodyScrollBlocker = () => {
       setTimeout(() => {
         isBlocked = false
         body.style.scrollBehavior = 'smooth'
+        if (hasScrollSmoothOnHtml) {
+          html.style.scrollBehavior = 'smooth'
+        }
       }, 0)
     },
   }
