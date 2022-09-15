@@ -151,39 +151,3 @@ NativeInvertedLink.parameters = {
   ...component.sourceCode(NativeInvertedLink),
   controls: { exclude: excludedControls },
 }
-
-export const NativeAnimatedLink = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test <a class="is-animated-link">Link really
-long animated some big text</a> Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test `,
-})
-NativeAnimatedLink.args = {}
-NativeAnimatedLink.parameters = { ...component.sourceCode(NativeAnimatedLink), controls: { exclude: excludedControls } }
-
-export const NativeInvertedAnimatedLink = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-text color="white"> Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test
- <a class="is-animated-link is-inverted">Link really
-long animated some big text</a>
- Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem
-ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test Lorem ipsum test
- </bal-text>`,
-})
-NativeInvertedAnimatedLink.args = {}
-NativeInvertedAnimatedLink.parameters = {
-  ...component.sourceCode(NativeInvertedAnimatedLink),
-  backgrounds: { default: 'blue' },
-  controls: { exclude: excludedControls },
-}
