@@ -1,6 +1,8 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
+import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
+import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-navigation-popover',
@@ -101,6 +103,43 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() mobileTop = false
 
+  private scrollToTopTimer?: NodeJS.Timer
+  private setActiveTimer?: NodeJS.Timer
+
+  private clearTimeouts() {
+    if (this.scrollToTopTimer) {
+      // console.log('clearTimeout(this.scrollToTopTimer)')
+      clearTimeout(this.scrollToTopTimer)
+    }
+
+    if (this.setActiveTimer) {
+      // console.log('clearTimeout(this.setActiveTimer)')
+      clearTimeout(this.setActiveTimer)
+    }
+  }
+
+  private toggle = (event: Event) => {
+    // console.log('---> toggle', this.isActive)
+    stopEventBubbling(event)
+    this.clearTimeouts()
+
+    // this.isActive = !this.isActive
+    if (!this.isActive) {
+      disableSmoothScrolling()
+      // console.log('disableSmoothScrolling')
+      this.scrollToTopTimer = setTimeout(() => {
+        // console.log('scrollTo')
+        window.scrollTo(0, 0)
+      }, 0)
+    }
+    this.setActiveTimer = setTimeout(() => {
+      // console.log('enableSmoothScrolling')
+      enableSmoothScrolling()
+      this.isActive = !this.isActive
+      // console.log('toggle active', this.isActive)
+    }, 100)
+  }
+
   render() {
     const navPopoverEl = BEM.block('nav').element('popover')
 
@@ -127,7 +166,7 @@ export class NavigationPopover implements ComponentInterface {
             inverted={this.inverted}
             color={this.isActive ? this.activeColor : this.inactiveColor}
             square={this.square}
-            onClick={() => (this.isActive = !this.isActive)}
+            onClick={this.toggle}
             aria-haspopup="true"
             class={`bal-navigation-popover__button bal-navigation-popover__button-${
               this.isActive ? this.activeColor : this.inactiveColor

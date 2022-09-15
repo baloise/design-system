@@ -35,7 +35,7 @@
 
   +element(content)
     display: none
-    z-index: 20
+    z-index: 25
     box-shadow: var(--bal-shadow)
     background: var(--bal-color-white)
     min-width: 16.25rem
@@ -74,10 +74,12 @@
     +modifier(color-grey)
       background: var(--bal-color-grey-2)
     +element(inner)
-      max-height: calc(100vh - 8rem)
+      max-height: calc(100vh - 4.5rem)
       overflow: auto
       +tablet
         padding: 1.5rem
+      +desktop
+        max-height: calc(100vh - 8rem)
     +modifier(spaceless)
       .bal-popover__content__inner
         padding: 0

@@ -174,8 +174,12 @@ export class Navigation implements ComponentInterface {
     }
   }
 
+  private closeOtherAccordionsTimer?: NodeJS.Timer
+
   private onAccordionClick = (event: Event) => {
     stopEventBubbling(event)
+    clearTimeout(this.closeOtherAccordionsTimer)
+
     const target = event.target as HTMLBalListItemElement
     const isMainAccordionItem = !target.subAccordionItem
 
@@ -193,7 +197,7 @@ export class Navigation implements ComponentInterface {
 
     if (isMainAccordionItem) {
       closeOtherAccordions('bal-list-item.bal-nav__main-mobile__main-accordion', this.el)
-      setTimeout(() => {
+      this.closeOtherAccordionsTimer = setTimeout(() => {
         closeOtherAccordions('bal-list-item.is-sub-accordion-item', this.el)
       }, 300)
     } else {
