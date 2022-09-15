@@ -119,6 +119,7 @@ export class Logo implements ComponentInterface {
         class={{
           ...logoBlock.class(),
           ...logoBlock.modifier(this.color).class(),
+          ...logoBlock.modifier('animated').class(this.animated),
         }}
       >
         <LogoElement></LogoElement>

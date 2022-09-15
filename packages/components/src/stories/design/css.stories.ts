@@ -54,6 +54,7 @@ Container.args = {}
 Container.parameters = {
   ...sourceCode(Container, Container.args, {}),
   controls: { exclude: [] },
+  layout: 'fullscreen',
 }
 
 export const Grid = args => ({
