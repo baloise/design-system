@@ -268,6 +268,7 @@ export const BaloiseDesignToken = {
   balColorBackgroundLightInverted: '#000d6e',
   balTablet: '769px',
   balDesktop: '1024px',
+  balHighDefinition: '1280px',
   balWidescreen: '1440px',
   balFullhd: '1920px',
   balColumnGap: '1rem',

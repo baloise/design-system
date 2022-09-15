@@ -265,7 +265,7 @@ export class Navigation implements ComponentInterface {
             }}
           >
             <div>
-              <a href={this.logoPath} class="bal-nav__main-head-logo">
+              <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
                 <bal-logo color="blue" animated></bal-logo>
               </a>
               <bal-tabs interface="navigation" float="right" fullwidth spaceless value={this.selectedMainValue}>
@@ -322,7 +322,7 @@ export class Navigation implements ComponentInterface {
 
         <div class="bal-nav__metamobile container">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
-            <a href={this.logoPath} class="bal-nav__main-mobile__logo">
+            <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
               <bal-logo color="blue" animated></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">

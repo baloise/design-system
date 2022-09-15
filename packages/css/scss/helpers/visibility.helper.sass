@@ -21,6 +21,12 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   +desktop-only
     .is-#{$display}-desktop-only
       display: #{$display} !important
+  +high-definition
+    .is-#{$display}-high-definition
+      display: #{$display} !important
+  +high-definition-only
+    .is-#{$display}-high-definition-only
+      display: #{$display} !important
   +widescreen
     .is-#{$display}-widescreen
       display: #{$display} !important
@@ -68,6 +74,14 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   .is-hidden-desktop-only
     display: none !important
 
++high-definition
+  .is-hidden-high-definition
+    display: none !important
+
++high-definition-only
+  .is-hidden-high-definition-only
+    display: none !important
+
 +widescreen
   .is-hidden-widescreen
     display: none !important
@@ -105,6 +119,14 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 +desktop-only
   .is-invisible-desktop-only
+    visibility: hidden !important
+
++high-definition
+  .is-invisible-high-definition
+    visibility: hidden !important
+
++high-definition-only
+  .is-invisible-high-definition-only
     visibility: hidden !important
 
 +widescreen
