@@ -108,35 +108,27 @@ export class NavigationPopover implements ComponentInterface {
 
   private clearTimeouts() {
     if (this.scrollToTopTimer) {
-      // console.log('clearTimeout(this.scrollToTopTimer)')
       clearTimeout(this.scrollToTopTimer)
     }
 
     if (this.setActiveTimer) {
-      // console.log('clearTimeout(this.setActiveTimer)')
       clearTimeout(this.setActiveTimer)
     }
   }
 
   private toggle = (event: Event) => {
-    // console.log('---> toggle', this.isActive)
     stopEventBubbling(event)
     this.clearTimeouts()
 
-    // this.isActive = !this.isActive
     if (!this.isActive) {
       disableSmoothScrolling()
-      // console.log('disableSmoothScrolling')
       this.scrollToTopTimer = setTimeout(() => {
-        // console.log('scrollTo')
         window.scrollTo(0, 0)
       }, 0)
     }
     this.setActiveTimer = setTimeout(() => {
-      // console.log('enableSmoothScrolling')
       enableSmoothScrolling()
       this.isActive = !this.isActive
-      // console.log('toggle active', this.isActive)
     }, 100)
   }
 
