@@ -1,6 +1,8 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
+import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
+import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-navigation-popover',
@@ -101,6 +103,35 @@ export class NavigationPopover implements ComponentInterface {
    */
   @Prop() mobileTop = false
 
+  private scrollToTopTimer?: NodeJS.Timer
+  private setActiveTimer?: NodeJS.Timer
+
+  private clearTimeouts() {
+    if (this.scrollToTopTimer) {
+      clearTimeout(this.scrollToTopTimer)
+    }
+
+    if (this.setActiveTimer) {
+      clearTimeout(this.setActiveTimer)
+    }
+  }
+
+  private toggle = (event: Event) => {
+    stopEventBubbling(event)
+    this.clearTimeouts()
+
+    if (!this.isActive) {
+      disableSmoothScrolling()
+      this.scrollToTopTimer = setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 0)
+    }
+    this.setActiveTimer = setTimeout(() => {
+      enableSmoothScrolling()
+      this.isActive = !this.isActive
+    }, 100)
+  }
+
   render() {
     const navPopoverEl = BEM.block('nav').element('popover')
 
@@ -127,7 +158,7 @@ export class NavigationPopover implements ComponentInterface {
             inverted={this.inverted}
             color={this.isActive ? this.activeColor : this.inactiveColor}
             square={this.square}
-            onClick={() => (this.isActive = !this.isActive)}
+            onClick={this.toggle}
             aria-haspopup="true"
             class={`bal-navigation-popover__button bal-navigation-popover__button-${
               this.isActive ? this.activeColor : this.inactiveColor

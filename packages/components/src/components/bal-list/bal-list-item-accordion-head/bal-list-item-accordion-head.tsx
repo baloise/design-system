@@ -12,6 +12,7 @@ export class ListItemAccordionHead {
    * If `true` the list accordion is open
    */
   @Prop() accordionOpen = false
+
   /**
    * Icon name string with value 'plus' on default
    */
@@ -34,7 +35,7 @@ export class ListItemAccordionHead {
     return this.el.closest('bal-list-item')
   }
 
-  clickHandler() {
+  private onClick = () => {
     const listItem = this.getClosestListItem()
     if (listItem) {
       this.accordionOpen = !this.accordionOpen
@@ -49,7 +50,7 @@ export class ListItemAccordionHead {
           'bal-list-item-accordion-head bal-list-item': true,
           'is-open': this.accordionOpen,
         }}
-        onClick={() => this.clickHandler()}
+        onClick={this.onClick}
       >
         <slot></slot>
         <bal-list-item-icon right>

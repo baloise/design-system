@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../types'
 
 @Component({
@@ -138,6 +139,10 @@ export class ListItem {
             'bal-list-item is-accordion is-list-item-clickable': true,
             'is-disabled': this.disabled,
             'is-sub-accordion-item': this.subAccordionItem,
+          }}
+          onClick={(event: MouseEvent) => {
+            stopEventBubbling(event)
+            this.balNavigate.emit(event)
           }}
         >
           <div>

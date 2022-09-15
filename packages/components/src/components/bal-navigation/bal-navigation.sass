@@ -37,7 +37,6 @@
       flex-grow: 1
       align-items: center
       gap: .5rem
-      // margin-left: -.75rem
     +element(end)
       position: relative
       z-index: 20
@@ -56,7 +55,6 @@
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     background: var(--bal-color-white)
-    transition: border-radius .3s ease-in-out
     +until-widescreen
       width: 100%
       +modifier(expanded)
@@ -79,9 +77,17 @@
         padding-right: 3rem
       > div
         display: flex
-        gap: 1rem
+        gap: .5rem
+        flex-direction: column
         justify-content: flex-start
-        align-items: center
+        align-items: flex-start
+        padding-top: 1rem
+        +high-definition
+          gap: 1rem
+          padding-top: 0
+          flex-direction: row
+          justify-content: flex-start
+          align-items: center
         .bal-tabs--context-navigation
           flex: 1
           overflow: hidden
@@ -121,7 +127,6 @@
       display: block
       max-height: calc(100vh - 160px)
       overflow-y: auto
-      background: var(--bal-color-white)
       padding-left: 1rem
       padding-right: 1rem
       +tablet
@@ -139,7 +144,7 @@
     display: block
     +desktop
       padding-top: 2.5rem
-      padding-bottom: .5rem
+      padding-bottom: 2.5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -215,7 +220,6 @@
     height: 4rem
     max-height: 4rem
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
-    z-index: 30
     +desktop
       display: none
     nav
@@ -224,9 +228,6 @@
       gap: .5rem
       align-items: center
       margin: 0 auto
-      padding: 0 1rem
-      +tablet
-        padding: 0 3rem
     .bal-nav__metamobile__actions
       margin-left: auto
       > div
@@ -234,12 +235,13 @@
         gap: .5rem
   .bal-nav__main-mobile
     display: block
-    padding: 1.5rem 1rem 4rem
-    z-index: 29
+    padding-top: 1rem
+    padding-bottom: 5rem
     height: var(--bal-nav-main-mobile-height)
     overflow-y: auto
     +tablet
-      padding: 0 3rem
+      padding-top: 2rem
+      padding-bottom: 6rem
     +desktop
       display: none
     +element(link)
@@ -297,6 +299,15 @@
     z-index: 0
 
   +element(popover)
+    .bal-popover__content
+      +tablet
+        width: 100vw
+    .bal-popover__content__inner
+      padding: 1rem
+      +tablet
+        padding: 2rem 2.5rem
+      +desktop
+        padding: 1.5rem
     .bal-navigation-popover__button
       position: relative
       z-index: 20
