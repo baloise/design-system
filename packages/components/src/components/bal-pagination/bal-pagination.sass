@@ -10,23 +10,54 @@
 
     +element(pagination-previous)
       order: 1
-    
+      +modifier(context-small)
+        &[disabled]
+          button,
+          button:hover
+            background-color: transparent
+
     +element(pagination-next)
       order: 3
+      +modifier(context-small)
+        &[disabled]
+          button,
+          button:hover
+            background-color: transparent
 
     +element(pagination-list)
-      order: 2
-      width: unset
-      align-items: center
       display: flex
       justify-content: center
-      text-align: center
+      align-items: center
       gap: 4px
       padding-left: 8px
       padding-right: 8px
+      order: 2
+      width: unset
+      text-align: center
 
       +tablet
         gap: 8px
 
       +desktop
         gap: 8px
+
+      +modifier(context-small)
+        gap: 8px
+        max-width: 88px
+        min-width: 63px
+        margin: 0 20px 0
+        background: var(--bal-color-grey)
+        border-radius: 4px
+
+      +element(dot)
+        cursor: pointer
+        height: 8px
+        width: 8px
+        gap: 30px
+        border-radius: 50%
+        display: inline-block
+        +modifier(active)
+          background-color: var(--bal-color-primary)
+        +modifier(inactive)
+          background-color: var(--bal-color-white)
+

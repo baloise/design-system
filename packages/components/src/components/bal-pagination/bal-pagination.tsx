@@ -1,11 +1,17 @@
 import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } from '@stencil/core'
 import { BEM } from '../../utils/bem'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-pagination',
 })
 export class Pagination {
   @State() _value = 1
+
+  /**
+   * Defines the layout of the pagination
+   */
+  @Prop() interface: Props.BalPaginationInterface = ''
 
   /**
    * Disables component
@@ -82,13 +88,22 @@ export class Pagination {
   }
 
   renderPageElement(pageNumber: number) {
-    return (
+    const isActive = this._value === pageNumber
+    const dot = BEM.block('pagination').element('nav').element('pagination-list').element('dot')
+    return this.interface === 'small' ? (
       <li>
-        <bal-button
-          square
-          color={this._value === pageNumber ? 'primary' : 'text'}
+        <span
+          class={{
+            ...dot.class(),
+            ...dot.modifier('active').class(isActive),
+            ...dot.modifier('inactive').class(!isActive),
+          }}
           onClick={() => this.selectPage(pageNumber)}
-        >
+        />
+      </li>
+    ) : (
+      <li>
+        <bal-button square color={isActive ? 'primary' : 'text'} onClick={() => this.selectPage(pageNumber)}>
           {pageNumber}
         </bal-button>
       </li>
@@ -137,6 +152,10 @@ export class Pagination {
     const elPrevious = elNav.element('pagination-previous')
     const elNext = elNav.element('pagination-next')
     const elList = elNav.element('pagination-list')
+    const isSmall = this.interface === 'small'
+    const buttonColor = isSmall ? 'link' : 'text'
+    const buttonSize = isSmall ? 'small' : ''
+    const flat = isSmall
 
     return (
       <Host
@@ -153,9 +172,12 @@ export class Pagination {
         >
           <bal-button
             square
-            color="text"
+            color={buttonColor}
+            size={buttonSize}
+            flat={flat}
             class={{
               ...elPrevious.class(),
+              ...elPrevious.modifier(`context-${this.interface}`).class(),
             }}
             disabled={this._value < 2}
             onClick={() => this.previous()}
@@ -164,31 +186,53 @@ export class Pagination {
           </bal-button>
           <bal-button
             square
-            color="text"
+            color={buttonColor}
+            size={buttonSize}
+            flat={flat}
             class={{
               ...elNext.class(),
+              ...elNext.modifier(`context-${this.interface}`).class(),
             }}
             disabled={this._value === this.totalPages}
             onClick={() => this.next()}
           >
             <bal-icon name="nav-go-right" size="small" />
           </bal-button>
-          <ul
-            class={{
-              ...elList.class(),
-              'is-hidden-mobile': true,
-            }}
-          >
-            {tabletItems}
-          </ul>
-          <ul
-            class={{
-              ...elList.class(),
-              'is-hidden-tablet': true,
-            }}
-          >
-            {mobileItems}
-          </ul>
+          {this.interface === '' || (isSmall && this.totalPages <= 5) ? (
+            [
+              <ul
+                class={{
+                  ...elList.class(),
+                  ...elList.modifier(`context-${this.interface}`).class(),
+                  'is-hidden-mobile': true,
+                }}
+              >
+                {tabletItems}
+              </ul>,
+              <ul
+                class={{
+                  ...elList.class(),
+                  ...elList.modifier(`context-${this.interface}`).class(),
+                  'is-hidden-tablet': true,
+                }}
+              >
+                {mobileItems}
+              </ul>,
+            ]
+          ) : (
+            <bal-text
+              space="none"
+              class={{
+                ...elList.class(),
+                ...elList.modifier(`context-${this.interface}`).class(),
+                'is-size-5': true,
+              }}
+              color="blue"
+            >
+              <span class="has-text-weight-bold">{this._value}</span>
+              {' / ' + this.totalPages}
+            </bal-text>
+          )}
         </nav>
       </Host>
     )
