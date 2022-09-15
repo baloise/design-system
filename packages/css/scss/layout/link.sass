@@ -6,26 +6,41 @@ a.is-link:not(.button)
   border-radius: var(--bal-radius-small)
   color: var(--bal-color-blue)
   +fillSvg(var(--bal-color-blue))
+
   &:hover
     text-decoration: underline
+    text-decoration-thickness: 2px
+    text-underline-offset: 4px
     color: var(--bal-color-light-blue-dark)
     +fillSvg(var(--bal-color-light-blue-dark))
+
   &:focus-visible
     @extend %focus-shadow
+
   &:active
     text-decoration: underline
+    text-decoration-thickness: 2px
+    text-underline-offset: 4px
     color: var(--bal-color-blue-dark)
     +fillSvg(var(--bal-color-blue-dark))
+
   &.is-inverted
     color: var(--bal-color-white)
     +fillSvg(var(--bal-color-white))
+
     &:hover
       text-decoration: underline
+      text-decoration-thickness: 2px
+      text-underline-offset: 4px
       color: var(--bal-color-light-blue-2)
       +fillSvg(var(--bal-color-light-blue-2))
+
     &:focus-visible
       @extend %focus-inverted-shadow
+
     &:active
       text-decoration: underline
+      text-decoration-thickness: 2px
+      text-underline-offset: 4px
       color: var(--bal-color-info-3)
       +fillSvg(var(--bal-color-info-3))
