@@ -74,6 +74,10 @@ export class Stage implements ComponentInterface {
     }
   }
 
+  connectedCallback() {
+    this.hasShapeHandler()
+  }
+
   private get containerClass(): string {
     if (this.containerSize.includes('wide')) {
       return ''
