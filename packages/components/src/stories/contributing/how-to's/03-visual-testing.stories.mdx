@@ -11,14 +11,84 @@ import { Meta } from '@storybook/addon-docs'
 
 # Write your first Visual Test
 
-as a prerequisite please do a Dev Setup
+Visual tests generate and compare browser snapshots to detect if any pixels have changed.
 
-create visual test file
+As a prerequisite please do a [dev setup](?path=/docs/contributing-dev-setup--page) first.
 
+## Getting Started
+
+### Create visual test file
+
+Inside the folder of your component for which you want to create a test create a folder for a test file `component/test`.
+
+Name your test like this: `component-name.visual.html`
+
+Here is the example of bal-close component test.
+
+Variations needs to be splitted in sections.
+
+```html
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <section>
+          <h1>Basic</h1>
+          <bal-close data-testid="basic"></bal-close>
+        </section>
+        <section>
+          <h1>Sizes</h1>
+          <bal-close size="small"></bal-close>
+          <bal-close size=""></bal-close>
+          <bal-close size="medium"></bal-close>
+        </section>
+        <section class="has-background-primary">
+          <h1 class="has-text-primary-inverted">Inverted</h1>
+          <bal-close size="small" inverted></bal-close>
+          <bal-close size="" inverted></bal-close>
+          <bal-close size="medium" inverted></bal-close>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
+```
+
+### Run test
+
+To run the visual test navigate to the root folder of the project and run:
+
+```bash
 run test:e2e:app
+```
 
-create a cypress test for it
+### Create a cypress test
 
-push
+To create a cypress test for it navigate to the `packages/components/cypress/e2e/visual` and create a test for your component.
 
-create base image for your branch
+```typescript
+describe('Close', () => {
+  before(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
+
+  it('basic component', () => cy.get(byTestId('basic')).compareSnapshot('close-basic', 0.0))
+  it('component variants', () => cy.compareSnapshot('close-variants', 0.0))
+})
+```
+
+### Push your changes
+
+You need to push your changes to be able to create base images.
+
+### Create base image
+
+Now you need to create a base image for your branch.
+
+Navigate to the [Github actions](https://github.com/baloise-incubator/design-system/actions), then open Visual Regression Test - Base Image. From the Run workflow dropdown select your branch for which you want to create an image, and click Run workflow.
