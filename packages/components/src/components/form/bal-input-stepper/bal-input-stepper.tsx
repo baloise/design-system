@@ -92,7 +92,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    * The value of the input. Only allows values in the range of the min max attribute.
    */
   @Prop({ mutable: true }) value = 0
-  initialValue = this.value
+  private initialValue = 0
 
   /**
    * Emitted when the input value has changed.
@@ -130,6 +130,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+    this.initialValue = this.value
   }
 
   componentWillLoad() {

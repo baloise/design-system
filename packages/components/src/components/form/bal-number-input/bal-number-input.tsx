@@ -54,7 +54,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   nativeInput?: HTMLInputElement
   inputValue = this.value
-  initialValue = this.value || 0
+  initialValue = 0
 
   @Element() el!: HTMLElement
 
