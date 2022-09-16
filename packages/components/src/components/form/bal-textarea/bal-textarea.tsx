@@ -38,7 +38,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
 
   nativeInput?: HTMLTextAreaElement
   inputValue = this.value
-  initialValue = this.value
+  initialValue = this.value || ''
 
   @Element() el!: HTMLElement
 
@@ -176,16 +176,19 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     inputListenOnClick(this, event)
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this, this.initialValue)
+      inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
   }
 
   connectedCallback() {
     this.debounceChanged()
+    this.initialValue = this.value || ''
   }
 
   componentDidLoad() {

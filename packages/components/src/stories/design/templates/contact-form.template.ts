@@ -7,7 +7,7 @@ export const ContactFormTemplate = `
         <bal-form-col>
           <bal-field>
             <bal-field-control>
-              <bal-radio-group>
+              <bal-radio-group value="male">
                 <bal-radio name="gender" value="male">Male</bal-radio>
                 <bal-radio name="gender" value="female">Female</bal-radio>
               </bal-radio-group>
@@ -20,7 +20,7 @@ export const ContactFormTemplate = `
           <bal-field required>
             <bal-field-label>Firstname</bal-field-label>
             <bal-field-control>
-              <bal-input name="firstname" placeholder="Enter your firstname"></bal-input>
+              <bal-input name="firstname" placeholder="Enter your firstname" value="Tony"></bal-input>
             </bal-field-control>
             <bal-field-message>Field Message</bal-field-message>
           </bal-field>
@@ -29,7 +29,7 @@ export const ContactFormTemplate = `
           <bal-field required>
             <bal-field-label>Lastname</bal-field-label>
             <bal-field-control>
-              <bal-input name="lastname" placeholder="Enter your lastname"></bal-input>
+              <bal-input name="lastname" placeholder="Enter your lastname" value="Stark"></bal-input>
             </bal-field-control>
             <bal-field-message>Field Message</bal-field-message>
           </bal-field>
@@ -68,7 +68,7 @@ export const ContactFormTemplate = `
           <bal-field required>
             <bal-field-label>Canton</bal-field-label>
             <bal-field-control>
-              <bal-select placeholder="select your canton" name="canton">
+              <bal-select placeholder="select your canton" name="canton" value="BS">
                 <bal-select-option value="AG" label="AG">AG</bal-select-option>
                 <bal-select-option value="BS" label="BS">BS</bal-select-option>
                 <bal-select-option value="BL" label="BL">BL</bal-select-option>
@@ -81,7 +81,7 @@ export const ContactFormTemplate = `
             <bal-field-label>Birthdate</bal-field-label>
             <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
             <bal-field-control>
-              <bal-datepicker min="2022-08-21" name="birthdate" placeholder="Select your birthdate"></bal-datepicker>
+              <bal-datepicker value="2022-08-22" min="2022-08-21" name="birthdate" placeholder="Select your birthdate"></bal-datepicker>
             </bal-field-control>
           </bal-field>
         </bal-form-col>

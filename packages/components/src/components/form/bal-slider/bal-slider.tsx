@@ -2,6 +2,7 @@ import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method,
 import isNil from 'lodash.isnil'
 import { Events } from '../../../types'
 import { debounceEvent } from '../../../helpers/helpers'
+import { clearTimeout } from 'timers'
 
 @Component({
   tag: 'bal-slider',
@@ -141,13 +142,16 @@ export class Slider {
     }
   }
 
+  private setFocusTimer?: NodeJS.Timer
+
   /**
    * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
    * `input.focus()`.
    */
   @Method()
   async setFocus() {
-    setTimeout(() => {
+    clearTimeout(this.setFocusTimer)
+    this.setFocusTimer = setTimeout(() => {
       if (this.nativeInput) {
         this.nativeInput.focus()
       }

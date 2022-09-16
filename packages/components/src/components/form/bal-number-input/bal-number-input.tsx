@@ -54,7 +54,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   nativeInput?: HTMLInputElement
   inputValue = this.value
-  initialValue = this.value
+  initialValue = this.value || 0
 
   @Element() el!: HTMLElement
 
@@ -157,17 +157,20 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputListenOnClick(this, event)
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this, this.initialValue)
+      inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
   }
 
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+    this.initialValue = this.value || 0
   }
 
   componentDidLoad() {
