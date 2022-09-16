@@ -85,6 +85,11 @@ export class Select {
   @Prop() multiple = false
 
   /**
+   * Defines the max length of the value.
+   */
+  @Prop() maxLength?: number
+
+  /**
    * This label is shown if typeahead is active and all the options are filtered out.
    */
   @Prop() noDataLabel?: string
@@ -893,6 +898,7 @@ export class Select {
                 readonly={!this.typeahead || this.disabled || this.readonly}
                 contentEditable={this.typeahead}
                 disabled={this.disabled}
+                maxLength={this.maxLength}
                 tabindex={this.balTabindex}
                 onInput={this.handleInput}
                 onClick={this.handleInputClick}
