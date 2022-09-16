@@ -2031,7 +2031,7 @@ export namespace Components {
          */
         "icon": string;
         /**
-          * The message of the snackbar
+          * The message of the snackbar as html content
          */
         "message": string;
         /**
@@ -5524,7 +5524,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * The message of the snackbar
+          * The message of the snackbar as html content
          */
         "message"?: string;
         /**

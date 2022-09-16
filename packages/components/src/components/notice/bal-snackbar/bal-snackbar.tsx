@@ -7,8 +7,8 @@ import { Props } from '../../../types'
 export class Snackbar {
   @Element() element!: HTMLElement
 
-  timer!: NodeJS.Timer
-  snackbarId = `bal-snackbar-${snackbarIds++}`
+  private timer!: NodeJS.Timer
+  private snackbarId = `bal-snackbar-${snackbarIds++}`
 
   @State() animationClass = 'fadeInDown'
 
@@ -28,7 +28,7 @@ export class Snackbar {
   @Prop() subject = ''
 
   /**
-   * The message of the snackbar
+   * The message of the snackbar as html content
    */
   @Prop() message = ''
 
@@ -118,6 +118,11 @@ export class Snackbar {
   }
 
   render() {
+    const labelAttributes = {} as any
+    if (this.message !== undefined && this.message !== '') {
+      labelAttributes.innerHTML = this.message
+    }
+
     return (
       <Host id={this.snackbarId} class="bal-snackbar">
         <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType} p-5`}>
@@ -131,9 +136,10 @@ export class Snackbar {
               </bal-heading>
             </span>
           </div>
-          <bal-text class="bal-snackbar__label" space={this.action === '' ? 'bottom' : 'none'} innerHTML={this.message}>
+          <span class="bal-snackbar__label" {...labelAttributes}>
             <slot />
-          </bal-text>
+            <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
+          </span>
           <bal-close class="bal-snackbar__close" onClick={() => this.close()}></bal-close>
           <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
             <bal-button color="info" href={this.href} target={this.target} onClick={() => this.onActionHandler()}>
