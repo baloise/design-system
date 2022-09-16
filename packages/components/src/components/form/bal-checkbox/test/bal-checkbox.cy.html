@@ -12,7 +12,9 @@
       <main class="container">
         <bal-heading>Basic</bal-heading>
         <section>
-          <bal-datepicker id="basic" data-testid="basic"></bal-datepicker>
+          <bal-checkbox data-testid="checkbox-normal">Label <b>Bold</b></bal-checkbox>
+          <bal-checkbox value="true">Checked</bal-checkbox>
+          <bal-checkbox disabled data-testid="checkbox-disabled">Disabled</bal-checkbox>
         </section>
         <bal-heading>Form Reset</bal-heading>
         <section>
@@ -21,7 +23,7 @@
               <bal-form-col>
                 <bal-field required>
                   <bal-field-control>
-                    <bal-datepicker data-testid="reset" value="2022-09-16"></bal-datepicker>
+                    <bal-checkbox data-testid="checkbox-reset" checked>Checkbox</bal-checkbox>
                   </bal-field-control>
                 </bal-field>
               </bal-form-col>

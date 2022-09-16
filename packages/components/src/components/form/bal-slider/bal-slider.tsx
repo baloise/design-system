@@ -2,7 +2,6 @@ import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method,
 import isNil from 'lodash.isnil'
 import { Events } from '../../../types'
 import { debounceEvent } from '../../../helpers/helpers'
-import { clearTimeout } from 'timers'
 
 @Component({
   tag: 'bal-slider',

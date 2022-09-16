@@ -787,9 +787,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             onClick={() => this.previousMonth()}
           ></bal-button>
           <div class={{ ...monthAndYearEl.class() }}>
-            <div class={{ ...selectEl.class() }}>
+            <div class={{ ...selectEl.class(), ...selectEl.modifier('month').class() }}>
               <div class="select">
-                <select onInput={this.onMonthSelect}>
+                <select class="" onInput={this.onMonthSelect}>
                   {this.months.map(month => (
                     <option value={month.index} selected={this.pointerDate.month === month.index}>
                       {month.name}
@@ -798,7 +798,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
                 </select>
               </div>
             </div>
-            <div class={{ ...selectEl.class() }}>
+            <div class={{ ...selectEl.class(), ...selectEl.modifier('year').class() }}>
               <div class="select">
                 <select onInput={this.onYearSelect}>
                   {this.years.map(year => (
