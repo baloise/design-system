@@ -38,7 +38,8 @@ export class Tabs {
   @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
 
   /**
-   * Defines the layout of the tabs.
+   * Defines the layout of the tabs. Right only works from the breakpoint
+   * high-definition and beyond.
    */
   @Prop() float: Props.BalTabsFloat = 'left'
 
@@ -207,9 +208,6 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
-        } else if (this.interface === 'navigation' && tab.value === this.value) {
-          this.value = ''
-          this.balChange.emit(this.value)
         }
       }
     }

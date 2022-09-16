@@ -119,10 +119,11 @@ const tokens = {
     'danger-6': { hex: '#a01100', inverted: 'white', description: descriptions.color.alert },
   },
   breakpoint: {
-    tablet: '769px',
-    desktop: '1024px',
-    widescreen: '1440px',
-    fullhd: '1920px',
+    'tablet': '769px',
+    'desktop': '1024px',
+    'high-definition': '1280px',
+    'widescreen': '1440px',
+    'fullhd': '1920px',
   },
   radius: {
     none: { value: '0' },

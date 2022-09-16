@@ -97,7 +97,6 @@
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        +ltr-property("margin", 0.75rem)
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -167,14 +166,19 @@
       top: 0.875rem
       z-index: 4
 
-.field.is-grouped .control:not(:last-child)
-  margin-right: 8px
+.field.is-grouped
+  gap: calc(var(--bal-column-gap) / 2)
 
 .field.has-direction-row.is-grouped
   flex-direction: row
 
 .field.has-direction-column.is-grouped
   flex-direction: column
+  width: fit-content
+  .button
+    width: 100%
+  .bal-button
+    margin: 0 !important
 
 +mobile()
   .field.has-direction-auto.is-grouped

@@ -50,6 +50,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
         ...tabsEl.class(),
         ...tabsEl.modifier(`float-${float}`).class(),
         ...tabsEl.modifier('vertical').class(vertical === true),
+        ...tabsEl.modifier('spaceless').class(spaceless && !vertical),
         ...tabsEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
         ...tabsEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
       }}

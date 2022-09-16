@@ -2195,7 +2195,7 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * Defines the layout of the tabs.
+          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float": Props.BalTabsFloat;
         /**
@@ -5696,7 +5696,7 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Defines the layout of the tabs.
+          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float"?: Props.BalTabsFloat;
         /**
