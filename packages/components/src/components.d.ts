@@ -1855,6 +1855,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
+        /**
           * If `true` multiple option can be selected
          */
         "multiple": boolean;
@@ -5323,6 +5327,10 @@ declare namespace LocalJSX {
           * Defines if the select is in a loading state.
          */
         "loading"?: boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
         /**
           * If `true` multiple option can be selected
          */
