@@ -27,7 +27,19 @@
     @content
 
 =desktop-only
-  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+  @media screen and (min-width: $desktop) and (max-width: $high-definition - 1px)
+    @content
+
+=high-definition
+  @media screen and (min-width: $high-definition)
+    @content
+
+=high-definition-only
+  @media screen and (min-width: $high-definition) and (max-width: $widescreen - 1px)
+    @content
+
+=until-high-definition
+  @media screen and (max-width: $high-definition - 1px)
     @content
 
 =until-widescreen

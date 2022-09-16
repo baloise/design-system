@@ -1,38 +1,70 @@
-interface ToggleScrollingBodyOptions {
-  bodyEl: HTMLElement
-  value: boolean
-  height?: string
+const getBodyTopOffset = () => {
+  const doc = document.documentElement
+  return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 }
 
-/**
- * Toggles the scrolling on the body element
- */
-export const toggleScrollingBody = async (options: ToggleScrollingBodyOptions) => {
-  if (options.value) {
-    await blockScrollingBody(options.bodyEl, options.height)
-  } else {
-    await allowScrollingBody(options.bodyEl)
+const getBody = () => document.body
+const getHtml = () => document.firstChild?.nextSibling as HTMLElement
+
+const getHtmlStyles = () => getComputedStyle(getHtml())
+
+const hasScrollSmoothOnHtml = () => getHtmlStyles().scrollBehavior === 'smooth'
+
+export const disableSmoothScrolling = () => {
+  const body = getBody()
+
+  body.style.scrollBehavior = 'auto'
+  if (hasScrollSmoothOnHtml()) {
+    const html = getHtml()
+    html.style.scrollBehavior = 'auto'
   }
 }
 
-/**
- * Blocks the scrolling on the body element
- */
-export const blockScrollingBody = async (body: HTMLElement = document.body, height?: string) => {
-  body.style.position = 'fixed'
-  body.style.width = '100%'
-  body.style.overflowY = 'hidden'
-  if (height) {
-    body.style.height = height
+export const enableSmoothScrolling = () => {
+  const body = getBody()
+
+  body.style.scrollBehavior = 'smooth'
+  if (hasScrollSmoothOnHtml()) {
+    const html = getHtml()
+    html.style.scrollBehavior = 'smooth'
   }
 }
 
-/**
- * Allows the scrolling on the body element
- */
-export const allowScrollingBody = async (body: HTMLElement = document.body) => {
-  body.style.overflowY = 'visible'
-  body.style.height = 'auto'
-  body.style.position = 'static'
-  body.style.width = 'auto'
+export const BodyScrollBlocker = () => {
+  const body = getBody()
+  const html = getHtml()
+  let timer: NodeJS.Timer | undefined = undefined
+
+  let isBlocked = false
+  let bodyTopOffset = getBodyTopOffset()
+
+  return {
+    isBlocked: () => isBlocked,
+    block: () => {
+      clearTimeout(timer)
+      isBlocked = true
+      bodyTopOffset = getBodyTopOffset()
+      body.style.scrollBehavior = 'auto'
+      if (hasScrollSmoothOnHtml()) {
+        html.style.scrollBehavior = 'auto'
+      }
+      body.style.position = 'fixed'
+      body.style.width = '100%'
+      body.style.top = `-${bodyTopOffset}px`
+    },
+    allow: () => {
+      clearTimeout(timer)
+      body.style.position = 'static'
+      body.style.width = 'inherit'
+      body.style.top = `inherit`
+      document.documentElement.scrollTop = bodyTopOffset
+      timer = setTimeout(() => {
+        isBlocked = false
+        body.style.scrollBehavior = 'smooth'
+        if (hasScrollSmoothOnHtml()) {
+          html.style.scrollBehavior = 'smooth'
+        }
+      }, 0)
+    },
+  }
 }

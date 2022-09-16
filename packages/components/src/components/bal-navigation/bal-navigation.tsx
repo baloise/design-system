@@ -2,8 +2,9 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { toggleScrollingBody } from '../../utils/toggle-scrolling-body'
 import { Events } from '../../types'
+import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
+import { stopEventBubbling } from '../../helpers/form-input.helpers'
 
 @Component({
   tag: 'bal-navigation',
@@ -14,7 +15,8 @@ export class Navigation implements ComponentInterface {
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
   private previousY = 0
-  private body!: HTMLBodyElement
+
+  private bodyScrollBlocker = BodyScrollBlocker()
 
   @State() mainMobileHeight = ''
   @State() isTransformed = false
@@ -77,10 +79,16 @@ export class Navigation implements ComponentInterface {
     this.dismissPopover()
   }
 
-  @Listen('scroll', { target: 'window', passive: true })
-  handleScroll() {
-    if (isPlatform('desktop')) {
-      this.isTransformed = window.scrollY > this.previousY
+  @Listen('scroll', { target: 'window', passive: false })
+  handleScroll(event: Event) {
+    if (isPlatform('desktop') && !this.bodyScrollBlocker.isBlocked()) {
+      const didMoveDownwards = window.scrollY > this.previousY
+      if (this.isTransformed === false && didMoveDownwards) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      this.isTransformed = didMoveDownwards
       this.previousY = window.scrollY
     }
   }
@@ -103,7 +111,6 @@ export class Navigation implements ComponentInterface {
 
   componentDidLoad() {
     this.previousY = window.scrollY
-    this.body = document.querySelector('body') as HTMLBodyElement
     this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
@@ -114,16 +121,17 @@ export class Navigation implements ComponentInterface {
     this.updateIndexes()
   }
 
+  bodyOffset = 0
+
   private listenToPopoverChangeEvent = async (event: Event) => {
     const customEvent = event as Events.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
-    const target = event.target as HTMLBalPopoverElement
 
-    await toggleScrollingBody({
-      bodyEl: this.body,
-      value: isNavPopoverOpen,
-      height: target.mobileTop ? '100vh' : this.getMaxHeight(),
-    })
+    if (isNavPopoverOpen) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
 
     if (isNavPopoverOpen) {
       this.isMainBodyOpen = false
@@ -159,7 +167,45 @@ export class Navigation implements ComponentInterface {
   private onBurgerButtonClick = async (): Promise<void> => {
     this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
-    await toggleScrollingBody({ bodyEl: this.body, value: this.isMainBodyOpen, height: this.getMaxHeight() })
+    if (this.isMainBodyOpen) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
+  }
+
+  private closeOtherAccordionsTimer?: NodeJS.Timer
+
+  private onAccordionClick = (event: Event) => {
+    stopEventBubbling(event)
+    clearTimeout(this.closeOtherAccordionsTimer)
+
+    const target = event.target as HTMLBalListItemElement
+    const isMainAccordionItem = !target.subAccordionItem
+
+    const closeOtherAccordions = (selector: string, element: Element) => {
+      const items = element.querySelectorAll(selector)
+      items.forEach(item => {
+        if (item !== target) {
+          const accordionHeadEl = item.querySelector('bal-list-item-accordion-head')
+          if (accordionHeadEl) {
+            accordionHeadEl.accordionOpen = false
+          }
+        }
+      })
+    }
+
+    if (isMainAccordionItem) {
+      closeOtherAccordions('bal-list-item.bal-nav__main-mobile__main-accordion', this.el)
+      this.closeOtherAccordionsTimer = setTimeout(() => {
+        closeOtherAccordions('bal-list-item.is-sub-accordion-item', this.el)
+      }, 300)
+    } else {
+      const parent = target.closest('bal-list-item.bal-nav__main-mobile__main-accordion')
+      if (parent) {
+        closeOtherAccordions('bal-list-item.is-sub-accordion-item', parent)
+      }
+    }
   }
 
   render() {
@@ -201,7 +247,11 @@ export class Navigation implements ComponentInterface {
         </bal-navigation-meta>
 
         <bal-navigation-main
-          class={{ 'is-hidden-touch': true, 'bal-nav__main--expanded': this.isMainBodyOpen }}
+          class={{
+            'is-hidden-touch': true,
+            'container': true,
+            'bal-nav__main--expanded': this.isMainBodyOpen,
+          }}
           ref={el => {
             this.mainNavElement = el
           }}
@@ -215,14 +265,24 @@ export class Navigation implements ComponentInterface {
             }}
           >
             <div>
-              <a href={this.logoPath} class="bal-nav__main-head-logo">
+              <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
                 <bal-logo color="blue" animated></bal-logo>
               </a>
-              <bal-tabs interface="navigation" float="right" spaceless value={this.selectedMainValue}>
+              <bal-tabs interface="navigation" float="right" fullwidth spaceless value={this.selectedMainValue}>
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                     return main.isTabLink ? (
-                      <bal-tab-item label={main.label} value={main.value} href={main.link} />
+                      <bal-tab-item
+                        label={main.label}
+                        value={main.value}
+                        href={main.link}
+                        onBalNavigate={ev => {
+                          main.onClick(ev.detail)
+                          this.selectedMainIndex = index
+                          this.isMainBodyOpen = false
+                          this.selectedMainValue = main.value
+                        }}
+                      />
                     ) : (
                       <bal-tab-item
                         label={main.label}
@@ -260,9 +320,9 @@ export class Navigation implements ComponentInterface {
           )}
         </bal-navigation-main>
 
-        <div class="bal-nav__metamobile">
+        <div class="bal-nav__metamobile container">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
-            <a href={this.logoPath} class="bal-nav__main-mobile__logo">
+            <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
               <bal-logo color="blue" animated></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">
@@ -278,7 +338,7 @@ export class Navigation implements ComponentInterface {
           </nav>
         </div>
         <div
-          class="bal-nav__main-mobile"
+          class="bal-nav__main-mobile container"
           style={{
             '--bal-nav-main-mobile-height': this.mainMobileHeight,
             'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
@@ -286,7 +346,11 @@ export class Navigation implements ComponentInterface {
         >
           <bal-list border in-main-nav={true} size="small">
             {this.levels.map(meta => (
-              <bal-list-item accordion>
+              <bal-list-item
+                accordion
+                onBalNavigate={this.onAccordionClick}
+                class="bal-nav__main-mobile__main-accordion"
+              >
                 <bal-list-item-accordion-head icon="nav-go-down">
                   <bal-list-item-content>
                     <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>

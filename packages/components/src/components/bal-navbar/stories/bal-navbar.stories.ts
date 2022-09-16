@@ -28,7 +28,7 @@ const component = BalComponentStory({
   docs,
   args: {
     expanded: false,
-    light: true,
+    light: false,
   },
 })
 
@@ -255,7 +255,7 @@ export const Light = args => ({
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
-        <bal-button bal-popover-trigger :square="square" color="light" icon="web" inverted @click="toggle()">
+        <bal-button bal-popover-trigger :square="square" color="light" icon="web" @click="toggle()">
           <span class="is-hidden-mobile">DE</span>
         </bal-button>
         <bal-popover-content class="p-2">

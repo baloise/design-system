@@ -50,9 +50,13 @@
       flex-grow: 1
       flex-shrink: 0
       justify-content: flex-start
-    +modifier(float-right)
+    +modifier(spaceless)
       ul
-        justify-content: flex-end
+        margin-left: -0.75rem
+    +modifier(float-right)
+      +high-definition
+        ul
+          justify-content: flex-end
     +modifier(vertical)
       ul
         flex-direction: column
@@ -106,7 +110,7 @@
         align-items: center
         font-family: var(--bal-font-family-title)
         font-weight: 700
-        gap: .25rem
+        gap: .5rem
         padding: 1rem .75rem
         flex-grow: 1
         flex-basis: 0
@@ -114,9 +118,19 @@
         outline: none !important
         border-radius: var(--bal-radius-small)
         z-index: 1
+        -webkit-user-select: none
+        -khtml-user-select: none
+        -moz-user-select: none
+        -o-user-select: none
+        user-select: none
+        -webkit-user-drag: none
+        -khtml-user-drag: none
+        -moz-user-drag: none
+        -o-user-drag: none
+        user-drag: none
         &:focus-visible
           &:not(:active)
-            @extend %focus-shadow
+            @extend %focus-inset-shadow
         span
           display: flex
           position: relative
@@ -145,7 +159,7 @@
             +fillSvg(var(--bal-color-info-3))
           &:focus-visible
             &:not(:active)
-              @extend %focus-inverted-shadow
+              @extend %focus-inverted-inset-shadow
         +modifier(context-navbar)
           +touch
             color: var(--bal-color-primary)
@@ -195,27 +209,19 @@
           +desktop
             height: 80px
         +modifier(context-navigation)
-          height: 64px
           flex-direction: row-reverse
+          height: 3rem
+          +high-definition
+            height: 4rem
           +widescreen
-            height: 80px
+            height: 5rem
         +modifier(context-meta)
-          height: 48px
+          height: 3rem
           font-size: var(--bal-size-small)
           font-family: var(--bal-font-family-text)
           font-weight: var(--bal-weight-regular)
           &.bal-tabs__tabs__item__button--active
             font-weight: var(--bal-weight-bold)
-
-    .bal-tabs__tabs__item--spaceless:first-child:not(.bal-tabs__tabs__item__button--vertical-on-tablet):not(.bal-tabs__tabs__item__button--vertical-on-mobile)
-      & > .bal-tabs__tabs__item__button--context-tabs,
-      & > .bal-tabs__tabs__item__button--context-navigation
-        padding-left: 0
-
-    .bal-tabs__tabs__item--spaceless:last-child:not(.bal-tabs__tabs__item__button--vertical-on-tablet):not(.bal-tabs__tabs__item__button--vertical-on-mobile)
-      & > .bal-tabs__tabs__item__button--context-tabs,
-      & > .bal-tabs__tabs__item__button--context-navigation
-        padding-right: 0
 
     +element(border)
       position: absolute

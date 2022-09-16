@@ -10,6 +10,7 @@ export interface PlatformSrcSet {
   tablet?: string
   touch?: string
   desktop?: string
+  highDefinition?: string
   widescreen?: string
   fullhd?: string
 }
@@ -55,6 +56,11 @@ const isTouch = (win: Window) => isMobile(win) || isTablet(win)
 
 const isDesktop = (win: Window) => !isTouch(win)
 
+const isHighDefinition = (win: Window) => {
+  const width = win.innerWidth
+  return width > 1280 && width < 1440
+}
+
 const isWideScreen = (win: Window) => {
   const width = win.innerWidth
   return width > 1439 && width < 1920
@@ -70,6 +76,7 @@ const PLATFORMS_MAP = {
   tablet: isTablet,
   touch: isTouch,
   desktop: isDesktop,
+  highDefinition: isHighDefinition,
   widescreen: isWideScreen,
   fullhd: isFullHD,
 }

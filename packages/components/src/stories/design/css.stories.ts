@@ -38,11 +38,6 @@ export const Container = args => ({
       <h2 class="title is-size-xx-large">container blog-page</h2>
     </div>
   </div>
-  <div class="container is-wide has-background-success">
-    <div class="has-background-grey is-flex is-justify-content-center is-align-items-center" style="height: 80px">
-      <h2 class="title is-size-xx-large">container wide</h2>
-    </div>
-  </div>
   <div class="container is-fluid has-background-success">
     <div class="has-background-grey is-flex is-justify-content-center is-align-items-center" style="height: 80px">
       <h2 class="title is-size-xx-large">container fluid</h2>
@@ -54,6 +49,7 @@ Container.args = {}
 Container.parameters = {
   ...sourceCode(Container, Container.args, {}),
   controls: { exclude: [] },
+  layout: 'fullscreen',
 }
 
 export const Grid = args => ({

@@ -19,7 +19,7 @@ export class NavigationMeta implements ComponentInterface {
           ...metaEl.class(),
         }}
       >
-        <nav role="navigation" aria-label={this.ariaLabelMeta}>
+        <nav class="container" role="navigation" aria-label={this.ariaLabelMeta}>
           <slot></slot>
         </nav>
       </Host>

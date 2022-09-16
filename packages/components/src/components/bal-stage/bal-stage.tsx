@@ -9,7 +9,7 @@ export class Stage implements ComponentInterface {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: Props.BalStageContainer = 'wide'
+  @Prop() containerSize: Props.BalStageContainer = ''
 
   /**
    * Defines size of the stage
@@ -64,17 +64,25 @@ export class Stage implements ComponentInterface {
       case 'is-blog-page':
       case 'blog-page':
         return '920px'
-      case 'is-wide':
-      case 'wide':
-        return '1400px'
       case 'is-fluid':
       case 'fluid':
-      default:
         return '100vw'
+      case 'is-wide':
+      case 'wide':
+      default:
+        return '1400px'
     }
   }
 
+  connectedCallback() {
+    this.hasShapeHandler()
+  }
+
   private get containerClass(): string {
+    if (this.containerSize.includes('wide')) {
+      return ''
+    }
+
     if (this.containerSize.startsWith('is-')) {
       return this.containerSize
     }
@@ -99,7 +107,8 @@ export class Stage implements ComponentInterface {
           class={{
             ...element.class(),
             ...element.modifier('is-inverted').class(this.inverted),
-            [`container ${this.containerClass}`]: this.containerSize !== '',
+            container: true,
+            [`${this.containerClass}`]: this.containerSize !== '',
           }}
         >
           <slot></slot>
