@@ -75,7 +75,7 @@ export class Toast {
           <span class="bal-toast__label" innerHTML={this.message}>
             <slot />
           </span>
-          <bal-close class="bal-toast__close" size="" inverted={false}></bal-close>
+          <bal-close class="bal-toast__close" inverted={false}></bal-close>
         </div>
       </Host>
     )

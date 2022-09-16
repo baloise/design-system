@@ -28,6 +28,7 @@ export class Close implements ComponentInterface {
   render() {
     const blockEl = BEM.block('close')
     const buttonEl = blockEl.element('button')
+    const iconEl = buttonEl.element('icon')
 
     return (
       <Host class={{ ...blockEl.class() }}>
@@ -40,7 +41,16 @@ export class Close implements ComponentInterface {
             ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
           }}
           {...this.inheritedAttributes}
-        ></button>
+        >
+          <bal-icon
+            name="close"
+            size={this.size === 'small' ? 'xsmall' : this.size === 'medium' ? 'medium' : ''}
+            inverted={this.inverted}
+            class={{
+              ...iconEl.class(),
+            }}
+          ></bal-icon>
+        </button>
       </Host>
     )
   }

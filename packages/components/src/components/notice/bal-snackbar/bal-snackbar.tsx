@@ -134,7 +134,7 @@ export class Snackbar {
           <bal-text class="bal-snackbar__label" space={this.action === '' ? 'bottom' : 'none'} innerHTML={this.message}>
             <slot />
           </bal-text>
-          <bal-close class="bal-snackbar__close" size="medium" onClick={() => this.close()}></bal-close>
+          <bal-close class="bal-snackbar__close" onClick={() => this.close()}></bal-close>
           <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
             <bal-button color="info" href={this.href} target={this.target} onClick={() => this.onActionHandler()}>
               {this.action}

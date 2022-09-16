@@ -14,32 +14,10 @@
     flex-grow: 0
     flex-shrink: 0
     font-size: 0
-    height: 1.5rem
-    max-height: 1.5rem
-    max-width: 1.5rem
-    min-height: 1.5rem
-    min-width: 1.5rem
-    width: 1.5rem
     outline: none
     position: relative
     vertical-align: top
-    &::before,
-    &::after
-      background-color: var(--bal-color-blue)
-      content: ""
-      display: block
-      left: 50%
-      position: absolute
-      top: 50%
-      transform: translateX(-50%) translateY(-50%) rotate(45deg)
-      transform-origin: center center
-      border-radius: var(--bal-radius-rounded)
-    &::before
-      height: 2px
-      width: 60%
-    &::after
-      height: 60%
-      width: 2px
+    padding: 6px
     &:hover
       background: rgba($blue-dark, 0.1)
     &:focus-visible:not(:active)
@@ -47,14 +25,7 @@
       @extend %focus-shadow
     &:active
       background: rgba($blue-dark, 0.3)
-      &::before,
-      &::after
-        background-color: var(--bal-color-blue-dark)
-    // Color
     +modifier(inverted)
-      &::before,
-      &::after
-        background-color: var(--bal-color-white)
       &:hover
         background: rgba($white, 0.3)
       &:focus-visible:not(:active)
@@ -62,25 +33,9 @@
         @extend %focus-shadow
       &:active
         background: rgba($white, 0.5)
-    // Sizes
+    //Sizes
     +modifier(size-small)
-      height: 1rem
-      max-height: 1rem
-      max-width: 1rem
-      min-height: 1rem
-      min-width: 1rem
-      width: 1rem
+      padding: 4px
     +modifier(size-medium)
-      height: 2rem
-      max-height: 2rem
-      max-width: 2rem
-      min-height: 2rem
-      min-width: 2rem
-      width: 2rem
-    +modifier(size-large)
-      height: 2.5rem
-      max-height: 2.5rem
-      max-width: 2.5rem
-      min-height: 2.5rem
-      min-width: 2.5rem
-      width: 2.5rem
+      padding: 8.5px
+

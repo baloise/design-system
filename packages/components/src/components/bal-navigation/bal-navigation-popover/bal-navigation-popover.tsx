@@ -151,7 +151,7 @@ export class NavigationPopover implements ComponentInterface {
                     {this.heading}
                   </bal-heading>
                 )}
-                {this.closable && <bal-close onClick={() => (this.isActive = !this.isActive)} />}
+                {this.closable && <bal-close size="medium" onClick={() => (this.isActive = !this.isActive)} />}
               </div>
             )}
             <slot></slot>
