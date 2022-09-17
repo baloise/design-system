@@ -16,6 +16,7 @@
           <bal-checkbox value="true">Checked</bal-checkbox>
           <bal-checkbox disabled data-testid="checkbox-disabled">Disabled</bal-checkbox>
         </section>
+
         <bal-heading>Form Reset</bal-heading>
         <section>
           <form action="https://www.w3schools.com/action_page.php" target="_blank">
@@ -33,6 +34,15 @@
               <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
             </bal-button-group>
           </form>
+        </section>
+
+        <bal-heading>Group</bal-heading>
+        <section>
+          <bal-checkbox-group data-testid="multi-select">
+            <bal-checkbox value="A">Label</bal-checkbox>
+            <bal-checkbox value="B">Checked</bal-checkbox>
+            <bal-checkbox value="C" disabled>Disabled</bal-checkbox>
+          </bal-checkbox-group>
         </section>
       </main>
     </bal-doc-app>
