@@ -36,7 +36,7 @@
   padding: 0
   margin: 0
   outline: none
-  border-radius: $radius
+  border-radius: var(--bal-radius)
 
 .bal-list__item
   position: relative
@@ -110,20 +110,20 @@
       &:hover
         .bal-list__item__title h5,
         .bal-list__item__subtitle p
-          color: $light-blue-dark !important
+          color: var(--bal-color-light-blue-dark) !important
 
         .bal-list__item__icon
           svg,
           svg g,
           svg path,
           svg circle
-            fill: $light-blue-dark !important
+            fill: var(--bal-color-light-blue-dark) !important
 
     &:active
       .bal-list__item__title h5,
       .bal-list__item__subtitle p
         +desktop()
-          color: $blue-dark !important
+          color: var(--bal-color-blue-dark) !important
 
       .bal-list__item__icon
         svg,
@@ -131,10 +131,10 @@
         svg path,
         svg circle
           +desktop()
-            fill: $blue-dark !important
+            fill: var(--bal-color-blue-dark) !important
 
     &:focus-visible
-      box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important
+      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important
       &:after
         content: none !important
 
@@ -142,14 +142,14 @@
   .bal-list__item
     .bal-list__item__title .title,
     .bal-list__item__subtitle p
-      color: $white
+      color: var(--bal-color-white)
 
   .bal-list__item__icon
     svg,
     svg g,
     svg path,
     svg circle
-      fill: $white
+      fill: var(--bal-color-white)
 
 .bal-list:not(.bal-list--disabled).bal-list--background-dark .bal-list__item--clickable
   .bal-list__item__accordion-head,
@@ -159,20 +159,20 @@
       &:hover
         .bal-list__item__title .title,
         .bal-list__item__subtitle p
-          color: $light-blue-2 !important
+          color: var(--bal-color-light-blue-2) !important
 
         .bal-list__item__icon
           svg,
           svg g,
           svg path,
           svg circle
-            fill: $light-blue-2 !important
+            fill: var(--bal-color-light-blue-2) !important
 
     &:active
       .bal-list__item__title h5,
       .bal-list__item__subtitle p
         +desktop()
-          color: $light-blue-4 !important
+          color: var(--bal-color-light-blue-4) !important
 
       .bal-list__item__icon
         svg,
@@ -180,10 +180,10 @@
         svg path,
         svg circle
           +desktop()
-            fill: $light-blue-4 !important
+            fill: var(--bal-color-light-blue-4) !important
 
     &:focus-visible
-      box-shadow: $white 0 0 0 2px, $yellow-3 0 0 0 5px !important
+      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow-3) 0 0 0 5px !important
       &:after
         content: none !important
 
@@ -202,7 +202,7 @@
   button:not(.button):not([type='button']):after
     content: ''
     height: 2px
-    border-radius: $radius
+    border-radius: var(--bal-radius)
     width: 100%
     position: absolute
     bottom: 0
@@ -229,7 +229,7 @@
     & > div:after,
     a:not(.is-link):after,
     button:not(.button):not([type='button']):after
-      background: $grey-2
+      background: var(--bal-color-grey-2)
 
   .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
     & > div,
@@ -237,50 +237,50 @@
     button:not(.button)
       +hover()
         &:hover:after
-          background: var(--bal-color-blue-5)
+          background: var(--bal-color-primary-5)
 
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after
       +desktop()
-        background: var(--bal-color-blue-5)
+        background: var(--bal-color-primary-5)
 
   &.bal-list--background-color
     .bal-list__item
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: $blue
+        background: var(--bal-color-primary)
 
     .bal-list__item--disabled
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: $blue-4
+        background: var(--bal-color-primary-4)
 
   &.bal-list--background-dark
     .bal-list__item
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: $blue-4
+        background: var(--bal-color-primary-4)
 
     .bal-list__item--disabled
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: $blue-4
+        background: var(--bal-color-primary-4)
 
     .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
       & > div:hover:after,
       a:not(.is-link):hover:after,
       button:not(.button):hover:after
-        background: $light-blue-2
+        background: var(--bal-color-light-blue-2)
 
       & > div:active:after,
       a:not(.is-link):active:after,
       button:not(.button):active:after
-        background: $light-blue-4
+        background: var(--bal-color-light-blue-4)
 
 .bal-list:not(.bal-list--background-dark) .bal-list__item--disabled
   &,
@@ -288,14 +288,14 @@
   button:not(.button)
     .bal-list__item__title h5,
     .bal-list__item__subtitle p
-      color: $grey-5 !important
+      color: var(--bal-color-grey-5) !important
 
     .bal-list__item__icon
       svg,
       svg g,
       svg path,
       svg circle
-        fill: $grey-5 !important
+        fill: var(--bal-color-grey-5) !important
 
 .bal-list:not(.bal-list--disabled):not(.bal-list--background-dark) .bal-list__item--disabled
   &,
@@ -306,14 +306,14 @@
     &:active
       .bal-list__item__title h5,
       .bal-list__item__subtitle p
-        color: $grey-5 !important
+        color: var(--bal-color-grey-5) !important
 
       .bal-list__item__icon
         svg,
         svg g,
         svg path,
         svg circle
-          fill: $grey-5 !important
+          fill: var(--bal-color-grey-5) !important
 
 .bal-list:not(.bal-list--disabled).bal-list--background-color .bal-list__item--disabled,
 .bal-list:not(.bal-list--disabled).bal-list--background-dark .bal-list__item--disabled
@@ -325,14 +325,14 @@
     &:active
       .bal-list__item__title h5,
       .bal-list__item__subtitle p
-        color: $blue-4 !important
+        color: var(--bal-color-primary-4) !important
 
       .bal-list__item__icon
         svg,
         svg g,
         svg path,
         svg circle
-          fill: $blue-4 !important
+          fill: var(--bal-color-primary-4) !important
 
 .bal-card > .bal-list.p-0
   .bal-list__item:last-child
@@ -361,7 +361,7 @@
   transition: max-height 0.3s ease-in-out
 
 .bal-list--background-dark .bal-list__item__accordion-body .bal-list__item__content > p
-  color: $white
+  color: var(--bal-color-white)
 
 .bal-list__item.is-sub-accordion-item
   .bal-list__item__accordion-body
