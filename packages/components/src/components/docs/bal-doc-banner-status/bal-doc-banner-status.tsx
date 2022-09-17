@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 
-export type BannerStatusContext = 'rebranded' | 'css' | 'a11y' | 'visual' | 'usage' | 'shadow'
+export type BannerStatusContext = 'rebranded' | 'sass' | 'css' | 'visual' | 'a11y' | 'usage' | 'shadow'
 
 @Component({
   tag: 'bal-doc-banner-status',
@@ -17,17 +17,10 @@ export class DocBannerStatus implements ComponentInterface {
       },
     ],
     [
-      'css',
+      'sass',
       {
-        label: 'CSS Variables + BEM',
+        label: 'SASS + BEM',
         tooltip: 'The component supports CSS variables and styles are structure with BEM',
-      },
-    ],
-    [
-      'a11y',
-      {
-        label: 'a11y',
-        tooltip: 'The component fulfills the AA accessibility standard',
       },
     ],
     [
@@ -38,10 +31,24 @@ export class DocBannerStatus implements ComponentInterface {
       },
     ],
     [
+      'a11y',
+      {
+        label: 'a11y',
+        tooltip: 'The component fulfills the AA accessibility standard',
+      },
+    ],
+    [
       'usage',
       {
         label: 'Usage Doc',
         tooltip: 'The component has a usage documentation',
+      },
+    ],
+    [
+      'css',
+      {
+        label: 'CSS Customization',
+        tooltip: 'The component supports its own CSS variables.',
       },
     ],
     [
