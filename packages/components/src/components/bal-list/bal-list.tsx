@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Watch } from '@stencil/core'
 import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-list',
@@ -44,17 +45,18 @@ export class List {
   @Prop() inMainNav = false
 
   render() {
+    const block = BEM.block('list')
+
     return (
       <Host
         role="list"
         class={{
-          'bal-list': true,
-          'is-disabled': this.disabled,
-          'has-border': this.border,
-          'has-size-large': this.size === 'large',
-          'has-size-small': this.size === 'small',
-          [`is-on-background-${this.background}`]: true,
-          'is-in-main-nav': this.inMainNav,
+          ...block.class(),
+          ...block.modifier('context-main-nav').class(this.inMainNav),
+          ...block.modifier('disabled').class(this.disabled),
+          ...block.modifier('border').class(this.border),
+          ...block.modifier(`size-${this.size}`).class(this.size !== ''),
+          ...block.modifier(`background-${this.background}`).class(),
         }}
       >
         <slot></slot>

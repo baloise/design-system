@@ -1,53 +1,53 @@
 .bal-list,
-.bal-list-item,
-.bal-list-item > a,
-.bal-list-item > button,
-.bal-list-item > div,
-.bal-list-item-icon,
-.bal-list-item-title,
-.bal-list-item-link,
-.bal-list-item-subtitle,
-.bal-list-item-content {
+.bal-list__item,
+.bal-list__item > a,
+.bal-list__item > button,
+.bal-list__item > div,
+.bal-list__item__icon,
+.bal-list__item__title,
+.bal-list__item__link,
+.bal-list__item__subtitle,
+.bal-list__item__content {
   position: static;
   display: flex;
 }
 
 .bal-list,
-.bal-list-item-content {
+.bal-list__item__content {
   flex-direction: column;
 }
 
 .bal-list,
-.bal-list-item,
-.bal-list-item > div,
-.bal-list-item > a,
-.bal-list-item > button {
+.bal-list__item,
+.bal-list__item > div,
+.bal-list__item > a,
+.bal-list__item > button {
   width: 100%;
 }
 
-.bal-list-item,
-.bal-list-item > a,
-.bal-list-item > div,
-.bal-list-item > button {
+.bal-list__item,
+.bal-list__item > a,
+.bal-list__item > div,
+.bal-list__item > button {
   align-items: center;
   column-gap: 16px;
   min-height: 48px;
 }
 
-.bal-list-item > a,
-.bal-list-item > div,
-.bal-list-item > button {
+.bal-list__item > a,
+.bal-list__item > div,
+.bal-list__item > button {
   padding: 0;
   margin: 0;
   outline: none;
   border-radius: $radius;
 }
 
-.bal-list-item {
+.bal-list__item {
   position: relative;
 }
 
-.bal-list:not(.is-in-main-nav) .bal-list-item {
+.bal-list:not(.bal-list--context-main-nav) .bal-list__item {
   & > a,
   & > div,
   & > button {
@@ -56,27 +56,27 @@
   }
 }
 
-.bal-list-item a {
+.bal-list__item a {
   text-decoration: none;
 }
 
-.bal-list-item button {
+.bal-list__item button {
   background: transparent;
   border: none;
 }
 
-.bal-list-item,
-.bal-list-item > a,
-.bal-list-item > div,
-.bal-list-item > button,
-.bal-list-item-content {
+.bal-list__item,
+.bal-list__item > a,
+.bal-list__item > div,
+.bal-list__item > button,
+.bal-list__item__content {
   flex: 1;
 }
 
-.bal-list.is-in-main-nav bal-list-item {
+.bal-list.bal-list--context-main-nav .bal-list__item {
   @include touch() {
     padding: 1rem 0;
-    &.is-sub-accordion-item {
+    &.bal-list__item--sub-accordion {
       padding: 0 1rem 1rem;
       &:last-child {
         padding-bottom: 0;
@@ -85,39 +85,39 @@
   }
 }
 
-.bal-list-item-content {
+.bal-list__item__content {
   justify-content: center;
 }
 
-.bal-list-item-icon {
+.bal-list__item__icon {
   min-width: 24px;
   min-height: 48px;
   justify-content: center;
   align-items: center;
 }
 
-.bal-list.has-size-small {
-  .bal-list-item,
-  .bal-list-item > a,
-  .bal-list-item > div,
-  .bal-list-item > button,
-  .bal-list-item-icon {
+.bal-list--size-small {
+  .bal-list__item,
+  .bal-list__item > a,
+  .bal-list__item > div,
+  .bal-list__item > button,
+  .bal-list__item__icon {
     min-height: 1.5rem;
   }
 }
 
-.bal-list.has-size-large {
-  .bal-list-item > a,
-  .bal-list-item > div,
-  .bal-list-item > button {
+.bal-list--size-large {
+  .bal-list__item > a,
+  .bal-list__item > div,
+  .bal-list__item > button {
     min-height: 72px;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 }
 
-.bal-list-item.is-list-item-clickable {
-  bal-list-item-accordion-head,
+.bal-list__item--clickable {
+  .bal-list__item__accordion-head,
   a:not(.is-link),
   button:not(.button) {
     cursor: pointer;
@@ -125,18 +125,18 @@
   }
 }
 
-.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-list-item-clickable {
-  bal-list-item-accordion-head,
+.bal-list:not(.is-disabled):not(.bal-list--background-dark) .bal-list__item--clickable {
+  .bal-list__item__accordion-head,
   a:not(.is-link),
   button:not(.button) {
     @include hover() {
       &:hover {
-        .bal-list-item-title h5,
-        .bal-list-item-subtitle p {
+        .bal-list__item__title h5,
+        .bal-list__item__subtitle p {
           color: $light-blue-dark !important;
         }
 
-        .bal-list-item-icon {
+        .bal-list__item__icon {
           svg,
           svg g,
           svg path,
@@ -148,14 +148,14 @@
     }
 
     &:active {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
+      .bal-list__item__title h5,
+      .bal-list__item__subtitle p {
         @include desktop() {
           color: $blue-dark !important;
         }
       }
 
-      .bal-list-item-icon {
+      .bal-list__item__icon {
         svg,
         svg g,
         svg path,
@@ -176,15 +176,15 @@
   }
 }
 
-.bal-list.is-on-background-dark {
-  .bal-list-item {
-    .bal-list-item-title .title,
-    .bal-list-item-subtitle p {
+.bal-list--background-dark {
+  .bal-list__item {
+    .bal-list__item__title .title,
+    .bal-list__item__subtitle p {
       color: $white;
     }
   }
 
-  .bal-list-item-icon {
+  .bal-list__item__icon {
     svg,
     svg g,
     svg path,
@@ -194,18 +194,18 @@
   }
 }
 
-.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-list-item-clickable {
-  bal-list-item-accordion-head,
+.bal-list:not(.bal-list--disabled).bal-list--background-dark .bal-list__item--clickable {
+  .bal-list__item__accordion-head,
   a:not(.is-link),
   button:not(.button) {
     @include hover() {
       &:hover {
-        .bal-list-item-title .title,
-        .bal-list-item-subtitle p {
+        .bal-list__item__title .title,
+        .bal-list__item__subtitle p {
           color: $light-blue-2 !important;
         }
 
-        .bal-list-item-icon {
+        .bal-list__item__icon {
           svg,
           svg g,
           svg path,
@@ -217,14 +217,14 @@
     }
 
     &:active {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
+      .bal-list__item__title h5,
+      .bal-list__item__subtitle p {
         @include desktop() {
           color: $light-blue-4 !important;
         }
       }
 
-      .bal-list-item-icon {
+      .bal-list__item__icon {
         svg,
         svg g,
         svg path,
@@ -245,18 +245,18 @@
   }
 }
 
-.bal-list.is-disabled {
+.bal-list--disabled {
   &,
-  .bal-list-item,
-  .bal-list-item a:not(.is-link),
-  .bal-list-item button:not(.button) {
+  .bal-list__item,
+  .bal-list__item a:not(.is-link),
+  .bal-list__item button:not(.button) {
     cursor: default !important;
     pointer-events: none !important;
     user-select: none !important;
   }
 }
 
-.bal-list.has-border .bal-list-item:not(.is-sub-accordion-item) {
+.bal-list--border .bal-list__item:not(.bal-list__item--sub-accordion) {
   & > div:after,
   a:not(.is-link):after,
   button:not(.button):not([type='button']):after {
@@ -271,7 +271,7 @@
   }
 }
 
-.bal-list.has-border.is-in-main-nav .bal-list-item:not(.is-sub-accordion-item) {
+.bal-list--border.bal-list--context-main-nav .bal-list__item:not(.bal-list__item--sub-accordion) {
   & > div:after,
   a:not(.is-link):after,
   button:not(.button):not([type='button']):after {
@@ -280,7 +280,7 @@
   }
 }
 
-bal-list.has-border.is-in-main-nav .bal-list-item {
+.bal-list--border.bal-list--context-main-nav .bal-list__item {
   &:last-child {
     & > div:after,
     a:after,
@@ -290,9 +290,9 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 }
 
-.bal-list.has-border {
-  .bal-list-item,
-  .bal-list-item.is-disabled {
+.bal-list--border {
+  .bal-list__item,
+  .bal-list__item--disabled {
     & > div:after,
     a:not(.is-link):after,
     button:not(.button):not([type='button']):after {
@@ -300,7 +300,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     }
   }
 
-  .bal-list-item:not(.is-disabled).is-list-item-clickable {
+  .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable {
     & > div,
     a:not(.is-link),
     button:not(.button) {
@@ -320,8 +320,8 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     }
   }
 
-  &.is-on-background-color {
-    .bal-list-item {
+  &.bal-list--background-color {
+    .bal-list__item {
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after {
@@ -329,7 +329,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
       }
     }
 
-    .bal-list-item.is-disabled {
+    .bal-list__item--disabled {
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after {
@@ -338,8 +338,8 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
     }
   }
 
-  &.is-on-background-dark {
-    .bal-list-item {
+  &.bal-list--background-dark {
+    .bal-list__item {
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after {
@@ -347,7 +347,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
       }
     }
 
-    .bal-list-item.is-disabled {
+    .bal-list__item--disabled {
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after {
@@ -355,7 +355,7 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
       }
     }
 
-    .bal-list-item:not(.is-disabled).is-list-item-clickable {
+    .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable {
       & > div:hover:after,
       a:not(.is-link):hover:after,
       button:not(.button):hover:after {
@@ -370,16 +370,16 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 }
 
-.bal-list:not(.is-on-background-dark) .bal-list-item.is-disabled {
+.bal-list:not(.bal-list--background-dark) .bal-list__item--disabled {
   &,
   a:not(.is-link),
   button:not(.button) {
-    .bal-list-item-title h5,
-    .bal-list-item-subtitle p {
+    .bal-list__item__title h5,
+    .bal-list__item__subtitle p {
       color: $grey-5 !important;
     }
 
-    .bal-list-item-icon {
+    .bal-list__item__icon {
       svg,
       svg g,
       svg path,
@@ -390,19 +390,19 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 }
 
-.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-disabled {
+.bal-list:not(.bal-list--disabled):not(.bal-list--background-dark) .bal-list__item.is-disabled {
   &,
   a:not(.is-link),
   button:not(.button) {
     &,
     &:hover,
     &:active {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
+      .bal-list__item__title h5,
+      .bal-list__item__subtitle p {
         color: $grey-5 !important;
       }
 
-      .bal-list-item-icon {
+      .bal-list__item__icon {
         svg,
         svg g,
         svg path,
@@ -414,20 +414,20 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 }
 
-.bal-list:not(.is-disabled).is-on-background-color .bal-list-item.is-disabled,
-.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-disabled {
+.bal-list:not(.bal-lis--disabled).bal-lis--background-color .bal-list__item--disabled,
+.bal-list:not(.bal-lis--disabled).bal-lis--background-dark .bal-list__item--disabled {
   &,
   a:not(.is-link),
   button:not(.button) {
     &,
     &:hover,
     &:active {
-      .bal-list-item-title h5,
-      .bal-list-item-subtitle p {
+      .bal-list__item__title h5,
+      .bal-list__item__subtitle p {
         color: $blue-4 !important;
       }
 
-      .bal-list-item-icon {
+      .bal-list__item__icon {
         svg,
         svg g,
         svg path,
@@ -439,31 +439,31 @@ bal-list.has-border.is-in-main-nav .bal-list-item {
   }
 }
 
-bal-card > bal-list.p-0 {
-  bal-list-item:last-child {
+.bal-card > .bal-list.p-0 {
+  .bal-list__item:last-child {
     &:after {
       content: none !important;
     }
   }
 }
 
-.bal-list-item.is-accordion > div {
+.bal-list__item--accordion > div {
   flex-direction: column;
 }
 
-.bal-list-item-accordion-head {
-  bal-icon.trigger-icon {
+.bal-list__item__accordion-head {
+  .bal-list__item__accordion__head__icon {
     transition: transform 0.3s ease-in-out;
-  }
-
-  &.is-open bal-icon.trigger-icon {
-    bal-list:not(.is-in-main-nav) & {
-      transform: rotate(45deg);
-    }
   }
 }
 
-.bal-list-item-accordion-body {
+.bal-list__item__accordion-head--open .bal-list__item__accordion__head__icon {
+  .bal-list:not(.bal-list--context-main-nav) & {
+    transform: rotate(45deg);
+  }
+}
+
+.bal-list__item__accordion-body {
   margin: 0 !important;
   padding: 0 !important;
   min-height: 0 !important;
@@ -473,12 +473,12 @@ bal-card > bal-list.p-0 {
   transition: max-height 0.3s ease-in-out;
 }
 
-.bal-list.is-on-background-dark bal-list-item-accordion-body bal-list-item-content > p {
+.bal-list--background-dark .bal-list__item__accordion-body .bal-list__item__content > p {
   color: $white;
 }
 
-.bal-list-item.is-sub-accordion-item {
-  .bal-list-item-accordion-body {
+.bal-list__item.is-sub-accordion-item {
+  .bal-list__item__accordion-body {
     &:after {
       content: '';
       background: var(--bal-color-grey);
@@ -492,7 +492,7 @@ bal-card > bal-list.p-0 {
   }
 
   &:last-child {
-    .bal-list-item-accordion-body {
+    .bal-list__item__accordion-body {
       padding-top: 0;
 
       &:after {

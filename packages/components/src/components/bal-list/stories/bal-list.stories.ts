@@ -271,7 +271,7 @@ export const MetaAccordionList = args => ({
                   <bal-list-item-title>Accordion List Item</bal-list-item-title>
               </bal-list-item-content>
             </bal-list-item-accordion-head>
-            <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
+            <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
               <bal-list border meta-nav-accordion size="small">
                 <bal-list-item accordion sub-accordion-item>
                   <bal-list-item-accordion-head>
@@ -294,7 +294,7 @@ export const MetaAccordionList = args => ({
                   <bal-list-item-title>Accordion List Item 2</bal-list-item-title>
               </bal-list-item-content>
             </bal-list-item-accordion-head>
-            <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
+            <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
               <bal-list border meta-nav-accordion size="small">
                 <bal-list-item accordion sub-accordion-item>
                   <bal-list-item-accordion-head>

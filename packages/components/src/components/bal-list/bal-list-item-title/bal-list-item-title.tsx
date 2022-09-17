@@ -14,7 +14,7 @@ export class ListItemTitle {
 
   render() {
     return (
-      <Host class="bal-list-item-title">
+      <Host class="bal-list__item__title">
         <bal-heading level={this.level} space="none">
           <slot></slot>
         </bal-heading>

@@ -356,7 +356,7 @@ export class Navigation implements ComponentInterface {
                     <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
-                <bal-list-item-accordion-body class="bal-list-item-accordion-body__parent">
+                <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
                   <div>
                     {meta.link && (
                       <div class="bal-nav__main-mobile__link">
