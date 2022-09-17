@@ -452,12 +452,16 @@
 }
 
 .bal-list__item__accordion-head {
-  .bal-list__item__accordion__head__icon {
+  padding: 0 !important;
+}
+
+.bal-list__item__accordion-head {
+  .bal-list__item__accordion-head__icon {
     transition: transform 0.3s ease-in-out;
   }
 }
 
-.bal-list__item__accordion-head--open .bal-list__item__accordion__head__icon {
+.bal-list__item__accordion-head--open .bal-list__item__accordion-head__icon {
   .bal-list:not(.bal-list--context-main-nav) & {
     transform: rotate(45deg);
   }

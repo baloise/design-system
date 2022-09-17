@@ -48,15 +48,15 @@ export class ListItemAccordionHead {
       <Host
         class={{
           'bal-list__item': true,
-          'bal-list__item__accordion__head': true,
-          'bal-list__item__accordion__head--open': this.accordionOpen,
+          'bal-list__item__accordion-head': true,
+          'bal-list__item__accordion-head--open': this.accordionOpen,
         }}
         onClick={this.onClick}
       >
         <slot></slot>
         <bal-list-item-icon right>
           <bal-icon
-            class="bal-list__item__accordion__head__icon"
+            class="bal-list__item__accordion-head__icon"
             name={this.icon}
             size="small"
             turn={this.accordionOpen}
