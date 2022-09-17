@@ -194,6 +194,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
+        aria-focused={this.hasFocus ? 'true' : null}
         class={{
           ...block.class(),
         }}
@@ -210,6 +211,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           <bal-button
             size="small"
             square
+            data-testid="decrease"
             outlined={!this.invalid}
             icon="minus"
             color={this.invalid ? 'danger' : 'info'}
@@ -228,6 +230,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           </bal-text>
           <bal-button
             size="small"
+            data-testid="increase"
             square
             outlined={!this.invalid}
             icon="plus"

@@ -32,6 +32,7 @@ import './commands/custom/get.types'
 import './commands/custom/component.types'
 import './commands/custom/platform.types'
 import './commands/custom/visit.types'
+import './commands/custom/bal-input-stepper.types'
 
 import './commands/custom/bal-accordion.command'
 import './commands/custom/bal-datepicker.command'
@@ -48,6 +49,7 @@ import './commands/custom/get.command'
 import './commands/custom/component.command'
 import './commands/custom/platform.command'
 import './commands/custom/visit.command'
+import './commands/custom/bal-input-stepper.command'
 
 /**
  * Override Commands

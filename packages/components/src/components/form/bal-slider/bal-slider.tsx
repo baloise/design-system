@@ -114,11 +114,19 @@ export class Slider {
     }
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.value = this.initialValue
+      clearTimeout(this.resetHandlerTimer)
+      this.resetHandlerTimer = setTimeout(() => {
+        if (this.nativeInput) {
+          this.nativeInput.value = this.initialValue as string
+        }
+      }, 0)
     }
   }
 
