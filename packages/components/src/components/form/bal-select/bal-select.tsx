@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
-import { findItemLabel, isDescendant } from '../../../helpers/helpers'
+import { debounce, findItemLabel, isDescendant } from '../../../helpers/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -165,7 +165,6 @@ export class Select {
 
   @Watch('rawValue')
   rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
-    this.rawValue = newValue
     if (!areArraysEqual(newValue, oldValue || [])) {
       this.syncNativeInput()
       if (this.didInit && isHuman) {
@@ -292,13 +291,15 @@ export class Select {
   }
 
   connectedCallback() {
-    this.updateOptions()
-
-    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
-      this.updateOptions()
-    })
+    const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
 
     this.initialValue = this.value
+
+    debounceUpdateOptions()
+
+    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
+      debounceUpdateOptions()
+    })
   }
 
   disconnectedCallback() {
