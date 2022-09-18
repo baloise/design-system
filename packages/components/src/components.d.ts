@@ -1920,6 +1920,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the option.
          */
         "disabled": boolean;
+        "for": string;
         /**
           * Label will be shown in the input element when it got selected
          */
@@ -5405,6 +5406,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the option.
          */
         "disabled"?: boolean;
+        "for"?: string;
         /**
           * Label will be shown in the input element when it got selected
          */

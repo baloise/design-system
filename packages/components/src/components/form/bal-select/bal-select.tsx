@@ -336,7 +336,7 @@ export class Select {
         value: element.value,
         label: element.label,
         disabled: element.disabled,
-        id: element.id,
+        id: element.for,
         textContent: element.textContent,
         innerHTML: element.innerHTML,
       })
@@ -477,7 +477,7 @@ export class Select {
   }
 
   private getPopoverContent() {
-    return this.popoverElement.querySelector('.popover-content .inner')
+    return this.popoverElement.querySelector('.bal-popover__content__inner')
   }
 
   /********************************************************
