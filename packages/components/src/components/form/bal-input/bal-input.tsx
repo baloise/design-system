@@ -536,8 +536,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           accept={this.accept}
           inputMode={this.inputmode}
           autoCapitalize={this.autocapitalize}
-          autoComplete={this.autocomplete}
-          autoCorrect={this.autocorrect}
+          autocomplete={this.autocomplete}
+          autocorrect={this.autocorrect}
           autofocus={this.autofocus}
           min={this.min}
           max={this.max}

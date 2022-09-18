@@ -100,6 +100,11 @@ export class Select {
   @Prop() noBorder = false
 
   /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+
+  /**
    * @deprecated Enables the slide in animation for the option items.
    */
   @Prop() hasMovement = false
@@ -893,7 +898,7 @@ export class Select {
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
-                autocomplete={'off'}
+                autocomplete={this.autocomplete}
                 placeholder={this.inputPlaceholder}
                 readonly={!this.typeahead || this.disabled || this.readonly}
                 contentEditable={this.typeahead}

@@ -1811,6 +1811,10 @@ export namespace Components {
     }
     interface BalSelect {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": Props.BalInputAutocomplete;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
@@ -5299,6 +5303,10 @@ declare namespace LocalJSX {
         "verticalOnMobile"?: boolean;
     }
     interface BalSelect {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: Props.BalInputAutocomplete;
         /**
           * The tabindex of the control.
          */
