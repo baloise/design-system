@@ -4,9 +4,6 @@ $modal-breakpoint: $tablet !default
   padding: $size
   .bal-modal__header
     padding-bottom: $size
-  .bal-modal__header__close
-      right: $size
-      top: $size
 
 +block(modal)
   @extend %overlay
@@ -67,22 +64,43 @@ $modal-breakpoint: $tablet !default
     //
     // spacing
     +modalPadding(1rem)
+    .bal-modal__header__close
+      right: 1.2rem
+      top: .7rem
     +tablet
       +modalPadding(1.5rem)
+      .bal-modal__header__close
+        right: 1.6rem
+        top: 1.2rem
     +desktop
       +modalPadding(2.5rem)
+      .bal-modal__header__close
+        right: 2.7rem
+        top: 2.2rem
     //
     // sizes
     +modifier(has-spacing-small)
       +tablet
         +modalPadding(1rem)
+        .bal-modal__header__close
+          right: 1.1rem
+          top: .7rem
       +desktop
         +modalPadding(1rem)
+        .bal-modal__header__close
+          right: 1.1rem
+          top: .7rem
     +modifier(has-spacing-medium)
       +tablet
         +modalPadding(1.5rem)
+        .bal-modal__header__close
+          right: 1.6rem
+          top: 1.2rem
       +desktop
         +modalPadding(1.5rem)
+        .bal-modal__header__close
+          right: 1.6rem
+          top: 1.2rem
 
   +element(body)
     & > bal-button-group
