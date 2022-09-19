@@ -166,6 +166,7 @@ export class Pagination {
         <nav
           class={{
             ...elNav.class(),
+            ...elNav.modifier(`context-${this.interface}`).class(),
           }}
           role="navigation"
           aria-label="pagination"
