@@ -304,7 +304,6 @@ export class Select {
   connectedCallback() {
     const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
 
-    console.log('connectedCallback', this.value, this.rawValue, this.initialValue)
     this.initialValue = this.value
 
     debounceUpdateOptions()
