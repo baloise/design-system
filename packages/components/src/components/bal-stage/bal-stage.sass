@@ -1,6 +1,7 @@
 +block(stage)
   display: block
-  position: relative
+  position: static
+
   //
   // Color modifiers
   +modifier(is-purple)
@@ -14,7 +15,7 @@
 
   +block(stage-content)
     display: block
-    position: relative
+    position: static
 
     +block(stage-image)
       overflow: hidden
@@ -108,3 +109,6 @@
         +desktop
           right: 3rem
           bottom: -66px
+        // max-width(widescreen) + paddings
+        +from(1496px)
+          right: calc((100vw - var(--bal-stage-container-width)) / 2)
