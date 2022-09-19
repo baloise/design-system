@@ -1,10 +1,24 @@
 import docs from './bal-stage.docs.mdx'
 import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalStage } from '../../../../.storybook/vue/components'
+import {
+  BalStage,
+  BalStageBody,
+  BalStageImage,
+  BalStageBackLink,
+  BalButtonGroup,
+  BalButton,
+  BalHeading,
+  BalText,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Stage',
   component: BalStage,
+  subcomponents: {
+    BalStageBody,
+    BalStageImage,
+    BalStageBackLink,
+  },
   argTypes: {
     ...withContent(),
   },
@@ -16,7 +30,7 @@ export default component.story
 const excludedControls = ['hasShape']
 
 export const SimpleStage = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalHeading },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
   <bal-stage-body>
@@ -38,7 +52,7 @@ SimpleStage.parameters = {
 }
 
 export const SmallStage = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalHeading },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
   <bal-stage-body>
@@ -60,7 +74,7 @@ SmallStage.parameters = {
 }
 
 export const LargeStage = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalHeading },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
   <bal-stage-body>
@@ -83,14 +97,14 @@ LargeStage.parameters = {
 }
 
 export const StageWithImage = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalButtonGroup, BalButton, BalHeading, BalText },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
   <bal-stage-image src-set="https://via.placeholder.com/768x250 768w, https://via.placeholder.com/1536x500 1536w, https://via.placeholder.com/1023x300 1023w, https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg 2400w"></bal-stage-image>
   <bal-stage-body>
     <bal-stage-back-link href="#" class="mb-5" shadow inverted>Zurück</bal-stage-back-link>
     <bal-heading class="mb-8" space="none" shadow inverted>{{ args.content }}</bal-heading>
-    <bal-heading space="none" level="h5"shadow inverted>Pensionsplanungsevent</bal-heading>
+    <bal-heading space="none" level="h5" shadow inverted>Pensionsplanungsevent</bal-heading>
     <bal-text inverted shadow>
       Auch wenn Ihre Pensionierung noch in weiter Ferne liegt, die grundlegenden Fragen dazu lohnt es sich bereits heute zu stellen.
     </bal-text>
