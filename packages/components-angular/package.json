@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-angular",
-  "version": "10.21.1",
+  "version": "10.21.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.21.1",
+    "@baloise/design-system-next-components": "10.21.2",
     "tslib": "^2.2.0"
   },
   "peerDependencies": {

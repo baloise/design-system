@@ -85,6 +85,11 @@ export class Select {
   @Prop() multiple = false
 
   /**
+   * Defines the max length of the value.
+   */
+  @Prop() maxLength?: number
+
+  /**
    * This label is shown if typeahead is active and all the options are filtered out.
    */
   @Prop() noDataLabel?: string
@@ -93,6 +98,11 @@ export class Select {
    * @deprecated  Removes the border of the input.
    */
   @Prop() noBorder = false
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
 
   /**
    * @deprecated Enables the slide in animation for the option items.
@@ -888,11 +898,12 @@ export class Select {
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
-                autocomplete={'off'}
+                autocomplete={this.autocomplete}
                 placeholder={this.inputPlaceholder}
                 readonly={!this.typeahead || this.disabled || this.readonly}
                 contentEditable={this.typeahead}
                 disabled={this.disabled}
+                maxLength={this.maxLength}
                 tabindex={this.balTabindex}
                 onInput={this.handleInput}
                 onClick={this.handleInputClick}

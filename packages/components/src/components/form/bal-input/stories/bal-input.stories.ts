@@ -39,8 +39,6 @@ const component = BalComponentStory({
 export default component.story
 
 const excludedControls = [
-  'autocomplete',
-  'autoComplete',
   'multiple',
   'spellcheck',
   'autocorrect',

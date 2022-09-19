@@ -1815,6 +1815,10 @@ export namespace Components {
     }
     interface BalSelect {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": Props.BalInputAutocomplete;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
@@ -1858,6 +1862,10 @@ export namespace Components {
           * Defines if the select is in a loading state.
          */
         "loading": boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
         /**
           * If `true` multiple option can be selected
          */
@@ -2035,7 +2043,7 @@ export namespace Components {
          */
         "icon": string;
         /**
-          * The message of the snackbar
+          * The message of the snackbar as html content
          */
         "message": string;
         /**
@@ -5304,6 +5312,10 @@ declare namespace LocalJSX {
     }
     interface BalSelect {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: Props.BalInputAutocomplete;
+        /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
@@ -5331,6 +5343,10 @@ declare namespace LocalJSX {
           * Defines if the select is in a loading state.
          */
         "loading"?: boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number;
         /**
           * If `true` multiple option can be selected
          */
@@ -5532,7 +5548,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * The message of the snackbar
+          * The message of the snackbar as html content
          */
         "message"?: string;
         /**
