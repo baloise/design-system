@@ -4,6 +4,7 @@ describe('Select', () => {
   })
 
   it('should select label or value', () => {
+    cy.getByTestId('select').should('have.value', '2000')
     cy.getByTestId('select').click().select('1995').should('have.value', '1995')
     cy.getByTestId('select').click().select('v1996').should('have.value', '1996')
   })
