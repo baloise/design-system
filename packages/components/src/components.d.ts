@@ -1552,6 +1552,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Defines the layout of the pagination
+         */
+        "interface": Props.BalPaginationInterface;
+        /**
           * Go to the next page
          */
         "next": () => Promise<void>;
@@ -5036,6 +5040,10 @@ declare namespace LocalJSX {
           * Disables component
          */
         "disabled"?: boolean;
+        /**
+          * Defines the layout of the pagination
+         */
+        "interface"?: Props.BalPaginationInterface;
         /**
           * Triggers when a page change happens
          */

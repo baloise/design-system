@@ -3,7 +3,6 @@
   +element(container)
     display: block
     position: relative
-    // width: 100%
     overflow: hidden
     border-radius: 4px
 
@@ -32,42 +31,3 @@
           height: 100%
           width: 100%
           object-fit: cover
-
-  +element(controls)
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 200px
-    margin: auto
-
-    +element(navigation)
-      margin-top: 1rem
-      &[disabled]
-        button,
-        button:hover
-          background-color: transparent
-
-    +element(dots)
-      display: flex
-      justify-content: center
-      align-items: center
-      height: 24px
-      max-width: 88px
-      min-width: 63px
-      margin: 14px 20px 0
-      padding: 8px
-      gap: 8px
-      background: #e8e8e8
-      border-radius: 4px
-
-      +element(dot)
-        cursor: pointer
-        height: 8px
-        width: 8px
-        gap: 30px
-        border-radius: 50%
-        display: inline-block
-        +modifier(active)
-          background-color: var(--bal-color-primary)
-        +modifier(inactive)
-          background-color: var(--bal-color-white)
