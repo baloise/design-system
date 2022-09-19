@@ -35,7 +35,6 @@ export class ListItemAccordionBody {
         parent.style.maxHeight = parentHeight + inner.scrollHeight + 'px'
       }
     }
-    console.log('calcContentHeight', inner, this.contentHeight)
   }
 
   render() {
