@@ -176,6 +176,7 @@ export class Select {
   @Watch('rawValue')
   rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
     if (!areArraysEqual(newValue, oldValue || [])) {
+      this.rawValue = newValue
       this.syncNativeInput()
       if (this.didInit && isHuman) {
         if (this.multiple) {
@@ -619,7 +620,9 @@ export class Select {
    ********************************************************/
 
   private updateRawValue(isHuman = true) {
+    const oldValue = [...(this.rawValue || [])]
     let newValue: string[] = []
+
     if (!isNil(this.value)) {
       if (isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
@@ -632,7 +635,8 @@ export class Select {
       }
     }
 
-    this.rawValueWatcher(newValue, this.rawValue, isHuman)
+    // trigger the raw value change
+    this.rawValueWatcher(newValue, oldValue, isHuman)
   }
 
   private blurSelect() {
