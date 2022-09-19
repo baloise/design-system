@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
 import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../types'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-list-item',
@@ -82,17 +83,25 @@ export class ListItem {
   }
 
   render() {
+    const itemEl = BEM.block('list').element('item')
+
+    const basicClasses = {
+      ...itemEl.class(),
+      ...itemEl.modifier('disabled').class(this.disabled),
+      ...itemEl.modifier('selected').class(this.selected),
+      ...itemEl.modifier('accordion').class(this.accordion),
+      ...itemEl.modifier('sub-accordion').class(this.subAccordionItem),
+      ...itemEl
+        .modifier('clickable')
+        .class(!this.disabled && (this.clickable || this.href.length > 0 || this.accordion)),
+    }
+
     if (this.href.length > 0 && !this.disabled) {
       return (
         <Host
           role="listitem"
           class={{
-            'bal-list-item': true,
-            'is-accordion': this.accordion,
-            'is-sub-accordion-item': this.subAccordionItem,
-            'is-disabled': this.disabled,
-            'is-selected': this.selected,
-            'is-list-item-clickable': this.clickable || this.href.length > 0,
+            ...basicClasses,
           }}
         >
           <a
@@ -113,10 +122,7 @@ export class ListItem {
         <Host
           role="listitem"
           class={{
-            'bal-list-item': true,
-            'is-disabled': this.disabled,
-            'is-selected': this.selected,
-            'is-list-item-clickable': this.clickable || this.href.length > 0,
+            ...basicClasses,
           }}
         >
           <button
@@ -136,9 +142,7 @@ export class ListItem {
         <Host
           role="listitem"
           class={{
-            'bal-list-item is-accordion is-list-item-clickable': true,
-            'is-disabled': this.disabled,
-            'is-sub-accordion-item': this.subAccordionItem,
+            ...basicClasses,
           }}
           onClick={(event: MouseEvent) => {
             stopEventBubbling(event)
@@ -156,10 +160,7 @@ export class ListItem {
       <Host
         role="listitem"
         class={{
-          'bal-list-item': true,
-          'is-disabled': this.disabled,
-          'is-selected': this.selected,
-          'is-list-item-clickable': this.clickable || this.href.length > 0,
+          ...basicClasses,
         }}
       >
         <div>

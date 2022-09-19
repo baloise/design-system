@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-list border data-testid="basic">
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Title</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
+                  neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates? Minus
+                  quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
+                  laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere, eaque magni
+                  vero incidunt iusto voluptates? Minus quis temporibus consequatur?
+                </bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item disabled>
+              <bal-list-item-content>
+                <bal-list-item-title>Disabled item</bal-list-item-title>
+                <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-icon>
+                <bal-icon name="file"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Document</bal-list-item-title>
+                <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right>
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+            <bal-list-item disabled>
+              <bal-list-item-icon>
+                <bal-icon name="file"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Disabled Document</bal-list-item-title>
+                <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right>
+                <bal-icon name="download" size="small"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head>
+                <bal-list-item-icon>
+                  <bal-icon name="location"></bal-icon>
+                </bal-list-item-icon>
+                <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                  <bal-list-item-subtitle>With subtitle</bal-list-item-subtitle>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <p class="pb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum.
+                </p>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head>
+                <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item 2</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
+                <bal-list border meta-nav-accordion size="small">
+                  <bal-list-item accordion sub-accordion-item>
+                    <bal-list-item-accordion-head>
+                      <bal-list-item-content>
+                        <bal-list-item-title>Sub Accordion List Item 2</bal-list-item-title>
+                      </bal-list-item-content>
+                    </bal-list-item-accordion-head>
+                    <bal-list-item-accordion-body>
+                      <p class="pb-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </p>
+                    </bal-list-item-accordion-body>
+                  </bal-list-item>
+                </bal-list>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          </bal-list>
+        </section>
+
+        <bal-heading>Sizes</bal-heading>
+        <section data-testid="sizes">
+          <bal-list border size="small" data-testid="small">
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Title</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+
+          <bal-list border size="large" data-testid="large">
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Title</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </section>
+
+        <bal-heading>Backgrounds</bal-heading>
+        <section data-testid="backgrounds">
+          <div class="p-4 has-background-green">
+            <bal-list border background="color" data-testid="small">
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Title</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item>
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Two-line item</bal-list-item-title>
+                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+                </bal-list-item-content>
+              </bal-list-item>
+            </bal-list>
+          </div>
+          <div class="p-4 has-background-primary">
+            <bal-list border background="dark" data-testid="small">
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Title</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item>
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Two-line item</bal-list-item-title>
+                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+                </bal-list-item-content>
+              </bal-list-item>
+            </bal-list>
+          </div>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core'
 export class ListItemSubtitle {
   render() {
     return (
-      <Host class="bal-list-item-subtitle">
+      <Host class="bal-list__item__subtitle">
         <bal-text size="small" space="none">
           <slot></slot>
         </bal-text>

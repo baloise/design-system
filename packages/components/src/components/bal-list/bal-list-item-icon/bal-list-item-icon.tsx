@@ -11,7 +11,12 @@ export class ListItemIcon {
 
   render() {
     return (
-      <Host class={['bal-list-item-icon', this.right ? 'is-right' : ''].join(' ')}>
+      <Host
+        class={{
+          'bal-list__item__icon': true,
+          'bal-list__item__icon--right': this.right,
+        }}
+      >
         <slot></slot>
       </Host>
     )
