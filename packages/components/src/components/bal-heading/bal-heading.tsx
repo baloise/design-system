@@ -33,9 +33,14 @@ export class Heading {
   @Prop() color: Props.BalHeadingColor = ''
 
   /**
-   * If `true` the button is inverted
+   * If `true` the color gets inverted for dark backgrounds
    */
   @Prop() inverted = false
+
+  /**
+   * If `true` adds a text shadow to improve readability on image background
+   * */
+  @Prop() shadow = false
 
   get fontSize(): string {
     const isHeading = (size: string) => size.startsWith('h')
@@ -94,6 +99,7 @@ export class Heading {
             'data-test-heading': true,
             'title': this.subtitle === false,
             'subtitle': this.subtitle === true,
+            'has-blur-shadow': this.shadow,
             [this.fontSize]: true,
             [this.fontColor]: true,
           }}

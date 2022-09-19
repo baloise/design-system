@@ -35,6 +35,16 @@ export class Text {
    */
   @Prop() space: Props.BalTextSpace = ''
 
+  /**
+   * If `true` the color gets inverted for dark backgrounds
+   */
+  @Prop() inverted = false
+
+  /**
+   * If `true` adds a text shadow to improve readability on image background
+   * */
+  @Prop() shadow = false
+
   get spacing(): string {
     switch (this.space) {
       case 'all':
@@ -56,12 +66,14 @@ export class Text {
       <Host style={{ display: this.inline ? 'inline' : 'block' }} class={{ [this.spacing]: true }}>
         <Text
           class={{
-            [`has-text-${this.color}`]: this.color !== '',
+            [`has-text-${this.color === '' ? 'primary' : this.color}${this.inverted ? '-inverted' : ''}`]:
+              this.color !== '' || this.inverted,
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-block': this.size === 'block',
             'is-bold': this.bold,
             'is-family-title': this.heading,
+            'has-blur-shadow': this.shadow,
             'm-0': true,
           }}
         >

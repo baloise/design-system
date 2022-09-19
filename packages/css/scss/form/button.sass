@@ -40,6 +40,11 @@
     text-align: center
   &::-moz-focus-inner
     border: 0
+  // Shadow
+  &.has-blur-shadow:not(&.is-link)
+    box-shadow: $button-shadow
+  &.has-blur-shadow.is-link
+    text-shadow: $text-shadow
   // Icons
   .icon-left,
   .icon-right

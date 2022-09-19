@@ -148,6 +148,10 @@ export namespace Components {
          */
         "rounded": boolean;
         /**
+          * If `true` adds a box shadow to improve readability on image background
+         */
+        "shadow": boolean;
+        /**
           * Size of the button
          */
         "size": Props.BalButtonSize;
@@ -814,13 +818,17 @@ export namespace Components {
          */
         "color": Props.BalHeadingColor;
         /**
-          * If `true` the button is inverted
+          * If `true` the color gets inverted for dark backgrounds
          */
         "inverted": boolean;
         /**
           * The actual heading level used in the HTML markup.
          */
         "level": Props.BalHeadingLevel;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow": boolean;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -877,6 +885,10 @@ export namespace Components {
           * Name of the baloise icon.
          */
         "name": string;
+        /**
+          * If `true` adds a box shadow to improve readability on image background
+         */
+        "shadow": boolean;
         /**
           * Defines the size of the icon.
          */
@@ -2109,6 +2121,14 @@ export namespace Components {
           * Specifies the URL of the page the link goes to
          */
         "href": string;
+        /**
+          * If `true` the color gets inverted for dark backgrounds
+         */
+        "inverted": boolean;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow": boolean;
     }
     interface BalStageBody {
     }
@@ -2299,6 +2319,14 @@ export namespace Components {
           * If `true` the text is shown as a display inline
          */
         "inline": boolean;
+        /**
+          * If `true` the color gets inverted for dark backgrounds
+         */
+        "inverted": boolean;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow": boolean;
         /**
           * Defines the size of the paragraph
          */
@@ -3583,6 +3611,10 @@ declare namespace LocalJSX {
          */
         "rounded"?: boolean;
         /**
+          * If `true` adds a box shadow to improve readability on image background
+         */
+        "shadow"?: boolean;
+        /**
           * Size of the button
          */
         "size"?: Props.BalButtonSize;
@@ -4272,13 +4304,17 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalHeadingColor;
         /**
-          * If `true` the button is inverted
+          * If `true` the color gets inverted for dark backgrounds
          */
         "inverted"?: boolean;
         /**
           * The actual heading level used in the HTML markup.
          */
         "level"?: Props.BalHeadingLevel;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow"?: boolean;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -4323,6 +4359,10 @@ declare namespace LocalJSX {
           * Name of the baloise icon.
          */
         "name"?: string;
+        /**
+          * If `true` adds a box shadow to improve readability on image background
+         */
+        "shadow"?: boolean;
         /**
           * Defines the size of the icon.
          */
@@ -5623,6 +5663,14 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href": string;
+        /**
+          * If `true` the color gets inverted for dark backgrounds
+         */
+        "inverted"?: boolean;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow"?: boolean;
     }
     interface BalStageBody {
     }
@@ -5812,6 +5860,14 @@ declare namespace LocalJSX {
           * If `true` the text is shown as a display inline
          */
         "inline"?: boolean;
+        /**
+          * If `true` the color gets inverted for dark backgrounds
+         */
+        "inverted"?: boolean;
+        /**
+          * If `true` adds a text shadow to improve readability on image background
+         */
+        "shadow"?: boolean;
         /**
           * Defines the size of the paragraph
          */

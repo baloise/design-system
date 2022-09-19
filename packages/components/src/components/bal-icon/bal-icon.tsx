@@ -44,6 +44,11 @@ export class Icon {
    */
   @Prop() turn = false
 
+  /**
+   * If `true` adds a box shadow to improve readability on image background
+   * */
+  @Prop() shadow = false
+
   private get svgContent() {
     if (balIcons && this.name && this.name.length > 0) {
       // We are doing this to avoid breaking change.
@@ -77,6 +82,7 @@ export class Icon {
           ...block.class(),
           ...block.modifier('is-inverted').class(this.inverted),
           ...block.modifier('is-inline').class(this.inline),
+          ...block.modifier('shadow').class(this.shadow),
           ...block.modifier(`is-${this.size}`).class(!!this.size),
           ...block.modifier(`is-${color}`).class(),
         }}
