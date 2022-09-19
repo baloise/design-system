@@ -229,7 +229,7 @@ export const WithGrid = args => ({
           </bal-field-control>
         </bal-field>
       </bal-form-col>
-      </bal-form-col>
+      </bal-form-grid>
     </form>
   </bal-card-content>
   <bal-card-actions position="right">
