@@ -40,11 +40,18 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
   }
 
   if (isSelect(element)) {
-    return cy
-      .wrap(element)
-      .then($el => ($el as any)[0].clear())
-      .wrap(element)
+    return command('.bal-select__control__input')
   }
+
+  // if (isSelect(element)) {
+  //   return cy
+  //     .wrap(element)
+  //     .then($el => {
+  //       console.log($el)
+  //       ;($el as any)[0].clear()
+  //     })
+  //     .wrap(element)
+  // }
 
   return originalFn(element, options)
 })

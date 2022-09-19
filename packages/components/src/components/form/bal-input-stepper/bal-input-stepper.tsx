@@ -92,7 +92,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    * The value of the input. Only allows values in the range of the min max attribute.
    */
   @Prop({ mutable: true }) value = 0
-  initialValue = this.value
+  private initialValue = 0
 
   /**
    * Emitted when the input value has changed.
@@ -130,6 +130,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+    this.initialValue = this.value
   }
 
   componentWillLoad() {
@@ -193,6 +194,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
+        aria-focused={this.hasFocus ? 'true' : null}
         class={{
           ...block.class(),
         }}
@@ -209,6 +211,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           <bal-button
             size="small"
             square
+            data-testid="decrease"
             outlined={!this.invalid}
             icon="minus"
             color={this.invalid ? 'danger' : 'info'}
@@ -227,6 +230,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           </bal-text>
           <bal-button
             size="small"
+            data-testid="increase"
             square
             outlined={!this.invalid}
             icon="plus"

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-select has-movement id="bal-select-year" placeholder="Try finding a year" data-testid="select">
+            <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+            <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+            <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+            <bal-select-option value="v1999" label="1999">1999</bal-select-option>
+            <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+          </bal-select>
+          <br />
+          <bal-select disabled data-testid="select-disabled" placeholder="Disabled"></bal-select>
+        </section>
+
+        <bal-heading>Typeahead</bal-heading>
+        <section>
+          <bal-select
+            id="bal-select-typeahaed"
+            typeahead
+            inverted
+            placeholder="Try finding your hero"
+            no-data-label="No option available"
+            data-testid="typeahead"
+          >
+            <bal-select-option value="BlackWidow" label="Black Widow">
+              <b style="display: block">Black Widow</b>
+              <span>S.H.I.E.L.D.</span>
+            </bal-select-option>
+            <bal-select-option value="BlackPanter" label="Black Panter">
+              <b style="display: block">Black Panter</b>
+              <span>Wakanda</span>
+            </bal-select-option>
+            <bal-select-option value="IronMan" label="Iron Man">
+              <b style="display: block">Iron Man</b>
+              <span>Malibu</span>
+            </bal-select-option>
+            <bal-select-option value="SpiderMan" label="Spider Man">
+              <b style="display: block">Spider Man</b>
+              <span>Queens</span>
+            </bal-select-option>
+            <bal-select-option value="CaptainAmerica" label="Captain America">
+              <b style="display: block">Captain America</b>
+              <span>Broklyn</span>
+            </bal-select-option>
+            <bal-select-option value="Thor" label="Thor God of Thunder">
+              <b style="display: block">Thor God of Thunder</b>
+              <span>Asgard</span>
+            </bal-select-option>
+          </bal-select>
+        </section>
+
+        <bal-heading>Multi-Select</bal-heading>
+        <section>
+          <bal-select multiple placeholder="Try finding your hero" data-testid="multiple">
+            <bal-select-option checkbox value="BlackWidow" label="Black Widow">
+              <b style="display: block">Black Widow</b>
+              <span>S.H.I.E.L.D.</span>
+            </bal-select-option>
+            <bal-select-option checkbox value="BlackPanter" label="Black Panter">
+              <b style="display: block">Black Panter</b>
+              <span>Wakanda</span>
+            </bal-select-option>
+            <bal-select-option checkbox value="IronMan" label="Iron Man">
+              <b style="display: block">Iron Man</b>
+              <span>Malibu</span>
+            </bal-select-option>
+            <bal-select-option checkbox value="SpiderMan" label="Spider Man">
+              <b style="display: block">Spider Man</b>
+              <span>Queens</span>
+            </bal-select-option>
+            <bal-select-option checkbox value="CaptainAmerica" label="Captain America">
+              <b style="display: block">Captain America</b>
+              <span>Broklyn</span>
+            </bal-select-option>
+            <bal-select-option checkbox value="Thor" label="Thor God of Thunder">
+              <b style="display: block">Thor God of Thunder</b>
+              <span>Asgard</span>
+            </bal-select-option>
+          </bal-select>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

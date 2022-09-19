@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-input-stepper data-testid="basic"></bal-input-stepper>
+          <br />
+          <bal-input-stepper data-testid="disabled" disabled></bal-input-stepper>
+        </section>
+
+        <bal-heading>Form Reset</bal-heading>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-input-stepper data-testid="reset" value="2"></bal-input-stepper>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

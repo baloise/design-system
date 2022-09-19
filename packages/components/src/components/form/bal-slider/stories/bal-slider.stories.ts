@@ -14,7 +14,6 @@ const component = BalComponentStory({
   title: 'Components/Form/Slider',
   component: BalSlider,
   docs,
-  status: 'beta',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {

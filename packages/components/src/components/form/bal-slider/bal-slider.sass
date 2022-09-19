@@ -1,0 +1,174 @@
++block(slider)
+  display: block
+  position: relative
+  width: 100%
+  flex: 1
+  font-family: var(--bal-font-family-text)
+  flex-direction: column
+  min-height: 3rem
+
+  //
+  // Backgrounds
+  +element(background)
+    position: absolute
+    top: 1rem
+    left: 0px
+    right: 0px
+    z-index: 0
+    border-radius: var(--bal-radius-rounded)
+    background: var(--bal-color-green-3)
+    height: 1rem
+    width: 100%
+    overflow: hidden
+
+    +elements(upper, lower)
+      position: absolute
+      top: 0
+      width: 50%
+      margin: 0
+      cursor: pointer
+
+      > div
+        height: 1rem
+        border-radius: none
+
+    +element(upper)
+      right: 0px
+      > div
+        background: var(--bal-color-green-3)
+        border-top-right-radius: var(--bal-radius-rounded)
+        border-bottom-right-radius: var(--bal-radius-rounded)
+
+    +element(lower)
+      left: 0px
+      > div
+        background: var(--bal-color-green-5)
+        border-top-left-radius: var(--bal-radius-rounded)
+        border-bottom-left-radius: var(--bal-radius-rounded)
+
+    &--disabled
+      cursor: default
+      pointer-events: none
+      background: var(--bal-color-grey-2)
+      .bal-slider__background__upper__inner
+        background: var(--bal-color-grey-2)
+      .bal-slider__background__lower__inner
+        background: var(--bal-color-grey-4)
+
+  //
+  // Native input element
+  +element(input)
+    display: flex
+    flex: 1
+    min-height: 3rem
+    +element(native)
+      -webkit-appearance: none
+      margin: 0
+      background: transparent
+      z-index: 1
+      outline: none
+      min-width: 200px
+      width: 100%
+
+      &::-webkit-slider-runnable-track
+        width: 100%
+        cursor: pointer
+        border: none
+
+      &::-webkit-slider-thumb
+        box-shadow: none
+        border: 3px solid var(--bal-color-primary-inverted)
+        height: 1rem
+        width: 1rem
+        border-radius: var(--bal-radius-rounded)
+        background: var(--bal-color-primary)
+        cursor: pointer
+        -webkit-appearance: none
+
+      &:focus-visible
+        outline: none
+
+        &::-webkit-slider-thumb
+          background: var(--bal-color-primary)
+          border: 2px solid var(--bal-color-primary)
+
+      &::-moz-range-track
+        cursor: pointer
+        box-shadow: none
+        background: transparent
+        width: 100%
+        border: none
+        z-index: 2
+
+      &::-moz-range-thumb
+        box-shadow: none
+        border: 3px solid var(--bal-color-primary-inverted)
+        height: 10px
+        width: 10px
+        border-radius: var(--bal-radius-rounded)
+        background: var(--bal-color-primary)
+        cursor: pointer
+
+      &::-ms-track
+        cursor: pointer
+        box-shadow: none
+        background: transparent
+        width: 100%
+        border: none
+        z-index: 2
+
+      &::-ms-fill-lower
+        background: transparent
+        border: none
+        box-shadow: none
+
+      &::-ms-fill-upper
+        background: transparent
+        border: none
+        box-shadow: none
+
+      &::-ms-thumb
+        box-shadow: none
+        border: 3px solid var(--bal-color-primary-inverted)
+        height: 1rem
+        width: 1rem
+        border-radius: var(--bal-radius-rounded)
+        background: var(--bal-color-primary)
+        cursor: pointer
+        -webkit-appearance: none
+        z-index: 2
+
+      &:focus::-ms-fill-lower
+        background: transparent
+
+      &:focus::-ms-fill-upper
+        background: transparent
+
+      +modifier(disabled)
+        &::-webkit-slider-thumb
+          background: var(--bal-color-grey-5)
+
+        &::-ms-thumb
+          background: var(--bal-color-grey-5)
+
+        &::-moz-range-thumb
+          background: var(--bal-color-grey-5)
+
+  //
+  // step elements below the input
+  +element(steps)
+    display: flex
+    flex: 1
+    min-height: .5rem
+    margin: -10px 8px
+    justify-content: space-between
+    +element(item)
+      width: 0.125rem
+      border-radius: var(--bal-radius-rounded)
+      background-color: var(--bal-color-primary)
+      +modifier(disabled)
+        background: var(--bal-color-grey-4)
+
+@-moz-document url-prefix()
+  .bal-slider__steps
+    margin: 0 8px !important

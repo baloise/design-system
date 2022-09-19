@@ -37,7 +37,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['loading', 'multiple', 'name', 'hasMovement', 'noBorder', 'inverted']
+const excludedControls = ['loading', 'name', 'hasMovement', 'noBorder', 'inverted']
 
 export const Basic = args => ({
   components: { ...component.components },

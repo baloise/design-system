@@ -75,7 +75,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   /**
    * If `true`, the radio is selected.
    */
-  @Prop({ mutable: true }) checked = false
+  @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -130,14 +130,6 @@ export class Radio implements ComponentInterface, FormInput<any> {
       (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))
     ) {
       stopEventBubbling(ev)
-    }
-  }
-
-  @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
-    if (formElement?.contains(this.el)) {
-      this.checked = false
     }
   }
 

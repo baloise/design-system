@@ -6,6 +6,6 @@ export class CheckboxPage {
   multiSelect = MultiSelectButtonAccessor(byTestId('multi-select'))
 
   open() {
-    cy.page('/components/form/bal-checkbox')
+    cy.page('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
   }
 }

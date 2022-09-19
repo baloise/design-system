@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-checkbox data-testid="checkbox-normal">Label <b>Bold</b></bal-checkbox>
+          <bal-checkbox value="true">Checked</bal-checkbox>
+          <bal-checkbox disabled data-testid="checkbox-disabled">Disabled</bal-checkbox>
+        </section>
+
+        <bal-heading>Form Reset</bal-heading>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-checkbox data-testid="checkbox-reset" checked>Checkbox</bal-checkbox>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
+
+        <bal-heading>Group</bal-heading>
+        <section>
+          <bal-checkbox-group data-testid="multi-select">
+            <bal-checkbox value="A">Label</bal-checkbox>
+            <bal-checkbox value="B">Checked</bal-checkbox>
+            <bal-checkbox value="C" disabled>Disabled</bal-checkbox>
+          </bal-checkbox-group>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

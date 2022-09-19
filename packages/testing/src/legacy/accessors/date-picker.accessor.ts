@@ -41,7 +41,7 @@ export const DatePickerOpenableMixin: Mixin = <T>({ selector, creator }: MixinCo
 export const DatePickerShouldHaveValueAssertableMixin: Mixin = ({ selector, creator }) => ({
   shouldHaveValue: (date: Date) => {
     const day = `${date.getDate()}`
-    const month = `${date.getDate()}`
+    const month = `${date.getMonth() + 1}`
     const pad = (text: string) => (text.length === 1 ? `0${text}` : text)
     cy.get(selector).should('have.value', `${pad(day)}.${pad(month)}.${date.getFullYear()}`)
     return creator()

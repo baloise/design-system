@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
-import { findItemLabel, isDescendant } from '../../../helpers/helpers'
+import { debounce, findItemLabel, isDescendant } from '../../../helpers/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -42,6 +42,7 @@ export class Select {
   @Element() private el!: HTMLElement
 
   private inputElement!: HTMLInputElement
+  private nativeSelectEl!: HTMLSelectElement
   private popoverElement!: HTMLBalPopoverElement
   private selectionEl!: HTMLDivElement
   private didInit = false
@@ -49,7 +50,7 @@ export class Select {
   private clearScrollToValue!: NodeJS.Timeout
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
-  private initialValue = this.value
+  private initialValue?: string | string[] = []
 
   @State() hasFocus = false
   @State() inputValue = ''
@@ -174,7 +175,6 @@ export class Select {
 
   @Watch('rawValue')
   rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
-    this.rawValue = newValue
     if (!areArraysEqual(newValue, oldValue || [])) {
       this.syncNativeInput()
       if (this.didInit && isHuman) {
@@ -237,12 +237,26 @@ export class Select {
     }
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = this.initialValue
-      this.updateRawValue(false)
+      if (this.resetHandlerTimer) {
+        clearTimeout(this.resetHandlerTimer)
+      }
+
+      this.resetHandlerTimer = setTimeout(() => {
+        this.value = this.initialValue
+        this.updateRawValue(false)
+        this.syncNativeInput()
+
+        if (this.nativeSelectEl) {
+          const options = Array.from(this.nativeSelectEl.options)
+          options.forEach(o => (o.selected = true))
+        }
+      }, 0)
     }
   }
 
@@ -287,10 +301,14 @@ export class Select {
   }
 
   connectedCallback() {
-    this.updateOptions()
+    const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
+
+    this.initialValue = this.value
+
+    debounceUpdateOptions()
 
     this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
-      this.updateOptions()
+      debounceUpdateOptions()
     })
   }
 
@@ -328,7 +346,7 @@ export class Select {
         value: element.value,
         label: element.label,
         disabled: element.disabled,
-        id: element.id,
+        id: element.for,
         textContent: element.textContent,
         innerHTML: element.innerHTML,
       })
@@ -350,12 +368,15 @@ export class Select {
     }
   }
 
+  private setFocusTimer?: NodeJS.Timer
+
   /**
    * Sets the focus on the input element
    */
   @Method()
   async setFocus() {
-    setTimeout(() => {
+    clearTimeout(this.setFocusTimer)
+    this.setFocusTimer = setTimeout(() => {
       if (this.inputElement && !this.disabled) {
         this.inputElement.focus()
       }
@@ -466,13 +487,13 @@ export class Select {
   }
 
   private getPopoverContent() {
-    return this.popoverElement.querySelector('.popover-content .inner')
+    return this.popoverElement.querySelector('.bal-popover__content__inner')
   }
 
   /********************************************************
    * FOCUS
    ********************************************************/
-
+  private updateFocusTimer?: NodeJS.Timer
   private updateFocus() {
     if (this.focusIndex < 0) {
       this.focusIndex = 0
@@ -488,7 +509,8 @@ export class Select {
       if (option && option.id) {
         const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
         if (focusedElement) {
-          setTimeout(() => {
+          clearTimeout(this.updateFocusTimer)
+          this.updateFocusTimer = setTimeout(() => {
             this.scrollToFocusedOption(focusedElement)
           }, 0)
         }
@@ -603,7 +625,7 @@ export class Select {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
         if (this.value.split('').includes(',')) {
-          newValue = [...this.value.split(',')]
+          newValue = [...this.value.split(',').map(v => v.trim())]
         } else {
           newValue = [this.value]
         }
@@ -668,11 +690,17 @@ export class Select {
     }
   }
 
+  private updateInputValueTimer?: NodeJS.Timer
   private updateInputValue(value: string) {
-    if (!isNil(this.inputElement)) {
-      this.inputElement.value = value
-      this.inputValue = value
+    if (this.updateInputValueTimer) {
+      clearTimeout(this.updateInputValueTimer)
     }
+    this.updateInputValueTimer = setTimeout(() => {
+      if (!isNil(this.inputElement)) {
+        this.inputElement.value = value
+        this.inputValue = value
+      }
+    }, 0)
   }
 
   private syncNativeInput() {
@@ -851,6 +879,7 @@ export class Select {
           multiple={this.multiple}
           required={this.required}
           tabindex={-1}
+          ref={el => (this.nativeSelectEl = el as HTMLSelectElement)}
         >
           {valuesArray.map((value: string) => (
             <option value={value} selected>

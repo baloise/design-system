@@ -32,6 +32,7 @@ export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
 export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
 export const isHeading: isElementType = el => isElement(el, 'BAL-HEADING')
 export const isText: isElementType = el => isElement(el, 'BAL-TEXT')
+export const isInputStepper: isElementType = el => isElement(el, 'BAL-INPUT-STEPPER')
 
 /**
  * Selectors
@@ -66,7 +67,7 @@ export const selectors = {
     main: '> textarea',
   },
   slider: {
-    main: 'input.slider',
+    main: 'input',
   },
   modal: {
     main: 'div.modal',

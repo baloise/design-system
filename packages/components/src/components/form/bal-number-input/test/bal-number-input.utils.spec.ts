@@ -1,6 +1,6 @@
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
 
-describe('bal-input', () => {
+describe('bal-number-input', () => {
   describe('filterInputValue', () => {
     test('should filter input for a valid number', () => {
       expect(filterInputValue('a', '')).toBe('')
