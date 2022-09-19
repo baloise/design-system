@@ -45,12 +45,14 @@ export const inputListenOnClick = <Value>(component: FormInput<Value>, event: UI
   }
 }
 
+let inputSetFocusTimer: NodeJS.Timer | undefined
 export const inputSetFocus = <Value>(component: FormInput<Value>): void => {
-  setTimeout(() => {
+  clearTimeout(inputSetFocusTimer)
+  inputSetFocusTimer = setTimeout(() => {
     if (component.nativeInput) {
       component.nativeInput.focus()
     }
-  })
+  }, 0)
 }
 
 export const inputHandleHostClick = <Value>(component: FormInput<Value>, event: MouseEvent) => {
@@ -73,10 +75,15 @@ export const inputHandleFocus = <Value>(component: FormInput<Value>, event: Focu
   }
 }
 
-export const inputHandleReset = <Value>(component: FormInput<Value>, defaultValue: Value | undefined = undefined) => {
+export const inputHandleReset = <Value>(
+  component: FormInput<Value>,
+  defaultValue: Value | undefined = undefined,
+  timer: NodeJS.Timer | undefined,
+) => {
   component.value = defaultValue
   component.inputValue = component.value
-  setTimeout(() => {
+  clearTimeout(timer)
+  timer = setTimeout(() => {
     if (component.nativeInput) {
       component.nativeInput.value = component.value as any
     }

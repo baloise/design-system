@@ -77,7 +77,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   nativeInput!: HTMLInputElement
   inputValue = this.value
-  initialValue = this.value
+  initialValue?: string
 
   @Element() el!: HTMLElement
 
@@ -244,11 +244,26 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     inputListenOnClick(this, event)
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = this.initialValue
+      if (this.resetHandlerTimer) {
+        clearTimeout(this.resetHandlerTimer)
+      }
+      this.resetHandlerTimer = setTimeout(() => {
+        if (this.initialValue) {
+          this.nativeInput.value = format(this.getLocale(), parse(this.initialValue))
+        } else {
+          this.nativeInput.value = ''
+        }
+
+        this.selectedDate = this.initialValue
+        this.updateValue(this.initialValue, false)
+        this.updatePointerDates()
+      }, 0)
     }
   }
 
@@ -260,6 +275,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+    this.initialValue = this.value
   }
 
   componentDidLoad() {
@@ -771,9 +787,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             onClick={() => this.previousMonth()}
           ></bal-button>
           <div class={{ ...monthAndYearEl.class() }}>
-            <div class={{ ...selectEl.class() }}>
+            <div class={{ ...selectEl.class(), ...selectEl.modifier('month').class() }}>
               <div class="select">
-                <select onInput={this.onMonthSelect}>
+                <select class="" onInput={this.onMonthSelect}>
                   {this.months.map(month => (
                     <option value={month.index} selected={this.pointerDate.month === month.index}>
                       {month.name}
@@ -782,7 +798,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
                 </select>
               </div>
             </div>
-            <div class={{ ...selectEl.class() }}>
+            <div class={{ ...selectEl.class(), ...selectEl.modifier('year').class() }}>
               <div class="select">
                 <select onInput={this.onYearSelect}>
                   {this.years.map(year => (

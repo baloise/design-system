@@ -1552,6 +1552,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Defines the layout of the pagination
+         */
+        "interface": Props.BalPaginationInterface;
+        /**
           * Go to the next page
          */
         "next": () => Promise<void>;
@@ -1811,6 +1815,10 @@ export namespace Components {
     }
     interface BalSelect {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": Props.BalInputAutocomplete;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
@@ -1924,6 +1932,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the option.
          */
         "disabled": boolean;
+        "for": string;
         /**
           * Label will be shown in the input element when it got selected
          */
@@ -5033,6 +5042,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Defines the layout of the pagination
+         */
+        "interface"?: Props.BalPaginationInterface;
+        /**
           * Triggers when a page change happens
          */
         "onBalChange"?: (event: BalPaginationCustomEvent<number>) => void;
@@ -5300,6 +5313,10 @@ declare namespace LocalJSX {
     }
     interface BalSelect {
         /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: Props.BalInputAutocomplete;
+        /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
@@ -5413,6 +5430,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the option.
          */
         "disabled"?: boolean;
+        "for"?: string;
         /**
           * Label will be shown in the input element when it got selected
          */

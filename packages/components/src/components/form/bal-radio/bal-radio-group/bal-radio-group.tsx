@@ -22,6 +22,7 @@ import { BEM } from '../../../../utils/bem'
 export class RadioGroup implements ComponentInterface {
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+  private initialValue: number | string | boolean = ''
 
   @Element() el!: HTMLElement
 
@@ -82,7 +83,6 @@ export class RadioGroup implements ComponentInterface {
    * The value of the control.
    */
   @Prop({ mutable: true }) value: number | string | boolean = ''
-  private initialValue = this.value
   @Watch('value')
   valueChanged(value: number | string | boolean, oldValue: number | string | boolean) {
     if (value !== oldValue) {
@@ -109,6 +109,10 @@ export class RadioGroup implements ComponentInterface {
       this.value = this.initialValue
       this.sync()
     }
+  }
+
+  connectedCallback() {
+    this.initialValue = this.value
   }
 
   componentWillLoad() {

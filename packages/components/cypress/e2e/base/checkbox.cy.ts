@@ -1,32 +1,34 @@
-import { app } from '../../support/app'
-
 describe('Checkbox', () => {
-  const page = app.getCheckboxPage()
+  before(() => {
+    cy.platform('desktop').page('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
+  })
 
   it('should contain label', () => {
-    page.open()
-    cy.get(page.normalCheckboxElement).contains('Label')
+    cy.getByTestId('checkbox-normal').contains('Label')
   })
 
   it('should be checkable', () => {
-    page.open()
-    cy.get(page.normalCheckboxElement).should('not.be.checked').and('not.be.disabled')
-    cy.get(page.normalCheckboxElement).check()
-    cy.get(page.normalCheckboxElement).should('be.checked')
-    cy.get(page.normalCheckboxElement).uncheck()
-    cy.get(page.normalCheckboxElement).should('not.be.checked')
+    cy.getByTestId('checkbox-normal').should('not.be.checked').and('not.be.disabled')
+    cy.getByTestId('checkbox-normal').check()
+    cy.getByTestId('checkbox-normal').should('be.checked')
+    cy.getByTestId('checkbox-normal').uncheck()
+    cy.getByTestId('checkbox-normal').should('not.be.checked')
   })
 
   it('should be disabled', () => {
-    page.open()
-    cy.get(page.normalCheckboxElement).should('not.be.disabled')
-    cy.get(page.disabledCheckboxElement).should('be.disabled')
+    cy.getByTestId('checkbox-normal').should('not.be.disabled')
+    cy.getByTestId('checkbox-disabled').should('be.disabled')
   })
 
   it('should be focusable', () => {
-    page.open()
-    cy.get(page.normalCheckboxElement).should('not.be.focused')
-    cy.get(page.normalCheckboxElement).focus()
-    cy.get(page.normalCheckboxElement).should('be.focused')
+    cy.getByTestId('checkbox-normal').should('not.be.focused')
+    cy.getByTestId('checkbox-normal').focus()
+    cy.getByTestId('checkbox-normal').should('be.focused')
+  })
+
+  it('should be able to reset the form', () => {
+    cy.getByTestId('checkbox-reset').uncheck()
+    cy.getByTestId('button-reset').click()
+    cy.getByTestId('checkbox-reset').should('be.checked')
   })
 })

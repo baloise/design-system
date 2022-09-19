@@ -49,7 +49,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   nativeInput?: HTMLInputElement
   inputValue = this.value
-  initialValue = this.value
+  initialValue = this.value || ''
 
   @Element() el!: HTMLElement
 
@@ -273,24 +273,27 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     inputListenOnClick(this, event)
   }
 
+  private resetHandlerTimer?: NodeJS.Timer
+
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      inputHandleReset(this, this.initialValue)
+      inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
   }
 
   connectedCallback() {
     this.debounceChanged()
-  }
-
-  componentDidLoad() {
-    this.inputValue = this.value
+    this.initialValue = this.value || ''
   }
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentDidLoad() {
+    this.inputValue = this.value
   }
 
   /**
@@ -536,8 +539,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           accept={this.accept}
           inputMode={this.inputmode}
           autoCapitalize={this.autocapitalize}
-          autoComplete={this.autocomplete}
-          autoCorrect={this.autocorrect}
+          autocomplete={this.autocomplete}
+          autocorrect={this.autocorrect}
           autofocus={this.autofocus}
           min={this.min}
           max={this.max}

@@ -68,7 +68,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true }) checked = false
-  private initialValue = this.checked
+  private initialValue = false
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -134,15 +134,16 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     }
   }
 
-  componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
   connectedCallback() {
     if (this.group) {
       this.updateState()
       this.group.addEventListener('balChange', () => this.updateState())
     }
+    this.initialValue = this.checked
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   disconnectedCallback() {

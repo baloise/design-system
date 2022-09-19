@@ -4,8 +4,6 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
   tag: 'bal-select-option',
 })
 export class SelectOption implements ComponentInterface {
-  private inputId = `bal-selopt-${selectOptionIds++}`
-
   /**
    * Label will be shown in the input element when it got selected
    */
@@ -21,9 +19,15 @@ export class SelectOption implements ComponentInterface {
    */
   @Prop({ reflect: true }) value?: string
 
+  /**
+   * @internal
+   * ID of the option.
+   */
+  @Prop({ reflect: true }) for = `bal-selopt-${selectOptionIds++}`
+
   render() {
     return (
-      <Host aria-id={this.inputId} style={{ display: 'none' }}>
+      <Host style={{ display: 'none' }}>
         <slot></slot>
       </Host>
     )

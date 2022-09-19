@@ -10,7 +10,28 @@
   <body>
     <bal-doc-app>
       <main class="container">
-        <bal-datepicker id="basic" data-testid="basic"></bal-datepicker>
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-datepicker id="basic" data-testid="basic"></bal-datepicker>
+        </section>
+        <bal-heading>Form Reset</bal-heading>
+        <section>
+          <form action="https://www.w3schools.com/action_page.php" target="_blank">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-datepicker data-testid="reset" value="2022-09-16"></bal-datepicker>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+            <bal-button-group>
+              <bal-button element-type="submit" color="primary">Submit</bal-button>
+              <bal-button data-testid="button-reset" element-type="reset" color="link">Reset</bal-button>
+            </bal-button-group>
+          </form>
+        </section>
       </main>
     </bal-doc-app>
   </body>

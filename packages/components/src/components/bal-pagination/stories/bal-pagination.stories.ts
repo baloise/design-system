@@ -21,3 +21,27 @@ Basic.args = {
   disabled: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const SmallPagination = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-pagination v-bind="args"></bal-pagination>`,
+})
+SmallPagination.args = {
+  interface: 'small',
+  totalPages: 10,
+  disabled: false,
+}
+SmallPagination.parameters = { ...component.sourceCode(SmallPagination) }
+
+export const SmallPaginationWithDots = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-pagination v-bind="args"></bal-pagination>`,
+})
+SmallPaginationWithDots.args = {
+  interface: 'small',
+  totalPages: 3,
+  disabled: false,
+}
+SmallPaginationWithDots.parameters = { ...component.sourceCode(SmallPaginationWithDots) }

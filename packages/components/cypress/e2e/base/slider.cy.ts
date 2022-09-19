@@ -1,22 +1,22 @@
-import { app } from '../../support/app'
-
 describe('Slider', () => {
-  const page = app.getSliderPage()
+  before(() => {
+    cy.platform('desktop').page('/components/form/bal-slider/test/bal-slider.cy.html')
+  })
 
-  it('should have value and typeable', () => {
-    page.open()
-    cy.get(page.slider).should('have.value', '20')
-    cy.get(page.slider).type('30').should('have.value', '30')
-    cy.get(page.slider).invoke('val', 50).trigger('change').should('have.value', '50')
+  it('should have value', () => {
+    cy.getByTestId('basic').should('have.value', '10')
+    cy.getByTestId('basic').invoke('val', 50).should('have.value', '50')
   })
 
   it('should be disabled', () => {
-    cy.get(page.slider).should('not.be.disabled')
-    cy.get(page.sliderDisabled).should('be.disabled')
+    cy.getByTestId('basic').should('not.be.disabled')
+    cy.getByTestId('disabled').should('be.disabled')
   })
 
-  it('should be focusable', () => {
-    cy.get(page.slider).focus().should('be.focused')
-    cy.get(page.slider).blur().should('not.be.focused')
+  it('should be able to reset the form', () => {
+    cy.getByTestId('reset').should('have.value', '2')
+    cy.getByTestId('reset').invoke('val', 50).should('have.value', '50')
+    cy.getByTestId('button-reset').click()
+    cy.getByTestId('reset').should('have.value', '2')
   })
 })

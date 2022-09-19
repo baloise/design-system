@@ -1,33 +1,32 @@
-import { app } from '../../support/app'
-
 describe('Textarea', () => {
-  const page = app.getTextareaPage()
-
-  it('should verify the existens of the components', () => {
-    page.open()
-    cy.get(page.textarea).should('exist')
-    cy.get('.bubu').should('not.exist')
+  before(() => {
+    cy.platform('desktop').page('/components/form/bal-textarea/test/bal-textarea.cy.html')
   })
 
   it('should have value and typeable', () => {
-    page.open()
-    cy.get(page.textarea).should('have.value', '')
-    cy.get(page.textarea).type('bubu').should('have.value', 'bubu')
-    cy.get(page.textarea).clear().should('not.have.value', 'bubu').should('have.value', '')
+    cy.getByTestId('basic').should('have.value', '')
+    cy.getByTestId('basic').type('bubu').should('have.value', 'bubu')
+    cy.getByTestId('basic').clear().should('not.have.value', 'bubu').should('have.value', '')
   })
 
   it('should have placeholder', () => {
-    cy.get(page.textarea).should('have.attr', 'placeholder', 'Enter your comment')
-    cy.get(page.textareaDisabled).should('not.have.attr', 'placeholder', 'Enter your comment')
+    cy.getByTestId('basic').should('have.attr', 'placeholder', 'Enter your comment')
+    cy.getByTestId('basic').should('not.have.attr', 'placeholder', 'Enter your lastname')
   })
 
   it('should be disabled', () => {
-    cy.get(page.textarea).should('not.be.disabled')
-    cy.get(page.textareaDisabled).should('be.disabled')
+    cy.getByTestId('basic').should('not.be.disabled')
+    cy.getByTestId('disabled').should('be.disabled')
   })
 
   it('should be focusable', () => {
-    cy.get(page.textarea).focus().should('be.focused')
-    cy.get(page.textarea).blur().should('not.be.focused')
+    cy.getByTestId('basic').focus().should('be.focused')
+    cy.getByTestId('basic').blur().should('not.be.focused')
+  })
+
+  it('should be able to reset the form', () => {
+    cy.getByTestId('reset').type('bubu')
+    cy.getByTestId('button-reset').click()
+    cy.getByTestId('reset').should('have.value', 'Tony Stark')
   })
 })

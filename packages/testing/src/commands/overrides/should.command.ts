@@ -13,6 +13,7 @@ import {
   isLabel,
   isTextarea,
   isNumberInput,
+  isInputStepper,
 } from '../helpers'
 
 const shouldAndAndCommand = (
@@ -67,6 +68,32 @@ const shouldAndAndCommand = (
 
     if ('not.be.focused' === condition) {
       return originalFn(element, 'not.have.attr', 'aria-focused', options)
+    }
+  }
+
+  if (isInputStepper(element)) {
+    if ('be.disabled' === condition) {
+      return originalFn(element, 'have.attr', 'aria-disabled', 'true', options)
+    }
+
+    if ('not.be.disabled' === condition) {
+      return originalFn(element, 'not.have.attr', 'aria-disabled', options)
+    }
+
+    if ('be.focused' === condition) {
+      return originalFn(element.find('input'), condition, key, value, options)
+    }
+
+    if ('not.be.focused' === condition) {
+      return originalFn(element.find('input'), condition, key, value, options)
+    }
+
+    if ('have.value' === condition) {
+      return originalFn(element.find('input'), condition, key, value, options)
+    }
+
+    if ('not.have.value' === condition) {
+      return originalFn(element.find('input'), condition, key, value, options)
     }
   }
 

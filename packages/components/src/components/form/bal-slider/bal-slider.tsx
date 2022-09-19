@@ -2,6 +2,8 @@ import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method,
 import isNil from 'lodash.isnil'
 import { Events } from '../../../types'
 import { debounceEvent } from '../../../helpers/helpers'
+import { stopEventBubbling } from '../../../helpers/form-input.helpers'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-slider',
@@ -13,6 +15,7 @@ export class Slider {
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false
+  private initialValue?: string | number = ''
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -107,16 +110,23 @@ export class Slider {
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if ((this.disabled || this.readonly) && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
+      stopEventBubbling(ev)
     }
   }
+
+  private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
     const formElement = event.target as HTMLElement
     if (formElement?.contains(this.el)) {
-      this.value = undefined
+      this.value = this.initialValue
+      clearTimeout(this.resetHandlerTimer)
+      this.resetHandlerTimer = setTimeout(() => {
+        if (this.nativeInput) {
+          this.nativeInput.value = this.initialValue as string
+        }
+      }, 0)
     }
   }
 
@@ -132,6 +142,7 @@ export class Slider {
 
   connectedCallback() {
     this.debounceChanged()
+    this.initialValue = this.value
   }
 
   componentDidLoad() {
@@ -141,13 +152,16 @@ export class Slider {
     }
   }
 
+  private setFocusTimer?: NodeJS.Timer
+
   /**
    * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
    * `input.focus()`.
    */
   @Method()
   async setFocus() {
-    setTimeout(() => {
+    clearTimeout(this.setFocusTimer)
+    this.setFocusTimer = setTimeout(() => {
       if (this.nativeInput) {
         this.nativeInput.focus()
       }
@@ -222,38 +236,64 @@ export class Slider {
   }
 
   render() {
+    const block = BEM.block('slider')
+    const backgroundEl = block.element('background')
+
+    const backgroundUpperEl = backgroundEl.element('upper')
+    const backgroundUpperInnerEl = backgroundUpperEl.element('inner')
+
+    const backgroundLowerEl = backgroundEl.element('lower')
+    const backgroundLowerInnerEl = backgroundLowerEl.element('inner')
+
+    const inputEl = block.element('input')
+    const inputNativeEl = inputEl.element('native')
+    const inputValueEl = inputEl.element('value')
+    const inputValueLeftEl = inputValueEl.modifier('left')
+    const inputValueRightEl = inputValueEl.modifier('right')
+
+    const stepsEl = block.element('steps')
+    const stepsItemEl = stepsEl.element('item')
+
     return (
       <Host
         class={{
-          'is-fullwidth': true,
-          'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
         onClick={this.handleClick}
         aria-disabled={this.disabled || this.readonly ? 'true' : null}
       >
-        <div class="slider-bg">
+        <div
+          class={{
+            ...backgroundEl.class(),
+            ...backgroundEl.modifier('disabled').class(this.disabled || this.readonly),
+          }}
+        >
           <div
-            class="slider-bg-upper"
+            class={{ ...backgroundUpperEl.class() }}
             style={{
               width: this.cssWidth(),
             }}
           >
-            <div class="inner"></div>
+            <div class={{ ...backgroundUpperInnerEl.class() }}></div>
           </div>
           <div
-            class="slider-bg-lower"
+            class={{ ...backgroundLowerEl.class() }}
             style={{
               width: this.cssWidth(true),
             }}
           >
-            <div class="inner"></div>
+            <div class={{ ...backgroundLowerInnerEl.class() }}></div>
           </div>
         </div>
-        <div class="slider-input">
-          <div class="slider-value slider-value__left"></div>
+        <div class={{ ...inputEl.class() }}>
+          <div class={{ ...inputValueEl.class(), ...inputValueLeftEl.class() }}></div>
           <input
             type="range"
-            class="slider is-fullwidth"
+            class={{
+              ...inputNativeEl.class(),
+              ...inputNativeEl.modifier('disabled').class(this.disabled || this.readonly),
+            }}
             ref={inputEl => (this.nativeInput = inputEl)}
             id={this.inputId}
             disabled={this.disabled}
@@ -271,11 +311,17 @@ export class Slider {
             onClick={this.onClick}
             onKeyPress={e => this.balKeyPress.emit(e)}
           />
-          <div class="slider-value slider-value__right"></div>
+          <div class={{ ...inputValueEl.class(), ...inputValueRightEl.class() }}></div>
         </div>
-        <div class="steps" style={{ display: this.hasTicks ? 'flex' : 'none' }}>
+        <div class={{ ...stepsEl.class() }} style={{ display: this.hasTicks ? 'flex' : 'none' }}>
           {this.getNumberOfSteps().map(step => (
-            <div class="step" data-step-id={step}></div>
+            <div
+              class={{
+                ...stepsItemEl.class(),
+                ...stepsItemEl.modifier('disabled').class(this.disabled || this.readonly),
+              }}
+              data-step-id={step}
+            ></div>
           ))}
         </div>
       </Host>
