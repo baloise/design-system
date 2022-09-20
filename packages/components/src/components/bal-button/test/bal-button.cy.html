@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <bal-button color="primary" data-testid="primary-button">Primary</bal-button>
+        <bal-button color="primary" disabled data-testid="primary-button-disabled">Disabled</bal-button>
+        <a data-testid="link" href="https://design.baloise.dev/" class="is-link">Link</a>
+        <bal-button
+          data-testid="button-link"
+          link
+          href="https://github.com/baloise/design-system-components"
+          target="_blank"
+          >GitHub</bal-button
+        >
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

@@ -9,7 +9,7 @@ const format = (date: Date) => {
   return `${day}.${month}.${date.getFullYear()}`
 }
 
-describe('Datepicker', () => {
+describe('bal-datepicker', () => {
   before(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
 
   describe('open & close', () => {

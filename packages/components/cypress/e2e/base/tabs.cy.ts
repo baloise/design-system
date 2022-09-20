@@ -1,6 +1,6 @@
 import { testOnPlatforms } from '../../../../testing/src'
 
-describe('Tabs', () => {
+describe('bal-tabs', () => {
   testOnPlatforms(['mobile', 'desktop'], platform => {
     beforeEach(() => cy.page('/components/bal-tabs/test/bal-tabs.cy.html'))
 

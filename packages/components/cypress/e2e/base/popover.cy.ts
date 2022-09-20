@@ -1,11 +1,10 @@
-import { app } from '../../support/app'
-
-describe('Popover', () => {
-  const page = app.getPopoverPage()
+describe('bal-popover', () => {
+  before(() => {
+    cy.platform('desktop').page('/components/bal-popover/test/bal-popover.cy.html')
+  })
 
   it('should open and close the popover', () => {
-    page.open()
-    cy.get(page.popover)
+    cy.getByTestId('popover')
       .balPopoverIsClosed()
       .balPopoverToggle()
       .balPopoverIsOpen()
@@ -14,8 +13,7 @@ describe('Popover', () => {
   })
 
   it('should contain trigger and menu content', () => {
-    page.open()
-    cy.get(page.popover)
+    cy.getByTestId('popover')
       .balPopoverToggle()
       .balPopoverTriggerContains('Trigger')
       .balPopoverContentContains(

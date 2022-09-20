@@ -1,4 +1,4 @@
-describe('Checkbox', () => {
+describe('bal-checkbox', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
   })

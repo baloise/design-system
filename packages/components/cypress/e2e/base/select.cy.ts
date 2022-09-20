@@ -1,4 +1,4 @@
-describe('Select', () => {
+describe('bal-select', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-select/test/bal-select.cy.html')
   })

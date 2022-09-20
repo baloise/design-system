@@ -1,31 +1,25 @@
-import { app } from '../../support/app'
-
-describe('Hint', () => {
-  const page = app.getHintPage()
+describe('bal-hint', () => {
+  before(() => cy.page('/components/bal-hint/test/bal-hint.cy.html'))
 
   it('should open and close the hint overlay', () => {
-    page.open()
-    cy.get(page.hint).balHintFindOverlay().should('not.be.visible')
-    cy.get(page.hint).click().balHintFindOverlay().should('be.visible')
-    cy.get(page.hint).balHintFindCloseButton().contains('Schliessen').click()
-    cy.get(page.hint).balHintFindOverlay().should('not.be.visible')
+    cy.getByTestId('hint').balHintFindOverlay().should('not.be.visible')
+    cy.getByTestId('hint').click().balHintFindOverlay().should('be.visible')
+    cy.getByTestId('hint').balHintFindCloseButton().contains('Schliessen').click()
+    cy.getByTestId('hint').balHintFindOverlay().should('not.be.visible')
   })
 
   it('should contain spider man in the overlay', () => {
-    page.open()
-    cy.get(page.hint).click().balHintFindOverlay().contains('Spider-Man')
+    cy.getByTestId('hint').click().balHintFindOverlay().contains('Spider-Man')
     cy.get('body').click()
   })
 
   it('should contain spider man in the overlay', () => {
-    page.open()
-    cy.get(page.dataHint).click().balHintFindOverlay().contains('Spider-Man')
+    cy.getByTestId('data-hint').click().balHintFindOverlay().contains('Spider-Man')
     cy.get('body').click()
   })
 
   it('should contain spider man in the overlay', () => {
-    page.open()
-    cy.get(page.fieldHint).balFieldFindHint().click().balHintFindOverlay().contains('Spider-Man')
+    cy.getByTestId('field-hint').balFieldFindHint().click().balHintFindOverlay().contains('Spider-Man')
     cy.get('body').click()
   })
 })

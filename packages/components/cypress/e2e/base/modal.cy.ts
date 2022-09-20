@@ -1,27 +1,22 @@
-import { app } from '../../support/app'
-
-describe('Modal', () => {
-  const page = app.getModalPage()
+describe('bal-modal', () => {
+  before(() => cy.page('/components/notice/bal-modal/test/bal-modal.cy.html'))
 
   it('should open and close Modal 1', () => {
-    page.open()
-    cy.get(page.openModalButton).click()
-    cy.get(page.modal).balModalIsOpen()
-    cy.get(page.closeModalButton).click()
+    cy.getByTestId('open-modal-button').click()
+    cy.getByTestId('modal').balModalIsOpen()
+    cy.getByTestId('open-modal-close').click()
   })
 
   it('should open and close Modal 2', () => {
-    page.open()
-    cy.get(page.openModalButton).click()
-    cy.get(page.modal).balModalIsOpen()
-    cy.get(page.modal).balModalClose()
-    cy.get(page.modal).balModalIsClosed()
+    cy.getByTestId('open-modal-button').click()
+    cy.getByTestId('modal').balModalIsOpen()
+    cy.getByTestId('modal').balModalClose()
+    cy.getByTestId('modal').balModalIsClosed()
   })
 
   it('should contain title', () => {
-    page.open()
-    cy.get(page.openModalButton).click()
-    cy.get(page.modal).find('bal-modal-header').contains('Modal Title')
-    cy.get(page.modal).contains('Modal Title')
+    cy.getByTestId('open-modal-button').click()
+    cy.getByTestId('modal').find('bal-modal-header').contains('Modal Title')
+    cy.getByTestId('modal').contains('Modal Title')
   })
 })
