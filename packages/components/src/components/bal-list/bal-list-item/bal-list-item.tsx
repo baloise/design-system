@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
-import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -145,7 +144,6 @@ export class ListItem {
             ...basicClasses,
           }}
           onClick={(event: MouseEvent) => {
-            stopEventBubbling(event)
             this.balNavigate.emit(event)
           }}
         >
