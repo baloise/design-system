@@ -71,7 +71,7 @@ export class Toast {
   render() {
     return (
       <Host id={this.toastId} class="bal-toast">
-        <div role="alert" onClick={() => this.close()} class={`bal-toast__inner ${this.colorType} p-4`}>
+        <div role="alert" onClick={() => this.close()} class={`bal-toast__inner ${this.colorType}`}>
           <span class="bal-toast__label" innerHTML={this.message}>
             <slot />
           </span>
