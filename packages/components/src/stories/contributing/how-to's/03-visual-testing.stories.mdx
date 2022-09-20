@@ -19,14 +19,13 @@ Our visual tests are done with the library [cypress-visual-regression](https://w
 
 ## Getting Started
 
-6 steps are needed to finish a visual test for a component.
+4 steps are needed to finish a visual test for a component.
 
 1. Create visual template file
 2. Create cypress visual test
 3. Push your changes to GitHub
 4. Create base image on GitHub
-5. Pull base image from GitHub
-6. Trigger new build on GitHub
+5. Optional - Pull base image from GitHub
 
 ### 1. Create visual template file
 
@@ -167,22 +166,5 @@ git pull
 After the pull the new base image should be visible in your IDE.
 
 Go to the path `packages/components/cypress/snapshots/base` and you see the new base image among the others.
-
-### 6. Trigger new build on GitHub
-
-Now change the `CHANGELOG.md` to retrigger the build on your PR.
-Like remove an empty line or add one.
-
-```bash
-git add --all
-```
-
-```bash
-git commit -m "test: trigger build"
-```
-
-```bash
-git push
-```
 
 <bal-doc-github link="/stories/contributing/how-to's/03-visual-testing.stories.mdx"></bal-doc-github>
