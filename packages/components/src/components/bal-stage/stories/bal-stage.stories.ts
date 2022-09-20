@@ -124,7 +124,7 @@ export const StageWithImage = args => ({
 </bal-stage>`,
 })
 StageWithImage.args = {
-  content: 'Das Beste aud Versicherung und Bank',
+  content: 'Das Beste aus Versicherung und Bank',
   size: 'large',
   shadow: true,
   inverted: true,
