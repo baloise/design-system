@@ -11,7 +11,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-pagination:** added a padding top for small interface nav element ([47d09a9](https://github.com/baloise/design-system/commit/47d09a936b651b458bd03985643cbe03fab464d3))
 * **bal-pagination:** integrated the pagination component in image slider ([d4e5842](https://github.com/baloise/design-system/commit/d4e58421a828ba172ac6934dc3274f86d6a9c782))
 
-
 ### Bug Fixes
 
 * add maxlength on bal-select typeahead, closes [#416](https://github.com/baloise/design-system/issues/416) ([37778bf](https://github.com/baloise/design-system/commit/37778bf579f53f7f6cb8a8eb2b2379580b5f46cf))
