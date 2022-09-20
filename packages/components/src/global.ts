@@ -13,5 +13,6 @@ export default function () {
 
     win.BaloiseDesignSystem.toastController = balToastController
     win.BaloiseDesignSystem.snackbarController = balSnackbarController
+    win.BaloiseDesignSystem.initialize = () => initialize(win.BaloiseDesignSystem.config, win)
   }
 }

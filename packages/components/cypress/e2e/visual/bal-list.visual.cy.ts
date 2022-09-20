@@ -1,6 +1,6 @@
 import { byTestId } from '../../../../testing/src'
 
-describe('List', () => {
+describe('bal-list', () => {
   before(() => cy.page('/components/bal-list/test/bal-list.visual.html'))
 
   it('basic component', () => cy.get(byTestId('basic')).compareSnapshot('list-basic', 0.0))

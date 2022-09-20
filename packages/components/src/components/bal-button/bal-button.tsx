@@ -53,6 +53,11 @@ export class Button implements ComponentInterface {
   @Prop() download?: string
 
   /**
+   * If `true` adds a box shadow to improve readability on image background
+   * */
+  @Prop() shadow = false
+
+  /**
    * If `true` the width of the buttons is limited
    */
   @Prop() square = false
@@ -171,6 +176,7 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'has-blur-shadow': this.shadow === true,
       'has-radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,

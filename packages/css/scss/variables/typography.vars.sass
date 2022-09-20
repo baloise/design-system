@@ -28,13 +28,17 @@ $size-medium: $size-4 !default
 $size-normal: $size-5 !default
 $size-small: $size-6 !default
 
+$text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.25), 0px 0px 80px rgba(0, 0, 0, 0.5)
+$button-shadow: $text-shadow
+
 :root
   --bal-family-primary: #{$font-family-text}
   --bal-family-secondary: #{$font-family-text}
-  --bal-link: #{$tablet}
   --bal-link: #{$primary}
   --bal-link-hover: #{$primary}
   --bal-text: #{$primary}
   --bal-text-invert: #{$primary-inverted}
   --bal-text-light: #{$blue-4}
   --bal-text-strong: #{$blue}
+  --bal-text-shadow: #{$text-shadow}
+  --bal-button-shadow: #{$button-shadow}
