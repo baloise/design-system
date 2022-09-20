@@ -21,18 +21,26 @@ import Wallpaper from './assets/images/banner.svg'
   <div className="welcome-container bal-app">
     <div class="columns">
       <div class="column is-7">
+        <h1 class="mx-6 mt-6 pb-4"><bal-logo color="white"></bal-logo></h1>
+        <h1 class="mx-6 mt-2 my-0 subtitle is-size-xxx-large">design system v{version}</h1>
         <div class="mx-6 mt-6 p-0">
-          <bal-tag color="green" light>
+          <bal-tag color="green" light size="small">
             <bal-icon name="check"></bal-icon>
             <span>46 / 46 Components rebranded</span>
           </bal-tag>
-          <bal-tag color="yellow" light class="ml-2">
+        </div>
+        <div class="mx-6 mt-2 p-0">
+          <bal-tag color="yellow" light size="small">
             <bal-icon name="clock"></bal-icon>
             <span>4 / 46 Visual test</span>
           </bal-tag>
         </div>
-        <h1 class="mx-6 mt-6 pb-4"><bal-logo color="white"></bal-logo></h1>
-        <h1 class="mx-6 mt-2 my-0 subtitle is-size-xxx-large">design system v{version}</h1>
+        <div class="mx-6 mt-2 p-0">
+          <bal-notification color="danger">
+            <b>Feature Freeze!</b><br/>
+            All work on adding new features is suspended to focus on quality improvement, user experience and bug fixing.
+          </bal-notification>
+        </div>
         <p class="mx-6 mt-6 p-0">
           The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.

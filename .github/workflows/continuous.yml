@@ -1,6 +1,9 @@
 name: Continuous
 
-on: [push]
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   Build:
