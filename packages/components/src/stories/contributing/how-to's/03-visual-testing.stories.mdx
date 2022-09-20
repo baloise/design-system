@@ -19,9 +19,11 @@ As a prerequisite please do a [dev setup](?path=/docs/contributing-dev-setup--pa
 
 ### Create visual test file
 
-Inside the folder of your component for which you want to create a test create a folder for a test file `component/test`.
+Inside the folder of your component for which you want to create a test create a folder for a test file `packages/components/src/components/{bal-your-component}/test/{bal-your-component}.visual.html`.
 
-Name your test like this: `component-name.visual.html`
+Name your test like this: `{bal-your-component}.visual.html`
+
+Example => `packages/components/src/components/bal-tag/test/bal-tag.visual.html`
 
 Here is the example of bal-close component test.
 
@@ -40,18 +42,20 @@ Variations needs to be splitted in sections.
   <body>
     <bal-doc-app>
       <main class="container py-5">
+        <bal-heading>Basic</bal-heading>
         <section>
-          <h1>Basic</h1>
           <bal-close data-testid="basic"></bal-close>
         </section>
+
+        <bal-heading>Sizes</bal-heading>
         <section>
-          <h1>Sizes</h1>
           <bal-close size="small"></bal-close>
           <bal-close size=""></bal-close>
           <bal-close size="medium"></bal-close>
         </section>
+
+        <bal-heading>Inverted</bal-heading>
         <section class="has-background-primary">
-          <h1 class="has-text-primary-inverted">Inverted</h1>
           <bal-close size="small" inverted></bal-close>
           <bal-close size="" inverted></bal-close>
           <bal-close size="medium" inverted></bal-close>
@@ -61,6 +65,12 @@ Variations needs to be splitted in sections.
   </body>
 </html>
 ```
+
+- `bal-doc-app` components load the styles and initialize the Design System config object
+- `data-testid` we use this attribute to select components in our test files
+- `<section>` each section should represent a component state to test visually
+- `class="has-background-primary"` use the css helper classes to create the correct environment
+- `<main class="container py-5">` each app should have a container, wo we test that as well
 
 ### Run test
 
@@ -75,22 +85,26 @@ run test:e2e:app
 To create a cypress test for it navigate to the `packages/components/cypress/e2e/visual` and create a test for your component.
 
 ```typescript
-describe('Close', () => {
+describe('bal-close', () => {
   before(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
 
+  // just compare the screenshot of the element with the attribute data-testid="basic"
   it('basic component', () => cy.get(byTestId('basic')).compareSnapshot('close-basic', 0.0))
+
+  // create screen of the whole page
   it('component variants', () => cy.compareSnapshot('close-variants', 0.0))
 })
 ```
 
 ### Push your changes
 
-You need to push your changes to be able to create base images.
+You need to push your changes to be able to create base images on GitHub.
 
 ### Create base image
 
 Now you need to create a base image for your branch.
 
-Navigate to the [Github actions](https://github.com/baloise-incubator/design-system/actions), then open Visual Regression Test - Base Image. From the Run workflow dropdown select your branch for which you want to create an image, and click Run workflow.
+Navigate to the [Github actions](https://github.com/baloise-incubator/design-system/actions), then open Visual Regression Test - Base Image.
+From the Run workflow dropdown select your branch for which you want to create an image, and click Run workflow.
 
 <bal-doc-github link="/stories/contributing/how-to's/03-visual-testing.stories.mdx"></bal-doc-github>
