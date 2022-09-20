@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main data-testid="basic">
+        <section>
+          <bal-badge data-testid="basic" color="danger">42</bal-badge>
+        </section>
+        <section>
+          <bal-badge data-testid="icon" color="success" icon="check"></bal-badge>
+        </section>
+        <section>
+          <bal-card data-testid="card">
+            <bal-badge color="danger" position="card">42</bal-badge>
+            <bal-card-title>Title</bal-card-title>
+            <bal-card-content>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </bal-card-content>
+          </bal-card>
+        </section>
+        <section>
+          <bal-button data-testid="button">
+            <bal-badge color="danger" position="button">42</bal-badge>
+            Button
+          </bal-button>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
