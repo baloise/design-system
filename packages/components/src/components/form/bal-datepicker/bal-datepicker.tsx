@@ -110,6 +110,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   @Watch('locale')
   watchLocaleHandler() {
+    console.warn('[DEPRECATED] - Please use the window.BaloiseDesignSystem.config instead')
+    this.migrateLocale()
+  }
+
+  private migrateLocale() {
     if (this.locale !== '') {
       this.language = this.locale
     }
@@ -276,6 +281,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     this.debounceChanged()
     attachComponentToConfig(this)
     this.initialValue = this.value
+    this.migrateLocale()
   }
 
   componentDidLoad() {
