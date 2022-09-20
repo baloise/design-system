@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-testing",
-  "version": "10.22.0",
+  "version": "10.22.1",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.22.0",
+    "@baloise/design-system-next-components": "10.22.1",
     "date-fns": "~2.29.1"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"

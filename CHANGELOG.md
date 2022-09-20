@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.22.1](https://github.com/baloise/design-system/compare/v10.22.0...v10.22.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise/design-system/issues/571) ([6482637](https://github.com/baloise/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **list:** passing click event of items content. Closes [#582](https://github.com/baloise/design-system/issues/582) ([9c346fc](https://github.com/baloise/design-system/commit/9c346fcfe0e983a79353811524e93838d1398828))
+* move css vars out of utilities ([83627b9](https://github.com/baloise/design-system/commit/83627b9e6699409301af90f37521a00734889cf1))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise/design-system/issues/472) ([d64edba](https://github.com/baloise/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+* **toast:** adjust width for tablet and desktop ([d04f3a5](https://github.com/baloise/design-system/commit/d04f3a557c43a2e2d17f5a5c2a2a14a67d530612))
+
+
+
 ## [10.22.0](https://github.com/baloise/design-system/compare/v10.21.2...v10.22.0) (2022-09-19)
 
 ### Features
