@@ -31,7 +31,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.21.1](https://github.com/baloise/design-system/compare/v10.21.0...v10.21.1) (2022-09-15)
 
-
 ### Features
 
 * **bal-pagination:** added a new interface for small pagination with dots or numbers ([92ca7d5](https://github.com/baloise/design-system/commit/92ca7d583a3d967e046d4bf36e2046ec04c49f8e))
