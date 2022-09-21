@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.22.2](https://github.com/baloise-incubator/design-system/compare/v10.22.1...v10.22.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* **button-group:** column alignment. Closes [#562](https://github.com/baloise-incubator/design-system/issues/562) ([77dbc07](https://github.com/baloise-incubator/design-system/commit/77dbc07f3936ecd58c9db1ae40bbdee5aedca55c))
+* **card:** add color levels 1-3 of purple, green, red and yellow ([c217584](https://github.com/baloise-incubator/design-system/commit/c217584e3107161e410340fe098f051137d94f33))
+* **container:** add tokens for container space and max-width ([b139bf6](https://github.com/baloise-incubator/design-system/commit/b139bf67d34db99ed337492070c98aff01531ab3))
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise-incubator/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise-incubator/design-system/issues/571) ([6482637](https://github.com/baloise-incubator/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **list:** adjust the default link size ([e5c8c48](https://github.com/baloise-incubator/design-system/commit/e5c8c48a3875ef81c3ed28f8ef88c3d79ac7158c))
+* **product-slider:** adjust size for 3 lines. Closes [#315](https://github.com/baloise-incubator/design-system/issues/315) ([7a09498](https://github.com/baloise-incubator/design-system/commit/7a09498b9c7e81a998a605313229a6c1a16c448c))
+* **snackbar:** fix max-width. Closes [#574](https://github.com/baloise-incubator/design-system/issues/574) ([ebd50d4](https://github.com/baloise-incubator/design-system/commit/ebd50d4068c81cb6aad77274e0c0d57f6796f6b6))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise-incubator/design-system/issues/472) ([d64edba](https://github.com/baloise-incubator/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+* **testing:** adjust contains override ([683f600](https://github.com/baloise-incubator/design-system/commit/683f600b957bbb2fd8e7df04621075b4be603e0d))
+* **typography:** decrease font sizes ([ff22473](https://github.com/baloise-incubator/design-system/commit/ff224733c2957f874dd781702c921c66130674cd))
+
+## 10.22.0 (2022-09-19)
+
+
+
 ## [10.22.1](https://github.com/baloise/design-system/compare/v10.22.0...v10.22.1) (2022-09-20)
 
 
