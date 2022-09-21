@@ -2,7 +2,7 @@
   display: block
   position: relative
   width: 100%
-  height: 152px
+  height: 192px
   margin-bottom: 68px
   +tablet
     margin-bottom: 0
@@ -22,7 +22,7 @@
       justify-content: flex-start
       flex-direction: row
       width: fit-content
-      height: 152px
+      height: 192px
       gap: 1rem
 
   +element(controls)
@@ -41,7 +41,7 @@
       display: block
       +element(button)
         position: absolute
-        height: 152px
+        height: 192px
         display: flex
         justify-content: center
         align-items: center
@@ -55,10 +55,10 @@
 +block(product-slider-item)
   display: flex
   width: 160px
-  height: 152px
+  height: 192px
   text-align: center
-  padding-top: 6px
-  padding-bottom: 6px
+  padding-top: 8px
+  padding-bottom: 8px
   user-select: none
   user-zoom: fixed
 
@@ -71,7 +71,7 @@
     flex: 1
     flex-direction: column
     align-items: center
-    justify-content: space-between
+    gap: 1rem
     border-radius: var(--bal-radius-large)
     padding: var(--bal-size-x-small)
     border: none
@@ -125,3 +125,5 @@
       font-weight: var(--bal-weight-bold)
       color: var(--bal-color-primary)
       hyphens: auto
+      height: 56px
+      overflow: hidden

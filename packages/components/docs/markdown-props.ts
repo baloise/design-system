@@ -10,7 +10,7 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
   content.push(`#### Properties`)
   content.push(``)
   content.push(
-    `Follow the [Property Usage](https://design.baloise.dev/?path=/docs/implementation-property--page) guide to learn how to change properties of the component.`,
+    `Follow the [Property Usage](https://design-system-next.vercel.app/?path=/docs/implementation-property--page) guide to learn how to change properties of the component.`,
   )
   content.push(``)
 

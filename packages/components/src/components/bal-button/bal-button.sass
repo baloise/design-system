@@ -4,3 +4,18 @@ bal-button,
   position: static
   &.is-fullwidth
     width: 100%
+
++block(button-group)
+  display: flex
+  +modifier(position-center)
+    justify-content: center
+  +modifier(position-left)
+    justify-content: flex-start
+  +modifier(position-right)
+    justify-content: flex-end
+  +modifier(direction-column)
+    +mobile
+      .field.is-grouped,
+      .bal-button,
+      .bal-button .button
+        width: 100% !important

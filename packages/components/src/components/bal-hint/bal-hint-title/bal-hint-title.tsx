@@ -17,16 +17,17 @@ export class HintTitle {
           ...elTitle.class(),
         }}
       >
-        <bal-heading
+        <h3
           class={{
             ...elHeading.class(),
+            'title': true,
+            'is-3': true,
           }}
-          level="h4"
-          color="primary"
-          space="bottom"
         >
-          <slot></slot>
-        </bal-heading>
+          <span>
+            <slot></slot>
+          </span>
+        </h3>
       </Host>
     )
   }
