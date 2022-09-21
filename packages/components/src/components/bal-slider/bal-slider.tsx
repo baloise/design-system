@@ -3,16 +3,16 @@ import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 
 @Component({
-  tag: 'bal-tab-slider',
+  tag: 'bal-slider',
 })
-export class TabSlider implements ComponentInterface {
-  @Element() el!: HTMLBalTabSliderElement
+export class Slider implements ComponentInterface {
+  @Element() el!: HTMLBalSliderElement
 
   private mutationO?: MutationObserver
   private xPosition = 0
 
   @State() slideIndex = 1
-  @State() slides!: HTMLBalTabSliderItemElement[]
+  @State() slides!: HTMLBalSliderItemElement[]
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -20,7 +20,7 @@ export class TabSlider implements ComponentInterface {
   }
 
   connectedCallback() {
-    this.mutationO = observeItems(this.el, 'bal-tab-slider-item', () => this.updateSlides())
+    this.mutationO = observeItems(this.el, 'bal-slider-item', () => this.updateSlides())
     this.updateSlides()
   }
 
@@ -33,16 +33,16 @@ export class TabSlider implements ComponentInterface {
 
   @Listen('touchstart')
   touchStart(event: TouchEvent) {
-    const tabContainer = this.getSliderContainer()
-    if (tabContainer?.contains(event.target as HTMLElement)) {
+    const container = this.getSliderContainer()
+    if (container?.contains(event.target as HTMLElement)) {
       this.xPosition = event.touches[0].pageX
     }
   }
 
   @Listen('touchend')
   touchEnd(event: TouchEvent) {
-    const tabContainer = this.getSliderContainer()
-    if (tabContainer?.contains(event.target as HTMLElement)) {
+    const container = this.getSliderContainer()
+    if (container?.contains(event.target as HTMLElement)) {
       if (event.changedTouches[0].pageX < this.xPosition) {
         this.setSlide(this.slideIndex + 1)
       } else {
@@ -52,15 +52,15 @@ export class TabSlider implements ComponentInterface {
   }
 
   private getChildItems() {
-    return Array.from(this.el.querySelectorAll<HTMLBalTabSliderItemElement>('bal-tab-slider-item'))
+    return Array.from(this.el.querySelectorAll<HTMLBalSliderItemElement>('bal-slider-item'))
   }
 
   private getSliderContainer() {
-    return this.el.querySelector<HTMLDivElement>('.bal-tab-slider__container')
+    return this.el.querySelector<HTMLDivElement>('.bal-slider__container')
   }
 
-  private getTabContainer() {
-    return this.el.querySelector<HTMLDivElement>('.bal-tab-slider__container__slides')
+  private getSlideContainer() {
+    return this.el.querySelector<HTMLDivElement>('.bal-slider__container__slides')
   }
 
   private updateSlides() {
@@ -72,18 +72,18 @@ export class TabSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
-    const container = this.getTabContainer()
+    const slideContainer = this.getSlideContainer()
     const slideWidth = this.slides[0].clientWidth
-    if (container && slide >= 0 && slide <= this.slides.length) {
+    if (slideContainer && slide >= 0 && slide <= this.slides.length) {
       this.slideIndex = slide
-      container.style.transitionDuration = '1.2s'
-      container.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
-      container.style.transform = `translate(-${(this.slideIndex - 1) * slideWidth}px)`
+      slideContainer.style.transitionDuration = '1.2s'
+      slideContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
+      slideContainer.style.transform = `translate(-${(this.slideIndex - 1) * slideWidth}px)`
     }
   }
 
   render() {
-    const block = BEM.block('tab-slider')
+    const block = BEM.block('slider')
     const container = block.element('container')
     const containerSlides = container.element('slides')
 

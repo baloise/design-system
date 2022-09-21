@@ -1,11 +1,11 @@
-import docs from './bal-tab-slider.docs.mdx'
+import docs from './bal-slider.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalTabSlider, BalTabSliderItem } from '../../../../.storybook/vue/components'
+import { BalSlider, BalSliderItem } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
-  title: 'Components/Tab Slider',
-  component: BalTabSlider,
-  subcomponents: { BalTabSliderItem },
+  title: 'Components/Slider',
+  component: BalSlider,
+  subcomponents: { BalSliderItem },
   docs,
 })
 
@@ -15,8 +15,8 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-tab-slider v-bind="args">
-    <bal-tab-slider-item >
+  <bal-slider v-bind="args">
+    <bal-slider-item >
       <bal-card flat fullheight class="mt-2" color="red-light">
         <bal-tag color="red" position="center" size="large">Bestseller</bal-tag>
         <bal-card-title>Title</bal-card-title>
@@ -24,8 +24,8 @@ export const Basic = args => ({
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </bal-card-content>
       </bal-card>
-    </bal-tab-slider-item>
-    <bal-tab-slider-item>
+    </bal-slider-item>
+    <bal-slider-item>
       <bal-card flat fullheight class="mt-2" color="purple-light">
         <bal-tag color="red" position="center" size="large">Bestseller</bal-tag>
         <bal-card-title>Title</bal-card-title>
@@ -33,8 +33,8 @@ export const Basic = args => ({
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </bal-card-content>
       </bal-card>
-    </bal-tab-slider-item>
-    <bal-tab-slider-item>
+    </bal-slider-item>
+    <bal-slider-item>
       <bal-card flat fullheight class="mt-2" color="green-light">
         <bal-tag color="red" position="center" size="large">Bestseller</bal-tag>
         <bal-card-title>Title</bal-card-title>
@@ -42,8 +42,8 @@ export const Basic = args => ({
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </bal-card-content>
       </bal-card>
-      </bal-tab-slider-item>
-  </bal-tab-slider>`,
+      </bal-slider-item>
+  </bal-slider>`,
 })
 Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic) }

@@ -6,12 +6,12 @@ import { stopEventBubbling } from '../../../helpers/form-input.helpers'
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-slider',
+  tag: 'bal-input-slider',
 })
-export class Slider {
+export class InputSlider {
   @Element() el!: HTMLElement
 
-  private inputId = `bal-slider-${SliderIds++}`
+  private inputId = `bal-input-slider-${inputSliderIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false
@@ -105,7 +105,7 @@ export class Slider {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalSliderChangeDetail>
+  @Event() balChange!: EventEmitter<Events.BalInputSliderChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -236,7 +236,7 @@ export class Slider {
   }
 
   render() {
-    const block = BEM.block('slider')
+    const block = BEM.block('input-slider')
     const backgroundEl = block.element('background')
 
     const backgroundUpperEl = backgroundEl.element('upper')
@@ -329,4 +329,4 @@ export class Slider {
   }
 }
 
-let SliderIds = 0
+let inputSliderIds = 0

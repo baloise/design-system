@@ -51,6 +51,6 @@ export namespace Events {
   export type BalSelectChangeDetail = string | string[] | undefined
   export type BalSelectChange = CustomEvent<BalSelectChangeDetail>
 
-  export type BalSliderChangeDetail = string | number | null
-  export type BalSliderChange = CustomEvent<BalSliderChangeDetail>
+  export type BalInputSliderChangeDetail = string | number | null
+  export type BalInputSliderChange = CustomEvent<BalInputSliderChangeDetail>
 }

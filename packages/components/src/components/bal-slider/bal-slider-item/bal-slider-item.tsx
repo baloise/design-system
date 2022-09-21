@@ -1,18 +1,18 @@
 import { Component, ComponentInterface, h, Host } from '@stencil/core'
 
 @Component({
-  tag: 'bal-tab-slider-item',
+  tag: 'bal-slider-item',
 })
 export class TabSliderItem implements ComponentInterface {
-  private inputId = `bal-tab-slider-item-${tabSliderItemId++}`
+  private inputId = `bal-slider-item-${sliderItemId++}`
 
   render() {
     return (
-      <Host aria-id={this.inputId} class="bal-tab-slider-item">
+      <Host aria-id={this.inputId} class="bal-slider-item">
         <slot></slot>
       </Host>
     )
   }
 }
 
-let tabSliderItemId = 0
+let sliderItemId = 0
