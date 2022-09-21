@@ -187,13 +187,12 @@ export class Pagination {
     const buttonColor = isSmall ? 'link' : 'text'
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
-    const isSticky = this.sticky ? 'is-sticky' : ''
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(isSticky).class(),
+          ...block.modifier('is-sticky').class(this.sticky),
         }}
       >
         <nav
