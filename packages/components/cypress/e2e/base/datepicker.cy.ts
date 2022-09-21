@@ -3,8 +3,8 @@ import { addDays, addWeeks, formatISO, subDays, subWeeks } from 'date-fns'
 const now = () => new Date()
 const formatDateString = (date: Date) => formatISO(date, { representation: 'date' })
 const format = (date: Date) => {
-  const day = `${date.getDate()}`
-  const month = `${date.getMonth() + 1}`
+  const day = `0${date.getDate()}`.slice(-2)
+  const month = `0${date.getMonth() + 1}`.slice(-2)
 
   return `${day}.${month}.${date.getFullYear()}`
 }
@@ -24,7 +24,7 @@ describe('bal-datepicker', () => {
         .balDatepickerToggle()
         .balDatepickerPick(now())
         .balDatepickerIsClosed()
-        .contains(format(now()))
+        .should('have.value', format(now()))
     })
   })
 
@@ -53,9 +53,8 @@ describe('bal-datepicker', () => {
   describe('reset form', () => {
     it('should reset to default values', () => {
       cy.getByTestId('reset').balDatepickerToggle().balDatepickerPick(now())
-      cy.getByTestId('button-reset')
-        .click()
-        .contains(format(new Date(2022, 8, 16)))
+      cy.getByTestId('button-reset').click()
+      cy.getByTestId('reset').should('have.value', format(new Date(2022, 8, 16)))
     })
   })
 })

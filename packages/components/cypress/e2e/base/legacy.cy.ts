@@ -33,23 +33,15 @@ describe('Legacy', () => {
 
     const accordion = AccordionAccessor(byTestId('accordion'))
 
-    it('should navigate to Accordion page and open all Accordions on the page', () => {
-      accordion.get().click({ multiple: true })
-    })
-
-    it('should navigate to Accordion page and check if Accordion contains value', () => {
+    it('should check the AccordionAccessor', () => {
       accordion.get().contains('Show more')
+      accordion.get().assertBodyNotExists()
+
       accordion.get().click({ multiple: true })
       accordion.get().contains('Show less')
-    })
-
-    it('should navigate to Accordion page and assert if body exist', () => {
-      accordion.get().click({ multiple: true })
       accordion.get().assertBodyExists()
-    })
 
-    it('should navigate to Accordion page and assert if body not exist', () => {
-      accordion.get().assertBodyNotExists()
+      accordion.get().click({ multiple: true })
     })
   })
 
@@ -60,14 +52,14 @@ describe('Legacy', () => {
     const primaryButtonDisabled = ButtonAccessor(byTestId('primary-button-disabled'))
 
     it('should navigate to Button page and test enabled Button on the page', () => {
-      primaryButton.get().contains('Continue')
+      primaryButton.get().contains('Primary')
       primaryButton.get().click()
       primaryButton.get().assertIsDisabled(false)
       primaryButton.get().assertExists()
     })
 
     it('should navigate to Button page and test disabled Button on the page', () => {
-      primaryButtonDisabled.get().contains('Primary')
+      primaryButtonDisabled.get().contains('Disabled')
       primaryButtonDisabled.get().assertIsDisabled()
       primaryButtonDisabled.get().assertExists()
     })
@@ -122,7 +114,7 @@ describe('Legacy', () => {
       accessor.get().pick(now()).shouldHaveValue(new Date())
       cy.getByTestId('basic').clear().type('{enter}')
       accessor.get().write('12.12.2020')
-      cy.getByTestId('basic').contains('12.12.2020')
+      cy.getByTestId('basic').should('have.value', '12.12.2020')
     })
   })
 

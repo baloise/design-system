@@ -7,7 +7,6 @@ import {
   isTag,
   isTextarea,
   isModal,
-  isDatepicker,
   selectors,
   wrapCommand,
   wrapOptions,
@@ -38,10 +37,6 @@ Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, 
 
   if (isModal(element)) {
     return command('.bal-modal__content')
-  }
-
-  if (isDatepicker(element)) {
-    return command(selectors.datepicker.input)
   }
 
   if (hasClass(element, 'bal-tabs__steps__item')) {
