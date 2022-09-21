@@ -1,10 +1,16 @@
-import { BalComponentStory } from '../../../stories/utils'
+import { BalComponentStory, stencilArgType } from '../../../stories/utils'
 import { BalButton, BalButtonGroup } from '../../../../.storybook/vue/components'
 import docs from './bal-button.docs.mdx'
+
+const balCheckboxGroupArgTypes = stencilArgType(BalButtonGroup)
 
 const component = BalComponentStory({
   component: BalButton,
   docs,
+  argTypes: {
+    groupDirection: balCheckboxGroupArgTypes.direction,
+    groupPosition: balCheckboxGroupArgTypes.position,
+  },
   args: {
     content: 'Primary',
     color: 'primary',
@@ -41,13 +47,17 @@ Basic.parameters = {
 export const ButtonVariants = args => ({
   components: { ...component.components, BalButtonGroup },
   setup: () => ({ args }),
-  template: `<bal-button-group>
+  template: `<bal-button-group :direction="args.groupDirection" :position="args.groupPosition">
   <bal-button v-bind="args">Primary</bal-button>
   <bal-button v-bind="args" color="info">Secondary</bal-button>
   <bal-button v-bind="args" color="info" outlined>Tertiary</bal-button>
   <bal-button v-bind="args" color="link">Link</bal-button>
 </bal-button-group>`,
 })
+ButtonVariants.args = {
+  groupDirection: 'column',
+  groupPosition: 'center',
+}
 ButtonVariants.parameters = {
   ...component.sourceCode(ButtonVariants),
   controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
