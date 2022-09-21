@@ -16,7 +16,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **toast:** adjust width for tablet and desktop ([d04f3a5](https://github.com/baloise/design-system/commit/d04f3a557c43a2e2d17f5a5c2a2a14a67d530612))
 
 
-
 ## [10.22.0](https://github.com/baloise/design-system/compare/v10.21.2...v10.22.0) (2022-09-19)
 
 ### Features
