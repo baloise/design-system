@@ -1,4 +1,4 @@
-describe('Slider', () => {
+describe('bal-slider', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-slider/test/bal-slider.cy.html')
   })

@@ -46,7 +46,7 @@ export const selectors = {
   },
   button: {
     main: 'button',
-    label: 'span.data-test-button-label',
+    label: '.data-test-button-label',
   },
   checkbox: {
     input: 'input.data-test-checkbox-input',
@@ -134,10 +134,7 @@ export const wrapCommand = (
           displayName,
           message,
         })
-        if (displayName !== 'contains') {
-          return fn($el)
-        }
-        fn($el)
+        return fn($el)
       })
       .wrapComponent(element as any, { log: false })
   }

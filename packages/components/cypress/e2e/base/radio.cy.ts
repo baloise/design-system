@@ -1,4 +1,4 @@
-describe('Radio', () => {
+describe('bal-radio', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-radio/test/bal-radio.cy.html')
   })

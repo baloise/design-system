@@ -1,4 +1,4 @@
-describe('Input Stepper', () => {
+describe('bal-input-stepper', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-input-stepper/test/bal-input-stepper.cy.html')
   })

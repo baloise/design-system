@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+    <script type="module">
+      import { balSnackbarController } from '/build/index.esm.js'
+
+      window.balSnackbarController = balSnackbarController
+    </script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <section>
+          <bal-button id="snack-default" color="success" data-testid="snack">Show success Snack</bal-button>
+          <bal-button id="snack-warning" color="warning" data-testid="snack-warning">Show warning Snack</bal-button>
+        </section>
+        <script>
+          document.getElementById('snack-default').onclick = function () {
+            balSnackbarController.create({
+              message: 'Hi I am a default Snack!',
+              subject: 'Subject',
+              color: 'success',
+              icon: 'info-circle',
+              duration: 1000,
+            })
+          }
+          document.getElementById('snack-warning').onclick = function () {
+            balSnackbarController.create({
+              message: 'Warning!',
+              color: 'warning',
+              subject: 'Subject',
+              icon: 'info-circle',
+            })
+          }
+        </script>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
