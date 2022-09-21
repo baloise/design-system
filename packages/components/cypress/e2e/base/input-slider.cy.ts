@@ -1,6 +1,6 @@
-describe('bal-slider', () => {
+describe('bal-input-slider', () => {
   before(() => {
-    cy.platform('desktop').page('/components/form/bal-slider/test/bal-slider.cy.html')
+    cy.platform('desktop').page('/components/form/bal-input-slider/test/bal-input-slider.cy.html')
   })
 
   it('should have value', () => {
