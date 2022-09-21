@@ -1579,6 +1579,7 @@ export namespace Components {
           * Go to the previous page
          */
         "previous": () => Promise<void>;
+        "tabsNames": string[];
         /**
           * The total amount of pages
          */
@@ -2199,6 +2200,10 @@ export namespace Components {
           * This is the key of the tab.
          */
         "value": string;
+    }
+    interface BalTabSlider {
+    }
+    interface BalTabSliderItem {
     }
     interface BalTable {
         /**
@@ -3297,6 +3302,18 @@ declare global {
         prototype: HTMLBalTabItemElement;
         new (): HTMLBalTabItemElement;
     };
+    interface HTMLBalTabSliderElement extends Components.BalTabSlider, HTMLStencilElement {
+    }
+    var HTMLBalTabSliderElement: {
+        prototype: HTMLBalTabSliderElement;
+        new (): HTMLBalTabSliderElement;
+    };
+    interface HTMLBalTabSliderItemElement extends Components.BalTabSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalTabSliderItemElement: {
+        prototype: HTMLBalTabSliderItemElement;
+        new (): HTMLBalTabSliderItemElement;
+    };
     interface HTMLBalTableElement extends Components.BalTable, HTMLStencilElement {
     }
     var HTMLBalTableElement: {
@@ -3461,6 +3478,8 @@ declare global {
         "bal-stage-head": HTMLBalStageHeadElement;
         "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
+        "bal-tab-slider": HTMLBalTabSliderElement;
+        "bal-tab-slider-item": HTMLBalTabSliderItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
@@ -5093,6 +5112,7 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
          */
         "pageRange"?: number;
+        "tabsNames"?: string[];
         /**
           * The total amount of pages
          */
@@ -5738,6 +5758,10 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalTabSlider {
+    }
+    interface BalTabSliderItem {
+    }
     interface BalTable {
         /**
           * If `true` the table has a full width
@@ -6116,6 +6140,8 @@ declare namespace LocalJSX {
         "bal-stage-head": BalStageHead;
         "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
+        "bal-tab-slider": BalTabSlider;
+        "bal-tab-slider-item": BalTabSliderItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
@@ -6250,6 +6276,8 @@ declare module "@stencil/core" {
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
             "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
+            "bal-tab-slider": LocalJSX.BalTabSlider & JSXBase.HTMLAttributes<HTMLBalTabSliderElement>;
+            "bal-tab-slider-item": LocalJSX.BalTabSliderItem & JSXBase.HTMLAttributes<HTMLBalTabSliderItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;

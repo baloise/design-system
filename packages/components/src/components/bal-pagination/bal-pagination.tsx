@@ -38,6 +38,8 @@ export class Pagination {
    */
   @Prop() pageRange = 2
 
+  @Prop() tabsNames: string[] = []
+
   /**
    * Triggers when a page change happens
    */
@@ -90,18 +92,38 @@ export class Pagination {
   renderPageElement(pageNumber: number) {
     const isActive = this._value === pageNumber
     const dot = BEM.block('pagination').element('nav').element('pagination-list').element('dot')
-    return this.interface === 'small' ? (
-      <li>
-        <span
+    const tab = BEM.block('pagination').element('nav').element('pagination-list').element('tab')
+
+    if (this.interface === 'small') {
+      return (
+        <li>
+          <span
+            class={{
+              ...dot.class(),
+              ...dot.modifier('active').class(isActive),
+              ...dot.modifier('inactive').class(!isActive),
+            }}
+            onClick={() => this.selectPage(pageNumber)}
+          />
+        </li>
+      )
+    }
+    if (this.interface === 'tabs') {
+      return (
+        <bal-button
+          expanded
           class={{
-            ...dot.class(),
-            ...dot.modifier('active').class(isActive),
-            ...dot.modifier('inactive').class(!isActive),
+            ...tab.class(),
           }}
+          color="light"
+          inverted={isActive}
           onClick={() => this.selectPage(pageNumber)}
-        />
-      </li>
-    ) : (
+        >
+          {this.tabsNames[pageNumber - 1] ?? pageNumber}
+        </bal-button>
+      )
+    }
+    return (
       <li>
         <bal-button square color={isActive ? 'primary' : 'text'} onClick={() => this.selectPage(pageNumber)}>
           {pageNumber}
@@ -153,6 +175,7 @@ export class Pagination {
     const elNext = elNav.element('pagination-next')
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
+    const hasTabs = this.interface === 'tabs'
     const buttonColor = isSmall ? 'link' : 'text'
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
@@ -171,35 +194,37 @@ export class Pagination {
           role="navigation"
           aria-label="pagination"
         >
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elPrevious.class(),
-              ...elPrevious.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value < 2}
-            onClick={() => this.previous()}
-          >
-            <bal-icon name="nav-go-left" size="small" />
-          </bal-button>
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elNext.class(),
-              ...elNext.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value === this.totalPages}
-            onClick={() => this.next()}
-          >
-            <bal-icon name="nav-go-right" size="small" />
-          </bal-button>
-          {this.interface === '' || (isSmall && this.totalPages <= 5) ? (
+          {!hasTabs && [
+            <bal-button
+              square
+              color={buttonColor}
+              size={buttonSize}
+              flat={flat}
+              class={{
+                ...elPrevious.class(),
+                ...elPrevious.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value < 2}
+              onClick={() => this.previous()}
+            >
+              <bal-icon name="nav-go-left" size="small" />
+            </bal-button>,
+            <bal-button
+              square
+              color={buttonColor}
+              size={buttonSize}
+              flat={flat}
+              class={{
+                ...elNext.class(),
+                ...elNext.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value === this.totalPages}
+              onClick={() => this.next()}
+            >
+              <bal-icon name="nav-go-right" size="small" />
+            </bal-button>,
+          ]}
+          {this.interface === '' || (isSmall && this.totalPages <= 5) || hasTabs ? (
             [
               <ul
                 class={{
