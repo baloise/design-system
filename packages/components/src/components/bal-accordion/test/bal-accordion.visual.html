@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <section>
+          <bal-accordion data-testid="basic" close-label="Show less" open-label="Show more">
+            <p class="p-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </p>
+          </bal-accordion>
+        </section>
+        <section>
+          <bal-card>
+            <bal-card-title>BaloiseCombi</bal-card-title>
+            <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+            <bal-accordion
+              data-testid="with-card"
+              card
+              open-icon="edit"
+              close-label="Show less"
+              open-label="Show more"
+              close-icon="close"
+            >
+              <p class="p-5">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+            </bal-accordion>
+          </bal-card>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
