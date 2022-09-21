@@ -12,7 +12,7 @@ export class CardTitle {
   render() {
     return (
       <Host class="bal-card-title">
-        <bal-heading level="h4" space="none" inverted={this.inverted}>
+        <bal-heading level="h3" space="none" inverted={this.inverted}>
           <slot></slot>
         </bal-heading>
       </Host>

@@ -21,7 +21,7 @@ async function main() {
     const slots = []
     const events = []
     const componentName = pascalCase(component.tag)
-    const docUrl = 'https://design.baloise.dev/#/components/' + component.tag + '/readme'
+    const docUrl = 'https://design-system-next.vercel.app/#/components/' + component.tag + '/readme'
 
     for (const prop of component.props || []) {
       attributes.push({

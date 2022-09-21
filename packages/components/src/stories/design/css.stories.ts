@@ -181,21 +181,29 @@ export const TypographyTitles = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
+  <div class="columns m-0">
+  <div class="column has-background-yellow-1">
+    <h1 class="title is-size-xxxxx-large">Display</h1>
+    <h1 class="title is-size-xxxx-large">Display-2</h1>
+  </div>
+  <div class="column has-background-yellow-2">
+    <h1 class="subtitle is-size-xxxxx-large">Display</h1>
+    <h1 class="subtitle is-size-xxxx-large">Display-2</h1>
+  </div>
+</div>
 <div class="columns m-0">
   <div class="column has-background-red-1">
-    <h1 class="title is-size-xxxxx-large">Display</h1>
-    <h1 class="title is-size-xxxx-large">Title 1</h1>
-    <h2 class="title is-size-xxx-large">Title 2</h2>
-    <h3 class="title is-size-xx-large">Title 3</h3>
-    <h4 class="title is-size-x-large">Title 4</h4>
+    <h1 class="title is-size-xxx-large">Title 1</h1>
+    <h2 class="title is-size-xx-large">Title 2</h2>
+    <h3 class="title is-size-x-large">Title 3</h3>
+    <h4 class="title is-size-large">Title 4</h4>
     <h5 class="title is-size-normal">Title 5</h5>
   </div>
   <div class="column has-background-red-2">
-    <h1 class="subtitle is-size-xxxxx-large">display</h1>
-    <h1 class="subtitle is-size-xxxx-large">Subtitle 1</h1>
-    <h2 class="subtitle is-size-xxx-large">Subtitle 2</h2>
-    <h3 class="subtitle is-size-xx-large">Subtitle 3</h3>
-    <h4 class="subtitle is-size-x-large">Subtitle 4</h4>
+    <h2 class="subtitle is-size-xxx-large">Subtitle 1</h2>
+    <h3 class="subtitle is-size-xx-large">Subtitle 2</h3>
+    <h4 class="subtitle is-size-x-large">Subtitle 3</h4>
+    <h4 class="subtitle is-size-large">Subtitle 4</h4>
     <h5 class="subtitle is-size-normal">Subtitle 5</h5>
   </div>
 </div>`,

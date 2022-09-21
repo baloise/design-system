@@ -50,10 +50,22 @@ export namespace Props {
     | 'purple-light'
     | 'green-light'
     | 'grey-light'
+    | 'purple-1'
+    | 'purple-2'
+    | 'purple-3'
+    | 'green-1'
+    | 'green-2'
+    | 'green-3'
+    | 'red-1'
+    | 'red-2'
+    | 'red-3'
+    | 'yellow-1'
+    | 'yellow-2'
+    | 'yellow-3'
 
   export type BalCloseSize = 'small' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  export type BalHeadingLevel = 'display' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalSelectFilter = 'includes' | 'starts-with'

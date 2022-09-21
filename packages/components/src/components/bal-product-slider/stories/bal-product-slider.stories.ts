@@ -23,7 +23,7 @@ export const Basic = args => ({
   <bal-product-slider-item color="purple" label="Hypothek" src="assets/images/brand/home.svg" />
   <bal-product-slider-item color="red" label="Pensionsplanung" src="assets/images/brand/bars.svg" />
   <bal-product-slider-item color="green" label="Anlegen" src="assets/images/brand/plant.svg" />
-  <bal-product-slider-item color="yellow" label="Finanzplanung" src="assets/images/brand/pie.svg" />
+  <bal-product-slider-item color="yellow" label="Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung" src="assets/images/brand/pie.svg" />
   <bal-product-slider-item color="purple" label="E-Banking" src="assets/images/brand/notebook.svg" />
   <bal-product-slider-item color="red" label="Sparen" src="assets/images/brand/pig.svg" />
   <bal-product-slider-item color="green" label="YouGo" src="assets/images/brand/diamond.svg" />

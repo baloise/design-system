@@ -113,7 +113,7 @@ export const parameters = {
         ['Overview', 'How to use Storybook', 'Figma', 'HTML5', 'Angular', 'Vue', 'React'],
         'Implementation',
         'Design',
-        ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons', 'Platform', 'Page Layout', 'Templates'],
+        ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons Overview', 'Platform', 'Page Layout', 'Templates'],
         'Components',
         'Templates',
         'Contributing',
