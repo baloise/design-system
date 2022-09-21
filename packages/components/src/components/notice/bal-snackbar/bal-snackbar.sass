@@ -2,7 +2,8 @@
 
 +block(snackbar)
   +alert-wrapper
-  display: flex
+  +tablet
+    max-width: 288px
   justify-content: flex-end
   +element(inner)
     +alert-inner(var(--bal-color-white))

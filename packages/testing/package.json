@@ -1,18 +1,18 @@
 {
   "name": "@baloise/design-system-next-testing",
-  "version": "10.22.1",
+  "version": "10.22.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise/design-system.git"
+    "url": "https://github.com/baloise-incubator/design-system.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/baloise/design-system/issues"
+    "url": "https://github.com/baloise-incubator/design-system/issues"
   },
-  "homepage": "https://design.baloise.dev",
+  "homepage": "https://design-system-next.vercel.app",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
@@ -39,7 +39,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.22.1",
+    "@baloise/design-system-next-components": "10.22.2",
     "date-fns": "~2.29.1"
   },
   "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"

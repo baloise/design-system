@@ -6,11 +6,10 @@
   position: relative
   width: auto
   width: 100% !important
-  padding-left: 1rem
-  padding-right: 1rem
+  padding-left: var(--bal-container-space)
+  padding-right: var(--bal-container-space)
   &.is-fluid
     max-width: none !important
-    width: 100%
   &.is-detail-page
     max-width: 744px !important
   &.is-compact
@@ -18,9 +17,9 @@
   &.is-blog-page
     max-width: 984px !important
   +tablet
-    padding-left: 2.5rem
-    padding-right: 2.5rem
+    padding-left: var(--bal-container-space-tablet)
+    padding-right: var(--bal-container-space-tablet)
   +desktop
-    padding-left: 3rem
-    padding-right: 3rem
-    max-width: 1496px
+    padding-left: var(--bal-container-space-desktop)
+    padding-right: var(--bal-container-space-desktop)
+    max-width: calc(var(--bal-container-max-width) + var(--bal-container-space-desktop) + var(--bal-container-space-desktop))
