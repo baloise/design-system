@@ -95,7 +95,6 @@ describe('Legacy', () => {
     before(() => cy.page('/components/form/bal-checkbox/test/bal-checkbox.cy.html'))
 
     const normalCheckboxElement = CheckboxAccessor(byTestId('checkbox-normal'))
-    // const disabledCheckboxElement = CheckboxAccessor(byTestId('checkbox-disabled'))
     const multiSelect = MultiSelectButtonAccessor(byTestId('multi-select'))
 
     it('Can be checked and unchecked', () => {
@@ -187,7 +186,6 @@ describe('Legacy', () => {
   describe('Radio', () => {
     before(() => cy.page('/components/form/bal-radio/test/bal-radio.cy.html'))
 
-    // const radio = RadioAccessor(byTestId('radio'))
     const selectButton = SelectButtonAccessor(byTestId('select-button'))
 
     it('should select', () => {
