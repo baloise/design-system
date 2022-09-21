@@ -1,7 +1,5 @@
 import { hasClass } from './../helpers'
 import {
-  isAccordion,
-  isButton,
   isNumberInput,
   isCheckbox,
   isInput,
@@ -17,14 +15,6 @@ import {
 
 Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, options) => {
   const command = wrapCommand('contains', element, content, $el => originalFn($el, content, wrapOptions(options)))
-
-  if (isAccordion(element)) {
-    return command(selectors.accordion.button)
-  }
-
-  if (isButton(element)) {
-    return command(selectors.button.label)
-  }
 
   if (isCheckbox(element)) {
     return command(selectors.checkbox.text)
