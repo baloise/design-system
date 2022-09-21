@@ -125,6 +125,14 @@ const tokens = {
     'widescreen': '1440px',
     'fullhd': '1920px',
   },
+  container: {
+    maxWidth: '1400px',
+    space: {
+      mobile: '1rem',
+      tablet: '2.5rem',
+      desktop: '3rem',
+    },
+  },
   radius: {
     none: { value: '0' },
     small: { value: '4px' },
