@@ -240,8 +240,8 @@ const tokens = {
         },
       },
       'xxxx-large': {
-        figmaName: 'h1',
-        description: 'Should only be used for stage titles and headings of level 1.',
+        figmaName: 'display-2',
+        description: 'Should only be uses to illustrate large stage areas.',
         mobile: {
           fontSize: '2rem',
           lineHeight: '2.5rem',
@@ -259,8 +259,8 @@ const tokens = {
         },
       },
       'xxx-large': {
-        figmaName: 'h2',
-        description: 'Should only be used for content titles and headings of level 2.',
+        figmaName: 'h1',
+        description: 'Should only be used for stage titles and headings of level 1.',
         mobile: {
           fontSize: '1.75rem',
           lineHeight: '2rem',
@@ -278,8 +278,8 @@ const tokens = {
         },
       },
       'xx-large': {
-        figmaName: 'h3',
-        description: "Should only be used for form titles, quick link navigation's and headings of level 3.",
+        figmaName: 'h2',
+        description: 'Should only be used for content titles and headings of level 2.',
         mobile: {
           fontSize: '1.5rem',
           lineHeight: '2rem',
@@ -297,8 +297,8 @@ const tokens = {
         },
       },
       'x-large': {
-        figmaName: 'h4',
-        description: 'Should only be used for standard card titles and headings of level 4.',
+        figmaName: 'h3',
+        description: "Should only be used for form titles, quick link navigation's and headings of level 3.",
         mobile: {
           fontSize: '1.25rem',
           lineHeight: '2rem',
@@ -316,15 +316,16 @@ const tokens = {
         },
       },
       'large': {
-        figmaName: 'lead-text',
-        description: 'Should only be used for lead text/paragraphs after a heading.',
+        figmaName: 'h4 / lead-text',
+        description:
+          'Should only be used for standard card titles and headings of level 4 or for lead text/paragraphs after a heading',
         mobile: {
           fontSize: '1.125rem',
-          lineHeight: '2rem',
+          lineHeight: '1.5rem',
           spacing: '2',
         },
         tablet: {
-          fontSize: '1.125rem',
+          fontSize: '1.25rem',
           lineHeight: '2rem',
           spacing: '2',
         },
@@ -542,10 +543,11 @@ const typographyAlias = (target: string, source: string) => {
   }
 }
 typographyAlias('display', 'xxxxx-large')
-typographyAlias('1', 'xxxx-large')
-typographyAlias('2', 'xxx-large')
-typographyAlias('3', 'xx-large')
-typographyAlias('4', 'x-large')
+typographyAlias('display-2', 'xxxx-large')
+typographyAlias('1', 'xxx-large')
+typographyAlias('2', 'xx-large')
+typographyAlias('3', 'x-large')
+typographyAlias('4', 'large')
 typographyAlias('5', 'normal')
 typographyAlias('6', 'small')
 typographyAlias('7', 'x-small')

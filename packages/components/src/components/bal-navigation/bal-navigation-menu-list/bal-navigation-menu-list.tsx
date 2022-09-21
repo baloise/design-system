@@ -23,7 +23,7 @@ export class NavigationMenuList {
    * Target of the menu list card headline target as link
    */
   @Prop() target: Props.BalButtonTarget = '_self'
-  @State() headingLevel!: 'h4' | 'h5'
+  @State() headingLevel!: 'h3' | 'h4'
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -36,10 +36,10 @@ export class NavigationMenuList {
 
   setHeadingLevel = () => {
     if (isPlatform('touch')) {
-      this.headingLevel = 'h5'
+      this.headingLevel = 'h4'
       return
     }
-    this.headingLevel = 'h4'
+    this.headingLevel = 'h3'
   }
 
   render() {

@@ -22,15 +22,11 @@ export class ModalHeader {
     return (
       <Host class="bal-modal__header">
         <div class="bal-modal__header__title">
-          <h4 class="title is-size-4 m-0">
+          <h2 class="title is-size-2 m-0">
             <slot></slot>
-          </h4>
+          </h2>
         </div>
-        <bal-close
-          class="bal-modal__header__close data-test-modal-close"
-          size="medium"
-          onClick={this.closeHandler}
-        ></bal-close>
+        <bal-close class="bal-modal__header__close data-test-modal-close" onClick={this.closeHandler}></bal-close>
       </Host>
     )
   }
