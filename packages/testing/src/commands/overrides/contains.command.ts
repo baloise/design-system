@@ -1,7 +1,5 @@
 import { hasClass } from './../helpers'
 import {
-  isAccordion,
-  isButton,
   isNumberInput,
   isCheckbox,
   isInput,
@@ -9,7 +7,6 @@ import {
   isTag,
   isTextarea,
   isModal,
-  isDatepicker,
   selectors,
   wrapCommand,
   wrapOptions,
@@ -17,14 +14,6 @@ import {
 
 Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, options) => {
   const command = wrapCommand('contains', element, content, $el => originalFn($el, content, wrapOptions(options)))
-
-  if (isAccordion(element)) {
-    return command(selectors.accordion.button)
-  }
-
-  if (isButton(element)) {
-    return command(selectors.button.label)
-  }
 
   if (isCheckbox(element)) {
     return command(selectors.checkbox.text)
@@ -48,10 +37,6 @@ Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, 
 
   if (isModal(element)) {
     return command('.bal-modal__content')
-  }
-
-  if (isDatepicker(element)) {
-    return command(selectors.datepicker.input)
   }
 
   if (hasClass(element, 'bal-tabs__steps__item')) {

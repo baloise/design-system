@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <section>
+          <bal-popover id="bal-popover-1" is-active="false" data-testid="popover">
+            <bal-button
+              bal-popover-trigger
+              id="bal-popover-1-trigger"
+              aria-haspopup="true"
+              aria-controls="popover-menu"
+              color="is-info"
+              outlined
+            >
+              <span id="bal-popover-1-trigger-label">Trigger</span>
+            </bal-button>
+            <bal-popover-content scrollable="100">
+              <div style="padding: 0 15px 15px">
+                <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus
+                  doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis
+                  mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
+                  dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor
+                  aperiam perferendis mollitia facilis harum vero.
+                </p>
+              </div>
+            </bal-popover-content>
+          </bal-popover>
+        </section>
+        <script>
+          var popover = document.getElementById('bal-popover-1')
+          var trigger = document.getElementById('bal-popover-1-trigger')
+
+          trigger.addEventListener('click', function (event) {
+            popover.toggle()
+          })
+        </script>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

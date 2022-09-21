@@ -1,31 +1,21 @@
-import { app } from '../../support/app'
-
-describe('Accordion', () => {
-  const page = app.getAccordionPage()
-
-  it('should verify that all accordions are closed', () => {
-    page.open()
-    cy.get('bal-accordion').each(el => {
-      cy.wrap(el).balAccordionIsClosed()
-    })
-  })
+describe('bal-accordion', () => {
+  before(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
 
   it('should open open and close an accordions', () => {
-    page.open()
-    cy.get(page.accordion).balAccordionIsClosed()
-    cy.get(page.accordion).click().balAccordionIsOpen()
-    cy.get(page.accordion).click().balAccordionIsClosed()
+    cy.getByTestId('accordion').balAccordionIsClosed()
+    cy.getByTestId('accordion').click()
+    cy.getByTestId('accordion').balAccordionIsOpen()
+    cy.getByTestId('accordion').click()
+    cy.getByTestId('accordion').balAccordionIsClosed()
   })
 
   it('should check if the accordion contains label', () => {
-    page.open()
-    cy.get(page.accordion).contains('Show more')
-    cy.get(page.accordion).click()
-    cy.get(page.accordion).contains('Show less')
+    cy.getByTestId('accordion').contains('Show more')
+    cy.getByTestId('accordion').click()
+    cy.getByTestId('accordion').contains('Show less')
   })
 
   it('should check if the accordion is not disabled', () => {
-    page.open()
-    cy.get(page.accordion).should('not.be.disabled')
+    cy.getByTestId('accordion').should('not.be.disabled')
   })
 })

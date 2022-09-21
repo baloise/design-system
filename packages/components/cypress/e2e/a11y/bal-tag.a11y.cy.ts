@@ -1,6 +1,6 @@
 import { Props } from '../../../src'
 
-describe('Tag', () => {
+describe.skip('Tag', () => {
   context('a11y', () => {
     before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 

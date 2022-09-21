@@ -1,4 +1,4 @@
-describe('Input', () => {
+describe('bal-input', () => {
   before(() => {
     cy.platform('desktop').page('/components/form/bal-input/test/bal-input.cy.html')
   })

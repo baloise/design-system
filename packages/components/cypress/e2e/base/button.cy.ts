@@ -1,22 +1,17 @@
-import { app } from '../../support/app'
-
-describe('Button', () => {
-  const page = app.getButtonPage()
+describe('bal-button', () => {
+  before(() => cy.page('/components/bal-button/test/bal-button.cy.html'))
 
   it('should contain label', () => {
-    page.open()
-    cy.get(page.primaryButton).contains('Continue')
-    cy.get(page.primaryButtonDisabled).contains('Primary')
+    cy.getByTestId('primary-button').contains('Primary')
+    cy.getByTestId('primary-button-disabled').contains('Disabled')
   })
 
   it('should be clickable & focusable', () => {
-    page.open()
-    cy.get(page.primaryButton).click().should('be.focused').blur().should('not.be.focused')
+    cy.getByTestId('primary-button').click().should('be.focused').blur().should('not.be.focused')
   })
 
   it('should be disabled or not', () => {
-    page.open()
-    cy.get(page.primaryButton).should('not.be.disabled')
-    cy.get(page.primaryButtonDisabled).should('be.disabled')
+    cy.getByTestId('primary-button').should('not.be.disabled')
+    cy.getByTestId('primary-button-disabled').should('be.disabled')
   })
 })

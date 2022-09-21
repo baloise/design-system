@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="/build/design-system-next-components.css" />
     <script type="module" src="/build/design-system-next-components.esm.js"></script>
     <script nomodule src="/build/design-system-next-components.js"></script>
     <script type="module">
@@ -13,70 +12,28 @@
       window.balToastController = balToastController
     </script>
   </head>
-  <body class="bal-app">
-    <div class="container">
-      <h2 class="title is-size-2">Basic</h2>
-      <section>
-        <bal-button id="toast-default" color="success" data-testid="toast">Show success Toast</bal-button>
-        <bal-button id="toast-warning" color="warning" data-testid="toast-warning">Show warning Toast</bal-button>
-        <bal-button id="toast-danger" color="danger">Show error Toast</bal-button>
-        <br />
-        <br />
-        <bal-button id="toast-clear-all" color="info" outlined>Clear all toasts</bal-button>
-      </section>
-      <script>
-        document.getElementById('toast-default').onclick = function () {
-          balToastController.create({
-            message: 'Hi I am a default Toast! Hi I am a default Toast!',
-            color: 'success',
-            duration: 1000,
-          })
-        }
-        document.getElementById('toast-warning').onclick = function () {
-          const toast = balToastController.create({ message: 'Warning!', color: 'warning' })
-          setTimeout(() => toast.close, 2000)
-        }
-        document.getElementById('toast-danger').onclick = function () {
-          balToastController.create({
-            message: 'Danger zone!',
-            color: 'danger',
-            closeHandler: function () {
-              alert('Toast closed')
-            },
-          })
-        }
-        document.getElementById('toast-clear-all').onclick = function () {
-          balToastController.dismissAll()
-        }
-      </script>
-
-      <h2 class="title is-size-2">Colors</h2>
-      <section>
-        <bal-toast>
-          <strong>Default</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-        <bal-toast color="primary">
-          <strong>Primary</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-        <bal-toast color="info">
-          <strong>Info</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-        <bal-toast color="success">
-          <strong>Success</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-        <bal-toast color="warning">
-          <strong>Warning</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-        <bal-toast color="danger">
-          <strong>Danger</strong>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </bal-toast>
-      </section>
-    </div>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <h2 class="title is-size-2">Basic</h2>
+        <section>
+          <bal-button id="toast-default" color="success" data-testid="toast">Show success Toast</bal-button>
+          <bal-button id="toast-warning" color="warning" data-testid="toast-warning">Show warning Toast</bal-button>
+        </section>
+        <script>
+          document.getElementById('toast-default').onclick = function () {
+            balToastController.create({
+              message: 'Hi I am a default Toast! Hi I am a default Toast!',
+              color: 'success',
+              duration: 1000,
+            })
+          }
+          document.getElementById('toast-warning').onclick = function () {
+            const toast = balToastController.create({ message: 'Warning!', color: 'warning' })
+            setTimeout(() => toast.close, 2000)
+          }
+        </script>
+      </main>
+    </bal-doc-app>
   </body>
 </html>
