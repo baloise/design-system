@@ -28,16 +28,6 @@ export class HintTitle {
             <slot></slot>
           </span>
         </h3>
-        {/* <bal-heading
-          class={{
-            ...elHeading.class(),
-          }}
-          level="h3"
-          color="primary"
-          space="bottom"
-        >
-          <slot></slot>
-        </bal-heading> */}
       </Host>
     )
   }
