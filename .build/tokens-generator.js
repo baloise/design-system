@@ -22,8 +22,9 @@ const spaceDesktopVariables = []
 async function main() {
   log.title('design-tokens - generate')
 
-  generateColors()
   generateBreakpoints()
+  generateContainer()
+  generateColors()
   generateGrid()
   generateRadius()
   generateShadows()
@@ -163,6 +164,14 @@ function generateColors(){
       addToken(`color-${color}-inverted`, `${color}-inverted`, newAlias(`color-${colors[color].inverted}`), colors[colors[color].inverted].hex)
     }
   }
+}
+
+function generateContainer() {
+  const container = BaloiseDesignToken.container
+  addToken('container-space', 'container-space', container.space.mobile)
+  addToken('container-space-tablet', 'container-space-tablet', container.space.tablet)
+  addToken('container-space-desktop', 'container-space-desktop', container.space.desktop)
+  addToken('container-max-width', 'container-max-width', container.maxWidth)
 }
 
 function generateBreakpoints() {
