@@ -11,6 +11,7 @@ storybook-static/
 packages/components/src/stories/contributors.md
 packages/components/src/components.d.ts
 packages/icons/src/icons.ts
+packages/*/README.md
 
 packages/components/loader/
 packages/components/www/
