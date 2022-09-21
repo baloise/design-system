@@ -38,7 +38,15 @@ export class Pagination {
    */
   @Prop() pageRange = 2
 
+  /**
+   * List of tabs names for 'tabs' interface
+   */
   @Prop() tabsNames: string[] = []
+
+  /**
+   * If 'true, the pagination will be sticky to the top
+   */
+  @Prop() sticky = false
 
   /**
    * Triggers when a page change happens
@@ -179,11 +187,13 @@ export class Pagination {
     const buttonColor = isSmall ? 'link' : 'text'
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
+    const isSticky = this.sticky ? 'is-sticky' : ''
 
     return (
       <Host
         class={{
           ...block.class(),
+          ...block.modifier(isSticky).class(),
         }}
       >
         <nav

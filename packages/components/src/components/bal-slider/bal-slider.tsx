@@ -90,6 +90,7 @@ export class Slider implements ComponentInterface {
     return (
       <Host class={{ ...block.class() }}>
         <bal-pagination
+          sticky
           interface="tabs"
           totalPages={this.slides.length}
           value={this.slideIndex}
