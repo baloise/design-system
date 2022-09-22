@@ -11,7 +11,7 @@ import {
 const balFieldArgTypes = stencilArgType(BalField)
 
 const component = BalComponentStory({
-  title: 'Components/Form/InputSlider',
+  title: 'Components/Form/Input Slider',
   component: BalInputSlider,
   docs,
   argTypes: {
