@@ -1,7 +1,7 @@
 import docs from './bal-input-slider.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
-  BalSlider,
+  BalInputSlider,
   BalField,
   BalFieldControl,
   BalFieldLabel,
@@ -12,7 +12,7 @@ const balFieldArgTypes = stencilArgType(BalField)
 
 const component = BalComponentStory({
   title: 'Components/Form/InputSlider',
-  component: BalSlider,
+  component: BalInputSlider,
   docs,
   argTypes: {
     invalid: balFieldArgTypes.invalid,
