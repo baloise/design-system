@@ -1642,6 +1642,10 @@ export namespace Components {
          */
         "tabsNames": string[];
         /**
+          * If sticky, the top position will be determined by this value
+         */
+        "top": number;
+        /**
           * The total amount of pages
          */
         "totalPages": number;
@@ -5197,6 +5201,10 @@ declare namespace LocalJSX {
           * List of tabs names for 'tabs' interface
          */
         "tabsNames"?: string[];
+        /**
+          * If sticky, the top position will be determined by this value
+         */
+        "top"?: number;
         /**
           * The total amount of pages
          */
