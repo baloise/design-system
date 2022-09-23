@@ -1,7 +1,7 @@
-import docs from './bal-slider.docs.mdx'
+import docs from './bal-input-slider.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
-  BalSlider,
+  BalInputSlider,
   BalField,
   BalFieldControl,
   BalFieldLabel,
@@ -11,8 +11,8 @@ import {
 const balFieldArgTypes = stencilArgType(BalField)
 
 const component = BalComponentStory({
-  title: 'Components/Form/Slider',
-  component: BalSlider,
+  title: 'Components/Form/Input Slider',
+  component: BalInputSlider,
   docs,
   argTypes: {
     invalid: balFieldArgTypes.invalid,
@@ -34,7 +34,7 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-slider v-bind="args" v-model="args.value"></bal-slider>`,
+  template: `<bal-input-slider v-bind="args" v-model="args.value"></bal-input-slider>`,
 })
 Basic.args = {
   value: '20',
@@ -61,7 +61,7 @@ export const FieldControl = args => ({
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-slider v-bind="args" v-model="args.value"></bal-slider>
+      <bal-input-slider v-bind="args" v-model="args.value"></bal-input-slider>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,

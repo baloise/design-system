@@ -51,6 +51,13 @@
         background: var(--bal-color-grey)
         border-radius: 4px
 
+      +modifier(context-tabs)
+        flex-grow: 1
+        padding: 8px
+        background: var(--bal-color-background)
+        box-shadow: var(--bal-shadow)
+        border-radius: var(--bal-radius-large)
+
       +element(dot)
         cursor: pointer
         height: 8px
@@ -62,4 +69,7 @@
           background-color: var(--bal-color-primary)
         +modifier(inactive)
           background-color: var(--bal-color-white)
+
+      +element(tab)
+        flex: 1
 

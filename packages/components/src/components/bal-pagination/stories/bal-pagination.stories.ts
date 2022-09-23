@@ -45,3 +45,28 @@ SmallPaginationWithDots.args = {
   disabled: false,
 }
 SmallPaginationWithDots.parameters = { ...component.sourceCode(SmallPaginationWithDots) }
+
+export const PaginationWithTabs = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-pagination v-bind="args"></bal-pagination>`,
+})
+PaginationWithTabs.args = {
+  interface: 'tabs',
+  totalPages: 3,
+  disabled: false,
+}
+PaginationWithTabs.parameters = { ...component.sourceCode(PaginationWithTabs) }
+
+export const PaginationWithNamedTabs = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-pagination v-bind="args"></bal-pagination>`,
+})
+PaginationWithNamedTabs.args = {
+  interface: 'tabs',
+  totalPages: 3,
+  tabsNames: ['Eco', 'Smart', 'Top'],
+  disabled: false,
+}
+PaginationWithNamedTabs.parameters = { ...component.sourceCode(PaginationWithNamedTabs) }

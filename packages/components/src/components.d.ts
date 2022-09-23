@@ -1063,6 +1063,60 @@ export namespace Components {
          */
         "readonly": boolean;
     }
+    interface BalInputSlider {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex": number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true`, small ticks for the steps are shown.
+         */
+        "hasTicks": boolean;
+        /**
+          * Max value of the model.
+         */
+        "max": number;
+        /**
+          * Min value of the model.
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The step size. 0 means no steps.
+         */
+        "step": number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
+    }
     interface BalInputStepper {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -1579,6 +1633,7 @@ export namespace Components {
           * Go to the previous page
          */
         "previous": () => Promise<void>;
+        "tabsNames": string[];
         /**
           * The total amount of pages
          */
@@ -1971,58 +2026,8 @@ export namespace Components {
     interface BalSheet {
     }
     interface BalSlider {
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce": number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled": boolean;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
-        /**
-          * If `true`, small ticks for the steps are shown.
-         */
-        "hasTicks": boolean;
-        /**
-          * Max value of the model.
-         */
-        "max": number;
-        /**
-          * Min value of the model.
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required": boolean;
-        /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The step size. 0 means no steps.
-         */
-        "step": number;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number;
+    }
+    interface BalSliderItem {
     }
     interface BalSnackbar {
         /**
@@ -2478,6 +2483,10 @@ export interface BalInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalInputElement;
 }
+export interface BalInputSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalInputSliderElement;
+}
 export interface BalInputStepperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalInputStepperElement;
@@ -2541,10 +2550,6 @@ export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSelectElement;
-}
-export interface BalSliderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalSliderElement;
 }
 export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2949,6 +2954,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputSliderElement extends Components.BalInputSlider, HTMLStencilElement {
+    }
+    var HTMLBalInputSliderElement: {
+        prototype: HTMLBalInputSliderElement;
+        new (): HTMLBalInputSliderElement;
+    };
     interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
     }
     var HTMLBalInputStepperElement: {
@@ -3243,6 +3254,12 @@ declare global {
         prototype: HTMLBalSliderElement;
         new (): HTMLBalSliderElement;
     };
+    interface HTMLBalSliderItemElement extends Components.BalSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalSliderItemElement: {
+        prototype: HTMLBalSliderItemElement;
+        new (): HTMLBalSliderItemElement;
+    };
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
     }
     var HTMLBalSnackbarElement: {
@@ -3403,6 +3420,7 @@ declare global {
         "bal-image-slider-item": HTMLBalImageSliderItemElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
+        "bal-input-slider": HTMLBalInputSliderElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
@@ -3452,6 +3470,7 @@ declare global {
         "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
         "bal-slider": HTMLBalSliderElement;
+        "bal-slider-item": HTMLBalSliderItemElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stage": HTMLBalStageElement;
@@ -4549,6 +4568,76 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
     }
+    interface BalInputSlider {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, small ticks for the steps are shown.
+         */
+        "hasTicks"?: boolean;
+        /**
+          * Max value of the model.
+         */
+        "max"?: number;
+        /**
+          * Min value of the model.
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: BalInputSliderCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalChange"?: (event: BalInputSliderCustomEvent<Events.BalInputSliderChangeDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: BalInputSliderCustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalInputSliderCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: BalInputSliderCustomEvent<string | number | null>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: BalInputSliderCustomEvent<KeyboardEvent>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The step size. 0 means no steps.
+         */
+        "step"?: number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
+    }
     interface BalInputStepper {
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -5093,6 +5182,7 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
          */
         "pageRange"?: number;
+        "tabsNames"?: string[];
         /**
           * The total amount of pages
          */
@@ -5497,74 +5587,8 @@ declare namespace LocalJSX {
     interface BalSheet {
     }
     interface BalSlider {
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-         */
-        "debounce"?: number;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true`, small ticks for the steps are shown.
-         */
-        "hasTicks"?: boolean;
-        /**
-          * Max value of the model.
-         */
-        "max"?: number;
-        /**
-          * Min value of the model.
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalBlur"?: (event: BalSliderCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when the input value has changed.
-         */
-        "onBalChange"?: (event: BalSliderCustomEvent<Events.BalSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalSliderCustomEvent<MouseEvent>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onBalFocus"?: (event: BalSliderCustomEvent<FocusEvent>) => void;
-        /**
-          * Emitted when a keyboard input occurred.
-         */
-        "onBalInput"?: (event: BalSliderCustomEvent<string | number | null>) => void;
-        /**
-          * Emitted when a keyboard key has pressed.
-         */
-        "onBalKeyPress"?: (event: BalSliderCustomEvent<KeyboardEvent>) => void;
-        /**
-          * If `true` the element can not mutated, meaning the user can not edit the control.
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-         */
-        "required"?: boolean;
-        /**
-          * The step size. 0 means no steps.
-         */
-        "step"?: number;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number;
+    }
+    interface BalSliderItem {
     }
     interface BalSnackbar {
         /**
@@ -6058,6 +6082,7 @@ declare namespace LocalJSX {
         "bal-image-slider-item": BalImageSliderItem;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
+        "bal-input-slider": BalInputSlider;
         "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
@@ -6107,6 +6132,7 @@ declare namespace LocalJSX {
         "bal-shape": BalShape;
         "bal-sheet": BalSheet;
         "bal-slider": BalSlider;
+        "bal-slider-item": BalSliderItem;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stage": BalStage;
@@ -6192,6 +6218,7 @@ declare module "@stencil/core" {
             "bal-image-slider-item": LocalJSX.BalImageSliderItem & JSXBase.HTMLAttributes<HTMLBalImageSliderItemElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+            "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
@@ -6241,6 +6268,7 @@ declare module "@stencil/core" {
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
+            "bal-slider-item": LocalJSX.BalSliderItem & JSXBase.HTMLAttributes<HTMLBalSliderItemElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
