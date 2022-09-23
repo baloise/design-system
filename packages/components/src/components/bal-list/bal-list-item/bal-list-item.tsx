@@ -83,6 +83,7 @@ export class ListItem {
 
   render() {
     const itemEl = BEM.block('list').element('item')
+    const triggerEl = itemEl.element('trigger')
 
     const basicClasses = {
       ...itemEl.class(),
@@ -104,6 +105,7 @@ export class ListItem {
           }}
         >
           <a
+            class={{ ...triggerEl.class() }}
             href={this.href}
             target={this.target}
             onClick={(event: MouseEvent) => {
@@ -125,6 +127,7 @@ export class ListItem {
           }}
         >
           <button
+            class={{ ...triggerEl.class() }}
             disabled={this.disabled}
             onClick={(event: MouseEvent) => {
               this.balNavigate.emit(event)
@@ -147,7 +150,7 @@ export class ListItem {
             this.balNavigate.emit(event)
           }}
         >
-          <div>
+          <div class={{ ...triggerEl.class() }}>
             <slot></slot>
           </div>
         </Host>
@@ -161,7 +164,7 @@ export class ListItem {
           ...basicClasses,
         }}
       >
-        <div>
+        <div class={{ ...triggerEl.class() }}>
           <slot></slot>
         </div>
       </Host>

@@ -27,13 +27,13 @@
 .bal-list__item > div,
 .bal-list__item > button
   align-items: center
-  column-gap: 16px
+  column-gap: 1rem
   min-height: 56px
 
 .bal-list__item > a,
 .bal-list__item > div,
 .bal-list__item > button
-  padding: 0
+  padding: .5rem 0
   margin: 0
   outline: none
   border-radius: var(--bal-radius)
@@ -81,12 +81,12 @@
     min-height: 48px
 
 .bal-list--size-large
+  .bal-list__item,
   .bal-list__item > a,
   .bal-list__item > div,
-  .bal-list__item > button
+  .bal-list__item > button,
+  .bal-list__item__icon
     min-height: 72px
-    padding-top: 1rem
-    padding-bottom: 1rem
 
 .bal-list__item--clickable
   .bal-list__item__accordion-head,
@@ -373,3 +373,7 @@
       padding-top: 0
       &:after
         display: none
+
+.bal-list__item__accordion-body .bal-list > .bal-list__item:last-child
+  .bal-list__item__trigger:after
+    display: none

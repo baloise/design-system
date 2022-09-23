@@ -727,6 +727,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
           * If `true` below the drop-down area it generates a file list.
          */
         "hasFileList": boolean;
@@ -770,6 +774,14 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * Overrides the default subtitle file size
          */
@@ -4267,9 +4279,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        /**
           * Triggers when a file is added or removed.
          */
         "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
         /**
           * Triggers when a file is added.
          */
@@ -4278,6 +4298,10 @@ declare namespace LocalJSX {
           * Triggers when a file is removed.
          */
         "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
