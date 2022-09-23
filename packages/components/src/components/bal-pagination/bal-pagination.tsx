@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter, Element } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { Props } from '../../types'
 
@@ -6,6 +6,7 @@ import { Props } from '../../types'
   tag: 'bal-pagination',
 })
 export class Pagination {
+  @Element() el!: HTMLBalPaginationElement
   @State() _value = 1
 
   /**
@@ -38,7 +39,27 @@ export class Pagination {
    */
   @Prop() pageRange = 2
 
+  /**
+   * List of tabs names for 'tabs' interface
+   */
   @Prop() tabsNames: string[] = []
+
+  /**
+   * If 'true, the pagination will be sticky to the top
+   */
+  @Prop() sticky = false
+
+  /**
+   * If sticky, the top position will be determined by this value
+   */
+  @Prop() top = 0
+
+  @Watch('top')
+  topValueChanged(newValue: number) {
+    if (this.sticky) {
+      this.el.style.top = `${newValue}px`
+    }
+  }
 
   /**
    * Triggers when a page change happens
@@ -48,6 +69,7 @@ export class Pagination {
 
   componentWillLoad() {
     this._value = this.value
+    this.topValueChanged(this.top)
   }
 
   /**
@@ -184,6 +206,7 @@ export class Pagination {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier('is-sticky').class(this.sticky),
         }}
       >
         <nav

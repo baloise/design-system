@@ -1633,7 +1633,18 @@ export namespace Components {
           * Go to the previous page
          */
         "previous": () => Promise<void>;
+        /**
+          * If 'true, the pagination will be sticky to the top
+         */
+        "sticky": boolean;
+        /**
+          * List of tabs names for 'tabs' interface
+         */
         "tabsNames": string[];
+        /**
+          * If sticky, the top position will be determined by this value
+         */
+        "top": number;
         /**
           * The total amount of pages
          */
@@ -5182,7 +5193,18 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
          */
         "pageRange"?: number;
+        /**
+          * If 'true, the pagination will be sticky to the top
+         */
+        "sticky"?: boolean;
+        /**
+          * List of tabs names for 'tabs' interface
+         */
         "tabsNames"?: string[];
+        /**
+          * If sticky, the top position will be determined by this value
+         */
+        "top"?: number;
         /**
           * The total amount of pages
          */
