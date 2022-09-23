@@ -2047,6 +2047,10 @@ export namespace Components {
         "variation": Props.BalShapeVariation;
     }
     interface BalSheet {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": Props.BalSheetContainer;
     }
     interface BalSlider {
     }
@@ -5631,6 +5635,10 @@ declare namespace LocalJSX {
         "variation"?: Props.BalShapeVariation;
     }
     interface BalSheet {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: Props.BalSheetContainer;
     }
     interface BalSlider {
     }

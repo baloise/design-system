@@ -116,6 +116,8 @@ export namespace Props {
   export type BalStageSize = 'small' | '' | 'large'
   export type BalStageContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | string
 
+  export type BalSheetContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page'
+
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
   export type BalTabsVertical = boolean | 'mobile' | 'tablet'
