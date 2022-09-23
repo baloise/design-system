@@ -2,6 +2,7 @@ import { balToastController } from './components/notice/bal-toast/bal-toast.cont
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
 import { initialize } from './config'
 import { setupPlatforms } from './utils/platform'
+import { VERSION } from './constants/version.constant'
 
 export default function () {
   if (typeof (window as any) !== 'undefined') {
@@ -14,5 +15,6 @@ export default function () {
     win.BaloiseDesignSystem.toastController = balToastController
     win.BaloiseDesignSystem.snackbarController = balSnackbarController
     win.BaloiseDesignSystem.initialize = () => initialize(win.BaloiseDesignSystem.config, win)
+    win.BaloiseDesignSystem.version = VERSION
   }
 }
