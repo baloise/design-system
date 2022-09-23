@@ -2,19 +2,31 @@ import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, 
 import fileSize from 'filesize.js'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
+import {
+  FormInput,
+  inputHandleBlur,
+  inputHandleFocus,
+  inputHandleHostClick,
+  inputSetBlur,
+  inputSetFocus,
+  stopEventBubbling,
+} from '../../../helpers/form-input.helpers'
 
 @Component({
   tag: 'bal-file-upload',
 })
-export class FileUpload {
+export class FileUpload implements FormInput<File[]> {
+  @Element() el!: HTMLElement
+
   private uploadId = `bal-upload-${UploadIds++}`
 
-  @Element() element!: HTMLElement
-  fileInput!: HTMLInputElement
+  nativeInput!: HTMLInputElement
   bundleSize = 0
+  inputValue?: File[] | undefined
 
   @State() isOver = false
   @State() files: File[] = []
+  @State() hasFocus = false
 
   @Watch('value')
   onValueChange() {
@@ -101,7 +113,7 @@ export class FileUpload {
   /**
    * Triggers when a file is added or removed.
    */
-  @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<File[]>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<File[]>
 
   /**
    * Triggers when a file is added.
@@ -113,6 +125,21 @@ export class FileUpload {
    */
   @Event({ eventName: 'balFilesRemoved' })
   balFilesRemovedEmitter!: EventEmitter<File[]>
+
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
 
   /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
@@ -197,7 +224,7 @@ export class FileUpload {
       }
       if (this.files.length !== list.length) {
         this.files = [...list]
-        this.balChangeEventEmitter.emit(this.files)
+        this.balChange.emit(this.files)
       }
       if (filesAdded.length > 0) {
         this.balFilesAddedEmitter.emit(filesAdded)
@@ -213,10 +240,10 @@ export class FileUpload {
 
   componentDidLoad() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.element.addEventListener(eventName, this.preventDefaults, {
+      this.el.addEventListener(eventName, stopEventBubbling, {
         passive: false,
       })
-      document.body.addEventListener(eventName, this.preventDefaults, {
+      document.body.addEventListener(eventName, stopEventBubbling, {
         passive: false,
       })
     })
@@ -224,8 +251,8 @@ export class FileUpload {
 
   disconnectedCallback() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.element.removeEventListener(eventName, this.preventDefaults, false)
-      document.body.removeEventListener(eventName, this.preventDefaults, false)
+      this.el.removeEventListener(eventName, stopEventBubbling, false)
+      document.body.removeEventListener(eventName, stopEventBubbling, false)
     })
   }
 
@@ -237,12 +264,34 @@ export class FileUpload {
     this.files = []
   }
 
-  preventDefaults(e: Event) {
-    e.preventDefault()
-    e.stopPropagation()
+  /**
+   * Sets focus on the native `input`. Use this method instead of the global
+   * `input.focus()`.
+   */
+  @Method()
+  async setFocus() {
+    inputSetFocus(this)
   }
 
-  removeFile(indexToRemove: number): void {
+  /**
+   * Sets blur on the native `input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur(this)
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput)
+  }
+
+  private removeFile(indexToRemove: number): void {
     if (!this.disabled && !this.readonly) {
       const list = []
       const removedFiles = []
@@ -254,23 +303,33 @@ export class FileUpload {
         }
       }
       this.files = [...list]
-      this.balChangeEventEmitter.emit(this.files)
+      this.balChange.emit(this.files)
       this.balFilesRemovedEmitter.emit(removedFiles)
       this.setFileList()
     }
   }
 
-  onChange = (): void => {
-    if (this.fileInput?.files) {
-      const files = this.fileInput.files
+  private onInputChange = (): void => {
+    if (this.nativeInput?.files) {
+      const files = this.nativeInput.files
       this.handleFiles(files)
     }
   }
 
-  setFileList = () => {
+  private setFileList = () => {
     const fileList = new DataTransfer()
     this.files.forEach(el => fileList.items.add(el))
-    this.fileInput.files = fileList.files
+    this.nativeInput.files = fileList.files
+  }
+
+  private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+
+  private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
+
+  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+
+  private onInputClick = (event: MouseEvent) => {
+    this.balClick.emit(event)
   }
 
   render() {
@@ -309,6 +368,7 @@ export class FileUpload {
 
     return (
       <Host
+        onClick={this.handleClick}
         class={{
           'bal-file-upload': true,
         }}
@@ -330,8 +390,11 @@ export class FileUpload {
               readonly={this.readonly}
               required={this.required}
               accept={this.accept}
-              onChange={this.onChange}
-              ref={el => (this.fileInput = el as HTMLInputElement)}
+              onClick={this.onInputClick}
+              onChange={this.onInputChange}
+              onFocus={this.onInputFocus}
+              onBlur={this.onInputBlur}
+              ref={el => (this.nativeInput = el as HTMLInputElement)}
             />
             {this.loading ? (
               <span class="file-cta">
