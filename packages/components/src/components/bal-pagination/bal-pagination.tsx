@@ -54,6 +54,11 @@ export class Pagination {
    */
   @Prop() top = 0
 
+  @Watch('top')
+  topValueChanged(newValue: number) {
+    this.el.style.top = `${newValue}px`
+  }
+
   /**
    * Triggers when a page change happens
    */
@@ -63,7 +68,7 @@ export class Pagination {
   componentWillLoad() {
     this._value = this.value
     if (this.sticky) {
-      this.el.style.top = `${this.top}px`
+      this.topValueChanged(this.top)
     }
   }
 
