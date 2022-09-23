@@ -45,6 +45,7 @@ export const Basic = args => ({
       </bal-card-actions>
     </bal-card>
   </div>
+
   <bal-sheet v-bind="args">
     <div class="is-hidden-tablet">
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
@@ -63,5 +64,6 @@ export const Basic = args => ({
 })
 Basic.args = {
   content: 'Lorem ipsum dolor',
+  containerSize: 'compact',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }

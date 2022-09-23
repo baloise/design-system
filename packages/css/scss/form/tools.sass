@@ -186,6 +186,7 @@
   .field.has-direction-auto.is-grouped
     flex-wrap: wrap
     flex-direction: column
+    width: 100%
     .control
       flex-grow: 1
       flex-shrink: 1
@@ -193,11 +194,5 @@
       margin-right: 0 !important
       .button
         min-width: 100%
-      &:not(:last-child)
-        margin-bottom: 8px
     &.is-reverse
       flex-direction: column-reverse
-      .control
-        &:not(:last-child)
-          margin-top: 8px
-          margin-bottom: 0

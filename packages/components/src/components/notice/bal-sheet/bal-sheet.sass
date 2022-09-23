@@ -1,7 +1,8 @@
 +block(sheet)
+  --bal-sheet-position-bottom: .5rem
   display: block
   position: fixed
-  bottom: 0
+  bottom: var(--bal-sheet-position-bottom)
   left: 0
   right: 0
   width: 100%
@@ -9,19 +10,12 @@
   font-weight: $weight-normal
   font-family: var(--bal-font-family-text)
   font-size: var(--bal-size-normal)
-  > div.container
-    border-radius: var(--bal-radius-large)
-    background-color: var(--bal-color-white)
-    box-shadow: var(--bal-shadow)
-  // breakpoints
-  +tablet
-    > div.container
-      background-color: transparent
-      box-shadow: none
-      padding-top: 0 !important
-      padding-bottom: 0 !important
-      margin-bottom: 0.5rem
-      > div.inner
-        border-radius: var(--bal-radius-large)
-        background-color: var(--bal-color-white)
-        box-shadow: var(--bal-shadow)
+
+  +element(container)
+    +element(inner)
+      border-radius: var(--bal-radius-large)
+      background-color: var(--bal-color-white)
+      box-shadow: var(--bal-shadow)
+      padding: 1rem
+      +tablet
+        padding: 1rem 1.5rem
