@@ -16,5 +16,14 @@ export default function () {
     win.BaloiseDesignSystem.snackbarController = balSnackbarController
     win.BaloiseDesignSystem.initialize = () => initialize(win.BaloiseDesignSystem.config, win)
     win.BaloiseDesignSystem.version = VERSION
+
+    if (win.addEventListener) {
+      win.addEventListener('balAppLoad', () => {
+        const doc = document as any
+        if (doc && doc.body && doc.body.classList) {
+          doc.body.classList.add('is-ready')
+        }
+      })
+    }
   }
 }
