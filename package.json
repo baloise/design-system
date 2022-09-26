@@ -79,7 +79,6 @@
     "==================== RELEASE ====================": "================================",
     "release:canary": "lerna publish prepatch --canary --preid beta --dist-tag beta --yes --no-changelog",
     "release:version": "npm --prefix packages/components run build:version",
-    "prepublish": "npm run release:version",
     "==================== DOCUMENTATION ====================": "================================",
     "storybook": "node .build/utils/banner.js storybook && npm run build:docs",
     "storybook:start": "node .build/utils/banner.js storybook:start && http-server storybook -p 8080"

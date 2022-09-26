@@ -52,6 +52,7 @@
     "build:docs": "stencil build --config stencil.config.dev.ts && build-storybook -o ../../storybook  --quiet",
     "build:pre": "npm run build:meta && stencil build --config stencil.config.pre.ts",
     "build:version": "node ../../.build/version.js",
+    "prepublish": "npm run build:version",
     "================= DEVELOPMENT =================": "================================",
     "generate": "node ./.build/stencil/generate",
     "dev": "npm run dev:build && concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:watch\" \"npm:dev:docs\"",
