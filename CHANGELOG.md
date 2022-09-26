@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.23.0](https://github.com/baloise-incubator/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
+
+
+### Features
+
+* **bal-input-slider:** rename adjustments ([d8a5dea](https://github.com/baloise-incubator/design-system/commit/d8a5dea2dd4477efc6bb33b5caf1f333017853ff))
+* **bal-input-slider:** rename some missed imports and classes ([0509a80](https://github.com/baloise-incubator/design-system/commit/0509a8031733c4de903f867bb4865a723b1b8c85))
+* **bal-input-slider:** updated e2e tests ([3cb53c2](https://github.com/baloise-incubator/design-system/commit/3cb53c23cc5ac74ccdfaa8ab7a549f55c6d34db2))
+* **bal-input-slider:** updated helpers.ts ([d7bfc50](https://github.com/baloise-incubator/design-system/commit/d7bfc5094829978a1459a1c797e28256c0082e9f))
+* **bal-pagination:** added a watcher for top prop ([1519ac3](https://github.com/baloise-incubator/design-system/commit/1519ac3ce4e54f85244a65ce1568b4bd3d8cb1e2))
+* **bal-pagination:** added the sticky option for the pagination and updated the bal slider ([8d65626](https://github.com/baloise-incubator/design-system/commit/8d6562641a312e70a3ae36b42ca7e5e5c127a589))
+* **bal-pagination:** assigned the top value only if the pagination is sticky ([e35fcac](https://github.com/baloise-incubator/design-system/commit/e35fcacb7818936824e0013cc000ee709e0f34f7))
+* **bal-pagination:** set dynamic top value for sticky pagination ([7b6a2a1](https://github.com/baloise-incubator/design-system/commit/7b6a2a1203d9e0dfb0716b2956f1efb374d15213))
+* **bal-slider:** added an example with navigation and stage ([7006731](https://github.com/baloise-incubator/design-system/commit/7006731335195e957840c5bdcc48d68805e1aaa6))
+* **bal-slider:** corrected the imports ([52b4127](https://github.com/baloise-incubator/design-system/commit/52b41272a06c2375436a1d94633c33f1040de985))
+* **bal-slider:** renamed the slider component into input slider and tab slider into slider ([9fba4f9](https://github.com/baloise-incubator/design-system/commit/9fba4f93c145308d92422b52086bbdfbbb58f09e))
+* **bal-tab-slider:** implemented new interface for pagination, created the tabs slider ([2742202](https://github.com/baloise-incubator/design-system/commit/27422021f4133072f2f0595efeee1e8f5c93fb88))
+* **css:** add close, check and forbidden list item style ([fdf3643](https://github.com/baloise-incubator/design-system/commit/fdf36433ad2b53dbda596017babfae7959f59621))
+* hide glitches during page load ([44069d9](https://github.com/baloise-incubator/design-system/commit/44069d905aa54657851adfcb4c7909fcc2664ed1))
+* show version of the DS in the window object ([eb16543](https://github.com/baloise-incubator/design-system/commit/eb16543b6dca1e59dee9aed9b3f23f2cb302aef6))
+
+
+### Bug Fixes
+
+* add missing comma and adjust version path ([d78f214](https://github.com/baloise-incubator/design-system/commit/d78f214c81df0949d07666956ffb0009473bbbc8))
+* add missing comma and adjust version path ([3cc85b4](https://github.com/baloise-incubator/design-system/commit/3cc85b43c7441ef81a24840d1b4164c8f431dcaf))
+* **button:** mobile view ([d6d26c0](https://github.com/baloise-incubator/design-system/commit/d6d26c089c5a8ec5688533ccbb062658bad49172))
+* **file-upload:** add missing setFocus. Closes [#605](https://github.com/baloise-incubator/design-system/issues/605) ([d36e773](https://github.com/baloise-incubator/design-system/commit/d36e7731a934015406b62f74a07936d947057dc8))
+* **list:** add inverted style ([a354f08](https://github.com/baloise-incubator/design-system/commit/a354f084fcaf5a69eb6b2a1ee7b6fef7c15a6b4f))
+* **list:** remove double line. Closes [#575](https://github.com/baloise-incubator/design-system/issues/575) ([6d8386b](https://github.com/baloise-incubator/design-system/commit/6d8386b215845032dd2915b968a719cee56669c5))
+* **list:** remove forbidden ([0716c0a](https://github.com/baloise-incubator/design-system/commit/0716c0a57360e6ae06454dc7d7ba9c1ae00e90b2))
+* **pagination:** small interfaces shows all dots instead of ellipsis ([2051407](https://github.com/baloise-incubator/design-system/commit/20514071a88e45e0266b8b391beb020dfc92a19d))
+* **popover:** safari issue with growing width ([5cb04fa](https://github.com/baloise-incubator/design-system/commit/5cb04faf29a8db95471d5b0ded46f98220a9c9c3))
+* **product-slider:** move control down on mobile ([2423ff9](https://github.com/baloise-incubator/design-system/commit/2423ff98153f17e2f95321bf036fdca89cba0c3a))
+* set version to dist ([54ea1b5](https://github.com/baloise-incubator/design-system/commit/54ea1b502b73196796ead6d6cfdb000195e124f5))
+* **sheet:** adjust layout. Closes [#554](https://github.com/baloise-incubator/design-system/issues/554) ([e757594](https://github.com/baloise-incubator/design-system/commit/e75759422ecb7f553bb5e9ae0e57843240278817))
+* show version with BaloiseDesignSystem.version ([1010803](https://github.com/baloise-incubator/design-system/commit/101080304deb66863f93a3b3e0da212f4bb90f46))
+* split css vars from sass base file ([db2fa89](https://github.com/baloise-incubator/design-system/commit/db2fa898870d1b36a97b61ccbaab07f50f242e0c))
+* **testing:** adjust contains override ([683f600](https://github.com/baloise-incubator/design-system/commit/683f600b957bbb2fd8e7df04621075b4be603e0d))
+* use .bal-body instead of body element ([5c8fdb5](https://github.com/baloise-incubator/design-system/commit/5c8fdb539bc345b63ff6030da5b5783da6c1d4e6))
+
+## [10.22.1](https://github.com/baloise-incubator/design-system/compare/v10.22.0...v10.22.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise-incubator/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise-incubator/design-system/issues/571) ([6482637](https://github.com/baloise-incubator/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise-incubator/design-system/issues/472) ([d64edba](https://github.com/baloise-incubator/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+
+## 10.22.0 (2022-09-19)
+
+
+
 ## [10.22.2](https://github.com/baloise-incubator/design-system/compare/v10.22.1...v10.22.2) (2022-09-21)
 
 
