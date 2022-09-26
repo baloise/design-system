@@ -21,7 +21,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'number',
   },
   {
-    elementSelectors: ['bal-input', 'bal-textarea', 'bal-slider'],
+    elementSelectors: ['bal-input', 'bal-textarea', 'bal-input-slider'],
     event: 'balInput',
     targetAttr: 'value',
     type: 'text',

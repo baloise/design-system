@@ -9,7 +9,7 @@ const path = require('path')
 const replace = require('replace-in-file');
 const log = require('./utils/log.js')
 
-const DIST_PATH = path.join(__dirname, '..', 'packages/components/dist')
+const DIST_PATH = path.join(process.cwd(), 'dist')
 
 async function main(){
   log.title('version')
