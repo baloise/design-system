@@ -169,23 +169,39 @@ export const NativeList = args => ({
   <ul class="is-list">
     <li>List Item 1</li>
     <li>List Item 2</li>
-    <li>List Item 3</li>
   </ul>
   <ul class="is-list has-bullet-circle">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+    <li>Green Circle List Item 1</li>
+    <li>Green Circle List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-check">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+  <ul class="is-list has-bullet-circle has-bullet-purple">
+    <li>Purple Circle List Item 1</li>
+    <li>Purple Circle List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-circle has-bullet-red">
+    <li>Red Circle List Item 1</li>
+    <li>Red Circle List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-circle has-bullet-yellow">
+    <li>Yellow Circle List Item 1</li>
+    <li>Yellow Circle List Item 3</li>
   </ul>
   <ol class="is-list">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+    <li>Numbered List Item 1</li>
+    <li>Numbered List Item 2</li>
   </ol>
+  <ul class="is-list has-bullet-check">
+    <li>Check List Item 1</li>
+    <li>Check List Item 2</li>
+  </ul>
+  <ul class="is-list has-bullet-close has-opacity-50">
+    <li>Close List Item 1</li>
+    <li>Close List Item 2</li>
+  </ul>
+  <ul class="is-list has-bullet-forbidden has-opacity-50">
+    <li>Forbidden List Item 1</li>
+    <li>Forbidden List Item 2</li>
+  </ul>
 </div>`,
 })
 NativeList.args = {
