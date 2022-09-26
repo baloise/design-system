@@ -54,4 +54,19 @@ The high-definition breakpoint gets introduced in the new version. It starts at 
 
 The only breaking change is that the range of the sass mixin desktop-only is changed.
 
+## Improve initial page load
+
+The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
+To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
+
+```html
+<style>
+  .bal-body {
+    display: none;
+  }
+</style>
+```
+
+Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+
 <bal-doc-github link="/stories/migration/10-migration-from-10x-to-11x.stories.mdx"></bal-doc-github>

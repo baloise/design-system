@@ -19,9 +19,9 @@ export default function () {
 
     if (win.addEventListener) {
       win.addEventListener('balAppLoad', () => {
-        const doc = document as any
-        if (doc && doc.body && doc.body.classList) {
-          doc.body.classList.add('is-ready')
+        const body = document.querySelector('.bal-body')
+        if (body && body.classList) {
+          body.classList.add('is-ready')
         }
       })
     }

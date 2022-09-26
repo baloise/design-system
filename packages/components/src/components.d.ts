@@ -2478,6 +2478,10 @@ export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalAccordionElement;
 }
+export interface BalAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalAppElement;
+}
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
@@ -2497,6 +2501,10 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
+}
+export interface BalDocAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDocAppElement;
 }
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3548,6 +3556,7 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+        "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
     }
     interface BalBadge {
         /**
@@ -4052,6 +4061,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+        "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
     }
     interface BalDocBanner {
         "status"?: string;
