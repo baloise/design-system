@@ -194,13 +194,9 @@ export const NativeList = args => ({
     <li>Check List Item 1</li>
     <li>Check List Item 2</li>
   </ul>
-  <ul class="is-list has-bullet-close has-opacity-50">
-    <li>Close List Item 1</li>
-    <li>Close List Item 2</li>
-  </ul>
-  <ul class="is-list has-bullet-forbidden has-opacity-50">
-    <li>Forbidden List Item 1</li>
-    <li>Forbidden List Item 2</li>
+  <ul class="is-list has-bullet-close">
+    <li class="has-opacity-50">Close List Item 1</li>
+    <li class="has-opacity-50">Close List Item 2</li>
   </ul>
 </div>`,
 })
