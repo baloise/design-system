@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
 import globalScript from '../../../global'
 
 @Component({
@@ -8,8 +8,14 @@ import globalScript from '../../../global'
   styleUrl: '../../../styles/global.sass',
 })
 export class DocApp {
+  @Event({ bubbles: true, composed: true }) balAppLoad!: EventEmitter<boolean>
+
   connectedCallback() {
     globalScript()
+  }
+
+  componentDidLoad() {
+    this.balAppLoad.emit(true)
   }
 
   render() {

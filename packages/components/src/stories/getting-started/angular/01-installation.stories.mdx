@@ -186,6 +186,21 @@ Add the `bal-app` to your `app.component.html` root element. Within this compone
 ...
 ```
 
+### Improve initial page load
+
+The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
+To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
+
+```html
+<style>
+  .bal-body {
+    display: none;
+  }
+</style>
+```
+
+Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+
 ## Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:

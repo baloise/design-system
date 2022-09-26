@@ -37,6 +37,11 @@ Add the `bal-app` to your root element. Within this component we are able to use
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .bal-body {
+        display: none;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,7 +60,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
       src="node_modules/@baloise/design-system-next-components/dist/design-system-next-components/design-system-next-components.js"
     ></script>
   </head>
-  <body>
+  <body class="bal-body">
     <bal-app>
       <main class="container mt-4">
         <bal-heading>Hello World</bal-heading>

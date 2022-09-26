@@ -15,7 +15,15 @@ import { Meta, Canvas } from '@storybook/addon-docs'
 It is recommended to use following page layout:
 
 ```html
-<body>
+<head>
+  <style>
+    .bal-body {
+      display: none;
+    }
+  </style>
+  ...
+</head>
+<body class="bal-body">
   <bal-app class="has-sticky-footer">
     <main class="container">
       <!-- Page content -->
@@ -32,6 +40,7 @@ It is recommended to use following page layout:
   - Use `container is-compact` for sales funnels to reduce the max-width to a minimum.
   - [Documentation to the container](?path=/docs/design-css-framework--container#container)
 - `.has-sticky-footer` css-class sticks the footer element to the bottom of the page.
+- `.bal-body` gets visible when the web-components are ready.
 
 ## Templates
 
