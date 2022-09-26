@@ -159,20 +159,27 @@ export class Pagination {
     let rangeStart = this._value - pageRange
     let rangeEnd = this._value + pageRange
 
-    if (rangeEnd > this.totalPages) {
-      rangeEnd = this.totalPages
-      rangeStart = this.totalPages - pageRange * 2
-      rangeStart = rangeStart < 1 ? 1 : rangeStart
-    }
-
-    if (rangeStart <= 1) {
+    if (this.interface === 'small') {
       rangeStart = 1
-      rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
+      rangeEnd = this.totalPages - 1
+    } else {
+      if (rangeEnd > this.totalPages) {
+        rangeEnd = this.totalPages
+        rangeStart = this.totalPages - pageRange * 2
+        rangeStart = rangeStart < 1 ? 1 : rangeStart
+      }
+
+      if (rangeStart <= 1) {
+        rangeStart = 1
+        rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
+      }
     }
 
     if (rangeStart > 1) {
       items.push(this.renderPageElement(1))
-      items.push(this.renderEllipsisElement())
+      if (this.interface !== 'small') {
+        items.push(this.renderEllipsisElement())
+      }
     }
 
     for (let i = rangeStart; i <= rangeEnd; i++) {
@@ -180,7 +187,9 @@ export class Pagination {
     }
 
     if (rangeEnd < this.totalPages) {
-      items.push(this.renderEllipsisElement())
+      if (this.interface !== 'small') {
+        items.push(this.renderEllipsisElement())
+      }
       items.push(this.renderPageElement(this.totalPages))
     }
 
