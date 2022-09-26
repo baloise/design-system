@@ -3,6 +3,7 @@ import { createPopper, Instance } from '@popperjs/core'
 import { Props } from '../../types'
 import { Events } from '../../events'
 import { BEM } from '../../utils/bem'
+import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
@@ -145,6 +146,7 @@ export class Popover {
     this.backdropHeight = this.getBackdropHeight()
   }
 
+  componentDidRenderTimer?: NodeJS.Timer
   componentDidRender() {
     if (this.popperInstance) {
       this.popperInstance.setOptions((options: any) => ({
@@ -157,6 +159,19 @@ export class Popover {
         ],
       }))
       this.updatePopper()
+    }
+
+    // Bug fix for https://github.com/baloise-incubator/design-system/issues/551
+    if (isBrowser('Safari') && !this.isTouch) {
+      clearTimeout(this.componentDidRenderTimer)
+      this.componentDidRenderTimer = setTimeout(() => {
+        const triggerWidth = this.element?.clientWidth
+        if (triggerWidth) {
+          this.element.style.maxWidth = `${triggerWidth}px`
+        } else {
+          this.element.style.maxWidth = `initial`
+        }
+      })
     }
   }
 

@@ -87,7 +87,7 @@ export const Basic = args => ({
         <bal-button bal-popover-trigger color="light" inverted  icon="web" @click="toggle()">
             DE
         </bal-button>
-        <bal-popover-content class="p-2">
+        <bal-popover-content>
           <bal-list border>
             <bal-list-item clickable>
               <bal-list-item-content>
@@ -174,7 +174,7 @@ export const Simple = args => ({
         <bal-button bal-popover-trigger :square="square" color="light" inverted  icon="web" @click="toggle()">
           <span class="is-hidden-mobile">DE</span>
         </bal-button>
-        <bal-popover-content class="p-2">
+        <bal-popover-content>
           <bal-list border>
             <bal-list-item clickable>
               <bal-list-item-content>
@@ -258,7 +258,7 @@ export const Light = args => ({
         <bal-button bal-popover-trigger :square="square" color="light" icon="web" @click="toggle()">
           <span class="is-hidden-mobile">DE</span>
         </bal-button>
-        <bal-popover-content class="p-2">
+        <bal-popover-content>
           <bal-list border>
             <bal-list-item clickable>
               <bal-list-item-content>
