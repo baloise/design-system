@@ -13,6 +13,12 @@ bal-button,
     justify-content: flex-start
   +modifier(position-right)
     justify-content: flex-end
+  +modifier(direction-auto)
+    +mobile
+      .field.is-grouped,
+      .bal-button,
+      .bal-button .button
+        width: 100% !important
   +modifier(direction-column)
     +mobile
       .field.is-grouped,
