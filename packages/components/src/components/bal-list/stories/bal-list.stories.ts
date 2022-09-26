@@ -191,13 +191,23 @@ export const NativeList = args => ({
     <li>Numbered List Item 2</li>
   </ol>
   <ul class="is-list has-bullet-check">
-    <li>Check List Item 1</li>
-    <li>Check List Item 2</li>
+    <li>Checked List Item 1</li>
+    <li>Checked List Item 2</li>
   </ul>
   <ul class="is-list has-bullet-close">
     <li class="has-opacity-50">Close List Item 1</li>
     <li class="has-opacity-50">Close List Item 2</li>
   </ul>
+  <ul class="is-list has-bullets">
+    <li class="has-bullet-check">Checked List Item 1</li>
+    <li class="has-bullet-close has-opacity-50">Close List Item 2</li>
+  </ul>
+  <div class="has-background-blue p-2">
+    <ul class="is-list has-bullets is-inverted">
+      <li class="has-bullet-check">Inverted checked List Item 1</li>
+      <li class="has-bullet-close has-opacity-50">Inverted close List Item 2</li>
+    </ul>
+  </div>
 </div>`,
 })
 NativeList.args = {
