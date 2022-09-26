@@ -46,7 +46,7 @@
     "start": "npm run dev",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== BUILD ====================": "================================",
-    "build": "npm run build:meta && npm run build:stencil && npm run build:version",
+    "build": "npm run build:meta && npm run build:stencil",
     "build:stencil": "stencil build --no-cache",
     "build:meta": "node ../../.build/docs-contributors.js && node ../../.build/docs-github.js && node ../../.build/docs-testing.js",
     "build:docs": "stencil build --config stencil.config.dev.ts && build-storybook -o ../../storybook  --quiet",
