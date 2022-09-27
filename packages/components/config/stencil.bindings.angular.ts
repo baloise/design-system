@@ -38,26 +38,17 @@ export const AngularGenerator = () =>
       'bal-button': {
         components: ['bal-button-group'],
       },
-      'bal-checkbox': {
-        components: ['bal-checkbox-group'],
-      },
-      'bal-form-grid': {
-        components: ['bal-form-col'],
-      },
-      'bal-tag': {
-        components: ['bal-tag-group'],
-      },
       'bal-card': {
         components: ['bal-card-title', 'bal-card-subtitle', 'bal-card-content', 'bal-card-actions', 'bal-card-button'],
       },
       'bal-data': {
         components: ['bal-data-item', 'bal-data-label', 'bal-data-value'],
       },
-      'bal-stage': {
-        components: ['bal-stage-back-link', 'bal-stage-body', 'bal-stage-foot', 'bal-stage-head', 'bal-stage-image'],
-      },
       'bal-hint': {
         components: ['bal-hint-title', 'bal-hint-text'],
+      },
+      'bal-image-slider': {
+        components: ['bal-image-slider-item'],
       },
       'bal-list': {
         components: [
@@ -73,11 +64,45 @@ export const AngularGenerator = () =>
       'bal-navbar': {
         components: ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
       },
+      'bal-navigation': {
+        components: [
+          'bal-navigation-level-block',
+          'bal-navigation-level-block-item',
+          'bal-navigation-level-block-main',
+          'bal-navigation-level-block-meta',
+          'bal-navigation-levels',
+          'bal-navigation-main',
+          'bal-navigation-main-body',
+          'bal-navigation-main-head',
+          'bal-navigation-menu',
+          'bal-navigation-menu-list',
+          'bal-navigation-menu-list-item',
+          'bal-navigation-meta',
+          'bal-navigation-meta-end',
+          'bal-navigation-meta-start',
+          'bal-navigation-popover',
+        ],
+      },
       'bal-popover': {
         components: ['bal-popover-content'],
       },
+      'bal-product-slider': {
+        components: ['bal-product-slider-item'],
+      },
+      'bal-slider': {
+        components: ['bal-slider-item'],
+      },
+      'bal-stage': {
+        components: ['bal-stage-back-link', 'bal-stage-body', 'bal-stage-foot', 'bal-stage-head', 'bal-stage-image'],
+      },
       'bal-tabs': {
         components: ['bal-tab-item'],
+      },
+      'bal-tag': {
+        components: ['bal-tag-group'],
+      },
+      'bal-checkbox': {
+        components: ['bal-checkbox-group'],
       },
       'bal-field': {
         components: ['bal-field-label', 'bal-field-control', 'bal-field-hint', 'bal-field-message'],
@@ -87,6 +112,9 @@ export const AngularGenerator = () =>
             import: 'components/error/error.component.ts',
           },
         ],
+      },
+      'bal-form-grid': {
+        components: ['bal-form-col'],
       },
       'bal-radio': {
         components: ['bal-radio-group'],
