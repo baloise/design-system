@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.23.2](https://github.com/baloise-incubator/design-system/compare/v10.23.1...v10.23.2) (2022-09-27)
+
+
+### Bug Fixes
+
+* **stage:** fix position on large screens ([5f927a7](https://github.com/baloise-incubator/design-system/commit/5f927a7f11b98fad5d3701c4b54ad3956bf9c49a))
+* **stage:** fix position on large screens ([31eb597](https://github.com/baloise-incubator/design-system/commit/31eb59740dcdae96c51eebac19743ccb692b9f40))
+
+
+
 ## [10.23.1](https://github.com/baloise-incubator/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
 
