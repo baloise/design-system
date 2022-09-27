@@ -26,6 +26,7 @@ export class Navigation implements ComponentInterface {
   @State() isMainBodyOpen = false
   @State() selectedMetaValue? = ''
   @State() selectedMainValue? = ''
+  @State() isTouch = isPlatform('touch')
   /**
    * Path to the logo-image
    */
@@ -71,6 +72,7 @@ export class Navigation implements ComponentInterface {
   async resizeHandler() {
     this.isTransformed = false
     this.mainMobileHeight = this.getMaxHeight()
+    this.isTouch = isPlatform('touch')
   }
 
   @Listen('orientationchange', { target: 'window' })
@@ -115,6 +117,8 @@ export class Navigation implements ComponentInterface {
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
     this.metaDesktopEndElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
+
+    this.isTouch = isPlatform('touch')
   }
 
   componentDidUpdate() {
@@ -341,7 +345,7 @@ export class Navigation implements ComponentInterface {
           class="bal-nav__main-mobile container"
           style={{
             '--bal-nav-main-mobile-height': this.mainMobileHeight,
-            'display': this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
+            'display': this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
           }}
         >
           <bal-list border in-main-nav={true} size="small">
@@ -399,7 +403,7 @@ export class Navigation implements ComponentInterface {
         <div
           class="bal-nav__foot-mobile"
           style={{
-            display: this.isMainBodyOpen && isPlatform('touch') ? 'block' : 'none',
+            display: this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
           }}
         >
           <slot name="meta-mobile-foot" />

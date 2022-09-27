@@ -442,13 +442,13 @@ export const French = args => ({
   <bal-navigation-levels>
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">
       <bal-navigation-level-main value="meta-1-main-1" label="Véhicules et voyages" link="http://" linkLabel="Véhicules et voyages"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Habitat et propriété" link="http://" linkLabel="Habitat et propriété"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Prévoyance et patrimoine" link="http://" linkLabel="Prévoyance et patrimoine"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Paiement et épargne" link="http://" linkLabel="Paiement et épargne"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Objets et électronique" link="http://" linkLabel="Objets et électronique"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
-      <bal-navigation-level-main value="meta-1-main-1" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-2" label="Habitat et propriété" link="http://" linkLabel="Habitat et propriété"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-3" label="Prévoyance et patrimoine" link="http://" linkLabel="Prévoyance et patrimoine"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-4" label="Paiement et épargne" link="http://" linkLabel="Paiement et épargne"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-5" label="Objets et électronique" link="http://" linkLabel="Objets et électronique"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-6" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-7" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
+      <bal-navigation-level-main value="meta-1-main-8" label="Contact et services" link="http://" linkLabel="Contact et services"></bal-navigation-level-main>
     </bal-navigation-level-meta>
   </bal-navigation-levels>
 </bal-navigation>
