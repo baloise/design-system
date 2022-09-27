@@ -117,11 +117,13 @@ export class Stage implements ComponentInterface {
         >
           <slot></slot>
           {this.shape && (
-            <bal-shape
-              color={this.color as Props.BalShapeColor}
-              variation={this.shapeVariation}
-              rotation={this.shapeRotation}
-            />
+            <div class={{ container: true, [`${this.containerClass}`]: this.containerSize !== '' }}>
+              <bal-shape
+                color={this.color as Props.BalShapeColor}
+                variation={this.shapeVariation}
+                rotation={this.shapeRotation}
+              />
+            </div>
           )}
         </section>
       </Host>

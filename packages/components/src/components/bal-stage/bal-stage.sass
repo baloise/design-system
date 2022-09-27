@@ -1,6 +1,6 @@
 +block(stage)
   display: block
-  position: static
+  position: relative
 
   //
   // Color modifiers
@@ -15,7 +15,7 @@
 
   +block(stage-content)
     display: block
-    position: relative
+    position: static
 
     +block(stage-image)
       overflow: hidden
@@ -102,10 +102,8 @@
       +block(shape)
         position: absolute
         bottom: -22px
-        right: 1rem
+        right: 0
         +tablet
           bottom: -40px
-          right: 2.5rem
         +desktop
-          right: 3rem
           bottom: -66px
