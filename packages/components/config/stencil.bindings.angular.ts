@@ -68,8 +68,8 @@ export const AngularGenerator = () =>
         components: [
           'bal-navigation-level-block',
           'bal-navigation-level-block-item',
-          'bal-navigation-level-block-main',
-          'bal-navigation-level-block-meta',
+          'bal-navigation-level-main',
+          'bal-navigation-level-meta',
           'bal-navigation-levels',
           'bal-navigation-main',
           'bal-navigation-main-body',
