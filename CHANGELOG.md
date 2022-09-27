@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.23.1](https://github.com/baloise-incubator/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* **angular:** provide missing component modules ([774696f](https://github.com/baloise-incubator/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
+* **angular:** provide missing component modules ([8c30599](https://github.com/baloise-incubator/design-system/commit/8c305992b2227d777c0e66cdf6e09b405f7c10b5))
+* **bal-navbar-logo:** fix squeezed logo for mobile and tablet ([850d899](https://github.com/baloise-incubator/design-system/commit/850d899928b5d0e2186671c81415924b1af274ee))
+* **bal-shape:** set border radius only for mobile and tablet ([907b762](https://github.com/baloise-incubator/design-system/commit/907b76272a282effef88ea854bb531ab2690b51c))
+* **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise-incubator/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
+* **stage:** stage position ([2839688](https://github.com/baloise-incubator/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
+* **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise-incubator/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
+
+
+
 ## [10.23.0](https://github.com/baloise-incubator/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
 
