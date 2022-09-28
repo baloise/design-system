@@ -1,6 +1,6 @@
 import docs from './bal-badge.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalBadge, BalIcon } from '../../../../.storybook/vue/components'
+import { BalBadge, BalIcon, BalCard, BalCardContent } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Badge',
@@ -34,9 +34,17 @@ WithIcon.args = {
 WithIcon.parameters = { ...component.sourceCode(WithIcon) }
 
 export const CardBadge = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalCard, BalCardContent },
   setup: () => ({ args }),
-  template: `<bal-card>
+  template: `
+  <bal-card>
+  <bal-badge v-bind="args">42</bal-badge>
+  <bal-card-title>Title</bal-card-title>
+  <bal-card-content>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+</bal-card>
+  <bal-card>
   <bal-badge v-bind="args">42</bal-badge>
   <bal-card-title>Title</bal-card-title>
   <bal-card-content>
