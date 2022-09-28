@@ -358,6 +358,7 @@ export class Navigation implements ComponentInterface {
             </div>
             <bal-button
               slot="burger"
+              data-testid="navigation-burger"
               color={this.isMainBodyOpen ? 'primary' : 'light'}
               square={true}
               icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
