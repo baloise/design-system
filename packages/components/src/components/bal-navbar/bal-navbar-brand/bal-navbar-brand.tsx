@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
-import { Props } from '../../../'
+import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
