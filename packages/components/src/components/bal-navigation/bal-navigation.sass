@@ -55,6 +55,11 @@
     height: auto
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     background: var(--bal-color-white)
+    +between(1440px, 1528px)
+      max-width: calc(100vw - 3rem) !important
+      .bal-nav__main__head
+        padding-left: 2rem
+        padding-right: 2rem
     +until-widescreen
       width: 100%
       +modifier(expanded)
