@@ -12,7 +12,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **stage:** fix position on large screens ([31eb597](https://github.com/baloise-incubator/design-system/commit/31eb59740dcdae96c51eebac19743ccb692b9f40))
 
 
-
 ## [10.23.1](https://github.com/baloise-incubator/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
 
