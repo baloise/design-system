@@ -377,6 +377,20 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       }
     }
 
+    if (this.min) {
+      const minDate = parse(this.min)
+      if (minDate && date < minDate) {
+        date = minDate
+      }
+    }
+
+    if (this.max) {
+      const maxDate = parse(this.max)
+      if (maxDate && date > maxDate) {
+        date = maxDate
+      }
+    }
+
     this.pointerDate = {
       year: getYear(date),
       month: getMonth(date),
@@ -890,7 +904,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private isDateInRange(cellDate: Date): boolean {
     const parsedCellDate = parse(formatDateString(cellDate)) as Date
-    if (this.min && this.max) {
+    if (this.min && this.max && this.max > this.min) {
       return isWithinInterval(parsedCellDate, {
         start: parse(this.min) as Date,
         end: parse(this.max) as Date,
