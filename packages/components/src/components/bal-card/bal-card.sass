@@ -23,7 +23,7 @@
     padding-right: $spacing
 
 +block(card)
-  position: static
+  position: relative
   display: block
   background: transparent
   box-shadow: var(--bal-shadow)
@@ -151,26 +151,25 @@
 +block(card-title)
   display: block
   position: static
+  .title
+    .bal-tag-group,
+    .bal-button-group
+      margin-top: .5rem
   +tablet
-    .bal-tag-group
-      display: inline-flex
-      vertical-align: bottom
-  +desktop
     .title
       display: flex
-      gap: 8px
-      width: 100%
-      align-items: flex-start
-      justify-content: flex-start
-    .bal-tag-group,
-    .bal-button-group,
-    .field.is-grouped
-      display: inline-flex
-      margin-top: 0
-    .bal-button-group,
-    .field.is-grouped
-      flex: 1
-      margin-top: -7px
+      .bal-tag-group,
+      .bal-button-group
+        margin-top: 0
+        margin-left: .5rem
+        display: inline-flex
+      .bal-tag-group
+        .bal-tag
+          margin-top: .125rem
+      .bal-button-group
+        flex: 1
+        .bal-button
+          margin-top: -0.5rem
 
 +block(card-subtitle)
   display: block
