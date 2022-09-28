@@ -26,6 +26,8 @@ import {
   BalInputGroup,
   BalButtonGroup,
   BalText,
+  BalTag,
+  BalTagGroup,
 } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
@@ -82,7 +84,7 @@ FlatCard.parameters = {
 }
 
 export const CardTitle = args => ({
-  components: { ...component.components, BalButton, BalHeading },
+  components: { ...component.components, BalButton, BalButtonGroup, BalHeading, BalTag, BalTagGroup },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>
