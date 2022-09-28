@@ -4,10 +4,10 @@ import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { StepList } from './components/steps'
-import { Props, Platforms } from '../../types'
+import { Props, Platforms, Events } from '../../types'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../'
-import { getPlatforms } from '../../'
+import { getPlatforms, isPlatform } from '../../utils/platform'
+import { stopEventBubbling } from '../../helpers/form-input.helpers'
 
 @Component({
   tag: 'bal-tabs',
@@ -112,7 +112,7 @@ export class Tabs {
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -198,15 +198,19 @@ export class Tabs {
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
-      event.preventDefault()
-      event.stopPropagation()
+      stopEventBubbling(event)
     }
 
     if (!tab.disabled) {
       tab.navigate.emit(event)
       if (this.clickable) {
-        if (tab.value !== this.value) {
-          this.balChange.emit(tab.value)
+        let value = tab.value
+        if (this.interface === 'navigation' && value === this.value) {
+          value = ''
+        }
+
+        if (value !== this.value) {
+          this.balChange.emit(value)
           await this.select(tab)
         }
       }

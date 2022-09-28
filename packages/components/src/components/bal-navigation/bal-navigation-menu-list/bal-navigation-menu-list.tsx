@@ -1,6 +1,6 @@
 import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({

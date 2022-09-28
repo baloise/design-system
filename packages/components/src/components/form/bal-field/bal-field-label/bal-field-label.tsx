@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, Element, State } from '@stencil/core'
-import { BalConfigObserver, Props } from '../../../..'
+import { BalConfigObserver } from '../../../../config'
+import { Props } from '../../../../types'
 import {
   attachComponentToConfig,
   BalConfigState,

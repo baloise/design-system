@@ -212,6 +212,23 @@ export class Navigation implements ComponentInterface {
     }
   }
 
+  onMainTabChange = (event: Events.BalTabsChange) => {
+    const navMainBodyEl = this.el.querySelector('.bal-nav__main__body')
+
+    if (navMainBodyEl) {
+      const hasVerticalScrollbar = navMainBodyEl.scrollHeight > navMainBodyEl.clientHeight
+      const isMainNavOpen = event.detail !== ''
+
+      if (hasVerticalScrollbar) {
+        if (isMainNavOpen) {
+          this.bodyScrollBlocker.block()
+        } else {
+          this.bodyScrollBlocker.allow()
+        }
+      }
+    }
+  }
+
   render() {
     const navigationEl = BEM.block('nav')
     const hasLevels = this.levels?.length > 0
@@ -272,7 +289,14 @@ export class Navigation implements ComponentInterface {
               <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
                 <bal-logo color="blue" animated></bal-logo>
               </a>
-              <bal-tabs interface="navigation" float="right" fullwidth spaceless value={this.selectedMainValue}>
+              <bal-tabs
+                interface="navigation"
+                float="right"
+                fullwidth
+                spaceless
+                value={this.selectedMainValue}
+                onBalChange={this.onMainTabChange}
+              >
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
                     return main.isTabLink ? (

@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-navigation-menu-list-item',

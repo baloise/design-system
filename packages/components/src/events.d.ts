@@ -53,4 +53,7 @@ export namespace Events {
 
   export type BalInputSliderChangeDetail = string | number | null
   export type BalInputSliderChange = CustomEvent<BalInputSliderChangeDetail>
+
+  export type BalTabsChangeDetail = string
+  export type BalTabsChange = CustomEvent<BalTabsChangeDetail>
 }
