@@ -2050,6 +2050,10 @@ export namespace Components {
         "containerSize": Props.BalSheetContainer;
     }
     interface BalSlider {
+        /**
+          * pagination tabs names
+         */
+        "tabsNames": string[];
     }
     interface BalSliderItem {
     }
@@ -5648,6 +5652,10 @@ declare namespace LocalJSX {
         "containerSize"?: Props.BalSheetContainer;
     }
     interface BalSlider {
+        /**
+          * pagination tabs names
+         */
+        "tabsNames"?: string[];
     }
     interface BalSliderItem {
     }
