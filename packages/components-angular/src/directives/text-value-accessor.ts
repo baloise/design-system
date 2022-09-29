@@ -8,6 +8,7 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-input, bal-textarea, bal-input-slider',
   host: {
     '(balInput)': 'handleChangeEvent($event.detail)',
+    '(balBlur)': 'handleBlurEvent($event.detail)',
   },
   providers: [
     {

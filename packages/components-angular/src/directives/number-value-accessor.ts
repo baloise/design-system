@@ -8,6 +8,7 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-number-input, bal-input-stepper',
   host: {
     '(balInput)': 'handleChangeEvent($event.detail)',
+    '(balBlur)': 'handleBlurEvent($event.detail)',
   },
   providers: [
     {
@@ -21,6 +22,7 @@ export class NumericValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
   }
+
   registerOnChange(fn: (_: number | null) => void) {
     super.registerOnChange(value => {
       fn(value === '' ? null : parseFloat(value))

@@ -8,6 +8,7 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-popover, bal-accordion',
   host: {
     '(balChange)': 'handleChangeEvent($event.detail)',
+    '(balBlur)': 'handleBlurEvent($event.detail)',
   },
   providers: [
     {
@@ -21,6 +22,7 @@ export class BooleanValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
   }
+
   writeValue(value: any) {
     this.el.nativeElement.value = this.lastValue = value == null ? false : value
   }
