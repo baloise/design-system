@@ -2051,9 +2051,9 @@ export namespace Components {
     }
     interface BalSlider {
         /**
-          * pagination tabs names
+          * The list of names for pagination tabs
          */
-        "tabsNames": string[];
+        "tabs": string[];
     }
     interface BalSliderItem {
     }
@@ -5653,9 +5653,9 @@ declare namespace LocalJSX {
     }
     interface BalSlider {
         /**
-          * pagination tabs names
+          * The list of names for pagination tabs
          */
-        "tabsNames"?: string[];
+        "tabs"?: string[];
     }
     interface BalSliderItem {
     }
