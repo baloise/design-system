@@ -23,7 +23,7 @@ import {
   detachComponentToConfig,
 } from '../../../config'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
-import { Events } from '../../../events'
+import { Events } from '../../../types'
 import {
   FormInput,
   getInputTarget,

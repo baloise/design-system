@@ -1,7 +1,7 @@
 import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { Props } from '../../types'
-import { Events } from '../../events'
+import { Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'

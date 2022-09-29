@@ -16,13 +16,21 @@ import {
   BalNavigationLevelMain,
   BalNavigationLevelBlockItem,
   BalHeading,
+  BalCard,
+  BalCardContent,
 } from '../../../../.storybook/vue/components'
 import { withContent } from '../../../stories/utils'
 
 const component = BalComponentStory({
   title: 'Components/Navigation',
   component: BalNavigation,
-  subcomponents: { BalNavigationLevels, BalNavigationLevelMeta, BalPopover, BalPopoverContent, BalButton },
+  subcomponents: {
+    BalNavigationLevels,
+    BalNavigationLevelMeta,
+    BalPopover,
+    BalPopoverContent,
+    BalButton,
+  },
   docs,
   argTypes: {
     ...withContent(),
@@ -46,13 +54,15 @@ export const Basic = args => ({
     BalNavigationLevelMain,
     BalNavigationLevelBlockItem,
     BalHeading,
+    BalCard,
+    BalCardContent,
   },
   setup: () => {
     return {
       args,
     }
   },
-  template: `<div style="height: 1000px">
+  template: `<div>
 <bal-navigation v-bind="args" meta-value="meta-1">
   <bal-navigation-levels> <!-- hidden in the dom but can be grabbed by the mutation observer -->
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">
@@ -437,7 +447,7 @@ export const French = args => ({
       args,
     }
   },
-  template: `<div style="height: 1000px">
+  template: `<div>
 <bal-navigation v-bind="args" meta-value="meta-1">
   <bal-navigation-levels>
     <bal-navigation-level-meta value="meta-1" label="Privatkunden" link="/?path=/story/components-navigation--basic" linkLabel="Zur Privatkundenübersicht">
