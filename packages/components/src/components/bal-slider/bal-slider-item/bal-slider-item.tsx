@@ -5,7 +5,7 @@ import { Component, ComponentInterface, h, Host, Method, Prop } from '@stencil/c
 })
 export class TabSliderItem implements ComponentInterface {
   /**
-   * Label of the slide which will be used pagination tabs
+   * Label of the slide which will be used for pagination tabs
    */
   @Prop() label = ''
   private inputId = `bal-slider-item-${sliderItemId++}`
