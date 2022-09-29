@@ -9,9 +9,9 @@ export class Slider implements ComponentInterface {
   @Element() el!: HTMLBalSliderElement
 
   /**
-   * pagination tabs names
+   * The list of names for pagination tabs
    */
-  @Prop() tabsNames: string[] = []
+  @Prop() tabs: string[] = []
 
   private mutationO?: MutationObserver
   private xPosition = 0
@@ -99,7 +99,7 @@ export class Slider implements ComponentInterface {
           interface="tabs"
           totalPages={this.slides.length}
           value={this.slideIndex}
-          tabsNames={this.tabsNames}
+          tabsNames={this.tabs}
           onBalChange={ev => {
             this.setSlide(ev.detail)
           }}
