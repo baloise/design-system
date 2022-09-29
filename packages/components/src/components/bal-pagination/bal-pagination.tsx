@@ -131,7 +131,6 @@ export class Pagination {
       )
     }
     if (this.interface === 'tabs') {
-      console.log(this.tabsNames)
       return (
         <bal-button
           expanded
