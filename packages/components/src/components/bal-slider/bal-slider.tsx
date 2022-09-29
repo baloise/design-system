@@ -13,7 +13,7 @@ export class Slider implements ComponentInterface {
 
   @State() slideIndex = 1
   @State() slides!: HTMLBalSliderItemElement[]
-  @State() slidesLabels: string[] = []
+  @State() slidesLabels: (string | undefined)[] = []
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -66,10 +66,7 @@ export class Slider implements ComponentInterface {
 
   private updateSlides() {
     this.slides = this.getChildItems()
-    this.slides.map(async slide => {
-      const label = await slide.getLabel()
-      this.slidesLabels.push(label)
-    })
+    this.slidesLabels = this.slides.map(slide => slide.label)
   }
 
   /**

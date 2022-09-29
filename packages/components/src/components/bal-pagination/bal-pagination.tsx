@@ -42,7 +42,7 @@ export class Pagination {
   /**
    * List of tabs names for 'tabs' interface
    */
-  @Prop() tabsNames: string[] = []
+  @Prop() tabsNames: (string | undefined)[] = []
 
   /**
    * If 'true, the pagination will be sticky to the top
@@ -131,6 +131,7 @@ export class Pagination {
       )
     }
     if (this.interface === 'tabs') {
+      console.log(this.tabsNames)
       return (
         <bal-button
           expanded
