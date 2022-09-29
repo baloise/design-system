@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 
@@ -7,6 +7,11 @@ import { observeItems } from '../../utils/observer'
 })
 export class Slider implements ComponentInterface {
   @Element() el!: HTMLBalSliderElement
+
+  /**
+   * pagination tabs names
+   */
+  @Prop() tabsNames: string[] = []
 
   private mutationO?: MutationObserver
   private xPosition = 0
@@ -94,6 +99,7 @@ export class Slider implements ComponentInterface {
           interface="tabs"
           totalPages={this.slides.length}
           value={this.slideIndex}
+          tabsNames={this.tabsNames}
           onBalChange={ev => {
             this.setSlide(ev.detail)
           }}
