@@ -154,6 +154,6 @@ export const WithNamedTabs = args => ({
   </bal-slider>`,
 })
 WithNamedTabs.args = {
-  tabsNames: ['One', 'Two', 'Three'],
+  tabs: ['One', 'Two', 'Three'],
 }
 WithNamedTabs.parameters = { ...component.sourceCode(WithNamedTabs) }
