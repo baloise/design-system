@@ -2053,6 +2053,9 @@ export namespace Components {
     }
     interface BalSliderItem {
         "getLabel": () => Promise<string>;
+        /**
+          * Label of the slide which will be used pagination tabs
+         */
         "label": string;
     }
     interface BalSnackbar {
@@ -5652,6 +5655,9 @@ declare namespace LocalJSX {
     interface BalSlider {
     }
     interface BalSliderItem {
+        /**
+          * Label of the slide which will be used pagination tabs
+         */
         "label"?: string;
     }
     interface BalSnackbar {
