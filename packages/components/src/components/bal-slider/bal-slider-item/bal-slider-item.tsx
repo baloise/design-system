@@ -1,9 +1,13 @@
-import { Component, ComponentInterface, h, Host } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-slider-item',
 })
 export class TabSliderItem implements ComponentInterface {
+  /**
+   * Label of the slide which will be used for pagination tabs
+   */
+  @Prop() label = ''
   private inputId = `bal-slider-item-${sliderItemId++}`
 
   render() {

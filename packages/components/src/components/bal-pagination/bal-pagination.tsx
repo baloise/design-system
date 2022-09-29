@@ -141,7 +141,7 @@ export class Pagination {
           inverted={isActive}
           onClick={() => this.selectPage(pageNumber)}
         >
-          {this.tabsNames[pageNumber - 1] ?? pageNumber}
+          {this.tabsNames[pageNumber - 1] !== '' ? this.tabsNames[pageNumber - 1] : pageNumber}
         </bal-button>
       )
     }

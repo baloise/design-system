@@ -120,3 +120,38 @@ export const WithNavigation = args => ({
 })
 WithNavigation.args = {}
 WithNavigation.parameters = { ...component.sourceCode(WithNavigation) }
+
+export const WithNamedTabs = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+  <bal-slider v-bind="args">
+    <bal-slider-item label="One">
+      <bal-card flat fullheight class="mt-2" color="red-light">
+        <bal-card-title>One</bal-card-title>
+        <bal-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </bal-card-content>
+      </bal-card>
+    </bal-slider-item>
+    <bal-slider-item label="Two">
+      <bal-card flat fullheight class="mt-2" color="purple-light">
+        <bal-tag color="red" position="center" size="large">Bestseller</bal-tag>
+        <bal-card-title>Two</bal-card-title>
+        <bal-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </bal-card-content>
+      </bal-card>
+    </bal-slider-item>
+    <bal-slider-item label="Three">
+      <bal-card flat fullheight class="mt-2" color="green-light">
+        <bal-card-title>Three</bal-card-title>
+        <bal-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </bal-card-content>
+      </bal-card>
+      </bal-slider-item>
+  </bal-slider>`,
+})
+WithNamedTabs.args = {}
+WithNamedTabs.parameters = { ...component.sourceCode(WithNamedTabs) }
