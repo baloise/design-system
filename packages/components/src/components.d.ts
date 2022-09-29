@@ -1649,7 +1649,7 @@ export namespace Components {
         /**
           * List of tabs names for 'tabs' interface
          */
-        "tabsNames": (string | undefined)[];
+        "tabsNames": string[];
         /**
           * If sticky, the top position will be determined by this value
          */
@@ -2055,7 +2055,7 @@ export namespace Components {
         /**
           * Label of the slide which will be used for pagination tabs
          */
-        "label"?: string;
+        "label": string;
     }
     interface BalSnackbar {
         /**
@@ -5239,7 +5239,7 @@ declare namespace LocalJSX {
         /**
           * List of tabs names for 'tabs' interface
          */
-        "tabsNames"?: (string | undefined)[];
+        "tabsNames"?: string[];
         /**
           * If sticky, the top position will be determined by this value
          */

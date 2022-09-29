@@ -7,7 +7,7 @@ export class TabSliderItem implements ComponentInterface {
   /**
    * Label of the slide which will be used for pagination tabs
    */
-  @Prop() label?: string
+  @Prop() label = ''
   private inputId = `bal-slider-item-${sliderItemId++}`
 
   render() {

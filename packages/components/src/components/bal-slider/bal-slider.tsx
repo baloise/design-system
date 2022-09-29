@@ -13,7 +13,7 @@ export class Slider implements ComponentInterface {
 
   @State() slideIndex = 1
   @State() slides!: HTMLBalSliderItemElement[]
-  @State() slidesLabels: (string | undefined)[] = []
+  @State() slidesLabels: string[] = []
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
