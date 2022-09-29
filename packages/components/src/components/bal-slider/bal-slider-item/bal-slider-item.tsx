@@ -1,10 +1,15 @@
-import { Component, ComponentInterface, h, Host } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-slider-item',
 })
 export class TabSliderItem implements ComponentInterface {
+  @Prop() label = ''
   private inputId = `bal-slider-item-${sliderItemId++}`
+
+  @Method() async getLabel(): Promise<string> {
+    return this.label
+  }
 
   render() {
     return (

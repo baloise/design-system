@@ -2050,12 +2050,10 @@ export namespace Components {
         "containerSize": Props.BalSheetContainer;
     }
     interface BalSlider {
-        /**
-          * The list of names for pagination tabs
-         */
-        "tabs": string[];
     }
     interface BalSliderItem {
+        "getLabel": () => Promise<string>;
+        "label": string;
     }
     interface BalSnackbar {
         /**
@@ -5652,12 +5650,9 @@ declare namespace LocalJSX {
         "containerSize"?: Props.BalSheetContainer;
     }
     interface BalSlider {
-        /**
-          * The list of names for pagination tabs
-         */
-        "tabs"?: string[];
     }
     interface BalSliderItem {
+        "label"?: string;
     }
     interface BalSnackbar {
         /**

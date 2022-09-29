@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 
@@ -8,16 +8,12 @@ import { observeItems } from '../../utils/observer'
 export class Slider implements ComponentInterface {
   @Element() el!: HTMLBalSliderElement
 
-  /**
-   * The list of names for pagination tabs
-   */
-  @Prop() tabs: string[] = []
-
   private mutationO?: MutationObserver
   private xPosition = 0
 
   @State() slideIndex = 1
   @State() slides!: HTMLBalSliderItemElement[]
+  @State() slidesLabels: string[] = []
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -70,6 +66,10 @@ export class Slider implements ComponentInterface {
 
   private updateSlides() {
     this.slides = this.getChildItems()
+    this.slides.map(async slide => {
+      const label = await slide.getLabel()
+      this.slidesLabels.push(label)
+    })
   }
 
   /**
@@ -99,7 +99,7 @@ export class Slider implements ComponentInterface {
           interface="tabs"
           totalPages={this.slides.length}
           value={this.slideIndex}
-          tabsNames={this.tabs}
+          tabsNames={this.slidesLabels}
           onBalChange={ev => {
             this.setSlide(ev.detail)
           }}
