@@ -9,6 +9,7 @@ import { ValueAccessor } from './value-accessor'
   host: {
     '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event.detail)',
     '(balBlur)': 'handleBlurEvent($event.detail)',
+    '(focusout)': 'onTouched()',
   },
   providers: [
     {

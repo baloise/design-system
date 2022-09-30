@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core'
+import { Directive, ElementRef } from '@angular/core'
 import { ControlValueAccessor } from '@angular/forms'
 
 @Directive()
@@ -24,7 +24,6 @@ export class ValueAccessor implements ControlValueAccessor {
     }
   }
 
-  @HostListener('focusout', ['$event'])
   handleBlurEvent(el: any) {
     if (el === this.el.nativeElement) {
       this.onTouched()
