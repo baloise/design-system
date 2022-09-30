@@ -236,7 +236,7 @@ export class Pagination {
                 ...elPrevious.class(),
                 ...elPrevious.modifier(`context-${this.interface}`).class(),
               }}
-              disabled={this._value < 2}
+              disabled={this._value < 2 || this.disabled}
               onClick={() => this.previous()}
             >
               <bal-icon name="nav-go-left" size="small" />
@@ -250,7 +250,7 @@ export class Pagination {
                 ...elNext.class(),
                 ...elNext.modifier(`context-${this.interface}`).class(),
               }}
-              disabled={this._value === this.totalPages}
+              disabled={this._value === this.totalPages || this.disabled}
               onClick={() => this.next()}
             >
               <bal-icon name="nav-go-right" size="small" />
@@ -263,6 +263,7 @@ export class Pagination {
                   ...elList.class(),
                   ...elList.modifier(`context-${this.interface}`).class(),
                   'is-hidden-mobile': true,
+                  'is-disabled': this.disabled,
                 }}
               >
                 {tabletItems}
@@ -272,6 +273,7 @@ export class Pagination {
                   ...elList.class(),
                   ...elList.modifier(`context-${this.interface}`).class(),
                   'is-hidden-tablet': true,
+                  'is-disabled': this.disabled,
                 }}
               >
                 {mobileItems}
