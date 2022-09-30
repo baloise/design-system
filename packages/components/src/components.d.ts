@@ -1226,6 +1226,11 @@ export namespace Components {
     }
     interface BalListItemAccordionBody {
         /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
+        "getContentHeight": () => Promise<number>;
+        /**
           * If `true` the body will be open and visible
          */
         "open": boolean;
@@ -4803,6 +4808,10 @@ declare namespace LocalJSX {
         "target"?: Props.BalListItemTarget;
     }
     interface BalListItemAccordionBody {
+        /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
         /**
           * If `true` the body will be open and visible
          */
