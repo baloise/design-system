@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core'
+import { Directive, ElementRef, HostListener } from '@angular/core'
 import { ControlValueAccessor } from '@angular/forms'
 
 @Directive()
@@ -6,6 +6,8 @@ export class ValueAccessor implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {
     /**/
   }
+
+  @HostListener('focusout', ['$event'])
   private onTouched: () => void = () => {
     /**/
   }
@@ -24,6 +26,7 @@ export class ValueAccessor implements ControlValueAccessor {
     }
   }
 
+  @HostListener('balBlur', ['$event.target'])
   handleBlurEvent(el: any) {
     if (el === this.el.nativeElement) {
       this.onTouched()
@@ -33,6 +36,7 @@ export class ValueAccessor implements ControlValueAccessor {
   registerOnChange(fn: (value: any) => void) {
     this.onChange = fn
   }
+
   registerOnTouched(fn: () => void) {
     this.onTouched = fn
   }

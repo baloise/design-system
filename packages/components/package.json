@@ -98,7 +98,7 @@
     "lottie-web": "5.8.1"
   },
   "devDependencies": {
-    "@baloise/design-system-next-output-target-angular": "10.24.1-beta.6",
+    "@baloise/design-system-next-output-target-angular": "10.24.0",
     "@baloise/design-system-next-output-target-react": "10.24.0",
     "@baloise/design-system-next-output-target-vue": "10.24.0"
   },

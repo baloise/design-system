@@ -5,10 +5,9 @@ import { ValueAccessor } from './value-accessor'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'bal-checkbox',
+  selector: '<VALUE_ACCESSOR_SELECTORS>',
   host: {
-    '(balChange)': 'handleChangeEvent($event.detail)',
-    '(balBlur)': 'handleBlurEvent($event.detail)',
+    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event.detail)',
   },
   providers: [
     {

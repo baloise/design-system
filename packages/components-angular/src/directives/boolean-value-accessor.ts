@@ -8,8 +8,6 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-popover, bal-accordion',
   host: {
     '(balChange)': 'handleChangeEvent($event.detail)',
-    '(balBlur)': 'handleBlurEvent($event.detail)',
-    '(focusout)': 'onTouched()',
   },
   providers: [
     {

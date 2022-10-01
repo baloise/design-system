@@ -5,20 +5,24 @@ import { ValueAccessor } from './value-accessor'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'bal-input, bal-textarea, bal-input-slider',
+  selector: 'bal-checkbox',
   host: {
-    '(balInput)': 'handleChangeEvent($event.detail)',
+    '(balChange)': 'handleChangeEvent($event.detail)',
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TextValueAccessor),
+      useExisting: forwardRef(() => CheckboxValueAccessor),
       multi: true,
     },
   ],
 })
-export class TextValueAccessor extends ValueAccessor {
+export class CheckboxValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
+  }
+
+  writeValue(value: any) {
+    this.el.nativeElement.checked = this.lastValue = value == null ? false : value
   }
 }

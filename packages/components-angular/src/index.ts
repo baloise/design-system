@@ -4,7 +4,7 @@ export { BalNgErrorComponent } from './components/error/error.component'
 // DIRECTIVES
 export * from './directives/proxies'
 export { BooleanValueAccessor } from './directives/boolean-value-accessor'
-export { CheckboxValueAccessor } from './directives/checkbox-accessor'
+export { CheckboxValueAccessor } from './directives/checkbox-value-accessor'
 export { NumericValueAccessor } from './directives/number-value-accessor'
 export { SelectValueAccessor } from './directives/select-value-accessor'
 export { TextValueAccessor } from './directives/text-value-accessor'

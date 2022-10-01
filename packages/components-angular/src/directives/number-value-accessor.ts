@@ -8,8 +8,6 @@ import { ValueAccessor } from './value-accessor'
   selector: 'bal-number-input, bal-input-stepper',
   host: {
     '(balInput)': 'handleChangeEvent($event.detail)',
-    '(balBlur)': 'handleBlurEvent($event.detail)',
-    '(focusout)': 'onTouched()',
   },
   providers: [
     {
