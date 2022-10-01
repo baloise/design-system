@@ -13,8 +13,7 @@ export class ValueAccessor implements ControlValueAccessor {
   }
   protected lastValue: any
 
-  constructor(protected el: ElementRef) {
-  }
+  constructor(protected el: ElementRef) {}
 
   writeValue(value: any) {
     this.el.nativeElement.value = this.lastValue = value == null ? '' : value
