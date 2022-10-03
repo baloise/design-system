@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
-import { Props } from '../../..'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
