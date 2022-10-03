@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
@@ -20,6 +21,11 @@ export class ListItemAccordionBody {
    * the other grouped accordion bodies
    */
   @Prop() accordionGroup?: string
+
+  /**
+   * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+   */
+  @Prop() contentAlignment: Props.BalListContentSpacing = 'start'
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -87,7 +93,13 @@ export class ListItemAccordionBody {
         }}
         style={{ maxHeight: this.open ? this.contentHeight : '0' }}
       >
-        <bal-list-item-content style={{ minHeight: this.areWeInAGroup ? this.contentHeight : 'inherit' }}>
+        <bal-list-item-content
+          style={{
+            minHeight: this.areWeInAGroup ? this.contentHeight : 'inherit',
+            height: this.areWeInAGroup ? this.contentHeight : 'inherit',
+          }}
+          contentAlignment={this.contentAlignment}
+        >
           <slot></slot>
         </bal-list-item-content>
       </Host>

@@ -1229,6 +1229,10 @@ export namespace Components {
           * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
          */
         "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment": Props.BalListContentSpacing;
         "getContentHeight": () => Promise<number>;
         /**
           * If `true` the body will be open and visible
@@ -1246,6 +1250,7 @@ export namespace Components {
         "icon": string;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -4813,6 +4818,10 @@ declare namespace LocalJSX {
          */
         "accordionGroup"?: string;
         /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment"?: Props.BalListContentSpacing;
+        /**
           * If `true` the body will be open and visible
          */
         "open"?: boolean;
@@ -4832,6 +4841,7 @@ declare namespace LocalJSX {
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
