@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
+import { Props as Props1 } from ".";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
@@ -1229,6 +1230,10 @@ export namespace Components {
           * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
          */
         "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment": Props1.BalListContentSpacing;
         "getContentHeight": () => Promise<number>;
         /**
           * If `true` the body will be open and visible
@@ -1246,6 +1251,7 @@ export namespace Components {
         "icon": string;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -4813,6 +4819,10 @@ declare namespace LocalJSX {
          */
         "accordionGroup"?: string;
         /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment"?: Props1.BalListContentSpacing;
+        /**
           * If `true` the body will be open and visible
          */
         "open"?: boolean;
@@ -4832,6 +4842,7 @@ declare namespace LocalJSX {
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
