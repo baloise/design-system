@@ -1,7 +1,7 @@
 type Browser = 'Safari' | 'others'
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(getUserAgent())
-
+console.log(isSafari)
 export const isBrowser = (browser: Browser): boolean => {
   if (browser === 'Safari') {
     return isSafari
@@ -10,8 +10,8 @@ export const isBrowser = (browser: Browser): boolean => {
 }
 
 function getUserAgent(): string {
-  if (typeof (window as any) !== 'undefined' && window?.navigator && navigator?.userAgent) {
-    return navigator.userAgent
+  if (typeof (window as any) !== 'undefined') {
+    return navigator.userAgent ?? ''
   }
 
   return ''
