@@ -33,9 +33,9 @@ export class ListItemAccordionBody {
   }
 
   componentDidRender() {
-    setTimeout(() => {
-      this.calcContentHeight()
-    }, 10)
+    // setTimeout(() => {
+    this.calcContentHeight()
+    // }, 10)
   }
 
   @Method()
