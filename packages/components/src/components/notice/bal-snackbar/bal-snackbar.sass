@@ -2,8 +2,12 @@
 
 +block(snackbar)
   +alert-wrapper
+  +mobile
+    width: 288px
   +tablet
-    max-width: 288px
+    width: 288px
+  +desktop
+    width: 440px
   justify-content: flex-end
   +element(inner)
     +alert-inner(var(--bal-color-white))
