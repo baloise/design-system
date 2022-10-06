@@ -30,3 +30,4 @@ export const Basic = Template.bind({})
 Basic.args = {
   color: 'warning',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
