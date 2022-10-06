@@ -12,6 +12,8 @@ const stepItemButtonLabelEl = stepItemButtonEl.element('label')
 
 export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickable, tabs, onSelectTab }) => {
   let hasPassed = true
+  let index = 1
+
   tabs = tabs
     .map(tab => ({ ...tab, active: tab.value === value }))
     .map(tab => {
@@ -28,7 +30,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickabl
         ...stepsEl.modifier(`float-${float}`).class(),
       }}
     >
-      {tabs.map((tab, index) => (
+      {tabs.map(tab => (
         <li
           class={{
             ...stepItemEl.class(),
@@ -80,7 +82,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickabl
                 }}
                 style={{ display: !tab.done ? 'block' : 'none' }}
               >
-                {tab.failed ? '!' : index + 1}
+                {tab.failed ? '!' : tab.hidden ? index : index++}
               </span>
             </span>
             <span
