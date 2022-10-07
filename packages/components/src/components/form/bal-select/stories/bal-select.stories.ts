@@ -49,7 +49,7 @@ export const Basic = args => ({
     <bal-select-option value="v1997" label="1997">1997</bal-select-option>
     <bal-select-option value="v1998" label="1998">1998</bal-select-option>
     <bal-select-option value="v1999" label="1999">1999</bal-select-option>
-    <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+    <bal-select-option value="v2000" label="2000 - Option with long text Option with long text<">2000 - Option with long text Option with long text</bal-select-option>
   </bal-select>`,
 })
 Basic.args = {
