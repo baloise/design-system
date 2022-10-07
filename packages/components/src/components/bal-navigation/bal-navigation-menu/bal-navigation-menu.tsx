@@ -76,7 +76,12 @@ export class NavigationMenu {
                   {this.elements
                     .filter(subLevel => subLevel.color === 'grey')
                     .map(block => (
-                      <bal-navigation-menu-list headline={block.label} href={block.link} color={block.color}>
+                      <bal-navigation-menu-list
+                        headline={block.label}
+                        href={block.link}
+                        color={block.color}
+                        target={block.target}
+                      >
                         <div slot="links">
                           {block.subLevels?.map(item => (
                             <bal-navigation-menu-list-item href={item.link} target={item.target}>
