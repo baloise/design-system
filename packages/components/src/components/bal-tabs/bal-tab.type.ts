@@ -11,9 +11,10 @@ export interface BalTabOption {
   done: boolean
   hidden: boolean
   failed: boolean
-  passed: boolean
   bubble: boolean | string
   prevent: boolean
+  passed?: boolean
+  index?: number
   context?: Props.BalTabsInterface
   navigate: EventEmitter<MouseEvent>
 }
