@@ -59,19 +59,25 @@
         ul
           justify-content: flex-end
     +modifier(vertical)
+      white-space: normal
       ul
         flex-direction: column
         align-items: flex-start
+        max-width: 100%
     +modifier(vertical-on-mobile)
       +mobile
+        white-space: normal
         ul
           flex-direction: column
           align-items: flex-start
+          max-width: 100%
     +modifier(vertical-on-tablet)
+      white-space: normal
       +touch
         ul
           flex-direction: column
           align-items: flex-start
+          max-width: 100%
 
     // tab items
     +element(item)

@@ -6,14 +6,16 @@ export interface BalTabOption {
   label: string
   icon?: string
   href: string
+  target: Props.BalButtonTarget
   active: boolean
   disabled: boolean
   done: boolean
   hidden: boolean
   failed: boolean
-  passed: boolean
   bubble: boolean | string
   prevent: boolean
+  passed?: boolean
+  index?: number
   context?: Props.BalTabsInterface
   navigate: EventEmitter<MouseEvent>
 }
@@ -59,6 +61,7 @@ export interface TabItemProps {
   disabled: boolean
   bubble: boolean | string
   href: string | undefined
+  target: Props.BalButtonTarget
   label: string | undefined
   context: Props.BalTabsInterface
   iconPosition: Props.BalTabsIconPosition
