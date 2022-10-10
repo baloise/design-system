@@ -172,9 +172,9 @@ const tokens = {
     },
     'small': {
       legacy: '3',
-      mobile: '0.7rem',
-      tablet: '0.7rem',
-      desktop: '0.7rem',
+      mobile: '0.75rem',
+      tablet: '0.75rem',
+      desktop: '0.75rem',
     },
     'normal': {
       legacy: '4',
