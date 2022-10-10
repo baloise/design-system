@@ -2239,6 +2239,10 @@ export namespace Components {
          */
         "setActive": (active: boolean) => Promise<void>;
         /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
           * This is the key of the tab.
          */
         "value": string;
@@ -5845,6 +5849,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
         /**
           * This is the key of the tab.
          */
