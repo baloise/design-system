@@ -28,6 +28,10 @@ export class Navigation implements ComponentInterface {
   @State() selectedMainValue? = ''
   @State() isTouch = isPlatform('touch')
   /**
+   * Defines if the animation should be active
+   */
+  @Prop() logoAnimated = true
+  /**
    * Path to the logo-image
    */
   @Prop() logoPath = '/'
@@ -287,7 +291,7 @@ export class Navigation implements ComponentInterface {
           >
             <div>
               <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
-                <bal-logo color="blue" animated></bal-logo>
+                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
               </a>
               <bal-tabs
                 interface="navigation"

@@ -1384,6 +1384,10 @@ export namespace Components {
          */
         "ariaLabelMeta": string;
         /**
+          * Defines if the animation should be active
+         */
+        "logoAnimated": boolean;
+        /**
           * Path to the logo-image
          */
         "logoPath": string;
@@ -4975,6 +4979,10 @@ declare namespace LocalJSX {
           * Aria label for the meta-navigation-wrapper
          */
         "ariaLabelMeta"?: string;
+        /**
+          * Defines if the animation should be active
+         */
+        "logoAnimated"?: boolean;
         /**
           * Path to the logo-image
          */
