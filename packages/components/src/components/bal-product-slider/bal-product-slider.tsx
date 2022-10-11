@@ -88,7 +88,6 @@ export class ProductSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
-    console.trace('setSlide', slide)
     const productContainer = this.getProductContainer()
     if (productContainer && slide >= 0 && slide <= this.lastSlide + 1) {
       this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
@@ -119,7 +118,6 @@ export class ProductSlider implements ComponentInterface {
   }
 
   render() {
-    console.log('render')
     const block = BEM.block('product-slider')
     const container = block.element('container')
     const containerProducts = container.element('products')
