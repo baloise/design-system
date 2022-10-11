@@ -19,7 +19,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
 ## [10.24.5](https://github.com/baloise-incubator/design-system/compare/v10.24.4...v10.24.5) (2022-10-05)
 
 **Note:** Version bump only for package root
