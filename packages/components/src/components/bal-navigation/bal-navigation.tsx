@@ -252,7 +252,7 @@ export class Navigation implements ComponentInterface {
               <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
+                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} target={meta.target} />
                   ) : (
                     <bal-tab-item
                       label={meta.label}
@@ -310,6 +310,7 @@ export class Navigation implements ComponentInterface {
                         label={main.label}
                         value={main.value}
                         href={main.link}
+                        target={main.target}
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
                           this.selectedMainIndex = index
