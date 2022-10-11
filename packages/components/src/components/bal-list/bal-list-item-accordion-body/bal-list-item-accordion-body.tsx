@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
 import { Props } from '../../../types'
+import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
@@ -27,9 +28,13 @@ export class ListItemAccordionBody {
    */
   @Prop() contentAlignment: Props.BalListContentSpacing = 'start'
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.calcContentHeight()
+    this.resizeWidthHandler(() => {
+      this.calcContentHeight()
+    })
   }
 
   componentDidRender() {

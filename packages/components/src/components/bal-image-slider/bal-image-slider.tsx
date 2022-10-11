@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-image-slider',
@@ -19,9 +20,13 @@ export class ImageSlider implements ComponentInterface {
    */
   @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.setSlide(this.slideIndex)
+    this.resizeWidthHandler(() => {
+      this.setSlide(this.slideIndex)
+    })
   }
 
   connectedCallback() {

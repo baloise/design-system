@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-slider',
@@ -15,9 +16,13 @@ export class Slider implements ComponentInterface {
   @State() slides!: HTMLBalSliderItemElement[]
   @State() slidesLabels: string[] = []
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.setSlide(this.slideIndex)
+    this.resizeWidthHandler(() => {
+      this.setSlide(this.slideIndex)
+    })
   }
 
   connectedCallback() {

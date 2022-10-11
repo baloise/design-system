@@ -7,6 +7,7 @@ import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
+import { ResizeHandler } from '../../utils/resize'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -139,11 +140,15 @@ export class Popover {
     }
   }
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isTouch = isPlatform('touch')
-    this.isInMainNav = this.footMobileNav !== null
-    this.backdropHeight = this.getBackdropHeight()
+    this.resizeWidthHandler(() => {
+      this.isTouch = isPlatform('touch')
+      this.isInMainNav = this.footMobileNav !== null
+      this.backdropHeight = this.getBackdropHeight()
+    })
   }
 
   componentDidRenderTimer?: NodeJS.Timer

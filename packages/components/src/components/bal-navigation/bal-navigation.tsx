@@ -5,6 +5,7 @@ import { isPlatform } from '../../utils/platform'
 import { Events } from '../../types'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-navigation',
@@ -68,11 +69,15 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('bal-navigation-meta-end') as HTMLElement
   }
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isTransformed = false
-    this.mainMobileHeight = this.getMaxHeight()
-    this.isTouch = isPlatform('touch')
+    this.resizeWidthHandler(() => {
+      this.isTransformed = false
+      this.mainMobileHeight = this.getMaxHeight()
+      this.isTouch = isPlatform('touch')
+    })
   }
 
   @Listen('orientationchange', { target: 'window' })

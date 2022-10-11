@@ -1,6 +1,7 @@
 import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
+import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-popover-content',
@@ -55,9 +56,13 @@ export class PopoverContent {
 
   @State() contentHeightOnTop = 0
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.contentHeightOnTop = window.innerHeight - 64
+    this.resizeWidthHandler(() => {
+      this.contentHeightOnTop = window.innerHeight - 64
+    })
   }
 
   get innerStyle() {

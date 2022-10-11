@@ -2,6 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Listen } from '
 import { BEM } from '../../utils/bem'
 import { observeHasClassActive, observeItems } from '../../utils/observer'
 import { isPlatform } from '../../utils/platform'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-product-slider',
@@ -20,10 +21,14 @@ export class ProductSlider implements ComponentInterface {
   @State() lastSlide = 0
   @State() sliderLength = 0
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.calculateLastSlide()
-    this.setSlide(0)
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.calculateLastSlide()
+      this.setSlide(0)
+    })
   }
 
   @Listen('touchstart')
@@ -83,6 +88,7 @@ export class ProductSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
+    console.trace('setSlide', slide)
     const productContainer = this.getProductContainer()
     if (productContainer && slide >= 0 && slide <= this.lastSlide + 1) {
       this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
@@ -113,6 +119,7 @@ export class ProductSlider implements ComponentInterface {
   }
 
   render() {
+    console.log('render')
     const block = BEM.block('product-slider')
     const container = block.element('container')
     const containerProducts = container.element('products')
