@@ -9,6 +9,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   expanded,
   disabled,
   href,
+  target,
   label,
   vertical,
   iconPosition,
@@ -38,7 +39,8 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   if (href) {
     hrefAttribute = {
       href,
-    }
+      target,
+    } as any
   }
 
   const bubbleString = bubble === true || bubble === false ? '' : bubble

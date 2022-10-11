@@ -8,4 +8,8 @@ export class BalToastService {
   create(options: BalToastOptions): Components.BalToast {
     return balToastController.create(options)
   }
+
+  async dismissAll(): Promise<void> {
+    return balToastController.dismissAll()
+  }
 }

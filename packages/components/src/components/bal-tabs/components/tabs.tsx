@@ -84,6 +84,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
               iconPosition={iconPosition}
               disabled={tab.disabled}
               href={tab.href}
+              target={tab.target}
               label={tab.label}
               bubble={tab.bubble}
               onSelectTab={e => onSelectTab(e, tab)}

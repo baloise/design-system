@@ -19,6 +19,7 @@ export const Basic = args => ({
   <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
   <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
   <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+  <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise-incubator/design-system" target="_blank">Content of Tab link</bal-tab-item>
 </bal-tabs>`,
 })
 Basic.args = {
