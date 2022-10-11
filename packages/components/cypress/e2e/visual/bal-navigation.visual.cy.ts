@@ -9,24 +9,27 @@ describe('bal-navigation', () => {
       })
 
       beforeEach(() => {
-        cy.platform(platform).getComponent('bal-navigation').wait(400)
+        cy.platform(platform).getComponent('bal-navigation')
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0))
+        cy.compareSnapshot(`navigation-desktop-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0))
+        cy.compareSnapshot(
+          `navigation-desktop-${platform}-closed-bottom`,
+          compareSnapshotOptions(platform, 0, 200, 0.1),
+        )
       })
       it('open menu', () => {
         cy.scrollTo('top')
         cy.contains('Versichern').click()
-        cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0))
+        cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
       it('open popover', () => {
         cy.get('.bal-nav__meta__end').find('button').first().click()
-        cy.compareSnapshot(`navigation-desktop-${platform}-popover-open`, compareSnapshotOptions(platform, 0, 0, 0))
+        cy.compareSnapshot(`navigation-desktop-${platform}-popover-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
     })
   }
