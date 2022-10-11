@@ -4,23 +4,25 @@
   display: inline-flex
   align-items: center
   justify-content: center
-  max-height: 2rem
+  min-height: 2rem
   line-height: 1.5rem
   padding: 0.25rem 0.75rem 0.25rem 0.75rem
   background-color: var(--bal-color-grey)
-  border-radius: var(--bal-radius-rounded)
-  white-space: nowrap
+  border-radius: var(--bal-radius-x-large)
 
   // sizes
   +modifier(is-small)
     padding: 0 0.75rem 0 0.75rem
-    max-height: 1.5rem
+    min-height: 1.5rem
+    border-radius: 0.75rem
   +modifier(is-medium)
-    max-height: 2.5rem
+    min-height: 2.5rem
     padding: 0.5rem 1rem 0.5rem 1rem
+    border-radius: 1.25rem
   +modifier(is-large)
-    max-height: 3rem
+    min-height: 3rem
     padding: 0.75rem 1.5rem 0.75rem 1.5rem
+    border-radius: 1.5rem
   // colors
   +modifier(is-primary)
     background: var(--bal-color-primary)

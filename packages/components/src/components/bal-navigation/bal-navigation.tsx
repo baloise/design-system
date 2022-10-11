@@ -28,6 +28,10 @@ export class Navigation implements ComponentInterface {
   @State() selectedMainValue? = ''
   @State() isTouch = isPlatform('touch')
   /**
+   * Defines if the animation should be active
+   */
+  @Prop() logoAnimated = true
+  /**
    * Path to the logo-image
    */
   @Prop() logoPath = '/'
@@ -287,7 +291,7 @@ export class Navigation implements ComponentInterface {
           >
             <div>
               <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
-                <bal-logo color="blue" animated></bal-logo>
+                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
               </a>
               <bal-tabs
                 interface="navigation"
@@ -351,7 +355,7 @@ export class Navigation implements ComponentInterface {
         <div class="bal-nav__metamobile container">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
             <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
-              <bal-logo color="blue" animated></bal-logo>
+              <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">
               <slot name="meta-actions-mobile" />
