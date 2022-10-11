@@ -9,7 +9,7 @@ describe('bal-navigation', () => {
       })
 
       beforeEach(() => {
-        cy.platform(platform).getComponent('bal-navigation').wait(200)
+        cy.platform(platform).getComponent('bal-navigation').wait(400)
       })
 
       it('closed menu on top', () => {
