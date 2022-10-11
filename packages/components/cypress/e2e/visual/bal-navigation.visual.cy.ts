@@ -9,7 +9,7 @@ describe('bal-navigation', () => {
       })
 
       beforeEach(() => {
-        cy.platform(platform).getComponent('bal-navigation').wait(200)
+        cy.platform(platform).getComponent('bal-navigation').wait(500)
       })
 
       it('closed menu on top', () => {
@@ -47,20 +47,20 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0.1))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0))
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0.1))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0))
       })
       it('open menu', () => {
         cy.scrollTo('top')
         cy.getByTestId('navigation-burger').click()
-        cy.compareSnapshot(`navigation-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
+        cy.compareSnapshot(`navigation-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0))
       })
       it('open popover', () => {
         cy.get('.bal-nav__foot-mobile').find('button').first().click().wait(100)
-        cy.compareSnapshot(`navigation-touch-${platform}-popover-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
+        cy.compareSnapshot(`navigation-touch-${platform}-popover-open`, compareSnapshotOptions(platform, 0, 0, 0))
         cy.get('.bal-nav__foot-mobile').find('button').first().click()
       })
     })

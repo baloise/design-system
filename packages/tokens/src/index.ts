@@ -134,11 +134,12 @@ const tokens = {
     },
   },
   radius: {
-    none: { value: '0' },
-    small: { value: '4px' },
-    normal: { value: '4px' },
-    large: { value: '12px' },
-    rounded: { value: '9999px' },
+    'none': { value: '0' },
+    'small': { value: '0.25rem' },
+    'normal': { value: '0.25rem' },
+    'large': { value: '0.75rem' },
+    'x-large': { value: '1rem' },
+    'rounded': { value: '9999px' },
   },
   shadow: {
     none: { value: 'none' },
