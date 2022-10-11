@@ -8,4 +8,8 @@ export class BalSnackbarService {
   create(options: BalSnackbarOptions): Components.BalSnackbar {
     return balSnackbarController.create(options)
   }
+
+  async dismissAll(): Promise<void> {
+    return balSnackbarController.dismissAll()
+  }
 }

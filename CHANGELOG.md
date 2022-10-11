@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.24.7](https://github.com/baloise-incubator/design-system/compare/v10.24.6...v10.24.7) (2022-10-06)
+
+
+### Bug Fixes
+
+* improve variables.scss to import all from subdirectory ([c1d19ea](https://github.com/baloise-incubator/design-system/commit/c1d19ea41c9920cfc64cc98c365bd1479ab6171d))
+
+
+
+## [10.24.6](https://github.com/baloise-incubator/design-system/compare/v10.24.5...v10.24.6) (2022-10-06)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [10.24.5](https://github.com/baloise-incubator/design-system/compare/v10.24.4...v10.24.5) (2022-10-05)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [10.24.4](https://github.com/baloise-incubator/design-system/compare/v10.24.3...v10.24.4) (2022-10-05)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [10.24.3](https://github.com/baloise-incubator/design-system/compare/v10.24.2...v10.24.3) (2022-10-05)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [10.24.2](https://github.com/baloise-incubator/design-system/compare/v10.24.1...v10.24.2) (2022-10-03)
+
+
+### Bug Fixes
+
+* verify if window object exist when checking if current browser is Safari ([f726876](https://github.com/baloise-incubator/design-system/commit/f72687602750aba646b50f98914f095f53023fbb))
+* verify if window object exist when checking if current browser is Safari ([e3239d3](https://github.com/baloise-incubator/design-system/commit/e3239d3eaf704f477e1495e7fd9848bf13beed25))
+
+
+
+## [10.24.1](https://github.com/baloise-incubator/design-system/compare/v10.24.0...v10.24.1) (2022-10-03)
+
+
+### Bug Fixes
+
+* bind balBlur to onTouch in angular, fixes [#453](https://github.com/baloise-incubator/design-system/issues/453),[#623](https://github.com/baloise-incubator/design-system/issues/623) ([a02e597](https://github.com/baloise-incubator/design-system/commit/a02e597f69ee3102920b85d9b1d9736aac98f0c3))
+
+
+
+## [10.24.0](https://github.com/baloise-incubator/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)
+
+
+### Features
+
+* **list:** synchronices the accrodion bodies is set ([f6bd2e5](https://github.com/baloise-incubator/design-system/commit/f6bd2e57cba71983bf97abd11d3541db75c6ea39))
+
+
+### Bug Fixes
+
+* **bal-pagination:** add prop to disable controls and dots for context small ([#662](https://github.com/baloise-incubator/design-system/issues/662)) ([e684bd0](https://github.com/baloise-incubator/design-system/commit/e684bd02413fe165e1107b92f7a5c02e8a2b0c35))
+
+
+
+## [10.23.3](https://github.com/baloise-incubator/design-system/compare/v10.23.2...v10.23.3) (2022-09-29)
+
+
+### Features
+
+* **bal-slider:** added description for label prop ([0ced762](https://github.com/baloise-incubator/design-system/commit/0ced7625d74bb9ea49102c40b21860a9def8046d))
+* **bal-slider:** added namesTabs prop ([adb16ad](https://github.com/baloise-incubator/design-system/commit/adb16ad32b0b249517ec6bf6636733a3fe5a964f))
+* **bal-slider:** adjusted label desc ([d1dd72d](https://github.com/baloise-incubator/design-system/commit/d1dd72d156930cb7fcf8ea4e0c80fd8d2b52f96f))
+* **bal-slider:** improvements ([c267176](https://github.com/baloise-incubator/design-system/commit/c26717656398c0d9a401b37c70354c5557f8fe71))
+* **bal-slider:** removed console log ([726a8ff](https://github.com/baloise-incubator/design-system/commit/726a8ff9ca04123dfddead5f9180561363b65d99))
+* **bal-slider:** removed the get label public method ([f4a7cf1](https://github.com/baloise-incubator/design-system/commit/f4a7cf10f4e4f64bd9abbc706e59fcc8e9c6df94))
+* **bal-slider:** renamed the tabs name property ([531e469](https://github.com/baloise-incubator/design-system/commit/531e469fefe88ec5a3e54300e9e07348df78c0cc))
+* **bal-slider:** set tabs names from slide items labels ([6e9fc4b](https://github.com/baloise-incubator/design-system/commit/6e9fc4b557621d273a729a953b6705a9f34bc4fa))
+* **bal-slider:** updated named tabs story ([80273cd](https://github.com/baloise-incubator/design-system/commit/80273cdb104a56edbeedb368fcadf2d41da75a28))
+* **bal-slider:** updated the stories ([fc4d6d4](https://github.com/baloise-incubator/design-system/commit/fc4d6d4620e6611597b91734050636a54d2adfa4))
+
+
+### Bug Fixes
+
+* **card:** adjust tag and button alignment in the title. Closes [#547](https://github.com/baloise-incubator/design-system/issues/547) ([3d04ec2](https://github.com/baloise-incubator/design-system/commit/3d04ec218e33a7fc0aeccbc673fab962e77ab736))
+* **card:** set to position relative to position the badge. Closes [#591](https://github.com/baloise-incubator/design-system/issues/591) ([165a4dc](https://github.com/baloise-incubator/design-system/commit/165a4dc5ec7ab7755a9cd962d5322dd512a0f135))
+* **datepicker:** grid date cannot be smaller than min or bigger than max .Closes [#595](https://github.com/baloise-incubator/design-system/issues/595) ([1550cc7](https://github.com/baloise-incubator/design-system/commit/1550cc7e6d295e6e6683bc5bfde481922a0831d8))
+* **navigation:** block scrolling when main nav is open and scrollable ([1cc54bd](https://github.com/baloise-incubator/design-system/commit/1cc54bd9fdcf94ba2f77fdc069e5b8484c5a0340))
+* **navigation:** safari 16 login button text stays on one line. Closes [#638](https://github.com/baloise-incubator/design-system/issues/638) ([9a31d91](https://github.com/baloise-incubator/design-system/commit/9a31d9147eb29c1b757acae2270b039d91d486ef))
+
+
+
 ## [10.23.2](https://github.com/baloise-incubator/design-system/compare/v10.23.1...v10.23.2) (2022-09-27)
 
 ### Bug Fixes

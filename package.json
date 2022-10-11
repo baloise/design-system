@@ -78,6 +78,7 @@
     "test:visual:actual": "npm --prefix packages/components run cy:visual:actual",
     "==================== RELEASE ====================": "================================",
     "release:canary": "lerna publish prepatch --canary --preid beta --dist-tag beta --yes --no-changelog",
+    "release:alpha": "lerna publish prepatch --canary --preid alpha --dist-tag beta --yes --no-changelog",
     "release:version": "npm --prefix packages/components run build:version",
     "==================== DOCUMENTATION ====================": "================================",
     "storybook": "node .build/utils/banner.js storybook && npm run build:docs",

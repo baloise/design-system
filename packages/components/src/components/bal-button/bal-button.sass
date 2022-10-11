@@ -4,6 +4,9 @@ bal-button,
   position: static
   &.is-fullwidth
     width: 100%
+  &[disabled]
+    bal-icon
+      pointer-events: none
 
 +block(button-group)
   display: flex

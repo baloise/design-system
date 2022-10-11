@@ -48,6 +48,9 @@
   background: transparent
   border: none
 
+.bal-list__item__subtitle
+  color: var(--bal-color-primary-5)
+
 .bal-list__item,
 .bal-list__item > a,
 .bal-list__item > div,
@@ -230,13 +233,13 @@
     button:not(.button)
       +hover()
         &:hover:after
-          background: var(--bal-color-primary-5)
+          background: var(--bal-color-light-blue-dark)
 
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after
       +desktop()
-        background: var(--bal-color-primary-5)
+        background: var(--bal-color-blue-dark)
 
   &.bal-list--background-color
     .bal-list__item

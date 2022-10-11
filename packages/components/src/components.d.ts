@@ -1226,6 +1226,15 @@ export namespace Components {
     }
     interface BalListItemAccordionBody {
         /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment": Props.BalListContentSpacing;
+        "getContentHeight": () => Promise<number>;
+        /**
           * If `true` the body will be open and visible
          */
         "open": boolean;
@@ -1241,6 +1250,7 @@ export namespace Components {
         "icon": string;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -2052,6 +2062,10 @@ export namespace Components {
     interface BalSlider {
     }
     interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
     }
     interface BalSnackbar {
         /**
@@ -2224,6 +2238,10 @@ export namespace Components {
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
         /**
           * This is the key of the tab.
          */
@@ -4800,6 +4818,14 @@ declare namespace LocalJSX {
     }
     interface BalListItemAccordionBody {
         /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment"?: Props.BalListContentSpacing;
+        /**
           * If `true` the body will be open and visible
          */
         "open"?: boolean;
@@ -4819,6 +4845,7 @@ declare namespace LocalJSX {
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -5650,6 +5677,10 @@ declare namespace LocalJSX {
     interface BalSlider {
     }
     interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
     }
     interface BalSnackbar {
         /**
@@ -5818,6 +5849,10 @@ declare namespace LocalJSX {
           * Tell's if the linking is done by a router.
          */
         "prevent"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
         /**
           * This is the key of the tab.
          */

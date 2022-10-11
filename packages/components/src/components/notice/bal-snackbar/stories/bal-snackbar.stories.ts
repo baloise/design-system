@@ -34,3 +34,4 @@ Basic.args = {
   color: 'info',
   icon: 'info-circle',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

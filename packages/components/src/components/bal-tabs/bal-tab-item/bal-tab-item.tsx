@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
+import { Props } from '../../../types'
 import { BalTabOption } from '../bal-tab.type'
 
 @Component({
@@ -28,6 +29,12 @@ export class TabItem {
    * Link to path.
    */
   @Prop({ reflect: true }) href = ''
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
    * If `true` a small red bubble is added to the tab.
@@ -91,6 +98,7 @@ export class TabItem {
       icon: this.icon,
       label: this.label,
       href: this.href,
+      target: this.target,
       active: this.active,
       disabled: this.disabled,
       done: this.done,

@@ -430,3 +430,58 @@ MetaAccordionList.args = {
   size: 'large',
 }
 MetaAccordionList.parameters = { ...component.sourceCode(MetaAccordionList), controls: { exclude: excludedControls } }
+
+export const AccordionGroupList = args => ({
+  components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
+  setup: () => ({ args }),
+  template: `<div class="columns">
+  <div class="column">
+  <bal-list v-bind="args">
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head>
+      <bal-list-item-icon>
+        <bal-icon name="account"></bal-icon>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Accordion List Item</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body accordion-group="bubu" content-alignment="space-between">
+      <p class="pb-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <bal-button color="primary" icon="plus">Primary</bal-button>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+</bal-list>
+  </div>
+  <div class="column">
+  <bal-list v-bind="args">
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head>
+      <bal-list-item-icon>
+        <bal-icon name="account"></bal-icon>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Accordion List Item</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body accordion-group="bubu" content-alignment="space-between">
+      <p class="pb-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <bal-button color="primary" icon="plus">Primary</bal-button>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+</bal-list>
+  </div>
+  </div>`,
+})
+AccordionGroupList.args = {
+  border: true,
+}
+AccordionGroupList.parameters = { ...component.sourceCode(AccordionGroupList), controls: { exclude: excludedControls } }

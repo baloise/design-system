@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components-vue",
-  "version": "10.23.2",
+  "version": "10.24.7",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@baloise/design-system-next-components": "10.23.2"
+    "@baloise/design-system-next-components": "10.24.7"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"
