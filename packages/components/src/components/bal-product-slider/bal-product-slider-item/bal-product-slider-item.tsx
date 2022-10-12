@@ -121,7 +121,11 @@ export class ProductSliderItem implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          {this.src !== undefined ? <img class={{ ...image.class() }} src={this.src} /> : ''}
+          {this.src !== undefined ? (
+            <img class={{ ...image.class() }} draggable={false} onDragStart={() => false} src={this.src} />
+          ) : (
+            ''
+          )}
           {this.label !== undefined ? <span class={{ ...label.class(), 'is-bold': true }}>{this.label}</span> : ''}
           <slot></slot>
         </TagType>

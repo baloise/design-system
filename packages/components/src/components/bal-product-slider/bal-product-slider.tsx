@@ -85,7 +85,8 @@ export class ProductSlider implements ComponentInterface {
   }
 
   private previousPage() {
-    this.setSlide(this.slideIndex - this.steps)
+    const nextSlide = this.slideIndex - this.steps
+    this.setSlide(nextSlide < 0 ? 0 : nextSlide)
   }
 
   /**
@@ -146,7 +147,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
             <bal-button
               disabled={leftControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - this.steps : 0)}
+              onClick={() => this.previousPage()}
               color="primary"
               square
               rounded
@@ -156,7 +157,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
             <bal-button
               disabled={rightControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex + this.steps)}
+              onClick={() => this.nextPage()}
               color="primary"
               square
               rounded
