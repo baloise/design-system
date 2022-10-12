@@ -26,7 +26,7 @@ export class ProductSlider implements ComponentInterface {
   private resizeWidthHandler = ResizeHandler()
 
   @Listen('touchmove', { target: 'window', passive: false })
-  async mousemoveListener(event: any) {
+  async blockVerticalScrolling(event: any) {
     if (this.el?.contains(event.target)) {
       stopEventBubbling(event)
     }

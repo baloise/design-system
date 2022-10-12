@@ -2,6 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Listen } from '
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 import { ResizeHandler } from '../../utils/resize'
+import { SwipeHandler } from '../../utils/swipe'
 
 @Component({
   tag: 'bal-slider',
@@ -10,12 +11,12 @@ export class Slider implements ComponentInterface {
   @Element() el!: HTMLBalSliderElement
 
   private mutationO?: MutationObserver
-  private xPosition = 0
 
   @State() slideIndex = 1
   @State() slides!: HTMLBalSliderItemElement[]
   @State() slidesLabels: string[] = []
 
+  swipeHandler = SwipeHandler()
   resizeWidthHandler = ResizeHandler()
 
   @Listen('resize', { target: 'window' })
@@ -30,39 +31,33 @@ export class Slider implements ComponentInterface {
     this.updateSlides()
   }
 
+  componentDidLoad(): void {
+    this.swipeHandler.addEventListener(this.el)
+    this.swipeHandler.onSwipeLeft(() => this.nextPage())
+    this.swipeHandler.onSwipeRight(() => this.previousPage())
+  }
+
   disconnectedCallback() {
+    this.swipeHandler.removeEventListener()
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
   }
 
-  @Listen('touchstart')
-  touchStart(event: TouchEvent) {
-    const container = this.getSliderContainer()
-    if (container?.contains(event.target as HTMLElement)) {
-      this.xPosition = event.touches[0].pageX
-    }
+  private nextPage() {
+    this.setSlide(this.slideIndex + 1)
   }
 
-  @Listen('touchend')
-  touchEnd(event: TouchEvent) {
-    const container = this.getSliderContainer()
-    if (container?.contains(event.target as HTMLElement)) {
-      if (event.changedTouches[0].pageX < this.xPosition) {
-        this.setSlide(this.slideIndex + 1)
-      } else {
-        this.setSlide(this.slideIndex - 1)
-      }
+  private previousPage() {
+    if (this.slideIndex > 0) {
+      this.setSlide(this.slideIndex - 1)
     }
   }
 
   private getChildItems() {
     return Array.from(this.el.querySelectorAll<HTMLBalSliderItemElement>('bal-slider-item'))
-  }
-
-  private getSliderContainer() {
-    return this.el.querySelector<HTMLDivElement>('.bal-slider__container')
   }
 
   private getSlideContainer() {

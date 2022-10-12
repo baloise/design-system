@@ -1,7 +1,9 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
+import { stopEventBubbling } from '../../helpers/form-input.helpers'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 import { ResizeHandler } from '../../utils/resize'
+import { SwipeHandler } from '../../utils/swipe'
 
 @Component({
   tag: 'bal-image-slider',
@@ -10,7 +12,6 @@ export class ImageSlider implements ComponentInterface {
   @Element() el!: HTMLBalImageSliderElement
 
   private mutationO?: MutationObserver
-  private xPosition = 0
 
   @State() slideIndex = 1
   @State() images!: HTMLBalImageSliderItemElement[]
@@ -20,7 +21,15 @@ export class ImageSlider implements ComponentInterface {
    */
   @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
 
-  resizeWidthHandler = ResizeHandler()
+  private swipeHandler = SwipeHandler()
+  private resizeWidthHandler = ResizeHandler()
+
+  @Listen('touchmove', { target: 'window', passive: false })
+  async blockVerticalScrolling(event: any) {
+    if (this.el?.contains(event.target)) {
+      stopEventBubbling(event)
+    }
+  }
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
@@ -34,30 +43,28 @@ export class ImageSlider implements ComponentInterface {
     this.updateImages()
   }
 
+  componentDidLoad(): void {
+    this.swipeHandler.addEventListener(this.el)
+    this.swipeHandler.onSwipeLeft(() => this.nextPage())
+    this.swipeHandler.onSwipeRight(() => this.previousPage())
+  }
+
   disconnectedCallback() {
+    this.swipeHandler.removeEventListener()
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
   }
 
-  @Listen('touchstart')
-  touchStart(event: TouchEvent) {
-    const imageContainer = this.getSliderContainer()
-    if (imageContainer?.contains(event.target as HTMLElement)) {
-      this.xPosition = event.touches[0].pageX
-    }
+  private nextPage() {
+    this.setSlide(this.slideIndex + 1)
   }
 
-  @Listen('touchend')
-  touchEnd(event: TouchEvent) {
-    const imageContainer = this.getSliderContainer()
-    if (imageContainer?.contains(event.target as HTMLElement)) {
-      if (event.changedTouches[0].pageX < this.xPosition) {
-        this.setSlide(this.slideIndex + 1)
-      } else {
-        this.setSlide(this.slideIndex - 1)
-      }
+  private previousPage() {
+    if (this.slideIndex > 0) {
+      this.setSlide(this.slideIndex - 1)
     }
   }
 
