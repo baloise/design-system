@@ -18,7 +18,7 @@ export const ResizeHandler = () => {
       previousIsLandscape = isLandscape()
     }
 
-    if (hasTouchSupport) {
+    if (hasTouchSupport()) {
       if (previousWidth !== windowWidth() || previousIsLandscape !== isLandscape()) {
         callback()
         resetPreviousValues()
