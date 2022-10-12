@@ -56,6 +56,8 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickabl
               ...stepItemButtonEl.modifier('disabled').class(tab.disabled),
               ...stepItemButtonEl.modifier('clickable').class(clickable && !tab.disabled),
             }}
+            href={tab.href === '' ? 'javascript:;' : tab.href}
+            target={tab.target}
             onClick={(event: MouseEvent) => onSelectTab(event, tab)}
           >
             <span
