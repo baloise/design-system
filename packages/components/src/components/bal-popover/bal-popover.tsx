@@ -223,6 +223,9 @@ export class Popover {
     if (!this.value || options.force) {
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
+      if (this.menuInnerElement) {
+        this.menuInnerElement.scrollTo(0, 0)
+      }
       this.balPopoverPrepare.emit(this.popoverId)
       this.value = true
       this.popperInstance.setOptions((options: any) => ({
@@ -295,6 +298,10 @@ export class Popover {
 
   private get menuElement(): HTMLElement | null {
     return this.element.querySelector('bal-popover-content')
+  }
+
+  private get menuInnerElement(): HTMLElement | null {
+    return this.element.querySelector('.bal-popover__content__inner')
   }
 
   private getBackdropHeight() {

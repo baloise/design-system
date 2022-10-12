@@ -6,6 +6,10 @@
   @media screen and (max-width: $device - 1px)
     @content
 
+=between($min-device, $max-device)
+  @media screen and (min-width: $min-device) and (max-width: $max-device - 1px)
+    @content
+
 =mobile
   @media screen and (max-width: $tablet - 1px)
     @content

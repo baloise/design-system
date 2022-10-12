@@ -16,6 +16,12 @@ Cypress.Commands.add('page', (url: string) => {
   })
 
   cy.visit(url, { log: false }).then(() => {
+    cy.document()
+      // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
+      // The promise will only resolve once the document has completed loading fonts,
+      // layout operations are completed, and no further font loads are needed.
+      .then(document => document.fonts.ready)
+
     return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false })
   })
 })

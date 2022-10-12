@@ -2,6 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
+import { hasTouchSupport } from '../../utils/browser'
 import { Events } from '../../types'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 import { stopEventBubbling } from '../../helpers/form-input.helpers'
@@ -20,7 +21,7 @@ export class Navigation implements ComponentInterface {
   private bodyScrollBlocker = BodyScrollBlocker()
 
   @State() mainMobileHeight = ''
-  @State() isTransformed = false
+  @State() isMetaHidden = false
   @State() levels: LevelInfo[] = []
   @State() selectedMetaIndex = 0
   @State() selectedMainIndex = 0
@@ -28,6 +29,10 @@ export class Navigation implements ComponentInterface {
   @State() selectedMetaValue? = ''
   @State() selectedMainValue? = ''
   @State() isTouch = isPlatform('touch')
+  /**
+   * Defines if the animation should be active
+   */
+  @Prop() logoAnimated = true
   /**
    * Path to the logo-image
    */
@@ -74,9 +79,14 @@ export class Navigation implements ComponentInterface {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isTransformed = false
+      this.isMetaHidden = false
       this.mainMobileHeight = this.getMaxHeight()
-      this.isTouch = isPlatform('touch')
+
+      if (this.isTouch !== isPlatform('touch')) {
+        this.isMainBodyOpen = false
+        this.selectedMainValue = ''
+        this.isTouch = isPlatform('touch')
+      }
     })
   }
 
@@ -87,15 +97,15 @@ export class Navigation implements ComponentInterface {
   }
 
   @Listen('scroll', { target: 'window', passive: false })
-  handleScroll(event: Event) {
+  handleScroll(_event: Event) {
     if (isPlatform('desktop') && !this.bodyScrollBlocker.isBlocked()) {
+      const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
+      const isOnTop = 0 >= window.scrollY
+      const isOverViewportTop = 0 > window.scrollY
+      const isOverViewportBottom = maxScrollHeight <= window.scrollY
       const didMoveDownwards = window.scrollY > this.previousY
-      if (this.isTransformed === false && didMoveDownwards) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
 
-      this.isTransformed = didMoveDownwards
+      this.isMetaHidden = !isOnTop && (didMoveDownwards || isOverViewportBottom || isOverViewportTop)
       this.previousY = window.scrollY
     }
   }
@@ -218,18 +228,14 @@ export class Navigation implements ComponentInterface {
   }
 
   onMainTabChange = (event: Events.BalTabsChange) => {
-    const navMainBodyEl = this.el.querySelector('.bal-nav__main__body')
+    const isMainNavOpen = event.detail !== ''
 
-    if (navMainBodyEl) {
-      const hasVerticalScrollbar = navMainBodyEl.scrollHeight > navMainBodyEl.clientHeight
-      const isMainNavOpen = event.detail !== ''
-
-      if (hasVerticalScrollbar) {
-        if (isMainNavOpen) {
-          this.bodyScrollBlocker.block()
-        } else {
-          this.bodyScrollBlocker.allow()
-        }
+    if (hasTouchSupport()) {
+      if (isMainNavOpen) {
+        this.isMetaHidden = false
+        this.bodyScrollBlocker.block()
+      } else {
+        this.bodyScrollBlocker.allow()
       }
     }
   }
@@ -242,7 +248,7 @@ export class Navigation implements ComponentInterface {
       <Host
         class={{
           ...navigationEl.class(),
-          'bal-nav--transformed': this.isTransformed,
+          'bal-nav--transformed': this.isMetaHidden,
         }}
       >
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
@@ -251,7 +257,7 @@ export class Navigation implements ComponentInterface {
               <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} />
+                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} target={meta.target} />
                   ) : (
                     <bal-tab-item
                       label={meta.label}
@@ -292,7 +298,7 @@ export class Navigation implements ComponentInterface {
           >
             <div>
               <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
-                <bal-logo color="blue" animated></bal-logo>
+                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
               </a>
               <bal-tabs
                 interface="navigation"
@@ -309,6 +315,7 @@ export class Navigation implements ComponentInterface {
                         label={main.label}
                         value={main.value}
                         href={main.link}
+                        target={main.target}
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
                           this.selectedMainIndex = index
@@ -356,7 +363,7 @@ export class Navigation implements ComponentInterface {
         <div class="bal-nav__metamobile container">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
             <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
-              <bal-logo color="blue" animated></bal-logo>
+              <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">
               <slot name="meta-actions-mobile" />

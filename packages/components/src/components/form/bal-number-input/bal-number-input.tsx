@@ -41,7 +41,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { getDecimalSeparator } from '../../../utils/number.util'
+import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number.util'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
 
@@ -300,6 +300,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
+  get pattern() {
+    let suffix = this.suffix
+    if (suffix !== '') {
+      suffix = ` ${suffix}`
+    }
+    return `[0-9${getThousandSeparator()}${this.decimal > 0 ? getDecimalSeparator() : ''}${suffix}]*`
+  }
+
   render() {
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
@@ -333,7 +341,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           placeholder={this.placeholder || ''}
           readonly={this.readonly}
           required={this.required}
-          pattern={'[0-9]*'}
+          pattern={this.pattern}
           value={value}
           onInput={e => this.onInput(e)}
           onFocus={e => this.onFocus(e)}

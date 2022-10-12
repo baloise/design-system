@@ -69,7 +69,7 @@ export class Hint implements BalConfigObserver {
           this.innerCloseLabel = 'Chiudere'
           break
         case 'nl':
-          this.innerCloseLabel = 'Dichtbij'
+          this.innerCloseLabel = 'Sluiten'
           break
         default:
           this.innerCloseLabel = 'Close'

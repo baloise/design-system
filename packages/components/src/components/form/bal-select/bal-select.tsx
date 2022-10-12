@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
-import { debounce, findItemLabel, isDescendant } from '../../../helpers/helpers'
+import { debounce, deepReady, findItemLabel, isDescendant } from '../../../helpers/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -320,8 +320,21 @@ export class Select {
     }
   }
 
+  waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timer
+  async waitForOptionsAndThenUpdateRawValues() {
+    clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
+    await deepReady(this.el)
+    const hasOptions = this.options.size > 0
+
+    if (hasOptions) {
+      this.updateRawValue(false)
+    } else {
+      this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
+    }
+  }
+
   componentWillLoad() {
-    this.updateRawValue(false)
+    this.waitForOptionsAndThenUpdateRawValues()
 
     if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
       const firstOption = this.options.get(this.rawValue[0])
@@ -332,6 +345,8 @@ export class Select {
   }
 
   componentDidLoad() {
+    this.updateRawValue(false)
+
     if (!this.multiple) {
       this.inputElement.value = this.inputValue
     }
@@ -925,7 +940,6 @@ export class Select {
                   ...controlInputEl.class(),
                   'input': true,
                   'is-inverted': this.inverted,
-                  // 'is-hidden': this.multiple && !this.typeahead,
                   'is-danger': this.invalid,
                   'is-disabled': this.disabled || this.readonly,
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
