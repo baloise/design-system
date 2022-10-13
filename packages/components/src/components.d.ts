@@ -1230,7 +1230,7 @@ export namespace Components {
          */
         "accordionGroup"?: string;
         /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment": Props.BalListContentSpacing;
         "getContentHeight": () => Promise<number>;
@@ -4826,7 +4826,7 @@ declare namespace LocalJSX {
          */
         "accordionGroup"?: string;
         /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment"?: Props.BalListContentSpacing;
         /**
