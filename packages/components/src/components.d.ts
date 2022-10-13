@@ -2283,6 +2283,10 @@ export namespace Components {
          */
         "fullwidth": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalTabOption | undefined>;
+        /**
           * Defines the layout of the tabs.
          */
         "iconPosition": Props.BalTabsIconPosition;
