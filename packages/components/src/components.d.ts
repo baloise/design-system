@@ -2121,6 +2121,10 @@ export namespace Components {
          */
         "color": 'blue' | 'white';
         /**
+          * If `true` the component will not add the spinner animation svg
+         */
+        "deactivated": boolean;
+        /**
           * If `true` the component can be used on dark background
          */
         "inverted": boolean;
@@ -5739,6 +5743,10 @@ declare namespace LocalJSX {
           * Defines the color of the spinner.
          */
         "color"?: 'blue' | 'white';
+        /**
+          * If `true` the component will not add the spinner animation svg
+         */
+        "deactivated"?: boolean;
         /**
           * If `true` the component can be used on dark background
          */
