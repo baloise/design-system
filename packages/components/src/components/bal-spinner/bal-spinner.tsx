@@ -27,6 +27,7 @@ export class Spinner {
       this.destroyAnimation()
     }
   }
+
   /**
    * Defines the color of the spinner.
    */
