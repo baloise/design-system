@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <section>
+          <bal-footer data-testid="basic">
+            <div class="container">
+              <bal-logo color="white"></bal-logo>
+              <p class="mt-2">Footer Content</p>
+            </div>
+        </bal-footer>
+        </section>
+        <br />
+        <br />
+        <!-- Hide links -->
+        <section>
+          <bal-footer hide-links>
+            <div class="container">
+              <bal-logo color="white"></bal-logo>
+              <p class="mt-2">Footer Content</p>
+            </div>
+        </bal-footer>
+        </section>
+        <br />
+        <br />
+        <!-- Hide Language Selection -->
+        <section>
+          <bal-footer hide-language-selection>
+            <div class="container">
+              <bal-logo color="white"></bal-logo>
+              <p class="mt-2">Footer Content</p>
+            </div>
+        </bal-footer>
+        </section>
+        <br />
+        <br />
+        <!-- Locale -->
+        <section>
+        <bal-footer locale="de">
+          <div class="container">
+            <bal-logo color="white"></bal-logo>
+            <p class="mt-2">Footer Content</p>
+          </div>
+        </bal-footer>
+        <br />
+        <br />
+        <bal-footer locale="en">
+          <div class="container">
+            <bal-logo color="white"></bal-logo>
+            <p class="mt-2">Footer Content</p>
+          </div>
+        </bal-footer>
+        <br />
+        <br />
+        <bal-footer locale="fr">
+          <div class="container">
+            <bal-logo color="white"></bal-logo>
+            <p class="mt-2">Footer Content</p>
+          </div>
+        </bal-footer>
+        <br />
+        <br />
+        <bal-footer locale="it">
+          <div class="container">
+            <bal-logo color="white"></bal-logo>
+            <p class="mt-2">Footer Content</p>
+          </div>
+        </bal-footer>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
