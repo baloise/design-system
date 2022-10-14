@@ -1,25 +1,25 @@
-describe('bal-notification', () => {
+describe('bal-data', () => {
   before(() => cy.page('/components/bal-data/test/bal-data.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('notification-desktop', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-desktop', 0.0)
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('notification-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-tablet', 0.0)
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('notification-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-mobile', 0.0)
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('notification-variants-desktop', 0.0)
+    cy.compareSnapshot('data-variants-desktop', 0.0)
 
     cy.platform('tablet')
-    cy.compareSnapshot('notification-variants-tablet', 0.0)
+    cy.compareSnapshot('data-variants-tablet', 0.0)
 
     cy.platform('mobile')
-    cy.compareSnapshot('notification-variants-mobile', 0.0)
+    cy.compareSnapshot('data-variants-mobile', 0.0)
   })
 })
