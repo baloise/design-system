@@ -1,5 +1,7 @@
 import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
+import * as balIcons from '@baloise/design-system-next-icons'
 import globalScript from '../../../global'
+import { updateBalIcons } from '../../../config'
 
 @Component({
   tag: 'bal-doc-app',
@@ -16,6 +18,7 @@ export class DocApp {
 
   componentDidLoad() {
     this.balAppLoad.emit(true)
+    updateBalIcons(balIcons)
   }
 
   render() {

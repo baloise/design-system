@@ -32,6 +32,72 @@ import readme from '../readme.md'
   </bal-button-group>
 </bal-doc-app>
 
+By default the icons are not loaded by the Design System. To import the icons we support two ways.
+
+- Pass the raw SVG content directly to the `bal-icon` component (recommended)
+- During the initialization of the Design System
+
+### Import into the component
+
+When importing an SVG into your component you decrease the initial page load. So you use the SVG only where
+you needed and at the time you wanted.
+
+First import the icon.
+
+```typescript
+import { balIconAccount } as balIcons from '@baloise/design-system-next-icons'
+```
+
+Then use it directly with the `bal-icon` component.
+
+```html
+<!-- Angular -->
+<bal-icon [svg]="balIconAccount"></bal-icon>
+
+<!-- Vue -->
+<bal-icon :svg="balIconAccount"></bal-icon>
+```
+
+### Import during initialization
+
+Import the icons form the `@baloise/design-system-next-icons` package and pass them with
+the BalConfig during the initialization.
+
+First import the icon.
+
+```typescript
+import { balIconAccount } as balIcons from '@baloise/design-system-next-icons'
+```
+
+#### Angular
+
+```typescript
+@NgModule({
+  imports: [
+    BalCoreModule.forRoot({
+      defaults: {
+        icons: { balIconAccount },
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+#### Vue
+
+```typescript
+createApp(App)
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
+        icons: { balIconAccount },
+      },
+    }),
+  )
+  .mount('#app')
+```
+
 ## Examples
 
 <span id="story--components-icon--sizes" style={{ opacity: 0 }}></span>

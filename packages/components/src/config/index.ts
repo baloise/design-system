@@ -1,6 +1,6 @@
 import { BalConfigObserver } from '../types'
 import { Config } from './config'
-import { BalConfigState, BalLanguage, BalRegion } from './config.types'
+import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 
 export * from './initialize'
 export * from './config.types'
@@ -71,5 +71,16 @@ export const updateBalAllowedLanguages = (allowedLanguages: BalLanguage[]): void
 
   if (config) {
     config.allowedLanguages = allowedLanguages
+  }
+}
+
+export const updateBalIcons = (icons: BalIcons): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.icons = {
+      ...config.icons,
+      ...icons,
+    }
   }
 }

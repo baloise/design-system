@@ -1,14 +1,16 @@
-import { Component, h, Host, Prop } from '@stencil/core'
-import * as balIcons from '@baloise/design-system-next-icons'
+import { Component, h, Host, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { Props } from '../../types'
+import { BalConfigObserver, Props } from '../../types'
 import { BEM } from '../../utils/bem'
+import { attachComponentToConfig, BalConfigState, BalIcons, defaultConfig, detachComponentToConfig } from '../../config'
 
 @Component({
   tag: 'bal-icon',
 })
-export class Icon {
+export class Icon implements BalConfigObserver {
+  @State() icons: BalIcons = defaultConfig.icons
+
   /**
    * Name of the baloise icon.
    */
@@ -49,8 +51,21 @@ export class Icon {
    * */
   @Prop() shadow = false
 
+  connectedCallback() {
+    attachComponentToConfig(this)
+  }
+
+  disconnectedCallback() {
+    detachComponentToConfig(this)
+  }
+
+  configChanged(state: BalConfigState): void {
+    this.icons = state.icons
+  }
+
   private get svgContent() {
-    if (balIcons && this.name && this.name.length > 0) {
+    const hasIcons = Object.keys(this.icons).length > 0
+    if (hasIcons && this.name && this.name.length > 0) {
       // We are doing this to avoid breaking change.
       if (this.name.startsWith('alert')) {
         this.name = 'alert-triangle'
@@ -58,9 +73,7 @@ export class Icon {
       if (this.name.startsWith('info')) {
         this.name = 'info-circle'
       }
-      const icon: string | undefined = (balIcons as { [key: string]: string })[
-        `balIcon${upperFirst(camelCase(this.name))}`
-      ]
+      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(this.name))}`]
       if (icon) {
         return icon
       }

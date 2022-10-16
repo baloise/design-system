@@ -1,5 +1,5 @@
 import { BALOISE_SESSION_KEY } from './config.const'
-import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.types'
+import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
 
 export class Config {
@@ -9,6 +9,7 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
+    icons: {},
   }
 
   get locale(): string {
@@ -46,6 +47,18 @@ export class Config {
       this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
+  }
+
+  get icons(): BalIcons {
+    return this._config.icons
+  }
+
+  set icons(icons: BalIcons) {
+    this._config.icons = {
+      ...this._config.icons,
+      ...icons,
+    }
+    this._notify()
   }
 
   attach(observer: BalConfigObserver): void {
