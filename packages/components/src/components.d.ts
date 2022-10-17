@@ -1230,7 +1230,7 @@ export namespace Components {
          */
         "accordionGroup"?: string;
         /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment": Props.BalListContentSpacing;
         "getContentHeight": () => Promise<number>;
@@ -2121,6 +2121,10 @@ export namespace Components {
          */
         "color": 'blue' | 'white';
         /**
+          * If `true` the component will not add the spinner animation svg
+         */
+        "deactivated": boolean;
+        /**
           * If `true` the component can be used on dark background
          */
         "inverted": boolean;
@@ -2282,6 +2286,10 @@ export namespace Components {
           * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
+        /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalTabOption | undefined>;
         /**
           * Defines the layout of the tabs.
          */
@@ -4826,7 +4834,7 @@ declare namespace LocalJSX {
          */
         "accordionGroup"?: string;
         /**
-          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment"?: Props.BalListContentSpacing;
         /**
@@ -5739,6 +5747,10 @@ declare namespace LocalJSX {
           * Defines the color of the spinner.
          */
         "color"?: 'blue' | 'white';
+        /**
+          * If `true` the component will not add the spinner animation svg
+         */
+        "deactivated"?: boolean;
         /**
           * If `true` the component can be used on dark background
          */

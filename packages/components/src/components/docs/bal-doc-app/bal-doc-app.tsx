@@ -8,11 +8,10 @@ import {
   detachComponentToConfig,
   updateBalIcons,
 } from '../../../config'
+import { isBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-doc-app',
-  scoped: false,
-  shadow: false,
   styleUrl: '../../../styles/global.sass',
 })
 export class DocApp implements BalConfigObserver {
@@ -63,7 +62,13 @@ export class DocApp implements BalConfigObserver {
   render() {
     return (
       <Host role="application">
-        <main class="bal-app">
+        <main
+          class={{
+            'bal-app': true,
+            'bal-app--safari': isBrowser('Safari'),
+            'bal-app--touch': isBrowser('touch'),
+          }}
+        >
           <slot></slot>
         </main>
       </Host>

@@ -8,6 +8,7 @@ import { Props, Platforms, Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { getPlatforms, isPlatform } from '../../utils/platform'
 import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
@@ -114,10 +115,14 @@ export class Tabs {
    */
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.platform = getPlatforms()
-    this.moveLine(this.getTargetElement(this.value))
+    this.resizeWidthHandler(() => {
+      this.platform = getPlatforms()
+      this.moveLine(this.getTargetElement(this.value))
+    })
   }
 
   @Listen('balPopoverPrepare', { target: 'window' })
@@ -169,6 +174,15 @@ export class Tabs {
   }
 
   /**
+   * Find the options properties by its value
+   */
+  @Method()
+  async getOptionByValue(value: string) {
+    const options = this.tabsOptions
+    return options.find(option => option.value === value)
+  }
+
+  /**
    * @internal
    * Rerenders the line to mark the active tab.
    */
@@ -205,7 +219,7 @@ export class Tabs {
       tab.navigate.emit(event)
       if (this.clickable) {
         let value = tab.value
-        if (this.interface === 'navigation' && value === this.value) {
+        if (this.interface === 'navigation' && value === this.value && !tab.href) {
           value = ''
         }
 

@@ -1,7 +1,10 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
+import { stopEventBubbling } from '../../helpers/form-input.helpers'
 import { BEM } from '../../utils/bem'
 import { observeHasClassActive, observeItems } from '../../utils/observer'
 import { isPlatform } from '../../utils/platform'
+import { ResizeHandler } from '../../utils/resize'
+import { SwipeHandler } from '../../utils/swipe'
 
 @Component({
   tag: 'bal-product-slider',
@@ -13,37 +16,28 @@ export class ProductSlider implements ComponentInterface {
   private mutationTabO?: MutationObserver
   private productWidth = 176
   private steps = 2
-  private xPosition = 0
 
   @State() items!: HTMLBalProductSliderItemElement[]
   @State() slideIndex = 0
   @State() lastSlide = 0
   @State() sliderLength = 0
 
+  private swipeHandler = SwipeHandler()
+  private resizeWidthHandler = ResizeHandler()
+
+  @Listen('touchmove', { target: 'window', passive: false })
+  async blockVerticalScrolling(event: any) {
+    if (this.el?.contains(event.target)) {
+      stopEventBubbling(event)
+    }
+  }
+
   @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.calculateLastSlide()
-    this.setSlide(0)
-  }
-
-  @Listen('touchstart')
-  touchStart(event: TouchEvent) {
-    const productContainer = this.getProductContainer()
-    if (productContainer?.contains(event.target as HTMLElement)) {
-      this.xPosition = event.touches[0].pageX
-    }
-  }
-
-  @Listen('touchend')
-  touchEnd(event: TouchEvent) {
-    const productContainer = this.getProductContainer()
-    if (productContainer?.contains(event.target as HTMLElement)) {
-      if (event.changedTouches[0].pageX < this.xPosition) {
-        this.setSlide(this.slideIndex + this.steps)
-      } else {
-        this.setSlide(this.slideIndex - this.steps)
-      }
-    }
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.calculateLastSlide()
+      this.setSlide(0)
+    })
   }
 
   connectedCallback() {
@@ -55,7 +49,15 @@ export class ProductSlider implements ComponentInterface {
     this.updateItems()
   }
 
+  componentDidLoad(): void {
+    this.swipeHandler.addEventListener(this.el)
+    this.swipeHandler.onSwipeLeft(() => this.nextPage())
+    this.swipeHandler.onSwipeRight(() => this.previousPage())
+  }
+
   disconnectedCallback() {
+    this.swipeHandler.removeEventListener()
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -76,6 +78,15 @@ export class ProductSlider implements ComponentInterface {
 
   private updateItems() {
     this.items = this.getChildItems()
+  }
+
+  private nextPage() {
+    this.setSlide(this.slideIndex + this.steps)
+  }
+
+  private previousPage() {
+    const nextSlide = this.slideIndex - this.steps
+    this.setSlide(nextSlide < 0 ? 0 : nextSlide)
   }
 
   /**
@@ -136,7 +147,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
             <bal-button
               disabled={leftControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - this.steps : 0)}
+              onClick={() => this.previousPage()}
               color="primary"
               square
               rounded
@@ -146,7 +157,7 @@ export class ProductSlider implements ComponentInterface {
           <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
             <bal-button
               disabled={rightControlIsDisabled}
-              onClick={() => this.setSlide(this.slideIndex + this.steps)}
+              onClick={() => this.nextPage()}
               color="primary"
               square
               rounded

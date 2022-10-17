@@ -2,6 +2,7 @@ import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Props } from '../../../types'
 import { isPlatform } from '../../../utils/platform'
+import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-navigation-menu-list',
@@ -25,9 +26,13 @@ export class NavigationMenuList {
   @Prop() target: Props.BalButtonTarget = '_self'
   @State() headingLevel!: 'h3' | 'h4'
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.setHeadingLevel()
+    this.resizeWidthHandler(() => {
+      this.setHeadingLevel()
+    })
   }
 
   connectedCallback() {

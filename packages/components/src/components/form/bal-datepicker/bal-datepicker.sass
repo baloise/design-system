@@ -53,14 +53,16 @@
     display: table-row
     .bal-datepicker-grid__cell
       margin-bottom: 0.25rem
+      margin-right: 0.25rem
     &:last-child
       .bal-datepicker-grid__cell
         margin-bottom: 0
 
   +element(header)
-    display: table-header-group
+    display: flex
     max-width: 360px
     margin: 0 auto 0 auto
+    gap: 0.25rem
     .bal-datepicker-grid__cell
       background: transparent
       span
@@ -81,7 +83,6 @@
     min-height: 3rem
     min-width: 2.25rem
     appearance: auto !important
-    margin-right: 0.25rem
     background: var(--bal-color-white)
     &:last-child
       margin-right: 0
@@ -89,7 +90,6 @@
       font-family: var(--bal-font-family-text)
       font-weight: var(--bal-weight-regular)
     +tablet
-      width: 3rem
       min-width: 3rem !important
     +modifier(disabled)
       border-color: transparent !important
