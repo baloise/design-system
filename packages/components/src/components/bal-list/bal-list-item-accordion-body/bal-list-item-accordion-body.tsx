@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
+import { debounce } from '../../../helpers/helpers'
 import { Props } from '../../../types'
 
 @Component({
@@ -7,6 +8,8 @@ import { Props } from '../../../types'
   shadow: false,
 })
 export class ListItemAccordionBody {
+  private resizeO?: ResizeObserver
+
   @Element() el!: HTMLElement
 
   @State() contentHeight = '0px'
@@ -32,20 +35,40 @@ export class ListItemAccordionBody {
     this.calcContentHeight()
   }
 
+  connectedCallback() {
+    const debounceCalcContentHeight = debounce(() => this.calcContentHeight(), 20)
+    this.resizeO = new ResizeObserver(() => debounceCalcContentHeight())
+  }
+
   componentDidRender() {
     setTimeout(() => {
       this.calcContentHeight()
     }, 10)
   }
 
+  componentDidLoad() {
+    const innerEl = this.getInnerEl()
+
+    if (this.resizeO && innerEl) {
+      this.resizeO.observe(innerEl)
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.resizeO) {
+      this.resizeO.disconnect()
+      this.resizeO = undefined
+    }
+  }
+
   @Method()
   async getContentHeight() {
-    const inner = this.el.querySelector('bal-list-item-content')
+    const innerEl = this.getInnerEl()
+    return innerEl ? innerEl.scrollHeight : 0
+  }
 
-    if (inner) {
-      return inner.scrollHeight
-    }
-    return 0
+  getInnerEl() {
+    return this.el.querySelector('bal-list-item-content')
   }
 
   getAccordionGroupItems() {
