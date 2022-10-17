@@ -1,3 +1,7 @@
+# This repo is for Baloise Design System v10
+
+You are looking at the repository for Baloise Design System v10. The repo for the rebranded one is [here](https://baloise-design.vercel.app).
+
 <a href="https://baloise-design-v10.vercel.app" target="blank">
     <img src="https://raw.githubusercontent.com/baloise/design-system/design-system/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
@@ -25,8 +29,8 @@ The [documentation](https://baloise-design-v10.vercel.app) is published on now.s
 
 ## Packages
 
-| Library                                                                              | Status                                                                         | Description                                                             |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Library                                                                                         | Status                                                                         | Description                                                             |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | [Components](https://baloise-design-v10.vercel.app/components/)                                 | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.              |
 | [Components Angular](https://baloise-design-v10.vercel.app/components/getting-started/angular/) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
 | [Components Vue](https://baloise-design-v10.vercel.app/components/getting-started/vue/)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                    |

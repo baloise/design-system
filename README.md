@@ -1,3 +1,7 @@
+# This repo is for Baloise Design System v10
+
+You are looking at the repository for Baloise Design System v10. The repo for the rebranded one is [here](https://baloise-design.vercel.app).
+
 <a href="https://baloise-design-v10.vercel.app" target="blank">
     <img src="https://raw.githubusercontent.com/baloise/design-system/design-system/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>

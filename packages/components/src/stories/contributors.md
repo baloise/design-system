@@ -35,17 +35,17 @@
     </h2>
     <h4>dweber019</h4>
   </a>
-  <a href="https://github.com/christiansiegel" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/13996624?v=4" alt="christiansiegel" style="width: 64px;">
-    </h2>
-    <h4>christiansiegel</h4>
-  </a>
   <a href="https://github.com/nobilo" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/11984467?v=4" alt="nobilo" style="width: 64px;">
     </h2>
     <h4>nobilo</h4>
+  </a>
+  <a href="https://github.com/christiansiegel" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/13996624?v=4" alt="christiansiegel" style="width: 64px;">
+    </h2>
+    <h4>christiansiegel</h4>
   </a>
   <a href="https://github.com/culmat" class="feature">
     <h2>

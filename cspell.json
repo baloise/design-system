@@ -94,6 +94,8 @@
     "vite",
     "vue",
     "WCAG",
-    "xsmall"
+    "xsmall",
+    "vercel",
+    "rebranded"
   ]
 }
