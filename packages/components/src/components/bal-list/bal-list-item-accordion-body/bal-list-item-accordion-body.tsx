@@ -23,7 +23,7 @@ export class ListItemAccordionBody {
   @Prop() accordionGroup?: string
 
   /**
-   * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+   * Sets justify-content of the items to start, center, end, or space-between. Default is start
    */
   @Prop() contentAlignment: Props.BalListContentSpacing = 'start'
 
