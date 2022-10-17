@@ -15,6 +15,7 @@ export class Navigation implements ComponentInterface {
 
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
+  private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
   private bodyScrollBlocker = BodyScrollBlocker()
@@ -222,13 +223,19 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  onMainTabChange = (event: Events.BalTabsChange) => {
+  onMainTabChange = async (event: Events.BalTabsChange) => {
     const isMainNavOpen = event.detail !== ''
+    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
+    const isLink = option?.href !== '' && option?.href !== undefined
 
     if (isBrowser('touch')) {
       if (isMainNavOpen) {
         this.isMetaHidden = false
-        this.bodyScrollBlocker.block()
+        if (!isLink) {
+          this.bodyScrollBlocker.block()
+        } else {
+          this.bodyScrollBlocker.allow()
+        }
       } else {
         this.bodyScrollBlocker.allow()
       }
@@ -302,6 +309,9 @@ export class Navigation implements ComponentInterface {
                 spaceless
                 value={this.selectedMainValue}
                 onBalChange={this.onMainTabChange}
+                ref={el => {
+                  this.mainNavTabsEl = el
+                }}
               >
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
