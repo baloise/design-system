@@ -1,5 +1,5 @@
 import { Plugin } from 'vue'
-import { BalConfig, initialize } from '@baloise/design-system-next-components'
+import { BalConfig, initialize } from '@baloise/design-system-components'
 import { applyDirectives } from './directives'
 import { BalApp } from './components/BalApp'
 

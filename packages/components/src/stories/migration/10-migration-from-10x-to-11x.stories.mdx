@@ -24,17 +24,17 @@ Moreover, change the import path to the alias `~` instead of using a relative pa
 
 ```sass
 <!-- - old -->
-@import '../node_modules/@baloise/design-system-next-components/src/styles/global.scss';
+@import '../node_modules/@baloise/design-system-components/src/styles/global.scss';
 
 
 <!-- - new -->
-@import '~@baloise/design-system-next-components/src/styles/global';
+@import '~@baloise/design-system-components/src/styles/global';
 ```
 
 To style your components we recommend to use css variables, however if you want to use sass variables import `global.utilities`:
 
 ```
-@import '~@baloise/design-system-next-components/src/styles/global.utilities';
+@import '~@baloise/design-system-components/src/styles/global.utilities';
 ```
 
 do not import for example `global.variables` everything should be provided by `global.utilities`.

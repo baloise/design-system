@@ -8,7 +8,7 @@ import { resolve } from 'path'
 import { VueGenerator } from './stencil.bindings.vue'
 
 export const StencilBaseConfig: Config = {
-  namespace: 'design-system-next-components',
+  namespace: 'design-system-components',
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode

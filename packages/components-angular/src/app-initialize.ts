@@ -1,5 +1,5 @@
-import { BalConfig, initialize } from '@baloise/design-system-next-components'
-import { applyPolyfills } from '@baloise/design-system-next-components/loader'
+import { BalConfig, initialize } from '@baloise/design-system-components'
+import { applyPolyfills } from '@baloise/design-system-components/loader'
 
 export interface BaloiseDesignSystemAngularConfig {
   applyPolyfills?: boolean
