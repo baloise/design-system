@@ -66,6 +66,7 @@ import { Props, Events } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
+import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-datepicker',
@@ -272,9 +273,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isMobile = isPlatform('mobile')
+    this.resizeWidthHandler(() => {
+      this.isMobile = isPlatform('mobile')
+    })
   }
 
   connectedCallback() {

@@ -15,6 +15,7 @@ import { BEM } from '../../utils/bem'
 import Lottie, { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { LogoAnimationData } from './bal-logo.animation'
 import { isPlatform } from '../../utils/platform'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-logo',
@@ -43,9 +44,13 @@ export class Logo implements ComponentInterface {
     }
   }
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isTouch = isPlatform('touch')
+    this.resizeWidthHandler(() => {
+      this.isTouch = isPlatform('touch')
+    })
   }
 
   componentDidUpdate() {

@@ -2,10 +2,11 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { isBrowser } from '../../utils/browser'
+import { hasTouchSupport } from '../../utils/browser'
 import { Events } from '../../types'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-navigation',
@@ -74,16 +75,20 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('bal-navigation-meta-end') as HTMLElement
   }
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.isMetaHidden = false
-    this.mainMobileHeight = this.getMaxHeight()
+    this.resizeWidthHandler(() => {
+      this.isMetaHidden = false
+      this.mainMobileHeight = this.getMaxHeight()
 
-    if (this.isTouch !== isPlatform('touch')) {
-      this.isMainBodyOpen = false
-      this.selectedMainValue = ''
-      this.isTouch = isPlatform('touch')
-    }
+      if (this.isTouch !== isPlatform('touch')) {
+        this.isMainBodyOpen = false
+        this.selectedMainValue = ''
+        this.isTouch = isPlatform('touch')
+      }
+    })
   }
 
   @Listen('orientationchange', { target: 'window' })
@@ -228,7 +233,7 @@ export class Navigation implements ComponentInterface {
     const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
     const isLink = option?.href !== '' && option?.href !== undefined
 
-    if (isBrowser('touch')) {
+    if (hasTouchSupport()) {
       if (isMainNavOpen) {
         this.isMetaHidden = false
         if (!isLink) {

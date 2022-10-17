@@ -4,6 +4,7 @@ import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-hint',
@@ -30,13 +31,17 @@ export class Hint implements BalConfigObserver {
    */
   @Prop() small = false
 
+  resizeWidthHandler = ResizeHandler()
+
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    const isCurrentMobile = isPlatform('mobile')
-    if (isCurrentMobile !== this.isMobile) {
-      this.isActive = false
-    }
-    this.isMobile = isCurrentMobile
+    this.resizeWidthHandler(() => {
+      const isCurrentMobile = isPlatform('mobile')
+      if (isCurrentMobile !== this.isMobile) {
+        this.isActive = false
+      }
+      this.isMobile = isCurrentMobile
+    })
   }
 
   connectedCallback() {
