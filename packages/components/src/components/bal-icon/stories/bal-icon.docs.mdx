@@ -48,7 +48,7 @@ First import the icon.
 import { balIconAccount } as balIcons from '@baloise/design-system-next-icons'
 ```
 
-Then use it directly with the `bal-icon` component.
+Then use it directly with the `bal-icon` component inside your app component.
 
 ```html
 <!-- Angular -->
@@ -96,6 +96,12 @@ createApp(App)
     }),
   )
   .mount('#app')
+```
+
+Then the icon can be found with the name prop of the component. Just remove the prefix `balIcon` and start with a small letter.
+
+```html
+<bal-icon name="account"></bal-icon>
 ```
 
 ## Examples
