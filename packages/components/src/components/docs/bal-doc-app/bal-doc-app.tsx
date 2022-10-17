@@ -24,6 +24,7 @@ export class DocApp implements BalConfigObserver {
   connectedCallback() {
     globalScript()
     attachComponentToConfig(this)
+    updateBalIcons(balIcons)
   }
 
   disconnectedCallback() {
@@ -31,8 +32,11 @@ export class DocApp implements BalConfigObserver {
   }
 
   componentDidLoad() {
-    updateBalIcons(balIcons)
     this.didLoad = true
+    this.notify()
+  }
+
+  componentDidRender() {
     this.notify()
   }
 
