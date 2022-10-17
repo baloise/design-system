@@ -2,6 +2,7 @@ import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-next-icons'
 import globalScript from '../../../global'
 import { updateBalIcons } from '../../../config'
+import { clearTimeout } from 'timers'
 
 @Component({
   tag: 'bal-doc-app',
@@ -16,9 +17,13 @@ export class DocApp {
     globalScript()
   }
 
+  balAppLoadTimer?: NodeJS.Timer
+
   componentDidLoad() {
-    this.balAppLoad.emit(true)
     updateBalIcons(balIcons)
+
+    clearTimeout(this.balAppLoadTimer)
+    this.balAppLoadTimer = setTimeout(() => this.balAppLoad.emit(true), 0)
   }
 
   render() {
