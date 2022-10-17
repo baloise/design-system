@@ -44,10 +44,16 @@ export class DocApp implements BalConfigObserver {
     this.notify()
   }
 
+  notifyTimer?: NodeJS.Timer
+
   notify() {
-    if (this.didLoad && this.didLoadIcons) {
-      this.balAppLoad.emit(true)
-    }
+    clearTimeout(this.notifyTimer)
+
+    this.notifyTimer = setTimeout(() => {
+      if (this.didLoad && this.didLoadIcons) {
+        this.balAppLoad.emit(true)
+      }
+    }, 0)
   }
 
   render() {
