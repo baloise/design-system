@@ -2,7 +2,6 @@ import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-next-icons'
 import globalScript from '../../../global'
 import { updateBalIcons } from '../../../config'
-import { clearTimeout } from 'timers'
 
 @Component({
   tag: 'bal-doc-app',
