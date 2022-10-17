@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.24.10](https://github.com/baloise-incubator/design-system/compare/v10.24.9...v10.24.10) (2022-10-17)
+
+
+### Features
+
+* **bal-navigation-menu-list-item:** added the target attr for grey menu list headline ([ddc8339](https://github.com/baloise-incubator/design-system/commit/ddc8339de57fd27bae24d41f3a2bac022b0ab08c))
+* **bal-navigation-menu-list-item:** added the target attribute for items from grey lists ([773362e](https://github.com/baloise-incubator/design-system/commit/773362e2f1face1585ecbeae0c41ab0413900030))
+
+
+### Bug Fixes
+
+* add new language es, pl, pt, sv and fi ([1d6a73f](https://github.com/baloise-incubator/design-system/commit/1d6a73f2af53b730fccf0af48fe108e2f08ded4f))
+* adjust small spacing value to 0.75rem. Closes [#706](https://github.com/baloise-incubator/design-system/issues/706) ([2bdc29a](https://github.com/baloise-incubator/design-system/commit/2bdc29af2ed232d871a73ec5f754c49f77dceb97))
+* **angular:** add dismissAll method to the toast and snackbar service. Closes [#703](https://github.com/baloise-incubator/design-system/issues/703) ([4e9070a](https://github.com/baloise-incubator/design-system/commit/4e9070ad37e6a441c045cc39f7e91bfb09ea26cb))
+* **bal-stage:** adjusted content width mobile to full-width ([#684](https://github.com/baloise-incubator/design-system/issues/684)) ([65bcec9](https://github.com/baloise-incubator/design-system/commit/65bcec9c9c3835b3253151906f12d6b12fa18c1f))
+* **bal-tabs:** create separate numberation for o-tabs based on independent varaiable ([461b5f9](https://github.com/baloise-incubator/design-system/commit/461b5f9eca198e66929d27ee1cbdd7ed173ef0fd))
+* **icons:** add missing tiktok icon ([7c04896](https://github.com/baloise-incubator/design-system/commit/7c048963a7a42863409f573e09e2a5f72fbf31a6))
+* improve migration guide ([6eae447](https://github.com/baloise-incubator/design-system/commit/6eae4478450e1aefe3ddc497b632f806bce01a84))
+* improve notification toast and snackbar stories ([5d684ca](https://github.com/baloise-incubator/design-system/commit/5d684ca17032136ba3f5bce7cf2bb5663ad9765e))
+* **list:** listen to resize change of the accordion body ([e56b4e5](https://github.com/baloise-incubator/design-system/commit/e56b4e5d177f742f17bc028bbf56fbe62af25a0b))
+* **navigation:** adjust spacing for tablet safari ([3df2965](https://github.com/baloise-incubator/design-system/commit/3df2965ad975430184060d8b9c10e2a2ea4f0fdb))
+* **navigation:** do not block scrolling when a link is clicked ([3d4802b](https://github.com/baloise-incubator/design-system/commit/3d4802b0d1729629e478cec544eb3851dba21864))
+* **navigation:** do not break button labels ([e6c91b6](https://github.com/baloise-incubator/design-system/commit/e6c91b60ee38aaafee2604a52afd3c95bb918b02))
+* **navigation:** last menu item was hidden in main nav popover ([c59c45b](https://github.com/baloise-incubator/design-system/commit/c59c45be16770ec56e0ab0605be339d7c5687ac4))
+* only listens to real resizes and not to scroll over the top event. Closes [#705](https://github.com/baloise-incubator/design-system/issues/705) ([ddbb093](https://github.com/baloise-incubator/design-system/commit/ddbb0935c7e5cab2162e09805fc712faa38dceba))
+* **product-slider:** improve swipe gesture ([2f26382](https://github.com/baloise-incubator/design-system/commit/2f26382dd171bfd7352e74526164df915f470a3a))
+* remove padding of the fieldset ([6390d75](https://github.com/baloise-incubator/design-system/commit/6390d75a01a7770ea5a05a23f2f23b16d7bd217c))
+* **slider:** disable drag&drop for images ([f297215](https://github.com/baloise-incubator/design-system/commit/f297215d0c925c667331554ee745a54467b55d05))
+* **sliders:** improve swipe gesture control ([bfcf9b4](https://github.com/baloise-incubator/design-system/commit/bfcf9b43eae17e1cc79bf0eb91df0f9e7ba27c6d))
+* **tabs:** add missing href & target to step item. Closes [#711](https://github.com/baloise-incubator/design-system/issues/711) ([f036822](https://github.com/baloise-incubator/design-system/commit/f03682285c3bf440ab95a8a20e95ed0fc2d8975a))
+* **tabs:** add missing target prop. Closes [#700](https://github.com/baloise-incubator/design-system/issues/700) ([808d52e](https://github.com/baloise-incubator/design-system/commit/808d52e02bdf51bbf87dbd14e10ef184a1a93080))
+* **tabs:** adjust the numbering of the steps. Closes [#586](https://github.com/baloise-incubator/design-system/issues/586) ([dda1799](https://github.com/baloise-incubator/design-system/commit/dda1799b6f7adde17ac36e6fd62a2f60e338b43d))
+* **tabs:** break tab label on vertical. Closes [#688](https://github.com/baloise-incubator/design-system/issues/688) ([1f62ddf](https://github.com/baloise-incubator/design-system/commit/1f62ddfecd781ab912c2c70839248b85a9c9393b))
+
+
+### Performance Improvements
+
+* **button:** only active lottie when loading is true ([602fb70](https://github.com/baloise-incubator/design-system/commit/602fb700db56cfeaf0f04212b715b3c2948a3ba1))
+* **logo:** only animate when set to true ([7494681](https://github.com/baloise-incubator/design-system/commit/7494681f016d5347e6c83394bba181ecfdbc3225))
+
+## [10.24.7](https://github.com/baloise-incubator/design-system/compare/v10.24.5...v10.24.7) (2022-10-06)
+
+## 10.24.5 (2022-10-05)
+
+
+
 ## [10.24.9](https://github.com/baloise-incubator/design-system/compare/v10.24.8...v10.24.9) (2022-10-11)
 
 
