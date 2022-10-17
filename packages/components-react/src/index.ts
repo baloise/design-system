@@ -1,4 +1,4 @@
-import { initialize, BalConfig } from '@baloise/design-system-next-components'
+import { initialize, BalConfig } from '@baloise/design-system-components'
 
 interface BaloiseDesignSystemReactConfig {
   defaults?: BalConfig
