@@ -20,4 +20,19 @@ export const i18nFieldLabel: I18n<I18nFieldLabel> = {
   nl: {
     optional: ' (optioneel)',
   },
+  es: {
+    optional: ' (opcional)',
+  },
+  pl: {
+    optional: ' (opcjonalnie)',
+  },
+  pt: {
+    optional: ' (opcional)',
+  },
+  sv: {
+    optional: ' (frivillig)',
+  },
+  fi: {
+    optional: ' (valinnainen)',
+  },
 }

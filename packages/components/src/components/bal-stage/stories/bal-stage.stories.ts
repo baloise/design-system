@@ -37,7 +37,7 @@ export default component.story
 
 const excludedControls = ['hasShape']
 
-export const SimpleStage = args => ({
+export const Basic = args => ({
   components: { ...component.components, BalHeading },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
@@ -47,15 +47,15 @@ export const SimpleStage = args => ({
     </bal-stage-body>
 </bal-stage>`,
 })
-SimpleStage.args = {
+Basic.args = {
   content: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ae',
   size: '',
   color: 'green',
   shape: true,
 }
-SimpleStage.parameters = {
+Basic.parameters = {
   layout: 'fullscreen',
-  ...component.sourceCode(SimpleStage),
+  ...component.sourceCode(Basic),
   controls: { exclude: excludedControls },
 }
 

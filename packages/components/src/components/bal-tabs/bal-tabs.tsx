@@ -174,6 +174,15 @@ export class Tabs {
   }
 
   /**
+   * Find the options properties by its value
+   */
+  @Method()
+  async getOptionByValue(value: string) {
+    const options = this.tabsOptions
+    return options.find(option => option.value === value)
+  }
+
+  /**
    * @internal
    * Rerenders the line to mark the active tab.
    */
@@ -210,7 +219,7 @@ export class Tabs {
       tab.navigate.emit(event)
       if (this.clickable) {
         let value = tab.value
-        if (this.interface === 'navigation' && value === this.value) {
+        if (this.interface === 'navigation' && value === this.value && !tab.href) {
           value = ''
         }
 

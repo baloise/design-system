@@ -8,6 +8,7 @@ import {
   Listen,
   State,
   FunctionalComponent,
+  Watch,
 } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
@@ -20,6 +21,9 @@ import { ResizeHandler } from '../../utils/resize'
   tag: 'bal-logo',
 })
 export class Logo implements ComponentInterface {
+  animationItem!: AnimationItem
+  animatedLogoElement!: HTMLDivElement
+
   @Element() el!: HTMLElement
 
   @State() isTouch = isPlatform('touch')
@@ -33,10 +37,21 @@ export class Logo implements ComponentInterface {
    * Defines if the animation should be active
    */
   @Prop() animated = false
+  @Watch('animated')
+  animatedWatcher() {
+    if (!this.animated) {
+      this.destroyAnimation()
+    }
+  }
 
-  animationItem!: AnimationItem
+  resizeWidthHandler = ResizeHandler()
 
-  animatedLogoElement!: HTMLDivElement
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.resizeWidthHandler(() => {
+      this.isTouch = isPlatform('touch')
+    })
+  }
 
   componentDidUpdate() {
     this.resetAnimation()
@@ -48,9 +63,7 @@ export class Logo implements ComponentInterface {
 
   resetAnimation() {
     if (this.animated) {
-      if (this.animationItem) {
-        this.animationItem.destroy()
-      }
+      this.destroyAnimation()
       this.animationItem = Lottie.loadAnimation({
         container: this.animatedLogoElement,
         renderer: 'svg',
@@ -62,18 +75,13 @@ export class Logo implements ComponentInterface {
   }
 
   disconnectedCallback() {
+    this.destroyAnimation()
+  }
+
+  destroyAnimation() {
     if (this.animationItem && this.animationItem.destroy) {
       this.animationItem.destroy()
     }
-  }
-
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isTouch = isPlatform('touch')
-    })
   }
 
   render() {

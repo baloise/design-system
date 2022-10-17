@@ -16,6 +16,7 @@ export class Navigation implements ComponentInterface {
 
   private mutationO?: MutationObserver
   private mainNavElement?: HTMLBalNavigationMainElement
+  private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
   private bodyScrollBlocker = BodyScrollBlocker()
@@ -227,13 +228,19 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  onMainTabChange = (event: Events.BalTabsChange) => {
+  onMainTabChange = async (event: Events.BalTabsChange) => {
     const isMainNavOpen = event.detail !== ''
+    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
+    const isLink = option?.href !== '' && option?.href !== undefined
 
     if (hasTouchSupport()) {
       if (isMainNavOpen) {
         this.isMetaHidden = false
-        this.bodyScrollBlocker.block()
+        if (!isLink) {
+          this.bodyScrollBlocker.block()
+        } else {
+          this.bodyScrollBlocker.allow()
+        }
       } else {
         this.bodyScrollBlocker.allow()
       }
@@ -298,7 +305,7 @@ export class Navigation implements ComponentInterface {
           >
             <div>
               <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
-                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
+                <bal-logo color="blue" animated={this.logoAnimated && !this.isTouch}></bal-logo>
               </a>
               <bal-tabs
                 interface="navigation"
@@ -307,6 +314,9 @@ export class Navigation implements ComponentInterface {
                 spaceless
                 value={this.selectedMainValue}
                 onBalChange={this.onMainTabChange}
+                ref={el => {
+                  this.mainNavTabsEl = el
+                }}
               >
                 {hasLevels &&
                   this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
@@ -363,7 +373,7 @@ export class Navigation implements ComponentInterface {
         <div class="bal-nav__metamobile container">
           <nav role="navigation" aria-label={this.ariaLabelMeta}>
             <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
-              <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
+              <bal-logo color="blue" animated={this.logoAnimated && this.isTouch}></bal-logo>
             </a>
             <div class="bal-nav__metamobile__actions">
               <slot name="meta-actions-mobile" />
