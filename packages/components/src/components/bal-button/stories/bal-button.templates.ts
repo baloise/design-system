@@ -12,9 +12,9 @@ export const variants = `
 
 export const links = `
 <div>
-<a href="https://design.baloise.dev/" class="is-link">Link</a>
+<a href="https://baloise-design-v10.vercel.app/" class="is-link">Link</a>
 <div class="has-background-blue p-2">
-  <a href="https://design.baloise.dev/" class="is-link is-inverted">Inverted Link</a>
+  <a href="https://baloise-design-v10.vercel.app/" class="is-link is-inverted">Inverted Link</a>
 </div>
 </div>`
 

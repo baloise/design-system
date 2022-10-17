@@ -18,7 +18,7 @@ describe('Link', () => {
 
   it('should have href', () => {
     page.open()
-    page.link.get().assertHrefEquals('https://design.baloise.dev/')
+    page.link.get().assertHrefEquals('https://baloise-design-v10.vercel.app/')
     page.linkButton.get().assertHrefEquals('https://github.com/baloise/design-system-components')
   })
 })
