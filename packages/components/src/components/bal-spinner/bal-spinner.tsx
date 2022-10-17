@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Prop, Element, Watch } from '@stencil/core'
 import Lottie from 'lottie-web/build/player/lottie_light_html'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { SpinnerAnimationData } from './bal-spinner.animation'
@@ -8,12 +8,25 @@ import { flatten } from 'lottie-colorify'
   tag: 'bal-spinner',
 })
 export class Spinner {
+  animation!: AnimationItem
+
   @Element() el!: HTMLElement
 
   /**
    * If `true` the component can be used on dark background
    */
   @Prop() inverted = false
+
+  /**
+   * If `true` the component will not add the spinner animation svg
+   */
+  @Prop() deactivated = false
+  @Watch('deactivated')
+  deactivatedWatcher() {
+    if (this.deactivated) {
+      this.destroyAnimation()
+    }
+  }
 
   /**
    * Defines the color of the spinner.
@@ -25,8 +38,6 @@ export class Spinner {
    */
   @Prop() small = false
 
-  animation!: AnimationItem
-
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -34,28 +45,28 @@ export class Spinner {
     this.resetAnimation()
   }
 
-  getColor(): string {
-    if (this.inverted || this.color === 'white') {
-      return '#ffffff'
-    }
+  disconnectedCallback() {
+    this.destroyAnimation()
+  }
 
-    return '#151f6d'
+  getColor(): string {
+    return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'
   }
 
   resetAnimation() {
-    if (this.animation) {
-      this.animation.destroy()
+    this.destroyAnimation()
+    if (!this.deactivated) {
+      this.animation = Lottie.loadAnimation({
+        container: this.el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: flatten(this.getColor(), SpinnerAnimationData(this.getColor())),
+      })
     }
-    this.animation = Lottie.loadAnimation({
-      container: this.el,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: flatten(this.getColor(), SpinnerAnimationData(this.getColor())),
-    })
   }
 
-  disconnectedCallback() {
+  destroyAnimation() {
     if (this.animation && this.animation.destroy) {
       this.animation.destroy()
     }

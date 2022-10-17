@@ -286,7 +286,7 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} />
+          <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
             {...this.leftIconAttrs}
             class="icon-left"
