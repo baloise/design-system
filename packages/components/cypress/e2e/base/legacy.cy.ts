@@ -78,7 +78,7 @@ describe('Legacy', () => {
     })
 
     it('should have href', () => {
-      link.get().assertHrefEquals('https://design-system-next.vercel.app/')
+      link.get().assertHrefEquals('https://baloise-design.vercel.app/')
       linkButton.get().assertHrefEquals('https://github.com/baloise/design-system-components')
     })
   })

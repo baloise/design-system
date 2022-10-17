@@ -1,4 +1,4 @@
-<a href="https://design-system-next.vercel.app" target="blank">
+<a href="https://baloise-design.vercel.app" target="blank">
     <img src="https://raw.githubusercontent.com/baloise-incubator/design-system/next/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
 
@@ -21,19 +21,19 @@ The Baloise Design System consists of reusable components and a clearly defined 
 
 ## Documentation
 
-The [documentation](https://design-system-next.vercel.app) is published on now.sh, and is built with [storybook](https://storybook.js.org).
+The [documentation](https://baloise-design.vercel.app) is published on now.sh, and is built with [storybook](https://storybook.js.org).
 
 ## Packages
 
 | Library                                          | Status                                                                              | Description                                                             |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Components](https://design-system-next.vercel.app)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components)         | Core package build with web components and global styling.              |
-| [Components Angular](https://design-system-next.vercel.app) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-angular) | Angular component proxies based on the the core package.                |
-| [Components Vue](https://design-system-next.vercel.app)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-vue)     | Vue component proxies based on the the core package.                    |
-| [Components React](https://design-system-next.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-react)   | React component proxies based on the the core package.                  |
-| [Components Table](https://design-system-next.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-table)   | Integration library for AG-Grid with styles and renderer functions      |
-| [Tokens](https://design-system-next.vercel.app)             | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-tokens)             | Design Tokens like color and spacing.                                   |
-| [CSS](https://design-system-next.vercel.app)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-css)                | Basic CSS styles with utility classes.                                  |
-| [Icons](https://design-system-next.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-icons)              | SVG icons of the design system.                                         |
-| [Fonts](https://design-system-next.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-fonts)              | Web-Font of the design system.                                          |
-| [Testing](https://design-system-next.vercel.app)            | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-testing)            | Testing package with custom and overridden commands for each component. |
+| [Components](https://baloise-design.vercel.app)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components)         | Core package build with web components and global styling.              |
+| [Components Angular](https://baloise-design.vercel.app) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-angular) | Angular component proxies based on the the core package.                |
+| [Components Vue](https://baloise-design.vercel.app)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-vue)     | Vue component proxies based on the the core package.                    |
+| [Components React](https://baloise-design.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-react)   | React component proxies based on the the core package.                  |
+| [Components Table](https://baloise-design.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-components-table)   | Integration library for AG-Grid with styles and renderer functions      |
+| [Tokens](https://baloise-design.vercel.app)             | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-tokens)             | Design Tokens like color and spacing.                                   |
+| [CSS](https://baloise-design.vercel.app)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-css)                | Basic CSS styles with utility classes.                                  |
+| [Icons](https://baloise-design.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-icons)              | SVG icons of the design system.                                         |
+| [Fonts](https://baloise-design.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-fonts)              | Web-Font of the design system.                                          |
+| [Testing](https://baloise-design.vercel.app)            | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-testing)            | Testing package with custom and overridden commands for each component. |
