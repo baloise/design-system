@@ -1352,9 +1352,9 @@ export namespace Components {
         "href"?: string;
         "interface": Props.BalNavbarInterface;
         /**
-          * Link target
+          * @deprecated Link target
          */
-        "linkTarget": string;
+        "linkTarget": Props.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -1363,6 +1363,10 @@ export namespace Components {
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
     }
     interface BalNavbarMenu {
         "interface": Props.BalNavbarInterface;
@@ -4957,9 +4961,9 @@ declare namespace LocalJSX {
         "href"?: string;
         "interface"?: Props.BalNavbarInterface;
         /**
-          * Link target
+          * @deprecated Link target
          */
-        "linkTarget"?: string;
+        "linkTarget"?: Props.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -4972,6 +4976,10 @@ declare namespace LocalJSX {
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
     }
     interface BalNavbarMenu {
         "interface"?: Props.BalNavbarInterface;
