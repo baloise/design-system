@@ -10,6 +10,7 @@ import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1457,6 +1458,7 @@ export namespace Components {
         "linkHref"?: string;
         "linkName"?: string;
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMenuList {
         /**
@@ -1475,10 +1477,12 @@ export namespace Components {
           * Target of the menu list card headline target as link
          */
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMeta {
         /**
@@ -5064,6 +5068,7 @@ declare namespace LocalJSX {
         "linkHref"?: string;
         "linkName"?: string;
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMenuList {
         /**
@@ -5082,10 +5087,12 @@ declare namespace LocalJSX {
           * Target of the menu list card headline target as link
          */
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMeta {
         /**

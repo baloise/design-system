@@ -25,16 +25,18 @@
               value="meta-1"
               label="Privatkunden"
               link="/?path=/story/components-navigation--basic"
-              linkLabel="Zur Privatkundenübersicht"
+              link-label="Zur Privatkundenübersicht"
+              data-tracking-style="my-meta"
             >
               <bal-navigation-level-main
                 value="meta-1-main-1"
                 label="Versichern"
                 link="http://"
-                linkLabel="Alle Versicherungslösungen"
+                link-label="Alle Versicherungslösungen"
+                data-tracking-style="my-main"
               >
-                <bal-navigation-level-block label="Wohnen & Recht" link="http://">
-                  <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://">
+                <bal-navigation-level-block label="Wohnen & Recht" link="http://"  data-tracking-style="my-block">
+                  <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://" data-tracking-style="link-list" data-tracking-topic="Unfallversicherung für Hausangestellte" data-tracking-context="Versichern" data-tracking-id="Main Navigation">
                   </bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Haftpflicht" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Einzel Gegenstände vom Handy bis zum e-Bike" link="http://">
@@ -94,7 +96,7 @@
                 value="meta-1-main-2"
                 label="Sparen, Zahlen & Finanzieren"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -104,7 +106,7 @@
                 value="meta-1-main-3"
                 label="Anlegen & Vorsorgen"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 1 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -114,7 +116,7 @@
                 value="meta-1-main-4"
                 label="Kontakt & Services"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 1 Main 4 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -127,13 +129,13 @@
               value="meta-2"
               label="Unternehmen"
               link="/?path=/story/components-navigation--basic"
-              linkLabel="Go to Meta 2 Overview"
+              link-label="Go to Meta 2 Overview"
             >
               <bal-navigation-level-main
                 value="meta-2-main-1"
                 label="Meta 2 Main 1"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -144,7 +146,7 @@
                 value="meta-2-main-2"
                 label="Meta 2 Main 2"
                 link="http://"
-                linkLabel="Go to Main 2"
+                link-label="Go to Main 2"
               >
                 <bal-navigation-level-block label="Meta 2 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -156,13 +158,13 @@
               value="meta-3"
               label="Institutionelle Anleger"
               link="/?path=/story/components-navigation--basic"
-              linkLabel="Go to Meta 2 Overview"
+              link-label="Go to Meta 2 Overview"
             >
               <bal-navigation-level-main
                 value="meta-3-main-1"
                 label="Meta 3 Main 1"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 3 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -173,7 +175,7 @@
                 value="meta-3-main-2"
                 label="Meta 3 Main 2"
                 link="http://"
-                linkLabel="Go to Main 2"
+                link-label="Go to Main 2"
               >
                 <bal-navigation-level-block label="Meta 3 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -184,7 +186,7 @@
                 value="meta-3-main-3"
                 label="Meta 3 Main 3"
                 link="http://"
-                linkLabel="Go to Main 3"
+                link-label="Go to Main 3"
               >
                 <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -195,7 +197,7 @@
                 value="meta-3-main-4"
                 label="Meta 3 Main 4"
                 link="http://"
-                linkLabel="Go to Main 3"
+                link-label="Go to Main 3"
               >
                 <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -207,13 +209,13 @@
               value="meta-4"
               label="Über uns"
               link="/?path=/story/components-navigation--basic"
-              linkLabel="Go to Meta 2 Overview"
+              link-label="Go to Meta 2 Overview"
             >
               <bal-navigation-level-main
                 value="meta-4-main-1"
                 label="Meta 4 Main 1"
                 link="http://"
-                linkLabel="Go to Main 1"
+                link-label="Go to Main 1"
               >
                 <bal-navigation-level-block label="Meta 4 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -224,7 +226,7 @@
                 value="meta-4-main-2"
                 label="Meta 4 Main 2"
                 link="http://"
-                linkLabel="Go to Main 2"
+                link-label="Go to Main 2"
               >
                 <bal-navigation-level-block label="Meta 4 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
@@ -235,7 +237,7 @@
                 value="meta-4-main-3"
                 label="Meta 4 Main 3"
                 link="http://"
-                linkLabel="Go to Main 3"
+                link-label="Go to Main 3"
               >
                 <bal-navigation-level-block label="Meta 4 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>

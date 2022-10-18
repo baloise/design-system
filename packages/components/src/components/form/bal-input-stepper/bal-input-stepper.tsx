@@ -14,7 +14,8 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import { FormInput, inputListenOnClick } from '../../../helpers/form-input.helpers'
 import {
   attachComponentToConfig,

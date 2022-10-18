@@ -28,7 +28,8 @@ import {
   isSameWeek,
   isSameMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {
   isSpaceKey,

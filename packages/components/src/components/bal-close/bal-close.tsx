@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { inheritAttributes } from '../../helpers/helpers'
 import { Props } from '../../types'
+import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 
 @Component({

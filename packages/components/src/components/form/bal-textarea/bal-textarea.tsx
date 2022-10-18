@@ -25,7 +25,8 @@ import {
   inputSetBlur,
   inputSetFocus,
 } from '../../../helpers/form-input.helpers'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
 

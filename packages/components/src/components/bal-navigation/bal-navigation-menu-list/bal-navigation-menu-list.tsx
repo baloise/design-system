@@ -3,6 +3,7 @@ import { BEM } from '../../../utils/bem'
 import { Props } from '../../../types'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
+import { Attributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-navigation-menu-list',
@@ -24,6 +25,8 @@ export class NavigationMenuList {
    * Target of the menu list card headline target as link
    */
   @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() tracking: Attributes = {}
+
   @State() headingLevel!: 'h3' | 'h4'
 
   resizeWidthHandler = ResizeHandler()
@@ -64,7 +67,7 @@ export class NavigationMenuList {
         >
           <bal-card-content>
             {this.href ? (
-              <a href={this.href} target={this.target}>
+              <a href={this.href} target={this.target} {...this.tracking}>
                 <bal-heading
                   class={{ ...navMenuListEl.element('card').element('heading').class() }}
                   level={this.headingLevel}

@@ -264,11 +264,18 @@ export class Navigation implements ComponentInterface {
               <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} target={meta.target} />
+                    <bal-tab-item
+                      label={meta.label}
+                      value={meta.value}
+                      href={meta.link}
+                      target={meta.target}
+                      {...meta.trackingData}
+                    />
                   ) : (
                     <bal-tab-item
                       label={meta.label}
                       value={meta.value}
+                      {...meta.trackingData}
                       onBalNavigate={ev => {
                         meta.onClick(ev.detail)
                         this.selectedMetaValue = meta.value
@@ -338,6 +345,7 @@ export class Navigation implements ComponentInterface {
                         label={main.label}
                         value={main.value}
                         icon="nav-go-down"
+                        {...main.trackingData}
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)
                           this.selectedMainIndex = index
@@ -363,6 +371,7 @@ export class Navigation implements ComponentInterface {
                         link-name={main.linkLabel}
                         target={main.target}
                         elements={main.subLevels}
+                        tracking={main.trackingData}
                       />
                     )),
                 )}
@@ -411,7 +420,9 @@ export class Navigation implements ComponentInterface {
                   <div>
                     {meta.link && (
                       <div class="bal-nav__main-mobile__link">
-                        <a href={meta.link}>{meta.linkLabel}</a>
+                        <a href={meta.link} {...meta.trackingData}>
+                          {meta.linkLabel}
+                        </a>
                       </div>
                     )}
                     <bal-list border in-main-nav={true} class="pt-4" size="small">
@@ -435,6 +446,7 @@ export class Navigation implements ComponentInterface {
                                 link-name={main.linkLabel}
                                 target={main.target}
                                 elements={main.subLevels}
+                                tracking={main.trackingData}
                               />
                             </bal-list-item-accordion-body>
                           </bal-list-item>
