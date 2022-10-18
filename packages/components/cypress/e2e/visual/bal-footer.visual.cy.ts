@@ -12,7 +12,7 @@ describe('bal-footer', () => {
     cy.platform('desktop')
     cy.getByTestId('basic').compareSnapshot('footer-desktop', 0.0)
 
-    // cy.platform('tablet')
+    // cy.platform('tablet') /
     // cy.getByTestId('basic').compareSnapshot('footer-tablet', 0.0)
 
     // cy.platform('mobile')
