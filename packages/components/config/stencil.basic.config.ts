@@ -1,7 +1,5 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
-import { postcss } from '@stencil/postcss'
-import autoprefixer from 'autoprefixer'
 import fg from 'fast-glob'
 import { resolve } from 'path'
 
@@ -13,12 +11,9 @@ export const StencilBaseConfig: Config = {
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
-  plugins: [
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-    sass(),
-  ],
+  sourceMap: true,
+  autoprefixCss: true,
+  plugins: [sass()],
   outputTargets: [
     {
       type: 'dist-custom-elements',
