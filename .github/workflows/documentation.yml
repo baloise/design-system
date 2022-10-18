@@ -44,7 +44,7 @@ jobs:
       - name: Deploy
         uses: addnab/docker-run-action@v3
         with:
-          image: baloise/gitopscli:5.1.0
+          image: baloise/gitopscli:5.4.0
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
