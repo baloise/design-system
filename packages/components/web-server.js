@@ -1,4 +1,5 @@
 const express = require('express')
+const compression = require('compression')
 const path = require('path')
 const serveIndex = require('serve-index')
 
@@ -6,6 +7,7 @@ const app = express()
 
 app.set('port', 3333)
 
+app.use(compression())
 app.use(express.static(path.join(__dirname, 'www')))
 app.use(serveIndex(path.join(__dirname, 'www')))
 

@@ -11,6 +11,7 @@ export const config: Config = {
   buildEs5: 'prod',
   extras: {
     dynamicImportShim: true,
+    initializeNextTick: true,
     safari10: false,
     scriptDataOpts: true,
     appendChildSlotFix: true,

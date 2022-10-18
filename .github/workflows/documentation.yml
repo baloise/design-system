@@ -48,8 +48,8 @@ jobs:
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
-            --username ${{ secrets.USER_GITHUB }} \
-            --password ${{ secrets.PASSWORD_GITHUB }} \
+            --username ${{ secrets.GITHUB_ACTOR }} \
+            --password ${{ secrets.GITHUB_TOKEN }} \
             --git-user "Baloise OpenSource Bot" \
             --git-email "Group.CH_Open-Source@baloise.ch" \
             --organisation "baloise-incubator" \
