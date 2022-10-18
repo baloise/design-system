@@ -107,7 +107,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * @deprecated Define the locale of month and day names.
    */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
+  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = 'en'
 
   @Watch('locale')
   watchLocaleHandler() {
