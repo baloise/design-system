@@ -34,7 +34,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = []
+const excludedControls = ['linkTarget']
 
 export const Basic = args => ({
   components: {
@@ -72,7 +72,7 @@ export const Basic = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand href="/">App Header</bal-navbar-brand>
+  <bal-navbar-brand href="/" target="_blank">App Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
       <bal-tabs interface="navbar" inverted v-model="myActiveTab">
