@@ -60,7 +60,7 @@ export class BalCard {
       <Host
         class={{
           'bal-card': true,
-          [`bal-card--${this.colorTypeClass}`]: true,
+          [`bal-card--${this.colorTypeClass}`]: !isEmpty(this.color),
           [`bal-card--is-${this.space}`]: this.space !== '',
           'bal-card--has-border': this.border,
           'bal-card--is-flat': this.flat,
