@@ -10,8 +10,9 @@
   <body>
     <bal-doc-app>
       <main class="container py-5">
+        <!-- Basic with Hidden Links Selection -->
         <section>
-          <bal-footer data-testid="basic">
+          <bal-footer data-testid="basic" hide-links>
             <div class="container">
               <bal-logo color="white"></bal-logo>
               <p class="mt-2">Footer Content</p>
@@ -20,20 +21,9 @@
         </section>
         <br />
         <br />
-        <!-- Hide links -->
+        <!-- Hide Links Selection & Hide Language Selection -->
         <section>
-          <bal-footer hide-links>
-            <div class="container">
-              <bal-logo color="white"></bal-logo>
-              <p class="mt-2">Footer Content</p>
-            </div>
-          </bal-footer>
-        </section>
-        <br />
-        <br />
-        <!-- Hide Language Selection -->
-        <section>
-          <bal-footer hide-language-selection>
+          <bal-footer hide-links hide-language-selection>
             <div class="container">
               <bal-logo color="white"></bal-logo>
               <p class="mt-2">Footer Content</p>
