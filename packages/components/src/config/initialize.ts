@@ -5,6 +5,7 @@ export const defaultConfig: BalConfigState = {
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
+  fallbackLanguage: 'de',
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
