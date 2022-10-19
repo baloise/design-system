@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -15,12 +15,29 @@ export class NavbarBrand {
   /**
    * Link of the logo / title.
    */
-  @Prop() href?: string
+  @Prop() href?: string = ''
 
   /**
-   * Link target
+   * @deprecated Link target
    */
-  @Prop() linkTarget = '_blank'
+  @Prop() linkTarget: Props.BalButtonTarget | '' = ''
+  @Watch('linkTarget')
+  hasShapeHandler() {
+    console.warn('[DEPRECATED] - Please use the property target instead')
+    this.migrateLinkTarget
+  }
+
+  private migrateLinkTarget() {
+    if (this.linkTarget !== '') {
+      this.target = this.linkTarget
+    }
+  }
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
    * @deprecated Use interface on bal-navbar instead.
@@ -45,6 +62,10 @@ export class NavbarBrand {
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
+
+  connectedCallback() {
+    this.migrateLinkTarget()
+  }
 
   componentWillLoad() {
     if (window.matchMedia) {
@@ -90,7 +111,7 @@ export class NavbarBrand {
         }}
       >
         {this.href ? (
-          <a href={this.href} target={this.linkTarget} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
             {logoTemplate}
           </a>
         ) : (
