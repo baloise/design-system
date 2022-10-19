@@ -1,8 +1,8 @@
 describe('bal-footer', () => {
-  before(() => cy.page('/components/bal-footer/test/bal-footer.visual.html').wait(500))
+  before(() => cy.page('/components/bal-footer/test/bal-footer.visual.html'))
 
   it('basic component', () => {
-    cy.platform('desktop')
+    cy.platform('desktop').wait(1000)
     cy.getByTestId('basic').compareSnapshot('footer-desktop', 0.0)
 
     cy.platform('tablet')
