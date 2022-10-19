@@ -54,7 +54,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: EndBug/add-and-commit@v5
+      - uses: EndBug/add-and-commit@v9
         with:
           message: 'chore(): update build artifacts'
         env:
@@ -72,7 +72,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Commit release
-        uses: EndBug/add-and-commit@v5
+        uses: EndBug/add-and-commit@v9
         with:
           message: 'chore(): update lock files'
         env:
