@@ -12,7 +12,8 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import {
   FormInput,
   getInputTarget,

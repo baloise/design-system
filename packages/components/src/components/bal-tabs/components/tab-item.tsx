@@ -17,6 +17,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   active,
   context,
   inverted,
+  trackingData,
   onSelectTab,
 }) => {
   const cssClasses = {
@@ -50,6 +51,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
     <a
       class={cssClasses}
       {...hrefAttribute}
+      {...trackingData}
       aria-disabled={`${disabled}`}
       aria-current="page"
       onClick={e => onSelectTab(e)}

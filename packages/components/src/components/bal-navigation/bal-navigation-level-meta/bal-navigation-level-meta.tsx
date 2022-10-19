@@ -1,11 +1,14 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Event, EventEmitter, Element } from '@stencil/core'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
 import { Events } from '../../../types'
+import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-navigation-level-meta',
 })
 export class NavigationLevelMeta implements ComponentInterface {
+  private inheritAttributes: Attributes = {}
+
   @Element() el!: HTMLElement
 
   @Prop() label = ''
@@ -22,6 +25,10 @@ export class NavigationLevelMeta implements ComponentInterface {
 
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
+  componentWillLoad() {
+    this.inheritAttributes = inheritTrackingAttributes(this.el)
+  }
+
   @Method() async getLevelInfo(): Promise<LevelInfo> {
     const subLevels = await readSubLevels(this.el, 'bal-navigation-level-main')
 
@@ -33,6 +40,7 @@ export class NavigationLevelMeta implements ComponentInterface {
       linkLabel: this.linkLabel,
       isTabLink: this.isTabLink,
       subLevels,
+      trackingData: this.inheritAttributes,
       onClick: (event: MouseEvent) => this.balClick.emit(event),
     }
   }

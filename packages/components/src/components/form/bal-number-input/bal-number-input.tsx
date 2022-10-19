@@ -40,7 +40,8 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number.util'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
