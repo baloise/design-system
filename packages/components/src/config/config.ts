@@ -9,6 +9,7 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
+    fallbackLanguage: 'de',
   }
 
   get locale(): string {
@@ -32,7 +33,12 @@ export class Config {
 
   set language(language: BalLanguage) {
     if (language !== this._config.language) {
-      this._config.language = language
+      if (this._config.allowedLanguages.includes(language)) {
+        this._config.language = language
+      } else {
+        this._config.language = this._config.fallbackLanguage
+      }
+
       this._notify()
     }
   }
