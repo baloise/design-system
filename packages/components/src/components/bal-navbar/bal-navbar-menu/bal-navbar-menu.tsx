@@ -1,5 +1,6 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
 import { deepReady } from '../../../helpers/helpers'
+import { isPlatform } from '../../../utils/platform'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -12,6 +13,7 @@ export class NavbarMenu {
   @Element() element!: HTMLElement
 
   @State() isMenuActive = false
+  @State() isTouch = isPlatform('touch')
 
   /**
    * @internal
@@ -37,12 +39,22 @@ export class NavbarMenu {
   render() {
     const menuEl = BEM.block('navbar').element('menu')
 
+    let container = ''
+    if (this.isTouch) {
+      const navbarEl = this.element.closest('bal-navbar')
+      if (navbarEl) {
+        container = navbarEl.container
+      }
+    }
+
     return (
       <Host
         class={{
           ...menuEl.class(),
           ...menuEl.modifier('active').class(this.isMenuActive),
           ...menuEl.modifier(`context-${this.interface}`).class(),
+          container: true,
+          [`is-${container}`]: container !== '',
         }}
       >
         <slot></slot>

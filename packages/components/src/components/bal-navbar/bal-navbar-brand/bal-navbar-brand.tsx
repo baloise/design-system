@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
+import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -8,6 +9,8 @@ import { BEM } from '../../../utils/bem'
   shadow: false,
 })
 export class NavbarBrand {
+  private bodyScrollBlocker = BodyScrollBlocker()
+
   @Element() el!: HTMLElement
 
   @State() isMenuActive = false
@@ -60,6 +63,13 @@ export class NavbarBrand {
 
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
+
+    if (this.isMenuActive) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
+
     const navbar = this.el.closest('bal-navbar')
     if (navbar) {
       const navbarMenuElement = navbar.querySelector('bal-navbar-menu')
