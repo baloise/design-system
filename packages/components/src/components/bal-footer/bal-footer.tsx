@@ -9,7 +9,7 @@ import {
   attachComponentToConfig,
   updateBalLanguage,
   BalRegion,
-} from '../../config'
+} from '../../utils/config'
 import { BEM } from '../../utils/bem'
 
 @Component({

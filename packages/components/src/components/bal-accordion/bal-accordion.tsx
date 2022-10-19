@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
-import { debounceEvent } from '../../helpers/helpers'
+import { debounceEvent } from '../../utils/helpers'
 import { Events } from '../../types'
 
 @Component({

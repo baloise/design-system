@@ -1,8 +1,8 @@
 import { balToastController } from './components/notice/bal-toast/bal-toast.controller'
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
-import { initialize } from './config'
+import { initialize } from './utils/config'
 import { setupPlatforms } from './utils/platform'
-import { VERSION } from './constants/version.constant'
+import { VERSION } from './utils/constants/version.constant'
 
 export default function () {
   if (typeof (window as any) !== 'undefined') {

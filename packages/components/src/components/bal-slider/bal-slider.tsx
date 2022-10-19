@@ -32,13 +32,13 @@ export class Slider implements ComponentInterface {
   }
 
   componentDidLoad(): void {
-    this.swipeHandler.addEventListener(this.el)
+    this.swipeHandler.connect(this.el)
     this.swipeHandler.onSwipeLeft(() => this.nextPage())
     this.swipeHandler.onSwipeRight(() => this.previousPage())
   }
 
   disconnectedCallback() {
-    this.swipeHandler.removeEventListener()
+    this.swipeHandler.disconnect()
 
     if (this.mutationO) {
       this.mutationO.disconnect()
