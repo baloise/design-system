@@ -1,11 +1,34 @@
 import { config, configFromSession } from './config'
 import { BalConfig, BalConfigState } from './config.types'
+import {
+  balIconClose,
+  balIconInfoCircle,
+  balIconPlus,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconCaretLeft,
+  balIconCaretDown,
+  balIconCheck,
+  balIconDate,
+  balIconDocument,
+} from '@baloise/design-system-icons/src'
 
 export const defaultConfig: BalConfigState = {
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
-  icons: {},
+  icons: {
+    balIconClose,
+    balIconInfoCircle,
+    balIconPlus,
+    balIconNavGoLeft,
+    balIconNavGoRight,
+    balIconCaretLeft,
+    balIconCaretDown,
+    balIconCheck,
+    balIconDate,
+    balIconDocument,
+  },
   fallbackLanguage: 'de',
 }
 

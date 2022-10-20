@@ -7,7 +7,7 @@ import {
   BalConfigState,
   detachComponentToConfig,
   updateBalIcons,
-} from '../../../config'
+} from '../../../utils/config'
 import { isBrowser } from '../../../utils/browser'
 
 @Component({

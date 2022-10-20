@@ -80,7 +80,7 @@ const main = async () => {
   ]
 
   contents.forEach((value, key) => {
-    lines.push(`export const balIcon${upperFirst(camelCase(key))} = '${value}';`)
+    lines.push(`/*#__PURE__*/ export const balIcon${upperFirst(camelCase(key))} = '${value}';`)
     lines.push(``)
   })
 

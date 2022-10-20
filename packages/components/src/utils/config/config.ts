@@ -1,6 +1,18 @@
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
+import {
+  balIconClose,
+  balIconInfoCircle,
+  balIconPlus,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconCaretLeft,
+  balIconCaretDown,
+  balIconCheck,
+  balIconDate,
+  balIconDocument,
+} from '@baloise/design-system-icons/src'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
@@ -9,7 +21,18 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
-    icons: {},
+    icons: {
+      balIconClose,
+      balIconInfoCircle,
+      balIconPlus,
+      balIconNavGoLeft,
+      balIconNavGoRight,
+      balIconCaretLeft,
+      balIconCaretDown,
+      balIconCheck,
+      balIconDate,
+      balIconDocument,
+    },
     fallbackLanguage: 'de',
   }
 

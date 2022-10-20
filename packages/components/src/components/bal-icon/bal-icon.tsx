@@ -3,7 +3,13 @@ import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
 import { BalConfigObserver, Props } from '../../types'
 import { BEM } from '../../utils/bem'
-import { attachComponentToConfig, BalConfigState, BalIcons, defaultConfig, detachComponentToConfig } from '../../config'
+import {
+  attachComponentToConfig,
+  BalConfigState,
+  BalIcons,
+  defaultConfig,
+  detachComponentToConfig,
+} from '../../utils/config'
 
 @Component({
   tag: 'bal-icon',
