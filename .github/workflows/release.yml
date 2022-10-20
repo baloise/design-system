@@ -54,7 +54,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: EndBug/add-and-commit@v5
+      - uses: EndBug/add-and-commit@v9
         with:
           message: 'chore(): update build artifacts'
         env:
@@ -72,7 +72,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Commit release
-        uses: EndBug/add-and-commit@v5
+        uses: EndBug/add-and-commit@v9
         with:
           message: 'chore(): update lock files'
         env:
@@ -84,7 +84,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_ICON: https://github.com/baloise.png?size=48
           SLACK_COLOR: good
-          SLACK_USERNAME: Design-System-Next-ReleaseBot
+          SLACK_USERNAME: design-system-ReleaseBot
           SLACK_TITLE: New Release available
           SLACK_MESSAGE: 'Find the latest release ${{ env.GITHUB_REF_NAME }}: https://github.com/baloise-incubator/design-system/releases'
           SLACK_FOOTER: Get it while it's hot!

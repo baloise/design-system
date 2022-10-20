@@ -1,7 +1,7 @@
 /**
  * Config
  */
-export * from './config'
+export * from './utils/config'
 
 /**
  * Components
@@ -22,7 +22,7 @@ export * from './components/notice/bal-modal/bal-modal.type'
  * Utils
  */
 export * from './components/form/bal-select/utils/bal-option.util'
-export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './helpers/helpers'
+export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './utils/helpers'
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { isBrowser } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'

@@ -14,8 +14,9 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { FormInput, inputListenOnClick } from '../../../helpers/form-input.helpers'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
+import { FormInput, inputListenOnClick } from '../../../utils/form-input'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -24,7 +25,7 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../config'
+} from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
 import { Events } from '../../../types'
 

@@ -1,5 +1,5 @@
 import { h, defineComponent, shallowRef, VNode } from 'vue'
-import { defineCustomElement } from '@baloise/design-system-next-components/dist/components/bal-app'
+import { defineCustomElement } from '@baloise/design-system-components/dist/components/bal-app'
 
 defineCustomElement()
 

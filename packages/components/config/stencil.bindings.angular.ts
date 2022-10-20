@@ -1,4 +1,4 @@
-import { ValueAccessorConfig, angularOutputTarget } from '@baloise/design-system-next-output-target-angular'
+import { ValueAccessorConfig, angularOutputTarget } from '@baloise/design-system-output-target-angular'
 import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
@@ -36,7 +36,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
 
 export const AngularGenerator = () =>
   angularOutputTarget({
-    componentCorePackage: '@baloise/design-system-next-components',
+    componentCorePackage: '@baloise/design-system-components',
     directivesProxyFile: '../components-angular/src/directives/proxies.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [...docComponents],

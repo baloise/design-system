@@ -1,4 +1,4 @@
-import { deepReady, Platforms } from '@baloise/design-system-next-components'
+import { deepReady, Platforms } from '@baloise/design-system-components'
 
 /**
  * Helper fn to identify the element/component

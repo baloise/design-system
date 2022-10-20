@@ -61,6 +61,7 @@
   +element(menu)
     position: static
     display: none
+    z-index: 30
 
     +modifier(active)
       +touch
@@ -70,7 +71,8 @@
 
     +modifiers(context-app)
       +touch
-        padding: 1rem
+        padding-top: 1rem
+        padding-bottom: 1rem
         overflow-y: auto
         flex-direction: column-reverse
         top: 64px

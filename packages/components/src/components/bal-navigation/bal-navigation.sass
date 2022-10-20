@@ -149,7 +149,7 @@
     display: block
     +desktop
       padding-top: 2.5rem
-      padding-bottom: 2.5rem
+      padding-bottom: 1.5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
       margin-top: 0
@@ -318,6 +318,8 @@
     .bal-navigation-popover__button
       position: relative
       z-index: 20
+      .button-label
+        hyphens: manual
     .control
       margin: 0 !important
     +element(head)
@@ -325,3 +327,8 @@
       align-items: center
       justify-content: space-between
       margin-bottom: .75rem
+
+.bal-app--safari.bal-app--touch
+  .bal-nav__menu
+    +desktop
+      padding-bottom: 4.5rem

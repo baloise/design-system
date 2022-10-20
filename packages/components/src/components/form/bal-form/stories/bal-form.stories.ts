@@ -97,8 +97,8 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic, {
-    vue: `import { element } from '@baloise/design-system-next-components-vue'
-import type { Components } from '@baloise/design-system-next-components'
+    vue: `import { element } from '@baloise/design-system-components-vue'
+import type { Components } from '@baloise/design-system-components'
 
 const form = ref(null)
 

@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit base images
-        uses: EndBug/add-and-commit@v5
+        uses: EndBug/add-and-commit@v9
         with:
           message: 'chore(): update base images'
         env:

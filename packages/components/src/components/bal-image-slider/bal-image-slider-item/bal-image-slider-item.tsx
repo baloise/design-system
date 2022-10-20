@@ -14,7 +14,7 @@ export class ImageSliderItem implements ComponentInterface {
   render() {
     return (
       <Host aria-id={this.inputId} class="bal-image-slider-item">
-        {this.src !== undefined ? <img src={this.src} /> : ''}
+        {this.src !== undefined ? <img draggable={false} onDragStart={() => false} src={this.src} /> : ''}
         <slot></slot>
       </Host>
     )
