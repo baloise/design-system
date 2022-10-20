@@ -91,7 +91,6 @@ export abstract class BalNoticeController {
       if (!this.container) {
         this.container = document.createElement('bal-notices')
         this.container.setAttribute('interface', this.options.tag.replace('bal-', ''))
-        // this.container.className = `bal-notices bal-notices--${this.options.tag.replace('bal-', '')}`
         this.container.id = containerId
       }
 

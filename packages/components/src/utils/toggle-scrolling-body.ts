@@ -11,10 +11,36 @@ const getHtmlStyles = (doc: Document) => getComputedStyle(getHtml(doc))
 
 const hasScrollSmoothOnHtml = (doc: Document) => getHtmlStyles(doc).scrollBehavior === 'smooth'
 
+export const disableSmoothScrolling = () => {
+  if (isDocumentDefined()) {
+    const doc = document
+    const body = getBody(doc)
+
+    body.style.scrollBehavior = 'auto'
+    if (hasScrollSmoothOnHtml(doc)) {
+      const html = getHtml(doc)
+      html.style.scrollBehavior = 'auto'
+    }
+  }
+}
+
+export const enableSmoothScrolling = () => {
+  if (isDocumentDefined()) {
+    const doc = document
+    const body = getBody(doc)
+
+    body.style.scrollBehavior = 'smooth'
+    if (hasScrollSmoothOnHtml(doc)) {
+      const html = getHtml(doc)
+      html.style.scrollBehavior = 'smooth'
+    }
+  }
+}
+
 export const BodyScrollBlocker = () => {
   if (!isWindowDefined() || !isDocumentDefined()) {
     return {
-      isBlocked: false,
+      isBlocked: () => false,
       block: () => void 0,
       allow: () => void 0,
     }
