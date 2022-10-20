@@ -1,8 +1,18 @@
-import { hasTouchSupport } from './browser'
+import { hasTouchSupport, isWindowDefined } from './browser'
 
-const windowWidth = () => window.innerWidth
+const windowWidth = () => {
+  if (isWindowDefined()) {
+    return window.innerWidth
+  }
+  return 0
+}
 
-const windowHeight = () => window.innerHeight
+const windowHeight = () => {
+  if (isWindowDefined()) {
+    return window.innerHeight
+  }
+  return 0
+}
 
 const isLandscape = () => windowWidth() > windowHeight()
 
