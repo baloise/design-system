@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
-import { debounce, deepReady, findItemLabel, isDescendant } from '../../../helpers/helpers'
+import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -26,7 +26,7 @@ import {
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
 import { Props, Events } from '../../../types'
-import { stopEventBubbling } from '../../../helpers/form-input.helpers'
+import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 
 export interface BalOptionController extends BalOptionValue {

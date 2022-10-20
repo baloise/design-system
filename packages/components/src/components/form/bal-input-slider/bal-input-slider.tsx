@@ -1,8 +1,8 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { Events } from '../../../types'
-import { debounceEvent } from '../../../helpers/helpers'
-import { stopEventBubbling } from '../../../helpers/form-input.helpers'
+import { debounceEvent } from '../../../utils/helpers'
+import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
-import { debounce } from '../../../helpers/helpers'
+import { debounce } from '../../../utils/helpers'
 import { Props } from '../../../types'
 import { ResizeHandler } from '../../../utils/resize'
 

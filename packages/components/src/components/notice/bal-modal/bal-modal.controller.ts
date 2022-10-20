@@ -1,6 +1,6 @@
-import { getOverlays } from './../../../helpers/overlays'
-import { componentOnReady, getAppRoot } from '../../../helpers/helpers'
-import { getOverlay } from '../../../helpers/overlays'
+import { getOverlays } from '../../../utils/overlays/overlays'
+import { componentOnReady, getAppRoot } from '../../../utils/helpers'
+import { getOverlay } from '../../../utils/overlays/overlays'
 import { ModalOptions } from './bal-modal.type'
 
 export class BalModalController {

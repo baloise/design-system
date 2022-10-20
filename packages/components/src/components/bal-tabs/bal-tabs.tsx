@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
-import { debounceEvent } from '../../helpers/helpers'
+import { debounceEvent } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
@@ -7,7 +7,7 @@ import { StepList } from './components/steps'
 import { Props, Platforms, Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { getPlatforms, isPlatform } from '../../utils/platform'
-import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { stopEventBubbling } from '../../utils/form-input'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({
