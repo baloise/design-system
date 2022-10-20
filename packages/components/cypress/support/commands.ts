@@ -17,17 +17,6 @@ Cypress.Commands.add('page', (url: string) => {
 
   cy.visit(url, { log: false })
     .then(() =>
-      cy.document().then(document => {
-        return new Cypress.Promise(resolve => {
-          const onBalAppLoad = () => {
-            document.removeEventListener('balAppLoad', onBalAppLoad)
-            resolve()
-          }
-          document.addEventListener('balAppLoad', onBalAppLoad)
-        })
-      }),
-    )
-    .then(() =>
       cy
         .document()
         // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
@@ -36,7 +25,7 @@ Cypress.Commands.add('page', (url: string) => {
         .then(document => document.fonts.ready),
     )
     .then(() => {
-      return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false })
+      return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false }).wait(100)
     })
 })
 
