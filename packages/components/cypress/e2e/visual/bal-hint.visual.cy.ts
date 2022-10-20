@@ -11,9 +11,9 @@ describe('bal-hint', () => {
     cy.getByTestId('basic').click()
     cy.compareSnapshot('hint-basic-open-desktop', 0.0)
 
-    // cy.platform('tablet')
-    // cy.getByTestId('basic').click()
-    // cy.compareSnapshot('hint-basic-open-tablet', 0.0)
+    cy.platform('tablet')
+    cy.getByTestId('basic').click()
+    cy.compareSnapshot('hint-basic-open-tablet', 0.0)
 
     // cy.platform('mobile')
     // cy.getByTestId('basic').click()
