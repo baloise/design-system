@@ -1,5 +1,6 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { Props } from '../../types'
+import { isDocumentDefined } from '../browser'
 
 export interface BalNoticeOptions {
   message: string
@@ -27,19 +28,21 @@ export abstract class BalNoticeController {
   constructor(private options: NoticeOptions) {}
 
   create(options: BalNoticeOptions): any {
-    this.setupContainer()
-    const clone = this.findClone(options)
-    if (clone === undefined) {
-      const el: HTMLNoticeElement = document.createElement(this.options.tag) as unknown as HTMLNoticeElement
-      Object.assign(el, options)
-      el.addEventListener('balClose', event => {
-        this.removeFromQueue((<any>event).detail)
-      })
-      this.preQueue.push(el)
-      this.updateQueue()
-      return el
+    if (isDocumentDefined()) {
+      this.setupContainer()
+      const clone = this.findClone(options)
+      if (clone === undefined) {
+        const el: HTMLNoticeElement = document.createElement(this.options.tag) as unknown as HTMLNoticeElement
+        Object.assign(el, options)
+        el.addEventListener('balClose', event => {
+          this.removeFromQueue((<any>event).detail)
+        })
+        this.preQueue.push(el)
+        this.updateQueue()
+        return el
+      }
+      return clone
     }
-    return clone
   }
 
   setQueue(queueLimit: number) {
@@ -79,19 +82,21 @@ export abstract class BalNoticeController {
   }
 
   private setupContainer() {
-    const containerId = `${this.options.tag}-container`
-    this.container = document.getElementById(containerId)
+    if (isDocumentDefined()) {
+      const containerId = `${this.options.tag}-container`
+      this.container = document.getElementById(containerId)
 
-    if (this.container) return
+      if (this.container) return
 
-    if (!this.container) {
-      this.container = document.createElement('bal-notices')
-      this.container.setAttribute('interface', this.options.tag.replace('bal-', ''))
-      // this.container.className = `bal-notices bal-notices--${this.options.tag.replace('bal-', '')}`
-      this.container.id = containerId
+      if (!this.container) {
+        this.container = document.createElement('bal-notices')
+        this.container.setAttribute('interface', this.options.tag.replace('bal-', ''))
+        // this.container.className = `bal-notices bal-notices--${this.options.tag.replace('bal-', '')}`
+        this.container.id = containerId
+      }
+
+      document.body.appendChild(this.container)
     }
-
-    document.body.appendChild(this.container)
   }
 
   private updateQueue() {
