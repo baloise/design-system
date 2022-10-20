@@ -1,5 +1,6 @@
 import { Props } from '../../'
 import { EventEmitter } from '@stencil/core'
+import { Attributes } from '../../utils/attributes'
 
 export interface BalTabOption {
   value: string
@@ -18,6 +19,7 @@ export interface BalTabOption {
   index?: number
   context?: Props.BalTabsInterface
   navigate: EventEmitter<MouseEvent>
+  trackingData?: Attributes
 }
 
 export interface TabLineProps {
@@ -65,5 +67,6 @@ export interface TabItemProps {
   label: string | undefined
   context: Props.BalTabsInterface
   iconPosition: Props.BalTabsIconPosition
+  trackingData?: Attributes
   onSelectTab: (event: MouseEvent) => void
 }

@@ -1,11 +1,14 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
 import { Props } from '../../../types'
+import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
 @Component({
   tag: 'bal-tab-item',
 })
 export class TabItem {
+  private inheritAttributes: Attributes = {}
+
   @Element() el!: HTMLElement
 
   @State() isActive = false
@@ -76,6 +79,10 @@ export class TabItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  componentWillLoad() {
+    this.inheritAttributes = inheritTrackingAttributes(this.el)
+  }
+
   /**
    * Options of the tab like label, value etc.
    */
@@ -108,6 +115,7 @@ export class TabItem {
       passed: false,
       prevent: this.prevent,
       navigate: this.balNavigate,
+      trackingData: this.inheritAttributes,
     }
   }
 

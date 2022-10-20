@@ -9,13 +9,13 @@ export const SwipeHandler = () => {
   const observersSwipeRight: SwipeObserver[] = []
 
   return {
-    addEventListener: (el: HTMLElement) => {
+    connect: (el: HTMLElement) => {
       target = el
       manager = new Hammer(target)
       manager.on('swipeleft', () => observersSwipeLeft.forEach(observer => observer()))
       manager.on('swiperight', () => observersSwipeRight.forEach(observer => observer()))
     },
-    removeEventListener: () => manager?.destroy(),
+    disconnect: () => manager?.destroy(),
     onSwipeLeft: (callback: () => void) => observersSwipeLeft.push(callback),
     onSwipeRight: (callback: () => void) => observersSwipeRight.push(callback),
   }

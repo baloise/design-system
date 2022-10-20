@@ -1,4 +1,4 @@
-import { defaultLocale, useBalConfig } from '../config'
+import { defaultLocale, useBalConfig } from './config'
 import * as BaloiseWebAppUtils from '@baloise/web-app-utils'
 
 const getLocale = (): string => {

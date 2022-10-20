@@ -21,8 +21,8 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../config'
-import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
+} from '../../../utils/config'
+import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { Events } from '../../../types'
 import {
   FormInput,
@@ -39,9 +39,10 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../helpers/form-input.helpers'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number.util'
+} from '../../../utils/form-input'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
+import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
 

@@ -39,6 +39,7 @@ const component = BalComponentStory({
 export default component.story
 
 const excludedControls = [
+  'numberInput',
   'multiple',
   'spellcheck',
   'autocorrect',
@@ -46,10 +47,6 @@ const excludedControls = [
   'autofocus',
   'clickable',
   'inputmode',
-  'maxLength',
-  'minLength',
-  'min',
-  'max',
   'name',
   'required',
   'accept',

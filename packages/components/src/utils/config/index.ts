@@ -1,4 +1,4 @@
-import { BalConfigObserver } from '../types'
+import { BalConfigObserver } from '../../types'
 import { Config } from './config'
 import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 

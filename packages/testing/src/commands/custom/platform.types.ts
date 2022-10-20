@@ -1,4 +1,4 @@
-import { Platforms } from '@baloise/design-system-next-components'
+import { Platforms } from '@baloise/design-system-components'
 
 declare global {
   namespace Cypress {

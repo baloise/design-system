@@ -12,7 +12,8 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import {
   FormInput,
   getInputTarget,
@@ -26,7 +27,7 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../helpers/form-input.helpers'
+} from '../../../utils/form-input'
 import { Props, Events } from '../../../types'
 import {
   formatClaim,
@@ -37,7 +38,7 @@ import {
   MAX_LENGTH_OFFER_NUMBER,
 } from './bal-input-util'
 import isNil from 'lodash.isnil'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
 
 @Component({

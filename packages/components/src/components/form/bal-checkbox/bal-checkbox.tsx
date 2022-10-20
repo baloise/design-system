@@ -18,8 +18,9 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../helpers/form-input.helpers'
-import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
+} from '../../../utils/form-input'
+import { isDescendant } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
 

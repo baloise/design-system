@@ -87,6 +87,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
               target={tab.target}
               label={tab.label}
               bubble={tab.bubble}
+              trackingData={tab.trackingData}
               onSelectTab={e => onSelectTab(e, tab)}
             ></TabItem>
           </li>

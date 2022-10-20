@@ -1,4 +1,4 @@
-import { BalNoticeController, BalNoticeOptions } from '../../../helpers/notice.controller'
+import { BalNoticeController, BalNoticeOptions } from '../../../utils/overlays/notice.controller'
 import { Components } from '../../../types'
 
 export interface BalSnackbarOptions extends BalNoticeOptions {

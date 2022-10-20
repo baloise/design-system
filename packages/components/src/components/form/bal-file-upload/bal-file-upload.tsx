@@ -10,7 +10,7 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../helpers/form-input.helpers'
+} from '../../../utils/form-input'
 
 @Component({
   tag: 'bal-file-upload',

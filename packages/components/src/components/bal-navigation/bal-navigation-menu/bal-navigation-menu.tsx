@@ -2,6 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Props } from '../../../types'
 import { LevelInfo } from '../utils/level.utils'
+import { Attributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-navigation-menu',
@@ -11,6 +12,7 @@ export class NavigationMenu {
   @Prop() linkName?: string
   @Prop() target: Props.BalButtonTarget = '_self'
   @Prop() elements: LevelInfo[] = []
+  @Prop() tracking: Attributes = {}
 
   render() {
     const navMenuEl = BEM.block('nav').element('menu')
@@ -26,7 +28,7 @@ export class NavigationMenu {
               ...navMenuEl.element('link').class(),
             }}
           >
-            <a href={this.linkHref} target={this.target}>
+            <a href={this.linkHref} target={this.target} {...this.tracking}>
               {this.linkName} ➞
             </a>
           </div>
@@ -51,10 +53,19 @@ export class NavigationMenu {
                       .map(block => {
                         return (
                           block && (
-                            <bal-navigation-menu-list headline={block.label} href={block.link} target={block.target}>
+                            <bal-navigation-menu-list
+                              headline={block.label}
+                              href={block.link}
+                              target={block.target}
+                              tracking={block.trackingData}
+                            >
                               <div slot="links">
                                 {block.subLevels?.map(item => (
-                                  <bal-navigation-menu-list-item href={item.link} target={item.target}>
+                                  <bal-navigation-menu-list-item
+                                    href={item.link}
+                                    target={item.target}
+                                    tracking={item.trackingData}
+                                  >
                                     {item.label}
                                   </bal-navigation-menu-list-item>
                                 ))}
@@ -81,10 +92,15 @@ export class NavigationMenu {
                         href={block.link}
                         color={block.color}
                         target={block.target}
+                        tracking={block.trackingData}
                       >
                         <div slot="links">
                           {block.subLevels?.map(item => (
-                            <bal-navigation-menu-list-item href={item.link} target={item.target}>
+                            <bal-navigation-menu-list-item
+                              href={item.link}
+                              target={item.target}
+                              tracking={item.trackingData}
+                            >
                               {item.label}
                             </bal-navigation-menu-list-item>
                           ))}

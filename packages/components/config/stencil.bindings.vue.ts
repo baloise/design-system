@@ -1,4 +1,4 @@
-import { vueOutputTarget } from '@baloise/design-system-next-output-target-vue'
+import { vueOutputTarget } from '@baloise/design-system-output-target-vue'
 import { docComponents } from './doc.components'
 
 export const vueComponentModels: any[] = [
@@ -29,7 +29,7 @@ export const vueComponentModels: any[] = [
 ]
 
 export const VueGenerator = (
-  componentCorePackage = '@baloise/design-system-next-components',
+  componentCorePackage = '@baloise/design-system-components',
   proxiesFile = '../components-vue/src/proxies.ts',
   excludeComponents = docComponents,
 ): any =>

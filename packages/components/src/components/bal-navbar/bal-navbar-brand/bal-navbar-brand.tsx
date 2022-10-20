@@ -1,4 +1,5 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
+import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -8,6 +9,8 @@ import { BEM } from '../../../utils/bem'
   shadow: false,
 })
 export class NavbarBrand {
+  private bodyScrollBlocker = BodyScrollBlocker()
+
   @Element() el!: HTMLElement
 
   @State() isMenuActive = false
@@ -15,12 +18,29 @@ export class NavbarBrand {
   /**
    * Link of the logo / title.
    */
-  @Prop() href?: string
+  @Prop() href?: string = ''
 
   /**
-   * Link target
+   * @deprecated Link target
    */
-  @Prop() linkTarget = '_blank'
+  @Prop() linkTarget: Props.BalButtonTarget | '' = ''
+  @Watch('linkTarget')
+  hasShapeHandler() {
+    console.warn('[DEPRECATED] - Please use the property target instead')
+    this.migrateLinkTarget
+  }
+
+  private migrateLinkTarget() {
+    if (this.linkTarget !== '') {
+      this.target = this.linkTarget
+    }
+  }
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
    * @deprecated Use interface on bal-navbar instead.
@@ -46,6 +66,10 @@ export class NavbarBrand {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  connectedCallback() {
+    this.migrateLinkTarget()
+  }
+
   componentWillLoad() {
     if (window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
@@ -60,6 +84,13 @@ export class NavbarBrand {
 
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
+
+    if (this.isMenuActive) {
+      this.bodyScrollBlocker.block()
+    } else {
+      this.bodyScrollBlocker.allow()
+    }
+
     const navbar = this.el.closest('bal-navbar')
     if (navbar) {
       const navbarMenuElement = navbar.querySelector('bal-navbar-menu')
@@ -90,7 +121,7 @@ export class NavbarBrand {
         }}
       >
         {this.href ? (
-          <a href={this.href} target={this.linkTarget} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
             {logoTemplate}
           </a>
         ) : (

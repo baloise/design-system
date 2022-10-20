@@ -1,5 +1,5 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { addEventListener, removeEventListener } from './helpers'
+import { addEventListener, removeEventListener } from '../helpers'
 
 type OverlayInterface = any
 

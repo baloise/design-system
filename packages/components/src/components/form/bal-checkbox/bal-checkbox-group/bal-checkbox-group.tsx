@@ -12,8 +12,10 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
-import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
+import { stopEventBubbling } from '../../../../utils/form-input'
+import { findItemLabel, isDescendant } from '../../../../utils/helpers'
+import { inheritAttributes } from '../../../../utils/attributes'
+
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 

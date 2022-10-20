@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
-import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { stopEventBubbling } from '../../utils/form-input'
 import { BEM } from '../../utils/bem'
 import { observeHasClassActive, observeItems } from '../../utils/observer'
 import { isPlatform } from '../../utils/platform'
@@ -50,13 +50,13 @@ export class ProductSlider implements ComponentInterface {
   }
 
   componentDidLoad(): void {
-    this.swipeHandler.addEventListener(this.el)
+    this.swipeHandler.connect(this.el)
     this.swipeHandler.onSwipeLeft(() => this.nextPage())
     this.swipeHandler.onSwipeRight(() => this.previousPage())
   }
 
   disconnectedCallback() {
-    this.swipeHandler.removeEventListener()
+    this.swipeHandler.disconnect()
 
     if (this.mutationO) {
       this.mutationO.disconnect()

@@ -1,4 +1,5 @@
 import { Props } from '../../../props'
+import { Attributes } from '../../../utils/attributes'
 
 export const observeLevels = (target: Node, level: string, notify: () => void) => {
   /* tslint:disable-next-line */
@@ -33,6 +34,7 @@ export interface LevelInfo {
   linkLabel?: string
   color?: 'white' | 'grey'
   subLevels?: LevelInfo[]
+  trackingData?: Attributes
   onClick: (event: MouseEvent) => void
 }
 
