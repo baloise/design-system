@@ -121,7 +121,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: number = undefined
+  @Prop({ mutable: true, reflect: true }) value?: number = undefined
 
   /**
    * Emitted when a keyboard input occurred.
@@ -255,6 +255,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private onBlur = (event: FocusEvent) => {
+    console.log('onBlur in balNumberInput happened ', event)
+
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
@@ -295,7 +297,10 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     }
   }
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (event: FocusEvent) => {
+    console.log('onFocus in balNumberInput happened ', event)
+    return inputHandleFocus(this, event)
+  }
 
   private onClick = (event: MouseEvent) => inputHandleClick(this, event)
 
