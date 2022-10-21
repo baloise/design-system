@@ -1,16 +1,16 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
-  Watch,
-  State,
   Event,
   EventEmitter,
-  Method,
+  h,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
@@ -22,7 +22,7 @@ import {
   defaultConfig,
   detachComponentToConfig,
 } from '../../../utils/config'
-import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { Events } from '../../../types'
 import {
   FormInput,
@@ -294,9 +294,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     }
   }
 
-  private onFocus = (event: FocusEvent) => {
-    return inputHandleFocus(this, event)
-  }
+  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
   private onClick = (event: MouseEvent) => inputHandleClick(this, event)
 
