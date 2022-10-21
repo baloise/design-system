@@ -121,7 +121,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true, reflect: true }) value?: number = undefined
+  @Prop({ mutable: true }) value?: number = undefined
 
   /**
    * Emitted when a keyboard input occurred.
@@ -169,19 +169,16 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   connectedCallback() {
-    console.log('connectedCallback, inputValue: ', this.inputValue, 'value: ', this.value)
     this.debounceChanged()
     attachComponentToConfig(this)
     this.initialValue = this.value || 0
   }
 
   componentDidLoad() {
-    console.log('componentDidLoad, inputValue: ', this.inputValue, 'value: ', this.value)
     this.inputValue = this.value
   }
 
   componentWillLoad() {
-    console.log('componentWillLoad, inputValue: ', this.inputValue, 'value: ', this.value)
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -190,13 +187,10 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   configChanged(state: BalConfigState): void {
-    console.log('configChanged, inputValue: ', this.inputValue, 'value: ', this.value, ' state is: ', state)
-
     this.language = state.language
     this.region = state.region
 
     if (!this.hasFocus && this.nativeInput) {
-      console.log('configChanged changing nativeInput value, state is: ', state)
       this.nativeInput.value = this.getFormattedValue()
     }
   }
@@ -237,7 +231,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getFormattedValue(): string {
-    console.log('getFormattedValue getRawValue', this.getRawValue(), 'suffix', this.suffix)
     const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
     return `${formatInputValue(value, this.decimal)}${suffix}`
@@ -245,8 +238,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
-    console.log('onInput input.value: ', input?.value, ' inputValue ', this.inputValue)
-
     if (input) {
       const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
@@ -263,8 +254,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private onBlur = (event: FocusEvent) => {
-    console.log('onBlur in balNumberInput happened ', event)
-
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
@@ -306,7 +295,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private onFocus = (event: FocusEvent) => {
-    console.log('onFocus in balNumberInput happened ', event)
     return inputHandleFocus(this, event)
   }
 
@@ -323,7 +311,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   render() {
-    console.log('render happened, inputValue: ', this.inputValue, 'value: ', this.value)
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
