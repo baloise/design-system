@@ -175,10 +175,12 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   componentDidLoad() {
+    console.log('componentDidLoad, inputValue: ', this.inputValue, 'value: ', this.value)
     this.inputValue = this.value
   }
 
   componentWillLoad() {
+    console.log('componentWillLoad, inputValue: ', this.inputValue, 'value: ', this.value)
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -187,6 +189,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   configChanged(state: BalConfigState): void {
+    console.log('configChanged, inputValue: ', this.inputValue, 'value: ', this.value)
+
     this.language = state.language
     this.region = state.region
 
@@ -231,12 +235,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getFormattedValue(): string {
+    console.log('getFormattedValue getRawValue', this.getRawValue(), 'suffix', this.suffix)
     const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
     return `${formatInputValue(value, this.decimal)}${suffix}`
   }
 
   private onInput = (ev: Event) => {
+    console.log('onInput input.value: ', this.input.value, ' inputValue ', this.inputValue)
     const input = getInputTarget(ev)
 
     if (input) {
