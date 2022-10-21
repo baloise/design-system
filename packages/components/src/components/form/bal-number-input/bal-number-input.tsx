@@ -169,6 +169,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   connectedCallback() {
+    console.log('connectedCallback, inputValue: ', this.inputValue, 'value: ', this.value)
     this.debounceChanged()
     attachComponentToConfig(this)
     this.initialValue = this.value || 0
@@ -189,12 +190,13 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   configChanged(state: BalConfigState): void {
-    console.log('configChanged, inputValue: ', this.inputValue, 'value: ', this.value)
+    console.log('configChanged, inputValue: ', this.inputValue, 'value: ', this.value, ' state is: ', state)
 
     this.language = state.language
     this.region = state.region
 
     if (!this.hasFocus && this.nativeInput) {
+      console.log('configChanged changing nativeInput value, state is: ', state)
       this.nativeInput.value = this.getFormattedValue()
     }
   }
@@ -231,7 +233,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getRawValue(): string {
-    return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+    return typeof this.value === 'number' && !isNaN(this.value) ? this.value.toString() : (this.value || '').toString()
   }
 
   private getFormattedValue(): string {
@@ -242,8 +244,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private onInput = (ev: Event) => {
-    console.log('onInput input.value: ', this.input.value, ' inputValue ', this.inputValue)
     const input = getInputTarget(ev)
+    console.log('onInput input.value: ', input?.value, ' inputValue ', this.inputValue)
 
     if (input) {
       const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
@@ -321,6 +323,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   render() {
+    console.log('render happened, inputValue: ', this.inputValue, 'value: ', this.value)
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
