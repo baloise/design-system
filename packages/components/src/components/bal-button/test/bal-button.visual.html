@@ -16,13 +16,12 @@
   <body class="bal-body">
     <bal-doc-app>
       <main class="container py-5">
-        <section>
-          <bal-button data-testid="primary" color="primary" icon="plus">Primary</bal-button>
+        <section data-testid="primary">
+          <bal-button>Primary</bal-button>
         </section>
         <br />
         <br />
-        <!-- Colors  -->
-        <section>
+        <section data-testid="colors">
           <bal-button color="danger">Danger</bal-button>
           <bal-button color="info">Info</bal-button>
           <bal-button color="info-light">Info light</bal-button>
@@ -36,58 +35,49 @@
         </section>
         <br />
         <br />
-        <!-- Sizes -->
-        <section>
+        <section data-testid="sizes">
           <bal-button>Default</bal-button>
           <bal-button size="small">Small</bal-button>
         </section>
         <br />
         <br />
-        <!-- Inverted -->
-        <section class="has-background-primary py-4">
+        <section data-testid="inverted" class="has-background-primary py-4">
           <bal-button inverted>Inverted</bal-button>
         </section>
         <br />
         <br />
-        <!-- Expanded -->
-        <section>
+        <section data-testid="expanded">
           <bal-button expanded>Expanded</bal-button>
         </section>
         <br />
         <br />
-        <!-- Flat -->
-        <section>
+        <section data-testid="flat">
           <bal-button flat>Flat</bal-button>
         </section>
         <br />
         <br />
-        <!-- Icon right -->
-        <section>
+        <section data-testid="icon-right">
           <bal-button icon-right="plus">Icon Right</bal-button>
         </section>
         <br />
         <br />
-        <!-- Outlined -->
-        <section>
+        <section data-testid="outlined">
           <bal-button outlined>Outlined</bal-button>
         </section>
         <br />
         <br />
-        <!-- Rounded -->
-        <section>
+        <section data-testid="rounded">
           <bal-button rounded>Rounded</bal-button>
         </section>
         <br />
         <br />
-        <!-- Shadow -->
-        <section>
+        <section data-testid="shadow">
           <bal-button shadow>Shadow</bal-button>
         </section>
         <br />
         <br />
-        <!-- Variants -->
-        <section>
-          <bal-button-group data-testid="variants" direction="column" position="center">
+        <section data-testid="variants">
+          <bal-button-group direction="column" position="center">
             <bal-button group-direction="column" group-position="center">Primary</bal-button>
             <bal-button group-direction="column" group-position="center" color="info">Secondary</bal-button>
             <bal-button group-direction="column" group-position="center" color="info" outlined>Tertiary</bal-button>
@@ -96,9 +86,8 @@
         </section>
         <br />
         <br />
-        <!-- States -->
-        <section>
-          <bal-button-group data-testid="states">
+        <section data-testid="states">
+          <bal-button-group>
             <!-- Loading is turned off  -->
             <bal-button>Loading</bal-button>
             <bal-button disabled>Disabled</bal-button>
@@ -106,9 +95,8 @@
         </section>
         <br />
         <br />
-        <!-- Alert -->
-        <section>
-          <bal-button-group data-testid="alert">
+        <section data-testid="alert">
+          <bal-button-group>
             <bal-button color="info-light">Info</bal-button>
             <bal-button color="success">Success</bal-button>
             <bal-button color="warning">Warning</bal-button>
@@ -117,9 +105,8 @@
         </section>
         <br />
         <br />
-        <!-- Square -->
-        <section>
-          <bal-button-group data-testid="square">
+        <section data-testid="square">
+          <bal-button-group>
             <bal-button color="primary" square icon="plus"></bal-button>
             <bal-button square color="info" icon="account"></bal-button>
             <bal-button square color="info" outlined>42</bal-button>
@@ -127,8 +114,7 @@
         </section>
         <br />
         <br />
-        <!-- Group -->
-        <section>
+        <section data-testid="group">
           <bal-button-group>
             <bal-button v-bind="args" color="link">Left</bal-button>
             <bal-button v-bind="args">Aligned</bal-button>
@@ -144,15 +130,13 @@
         </section>
         <br />
         <br />
-        <!-- Links -->
-        <section>
+        <section data-testid="links">
           <bal-button color="link" icon-right="plus">Link</bal-button>
           <a class="is-link">Linky</a>
         </section>
         <br />
         <br />
-        <!-- Inverted Links -->
-        <section class="has-background-primary">
+        <section data-testid="inverted-links" class="has-background-primary">
           <bal-button color="link" icon-right="plus" inverted>Link Inverted</bal-button>
           <a class="is-link is-inverted pt-4">Linky Inverted</a>
         </section>
