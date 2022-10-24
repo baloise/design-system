@@ -377,10 +377,8 @@ export class Select {
     }
     this.options = new Map(options)
     this.syncNativeInput()
-    if (!this.remote) {
-      if (this.didInit) {
-        this.validateAfterBlur()
-      }
+    if (!this.remote && this.didInit) {
+      this.validateAfterBlur()
     }
   }
 
