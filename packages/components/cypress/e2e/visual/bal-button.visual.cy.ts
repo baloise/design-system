@@ -12,6 +12,13 @@ describe('bal-button', () => {
     cy.getByTestId('outlined').compareSnapshot('button-outlined-desktop', 0.0)
     cy.getByTestId('rounded').compareSnapshot('button-rounded-desktop', 0.0)
     cy.getByTestId('shadow').compareSnapshot('button-shadow-desktop', 0.0)
+    cy.getByTestId('icon-right').compareSnapshot('button-icon-right-desktop', 0.0)
+    cy.getByTestId('variants').compareSnapshot('button-variants-desktop', 0.0)
+    cy.getByTestId('states').compareSnapshot('button-states-desktop', 0.0)
+    cy.getByTestId('square').compareSnapshot('button-square-desktop', 0.0)
+    cy.getByTestId('group').compareSnapshot('button-group-desktop', 0.0)
+    cy.getByTestId('links').compareSnapshot('button-links-desktop', 0.0)
+    cy.getByTestId('inverted-links').compareSnapshot('button-inverted-links-desktop', 0.0)
 
     // cy.platform('tablet')
     // cy.getByTestId('primary').compareSnapshot('button-primary-tablet', 0.0)
