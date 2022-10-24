@@ -12,7 +12,7 @@ import {
   balIconCheck,
   balIconDate,
   balIconDocument,
-} from '@baloise/design-system-icons/src'
+} from '@baloise/design-system-icons'
 
 export const defaultConfig: BalConfigState = {
   region: 'CH',

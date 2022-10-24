@@ -13,7 +13,7 @@ import {
   balIconCheck,
   balIconDate,
   balIconDocument,
-} from '@baloise/design-system-icons/src'
+} from '@baloise/design-system-icons'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
