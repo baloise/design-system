@@ -5,14 +5,10 @@ describe('bal-hint', () => {
     cy.platform('desktop')
     cy.getByTestId('basic').compareSnapshot('hint-basic', 0.0)
     cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-desktop', 0.0)
-    // cy.platform('tablet')
-    // cy.getByTestId('basic').click()
-    // cy.compareSnapshot('hint-basic-open-tablet', 0.0)
-    // // close
-    // cy.platform('mobile')
-    // cy.getByTestId('basic').click()
-    // cy.compareSnapshot('hint-basic-open-mobile', 0.0)
-    // // close
+    cy.getByTestId('close-label').compareSnapshot('hint-close-label', 0.0)
+    cy.getByTestId('close-label').click().balHintFindOverlay().compareSnapshot('hint-close-label-desktop', 0.0)
+    cy.getByTestId('small').compareSnapshot('hint-small', 0.0)
+    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop', 0.0)
   })
 
   // it('basic component with close label', () => {
