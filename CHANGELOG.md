@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.3](https://github.com/baloise-incubator/design-system/compare/v11.0.2...v11.0.3) (2022-10-24)
+
+
+### Bug Fixes
+
+* add hammerjs as a dep of the core lib ([a57c060](https://github.com/baloise-incubator/design-system/commit/a57c06050b56d98e92a2294e77b967dc64b62e64))
+* **select:** sync native input also when remote is set . Closes [#603](https://github.com/baloise-incubator/design-system/issues/603) ([92086fc](https://github.com/baloise-incubator/design-system/commit/92086fca85245205da6f53277dcb904dd7e1d1d3))
+
+
+
 ## [11.0.2](https://github.com/baloise-incubator/design-system/compare/v11.0.1...v11.0.2) (2022-10-24)
 
 
