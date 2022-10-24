@@ -376,11 +376,9 @@ export class Select {
       }
     }
     this.options = new Map(options)
-    if (!this.remote) {
-      this.syncNativeInput()
-      if (this.didInit) {
-        this.validateAfterBlur()
-      }
+    this.syncNativeInput()
+    if (!this.remote && this.didInit) {
+      this.validateAfterBlur()
     }
   }
 
@@ -723,7 +721,7 @@ export class Select {
   }
 
   private syncNativeInput() {
-    if (!this.multiple && !this.remote) {
+    if (!this.multiple) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
         let label = findLabelByValue(this.options, valuesArray[0])
