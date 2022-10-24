@@ -189,8 +189,5 @@
     "vue": "^3.2.37",
     "workbox-build": "~4.3.1",
     "zone.js": "~0.11.4"
-  },
-  "dependencies": {
-    "hammerjs": "^2.0.8"
   }
 }
