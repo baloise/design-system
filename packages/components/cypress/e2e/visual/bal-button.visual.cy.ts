@@ -4,7 +4,7 @@ describe('bal-button', () => {
   it('basic component', () => {
     cy.platform('desktop')
     cy.getByTestId('primary').compareSnapshot('button-primary-desktop', 0.0)
-    // cy.getByTestId('variants').compareSnapshot('button-variants-desktop', 0.0)
+    cy.getByTestId('colors').compareSnapshot('button-colors-desktop', 0.0)
     // cy.getByTestId('states').compareSnapshot('button-states-desktop', 0.0)
     // cy.getByTestId('alert').compareSnapshot('button-alert-desktop', 0.0)
     // cy.getByTestId('square').compareSnapshot('button-square-desktop', 0.0)
