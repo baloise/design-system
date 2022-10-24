@@ -2,12 +2,13 @@ import { getOverlays } from '../../../utils/overlays/overlays'
 import { componentOnReady, getAppRoot } from '../../../utils/helpers'
 import { getOverlay } from '../../../utils/overlays/overlays'
 import { ModalOptions } from './bal-modal.type'
+import { isDocumentDefined } from '../../../utils/browser'
 
 export class BalModalController {
   tag = 'bal-modal'
   create(options: ModalOptions): Promise<HTMLBalModalElement> {
     /* tslint:disable-next-line */
-    if (typeof customElements !== 'undefined') {
+    if (typeof customElements !== 'undefined' && isDocumentDefined()) {
       return customElements.whenDefined(this.tag).then(() => {
         const element = document.createElement(this.tag) as HTMLBalModalElement
 
@@ -25,20 +26,28 @@ export class BalModalController {
   }
 
   async dismissAll(data?: any, role?: string): Promise<void> {
-    const overlays = getOverlays(document, this.tag)
-    await Promise.all(overlays.map(o => o.dismiss(data, role)))
+    if (isDocumentDefined()) {
+      const overlays = getOverlays(document, this.tag)
+      await Promise.all(overlays.map(o => o.dismiss(data, role)))
+    }
   }
 
   dismiss(data?: any, role?: string, id?: string): Promise<boolean> {
-    const overlay = getOverlay(document, this.tag, id)
-    if (!overlay) {
-      return Promise.reject('overlay does not exist')
+    if (isDocumentDefined()) {
+      const overlay = getOverlay(document, this.tag, id)
+      if (!overlay) {
+        return Promise.reject('overlay does not exist')
+      }
+      return overlay.dismiss(data, role)
     }
-    return overlay.dismiss(data, role)
+    return Promise.resolve(false)
   }
 
   async getTop(): Promise<HTMLBalModalElement | undefined> {
-    return getOverlay(document, this.tag) as any
+    if (isDocumentDefined()) {
+      return getOverlay(document, this.tag) as any
+    }
+    return
   }
 }
 

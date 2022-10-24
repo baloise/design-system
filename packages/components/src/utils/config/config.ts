@@ -1,3 +1,4 @@
+import { isWindowDefined } from '../browser'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
@@ -151,7 +152,9 @@ export class Config {
       }
     }
 
-    saveConfig(window, this._config)
+    if (isWindowDefined()) {
+      saveConfig(window, this._config)
+    }
   }
 }
 
