@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.2](https://github.com/baloise-incubator/design-system/compare/v11.0.1...v11.0.2) (2022-10-24)
+
+
+### Bug Fixes
+
+* add correct log in number-value-accessor ([07d514f](https://github.com/baloise-incubator/design-system/commit/07d514f6b3d45e8ae17c429b750a44d955f03ac9))
+* add log in number-value-accessor ([f887955](https://github.com/baloise-incubator/design-system/commit/f88795561bbd82a020a6ae458fa56b485dddb3eb))
+* export hasTouchSupport ([7a27bc6](https://github.com/baloise-incubator/design-system/commit/7a27bc6b41a390501c91046d6b9e113315b4ab27))
+* fix angular autofocus directive ([e36d9a0](https://github.com/baloise-incubator/design-system/commit/e36d9a019e390564295e016bdb21ad8e6a6f26ee))
+* rename angular autofucs directive to BalAutoFocus ([fbf2eb4](https://github.com/baloise-incubator/design-system/commit/fbf2eb43cd3b6c7d83c602a4a64113de55db9ad6))
+
+
+
 ## [11.0.1](https://github.com/baloise-incubator/design-system/compare/v10.24.10...v11.0.1) (2022-10-20)
 
 
