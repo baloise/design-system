@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.15.3](https://github.com/baloise/design-system/compare/v10.15.2...v10.15.3) (2022-10-25)
+
+
+### Bug Fixes
+
+* rise version of @baloise/web-app-utils ([8da1eb2](https://github.com/baloise/design-system/commit/8da1eb2d3925d0203c47540f9d5f052435b82fe2))
+
+
+
 ### [10.15.2](https://github.com/baloise/design-system/compare/v10.15.1...v10.15.2) (2022-09-01)
 
 
