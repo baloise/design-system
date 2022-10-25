@@ -77,7 +77,7 @@
     "@baloise/design-system-fonts": "11.0.3",
     "@baloise/design-system-icons": "11.0.3",
     "@baloise/design-system-tokens": "11.0.3",
-    "@baloise/web-app-utils": "~3.6.1",
+    "@baloise/web-app-utils": "~3.6.3",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.16.1",
     "big.js": "~6.2.1",
