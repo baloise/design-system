@@ -106,6 +106,9 @@ export abstract class BalNoticeController {
         this.container.insertAdjacentElement('beforeend', el)
       }
     }
+    if (this.queue.length === 0) {
+      this.container?.remove()
+    }
   }
 
   private removeFromQueue(toastId: string) {
