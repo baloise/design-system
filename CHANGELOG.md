@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.5](https://github.com/baloise-incubator/design-system/compare/v11.0.4...v11.0.5) (2022-10-25)
+
+
+### Bug Fixes
+
+* rise version of web-app-utils to use latest fix ([ff48e9f](https://github.com/baloise-incubator/design-system/commit/ff48e9fcf724898a15425c61d9c20075a9a90adc))
+
+
+
 ## [11.0.4](https://github.com/baloise-incubator/design-system/compare/v11.0.3...v11.0.4) (2022-10-25)
 
 **Note:** Version bump only for package root
