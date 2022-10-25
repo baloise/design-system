@@ -8,7 +8,6 @@ describe('bal-logo', () => {
     cy.getByTestId('colors-inverted').compareSnapshot('logo-colors-inverted-desktop', 0.0)
     cy.getByTestId('animated').compareSnapshot('logo-animated-desktop', 0.1)
 
-    // cy.platform('tablet')
     // cy.getByTestId('basic').compareSnapshot('logo-basic-tablet', 0.0)
 
     // cy.platform('mobile')
