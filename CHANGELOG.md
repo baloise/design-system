@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.7](https://github.com/baloise-incubator/design-system/compare/v11.0.6...v11.0.7) (2022-10-26)
+
+
+### Bug Fixes
+
+* enable clicking on the page if notice is turned on, [#817](https://github.com/baloise-incubator/design-system/issues/817) ([05ba93b](https://github.com/baloise-incubator/design-system/commit/05ba93b2b3ab73ed5f164fa905e2167420cb7ad6))
+
+
+
 ## [11.0.6](https://github.com/baloise-incubator/design-system/compare/v11.0.5...v11.0.6) (2022-10-26)
 
 
