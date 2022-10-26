@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.6](https://github.com/baloise-incubator/design-system/compare/v11.0.5...v11.0.6) (2022-10-26)
+
+
+### Bug Fixes
+
+* closes [#817](https://github.com/baloise-incubator/design-system/issues/817) snackbar is not clickable ([68528de](https://github.com/baloise-incubator/design-system/commit/68528decba390dfeedce960fddce9e4b9bb1ff9a))
+* remove bal-notice container in case no notices are displated anymore ([0f44e33](https://github.com/baloise-incubator/design-system/commit/0f44e33cc5fa5b33f9438ba0316325b9641cc9cd))
+
+
+
 ## [11.0.5](https://github.com/baloise-incubator/design-system/compare/v11.0.4...v11.0.5) (2022-10-25)
 
 
