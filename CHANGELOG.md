@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.7...v11.0.8) (2022-10-27)
+
+
+### Bug Fixes
+
+* **bal-modal:** emit willDismiss and didDismiss in close method ([9f4dc3c](https://github.com/baloise-incubator/design-system/commit/9f4dc3cf01fc57a4338c13336a9b5658231a9283))
+
+
+
 ## [11.0.7](https://github.com/baloise-incubator/design-system/compare/v11.0.6...v11.0.7) (2022-10-26)
 
 
