@@ -62,7 +62,7 @@ export class CarouselItem implements ComponentInterface {
   /**
    * Color of the background
    */
-  @Prop() color?: Props.BalProductSliderItemColor
+  @Prop() color?: Props.BalCarouselItemColor
 
   /**
    * Emitted when the link element has clicked.

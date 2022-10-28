@@ -16,14 +16,8 @@ export default {
 export const Icons = args => ({
   components: {},
   setup: () => ({ args }),
-  template: ` 
+  template: `
   <div class="container is-wide mt-6">
-    <bal-image-slider v-bind="args">
-      <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
-      <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
-      <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
-    </bal-image-slider>
-    <br/>
     <bal-button icon="account" class="mr-2">Content</bal-button>
     <bal-button icon="account" square></bal-button>
     <br/><br/>

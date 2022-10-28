@@ -37,11 +37,36 @@ export class Carousel implements ComponentInterface {
 
   @Element() el!: HTMLElement
 
+  /**
+   * Defines the active slide index.
+   */
   @Prop() value = 0
+
+  /**
+   * When how many slides are moved when going forward or backward.
+   */
   @Prop() steps = 1
+
+  /**
+   * Defines how many slides are visible in the container for the user.
+   * `auto` will use the size of the actual item content
+   */
   @Prop() itemsPerView: 'auto' | number = 1
+
+  /**
+   * Defines the layout of the navigation controls.
+   */
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
+
+  /**
+   * Defines the image aspect ratio.
+   * Should be combined with the interface `product`
+   */
   @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
+
+  /**
+   * Defines special looks.
+   */
   @Prop() interface: 'card' | 'image' | 'product' | '' = ''
 
   /**
