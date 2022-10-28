@@ -1,9 +1,6 @@
 @import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 @import './bal-carousel.vars'
 
-section
-  background: pink
-
 .bal-carousel
   display: block
   position: relative
@@ -34,7 +31,7 @@ section
 .bal-carousel__item
   text-align: center
   font-size: 18px
-  background: lime
+  min-height: 2rem
   display: flex
   justify-content: center
   align-items: center
@@ -85,10 +82,14 @@ section
         padding-right: 2.5rem
     .bal-carousel__item
       width: calc(100% - 2rem)
+      padding-top: 1rem
+      padding-bottom: 1rem
       padding-left: 1rem
       padding-right: 1rem
       +tablet
         width: calc(100% - 5rem)
+        padding-top: 2.5rem
+        padding-bottom: 2.5rem
         padding-left: 2.5rem
         padding-right: 2.5rem
 
@@ -99,7 +100,6 @@ section
     top: var(--bal-carousel-sticky-top)
 
 .bal-carousel__controls--tabs
-  padding-bottom: 2rem
   .bal-card
     padding: 0
   .bal-card-content
@@ -224,3 +224,50 @@ section
     overflow: hidden
     line-height: 1.15rem
     word-break: break-word
+
+.bal-carousel--controls-large
+  .bal-carousel__inner
+    +tablet
+      margin-left: 2rem
+      margin-right: 2rem
+
+.bal-carousel__controls--large
+  +mobile
+    display: flex
+    justify-content: center
+    width: 100%
+    gap: 2rem
+    margin-top: 1rem
+
+  +tablet
+    .bal-carousel__controls__button
+      position: absolute
+      top: calc(50% - 24px)
+      z-index: 7
+    .bal-carousel__controls__button--left
+      left: 0
+    .bal-carousel__controls__button--right
+      right: 0
+
+.bal-carousel__controls--small
+  .bal-carousel__controls__button
+    position: absolute
+    top: calc(50% - 16px)
+    z-index: 7
+  .bal-carousel__controls__button--left
+    left: 0
+  .bal-carousel__controls__button--right
+    right: 0
+  .bal-carousel__controls__button--hidden
+    display: none !important
+    visibility: hidden !important
+
+.bal-carousel--controls-small
+  .bal-carousel__inner--shadow-left
+    margin-left: 2rem
+  .bal-carousel__inner--shadow-right
+    margin-right: 2rem
+  .bal-carousel__inner--shadow-left::before
+    left: -1rem
+  .bal-carousel__inner--shadow-right::after
+    right: -1rem

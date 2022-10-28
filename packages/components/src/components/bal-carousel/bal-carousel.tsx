@@ -19,6 +19,8 @@ import { BalSlide, ControlItem } from './bal-carousel.type'
 import { Events } from '../../types'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
+import { LargeControl } from './controls/large-control'
+import { SmallControl } from './controls/small-control'
 
 @Component({
   tag: 'bal-carousel',
@@ -83,7 +85,6 @@ export class Carousel implements ComponentInterface {
 
   @Method()
   async previous(steps = this.steps): Promise<void> {
-    console.log('previous')
     let previousValue = this.value - steps
     if (previousValue < 0) {
       previousValue = 0
@@ -106,7 +107,6 @@ export class Carousel implements ComponentInterface {
 
   @Method()
   async next(steps = this.steps): Promise<void> {
-    console.log('next')
     const items = this.getAllItemElements()
     const length = items.length
     let nextValue = this.value + steps
@@ -180,7 +180,6 @@ export class Carousel implements ComponentInterface {
   }
 
   private async itemsChanged() {
-    console.log('itemsChanged')
     const activeSlide = await this.getSlide(this.value)
 
     if (activeSlide) {
@@ -214,6 +213,14 @@ export class Carousel implements ComponentInterface {
     return this.hasShadow() && (!this.isLastSlideVisible || this.interface === 'card')
   }
 
+  private isFirst(): boolean {
+    return this.value === 0
+  }
+
+  private isLast(): boolean {
+    return this.isLastSlideVisible
+  }
+
   /**
    * EVENT BINDING
    * ---------------------------
@@ -244,11 +251,9 @@ export class Carousel implements ComponentInterface {
    */
 
   render() {
-    console.log('render')
     const block = BEM.block('carousel')
     const inner = block.element('inner')
     const container = inner.element('container')
-    const controls = block.element('controls')
 
     const controlItems = this.getAllControlItems()
 
@@ -301,13 +306,27 @@ export class Carousel implements ComponentInterface {
           ''
         )}
 
-        <div class={{ ...controls.class() }}>
-          <bal-button-group>
-            <bal-button onClick={this.onPreviousButtonClick}>Previous</bal-button>
-            <bal-button onClick={this.onNextButtonClick}>Next</bal-button>
-          </bal-button-group>
-        </div>
-        {this.value}
+        {this.controls === 'large' ? (
+          <LargeControl
+            isFirst={this.isFirst()}
+            isLast={this.isLast()}
+            onNextClick={() => this.onNextButtonClick()}
+            onPreviousClick={() => this.onPreviousButtonClick()}
+          ></LargeControl>
+        ) : (
+          ''
+        )}
+
+        {this.controls === 'small' ? (
+          <SmallControl
+            isFirst={this.isFirst()}
+            isLast={this.isLast()}
+            onNextClick={() => this.onNextButtonClick()}
+            onPreviousClick={() => this.onPreviousButtonClick()}
+          ></SmallControl>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
