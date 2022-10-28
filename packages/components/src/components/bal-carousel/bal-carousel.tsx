@@ -38,6 +38,11 @@ export class Carousel implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
    * Defines the active slide index.
    */
   @Prop() value = 0
@@ -81,7 +86,7 @@ export class Carousel implements ComponentInterface {
 
   /**
    * LIFECYCLE
-   * ---------------------------
+   * ------------------------------------------------------
    */
 
   connectedCallback(): void {
@@ -105,7 +110,7 @@ export class Carousel implements ComponentInterface {
 
   /**
    * PUBLIC METHODS
-   * ---------------------------
+   * ------------------------------------------------------
    */
 
   @Method()
@@ -115,7 +120,7 @@ export class Carousel implements ComponentInterface {
       previousValue = 0
     }
 
-    const activeSlide = await this.getSlide(previousValue)
+    const activeSlide = await this.buildSlide(previousValue)
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
@@ -140,7 +145,7 @@ export class Carousel implements ComponentInterface {
       nextValue = length - 1
     }
 
-    const activeSlide = await this.getSlide(nextValue)
+    const activeSlide = await this.buildSlide(nextValue)
 
     if (activeSlide) {
       const didAnimate = await this.animate(activeSlide.transformActive, true)
@@ -153,12 +158,12 @@ export class Carousel implements ComponentInterface {
 
   /**
    * PRIVATE METHODS
-   * ---------------------------
+   * ------------------------------------------------------
    */
 
   private async animate(amount = 0, animated = true): Promise<boolean> {
     if (this.containerEl && this.innerEl) {
-      const lastSlide = await this.getSlide()
+      const lastSlide = await this.buildSlide()
 
       if (lastSlide) {
         const containerWidth = this.innerEl.clientWidth || 0
@@ -182,7 +187,7 @@ export class Carousel implements ComponentInterface {
     return Promise.resolve(true)
   }
 
-  private async getSlide(slideIndex?: number): Promise<BalSlide | undefined> {
+  private async buildSlide(slideIndex?: number): Promise<BalSlide | undefined> {
     const items = this.getAllItemElements()
     const index = slideIndex === undefined ? items.length - 1 : slideIndex
 
@@ -205,12 +210,17 @@ export class Carousel implements ComponentInterface {
   }
 
   private async itemsChanged() {
-    const activeSlide = await this.getSlide(this.value)
+    const activeSlide = await this.buildSlide(this.value)
 
     if (activeSlide) {
       this.animate(activeSlide.transformActive, false)
     }
   }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
 
   private async getAllItemData() {
     const queue = this.getAllItemElements().map(el => el.getData())
@@ -248,16 +258,12 @@ export class Carousel implements ComponentInterface {
 
   /**
    * EVENT BINDING
-   * ---------------------------
+   * ------------------------------------------------------
    */
 
-  private onPreviousButtonClick = () => {
-    this.previous()
-  }
+  private onPreviousButtonClick = () => this.previous()
 
-  private onNextButtonClick = () => {
-    this.next()
-  }
+  private onNextButtonClick = () => this.next()
 
   private onControlChange = (selectedValue: number) => {
     if (selectedValue !== this.value) {
@@ -272,7 +278,7 @@ export class Carousel implements ComponentInterface {
 
   /**
    * RENDER
-   * ---------------------------
+   * ------------------------------------------------------
    */
 
   render() {

@@ -308,7 +308,7 @@ export namespace Components {
         "itemsPerView": 'auto' | number;
         "next": (steps?: number) => Promise<void>;
         /**
-          * PUBLIC METHODS ---------------------------
+          * PUBLIC METHODS ------------------------------------------------------
          */
         "previous": (steps?: number) => Promise<void>;
         /**
