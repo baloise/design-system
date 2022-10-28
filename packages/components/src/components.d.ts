@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
+import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -284,6 +285,66 @@ export namespace Components {
          */
         "inverted": boolean;
     }
+    interface BalCarousel {
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If 'true, the pagination will be sticky to the top
+         */
+        "controlsSticky": boolean;
+        "interface": 'card' | 'image' | 'product' | '';
+        "itemsPerView": 'auto' | number;
+        "next": (steps?: number) => Promise<void>;
+        /**
+          * PUBLIC METHODS ---------------------------
+         */
+        "previous": (steps?: number) => Promise<void>;
+        "steps": number;
+        "value": number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        "getData": () => Promise<BalCarouselItemData>;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
+    }
     interface BalCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -529,8 +590,81 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BalDocApp {
+    }
+    interface BalDocBanner {
+        "status": string;
+        "subtitle": string;
+    }
     interface BalDocBannerStatus {
         "context": BannerStatusContext[];
+    }
+    interface BalDocColor {
+        "background": boolean;
+        "color": string;
+        "description": string;
+        "inverted": boolean;
+        "subject": string;
+    }
+    interface BalDocDownload {
+        "iconLeft": string;
+        "iconRight": string;
+        "link": string;
+        "subject": string;
+        "subtitle": string;
+    }
+    interface BalDocGithub {
+        "link": string;
+    }
+    interface BalDocIcons {
+        "icons": string;
+    }
+    interface BalDocImage {
+        "src": string;
+        "text": string;
+    }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+        "oneColumn": boolean;
+    }
+    interface BalDocLinkListItem {
+        "image": string;
+        "subject": string;
+        "template": '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
+    interface BalDocShades {
+        "color": string;
+    }
+    interface BalDocSupportColor {
+        "color": string;
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme": 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -2452,6 +2586,14 @@ export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
 }
+export interface BalCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselElement;
+}
+export interface BalCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselItemElement;
+}
 export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalCheckboxElement;
@@ -2467,6 +2609,10 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
+}
+export interface BalDocAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDocAppElement;
 }
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2635,6 +2781,18 @@ declare global {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
     };
+    interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
+    }
+    var HTMLBalCarouselElement: {
+        prototype: HTMLBalCarouselElement;
+        new (): HTMLBalCarouselElement;
+    };
+    interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBalCarouselItemElement: {
+        prototype: HTMLBalCarouselItemElement;
+        new (): HTMLBalCarouselItemElement;
+    };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
     var HTMLBalCheckboxElement: {
@@ -2683,11 +2841,155 @@ declare global {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
     };
+    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
+    }
+    var HTMLBalDocAppElement: {
+        prototype: HTMLBalDocAppElement;
+        new (): HTMLBalDocAppElement;
+    };
+    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
+    }
+    var HTMLBalDocBannerElement: {
+        prototype: HTMLBalDocBannerElement;
+        new (): HTMLBalDocBannerElement;
+    };
     interface HTMLBalDocBannerStatusElement extends Components.BalDocBannerStatus, HTMLStencilElement {
     }
     var HTMLBalDocBannerStatusElement: {
         prototype: HTMLBalDocBannerStatusElement;
         new (): HTMLBalDocBannerStatusElement;
+    };
+    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
+    }
+    var HTMLBalDocColorElement: {
+        prototype: HTMLBalDocColorElement;
+        new (): HTMLBalDocColorElement;
+    };
+    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
+    }
+    var HTMLBalDocDownloadElement: {
+        prototype: HTMLBalDocDownloadElement;
+        new (): HTMLBalDocDownloadElement;
+    };
+    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
+    }
+    var HTMLBalDocGithubElement: {
+        prototype: HTMLBalDocGithubElement;
+        new (): HTMLBalDocGithubElement;
+    };
+    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
+    }
+    var HTMLBalDocIconsElement: {
+        prototype: HTMLBalDocIconsElement;
+        new (): HTMLBalDocIconsElement;
+    };
+    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
+    }
+    var HTMLBalDocImageElement: {
+        prototype: HTMLBalDocImageElement;
+        new (): HTMLBalDocImageElement;
+    };
+    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
+    }
+    var HTMLBalDocLeadElement: {
+        prototype: HTMLBalDocLeadElement;
+        new (): HTMLBalDocLeadElement;
+    };
+    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListElement: {
+        prototype: HTMLBalDocLinkListElement;
+        new (): HTMLBalDocLinkListElement;
+    };
+    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListItemElement: {
+        prototype: HTMLBalDocLinkListItemElement;
+        new (): HTMLBalDocLinkListItemElement;
+    };
+    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
+    }
+    var HTMLBalDocShadesElement: {
+        prototype: HTMLBalDocShadesElement;
+        new (): HTMLBalDocShadesElement;
+    };
+    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
+    }
+    var HTMLBalDocSupportColorElement: {
+        prototype: HTMLBalDocSupportColorElement;
+        new (): HTMLBalDocSupportColorElement;
+    };
+    interface HTMLBalDocTabsElement extends Components.BalDocTabs, HTMLStencilElement {
+    }
+    var HTMLBalDocTabsElement: {
+        prototype: HTMLBalDocTabsElement;
+        new (): HTMLBalDocTabsElement;
+    };
+    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderElement: {
+        prototype: HTMLBalDocTokensBorderElement;
+        new (): HTMLBalDocTokensBorderElement;
+    };
+    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBreakpointsElement: {
+        prototype: HTMLBalDocTokensBreakpointsElement;
+        new (): HTMLBalDocTokensBreakpointsElement;
+    };
+    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensColorsElement: {
+        prototype: HTMLBalDocTokensColorsElement;
+        new (): HTMLBalDocTokensColorsElement;
+    };
+    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontElement: {
+        prototype: HTMLBalDocTokensFontElement;
+        new (): HTMLBalDocTokensFontElement;
+    };
+    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontSizesElement: {
+        prototype: HTMLBalDocTokensFontSizesElement;
+        new (): HTMLBalDocTokensFontSizesElement;
+    };
+    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontWeightElement: {
+        prototype: HTMLBalDocTokensFontWeightElement;
+        new (): HTMLBalDocTokensFontWeightElement;
+    };
+    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensRadiusElement: {
+        prototype: HTMLBalDocTokensRadiusElement;
+        new (): HTMLBalDocTokensRadiusElement;
+    };
+    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensShadowElement: {
+        prototype: HTMLBalDocTokensShadowElement;
+        new (): HTMLBalDocTokensShadowElement;
+    };
+    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingElement: {
+        prototype: HTMLBalDocTokensSpacingElement;
+        new (): HTMLBalDocTokensSpacingElement;
+    };
+    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageElement: {
+        prototype: HTMLBalDocUsageElement;
+        new (): HTMLBalDocUsageElement;
+    };
+    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageItemElement: {
+        prototype: HTMLBalDocUsageItemElement;
+        new (): HTMLBalDocUsageItemElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -3217,6 +3519,8 @@ declare global {
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
+        "bal-carousel": HTMLBalCarouselElement;
+        "bal-carousel-item": HTMLBalCarouselItemElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
@@ -3225,7 +3529,31 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-doc-app": HTMLBalDocAppElement;
+        "bal-doc-banner": HTMLBalDocBannerElement;
         "bal-doc-banner-status": HTMLBalDocBannerStatusElement;
+        "bal-doc-color": HTMLBalDocColorElement;
+        "bal-doc-download": HTMLBalDocDownloadElement;
+        "bal-doc-github": HTMLBalDocGithubElement;
+        "bal-doc-icons": HTMLBalDocIconsElement;
+        "bal-doc-image": HTMLBalDocImageElement;
+        "bal-doc-lead": HTMLBalDocLeadElement;
+        "bal-doc-link-list": HTMLBalDocLinkListElement;
+        "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
+        "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-support-color": HTMLBalDocSupportColorElement;
+        "bal-doc-tabs": HTMLBalDocTabsElement;
+        "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
+        "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
+        "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
+        "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
+        "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
+        "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
+        "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
+        "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
+        "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
+        "bal-doc-usage": HTMLBalDocUsageElement;
+        "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -3594,6 +3922,76 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
     }
+    interface BalCarousel {
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If 'true, the pagination will be sticky to the top
+         */
+        "controlsSticky"?: boolean;
+        "interface"?: 'card' | 'image' | 'product' | '';
+        "itemsPerView"?: 'auto' | number;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalCarouselCustomEvent<Events.BalCarouselChangeDetail>) => void;
+        "steps"?: number;
+        "value"?: number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalProductSliderItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
+    }
     interface BalCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -3854,8 +4252,82 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalDocApp {
+        "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
+    }
+    interface BalDocBanner {
+        "status"?: string;
+        "subtitle"?: string;
+    }
     interface BalDocBannerStatus {
         "context"?: BannerStatusContext[];
+    }
+    interface BalDocColor {
+        "background"?: boolean;
+        "color"?: string;
+        "description"?: string;
+        "inverted"?: boolean;
+        "subject"?: string;
+    }
+    interface BalDocDownload {
+        "iconLeft"?: string;
+        "iconRight"?: string;
+        "link"?: string;
+        "subject"?: string;
+        "subtitle"?: string;
+    }
+    interface BalDocGithub {
+        "link"?: string;
+    }
+    interface BalDocIcons {
+        "icons"?: string;
+    }
+    interface BalDocImage {
+        "src"?: string;
+        "text"?: string;
+    }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+        "oneColumn"?: boolean;
+    }
+    interface BalDocLinkListItem {
+        "image"?: string;
+        "subject"?: string;
+        "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
+    interface BalDocShades {
+        "color"?: string;
+    }
+    interface BalDocSupportColor {
+        "color"?: string;
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBreakpoints {
+    }
+    interface BalDocTokensColors {
+    }
+    interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontSizes {
+    }
+    interface BalDocTokensFontWeight {
+    }
+    interface BalDocTokensRadius {
+    }
+    interface BalDocTokensShadow {
+    }
+    interface BalDocTokensSpacing {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme"?: 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -4962,7 +5434,7 @@ declare namespace LocalJSX {
         /**
           * Triggers when a page change happens
          */
-        "onBalChange"?: (event: BalPaginationCustomEvent<number>) => void;
+        "onBalChange"?: (event: BalPaginationCustomEvent<Events.BalPaginationChangeDetail>) => void;
         /**
           * Specify the max visible pages before and after the selected page
          */
@@ -5842,6 +6314,8 @@ declare namespace LocalJSX {
         "bal-card-content": BalCardContent;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
+        "bal-carousel": BalCarousel;
+        "bal-carousel-item": BalCarouselItem;
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
@@ -5850,7 +6324,31 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
+        "bal-doc-app": BalDocApp;
+        "bal-doc-banner": BalDocBanner;
         "bal-doc-banner-status": BalDocBannerStatus;
+        "bal-doc-color": BalDocColor;
+        "bal-doc-download": BalDocDownload;
+        "bal-doc-github": BalDocGithub;
+        "bal-doc-icons": BalDocIcons;
+        "bal-doc-image": BalDocImage;
+        "bal-doc-lead": BalDocLead;
+        "bal-doc-link-list": BalDocLinkList;
+        "bal-doc-link-list-item": BalDocLinkListItem;
+        "bal-doc-shades": BalDocShades;
+        "bal-doc-support-color": BalDocSupportColor;
+        "bal-doc-tabs": BalDocTabs;
+        "bal-doc-tokens-border": BalDocTokensBorder;
+        "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
+        "bal-doc-tokens-colors": BalDocTokensColors;
+        "bal-doc-tokens-font": BalDocTokensFont;
+        "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
+        "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
+        "bal-doc-tokens-radius": BalDocTokensRadius;
+        "bal-doc-tokens-shadow": BalDocTokensShadow;
+        "bal-doc-tokens-spacing": BalDocTokensSpacing;
+        "bal-doc-usage": BalDocUsage;
+        "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -5954,6 +6452,8 @@ declare module "@stencil/core" {
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
+            "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
@@ -5962,7 +6462,31 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
+            "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
             "bal-doc-banner-status": LocalJSX.BalDocBannerStatus & JSXBase.HTMLAttributes<HTMLBalDocBannerStatusElement>;
+            "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
+            "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
+            "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
+            "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
+            "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
+            "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
+            "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
+            "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
+            "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
+            "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
+            "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
+            "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
+            "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
+            "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
+            "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
+            "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
+            "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
+            "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
+            "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
+            "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
+            "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
