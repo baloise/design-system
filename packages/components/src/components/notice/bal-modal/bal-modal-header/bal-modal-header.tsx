@@ -26,7 +26,14 @@ export class ModalHeader {
             <slot></slot>
           </h2>
         </div>
-        <bal-close class="bal-modal__header__close data-test-modal-close" onClick={this.closeHandler}></bal-close>
+        <bal-close
+          class={{
+            'bal-modal__header__close': true,
+            'data-test-modal-close': true,
+            'bal-modal__header--is-closable': !!this.parentModal?.isClosable,
+          }}
+          onClick={this.closeHandler}
+        ></bal-close>
       </Host>
     )
   }
