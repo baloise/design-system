@@ -84,6 +84,7 @@ ProductSlider.args = {
   interface: 'product',
   steps: 2,
   itemsPerView: 'auto',
+  controls: 'large',
 }
 ProductSlider.parameters = { ...component.sourceCode(ProductSlider) }
 
@@ -188,6 +189,7 @@ export const ResponsiveSlider = args => ({
 })
 ResponsiveSlider.args = {
   itemsPerView: 'auto',
+  controls: 'small',
   steps: 3,
 }
 ResponsiveSlider.parameters = { ...component.sourceCode(ResponsiveSlider) }
