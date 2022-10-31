@@ -5,7 +5,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 export const decorators = [
   story => ({
     components: { story },
-    template: '<bal-doc-story class="bal-body"><story /></bal-doc-story>',
+    template: '<bal-doc-app><story /></bal-doc-app>',
   }),
 ]
 

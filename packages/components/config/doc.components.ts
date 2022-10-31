@@ -10,7 +10,6 @@ export const docComponents = [
   'bal-doc-lead',
   'bal-doc-link-list',
   'bal-doc-link-list-item',
-  'bal-doc-story',
   'bal-doc-shades',
   'bal-doc-support-color',
   'bal-doc-tabs',

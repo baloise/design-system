@@ -22,11 +22,9 @@ module.exports = {
       }
     </style>
 
-    <link rel="stylesheet" href="build/design-system-components.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
 
     <script type="module" src="build/design-system-components.esm.js"></script>
     <script nomodule src="build/design-system-components.js"></script>`,
 }
-

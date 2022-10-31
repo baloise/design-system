@@ -78,11 +78,13 @@ export class Logo implements ComponentInterface {
   }
 
   disconnectedCallback() {
-    this.destroyAnimation()
+    if (this.el && !this.el.isConnected) {
+      this.destroyAnimation()
+    }
   }
 
   destroyAnimation() {
-    if (this.animationItem && this.animationItem.destroy) {
+    if (this.animated && this.animationItem && this.animationItem.destroy) {
       this.animationItem.destroy()
     }
   }

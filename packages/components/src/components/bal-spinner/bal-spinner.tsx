@@ -44,12 +44,15 @@ export class Spinner {
   componentDidUpdate() {
     this.resetAnimation()
   }
+
   componentDidLoad() {
     this.resetAnimation()
   }
 
   disconnectedCallback() {
-    this.destroyAnimation()
+    if (this.el && !this.el.isConnected) {
+      this.destroyAnimation()
+    }
   }
 
   getColor(): string {
@@ -79,3 +82,5 @@ export class Spinner {
     return <Host style={{ width: this.small ? '32px' : '64px' }}></Host>
   }
 }
+
+console.log('spinner')
