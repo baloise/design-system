@@ -1,4 +1,4 @@
-import { Component, Host, h, Element } from '@stencil/core'
+import { Component, Element, h, Host } from '@stencil/core'
 
 @Component({
   tag: 'bal-modal-header',
@@ -26,14 +26,11 @@ export class ModalHeader {
             <slot></slot>
           </h2>
         </div>
-        <bal-close
-          class={{
-            'bal-modal__header__close': true,
-            'data-test-modal-close': true,
-            'bal-modal__header--is-closable': !!this.parentModal?.isClosable,
-          }}
-          onClick={this.closeHandler}
-        ></bal-close>
+        {this.parentModal?.isClosable ? (
+          <bal-close class="bal-modal__header__close data-test-modal-close" onClick={this.closeHandler}></bal-close>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
