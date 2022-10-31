@@ -3,6 +3,9 @@ import { Props } from '../../types'
 
 @Component({
   tag: 'bal-text',
+  styleUrls: {
+    css: 'bal-text.sass',
+  },
 })
 export class Text {
   /**

@@ -7,6 +7,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-icon',
+  styleUrls: {
+    css: 'bal-icon.sass',
+  },
 })
 export class Icon {
   /**

@@ -9,8 +9,9 @@ import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-modal',
-  scoped: true,
-  shadow: false,
+  styleUrls: {
+    css: 'bal-modal.sass',
+  },
 })
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement

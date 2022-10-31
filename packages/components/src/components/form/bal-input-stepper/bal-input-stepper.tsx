@@ -31,6 +31,9 @@ import { Events } from '../../../types'
 
 @Component({
   tag: 'bal-input-stepper',
+  styleUrls: {
+    css: 'bal-input-stepper.sass',
+  },
 })
 export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
   private inputId = `bal-input-stepper${InputStepperIds++}`

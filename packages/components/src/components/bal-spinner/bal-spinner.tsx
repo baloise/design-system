@@ -6,6 +6,9 @@ import { flatten } from 'lottie-colorify'
 
 @Component({
   tag: 'bal-spinner',
+  styleUrls: {
+    css: 'bal-spinner.sass',
+  },
 })
 export class Spinner {
   animation!: AnimationItem

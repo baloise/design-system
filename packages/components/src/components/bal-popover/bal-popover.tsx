@@ -15,6 +15,9 @@ export interface PopoverPresentOptions {
 
 @Component({
   tag: 'bal-popover',
+  styleUrls: {
+    css: 'bal-popover.sass',
+  },
 })
 export class Popover {
   private popoverId = `bal-po-${PopoverIds++}`

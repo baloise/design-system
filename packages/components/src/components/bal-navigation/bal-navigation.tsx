@@ -10,6 +10,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-navigation',
+  styleUrls: {
+    css: 'bal-navigation.sass',
+  },
 })
 export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement

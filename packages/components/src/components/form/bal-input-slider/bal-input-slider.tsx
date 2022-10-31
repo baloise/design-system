@@ -7,6 +7,9 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-input-slider',
+  styleUrls: {
+    css: 'bal-input-slider.sass',
+  },
 })
 export class InputSlider {
   @Element() el!: HTMLElement

@@ -71,6 +71,9 @@ import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-datepicker',
+  styleUrls: {
+    css: 'bal-datepicker.sass',
+  },
 })
 export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
   private inputId = `bal-dp-${datepickerIds++}`
