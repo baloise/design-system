@@ -117,6 +117,7 @@ CardSlider.args = {
   interface: 'card',
   controls: 'tabs',
   controlsSticky: true,
+  scrollY: true,
 }
 CardSlider.parameters = { ...component.sourceCode(CardSlider) }
 

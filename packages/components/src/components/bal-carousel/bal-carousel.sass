@@ -47,7 +47,7 @@
 .bal-carousel__inner--shadow-left::before,
 .bal-carousel__inner--shadow-right::after
   position: absolute
-  width: 40px
+  width: 3rem
   height: 100%
   top: 0
   z-index: 6
@@ -55,43 +55,51 @@
 .bal-carousel__inner--shadow-left::before
   content: ''
   left: 0
-  background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+  background: linear-gradient(90deg, var(--bal-color-white) 50%, rgba(255, 255, 255, 0) 100%)
 
 .bal-carousel__inner--shadow-right::after
   content: ''
   right: 0
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 50%)
 
 .bal-carousel__inner
   &--items-per-view-auto
     .bal-carousel__item
       width: auto
 
-.bal-carousel
-  &--card
-    margin-left: -1rem
-    margin-right: -1rem
+.bal-carousel--card
+  .bal-carousel__inner--shadow-left::before,
+  .bal-carousel__inner--shadow-right::after
+    width: 1rem
     +tablet
-      margin-left: -2.5rem
-      margin-right: -2.5rem
-    .bal-carousel__controls
-      padding-left: 1rem
-      padding-right: 1rem
-      +tablet
-        padding-left: 2.5rem
-        padding-right: 2.5rem
-    .bal-carousel__item
-      width: calc(100% - 2rem)
-      padding-top: 1rem
-      padding-bottom: 1rem
-      padding-left: 1rem
-      padding-right: 1rem
-      +tablet
-        width: calc(100% - 5rem)
-        padding-top: 2.5rem
-        padding-bottom: 2.5rem
-        padding-left: 2.5rem
-        padding-right: 2.5rem
+      width: 2.5rem
+    +desktop
+      width: 3rem
+
+.bal-carousel--card
+  margin-left: -1rem
+  margin-right: -1rem
+  +tablet
+    margin-left: -2.5rem
+    margin-right: -2.5rem
+  .bal-carousel__controls
+    padding-left: 1rem
+    padding-right: 1rem
+    +tablet
+      padding-left: 2.5rem
+      padding-right: 2.5rem
+  .bal-carousel__item
+    width: calc(100% - 2rem)
+    padding-top: 1rem
+    padding-bottom: 1rem
+    padding-left: 1rem
+    padding-right: 1rem
+    +tablet
+      width: calc(100% - 5rem)
+      padding-top: 2.5rem
+      padding-bottom: 2.5rem
+      padding-left: 2.5rem
+      padding-right: 2.5rem
 
 .bal-carousel--controls-sticky
   .bal-carousel__controls--tabs
@@ -225,11 +233,6 @@
     line-height: 1.15rem
     word-break: break-word
 
-.bal-carousel--controls-large
-  .bal-carousel__inner
-    +tablet
-      margin-left: 2rem
-      margin-right: 2rem
 
 .bal-carousel__controls--large
   +mobile
@@ -249,6 +252,10 @@
     .bal-carousel__controls__button--right
       right: 0
 
+.bal-carousel__controls__button--hidden
+  display: none !important
+  visibility: none !important
+
 .bal-carousel__controls--small
   .bal-carousel__controls__button
     position: absolute
@@ -262,12 +269,3 @@
     display: none !important
     visibility: hidden !important
 
-.bal-carousel--controls-small
-  .bal-carousel__inner--shadow-left
-    margin-left: 2rem
-  .bal-carousel__inner--shadow-right
-    margin-right: 2rem
-  .bal-carousel__inner--shadow-left::before
-    left: -1rem
-  .bal-carousel__inner--shadow-right::after
-    right: -1rem

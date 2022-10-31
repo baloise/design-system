@@ -4,6 +4,7 @@ import { BEM } from '../../../utils/bem'
 export interface LargeControlProps {
   isFirst: boolean
   isLast: boolean
+  areControlsHidden: boolean
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -11,6 +12,7 @@ export interface LargeControlProps {
 export const LargeControl: FunctionalComponent<LargeControlProps> = ({
   isFirst,
   isLast,
+  areControlsHidden,
   onNextClick,
   onPreviousClick,
 }) => {
@@ -26,7 +28,11 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
       }}
     >
       <bal-button
-        class={{ ...button.class(), ...button.modifier('left').class() }}
+        class={{
+          ...button.class(),
+          ...button.modifier('left').class(),
+          ...button.modifier('hidden').class(isFirst && areControlsHidden),
+        }}
         square
         icon="nav-go-left"
         rounded
@@ -34,7 +40,11 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         disabled={isFirst}
       ></bal-button>
       <bal-button
-        class={{ ...button.class(), ...button.modifier('right').class() }}
+        class={{
+          ...button.class(),
+          ...button.modifier('right').class(),
+          ...button.modifier('hidden').class(isLast && areControlsHidden),
+        }}
         square
         icon="nav-go-right"
         rounded

@@ -9,11 +9,12 @@ import {
   Event,
   EventEmitter,
   State,
+  Listen,
 } from '@stencil/core'
 import { debounce } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { MutationHandler } from '../../utils/observer'
-import { ResizeObserverHandler } from '../../utils/resize'
+import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
 import { SwipeHandler } from '../../utils/swipe'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { Events } from '../../types'
@@ -21,6 +22,8 @@ import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
+import { stopEventBubbling } from '../../utils/form-input'
+import { isPlatform } from '../../utils/platform'
 
 @Component({
   tag: 'bal-carousel',
@@ -28,12 +31,15 @@ import { SmallControl } from './controls/small-control'
 })
 export class Carousel implements ComponentInterface {
   private resizeHandler = ResizeObserverHandler()
+  private resizeWidthHandler = ResizeHandler()
   private mutationHandler = MutationHandler()
   private swipeHandler = SwipeHandler()
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
+  private previousTransformValue = 0
 
   @State() isLastSlideVisible = false
+  @State() areControlsHidden = !isPlatform('mobile')
 
   @Element() el!: HTMLElement
 
@@ -75,9 +81,14 @@ export class Carousel implements ComponentInterface {
   @Prop() interface: 'card' | 'image' | 'product' | '' = ''
 
   /**
-   * If 'true, the pagination will be sticky to the top
+   * If `true` the controls will be sticky to the top.
    */
   @Prop() controlsSticky = false
+
+  /**
+   * If `true` vertical scrolling on mobile is enabled.
+   */
+  @Prop() scrollY = true
 
   /**
    * Emitted when a option got selected.
@@ -106,6 +117,25 @@ export class Carousel implements ComponentInterface {
     this.mutationHandler.disconnect()
     this.resizeHandler.disconnect()
     this.swipeHandler.disconnect()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('touchmove', { target: 'window', passive: false })
+  async blockVerticalScrolling(event: any) {
+    if (!this.scrollY && this.el?.contains(event.target)) {
+      stopEventBubbling(event)
+    }
+  }
+
+  @Listen('resize', { target: 'window' })
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.areControlsHidden = !isPlatform('mobile')
+    })
   }
 
   /**
@@ -171,14 +201,24 @@ export class Carousel implements ComponentInterface {
         const noNeedForSlide = itemsWith <= containerWidth
         const maxAmount = itemsWith - containerWidth
         const isLastSlideVisible = maxAmount < amount
+        const isFirst = amount === 0
+        const hasSmallControls = this.controls === 'small'
+        const hasLargeControls = this.controls === 'large'
 
-        const transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
+        let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
+
+        if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
+          transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
+        }
 
         this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
         this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
 
+        const didAnimate = transformValue !== this.previousTransformValue
+        this.previousTransformValue = transformValue
         this.isLastSlideVisible = isLastSlideVisible
-        if (isLastSlideVisible) {
+
+        if (!didAnimate) {
           return Promise.resolve(false)
         }
       }
@@ -341,6 +381,7 @@ export class Carousel implements ComponentInterface {
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
+            areControlsHidden={this.areControlsHidden}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></LargeControl>

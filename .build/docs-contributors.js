@@ -17,7 +17,7 @@ async function main() {
 
   const filePath = path.join(PACKAGE, 'src/stories/assets/data/contributors.json')
   try {
-    const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
+    const res = await fetch('https://api.github.com/repos/baloise-incubator/design-system/contributors')
     const json = await res.json()
     const contributors = json
       .filter(c => c.type === 'User')
