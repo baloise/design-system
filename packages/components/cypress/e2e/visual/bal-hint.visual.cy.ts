@@ -6,11 +6,7 @@ describe('bal-hint', () => {
     cy.getByTestId('basic').compareSnapshot('hint-basic-desktop', 0.0)
     cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-desktop', 0.0)
     cy.getByTestId('basic').balHintFindCloseButton().click()
-    cy.getByTestId('close-label').compareSnapshot('hint-close-label-desktop', 0.0)
-    cy.getByTestId('close-label').click().balHintFindOverlay().compareSnapshot('hint-close-label-desktop', 0.0)
-    cy.getByTestId('close-label').balHintFindCloseButton().click()
-    // cy.getByTestId('small').compareSnapshot('hint-small-desktop', 0.0)
-    // cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop', 0.0)
+    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop', 0.0)
 
     // cy.platform('tablet')
     // cy.getByTestId('basic').compareSnapshot('hint-basic-tablet', 0.0)
