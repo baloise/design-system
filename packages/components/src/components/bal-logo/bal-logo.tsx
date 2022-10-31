@@ -19,6 +19,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-logo',
+  styleUrls: {
+    css: 'bal-logo.sass',
+  },
 })
 export class Logo implements ComponentInterface {
   animationItem!: AnimationItem

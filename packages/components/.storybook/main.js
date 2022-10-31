@@ -14,7 +14,19 @@ module.exports = {
   staticDirs: ['../public'],
   previewHead: head => `
     ${head}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+    </style>
+
+    <link rel="stylesheet" href="build/design-system-components.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />`,
+
+    <script type="module" src="build/design-system-components.esm.js"></script>
+    <script nomodule src="build/design-system-components.js"></script>`,
 }
+

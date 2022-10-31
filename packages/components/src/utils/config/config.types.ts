@@ -25,3 +25,5 @@ export interface BalConfigState {
   allowedLanguages: BalLanguage[]
   fallbackLanguage: BalLanguage
 }
+
+export type BalMode = 'css' | 'sass' | 'all'
