@@ -13,7 +13,6 @@ export interface BalSlide {
   data: BalCarouselItemData
   transformNext: number
   transformActive: number
-  // transformPrevious: number
   isLast: boolean
   isFirst: boolean
   index: number
