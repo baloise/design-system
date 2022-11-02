@@ -19,6 +19,8 @@ export interface BalConfig {
   region?: BalRegion
   language?: BalLanguage
   allowedLanguages?: BalLanguage[]
+  fallbackLanguage?: BalLanguage
+  logger?: BalLogger
 }
 
 export interface BalConfigState {
