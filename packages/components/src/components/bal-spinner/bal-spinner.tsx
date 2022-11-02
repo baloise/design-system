@@ -3,14 +3,14 @@ import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
-type AnimationFunction = (el: HTMLElement, color: string) => AnimationItem
+type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
 @Component({
   tag: 'bal-spinner',
 })
 export class Spinner implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
-  private animationFunction?: AnimationFunction
+  private animationFunction?: SpinnerAnimationFunction
 
   log!: LogInstance
 
@@ -20,6 +20,11 @@ export class Spinner implements ComponentInterface, Loggable {
   }
 
   @Element() el!: HTMLElement
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * If `true` the component can be used on dark background
@@ -47,6 +52,11 @@ export class Spinner implements ComponentInterface, Loggable {
    */
   @Prop() small = false
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -59,9 +69,10 @@ export class Spinner implements ComponentInterface, Loggable {
     this.destroyAnimation()
   }
 
-  private getColor(): string {
-    return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'
-  }
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private async resetAnimation() {
     this.destroyAnimation()
@@ -96,6 +107,20 @@ export class Spinner implements ComponentInterface, Loggable {
       this.animationItem.destroy()
     }
   }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private getColor(): string {
+    return this.inverted || this.color === 'white' ? '#ffffff' : '#151f6d'
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     return <Host style={{ width: this.small ? '32px' : '64px' }}></Host>
