@@ -151,7 +151,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('balFocus', { capture: true, target: 'document' })
+  @Listen('balFocus', { target: 'document' })
   radioFocusListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
@@ -159,7 +159,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
     }
   }
 
-  @Listen('balBlur', { capture: true, target: 'document' })
+  @Listen('balBlur', { target: 'document' })
   radioBlurListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-blur')) {
