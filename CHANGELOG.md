@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.10](https://github.com/baloise-incubator/design-system/compare/v11.0.9...v11.0.10) (2022-10-31)
 
-
 ### Bug Fixes
 
 * bal-modal isClosable now hides close on top, fixes [#806](https://github.com/baloise-incubator/design-system/issues/806) ([122e90a](https://github.com/baloise-incubator/design-system/commit/122e90ade7fbe36ae80cdd552e05837063ad417c))
