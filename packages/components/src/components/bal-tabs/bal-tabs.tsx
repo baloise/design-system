@@ -19,6 +19,7 @@ export class Tabs {
   private didInit = false
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
+  private accordion: HTMLBalAccordionElement | null = null
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -135,6 +136,14 @@ export class Tabs {
     this.platform = getPlatforms()
     this.debounceChanged()
     this.updateTabs()
+
+    const accordion = (this.accordion = this.el.closest('bal-accordion'))
+
+    if (accordion) {
+      accordion.addEventListener('balChange', () => {
+        this.moveLine(this.getTargetElement(this.value))
+      })
+    }
 
     this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
       this.updateTabs()
