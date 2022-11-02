@@ -28,6 +28,7 @@ export class ValueAccessor implements ControlValueAccessor {
 
   @HostListener('balBlur', ['$event.target'])
   handleBlurEvent(el: any) {
+    console.warn('handleBlurEvent', el, this.el)
     if (el === this.el.nativeElement) {
       this.onTouched()
     }

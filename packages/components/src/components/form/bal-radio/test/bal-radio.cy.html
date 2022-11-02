@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
-  <body>
-    <bal-doc-app>
-      <main class="container">
-        <bal-heading>Basic</bal-heading>
-        <section>
-          <bal-radio-group data-testid="basic" value="2">
-            <bal-radio value="1">Label 1</bal-radio>
-            <bal-radio value="2">Label 2</bal-radio>
-            <bal-radio value="3">Label 3</bal-radio>
-            <bal-radio value="4" disabled>Label Disabled</bal-radio>
-          </bal-radio-group>
-        </section>
-        <bal-heading>Form Reset</bal-heading>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <!-- <bal-doc-app log-components="bal-radio, bal-radio-group" log-lifecycle log-render log-events log-custom> -->
+  <bal-doc-app>
+    <main class="container">
+      <bal-heading>Basic</bal-heading>
+      <section>
+        <bal-radio-group data-testid="basic" value="1">
+          <bal-radio value="1">Label 1</bal-radio>
+          <bal-radio value="2">Label 2</bal-radio>
+          <bal-radio value="3">Label 3</bal-radio>
+          <bal-radio value="4" disabled>Label Disabled</bal-radio>
+        </bal-radio-group>
+      </section>
+      <bal-heading>Form Reset</bal-heading>
         <section>
           <form action="https://www.w3schools.com/action_page.php" target="_blank">
             <bal-form-grid>
@@ -49,7 +52,8 @@
             <bal-radio value="4" disabled>Label Disabled</bal-radio>
           </bal-radio-group>
         </section>
-      </main>
-    </bal-doc-app>
-  </body>
+    </main>
+  </bal-doc-app>
+</body>
+
 </html>

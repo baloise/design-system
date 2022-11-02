@@ -57,6 +57,7 @@ export namespace Components {
         "value": boolean;
     }
     interface BalApp {
+        "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     interface BalBadge {
         /**
@@ -1754,10 +1755,6 @@ export namespace Components {
     }
     interface BalRadio {
         /**
-          * If `true`, the radio is selected.
-         */
-        "checked": boolean;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
@@ -1786,6 +1783,10 @@ export namespace Components {
          */
         "isEmpty": boolean;
         /**
+          * Label of the radio item.
+         */
+        "label": string;
+        /**
           * If `true` the radio has no label
          */
         "labelHidden": boolean;
@@ -1801,20 +1802,18 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        "setFocus": (ev: any) => Promise<void>;
         /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+          * the value of the radio.
          */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets the focus on the checkbox input element.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Value of the radio item, if checked the whole group has this value.
-         */
-        "value": number | string | boolean;
+        "value"?: any | null;
     }
     interface BalRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection": boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -1837,9 +1836,9 @@ export namespace Components {
         "readonly"?: boolean;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
-          * The value of the control.
+          * the value of the radio group.
          */
-        "value": number | string | boolean;
+        "value"?: any | null;
         /**
           * Displays the checkboxes vertically
          */
@@ -5135,10 +5134,6 @@ declare namespace LocalJSX {
     }
     interface BalRadio {
         /**
-          * If `true`, the radio is selected.
-         */
-        "checked"?: boolean;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
@@ -5162,6 +5157,10 @@ declare namespace LocalJSX {
           * @deprecated If `true` the radio has no label
          */
         "isEmpty"?: boolean;
+        /**
+          * Label of the radio item.
+         */
+        "label"?: string;
         /**
           * If `true` the radio has no label
          */
@@ -5195,11 +5194,15 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Value of the radio item, if checked the whole group has this value.
+          * the value of the radio.
          */
-        "value"?: number | string | boolean;
+        "value"?: any | null;
     }
     interface BalRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -5217,17 +5220,29 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the toggle loses focus.
+         */
+        "onBalBlur"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onBalFocus"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalInput"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
-          * The value of the control.
+          * the value of the radio group.
          */
-        "value"?: number | string | boolean;
+        "value"?: any | null;
         /**
           * Displays the checkboxes vertically
          */
