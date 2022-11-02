@@ -20,8 +20,6 @@ import { rIC } from '../../utils/helpers'
 
 type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => AnimationItem
 
-console.log('bal-logo')
-
 @Component({
   tag: 'bal-logo',
 })
