@@ -43,7 +43,6 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Watch('isTouch')
   touchWatcher() {
-    console.log('touchWatcher')
     if (this.isTouch) {
       this.loadSmallSVGLogo()
     } else {
