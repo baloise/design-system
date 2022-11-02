@@ -1,4 +1,5 @@
 import { isWindowDefined } from '../browser'
+import { defaultLoggerConfig } from '../log'
 import { config, configFromSession } from './config'
 import { BalConfig, BalConfigState } from './config.types'
 
@@ -7,6 +8,7 @@ export const defaultConfig: BalConfigState = {
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
   fallbackLanguage: 'de',
+  logger: defaultLoggerConfig,
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
