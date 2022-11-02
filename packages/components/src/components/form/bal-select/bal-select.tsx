@@ -1,4 +1,17 @@
-import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  State,
+  Prop,
+  Watch,
+  EventEmitter,
+  Event,
+  Method,
+  Element,
+  Listen,
+  ComponentInterface,
+} from '@stencil/core'
 import isNil from 'lodash.isnil'
 import isArray from 'lodash.isarray'
 import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
@@ -28,6 +41,7 @@ import { BalOptionValue } from './utils/bal-option.type'
 import { Props, Events } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -38,9 +52,7 @@ export interface BalOptionController extends BalOptionValue {
 @Component({
   tag: 'bal-select',
 })
-export class Select {
-  @Element() private el!: HTMLElement
-
+export class Select implements ComponentInterface, Loggable {
   private inputElement!: HTMLInputElement
   private nativeSelectEl!: HTMLSelectElement
   private popoverElement!: HTMLBalPopoverElement
@@ -52,6 +64,15 @@ export class Select {
   private mutationO?: MutationObserver
   private initialValue?: string | string[] = []
 
+  log!: LogInstance
+
+  @Logger('bal-select')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  @Element() private el!: HTMLElement
+
   @State() hasFocus = false
   @State() inputValue = ''
   @State() focusIndex = 0
@@ -59,6 +80,11 @@ export class Select {
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo = ''
   @State() labelToSelectTo = ''
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -231,6 +257,55 @@ export class Select {
    */
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
+
+    this.initialValue = this.value
+
+    debounceUpdateOptions()
+
+    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
+      debounceUpdateOptions()
+    })
+  }
+
+  componentWillLoad() {
+    this.waitForOptionsAndThenUpdateRawValues()
+
+    if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
+      const firstOption = this.options.get(this.rawValue[0])
+      if (!isNil(firstOption)) {
+        this.inputValue = firstOption.label
+      }
+    }
+  }
+
+  componentDidLoad() {
+    this.updateRawValue(false)
+
+    if (!this.multiple) {
+      this.inputElement.value = this.inputValue
+    }
+    this.didInit = true
+  }
+
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
     if (this.disabled && event.target && event.target === this.el) {
@@ -301,88 +376,10 @@ export class Select {
     }
   }
 
-  connectedCallback() {
-    const debounceUpdateOptions = debounce(() => this.updateOptions(), 0)
-
-    this.initialValue = this.value
-
-    debounceUpdateOptions()
-
-    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
-      debounceUpdateOptions()
-    })
-  }
-
-  disconnectedCallback() {
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
-    }
-  }
-
-  waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timer
-  async waitForOptionsAndThenUpdateRawValues() {
-    clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
-    await deepReady(this.el)
-    const hasOptions = this.options.size > 0
-
-    if (hasOptions) {
-      this.updateRawValue(false)
-    } else {
-      this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
-    }
-  }
-
-  componentWillLoad() {
-    this.waitForOptionsAndThenUpdateRawValues()
-
-    if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
-      const firstOption = this.options.get(this.rawValue[0])
-      if (!isNil(firstOption)) {
-        this.inputValue = firstOption.label
-      }
-    }
-  }
-
-  componentDidLoad() {
-    this.updateRawValue(false)
-
-    if (!this.multiple) {
-      this.inputElement.value = this.inputValue
-    }
-    this.didInit = true
-  }
-
-  private updateOptions() {
-    const optionElements = this.getChildOpts()
-    const options = new Map()
-    for (let index = 0; index < optionElements.length; index++) {
-      const element = optionElements[index]
-      options.set(element.value, {
-        value: element.value,
-        label: element.label,
-        disabled: element.disabled,
-        id: element.for,
-        textContent: element.textContent,
-        innerHTML: element.innerHTML,
-      })
-    }
-    if (!this.selectionOptional && Array.isArray(this.rawValue)) {
-      for (let index = 0; index < this.rawValue.length; index++) {
-        const val = this.rawValue[index]
-        if (!options.has(val)) {
-          this.rawValue = removeValue(this.rawValue, val)
-        }
-      }
-    }
-    this.options = new Map(options)
-    this.syncNativeInput()
-    if (!this.remote && this.didInit) {
-      this.validateAfterBlur()
-    }
-  }
-
-  private setFocusTimer?: NodeJS.Timer
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Sets the focus on the input element
@@ -460,9 +457,61 @@ export class Select {
     }
   }
 
-  /********************************************************
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timer
+  private async waitForOptionsAndThenUpdateRawValues() {
+    clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
+    await deepReady(this.el)
+    const hasOptions = this.options.size > 0
+
+    if (hasOptions) {
+      this.updateRawValue(false)
+    } else {
+      this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
+    }
+  }
+
+  private updateOptions() {
+    const optionElements = this.getChildOpts()
+    const options = new Map()
+    for (let index = 0; index < optionElements.length; index++) {
+      const element = optionElements[index]
+      options.set(element.value, {
+        value: element.value,
+        label: element.label,
+        disabled: element.disabled,
+        id: element.for,
+        textContent: element.textContent,
+        innerHTML: element.innerHTML,
+      })
+    }
+    if (!this.selectionOptional && Array.isArray(this.rawValue)) {
+      for (let index = 0; index < this.rawValue.length; index++) {
+        const val = this.rawValue[index]
+        if (!options.has(val)) {
+          this.rawValue = removeValue(this.rawValue, val)
+        }
+      }
+    }
+    this.options = new Map(options)
+    if (!this.remote) {
+      this.syncNativeInput()
+      if (this.didInit) {
+        this.validateAfterBlur()
+      }
+    }
+  }
+
+  private setFocusTimer?: NodeJS.Timer
+
+  /**
    * GETTERS
-   ********************************************************/
+   * ------------------------------------------------------
+   */
 
   private get optionArray() {
     const options = Array.from(this.options, ([_, value]) => value)
@@ -733,9 +782,10 @@ export class Select {
     }
   }
 
-  /********************************************************
-   * EVENT HANDLERS
-   ********************************************************/
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
 
   private handleClick = (event: MouseEvent) => {
     if (this.disabled || this.readonly) {
@@ -841,6 +891,11 @@ export class Select {
   private handleOptionMouseEnter = (index: number) => {
     this.focusIndex = index
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const labelId = this.inputId + '-lbl'
