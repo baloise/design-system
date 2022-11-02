@@ -259,6 +259,7 @@ export class Radio implements ComponentInterface, Loggable {
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
+        aria-focused={this.focused ? 'true' : null}
         class={{
           'bal-focused': this.focused,
           ...block.class(),
