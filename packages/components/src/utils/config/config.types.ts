@@ -15,10 +15,13 @@ export type BalLanguage =
   | BalBelgiumLanguage
   | BalGermanLanguage
 
+export type BalIcons = { [key: string]: string }
+
 export interface BalConfig {
   region?: BalRegion
   language?: BalLanguage
   allowedLanguages?: BalLanguage[]
+  icons?: BalIcons
   fallbackLanguage?: BalLanguage
   logger?: BalLogger
 }
@@ -27,6 +30,7 @@ export interface BalConfigState {
   region: BalRegion
   language: BalLanguage
   allowedLanguages: BalLanguage[]
+  icons: BalIcons
   fallbackLanguage: BalLanguage
   logger: BalLogger
 }

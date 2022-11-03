@@ -66,7 +66,12 @@ export default ({ styleOutput, declarationDir, cleanTargets, input, target } = {
     resolve(),
     commonjs(),
     peerDepsExternal(),
-    typescript({ declaration: true, declarationDir: declarationDir || 'dist/types', outDir: target || 'dist' }),
+    typescript({
+      removeComments: true,
+      declaration: true,
+      declarationDir: declarationDir || 'dist/types',
+      outDir: target || 'dist',
+    }),
     sass({
       output: styleOutput || 'dist/styles.css',
       options: {

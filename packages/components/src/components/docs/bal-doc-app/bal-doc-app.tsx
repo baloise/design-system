@@ -1,4 +1,7 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+// import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
+import * as balIcons from '@baloise/design-system-icons'
+import { updateBalIcons } from '../../../utils/config'
 import { isWindowDefined } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
 
@@ -6,12 +9,16 @@ import { BalLogger } from '../../../utils/log'
   tag: 'bal-doc-app',
   styleUrl: '../../../styles/global.sass',
 })
-export class DocApp {
+export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''
   @Prop() logLifecycle = false
   @Prop() logEvents = false
   @Prop() logRender = false
   @Prop() logCustom = false
+
+  connectedCallback() {
+    updateBalIcons(balIcons)
+  }
 
   componentDidRender() {
     const logConfig: BalLogger = {
