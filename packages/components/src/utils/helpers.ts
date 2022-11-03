@@ -1,10 +1,11 @@
 import { EventEmitter } from '@stencil/core'
+import { isWindowDefined } from './browser'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
 export const rIC = (callback: () => void) => {
-  if ('requestIdleCallback' in window) {
+  if (isWindowDefined() && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback)
   } else {
     setTimeout(callback, 32)
