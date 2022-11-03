@@ -8,7 +8,7 @@ export { CheckboxValueAccessor } from './directives/checkbox-value-accessor'
 export { NumericValueAccessor } from './directives/number-value-accessor'
 export { SelectValueAccessor } from './directives/select-value-accessor'
 export { TextValueAccessor } from './directives/text-value-accessor'
-export { AutoFocus } from './focus.directive'
+export { BalAutoFocus } from './focus.directive'
 
 // SERVICES
 export { BalToastService } from './overlays/toast.service'

@@ -1,4 +1,5 @@
 import { isWindowDefined } from '../browser'
+import { BalLogger, defaultLoggerConfig } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
@@ -35,6 +36,7 @@ export class Config {
       balIconDocument,
     },
     fallbackLanguage: 'de',
+    logger: defaultLoggerConfig,
   }
 
   get locale(): string {
@@ -88,6 +90,15 @@ export class Config {
       ...this._config.icons,
       ...icons,
     }
+    this._notify()
+  }
+
+  get logger(): BalLogger {
+    return this._config.logger
+  }
+
+  set logger(logger: BalLogger) {
+    this._config.logger = { ...logger }
     this._notify()
   }
 

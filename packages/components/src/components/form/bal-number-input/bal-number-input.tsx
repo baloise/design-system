@@ -1,16 +1,16 @@
 import {
   Component,
-  h,
   ComponentInterface,
-  Host,
   Element,
-  Prop,
-  Watch,
-  State,
   Event,
   EventEmitter,
-  Method,
+  h,
+  Host,
   Listen,
+  Method,
+  Prop,
+  State,
+  Watch,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
@@ -22,7 +22,7 @@ import {
   defaultConfig,
   detachComponentToConfig,
 } from '../../../utils/config'
-import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { Events } from '../../../types'
 import {
   FormInput,
@@ -227,7 +227,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getRawValue(): string {
-    return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+    return typeof this.value === 'number' && !isNaN(this.value) ? this.value.toString() : (this.value || '').toString()
   }
 
   private getFormattedValue(): string {
@@ -238,7 +238,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
-
     if (input) {
       const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
