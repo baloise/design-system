@@ -1,12 +1,21 @@
-import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core'
-import { BalMode } from '../../types'
+import { Component, Host, h, Event, EventEmitter, Prop, Method } from '@stencil/core'
 import { isBrowser } from '../../utils/browser'
-import { initStyleMode } from '../../utils/config'
+import { BalMode, initStyleMode } from '../../utils/config'
+import { rIC } from '../../utils/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-app',
 })
-export class App {
+export class App implements Loggable {
+  private focusVisible?: any
+  log!: LogInstance
+
+  @Logger('bal-app')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * Mode defines how the styles are loaded. With `css` each component loads his own styles
    * and with `sass` the component styles needs to be imported with the file `global.components.sass`.
@@ -14,12 +23,8 @@ export class App {
   @Prop({ reflect: true }) mode: BalMode = 'css'
 
   /**
-   * @internal Tells if the component has been loaded and is ready to be shown.
-   */
-  @Prop({ reflect: true }) ready = false
-
-  /**
-   * @internal Fired if the component has been loaded and is ready to be shown.
+   * @internal
+   * Tells if the components are ready
    */
   @Event({ bubbles: true, composed: true }) balAppLoad!: EventEmitter<boolean>
 
@@ -29,7 +34,16 @@ export class App {
 
   componentDidLoad() {
     this.balAppLoad.emit(true)
-    this.ready = true
+    rIC(async () => {
+      import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
+    })
+  }
+
+  @Method()
+  async setFocus(elements: HTMLElement[]) {
+    if (this.focusVisible) {
+      this.focusVisible.setFocus(elements)
+    }
   }
 
   render() {

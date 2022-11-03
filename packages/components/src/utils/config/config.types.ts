@@ -1,3 +1,5 @@
+import { BalLogger } from '../log'
+
 export type BalRegion = 'CH' | 'DE' | 'BE' | 'LU'
 
 export type BalSwissLanguage = 'de' | 'fr' | 'it' | 'en'
@@ -13,17 +15,24 @@ export type BalLanguage =
   | BalBelgiumLanguage
   | BalGermanLanguage
 
+export type BalIcons = { [key: string]: string }
+
 export interface BalConfig {
   region?: BalRegion
   language?: BalLanguage
   allowedLanguages?: BalLanguage[]
+  icons?: BalIcons
+  fallbackLanguage?: BalLanguage
+  logger?: BalLogger
 }
 
 export interface BalConfigState {
   region: BalRegion
   language: BalLanguage
   allowedLanguages: BalLanguage[]
+  icons: BalIcons
   fallbackLanguage: BalLanguage
+  logger: BalLogger
 }
 
 export type BalMode = 'css' | 'sass' | 'all'

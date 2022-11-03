@@ -108,6 +108,10 @@ export class ModalPageComponent {
 
     // Collect the data from the modal through the dismiss event
     const { data } = await this.modal.onWillDismiss()
+
+    // React onDidDismiss
+    await this.modal.onDidDismiss()
+    someFunctionToDoOnDidDismissAction()
   }
 
   closeModal() {
