@@ -140,9 +140,7 @@ export class Tabs {
     const accordion = (this.accordion = this.el.closest('bal-accordion'))
 
     if (accordion) {
-      accordion.addEventListener('balChange', () => {
-        this.moveLine(this.getTargetElement(this.value))
-      })
+      accordion.addEventListener('balChange', this.accordionChange)
     }
 
     this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
@@ -151,6 +149,13 @@ export class Tabs {
   }
 
   disconnectedCallback() {
+    const accordion = this.accordion
+
+    if (accordion) {
+      accordion.removeEventListener('balChange', this.accordionChange)
+      this.accordion = null
+    }
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -316,6 +321,10 @@ export class Tabs {
 
   private isTabActive(tab: BalTabOption): boolean {
     return tab.value === this.value
+  }
+
+  private accordionChange = () => {
+    this.moveLine(this.getTargetElement(this.value))
   }
 
   render() {
