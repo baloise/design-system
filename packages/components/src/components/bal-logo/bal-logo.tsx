@@ -117,6 +117,7 @@ export class Logo implements ComponentInterface, Loggable {
       await this.loadAnimation()
 
       if (this.animationFunction) {
+        this.destroyAnimation()
         this.animationItem = this.animationFunction(this.animatedLogoElement, this.color)
       }
     }
