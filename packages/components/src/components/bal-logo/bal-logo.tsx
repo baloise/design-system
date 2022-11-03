@@ -25,8 +25,8 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
 })
 export class Logo implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
-  private animationFunction?: LogoAnimationFunction
   private animatedLogoElement!: HTMLDivElement
+  private animationFunction?: LogoAnimationFunction
   private resizeWidthHandler = ResizeHandler()
 
   log!: LogInstance
@@ -68,6 +68,7 @@ export class Logo implements ComponentInterface, Loggable {
   animatedWatcher() {
     if (!this.animated) {
       this.destroyAnimation()
+      this.touchWatcher()
     }
   }
 
@@ -75,6 +76,10 @@ export class Logo implements ComponentInterface, Loggable {
    * LIFECYCLE
    * ------------------------------------------------------
    */
+
+  connectedCallback() {
+    this.animatedWatcher()
+  }
 
   componentDidUpdate() {
     this.resetAnimation()
@@ -112,7 +117,7 @@ export class Logo implements ComponentInterface, Loggable {
       await this.loadAnimation()
 
       if (this.animationFunction) {
-        this.animationFunction(this.animatedLogoElement, this.color)
+        this.animationItem = this.animationFunction(this.animatedLogoElement, this.color)
       }
     }
   }
