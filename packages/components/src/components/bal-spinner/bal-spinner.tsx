@@ -131,5 +131,3 @@ export class Spinner implements ComponentInterface, Loggable {
     return <Host style={{ width: this.small ? '32px' : '64px' }}></Host>
   }
 }
-
-console.log('spinner')

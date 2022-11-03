@@ -6,7 +6,6 @@ import { VERSION } from './utils/constants/version.constant'
 import { isDocumentDefined, isWindowDefined } from './utils/browser'
 
 export default function () {
-  console.log('global')
   if (isWindowDefined()) {
     const win = window as any
     win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
