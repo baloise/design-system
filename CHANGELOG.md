@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.11](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
+
+
+### Bug Fixes
+
+* add missing configs to the BalConfig ([6cec2d6](https://github.com/baloise-incubator/design-system/commit/6cec2d62904ca1cbb84c9535a9aea80c16c307f8))
+* **bal-tabs:** call move line function when accordion with tabs in it opens ([c79b71e](https://github.com/baloise-incubator/design-system/commit/c79b71efc083da4d9dd3204e3af96a355d611c57))
+* **icons:** add missing arrow icons ([d430cb4](https://github.com/baloise-incubator/design-system/commit/d430cb4d6b7ac3daf096b326799cd872b9bbfb9b))
+* **radio:** group elements sends focus and blur event. Closes [#623](https://github.com/baloise-incubator/design-system/issues/623) ([d044693](https://github.com/baloise-incubator/design-system/commit/d0446935804b88b765d2c1c0879519b2e909fbb7))
+* **select:** typeahead + remote accept initial value. Closes [#603](https://github.com/baloise-incubator/design-system/issues/603), [#819](https://github.com/baloise-incubator/design-system/issues/819) ([5f11bb9](https://github.com/baloise-incubator/design-system/commit/5f11bb9dd8a9d93b09f48bba5fed4280ee7d3078))
+
+
+### Performance Improvements
+
+* **logo:** add lazy loading ([d4d7820](https://github.com/baloise-incubator/design-system/commit/d4d78201bdb85464b5f7450d8feb590ab3224d62))
+* **spinner:** load animation date after first render ([f928030](https://github.com/baloise-incubator/design-system/commit/f92803014b9fc3cc9477953b1b08ca6ef39927b0))
+
+## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.5...v11.0.8) (2022-10-27)
+
+## 11.0.5 (2022-10-25)
+
+
+
 ## [11.0.10](https://github.com/baloise-incubator/design-system/compare/v11.0.9...v11.0.10) (2022-10-31)
 
 ### Bug Fixes
