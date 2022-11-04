@@ -3,10 +3,7 @@ import * as balIcons from '@baloise/design-system-icons'
 import { updateBalIcons } from '../../../utils/config'
 import { isWindowDefined } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
-
-// import globalScript from '../../../global'
-
-// globalScript()
+import globalScript from '../../../global'
 
 @Component({
   tag: 'bal-doc-app',
@@ -20,6 +17,7 @@ export class DocApp implements ComponentInterface {
   @Prop() logCustom = false
 
   connectedCallback() {
+    globalScript()
     updateBalIcons(balIcons)
   }
 

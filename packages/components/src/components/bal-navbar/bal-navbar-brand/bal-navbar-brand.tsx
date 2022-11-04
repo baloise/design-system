@@ -5,8 +5,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
-  scoped: false,
-  shadow: false,
 })
 export class NavbarBrand {
   private bodyScrollBlocker = BodyScrollBlocker()
@@ -105,6 +103,7 @@ export class NavbarBrand {
   }
 
   render() {
+    console.log('render', this.isMenuActive, this.interface)
     const navbarBrandEl = BEM.block('navbar').element('brand')
 
     const logoTemplate = this.logo ? (
