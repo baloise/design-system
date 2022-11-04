@@ -1,3 +1,4 @@
+@import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 @import '../../../styles/mixins/_all'
 
 +block(snackbar)
@@ -22,4 +23,5 @@
     justify-content: start
     margin-top: .5rem
   +element(close)
-    +alert-close
+    &.bal-close
+      +alert-close

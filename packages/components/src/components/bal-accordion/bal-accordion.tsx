@@ -4,6 +4,9 @@ import { Events } from '../../types'
 
 @Component({
   tag: 'bal-accordion',
+  styleUrls: {
+    css: 'bal-accordion.sass',
+  },
 })
 export class Accordion {
   private didInit = false

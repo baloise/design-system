@@ -1,12 +1,38 @@
 import { isWindowDefined } from '../browser'
+import { defaultLoggerConfig } from '../log'
 import { config, configFromSession } from './config'
 import { BalConfig, BalConfigState } from './config.types'
+import {
+  balIconClose,
+  balIconInfoCircle,
+  balIconPlus,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconCaretLeft,
+  balIconCaretDown,
+  balIconCheck,
+  balIconDate,
+  balIconDocument,
+} from '../constants/icons.constant'
 
 export const defaultConfig: BalConfigState = {
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
+  icons: {
+    balIconClose,
+    balIconInfoCircle,
+    balIconPlus,
+    balIconNavGoLeft,
+    balIconNavGoRight,
+    balIconCaretLeft,
+    balIconCaretDown,
+    balIconCheck,
+    balIconDate,
+    balIconDocument,
+  },
   fallbackLanguage: 'de',
+  logger: defaultLoggerConfig,
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`

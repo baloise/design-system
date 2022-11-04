@@ -9,8 +9,9 @@ import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-modal',
-  scoped: true,
-  shadow: false,
+  styleUrls: {
+    css: 'bal-modal.sass',
+  },
 })
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement
@@ -134,8 +135,10 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async close(): Promise<void> {
+    this.willDismiss.emit()
     this.unsetModalActiveOnBody()
     this.presented = false
+    this.didDismiss.emit()
   }
 
   /**
@@ -172,8 +175,6 @@ export class Modal implements OverlayInterface {
       await this.close()
       return true
     }
-
-    this.willDismiss.emit({ data, role })
     const dismissed = await dismiss(this, data, role, async () => {
       writeTask(() => {
         if (this.modalBackgroundElement) {

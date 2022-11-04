@@ -12,6 +12,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
+  styleUrls: {
+    css: 'bal-tabs.sass',
+  },
 })
 export class Tabs {
   @Element() el!: HTMLElement
@@ -19,6 +22,7 @@ export class Tabs {
   private didInit = false
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
+  private accordion: HTMLBalAccordionElement | null = null
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -136,12 +140,25 @@ export class Tabs {
     this.debounceChanged()
     this.updateTabs()
 
+    const accordion = (this.accordion = this.el.closest('bal-accordion'))
+
+    if (accordion) {
+      accordion.addEventListener('balChange', this.accordionChange)
+    }
+
     this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
       this.updateTabs()
     })
   }
 
   disconnectedCallback() {
+    const accordion = this.accordion
+
+    if (accordion) {
+      accordion.removeEventListener('balChange', this.accordionChange)
+      this.accordion = null
+    }
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -307,6 +324,10 @@ export class Tabs {
 
   private isTabActive(tab: BalTabOption): boolean {
     return tab.value === this.value
+  }
+
+  private accordionChange = () => {
+    this.moveLine(this.getTargetElement(this.value))
   }
 
   render() {

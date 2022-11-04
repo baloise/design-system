@@ -112,7 +112,7 @@ Typeahead.parameters = {
 }
 
 export const TypeaheadRemote = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl },
   setup: () => {
     const cantons = [
       'Zürich',
@@ -197,6 +197,8 @@ TypeaheadRemote.args = {
   typeahead: true,
   remote: true,
   loading: true,
+  selectionOptional: true,
+  value: 'Ticino',
   placeholder: 'Try finding your canton',
 }
 TypeaheadRemote.parameters = {

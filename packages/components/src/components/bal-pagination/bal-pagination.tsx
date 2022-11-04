@@ -4,6 +4,9 @@ import { Events, Props } from '../../types'
 
 @Component({
   tag: 'bal-pagination',
+  styleUrls: {
+    css: 'bal-pagination.sass',
+  },
 })
 export class Pagination {
   @Element() el!: HTMLBalPaginationElement

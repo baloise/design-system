@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-5">
+        <section data-testid="basic">
+          <bal-sheet>
+            <div class="is-hidden-tablet">
+              <bal-button expanded>Continue with 1'234 CHF</bal-button>
+              <bal-button expanded color="info" class="mt-2">Back</bal-button>
+            </div>
+            <div class="is-hidden-mobile is-flex is-align-items-center fg-4">
+              <h4 class="title is-size-4 m-0">1'234 CHF</h4>
+              <p class="has-text-blue-light-text is-small m-0 is-flex-grow-1">Lorem ipsum dolor</p>
+              <bal-button-group>
+                <bal-button color="info">Back</bal-button>
+                <bal-button>Next</bal-button>
+              </bal-button-group>
+            </div>
+          </bal-sheet>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

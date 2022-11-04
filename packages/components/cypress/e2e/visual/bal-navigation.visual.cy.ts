@@ -9,7 +9,18 @@ describe('bal-navigation', () => {
       })
 
       beforeEach(() => {
-        cy.platform(platform).getComponent('bal-navigation').wait(500)
+        cy.platform(platform)
+          .getComponent('bal-navigation')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
       })
 
       it('closed menu on top', () => {
@@ -43,7 +54,18 @@ describe('bal-navigation', () => {
       before(() => cy.page('/components/bal-navigation/test/bal-navigation.visual.html'))
 
       beforeEach(() => {
-        cy.platform(platform).getComponent('bal-navigation').wait(200)
+        cy.platform(platform)
+          .getComponent('bal-navigation')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
       })
 
       it('closed menu on top', () => {

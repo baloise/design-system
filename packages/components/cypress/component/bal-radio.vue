@@ -4,8 +4,8 @@ import { BalRadioGroup, BalRadio } from '../../.storybook/vue/components'
 
 <template>
   <BalRadioGroup>
-    <BalRadio name="radio-test" value="1">Radio 1</BalRadio>
-    <BalRadio name="radio-test" value="2">Radio 2</BalRadio>
-    <BalRadio name="radio-test" value="3">Radio 3</BalRadio>
+    <BalRadio name="radio-test" value="1" label="Radio 1"></BalRadio>
+    <BalRadio name="radio-test" value="2" label="Radio 2"></BalRadio>
+    <BalRadio name="radio-test" value="3" label="Radio 3"></BalRadio>
   </BalRadioGroup>
 </template>

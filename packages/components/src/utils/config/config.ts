@@ -1,7 +1,20 @@
 import { isWindowDefined } from '../browser'
+import { BalLogger, defaultLoggerConfig } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
-import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.types'
+import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
+import {
+  balIconClose,
+  balIconInfoCircle,
+  balIconPlus,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconCaretLeft,
+  balIconCaretDown,
+  balIconCheck,
+  balIconDate,
+  balIconDocument,
+} from '../constants/icons.constant'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
@@ -10,7 +23,20 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
+    icons: {
+      balIconClose,
+      balIconInfoCircle,
+      balIconPlus,
+      balIconNavGoLeft,
+      balIconNavGoRight,
+      balIconCaretLeft,
+      balIconCaretDown,
+      balIconCheck,
+      balIconDate,
+      balIconDocument,
+    },
     fallbackLanguage: 'de',
+    logger: defaultLoggerConfig,
   }
 
   get locale(): string {
@@ -53,6 +79,27 @@ export class Config {
       this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
+  }
+
+  get icons(): BalIcons {
+    return this._config.icons
+  }
+
+  set icons(icons: BalIcons) {
+    this._config.icons = {
+      ...this._config.icons,
+      ...icons,
+    }
+    this._notify()
+  }
+
+  get logger(): BalLogger {
+    return this._config.logger
+  }
+
+  set logger(logger: BalLogger) {
+    this._config.logger = { ...logger }
+    this._notify()
   }
 
   attach(observer: BalConfigObserver): void {
