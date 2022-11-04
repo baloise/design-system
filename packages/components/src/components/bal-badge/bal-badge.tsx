@@ -3,6 +3,9 @@ import { Props } from '../../types'
 
 @Component({
   tag: 'bal-badge',
+  styleUrls: {
+    css: 'bal-badge.sass',
+  },
 })
 export class Badge implements ComponentInterface {
   @Element() el!: HTMLElement

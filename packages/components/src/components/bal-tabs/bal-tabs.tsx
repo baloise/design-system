@@ -12,6 +12,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
+  styleUrls: {
+    css: 'bal-tabs.sass',
+  },
 })
 export class Tabs {
   @Element() el!: HTMLElement

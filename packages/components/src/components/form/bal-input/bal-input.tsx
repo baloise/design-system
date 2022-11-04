@@ -43,6 +43,9 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-input',
+  styleUrls: {
+    css: 'bal-input.sass',
+  },
 })
 export class Input implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-input-${InputIds++}`

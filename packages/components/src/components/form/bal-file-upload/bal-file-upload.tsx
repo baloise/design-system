@@ -14,6 +14,9 @@ import {
 
 @Component({
   tag: 'bal-file-upload',
+  styleUrls: {
+    css: 'bal-file-upload.sass',
+  },
 })
 export class FileUpload implements FormInput<File[]> {
   @Element() el!: HTMLElement

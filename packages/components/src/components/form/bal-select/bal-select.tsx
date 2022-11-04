@@ -51,6 +51,9 @@ export interface BalOptionController extends BalOptionValue {
 
 @Component({
   tag: 'bal-select',
+  styleUrls: {
+    css: 'bal-select.sass',
+  },
 })
 export class Select implements ComponentInterface, Loggable {
   private inputElement!: HTMLInputElement

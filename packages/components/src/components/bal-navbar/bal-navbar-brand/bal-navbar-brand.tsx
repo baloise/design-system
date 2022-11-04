@@ -5,8 +5,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
-  scoped: false,
-  shadow: false,
 })
 export class NavbarBrand {
   private bodyScrollBlocker = BodyScrollBlocker()

@@ -3,6 +3,9 @@ import { Props } from '../../types'
 
 @Component({
   tag: 'bal-heading',
+  styleUrls: {
+    css: 'bal-heading.sass',
+  },
 })
 export class Heading {
   /**

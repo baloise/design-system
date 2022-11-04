@@ -3,6 +3,9 @@ import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-snackbar',
+  styleUrls: {
+    css: 'bal-snackbar.sass',
+  },
 })
 export class Snackbar {
   @Element() element!: HTMLElement

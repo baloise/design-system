@@ -1,9 +1,9 @@
-// import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
 import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
 import { updateBalIcons } from '../../../utils/config'
 import { isWindowDefined } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
+import globalScript from '../../../global'
 
 @Component({
   tag: 'bal-doc-app',
@@ -17,6 +17,7 @@ export class DocApp implements ComponentInterface {
   @Prop() logCustom = false
 
   connectedCallback() {
+    globalScript()
     updateBalIcons(balIcons)
   }
 

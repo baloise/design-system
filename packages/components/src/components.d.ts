@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
+import { BalMode } from "./utils/config";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -57,6 +58,10 @@ export namespace Components {
         "value": boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode": BalMode;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     interface BalBadge {
@@ -531,6 +536,11 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        "logComponents": string;
+        "logCustom": boolean;
+        "logEvents": boolean;
+        "logLifecycle": boolean;
+        "logRender": boolean;
     }
     interface BalDocBanner {
         "status": string;
@@ -2540,10 +2550,6 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
-export interface BalDocAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDocAppElement;
-}
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFileUploadElement;
@@ -3594,6 +3600,10 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
     }
     interface BalBadge {
@@ -4099,7 +4109,11 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
-        "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
+        "logComponents"?: string;
+        "logCustom"?: boolean;
+        "logEvents"?: boolean;
+        "logLifecycle"?: boolean;
+        "logRender"?: boolean;
     }
     interface BalDocBanner {
         "status"?: string;

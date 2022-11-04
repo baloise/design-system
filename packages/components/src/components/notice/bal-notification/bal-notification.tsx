@@ -3,6 +3,9 @@ import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-notification',
+  styleUrls: {
+    css: 'bal-notification.sass',
+  },
 })
 export class Notification {
   /**

@@ -13,6 +13,9 @@ import {
 
 @Component({
   tag: 'bal-icon',
+  styleUrls: {
+    css: 'bal-icon.sass',
+  },
 })
 export class Icon implements BalConfigObserver {
   @State() icons: BalIcons = defaultConfig.icons

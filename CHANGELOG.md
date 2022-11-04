@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.11](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
 
-
 ### Bug Fixes
 
 * add missing configs to the BalConfig ([6cec2d6](https://github.com/baloise-incubator/design-system/commit/6cec2d62904ca1cbb84c9535a9aea80c16c307f8))

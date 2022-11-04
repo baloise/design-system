@@ -14,6 +14,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-footer',
+  styleUrls: {
+    css: 'bal-footer.sass',
+  },
 })
 export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []

@@ -1,3 +1,4 @@
+@import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 @import '../../../styles/mixins/_all'
 
 +block(toast)
@@ -15,7 +16,9 @@
   +element(label)
     margin-right: 3rem
     hyphens: auto
-  +element(close)
-    +alert-close
-    top: 50%
-    margin-top: -.9rem
+
+.bal-toast__close.bal-close
+  +alert-close
+  top: 50%
+  right: 1rem
+  margin-top: -0.75rem

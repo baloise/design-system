@@ -5,8 +5,9 @@ import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
-  scoped: false,
-  shadow: false,
+  styleUrls: {
+    css: 'bal-tag.sass',
+  },
 })
 export class Tag {
   @Element() el!: HTMLElement

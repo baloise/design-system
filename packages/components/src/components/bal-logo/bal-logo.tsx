@@ -22,6 +22,9 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
 
 @Component({
   tag: 'bal-logo',
+  styleUrls: {
+    css: 'bal-logo.sass',
+  },
 })
 export class Logo implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
@@ -91,7 +94,9 @@ export class Logo implements ComponentInterface, Loggable {
   }
 
   disconnectedCallback() {
-    this.destroyAnimation()
+    if (this.el && !this.el.isConnected) {
+      this.destroyAnimation()
+    }
   }
 
   /**
@@ -166,7 +171,7 @@ export class Logo implements ComponentInterface, Loggable {
   }
 
   private destroyAnimation() {
-    if (this.animationItem && this.animationItem.destroy) {
+    if (this.animated && this.animationItem && this.animationItem.destroy) {
       this.animationItem.destroy()
     }
   }

@@ -3,6 +3,9 @@ import { observeItems } from '../../../utils/observer'
 
 @Component({
   tag: 'bal-field',
+  styleUrls: {
+    css: 'bal-field.sass',
+  },
 })
 export class Field {
   @Element() el!: HTMLElement
