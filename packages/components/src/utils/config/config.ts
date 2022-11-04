@@ -1,4 +1,5 @@
 import { isWindowDefined } from '../browser'
+import { BalLogger, defaultLoggerConfig } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
@@ -11,6 +12,7 @@ export class Config {
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
     fallbackLanguage: 'de',
+    logger: defaultLoggerConfig,
   }
 
   get locale(): string {
@@ -53,6 +55,15 @@ export class Config {
       this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
+  }
+
+  get logger(): BalLogger {
+    return this._config.logger
+  }
+
+  set logger(logger: BalLogger) {
+    this._config.logger = { ...logger }
+    this._notify()
   }
 
   attach(observer: BalConfigObserver): void {
