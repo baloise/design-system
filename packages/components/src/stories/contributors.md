@@ -5,17 +5,17 @@
     </h2>
     <h4>hirsch88</h4>
   </a>
-  <a href="https://github.com/baopso" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/6236843?v=4" alt="baopso" style="width: 64px;">
-    </h2>
-    <h4>baopso</h4>
-  </a>
   <a href="https://github.com/mladenplaninicic" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/28272339?v=4" alt="mladenplaninicic" style="width: 64px;">
     </h2>
     <h4>mladenplaninicic</h4>
+  </a>
+  <a href="https://github.com/baopso" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/6236843?v=4" alt="baopso" style="width: 64px;">
+    </h2>
+    <h4>baopso</h4>
   </a>
   <a href="https://github.com/nobilo" class="feature">
     <h2>
@@ -53,7 +53,13 @@
     </h2>
     <h4>RCBiczok</h4>
   </a>
-  <a href="https://github.com/nobilo" class="feature">
+  <a href="https://github.com/dweber019" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/1021324?v=4" alt="dweber019" style="width: 64px;">
+    </h2>
+    <h4>dweber019</h4>
+  </a>
+  <a href="https://github.com/GinaBiondo-aperto" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/72393447?v=4" alt="GinaBiondo-aperto" style="width: 64px;">
     </h2>
@@ -64,12 +70,6 @@
       <img src="https://avatars.githubusercontent.com/u/4256585?v=4" alt="joachimprinzbach" style="width: 64px;">
     </h2>
     <h4>joachimprinzbach</h4>
-  </a>
-  <a href="https://github.com/dweber019" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/1021324?v=4" alt="dweber019" style="width: 64px;">
-    </h2>
-    <h4>dweber019</h4>
   </a>
   <a href="https://github.com/christiansiegel" class="feature">
     <h2>
