@@ -56,4 +56,10 @@ export namespace Events {
 
   export type BalTabsChangeDetail = string
   export type BalTabsChange = CustomEvent<BalTabsChangeDetail>
+
+  export type BalCarouselChangeDetail = number | undefined
+  export type BalCarouselChange = CustomEvent<BalCarouselChangeDetail>
+
+  export type BalPaginationChangeDetail = number
+  export type BalPaginationChange = CustomEvent<BalPaginationChangeDetail>
 }

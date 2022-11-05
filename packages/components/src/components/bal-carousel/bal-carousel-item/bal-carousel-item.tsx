@@ -1,22 +1,23 @@
-import { Component, ComponentInterface, h, Host, Prop, Event, EventEmitter } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, EventEmitter } from '@stencil/core'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
+import { BalCarouselItemData } from '../bal-carousel.type'
 
 @Component({
-  tag: 'bal-product-slider-item',
+  tag: 'bal-carousel-item',
 })
-export class ProductSliderItem implements ComponentInterface {
-  private inputId = `bal-product-slider-item-${productSliderItemId++}`
+export class CarouselItem implements ComponentInterface {
+  @Element() el!: HTMLElement
 
   /**
    * Src path to the image
    */
-  @Prop() src?: string
+  @Prop({ reflect: true }) src?: string
 
   /**
-   * Label or title of the product
+   * Label of the slide which will be used for pagination tabs
    */
-  @Prop({ reflect: true }) label?: string
+  @Prop({ reflect: true }) label = ''
 
   /**
    * The type of button.
@@ -61,7 +62,7 @@ export class ProductSliderItem implements ComponentInterface {
   /**
    * Color of the background
    */
-  @Prop() color?: Props.BalProductSliderItemColor
+  @Prop() color?: Props.BalCarouselItemColor
 
   /**
    * Emitted when the link element has clicked.
@@ -78,6 +79,13 @@ export class ProductSliderItem implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<void>
 
+  @Method() async getData(): Promise<BalCarouselItemData> {
+    return {
+      clientWidth: this.el.clientWidth,
+      label: this.label,
+    }
+  }
+
   private onClick = (event: MouseEvent) => {
     if (this.href !== undefined) {
       this.balNavigate.emit(event)
@@ -93,6 +101,24 @@ export class ProductSliderItem implements ComponentInterface {
   }
 
   render() {
+    const block = BEM.block('carousel')
+    const itemEl = block.element('item')
+
+    const isProduct = !!this.color && !!this.label
+
+    if (!isProduct) {
+      return (
+        <Host class={{ ...itemEl.class() }}>
+          {this.src !== undefined ? <img draggable={false} onDragStart={() => false} src={this.src} /> : ''}
+          <slot></slot>
+        </Host>
+      )
+    }
+
+    const button = itemEl.element('button')
+    const image = button.element('image')
+    const label = button.element('label')
+
     const { elementType, download, href, rel, target, name, value } = this
 
     const TagType = this.href === undefined ? 'button' : 'a'
@@ -106,13 +132,8 @@ export class ProductSliderItem implements ComponentInterface {
             target,
           }
 
-    const block = BEM.block('product-slider-item')
-    const button = block.element('button')
-    const image = button.element('image')
-    const label = button.element('label')
-
     return (
-      <Host aria-id={this.inputId} class={{ ...block.class() }}>
+      <Host class={{ ...itemEl.class() }}>
         <TagType
           {...attrs}
           class={{ ...button.class(), ...button.modifier(`color-${this.color}`).class() }}
@@ -133,5 +154,3 @@ export class ProductSliderItem implements ComponentInterface {
     )
   }
 }
-
-let productSliderItemId = 0

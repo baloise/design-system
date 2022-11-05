@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
+import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -289,6 +290,88 @@ export namespace Components {
           * If `true` the card text color becomes white.
          */
         "inverted": boolean;
+    }
+    interface BalCarousel {
+        /**
+          * Defines the image aspect ratio. Should be combined with the interface `product`
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If `true` the controls will be sticky to the top.
+         */
+        "controlsSticky": boolean;
+        /**
+          * Defines special looks.
+         */
+        "interface": 'card' | 'image' | 'product' | '';
+        /**
+          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+         */
+        "itemsPerView": 'auto' | number;
+        "next": (steps?: number) => Promise<void>;
+        /**
+          * PUBLIC METHODS ------------------------------------------------------
+         */
+        "previous": (steps?: number) => Promise<void>;
+        /**
+          * If `true` vertical scrolling on mobile is enabled.
+         */
+        "scrollY": boolean;
+        /**
+          * When how many slides are moved when going forward or backward.
+         */
+        "steps": number;
+        /**
+          * Defines the active slide index.
+         */
+        "value": number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalCarouselItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        "getData": () => Promise<BalCarouselItemData>;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCheckbox {
         /**
@@ -922,18 +1005,6 @@ export namespace Components {
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
-    }
-    interface BalImageSlider {
-        /**
-          * value to set the images aspect ratio
-         */
-        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
-    }
-    interface BalImageSliderItem {
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
     }
     interface BalInput {
         /**
@@ -1792,50 +1863,6 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
-    interface BalProductSlider {
-    }
-    interface BalProductSliderItem {
-        /**
-          * Color of the background
-         */
-        "color"?: Props.BalProductSliderItemColor;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType": Props.BalButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Label or title of the product
-         */
-        "label"?: string;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": Props.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
-    }
     interface BalRadio {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -2079,14 +2106,6 @@ export namespace Components {
           * Defines content width of the stage
          */
         "containerSize": Props.BalSheetContainer;
-    }
-    interface BalSlider {
-    }
-    interface BalSliderItem {
-        /**
-          * Label of the slide which will be used for pagination tabs
-         */
-        "label": string;
     }
     interface BalSnackbar {
         /**
@@ -2534,6 +2553,14 @@ export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
 }
+export interface BalCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselElement;
+}
+export interface BalCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselItemElement;
+}
 export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalCheckboxElement;
@@ -2609,10 +2636,6 @@ export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
-}
-export interface BalProductSliderItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalProductSliderItemElement;
 }
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2716,6 +2739,18 @@ declare global {
     var HTMLBalCardTitleElement: {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
+    };
+    interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
+    }
+    var HTMLBalCarouselElement: {
+        prototype: HTMLBalCarouselElement;
+        new (): HTMLBalCarouselElement;
+    };
+    interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBalCarouselItemElement: {
+        prototype: HTMLBalCarouselItemElement;
+        new (): HTMLBalCarouselItemElement;
     };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
@@ -3005,18 +3040,6 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
-    interface HTMLBalImageSliderElement extends Components.BalImageSlider, HTMLStencilElement {
-    }
-    var HTMLBalImageSliderElement: {
-        prototype: HTMLBalImageSliderElement;
-        new (): HTMLBalImageSliderElement;
-    };
-    interface HTMLBalImageSliderItemElement extends Components.BalImageSliderItem, HTMLStencilElement {
-    }
-    var HTMLBalImageSliderItemElement: {
-        prototype: HTMLBalImageSliderItemElement;
-        new (): HTMLBalImageSliderItemElement;
-    };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
     var HTMLBalInputElement: {
@@ -3275,18 +3298,6 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
-    interface HTMLBalProductSliderElement extends Components.BalProductSlider, HTMLStencilElement {
-    }
-    var HTMLBalProductSliderElement: {
-        prototype: HTMLBalProductSliderElement;
-        new (): HTMLBalProductSliderElement;
-    };
-    interface HTMLBalProductSliderItemElement extends Components.BalProductSliderItem, HTMLStencilElement {
-    }
-    var HTMLBalProductSliderItemElement: {
-        prototype: HTMLBalProductSliderItemElement;
-        new (): HTMLBalProductSliderItemElement;
-    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -3322,18 +3333,6 @@ declare global {
     var HTMLBalSheetElement: {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
-    };
-    interface HTMLBalSliderElement extends Components.BalSlider, HTMLStencilElement {
-    }
-    var HTMLBalSliderElement: {
-        prototype: HTMLBalSliderElement;
-        new (): HTMLBalSliderElement;
-    };
-    interface HTMLBalSliderItemElement extends Components.BalSliderItem, HTMLStencilElement {
-    }
-    var HTMLBalSliderItemElement: {
-        prototype: HTMLBalSliderItemElement;
-        new (): HTMLBalSliderItemElement;
     };
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
     }
@@ -3443,6 +3442,8 @@ declare global {
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
+        "bal-carousel": HTMLBalCarouselElement;
+        "bal-carousel-item": HTMLBalCarouselItemElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
@@ -3491,8 +3492,6 @@ declare global {
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
-        "bal-image-slider": HTMLBalImageSliderElement;
-        "bal-image-slider-item": HTMLBalImageSliderItemElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-slider": HTMLBalInputSliderElement;
@@ -3536,16 +3535,12 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
-        "bal-product-slider": HTMLBalProductSliderElement;
-        "bal-product-slider-item": HTMLBalProductSliderItemElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
-        "bal-slider": HTMLBalSliderElement;
-        "bal-slider-item": HTMLBalSliderItemElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stage": HTMLBalStageElement;
@@ -3847,6 +3842,98 @@ declare namespace LocalJSX {
           * If `true` the card text color becomes white.
          */
         "inverted"?: boolean;
+    }
+    interface BalCarousel {
+        /**
+          * Defines the image aspect ratio. Should be combined with the interface `product`
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If `true` the controls will be sticky to the top.
+         */
+        "controlsSticky"?: boolean;
+        /**
+          * Defines special looks.
+         */
+        "interface"?: 'card' | 'image' | 'product' | '';
+        /**
+          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+         */
+        "itemsPerView"?: 'auto' | number;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalCarouselCustomEvent<Events.BalCarouselChangeDetail>) => void;
+        /**
+          * If `true` vertical scrolling on mobile is enabled.
+         */
+        "scrollY"?: boolean;
+        /**
+          * When how many slides are moved when going forward or backward.
+         */
+        "steps"?: number;
+        /**
+          * Defines the active slide index.
+         */
+        "value"?: number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalCarouselItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCheckbox {
         /**
@@ -4491,18 +4578,6 @@ declare namespace LocalJSX {
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
-    }
-    interface BalImageSlider {
-        /**
-          * value to set the images aspect ratio
-         */
-        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
-    }
-    interface BalImageSliderItem {
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
     }
     interface BalInput {
         /**
@@ -5294,7 +5369,7 @@ declare namespace LocalJSX {
         /**
           * Triggers when a page change happens
          */
-        "onBalChange"?: (event: BalPaginationCustomEvent<number>) => void;
+        "onBalChange"?: (event: BalPaginationCustomEvent<Events.BalPaginationChangeDetail>) => void;
         /**
           * Specify the max visible pages before and after the selected page
          */
@@ -5408,62 +5483,6 @@ declare namespace LocalJSX {
           * If `true` the popover has no padding space.
          */
         "spaceless"?: boolean;
-    }
-    interface BalProductSlider {
-    }
-    interface BalProductSliderItem {
-        /**
-          * Color of the background
-         */
-        "color"?: Props.BalProductSliderItemColor;
-        /**
-          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
-         */
-        "download"?: string;
-        /**
-          * The type of button.
-         */
-        "elementType"?: Props.BalButtonElementType;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string;
-        /**
-          * Label or title of the product
-         */
-        "label"?: string;
-        /**
-          * The name of the button, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Emitted when the button loses focus.
-         */
-        "onBalBlur"?: (event: BalProductSliderItemCustomEvent<void>) => void;
-        /**
-          * Emitted when the button has focus.
-         */
-        "onBalFocus"?: (event: BalProductSliderItemCustomEvent<void>) => void;
-        /**
-          * Emitted when the link element has clicked.
-         */
-        "onBalNavigate"?: (event: BalProductSliderItemCustomEvent<MouseEvent>) => void;
-        /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
-         */
-        "rel"?: string;
-        /**
-          * Src path to the image
-         */
-        "src"?: string;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: Props.BalButtonTarget;
-        /**
-          * The value of the button, which is submitted with the form data.
-         */
-        "value"?: string | number;
     }
     interface BalRadio {
         /**
@@ -5733,14 +5752,6 @@ declare namespace LocalJSX {
           * Defines content width of the stage
          */
         "containerSize"?: Props.BalSheetContainer;
-    }
-    interface BalSlider {
-    }
-    interface BalSliderItem {
-        /**
-          * Label of the slide which will be used for pagination tabs
-         */
-        "label"?: string;
     }
     interface BalSnackbar {
         /**
@@ -6190,6 +6201,8 @@ declare namespace LocalJSX {
         "bal-card-content": BalCardContent;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
+        "bal-carousel": BalCarousel;
+        "bal-carousel-item": BalCarouselItem;
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
@@ -6238,8 +6251,6 @@ declare namespace LocalJSX {
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
-        "bal-image-slider": BalImageSlider;
-        "bal-image-slider-item": BalImageSliderItem;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
         "bal-input-slider": BalInputSlider;
@@ -6283,16 +6294,12 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
-        "bal-product-slider": BalProductSlider;
-        "bal-product-slider-item": BalProductSliderItem;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
         "bal-shape": BalShape;
         "bal-sheet": BalSheet;
-        "bal-slider": BalSlider;
-        "bal-slider-item": BalSliderItem;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stage": BalStage;
@@ -6326,6 +6333,8 @@ declare module "@stencil/core" {
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
+            "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
@@ -6374,8 +6383,6 @@ declare module "@stencil/core" {
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
-            "bal-image-slider": LocalJSX.BalImageSlider & JSXBase.HTMLAttributes<HTMLBalImageSliderElement>;
-            "bal-image-slider-item": LocalJSX.BalImageSliderItem & JSXBase.HTMLAttributes<HTMLBalImageSliderItemElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
@@ -6419,16 +6426,12 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
-            "bal-product-slider": LocalJSX.BalProductSlider & JSXBase.HTMLAttributes<HTMLBalProductSliderElement>;
-            "bal-product-slider-item": LocalJSX.BalProductSliderItem & JSXBase.HTMLAttributes<HTMLBalProductSliderItemElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
-            "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
-            "bal-slider-item": LocalJSX.BalSliderItem & JSXBase.HTMLAttributes<HTMLBalSliderItemElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;

@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter, Element } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { Props } from '../../types'
+import { Events, Props } from '../../types'
 
 @Component({
   tag: 'bal-pagination',
@@ -67,8 +67,7 @@ export class Pagination {
   /**
    * Triggers when a page change happens
    */
-  @Event({ eventName: 'balChange' })
-  balChangeEventEmitter!: EventEmitter<number>
+  @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<Events.BalPaginationChangeDetail>
 
   componentWillLoad() {
     this._value = this.value

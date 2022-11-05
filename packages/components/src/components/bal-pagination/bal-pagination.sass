@@ -53,6 +53,7 @@
         gap: 8px
         max-width: 88px
         min-width: 63px
+        min-height: 1.25rem
         margin: 0 20px 0
         background: var(--bal-color-grey)
         border-radius: 4px
@@ -70,7 +71,7 @@
         width: 8px
         gap: 30px
         border-radius: 50%
-        display: inline-block
+        display: block
         +modifier(active)
           background-color: var(--bal-color-primary)
         +modifier(inactive)
@@ -82,4 +83,3 @@
       &.is-disabled
         li
           pointer-events: none
-
