@@ -7,9 +7,6 @@ export default {
     docs: {
       page: docs,
     },
-    status: {
-      type: 'stable',
-    },
   },
 }
 

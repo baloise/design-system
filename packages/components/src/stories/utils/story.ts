@@ -1,8 +1,6 @@
 import { stencilArgType } from './args'
 import { SourceCodeOptions, withSourceCode } from './parameter'
 
-export type ComponentStatus = 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
-
 export interface BalComponentStoryOptions {
   component: any
   title?: string
@@ -11,7 +9,6 @@ export interface BalComponentStoryOptions {
   argTypes?: any
   docs?: string
   layout?: 'fullscreen'
-  status?: ComponentStatus
 }
 
 export interface BalComponentStoryType {
@@ -26,9 +23,6 @@ export interface BalComponentStoryType {
         page: string
       }
       layout: undefined | 'fullscreen'
-      status: {
-        type?: ComponentStatus
-      }
     }
   }
   components: any
@@ -63,9 +57,6 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
           page: story.docs,
         },
         layout: story.layout,
-        status: {
-          type: story.status,
-        },
       },
     },
     components,
