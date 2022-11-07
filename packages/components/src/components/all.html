@@ -25,22 +25,22 @@
   <bal-app class="bal-body">
     <header>
       <bal-navbar interface="app">
-        <bal-navbar-brand href="/" target="_blank">App Header</bal-navbar-brand>
+        <bal-navbar-brand href="/" target="_blank">All Components</bal-navbar-brand>
         <bal-navbar-menu>
-            <bal-navbar-menu-start>
-                <bal-tabs interface="navbar" inverted>
-                    <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
-                    <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
-                    <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
-                </bal-tabs>
-            </bal-navbar-menu-start>
-            <bal-navbar-menu-end>
-                <bal-button-group>
-                    <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call">00800 24 800 800</bal-button>
-                </bal-button-group>
-            </bal-navbar-menu-end>
+          <bal-navbar-menu-start>
+            <bal-tabs interface="navbar" inverted>
+              <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+              <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+              <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+            </bal-tabs>
+          </bal-navbar-menu-start>
+          <bal-navbar-menu-end>
+            <bal-button-group>
+              <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call">00800 24 800 800</bal-button>
+            </bal-button-group>
+          </bal-navbar-menu-end>
         </bal-navbar-menu>
-    </bal-navbar>
+      </bal-navbar>
     </header>
     <header style="display: none;">
       <bal-navigation meta-value="meta-1">
@@ -224,14 +224,14 @@
     </header>
     <bal-stage shape>
       <bal-stage-body>
-        <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
-        <bal-heading class="mb-2" space="none">All Components</bal-heading>
+        <bal-stage-back-link href="#">Back</bal-stage-back-link>
+        <bal-heading space="none">All Components</bal-heading>
       </bal-stage-body>
     </bal-stage>
-    <main class="container py-5">
+    <main class="container">
       <section>
         <bal-accordion open-label="Show more" close-label="Show less">
-          <p class="p-4">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
           </p>
@@ -258,90 +258,80 @@
           </bal-card-actions>
         </bal-card>
       </section>
-      <section class="my-4">
+      <section>
         <bal-heading>Text</bal-heading>
         <bal-carousel items-per-view="auto" steps="3" controls="small">
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">First Liverpool</div>
+            <div>First Liverpool</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Valencia</div>
+            <div>Valencia</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Madrid</div>
+            <div>Madrid</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Barcelona</div>
+            <div>Barcelona</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">München</div>
+            <div>München</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Manchester</div>
+            <div>Manchester</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">London</div>
+            <div>London</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Basel</div>
+            <div>Basel</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Brüssel</div>
+            <div>Brüssel</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Paris</div>
+            <div>Paris</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Berlin</div>
+            <div>Berlin</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Hamburg</div>
+            <div>Hamburg</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Stuttgart</div>
+            <div>Stuttgart</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Bern</div>
+            <div>Bern</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Zürich</div>
+            <div>Zürich</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Dornach</div>
+            <div>Dornach</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Reinach</div>
+            <div>Reinach</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-2">Olten</div>
+            <div>Olten</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="px-2 has-background-green-1">Solothurn Last</div>
+            <div>Solothurn Last</div>
           </bal-carousel-item>
         </bal-carousel>
       </section>
-      <section class="my-4">
+      <section>
         <bal-heading>Product</bal-heading>
         <bal-carousel interface="product" steps="2" items-per-view="auto" controls="large">
           <bal-carousel-item color="green" label="0 Auto" src="/assets/images/brand/car.svg"></bal-carousel-item>
-          <bal-carousel-item
-            color="yellow"
-            label="1 Haushalt"
-            src="/assets/images/brand/lamp.svg"
-          ></bal-carousel-item>
-          <bal-carousel-item
-            color="purple"
-            label="2 Hypothek"
-            src="/assets/images/brand/home.svg"
-          ></bal-carousel-item>
+          <bal-carousel-item color="yellow" label="1 Haushalt" src="/assets/images/brand/lamp.svg"></bal-carousel-item>
+          <bal-carousel-item color="purple" label="2 Hypothek" src="/assets/images/brand/home.svg"></bal-carousel-item>
           <bal-carousel-item color="red" label="3 Pensionsplanung" src="/assets/images/brand/bars.svg">
           </bal-carousel-item>
           <bal-carousel-item color="green" label="4 Anlegen" src="/assets/images/brand/plant.svg"></bal-carousel-item>
-          <bal-carousel-item
-            color="yellow"
+          <bal-carousel-item color="yellow"
             label="5 Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung"
-            src="/assets/images/brand/pie.svg"
-          ></bal-carousel-item>
+            src="/assets/images/brand/pie.svg"></bal-carousel-item>
           <bal-carousel-item color="purple" label="6 E-Banking" src="/assets/images/brand/notebook.svg">
           </bal-carousel-item>
           <bal-carousel-item color="red" label="7 Sparen" src="/assets/images/brand/pig.svg"></bal-carousel-item>
@@ -352,7 +342,7 @@
           </bal-carousel-item>
         </bal-carousel>
       </section>
-      <section class="my-4">
+      <section>
         <bal-heading>Table</bal-heading>
         <bal-carousel interface="card" controls="tabs" controls-sticky>
           <bal-carousel-item label="ECO">
@@ -379,39 +369,36 @@
         <bal-heading>Basic</bal-heading>
         <bal-carousel>
           <bal-carousel-item>
-            <div class="has-background-green-1 p-4" style="width: 100%">AAA</div>
+            <div style="width: 100%">AAA</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="has-background-green-2 p-4" style="width: 100%">BBB</div>
+            <div style="width: 100%">BBB</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="has-background-green-3 p-4" style="width: 100%">CCC</div>
+            <div style="width: 100%">CCC</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="has-background-green-4 p-4" style="width: 100%">DDD</div>
+            <div style="width: 100%">DDD</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="has-background-green-5 p-4 has-text-white" style="width: 100%">EEE</div>
+            <div style="width: 100%">EEE</div>
           </bal-carousel-item>
           <bal-carousel-item>
-            <div class="has-background-green-6 p-4 has-text-white" style="width: 100%">FFF</div>
+            <div style="width: 100%">FFF</div>
           </bal-carousel-item>
         </bal-carousel>
       </section>
-      <section class="my-4">
+      <section>
         <bal-heading>Image</bal-heading>
         <bal-carousel interface="image" controls="dots">
           <bal-carousel-item
-            src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"
-          >
+            src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI">
           </bal-carousel-item>
           <bal-carousel-item
-            src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"
-          >
+            src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I">
           </bal-carousel-item>
           <bal-carousel-item
-            src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"
-          >
+            src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw">
           </bal-carousel-item>
         </bal-carousel>
       </section>
@@ -488,19 +475,12 @@
       </section>
       <section>
         <bal-popover id="bal-popover-1" is-active="false" data-testid="popover">
-          <bal-button
-            bal-popover-trigger
-            id="bal-popover-1-trigger"
-            aria-haspopup="true"
-            aria-controls="popover-menu"
-            color="is-info"
-            outlined
-          >
+          <bal-button bal-popover-trigger id="bal-popover-1-trigger" aria-haspopup="true" aria-controls="popover-menu"
+            color="is-info" outlined>
             <span id="bal-popover-1-trigger-label">Trigger</span>
           </bal-button>
           <bal-popover-content scrollable="100">
             <div style="padding: 0 15px 15px">
-              <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
@@ -524,7 +504,7 @@
         <bal-spinner></bal-spinner>
       </section>
       <section>
-        <table class="table is-fullwidth is-striped is-hoverable p-0">
+        <table class="table is-fullwidth is-striped is-hoverable">
           <thead>
             <th>Selected</th>
             <th>Name</th>
@@ -652,39 +632,42 @@
         </bal-form>
       </section>
       <section>
-        <bal-input-group class="mb-4">
+        <bal-input-group >
           <bal-input placeholder="Enter text here"></bal-input>
-          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          <bal-icon name="date" class="is-clickable"></bal-icon>
         </bal-input-group>
-
-        <bal-input-group class="mb-4">
-          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-          <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+<br />
+<br />
+        <bal-input-group >
+          <bal-icon name="date" class="is-clickable"></bal-icon>
+          <bal-input placeholder="Enter text here"></bal-input>
         </bal-input-group>
-
-        <bal-input-group class="mb-4">
+        <br />
+        <br />
+        <bal-input-group >
           <bal-icon name="call"></bal-icon>
-          <bal-select :disabled="args.disabled" :invalid="args.invalid" style="max-width: 106px" value="DE">
+          <bal-select style="max-width: 106px" value="DE">
             <bal-select-option label="DE" value="DE">DE</bal-select-option>
             <bal-select-option label="FR" value="FR">FR</bal-select-option>
             <bal-select-option label="IT" value="IT">IT</bal-select-option>
           </bal-select>
-          <bal-input placeholder="79 123 45 67" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+          <bal-input placeholder="79 123 45 67"></bal-input>
         </bal-input-group>
-
-        <bal-input-group class="mb-4">
-          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-          <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
-          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+        <br />
+        <br />
+        <bal-input-group >
+          <bal-icon name="date" class="is-clickable"></bal-icon>
+          <bal-input placeholder="Enter text here"></bal-input>
+          <bal-icon name="date" class="is-clickable"></bal-icon>
         </bal-input-group>
-
-        <bal-input-group v-bind="args" class="mb-4">
-          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-          <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled"
-            :invalid="args.invalid"></bal-input>
-          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+        <br />
+        <br />
+        <bal-input-group  >
+          <bal-tag closable size="small">Tag</bal-tag>
+          <bal-tag closable size="small">Tag</bal-tag>
+          <bal-tag closable size="small">Tag</bal-tag>
+          <bal-input placeholder="Enter text here"></bal-input>
+          <bal-icon name="date" class="is-clickable"></bal-icon>
         </bal-input-group>
       </section>
       <section>
@@ -702,19 +685,19 @@
       <section>
         <bal-radio-group value="1">
           <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-          <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
+          <bal-radio name="radio-example" value="2">Label 2</bal-radio>
           <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
-          <bal-radio name="radio-example" value="4" :invalid="args.invalid">Random text with a <a class="is-link"
-              target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+          <bal-radio name="radio-example" value="4">Random text with a <a class="is-link" target="_blank"
+              href="http://baloise.ch">Link</a> in it</bal-radio>
         </bal-radio-group>
       </section>
       <section>
         <bal-radio-group value="1" interface="select-button">
           <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-          <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
+          <bal-radio name="radio-example" value="2">Label 2</bal-radio>
           <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
-          <bal-radio name="radio-example" value="4" :invalid="args.invalid">Random text with a <a class="is-link"
-              target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+          <bal-radio name="radio-example" value="4">Random text with a <a class="is-link" target="_blank"
+              href="http://baloise.ch">Link</a> in it</bal-radio>
         </bal-radio-group>
       </section>
       <section>
