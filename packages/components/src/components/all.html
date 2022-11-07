@@ -1,41 +1,382 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
 
-  <style>
-    .bal-body {
-      visibility: hidden;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-  </style>
+    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
 
-  <link rel="stylesheet" href="/build/design-system-components.css" />
-  <script type="module" src="/build/design-system-components.esm.js"></script>
-  <script nomodule src="/build/design-system-components.js"></script>
-</head>
+  <body>
+    <bal-app class="bal-body">
+      <main class="container py-5">
+        <section>
+          <bal-accordion open-label="Show more" close-label="Show less">
+            <p class="p-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+          </bal-accordion>
+        </section>
+        <section>
+          <bal-badge color="danger">42</bal-badge>
+        </section>
+        <section>
+          <bal-button>Button</bal-button>
+        </section>
+        <section>
+          <bal-card>
+            <bal-card-subtitle bold color="blue">Your Product</bal-card-subtitle>
+            <bal-card-title>BaloiseCombi</bal-card-title>
+            <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+            <bal-card-content>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </bal-card-content>
+            <bal-card-actions position="right">
+              <bal-button color="info" outlined>Secondary Action</bal-button>
+              <bal-button>Main Action</bal-button>
+            </bal-card-actions>
+          </bal-card>
+        </section>
+        <section>
+          <bal-carousel items-per-view="auto" steps="3" controls="small">
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-1">First Liverpool</div>
+            </bal-carousel-item>
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-2">Valencia</div>
+            </bal-carousel-item>
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-1">Madrid</div>
+            </bal-carousel-item>
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-2">Barcelona</div>
+            </bal-carousel-item>
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-1">München</div>
+            </bal-carousel-item>
+            <bal-carousel-item>
+              <div class="px-2 has-background-green-2">Manchester</div>
+            </bal-carousel-item>
+          </bal-carousel>
+        </section>
+        <section>
+          <bal-close></bal-close>
+        </section>
+        <section>
+          <bal-data>
+            <bal-data-item>
+              <bal-data-label>Label</bal-data-label>
+              <bal-data-value>Value</bal-data-value>
+            </bal-data-item>
+          </bal-data>
+        </section>
+        <section>
+          <bal-heading level="h1">Heading</bal-heading>
+        </section>
+        <section>
+          <bal-hint>
+            <bal-hint-title>Spider-Man</bal-hint-title>
+            <bal-hint-text>
+              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He
+              first appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic
+              Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,
+              television shows, and video game adaptations set in the Marvel Universe.
+            </bal-hint-text>
+          </bal-hint>
+        </section>
+        <section>
+          <bal-icon color="primary" name="info-circle"></bal-icon>
+        </section>
+        <section>
+          <bal-list border>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Title</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
+                  neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates? Minus
+                  quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
+                  laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere, eaque magni
+                  vero incidunt iusto voluptates? Minus quis temporibus consequatur?
+                </bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Clickable item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item disabled>
+              <bal-list-item-content>
+                <bal-list-item-title>Disabled item</bal-list-item-title>
+                <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </section>
+        <section>
+          <bal-logo></bal-logo>
+        </section>
+        <section>
+          <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
+        </section>
+        <section>
+          <bal-popover>
+            <bal-button bal-popover-trigger color="info"> Trigger </bal-button>
+            <bal-popover-content>
+              <div class="p-3">
+                <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus
+                  doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis
+                  mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
+                  dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor
+                  aperiam perferendis mollitia facilis harum vero.
+                </p>
+              </div>
+            </bal-popover-content>
+          </bal-popover>
+        </section>
+        <section>
+          <bal-shape></bal-shape>
+        </section>
+        <section>
+          <bal-spinner></bal-spinner>
+        </section>
+        <section>
+          <bal-stage shape>
+            <bal-stage-body>
+              <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
+              <bal-heading class="mb-2" space="none">Basic</bal-heading>
+            </bal-stage-body>
+          </bal-stage>
+        </section>
+        <section>
+          <table class="table is-fullwidth is-striped is-hoverable p-0">
+            <thead>
+              <th>Selected</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <bal-checkbox></bal-checkbox>
+                </td>
+                <td>Tony Stark</td>
+                <td>
+                  <bal-tag color="green">Ready</bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox2"></bal-checkbox>
+                </td>
+                <td>Steve Rogers</td>
+                <td>
+                  <bal-tag size="" color="red">Injured</bal-tag>
+                </td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <bal-tabs border fullwidth interface="tabs" value="tab-b">
+            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+            <bal-tab-item
+              value="tab-link"
+              label="Tab link"
+              href="https://github.com/baloise-incubator/design-system"
+              target="_blank"
+              >Content of Tab link</bal-tab-item
+            >
+          </bal-tabs>
+        </section>
+        <section>
+          <bal-tag color="primary">Tag</bal-tag>
+        </section>
+        <section>
+          <bal-text
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</bal-text
+          >
+        </section>
+        <section>
+          <bal-checkbox>Label</bal-checkbox>
+        </section>
+        <section>
+          <bal-datepicker placeholder="Pick a date"></bal-datepicker>
+        </section>
+        <section>
+          <bal-field>
+            <bal-field-label required>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section>
+          <bal-field>
+            <bal-field-label required>Upload Label</bal-field-label>
+            <bal-field-control>
+              <bal-file-upload></bal-file-upload>
+            </bal-field-control>
+            <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
+          </bal-field>
+        </section>
+        <section>
+          <bal-form-grid>
+            <bal-form-col>
+              <bal-input placeholder="fullwidth" />
+            </bal-form-col>
+            <bal-form-col size="half">
+              <bal-input placeholder="half" />
+            </bal-form-col>
+          </bal-form-grid>
+        </section>
+        <section>
+          <bal-form ref="form">
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field invalid>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-button-group>
+                  <bal-button @click="submit()">Submit (scroll to the first invalid field)</bal-button>
+                </bal-button-group>
+              </bal-form-col>
+            </bal-form-grid>
+          </bal-form>
+        </section>
+        <section>
+          <bal-input-group class="mb-4">
+            <bal-input placeholder="Enter text here"></bal-input>
+            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          </bal-input-group>
 
-<body>
-  <bal-app class="bal-body">
-    <main class="container py-5">
-      <section>
-        <bal-accordion open-label="Show more" close-label="Show less">
-          <p class="p-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
-        </bal-accordion>
-      </section>
-      <section>
-        <bal-badge color="danger">42</bal-badge>
-      </section>
-    </main>
-  </bal-app>
-</body>
+          <bal-input-group class="mb-4">
+            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+            <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+          </bal-input-group>
 
+          <bal-input-group class="mb-4">
+            <bal-icon name="call"></bal-icon>
+            <bal-select :disabled="args.disabled" :invalid="args.invalid" style="max-width: 106px" value="DE">
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-input placeholder="79 123 45 67" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+          </bal-input-group>
+
+          <bal-input-group class="mb-4">
+            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+            <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          </bal-input-group>
+
+          <bal-input-group v-bind="args" class="mb-4">
+            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+            <bal-input
+              placeholder="Enter text here"
+              v-model="args.value"
+              :disabled="args.disabled"
+              :invalid="args.invalid"
+            ></bal-input>
+            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          </bal-input-group>
+        </section>
+        <section>
+          <bal-input-slider has-ticks max="100" min="0" step="20" value="20"></bal-input-slider>
+        </section>
+        <section>
+          <bal-input-stepper></bal-input-stepper>
+        </section>
+        <section>
+          <bal-input placeholder="Enter a text" type="text"></bal-input>
+        </section>
+        <section>
+          <bal-number-input placeholder="Enter a number"></bal-number-input>
+        </section>
+        <section>
+          <bal-radio-group value="1">
+            <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+            <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
+            <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
+            <bal-radio name="radio-example" value="4" :invalid="args.invalid"
+              >Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio
+            >
+          </bal-radio-group>
+        </section>
+        <section>
+          <bal-select value="v2000">
+            <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+            <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+            <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+            <bal-select-option value="v1999" label="1999 Option with long text Option with long text"
+              >1999 Option with long text Option with long text</bal-select-option
+            >
+            <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+          </bal-select>
+        </section>
+        <section>
+          <bal-textarea placeholder="Enter a comment"></bal-textarea>
+        </section>
+      </main>
+    </bal-app>
+  </body>
 </html>
