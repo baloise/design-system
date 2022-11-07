@@ -164,7 +164,7 @@
   &--disabled,
   &--disabled:hover,
   &--disabled:active
-    +radioCheckboxSymbol(--bal-color-border-disabled, --bal-color-border-disabled, --bal-color-primary-inverted, --bal-color-disabled)
+    +radioCheckboxSymbol(--bal-color-border-disabled, --bal-color-border-disabled, --bal-color-primary-inverted, --bal-color-grey-2)
   //
   // label colors
   +radioCheckboxLabel(--bal-color-primary)
@@ -216,13 +216,13 @@
       +radioCheckboxLabel(--bal-color-blue-6-inverted)
   &--select-button#{&}--invalid
     border-color: var(--bal-color-border-invalid)
-    background: var(--bal-color-invalid)
+    background: var(--bal-color-danger-1)
     &:hover
       border-color: var(--bal-color-danger-5)
-      background: var(--bal-color-invalid)
+      background: var(--bal-color-danger-1)
     &:active
       border-color: var(--bal-color-danger-6)
-      background: var(--bal-color-invalid)
+      background: var(--bal-color-danger-1)
   &--select-button#{&}--invalid#{&}--checked
     border-color: var(--bal-color-border-invalid)
     background: var(--bal-color-border-invalid)
@@ -241,7 +241,7 @@
   &--select-button#{&}--disabled:hover,
   &--select-button#{&}--disabled:active
     border-color: var(--bal-color-border-disabled)
-    background: var(--bal-color-disabled)
+    background: var(--bal-color-grey-2)
   &--select-button#{&}--disabled#{&}--checked,
   &--select-button#{&}--disabled#{&}--checked:hover,
   &--select-button#{&}--disabled#{&}--checked:active
@@ -279,7 +279,7 @@
       transition: left 0.25s ease-out, background 0.25s ease-out
       content: ''
     .bal-radio-checkbox__label::before
-      background: var(--bal-color-blue-light)
+      background: var(--bal-color-blue-1)
     .bal-radio-checkbox__label::after
       background: var(--bal-color-primary)
     &:hover
@@ -302,7 +302,7 @@
         background: var(--bal-color-success-6)
   &--switch#{&}--invalid
     .bal-radio-checkbox__label::before
-      background: var(--bal-color-invalid)
+      background: var(--bal-color-danger-1)
     .bal-radio-checkbox__label::after
       background: var(--bal-color-border-invalid)
     &:hover
@@ -326,7 +326,7 @@
   &--switch#{&}--disabled:hover,
   &--switch#{&}--disabled:active
     .bal-radio-checkbox__label::before
-      background: var(--bal-color-disabled)
+      background: var(--bal-color-grey-2)
     .bal-radio-checkbox__label::after
       background: var(--bal-color-border-disabled)
   &--switch#{&}--disabled#{&}--checked,

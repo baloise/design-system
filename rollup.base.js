@@ -32,7 +32,7 @@ const banner = `/*!
   * @license ${pkg.license}
   */`
 
-export default ({ styleOutput, declarationDir, cleanTargets, input, target } = {}) => ({
+export default ({ styleOutput, declarationDir, cleanTargets, input, target, shouldClean } = {}) => ({
   input: input || 'src/index.ts',
   output: [
     {
@@ -62,7 +62,7 @@ export default ({ styleOutput, declarationDir, cleanTargets, input, target } = {
     )
   },
   plugins: [
-    cleaner({ targets: cleanTargets || ['dist/'] }),
+    shouldClean !== false ? cleaner({ targets: cleanTargets || ['dist/'] }) : undefined,
     resolve(),
     commonjs(),
     peerDepsExternal(),
@@ -75,7 +75,7 @@ export default ({ styleOutput, declarationDir, cleanTargets, input, target } = {
     sass({
       output: styleOutput || 'dist/styles.css',
       options: {
-        outputStyle: 'expanded',
+        outputStyle: 'compressed',
         includePaths: [path.join(__dirname, '../../node_modules/'), 'node_modules/'],
       },
       processor: css =>

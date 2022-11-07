@@ -19,6 +19,10 @@ const spaceVariables = []
 const spaceTabletVariables = []
 const spaceDesktopVariables = []
 
+const spaceVariablesLegacy = []
+const spaceTabletVariablesLegacy = []
+const spaceDesktopVariablesLegacy = []
+
 async function main() {
   log.title('design-tokens - generate')
 
@@ -128,6 +132,10 @@ const toSass = () => [
     sassVariable(sassKey('spacing-values'), '(' + spaceVariables.join(', ') + ')'),
     sassVariable(sassKey('spacing-values-tablet'), '(' + spaceTabletVariables.join(', ') + ')'),
     sassVariable(sassKey('spacing-values-desktop'), '(' + spaceDesktopVariables.join(', ') + ')'),
+    '',
+    sassVariable(sassKey('legacy-spacing-values'), '(' + spaceVariablesLegacy.join(', ') + ')'),
+    sassVariable(sassKey('legacy-spacing-values-tablet'), '(' + spaceTabletVariablesLegacy.join(', ') + ')'),
+    sassVariable(sassKey('legacy-spacing-values-desktop'), '(' + spaceDesktopVariablesLegacy.join(', ') + ')'),
     '',
   ].join(NEWLINE)
 
@@ -255,6 +263,12 @@ function generateSpacings() {
     spaceVariables.push(`"${r}": ${sassKey(`space-${r}`)}`)
     spaceTabletVariables.push(`"${r}": ${sassKey(`space-tablet-${r}`)}`)
     spaceDesktopVariables.push(`"${r}": ${sassKey(`space-desktop-${r}`)}`)
+  }
+
+  for (const r in spacing) {
+    spaceVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-${r}`)}`)
+    spaceTabletVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-tablet-${r}`)}`)
+    spaceDesktopVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-desktop-${r}`)}`)
   }
 }
 

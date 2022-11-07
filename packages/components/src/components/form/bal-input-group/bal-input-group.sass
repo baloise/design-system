@@ -64,7 +64,7 @@
     &,
     .input
       border-color: var(--bal-color-border-danger)
-      background: var(--bal-color-danger-light)
+      background: var(--bal-color-danger-1)
 
     svg
       g,
@@ -72,10 +72,10 @@
       circle
         fill: var(--bal-color-border-danger)
 
-  @include inputGroupTheme('danger', var(--bal-color-danger-light), var(--bal-color-border-danger))
-  @include inputGroupTheme('success', var(--bal-color-success-light), var(--bal-color-border-success))
-  @include inputGroupTheme('warning', var(--bal-color-warning-light), var(--bal-color-border-warning))
-  @include inputGroupTheme('disabled', var(--bal-color-disabled), var(--bal-color-border-disabled))
+  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger))
+  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success))
+  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning))
+  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-disabled))
 
   +modifier(is-disabled)
     &,

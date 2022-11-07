@@ -28,11 +28,12 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:scss && npm run build:bundle && npm run build:index",
+    "build": "npm run build:clean && npm run build:scss && npm run build:bundle && npm run build:bundle:helpers && npm run build:index",
     "build:clean": "rimraf scss/generated",
     "build:index": "rimraf dist",
     "build:scss": "node ../../.build/generate-css-utils.js",
     "build:bundle": "rollup --config rollup.config.js",
+    "build:bundle:helpers": "rollup --config rollup.config.helpers.js",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1",
