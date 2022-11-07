@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/build/design-system-components.css" />
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <bal-app class="bal-body">
+    <main class="container py-5">
+      <section>
+        <bal-accordion open-label="Show more" close-label="Show less">
+          <p class="p-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </bal-accordion>
+      </section>
+      <section>
+        <bal-badge color="danger">42</bal-badge>
+      </section>
+    </main>
+  </bal-app>
+</body>
+
+</html>
