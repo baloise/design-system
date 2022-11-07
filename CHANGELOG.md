@@ -10,7 +10,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **logo:** animated is shown once ([db310b6](https://github.com/baloise-incubator/design-system/commit/db310b67f5de37603500a0be3f4ccf2e8bc6cb83))
 
 
-
 ## [11.0.11](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
 
 ### Bug Fixes
