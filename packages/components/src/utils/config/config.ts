@@ -7,13 +7,20 @@ import {
   balIconClose,
   balIconInfoCircle,
   balIconPlus,
+  balIconMinus,
+  balIconEdit,
+  balIconTrash,
   balIconNavGoLeft,
   balIconNavGoRight,
+  balIconNavGoDown,
+  balIconNavGoUp,
   balIconCaretLeft,
   balIconCaretDown,
   balIconCheck,
   balIconDate,
   balIconDocument,
+  balIconUpload,
+  balIconMenuBars,
 } from '../constants/icons.constant'
 
 export class Config {
@@ -27,13 +34,20 @@ export class Config {
       balIconClose,
       balIconInfoCircle,
       balIconPlus,
+      balIconMinus,
+      balIconEdit,
+      balIconTrash,
       balIconNavGoLeft,
       balIconNavGoRight,
+      balIconNavGoDown,
+      balIconNavGoUp,
       balIconCaretLeft,
       balIconCaretDown,
       balIconCheck,
       balIconDate,
       balIconDocument,
+      balIconUpload,
+      balIconMenuBars,
     },
     fallbackLanguage: 'de',
     logger: defaultLoggerConfig,
@@ -148,6 +162,10 @@ export class Config {
     this._config = {
       ...this._config,
       ...config,
+      icons: {
+        ...this._config.icons,
+        ...config.icons,
+      },
     }
     this._notify(false)
   }

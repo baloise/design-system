@@ -51,7 +51,7 @@
       +desktop
         font-size: 1.25rem
     +element(burger)
-      margin-left: auto
+      margin-left: auto !important
       +desktop
         display: none !important
 
@@ -61,14 +61,14 @@
         color: var(--bal-color-primary-inverted)
 
   +element(menu)
-    position: static
-    display: none
+    position: static !important
+    display: none !important
     z-index: 30
 
     +modifier(active)
       +touch
-        position: fixed
-        display: block
+        position: fixed !important
+        display: block !important
         background: var(--bal-color-white)
 
     +modifiers(context-app)

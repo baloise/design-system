@@ -87,17 +87,16 @@
     //
     // selection part for multiple
     +element(input)
-      border: none
-      box-shadow: none
+      border: none !important
+      outline: none !important
+      outline-width: 0 !important
+      height: calc(3rem - 0.25rem) !important
+      box-shadow: none !important
       background: transparent
-      outline: none
-      outline-width: 0
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
-      height: calc(3rem - 0.25rem)
-      // padding-left: 0.625rem
-      padding-left: 0.25rem
-      padding-right: 0.625rem
+      padding-left: 0.25rem !important
+      padding-right: 0.625rem !important
       text-overflow: ellipsis
       &:read-only
         user-select: none !important

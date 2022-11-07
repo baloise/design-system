@@ -105,13 +105,20 @@ const main = async () => {
     'balIconClose',
     'balIconInfoCircle',
     'balIconPlus',
+    'balIconMinus',
     'balIconNavGoLeft',
     'balIconNavGoRight',
+    'balIconNavGoDown',
+    'balIconNavGoUp',
     'balIconCaretLeft',
     'balIconCaretDown',
     'balIconCheck',
     'balIconDate',
     'balIconDocument',
+    'balIconEdit',
+    'balIconTrash',
+    'balIconUpload',
+    'balIconMenuBars',
   ]
 
   contents.forEach((value, key) => {

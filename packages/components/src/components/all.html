@@ -1,382 +1,814 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
-      section {
-        margin-bottom: 2rem;
-      }
-    </style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <link rel="stylesheet" href="/build/design-system-components.css" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
 
-  <body>
-    <bal-app class="bal-body">
-      <main class="container py-5">
-        <section>
-          <bal-accordion open-label="Show more" close-label="Show less">
-            <p class="p-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-          </bal-accordion>
-        </section>
-        <section>
-          <bal-badge color="danger">42</bal-badge>
-        </section>
-        <section>
-          <bal-button>Button</bal-button>
-        </section>
-        <section>
-          <bal-card>
-            <bal-card-subtitle bold color="blue">Your Product</bal-card-subtitle>
-            <bal-card-title>BaloiseCombi</bal-card-title>
-            <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-            <bal-card-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </bal-card-content>
-            <bal-card-actions position="right">
-              <bal-button color="info" outlined>Secondary Action</bal-button>
-              <bal-button>Main Action</bal-button>
-            </bal-card-actions>
-          </bal-card>
-        </section>
-        <section>
-          <bal-carousel items-per-view="auto" steps="3" controls="small">
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-1">First Liverpool</div>
-            </bal-carousel-item>
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-2">Valencia</div>
-            </bal-carousel-item>
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-1">Madrid</div>
-            </bal-carousel-item>
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-2">Barcelona</div>
-            </bal-carousel-item>
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-1">München</div>
-            </bal-carousel-item>
-            <bal-carousel-item>
-              <div class="px-2 has-background-green-2">Manchester</div>
-            </bal-carousel-item>
-          </bal-carousel>
-        </section>
-        <section>
-          <bal-close></bal-close>
-        </section>
-        <section>
-          <bal-data>
-            <bal-data-item>
-              <bal-data-label>Label</bal-data-label>
-              <bal-data-value>Value</bal-data-value>
-            </bal-data-item>
-          </bal-data>
-        </section>
-        <section>
-          <bal-heading level="h1">Heading</bal-heading>
-        </section>
-        <section>
-          <bal-hint>
-            <bal-hint-title>Spider-Man</bal-hint-title>
-            <bal-hint-text>
-              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He
-              first appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic
-              Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,
-              television shows, and video game adaptations set in the Marvel Universe.
-            </bal-hint-text>
-          </bal-hint>
-        </section>
-        <section>
-          <bal-icon color="primary" name="info-circle"></bal-icon>
-        </section>
-        <section>
-          <bal-list border>
-            <bal-list-item>
-              <bal-list-item-content>
-                <bal-list-item-title>Title</bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item>
-            <bal-list-item>
-              <bal-list-item-content>
-                <bal-list-item-title>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
-                  neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates? Minus
-                  quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-                  laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere, eaque magni
-                  vero incidunt iusto voluptates? Minus quis temporibus consequatur?
-                </bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item>
-            <bal-list-item>
-              <bal-list-item-content>
-                <bal-list-item-title>Two-line item</bal-list-item-title>
-                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-              </bal-list-item-content>
-            </bal-list-item>
-            <bal-list-item clickable>
-              <bal-list-item-content>
-                <bal-list-item-title>Clickable item</bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item>
-            <bal-list-item disabled>
-              <bal-list-item-content>
-                <bal-list-item-title>Disabled item</bal-list-item-title>
-                <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
-              </bal-list-item-content>
-            </bal-list-item>
-          </bal-list>
-        </section>
-        <section>
-          <bal-logo></bal-logo>
-        </section>
-        <section>
-          <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
-        </section>
-        <section>
-          <bal-popover>
-            <bal-button bal-popover-trigger color="info"> Trigger </bal-button>
-            <bal-popover-content>
-              <div class="p-3">
-                <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus
-                  doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis
-                  mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
-                  dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor
-                  aperiam perferendis mollitia facilis harum vero.
-                </p>
-              </div>
-            </bal-popover-content>
-          </bal-popover>
-        </section>
-        <section>
-          <bal-shape></bal-shape>
-        </section>
-        <section>
-          <bal-spinner></bal-spinner>
-        </section>
-        <section>
-          <bal-stage shape>
-            <bal-stage-body>
-              <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
-              <bal-heading class="mb-2" space="none">Basic</bal-heading>
-            </bal-stage-body>
-          </bal-stage>
-        </section>
-        <section>
-          <table class="table is-fullwidth is-striped is-hoverable p-0">
-            <thead>
-              <th>Selected</th>
-              <th>Name</th>
-              <th>Status</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <bal-checkbox></bal-checkbox>
-                </td>
-                <td>Tony Stark</td>
-                <td>
-                  <bal-tag color="green">Ready</bal-tag>
-                </td>
-                <td class="has-buttons">
-                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <bal-checkbox id="checkbox2"></bal-checkbox>
-                </td>
-                <td>Steve Rogers</td>
-                <td>
-                  <bal-tag size="" color="red">Injured</bal-tag>
-                </td>
-                <td class="has-buttons">
-                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <bal-tabs border fullwidth interface="tabs" value="tab-b">
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
-            <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
-            <bal-tab-item
-              value="tab-link"
-              label="Tab link"
-              href="https://github.com/baloise-incubator/design-system"
-              target="_blank"
-              >Content of Tab link</bal-tab-item
-            >
-          </bal-tabs>
-        </section>
-        <section>
-          <bal-tag color="primary">Tag</bal-tag>
-        </section>
-        <section>
-          <bal-text
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</bal-text
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/build/design-system-components.css" />
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <bal-app class="bal-body">
+    <header>
+      <bal-navbar interface="app">
+        <bal-navbar-brand href="/" target="_blank">App Header</bal-navbar-brand>
+        <bal-navbar-menu>
+            <bal-navbar-menu-start>
+                <bal-tabs interface="navbar" inverted>
+                    <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+                    <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+                    <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+                </bal-tabs>
+            </bal-navbar-menu-start>
+            <bal-navbar-menu-end>
+                <bal-button-group>
+                    <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call">00800 24 800 800</bal-button>
+                </bal-button-group>
+            </bal-navbar-menu-end>
+        </bal-navbar-menu>
+    </bal-navbar>
+    </header>
+    <header style="display: none;">
+      <bal-navigation meta-value="meta-1">
+        <bal-navigation-levels>
+          <!-- hidden in the dom but can be grabbed by the mutation observer -->
+          <bal-navigation-level-meta value="meta-1" label="Privatkunden"
+            link="/?path=/story/components-navigation--basic" link-label="Zur Privatkundenübersicht"
+            data-tracking-style="my-meta">
+            <bal-navigation-level-main value="meta-1-main-1" label="Versichern" link="http://"
+              link-label="Alle Versicherungslösungen" data-tracking-style="my-main">
+              <bal-navigation-level-block label="Wohnen & Recht" link="http://" data-tracking-style="my-block">
+                <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://"
+                  data-tracking-style="link-list" data-tracking-topic="Unfallversicherung für Hausangestellte"
+                  data-tracking-context="Versichern" data-tracking-id="Main Navigation">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Haftpflicht" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Einzel Gegenstände vom Handy bis zum e-Bike" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item
+                  label="Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Rechtsschutz" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+              <bal-navigation-level-block label="Wohneigentum" link="http://">
+                <bal-navigation-level-block-item label="Gebäudeversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Erdbebenversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Bauversicherung" link="http://">
+                </bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+              <bal-navigation-level-block label="Fahrzeuge & Reisen" link="http://">
+                <bal-navigation-level-block-item label="Auto" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Motorrad" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Velo" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Boot" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Fahrzeug Innenraum (auch Wohnwagen)" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Reiseversicherung" link="http://">
+                </bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+              <bal-navigation-level-block label="Personen (Unfall, Krankheit, Tod)" link="http://">
+                <bal-navigation-level-block-item label="Unfallversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Todesfallrisikoversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Krankentaggeldversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Lebensversicherung & Life Coach" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Erwerbsunfähigkeits-versicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Unfallversicherung für Hausangestellte" link="http://">
+                </bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+              <bal-navigation-level-block color="grey" label="Services">
+                <bal-navigation-level-block-item label="Gebäudeversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Erdbebenversicherung" link="http://">
+                </bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Bauversicherung" link="http://">
+                </bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-1-main-2" label="Sparen, Zahlen & Finanzieren" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-1-main-3" label="Anlegen & Vorsorgen" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 1 Main 3 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-1-main-4" label="Kontakt & Services" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 1 Main 4 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-1-main-5" label="Magazin" link="#" isTabLink>
+            </bal-navigation-level-main>
+          </bal-navigation-level-meta>
+          <bal-navigation-level-meta value="meta-2" label="Unternehmen"
+            link="/?path=/story/components-navigation--basic" link-label="Go to Meta 2 Overview">
+            <bal-navigation-level-main value="meta-2-main-1" label="Meta 2 Main 1" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-2-main-2" label="Meta 2 Main 2" link="http://"
+              link-label="Go to Main 2">
+              <bal-navigation-level-block label="Meta 2 Main 2 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+          </bal-navigation-level-meta>
+          <bal-navigation-level-meta value="meta-3" label="Institutionelle Anleger"
+            link="/?path=/story/components-navigation--basic" link-label="Go to Meta 2 Overview">
+            <bal-navigation-level-main value="meta-3-main-1" label="Meta 3 Main 1" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 3 Main 1 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-3-main-2" label="Meta 3 Main 2" link="http://"
+              link-label="Go to Main 2">
+              <bal-navigation-level-block label="Meta 3 Main 2 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-3-main-3" label="Meta 3 Main 3" link="http://"
+              link-label="Go to Main 3">
+              <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-3-main-4" label="Meta 3 Main 4" link="http://"
+              link-label="Go to Main 3">
+              <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+          </bal-navigation-level-meta>
+          <bal-navigation-level-meta value="meta-4" label="Über uns" link="/?path=/story/components-navigation--basic"
+            link-label="Go to Meta 2 Overview">
+            <bal-navigation-level-main value="meta-4-main-1" label="Meta 4 Main 1" link="http://"
+              link-label="Go to Main 1">
+              <bal-navigation-level-block label="Meta 4 Main 1 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-4-main-2" label="Meta 4 Main 2" link="http://"
+              link-label="Go to Main 2">
+              <bal-navigation-level-block label="Meta 4 Main 2 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+            <bal-navigation-level-main value="meta-4-main-3" label="Meta 4 Main 3" link="http://"
+              link-label="Go to Main 3">
+              <bal-navigation-level-block label="Meta 4 Main 3 Block 1" link="http://">
+                <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
+                <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
+              </bal-navigation-level-block>
+            </bal-navigation-level-main>
+          </bal-navigation-level-meta>
+        </bal-navigation-levels>
+
+        <bal-button-group slot="meta-actions">
+          <bal-button square size="small" color="light" inverted icon="edit"></bal-button>
+          <bal-button square size="small" color="light" inverted icon="trash"></bal-button>
+        </bal-button-group>
+        <div slot="meta-actions-mobile">
+          <bal-navigation-popover backdrop position="bottom" square icon="edit" bal-popover-trigger
+            content-radius="none" content-no-shadow content-expanded active-color="primary" inactive-color="light"
+            heading="Suche" offsetY="8" mobile-top>
+          </bal-navigation-popover>
+          <bal-button square color="light" icon="edit"></bal-button>
+        </div>
+        <div slot="meta-mobile-foot">
+          <bal-navigation-popover backdrop position="top" square icon="edit" bal-popover-trigger
+            content-radius="large-bottom-none" content-no-shadow content-expanded active-color="primary"
+            inactive-color="white" offsetY="7" heading="24h Kundenservice">
+            <bal-button expanded href="tel://00800 24 800 800" icon="edit">00800 24 800 800</bal-button>
+          </bal-navigation-popover>
+          <bal-button square inverted icon="edit"></bal-button>
+          <bal-button square inverted icon="trash"></bal-button>
+        </div>
+      </bal-navigation>
+    </header>
+    <bal-stage shape>
+      <bal-stage-body>
+        <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
+        <bal-heading class="mb-2" space="none">All Components</bal-heading>
+      </bal-stage-body>
+    </bal-stage>
+    <main class="container py-5">
+      <section>
+        <bal-accordion open-label="Show more" close-label="Show less">
+          <p class="p-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </bal-accordion>
+      </section>
+      <section>
+        <bal-badge color="danger">42</bal-badge>
+      </section>
+      <section>
+        <bal-button>Button</bal-button>
+      </section>
+      <section>
+        <bal-card>
+          <bal-card-subtitle bold color="blue">Your Product</bal-card-subtitle>
+          <bal-card-title>BaloiseCombi</bal-card-title>
+          <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+          <bal-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </bal-card-content>
+          <bal-card-actions position="right">
+            <bal-button color="info" outlined>Secondary Action</bal-button>
+            <bal-button>Main Action</bal-button>
+          </bal-card-actions>
+        </bal-card>
+      </section>
+      <section class="my-4">
+        <bal-heading>Text</bal-heading>
+        <bal-carousel items-per-view="auto" steps="3" controls="small">
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">First Liverpool</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Valencia</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Madrid</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Barcelona</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">München</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Manchester</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">London</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Basel</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Brüssel</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Paris</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Berlin</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Hamburg</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Stuttgart</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Bern</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Zürich</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Dornach</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Reinach</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-2">Olten</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="px-2 has-background-green-1">Solothurn Last</div>
+          </bal-carousel-item>
+        </bal-carousel>
+      </section>
+      <section class="my-4">
+        <bal-heading>Product</bal-heading>
+        <bal-carousel interface="product" steps="2" items-per-view="auto" controls="large">
+          <bal-carousel-item color="green" label="0 Auto" src="/assets/images/brand/car.svg"></bal-carousel-item>
+          <bal-carousel-item
+            color="yellow"
+            label="1 Haushalt"
+            src="/assets/images/brand/lamp.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="purple"
+            label="2 Hypothek"
+            src="/assets/images/brand/home.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item color="red" label="3 Pensionsplanung" src="/assets/images/brand/bars.svg">
+          </bal-carousel-item>
+          <bal-carousel-item color="green" label="4 Anlegen" src="/assets/images/brand/plant.svg"></bal-carousel-item>
+          <bal-carousel-item
+            color="yellow"
+            label="5 Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung"
+            src="/assets/images/brand/pie.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item color="purple" label="6 E-Banking" src="/assets/images/brand/notebook.svg">
+          </bal-carousel-item>
+          <bal-carousel-item color="red" label="7 Sparen" src="/assets/images/brand/pig.svg"></bal-carousel-item>
+          <bal-carousel-item color="green" label="8 YouGo" src="/assets/images/brand/diamond.svg"></bal-carousel-item>
+          <bal-carousel-item color="yellow" label="9 Alle Gegenstände" src="/assets/images/brand/items.svg">
+          </bal-carousel-item>
+          <bal-carousel-item color="purple" label="10 Motorrad & Roller" src="/assets/images/brand/roller.svg">
+          </bal-carousel-item>
+        </bal-carousel>
+      </section>
+      <section class="my-4">
+        <bal-heading>Table</bal-heading>
+        <bal-carousel interface="card" controls="tabs" controls-sticky>
+          <bal-carousel-item label="ECO">
+            <bal-card style="width: 100%">
+              <bal-card-title>Title ECO</bal-card-title>
+              <bal-card-content>Content Content Content</bal-card-content>
+            </bal-card>
+          </bal-carousel-item>
+          <bal-carousel-item label="SMART">
+            <bal-card style="width: 100%">
+              <bal-card-title>Title SMART</bal-card-title>
+              <bal-card-content>Content</bal-card-content>
+            </bal-card>
+          </bal-carousel-item>
+          <bal-carousel-item label="TOP">
+            <bal-card style="width: 100%">
+              <bal-card-title>Title TOP</bal-card-title>
+              <bal-card-content>Content</bal-card-content>
+            </bal-card>
+          </bal-carousel-item>
+        </bal-carousel>
+      </section>
+      <section>
+        <bal-heading>Basic</bal-heading>
+        <bal-carousel>
+          <bal-carousel-item>
+            <div class="has-background-green-1 p-4" style="width: 100%">AAA</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="has-background-green-2 p-4" style="width: 100%">BBB</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="has-background-green-3 p-4" style="width: 100%">CCC</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="has-background-green-4 p-4" style="width: 100%">DDD</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="has-background-green-5 p-4 has-text-white" style="width: 100%">EEE</div>
+          </bal-carousel-item>
+          <bal-carousel-item>
+            <div class="has-background-green-6 p-4 has-text-white" style="width: 100%">FFF</div>
+          </bal-carousel-item>
+        </bal-carousel>
+      </section>
+      <section class="my-4">
+        <bal-heading>Image</bal-heading>
+        <bal-carousel interface="image" controls="dots">
+          <bal-carousel-item
+            src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"
           >
-        </section>
-        <section>
-          <bal-checkbox>Label</bal-checkbox>
-        </section>
-        <section>
-          <bal-datepicker placeholder="Pick a date"></bal-datepicker>
-        </section>
-        <section>
-          <bal-field>
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-            <bal-field-message color="hint">Field Message</bal-field-message>
-          </bal-field>
-        </section>
-        <section>
-          <bal-field>
-            <bal-field-label required>Upload Label</bal-field-label>
-            <bal-field-control>
-              <bal-file-upload></bal-file-upload>
-            </bal-field-control>
-            <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
-          </bal-field>
-        </section>
-        <section>
+          </bal-carousel-item>
+          <bal-carousel-item
+            src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"
+          >
+          </bal-carousel-item>
+          <bal-carousel-item
+            src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"
+          >
+          </bal-carousel-item>
+        </bal-carousel>
+      </section>
+      <section>
+        <bal-close></bal-close>
+      </section>
+      <section>
+        <bal-data>
+          <bal-data-item>
+            <bal-data-label>Label</bal-data-label>
+            <bal-data-value>Value</bal-data-value>
+          </bal-data-item>
+        </bal-data>
+      </section>
+      <section>
+        <bal-heading level="h1">Heading</bal-heading>
+      </section>
+      <section>
+        <bal-hint>
+          <bal-hint-title>Spider-Man</bal-hint-title>
+          <bal-hint-text>
+            Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He
+            first appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic
+            Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,
+            television shows, and video game adaptations set in the Marvel Universe.
+          </bal-hint-text>
+        </bal-hint>
+      </section>
+      <section>
+        <bal-icon color="primary" name="info-circle"></bal-icon>
+      </section>
+      <section>
+        <bal-list border>
+          <bal-list-item>
+            <bal-list-item-content>
+              <bal-list-item-title>Title</bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item>
+          <bal-list-item>
+            <bal-list-item-content>
+              <bal-list-item-title>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
+                neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates? Minus
+                quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
+                laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere, eaque magni
+                vero incidunt iusto voluptates? Minus quis temporibus consequatur?
+              </bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item>
+          <bal-list-item>
+            <bal-list-item-content>
+              <bal-list-item-title>Two-line item</bal-list-item-title>
+              <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+            </bal-list-item-content>
+          </bal-list-item>
+          <bal-list-item clickable>
+            <bal-list-item-content>
+              <bal-list-item-title>Clickable item</bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item>
+          <bal-list-item disabled>
+            <bal-list-item-content>
+              <bal-list-item-title>Disabled item</bal-list-item-title>
+              <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
+            </bal-list-item-content>
+          </bal-list-item>
+        </bal-list>
+      </section>
+      <section>
+        <bal-logo></bal-logo>
+      </section>
+      <section>
+        <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
+      </section>
+      <section>
+        <bal-popover id="bal-popover-1" is-active="false" data-testid="popover">
+          <bal-button
+            bal-popover-trigger
+            id="bal-popover-1-trigger"
+            aria-haspopup="true"
+            aria-controls="popover-menu"
+            color="is-info"
+            outlined
+          >
+            <span id="bal-popover-1-trigger-label">Trigger</span>
+          </bal-button>
+          <bal-popover-content scrollable="100">
+            <div style="padding: 0 15px 15px">
+              <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+          </bal-popover-content>
+        </bal-popover>
+      </section>
+      <script>
+        var popover = document.getElementById('bal-popover-1')
+        var trigger = document.getElementById('bal-popover-1-trigger')
+
+        trigger.addEventListener('click', function (event) {
+          popover.toggle()
+        })
+      </script>
+      </section>
+      <section>
+        <bal-shape></bal-shape>
+      </section>
+      <section>
+        <bal-spinner></bal-spinner>
+      </section>
+      <section>
+        <table class="table is-fullwidth is-striped is-hoverable p-0">
+          <thead>
+            <th>Selected</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <bal-checkbox></bal-checkbox>
+              </td>
+              <td>Tony Stark</td>
+              <td>
+                <bal-tag color="green">Ready</bal-tag>
+              </td>
+              <td class="has-buttons">
+                <bal-button color="info" size="small">Edit</bal-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <bal-checkbox id="checkbox2"></bal-checkbox>
+              </td>
+              <td>Steve Rogers</td>
+              <td>
+                <bal-tag size="" color="red">Injured</bal-tag>
+              </td>
+              <td class="has-buttons">
+                <bal-button color="info" size="small">Edit</bal-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <bal-tabs border fullwidth interface="tabs" value="tab-b">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+          <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+          <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise-incubator/design-system"
+            target="_blank">Content of Tab link</bal-tab-item>
+        </bal-tabs>
+      </section>
+      <section>
+        <bal-tabs border fullwidth interface="steps" value="tab-b">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+          <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+          <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise-incubator/design-system"
+            target="_blank">Content of Tab link</bal-tab-item>
+        </bal-tabs>
+      </section>
+      <section>
+        <bal-tag color="primary">Tag</bal-tag>
+      </section>
+      <section>
+        <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua.</bal-text>
+      </section>
+      <section>
+        <bal-checkbox>Label</bal-checkbox>
+        <bal-checkbox interface="select-button">Label</bal-checkbox>
+        <bal-checkbox interface="switch">Label</bal-checkbox>
+      </section>
+      <section>
+        <bal-datepicker placeholder="Pick a date"></bal-datepicker>
+      </section>
+      <section>
+        <bal-field>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+          <bal-field-message color="hint">Field Message</bal-field-message>
+        </bal-field>
+      </section>
+      <section>
+        <bal-field>
+          <bal-field-label required>Upload Label</bal-field-label>
+          <bal-field-control>
+            <bal-file-upload></bal-file-upload>
+          </bal-field-control>
+          <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
+        </bal-field>
+      </section>
+      <section>
+        <bal-form-grid>
+          <bal-form-col>
+            <bal-input placeholder="fullwidth" />
+          </bal-form-col>
+          <bal-form-col size="half">
+            <bal-input placeholder="half" />
+          </bal-form-col>
+        </bal-form-grid>
+      </section>
+      <section>
+        <bal-form ref="form">
           <bal-form-grid>
             <bal-form-col>
-              <bal-input placeholder="fullwidth" />
+              <bal-field invalid>
+                <bal-field-label>Label</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+              </bal-field>
             </bal-form-col>
-            <bal-form-col size="half">
-              <bal-input placeholder="half" />
+            <bal-form-col>
+              <bal-field>
+                <bal-field-label>Label</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+            <bal-form-col>
+              <bal-button-group>
+                <bal-button @click="submit()">Submit (scroll to the first invalid field)</bal-button>
+              </bal-button-group>
             </bal-form-col>
           </bal-form-grid>
-        </section>
-        <section>
-          <bal-form ref="form">
-            <bal-form-grid>
-              <bal-form-col>
-                <bal-field invalid>
-                  <bal-field-label>Label</bal-field-label>
-                  <bal-field-control>
-                    <bal-input placeholder="Placeholder"></bal-input>
-                  </bal-field-control>
-                </bal-field>
-              </bal-form-col>
-              <bal-form-col>
-                <bal-field>
-                  <bal-field-label>Label</bal-field-label>
-                  <bal-field-control>
-                    <bal-input placeholder="Placeholder"></bal-input>
-                  </bal-field-control>
-                </bal-field>
-              </bal-form-col>
-              <bal-form-col>
-                <bal-button-group>
-                  <bal-button @click="submit()">Submit (scroll to the first invalid field)</bal-button>
-                </bal-button-group>
-              </bal-form-col>
-            </bal-form-grid>
-          </bal-form>
-        </section>
-        <section>
-          <bal-input-group class="mb-4">
-            <bal-input placeholder="Enter text here"></bal-input>
-            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-          </bal-input-group>
+        </bal-form>
+      </section>
+      <section>
+        <bal-input-group class="mb-4">
+          <bal-input placeholder="Enter text here"></bal-input>
+          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+        </bal-input-group>
 
-          <bal-input-group class="mb-4">
-            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-            <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
-          </bal-input-group>
+        <bal-input-group class="mb-4">
+          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+        </bal-input-group>
 
-          <bal-input-group class="mb-4">
-            <bal-icon name="call"></bal-icon>
-            <bal-select :disabled="args.disabled" :invalid="args.invalid" style="max-width: 106px" value="DE">
-              <bal-select-option label="DE" value="DE">DE</bal-select-option>
-              <bal-select-option label="FR" value="FR">FR</bal-select-option>
-              <bal-select-option label="IT" value="IT">IT</bal-select-option>
-            </bal-select>
-            <bal-input placeholder="79 123 45 67" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
-          </bal-input-group>
-
-          <bal-input-group class="mb-4">
-            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-            <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
-            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-          </bal-input-group>
-
-          <bal-input-group v-bind="args" class="mb-4">
-            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-            <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
-            <bal-input
-              placeholder="Enter text here"
-              v-model="args.value"
-              :disabled="args.disabled"
-              :invalid="args.invalid"
-            ></bal-input>
-            <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
-          </bal-input-group>
-        </section>
-        <section>
-          <bal-input-slider has-ticks max="100" min="0" step="20" value="20"></bal-input-slider>
-        </section>
-        <section>
-          <bal-input-stepper></bal-input-stepper>
-        </section>
-        <section>
-          <bal-input placeholder="Enter a text" type="text"></bal-input>
-        </section>
-        <section>
-          <bal-number-input placeholder="Enter a number"></bal-number-input>
-        </section>
-        <section>
-          <bal-radio-group value="1">
-            <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-            <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
-            <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
-            <bal-radio name="radio-example" value="4" :invalid="args.invalid"
-              >Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio
-            >
-          </bal-radio-group>
-        </section>
-        <section>
-          <bal-select value="v2000">
-            <bal-select-option value="v1995" label="1995">1995</bal-select-option>
-            <bal-select-option value="v1996" label="1996">1996</bal-select-option>
-            <bal-select-option value="v1997" label="1997">1997</bal-select-option>
-            <bal-select-option value="v1998" label="1998">1998</bal-select-option>
-            <bal-select-option value="v1999" label="1999 Option with long text Option with long text"
-              >1999 Option with long text Option with long text</bal-select-option
-            >
-            <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+        <bal-input-group class="mb-4">
+          <bal-icon name="call"></bal-icon>
+          <bal-select :disabled="args.disabled" :invalid="args.invalid" style="max-width: 106px" value="DE">
+            <bal-select-option label="DE" value="DE">DE</bal-select-option>
+            <bal-select-option label="FR" value="FR">FR</bal-select-option>
+            <bal-select-option label="IT" value="IT">IT</bal-select-option>
           </bal-select>
-        </section>
-        <section>
-          <bal-textarea placeholder="Enter a comment"></bal-textarea>
-        </section>
-      </main>
-    </bal-app>
-  </body>
+          <bal-input placeholder="79 123 45 67" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+        </bal-input-group>
+
+        <bal-input-group class="mb-4">
+          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+          <bal-input placeholder="Enter text here" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
+          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+        </bal-input-group>
+
+        <bal-input-group v-bind="args" class="mb-4">
+          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+          <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
+          <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled"
+            :invalid="args.invalid"></bal-input>
+          <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
+        </bal-input-group>
+      </section>
+      <section>
+        <bal-input-slider has-ticks max="100" min="0" step="20" value="20"></bal-input-slider>
+      </section>
+      <section>
+        <bal-input-stepper></bal-input-stepper>
+      </section>
+      <section>
+        <bal-input placeholder="Enter a text" type="text"></bal-input>
+      </section>
+      <section>
+        <bal-number-input placeholder="Enter a number"></bal-number-input>
+      </section>
+      <section>
+        <bal-radio-group value="1">
+          <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+          <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
+          <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
+          <bal-radio name="radio-example" value="4" :invalid="args.invalid">Random text with a <a class="is-link"
+              target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+        </bal-radio-group>
+      </section>
+      <section>
+        <bal-radio-group value="1" interface="select-button">
+          <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+          <bal-radio name="radio-example" value="2" :invalid="args.invalid">Label 2</bal-radio>
+          <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
+          <bal-radio name="radio-example" value="4" :invalid="args.invalid">Random text with a <a class="is-link"
+              target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+        </bal-radio-group>
+      </section>
+      <section>
+        <bal-select value="v2000">
+          <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+          <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+          <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+          <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+          <bal-select-option value="v1999" label="1999 Option with long text Option with long text">1999 Option with
+            long text Option with long text</bal-select-option>
+          <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+        </bal-select>
+      </section>
+      <section>
+        <bal-select value="v2000" multiple typeahead>
+          <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+          <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+          <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+          <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+          <bal-select-option value="v1999" label="1999 Option with long text Option with long text">1999 Option with
+            long text Option with long text</bal-select-option>
+          <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+        </bal-select>
+      </section>
+      <section>
+        <bal-textarea placeholder="Enter a comment"></bal-textarea>
+      </section>
+      <section>
+        <bal-modal id="bal-modal-example-width" data-testid="modal">
+          <bal-modal-header>Modal Title</bal-modal-header>
+          <bal-modal-body>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat.
+            </p>
+          </bal-modal-body>
+        </bal-modal>
+
+        <bal-button id="bal-modal-trigger-example-width" data-testid="open-modal-button">Launch Modal</bal-button>
+      </section>
+      <script type="text/javascript">
+        const modalElementCustomWidth = document.getElementById('bal-modal-example-width')
+        const triggerElementCustomWidth = document.getElementById('bal-modal-trigger-example-width')
+        const okayElementCustomWidth = document.getElementById('bal-modal-close-3')
+        const cancelElementCustomWidth = document.getElementById('bal-modal-close-4')
+        triggerElementCustomWidth.onclick = function () {
+          modalElementCustomWidth.open()
+        }
+        okayElementCustomWidth.onclick = function () {
+          modalElementCustomWidth.close()
+        }
+        cancelElementCustomWidth.onclick = function () {
+          modalElementCustomWidth.close()
+        }
+      </script>
+      <section>
+        <bal-notification color="primary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in
+          ducimus modi animi enim velit
+          molestiae rerum natus, ad culpa explicabo blanditiis architecto quo expedita incidunt officiis quaerat
+          delectus.</bal-notification>
+      </section>
+      <section>
+        <bal-sheet>
+          <div class="is-hidden-desktop">
+            <bal-button expanded>Continue with 1'234 CHF</bal-button>
+            <bal-button expanded color="link">Back</bal-button>
+          </div>
+          <div class="is-hidden-touch">
+            <div class="columns">
+              <div class="column is-flex is-align-items-center is-justify-content-center">
+                <h2 class="title is-size-2 m-0 has-text-right">1'234 CHF</h2>
+              </div>
+              <div class="column is-flex is-align-items-center">
+                <p class="m-0 has-text-blue-light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+              </div>
+              <div class="column is-2 is-flex is-align-items-center">
+                <bal-button expanded color="link">Back</bal-button>
+              </div>
+              <div class="column is-2 is-flex is-align-items-center">
+                <bal-button expanded>Next</bal-button>
+              </div>
+            </div>
+          </div>
+        </bal-sheet>
+      </section>
+      <section>
+        <bal-snackbar subject="Default" icon="info-circle" action="More">Toast Message</bal-snackbar>
+      </section>
+      <section>
+        <bal-toast>Toast Message</bal-toast>
+      </section>
+    </main>
+  </bal-app>
+</body>
+
 </html>

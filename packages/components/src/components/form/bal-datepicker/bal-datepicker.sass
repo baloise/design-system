@@ -35,12 +35,12 @@
       flex: 1
       .select,
       .select select
-        padding-top: 0
-        padding-bottom: 0
-        text-align: center
-        height: 2rem
+        padding-top: 0 !important
+        padding-bottom: 0 !important
+        text-align: center !important
+        height: 2rem !important
         +tablet
-          height: 3rem
+          height: 3rem !important
 
 +block(datepicker-grid)
   display: table
@@ -74,48 +74,49 @@
         height: 100%
         width: 100%
 
-  +element(cell)
-    position: relative
-    text-align: center
-    vertical-align: middle
-    display: table-cell
-    width: 13%
-    padding: 0 !important
-    height: 3rem
-    min-height: 3rem
-    min-width: 2.25rem
-    appearance: auto !important
-    background: var(--bal-color-white)
-    &:last-child
-      margin-right: 0
+.bal-datepicker-grid__cell,
+.bal-datepicker-grid__cell.button
+  position: relative
+  text-align: center
+  vertical-align: middle
+  display: table-cell
+  width: 13%
+  padding: 0 !important
+  height: 3rem
+  min-height: 3rem
+  min-width: 2.25rem
+  appearance: auto !important
+  background: var(--bal-color-white)
+  &:last-child
+    margin-right: 0
+  & > span
+    font-family: var(--bal-font-family-text)
+    font-weight: var(--bal-weight-regular)
+  +tablet
+    min-width: 3rem !important
+  +modifier(disabled)
+    border-color: transparent !important
+    background: transparent !important
+  &--today:not(#{&}--outdated)
     & > span
-      font-family: var(--bal-font-family-text)
-      font-weight: var(--bal-weight-regular)
-    +tablet
-      min-width: 3rem !important
-    +modifier(disabled)
-      border-color: transparent !important
-      background: transparent !important
-    &--today:not(#{&}--outdated)
-      & > span
-        font-weight: var(--bal-weight-bold)
-    &--today:not(#{&}--outdated)::after
-      content: ''
-      position: absolute
-      display: block
-      width: 4px
-      height: 4px
-      background: var(--bal-color-primary)
-      border-radius: var(--bal-radius-rounded)
-      margin-left: -2px
-      left: 50%
-      bottom: 6px
-    &--today#{&}--selected:not(#{&}--outdated)::after
-      background: var(--bal-color-primary-inverted)
-    +modifier(header)
-      & > span
-        border: none
-        background: transparent
-        color: var(--bal-color-primary)
-        font-weight: var(--bal-weight-bold)
-        cursor: default
+      font-weight: var(--bal-weight-bold)
+  &--today:not(#{&}--outdated)::after
+    content: ''
+    position: absolute
+    display: block
+    width: 4px
+    height: 4px
+    background: var(--bal-color-primary)
+    border-radius: var(--bal-radius-rounded)
+    margin-left: -2px
+    left: 50%
+    bottom: 6px
+  &--today#{&}--selected:not(#{&}--outdated)::after
+    background: var(--bal-color-primary-inverted)
+  +modifier(header)
+    & > span
+      border: none
+      background: transparent
+      color: var(--bal-color-primary)
+      font-weight: var(--bal-weight-bold)
+      cursor: default

@@ -1,6 +1,6 @@
 @import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 
-+block(sheet)
+.bal-sheet
   --bal-sheet-position-bottom: .5rem
   display: block
   position: fixed
@@ -8,16 +8,17 @@
   left: 0
   right: 0
   width: 100%
-  z-index: 30
+  z-index: 15
   font-weight: $weight-normal
   font-family: var(--bal-font-family-text)
   font-size: var(--bal-size-normal)
 
-  +element(container)
-    +element(inner)
-      border-radius: var(--bal-radius-large)
-      background-color: var(--bal-color-white)
-      box-shadow: var(--bal-shadow)
-      padding: 1rem
-      +tablet
-        padding: 1rem 1.5rem
+.bal-sheet__container,
+.bal-sheet__container.container
+  .bal-sheet__container__inner
+    border-radius: var(--bal-radius-large)
+    background-color: var(--bal-color-white)
+    box-shadow: var(--bal-shadow)
+    padding: 1rem
+    +tablet
+      padding: 1rem 1.5rem

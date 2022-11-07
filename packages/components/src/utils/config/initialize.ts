@@ -6,13 +6,20 @@ import {
   balIconClose,
   balIconInfoCircle,
   balIconPlus,
+  balIconMinus,
+  balIconEdit,
+  balIconTrash,
   balIconNavGoLeft,
   balIconNavGoRight,
+  balIconNavGoDown,
+  balIconNavGoUp,
   balIconCaretLeft,
   balIconCaretDown,
   balIconCheck,
   balIconDate,
   balIconDocument,
+  balIconUpload,
+  balIconMenuBars,
 } from '../constants/icons.constant'
 
 export const defaultConfig: BalConfigState = {
@@ -23,13 +30,20 @@ export const defaultConfig: BalConfigState = {
     balIconClose,
     balIconInfoCircle,
     balIconPlus,
+    balIconMinus,
+    balIconEdit,
+    balIconTrash,
     balIconNavGoLeft,
     balIconNavGoRight,
+    balIconNavGoDown,
+    balIconNavGoUp,
     balIconCaretLeft,
     balIconCaretDown,
     balIconCheck,
     balIconDate,
     balIconDocument,
+    balIconUpload,
+    balIconMenuBars,
   },
   fallbackLanguage: 'de',
   logger: defaultLoggerConfig,
@@ -50,6 +64,11 @@ export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
     ...defaultConfig,
     ...configFromSession(win),
     ...userConfig,
+    icons: {
+      ...defaultConfig.icons,
+      ...configFromSession(win).icons,
+      ...userConfig.icons,
+    },
   })
 
   win.BaloiseDesignSystem.config = config
