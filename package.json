@@ -95,7 +95,6 @@
     "@babel/types": "~7.18.10",
     "@commitlint/cli": "~17.0.3",
     "@commitlint/config-conventional": "~17.0.3",
-    "@etchteam/storybook-addon-status": "~4.2.0",
     "@rollup/plugin-commonjs": "~22.0.1",
     "@rollup/plugin-node-resolve": "~13.3.0",
     "@rollup/plugin-typescript": "^8.3.4",
