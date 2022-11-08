@@ -99,7 +99,6 @@ export const Colors = args => ({
   <bal-tag color="green" :closable="args.closable" :size="args.size" light class="mr-1">Green</bal-tag>
   <br>
   <br>
-  <bal-tag invalid :closable="args.closable" :size="args.size" class="mr-1">Invalid</bal-tag>
   <bal-tag disabled :closable="args.closable" :size="args.size" class="mr-1">Disabled</bal-tag>`,
 })
 Colors.args = {
