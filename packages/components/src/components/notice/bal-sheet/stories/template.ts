@@ -7,7 +7,7 @@ export const template = `
   <div class="is-hidden-touch">
     <div class="columns">
       <div class="column is-flex is-align-items-center is-justify-content-center">
-        <h2 class="title is-size-2 m-none has-text-right">1'234 CHF</h2>
+        <h2 class="title is-size-xx-large m-none has-text-right">1'234 CHF</h2>
       </div>
       <div class="column is-flex is-align-items-center">
         <p class="m-none has-text-blue-light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>

@@ -22,14 +22,14 @@ export class BalDocColor {
             class={`has-background-${this.color} has-radius-top-large is-flex is-justify-content-center is-align-items-center`}
           >
             <strong
-              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} has-font-title is-size-3 py-normal`}
+              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} has-font-title is-size-x-large py-normal`}
               style={{ minHeight: '80px' }}
             >
               {this.background ? 'A-a' : ''}
             </strong>
           </div>
           <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center p-x-small">
-            <h5 class="title is-size-6 m-none">{subject}</h5>
+            <h5 class="title is-size-normal m-none">{subject}</h5>
             <bal-text size="small" style={{ textAlign: 'center' }}>
               {this.description}
             </bal-text>

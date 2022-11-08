@@ -24,7 +24,7 @@ export class DocUsageItem implements ComponentInterface {
             [`has-background-${color}-light`]: true,
           }}
         >
-          <h3 class="is-size-4 mt-none mb-normal">
+          <h3 class="is-size-large mt-none mb-normal">
             <bal-icon name={icon} inline size="" color={color} class="mr-small"></bal-icon>
             {title}
           </h3>

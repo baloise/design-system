@@ -49,7 +49,7 @@ export const Basic = args => ({
   </bal-button>
   <bal-popover-content>
     <div class="p-small">
-      <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+      <h5 class="title is-size-x-large" style="margin-top: 0px">Title</h5>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
         dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
@@ -99,7 +99,7 @@ export const Arrow = args => ({
   <bal-popover-content>
     <div class="p-small">
       <div class="is-flex">
-        <h5 class="title is-size-3 is-flex-grow-1 mt-none">Title</h5>
+        <h5 class="title is-size-x-large is-flex-grow-1 mt-none">Title</h5>
         <bal-close @click="toggle()"></bal-close>
       </div>
       <p>
