@@ -9,8 +9,21 @@
     height: $input-height
   &:not(.is-multiple):not(.is-loading)
     &::after
-      @extend %arrow
-      border-color: var(--bal-color-blue)
+      border: 3px solid var(--bal-color-blue)
+      border-radius: 2px
+      border-right: 0
+      border-top: 0
+      content: " "
+      display: block
+      height: 0.625em
+      margin-top: -0.4rem
+      pointer-events: none
+      position: absolute
+      top: 50%
+      transform: rotate(-45deg)
+      transform-origin: center
+      width: 0.625em
+
       +ltr-position(1.125em)
       z-index: 4
   select
