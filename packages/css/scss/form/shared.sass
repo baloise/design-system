@@ -4,14 +4,14 @@ $input-height: 48px !default
   @extend %control
   justify-content: flex-start
   background-color: var(--bal-color-white)
-  border-color: var(--bal-color-border-normal)
+  border-color: var(--bal-color-border-grey-3)
   border-radius: var(--bal-radius-small)
   color: var(--bal-color-blue)
   +placeholder
     color: var(--bal-color-text-blue-light)
   &:hover,
   &.is-hovered
-    border-color: var(--bal-color-border-normal)
+    border-color: var(--bal-color-border-grey-3)
     background-color: var(--bal-color-grey-1)
   &:focus,
   &.is-focused,
@@ -21,7 +21,7 @@ $input-height: 48px !default
   &[disabled],
   fieldset[disabled] &
     background-color: var(--bal-color-grey-2)
-    border-color: var(--bal-color-border-disabled)
+    border-color: var(--bal-color-border-grey-4)
     box-shadow: none
     color: var(--bal-color-text-disabled)
     +placeholder

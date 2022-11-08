@@ -27,7 +27,7 @@
     display: flex
     border-width: 0.125rem
     border-style: solid
-    border-color: var(--bal-color-border-normal)
+    border-color: var(--bal-color-border-grey-3)
     border-radius: var(--bal-radius)
     background: var(--bal-color-primary-inverted)
     font-size: var(--bal-weight-regular)
@@ -40,7 +40,7 @@
     +modifier(focused)
       border-color: var(--bal-color-primary)
     &:not(#{&}--disabled):not(#{&}--invalid):not(&:focus-within):hover
-      border-color: var(--bal-color-border-normal)
+      border-color: var(--bal-color-border-grey-3)
       background-color: var(--bal-color-grey-1)
     &:focus-within
       border-color: var(--bal-color-primary)
@@ -49,7 +49,7 @@
       background: var(--bal-color-danger-1) !important
     +modifier(disabled)
       background-color: var(--bal-color-grey-2) !important
-      border-color: var(--bal-color-border-disabled) !important
+      border-color: var(--bal-color-border-grey-4) !important
       &,
       & input
         cursor: default !important
