@@ -7,23 +7,33 @@
   font-size: var(--bal-size-normal)
 
 .button
-  @extend %control
   @extend %unselectable
   @extend %font-smoothing
+  -moz-appearance: none !important
+  -webkit-appearance: none !important
+  position: relative
+  display: inline-flex
+  border-style: solid
+  border-radius: var(--bal-radius-small)
   border-color: var(--bal-color-blue)
   color: var(--bal-color-blue)
   +fillSvg(var(--bal-color-blue))
   font-family: var(--bal-font-family-title)
+  font-size: var(--bal-size-normal)
   font-weight: $weight-bold
+  line-height: 1.5
   background-color: transparent
   border-width: 2px
   cursor: pointer
   justify-content: center
+  align-items: center
+  vertical-align: top
   padding: 10px 24px
   min-height: 48px
   height: auto
   text-align: left
   word-break: break-word
+  box-shadow: none
   outline: none
   z-index: 0
   box-sizing: border-box
@@ -31,6 +41,14 @@
   text-decoration: none
   user-select: none
   touch-action: manipulation
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    outline: none
+  &[disabled],
+  fieldset[disabled] &
+    cursor: default
   span,
   strong
     color: inherit
@@ -62,7 +80,7 @@
     width: 48px
     padding: 0
     .icon-left
-      +margin(0)
+      +margin('none')
   &.is-flat
     padding: 0
     min-height: 1.5rem

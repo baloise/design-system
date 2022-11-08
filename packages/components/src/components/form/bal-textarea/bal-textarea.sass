@@ -11,7 +11,7 @@
   box-sizing: border-box
 
   +element(native)
-    @include margin(0)
+    @include margin('none')
     display: block
     width: 100%
     max-width: 100%
@@ -22,5 +22,5 @@
     resize: none
     appearance: none
     &::placeholder
-      @include padding(0)
+      @include padding('none')
       font-family: inherit

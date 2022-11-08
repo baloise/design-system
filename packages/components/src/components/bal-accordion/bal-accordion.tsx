@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../utils/helpers'
 import { Events } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-accordion',
@@ -107,26 +108,25 @@ export class Accordion {
   render() {
     const label = this.value ? this.closeLabel : this.openLabel
     const icon = this.value ? this.closeIcon : this.openIcon
+    const block = BEM.block('accordion')
 
     return (
       <Host
         class={{
-          accordion: true,
-          // 'mt-5': this.card,
+          ...block.class(),
+          ...block.modifier('card').class(this.card),
         }}
         aria-presented={this.value ? 'true' : null}
       >
         <div
           class={{
-            'bal-accordion__wrapper': true,
-            // 'is-flex is-flex-direction-column-reverse': true,
+            ...block.element('wrapper').class(),
           }}
         >
           <div
             class={{
-              'accordion-trigger': true,
-              // 'px-5': this.card,
-              // 'pb-5': this.card,
+              ...block.element('trigger').class(),
+              ...block.element('trigger').modifier('card').class(this.card),
             }}
           >
             <bal-button
@@ -143,10 +143,8 @@ export class Accordion {
           </div>
           <div
             class={{
-              'accordion-content': true,
-            }}
-            style={{
-              display: this.value ? 'block' : 'none',
+              ...block.element('content').class(),
+              ...block.element('content').modifier('active').class(this.value),
             }}
           >
             <slot></slot>

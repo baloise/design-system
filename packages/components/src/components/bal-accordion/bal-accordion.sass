@@ -1,10 +1,34 @@
 @import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 
-bal-accordion,
 .bal-accordion
   position: static
   display: block
+  &--card
+    margin-top: var(--bal-space-medium)
+    +tablet
+      margin-top: var(--bal-space-tablet-medium)
+    +desktop
+      margin-top: var(--bal-space-desktop-medium)
 
-  .bal-accordion__wrapper
-    display: flex
-    flex-direction: column-reverse
+.bal-accordion__wrapper
+  display: flex
+  flex-direction: column-reverse
+
+.bal-accordion__trigger
+  &--card
+    margin-left: var(--bal-space-medium)
+    margin-right: var(--bal-space-medium)
+    margin-bottom: var(--bal-space-medium)
+    +tablet
+      margin-left: var(--bal-space-tablet-medium)
+      margin-right: var(--bal-space-tablet-medium)
+      margin-bottom: var(--bal-space-tablet-medium)
+    +desktop
+      margin-left: var(--bal-space-desktop-medium)
+      margin-right: var(--bal-space-desktop-medium)
+      margin-bottom: var(--bal-space-desktop-medium)
+
+.bal-accordion__content
+  display: none
+  &--active
+    display: block
