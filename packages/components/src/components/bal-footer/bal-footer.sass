@@ -10,7 +10,11 @@
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-blue)
     color: var(--bal-color-white)
-    padding: var(--bal-space-7)
+    padding: var(--bal-space-x-large)
+    +tablet
+      padding: var(--bal-space-tablet-x-large)
+    +desktop
+      padding: var(--bal-space-desktop-x-large)
 
     +element(links-container)
       display: flex
@@ -26,17 +30,21 @@
       +element(legal-links)
         display: flex
         flex-wrap: wrap
+        padding-top: var(--bal-space-normal)
+        gap: .75rem
 
         & > a
           white-space: nowrap
           &.is-current
             text-decoration: underline
 
-          +element(language-links)
-            & > a
-              white-space: nowrap
-              &.is-current
-                text-decoration: underline
+      +element(language-links)
+        padding-top: var(--bal-space-normal)
+        gap: .75rem
+        & > a
+          white-space: nowrap
+          &.is-current
+            text-decoration: underline
 
-          +tablet
-            flex-wrap: nowrap
+      +tablet
+        flex-wrap: nowrap
