@@ -36,7 +36,7 @@
       color: var(--bal-color-light-blue-5)
     .file-cta
       background-color: var(--bal-color-grey-1)
-      border-color: var(--bal-color-border-normal)
+      border-color: var(--bal-color-border-grey)
   &:active,
   &:focus-within
     .file-cta,
@@ -44,7 +44,7 @@
       color: var(--bal-color-blue-6)
     .file-cta
       background-color: var(--bal-color-grey-1)
-      border-color: var(--bal-color-border-active)
+      border-color: var(--bal-color-border-primary-5)
 
 .file-input
   height: 100%
@@ -59,7 +59,7 @@
   @extend %control
   justify-content: flex-start
   border-style: dashed
-  border-color: var(--bal-color-border-normal)
+  border-color: var(--bal-color-border-grey)
   border-radius: var(--bal-radius)
   background: var(--bal-color-white)
   font-size: 1em
@@ -83,16 +83,16 @@
 .file.is-danger
   .file-label,
   .file-cta
-    color: var(--bal-color-text-invalid)
+    color: var(--bal-color-text-danger)
   .file-cta
-    border-color: var(--bal-color-border-invalid)
+    border-color: var(--bal-color-border-danger-7)
     background: var(--bal-color-danger-1)
 
 .file.is-disabled
   .file-label,
   .file-cta
     @extend %disabled
-    color: var(--bal-color-text-disabled)
+    color: var(--bal-color-text-grey)
   .file-cta
-    border-color: var(--bal-color-border-disabled)
+    border-color: var(--bal-color-border-grey-dark)
     background: var(--bal-color-grey-2)

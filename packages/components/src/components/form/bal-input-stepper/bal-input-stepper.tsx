@@ -205,10 +205,6 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       >
         <div
           class={{
-            'is-flex': true,
-            'fg-1': true,
-            'is-justify-content-center': true,
-            'is-align-items-center': true,
             ...elInner.class(),
           }}
         >

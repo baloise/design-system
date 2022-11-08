@@ -21,7 +21,7 @@
         left: 50%
         right: -50%
         top: 50%
-        background-color: var(--bal-color-border-normal)
+        background-color: var(--bal-color-border-grey)
         border-radius: var(--bal-radius-rounded)
         margin-left: 10px
         margin-right: 20px
@@ -62,7 +62,7 @@
           z-index: 5
           font-weight: 700
           border-radius: 50%
-          border: 2px solid var(--bal-color-border-normal)
+          border: 2px solid var(--bal-color-border-grey)
           background: var(--bal-color-white)
           color: var(--bal-color-white-inverted)
           +modifier(active)
@@ -93,7 +93,7 @@
             +modifiers(active, passed, done)
               color: var(--bal-color-primary-inverted)
             +modifier(disabled)
-              color: var(--bal-color-text-disabled)
+              color: var(--bal-color-text-grey)
             +modifier(failed)
               color: var(--bal-color-white)
               +tablet
@@ -101,7 +101,7 @@
 
         +element(label)
           display: none
-          color: var(--bal-color-text-hint)
+          color: var(--bal-color-text-primary-light)
           +modifier(done)
             color: var(--bal-color-text-primary)
           +modifier(active)
@@ -109,7 +109,7 @@
           +modifier(failed)
             color: var(--bal-color-text-danger)
           +modifier(disabled)
-            color: var(--bal-color-text-disabled)
+            color: var(--bal-color-text-grey)
           +tablet
             display: block
             font-family: var(--bal-font-family-title)

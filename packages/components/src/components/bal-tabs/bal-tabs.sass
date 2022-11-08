@@ -180,14 +180,14 @@
               color: var(--bal-color-blue-6)
               +fillSvg(var(--bal-color-blue-6))
         +modifier(disabled)
-          color: var(--bal-color-text-disabled)
+          color: var(--bal-color-text-grey)
           cursor: default
           .bal-icon
-            +fillSvg(var(--bal-color-text-disabled))
+            +fillSvg(var(--bal-color-text-grey))
           &:hover, &:focus, &:active
-            color: var(--bal-color-text-disabled)
+            color: var(--bal-color-text-grey)
             .bal-icon
-              +fillSvg(var(--bal-color-text-disabled))
+              +fillSvg(var(--bal-color-text-grey))
         +modifier(fullwidth)
           flex-grow: 1
           flex-basis: 0
@@ -234,7 +234,7 @@
 
     +element(border)
       position: absolute
-      background: var(--bal-color-border-normal)
+      background: var(--bal-color-border-grey)
       border-radius: var(--bal-radius-small)
       height: 2px
       width: 100%
