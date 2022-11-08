@@ -85,7 +85,7 @@ export namespace Props {
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
-  export type BalPaginationInterface = '' | 'small' | 'tabs'
+  export type BalPaginationInterface = '' | 'small'
 
   export type BalPopoverContentRadius =
     | 'normal'
