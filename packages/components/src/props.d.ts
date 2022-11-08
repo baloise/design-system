@@ -145,15 +145,20 @@ export namespace Props {
   export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
+    | 'light-blue'
+    | 'blue-dark'
+    | 'blue-light'
+    | 'primary-light'
     | 'white'
+    | 'black'
     | 'grey'
-    | 'blue'
     | 'primary'
+    | 'blue'
     | 'info'
     | 'success'
     | 'warning'
     | 'danger'
-    | 'hint'
+    // | 'hint' // @deprecated use primary-light
     | ''
 
   export type BalModalInterface = 'light' | 'card'

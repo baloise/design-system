@@ -434,16 +434,17 @@ const tokens = {
     colors: {
       'white': 'white',
       'black': 'black',
+      'grey': 'grey-5',
       'primary': 'primary-5',
       'blue': 'blue-5',
       'light-blue': 'light-blue-5', // hover color
       'blue-dark': 'blue-6', // active color
       'blue-light': 'blue-3',
       'success': 'success-4',
-      'danger': 'danger-4',
+      'info': 'info-4',
       'warning': 'warning-5',
+      'danger': 'danger-4',
       'primary-light': 'primary-3',
-      'grey': 'grey-5',
       // 'hover': 'light-blue-5',
       // 'active': 'blue-6',
       // 'hint': 'primary-3',

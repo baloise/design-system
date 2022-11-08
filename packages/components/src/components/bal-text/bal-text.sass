@@ -1,7 +1,23 @@
 @import '~@baloise/design-system-css/scss/baloise-design-system.utilities'
 
-bal-text,
 .bal-text
+  display: block
   box-sizing: content-box
   position: static
   word-break: break-word
+  margin: 0 0 var(--bal-space-normal) 0
+  &--inline
+    display: inline
+    margin: 0
+  &--space-all
+    margin-top: var(--bal-space-normal)
+    margin-bottom: var(--bal-space-normal)
+  &--space-top
+    margin-top: var(--bal-space-normal)
+  &--space-bottom
+    margin-bottom: var(--bal-space-normal)
+  &--space-none
+    margin: 0
+  &__text
+    padding: 0
+    margin: 0

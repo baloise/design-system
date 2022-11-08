@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-heading',
@@ -45,68 +46,53 @@ export class Heading {
    * */
   @Prop() shadow = false
 
-  get fontSize(): string {
-    const isHeading = (size: string) => size.startsWith('h')
-    const parseDisplay = (size: string) => (size.startsWith('display') ? size : size)
-    const parseSize = (size: string) => (isHeading(size) ? size.replace('h', '') : parseDisplay(size))
-    const formatSize = (size: string) => `is-size-${parseSize(size)}`
+  private getFontSize(): string {
+    const formatSize = (size: Props.BalHeadingLevel) => `is-size-${mapSize(size)}`
+    const mapSize = (size: Props.BalHeadingLevel) => {
+      const sizes = {
+        'display': 'xxxxx-large',
+        'display-2': 'xxxx-large',
+        'h1': 'xxx-large',
+        'h2': 'xx-large',
+        'h3': 'x-large',
+        'h4': 'large',
+        'h5': 'medium',
+      }
+      return sizes[size] as string
+    }
 
     return formatSize(this.visualLevel ? this.visualLevel : this.level)
   }
 
-  get fontColor(): string {
+  private getFontColor(): string {
     const parseColor = (color: string) => (color !== '' ? `has-text-${color}` : '')
 
     return parseColor(this.inverted ? 'white' : this.color)
   }
 
-  margins(spacingLevel: number) {
-    const spacing = []
-
-    if (this.space === 'top' || this.space === 'all') {
-      spacing.push(`mt-${spacingLevel}`)
-    }
-
-    if (this.space === 'bottom' || this.space === 'all') {
-      spacing.push(`mb-${spacingLevel}`)
-    }
-
-    return spacing.join(' ')
-  }
-
-  get spacing(): string {
-    switch (this.level) {
-      case 'display':
-      case 'display-2':
-        return this.margins(4)
-      case 'h1':
-        return this.margins(3)
-      case 'h2':
-      case 'h3':
-      case 'h4':
-      case 'h5':
-        return this.margins(2)
-      default:
-        return ''
-    }
-  }
-
   render() {
     const Heading = this.level.startsWith('display') ? 'h1' : this.level
+    const block = BEM.block('heading')
 
     return (
-      <Host class={{ [this.spacing]: true }}>
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier(`space-${this.space}`).class(),
+          ...block.modifier(`level-${this.level}`).class(),
+        }}
+      >
         <Heading
           class={{
-            'data-test-heading': true,
             'title': this.subtitle === false,
             'subtitle': this.subtitle === true,
             'has-blur-shadow': this.shadow,
-            [this.fontSize]: true,
-            [this.fontColor]: true,
+            [this.getFontSize()]: true,
+            [this.getFontColor()]: true,
+            'data-test-heading': true,
           }}
         >
-          <slot />
+          <slot /> adf
         </Heading>
       </Host>
     )
