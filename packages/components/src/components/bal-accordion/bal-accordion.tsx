@@ -111,21 +111,22 @@ export class Accordion {
     return (
       <Host
         class={{
-          'accordion': true,
-          'mt-5': this.card,
+          accordion: true,
+          // 'mt-5': this.card,
         }}
         aria-presented={this.value ? 'true' : null}
       >
         <div
           class={{
-            'is-flex is-flex-direction-column-reverse': true,
+            'bal-accordion__wrapper': true,
+            // 'is-flex is-flex-direction-column-reverse': true,
           }}
         >
           <div
             class={{
               'accordion-trigger': true,
-              'px-5': this.card,
-              'pb-5': this.card,
+              // 'px-5': this.card,
+              // 'pb-5': this.card,
             }}
           >
             <bal-button
