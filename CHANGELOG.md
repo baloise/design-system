@@ -5,14 +5,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.12](https://github.com/baloise-incubator/design-system/compare/v11.0.11...v11.0.12) (2022-11-03)
 
-
 ### Bug Fixes
 
 * **logo:** animated is shown once ([db310b6](https://github.com/baloise-incubator/design-system/commit/db310b67f5de37603500a0be3f4ccf2e8bc6cb83))
 
-
 ## [11.0.11](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
-
 
 ### Bug Fixes
 
@@ -28,12 +25,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **logo:** add lazy loading ([d4d7820](https://github.com/baloise-incubator/design-system/commit/d4d78201bdb85464b5f7450d8feb590ab3224d62))
 * **spinner:** load animation date after first render ([f928030](https://github.com/baloise-incubator/design-system/commit/f92803014b9fc3cc9477953b1b08ca6ef39927b0))
 
-## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.5...v11.0.8) (2022-10-27)
-
-## 11.0.5 (2022-10-25)
-
-
-
 ## [11.0.10](https://github.com/baloise-incubator/design-system/compare/v11.0.9...v11.0.10) (2022-10-31)
 
 ### Bug Fixes
@@ -42,14 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * change length of chucks ([6e7ebb2](https://github.com/baloise-incubator/design-system/commit/6e7ebb297314efe386d66fde7d0ff6d7878a9b0c))
 * use conditional rendering instead of css ([e866e14](https://github.com/baloise-incubator/design-system/commit/e866e141c58ba7bb75275bfca4eff01b621dec4a))
 
-## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.6...v11.0.8) (2022-10-27)
-
-## [11.0.6](https://github.com/baloise-incubator/design-system/compare/v11.0.5...v11.0.6) (2022-10-26)
-
-## [11.0.5](https://github.com/baloise-incubator/design-system/compare/v11.0.1...v11.0.5) (2022-10-25)
-
 ## [11.0.1](https://github.com/baloise-incubator/design-system/compare/v10.24.10...v11.0.1) (2022-10-20)
-
 
 ### Bug Fixes
 
