@@ -29,7 +29,7 @@
   <bal-app class="bal-body">
     <header>
       <bal-navbar interface="app">
-        <bal-navbar-brand href="/" target="_blank">All Components</bal-navbar-brand>
+        <bal-navbar-brand href="/" target="_blank">All Components UPDATE</bal-navbar-brand>
         <bal-navbar-menu>
           <bal-navbar-menu-start>
             <bal-tabs interface="navbar" inverted>
@@ -263,7 +263,6 @@
         </bal-card>
       </section>
       <section>
-        <bal-heading>Text</bal-heading>
         <bal-carousel items-per-view="auto" steps="3" controls="small">
           <bal-carousel-item>
             <div>First Liverpool</div>
@@ -325,7 +324,6 @@
         </bal-carousel>
       </section>
       <section>
-        <bal-heading>Product</bal-heading>
         <bal-carousel interface="product" steps="2" items-per-view="auto" controls="large">
           <bal-carousel-item color="green" label="0 Auto" src="/assets/images/brand/car.svg"></bal-carousel-item>
           <bal-carousel-item color="yellow" label="1 Haushalt" src="/assets/images/brand/lamp.svg"></bal-carousel-item>
@@ -347,7 +345,6 @@
         </bal-carousel>
       </section>
       <section>
-        <bal-heading>Table</bal-heading>
         <bal-carousel interface="card" controls="tabs" controls-sticky>
           <bal-carousel-item label="ECO">
             <bal-card style="width: 100%">
@@ -370,7 +367,6 @@
         </bal-carousel>
       </section>
       <section>
-        <bal-heading>Basic</bal-heading>
         <bal-carousel>
           <bal-carousel-item>
             <div style="width: 100%">AAA</div>
@@ -393,7 +389,6 @@
         </bal-carousel>
       </section>
       <section>
-        <bal-heading>Image</bal-heading>
         <bal-carousel interface="image" controls="dots">
           <bal-carousel-item
             src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI">
@@ -418,7 +413,12 @@
         </bal-data>
       </section>
       <section>
+        <bal-heading level="display">Heading</bal-heading>
         <bal-heading level="h1">Heading</bal-heading>
+        <bal-heading level="h2">Heading</bal-heading>
+        <bal-heading level="h3">Heading</bal-heading>
+        <bal-heading level="h4">Heading</bal-heading>
+        <bal-heading level="h5">Heading</bal-heading>
       </section>
       <section>
         <bal-hint>
@@ -476,6 +476,8 @@
       </section>
       <section>
         <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
+        <bal-pagination interface="small" total-pages="4" value="2"></bal-pagination>
+        <bal-pagination interface="small" total-pages="6" value="2"></bal-pagination>
       </section>
       <section>
         <bal-popover id="bal-popover-1" is-active="false" data-testid="popover">
@@ -484,7 +486,7 @@
             <span id="bal-popover-1-trigger-label">Trigger</span>
           </bal-button>
           <bal-popover-content scrollable="100">
-            <div style="padding: 0 15px 15px">
+            <div style="padding: 16px">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
@@ -569,8 +571,9 @@
         <bal-tag color="primary">Tag</bal-tag>
       </section>
       <section>
-        <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua.</bal-text>
+        <bal-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="all">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
       </section>
       <section>
         <bal-checkbox>Label</bal-checkbox>
@@ -746,17 +749,17 @@
       <script type="text/javascript">
         const modalElementCustomWidth = document.getElementById('bal-modal-example-width')
         const triggerElementCustomWidth = document.getElementById('bal-modal-trigger-example-width')
-        const okayElementCustomWidth = document.getElementById('bal-modal-close-3')
-        const cancelElementCustomWidth = document.getElementById('bal-modal-close-4')
+        // const okayElementCustomWidth = document.getElementById('bal-modal-close-3')
+        // const cancelElementCustomWidth = document.getElementById('bal-modal-close-4')
         triggerElementCustomWidth.onclick = function () {
           modalElementCustomWidth.open()
         }
-        okayElementCustomWidth.onclick = function () {
-          modalElementCustomWidth.close()
-        }
-        cancelElementCustomWidth.onclick = function () {
-          modalElementCustomWidth.close()
-        }
+        // okayElementCustomWidth.onclick = function () {
+        //   modalElementCustomWidth.close()
+        // }
+        // cancelElementCustomWidth.onclick = function () {
+        //   modalElementCustomWidth.close()
+        // }
       </script>
       <section>
         <bal-notification color="primary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in

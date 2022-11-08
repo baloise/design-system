@@ -1751,10 +1751,6 @@ export namespace Components {
          */
         "sticky": boolean;
         /**
-          * List of tabs names for 'tabs' interface
-         */
-        "tabsNames": string[];
-        /**
           * If sticky, the top position will be determined by this value
          */
         "top": number;
@@ -5378,10 +5374,6 @@ declare namespace LocalJSX {
           * If 'true, the pagination will be sticky to the top
          */
         "sticky"?: boolean;
-        /**
-          * List of tabs names for 'tabs' interface
-         */
-        "tabsNames"?: string[];
         /**
           * If sticky, the top position will be determined by this value
          */
