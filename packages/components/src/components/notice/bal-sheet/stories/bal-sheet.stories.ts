@@ -51,7 +51,7 @@ export const Basic = args => ({
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
       <bal-button expanded color="info" class="mt-x-small">Back</bal-button>
     </div>
-    <div class="is-hidden-mobile is-flex is-align-items-center fg-4">
+    <div class="is-hidden-mobile is-flex is-align-items-center fg-normal">
       <h4 class="title is-size-large m-none">1'234 CHF</h4>
       <p class="has-text-blue-light-text is-small m-none is-flex-grow-1">{{ args.content }}</p>
       <bal-button-group>

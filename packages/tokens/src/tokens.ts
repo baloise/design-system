@@ -114,7 +114,7 @@ export const BaloiseDesignToken = {
   balColorBorderWarning: '#f99319',
   balColorBorderSuccess: '#168741',
   balColorBorderDanger: '#ea1800',
-  balColorTransparentInverted: 'transparent',
+  balColorTransparentInverted: '#000d6e',
   balColorWhiteInverted: '#000d6e',
   balColorBlackInverted: '#ffffff',
   balColorGrey1Inverted: '#000d6e',

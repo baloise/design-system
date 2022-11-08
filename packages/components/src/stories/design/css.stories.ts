@@ -551,12 +551,12 @@ Flexbox.parameters = {
 export const FlexboxGap = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div className="has-background-danger is-flex fg-5">
+  template: `<div className="has-background-danger is-flex fg-medium">
   <div className="has-background-blue is-flex-grow-1 p-small"></div>
   <div className="has-background-blue is-flex-grow-1 p-small"></div>
   <div className="has-background-blue is-flex-grow-1 p-small"></div>
 </div>
-<div className="has-background-danger is-flex fg-8 mt-small">
+<div className="has-background-danger is-flex fg-xx-large mt-small">
   <div className="has-background-blue is-flex-grow-1 p-small"></div>
   <div className="has-background-blue is-flex-grow-1 p-small"></div>
   <div className="has-background-blue is-flex-grow-1 p-small"></div>

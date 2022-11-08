@@ -22,7 +22,7 @@ const tokens = {
   color: {
     //
     // BASE
-    'transparent': { hex: 'transparent', inverted: 'transparent', description: descriptions.color.neutral },
+    'transparent': { hex: 'transparent', inverted: 'primary', description: descriptions.color.neutral },
     'white': { hex: '#ffffff', inverted: 'primary', description: descriptions.color.neutral },
     'black': { hex: '#000000', inverted: 'white', description: descriptions.color.neutral },
     //

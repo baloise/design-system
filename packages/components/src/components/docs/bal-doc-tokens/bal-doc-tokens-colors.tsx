@@ -72,7 +72,7 @@ export class DocTokensColors implements ComponentInterface {
                       <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
                         var(--bal-color-{c.name}-x)
                       </span>
-                      <div class="is-flex fg-2 mt-x-small">
+                      <div class="is-flex fg-x-small mt-x-small">
                         <div class={`has-background-${c.name}-1 has-radius p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-1-inverted is-bold`}>1</span>
                         </div>
