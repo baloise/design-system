@@ -18,22 +18,22 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-carousel v-bind="args">
   <bal-carousel-item>
-    <div class="has-background-green-1 p-4 is-fullwidth">Slide 1</div>
+    <div class="has-background-green-1 p-normal is-fullwidth">Slide 1</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-2 p-4 is-fullwidth">Slide 2</div>
+    <div class="has-background-green-2 p-normal is-fullwidth">Slide 2</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-3 p-4 is-fullwidth">Slide 3</div>
+    <div class="has-background-green-3 p-normal is-fullwidth">Slide 3</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-4 p-4 is-fullwidth">Slide 4</div>
+    <div class="has-background-green-4 p-normal is-fullwidth">Slide 4</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-5 p-4 is-fullwidth has-text-white">Slide 5</div>
+    <div class="has-background-green-5 p-normal is-fullwidth has-text-white">Slide 5</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-6 p-4 is-fullwidth has-text-white">Slide 6</div>
+    <div class="has-background-green-6 p-normal is-fullwidth has-text-white">Slide 6</div>
   </bal-carousel-item>
 </bal-carousel>`,
 })
@@ -128,61 +128,61 @@ export const ResponsiveSlider = args => ({
   template: `<div class="container">
   <bal-carousel v-bind="args">
     <bal-carousel-item>
-      <div class="px-2">Liverpool</div>
+      <div class="px-x-small">Liverpool</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Valencia</div>
+      <div class="px-x-small">Valencia</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Madrid</div>
+      <div class="px-x-small">Madrid</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Barcelona</div>
+      <div class="px-x-small">Barcelona</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">München</div>
+      <div class="px-x-small">München</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Manchester</div>
+      <div class="px-x-small">Manchester</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">London</div>
+      <div class="px-x-small">London</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Basel</div>
+      <div class="px-x-small">Basel</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Brüssel</div>
+      <div class="px-x-small">Brüssel</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Paris</div>
+      <div class="px-x-small">Paris</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Berlin</div>
+      <div class="px-x-small">Berlin</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Hamburg</div>
+      <div class="px-x-small">Hamburg</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Stuttgart</div>
+      <div class="px-x-small">Stuttgart</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Bern</div>
+      <div class="px-x-small">Bern</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Zürich</div>
+      <div class="px-x-small">Zürich</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Dornach</div>
+      <div class="px-x-small">Dornach</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Reinach</div>
+      <div class="px-x-small">Reinach</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Olten</div>
+      <div class="px-x-small">Olten</div>
     </bal-carousel-item>
     <bal-carousel-item>
-      <div class="px-2">Solothurn Last</div>
+      <div class="px-x-small">Solothurn Last</div>
     </bal-carousel-item>
   </bal-carousel>
 </div>`,

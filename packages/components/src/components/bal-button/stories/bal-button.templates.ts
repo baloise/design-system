@@ -1,131 +1,131 @@
 export const basicLightButtons = `
 <table>
 <tr>
-    <td class="p-2"><bal-button icon="account" color="">Primary</bal-button></td>
-    <td class="p-2"><bal-button icon="account" color="info">Secondary</bal-button></td>
-    <td class="p-2"><bal-button icon="account" color="link">Link</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" color="">Primary</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" color="info">Secondary</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" color="link">Link</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-focused">Focus</button></td>
-    <td class="p-2"><button class="button is-focused is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-focused is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-focused">Focus</button></td>
+    <td class="p-x-small"><button class="button is-focused is-info">Secondary</button></td>
+    <td class="p-x-small"><button class="button is-focused is-link">Link</button></td>
   </tr>
   <tr>
-  <td class="p-2"><button class="button is-hovered">Hover</button></td>
-  <td class="p-2"><button class="button is-hovered is-info">Secondary</button></td>
-  <td class="p-2"><button class="button is-hovered is-link">Link</button></td>
+  <td class="p-x-small"><button class="button is-hovered">Hover</button></td>
+  <td class="p-x-small"><button class="button is-hovered is-info">Secondary</button></td>
+  <td class="p-x-small"><button class="button is-hovered is-link">Link</button></td>
 </tr>
   <tr>
-    <td class="p-2"><button class="button is-active">Active</button></td>
-    <td class="p-2"><button class="button is-active is-info"> Secondary</button></td>
-    <td class="p-2"><button class="button is-active is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-active">Active</button></td>
+    <td class="p-x-small"><button class="button is-active is-info"> Secondary</button></td>
+    <td class="p-x-small"><button class="button is-active is-link">Link</button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-disabled" disabled>Disabled</button></td>
-    <td class="p-2"><button class="button is-disabled is-info" disabled>Secondary</button></td>
-    <td class="p-2"><button class="button is-disabled is-link" disabled>Link</button></td>
+    <td class="p-x-small"><button class="button is-disabled" disabled>Disabled</button></td>
+    <td class="p-x-small"><button class="button is-disabled is-info" disabled>Secondary</button></td>
+    <td class="p-x-small"><button class="button is-disabled is-link" disabled>Link</button></td>
   </tr>
 </table>`
 
 export const basicDarkButtons = `
 <table>
 <tr>
-    <td class="p-2"><bal-button inverted icon="account" color="">Primary</bal-button></td>
-    <td class="p-2"><bal-button inverted icon="account" color="info">Secondary</bal-button></td>
-    <td class="p-2"><bal-button inverted icon="account" color="link">Link</bal-button></td>
+    <td class="p-x-small"><bal-button inverted icon="account" color="">Primary</bal-button></td>
+    <td class="p-x-small"><bal-button inverted icon="account" color="info">Secondary</bal-button></td>
+    <td class="p-x-small"><bal-button inverted icon="account" color="link">Link</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-focused">Focus</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused">Focus</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-info">Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-link">Link</button></td>
   </tr>
   <tr>
-  <td class="p-2"><button class="button is-inverted is-hovered">Hover</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-info">Secondary</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-link">Link</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered">Hover</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-info">Secondary</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-link">Link</button></td>
 </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-active">Active</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-info"> Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active">Active</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-info"> Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-link">Link</button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-disabled" disabled>Disabled</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-info" disabled>Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-link" disabled>Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled" disabled>Disabled</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-info" disabled>Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-link" disabled>Link</button></td>
   </tr>
 </table>`
 
 export const alertButtons = `
 <table>
 <tr>
-    <td class="p-2"><bal-button icon="account" color="success">Success</td>
-    <td class="p-2"><bal-button icon="account" color="warning">Warning</bal-button></td>
-    <td class="p-2"><bal-button icon="account" color="danger">Danger</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" color="success">Success</td>
+    <td class="p-x-small"><bal-button icon="account" color="warning">Warning</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" color="danger">Danger</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-focused is-success">Success</button></td>
-    <td class="p-2"><button class="button is-focused is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-focused is-danger">Danger</button></td>
+    <td class="p-x-small"><button class="button is-focused is-success">Success</button></td>
+    <td class="p-x-small"><button class="button is-focused is-warning">Warning</button></td>
+    <td class="p-x-small"><button class="button is-focused is-danger">Danger</button></td>
   </tr>
   <tr>
-  <td class="p-2"><button class="button is-hovered is-success">Success</button></td>
-  <td class="p-2"><button class="button is-hovered is-warning">Warning</button></td>
-  <td class="p-2"><button class="button is-hovered is-danger">Danger</button></td>
+  <td class="p-x-small"><button class="button is-hovered is-success">Success</button></td>
+  <td class="p-x-small"><button class="button is-hovered is-warning">Warning</button></td>
+  <td class="p-x-small"><button class="button is-hovered is-danger">Danger</button></td>
 </tr>
   <tr>
-    <td class="p-2"><button class="button is-active is-success">Success</button></td>
-    <td class="p-2"><button class="button is-active is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-active is-danger">Danger</button></td>
+    <td class="p-x-small"><button class="button is-active is-success">Success</button></td>
+    <td class="p-x-small"><button class="button is-active is-warning">Warning</button></td>
+    <td class="p-x-small"><button class="button is-active is-danger">Danger</button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-disabled is-success" disabled>Success</button></td>
-    <td class="p-2"><button class="button is-disabled is-warning" disabled>Warning</button></td>
-    <td class="p-2"><button class="button is-disabled is-danger" disabled>Danger</button></td>
+    <td class="p-x-small"><button class="button is-disabled is-success" disabled>Success</button></td>
+    <td class="p-x-small"><button class="button is-disabled is-warning" disabled>Warning</button></td>
+    <td class="p-x-small"><button class="button is-disabled is-danger" disabled>Danger</button></td>
   </tr>
 </table>`
 
 export const inverted = `
 <table class="has-background-blue">
 <tr>
-    <td class="p-2"><bal-button icon="account" inverted color="">Primary</bal-button></td>
-    <td class="p-2"><bal-button icon="account" inverted color="info">Secondary</bal-button></td>
-    <td class="p-2"><bal-button icon="account" inverted color="link">Link</bal-button></td>
-    <td class="p-2"><bal-button icon="account" inverted color="success">Success</td>
-    <td class="p-2"><bal-button icon="account" inverted color="warning">Warning</bal-button></td>
-    <td class="p-2"><bal-button icon="account" inverted color="danger">Danger</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="">Primary</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="info">Secondary</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="link">Link</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="success">Success</td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="warning">Warning</bal-button></td>
+    <td class="p-x-small"><bal-button icon="account" inverted color="danger">Danger</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-focused">Focus</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-link">Link</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-success">Success</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-danger">Danger</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused">Focus</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-info">Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-success">Success</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-warning">Warning</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-focused is-danger">Danger</button></td>
   </tr>
   <tr>
-  <td class="p-2"><button class="button is-inverted is-hovered">Hover</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-info">Secondary</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-link">Link</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-success">Success</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-warning">Warning</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-danger">Danger</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered">Hover</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-info">Secondary</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-link">Link</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-success">Success</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-warning">Warning</button></td>
+  <td class="p-x-small"><button class="button is-inverted is-hovered is-danger">Danger</button></td>
 </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-active">Active</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-link">Link</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-success">Success</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-danger">Danger</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active">Active</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-info">Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-link">Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-success">Success</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-warning">Warning</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-active is-danger">Danger</button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted is-disabled" disabled>Disabled</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-info" disabled>Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-link" disabled>Link</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-success" disabled>Success</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-warning" disabled>Warning</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-danger" disabled>Danger</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled" disabled>Disabled</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-info" disabled>Secondary</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-link" disabled>Link</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-success" disabled>Success</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-warning" disabled>Warning</button></td>
+    <td class="p-x-small"><button class="button is-inverted is-disabled is-danger" disabled>Danger</button></td>
   </tr>
 </table>`
 
@@ -138,7 +138,7 @@ export const variants = `
 export const links = `
 <div>
 <a href="https://baloise-design.vercel.app/" class="is-link">Link</a>
-<div class="has-background-blue p-2 mt-2">
+<div class="has-background-blue p-x-small mt-x-small">
   <a href="https://baloise-design.vercel.app/" class="is-link is-inverted">Inverted Link</a>
 </div>
 </div>`

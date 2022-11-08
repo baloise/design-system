@@ -11,14 +11,14 @@ export const InternalFormAppTemplate = `
     </bal-navbar>
   </header>
   <main>
-    <div class="container my-7">
+    <div class="container my-x-large">
       <bal-card>
         <bal-card-title level="h4" space="none">Contact Person</bal-card-title>
         <bal-card-subtitle level="h5" space="bottom">Subtitle</bal-card-subtitle>
         <bal-card-content>
 
-        <form class="columns is-multiline mt-0">
-      <bal-field class="column is-full py-0">
+        <form class="columns is-multiline mt-none">
+      <bal-field class="column is-full py-none">
         <bal-field-control>
           <bal-radio-group>
             <bal-radio name="gender" value="male">Male</bal-radio>
@@ -26,33 +26,33 @@ export const InternalFormAppTemplate = `
           </bal-radio-group>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-half py-0" required>
+      <bal-field class="column is-half py-none" required>
         <bal-field-label required>Firstname</bal-field-label>
         <bal-field-control>
           <bal-input name="firstname" placeholder="Enter your firstname" required></bal-input>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-half py-0" required>
+      <bal-field class="column is-half py-none" required>
         <bal-field-label required>Lastname</bal-field-label>
         <bal-field-control>
           <bal-input name="lastname" placeholder="Enter your lastname" required></bal-input>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-half py-0" required>
+      <bal-field class="column is-half py-none" required>
         <bal-field-label required>Street</bal-field-label>
         <bal-field-control>
           <bal-input name="street" placeholder="Enter your street" required></bal-input>
         </bal-field-control>
       </bal-field>
-      <div class="column is-half pb-0">
+      <div class="column is-half pb-none">
         <div class="columns">
-          <bal-field class="column is-one-third py-0">
+          <bal-field class="column is-one-third py-none">
             <bal-field-label>Postal Code</bal-field-label>
             <bal-field-control>
               <bal-input name="postalCode" placeholder="4000" required></bal-input>
             </bal-field-control>
           </bal-field>
-          <bal-field class="column is-two-thirds py-0">
+          <bal-field class="column is-two-thirds py-none">
             <bal-field-label>City</bal-field-label>
             <bal-field-control>
               <bal-input name="city" placeholder="Basel" required></bal-input>
@@ -60,7 +60,7 @@ export const InternalFormAppTemplate = `
           </bal-field>
         </div>
       </div>
-      <bal-field class="column is-half py-0">
+      <bal-field class="column is-half py-none">
         <bal-field-label>Canton</bal-field-label>
         <bal-field-control>
           <bal-select placeholder="select your canton" formControlName="canton">
@@ -70,18 +70,18 @@ export const InternalFormAppTemplate = `
           </bal-select>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-half py-0">
+      <bal-field class="column is-half py-none">
         <bal-field-label>Birthdate</bal-field-label>
         <bal-field-control>
           <bal-datepicker placeholder="Select your birthdate"></bal-datepicker>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-full py-0">
+      <bal-field class="column is-full py-none">
         <bal-field-control>
           <bal-checkbox>Checkbox</bal-checkbox>
         </bal-field-control>
       </bal-field>
-      <bal-field class="column is-full py-0">
+      <bal-field class="column is-full py-none">
         <bal-field-label>Comment</bal-field-label>
         <bal-field-control>
           <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>

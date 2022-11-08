@@ -56,7 +56,7 @@ Basic.parameters = { ...component.sourceCode(Basic) }
 export const Horizontal = args => ({
   components: { ...component.components, BalCard },
   setup: () => ({ args }),
-  template: `<bal-card class="p-5">
+  template: `<bal-card class="p-medium">
   <bal-data v-bind="args">
     <div>
       <bal-data-item>
@@ -106,7 +106,7 @@ export const DataTypes = args => ({
       <bal-data-item>
         <bal-data-label>List Value</bal-data-label>
         <bal-data-value multiline>
-          <ul class="is-list ml-4">
+          <ul class="is-list ml-normal">
             <li>Value 1</li>
             <li>Value 2</li>
           </ul>

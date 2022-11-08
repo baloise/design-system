@@ -23,7 +23,7 @@ const Template = args => ({
     args,
     openToast: () => balToastController.create(args),
   }),
-  template: `<bal-button @click="openToast" class="m-4">Trigger a Toast</bal-button>`,
+  template: `<bal-button @click="openToast" class="m-normal">Trigger a Toast</bal-button>`,
 })
 
 export const Basic = Template.bind({})

@@ -23,7 +23,7 @@ const Template = args => ({
     args,
     open: () => balSnackbarController.create(args),
   }),
-  template: `<bal-button @click="open" class="m-4">Trigger a Snackbar</bal-button>`,
+  template: `<bal-button @click="open" class="m-normal">Trigger a Snackbar</bal-button>`,
 })
 
 export const Basic = Template.bind({})

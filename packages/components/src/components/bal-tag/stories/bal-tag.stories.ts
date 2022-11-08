@@ -42,7 +42,7 @@ TagGroup.parameters = { ...component.sourceCode(TagGroup) }
 export const TagCard = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-card class="mt-4">
+  template: `<bal-card class="mt-normal">
   <bal-tag v-bind="args">{{ args.content }}</bal-tag>
   <bal-card-title>Title</bal-card-title>
   <bal-card-content>
@@ -59,7 +59,7 @@ TagCard.parameters = { ...component.sourceCode(TagCard) }
 export const TagCardCentered = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-card class="mt-4">
+  template: `<bal-card class="mt-normal">
   <bal-tag v-bind="args">{{ args.content }}</bal-tag>
   <bal-card-title>Title</bal-card-title>
   <bal-card-content>
@@ -79,27 +79,27 @@ export const Colors = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-tag color="" :closable="args.closable" :size="args.size" class="mr-1">Default</bal-tag>
-  <bal-tag color="primary" :closable="args.closable" :size="args.size" class="mr-1">Primary</bal-tag>
-  <bal-tag color="info" :closable="args.closable" :size="args.size" class="mr-1">Info</bal-tag>
-  <bal-tag color="success" :closable="args.closable" :size="args.size" class="mr-1">Success</bal-tag>
-  <bal-tag color="warning" :closable="args.closable" :size="args.size" class="mr-1">Warning</bal-tag>
+  <bal-tag color="" :closable="args.closable" :size="args.size" class="mr-xx-small">Default</bal-tag>
+  <bal-tag color="primary" :closable="args.closable" :size="args.size" class="mr-xx-small">Primary</bal-tag>
+  <bal-tag color="info" :closable="args.closable" :size="args.size" class="mr-xx-small">Info</bal-tag>
+  <bal-tag color="success" :closable="args.closable" :size="args.size" class="mr-xx-small">Success</bal-tag>
+  <bal-tag color="warning" :closable="args.closable" :size="args.size" class="mr-xx-small">Warning</bal-tag>
   <bal-tag color="danger" :closable="args.closable" :size="args.size">Danger</bal-tag>
   <br>
   <br>
-  <bal-tag color="purple" :closable="args.closable" :size="args.size" class="mr-1">Purple</bal-tag>
-  <bal-tag color="red" :closable="args.closable" :size="args.size" class="mr-1">Red</bal-tag>
-  <bal-tag color="yellow" :closable="args.closable" :size="args.size" class="mr-1">Yellow</bal-tag>
-  <bal-tag color="green" :closable="args.closable" :size="args.size" class="mr-1">Green</bal-tag>
+  <bal-tag color="purple" :closable="args.closable" :size="args.size" class="mr-xx-small">Purple</bal-tag>
+  <bal-tag color="red" :closable="args.closable" :size="args.size" class="mr-xx-small">Red</bal-tag>
+  <bal-tag color="yellow" :closable="args.closable" :size="args.size" class="mr-xx-small">Yellow</bal-tag>
+  <bal-tag color="green" :closable="args.closable" :size="args.size" class="mr-xx-small">Green</bal-tag>
   <br>
   <br>
-  <bal-tag color="purple" :closable="args.closable" :size="args.size" light class="mr-1">Purple</bal-tag>
-  <bal-tag color="red" :closable="args.closable" :size="args.size" light class="mr-1">Red</bal-tag>
-  <bal-tag color="yellow" :closable="args.closable" :size="args.size" light class="mr-1">Yellow</bal-tag>
-  <bal-tag color="green" :closable="args.closable" :size="args.size" light class="mr-1">Green</bal-tag>
+  <bal-tag color="purple" :closable="args.closable" :size="args.size" light class="mr-xx-small">Purple</bal-tag>
+  <bal-tag color="red" :closable="args.closable" :size="args.size" light class="mr-xx-small">Red</bal-tag>
+  <bal-tag color="yellow" :closable="args.closable" :size="args.size" light class="mr-xx-small">Yellow</bal-tag>
+  <bal-tag color="green" :closable="args.closable" :size="args.size" light class="mr-xx-small">Green</bal-tag>
   <br>
   <br>
-  <bal-tag disabled :closable="args.closable" :size="args.size" class="mr-1">Disabled</bal-tag>`,
+  <bal-tag disabled :closable="args.closable" :size="args.size" class="mr-xx-small">Disabled</bal-tag>`,
 })
 Colors.args = {
   closable: false,

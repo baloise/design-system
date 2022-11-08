@@ -30,7 +30,7 @@ export class DocTokensBreakpoints implements ComponentInterface {
             <tbody>
               <tr>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="is-bold is-size-large mt-0 mb-2">mobile</p>
+                  <p class="is-bold is-size-large mt-none mb-x-small">mobile</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }}></td>
                 <td style={{ verticalAlign: 'top' }}>
@@ -40,15 +40,15 @@ export class DocTokensBreakpoints implements ComponentInterface {
               {sizes.map(c => (
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-0 mb-2">{c.name}</p>
+                    <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
                       var(--bal-{c.name})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class={`is-bold is-size-small py-1`}>{c.value}</p>
+                    <p class={`is-bold is-size-small py-xx-small`}>{c.value}</p>
                   </td>
                 </tr>
               ))}

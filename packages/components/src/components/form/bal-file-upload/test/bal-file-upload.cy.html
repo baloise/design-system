@@ -20,7 +20,7 @@
           max-file-size="1000000"
           max-bundle-size="1000000"
         ></bal-file-upload>
-        <bal-button class="mt-2" id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
+        <bal-button class="mt-x-small" id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
       </section>
       <script>
         var messages = []
@@ -37,7 +37,7 @@
               '"',
           )
           div.appendChild(text)
-          div.setAttribute('class', 'notification is-warning mb-4')
+          div.setAttribute('class', 'notification is-warning mb-normal')
           document.getElementById('bal-file-upload-messages').appendChild(div)
         })
 

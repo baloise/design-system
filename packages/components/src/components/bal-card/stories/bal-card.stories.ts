@@ -134,7 +134,7 @@ export const TeaserCards = args => ({
       <bal-card v-bind="args" clickable>
         <bal-card-content>
           <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-            <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
+            <img class="mb-normal" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
             <bal-heading level="h4" space="bottom">Clickable Card</bal-heading>
           </div>
         </bal-card-content>
@@ -145,7 +145,7 @@ export const TeaserCards = args => ({
         <bal-card-content>
           <div class="is-flex is-justify-content-start is-flex-direction-column">
             <bal-heading level="h4" space="bottom">Info Card</bal-heading>
-            <bal-text class="mb-4">
+            <bal-text class="mb-normal">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </bal-text>
             <bal-button-group position="center" class="mt-auto">
@@ -163,7 +163,7 @@ export const TeaserCards = args => ({
               <bal-heading class="is-flex-grow-1" level="h4" space="none">List Card</bal-heading>
               <a class="is-link">Show All</a>
             </div>
-            <bal-list border size="large" class="mb-4">
+            <bal-list border size="large" class="mb-normal">
               <bal-list-item clickable href="www.baloise.com" target="_blank">
                 <bal-list-item-content>
                     <bal-list-item-title>External Link</bal-list-item-title>
@@ -200,7 +200,7 @@ export const TeaserCards = args => ({
               <bal-input placeholder="Placeholder"></bal-input>
             </bal-input-group>
             <bal-button-group position="center" class="mt-auto">
-              <bal-button expanded outlined color="info" class="mt-4">Search</bal-button>
+              <bal-button expanded outlined color="info" class="mt-normal">Search</bal-button>
             </bal-button-group>
           </div>
         </bal-card-content>
@@ -263,7 +263,7 @@ export const AccordionCard = args => ({
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-accordion card>
-    <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p class="p-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
   </bal-card>`,
 })
@@ -323,17 +323,17 @@ export const ServiceCard = args => ({
   <bal-card-content>
     <div class="is-flex is-justify-content-center	is-align-items-center">
       <img style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-      <div class="is-flex-grow-1 px-2">
+      <div class="is-flex-grow-1 px-x-small">
         <bal-heading title level="h4" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
         <bal-heading subtitle level="h5" space="none" class="is-hidden-desktop">+ CHF 11.30</bal-heading>
         <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
       </div>
       <bal-checkbox :value="true" interface="switch"></bal-checkbox>
     </div>
-    <p class="mt-2 has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+    <p class="mt-x-small has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
   </bal-card-content>
   <bal-accordion card open-label="Show more" close-label="Show less">
-  <p class="p-5 has-text-blue-light-text">
+  <p class="p-medium has-text-blue-light-text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
     incididunt ut labore et dolore magna aliqua.

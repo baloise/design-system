@@ -19,13 +19,13 @@ export class DocUsageItem implements ComponentInterface {
       <Host class="column bal-doc-usage-item">
         <div
           class={{
-            'p-4': true,
+            'p-normal': true,
             'has-radius-large': true,
             [`has-background-${color}-light`]: true,
           }}
         >
-          <h3 class="is-size-4 mt-0 mb-4">
-            <bal-icon name={icon} inline size="" color={color} class="mr-3"></bal-icon>
+          <h3 class="is-size-4 mt-none mb-normal">
+            <bal-icon name={icon} inline size="" color={color} class="mr-small"></bal-icon>
             {title}
           </h3>
           {this.image ? (
@@ -33,7 +33,7 @@ export class DocUsageItem implements ComponentInterface {
               <slot></slot>
             </div>
           ) : (
-            <ul class="is-list ml-6">
+            <ul class="is-list ml-large">
               <slot></slot>
             </ul>
           )}

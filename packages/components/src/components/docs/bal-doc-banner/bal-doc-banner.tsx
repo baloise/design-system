@@ -16,7 +16,7 @@ export class DocBanner implements ComponentInterface {
       <Host>
         <bal-doc-app>
           <div
-            class="bal-doc-banner__inner pt-7 pb-6 px-6"
+            class="bal-doc-banner__inner pt-x-large pb-large px-large"
             style={{
               marginTop: '-32px',
               marginLeft: '-32px',
@@ -29,7 +29,7 @@ export class DocBanner implements ComponentInterface {
             <bal-heading space="none" subtitle level="h4" inverted>
               {this.subtitle}
             </bal-heading>
-            <div class="mt-4" style={{ display: this.subtitle === 'Component' ? 'block' : 'none' }}>
+            <div class="mt-normal" style={{ display: this.subtitle === 'Component' ? 'block' : 'none' }}>
               <bal-doc-banner-status context={this.status.split(',').map(s => s.trim()) as any} />
             </div>
           </div>

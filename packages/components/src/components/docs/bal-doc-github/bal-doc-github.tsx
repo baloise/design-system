@@ -9,8 +9,8 @@ export class BalDocGithub {
   render() {
     return (
       <Host class="bal-app">
-        <section class="mt-8 pt-4 has-border-top-light">
-          <p class="mb-3">
+        <section class="mt-xx-large pt-normal has-border-top-light">
+          <p class="mb-small">
             If you experience any issues while using a component, please head over to the{' '}
             <a href="https://baloise-design.vercel.app/?path=/docs/support--page">Support page</a> for more guidelines
             and help.

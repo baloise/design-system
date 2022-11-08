@@ -27,7 +27,7 @@ export class CardActions {
   render() {
     return (
       <Host class="bal-card-actions">
-        <bal-button-group class="m-0" position={this.buttonGroupPosition}>
+        <bal-button-group class="m-none" position={this.buttonGroupPosition}>
           <slot />
         </bal-button-group>
       </Host>
