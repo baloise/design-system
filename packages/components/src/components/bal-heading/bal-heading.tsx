@@ -92,7 +92,7 @@ export class Heading {
             'data-test-heading': true,
           }}
         >
-          <slot /> adf
+          <slot />
         </Heading>
       </Host>
     )

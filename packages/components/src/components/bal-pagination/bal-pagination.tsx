@@ -227,7 +227,7 @@ export class Pagination {
         class={{
           ...elList.class(),
           ...elList.modifier(`context-${this.interface}`).class(),
-          // 'is-size-5': true,
+          // 'is-size-medium': true,
         }}
         color="blue"
       >

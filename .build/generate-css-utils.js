@@ -27,22 +27,30 @@ async function generateBackgroundColors() {
 
   lines.push(`.has-background-transparent`)
   lines.push(`  background: transparent !important`)
-  // lines.push(`.has-fill-transparent`)
-  // lines.push(`  fill: transparent !important`)
-  // lines.push(`  @include fillSvg(transparent)`)
-  // lines.push(``)
 
   for (const color in colors) {
     lines.push(`.has-background-${color}`)
     lines.push(`  background: var(--bal-color-${color}) !important`)
-    // lines.push(`.has-background-${color}-inverted`)
-    // lines.push(`  background: var(--bal-color-${color}-inverted) !important`)
-    // lines.push(`.has-fill-${color}`)
-    // lines.push(`  fill: var(--bal-color-${color}) !important`)
-    // lines.push(`  @include fillSvg(var(--bal-color-${color}))`)
-    // lines.push(`.has-text-${color}-inverted`)
-    // lines.push(`  color: var(--bal-color-${color}-inverted) !important`)
   }
+
+  const invertedWhiteLines = []
+  const invertedPrimaryLines = []
+  for (const color in colors) {
+    const inverted = colors[color].inverted
+    if(inverted === 'white'){
+      invertedWhiteLines.push(color)
+    }else{
+      invertedPrimaryLines.push(color)
+    }
+  }
+
+  lines.push(``)
+  lines.push(invertedWhiteLines.map(l => `.has-text-${l}-inverted`).join(',\n'))
+  lines.push(`  color: var(--bal-color-white) !important`)
+
+  lines.push(``)
+  lines.push(invertedPrimaryLines.map(l => `.has-text-${l}-inverted`).join(',\n'))
+  lines.push(`  color: var(--bal-color-primary) !important`)
 
   await file.write(path.join(SASS_PATH, 'color.background.helpers.sass'), [...lines, ''].join('\n'))
 }
@@ -180,9 +188,6 @@ async function generateTypography() {
 }
 
 function parseKey(key) {
-  if (key === 'normal') {
-    return ''
-  }
   return '-' + key
 }
 

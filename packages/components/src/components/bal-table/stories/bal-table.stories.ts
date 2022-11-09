@@ -129,6 +129,6 @@ export const AgGrid = args => ({
 
     return { args }
   },
-  template: `<bal-table class="p-0" id="myGrid" style="height: 250px; width: 100%"></bal-table>`,
+  template: `<bal-table class="p-none" id="myGrid" style="height: 250px; width: 100%"></bal-table>`,
 })
 AgGrid.parameters = { ...component.sourceCode(AgGrid) }

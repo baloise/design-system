@@ -50,10 +50,6 @@
         color: var(--bal-color-primary-inverted)
       +desktop
         font-size: 1.25rem
-    +element(burger)
-      margin-left: auto !important
-      +desktop
-        display: none !important
 
     +modifiers(context-app, context-simple)
       color: var(--bal-color-primary-inverted)
@@ -61,14 +57,14 @@
         color: var(--bal-color-primary-inverted)
 
   +element(menu)
-    position: static !important
-    display: none !important
+    position: static
+    display: none
     z-index: 30
 
     +modifier(active)
       +touch
-        position: fixed !important
-        display: block !important
+        position: fixed
+        display: block
         background: var(--bal-color-white)
 
     +modifiers(context-app)
@@ -139,3 +135,11 @@
       color: var(--bal-color-primary)
     bal-logo
       +fillSvg(var(--bal-color-primary))
+
+.bal-navbar__brand__burger.bal-button
+  margin-left: auto
+  +desktop
+    display: none
+
+.bal-navbar__brand__burger--hidden.bal-button
+  display: none !important

@@ -131,7 +131,10 @@ export class NavbarBrand {
         <bal-button
           class={{
             ...navbarBrandEl.element('burger').class(),
-            'is-hidden': this.interface === 'simple',
+            ...navbarBrandEl
+              .element('burger')
+              .modifier('hidden')
+              .class(this.interface === 'simple'),
           }}
           color="light"
           inverted

@@ -26,13 +26,13 @@ export class DocTokensFont implements ComponentInterface {
                   <span class="has-font-title has-text-color-primary is-size-medium">Light Headline</span>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="is-bold is-size-large mt-0 mb-2">
+                  <p class="is-bold is-size-large mt-none mb-x-small">
                     Title <span class="is-size-medium">(BaloiseCreateHeadline)</span>
                   </p>
-                  <p class="m-0 is-size-small">Should only be used for headings and buttons</p>
+                  <p class="m-none is-size-small">Should only be used for headings and buttons</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">
+                  <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                     var(--bal-font-family-title)
                   </p>
                 </td>
@@ -44,13 +44,13 @@ export class DocTokensFont implements ComponentInterface {
                   <span class="has-font-text has-text-color-primary is-size-medium">Regular Text</span>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="is-bold is-size-large mt-0 mb-2">
+                  <p class="is-bold is-size-large mt-none mb-x-small">
                     Text <span class="is-size-medium">(BaloiseCreateText)</span>
                   </p>
-                  <p class="m-0 is-size-small">Should only be used for body texts and form controls</p>
+                  <p class="m-none is-size-small">Should only be used for body texts and form controls</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">
+                  <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                     var(--bal-font-family-text)
                   </p>
                 </td>

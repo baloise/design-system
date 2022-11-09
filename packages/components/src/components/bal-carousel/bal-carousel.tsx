@@ -103,12 +103,10 @@ export class Carousel implements ComponentInterface {
   connectedCallback(): void {
     const debounceItemsChanged = debounce(this.itemsChanged.bind(this), 100)
 
+    this.swipeHandler.connect(this.el)
     this.mutationHandler.connect(this.el, 'bal-carousel-item', debounceItemsChanged)
     this.resizeHandler.connect(this.el, debounceItemsChanged)
-  }
 
-  componentDidLoad(): void {
-    this.swipeHandler.connect(this.el)
     this.swipeHandler.onSwipeLeft(this.next.bind(this))
     this.swipeHandler.onSwipeRight(this.previous.bind(this))
   }

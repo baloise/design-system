@@ -153,7 +153,7 @@ function TestTemplate(tag) {
     </head>
     <body>
       <bal-doc-app>
-        <main class="container py-5">
+        <main class="container py-medium">
           <${tag} data-testid="${tag.replace('bal-', '')}"></${tag}>
         </main>
       </bal-doc-app>
@@ -239,7 +239,7 @@ Todo add some description to the component and its purpose
 </Canvas>
 
 <bal-doc-app>
-  <bal-button-group class="mb-6" position="center">
+  <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-${storyId}--basic">
       Go to playground (Canvas)
     </a>

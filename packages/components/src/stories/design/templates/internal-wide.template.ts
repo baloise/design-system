@@ -11,11 +11,11 @@ export const InternalWideAppTemplate = `
     </bal-navbar>
   </header>
   <main>
-    <div class="m-7">
+    <div class="m-x-large">
       <bal-card>
         <bal-card-title>Table of ****</bal-card-title>
         <bal-card-subtitle>Subtitle</bal-card-subtitle>
-        <table class="table is-fullwidth is-striped is-hoverable p-0">
+        <table class="table is-fullwidth is-striped is-hoverable p-none">
         <thead>
             <th>Selected</th>
             <th>Name</th>
@@ -84,7 +84,7 @@ export const InternalWideAppTemplate = `
     </div>
   </main>
   <bal-footer has-track-line hide-links>
-    <div class="mx-7">
+    <div class="mx-x-large">
     TODO: add language switcher
     </div>
   </bal-footer>

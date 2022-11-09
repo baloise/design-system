@@ -65,7 +65,7 @@ To access the method of the component use the reference directly.
   <bal-select-option label="Soccer" value="soccer">Soccer</bal-select-option>
   <bal-select-option label="Other" value="other">Other</bal-select-option>
 </bal-select>
-<bal-button class="mt-4" (click)="chooseTennis()">Choose Tennis</bal-button>
+<bal-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</bal-button>
 ```
 
 **app.component.ts**
@@ -113,7 +113,7 @@ After that the methods of the components can be used directly.
     <BalSelectOption label="Soccer" value="soccer">Soccer</BalSelectOption>
     <BalSelectOption label="Other" value="other">Other</BalSelectOption>
   </BalSelect>
-  <BalButton class="mt-4" @click="chooseTennis()">Choose Tennis</BalButton>
+  <BalButton class="mt-normal" @click="chooseTennis()">Choose Tennis</BalButton>
 </template>
 ```
 
@@ -146,7 +146,7 @@ function MethodComponent() {
           Other
         </BalSelectOption>
       </BalSelect>
-      <BalButton class="mt-4" onClick={() => chooseTennis()}>
+      <BalButton class="mt-normal" onClick={() => chooseTennis()}>
         Choose Tennis
       </BalButton>
     </div>

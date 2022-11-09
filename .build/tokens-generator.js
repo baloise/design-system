@@ -66,7 +66,7 @@ const sassCssVariable = (key, value) => `${key}: ${value}`
 const sassVariable = (key, value) => `${key}: ${value} !default`
 const lessVariable = (key, value) => `${key}: ${value};`
 
-const parseKey = key => key === 'normal' ? '' : '-' + key
+const parseKey = key => '-' + key
 
 const newToken = (key, legacySassKey, value, aliasValue) => ({ key, legacySassKey, value, aliasValue })
 
@@ -185,7 +185,9 @@ function generateContainer() {
 function generateBreakpoints() {
   const breakpoints = BaloiseDesignToken.breakpoint
   for (const breakpoint in breakpoints) {
-    addToken(breakpoint, breakpoint, breakpoints[breakpoint])
+    addToken(`breakpoint-${breakpoint}`, `breakpoint-${breakpoint}`, breakpoints[breakpoint])
+    // // legacy variable
+    // addToken(breakpoint, breakpoint, breakpoints[breakpoint])
   }
 }
 
@@ -198,6 +200,10 @@ function generateRadius() {
   const radius = BaloiseDesignToken.radius
   for (const r in radius) {
     addToken(`radius${parseKey(r)}`, `radius${parseKey(r)}`, radius[r].value)
+    // legacy variable
+    // if(r === 'normal'){
+    //   addToken(`radius`, `radius`, radius[r].value)
+    // }
   }
 }
 
@@ -205,6 +211,10 @@ function generateShadows() {
   const shadow = BaloiseDesignToken.shadow
   for (const r in shadow) {
     addToken(`shadow${parseKey(r)}`, `shadow${parseKey(r)}`, shadow[r].value)
+    // legacy variable
+    // if(r === 'normal'){
+    //   addToken(`shadow`, `shadow`, shadow[r].value)
+    // }
   }
 }
 

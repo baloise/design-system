@@ -47,3 +47,18 @@ $flex-operators: grow, shrink
   @each $name, $value in $bal-spacing-values-desktop
     .fg-#{$name}
       gap: $value
+
+@if $spacing-legacy-numbering
+  @each $name, $value in $bal-legacy-spacing-values
+    .fg-#{$name}
+      gap: $value
+
+  @include tablet()
+    @each $name, $value in $bal-legacy-spacing-values-tablet
+      .fg-#{$name}
+        gap: $value
+
+  @include desktop()
+    @each $name, $value in $bal-legacy-spacing-values-desktop
+      .fg-#{$name}
+        gap: $value

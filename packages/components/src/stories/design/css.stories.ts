@@ -127,7 +127,7 @@ GridResponsive.parameters = {
 export const Colors = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div class="has-background-primary p-4">
+  template: `<div class="has-background-primary p-normal">
   <p class="has-text-white">Hello World!</p>
 </div>`,
 })
@@ -141,7 +141,7 @@ export const BackgroundColors = args => ({
   components: {},
   setup: () => ({ args }),
   template: `<p class="has-background-white has-text-white-inverted p-small m-none">default / white</p>
-<p class="has-background-grey-light has-text-grey-light-inverted p-small m-none">grey light</p>
+<p class="has-background-grey-1 has-text-grey-1-inverted p-small m-none">grey light</p>
 <p class="has-background-grey has-text-grey-inverted p-small m-none">grey</p>
 <p class="has-background-primary has-text-primary-inverted p-small m-none">primary</p>
 <p class="has-background-green has-text-green-inverted p-small m-none">green</p>
@@ -160,10 +160,10 @@ export const TextColors = args => ({
   components: {},
   setup: () => ({ args }),
   template: `<p>Default - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-hover">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-active">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-light-blue">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-dark">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-grey">Grey / Disabled - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-hint">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-light">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-success">Success / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-warning">Warning - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-danger">Danger / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>`,
@@ -178,7 +178,7 @@ export const TypographyTitles = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-  <div class="columns m-0">
+  <div class="columns m-none">
   <div class="column has-background-yellow-1">
     <h1 class="title is-size-xxxxx-large">Display</h1>
     <h1 class="title is-size-xxxx-large">Display-2</h1>
@@ -188,7 +188,7 @@ export const TypographyTitles = args => ({
     <h1 class="subtitle is-size-xxxx-large">Display-2</h1>
   </div>
 </div>
-<div class="columns m-0">
+<div class="columns m-none">
   <div class="column has-background-red-1">
     <h1 class="title is-size-xxx-large">Title 1</h1>
     <h2 class="title is-size-xx-large">Title 2</h2>
@@ -215,7 +215,7 @@ export const TypographyTexts = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<div class="columns m-0">
+<div class="columns m-none">
   <div class="column has-background-purple-1">
     <p class="is-size-large">lead-text</p>
     <p class="is-size-medium">block-text</p>
@@ -242,7 +242,7 @@ export const TypographyLink = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<div class="columns m-0">
+<div class="columns m-none">
   <div class="column has-background-primary-1">
     <a class="is-link">Link</a>
   </div>
@@ -305,14 +305,13 @@ List.parameters = {
 export const BorderAndRadius = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div class="has-border-primary p-2 mb-2 has-radius-none">Primary / None</div>
-<div class="has-border-normal p-2 mb-2 has-radius-small">Normal / Small</div>
-<div class="has-border-hover p-2 mb-2 has-radius">Hover / Normal</div>
-<div class="has-border-active p-2 mb-2 has-radius-large">Active / Large</div>
-<div class="has-border-valid p-2 mb-2 has-radius-rounded">Valid / Rounded</div>
-<div class="has-border-invalid p-2 mb-2 has-radius-rounded">Invalid / Rounded</div>
-<div class="has-border-warning p-2 mb-2 has-radius-rounded">Warning / Rounded</div>
-<div class="has-border-disabled p-2 mb-2 has-radius-rounded">Disabled / Rounded</div>`,
+  template: `<div class="has-border-primary p-x-small mb-x-small has-radius-none">Primary / None</div>
+<div class="has-border-grey p-x-small mb-x-small has-radius-normal">Hover / Normal</div>
+<div class="has-border-primary p-x-small mb-x-small has-radius-large">Active / Large</div>
+<div class="has-border-success p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
+<div class="has-border-danger p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
+<div class="has-border-warning p-x-small mb-x-small has-radius-rounded">Warning / Rounded</div>
+<div class="has-border-grey-dark p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>`,
 })
 BorderAndRadius.args = {}
 BorderAndRadius.parameters = {
@@ -323,7 +322,7 @@ BorderAndRadius.parameters = {
 export const Table = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<table class="table is-fullwidth is-striped is-hoverable p-0">
+  template: `<table class="table is-fullwidth is-striped is-hoverable p-none">
   <thead>
     <th>ID</th>
     <th>Name</th>
@@ -346,7 +345,7 @@ export const Shadows = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<div class="has-shadow p-small mb-large has-background-red-light">Shadow</div>
+<div class="has-shadow-normal p-small mb-large has-background-red-light">Shadow</div>
 <div class="has-shadow-large p-small has-background-red-light">Large shadow</div>`,
 })
 Shadows.args = {}
@@ -451,7 +450,7 @@ export const Form = args => ({
   </span>
 </label>
 </div>
-<div class="file is-disabled mt-4">
+<div class="file is-disabled mt-normal">
 <label class="file-label">
   <input class="file-input" disabled type="file" name="resume" />
   <span class="file-cta">
@@ -538,8 +537,8 @@ Visibility.parameters = {
 export const Flexbox = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div className="has-background-blue is-flex is-justify-content-center	is-align-items-center p-3">
-  <div className="has-background-danger p-3"></div>
+  template: `<div className="has-background-blue is-flex is-justify-content-center	is-align-items-center p-small">
+  <div className="has-background-danger p-small"></div>
 </div>`,
 })
 Flexbox.args = {}
@@ -551,15 +550,15 @@ Flexbox.parameters = {
 export const FlexboxGap = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div className="has-background-danger is-flex fg-5">
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+  template: `<div className="has-background-danger is-flex fg-medium">
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
 </div>
-<div className="has-background-danger is-flex fg-8 mt-3">
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
-  <div className="has-background-blue is-flex-grow-1 p-3"></div>
+<div className="has-background-danger is-flex fg-xx-large mt-small">
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
 </div>`,
 })
 FlexboxGap.args = {}
@@ -571,19 +570,19 @@ FlexboxGap.parameters = {
 export const Opacity = args => ({
   components: {},
   setup: () => ({ args }),
-  template: `<div class="p-4 has-background-blue has-opacity-100">
+  template: `<div class="p-normal has-background-blue has-opacity-100">
   <p class="has-text-white">Has opacity 1</p>
 </div>
-<div class="p-4 mt-4 has-background-blue has-opacity-80">
+<div class="p-normal mt-normal has-background-blue has-opacity-80">
   <p class="has-text-white">Has opacity 0.8</p>
 </div>
-<div class="p-4 mt-4 has-background-blue has-opacity-60">
+<div class="p-normal mt-normal has-background-blue has-opacity-60">
   <p class="has-text-white">Has opacity 0.6</p>
 </div>
-<div class="p-4 mt-4 has-background-blue has-opacity-30">
+<div class="p-normal mt-normal has-background-blue has-opacity-30">
   <p class="has-text-white">Has opacity 0.3</p>
 </div>
-<div class="p-4 mt-4 has-background-blue has-opacity-0">
+<div class="p-normal mt-normal has-background-blue has-opacity-0">
   <p class="has-text-white">Has opacity 0</p>
 </div>`,
 })
