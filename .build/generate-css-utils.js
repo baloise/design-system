@@ -188,9 +188,6 @@ async function generateTypography() {
 }
 
 function parseKey(key) {
-  if (key === 'normal') {
-    return ''
-  }
   return '-' + key
 }
 

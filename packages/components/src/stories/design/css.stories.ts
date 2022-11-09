@@ -141,7 +141,7 @@ export const BackgroundColors = args => ({
   components: {},
   setup: () => ({ args }),
   template: `<p class="has-background-white has-text-white-inverted p-small m-none">default / white</p>
-<p class="has-background-grey-light has-text-grey-light-inverted p-small m-none">grey light</p>
+<p class="has-background-grey-1 has-text-grey-1-inverted p-small m-none">grey light</p>
 <p class="has-background-grey has-text-grey-inverted p-small m-none">grey</p>
 <p class="has-background-primary has-text-primary-inverted p-small m-none">primary</p>
 <p class="has-background-green has-text-green-inverted p-small m-none">green</p>
@@ -160,10 +160,10 @@ export const TextColors = args => ({
   components: {},
   setup: () => ({ args }),
   template: `<p>Default - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-hover">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-active">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-light-blue">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-dark">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-grey">Grey / Disabled - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-hint">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-light">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-success">Success / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-warning">Warning - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 <p class="has-text-danger">Danger / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>`,
@@ -306,13 +306,12 @@ export const BorderAndRadius = args => ({
   components: {},
   setup: () => ({ args }),
   template: `<div class="has-border-primary p-x-small mb-x-small has-radius-none">Primary / None</div>
-<div class="has-border-normal p-x-small mb-x-small has-radius-small">Normal / Small</div>
-<div class="has-border-hover p-x-small mb-x-small has-radius">Hover / Normal</div>
-<div class="has-border-active p-x-small mb-x-small has-radius-large">Active / Large</div>
-<div class="has-border-valid p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
-<div class="has-border-invalid p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
+<div class="has-border-grey p-x-small mb-x-small has-radius-normal">Hover / Normal</div>
+<div class="has-border-primary p-x-small mb-x-small has-radius-large">Active / Large</div>
+<div class="has-border-success p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
+<div class="has-border-danger p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
 <div class="has-border-warning p-x-small mb-x-small has-radius-rounded">Warning / Rounded</div>
-<div class="has-border-disabled p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>`,
+<div class="has-border-grey-dark p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>`,
 })
 BorderAndRadius.args = {}
 BorderAndRadius.parameters = {
@@ -346,7 +345,7 @@ export const Shadows = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<div class="has-shadow p-small mb-large has-background-red-light">Shadow</div>
+<div class="has-shadow-normal p-small mb-large has-background-red-light">Shadow</div>
 <div class="has-shadow-large p-small has-background-red-light">Large shadow</div>`,
 })
 Shadows.args = {}

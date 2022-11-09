@@ -4,7 +4,7 @@ export const ColorHelpers = `
 </div>`
 
 export const BorderHelpers = `
-<div class="has-radius-normal has-border-blue p-x-small has-shadow">
+<div class="has-radius-normal has-border-blue p-x-small has-shadow-normal">
   <p>Border radius of 4px</p>
   <div class="has-radius-large has-border-blue p-x-small m-normal">
     <p>Border radius of 12px</p>

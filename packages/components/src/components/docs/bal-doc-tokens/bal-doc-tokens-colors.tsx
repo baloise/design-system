@@ -46,7 +46,7 @@ export class DocTokensColors implements ComponentInterface {
               <tbody>
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
-                    <div class={`has-background-${c.name} p-x-small mb-x-small has-radius`}>
+                    <div class={`has-background-${c.name} p-x-small mb-x-small has-radius-normal`}>
                       <p class={`title is-size-large has-text-${c.name}-inverted`}>Aa</p>
                       <p class={`mt-none mb-xx-small is-size-small has-text-${c.name}-inverted`}>{c.value.hex}</p>
                       <p class={`m-none is-size-small has-text-${c.name}-inverted`}>{hexToRgbA(c.value.hex)}</p>
@@ -57,10 +57,10 @@ export class DocTokensColors implements ComponentInterface {
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                       var(--bal-color-{c.name})
                     </p>
-                    <p class="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius">
+                    <p class="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal">
                       ${c.name}
                     </p>
                   </td>
@@ -69,26 +69,26 @@ export class DocTokensColors implements ComponentInterface {
                   <tr>
                     <td colSpan={3}>
                       <p class="is-bold is-size-normal">Shades</p>
-                      <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
+                      <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                         var(--bal-color-{c.name}-x)
                       </span>
                       <div class="is-flex fg-x-small mt-x-small">
-                        <div class={`has-background-${c.name}-1 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-1 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-1-inverted is-bold`}>1</span>
                         </div>
-                        <div class={`has-background-${c.name}-2 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-2 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-2-inverted is-bold`}>2</span>
                         </div>
-                        <div class={`has-background-${c.name}-3 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-3 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-3-inverted is-bold`}>3</span>
                         </div>
-                        <div class={`has-background-${c.name}-4 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-4 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-4-inverted is-bold`}>4</span>
                         </div>
-                        <div class={`has-background-${c.name}-5 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-5 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-5-inverted is-bold`}>5</span>
                         </div>
-                        <div class={`has-background-${c.name}-6 has-radius p-x-small is-flex-grow-1`}>
+                        <div class={`has-background-${c.name}-6 has-radius-normal p-x-small is-flex-grow-1`}>
                           <span class={`has-text-${c.name}-6-inverted is-bold`}>6</span>
                         </div>
                       </div>

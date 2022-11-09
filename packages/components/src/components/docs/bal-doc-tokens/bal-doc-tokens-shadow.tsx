@@ -34,7 +34,7 @@ export class DocTokensBorderShadow implements ComponentInterface {
                   <td style={{ verticalAlign: 'top' }}>
                     <div
                       style={{ height: '48px', width: '80px' }}
-                      class={`has-shadow${c.name === 'normal' ? '' : `-${c.name}`} mt-x-small has-background-red-1`}
+                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-red-1`}
                     ></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
@@ -42,8 +42,8 @@ export class DocTokensBorderShadow implements ComponentInterface {
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
-                      var(--bal-shadow{c.name === 'normal' ? '' : `-${c.name}`})
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                      var(--bal-shadow{`-${c.name}`})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>

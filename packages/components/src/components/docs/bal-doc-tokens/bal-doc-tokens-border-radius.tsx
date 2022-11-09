@@ -34,7 +34,7 @@ export class DocTokensBorderRadius implements ComponentInterface {
                   <td style={{ verticalAlign: 'top' }}>
                     <div
                       style={{ height: '48px', width: '80px' }}
-                      class={`has-radius${c.name === 'normal' ? '' : `-${c.name}`} mt-x-small has-background-purple`}
+                      class={`has-radius${`-${c.name}`} mt-x-small has-background-purple`}
                     ></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
@@ -42,8 +42,8 @@ export class DocTokensBorderRadius implements ComponentInterface {
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
-                      var(--bal-radius{c.name === 'normal' ? '' : `-${c.name}`})
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                      var(--bal-radius{`-${c.name}`})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>

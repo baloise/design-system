@@ -17,7 +17,7 @@ export class BalDocColor {
     const subject = this.subject !== '' ? this.subject : this.color
     return (
       <Host class="bal-app">
-        <div class="has-radius-large has-shadow">
+        <div class="has-radius-large has-shadow-normal">
           <div
             class={`has-background-${this.color} has-radius-top-large is-flex is-justify-content-center is-align-items-center`}
           >

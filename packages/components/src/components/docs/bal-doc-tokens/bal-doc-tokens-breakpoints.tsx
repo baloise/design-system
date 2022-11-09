@@ -43,8 +43,8 @@ export class DocTokensBreakpoints implements ComponentInterface {
                     <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius is-bold">
-                      var(--bal-{c.name})
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                      var(--bal-breakpoint-{c.name})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
