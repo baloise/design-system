@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "11.0.12",
+  "version": "11.0.13-beta.8+8c55e3940",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -74,10 +74,10 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/*cy.ts\""
   },
   "dependencies": {
-    "@baloise/design-system-css": "11.0.12",
-    "@baloise/design-system-fonts": "11.0.12",
-    "@baloise/design-system-icons": "11.0.12",
-    "@baloise/design-system-tokens": "11.0.12",
+    "@baloise/design-system-css": "11.0.13-beta.8+8c55e3940",
+    "@baloise/design-system-fonts": "11.0.13-beta.8+8c55e3940",
+    "@baloise/design-system-icons": "11.0.13-beta.8+8c55e3940",
+    "@baloise/design-system-tokens": "11.0.13-beta.8+8c55e3940",
     "@baloise/web-app-utils": "~3.6.4",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.16.1",
@@ -100,9 +100,9 @@
     "lottie-web": "5.8.1"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "11.0.12",
-    "@baloise/design-system-output-target-react": "11.0.12",
-    "@baloise/design-system-output-target-vue": "11.0.12"
+    "@baloise/design-system-output-target-angular": "11.0.13-beta.8+8c55e3940",
+    "@baloise/design-system-output-target-react": "11.0.13-beta.8+8c55e3940",
+    "@baloise/design-system-output-target-vue": "11.0.13-beta.8+8c55e3940"
   },
-  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40"
+  "gitHead": "8c55e3940b8bbad3a6a9c4da134deb97e4e1d0d0"
 }
