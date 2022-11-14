@@ -196,6 +196,7 @@ export class Select implements ComponentInterface, Loggable {
 
   @Watch('value')
   valueWatcher() {
+    console.log('valueWatcher', this.value, this.rawValue)
     this.updateRawValue(false)
   }
 
@@ -204,6 +205,7 @@ export class Select implements ComponentInterface, Loggable {
     if (!areArraysEqual(newValue, oldValue || [])) {
       this.rawValue = newValue
       this.syncNativeInput()
+      console.log('rawValueWatcher', this.value, this.rawValue)
       if (this.didInit && isHuman) {
         if (this.multiple) {
           if (isNil(this.rawValue)) {
