@@ -63,6 +63,7 @@
     "test": "stencil test --spec",
     "test:watch": "stencil test --spec --watchAll",
     "serve": "stencil build --config stencil.config.e2e.ts --prod --serve --watch",
+    "www": "stencil build --config stencil.config.e2e.ts --prod",
     "cy:build": "stencil build --config stencil.config.e2e.ts --prod",
     "cy:start": "node ./web-server.js",
     "cy:install": "cypress install",
