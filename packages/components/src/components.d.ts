@@ -531,6 +531,11 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        "logComponents": string;
+        "logCustom": boolean;
+        "logEvents": boolean;
+        "logLifecycle": boolean;
+        "logRender": boolean;
     }
     interface BalDocBanner {
         "status": string;
@@ -2540,10 +2545,6 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
-export interface BalDocAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDocAppElement;
-}
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFileUploadElement;
@@ -4099,7 +4100,11 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
-        "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
+        "logComponents"?: string;
+        "logCustom"?: boolean;
+        "logEvents"?: boolean;
+        "logLifecycle"?: boolean;
+        "logRender"?: boolean;
     }
     interface BalDocBanner {
         "status"?: string;
