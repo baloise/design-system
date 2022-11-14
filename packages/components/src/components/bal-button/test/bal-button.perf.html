@@ -11,7 +11,16 @@
       }
     </style>
 
-    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <link
+      rel="preload"
+      href="/build/design-system-components.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/build/design-system-components.css" />
+    </noscript>
+
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
