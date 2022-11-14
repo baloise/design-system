@@ -12,9 +12,9 @@
 <body>
   <bal-doc-app>
     <main class="container">
-      <section>
+      <!-- <section>
         <bal-heading>Value + Options</bal-heading>
-        <bal-select id="bal-select-all" placeholder="Try finding a year" value="2000">
+        <bal-select remote typeahead id="bal-select-all" placeholder="Try finding a year" value="2000">
           <bal-select-option value="1999" label="1999">1999</bal-select-option>
           <bal-select-option value="2000" label="2000">2000</bal-select-option>
           <bal-select-option value="2001" label="2001">2001</bal-select-option>
@@ -23,7 +23,7 @@
 
       <section>
         <bal-heading>Value + Lazy Options</bal-heading>
-        <bal-select id="bal-select-lazy-opts" placeholder="Try finding a year" value="2000"></bal-select>
+        <bal-select remote typeahead id="bal-select-lazy-opts" placeholder="Try finding a year" value="2000"></bal-select>
         <script>
           setTimeout(() => {
             const select2 = document.getElementById('bal-select-lazy-opts')
@@ -52,7 +52,7 @@
 
       <section>
         <bal-heading>Lazy Value + Options</bal-heading>
-        <bal-select id="bal-select-lazy-value" placeholder="Try finding a year">
+        <bal-select remote typeahead id="bal-select-lazy-value" placeholder="Try finding a year">
           <bal-select-option value="1999" label="1999">1999</bal-select-option>
           <bal-select-option value="2000" label="2000">2000</bal-select-option>
           <bal-select-option value="2001" label="2001">2001</bal-select-option>
@@ -63,11 +63,11 @@
             select3.value = "2000"
           }, 400)
         </script>
-      </section>
+      </section> -->
 
       <section>
         <bal-heading>Lazy Value + Lazy Options</bal-heading>
-        <bal-select id="bal-select-lazy-all" placeholder="Try finding a year">
+        <bal-select remote typeahead selection-optional id="bal-select-lazy-all" placeholder="Try finding a year">
         </bal-select>
         <script>
           const select4 = document.getElementById('bal-select-lazy-all')
