@@ -40,7 +40,7 @@ const Template = args => ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  accept: 'image/png,image/jpeg,application/pdf',
+  accept: 'image/png,image/jpeg',
   label: 'Choose or drop a file...',
   multiple: true,
   hasFileList: true,
