@@ -22,7 +22,7 @@ export class FileUpload implements FormInput<File[]> {
 
   nativeInput!: HTMLInputElement
   bundleSize = 0
-  fileValue = 'C:\test'
+  fileValue = 'C:\fakepath'
   inputValue?: File[] | undefined
 
   @State() isOver = false
@@ -31,7 +31,6 @@ export class FileUpload implements FormInput<File[]> {
 
   @Watch('value')
   onValueChange() {
-    console.log('onValueChange ', this.value)
     if (!areArraysEqual(this.files, this.value)) {
       this.files = this.value
     }
@@ -182,8 +181,6 @@ export class FileUpload implements FormInput<File[]> {
   }
 
   handleFiles = (files: FileList): void => {
-    console.log('handleFiles')
-    debugger
     if (!this.disabled) {
       const list = [...this.files]
       const filesAdded: File[] = []
@@ -297,7 +294,6 @@ export class FileUpload implements FormInput<File[]> {
   }
 
   private removeFile(indexToRemove: number): void {
-    console.log('removeFile')
     if (!this.disabled && !this.readonly) {
       const list = []
       const removedFiles = []
@@ -316,7 +312,6 @@ export class FileUpload implements FormInput<File[]> {
   }
 
   private onInputChange = (): void => {
-    console.log('onInputChange')
     if (this.nativeInput?.files) {
       const files = this.nativeInput.files
       this.handleFiles(files)
@@ -340,7 +335,6 @@ export class FileUpload implements FormInput<File[]> {
   }
 
   render() {
-    console.log('render')
     const FileList = () => (
       <bal-card flat class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
         <bal-list disabled={this.disabled || this.loading || this.readonly} border size="large" class="p-0">
