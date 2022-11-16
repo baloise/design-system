@@ -45,7 +45,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add missing tracking ([20815a7](https://github.com/baloise-incubator/design-system/commit/20815a7c130ab5c9fe2aaf4d2381293e29c1e214))
 * update stencil config to solve angular issue ([189b62c](https://github.com/baloise-incubator/design-system/commit/189b62c969a4f29365c3c80b68137969f5e15f84))
 
-
 ### Performance Improvements
 
 * use custom bundles and do not ship doc components ([b5da0b6](https://github.com/baloise-incubator/design-system/commit/b5da0b676aa467b22754233a748ba83a986eb284))
