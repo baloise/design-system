@@ -43,7 +43,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}').type('{8}').type('{enter}')
+    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}').type('{8}').blur()
 
     cy.get('@balInput').should('have.been.callCount', 4)
     cy.get('@balChange').should('have.been.calledOnce')
