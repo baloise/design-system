@@ -14,6 +14,7 @@ import {
 import { ref } from 'vue'
 import { element } from '../../../../../../components-vue/src/helpers'
 import { Components } from '../../../../../src'
+import { reduceConfigArgs, setConfig } from '../../../../stories/utils/config'
 
 const component = BalComponentStory({
   title: 'Components/Form/Form',
@@ -111,3 +112,65 @@ function submit() {
 `,
   }),
 }
+
+export const FormAutocomplete = args => ({
+  components: { ...component.components, BalInput },
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<form action="https://www.w3schools.com/action_page.php" target="_blank">
+  <bal-card>
+    <bal-card-content>
+      <bal-form-grid>
+        <bal-form-col size="half">
+          <bal-field required>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input name="firstname" placeholder="Enter your firstname" value="" autocomplete="on"></bal-input>
+            </bal-field-control>
+            <bal-field-message>Field Message</bal-field-message>
+          </bal-field>
+        </bal-form-col>
+        <bal-form-col size="half">
+          <bal-field required>
+            <bal-field-label>Lastname</bal-field-label>
+            <bal-field-control>
+              <bal-input name="lastname" placeholder="Enter your lastname" value="" autocomplete="on"></bal-input>
+            </bal-field-control>
+            <bal-field-message>Field Message</bal-field-message>
+          </bal-field>
+        </bal-form-col>
+
+        <bal-form-col size="half">
+          <bal-field required>
+            <bal-field-label>Street</bal-field-label>
+            <bal-field-control>
+              <bal-input name="street" placeholder="Enter your street" autocomplete="on"></bal-input>
+            </bal-field-control>
+          </bal-field>
+        </bal-form-col>
+        <bal-form-col size="half">
+          <bal-form-grid>
+            <bal-form-col>
+              <bal-field required>
+                <bal-field-label>City</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="city" placeholder="Basel" autocomplete="on"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+          </bal-form-grid>
+        </bal-form-col>
+      </bal-form-grid>
+    </bal-card-content>
+    <bal-card-actions position="left">
+    <bal-button element-type="submit" color="primary">Submit</bal-button>
+  </bal-card-actions>
+  </bal-card>
+</form>`,
+})
+FormAutocomplete.args = {}
+FormAutocomplete.parameters = { ...component.sourceCode(FormAutocomplete) }
