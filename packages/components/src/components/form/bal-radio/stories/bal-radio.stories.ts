@@ -125,7 +125,7 @@ export const RadioBoxes = args => ({
         <div @click="checkB()" :class="value === '2' ? 'has-background-light-blue':''" class="clickable is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-primary has-radius">
           <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
           <p class="has-text-blue mb-2">Other Label</p>
-          <bal-radio class="p-0" name="box-example" value="2" label-hidden></bal-radio>
+          <bal-radio class="p-0" name="box-example" value="2" is-empty></bal-radio>
         </div>
       </div>
     </div>

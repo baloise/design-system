@@ -66,8 +66,10 @@ export class Radio implements ComponentInterface, Loggable {
    */
   @Prop() isEmpty = false
   @Watch('isEmpty') isEmptyHandler() {
-    this.labelHidden = this.isEmpty
-    console.warn('[DEPRECATED] - Use label-hidden instead')
+    if (this.isEmpty) {
+      this.labelHidden = this.isEmpty
+      console.warn('[DEPRECATED] - Use label-hidden instead')
+    }
   }
 
   /**
@@ -240,6 +242,10 @@ export class Radio implements ComponentInterface, Loggable {
 
   private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
 
+  componentWillLoad() {
+    this.isEmptyHandler()
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -272,6 +278,7 @@ export class Radio implements ComponentInterface, Loggable {
         }}
         onClick={this.onClick}
       >
+        g{' '}
         <input
           class={{
             ...inputEl.class(),
