@@ -51,7 +51,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.10](https://github.com/baloise-incubator/design-system/compare/v10.24.9...v10.24.10) (2022-10-17)
 
-
 ### Bug Fixes
 
 * **icons:** add missing tiktok icon ([7c04896](https://github.com/baloise-incubator/design-system/commit/7c048963a7a42863409f573e09e2a5f72fbf31a6))
