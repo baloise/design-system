@@ -1,5 +1,17 @@
 describe('bal-hint', () => {
-  before(() => cy.page('/components/bal-hint/test/bal-hint.visual.html'))
+  before(() => {
+    cy.page('/components/bal-hint/test/bal-hint.visual.html')
+      .then(() => {
+        return new Promise(resolve => {
+          if ('requestIdleCallback' in window) {
+            ;(window as any).requestIdleCallback(resolve)
+          } else {
+            setTimeout(resolve, 32)
+          }
+        })
+      })
+      .wait(500)
+  })
 
   it('basic component', () => {
     cy.platform('desktop')
