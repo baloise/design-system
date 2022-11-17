@@ -2,10 +2,27 @@ import { Platforms } from '../../../src/types'
 import { compareSnapshotOptions } from './snapshot-util'
 
 describe('bal-navigation', () => {
+  testNavigationOnDesktop('widescreen')
+  testNavigationOnDesktop('highDefinition')
+  testNavigationOnDesktop('desktop')
+
+  testNavigationOnTouch('tablet')
+  testNavigationOnTouch('mobile')
+
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       before(() => {
         cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
       })
 
       beforeEach(() => {
@@ -45,10 +62,6 @@ describe('bal-navigation', () => {
     })
   }
 
-  testNavigationOnDesktop('widescreen')
-  testNavigationOnDesktop('highDefinition')
-  testNavigationOnDesktop('desktop')
-
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
       before(() => cy.page('/components/bal-navigation/test/bal-navigation.visual.html'))
@@ -87,7 +100,4 @@ describe('bal-navigation', () => {
       })
     })
   }
-
-  testNavigationOnTouch('tablet')
-  testNavigationOnTouch('mobile')
 })
