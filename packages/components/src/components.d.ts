@@ -1194,6 +1194,10 @@ export namespace Components {
           * Heading level with value 'h4' on default
          */
         "level": Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -4564,6 +4568,10 @@ declare namespace LocalJSX {
           * Heading level with value 'h4' on default
          */
         "level"?: Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
