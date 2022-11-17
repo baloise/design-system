@@ -1905,6 +1905,10 @@ export namespace Components {
          */
         "interface"?: Props.BalRadioGroupInterface;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -5539,6 +5543,10 @@ declare namespace LocalJSX {
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
