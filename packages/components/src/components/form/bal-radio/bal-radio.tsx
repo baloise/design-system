@@ -278,7 +278,6 @@ export class Radio implements ComponentInterface, Loggable {
         }}
         onClick={this.onClick}
       >
-        g{' '}
         <input
           class={{
             ...inputEl.class(),
