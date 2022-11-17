@@ -45,7 +45,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add missing tracking ([20815a7](https://github.com/baloise-incubator/design-system/commit/20815a7c130ab5c9fe2aaf4d2381293e29c1e214))
 * update stencil config to solve angular issue ([189b62c](https://github.com/baloise-incubator/design-system/commit/189b62c969a4f29365c3c80b68137969f5e15f84))
 
-
 ### Performance Improvements
 
 * use custom bundles and do not ship doc components ([b5da0b6](https://github.com/baloise-incubator/design-system/commit/b5da0b676aa467b22754233a748ba83a986eb284))
@@ -60,12 +59,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.9](https://github.com/baloise-incubator/design-system/compare/v10.24.7...v10.24.9) (2022-10-11)
 
-
 ### Features
 
 * **bal-navigation-menu-list-item:** added the target attr for grey menu list headline ([ddc8339](https://github.com/baloise-incubator/design-system/commit/ddc8339de57fd27bae24d41f3a2bac022b0ab08c))
 * **bal-navigation-menu-list-item:** added the target attribute for items from grey lists ([773362e](https://github.com/baloise-incubator/design-system/commit/773362e2f1face1585ecbeae0c41ab0413900030))
-
 
 ### Bug Fixes
 
