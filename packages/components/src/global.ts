@@ -1,11 +1,12 @@
 import { balToastController } from './components/notice/bal-toast/bal-toast.controller'
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
-import { initialize } from './config'
+import { initialize } from './utils/config'
 import { setupPlatforms } from './utils/platform'
-import { VERSION } from './constants/version.constant'
+import { VERSION } from './utils/constants/version.constant'
+import { isDocumentDefined, isWindowDefined } from './utils/browser'
 
 export default function () {
-  if (typeof (window as any) !== 'undefined') {
+  if (isWindowDefined()) {
     const win = window as any
     win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
@@ -19,9 +20,11 @@ export default function () {
 
     if (win.addEventListener) {
       win.addEventListener('balAppLoad', () => {
-        const body = document.querySelector('.bal-body')
-        if (body && body.classList) {
-          body.classList.add('is-ready')
+        if (isDocumentDefined()) {
+          const body = document.querySelector('.bal-body')
+          if (body && body.classList) {
+            body.classList.add('is-ready')
+          }
         }
       })
     }

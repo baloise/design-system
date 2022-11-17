@@ -28,7 +28,7 @@ import {
   isSameWeek,
   isSameMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {
@@ -42,9 +42,9 @@ import {
   dateSeparator,
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { BalLanguage, BalConfigState, BalRegion } from '../../../config/config.types'
+import { BalLanguage, BalConfigState, BalRegion } from '../../../utils/config/config.types'
 import {
   detachComponentToConfig,
   defaultConfig,
@@ -52,7 +52,7 @@ import {
   attachComponentToConfig,
   useBalConfig,
   defaultLocale,
-} from '../../../config'
+} from '../../../utils/config'
 import {
   FormInput,
   getInputTarget,
@@ -62,7 +62,7 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../helpers/form-input.helpers'
+} from '../../../utils/form-input'
 import { Props, Events } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'

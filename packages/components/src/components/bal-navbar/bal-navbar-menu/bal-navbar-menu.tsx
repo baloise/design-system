@@ -1,5 +1,5 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
-import { deepReady } from '../../../helpers/helpers'
+import { deepReady } from '../../../utils/helpers'
 import { isPlatform } from '../../../utils/platform'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'

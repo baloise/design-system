@@ -5,7 +5,7 @@ import { isPlatform } from '../../utils/platform'
 import { hasTouchSupport } from '../../utils/browser'
 import { Events } from '../../types'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
-import { stopEventBubbling } from '../../helpers/form-input.helpers'
+import { stopEventBubbling } from '../../utils/form-input'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({

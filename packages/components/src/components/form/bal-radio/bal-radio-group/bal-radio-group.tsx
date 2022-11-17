@@ -8,34 +8,61 @@ import {
   Event,
   Watch,
   ComponentInterface,
-  Method,
   Listen,
+  Method,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
-import { findItemLabel, isDescendant } from '../../../../helpers/helpers'
-import { inheritAttributes } from '../../../../utils/attributes'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 
 @Component({
   tag: 'bal-radio-group',
 })
-export class RadioGroup implements ComponentInterface {
+export class RadioGroup implements ComponentInterface, Loggable {
   private inputId = `bal-rg-${radioGroupIds++}`
-  private inheritedAttributes: { [k: string]: any } = {}
-  private initialValue: number | string | boolean = ''
+  private initialValue?: any | null
 
-  @Element() el!: HTMLElement
+  log!: LogInstance
+
+  @Logger('bal-radio-group')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  @Element() el!: HTMLBalRadioGroupElement
 
   /**
-   * Defines the layout of the radio button
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop() interface?: Props.BalRadioGroupInterface = undefined
+
+  /**
+   * If `true`, the radios can be deselected.
+   */
+  @Prop() allowEmptySelection = false
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
+
+  /**
+   * the value of the radio group.
+   */
+  @Prop({ mutable: true }) value?: any | null
+
+  @Watch('value')
+  valueChanged(value: any | undefined) {
+    this.setRadioTabindex(value)
+
+    this.balInput.emit(this.value)
+  }
+
+  /**
+   * Defines the layout of the radio button
+   */
+  @Prop() interface?: Props.BalRadioGroupInterface = undefined
 
   /**
    * Displays the checkboxes vertically
@@ -60,8 +87,8 @@ export class RadioGroup implements ComponentInterface {
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
-      this.children.forEach(child => {
-        child.disabled = value
+      this.getRadios().forEach(radio => {
+        radio.disabled = value
       })
     }
   }
@@ -74,20 +101,9 @@ export class RadioGroup implements ComponentInterface {
   @Watch('readonly')
   readonlyChanged(value: boolean | undefined) {
     if (value !== undefined) {
-      this.children.forEach(child => {
-        child.readonly = value
+      this.getRadios().forEach(radio => {
+        radio.readonly = value
       })
-    }
-  }
-
-  /**
-   * The value of the control.
-   */
-  @Prop({ mutable: true }) value: number | string | boolean = ''
-  @Watch('value')
-  valueChanged(value: number | string | boolean, oldValue: number | string | boolean) {
-    if (value !== oldValue) {
-      this.sync()
     }
   }
 
@@ -96,36 +112,122 @@ export class RadioGroup implements ComponentInterface {
    */
   @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
 
-  @Listen('balChange', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (isDescendant(this.el, ev.target as HTMLElement)) {
-      stopEventBubbling(ev)
-    }
-  }
+  /**
+   * Emitted when the checked property has changed.
+   */
+  @Event() balInput!: EventEmitter<Events.BalRadioGroupChangeDetail>
 
-  @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
-    if (formElement?.contains(this.el)) {
-      this.value = this.initialValue
-      this.sync()
-    }
-  }
+  /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   connectedCallback() {
     this.initialValue = this.value
   }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-    this.sync()
+    this.setRadioInterface()
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
   }
 
-  private get children(): HTMLBalRadioElement[] {
-    return Array.from(this.el.querySelectorAll('bal-radio'))
+  componentDidLoad() {
+    this.setRadioTabindex(this.value)
   }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('balFocus', { target: 'document' })
+  radioFocusListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('balBlur', { target: 'document' })
+  radioBlurListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-blur')) {
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetListener(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.value = this.initialValue
+    }
+  }
+
+  @Listen('keydown', { target: 'document' })
+  onKeydown(ev: any) {
+    if (ev.target && !this.el.contains(ev.target)) {
+      return
+    }
+
+    // Get all radios inside of the radio group and then
+    // filter out disabled radios since we need to skip those
+    const radios = this.getRadios().filter(radio => !radio.disabled)
+    const targetRadio = ev.target.closest('bal-radio')
+
+    // Only move the radio if the current focus is in the radio group
+    if (targetRadio && radios.includes(targetRadio)) {
+      const index = radios.findIndex(radio => radio === targetRadio)
+      const current = radios[index]
+
+      let next
+
+      // If hitting arrow down or arrow right, move to the next radio
+      // If we're on the last radio, move to the first radio
+      if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
+        next = index === radios.length - 1 ? radios[0] : radios[index + 1]
+      }
+
+      // If hitting arrow up or arrow left, move to the previous radio
+      // If we're on the first radio, move to the last radio
+      if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
+        next = index === 0 ? radios[radios.length - 1] : radios[index - 1]
+      }
+
+      if (next && radios.includes(next)) {
+        next.setFocus(ev)
+
+        this.value = next.value
+        this.balChange.emit(this.value)
+      }
+
+      // Update the radio group value when a user presses the
+      // space bar on top of a selected radio
+      if (['Space'].includes(ev.code)) {
+        this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value
+
+        // Prevent browsers from jumping
+        // to the bottom of the screen
+        ev.preventDefault()
+      }
+    }
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /** @internal */
   @Method()
@@ -133,37 +235,79 @@ export class RadioGroup implements ComponentInterface {
     this.value = value
   }
 
-  private sync() {
-    this.children.forEach((radio: HTMLBalRadioElement) => {
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private setRadioTabindex = (value: any | undefined) => {
+    const radios = this.getRadios()
+
+    // Get the first radio that is not disabled and the checked one
+    const first = radios.find(radio => !radio.disabled)
+    const checked = radios.find(radio => radio.value === value && !radio.disabled)
+
+    if (!first && !checked) {
+      return
+    }
+
+    // If an enabled checked radio exists, set it to be the focusable radio
+    // otherwise we default to focus the first radio
+    const focusable = checked || first
+
+    for (const radio of radios) {
+      const tabindex = radio === focusable ? 0 : -1
+      radio.setButtonTabindex(tabindex)
+    }
+  }
+
+  private setRadioInterface() {
+    this.getRadios().forEach((radio: HTMLBalRadioElement) => {
       if (this.interface) {
         radio.interface = this.interface
       }
-      radio.checked = radio.value === this.value
     })
   }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private getRadios(): HTMLBalRadioElement[] {
+    return Array.from(this.el.querySelectorAll('bal-radio'))
+  }
+
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
 
   private onClick = (ev: Event) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
       return
     }
+
     ev.preventDefault()
 
     const selectedRadio = ev.target && (ev.target as HTMLElement).closest('bal-radio')
-    if (selectedRadio) {
-      if (selectedRadio.disabled || selectedRadio.readonly) {
-        ev.stopPropagation()
-        return
-      }
-
+    if (selectedRadio && !selectedRadio.disabled && !selectedRadio.readonly) {
       const currentValue = this.value
       const newValue = selectedRadio.value
       if (newValue !== currentValue) {
         this.value = newValue
-        this.balChange.emit(this.value)
+      } else if (this.allowEmptySelection) {
+        this.value = undefined
       }
+      this.balChange.emit(this.value)
     }
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const label = findItemLabel(this.el)
@@ -179,7 +323,6 @@ export class RadioGroup implements ComponentInterface {
         aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
-        {...this.inheritedAttributes}
       >
         <div
           class={{

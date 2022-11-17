@@ -1,4 +1,4 @@
-import { formatLocaleNumber, getDecimalSeparator } from '../../../utils/number.util'
+import { formatLocaleNumber, getDecimalSeparator } from '../../../utils/number'
 import isNaN from 'lodash.isnan'
 
 export const filterInputValue = (

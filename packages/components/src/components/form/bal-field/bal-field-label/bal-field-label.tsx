@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, State } from '@stencil/core'
-import { BalConfigObserver } from '../../../../config'
+import { BalConfigObserver } from '../../../../utils/config'
 import { Props } from '../../../../types'
 import {
   attachComponentToConfig,
@@ -8,7 +8,7 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../../config'
+} from '../../../../utils/config'
 import { i18nFieldLabel } from './bal-field-label.i18n'
 
 @Component({

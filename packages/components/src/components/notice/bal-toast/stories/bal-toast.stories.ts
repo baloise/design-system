@@ -1,6 +1,6 @@
 import { BalComponentStory } from '../../../../stories/utils'
 import { BalToast, BalButton } from '../../../../../.storybook/vue/components'
-import { balToastController } from '../../../../../dist/'
+import { balToastController } from '../bal-toast.controller'
 import docs from './bal-toast.docs.mdx'
 
 const component = BalComponentStory({

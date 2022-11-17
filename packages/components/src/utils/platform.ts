@@ -1,3 +1,5 @@
+import { isWindowDefined } from './browser'
+
 export type Platforms = keyof typeof PLATFORMS_MAP
 
 interface IsPlatformSignature {
@@ -29,7 +31,7 @@ export const isPlatform: IsPlatformSignature = (
 }
 
 export const setupPlatforms = (win = {} as any) => {
-  if (typeof (window as any) === 'undefined') {
+  if (!isWindowDefined()) {
     return []
   }
 

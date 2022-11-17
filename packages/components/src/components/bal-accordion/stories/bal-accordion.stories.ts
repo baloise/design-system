@@ -70,3 +70,26 @@ WithCard.args = {
   closeLabel: 'Show less',
 }
 WithCard.parameters = { ...component.sourceCode(WithCard) }
+
+export const WithTabs = args => ({
+  components: {
+    ...component.components,
+    BalCard,
+    BalCardContent,
+    BalCardTitle,
+    BalCardSubtitle,
+  },
+  setup: () => ({ args }),
+  template: `<bal-accordion v-bind="args">
+    <bal-tabs interface="tabs" value="tab-b" class="p-4">
+      <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+      <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+      <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+    </bal-tabs>
+  </bal-accordion>`,
+})
+WithTabs.args = {
+  openLabel: 'Show more',
+  closeLabel: 'Show less',
+}
+WithTabs.parameters = { ...component.sourceCode(WithTabs) }

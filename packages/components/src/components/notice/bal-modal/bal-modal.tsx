@@ -1,9 +1,9 @@
 import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
-import { dismiss, eventMethod, prepareOverlay } from '../../../helpers/overlays'
-import { attachComponent, detachComponent } from '../../../helpers/framework-delegate'
+import { dismiss, eventMethod, prepareOverlay } from '../../../utils/overlays/overlays'
+import { attachComponent, detachComponent } from '../../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
-import { deepReady, wait } from '../../../helpers/helpers'
-import { getClassMap } from '../../../helpers/theme'
+import { deepReady, wait } from '../../../utils/helpers'
+import { getClassMap } from '../../../utils/css-classes'
 import { Props } from '../../../types'
 import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
@@ -134,8 +134,10 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async close(): Promise<void> {
+    this.willDismiss.emit()
     this.unsetModalActiveOnBody()
     this.presented = false
+    this.didDismiss.emit()
   }
 
   /**
@@ -172,8 +174,6 @@ export class Modal implements OverlayInterface {
       await this.close()
       return true
     }
-
-    this.willDismiss.emit({ data, role })
     const dismissed = await dismiss(this, data, role, async () => {
       writeTask(() => {
         if (this.modalBackgroundElement) {

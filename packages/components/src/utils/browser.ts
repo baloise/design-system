@@ -1,8 +1,17 @@
+export const isWindowDefined = () => typeof window !== 'undefined'
+export const isNavigatorDefined = () => typeof navigator !== 'undefined'
+export const isDocumentDefined = () => typeof document !== 'undefined'
+
 type Browser = 'Safari' | 'touch' | 'others'
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(getUserAgent())
 
-export const hasTouchSupport = () => !!('ontouchstart' in window || (navigator as any).msMaxTouchPoints)
+export const hasTouchSupport = () => {
+  if (isWindowDefined() && isNavigatorDefined()) {
+    return !!('ontouchstart' in window || (navigator as any).msMaxTouchPoints)
+  }
+  return false
+}
 
 export const isBrowser = (browser: Browser): boolean => {
   if (browser === 'Safari') {
@@ -12,7 +21,7 @@ export const isBrowser = (browser: Browser): boolean => {
 }
 
 function getUserAgent(): string {
-  if (typeof (window as any) !== 'undefined') {
+  if (isWindowDefined() && isNavigatorDefined()) {
     return navigator.userAgent ?? ''
   }
 

@@ -7,11 +7,11 @@ import { SelectValueAccessor } from './directives/select-value-accessor'
 import { CheckboxValueAccessor } from './directives/checkbox-value-accessor'
 import { NumericValueAccessor } from './directives/number-value-accessor'
 
-import { AutoFocus } from './focus.directive'
+import { BalAutoFocus } from './focus.directive'
 
 const DECLARATIONS = [
   // directives
-  AutoFocus,
+  BalAutoFocus,
 
   // ngModel accessors
   CheckboxValueAccessor,

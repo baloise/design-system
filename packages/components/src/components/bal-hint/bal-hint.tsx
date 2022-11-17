@@ -1,5 +1,5 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../config'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
