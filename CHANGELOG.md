@@ -64,7 +64,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-navigation-menu-list-item:** added the target attr for grey menu list headline ([ddc8339](https://github.com/baloise-incubator/design-system/commit/ddc8339de57fd27bae24d41f3a2bac022b0ab08c))
 * **bal-navigation-menu-list-item:** added the target attribute for items from grey lists ([773362e](https://github.com/baloise-incubator/design-system/commit/773362e2f1face1585ecbeae0c41ab0413900030))
 
-
 ### Bug Fixes
 
 * adjust small spacing value to 0.75rem. Closes [#706](https://github.com/baloise-incubator/design-system/issues/706) ([2bdc29a](https://github.com/baloise-incubator/design-system/commit/2bdc29af2ed232d871a73ec5f754c49f77dceb97))
