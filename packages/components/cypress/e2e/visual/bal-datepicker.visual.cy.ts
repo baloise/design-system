@@ -6,22 +6,22 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic').compareSnapshot('datepicker-basic', 0.0)
 
     cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.getByTestId('basic-picker').compareSnapshot('datepicker-basic-open', 0.0)
+    cy.compareSnapshot('datepicker-basic-open', 0.0)
 
     cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 11, 7))
     cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.getByTestId('basic-picker').compareSnapshot('datepicker-basic-open-selected', 0.0)
+    cy.compareSnapshot('datepicker-basic-open-selected', 0.0)
 
     cy.platform('mobile')
     cy.getByTestId('basic-picker').clear()
     cy.getByTestId('basic').compareSnapshot('datepicker-basic-mobile', 0.0)
 
     cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.getByTestId('basic-picker').compareSnapshot('datepicker-basic-open-mobile', 0.0)
+    cy.compareSnapshot('datepicker-basic-open-mobile', 0.0)
 
     cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 11, 7))
     cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.getByTestId('basic-picker').compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
+    cy.compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
 
     cy.getByTestId('basic-picker').balDatepickerToggle()
   })

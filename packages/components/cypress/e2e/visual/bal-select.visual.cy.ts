@@ -15,13 +15,13 @@ describe('bal-select', () => {
         cy.getByTestId('basic').compareSnapshot(`select-basic-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').click()
-        cy.getByTestId('basic').compareSnapshot(`select-basic-open-${platform}`, 0.0)
+        cy.compareSnapshot(`select-basic-open-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').balSelectFindOptions().eq(1).click()
         cy.getByTestId('basic').compareSnapshot(`select-basic-value-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').click()
-        cy.getByTestId('basic').compareSnapshot(`select-basic-open-selected-${platform}`, 0.0)
+        cy.compareSnapshot(`select-basic-open-selected-${platform}`, 0.0)
       })
 
       it('disabled component', () => {
@@ -48,14 +48,14 @@ describe('bal-select', () => {
         cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').click()
-        cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-open-${platform}`, 0.0)
+        cy.compareSnapshot(`select-multiple-basic-open-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').balSelectFindOptions().eq(1).click()
         cy.getByTestId('basic-input').balSelectFindOptions().eq(2).click()
         cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-value-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').click()
-        cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-open-selected-${platform}`, 0.0)
+        cy.compareSnapshot(`select-multiple-basic-open-selected-${platform}`, 0.0)
       })
 
       it('disabled component', () => {
