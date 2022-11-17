@@ -1,132 +1,133 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <style>
-    .bal-body {
-      visibility: hidden;
-    }
+      section {
+        padding: 1rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
 
-    section {
-      padding: 1rem;
-    }
-  </style>
-  <script type="module" src="/build/design-system-components.esm.js"></script>
-  <script nomodule src="/build/design-system-components.js"></script>
-</head>
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-5">
+        <section data-testid="basic">
+          <bal-input-group>
+            <bal-input placeholder="Placeholder"></bal-input>
+            <bal-icon name="date"></bal-icon>
+          </bal-input-group>
+        </section>
 
-<body class="bal-body">
-  <bal-doc-app>
-    <main class="container py-5">
-      <section data-testid="basic">
-        <bal-input-group>
-          <bal-input placeholder="Placeholder"></bal-input>
-          <bal-icon name="date"></bal-icon>
-        </bal-input-group>
-      </section>
+        <section data-testid="basic-disabled">
+          <bal-input-group disabled>
+            <bal-input disabled placeholder="Placeholder"></bal-input>
+            <bal-icon disabled name="date"></bal-icon>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="basic-disabled">
-        <bal-input-group disabled>
-          <bal-input disabled placeholder="Placeholder"></bal-input>
-          <bal-icon disabled name="date"></bal-icon>
-        </bal-input-group>
-      </section>
+        <section data-testid="basic-invalid">
+          <bal-input-group invalid>
+            <bal-input invalid placeholder="Placeholder"></bal-input>
+            <bal-icon invalid name="date"></bal-icon>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="basic-invalid">
-        <bal-input-group invalid>
-          <bal-input invalid placeholder="Placeholder"></bal-input>
-          <bal-icon invalid name="date"></bal-icon>
-        </bal-input-group>
-      </section>
+        <section data-testid="icon">
+          <bal-input-group>
+            <bal-icon name="date"></bal-icon>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="icon">
-        <bal-input-group>
-          <bal-icon name="date"></bal-icon>
-          <bal-input placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="icon-disabled">
+          <bal-input-group disabled>
+            <bal-icon disabled name="date"></bal-icon>
+            <bal-input disabled placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="icon-disabled">
-        <bal-input-group disabled>
-          <bal-icon disabled name="date"></bal-icon>
-          <bal-input disabled placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="icon-invalid">
+          <bal-input-group invalid>
+            <bal-icon invalid name="date"></bal-icon>
+            <bal-input invalid placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="icon-invalid">
-        <bal-input-group invalid>
-          <bal-icon invalid name="date"></bal-icon>
-          <bal-input invalid placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="phone">
+          <bal-input-group>
+            <bal-icon name="call"></bal-icon>
+            <bal-select style="max-width: 106px" value="DE">
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="phone">
-        <bal-input-group>
-          <bal-icon name="call"></bal-icon>
-          <bal-select style="max-width: 106px" value="DE">
-            <bal-select-option label="DE" value="DE">DE</bal-select-option>
-            <bal-select-option label="FR" value="FR">FR</bal-select-option>
-            <bal-select-option label="IT" value="IT">IT</bal-select-option>
-          </bal-select>
-          <bal-input placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="phone-disabled">
+          <bal-input-group disabled>
+            <bal-icon disabled name="call"></bal-icon>
+            <bal-select disabled style="max-width: 106px" value="DE">
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-input disabled placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="phone-disabled">
-        <bal-input-group disabled>
-          <bal-icon disabled name="call"></bal-icon>
-          <bal-select disabled style="max-width: 106px" value="DE">
-            <bal-select-option label="DE" value="DE">DE</bal-select-option>
-            <bal-select-option label="FR" value="FR">FR</bal-select-option>
-            <bal-select-option label="IT" value="IT">IT</bal-select-option>
-          </bal-select>
-          <bal-input disabled placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="phone-invalid">
+          <bal-input-group invalid>
+            <bal-icon invalid name="call"></bal-icon>
+            <bal-select invalid style="max-width: 106px" value="DE">
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-input invalid placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="phone-invalid">
-        <bal-input-group invalid>
-          <bal-icon invalid name="call"></bal-icon>
-          <bal-select invalid style="max-width: 106px" value="DE">
-            <bal-select-option label="DE" value="DE">DE</bal-select-option>
-            <bal-select-option label="FR" value="FR">FR</bal-select-option>
-            <bal-select-option label="IT" value="IT">IT</bal-select-option>
-          </bal-select>
-          <bal-input invalid placeholder="Placeholder"></bal-input>
-        </bal-input-group>
-      </section>
+        <section data-testid="tags">
+          <bal-input-group>
+            <bal-tag closable>Tag</bal-tag>
+            <bal-tag closable>Tag</bal-tag>
+            <bal-tag closable>Tag</bal-tag>
+            <bal-input placeholder="Placeholder"></bal-input>
+            <bal-icon name="date"></bal-icon>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="tags">
-        <bal-input-group>
-          <bal-tag closable>Tag</bal-tag>
-          <bal-tag closable>Tag</bal-tag>
-          <bal-tag closable>Tag</bal-tag>
-          <bal-input placeholder="Placeholder"></bal-input>
-          <bal-icon name="date"></bal-icon>
-      </section>
+        <section data-testid="tags-disabled">
+          <bal-input-group disabled>
+            <bal-tag disabled closable>Tag</bal-tag>
+            <bal-tag disabled closable>Tag</bal-tag>
+            <bal-tag disabled closable>Tag</bal-tag>
+            <bal-input disabled placeholder="Placeholder"></bal-input>
+            <bal-icon disabled name="date"></bal-icon>
+          </bal-input-group>
+        </section>
 
-      <section data-testid="tags-disabled">
-        <bal-input-group disabled>
-          <bal-tag disabled closable>Tag</bal-tag>
-          <bal-tag disabled closable>Tag</bal-tag>
-          <bal-tag disabled closable>Tag</bal-tag>
-          <bal-input disabled placeholder="Placeholder"></bal-input>
-          <bal-icon disabled name="date"></bal-icon>
-      </section>
-
-      <section data-testid="tags-invalid">
-        <bal-input-group invalid>
-          <bal-tag invalid>Tag</bal-tag>
-          <bal-tag invalid>Tag</bal-tag>
-          <bal-tag invalid>Tag</bal-tag>
-          <bal-input invalid placeholder="Placeholder"></bal-input>
-          <bal-icon invalid name="date"></bal-icon>
-      </section>
-    </main>
-  </bal-doc-app>
-</body>
-
+        <section data-testid="tags-invalid">
+          <bal-input-group invalid>
+            <bal-tag invalid>Tag</bal-tag>
+            <bal-tag invalid>Tag</bal-tag>
+            <bal-tag invalid>Tag</bal-tag>
+            <bal-input invalid placeholder="Placeholder"></bal-input>
+            <bal-icon invalid name="date"></bal-icon>
+          </bal-input-group>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
 </html>
