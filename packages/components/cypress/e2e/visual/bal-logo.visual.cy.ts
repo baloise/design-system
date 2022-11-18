@@ -1,5 +1,17 @@
 describe('bal-logo', () => {
-  before(() => cy.page('/components/bal-logo/test/bal-logo.visual.html'))
+  before(() => {
+    cy.page('/components/bal-logo/test/bal-logo.visual.html')
+      .then(() => {
+        return new Promise(resolve => {
+          if ('requestIdleCallback' in window) {
+            ;(window as any).requestIdleCallback(resolve)
+          } else {
+            setTimeout(resolve, 32)
+          }
+        })
+      })
+      .wait(500)
+  })
 
   it('basic component', () => {
     cy.platform('desktop')
