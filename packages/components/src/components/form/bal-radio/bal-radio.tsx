@@ -64,9 +64,9 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * @deprecated If `true` the radio has no label
    */
-  @Prop() isEmpty = false
+  @Prop() isEmpty = undefined
   @Watch('isEmpty') isEmptyHandler() {
-    if (this.isEmpty) {
+    if (this.isEmpty !== undefined) {
       this.labelHidden = this.isEmpty
       console.warn('[DEPRECATED] - Use label-hidden instead')
     }
