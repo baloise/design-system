@@ -1358,6 +1358,10 @@ export namespace Components {
     }
     interface BalNavbarBrand {
         /**
+          * Defines if the logo animation should be active
+         */
+        "animated": boolean;
+        /**
           * Link of the logo / title.
          */
         "href"?: string;
@@ -4975,6 +4979,10 @@ declare namespace LocalJSX {
         "light"?: boolean;
     }
     interface BalNavbarBrand {
+        /**
+          * Defines if the logo animation should be active
+         */
+        "animated"?: boolean;
         /**
           * Link of the logo / title.
          */
