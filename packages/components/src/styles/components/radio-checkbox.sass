@@ -69,12 +69,12 @@
     input + label,
     input + label > span
       cursor: pointer
-  //
-  // handle visible focus for key navigation
-  &--select-button:focus-within
-    @extend %focus-shadow
-  &__input:focus:not(&__input--select-button) + &__label::before
-    @extend %focus-shadow
+
+  &.bal-focused
+    &.bal-radio-checkbox--select-button
+      @extend %focus-shadow
+    .bal-radio-checkbox__input:not(.bal-radio-checkbox__input--select-button) + .bal-radio-checkbox__label::before
+      @extend %focus-shadow
 
   //
   // label of the radio with the icon and the text

@@ -57,6 +57,7 @@ export namespace Components {
         "value": boolean;
     }
     interface BalApp {
+        "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     interface BalBadge {
         /**
@@ -530,6 +531,11 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        "logComponents": string;
+        "logCustom": boolean;
+        "logEvents": boolean;
+        "logLifecycle": boolean;
+        "logRender": boolean;
     }
     interface BalDocBanner {
         "status": string;
@@ -1266,6 +1272,10 @@ export namespace Components {
           * Heading level with value 'h4' on default
          */
         "level": Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -1827,10 +1837,6 @@ export namespace Components {
     }
     interface BalRadio {
         /**
-          * If `true`, the radio is selected.
-         */
-        "checked": boolean;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
@@ -1859,6 +1865,10 @@ export namespace Components {
          */
         "isEmpty": boolean;
         /**
+          * Label of the radio item.
+         */
+        "label": string;
+        /**
           * If `true` the radio has no label
          */
         "labelHidden": boolean;
@@ -1874,20 +1884,18 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        "setFocus": (ev: any) => Promise<void>;
         /**
-          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+          * the value of the radio.
          */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets the focus on the checkbox input element.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * Value of the radio item, if checked the whole group has this value.
-         */
-        "value": number | string | boolean;
+        "value"?: any | null;
     }
     interface BalRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection": boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -1901,6 +1909,10 @@ export namespace Components {
          */
         "interface"?: Props.BalRadioGroupInterface;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -1910,9 +1922,9 @@ export namespace Components {
         "readonly"?: boolean;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
-          * The value of the control.
+          * the value of the radio group.
          */
-        "value": number | string | boolean;
+        "value"?: any | null;
         /**
           * Displays the checkboxes vertically
          */
@@ -2540,10 +2552,6 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
-}
-export interface BalDocAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalDocAppElement;
 }
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4100,7 +4108,11 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
-        "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
+        "logComponents"?: string;
+        "logCustom"?: boolean;
+        "logEvents"?: boolean;
+        "logLifecycle"?: boolean;
+        "logRender"?: boolean;
     }
     interface BalDocBanner {
         "status"?: string;
@@ -4880,6 +4892,10 @@ declare namespace LocalJSX {
           * Heading level with value 'h4' on default
          */
         "level"?: Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -5454,10 +5470,6 @@ declare namespace LocalJSX {
     }
     interface BalRadio {
         /**
-          * If `true`, the radio is selected.
-         */
-        "checked"?: boolean;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
@@ -5481,6 +5493,10 @@ declare namespace LocalJSX {
           * @deprecated If `true` the radio has no label
          */
         "isEmpty"?: boolean;
+        /**
+          * Label of the radio item.
+         */
+        "label"?: string;
         /**
           * If `true` the radio has no label
          */
@@ -5514,11 +5530,15 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Value of the radio item, if checked the whole group has this value.
+          * the value of the radio.
          */
-        "value"?: number | string | boolean;
+        "value"?: any | null;
     }
     interface BalRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -5532,21 +5552,37 @@ declare namespace LocalJSX {
          */
         "interface"?: Props.BalRadioGroupInterface;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * Emitted when the toggle loses focus.
+         */
+        "onBalBlur"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
+          * Emitted when the toggle has focus.
+         */
+        "onBalFocus"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalInput"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
+        /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
-          * The value of the control.
+          * the value of the radio group.
          */
-        "value"?: number | string | boolean;
+        "value"?: any | null;
         /**
           * Displays the checkboxes vertically
          */

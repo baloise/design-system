@@ -4,7 +4,7 @@ import BalRadioTest from './bal-radio.vue'
 describe('bal-radio.cy.ts', () => {
   describe('radio', () => {
     it('should have a default slot', () => {
-      cy.mount(BalRadio, { slots: { default: () => 'My label' } })
+      cy.mount(BalRadio as any, { slots: { default: () => 'My label' } })
       cy.get('bal-radio').contains('My label')
       cy.get('bal-radio').find('input').should('not.be.checked')
     })
@@ -14,17 +14,23 @@ describe('bal-radio.cy.ts', () => {
     let onClickSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
+    let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
+    let onBalBlurSpy: Cypress.Agent<sinon.SinonSpy>
 
     beforeEach(() => {
       onClickSpy = cy.spy().as('click')
       onBalChangeSpy = cy.spy().as('balChange')
       onBalInputSpy = cy.spy().as('balInput')
+      onBalFocusSpy = cy.spy().as('balFocus')
+      onBalBlurSpy = cy.spy().as('balBlur')
 
-      cy.mount(BalRadioTest, {
+      cy.mount(BalRadioTest as any, {
         props: {
           onClick: onClickSpy,
           onBalInput: onBalInputSpy,
           onBalChange: onBalChangeSpy,
+          onBalFocus: onBalFocusSpy,
+          onBalBlur: onBalBlurSpy,
         },
       })
     })

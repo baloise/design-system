@@ -1,7 +1,16 @@
 import { EventEmitter } from '@stencil/core'
+import { isWindowDefined } from './browser'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
+
+export const rIC = (callback: () => void) => {
+  if (isWindowDefined() && 'requestIdleCallback' in window) {
+    ;(window as any).requestIdleCallback(callback)
+  } else {
+    setTimeout(callback, 32)
+  }
+}
 
 export const wait = (ms = 0): Promise<void> => {
   return new Promise(resolve => {
@@ -33,8 +42,12 @@ export const findItemLabel = (componentEl: HTMLElement): HTMLLabelElement | null
   return null
 }
 
-export const isDescendant = (parent: HTMLElement, child: HTMLElement) => {
-  let node = child.parentNode
+export const hasTagName = (element: any, tag: string) => {
+  return element && element.tagName && element.tagName === tag.toUpperCase()
+}
+
+export const isDescendant = (parent: HTMLElement, child: HTMLElement | EventTarget) => {
+  let node = (child as any).parentNode
   while (node != null) {
     if (node == parent) {
       return true

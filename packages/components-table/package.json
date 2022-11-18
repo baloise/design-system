@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-table",
-  "version": "11.0.10",
+  "version": "11.0.13",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -46,15 +46,15 @@
     "scss": "scss"
   },
   "devDependencies": {
-    "@baloise/design-system-components": "11.0.10",
-    "@baloise/design-system-css": "11.0.10"
+    "@baloise/design-system-components": "11.0.13",
+    "@baloise/design-system-css": "11.0.13"
   },
   "peerDependencies": {
     "@baloise/design-system-components": ">=11.0.0",
     "@baloise/design-system-css": ">=11.0.0",
     "ag-grid-community": ">=25.2.1"
   },
-  "gitHead": "34eccf2813e065bbb4d5a14cbc75581f5b485b40",
+  "gitHead": "d94eb523c0bc7d6b385b3e58ac763a13e69d3bc4",
   "dependencies": {
     "lodash.isnil": "^4.0.0"
   }
