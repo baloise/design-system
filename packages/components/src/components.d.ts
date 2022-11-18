@@ -1272,6 +1272,10 @@ export namespace Components {
           * Heading level with value 'h4' on default
          */
         "level": Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -1904,6 +1908,10 @@ export namespace Components {
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -4884,6 +4892,10 @@ declare namespace LocalJSX {
           * Heading level with value 'h4' on default
          */
         "level"?: Props.BalHeadingLevel;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalLogo {
         /**
@@ -5539,6 +5551,10 @@ declare namespace LocalJSX {
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "invalid"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
