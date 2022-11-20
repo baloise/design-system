@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
-import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
@@ -626,11 +625,7 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
-        "status": string;
         "subtitle": string;
-    }
-    interface BalDocBannerStatus {
-        "context": BannerStatusContext[];
     }
     interface BalDocColor {
         "background": boolean;
@@ -2808,12 +2803,6 @@ declare global {
         prototype: HTMLBalDocBannerElement;
         new (): HTMLBalDocBannerElement;
     };
-    interface HTMLBalDocBannerStatusElement extends Components.BalDocBannerStatus, HTMLStencilElement {
-    }
-    var HTMLBalDocBannerStatusElement: {
-        prototype: HTMLBalDocBannerStatusElement;
-        new (): HTMLBalDocBannerStatusElement;
-    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -3450,7 +3439,6 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-banner": HTMLBalDocBannerElement;
-        "bal-doc-banner-status": HTMLBalDocBannerStatusElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
@@ -4199,11 +4187,7 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
-        "status"?: string;
         "subtitle"?: string;
-    }
-    interface BalDocBannerStatus {
-        "context"?: BannerStatusContext[];
     }
     interface BalDocColor {
         "background"?: boolean;
@@ -6205,7 +6189,6 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
         "bal-doc-banner": BalDocBanner;
-        "bal-doc-banner-status": BalDocBannerStatus;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
@@ -6337,7 +6320,6 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
-            "bal-doc-banner-status": LocalJSX.BalDocBannerStatus & JSXBase.HTMLAttributes<HTMLBalDocBannerStatusElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
