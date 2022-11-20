@@ -186,32 +186,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Prop() clickable = false
 
   /**
-   * @deprecated
-   * If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
-   */
-  @Prop() numberInput = false
-
-  @Watch('numberInput')
-  numberInputHandler() {
-    if (this.numberInput) {
-      console.warn('[DEPRECATED] - Please use the component <bal-number-input> instead')
-    }
-  }
-
-  /**
-   * @deprecated
-   * Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
-   */
-  @Prop() decimal?: number
-
-  @Watch('decimal')
-  decimalHandler() {
-    if (this.decimal) {
-      console.warn('[DEPRECATED] - Please use the component <bal-number-input> instead')
-    }
-  }
-
-  /**
    * Adds a suffix the the input-value after blur.
    */
   @Prop() suffix?: string
@@ -464,32 +438,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
-    /**
-     * @deprecated should be removed in the next breaking change release.
-     */
-    if (this.numberInput) {
-      const numberValue: number | undefined = !this.value ? undefined : parseFloat(this.value)
-      return (
-        <bal-number-input
-          value={numberValue}
-          name={this.name}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          invalid={this.invalid}
-          decimal={this.decimal}
-          suffix={this.suffix}
-          placeholder={this.placeholder}
-          required={this.required}
-          debounce={this.debounce}
-          onBalFocus={e => this.balFocus.emit(e.detail)}
-          onBalBlur={e => this.balBlur.emit(e.detail)}
-          onBalInput={e => this.balInput.emit(e.detail?.toString())}
-          onBalChange={e => this.balChange.emit(e.detail?.toString())}
-          onBalKeyPress={e => this.balKeyPress.emit(e.detail)}
-          onBalClick={e => this.balClick.emit(e.detail)}
-        ></bal-number-input>
-      )
-    }
     let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     if (this.mask !== undefined) {
       switch (this.mask) {
