@@ -1,32 +1,47 @@
+import { Platforms } from '../../../src/types'
+
 describe('bal-navbar', () => {
-  before(() => {
-    cy.page('/components/bal-navbar/test/bal-navbar.visual.html')
-      .then(() => {
-        return new Promise(resolve => {
-          if ('requestIdleCallback' in window) {
-            ;(window as any).requestIdleCallback(resolve)
-          } else {
-            setTimeout(resolve, 32)
-          }
-        })
+  testNavbar('desktop')
+  testNavbar('tablet')
+  testNavbar('mobile')
+
+  function testNavbar(platform: Platforms) {
+    describe(platform, () => {
+      before(() => {
+        cy.page('/components/bal-navbar/test/bal-navbar.visual.html')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
       })
-      .wait(500)
-  })
 
-  it('basic component', () => {
-    cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('navbar-basic-desktop', 0.0)
-    cy.getByTestId('simple-light').compareSnapshot('navbar-simple-light-desktop', 0.0)
-    cy.getByTestId('container').compareSnapshot('navbar-container-desktop', 0.0)
+      beforeEach(() => {
+        cy.platform(platform)
+          .getComponent('bal-navbar')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
+      })
 
-    cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('navbar-basic-tablet', 0.0)
-    cy.getByTestId('simple-light').compareSnapshot('navbar-simple-light-tablet', 0.0)
-    cy.getByTestId('container').compareSnapshot('navbar-container-tablet', 0.0)
-
-    cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('navbar-basic-mobile', 0.0)
-    cy.getByTestId('simple-light').compareSnapshot('navbar-simple-light-mobile', 0.0)
-    cy.getByTestId('container').compareSnapshot('navbar-container-mobile', 0.0)
-  })
+      it('basic component', () => {
+        cy.platform(platform)
+        cy.getByTestId('basic').compareSnapshot(`navbar-basic-${platform}`, 0.0)
+        cy.getByTestId('simple-light').compareSnapshot(`navbar-simple-light-${platform}`, 0.0)
+        cy.getByTestId('container').compareSnapshot(`navbar-container-${platform}`, 0.0)
+      })
+    })
+  }
 })
