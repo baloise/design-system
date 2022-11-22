@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.13](https://github.com/baloise-incubator/design-system/compare/v11.0.12...v11.0.13) (2022-11-17)
+
+
+### Bug Fixes
+
+* **angular-focus-directive:** call setFocus method and update docs ([8b7a858](https://github.com/baloise-incubator/design-system/commit/8b7a8589c7a380f7122dd4e66df144a399fd7367))
+* **bal-upload:** show duplicated file message ([9c32892](https://github.com/baloise-incubator/design-system/commit/9c32892a14d015f0da951a6e56afd77b7474f287))
+* **logo:** load svg on resize ([6e6cc3d](https://github.com/baloise-incubator/design-system/commit/6e6cc3dd4cd7bd9e45f112cecc09df46b69b11dc))
+* **select:** initial value update. Closes [#872](https://github.com/baloise-incubator/design-system/issues/872) ([6139bb3](https://github.com/baloise-incubator/design-system/commit/6139bb3d488567cc3e9774d1677d94d56110fcde))
+* update @baloise/web-app-utils to solve safari 13 issues ([cecc461](https://github.com/baloise-incubator/design-system/commit/cecc4611ebe2344a83305d56c74aaf5ca48f0533))
+* update @baloise/web-app-utils to solve safari 13 issues ([04f0da0](https://github.com/baloise-incubator/design-system/commit/04f0da0b696a3eac6686f43458e1c2c41753d386))
+* update @baloise/web-app-utils to solve safari 13 issues ([43c5b13](https://github.com/baloise-incubator/design-system/commit/43c5b132b4089346a132dbbda34c15b86860735a))
+
+
+### Performance Improvements
+
+* reduce web-app-utils imports ([7c3a21f](https://github.com/baloise-incubator/design-system/commit/7c3a21f3d995c3096c0ef23498936ddd6d9b9e3b))
+
+## 11.0.10 (2022-10-31)
+
+
+
 ## [11.0.12](https://github.com/baloise-incubator/design-system/compare/v11.0.11...v11.0.12) (2022-11-03)
 
 ### Bug Fixes
@@ -51,7 +73,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.10](https://github.com/baloise-incubator/design-system/compare/v10.24.9...v10.24.10) (2022-10-17)
 
-
 ### Bug Fixes
 
 * **icons:** add missing tiktok icon ([7c04896](https://github.com/baloise-incubator/design-system/commit/7c048963a7a42863409f573e09e2a5f72fbf31a6))
@@ -88,7 +109,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **icons:** add missing arrow icons ([d430cb4](https://github.com/baloise-incubator/design-system/commit/d430cb4d6b7ac3daf096b326799cd872b9bbfb9b))
-
 
 
 ## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.7...v11.0.8) (2022-10-27)

@@ -82,6 +82,20 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
+  @Prop() invalid?: boolean = undefined
+
+  @Watch('invalid')
+  invalidChanged(value: boolean | undefined) {
+    if (value !== undefined) {
+      this.getRadios().forEach(radio => {
+        radio.invalid = value
+      })
+    }
+  }
+
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
   @Prop() disabled?: boolean = undefined
 
   @Watch('disabled')
@@ -140,6 +154,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.setRadioInterface()
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
+    this.invalidChanged(this.invalid)
   }
 
   componentDidLoad() {
