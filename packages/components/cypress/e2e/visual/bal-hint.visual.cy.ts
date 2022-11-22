@@ -27,10 +27,10 @@ describe('bal-hint', () => {
     cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet', 0.0) // here
     cy.getByTestId('small').click(0, 0)
 
-    // cy.platform('mobile')
-    // cy.getByTestId('basic').compareSnapshot('hint-basic-mobile', 0.0)
-    // cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-mobile', 0.0)
-    // cy.getByTestId('basic').balHintFindCloseButton().click()
-    // cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-mobile', 0.0)
+    cy.platform('mobile')
+    cy.getByTestId('basic').compareSnapshot('hint-basic-mobile', 0.0)
+    cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-mobile', 0.0)
+    cy.getByTestId('basic').balHintFindCloseButton().click()
+    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-mobile', 0.0)
   })
 })
