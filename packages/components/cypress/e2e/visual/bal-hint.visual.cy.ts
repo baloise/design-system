@@ -24,7 +24,7 @@ describe('bal-hint', () => {
     cy.getByTestId('basic').compareSnapshot('hint-basic-tablet', 0.0)
     cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-tablet', 0.0)
     cy.getByTestId('basic').balHintFindCloseButton().click()
-    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet', 0.0) // here
+    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet', 0.0)
     cy.getByTestId('small').click(0, 0)
 
     cy.platform('mobile')
