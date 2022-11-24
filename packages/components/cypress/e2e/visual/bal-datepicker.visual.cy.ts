@@ -23,7 +23,7 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
 
-    cy.getByTestId('basic-picker').balDatepickerToggle()
+    // cy.getByTestId('basic-picker').balDatepickerToggle()
   })
 
   it('disabled component', () => {
