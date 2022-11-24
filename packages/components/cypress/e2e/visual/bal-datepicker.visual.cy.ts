@@ -12,8 +12,7 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected', 0.0)
 
-    cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.compareSnapshot('basic-test-desktop', 0.0)
+    cy.getByTestId('basic-picker').clear()
 
     cy.platform('mobile')
     cy.getByTestId('basic-picker').clear()
@@ -26,37 +25,30 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
 
-    cy.getByTestId('basic-picker').balDatepickerToggle()
-    cy.compareSnapshot('basic-test-mobile', 0.0)
+    cy.getByTestId('basic-picker').clear()
   })
 
   it('disabled component', () => {
     cy.platform('desktop')
     cy.getByTestId('disabled').compareSnapshot('datepicker-disabled', 0.0)
-    cy.compareSnapshot('disabled-test-desktop', 0.0)
 
     cy.platform('mobile')
     cy.getByTestId('disabled').compareSnapshot('datepicker-disabled-mobile', 0.0)
-    cy.compareSnapshot('disabled-test-mobile', 0.0)
   })
 
   it('invalid component', () => {
     cy.platform('desktop')
     cy.getByTestId('invalid').compareSnapshot('datepicker-invalid', 0.0)
-    cy.compareSnapshot('invalid-test-desktop', 0.0)
 
     cy.platform('mobile')
     cy.getByTestId('invalid').compareSnapshot('datepicker-invalid-mobile', 0.0)
-    cy.compareSnapshot('invalid-test-mobile', 0.0)
   })
 
   it('field component', () => {
     cy.platform('desktop')
     cy.getByTestId('field').compareSnapshot('datepicker-field', 0.0)
-    cy.compareSnapshot('field-test-desktop', 0.0)
 
     cy.platform('mobile')
     cy.getByTestId('field').compareSnapshot('datepicker-field-mobile', 0.0)
-    cy.compareSnapshot('field-test-mobile', 0.0)
   })
 })
