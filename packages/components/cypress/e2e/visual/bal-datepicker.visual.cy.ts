@@ -12,6 +12,8 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected', 0.0)
 
+    cy.getByTestId('basic-picker').balDatepickerToggle()
+
     cy.platform('mobile')
     cy.getByTestId('basic-picker').clear()
     cy.getByTestId('basic').compareSnapshot('datepicker-basic-mobile', 0.0)
@@ -23,7 +25,7 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
 
-    // cy.getByTestId('basic-picker').balDatepickerToggle()
+    cy.getByTestId('basic-picker').balDatepickerToggle()
   })
 
   it('disabled component', () => {
