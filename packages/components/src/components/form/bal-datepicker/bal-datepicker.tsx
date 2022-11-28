@@ -27,6 +27,7 @@ import {
   isWithinInterval,
   isSameWeek,
   isSameMonth,
+  lastDayOfMonth,
 } from 'date-fns'
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
@@ -903,7 +904,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     if (this.max) {
       const maxDate = parse(this.max) as Date
       const beforeDate = new Date(this.calcNextMonth().year, this.calcNextMonth().month, 1)
-      return isAfter(beforeDate, addDays(maxDate, 1))
+      return isAfter(beforeDate, lastDayOfMonth(maxDate) ? maxDate : addDays(maxDate, 1))
     }
     return false
   }
