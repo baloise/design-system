@@ -31,6 +31,7 @@ export class Logo implements ComponentInterface, Loggable {
   private animatedLogoElement!: HTMLDivElement
   private animationFunction?: LogoAnimationFunction
   private resizeWidthHandler = ResizeHandler()
+  private isTouch = isPlatform('touch')
 
   log!: LogInstance
 
@@ -42,16 +43,6 @@ export class Logo implements ComponentInterface, Loggable {
   @Element() el!: HTMLElement
 
   @State() logoSvg: any = ''
-  @State() isTouch = isPlatform('touch')
-
-  @Watch('isTouch')
-  touchWatcher() {
-    if (this.isTouch) {
-      this.loadSmallSVGLogo()
-    } else {
-      this.loadLargeSVGLogo()
-    }
-  }
 
   /**
    * PUBLIC PROPERTY API
@@ -71,7 +62,6 @@ export class Logo implements ComponentInterface, Loggable {
   animatedWatcher() {
     if (!this.animated) {
       this.destroyAnimation()
-      this.touchWatcher()
     }
   }
 
@@ -82,6 +72,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.animatedWatcher()
+    this.loadSvgLogo()
   }
 
   componentDidUpdate() {
@@ -90,7 +81,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.resetAnimation()
-    this.touchWatcher()
+    this.loadSvgLogo()
   }
 
   disconnectedCallback() {
@@ -107,7 +98,11 @@ export class Logo implements ComponentInterface, Loggable {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isTouch = isPlatform('touch')
+      const newIsTouch = isPlatform('touch')
+      if (this.isTouch !== newIsTouch) {
+        this.isTouch = newIsTouch
+        this.loadSvgLogo()
+      }
     })
   }
 
@@ -115,6 +110,14 @@ export class Logo implements ComponentInterface, Loggable {
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private loadSvgLogo() {
+    if (this.isTouch) {
+      this.loadSmallSVGLogo()
+    } else {
+      this.loadLargeSVGLogo()
+    }
+  }
 
   private async resetAnimation() {
     this.destroyAnimation()

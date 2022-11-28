@@ -47,6 +47,9 @@ export class List {
    */
   @Prop() inMainNav = false
 
+  componentWillLoad() {
+    this.invertedHandler()
+  }
   render() {
     const block = BEM.block('list')
 

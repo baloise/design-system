@@ -78,7 +78,7 @@ export class Select implements ComponentInterface, Loggable {
 
   @State() hasFocus = false
   @State() inputValue = ''
-  @State() focusIndex = 0
+  @State() focusIndex = -1
   @State() isPopoverOpen = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo = ''
@@ -410,7 +410,7 @@ export class Select implements ComponentInterface, Loggable {
    */
   @Method()
   async clear() {
-    this.focusIndex = 0
+    this.focusIndex = -1
     if (this.inputElement) {
       this.updateInputValue('')
       this.rawValue = []
@@ -501,11 +501,9 @@ export class Select implements ComponentInterface, Loggable {
       }
     }
     this.options = new Map(options)
-    if (!this.remote) {
-      this.syncNativeInput()
-      if (this.didInit) {
-        this.validateAfterBlur()
-      }
+    this.syncNativeInput()
+    if (this.didInit) {
+      this.validateAfterBlur()
     }
   }
 
@@ -561,8 +559,8 @@ export class Select implements ComponentInterface, Loggable {
    ********************************************************/
   private updateFocusTimer?: NodeJS.Timer
   private updateFocus() {
-    if (this.focusIndex < 0) {
-      this.focusIndex = 0
+    if (this.focusIndex < -1) {
+      this.focusIndex = -1
     }
 
     const visibleOptions = this.optionArray
@@ -582,7 +580,7 @@ export class Select implements ComponentInterface, Loggable {
         }
       }
     } else {
-      this.focusIndex = 0
+      this.focusIndex = -1
     }
   }
 
@@ -619,7 +617,9 @@ export class Select implements ComponentInterface, Loggable {
     const visibleOptions = this.optionArray
     if (visibleOptions.length > this.focusIndex) {
       const focusedOption = visibleOptions[this.focusIndex]
-      this.optionSelected(focusedOption)
+      if (focusedOption) {
+        this.optionSelected(focusedOption)
+      }
     }
   }
 
@@ -801,7 +801,7 @@ export class Select implements ComponentInterface, Loggable {
     if (this.isPopoverOpen) {
       this.updateFocus()
     } else {
-      this.focusIndex = 0
+      this.focusIndex = -1
       if (this.multiple && this.typeahead) {
         this.updateInputValue('')
       }
@@ -846,7 +846,7 @@ export class Select implements ComponentInterface, Loggable {
     if (this.disabled || this.readonly) {
       preventDefault(event)
     } else {
-      this.focusIndex = 0
+      this.focusIndex = -1
       this.balClick.emit(event)
 
       if (this.typeahead) {
@@ -883,7 +883,7 @@ export class Select implements ComponentInterface, Loggable {
         this.popoverElement.present()
       }
 
-      this.focusIndex = 0
+      this.focusIndex = -1
       this.updateFocus()
       preventDefault(event)
 
@@ -1039,7 +1039,9 @@ export class Select implements ComponentInterface, Loggable {
                 data-label={option.label}
                 class={{
                   ...optionEl.class(),
-                  ...optionEl.modifier('selected').class(valuesArray.includes(option.value)),
+                  ...optionEl
+                    .modifier('selected')
+                    .class(valuesArray.includes(option.value) && !(this.typeahead && !this.multiple)),
                   ...optionEl.modifier('focused').class(this.focusIndex === index),
                   ...optionEl.modifier('checkbox').class(this.multiple),
                   ...optionEl.modifier('disabled').class(option.disabled === true),
