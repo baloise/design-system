@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.14](https://github.com/baloise-incubator/design-system/compare/v11.0.13...v11.0.14) (2022-11-22)
+
+
+### Bug Fixes
+
+* **angular-focus-directive:** call setFocus method and update docs ([8b7a858](https://github.com/baloise-incubator/design-system/commit/8b7a8589c7a380f7122dd4e66df144a399fd7367))
+* **bal-upload:** show duplicated file message ([9c32892](https://github.com/baloise-incubator/design-system/commit/9c32892a14d015f0da951a6e56afd77b7474f287))
+* fix stroy book of radio boxes to use labbel-hidden property instead of depricated is-empty ([f051f47](https://github.com/baloise-incubator/design-system/commit/f051f474f535ed58305b306d0bb5d40303d0d8cd))
+* fix usage of depricated is-empty to work in bal-radio ([910a5ef](https://github.com/baloise-incubator/design-system/commit/910a5ef5fec9956fe5fd6b154d4595336f6aebc0))
+* fixes [#787](https://github.com/baloise-incubator/design-system/issues/787) add visualLevel for bal-list-item-title ([f157772](https://github.com/baloise-incubator/design-system/commit/f157772bddf32f611e93a6942cf799b9d7dd927d))
+* **logo:** load svg on resize ([6e6cc3d](https://github.com/baloise-incubator/design-system/commit/6e6cc3dd4cd7bd9e45f112cecc09df46b69b11dc))
+* **select:** initial value update. Closes [#872](https://github.com/baloise-incubator/design-system/issues/872) ([6139bb3](https://github.com/baloise-incubator/design-system/commit/6139bb3d488567cc3e9774d1677d94d56110fcde))
+* update @baloise/web-app-utils to solve safari 13 issues ([cecc461](https://github.com/baloise-incubator/design-system/commit/cecc4611ebe2344a83305d56c74aaf5ca48f0533))
+* update @baloise/web-app-utils to solve safari 13 issues ([04f0da0](https://github.com/baloise-incubator/design-system/commit/04f0da0b696a3eac6686f43458e1c2c41753d386))
+* update @baloise/web-app-utils to solve safari 13 issues ([43c5b13](https://github.com/baloise-incubator/design-system/commit/43c5b132b4089346a132dbbda34c15b86860735a))
+* update web-app-utils ([c1dc7e3](https://github.com/baloise-incubator/design-system/commit/c1dc7e35250293a9f55fabbcb2ff33507e13b7f7))
+
+
+### Performance Improvements
+
+* reduce web-app-utils imports ([7c3a21f](https://github.com/baloise-incubator/design-system/commit/7c3a21f3d995c3096c0ef23498936ddd6d9b9e3b))
+
+## [11.0.12](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.12) (2022-11-03)
+
+## 11.0.10 (2022-10-31)
+
+
+
 ## [11.0.13](https://github.com/baloise-incubator/design-system/compare/v11.0.12...v11.0.13) (2022-11-17)
 
 
@@ -109,7 +137,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **icons:** add missing arrow icons ([d430cb4](https://github.com/baloise-incubator/design-system/commit/d430cb4d6b7ac3daf096b326799cd872b9bbfb9b))
-
 
 ## [11.0.8](https://github.com/baloise-incubator/design-system/compare/v11.0.7...v11.0.8) (2022-10-27)
 
