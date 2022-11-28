@@ -1,5 +1,5 @@
 describe('bal-datepicker', () => {
-  before(() => cy.page('/components/form/bal-datepicker/test/bal-datepicker.visual.html'))
+  beforeEach(() => cy.page('/components/form/bal-datepicker/test/bal-datepicker.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')
@@ -11,9 +11,9 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 11, 7))
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected', 0.0)
+  })
 
-    cy.getByTestId('basic-picker').clear()
-
+  it('basic mobile component', () => {
     cy.platform('mobile')
     cy.getByTestId('basic').compareSnapshot('datepicker-basic-mobile', 0.0)
 
