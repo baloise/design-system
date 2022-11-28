@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-5">
+        <section data-testid="basic">
+          <bal-input-slider value="0"></bal-input-slider>
+        </section>
+        <section data-testid="disabled">
+          <bal-input-slider disabled value="25"></bal-input-slider>
+        </section>
+        <section data-testid="invalid">
+          <bal-input-slider invalid value="50"></bal-input-slider>
+        </section>
+        <section data-testid="field">
+          <bal-field>
+            <bal-field-label>Label</bal-field-label>
+            <bal-field-control>
+              <bal-input-slider value="75"></bal-input-slider>
+            </bal-field-control>
+            <bal-field-message>Message</bal-field-message>
+          </bal-field>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

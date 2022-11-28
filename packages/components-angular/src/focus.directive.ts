@@ -1,12 +1,23 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core'
 
 @Directive({
-  selector: 'autofocus',
+  selector: '[balAutoFocus]',
 })
-export class AutoFocus implements AfterViewInit {
+export class BalAutoFocus implements AfterViewInit {
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.focus()
+    this.setFocus()
+  }
+
+  setFocus() {
+    const el = this.elementRef.nativeElement
+    if (el) {
+      if (el.setFocus) {
+        el.setFocus()
+      } else {
+        el.focus()
+      }
+    }
   }
 }

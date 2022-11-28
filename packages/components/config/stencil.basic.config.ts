@@ -2,7 +2,6 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { resolve } from 'path'
-
 import { VueGenerator } from './stencil.bindings.vue'
 
 export const StencilBaseConfig: Config = {
@@ -12,9 +11,14 @@ export const StencilBaseConfig: Config = {
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   tsconfig: 'tsconfig.json',
-  sourceMap: true,
+  hashedFileNameLength: 10,
   autoprefixCss: true,
-  plugins: [sass()],
+  plugins: [
+    sass({
+      outputStyle: 'compressed',
+      includePaths: [`${__dirname.split('/packages/')[0]}/node_modules/`, 'node_modules/'],
+    }),
+  ],
   outputTargets: [
     {
       type: 'dist-custom-elements',

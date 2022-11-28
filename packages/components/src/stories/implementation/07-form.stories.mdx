@@ -152,12 +152,16 @@ npm install @baloise/web-app-validators-angular
 
 Below is a basic example to use the reactive form together with the Design System.
 
+Angular package offers `balAutoFocus` directive which brings focus to the element.
+Usage can be seen in the following code in bal-field.
+In order for it to work please import `BalSharedModule` in each Angular module that uses it.
+
 ```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
   <bal-field class="column is-full py-0" required [disabled]="form.get('email')?.disabled">
     <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
-      <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
+      <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
     </bal-field-control>
     <bal-field-message color="danger">
       <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>

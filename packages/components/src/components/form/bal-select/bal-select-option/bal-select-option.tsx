@@ -1,9 +1,17 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 
 @Component({
   tag: 'bal-select-option',
 })
-export class SelectOption implements ComponentInterface {
+export class SelectOption implements ComponentInterface, Loggable {
+  log!: LogInstance
+
+  @Logger('bal-select-option')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * Label will be shown in the input element when it got selected
    */

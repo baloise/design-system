@@ -19,12 +19,6 @@ describe('bal-radio', () => {
     cy.getByTestId('basic').find('bal-radio').last().should('be.disabled')
   })
 
-  it('should be focusable', () => {
-    cy.getByTestId('basic').find('bal-radio').first().should('not.be.focused')
-    cy.getByTestId('basic').find('bal-radio').first().focus()
-    cy.getByTestId('basic').find('bal-radio').first().should('be.focused')
-  })
-
   it('should be able to reset the form', () => {
     cy.getByTestId('reset').find('bal-radio').first().check().should('be.checked')
     cy.getByTestId('button-reset').click()
