@@ -19,10 +19,12 @@ export class List {
   @Watch('inverted')
   invertedHandler() {
     console.warn('[DEPRECATED] - Please use the property background="dark" instead')
-    if (this.inverted === true) {
-      this.background = 'dark'
-    } else {
-      this.background = 'light'
+    if (this.inverted !== undefined) {
+      if (this.inverted === true) {
+        this.background = 'dark'
+      } else {
+        this.background = 'light'
+      }
     }
   }
 

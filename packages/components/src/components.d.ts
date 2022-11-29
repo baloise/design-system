@@ -1195,7 +1195,7 @@ export namespace Components {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted": boolean;
+        "inverted": undefined;
         /**
           * Defines the min height of the list item
          */
@@ -1306,7 +1306,7 @@ export namespace Components {
         /**
           * Closes the presented modal with the modal controller
          */
-        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string) => Promise<boolean>;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -4808,7 +4808,7 @@ declare namespace LocalJSX {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted"?: boolean;
+        "inverted"?: undefined;
         /**
           * Defines the min height of the list item
          */
