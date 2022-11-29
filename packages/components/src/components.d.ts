@@ -962,10 +962,6 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
-         */
-        "decimal"?: number;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
@@ -1014,10 +1010,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
-         */
-        "numberInput": boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -4293,10 +4285,6 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
-         */
-        "decimal"?: number;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
@@ -4341,10 +4329,6 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
-         */
-        "numberInput"?: boolean;
         /**
           * Emitted when a keyboard input occurred.
          */
