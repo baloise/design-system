@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-vue",
-  "version": "11.0.16-beta.5+dcb1c1f5f",
+  "version": "11.0.16-beta.7+415724962",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -43,5 +43,5 @@
     "@stencil/core": "^2.9.0",
     "vue": "^3.2.37"
   },
-  "gitHead": "dcb1c1f5fd5281374c9f1f55fdd66f20697feca4"
+  "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }
