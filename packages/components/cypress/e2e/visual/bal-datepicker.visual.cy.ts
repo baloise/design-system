@@ -8,7 +8,7 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open', 0.0)
 
-    cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 11, 7))
+    cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 10, 7))
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected', 0.0)
   })
@@ -20,7 +20,7 @@ describe('bal-datepicker', () => {
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-mobile', 0.0)
 
-    cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 11, 7))
+    cy.getByTestId('basic-picker').balDatepickerPick(new Date(2022, 10, 7))
     cy.getByTestId('basic-picker').balDatepickerToggle()
     cy.compareSnapshot('datepicker-basic-open-selected-mobile', 0.0)
 

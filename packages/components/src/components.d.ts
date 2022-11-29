@@ -1193,7 +1193,7 @@ export namespace Components {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted": boolean;
+        "inverted": undefined;
         /**
           * Defines the min height of the list item
          */
@@ -1813,7 +1813,7 @@ export namespace Components {
         /**
           * @deprecated If `true` the radio has no label
          */
-        "isEmpty": boolean;
+        "isEmpty": undefined;
         /**
           * Label of the radio item.
          */
@@ -4564,7 +4564,7 @@ declare namespace LocalJSX {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted"?: boolean;
+        "inverted"?: undefined;
         /**
           * Defines the min height of the list item
          */
@@ -5188,7 +5188,7 @@ declare namespace LocalJSX {
         /**
           * @deprecated If `true` the radio has no label
          */
-        "isEmpty"?: boolean;
+        "isEmpty"?: undefined;
         /**
           * Label of the radio item.
          */

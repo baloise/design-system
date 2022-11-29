@@ -18,12 +18,16 @@ export class List {
    * @deprecated
    * If `true` the list can be used on a dark background
    */
-  @Prop() inverted = false
+  @Prop() inverted = undefined
   @Watch('inverted')
   invertedHandler() {
     console.warn('[DEPRECATED] - Please use the property background="dark" instead')
-    if (this.inverted === true) {
-      this.background = 'dark'
+    if (this.inverted !== undefined) {
+      if (this.inverted === true) {
+        this.background = 'dark'
+      } else {
+        this.background = 'light'
+      }
     }
   }
 

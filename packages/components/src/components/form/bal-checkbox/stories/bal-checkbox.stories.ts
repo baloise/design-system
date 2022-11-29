@@ -141,6 +141,35 @@ const Template = args => ({
   </bal-field>`,
 })
 
+const Filter = args => ({
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+      <bal-checkbox-group :vertical="args.vertical" v-bind="args">
+        <bal-checkbox checked="args.checked">
+          Label
+        </bal-checkbox>
+        <bal-checkbox>
+          Label
+        </bal-checkbox>
+        <bal-checkbox>
+          Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it
+        </bal-checkbox>
+      </bal-checkbox-group>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+
 export const FieldControl = FieldTemplate.bind({})
 FieldControl.args = {
   content: 'Label',
@@ -170,7 +199,7 @@ Vertical.parameters = {
   controls: { exclude: excludedControls },
 }
 
-export const FilterButtons = Template.bind({})
+export const FilterButtons = Filter.bind({})
 FilterButtons.args = {
   content: 'Label',
   interface: 'select-button',

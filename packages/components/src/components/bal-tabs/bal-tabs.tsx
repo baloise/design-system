@@ -23,6 +23,7 @@ export class Tabs {
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
   private accordion: HTMLBalAccordionElement | null = null
+  private tabsId = `bal-tabs-${TabsIds++}`
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -209,7 +210,7 @@ export class Tabs {
   }
 
   private get tabs(): HTMLBalTabItemElement[] {
-    return Array.from(this.el.querySelectorAll('bal-tab-item'))
+    return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
   }
 
   private async updateTabs() {
@@ -396,6 +397,7 @@ export class Tabs {
             ></Tabs>
           </div>
           <div
+            id={this.tabsId}
             class={{
               'column': this.interface !== 'meta' && this.interface !== 'navigation',
               'is-full': !isVertical,
@@ -411,3 +413,5 @@ export class Tabs {
     )
   }
 }
+
+let TabsIds = 0
