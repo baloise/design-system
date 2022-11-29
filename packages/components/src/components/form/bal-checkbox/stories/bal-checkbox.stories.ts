@@ -252,11 +252,11 @@ export const Box = args => ({
   template: `
   <div class="columns" style="max-width: 400px">
     <div class="column">
-      <div @click="checkA($event)" :class="selectedA ? 'has-background-blue-light':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
+      <div @click="checkA($event)" :class="selectedA ? 'has-background-primary-1':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
         <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
         <p class="has-text-blue is-bold mb-none">Title</p>
         <p class="has-text-blue mb-small">Subtitle</p>
-        <p class="has-text-blue-light-text is-size-normal mb-normal">More Description</p>
+        <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
         <bal-checkbox ref="elementA" class="mb-small" v-bind="args" v-model="selectedA"></bal-checkbox>
       </div>
     </div>
@@ -265,7 +265,7 @@ export const Box = args => ({
       <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
       <p class="has-text-blue is-bold mb-none">Title</p>
       <p class="has-text-blue mb-small">Subtitle</p>
-      <p class="has-text-blue-light-text is-size-normal mb-normal">More Description</p>
+      <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
       <bal-checkbox ref="elementB" class="mb-small" v-bind="args" v-model="selectedB"></bal-checkbox>
     </div>
   </div>
