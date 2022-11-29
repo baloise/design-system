@@ -49,6 +49,9 @@ export interface BalOptionController extends BalOptionValue {
   innerHTML: string
 }
 
+const isHuman = true
+const isNotHuman = false
+
 @Component({
   tag: 'bal-select',
 })
@@ -196,13 +199,13 @@ export class Select implements ComponentInterface, Loggable {
 
   @Watch('value')
   valueWatcher() {
-    this.updateRawValue(false)
+    this.syncRawValue(false)
   }
 
-  @Watch('rawValue')
-  rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
-    if (!areArraysEqual(newValue, oldValue || [])) {
-      console.log('rawValueWatcher', this.rawValue, newValue, oldValue, isHuman)
+  // @Watch('rawValue')
+  updateRawValue(newValue: string[], isHuman = true) {
+    if (!areArraysEqual(newValue, this.rawValue || [])) {
+      console.log('rawValueWatcher', this.rawValue, '-->', newValue, isHuman)
       this.rawValue = [...newValue]
       this.syncNativeInput()
       if (this.didInit && isHuman === true) {
@@ -292,7 +295,7 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   componentDidLoad() {
-    this.updateRawValue(false)
+    this.syncRawValue(false)
 
     if (!this.multiple) {
       this.inputElement.value = this.inputValue
@@ -331,7 +334,7 @@ export class Select implements ComponentInterface, Loggable {
 
       this.resetHandlerTimer = setTimeout(() => {
         this.value = this.initialValue
-        this.updateRawValue(false)
+        this.syncRawValue(false)
         this.syncNativeInput()
 
         if (this.nativeSelectEl) {
@@ -416,7 +419,7 @@ export class Select implements ComponentInterface, Loggable {
     this.focusIndex = -1
     if (this.inputElement) {
       this.updateInputValue('')
-      this.rawValue = []
+      this.updateRawValue([], isHuman)
       this.value = this.multiple ? [] : ''
     }
   }
@@ -475,7 +478,7 @@ export class Select implements ComponentInterface, Loggable {
     const hasOptions = this.options.size > 0
 
     if (hasOptions) {
-      this.updateRawValue(false)
+      this.syncRawValue(false)
     } else {
       this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
     }
@@ -499,7 +502,8 @@ export class Select implements ComponentInterface, Loggable {
       for (let index = 0; index < this.rawValue.length; index++) {
         const val = this.rawValue[index]
         if (!options.has(val)) {
-          this.rawValue = removeValue(this.rawValue, val)
+          const newRawValue = removeValue(this.rawValue, val)
+          this.updateRawValue(newRawValue, isNotHuman)
         }
       }
     }
@@ -687,8 +691,7 @@ export class Select implements ComponentInterface, Loggable {
    * VALUE & FILTER & SELECTION
    ********************************************************/
 
-  private updateRawValue(isHuman = true) {
-    const oldValue = [...(this.rawValue || [])]
+  private syncRawValue(isHuman = true) {
     let newValue: string[] = []
 
     if (!isNil(this.value)) {
@@ -704,7 +707,7 @@ export class Select implements ComponentInterface, Loggable {
     }
 
     // trigger the raw value change
-    this.rawValueWatcher(newValue, oldValue, isHuman)
+    this.updateRawValue(newValue, isHuman)
   }
 
   private blurSelect() {
@@ -728,19 +731,21 @@ export class Select implements ComponentInterface, Loggable {
   private updateValue(newValue: string, isSelected = true) {
     if (this.multiple) {
       if (isSelected) {
-        this.rawValue = addValue(this.rawValue, newValue, this.multiple)
+        this.updateRawValue(addValue(this.rawValue, newValue, this.multiple), isHuman)
       } else {
-        this.rawValue = removeValue(this.rawValue, newValue)
+        this.updateRawValue(removeValue(this.rawValue, newValue), isHuman)
       }
     } else {
-      this.rawValue = addValue(this.rawValue, newValue, this.multiple)
-      this.updateInputValue(findLabelByValue(this.options, this.rawValue[0]))
+      this.updateRawValue(addValue(this.rawValue, newValue, this.multiple), isHuman)
+      if (this.rawValue && this.rawValue.length > 0) {
+        this.updateInputValue(findLabelByValue(this.options, this.rawValue[0]))
+      }
     }
   }
 
   private removeValue = (value: string) => {
     if (!this.disabled) {
-      this.rawValue = removeValue(this.rawValue, value)
+      this.updateRawValue(removeValue(this.rawValue, value), isHuman)
       if (this.multiple && this.typeahead) {
         this.setFocus()
       }
@@ -748,18 +753,21 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private validateAfterBlur() {
+    let newRawValue = this.rawValue
     if (this.didInit && !this.multiple) {
       if (this.selectionOptional && this.typeahead) {
         const typedOption = findOptionByLabel(this.options, this.inputElement.value)
         if (typedOption) {
-          this.rawValue = [typedOption.value]
+          newRawValue = [typedOption.value]
         } else {
-          this.rawValue = [this.inputElement.value]
+          newRawValue = [this.inputElement.value]
         }
       } else {
         console.error('validateAfterBlur', this.rawValue, this.inputElement.value)
-        this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
+        newRawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
       }
+
+      this.updateRawValue(newRawValue, isNotHuman)
     }
   }
 
