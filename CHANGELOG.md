@@ -130,7 +130,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 10.24.5 (2022-10-05)
 
 
-
 ## [11.0.9](https://github.com/baloise-incubator/design-system/compare/v11.0.8...v11.0.9) (2022-10-28)
 
 

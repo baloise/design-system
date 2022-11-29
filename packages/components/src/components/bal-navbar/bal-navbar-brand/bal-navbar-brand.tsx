@@ -27,7 +27,7 @@ export class NavbarBrand {
   @Watch('linkTarget')
   hasShapeHandler() {
     console.warn('[DEPRECATED] - Please use the property target instead')
-    this.migrateLinkTarget
+    this.migrateLinkTarget()
   }
 
   private migrateLinkTarget() {
