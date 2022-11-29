@@ -118,7 +118,7 @@ export const RadioBoxes = args => ({
         <div @click="checkA()" :class="value === '1' ? 'has-background-light-blue':''" class="clickable is-flex px-normal py-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-primary has-radius-normal">
           <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
           <p class="has-text-blue mb-x-small">Selected Label</p>
-          <bal-radio class="p-none" name="box-example" value="1" is-empty></bal-radio>
+          <bal-radio class="p-none" name="box-example" value="1" label-hidden></bal-radio>
         </div>
       </div>
       <div class="column">
@@ -155,6 +155,7 @@ export const SelectButton = args => ({
     <bal-radio-group v-bind="args" v-model="args.value">
       <bal-radio name="select-button-example" value="yes">Yes</bal-radio>
       <bal-radio name="select-button-example" value="no">No</bal-radio>
+      <bal-radio name="select-button-example" value="with-link">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
     </bal-radio-group>
   </bal-field-control>
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>

@@ -1,6 +1,5 @@
 import pkg from './package.json'
 
-import path from 'path'
 import resolve from '@rollup/plugin-node-resolve'
 import cleaner from 'rollup-plugin-cleaner'
 import commonjs from '@rollup/plugin-commonjs'
@@ -76,7 +75,7 @@ export default ({ styleOutput, declarationDir, cleanTargets, input, target, shou
       output: styleOutput || 'dist/styles.css',
       options: {
         outputStyle: 'compressed',
-        includePaths: [path.join(__dirname, '../../node_modules/'), 'node_modules/'],
+        includePaths: [`${__dirname.split('/packages/')[0]}/node_modules/`, 'node_modules/'],
       },
       processor: css =>
         postcss([autoprefixer])

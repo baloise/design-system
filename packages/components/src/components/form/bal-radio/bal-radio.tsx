@@ -64,10 +64,12 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * @deprecated If `true` the radio has no label
    */
-  @Prop() isEmpty = false
+  @Prop() isEmpty = undefined
   @Watch('isEmpty') isEmptyHandler() {
-    this.labelHidden = this.isEmpty
-    console.warn('[DEPRECATED] - Use label-hidden instead')
+    if (this.isEmpty !== undefined) {
+      this.labelHidden = this.isEmpty
+      console.warn('[DEPRECATED] - Use label-hidden instead')
+    }
   }
 
   /**
@@ -239,6 +241,10 @@ export class Radio implements ComponentInterface, Loggable {
   private onPointerDown = () => (this.keyboardMode = false)
 
   private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
+
+  componentWillLoad() {
+    this.isEmptyHandler()
+  }
 
   /**
    * RENDER

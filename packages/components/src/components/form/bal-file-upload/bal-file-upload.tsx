@@ -234,6 +234,7 @@ export class FileUpload implements FormInput<File[]> {
       }
 
       this.setFileList()
+      this.nativeInput.value = ''
     }
   }
 
