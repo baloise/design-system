@@ -16,7 +16,7 @@ export class Snackbar {
   @State() animationClass = 'fadeInDown'
 
   /**
-   * The theme type of the snackbar. Given by bulma our css framework.
+   * The theme type of the snackbar.
    */
   @Prop() color: Props.BalSnackbarColor = ''
 

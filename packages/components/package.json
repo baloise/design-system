@@ -82,7 +82,6 @@
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.19.2",
     "big.js": "~6.2.1",
-    "bulma": "~0.9.3",
     "date-fns": "~2.29.1",
     "filesize.js": "~2.0.0",
     "hammerjs": "^2.0.8",

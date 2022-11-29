@@ -49,7 +49,6 @@
     "@baloise/design-system-tokens": "11.0.15"
   },
   "devDependencies": {
-    "bulma": "~0.9.3",
     "copyfiles": "~2.4.1",
     "minireset.css": "~0.0.7",
     "normalize.css": "~8.0.1"

@@ -4,3 +4,8 @@
 @import './general.mixin'
 @import './breakpoint.mixin'
 @import './extends'
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) != 'color'
+    @return $color
+  @return rgba($color, $alpha)

@@ -32,7 +32,7 @@ export class Heading {
   @Prop() space: 'none' | 'bottom' | 'top' | 'all' = 'bottom'
 
   /**
-   * The theme type of the toast. Given by bulma our css framework.
+   * The theme type of the toast.
    */
   @Prop() color: Props.BalHeadingColor = ''
 

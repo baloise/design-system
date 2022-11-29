@@ -36,7 +36,7 @@ export class Icon implements BalConfigObserver {
   @Prop() size: Props.BalIconSize = ''
 
   /**
-   * The theme type of the button. Given by bulma our css framework.
+   * The theme type of the button.
    */
   @Prop() color: Props.BalIconColor = ''
 
