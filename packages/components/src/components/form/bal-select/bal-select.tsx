@@ -203,7 +203,7 @@ export class Select implements ComponentInterface, Loggable {
   rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
     if (!areArraysEqual(newValue, oldValue || [])) {
       console.log('rawValueWatcher', this.rawValue, newValue, oldValue, isHuman)
-      this.rawValue = { ...newValue }
+      this.rawValue = [...newValue]
       this.syncNativeInput()
       if (this.didInit && isHuman === true) {
         if (this.multiple) {
