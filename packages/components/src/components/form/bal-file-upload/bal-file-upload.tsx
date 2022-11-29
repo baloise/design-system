@@ -22,7 +22,6 @@ export class FileUpload implements FormInput<File[]> {
 
   nativeInput!: HTMLInputElement
   bundleSize = 0
-  fileValue = 'C:\fakepath'
   inputValue?: File[] | undefined
 
   @State() isOver = false
@@ -232,7 +231,7 @@ export class FileUpload implements FormInput<File[]> {
       }
 
       this.setFileList()
-      this.fileValue = ''
+      this.nativeInput.value = ''
     }
   }
 
@@ -384,7 +383,6 @@ export class FileUpload implements FormInput<File[]> {
         >
           <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
             <input
-              value={this.fileValue}
               class="file-input"
               type="file"
               name={this.name}
