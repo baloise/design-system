@@ -9,8 +9,6 @@ export class DocBanner implements ComponentInterface {
 
   @Prop() subtitle = 'Component'
 
-  @Prop() status = ''
-
   render() {
     return (
       <Host>
@@ -29,9 +27,6 @@ export class DocBanner implements ComponentInterface {
             <bal-heading space="none" subtitle level="h4" inverted>
               {this.subtitle}
             </bal-heading>
-            <div class="mt-normal" style={{ display: this.subtitle === 'Component' ? 'block' : 'none' }}>
-              <bal-doc-banner-status context={this.status.split(',').map(s => s.trim()) as any} />
-            </div>
           </div>
         </bal-doc-app>
       </Host>

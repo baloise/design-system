@@ -17,73 +17,142 @@ import VueLogo from './assets/images/vue.png'
 import HtmlLogo from './assets/images/html.png'
 import Wallpaper from './assets/images/banner.svg'
 
-<bal-doc-app>
-  <div className="welcome-container bal-app">
-    <div class="columns">
-      <div class="column is-7">
-        <h1 class="mx-large mt-large pb-normal"><bal-logo color="white"></bal-logo></h1>
-        <h1 class="mx-large mt-x-small my-none subtitle is-size-xxx-large">design system v{version}</h1>
-        <div class="mx-large mt-large p-none">
-          <bal-tag color="green" light size="small">
-            <bal-icon name="check"></bal-icon>
-            <span>46 / 46 Components rebranded</span>
-          </bal-tag>
-        </div>
-        <div class="mx-large mt-x-small p-none">
-          <bal-tag color="yellow" light size="small">
-            <bal-icon name="clock"></bal-icon>
-            <span>8 / 46 Visual test</span>
-          </bal-tag>
-        </div>
-        <div class="mx-large mt-x-small p-none">
-          <bal-notification color="danger">
-            <b>Feature Freeze!</b><br/>
-            All work on adding new features is suspended to focus on quality improvement, user experience and bug fixing.
-          </bal-notification>
-        </div>
-        <p class="mx-large mt-large p-none">
-          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
-          implementations and design artifacts to build any number of web applications.
-        </p>
-        <div class="mx-large mt-large p-none">
-          <a
-            class="button is-primary is-inverted"
-            style={{ width: 'auto' }}
-            href="?path=/docs/getting-started-overview--page"
-          >
-            Getting Started
-          </a>
-          <bal-button
-            class="github-icon"
-            inverted
-            color="info"
-            href="https://github.com/baloise/design-system"
-            icon="github"
-            target="_blank"
-            class="ml-normal"
-          >
-            Follow on GitHub
-          </bal-button>
-        </div>
-        <div class="mx-large mt-large p-none">
-          <a style={{ width: 'auto' }} href="?path=/docs/getting-started-angular-overview--page">
-            <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-          </a>
-          <a class="ml-medium" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
-            <img src={VueLogo} class="m-xx-small" style={{ maxWidth: '50px', maxHeight: '50px' }} />
-          </a>
-          <a class="ml-medium" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
-            <img src={ReactLogo} class="m-xx-small" style={{ maxWidth: '50px', maxHeight: '50px' }} />
-          </a>
-          <a class="ml-medium" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
-            <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-          </a>
-        </div>
-      </div>
-      <div class="column is-hidden-mobile	mt-large">
-        <img src={Wallpaper} style={{ maxWidth: '80%' }} />
-      </div>
-    </div>
+<link
+  onLoad={(() => {
+    setTimeout(() => (document.getElementsByClassName('sbdocs-content')[0].style.maxWidth = '100%'), 100)
+  })()}
+/>
+<link
+  onLoad={(() => {
+    setTimeout(() => (document.getElementsByClassName('sbdocs-wrapper')[0].style.padding = '0'), 100)
+  })()}
+/>
 
+<bal-doc-app>
+  <bal-stage color="purple" shape size="small">
+    <bal-stage-body>
+      <bal-logo color="white" animated color="blue"></bal-logo>
+      <bal-heading subtitle space="all">
+        design system
+      </bal-heading>
+      <bal-text size="lead" class="mt-medium">
+        The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+        implementations and design artifacts to build any number of web applications.
+      </bal-text>
+      <bal-button-group class="mt-medium">
+        <a class="button is-primary" style={{ width: 'auto' }} href="?path=/docs/getting-started-overview--page">
+          Getting Started
+        </a>
+        <bal-button color="info" icon="github" href="https://github.com/baloise/design-system" target="_blank">
+          Follow on GitHub
+        </bal-button>
+      </bal-button-group>
+    </bal-stage-body>
+  </bal-stage>
+</bal-doc-app>
+
+<bal-doc-app>
+  <div class="py-normal container">
+    <bal-heading>News</bal-heading>
+    <div class="columns fg-medium">
+      <bal-card class="column is-one-quarter p-none">
+        <bal-card-content>
+          <bal-text size="small">xx.11.2022</bal-text>
+          <bal-heading space="all" level="h3">
+            Migrate to v12
+          </bal-heading>
+          <bal-text space="none">
+            We have been working on a lot of performance update to achieve a better Google Lighthouse score.
+          </bal-text>
+          <a
+            class="button is-primary mt-normal"
+            style={{ width: 'auto' }}
+            href="?path=/docs/getting-started-angular-overview--page"
+          >
+            Migration Guide
+          </a>
+        </bal-card-content>
+      </bal-card>
+      <bal-card class="column is-one-quarter p-none">
+        <bal-card-content>
+          <bal-text size="small">20.10.2022</bal-text>
+          <bal-heading space="all" level="h3">
+            Feature Freeze!
+          </bal-heading>
+          <bal-text space="none">
+            All work on adding new features is suspended to focus on quality improvement, user experience and bug
+            fixing.
+          </bal-text>
+        </bal-card-content>
+      </bal-card>
+    </div>
+  </div>
+</bal-doc-app>
+
+<bal-doc-app>
+  <div class="py-x-large container">
+    <bal-heading>Implementations</bal-heading>
+    <div class="columns fg-medium">
+      <bal-card color="red-1" class="column p-none">
+        <bal-card-content>
+          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+            <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+            <bal-heading level="h3">Angular</bal-heading>
+            <a
+              class="button is-primary"
+              style={{ width: 'auto' }}
+              href="?path=/docs/getting-started-angular-overview--page"
+            >
+              Getting Started
+            </a>
+          </div>
+        </bal-card-content>
+      </bal-card>
+      <bal-card color="green-1" class="column p-none">
+        <bal-card-content>
+          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+            <img src={VueLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+            <bal-heading level="h3">Vue</bal-heading>
+            <a
+              class="button is-primary"
+              style={{ width: 'auto' }}
+              href="?path=/docs/getting-started-vue-overview--page"
+            >
+              Getting Started
+            </a>
+          </div>
+        </bal-card-content>
+      </bal-card>
+      <bal-card color="purple-1" class="column p-none">
+        <bal-card-content>
+          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+            <img src={ReactLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+            <bal-heading level="h3">React</bal-heading>
+            <a
+              class="button is-primary"
+              style={{ width: 'auto' }}
+              href="?path=/docs/getting-started-react-overview--page"
+            >
+              Getting Started
+            </a>
+          </div>
+        </bal-card-content>
+      </bal-card>
+      <bal-card color="yellow-1" class="column p-none">
+        <bal-card-content>
+          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+            <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+            <bal-heading level="h3">HTML / JS</bal-heading>
+            <a
+              class="button is-primary"
+              style={{ width: 'auto' }}
+              href="?path=/docs/getting-started-html5-overview--page"
+            >
+              Getting Started
+            </a>
+          </div>
+        </bal-card-content>
+      </bal-card>
+    </div>
   </div>
 </bal-doc-app>

@@ -2,28 +2,35 @@ import { create, themes } from '@storybook/theming'
 import Logo from '../src/stories/assets/images/storybook.svg'
 
 export default create({
-  ...themes.dark,
-
-  appBg: '#15212a',
-  appBg: '#161A38',
-  appBg: '#13162D',
-  appBg: '#12152D',
-  appContentBg: '#1b2730',
-  appContentBg: '#181D41',
-  appContentBg: '#1E234A',
-  appBorderRadius: 12,
-
-  fontBase: '"Open Sans", sans-serif',
-  fontCode: 'monospace',
-
-  barTextColor: '#e5e7f0',
-  barBg: '#181D41',
-
-  inputBg: '#12152D',
-  inputBorder: '#e5e7f0',
-  inputBorderRadius: 4,
-
+  ...themes.light,
+  base: 'light',
   brandTitle: 'Baloise Design System',
   brandUrl: 'https://github.com/baloise-incubator/design-system',
   brandImage: Logo,
+
+  fontBase: 'BaloiseCreateText, "Open Sans", Arial, sans-serif',
+  fontCode: 'monospace',
+
+  colorPrimary: "#000d6e",
+  colorSecondary: "#d9304c",
+
+  appBg: '#ffffff',
+  appContentBg: '#ffffff',
+  appBorderColor: "#e8e8e8",
+  appBorderRadius: 12,
+
+  barBg: '#ffffff',
+  barTextColor: '#000d6e',
+  barSelectedColor: "#000d6e",
+
+  inputBg: '#ffffff',
+  inputBorder: '#e8e8e8',
+  inputTextColor: '#000d6e',
+  inputBorderRadius: 4,
+
+  textColor: "#000d6e",
+  textInverseColor: "#ffffff",
+  textMutedColor: "#1c5951",
+
+  gridCellSize: 8,
 })
