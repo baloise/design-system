@@ -143,6 +143,12 @@
     </h2>
     <h4>Flapmax</h4>
   </a>
+  <a href="https://github.com/Sw0rdiX" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/3681337?v=4" alt="Sw0rdiX" style="width: 64px;">
+    </h2>
+    <h4>Sw0rdiX</h4>
+  </a>
   <a href="https://github.com/ArivinK" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/20054412?v=4" alt="ArivinK" style="width: 64px;">
@@ -160,12 +166,6 @@
       <img src="https://avatars.githubusercontent.com/u/12724432?v=4" alt="khanhnp" style="width: 64px;">
     </h2>
     <h4>khanhnp</h4>
-  </a>
-  <a href="https://github.com/baldummy" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/66624124?v=4" alt="baldummy" style="width: 64px;">
-    </h2>
-    <h4>baldummy</h4>
   </a>
 </div>
  
