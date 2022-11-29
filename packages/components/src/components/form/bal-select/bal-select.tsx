@@ -202,24 +202,30 @@ export class Select implements ComponentInterface, Loggable {
   @Watch('rawValue')
   rawValueWatcher(newValue: string[], oldValue: string[] | undefined, isHuman = true) {
     if (!areArraysEqual(newValue, oldValue || [])) {
-      this.rawValue = newValue
+      console.log('rawValueWatcher', this.rawValue, newValue, oldValue, isHuman)
+      this.rawValue = { ...newValue }
       this.syncNativeInput()
-      if (this.didInit && isHuman) {
+      if (this.didInit && isHuman === true) {
         if (this.multiple) {
           if (isNil(this.rawValue)) {
-            this.balChange.emit([])
+            this.emitChangeEvent([])
           } else {
-            this.balChange.emit([...(this.rawValue as string[])])
+            this.emitChangeEvent([...(this.rawValue as string[])])
           }
         } else {
           if (isNil(this.rawValue) || length(this.rawValue) === 0) {
-            this.balChange.emit(undefined)
+            this.emitChangeEvent(undefined)
           } else {
-            this.balChange.emit(this.rawValue[0])
+            this.emitChangeEvent(this.rawValue[0])
           }
         }
       }
     }
+  }
+
+  private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
+    console.warn('emitChangeEvent', detail)
+    this.balChange.emit(detail)
   }
 
   /**
@@ -475,7 +481,7 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private updateOptions() {
+  private async updateOptions() {
     const optionElements = this.getChildOpts()
     const options = new Map()
     for (let index = 0; index < optionElements.length; index++) {
@@ -498,7 +504,7 @@ export class Select implements ComponentInterface, Loggable {
       }
     }
     this.options = new Map(options)
-    this.syncNativeInput()
+    await this.syncNativeInput()
     if (this.didInit) {
       this.validateAfterBlur()
     }
@@ -751,25 +757,13 @@ export class Select implements ComponentInterface, Loggable {
           this.rawValue = [this.inputElement.value]
         }
       } else {
+        console.error('validateAfterBlur', this.rawValue, this.inputElement.value)
         this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
       }
     }
   }
 
-  private updateInputValueTimer?: NodeJS.Timer
-  private updateInputValue(value: string) {
-    if (this.updateInputValueTimer) {
-      clearTimeout(this.updateInputValueTimer)
-    }
-    this.updateInputValueTimer = setTimeout(() => {
-      if (!isNil(this.inputElement)) {
-        this.inputElement.value = value
-        this.inputValue = value
-      }
-    }, 0)
-  }
-
-  private syncNativeInput() {
+  private syncNativeInput(): Promise<void> {
     if (!this.multiple) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
@@ -777,9 +771,27 @@ export class Select implements ComponentInterface, Loggable {
         if (!this.multiple && this.typeahead && this.selectionOptional && label === '') {
           label = valuesArray.join(', ')
         }
-        this.updateInputValue(label)
+        return this.updateInputValue(label)
       }
     }
+    return Promise.resolve()
+  }
+
+  private updateInputValueTimer?: NodeJS.Timer
+  private updateInputValue(value: string): Promise<void> {
+    return new Promise(resolve => {
+      if (this.updateInputValueTimer) {
+        clearTimeout(this.updateInputValueTimer)
+      }
+      this.updateInputValueTimer = setTimeout(() => {
+        if (!isNil(this.inputElement)) {
+          console.log('updateInputValue')
+          this.inputElement.value = value
+          this.inputValue = value
+          resolve()
+        }
+      }, 0)
+    })
   }
 
   /**
