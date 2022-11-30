@@ -74,10 +74,10 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/*cy.ts\""
   },
   "dependencies": {
-    "@baloise/design-system-css": "11.0.15",
-    "@baloise/design-system-fonts": "11.0.15",
-    "@baloise/design-system-icons": "11.0.15",
-    "@baloise/design-system-tokens": "11.0.15",
+    "@baloise/design-system-css": "11.0.16-beta.7+415724962",
+    "@baloise/design-system-fonts": "11.0.16-beta.7+415724962",
+    "@baloise/design-system-icons": "11.0.16-beta.7+415724962",
+    "@baloise/design-system-tokens": "11.0.16-beta.7+415724962",
     "@baloise/web-app-utils": "^3.8.0",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.19.2",
