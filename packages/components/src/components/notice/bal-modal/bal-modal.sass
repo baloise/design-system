@@ -28,12 +28,12 @@ $modal-breakpoint: 769px !default
       padding-right: 2.5rem
       line-height: 2rem
     +element(close)
-      position: absolute
-      display: flex
-      justify-content: center
+      position: absolute !important
+      display: flex !important
+      right: 20px !important
+      top: 24px !important
       align-items: center
-      right: 20px
-      top: 24px
+      justify-content: center
       min-width: 2rem
       max-width: 2rem
       min-height: 2rem
@@ -70,42 +70,42 @@ $modal-breakpoint: 769px !default
     // spacing
     +modalPadding(1rem)
     .bal-modal__header__close
-      right: 1.2rem
-      top: .7rem
+      right: 1.2rem !important
+      top: .7rem !important
     +tablet
       +modalPadding(1.5rem)
       .bal-modal__header__close
-        right: 1.6rem
-        top: 1.2rem
+        right: 1.6rem !important
+        top: 1.2rem !important
     +desktop
       +modalPadding(2.5rem)
       .bal-modal__header__close
-        right: 2.7rem
-        top: 2.2rem
+        right: 2.7rem !important
+        top: 2.2rem !important
     //
     // sizes
     +modifier(has-spacing-small)
       +tablet
         +modalPadding(1rem)
         .bal-modal__header__close
-          right: 1.1rem
-          top: .7rem
+          right: 1.1rem !important
+          top: .7rem !important
       +desktop
         +modalPadding(1rem)
         .bal-modal__header__close
-          right: 1.1rem
-          top: .7rem
+          right: 1.1rem !important
+          top: .7rem !important
     +modifier(has-spacing-medium)
       +tablet
         +modalPadding(1.5rem)
         .bal-modal__header__close
-          right: 1.6rem
-          top: 1.2rem
+          right: 1.6rem !important
+          top: 1.2rem !important
       +desktop
         +modalPadding(1.5rem)
         .bal-modal__header__close
-          right: 1.6rem
-          top: 1.2rem
+          right: 1.6rem !important
+          top: 1.2rem !important
 
   +element(body)
     & > bal-button-group
