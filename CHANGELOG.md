@@ -23,7 +23,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.13](https://github.com/baloise-incubator/design-system/compare/v11.0.12...v11.0.13) (2022-11-17)
 
-
 ### Bug Fixes
 
 * **angular-focus-directive:** call setFocus method and update docs ([8b7a858](https://github.com/baloise-incubator/design-system/commit/8b7a8589c7a380f7122dd4e66df144a399fd7367))
