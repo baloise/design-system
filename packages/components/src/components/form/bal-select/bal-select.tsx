@@ -205,7 +205,6 @@ export class Select implements ComponentInterface, Loggable {
   // @Watch('rawValue')
   updateRawValue(newValue: string[], isHuman = true) {
     if (!areArraysEqual(newValue, this.rawValue || [])) {
-      console.log('rawValueWatcher', this.rawValue, '-->', newValue, isHuman)
       this.rawValue = [...newValue]
       this.syncNativeInput()
       if (this.didInit && isHuman === true) {
@@ -227,7 +226,6 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
-    console.warn('emitChangeEvent', detail)
     this.balChange.emit(detail)
   }
 
@@ -763,7 +761,6 @@ export class Select implements ComponentInterface, Loggable {
           newRawValue = [this.inputElement.value]
         }
       } else {
-        console.error('validateAfterBlur', this.rawValue, this.inputElement.value)
         newRawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
       }
 
@@ -793,7 +790,6 @@ export class Select implements ComponentInterface, Loggable {
       }
       this.updateInputValueTimer = setTimeout(() => {
         if (!isNil(this.inputElement)) {
-          console.log('updateInputValue')
           this.inputElement.value = value
           this.inputValue = value
           resolve()
