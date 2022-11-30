@@ -21,7 +21,7 @@ export class HintTitle {
           class={{
             ...elHeading.class(),
             'title': true,
-            'is-3': true,
+            'is-size-x-large': true,
           }}
         >
           <span>

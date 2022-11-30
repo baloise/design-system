@@ -51,7 +51,7 @@ export class Text {
 
   render() {
     const Text = this.inline ? 'span' : 'p'
-    const color = this.inverted ? 'white' : this.color === '' ? 'primary' : this.color
+    const color = this.inverted ? 'white' : this.color === '' || this.color === 'info' ? 'primary' : this.color
     const block = BEM.block('text')
 
     return (
