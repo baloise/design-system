@@ -226,7 +226,6 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
-    console.log('emitChangeEvent', detail)
     this.balChange.emit(detail)
   }
 
