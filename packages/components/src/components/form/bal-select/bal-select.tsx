@@ -226,6 +226,7 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
+    console.log('emitChangeEvent', detail)
     this.balChange.emit(detail)
   }
 
@@ -750,7 +751,7 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private validateAfterBlur() {
+  private validateAfterBlur(isHuman = isNotHuman) {
     let newRawValue = this.rawValue
     if (this.didInit && !this.multiple) {
       if (this.selectionOptional && this.typeahead) {
@@ -764,7 +765,7 @@ export class Select implements ComponentInterface, Loggable {
         newRawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
       }
 
-      this.updateRawValue(newRawValue, isNotHuman)
+      this.updateRawValue(newRawValue, isHuman)
     }
   }
 
@@ -825,7 +826,7 @@ export class Select implements ComponentInterface, Loggable {
 
   private handleInputBlur = (event: FocusEvent) => {
     preventDefault(event)
-    this.validateAfterBlur()
+    this.validateAfterBlur(isHuman)
     this.hasFocus = false
   }
 
