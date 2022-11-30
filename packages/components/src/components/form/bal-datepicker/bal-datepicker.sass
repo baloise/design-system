@@ -74,8 +74,7 @@
         height: 100%
         width: 100%
 
-.bal-datepicker-grid__cell,
-.bal-datepicker-grid__cell.button
+.bal-datepicker-grid__cell
   position: relative
   text-align: center
   vertical-align: middle
@@ -89,16 +88,6 @@
   background: var(--bal-color-white)
   &--selected
     background: var(--bal-color-primary) !important
-  &:last-child
-    margin-right: 0
-  & > span
-    font-family: var(--bal-font-family-text)
-    font-weight: var(--bal-weight-regular)
-  +tablet
-    min-width: 3rem !important
-  +modifier(disabled)
-    border-color: transparent !important
-    background: transparent !important
   &--today:not(#{&}--outdated)
     & > span
       font-weight: var(--bal-weight-bold)
@@ -115,6 +104,16 @@
     bottom: 6px
   &--today#{&}--selected:not(#{&}--outdated)::after
     background: var(--bal-color-primary-inverted)
+  &:last-child
+    margin-right: 0
+  & > span
+    font-family: var(--bal-font-family-text)
+    font-weight: var(--bal-weight-regular)
+  +tablet
+    min-width: 3rem !important
+  +modifier(disabled)
+    border-color: transparent !important
+    background: transparent !important
   +modifier(header)
     & > span
       border: none

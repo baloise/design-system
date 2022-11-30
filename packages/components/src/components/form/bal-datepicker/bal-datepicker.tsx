@@ -770,6 +770,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
                     ...cellEl.modifier('today').class(cell.isToday),
                     ...cellEl.modifier('selectable').class(!cell.isDisabled && !cell.isOutdated),
                     ...cellEl.modifier('disabled').class(cell.isDisabled || cell.isOutdated),
+                    ...cellEl.modifier('outdated').class(cell.isOutdated),
                     ...cellEl.modifier('selected').class(cell.isSelected),
                   }}
                 >
