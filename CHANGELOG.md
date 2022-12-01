@@ -71,9 +71,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * use custom bundles and do not ship doc components ([b5da0b6](https://github.com/baloise-incubator/design-system/commit/b5da0b676aa467b22754233a748ba83a986eb284))
 
-## 10.24.10 (2022-10-17)
-
-
 
 ## [11.0.14](https://github.com/baloise-incubator/design-system/compare/v11.0.13...v11.0.14) (2022-11-22)
 
