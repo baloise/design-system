@@ -14,6 +14,9 @@ import {
 
 @Component({
   tag: 'bal-file-upload',
+  styleUrls: {
+    css: 'bal-file-upload.sass',
+  },
 })
 export class FileUpload implements FormInput<File[]> {
   @Element() el!: HTMLElement
@@ -22,7 +25,6 @@ export class FileUpload implements FormInput<File[]> {
 
   nativeInput!: HTMLInputElement
   bundleSize = 0
-  fileValue = 'C:\fakepath'
   inputValue?: File[] | undefined
 
   @State() isOver = false
@@ -232,7 +234,7 @@ export class FileUpload implements FormInput<File[]> {
       }
 
       this.setFileList()
-      this.fileValue = ''
+      this.nativeInput.value = ''
     }
   }
 
@@ -336,8 +338,13 @@ export class FileUpload implements FormInput<File[]> {
 
   render() {
     const FileList = () => (
-      <bal-card flat class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
-        <bal-list disabled={this.disabled || this.loading || this.readonly} border size="large" class="p-0">
+      <bal-card flat class="bal-file-upload__card" style={{ display: this.files.length ? 'block' : 'none' }}>
+        <bal-list
+          class="bal-file-upload__list"
+          disabled={this.disabled || this.loading || this.readonly}
+          border
+          size="large"
+        >
           {this.files.map((file, index) => (
             <bal-list-item disabled={this.disabled || this.loading || this.readonly}>
               <bal-list-item-icon>
@@ -384,7 +391,6 @@ export class FileUpload implements FormInput<File[]> {
         >
           <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
             <input
-              value={this.fileValue}
               class="file-input"
               type="file"
               name={this.name}

@@ -1,3 +1,35 @@
+export const MutationHandler = () => {
+  let mutationO: MutationObserver | undefined
+
+  return {
+    connect: (el: HTMLElement, tag: string, callback: () => void) => {
+      if (typeof MutationObserver === 'undefined') {
+        return
+      }
+
+      mutationO = new MutationObserver(mutationList => {
+        if (tag) {
+          mutationList = mutationList.filter(record => record.target.nodeName === tag.toLocaleUpperCase())
+        }
+        if (mutationList.length > 0) {
+          callback()
+        }
+      })
+
+      mutationO.observe(el, {
+        childList: true,
+        attributes: true,
+        characterData: true,
+        subtree: true,
+      })
+    },
+    disconnect: () => {
+      mutationO?.disconnect()
+      mutationO = undefined
+    },
+  }
+}
+
 export const observeItems = (target: Node, tag: string | undefined, notify: () => void) => {
   /* tslint:disable-next-line */
   if (typeof MutationObserver === 'undefined') {

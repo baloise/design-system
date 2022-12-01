@@ -97,7 +97,7 @@ export const FormStructure = args => ({
           <bal-field :invalid="invalid" :disabled="disabled" required>
             <bal-field-label>Input Group</bal-field-label>
             <bal-field-control>
-              <bal-input-group class="mb-4">
+              <bal-input-group class="mb-normal">
                 <bal-icon name="call"></bal-icon>
                 <bal-select :disabled="disabled" :invalid="invalid" style="max-width: 106px" value="DE">
                     <bal-select-option label="DE" value="DE">DE</bal-select-option>
@@ -115,7 +115,7 @@ export const FormStructure = args => ({
             <bal-field :invalid="invalid" :disabled="disabled" required>
             <bal-field-label>Input Group</bal-field-label>
             <bal-field-control>
-              <bal-input-group class="mb-4">
+              <bal-input-group class="mb-normal">
                 <bal-tag closable :disabled="disabled" :invalid="invalid" size="small">Tag</bal-tag>
                 <bal-tag closable :disabled="disabled" :invalid="invalid" size="small">Tag</bal-tag>
                 <bal-input placeholder="Enter text here" v-model="args.value" :disabled="disabled" :invalid="invalid"></bal-input>

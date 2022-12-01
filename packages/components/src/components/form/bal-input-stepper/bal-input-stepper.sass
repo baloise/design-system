@@ -1,9 +1,16 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(input-stepper)
   +unselectable
   position: static
   display: inline-block
 
   +element(inner)
+    display: flex
+    gap: 0.25rem
+    justify-content: center
+    align-items: center
+
     +element(text)
       min-width: 48px
       text-align: center

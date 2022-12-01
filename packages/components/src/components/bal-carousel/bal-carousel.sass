@@ -1,0 +1,271 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import './bal-carousel.vars'
+
+.bal-carousel
+  display: block
+  position: relative
+
+.bal-carousel__inner
+  display: block
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  overflow: hidden
+  list-style: none
+  padding: 0
+  z-index: 1
+  touch-action: pan-y
+
+.bal-carousel__inner__container
+  position: relative
+  width: 100%
+  height: 100%
+  z-index: 1
+  display: flex
+  box-sizing: content-box
+  transition-property: transform
+  transition-duration: 0ms
+  transform: translate3d(0px,0px,0px)
+
+.bal-carousel__item
+  text-align: center
+  font-size: 18px
+  min-height: 2rem
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-shrink: 0
+  width: 100%
+  height: 100%
+  position: relative
+  transition-property: transform
+  transform: translateZ(0)
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+
+.bal-carousel__inner--shadow-left::before,
+.bal-carousel__inner--shadow-right::after
+  position: absolute
+  width: 3rem
+  height: 100%
+  top: 0
+  z-index: 6
+
+.bal-carousel__inner--shadow-left::before
+  content: ''
+  left: 0
+  background: linear-gradient(90deg, var(--bal-color-white) 50%, rgba(255, 255, 255, 0) 100%)
+
+.bal-carousel__inner--shadow-right::after
+  content: ''
+  right: 0
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 50%)
+
+.bal-carousel__inner
+  &--items-per-view-auto
+    .bal-carousel__item
+      width: auto
+
+.bal-carousel--card
+  .bal-carousel__inner--shadow-left::before,
+  .bal-carousel__inner--shadow-right::after
+    width: 1rem
+    +tablet
+      width: 2.5rem
+    +desktop
+      width: 3rem
+
+.bal-carousel--card
+  margin-left: -1rem
+  margin-right: -1rem
+  +tablet
+    margin-left: -2.5rem
+    margin-right: -2.5rem
+  .bal-carousel__controls
+    padding-left: 1rem
+    padding-right: 1rem
+    +tablet
+      padding-left: 2.5rem
+      padding-right: 2.5rem
+  .bal-carousel__item
+    width: calc(100% - 2rem)
+    padding-top: 1rem
+    padding-bottom: 1rem
+    padding-left: 1rem
+    padding-right: 1rem
+    +tablet
+      width: calc(100% - 5rem)
+      padding-top: 2.5rem
+      padding-bottom: 2.5rem
+      padding-left: 2.5rem
+      padding-right: 2.5rem
+
+.bal-carousel--controls-sticky
+  .bal-carousel__controls--tabs
+    position: sticky
+    z-index: 5
+    top: var(--bal-carousel-sticky-top)
+
+.bal-carousel__controls--tabs
+  .bal-card
+    padding: 0
+  .bal-card-content
+    padding: .5rem !important
+    gap: .5rem
+    display: flex
+    .bal-button
+      flex: 1
+
+.bal-carousel--image
+  .bal-carousel__inner
+    border-radius: var(--bal-radius-normal)
+
+.bal-carousel--image
+  .bal-carousel__inner--is-1by1
+    padding-top: 100%
+  .bal-carousel__inner--is-16by9
+    padding-top: 56.25%
+  .bal-carousel__inner--is-3by2
+    padding-top: 66.66%
+  .bal-carousel__inner--is-4by3
+    padding-top: 75%
+
+  .bal-carousel__inner__container
+    position: absolute
+    top: 0
+    left: 0
+    display: flex
+    flex-direction: row
+    height: 100%
+
+  .bal-carousel__item
+    position: relative
+    flex: 0 0 100%
+
+    & > img
+      height: 100%
+      width: 100%
+      object-fit: cover
+      user-select: none
+      user-drag: none
+      user-zoom: fixed
+
+.bal-carousel--product
+  .bal-carousel__inner__container
+    gap: 1rem
+    width: fit-content
+  .bal-carousel__item
+    display: flex
+    width: 160px
+    height: 176px
+    text-align: center
+    padding-top: 8px
+    padding-bottom: 8px
+    user-select: none
+    user-zoom: fixed
+    user-drag: none
+    img
+      user-select: none
+      user-zoom: fixed
+      user-drag: none
+  .bal-carousel__item__button
+    display: flex
+    flex: 1
+    flex-direction: column
+    align-items: center
+    gap: 1rem
+    border-radius: var(--bal-radius-large)
+    padding: var(--bal-size-x-small)
+    border: none
+    cursor: pointer
+    user-select: none
+    outline: none
+    background: var(--bal-color-white)
+
+    &:focus-visible:not(:active)
+      +focus-shadow
+
+  .bal-carousel__item__button--color-green
+    +touch
+      background: var(--bal-color-green-1)
+    +desktop
+      &:hover
+        background: var(--bal-color-green-1)
+      &:active
+        background: var(--bal-color-green-2)
+  .bal-carousel__item__button--color-red
+    +touch
+      background: var(--bal-color-red-1)
+    +desktop
+      &:hover
+        background: var(--bal-color-red-1)
+      &:active
+        background: var(--bal-color-red-2)
+  .bal-carousel__item__button--color-yellow
+    +touch
+      background: var(--bal-color-yellow-1)
+    +desktop
+      &:hover
+        background: var(--bal-color-yellow-1)
+      &:active
+        background: var(--bal-color-yellow-2)
+  .bal-carousel__item__button--color-purple
+    +touch
+      background: var(--bal-color-purple-1)
+    +desktop
+      &:hover
+        background: var(--bal-color-purple-1)
+      &:active
+        background: var(--bal-color-purple-2)
+
+  .bal-carousel__item__button__image
+    width: 80px
+    height: 80px
+    pointer-events: none
+  .bal-carousel__item__button__label
+    font-weight: var(--bal-weight-bold)
+    color: var(--bal-color-primary)
+    font-size: var(--bal-size-normal)
+    hyphens: auto
+    height: 56px
+    overflow: hidden
+    line-height: 1.15rem
+    word-break: break-word
+
+
+.bal-carousel__controls--large
+  +mobile
+    display: flex
+    justify-content: center
+    width: 100%
+    gap: 2rem
+    margin-top: 1rem
+
+  +tablet
+    .bal-carousel__controls__button
+      position: absolute
+      top: calc(50% - 24px)
+      z-index: 7
+    .bal-carousel__controls__button--left
+      left: 0
+    .bal-carousel__controls__button--right
+      right: 0
+
+.bal-carousel__controls__button--hidden
+  display: none !important
+  visibility: none !important
+
+.bal-carousel__controls--small
+  .bal-carousel__controls__button
+    position: absolute
+    top: calc(50% - 16px)
+    z-index: 7
+  .bal-carousel__controls__button--left
+    left: 0
+  .bal-carousel__controls__button--right
+    right: 0
+  .bal-carousel__controls__button--hidden
+    display: none !important
+    visibility: hidden !important
+

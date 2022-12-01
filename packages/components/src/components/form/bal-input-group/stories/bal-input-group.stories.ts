@@ -17,17 +17,17 @@ export const Basic = args => ({
   components: { ...component.components, BalInput, BalIcon, BalTag },
   setup: () => ({ args }),
   template: `
-  <bal-input-group v-bind="args" class="mb-4">
+  <bal-input-group v-bind="args" class="mb-normal">
     <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
     <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
   </bal-input-group>
 
-  <bal-input-group v-bind="args" class="mb-4">
+  <bal-input-group v-bind="args" class="mb-normal">
     <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
     <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
   </bal-input-group>
 
-  <bal-input-group v-bind="args" class="mb-4">
+  <bal-input-group v-bind="args" class="mb-normal">
     <bal-icon name="call"></bal-icon>
     <bal-select :disabled="args.disabled" :invalid="args.invalid" style="max-width: 106px" value="DE">
       <bal-select-option label="DE" value="DE">DE</bal-select-option>
@@ -37,13 +37,13 @@ export const Basic = args => ({
     <bal-input placeholder="79 123 45 67" v-model="args.value" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
   </bal-input-group>
 
-  <bal-input-group v-bind="args" class="mb-4">
+  <bal-input-group v-bind="args" class="mb-normal">
     <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
     <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
     <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
   </bal-input-group>
 
-  <bal-input-group v-bind="args" class="mb-4">
+  <bal-input-group v-bind="args" class="mb-normal">
     <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
     <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>
     <bal-tag closable :disabled="args.disabled" size="small">Tag</bal-tag>

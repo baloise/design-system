@@ -3,6 +3,9 @@ import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-toast',
+  styleUrls: {
+    css: 'bal-toast.sass',
+  },
 })
 export class Toast {
   @Element() element!: HTMLBalToastElement
@@ -11,7 +14,7 @@ export class Toast {
   toastId = `bal-toast-${toastIds++}`
 
   /**
-   * The theme type of the toast. Given by bulma our css framework.
+   * The theme type of the toast.
    * Color type primary is deprecated, please use info instead.
    */
   @Prop() color: Props.BalTostColor = ''

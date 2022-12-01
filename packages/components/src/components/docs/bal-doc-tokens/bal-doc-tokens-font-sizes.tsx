@@ -51,16 +51,16 @@ export class DocTokensFontSizes implements ComponentInterface {
                     <span class={`title is-size-${c.name}`}>Aa</span>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-0 mb-2">
+                    <p class="is-bold is-size-large mt-none mb-x-small">
                       {c.name} <span class="is-size-medium">({c.value.figmaName})</span>
                     </p>
-                    <p class="m-0 is-size-small">{c.value.description}</p>
+                    <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                       var(--bal-size-{c.name})
                     </p>
-                    <p class="mt-0 mb-2 is-size-small py-1 px-2 has-background-grey-2 has-radius is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                       var(--bal-line-height-{c.name})
                     </p>
                   </td>

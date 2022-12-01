@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(pagination)
   +unselectable
   display: block
@@ -51,15 +53,16 @@
         gap: 8px
         max-width: 88px
         min-width: 63px
-        margin: 0 20px 0
+        min-height: 1.25rem
+        margin: 0 20px 0 !important
         background: var(--bal-color-grey)
         border-radius: 4px
 
       +modifier(context-tabs)
         flex-grow: 1
         padding: 8px
-        background: var(--bal-color-background)
-        box-shadow: var(--bal-shadow)
+        background: var(--bal-color-white)
+        box-shadow: var(--bal-shadow-normal)
         border-radius: var(--bal-radius-large)
 
       +element(dot)
@@ -68,7 +71,7 @@
         width: 8px
         gap: 30px
         border-radius: 50%
-        display: inline-block
+        display: block
         +modifier(active)
           background-color: var(--bal-color-primary)
         +modifier(inactive)
@@ -76,8 +79,7 @@
 
       +element(tab)
         flex: 1
-    
+
       &.is-disabled
         li
           pointer-events: none
-

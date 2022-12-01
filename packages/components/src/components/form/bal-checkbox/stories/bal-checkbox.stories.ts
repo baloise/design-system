@@ -141,6 +141,35 @@ const Template = args => ({
   </bal-field>`,
 })
 
+const Filter = args => ({
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+      <bal-checkbox-group :vertical="args.vertical" v-bind="args">
+        <bal-checkbox checked="args.checked">
+          Label
+        </bal-checkbox>
+        <bal-checkbox>
+          Label
+        </bal-checkbox>
+        <bal-checkbox>
+          Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it
+        </bal-checkbox>
+      </bal-checkbox-group>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+
 export const FieldControl = FieldTemplate.bind({})
 FieldControl.args = {
   content: 'Label',
@@ -170,7 +199,7 @@ Vertical.parameters = {
   controls: { exclude: excludedControls },
 }
 
-export const FilterButtons = Template.bind({})
+export const FilterButtons = Filter.bind({})
 FilterButtons.args = {
   content: 'Label',
   interface: 'select-button',
@@ -223,21 +252,21 @@ export const Box = args => ({
   template: `
   <div class="columns" style="max-width: 400px">
     <div class="column">
-      <div @click="checkA($event)" :class="selectedA ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
+      <div @click="checkA($event)" :class="selectedA ? 'has-background-primary-1':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
         <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
-        <p class="has-text-blue is-bold mb-0">Title</p>
-        <p class="has-text-blue mb-3">Subtitle</p>
-        <p class="has-text-blue-light-text is-size-6 mb-4">More Description</p>
-        <bal-checkbox ref="elementA" class="mb-3" v-bind="args" v-model="selectedA"></bal-checkbox>
+        <p class="has-text-blue is-bold mb-none">Title</p>
+        <p class="has-text-blue mb-small">Subtitle</p>
+        <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
+        <bal-checkbox ref="elementA" class="mb-small" v-bind="args" v-model="selectedA"></bal-checkbox>
       </div>
     </div>
     <div class="column">
-    <div @click="checkB($event)" :class="selectedB ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
+    <div @click="checkB($event)" :class="selectedB ? 'has-background-blue-light':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
       <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
-      <p class="has-text-blue is-bold mb-0">Title</p>
-      <p class="has-text-blue mb-3">Subtitle</p>
-      <p class="has-text-blue-light-text is-size-6 mb-4">More Description</p>
-      <bal-checkbox ref="elementB" class="mb-3" v-bind="args" v-model="selectedB"></bal-checkbox>
+      <p class="has-text-blue is-bold mb-none">Title</p>
+      <p class="has-text-blue mb-small">Subtitle</p>
+      <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
+      <bal-checkbox ref="elementB" class="mb-small" v-bind="args" v-model="selectedB"></bal-checkbox>
     </div>
   </div>
   </div>`,

@@ -8,6 +8,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-hint',
+  styleUrls: {
+    css: 'bal-hint.sass',
+  },
 })
 export class Hint implements BalConfigObserver {
   @Element() element!: HTMLElement

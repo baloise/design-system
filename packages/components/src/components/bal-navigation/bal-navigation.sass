@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 :root
   --bal-nav-main-mobile-height: 100vh
 
@@ -8,7 +10,7 @@
   z-index: 30
   top: 0
   left: 0
-  background-color: var(--bal-color-background)
+  background-color: var(--bal-color-white)
   +desktop
     background-color: transparent
     position: fixed
@@ -46,9 +48,9 @@
 
   +element(main)
     +unselectable
-    padding: 0
+    padding: 0 !important
     display: block
-    position: absolute
+    position: absolute !important
     left: 50%
     top: 100%
     transform: translateX(-50%)
@@ -66,7 +68,7 @@
         border-bottom-left-radius: var(--bal-radius-large)
         border-bottom-right-radius: var(--bal-radius-large)
     +widescreen
-      margin: 1rem auto 0
+      margin: 1rem auto 0 !important
       border-radius: var(--bal-radius-large)
 
     +element(head)
@@ -168,7 +170,7 @@
         font-weight: var(--bal-weight-bold)
         +hover
           &:hover
-            color: var(--bal-color-light-blue-dark)
+            color: var(--bal-color-light-blue-5)
             text-decoration: underline
     +element(white-list)
       +widescreen
@@ -203,7 +205,7 @@
         +hover
           &:hover
             > bal-heading > h4
-              color: var(--bal-color-light-blue-dark)
+              color: var(--bal-color-light-blue-5)
               text-decoration: underline
       +element(item)
         display: block
@@ -212,12 +214,12 @@
           margin-top: .5rem
           +hover
             &:hover
-              color: var(--bal-color-light-blue-dark)
+              color: var(--bal-color-light-blue-5)
               text-decoration: underline
       +element(card)
         margin: 0
         +element(heading)
-          margin-bottom: 1rem
+          margin-bottom: 1rem !important
 
   .bal-nav__metamobile
     display: block
@@ -278,7 +280,7 @@
           content: '\279E'
         +hover
           &:hover
-            color: var(--bal-color-light-blue-dark)
+            color: var(--bal-color-light-blue-5)
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem
@@ -298,8 +300,8 @@
       gap: .5rem
   .bal-navigation-popover__button-white
     .button
-      background-color: var(--bal-color-background)
-      border-color: var(--bal-color-background)
+      background-color: var(--bal-color-white)
+      border-color: var(--bal-color-white)
   [bal-popover-trigger]
     z-index: 0
 

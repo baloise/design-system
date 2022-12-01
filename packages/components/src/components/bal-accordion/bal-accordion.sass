@@ -1,77 +1,34 @@
-bal-accordion,
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 .bal-accordion
   position: static
   display: block
+  &--card
+    margin-top: var(--bal-space-medium)
+    +tablet
+      margin-top: var(--bal-space-tablet-medium)
+    +desktop
+      margin-top: var(--bal-space-desktop-medium)
 
-  // bal-accordion {
-//   display: block;
-//   border-radius: $radius-large;
+.bal-accordion__wrapper
+  display: flex
+  flex-direction: column-reverse
 
-//   & > bal-button,
-//   & bal-button > button {
-//     border-radius: $radius-large;
-//   }
+.bal-accordion__trigger
+  &--card
+    margin-left: var(--bal-space-medium)
+    margin-right: var(--bal-space-medium)
+    margin-bottom: var(--bal-space-medium)
+    +tablet
+      margin-left: var(--bal-space-tablet-medium)
+      margin-right: var(--bal-space-tablet-medium)
+      margin-bottom: var(--bal-space-tablet-medium)
+    +desktop
+      margin-left: var(--bal-space-desktop-medium)
+      margin-right: var(--bal-space-desktop-medium)
+      margin-bottom: var(--bal-space-desktop-medium)
 
-//   span.trigger-label {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-
-//     span.label {
-//       font-size: $size-normal;
-//       line-height: $size-normal;
-//     }
-//   }
-
-//   bal-icon {
-//     margin-right: 8px;
-//   }
-
-//   .accordion-content.is-info {
-//     border-top: 1px solid $blue-2;
-//   }
-
-//   .accordion-content {
-//     border-bottom-left-radius: $radius-large;
-//     border-bottom-right-radius: $radius-large;
-//   }
-
-//   &.bal-accordion-light {
-//     border-bottom: 2px solid $blue;
-//     border-radius: 0;
-
-//     button {
-//       padding-left: 0;
-//       padding-right: 0;
-//       border: none !important;
-
-//       span.button-label {
-//         flex: 1;
-//         text-align: left;
-//       }
-
-//       bal-icon.icon-right {
-//         margin-right: 0px !important;
-//       }
-
-//       &:hover,
-//       &.is-hovered,
-//       &:focus,
-//       &:focus-visible,
-//       &.is-focused,
-//       &:active,
-//       &.is-active {
-//         background: transparent !important;
-//       }
-//     }
-//   }
-
-//   &:not(.bal-accordion-light) {
-//     .accordion-content {
-//       & > .p-5 {
-//         padding-top: 0 !important;
-//         margin-bottom: 0 !important;
-//       }
-//     }
-//   }
-// }
+.bal-accordion__content
+  display: none
+  &--active
+    display: block

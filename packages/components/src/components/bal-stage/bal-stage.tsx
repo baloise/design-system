@@ -4,6 +4,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-stage',
+  styleUrls: {
+    css: 'bal-stage.sass',
+  },
 })
 export class Stage implements ComponentInterface {
   /**
@@ -33,7 +36,7 @@ export class Stage implements ComponentInterface {
   @Watch('hasShape')
   hasShapeHandler() {
     console.warn('[DEPRECATED] - Please use the property shape instead')
-    this.migrateHasShape
+    this.migrateHasShape()
   }
 
   private migrateHasShape() {

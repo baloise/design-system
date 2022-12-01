@@ -14,6 +14,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-footer',
+  styleUrls: {
+    css: 'bal-footer.sass',
+  },
 })
 export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []
@@ -101,7 +104,6 @@ export class Footer implements BalConfigObserver {
             <div
               class={{
                 ...elLegalLinks.class(),
-                'pt-4': true,
               }}
               style={{ display: this.hideLinks ? 'none' : 'flex' }}
             >
@@ -110,7 +112,6 @@ export class Footer implements BalConfigObserver {
                   class={{
                     'is-link': true,
                     'is-inverted': true,
-                    'pr-4': true,
                   }}
                   href={link.link}
                   target="_blank"
@@ -122,7 +123,6 @@ export class Footer implements BalConfigObserver {
             <div
               class={{
                 ...elLanguageLinks.class(),
-                'pt-4': true,
               }}
               style={{
                 display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
@@ -133,7 +133,6 @@ export class Footer implements BalConfigObserver {
                   class={[
                     'is-link',
                     'is-inverted',
-                    'pr-4',
                     this.language.toLowerCase() == lang.toLowerCase() ? 'is-current' : '',
                   ].join(' ')}
                   onClick={() => this.changeLanguage(lang)}

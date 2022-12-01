@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(textarea)
   +unselectable
   display: block
@@ -9,7 +11,7 @@
   box-sizing: border-box
 
   +element(native)
-    @include margin(0)
+    @include margin('none')
     display: block
     width: 100%
     max-width: 100%
@@ -19,6 +21,7 @@
     box-sizing: border-box
     resize: none
     appearance: none
+    padding: calc(0.75em - 2px)
     &::placeholder
-      @include padding(0)
+      @include padding('none')
       font-family: inherit

@@ -1,4 +1,46 @@
-bal-heading,
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 .bal-heading
   display: block
   position: static
+  margin: 0
+
+.bal-heading--level-display.bal-heading--space-all,
+.bal-heading--level-display.bal-heading--space-top,
+.bal-heading--level-display-2.bal-heading--space-all,
+.bal-heading--level-display-2.bal-heading--space-top
+  margin-top: var(--bal-space-normal)
+
+.bal-heading--level-display.bal-heading--space-all,
+.bal-heading--level-display.bal-heading--space-bottom,
+.bal-heading--level-display-2.bal-heading--space-all,
+.bal-heading--level-display-2.bal-heading--space-bottom
+  margin-bottom: var(--bal-space-normal)
+
+.bal-heading--level-h1.bal-heading--space-all,
+.bal-heading--level-h1.bal-heading--space-top
+  margin-top: var(--bal-space-small)
+
+.bal-heading--level-h1.bal-heading--space-all,
+.bal-heading--level-h1.bal-heading--space-bottom
+  margin-bottom: var(--bal-space-small)
+
+.bal-heading--level-h2.bal-heading--space-all,
+.bal-heading--level-h2.bal-heading--space-top,
+.bal-heading--level-h3.bal-heading--space-all,
+.bal-heading--level-h3.bal-heading--space-top,
+.bal-heading--level-h4.bal-heading--space-all,
+.bal-heading--level-h4.bal-heading--space-top,
+.bal-heading--level-h5.bal-heading--space-all,
+.bal-heading--level-h5.bal-heading--space-top
+  margin-top: var(--bal-space-x-small)
+
+.bal-heading--level-h2.bal-heading--space-all,
+.bal-heading--level-h2.bal-heading--space-bottom,
+.bal-heading--level-h3.bal-heading--space-all,
+.bal-heading--level-h3.bal-heading--space-bottom,
+.bal-heading--level-h4.bal-heading--space-all,
+.bal-heading--level-h4.bal-heading--space-bottom,
+.bal-heading--level-h5.bal-heading--space-all,
+.bal-heading--level-h5.bal-heading--space-bottom
+  margin-bottom: var(--bal-space-x-small)

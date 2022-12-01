@@ -9,16 +9,16 @@ export const ExternalCaluclatorTemplate = `
     </bal-navbar>
   </header>
   <main>
-    <div class="container is-compact py-6">
+    <div class="container is-compact py-large">
       <bal-tabs interface="o-steps">
         <bal-tab-item value="step-a" label="Person" :active="true">
-          <bal-card class="mt-6">
+          <bal-card class="mt-large">
             <bal-card-title>Person</bal-card-title>
             <bal-card-subtitle>Some Description</bal-card-subtitle>
             <bal-card-content>
 
-              <form class="columns is-multiline mt-0">
-                <bal-field class="column is-full py-0">
+              <form class="columns is-multiline mt-none">
+                <bal-field class="column is-full py-none">
                   <bal-field-control>
                     <bal-radio-group>
                       <bal-radio name="gender" value="male">Male</bal-radio>
@@ -26,13 +26,13 @@ export const ExternalCaluclatorTemplate = `
                     </bal-radio-group>
                   </bal-field-control>
                 </bal-field>
-                <bal-field class="column is-half py-0" required>
+                <bal-field class="column is-half py-none" required>
                   <bal-field-label required>Firstname</bal-field-label>
                   <bal-field-control>
                     <bal-input name="firstname" placeholder="Enter your firstname" required></bal-input>
                   </bal-field-control>
                 </bal-field>
-                <bal-field class="column is-half py-0" required>
+                <bal-field class="column is-half py-none" required>
                   <bal-field-label required>Lastname</bal-field-label>
                   <bal-field-control>
                     <bal-input name="lastname" placeholder="Enter your lastname" required></bal-input>
@@ -41,17 +41,17 @@ export const ExternalCaluclatorTemplate = `
               </form>
             </bal-card-content>
           </bal-card>
-          <div class="bal-buttons is-center mt-5">
+          <div class="bal-buttons is-center mt-medium">
             <bal-button>Go to value</bal-button>
           </div>
         </bal-tab-item>
         <bal-tab-item value="step-b" label="Value">
-          <bal-card class="mt-5">
+          <bal-card class="mt-medium">
             <bal-card-title>Value</bal-card-title>
             <bal-card-subtitle>Some Description</bal-card-subtitle>
             <bal-card-content>
-              <form class="columns is-multiline mt-0">
-                <bal-field class="column is-half py-0" required>
+              <form class="columns is-multiline mt-none">
+                <bal-field class="column is-half py-none" required>
                   <bal-field-label required>Value</bal-field-label>
                   <bal-field-control>
                     <bal-input
@@ -67,14 +67,14 @@ export const ExternalCaluclatorTemplate = `
               </form>
             </bal-card-content>
           </bal-card>
-          <div class="bal-buttons is-center mt-5">
+          <div class="bal-buttons is-center mt-medium">
             <bal-button class="is-full">Go to summary</bal-button>
             <div class="break"></div>
             <bal-button class="is-full" color="link">Back to person</bal-button>
           </div>
         </bal-tab-item>
         <bal-tab-item value="step-c" label="Summary">
-          <bal-card class="mt-5">
+          <bal-card class="mt-medium">
             <bal-card-content class="is-bold has-text-blue">Insured person</bal-card-content>
             <bal-card-title>Firstname Lastname</bal-card-title>
             <bal-card-subtitle>Birthdate: 21.07.2019</bal-card-subtitle>
@@ -97,7 +97,7 @@ export const ExternalCaluclatorTemplate = `
             <bal-card-button icon="edit">Edit</bal-card-button>
           </bal-card>
 
-          <bal-card color="primary" class="mt-5 p-5">
+          <bal-card color="primary" class="mt-medium p-medium">
               <bal-checkbox>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 <a class="is-link" target="_blank" href="http://baloise.ch">Link</a>. Lorem Ipsum has been the
@@ -108,13 +108,13 @@ export const ExternalCaluclatorTemplate = `
                 software like Aldus <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> including
                 versions of Lorem Ipsum.
               </bal-checkbox>
-              <div class="bal-buttons is-center mt-5">
+              <div class="bal-buttons is-center mt-medium">
                 <bal-button class="is-full">Submit</bal-button>
                 <div class="break"></div>
                 <bal-button class="is-full" color="link">Back to value</bal-button>
               </div>
           </bal-card>
-          <div class="bal-buttons is-center mt-5">
+          <div class="bal-buttons is-center mt-medium">
             <bal-button color="info" outlined class="is-full">Print</bal-button>
           </div>
         </bal-tab-item>

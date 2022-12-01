@@ -75,16 +75,16 @@ export const Spacing = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<div>
-  <div class="has-background-blue-1 is-flex mb-3">
+  <div class="has-background-blue-1 is-flex mb-small">
     <bal-heading level="h4" space="all">All</bal-heading>
   </div>
-  <div class="has-background-blue-1 is-flex mb-3">
+  <div class="has-background-blue-1 is-flex mb-small">
     <bal-heading level="h4" space="none">None</bal-heading>
   </div>
-  <div class="has-background-blue-1 is-flex mb-3">
+  <div class="has-background-blue-1 is-flex mb-small">
     <bal-heading level="h4" space="top">Top</bal-heading>
   </div>
-  <div class="has-background-blue-1 is-flex mb-3">
+  <div class="has-background-blue-1 is-flex mb-small">
     <bal-heading level="h4" space="bottom">Bottom</bal-heading>
   </div>
 </div>

@@ -5,8 +5,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
-  scoped: false,
-  shadow: false,
 })
 export class NavbarBrand {
   private bodyScrollBlocker = BodyScrollBlocker()
@@ -27,7 +25,7 @@ export class NavbarBrand {
   @Watch('linkTarget')
   hasShapeHandler() {
     console.warn('[DEPRECATED] - Please use the property target instead')
-    this.migrateLinkTarget
+    this.migrateLinkTarget()
   }
 
   private migrateLinkTarget() {
@@ -138,7 +136,10 @@ export class NavbarBrand {
         <bal-button
           class={{
             ...navbarBrandEl.element('burger').class(),
-            'is-hidden': this.interface === 'simple',
+            ...navbarBrandEl
+              .element('burger')
+              .modifier('hidden')
+              .class(this.interface === 'simple'),
           }}
           color="light"
           inverted

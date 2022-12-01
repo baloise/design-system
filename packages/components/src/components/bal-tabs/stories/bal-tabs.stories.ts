@@ -83,11 +83,11 @@ export const Steps = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-tabs v-bind="args" v-model="args.value">
-  <bal-tab-item done value="tab-a" label="Finished Step"><p class="my-5">Content of Tab A</p></bal-tab-item>
-  <bal-tab-item failed value="tab-b" label="Failed Step"><p class="my-5">Content of Tab B</p></bal-tab-item>
-  <bal-tab-item value="tab-c" label="Active Step"><p class="my-5">Content of Tab C</p></bal-tab-item>
-  <bal-tab-item value="tab-d" label="Tab D"><p class="my-5">Content of Tab D</p></bal-tab-item>
-  <bal-tab-item disabled value="tab-e" label="Disabled Step"><p class="my-5">Content of Tab E</p></bal-tab-item>
+  <bal-tab-item done value="tab-a" label="Finished Step"><p class="my-medium">Content of Tab A</p></bal-tab-item>
+  <bal-tab-item failed value="tab-b" label="Failed Step"><p class="my-medium">Content of Tab B</p></bal-tab-item>
+  <bal-tab-item value="tab-c" label="Active Step"><p class="my-medium">Content of Tab C</p></bal-tab-item>
+  <bal-tab-item value="tab-d" label="Tab D"><p class="my-medium">Content of Tab D</p></bal-tab-item>
+  <bal-tab-item disabled value="tab-e" label="Disabled Step"><p class="my-medium">Content of Tab E</p></bal-tab-item>
 </bal-tabs>`,
 })
 

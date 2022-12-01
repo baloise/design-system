@@ -19,6 +19,10 @@ const spaceVariables = []
 const spaceTabletVariables = []
 const spaceDesktopVariables = []
 
+const spaceVariablesLegacy = []
+const spaceTabletVariablesLegacy = []
+const spaceDesktopVariablesLegacy = []
+
 async function main() {
   log.title('design-tokens - generate')
 
@@ -62,7 +66,7 @@ const sassCssVariable = (key, value) => `${key}: ${value}`
 const sassVariable = (key, value) => `${key}: ${value} !default`
 const lessVariable = (key, value) => `${key}: ${value};`
 
-const parseKey = key => key === 'normal' ? '' : '-' + key
+const parseKey = key => '-' + key
 
 const newToken = (key, legacySassKey, value, aliasValue) => ({ key, legacySassKey, value, aliasValue })
 
@@ -129,6 +133,10 @@ const toSass = () => [
     sassVariable(sassKey('spacing-values-tablet'), '(' + spaceTabletVariables.join(', ') + ')'),
     sassVariable(sassKey('spacing-values-desktop'), '(' + spaceDesktopVariables.join(', ') + ')'),
     '',
+    sassVariable(sassKey('legacy-spacing-values'), '(' + spaceVariablesLegacy.join(', ') + ')'),
+    sassVariable(sassKey('legacy-spacing-values-tablet'), '(' + spaceTabletVariablesLegacy.join(', ') + ')'),
+    sassVariable(sassKey('legacy-spacing-values-desktop'), '(' + spaceDesktopVariablesLegacy.join(', ') + ')'),
+    '',
   ].join(NEWLINE)
 
 const toLess = () => [
@@ -177,7 +185,9 @@ function generateContainer() {
 function generateBreakpoints() {
   const breakpoints = BaloiseDesignToken.breakpoint
   for (const breakpoint in breakpoints) {
-    addToken(breakpoint, breakpoint, breakpoints[breakpoint])
+    addToken(`breakpoint-${breakpoint}`, `breakpoint-${breakpoint}`, breakpoints[breakpoint])
+    // // legacy variable
+    // addToken(breakpoint, breakpoint, breakpoints[breakpoint])
   }
 }
 
@@ -190,6 +200,10 @@ function generateRadius() {
   const radius = BaloiseDesignToken.radius
   for (const r in radius) {
     addToken(`radius${parseKey(r)}`, `radius${parseKey(r)}`, radius[r].value)
+    // legacy variable
+    // if(r === 'normal'){
+    //   addToken(`radius`, `radius`, radius[r].value)
+    // }
   }
 }
 
@@ -197,6 +211,10 @@ function generateShadows() {
   const shadow = BaloiseDesignToken.shadow
   for (const r in shadow) {
     addToken(`shadow${parseKey(r)}`, `shadow${parseKey(r)}`, shadow[r].value)
+    // legacy variable
+    // if(r === 'normal'){
+    //   addToken(`shadow`, `shadow`, shadow[r].value)
+    // }
   }
 }
 
@@ -255,6 +273,12 @@ function generateSpacings() {
     spaceVariables.push(`"${r}": ${sassKey(`space-${r}`)}`)
     spaceTabletVariables.push(`"${r}": ${sassKey(`space-tablet-${r}`)}`)
     spaceDesktopVariables.push(`"${r}": ${sassKey(`space-desktop-${r}`)}`)
+  }
+
+  for (const r in spacing) {
+    spaceVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-${r}`)}`)
+    spaceTabletVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-tablet-${r}`)}`)
+    spaceDesktopVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-desktop-${r}`)}`)
   }
 }
 

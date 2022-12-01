@@ -15,6 +15,7 @@ const { NEWLINE } = require('./utils/constants')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/icons");
+const DSPATH = path.join(DIRNAME, "../packages/components");
 
 const readSVG = async (name, filePath) => {
   let svgContent = ''
@@ -80,7 +81,7 @@ const main = async () => {
   ]
 
   contents.forEach((value, key) => {
-    lines.push(`export const balIcon${upperFirst(camelCase(key))} = '${value}';`)
+    lines.push(`export const balIcon${upperFirst(camelCase(key))} = /*#__PURE__*/ '${value}';`)
     lines.push(``)
   })
 
@@ -93,6 +94,43 @@ const main = async () => {
   contents.forEach(async (value, key) => {
     await file.save(path.join(PACKAGE, 'svg', `${key}.svg`), value, false)
   })
+
+  const dsLines = [
+    '/* eslint-disable prettier/prettier */',
+    '// generated file by .build/optimize-icons.js',
+    '',
+  ]
+
+  const dsIcons = [
+    'balIconClose',
+    'balIconInfoCircle',
+    'balIconPlus',
+    'balIconMinus',
+    'balIconNavGoLeft',
+    'balIconNavGoRight',
+    'balIconNavGoDown',
+    'balIconNavGoUp',
+    'balIconCaretLeft',
+    'balIconCaretDown',
+    'balIconCheck',
+    'balIconDate',
+    'balIconDocument',
+    'balIconEdit',
+    'balIconTrash',
+    'balIconUpload',
+    'balIconMenuBars',
+  ]
+
+  contents.forEach((value, key) => {
+    const iconName = `balIcon${upperFirst(camelCase(key))}`
+    if(dsIcons.includes(iconName)){
+      dsLines.push(`export const ${iconName} = /*#__PURE__*/ '${value}';`)
+      dsLines.push(``)
+    }
+  })
+
+  await file.save(path.join(DSPATH, 'src/utils/constants/icons.constant.ts'), dsLines.join(NEWLINE))
+
 }
 
 main()

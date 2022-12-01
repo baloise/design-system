@@ -36,8 +36,8 @@ A basic form field has his container element `bal-field` and 3 child elements:
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <form className="columns is-multiline mt-0 has-background-white">
-      <bal-field class="column is-full py-0">
+    <form className="columns is-multiline mt-none has-background-white">
+      <bal-field class="column is-full py-none">
         <bal-field-label>Firstname</bal-field-label>
         <bal-field-control>
           <bal-input placeholder="Enter your firstname"></bal-input>
@@ -157,8 +157,8 @@ Usage can be seen in the following code in bal-field.
 In order for it to work please import `BalSharedModule` in each Angular module that uses it.
 
 ```html
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
-  <bal-field class="column is-full py-0" required [disabled]="form.get('email')?.disabled">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-none">
+  <bal-field class="column is-full py-none" required [disabled]="form.get('email')?.disabled">
     <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
       <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
@@ -169,7 +169,7 @@ In order for it to work please import `BalSharedModule` in each Angular module t
       <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
     </bal-field-message>
   </bal-field>
-  <bal-field class="column is-half py-0">...</bal-field>
+  <bal-field class="column is-half py-none">...</bal-field>
 </form>
 ```
 

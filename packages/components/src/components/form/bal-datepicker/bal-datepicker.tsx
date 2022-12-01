@@ -72,6 +72,9 @@ import { ResizeHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-datepicker',
+  styleUrls: {
+    css: 'bal-datepicker.sass',
+  },
 })
 export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
   private inputId = `bal-dp-${datepickerIds++}`
@@ -767,6 +770,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
                     ...cellEl.modifier('today').class(cell.isToday),
                     ...cellEl.modifier('selectable').class(!cell.isDisabled && !cell.isOutdated),
                     ...cellEl.modifier('disabled').class(cell.isDisabled || cell.isOutdated),
+                    ...cellEl.modifier('outdated').class(cell.isOutdated),
                     ...cellEl.modifier('selected').class(cell.isSelected),
                   }}
                 >

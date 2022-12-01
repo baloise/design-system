@@ -16,18 +16,12 @@ export default {
 export const Icons = args => ({
   components: {},
   setup: () => ({ args }),
-  template: ` 
-  <div class="container is-wide mt-6">
-    <bal-image-slider v-bind="args">
-      <bal-image-slider-item src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI"></bal-image-slider-item>
-      <bal-image-slider-item src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I"></bal-image-slider-item>
-      <bal-image-slider-item src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw"></bal-image-slider-item>
-    </bal-image-slider>
-    <br/>
-    <bal-button icon="account" class="mr-2">Content</bal-button>
+  template: `
+  <div class="container is-wide mt-large">
+    <bal-button icon="account" class="mr-x-small">Content</bal-button>
     <bal-button icon="account" square></bal-button>
     <br/><br/>
-    <bal-button icon="account" size="small" class="mr-2">Content</bal-button>
+    <bal-button icon="account" size="small" class="mr-x-small">Content</bal-button>
     <bal-button icon="account" size="small" square></bal-button>
     <br/><br/>
     <bal-badge color="success" icon="check"></bal-badge>
@@ -38,7 +32,7 @@ export const Icons = args => ({
     <br/>
     <bal-close size="small"></bal-close>
     <br/>
-    <bal-field expanded class="mt-7">
+    <bal-field expanded class="mt-x-large">
     <bal-field-label>Firstname</bal-field-label>
     <bal-field-hint v-bind="args" subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
     <bal-field-control>
@@ -129,19 +123,19 @@ export const Icons = args => ({
   <br/>
   <bal-tabs clickable interface="o-steps" value="tab-c">
       <bal-tab-item done value="tab-a" label="Finished Step">
-          <p class="my-5">Content of Tab A</p>
+          <p class="my-medium">Content of Tab A</p>
       </bal-tab-item>
       <bal-tab-item failed value="tab-b" label="Failed Step">
-          <p class="my-5">Content of Tab B</p>
+          <p class="my-medium">Content of Tab B</p>
       </bal-tab-item>
       <bal-tab-item value="tab-c" label="Active Step">
-          <p class="my-5">Content of Tab C</p>
+          <p class="my-medium">Content of Tab C</p>
       </bal-tab-item>
       <bal-tab-item value="tab-d" label="Tab D">
-          <p class="my-5">Content of Tab D</p>
+          <p class="my-medium">Content of Tab D</p>
       </bal-tab-item>
       <bal-tab-item disabled value="tab-e" label="Disabled Step">
-          <p class="my-5">Content of Tab E</p>
+          <p class="my-medium">Content of Tab E</p>
       </bal-tab-item>
   </bal-tabs>
 </div>

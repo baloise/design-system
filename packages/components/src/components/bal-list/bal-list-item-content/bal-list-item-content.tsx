@@ -11,7 +11,7 @@ export class ListItemContent {
       <Host
         class={{
           'bal-list__item__content': true,
-          [`is-justify-content-${this.contentAlignment}`]: this.contentAlignment !== undefined,
+          [`bal-list__item__content--${this.contentAlignment}`]: this.contentAlignment !== undefined,
         }}
       >
         <slot></slot>

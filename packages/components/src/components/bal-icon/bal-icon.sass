@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 =iconSize($size: 1rem)
   width: $size
   max-height: $size
@@ -46,9 +48,9 @@
   //
   // colors
   +modifier(is-grey)
-    +fillSvg(var(--bal-color-grey-dark))
+    +fillSvg(var(--bal-color-grey-5))
   +modifier(is-grey-light)
-    +fillSvg(var(--bal-color-border-disabled))
+    +fillSvg(var(--bal-color-border-grey-dark))
   +modifier(is-success)
     +fillSvg(var(--bal-color-success))
   +modifier(is-warning)

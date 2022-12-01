@@ -55,13 +55,13 @@ Moreover, change the import path to the alias `~` instead of using a relative pa
 
 
 <!-- - new -->
-@import '~@baloise/design-system-components/src/styles/global';
+@import '@baloise/design-system-components/src/styles/global';
 ```
 
 To style your components we recommend to use css variables, however if you want to use sass variables import `global.utilities`:
 
 ```
-@import '~@baloise/design-system-components/src/styles/global.utilities';
+@import '@baloise/design-system-components/src/styles/global.utilities';
 ```
 
 do not import for example `global.variables` everything should be provided by `global.utilities`.
@@ -81,6 +81,80 @@ to the defineConfig function.
       },
     ],
   },
+```
+
+## Performance update icons
+
+To reduce the initial page load, the icon fetching was changed. In the new version the icons will not be
+automatically fetched.
+
+There are two ways to import the svg icons.
+
+### 1. import svg directly (recommended)
+
+Import the svg into your component and pass it with the prop `svg` of the `bal-icon` component.
+
+```typescript
+import { balIconAccount } from '@baloise/design-system-next-icons'
+```
+
+```HTML
+<!-- Angular --->
+<bal-icon [svg]="balIconAccount"></bal-icon>
+
+<!-- Vue --->
+<bal-icon :svg="balIconAccount"></bal-cion
+```
+
+### 2. import all svg
+
+Second variant is to import all the svg icons during the initialization. This is not recommended,
+because it increases the payload of your app.
+
+#### Angular
+
+```typescript
+...
+import * as balIcons from '@baloise/design-system-next-icons'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    ...
+    BalCoreModule.forRoot({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+        icons: balIcons,
+      },
+    }),
+    ...
+  ],
+  ...
+})
+export class AppModule {}
+```
+
+#### Vue
+
+```typescript
+...
+import * as balIcons from '@baloise/design-system-next-icons'
+
+createApp(App)
+  ...
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+        icons: balIcons,
+      },
+    }),
+  )
+  .mount('#app')
 ```
 
 ## New breakpoint high-definition

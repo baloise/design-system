@@ -19,7 +19,7 @@ export const ExternalPortalTemplate = `
     </div>
   </header>
   <main>
-    <div class="container my-7">
+    <div class="container my-x-large">
       <bal-card>
         <bal-card-title>BaloiseCombi</bal-card-title>
         <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>

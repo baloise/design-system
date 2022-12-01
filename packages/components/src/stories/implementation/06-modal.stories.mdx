@@ -42,7 +42,7 @@ Create a html and a typescript file for your modal component like this.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua.
   </p>
-  <bal-button-group position="right" class="mt-5">
+  <bal-button-group position="right" class="mt-medium">
     <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
     <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
   </bal-button-group>
@@ -145,7 +145,7 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
   <BalModalHeader>Modal Title</BalModalHeader>
   <BalModalBody>
     <p>{{ firstName }} {{ lastName }}</p>
-    <BalButtonGroup position="right" class="mt-5">
+    <BalButtonGroup position="right" class="mt-medium">
       <BalButton color="link" @click="closeModal()">Cancel</BalButton>
       <BalButton color="primary" @click="closeModal()">Okay</BalButton>
     </BalButtonGroup>

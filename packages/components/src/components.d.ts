@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
+import { BalMode } from "./utils/config";
+import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -57,6 +59,10 @@ export namespace Components {
         "value": boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode": BalMode;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     interface BalBadge {
@@ -284,6 +290,88 @@ export namespace Components {
           * If `true` the card text color becomes white.
          */
         "inverted": boolean;
+    }
+    interface BalCarousel {
+        /**
+          * Defines the image aspect ratio. Should be combined with the interface `product`
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If `true` the controls will be sticky to the top.
+         */
+        "controlsSticky": boolean;
+        /**
+          * Defines special looks.
+         */
+        "interface": 'card' | 'image' | 'product' | '';
+        /**
+          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+         */
+        "itemsPerView": 'auto' | number;
+        "next": (steps?: number) => Promise<void>;
+        /**
+          * PUBLIC METHODS ------------------------------------------------------
+         */
+        "previous": (steps?: number) => Promise<void>;
+        /**
+          * If `true` vertical scrolling on mobile is enabled.
+         */
+        "scrollY": boolean;
+        /**
+          * When how many slides are moved when going forward or backward.
+         */
+        "steps": number;
+        /**
+          * Defines the active slide index.
+         */
+        "value": number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalCarouselItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        "getData": () => Promise<BalCarouselItemData>;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCheckbox {
         /**
@@ -538,7 +626,6 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
-        "status": string;
         "subtitle": string;
     }
     interface BalDocBannerStatus {
@@ -830,7 +917,7 @@ export namespace Components {
     }
     interface BalHeading {
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast.
          */
         "color": Props.BalHeadingColor;
         /**
@@ -886,7 +973,7 @@ export namespace Components {
     }
     interface BalIcon {
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The theme type of the button.
          */
         "color": Props.BalIconColor;
         /**
@@ -964,10 +1051,6 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
-         */
-        "decimal"?: number;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
@@ -1016,10 +1099,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
-         */
-        "numberInput": boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -1195,7 +1274,7 @@ export namespace Components {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted": boolean;
+        "inverted": undefined;
         /**
           * Defines the min height of the list item
          */
@@ -1306,7 +1385,7 @@ export namespace Components {
         /**
           * Closes the presented modal with the modal controller
          */
-        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string) => Promise<boolean>;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -1683,10 +1762,6 @@ export namespace Components {
          */
         "sticky": boolean;
         /**
-          * List of tabs names for 'tabs' interface
-         */
-        "tabsNames": string[];
-        /**
           * If sticky, the top position will be determined by this value
          */
         "top": number;
@@ -1867,7 +1942,7 @@ export namespace Components {
         /**
           * @deprecated If `true` the radio has no label
          */
-        "isEmpty": boolean;
+        "isEmpty": undefined;
         /**
           * Label of the radio item.
          */
@@ -2111,7 +2186,7 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
-          * The theme type of the snackbar. Given by bulma our css framework.
+          * The theme type of the snackbar.
          */
         "color": Props.BalSnackbarColor;
         /**
@@ -2351,11 +2426,11 @@ export namespace Components {
     }
     interface BalTag {
         /**
-          * The theme type of the tag. Given by bulma our css framework.
+          * The theme type of the tag.
          */
         "closable": boolean;
         /**
-          * The theme type of the tag. Given by bulma our css framework.
+          * The theme type of the tag.
          */
         "color": Props.BalTagColor;
         /**
@@ -2516,7 +2591,7 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
-          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
+          * The theme type of the toast. Color type primary is deprecated, please use info instead.
          */
         "color": Props.BalTostColor;
         /**
@@ -2540,6 +2615,14 @@ export interface BalAppCustomEvent<T> extends CustomEvent<T> {
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
+}
+export interface BalCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselElement;
+}
+export interface BalCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalCarouselItemElement;
 }
 export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2723,6 +2806,18 @@ declare global {
     var HTMLBalCardTitleElement: {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
+    };
+    interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
+    }
+    var HTMLBalCarouselElement: {
+        prototype: HTMLBalCarouselElement;
+        new (): HTMLBalCarouselElement;
+    };
+    interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBalCarouselItemElement: {
+        prototype: HTMLBalCarouselItemElement;
+        new (): HTMLBalCarouselItemElement;
     };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
@@ -3450,6 +3545,8 @@ declare global {
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
+        "bal-carousel": HTMLBalCarouselElement;
+        "bal-carousel-item": HTMLBalCarouselItemElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
@@ -3607,6 +3704,10 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
     }
     interface BalBadge {
@@ -3850,6 +3951,98 @@ declare namespace LocalJSX {
           * If `true` the card text color becomes white.
          */
         "inverted"?: boolean;
+    }
+    interface BalCarousel {
+        /**
+          * Defines the image aspect ratio. Should be combined with the interface `product`
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        /**
+          * Defines the layout of the navigation controls.
+         */
+        "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If `true` the controls will be sticky to the top.
+         */
+        "controlsSticky"?: boolean;
+        /**
+          * Defines special looks.
+         */
+        "interface"?: 'card' | 'image' | 'product' | '';
+        /**
+          * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
+         */
+        "itemsPerView"?: 'auto' | number;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalCarouselCustomEvent<Events.BalCarouselChangeDetail>) => void;
+        /**
+          * If `true` vertical scrolling on mobile is enabled.
+         */
+        "scrollY"?: boolean;
+        /**
+          * When how many slides are moved when going forward or backward.
+         */
+        "steps"?: number;
+        /**
+          * Defines the active slide index.
+         */
+        "value"?: number;
+    }
+    interface BalCarouselItem {
+        /**
+          * Color of the background
+         */
+        "color"?: Props.BalCarouselItemColor;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
+        /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
+        /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
+         */
+        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string;
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCheckbox {
         /**
@@ -4119,7 +4312,6 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
-        "status"?: string;
         "subtitle"?: string;
     }
     interface BalDocBannerStatus {
@@ -4419,7 +4611,7 @@ declare namespace LocalJSX {
     }
     interface BalHeading {
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast.
          */
         "color"?: Props.BalHeadingColor;
         /**
@@ -4463,7 +4655,7 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The theme type of the button.
          */
         "color"?: Props.BalIconColor;
         /**
@@ -4541,10 +4733,6 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
-         */
-        "decimal"?: number;
-        /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
@@ -4589,10 +4777,6 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
-         */
-        "numberInput"?: boolean;
         /**
           * Emitted when a keyboard input occurred.
          */
@@ -4812,7 +4996,7 @@ declare namespace LocalJSX {
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
-        "inverted"?: boolean;
+        "inverted"?: undefined;
         /**
           * Defines the min height of the list item
          */
@@ -5305,7 +5489,7 @@ declare namespace LocalJSX {
         /**
           * Triggers when a page change happens
          */
-        "onBalChange"?: (event: BalPaginationCustomEvent<number>) => void;
+        "onBalChange"?: (event: BalPaginationCustomEvent<Events.BalPaginationChangeDetail>) => void;
         /**
           * Specify the max visible pages before and after the selected page
          */
@@ -5314,10 +5498,6 @@ declare namespace LocalJSX {
           * If 'true, the pagination will be sticky to the top
          */
         "sticky"?: boolean;
-        /**
-          * List of tabs names for 'tabs' interface
-         */
-        "tabsNames"?: string[];
         /**
           * If sticky, the top position will be determined by this value
          */
@@ -5500,7 +5680,7 @@ declare namespace LocalJSX {
         /**
           * @deprecated If `true` the radio has no label
          */
-        "isEmpty"?: boolean;
+        "isEmpty"?: undefined;
         /**
           * Label of the radio item.
          */
@@ -5765,7 +5945,7 @@ declare namespace LocalJSX {
         "actionHandler"?: () => void;
         "closeHandler"?: () => void;
         /**
-          * The theme type of the snackbar. Given by bulma our css framework.
+          * The theme type of the snackbar.
          */
         "color"?: Props.BalSnackbarColor;
         /**
@@ -6004,11 +6184,11 @@ declare namespace LocalJSX {
     }
     interface BalTag {
         /**
-          * The theme type of the tag. Given by bulma our css framework.
+          * The theme type of the tag.
          */
         "closable"?: boolean;
         /**
-          * The theme type of the tag. Given by bulma our css framework.
+          * The theme type of the tag.
          */
         "color"?: Props.BalTagColor;
         /**
@@ -6177,7 +6357,7 @@ declare namespace LocalJSX {
     interface BalToast {
         "closeHandler"?: () => void;
         /**
-          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
+          * The theme type of the toast. Color type primary is deprecated, please use info instead.
          */
         "color"?: Props.BalTostColor;
         /**
@@ -6205,6 +6385,8 @@ declare namespace LocalJSX {
         "bal-card-content": BalCardContent;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
+        "bal-carousel": BalCarousel;
+        "bal-carousel-item": BalCarouselItem;
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
@@ -6341,6 +6523,8 @@ declare module "@stencil/core" {
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-carousel": LocalJSX.BalCarousel & JSXBase.HTMLAttributes<HTMLBalCarouselElement>;
+            "bal-carousel-item": LocalJSX.BalCarouselItem & JSXBase.HTMLAttributes<HTMLBalCarouselItemElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;

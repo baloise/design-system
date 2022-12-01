@@ -4,6 +4,9 @@ import { Props } from '../../types'
 
 @Component({
   tag: 'bal-card',
+  styleUrls: {
+    css: 'bal-card.sass',
+  },
 })
 export class BalCard {
   /**

@@ -116,7 +116,10 @@
       "@baloise/design-system-components/dist/components/bal-navigation-meta-end": "BalNavigationMetaEnd",
       "@baloise/design-system-components/dist/components/bal-navigation-meta-start": "BalNavigationMetaStart",
       "@baloise/design-system-components/dist/components/bal-navigation-popover": "BalNavigationPopover",
-      "@baloise/design-system-components/dist/components/bal-stage-image": "BalStageImage"
+      "@baloise/design-system-components/dist/components/bal-stage-image": "BalStageImage",
+      "@baloise/design-system-components/dist/components/bal-carousel": "BalCarousel",
+      "@baloise/design-system-components/dist/components/bal-carousel-item": "BalCarouselItem",
+      "@baloise/design-system-components/dist/components/bal-input-slider": "BalInputSlider"
     }
   },
   "allowedNonPeerDependencies": ["@baloise/design-system-components"]

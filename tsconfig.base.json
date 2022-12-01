@@ -21,7 +21,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "pretty": true,
-    "removeComments": false,
+    "removeComments": true,
     "inlineSources": true,
     "sourceMap": true
   },

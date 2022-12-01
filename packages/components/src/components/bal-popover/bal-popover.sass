@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 :root
   --bal-popover-backdrop-height: 100vh
   --bal-popover-content-height-top-nav: 100vh
@@ -38,7 +40,7 @@
   +element(content)
     display: none
     z-index: 25
-    box-shadow: var(--bal-shadow)
+    box-shadow: var(--bal-shadow-normal)
     background: var(--bal-color-white)
     min-width: 16.25rem
     &[data-show]
@@ -48,17 +50,17 @@
     +modifier(no-shadow)
       box-shadow: none
     +modifier(radius-normal)
-      border-radius: var(--bal-radius)
+      border-radius: var(--bal-radius-normal)
     +modifier(radius-large)
       border-radius: var(--bal-radius-large)
     +modifier(radius-none)
       border-radius: var(--bal-radius-none)
     +modifier(radius-normal-bottom-none)
-      border-radius: var(--bal-radius)
+      border-radius: var(--bal-radius-normal)
       border-bottom-right-radius: 0
       border-bottom-left-radius: 0
     +modifier(radius-normal-top-none)
-      border-radius: var(--bal-radius)
+      border-radius: var(--bal-radius-normal)
       border-top-left-radius: 0
       border-top-right-radius: 0
     +modifier(radius-large-bottom-none)

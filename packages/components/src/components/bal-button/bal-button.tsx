@@ -3,6 +3,9 @@ import { Props } from '../../types'
 
 @Component({
   tag: 'bal-button',
+  styleUrls: {
+    css: 'bal-button.sass',
+  },
 })
 export class Button implements ComponentInterface {
   @Element() el!: HTMLElement
