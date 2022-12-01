@@ -87,7 +87,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, float, clickabl
                 }}
                 style={{ display: !tab.done ? 'block' : 'none' }}
               >
-                {tab.failed ? '!' : tab.index}
+                {tab.failed ? '!' : (tab.index || 0) + 1}
               </span>
             </span>
             <span

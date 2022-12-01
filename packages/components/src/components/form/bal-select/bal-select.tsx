@@ -202,7 +202,6 @@ export class Select implements ComponentInterface, Loggable {
     this.syncRawValue(false)
   }
 
-  // @Watch('rawValue')
   updateRawValue(newValue: string[], isHuman = true) {
     if (!areArraysEqual(newValue, this.rawValue || [])) {
       this.rawValue = [...newValue]
@@ -476,7 +475,9 @@ export class Select implements ComponentInterface, Loggable {
     const hasOptions = this.options.size > 0
 
     if (hasOptions) {
-      this.syncRawValue(false)
+      if (!this.remote) {
+        this.syncRawValue(isNotHuman)
+      }
     } else {
       this.waitForOptionsAndThenUpdateRawValuesTimer = setTimeout(() => this.waitForOptionsAndThenUpdateRawValues(), 10)
     }
@@ -506,8 +507,10 @@ export class Select implements ComponentInterface, Loggable {
       }
     }
     this.options = new Map(options)
-    await this.syncNativeInput()
-    if (this.didInit) {
+    if (!this.typeahead) {
+      await this.syncNativeInput()
+    }
+    if (this.didInit && !this.remote) {
       this.validateAfterBlur()
     }
   }
@@ -753,7 +756,7 @@ export class Select implements ComponentInterface, Loggable {
   private validateAfterBlur(isHuman = isNotHuman) {
     let newRawValue = this.rawValue
     if (this.didInit && !this.multiple) {
-      if (this.selectionOptional && this.typeahead) {
+      if (this.typeahead && (this.selectionOptional || this.remote)) {
         const typedOption = findOptionByLabel(this.options, this.inputElement.value)
         if (typedOption) {
           newRawValue = [typedOption.value]
