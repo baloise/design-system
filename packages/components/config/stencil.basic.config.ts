@@ -13,6 +13,7 @@ export const StencilBaseConfig: Config = {
   enableCache: true,
   tsconfig: 'tsconfig.json',
   hashedFileNameLength: 10,
+  invisiblePrehydration: true,
   autoprefixCss: true,
   plugins: [
     sass({

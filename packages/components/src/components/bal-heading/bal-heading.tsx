@@ -67,7 +67,7 @@ export class Heading {
   private getFontColor(): string {
     const parseColor = (color: string) => (color !== '' ? `has-text-${color}` : '')
 
-    return parseColor(this.inverted ? 'white' : this.color)
+    return parseColor(this.inverted ? 'white' : this.color === 'info' ? 'primary' : this.color)
   }
 
   render() {
