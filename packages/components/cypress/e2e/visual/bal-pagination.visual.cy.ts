@@ -16,7 +16,7 @@ describe('bal-pagination', () => {
   })
 
   it('basic component mobile', () => {
-    cy.platform('mobile')
+    cy.platform('mobile').wait(400)
     cy.getByTestId('basic').compareSnapshot('pagination-basic-mobile', 0.0)
     cy.getByTestId('small').compareSnapshot('pagination-small-mobile', 0.0)
     cy.getByTestId('small-with-dots').compareSnapshot('pagination-small-with-dots-mobile', 0.0)
