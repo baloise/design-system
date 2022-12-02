@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Development/Contributing/How to's/Testing Command"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Write your own Testing Command
+
+All our extended or own cypress commands are located in the `packages/testing/src/commands` directory.
+
+Before writing or updating a component, please finish the [dev setup](?path=/docs/development-contributing-dev-setup--page)
+
+The documentation explaining how to test can be found [here](?path=/docs/development-getting-started-testing--page).
+
+## Getting Started
+
+The testing part runs against our component demo pages. Therefore, we need to start the server with `npm run lib:server` from the root directory.
+
+Then navigate with a second terminal into the component package:
+
+```bash
+cd packages/testing
+```
+
+Inside the folder `src/commands` are the cypress commands. Each component and command gets tested with E-2-E Cypress tests located in the folder `cypress/integration`
+
+To open the cypress testing tools run:
+
+```bash
+npm run serve
+```
+
+## Structure
+
+### Custom Command
+
+The structure of the custom command is important, because the documentation is automatically generate out of it, as well as the type definitions.
+
+Custom commands are created for our components, therefore the files are suffixed with the name of the component. Each custom command has two files:
+
+- `bal-accordion.command` the execution code of the new command
+- `bal-accordion.type` the type definitions for the autocompletion for users
+
+#### Command
+
+```typescript
+Cypress.Commands.add(
+  'balAccordionIsOpen',
+  {
+    prevSubject: true,
+  },
+  subject => {
+    return cy.wrap(subject).should('have.attr', 'is-active', '')
+  },
+)
+```
+
+#### Type
+
+```typescript
+/// <reference types="cypress" />
+
+declare namespace Cypress {
+  interface Chainable {
+    /**
+     * Asserts if the accordion is open.
+     */
+    balAccordionIsOpen(): Chainable<JQuery>
+  }
+}
+```
+
+## Overrides
+
+Some of the cypress commands like `.type()` needed to be changed to match our components.
+
+In most cases we need to find the correct native element or change the selectors.
+
+For each command we override, we create a new file like `type.command.ts`. Inside of this file we override the command, but the default return is the command itself. We only catch our special cases (components).
+
+```typescript
+import { isInput, selectors, wrapRoot } from '../helpers'
+
+Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
+  if (isInput(element)) {
+    return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
+  }
+
+  return originalFn(element, content, options)
+})
+```
+
+> **TIP**
+> In the file `src/commands/helpers.ts` the selectors and the component util functions are defined.
+
+<bal-doc-github link="/stories/development/contributing/how-to's/02-testing.stories.mdx"></bal-doc-github>

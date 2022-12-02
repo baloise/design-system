@@ -1,0 +1,181 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Development/Migration/Migration from 11.x to 12.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 11.x to 12.x
+
+The following workflow walks you through the migration steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## bal-input pattern
+
+To disable certain key presses we added a new prop called `allowedKeyPress`.
+To validate the pattern of the input use the prop `pattern`.
+
+Here is an example for a postal code input.
+
+```html
+<!-- old -->
+<bal-input pattern="[0-9]"></bal-input>
+
+<!-- new -->
+<bal-input pattern="[0-9]{4}" allowed-key-press="[0-9]"></bal-input>
+```
+
+## bal-input type to elementType
+
+The prop `type` was renamed to `elementType` to avoid html attribute conflicts.
+
+## bal-text small to size
+
+With the new brand we have various text sizes, therefore the small prop was removed and replace with an enum type size.
+
+## Prop inverted
+
+Property inverted was removed, since there will be no inverted styles for the new brand.
+
+## Improved SASS styles
+
+In the new version 11 we introduced the packages tokens and css. Those are build on SASS not SCSS and
+provide a lot of CSS-Variables.
+
+Therefore, update your `global.scss` import to just `global` or `global.sass`.
+Moreover, change the import path to the alias `~` instead of using a relative path to the installed package.
+
+```sass
+<!-- - old -->
+@import '../node_modules/@baloise/design-system-components/src/styles/global.scss';
+
+
+<!-- - new -->
+@import '@baloise/design-system-components/src/styles/global';
+```
+
+To style your components we recommend to use css variables, however if you want to use sass variables import `global.utilities`:
+
+```
+@import '@baloise/design-system-components/src/styles/global.utilities';
+```
+
+do not import for example `global.variables` everything should be provided by `global.utilities`.
+
+### Vue / Vite
+
+In order to get the `~` alias working, update the vite.config.ts file and add the resolve config
+to the defineConfig function.
+
+```typescript
+  resolve: {
+    alias: [
+      {
+        // this is required for the SCSS modules
+        find: /^~(.*)$/,
+        replacement: "$1",
+      },
+    ],
+  },
+```
+
+## Performance update icons
+
+To reduce the initial page load, the icon fetching was changed. In the new version the icons will not be
+automatically fetched.
+
+There are two ways to import the svg icons.
+
+### 1. import svg directly (recommended)
+
+Import the svg into your component and pass it with the prop `svg` of the `bal-icon` component.
+
+```typescript
+import { balIconAccount } from '@baloise/design-system-next-icons'
+```
+
+```HTML
+<!-- Angular --->
+<bal-icon [svg]="balIconAccount"></bal-icon>
+
+<!-- Vue --->
+<bal-icon :svg="balIconAccount"></bal-cion
+```
+
+### 2. import all svg
+
+Second variant is to import all the svg icons during the initialization. This is not recommended,
+because it increases the payload of your app.
+
+#### Angular
+
+```typescript
+...
+import * as balIcons from '@baloise/design-system-next-icons'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    ...
+    BalCoreModule.forRoot({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+        icons: balIcons,
+      },
+    }),
+    ...
+  ],
+  ...
+})
+export class AppModule {}
+```
+
+#### Vue
+
+```typescript
+...
+import * as balIcons from '@baloise/design-system-next-icons'
+
+createApp(App)
+  ...
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+        icons: balIcons,
+      },
+    }),
+  )
+  .mount('#app')
+```
+
+## New breakpoint high-definition
+
+The high-definition breakpoint gets introduced in the new version. It starts at 1280px and is added between desktop and widescreen.
+
+The only breaking change is that the range of the sass mixin desktop-only is changed.
+
+## Improve initial page load
+
+The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
+To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
+
+```html
+<style>
+  .bal-body {
+    visibility: hidden;
+  }
+</style>
+```
+
+Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+
+<bal-doc-github link="/stories/development/migration/10-migration-from-11x-to-12x.stories.mdx"></bal-doc-github>

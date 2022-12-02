@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Development/Migration/Migration from 5.x to 6.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 5.x to 6.x
+
+The following workflow walks you through the migration steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## CSS helper classes
+
+- replace `has-border-radius` with `has-radius-normal`
+- replace `has-border-blue-dark` with `has-border-dark`
+- replace `has-border-blue-light` with `has-border-light`
+- replace `has-no-border` with `has-border-none`
+
+<bal-doc-github link="/stories/development/migration/05-migration-from-5x-to-6x.stories.mdx"></bal-doc-github>
