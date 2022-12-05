@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-css",
-  "version": "11.0.17",
+  "version": "11.0.18",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
     "scss/"
   ],
   "dependencies": {
-    "@baloise/design-system-fonts": "11.0.17",
-    "@baloise/design-system-tokens": "11.0.17"
+    "@baloise/design-system-fonts": "11.0.18",
+    "@baloise/design-system-tokens": "11.0.18"
   },
   "devDependencies": {
     "bulma": "~0.9.3",

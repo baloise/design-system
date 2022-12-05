@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.18](https://github.com/baloise-incubator/design-system/compare/v11.0.17...v11.0.18) (2022-12-05)
+
+
+### Bug Fixes
+
+* adjust nested package versions ([ab25072](https://github.com/baloise-incubator/design-system/commit/ab250724bad392d031d3750f1633e659932047bc))
+
+
+
 ## [11.0.17](https://github.com/baloise-incubator/design-system/compare/v11.0.16...v11.0.17) (2022-12-01)
 
 
