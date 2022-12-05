@@ -460,3 +460,25 @@ li.sbdocs.sbdocs-li {
 .sb-show-main {
   height: 100vh;
 }
+
+pre.my-diff-source {
+  font-size: 13px !important;
+  padding: 20px !important;
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  margin: 25px 0 40px !important;
+  border-radius: 4px !important;
+  box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0 !important;
+  font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Droid Sans Mono', 'Courier New', monospace !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+pre.my-diff-source code {
+  padding: 0 !important;
+}
+
+td > code {
+  color: #6c2273;
+  font-weight: 700;
+}
