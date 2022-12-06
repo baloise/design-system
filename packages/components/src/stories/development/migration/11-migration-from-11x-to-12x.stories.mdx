@@ -113,22 +113,23 @@ export class AppModule {}`}
 ### Lazy Loading Component Styles
 
 To reduce the initial page load we now lazy load the component stylesheets. This reduces our
-global style file. The styles of the components are loaded when they are used.
+global style file by 44%. Now styles of the components are loaded, when they are used.
 
-This change can also be added as non-breaking with adding the prop `mode` to the `bal-app` component.
+If you are customize the styles through our SASS variables you need to change from lazy-loading to eager load the component styles.
+Therefore, add the prop `mode` to the `bal-app` component and import the `global.components` styles in your SASS file.
+
+The prop `mode="sass"` informs the Design System to not lazy-load the component styles.
 
 ```html
 <bal-app mode="sass"> ...content </bal-app>
 ```
 
-That tells the Design System to use the SASS styles and not the inline css styles.
-
 Next we need to load the missing SASS styles manually.
 
 <DiffSource
   code={`$font-path: '~assets/fonts';\n
-@import 'node_modules/@baloise/design-system-components/src/styles/global';
-+@import 'node_modules/@baloise/design-system-components/src/styles/global.components';\n
+@import '@baloise/design-system-components/src/styles/global';
++@import '@baloise/design-system-components/src/styles/global.components';\n
 // add custom styles below`}
 />
 
