@@ -66,7 +66,7 @@ In most of the cases we reduced the initial page load or added lazy loading of c
 
 [How to use the bal-icon component](?path=/docs/components-icon--basic#import-into-the-component)
 
-Import the icons form the @baloise/design-system-next-icons package and pass them with
+Import the icons form the `@baloise/design-system-next-icons` package and pass them with
 the BalConfig during the initialization.
 
 First import all the icons you are using to keep the payload small.
@@ -112,10 +112,10 @@ export class AppModule {}`}
 
 ### Lazy Loading Component Styles
 
-To reduce the initial page load we now lazy load the component stylesheets. This reduces our
-global style file by 44%. Now styles of the components are loaded, when they are used.
+To reduce the initial page load we now lazy load the component styles. This reduces our
+global style file by 44%. Styles of the components are loaded, when they are used.
 
-If you are customize the styles through our SASS variables you need to change from lazy-loading to eager load the component styles.
+If you customized the styles through the SASS variables, you need to change from lazy-loading to eager-loading the component styles.
 Therefore, add the prop `mode` to the `bal-app` component and import the `global.components` styles in your SASS file.
 
 The prop `mode="sass"` informs the Design System to not lazy-load the component styles.
@@ -137,7 +137,7 @@ Next we need to load the missing SASS styles manually.
 
 #### Typography Size Aliases
 
-All the below listed alias are removed, so please use the direct value instead.
+All the below listed alias are removed, so please use the green value on the right side instead.
 
 | Size Alias | Value to use  |
 | :--------- | :------------ |
@@ -161,7 +161,7 @@ All the below listed alias are removed, so please use the direct value instead.
 
 #### Color Aliases
 
-All the below listed alias are removed, so please use the direct value instead.
+All the below listed alias are removed, so please use the green value on the right side instead.
 
 | Color Alias       | Value to use    |
 | :---------------- | :-------------- |
@@ -217,7 +217,7 @@ All the below listed alias are removed, so please use the direct value instead.
 
 #### Text-Color Aliases
 
-All the below listed alias are removed, so please use the direct value instead.
+All the below listed alias are removed, so please use the green value on the right side instead.
 
 | Color Alias | Value to use    |
 | :---------- | :-------------- |
@@ -249,7 +249,7 @@ All the below listed alias are removed, so please use the direct value instead.
 
 #### Border-Color Aliases
 
-All the below listed alias are removed, so please use the direct value instead.
+All the below listed alias are removed, so please use the green value on the right side instead.
 
 | Color Alias | Value to use |
 | :---------- | :----------- |
@@ -297,15 +297,7 @@ To keep the same concept with the T-Shirt size we adjusted one token `var(--bal-
 
 #### Spacing
 
-We only support the spacing concept with t-shirt size like `m-large` or `pt-x-small` instead of the numbers.
-However, the can be activated with the SASS variable `$spacing-legacy-numbering`, but this will increase the css payload heavily.
-
-<DiffSource
-  code={`$font-path: '~assets/fonts';
-+$spacing-legacy-numbering: true;\n
-@import 'node_modules/@baloise/design-system-components/src/styles/global';
-// add custom styles below`}
-/>
+We only support the spacing concept with T-Shirt sizes like `m-large` or `pt-x-small` instead of the numbers.
 
 For migration below you find the mapping table and an example.
 
@@ -330,10 +322,22 @@ For migration below you find the mapping table and an example.
 +<div class="mt-large">...</div>`}
 />
 
+##### Non-breaking
+
+To prevent breaking changes the size numbering can be reactivated by setting the SASS variable `$spacing-legacy-numbering` to true.
+However, this will increase the file size of your stylesheet.
+
+<DiffSource
+  code={`$font-path: '~assets/fonts';
++$spacing-legacy-numbering: true;\n
+@import 'node_modules/@baloise/design-system-components/src/styles/global';
+// add custom styles below`}
+/>
+
 ### Separation of bal-number-input & bal-input
 
-In version 12 we decoupled bal-number-input from bal-input. The props `decimal` and `numberInput` are removed from the component `bal-input`.
-This leads to a small payload for the `bal-input` component.
+In version 12 we decoupled bal-number-input from bal-input. The props `numberInput` and `decimal` are removed from the `bal-input` component.
+This leads to a smaller payload for the `bal-input` component.
 
 <DiffSource
   code={`-<bal-input number-input decimal="2"></bal-input>
@@ -344,7 +348,7 @@ This leads to a small payload for the `bal-input` component.
 
 ### Carousel
 
-The new component carousel replaces the `bal-slider`, `bal-product-slider` and `bal-image-slider`.
+The new component carousel replaces the `bal-slider`, `bal-product-slider` and `bal-image-slider` components.
 
 #### Card Slider
 
