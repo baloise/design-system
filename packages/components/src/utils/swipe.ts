@@ -14,12 +14,8 @@ export const SwipeHandler = () => {
       observersSwipeRight = []
       target = el
       manager = new Hammer(target)
-      manager.on('swipeleft', () => {
-        observersSwipeLeft.forEach(observer => observer())
-      })
-      manager.on('swiperight', () => {
-        observersSwipeRight.forEach(observer => observer())
-      })
+      manager.on('swipeleft', () => observersSwipeLeft.forEach(observer => observer()))
+      manager.on('swiperight', () => observersSwipeRight.forEach(observer => observer()))
     },
     disconnect: () => {
       observersSwipeLeft = []
