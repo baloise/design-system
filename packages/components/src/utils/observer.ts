@@ -7,6 +7,11 @@ export const MutationHandler = () => {
         return
       }
 
+      if (mutationO !== undefined) {
+        mutationO?.disconnect()
+        mutationO = undefined
+      }
+
       mutationO = new MutationObserver(mutationList => {
         if (tag) {
           mutationList = mutationList.filter(record => record.target.nodeName === tag.toLocaleUpperCase())
