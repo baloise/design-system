@@ -72,12 +72,10 @@ the BalConfig during the initialization.
 First import all the icons you are using to keep the payload small.
 
 ```typescript
+// Only import the icons you are using
 import { balIconAccount } from '@baloise/design-system-next-icons'
-```
 
-Or import all of them
-
-```typescript
+// Or import all of them
 import * as balIcons from '@baloise/design-system-next-icons'
 ```
 
@@ -135,6 +133,30 @@ Next we need to load the missing SASS styles manually.
 />
 
 ### Design Token Reduction
+
+#### Typography Size Aliases
+
+All the below listed alias are removed, so please use the direct value instead.
+
+| Size Alias | Value to use  |
+| :--------- | :------------ |
+| display    | `xxxxx-large` |
+| display-2  | `xxxx-large`  |
+| 1          | `xxx-large`   |
+| 2          | `xx-large`    |
+| 3          | `x-large`     |
+| 4          | `large`       |
+| 5          | `medium`      |
+| 6          | `normal`      |
+| 7          | `small`       |
+| 8          | `x-small`     |
+
+##### Example
+
+<DiffSource
+  code={`-<p class="is-size-4">Some Text</p>
++<p class="is-size-large">Some Text</p>`}
+/>
 
 #### Color Aliases
 
@@ -205,8 +227,8 @@ All the below listed alias are removed, so please use the direct value instead.
 | invalid     | `danger`        |
 | normal      | `primary`       |
 | blue        | `primary`       |
-| blue-light  | `primary-3`     |
-| blue-dark   | `primary-6`     |
+| blue-light  | `primary-light` |
+| blue-dark   | `primary-dark`  |
 
 ##### Example - CSS Variable
 
