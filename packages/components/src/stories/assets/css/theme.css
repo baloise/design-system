@@ -115,7 +115,15 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs-wrapper {
+  padding: 16px 24px !important;
+}
+
+.sbdocs-wrapper.welcome {
   padding: 0 !important;
+}
+
+.container {
+  margin: auto !important;
 }
 
 .sbdocs.sbdocs-h1,
@@ -479,6 +487,6 @@ pre.my-diff-source code {
 }
 
 td > code {
-  color: #6c2273;
+  color: #2ab797;
   font-weight: 700;
 }

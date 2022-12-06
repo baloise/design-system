@@ -24,7 +24,7 @@ import Wallpaper from './assets/images/banner.svg'
 />
 <link
   onLoad={(() => {
-    setTimeout(() => (document.getElementsByClassName('sbdocs-wrapper')[0].style.padding = '0'), 100)
+    setTimeout(() => document.getElementsByClassName('sbdocs-wrapper')[0].classList.add('welcome'), 100)
   })()}
 />
 
@@ -61,12 +61,12 @@ import Wallpaper from './assets/images/banner.svg'
 </bal-doc-app>
 
 <bal-doc-app>
-  <div class="py-normal container">
+  <div class="pt-xx-large pb-large container">
     <bal-heading>News</bal-heading>
     <div class="columns fg-medium">
       <bal-card class="column is-one-quarter p-none">
         <bal-card-content>
-          <bal-text size="small">xx.11.2022</bal-text>
+          <bal-text size="small">xx.12.2022</bal-text>
           <bal-heading space="all" level="h3">
             Migrate to v12
           </bal-heading>
