@@ -218,9 +218,6 @@ export class Pagination {
 
     const hasBasicNavigationButtons = this.interface === '' || (isSmall && this.totalPages <= 5)
 
-    console.log('hasBasicNavigationButtons', hasBasicNavigationButtons)
-    console.log('isMobile', this.isMobile)
-
     const SmallWithText: FunctionalComponent = () => (
       <bal-text
         space="none"

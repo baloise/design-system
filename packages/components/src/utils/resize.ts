@@ -51,6 +51,11 @@ export const ResizeObserverHandler = () => {
         return
       }
 
+      if (resizeO !== undefined) {
+        resizeO?.disconnect()
+        resizeO = undefined
+      }
+
       resizeO = new ResizeObserver(() => callback())
       resizeO.observe(el)
     },
