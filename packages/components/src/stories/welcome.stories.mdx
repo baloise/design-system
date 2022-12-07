@@ -63,37 +63,41 @@ import Wallpaper from './assets/images/banner.svg'
 <bal-doc-app>
   <div class="pt-xx-large pb-large container">
     <bal-heading>News</bal-heading>
-    <div class="columns fg-medium">
-      <bal-card class="column is-one-quarter p-none">
-        <bal-card-content>
-          <bal-text size="small">xx.12.2022</bal-text>
-          <bal-heading space="all" level="h3">
-            Migrate to v12
-          </bal-heading>
-          <bal-text space="none">
-            We have been working on a lot of performance update to achieve a better Google Lighthouse score.
-          </bal-text>
-          <a
-            class="button is-primary mt-normal"
-            style={{ width: 'auto' }}
-            href="?path=/docs/development-migration-migration-from-11-x-to-12-x--page"
-          >
-            Migration Guide
-          </a>
-        </bal-card-content>
-      </bal-card>
-      <bal-card class="column is-one-quarter p-none">
-        <bal-card-content>
-          <bal-text size="small">20.10.2022</bal-text>
-          <bal-heading space="all" level="h3">
-            Feature Freeze!
-          </bal-heading>
-          <bal-text space="none">
-            All work on adding new features is suspended to focus on quality improvement, user experience and bug
-            fixing.
-          </bal-text>
-        </bal-card-content>
-      </bal-card>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card fullheight class="p-none">
+          <bal-card-content>
+            <bal-text size="small">xx.12.2022</bal-text>
+            <bal-heading space="all" level="h3">
+              Migrate to v12
+            </bal-heading>
+            <bal-text space="none">
+              We have been working on a lot of performance update to achieve a better Google Lighthouse score.
+            </bal-text>
+            <a
+              class="button is-primary mt-normal"
+              style={{ width: 'auto' }}
+              href="?path=/docs/development-migration-migration-from-11-x-to-12-x--page"
+            >
+              Migration Guide
+            </a>
+          </bal-card-content>
+        </bal-card>
+      </div>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card fullheight class="p-none">
+          <bal-card-content>
+            <bal-text size="small">20.10.2022</bal-text>
+            <bal-heading space="all" level="h3">
+              Feature Freeze!
+            </bal-heading>
+            <bal-text space="none">
+              All work on adding new features is suspended to focus on quality improvement, user experience and bug
+              fixing.
+            </bal-text>
+          </bal-card-content>
+        </bal-card>
+      </div>
     </div>
   </div>
 </bal-doc-app>
@@ -101,67 +105,75 @@ import Wallpaper from './assets/images/banner.svg'
 <bal-doc-app>
   <div class="py-x-large container">
     <bal-heading>Implementations</bal-heading>
-    <div class="columns fg-medium">
-      <bal-card color="red-1" class="column p-none">
-        <bal-card-content>
-          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
-            <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-            <bal-heading level="h3">Angular</bal-heading>
-            <a
-              class="button is-primary"
-              style={{ width: 'auto' }}
-              href="?path=/docs/development-getting-started-angular-overview--page"
-            >
-              Getting Started
-            </a>
-          </div>
-        </bal-card-content>
-      </bal-card>
-      <bal-card color="green-1" class="column p-none">
-        <bal-card-content>
-          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
-            <img src={VueLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-            <bal-heading level="h3">Vue</bal-heading>
-            <a
-              class="button is-primary"
-              style={{ width: 'auto' }}
-              href="?path=/docs/development-getting-started-vue-overview--page"
-            >
-              Getting Started
-            </a>
-          </div>
-        </bal-card-content>
-      </bal-card>
-      <bal-card color="purple-1" class="column p-none">
-        <bal-card-content>
-          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
-            <img src={ReactLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-            <bal-heading level="h3">React</bal-heading>
-            <a
-              class="button is-primary"
-              style={{ width: 'auto' }}
-              href="?path=/docs/development-getting-started-react-overview--page"
-            >
-              Getting Started
-            </a>
-          </div>
-        </bal-card-content>
-      </bal-card>
-      <bal-card color="yellow-1" class="column p-none">
-        <bal-card-content>
-          <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
-            <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-            <bal-heading level="h3">HTML / JS</bal-heading>
-            <a
-              class="button is-primary"
-              style={{ width: 'auto' }}
-              href="?path=/docs/development-getting-started-html5-overview--page"
-            >
-              Getting Started
-            </a>
-          </div>
-        </bal-card-content>
-      </bal-card>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card color="red-1" class="p-none">
+          <bal-card-content>
+            <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+              <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+              <bal-heading level="h3">Angular</bal-heading>
+              <a
+                class="button is-primary"
+                style={{ width: 'auto' }}
+                href="?path=/docs/development-getting-started-angular-overview--page"
+              >
+                Getting Started
+              </a>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </div>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card color="green-1" class="p-none">
+          <bal-card-content>
+            <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+              <img src={VueLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+              <bal-heading level="h3">Vue</bal-heading>
+              <a
+                class="button is-primary"
+                style={{ width: 'auto' }}
+                href="?path=/docs/development-getting-started-vue-overview--page"
+              >
+                Getting Started
+              </a>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </div>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card color="purple-1" class="p-none">
+          <bal-card-content>
+            <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+              <img src={ReactLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+              <bal-heading level="h3">React</bal-heading>
+              <a
+                class="button is-primary"
+                style={{ width: 'auto' }}
+                href="?path=/docs/development-getting-started-react-overview--page"
+              >
+                Getting Started
+              </a>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </div>
+      <div class="column is-one-quarter-desktop is-half-tablet">
+        <bal-card color="yellow-1" class="p-none">
+          <bal-card-content>
+            <div class="is-flex is-align-items-center fg-normal is-flex-direction-column">
+              <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+              <bal-heading level="h3">HTML / JS</bal-heading>
+              <a
+                class="button is-primary"
+                style={{ width: 'auto' }}
+                href="?path=/docs/development-getting-started-html5-overview--page"
+              >
+                Getting Started
+              </a>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </div>
     </div>
   </div>
 </bal-doc-app>
