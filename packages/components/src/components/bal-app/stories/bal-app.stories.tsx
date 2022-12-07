@@ -49,11 +49,8 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-app v-bind="args" :class="{'has-sticky-footer': args.hasStickyFooter}">
   <header class="has-background-white">
-    <bal-navbar no-burger>
-      <bal-navbar-brand>
-        <bal-logo color="white"></bal-logo>
-        <bal-text class="ml-x-small" inverted>Portal</bal-text>
-      </bal-navbar-brand>
+    <bal-navbar>
+      <bal-navbar-brand>Portal</bal-navbar-brand>
     </bal-navbar>
   </header>
   <main>
