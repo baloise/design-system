@@ -490,3 +490,9 @@ td > code {
   color: #2ab797;
   font-weight: 700;
 }
+
+div.columns {
+  margin-left: calc(var(--bal-column-gap) * -1) !important;
+  margin-right: calc(var(--bal-column-gap) * -1) !important;
+  margin-top: calc(var(--bal-column-gap) * -1) !important;
+}

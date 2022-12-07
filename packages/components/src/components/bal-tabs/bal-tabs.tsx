@@ -84,6 +84,11 @@ export class Tabs {
    */
   @Prop() debounce = 0
 
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
   /**
    * If `true` tabs are align vertically.
    */
@@ -98,11 +103,6 @@ export class Tabs {
    * If `true` the tabs are shown as a select component on mobile
    */
   @Prop() selectOnMobile = false
-
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.balChange = debounceEvent(this.balChange, this.debounce)
-  }
 
   @Prop({ mutable: true }) value?: string = undefined
 
