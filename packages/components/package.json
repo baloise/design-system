@@ -81,7 +81,7 @@
     "@baloise/design-system-tokens": "11.0.17",
     "@baloise/web-app-utils": "^3.8.0",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~2.19.2",
+    "@stencil/core": "~2.20.0",
     "big.js": "~6.2.1",
     "date-fns": "~2.29.1",
     "filesize.js": "~2.0.0",
