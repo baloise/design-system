@@ -1,0 +1,44 @@
+import { Meta, Canvas } from '@storybook/addon-docs'
+
+<Meta
+  title="Foundation/Page Layout"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Page Layout
+
+It is recommended to use following page layout:
+
+```html
+<head>
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
+  </style>
+  ...
+</head>
+<body class="bal-body">
+  <bal-app class="has-sticky-footer">
+    <main class="container">
+      <!-- Page content -->
+      <bal-heading>Hello World<bal-heading>
+    </main>
+    <footer class="footer">
+      <!-- Footer content -->
+    </footer>
+  </bal-app>
+</body>
+```
+
+- The `.container` is a simple utility class that allows you to center content on larger viewports and to reduce the main space.
+  - Use `container is-compact` for sales funnels to reduce the max-width to a minimum.
+  - [Documentation to the container](?path=/docs/foundation-css-framework--container#container)
+- `.has-sticky-footer` css-class sticks the footer element to the bottom of the page.
+- `.bal-body` gets visible when the web-components are ready.
+
+<bal-doc-github link="/stories/foundation/07-page-layout.stories.mdx"></bal-doc-github>

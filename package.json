@@ -68,7 +68,7 @@
     "==================== TEST ====================": "================================",
     "test": "node .build/utils/banner.js test && npm --prefix packages/components test",
     "test:e2e": "node .build/utils/banner.js cypress && concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:test:e2e:cy\" \"npm:test:e2e:app\"",
-    "test:e2e:app": "npm --prefix packages/components run serve",
+    "test:e2e:app": "npm --prefix packages/components run serve:prod",
     "test:e2e:cy": "npm --prefix packages/components run cy:open",
     "test:cypress": "node .build/utils/banner.js test:cypress && npm --prefix packages/components run cy:run",
     "test:build-server": "npm --prefix packages/components run www",

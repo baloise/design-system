@@ -29,6 +29,10 @@
       margin-bottom: var(--bal-space-desktop-medium)
 
 .bal-accordion__content
-  display: none
+  visibility: hidden
+  overflow: hidden
+  height: 0
   &--active
-    display: block
+    visibility: visible
+    overflow: auto
+    height: auto

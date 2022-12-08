@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.17](https://github.com/baloise-incubator/design-system/compare/v11.0.16...v11.0.17) (2022-12-01)
+
+
+### Bug Fixes
+
+* **select:** remote do not validate and return input value on blur ([5618faa](https://github.com/baloise-incubator/design-system/commit/5618faa7c8f6e7cfdc6fca7ae7796dbe82333bcb))
+* **select:** remote typeahead display initial value ([3e61a90](https://github.com/baloise-incubator/design-system/commit/3e61a902848ebed392f00dc1085e6e76498280c2))
+* **tabs:** adjust label for steps to start at 1 ([600260e](https://github.com/baloise-incubator/design-system/commit/600260ea5eb2111ddfe2f3bedf297f0344ba13fd))
+
+
+
 ## [11.0.16](https://github.com/baloise-incubator/design-system/compare/v11.0.15...v11.0.16) (2022-11-30)
 
 **Note:** Version bump only for package root
@@ -70,9 +81,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Performance Improvements
 
 * use custom bundles and do not ship doc components ([b5da0b6](https://github.com/baloise-incubator/design-system/commit/b5da0b676aa467b22754233a748ba83a986eb284))
-
-## 10.24.10 (2022-10-17)
-
 
 
 ## [11.0.14](https://github.com/baloise-incubator/design-system/compare/v11.0.13...v11.0.14) (2022-11-22)

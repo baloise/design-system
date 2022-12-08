@@ -9,6 +9,7 @@ import { BEM } from '../../utils/bem'
 import { getPlatforms, isPlatform } from '../../utils/platform'
 import { stopEventBubbling } from '../../utils/form-input'
 import { ResizeHandler } from '../../utils/resize'
+import { areArraysEqual } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-tabs',
@@ -22,7 +23,6 @@ export class Tabs {
   private didInit = false
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
-  private accordion: HTMLBalAccordionElement | null = null
   private tabsId = `bal-tabs-${TabsIds++}`
 
   @State() tabsOptions: BalTabOption[] = []
@@ -84,6 +84,11 @@ export class Tabs {
    */
   @Prop() debounce = 0
 
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
   /**
    * If `true` tabs are align vertically.
    */
@@ -98,11 +103,6 @@ export class Tabs {
    * If `true` the tabs are shown as a select component on mobile
    */
   @Prop() selectOnMobile = false
-
-  @Watch('debounce')
-  protected debounceChanged() {
-    this.balChange = debounceEvent(this.balChange, this.debounce)
-  }
 
   @Prop({ mutable: true }) value?: string = undefined
 
@@ -136,30 +136,20 @@ export class Tabs {
     this.moveLine(this.getTargetElement(this.value))
   }
 
+  @Listen('balChange', { target: 'window' })
+  async accordionChangeHandler(event: Events.BalAccordionChange) {
+    const accordion = this.el.closest('bal-accordion')
+    if (event.target === accordion) {
+      this.moveLine(this.getTargetElement(this.value))
+    }
+  }
+
   connectedCallback() {
     this.platform = getPlatforms()
     this.debounceChanged()
-    this.updateTabs()
-
-    const accordion = (this.accordion = this.el.closest('bal-accordion'))
-
-    if (accordion) {
-      accordion.addEventListener('balChange', this.accordionChange)
-    }
-
-    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-      this.updateTabs()
-    })
   }
 
   disconnectedCallback() {
-    const accordion = this.accordion
-
-    if (accordion) {
-      accordion.removeEventListener('balChange', this.accordionChange)
-      this.accordion = null
-    }
-
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -168,15 +158,22 @@ export class Tabs {
 
   componentDidLoad() {
     this.didInit = true
-    let value = this.value
-    if ((value === undefined || value === '') && this.interface !== 'navigation') {
-      const availableTabs = this.tabsOptions.filter(t => !t.disabled)
-      if (availableTabs.length > 0) {
-        value = availableTabs[0].value
+
+    this.updateTabs().then(() => {
+      let value = this.value
+      if ((value === undefined || value === '') && this.interface !== 'navigation') {
+        const availableTabs = this.tabsOptions.filter(t => !t.disabled)
+        if (availableTabs.length > 0) {
+          value = availableTabs[0].value
+        }
       }
-    }
-    this.value = value
-    this.valueChanged(value, this.value)
+      this.value = value
+      this.valueChanged(value, this.value)
+    })
+
+    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+      this.updateTabs()
+    })
   }
 
   componentDidRender() {
@@ -216,7 +213,9 @@ export class Tabs {
   private async updateTabs() {
     try {
       await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-        this.tabsOptions = tabsOptions
+        if (!areArraysEqual(this.tabsOptions, tabsOptions)) {
+          this.tabsOptions = tabsOptions
+        }
       })
       const activeTabs = this.tabsOptions.filter(t => t.active)
       if (activeTabs.length > 0) {
@@ -325,10 +324,6 @@ export class Tabs {
 
   private isTabActive(tab: BalTabOption): boolean {
     return tab.value === this.value
-  }
-
-  private accordionChange = () => {
-    this.moveLine(this.getTargetElement(this.value))
   }
 
   render() {

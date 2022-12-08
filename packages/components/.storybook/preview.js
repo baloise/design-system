@@ -2,6 +2,11 @@ import { app } from '@storybook/vue3'
 
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
+import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+
+ReactSyntaxHighlighter.registerLanguage('diff', diff)
+
 export const decorators = [
   story => ({
     components: { story },
@@ -109,14 +114,11 @@ export const parameters = {
         'Design System',
         'Changelog',
         'Support',
-        'Getting-Started',
-        ['Overview', 'How to use Storybook', 'Figma', 'HTML5', 'Angular', 'Vue', 'React'],
-        'Implementation',
-        'Design',
+        'Foundation',
         ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons Overview', 'Platform', 'Page Layout', 'Templates'],
         'Components',
-        'Templates',
-        'Contributing',
+        'Development',
+        ['Getting-Started', 'Implementation', 'Migration', 'Contributing'],
       ],
     },
   },
