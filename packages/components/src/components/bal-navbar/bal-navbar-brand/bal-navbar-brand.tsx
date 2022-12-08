@@ -52,6 +52,11 @@ export class NavbarBrand {
   @Prop() logo?: string
 
   /**
+   * Defines if the logo animation should be active
+   */
+  @Prop() animated = true
+
+  /**
    * @internal
    * Defines the type of navbar. App is used for almost every web applications
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
@@ -108,7 +113,7 @@ export class NavbarBrand {
     const logoTemplate = this.logo ? (
       <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
-      <bal-logo animated color={'white'}></bal-logo>
+      <bal-logo animated={this.animated} color={'white'}></bal-logo>
     )
 
     return (

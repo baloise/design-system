@@ -72,7 +72,7 @@
     "cy:open": "cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
     "cy:component:run": "cypress run --browser chrome --component --config excludeSpecPattern=\"cypress/e2e/visual/*cy.ts\"",
     "cy:visual:base": "cypress run --browser chrome --env type=base --spec \"cypress/e2e/visual/*cy.ts\" --config screenshotsFolder=cypress/snapshots/base",
-    "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/bal-pagination.visual.cy.ts\""
+    "cy:visual:actual": "cypress run --browser chrome --env type=actual --spec \"cypress/e2e/visual/*cy.ts\""
   },
   "dependencies": {
     "@baloise/design-system-css": "11.0.17",
