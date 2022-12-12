@@ -40,6 +40,7 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-input',
@@ -47,9 +48,15 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-input.sass',
   },
 })
-export class Input implements ComponentInterface, FormInput<string | undefined> {
+export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable {
   private inputId = `bal-input-${InputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+
+  log!: LogInstance
+  @Logger('bal-input')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   nativeInput?: HTMLInputElement
   inputValue = this.value

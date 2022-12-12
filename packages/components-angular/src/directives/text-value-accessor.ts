@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor'
   /* tslint:disable-next-line:directive-selector */
   selector: 'bal-input, bal-textarea, bal-input-slider',
   host: {
-    '(balInput)': 'handleChangeEvent($event.detail)',
+    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event)',
   },
   providers: [
     {
