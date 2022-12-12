@@ -39,11 +39,13 @@
     min-height: 3rem
     +modifier(focused)
       border-color: var(--bal-color-primary)
-    &:not(#{&}--disabled):not(#{&}--invalid):not(&:focus-within):hover
+    &:not(#{&}--disabled):not(#{&}--invalid):hover
       border-color: var(--bal-color-border-grey)
       background-color: var(--bal-color-grey-1)
+      .bal-select__control__input
+        background-color: var(--bal-color-grey-1)
     &:focus-within
-      border-color: var(--bal-color-primary)
+      border-color: var(--bal-color-primary) !important
     &--invalid:not(#{&}--disabled)
       border-color: var(--bal-color-border-danger) !important
       background: var(--bal-color-danger-1) !important
