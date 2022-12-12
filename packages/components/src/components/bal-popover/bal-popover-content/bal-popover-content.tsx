@@ -102,7 +102,7 @@ export class PopoverContent {
     }
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.contentHeightOnTop = window.innerHeight - 64
   }
 
