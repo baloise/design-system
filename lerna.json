@@ -1,14 +1,11 @@
 {
   "version": "11.0.18",
   "granularPathspec": false,
-  "packages": [
-    "packages/*",
-    "packages/output-targets/*"
-  ],
+  "packages": ["packages/*", "packages/output-targets/*"],
   "command": {
     "version": {
       "message": "chore(release): %s",
-      "allowBranch": "next",
+      "allowBranch": ["next", "v12"],
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
       "createRelease": "github",
