@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(navbar)
   +unselectable
   position: relative
@@ -48,10 +50,6 @@
         color: var(--bal-color-primary-inverted)
       +desktop
         font-size: 1.25rem
-    +element(burger)
-      margin-left: auto
-      +desktop
-        display: none
 
     +modifiers(context-app, context-simple)
       color: var(--bal-color-primary-inverted)
@@ -137,3 +135,11 @@
       color: var(--bal-color-primary)
     bal-logo
       +fillSvg(var(--bal-color-primary))
+
+.bal-navbar__brand__burger.bal-button
+  margin-left: auto
+  +desktop
+    display: none
+
+.bal-navbar__brand__burger--hidden.bal-button
+  display: none !important

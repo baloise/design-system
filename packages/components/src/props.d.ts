@@ -25,7 +25,7 @@ export namespace Props {
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
 
-  export type BalProductSliderItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
+  export type BalCarouselItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
 
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
@@ -85,7 +85,7 @@ export namespace Props {
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
-  export type BalPaginationInterface = '' | 'small' | 'tabs'
+  export type BalPaginationInterface = '' | 'small'
 
   export type BalPopoverContentRadius =
     | 'normal'
@@ -145,15 +145,20 @@ export namespace Props {
   export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
+    | 'light-blue'
+    | 'blue-dark'
+    | 'blue-light'
+    | 'primary-light'
     | 'white'
+    | 'black'
     | 'grey'
-    | 'blue'
     | 'primary'
+    | 'blue'
     | 'info'
     | 'success'
     | 'warning'
     | 'danger'
-    | 'hint'
+    // | 'hint' // @deprecated use primary-light
     | ''
 
   export type BalModalInterface = 'light' | 'card'

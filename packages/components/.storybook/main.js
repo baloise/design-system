@@ -4,9 +4,9 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    '@etchteam/storybook-addon-status',
     './addons/source/index.js',
     './addons/vue-source/index.js',
+    './addons/version/index.js',
   ],
   features: {
     postcss: false,

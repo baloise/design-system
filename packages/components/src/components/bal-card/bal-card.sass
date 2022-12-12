@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 =card-spacing($spacing: 1rem)
   & > :not(bal-badge):not(bal-tag):first-child
     padding-top: $spacing
@@ -26,7 +28,7 @@
   position: relative
   display: block
   background: transparent
-  box-shadow: var(--bal-shadow)
+  box-shadow: var(--bal-shadow-normal)
   border-radius: var(--bal-radius-large)
   //
   // Colors
@@ -55,15 +57,15 @@
   +modifier(is-green)
     background: var(--bal-color-green)
   +modifier(is-red-light)
-    background: var(--bal-color-red-light)
+    background: var(--bal-color-red-1)
   +modifier(is-yellow-light)
-    background: var(--bal-color-yellow-light)
+    background: var(--bal-color-yellow-1)
   +modifier(is-purple-light)
-    background: var(--bal-color-purple-light)
+    background: var(--bal-color-purple-1)
   +modifier(is-green-light)
-    background: var(--bal-color-green-light)
+    background: var(--bal-color-green-1)
   +modifier(is-grey-light)
-    background: var(--bal-color-grey-light)
+    background: var(--bal-color-grey-1)
   +modifier(is-purple-1)
     background: var(--bal-color-purple-1)
   +modifier(is-purple-2)
@@ -179,6 +181,7 @@
   display: block
   position: static
   word-break: break-word
+  text-align: left
   font-family: var(--bal-font-family-text)
   font-size: var(--bal-size-normal)
   line-height: var(--bal-line-height-normal)

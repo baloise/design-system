@@ -11,7 +11,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * closes [#648](https://github.com/baloise/design-system/issues/648), fix error on deleting input with mask ([b4fd476](https://github.com/baloise/design-system/commit/b4fd476895244b8d2e7e62eabed56321493ec1d6))
 
 
-
 ### [10.15.1](https://github.com/baloise/design-system/compare/v10.15.0...v10.15.1) (2022-08-23)
 
 

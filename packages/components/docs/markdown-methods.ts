@@ -10,7 +10,7 @@ export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
   content.push(`#### Methods`)
   content.push(``)
   content.push(
-    `Follow the [Method Usage](https://baloise-design.vercel.app/?path=/docs/implementation-method--page) guide to learn how to call component methods.`,
+    `Follow the [Method Usage](https://baloise-design.vercel.app/?path=/docs/development-implementation-method--page) guide to learn how to call component methods.`,
   )
   content.push(``)
 

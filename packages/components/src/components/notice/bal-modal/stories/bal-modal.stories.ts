@@ -52,7 +52,7 @@ export const Basic = args => ({
     </bal-button-group>
   </bal-modal-body>
 </bal-modal>
-<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>
+<bal-button @click="openModal()" class="m-normal">Trigger a Modal</bal-button>
 `,
 })
 Basic.args = {}
@@ -82,8 +82,8 @@ export const WithInput = args => ({
 <bal-modal ref="modal" v-bind="args">
   <bal-modal-header>Modal Title</bal-modal-header>
   <bal-modal-body>
-    <form class="columns is-multiline mt-0">
-      <bal-field class="column is-full py-0">
+    <form class="columns is-multiline mt-none">
+      <bal-field class="column is-full py-none">
         <bal-field-label>Date</bal-field-label>
         <bal-field-control>
           <bal-datepicker placeholder="Pick a date"></bal-datepicker>
@@ -96,7 +96,7 @@ export const WithInput = args => ({
     </bal-button-group>
   </bal-modal-body>
 </bal-modal>
-<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
+<bal-button @click="openModal()" class="m-normal">Trigger a Modal</bal-button>`,
 })
 WithInput.args = {}
 WithInput.parameters = { ...component.sourceCode(WithInput), controls: { exclude: excludedControls } }
@@ -159,7 +159,7 @@ export const LargeContent = args => ({
     </bal-button-group>
   </bal-modal-body>
 </bal-modal>
-<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
+<bal-button @click="openModal()" class="m-normal">Trigger a Modal</bal-button>`,
 })
 LargeContent.args = {}
 LargeContent.parameters = { ...component.sourceCode(LargeContent), controls: { exclude: excludedControls } }

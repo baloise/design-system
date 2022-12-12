@@ -1,6 +1,6 @@
 import docs from './bal-spinner.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalSpinner, BalCard, BalCardContent } from '../../../../.storybook/vue/components'
+import { BalSpinner, BalCard, BalCardContent, BalButton, BalHeading } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalSpinner,
@@ -18,7 +18,7 @@ Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const LoadingButton = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalButton },
   setup: () => ({ args }),
   template: `<bal-button loading disabled>Button</bal-button>`,
 })
@@ -26,11 +26,11 @@ LoadingButton.args = {}
 LoadingButton.parameters = { ...component.sourceCode(LoadingButton) }
 
 export const LoadingCard = args => ({
-  components: { ...component.components, BalCard, BalCardContent },
+  components: { ...component.components, BalCard, BalCardContent, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content class="is-flex is-align-items-center is-flex-direction-column is-justify-content-center">
-    <bal-spinner v-bind="args" class="my-5"></bal-spinner>
+    <bal-spinner v-bind="args" class="my-medium"></bal-spinner>
     <bal-heading level="h5" space="all">Please wait...</bal-heading>
   </bal-card-content>
 </bal-card>`,

@@ -1,3 +1,4 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
 @import './bal-input-group.mixins'
 
 +block(input-group)
@@ -8,7 +9,7 @@
   align-items: center
   min-height: 48px
   gap: 4px
-  border: 2px solid var(--bal-color-border-normal)
+  border: 2px solid var(--bal-color-border-grey)
   border-radius: var(--bal-radius-small)
   background: var(--bal-color-white)
 
@@ -25,6 +26,10 @@
   .bal-select__control
     border: none
     min-height: 44px
+
+  .bal-select__control__input
+    padding-left: 0 !important
+    padding-right: 0 !important
 
   .bal-icon
     min-width: 48px
@@ -63,7 +68,7 @@
     &,
     .input
       border-color: var(--bal-color-border-danger)
-      background: var(--bal-color-danger-light)
+      background: var(--bal-color-danger-1)
 
     svg
       g,
@@ -71,10 +76,10 @@
       circle
         fill: var(--bal-color-border-danger)
 
-  @include inputGroupTheme('danger', var(--bal-color-danger-light), var(--bal-color-border-danger))
-  @include inputGroupTheme('success', var(--bal-color-success-light), var(--bal-color-border-success))
-  @include inputGroupTheme('warning', var(--bal-color-warning-light), var(--bal-color-border-warning))
-  @include inputGroupTheme('disabled', var(--bal-color-disabled), var(--bal-color-border-disabled))
+  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger))
+  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success))
+  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning))
+  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-grey-dark))
 
   +modifier(is-disabled)
     &,

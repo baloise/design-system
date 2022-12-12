@@ -1,3 +1,43 @@
+@font-face {
+  font-family: 'BaloiseCreateHeadline';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateHeadline';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-light'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateText';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-bold'),
+    url('/assets/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateText';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
+    url('/assets/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-regular.woff') format('woff');
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
@@ -11,34 +51,21 @@ h3:target:before {
   margin: -124px 0 0;
 }
 
-.welcome-container {
-  background: #000d6e !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
+/* .sb-main-fullscreen .sbdocs-wrapper {
+  padding: 0 !important;
 }
 
-.welcome-container h1,
-.welcome-container h2 {
-  color: white !important;
-  font-size: 3em !important;
-  line-height: 1.2 !important;
-  border: none !important;
+.sb-main-fullscreen .sbdocs-wrapper .sbdocs-content {
+  max-width: 100% !important;
+} */
+
+.sb-main-fullscreen .sbdocs-wrapper .bal-stage-body {
+  padding-top: 64px !important;
 }
 
-.welcome-container h1 {
-  font-weight: 400 !important;
-}
-
-.welcome-container p {
-  color: #95adda !important;
-  font-size: 1.2em !important;
-}
-
-.welcome-container h2 {
-  font-weight: 700 !important;
+.sbdocs-wrapper a.button {
+  text-decoration: none !important;
+  font-family: 'BaloiseCreateHeadline';
 }
 
 blockquote.sbdocs {
@@ -51,6 +78,20 @@ blockquote.sbdocs p strong:first-child {
   color: #000d6e;
   display: block;
   font-size: 16px;
+}
+
+p.sbdocs-p {
+  color: #000d6e;
+  font-family: 'BaloiseCreateText';
+}
+
+a.sbdocs-a {
+  color: #000d6e;
+  font-family: 'BaloiseCreateText';
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }
 
 p.sbdocs > code {
@@ -74,7 +115,15 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs-wrapper {
-  padding: 16px 32px !important;
+  padding: 16px 24px !important;
+}
+
+.sbdocs-wrapper.welcome {
+  padding: 0 !important;
+}
+
+.container {
+  margin: auto !important;
 }
 
 .sbdocs.sbdocs-h1,
@@ -84,7 +133,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .sbdocs.sbdocs-h5,
 .sbdocs.sbdocs-h6 {
   font-family: BaloiseCreateHeadline, Arial, sans-serif;
-  color: #000;
+  color: #000d6e;
   font-weight: 700;
 }
 
@@ -202,16 +251,25 @@ a.feature h2 img {
 /* *************************************** */
 /* *************************************** */
 /* *************************************** */
-.subheading {
-  --mediumdark: '#999999';
-  font-weight: 900;
+.sidebar-item {
+  color: lime !important;
+}
+
+.sidebar-subheading {
+  background: lime !important;
+}
+
+.sidebar-subheading > button {
+  color: #66bf3c !important;
+  /* --mediumdark: '#999999'; */
+  /* font-weight: 900;
   font-size: 13px;
-  color: #999;
+  /* color: #999;
   letter-spacing: 6px;
   line-height: 24px;
   text-transform: uppercase;
   margin-bottom: 12px;
-  margin-top: 40px;
+  margin-top: 40px; */
 }
 
 .link-list {
@@ -409,4 +467,32 @@ li.sbdocs.sbdocs-li {
 
 .sb-show-main {
   height: 100vh;
+}
+
+pre.my-diff-source {
+  font-size: 13px !important;
+  padding: 20px !important;
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  margin: 25px 0 40px !important;
+  border-radius: 4px !important;
+  box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0 !important;
+  font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Droid Sans Mono', 'Courier New', monospace !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+pre.my-diff-source code {
+  padding: 0 !important;
+}
+
+td > code {
+  color: #2ab797;
+  font-weight: 700;
+}
+
+div.columns {
+  margin-left: calc(var(--bal-column-gap) * -1) !important;
+  margin-right: calc(var(--bal-column-gap) * -1) !important;
+  margin-top: calc(var(--bal-column-gap) * -1) !important;
 }

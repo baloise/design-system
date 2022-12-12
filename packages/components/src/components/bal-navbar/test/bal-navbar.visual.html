@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-5">
+        <section data-testid="basic">
+          <bal-navbar>
+            <bal-navbar-brand href="/" target="_blank" animated="false">App </bal-navbar-brand>
+            <bal-navbar-menu>
+              <bal-navbar-menu-start>
+                <bal-tabs interface="navbar" inverted v-model="myActiveTab">
+                  <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+                  <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+                  <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+                </bal-tabs>
+              </bal-navbar-menu-start>
+            </bal-navbar-menu>
+          </bal-navbar>
+        </section>
+        <br />
+        <br />
+        <section data-testid="simple-light">
+          <bal-navbar interface="simple" light>
+            <bal-navbar-brand href="/" target="_blank" animated="false">Simple light</bal-navbar-brand>
+            <bal-navbar-menu>
+              <bal-navbar-menu-start>
+                <bal-tabs interface="navbar" inverted v-model="myActiveTab">
+                  <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+                  <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+                  <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+                </bal-tabs>
+              </bal-navbar-menu-start>
+            </bal-navbar-menu>
+          </bal-navbar>
+        </section>
+        <br />
+        <br />
+        <section data-testid="container">
+          <bal-navbar container="blog-page">
+            <bal-navbar-brand href="/" target="_blank" animated="false">Blog page</bal-navbar-brand>
+          </bal-navbar>
+          <br />
+          <bal-navbar container="compact">
+            <bal-navbar-brand href="/" target="_blank" animated="false">Compact</bal-navbar-brand>
+          </bal-navbar>
+          <br />
+          <bal-navbar container="detail-page">
+            <bal-navbar-brand href="/" target="_blank" animated="false">Detail page</bal-navbar-brand>
+          </bal-navbar>
+          <br />
+          <bal-navbar container="fluid">
+            <bal-navbar-brand href="/" target="_blank" animated="false">Fluid</bal-navbar-brand>
+          </bal-navbar>
+          <br />
+          <bal-navbar container="wide">
+            <bal-navbar-brand href="/" target="_blank" animated="false">Wide</bal-navbar-brand>
+          </bal-navbar>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

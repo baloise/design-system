@@ -11,57 +11,57 @@
     @content
 
 =mobile
-  @media screen and (max-width: $tablet - 1px)
+  @media screen and (max-width: $bal-breakpoint-tablet - 1px)
     @content
 
 =tablet
-  @media screen and (min-width: $tablet), print
+  @media screen and (min-width: $bal-breakpoint-tablet), print
     @content
 
 =tablet-only
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+  @media screen and (min-width: $bal-breakpoint-tablet) and (max-width: $bal-breakpoint-desktop - 1px)
     @content
 
 =touch
-  @media screen and (max-width: $desktop - 1px)
+  @media screen and (max-width: $bal-breakpoint-desktop - 1px)
     @content
 
 =desktop
-  @media screen and (min-width: $desktop)
+  @media screen and (min-width: $bal-breakpoint-desktop)
     @content
 
 =desktop-only
-  @media screen and (min-width: $desktop) and (max-width: $high-definition - 1px)
+  @media screen and (min-width: $bal-breakpoint-desktop) and (max-width: $bal-breakpoint-high-definition - 1px)
     @content
 
 =high-definition
-  @media screen and (min-width: $high-definition)
+  @media screen and (min-width: $bal-breakpoint-high-definition)
     @content
 
 =high-definition-only
-  @media screen and (min-width: $high-definition) and (max-width: $widescreen - 1px)
+  @media screen and (min-width: $bal-breakpoint-high-definition) and (max-width: $bal-breakpoint-widescreen - 1px)
     @content
 
 =until-high-definition
-  @media screen and (max-width: $high-definition - 1px)
+  @media screen and (max-width: $bal-breakpoint-high-definition - 1px)
     @content
 
 =until-widescreen
-  @media screen and (max-width: $widescreen - 1px)
+  @media screen and (max-width: $bal-breakpoint-widescreen - 1px)
     @content
 
 =widescreen
-  @media screen and (min-width: $widescreen)
+  @media screen and (min-width: $bal-breakpoint-widescreen)
     @content
 
 =widescreen-only
-  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+  @media screen and (min-width: $bal-breakpoint-widescreen) and (max-width: $bal-breakpoint-fullhd - 1px)
     @content
 
 =until-fullhd
-  @media screen and (max-width: $fullhd - 1px)
+  @media screen and (max-width: $bal-breakpoint-fullhd - 1px)
     @content
 
 =fullhd
-  @media screen and (min-width: $fullhd)
+  @media screen and (min-width: $bal-breakpoint-fullhd)
     @content

@@ -1,8 +1,12 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-text',
+  styleUrls: {
+    css: 'bal-text.sass',
+  },
 })
 export class Text {
   /**
@@ -45,36 +49,30 @@ export class Text {
    * */
   @Prop() shadow = false
 
-  get spacing(): string {
-    switch (this.space) {
-      case 'all':
-        return 'my-4'
-      case 'top':
-        return 'mt-4'
-      case 'bottom':
-        return 'mb-4'
-      case '':
-        return !this.inline ? 'mb-4' : ''
-      default:
-        return ''
-    }
-  }
-
   render() {
     const Text = this.inline ? 'span' : 'p'
+    const color = this.inverted ? 'white' : this.color === '' || this.color === 'info' ? 'primary' : this.color
+    const block = BEM.block('text')
+
     return (
-      <Host style={{ display: this.inline ? 'inline' : 'block' }} class={{ [this.spacing]: true }}>
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier(`space-${this.space}`).class(this.space !== ''),
+          ...block.modifier(`inline`).class(this.inline),
+        }}
+      >
         <Text
           class={{
-            [`has-text-${this.color === '' ? 'primary' : this.color}${this.inverted ? '-inverted' : ''}`]:
-              this.color !== '' || this.inverted,
+            ...block.element('text').class(),
+            [`has-text-${color}`]: true,
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-block': this.size === 'block',
             'is-bold': this.bold,
             'is-family-title': this.heading,
             'has-blur-shadow': this.shadow,
-            'm-0': true,
+            'data-test-text': true,
           }}
         >
           <slot></slot>

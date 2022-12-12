@@ -3,6 +3,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-data',
+  styleUrls: {
+    css: 'bal-data.sass',
+  },
 })
 export class Data {
   @Element() element!: HTMLElement

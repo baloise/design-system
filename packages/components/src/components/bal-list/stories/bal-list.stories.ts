@@ -202,7 +202,7 @@ export const NativeList = args => ({
     <li class="has-bullet-check">Checked List Item 1</li>
     <li class="has-bullet-close has-opacity-50">Close List Item 2</li>
   </ul>
-  <div class="has-background-blue p-2">
+  <div class="has-background-blue p-x-small">
     <ul class="is-list has-bullets is-inverted">
       <li class="has-bullet-check">Inverted checked List Item 1</li>
       <li class="has-bullet-close has-opacity-50">Inverted close List Item 2</li>
@@ -342,7 +342,7 @@ export const AccordionList = args => ({
       </bal-list-item-content>
     </bal-list-item-accordion-head>
     <bal-list-item-accordion-body>
-      <p class="pb-4">
+      <p class="pb-normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <a class="is-link">Link</a>
@@ -360,7 +360,7 @@ export const AccordionList = args => ({
       </bal-list-item-content>
     </bal-list-item-accordion-head>
     <bal-list-item-accordion-body>
-      <p class="pb-4">
+      <p class="pb-normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </bal-list-item-accordion-body>
@@ -376,7 +376,7 @@ AccordionList.parameters = { ...component.sourceCode(AccordionList), controls: {
 export const MetaAccordionList = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
   setup: () => ({ args }),
-  template: `<bal-list class="px-4" border meta-nav-accordion size="small">
+  template: `<bal-list class="px-normal" border meta-nav-accordion size="small">
           <bal-list-item accordion>
             <bal-list-item-accordion-head>
               <bal-list-item-content>
@@ -392,7 +392,7 @@ export const MetaAccordionList = args => ({
                     </bal-list-item-content>
                   </bal-list-item-accordion-head>
                   <bal-list-item-accordion-body>
-                    <p class="pb-4">
+                    <p class="pb-normal">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                   </bal-list-item-accordion-body>
@@ -415,7 +415,7 @@ export const MetaAccordionList = args => ({
                     </bal-list-item-content>
                   </bal-list-item-accordion-head>
                   <bal-list-item-accordion-body>
-                    <p class="pb-4">
+                    <p class="pb-normal">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                   </bal-list-item-accordion-body>
@@ -447,7 +447,7 @@ export const AccordionGroupList = args => ({
       </bal-list-item-content>
     </bal-list-item-accordion-head>
     <bal-list-item-accordion-body accordion-group="bubu" content-alignment="space-between">
-      <p class="pb-4">
+      <p class="pb-normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <bal-button color="primary" icon="plus">Primary</bal-button>
@@ -467,7 +467,7 @@ export const AccordionGroupList = args => ({
       </bal-list-item-content>
     </bal-list-item-accordion-head>
     <bal-list-item-accordion-body accordion-group="bubu" content-alignment="space-between">
-      <p class="pb-4">
+      <p class="pb-normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

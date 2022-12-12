@@ -36,7 +36,7 @@ export class StageBackLink implements ComponentInterface {
           href={this.href}
         >
           <bal-icon
-            class="mr-2"
+            class="mr-x-small"
             name="caret-left"
             size="xsmall"
             inverted={this.inverted}

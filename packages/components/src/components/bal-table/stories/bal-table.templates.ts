@@ -1,4 +1,4 @@
-export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverable p-0">
+export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverable p-none">
   <thead>
     <th>Selected</th>
     <th>Name</th>

@@ -5,6 +5,9 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-close',
+  styleUrls: {
+    css: 'bal-close.sass',
+  },
 })
 export class Close implements ComponentInterface {
   @Element() el!: HTMLElement

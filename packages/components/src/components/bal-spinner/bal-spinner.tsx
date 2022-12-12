@@ -7,6 +7,9 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
 
 @Component({
   tag: 'bal-spinner',
+  styleUrls: {
+    css: 'bal-spinner.sass',
+  },
 })
 export class Spinner implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
@@ -66,7 +69,9 @@ export class Spinner implements ComponentInterface, Loggable {
   }
 
   disconnectedCallback() {
-    this.destroyAnimation()
+    if (this.el && !this.el.isConnected) {
+      this.destroyAnimation()
+    }
   }
 
   /**

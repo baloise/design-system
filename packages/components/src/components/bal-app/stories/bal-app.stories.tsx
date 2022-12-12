@@ -49,16 +49,13 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-app v-bind="args" :class="{'has-sticky-footer': args.hasStickyFooter}">
   <header class="has-background-white">
-    <bal-navbar no-burger>
-      <bal-navbar-brand>
-        <bal-logo color="white"></bal-logo>
-        <bal-text class="ml-2" >Portal</bal-text>
-      </bal-navbar-brand>
+    <bal-navbar>
+      <bal-navbar-brand>Portal</bal-navbar-brand>
     </bal-navbar>
   </header>
   <main>
     <div class="container">
-      <bal-card class="my-6">
+      <bal-card class="my-large">
         <bal-card-title>BaloiseCombi</bal-card-title>
         <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 

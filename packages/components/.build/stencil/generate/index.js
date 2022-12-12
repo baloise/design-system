@@ -153,7 +153,7 @@ function TestTemplate(tag) {
     </head>
     <body>
       <bal-doc-app>
-        <main class="container py-5">
+        <main class="container py-medium">
           <${tag} data-testid="${tag.replace('bal-', '')}"></${tag}>
         </main>
       </bal-doc-app>
@@ -239,7 +239,7 @@ Todo add some description to the component and its purpose
 </Canvas>
 
 <bal-doc-app>
-  <bal-button-group class="mb-6" position="center">
+  <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-${storyId}--basic">
       Go to playground (Canvas)
     </a>
@@ -257,16 +257,16 @@ Todo add some description to the component and its purpose
 This documentation explains how to implement and use Baloise Design System components across different technologies.
 
 <bal-doc-link-list>
-  <a href="?path=/docs/getting-started-html5-overview--page">
+  <a href="?path=/docs/development-getting-started-html5-overview--page">
     <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
   </a>
-  <a href="?path=/docs/getting-started-vue-overview--page">
+  <a href="?path=/docs/development-getting-started-vue-overview--page">
     <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
   </a>
-  <a href="?path=/docs/getting-started-angular-overview--page">
+  <a href="?path=/docs/development-getting-started-angular-overview--page">
     <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
   </a>
-  <a href="?path=/docs/getting-started-react-overview--page">
+  <a href="?path=/docs/development-getting-started-react-overview--page">
     <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
   </a>
 </bal-doc-link-list>

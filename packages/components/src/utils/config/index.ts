@@ -1,12 +1,13 @@
 import { BalConfigObserver } from '../../types'
 import { isWindowDefined } from '../browser'
 import { Config } from './config'
-import { BalConfigState, BalLanguage, BalRegion } from './config.types'
+import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 
 export * from './initialize'
 export * from './config.types'
 export * from './config'
 export * from './observable/observer'
+export * from './mode'
 
 export type BalConfigChangeFn = (config: BalConfigState) => void
 
@@ -72,5 +73,16 @@ export const updateBalAllowedLanguages = (allowedLanguages: BalLanguage[]): void
 
   if (config) {
     config.allowedLanguages = allowedLanguages
+  }
+}
+
+export const updateBalIcons = (icons: BalIcons): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.icons = {
+      ...config.icons,
+      ...icons,
+    }
   }
 }

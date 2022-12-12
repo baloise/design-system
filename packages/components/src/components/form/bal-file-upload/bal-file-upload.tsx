@@ -14,6 +14,9 @@ import {
 
 @Component({
   tag: 'bal-file-upload',
+  styleUrls: {
+    css: 'bal-file-upload.sass',
+  },
 })
 export class FileUpload implements FormInput<File[]> {
   @Element() el!: HTMLElement
@@ -335,8 +338,13 @@ export class FileUpload implements FormInput<File[]> {
 
   render() {
     const FileList = () => (
-      <bal-card flat class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
-        <bal-list disabled={this.disabled || this.loading || this.readonly} border size="large" class="p-0">
+      <bal-card flat class="bal-file-upload__card" style={{ display: this.files.length ? 'block' : 'none' }}>
+        <bal-list
+          class="bal-file-upload__list"
+          disabled={this.disabled || this.loading || this.readonly}
+          border
+          size="large"
+        >
           {this.files.map((file, index) => (
             <bal-list-item disabled={this.disabled || this.loading || this.readonly}>
               <bal-list-item-icon>

@@ -1,5 +1,5 @@
 {
-  "version": "11.0.18",
+  "version": "12.0.0",
   "granularPathspec": false,
   "packages": [
     "packages/*",
@@ -8,7 +8,10 @@
   "command": {
     "version": {
       "message": "chore(release): %s",
-      "allowBranch": "next",
+      "allowBranch": [
+        "next",
+        "v12"
+      ],
       "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
       "createRelease": "github",

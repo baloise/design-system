@@ -3,6 +3,9 @@ import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-snackbar',
+  styleUrls: {
+    css: 'bal-snackbar.sass',
+  },
 })
 export class Snackbar {
   @Element() element!: HTMLElement
@@ -13,7 +16,7 @@ export class Snackbar {
   @State() animationClass = 'fadeInDown'
 
   /**
-   * The theme type of the snackbar. Given by bulma our css framework.
+   * The theme type of the snackbar.
    */
   @Prop() color: Props.BalSnackbarColor = ''
 
@@ -125,7 +128,7 @@ export class Snackbar {
 
     return (
       <Host id={this.snackbarId} class="bal-snackbar">
-        <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType} p-5`}>
+        <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType}`}>
           <div class="bal-snackbar__header">
             <span class="icon-text is-small">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>

@@ -41,3 +41,27 @@ export const ResizeHandler = () => {
     }
   }
 }
+
+export const ResizeObserverHandler = () => {
+  let resizeO: ResizeObserver | undefined
+
+  return {
+    connect: (el: HTMLElement, callback: () => void) => {
+      if (typeof ResizeObserver === 'undefined') {
+        return
+      }
+
+      if (resizeO !== undefined) {
+        resizeO?.disconnect()
+        resizeO = undefined
+      }
+
+      resizeO = new ResizeObserver(() => callback())
+      resizeO.observe(el)
+    },
+    disconnect: () => {
+      resizeO?.disconnect()
+      resizeO = undefined
+    },
+  }
+}

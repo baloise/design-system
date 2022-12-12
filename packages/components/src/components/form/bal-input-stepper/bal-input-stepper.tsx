@@ -31,6 +31,9 @@ import { Events } from '../../../types'
 
 @Component({
   tag: 'bal-input-stepper',
+  styleUrls: {
+    css: 'bal-input-stepper.sass',
+  },
 })
 export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
   private inputId = `bal-input-stepper${InputStepperIds++}`
@@ -202,10 +205,6 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       >
         <div
           class={{
-            'is-flex': true,
-            'fg-1': true,
-            'is-justify-content-center': true,
-            'is-align-items-center': true,
             ...elInner.class(),
           }}
         >

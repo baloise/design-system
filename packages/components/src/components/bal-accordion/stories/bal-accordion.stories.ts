@@ -22,7 +22,7 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" v-model="args.value">
-  <p class="p-5">
+  <p class="p-medium">
    {{ args.content }}
   </p>
   </bal-accordion>`,
@@ -39,7 +39,7 @@ export const WithIcons = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
-  <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="p-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>`,
 })
 WithIcons.args = {
@@ -61,7 +61,7 @@ export const WithCard = args => ({
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-accordion card v-bind="args">
-    <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p class="p-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
 </bal-card>`,
 })
@@ -81,7 +81,7 @@ export const WithTabs = args => ({
   },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args">
-    <bal-tabs interface="tabs" value="tab-b" class="p-4">
+    <bal-tabs interface="tabs" value="tab-b" class="p-normal">
       <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
       <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
       <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>

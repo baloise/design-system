@@ -1,8 +1,27 @@
 import { isWindowDefined } from '../browser'
 import { BalLogger, defaultLoggerConfig } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
-import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.types'
+import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
+import {
+  balIconClose,
+  balIconInfoCircle,
+  balIconPlus,
+  balIconMinus,
+  balIconEdit,
+  balIconTrash,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconNavGoDown,
+  balIconNavGoUp,
+  balIconCaretLeft,
+  balIconCaretDown,
+  balIconCheck,
+  balIconDate,
+  balIconDocument,
+  balIconUpload,
+  balIconMenuBars,
+} from '../constants/icons.constant'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
@@ -11,6 +30,25 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
+    icons: {
+      balIconClose,
+      balIconInfoCircle,
+      balIconPlus,
+      balIconMinus,
+      balIconEdit,
+      balIconTrash,
+      balIconNavGoLeft,
+      balIconNavGoRight,
+      balIconNavGoDown,
+      balIconNavGoUp,
+      balIconCaretLeft,
+      balIconCaretDown,
+      balIconCheck,
+      balIconDate,
+      balIconDocument,
+      balIconUpload,
+      balIconMenuBars,
+    },
     fallbackLanguage: 'de',
     logger: defaultLoggerConfig,
   }
@@ -55,6 +93,18 @@ export class Config {
       this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
+  }
+
+  get icons(): BalIcons {
+    return this._config.icons
+  }
+
+  set icons(icons: BalIcons) {
+    this._config.icons = {
+      ...this._config.icons,
+      ...icons,
+    }
+    this._notify()
   }
 
   get logger(): BalLogger {
@@ -112,6 +162,10 @@ export class Config {
     this._config = {
       ...this._config,
       ...config,
+      icons: {
+        ...this._config.icons,
+        ...config.icons,
+      },
     }
     this._notify(false)
   }

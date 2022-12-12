@@ -21,7 +21,7 @@
         left: 50%
         right: -50%
         top: 50%
-        background-color: var(--bal-color-border-normal)
+        background-color: var(--bal-color-border-grey)
         border-radius: var(--bal-radius-rounded)
         margin-left: 10px
         margin-right: 20px
@@ -62,16 +62,16 @@
           z-index: 5
           font-weight: 700
           border-radius: 50%
-          border: 2px solid var(--bal-color-border-normal)
-          background: var(--bal-color-background)
-          color: var(--bal-color-background-inverted)
+          border: 2px solid var(--bal-color-border-grey)
+          background: var(--bal-color-white)
+          color: var(--bal-color-white-inverted)
           +modifier(active)
             border-color: var(--bal-color-primary)
             background: var(--bal-color-primary)
             color: var(--bal-color-primary-inverted)
           +modifier(disabled)
-            border-color: var(--bal-color-disabled)
-            background: var(--bal-color-disabled)
+            border-color: var(--bal-color-grey-2)
+            background: var(--bal-color-grey-2)
           +modifier(done)
             border-color: var(--bal-color-primary)
             background-color: var(--bal-color-primary)
@@ -93,7 +93,7 @@
             +modifiers(active, passed, done)
               color: var(--bal-color-primary-inverted)
             +modifier(disabled)
-              color: var(--bal-color-text-disabled)
+              color: var(--bal-color-text-grey)
             +modifier(failed)
               color: var(--bal-color-white)
               +tablet
@@ -101,7 +101,7 @@
 
         +element(label)
           display: none
-          color: var(--bal-color-text-hint)
+          color: var(--bal-color-text-primary-light)
           +modifier(done)
             color: var(--bal-color-text-primary)
           +modifier(active)
@@ -109,10 +109,10 @@
           +modifier(failed)
             color: var(--bal-color-text-danger)
           +modifier(disabled)
-            color: var(--bal-color-text-disabled)
+            color: var(--bal-color-text-grey)
           +tablet
             display: block
-            font-family: $title-family
+            font-family: var(--bal-font-family-title)
             font-weight: 700
             text-align: center
             width: 100%

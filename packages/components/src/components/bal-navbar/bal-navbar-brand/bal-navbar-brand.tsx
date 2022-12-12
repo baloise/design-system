@@ -5,8 +5,6 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
-  scoped: false,
-  shadow: false,
 })
 export class NavbarBrand {
   private bodyScrollBlocker = BodyScrollBlocker()
@@ -52,6 +50,11 @@ export class NavbarBrand {
    * Src to display a logo -> replaces the default Baloise Logo
    */
   @Prop() logo?: string
+
+  /**
+   * Defines if the logo animation should be active
+   */
+  @Prop() animated = true
 
   /**
    * @internal
@@ -110,7 +113,7 @@ export class NavbarBrand {
     const logoTemplate = this.logo ? (
       <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
-      <bal-logo animated color={'white'}></bal-logo>
+      <bal-logo animated={this.animated} color={'white'}></bal-logo>
     )
 
     return (
@@ -133,7 +136,10 @@ export class NavbarBrand {
         <bal-button
           class={{
             ...navbarBrandEl.element('burger').class(),
-            'is-hidden': this.interface === 'simple',
+            ...navbarBrandEl
+              .element('burger')
+              .modifier('hidden')
+              .class(this.interface === 'simple'),
           }}
           color="light"
           inverted

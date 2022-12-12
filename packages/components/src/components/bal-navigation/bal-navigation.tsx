@@ -10,6 +10,9 @@ import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-navigation',
+  styleUrls: {
+    css: 'bal-navigation.sass',
+  },
 })
 export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
@@ -425,7 +428,7 @@ export class Navigation implements ComponentInterface {
                         </a>
                       </div>
                     )}
-                    <bal-list border in-main-nav={true} class="pt-4" size="small">
+                    <bal-list border in-main-nav={true} class="pt-normal" size="small">
                       {meta.subLevels?.map(main => {
                         return main.isTabLink ? (
                           <bal-list-item sub-accordion-item href={main.link} target={main.target}>

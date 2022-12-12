@@ -6,12 +6,14 @@ import { VueGenerator } from './stencil.bindings.vue'
 
 export const StencilBaseConfig: Config = {
   namespace: 'design-system-components',
+  hashedFileNameLength: 10,
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   tsconfig: 'tsconfig.json',
   hashedFileNameLength: 10,
+  invisiblePrehydration: true,
   autoprefixCss: true,
   plugins: [
     sass({
@@ -50,7 +52,7 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-heading', 'bal-text'] },
     { components: ['bal-hint', 'bal-hint-text', 'bal-hint-title'] },
     { components: ['bal-icon'] },
-    { components: ['bal-image-slider', 'bal-image-slider-item'] },
+    { components: ['bal-carousel', 'bal-carousel-item'] },
     {
       components: [
         'bal-list',
@@ -89,9 +91,7 @@ export const StencilBaseConfig: Config = {
     },
     { components: ['bal-pagination'] },
     { components: ['bal-popover', 'bal-popover-content'] },
-    { components: ['bal-product-slider', 'bal-product-slider-item'] },
     { components: ['bal-shape'] },
-    { components: ['bal-slider', 'bal-slider-item'] },
     { components: ['bal-spinner'] },
     {
       components: [

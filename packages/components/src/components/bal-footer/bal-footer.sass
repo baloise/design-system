@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(footer)
   +unselectable
   display: block
@@ -8,7 +10,11 @@
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-blue)
     color: var(--bal-color-white)
-    padding: var(--bal-space-7)
+    padding: var(--bal-space-large)
+    +tablet
+      padding: var(--bal-space-tablet-large)
+    +desktop
+      padding: var(--bal-space-desktop-large)
 
     +element(links-container)
       display: flex
@@ -24,17 +30,23 @@
       +element(legal-links)
         display: flex
         flex-wrap: wrap
+        padding-top: var(--bal-space-normal)
+        gap: .75rem
 
         & > a
           white-space: nowrap
           &.is-current
             text-decoration: underline
 
-          +element(language-links)
-            & > a
-              white-space: nowrap
-              &.is-current
-                text-decoration: underline
+      +element(language-links)
+        padding-top: var(--bal-space-normal)
+        gap: .75rem
+        & > a
+          white-space: nowrap
+          &.is-current
+            text-decoration: underline
+            text-underline-offset: 4px
+            text-decoration-thickness: 2px
 
-          +tablet
-            flex-wrap: nowrap
+      +tablet
+        flex-wrap: nowrap

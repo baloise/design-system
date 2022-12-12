@@ -7,23 +7,33 @@
   font-size: var(--bal-size-normal)
 
 .button
-  @extend %control
   @extend %unselectable
   @extend %font-smoothing
+  -moz-appearance: none !important
+  -webkit-appearance: none !important
+  position: relative
+  display: inline-flex
+  border-style: solid
+  border-radius: var(--bal-radius-small)
   border-color: var(--bal-color-blue)
   color: var(--bal-color-blue)
   +fillSvg(var(--bal-color-blue))
   font-family: var(--bal-font-family-title)
+  font-size: var(--bal-size-normal)
   font-weight: $weight-bold
+  line-height: 1.5
   background-color: transparent
   border-width: 2px
   cursor: pointer
   justify-content: center
+  align-items: center
+  vertical-align: top
   padding: 10px 24px
   min-height: 48px
   height: auto
   text-align: left
   word-break: break-word
+  box-shadow: none
   outline: none
   z-index: 0
   box-sizing: border-box
@@ -31,6 +41,14 @@
   text-decoration: none
   user-select: none
   touch-action: manipulation
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    outline: none
+  &[disabled],
+  fieldset[disabled] &
+    cursor: default
   span,
   strong
     color: inherit
@@ -62,7 +80,7 @@
     width: 48px
     padding: 0
     .icon-left
-      +margin(0)
+      +margin('none')
   &.is-flat
     padding: 0
     min-height: 1.5rem
@@ -91,9 +109,9 @@
     &:hover,
     &.is-hovered
       background: var(--bal-color-light-blue)
-      border-color: var(--bal-color-light-blue-dark)
-      color: var(--bal-color-light-blue-dark)
-      +fillSvg(var(--bal-color-light-blue-dark))
+      border-color: var(--bal-color-light-blue-5)
+      color: var(--bal-color-light-blue-5)
+      +fillSvg(var(--bal-color-light-blue-5))
   &:focus-visible,
   &.is-focused
     &:not(:active)
@@ -101,9 +119,9 @@
   &:active,
   &.is-active
     background: var(--bal-color-light-blue)
-    border-color: var(--bal-color-blue-dark)
-    color: var(--bal-color-blue-dark)
-    +fillSvg(var(--bal-color-blue-dark))
+    border-color: var(--bal-color-blue-6)
+    color: var(--bal-color-blue-6)
+    +fillSvg(var(--bal-color-blue-6))
   // Colors
   &.is-primary
     background: var(--bal-color-blue)
@@ -114,12 +132,12 @@
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-light-blue-dark)
-        border-color: var(--bal-color-light-blue-dark)
+        background: var(--bal-color-light-blue-5)
+        border-color: var(--bal-color-light-blue-5)
     &:active,
     &.is-active
-      background: var(--bal-color-blue-dark)
-      border-color: var(--bal-color-blue-dark)
+      background: var(--bal-color-blue-6)
+      border-color: var(--bal-color-blue-6)
   &.is-text,
   &.is-link
     border-color: transparent
@@ -137,8 +155,8 @@
         text-decoration-thickness: 2px
         background: transparent
         border-color: transparent
-        color: var(--bal-color-light-blue-dark)
-        +fillSvg(var(--bal-color-light-blue-dark))
+        color: var(--bal-color-light-blue-5)
+        +fillSvg(var(--bal-color-light-blue-5))
     &:active,
     &.is-active
       text-decoration: underline
@@ -146,8 +164,8 @@
       text-decoration-thickness: 2px
       background: transparent
       border-color: transparent
-      color: var(--bal-color-blue-dark)
-      +fillSvg(var(--bal-color-blue-dark))
+      color: var(--bal-color-blue-6)
+      +fillSvg(var(--bal-color-blue-6))
   &.is-text
     // States
     +hover
@@ -155,14 +173,14 @@
       &.is-hovered
         background: var(--bal-color-light-blue)
         border-color: var(--bal-color-light-blue)
-        color: var(--bal-color-light-blue-dark)
-        +fillSvg(var(--bal-color-light-blue-dark))
+        color: var(--bal-color-light-blue-5)
+        +fillSvg(var(--bal-color-light-blue-5))
     &:active,
     &.is-active
       background: var(--bal-color-light-blue)
       border-color: var(--bal-color-light-blue)
-      color: var(--bal-color-blue-dark)
-      +fillSvg(var(--bal-color-blue-dark))
+      color: var(--bal-color-blue-6)
+      +fillSvg(var(--bal-color-blue-6))
   &.is-info-light
     background: var(--bal-color-info-1)
     border-color: var(--bal-color-info-5)
@@ -355,8 +373,8 @@
     @extend %disabled
     background: var(--bal-color-grey)
     border-color: var(--bal-color-grey)
-    color: var(--bal-color-grey-dark)
-    +fillSvg(var(--bal-color-grey-dark))
+    color: var(--bal-color-grey-5)
+    +fillSvg(var(--bal-color-grey-5))
     opacity: 1
     & > span::after
       display: none

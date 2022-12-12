@@ -5,8 +5,9 @@ import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
-  scoped: false,
-  shadow: false,
+  styleUrls: {
+    css: 'bal-tag.sass',
+  },
 })
 export class Tag {
   @Element() el!: HTMLElement
@@ -15,7 +16,7 @@ export class Tag {
   private inheritedAttributesClose: { [k: string]: any } = {}
 
   /**
-   * The theme type of the tag. Given by bulma our css framework.
+   * The theme type of the tag.
    */
   @Prop() color: Props.BalTagColor = ''
 
@@ -25,7 +26,7 @@ export class Tag {
   @Prop() size: Props.BalTagSize = ''
 
   /**
-   * The theme type of the tag. Given by bulma our css framework.
+   * The theme type of the tag.
    */
   @Prop() closable = false
 

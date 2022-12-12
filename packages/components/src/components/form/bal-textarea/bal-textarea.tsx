@@ -32,6 +32,9 @@ import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-textarea',
+  styleUrls: {
+    css: 'bal-textarea.sass',
+  },
 })
 export class Textarea implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-textarea-${TextareaIds++}`

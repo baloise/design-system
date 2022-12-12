@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +block(tag)
   +unselectable
   position: static
@@ -53,7 +55,7 @@
   +modifier(is-green-light)
     background: var(--bal-color-green-2)
   +modifier(is-invalid)
-    background: var(--bal-color-border-invalid)
+    background: var(--bal-color-border-danger)
     color: var(--bal-color-white)
   //
   // tag label
@@ -104,18 +106,18 @@
     +modifier(is-green-light)
       color: var(--bal-color-green-2-inverted)
     +modifier(is-invalid)
-      background: var(--bal-color-border-invalid)
+      background: var(--bal-color-border-danger)
       color: var(--bal-color-white)
     +modifier(is-disabled)
-      background-color: var(--bal-color-border-disabled)
-      border-color: var(--bal-color-border-disabled)
+      background-color: var(--bal-color-border-grey-dark)
+      border-color: var(--bal-color-border-grey-dark)
 
   +modifier(is-disabled)
     cursor: default
     pointer-events: none
     user-select: none
-    background-color: var(--bal-color-border-disabled)
-    border-color: var(--bal-color-border-disabled)
+    background-color: var(--bal-color-border-grey-dark)
+    border-color: var(--bal-color-border-grey-dark)
     box-shadow: none
     color: var(--bal-color-white)
 

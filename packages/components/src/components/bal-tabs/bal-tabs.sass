@@ -1,3 +1,4 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
 @import './bal-tabs__steps'
 
 +block(tabs)
@@ -144,11 +145,11 @@
           hyphens: auto
           gap: 4px
         &:hover
-          color: var(--bal-color-light-blue-dark)
-          +fillSvg(var(--bal-color-light-blue-dark))
+          color: var(--bal-color-light-blue-5)
+          +fillSvg(var(--bal-color-light-blue-5))
         &:active
-          color: var(--bal-color-blue-dark)
-          +fillSvg(var(--bal-color-blue-dark))
+          color: var(--bal-color-blue-6)
+          +fillSvg(var(--bal-color-blue-6))
         +modifier(icon-horizontal)
           flex-direction: row
         +touch
@@ -173,20 +174,20 @@
             color: var(--bal-color-primary)
             +fillSvg(var(--bal-color-primary))
             &:hover
-              color: var(--bal-color-light-blue-dark)
-              +fillSvg(var(--bal-color-light-blue-dark))
+              color: var(--bal-color-light-blue-5)
+              +fillSvg(var(--bal-color-light-blue-5))
             &:active
-              color: var(--bal-color-blue-dark)
-              +fillSvg(var(--bal-color-blue-dark))
+              color: var(--bal-color-blue-6)
+              +fillSvg(var(--bal-color-blue-6))
         +modifier(disabled)
-          color: var(--bal-color-text-disabled)
+          color: var(--bal-color-text-grey)
           cursor: default
           .bal-icon
-            +fillSvg(var(--bal-color-text-disabled))
+            +fillSvg(var(--bal-color-text-grey))
           &:hover, &:focus, &:active
-            color: var(--bal-color-text-disabled)
+            color: var(--bal-color-text-grey)
             .bal-icon
-              +fillSvg(var(--bal-color-text-disabled))
+              +fillSvg(var(--bal-color-text-grey))
         +modifier(fullwidth)
           flex-grow: 1
           flex-basis: 0
@@ -233,7 +234,7 @@
 
     +element(border)
       position: absolute
-      background: var(--bal-color-border-normal)
+      background: var(--bal-color-border-grey)
       border-radius: var(--bal-radius-small)
       height: 2px
       width: 100%

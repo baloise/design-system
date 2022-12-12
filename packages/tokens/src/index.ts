@@ -22,7 +22,7 @@ const tokens = {
   color: {
     //
     // BASE
-    'transparent': { hex: 'transparent', inverted: 'transparent', description: descriptions.color.neutral },
+    'transparent': { hex: 'transparent', inverted: 'primary', description: descriptions.color.neutral },
     'white': { hex: '#ffffff', inverted: 'primary', description: descriptions.color.neutral },
     'black': { hex: '#000000', inverted: 'white', description: descriptions.color.neutral },
     //
@@ -231,216 +231,226 @@ const tokens = {
     sizes: {
       'xxxxx-large': {
         figmaName: 'display',
+        legacy: 'display',
         description: 'Should only be uses to illustrate large stage areas.',
         mobile: {
           fontSize: '3rem',
           lineHeight: '3.5rem',
-          spacing: '4',
+          spacing: 'normal',
         },
         tablet: {
           fontSize: '5rem',
           lineHeight: '6rem',
-          spacing: '4',
+          spacing: 'normal',
         },
         desktop: {
           fontSize: '5rem',
           lineHeight: '6rem',
-          spacing: '4',
+          spacing: 'normal',
         },
       },
       'xxxx-large': {
         figmaName: 'display-2',
+        legacy: 'display-2',
         description: 'Should only be uses to illustrate large stage areas.',
         mobile: {
           fontSize: '2rem',
           lineHeight: '2.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '3rem',
           lineHeight: '3.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '3rem',
           lineHeight: '3.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'xxx-large': {
         figmaName: 'h1',
+        legacy: '1',
         description: 'Should only be used for stage titles and headings of level 1.',
         mobile: {
           fontSize: '1.75rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '2.5rem',
           lineHeight: '3rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '2.5rem',
           lineHeight: '3rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'xx-large': {
         figmaName: 'h2',
+        legacy: '2',
         description: 'Should only be used for content titles and headings of level 2.',
         mobile: {
           fontSize: '1.5rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '2rem',
           lineHeight: '2.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '2rem',
           lineHeight: '2.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'x-large': {
         figmaName: 'h3',
+        legacy: '3',
         description: "Should only be used for form titles, quick link navigation's and headings of level 3.",
         mobile: {
           fontSize: '1.25rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '1.5rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '1.5rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'large': {
         figmaName: 'h4 / lead-text',
+        legacy: '4',
         description:
           'Should only be used for standard card titles and headings of level 4 or for lead text/paragraphs after a heading',
         mobile: {
           fontSize: '1.125rem',
           lineHeight: '1.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '1.25rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '1.25rem',
           lineHeight: '2rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'medium': {
         figmaName: 'block-text',
+        legacy: '5',
         description: 'Should only be used in a 2/3 grid column to improve readability.',
         mobile: {
           fontSize: '1rem',
           lineHeight: '1.5rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         tablet: {
           fontSize: '1.125rem',
           lineHeight: '1.625rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
         desktop: {
           fontSize: '1.125rem',
           lineHeight: '1.625rem',
-          spacing: '2',
+          spacing: 'x-small',
         },
       },
       'normal': {
         figmaName: 'normal',
+        legacy: '6',
         description: 'Should only be used for body texts and heading of level 5.',
         mobile: {
           fontSize: '1rem',
           lineHeight: '1.5rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         tablet: {
           fontSize: '1rem',
           lineHeight: '1.5rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         desktop: {
           fontSize: '1rem',
           lineHeight: '1.5rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
       },
       'small': {
         figmaName: 'small-text',
+        legacy: '7',
         description: 'Should only be used for label texts.',
         mobile: {
           fontSize: '0.875rem',
           lineHeight: '1.125rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.875rem',
           lineHeight: '1.125rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.875rem',
           lineHeight: '1.125rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
       },
       'x-small': {
         figmaName: 'x-small-text',
+        legacy: '8',
         description: 'Should only be used for helper texts or validation messages of a form control.',
         mobile: {
           fontSize: '0.75rem',
           lineHeight: '1rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.75rem',
           lineHeight: '1rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.75rem',
           lineHeight: '1rem',
-          spacing: '1',
+          spacing: 'xx-small',
         },
       },
     },
     colors: {
-      'primary': 'primary',
-      'blue': 'blue',
-      'black': 'black',
-      'normal': 'blue',
-      'light-blue': 'light-blue-5',
-      'hover': 'light-blue-5',
-      'blue-dark': 'blue-6',
-      'active': 'blue-6',
       'white': 'white',
-      'blue-light': 'blue-3',
-      'hint': 'primary-3',
-      'help': 'primary-3',
-      'success': 'success-4',
-      'valid': 'success-4',
-      'danger': 'danger-4',
-      'invalid': 'danger-4',
-      'warning': 'warning-5',
+      'black': 'black',
       'grey': 'grey-5',
-      'disabled': 'grey-5',
+      'primary-light': 'primary-3',
+      'primary': 'primary-5',
+      'primary-dark': 'primary-6', // active color
+      'light-blue': 'light-blue-5', // hover color
+      'success': 'success-4',
+      'info': 'info-4',
+      'warning': 'warning-5',
+      'danger': 'danger-4',
+      // 'blue-light': 'blue-3',
+      // 'blue': 'blue-5',
+      // 'hover': 'light-blue-5',
+      // 'active': 'blue-6',
+      // 'hint': 'primary-3',
+      // 'valid': 'success-4',
+      // 'invalid': 'danger-4',
+      // 'normal': 'blue-5',
     },
   },
   /**
@@ -452,16 +462,17 @@ const tokens = {
   border: {
     width: '2px',
     colors: {
-      primary: 'primary',
-      active: 'primary',
-      normal: 'grey-3',
-      hover: 'grey-4',
-      disabled: 'grey-4',
-      warning: 'warning-5',
-      success: 'success-4',
-      danger: 'danger-4',
-      valid: 'success-4',
-      invalid: 'danger-4',
+      'primary': 'primary-5',
+      'grey': 'grey-3',
+      'grey-dark': 'grey-4',
+      'warning': 'warning-5',
+      'success': 'success-4',
+      'danger': 'danger-4',
+      // active: 'primary-5',
+      // hover: 'grey-4',
+      // disabled: 'grey-4',
+      // valid: 'success-4',
+      // invalid: 'danger-4',
     },
   },
 } as BaloiseDesignTokens
@@ -485,99 +496,99 @@ colorAlias('primary-5', 'blue-5')
 colorAlias('primary-6', 'blue-6')
 
 colorAlias('primary', 'primary-5')
-colorAlias('primary-light', 'primary-1')
-colorAlias('primary-dark', 'primary-6')
+// colorAlias('primary-light', 'primary-1')
+// colorAlias('primary-dark', 'primary-6')
 
-colorAlias('grey-light', 'grey-1')
-colorAlias('grey-dark', 'grey-5')
+// colorAlias('grey-light', 'grey-1')
+// colorAlias('grey-dark', 'grey-5')
 colorAlias('grey', 'grey-3')
 
-colorAlias('blue-light', 'blue-1')
-colorAlias('blue-dark', 'blue-6')
+// colorAlias('blue-light', 'blue-1')
+// colorAlias('blue-dark', 'blue-6')
 colorAlias('blue', 'blue-5')
 
-colorAlias('primary-hover', 'light-blue-5')
-colorAlias('primary-active', 'primary-6')
+// colorAlias('primary-hover', 'light-blue-5')
+// colorAlias('primary-active', 'primary-6')
 
 colorAlias('light-blue', 'light-blue-1')
-colorAlias('light-blue-dark', 'light-blue-5')
-colorAlias('light-blue-hover', 'light-blue-1')
-colorAlias('light-blue-active', 'light-blue-1')
+// colorAlias('light-blue-dark', 'light-blue-5')
+// colorAlias('light-blue-hover', 'light-blue-1')
+// colorAlias('light-blue-active', 'light-blue-1')
 
-colorAlias('purple-light', 'purple-1')
-colorAlias('purple-dark', 'purple-6')
+// colorAlias('purple-light', 'purple-1')
+// colorAlias('purple-dark', 'purple-6')
 colorAlias('purple', 'purple-3')
 
-colorAlias('green-light', 'green-1')
-colorAlias('green-dark', 'green-6')
+// colorAlias('green-light', 'green-1')
+// colorAlias('green-dark', 'green-6')
 colorAlias('green', 'green-3')
 
-colorAlias('yellow-light', 'yellow-1')
-colorAlias('yellow-dark', 'yellow-6')
+// colorAlias('yellow-light', 'yellow-1')
+// colorAlias('yellow-dark', 'yellow-6')
 colorAlias('yellow', 'yellow-3')
 
-colorAlias('red-light', 'red-1')
-colorAlias('red-dark', 'red-6')
+// colorAlias('red-light', 'red-1')
+// colorAlias('red-dark', 'red-6')
 colorAlias('red', 'red-3')
 
-colorAlias('info-light', 'info-1')
+// colorAlias('info-light', 'info-1')
 colorAlias('info', 'info-3')
-colorAlias('info-dark', 'info-6')
+// colorAlias('info-dark', 'info-6')
 
-colorAlias('success-light', 'success-1')
+// colorAlias('success-light', 'success-1')
 colorAlias('success', 'success-3')
-colorAlias('success-dark', 'success-6')
+// colorAlias('success-dark', 'success-6')
 
-colorAlias('warning-light', 'warning-1')
+// colorAlias('warning-light', 'warning-1')
 colorAlias('warning', 'warning-3')
-colorAlias('warning-dark', 'warning-6')
+// colorAlias('warning-dark', 'warning-6')
 
-colorAlias('danger-light', 'danger-1')
+// colorAlias('danger-light', 'danger-1')
 colorAlias('danger', 'danger-3')
-colorAlias('danger-dark', 'danger-6')
+// colorAlias('danger-dark', 'danger-6')
 
-colorAlias('valid', 'success-light')
-colorAlias('invalid', 'danger-light')
-colorAlias('disabled', 'grey-2')
+// colorAlias('valid', 'success-light')
+// colorAlias('invalid', 'danger-light')
+// colorAlias('disabled', 'grey-2')
 
-colorAlias('background', 'white')
-colorAlias('background-light', 'grey-light')
+// colorAlias('background', 'white')
+// colorAlias('background-light', 'grey-light')
 
 //
 // Legacy
-const typographyAlias = (target: string, source: string) => {
-  tokens.typography.sizes[target] = {
-    ...tokens.typography.sizes[source],
-    alias: source,
-  }
-}
-typographyAlias('display', 'xxxxx-large')
-typographyAlias('display-2', 'xxxx-large')
-typographyAlias('1', 'xxx-large')
-typographyAlias('2', 'xx-large')
-typographyAlias('3', 'x-large')
-typographyAlias('4', 'large')
-typographyAlias('5', 'normal')
-typographyAlias('6', 'small')
-typographyAlias('7', 'x-small')
+// const typographyAlias = (target: string, source: string) => {
+//   tokens.typography.sizes[target] = {
+//     ...tokens.typography.sizes[source],
+//     alias: source,
+//   }
+// }
+// typographyAlias('display', 'xxxxx-large')
+// typographyAlias('display-2', 'xxxx-large')
+// typographyAlias('1', 'xxx-large')
+// typographyAlias('2', 'xx-large')
+// typographyAlias('3', 'x-large')
+// typographyAlias('4', 'large')
+// typographyAlias('5', 'normal')
+// typographyAlias('6', 'small')
+// typographyAlias('7', 'x-small')
 
-const spacingAlias = (target: string, source: string) => {
-  tokens.spacing[target] = {
-    ...tokens.spacing[source],
-    alias: source,
-  }
-}
-spacingAlias('0', 'none')
-spacingAlias('1', 'xx-small')
-spacingAlias('2', 'x-small')
-spacingAlias('3', 'small')
-spacingAlias('4', 'normal')
-spacingAlias('5', 'medium')
-spacingAlias('6', 'large')
-spacingAlias('7', 'x-large')
-spacingAlias('8', 'xx-large')
-spacingAlias('9', 'xxx-large')
-spacingAlias('10', 'xxxx-large')
+// const spacingAlias = (target: string, source: string) => {
+//   tokens.spacing[target] = {
+//     ...tokens.spacing[source],
+//     alias: source,
+//   }
+// }
+// spacingAlias('0', 'none')
+// spacingAlias('1', 'xx-small')
+// spacingAlias('2', 'x-small')
+// spacingAlias('3', 'small')
+// spacingAlias('4', 'normal')
+// spacingAlias('5', 'medium')
+// spacingAlias('6', 'large')
+// spacingAlias('7', 'x-large')
+// spacingAlias('8', 'xx-large')
+// spacingAlias('9', 'xxx-large')
+// spacingAlias('10', 'xxxx-large')
 
 /************************************************************
  * Export

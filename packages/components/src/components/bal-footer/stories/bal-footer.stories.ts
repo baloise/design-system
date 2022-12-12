@@ -28,7 +28,7 @@ const Template = args => ({
   template: `<bal-footer v-bind="args">
   <div class="container">
     <bal-logo color="white"></bal-logo>
-    <p class="mt-2">{{ args.content }}</p>
+    <p class="mt-x-small">{{ args.content }}</p>
   </div>
 </bal-footer>`,
 })

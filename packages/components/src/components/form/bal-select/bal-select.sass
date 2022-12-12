@@ -1,3 +1,5 @@
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+
 +component(select-option)
   display: none !important
 
@@ -25,8 +27,8 @@
     display: flex
     border-width: 0.125rem
     border-style: solid
-    border-color: var(--bal-color-border-normal)
-    border-radius: var(--bal-radius)
+    border-color: var(--bal-color-border-grey)
+    border-radius: var(--bal-radius-normal)
     background: var(--bal-color-primary-inverted)
     font-size: var(--bal-weight-regular)
     font-family: var(--bal-font-family-text)
@@ -38,27 +40,27 @@
     +modifier(focused)
       border-color: var(--bal-color-primary)
     &:not(#{&}--disabled):not(#{&}--invalid):not(&:focus-within):hover
-      border-color: var(--bal-color-border-normal)
+      border-color: var(--bal-color-border-grey)
       background-color: var(--bal-color-grey-1)
     &:focus-within
       border-color: var(--bal-color-primary)
     &--invalid:not(#{&}--disabled)
       border-color: var(--bal-color-border-danger) !important
-      background: var(--bal-color-danger-light) !important
+      background: var(--bal-color-danger-1) !important
     +modifier(disabled)
-      background-color: var(--bal-color-disabled) !important
-      border-color: var(--bal-color-border-disabled) !important
+      background-color: var(--bal-color-grey-2) !important
+      border-color: var(--bal-color-border-grey-dark) !important
       &,
       & input
         cursor: default !important
         user-select: none !important
         pointer-events: none !important
-        color: var(--bal-color-text-disabled)
+        color: var(--bal-color-text-grey)
     //
     // trigger icon on the right
     +element(icon)
-      min-height: 100%
-      max-height: 100%
+      min-height: 100% !important
+      max-height: 100% !important
       +modifier(loading)
         display: none
       +modifier(clickable)
@@ -85,17 +87,16 @@
     //
     // selection part for multiple
     +element(input)
-      border: none
-      box-shadow: none
+      border: none !important
+      outline: none !important
+      outline-width: 0 !important
+      height: calc(3rem - 0.25rem) !important
+      box-shadow: none !important
       background: transparent
-      outline: none
-      outline-width: 0
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
-      height: calc(3rem - 0.25rem)
-      // padding-left: 0.625rem
-      padding-left: 0.25rem
-      padding-right: 0.625rem
+      padding-left: 0.25rem !important
+      padding-right: 0.625rem !important
       text-overflow: ellipsis
       &:read-only
         user-select: none !important
