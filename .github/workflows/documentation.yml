@@ -50,8 +50,8 @@ jobs:
             --git-provider-url https://github.com \
             --username ${{ secrets.GITHUB_USER }} \
             --password ${{ secrets.GITHUB_TOKEN }} \
-            --git-user "Baloise OpenSource Bot" \
-            --git-email "Group.CH_Open-Source@baloise.ch" \
+            --git-user "Baloise Incubator" \
+            --git-email "incubator@baloise.dev" \
             --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
