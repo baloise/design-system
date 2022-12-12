@@ -44,11 +44,11 @@ jobs:
       - name: Deploy
         uses: addnab/docker-run-action@v3
         with:
-          image: baloise/gitopscli:5.4.0
+          image: baloise/gitopscli:5.5.0
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
-            --username ${{ secrets.GITHUB_USER }} \
+            --username "Baloise Incubator" \
             --password ${{ secrets.GITHUB_TOKEN }} \
             --git-user "Baloise Incubator" \
             --git-email "incubator@baloise.dev" \
