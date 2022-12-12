@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="/build/design-system-components.css" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
-  <body class="bal-app">
-    <div class="container">
-      <h2 class="title is-size-xx-large">Basic</h2>
-      <section>
-        <bal-navbar>
-          <bal-navbar-brand>
-            <bal-icon name="logo" inverted size="large"></bal-icon>
-            <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
-          </bal-navbar-brand>
-          <bal-navbar-menu>
-            <bal-navbar-menu-start>
-              <a class="navbar-item"><bal-text>Home</bal-text></a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"><bal-text>Language</bal-text></a>
-                <div class="navbar-dropdown">
-                  <a class="navbar-item"><bal-text>English</bal-text></a>
-                  <a class="navbar-item"><bal-text>German</bal-text></a>
-                  <a class="navbar-item"><bal-text>French</bal-text></a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item"><bal-text>Support</bal-text></a>
-                </div>
-              </div>
-            </bal-navbar-menu-start>
-            <bal-navbar-menu-end>
-              <bal-button inverted>Logout</bal-button>
-            </bal-navbar-menu-end>
-          </bal-navbar-menu>
-        </bal-navbar>
-      </section>
 
-      <h2 class="title is-size-xx-large">Light</h2>
-      <section>
-        <bal-navbar light>
-          <bal-navbar-brand>
-            <bal-icon name="logo" size="large"></bal-icon>
-            <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
-          </bal-navbar-brand>
-          <bal-navbar-menu>
-            <bal-navbar-menu-start>
-              <a class="navbar-item"><bal-text>Home</bal-text></a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"><bal-text>Language</bal-text></a>
-                <div class="navbar-dropdown">
-                  <a class="navbar-item"><bal-text>English</bal-text></a>
-                  <a class="navbar-item"><bal-text>German</bal-text></a>
-                  <a class="navbar-item"><bal-text>French</bal-text></a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item"><bal-text>Support</bal-text></a>
-                </div>
-              </div>
-            </bal-navbar-menu-start>
-            <bal-navbar-menu-end>
-              <bal-button>Logout</bal-button>
-            </bal-navbar-menu-end>
-          </bal-navbar-menu>
-        </bal-navbar>
-      </section>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="/build/design-system-components.css" />
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body class="bal-app">
+  <header>
+    <bal-navbar interface="app">
+      <bal-navbar-brand href="/" target="_blank">App Header</bal-navbar-brand>
+      <bal-navbar-menu>
+        <bal-navbar-menu-start>
+          <bal-tabs interface="navbar" inverted>
+            <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
+            <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
+          </bal-tabs>
+        </bal-navbar-menu-start>
+        <bal-navbar-menu-end>
+          <bal-button-group>
+            <bal-popover id="bal-popover" value="false">
+              <bal-button id="bal-popover-trigger" bal-popover-trigger color="light" inverted icon="date">
+                DE
+              </bal-button>
+              <bal-popover-content>
+                <bal-list border>
+                  <bal-list-item clickable>
+                    <bal-list-item-content>
+                      <bal-list-item-title>English</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item>
+                  <bal-list-item clickable>
+                    <bal-list-item-content>
+                      <bal-list-item-title>Français</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item>
+                  <bal-list-item clickable>
+                    <bal-list-item-content>
+                      <bal-list-item-title>Italiano</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item>
+                </bal-list>
+              </bal-popover-content>
+            </bal-popover>
+            <bal-button href="tel://00800 24 800 800" color="light" inverted icon="date">00800 24 800 800</bal-button>
+          </bal-button-group>
+        </bal-navbar-menu-end>
+      </bal-navbar-menu>
+    </bal-navbar>
+  </header>
+  <script>
+    const popover = document.getElementById('bal-popover')
+    const popoverTrigger = document.getElementById('bal-popover-trigger')
+
+    popoverTrigger.addEventListener('click', () => popover.value = !JSON.parse(popover.value))
+  </script>
+</body>
+
 </html>
