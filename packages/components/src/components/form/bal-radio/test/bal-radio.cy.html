@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <script type="module" src="/build/design-system-components.esm.js"></script>
-  <script nomodule src="/build/design-system-components.js"></script>
-</head>
-
-<body>
-  <bal-doc-app>
-    <main class="container">
-      <!-- <bal-heading>Basic</bal-heading>
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
         <section>
           <bal-radio-group data-testid="basic" value="1">
             <bal-radio value="1">Label 1</bal-radio>
@@ -50,18 +49,17 @@
             <bal-radio value="3">Label 3</bal-radio>
             <bal-radio value="4" disabled>Label Disabled</bal-radio>
           </bal-radio-group>
-        </section> -->
-      <bal-heading>Combi</bal-heading>
-      <section>
-        <bal-radio-group data-testid="combi" value="true" vertical>
-          <bal-radio value="true">Label TRUE</bal-radio>
-          <bal-input placeholder="Placeholder"></bal-input>
-          <bal-radio value="false">Label FALSE</bal-radio>
-          <bal-input placeholder="Placeholder"></bal-input>
-        </bal-radio-group>
-      </section>
-    </main>
-  </bal-doc-app>
-</body>
-
+        </section>
+        <bal-heading>Combi</bal-heading>
+        <section>
+          <bal-radio-group data-testid="combi" value="true" vertical>
+            <bal-radio value="true">Label TRUE</bal-radio>
+            <bal-input placeholder="Placeholder"></bal-input>
+            <bal-radio value="false">Label FALSE</bal-radio>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-radio-group>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
 </html>
