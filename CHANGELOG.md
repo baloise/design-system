@@ -5,17 +5,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [12.0.0](https://github.com/baloise-incubator/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
 
+Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-system.vercel.app/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
+
+### ⚠ BREAKING CHANGES
+
+- Stencil update to v2.20.0
+- Cypress update to v11.2.0
+- Load Custom Icons
+- Lazy Loading Component Styles
+- Design Token Reduction
+- CSS-Helper Reduction
+- Separation of bal-number-input & bal-input
 
 ### Features
 
+* **carousel:** new component, which replaces the slider components
 * **icons:** add location-target icon ([41eb766](https://github.com/baloise-incubator/design-system/commit/41eb7665e0acd1135b9eb5b78c46672789a78dae))
-
 
 ### Bug Fixes
 
 * **accordion:** not remove hidden content from the DOM ([1f52f95](https://github.com/baloise-incubator/design-system/commit/1f52f95fe38b845cce866025653c9183cbf61c5b))
-* with every connect we restore the state ([7492f36](https://github.com/baloise-incubator/design-system/commit/7492f36807dbbca74feb87fe77491e48aed60aa6))
-* with every connect we restore the state ([63decc7](https://github.com/baloise-incubator/design-system/commit/63decc760e17bc799cc8fe5bdb550d4d74b5bd58))
 
 ## [11.0.17](https://github.com/baloise-incubator/design-system/compare/v11.0.16...v11.0.17) (2022-12-01)
 
