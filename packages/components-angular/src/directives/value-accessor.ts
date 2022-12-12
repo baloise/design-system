@@ -20,7 +20,6 @@ export class ValueAccessor implements ControlValueAccessor {
   }
 
   handleChangeEvent(event: CustomEvent<any>) {
-    console.log('handleChangeEvent', this.el.nativeElement, this.el.nativeElement === event.target, event)
     if (this.el.nativeElement === event.target) {
       const value = event.detail
       if (value !== this.lastValue) {

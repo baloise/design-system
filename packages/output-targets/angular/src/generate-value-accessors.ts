@@ -92,4 +92,4 @@ function copyResources(config: Config, resourcesFilesToCopy: string[], directory
 const VALUE_ACCESSOR_SELECTORS = `<VALUE_ACCESSOR_SELECTORS>`
 const VALUE_ACCESSOR_EVENT = `<VALUE_ACCESSOR_EVENT>`
 const VALUE_ACCESSOR_TARGETATTR = '<VALUE_ACCESSOR_TARGETATTR>'
-const VALUE_ACCESSOR_EVENTTARGETS = `    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event.detail)'`
+const VALUE_ACCESSOR_EVENTTARGETS = `    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event)'`

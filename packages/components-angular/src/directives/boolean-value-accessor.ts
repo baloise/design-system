@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor'
   /* tslint:disable-next-line:directive-selector */
   selector: 'bal-popover, bal-accordion',
   host: {
-    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event)',
+    '(balChange)': 'handleChangeEvent($event)',
   },
   providers: [
     {
