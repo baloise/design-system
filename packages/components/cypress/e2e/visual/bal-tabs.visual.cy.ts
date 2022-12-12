@@ -14,13 +14,13 @@ describe('bal-tabs', () => {
 
   it('expanded', () => {
     cy.platform('desktop').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded', 0.0)
+    cy.getByTestId('expanded').compareSnapshot('tabs-expanded', 0.01)
 
     cy.platform('tablet').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-tablet', 0.0)
+    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-tablet', 0.02)
 
     cy.platform('mobile').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-mobile', 0.0)
+    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-mobile', 0.02)
   })
 
   it('steps', () => {

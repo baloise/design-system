@@ -625,7 +625,11 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
+        "status": string;
         "subtitle": string;
+    }
+    interface BalDocBannerStatus {
+        "context": BannerStatusContext[];
     }
     interface BalDocColor {
         "background": boolean;
@@ -2807,6 +2811,150 @@ declare global {
         prototype: HTMLBalDocBannerElement;
         new (): HTMLBalDocBannerElement;
     };
+    interface HTMLBalDocBannerStatusElement extends Components.BalDocBannerStatus, HTMLStencilElement {
+    }
+    var HTMLBalDocAppElement: {
+        prototype: HTMLBalDocAppElement;
+        new (): HTMLBalDocAppElement;
+    };
+    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
+    }
+    var HTMLBalDocBannerElement: {
+        prototype: HTMLBalDocBannerElement;
+        new (): HTMLBalDocBannerElement;
+    };
+    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
+    }
+    var HTMLBalDocColorElement: {
+        prototype: HTMLBalDocColorElement;
+        new (): HTMLBalDocColorElement;
+    };
+    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
+    }
+    var HTMLBalDocDownloadElement: {
+        prototype: HTMLBalDocDownloadElement;
+        new (): HTMLBalDocDownloadElement;
+    };
+    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
+    }
+    var HTMLBalDocGithubElement: {
+        prototype: HTMLBalDocGithubElement;
+        new (): HTMLBalDocGithubElement;
+    };
+    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
+    }
+    var HTMLBalDocIconsElement: {
+        prototype: HTMLBalDocIconsElement;
+        new (): HTMLBalDocIconsElement;
+    };
+    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
+    }
+    var HTMLBalDocImageElement: {
+        prototype: HTMLBalDocImageElement;
+        new (): HTMLBalDocImageElement;
+    };
+    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
+    }
+    var HTMLBalDocLeadElement: {
+        prototype: HTMLBalDocLeadElement;
+        new (): HTMLBalDocLeadElement;
+    };
+    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListElement: {
+        prototype: HTMLBalDocLinkListElement;
+        new (): HTMLBalDocLinkListElement;
+    };
+    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListItemElement: {
+        prototype: HTMLBalDocLinkListItemElement;
+        new (): HTMLBalDocLinkListItemElement;
+    };
+    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
+    }
+    var HTMLBalDocShadesElement: {
+        prototype: HTMLBalDocShadesElement;
+        new (): HTMLBalDocShadesElement;
+    };
+    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
+    }
+    var HTMLBalDocSupportColorElement: {
+        prototype: HTMLBalDocSupportColorElement;
+        new (): HTMLBalDocSupportColorElement;
+    };
+    interface HTMLBalDocTabsElement extends Components.BalDocTabs, HTMLStencilElement {
+    }
+    var HTMLBalDocTabsElement: {
+        prototype: HTMLBalDocTabsElement;
+        new (): HTMLBalDocTabsElement;
+    };
+    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderElement: {
+        prototype: HTMLBalDocTokensBorderElement;
+        new (): HTMLBalDocTokensBorderElement;
+    };
+    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBreakpointsElement: {
+        prototype: HTMLBalDocTokensBreakpointsElement;
+        new (): HTMLBalDocTokensBreakpointsElement;
+    };
+    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensColorsElement: {
+        prototype: HTMLBalDocTokensColorsElement;
+        new (): HTMLBalDocTokensColorsElement;
+    };
+    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontElement: {
+        prototype: HTMLBalDocTokensFontElement;
+        new (): HTMLBalDocTokensFontElement;
+    };
+    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontSizesElement: {
+        prototype: HTMLBalDocTokensFontSizesElement;
+        new (): HTMLBalDocTokensFontSizesElement;
+    };
+    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontWeightElement: {
+        prototype: HTMLBalDocTokensFontWeightElement;
+        new (): HTMLBalDocTokensFontWeightElement;
+    };
+    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensRadiusElement: {
+        prototype: HTMLBalDocTokensRadiusElement;
+        new (): HTMLBalDocTokensRadiusElement;
+    };
+    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensShadowElement: {
+        prototype: HTMLBalDocTokensShadowElement;
+        new (): HTMLBalDocTokensShadowElement;
+    };
+    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingElement: {
+        prototype: HTMLBalDocTokensSpacingElement;
+        new (): HTMLBalDocTokensSpacingElement;
+    };
+    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageElement: {
+        prototype: HTMLBalDocUsageElement;
+        new (): HTMLBalDocUsageElement;
+    };
+    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageItemElement: {
+        prototype: HTMLBalDocUsageItemElement;
+        new (): HTMLBalDocUsageItemElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -3443,6 +3591,7 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-banner": HTMLBalDocBannerElement;
+        "bal-doc-banner-status": HTMLBalDocBannerStatusElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
@@ -4191,7 +4340,11 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
+        "status"?: string;
         "subtitle"?: string;
+    }
+    interface BalDocBannerStatus {
+        "context"?: BannerStatusContext[];
     }
     interface BalDocColor {
         "background"?: boolean;
@@ -6197,6 +6350,7 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
         "bal-doc-banner": BalDocBanner;
+        "bal-doc-banner-status": BalDocBannerStatus;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
@@ -6328,6 +6482,7 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
+            "bal-doc-banner-status": LocalJSX.BalDocBannerStatus & JSXBase.HTMLAttributes<HTMLBalDocBannerStatusElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
