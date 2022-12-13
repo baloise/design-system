@@ -11,7 +11,7 @@ export class ListItemAccordionHead {
   /**
    * If `true` the list accordion is open
    */
-  @Prop() accordionOpen = false
+  @Prop({ mutable: true }) accordionOpen = false
 
   /**
    * Icon name string with value 'plus' on default
@@ -27,11 +27,12 @@ export class ListItemAccordionHead {
    * Emitted when the accordion state is changed
    */
   @Event() balAccordionChange!: EventEmitter<boolean>
-  connectedCallback() {
+
+  componentWillLoad() {
     this.balAccordionChange.emit(this.accordionOpen)
   }
 
-  getClosestListItem(): HTMLBalListItemElement | null {
+  private getClosestListItem(): HTMLBalListItemElement | null {
     return this.el.closest('bal-list-item')
   }
 

@@ -237,7 +237,7 @@
     button:not(.button):not([type='button']):after
       background: var(--bal-color-grey-2)
 
-  .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
+  .bal-list__item:not(.bal-list__item--disabled):not(.bal-list__item--accordion-open).bal-list__item--clickable
     & > div,
     a:not(.is-link),
     button:not(.button)

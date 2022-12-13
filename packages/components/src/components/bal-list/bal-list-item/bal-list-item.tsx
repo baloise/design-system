@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter, Element, State } from '@stencil/core'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
@@ -7,6 +7,8 @@ import { BEM } from '../../../utils/bem'
 })
 export class ListItem {
   @Element() el!: HTMLElement
+
+  @State() accordionOpen = false
 
   /**
    * If `true` the list item can be hovered
@@ -75,6 +77,8 @@ export class ListItem {
   }
 
   updateState(isAccordionOpen: boolean) {
+    this.accordionOpen = isAccordionOpen
+
     const accordionBody = this.findAccordionBody()
     if (accordionBody) {
       accordionBody.open = isAccordionOpen
@@ -90,6 +94,7 @@ export class ListItem {
       ...itemEl.modifier('disabled').class(this.disabled),
       ...itemEl.modifier('selected').class(this.selected),
       ...itemEl.modifier('accordion').class(this.accordion),
+      ...itemEl.modifier('accordion-open').class(this.accordionOpen),
       ...itemEl.modifier('sub-accordion').class(this.subAccordionItem),
       ...itemEl
         .modifier('clickable')
