@@ -11,10 +11,15 @@ import globalScript from '../../../global'
 })
 export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''
-  @Prop() logLifecycle = false
-  @Prop() logEvents = false
-  @Prop() logRender = false
-  @Prop() logCustom = false
+  @Prop() logLifecycle = true
+  @Prop() logEvents = true
+  @Prop() logRender = true
+  @Prop() logCustom = true
+
+  /**
+   * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+   */
+  @Prop({ reflect: true }) animated = true
 
   connectedCallback() {
     globalScript()
@@ -40,7 +45,7 @@ export class DocApp implements ComponentInterface {
   render() {
     return (
       <Host>
-        <bal-app>
+        <bal-app animated={this.animated}>
           <slot></slot>
         </bal-app>
       </Host>

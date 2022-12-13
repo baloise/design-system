@@ -86,3 +86,11 @@ export const updateBalIcons = (icons: BalIcons): void => {
     }
   }
 }
+
+export const updateBalAnimated = (animated: boolean): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.animated = animated
+  }
+}
