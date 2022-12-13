@@ -243,7 +243,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     const block = BEM.block('accordion')
 
     const expanded = this.state === AccordionState.Expanded || this.state === AccordionState.Expanding
-    const headerPart = expanded ? 'header expanded' : 'header'
+    const buttonPart = expanded ? 'button expanded' : 'button'
     const contentPart = expanded ? 'content expanded' : 'content'
 
     return (
@@ -272,10 +272,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
             }}
           >
             <bal-button
-              id={`${this.componentId}-header`}
+              id={`${this.componentId}-button`}
               aria-controls={`${this.componentId}-content`}
-              part={headerPart}
-              data-testid="bal-accordion-header"
+              part={buttonPart}
+              data-testid="bal-accordion-button"
               expanded={true}
               color={'info'}
               icon={icon}
@@ -286,7 +286,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           </div>
           <div
             id={`${this.componentId}-content`}
-            aria-labelledby={`${this.componentId}-header`}
+            aria-labelledby={`${this.componentId}-button`}
             role="region"
             part={contentPart}
             class={{

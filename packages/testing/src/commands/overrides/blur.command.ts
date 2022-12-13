@@ -1,5 +1,5 @@
+import { selectors } from '../../selectors'
 import {
-  selectors,
   isAccordion,
   isButton,
   isCheckbox,

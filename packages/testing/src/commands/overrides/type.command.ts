@@ -1,4 +1,5 @@
-import { isInput, isNumberInput, isSlider, isTextarea, selectors, wrapCommand, wrapOptions } from '../helpers'
+import { isInput, isNumberInput, isSlider, isTextarea, wrapCommand, wrapOptions } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any, options) => {
   const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))

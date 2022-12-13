@@ -27,10 +27,13 @@ Cypress.Commands.add('page', (url: string) => {
     .then(() => {
       return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false }).wait(100)
     })
+
+  cy.disableAnimation()
 })
 
 Cypress.Commands.add('pageA11y', (url: string) => {
   cy.page(url)
+  cy.disableAnimation()
   cy.injectAxe()
 })
 

@@ -1,5 +1,5 @@
-import { hasClass } from './../helpers'
 import {
+  hasClass,
   isNumberInput,
   isCheckbox,
   isInput,
@@ -7,10 +7,10 @@ import {
   isTag,
   isTextarea,
   isModal,
-  selectors,
   wrapCommand,
   wrapOptions,
 } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, options) => {
   const command = wrapCommand('contains', element, content, $el => originalFn($el, content, wrapOptions(options)))

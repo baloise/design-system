@@ -7,7 +7,7 @@ export * from './selectors'
 /**
  * Helpers
  */
-export { testOnPlatforms, selectors } from './commands/helpers'
+export { testOnPlatforms } from './commands/helpers'
 
 /**
  * Legacy Commands

@@ -1,4 +1,5 @@
-import { isSelect, isTabs, selectors } from '../helpers'
+import { isSelect, isTabs } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any, options) => {
   if (isSelect(element)) {
