@@ -97,7 +97,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  A11Y:
+  Accessibility:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
