@@ -310,4 +310,6 @@ export const BaloiseDesignToken = {
   balSpaceXxxxLarge: '4rem',
   balSpaceTabletXxxxLarge: '6rem',
   balSpaceDesktopXxxxLarge: '8rem',
+  balAnimationTransitionDuration: '300ms',
+  balAnimationTransitionEasing: 'cubic-bezier(0.25, 0.8, 0.5, 1)',
 }
