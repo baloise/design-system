@@ -1,14 +1,56 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element, State } from '@stencil/core'
-import { Props } from '../../../types'
+import {
+  Component,
+  Host,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  Element,
+  State,
+  ComponentInterface,
+  Method,
+} from '@stencil/core'
+import { AccordionState, Props } from '../../../types'
+import {
+  attachComponentToConfig,
+  BalConfigObserver,
+  BalConfigState,
+  detachComponentToConfig,
+} from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { raf, transitionEndAsync } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-list-item',
 })
-export class ListItem {
+export class ListItem implements ComponentInterface, BalConfigObserver, Loggable {
+  static selectors = {
+    accordionHead: '.bal-list__item__trigger > .bal-list__item__accordion-head',
+    accordionBody: '.bal-list__item__trigger > .bal-list__item__accordion-body',
+    accordionBodyWrapper:
+      '.bal-list__item__trigger > .bal-list__item__accordion-body > .bal-list__item__accordion-body__content',
+  }
+
+  private currentRaf: number | undefined
+  private accordionOpen = false
+  private animated = true
+
   @Element() el!: HTMLElement
 
-  @State() accordionOpen = false
+  @State() state: AccordionState = AccordionState.Collapsed
+
+  log!: LogInstance
+
+  @Logger('bal-list-item')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * If `true` the list item can be hovered
@@ -50,55 +92,246 @@ export class ListItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  /**
+   * Emitted when the state of the group is changing
+   */
+  @Event() balGroupStateChanged!: EventEmitter<MouseEvent>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
   connectedCallback() {
-    const accordionHead = this.findAccordionHead()
-    if (accordionHead) {
-      accordionHead.addEventListener('balAccordionChange', (event: CustomEvent<boolean>) =>
-        this.updateState(event.detail),
-      )
+    attachComponentToConfig(this)
+  }
+
+  componentDidLoad() {
+    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
+    if (accordionHeadEl) {
+      accordionHeadEl.addEventListener('balAccordionChange', this.accordionChanged)
+
+      this.accordionOpen = accordionHeadEl.accordionOpen
+      this.updateState(true)
     }
   }
 
   disconnectedCallback() {
-    const accordionHead = this.findAccordionHead()
-    if (accordionHead) {
-      accordionHead.removeEventListener('balAccordionChange', (event: CustomEvent<boolean>) =>
-        this.updateState(event.detail),
-      )
+    detachComponentToConfig(this)
+
+    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
+    if (accordionHeadEl) {
+      accordionHeadEl.removeEventListener('balAccordionChange', this.accordionChanged)
     }
   }
 
-  findAccordionHead(): any | null {
-    return this.el.querySelector('bal-list-item-accordion-head')
-  }
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
-  findAccordionBody(): any | null {
-    return this.el.querySelector('bal-list-item-accordion-body')
-  }
-
-  updateState(isAccordionOpen: boolean) {
-    this.accordionOpen = isAccordionOpen
-
-    const accordionBody = this.findAccordionBody()
-    if (accordionBody) {
-      accordionBody.open = isAccordionOpen
+  private accordionChanged = (event: CustomEvent<boolean>) => {
+    const { detail } = event
+    if (detail !== this.accordionOpen) {
+      this.accordionOpen = detail
+      this.updateState()
     }
   }
+
+  configChanged = (state: BalConfigState) => {
+    this.animated = state.animated
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Opens the accordion
+   */
+  @Method()
+  async present() {
+    this.accordionOpen = true
+    this.updateHead()
+    this.expandAccordion()
+  }
+
+  /**
+   * Closes the accordion
+   */
+  @Method()
+  async dismiss() {
+    this.accordionOpen = false
+    this.updateHead()
+    this.collapseAccordion()
+  }
+
+  /**
+   * Triggers the accordion
+   */
+  @Method()
+  async toggle() {
+    if (this.accordionOpen) {
+      this.dismiss()
+    } else {
+      this.present()
+    }
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private updateHead = () => {
+    const headEl = this.el.querySelector('bal-list-item-accordion-head')
+    if (headEl) {
+      headEl.accordionOpen = this.accordionOpen
+    }
+  }
+
+  private updateState = (initialUpdate = false) => {
+    if (this.accordionOpen) {
+      this.expandAccordion(initialUpdate)
+    } else {
+      this.collapseAccordion(initialUpdate)
+    }
+  }
+
+  private expandAccordion = (initialUpdate = false) => {
+    const contentEl = this.el.querySelector<HTMLElement>(ListItem.selectors.accordionBody)
+    const contentElWrapper = this.el.querySelector<HTMLElement>(ListItem.selectors.accordionBodyWrapper)
+
+    if (initialUpdate || contentEl === null || contentElWrapper === null) {
+      this.state = AccordionState.Expanded
+      return
+    }
+
+    if (this.state === AccordionState.Expanded) {
+      return
+    }
+
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+    }
+
+    const parentListEl = this.el.closest('bal-list')
+    if (parentListEl && parentListEl.accordionOneLevel) {
+      const items = Array.from(parentListEl.querySelectorAll('bal-list-item')).filter(el => el !== this.el)
+      items.forEach(item => item.dismiss())
+    }
+
+    if (this.shouldAnimate()) {
+      raf(() => {
+        this.state = AccordionState.Expanding
+
+        this.currentRaf = raf(async () => {
+          const contentHeight = contentElWrapper.offsetHeight
+
+          const waitForTransition = transitionEndAsync(contentEl, 2000)
+          contentEl.style.setProperty('max-height', `${contentHeight}px`)
+
+          await waitForTransition
+
+          this.state = AccordionState.Expanded
+          contentEl.style.removeProperty('max-height')
+        })
+      })
+    } else {
+      this.state = AccordionState.Expanded
+    }
+  }
+
+  private collapseAccordion = (initialUpdate = false) => {
+    const contentEl = this.el.querySelector<HTMLElement>(ListItem.selectors.accordionBody)
+
+    if (initialUpdate || contentEl === null) {
+      this.state = AccordionState.Collapsed
+      return
+    }
+
+    if (this.state === AccordionState.Collapsed) {
+      return
+    }
+
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+    }
+
+    if (this.shouldAnimate()) {
+      this.currentRaf = raf(async () => {
+        const contentHeight = contentEl.offsetHeight
+        contentEl.style.setProperty('max-height', `${contentHeight}px`)
+
+        //       /**
+        //        * Calculate nested accordions as well.
+        //        */
+        //       const contentHeight = Array.from(contentWrappers).reduce((acc, el: any) => acc + el.offsetHeight, 0)
+        //       contentEl.style.setProperty('max-height', `${contentHeight}px`)
+
+        raf(async () => {
+          const waitForTransition = transitionEndAsync(contentEl, 2000)
+
+          this.state = AccordionState.Collapsing
+
+          await waitForTransition
+
+          this.state = AccordionState.Collapsed
+          contentEl.style.removeProperty('max-height')
+        })
+      })
+    } else {
+      this.state = AccordionState.Collapsed
+    }
+  }
+
+  private shouldAnimate = () => {
+    if (typeof (window as any) === 'undefined') {
+      return false
+    }
+
+    return this.animated
+  }
+
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
+
+  private onClickTrigger = (event: MouseEvent) => {
+    const accordionBodyEl = this.el.querySelector<any>(ListItem.selectors.accordionBody)
+    if (accordionBodyEl) {
+      if (!accordionBodyEl.contains(event.target)) {
+        this.balNavigate.emit(event)
+      }
+    } else {
+      this.balNavigate.emit(event)
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
-    const itemEl = BEM.block('list').element('item')
-    const triggerEl = itemEl.element('trigger')
+    const item = BEM.block('list').element('item')
+    const trigger = item.element('trigger')
 
     const basicClasses = {
-      ...itemEl.class(),
-      ...itemEl.modifier('disabled').class(this.disabled),
-      ...itemEl.modifier('selected').class(this.selected),
-      ...itemEl.modifier('accordion').class(this.accordion),
-      ...itemEl.modifier('accordion-open').class(this.accordionOpen),
-      ...itemEl.modifier('sub-accordion').class(this.subAccordionItem),
-      ...itemEl
-        .modifier('clickable')
-        .class(!this.disabled && (this.clickable || this.href.length > 0 || this.accordion)),
+      ...item.class(),
+      ...item.modifier('disabled').class(this.disabled),
+      ...item.modifier('selected').class(this.selected),
+      ...item.modifier('animated').class(this.animated),
+      ...item.modifier('accordion').class(this.accordion),
+      ...item.modifier('sub-accordion').class(this.subAccordionItem),
+      ...item.modifier('active').class(this.accordionOpen),
+      ...item.modifier('expanding').class(this.state === AccordionState.Expanding),
+      ...item.modifier('expanded').class(this.state === AccordionState.Expanded),
+      ...item.modifier('collapsing').class(this.state === AccordionState.Collapsing),
+      ...item.modifier('collapsed').class(this.state === AccordionState.Collapsed),
+      ...item.modifier('clickable').class(!this.disabled && (this.clickable || this.href.length > 0 || this.accordion)),
     }
 
     if (this.href.length > 0 && !this.disabled) {
@@ -110,12 +343,10 @@ export class ListItem {
           }}
         >
           <a
-            class={{ ...triggerEl.class() }}
+            class={{ ...trigger.class() }}
             href={this.href}
             target={this.target}
-            onClick={(event: MouseEvent) => {
-              this.balNavigate.emit(event)
-            }}
+            onClick={(event: MouseEvent) => this.onClickTrigger(event)}
           >
             <slot></slot>
           </a>
@@ -132,11 +363,9 @@ export class ListItem {
           }}
         >
           <button
-            class={{ ...triggerEl.class() }}
+            class={{ ...trigger.class() }}
             disabled={this.disabled}
-            onClick={(event: MouseEvent) => {
-              this.balNavigate.emit(event)
-            }}
+            onClick={(event: MouseEvent) => this.onClickTrigger(event)}
           >
             <slot></slot>
           </button>
@@ -151,11 +380,9 @@ export class ListItem {
           class={{
             ...basicClasses,
           }}
-          onClick={(event: MouseEvent) => {
-            this.balNavigate.emit(event)
-          }}
+          onClick={(event: MouseEvent) => this.onClickTrigger(event)}
         >
-          <div class={{ ...triggerEl.class() }}>
+          <div class={{ ...trigger.class() }}>
             <slot></slot>
           </div>
         </Host>
@@ -169,7 +396,7 @@ export class ListItem {
           ...basicClasses,
         }}
       >
-        <div class={{ ...triggerEl.class() }}>
+        <div class={{ ...trigger.class() }}>
           <slot></slot>
         </div>
       </Host>

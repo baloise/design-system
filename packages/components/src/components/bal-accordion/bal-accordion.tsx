@@ -12,18 +12,11 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { Events } from '../../types'
+import { AccordionState, Events } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
-
-const enum AccordionState {
-  Collapsed = 1 << 0,
-  Collapsing = 1 << 1,
-  Expanded = 1 << 2,
-  Expanding = 1 << 3,
-}
 
 @Component({
   tag: 'bal-accordion',
@@ -48,6 +41,11 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   createLogger(log: LogInstance) {
     this.log = log
   }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * If `true` the accordion is open.
@@ -99,6 +97,11 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
   @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
@@ -110,9 +113,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     detachComponentToConfig(this)
   }
 
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
   configChanged(state: BalConfigState): void {
     this.animated = state.animated
   }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Opens the accordion
@@ -141,6 +154,11 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
       this.expandAccordion()
     }
   }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private updateState = (initialUpdate = false) => {
     if (this.value) {
@@ -230,12 +248,13 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
       return false
     }
 
-    if (!this.animated) {
-      return false
-    }
-
-    return true
+    return this.animated
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const label = this.value ? this.closeLabel : this.openLabel

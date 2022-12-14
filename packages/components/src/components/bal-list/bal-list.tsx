@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Watch } from '@stencil/core'
+import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
@@ -9,6 +9,8 @@ import { BEM } from '../../utils/bem'
   },
 })
 export class List {
+  @Element() el!: HTMLElement
+
   /**
    * If `true` the list item can not be hovered
    */
@@ -21,8 +23,8 @@ export class List {
   @Prop() inverted = undefined
   @Watch('inverted')
   invertedHandler() {
-    console.warn('[DEPRECATED] - Please use the property background="dark" instead')
     if (this.inverted !== undefined) {
+      console.warn('[DEPRECATED] - Please use the property background="dark" instead of inverted')
       if (this.inverted === true) {
         this.background = 'dark'
       } else {
@@ -42,6 +44,18 @@ export class List {
   @Prop() border = false
 
   /**
+   * If `true` only one of the layers can be open and the others close automatically
+   */
+  @Prop() accordionOneLevel = false
+  @Watch('accordionOneLevel')
+  accordionOneLevelHandler(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      const allNestedLists = Array.from(this.el.querySelectorAll('bal-list'))
+      allNestedLists.forEach(list => (list.accordionOneLevel = newValue))
+    }
+  }
+
+  /**
    * Defines the min height of the list item
    */
   @Prop() size: Props.BalListSize = ''
@@ -53,7 +67,9 @@ export class List {
 
   componentWillLoad() {
     this.invertedHandler()
+    this.accordionOneLevelHandler(this.accordionOneLevel, false)
   }
+
   render() {
     const block = BEM.block('list')
 

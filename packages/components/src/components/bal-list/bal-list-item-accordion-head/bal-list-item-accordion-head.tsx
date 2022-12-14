@@ -1,48 +1,63 @@
-import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch } from '@stencil/core'
+import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch, ComponentInterface } from '@stencil/core'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-list-item-accordion-head',
   scoped: false,
   shadow: false,
 })
-export class ListItemAccordionHead {
+export class ListItemAccordionHead implements ComponentInterface, Loggable {
   @Element() el!: HTMLElement
+
+  log!: LogInstance
+
+  @Logger('bal-list-item-accordion-head')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * If `true` the list accordion is open
    */
   @Prop({ mutable: true }) accordionOpen = false
 
+  @Watch('accordionOpen')
+  accordionOpenHandler(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      this.balAccordionChange.emit(this.accordionOpen)
+    }
+  }
+
   /**
    * Icon name string with value 'plus' on default
    */
   @Prop() icon = 'plus'
-
-  @Watch('accordionOpen')
-  accordionOpenHandler() {
-    this.balAccordionChange.emit(this.accordionOpen)
-  }
 
   /**
    * Emitted when the accordion state is changed
    */
   @Event() balAccordionChange!: EventEmitter<boolean>
 
-  componentWillLoad() {
-    this.balAccordionChange.emit(this.accordionOpen)
-  }
-
-  private getClosestListItem(): HTMLBalListItemElement | null {
-    return this.el.closest('bal-list-item')
-  }
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
 
   private onClick = () => {
-    const listItem = this.getClosestListItem()
-    if (listItem) {
+    if (this.el.closest('bal-list-item')) {
       this.accordionOpen = !this.accordionOpen
-      this.balAccordionChange.emit(this.accordionOpen)
     }
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     return (
@@ -55,6 +70,7 @@ export class ListItemAccordionHead {
         onClick={this.onClick}
       >
         <slot></slot>
+        {this.accordionOpen ? 'Open' : 'Closed'}
         <bal-list-item-icon right>
           <bal-icon
             class="bal-list__item__accordion-head__icon"

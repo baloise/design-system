@@ -15,3 +15,10 @@ export interface I18n<T> {
   sv: T
   fi: T
 }
+
+export const enum AccordionState {
+  Collapsed = 1 << 0,
+  Collapsing = 1 << 1,
+  Expanded = 1 << 2,
+  Expanding = 1 << 3,
+}

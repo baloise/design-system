@@ -12,9 +12,9 @@ describe('bal-accordion', () => {
   })
 
   it('should check if the accordion contains label', () => {
-    cy.getByTestId('accordion').find(selectors.accordion.header).contains('Show more')
+    cy.getByTestId('accordion').find(selectors.accordion.button).contains('Show more')
     cy.getByTestId('accordion').click()
-    cy.getByTestId('accordion').find(selectors.accordion.header).contains('Show less')
+    cy.getByTestId('accordion').find(selectors.accordion.button).contains('Show less')
     cy.getByTestId('accordion').find(selectors.accordion.content).contains('Lorem')
   })
 
