@@ -49,7 +49,7 @@ jobs:
             gitopscli deploy \
             --git-provider-url https://github.com \
             --username "baopso" \
-            --password ${{ secrets.BAOPSO_GITOPSCLI_TOKEN }} \
+            --password "${{ secrets.BAOPSO_GITOPSCLI_TOKEN }}" \
             --git-user "baopso" \
             --git-email "Group.CH_Open-Source@baloise.ch" \
             --organisation "baloise-incubator" \
