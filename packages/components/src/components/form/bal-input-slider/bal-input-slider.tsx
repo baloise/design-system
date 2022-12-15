@@ -189,7 +189,7 @@ export class InputSlider {
   }
 
   private cssWidth(isUpper = false): string {
-    const a: number = this.value === '' ? 0 : (this.value as number)
+    const a: number = this.value === '' ? 0 : Math.round(Number(this.value) / this.step) * this.step
     const b: number = (100 / this.max) * a
 
     if (!isUpper) {
@@ -307,7 +307,7 @@ export class InputSlider {
             step={this.step}
             min={this.min}
             max={this.max}
-            value={this.value}
+            value={this.value !== '' && this.value !== undefined ? this.value : 0}
             onInput={this.onInput}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
