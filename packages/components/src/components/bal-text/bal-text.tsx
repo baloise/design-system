@@ -65,7 +65,7 @@ export class Text {
         <Text
           class={{
             ...block.element('text').class(),
-            [`has-text-${color}`]: true,
+            ...block.element('text').modifier(`has-text-${color}`).class(),
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-block': this.size === 'block',
