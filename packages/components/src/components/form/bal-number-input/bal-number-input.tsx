@@ -242,7 +242,12 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
     if (input) {
-      const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
+      let parsedValue = 0
+      if (this.region === 'CH') {
+        parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
+      } else {
+        parsedValue = parseFloat(input.value.replace(',', '.'))
+      }
       if (!isNaN(parsedValue)) {
         this.inputValue = parsedValue
       } else {
@@ -312,12 +317,16 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   render() {
-    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
       label.id = labelId
       label.htmlFor = this.inputId
+    }
+
+    if (this.region !== 'CH' && this.hasFocus) {
+      value = value.replace('.', ',')
     }
 
     const block = BEM.block('number-input')
