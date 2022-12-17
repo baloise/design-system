@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const compression = require('compression')
 const helmet = require('helmet')
+const path = require('path')
 
 app.use(cors())
 app.use(compression())
@@ -15,6 +16,7 @@ app.get('/api*', (req, res) => {
   console.log('__dirname', __dirname)
   return handler(req, res, {
     unlisted: ['index.js', 'ping.js'],
+    public: path.join(__dirname, '..'),
   })
 })
 

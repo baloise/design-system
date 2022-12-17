@@ -74,7 +74,6 @@ dist/
 dist-transpiled/
 temp/
 generated/
-public/
 storybook/
 storybook-static/
 
@@ -104,6 +103,7 @@ packages/**/LICENSE
 packages/components/loader/
 packages/components/lib/
 packages/components/www/
+packages/components/public/
 packages/components/.storybook/vue/components.ts
 packages/components/.storybook/vue/components
 packages/components/src/assets/fonts
