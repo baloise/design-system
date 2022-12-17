@@ -3,6 +3,6 @@ const serve = require('serve-handler')
 
 export default function handler(request, response) {
   return serve(request, response, {
-    public: './static',
+    public: './api/static',
   })
 }
