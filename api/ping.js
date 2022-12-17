@@ -1,3 +1,3 @@
 export default function handler(request, response) {
-  return response.end(`Hello World!`)
+  return response.end(`pong`)
 }
