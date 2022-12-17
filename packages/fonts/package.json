@@ -28,9 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "serve": "npm run serve:copy && npm run serve:run",
-    "serve:run": "serve ./public",
-    "serve:copy": "copyfiles --flat ./lib/* public/assets/fonts",
+    "static": "copyfiles --flat ./lib/* ../../api/public/assets/fonts",
     "build": "npm run build:clean && npm run build:archive",
     "build:clean": "rimraf ./dist",
     "build:archive": "node ../../.build/archive-font.js",
