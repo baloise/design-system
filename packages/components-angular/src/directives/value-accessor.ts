@@ -19,10 +19,13 @@ export class ValueAccessor implements ControlValueAccessor {
     this.el.nativeElement.value = this.lastValue = value == null ? '' : value
   }
 
-  handleChangeEvent(value: any) {
-    if (value !== this.lastValue) {
-      this.lastValue = value
-      this.onChange(value)
+  handleChangeEvent(event: CustomEvent<any>) {
+    if (this.el.nativeElement === event.target) {
+      const value = event.detail
+      if (value !== this.lastValue) {
+        this.lastValue = value
+        this.onChange(value)
+      }
     }
   }
 
