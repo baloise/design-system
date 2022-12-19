@@ -21,19 +21,22 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-input-slider value="0"></bal-input-slider>
+          <bal-input-slider value="20" step="20" max="100"></bal-input-slider>
+        </section>
+        <section data-testid="with-ticks">
+          <bal-input-slider value="20" step="20" max="100" has-ticks></bal-input-slider>
         </section>
         <section data-testid="disabled">
-          <bal-input-slider disabled value="25"></bal-input-slider>
+          <bal-input-slider disabled value="30" step="20" max="100" has-ticks></bal-input-slider>
         </section>
         <section data-testid="invalid">
-          <bal-input-slider invalid value="50"></bal-input-slider>
+          <bal-input-slider invalid value="45" step="30" max="120" has-ticks></bal-input-slider>
         </section>
         <section data-testid="field">
           <bal-field>
             <bal-field-label>Label</bal-field-label>
             <bal-field-control>
-              <bal-input-slider value="75"></bal-input-slider>
+              <bal-input-slider value="9" step="20" max="100" has-ticks></bal-input-slider>
             </bal-field-control>
             <bal-field-message>Message</bal-field-message>
           </bal-field>
