@@ -42,7 +42,7 @@ import {
 } from '../../../utils/form-input'
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
-import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number'
+import { getDecimalSeparator, getThousandSeparator, parseFloatString, formatFloatString } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
 
@@ -242,12 +242,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
     if (input) {
-      let parsedValue = 0
-      if (this.region === 'CH') {
-        parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
-      } else {
-        parsedValue = parseFloat(input.value.replace(',', '.'))
-      }
+      const parsedValue = parseFloat(parseFloat(parseFloatString(input.value)).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
         this.inputValue = parsedValue
       } else {
@@ -317,16 +312,12 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   render() {
-    let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    const value = this.hasFocus ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
       label.id = labelId
       label.htmlFor = this.inputId
-    }
-
-    if (this.region !== 'CH' && this.hasFocus) {
-      value = value.replace('.', ',')
     }
 
     const block = BEM.block('number-input')
