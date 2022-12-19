@@ -32,3 +32,7 @@ export const parseLocaleNumber = (stringNumber: string): number => {
       .replace(new RegExp('\\' + decimalSeparator), '.'),
   )
 }
+
+export const getNegativeSymbol = (): string => {
+  return '-'
+}
