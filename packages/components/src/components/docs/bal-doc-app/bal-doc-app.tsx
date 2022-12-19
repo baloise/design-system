@@ -11,10 +11,10 @@ import globalScript from '../../../global'
 })
 export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''
-  @Prop() logLifecycle = false
-  @Prop() logEvents = false
-  @Prop() logRender = false
-  @Prop() logCustom = false
+  @Prop() logLifecycle = true
+  @Prop() logEvents = true
+  @Prop() logRender = true
+  @Prop() logCustom = true
 
   connectedCallback() {
     globalScript()

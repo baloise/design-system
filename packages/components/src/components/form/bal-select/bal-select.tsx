@@ -698,12 +698,17 @@ export class Select implements ComponentInterface, Loggable {
   private syncRawValue(isHuman = true) {
     let newValue: string[] = []
 
-    if (!isNil(this.value)) {
+    if (!isNil(this.value) && this.value !== '') {
       if (isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
         if (this.value.split('').includes(',')) {
-          newValue = [...this.value.split(',').map(v => v.trim())]
+          newValue = [
+            ...this.value
+              .split(',')
+              .filter(v => v)
+              .map(v => v.trim()),
+          ]
         } else {
           newValue = [this.value]
         }
