@@ -829,8 +829,8 @@ export class Select implements ComponentInterface, Loggable {
     event.stopPropagation()
   }
 
-  private handleInputBlur = (event: FocusEvent) => {
-    preventDefault(event)
+  private handleInputBlur = (_event: FocusEvent) => {
+    // preventDefault(event)
     this.validateAfterBlur(isHuman)
     this.hasFocus = false
   }
