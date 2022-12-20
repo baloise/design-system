@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/baloise-incubator/design-system/compare/v12.0.0...v12.1.0) (2022-12-20)
+
+
+### Features
+
+* add static file server for fonts ([5779d08](https://github.com/baloise-incubator/design-system/commit/5779d08e410ede63fedd33d1cb551c5c2060b819))
+* add static file server for fonts ([96b36a0](https://github.com/baloise-incubator/design-system/commit/96b36a02dedfc34b6ef2deda65a0e5333dfce494))
+* add static file server for fonts ([4bfc7db](https://github.com/baloise-incubator/design-system/commit/4bfc7db3d27cc0a7a40fcd7d3be988f5de1dee81))
+* add static file server for fonts ([40eb3ef](https://github.com/baloise-incubator/design-system/commit/40eb3ef0003da73f2215055539dfb938fbc3aaea))
+* add static file server for fonts ([539f2cf](https://github.com/baloise-incubator/design-system/commit/539f2cf614633b9d5ecd551a11df3986d3b71214))
+* add static file server for fonts ([6a141ed](https://github.com/baloise-incubator/design-system/commit/6a141ed820af9cc54340d93f5ebe805350b44154))
+* add static file server for fonts ([d1bfa70](https://github.com/baloise-incubator/design-system/commit/d1bfa70040eb07f818a47ee273c9db6dd36bc52b))
+* add static file server for fonts ([e72bd26](https://github.com/baloise-incubator/design-system/commit/e72bd26ff4f1078f1435e6d69bd785920623bdde))
+* add static file server for fonts ([67008b1](https://github.com/baloise-incubator/design-system/commit/67008b1a0dd1d4b6794bae454630de9a677d2593))
+* add static file server for fonts ([f840ab1](https://github.com/baloise-incubator/design-system/commit/f840ab17e2a15b644cc073a6e03455797b996119))
+* add static file server for fonts ([1745d43](https://github.com/baloise-incubator/design-system/commit/1745d43a2f2bb8aa2909d9612e8d77bb52b3e880))
+* add static file server for fonts ([326743c](https://github.com/baloise-incubator/design-system/commit/326743c7a7d3be74536ca261f861494e961726cc))
+* **icons:** add location-target icon ([41eb766](https://github.com/baloise-incubator/design-system/commit/41eb7665e0acd1135b9eb5b78c46672789a78dae))
+
+
+### Bug Fixes
+
+* **angular:** only listen to host balChanges ([ecd3e2a](https://github.com/baloise-incubator/design-system/commit/ecd3e2aa7f56eef27ef6472800b4ad2d3a6f35cf))
+* **angular:** only listen to host balChanges ([b444de8](https://github.com/baloise-incubator/design-system/commit/b444de84422fd635209fc79f67b536051cea6fee))
+* **bal-input-slider:** round value for line drawing ([693f5a4](https://github.com/baloise-incubator/design-system/commit/693f5a41e38ed82da283f76244a30ffafa9e4078))
+* **bal-number-input:** allow decimal point for de, be and lu ([ae9cf13](https://github.com/baloise-incubator/design-system/commit/ae9cf1384e54ad82547f0606df94162e7f6918f8))
+* **bal-number-input:** allow negative numbers ([fa100bb](https://github.com/baloise-incubator/design-system/commit/fa100bb853a17746127a9e56587e9756ae9d52ce))
+* **datepicker:** next mont calculation. Closes [#995](https://github.com/baloise-incubator/design-system/issues/995) ([40ddca3](https://github.com/baloise-incubator/design-system/commit/40ddca376c62e043286ce97c5c86cbc549fcbbd1))
+* fixes [#952](https://github.com/baloise-incubator/design-system/issues/952) bal-card-title with bal-tag in bal-card aligned ([2894f00](https://github.com/baloise-incubator/design-system/commit/2894f00137ca0e6b5406941a01e1a1848a339243))
+* **navbar:** adjust min padding for mobile ([28e429d](https://github.com/baloise-incubator/design-system/commit/28e429ded7fa7f06ca7d1e1807240cbfb86f9efd))
+* **navbar:** adjust position of content ([4c9a880](https://github.com/baloise-incubator/design-system/commit/4c9a8804788984de0c5f3432a0930575c332834d))
+* **select:** if empty string value set empty array for the rawValue ([595e110](https://github.com/baloise-incubator/design-system/commit/595e11002ae9d8b3a28d50c11fac92a6e33206ce))
+* **select:** improve hover style ([4ce3676](https://github.com/baloise-incubator/design-system/commit/4ce3676dc0c4edbef20608bc4dae72a170ab1e99))
+
+
+### Performance Improvements
+
+* **popover:** reduce rendering by using componentWillLoad ([a99648f](https://github.com/baloise-incubator/design-system/commit/a99648fcc35f0683785266f87c6d2b66ba6950b9))
+
+## 11.0.18 (2022-12-05)
+
+
+
 ## [12.0.0](https://github.com/baloise-incubator/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
 
 Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-system.vercel.app/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
@@ -530,4 +573,3 @@ Follow the migration guide [Migration from 10.x to 11.x](https://baloise-design.
 - Rebranded components
 - New breakpoint high-definition
 - bal-input pattern
-
