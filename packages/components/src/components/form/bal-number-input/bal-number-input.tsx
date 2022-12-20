@@ -314,7 +314,9 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     if (suffix !== '') {
       suffix = ` ${suffix}`
     }
-    return `[-0-9${getThousandSeparator()}${this.decimal > 0 ? getDecimalSeparator() : ''}${suffix}]*`
+    return `[${getNegativeSymbol()}0-9${getThousandSeparator()}${
+      this.decimal > 0 ? getDecimalSeparator() : ''
+    }${suffix}]*`
   }
 
   render() {
