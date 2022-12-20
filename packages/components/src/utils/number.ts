@@ -36,3 +36,11 @@ export const parseLocaleNumber = (stringNumber: string): number => {
 export const getNegativeSymbol = (): string => {
   return '-'
 }
+
+export const parseFloatString = (value: string): string => {
+  return value.replace(getDecimalSeparator(), '.')
+}
+
+export const formatFloatString = (value: string): string => {
+  return value.replace('.', getDecimalSeparator())
+}
