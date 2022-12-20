@@ -8,20 +8,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add static file server for fonts ([5779d08](https://github.com/baloise-incubator/design-system/commit/5779d08e410ede63fedd33d1cb551c5c2060b819))
-* add static file server for fonts ([96b36a0](https://github.com/baloise-incubator/design-system/commit/96b36a02dedfc34b6ef2deda65a0e5333dfce494))
-* add static file server for fonts ([4bfc7db](https://github.com/baloise-incubator/design-system/commit/4bfc7db3d27cc0a7a40fcd7d3be988f5de1dee81))
 * add static file server for fonts ([40eb3ef](https://github.com/baloise-incubator/design-system/commit/40eb3ef0003da73f2215055539dfb938fbc3aaea))
-* add static file server for fonts ([539f2cf](https://github.com/baloise-incubator/design-system/commit/539f2cf614633b9d5ecd551a11df3986d3b71214))
-* add static file server for fonts ([6a141ed](https://github.com/baloise-incubator/design-system/commit/6a141ed820af9cc54340d93f5ebe805350b44154))
-* add static file server for fonts ([d1bfa70](https://github.com/baloise-incubator/design-system/commit/d1bfa70040eb07f818a47ee273c9db6dd36bc52b))
-* add static file server for fonts ([e72bd26](https://github.com/baloise-incubator/design-system/commit/e72bd26ff4f1078f1435e6d69bd785920623bdde))
-* add static file server for fonts ([67008b1](https://github.com/baloise-incubator/design-system/commit/67008b1a0dd1d4b6794bae454630de9a677d2593))
-* add static file server for fonts ([f840ab1](https://github.com/baloise-incubator/design-system/commit/f840ab17e2a15b644cc073a6e03455797b996119))
-* add static file server for fonts ([1745d43](https://github.com/baloise-incubator/design-system/commit/1745d43a2f2bb8aa2909d9612e8d77bb52b3e880))
-* add static file server for fonts ([326743c](https://github.com/baloise-incubator/design-system/commit/326743c7a7d3be74536ca261f861494e961726cc))
 * **icons:** add location-target icon ([41eb766](https://github.com/baloise-incubator/design-system/commit/41eb7665e0acd1135b9eb5b78c46672789a78dae))
-
 
 ### Bug Fixes
 
@@ -41,9 +29,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Performance Improvements
 
 * **popover:** reduce rendering by using componentWillLoad ([a99648f](https://github.com/baloise-incubator/design-system/commit/a99648fcc35f0683785266f87c6d2b66ba6950b9))
-
-## 11.0.18 (2022-12-05)
-
 
 
 ## [12.0.0](https://github.com/baloise-incubator/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
