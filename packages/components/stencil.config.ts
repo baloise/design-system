@@ -65,7 +65,7 @@ export const config: Config = {
         {
           src: '../../components-table/css/design-system-table.css',
           dest: 'assets/css/design-system-table.css',
-          warn: true,
+          warn: false,
         },
         {
           src: '../../fonts/dist/fonts.zip',
