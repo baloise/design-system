@@ -36,7 +36,7 @@
   "scripts": {
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
     "@baloise/design-system-components": "12.1.0",

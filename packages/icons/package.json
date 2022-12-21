@@ -33,7 +33,7 @@
     "build:bundle": "rollup --config rollup.config.js",
     "build:archive": "node ../../.build/archive-icons.js",
     "build:copy": "copyfiles --flat ./src/icons.json ./dist && rimraf ./src/icons.json",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

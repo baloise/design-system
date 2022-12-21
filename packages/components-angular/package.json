@@ -32,7 +32,7 @@
     "build:compile": "ng-packagr -p ng-package.json -c ./tsconfig.json",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
     "@baloise/design-system-components": "12.1.0",

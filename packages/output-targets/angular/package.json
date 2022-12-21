@@ -39,7 +39,8 @@
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
     "test": "jest",
-    "test.watch": "jest --watch"
+    "test.watch": "jest --watch",
+    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "peerDependencies": {
     "@angular/common": ">=12.2.16",

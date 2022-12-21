@@ -32,7 +32,7 @@
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ../../.build/vue-web-types.js",
     "build:vetur": "node ../.././.build/vue-vetur.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
