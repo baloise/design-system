@@ -66,8 +66,7 @@
     "==================== DOCUMENTATION =================": "================================",
     "docs": "build-storybook -o ../../storybook  --quiet",
     "==================== INSTALLATION / SETUP ==========": "================================",
-    "prepublish": "node ../../.build/version.js",
-    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "prepublish": "node ../../.build/version.js"
   },
   "dependencies": {
     "@baloise/design-system-css": "12.1.0",

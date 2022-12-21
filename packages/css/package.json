@@ -35,8 +35,7 @@
     "build:bundle": "rollup --config rollup.config.js",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
-    "serve:http": "http-server --cors -c-1",
-    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "serve:http": "http-server --cors -c-1"
   },
   "main": "scss/baloise-design-system.sass",
   "style": "css/baloise-design-system.css",

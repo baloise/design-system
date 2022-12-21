@@ -37,8 +37,7 @@
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
     "test": "jest",
-    "test.watch": "jest --watch",
-    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "test.watch": "jest --watch"
   },
   "peerDependencies": {
     "@stencil/core": "^2.9.0",

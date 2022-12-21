@@ -30,8 +30,7 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:archive",
     "build:clean": "rimraf ./dist",
-    "build:archive": "node ../../.build/archive-font.js",
-    "registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "build:archive": "node ../../.build/archive-font.js"
   },
   "main": "./css/fonts.css",
   "files": [
