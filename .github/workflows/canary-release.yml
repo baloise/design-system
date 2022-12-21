@@ -19,11 +19,8 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Lerna globally
-        run: npm install lerna --global
-
       - name: Update npm registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Git Identity
         run: |
@@ -50,11 +47,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update Lock files
-        run: 'npm run update:lock'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - uses: EndBug/add-and-commit@v9
         with:
