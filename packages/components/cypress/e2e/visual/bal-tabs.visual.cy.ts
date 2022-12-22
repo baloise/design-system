@@ -1,5 +1,5 @@
 describe('bal-tabs', () => {
-  before(() => cy.page('/components/bal-tabs/test/bal-tabs.visual.html'))
+  beforeEach(() => cy.page('/components/bal-tabs/test/bal-tabs.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop').wait(400)

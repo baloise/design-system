@@ -4,7 +4,7 @@ describe('bal-popover', () => {
 
   function testPopover(platform: 'desktop' | 'mobile') {
     describe(platform, () => {
-      before(() => cy.page('/components/bal-popover/test/bal-popover.visual.html').platform(platform))
+      beforeEach(() => cy.page('/components/bal-popover/test/bal-popover.visual.html').platform(platform))
 
       it('basic component', () => {
         cy.getByTestId('popover-trigger').click()

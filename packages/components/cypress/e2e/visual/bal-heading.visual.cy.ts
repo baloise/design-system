@@ -1,5 +1,5 @@
 describe('bal-heading', () => {
-  before(() => cy.page('/components/bal-heading/test/bal-heading.visual.html'))
+  beforeEach(() => cy.page('/components/bal-heading/test/bal-heading.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

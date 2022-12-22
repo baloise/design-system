@@ -1,5 +1,5 @@
 describe('bal-accordion', () => {
-  before(() => cy.page('/components/bal-accordion/test/bal-accordion.visual.html'))
+  beforeEach(() => cy.page('/components/bal-accordion/test/bal-accordion.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

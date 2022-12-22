@@ -65,7 +65,7 @@ describe('bal-navigation', () => {
 
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
-      before(() => cy.page('/components/bal-navigation/test/bal-navigation.visual.html'))
+      beforeEach(() => cy.page('/components/bal-navigation/test/bal-navigation.visual.html'))
 
       beforeEach(() => {
         cy.platform(platform)
