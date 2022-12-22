@@ -13,19 +13,6 @@ import { Meta } from '@storybook/addon-docs'
 
 The Baloise Design System is divided into multiple NPM packages. Development for all packages are happening inside one mono repository.
 
-## Packages
-
-| Library                                                                                     | Status                                                                         | Description                                                             |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| [Components](https://baloise-design.vercel.app/components/)                                 | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.              |
-| [Components Angular](https://baloise-design.vercel.app/components/getting-started/angular/) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
-| [Components Vue](https://baloise-design.vercel.app/components/getting-started/vue/)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                    |
-| [Components React](https://baloise-design.vercel.app/components/getting-started/react/)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)   | React component proxies based on the the core package.                  |
-| [Components Table](https://baloise-design.vercel.app/components/components/bal-table.html)  | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)   | Integration library for AG-Grid with styles and renderer functions      |
-| [Icons](https://baloise-design.vercel.app/design/icons.html#all-icons)                      | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                         |
-| [Fonts](https://baloise-design.vercel.app/design/typography.html)                           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                          |
-| [Testing](https://baloise-design.vercel.app/components/tooling/testing.html)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overridden commands for each component. |
-
 ## Architecture
 
 Have a look at the [architecture](/about-us/architecture.html).
@@ -40,7 +27,7 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 
 - `release.yml`
 
-  - The release action gets executed after a merge to the master branch, so after a merged pull-request. It builds the packages, determines the new version out of the commit messages and releases the packages to the npm registry.
+  - This action for [Changesets](https://github.com/changesets/action) creates a pull request with all of the package versions updated and changelogs updated and when there are new changesets on your configured baseBranch, the PR will be updated. When you're ready, you can merge the pull request and you can either publish the packages to npm manually or setup the action to do it for you.
 
 - `documentation.yml`
 
@@ -51,12 +38,14 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 ```bash
 .
 ├── .build                # additional build scripts
+├── .changeset            # release and publish information
 ├── .github               # github related configurations and templates
 │  ├── ISSUE_TEMPLATE     # templates for the github issues like feature request
 │  └── .workflows         # github action
 │
 ├── .husky                # git hook to lint commit messages
 ├── packages              # published npm packages
+├── public                # content of our public file server
 ├── resources             # static resources for the documentation
 ├── .editorconfig         # ensures coding styles across the multiple IDEs
 ├── .eslintignore         # files to ignore during linting
@@ -65,8 +54,11 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 ├── .prettierignore       # files to ignore during formatting
 ├── .prettierrc           # config of our format tool
 ├── commitlint.config.js  # config of our commit message linter
+├── cspell.json           # language check for english
 ├── Dockerfile            # config for the documentation
-├── lerna.json            # config of the mono-repo
+├── registry              # bash script to replace the baloise registry with npm
+├── turbo.json            # config of the mono-repo
+├── vercel.json           # deploy config for the static file server
 ├── rollup.base.js        # base config of the module bundler
 └── tsconfig.base.json    # base config of typescript
 ```
@@ -79,6 +71,8 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 .
 ├── .build      # additional build scripts
 ├── .storybook  # storybook configurations
+├── config      # stencil configurations
+├── cypress     # e2e test files
 ├── src
 │  ├── assets   # generated assets folder for the stencil components
 │  ├── components
@@ -93,18 +87,17 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  │        │  ├── bal-<component>.templates.ts # HTML templates snippets <optional>
 │  │        │  └── testing.md                   # generated file with the testing api
 │  │        │
-│  │        ├── test                        # documentation folder with the stories
-│  │        │  ├── bal-<component>.e2e.ts   # E2E test file
-│  │        │  └── bal-<component>.spec.ts  # Unit test file
+│  │        ├── test                            # test pages for cypress
+│  │        │  ├── bal-<component>.cy.html      # E2E test file
+│  │        │  └── bal-<component>.visual.html  # Visual test file
 │  │        │
 │  │        ├── bal-<component>.sass      # Specific component style
 │  │        ├── bal-<component>.vars.sass # Sass variables
 │  │        ├── bal-<component>.tsx       # Component logic
-│  │        ├── index.html                # Examples for the cypress tests: <deprecated> use storybook instead.
 │  │        └── readme.md                 # generated Readme with the components api
 │  │
-│  ├── constants                  # global constants.
-│  ├── helpers                    # global helper functions.
+│  ├── stories                    # documentation files.
+│  ├── utils                      # global utils.
 │  ├── styles                     # global styles which extends the bulma sass files
 │  │  ├── global.sass             # global stylesheet of the Design System
 │  │  └── global.utilities.sass   # exports variables, mixins... (no-styles)

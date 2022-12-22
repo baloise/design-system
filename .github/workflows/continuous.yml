@@ -8,22 +8,29 @@ on:
 jobs:
   Build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
@@ -45,25 +52,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
-
       - name: Update NPM registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
-        run: npm run build:e2e
+        run: npm run build
 
       - name: Install Cypress
-        run: npm run test:cy:install
+        run: npm run cy:install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
@@ -102,25 +111,28 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
-        run: npm run build:e2e
+        run: npm run build
 
       - name: Install Cypress
-        run: npm run test:cy:install
+        run: npm run cy:install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
@@ -160,25 +172,28 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
-        run: npm run build:e2e
+        run: npm run build
 
       - name: Install Cypress
-        run: npm run test:cy:install
+        run: npm run cy:install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
@@ -213,40 +228,3 @@ jobs:
           path: packages/components/cypress/videos
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  OutputTargets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm registry
-        run: npm run update:registry
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Angular build
-        run: npm --prefix packages/output-targets/angular run build
-
-      - name: Angular test
-        run: npm --prefix packages/output-targets/angular run test
-
-      - name: Vue build
-        run: npm --prefix packages/output-targets/vue run build
-
-      - name: Vue test
-        run: npm --prefix packages/output-targets/vue run test
-
-      - name: React build
-        run: npm --prefix packages/output-targets/react run build
-
-      - name: React test
-        run: npm --prefix packages/output-targets/react run test

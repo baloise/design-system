@@ -1,14 +1,13 @@
-const chalk = require('chalk')
 
 const log = {
   title: text => {
     console.log('')
-    console.log(chalk.bold.underline.blue(text))
+    console.log(text)
     return log
   },
 
   error: (message, error) => {
-    console.log('❌ ', chalk.red(message))
+    console.log('❌ ', message)
     if (error) {
       console.error(error)
     }
@@ -16,7 +15,7 @@ const log = {
   },
 
   warn: (message, error) => {
-    console.log('⚠️ ', chalk.yellow(message))
+    console.log('⚠️ ', message)
     if (error) {
       console.error(error)
     }
@@ -24,12 +23,12 @@ const log = {
   },
 
   success: message => {
-    console.log('✅ ', chalk.green(message))
+    console.log('✅ ', message)
     return log
   },
 
   list: message => {
-    console.log(' ❯', chalk.blue(message))
+    console.log(' ❯', message)
     return log
   },
 
