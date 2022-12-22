@@ -1,5 +1,5 @@
 describe('bal-accordion', () => {
-  before(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
+  beforeEach(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
 
   it('should open open and close an accordions', () => {
     cy.getByTestId('accordion').balAccordionIsClosed()

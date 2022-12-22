@@ -1,5 +1,5 @@
 describe('bal-input-stepper', () => {
-  before(() => cy.page('/components/form/bal-input-stepper/test/bal-input-stepper.visual.html'))
+  beforeEach(() => cy.page('/components/form/bal-input-stepper/test/bal-input-stepper.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

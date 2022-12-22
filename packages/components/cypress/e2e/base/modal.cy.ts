@@ -1,5 +1,5 @@
 describe('bal-modal', () => {
-  before(() => cy.page('/components/notice/bal-modal/test/bal-modal.cy.html'))
+  beforeEach(() => cy.page('/components/notice/bal-modal/test/bal-modal.cy.html'))
 
   it('should open and close Modal 1', () => {
     cy.getByTestId('open-modal-button').click()
