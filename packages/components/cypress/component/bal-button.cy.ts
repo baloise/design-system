@@ -1,4 +1,4 @@
-import { BalButton } from '../../.storybook/vue/components'
+import { BalButton } from '../../.storybook/vue/generated/components'
 
 describe('bal-button.cy.ts', () => {
   it('should have a default slot', () => {

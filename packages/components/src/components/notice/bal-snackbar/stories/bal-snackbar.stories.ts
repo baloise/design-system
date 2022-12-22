@@ -1,5 +1,5 @@
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalSnackbar, BalButton } from '../../../../../.storybook/vue/components'
+import { BalSnackbar, BalButton } from '../../../../../.storybook/vue/generated/components'
 import { balSnackbarController } from '../bal-snackbar.controller'
 import docs from './bal-snackbar.docs.mdx'
 

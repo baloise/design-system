@@ -1,4 +1,4 @@
-import { BalTag } from '../../.storybook/vue/components'
+import { BalTag } from '../../.storybook/vue/generated/components'
 
 describe('bal-tag.cy.ts', () => {
   it('should have a default slot', () => {

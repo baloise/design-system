@@ -7,6 +7,7 @@ import { VueGenerator } from './stencil.bindings.vue'
 export const StencilBaseConfig: Config = {
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
+  sourceMap: false,
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
@@ -29,7 +30,7 @@ export const StencilBaseConfig: Config = {
       type: 'docs-json',
       file: './src/stories/assets/data/components.json',
     },
-    VueGenerator('../..', './.storybook/vue/components.ts', []),
+    VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
   bundles: [
     { components: ['bal-accordion'] },

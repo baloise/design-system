@@ -1,6 +1,12 @@
 import docs from './bal-spinner.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalSpinner, BalCard, BalCardContent, BalButton, BalHeading } from '../../../../.storybook/vue/components'
+import {
+  BalSpinner,
+  BalCard,
+  BalCardContent,
+  BalButton,
+  BalHeading,
+} from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalSpinner,

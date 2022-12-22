@@ -1,6 +1,6 @@
 import docs from './bal-close.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalClose } from '../../../../.storybook/vue/components'
+import { BalClose } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Close',
