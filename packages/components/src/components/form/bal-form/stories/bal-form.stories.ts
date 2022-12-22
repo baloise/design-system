@@ -10,7 +10,7 @@ import {
   BalInput,
   BalButtonGroup,
   BalButton,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { ref } from 'vue'
 import { element } from '../../../../../../components-vue/src/helpers'
 import { Components } from '../../../../../src'

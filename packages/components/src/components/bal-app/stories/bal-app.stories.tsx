@@ -13,7 +13,7 @@ import {
   BalNavbarBrand,
   BalText,
   BalIcon,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalApp,

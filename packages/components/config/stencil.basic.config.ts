@@ -30,7 +30,7 @@ export const StencilBaseConfig: Config = {
       type: 'docs-json',
       file: './src/stories/assets/data/components.json',
     },
-    VueGenerator('../..', './.storybook/vue/components.ts', []),
+    VueGenerator('../..', './.storybook/vue/generated/components.ts', []),
   ],
   bundles: [
     { components: ['bal-accordion'] },

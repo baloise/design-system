@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BalSelect, BalSelectOption } from '../../.storybook/vue/components'
+import { BalSelect, BalSelectOption } from '../../.storybook/vue/generated/components'
 </script>
 
 <template>

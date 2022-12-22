@@ -10,7 +10,7 @@ import {
   BalFieldMessage,
   BalFieldLabel,
   BalFieldHint,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../stories/utils/config'
 
 const component = BalComponentStory({

@@ -1,4 +1,4 @@
-import { BalRadio } from '../../.storybook/vue/components'
+import { BalRadio } from '../../.storybook/vue/generated/components'
 import BalRadioTest from './bal-radio.vue'
 
 describe('bal-radio.cy.ts', () => {

@@ -1,6 +1,6 @@
 import docs from './bal-text.docs.mdx'
 import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalText } from '../../../../.storybook/vue/components'
+import { BalText } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalText,
