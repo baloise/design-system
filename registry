@@ -1,0 +1,16 @@
+echo "Lets update the registry"
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/components/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/components-angular/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/components-react/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/components-table/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/components-vue/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/css/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/fonts/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/icons/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/testing/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/tokens/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/output-targets/angular/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/output-targets/react/package-lock.json
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" packages/output-targets/vue/package-lock.json
+echo "Done!"

@@ -28,8 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "build": "rollup --config rollup.config.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
