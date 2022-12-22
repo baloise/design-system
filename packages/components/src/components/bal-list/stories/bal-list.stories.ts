@@ -10,7 +10,7 @@ import {
   BalListItemSubtitle,
   BalListItemAccordionHead,
   BalListItemAccordionBody,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalList,

@@ -1,4 +1,4 @@
-import { BalDatepicker } from '../../.storybook/vue/components'
+import { BalDatepicker } from '../../.storybook/vue/generated/components'
 import { format, now } from '@baloise/web-app-utils'
 
 describe('bal-datepicker.cy.ts', () => {

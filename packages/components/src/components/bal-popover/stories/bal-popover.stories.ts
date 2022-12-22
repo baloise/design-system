@@ -8,7 +8,7 @@ import {
   BalClose,
   BalTabs,
   BalTabItem,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 import { BalComponentStory } from '../../../stories/utils/story'
 
 const component = BalComponentStory({

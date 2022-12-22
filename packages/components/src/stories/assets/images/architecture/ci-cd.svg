@@ -55,7 +55,7 @@
                     <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="200" height="119.811912" rx="5"></rect>
                     <text id="Versioning-Sematic-R" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#003399">
                         <tspan x="48.8769531" y="56">Versioning</tspan>
-                        <tspan x="44.7416992" y="78" font-size="14">Lerna</tspan>
+                        <tspan x="44.7416992" y="78" font-size="14">Changesets</tspan>
                     </text>
                 </g>
             </g>

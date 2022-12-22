@@ -1,6 +1,6 @@
 import docs from './bal-input-stepper.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalInputStepper } from '../../../../../.storybook/vue/components'
+import { BalInputStepper } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Form/Input Stepper',

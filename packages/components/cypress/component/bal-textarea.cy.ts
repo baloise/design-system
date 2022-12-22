@@ -1,4 +1,4 @@
-import { BalTextarea } from '../../.storybook/vue/components'
+import { BalTextarea } from '../../.storybook/vue/generated/components'
 
 describe('bal-textarea.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>

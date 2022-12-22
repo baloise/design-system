@@ -18,7 +18,7 @@ import {
   BalHeading,
   BalCard,
   BalCardContent,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 import { withContent } from '../../../stories/utils'
 
 const component = BalComponentStory({

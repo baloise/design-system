@@ -4,7 +4,6 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
 package-lock.json-e
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -93,50 +92,38 @@ cypress/videos
 # Husky
 .husky/_/
 
-# Design System
-storybook/
-packages/**/CHANGELOG.md
-packages/**/README.md
-packages/**/readme.md
-packages/**/LICENSE
+# Turbo
+.turbo/
 
+# Vercel
+.vercel/
+
+# Design System
 packages/components/loader/
 packages/components/lib/
 packages/components/www/
 packages/components/public/
-packages/components/.storybook/vue/components.ts
-packages/components/.storybook/vue/components
-packages/components/src/assets/fonts
-packages/components/src/components/**/CHANGELOG.md
+packages/components/.storybook/vue/
+packages/components/src/assets/fonts/
+packages/components/src/stories/assets/data/
 packages/components/src/components/**/readme.md
-packages/components/src/stories/assets/components.json
-packages/components/src/stories/assets/components.d.ts
-packages/tokens/src/tokens.ts
 
-packages/components-table/css
-packages/components-vue/src/components.ts
-packages/components-vue/src/proxies
-packages/components-vue/src/components.generated.ts
+packages/components-table/css/
+
+packages/components-vue/src/proxies.ts
+packages/components-vue/src/vue-component-lib/
+
 packages/components-react/src/components.ts
-packages/components-angular/src/directives/proxies.ts
-packages/components-angular/src/directives/proxies-list.ts
-packages/components-angular/src/directives/proxies.module.ts
-packages/testing/cypress/snapshots/actual
-packages/testing/cypress/snapshots/diff
+packages/components-react/src/react-component-lib/
 
+packages/components-angular/src/directives/
+
+packages/tokens/src/tokens.ts
+packages/icons/src/icons.json
+packages/css/css/
+packages/css/assets/fonts/
+
+# Design System Cypress
 packages/components/cypress/snapshots/actual
 packages/components/cypress/snapshots/diff
-
-packages/fonts/docs/fonts.zip
-packages/icons/docs/icons.json
-packages/icons/docs/icons.zip
 packages/components/cypress/videos
-packages/css/css
-packages/css/assets/fonts
-packages/components-vue/src/proxies.ts
-packages/components-vue/src/vue-component-lib
-packages/components/.storybook/vue
-packages/components/cypress/screenshots
-packages/components/src/stories/assets/data
-packages/tokens/.tmp
-.vercel
