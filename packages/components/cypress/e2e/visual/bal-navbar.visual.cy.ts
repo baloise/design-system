@@ -39,6 +39,11 @@ describe('bal-navbar', () => {
       it('basic component', () => {
         cy.platform(platform)
         cy.getByTestId('basic').compareSnapshot(`navbar-basic-${platform}`, 0.0)
+        if (platform !== 'desktop') {
+          cy.getByTestId('basic').find('.bal-navbar__brand__burger').click()
+          cy.compareSnapshot(`navbar-basic-opened-${platform}`, 0.0)
+          cy.getByTestId('basic').find('.bal-navbar__brand__burger').click()
+        }
         cy.getByTestId('simple-light').compareSnapshot(`navbar-simple-light-${platform}`, 0.0)
         cy.getByTestId('container').compareSnapshot(`navbar-container-${platform}`, 0.0)
       })
