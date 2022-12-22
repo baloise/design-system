@@ -10,9 +10,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    dynamicImportShim: true,
     initializeNextTick: true,
-    safari10: false,
     scriptDataOpts: true,
     appendChildSlotFix: true,
     cloneNodeFix: true,
