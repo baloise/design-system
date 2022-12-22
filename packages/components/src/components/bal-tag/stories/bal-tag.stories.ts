@@ -1,6 +1,6 @@
 import docs from './bal-tag.docs.mdx'
 import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalTag } from '../../../../.storybook/vue/components'
+import { BalTag } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalTag,

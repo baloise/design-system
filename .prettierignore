@@ -16,7 +16,7 @@ packages/output-targets/*/README.md
 
 packages/components/loader/
 packages/components/www/
-packages/components/.storybook/vue/components.ts
+packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json

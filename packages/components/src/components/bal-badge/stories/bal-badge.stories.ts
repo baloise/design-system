@@ -1,6 +1,6 @@
 import docs from './bal-badge.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalBadge, BalIcon, BalCard, BalCardContent } from '../../../../.storybook/vue/components'
+import { BalBadge, BalIcon, BalCard, BalCardContent } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Badge',

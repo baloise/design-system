@@ -7,7 +7,7 @@ import {
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { ref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)

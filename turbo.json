@@ -6,20 +6,14 @@
       "outputs": [
         "dist/**",
         ".tmp/**",
-        "scss/generated/**",
-        "www/**",
+        "**/generated/**",
+        "**/assets/data/**",
+        "**/components/**/readme.md",
+        "css/baloise-design-system.css",
+        "css/design-system-table.css",
         "loader/**",
         "public/**",
-        "generated/**",
-        "storybook/**",
-        "contributors.md",
-        "components.d.ts",
-        "src/proxies.ts",
-        "src/components.ts",
-        "src/directives/proxies.ts",
-        "components/**/readme.md",
-        ".storybook/vue",
-        "stories/assets/data"
+        "wwww/**"
       ]
     },
     "registry": {

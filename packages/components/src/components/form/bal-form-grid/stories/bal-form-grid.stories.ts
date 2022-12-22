@@ -1,6 +1,6 @@
 import docs from './bal-form-grid.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalFormGrid, BalFormCol, BalInput } from '../../../../../.storybook/vue/components'
+import { BalFormGrid, BalFormCol, BalInput } from '../../../../../.storybook/vue/generated/components'
 import { ref } from 'vue'
 
 const component = BalComponentStory({

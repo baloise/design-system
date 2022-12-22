@@ -1,6 +1,6 @@
 import docs from './bal-icon.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalIcon } from '../../../../.storybook/vue/components'
+import { BalIcon } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalIcon,

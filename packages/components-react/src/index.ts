@@ -8,4 +8,4 @@ export const useBaloiseDesignSystem = (config: BaloiseDesignSystemReactConfig = 
   initialize(config.defaults)
 }
 
-export * from './components'
+export * from './generated/proxies'
