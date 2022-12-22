@@ -32,15 +32,4 @@ describe('bal-accordion', () => {
     cy.getByTestId('with-card').click()
     cy.getByTestId('with-card').compareSnapshot('accordion-with-card-closed', 0.0)
   })
-
-  it('component variants', () => {
-    cy.platform('desktop')
-    cy.compareSnapshot('accordion-variants', 0.0)
-
-    cy.platform('tablet')
-    cy.compareSnapshot('accordion-variants-tablet', 0.0)
-
-    cy.platform('mobile')
-    cy.compareSnapshot('accordion-variants-mobile', 0.0)
-  })
 })

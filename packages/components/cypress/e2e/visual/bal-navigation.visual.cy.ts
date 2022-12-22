@@ -11,22 +11,9 @@ describe('bal-navigation', () => {
 
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
-      before(() => {
-        cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
-          .then(() => {
-            return new Promise(resolve => {
-              if ('requestIdleCallback' in window) {
-                ;(window as any).requestIdleCallback(resolve)
-              } else {
-                setTimeout(resolve, 32)
-              }
-            })
-          })
-          .wait(500)
-      })
-
       beforeEach(() => {
-        cy.platform(platform)
+        cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
+          .platform(platform)
           .getComponent('bal-navigation')
           .then(() => {
             return new Promise(resolve => {
@@ -65,10 +52,9 @@ describe('bal-navigation', () => {
 
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
-      beforeEach(() => cy.page('/components/bal-navigation/test/bal-navigation.visual.html'))
-
       beforeEach(() => {
-        cy.platform(platform)
+        cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
+          .platform(platform)
           .getComponent('bal-navigation')
           .then(() => {
             return new Promise(resolve => {
