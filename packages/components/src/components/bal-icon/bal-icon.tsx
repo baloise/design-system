@@ -104,7 +104,7 @@ export class Icon implements BalConfigObserver {
       'primary-light',
     ].includes(this.color)
       ? this.color
-      : 'blue'
+      : 'primary'
 
     const block = BEM.block('icon')
 
