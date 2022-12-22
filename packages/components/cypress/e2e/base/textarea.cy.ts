@@ -1,5 +1,5 @@
 describe('bal-textarea', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-textarea/test/bal-textarea.cy.html')
   })
 
