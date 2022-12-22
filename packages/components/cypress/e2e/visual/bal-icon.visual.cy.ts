@@ -1,5 +1,5 @@
 describe('bal-icon', () => {
-  before(() => cy.page('/components/bal-icon/test/bal-icon.visual.html'))
+  beforeEach(() => cy.page('/components/bal-icon/test/bal-icon.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

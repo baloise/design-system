@@ -45,17 +45,13 @@
     "css": "css",
     "scss": "scss"
   },
-  "devDependencies": {
-    "@baloise/design-system-components": "12.1.0",
-    "@baloise/design-system-css": "12.1.0"
-  },
   "peerDependencies": {
-    "@baloise/design-system-components": ">=11.0.0",
-    "@baloise/design-system-css": ">=11.0.0",
     "ag-grid-community": ">=25.2.1"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6",
   "dependencies": {
+    "@baloise/design-system-components": "12.1.0",
+    "@baloise/design-system-css": "12.1.0",
     "lodash.isnil": "^4.0.0"
   }
 }

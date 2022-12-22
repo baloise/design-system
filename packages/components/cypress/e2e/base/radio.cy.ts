@@ -1,5 +1,5 @@
 describe('bal-radio', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-radio/test/bal-radio.cy.html')
   })
 

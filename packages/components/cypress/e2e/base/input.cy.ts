@@ -1,5 +1,5 @@
 describe('bal-input', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-input/test/bal-input.cy.html')
   })
 

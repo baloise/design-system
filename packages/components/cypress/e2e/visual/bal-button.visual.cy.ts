@@ -1,5 +1,5 @@
 describe('bal-button', () => {
-  before(() => cy.page('/components/bal-button/test/bal-button.visual.html'))
+  beforeEach(() => cy.page('/components/bal-button/test/bal-button.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')
