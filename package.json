@@ -86,6 +86,7 @@
     "storybook:start": "node .build/utils/banner.js storybook:start && http-server storybook -p 8080"
   },
   "devDependencies": {
+    "@angular/cli": "~12.2.16",
     "@angular/common": "~12.2.16",
     "@angular/compiler": "~12.2.16",
     "@angular/compiler-cli": "~12.2.16",
