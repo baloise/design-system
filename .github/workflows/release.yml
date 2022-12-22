@@ -1,17 +1,11 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        type: choice
-        description: 'Version level'
-        required: true
-        default: 'patch'
-        options:
-          - patch
-          - minor
-          - major
+  push:
+    branches:
+      - next
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   Publish:
@@ -19,8 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -30,6 +22,12 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Update npm registry
+        run: npm run registry
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Git Identity
         run: |
           git config --global user.name 'baopso'
@@ -37,12 +35,6 @@ jobs:
           git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update npm registry
-        run: npm run registry
-
-      - name: Install dependencies
-        run: npm install
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
