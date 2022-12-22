@@ -1,0 +1,33 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/**",
+        ".tmp/**",
+        "scss/generated/**",
+        "www/**",
+        "loader/**",
+        "public/**",
+        "generated/**",
+        "storybook/**",
+        "contributors.md",
+        "components.d.ts",
+        "src/proxies.ts",
+        "src/components.ts",
+        "src/directives/proxies.ts",
+        "components/**/readme.md",
+        ".storybook/vue",
+        "stories/assets/data"
+      ]
+    },
+    "registry": {
+      "dependsOn": ["^registry"],
+      "inputs": ["package.json", "package-lock.json"]
+    },
+    "test": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "*.spec.ts", "*.spec.js"]
+    }
+  }
+}
