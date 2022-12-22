@@ -65,7 +65,7 @@
     "cy:start": "node ./web-server.js",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "build-storybook -o ../../storybook  --quiet",
-    "==================== INSTALLATION / SETUP ==========": "================================",
+    "==================== RELEASE =======================": "================================",
     "prepublish": "node ../../.build/version.js"
   },
   "dependencies": {

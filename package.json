@@ -124,7 +124,6 @@
     "jest": "^27.0.3",
     "jest-cli": "^27.4.5",
     "js-beautify": "~1.14.7",
-    "lerna": "^4.0.0",
     "lint-staged": "~13.1.0",
     "lodash.camelcase": "~4.3.0",
     "lodash.isboolean": "^3.0.3",
