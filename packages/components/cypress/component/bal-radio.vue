@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BalRadioGroup, BalRadio } from '../../.storybook/vue/components'
+import { BalRadioGroup, BalRadio } from '../../.storybook/vue/generated/components'
 </script>
 
 <template>

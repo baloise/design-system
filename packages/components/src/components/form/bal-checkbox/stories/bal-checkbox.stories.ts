@@ -7,7 +7,7 @@ import {
   BalFieldLabel,
   BalFieldMessage,
   BalCheckboxGroup,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
 

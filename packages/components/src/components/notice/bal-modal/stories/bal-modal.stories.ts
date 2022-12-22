@@ -6,7 +6,7 @@ import {
   BalButton,
   BalModalBody,
   BalButtonGroup,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import docs from './bal-modal.docs.mdx'
 
 const component = BalComponentStory({

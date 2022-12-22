@@ -6,7 +6,7 @@ import {
   BalCardContent,
   BalCardTitle,
   BalCardSubtitle,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalAccordion,

@@ -2,6 +2,7 @@ import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@s
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { raf } from '../../utils/helpers'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 
@@ -14,6 +15,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
 export class Spinner implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
   private animationFunction?: SpinnerAnimationFunction
+  private currentRaf: number | undefined
 
   log!: LogInstance
 
@@ -39,9 +41,13 @@ export class Spinner implements ComponentInterface, Loggable {
    */
   @Prop() deactivated = false
   @Watch('deactivated')
-  deactivatedWatcher() {
-    if (this.deactivated) {
-      this.destroyAnimation()
+  deactivatedWatcher(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      if (this.deactivated) {
+        this.destroy()
+      } else {
+        this.animate()
+      }
     }
   }
 
@@ -60,17 +66,13 @@ export class Spinner implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  componentDidUpdate() {
-    this.resetAnimation()
-  }
-
   componentDidLoad() {
-    this.resetAnimation()
+    this.animate()
   }
 
   disconnectedCallback() {
     if (this.el && !this.el.isConnected) {
-      this.destroyAnimation()
+      this.destroy()
     }
   }
 
@@ -79,18 +81,43 @@ export class Spinner implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private async resetAnimation() {
-    this.destroyAnimation()
-    if (!this.deactivated) {
-      await this.loadAnimation()
+  private animate = async () => {
+    await this.load()
 
-      if (this.animationFunction) {
-        this.animationFunction(this.el, this.getColor())
-      }
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+    }
+
+    if (this.shouldAnimate()) {
+      this.destroy()
+      this.currentRaf = raf(async () => {
+        if (this.animationFunction) {
+          this.animationFunction(this.el, this.getColor())
+        }
+      })
     }
   }
 
-  private async loadAnimation(): Promise<void> {
+  private destroy = () => {
+    if (this.animationItem && this.animationItem.destroy) {
+      this.animationItem.destroy()
+    }
+    this.el.innerHTML = ''
+  }
+
+  private shouldAnimate = () => {
+    if (typeof (window as any) === 'undefined') {
+      return false
+    }
+
+    if (this.animationFunction === undefined) {
+      return false
+    }
+
+    return !this.deactivated
+  }
+
+  private load = async (): Promise<void> => {
     return new Promise((resolve, reject) => {
       if (this.animationFunction) {
         return resolve()
@@ -105,12 +132,6 @@ export class Spinner implements ComponentInterface, Loggable {
         })
       }
     })
-  }
-
-  private destroyAnimation() {
-    if (this.animationItem && this.animationItem.destroy) {
-      this.animationItem.destroy()
-    }
   }
 
   /**

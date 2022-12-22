@@ -30,7 +30,7 @@ export const vueComponentModels: any[] = [
 
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
-  proxiesFile = '../components-vue/src/proxies.ts',
+  proxiesFile = '../components-vue/src/generated/proxies.ts',
   excludeComponents = docComponents,
 ): any =>
   vueOutputTarget({

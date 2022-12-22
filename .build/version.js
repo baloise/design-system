@@ -14,8 +14,7 @@ const DIST_PATH = path.join(process.cwd(), 'dist')
 async function main(){
   log.title('version')
 
-  const lerna = require('../lerna.json')
-  const version = lerna.version
+  const { version } = require(path.join(process.cwd(), 'package.json'))
 
   setVersion(DIST_PATH + '/**/*.js', version)
 }
@@ -31,7 +30,7 @@ async function setVersion(files, version){
     changedFiles.forEach(f => log.list(f))
   }
   catch (error) {
-    log.error('Could not set version to dist output', error)
+    log.warn('Could not set version to dist output', error)
   }
 }
 

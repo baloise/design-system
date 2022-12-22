@@ -1,5 +1,5 @@
 import { BalComponentStory, stencilArgType } from '../../../stories/utils'
-import { BalButton, BalButtonGroup } from '../../../../.storybook/vue/components'
+import { BalButton, BalButtonGroup } from '../../../../.storybook/vue/generated/components'
 import docs from './bal-button.docs.mdx'
 
 const balCheckboxGroupArgTypes = stencilArgType(BalButtonGroup)

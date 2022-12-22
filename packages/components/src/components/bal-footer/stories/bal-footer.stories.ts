@@ -1,6 +1,6 @@
 import docs from './bal-footer.docs.mdx'
 import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalFooter } from '../../../../.storybook/vue/components'
+import { BalFooter } from '../../../../.storybook/vue/generated/components'
 import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../stories/utils/config'
 
 const component = BalComponentStory({

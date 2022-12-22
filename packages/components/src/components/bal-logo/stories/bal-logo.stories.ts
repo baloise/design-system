@@ -1,6 +1,6 @@
 import docs from './bal-logo.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalLogo } from '../../../../.storybook/vue/components'
+import { BalLogo } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Logo',

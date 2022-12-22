@@ -1,6 +1,6 @@
 import docs from './bal-pagination.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalPagination } from '../../../../.storybook/vue/components'
+import { BalPagination } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalPagination,
