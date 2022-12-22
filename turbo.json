@@ -12,14 +12,14 @@
         "public/**",
         "generated/**",
         "storybook/**",
+        ".storybook/vue/**",
+        "stories/assets/data/**",
         "contributors.md",
         "components.d.ts",
         "src/proxies.ts",
         "src/components.ts",
         "src/directives/proxies.ts",
-        "components/**/readme.md",
-        ".storybook/vue",
-        "stories/assets/data"
+        "components/**/readme.md"
       ]
     },
     "registry": {
