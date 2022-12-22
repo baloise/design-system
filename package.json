@@ -39,6 +39,7 @@
     "test": "turbo run test",
     "e2e": "npm --prefix packages/components run e2e",
     "==================== RELEASE ==================": "================================",
+    "changeset": "changeset",
     "==================== DOCUMENTATION ============": "================================",
     "docs": "npm run build && npm --prefix packages/components run docs",
     "docs:serve": "http-server storybook -p 8080",
@@ -157,5 +158,8 @@
     "vue": "^3.2.45",
     "workbox-build": "~4.3.1",
     "zone.js": "~0.11.4"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.0"
   }
 }
