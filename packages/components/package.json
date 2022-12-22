@@ -49,7 +49,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --no-cache",
+    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --no-cache",
     "==================== UNIT TEST =====================": "================================",
     "test": "stencil test --spec",
     "test:watch": "stencil test --spec --watchAll",
@@ -64,7 +64,7 @@
     "cy:start": "node ./web-server.js",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
-    "docs:build": "node ../../.build/docs-contributors.js && node ../../.build/docs-github.js && node ../../.build/docs-testing.js",
+    "docs:build": "node ../../.build/docs-github.js",
     "==================== RELEASE =======================": "================================",
     "prepublish": "node ../../.build/version.js"
   },
