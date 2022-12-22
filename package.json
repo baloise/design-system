@@ -46,7 +46,6 @@
     "storybook": "npm run docs",
     "==================== INSTALLATION / SETUP =====": "================================",
     "prepare": "husky install",
-    "postinstall": "node .build/copy.js",
     "precommit": "lint-staged --allow-empty",
     "cy:install": "npm --prefix packages/components run cy:install",
     "registry": "bash registry",

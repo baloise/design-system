@@ -99,11 +99,6 @@ cypress/videos
 .vercel/
 
 # Design System
-packages/**/CHANGELOG.md
-packages/**/README.md
-packages/**/readme.md
-packages/**/LICENSE
-
 packages/components/loader/
 packages/components/lib/
 packages/components/www/
@@ -111,9 +106,7 @@ packages/components/public/
 packages/components/.storybook/vue/
 packages/components/src/assets/fonts/
 packages/components/src/stories/assets/data/
-packages/components/src/components/**/CHANGELOG.md
 packages/components/src/components/**/readme.md
-packages/tokens/src/tokens.ts
 
 packages/components-table/css/
 
@@ -125,6 +118,7 @@ packages/components-react/src/react-component-lib/
 
 packages/components-angular/src/directives/
 
+packages/tokens/src/tokens.ts
 packages/icons/src/icons.json
 packages/css/css/
 packages/css/assets/fonts/
