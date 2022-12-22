@@ -93,6 +93,9 @@ cypress/videos
 # Husky
 .husky/_/
 
+# Turbo
+.turbo/
+
 # Design System
 storybook/
 packages/**/CHANGELOG.md
