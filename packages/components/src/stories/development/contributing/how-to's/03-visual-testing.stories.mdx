@@ -97,7 +97,7 @@ Example => `bal-close.visual.html`
 ```typescript
 describe('bal-close', () => {
   // before the test we navigate to the test template file
-  before(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
+  beforeEach(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
 
   // just compare the screenshot of the element with the attribute data-testid="basic"
   it('basic component', () => {
@@ -117,7 +117,7 @@ To test the components on our various breakpoints we need to tell cypress on wit
 
 ```typescript
 describe('bal-close', () => {
-  before(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
+  beforeEach(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

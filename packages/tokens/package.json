@@ -31,8 +31,7 @@
     "build": "npm run rollup:pre && npm run build:tokens && npm run rollup:post",
     "build:tokens": "node ../../.build/tokens-generator.js",
     "rollup:pre": "rollup --config rollup.config.js",
-    "rollup:post": "rollup --config rollup.config.tokens.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "rollup:post": "rollup --config rollup.config.tokens.js"
   },
   "main": "dist/tokens.js",
   "module": "dist/tokens.esm.js",

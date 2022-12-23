@@ -1,5 +1,5 @@
 describe('bal-checkbox', () => {
-  before(() => cy.page('/components/form/bal-checkbox/test/bal-checkbox.visual.html'))
+  beforeEach(() => cy.page('/components/form/bal-checkbox/test/bal-checkbox.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

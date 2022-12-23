@@ -1,6 +1,6 @@
 import docs from './bal-notification.docs.mdx'
 import { BalComponentStory, withContent } from '../../../../stories/utils'
-import { BalNotification } from '../../../../../.storybook/vue/components'
+import { BalNotification } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Notice/Notification',

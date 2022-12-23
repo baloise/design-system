@@ -1,5 +1,5 @@
 describe('bal-select', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-select/test/bal-select.cy.html')
   })
 

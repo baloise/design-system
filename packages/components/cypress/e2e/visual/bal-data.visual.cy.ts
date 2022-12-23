@@ -1,5 +1,5 @@
 describe('bal-data', () => {
-  before(() => cy.page('/components/bal-data/test/bal-data.visual.html'))
+  beforeEach(() => cy.page('/components/bal-data/test/bal-data.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

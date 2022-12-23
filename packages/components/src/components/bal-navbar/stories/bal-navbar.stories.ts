@@ -19,7 +19,7 @@ import {
   BalListItemTitle,
   BalTabs,
   BalTabItem,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 import { isPlatform } from '../../../../dist'
 
 const component = BalComponentStory({

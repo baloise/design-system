@@ -1,6 +1,6 @@
 import docs from './bal-carousel.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalCarousel, BalCarouselItem } from '../../../../.storybook/vue/components'
+import { BalCarousel, BalCarouselItem } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Carousel',

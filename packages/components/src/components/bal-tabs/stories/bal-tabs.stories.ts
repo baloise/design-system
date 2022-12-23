@@ -1,6 +1,6 @@
 import docs from './bal-tabs.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalTabs, BalTabItem } from '../../../../.storybook/vue/components'
+import { BalTabs, BalTabItem } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalTabs,

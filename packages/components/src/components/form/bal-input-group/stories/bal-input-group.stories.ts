@@ -1,6 +1,6 @@
 import docs from './bal-input-group.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalInputGroup, BalInput, BalIcon, BalTag } from '../../../../../.storybook/vue/components'
+import { BalInputGroup, BalInput, BalIcon, BalTag } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Form/Input Group',

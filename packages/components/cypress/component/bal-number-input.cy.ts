@@ -1,4 +1,4 @@
-import { BalNumberInput } from '../../.storybook/vue/components'
+import { BalNumberInput } from '../../.storybook/vue/generated/components'
 
 describe('bal-number-input.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
