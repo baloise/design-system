@@ -64,6 +64,7 @@
     "@angular/core": "~12.2.16",
     "@angular/forms": "~12.2.16",
     "@angular/platform-browser": "~12.2.16",
+    "@changesets/changelog-github": "^0.4.8",
     "@commitlint/cli": "~17.3.0",
     "@commitlint/config-conventional": "~17.3.0",
     "@rollup/plugin-commonjs": "~22.0.1",
