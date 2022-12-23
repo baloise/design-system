@@ -18,30 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm registry
-        run: npm run registry
-
-      - name: Git Identity
-        run: |
-          git config --global user.name 'baopso'
-          git config --global user.email 'Group.CH_Open-Source@baloise.ch'
-          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+      - uses: ./.github/actions/ci-setup
 
       - name: Create .npmrc
         run: |
