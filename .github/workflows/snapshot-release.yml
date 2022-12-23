@@ -28,6 +28,14 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Git Identity
+        run: |
+          git config --global user.name 'baopso'
+          git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Release snapshot
         run: |
           npx changeset version --snapshot snapshot

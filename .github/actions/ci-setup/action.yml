@@ -2,14 +2,6 @@ name: 'CI setup'
 runs:
   using: 'composite'
   steps:
-    - name: Git Identity
-      run: |
-        git config --global user.name 'baopso'
-        git config --global user.email 'Group.CH_Open-Source@baloise.ch'
-        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
