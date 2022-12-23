@@ -20,8 +20,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
 
       - name: Update NPM registry
         run: npm run registry
@@ -30,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Format
         run: npm run format:check
@@ -64,7 +62,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install
@@ -121,7 +119,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install
@@ -179,7 +177,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install

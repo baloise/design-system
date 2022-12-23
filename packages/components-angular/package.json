@@ -38,22 +38,21 @@
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=12.2.16",
-    "@angular/core": ">=12.2.16",
-    "@angular/forms": ">=12.2.16",
-    "@angular/platform-browser": ">=12.2.16",
-    "typescript": ">=4.3.5",
+    "@angular/common": ">=13.3.12",
+    "@angular/core": ">=13.3.12",
+    "@angular/forms": ">=13.3.12",
+    "@angular/platform-browser": ">=13.3.12",
+    "typescript": ">=4.4.2",
     "zone.js": ">=0.11.4"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6",
   "files": [
     "dist/"
   ],
-  "main": "dist/bundles/baloise-design-system-components-angular.umd.js",
-  "module": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "es2015": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "esm2015": "dist/esm2015/baloise-design-system-components-angular.js",
-  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.js",
+  "module": "dist/fesm2015/baloise-design-system-components-angular.mjs",
+  "esm2020": "dist/esm2015/baloise-design-system-components-angular.mjs",
+  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.mjs",
+  "fesm2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
   "typings": "dist/baloise-design-system-components-angular.d.ts",
   "metadata": "dist/baloise-design-system-components-angular.metadata.json",
   "sideEffects": false
