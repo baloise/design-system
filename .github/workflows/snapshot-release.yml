@@ -9,9 +9,6 @@ jobs:
   Publish:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -40,7 +37,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Create .npmrc
         run: |
