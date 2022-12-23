@@ -8,6 +8,10 @@ on:
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -42,15 +46,17 @@ jobs:
       - name: Create .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
         env:
-          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Release snapshot
         run: |
           npx changeset version --snapshot snapshot
           npx changeset publish --no-git-tag --tag snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Git Reset
         run: git reset --hard
