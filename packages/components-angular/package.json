@@ -26,6 +26,7 @@
     "web-components",
     "stenciljs"
   ],
+  "type": "module",
   "license": "Apache-2.0",
   "scripts": {
     "build": "npm run clean && npm run build:compile && npm run clean:package",
@@ -49,11 +50,10 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/bundles/baloise-design-system-components-angular.umd.js",
   "module": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "es2015": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "esm2015": "dist/esm2015/baloise-design-system-components-angular.js",
+  "esm2020": "dist/esm2015/baloise-design-system-components-angular.js",
   "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.js",
+  "fesm2020": "dist/fesm2020/baloise-design-system-components-angular.js",
   "typings": "dist/baloise-design-system-components-angular.d.ts",
   "metadata": "dist/baloise-design-system-components-angular.metadata.json",
   "sideEffects": false
