@@ -49,7 +49,6 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/fesm2015/baloise-design-system-components-angular.mjs",
   "module": "dist/fesm2015/baloise-design-system-components-angular.mjs",
   "esm2020": "dist/esm2015/baloise-design-system-components-angular.mjs",
   "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.mjs",
