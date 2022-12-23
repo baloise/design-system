@@ -13,7 +13,7 @@
     "assumeChangesOnlyAffectDirectDependencies": true,
     "esModuleInterop": true,
     "lib": ["dom", "es2017"],
-    "module": "ES2020",
+    "module": "esnext",
     "target": "es2017",
     "moduleResolution": "node",
     "noImplicitAny": true,
