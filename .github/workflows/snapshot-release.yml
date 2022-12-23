@@ -8,22 +8,15 @@ on:
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm registry
-        run: npm run registry
 
       - name: Git Identity
         run: |
@@ -32,6 +25,16 @@ jobs:
           git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Update npm registry
+        run: npm run registry
 
       - name: Install dependencies
         run: npm install
@@ -42,15 +45,19 @@ jobs:
       - name: Create .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
         env:
-          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release snapshot
         run: |
           npx changeset version --snapshot snapshot
           npx changeset publish --no-git-tag --tag snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Git Reset
         run: git reset --hard

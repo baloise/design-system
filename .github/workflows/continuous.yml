@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -24,7 +22,6 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
         run: npm run registry
@@ -52,8 +49,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -61,7 +56,7 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
+
       - name: Update NPM registry
         run: npm run registry
 
@@ -111,8 +106,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -120,7 +113,6 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
         run: npm run registry
@@ -172,8 +164,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -181,7 +171,6 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Update NPM registry
         run: npm run registry

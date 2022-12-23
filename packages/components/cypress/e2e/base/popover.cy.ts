@@ -1,5 +1,5 @@
 describe('bal-popover', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/bal-popover/test/bal-popover.cy.html')
   })
 

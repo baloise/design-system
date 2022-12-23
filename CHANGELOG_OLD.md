@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.15.2](https://github.com/baloise/design-system/compare/v10.15.1...v10.15.2) (2022-09-01)
 
-
 ### Bug Fixes
 
 * closes [#648](https://github.com/baloise/design-system/issues/648), fix error on deleting input with mask ([b4fd476](https://github.com/baloise/design-system/commit/b4fd476895244b8d2e7e62eabed56321493ec1d6))
@@ -21,11 +20,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.15.0](https://github.com/baloise/design-system/compare/v10.14.0...v10.15.0) (2022-08-22)
 
-
 ### Features
 
 * **form:** add new form component with scroll to first invalid field ([2e8b07a](https://github.com/baloise/design-system/commit/2e8b07acc507bffdefaa0c1e24f5eee3e6455b53))
-
 
 
 ## [10.14.0](https://github.com/baloise/design-system/compare/v10.13.5...v10.14.0) (2022-08-16)

@@ -1,5 +1,5 @@
 describe('bal-pagination', () => {
-  before(() => cy.page('/components/bal-pagination/test/bal-pagination.cy.html'))
+  beforeEach(() => cy.page('/components/bal-pagination/test/bal-pagination.cy.html'))
 
   it('should verify the page setup', () => {
     cy.getByTestId('pagination').balPaginationFindPages().should('have.length', '8')

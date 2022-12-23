@@ -10,23 +10,12 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm registry
-        run: npm run registry
-
-      - name: Install dependencies
-        run: npm install
+          fetch-depth: 0
 
       - name: Git Identity
         run: |
@@ -35,6 +24,19 @@ jobs:
           git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Update npm registry
+        run: npm run registry
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
