@@ -24,7 +24,6 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Update npm registry
         run: npm run registry
@@ -57,6 +56,8 @@ jobs:
           npx changeset publish --no-git-tag --tag snapshot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Git Reset
         run: git reset --hard
