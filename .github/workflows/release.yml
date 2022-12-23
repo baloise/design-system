@@ -29,8 +29,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
 
       - name: Update npm registry
         run: npm run registry
@@ -43,7 +41,7 @@ jobs:
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: npm run build && changeset publish
+          publish: npm run build:force && changeset publish
         env:
           HUSKY_DISABLED: 1
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
