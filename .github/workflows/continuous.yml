@@ -62,7 +62,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install
@@ -119,7 +119,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install
@@ -177,7 +177,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build:force
 
       - name: Install Cypress
         run: npm run cy:install
