@@ -1,11 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    { "repo": "baloise-incubator/design-system" }
-  ],
+  "changelog": ["@changesets/changelog-github", { "repo": "baloise-incubator/design-system" }],
   "commit": false,
   "fixed": [["@baloise/design-system-*"]],
+  "ignore ": [["@baloise/design-system-output-target-*"]],
   "linked": [],
   "access": "public",
   "baseBranch": "next",
