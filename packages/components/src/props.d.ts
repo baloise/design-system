@@ -71,7 +71,18 @@ export namespace Props {
   export type BalSelectFilter = 'includes' | 'starts-with'
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | 'grey-light' | '' | string
+  export type BalIconColor =
+    | 'blue'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'white'
+    | 'grey'
+    | 'grey-light'
+    | 'primary'
+    | 'primary-light'
+    | ''
+    | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
