@@ -221,6 +221,10 @@
   &--select-button#{&}--invalid
     border-color: var(--bal-color-border-danger)
     background: var(--bal-color-danger-1)
+    .bal-radio-checkbox__label
+      .bal-radio-checkbox__label__text
+        .is-link
+          color: var(--bal-color-border-danger)
     &:hover
       border-color: var(--bal-color-danger-5)
       background: var(--bal-color-danger-1)
@@ -246,6 +250,10 @@
   &--select-button#{&}--disabled:active
     border-color: var(--bal-color-border-grey-dark)
     background: var(--bal-color-grey-2)
+    .bal-radio-checkbox__label
+      .bal-radio-checkbox__label__text
+        .is-link
+          color: var(--bal-color-text-grey)
   &--select-button#{&}--disabled#{&}--checked,
   &--select-button#{&}--disabled#{&}--checked:hover,
   &--select-button#{&}--disabled#{&}--checked:active
