@@ -5,15 +5,16 @@
       "dependsOn": ["^build"],
       "outputs": [
         "dist/**",
+        "loader/**",
+        "wwww/**",
         ".tmp/**",
-        "**/generated/**",
-        "**/assets/data/**",
-        "**/components/**/readme.md",
         "css/baloise-design-system.css",
         "css/design-system-table.css",
-        "loader/**",
-        "public/**",
-        "wwww/**"
+        "**/components/**/readme.md",
+        "**/generated/**",
+        "**/assets/data/**",
+        "**/assets/download/**",
+        "**/assets/fonts/**"
       ]
     },
     "registry": {

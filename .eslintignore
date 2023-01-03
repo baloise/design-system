@@ -22,9 +22,12 @@ packages/components/www/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
-packages/components/src/stories/assets/components.json
-packages/components/src/stories/assets/components.d.ts
 packages/components/src/stories/utils
+
+packages/components/public/assets/fonts/
+packages/components/public/assets/data/
+packages/components/public/assets/download/
+packages/components/public/assets/css/design-system-table.css
 
 packages/components-table/css
 packages/components-vue/src/proxies
