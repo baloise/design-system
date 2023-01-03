@@ -49,7 +49,7 @@
     "prepare": "husky install",
     "precommit": "lint-staged --allow-empty",
     "cy:install": "npm --prefix packages/components run cy:install",
-    "registry": "bash registry",
+    "registry": "bash .build/registry",
     "==================== FORMATTER / LINTER =======": "================================",
     "format:check": "prettier --check ./packages",
     "format": "prettier --write ./packages",
