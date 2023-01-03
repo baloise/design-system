@@ -28,7 +28,7 @@ export const StencilBaseConfig: Config = {
     },
     {
       type: 'docs-json',
-      file: './src/stories/assets/data/components.json',
+      file: './public/assets/data/components.json',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],

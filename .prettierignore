@@ -19,8 +19,11 @@ packages/components/www/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
-packages/components/src/stories/assets/components.json
-packages/components/src/stories/assets/components.d.ts
+
+packages/components/public/assets/fonts/
+packages/components/public/assets/data/
+packages/components/public/assets/download/
+packages/components/public/assets/css/design-system-table.css
 
 packages/components-table/css
 packages/components-vue/src/proxies
@@ -36,6 +39,5 @@ packages/components-angular/src/directives/proxies.module.ts
 packages/components/src/utils/constants/icons.constant.ts
 packages/css/css
 packages/components-vue/src/proxies.ts
-packages/components/src/stories/assets/data
 packages/icons/src/index.ts
 packages/tokens/.tmp

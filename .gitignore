@@ -73,8 +73,7 @@ dist/
 dist-transpiled/
 temp/
 generated/
-storybook/
-storybook-static/
+/storybook/
 
 # Gatsby files
 .cache/
@@ -102,11 +101,14 @@ cypress/videos
 packages/components/loader/
 packages/components/lib/
 packages/components/www/
-packages/components/public/
 packages/components/.storybook/vue/
 packages/components/src/assets/fonts/
-packages/components/src/stories/assets/data/
 packages/components/src/components/**/readme.md
+
+packages/components/public/assets/fonts/
+packages/components/public/assets/data/
+packages/components/public/assets/download/
+packages/components/public/assets/css/design-system-table.css
 
 packages/components-table/css/
 
