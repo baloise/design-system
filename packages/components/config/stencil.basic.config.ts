@@ -9,6 +9,7 @@ export const StencilBaseConfig: Config = {
   hashedFileNameLength: 10,
   sourceMap: false,
   globalStyle: 'src/styles/global.sass',
+  globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   tsconfig: 'tsconfig.json',
