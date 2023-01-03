@@ -13,8 +13,9 @@
   "scripts": {
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
-    "test": "jest",
-    "test.watch": "jest --watch"
+    "test": "vitest run",
+    "test:watch": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "peerDependencies": {
     "@angular/common": ">=13.3.12",
