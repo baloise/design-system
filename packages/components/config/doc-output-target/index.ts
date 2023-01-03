@@ -7,8 +7,8 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import testingCommands from '../src/stories/assets/data/commands.json'
-import contributors from '../src/stories/assets/data/contributors.json'
+import testingCommands from '../../src/stories/assets/data/commands.json'
+import contributors from '../../src/stories/assets/data/contributors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -103,7 +103,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     const contributorsContent = [`<div class="features">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
 
     try {
-      writeFileSync(path.join(__dirname, '../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
+      writeFileSync(path.join(__dirname, '../../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
     } catch (err) {
       console.error(err)
     }
