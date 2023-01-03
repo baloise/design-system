@@ -3,6 +3,9 @@ import { isBrowser } from '../../utils/browser'
 import { BalMode, initStyleMode } from '../../utils/config'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import globalScript from '../../global'
+
+globalScript()
 
 @Component({
   tag: 'bal-app',
