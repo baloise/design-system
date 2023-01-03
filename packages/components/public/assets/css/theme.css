@@ -4,8 +4,8 @@
   font-weight: 700;
   font-display: swap;
   src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
 }
 
 @font-face {
@@ -14,8 +14,8 @@
   font-weight: 300;
   font-display: swap;
   src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-light'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateHeadline-light.woff') format('woff');
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff') format('woff');
 }
 
 @font-face {
@@ -24,8 +24,8 @@
   font-weight: 700;
   font-display: swap;
   src: local('BaloiseCreateText'), local('BaloiseCreateText-bold'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-bold.woff') format('woff');
+    url('/assets/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-bold.woff') format('woff');
 }
 
 @font-face {
@@ -34,8 +34,8 @@
   font-weight: 400;
   font-display: swap;
   src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
-    url('https://www.baloise.ch/app-integration/assets/fonts/BaloiseCreateText-regular.woff') format('woff');
+    url('/assets/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-regular.woff') format('woff');
 }
 
 html {
