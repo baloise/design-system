@@ -7,7 +7,7 @@ import globalScript from '../../../global'
 
 @Component({
   tag: 'bal-doc-app',
-  styleUrl: '../../../styles/global.sass',
+  styleUrl: 'bal-doc-app.sass',
 })
 export class DocApp implements ComponentInterface {
   @Prop() logComponents = ''
