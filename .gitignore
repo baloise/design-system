@@ -73,8 +73,7 @@ dist/
 dist-transpiled/
 temp/
 generated/
-storybook/
-storybook-static/
+/storybook/
 
 # Gatsby files
 .cache/
