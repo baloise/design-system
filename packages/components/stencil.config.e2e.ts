@@ -20,7 +20,7 @@ export const config: Config = {
           src: 'components.d.ts',
         },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
-        { src: 'stories/assets/images', dest: 'assets/images', warn: true },
+        { src: '../public/assets/images', dest: 'assets/images', warn: true },
       ],
     },
   ],

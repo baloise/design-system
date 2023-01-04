@@ -6,7 +6,7 @@ import {
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { marvelHeros } from './bal-select.templates.ts'
 import docs from './bal-select.docs.mdx'
 import { ref } from 'vue'

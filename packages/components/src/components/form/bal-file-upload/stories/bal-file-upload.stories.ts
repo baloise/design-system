@@ -1,6 +1,6 @@
 import docs from './bal-file-upload.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalFileUpload } from '../../../../../.storybook/vue/components'
+import { BalFileUpload } from '../../../../../.storybook/vue/generated/components'
 import { balToastController } from '../../../notice/bal-toast/bal-toast.controller'
 
 const component = BalComponentStory({

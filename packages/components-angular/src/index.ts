@@ -2,12 +2,12 @@
 export { BalNgErrorComponent } from './components/error/error.component'
 
 // DIRECTIVES
-export * from './directives/proxies'
-export { BooleanValueAccessor } from './directives/boolean-value-accessor'
-export { CheckboxValueAccessor } from './directives/checkbox-value-accessor'
-export { NumericValueAccessor } from './directives/number-value-accessor'
-export { SelectValueAccessor } from './directives/select-value-accessor'
-export { TextValueAccessor } from './directives/text-value-accessor'
+export * from './generated/proxies'
+export { BooleanValueAccessor } from './generated/boolean-value-accessor'
+export { CheckboxValueAccessor } from './generated/checkbox-value-accessor'
+export { NumericValueAccessor } from './generated/number-value-accessor'
+export { SelectValueAccessor } from './generated/select-value-accessor'
+export { TextValueAccessor } from './generated/text-value-accessor'
 export { BalAutoFocus } from './focus.directive'
 
 // SERVICES

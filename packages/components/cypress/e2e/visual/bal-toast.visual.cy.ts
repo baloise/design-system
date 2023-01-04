@@ -1,5 +1,5 @@
 describe('bal-toast', () => {
-  before(() => cy.page('/components/notice/bal-toast/test/bal-toast.visual.html'))
+  beforeEach(() => cy.page('/components/notice/bal-toast/test/bal-toast.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')

@@ -1,5 +1,5 @@
 describe('bal-snackbar', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/notice/bal-snackbar/test/bal-snackbar.cy.html')
   })
 

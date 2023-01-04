@@ -2,7 +2,7 @@ import { Props } from '../../../src'
 
 describe.skip('bal-tag', () => {
   context('a11y', () => {
-    before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
+    beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 
     describe('have the AA standard', () => {
       it('basic', () => {

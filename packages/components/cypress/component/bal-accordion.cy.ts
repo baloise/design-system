@@ -1,4 +1,4 @@
-import { BalAccordion } from '../../.storybook/vue/components'
+import { BalAccordion } from '../../.storybook/vue/generated/components'
 
 describe('bal-accordion', () => {
   beforeEach(() => cy.disableAnimation())

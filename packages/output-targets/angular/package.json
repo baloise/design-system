@@ -1,32 +1,7 @@
 {
   "name": "@baloise/design-system-output-target-angular",
-  "version": "12.0.0",
-  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/baloise-incubator/design-system.git"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": {
-    "url": "https://github.com/baloise-incubator/design-system/issues"
-  },
-  "homepage": "https://baloise-design.vercel.app",
-  "contributors": [
-    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
-    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
-    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
-    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
-    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
-    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
-  ],
-  "keywords": [
-    "design-system",
-    "web-components",
-    "stenciljs"
-  ],
-  "license": "Apache-2.0",
+  "version": "12.2.0",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
@@ -38,14 +13,15 @@
   "scripts": {
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
-    "test": "jest",
-    "test.watch": "jest --watch"
+    "test": "vitest run",
+    "test:watch": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "peerDependencies": {
-    "@angular/common": ">=12.2.16",
-    "@angular/core": ">=12.2.16",
-    "@angular/forms": ">=12.2.16",
-    "@angular/platform-browser": ">=12.2.16",
+    "@angular/common": ">=13.3.12",
+    "@angular/core": ">=13.3.12",
+    "@angular/forms": ">=13.3.12",
+    "@angular/platform-browser": ">=13.3.12",
     "@stencil/core": "^2.9.0",
     "zone.js": ">=0.11.4"
   },

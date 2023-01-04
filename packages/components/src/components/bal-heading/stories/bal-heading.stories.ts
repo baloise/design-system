@@ -1,6 +1,6 @@
 import docs from './bal-heading.docs.mdx'
 import { withContent, BalComponentStory } from '../../../stories/utils'
-import { BalHeading } from '../../../../.storybook/vue/components'
+import { BalHeading } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalHeading,

@@ -1,6 +1,6 @@
 import docs from './bal-shape.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalShape } from '../../../../.storybook/vue/components'
+import { BalShape } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Shape',

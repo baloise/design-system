@@ -1,5 +1,5 @@
 describe('bal-input-slider', () => {
-  before(() => cy.page('/components/form/bal-input-slider/test/bal-input-slider.visual.html'))
+  beforeEach(() => cy.page('/components/form/bal-input-slider/test/bal-input-slider.visual.html'))
 
   it('basic component', () => {
     cy.platform('desktop')
@@ -7,6 +7,14 @@ describe('bal-input-slider', () => {
 
     cy.platform('mobile')
     cy.getByTestId('basic').compareSnapshot('input-slider-basic-mobile', 0.0)
+  })
+
+  it('with-ticks component', () => {
+    cy.platform('desktop')
+    cy.getByTestId('with-ticks').compareSnapshot('input-slider-with-ticks', 0.0)
+
+    cy.platform('mobile')
+    cy.getByTestId('with-ticks').compareSnapshot('input-slider-with-ticks-mobile', 0.0)
   })
 
   it('disabled component', () => {

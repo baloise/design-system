@@ -12,7 +12,7 @@ const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../../packages/components");
 
 const components = async () => {
-  const filePath = path.join(PACKAGE, 'src/stories/assets/data/components.json')
+  const filePath = path.join(PACKAGE, 'public/assets/data/components.json')
   try {
     const content = await file.read(filePath)
     const json = JSON.parse(content)

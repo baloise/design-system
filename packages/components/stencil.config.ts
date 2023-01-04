@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core'
 
-import { CustomDocumentationGenerator } from './docs/custom-documentation'
+import { CustomDocumentationGenerator } from './config/doc-output-target'
 import { StencilBaseConfig } from './config/stencil.basic.config'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { VueGenerator } from './config/stencil.bindings.vue'
@@ -10,9 +10,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    dynamicImportShim: true,
     initializeNextTick: true,
-    safari10: false,
     scriptDataOpts: true,
     appendChildSlotFix: true,
     cloneNodeFix: true,
@@ -33,5 +31,24 @@ export const config: Config = {
      * Documentation outputs
      */
     CustomDocumentationGenerator,
+    /**
+     * Copy assets for E2E testing
+     */
+    {
+      type: 'www',
+      dir: 'www',
+      serviceWorker: false,
+      empty: true,
+      copy: [
+        {
+          src: '**/*.html',
+        },
+        {
+          src: 'components.d.ts',
+        },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+        { src: '../public/assets/images', dest: 'assets/images', warn: true },
+      ],
+    },
   ],
 }

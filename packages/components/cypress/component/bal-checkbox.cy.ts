@@ -1,4 +1,4 @@
-import { BalCheckbox } from '../../.storybook/vue/components'
+import { BalCheckbox } from '../../.storybook/vue/generated/components'
 
 describe('bal-checkbox.cy.ts', () => {
   it('should have a default slot', () => {

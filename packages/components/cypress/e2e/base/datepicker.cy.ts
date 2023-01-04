@@ -10,7 +10,7 @@ const format = (date: Date) => {
 }
 
 describe('bal-datepicker', () => {
-  before(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
+  beforeEach(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
 
   describe('open & close', () => {
     it('should open and close', () => {

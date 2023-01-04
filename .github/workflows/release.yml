@@ -1,33 +1,21 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        type: choice
-        description: 'Version level'
-        required: true
-        default: 'patch'
-        options:
-          - patch
-          - minor
-          - major
+  push:
+    branches:
+      - next
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   Publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
+          fetch-depth: 0
 
       - name: Git Identity
         run: |
@@ -37,56 +25,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch all Tags and Pull
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git pull
-
-      - name: Install Lerna globally
-        run: npm install lerna --global
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
       - name: Update npm registry
-        run: npm run update:registry
+        run: npm run registry
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build
-        run: npm run build
-
-      - uses: EndBug/add-and-commit@v9
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
         with:
-          message: 'chore(): update build artifacts'
+          publish: npm run release
         env:
+          HUSKY_DISABLED: 1
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to NPM
-        run: 'lerna publish ${{ github.event.inputs.version }} --yes'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update Lock files
-        run: 'npm run update:lock'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-
-      - name: Commit release
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'chore(): update lock files'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_ICON: https://github.com/baloise.png?size=48
-          SLACK_COLOR: good
-          SLACK_USERNAME: design-system-ReleaseBot
-          SLACK_TITLE: New Release available
-          SLACK_MESSAGE: 'Find the latest release ${{ env.GITHUB_REF_NAME }}: https://github.com/baloise-incubator/design-system/releases'
-          SLACK_FOOTER: Get it while it's hot!
-          MSG_MINIMAL: true
-
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/**",
+        "loader/**",
+        "wwww/**",
+        ".tmp/**",
+        "css/baloise-design-system.css",
+        "css/design-system-table.css",
+        "**/components/**/readme.md",
+        "**/generated/**",
+        "**/assets/data/**",
+        "**/assets/download/**",
+        "**/assets/fonts/**"
+      ]
+    },
+    "registry": {
+      "dependsOn": ["^registry"],
+      "inputs": ["package.json", "package-lock.json"]
+    },
+    "test": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "*.spec.ts", "*.spec.js"]
+    }
+  }
+}

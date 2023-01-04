@@ -625,6 +625,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     const inputValue = (event.target as HTMLInputElement).value
     this.pointerDate = {
       ...this.pointerDate,
+      day: 1,
       month: parseInt(inputValue, 10),
     }
   }
@@ -634,6 +635,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     const yearValue = parseInt(inputValue, 10)
     this.pointerDate = {
       ...this.pointerDate,
+      day: 1,
       year: yearValue,
     }
   }
@@ -820,7 +822,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           <div class={{ ...monthAndYearEl.class() }}>
             <div class={{ ...selectEl.class(), ...selectEl.modifier('month').class() }}>
               <div class="select">
-                <select class="" onInput={this.onMonthSelect}>
+                <select onInput={this.onMonthSelect}>
                   {this.months.map(month => (
                     <option value={month.index} selected={this.pointerDate.month === month.index}>
                       {month.name}
@@ -875,17 +877,17 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private calcPreviousMonth(): BalPointerDate {
     if (this.pointerDate.month === 0) {
-      return { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11 }
+      return { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11, day: 1 }
     } else {
-      return { ...this.pointerDate, month: this.pointerDate.month - 1 }
+      return { ...this.pointerDate, month: this.pointerDate.month - 1, day: 1 }
     }
   }
 
   private calcNextMonth(): BalPointerDate {
     if (this.pointerDate.month === 11) {
-      return { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0 }
+      return { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0, day: 1 }
     } else {
-      return { ...this.pointerDate, month: this.pointerDate.month + 1 }
+      return { ...this.pointerDate, month: this.pointerDate.month + 1, day: 1 }
     }
   }
 

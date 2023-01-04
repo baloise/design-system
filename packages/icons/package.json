@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-icons",
-  "version": "12.0.0",
+  "version": "12.2.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -32,8 +32,7 @@
     "build:icons": "node ../../.build/optimize-icons.js",
     "build:bundle": "rollup --config rollup.config.js",
     "build:archive": "node ../../.build/archive-icons.js",
-    "build:copy": "copyfiles --flat ./src/icons.json ./dist && rimraf ./src/icons.json",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "build:copy": "copyfiles --flat ./src/icons.json ./dist && rimraf ./src/icons.json"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

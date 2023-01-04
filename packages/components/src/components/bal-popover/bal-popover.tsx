@@ -187,10 +187,14 @@ export class Popover {
     return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
   }
 
+  componentWillLoad() {
+    this.backdropHeight = this.getBackdropHeight()
+  }
+
   componentDidLoad() {
     this.isInMainNav = this.footMobileNav !== null
     this.isTouch = isPlatform('touch')
-    this.backdropHeight = this.getBackdropHeight()
+
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
         placement: this.tooltip ? 'bottom' : this.position,
