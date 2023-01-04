@@ -622,6 +622,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated": boolean;
         "logComponents": string;
         "logCustom": boolean;
         "logEvents": boolean;
@@ -4203,6 +4207,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated"?: boolean;
         "logComponents"?: string;
         "logCustom"?: boolean;
         "logEvents"?: boolean;
