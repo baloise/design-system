@@ -259,16 +259,16 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
       cancelAnimationFrame(this.currentRaf)
     }
 
+    const parentListEl = this.el.closest('bal-list')
+    if (parentListEl && parentListEl.accordionOneLevel) {
+      const items = Array.from(this.el.querySelectorAll('bal-list-item'))
+      items.forEach(item => item.dismiss())
+    }
+
     if (this.shouldAnimate()) {
       this.currentRaf = raf(async () => {
         const contentHeight = contentEl.offsetHeight
         contentEl.style.setProperty('max-height', `${contentHeight}px`)
-
-        //       /**
-        //        * Calculate nested accordions as well.
-        //        */
-        //       const contentHeight = Array.from(contentWrappers).reduce((acc, el: any) => acc + el.offsetHeight, 0)
-        //       contentEl.style.setProperty('max-height', `${contentHeight}px`)
 
         raf(async () => {
           const waitForTransition = transitionEndAsync(contentEl, 2000)

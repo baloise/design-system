@@ -85,6 +85,7 @@ export namespace Props {
     | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
+  export type BalListItemAccordionHeadIcon = 'plus' | 'nav-go-down'
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'small' | 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'

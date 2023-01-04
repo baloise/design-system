@@ -1336,7 +1336,7 @@ export namespace Components {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon": string;
+        "icon": Props.BalListItemAccordionHeadIcon;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -4953,7 +4953,7 @@ declare namespace LocalJSX {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon"?: string;
+        "icon"?: Props.BalListItemAccordionHeadIcon;
         /**
           * Emitted when the accordion state is changed
          */

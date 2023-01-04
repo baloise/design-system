@@ -122,7 +122,7 @@ export class Icon implements BalConfigObserver {
         <div
           class={{
             ...block.element('inner').class(),
-            ...block.element('inner').modifier('turn').class(this.turn),
+            ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
             ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
           innerHTML={this.svgContent}
