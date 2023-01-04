@@ -92,19 +92,23 @@
   align-items: center
 
 .bal-list--size-small
-  .bal-list__item:not(.bal-list__item__accordion-body),
-  .bal-list__item:not(.bal-list__item__accordion-body) > a,
-  .bal-list__item:not(.bal-list__item__accordion-body) > div,
-  .bal-list__item:not(.bal-list__item__accordion-body) > button,
-  .bal-list__item__icon
+  & > .bal-list__item:not(.bal-list__item__accordion-body),
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > a,
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > div,
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > button,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head > .bal-list__item__icon,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head,
+  & > .bal-list__item > .bal-list__item__icon
     min-height: 48px
 
 .bal-list--size-large
-  .bal-list__item:not(.bal-list__item__accordion-body),
-  .bal-list__item:not(.bal-list__item__accordion-body) > a,
-  .bal-list__item:not(.bal-list__item__accordion-body) > div,
-  .bal-list__item:not(.bal-list__item__accordion-body) > button,
-  .bal-list__item__icon
+  & > .bal-list__item:not(.bal-list__item__accordion-body),
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > a,
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > div,
+  & > .bal-list__item:not(.bal-list__item__accordion-body) > button,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head > .bal-list__item__icon,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head,
+  & > .bal-list__item > .bal-list__item__icon
     min-height: 72px
 
 .bal-list__item--clickable
@@ -210,8 +214,8 @@
 
 .bal-list--border .bal-list__item:not(.bal-list__item--sub-accordion):not(.bal-list__item__accordion-body)
   & > div:after,
-  a:not(.is-link):after,
-  button:not(.button):not([type='button']):after
+  a.bal-list__item__trigger:not(.is-link):after,
+  button.bal-list__item__trigger:not(.button):not([type='button']):after
     content: ''
     height: 2px
     border-radius: var(--bal-radius-normal)
@@ -223,8 +227,8 @@
 
 .bal-list--border.bal-list--context-main-nav .bal-list__item:not(.bal-list__item--sub-accordion)
   & > div:after,
-  a:not(.is-link):after,
-  button:not(.button):not([type='button']):after
+  a.bal-list__item__trigger:not(.is-link):after,
+  button.bal-list__item__trigger:not(.button):not([type='button']):after
     background: var(--bal-color-grey)
     height: 1px
 

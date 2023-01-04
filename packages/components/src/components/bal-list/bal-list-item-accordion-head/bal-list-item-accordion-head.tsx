@@ -71,7 +71,6 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
         onClick={this.onClick}
       >
         <slot></slot>
-        {this.accordionOpen ? 'Open' : 'Closed'}
         <bal-list-item-icon right>
           <bal-icon
             class="bal-list__item__accordion-head__icon"
