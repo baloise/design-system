@@ -372,52 +372,50 @@ export class Navigation implements ComponentInterface {
             'display': this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
           }}
         >
-          <bal-list border accordion-one-level size="large">
+          <bal-list border accordion-one-level>
             {this.levels.map(meta => (
               <bal-list-item accordion class="bal-nav__main-mobile__main-accordion">
                 <bal-list-item-accordion-head icon="nav-go-down">
                   <bal-list-item-content>
-                    <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>
+                    <bal-list-item-title level="large">{meta.label}</bal-list-item-title>
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
                 <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
-                  <div style={{ width: '100%' }}>
-                    {meta.link && (
-                      <div class="bal-nav__main-mobile__link">
-                        <a href={meta.link} {...meta.trackingData}>
-                          {meta.linkLabel}
-                        </a>
-                      </div>
-                    )}
-                    <bal-list border class="pt-normal pl-normal" size="small">
-                      {meta.subLevels?.map(main => {
-                        return main.isTabLink ? (
-                          <bal-list-item sub-accordion-item href={main.link} target={main.target}>
+                  {meta.link && (
+                    <div class="bal-nav__main-mobile__link">
+                      <a href={meta.link} {...meta.trackingData}>
+                        {meta.linkLabel}
+                      </a>
+                    </div>
+                  )}
+                  <bal-list border size="small">
+                    {meta.subLevels?.map(main => {
+                      return main.isTabLink ? (
+                        <bal-list-item sub-accordion-item href={main.link} target={main.target}>
+                          <bal-list-item-content>
+                            <bal-list-item-title level="medium">{main.label}</bal-list-item-title>
+                          </bal-list-item-content>
+                        </bal-list-item>
+                      ) : (
+                        <bal-list-item accordion sub-accordion-item>
+                          <bal-list-item-accordion-head icon="nav-go-down">
                             <bal-list-item-content>
-                              <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
+                              <bal-list-item-title level="medium">{main.label}</bal-list-item-title>
                             </bal-list-item-content>
-                          </bal-list-item>
-                        ) : (
-                          <bal-list-item accordion sub-accordion-item>
-                            <bal-list-item-accordion-head icon="nav-go-down">
-                              <bal-list-item-content>
-                                <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
-                              </bal-list-item-content>
-                            </bal-list-item-accordion-head>
-                            <bal-list-item-accordion-body>
-                              <bal-navigation-menu
-                                link-href={main.link}
-                                link-name={main.linkLabel}
-                                target={main.target}
-                                elements={main.subLevels}
-                                tracking={main.trackingData}
-                              />
-                            </bal-list-item-accordion-body>
-                          </bal-list-item>
-                        )
-                      })}
-                    </bal-list>
-                  </div>
+                          </bal-list-item-accordion-head>
+                          <bal-list-item-accordion-body>
+                            <bal-navigation-menu
+                              link-href={main.link}
+                              link-name={main.linkLabel}
+                              target={main.target}
+                              elements={main.subLevels}
+                              tracking={main.trackingData}
+                            />
+                          </bal-list-item-accordion-body>
+                        </bal-list-item>
+                      )
+                    })}
+                  </bal-list>
                 </bal-list-item-accordion-body>
               </bal-list-item>
             ))}
