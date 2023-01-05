@@ -1264,10 +1264,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav": boolean;
-        /**
           * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": undefined;
@@ -4884,10 +4880,6 @@ declare namespace LocalJSX {
           * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav"?: boolean;
         /**
           * @deprecated If `true` the list can be used on a dark background
          */

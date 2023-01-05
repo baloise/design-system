@@ -26,8 +26,8 @@ import { raf, transitionEndAsync } from '../../../utils/helpers'
 })
 export class ListItem implements ComponentInterface, BalConfigObserver, Loggable {
   static selectors = {
-    accordionHead: '.bal-list__item__trigger > .bal-list__item__accordion-head',
-    accordionBody: '.bal-list__item__trigger > .bal-list__item__accordion-body',
+    accordionHead: '.bal-list__item__trigger > bal-list-item-accordion-head',
+    accordionBody: '.bal-list__item__trigger > bal-list-item-accordion-body',
     accordionBodyWrapper:
       '.bal-list__item__trigger > .bal-list__item__accordion-body > .bal-list__item__accordion-body__content',
   }
@@ -104,25 +104,16 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
   connectedCallback() {
     attachComponentToConfig(this)
+    this.addEventListenerAccordionChange()
   }
 
   componentDidLoad() {
-    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
-    if (accordionHeadEl) {
-      accordionHeadEl.addEventListener('balAccordionChange', this.accordionChanged)
-
-      this.accordionOpen = accordionHeadEl.accordionOpen
-      this.updateState(true)
-    }
+    this.addEventListenerAccordionChange()
   }
 
   disconnectedCallback() {
     detachComponentToConfig(this)
-
-    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
-    if (accordionHeadEl) {
-      accordionHeadEl.removeEventListener('balAccordionChange', this.accordionChanged)
-    }
+    this.removeEventListenerAccordionChange()
   }
 
   /**
@@ -183,6 +174,23 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private addEventListenerAccordionChange = () => {
+    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
+    if (accordionHeadEl) {
+      accordionHeadEl.addEventListener('balAccordionChange', this.accordionChanged)
+
+      this.accordionOpen = accordionHeadEl.accordionOpen
+      this.updateState(true)
+    }
+  }
+
+  private removeEventListenerAccordionChange = () => {
+    const accordionHeadEl = this.el.querySelector<any>(ListItem.selectors.accordionHead)
+    if (accordionHeadEl) {
+      accordionHeadEl.removeEventListener('balAccordionChange', this.accordionChanged)
+    }
+  }
 
   private updateHead = () => {
     const headEl = this.el.querySelector('bal-list-item-accordion-head')

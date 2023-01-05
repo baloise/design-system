@@ -65,7 +65,22 @@ export namespace Props {
 
   export type BalCloseSize = 'small' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
+  export type BalHeadingLevel =
+    | 'display'
+    | 'display-2'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'xxxxx-large'
+    | 'xxxx-large'
+    | 'xxx-large'
+    | 'xx-large'
+    | 'x-large'
+    | 'large'
+    | 'medium'
+    | 'normal'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalSelectFilter = 'includes' | 'starts-with'

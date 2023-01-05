@@ -1,6 +1,9 @@
-import { Component, Host, h, Prop, Element, ComponentInterface } from '@stencil/core'
+import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
 import { Props } from '../../../types'
+import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
+import { isPlatform } from '../../../utils/platform'
+import { ResizeHandler, ResizeObserverHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
@@ -9,6 +12,10 @@ import { Loggable, LogInstance, Logger } from '../../../utils/log'
 })
 export class ListItemAccordionBody implements ComponentInterface, Loggable {
   private contentElWrapper: HTMLDivElement | undefined
+  private currentRaf: number | undefined
+  private resizeHandler = ResizeObserverHandler()
+  private resizeWidthHandler = ResizeHandler()
+  private isMobile = isPlatform('mobile')
 
   @Element() el!: HTMLElement
 
@@ -40,20 +47,63 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  componentDidRender() {
-    if (this.accordionGroup !== undefined || this.accordionGroup !== '') {
-      const allAccordionBodies = Array.from(document.body.querySelectorAll('bal-list-item-accordion-body'))
-      const groupContents = allAccordionBodies
-        .filter(el => el.accordionGroup === this.accordionGroup)
-        .map(el => el.querySelector('.bal-list__item__accordion-body__content'))
-        .filter(el => el) as HTMLElement[]
-
-      const groupContentHeight = groupContents.reduce((acc, el) => (acc < el.offsetHeight ? el.offsetHeight : acc), 0)
-      if (this.contentElWrapper) {
-        this.contentElWrapper.style.setProperty('min-height', `${groupContentHeight}px`)
-      }
-    }
+  connectedCallback() {
+    this.resizeHandler.connect(this.el, this.debounceSetMinHeightForAnimation)
+    this.setMinHeightForAnimation()
   }
+
+  componentDidRender() {
+    this.setMinHeightForAnimation()
+  }
+
+  disconnectedCallback() {
+    this.resizeHandler.disconnect()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('resize', { target: 'window' })
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.isMobile = isPlatform('mobile')
+      this.debounceSetMinHeightForAnimation()
+    })
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private setMinHeightForAnimation = () => {
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+    }
+
+    if (this.isMobile && this.contentElWrapper) {
+      this.contentElWrapper.style.removeProperty('min-height')
+      return
+    }
+
+    raf(() => {
+      if (this.accordionGroup !== undefined && this.accordionGroup !== '') {
+        const allAccordionBodies = Array.from(document.body.querySelectorAll('bal-list-item-accordion-body'))
+        const groupContents = allAccordionBodies
+          .filter(el => el.accordionGroup === this.accordionGroup)
+          .map(el => el.querySelector('.bal-list__item__accordion-body__content'))
+          .filter(el => el) as HTMLElement[]
+
+        const groupContentHeight = groupContents.reduce((acc, el) => (acc < el.offsetHeight ? el.offsetHeight : acc), 0)
+        if (this.contentElWrapper && groupContentHeight > 0 && this.el.offsetHeight !== groupContentHeight) {
+          this.contentElWrapper.style.setProperty('min-height', `${groupContentHeight}px`)
+        }
+      }
+    })
+  }
+  private debounceSetMinHeightForAnimation = debounce(this.setMinHeightForAnimation.bind(this), 100)
 
   /**
    * RENDER

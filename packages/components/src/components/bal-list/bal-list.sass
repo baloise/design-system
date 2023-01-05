@@ -124,7 +124,7 @@
   button:not(.button)
     +hover()
       &:hover
-        .bal-list__item__title h5,
+        .bal-list__item__title .title,
         .bal-list__item__subtitle p
           color: var(--bal-color-light-blue-5) !important
 
@@ -136,7 +136,7 @@
             fill: var(--bal-color-light-blue-5) !important
 
     &:active
-      .bal-list__item__title h5,
+      .bal-list__item__title .title,
       .bal-list__item__subtitle p
         +desktop()
           color: var(--bal-color-blue-6) !important
@@ -185,7 +185,7 @@
             fill: var(--bal-color-light-blue-2) !important
 
     &:active
-      .bal-list__item__title h5,
+      .bal-list__item__title .title,
       .bal-list__item__subtitle p
         +desktop()
           color: var(--bal-color-light-blue-4) !important
@@ -212,7 +212,9 @@
     pointer-events: none !important
     user-select: none !important
 
-.bal-list--border .bal-list__item:not(.bal-list__item--sub-accordion):not(.bal-list__item__accordion-body)
+// .bal-list--border .bal-list__item:not(.bal-list__item--sub-accordion):not(.bal-list__item__accordion-body)
+.bal-list--border:not(.bal-list--nested) > .bal-list__item,
+.bal-list--border.bal-list--nested > .bal-list__item:not(:last-child)
   & > div:after,
   a.bal-list__item__trigger:not(.is-link):after,
   button.bal-list__item__trigger:not(.button):not([type='button']):after
@@ -247,7 +249,7 @@
     button:not(.button):not([type='button']):after
       background: var(--bal-color-grey-2)
 
-  .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
+  .bal-list__item:not(.bal-list__item--disabled):not(.bal-list__item--accordion).bal-list__item--clickable
     & > div,
     a:not(.is-link),
     button:not(.button)
@@ -302,7 +304,7 @@
   &,
   a:not(.is-link),
   button:not(.button)
-    .bal-list__item__title h5,
+    .bal-list__item__title .title,
     .bal-list__item__subtitle p
       color: var(--bal-color-grey-5) !important
 
@@ -320,7 +322,7 @@
     &,
     &:hover,
     &:active
-      .bal-list__item__title h5,
+      .bal-list__item__title .title,
       .bal-list__item__subtitle p
         color: var(--bal-color-grey-5) !important
 
@@ -339,7 +341,7 @@
     &,
     &:hover,
     &:active
-      .bal-list__item__title h5,
+      .bal-list__item__title .title,
       .bal-list__item__subtitle p
         color: var(--bal-color-primary-4) !important
 
@@ -375,10 +377,6 @@
 
 .bal-list__item__accordion-head
   padding: 0 !important
-
-// .bal-list__item__accordion-head--open .bal-list__item__accordion-head__icon
-//   .bal-list:not(.bal-list--context-main-nav) &
-//     transform: rotate(45deg)
 
 //
 // accordion body
@@ -428,33 +426,26 @@
   &--space-between
     justify-content: space-between
 
-  // min-height: 0 !important
+.bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+  position: absolute
+  bottom: -0.5rem
+  left: 0
+  content: ''
+  height: 2px
+  width: 100%
+  border-radius: var(--bal-radius-normal)
+  background: var(--bal-color-grey-2)
 
-  // max-height: 0
-  // overflow: hidden
-  // transition: max-height 0.3s ease-in-out
-
-// .bal-list__item.is-sub-accordion-item
-//   .bal-list__item__accordion-body
-//     &:after
-//       content: ''
-//       background: var(--bal-color-grey)
-//       height: 1px
-//       width: 100%
-//       position: absolute
-//       bottom: 0
-//       left: 0
-//       right: 0
-
-//   &:last-child
-//     .bal-list__item__accordion-body
-//       padding-top: 0
-//       &:after
-//         display: none
-
-// .bal-list__item__accordion-body .bal-list > .bal-list__item:last-child
-//   .bal-list__item__trigger:after
-//     display: none
+.bal-list__item__accordion-body__content > .bal-list
+  padding-left: 1rem
 
 .bal-list--background-dark .bal-list__item__accordion-body .bal-list__item__content > p
   color: var(--bal-color-white)
+
+.bal-list__item--animated > .bal-list__item__trigger
+  transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+
+.bal-list__item--expanded > .bal-list__item__trigger,
+.bal-list__item--expanding > .bal-list__item__trigger
+  padding-bottom: 0

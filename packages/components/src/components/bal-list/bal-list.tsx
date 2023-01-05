@@ -60,10 +60,10 @@ export class List {
    */
   @Prop() size: Props.BalListSize = ''
 
-  /**
-   * If `true` the list can be used as an accordion in meta nav
-   */
-  @Prop() inMainNav = false
+  // /**
+  //  * If `true` the list can be used as an accordion in meta nav
+  //  */
+  // @Prop() inMainNav = false
 
   componentWillLoad() {
     this.invertedHandler()
@@ -73,12 +73,15 @@ export class List {
   render() {
     const block = BEM.block('list')
 
+    const closestListEl = this.el.closest('.bal-list')
+    const nested = closestListEl !== null && closestListEl !== this.el
+
     return (
       <Host
         role="list"
         class={{
           ...block.class(),
-          ...block.modifier('context-main-nav').class(this.inMainNav),
+          ...block.modifier('nested').class(nested),
           ...block.modifier('disabled').class(this.disabled),
           ...block.modifier('border').class(this.border),
           ...block.modifier(`size-${this.size}`).class(this.size !== ''),
