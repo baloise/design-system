@@ -31,3 +31,9 @@ declare global {
 }
 
 Cypress.Commands.add('mount', mount)
+
+Cypress.Commands.add('disableAnimation', () => {
+  cy.window().then(win => {
+    ;(win as any).BaloiseDesignSystem.config.animated = false
+  })
+})
