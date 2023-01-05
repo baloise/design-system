@@ -372,7 +372,7 @@ export class Navigation implements ComponentInterface {
             'display': this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
           }}
         >
-          <bal-list border accordion-one-level>
+          <bal-list border accordion-one-level size="small" class="bal-nav__main__list">
             {this.levels.map(meta => (
               <bal-list-item accordion class="bal-nav__main-mobile__main-accordion">
                 <bal-list-item-accordion-head icon="nav-go-down">
@@ -388,7 +388,7 @@ export class Navigation implements ComponentInterface {
                       </a>
                     </div>
                   )}
-                  <bal-list border size="small">
+                  <bal-list size="small">
                     {meta.subLevels?.map(main => {
                       return main.isTabLink ? (
                         <bal-list-item sub-accordion-item href={main.link} target={main.target}>

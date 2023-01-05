@@ -160,8 +160,7 @@
         padding-bottom: 0
     +element(link)
       display: block
-      padding-top: 1rem
-      padding-bottom: .5rem
+      padding-bottom: 1rem
       > a
         color: var(--bal-color-blue)
         position: relative
@@ -254,8 +253,7 @@
       display: none
     +element(link)
       display: block
-      padding-top: 1rem
-      padding-bottom: .5rem
+      padding-bottom: 1rem
       position: relative
 
       // &:after
@@ -336,3 +334,7 @@
   .bal-nav__menu
     +desktop
       padding-bottom: 4.5rem
+
+.bal-nav__main__list.bal-list--border > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-nav__main__list.bal-list--border > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+  bottom: -2rem
