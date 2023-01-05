@@ -1,5 +1,5 @@
 describe('bal-accordion', () => {
-  before(() => cy.platform('desktop').pageA11y('/components/bal-accordion/test/bal-accordion.a11y.html'))
+  beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-accordion/test/bal-accordion.a11y.html'))
 
   it('collapsed', () => {
     cy.getByTestId('accordion').testA11y()
