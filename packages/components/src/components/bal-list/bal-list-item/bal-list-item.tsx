@@ -104,11 +104,15 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
   connectedCallback() {
     attachComponentToConfig(this)
-    this.addEventListenerAccordionChange()
+    if (this.accordion) {
+      this.addEventListenerAccordionChange()
+    }
   }
 
   componentDidLoad() {
-    this.addEventListenerAccordionChange()
+    if (this.accordion) {
+      this.addEventListenerAccordionChange()
+    }
   }
 
   disconnectedCallback() {
@@ -143,19 +147,23 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    */
   @Method()
   async present() {
-    this.accordionOpen = true
-    this.updateHead()
-    this.expandAccordion()
+    if (this.accordion && this.accordionOpen === false) {
+      this.accordionOpen = true
+      this.updateHead()
+      this.expandAccordion()
+    }
   }
 
   /**
    * Closes the accordion
    */
   @Method()
-  async dismiss() {
-    this.accordionOpen = false
-    this.updateHead()
-    this.collapseAccordion()
+  async dismiss(ignoreNested = false) {
+    if (this.accordion && this.accordionOpen === true) {
+      this.accordionOpen = false
+      this.updateHead()
+      this.collapseAccordion(false, ignoreNested)
+    }
   }
 
   /**
@@ -163,10 +171,12 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    */
   @Method()
   async toggle() {
-    if (this.accordionOpen) {
-      this.dismiss()
-    } else {
-      this.present()
+    if (this.accordion) {
+      if (this.accordionOpen) {
+        this.dismiss()
+      } else {
+        this.present()
+      }
     }
   }
 
@@ -227,7 +237,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
     const parentListEl = this.el.closest('bal-list')
     if (parentListEl && parentListEl.accordionOneLevel) {
       const items = Array.from(parentListEl.querySelectorAll('bal-list-item')).filter(el => el !== this.el)
-      items.forEach(item => item.dismiss())
+      items.forEach(item => item.dismiss(true))
     }
 
     if (this.shouldAnimate()) {
@@ -251,7 +261,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
     }
   }
 
-  private collapseAccordion = (initialUpdate = false) => {
+  private collapseAccordion = (initialUpdate = false, ignoreNested = false) => {
     const contentEl = this.el.querySelector<HTMLElement>(ListItem.selectors.accordionBody)
 
     if (initialUpdate || contentEl === null) {
@@ -267,10 +277,12 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
       cancelAnimationFrame(this.currentRaf)
     }
 
-    const parentListEl = this.el.closest('bal-list')
-    if (parentListEl && parentListEl.accordionOneLevel) {
-      const items = Array.from(this.el.querySelectorAll('bal-list-item'))
-      items.forEach(item => item.dismiss())
+    if (!ignoreNested) {
+      const parentListEl = this.el.closest('bal-list')
+      if (parentListEl && parentListEl.accordionOneLevel) {
+        const items = Array.from(this.el.querySelectorAll('bal-list-item')).filter(el => el !== this.el)
+        items.forEach(item => item.dismiss(true))
+      }
     }
 
     if (this.shouldAnimate()) {

@@ -65,15 +65,6 @@
 .bal-list__item__content
   flex: 1
 
-// TODO: check this special style for the navigation
-.bal-list.bal-list--context-main-nav .bal-list__item
-  +touch()
-    padding: 1rem 0
-    &.bal-list__item--sub-accordion
-      padding: 0 1rem .25rem
-      &:last-child
-        padding-bottom: 0
-
 .bal-list__item__content
   justify-content: center
   &--start
@@ -212,12 +203,11 @@
     pointer-events: none !important
     user-select: none !important
 
-// .bal-list--border .bal-list__item:not(.bal-list__item--sub-accordion):not(.bal-list__item__accordion-body)
 .bal-list--border:not(.bal-list--nested) > .bal-list__item,
 .bal-list--border.bal-list--nested > .bal-list__item:not(:last-child)
   & > div:after,
-  a.bal-list__item__trigger:not(.is-link):after,
-  button.bal-list__item__trigger:not(.button):not([type='button']):after
+  & > a.bal-list__item__trigger:not(.is-link):after,
+  & > button.bal-list__item__trigger:not(.button):not([type='button']):after
     content: ''
     height: 2px
     border-radius: var(--bal-radius-normal)
@@ -226,20 +216,6 @@
     bottom: 0
     left: 0
     right: 0
-
-.bal-list--border.bal-list--context-main-nav .bal-list__item:not(.bal-list__item--sub-accordion)
-  & > div:after,
-  a.bal-list__item__trigger:not(.is-link):after,
-  button.bal-list__item__trigger:not(.button):not([type='button']):after
-    background: var(--bal-color-grey)
-    height: 1px
-
-.bal-list--border.bal-list--context-main-nav .bal-list__item
-  &:last-child
-    & > div:after,
-    a:after,
-    button:after
-      display: none
 
 .bal-list--border
   .bal-list__item,
@@ -449,3 +425,6 @@
 .bal-list__item--expanded > .bal-list__item__trigger,
 .bal-list__item--expanding > .bal-list__item__trigger
   padding-bottom: 0
+
+.bal-list--border > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-body > div
+  padding-bottom: 2px !important
