@@ -1288,7 +1288,7 @@ export namespace Components {
         /**
           * Closes the accordion
          */
-        "dismiss": () => Promise<void>;
+        "dismiss": (ignoreNested?: boolean) => Promise<void>;
         /**
           * Specifies the URL of the page the link goes to
          */
