@@ -3,6 +3,7 @@ import readme from '../readme.md'
 import IconDocument from '../../../../../../icons/svg/document.svg'
 import IconAccount from '../../../../../../icons/svg/account.svg'
 import testing from './testing.md'
+import { Basic } from './bal-input.stories'
 
 <bal-doc-banner id="story--components-form-input--basic" status="rebranded,sass">Input</bal-doc-banner>
 
@@ -34,6 +35,7 @@ import testing from './testing.md'
     <a class="button is-primary" href="?path=/story/components-form-input--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="input"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

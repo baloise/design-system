@@ -19,6 +19,10 @@ export class DocStackblitz implements ComponentInterface {
   @Prop() template!: string
   @Prop() component!: string
 
+  @Prop() name2!: string
+  @Prop() template2!: string
+  @Prop() component2!: string
+
   openProject = async () => {
     const [
       main_ts,
@@ -50,6 +54,16 @@ export class DocStackblitz implements ComponentInterface {
       ? this.parseMarkdown(this.component)
       : this.updateModules(example_component_ts)
 
+    let secondComponent = {}
+    if (this.name2 !== undefined) {
+      secondComponent = {
+        [`src/app/${this.name2}.component.ts`]: this.parseMarkdown(this.component2),
+        [`src/app/${this.name2}.component.html`]: this.parseMarkdown(this.template2),
+      }
+    }
+
+    console.log(secondComponent)
+
     sdk.openProject(
       {
         template: 'angular-cli',
@@ -64,6 +78,7 @@ export class DocStackblitz implements ComponentInterface {
           'src/app/example.component.ts': new_example_component_ts,
           'src/app/example.component.html': example_component_html,
           'src/app/example.component.css': '',
+          ...secondComponent,
           'src/app/app.component.css': app_component_css,
           'src/index.html': '<app-root></app-root>',
           'src/styles.css': styles_css,
