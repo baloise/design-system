@@ -113,3 +113,9 @@ button.sbdocs-top:active {
   color: #000739;
   border-color: #000739;
 }
+
+@media only screen and (max-width: 1364px) {
+  .sbdocs-toc, .sbdocs-top {
+    display: none !important;
+  }
+}
