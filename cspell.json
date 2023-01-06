@@ -1,10 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "ignorePaths": [
-    "node_modules/**",
-    "contributors.md"
-  ],
+  "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
   "words": [
     "stackblitz",
     "adipiscing",

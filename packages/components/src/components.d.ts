@@ -1705,6 +1705,14 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -5312,6 +5320,14 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
