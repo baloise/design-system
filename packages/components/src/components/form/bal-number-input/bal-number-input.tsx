@@ -118,6 +118,16 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Prop() exactNumber = false
 
   /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string
+
+  /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
@@ -359,6 +369,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           readonly={this.readonly}
           required={this.required}
           pattern={this.pattern}
+          min={this.min}
+          max={this.max}
           value={value}
           onInput={e => this.onInput(e)}
           onFocus={e => this.onFocus(e)}
