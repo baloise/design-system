@@ -280,7 +280,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
     if (!ignoreNested) {
       const parentListEl = this.el.closest('bal-list')
       if (parentListEl && parentListEl.accordionOneLevel) {
-        const items = Array.from(this.el.querySelectorAll('bal-list-item'))
+        const items = Array.from(this.el.querySelectorAll('bal-list-item')).filter(el => el !== this.el)
         items.forEach(item => item.dismiss(true))
       }
     }
