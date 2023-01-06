@@ -1,11 +1,10 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in dedicated changelog files.
 
 ## Packages
 
-Each package has its own changelog file. With every rel
+Each package has its own changelog file.
 
 | Package                                                                                                                     | Status                                                                                                                                                    | Description                                                             |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -22,5 +21,6 @@ Each package has its own changelog file. With every rel
 
 ## Previous Versions
 
-- [Older versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_v12.md)
-- [Rebranding versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_NEXT.md)
+Previous version below 12.2.0 are document in a separate changelog file.
+
+- [Previous versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_v12.md)
