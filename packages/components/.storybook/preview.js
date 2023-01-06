@@ -7,6 +7,14 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
 ReactSyntaxHighlighter.registerLanguage('diff', diff)
 
+export const globalTypes = {
+  framework: {
+    name: 'Framework',
+    description: 'Integration technology',
+    defaultValue: 'angular',
+  },
+};
+
 export const decorators = [
   story => ({
     components: { story },

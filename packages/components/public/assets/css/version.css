@@ -1,0 +1,46 @@
+.my-version {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: bold;
+  height: 28px;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 8px 7px;
+  color: #000d6e;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.my-version:hover,
+.my-version:focus-visible {
+  background: rgba(217, 48, 76, 0.12);
+  color: #d9304c;
+}
+
+.my-version:focus-visible {
+  outline: auto;
+}
+
+.my-version__icon {
+  height: 14px;
+  width: 14px;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+  display: block;
+}
+
+.my-version__label {
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 1364px) {
+  .my-version__label {
+    display: none !important;
+  }
+}

@@ -21,20 +21,6 @@ import readme from '../readme.md'
 </bal-snackbar>
 ```
 
-## Controller
-
-Snackbar can be created with the balSnackbarController. The default duration is 5000 milliseconds. The create method return the instance of the created snackbar, so there you can access all the props and methods of it.
-
-```typescript
-import { balSnackbarController } from '@baloise/design-system-components'
-
-// Creates and opens a new unique snackbar
-const mySnackbar = balSnackbarController.create({ message: 'Hi I am a default snackbar!', duration: 1000 })
-
-// Closes the snackbar again
-mySnackbar.close()
-```
-
 <Canvas withSource="none" className="has-visible-overflow">
   <Story id="components-notice-snackbar--basic" />
 </Canvas>
@@ -55,26 +41,26 @@ import exampleTs from './usage/angular/example_component_ts.md'
 
 <Description markdown={readme} />
 
-<br />
+import angularIntegration from './integration/angular.md'
+import htmlIntegration from './integration/html.md'
+import reactIntegration from './integration/react.md'
+import vueIntegration from './integration/vue.md'
 
-## Integration
+<div class="framework-angular">
+  <Description markdown={angularIntegration} />
+</div>
 
-This documentation explains how to implement and use Baloise Design System components across different technologies.
+<div class="framework-html">
+  <Description markdown={htmlIntegration} />
+</div>
 
-<bal-doc-link-list>
-  <a href="?path=/docs/development-getting-started-html5-overview--page">
-    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-vue-overview--page">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-angular-overview--page">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-react-overview--page">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<div class="framework-react">
+  <Description markdown={reactIntegration} />
+</div>
+
+<div class="framework-vue">
+  <Description markdown={vueIntegration} />
+</div>
 
 import testing from './testing.md'
 

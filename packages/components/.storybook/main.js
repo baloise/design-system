@@ -7,6 +7,7 @@ module.exports = {
     './addons/source/index.js',
     './addons/vue-source/index.js',
     './addons/version/index.js',
+    './addons/framework/index.js',
   ],
   features: {
     postcss: false,

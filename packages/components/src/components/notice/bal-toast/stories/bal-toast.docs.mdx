@@ -17,21 +17,6 @@ import readme from '../readme.md'
 <bal-toast color="success">Lorem ipsum dolor sit amet, consectetur adipisicing!</bal-toast>
 ```
 
-## Controller
-
-Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
-The `create` method return the instance of the created toast, so there you can access all the props and methods of it.
-
-```typescript
-import { balToastController } from '@baloise/design-system-components'
-
-balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
-balToastController.create({ message: 'Warning!', color: 'warning' })
-
-const myToast = balToastController.create({ message: 'Danger zone!', color: 'danger' })
-myToast.close()
-```
-
 <Canvas withSource="none" className="has-visible-overflow">
   <Story id="components-notice-toast--basic" />
 </Canvas>
@@ -52,26 +37,26 @@ import exampleTs from './usage/angular/example_component_ts.md'
 
 <Description markdown={readme} />
 
-<br />
+import angularIntegration from './integration/angular.md'
+import htmlIntegration from './integration/html.md'
+import reactIntegration from './integration/react.md'
+import vueIntegration from './integration/vue.md'
 
-## Integration
+<div class="framework-angular">
+  <Description markdown={angularIntegration} />
+</div>
 
-This documentation explains how to implement and use Baloise Design System components across different technologies.
+<div class="framework-html">
+  <Description markdown={htmlIntegration} />
+</div>
 
-<bal-doc-link-list>
-  <a href="?path=/docs/development-getting-started-html5-overview--page">
-    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-vue-overview--page">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-angular-overview--page">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-react-overview--page">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<div class="framework-react">
+  <Description markdown={reactIntegration} />
+</div>
+
+<div class="framework-vue">
+  <Description markdown={vueIntegration} />
+</div>
 
 import testing from './testing.md'
 

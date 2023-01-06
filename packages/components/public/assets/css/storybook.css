@@ -3,23 +3,33 @@ html {
   font-family: 'BaloiseCreateText';
 }
 
-.my-version-tag {
-  background: #e9fbf7;
-  border: 1px solid #94e3d4;
-  color: #000d6e;
-  font-family: 'BaloiseCreateHeadline';
-  font-weight: 700;
-  font-size: 16px;
-  border-radius: 4px;
-  padding: 4px 8px;
-  margin-left: 16px !important;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* .my-version-tag {
   user-select: none;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: inherit;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: bold;
+  height: 28px;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 8px 7px;
+  color: #000d6e;
+  gap: 4px;
 }
+
+.my-version-tag__label {
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 1364px) {
+  .my-version-tag__label {
+    display: none !important;
+  }
+} */
 
 .search-field input {
   border-radius: 4px;

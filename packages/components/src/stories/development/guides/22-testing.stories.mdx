@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs'
 
 <Meta
-  title="Development/Implementation/Testing"
+  title="Development/Guides/Testing"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,9 +9,12 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-<bal-doc-banner id="testing" subtitle="Implementation">Testing</bal-doc-banner>
+<bal-doc-banner id="testing" subtitle="Guides">Testing</bal-doc-banner>
 
-The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
+<bal-doc-lead>
+The Baloise Design System provides a collection of custom cypress commands for our components.
+Moreover, some basic cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+</bal-doc-lead>
 
 ## Prerequisites
 
@@ -56,7 +59,7 @@ describe('Accordion', () => {
 })
 ```
 
-### Selectors
+## Selectors
 
 It is recommended to set specific test attributes `data-testid` on the elements to test.
 
@@ -83,7 +86,7 @@ describe('Button', () => {
 })
 ```
 
-#### Component Selectors (WIP)
+### Component Selectors (WIP)
 
 For each component we define internally some data-testid selectors.
 
@@ -98,9 +101,9 @@ describe('Accordion', () => {
 })
 ```
 
-### Component Commands
+## Component Commands
 
-#### getByTestId
+### getByTestId
 
 Gets the element / component by the attribute `data-testid` and waits until fully loaded.
 
@@ -108,7 +111,7 @@ Gets the element / component by the attribute `data-testid` and waits until full
 cy.getByTestId('button')
 ```
 
-#### disableAnimation
+### disableAnimation
 
 Disables the animation of all the components.
 
@@ -116,7 +119,7 @@ Disables the animation of all the components.
 cy.disableAnimation()
 ```
 
-#### getComponent
+### getComponent
 
 Gets the element / component by jquery selector and waits until fully loaded.
 
@@ -124,7 +127,7 @@ Gets the element / component by jquery selector and waits until fully loaded.
 cy.getComponent('bal-button')
 ```
 
-#### wrapComponent
+### wrapComponent
 
 Wraps the element / component and waits until fully loaded.
 
@@ -132,7 +135,7 @@ Wraps the element / component and waits until fully loaded.
 cy.wrapComponent($el)
 ```
 
-#### waitForComponents
+### waitForComponents
 
 Waits until the component has fully loaded.
 
@@ -157,4 +160,4 @@ cy.platform('desktop')
 - [Custom Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/custom)
 - [Override Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/overrides)
 
-<bal-doc-github link="/stories/development/implementation/22-testing.stories.mdx"></bal-doc-github>
+<bal-doc-github link="/stories/development/guides/22-testing.stories.mdx"></bal-doc-github>

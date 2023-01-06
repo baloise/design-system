@@ -58,26 +58,16 @@ import modalTs from './usage/angular/modal_component_ts.md'
 <Description markdown={modalHeader} />
 <Description markdown={modalBody} />
 
-<br />
+import angularIntegration from './integration/angular.md'
+import vueIntegration from './integration/vue.md'
 
-## Integration
+<div class="framework-angular">
+  <Description markdown={angularIntegration} />
+</div>
 
-This documentation explains how to implement and use Baloise Design System components across different technologies.
-
-<bal-doc-link-list>
-  <a href="?path=/docs/development-getting-started-html5-overview--page">
-    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-vue-overview--page">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-implementation-modal--page#usage-with-angular">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-react-overview--page">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<div class="framework-vue">
+  <Description markdown={vueIntegration} />
+</div>
 
 import testing from './testing.md'
 

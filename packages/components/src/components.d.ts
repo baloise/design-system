@@ -670,6 +670,8 @@ export namespace Components {
         "subject": string;
         "template": '' | 'html5' | 'angular' | 'vue' | 'react';
     }
+    interface BalDocPreview {
+    }
     interface BalDocShades {
         "color": string;
     }
@@ -2878,6 +2880,12 @@ declare global {
         prototype: HTMLBalDocLinkListItemElement;
         new (): HTMLBalDocLinkListItemElement;
     };
+    interface HTMLBalDocPreviewElement extends Components.BalDocPreview, HTMLStencilElement {
+    }
+    var HTMLBalDocPreviewElement: {
+        prototype: HTMLBalDocPreviewElement;
+        new (): HTMLBalDocPreviewElement;
+    };
     interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
     }
     var HTMLBalDocShadesElement: {
@@ -3462,6 +3470,7 @@ declare global {
         "bal-doc-lead": HTMLBalDocLeadElement;
         "bal-doc-link-list": HTMLBalDocLinkListElement;
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
+        "bal-doc-preview": HTMLBalDocPreviewElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
         "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
@@ -4244,6 +4253,8 @@ declare namespace LocalJSX {
         "image"?: string;
         "subject"?: string;
         "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
+    interface BalDocPreview {
     }
     interface BalDocShades {
         "color"?: string;
@@ -6230,6 +6241,7 @@ declare namespace LocalJSX {
         "bal-doc-lead": BalDocLead;
         "bal-doc-link-list": BalDocLinkList;
         "bal-doc-link-list-item": BalDocLinkListItem;
+        "bal-doc-preview": BalDocPreview;
         "bal-doc-shades": BalDocShades;
         "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
@@ -6359,6 +6371,7 @@ declare module "@stencil/core" {
             "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
             "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
+            "bal-doc-preview": LocalJSX.BalDocPreview & JSXBase.HTMLAttributes<HTMLBalDocPreviewElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
             "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;

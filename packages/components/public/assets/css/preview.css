@@ -199,5 +199,44 @@ table.sbdocs-table tbody tr td {
 }
 
 .docs-story .st0 {
-  fill: inherit !important
+  fill: inherit !important;
+}
+
+.my-doc-content {
+  padding-top: 20px;
+}
+
+.framework-angular,
+.framework-html,
+.framework-react,
+.framework-vue {
+  display: none;
+  visibility: hidden;
+}
+
+.my-framework-angular .framework-angular,
+.my-framework-html .framework-html,
+.my-framework-react .framework-react,
+.my-framework-vue .framework-vue {
+  display: inherit;
+  visibility: visible;
+}
+
+.my-preview-html {
+  position: relative;
+  overflow: hidden;
+  margin: 25px 0 40px;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.my-preview-html > div {
+  display: block;
+  position: relative;
+  flex-flow: column wrap;
+  overflow: auto;
+  padding: 30px 20px;
+  margin: -10px;
 }
