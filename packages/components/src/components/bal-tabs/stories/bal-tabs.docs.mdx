@@ -1,6 +1,7 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { Basic } from './bal-tabs.stories'
 
-<bal-doc-banner id="story--components-tabs--basic" status="rebranded,sass">Tabs</bal-doc-banner>
+<bal-doc-banner id="story--components-tabs--basic" >Tabs</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-tabs--basic">Overview</a>
@@ -24,6 +25,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
     <a class="button is-primary" href="?path=/story/components-tabs--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="tabs"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

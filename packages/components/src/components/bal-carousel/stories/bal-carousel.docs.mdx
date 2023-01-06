@@ -1,8 +1,9 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 import readmeItem from '../bal-carousel-item/readme.md'
+import { Basic } from './bal-carousel.stories'
 
-<bal-doc-banner id="story--components-carousel--basic" status="rebranded,sass">Carousel</bal-doc-banner>
+<bal-doc-banner id="story--components-carousel--basic" >Carousel</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-carousel--basic">Overview</a>
@@ -13,7 +14,7 @@ import readmeItem from '../bal-carousel-item/readme.md'
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
 
-<bal-doc-lead>TODO</bal-doc-lead>
+<bal-doc-lead>The carousel component combines all the slide use cases.</bal-doc-lead>
 
 <Canvas withSource="open">
   <Story id="components-carousel--basic" />
@@ -24,6 +25,7 @@ import readmeItem from '../bal-carousel-item/readme.md'
     <a class="button is-primary" href="?path=/story/components-carousel--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="carousel"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

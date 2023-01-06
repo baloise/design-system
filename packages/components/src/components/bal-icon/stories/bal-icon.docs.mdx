@@ -1,8 +1,9 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
+import { Basic } from './bal-icon.stories'
 
-<bal-doc-banner id="story--components-icon--basic" status="rebranded,sass">Icon</bal-doc-banner>
+<bal-doc-banner id="story--components-icon--basic" >Icon</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-icon--basic">Overview</a>
@@ -29,6 +30,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-icon--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="icon"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

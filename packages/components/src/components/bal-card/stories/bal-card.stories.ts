@@ -62,7 +62,7 @@ export const Basic = args => ({
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button color="info">Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>`,

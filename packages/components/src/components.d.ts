@@ -633,6 +633,7 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
+        "color": string;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -672,6 +673,14 @@ export namespace Components {
     interface BalDocShades {
         "color": string;
     }
+    interface BalDocStackblitz {
+        "component": string;
+        "component2": string;
+        "modules": string;
+        "name2": string;
+        "template": string;
+        "template2": string;
+    }
     interface BalDocSupportColor {
         "color": string;
     }
@@ -694,13 +703,6 @@ export namespace Components {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
-    }
-    interface BalDocUsage {
-    }
-    interface BalDocUsageItem {
-        "image"?: boolean;
-        "subject"?: string;
-        "theme": 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -1702,6 +1704,14 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2876,6 +2886,12 @@ declare global {
         prototype: HTMLBalDocShadesElement;
         new (): HTMLBalDocShadesElement;
     };
+    interface HTMLBalDocStackblitzElement extends Components.BalDocStackblitz, HTMLStencilElement {
+    }
+    var HTMLBalDocStackblitzElement: {
+        prototype: HTMLBalDocStackblitzElement;
+        new (): HTMLBalDocStackblitzElement;
+    };
     interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
     }
     var HTMLBalDocSupportColorElement: {
@@ -2941,18 +2957,6 @@ declare global {
     var HTMLBalDocTokensSpacingElement: {
         prototype: HTMLBalDocTokensSpacingElement;
         new (): HTMLBalDocTokensSpacingElement;
-    };
-    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
-    }
-    var HTMLBalDocUsageElement: {
-        prototype: HTMLBalDocUsageElement;
-        new (): HTMLBalDocUsageElement;
-    };
-    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
-    }
-    var HTMLBalDocUsageItemElement: {
-        prototype: HTMLBalDocUsageItemElement;
-        new (): HTMLBalDocUsageItemElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -3467,6 +3471,7 @@ declare global {
         "bal-doc-link-list": HTMLBalDocLinkListElement;
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
@@ -3478,8 +3483,6 @@ declare global {
         "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
         "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
-        "bal-doc-usage": HTMLBalDocUsageElement;
-        "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4214,6 +4217,7 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
+        "color"?: string;
         "subtitle"?: string;
     }
     interface BalDocColor {
@@ -4253,6 +4257,14 @@ declare namespace LocalJSX {
     interface BalDocShades {
         "color"?: string;
     }
+    interface BalDocStackblitz {
+        "component": string;
+        "component2": string;
+        "modules": string;
+        "name2": string;
+        "template": string;
+        "template2": string;
+    }
     interface BalDocSupportColor {
         "color"?: string;
     }
@@ -4275,13 +4287,6 @@ declare namespace LocalJSX {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
-    }
-    interface BalDocUsage {
-    }
-    interface BalDocUsageItem {
-        "image"?: boolean;
-        "subject"?: string;
-        "theme"?: 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -5316,6 +5321,14 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
@@ -6229,6 +6242,7 @@ declare namespace LocalJSX {
         "bal-doc-link-list": BalDocLinkList;
         "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-shades": BalDocShades;
+        "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tabs": BalDocTabs;
         "bal-doc-tokens-border": BalDocTokensBorder;
@@ -6240,8 +6254,6 @@ declare namespace LocalJSX {
         "bal-doc-tokens-radius": BalDocTokensRadius;
         "bal-doc-tokens-shadow": BalDocTokensShadow;
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
-        "bal-doc-usage": BalDocUsage;
-        "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -6360,6 +6372,7 @@ declare module "@stencil/core" {
             "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
@@ -6371,8 +6384,6 @@ declare module "@stencil/core" {
             "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
             "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
-            "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
-            "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

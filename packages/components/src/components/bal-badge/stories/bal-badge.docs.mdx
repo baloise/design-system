@@ -1,13 +1,14 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-badge.stories'
+;<bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="badge"></bal-doc-stackblitz>
 
-<bal-doc-banner id="story--components-badge--basic"  status="rebranded,sass,visual">Badge</bal-doc-banner>
+<bal-doc-banner id="story--components-badge--basic">Badge</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-badge--basic">Overview</a>
   <a href="#examples">Examples</a>
   <a href="#component-api">API</a>
-  {/* <a href="#usage">Usage</a> */}
   <a href="#integration">Integration</a>
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
@@ -27,6 +28,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-accordion--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="badge"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

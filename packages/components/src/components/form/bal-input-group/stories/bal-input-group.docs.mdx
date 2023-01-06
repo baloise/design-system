@@ -1,7 +1,8 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-input-group.stories'
 
-<bal-doc-banner id="story--components-form-input-group--basic" status="rebranded,sass">Input Group</bal-doc-banner>
+<bal-doc-banner id="story--components-form-input-group--basic">Input Group</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-form-input-group--basic">Overview</a>
@@ -26,6 +27,10 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-form-input-group--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz
+      template={Basic.parameters.docs.source.code}
+      modules="input-group,input,tag,select,icon"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

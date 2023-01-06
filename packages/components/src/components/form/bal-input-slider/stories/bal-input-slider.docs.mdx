@@ -1,7 +1,8 @@
 import { Story, Canvas, Description, Source } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-input-slider.stories'
 
-<bal-doc-banner id="story--components-form-slider--basic" status="rebranded,sass">Input Slider</bal-doc-banner>
+<bal-doc-banner id="story--components-form-slider--basic" >Input Slider</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-form-slider--basic">Overview</a>
@@ -18,7 +19,7 @@ import readme from '../readme.md'
 </bal-doc-lead>
 
 <Canvas withSource="open">
-  <Story id="components-form-slider--basic" />
+  <Story id="components-form-input-slider--basic" />
 </Canvas>
 
 <bal-doc-app>
@@ -26,6 +27,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-form-slider--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="input-slider"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
@@ -38,7 +40,7 @@ import readme from '../readme.md'
 Combine the component with the `bal-field` components to add a label, validation message and more.
 
 <Canvas>
-  <Story id="components-form-slider--field-control" />
+  <Story id="components-form-input-slider--field-control" />
 </Canvas>
 
 ## Component Api

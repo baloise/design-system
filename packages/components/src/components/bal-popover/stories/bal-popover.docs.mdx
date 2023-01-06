@@ -2,6 +2,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import menu from '../bal-popover-content/readme.md'
+import { Basic } from './bal-popover.stories'
 
 <bal-doc-banner id="story--components-popover--basic">Popover</bal-doc-banner>
 
@@ -27,6 +28,7 @@ import menu from '../bal-popover-content/readme.md'
     <a class="button is-primary" href="?path=/story/components-popover--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="popover,button,tabs"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

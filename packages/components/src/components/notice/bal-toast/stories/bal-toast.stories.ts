@@ -28,6 +28,6 @@ const Template = args => ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  color: 'warning',
+  color: 'success',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }

@@ -1,7 +1,8 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-notification.stories'
 
-<bal-doc-banner id="story--components-notice-notification--basic" status="rebranded,sass">Notification</bal-doc-banner>
+<bal-doc-banner id="story--components-notice-notification--basic" >Notification</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-notice-notification--basic">Overview</a>
@@ -25,6 +26,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-notice-notification--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="notification"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

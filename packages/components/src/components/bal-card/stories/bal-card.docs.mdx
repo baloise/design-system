@@ -6,8 +6,9 @@ import cardSubtitle from '../bal-card-subtitle/readme.md'
 import cardContent from '../bal-card-content/readme.md'
 import cardActions from '../bal-card-actions/readme.md'
 import cardButton from '../bal-card-button/readme.md'
+import { Basic } from './bal-card.stories'
 
-<bal-doc-banner id="story--components-card--basic" status="rebranded,sass">Card</bal-doc-banner>
+<bal-doc-banner id="story--components-card--basic" >Card</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-accordion--basic">Overview</a>
@@ -31,6 +32,7 @@ import cardButton from '../bal-card-button/readme.md'
     <a class="button is-primary" href="?path=/story/components-card--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="card,button"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

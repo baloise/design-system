@@ -2,8 +2,9 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../../stories/utils'
 import { withLink } from './bal-checkbox.templates.ts'
 import readme from '../readme.md'
+import { Basic } from './bal-checkbox.stories'
 
-<bal-doc-banner id="story--components-form-checkbox--basic" status="rebranded,sass">Checkbox</bal-doc-banner>
+<bal-doc-banner id="story--components-form-checkbox--basic" >Checkbox</bal-doc-banner>
 
 <bal-doc-tabs>
   <a href="#story--components-form-checkbox--basic">Overview</a>
@@ -29,6 +30,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-form-checkbox--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="checkbox"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
