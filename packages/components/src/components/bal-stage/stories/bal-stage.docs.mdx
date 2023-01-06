@@ -1,26 +1,56 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-stage.stories'
 
-<bal-doc-banner id="story--components-stage--basic" status="rebranded,sass,visual">Stage</bal-doc-banner>
+<bal-doc-banner id="story--components-stage--basic">Stage</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Stage</b> is an imposing banner to showcase something. The stage component allows you to add a full width banner to
   your webpage, which can optionally cover the full height of the page as well.
 </bal-doc-lead>
 
-- [Bulma Documentation](https://bulma.io/documentation/layout/hero/)
+<Canvas withSource="open">
+  <Story id="components-stage--basic" />
+</Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-stage--simple-stage">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="stage"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
 <br />
 <br />
 <br />
+
+## Examples
+
+<span id="story--components-stage--small-stage" style={{ opacity: 0 }}></span>
+
+### Small Stage
+
+<Canvas>
+  <Story id="components-stage--small-stage" />
+</Canvas>
+
+<span id="story--components-stage--large-stage" style={{ opacity: 0 }}></span>
+
+### Large Stage
+
+<Canvas>
+  <Story id="components-stage--large-stage" />
+</Canvas>
+
+<span id="story--components-stage--stage-with-image" style={{ opacity: 0 }}></span>
+
+### Stage With Image
+
+<Canvas>
+  <Story id="components-stage--stage-with-image" />
+</Canvas>
 
 ## Component Api
 

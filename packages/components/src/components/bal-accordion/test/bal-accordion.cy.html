@@ -4,17 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+    </style>
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
-  <body>
-    <bal-doc-app>
+  <body class="bal-body">
+    <bal-doc-app log-components="bal-accordion">
       <main class="container py-medium">
         <bal-accordion class="box" open-label="Show more" close-label="Show less" data-testid="accordion">
           <p class="p-normal">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
           </p>
+          <bal-button>Button</bal-button>
         </bal-accordion>
       </main>
     </bal-doc-app>

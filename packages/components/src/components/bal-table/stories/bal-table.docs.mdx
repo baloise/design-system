@@ -1,6 +1,7 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
+import { Basic } from './bal-table.stories'
 
 <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle"></script>
 
@@ -21,6 +22,10 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-table--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz
+      template={Basic.parameters.docs.source.code}
+      modules="table,checkbox,button,tag,text"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

@@ -8,7 +8,7 @@ Cypress.Commands.add(
   (subject, options) => {
     log('balAccordionIsOpen', '', subject, options)
     const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).should('have.attr', 'aria-presented', 'true')
+    return cy.wrapComponent(subject, o).should('have.class', 'bal-accordion--active', 'true')
   },
 )
 
@@ -20,6 +20,6 @@ Cypress.Commands.add(
   (subject, options) => {
     log('balAccordionIsClosed', '', subject, options)
     const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).should('not.have.attr', 'aria-presented')
+    return cy.wrapComponent(subject, o).should('not.have.class', 'bal-accordion--active')
   },
 )

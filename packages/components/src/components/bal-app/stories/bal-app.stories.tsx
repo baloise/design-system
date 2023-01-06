@@ -17,15 +17,6 @@ import {
 
 const component = BalComponentStory({
   component: BalApp,
-  argTypes: {
-    hasStickyFooter: {
-      description: 'Sets the footer sticky to the bottom',
-      table: {
-        category: 'CSS Classes',
-      },
-      control: { type: 'boolean' },
-    },
-  },
   docs,
 })
 
@@ -47,7 +38,7 @@ export const Basic = args => ({
     BalIcon,
   },
   setup: () => ({ args }),
-  template: `<bal-app v-bind="args" :class="{'has-sticky-footer': args.hasStickyFooter}">
+  template: `<bal-app v-bind="args" class="has-sticky-footer">
   <header class="has-background-white">
     <bal-navbar>
       <bal-navbar-brand>Portal</bal-navbar-brand>
@@ -65,13 +56,13 @@ export const Basic = args => ({
 
         <bal-card-actions position="right">
           <bal-button>Action</bal-button>
-          <bal-button>Action 2</bal-button>
+          <bal-button color="info">Action 2</bal-button>
         </bal-card-actions>
       </bal-card>
     </div>
   </main>
 
-  <bal-footer has-track-line></bal-footer>
+  <bal-footer></bal-footer>
   </bal-app>`,
 })
 Basic.args = {

@@ -107,7 +107,7 @@ export const Basic = args => ({
           </bal-list>
         </bal-popover-content>
       </bal-popover>
-      <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call">00800 24 800 800</bal-button>
+      <bal-button square color="light" inverted icon="call"></bal-button>
       </bal-button-group>
     </bal-navbar-menu-end>
   </bal-navbar-menu>

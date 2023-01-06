@@ -2,6 +2,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 import hintText from '../bal-hint-text/readme.md'
 import hintTitle from '../bal-hint-title/readme.md'
+import { Basic } from './bal-hint.stories'
 
 <bal-doc-banner id="story--components-hint--basic">Hint</bal-doc-banner>
 
@@ -19,6 +20,7 @@ import hintTitle from '../bal-hint-title/readme.md'
     <a class="button is-primary" href="?path=/story/components-hint--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="hint"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

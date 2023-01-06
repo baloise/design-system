@@ -1,7 +1,8 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-file-upload.stories'
 
-<bal-doc-banner id="story--components-form-fileupload--basic" status="rebranded,sass">File Upload</bal-doc-banner>
+<bal-doc-banner id="story--components-form-fileupload--basic" >File Upload</bal-doc-banner>
 
 <bal-doc-lead>
   <b>File Upload</b> is all in one component. It supports drag&drop and the normal file upload dialog of the browser.
@@ -16,6 +17,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-form-fileupload--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="field,file-upload"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

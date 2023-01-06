@@ -1,8 +1,9 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
+import { Basic } from './bal-tag.stories'
 
-<bal-doc-banner id="story--components-tag--basic" status="rebranded,sass,visual,a11y">Tag</bal-doc-banner>
+<bal-doc-banner id="story--components-tag--basic">Tag</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Tag</b> highlights a label for quick recognition.
@@ -17,6 +18,7 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-tag--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="tag"></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

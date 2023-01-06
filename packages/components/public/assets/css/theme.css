@@ -442,3 +442,7 @@ td > code {
   color: #2ab797;
   font-weight: 700;
 }
+
+.docs-story .st0 {
+  fill: inherit !important
+}

@@ -38,3 +38,9 @@ Cypress.Commands.add(
     return cy.get(selector, o).waitForComponents(o)
   },
 )
+
+Cypress.Commands.add('disableAnimation', () => {
+  cy.window().then(win => {
+    ;(win as any).BaloiseDesignSystem.config.animated = false
+  })
+})

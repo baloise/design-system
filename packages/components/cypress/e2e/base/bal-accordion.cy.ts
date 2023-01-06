@@ -1,3 +1,5 @@
+import { selectors } from '../../../../testing/src'
+
 describe('bal-accordion', () => {
   beforeEach(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
 
@@ -10,9 +12,10 @@ describe('bal-accordion', () => {
   })
 
   it('should check if the accordion contains label', () => {
-    cy.getByTestId('accordion').contains('Show more')
+    cy.getByTestId('accordion').find(selectors.accordion.button).contains('Show more')
     cy.getByTestId('accordion').click()
-    cy.getByTestId('accordion').contains('Show less')
+    cy.getByTestId('accordion').find(selectors.accordion.button).contains('Show less')
+    cy.getByTestId('accordion').find(selectors.accordion.content).contains('Lorem')
   })
 
   it('should check if the accordion is not disabled', () => {

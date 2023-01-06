@@ -1,5 +1,6 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { Basic } from './bal-navigation.stories'
 
 <bal-doc-banner id="story--components-navigation--basic">Navigation</bal-doc-banner>
 
@@ -14,54 +15,10 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-navigation--basic">
       Go to playground (Canvas)
     </a>
-  </bal-button-group>
-</bal-doc-app>
-
-### Meta with Links
-
-The meta with links offers the possibility to use the meta elements as links
-
-<Canvas>
-  <Story id="components-navigation--meta-with-links" />
-</Canvas>
-
-<bal-doc-app>
-  <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-navigation--meta-with-links">
-      Go to playground (Canvas)
-    </a>
-  </bal-button-group>
-</bal-doc-app>
-
-### Navigation with Stage
-
-Basic navigation used in combination with the stage component
-
-<Canvas>
-  <Story id="components-navigation--with-stage" />
-</Canvas>
-
-<bal-doc-app>
-  <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-navigation--with-stage">
-      Go to playground (Canvas)
-    </a>
-  </bal-button-group>
-</bal-doc-app>
-
-### Navigation with Stage and Popover
-
-Basic navigation used in combination with the stage component and popover
-
-<Canvas>
-  <Story id="components-navigation--with-popover" />
-</Canvas>
-
-<bal-doc-app>
-  <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-navigation--with-popover">
-      Go to playground (Canvas)
-    </a>
+    <bal-doc-stackblitz
+      template={Basic.parameters.docs.source.code}
+      modules="navigation,card,heading"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

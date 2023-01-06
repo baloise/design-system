@@ -59,6 +59,10 @@ export namespace Components {
     }
     interface BalApp {
         /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated": boolean;
+        /**
           * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
          */
         "mode": BalMode;
@@ -618,6 +622,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated": boolean;
         "logComponents": string;
         "logCustom": boolean;
         "logEvents": boolean;
@@ -625,6 +633,7 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
+        "color": string;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -664,6 +673,14 @@ export namespace Components {
     interface BalDocShades {
         "color": string;
     }
+    interface BalDocStackblitz {
+        "component": string;
+        "component2": string;
+        "modules": string;
+        "name2": string;
+        "template": string;
+        "template2": string;
+    }
     interface BalDocSupportColor {
         "color": string;
     }
@@ -684,13 +701,6 @@ export namespace Components {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
-    }
-    interface BalDocUsage {
-    }
-    interface BalDocUsageItem {
-        "image"?: boolean;
-        "subject"?: string;
-        "theme": 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -1238,6 +1248,10 @@ export namespace Components {
     }
     interface BalList {
         /**
+          * If `true` only one of the layers can be open and the others close automatically
+         */
+        "accordionOneLevel": boolean;
+        /**
           * If `true` the list can be used on a light, dark or colored backgrounds
          */
         "background": Props.BalListBackground;
@@ -1249,10 +1263,6 @@ export namespace Components {
           * If `true` the list item can not be hovered
          */
         "disabled": boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav": boolean;
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
@@ -1276,9 +1286,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Closes the accordion
+         */
+        "dismiss": (ignoreNested?: boolean) => Promise<void>;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href": string;
+        /**
+          * Opens the accordion
+         */
+        "present": () => Promise<void>;
         /**
           * If `true` the list item has a selected theme
          */
@@ -1291,6 +1309,10 @@ export namespace Components {
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
+        /**
+          * Triggers the accordion
+         */
+        "toggle": () => Promise<void>;
     }
     interface BalListItemAccordionBody {
         /**
@@ -1301,11 +1323,6 @@ export namespace Components {
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment": Props.BalListContentSpacing;
-        "getContentHeight": () => Promise<number>;
-        /**
-          * If `true` the body will be open and visible
-         */
-        "open": boolean;
     }
     interface BalListItemAccordionHead {
         /**
@@ -1315,7 +1332,7 @@ export namespace Components {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon": string;
+        "icon": Props.BalListItemAccordionHeadIcon;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -1498,7 +1515,7 @@ export namespace Components {
         /**
           * It is 'true' when the meta item is used as a link and not as a tab
          */
-        "isTabLink"?: boolean;
+        "isTabLink": boolean;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
@@ -1685,6 +1702,14 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2859,6 +2884,12 @@ declare global {
         prototype: HTMLBalDocShadesElement;
         new (): HTMLBalDocShadesElement;
     };
+    interface HTMLBalDocStackblitzElement extends Components.BalDocStackblitz, HTMLStencilElement {
+    }
+    var HTMLBalDocStackblitzElement: {
+        prototype: HTMLBalDocStackblitzElement;
+        new (): HTMLBalDocStackblitzElement;
+    };
     interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
     }
     var HTMLBalDocSupportColorElement: {
@@ -2918,18 +2949,6 @@ declare global {
     var HTMLBalDocTokensSpacingElement: {
         prototype: HTMLBalDocTokensSpacingElement;
         new (): HTMLBalDocTokensSpacingElement;
-    };
-    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
-    }
-    var HTMLBalDocUsageElement: {
-        prototype: HTMLBalDocUsageElement;
-        new (): HTMLBalDocUsageElement;
-    };
-    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
-    }
-    var HTMLBalDocUsageItemElement: {
-        prototype: HTMLBalDocUsageItemElement;
-        new (): HTMLBalDocUsageItemElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -3444,6 +3463,7 @@ declare global {
         "bal-doc-link-list": HTMLBalDocLinkListElement;
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
         "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
@@ -3454,8 +3474,6 @@ declare global {
         "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
         "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
-        "bal-doc-usage": HTMLBalDocUsageElement;
-        "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -3574,6 +3592,10 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated"?: boolean;
         /**
           * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
          */
@@ -4175,6 +4197,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated"?: boolean;
         "logComponents"?: string;
         "logCustom"?: boolean;
         "logEvents"?: boolean;
@@ -4182,6 +4208,7 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
+        "color"?: string;
         "subtitle"?: string;
     }
     interface BalDocColor {
@@ -4221,6 +4248,14 @@ declare namespace LocalJSX {
     interface BalDocShades {
         "color"?: string;
     }
+    interface BalDocStackblitz {
+        "component": string;
+        "component2": string;
+        "modules": string;
+        "name2": string;
+        "template": string;
+        "template2": string;
+    }
     interface BalDocSupportColor {
         "color"?: string;
     }
@@ -4241,13 +4276,6 @@ declare namespace LocalJSX {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
-    }
-    interface BalDocUsage {
-    }
-    interface BalDocUsageItem {
-        "image"?: boolean;
-        "subject"?: string;
-        "theme"?: 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -4831,6 +4859,10 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
+          * If `true` only one of the layers can be open and the others close automatically
+         */
+        "accordionOneLevel"?: boolean;
+        /**
           * If `true` the list can be used on a light, dark or colored backgrounds
          */
         "background"?: Props.BalListBackground;
@@ -4842,10 +4874,6 @@ declare namespace LocalJSX {
           * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav"?: boolean;
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
@@ -4873,6 +4901,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Emitted when the state of the group is changing
+         */
+        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
@@ -4898,10 +4930,6 @@ declare namespace LocalJSX {
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment"?: Props.BalListContentSpacing;
-        /**
-          * If `true` the body will be open and visible
-         */
-        "open"?: boolean;
     }
     interface BalListItemAccordionHead {
         /**
@@ -4911,7 +4939,7 @@ declare namespace LocalJSX {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon"?: string;
+        "icon"?: Props.BalListItemAccordionHeadIcon;
         /**
           * Emitted when the accordion state is changed
          */
@@ -5281,6 +5309,14 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -6195,6 +6231,7 @@ declare namespace LocalJSX {
         "bal-doc-link-list": BalDocLinkList;
         "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-shades": BalDocShades;
+        "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tokens-border": BalDocTokensBorder;
         "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
@@ -6205,8 +6242,6 @@ declare namespace LocalJSX {
         "bal-doc-tokens-radius": BalDocTokensRadius;
         "bal-doc-tokens-shadow": BalDocTokensShadow;
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
-        "bal-doc-usage": BalDocUsage;
-        "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -6325,6 +6360,7 @@ declare module "@stencil/core" {
             "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
             "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
@@ -6335,8 +6371,6 @@ declare module "@stencil/core" {
             "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
             "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
-            "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
-            "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

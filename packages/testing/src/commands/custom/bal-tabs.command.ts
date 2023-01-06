@@ -1,4 +1,5 @@
-import { log, selectors, wrapOptions } from '../helpers'
+import { log, wrapOptions } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.add(
   'balTabsFindItems',

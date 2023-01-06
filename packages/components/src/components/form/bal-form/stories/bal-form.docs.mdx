@@ -1,23 +1,37 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<bal-doc-banner id="story--components-form-form--basic" status="rebranded,sass">Form</bal-doc-banner>
+<bal-doc-banner id="story--components-form-form--basic" >Form</bal-doc-banner>
 
 <bal-doc-lead>
   The `bal-form` wraps the form section. It helps to scroll to the first invalid field after a failed submit.
 </bal-doc-lead>
 
-<Canvas withSource="open">
+<Canvas>
   <Story id="components-form-form--basic" />
 </Canvas>
+
+import exampleHtml from './usage/angular/example_component_html.md'
+import exampleTs from './usage/angular/example_component_ts.md'
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-info is-outlined" href="?path=/story/components-form-form--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={exampleHtml} component={exampleTs}></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
+
+## Examples
+
+<span id="story--components-form-form--form-autocomplete" style={{ opacity: 0 }}></span>
+
+### Autocomplete
+
+<Canvas>
+  <Story id="components-form-form--form-autocomplete" />
+</Canvas>
 
 ## Component Api
 

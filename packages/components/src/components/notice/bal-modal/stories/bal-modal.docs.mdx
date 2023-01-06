@@ -3,9 +3,7 @@ import readme from '../readme.md'
 import modalHeader from '../bal-modal-header/readme.md'
 import modalBody from '../bal-modal-body/readme.md'
 
-<bal-doc-banner id="story--components-notice-modal--basic" status="rebranded,sass">
-  Modal
-</bal-doc-banner>
+<bal-doc-banner id="story--components-notice-modal--basic">Modal</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Modal</b> is a dialog that appears on top of the app's body, and must be dismissed by the app before interaction
@@ -16,11 +14,23 @@ import modalBody from '../bal-modal-body/readme.md'
   <Story id="components-notice-modal--basic" />
 </Canvas>
 
+import exampleHtml from './usage/angular/example_component_html.md'
+import exampleTs from './usage/angular/example_component_ts.md'
+import modalHtml from './usage/angular/modal_component_html.md'
+import modalTs from './usage/angular/modal_component_ts.md'
+
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-notice-modal--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz
+      template={exampleHtml}
+      component={exampleTs}
+      name-2="modal"
+      template-2={modalHtml}
+      component-2={modalTs}
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
