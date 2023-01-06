@@ -18,7 +18,7 @@ export class NavigationLevelMain implements ComponentInterface {
   /**
    * It is 'true' when the meta item is used as a link and not as a tab
    */
-  @Prop() isTabLink?: boolean
+  @Prop() isTabLink = false
   @Prop() target: Props.BalButtonTarget = '_self'
   @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 

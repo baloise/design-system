@@ -1515,7 +1515,7 @@ export namespace Components {
         /**
           * It is 'true' when the meta item is used as a link and not as a tab
          */
-        "isTabLink"?: boolean;
+        "isTabLink": boolean;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
