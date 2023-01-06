@@ -1,17 +1,6 @@
-import { Meta, Description } from '@storybook/addon-docs'
-
-<Meta
-  title="Development/Getting-Started/HTML5/Installation"
-  parameters={{
-    previewTabs: {
-      canvas: { hidden: true },
-    },
-  }}
-/>
-
-# Installation
-
+<bal-doc-lead>
 This section describes how to setup the Baloise Design System with an basic web application.
+</bal-doc-lead>
 
 ## Node Modules
 
@@ -74,7 +63,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
 > **HTTP-Server**
 > To run the HTML5 application you need a proper HTTP-Server. However, if there is none we recommend to install
 >
-> ```bash
+> ```
 > npm add -D http-server
 > ```
 >
@@ -140,5 +129,3 @@ Add the following 4 references to your `<head></head>`
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```
-
-<bal-doc-github link="/stories/development/getting-started/html5/01-installation.stories.mdx"></bal-doc-github>

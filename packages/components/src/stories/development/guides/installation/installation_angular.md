@@ -1,60 +1,12 @@
-import { Meta, Description } from '@storybook/addon-docs'
-
-<Meta
-  title="Development/Getting-Started/Angular/Installation"
-  parameters={{
-    previewTabs: {
-      canvas: { hidden: true },
-    },
-  }}
-/>
-
-# Installation
-
+<bal-doc-lead>
 This section describes how to setup the Baloise Design System with an basic Angular applications.
+</bal-doc-lead>
 
-## Prerequisite
+## Prerequisite Angular
 
-Before we can add the Baloise Design System we need to setup the basics.
+If you do not have an Angular app yet create one with the [Angular CLI](https://angular.io/guide/setup-local).
 
-### Setup Angular Project
-
-Install the [Angular CLI](https://cli.angular.io/) globally.
-
-```bash
-npm install -g @angular/cli
-```
-
-Close and restart your command window, then create an Angular project with the [Angular CLI](https://cli.angular.io/) and set Sass and ESLint as defaults.
-
-```bash
-ng new bal-app --style=scss
-```
-
-Navigate into your app root folder.
-
-```bash
-cd bal-app
-```
-
-Run the app with the npm script.
-
-```bash
-npm start
-```
-
-> **Recommendations**
->
-> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
-> - Choose **ESLint** as the default linter tool, because TSLint is deprecated.
-
-## Install Baloise Design System
-
-Use npm to install the Angular proxy library.
-
-```bash
-npm install @baloise/design-system-components-angular --save
-```
+Before we can add the Baloise Design System to your angular application we need to setup the basics.
 
 > **Recommendations**
 >
@@ -75,13 +27,13 @@ module.exports = {
 }
 ```
 
-### Install fonts
+## Install fonts
 
 The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
 
-```bash
+```
 npm install copyfiles --save-dev
 ```
 
@@ -105,7 +57,7 @@ npm run copy:fonts
 > - Add the generated files to the `.gitignore` file.
 > - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
-### Import styles
+## Import styles
 
 Import the `global.sass` Sass file into the main `.sass` file of your application.
 
@@ -118,12 +70,12 @@ $font-path: '~assets/fonts';
 // add custom styles below
 ```
 
-### Import the ngModule
+## Import the ngModule
 
 Import the `BalCoreModule.forRoot()` and add it to your angular root module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
 Import each angular module of the components you need one by one.
 
-#### app.module.ts
+**app.module.ts**
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
@@ -162,9 +114,9 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
-> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-getting-started-internationalization--page).
+> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](https://baloise-design-system.vercel.app/?path=/docs/development-guides-internationalization--page).
 
-### HTML Structure
+## HTML Structure
 
 Add the `bal-app` to your `app.component.html` root element. Within this component we are able to use the defined css classes.
 
@@ -186,7 +138,7 @@ Add the `bal-app` to your `app.component.html` root element. Within this compone
 ...
 ```
 
-### Improve initial page load
+## Improve initial page load
 
 The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
 To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
@@ -201,7 +153,7 @@ To avoid that set the below style tag into your head of the `index.html`. This w
 
 Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
 
-## Start the app
+# Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
@@ -212,16 +164,14 @@ npm start
 > **TIP**
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
 
-## Component Usage
+# Component Usage
 
 How to import Baloise Design System component, set properties, listen to events and call methods is described int the Component Usage section.
 
 <br />
 
 <bal-doc-app>
-  <a class="button is-primary is-inline" href="?path=/docs/usage-component--page#usage-with-angular">
+  <a class="button is-primary is-inline" href="https://baloise-design-system.vercel.app/?path=/docs/development-guides-components--page">
     Go to Component Usage
   </a>
 </bal-doc-app>
-
-<bal-doc-github link="/stories/development/getting-started/angular/01-installation.stories.mdx"></bal-doc-github>

@@ -1,7 +1,7 @@
 import { app } from '@storybook/vue3'
-import { withTableOfContents } from 'hirsch-storybook-docs-toc';
+import { withTableOfContents } from 'hirsch-storybook-docs-toc'
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
-import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
 
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
@@ -13,7 +13,7 @@ export const globalTypes = {
     description: 'Integration technology',
     defaultValue: 'angular',
   },
-};
+}
 
 export const decorators = [
   story => ({
@@ -28,7 +28,7 @@ export const parameters = {
   controls: { expanded: true },
   viewport: {
     viewports: {
-      'small': {
+      small: {
         name: 'Small (Mobile) from 320px to 768px',
         styles: {
           width: '320px',
@@ -36,7 +36,7 @@ export const parameters = {
         },
         type: 'mobile',
       },
-      'medium': {
+      medium: {
         name: 'Medium (Tablet)',
         styles: {
           width: '1023px',
@@ -44,7 +44,7 @@ export const parameters = {
         },
         type: 'tablet',
       },
-      'large': {
+      large: {
         name: 'Large (Desktop)',
         styles: {
           width: '1216px',
@@ -52,7 +52,7 @@ export const parameters = {
         },
         type: 'desktop',
       },
-      'widescreen': {
+      widescreen: {
         name: 'Widescreen (Desktop)',
         styles: {
           width: '1440px',
@@ -60,7 +60,7 @@ export const parameters = {
         },
         type: 'desktop',
       },
-      'fullhd': {
+      fullhd: {
         name: 'FullHD (Desktop)',
         styles: {
           width: '1920px',
@@ -124,10 +124,20 @@ export const parameters = {
         'Changelog',
         'Support',
         'Foundation',
-        ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons Overview', 'Platform', 'Page Layout', 'Templates'],
+        [
+          'Overview',
+          'Tokens',
+          'CSS-Framework',
+          'Colors',
+          'Font',
+          'Icons Overview',
+          'Platform',
+          'Page Layout',
+          'Templates',
+        ],
         'Components',
         'Development',
-        ['Getting-Started', 'Implementation', 'Migration', 'Contributing'],
+        ['Guides', ['Installation', 'Components', 'Form', 'Internationalization', 'Testing'], 'Migration', 'Contributing'],
       ],
     },
   },

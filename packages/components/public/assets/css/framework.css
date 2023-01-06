@@ -28,8 +28,8 @@
 }
 
 .my-framework__button__icon {
-  height: 14px;
-  width: 14px;
+  height: 18px;
+  width: 18px;
   shape-rendering: inherit;
   transform: translate3d(0, 0, 0);
   display: block;

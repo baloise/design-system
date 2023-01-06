@@ -1,33 +1,12 @@
-import { Meta, Description } from '@storybook/addon-docs'
-
-<Meta
-  title="Development/Getting-Started/React/Installation"
-  parameters={{
-    previewTabs: {
-      canvas: { hidden: true },
-    },
-  }}
-/>
-
-# Installation
-
+<bal-doc-lead>
 This section describes how to setup the Baloise Design System with an basic React applications.
+</bal-doc-lead>
 
 ## Prerequisite
 
 Before we can add the Baloise Design System we need to setup the basics.
 
-### Setup React Project
-
 Create an React project with the [React Create App CLI](https://create-react-app.dev/) and set Sass as default.
-
-```bash
-npx create-react-app bal-app --template typescript
-cd bal-app
-npm install -D sass
-```
-
-Rename the `.css` files to `.scss` and adjust there import statement.
 
 > **Recommendations**
 >
@@ -38,7 +17,7 @@ Rename the `.css` files to `.scss` and adjust there import statement.
 
 Use npm to install the React proxy library.
 
-```bash
+```
 npm install @baloise/design-system-components-react
 ```
 
@@ -48,7 +27,7 @@ The font package is included in the `@baloise/design-system-components` package 
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
 
-```bash
+``` 
 npm install copyfiles --save-dev
 ```
 
@@ -115,5 +94,3 @@ To avoid that set the below style tag into your head of the `index.html`. This w
 ```
 
 Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
-
-<bal-doc-github link="/stories/development/getting-started/react/01-installation.stories.mdx"></bal-doc-github>
