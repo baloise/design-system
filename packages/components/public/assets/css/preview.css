@@ -197,3 +197,7 @@ table.sbdocs-table tbody tr td {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+.docs-story .st0 {
+  fill: inherit !important
+}
