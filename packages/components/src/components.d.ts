@@ -625,6 +625,7 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
+        "color": string;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -4185,6 +4186,7 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
+        "color"?: string;
         "subtitle"?: string;
     }
     interface BalDocColor {

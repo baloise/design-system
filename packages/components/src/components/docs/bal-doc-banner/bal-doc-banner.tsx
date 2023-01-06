@@ -8,24 +8,28 @@ export class DocBanner implements ComponentInterface {
   @Element() el!: HTMLElement
 
   @Prop() subtitle = 'Component'
+  @Prop() color = 'primary'
 
   render() {
     return (
-      <Host>
+      <Host style={{ marginBottom: '3rem', display: 'block' }}>
         <bal-doc-app>
           <div
-            class="bal-doc-banner__inner pt-x-large pb-large px-large"
+            class={{
+              'bal-doc-banner__inner pt-x-large pb-large px-large': true,
+              ['bal-doc-banner__inner--' + this.color]: true,
+            }}
             style={{
               marginTop: '-32px',
               marginLeft: '-32px',
               marginRight: '-32px',
             }}
           >
-            <bal-heading space="none" inverted>
-              <slot></slot>
-            </bal-heading>
-            <bal-heading space="none" subtitle level="h4" inverted>
+            <bal-heading space="none" subtitle level="h3" inverted={this.color === 'primary'}>
               {this.subtitle}
+            </bal-heading>
+            <bal-heading space="none" level="display-2" inverted={this.color === 'primary'}>
+              <slot></slot>
             </bal-heading>
           </div>
         </bal-doc-app>
