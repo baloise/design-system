@@ -9,10 +9,10 @@ import {
   isSelect,
   isSlider,
   isTextarea,
-  selectors,
   wrapCommand,
   wrapOptions,
 } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('focus', element, '', $el => originalFn($el, wrapOptions(options)))

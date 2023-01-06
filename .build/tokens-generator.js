@@ -34,7 +34,7 @@ async function main() {
   generateShadows()
   generateTypography()
   generateSpacings()
-
+  generateAnimation()
 
   await file.save(path.join(SRC_PATH, 'tokens.ts'), toTs())
   await file.save(path.join(DIST_PATH, 'tokens.docs.json'), JSON.stringify(BaloiseDesignToken))
@@ -279,6 +279,13 @@ function generateSpacings() {
     spaceVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-${r}`)}`)
     spaceTabletVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-tablet-${r}`)}`)
     spaceDesktopVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-desktop-${r}`)}`)
+  }
+}
+
+function generateAnimation() {
+  const animation = BaloiseDesignToken.animation
+  for (const r in animation.transition) {
+    addToken(`animation-transition-${r}`, `animation-transition-${r}`, animation.transition[r])
   }
 }
 

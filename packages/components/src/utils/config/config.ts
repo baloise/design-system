@@ -51,6 +51,7 @@ export class Config {
     },
     fallbackLanguage: 'de',
     logger: defaultLoggerConfig,
+    animated: true,
   }
 
   get locale(): string {
@@ -113,6 +114,15 @@ export class Config {
 
   set logger(logger: BalLogger) {
     this._config.logger = { ...logger }
+    this._notify()
+  }
+
+  get animated(): boolean {
+    return this._config.animated
+  }
+
+  set animated(animated: boolean) {
+    this._config.animated = animated
     this._notify()
   }
 

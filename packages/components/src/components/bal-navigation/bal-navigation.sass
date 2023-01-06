@@ -160,7 +160,7 @@
         padding-bottom: 0
     +element(link)
       display: block
-      margin-bottom: .5rem
+      padding-bottom: 1rem
       > a
         color: var(--bal-color-blue)
         position: relative
@@ -255,16 +255,6 @@
       display: block
       padding-bottom: 1rem
       position: relative
-
-      &:after
-        content: ''
-        background: var(--bal-color-grey)
-        height: 1px
-        width: 100%
-        position: absolute
-        bottom: 0
-        left: 0
-        right: 0
       > a
         color: var(--bal-color-blue)
         font-size: 0.75rem
@@ -334,3 +324,7 @@
   .bal-nav__menu
     +desktop
       padding-bottom: 4.5rem
+
+.bal-nav__main__list.bal-list--border > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-nav__main__list.bal-list--border > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+  bottom: -2rem

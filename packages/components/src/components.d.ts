@@ -59,6 +59,10 @@ export namespace Components {
     }
     interface BalApp {
         /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated": boolean;
+        /**
           * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
          */
         "mode": BalMode;
@@ -618,6 +622,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated": boolean;
         "logComponents": string;
         "logCustom": boolean;
         "logEvents": boolean;
@@ -1242,6 +1250,10 @@ export namespace Components {
     }
     interface BalList {
         /**
+          * If `true` only one of the layers can be open and the others close automatically
+         */
+        "accordionOneLevel": boolean;
+        /**
           * If `true` the list can be used on a light, dark or colored backgrounds
          */
         "background": Props.BalListBackground;
@@ -1253,10 +1265,6 @@ export namespace Components {
           * If `true` the list item can not be hovered
          */
         "disabled": boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav": boolean;
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
@@ -1280,9 +1288,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Closes the accordion
+         */
+        "dismiss": (ignoreNested?: boolean) => Promise<void>;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href": string;
+        /**
+          * Opens the accordion
+         */
+        "present": () => Promise<void>;
         /**
           * If `true` the list item has a selected theme
          */
@@ -1295,6 +1311,10 @@ export namespace Components {
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
+        /**
+          * Triggers the accordion
+         */
+        "toggle": () => Promise<void>;
     }
     interface BalListItemAccordionBody {
         /**
@@ -1305,11 +1325,6 @@ export namespace Components {
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment": Props.BalListContentSpacing;
-        "getContentHeight": () => Promise<number>;
-        /**
-          * If `true` the body will be open and visible
-         */
-        "open": boolean;
     }
     interface BalListItemAccordionHead {
         /**
@@ -1319,7 +1334,7 @@ export namespace Components {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon": string;
+        "icon": Props.BalListItemAccordionHeadIcon;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -1502,7 +1517,7 @@ export namespace Components {
         /**
           * It is 'true' when the meta item is used as a link and not as a tab
          */
-        "isTabLink"?: boolean;
+        "isTabLink": boolean;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
@@ -3579,6 +3594,10 @@ declare namespace LocalJSX {
     }
     interface BalApp {
         /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated"?: boolean;
+        /**
           * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
          */
         "mode"?: BalMode;
@@ -4179,6 +4198,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+         */
+        "animated"?: boolean;
         "logComponents"?: string;
         "logCustom"?: boolean;
         "logEvents"?: boolean;
@@ -4839,6 +4862,10 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
+          * If `true` only one of the layers can be open and the others close automatically
+         */
+        "accordionOneLevel"?: boolean;
+        /**
           * If `true` the list can be used on a light, dark or colored backgrounds
          */
         "background"?: Props.BalListBackground;
@@ -4850,10 +4877,6 @@ declare namespace LocalJSX {
           * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the list can be used as an accordion in meta nav
-         */
-        "inMainNav"?: boolean;
         /**
           * @deprecated If `true` the list can be used on a dark background
          */
@@ -4881,6 +4904,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Emitted when the state of the group is changing
+         */
+        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
@@ -4906,10 +4933,6 @@ declare namespace LocalJSX {
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
         "contentAlignment"?: Props.BalListContentSpacing;
-        /**
-          * If `true` the body will be open and visible
-         */
-        "open"?: boolean;
     }
     interface BalListItemAccordionHead {
         /**
@@ -4919,7 +4942,7 @@ declare namespace LocalJSX {
         /**
           * Icon name string with value 'plus' on default
          */
-        "icon"?: string;
+        "icon"?: Props.BalListItemAccordionHeadIcon;
         /**
           * Emitted when the accordion state is changed
          */

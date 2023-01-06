@@ -3,6 +3,10 @@
 declare namespace Cypress {
   interface Chainable {
     /**
+     * Disabled all animations for the Design System components.
+     */
+    disableAnimation(): Chainable<JQuery>
+    /**
      * Waits until the component is fully loaded.
      */
     waitForComponents(options?: Partial<Loggable>): Chainable<JQuery>
