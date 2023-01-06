@@ -24,6 +24,7 @@ export interface BalConfig {
   icons?: BalIcons
   fallbackLanguage?: BalLanguage
   logger?: BalLogger
+  animated?: boolean
 }
 
 export interface BalConfigState {
@@ -33,6 +34,7 @@ export interface BalConfigState {
   icons: BalIcons
   fallbackLanguage: BalLanguage
   logger: BalLogger
+  animated: boolean
 }
 
 export type BalMode = 'css' | 'sass' | 'all'

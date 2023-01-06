@@ -1,5 +1,4 @@
 import {
-  selectors,
   isDatepicker,
   isCheckbox,
   isInput,
@@ -11,6 +10,7 @@ import {
   wrapCommand,
   wrapOptions,
 } from '../helpers'
+import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('clear', element, '', $el => originalFn($el, wrapOptions(options)))

@@ -16,6 +16,11 @@ export class DocApp implements ComponentInterface {
   @Prop() logRender = true
   @Prop() logCustom = true
 
+  /**
+   * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+   */
+  @Prop({ reflect: true }) animated = true
+
   connectedCallback() {
     globalScript()
     updateBalIcons(balIcons)
@@ -40,7 +45,7 @@ export class DocApp implements ComponentInterface {
   render() {
     return (
       <Host>
-        <bal-app>
+        <bal-app animated={this.animated}>
           <slot></slot>
         </bal-app>
       </Host>

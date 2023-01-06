@@ -1,5 +1,4 @@
 import {
-  selectors,
   isCheckbox,
   isDatepicker,
   isAccordion,
@@ -15,6 +14,7 @@ import {
   isNumberInput,
   isInputStepper,
 } from '../helpers'
+import { selectors } from '../../selectors'
 
 const shouldAndAndCommand = (
   originalFn: any,

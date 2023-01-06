@@ -57,6 +57,14 @@ export class Heading {
         'h3': 'x-large',
         'h4': 'large',
         'h5': 'normal',
+        'xxxxx-large': 'xxxxx-large',
+        'xxxx-large': 'xxxx-large',
+        'xxx-large': 'xxx-large',
+        'xx-large': 'xx-large',
+        'x-large': 'x-large',
+        'large': 'large',
+        'medium': 'medium',
+        'normal': 'normal',
       }
       return sizes[size] as string
     }

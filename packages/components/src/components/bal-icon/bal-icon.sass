@@ -29,7 +29,11 @@
     transition: transform .2s ease-in-out
     padding: 0.063rem
     +iconSize(1.125rem)
-    +modifier(turn)
+    +modifier(turn-plus)
+      transform: rotate(225deg)
+    +modifier(turn-caret-down)
+      transform: rotate(180deg)
+    +modifier(turn-nav-go-down)
       transform: rotate(180deg)
     & > svg
       vertical-align: top

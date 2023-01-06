@@ -475,6 +475,15 @@ const tokens = {
       // invalid: 'danger-4',
     },
   },
+  /**
+   * Animations tokens
+   */
+  animation: {
+    transition: {
+      duration: '300ms',
+      easing: 'cubic-bezier(0.25, 0.8, 0.5, 1)',
+    },
+  },
 } as BaloiseDesignTokens
 
 /************************************************************

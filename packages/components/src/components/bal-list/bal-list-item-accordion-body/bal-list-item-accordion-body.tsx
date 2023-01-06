@@ -1,24 +1,35 @@
-import { Component, Host, h, Prop, Element, State, Listen, Method } from '@stencil/core'
-import { debounce } from '../../../utils/helpers'
+import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
 import { Props } from '../../../types'
-import { ResizeHandler } from '../../../utils/resize'
+import { debounce, raf } from '../../../utils/helpers'
+import { Loggable, LogInstance, Logger } from '../../../utils/log'
+import { isPlatform } from '../../../utils/platform'
+import { ResizeHandler, ResizeObserverHandler } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
   scoped: false,
   shadow: false,
 })
-export class ListItemAccordionBody {
-  private resizeO?: ResizeObserver
+export class ListItemAccordionBody implements ComponentInterface, Loggable {
+  private contentElWrapper: HTMLDivElement | undefined
+  private currentRaf: number | undefined
+  private resizeHandler = ResizeObserverHandler()
+  private resizeWidthHandler = ResizeHandler()
+  private isMobile = isPlatform('mobile')
 
   @Element() el!: HTMLElement
 
-  @State() contentHeight = '0px'
+  log!: LogInstance
+
+  @Logger('bal-list-item-accordion-body')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   /**
-   * If `true` the body will be open and visible
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop() open = false
 
   /**
    * Synchronizes the height of the accordion to max of all
@@ -31,87 +42,73 @@ export class ListItemAccordionBody {
    */
   @Prop() contentAlignment: Props.BalListContentSpacing = 'start'
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.calcContentHeight()
-    })
-  }
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   connectedCallback() {
-    const debounceCalcContentHeight = debounce(() => this.calcContentHeight(), 20)
-    this.resizeO = new ResizeObserver(() => debounceCalcContentHeight())
+    this.resizeHandler.connect(this.el, this.debounceSetMinHeightForAnimation)
+    this.setMinHeightForAnimation()
   }
 
   componentDidRender() {
-    setTimeout(() => {
-      this.calcContentHeight()
-    }, 10)
-  }
-
-  componentDidLoad() {
-    const innerEl = this.getInnerEl()
-
-    if (this.resizeO && innerEl) {
-      this.resizeO.observe(innerEl)
-    }
+    this.setMinHeightForAnimation()
   }
 
   disconnectedCallback() {
-    if (this.resizeO) {
-      this.resizeO.disconnect()
-      this.resizeO = undefined
+    this.resizeHandler.disconnect()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('resize', { target: 'window' })
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.isMobile = isPlatform('mobile')
+      this.debounceSetMinHeightForAnimation()
+    })
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private setMinHeightForAnimation = () => {
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
     }
-  }
 
-  @Method()
-  async getContentHeight() {
-    const innerEl = this.getInnerEl()
-    return innerEl ? innerEl.scrollHeight : 0
-  }
-
-  getInnerEl() {
-    return this.el.querySelector('bal-list-item-content')
-  }
-
-  getAccordionGroupItems() {
-    return Array.from(document.body.querySelectorAll('bal-list-item-accordion-body')).filter(
-      accordionBody => accordionBody.accordionGroup === this.accordionGroup,
-    )
-  }
-
-  setContentHeight(height: number) {
-    this.contentHeight = height + 'px'
-    const parent = this.el.closest('.bal-list__item__accordion-body__parent') as HTMLBalListItemAccordionBodyElement
-    const parentHeight = parent ? parent.scrollHeight : 0
-    const parentIsThereAndIsOpen = parent && parentHeight > 0 && parent.open
-    if (parentIsThereAndIsOpen && this.open) {
-      parent.style.maxHeight = parentHeight + height + 'px'
+    if (this.isMobile && this.contentElWrapper) {
+      this.contentElWrapper.style.removeProperty('min-height')
+      return
     }
-  }
 
-  get areWeInAGroup() {
-    return this.accordionGroup !== '' && this.accordionGroup !== undefined
-  }
+    raf(() => {
+      if (this.accordionGroup !== undefined && this.accordionGroup !== '') {
+        const allAccordionBodies = Array.from(document.body.querySelectorAll('bal-list-item-accordion-body'))
+        const groupContents = allAccordionBodies
+          .filter(el => el.accordionGroup === this.accordionGroup)
+          .map(el => el.querySelector('.bal-list__item__accordion-body__content'))
+          .filter(el => el) as HTMLElement[]
 
-  async calcContentHeight() {
-    let height = await this.getContentHeight()
-
-    if (this.areWeInAGroup) {
-      const items = this.getAccordionGroupItems()
-      const heights = []
-      for (let index = 0; index < items.length; index++) {
-        const element = items[index] as any
-        heights.push(await element.getContentHeight())
+        const groupContentHeight = groupContents.reduce((acc, el) => (acc < el.offsetHeight ? el.offsetHeight : acc), 0)
+        if (this.contentElWrapper && groupContentHeight > 0 && this.el.offsetHeight !== groupContentHeight) {
+          this.contentElWrapper.style.setProperty('min-height', `${groupContentHeight}px`)
+        }
       }
-      const maxHeight = Math.max(...heights)
-      height = maxHeight
-    }
-
-    this.setContentHeight(height)
+    })
   }
+  private debounceSetMinHeightForAnimation = debounce(this.setMinHeightForAnimation.bind(this), 100)
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     return (
@@ -119,19 +116,18 @@ export class ListItemAccordionBody {
         class={{
           'bal-list__item': true,
           'bal-list__item__accordion-body': true,
-          'bal-list__item__accordion-body--open': this.open,
+          'bal-list__item__accordion-body--grouped': this.accordionGroup !== undefined && this.accordionGroup !== '',
         }}
-        style={{ maxHeight: this.open ? this.contentHeight : '0' }}
       >
-        <bal-list-item-content
-          style={{
-            minHeight: this.areWeInAGroup ? this.contentHeight : 'inherit',
-            height: this.areWeInAGroup ? this.contentHeight : 'inherit',
+        <div
+          class={{
+            'bal-list__item__accordion-body__content': true,
+            [`bal-list__item__accordion-body__content--${this.contentAlignment}`]: this.contentAlignment !== undefined,
           }}
-          contentAlignment={this.contentAlignment}
+          ref={contentElWrapper => (this.contentElWrapper = contentElWrapper)}
         >
           <slot></slot>
-        </bal-list-item-content>
+        </div>
       </Host>
     )
   }

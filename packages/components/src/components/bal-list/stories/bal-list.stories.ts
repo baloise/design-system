@@ -4,26 +4,31 @@ import {
   BalList,
   BalListItem,
   BalListItemContent,
-  BalIcon,
   BalListItemIcon,
   BalListItemTitle,
   BalListItemSubtitle,
   BalListItemAccordionHead,
   BalListItemAccordionBody,
+  BalIcon,
+  BalButton,
 } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalList,
   subcomponents: {
+    BalList,
     BalListItem,
     BalListItemContent,
     BalListItemIcon,
     BalListItemTitle,
     BalListItemSubtitle,
+    BalListItemAccordionHead,
+    BalListItemAccordionBody,
+    BalIcon,
+    BalButton,
   },
   docs,
   args: {
-    inverted: false,
     disabled: false,
     border: true,
   },
@@ -77,90 +82,6 @@ Basic.args = {
   size: '',
 }
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
-
-export const AdvisorList = args => ({
-  components: { ...component.components, BalIcon },
-  setup: () => ({ args }),
-  template: `
-  <bal-list v-bind="args">
-  <bal-list-item accordion>
-    <bal-list-item-accordion-head>
-      <bal-list-item-content>
-        <bal-list-item-title>Berlin</bal-list-item-title>
-      </bal-list-item-content>
-    </bal-list-item-accordion-head>
-    <bal-list-item-accordion-body>
-      <bal-list border>
-    <bal-list-item clickable href="www.baloise.com" target="_blank">
-        <bal-list-item-content>
-            <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-        </bal-list-item-content>
-        <bal-list-item-icon right>
-            <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-        </bal-list-item-icon>
-    </bal-list-item>
-    <bal-list-item clickable href="www.baloise.com" target="_blank">
-    <bal-list-item-content>
-        <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-    </bal-list-item-content>
-    <bal-list-item-icon right>
-        <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-    </bal-list-item-icon>
-</bal-list-item>
-<bal-list-item clickable href="www.baloise.com" target="_blank">
-<bal-list-item-content>
-    <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-</bal-list-item-content>
-<bal-list-item-icon right>
-    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-</bal-list-item-icon>
-</bal-list-item>
-</bal-list>
-    </bal-list-item-accordion-body>
-  </bal-list-item>
-  <bal-list-item accordion>
-  <bal-list-item-accordion-head>
-    <bal-list-item-content>
-      <bal-list-item-title>München</bal-list-item-title>
-    </bal-list-item-content>
-  </bal-list-item-accordion-head>
-  <bal-list-item-accordion-body>
-    <bal-list border>
-  <bal-list-item clickable href="www.baloise.com" target="_blank">
-      <bal-list-item-content>
-          <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-      </bal-list-item-content>
-      <bal-list-item-icon right>
-          <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-      </bal-list-item-icon>
-  </bal-list-item>
-  <bal-list-item clickable href="www.baloise.com" target="_blank">
-  <bal-list-item-content>
-      <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-  </bal-list-item-content>
-  <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-  </bal-list-item-icon>
-</bal-list-item>
-<bal-list-item clickable href="www.baloise.com" target="_blank">
-<bal-list-item-content>
-  <bal-list-item-title>Firstname Lastname</bal-list-item-title>
-</bal-list-item-content>
-<bal-list-item-icon right>
-  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-</bal-list-item-icon>
-</bal-list-item>
-</bal-list>
-  </bal-list-item-accordion-body>
-</bal-list-item>
-</bal-list>
-  `,
-})
-AdvisorList.args = {
-  border: true,
-  size: '',
-}
-AdvisorList.parameters = { ...component.sourceCode(AdvisorList), controls: { exclude: excludedControls } }
 
 export const NativeList = args => ({
   components: { ...component.components },
@@ -345,8 +266,6 @@ export const AccordionList = args => ({
       <p class="pb-normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <a class="is-link">Link</a>
-      <button class="button">Button</button>
     </bal-list-item-accordion-body>
   </bal-list-item>
   <bal-list-item accordion>
@@ -373,65 +292,122 @@ AccordionList.args = {
 }
 AccordionList.parameters = { ...component.sourceCode(AccordionList), controls: { exclude: excludedControls } }
 
-export const MetaAccordionList = args => ({
+export const AccordionListNested = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
   setup: () => ({ args }),
-  template: `<bal-list class="px-normal" border meta-nav-accordion size="small">
-          <bal-list-item accordion>
-            <bal-list-item-accordion-head>
-              <bal-list-item-content>
-                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item-accordion-head>
-            <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
-              <bal-list border meta-nav-accordion size="small">
-                <bal-list-item accordion sub-accordion-item>
-                  <bal-list-item-accordion-head>
-                    <bal-list-item-content>
-                        <bal-list-item-title>Sub Accordion List Item</bal-list-item-title>
-                    </bal-list-item-content>
-                  </bal-list-item-accordion-head>
-                  <bal-list-item-accordion-body>
-                    <p class="pb-normal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                  </bal-list-item-accordion-body>
-                </bal-list-item>
-              </bal-list>
-            </bal-list-item-accordion-body>
-          </bal-list-item>
-          <bal-list-item accordion>
-            <bal-list-item-accordion-head>
-              <bal-list-item-content>
-                  <bal-list-item-title>Accordion List Item 2</bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item-accordion-head>
-            <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
-              <bal-list border meta-nav-accordion size="small">
-                <bal-list-item accordion sub-accordion-item>
-                  <bal-list-item-accordion-head>
-                    <bal-list-item-content>
-                        <bal-list-item-title>Sub Accordion List Item 2</bal-list-item-title>
-                    </bal-list-item-content>
-                  </bal-list-item-accordion-head>
-                  <bal-list-item-accordion-body>
-                    <p class="pb-normal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                  </bal-list-item-accordion-body>
-                </bal-list-item>
-              </bal-list>
-            </bal-list-item-accordion-body>
-          </bal-list-item>
-        </bal-list>`,
-})
-MetaAccordionList.args = {
-  border: true,
-  size: 'large',
-}
-MetaAccordionList.parameters = { ...component.sourceCode(MetaAccordionList), controls: { exclude: excludedControls } }
+  template: `<bal-list v-bind="args">
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head icon="nav-go-down">
+      <bal-list-item-content>
+        <bal-list-item-title level="x-large">Switzerland</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body>
 
-export const AccordionGroupList = args => ({
+      <bal-list border size="small">
+        <bal-list-item accordion sub-accordion-item>
+          <bal-list-item-accordion-head icon="nav-go-down">
+            <bal-list-item-content>
+              <bal-list-item-title level="large">Basel</bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item-accordion-head>
+          <bal-list-item-accordion-body>
+
+            <bal-list border size="small">
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head icon="nav-go-down">
+                  <bal-list-item-content>
+                    <bal-list-item-title>Aeschengraben</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body>
+                  <p class="pb-normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                    est laborum.
+                  </p>
+                </bal-list-item-accordion-body>
+              </bal-list-item>
+            </bal-list>
+
+          </bal-list-item-accordion-body>
+        </bal-list-item>
+        <bal-list-item accordion sub-accordion-item>
+          <bal-list-item-accordion-head icon="nav-go-down">
+            <bal-list-item-content>
+              <bal-list-item-title level="large">Zürich</bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item-accordion-head>
+          <bal-list-item-accordion-body>
+
+            <bal-list border size="small">
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head icon="nav-go-down">
+                  <bal-list-item-content>
+                    <bal-list-item-title level="h5">Limmatplazt</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body>
+                  <p class="pb-normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                    est laborum.
+                  </p>
+                </bal-list-item-accordion-body>
+              </bal-list-item>
+            </bal-list>
+
+          </bal-list-item-accordion-body>
+        </bal-list-item>
+      </bal-list>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head icon="nav-go-down">
+      <bal-list-item-content>
+        <bal-list-item-title level="x-large">Belgium</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body>
+      <bal-list border size="small">
+        <bal-list-item accordion sub-accordion-item>
+          <bal-list-item-accordion-head icon="nav-go-down">
+            <bal-list-item-content>
+              <bal-list-item-title level="large">Brüssel</bal-list-item-title>
+            </bal-list-item-content>
+          </bal-list-item-accordion-head>
+          <bal-list-item-accordion-body>
+            <p class="pb-normal">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </bal-list-item-accordion-body>
+        </bal-list-item>
+      </bal-list>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+</bal-list>`,
+})
+AccordionListNested.args = {
+  border: true,
+  accordionOneLevel: true,
+}
+AccordionListNested.parameters = {
+  ...component.sourceCode(AccordionListNested),
+  controls: { exclude: excludedControls },
+}
+
+export const AccordionListGrouped = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
   setup: () => ({ args }),
   template: `<div class="columns">
@@ -481,7 +457,10 @@ export const AccordionGroupList = args => ({
   </div>
   </div>`,
 })
-AccordionGroupList.args = {
+AccordionListGrouped.args = {
   border: true,
 }
-AccordionGroupList.parameters = { ...component.sourceCode(AccordionGroupList), controls: { exclude: excludedControls } }
+AccordionListGrouped.parameters = {
+  ...component.sourceCode(AccordionListGrouped),
+  controls: { exclude: excludedControls },
+}

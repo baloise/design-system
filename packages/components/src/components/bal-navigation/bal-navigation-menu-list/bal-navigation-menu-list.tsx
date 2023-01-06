@@ -27,7 +27,7 @@ export class NavigationMenuList {
   @Prop() target: Props.BalButtonTarget = '_self'
   @Prop() tracking: Attributes = {}
 
-  @State() headingLevel!: 'h3' | 'h4'
+  @State() headingLevel!: 'h3' | 'h4' | 'h5'
 
   resizeWidthHandler = ResizeHandler()
 
@@ -44,7 +44,7 @@ export class NavigationMenuList {
 
   setHeadingLevel = () => {
     if (isPlatform('touch')) {
-      this.headingLevel = 'h4'
+      this.headingLevel = 'h5'
       return
     }
     this.headingLevel = 'h3'

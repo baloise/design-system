@@ -4,15 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+    </style>
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
-  <body class="bal-app">
-    <div class="container">
-      <h2 class="title is-size-xx-large">Basic</h2>
-      <section>
-        <bal-card>
+
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-medium">
+        <h2 class="title is-size-xx-large">Basic</h2>
+        <section>
           <bal-list disabled>
             <bal-list-item>
               <bal-list-item-content>
@@ -26,12 +31,10 @@
               </bal-list-item-content>
             </bal-list-item>
           </bal-list>
-        </bal-card>
-      </section>
+        </section>
 
-      <h2 class="title is-size-xx-large">With borders</h2>
-      <section>
-        <bal-card>
+        <h2 class="title is-size-xx-large">With borders</h2>
+        <section>
           <bal-list border>
             <bal-list-item clickable>
               <bal-list-item-content>
@@ -50,32 +53,30 @@
               </bal-list-item-content>
             </bal-list-item>
           </bal-list>
-        </bal-card>
-      </section>
+        </section>
 
-      <h2 class="title is-size-xx-large">Inverted</h2>
-      <section>
-        <bal-card inverted color="info">
-          <bal-list inverted border>
-            <bal-list-item>
-              <bal-list-item-content>
-                <bal-list-item-title>Two-line item</bal-list-item-title>
-                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-              </bal-list-item-content>
-            </bal-list-item>
-            <bal-list-item>
-              <bal-list-item-content>
-                <bal-list-item-title>Two-line item</bal-list-item-title>
-                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-              </bal-list-item-content>
-            </bal-list-item>
-          </bal-list>
-        </bal-card>
-      </section>
+        <h2 class="title is-size-xx-large">Inverted</h2>
+        <section>
+          <bal-card inverted color="info">
+            <bal-list background="dark" border>
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Two-line item</bal-list-item-title>
+                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+                </bal-list-item-content>
+              </bal-list-item>
+              <bal-list-item>
+                <bal-list-item-content>
+                  <bal-list-item-title>Two-line item</bal-list-item-title>
+                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+                </bal-list-item-content>
+              </bal-list-item>
+            </bal-list>
+          </bal-card>
+        </section>
 
-      <h2 class="title is-size-xx-large">With Icons</h2>
-      <section>
-        <bal-card>
+        <h2 class="title is-size-xx-large">With Icons</h2>
+        <section>
           <bal-list>
             <bal-list-item>
               <bal-list-item-icon>
@@ -107,12 +108,10 @@
               </bal-list-item-icon>
             </bal-list-item>
           </bal-list>
-        </bal-card>
-      </section>
+        </section>
 
-      <h2 class="title is-size-xx-large">Link</h2>
-      <section>
-        <bal-card>
+        <h2 class="title is-size-xx-large">Link</h2>
+        <section>
           <bal-list>
             <bal-list-item href="https://google.com" target="_blank">
               <bal-list-item-content>
@@ -131,8 +130,226 @@
               </bal-list-item-icon>
             </bal-list-item>
           </bal-list>
-        </bal-card>
-      </section>
-    </div>
+        </section>
+
+        <h2 class="title is-size-xx-large">Accordion</h2>
+        <section>
+          <bal-list border size="large">
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head accordion-open>
+                <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <div>
+                  <p class="pb-normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                  <button class="button is-primary">Button</button>
+                </div>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head>
+                <bal-list-item-content>
+                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <div>
+                  <p class="pb-normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                  <button class="button is-primary">Button</button>
+                </div>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          </bal-list>
+        </section>
+
+        <h2 class="title is-size-xx-large">Nested Accordions</h2>
+        <section>
+          <bal-list class="py-normal" border accordion-one-level>
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head icon="nav-go-down">
+                <bal-list-item-content>
+                  <bal-list-item-title level="h3">Nested Accordion Level 1 A</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <bal-list border>
+                  <bal-list-item accordion sub-accordion-item>
+                    <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-content>
+                        <bal-list-item-title level="h4">Nested Accordion Level 2 A</bal-list-item-title>
+                      </bal-list-item-content>
+                    </bal-list-item-accordion-head>
+                    <bal-list-item-accordion-body>
+                      <bal-list border>
+                        <bal-list-item accordion sub-accordion-item>
+                          <bal-list-item-accordion-head icon="nav-go-down">
+                            <bal-list-item-content>
+                              <bal-list-item-title>Nested Accordion Level 3 A</bal-list-item-title>
+                            </bal-list-item-content>
+                          </bal-list-item-accordion-head>
+                          <bal-list-item-accordion-body>
+                            <p class="pb-normal">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                              sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                              est laborum.
+                            </p>
+                          </bal-list-item-accordion-body>
+                        </bal-list-item>
+                      </bal-list>
+                    </bal-list-item-accordion-body>
+                  </bal-list-item>
+                  <bal-list-item accordion sub-accordion-item>
+                    <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-content>
+                        <bal-list-item-title level="h4">Nested Accordion Level 2 B</bal-list-item-title>
+                      </bal-list-item-content>
+                    </bal-list-item-accordion-head>
+                    <bal-list-item-accordion-body>
+                      <bal-list border>
+                        <bal-list-item accordion sub-accordion-item>
+                          <bal-list-item-accordion-head icon="nav-go-down">
+                            <bal-list-item-content>
+                              <bal-list-item-title level="h4">Nested Accordion Level 3 A</bal-list-item-title>
+                            </bal-list-item-content>
+                          </bal-list-item-accordion-head>
+                          <bal-list-item-accordion-body>
+                            <p class="pb-normal">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                              sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                              est laborum.
+                            </p>
+                          </bal-list-item-accordion-body>
+                        </bal-list-item>
+                      </bal-list>
+                    </bal-list-item-accordion-body>
+                  </bal-list-item>
+                </bal-list>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+
+            <bal-list-item accordion>
+              <bal-list-item-accordion-head icon="nav-go-down">
+                <bal-list-item-content>
+                  <bal-list-item-title level="h3">Nested Accordion Level 1 B</bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <bal-list border>
+                  <bal-list-item accordion sub-accordion-item>
+                    <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-content>
+                        <bal-list-item-title level="h4">Nested Accordion Level 2 B</bal-list-item-title>
+                      </bal-list-item-content>
+                    </bal-list-item-accordion-head>
+                    <bal-list-item-accordion-body>
+                      <p class="pb-normal">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </p>
+                    </bal-list-item-accordion-body>
+                  </bal-list-item>
+                </bal-list>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          </bal-list>
+        </section>
+
+        <h2 class="title is-size-xx-large">Grouped Accordions</h2>
+        <section>
+          <div class="columns">
+            <div class="column">
+              <bal-list border>
+                <bal-list-item accordion>
+                  <bal-list-item-accordion-head>
+                    <bal-list-item-icon>
+                      <bal-icon name="date"></bal-icon>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                      <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item-accordion-head>
+                  <bal-list-item-accordion-body accordion-group="my-group">
+                    <p class="pb-normal">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                      in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <bal-button color="primary" icon="plus">Primary</bal-button>
+                  </bal-list-item-accordion-body>
+                </bal-list-item>
+              </bal-list>
+            </div>
+            <div class="column">
+              <bal-list border>
+                <bal-list-item accordion>
+                  <bal-list-item-accordion-head>
+                    <bal-list-item-icon>
+                      <bal-icon name="date"></bal-icon>
+                    </bal-list-item-icon>
+                    <bal-list-item-content>
+                      <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item-accordion-head>
+                  <bal-list-item-accordion-body accordion-group="my-group">
+                    <p class="pb-normal">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                      in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                      mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                      in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                      mollit anim id est laborum.
+                    </p>
+                    <bal-button color="primary" icon="plus">Primary</bal-button>
+                  </bal-list-item-accordion-body>
+                </bal-list-item>
+              </bal-list>
+            </div>
+          </div>
+        </section>
+      </main>
+    </bal-doc-app>
   </body>
 </html>
