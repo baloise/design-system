@@ -388,7 +388,7 @@ export class Navigation implements ComponentInterface {
                       </a>
                     </div>
                   )}
-                  <bal-list size="small">
+                  <bal-list accordion-one-level size="small">
                     {meta.subLevels?.map(main => {
                       return main.isTabLink ? (
                         <bal-list-item sub-accordion-item href={main.link} target={main.target}>
