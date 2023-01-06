@@ -1,8 +1,12 @@
+html {
+  font-size: 16px;
+  font-family: 'BaloiseCreateText';
+}
+
 .my-version-tag {
   background: #e9fbf7;
   border: 1px solid #94e3d4;
   color: #000d6e;
-  font-family: 'BaloiseCreateText';
   font-family: 'BaloiseCreateHeadline';
   font-weight: 700;
   font-size: 16px;
@@ -15,12 +19,6 @@
   justify-content: center;
   align-items: center;
   user-select: none;
-}
-
-.my-source-code > pre {
-  margin: 0 !important;
-  border-radius: 0 !important;
-  background: rgb(39, 40, 34) !important;
 }
 
 .search-field input {
@@ -41,10 +39,6 @@
 
 .search-field code + svg {
   top: 8px;
-}
-
-html {
-  font-size: 16px;
 }
 
 .sidebar-subheading {

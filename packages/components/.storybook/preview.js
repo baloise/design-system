@@ -1,9 +1,9 @@
 import { app } from '@storybook/vue3'
-
-app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
-
+import { withTableOfContents } from 'hirsch-storybook-docs-toc';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
 import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
 ReactSyntaxHighlighter.registerLanguage('diff', diff)
 
@@ -15,6 +15,7 @@ export const decorators = [
 ]
 
 export const parameters = {
+  ...withTableOfContents(),
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
   viewport: {
