@@ -45,25 +45,14 @@ const SvgIcons = {
   html: JavaScriptSVG,
 }
 
+const LOCAL_STORE_ID = 'bal-docs-framework'
+
 addons.register('my/framework', () => {
   addons.add('my-framework-addon/toolbar', {
     title: 'Framework',
     type: types.TOOLEXTRA,
     render: ({ active }) => {
       const [globals, updateGlobals] = useGlobals()
-
-      const iframe = document.getElementById('storybook-preview-iframe')
-      if (iframe && globals.framework) {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document
-        if (iframeDocument) {
-          const body = iframeDocument.querySelector('body')
-          if (body) {
-            body.classList.add(`my-framework-${globals.framework}`)
-          }
-        }
-      }
-
-      console.log('--> globals.framework', globals.framework)
 
       const labels = {
         angular: 'Angular',
@@ -72,11 +61,37 @@ addons.register('my/framework', () => {
         vue: 'Vue.js',
       }
 
-      const capitalize = str => {
-        if (!str) {
-          return ''
+      const values = ['angular', 'html', 'react', 'vue']
+
+      const storedFramework = localStorage.getItem(LOCAL_STORE_ID)
+      const urlSearchParams = new URLSearchParams(window.location.search)
+      const params = Object.fromEntries(urlSearchParams.entries())
+      const paramFramework = params.globals?.replace('framework:', '')
+      let framework = globals.framework
+
+      if (paramFramework && paramFramework !== '') {
+        if (framework !== paramFramework && values.includes(paramFramework)) {
+          updateGlobals({ ...globals, framework: paramFramework })
+          framework = paramFramework
+          localStorage.setItem(LOCAL_STORE_ID, paramFramework)
         }
-        return str.charAt(0).toUpperCase() + str.slice(1)
+      } else {
+        if (storedFramework && framework !== storedFramework && values.includes(storedFramework)) {
+          updateGlobals({ ...globals, framework: storedFramework })
+          framework = storedFramework
+          localStorage.setItem(LOCAL_STORE_ID, storedFramework)
+        }
+      }
+
+      const iframe = document.getElementById('storybook-preview-iframe')
+      if (iframe && framework) {
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document
+        if (iframeDocument) {
+          const body = iframeDocument.querySelector('body')
+          if (body) {
+            body.classList.add(`my-framework-${framework}`)
+          }
+        }
       }
 
       return (
@@ -87,14 +102,20 @@ addons.register('my/framework', () => {
             closeOnClick
             tooltip={({ onHide }) => {
               const handleItemClick = value => {
-                updateGlobals({ ...globals, framework: value })
-                addons.getChannel().emit(FORCE_RE_RENDER)
-                setTimeout(() => location.reload(), 100)
+                framework = value
+                localStorage.setItem(LOCAL_STORE_ID, value)
+                setTimeout(() => {
+                  const url = location.toString()
+                  const urlObj = new URL(url)
+                  const urlSearchParams = new URLSearchParams(window.location.search)
+                  const params = Object.fromEntries(urlSearchParams.entries())
+                  urlObj.search = `?path=${params.path}`
+                  location.replace(urlObj.toString())
+                }, 0)
                 onHide()
               }
 
-              // TODO: my-framework__tooltip__item--active
-              const isActive = f => (f === globals.framework ? ` my-framework__tooltip__item--active` : '')
+              const isActive = f => (f === framework ? ` my-framework__tooltip__item--active` : '')
 
               return (
                 <div className="my-framework__tooltip">

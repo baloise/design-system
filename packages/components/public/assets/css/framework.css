@@ -45,6 +45,11 @@
   }
 }
 
+.my-framework__tooltip {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
 .my-framework__tooltip__item {
   font-size: 12px;
   transition: all 150ms ease-out;
