@@ -1,4 +1,3 @@
-
 <bal-doc-banner id="testing" subtitle="Implementation">Internationalization</bal-doc-banner>
 
 The [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) of the browser

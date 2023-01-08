@@ -27,7 +27,7 @@ The font package is included in the `@baloise/design-system-components` package 
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
 
-``` 
+```
 npm install copyfiles --save-dev
 ```
 
