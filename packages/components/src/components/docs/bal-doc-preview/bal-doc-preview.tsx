@@ -16,7 +16,6 @@ export class DocPreview implements ComponentInterface {
   private updateContent() {
     if (this.previewContentEl && this.slotWrapperEl) {
       const content = this.slotWrapperEl.innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      console.log('updateContent', content)
       this.previewContentEl.innerHTML = content
     }
   }

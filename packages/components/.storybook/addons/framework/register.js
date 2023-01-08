@@ -45,43 +45,71 @@ const SvgIcons = {
   html: JavaScriptSVG,
 }
 
+const values = ['angular', 'html', 'react', 'vue']
+
+const labels = {
+  angular: 'Angular',
+  html: 'HTML & JS',
+  react: 'React',
+  vue: 'Vue.js',
+}
+
 const LOCAL_STORE_ID = 'bal-docs-framework'
+
+const usePersisted = initialValue => {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(LOCAL_STORE_ID)
+      return item ? JSON.parse(item) : initialValue
+    } catch (error) {
+      return initialValue
+    }
+  })
+
+  const setValue = value => {
+    setStoredValue(value)
+    window.localStorage.setItem(LOCAL_STORE_ID, JSON.stringify(value))
+  }
+
+  return [storedValue, setValue]
+}
+
+const updateRoute = value => {
+  const url = location.toString()
+  const urlObj = new URL(url)
+  const urlSearchParams = new URLSearchParams(window.location.search)
+  const params = Object.fromEntries(urlSearchParams.entries())
+  urlObj.search = `?path=${params.path}&globals=framework:${value}`
+  location.replace(urlObj.toString())
+}
 
 addons.register('my/framework', () => {
   addons.add('my-framework-addon/toolbar', {
     title: 'Framework',
     type: types.TOOLEXTRA,
-    render: ({ active }) => {
+    render: () => {
+      const [persistedFramework, updatePersisted] = usePersisted('angular')
       const [globals, updateGlobals] = useGlobals()
+      let { framework } = globals
 
-      const labels = {
-        angular: 'Angular',
-        html: 'HTML & JS',
-        react: 'React',
-        vue: 'Vue.js',
-      }
-
-      const values = ['angular', 'html', 'react', 'vue']
-
-      const storedFramework = localStorage.getItem(LOCAL_STORE_ID)
       const urlSearchParams = new URLSearchParams(window.location.search)
       const params = Object.fromEntries(urlSearchParams.entries())
       const paramFramework = params.globals?.replace('framework:', '')
-      let framework = globals.framework
 
-      if (paramFramework && paramFramework !== '') {
-        if (framework !== paramFramework && values.includes(paramFramework)) {
-          updateGlobals({ ...globals, framework: paramFramework })
-          framework = paramFramework
-          localStorage.setItem(LOCAL_STORE_ID, paramFramework)
+      React.useEffect(() => {
+        if (!paramFramework && framework !== persistedFramework) {
+          if (persistedFramework !== 'angular') {
+            updateRoute(persistedFramework)
+          }
         }
-      } else {
-        if (storedFramework && framework !== storedFramework && values.includes(storedFramework)) {
-          updateGlobals({ ...globals, framework: storedFramework })
-          framework = storedFramework
-          localStorage.setItem(LOCAL_STORE_ID, storedFramework)
+      }, [paramFramework, persistedFramework])
+
+      React.useEffect(() => {
+        if (!paramFramework && framework !== persistedFramework) {
+          updateGlobals({ ...globals, framework: persistedFramework })
+          addons.getChannel().emit(FORCE_RE_RENDER)
         }
-      }
+      }, [framework, persistedFramework])
 
       const iframe = document.getElementById('storybook-preview-iframe')
       if (iframe && framework) {
@@ -103,15 +131,9 @@ addons.register('my/framework', () => {
             tooltip={({ onHide }) => {
               const handleItemClick = value => {
                 framework = value
-                localStorage.setItem(LOCAL_STORE_ID, value)
-                setTimeout(() => {
-                  const url = location.toString()
-                  const urlObj = new URL(url)
-                  const urlSearchParams = new URLSearchParams(window.location.search)
-                  const params = Object.fromEntries(urlSearchParams.entries())
-                  urlObj.search = `?path=${params.path}`
-                  location.replace(urlObj.toString())
-                }, 0)
+                updatePersisted(framework)
+                updateGlobals({ ...globals, framework })
+                updateRoute(framework)
                 onHide()
               }
 
