@@ -1,5 +1,4 @@
-import { Meta, Description, DocsContainer } from '@storybook/addon-docs'
-import text_intro from './welcome.intro.md'
+import { Meta, Description, DocsContainer, Anchor } from '@storybook/addon-docs'
 
 import NewDocImage from '../../public/assets/images/new-doc.png'
 
@@ -26,13 +25,13 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                       as both code implementations and design artifacts to build any number of web applications.
                     </bal-text>
                     <bal-button-group class="mt-medium">
-                      <a
+                      {/* <a
                         class="button is-primary"
                         style={{ width: 'auto' }}
                         href="?path=/docs/development-installation--page"
                       >
                         Getting Started
-                      </a>
+                      </a> */}
                       <bal-button
                         color="info"
                         icon="github"
@@ -46,8 +45,72 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                 </bal-stage>
               </bal-doc-app>
             </div>
+            <div className="my-welcome-guides">
+              <h2>Getting Started</h2>
+              <bal-list border>
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/design-system--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>What is a Design System?</bal-list-item-title>
+                      <bal-list-item-subtitle>Purpose, advantages and architecture</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/foundation-overview--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Foundations</bal-list-item-title>
+                      <bal-list-item-subtitle>Design tokens, typography, colors and more</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/development-installation--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Installation</bal-list-item-title>
+                      <bal-list-item-subtitle>HTML, Angular, React & Vue.js</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/changelog--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Changelog</bal-list-item-title>
+                      <bal-list-item-subtitle>What's new?</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/contributing--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Contributing</bal-list-item-title>
+                      <bal-list-item-subtitle>Ask a question, report a bug or request a feature</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+              </bal-list>
+            </div>
             <div className="my-welcome-content">
-              <h2>News</h2>
+              <h2>Latest News</h2>
               <div className="columns is-multiline">
                 <div class="column is-full">
                   <bal-card fullheight class="p-none">
@@ -59,7 +122,7 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                         Updated Documentation
                       </bal-heading>
                       <bal-text space="none">
-                        Within the new documentation select you prefered proxy framework on the top right corner.
+                        Within the new documentation select you preferred proxy framework on the top right corner.
                       </bal-text>
                       <img src={NewDocImage} />
                       <br />
@@ -115,56 +178,6 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                     </bal-card-content>
                   </bal-card>
                 </div>
-              </div>
-              <div className="my-welcome-guides">
-                <h2>Guides</h2>
-                <bal-list border>
-                  <bal-list-item clickable href="www.baloise.com">
-                    <bal-list-item-content>
-                      <bal-list-item-title>What is a Design System?</bal-list-item-title>
-                      <bal-list-item-subtitle>Architecture</bal-list-item-subtitle>
-                    </bal-list-item-content>
-                    <bal-list-item-icon right>
-                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-                    </bal-list-item-icon>
-                  </bal-list-item>
-                  <bal-list-item clickable href="www.baloise.com">
-                    <bal-list-item-content>
-                      <bal-list-item-title>Foundations</bal-list-item-title>
-                      <bal-list-item-subtitle>Typography, Colors and more</bal-list-item-subtitle>
-                    </bal-list-item-content>
-                    <bal-list-item-icon right>
-                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-                    </bal-list-item-icon>
-                  </bal-list-item>
-                  <bal-list-item clickable href="www.baloise.com">
-                    <bal-list-item-content>
-                      <bal-list-item-title>Installation</bal-list-item-title>
-                      <bal-list-item-subtitle>HTML, Angular, React & Vue</bal-list-item-subtitle>
-                    </bal-list-item-content>
-                    <bal-list-item-icon right>
-                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-                    </bal-list-item-icon>
-                  </bal-list-item>
-                  <bal-list-item clickable href="www.baloise.com">
-                    <bal-list-item-content>
-                      <bal-list-item-title>Changelog</bal-list-item-title>
-                      <bal-list-item-subtitle>What's new?</bal-list-item-subtitle>
-                    </bal-list-item-content>
-                    <bal-list-item-icon right>
-                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-                    </bal-list-item-icon>
-                  </bal-list-item>
-                  <bal-list-item clickable href="www.baloise.com">
-                    <bal-list-item-content>
-                      <bal-list-item-title>Contributing</bal-list-item-title>
-                      <bal-list-item-subtitle>Support / Creating issues</bal-list-item-subtitle>
-                    </bal-list-item-content>
-                    <bal-list-item-icon right>
-                      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-                    </bal-list-item-icon>
-                  </bal-list-item>
-                </bal-list>
               </div>
             </div>
           </DocsContainer>
