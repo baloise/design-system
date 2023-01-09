@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs'
 
 <Meta
-  title="Guides/Contributing/Project Setup"
+  title="Development/Contributing/Setup"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,15 +9,57 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Project Setup
+# Setup
+
+The Baloise Design System is divided into multiple NPM packages. Development for all packages are happening inside one mono repository. Follow the steps listed below to get the dev environment up and running.
+
+## Prerequisite - NodeJS
+
+To work with this project a recent LTS version of NodeJS and npm is required. Make sure you've installed and/or updated [Node](https://nodejs.org/en/) before continuing.
+
+> **Warning!**
+> Note that you will need to use npm 8 or higher.
+
+## Project and Packages
+
+To start building a new web component using Stencil, clone this repo to a new directory:
+
+```bash
+git clone https://github.com/baloise-incubator/design-system.git design-system
+cd design-system
+```
+
+First we install all the dependencies of the packages. Then we make an initial build to have all the needed artifacts in place and afterwards we link the packages.
+
+```bash
+npm install
+```
+
+After the installation, we can start the documentation page locally. We use storybook also for the development.
+
+```bash
+npm run build
+npm start
+```
+
+The page is available under [http://localhost:6006](http://localhost:6006).
+
+Go to the [Commands](?path=/docs/development-contributing-commands--page) page to see more npm scripts.
+
+> **TIP**
+> All Baloise Design System packages and their contained code can be found under `/packages/`. For example components live in `/packages/components/`.
+
+## Documentation
+
+To document our components we use the tool [Storybook](https://storybook.js.org/).
+
+The documentation files are in a folder called `/stories` or have `.stories.` in the file name.
+
+## Project Structure
 
 The Baloise Design System is divided into multiple NPM packages. Development for all packages are happening inside one mono repository.
 
-## Architecture
-
-Have a look at the [architecture](/about-us/architecture.html).
-
-## CI & CD
+### CI & CD
 
 For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-system/tree/master/.github/workflows). The following actions are in the folder `.github/workflows`:
 
@@ -33,7 +75,7 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 
   - The documentation action gets executed after the release action. It builds the documentation that is deployed under `design.baloise.dev`.
 
-## Folder Structure
+### Folder Structure
 
 ```bash
 .
@@ -63,9 +105,9 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 └── tsconfig.base.json    # base config of typescript
 ```
 
-### /packages
+#### /packages
 
-#### /components
+##### /components
 
 ```bash
 .
@@ -108,4 +150,41 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 └──  stencil.*.config.ts # stencil output configurations
 ```
 
-<bal-doc-github link="/stories/Guides/Contributing/03-project-setup.stories.mdx"></bal-doc-github>
+## Commands
+
+The commands of the Baloise Design System are managed in the `package.json` file in the section `scripts`.
+
+| Command                              | Description                                                                        |
+| :----------------------------------- | :--------------------------------------------------------------------------------- |
+| npm **install**                      | Installs all the npm dependencies.                                                 |
+| npm run **build**                    | Builds all packages in the correct order.                                          |
+| npm run **start** or npm run **dev** | Starts storybook with custom elements and watches for changes. Like in production. |
+| npm run **serve**                    | Starts stencil web server.                                                         |
+| npm run **test**                     | Runs the components tests.                                                         |
+| npm run **e2e**                      | Runs cypress e2e tests.                                                            |
+| npm run **lint**                     | Lints the source files with eslint                                                 |
+| npm run **format**                   | Formats the source file with prettier                                              |
+
+### Debug Components
+
+Set a `debugger` keyword in the components code and run it with `npm run serve`
+
+### Testing
+
+All the library project commands starts with the prefix `testing:`
+
+| Command          | Description              |
+| :--------------- | :----------------------- |
+| npm run **test** | Runs all the unit tests. |
+| npm run **e2e**  | Opens cypress editor.    |
+
+### Documentation (Storybook)
+
+All the library project commands starts with the prefix `storybook:`
+
+| Command                | Description                                         |
+| :--------------------- | :-------------------------------------------------- |
+| npm run **docs**       | Installs all the dependencies of the documentation. |
+| npm run **docs:serve** | Runs the static generated storybook.                |
+
+<bal-doc-github link="/stories/Development/Contributing/02-dev-setup.stories.mdx"></bal-doc-github>

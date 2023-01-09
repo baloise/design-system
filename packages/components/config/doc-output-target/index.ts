@@ -93,14 +93,14 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       }
     }
 
-    const avatar = contributor => `  <a href="${contributor.url}" class="feature">
+    const avatar = contributor => `  <a href="${contributor.url}" class="avatar">
     <h2>
       <img src="${contributor.avatar}" alt="${contributor.name}" style="width: 64px;">
     </h2>
     <h4>${contributor.name}</h4>
   </a>`
 
-    const contributorsContent = [`<div class="features">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
+    const contributorsContent = [`<div class="avatars">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
 
     try {
       writeFileSync(path.join(__dirname, '../../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))

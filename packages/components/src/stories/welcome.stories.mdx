@@ -1,6 +1,8 @@
 import { Meta, Description, DocsContainer } from '@storybook/addon-docs'
 import text_intro from './welcome.intro.md'
 
+import NewDocImage from '../../public/assets/images/new-doc.png'
+
 <Meta
   title="Welcome"
   parameters={{
@@ -27,7 +29,7 @@ import text_intro from './welcome.intro.md'
                       <a
                         class="button is-primary"
                         style={{ width: 'auto' }}
-                        href="?path=/docs/development-getting-started-overview--page"
+                        href="?path=/docs/development-installation--page"
                       >
                         Getting Started
                       </a>
@@ -47,6 +49,34 @@ import text_intro from './welcome.intro.md'
             <div className="my-welcome-content">
               <h2>News</h2>
               <div className="columns is-multiline">
+                <div class="column is-full">
+                  <bal-card fullheight class="p-none">
+                    <bal-card-content>
+                      <bal-text size="small" class="mb-x-small">
+                        11.01.2023
+                      </bal-text>
+                      <bal-heading space="bottom" level="h3">
+                        Updated Documentation
+                      </bal-heading>
+                      <bal-text space="none">
+                        Within the new documentation select you prefered proxy framework on the top right corner.
+                      </bal-text>
+                      <img src={NewDocImage} />
+                      <br />
+                      <p>
+                        <b>More updates:</b>
+                      </p>
+                      <ul>
+                        <li>Inside page navigation on the right side</li>
+                        <li>Each component has a stackblitz angular example</li>
+                        <li>Updated Design System page</li>
+                        <li>Updated component usage section</li>
+                        <li>Updated contributing page</li>
+                        <li>Updated component structure</li>
+                      </ul>
+                    </bal-card-content>
+                  </bal-card>
+                </div>
                 <div class="column">
                   <bal-card fullheight class="p-none" color="purple-2">
                     <bal-card-content>
@@ -62,7 +92,7 @@ import text_intro from './welcome.intro.md'
                       <a
                         class="button is-primary mt-normal"
                         style={{ width: 'auto' }}
-                        href="?path=/docs/development-migration-migration-from-11-x-to-12-x--page"
+                        href="?path=/docs/development-migration-migration-11-x-to-12-x--page"
                       >
                         Migration Guide
                       </a>
@@ -127,8 +157,8 @@ import text_intro from './welcome.intro.md'
                   </bal-list-item>
                   <bal-list-item clickable href="www.baloise.com">
                     <bal-list-item-content>
-                      <bal-list-item-title>Support</bal-list-item-title>
-                      <bal-list-item-subtitle>Contributing / Creating issues</bal-list-item-subtitle>
+                      <bal-list-item-title>Contributing</bal-list-item-title>
+                      <bal-list-item-subtitle>Support / Creating issues</bal-list-item-subtitle>
                     </bal-list-item-content>
                     <bal-list-item-icon right>
                       <bal-icon name="nav-go-right" size="xsmall"></bal-icon>

@@ -163,15 +163,3 @@ npm start
 
 > **TIP**
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
-
-# Component Usage
-
-How to import Baloise Design System component, set properties, listen to events and call methods is described int the Component Usage section.
-
-<br />
-
-<bal-doc-app>
-  <a class="button is-primary is-inline" href="https://baloise-design-system.vercel.app/?path=/docs/development-guides-components--page">
-    Go to Component Usage
-  </a>
-</bal-doc-app>

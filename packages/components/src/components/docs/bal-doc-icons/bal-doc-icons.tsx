@@ -11,8 +11,8 @@ export class BalDocIcons {
       <Host class="bal-app">
         <div class="columns is-multiline">
           {this.icons.split(',').map(icon => (
-            <div class="column is-2 p-x-small has-background-blue-light">
-              <div class="p-small is-flex is-align-items-center is-flex-direction-column is-justify-content-center">
+            <div class="column is-3 p-x-small has-background-blue-light">
+              <div class="p-small has-text-center is-flex is-align-items-center is-flex-direction-column is-justify-content-center">
                 <bal-icon color="primary" name={icon}></bal-icon>
                 <span class="mt-xx-small">{icon}</span>
               </div>

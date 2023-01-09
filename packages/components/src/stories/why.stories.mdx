@@ -13,7 +13,7 @@ import HTMLLogo from '../../public/assets/images/html.png'
   }}
 />
 
-# What is a Design System?
+# Design System
 
 <bal-doc-lead>
   A design system is a collection of reusable functional elements–components and patterns, guided by clear standards
@@ -32,11 +32,11 @@ Well structured Design Systems provide enough freedom for product teams to exper
 
 Design Systems should also be flexible and responsive to any changes in the field of design, such as new visual design trends or the rising importance of different types of emerging technology.
 
-## Advantages
+### Advantages
 
 In this section key advantage of the library are listed which are part of the Baloise Design System.
 
-### 📦 Agnostic
+#### 📦 Agnostic
 
 Perhaps one of the most appealing benefits of using Web Components is the flexibility to choose the underlying tools and frameworks (including their versions). To facilitate the effort of teams to use one unified standard based on Web Components, every team has complete freedom in choosing the tools they love today and will love tomorrow.
 
@@ -46,51 +46,281 @@ Perhaps one of the most appealing benefits of using Web Components is the flexib
 
 The Baloise Design System can be used with any Web-Technology, however we deliver a dedicated library for Angular, Vue and React with proxy components.
 
-### 🎨 Fast style changes
+#### 🎨 Fast style changes
 
-Today, every change to the corporate Style-Guide has to be implemented by each development team. This costs a lot of effort and generates unnecessary costs. Let's imagine that a color has to be changed and buttons have to be made flat. With the Baloise Design System only the according [SCSS](https://sass-lang.com/) variables have to be changed.
+Today, every change to the corporate Style-Guide has to be implemented by each development team.
+This costs a lot of effort and generates unnecessary costs. Let's imagine that a color has to be changed and
+buttons have to be made flat. With the Baloise Design System only the according [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+have to be changed.
 
-```scss
-$blue: red;
-$radius: 0;
+```css
+:root {
+  --bal-color-primary: red;
+  --bal-radius-normal: 0;
+}
 ```
 
 The changes will be released to [npm](https://www.npmjs.com/package/@baloise/design-system-components) from where development teams can grab new changes.
 Only the library has to be upgraded by every project and style changes are immediately applied.
 Style changes will not change the component interface, meaning that the developers don't have to do any additional adjustment.
 
-### ⚡️ Fast Runtime
+#### ⚡️ Fast Runtime
 
 [Web Components](https://developer.mozilla.org/de/docs/Web/Web_Components) offered a solution by pushing more work to the browser for better performance. Moreover, the components get lazy loaded when they need. To keep the initial package size of your project as small as possible.
 
-#### Browser Support
+##### Browser Support
 
 The Library supports the following browsers. For more details go to [Stencil - Browser Support](https://stenciljs.com/docs/browser-support).
 
-### 🛠️ Rich Features
+#### 🛠️ Rich Features
 
 On top of the user interaction and style part, the library also provides a set of utilities.
 
-#### Testing
+##### Testing
 
 As a [E-2-E testing](?path=/docs/development-getting-started-testing--page) tool we use [Cypress](https://www.cypress.io/). With the help of our custom and overridden commands we try to simplify writing tests.
 The commands hide the complexity of the component and only serve as an interface for simulated user actions like a click.
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
-
 describe('Button', () => {
   it('should ...', () => {
-    const button = byTestId('button-id')
-    cy.get(button).contains('Label').click()
+    cy.getByTestId('button-id').contains('Label').click()
   })
 })
 ```
 
-## Links
+### Links
 
 - [Web Components Introduction](https://www.webcomponents.org/introduction)
 - [Stencil Introduction](https://stenciljs.com/docs/introduction)
 - [Stencil FAQ](https://stenciljs.com/docs/faq)
+
+## Architecture
+
+The Baloise Design System is an open source project to build customer centric web applications following the Baloise corporate styling guidelines.
+
+The architecture is based on web standards and best practices. Moreover, we try to keep it as simple as possible for our contributors and consumers.
+For those reasons we decided to use Web Components which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
+
+### Packages
+
+The project is divided into various packages. The graphic below draws a more detailed picture.
+
+import ArchitectureImage from '../../public/assets/images/architecture/architecture.svg'
+
+<img src={ArchitectureImage} style={{ maxWidth: '480px' }} />
+
+| Package                                                                                                                     | Status                                                                                                                                                    | Description                                                             |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [Components](https://github.com/baloise-incubator/design-system/blob/next/packages/components/CHANGELOG.md)                 | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components)](https://www.npmjs.com/package/@baloise/design-system-components)                 | Core package build with web components and global styling.              |
+| [Components Angular](https://github.com/baloise-incubator/design-system/blob/next/packages/components-angular/CHANGELOG.md) | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular)](https://www.npmjs.com/package/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
+| [Components React](https://github.com/baloise-incubator/design-system/blob/next/packages/components-react/CHANGELOG.md)     | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)](https://www.npmjs.com/package/@baloise/design-system-components-react)     | React component proxies based on the the core package.                  |
+| [Components Table](https://github.com/baloise-incubator/design-system/blob/next/packages/components-table/CHANGELOG.md)     | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)](https://www.npmjs.com/package/@baloise/design-system-components-table)     | Integration library for AG-Grid with styles and renderer functions      |
+| [Components Vue](https://github.com/baloise-incubator/design-system/blob/next/packages/components-vue/CHANGELOG.md)         | [![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)](https://www.npmjs.com/package/@baloise/design-system-components-vue)         | Vue component proxies based on the the core package.                    |
+| [CSS](https://github.com/baloise-incubator/design-system/blob/next/packages/css/CHANGELOG.md)                               | [![npm](https://img.shields.io/npm/v/@baloise/design-system-css)](https://www.npmjs.com/package/@baloise/design-system-css)                               | Basic CSS styles with utility classes.                                  |
+| [Fonts](https://github.com/baloise-incubator/design-system/blob/next/packages/fonts/CHANGELOG.md)                           | [![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)](https://www.npmjs.com/package/@baloise/design-system-fonts)                           | Web-Font of the design system.                                          |
+| [Icons](https://github.com/baloise-incubator/design-system/blob/next/packages/icons/CHANGELOG.md)                           | [![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)](https://www.npmjs.com/package/@baloise/design-system-icons)                           | SVG icons of the design system.                                         |
+| [Testing](https://github.com/baloise-incubator/design-system/blob/next/packages/testing/CHANGELOG.md)                       | [![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)](https://www.npmjs.com/package/@baloise/design-system-testing)                       | Testing package with custom and overridden commands for each component. |
+| [Tokens](https://github.com/baloise-incubator/design-system/blob/next/packages/tokens/CHANGELOG.md)                         | [![npm](https://img.shields.io/npm/v/@baloise/design-system-tokens)](https://www.npmjs.com/package/@baloise/design-system-tokens)                         | Design Tokens like color and spacing.                                   |
+
+### Libraries
+
+| Technology                                                   | Description                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Web Components](https://www.webcomponents.org/introduction) | Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JavaScript library or framework that works with HTML. |
+| [Stencil](https://stenciljs.com/)                            | A Web Component compiler for building fast, reusable UI components and Progressive Web Apps.                                                                                                                                                                                                                                               |
+| [Storybook](https://storybook.js.org/)                       | Storybook is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.                                                                                                                                                                                             |
+
+#### Stencil.js
+
+Stencil is a toolchain for building reusable, scalable Design Systems. Generate small, blazing fast, and 100% standards based Web Components that run in every browser.
+
+##### Future Friendly
+
+We don't know what will be the next big framework, but by using Stencil that does not matter. Stencil is not dependent on any framework. As mentioned above it is a compiler to generate standard-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which can be used with any framework.
+
+##### TypeScript Support
+
+TypeScript helps maintaining the code. Additionally, Stencil generates types for the components, which helps during development.
+
+##### Browser Support
+
+For the small minority of browsers that do not support modern browsers, features and APIs, Stencil will automatically polyfill them on-demand.
+Out-of-the-box browser support includes all modern browsers starting from Internet Explorer 11 ([Browser Support](https://stenciljs.com/docs/browser-support)).
+
+##### Easy to learn
+
+The tiny API and concepts, which are based on web standards, are quite similar to the concepts and APIs of the most known JavaScript frameworks like React, Vue and Angular. So it is really simple to get started. The goal is not to create yet-another-framework, but rather provide tooling for developers to generate future-friendly components using APIs already baked within the browser.
+
+##### Needs no dependencies at runtime
+
+The generated code does not rely on Stencil, but rather generates highly-optimized, framework-free, stand-alone code which runs natively in browsers.
+
+#### SWOT analysis of Stencil
+
+<table className="docs-swot-table">
+  <tbody>
+    <tr>
+      <th></th>
+      <th className="green">
+        <strong>Helpful</strong>
+        <br />
+        <small>to achieving the objective</small>
+      </th>
+      <th className="red">
+        <strong>Harmful</strong>
+        <br />
+        <small>to achieving the objective</small>
+      </th>
+    </tr>
+    <tr>
+      <th className="yellow rotate">
+        <div>
+          <strong>Internal origin</strong>
+          <br />
+          <small>(product/company attributes)</small>
+        </div>
+      </th>
+      <td>
+        <strong>Strengths</strong>
+        <ul>
+          <li>Future Friendly</li>
+          <li>TypeScript Support</li>
+          <li>Browser Support</li>
+          <li>Easy to learn</li>
+          <li>Needs no dependencies at runtime</li>
+          <li>Web Standards</li>
+          <li>Automatic Optimizations</li>
+          <li>Run-time Performance</li>
+          <li>Framework Features During Development</li>
+        </ul>
+      </td>
+      <td>
+        <strong>Weakness</strong>
+        <ul>
+          <li>Depending on the release cycle of Stencil</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th className="blue rotate">
+        <div>
+          <strong>External origin</strong>
+          <br />
+          <small>(environment/market attributes)</small>
+        </div>
+      </th>
+      <td>
+        <strong>Opportunity</strong>
+        <ul>
+          <li>Framework agnostic</li>
+          <li>Open-Source positioning</li>
+          <li>Get new features</li>
+          <li>Web Standards</li>
+          <li>Only ships Web Components</li>
+        </ul>
+      </td>
+      <td>
+        <strong>Threat</strong>
+        <ul>
+          <li>Library could get deprecated</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Storybook
+
+**Build component driven UIs faster**
+Storybook is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
+
+##### Playground
+
+The developers can create components in an isolated environment and have an interactive showcase/playground.
+Change controls/props, have a look at fired events and a lot more is possible with playground.
+
+##### Accessibility
+
+Storybook evaluates the components against the [Web Content Accessibility Guidelines (WCAG) 2](https://www.w3.org/WAI/WCAG2AA-Conformance).
+
+##### Documentation
+
+A perfect mix of documentation with markdown and creating stories/variants of components for the playground.
+
+##### Addons
+
+Storybook has a rich list of available addons which can be integrated very easy, like accessibility checks.
+
+##### SWOT analysis of Storybook
+
+Storybook is a user interface development environment and playground for UI components.
+
+- [Why You Should Always Use Storybook When Developing User Interfaces](https://levelup.gitconnected.com/why-you-should-always-use-storybook-when-developing-user-interfaces-4c69b93b2f65)
+
+<table className="docs-swot-table">
+  <tbody>
+    <tr>
+      <th></th>
+      <th className="green">
+        <strong>Helpful</strong>
+        <br />
+        <small>to achieving the objective</small>
+      </th>
+      <th className="red">
+        <strong>Harmful</strong>
+        <br />
+        <small>to achieving the objective</small>
+      </th>
+    </tr>
+    <tr>
+      <th className="yellow rotate">
+        <div>
+          <strong>Internal origin</strong>
+          <br />
+          <small>(product/company attributes)</small>
+        </div>
+      </th>
+      <td>
+        <strong>Strengths</strong>
+        <ul>
+          <li>Standard in UI Library development</li>
+          <li>Playground</li>
+          <li>Isolated Development</li>
+          <li>Accessibility</li>
+          <li>Better tested components</li>
+        </ul>
+      </td>
+      <td>
+        <strong>Weakness</strong>
+        <ul>
+          <li>Stencil.js integration is currently in build</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th className="blue rotate">
+        <div>
+          <strong>External origin</strong>
+          <br />
+          <small>(environment/market attributes)</small>
+        </div>
+      </th>
+      <td>
+        <strong>Opportunity</strong>
+        <ul>
+          <li>Framework agnostic</li>
+          <li>Open-Source positioning</li>
+        </ul>
+      </td>
+      <td>
+        <strong>Threat</strong>
+        <ul>
+          <li>Library could get deprecated</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <bal-doc-github link="/stories/why.stories.mdx"></bal-doc-github>

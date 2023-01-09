@@ -11,7 +11,7 @@ import {
 } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
-  title: 'Components/Notice/Sheet',
+  title: 'Components/Overlay/Sheet',
   component: BalSheet,
   argTypes: {
     ...withContent(),

@@ -1,7 +1,7 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<bal-doc-banner id="story--components-notice-snackbar--basic">Snackbar</bal-doc-banner>
+<bal-doc-banner id="story--components-overlay-snackbar--basic">Snackbar</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Snackbar</b> is used to inform the user with a simple text message and a action.
@@ -22,7 +22,7 @@ import readme from '../readme.md'
 ```
 
 <Canvas withSource="none" className="has-visible-overflow">
-  <Story id="components-notice-snackbar--basic" />
+  <Story id="components-overlay-snackbar--basic" />
 </Canvas>
 
 import exampleHtml from './usage/angular/example_component_html.md'
@@ -30,7 +30,7 @@ import exampleTs from './usage/angular/example_component_ts.md'
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-notice-snackbar--basic">
+    <a class="button is-primary" href="?path=/story/components-overlay-snackbar--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-stackblitz template={exampleHtml} component={exampleTs}></bal-doc-stackblitz>
@@ -66,4 +66,4 @@ import testing from './testing.md'
 
 <Description markdown={testing} />
 
-<bal-doc-github link="/components/notice/bal-snackbar/stories/bal-snackbar.docs.mdx"></bal-doc-github>
+<bal-doc-github link="/components/overlay/bal-snackbar/stories/bal-snackbar.docs.mdx"></bal-doc-github>

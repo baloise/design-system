@@ -4,10 +4,10 @@ nav.sbdocs-toc {
   top: 40px;
   z-index: 9999;
   transition: all 0.3s ease-in;
-  padding: 0 1rem 1rem 1rem;
-  width: 320px;
+  padding: 0 1rem 1rem 3rem;
+  width: 340px;
   top: 4rem;
-  left: 1120px;
+  left: 1040px;
 }
 
 nav.sbdocs-toc[data-show='true'] {
@@ -114,7 +114,7 @@ button.sbdocs-top:active {
   border-color: #000739;
 }
 
-@media only screen and (max-width: 1364px) {
+@media only screen and (max-width: 1264px) {
   .sbdocs-toc, .sbdocs-top {
     display: none !important;
   }

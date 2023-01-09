@@ -3,7 +3,7 @@ import readme from '../readme.md'
 import modalHeader from '../bal-modal-header/readme.md'
 import modalBody from '../bal-modal-body/readme.md'
 
-<bal-doc-banner id="story--components-notice-modal--basic">Modal</bal-doc-banner>
+<bal-doc-banner id="story--components-overlay-modal--basic">Modal</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Modal</b> is a dialog that appears on top of the app's body, and must be dismissed by the app before interaction
@@ -11,7 +11,7 @@ import modalBody from '../bal-modal-body/readme.md'
 </bal-doc-lead>
 
 <Canvas withSource="open" className="has-visible-overflow">
-  <Story id="components-notice-modal--basic" />
+  <Story id="components-overlay-modal--basic" />
 </Canvas>
 
 import exampleHtml from './usage/angular/example_component_html.md'
@@ -21,7 +21,7 @@ import modalTs from './usage/angular/modal_component_ts.md'
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-notice-modal--basic">
+    <a class="button is-primary" href="?path=/story/components-overlay-modal--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-stackblitz
@@ -36,20 +36,20 @@ import modalTs from './usage/angular/modal_component_ts.md'
 
 ## Examples
 
-<span id="story--components-notice-modal--with-input" style={{ opacity: 0 }}></span>
+<span id="story--components-overlay-modal--with-input" style={{ opacity: 0 }}></span>
 
 ### With Input
 
 <Canvas className="has-visible-overflow">
-  <Story id="components-notice-modal--with-input" />
+  <Story id="components-overlay-modal--with-input" />
 </Canvas>
 
-<span id="story--components-notice-modal--large-content" style={{ opacity: 0 }}></span>
+<span id="story--components-overlay-modal--large-content" style={{ opacity: 0 }}></span>
 
 ### With large content
 
 <Canvas className="has-visible-overflow">
-  <Story id="components-notice-modal--large-content" />
+  <Story id="components-overlay-modal--large-content" />
 </Canvas>
 
 ## Component Api
@@ -73,4 +73,4 @@ import testing from './testing.md'
 
 <Description markdown={testing} />
 
-<bal-doc-github link="/components/notice/bal-modal/stories/bal-modal.docs.mdx"></bal-doc-github>
+<bal-doc-github link="/components/overlay/bal-modal/stories/bal-modal.docs.mdx"></bal-doc-github>

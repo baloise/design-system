@@ -105,7 +105,14 @@ p.sbdocs-p.is-size-small {
   line-height: 1.25rem;
 }
 
-a.sbdocs-a {
+bal-doc-github {
+  margin-top: 6rem;
+  display: block;
+}
+
+a.sbdocs-a,
+bal-doc-github a,
+a.is-link {
   font-family: 'BaloiseCreateText';
   font-size: 1rem;
   font-weight: 700;
@@ -275,4 +282,74 @@ table.sbdocs-table tbody tr td {
 
 .my-welcome-guides .bal-list {
   max-width: 520px;
+}
+
+ul.sbdocs-ul {
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+
+li.sbdocs-li {
+  font-family: 'BaloiseCreateText';
+  font-size: 1rem;
+  color: #000d6e;
+  hyphens: auto;
+  margin-bottom: .5rem;
+}
+
+li.sbdocs-li:last-child {
+  margin-bottom: 0;
+}
+
+li.sbdocs-li::marker {
+  color: var(--bal-color-blue);
+}
+
+blockquote.sbdocs-blockquote {
+  padding: 1.25rem 1rem;
+  background: #f9f3ff;
+  border-color: #9f52cc;
+}
+
+.sbdocs td > code,
+.sbdocs code:not(.language-diff) {
+  border: 1px solid #b3b6d4 !important;
+  color: #000d6e !important;
+  background-color: #e5e7f0 !important;
+  padding: 3px 5px;
+  white-space: nowrap;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+bal-doc-download bal-card-content {
+  padding: 0.5rem 1rem !important;
+}
+
+pre.my-diff-source {
+  font-size: 13px !important;
+  padding: 20px !important;
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  margin: 25px 0 40px !important;
+  border-radius: 4px !important;
+  box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0 !important;
+  font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Droid Sans Mono', 'Courier New', monospace !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+pre.my-diff-source code {
+  padding: 0 !important;
+}
+
+div.has-visible-overflow,
+div.has-visible-overflow.sbdocs-preview,
+div.has-visible-overflow > .docs-story,
+div.has-visible-overflow > .docs-story > div:first-child {
+  overflow: visible !important;
+}
+
+div.has-visible-overflow > .docs-story > div:nth-child(2) {
+  bottom: 10px;
 }

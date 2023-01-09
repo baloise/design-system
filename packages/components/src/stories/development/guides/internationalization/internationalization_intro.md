@@ -1,7 +1,9 @@
-<bal-doc-banner id="testing" subtitle="Implementation">Internationalization</bal-doc-banner>
+<bal-doc-banner id="anchor--development-internationalization--page" subtitle="Development">Internationalization</bal-doc-banner>
 
 The [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) of the browser
 provides the Design System number and date formats.
+
+## Regions & Languages
 
 The following **regions** and **languages** are supported:
 

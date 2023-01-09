@@ -1,11 +1,11 @@
-<bal-doc-banner id="overview" subtitle="Guides">Form</bal-doc-banner>
+<bal-doc-banner id="anchor--development-form--page" subtitle="Development">Form</bal-doc-banner>
 
 <bal-doc-lead>
 The indispensable form controls, designed for maximum clarity.
 Form elements are used in combination with the CSS grid system.
 </bal-doc-lead>
 
-### Form fields
+## Form fields
 
 A basic form field has his container element `bal-field` and 3 child elements:
 
