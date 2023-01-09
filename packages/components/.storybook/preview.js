@@ -135,9 +135,10 @@ export const parameters = {
           'Page Layout',
           'Templates',
         ],
+        'Guides',
+        ['Installation', 'Components', 'Form', 'Internationalization', 'Testing', 'Contributing', 'Troubleshooting'],
+
         'Components',
-        'Development',
-        ['Guides', ['Installation', 'Components', 'Form', 'Internationalization', 'Testing'], 'Migration', 'Contributing'],
       ],
     },
   },

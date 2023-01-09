@@ -1,5 +1,6 @@
 #docs-root > .sbdocs-wrapper {
-  padding: 0 4rem 4rem 4rem;
+  /* padding: 0 4rem 4rem 4rem; */
+  padding: 0 3rem 3rem 3rem;
   justify-content: flex-start;
 }
 
@@ -239,4 +240,39 @@ table.sbdocs-table tbody tr td {
   overflow: auto;
   padding: 30px 20px;
   margin: -10px;
+}
+
+.my-welcome-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.my-welcome-state .bal-stage-body {
+  padding-top: 3rem !important;
+}
+
+.my-welcome-state .container {
+  margin: 0 !important;
+  max-width: 1088px !important;
+}
+
+.my-welcome-content {
+  margin-top: 520px !important;
+}
+
+.my-welcome-state .bal-logo > div {
+  height: 48px !important;
+  width: 237px !important;
+}
+
+.columns {
+  margin-left: calc(var(--bal-column-gap) * -1) !important;
+  margin-right: calc(var(--bal-column-gap) * -1) !important;
+  margin-top: calc(var(--bal-column-gap) * -1) !important;
+}
+
+.my-welcome-guides .bal-list {
+  max-width: 520px;
 }
