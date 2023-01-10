@@ -1,5 +1,27 @@
 # @baloise/design-system-components
 
+## 12.3.0
+
+### Minor Changes
+
+- [#1040](https://github.com/baloise-incubator/design-system/pull/1040) [`e3e9e91fd`](https://github.com/baloise-incubator/design-system/commit/e3e9e91fd51f43511c64f1519998c12da237ce45) Thanks [@hirsch88](https://github.com/hirsch88)! - add min and max to bal-number-input
+
+- [#973](https://github.com/baloise-incubator/design-system/pull/973) [`16cf1e903`](https://github.com/baloise-incubator/design-system/commit/16cf1e90337861aca94a3b55dff6781647bc8757) Thanks [@hirsch88](https://github.com/hirsch88)! - add missing t-shirt sizes to bal-heading
+
+### Patch Changes
+
+- [#973](https://github.com/baloise-incubator/design-system/pull/973) [`378807722`](https://github.com/baloise-incubator/design-system/commit/378807722525e73c38d0d50bca2c2850490b4ab7) Thanks [@hirsch88](https://github.com/hirsch88)! - refactoring of the bal-list and the bal-accordion
+
+- [#1048](https://github.com/baloise-incubator/design-system/pull/1048) [`bb3cde835`](https://github.com/baloise-incubator/design-system/commit/bb3cde835680edad13c2e9520408b33fd5d33cc6) Thanks [@hirsch88](https://github.com/hirsch88)! - fix tab link on mobile select
+
+- [#1032](https://github.com/baloise-incubator/design-system/pull/1032) [`3b99a82c6`](https://github.com/baloise-incubator/design-system/commit/3b99a82c6e5e9ddfc1d89bbd3a4754dfb1cf6a1c) Thanks [@hirsch88](https://github.com/hirsch88)! - to avoid global duplicated identifiers the global script gets loaded by the bal-app component
+
+- Updated dependencies [[`89f87f6b2`](https://github.com/baloise-incubator/design-system/commit/89f87f6b2e2030558b284d94ced1f1d4d602becc)]:
+  - @baloise/design-system-icons@12.3.0
+  - @baloise/design-system-css@12.3.0
+  - @baloise/design-system-fonts@12.3.0
+  - @baloise/design-system-tokens@12.3.0
+
 ## 12.2.0
 
 ### Minor Changes
