@@ -8,7 +8,9 @@ const path = require('path')
 const replace = require('replace-in-file');
 const log = require('./utils/log.js')
 
-const DIST_PATH = path.join(process.cwd(), 'dist')
+const DIRNAME = path.normalize(__dirname);
+const PACKAGE = path.join(DIRNAME, "../packages/components");
+const DIST_PATH = path.join(PACKAGE, 'dist')
 
 async function main(){
   log.title('globals')
@@ -18,14 +20,15 @@ async function main(){
 
 async function adjustGlobalVar(files){
   try {
+    await replace({
+      files: files,
+      from: `const global`,
+      to: `const globalImport`,
+    })
     const results = await replace({
       files: files,
-      from: `const global = require('./global-870fff11.js');
-
-const globalScripts = global.globalScript;`,
-      to: `const globalScript = require('./global-870fff11.js');
-
-const globalScripts = globalScript.globalScript;`,
+      from: `const globalScripts = global.globalScript;`,
+      to: `const globalScripts = globalImport.globalScript;`,
     })
     const changedFiles = results.filter(r => r.hasChanged).map(r => r.file)
     changedFiles.forEach(f => log.list(f))
