@@ -4,49 +4,45 @@ This section describes how to setup the Baloise Design System with an basic Reac
 
 ## Prerequisite
 
-Before we can add the Baloise Design System we need to setup the basics.
+Before we can add the Baloise Design System we need to setup the basics with [React Create App CLI](https://create-react-app.dev/)
 
-Create an React project with the [React Create App CLI](https://create-react-app.dev/) and set Sass as default.
-
-> **Recommendations**
+> **Recommendation**
 >
-> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
-> - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+> - We recommend to use Typescript and SASS
 
-## Install Baloise Design System
-
-Use npm to install the React proxy library.
+Lets scaffold a Typescript React app.
 
 ```
-npm install @baloise/design-system-components-react
+npx create-react-app my-app --template typescript
 ```
 
-## Install Fonts
-
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
-
-Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
+Now navigate into the root folder.
 
 ```
-npm install copyfiles --save-dev
+cd my-app
 ```
 
-After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called `copy:fonts` and adjust the second path to your application.
+## Install Design System
 
-Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+Install the Design System and his dependencies.
 
-```scss
-// change scss variable before importing the design system
-
-@import '@baloise/design-system-components/src/styles/global';
-
-// add custom application styles here after the design system
+```
+npm install @baloise/design-system-components-react sass copyfiles
 ```
 
-> **CSS**
-> If you use the styles with css than just put the fonts into a public/static folder with the path `assets/fonts`.
+> **Hint**
+>
+> - Change the _.css files to _.scss and adjust the import as well.
 
-Then we add the defined script copy:fonts in our postinstall script. Every time we install dependencies the copy:fonts script gets executed at the end.
+### Import Fonts
+
+The font package is included in the `@baloise/design-system-components-react` package.
+
+Next step is to provide the fonts to our web application.
+To do so we recommend the tool copyfiles to copy the font files into your assets folder.
+
+Define the copy command in our **package.json** file.
+Add a new script called **copy:fonts** and adjust the second path to your application.
 
 ```json
 "scripts": {
@@ -55,42 +51,73 @@ Then we add the defined script copy:fonts in our postinstall script. Every time 
 }
 ```
 
-> **TIP**
-> It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+To copy the fonts run the following command.
 
-## HTML Structure
+```
+npm run copy:fonts
+```
+
+> **TIP**
+>
+> - Add the generated files to the `.gitignore` file.
+
+### Import Styles
+
+Import the `global.sass` Sass file into the main `index.scss` file of your application.
+
+```scss
+// change variable before the import
+$font-path: '../../../../public/assets/fonts';
+
+@import '@baloise/design-system-components/src/styles/global';
+
+// add custom styles below
+```
+
+### HTML Structure
 
 Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
 
 ```typescript
-import React from 'react'
-import { BalApp, useBaloiseDesignSystem } from '@baloise/design-system-components-react'
 import './App.scss'
+import {
+  useBaloiseDesignSystem,
+  BalApp,
+  BalHeading,
+  BalButton,
+  BalFooter,
+} from '@baloise/design-system-components-react'
 
 function App() {
   useBaloiseDesignSystem()
 
   return (
     <BalApp className="has-sticky-footer">
-      <main className="container">...</main>
+      <header></header>
+      <main className="container">
+        <BalHeading>Hello World!</BalHeading>
+        <BalButton>Button</BalButton>
+      </main>
+      <BalFooter></BalFooter>
     </BalApp>
   )
 }
+
+export default App
 ```
 
-> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-getting-started-internationalization--page).
+> **Internationalization**
+>
+> To run the Design System in a different region then `CH` or to change the language to `fr` follow this [documentation](https://baloise-design-system.vercel.app/?path=/docs/development-guides-internationalization--page).
 
-### Improve initial page load
+## Start the app
 
-The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
-To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
+Now everything is ready to be used. Add some Baloise components and start the app with:
 
-```html
-<style>
-  .bal-body {
-    visibility: hidden;
-  }
-</style>
+```bash
+npm start
 ```
 
-Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+> **TIP**
+>
+> Your app gets served under [http://localhost:3000](http://localhost:3000).
