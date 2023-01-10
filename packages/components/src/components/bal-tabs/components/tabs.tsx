@@ -3,6 +3,7 @@ import { isPlatform } from '../../../utils/platform'
 import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
+import { isWindowDefined } from '../../../utils/browser'
 
 const tabsEl = BEM.block('tabs').element('tabs')
 const tabItemEl = tabsEl.element('item')
@@ -30,16 +31,25 @@ export const TabList: FunctionalComponent<TabProps> = ({
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
       const selectedTabs = tabs.filter(tab => tab.value === event.detail)
       if (selectedTabs.length > 0) {
-        onSelectTab(event as any, selectedTabs[0])
+        const selectedTab = selectedTabs[0]
+        if (selectedTab.href !== '' && selectedTab.href !== undefined) {
+          if (isWindowDefined()) {
+            window.open(selectedTab.href, selectedTab.target)
+          }
+        }
+        onSelectTab(event as any, selectedTab)
       }
     }
+
     return (
       <bal-select value={value} onBalChange={event => onChange(event)}>
-        {tabs.map(tab => (
-          <bal-select-option label={tab.label} value={tab.value}>
-            {tab.label}
-          </bal-select-option>
-        ))}
+        {tabs
+          .filter(tab => !tab.disabled && !tab.hidden)
+          .map(tab => (
+            <bal-select-option label={tab.label} value={tab.value}>
+              {tab.label}
+            </bal-select-option>
+          ))}
       </bal-select>
     )
   }
