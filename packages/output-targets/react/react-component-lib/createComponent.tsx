@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { createElement, Fragment } from 'react'
 
-import { attachProps, camelToDashCase, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils'
+import { attachProps, createForwardRef, dashToPascalCase, isCoveredByReact, mergeRefs } from './utils'
 
 export interface HTMLStencilElement extends HTMLElement {
   componentOnReady(): Promise<this>
@@ -54,22 +54,14 @@ export const createReactComponent = <
       // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
       const { children, forwardedRef, style, className, ref, ...cProps } = this.props
 
-      let propsToPass = Object.keys(cProps).reduce((acc: any, name) => {
-        const value = (cProps as any)[name]
-
+      let propsToPass: any = Object.keys(cProps).reduce((acc, name) => {
         if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
           const eventName = name.substring(2).toLowerCase()
           if (typeof document !== 'undefined' && isCoveredByReact(eventName)) {
-            acc[name] = value
+            ;(acc as any)[name] = (cProps as any)[name]
           }
         } else {
-          // we should only render strings, booleans, and numbers as attrs in html.
-          // objects, functions, arrays etc get synced via properties on mount.
-          const type = typeof value
-
-          if (type === 'string' || type === 'boolean' || type === 'number') {
-            acc[camelToDashCase(name)] = value
-          }
+          ;(acc as any)[name] = (cProps as any)[name]
         }
         return acc
       }, {})
@@ -91,7 +83,7 @@ export const createReactComponent = <
        * React.createElement causes all elements to be rendered
        * as <tagname> instead of the actual Web Component.
        */
-      const fragment = createElement(Fragment, {}, children)
+      const fragment = !!children ? createElement(Fragment, {}, children) : createElement(Fragment, {}, ' ')
       const component = createElement(tagName, newProps, fragment)
       return component
     }
