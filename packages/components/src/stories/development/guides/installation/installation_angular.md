@@ -6,12 +6,11 @@ This section describes how to setup the Baloise Design System with an basic Angu
 
 If you do not have an Angular app yet create one with the [Angular CLI](https://angular.io/guide/setup-local).
 
-Before we can add the Baloise Design System to your angular application we need to setup the basics.
-
 > **Recommendations**
 >
-> - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+> - We recommend to use **SCSS** as stylesheet format.
 > - We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
+> - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 
 ### Deep import config
 
@@ -27,17 +26,32 @@ module.exports = {
 }
 ```
 
-## Install fonts
+## Install Design System
 
-The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
+Lets install the latest Angular components.
 
-Next step is to provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
+```
+npm install @baloise/design-system-components-angular
+```
+
+> **TIP**
+>
+> - The font, tokens and component package are included.
+> - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+
+### Import Fonts
+
+The font package is included in the `@baloise/design-system-components-angular` package.
+
+Next step is to provide the fonts to our web application.
+To do so we recommend the tool copyfiles to copy the font files into your assets folder.
 
 ```
 npm install copyfiles --save-dev
 ```
 
-After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called copy:fonts and adjust the second path to your application.
+After installing our copyfiles dependency we need to define the copy command in our **package.json** file.
+Add a new script called **copy:fonts** and adjust the second path to your application.
 
 ```json
 "scripts": {
@@ -48,16 +62,15 @@ After installing our copyfiles dependency we need to define the copy command in 
 
 To copy the fonts run the following command.
 
-```bash
+```
 npm run copy:fonts
 ```
 
 > **TIP**
 >
 > - Add the generated files to the `.gitignore` file.
-> - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
-## Import styles
+### Import Styles
 
 Import the `global.sass` Sass file into the main `.sass` file of your application.
 
@@ -70,7 +83,7 @@ $font-path: '~assets/fonts';
 // add custom styles below
 ```
 
-## Import the ngModule
+### Import the ngModule
 
 Import the `BalCoreModule.forRoot()` and add it to your angular root module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
 Import each angular module of the components you need one by one.
@@ -114,14 +127,15 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
-> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](https://baloise-design-system.vercel.app/?path=/docs/development-guides-internationalization--page).
+> **Internationalization**
+>
+> To run the Design System in a different region then `CH` or to change the language to `fr` follow this [documentation](https://baloise-design-system.vercel.app/?path=/docs/development-guides-internationalization--page).
 
-## HTML Structure
+### HTML Structure
 
 Add the `bal-app` to your `app.component.html` root element. Within this component we are able to use the defined css classes.
 
 ```html
-...
 <bal-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
@@ -135,10 +149,9 @@ Add the `bal-app` to your `app.component.html` root element. Within this compone
     <!-- Footer content -->
   </bal-footer>
 </bal-app>
-...
 ```
 
-## Improve initial page load
+<!-- ### Improve initial page load
 
 The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
 To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
@@ -151,9 +164,9 @@ To avoid that set the below style tag into your head of the `index.html`. This w
 </style>
 ```
 
-Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`. -->
 
-# Start the app
+## Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
@@ -162,4 +175,5 @@ npm start
 ```
 
 > **TIP**
+>
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
