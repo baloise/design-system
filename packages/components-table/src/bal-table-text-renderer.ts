@@ -22,6 +22,7 @@ export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}):
 
     this.text = document.createElement('bal-text')
     this.text.setAttribute('small', 'true')
+    this.text.setAttribute('space', 'none')
 
     this.icon = document.createElement('bal-icon')
     this.icon.setAttribute('size', 'small')
