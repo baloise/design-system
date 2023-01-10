@@ -1,7 +1,7 @@
 import { Meta, Description } from '@storybook/addon-docs'
 
 <Meta
-  title="Support"
+  title="Contributing"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,17 +9,22 @@ import { Meta, Description } from '@storybook/addon-docs'
   }}
 />
 
-# Support
+# Contributing
 
-<bal-doc-lead>Support is provided by the Baloise Design System team for users of the system.</bal-doc-lead>
+<bal-doc-lead>
+  We gratefully accept contributions to the Baloise Design System, but expect new feature requests and changes to be
+  approved by the Baloise Design System team before creating a{' '}
+  <a href="https://github.com/baloise/design-system/pulls" target="_blank">
+    pull request
+  </a>
+  .
+</bal-doc-lead>
 
-> Before contacting us take some time to explore the contents of this documentation.
+## Introduction
 
-## Contributing
+Baloise Design System is free to use for anybody building a Baloise product or website, and the Baloise community is always working to make it better. Contributors like you help to make Baloise Design System great, and so we’re glad you’re here.
 
-Please have a look at the [contributing guidelines](?path=/docs/development-contributing-overview--page).
-
-## Create an Issue
+Contributions are not limited to code. We also encourage feedback, documentation, new designs, and tools.
 
 All you need is a [public GitHub account](https://github.com/) to get started. Most contributions begin with a GitHub issue using one of these templates:
 
@@ -46,7 +51,29 @@ All you need is a [public GitHub account](https://github.com/) to get started. M
   </a>
 </div>
 
-## Maintainers
+## Community
+
+### Users
+
+Users are members of the community who use Baloise Design System guidelines, assets, and tooling. Anyone can be a user, and we encourage users to participate in the community as much as possible.
+
+### Contributors
+
+Contributors are members of the community who contribute to Baloise Design System in a material way. Anyone can be a contributor. In addition to participating as a user, you can also contribute by:
+
+- Reporting bugs or missing features through GitHub issues
+- Fixing bugs, adding features, and improving documentation
+
+import contributors from './contributors.md'
+
+<Description markdown={contributors} />
+
+### Maintainers
+
+Maintainers are members of the community who are committed to the success of individual Baloise Design System projects. In addition to their participation as a contributor, maintainers:
+
+- Label, close, and manage GitHub issues
+- Close and merge GitHub pull requests
 
 <div class="avatars">
   <a href="https://github.com/hirsch88" target="_top" class="sbdocs sbdocs-a avatar avatar--green">
@@ -105,5 +132,9 @@ All you need is a [public GitHub account](https://github.com/) to get started. M
     <h4 class="sbdocs sbdocs-h4">clastzoo</h4>
   </a>
 </div>
+
+## Workflow
+
+The Baloise Design System typically use a [fork and pull request workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for contributions
 
 <bal-doc-github link="/stories/support.stories.mdx"></bal-doc-github>

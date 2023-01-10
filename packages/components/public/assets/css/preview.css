@@ -122,6 +122,18 @@ a.is-link {
   color: #000d6e;
 }
 
+a.sbdocs-a:hover,
+bal-doc-github a:hover,
+a.is-link:hover {
+  color: #0014aa;
+}
+
+a.sbdocs-a:active,
+bal-doc-github a:active,
+a.is-link:active {
+  color: #030938;
+}
+
 .features {
   padding: 1.2 rem 0;
   display: flex;
@@ -373,4 +385,42 @@ a.bal-list__item__trigger:hover p {
 
 a.bal-list__item__trigger:hover:after {
   background: #0014aa !important;
+}
+
+.support {
+  display: flex;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+
+.support > a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--bal-shadow-normal);
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  background-color: #fff9e8;
+}
+
+.support > a:hover {
+  box-shadow: var(--bal-shadow-large);
+}
+
+.support__icon {
+  font-size: 3rem !important;
+  line-height: 4rem !important;
+  text-align: center;
+}
+
+.support__title {
+  font-size: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+.support__label {
+  font-size: 1rem !important;
+  font-weight: 400;
 }

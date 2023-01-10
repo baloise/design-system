@@ -9,10 +9,6 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
 
   content.push(`#### Properties`)
   content.push(``)
-  content.push(
-    `Follow the [Property Usage](https://baloise-design.vercel.app/?path=/docs/development-guides-components--page#properties) guide to learn how to change properties of the component.`,
-  )
-  content.push(``)
 
   const table = new MarkdownTable()
 

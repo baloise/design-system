@@ -1,6 +1,14 @@
 import type * as d from '@stencil/core/internal'
 import { MarkdownTable } from './docs-util'
 
+const getDocsField = (prop: d.JsonDocsMethod) => {
+  return `${
+    prop.deprecation !== undefined
+      ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>`
+      : ''
+  }${prop.docs}`
+}
+
 export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
   const content: string[] = []
   if (methods.length === 0) {
@@ -9,51 +17,16 @@ export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
 
   content.push(`#### Methods`)
   content.push(``)
-  content.push(
-    `Follow the [Method Usage](https://baloise-design.vercel.app/?path=/docs/development-guides-components--page#methods) guide to learn how to call component methods.`,
-  )
-  content.push(``)
 
-  methods.forEach(method => {
-    content.push(`##### \`${method.signature}\``)
-    content.push(``)
-    content.push(getDocsField(method))
-    content.push(``)
+  const table = new MarkdownTable()
 
-    if (method.parameters.length > 0) {
-      const parmsTable = new MarkdownTable()
+  table.addHeader(['Method', 'Description', 'Type'])
 
-      parmsTable.addHeader(['Name', 'Type', 'Description'])
-
-      method.parameters.forEach(({ name, type, docs }) => {
-        parmsTable.addRow(['`' + name + '`', '`' + type + '`', docs])
-      })
-
-      content.push(`###### Parameters`)
-      content.push(``)
-      content.push(...parmsTable.toMarkdown())
-      content.push(``)
-    }
-
-    if (method.returns) {
-      content.push(`###### Returns`)
-      content.push(``)
-      content.push(`Type: \`${method.returns.type}\``)
-      content.push(``)
-      content.push(method.returns.docs)
-      content.push(``)
-    }
+  methods.forEach(m => {
+    table.addRow([`\`${m.name}\``, getDocsField(m), `\`${m.signature}\``])
   })
 
-  content.push(``)
+  content.push(...table.toMarkdown())
 
   return content
-}
-
-const getDocsField = (prop: d.JsonDocsMethod) => {
-  return `${
-    prop.deprecation !== undefined
-      ? `<span style="color:red">**[DEPRECATED]**</span> ${prop.deprecation}<br/><br/>`
-      : ''
-  }${prop.docs}`
 }
