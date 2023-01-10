@@ -22,6 +22,8 @@ export const docComponents = [
   'bal-doc-tokens-font',
   'bal-doc-tokens-shadow',
   'bal-doc-tokens-spacing',
+  'bal-doc-stackblitz',
+  'bal-doc-preview',
   'bal-doc-usage',
   'bal-doc-usage-item',
 ]

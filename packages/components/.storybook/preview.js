@@ -1,11 +1,19 @@
 import { app } from '@storybook/vue3'
+import { withTableOfContents } from 'hirsch-storybook-docs-toc'
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
+import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
 
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
-import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
-import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
-
 ReactSyntaxHighlighter.registerLanguage('diff', diff)
+
+export const globalTypes = {
+  framework: {
+    name: 'Framework',
+    description: 'Integration technology',
+    defaultValue: 'angular',
+  },
+}
 
 export const decorators = [
   story => ({
@@ -15,11 +23,12 @@ export const decorators = [
 ]
 
 export const parameters = {
+  ...withTableOfContents(),
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
   viewport: {
     viewports: {
-      'small': {
+      small: {
         name: 'Small (Mobile) from 320px to 768px',
         styles: {
           width: '320px',
@@ -27,7 +36,7 @@ export const parameters = {
         },
         type: 'mobile',
       },
-      'medium': {
+      medium: {
         name: 'Medium (Tablet)',
         styles: {
           width: '1023px',
@@ -35,7 +44,7 @@ export const parameters = {
         },
         type: 'tablet',
       },
-      'large': {
+      large: {
         name: 'Large (Desktop)',
         styles: {
           width: '1216px',
@@ -43,7 +52,7 @@ export const parameters = {
         },
         type: 'desktop',
       },
-      'widescreen': {
+      widescreen: {
         name: 'Widescreen (Desktop)',
         styles: {
           width: '1440px',
@@ -51,7 +60,7 @@ export const parameters = {
         },
         type: 'desktop',
       },
-      'fullhd': {
+      fullhd: {
         name: 'FullHD (Desktop)',
         styles: {
           width: '1920px',
@@ -115,10 +124,70 @@ export const parameters = {
         'Changelog',
         'Support',
         'Foundation',
-        ['Overview', 'Tokens', 'CSS-Framework', 'Colors', 'Font', 'Icons Overview', 'Platform', 'Page Layout', 'Templates'],
-        'Components',
+        [
+          'Overview',
+          'Tokens',
+          'CSS-Framework',
+          'Colors',
+          'Font',
+          'Icons Overview',
+          'Platform',
+          'Page Layout',
+          'Templates',
+        ],
         'Development',
-        ['Getting-Started', 'Implementation', 'Migration', 'Contributing'],
+        [
+          'Overview',
+          'Installation',
+          'Components',
+          'Form',
+          'Internationalization',
+          'Testing',
+          'Contributing',
+          'Migration',
+          [
+            'Migration 11.x to 12.x',
+            'Migration 10.x to 11.x',
+            'Migration 9.x to 10.x',
+            'Migration 8.x to 9.x',
+            'Migration 7.x to 8.x',
+            'Migration 6.x to 7.x',
+            'Migration 5.x to 6.x',
+            'Migration 4.x to 5.x',
+            'Migration 3.x to 4.x',
+            'Migration 2.x to 3.x',
+            'Migration 1.x to 2.x',
+          ],
+        ],
+        'Components',
+        [
+          'Accordion',
+          'App',
+          'Badge',
+          'Button',
+          'Card',
+          'Carousel',
+          'Close',
+          'Data',
+          'Footer',
+          'Form',
+          'Heading',
+          'Icon',
+          'List',
+          'Logo',
+          'Navbar',
+          'Navigation',
+          'Notification',
+          'Overlay',
+          'Pagination',
+          'Shape',
+          'Spinner',
+          'Stage',
+          'Table',
+          'Tabs',
+          'Tag',
+          'Text',
+        ],
       ],
     },
   },

@@ -1,0 +1,163 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Development/Testing"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="testing" subtitle="Development">Testing</bal-doc-banner>
+
+<bal-doc-lead>
+  The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic
+  cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+</bal-doc-lead>
+
+## Prerequisites
+
+For E-2-E testing we recommend to use the testing framework [Cypress](https://www.cypress.io/).
+
+If you are using Vue or Angular please install Cypress with the provided CLI.
+
+## Install testing library
+
+Install the library directly from npm.
+
+```bash
+npm add -D @baloise/design-system-testing
+```
+
+Next step is to add the commands to our cypress setup. Open the file `cypress/support/commands.ts` and import the testing library.
+
+```typescript
+import '@baloise/design-system-testing'
+```
+
+Now the adjusted commands from the Baloise Design System should be available in your test files.
+
+## Usage
+
+Further documentations for each component commands is documented on the components page.
+
+```typescript
+import { byTestId, selectors } from '@baloise/design-system-nest-testing'
+
+describe('Accordion', () => {
+  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
+
+  it('should ...', () => {
+    cy.get(accordion).find(selectors.accordion.header).contains('Show more')
+    cy.get(accordion).balAccordionIsClosed()
+    cy.get(accordion).click().balAccordionIsOpen()
+    cy.get(accordion).find(selectors.accordion.header).contains('Show less')
+    cy.get(accordion).find(selectors.accordion.content).contains('My Content')
+    cy.get(accordion).click().balAccordionIsClosed()
+  })
+})
+```
+
+## Selectors
+
+It is recommended to set specific test attributes `data-testid` on the elements to test.
+
+```html
+<bal-button data-testid="my-button"></bal-button>
+```
+
+To build up the correct selector like this `[data-testid="my-button"]` we use the helper function `byTestId`. This selector can then be used directly with the cypress commands.
+
+```typescript
+import { byTestId } from '@baloise/design-system-testing'
+
+describe('Button', () => {
+  it('should ...', () => {
+    cy.getByTestId('button-id').click()
+  })
+
+  // or with the selector function
+
+  it('should ...', () => {
+    const button = byTestId('button-id')
+    cy.get(button).click()
+  })
+})
+```
+
+### Component Selectors (WIP)
+
+For each component we define internally some data-testid selectors.
+
+```typescript
+import { selectors } from '@baloise/design-system-nest-testing'
+
+describe('Accordion', () => {
+  it('should ...', () => {
+    cy.getByTestId('accordion').find(selectors.accordion.header).contains('Show more')
+    cy.getByTestId('accordion').find(selectors.accordion.content).contains('My Content')
+  })
+})
+```
+
+## Component Commands
+
+### getByTestId
+
+Gets the element / component by the attribute `data-testid` and waits until fully loaded.
+
+```typescript
+cy.getByTestId('button')
+```
+
+### disableAnimation
+
+Disables the animation of all the components.
+
+```typescript
+cy.disableAnimation()
+```
+
+### getComponent
+
+Gets the element / component by jquery selector and waits until fully loaded.
+
+```typescript
+cy.getComponent('bal-button')
+```
+
+### wrapComponent
+
+Wraps the element / component and waits until fully loaded.
+
+```typescript
+cy.wrapComponent($el)
+```
+
+### waitForComponents
+
+Waits until the component has fully loaded.
+
+```typescript
+cy.get('button').waitForComponents()
+```
+
+### Viewport / Platform
+
+The `platform` commands allows to switch between the breakpoints of the Design System
+
+```typescript
+cy.platform('mobile')
+cy.platform('tablet')
+cy.platform('desktop')
+```
+
+## Links
+
+- [Testing Package](https://github.com/baloise/design-system/blob/master/packages/testing)
+- [Selectors](https://github.com/baloise/design-system/blob/master/packages/testing/src/selectors.ts)
+- [Custom Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/custom)
+- [Override Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/overrides)
+
+<bal-doc-github link="/stories/development/guides/22-testing.stories.mdx"></bal-doc-github>

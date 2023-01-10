@@ -1,11 +1,10 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in dedicated changelog files.
 
 ## Packages
 
-Each package has its own changelog file. With every rel
+Each package has its own changelog file.
 
 | Package                                                                                                                     | Status                                                                                                                                                    | Description                                                             |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -19,3 +18,9 @@ Each package has its own changelog file. With every rel
 | [Icons](https://github.com/baloise-incubator/design-system/blob/next/packages/icons/CHANGELOG.md)                           | [![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)](https://www.npmjs.com/package/@baloise/design-system-icons)                           | SVG icons of the design system.                                         |
 | [Testing](https://github.com/baloise-incubator/design-system/blob/next/packages/testing/CHANGELOG.md)                       | [![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)](https://www.npmjs.com/package/@baloise/design-system-testing)                       | Testing package with custom and overridden commands for each component. |
 | [Tokens](https://github.com/baloise-incubator/design-system/blob/next/packages/tokens/CHANGELOG.md)                         | [![npm](https://img.shields.io/npm/v/@baloise/design-system-tokens)](https://www.npmjs.com/package/@baloise/design-system-tokens)                         | Design Tokens like color and spacing.                                   |
+
+## Previous Versions
+
+Previous version below 12.2.0 are document in a separate changelog file.
+
+- [Previous versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_v12.md)

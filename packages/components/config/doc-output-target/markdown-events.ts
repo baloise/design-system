@@ -9,10 +9,6 @@ export const eventsToMarkdown = (events: d.JsonDocsEvent[]) => {
 
   content.push(`#### Events`)
   content.push(``)
-  content.push(
-    `Follow the [Event Usage](https://baloise-design.vercel.app/?path=/docs/development-implementation-event--page) guide to learn how to listen to component events.`,
-  )
-  content.push(``)
 
   const table = new MarkdownTable()
 

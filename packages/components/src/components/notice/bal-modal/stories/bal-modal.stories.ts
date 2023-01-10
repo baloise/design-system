@@ -14,7 +14,7 @@ import {
 import docs from './bal-modal.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Notice/Modal',
+  title: 'Components/Overlay/Modal',
   component: BalModal,
   subcomponents: { BalModalHeader, BalModalBody },
   docs,

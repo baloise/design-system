@@ -1,0 +1,45 @@
+import { Meta, Description, DocsContainer } from '@storybook/addon-docs'
+import { BackToTop, TableOfContents } from 'hirsch-storybook-docs-toc'
+
+import text_intro from './installation_intro.md'
+import text_angular from './installation_angular.md'
+import text_react from './installation_react.md'
+import text_html from './installation_html.md'
+import text_vue from './installation_vue.md'
+
+<Meta
+  anchor
+  title="Development/Installation"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      container: ({ context }) => {
+        const framework = context && context.globals && context.globals.framework
+        let markdown = text_angular
+        if (framework === 'react') {
+          markdown = text_react
+        }
+        if (framework === 'html') {
+          markdown = text_html
+        }
+        if (framework === 'vue') {
+          markdown = text_vue
+        }
+        return (
+          <DocsContainer context={context}>
+            <TableOfContents />
+            <div className="my-doc-content">
+              {<Description markdown={text_intro} />}
+              {<Description markdown={markdown} />}
+            </div>
+            <BackToTop />
+          </DocsContainer>
+        )
+      },
+    },
+  }}
+/>
+
+<bal-doc-github link="/stories/development/guides/installation/installation.stories.mdx"></bal-doc-github>
