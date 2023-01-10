@@ -23,6 +23,7 @@ export function BalTableButtonRenderer(options: BalTableButtonRendererOptions): 
   Renderer.prototype.init = function (params: ICellRendererParams): void {
     this.params = params
     this.element = document.createElement('bal-button')
+    this.element.className = 'bal-table-cell-button'
     this.element.setAttribute('size', 'small')
     this.element.innerHTML = params.value
     this.update()
