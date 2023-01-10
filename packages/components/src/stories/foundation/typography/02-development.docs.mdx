@@ -1,7 +1,7 @@
-import { Meta, Canvas, Source } from '@storybook/addon-docs'
+import { Meta, Canvas, Story } from '@storybook/addon-docs'
 
 <Meta
-  title="Foundation/Font"
+  title="Foundation/Typography/Code"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,43 +9,37 @@ import { Meta, Canvas, Source } from '@storybook/addon-docs'
   }}
 />
 
-<bal-doc-banner subtitle="Foundation">Font</bal-doc-banner>
+<bal-doc-banner subtitle="Foundation/Typography" color="purple">Code</bal-doc-banner>
 
-<bal-doc-lead>The Baloise Design System uses a custom font for headings and body texts.</bal-doc-lead>
+<bal-doc-lead>Baloise Create is our corporate typeface. Its clear appearance underlines our modern and future-oriented brand expression.</bal-doc-lead>
 
-## Usage
+## Heading & Display
 
-Key values of the font are stored in our Design Tokens.
+The classes `title` and `subtitle` defines the font weight. `is-size-xxx-large` defines the font-size.
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
 
-- [Font Family](?path=/docs/foundation-tokens--page#font)
-- [Font Sizes](?path=/docs/foundation-tokens--page#font-sizes)
-- [Font Wight](?path=/docs/foundation-tokens--page#font-weight)
+Go to the [Heading Component Documentation](?path=/docs/components-heading--basic) to find more details.
 
-The CSS-Framework links the tokens to the HTML elements and provides CSS utility classes to modify text elements.
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--heading-and-display" />
+</Canvas>
 
-- [Titles / Headings](?path=/docs/foundation-css-framework--typography-titles)
-- [Texts / Paragraphs](?path=/docs/foundation-css-framework--typography-texts)
-- [Links](?path=/docs/foundation-css-framework--typography-texts#links)
-- [Text Colors](?path=/docs/foundation-css-framework--text-colors)
+<span id="story--foundation-typography-code--text" style={{ opacity: 0 }}></span>
 
-In the Design System Component Library there are two main components for the font / typography.
+## Text
 
-- [Heading](?path=/docs/Components-heading--basic)
-- [Text](?path=/docs/Components-text--basic)
+The classes `is-size-xxx` defines the font-size.
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
 
-## Download
+Go to the [Text Component Documentation](?path=/docs/components-text--basic) to find more details.
 
-Download the following font for print usage. For web development please continue reading.
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text" />
+</Canvas>
 
-<bal-doc-app>
-  <bal-doc-download
-    subject="fonts.zip"
-    subtitle="Our typography files"
-    link="/assets/download/fonts.zip"
-  ></bal-doc-download>
-</bal-doc-app>
+TODO: add text colors
 
-## Install web font
+## Font Installation
 
 Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). With the font files also css and sass files are delivered.
 
@@ -120,4 +114,4 @@ Import the css directly into your main TypeScript or JavaScript file.
 import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
 ```
 
-<bal-doc-github link="/stories/foundation/02-font.stories.mdx"></bal-doc-github>
+<bal-doc-github link="/stories/foundation/typography/02-development.docs.mdx"></bal-doc-github>

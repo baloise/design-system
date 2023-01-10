@@ -100,6 +100,11 @@ p.sbdocs-p {
   color: #000d6e;
 }
 
+p.sbdocs-p p {
+  font-family: 'BaloiseCreateText';
+  color: #000d6e;
+}
+
 p.sbdocs-p.is-size-small {
   font-size: 0.875rem;
   line-height: 1.25rem;
