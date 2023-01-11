@@ -161,11 +161,5 @@
     </h2>
     <h4>aymenfurter</h4>
   </a>
-  <a href="https://github.com/khanhnp" class="avatar">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/12724432?v=4" alt="khanhnp" style="width: 64px;">
-    </h2>
-    <h4>khanhnp</h4>
-  </a>
 </div>
  
