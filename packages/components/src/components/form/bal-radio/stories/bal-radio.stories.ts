@@ -155,7 +155,9 @@ export const SelectButton = args => ({
     <bal-radio-group v-bind="args" v-model="args.value">
       <bal-radio name="select-button-example" value="yes">Yes</bal-radio>
       <bal-radio name="select-button-example" value="no">No</bal-radio>
-      <bal-radio name="select-button-example" value="with-link">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+      <bal-radio name="select-button-example" value="with-link">Random Random Random Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+      <bal-radio name="select-button-example" value="with-link2">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+      <bal-radio name="select-button-example" value="with-link3">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
     </bal-radio-group>
   </bal-field-control>
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>

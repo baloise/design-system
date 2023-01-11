@@ -13,9 +13,12 @@
     display: flex
     flex-direction: row
     justify-content: flex-start
-    align-items: flex-start
+    // align-items: flex-start
+    align-items: stretch
     flex-wrap: wrap
     gap: var(--bal-space-normal)
+    +tablet
+      align-items: flex-start
     //
     // transform the radios into buttons
     +modifier(select-button)
@@ -26,6 +29,7 @@
       +tablet
         flex-direction: row
     +modifier(expanded)
+      align-items: stretch
       .bal-radio-checkbox
         flex: 1
         +mobile
@@ -95,6 +99,8 @@
     +element(text)
       padding-left: 2rem
       hyphens: auto
+      padding-top: 4px
+      padding-bottom: 4px
       +modifier(hidden)
         padding-left: 0
         display: none
@@ -104,7 +110,6 @@
     &::after
       display: inline-block
       position: absolute
-      top: 0px
       left: 0
       height: 1.5rem
       width: 1.5rem
