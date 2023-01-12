@@ -38,9 +38,14 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
   @Prop() accordionGroup?: string
 
   /**
+   * Sets space to content of the accordion body
+   */
+  @Prop() contentSpace: Props.BalListContentSpacing = 'none'
+
+  /**
    * Sets justify-content of the items to start, center, end, or space-between. Default is start
    */
-  @Prop() contentAlignment: Props.BalListContentSpacing = 'start'
+  @Prop() contentAlignment: Props.BalListContentAlignment = 'start'
 
   /**
    * LIFECYCLE
@@ -123,6 +128,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
           class={{
             'bal-list__item__accordion-body__content': true,
             [`bal-list__item__accordion-body__content--${this.contentAlignment}`]: this.contentAlignment !== undefined,
+            [`bal-list__item__accordion-body__content--space-${this.contentSpace}`]: this.contentSpace !== undefined,
           }}
           ref={contentElWrapper => (this.contentElWrapper = contentElWrapper)}
         >

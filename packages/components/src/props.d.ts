@@ -104,7 +104,8 @@ export namespace Props {
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'small' | 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
-  export type BalListContentSpacing = 'start' | 'center' | 'end' | 'space-between'
+  export type BalListContentAlignment = 'start' | 'center' | 'end' | 'space-between'
+  export type BalListContentSpacing = 'none' | 'normal'
 
   export type BalNavbarInterface = 'app' | 'simple'
 
