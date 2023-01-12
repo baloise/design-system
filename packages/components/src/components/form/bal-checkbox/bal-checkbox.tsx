@@ -271,6 +271,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
             class={{
               ...labelTextEl.class(),
               ...labelTextEl.modifier('hidden').class(this.labelHidden),
+              ...labelTextEl.modifier('flat').class(this.flat),
             }}
           >
             <slot></slot>
