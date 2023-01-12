@@ -66,6 +66,7 @@ export namespace Components {
           * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
          */
         "mode": BalMode;
+        "ready": boolean;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
     interface BalBadge {
@@ -3610,6 +3611,7 @@ declare namespace LocalJSX {
          */
         "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
+        "ready"?: boolean;
     }
     interface BalBadge {
         /**
