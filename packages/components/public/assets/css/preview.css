@@ -370,20 +370,20 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   bottom: 10px;
 }
 
-a.bal-list__item__trigger {
+.sbdocs a.bal-list__item__trigger {
   text-decoration: none !important;
 }
 
-a.bal-list__item__trigger p {
+.sbdocs a.bal-list__item__trigger p {
   font-weight: 400;
 }
 
-a.bal-list__item__trigger:hover .title,
-a.bal-list__item__trigger:hover p {
+.sbdocs a.bal-list__item__trigger:hover .title,
+.sbdocs a.bal-list__item__trigger:hover p {
   color: #0014aa !important;
 }
 
-a.bal-list__item__trigger:hover:after {
+.sbdocs a.bal-list__item__trigger:hover:after {
   background: #0014aa !important;
 }
 

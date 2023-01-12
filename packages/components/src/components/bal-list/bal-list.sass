@@ -225,19 +225,19 @@
     button:not(.button):not([type='button']):after
       background: var(--bal-color-grey-2)
 
-  // .bal-list__item:not(.bal-list__item--disabled):not(.bal-list__item--accordion).bal-list__item--clickable
-  //   & > div,
-  //   a:not(.is-link),
-  //   button:not(.button)
-  //     +hover()
-  //       &:hover:after
-  //         background: var(--bal-color-light-blue-5)
+  .bal-list__item.bal-list__item--clickable:not(.bal-list__item--accordion):not(.bal-list__item--disabled)
+    & > div,
+    a:not(.is-link),
+    button:not(.button)
+      +hover()
+        &:hover:after
+          background: var(--bal-color-light-blue-5)
 
-  //   & > div:active:after,
-  //   a:not(.is-link):active:after,
-  //   button:not(.button):active:after
-  //     +desktop()
-  //       background: var(--bal-color-blue-6)
+    & > div:active:after,
+    a:not(.is-link):active:after,
+    button:not(.button):active:after
+      +desktop()
+        background: var(--bal-color-blue-6)
 
   &.bal-list--background-color
     .bal-list__item
@@ -265,16 +265,16 @@
       button:not(.button):after
         background: var(--bal-color-primary-4)
 
-    // .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
-    //   & > div:hover:after,
-    //   a:not(.is-link):hover:after,
-    //   button:not(.button):hover:after
-    //     background: var(--bal-color-light-blue-2)
+    .bal-list__item.bal-list__item--clickable:not(.bal-list__item--accordion):not(.bal-list__item--disabled)
+      & > div:hover:after,
+      a:not(.is-link):hover:after,
+      button:not(.button):hover:after
+        background: var(--bal-color-light-blue-2)
 
-    //   & > div:active:after,
-    //   a:not(.is-link):active:after,
-    //   button:not(.button):active:after
-    //     background: var(--bal-color-light-blue-4)
+      & > div:active:after,
+      a:not(.is-link):active:after,
+      button:not(.button):active:after
+        background: var(--bal-color-light-blue-4)
 
 .bal-list:not(.bal-list--background-dark) .bal-list__item--disabled
   &,
