@@ -1324,7 +1324,11 @@ export namespace Components {
         /**
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
-        "contentAlignment": Props.BalListContentSpacing;
+        "contentAlignment": Props.BalListContentAlignment;
+        /**
+          * Sets space to content of the accordion body
+         */
+        "contentSpace": Props.BalListContentSpacing;
     }
     interface BalListItemAccordionHead {
         /**
@@ -4940,7 +4944,11 @@ declare namespace LocalJSX {
         /**
           * Sets justify-content of the items to start, center, end, or space-between. Default is start
          */
-        "contentAlignment"?: Props.BalListContentSpacing;
+        "contentAlignment"?: Props.BalListContentAlignment;
+        /**
+          * Sets space to content of the accordion body
+         */
+        "contentSpace"?: Props.BalListContentSpacing;
     }
     interface BalListItemAccordionHead {
         /**

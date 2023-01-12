@@ -225,19 +225,19 @@
     button:not(.button):not([type='button']):after
       background: var(--bal-color-grey-2)
 
-  .bal-list__item:not(.bal-list__item--disabled):not(.bal-list__item--accordion).bal-list__item--clickable
-    & > div,
-    a:not(.is-link),
-    button:not(.button)
-      +hover()
-        &:hover:after
-          background: var(--bal-color-light-blue-5)
+  // .bal-list__item:not(.bal-list__item--disabled):not(.bal-list__item--accordion).bal-list__item--clickable
+  //   & > div,
+  //   a:not(.is-link),
+  //   button:not(.button)
+  //     +hover()
+  //       &:hover:after
+  //         background: var(--bal-color-light-blue-5)
 
-    & > div:active:after,
-    a:not(.is-link):active:after,
-    button:not(.button):active:after
-      +desktop()
-        background: var(--bal-color-blue-6)
+  //   & > div:active:after,
+  //   a:not(.is-link):active:after,
+  //   button:not(.button):active:after
+  //     +desktop()
+  //       background: var(--bal-color-blue-6)
 
   &.bal-list--background-color
     .bal-list__item
@@ -265,16 +265,16 @@
       button:not(.button):after
         background: var(--bal-color-primary-4)
 
-    .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
-      & > div:hover:after,
-      a:not(.is-link):hover:after,
-      button:not(.button):hover:after
-        background: var(--bal-color-light-blue-2)
+    // .bal-list__item:not(.bal-list__item--disabled).bal-list__item--clickable
+    //   & > div:hover:after,
+    //   a:not(.is-link):hover:after,
+    //   button:not(.button):hover:after
+    //     background: var(--bal-color-light-blue-2)
 
-      & > div:active:after,
-      a:not(.is-link):active:after,
-      button:not(.button):active:after
-        background: var(--bal-color-light-blue-4)
+    //   & > div:active:after,
+    //   a:not(.is-link):active:after,
+    //   button:not(.button):active:after
+    //     background: var(--bal-color-light-blue-4)
 
 .bal-list:not(.bal-list--background-dark) .bal-list__item--disabled
   &,
@@ -403,7 +403,8 @@
     justify-content: space-between
 
 .bal-list--border > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
-.bal-list--border > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+.bal-list--border > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list--border > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after
   position: absolute
   bottom: -0.5rem
   left: 0
@@ -412,6 +413,16 @@
   width: 100%
   border-radius: var(--bal-radius-normal)
   background: var(--bal-color-grey-2)
+
+.bal-list--border.bal-list--background-color > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-color > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-color > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+  background: var(--bal-color-primary)
+
+.bal-list--border.bal-list--background-dark > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-dark > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
+.bal-list--border.bal-list--background-dark > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
+  background: var(--bal-color-primary-4)
 
 .bal-list__item__accordion-body__content > .bal-list
   padding-left: 1rem
@@ -426,5 +437,12 @@
 .bal-list__item--expanding > .bal-list__item__trigger
   padding-bottom: 0
 
-.bal-list--border > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-body > div
+.bal-list--border > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-body > div:not(.bal-list__item__accordion-body__content--space-normal)
   padding-bottom: 2px !important
+
+.bal-list__item__accordion-body__content
+  padding-top: 8px !important
+
+.bal-list__item__accordion-body__content--space-normal
+  padding-top: 1rem !important
+  padding-bottom: 1rem !important
