@@ -44,11 +44,11 @@
       background-color: var(--bal-color-grey-1)
       .bal-select__control__input
         background-color: var(--bal-color-grey-1)
-    &:focus-within
-      border-color: var(--bal-color-primary) !important
     &--invalid:not(#{&}--disabled)
       border-color: var(--bal-color-border-danger) !important
       background: var(--bal-color-danger-1) !important
+    &:focus-within
+      border-color: var(--bal-color-primary) !important
     +modifier(disabled)
       background-color: var(--bal-color-grey-2) !important
       border-color: var(--bal-color-border-grey-dark) !important

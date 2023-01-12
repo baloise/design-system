@@ -246,6 +246,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           type="text"
           value={this.value}
           name={this.name}
+          tabindex="-1"
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
           aria-labelledby={labelId}
