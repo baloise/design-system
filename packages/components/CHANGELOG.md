@@ -1,5 +1,29 @@
 # @baloise/design-system-components
 
+## 12.4.0
+
+### Minor Changes
+
+- [#1057](https://github.com/baloise-incubator/design-system/pull/1057) [`2ecc85d08`](https://github.com/baloise-incubator/design-system/commit/2ecc85d0862020d55d77c3b92eeb77891d82f4c2) Thanks [@hirsch88](https://github.com/hirsch88)! - add prop contentSpace to bal-list-item-accordion-body to set space normal or none
+
+### Patch Changes
+
+- [#1057](https://github.com/baloise-incubator/design-system/pull/1057) [`2ecc85d08`](https://github.com/baloise-incubator/design-system/commit/2ecc85d0862020d55d77c3b92eeb77891d82f4c2) Thanks [@hirsch88](https://github.com/hirsch88)! - fix border color issue on list accordion
+
+- [#1055](https://github.com/baloise-incubator/design-system/pull/1055) [`a5e161045`](https://github.com/baloise-incubator/design-system/commit/a5e161045ffc22fc928ede080426f8fe36c7c006) Thanks [@hirsch88](https://github.com/hirsch88)! - bal-radio style updates. Centering dot, expand on mobile & on expanded adjust height of items to the biggest item.
+
+- [#1058](https://github.com/baloise-incubator/design-system/pull/1058) [`a17ed35cf`](https://github.com/baloise-incubator/design-system/commit/a17ed35cfefa3dace356b0768ed9fb0fc405cb64) Thanks [@hirsch88](https://github.com/hirsch88)! - fix to set bal-body to ready to avoid a white webpage on page load
+
+- [#1058](https://github.com/baloise-incubator/design-system/pull/1058) [`282355d61`](https://github.com/baloise-incubator/design-system/commit/282355d61f9e07882fca65a02b0108fc9e712397) Thanks [@hirsch88](https://github.com/hirsch88)! - set focus primary border on invalid form controls
+
+- [#1049](https://github.com/baloise-incubator/design-system/pull/1049) [`2222bc3c4`](https://github.com/baloise-incubator/design-system/commit/2222bc3c483aed8af5b5d7c3d380626ce2d4ca99) Thanks [@hirsch88](https://github.com/hirsch88)! - resolve duplicated identifiers on stackblitz
+
+- Updated dependencies [[`282355d61`](https://github.com/baloise-incubator/design-system/commit/282355d61f9e07882fca65a02b0108fc9e712397)]:
+  - @baloise/design-system-css@12.4.0
+  - @baloise/design-system-fonts@12.4.0
+  - @baloise/design-system-icons@12.4.0
+  - @baloise/design-system-tokens@12.4.0
+
 ## 12.3.0
 
 ### Minor Changes
