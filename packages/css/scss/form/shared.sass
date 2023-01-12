@@ -10,10 +10,12 @@ $input-height: 48px !default
   color: var(--bal-color-blue)
   +placeholder
     color: var(--bal-color-text-primary-light)
-  &:hover,
-  &.is-hovered
-    border-color: var(--bal-color-border-grey)
-    background-color: var(--bal-color-grey-1)
+  +hover()
+    &:hover,
+    &.is-hovered
+      border-color: var(--bal-color-border-grey)
+      background-color: var(--bal-color-grey-1)
+  &.bal-focused,
   &:focus,
   &.is-focused,
   &:active,
