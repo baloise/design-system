@@ -84,7 +84,7 @@ export const createReactComponent = <
        * as <tagname> instead of the actual Web Component.
        */
       const areChildrenEmpty = children === '' || children === undefined || children === null
-      const fragment = areChildrenEmpty ? createElement(Fragment, {}, children) : createElement(Fragment, {}, ' ')
+      const fragment = !areChildrenEmpty ? createElement(Fragment, {}, children) : createElement(Fragment, {}, ' ')
       const component = createElement(tagName, newProps, fragment)
       return component
     }
