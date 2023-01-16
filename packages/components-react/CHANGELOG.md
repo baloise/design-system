@@ -1,5 +1,14 @@
 # @baloise/design-system-components-react
 
+## 12.4.1
+
+### Patch Changes
+
+- [#1062](https://github.com/baloise-incubator/design-system/pull/1062) [`ab0437a33`](https://github.com/baloise-incubator/design-system/commit/ab0437a335213bff018733ec86596d02d543e2a9) Thanks [@hirsch88](https://github.com/hirsch88)! - fix render slot children
+
+- Updated dependencies [[`f98e22ae0`](https://github.com/baloise-incubator/design-system/commit/f98e22ae0db80f3b2ff911b101323e5f2c4e9cab)]:
+  - @baloise/design-system-components@12.4.1
+
 ## 12.4.0
 
 ### Patch Changes
