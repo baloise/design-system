@@ -213,8 +213,12 @@ export class Modal implements OverlayInterface {
   async onClickCloseButton(event: MouseEvent) {
     if (this.isClosable && this.presented && event && event.target) {
       const element = event.target as HTMLElement
+      const isClickedOutside = element.classList.contains('bal-modal__container')
       const closestBalButton = element.closest('bal-button')
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
+        await this.dismiss(undefined, 'model-close')
+      }
+      if (isClickedOutside) {
         await this.dismiss(undefined, 'model-close')
       }
     }
