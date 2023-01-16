@@ -14,7 +14,7 @@ import { Basic } from './bal-input.stories'
   "search", "tel", and "url". It supports all standard text input events including keyup, keydown, keypress, and more.
 </bal-doc-lead>
 
-> **Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-getting-started-internationalization--page).
+> **Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
 
 <Canvas withSource="open">
   <Story id="components-form-input--basic" />
@@ -25,7 +25,16 @@ import { Basic } from './bal-input.stories'
     <a class="button is-primary" href="?path=/story/components-form-input--basic">
       Go to playground (Canvas)
     </a>
-    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="input"></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      framework="angular"
+      template={Basic.parameters.docs.source.code}
+      modules="input"
+    ></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      framework="html"
+      template={Basic.parameters.docs.source.code}
+      modules="input"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

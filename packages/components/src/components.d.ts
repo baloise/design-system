@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
@@ -679,10 +680,16 @@ export namespace Components {
     interface BalDocStackblitz {
         "component": string;
         "component2": string;
+        "framework": Frameworks;
+        "fullscreen": boolean;
+        "label": string;
+        "logo": boolean;
         "modules": string;
         "name2": string;
+        "primary": boolean;
         "template": string;
         "template2": string;
+        "visible": boolean;
     }
     interface BalDocSupportColor {
         "color": string;
@@ -4268,10 +4275,16 @@ declare namespace LocalJSX {
     interface BalDocStackblitz {
         "component": string;
         "component2": string;
+        "framework": Frameworks;
+        "fullscreen"?: boolean;
+        "label": string;
+        "logo"?: boolean;
         "modules": string;
         "name2": string;
+        "primary"?: boolean;
         "template": string;
         "template2": string;
+        "visible"?: boolean;
     }
     interface BalDocSupportColor {
         "color"?: string;

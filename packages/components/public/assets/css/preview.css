@@ -122,13 +122,13 @@ a.is-link {
   color: #000d6e;
 }
 
-a.sbdocs-a:hover,
+a.sbdocs-a:not(.button):hover,
 bal-doc-github a:hover,
 a.is-link:hover {
   color: #0014aa;
 }
 
-a.sbdocs-a:active,
+a.sbdocs-a:not(.button):active,
 bal-doc-github a:active,
 a.is-link:active {
   color: #030938;

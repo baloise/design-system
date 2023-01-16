@@ -1,8 +1,4 @@
-<bal-doc-lead>
-This section describes how to setup the Baloise Design System with an basic Angular applications.
-</bal-doc-lead>
-
-## Prerequisite Angular
+## Prerequisite
 
 If you do not have an Angular app yet create one with the [Angular CLI](https://angular.io/guide/setup-local).
 
@@ -12,7 +8,7 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 > - We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
 > - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 
-### Deep import config
+<!-- ### Deep import config
 
 To use/ignore deep imports in an Angular applications create a file called `ngcc.config.js` in the root folder and add the following content.
 
@@ -24,9 +20,13 @@ module.exports = {
     },
   },
 }
-```
+``` -->
 
-## Install Design System
+## Installation
+
+This section describes how to setup the Baloise Design System with an basic Angular applications.
+
+### Install Design System
 
 Lets install the latest Angular components.
 
@@ -170,7 +170,7 @@ Next set the class `.bal-body` to your app container. In the most cases it is th
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
-```bash
+```
 npm start
 ```
 

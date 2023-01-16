@@ -20,7 +20,16 @@ import { Basic } from './bal-checkbox.stories'
     <a class="button is-primary" href="?path=/story/components-form-checkbox--basic">
       Go to playground (Canvas)
     </a>
-    <bal-doc-stackblitz template={Basic.parameters.docs.source.code} modules="checkbox"></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      framework="angular"
+      template={Basic.parameters.docs.source.code}
+      modules="checkbox"
+    ></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      framework="html"
+      template={Basic.parameters.docs.source.code}
+      modules="checkbox"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
@@ -68,16 +77,6 @@ Switches are used to toggle between exactly two states (like on and off).
 
 <Canvas>
   <Story id="components-form-checkbox--filter-buttons" />
-</Canvas>
-
-<span id="story--components-form-checkbox--box" style={{ opacity: 0 }}></span>
-
-### Checkbox Box
-
-Add the class `has-background-blue-light` to the selected box (`div` inside the `div.column`).
-
-<Canvas>
-  <Story id="components-form-checkbox--box" />
 </Canvas>
 
 ## Component Api

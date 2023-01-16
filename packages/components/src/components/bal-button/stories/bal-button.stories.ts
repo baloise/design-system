@@ -149,15 +149,3 @@ export const NativeLink = args => ({
 })
 NativeLink.args = {}
 NativeLink.parameters = { ...component.sourceCode(NativeLink), controls: { exclude: excludedControls } }
-
-export const NativeInvertedLink = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<a class="is-link is-inverted">Linky</a>`,
-})
-NativeInvertedLink.args = {}
-NativeInvertedLink.parameters = {
-  backgrounds: { default: 'blue' },
-  ...component.sourceCode(NativeInvertedLink),
-  controls: { exclude: excludedControls },
-}

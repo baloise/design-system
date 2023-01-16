@@ -1,8 +1,4 @@
-<bal-doc-lead>
-This section describes how to setup the Baloise Design System with an basic Vue application.
-</bal-doc-lead>
-
-## Prerequisite Vue
+## Prerequisite
 
 Depending on your use case and preference, you can use Vue setup the application with our template or the cli.
 
@@ -34,7 +30,11 @@ resolve: {
 },
 ```
 
-## Install Baloise Design System
+## Installation
+
+This section describes how to setup the Baloise Design System with an basic Vue application.
+
+### Install Baloise Design System
 
 The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfills and defines the components.
 Moreover, it adds the controllers to your vue instance.
@@ -109,7 +109,7 @@ createApp(App)
   .mount('#app')
 ```
 
-> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-getting-started-internationalization--page).
+> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
 
 ### HTML Structure
 
@@ -140,7 +140,7 @@ Add the `BalApp` to your root element (App.vue). Within this component we are ab
 </template>
 ```
 
-#### Improve initial page load
+<!-- #### Improve initial page load
 
 The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
 To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
@@ -153,7 +153,7 @@ To avoid that set the below style tag into your head of the `index.html`. This w
 </style>
 ```
 
-Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
+Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`. -->
 
 ## Start the app
 

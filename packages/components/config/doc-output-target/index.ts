@@ -75,7 +75,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             SPACE,
             'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
             SPACE,
-            '- [More information about the installation and usage](?path=/docs/development-getting-started-testing--page)',
+            '- [More information about the installation and usage](?path=/docs/development-testing--page)',
             SPACE,
             '<!-- START: human documentation -->',
             SPACE,
@@ -104,6 +104,46 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
     try {
       writeFileSync(path.join(__dirname, '../../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
+    } catch (err) {
+      console.error(err)
+    }
+
+    const capitalize = (tag: string) => {
+      const toPascalCase = (text: string) => text.replace(/(^\w|-\w)/g, clearAndUpper)
+      const clearAndUpper = (text: string) => text.replace(/-/, '').toUpperCase()
+      return toPascalCase(tag)
+    }
+
+    const htmlComponents = docs.components.filter(c => !c.tag.startsWith('bal-doc'))
+    const componentImports = htmlComponents
+      .map(
+        c =>
+          `import { defineCustomElement as define${capitalize(
+            c.tag,
+          )} } from '@baloise/design-system-components/dist/components/${c.tag}';`,
+      )
+      .join(NEWLINE)
+
+    const componentDefinitions = htmlComponents.map(c => `define${capitalize(c.tag)}();`).join(NEWLINE)
+
+    const loaderContent = `/**
+ * Stackblitz Initialization
+ * ------------------------------------
+ * The index.ts file is a custom Stackblitz initialization file.
+ * Since Stackblitz does not support dynamic loading of Stencil components.
+ */
+
+import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
+import '@baloise/design-system-components/dist/components';
+${componentImports}
+
+import './example';
+
+${componentDefinitions}
+      `
+
+    try {
+      writeFileSync(path.join(__dirname, '../../public/assets/code/html', 'index.ts'), loaderContent)
     } catch (err) {
       console.error(err)
     }
