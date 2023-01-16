@@ -14,6 +14,7 @@ interface AngularProject {
   name2: string
   template2: string
   component2: string
+  fullscreen: boolean
 }
 
 export const openAngularProject = async (project: AngularProject) => {
@@ -23,6 +24,7 @@ export const openAngularProject = async (project: AngularProject) => {
     app_component_ts,
     app_component_css,
     app_component_html,
+    app_component_fullscreen_html,
     example_component_ts,
     styles_css,
     angular_json,
@@ -33,6 +35,7 @@ export const openAngularProject = async (project: AngularProject) => {
     'angular/app.component.ts',
     'angular/app.component.css',
     'angular/app.component.html',
+    'angular/app.component-fullscreen.html',
     'angular/example.component.ts',
     'angular/styles.css',
     'angular/angular.json',
@@ -65,7 +68,7 @@ export const openAngularProject = async (project: AngularProject) => {
         'src/polyfills.ts': `import 'zone.js/dist/zone';`,
         'src/app/app.module.ts': app_module_ts,
         'src/app/app.component.ts': app_component_ts,
-        'src/app/app.component.html': app_component_html,
+        'src/app/app.component.html': project.fullscreen ? app_component_fullscreen_html : app_component_html,
         'src/app/example.component.ts': new_example_component_ts,
         'src/app/example.component.html': example_component_html,
         'src/app/example.component.css': '',

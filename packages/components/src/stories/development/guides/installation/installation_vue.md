@@ -109,7 +109,7 @@ createApp(App)
   .mount('#app')
 ```
 
-> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-getting-started-internationalization--page).
+> **Internationalization** To run the Design System in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
 
 ### HTML Structure
 

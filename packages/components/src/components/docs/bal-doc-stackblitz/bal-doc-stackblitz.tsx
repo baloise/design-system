@@ -12,6 +12,7 @@ import { openHtmlProject } from './stackblitz.html'
 export class DocStackblitz implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @Prop() fullscreen = false
   @Prop() framework!: Frameworks
   @Prop() modules!: string
   @Prop() template!: string
@@ -30,12 +31,14 @@ export class DocStackblitz implements ComponentInterface {
         name2: this.name2,
         template2: this.template2,
         component2: this.component2,
+        fullscreen: this.fullscreen,
       })
     }
 
     if (framework === 'react') {
       openReactProject({
         component: this.component,
+        fullscreen: this.fullscreen,
       })
     }
 
@@ -43,6 +46,7 @@ export class DocStackblitz implements ComponentInterface {
       openHtmlProject({
         template: this.template,
         component: this.component,
+        fullscreen: this.fullscreen,
       })
     }
   }

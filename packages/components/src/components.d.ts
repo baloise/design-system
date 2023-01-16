@@ -681,6 +681,7 @@ export namespace Components {
         "component": string;
         "component2": string;
         "framework": Frameworks;
+        "fullscreen": boolean;
         "modules": string;
         "name2": string;
         "template": string;
@@ -4271,6 +4272,7 @@ declare namespace LocalJSX {
         "component": string;
         "component2": string;
         "framework": Frameworks;
+        "fullscreen"?: boolean;
         "modules": string;
         "name2": string;
         "template": string;

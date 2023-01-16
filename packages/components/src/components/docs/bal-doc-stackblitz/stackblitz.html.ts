@@ -5,6 +5,7 @@ import { DEFAULT_BALOISE_VERSION, DEFAULT_EDITOR_DESCRIPTION, DEFAULT_EDITOR_TIT
 interface HtmlProject {
   template: string
   component: string
+  fullscreen: boolean
 }
 
 export const openHtmlProject = async (project: HtmlProject) => {
@@ -19,7 +20,7 @@ export const openHtmlProject = async (project: HtmlProject) => {
   const parseTemplate = (content: string) => `<html>
   <body>
     <bal-app>
-      <main class="container">
+      <main ${!project.fullscreen ? 'class="container py-large"' : ''}>
 
 ${content}
 

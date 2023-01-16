@@ -14,6 +14,8 @@ import { Basic } from './bal-badge.stories'
   <Story id="components-badge--basic" />
 </Canvas>
 
+import reactExampleTsx from './usage/react/example_tsx.md'
+
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-accordion--basic">
@@ -25,6 +27,7 @@ import { Basic } from './bal-badge.stories'
       modules="badge"
     ></bal-doc-stackblitz>
     <bal-doc-stackblitz framework="html" template={Basic.parameters.docs.source.code}></bal-doc-stackblitz>
+    <bal-doc-stackblitz framework="react" component={reactExampleTsx}></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

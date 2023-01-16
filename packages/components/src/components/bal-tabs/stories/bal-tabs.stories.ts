@@ -103,53 +103,53 @@ Steps.parameters = {
   },
 }
 
-export const Navigation = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args" v-model="args.value">
-  <bal-tab-item value="tab-a" label="Tab A" icon="nav-go-down">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B" icon="nav-go-down">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Tab C" icon="nav-go-down">Content of Tab C</bal-tab-item>
-</bal-tabs>`,
-})
-Navigation.args = {
-  interface: 'navigation',
-  value: 'tab-a',
-  border: true,
-  float: 'right',
-  spaceless: true,
-  fullwidth: true,
-  expanded: false,
-  vertical: false,
-  selectOnMobile: false,
-}
-Navigation.parameters = {
-  ...component.sourceCode(Navigation),
-  controls: { exclude: ['clickable'] },
-}
+// export const Navigation = args => ({
+//   components: { ...component.components },
+//   setup: () => ({ args }),
+//   template: `<bal-tabs v-bind="args" v-model="args.value">
+//   <bal-tab-item value="tab-a" label="Tab A" icon="nav-go-down">Content of Tab A</bal-tab-item>
+//   <bal-tab-item value="tab-b" label="Tab B" icon="nav-go-down">Content of Tab B</bal-tab-item>
+//   <bal-tab-item value="tab-c" label="Tab C" icon="nav-go-down">Content of Tab C</bal-tab-item>
+// </bal-tabs>`,
+// })
+// Navigation.args = {
+//   interface: 'navigation',
+//   value: 'tab-a',
+//   border: true,
+//   float: 'right',
+//   spaceless: true,
+//   fullwidth: true,
+//   expanded: false,
+//   vertical: false,
+//   selectOnMobile: false,
+// }
+// Navigation.parameters = {
+//   ...component.sourceCode(Navigation),
+//   controls: { exclude: ['clickable'] },
+// }
 
-export const MetaNavigation = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args" v-model="args.value">
-  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-</bal-tabs>`,
-})
-MetaNavigation.args = {
-  interface: 'meta',
-  value: 'tab-a',
-  border: false,
-  inverted: true,
-  spaceless: true,
-  fullwidth: true,
-  expanded: false,
-  vertical: false,
-  selectOnMobile: false,
-}
-MetaNavigation.parameters = {
-  ...component.sourceCode(MetaNavigation),
-  controls: { exclude: ['clickable'] },
-  backgrounds: { default: 'blue' },
-}
+// export const MetaNavigation = args => ({
+//   components: { ...component.components },
+//   setup: () => ({ args }),
+//   template: `<bal-tabs v-bind="args" v-model="args.value">
+//   <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+//   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+//   <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+// </bal-tabs>`,
+// })
+// MetaNavigation.args = {
+//   interface: 'meta',
+//   value: 'tab-a',
+//   border: false,
+//   inverted: true,
+//   spaceless: true,
+//   fullwidth: true,
+//   expanded: false,
+//   vertical: false,
+//   selectOnMobile: false,
+// }
+// MetaNavigation.parameters = {
+//   ...component.sourceCode(MetaNavigation),
+//   controls: { exclude: ['clickable'] },
+//   backgrounds: { default: 'blue' },
+// }
