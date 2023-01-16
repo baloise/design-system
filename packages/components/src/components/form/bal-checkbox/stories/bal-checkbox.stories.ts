@@ -8,8 +8,6 @@ import {
   BalFieldMessage,
   BalCheckboxGroup,
 } from '../../../../../.storybook/vue/generated/components'
-import { isDescendant } from '../../../../../dist'
-import { ref, unref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)
 const balCheckboxGroupArgTypes = stencilArgType(BalCheckboxGroup)
@@ -218,63 +216,3 @@ FilterButtons.parameters = {
   ...component.sourceCode(FilterButtons),
   controls: { exclude: excludedControls },
 }
-
-// export const Box = args => ({
-//   components: { ...component.components },
-//   setup: () => {
-//     const elementA = ref(null)
-//     const elementB = ref(null)
-//     const selectedA = ref(true)
-//     const selectedB = ref(false)
-
-//     const checkA = event => {
-//       if (!isDescendant(unref(elementA).$el, event.target)) {
-//         selectedA.value = !selectedA.value
-//       }
-//     }
-
-//     const checkB = event => {
-//       if (!isDescendant(unref(elementB).$el, event.target)) {
-//         selectedB.value = !selectedB.value
-//       }
-//     }
-
-//     return {
-//       args,
-//       selectedA,
-//       selectedB,
-//       elementA,
-//       elementB,
-//       checkA,
-//       checkB,
-//     }
-//   },
-//   template: `
-//   <div class="columns" style="max-width: 400px">
-//     <div class="column">
-//       <div @click="checkA($event)" :class="selectedA ? 'has-background-primary-1':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
-//         <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
-//         <p class="has-text-blue is-bold mb-none">Title</p>
-//         <p class="has-text-blue mb-small">Subtitle</p>
-//         <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
-//         <bal-checkbox ref="elementA" class="mb-small" v-bind="args" v-model="selectedA"></bal-checkbox>
-//       </div>
-//     </div>
-//     <div class="column">
-//     <div @click="checkB($event)" :class="selectedB ? 'has-background-blue-light':''" class="clickable is-flex px-normal py-x-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
-//       <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
-//       <p class="has-text-blue is-bold mb-none">Title</p>
-//       <p class="has-text-blue mb-small">Subtitle</p>
-//       <p class="has-text-blue-light-text is-size-small mb-normal">More Description</p>
-//       <bal-checkbox ref="elementB" class="mb-small" v-bind="args" v-model="selectedB"></bal-checkbox>
-//     </div>
-//   </div>
-//   </div>`,
-// })
-// Box.args = {}
-// Box.parameters = {
-//   ...component.sourceCode(Box),
-//   controls: {
-//     exclude: [...excludedControls, 'interface', 'invalid', 'value', 'hasFieldMessage', 'inverted', 'value', 'content'],
-//   },
-// }
