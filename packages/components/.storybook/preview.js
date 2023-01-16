@@ -26,6 +26,7 @@ export const parameters = {
   ...withTableOfContents(),
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
+  viewMode: 'docs',
   viewport: {
     viewports: {
       small: {
@@ -138,7 +139,7 @@ export const parameters = {
         'Development',
         [
           'Overview',
-          'Installation',
+          'Getting Started',
           'Components',
           'Form',
           'Internationalization',

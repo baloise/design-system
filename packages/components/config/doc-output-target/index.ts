@@ -75,7 +75,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             SPACE,
             'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
             SPACE,
-            '- [More information about the installation and usage](?path=/docs/development-getting-started-testing--page)',
+            '- [More information about the installation and usage](?path=/docs/development-testing--page)',
             SPACE,
             '<!-- START: human documentation -->',
             SPACE,

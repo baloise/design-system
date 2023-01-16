@@ -1,7 +1,3 @@
-<bal-doc-lead>
-This section describes how to setup the Baloise Design System with an basic React applications.
-</bal-doc-lead>
-
 ## Prerequisite
 
 Before we can add the Baloise Design System we need to setup the basics with [React Create App CLI](https://create-react-app.dev/)
@@ -22,7 +18,11 @@ Now navigate into the root folder.
 cd my-app
 ```
 
-## Install Design System
+## Installation
+
+This section describes how to setup the Baloise Design System with an basic React applications.
+
+### Install Design System
 
 Install the Design System and his dependencies.
 

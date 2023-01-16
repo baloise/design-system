@@ -8,25 +8,42 @@ interface ReactProject {
 }
 
 export const openReactProject = async (project: ReactProject) => {
-  const [app_tsx, app_fullscreen_tsx, index_html, index_tsx, package_lock_json, package_json, tsconfig_json] =
-    await loadSourceFiles([
-      'react/app.tsx',
-      'react/app-fullscreen.tsx',
-      'react/index.html',
-      'react/index.tsx',
-      'react/package-lock.json',
-      'react/package.json',
-      'react/tsconfig.json',
-    ])
+  const [
+    app_tsx,
+    app_fullscreen_tsx,
+    index_html,
+    index_tsx,
+    package_lock_json,
+    package_json,
+    tsconfig_json,
+    app_project_tsx,
+  ] = await loadSourceFiles([
+    'react/app.tsx',
+    'react/app-fullscreen.tsx',
+    'react/index.html',
+    'react/index.tsx',
+    'react/package-lock.json',
+    'react/package.json',
+    'react/tsconfig.json',
+    'react/app-project.tsx',
+  ])
 
-  const example_component = project.component
-    ? parseMarkdown(project.component)
-    : `import React from 'react';
+  const isTryOnlineProject = !project.component
+
+  let exampleFiles = {}
+  if (!isTryOnlineProject) {
+    const example_component = project.component
+      ? parseMarkdown(project.component)
+      : `import React from 'react';
 
 export default function Example() {
-  return <h1 class="title is-size-xxx-large">Hello World</h1>;
+  return <h1 className="title is-size-xxx-large">Hello World</h1>;
 }
 `
+    exampleFiles = {
+      'src/example.tsx': example_component,
+    }
+  }
 
   sdk.openProject(
     {
@@ -36,8 +53,8 @@ export default function Example() {
       files: {
         'public/index.html': index_html,
         'src/index.tsx': index_tsx,
-        'src/app.tsx': project.fullscreen ? app_fullscreen_tsx : app_tsx,
-        'src/example.tsx': example_component,
+        'src/app.tsx': isTryOnlineProject ? app_project_tsx : project.fullscreen ? app_fullscreen_tsx : app_tsx,
+        ...exampleFiles,
         'tsconfig.json': tsconfig_json,
         'package.json': package_json,
         'package-lock.json': package_lock_json,
@@ -51,7 +68,7 @@ export default function Example() {
       },
     },
     {
-      openFile: ['src/example.tsx'],
+      openFile: [isTryOnlineProject ? 'src/app.tsx' : 'src/example.tsx'],
       showSidebar: false,
     },
   )

@@ -25,13 +25,16 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                       as both code implementations and design artifacts to build any number of web applications.
                     </bal-text>
                     <bal-button-group class="mt-medium">
-                      {/* <a
-                        class="button is-primary"
+                      <bal-doc-stackblitz framework="html" label="Try Online" logo primary></bal-doc-stackblitz>
+                      <bal-doc-stackblitz framework="angular" label="Try Online" logo primary></bal-doc-stackblitz>
+                      <bal-doc-stackblitz framework="react" label="Try Online" logo primary></bal-doc-stackblitz>
+                      <a
+                        class="button is-info"
                         style={{ width: 'auto' }}
-                        href="?path=/docs/development-installation--page"
+                        href="?path=/docs/development-getting-started--page"
                       >
                         Getting Started
-                      </a> */}
+                      </a>
                       <bal-button
                         color="info"
                         icon="github"
@@ -73,10 +76,12 @@ import NewDocImage from '../../public/assets/images/new-doc.png'
                 </div>
                 {/* ----------- DIVIDER ----------- */}
                 <div class="bal-list__item">
-                  <a class="bal-list__item__trigger" href="?path=/docs/development-installation--page">
+                  <a class="bal-list__item__trigger" href="?path=/docs/development-getting-started--page">
                     <bal-list-item-content>
-                      <bal-list-item-title>Installation</bal-list-item-title>
-                      <bal-list-item-subtitle>HTML, Angular, React & Vue.js</bal-list-item-subtitle>
+                      <bal-list-item-title>Development</bal-list-item-title>
+                      <bal-list-item-subtitle>
+                        Getting Started with HTML, Angular, React or Vue.js
+                      </bal-list-item-subtitle>
                     </bal-list-item-content>
                     <bal-list-item-icon right>
                       <bal-icon name="nav-go-right" size="xsmall"></bal-icon>

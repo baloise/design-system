@@ -29,6 +29,8 @@ export const openAngularProject = async (project: AngularProject) => {
     styles_css,
     angular_json,
     tsconfig_json,
+    app_component_project_ts,
+    app_module_project_ts,
   ] = await loadSourceFiles([
     'angular/main.ts',
     'angular/app.module.ts',
@@ -40,21 +42,34 @@ export const openAngularProject = async (project: AngularProject) => {
     'angular/styles.css',
     'angular/angular.json',
     'angular/tsconfig.json',
+    'angular/app.component-project.html',
+    'angular/app.module-project.ts',
   ])
 
-  const example_component_html = project.template
-    ? parseMarkdown(project.template)
-    : '<h1 class="title is-size-xxx-large">Hello World</h1>'
+  const isTryOnlineProject = !project.template
 
-  const new_example_component_ts = project.component
-    ? parseMarkdown(project.component)
-    : updateModules(example_component_ts, project)
-
+  let exampleFiles = {}
   let secondComponent = {}
-  if (project.name2 !== undefined) {
-    secondComponent = {
-      [`src/app/${project.name2}.component.ts`]: parseMarkdown(project.component2),
-      [`src/app/${project.name2}.component.html`]: parseMarkdown(project.template2),
+  if (!isTryOnlineProject) {
+    const example_component_html = project.template
+      ? parseMarkdown(project.template)
+      : '<h1 class="title is-size-xxx-large">Hello World</h1>'
+
+    const new_example_component_ts = project.component
+      ? parseMarkdown(project.component)
+      : updateModules(example_component_ts, project)
+
+    exampleFiles = {
+      'src/app/example.component.ts': new_example_component_ts,
+      'src/app/example.component.html': example_component_html,
+      'src/app/example.component.css': '',
+    }
+
+    if (project.name2 !== undefined) {
+      secondComponent = {
+        [`src/app/${project.name2}.component.ts`]: parseMarkdown(project.component2),
+        [`src/app/${project.name2}.component.html`]: parseMarkdown(project.template2),
+      }
     }
   }
 
@@ -66,12 +81,14 @@ export const openAngularProject = async (project: AngularProject) => {
       files: {
         'src/main.ts': main_ts,
         'src/polyfills.ts': `import 'zone.js/dist/zone';`,
-        'src/app/app.module.ts': app_module_ts,
+        'src/app/app.module.ts': isTryOnlineProject ? app_module_project_ts : app_module_ts,
         'src/app/app.component.ts': app_component_ts,
-        'src/app/app.component.html': project.fullscreen ? app_component_fullscreen_html : app_component_html,
-        'src/app/example.component.ts': new_example_component_ts,
-        'src/app/example.component.html': example_component_html,
-        'src/app/example.component.css': '',
+        'src/app/app.component.html': isTryOnlineProject
+          ? app_component_project_ts
+          : project.fullscreen
+          ? app_component_fullscreen_html
+          : app_component_html,
+        ...exampleFiles,
         ...secondComponent,
         'src/app/app.component.css': app_component_css,
         'src/index.html': '<app-root></app-root>',

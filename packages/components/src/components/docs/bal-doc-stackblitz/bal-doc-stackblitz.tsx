@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { logoAngular, logoHtml, logoReact } from './stackblitz.logos'
+import { logoAngular, logoHtml, logoReact, logoStackblitz } from './stackblitz.logos'
 import { Frameworks, getFramework } from './stackblitz.util'
 import { openAngularProject } from './stackblitz.angular'
 import { openReactProject } from './stackblitz.react'
@@ -21,6 +21,11 @@ export class DocStackblitz implements ComponentInterface {
   @Prop() name2!: string
   @Prop() template2!: string
   @Prop() component2!: string
+
+  @Prop() visible = false
+  @Prop() primary = false
+  @Prop() logo = false
+  @Prop() label!: string
 
   openProject = async (framework: Frameworks) => {
     if (framework === 'angular') {
@@ -54,8 +59,8 @@ export class DocStackblitz implements ComponentInterface {
   render() {
     const framework = getFramework()
 
-    if (framework !== this.framework) {
-      return ''
+    if (framework !== this.framework && !this.visible) {
+      return <Host style={{ display: 'none' }}></Host>
     }
 
     const labels = {
@@ -83,10 +88,10 @@ export class DocStackblitz implements ComponentInterface {
       >
         <bal-doc-app>
           <bal-button-group>
-            <bal-button color="info" onClick={() => this.openProject(framework)}>
+            <bal-button color={this.primary ? 'primary' : 'info'} onClick={() => this.openProject(this.framework)}>
               <div class="is-flex fg-xx-small">
-                <div innerHTML={logo} style={{ width: '24px', height: '24px' }}></div>
-                <span>{labels[framework] || 'Angular'} Example</span>
+                <div innerHTML={this.logo ? logoStackblitz : logo} style={{ width: '24px', height: '24px' }}></div>
+                <span>{this.label ? this.label : `${labels[this.framework] || 'Angular'} StackBlitz`}</span>
               </div>
             </bal-button>
           </bal-button-group>

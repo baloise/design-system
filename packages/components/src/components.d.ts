@@ -682,10 +682,14 @@ export namespace Components {
         "component2": string;
         "framework": Frameworks;
         "fullscreen": boolean;
+        "label": string;
+        "logo": boolean;
         "modules": string;
         "name2": string;
+        "primary": boolean;
         "template": string;
         "template2": string;
+        "visible": boolean;
     }
     interface BalDocSupportColor {
         "color": string;
@@ -4273,10 +4277,14 @@ declare namespace LocalJSX {
         "component2": string;
         "framework": Frameworks;
         "fullscreen"?: boolean;
+        "label": string;
+        "logo"?: boolean;
         "modules": string;
         "name2": string;
+        "primary"?: boolean;
         "template": string;
         "template2": string;
+        "visible"?: boolean;
     }
     interface BalDocSupportColor {
         "color"?: string;
