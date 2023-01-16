@@ -1,3 +1,2 @@
 ```ts
-import './loader'
 ```

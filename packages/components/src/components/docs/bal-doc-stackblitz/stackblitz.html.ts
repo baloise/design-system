@@ -8,10 +8,10 @@ interface HtmlProject {
 }
 
 export const openHtmlProject = async (project: HtmlProject) => {
-  const [index_html, index_ts, loader_ts, package_json, tsconfig_json] = await loadSourceFiles([
+  const [index_html, index_ts, example_ts, package_json, tsconfig_json] = await loadSourceFiles([
     'html/index.html',
     'html/index.ts',
-    'html/loader.ts',
+    'html/example.ts',
     'html/package.json',
     'html/tsconfig.json',
   ])
@@ -28,16 +28,11 @@ ${content}
   </body>
 </html>`
 
-  const parseComponent = (content: string) => `import './loader';;
-
-${content}
-`
-
-  let example_component = index_ts
+  let example_component = example_ts
   let example_template = index_html
 
   if (project.component) {
-    example_component = parseComponent(parseMarkdown(project.component))
+    example_component = parseMarkdown(project.component)
   }
 
   if (project.template) {
@@ -51,8 +46,8 @@ ${content}
       description: DEFAULT_EDITOR_DESCRIPTION,
       files: {
         'index.html': example_template,
-        'index.ts': example_component,
-        'loader.ts': loader_ts,
+        'index.ts': index_ts,
+        'example.ts': example_component,
         'tsconfig.json': tsconfig_json,
         'package.json': package_json,
       },

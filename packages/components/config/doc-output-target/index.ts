@@ -114,7 +114,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       return toPascalCase(tag)
     }
 
-    // import { defineCustomElement as defineBalApp } from '@baloise/design-system-components/dist/components/bal-app';
     const htmlComponents = docs.components.filter(c => !c.tag.startsWith('bal-doc'))
     const componentImports = htmlComponents
       .map(
@@ -125,18 +124,26 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       )
       .join(NEWLINE)
 
-    // defineBalApp();
     const componentDefinitions = htmlComponents.map(c => `define${capitalize(c.tag)}();`).join(NEWLINE)
 
-    const loaderContent = `import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
+    const loaderContent = `/**
+ * Stackblitz Initialization
+ * ------------------------------------
+ * The index.ts file is a custom Stackblitz initialization file.
+ * Since Stackblitz does not support dynamic loading of Stencil components.
+ */
 
+import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
+import '@baloise/design-system-components/dist/components';
 ${componentImports}
+
+import './example';
 
 ${componentDefinitions}
       `
 
     try {
-      writeFileSync(path.join(__dirname, '../../public/assets/code/html', 'loader.ts'), loaderContent)
+      writeFileSync(path.join(__dirname, '../../public/assets/code/html', 'index.ts'), loaderContent)
     } catch (err) {
       console.error(err)
     }
