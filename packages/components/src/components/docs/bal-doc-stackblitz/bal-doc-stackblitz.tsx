@@ -43,7 +43,6 @@ export class DocStackblitz implements ComponentInterface {
       openHtmlProject({
         template: this.template,
         component: this.component,
-        modules: this.modules,
       })
     }
   }

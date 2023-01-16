@@ -107,5 +107,38 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     } catch (err) {
       console.error(err)
     }
+
+    const capitalize = (tag: string) => {
+      const toPascalCase = (text: string) => text.replace(/(^\w|-\w)/g, clearAndUpper)
+      const clearAndUpper = (text: string) => text.replace(/-/, '').toUpperCase()
+      return toPascalCase(tag)
+    }
+
+    // import { defineCustomElement as defineBalApp } from '@baloise/design-system-components/dist/components/bal-app';
+    const htmlComponents = docs.components.filter(c => !c.tag.startsWith('bal-doc'))
+    const componentImports = htmlComponents
+      .map(
+        c =>
+          `import { defineCustomElement as define${capitalize(
+            c.tag,
+          )} } from '@baloise/design-system-components/dist/components/${c.tag}';`,
+      )
+      .join(NEWLINE)
+
+    // defineBalApp();
+    const componentDefinitions = htmlComponents.map(c => `define${capitalize(c.tag)}();`).join(NEWLINE)
+
+    const loaderContent = `import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
+
+${componentImports}
+
+${componentDefinitions}
+      `
+
+    try {
+      writeFileSync(path.join(__dirname, '../../public/assets/code/html', 'loader.ts'), loaderContent)
+    } catch (err) {
+      console.error(err)
+    }
   },
 }
