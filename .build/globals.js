@@ -15,7 +15,7 @@ const DIST_PATH = path.join(PACKAGE, 'dist')
 async function main(){
   log.title('globals')
 
-  adjustGlobalVar(DIST_PATH + '/**/app-globals*.js')
+  adjustGlobalVar(DIST_PATH + '/cjs/app-globals*.js')
 }
 
 async function adjustGlobalVar(files){
