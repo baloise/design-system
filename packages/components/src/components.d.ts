@@ -700,6 +700,8 @@ export namespace Components {
     }
     interface BalDocTokensColors {
     }
+    interface BalDocTokensContainers {
+    }
     interface BalDocTokensFont {
     }
     interface BalDocTokensFontColors {
@@ -2936,6 +2938,12 @@ declare global {
         prototype: HTMLBalDocTokensColorsElement;
         new (): HTMLBalDocTokensColorsElement;
     };
+    interface HTMLBalDocTokensContainersElement extends Components.BalDocTokensContainers, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensContainersElement: {
+        prototype: HTMLBalDocTokensContainersElement;
+        new (): HTMLBalDocTokensContainersElement;
+    };
     interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
     }
     var HTMLBalDocTokensFontElement: {
@@ -3497,6 +3505,7 @@ declare global {
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
         "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
         "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
+        "bal-doc-tokens-containers": HTMLBalDocTokensContainersElement;
         "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
         "bal-doc-tokens-font-colors": HTMLBalDocTokensFontColorsElement;
         "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
@@ -4303,6 +4312,8 @@ declare namespace LocalJSX {
     interface BalDocTokensBreakpoints {
     }
     interface BalDocTokensColors {
+    }
+    interface BalDocTokensContainers {
     }
     interface BalDocTokensFont {
     }
@@ -6282,6 +6293,7 @@ declare namespace LocalJSX {
         "bal-doc-tokens-border": BalDocTokensBorder;
         "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
         "bal-doc-tokens-colors": BalDocTokensColors;
+        "bal-doc-tokens-containers": BalDocTokensContainers;
         "bal-doc-tokens-font": BalDocTokensFont;
         "bal-doc-tokens-font-colors": BalDocTokensFontColors;
         "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
@@ -6413,6 +6425,7 @@ declare module "@stencil/core" {
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
             "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
             "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
+            "bal-doc-tokens-containers": LocalJSX.BalDocTokensContainers & JSXBase.HTMLAttributes<HTMLBalDocTokensContainersElement>;
             "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
             "bal-doc-tokens-font-colors": LocalJSX.BalDocTokensFontColors & JSXBase.HTMLAttributes<HTMLBalDocTokensFontColorsElement>;
             "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
