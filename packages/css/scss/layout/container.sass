@@ -9,17 +9,17 @@
   padding-left: var(--bal-container-space)
   padding-right: var(--bal-container-space)
   &.is-fluid
-    max-width: none !important
+    max-width: var(--bal-container-size-fluid) !important
   &.is-detail-page
-    max-width: 744px !important
+    max-width: var(--bal-container-size-detail-page) !important
   &.is-compact
-    max-width: 896px !important
+    max-width: var(--bal-container-size-compact) !important
   &.is-blog-page
-    max-width: 984px !important
+    max-width: var(--bal-container-size-blog-page) !important
   +tablet
     padding-left: var(--bal-container-space-tablet)
     padding-right: var(--bal-container-space-tablet)
   +desktop
     padding-left: var(--bal-container-space-desktop)
     padding-right: var(--bal-container-space-desktop)
-    max-width: calc(var(--bal-container-max-width) + var(--bal-container-space-desktop) + var(--bal-container-space-desktop))
+    max-width: var(--bal-container-size-normal)

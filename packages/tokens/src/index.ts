@@ -127,6 +127,13 @@ const tokens = {
   },
   container: {
     maxWidth: '1400px',
+    size: {
+      'detail-page': '744px',
+      'compact': '896px',
+      'blog-page': '984px',
+      'normal': '1496px',
+      'fluid': 'none',
+    },
     space: {
       mobile: '1rem',
       tablet: '2.5rem',
