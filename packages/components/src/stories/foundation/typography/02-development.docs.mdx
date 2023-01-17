@@ -9,14 +9,14 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs'
   }}
 />
 
-<bal-doc-banner subtitle="Foundation/Typography" color="purple">Code</bal-doc-banner>
+<bal-doc-banner id="story--foundation-typography-code--heading-and-display" subtitle="Foundation/Typography" color="purple">Code</bal-doc-banner>
 
 <bal-doc-lead>Baloise Create is our corporate typeface. Its clear appearance underlines our modern and future-oriented brand expression.</bal-doc-lead>
 
 ## Heading & Display
 
 The classes `title` and `subtitle` defines the font weight. `is-size-xxx-large` defines the font-size.
-For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-typography-design-tokens--page#sizes).
 
 Go to the [Heading Component Documentation](?path=/docs/components-heading--basic) to find more details.
 
@@ -29,7 +29,7 @@ Go to the [Heading Component Documentation](?path=/docs/components-heading--basi
 ## Text
 
 The classes `is-size-xxx` defines the font-size.
-For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-typography-design-tokens--page#sizes).
 
 Go to the [Text Component Documentation](?path=/docs/components-text--basic) to find more details.
 
@@ -37,81 +37,57 @@ Go to the [Text Component Documentation](?path=/docs/components-text--basic) to 
   <Story id="foundation-typography-code--text" />
 </Canvas>
 
-TODO: add text colors
+<span id="story--foundation-typography-code--text-colors" style={{ opacity: 0 }}></span>
 
-## Font Installation
+## Text Colors
 
-Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). With the font files also css and sass files are delivered.
+The classes `has-text-xxx` defines the font-color.
+For more colors have a look a the [Font Color Tokens](?path=/docs/foundation-typography-design-tokens--page#colors).
 
-> **TIP**
-> The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-colors" />
+</Canvas>
 
-To install the fonts directly to your project, run the following command:
+<span id="story--foundation-typography-code--text-family" style={{ opacity: 0 }}></span>
 
-```bash
-npm install @baloise/design-system-fonts
-```
+## Text Family
 
-### Usage
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-family" />
+</Canvas>
 
-In a next step the fonts have to be provided for the web application. It is recommended to use following tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your assets folder.
+<span id="story--foundation-typography-code--text-weight" style={{ opacity: 0 }}></span>
 
-```bash
-npm install copyfiles --save-dev
-```
+## Text Weight
 
-After installing the copyfiles dependency the copy command needs to be defined in our **package.json** file. Therefore a new script called `copy:fonts` has to be added and the second path to your application has to be adapted.
+Only the font family title has a light weight available. Text only supports regular and bold.
 
-The downloaded fonts have to be placed in a folder in the public area. The path with the sass variable `$font-path` has to be configured or the default `assets/fonts` has to be used.
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-weight" />
+</Canvas>
 
-```scss
-$font-path: 'assets/fonts';
+<span id="story--foundation-typography-code--text-alignment" style={{ opacity: 0 }}></span>
 
-@import '@baloise/design-system-components/src/styles/global';
-```
+## Text Alignment
 
-> **TIP for Angular apps**
-> For angular apps the default path would be `src/assets/fonts` instead of **public/assets/fonts**
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-alignment" />
+</Canvas>
 
-> **TIP Relative Path**
-> To serve the fonts from a relative path inside a Angular application adjust `$font-path` variable to `'~assets/fonts'`.
->
-> ```scss
-> $font-path: '~assets/fonts';
->
-> @import '@baloise/design-system-components/src/styles/global';
-> ```
+<span id="story--foundation-typography-code--text-transform" style={{ opacity: 0 }}></span>
 
-Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
+## Text Transform
 
-```json
-"scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
-}
-```
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-transform" />
+</Canvas>
 
-> **TIP CI&CD**
-> It might be that inside the docker container the `postinstall` does not get executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+<span id="story--foundation-typography-code--text-shadow" style={{ opacity: 0 }}></span>
 
-### CDN
+## Text Shadow
 
-Configure the fonts in a css file.
-
-The package `@baloise/design-system-fonts` also delivers a css file with the config for typography. Add the `fonts.css` into the `head` of the webpage.
-
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
-```
-
-Next [download the font](/design/typography.html#download) to use it with the CDN setup and put them into the path `/assets/fonts` of the webpage.
-
-### Webpack
-
-Import the css directly into your main TypeScript or JavaScript file.
-
-```typescript
-import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
-```
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text-shadow" />
+</Canvas>
 
 <bal-doc-github link="/stories/foundation/typography/02-development.docs.mdx"></bal-doc-github>
