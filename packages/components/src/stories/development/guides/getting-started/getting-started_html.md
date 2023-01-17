@@ -1,8 +1,8 @@
-<bal-doc-lead>
-This section describes how to setup the Baloise Design System with an basic web application.
-</bal-doc-lead>
+## Installation
 
-## Node Modules
+This section describes how to setup the Baloise Design System with an basic web application.
+
+### Node Modules
 
 This is the recommended setup for HTML5 applications or server-side-rendering application, because it is under version control with the help of npm.
 
@@ -77,7 +77,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
 >
 > Now you can run your server with `npm start` and the server is available under http://127.0.0.1:8080/.
 
-## Install Fonts
+### Install Fonts
 
 The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
 
@@ -104,7 +104,7 @@ Then we add the defined script copy:fonts in our postinstall script. Every time 
 > **TIP**
 > It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
-## CDN
+### CDN
 
 An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
 

@@ -100,7 +100,7 @@ export const TextInput = Template.bind({})
 TextInput.args = {
   placeholder: 'Enter a text',
   inverted: false,
-  disabled: true,
+  disabled: false,
   invalid: false,
   type: 'text',
 }

@@ -15,15 +15,26 @@ import readme from '../readme.md'
   <Story id="components-app--basic" />
 </Canvas>
 
+import reactExampleTsx from './usage/react/example_tsx.md'
+
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-app--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-stackblitz
+      fullscreen
+      framework="angular"
       template={Basic.parameters.docs.source.code}
       modules="app,navbar,button,footer,card"
     ></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      fullscreen
+      framework="html"
+      template={Basic.parameters.docs.source.code}
+      modules="navbar,button,footer,card,card-content,card-title,button-group"
+    ></bal-doc-stackblitz>
+    <bal-doc-stackblitz fullscreen framework="react" component={reactExampleTsx}></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 

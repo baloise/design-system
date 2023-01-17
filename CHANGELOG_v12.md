@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [12.1.0](https://github.com/baloise-incubator/design-system/compare/v12.0.0...v12.1.0) (2022-12-20)
 
-
 ### Features
 
 * add static file server for fonts ([40eb3ef](https://github.com/baloise-incubator/design-system/commit/40eb3ef0003da73f2215055539dfb938fbc3aaea))

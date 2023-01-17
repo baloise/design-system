@@ -83,7 +83,8 @@ export const createReactComponent = <
        * React.createElement causes all elements to be rendered
        * as <tagname> instead of the actual Web Component.
        */
-      const fragment = !!children ? createElement(Fragment, {}, children) : createElement(Fragment, {}, ' ')
+      const areChildrenEmpty = children === '' || children === undefined || children === null
+      const fragment = !areChildrenEmpty ? createElement(Fragment, {}, children) : createElement(Fragment, {}, ' ')
       const component = createElement(tagName, newProps, fragment)
       return component
     }

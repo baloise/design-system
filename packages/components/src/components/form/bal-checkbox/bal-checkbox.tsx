@@ -23,6 +23,7 @@ import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
+import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-checkbox',
@@ -193,6 +194,23 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
 
   private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
 
+  private onKeypress = (ev: KeyboardEvent) => {
+    if (isSpaceKey(ev)) {
+      const element = ev.target as HTMLAnchorElement
+      if (element.href) {
+        return
+      }
+
+      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
+        this.checked = !this.checked
+        this.balChange.emit(this.checked)
+        ev.preventDefault()
+      } else {
+        stopEventBubbling(ev)
+      }
+    }
+  }
+
   private onClick = (ev: MouseEvent) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
@@ -232,7 +250,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           ...block.modifier('checked').class(this.checked),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
+          'bal-focusable': !this.disabled && !this.readonly,
         }}
+        onKeypress={this.onKeypress}
         onClick={this.onClick}
         onFocus={this.onInputFocus}
         onBlur={this.onInputBlur}
@@ -271,6 +291,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
             class={{
               ...labelTextEl.class(),
               ...labelTextEl.modifier('hidden').class(this.labelHidden),
+              ...labelTextEl.modifier('flat').class(this.flat),
             }}
           >
             <slot></slot>

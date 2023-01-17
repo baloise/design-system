@@ -8,7 +8,6 @@ import {
   BalFieldLabel,
   BalFieldMessage,
 } from '../../../../../.storybook/vue/generated/components'
-import { ref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -99,43 +98,6 @@ Vertical.args = {
 }
 Vertical.parameters = {
   ...component.sourceCode(Vertical),
-  controls: { exclude: excludedControls },
-}
-
-export const RadioBoxes = args => ({
-  components: { ...component.components },
-  setup: () => {
-    const value = ref(args.value)
-    const checkA = () => (value.value = '1')
-    const checkB = () => (value.value = '2')
-
-    return { args, value, checkA, checkB }
-  },
-  template: `
-  <bal-radio-group v-bind="args" v-model="value">
-    <div class="columns" style="max-width: 400px">
-      <div class="column">
-        <div @click="checkA()" :class="value === '1' ? 'has-background-light-blue':''" class="clickable is-flex px-normal py-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-primary has-radius-normal">
-          <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
-          <p class="has-text-blue mb-x-small">Selected Label</p>
-          <bal-radio class="p-none" name="box-example" value="1" label-hidden></bal-radio>
-        </div>
-      </div>
-      <div class="column">
-        <div @click="checkB()" :class="value === '2' ? 'has-background-light-blue':''" class="clickable is-flex px-normal py-small is-flex-direction-column is-justify-content-center is-align-items-center has-border-primary has-radius-normal">
-          <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-          <p class="has-text-blue mb-x-small">Other Label</p>
-          <bal-radio class="p-none" name="box-example" value="2" is-empty></bal-radio>
-        </div>
-      </div>
-    </div>
-  </bal-radio-group>`,
-})
-RadioBoxes.args = {
-  value: '1',
-}
-RadioBoxes.parameters = {
-  ...component.sourceCode(RadioBoxes),
   controls: { exclude: excludedControls },
 }
 

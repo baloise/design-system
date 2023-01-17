@@ -139,7 +139,7 @@ export const parameters = {
         'Development',
         [
           'Overview',
-          'Installation',
+          'Getting Started',
           'Components',
           'Form',
           'Internationalization',

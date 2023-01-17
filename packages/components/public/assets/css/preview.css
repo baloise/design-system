@@ -127,13 +127,13 @@ a.is-link {
   color: #000d6e;
 }
 
-a.sbdocs-a:hover,
+a.sbdocs-a:not(.button):hover,
 bal-doc-github a:hover,
 a.is-link:hover {
   color: #0014aa;
 }
 
-a.sbdocs-a:active,
+a.sbdocs-a:not(.button):active,
 bal-doc-github a:active,
 a.is-link:active {
   color: #030938;
@@ -375,20 +375,20 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   bottom: 10px;
 }
 
-a.bal-list__item__trigger {
+.sbdocs a.bal-list__item__trigger {
   text-decoration: none !important;
 }
 
-a.bal-list__item__trigger p {
+.sbdocs a.bal-list__item__trigger p {
   font-weight: 400;
 }
 
-a.bal-list__item__trigger:hover .title,
-a.bal-list__item__trigger:hover p {
+.sbdocs a.bal-list__item__trigger:hover .title,
+.sbdocs a.bal-list__item__trigger:hover p {
   color: #0014aa !important;
 }
 
-a.bal-list__item__trigger:hover:after {
+.sbdocs a.bal-list__item__trigger:hover:after {
   background: #0014aa !important;
 }
 

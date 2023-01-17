@@ -1,5 +1,9 @@
 # @baloise/design-system-icons
 
+## 12.4.1
+
+## 12.4.0
+
 ## 12.3.0
 
 ### Patch Changes

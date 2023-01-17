@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useGlobals } from '@storybook/api'
 import { addons, types } from '@storybook/addons'
 import { FORCE_RE_RENDER } from '@storybook/core-events'
-import { WithTooltip, TooltipLinkList } from '@storybook/components'
+import { WithTooltip } from '@storybook/components'
 
 const AngularSVG = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
@@ -44,8 +44,6 @@ const SvgIcons = {
   vue: VueSVG,
   html: JavaScriptSVG,
 }
-
-const values = ['angular', 'html', 'react', 'vue']
 
 const labels = {
   angular: 'Angular',
