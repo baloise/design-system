@@ -15,6 +15,11 @@ describe('bal-checkbox', () => {
     cy.getByTestId('vertical-on-mobile').compareSnapshot('checkbox-vertical-on-mobile-desktop', 0.0)
     cy.getByTestId('long-label').compareSnapshot('checkbox-long-label-desktop', 0.0)
     cy.getByTestId('long-label-select-button').compareSnapshot('checkbox-long-label-select-button-desktop', 0.0)
+    cy.getByTestId('long-label-checked').compareSnapshot('checkbox-long-label-checked-desktop', 0.0)
+    cy.getByTestId('long-label-select-button-checked').compareSnapshot(
+      'checkbox-long-label-select-button-checked-desktop',
+      0.0,
+    )
 
     cy.platform('tablet')
     cy.getByTestId('vertical-on-mobile').compareSnapshot('checkbox-vertical-on-mobile-tablet', 0.0)
