@@ -283,6 +283,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
             ...labelEl.modifier('checked').class(this.checked),
             ...labelEl.modifier('switch').class(this.interface === 'switch'),
             ...labelEl.modifier('checkbox').class(),
+            ...labelEl.modifier('hidden').class(this.labelHidden),
             ...labelEl.modifier('flat').class(this.flat),
             'data-test-checkbox-label': true,
           }}
