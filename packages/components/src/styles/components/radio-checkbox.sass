@@ -106,6 +106,10 @@
       +modifier(flat)
         padding-top: 0
         padding-bottom: 0
+    +modifier(flat)
+      &::before,
+      &::after
+        top: 0px !important
     //
     // symbol
     &::before,
@@ -212,7 +216,8 @@
       &::before
         top: unset
       &::after
-        margin-top: 28px
+        top: unset
+        margin-top: -3px
   &--select-button#{&}--checked
     background: var(--bal-color-primary)
     .bal-radio-checkbox__label

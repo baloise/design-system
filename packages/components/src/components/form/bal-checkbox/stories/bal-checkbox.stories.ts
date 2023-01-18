@@ -127,13 +127,13 @@ const Template = args => ({
     <bal-field-control>
       <bal-checkbox-group :vertical="args.vertical" v-bind="args">
         <bal-checkbox checked="args.checked">
-          Label
+        {{ args.content }}
         </bal-checkbox>
         <bal-checkbox>
-          Label
+        {{ args.content }}
         </bal-checkbox>
         <bal-checkbox>
-         Label
+        {{ args.content }}
         </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
