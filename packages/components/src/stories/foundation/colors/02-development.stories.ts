@@ -36,3 +36,5 @@ BackgroundColor.parameters = {
 }
 
 export { TextColors } from '../typography/02-development.stories'
+
+export { BorderColors } from '../border-radius/02-development.stories'
