@@ -35,6 +35,7 @@ async function main() {
   generateTypography()
   generateSpacings()
   generateAnimation()
+  generateBorder()
 
   await file.save(path.join(SRC_PATH, 'tokens.ts'), toTs())
   await file.save(path.join(DIST_PATH, 'tokens.docs.json'), JSON.stringify(BaloiseDesignToken))
@@ -293,6 +294,11 @@ function generateAnimation() {
   for (const r in animation.transition) {
     addToken(`animation-transition-${r}`, `animation-transition-${r}`, animation.transition[r])
   }
+}
+
+function generateBorder() {
+  const border = BaloiseDesignToken.border
+  addToken(`border-width-normal`, `border-width-normal`, border.width)
 }
 
 main()

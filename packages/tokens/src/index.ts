@@ -475,11 +475,6 @@ const tokens = {
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
-      // active: 'primary-5',
-      // hover: 'grey-4',
-      // disabled: 'grey-4',
-      // valid: 'success-4',
-      // invalid: 'danger-4',
     },
   },
   /**

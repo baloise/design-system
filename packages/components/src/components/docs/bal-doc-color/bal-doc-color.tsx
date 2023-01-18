@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 @Component({
   tag: 'bal-doc-color',
@@ -15,6 +16,8 @@ export class BalDocColor {
 
   render() {
     const subject = this.subject !== '' ? this.subject : this.color
+    const hexValue = (tokens.color as any)[this.color].hex
+
     return (
       <Host class="bal-app">
         <div class="has-radius-large has-shadow-normal">
@@ -32,6 +35,9 @@ export class BalDocColor {
             <h5 class="title is-size-normal m-none">{subject}</h5>
             <bal-text size="small" style={{ textAlign: 'center' }}>
               {this.description}
+            </bal-text>
+            <bal-text size="small" color="primary-light" style={{ textAlign: 'center' }}>
+              {hexValue}
             </bal-text>
           </div>
         </div>

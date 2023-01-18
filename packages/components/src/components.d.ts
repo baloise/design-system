@@ -696,6 +696,8 @@ export namespace Components {
     }
     interface BalDocTokensBorder {
     }
+    interface BalDocTokensBorderColors {
+    }
     interface BalDocTokensBreakpoints {
     }
     interface BalDocTokensColors {
@@ -2926,6 +2928,12 @@ declare global {
         prototype: HTMLBalDocTokensBorderElement;
         new (): HTMLBalDocTokensBorderElement;
     };
+    interface HTMLBalDocTokensBorderColorsElement extends Components.BalDocTokensBorderColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderColorsElement: {
+        prototype: HTMLBalDocTokensBorderColorsElement;
+        new (): HTMLBalDocTokensBorderColorsElement;
+    };
     interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
     }
     var HTMLBalDocTokensBreakpointsElement: {
@@ -3503,6 +3511,7 @@ declare global {
         "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
+        "bal-doc-tokens-border-colors": HTMLBalDocTokensBorderColorsElement;
         "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
         "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
         "bal-doc-tokens-containers": HTMLBalDocTokensContainersElement;
@@ -4308,6 +4317,8 @@ declare namespace LocalJSX {
         "color"?: string;
     }
     interface BalDocTokensBorder {
+    }
+    interface BalDocTokensBorderColors {
     }
     interface BalDocTokensBreakpoints {
     }
@@ -6291,6 +6302,7 @@ declare namespace LocalJSX {
         "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tokens-border": BalDocTokensBorder;
+        "bal-doc-tokens-border-colors": BalDocTokensBorderColors;
         "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
         "bal-doc-tokens-colors": BalDocTokensColors;
         "bal-doc-tokens-containers": BalDocTokensContainers;
@@ -6423,6 +6435,7 @@ declare module "@stencil/core" {
             "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
+            "bal-doc-tokens-border-colors": LocalJSX.BalDocTokensBorderColors & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderColorsElement>;
             "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
             "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
             "bal-doc-tokens-containers": LocalJSX.BalDocTokensContainers & JSXBase.HTMLAttributes<HTMLBalDocTokensContainersElement>;

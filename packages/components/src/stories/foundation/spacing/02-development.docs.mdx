@@ -1,0 +1,44 @@
+import { Canvas, Story } from '@storybook/addon-docs'
+
+<bal-doc-banner id="story--foundation-spacing-code--basic" subtitle="Foundation/Spacing" color="yellow">Code</bal-doc-banner>
+
+<bal-doc-lead>Spacing can be set with the Design Tokens or with the responsive CSS classes</bal-doc-lead>
+
+## CSS Utility Classes
+
+<Canvas withSource="open">
+  <Story id="foundation-spacing-code--basic" />
+</Canvas>
+
+Spacing can be set with **margin** `m*` or **padding** `p*` for all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+Combine a **margin/padding** prefix with a direction suffix. For example:
+
+- for a `margin-top`, use `mt-*`
+- for a `padding-bottom`, use `pb-*`
+- for both margin-left and margin-right, use `mx-*`
+
+For **flexbox** there are spacing values also available as `gaps`.
+
+- for a `gap`, use `fg-*`
+
+The **values (\*)** are documented in the token section
+
+- [Spacing Design Tokens](?path=/docs/foundation-spacing-design-tokens--page)
+
+### Spacing Sizes
+
+For each [Spacing Design Tokens](?path=/docs/foundation-spacing-design-tokens--page) there is a CSS utility class.
+
+<Canvas>
+  <Story id="foundation-spacing-code--spacing-sizes" />
+</Canvas>
+
+<bal-doc-github link="/stories/foundation/spacing/02-development.docs.mdx"></bal-doc-github>

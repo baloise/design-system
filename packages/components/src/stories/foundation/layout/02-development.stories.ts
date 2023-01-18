@@ -10,7 +10,7 @@ import {
 } from '../../../../.storybook/vue/generated/components'
 
 export default {
-  title: 'Foundation/Structure/Code',
+  title: 'Foundation/Layout/Code',
   parameters: {
     docs: {
       page: docs,
@@ -18,7 +18,7 @@ export default {
   },
 }
 
-export const BasicStructure = args => ({
+export const BasicLayout = args => ({
   components: {
     BalApp,
     BalFooter,
@@ -45,8 +45,8 @@ export const BasicStructure = args => ({
   </bal-footer>
   </bal-app>`,
 })
-BasicStructure.args = {}
-BasicStructure.parameters = {
+BasicLayout.args = {}
+BasicLayout.parameters = {
   ...sourceCode(
     () => {
       const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
@@ -130,7 +130,7 @@ import {
         components: [],
       }
     },
-    BasicStructure.args,
+    BasicLayout.args,
     {},
     false,
   ),

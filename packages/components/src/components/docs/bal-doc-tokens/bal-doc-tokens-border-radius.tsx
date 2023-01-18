@@ -23,7 +23,7 @@ export class DocTokensBorderRadius implements ComponentInterface {
             <thead>
               <tr>
                 <th style={{ minWidth: '120px' }}>Example</th>
-                <th>Description</th>
+                <th>Name</th>
                 <th style={{ minWidth: '230px' }}>Token</th>
                 <th style={{ minWidth: '80px' }}>Value</th>
               </tr>

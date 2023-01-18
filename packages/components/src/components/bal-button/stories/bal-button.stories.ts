@@ -142,10 +142,49 @@ Link.args = {
 }
 Link.parameters = { ...component.sourceCode(Link), controls: { exclude: excludedControls } }
 
+export const NativeButton = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+<div class="buttons p-small">
+  <button class="button is-primary">Primary</button>
+  <button class="button is-info">Secondary</button>
+  <button class="button is-text">Text</button>
+  <button class="button is-link">Link</button>
+  <button class="button is-light">Light</button>
+  <button class="button is-success">S5s</button>
+  <button class="button is-warning">W5g</button>
+  <button class="button is-danger">D4r</button>
+  <button class="button is-disabled">Disabled</button>
+</div>
+<div class="buttons has-background-primary p-small">
+  <button class="button is-inverted is-primary">Primary</button>
+  <button class="button is-inverted is-info">Secondary</button>
+  <button class="button is-inverted is-text">Text</button>
+  <button class="button is-inverted is-link"><span>Link</span></button>
+  <button class="button is-inverted is-light">Light</button>
+  <button class="button is-inverted is-success">S5s</button>
+  <button class="button is-inverted is-warning">W5g</button>
+  <button class="button is-inverted is-danger">D4r</button>
+  <button class="button is-inverted is-disabled">Disabled</button>
+</div>
+`,
+})
+NativeButton.args = {}
+NativeButton.parameters = { ...component.sourceCode(NativeButton), controls: { exclude: excludedControls } }
+
 export const NativeLink = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<a class="is-link">Linky</a>`,
+  template: `
+<div class="columns m-none">
+  <div class="column">
+      <a class="is-link">Link</a>
+  </div>
+  <div class="column has-background-primary">
+      <a class="is-link is-inverted">Link</a>
+  </div>
+</div>`,
 })
 NativeLink.args = {}
 NativeLink.parameters = { ...component.sourceCode(NativeLink), controls: { exclude: excludedControls } }

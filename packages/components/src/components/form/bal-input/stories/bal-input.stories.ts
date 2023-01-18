@@ -190,3 +190,45 @@ SimplePhoneNumberInput.parameters = {
     exclude: excludedControls,
   },
 }
+
+export const NativeInput = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `
+  <div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+      <input class="input" type="text" placeholder="Text input" />
+  </div>
+  <p class="help">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-disabled">Name</label>
+  <div class="control">
+      <input class="input is-disabled" disabled type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-disabled">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-success">Name</label>
+  <div class="control">
+      <input class="input is-success" type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-success">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-danger">Name</label>
+  <div class="control">
+      <input class="input is-danger" type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-danger">This username is available</p>
+</div>
+  `,
+})
+NativeInput.args = {}
+NativeInput.parameters = {
+  ...component.sourceCode(NativeInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
