@@ -1,5 +1,5 @@
-import docs from './bal-app.docs.mdx'
-import { BalComponentStory, sourceCode } from '../../../stories/utils'
+import docs from './02-development.docs.mdx'
+import { sourceCode } from '../../../stories/utils'
 import {
   BalApp,
   BalFooter,
@@ -9,14 +9,16 @@ import {
   BalIcon,
 } from '../../../../.storybook/vue/generated/components'
 
-const component = BalComponentStory({
-  component: BalApp,
-  docs,
-})
+export default {
+  title: 'Foundation/Structure/Code',
+  parameters: {
+    docs: {
+      page: docs,
+    },
+  },
+}
 
-export default component.story
-
-export const Basic = args => ({
+export const BasicStructure = args => ({
   components: {
     BalApp,
     BalFooter,
@@ -43,8 +45,8 @@ export const Basic = args => ({
   </bal-footer>
   </bal-app>`,
 })
-Basic.args = {}
-Basic.parameters = {
+BasicStructure.args = {}
+BasicStructure.parameters = {
   ...sourceCode(
     () => {
       const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
@@ -128,9 +130,66 @@ import {
         components: [],
       }
     },
-    Basic.args,
+    BasicStructure.args,
     {},
     false,
   ),
-  // ...component.sourceCode(Basic),
+}
+
+export const Flexbox = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div className="has-background-blue is-flex is-justify-content-center is-align-items-center p-small">
+  <div className="has-background-danger p-small"></div>
+</div>`,
+})
+Flexbox.args = {}
+Flexbox.parameters = {
+  ...sourceCode(
+    () => ({
+      template: `<div class="is-flex is-justify-content-center is-align-items-center">
+      <div>Centered</div>
+    </div>`,
+      components: [],
+    }),
+    Flexbox.args,
+    {},
+  ),
+  controls: { exclude: [] },
+}
+
+export const FlexboxGap = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div className="has-background-danger is-flex fg-medium">
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+</div>
+<div className="has-background-danger is-flex fg-xx-large mt-small">
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+  <div className="has-background-blue is-flex-grow-1 p-small"></div>
+</div>`,
+})
+FlexboxGap.args = {}
+FlexboxGap.parameters = {
+  ...sourceCode(
+    () => ({
+      template: `<div class="is-flex fg-medium">
+      <div class="is-flex-grow-1">1</div>
+      <div class="is-flex-grow-1">2</div>
+      <div class="is-flex-grow-1">3</div>
+    </div>
+    <div class="is-flex fg-xx-large">
+      <div class="is-flex-grow-1">1</div>
+      <div class="is-flex-grow-1">2</div>
+      <div class="is-flex-grow-1">3</div>
+    </div>`,
+      components: [],
+    }),
+    FlexboxGap.args,
+    {},
+  ),
+  controls: { exclude: [] },
 }

@@ -1,0 +1,65 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+
+<bal-doc-banner id="story--foundation-structure-code--basic-structure" subtitle="Foundation/structure" color="red">Code</bal-doc-banner>
+
+<bal-doc-lead>This is the recommended structure structure for our Web Applications.</bal-doc-lead>
+
+## Structures
+
+To structure your solution use our foundations below.
+
+- [Containers](?path=/docs/foundation-grid-code--grid#containers)
+- [Grid](?path=/docs/foundation-grid-code--grid#grid)
+- [Flexbox](?path=/docs/foundation-structure-code--basic-structure&globals=framework:vue#flexbox)
+
+### Basic Structure
+
+The structure is constructed with a container to give the content a max-width and a standard space to the right and left side of the screen. Navbar should be used for web applications and the Navigation for Webpages. The footer component automatically grabs the necessary links from our CMS so that they are always up to date.
+
+- The `.container` is a simple utility class that allows you to center content on larger viewports and to reduce the main space.
+  - Use `container is-compact` for sales funnels to reduce the max-width to a minimum.
+  - [Documentation to the container](?path=/docs/foundation-grid-overview--page#containers)
+- `.has-sticky-footer` css-class sticks the footer element to the bottom of the page.
+
+<Canvas className="my-layout-story" withSource="open">
+  <Story id="foundation-structure-code--basic-structure" />
+</Canvas>
+
+## Flexbox
+
+Helpers for all Flexbox properties
+
+Combined with `is-flex`, all of the Flexbox CSS properties are available as CSS helpers:
+
+- flex-direction
+- flex-wrap
+- justify-content
+- align-content
+- align-items
+- align-self
+- flex-grow
+- flex-shrink
+
+> These helpers are based on the [Bulma CSS Framework](https://bulma.io/documentation/helpers/flexbox-helpers/).
+
+This section has some examples how to use the provided flexbox css class helpers.
+
+### Centered
+
+To center a child in a parent element use the following classes:
+
+- `is-flex` to enable display flex
+- `is-justify-content-center` to set the child horizontally to center
+- `is-align-items-center` to set the child vertically to center
+
+<Canvas withSource="open">
+  <Story id="foundation-structure-code--flexbox" />
+</Canvas>
+
+### Spacing Gaps
+
+On top of the provided flexbox helpers of Bulma we added the flexbox gap classes `fb-*`.
+
+<Canvas withSource="open">
+  <Story id="foundation-structure-code--flexbox-gap" />
+</Canvas>

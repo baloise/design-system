@@ -429,3 +429,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   font-size: 1rem !important;
   font-weight: 400;
 }
+
+.my-layout-story bal-app.has-sticky-footer {
+  min-height: 50vh;
+}

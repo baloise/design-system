@@ -1,4 +1,4 @@
-<bal-doc-banner id="story--foundation-typography-code--heading-and-display" subtitle="Foundation/Typography" color="purple">Code</bal-doc-banner>
+<bal-doc-banner id="story--foundation-typography-code--heading-and-display" subtitle="Foundation/Icons" color="purple">Code</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Icons</b> are pure svg files. To add a new icon just place your svg file into the

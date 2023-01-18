@@ -33,9 +33,10 @@ export const sourceCode = (
   variant: (args: any) => { template: string; components: any },
   argTypes: any,
   args: any,
+  beautify = true,
 ): { docs: { source: { code: string } } } => {
   const template = variant({}).template
-  return withSourceCode(template, argTypes, { ...args, ...(variant as any).args }, [])
+  return withSourceCode(template, argTypes, { ...args, ...(variant as any).args }, [], {}, beautify)
 }
 
 export const BalComponentStory = (story: BalComponentStoryOptions): BalComponentStoryType => {
