@@ -34,77 +34,9 @@ import { Basic } from './bal-icon.stories'
   </bal-button-group>
 </bal-doc-app>
 
-By default the icons are not loaded by the Design System. To import the icons we support two ways.
-
-- Pass the raw SVG content directly to the `bal-icon` component (recommended)
-- During the initialization of the Design System
-
-### Import into the component
-
-When importing an SVG into your component you decrease the initial page load. So you use the SVG only where
-you needed and at the time you wanted.
-
-First import the icon.
-
-```typescript
-import { balIconAccount } from '@baloise/design-system-icons'
-```
-
-Then use it directly with the `bal-icon` component inside your app component.
-
-```html
-<!-- Angular -->
-<bal-icon [svg]="balIconAccount"></bal-icon>
-
-<!-- Vue -->
-<bal-icon :svg="balIconAccount"></bal-icon>
-```
-
-### Import during initialization
-
-Import the icons form the `@baloise/design-system-icons` package and pass them with
-the BalConfig during the initialization.
-
-First import the icon.
-
-```typescript
-import { balIconAccount } from '@baloise/design-system-icons'
-```
-
-#### Angular
-
-```typescript
-@NgModule({
-  imports: [
-    BalCoreModule.forRoot({
-      defaults: {
-        icons: { balIconAccount },
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
-
-#### Vue
-
-```typescript
-createApp(App)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-        icons: { balIconAccount },
-      },
-    }),
-  )
-  .mount('#app')
-```
-
-Then the icon can be found with the name prop of the component. Just remove the prefix `balIcon` and start with a small letter.
-
-```html
-<bal-icon name="account"></bal-icon>
-```
+> **TIP**
+>
+> The bal-icon is based on the [icons foundation](?path=/docs/foundation-icons-code--page) so check this out for adding more icons to your set.
 
 ## Examples
 
@@ -140,10 +72,18 @@ Here is how you can change the size:
 
 <br />
 
+## Integration
+
 This documentation explains how to implement and use Baloise Design System components across different technologies.
 
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
+</a>
+
+How to add new icons have a look at the foundations.
+
+<a class="button is-info" href="?path=/docs/foundation-icons-code--page">
+  Go to icon foundation
 </a>
 
 import testing from './testing.md'

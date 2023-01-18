@@ -1,0 +1,56 @@
+## Usage
+
+By default the icons are not loaded by the Design System. To import the icons we support two ways.
+
+- Pass the raw SVG content directly to the `bal-icon` component (recommended)
+- During the initialization of the Design System
+
+### Import into the component
+
+When importing an SVG into your component you decrease the initial page load. So you use the SVG only where
+you needed and at the time you wanted.
+
+First import the bal-icon module and the SVG icon.
+Then use it directly with the `bal-icon` component inside your app component.
+
+```typescript
+import { BalIconModule } from '@baloise/design-system-components-angular'
+import { balIconAccount } from '@baloise/design-system-icons'
+
+@Component({
+  selector: 'app-example',
+  template: '<bal-icon [svg]="balIconAccount"></bal-icon>',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, BalIconModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ExampleComponent {}
+```
+
+### Import during initialization
+
+Import the icons form the `@baloise/design-system-icons` package and pass them with
+the BalConfig during the initialization.
+
+```typescript
+import { balIconAccount } from '@baloise/design-system-icons'
+
+@NgModule({
+  imports: [
+    BalCoreModule.forRoot({
+      defaults: {
+        icons: { balIconAccount },
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+Then the icon can be found with the name prop of the component. Just remove the prefix `balIcon` and start with a small letter.
+
+```HTML
+<bal-icon name="account"></bal-icon>
+<bal-icon name="plus"></bal-icon>
+```

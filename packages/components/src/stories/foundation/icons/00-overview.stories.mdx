@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Foundation/Icons/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner subtitle="Foundation" color="purple">
+  Icons
+</bal-doc-banner>
+
+<bal-doc-lead>
+  We provide up to 100 vector graphics of the collection{' '}
+  <a href="https://www.streamlinehq.com/icons/streamline-mini-bold" target="_blank">
+    Core Solid Pro
+  </a> of{' '}
+  <a href="https://www.streamlinehq.com" target="_blank">
+    Streamline
+  </a>
+</bal-doc-lead>
+
+## Overview
+
+These are the icons we deliver in the package `@baloise/design-system-icons`.
+
+If there is one missing please feel free to create a [GitHub Issue](https://github.com/baloise-incubator/design-system/issues/new?assignees=Gagne87%2C+clastzoo&labels=%F0%9F%8E%A8+Design+Support&template=design-request.md).
+
+<br />
+
+import icons from '../../../../public/assets/data/icons.json'
+
+<bal-doc-app>
+  <bal-doc-icons icons={icons}></bal-doc-icons>
+</bal-doc-app>
+
+<br />
+<br />
+
+## Usage
+
+TODO:
+- 14px
+- sizes
+- colors
+
+## Download
+
+Download the svg icons for print usage below. For web development please continue reading.
+
+<bal-doc-app>
+  <bal-doc-download subject="icons.zip" subtitle="Our svg icons" link="/assets/download/icons.zip"></bal-doc-download>
+</bal-doc-app>
+
+<bal-doc-github link="/stories/foundation/icons/00-overview.stories.mdx"></bal-doc-github>
