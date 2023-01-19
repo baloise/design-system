@@ -48,7 +48,6 @@ Basic.parameters = {
   ...sourceCode(
     () => {
       const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
-      console.log('framework', framework)
 
       let template = `<bal-app class="has-sticky-footer">
       <header>
@@ -132,5 +131,4 @@ import {
     {},
     false,
   ),
-  // ...component.sourceCode(Basic),
 }
