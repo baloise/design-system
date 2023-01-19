@@ -20,6 +20,7 @@ describe('bal-checkbox', () => {
       'checkbox-long-label-select-button-checked-desktop',
       0.0,
     )
+    cy.getByTestId('checked-flat-select-button').compareSnapshot('checkbox-checked-flat-select-button-desktop', 0.0)
 
     cy.platform('tablet')
     cy.getByTestId('vertical-on-mobile').compareSnapshot('checkbox-vertical-on-mobile-tablet', 0.0)
