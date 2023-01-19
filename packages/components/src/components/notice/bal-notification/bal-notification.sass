@@ -1,10 +1,23 @@
 @import '@baloise/design-system-css/scss/baloise-design-system.utilities'
-@import '../../../styles/mixins/_all'
 
 +block(notification)
   display: block
   position: static
   +element(inner)
-    +alert(var(--bal-color-grey-2))
+    min-height: 56px
+    border-radius: var(--bal-radius-large)
+    font-size: var(--bal-size-normal)
+    font-family: var(--bal-font-family-text)
+    background: var(--bal-color-grey-2)
     hyphens: auto
     +padding('medium')
+    +modifier(is-primary)
+      background: var(--bal-color-grey-2)
+    +modifier(is-info)
+      background: var(--bal-color-info-2)
+    +modifier(is-danger)
+      background: var(--bal-color-danger-2)
+    +modifier(is-warning)
+      background: var(--bal-color-warning-2)
+    +modifier(is-success)
+      background: var(--bal-color-success-2)

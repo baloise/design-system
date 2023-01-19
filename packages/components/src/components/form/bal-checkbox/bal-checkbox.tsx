@@ -27,6 +27,9 @@ import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-checkbox',
+  styleUrls: {
+    css: 'radio-checkbox.sass',
+  },
 })
 export class Checkbox implements ComponentInterface, FormInput<any> {
   private inputId = `bal-cb-${checkboxIds++}`
