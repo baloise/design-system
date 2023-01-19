@@ -29,7 +29,7 @@ const Template = args => ({
       onBalRejectedFile,
     }
   },
-  template: `<bal-field v-bind="args">
+  template: `<bal-field>
   <bal-field-label required>Upload Label</bal-field-label>
   <bal-field-control>
     <bal-file-upload @balRejectedFile="onBalRejectedFile($event)" v-bind="args"></bal-file-upload>
@@ -51,5 +51,48 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: { exclude: ['subTitle', 'value'] },
+}
+
+export const NativeFileUpload = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `
+  <div class="file">
+  <label class="file-label">
+      <input class="file-input" type="file" name="resume" />
+      <span class="file-cta">
+          <span class="file-label"> Choose a file… </span>
+      </span>
+  </label>
+</div>
+<div class="file is-disabled mt-normal">
+  <label class="file-label">
+      <input class="file-input" disabled type="file" name="resume" />
+      <span class="file-cta">
+          <span class="file-label"> Choose a file… </span>
+      </span>
+  </label>
+</div>
+<div class="file is-success mt-normal">
+  <label class="file-label">
+      <input class="file-input" type="file" name="resume" />
+      <span class="file-cta">
+          <span class="file-label"> Choose a file… </span>
+      </span>
+  </label>
+</div>
+<div class="file is-danger mt-normal">
+  <label class="file-label">
+      <input class="file-input" type="file" name="resume" />
+      <span class="file-cta">
+          <span class="file-label"> Choose a file… </span>
+      </span>
+  </label>
+</div>`,
+})
+NativeFileUpload.args = {}
+NativeFileUpload.parameters = {
+  ...component.sourceCode(NativeFileUpload),
   controls: { exclude: ['subTitle', 'value'] },
 }

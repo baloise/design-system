@@ -16,6 +16,7 @@ export const docComponents = [
   'bal-doc-tokens-radius',
   'bal-doc-tokens-border',
   'bal-doc-tokens-breakpoints',
+  'bal-doc-tokens-containers',
   'bal-doc-tokens-colors',
   'bal-doc-tokens-font-sizes',
   'bal-doc-tokens-font-weight',
@@ -26,4 +27,7 @@ export const docComponents = [
   'bal-doc-preview',
   'bal-doc-usage',
   'bal-doc-usage-item',
+  'bal-doc-tokens-border-colors.js',
+  'bal-doc-tokens-font-colors.js',
+  'bal-doc-tokens-spacing-sizes.js',
 ]

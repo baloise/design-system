@@ -127,6 +127,13 @@ const tokens = {
   },
   container: {
     maxWidth: '1400px',
+    size: {
+      'detail-page': '744px',
+      'compact': '896px',
+      'blog-page': '984px',
+      'normal': '1496px',
+      'fluid': 'none',
+    },
     space: {
       mobile: '1rem',
       tablet: '2.5rem',
@@ -164,60 +171,70 @@ const tokens = {
       mobile: '0.25rem',
       tablet: '0.25rem',
       desktop: '0.25rem',
+      description: 'Minimum space between two elements',
     },
     'x-small': {
       legacy: '2',
       mobile: '0.5rem',
       tablet: '0.5rem',
       desktop: '0.5rem',
+      description: 'Space between text and icons or headings and content or clickable elements',
     },
     'small': {
       legacy: '3',
       mobile: '0.75rem',
       tablet: '0.75rem',
       desktop: '0.75rem',
+      description: '',
     },
     'normal': {
       legacy: '4',
       mobile: '1rem',
       tablet: '1rem',
       desktop: '1rem',
+      description: 'Space between large headings and content.',
     },
     'medium': {
       legacy: '5',
       mobile: '1.25rem',
       tablet: '1.25rem',
       desktop: '1.5rem',
+      description: 'Inner padding of cards',
     },
     'large': {
       legacy: '6',
       mobile: '1.5rem',
       tablet: '1.5rem',
       desktop: '2rem',
+      description: 'Space between cards',
     },
     'x-large': {
       legacy: '7',
       mobile: '2rem',
       tablet: '2.5rem',
       desktop: '3rem',
+      description: 'Space between heading and card',
     },
     'xx-large': {
       legacy: '8',
       mobile: '3rem',
       tablet: '3.5rem',
       desktop: '4rem',
+      description: '',
     },
     'xxx-large': {
       legacy: '9',
       mobile: '3.5rem',
       tablet: '4.5rem',
       desktop: '6rem',
+      description: 'Footer bottom padding',
     },
     'xxxx-large': {
       legacy: '10',
       mobile: '4rem',
       tablet: '6rem',
       desktop: '8rem',
+      description: 'Space between sections',
     },
   },
   typography: {
@@ -432,25 +449,18 @@ const tokens = {
       },
     },
     colors: {
+      'primary': 'primary-5',
       'white': 'white',
       'black': 'black',
-      'grey': 'grey-5',
-      'primary-light': 'primary-3',
-      'primary': 'primary-5',
-      'primary-dark': 'primary-6', // active color
+      'grey-dark': 'grey-6', // value of disabled inputs
+      'grey': 'grey-5', // placeholder texts
       'light-blue': 'light-blue-5', // hover color
+      'primary-dark': 'primary-6', // active color
+      'primary-light': 'primary-3',
       'success': 'success-4',
       'info': 'info-4',
       'warning': 'warning-5',
       'danger': 'danger-4',
-      // 'blue-light': 'blue-3',
-      // 'blue': 'blue-5',
-      // 'hover': 'light-blue-5',
-      // 'active': 'blue-6',
-      // 'hint': 'primary-3',
-      // 'valid': 'success-4',
-      // 'invalid': 'danger-4',
-      // 'normal': 'blue-5',
     },
   },
   /**
@@ -468,11 +478,6 @@ const tokens = {
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
-      // active: 'primary-5',
-      // hover: 'grey-4',
-      // disabled: 'grey-4',
-      // valid: 'success-4',
-      // invalid: 'danger-4',
     },
   },
   /**
@@ -503,101 +508,18 @@ colorAlias('primary-3', 'blue-3')
 colorAlias('primary-4', 'blue-4')
 colorAlias('primary-5', 'blue-5')
 colorAlias('primary-6', 'blue-6')
-
 colorAlias('primary', 'primary-5')
-// colorAlias('primary-light', 'primary-1')
-// colorAlias('primary-dark', 'primary-6')
-
-// colorAlias('grey-light', 'grey-1')
-// colorAlias('grey-dark', 'grey-5')
 colorAlias('grey', 'grey-3')
-
-// colorAlias('blue-light', 'blue-1')
-// colorAlias('blue-dark', 'blue-6')
 colorAlias('blue', 'blue-5')
-
-// colorAlias('primary-hover', 'light-blue-5')
-// colorAlias('primary-active', 'primary-6')
-
 colorAlias('light-blue', 'light-blue-1')
-// colorAlias('light-blue-dark', 'light-blue-5')
-// colorAlias('light-blue-hover', 'light-blue-1')
-// colorAlias('light-blue-active', 'light-blue-1')
-
-// colorAlias('purple-light', 'purple-1')
-// colorAlias('purple-dark', 'purple-6')
 colorAlias('purple', 'purple-3')
-
-// colorAlias('green-light', 'green-1')
-// colorAlias('green-dark', 'green-6')
 colorAlias('green', 'green-3')
-
-// colorAlias('yellow-light', 'yellow-1')
-// colorAlias('yellow-dark', 'yellow-6')
 colorAlias('yellow', 'yellow-3')
-
-// colorAlias('red-light', 'red-1')
-// colorAlias('red-dark', 'red-6')
 colorAlias('red', 'red-3')
-
-// colorAlias('info-light', 'info-1')
 colorAlias('info', 'info-3')
-// colorAlias('info-dark', 'info-6')
-
-// colorAlias('success-light', 'success-1')
 colorAlias('success', 'success-3')
-// colorAlias('success-dark', 'success-6')
-
-// colorAlias('warning-light', 'warning-1')
 colorAlias('warning', 'warning-3')
-// colorAlias('warning-dark', 'warning-6')
-
-// colorAlias('danger-light', 'danger-1')
 colorAlias('danger', 'danger-3')
-// colorAlias('danger-dark', 'danger-6')
-
-// colorAlias('valid', 'success-light')
-// colorAlias('invalid', 'danger-light')
-// colorAlias('disabled', 'grey-2')
-
-// colorAlias('background', 'white')
-// colorAlias('background-light', 'grey-light')
-
-//
-// Legacy
-// const typographyAlias = (target: string, source: string) => {
-//   tokens.typography.sizes[target] = {
-//     ...tokens.typography.sizes[source],
-//     alias: source,
-//   }
-// }
-// typographyAlias('display', 'xxxxx-large')
-// typographyAlias('display-2', 'xxxx-large')
-// typographyAlias('1', 'xxx-large')
-// typographyAlias('2', 'xx-large')
-// typographyAlias('3', 'x-large')
-// typographyAlias('4', 'large')
-// typographyAlias('5', 'normal')
-// typographyAlias('6', 'small')
-// typographyAlias('7', 'x-small')
-
-// const spacingAlias = (target: string, source: string) => {
-//   tokens.spacing[target] = {
-//     ...tokens.spacing[source],
-//     alias: source,
-//   }
-// }
-// spacingAlias('0', 'none')
-// spacingAlias('1', 'xx-small')
-// spacingAlias('2', 'x-small')
-// spacingAlias('3', 'small')
-// spacingAlias('4', 'normal')
-// spacingAlias('5', 'medium')
-// spacingAlias('6', 'large')
-// spacingAlias('7', 'x-large')
-// spacingAlias('8', 'xx-large')
-// spacingAlias('9', 'xxx-large')
-// spacingAlias('10', 'xxxx-large')
 
 /************************************************************
  * Export

@@ -1,14 +1,8 @@
 import docs from './bal-app.docs.mdx'
-import { BalComponentStory } from '../../../stories/utils'
+import { BalComponentStory, sourceCode } from '../../../stories/utils'
 import {
   BalApp,
-  BalCard,
-  BalCardTitle,
-  BalCardSubtitle,
-  BalCardContent,
-  BalCardActions,
   BalFooter,
-  BalButton,
   BalNavbar,
   BalNavbarBrand,
   BalText,
@@ -25,48 +19,116 @@ export default component.story
 export const Basic = args => ({
   components: {
     BalApp,
-    BalCard,
-    BalCardTitle,
-    BalCardSubtitle,
-    BalCardContent,
-    BalCardActions,
     BalFooter,
-    BalButton,
     BalNavbar,
     BalNavbarBrand,
     BalText,
     BalIcon,
   },
   setup: () => ({ args }),
-  template: `<bal-app v-bind="args" class="has-sticky-footer">
-  <header class="has-background-white">
+  template: `<bal-app class="has-sticky-footer">
+  <header>
     <bal-navbar>
-      <bal-navbar-brand>Portal</bal-navbar-brand>
+      <bal-navbar-brand>App Title</bal-navbar-brand>
     </bal-navbar>
   </header>
   <main>
-    <div class="container">
-      <bal-card class="my-large">
-        <bal-card-title>BaloiseCombi</bal-card-title>
-        <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-
-        <bal-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </bal-card-content>
-
-        <bal-card-actions position="right">
-          <bal-button>Action</bal-button>
-          <bal-button color="info">Action 2</bal-button>
-        </bal-card-actions>
-      </bal-card>
+    <div class="container my-large">
+      <h1 class="title">Hello World!</h1>
+      <!-- Page content -->
     </div>
   </main>
-
-  <bal-footer></bal-footer>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
   </bal-app>`,
 })
-Basic.args = {
-  hasBackground: false,
-  hasStickyFooter: false,
+Basic.args = {}
+Basic.parameters = {
+  ...sourceCode(
+    () => {
+      const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
+
+      let template = `<bal-app class="has-sticky-footer">
+      <header>
+        <bal-navbar>
+          <bal-navbar-brand>App Title</bal-navbar-brand>
+        </bal-navbar>
+      </header>
+      <main>
+        <div class="container my-large">
+          <h1 class="title">Hello World!</h1>
+          <!-- Page content -->
+        </div>
+      </main>
+      <bal-footer>
+        <!-- Footer content -->
+      </bal-footer>
+      </bal-app>`
+
+      if (framework === 'react') {
+        template = `import './App.scss'
+import {
+  useBaloiseDesignSystem,
+  BalApp,
+  BalFooter,
+  BalNavbar,
+  BalNavbarBrand,
+} from '@baloise/design-system-components-react'
+
+function App() {
+  useBaloiseDesignSystem()
+
+  return (
+    <BalApp className="has-sticky-footer">
+      <header>
+        <BalNavbar>
+          <BalNavbarBrand>App Title</BalNavbarBrand>
+        </BalNavbar>
+      </header>
+      <main className="container my-large">
+        <h1 class="title">Hello World!</h1>
+      </main>
+      <BalFooter></BalFooter>
+    </BalApp>
+  )
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+
+export default App`
+      }
+
+      if (framework === 'vue') {
+        template = `
+<script setup lang="ts>
+import {
+  BalApp,
+  BalFooter,
+  BalNavbar,
+  BalNavbarBrand,
+} from '@baloise/design-system-components-vue'
+</script>
+<template>
+  <BalApp className="has-sticky-footer">
+    <header>
+      <BalNavbar>
+        <BalNavbarBrand>App Title</BalNavbarBrand>
+      </BalNavbar>
+    </header>
+    <main className="container my-large">
+      <h1 class="title">Hello World!</h1>
+    </main>
+    <BalFooter></BalFooter>
+  </BalApp>
+</template>`
+      }
+
+      return {
+        template,
+        components: [],
+      }
+    },
+    Basic.args,
+    {},
+    false,
+  ),
+}

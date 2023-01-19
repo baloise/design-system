@@ -21,9 +21,9 @@ export class DocTokensFont implements ComponentInterface {
             <tbody>
               <tr>
                 <td style={{ verticalAlign: 'top' }}>
-                  <span class="has-font-title is-bold has-text-color-primary is-size-medium">Bold Headline</span>
+                  <span class="has-font-title is-bold has-text-primary is-size-medium">Bold Headline</span>
                   <br />
-                  <span class="has-font-title has-text-color-primary is-size-medium">Light Headline</span>
+                  <span class="has-font-title has-text-primary is-size-medium">Light Headline</span>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
                   <p class="is-bold is-size-large mt-none mb-x-small">
@@ -39,9 +39,9 @@ export class DocTokensFont implements ComponentInterface {
               </tr>
               <tr>
                 <td style={{ verticalAlign: 'top' }}>
-                  <span class="has-font-text is-bold has-text-color-primary is-size-medium">Bold Text</span>
+                  <span class="has-font-text is-bold has-text-primary is-size-medium">Bold Text</span>
                   <br />
-                  <span class="has-font-text has-text-color-primary is-size-medium">Regular Text</span>
+                  <span class="has-font-text has-text-primary is-size-medium">Regular Text</span>
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
                   <p class="is-bold is-size-large mt-none mb-x-small">

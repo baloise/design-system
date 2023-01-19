@@ -100,6 +100,11 @@ p.sbdocs-p {
   color: #000d6e;
 }
 
+p.sbdocs-p p {
+  font-family: 'BaloiseCreateText';
+  color: #000d6e;
+}
+
 p.sbdocs-p.is-size-small {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -302,7 +307,6 @@ table.sbdocs-table tbody tr td {
 
 ul.sbdocs-ul {
   margin-bottom: 1.5rem;
-  margin-left: 2rem;
 }
 
 li.sbdocs-li {
@@ -423,4 +427,12 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .support__label {
   font-size: 1rem !important;
   font-weight: 400;
+}
+
+.my-layout-story bal-app.has-sticky-footer {
+  min-height: 50vh;
+}
+
+hr.sbdocs-hr {
+  height: 2px;
 }

@@ -1,0 +1,44 @@
+import { Meta, Description, DocsContainer } from '@storybook/addon-docs'
+import { BackToTop, TableOfContents } from 'hirsch-storybook-docs-toc'
+
+import text_intro from './02-development_intro.md'
+import text_angular from './02-development_angular.md'
+import text_react from './02-development_react.md'
+import text_html from './02-development_html.md'
+import text_vue from './02-development_vue.md'
+
+<Meta
+  title="Foundation/Icons/Code"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      container: ({ context }) => {
+        const framework = context && context.globals && context.globals.framework
+        let markdown = text_angular
+        if (framework === 'react') {
+          markdown = text_react
+        }
+        if (framework === 'html') {
+          markdown = text_html
+        }
+        if (framework === 'vue') {
+          markdown = text_vue
+        }
+        return (
+          <DocsContainer context={context}>
+            <TableOfContents />
+            <div className="my-doc-content">
+              {<Description markdown={text_intro} />}
+              {<Description markdown={markdown} />}
+            </div>
+            <BackToTop />
+          </DocsContainer>
+        )
+      },
+    },
+  }}
+/>
+
+<bal-doc-github link="/stories/foundation/icons/02-development.stories.mdx"></bal-doc-github>

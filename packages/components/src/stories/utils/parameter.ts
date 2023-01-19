@@ -7,8 +7,19 @@ export interface SourceCodeOptions {
   vue?: string
 }
 
-export const withSourceCode = (code: string, argTypes = {}, args = {}, comps = [], options: SourceCodeOptions = {}) => {
-  const template = htmlBeautify(filterVueSpecific(code, argTypes, args))
+export const withSourceCode = (
+  code: string,
+  argTypes = {},
+  args = {},
+  comps = [],
+  options: SourceCodeOptions = {},
+  beautify = true,
+) => {
+  let template = filterVueSpecific(code, argTypes, args)
+  if (beautify) {
+    template = htmlBeautify(template)
+  }
+
   return {
     docs: {
       source: {

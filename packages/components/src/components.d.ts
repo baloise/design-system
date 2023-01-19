@@ -696,11 +696,17 @@ export namespace Components {
     }
     interface BalDocTokensBorder {
     }
+    interface BalDocTokensBorderColors {
+    }
     interface BalDocTokensBreakpoints {
     }
     interface BalDocTokensColors {
     }
+    interface BalDocTokensContainers {
+    }
     interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontColors {
     }
     interface BalDocTokensFontSizes {
     }
@@ -711,6 +717,8 @@ export namespace Components {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
+    }
+    interface BalDocTokensSpacingSizes {
     }
     interface BalField {
         /**
@@ -2922,6 +2930,12 @@ declare global {
         prototype: HTMLBalDocTokensBorderElement;
         new (): HTMLBalDocTokensBorderElement;
     };
+    interface HTMLBalDocTokensBorderColorsElement extends Components.BalDocTokensBorderColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensBorderColorsElement: {
+        prototype: HTMLBalDocTokensBorderColorsElement;
+        new (): HTMLBalDocTokensBorderColorsElement;
+    };
     interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
     }
     var HTMLBalDocTokensBreakpointsElement: {
@@ -2934,11 +2948,23 @@ declare global {
         prototype: HTMLBalDocTokensColorsElement;
         new (): HTMLBalDocTokensColorsElement;
     };
+    interface HTMLBalDocTokensContainersElement extends Components.BalDocTokensContainers, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensContainersElement: {
+        prototype: HTMLBalDocTokensContainersElement;
+        new (): HTMLBalDocTokensContainersElement;
+    };
     interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
     }
     var HTMLBalDocTokensFontElement: {
         prototype: HTMLBalDocTokensFontElement;
         new (): HTMLBalDocTokensFontElement;
+    };
+    interface HTMLBalDocTokensFontColorsElement extends Components.BalDocTokensFontColors, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensFontColorsElement: {
+        prototype: HTMLBalDocTokensFontColorsElement;
+        new (): HTMLBalDocTokensFontColorsElement;
     };
     interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
     }
@@ -2969,6 +2995,12 @@ declare global {
     var HTMLBalDocTokensSpacingElement: {
         prototype: HTMLBalDocTokensSpacingElement;
         new (): HTMLBalDocTokensSpacingElement;
+    };
+    interface HTMLBalDocTokensSpacingSizesElement extends Components.BalDocTokensSpacingSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingSizesElement: {
+        prototype: HTMLBalDocTokensSpacingSizesElement;
+        new (): HTMLBalDocTokensSpacingSizesElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -3487,14 +3519,18 @@ declare global {
         "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
+        "bal-doc-tokens-border-colors": HTMLBalDocTokensBorderColorsElement;
         "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
         "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
+        "bal-doc-tokens-containers": HTMLBalDocTokensContainersElement;
         "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
+        "bal-doc-tokens-font-colors": HTMLBalDocTokensFontColorsElement;
         "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
         "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
         "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
         "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
+        "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4291,11 +4327,17 @@ declare namespace LocalJSX {
     }
     interface BalDocTokensBorder {
     }
+    interface BalDocTokensBorderColors {
+    }
     interface BalDocTokensBreakpoints {
     }
     interface BalDocTokensColors {
     }
+    interface BalDocTokensContainers {
+    }
     interface BalDocTokensFont {
+    }
+    interface BalDocTokensFontColors {
     }
     interface BalDocTokensFontSizes {
     }
@@ -4306,6 +4348,8 @@ declare namespace LocalJSX {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
+    }
+    interface BalDocTokensSpacingSizes {
     }
     interface BalField {
         /**
@@ -6269,14 +6313,18 @@ declare namespace LocalJSX {
         "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tokens-border": BalDocTokensBorder;
+        "bal-doc-tokens-border-colors": BalDocTokensBorderColors;
         "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
         "bal-doc-tokens-colors": BalDocTokensColors;
+        "bal-doc-tokens-containers": BalDocTokensContainers;
         "bal-doc-tokens-font": BalDocTokensFont;
+        "bal-doc-tokens-font-colors": BalDocTokensFontColors;
         "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
         "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
         "bal-doc-tokens-radius": BalDocTokensRadius;
         "bal-doc-tokens-shadow": BalDocTokensShadow;
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
+        "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -6399,14 +6447,18 @@ declare module "@stencil/core" {
             "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
+            "bal-doc-tokens-border-colors": LocalJSX.BalDocTokensBorderColors & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderColorsElement>;
             "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
             "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
+            "bal-doc-tokens-containers": LocalJSX.BalDocTokensContainers & JSXBase.HTMLAttributes<HTMLBalDocTokensContainersElement>;
             "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
+            "bal-doc-tokens-font-colors": LocalJSX.BalDocTokensFontColors & JSXBase.HTMLAttributes<HTMLBalDocTokensFontColorsElement>;
             "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
             "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
             "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
             "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
+            "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

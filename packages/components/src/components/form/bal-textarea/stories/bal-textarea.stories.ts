@@ -104,3 +104,45 @@ InvalidTextarea.parameters = {
     exclude: excludedControls,
   },
 }
+
+export const NativeTextarea = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `
+  <div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <textarea class="textarea" placeholder="Text input"></textarea>
+  </div>
+  <p class="help">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-disabled">Name</label>
+  <div class="control">
+      <textarea class="textarea is-disabled" disabled type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-disabled">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-success">Name</label>
+  <div class="control">
+      <textarea class="textarea is-success" type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-success">This username is available</p>
+</div>
+<div class="field">
+  <label class="label is-danger">Name</label>
+  <div class="control">
+      <textarea class="textarea is-danger" type="text" placeholder="Text input" />
+  </div>
+  <p class="help is-danger">This username is available</p>
+</div>
+  `,
+})
+NativeTextarea.args = {}
+NativeTextarea.parameters = {
+  ...component.sourceCode(NativeTextarea),
+  controls: {
+    exclude: excludedControls,
+  },
+}

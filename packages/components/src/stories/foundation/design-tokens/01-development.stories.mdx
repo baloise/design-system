@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Foundation/Design Tokens/Code"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner subtitle="Foundation/Design Tokens" color="green">Development</bal-doc-banner>
+
+<bal-doc-lead>To set border and radius use the provided CSS Utility Classes.</bal-doc-lead>
+
+## Installation
+
+> **Prerequisite**
+>
+> First please make sure that the latest version of [Node.js](https://nodejs.org/en/) is installed.
+>
+> To be ready to install our packages to your project you have to use [Node Package Manager](https://www.npmjs.com/).
+> If you do not have a `package.json` please run `npm init`.
+
+Run this in you root folder of your project.
+
+```
+npm add @baloise/design-system-tokens
+```
+
+## Usage
+
+Checkout the [Overview](?path=/docs/foundation-design-tokens-overview--page) to find all available tokens.
+
+### JavaScript
+
+The token names are formatted in lower camelCase in JavaScript.
+Import them into your project .
+
+```js
+import { BaloiseDesignToken } from '@baloise/design-system-tokens'
+
+console.log(BaloiseDesignToken.balColorPrimary)
+```
+
+### SASS
+
+The SASS token names are formatted in lower kebab-case.
+
+```css
+@import '@baloise/design-system-tokens/dist/tokens.sass';
+
+.my-element {
+  background-color: $bal-color-primary;
+}
+```
+
+### CSS
+
+CSS variables are formatted in lower kebab-case.
+
+```css
+@import '@baloise/design-system-tokens/dist/tokens.css';
+
+.my-element {
+  background-color: var(--bal-color-primary);
+}
+```
+
+### HTML
+
+To use them directly in your HTML file import them in your head.
+
+```css
+<link rel="stylesheet" href="tokens.css" />
+```
+
+<bal-doc-github link="/stories/foundation/design-tokens/01-development.stories.mdx"></bal-doc-github>

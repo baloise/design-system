@@ -32,9 +32,9 @@ export class DocTokensFontWeight implements ComponentInterface {
               {weights.map(c => (
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-${c.name} has-font-title`}>Headline</span>
+                    <span class={`is-${c.name} has-font-title has-text-primary`}>Headline</span>
                     <br />
-                    <span class={`is-${c.name} has-font-text`}>Text</span>
+                    <span class={`is-${c.name} has-font-text has-text-primary`}>Text</span>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="is-bold is-size-large mt-none mb-x-small">

@@ -35,6 +35,7 @@ async function main() {
   generateTypography()
   generateSpacings()
   generateAnimation()
+  generateBorder()
 
   await file.save(path.join(SRC_PATH, 'tokens.ts'), toTs())
   await file.save(path.join(DIST_PATH, 'tokens.docs.json'), JSON.stringify(BaloiseDesignToken))
@@ -179,7 +180,13 @@ function generateContainer() {
   addToken('container-space', 'container-space', container.space.mobile)
   addToken('container-space-tablet', 'container-space-tablet', container.space.tablet)
   addToken('container-space-desktop', 'container-space-desktop', container.space.desktop)
+
+  // legacy variable
   addToken('container-max-width', 'container-max-width', container.maxWidth)
+
+  for (const size in container.size) {
+    addToken(`container-size-${size}`, `container-size-${size}`, container.size[size])
+  }
 }
 
 function generateBreakpoints() {
@@ -287,6 +294,11 @@ function generateAnimation() {
   for (const r in animation.transition) {
     addToken(`animation-transition-${r}`, `animation-transition-${r}`, animation.transition[r])
   }
+}
+
+function generateBorder() {
+  const border = BaloiseDesignToken.border
+  addToken(`border-width-normal`, `border-width-normal`, border.width)
 }
 
 main()

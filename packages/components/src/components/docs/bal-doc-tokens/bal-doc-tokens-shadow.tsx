@@ -34,7 +34,7 @@ export class DocTokensBorderShadow implements ComponentInterface {
                   <td style={{ verticalAlign: 'top' }}>
                     <div
                       style={{ height: '48px', width: '80px' }}
-                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-red-1`}
+                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-purple-2`}
                     ></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>

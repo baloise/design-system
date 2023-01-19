@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Foundation/Spacing/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner subtitle="Foundation" color="yellow">
+  Spacing
+</bal-doc-banner>
+
+<bal-doc-lead>
+  Global spacings help us design experiences that scale with consistency, rhythm, and focus. Our spacing system follows
+  the same principles as our <a href="?path=/docs/foundation-grid-overview--page#grid">grid system</a>. It creates a
+  visual balance that makes content easier to scan for the user. With the application of consistent spacing the quality
+  of the UI can be improved.
+</bal-doc-lead>
+
+## Spacing Sizes
+
+We use 10 spacings across the Design System.
+
+<bal-doc-tokens-spacing-sizes></bal-doc-tokens-spacing-sizes>
+
+## Spacing Guidelines
+
+### Heading + Content
+
+import SpacingHeadings from '../../../../public/assets/images/foundations/spacing/typo-spacing-container.svg'
+
+<img src={SpacingHeadings} />
+
+<bal-doc-github link="/stories/foundation/spacing/00-overview.stories.mdx"></bal-doc-github>
