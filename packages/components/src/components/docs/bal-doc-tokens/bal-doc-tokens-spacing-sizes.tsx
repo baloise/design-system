@@ -39,8 +39,6 @@ export class DocTokensSpacingSizes implements ComponentInterface {
               <tr>
                 <th style={{ minWidth: '100px' }}>Example</th>
                 <th>Description</th>
-                {/* <th style={{ minWidth: '90px' }}>Mobile</th>
-                <th style={{ minWidth: '90px' }}>Tablet</th> */}
                 <th style={{ minWidth: '90px' }}>Desktop</th>
               </tr>
             </thead>
@@ -54,12 +52,6 @@ export class DocTokensSpacingSizes implements ComponentInterface {
                     <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
-                  {/* <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{c.value.mobile}</span>
-                  </td>
-                  <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{c.value.tablet}</span>
-                  </td> */}
                   <td style={{ verticalAlign: 'top' }}>
                     <span class={`is-bold is-size-small`}>{parseFloat(c.value.desktop.replace('rem')) * 16}px</span>
                   </td>

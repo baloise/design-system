@@ -27,4 +27,7 @@ export const docComponents = [
   'bal-doc-preview',
   'bal-doc-usage',
   'bal-doc-usage-item',
+  'bal-doc-tokens-border-colors.js',
+  'bal-doc-tokens-font-colors.js',
+  'bal-doc-tokens-spacing-sizes.js',
 ]
