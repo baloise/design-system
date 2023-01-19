@@ -2,7 +2,7 @@ import docs from './02-development.docs.mdx'
 import { sourceCode } from '../../../stories/utils'
 
 export default {
-  title: 'Foundation/Spacing/Code',
+  title: 'Foundation/Spacing/Development',
   parameters: {
     viewMode: 'docs',
     docs: {

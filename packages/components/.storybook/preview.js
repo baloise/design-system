@@ -127,14 +127,6 @@ export const parameters = {
         'Foundation',
         [
           'Overview',
-          'Tokens',
-          'CSS-Framework',
-          'Colors',
-          'Font',
-          'Icons Overview',
-          'Platform',
-          'Page Layout',
-          'Templates',
         ],
         'Development',
         [

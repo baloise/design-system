@@ -10,7 +10,7 @@ import {
 } from '../../../../.storybook/vue/generated/components'
 
 export default {
-  title: 'Foundation/Layout/Code',
+  title: 'Foundation/Layout/Development',
   parameters: {
     docs: {
       page: docs,

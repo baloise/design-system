@@ -2,7 +2,7 @@ import docs from './02-development.docs.mdx'
 import { sourceCode } from '../../../stories/utils'
 
 export default {
-  title: 'Foundation/Typography/Code',
+  title: 'Foundation/Typography/Development',
   parameters: {
     viewMode: 'docs',
     docs: {

@@ -718,6 +718,8 @@ export namespace Components {
     }
     interface BalDocTokensSpacing {
     }
+    interface BalDocTokensSpacingSizes {
+    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -2994,6 +2996,12 @@ declare global {
         prototype: HTMLBalDocTokensSpacingElement;
         new (): HTMLBalDocTokensSpacingElement;
     };
+    interface HTMLBalDocTokensSpacingSizesElement extends Components.BalDocTokensSpacingSizes, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensSpacingSizesElement: {
+        prototype: HTMLBalDocTokensSpacingSizesElement;
+        new (): HTMLBalDocTokensSpacingSizesElement;
+    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -3522,6 +3530,7 @@ declare global {
         "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
         "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
+        "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4339,6 +4348,8 @@ declare namespace LocalJSX {
     interface BalDocTokensShadow {
     }
     interface BalDocTokensSpacing {
+    }
+    interface BalDocTokensSpacingSizes {
     }
     interface BalField {
         /**
@@ -6313,6 +6324,7 @@ declare namespace LocalJSX {
         "bal-doc-tokens-radius": BalDocTokensRadius;
         "bal-doc-tokens-shadow": BalDocTokensShadow;
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
+        "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -6446,6 +6458,7 @@ declare module "@stencil/core" {
             "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
             "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
+            "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

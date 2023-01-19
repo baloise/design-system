@@ -432,3 +432,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .my-layout-story bal-app.has-sticky-footer {
   min-height: 50vh;
 }
+
+hr.sbdocs-hr {
+  height: 2px;
+}

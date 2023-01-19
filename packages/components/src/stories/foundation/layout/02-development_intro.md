@@ -1,4 +1,4 @@
-<bal-doc-banner id="story--foundation-typography-code--heading-and-display" subtitle="Foundation/Layout" color="purple">Code</bal-doc-banner>
+<bal-doc-banner id="story--foundation-typography-development--heading-and-display" subtitle="Foundation/Layout" color="purple">Development</bal-doc-banner>
 
 <bal-doc-lead>This is the recommended layout structure for our Web Applications.</bal-doc-lead>
 

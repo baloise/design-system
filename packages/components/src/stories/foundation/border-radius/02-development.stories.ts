@@ -2,7 +2,7 @@ import docs from './02-development.docs.mdx'
 import { sourceCode } from '../../../stories/utils'
 
 export default {
-  title: 'Foundation/Border & Radius/Code',
+  title: 'Foundation/Border & Radius/Development',
   parameters: {
     viewMode: 'docs',
     docs: {
