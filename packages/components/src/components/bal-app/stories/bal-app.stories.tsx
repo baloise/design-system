@@ -1,5 +1,6 @@
 import docs from './bal-app.docs.mdx'
 import { BalComponentStory, sourceCode } from '../../../stories/utils'
+import { getFramework } from '../../docs/bal-doc-stackblitz/stackblitz.util'
 import {
   BalApp,
   BalFooter,
@@ -47,7 +48,7 @@ Basic.args = {}
 Basic.parameters = {
   ...sourceCode(
     () => {
-      const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
+      const framework = getFramework()
 
       let template = `<bal-app class="has-sticky-footer">
       <header>
