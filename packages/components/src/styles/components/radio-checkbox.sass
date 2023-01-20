@@ -64,7 +64,8 @@ bal-radio
   //
   // flat heigt without padding
   +modifier(flat)
-    min-height: 1.5rem
+    &:not(.bal-radio-checkbox--select-button)
+      min-height: 1.5rem
   //
   // hide native input
   +element(input)
@@ -314,7 +315,7 @@ bal-radio
       border-radius: 50%
       display: block
       position: absolute
-      top: 0.25rem
+      top: 0.25rem !important
       left: 0.25rem
       width: 1rem
       height: 1rem
