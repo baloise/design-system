@@ -110,12 +110,13 @@ bal-radio
         padding-left: 0
         display: none
       +modifier(flat)
-        padding-top: 0
-        padding-bottom: 0
+          padding-top: 0
+          padding-bottom: 0
     +modifier(flat)
-      &::before,
-      &::after
-        top: 0px !important
+      &:not(.bal-radio-checkbox--select-button)
+        &::before,
+        &::after
+          top: 0px !important
     +modifier(hidden)
       &::before,
       &::after
@@ -229,8 +230,14 @@ bal-radio
         top: unset
         margin-top: -3px
     .bal-radio-checkbox__label--flat
+      &::before
+        top: unset !important
       &::after
-        margin-top: 4px
+        margin-top: -3px
+        top: unset !important
+      .bal-radio-checkbox__label__text--flat
+        padding-top: 4px
+        padding-bottom: 4px
   &--select-button#{&}--checked
     background: var(--bal-color-primary)
     .bal-radio-checkbox__label
