@@ -3,14 +3,14 @@
 @import './animation'
 
 html
-  background-color: $body-background-color
-  font-size: $body-size
+  background-color: var(--bal-color-white)
+  font-size: 16px
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  min-width: $body-min-width
-  overflow-x: $body-overflow-x
-  overflow-y: $body-overflow-y
-  text-rendering: $body-rendering
+  min-width: 300px
+  overflow-x: hidden
+  overflow-y: scroll
+  text-rendering: optimizeLegibility
   text-size-adjust: 100%
   -webkit-tap-highlight-color: transparent
   -webkit-overflow-scrolling: auto
@@ -36,32 +36,38 @@ input,
 optgroup,
 select,
 textarea
-  font-family: $body-family
+  font-family: var(--bal-font-family-text)
 
 body
-  color: $body-color
-  font-size: $body-font-size
-  font-weight: $body-weight
-  line-height: $body-line-height
+  color: var(--bal-color-primary)
+  font-size: var(--bal-size-normal)
+  font-weight: var(--bal-weight-regular)
+  line-height: var(--bal-line-height-normal)
   -webkit-overflow-scrolling: auto
 
 // Inline
 
 a
-  color: $link
+  color: var(--bal-color-primary)
   cursor: pointer
   text-decoration: none
   strong
     color: currentColor
   &:hover
-    color: $link-hover
+    color: var(--bal-color-light-blue-5)
+  &:active
+    color: var(--bal-color-primary-6)
 
 hr
-  background-color: $hr-background-color
+  background-color: var(--bal-color-blue-2)
   border: none
   display: block
-  height: $hr-height
-  margin: $hr-margin
+  height: var(--bal-border-width-normal)
+  margin: var(--bal-space-xx-large)
+  +tablet
+    margin: var(--bal-space-tablet-xx-large)
+  +desktop
+    margin: var(--bal-space-desktop-xx-large)
 
 img
   height: auto
@@ -72,26 +78,17 @@ input[type="radio"]
   vertical-align: baseline
 
 small
-  font-size: $small-font-size
+  font-size: var(--bal-size-small)
 
 span
   font-style: inherit
   font-weight: inherit
 
 strong
-  color: $strong-color
-  font-weight: $strong-weight
+  color: var(--bal-color-primary)
+  font-weight: var(--bal-weight-bold)
 
 // Block
 
 fieldset
   border: none
-
-table
-  td,
-  th
-    vertical-align: top
-    &:not([align])
-      text-align: inherit
-  th
-    color: $text-strong

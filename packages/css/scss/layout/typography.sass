@@ -1,28 +1,27 @@
 //
 // HEADINGS
 // -------------------------------------------------
-$title-color: $text-strong !default
-$title-family: $font-family-title !default
-$title-size: $size-x-large !default
-$title-weight: $weight-bold !default
-$title-line-height: 1.125 !default
-$title-strong-color: inherit !default
-$title-strong-weight: inherit !default
-$title-sub-size: 0.75em !default
-$title-sup-size: 0.75em !default
+// $title-color: $text-strong !default
+// $title-family: $font-family-title !default
+// $title-size: $size-x-large !default
+// $title-weight: $weight-bold !default
+// $title-line-height: 1.125 !default
+// $title-strong-color: inherit !default
+// $title-strong-weight: inherit !default
+// $title-sub-size: 0.75em !default
+// $title-sup-size: 0.75em !default
 
-$subtitle-color: $text-strong !default
-$subtitle-family: $font-family-title !default
-$subtitle-size: $size-normal !default
-$subtitle-weight: $weight-normal !default
-$subtitle-line-height: 1.25 !default
-$subtitle-strong-color: $text-strong !default
-$subtitle-strong-weight: $weight-semibold !default
-$subtitle-negative-margin: -1.25rem !default
+// $subtitle-color: $text-strong !default
+// $subtitle-family: $font-family-title !default
+// $subtitle-size: $size-normal !default
+// $subtitle-weight: $weight-normal !default
+// $subtitle-line-height: 1.25 !default
+// $subtitle-strong-color: $text-strong !default
+// $subtitle-strong-weight: $weight-semibold !default
+// $subtitle-negative-margin: -1.25rem !default
 
 .title,
 .subtitle
-  @extend %bottomSpacing
   hyphens: auto
   word-break: break-word
   -webkit-font-smoothing: antialiased
@@ -30,47 +29,55 @@ $subtitle-negative-margin: -1.25rem !default
   em,
   span
     font-weight: inherit
-  sub
-    font-size: $title-sub-size
-  sup
-    font-size: $title-sup-size
 
 .title
-  color: $title-color
-  @if $title-family
-    font-family: $title-family
-    font-size: $title-size
-    font-weight: $title-weight
-    line-height: $title-line-height
+  color: var(--bal-color-primary)
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
   strong
-    color: $title-strong-color
-    font-weight: $title-strong-weight
-  &:not(.is-spaced) + .subtitle
-    margin-top: $subtitle-negative-margin
+    color: var(--bal-color-primary)
+    font-weight: var(--bal-weight-bold)
 
 .subtitle
-  color: $subtitle-color
-  @if $subtitle-family
-    font-family: $subtitle-family
-    font-size: $subtitle-size
-    font-weight: $subtitle-weight
-    line-height: $subtitle-line-height
+  color: var(--bal-color-primary)
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-light)
   strong
-    color: $subtitle-strong-color
-    font-weight: $subtitle-strong-weight
-  &:not(.is-spaced) + .title
-    margin-top: $subtitle-negative-margin
+    color: var(--bal-color-primary)
+    font-weight: var(--bal-weight-bold)
 
 //
 // PARAGRAGH & LINKS
 // -------------------------------------------------
+p,
+a
+  font-family: var(--bal-font-family-text)
+  hyphens: auto
+  line-height: 1.5rem
+  margin: 0
+  word-break: break-word
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
 p
-  +bottomSpacing($space-medium)
+  margin-bottom: var(--bal-space-normal)
+  +tablet
+    margin-bottom: var(--bal-space-tablet-normal)
+  +desktop
+    margin-bottom: var(--bal-space-desktop-normal)
 
-+tablet
-  p
-    +bottomSpacing($space-normal)
+.has-text-weight-regular
+  font-weight: var(--bal-weight-regular) !important
 
+.has-text-weight-bold
+  font-weight: var(--bal-weight-bold) !important
+
+.has-text-weight-light
+  font-weight: var(--bal-weight-light) !important
+
+/**
+ LEGACY
+ */
 .is-regular,
 span.is-regular,
 p.is-regular,
@@ -95,26 +102,13 @@ a.is-light,
 .is-text-light span
   font-weight: var(--bal-weight-light)
 
-p,
-a
-  font-family: $family-primary
-  hyphens: auto
-  line-height: 1.5rem
-  margin: 0
-  word-break: break-word
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-
 .has-font-primary,
 .has-font-text
-  font-family: $font-family-text
+  font-family: var(--bal-font-family-text)
 
 .has-font-title
-  font-family: $font-family-title
+  font-family: var(--bal-font-family-title)
 
-/**
- LEGACY
- */
 span.is-small,
 p.is-small,
 a.is-small,
@@ -145,4 +139,4 @@ span,
 .title,
 .subtitle
   &.has-blur-shadow
-    text-shadow: $text-shadow
+    text-shadow: var(--bal-text-shadow-normal)

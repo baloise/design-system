@@ -193,8 +193,6 @@ function generateBreakpoints() {
   const breakpoints = BaloiseDesignToken.breakpoint
   for (const breakpoint in breakpoints) {
     addToken(`breakpoint-${breakpoint}`, `breakpoint-${breakpoint}`, breakpoints[breakpoint])
-    // // legacy variable
-    // addToken(breakpoint, breakpoint, breakpoints[breakpoint])
   }
 }
 
@@ -207,21 +205,18 @@ function generateRadius() {
   const radius = BaloiseDesignToken.radius
   for (const r in radius) {
     addToken(`radius${parseKey(r)}`, `radius${parseKey(r)}`, radius[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`radius`, `radius`, radius[r].value)
-    // }
   }
 }
 
 function generateShadows() {
-  const shadow = BaloiseDesignToken.shadow
+  const shadow = BaloiseDesignToken.shadow.box
   for (const r in shadow) {
     addToken(`shadow${parseKey(r)}`, `shadow${parseKey(r)}`, shadow[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`shadow`, `shadow`, shadow[r].value)
-    // }
+  }
+
+  const textShadow = BaloiseDesignToken.shadow.text
+  for (const r in textShadow) {
+    addToken(`text-shadow${parseKey(r)}`, `text-shadow${parseKey(r)}`, shadow[r].value)
   }
 }
 

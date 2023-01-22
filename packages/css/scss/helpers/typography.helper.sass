@@ -33,40 +33,25 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 .is-uppercase
   text-transform: uppercase !important
 
-.is-italic
-  font-style: italic !important
-
 .has-text-weight-light
-  font-weight: $weight-light !important
+  font-weight: var(--bal-weight-light) !important
 .has-text-weight-normal
-  font-weight: $weight-normal !important
-.has-text-weight-medium
-  font-weight: $weight-medium !important
-.has-text-weight-semibold
-  font-weight: $weight-semibold !important
+  font-weight: var(--bal-weight-regular) !important
 .has-text-weight-bold
-  font-weight: $weight-bold !important
-
-.is-family-primary
-  font-family: $family-primary !important
-
-.is-family-secondary
-  font-family: $family-secondary !important
+  font-weight: var(--bal-weight-bold) !important
 
 .is-family-text
-  font-family: $font-family-text !important
+  font-family: var(--bal-font-family-text) !important
 
 .is-family-title
-  font-family: $font-family-title !important
+  font-family: var(--bal-font-family-title) !important
 
-.is-family-monospace
-  font-family: $family-monospace !important
+// .is-family-monospace
+//   font-family: $family-monospace !important
 
-.is-family-code
-  font-family: $family-code !important
+// .is-family-code
+//   font-family: $family-code !important
 
-.has-text-shadow
-  text-shadow: $text-shadow !important
-
+.has-text-shadow,
 .has-button-shadow
-  box-shadow: $button-shadow !important
+  text-shadow: var(--bal-text-shadow-normal) !important

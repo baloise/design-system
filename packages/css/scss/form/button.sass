@@ -20,7 +20,7 @@
   +fillSvg(var(--bal-color-blue))
   font-family: var(--bal-font-family-title)
   font-size: var(--bal-size-normal)
-  font-weight: $weight-bold
+  font-weight: var(--bal-weight-bold)
   line-height: 1.5
   background-color: transparent
   border-width: 2px
@@ -53,16 +53,16 @@
   strong
     color: inherit
     font-family: var(--bal-font-family-title)
-    font-weight: $weight-bold
+    font-weight: var(--bal-weight-bold)
     hyphens: auto
     text-align: center
   &::-moz-focus-inner
     border: 0
   // Shadow
   &.has-blur-shadow:not(&.is-link)
-    box-shadow: $button-shadow
+    box-shadow: var(--bal-text-shadow-normal)
   &.has-blur-shadow.is-link
-    text-shadow: $text-shadow
+    text-shadow: var(--bal-text-shadow-normal)
   // Icons
   .icon-left,
   .icon-right
