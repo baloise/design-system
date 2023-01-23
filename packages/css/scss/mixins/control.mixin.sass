@@ -1,23 +1,19 @@
-$control-border-width: 2px !default
-$control-padding-vertical: calc(0.5em - #{$control-border-width}) !default
-$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
-
 =control
   -moz-appearance: none !important
   -webkit-appearance: none !important
   align-items: center
-  border-width: $control-border-width
+  border-width: var(--bal-border-width-normal)
   border-color: var(--bal-color-border-grey)
   border-radius: var(--bal-radius-small)
   box-shadow: none
   display: inline-flex
   font-size: var(--bal-size-normal)
-  height: 48px
+  height: 3rem
   line-height: 1.5
-  padding-bottom: $control-padding-vertical
-  padding-left: $control-padding-horizontal
-  padding-right: $control-padding-horizontal
-  padding-top: $control-padding-vertical
+  padding-bottom: calc(0.5em - var(--bal-border-width-normal))
+  padding-top: calc(0.5em - var(--bal-border-width-normal))
+  padding-left: calc(0.75em - var(--bal-border-width-normal))
+  padding-right: calc(0.75em - var(--bal-border-width-normal))
   position: relative
   vertical-align: top
   // States
