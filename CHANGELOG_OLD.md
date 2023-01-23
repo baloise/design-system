@@ -26,7 +26,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.14.0](https://github.com/baloise/design-system/compare/v10.13.5...v10.14.0) (2022-08-16)
 
-
 ### Features
 
 * **tabs:** add is-hidden property to bal-tab-item ([c0e7200](https://github.com/baloise/design-system/commit/c0e720064bd12e8c3cc13a0d89141503e9ed73cd))
