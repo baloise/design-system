@@ -8,6 +8,7 @@ import {
   BalText,
   BalIcon,
 } from '../../../../.storybook/vue/generated/components'
+import { getFramework } from '../../../components/docs/bal-doc-stackblitz/stackblitz.util'
 
 export default {
   title: 'Foundation/Layout/Development',
@@ -49,7 +50,7 @@ BasicLayout.args = {}
 BasicLayout.parameters = {
   ...sourceCode(
     () => {
-      const framework = JSON.parse(localStorage.getItem('bal-docs-framework') || '') || 'angular'
+      const framework = getFramework()
 
       let template = `<bal-app class="has-sticky-footer">
       <header>
