@@ -5,14 +5,14 @@
 @import 'ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss'
 @import 'ag-grid-community/src/styles/ag-grid'
 
-$ag-theme-alpine-params: ( header-background-color: $grey-1, borders: false, borders-critical: true, border-color: $primary, header-foreground-color: $primary, header-column-separator: false, row-border-color: $grey-2, selected-row-background-color: $blue-1, odd-row-background-color: null, row-hover-color: $grey-1, range-selection-border-color: $primary, checkbox-border-radius: 4px, checkbox-checked-color: $primary, checkbox-unchecked-color: $primary)
+$ag-theme-alpine-params: ( header-background-color: $bal-color-grey-1, borders: false, borders-critical: true, border-color: $bal-color-primary, header-foreground-color: $bal-color-primary, header-column-separator: false, row-border-color: $bal-color-grey-2, selected-row-background-color: $bal-color-primary-1, odd-row-background-color: null, row-hover-color: $bal-color-grey-1, range-selection-border-color: $bal-color-primary, checkbox-border-radius: 4px, checkbox-checked-color: $bal-color-primary, checkbox-unchecked-color: $bal-color-primary)
 
 .ag-theme-alpine
   +ag-theme-alpine($ag-theme-alpine-params)
 
 .ag-theme-alpine,
 .ag-cell
-  font-family: $family-primary
+  font-family: $bal-font-family-text
 
 .bal-table-cell-text
   display: flex
