@@ -174,7 +174,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * **icons:** add missing tiktok icon ([7c04896](https://github.com/baloise-incubator/design-system/commit/7c048963a7a42863409f573e09e2a5f72fbf31a6))
 * remove padding of the fieldset ([6390d75](https://github.com/baloise-incubator/design-system/commit/6390d75a01a7770ea5a05a23f2f23b16d7bd217c))
 
-
 ### Performance Improvements
 
 * **icons:** don't load all icons. let the user decide ([3357e78](https://github.com/baloise-incubator/design-system/commit/3357e7842781363a89df67576c570172306fe8a3))
