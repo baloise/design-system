@@ -1,3 +1,8 @@
+@import '../src/mixins/_all'
+
+@import '../src/generated/color.text.helpers'
+@import '../src/generated/typography.helpers'
+
 .has-no-wrap
   white-space: nowrap !important
 
@@ -45,12 +50,6 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 
 .is-family-title
   font-family: var(--bal-font-family-title) !important
-
-// .is-family-monospace
-//   font-family: $family-monospace !important
-
-// .is-family-code
-//   font-family: $family-code !important
 
 .has-text-shadow,
 .has-button-shadow

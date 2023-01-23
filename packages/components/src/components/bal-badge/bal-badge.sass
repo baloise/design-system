@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/scss/mixins'
 
 +block(badge)
   +unselectable
@@ -37,7 +37,7 @@
 
   // label
   +element(label)
-    font-weight: $weight-bold !important
+    font-weight: var(--bal-weight-bold) !important
     font-family: var(--bal-font-family-text) !important
     font-size: var(--bal-size-small) !important
     color: var(--bal-color-white)

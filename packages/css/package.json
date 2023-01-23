@@ -28,11 +28,11 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:scss && npm run build:bundle && npm run build:index",
-    "build:clean": "rimraf scss/generated",
-    "build:index": "rimraf dist",
-    "build:scss": "node ../../.build/generate-css-utils.js",
-    "build:bundle": "rollup --config rollup.config.js",
+    "build": "npm run build:clean && npm run build:utils && npm run build:sass && npm run build:minify",
+    "build:clean": "rimraf scss/generated && rimraf css",
+    "build:utils": "node ../../.build/generate-css-utils.js",
+    "build:sass": "sass --load-path=../../node_modules --embed-sources scss:./css",
+    "build:minify": "cleancss -O2 -o ./css/baloise-design-system.bundle.css ./css/baloise-design-system.bundle.css",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1"
@@ -41,16 +41,12 @@
   "style": "css/baloise-design-system.css",
   "files": [
     "css/",
-    "scss/"
+    "scss/",
+    "src/"
   ],
   "dependencies": {
     "@baloise/design-system-fonts": "12.4.1",
     "@baloise/design-system-tokens": "12.4.1"
-  },
-  "devDependencies": {
-    "copyfiles": "~2.4.1",
-    "minireset.css": "~0.0.7",
-    "normalize.css": "~8.0.1"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

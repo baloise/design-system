@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/scss/mixins'
 @import './bal-tabs__steps'
 
 +block(tabs)
@@ -42,7 +42,7 @@
     position: relative
     align-items: stretch
     display: flex
-    font-size: $size-normal
+    font-size: var(--bal-size-normal)
     justify-content: space-between
     white-space: nowrap
     overflow-x: auto

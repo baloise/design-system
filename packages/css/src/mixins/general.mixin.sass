@@ -2,6 +2,17 @@
 @use "sass:string"
 @use "sass:math"
 
+@keyframes spinAround
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(359deg)
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) != 'color'
+    @return $color
+  @return rgba($color, $alpha)
+
 =hover
   @media(hover: hover) and (pointer: fine)
     @content
@@ -225,7 +236,7 @@
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: bulmaRgba($blue, 0.2)
+  background-color: bulmaRgba($bal-color-primary, 0.2)
   border: none
   border-radius: $bal-radius-rounded
   cursor: pointer
@@ -245,7 +256,7 @@
   width: 20px
   &::before,
   &::after
-    background-color: $white
+    background-color: $bal-color-white
     content: ""
     display: block
     left: 50%
@@ -261,9 +272,9 @@
     width: 2px
   &:hover,
   &:focus
-    background-color: bulmaRgba($blue, 0.3)
+    background-color: bulmaRgba($bal-color-primary, 0.3)
   &:active
-    background-color: bulmaRgba($blue, 0.4)
+    background-color: bulmaRgba($bal-color-primary, 0.4)
   // Sizes
   &.is-small
     height: 16px

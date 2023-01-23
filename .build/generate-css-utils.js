@@ -10,7 +10,7 @@ const BaloiseDesignToken = require('../packages/tokens/.tmp/index.js').BaloiseDe
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/css");
-const SASS_PATH = path.join(PACKAGE, 'scss/generated')
+const SASS_PATH = path.join(PACKAGE, 'src/generated')
 
 async function main() {
   generateBackgroundColors()

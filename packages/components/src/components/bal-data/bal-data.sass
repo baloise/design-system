@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/scss/mixins'
 
 +block(data)
   position: relative
@@ -41,7 +41,7 @@
   flex-basis: 100%
 
   font-family: var(--bal-family-primary)
-  font-weight: $weight-bold
+  font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
   hyphens: auto
@@ -61,7 +61,7 @@
   overflow: visible !important
 
   font-family: var(--bal-family-primary)
-  font-weight: $weight-bold
+  font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
 

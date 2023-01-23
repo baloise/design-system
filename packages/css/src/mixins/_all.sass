@@ -1,11 +1,9 @@
+@import '@baloise/design-system-tokens/dist/tokens.sass'
+@import '../core/core.vars'
+
 @import './bem.mixin'
 @import './control.mixin'
 @import './svg.mixin'
 @import './general.mixin'
 @import './breakpoint.mixin'
 @import './extends'
-
-@function bulmaRgba($color, $alpha)
-  @if type-of($color) != 'color'
-    @return $color
-  @return rgba($color, $alpha)
