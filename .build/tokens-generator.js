@@ -216,7 +216,7 @@ function generateShadows() {
 
   const textShadow = BaloiseDesignToken.shadow.text
   for (const r in textShadow) {
-    addToken(`text-shadow${parseKey(r)}`, `text-shadow${parseKey(r)}`, shadow[r].value)
+    addToken(`text-shadow${parseKey(r)}`, `text-shadow${parseKey(r)}`, textShadow[r].value)
   }
 }
 
