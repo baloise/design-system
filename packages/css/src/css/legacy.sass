@@ -180,3 +180,66 @@ $subtitle-negative-margin: -1.25rem !default
     +fullhd
       &.is-#{$i}-fullhd
         --columnGap: #{$i * 0.25rem}
+
+.is-regular,
+span.is-regular,
+p.is-regular,
+a.is-regular,
+.is-text-regular,
+.is-text-regular span
+  font-weight: var(--bal-weight-regular)
+
+.is-bold,
+span.is-bold,
+p.is-bold,
+a.is-bold,
+.is-text-bold,
+.is-text-bold span
+  font-weight: var(--bal-weight-bold)
+
+.is-light,
+span.is-light,
+p.is-light,
+a.is-light,
+.is-text-light,
+.is-text-light span
+  font-weight: var(--bal-weight-light)
+
+.has-font-primary,
+.has-font-text
+  font-family: var(--bal-font-family-text)
+
+.has-font-title
+  font-family: var(--bal-font-family-title)
+
+span.is-small,
+p.is-small,
+a.is-small,
+.is-text-small,
+.is-text-small span
+  font-size: var(--bal-size-small)
+  line-height: var(--bal-line-height-small)
+
+p.is-lead,
+p.is-lead > a
+  font-size: var(--bal-size-large)
+  line-height: var(--bal-line-height-large)
+  +desktop
+    font-size: var(--bal-size-desktop-large)
+    line-height: var(--bal-line-height-desktop-large)
+
+p.is-block,
+p.is-block > a
+  font-size: var(--bal-size-medium)
+  line-height: var(--bal-line-height-medium)
+  +desktop
+    font-size: var(--bal-size-desktop-medium)
+    line-height: var(--bal-line-height-desktop-medium)
+
+p,
+a,
+span,
+.title,
+.subtitle
+  &.has-blur-shadow
+    text-shadow: var(--bal-text-shadow-normal)
