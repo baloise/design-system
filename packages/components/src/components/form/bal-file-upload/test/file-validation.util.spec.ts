@@ -6,6 +6,7 @@ describe('bal-file-upload', () => {
   describe('file-validation.util', () => {
     const FileA = MockFile('file-a.png', 800, 'image/png')
     const FileB = MockFile('file-b.png', 1000, 'image/jpeg')
+    const FileC = MockFile('file-b.png', 1200, 'image/jpeg')
 
     test('Should add new File', () => {
       const { validFiles, invalidFiles } = validateFileArray([FileA], [FileB], {})
@@ -53,13 +54,12 @@ describe('bal-file-upload', () => {
         maxBundleSize: 1200,
       })
 
-      expect(validFiles).toHaveLength(0)
+      expect(validFiles).toHaveLength(1)
+      expect(validFiles[0].name).toBe(FileA.name)
 
-      expect(invalidFiles).toHaveLength(2)
-      expect(invalidFiles[0].file.name).toBe(FileA.name)
-      expect(invalidFiles[1].file.name).toBe(FileB.name)
+      expect(invalidFiles).toHaveLength(1)
+      expect(invalidFiles[0].file.name).toBe(FileB.name)
       expect(invalidFiles[0].reasons).includes(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
-      expect(invalidFiles[1].reasons).includes(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
     })
 
     test('Should reject the whole size bigger than the config allows', () => {
@@ -103,19 +103,29 @@ describe('bal-file-upload', () => {
         maxFiles: 1,
       })
 
-      expect(validFiles).toHaveLength(0)
+      expect(validFiles).toHaveLength(1)
+      expect(validFiles[0].name).toBe(FileA.name)
 
-      expect(invalidFiles).toHaveLength(2)
-      expect(invalidFiles[0].file.name).toBe(FileA.name)
+      expect(invalidFiles).toHaveLength(1)
+      expect(invalidFiles[0].file.name).toBe(FileB.name)
       expect(invalidFiles[0].reasons).includes(FileUploadRejectionReason.TOO_MANY_FILES)
-      expect(invalidFiles[1].file.name).toBe(FileB.name)
-      expect(invalidFiles[1].reasons).includes(FileUploadRejectionReason.TOO_MANY_FILES)
     })
 
     test('Should not add duplicated files', () => {
       const { validFiles, invalidFiles } = validateFileArray([FileA], [FileA], {})
 
       expect(validFiles).toHaveLength(0)
+
+      expect(invalidFiles).toHaveLength(1)
+      expect(invalidFiles[0].file.name).toBe(FileA.name)
+      expect(invalidFiles[0].reasons).includes(FileUploadRejectionReason.DUPLICATED_FILE)
+    })
+
+    test('Should not add duplicated files but rest should be added', () => {
+      const { validFiles, invalidFiles } = validateFileArray([FileA], [FileA, FileB], {})
+
+      expect(validFiles).toHaveLength(1)
+      expect(validFiles[0].name).toBe(FileB.name)
 
       expect(invalidFiles).toHaveLength(1)
       expect(invalidFiles[0].file.name).toBe(FileA.name)

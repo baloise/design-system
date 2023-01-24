@@ -14,6 +14,7 @@ type ValidateFileArrayReturn = {
 
 export const validateFileArray = (state: File[], files: File[], fileOptions: FileOptions): ValidateFileArrayReturn => {
   const validFiles = []
+  const newState = [...state]
   const invalidFiles: FileUploadRejectedFile[] = []
 
   for (let index = 0; index < files.length; index++) {
@@ -29,20 +30,22 @@ export const validateFileArray = (state: File[], files: File[], fileOptions: Fil
         reasons.push(FileUploadRejectionReason.FILE_TOO_BIG)
       }
 
-      const stateBundleSize = state.map(f => f.size).reduce((a, b) => a + b, 0)
-      const filesBundleSize = files.map(f => f.size).reduce((a, b) => a + b, 0)
-      const bundleSize = stateBundleSize + filesBundleSize
+      const stateBundleSize = newState.map(f => f.size).reduce((a, b) => a + b, 0)
+      const bundleSize = stateBundleSize + file.size
       if (fileOptions.maxBundleSize !== undefined && bundleSize > fileOptions.maxBundleSize) {
         reasons.push(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
       }
 
-      const amountOfFiles = state.length + files.length
+      const amountOfFiles = newState.length + 1
       if (fileOptions.maxFiles !== undefined && amountOfFiles > fileOptions.maxFiles) {
         reasons.push(FileUploadRejectionReason.TOO_MANY_FILES)
       }
 
       const areFilesEqual = (fileA: File, fileB: File) =>
-        fileA.size === fileB.size && fileA.name === fileB.name && fileA.type === fileB.type
+        fileA.size === fileB.size &&
+        fileA.name === fileB.name &&
+        fileA.type === fileB.type &&
+        fileA.lastModified === fileB.lastModified
 
       const duplicatedFiles = state.filter(f => areFilesEqual(f, file))
       if (duplicatedFiles.length > 0) {
@@ -52,6 +55,7 @@ export const validateFileArray = (state: File[], files: File[], fileOptions: Fil
       if (reasons.length > 0) {
         invalidFiles.push({ file, reasons })
       } else {
+        newState.push(file)
         validFiles.push(file)
       }
     }
