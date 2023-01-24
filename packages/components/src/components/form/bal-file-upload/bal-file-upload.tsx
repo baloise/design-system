@@ -171,7 +171,6 @@ export class FileUpload implements FormInput<File[]> {
     this.onValueChange()
   }
 
-  // TODO: check with storybook that we do not create more than one listener
   connectedCallback() {
     this.initialValue = this.value || []
     this.addEventListenerDragAndDrop()
@@ -372,6 +371,7 @@ export class FileUpload implements FormInput<File[]> {
         >
           <label
             htmlFor={this.fileUploadId}
+            ref={el => (this.labelEl = el)}
             class={{
               'file-label': true,
               'is-disabled': this.disabled || this.loading || this.readonly,
@@ -391,7 +391,7 @@ export class FileUpload implements FormInput<File[]> {
               onChange={this.onInputChange}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
-              ref={el => (this.nativeInput = el as HTMLInputElement)}
+              ref={el => (this.nativeInput = el)}
             />
             {this.loading ? (
               <span class="file-cta">

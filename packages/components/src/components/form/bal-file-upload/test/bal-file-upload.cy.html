@@ -45,7 +45,6 @@
         var clearButton = document.getElementById('bal-file-upload-clear')
 
         fileUpload.addEventListener('balRejectedFile', event => {
-          console.warn('balRejectedFile', event)
           var div = document.createElement('div')
           var text = document.createTextNode(
             'The file "' +
