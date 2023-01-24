@@ -49,40 +49,15 @@
 =typography($font-size: 1rem, $line-height: 1.5rem, $spacing: $block-spacing)
   font-size: $font-size
   line-height: $line-height
-  &:not(:last-child)
-    margin-bottom: $spacing
-
-=ltr
-  @if not $rtl
-    @content
-
-=rtl
-  @if $rtl
-    @content
-
-=ltr-property($property, $spacing, $right: true)
-  $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$property}-#{$opposite}: $spacing
-  @else
-    #{$property}-#{$normal}: $spacing
+  +bottomSpacing($spacing)
 
 =ltr-position($spacing, $right: true)
   $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$opposite}: $spacing
-  @else
-    #{$normal}: $spacing
+  #{$normal}: $spacing
 
 =ltr-property($property, $spacing, $right: true)
   $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$property}-#{$opposite}: $spacing
-  @else
-    #{$property}-#{$normal}: $spacing
+  #{$property}-#{$normal}: $spacing
 
 =loader
   animation: spinAround 500ms infinite linear

@@ -1,6 +1,6 @@
 @use "sass:math"
 
-@import '../src/mixins/_all'
+@import '../mixins/_all'
 
 .columns
   flex-basis: 0
@@ -477,48 +477,3 @@
     // Modifiers
     &.is-desktop
       display: flex
-
-@if $variable-columns
-  .columns.is-variable
-    --columnGap: 0.75rem
-    +ltr-property("margin", calc(-1 * var(--columnGap)), false)
-    +ltr-property("margin", calc(-1 * var(--columnGap)))
-    > .column
-      padding-left: var(--columnGap)
-      padding-right: var(--columnGap)
-    @for $i from 0 through 8
-      &.is-#{$i}
-        --columnGap: #{$i * 0.25rem}
-      +mobile
-        &.is-#{$i}-mobile
-          --columnGap: #{$i * 0.25rem}
-      +tablet
-        &.is-#{$i}-tablet
-          --columnGap: #{$i * 0.25rem}
-      +tablet-only
-        &.is-#{$i}-tablet-only
-          --columnGap: #{$i * 0.25rem}
-      +touch
-        &.is-#{$i}-touch
-          --columnGap: #{$i * 0.25rem}
-      +desktop
-        &.is-#{$i}-desktop
-          --columnGap: #{$i * 0.25rem}
-      +desktop-only
-        &.is-#{$i}-desktop-only
-          --columnGap: #{$i * 0.25rem}
-      +high-definition
-        &.is-#{$i}-high-definition
-          --columnGap: #{$i * 0.25rem}
-      +high-definition-only
-        &.is-#{$i}-high-definition-only
-          --columnGap: #{$i * 0.25rem}
-      +widescreen
-        &.is-#{$i}-widescreen
-          --columnGap: #{$i * 0.25rem}
-      +widescreen-only
-        &.is-#{$i}-widescreen-only
-          --columnGap: #{$i * 0.25rem}
-      +fullhd
-        &.is-#{$i}-fullhd
-          --columnGap: #{$i * 0.25rem}

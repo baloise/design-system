@@ -31,8 +31,8 @@
     "build": "npm run build:clean && npm run build:utils && npm run build:sass && npm run build:minify",
     "build:clean": "rimraf scss/generated && rimraf css",
     "build:utils": "node ../../.build/generate-css-utils.js",
-    "build:sass": "sass --load-path=../../node_modules --embed-sources scss:./css",
-    "build:minify": "cleancss -O2 -o ./css/baloise-design-system.bundle.css ./css/baloise-design-system.bundle.css",
+    "build:sass": "sass --load-path=../../node_modules --embed-sources ./src/css:./css",
+    "build:minify": "cleancss -O2 -o ./css/baloise-design-system.css ./css/baloise-design-system.css",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1"
