@@ -6,7 +6,6 @@ describe('bal-file-upload', () => {
   describe('file-validation.util', () => {
     const FileA = MockFile('file-a.png', 800, 'image/png')
     const FileB = MockFile('file-b.png', 1000, 'image/jpeg')
-    const FileC = MockFile('file-b.png', 1200, 'image/jpeg')
 
     test('Should add new File', () => {
       const { validFiles, invalidFiles } = validateFileArray([FileA], [FileB], {})
