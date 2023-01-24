@@ -98,11 +98,11 @@
     .bal-card-content > .is-flex
       height: 100%
   +modifier(has-border)
-    border: 2px dashed var(--bal-color-grey)
+    border: var(--bal-border-width-normal) dashed var(--bal-color-grey)
   +modifier(is-flat)
     box-shadow: none
   +modifier(is-square)
-    border-radius: 0
+    border-radius: var(--bal-radius-none)
   +modifier(is-selected)
     background: var(--bal-color-blue-2)
   +modifier(is-clickable)
