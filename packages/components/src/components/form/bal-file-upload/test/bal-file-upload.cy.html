@@ -14,14 +14,14 @@
   <div class="container">
     <h2 class="title is-size-xx-large">Basic</h2>
     <section>
-      <form action="https://www.w3schools.com/action_page.php" enctype="multipart/form-data" target="_blank">
+      <form method="post" action="http://localhost:3000/upload" enctype="multipart/form-data" target="_blank">
         <bal-form-grid>
           <bal-form-col>
             <bal-field required>
               <bal-field-label>File upload</bal-field-label>
               <bal-field-control>
-                <bal-file-upload id="bal-file-upload-example" name="my-files" accept="image/png,image/jpeg"
-                  max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
+                <bal-file-upload id="bal-file-upload-example" name="my-files" accept="image/png"
+                  max-files="3" max-file-size="10000000" max-bundle-size="100000000"></bal-file-upload>
               </bal-field-control>
               <bal-field-message id="bal-file-upload-messages"></bal-field-message>
             </bal-field>
@@ -41,6 +41,7 @@
       var clearButton = document.getElementById('bal-file-upload-clear')
 
       fileUpload.addEventListener('balRejectedFile', event => {
+        console.warn('balRejectedFile', event)
         var div = document.createElement('div')
         var text = document.createTextNode(
           'The file "' +

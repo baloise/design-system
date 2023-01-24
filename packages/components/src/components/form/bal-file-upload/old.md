@@ -376,59 +376,7 @@ export class FileUpload implements FormInput<File[]> {
       </bal-card>
     )
 
-    return (
-      <Host
-        onClick={this.handleClick}
-        class={{
-          'bal-file-upload': true,
-        }}
-      >
-        <div
-          class={{
-            'file': true,
-            'is-disabled': this.disabled || this.readonly || this.loading,
-            'is-danger': this.invalid,
-          }}
-        >
-          <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
-            <input
-              class="file-input"
-              type="file"
-              name={this.name}
-              multiple={this.multiple}
-              disabled={this.disabled || this.loading}
-              readonly={this.readonly}
-              required={this.required}
-              accept={this.accept}
-              onClick={this.onInputClick}
-              onChange={this.onInputChange}
-              onFocus={this.onInputFocus}
-              onBlur={this.onInputBlur}
-              ref={el => (this.nativeInput = el as HTMLInputElement)}
-            />
-            {this.loading ? (
-              <span class="file-cta">
-                <bal-spinner></bal-spinner>
-              </span>
-            ) : (
-              <span class="file-cta">
-                <span class="file-icon">
-                  <bal-icon
-                    name="upload"
-                    size="medium"
-                    color={
-                      this.disabled || this.loading || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'blue'
-                    }
-                  ></bal-icon>
-                </span>
-                <span class="file-label">{this.label}</span>
-              </span>
-            )}
-          </label>
-        </div>
-        {this.hasFileList ? <FileList /> : ''}
-      </Host>
-    )
+    
   }
 }
 

@@ -9,6 +9,7 @@ import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
@@ -827,9 +828,81 @@ export namespace Components {
     }
     interface BalFileUpload {
         /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept"?: string;
+        /**
+          * Sets the file list to an empty list
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label": string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading": boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple": boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Overrides the default subtitle file size
+         */
+        "subTitle"?: (file: File) => string;
+        /**
+          * Input value.
+         */
+        "value": File[];
     }
     interface BalFooter {
         /**
@@ -2543,6 +2616,10 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
+}
+export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalFileUploadElement;
 }
 export interface BalInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4382,9 +4459,93 @@ declare namespace LocalJSX {
     }
     interface BalFileUpload {
         /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label"?: string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading"?: boolean;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        /**
+          * Triggers when a file is added or removed.
+         */
+        "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
+        /**
+          * Triggers when a file is added.
+         */
+        "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        /**
+          * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+         */
+        "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<FileUploadRejectedFile>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Overrides the default subtitle file size
+         */
+        "subTitle"?: (file: File) => string;
+        /**
+          * Input value.
+         */
+        "value"?: File[];
     }
     interface BalFooter {
         /**

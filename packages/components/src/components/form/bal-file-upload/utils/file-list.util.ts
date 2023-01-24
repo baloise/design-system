@@ -1,22 +1,19 @@
-export const toFileArray = (list: FileList): File[] => {
-  return Array.from(list)
+/**
+ * FileList Utils
+ * -------------------------------
+ * Utils to work with the FileList object. Unfortunately, jsdom does not
+ * support the DataTransfer API, so we were not able to write any
+ * unit test for it.
+ */
+
+export const toFileArray = (list?: FileList): File[] => {
+  return Array.from(list ? list : [])
 }
 
-export const toFileList = (files: File[]): FileList => {
-  class MyFileList {
-    get length() {
-      return files.length
-    }
+export const toFileList = (files?: File[]): FileList => {
+  const dataTransfer = new DataTransfer()
+  if (files && files.length > 0) {
+    files.forEach(file => dataTransfer.items.add(file))
   }
-
-  Object.setPrototypeOf(MyFileList.prototype, FileList.prototype)
-
-  const myFileList = new MyFileList() as any
-
-  for (let index = 0; index < files.length; index++) {
-    const file = files[index]
-    myFileList[index] = file
-  }
-
-  return myFileList as FileList
+  return dataTransfer.files
 }
