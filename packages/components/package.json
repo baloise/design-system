@@ -67,9 +67,7 @@
     "cy:start": "node ./web-server.js",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
-    "docs:build": "node ../../.build/docs-github.js",
-    "==================== RELEASE =======================": "================================",
-    "prepublish": "node ../../.build/version.js"
+    "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
     "@baloise/design-system-css": "12.4.1",
