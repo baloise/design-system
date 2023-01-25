@@ -39,3 +39,12 @@ Basic.args = {
   hideLinks: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const FooterOfGermany = Template.bind({})
+FooterOfGermany.args = {
+  hideLinks: false,
+  hideLanguageSelection: true,
+  region: 'DE',
+  language: 'de',
+}
+FooterOfGermany.parameters = { ...component.sourceCode(FooterOfGermany) }

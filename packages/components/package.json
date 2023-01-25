@@ -54,6 +54,7 @@
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
+    "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "==================== E2E TEST ======================": "================================",
     "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",
@@ -66,16 +67,14 @@
     "cy:start": "node ./web-server.js",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
-    "docs:build": "node ../../.build/docs-github.js",
-    "==================== RELEASE =======================": "================================",
-    "prepublish": "node ../../.build/version.js"
+    "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
     "@baloise/design-system-css": "12.4.1",
     "@baloise/design-system-fonts": "12.4.1",
     "@baloise/design-system-icons": "12.4.1",
     "@baloise/design-system-tokens": "12.4.1",
-    "@baloise/web-app-utils": "^3.8.0",
+    "@baloise/web-app-utils": "3.9.0",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.20.0",
     "big.js": "~6.2.1",

@@ -1,7 +1,5 @@
-import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method, Watch } from '@stencil/core'
-import fileSize from 'filesize.js'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Watch, Method, Listen } from '@stencil/core'
 import {
   FormInput,
   inputHandleBlur,
@@ -11,6 +9,11 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
+import { Logger, LogInstance } from '../../../utils/log'
+import { FileUploadRejectedFile } from './bal-file-upload.type'
+import { FileListComponent } from './components/file-list'
+import { toFileArray, toFileList } from './utils/file-list.util'
+import { validateFileArray } from './utils/file-validation.util'
 
 @Component({
   tag: 'bal-file-upload',
@@ -21,15 +24,36 @@ import {
 export class FileUpload implements FormInput<File[]> {
   @Element() el!: HTMLElement
 
-  private uploadId = `bal-upload-${UploadIds++}`
+  private fileUploadId = `bal-file-upload-${FileUploadIds++}`
 
-  nativeInput!: HTMLInputElement
-  bundleSize = 0
-  inputValue?: File[] | undefined
+  nativeInput: HTMLInputElement | undefined
+  private labelEl: HTMLLabelElement | undefined
 
-  @State() isOver = false
   @State() files: File[] = []
   @State() hasFocus = false
+
+  log!: LogInstance
+
+  @Logger('bal-file-upload')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.fileUploadId
+
+  /**
+   * Input value.
+   */
+  @Prop() value: File[] = []
+  private initialValue = this.value || []
 
   @Watch('value')
   onValueChange() {
@@ -37,11 +61,6 @@ export class FileUpload implements FormInput<File[]> {
       this.files = this.value
     }
   }
-
-  /**
-   * The name of the control, which is submitted with the form data.
-   */
-  @Prop() name: string = this.uploadId
 
   /**
    * Label of the drop area.
@@ -54,24 +73,9 @@ export class FileUpload implements FormInput<File[]> {
   @Prop() multiple = true
 
   /**
-   * If `true` below the drop-down area it generates a file list.
-   */
-  @Prop() hasFileList = true
-
-  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
-
-  /**
-   * If `true`, the user must fill in a value before submitting a form.
-   */
-  @Prop() required = false
-
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() invalid = false
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -79,9 +83,19 @@ export class FileUpload implements FormInput<File[]> {
   @Prop() readonly = false
 
   /**
+   * If `true` the file upload is disabled and shows a spinner
+   */
+  @Prop() loading = false
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
    */
-  @Prop() accept = ''
+  @Prop() accept?: string
 
   /**
    * Allowed number of files in the bundle.
@@ -99,14 +113,14 @@ export class FileUpload implements FormInput<File[]> {
   @Prop() maxBundleSize?: number
 
   /**
-   * Input value.
+   * If `true` below the drop-down area it generates a file list.
    */
-  @Prop() value: File[] = []
+  @Prop() hasFileList = true
 
   /**
-   * If `true` the file upload is disabled and shows a spinner
+   * If `true` the component gets a invalid style.
    */
-  @Prop() loading = false
+  @Prop() invalid = false
 
   /**
    * Overrides the default subtitle file size
@@ -116,18 +130,22 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Triggers when a file is added or removed.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<File[]>
+  @Event() balChange!: EventEmitter<File[]>
 
   /**
    * Triggers when a file is added.
    */
-  @Event({ eventName: 'balFilesAdded' }) balFilesAddedEmitter!: EventEmitter<File[]>
+  @Event() balFilesAdded!: EventEmitter<File[]>
 
   /**
    * Triggers when a file is removed.
    */
-  @Event({ eventName: 'balFilesRemoved' })
-  balFilesRemovedEmitter!: EventEmitter<File[]>
+  @Event() balFilesRemoved!: EventEmitter<File[]>
+
+  /**
+   * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+   */
+  @Event() balRejectedFile!: EventEmitter<FileUploadRejectedFile>
 
   /**
    * Emitted when the input has clicked.
@@ -145,120 +163,52 @@ export class FileUpload implements FormInput<File[]> {
   @Event() balFocus!: EventEmitter<FocusEvent>
 
   /**
-   * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+   * LIFECYCLE
+   * ------------------------------------------------------
    */
-  @Event({ eventName: 'balRejectedFile' })
-  balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
-
-  @Listen('dragenter', { capture: false, passive: false })
-  dragenterHandler() {
-    if (!this.disabled && !this.readonly) {
-      this.isOver = true
-    }
-  }
-
-  @Listen('dragover', { capture: false, passive: false })
-  dragoverHandler() {
-    if (!this.disabled && !this.readonly) {
-      this.isOver = true
-    }
-  }
-
-  @Listen('dragleave', { capture: false, passive: false })
-  dragleaveHandler() {
-    if (!this.disabled && !this.readonly) {
-      this.isOver = false
-    }
-  }
-
-  @Listen('drop', { capture: false, passive: false })
-  dropHandler(event: DragEvent) {
-    if (!this.disabled && !this.readonly) {
-      this.isOver = false
-      const dataTransfer = event.dataTransfer
-      if (dataTransfer) {
-        this.handleFiles(dataTransfer.files)
-      }
-    }
-  }
-
-  handleFiles = (files: FileList): void => {
-    if (!this.disabled) {
-      const list = [...this.files]
-      const filesAdded: File[] = []
-      for (let index = 0; index < files.length; index++) {
-        const file = files.item(index)
-        if (file) {
-          const rejectReasons = []
-
-          if (this.accept && this.accept.split(' ').join('').split(',').indexOf(file.type) === -1) {
-            rejectReasons.push(FileUploadRejectionReason.BAD_EXTENSION)
-          }
-
-          if (this.maxFileSize && file.size > this.maxFileSize) {
-            rejectReasons.push(FileUploadRejectionReason.FILE_TOO_BIG)
-          }
-
-          const transactionFileSizeSum = this.files.map(f => f.size).reduce((a, b) => a + b, 0)
-          const bundleSize = file.size + transactionFileSizeSum
-          if (this.maxBundleSize && bundleSize > this.maxBundleSize) {
-            rejectReasons.push(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
-          }
-
-          if (this.maxFiles && list.length + 1 > this.maxFiles) {
-            rejectReasons.push(FileUploadRejectionReason.TOO_MANY_FILES)
-          }
-
-          const duplicatedFiles = list.filter(f => f.size === file.size && f.name === file.name && f.type === file.type)
-          if (duplicatedFiles.length > 0) {
-            rejectReasons.push(FileUploadRejectionReason.DUPLICATED_FILE)
-          }
-
-          if (rejectReasons.length > 0) {
-            this.balRejectedFileEventEmitter.emit({
-              file: file,
-              reasons: rejectReasons,
-            })
-          } else {
-            list.push(file)
-            filesAdded.push(file)
-          }
-        }
-      }
-      if (this.files.length !== list.length) {
-        this.files = [...list]
-        this.balChange.emit(this.files)
-      }
-      if (filesAdded.length > 0) {
-        this.balFilesAddedEmitter.emit(filesAdded)
-      }
-
-      this.setFileList()
-      this.nativeInput.value = ''
-    }
-  }
 
   componentWillLoad() {
     this.onValueChange()
   }
 
+  connectedCallback() {
+    this.initialValue = this.value || []
+    this.addEventListenerDragAndDrop()
+  }
+
   componentDidLoad() {
-    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.el.addEventListener(eventName, stopEventBubbling, {
-        passive: false,
-      })
-      document.body.addEventListener(eventName, stopEventBubbling, {
-        passive: false,
-      })
-    })
+    this.addEventListenerDragAndDrop()
   }
 
   disconnectedCallback() {
-    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.el.removeEventListener(eventName, stopEventBubbling, false)
-      document.body.removeEventListener(eventName, stopEventBubbling, false)
-    })
+    this.removeEventListenerDragAndDrop()
   }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  private resetHandlerTimer?: NodeJS.Timer
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(event: UIEvent) {
+    const formElement = event.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      this.files = [...this.initialValue]
+      clearTimeout(this.resetHandlerTimer)
+      this.resetHandlerTimer = setTimeout(() => {
+        if (this.nativeInput) {
+          this.nativeInput.files = toFileList(this.initialValue)
+        }
+      })
+    }
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Sets the file list to an empty list
@@ -266,6 +216,7 @@ export class FileUpload implements FormInput<File[]> {
   @Method()
   async clear(): Promise<void> {
     this.files = []
+    this.updateFileInput()
   }
 
   /**
@@ -291,93 +242,122 @@ export class FileUpload implements FormInput<File[]> {
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
+  getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
   }
 
-  private removeFile(indexToRemove: number): void {
-    if (!this.disabled && !this.readonly) {
-      const list = []
-      const removedFiles = []
-      for (let index = 0; index < this.files.length; index++) {
-        if (index !== indexToRemove) {
-          list.push(this.files[index])
-        } else {
-          removedFiles.push(this.files[index])
-        }
-      }
-      this.files = [...list]
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private addEventListenerDragAndDrop = () => {
+    if (this.labelEl) {
+      this.labelEl.addEventListener('dragenter', this.onDragenter, false)
+      this.labelEl.addEventListener('dragover', this.onDragover, false)
+      this.labelEl.addEventListener('drop', this.onDrop, false)
+    }
+  }
+
+  private removeEventListenerDragAndDrop = () => {
+    if (this.labelEl) {
+      this.labelEl.removeEventListener('dragenter', this.onDragenter, false)
+      this.labelEl.removeEventListener('dragover', this.onDragover, false)
+      this.labelEl.removeEventListener('drop', this.onDrop, false)
+    }
+  }
+
+  private handleFiles = (fileList: FileList) => {
+    const files = toFileArray(fileList)
+
+    const validatedFiles = validateFileArray(this.files, files, {
+      accept: this.accept,
+      maxFileSize: this.maxFileSize,
+      maxBundleSize: this.maxBundleSize,
+      maxFiles: this.maxFiles,
+    })
+
+    if (validatedFiles.invalidFiles.length > 0) {
+      this.balRejectedFile.emit(validatedFiles.invalidFiles[0])
+    }
+
+    if (validatedFiles.validFiles.length > 0) {
+      this.balFilesAdded.emit(validatedFiles.validFiles)
+      this.files = [...this.files, ...validatedFiles.validFiles]
       this.balChange.emit(this.files)
-      this.balFilesRemovedEmitter.emit(removedFiles)
-      this.setFileList()
+    }
+
+    this.updateFileInput()
+  }
+
+  private updateFileInput = () => {
+    if (this.nativeInput?.files) {
+      this.nativeInput.files = toFileList(this.files)
+    }
+  }
+
+  /**
+   * HANDLERS
+   * ------------------------------------------------------
+   */
+
+  private onDragenter = (event: Event) => {
+    stopEventBubbling(event)
+  }
+
+  private onDragover = (event: Event) => {
+    stopEventBubbling(event)
+  }
+
+  private onDrop = (event: DragEvent) => {
+    stopEventBubbling(event)
+    if (!this.disabled && !this.readonly && !this.loading) {
+      const dataTransfer = event.dataTransfer
+      if (dataTransfer) {
+        this.handleFiles(dataTransfer.files)
+      }
     }
   }
 
   private onInputChange = (): void => {
-    if (this.nativeInput?.files) {
-      const files = this.nativeInput.files
-      this.handleFiles(files)
+    if (!this.disabled && !this.readonly && !this.loading) {
+      if (this.nativeInput?.files) {
+        this.handleFiles(this.nativeInput.files)
+      }
     }
   }
 
-  private setFileList = () => {
-    const fileList = new DataTransfer()
-    this.files.forEach(el => fileList.items.add(el))
-    this.nativeInput.files = fileList.files
+  private onRemoveFile = (event: Event, index: number): void => {
+    stopEventBubbling(event)
+
+    if (index >= 0 && index < this.files.length) {
+      const files = this.files
+      const removedFiles = files.splice(index, 1)
+      this.balFilesRemoved.emit(removedFiles)
+
+      this.files = [...files]
+      this.balChange.emit(this.files)
+      this.updateFileInput()
+    }
   }
+
+  private onHostClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
   private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
 
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private onInputClick = (event: MouseEvent) => this.balClick.emit(event)
 
-  private onInputClick = (event: MouseEvent) => {
-    this.balClick.emit(event)
-  }
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
-    const FileList = () => (
-      <bal-card flat class="bal-file-upload__card" style={{ display: this.files.length ? 'block' : 'none' }}>
-        <bal-list
-          class="bal-file-upload__list"
-          disabled={this.disabled || this.loading || this.readonly}
-          border
-          size="large"
-        >
-          {this.files.map((file, index) => (
-            <bal-list-item disabled={this.disabled || this.loading || this.readonly}>
-              <bal-list-item-icon>
-                <bal-icon name="document"></bal-icon>
-              </bal-list-item-icon>
-              <bal-list-item-content>
-                <bal-list-item-title>{file.name}</bal-list-item-title>
-                <bal-list-item-subtitle>
-                  {this.subTitle ? this.subTitle(file) : fileSize(file.size)}
-                </bal-list-item-subtitle>
-              </bal-list-item-content>
-              <bal-list-item-icon
-                right
-                class={{
-                  'file-remove': true,
-                  'is-clickable': !this.disabled && !this.readonly,
-                }}
-                onClick={() => this.removeFile(index)}
-              >
-                <bal-icon
-                  name="trash"
-                  color={this.disabled || this.loading || this.readonly ? 'grey' : 'danger'}
-                ></bal-icon>
-              </bal-list-item-icon>
-            </bal-list-item>
-          ))}
-        </bal-list>
-      </bal-card>
-    )
-
     return (
       <Host
-        onClick={this.handleClick}
+        onClick={this.onHostClick}
         class={{
           'bal-file-upload': true,
         }}
@@ -389,13 +369,21 @@ export class FileUpload implements FormInput<File[]> {
             'is-danger': this.invalid,
           }}
         >
-          <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
+          <label
+            htmlFor={this.fileUploadId}
+            ref={el => (this.labelEl = el)}
+            class={{
+              'file-label': true,
+              'is-disabled': this.disabled || this.loading || this.readonly,
+            }}
+          >
             <input
               class="file-input"
               type="file"
+              id={this.fileUploadId}
               name={this.name}
               multiple={this.multiple}
-              disabled={this.disabled || this.loading}
+              disabled={this.disabled || this.loading || this.readonly}
               readonly={this.readonly}
               required={this.required}
               accept={this.accept}
@@ -403,7 +391,7 @@ export class FileUpload implements FormInput<File[]> {
               onChange={this.onInputChange}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
-              ref={el => (this.nativeInput = el as HTMLInputElement)}
+              ref={el => (this.nativeInput = el)}
             />
             {this.loading ? (
               <span class="file-cta">
@@ -425,10 +413,19 @@ export class FileUpload implements FormInput<File[]> {
             )}
           </label>
         </div>
-        {this.hasFileList ? <FileList /> : ''}
+        {this.hasFileList && this.files.length > 0 ? (
+          <FileListComponent
+            files={this.files}
+            disabled={this.disabled || this.readonly || this.loading}
+            subTitle={this.subTitle}
+            onRemoveFile={this.onRemoveFile}
+          />
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
 }
 
-let UploadIds = 0
+let FileUploadIds = 0

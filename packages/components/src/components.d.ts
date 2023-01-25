@@ -830,7 +830,7 @@ export namespace Components {
         /**
           * Accepted MIME-Types like `image/png,image/jpeg`.
          */
-        "accept": string;
+        "accept"?: string;
         /**
           * Sets the file list to an empty list
          */
@@ -842,7 +842,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
           * If `true` below the drop-down area it generates a file list.
          */
