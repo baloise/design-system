@@ -1,5 +1,33 @@
 # @baloise/design-system-components
 
+## 12.5.0
+
+### Minor Changes
+
+- [#1050](https://github.com/baloise-incubator/design-system/pull/1050) [`355fc4f3c`](https://github.com/baloise-incubator/design-system/commit/355fc4f3cd13f4708b4d1a0f219658c3214df253) Thanks [@hirsch88](https://github.com/hirsch88)! - add container design tokens
+
+- [#1096](https://github.com/baloise-incubator/design-system/pull/1096) [`b105c394d`](https://github.com/baloise-incubator/design-system/commit/b105c394d300f3f166c1d60effef3f737b34338b) Thanks [@hirsch88](https://github.com/hirsch88)! - activate Germany for the bal-footer
+
+### Patch Changes
+
+- [#1095](https://github.com/baloise-incubator/design-system/pull/1095) [`1c76e1de0`](https://github.com/baloise-incubator/design-system/commit/1c76e1de09388d16ee50fee89e4611b36096860c) Thanks [@hirsch88](https://github.com/hirsch88)! - enable form data submitting for bal-file-upload
+
+- [#1066](https://github.com/baloise-incubator/design-system/pull/1066) [`5fdb9402f`](https://github.com/baloise-incubator/design-system/commit/5fdb9402fb1fc7105077144745311916c604892a) Thanks [@hirsch88](https://github.com/hirsch88)! - fix esm paths in package.json
+
+- [#1086](https://github.com/baloise-incubator/design-system/pull/1086) [`7bc33b76f`](https://github.com/baloise-incubator/design-system/commit/7bc33b76f9c8cf9a1fc028a638679e8eb77ac3d4) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - adjust value and placeholder color contrast for disabled fields
+
+- [#1069](https://github.com/baloise-incubator/design-system/pull/1069) [`30409ba0d`](https://github.com/baloise-incubator/design-system/commit/30409ba0d883f0e129480287bf741554cd61391a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - close modal on click outside of it
+
+- [#1071](https://github.com/baloise-incubator/design-system/pull/1071) [`bb9c2c08b`](https://github.com/baloise-incubator/design-system/commit/bb9c2c08b799eb79a7a90ff0bfa3da448f5deb0c) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - align box to the top when there is a long text in the checkbox
+
+- [#1092](https://github.com/baloise-incubator/design-system/pull/1092) [`7f6f171bc`](https://github.com/baloise-incubator/design-system/commit/7f6f171bc558ea1fdbb9abb90ecb2f8e6da28692) Thanks [@hirsch88](https://github.com/hirsch88)! - bal-select only validate input when leaving the component
+
+- Updated dependencies [[`355fc4f3c`](https://github.com/baloise-incubator/design-system/commit/355fc4f3cd13f4708b4d1a0f219658c3214df253), [`9f47b318c`](https://github.com/baloise-incubator/design-system/commit/9f47b318ca24af8de8dfc8c9ae1e612c231a1625), [`7bc33b76f`](https://github.com/baloise-incubator/design-system/commit/7bc33b76f9c8cf9a1fc028a638679e8eb77ac3d4)]:
+  - @baloise/design-system-tokens@12.5.0
+  - @baloise/design-system-css@12.5.0
+  - @baloise/design-system-fonts@12.5.0
+  - @baloise/design-system-icons@12.5.0
+
 ## 12.4.1
 
 ### Patch Changes
