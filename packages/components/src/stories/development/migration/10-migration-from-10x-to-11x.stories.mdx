@@ -14,6 +14,24 @@ import { Meta } from '@storybook/addon-docs'
 The following workflow walks you through the migration steps.
 Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
 
+## bal-radio checked
+
+The **checked** property of the `bal-radio` has been removed. Please use the `bal-radio-group` an its property **value**.
+
+```html
+<!-- old -->
+<bal-radio-group>
+  <bal-radio name="radio-example" value="1" checked>Label 1</bal-radio>
+  <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+</bal-radio-group>
+
+<!-- new -->
+<bal-radio-group value="1">
+  <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+  <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+</bal-radio-group>
+```
+
 ## bal-input pattern
 
 To disable certain key presses we added a new prop called `allowedKeyPress`.
