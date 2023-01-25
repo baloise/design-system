@@ -36,6 +36,8 @@ jobs:
 
       - name: Build
         run: npm run build:force
+        env:
+          BAL_DS_RELEASE: true
 
       - name: Create .npmrc
         run: |
