@@ -9,12 +9,13 @@ const path = require('path')
 const replace = require('replace-in-file');
 const log = require('./utils/log.js')
 
-const DIST_PATH = path.join(process.cwd(), 'dist')
+const PACKAGE_PATH = path.join(__dirname, '..', 'packages/components')
+const DIST_PATH = path.join(PACKAGE_PATH, 'dist')
 
 async function main(){
   log.title('version')
 
-  const { version } = require(path.join(process.cwd(), 'package.json'))
+  const { version } = require(path.join(PACKAGE_PATH, 'package.json'))
 
   setVersion(DIST_PATH + '/**/*.js', version)
 }
