@@ -68,9 +68,9 @@ export class Footer implements BalConfigObserver {
   }
 
   updateFooterLinks() {
-    if (!this.hideLinks && this.region === 'CH') {
-      // The following footer links only apply to swiss applications
-      loadFooterLinks(new Language(this.language)).then(links => (this.links = links))
+    if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
+      // The following footer links only apply to swiss and german applications
+      loadFooterLinks(new Language(this.language), this.region).then(links => (this.links = links))
     }
   }
 
