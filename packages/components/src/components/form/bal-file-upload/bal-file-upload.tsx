@@ -253,35 +253,17 @@ export class FileUpload implements FormInput<File[]> {
 
   private addEventListenerDragAndDrop = () => {
     if (this.labelEl) {
-      this.labelEl.addEventListener('dragenter', this.dragenter, false)
-      this.labelEl.addEventListener('dragover', this.dragover, false)
-      this.labelEl.addEventListener('drop', this.drop, false)
+      this.labelEl.addEventListener('dragenter', this.onDragenter, false)
+      this.labelEl.addEventListener('dragover', this.onDragover, false)
+      this.labelEl.addEventListener('drop', this.onDrop, false)
     }
   }
 
   private removeEventListenerDragAndDrop = () => {
     if (this.labelEl) {
-      this.labelEl.removeEventListener('dragenter', this.dragenter, false)
-      this.labelEl.removeEventListener('dragover', this.dragover, false)
-      this.labelEl.removeEventListener('drop', this.drop, false)
-    }
-  }
-
-  private dragenter = (event: Event) => {
-    stopEventBubbling(event)
-  }
-
-  private dragover = (event: Event) => {
-    stopEventBubbling(event)
-  }
-
-  private drop = (event: DragEvent) => {
-    stopEventBubbling(event)
-    if (!this.disabled && !this.readonly && !this.loading) {
-      const dataTransfer = event.dataTransfer
-      if (dataTransfer) {
-        this.handleFiles(dataTransfer.files)
-      }
+      this.labelEl.removeEventListener('dragenter', this.onDragenter, false)
+      this.labelEl.removeEventListener('dragover', this.onDragover, false)
+      this.labelEl.removeEventListener('drop', this.onDrop, false)
     }
   }
 
@@ -318,6 +300,24 @@ export class FileUpload implements FormInput<File[]> {
    * HANDLERS
    * ------------------------------------------------------
    */
+
+  private onDragenter = (event: Event) => {
+    stopEventBubbling(event)
+  }
+
+  private onDragover = (event: Event) => {
+    stopEventBubbling(event)
+  }
+
+  private onDrop = (event: DragEvent) => {
+    stopEventBubbling(event)
+    if (!this.disabled && !this.readonly && !this.loading) {
+      const dataTransfer = event.dataTransfer
+      if (dataTransfer) {
+        this.handleFiles(dataTransfer.files)
+      }
+    }
+  }
 
   private onInputChange = (): void => {
     if (!this.disabled && !this.readonly && !this.loading) {
