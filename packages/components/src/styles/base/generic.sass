@@ -11,7 +11,7 @@ $body-overflow-y: auto !default
 
 $body-color: $text !default
 $body-font-size: 1em !default
-$body-weight: $weight-normal !default
+$body-weight: var(--bal-weight-regular) !default
 $body-line-height: 1.5 !default
 
 $code-family: $family-code !default
@@ -26,7 +26,7 @@ $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
 $strong-color: $text-strong !default
-$strong-weight: $weight-bold !default
+$strong-weight: var(--bal-weight-bold) !default
 
 $pre-font-size: 0.875em !default
 $pre-padding: 1.25rem 1.5rem !default
@@ -51,7 +51,7 @@ code.code
   margin: 0 2px
   padding: 3px 5px
   border-radius: 3px
-  border: 1px solid $blue-2
+  border: 1px solid var(--bal-color-primary-5)
   font-size: 13px
   color: rgba(51, 51, 51, 0.9)
   background-color: $grey-2
