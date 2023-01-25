@@ -162,7 +162,11 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
       .replace(` :class="selectedB ? 'has-background-blue-light':''"`, '')
       .replace(' :expanded="args.expanded"', (args as any).expanded === true ? ' expanded' : '')
       .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
+      .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
+      .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
       .replace(' :inverted="args.inverted"', (args as any).inverted === true ? ' inverted' : '')
+      .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
+      .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(
         ` :color="args.invalid ? 'danger' : 'hint'"`,
