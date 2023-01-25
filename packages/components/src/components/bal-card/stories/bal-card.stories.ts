@@ -246,7 +246,7 @@ export const SummaryCard = args => ({
   },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <bal-card-content class="is-bold has-text-blue">Insured vehicle</bal-card-content>
+  <bal-card-content class="has-text-weight-bold has-text-blue">Insured vehicle</bal-card-content>
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
   <bal-card-content>

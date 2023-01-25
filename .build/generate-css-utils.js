@@ -155,8 +155,8 @@ async function generateTypography() {
 
   function createCssClasses(key, fontSize, lineHeight, space, legacy, indent = '') {
     return `${indent}.is-size-${key},
-  ${indent}.is-size-${legacy}
-    ${indent}+typography(${fontSize}, ${lineHeight}, ${space})`
+${indent}.is-size-${legacy}
+  ${indent}+typography(${fontSize}, ${lineHeight}, ${space})`
   }
 
   for (const k in sizes) {

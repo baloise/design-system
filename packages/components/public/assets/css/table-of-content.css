@@ -2,7 +2,7 @@ nav.sbdocs-toc {
   display: none;
   position: fixed;
   top: 40px;
-  z-index: 9999;
+  z-index: 1;
   transition: all 0.3s ease-in;
   padding: 0 1rem 1rem 3rem;
   width: 340px;
@@ -102,6 +102,7 @@ button.sbdocs-top {
   font-size: 1rem;
   font-weight: 700;
   color: #000d6e;
+  z-index: 1;
 }
 
 button.sbdocs-top:hover {

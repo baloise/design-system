@@ -67,11 +67,11 @@ export class Text {
             ...block.element('text').class(),
             ...block.element('text').modifier(`has-text-${color}`).class(),
             'is-small': this.size === 'small',
-            'is-lead': this.size === 'lead',
-            'is-block': this.size === 'block',
-            'is-bold': this.bold,
+            'is-size-large': this.size === 'lead',
+            'is-size-medium': this.size === 'block',
+            'has-text-weight-bold': this.bold,
             'is-family-title': this.heading,
-            'has-blur-shadow': this.shadow,
+            'has-shadow-text': this.shadow,
             'data-test-text': true,
           }}
         >
