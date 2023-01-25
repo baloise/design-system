@@ -92,7 +92,6 @@ export class DocStackblitz implements ComponentInterface {
               <div class="is-flex fg-xx-small">
                 <div innerHTML={this.logo ? logoStackblitz : logo} style={{ width: '24px', height: '24px' }}></div>
                 <span>{this.label ? this.label : `${labels[this.framework] || 'Angular'} StackBlitz`}</span>
-                {this.framework}
               </div>
             </bal-button>
           </bal-button-group>
