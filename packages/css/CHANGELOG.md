@@ -1,5 +1,21 @@
 # @baloise/design-system-css
 
+## 12.5.0
+
+### Minor Changes
+
+- [#1050](https://github.com/baloise-incubator/design-system/pull/1050) [`355fc4f3c`](https://github.com/baloise-incubator/design-system/commit/355fc4f3cd13f4708b4d1a0f219658c3214df253) Thanks [@hirsch88](https://github.com/hirsch88)! - add container design tokens
+
+### Patch Changes
+
+- [#1081](https://github.com/baloise-incubator/design-system/pull/1081) [`9f47b318c`](https://github.com/baloise-incubator/design-system/commit/9f47b318ca24af8de8dfc8c9ae1e612c231a1625) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add css styles for success, danger and warning state to the select and file upload
+
+- [#1086](https://github.com/baloise-incubator/design-system/pull/1086) [`7bc33b76f`](https://github.com/baloise-incubator/design-system/commit/7bc33b76f9c8cf9a1fc028a638679e8eb77ac3d4) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - adjust value and placeholder color contrast for disabled fields
+
+- Updated dependencies [[`355fc4f3c`](https://github.com/baloise-incubator/design-system/commit/355fc4f3cd13f4708b4d1a0f219658c3214df253)]:
+  - @baloise/design-system-tokens@12.5.0
+  - @baloise/design-system-fonts@12.5.0
+
 ## 12.4.1
 
 ### Patch Changes
