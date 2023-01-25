@@ -30,4 +30,7 @@ export const docComponents = [
   'bal-doc-tokens-border-colors.js',
   'bal-doc-tokens-font-colors.js',
   'bal-doc-tokens-spacing-sizes.js',
+  'bal-doc-tokens-border-colors',
+  'bal-doc-tokens-font-colors',
+  'bal-doc-tokens-spacing-sizes',
 ]
