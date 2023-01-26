@@ -61,7 +61,7 @@ export class DocTokensFontColors implements ComponentInterface {
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
-                      var(--bal-text-color-{c})
+                      var(--bal-color-text-{c})
                     </p>
                     <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
                       var(--bal-color-{values[i]})
