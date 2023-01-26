@@ -145,10 +145,10 @@
           hyphens: auto
           gap: 4px
         &:hover
-          color: var(--bal-text-color-light-blue)
+          color: var(--bal-color-text-light-blue)
           +fillSvg(var(--bal-color-light-blue-5))
         &:active
-          color: var(--bal-text-color-primary-dark)
+          color: var(--bal-color-text-primary-dark)
           +fillSvg(var(--bal-color-primary-6))
         +modifier(icon-horizontal)
           flex-direction: row
@@ -164,28 +164,28 @@
             color: var(--bal-color-light-blue-2)
             +fillSvg(var(--bal-color-light-blue-2))
           &:active
-            color: var(--bal-text-color-info)
+            color: var(--bal-color-text-info)
             +fillSvg(var(--bal-color-info))
           &:focus-visible
             &:not(:active)
               @extend %focus-inverted-inset-shadow
         +modifier(context-navbar)
           +touch
-            color: var(--bal-text-color-primary)
+            color: var(--bal-color-text-primary)
             +fillSvg(var(--bal-color-primary))
             &:hover
-              color: var(--bal-text-color-light-blue)
+              color: var(--bal-color-text-light-blue)
               +fillSvg(var(--bal-color-light-blue-5))
             &:active
-              color: var(--bal-text-color-primary-dark)
+              color: var(--bal-color-text-primary-dark)
               +fillSvg(var(--bal-color-primary-6))
         +modifier(disabled)
-          color: var(--bal-text-color-grey)
+          color: var(--bal-color-text-grey)
           cursor: default
           .bal-icon
             +fillSvg(var(--bal-color-text-grey))
           &:hover, &:focus, &:active
-            color: var(--bal-text-color-grey)
+            color: var(--bal-color-text-grey)
             .bal-icon
               +fillSvg(var(--bal-color-text-grey))
         +modifier(fullwidth)
