@@ -130,7 +130,7 @@ export class Snackbar {
       <Host id={this.snackbarId} class="bal-snackbar">
         <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType}`}>
           <div class="bal-snackbar__header">
-            <span class="icon-text is-small">
+            <span class="icon-text is-size-small">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
                 <bal-icon name={this.icon} color={'primary'}></bal-icon>
               </span>

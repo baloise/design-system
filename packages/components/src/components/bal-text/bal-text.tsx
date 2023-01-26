@@ -66,7 +66,7 @@ export class Text {
           class={{
             ...block.element('text').class(),
             ...block.element('text').modifier(`has-text-${color}`).class(),
-            'is-small': this.size === 'small',
+            'is-size-small': this.size === 'small',
             'is-size-large': this.size === 'lead',
             'is-size-medium': this.size === 'block',
             'has-text-weight-bold': this.bold,
