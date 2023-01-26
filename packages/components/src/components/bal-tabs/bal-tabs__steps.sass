@@ -81,35 +81,35 @@
             border-color: var(--bal-color-danger)
             background-color: var(--bal-color-danger)
             background: var(--bal-color-danger)
-            color: var(--bal-color-white)
+            color: var(--bal-text-color-white)
           +element(icon)
             margin-top: -2px
           +element(label)
             margin: 0
             font-weight: var(--bal-weight-bold)
             font-family: var(--bal-font-family-title)
-            color: var(--bal-color-primary)
+            color: var(--bal-text-color-primary)
             font-size: var(--bal-size-small)
             +modifiers(active, passed, done)
               color: var(--bal-color-primary-inverted)
             +modifier(disabled)
-              color: var(--bal-color-text-grey)
+              color: var(--bal-text-color-grey)
             +modifier(failed)
-              color: var(--bal-color-white)
+              color: var(--bal-text-color-white)
               +tablet
                 font-size: var(--bal-size-x-large) // check visual test
 
         +element(label)
           display: none
-          color: var(--bal-color-text-primary-light)
+          color: var(--bal-text-color-primary-light)
           +modifier(done)
-            color: var(--bal-color-text-primary)
+            color: var(--bal-text-color-primary)
           +modifier(active)
-            color: var(--bal-color-text-primary)
+            color: var(--bal-text-color-primary)
           +modifier(failed)
-            color: var(--bal-color-text-danger)
+            color: var(--bal-text-color-danger)
           +modifier(disabled)
-            color: var(--bal-color-text-grey)
+            color: var(--bal-text-color-grey)
           +tablet
             display: block
             font-family: var(--bal-font-family-title)
