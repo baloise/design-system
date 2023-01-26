@@ -1,5 +1,12 @@
 # @baloise/design-system-components-react
 
+## 12.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`1c76e1de0`](https://github.com/baloise-incubator/design-system/commit/1c76e1de09388d16ee50fee89e4611b36096860c), [`355fc4f3c`](https://github.com/baloise-incubator/design-system/commit/355fc4f3cd13f4708b4d1a0f219658c3214df253), [`5fdb9402f`](https://github.com/baloise-incubator/design-system/commit/5fdb9402fb1fc7105077144745311916c604892a), [`7bc33b76f`](https://github.com/baloise-incubator/design-system/commit/7bc33b76f9c8cf9a1fc028a638679e8eb77ac3d4), [`30409ba0d`](https://github.com/baloise-incubator/design-system/commit/30409ba0d883f0e129480287bf741554cd61391a), [`bb9c2c08b`](https://github.com/baloise-incubator/design-system/commit/bb9c2c08b799eb79a7a90ff0bfa3da448f5deb0c), [`b105c394d`](https://github.com/baloise-incubator/design-system/commit/b105c394d300f3f166c1d60effef3f737b34338b), [`7f6f171bc`](https://github.com/baloise-incubator/design-system/commit/7f6f171bc558ea1fdbb9abb90ecb2f8e6da28692)]:
+  - @baloise/design-system-components@12.5.0
+
 ## 12.4.1
 
 ### Patch Changes

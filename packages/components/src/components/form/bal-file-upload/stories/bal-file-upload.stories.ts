@@ -1,6 +1,12 @@
 import docs from './bal-file-upload.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalFileUpload } from '../../../../../.storybook/vue/generated/components'
+import {
+  BalFileUpload,
+  BalField,
+  BalFieldLabel,
+  BalFieldControl,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/generated/components'
 import { balToastController } from '../../../notice/bal-toast/bal-toast.controller'
 
 const component = BalComponentStory({
@@ -12,7 +18,7 @@ const component = BalComponentStory({
 export default component.story
 
 const Template = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
   setup: () => {
     const onBalRejectedFile = (event: any) => {
       if (event && event.detail) {

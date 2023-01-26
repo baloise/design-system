@@ -4,6 +4,14 @@ import fg from 'fast-glob'
 import { resolve } from 'path'
 import { VueGenerator } from './stencil.bindings.vue'
 
+const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
+
+if (IS_BAL_DS_RELEASE) {
+  console.log('')
+  console.log('Build is set to release')
+  console.log('')
+}
+
 export const StencilBaseConfig: Config = {
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
@@ -12,7 +20,7 @@ export const StencilBaseConfig: Config = {
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
-  tsconfig: 'tsconfig.json',
+  tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
   invisiblePrehydration: true,
   autoprefixCss: true,
   plugins: [
@@ -24,6 +32,10 @@ export const StencilBaseConfig: Config = {
   outputTargets: [
     {
       type: 'dist-custom-elements',
+    },
+    {
+      type: 'docs-vscode',
+      file: 'vscode-data.json',
     },
     {
       type: 'docs-json',

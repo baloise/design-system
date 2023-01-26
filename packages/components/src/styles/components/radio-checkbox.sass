@@ -1,5 +1,10 @@
 @import './radio-checkbox.mixins'
 
+bal-radio
+  .bal-radio-checkbox__label
+    &::before,
+    &::after
+      margin-top: 0px !important
 //
 //
 // radio & checkbox group
@@ -59,7 +64,8 @@
   //
   // flat heigt without padding
   +modifier(flat)
-    min-height: 1.5rem
+    &:not(.bal-radio-checkbox--select-button)
+      min-height: 1.5rem
   //
   // hide native input
   +element(input)
@@ -104,8 +110,17 @@
         padding-left: 0
         display: none
       +modifier(flat)
-        padding-top: 0
-        padding-bottom: 0
+          padding-top: 0
+          padding-bottom: 0
+    +modifier(flat)
+      &:not(.bal-radio-checkbox--select-button)
+        &::before,
+        &::after
+          top: 0px !important
+    +modifier(hidden)
+      &::before,
+      &::after
+        top: 0px !important
     //
     // symbol
     &::before,
@@ -113,7 +128,7 @@
       display: inline-block
       position: absolute
       left: 0
-      margin-top: 0
+      top: 4px
       height: 1.5rem
       width: 1.5rem
       background-color: transparent
@@ -154,7 +169,7 @@
         width: 7px
         height: 13px
         left: 9px
-        margin-top: -3px
+        margin-top: 4px
         transform: rotate(45deg)
   //
   // Symbol colors main, inverted and background
@@ -208,6 +223,21 @@
     &:active
       border-color: var(--bal-color-blue-6)
       background: var(--bal-color-grey-2)
+    label
+      &::before
+        top: unset
+      &::after
+        top: unset
+        margin-top: -3px
+    .bal-radio-checkbox__label--flat
+      &::before
+        top: unset !important
+      &::after
+        margin-top: -3px
+        top: unset !important
+      .bal-radio-checkbox__label__text--flat
+        padding-top: 4px
+        padding-bottom: 4px
   &--select-button#{&}--checked
     background: var(--bal-color-primary)
     .bal-radio-checkbox__label
@@ -292,7 +322,7 @@
       border-radius: 50%
       display: block
       position: absolute
-      top: 0.25rem
+      top: 0.25rem !important
       left: 0.25rem
       width: 1rem
       height: 1rem

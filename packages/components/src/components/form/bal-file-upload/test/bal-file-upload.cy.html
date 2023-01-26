@@ -8,19 +8,36 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
+
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-xx-large">Basic</h2>
       <section>
-        <p id="bal-file-upload-messages"></p>
-        <bal-file-upload
-          id="bal-file-upload-example"
-          accept="image/png,image/jpeg"
-          max-files="3"
-          max-file-size="1000000"
-          max-bundle-size="1000000"
-        ></bal-file-upload>
-        <bal-button class="mt-x-small" id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
+        <form method="post" action="http://localhost:3000/upload" enctype="multipart/form-data" target="_blank">
+          <bal-form-grid>
+            <bal-form-col>
+              <bal-field required>
+                <bal-field-label>File upload</bal-field-label>
+                <bal-field-control>
+                  <bal-file-upload
+                    id="bal-file-upload-example"
+                    name="my-files"
+                    accept="image/png"
+                    max-files="3"
+                    max-file-size="10000000"
+                    max-bundle-size="100000000"
+                  ></bal-file-upload>
+                </bal-field-control>
+                <bal-field-message id="bal-file-upload-messages"></bal-field-message>
+              </bal-field>
+            </bal-form-col>
+          </bal-form-grid>
+          <bal-button-group class="mt-normal">
+            <bal-button element-type="submit">Submit</bal-button>
+            <bal-button data-testid="button-reset" element-type="reset" color="info">Reset</bal-button>
+            <bal-button id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
+          </bal-button-group>
+        </form>
       </section>
       <script>
         var messages = []

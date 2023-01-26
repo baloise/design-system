@@ -3,7 +3,8 @@
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "h",
-    "outDir": ".tmp"
+    "outDir": ".tmp",
+    "types": ["vitest/globals"]
   },
   "include": ["src"],
   "exclude": ["dist", ".build", "node_modules", "generated", "test", "public", "cypress", "**/stories"]
