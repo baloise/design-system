@@ -44,12 +44,12 @@
         display: none
       +tablet
         display: inline-block
-        font-size: 1rem
+        font-size: var(--bal-size-medium) // check visual test
         font-family: var(--bal-font-family-title)
-        font-weight: 800
+        font-weight: var(--bal-weight-bold)
         color: var(--bal-color-primary-inverted)
       +desktop
-        font-size: 1.25rem
+        font-size: var(--bal-size-medium) // check visual test
 
     +modifiers(context-app, context-simple)
       color: var(--bal-color-primary-inverted)
@@ -133,7 +133,7 @@
   // Styling for light (white) background
   +modifiers(is-light)
     background-color: var(--bal-color-white)
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    box-shadow: var(--bal-shadow-normal)
     .bal-navbar__brand__title
       color: var(--bal-color-primary)
     bal-logo
