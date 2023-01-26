@@ -7,7 +7,6 @@ import { BEM } from '../../utils/bem'
   styleUrls: {
     css: 'bal-heading.sass',
   },
-  shadow: true,
 })
 export class Heading {
   /**

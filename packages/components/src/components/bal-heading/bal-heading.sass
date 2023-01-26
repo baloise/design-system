@@ -1,13 +1,9 @@
 @import '@baloise/design-system-css/src/css/mixins'
 
-// Import Heading Sizes from the Desing Tokens
-// --------------------------------------------------
-@import '@baloise/design-system-css/src/generated/typography.helpers.sass'
-
 // Heading
 // --------------------------------------------------
 
-:host
+.bal-heading
   display: block
   position: static
   margin: 0
@@ -15,26 +11,26 @@
 // Heading Sizes
 // --------------------------------------------------
 
-:host(.bal-heading:not(:last-child))
+.bal-heading:not(:last-child)
   margin-bottom: var(--bal-space-x-small)
 
-:host(.bal-heading.bal-heading--level-display:not(:last-child))
+.bal-heading.bal-heading--level-display:not(:last-child)
   margin-bottom: var(--bal-space-normal)
 
-:host(.bal-heading--space-all),
-:host(.bal-heading--space-top)
+.bal-heading--space-all,
+.bal-heading--space-top
   margin-top: var(--bal-space-x-small)
 
-:host(.bal-heading--space-all),
-:host(.bal-heading--space-bottom)
+.bal-heading--space-all,
+.bal-heading--space-bottom
   margin-bottom: var(--bal-space-x-small)
 
-:host(.bal-heading--level-display.bal-heading--space-all),
-:host(.bal-heading--level-display.bal-heading--space-top)
+.bal-heading--level-display.bal-heading--space-all,
+.bal-heading--level-display.bal-heading--space-top
   margin-top: var(--bal-space-normal)
 
-:host(.bal-heading--level-display.bal-heading--space-all),
-:host(.bal-heading--level-display.bal-heading--space-bottom)
+.bal-heading--level-display.bal-heading--space-all,
+.bal-heading--level-display.bal-heading--space-bottom
   margin-bottom: var(--bal-space-normal)
 
 // Native Heading Element
