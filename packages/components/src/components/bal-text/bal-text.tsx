@@ -71,7 +71,7 @@ export class Text {
             'is-size-medium': this.size === 'block',
             'has-text-weight-bold': this.bold,
             'is-family-title': this.heading,
-            'has-shadow-text': this.shadow,
+            'has-text-shadow': this.shadow,
             'data-test-text': true,
           }}
         >
