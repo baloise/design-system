@@ -31,7 +31,7 @@ export class StageBackLink implements ComponentInterface {
           class={{
             'is-link': true,
             'is-inverted': this.inverted,
-            'has-shadow-text': this.shadow,
+            'has-text-shadow': this.shadow,
           }}
           href={this.href}
         >
