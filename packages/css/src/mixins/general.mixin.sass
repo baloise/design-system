@@ -2,12 +2,6 @@
 @use "sass:string"
 @use "sass:math"
 
-@keyframes spinAround
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(359deg)
-
 @function bulmaRgba($color, $alpha)
   @if type-of($color) != 'color'
     @return $color
@@ -58,18 +52,6 @@
 =ltr-property($property, $spacing, $right: true)
   $normal: if($right, "right", "left")
   #{$property}-#{$normal}: $spacing
-
-=loader
-  animation: spinAround 500ms infinite linear
-  border: 2px solid var(--bal-color-primary)
-  border-radius: var(--bal-radius-rounded)
-  border-right-color: transparent
-  border-top-color: transparent
-  content: ""
-  display: block
-  height: 1.125em
-  position: relative
-  width: 1.125em
 
 =unselectable
   -webkit-touch-callout: none

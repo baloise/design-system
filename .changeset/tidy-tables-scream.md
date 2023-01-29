@@ -24,14 +24,15 @@ Replace the import of the `global` SASS file with the CSS-Package.
 To be more flexible the new CSS exports can be used directly like that:
 
 ```scss
-// Resets CSS for all browsers
+// Resets CSS for all browser
 @import "./normalize";
-
-// Core CSS, always required
-@import "./core";
+@import "./structure";
 
 // Custom font faces
 @import "./font";
+
+// Core CSS, always required
+@import "./core";
 
 // Deprecated styles will be removed with the next breaking version (optional)
 @import "./legacy";

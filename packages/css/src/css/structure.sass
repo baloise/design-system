@@ -1,15 +1,16 @@
 @import '../mixins/_all'
+@import '../structure/_all'
 
 html
   background-color: var(--bal-color-white)
   font-size: 16px
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing: antialiased
   min-width: 300px
   overflow-x: hidden
   overflow-y: scroll
   text-rendering: optimizeLegibility
   text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
   -webkit-tap-highlight-color: transparent
   -webkit-overflow-scrolling: auto
 
@@ -43,32 +44,14 @@ body
   line-height: var(--bal-line-height-normal)
   -webkit-overflow-scrolling: auto
 
-// Inline
-
 a
-  color: var(--bal-color-primary)
-  cursor: pointer
-  text-decoration: none
-  strong
-    color: currentColor
-  &:hover
-    color: var(--bal-color-light-blue-5)
-  &:active
-    color: var(--bal-color-primary-6)
+  @extend %structure-link
+
+p
+  @extend %structure-paragraph
 
 hr
-  background-color: var(--bal-color-blue-2)
-  border: none
-  display: block
-  height: var(--bal-border-width-normal)
-  margin-top: var(--bal-space-xx-large)
-  margin-bottom: var(--bal-space-xx-large)
-  +tablet
-    margin-top: var(--bal-space-tablet-xx-large)
-    margin-bottom: var(--bal-space-tablet-xx-large)
-  +desktop
-    margin-top: var(--bal-space-desktop-xx-large)
-    margin-bottom: var(--bal-space-desktop-xx-large)
+  @extend %structure-divider
 
 img
   height: auto
@@ -88,8 +71,6 @@ span
 strong
   color: var(--bal-color-primary)
   font-weight: var(--bal-weight-bold)
-
-// Block
 
 fieldset
   border: none

@@ -4,45 +4,34 @@
   word-break: break-word
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  color: var(--bal-color-primary)
+  font-family: var(--bal-font-family-title)
+  font-size: var(--bal-size-xxx-large)
+  line-height: var(--bal-line-height-xxx-large)
+  +tablet
+    font-size: var(--bal-size-tablet-xxx-large)
+    line-height: var(--bal-line-height-tablet-xxx-large)
+  +desktop
+    font-size: var(--bal-size-desktop-xxx-large)
+    line-height: var(--bal-line-height-desktop-xxx-large)
   em,
   span
     font-weight: inherit
+  strong
+    color: var(--bal-color-primary)
+    font-weight: var(--bal-weight-bold)
+  &:not(:last-child)
+    margin-bottom: var(--bal-space-x-small)
+    +tablet
+      margin-bottom: var(--bal-space-tablet-x-small)
+    +desktop
+    margin-bottom: var(--bal-space-desktop-x-small)
 
 .title
-  color: var(--bal-color-primary)
-  font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
-  strong
-    color: var(--bal-color-primary)
-    font-weight: var(--bal-weight-bold)
 
 .subtitle
-  color: var(--bal-color-primary)
-  font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-light)
-  strong
-    color: var(--bal-color-primary)
-    font-weight: var(--bal-weight-bold)
-
-//
-// PARAGRAGH & LINKS
-// -------------------------------------------------
-p,
-a
-  font-family: var(--bal-font-family-text)
-  hyphens: auto
-  line-height: 1.5rem
-  margin: 0
-  word-break: break-word
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-
-p:not(:last-child)
-  margin-bottom: var(--bal-space-normal)
-  +tablet
-    margin-bottom: var(--bal-space-tablet-normal)
-  +desktop
-    margin-bottom: var(--bal-space-desktop-normal)
 
 .has-text-weight-regular
   font-weight: var(--bal-weight-regular) !important

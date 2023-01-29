@@ -1,3 +1,9 @@
+@keyframes spinAround
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(359deg)
+
 .label
   color: var(--bal-color-blue)
   display: block
@@ -154,7 +160,15 @@
   text-align: inherit
   &.is-loading
     &::after
-      @extend %loader
+      animation: spinAround 500ms infinite linear
+      border: 2px solid var(--bal-color-primary)
+      border-radius: var(--bal-radius-rounded)
+      border-right-color: transparent
+      border-top-color: transparent
+      content: ""
+      display: block
+      height: 1.125em
+      width: 1.125em
       position: absolute !important
       +ltr-position(0.875rem)
       top: 0.875rem
