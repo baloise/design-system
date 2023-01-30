@@ -158,12 +158,6 @@ function generateColors(){
     }
   }
 
-  const typographyColors = BaloiseDesignToken.typography.colors
-  for (const color in typographyColors) {
-    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
-    addToken(`color-text-${color}-inverted`, `text-${color}-inverted`, newAlias(`color-${typographyColors[color]}-inverted`), colors[colors[typographyColors[color]].inverted].hex)
-  }
-
   const borderColors = BaloiseDesignToken.border.colors
   for (const color in borderColors) {
     addToken(`color-border-${color}`, `border-${color}`, newAlias(`color-${borderColors[color]}`), colors[borderColors[color]].hex)
@@ -173,6 +167,12 @@ function generateColors(){
     if(colors[color].inverted) {
       addToken(`color-${color}-inverted`, `${color}-inverted`, newAlias(`color-${colors[color].inverted}`), colors[colors[color].inverted].hex)
     }
+  }
+
+  const typographyColors = BaloiseDesignToken.typography.colors
+  for (const color in typographyColors) {
+    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
+    addToken(`color-text-${color}-inverted`, `text-${color}-inverted`, newAlias(`color-${typographyColors[color]}-inverted`), colors[colors[typographyColors[color]].inverted].hex)
   }
 }
 
