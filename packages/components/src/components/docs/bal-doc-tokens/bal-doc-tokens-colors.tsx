@@ -53,11 +53,11 @@ export class DocTokensColors implements ComponentInterface {
                     </div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-none mb-xx-small">{c.name}</p>
+                    <p class="has-text-weight-bold is-size-large mt-none mb-xx-small">{c.name}</p>
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-color-{c.name})
                     </p>
                     <p class="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal">
@@ -68,28 +68,28 @@ export class DocTokensColors implements ComponentInterface {
                 {c.name !== 'black' && c.name !== 'white' ? (
                   <tr>
                     <td colSpan={3}>
-                      <p class="is-bold is-size-normal">Shades</p>
-                      <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                      <p class="has-text-weight-bold is-size-normal">Shades</p>
+                      <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                         var(--bal-color-{c.name}-x)
                       </span>
                       <div class="is-flex fg-x-small mt-x-small">
                         <div class={`has-background-${c.name}-1 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-1-inverted is-bold`}>1</span>
+                          <span class={`has-text-${c.name}-1-inverted has-text-weight-bold`}>1</span>
                         </div>
                         <div class={`has-background-${c.name}-2 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-2-inverted is-bold`}>2</span>
+                          <span class={`has-text-${c.name}-2-inverted has-text-weight-bold`}>2</span>
                         </div>
                         <div class={`has-background-${c.name}-3 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-3-inverted is-bold`}>3</span>
+                          <span class={`has-text-${c.name}-3-inverted has-text-weight-bold`}>3</span>
                         </div>
                         <div class={`has-background-${c.name}-4 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-4-inverted is-bold`}>4</span>
+                          <span class={`has-text-${c.name}-4-inverted has-text-weight-bold`}>4</span>
                         </div>
                         <div class={`has-background-${c.name}-5 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-5-inverted is-bold`}>5</span>
+                          <span class={`has-text-${c.name}-5-inverted has-text-weight-bold`}>5</span>
                         </div>
                         <div class={`has-background-${c.name}-6 has-radius-normal p-x-small is-flex-grow-1`}>
-                          <span class={`has-text-${c.name}-6-inverted is-bold`}>6</span>
+                          <span class={`has-text-${c.name}-6-inverted has-text-weight-bold`}>6</span>
                         </div>
                       </div>
                     </td>

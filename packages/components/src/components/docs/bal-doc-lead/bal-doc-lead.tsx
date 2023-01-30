@@ -10,7 +10,7 @@ export class DocLead implements ComponentInterface {
     return (
       <Host>
         <bal-doc-app>
-          <p class="is-lead has-text-blue my-x-large">
+          <p class="is-size-large has-text-blue my-x-large">
             <slot></slot>
           </p>
         </bal-doc-app>

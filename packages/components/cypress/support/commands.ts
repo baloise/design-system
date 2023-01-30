@@ -25,7 +25,7 @@ Cypress.Commands.add('page', (url: string) => {
         .then(document => document.fonts.ready),
     )
     .then(() => {
-      return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false }).wait(200)
+      return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false }).wait(100)
     })
 
   cy.disableAnimation()

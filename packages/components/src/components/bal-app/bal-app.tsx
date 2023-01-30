@@ -6,6 +6,9 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-app',
+  styleUrls: {
+    css: 'bal-app.sass',
+  },
 })
 export class App implements Loggable {
   private focusVisible?: any

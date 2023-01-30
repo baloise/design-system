@@ -149,9 +149,17 @@ const tokens = {
     'rounded': { value: '9999px' },
   },
   shadow: {
-    none: { value: 'none' },
-    normal: { value: '0 0 10px 0 rgba(0, 7, 57, 0.15)' },
-    large: { value: '0 0 30px 0 rgba(0, 7, 57, 0.15)' },
+    box: {
+      none: { value: 'none' },
+      normal: { value: '0 0 10px 0 rgba(0, 7, 57, 0.15)' },
+      large: { value: '0 0 30px 0 rgba(0, 7, 57, 0.15)' },
+    },
+    text: {
+      none: { value: 'none' },
+      normal: {
+        value: '0px 0px 4px rgba(0, 0, 0, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.25), 0px 0px 80px rgba(0, 0, 0, 0.5)',
+      },
+    },
   },
   spacing: {
     'auto': {
@@ -539,7 +547,10 @@ export interface BaloiseDesignTokens {
     desktop: string
   }
   radius: BaloiseDesignTokenValues
-  shadow: BaloiseDesignTokenValues
+  shadow: {
+    box: BaloiseDesignTokenValues
+    text: BaloiseDesignTokenValues
+  }
   spacing: {
     [key: string]: {
       mobile: string

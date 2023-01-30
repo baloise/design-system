@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/src/css/mixins'
 
 $modal-breakpoint: 769px !default
 
@@ -21,7 +21,7 @@ $modal-breakpoint: 769px !default
 
   +element(background)
     @extend %overlay
-    background-color: rgba($blue-dark, .8)
+    background-color: rgba($bal-color-primary-6, .8)
 
   +element(header)
     +element(title)

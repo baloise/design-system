@@ -1,0 +1,22 @@
+.bal-app
+  position: relative
+  display: block
+
+//
+// Sets the defined body content visible after
+// the web-components have been loaded
+.bal-body.is-ready
+  visibility: inherit
+
+.bal-app.has-sticky-footer,
+.bal-app .has-sticky-footer
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+
+  main
+    padding-bottom: 40px
+
+  .bal-footer,
+  footer.footer
+    margin-top: auto
