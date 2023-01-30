@@ -161,6 +161,7 @@ function generateColors(){
   const typographyColors = BaloiseDesignToken.typography.colors
   for (const color in typographyColors) {
     addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
+    addToken(`color-text-${color}-inverted`, `text-${color}-inverted`, newAlias(`color-${typographyColors[color]}-inverted`), colors[colors[typographyColors[color]].inverted].hex)
   }
 
   const borderColors = BaloiseDesignToken.border.colors
