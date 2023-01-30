@@ -636,6 +636,7 @@ export namespace Components {
     }
     interface BalDocBanner {
         "color": string;
+        "shadowDom": boolean;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -957,7 +958,7 @@ export namespace Components {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space": 'none' | 'bottom' | 'top' | 'all';
+        "space"?: 'none' | 'bottom' | 'top' | 'all';
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -4267,6 +4268,7 @@ declare namespace LocalJSX {
     }
     interface BalDocBanner {
         "color"?: string;
+        "shadowDom"?: boolean;
         "subtitle"?: string;
     }
     interface BalDocColor {

@@ -315,6 +315,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           {...this.inheritedAttributes}
         >
           {value}
+          <slot />
         </textarea>
       </Host>
     )

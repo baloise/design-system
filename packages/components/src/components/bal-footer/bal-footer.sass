@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/src/css/mixins'
 
 +block(footer)
   +unselectable
@@ -9,12 +9,15 @@
     position: relative
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-blue)
-    color: var(--bal-color-white)
     padding: var(--bal-space-large)
     +tablet
       padding: var(--bal-space-tablet-large)
     +desktop
       padding: var(--bal-space-desktop-large)
+
+    &,
+    p
+      color: var(--bal-color-white)
 
     +element(links-container)
       display: flex

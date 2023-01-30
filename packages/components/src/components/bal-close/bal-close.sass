@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/src/css/mixins'
 
 +block(close)
   position: static
@@ -21,23 +21,22 @@
     vertical-align: top
     padding: 5px
     &:hover
-      background: rgba($blue-dark, 0.1)
+      background: rgba($bal-color-primary-6, 0.1)
     &:focus-visible:not(:active)
       background: var(--bal-color-white)
       @extend %focus-shadow
     &:active
-      background: rgba($blue-dark, 0.3)
+      background: rgba($bal-color-primary-6, 0.3)
     +modifier(inverted)
       &:hover
-        background: rgba($white, 0.3)
+        background: rgba($bal-color-white, 0.3)
       &:focus-visible:not(:active)
         background: var(--bal-color-white)
         @extend %focus-shadow
       &:active
-        background: rgba($white, 0.5)
+        background: rgba($bal-color-white, 0.5)
     //Sizes
     +modifier(size-small)
       padding: 4px
     +modifier(size-medium)
       padding: 8.5px
-

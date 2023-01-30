@@ -89,7 +89,7 @@ export class FieldLabel implements BalConfigObserver {
             'is-disabled': this.disabled || this.readonly,
             'is-success': this.valid,
             'is-danger': this.invalid,
-            'is-regular': this.weight === 'regular',
+            'has-text-weight-normal': this.weight === 'regular',
           }}
         >
           <slot></slot>

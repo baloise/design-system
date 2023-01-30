@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/src/css/mixins'
 
 :root
   --bal-popover-backdrop-height: 100vh
@@ -33,7 +33,7 @@
     @extend %overlay
     z-index: 10
     position: fixed
-    background-color: rgba($blue-dark, .8)
+    background-color: rgba($bal-color-primary-6, .8)
     height: var(--bal-popover-backdrop-height)
     width: 100vw
 
@@ -125,8 +125,10 @@
     .bal-popover__content
       min-width: unset
       background: var(--bal-color-blue-6)
-      color: var(--bal-color-white)
-      font-family: var(--bal-font-family-text)
-      font-size: var(--bal-size-small)
       .bal-popover__content__inner
         padding: var(--bal-space-x-small)
+        &,
+        p
+          color: var(--bal-color-white)
+          font-family: var(--bal-font-family-text)
+          font-size: var(--bal-size-small)

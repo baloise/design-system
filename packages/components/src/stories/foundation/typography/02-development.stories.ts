@@ -36,7 +36,7 @@ export const Text = args => ({
   template: `
 <p class="is-size-large">My lead text</p>
 <p>My text</p>
-<p class="is-bold">My bold text</p>
+<p class="has-text-weight-bold">My bold text</p>
 <p class="is-size-small">My small text</p>
 
 <hr/>
@@ -82,7 +82,7 @@ export const TextFamily = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<p class="is-family-title is-bold">The font type for titles</p>
+<p class="is-family-title has-text-weight-bold">The font type for titles</p>
 <p class="is-family-text">The font type for text blocks</p>
 `,
 })
@@ -96,10 +96,10 @@ export const TextWeight = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<p class="is-family-title is-light">Light text used for subtitles only</p>
+<p class="is-family-title has-text-weight-light">Light text used for subtitles only</p>
 <p>Default weight same as regular</p>
-<p class="is-regular">Regular weight same as default</p>
-<p class="is-bold">Bold text used for headings and actions</p>
+<p class="has-text-weight-normal">Regular weight same as default</p>
+<p class="has-text-weight-bold">Bold text used for headings and actions</p>
 `,
 })
 TextWeight.args = {}

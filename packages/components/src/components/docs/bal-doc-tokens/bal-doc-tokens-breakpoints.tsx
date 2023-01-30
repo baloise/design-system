@@ -30,25 +30,25 @@ export class DocTokensBreakpoints implements ComponentInterface {
             <tbody>
               <tr>
                 <td style={{ verticalAlign: 'top' }}>
-                  <p class="is-bold is-size-large mt-none mb-x-small">mobile</p>
+                  <p class="has-text-weight-bold is-size-large mt-none mb-x-small">mobile</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }}></td>
                 <td style={{ verticalAlign: 'top' }}>
-                  <span class={`is-bold is-size-small`}>0px</span>
+                  <span class={`has-text-weight-bold is-size-small`}>0px</span>
                 </td>
               </tr>
               {sizes.map(c => (
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
+                    <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-breakpoint-{c.name})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class={`is-bold is-size-small py-xx-small`}>{c.value}</p>
+                    <p class={`has-text-weight-bold is-size-small py-xx-small`}>{c.value}</p>
                   </td>
                 </tr>
               ))}

@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/src/css/mixins'
 
 .bal-list,
 .bal-list__item,
@@ -116,6 +116,7 @@
     +hover()
       &:hover
         .bal-list__item__title .title,
+        .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
           color: var(--bal-color-light-blue-5) !important
 
@@ -128,6 +129,7 @@
 
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
           color: var(--bal-color-blue-6) !important
@@ -148,6 +150,7 @@
 .bal-list--background-dark
   .bal-list__item
     .bal-list__item__title .title,
+    .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
       color: var(--bal-color-white)
 
@@ -165,6 +168,7 @@
     +hover()
       &:hover
         .bal-list__item__title .title,
+        .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
           color: var(--bal-color-light-blue-2) !important
 
@@ -177,6 +181,7 @@
 
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
           color: var(--bal-color-light-blue-4) !important
@@ -281,6 +286,7 @@
   a:not(.is-link),
   button:not(.button)
     .bal-list__item__title .title,
+    .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
       color: var(--bal-color-grey-5) !important
 
@@ -299,6 +305,7 @@
     &:hover,
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         color: var(--bal-color-grey-5) !important
 
@@ -318,6 +325,7 @@
     &:hover,
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         color: var(--bal-color-primary-4) !important
 

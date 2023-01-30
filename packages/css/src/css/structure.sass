@@ -1,0 +1,76 @@
+@import '../mixins/_all'
+@import '../structure/_all'
+
+html
+  background-color: var(--bal-color-white)
+  font-size: 16px
+  min-width: 300px
+  overflow-x: hidden
+  overflow-y: scroll
+  text-rendering: optimizeLegibility
+  text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  -webkit-overflow-scrolling: auto
+
+*:focus
+  -webkit-tap-highlight-color: transparent
+  outline: none
+  -ms-touch-action: manipulation
+  touch-action: manipulation
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section
+  display: block
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea
+  font-family: var(--bal-font-family-text)
+
+body
+  color: var(--bal-color-primary)
+  font-size: var(--bal-size-normal)
+  font-weight: var(--bal-weight-regular)
+  line-height: var(--bal-line-height-normal)
+  -webkit-overflow-scrolling: auto
+
+a
+  @extend %structure-link
+
+p
+  @extend %structure-paragraph
+
+hr
+  @extend %structure-divider
+
+img
+  height: auto
+  max-width: 100%
+
+input[type="checkbox"],
+input[type="radio"]
+  vertical-align: baseline
+
+small
+  font-size: var(--bal-size-small)
+
+span
+  font-style: inherit
+  font-weight: inherit
+
+strong
+  color: var(--bal-color-primary)
+  font-weight: var(--bal-weight-bold)
+
+fieldset
+  border: none

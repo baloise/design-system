@@ -147,7 +147,11 @@ export class CarouselItem implements ComponentInterface {
           ) : (
             ''
           )}
-          {this.label !== undefined ? <span class={{ ...label.class(), 'is-bold': true }}>{this.label}</span> : ''}
+          {this.label !== undefined ? (
+            <span class={{ ...label.class(), 'has-text-weight-bold': true }}>{this.label}</span>
+          ) : (
+            ''
+          )}
           <slot></slot>
         </TagType>
       </Host>
