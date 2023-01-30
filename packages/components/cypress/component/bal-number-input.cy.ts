@@ -42,7 +42,8 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('bal-number-input').find('input').type('1a2').blur()
 
     cy.get('bal-number-input').find('input').should('have.value', '12')
-    cy.get('@balChange').should('not.have.been.called')
+    cy.get('@balChange').should('not.have.been.called') // discuss about this
+    // cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balInput').should('have.been.callCount', 2)
   })
 
@@ -64,6 +65,20 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('bal-number-input').find('input').should('have.attr', 'disabled')
     cy.get('bal-number-input').find('input').click({ force: true })
 
-    cy.get('@click').should('have.been.calledOnce')
+    cy.get('@click').should('have.been.calledOnce') // description is not good
+  })
+
+  it('should have a default value 0 because of exact-number attr', () => {
+    cy.get('bal-number-input').find('input').should('have.value', '')
+    cy.get('bal-number-input').invoke('attr', 'exact-number', true)
+    cy.get('bal-number-input').find('input').type('1').blur()
+
+    cy.get('bal-number-input').find('input').should('have.value', '1')
+    cy.get('bal-number-input').find('input').clear().blur()
+    cy.get('bal-number-input').find('input').should('have.value', '0')
+
+    cy.get('@click').should('have.been.calledTwice')
+    cy.get('@balChange').should('have.been.calledTwice')
+    cy.get('@balInput').should('have.been.calledTwice')
   })
 })
