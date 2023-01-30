@@ -44,7 +44,7 @@ describe('bal-select', () => {
         cy.page('/components/form/bal-select/test/bal-select-multiple.visual.html').platform(platform)
       })
 
-      it('basic component', () => {
+      it('basic multiple component', () => {
         cy.getByTestId('basic').compareSnapshot(`select-multiple-basic-${platform}`, 0.0)
 
         cy.getByTestId('basic-input').click()
@@ -58,11 +58,11 @@ describe('bal-select', () => {
         cy.compareSnapshot(`select-multiple-basic-open-selected-${platform}`, 0.0)
       })
 
-      it('disabled component', () => {
+      it('disabled multiple component', () => {
         cy.getByTestId('disabled').compareSnapshot(`select-multiple-disabled-${platform}`, 0.0)
       })
 
-      it('invalid component', () => {
+      it('invalid multiple component', () => {
         cy.getByTestId('invalid').compareSnapshot(`select-multiple-invalid-${platform}`, 0.0)
       })
 
