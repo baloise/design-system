@@ -106,7 +106,7 @@ const tokens = {
     'warning-1': { hex: '#fff9e8', inverted: 'primary', description: descriptions.color.alert },
     'warning-2': { hex: '#ffe5a3', inverted: 'primary', description: descriptions.color.alert },
     'warning-3': { hex: '#ffd25e', inverted: 'primary', description: descriptions.color.alert },
-    'warning-4': { hex: '#ffbe19', inverted: 'white', description: descriptions.color.alert },
+    'warning-4': { hex: '#ffbe19', inverted: 'primary', description: descriptions.color.alert },
     'warning-5': { hex: '#f99319', inverted: 'white', description: descriptions.color.alert },
     'warning-6': { hex: '#c97612', inverted: 'white', description: descriptions.color.alert },
     //
