@@ -81,7 +81,6 @@
     "big.js": "~6.2.1",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
-    "hammerjs": "^2.0.8",
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
     "lodash.isarray": "~4.0.0",
