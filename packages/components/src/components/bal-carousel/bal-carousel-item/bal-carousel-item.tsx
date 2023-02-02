@@ -143,7 +143,13 @@ export class CarouselItem implements ComponentInterface {
           onClick={this.onClick}
         >
           {this.src !== undefined ? (
-            <img class={{ ...image.class() }} draggable={false} onDragStart={() => false} src={this.src} />
+            <img
+              class={{ ...image.class() }}
+              loading="lazy"
+              draggable={false}
+              onDragStart={() => false}
+              src={this.src}
+            />
           ) : (
             ''
           )}

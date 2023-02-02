@@ -40,7 +40,7 @@ export class DocLinkListItem implements ComponentInterface {
 
     return (
       <Host class="bal-doc-link-list-item">
-        <img src={image} alt={subject} />
+        <img loading="lazy" src={image} alt={subject} />
         <span>
           <strong>{subject}</strong>
           <slot></slot>
