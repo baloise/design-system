@@ -67,6 +67,7 @@
     "@angular/forms": "~13.3.12",
     "@angular/platform-browser": "~13.3.12",
     "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "~17.3.0",
     "@commitlint/config-conventional": "~17.3.0",
     "@rollup/plugin-commonjs": "~22.0.1",
@@ -163,8 +164,5 @@
     "vue": "^3.2.45",
     "workbox-build": "~4.3.1",
     "zone.js": "~0.11.4"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.26.0"
   }
 }

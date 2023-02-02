@@ -140,9 +140,14 @@ async function generateRadius() {
 async function generateShadow() {
   const shadow = BaloiseDesignToken.shadow
   const lines = []
-  for (const r in shadow) {
+  for (const r in shadow.box) {
     lines.push(`.has-shadow${parseKey(r)}`)
     lines.push(`  box-shadow: var(--bal-shadow${parseKey(r)}) !important`)
+    lines.push(``)
+  }
+  for (const r in shadow.text) {
+    lines.push(`.has-text-shadow${parseKey(r)}`)
+    lines.push(`  text-shadow: var(--bal-text-shadow${parseKey(r)}) !important`)
     lines.push(``)
   }
   await file.write(path.join(SASS_PATH, 'shadow.helpers.sass'), [...lines, ''].join('\n'))
