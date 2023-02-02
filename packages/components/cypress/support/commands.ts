@@ -16,17 +16,17 @@ Cypress.Commands.add('page', (url: string) => {
   })
 
   cy.visit(url, { log: false })
-    .then(() =>
-      cy
-        .document()
-        // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
-        // The promise will only resolve once the document has completed loading fonts,
-        // layout operations are completed, and no further font loads are needed.
-        .then(document => document.fonts.ready),
-    )
-    .then(() => {
-      return cy.get('bal-doc-app, bal-app, .bal-app', { log: false }).waitForComponents({ log: false }).wait(100)
-    })
+
+  // wait until the custom fonts are loaded and ready
+  cy.document().then(document => document.fonts.ready)
+
+  cy.get('bal-app')
+    // wait for all stencil components to be fully rendered
+    .waitForComponents({ log: false })
+    // wait that the Design System has fully initialized
+    .invoke('attr', 'ready')
+    .should('eq', '', { log: false })
+    .wait(100, { log: false })
 
   cy.disableAnimation()
 })

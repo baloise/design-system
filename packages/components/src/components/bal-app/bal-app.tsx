@@ -33,7 +33,7 @@ export class App implements Loggable {
   /**
    * @internal Is `true` when DS components are ready to be shown.
    */
-  @Prop({ reflect: true }) ready = true
+  @Prop({ reflect: true, mutable: true }) ready = false
 
   /**
    * @internal
@@ -47,9 +47,9 @@ export class App implements Loggable {
   }
 
   componentDidLoad() {
-    this.balAppLoad.emit(true)
-    this.ready = true
     rIC(async () => {
+      this.balAppLoad.emit(true)
+      this.ready = true
       import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
     })
   }
