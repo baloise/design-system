@@ -11,7 +11,7 @@ export class BalDocImage {
     return (
       <Host class="bal-app">
         <p style={{ textAlign: 'center' }}>
-          <img src={this.src} alt={this.text} />
+          <img loading="lazy" src={this.src} alt={this.text} />
         </p>
       </Host>
     )
