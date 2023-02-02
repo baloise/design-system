@@ -23,6 +23,7 @@
     "pretty": true,
     "removeComments": true,
     "inlineSources": true,
+    "skipLibCheck": true,
     "sourceMap": true
   },
   "compileOnSave": false,
