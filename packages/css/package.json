@@ -42,6 +42,7 @@
   "files": [
     "css/",
     "scss/",
+    "sass/",
     "src/"
   ],
   "dependencies": {
