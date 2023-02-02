@@ -4,17 +4,26 @@ describe('bal-textarea.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalBlurSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalKeyPressSpy: Cypress.Agent<sinon.SinonSpy>
 
   beforeEach(() => {
     onClickSpy = cy.spy().as('click')
     onBalChangeSpy = cy.spy().as('balChange')
     onBalInputSpy = cy.spy().as('balInput')
+    onBalBlurSpy = cy.spy().as('balBlur')
+    onBalFocusSpy = cy.spy().as('balFocus')
+    onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
     cy.mount(BalTextarea, {
       props: {
         onClick: onClickSpy,
         onBalInput: onBalInputSpy,
         onBalChange: onBalChangeSpy,
+        onBalBlur: onBalBlurSpy,
+        onBalFocus: onBalFocusSpy,
+        onBalKeyPress: onBalKeyPressSpy,
       },
     })
   })
@@ -26,6 +35,9 @@ describe('bal-textarea.cy.ts', () => {
     cy.get('bal-textarea').find('textarea').should('have.value', 'Hello World!')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balInput').should('have.been.callCount', 12)
+    cy.get('@balBlur').should('have.been.calledOnce')
+    cy.get('@balFocus').should('have.been.calledOnce')
+    cy.get('@balKeyPress').should('have.been.callCount', 12)
   })
 
   it('should fire no balChange and no balInput, because the field has still a focus', () => {

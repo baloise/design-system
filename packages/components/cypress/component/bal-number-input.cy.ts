@@ -4,17 +4,26 @@ describe('bal-number-input.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalBlurSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
+  let onBalKeyPressSpy: Cypress.Agent<sinon.SinonSpy>
 
   beforeEach(() => {
     onClickSpy = cy.spy().as('click')
     onBalChangeSpy = cy.spy().as('balChange')
     onBalInputSpy = cy.spy().as('balInput')
+    onBalBlurSpy = cy.spy().as('balBlur')
+    onBalFocusSpy = cy.spy().as('balFocus')
+    onBalKeyPressSpy = cy.spy().as('balKeyPress')
 
     cy.mount(BalNumberInput, {
       props: {
         onClick: onClickSpy,
         onBalInput: onBalInputSpy,
         onBalChange: onBalChangeSpy,
+        onBalBlur: onBalBlurSpy,
+        onBalFocus: onBalFocusSpy,
+        onBalKeyPress: onBalKeyPressSpy,
       },
     })
   })
@@ -26,6 +35,9 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('bal-number-input').find('input').should('have.value', '0.8')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balInput').should('have.been.callCount', 2)
+    cy.get('@balBlur').should('have.been.calledOnce')
+    cy.get('@balFocus').should('have.been.calledOnce')
+    cy.get('@balKeyPress').should('have.been.callCount', 2)
   })
 
   it('should only call balInput and no balChange, because the input has still the focus', () => {
