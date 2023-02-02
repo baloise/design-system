@@ -15,6 +15,8 @@ Cypress.Commands.add('page', (url: string) => {
     message: url,
   })
 
+  cy.visit(url, { log: false })
+
   // wait until the custom fonts are loaded and ready
   cy.document().then(document => document.fonts.ready)
 
@@ -22,7 +24,7 @@ Cypress.Commands.add('page', (url: string) => {
     // wait for all stencil components to be fully rendered
     .waitForComponents({ log: false })
     // wait that the Design System has fully initialized
-    .invoke('attr', 'ready', { log: false })
+    .invoke('attr', 'ready')
     .should('eq', '', { log: false })
     .wait(100, { log: false })
 

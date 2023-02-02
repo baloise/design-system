@@ -26,11 +26,6 @@ Add the `bal-app` to your root element. Within this component we are able to use
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
