@@ -63,16 +63,46 @@ npm run copy:fonts
 
 ### Import Styles
 
-Import the `global.sass` Sass file into the main `index.scss` file of your application.
+To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
 // change variable before the import
 $font-path: '../../../../public/assets/fonts';
 
-@import '@baloise/design-system-components/src/styles/global';
+// SASS mixins and variables (optional)
+@import '@baloise/design-system-css/sass/mixins';
 
-// add custom styles below
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
 ```
+
+> **TIP**
+>
+> - The CSS Framework provides CSS files and SASS files, just change the root folder `/css/` to `/sass/`.
+> - Import `@baloise/design-system-css/sass/baloise-design-system` to use the whole CSS Framework.
+> - Use `@import '@baloise/design-system-css/sass/mixins';` in the component stylesheets to use our provided SASS mixins.
 
 ### HTML Structure
 
