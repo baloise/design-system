@@ -20,7 +20,12 @@ export class StageImage implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        <img loading="lazy" src={this.fallback ? this.fallback : this.srcSet.split(',')[0]} srcset={this.srcSet} sizes="100vw" />
+        <img
+          loading="lazy"
+          src={this.fallback ? this.fallback : this.srcSet.split(',')[0]}
+          srcset={this.srcSet}
+          sizes="100vw"
+        />
       </Host>
     )
   }
