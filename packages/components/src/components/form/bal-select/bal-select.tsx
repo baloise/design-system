@@ -875,14 +875,10 @@ export class Select implements ComponentInterface, Loggable {
       this.focusIndex = -1
       this.balClick.emit(event)
 
-      if (this.typeahead) {
-        await this.popoverElement?.present()
+      if (this.isPopoverOpen) {
+        await this.popoverElement?.dismiss()
       } else {
-        if (this.isPopoverOpen) {
-          await this.popoverElement?.dismiss()
-        } else {
-          await this.popoverElement?.present()
-        }
+        await this.popoverElement?.present()
       }
     }
   }
