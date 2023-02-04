@@ -3,7 +3,7 @@ name: 'Breaking change request ⚠️'
 about: Suggest an idea to improve the component interface
 title: 'Breaking change for ???'
 labels: '🆕 Enhancement'
-assignees: 'hirsch88, mladenplaninicic, nobilo, yannickholzenkamp'
+assignees: ''
 ---
 
 Use this template if you want to request a breaking change an existing feature.

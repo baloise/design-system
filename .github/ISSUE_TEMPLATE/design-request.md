@@ -2,7 +2,7 @@
 name: Design Request 🎨
 about: Questions to the new branding and components
 labels: '🎨 Design Support'
-assignees: 'Gagne87, clastzoo'
+assignees: ''
 ---
 
 <!--
