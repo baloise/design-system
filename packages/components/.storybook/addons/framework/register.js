@@ -52,21 +52,25 @@ const labels = {
   vue: 'Vue.js',
 }
 
+const frameworks = ['angular', 'html', 'react', 'vue']
+
 const LOCAL_STORE_ID = 'bal-docs-framework'
 
 const usePersisted = initialValue => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(LOCAL_STORE_ID)
-      return item ? JSON.parse(item) : initialValue
+      const storedFramework = item ? JSON.parse(item) : initialValue
+      return frameworks.includes(storedFramework) ? storedFramework : undefined
     } catch (error) {
       return initialValue
     }
   })
 
   const setValue = value => {
-    setStoredValue(value)
-    window.localStorage.setItem(LOCAL_STORE_ID, JSON.stringify(value))
+    const newFramework = frameworks.includes(value) ? value : 'angular'
+    setStoredValue(newFramework)
+    window.localStorage.setItem(LOCAL_STORE_ID, JSON.stringify(newFramework))
   }
 
   return [storedValue, setValue]
@@ -77,7 +81,8 @@ const updateRoute = value => {
   const urlObj = new URL(url)
   const urlSearchParams = new URLSearchParams(window.location.search)
   const params = Object.fromEntries(urlSearchParams.entries())
-  urlObj.search = `?path=${params.path}&globals=framework:${value}`
+  const frameworkParam = frameworks.includes(value) ? value : 'angular'
+  urlObj.search = `?path=${params.path}&globals=framework:${frameworkParam}`
   location.replace(urlObj.toString())
 }
 
@@ -92,8 +97,9 @@ addons.register('my/framework', () => {
 
       const urlSearchParams = new URLSearchParams(window.location.search)
       const params = Object.fromEntries(urlSearchParams.entries())
-      const paramFramework = params.globals?.replace('framework:', '')
+      let paramFramework = params.globals?.replace('framework:', '')
 
+      paramFramework = frameworks.includes(paramFramework) ? paramFramework : undefined
       React.useEffect(() => {
         if (!paramFramework && framework !== persistedFramework) {
           if (persistedFramework !== 'angular') {

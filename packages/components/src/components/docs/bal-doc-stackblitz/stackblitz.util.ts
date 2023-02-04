@@ -17,8 +17,9 @@ export const loadSourceFiles = async (files: string[]) => {
 export const getFramework = (): Frameworks => {
   const urlSearchParams = new URLSearchParams(window.location.search)
   const params = Object.fromEntries(urlSearchParams.entries())
-  const paramFramework = params.globals?.replace('framework:', '')
-
+  let paramFramework: string | undefined = params.globals?.replace('framework:', '')
+  const frameworks = ['angular', 'html', 'react', 'vue']
+  paramFramework = frameworks.includes(paramFramework) ? paramFramework : undefined
   if (paramFramework !== undefined) {
     localStorage.setItem('bal-docs-framework', JSON.stringify(paramFramework))
     return paramFramework as Frameworks
