@@ -117,7 +117,7 @@
         justify-content: center
         align-items: center
         font-family: var(--bal-font-family-title)
-        font-weight: 700
+        font-weight: var(--bal-weight-bold)
         gap: .5rem
         padding: 1rem .75rem
         flex-grow: 1
@@ -145,11 +145,11 @@
           hyphens: auto
           gap: 4px
         &:hover
-          color: var(--bal-color-light-blue-5)
+          color: var(--bal-color-text-light-blue)
           +fillSvg(var(--bal-color-light-blue-5))
         &:active
-          color: var(--bal-color-blue-6)
-          +fillSvg(var(--bal-color-blue-6))
+          color: var(--bal-color-text-primary-dark)
+          +fillSvg(var(--bal-color-primary-6))
         +modifier(icon-horizontal)
           flex-direction: row
         +touch
@@ -158,27 +158,27 @@
           +modifier(icon-horizontal)
             flex-direction: column
         +modifier(inverted)
-          color: var(--bal-color-primary-inverted)
+          color: var(--bal-color-text-primary-inverted)
           +fillSvg(var(--bal-color-primary-inverted))
           &:hover
             color: var(--bal-color-light-blue-2)
             +fillSvg(var(--bal-color-light-blue-2))
           &:active
-            color: var(--bal-color-info-3)
-            +fillSvg(var(--bal-color-info-3))
+            color: var(--bal-color-text-info)
+            +fillSvg(var(--bal-color-info))
           &:focus-visible
             &:not(:active)
               @extend %focus-inverted-inset-shadow
         +modifier(context-navbar)
           +touch
-            color: var(--bal-color-primary)
+            color: var(--bal-color-text-primary)
             +fillSvg(var(--bal-color-primary))
             &:hover
-              color: var(--bal-color-light-blue-5)
+              color: var(--bal-color-text-light-blue)
               +fillSvg(var(--bal-color-light-blue-5))
             &:active
-              color: var(--bal-color-blue-6)
-              +fillSvg(var(--bal-color-blue-6))
+              color: var(--bal-color-text-primary-dark)
+              +fillSvg(var(--bal-color-primary-6))
         +modifier(disabled)
           color: var(--bal-color-text-grey)
           cursor: default

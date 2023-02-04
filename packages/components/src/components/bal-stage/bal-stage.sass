@@ -7,13 +7,13 @@
   //
   // Color modifiers
   +modifier(is-purple)
-    background: var(--bal-color-purple-3)
+    background: var(--bal-color-purple)
   +modifier(is-green)
-    background: var(--bal-color-green-3)
+    background: var(--bal-color-green)
   +modifier(is-red)
-    background: var(--bal-color-red-3)
+    background: var(--bal-color-red)
   +modifier(is-yellow)
-    background: var(--bal-color-yellow-3)
+    background: var(--bal-color-yellow)
 
   +block(stage-content)
     display: block
@@ -52,7 +52,7 @@
           display: inline-flex
           align-items: center
           font-family: var(--bal-font-family-title)
-          font-weight: 700
+          font-weight: var(--bal-weight-bold)
           text-decoration: none
           &:hover
             text-decoration: underline
@@ -62,12 +62,12 @@
     +modifier(is-inverted)
       +block(stage-body)
         h1
-          color: var(--bal-color-white)
+          color: var(--bal-color-text-white)
         h2
-          color: var(--bal-color-white)
+          color: var(--bal-color-text-white)
         +block(stage-back-link)
           a
-            color: var(--bal-color-white)
+            color: var(--bal-color-text-white)
             +fillSvg(var(--bal-color-white))
 
   //

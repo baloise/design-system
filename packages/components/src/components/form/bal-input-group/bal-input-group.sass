@@ -9,7 +9,7 @@
   align-items: center
   min-height: 48px
   gap: 4px
-  border: 2px solid var(--bal-color-border-grey)
+  border: var(--bal-border-width-normal) solid var(--bal-color-border-grey)
   border-radius: var(--bal-radius-small)
   background: var(--bal-color-white)
 
@@ -17,7 +17,7 @@
     min-height: 44px
     height: 44px
     border: none
-    border-radius: 0
+    border-radius: var(--bal-radius-none)
     padding-left: 0
     padding-right: 0
     padding-bottom: calc(0.5em - 5px)
@@ -96,7 +96,7 @@
       background-color: var(--bal-color-grey-5)
 
       span
-        color: var(--bal-color-white)
+        color: var(--bal-color-text-white)
 
       .delete
         display: none
