@@ -23,14 +23,36 @@ describe('bal-tabs', () => {
     cy.getByTestId('expanded').compareSnapshot('tabs-expanded-mobile', 0.02)
   })
 
-  it('steps', () => {
+  it('meta', () => {
     cy.platform('desktop').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps', 0.0)
+    cy.getByTestId('meta').compareSnapshot('tabs-meta', 0.01)
 
     cy.platform('tablet').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps-tablet', 0.0)
+    cy.getByTestId('meta').compareSnapshot('tabs-meta-tablet', 0.02)
 
     cy.platform('mobile').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps-mobile', 0.0)
+    cy.getByTestId('meta').compareSnapshot('tabs-meta-mobile', 0.02)
+  })
+
+  it('navbar', () => {
+    cy.platform('desktop').wait(400)
+    cy.getByTestId('navbar').compareSnapshot('tabs-navbar', 0.01)
+
+    cy.platform('tablet').wait(400)
+    cy.getByTestId('navbar').compareSnapshot('tabs-navbar-tablet', 0.02)
+
+    cy.platform('mobile').wait(400)
+    cy.getByTestId('navbar').compareSnapshot('tabs-navbar-mobile', 0.02)
+  })
+
+  it('navigation', () => {
+    cy.platform('desktop').wait(400)
+    cy.getByTestId('navigation').compareSnapshot('tabs-navigation', 0.01)
+
+    cy.platform('tablet').wait(400)
+    cy.getByTestId('navigation').compareSnapshot('tabs-navigation-tablet', 0.02)
+
+    cy.platform('mobile').wait(400)
+    cy.getByTestId('navigation').compareSnapshot('tabs-navigation-mobile', 0.02)
   })
 })
