@@ -36,7 +36,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### 10.13.4 (2022-06-23)
 
 
-
 ### [10.13.5](https://github.com/baloise/design-system/compare/v10.13.4...v10.13.5) (2022-07-05)
 
 
