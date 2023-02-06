@@ -64,3 +64,16 @@ Cypress.Commands.add(
       .wrap(subject, options)
   },
 )
+
+Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: string, asEventName?: string) => {
+  if (asEventName === undefined) {
+    asEventName = event
+  }
+  Cypress.log({
+    $el: subject as any,
+    type: 'parent',
+    displayName: 'spyEvent',
+    message: `${event} as @${asEventName}`,
+  })
+  return cy.wrap(subject, { log: false }).then($el => $el.on(event, cy.spy().as(asEventName))) as any
+})
