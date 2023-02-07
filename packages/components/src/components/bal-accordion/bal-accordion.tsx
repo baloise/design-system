@@ -191,7 +191,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
         this.currentRaf = raf(async () => {
           const contentHeight = contentElWrapper.offsetHeight
-          const waitForTransition = transitionEndAsync(contentEl, 2000)
+          const waitForTransition = transitionEndAsync(contentEl, 300)
           contentEl.style.setProperty('max-height', `${contentHeight}px`)
 
           await waitForTransition
@@ -228,7 +228,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
         contentEl.style.setProperty('max-height', `${contentHeight}px`)
 
         raf(async () => {
-          const waitForTransition = transitionEndAsync(contentEl, 2000)
+          const waitForTransition = transitionEndAsync(contentEl, 300)
 
           this.state = AccordionState.Collapsing
 
