@@ -17,6 +17,7 @@ describe('bal-input.cy.ts', () => {
         onBalChange: onBalChangeSpy,
       },
     })
+    cy.get('bal-input').waitForComponents()
   })
 
   it('should only call balInput and no balChange, because the input has still the focus', () => {
