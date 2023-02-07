@@ -58,11 +58,7 @@ ${declarationImports.join('\n  ')}
   providers: [${providers.join(', ')}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ${tagNameAsPascal}Module {
-  constructor() {
-${[`    define${tagNameAsPascal}();`, ...cmpDefines].join('\n')}
-  }
-}`
+export class ${tagNameAsPascal}Module {}`
 
     return finalText
   }
