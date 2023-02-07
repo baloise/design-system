@@ -10,4 +10,3 @@ export const raf = (h: any): any => {
   }
   return setTimeout(h)
 }
-
