@@ -22,6 +22,34 @@ module.exports = {
 }
 ``` -->
 
+### Setting up Zone.js
+
+To improve the performance of the web components we need to configure zone.js.
+
+To make these changes, you need to create a ´zone-flags.ts´ file, such as the following.
+
+```javascript
+// disable patching requestAnimationFrame
+(window as any).__Zone_disable_requestAnimationFrame = true;
+
+// disable patching custom elements (our web components)
+(window as any).__Zone_disable_customElements = true;
+```
+
+Next, import zone-flags before you import zone.js in the ´polyfills.ts´:
+
+```typescript
+/***************************************************************************************************
+ * Zone JS is required by default for Angular.
+ */
+import './zone-flags'
+import 'zone.js' // Included with Angular CLI.
+```
+
+> **TIP**
+>
+> Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
+
 ## Installation
 
 This section describes how to setup the Baloise Design System with an basic Angular applications.
