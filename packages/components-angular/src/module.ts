@@ -1,10 +1,12 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
+import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
 
 import { appInitialize, BaloiseDesignSystemAngularConfig } from './app-initialize'
 import { AngularDelegate, BalAppModule, BalNoticesModule } from '.'
 
 const MODULES = [BalAppModule, BalNoticesModule]
+
+export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 
 @NgModule({
   declarations: [],
@@ -18,10 +20,14 @@ export class BalCoreModule {
       ngModule: BalCoreModule,
       providers: [
         {
+          provide: ConfigToken,
+          useValue: config,
+        },
+        {
           provide: APP_INITIALIZER,
-          useFactory: appInitialize(config),
+          useFactory: appInitialize,
           multi: true,
-          deps: [DOCUMENT, NgZone],
+          deps: [ConfigToken, DOCUMENT, NgZone],
         },
       ],
     }

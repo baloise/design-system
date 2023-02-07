@@ -18,12 +18,10 @@ export const createComponentModule =
     const tagNameAsPascal = dashToPascalCase(cmpMeta.tagName)
 
     let cmpImports: string[] = []
-    let cmpDefines: string[] = []
     if (groups[cmpMeta.tagName] && groups[cmpMeta.tagName].components) {
       const children = groups[cmpMeta.tagName].components
       if (children) {
         cmpImports = children.map(tag => `${dashToPascalCase(tag)}`)
-        cmpDefines = children.map(tag => `     define${dashToPascalCase(tag)}();`)
       }
     }
 
@@ -58,11 +56,7 @@ ${declarationImports.join('\n  ')}
   providers: [${providers.join(', ')}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ${tagNameAsPascal}Module {
-  constructor() {
-${[`    define${tagNameAsPascal}();`, ...cmpDefines].join('\n')}
-  }
-}`
+export class ${tagNameAsPascal}Module {}`
 
     return finalText
   }
