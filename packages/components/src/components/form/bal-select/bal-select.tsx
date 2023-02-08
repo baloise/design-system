@@ -862,7 +862,7 @@ export class Select implements ComponentInterface, Loggable {
     return isChipClicked
   }
 
-  private handleInputClick = async (event: MouseEvent, isIconClick?: boolean) => {
+  private handleInputClick = async (event: MouseEvent, isIconClick = false) => {
     stopEventBubbling(event)
 
     if (this.isChipClicked(event)) {
