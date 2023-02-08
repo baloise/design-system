@@ -20,7 +20,12 @@ describe('bal-radio', () => {
   })
 
   it('should be able to reset the form', () => {
+    // First we change the initial value
     cy.getByTestId('reset').find('bal-radio').first().check().should('be.checked')
+
+    // Values are changed form the initial one
+
+    // Reset form and check if initial value is restored
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset').should('have.value', 'female')
   })
