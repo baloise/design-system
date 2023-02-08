@@ -862,7 +862,7 @@ export class Select implements ComponentInterface, Loggable {
     return isChipClicked
   }
 
-  private handleInputClick = async (event: MouseEvent) => {
+  private handleInputClick = async (event: MouseEvent, isIconClick?: boolean) => {
     stopEventBubbling(event)
 
     if (this.isChipClicked(event)) {
@@ -875,10 +875,18 @@ export class Select implements ComponentInterface, Loggable {
       this.focusIndex = -1
       this.balClick.emit(event)
 
-      if (this.isPopoverOpen) {
-        await this.popoverElement?.dismiss()
+      if (this.typeahead) {
+        if (this.isPopoverOpen && isIconClick) {
+          await this.popoverElement?.dismiss()
+        } else {
+          await this.popoverElement?.present()
+        }
       } else {
-        await this.popoverElement?.present()
+        if (this.isPopoverOpen) {
+          await this.popoverElement?.dismiss()
+        } else {
+          await this.popoverElement?.present()
+        }
       }
     }
   }
@@ -1048,7 +1056,7 @@ export class Select implements ComponentInterface, Loggable {
               name="caret-down"
               color={this.disabled || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
-              onClick={this.handleInputClick}
+              onClick={ev => this.handleInputClick(ev, true)}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
