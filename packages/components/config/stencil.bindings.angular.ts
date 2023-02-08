@@ -101,6 +101,9 @@ export const AngularGenerator = () =>
       'bal-tag': {
         components: ['bal-tag-group'],
       },
+      'bal-steps': {
+        components: ['bal-step-item'],
+      },
       'bal-checkbox': {
         components: ['bal-checkbox-group'],
       },
