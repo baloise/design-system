@@ -66,7 +66,7 @@ describe('bal-select.cy.ts', () => {
   })
 
   // Typeahead
-  it('should fire input event when typing and should fire balFocus and balChange events', () => {
+  it('should fire input event when typing and should fire balFocus and balChange events (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -78,7 +78,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.calledOnce')
   })
 
-  it('typeahead should fire a balBlur when select the option', () => {
+  it('should fire a balBlur when select the option (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -88,7 +88,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balBlur').should('have.been.calledOnce')
   })
 
-  it('should find and select option with the key navigation search and arrow keys plus enter', () => {
+  it('should find and select option with the key navigation search and arrow keys plus enter (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -101,7 +101,7 @@ describe('bal-select.cy.ts', () => {
   })
 
   // Multiple
-  it('should fire a balChange and balFocus events when selecting multiple options', () => {
+  it('should fire a balChange and balFocus events when selecting multiple options (multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
@@ -114,7 +114,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.calledOnce')
   })
 
-  it('multiple should fire a balBlur when leaving the control', () => {
+  it('multiple should fire a balBlur when leaving the control (multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
@@ -123,7 +123,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balBlur').should('have.been.calledOnce')
   })
 
-  it('should fire one blur event when click on the input field', () => {
+  it('should fire one blur event when click on the input field (multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
@@ -134,7 +134,7 @@ describe('bal-select.cy.ts', () => {
   })
 
   // Typeahead + Multiple
-  it('should fire a balChange and balFocus event after value change', () => {
+  it('should fire a balChange and balFocus event after value change (typeahead + multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
@@ -147,7 +147,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.callCount', 3)
   })
 
-  it('should fire a balChange event after value change', () => {
+  it('should fire a balChange event after value change (typeahead + multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -160,7 +160,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
   })
 
-  it('should fire a balBlur when leaving the control', () => {
+  it('should fire a balBlur when leaving the control (typeahead + multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
@@ -171,7 +171,7 @@ describe('bal-select.cy.ts', () => {
   })
 
   // Typeahead + Remote
-  it('should fire input event when typing and should fire balFocus and balChange events', () => {
+  it('should fire input event when typing and should fire balFocus and balChange events (typeahead + remote)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true).invoke('attr', 'remote', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -183,7 +183,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.calledOnce')
   })
 
-  it('should fire a balBlur when leaving the control', () => {
+  it('should fire a balBlur when leaving the control (typeahead + remote)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true).invoke('attr', 'remote', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
