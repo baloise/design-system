@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-angular",
-  "version": "12.5.0",
+  "version": "12.6.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"
   },
   "dependencies": {
-    "@baloise/design-system-components": "12.5.0",
+    "@baloise/design-system-components": "12.6.0",
     "tslib": "^2.2.0"
   },
   "peerDependencies": {

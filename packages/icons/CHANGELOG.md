@@ -1,5 +1,7 @@
 # @baloise/design-system-icons
 
+## 12.6.0
+
 ## 12.5.0
 
 ## 12.4.1
