@@ -1,0 +1,45 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Step Icons
+// --------------------------------------------------
+
+.bal-steps__nav__item__icon
+  position: relative
+  left: calc(50% - 1rem)
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: hidden
+  z-index: 5
+  font-weight: var(--bal-weight-bold)
+  border-radius: var(--bal-radius-rounded)
+  font-size: var(--bal-size-small)
+  //
+  // Responive Sizes
+  height: 24px
+  width: 24px
+  +tablet
+    height: 30px
+    width: 30px
+    font-size: var(--bal-size-normal)
+  //
+  // Color status
+  border: var(--bal-border-width-normal) solid var(--bal-color-border-grey)
+  background: var(--bal-color-white)
+  color: var(--bal-color-text-white-inverted)
+  &--active
+    border-color: var(--bal-color-primary)
+    background: var(--bal-color-primary)
+    color: var(--bal-color-text-primary-inverted)
+  &--disabled
+    border-color: var(--bal-color-grey-2)
+    background: var(--bal-color-grey-2)
+    color: var(--bal-color-text-grey)
+  &--done
+    border-color: var(--bal-color-primary)
+    background: var(--bal-color-primary)
+    color: var(--bal-color-text-primary-inverted)
+  &--failed
+    border-color: var(--bal-color-danger)
+    background: var(--bal-color-danger)
+    color: var(--bal-color-text-white)
