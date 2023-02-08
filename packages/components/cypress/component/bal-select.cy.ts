@@ -114,6 +114,18 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.calledOnce')
   })
 
+  it('should find and select option with the key navigation search and arrow keys plus enter (multiple)', () => {
+    cy.get('bal-select').invoke('attr', 'multiple', true)
+
+    cy.get('bal-select').find('.bal-select__control__selections').click()
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
+
+    cy.get('@balChange').should('have.been.callCount', 2)
+    cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
+    cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
+  })
+
   it('multiple should fire a balBlur when leaving the control (multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true)
 
@@ -147,7 +159,19 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balFocus').should('have.been.callCount', 3)
   })
 
-  it('should fire a balChange event after value change (typeahead + multiple)', () => {
+  it('should find and select option with the key navigation search and arrow keys plus enter (typeahead + multiple)', () => {
+    cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
+
+    cy.get('bal-select').find('.bal-select__control__selections').click()
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
+
+    cy.get('@balChange').should('have.been.callCount', 2)
+    cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
+    cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
+  })
+
+  it('should fire balInput and balChange event after value change (typeahead + multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.data-test-select-input').click()
@@ -155,6 +179,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('.bal-select__option').eq(0).click()
     cy.get('.bal-select__option').eq(1).click()
 
+    cy.get('@balInput').should('have.been.callCount', 3)
     cy.get('@balChange').should('have.been.callCount', 2)
     cy.get('@balChange').shouldHaveEventDetail(['v1995'], 0)
     cy.get('@balChange').shouldHaveEventDetail(['v1995', 'v1996'], 1)
@@ -171,6 +196,17 @@ describe('bal-select.cy.ts', () => {
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('v1998')
     cy.get('@balFocus').should('have.been.calledOnce')
+  })
+
+  it('should find and select option with the key navigation search and arrow keys plus enter (typeahead + remote)', () => {
+    cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
+
+    cy.get('bal-select').find('.bal-select__control__selections').click()
+    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}')
+    cy.get('bal-select').type('{downArrow}').type('{enter}')
+
+    cy.get('@balChange').should('have.been.callCount', 1)
+    cy.get('@balChange').shouldHaveEventDetail(['v1995'])
   })
 
   it('should fire a balBlur when leaving the control (typeahead + remote)', () => {
