@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-nest-testing'
+import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
@@ -38,7 +38,7 @@ A list of the custom commands for this specific component.
 
 A list of the custom commands for this specific component.
 
-| Command                | Description                         | Signature               |
-| ---------------------- | ----------------------------------- | ----------------------- |
-| `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(): Chainable<JQuery>` |
-| `balAccordionIsClosed` | Asserts if the accordion is closed. | `(): Chainable<JQuery>` |
+| Command                | Description                         | Signature                                          |
+| ---------------------- | ----------------------------------- | -------------------------------------------------- |
+| `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balAccordionIsClosed` | Asserts if the accordion is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
