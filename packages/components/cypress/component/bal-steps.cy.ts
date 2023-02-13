@@ -21,6 +21,7 @@ describe('bal-steps.cy.ts', () => {
       },
     })
 
+    cy.get('.bal-steps').waitForComponents()
     cy.get('.bal-steps').find('.bal-steps__nav__carousel__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -40,6 +41,7 @@ describe('bal-steps.cy.ts', () => {
       },
     })
 
+    cy.get('.bal-steps').waitForComponents()
     cy.get('.bal-steps').find('bal-step-item').should('have.length', 5)
     cy.get('.bal-steps').find('.bal-steps__nav__item').should('have.length', 4)
 
