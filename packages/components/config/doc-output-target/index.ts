@@ -71,8 +71,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
 
-
-
           const content = [
             `## Testing`,
             WHITESPACE,
