@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-improve form reset tests
+update @baloise/web-app-utils to 3.10.0
