@@ -1,5 +1,23 @@
 # @baloise/design-system-components
 
+## 12.7.0
+
+### Minor Changes
+
+- [#1126](https://github.com/baloise-incubator/design-system/pull/1126) [`f944a0729`](https://github.com/baloise-incubator/design-system/commit/f944a0729daeb96ee9a36affecf572a7955c1e24) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add yellow, red, purple and green colors to the navigation level block
+
+### Patch Changes
+
+- [#1123](https://github.com/baloise-incubator/design-system/pull/1123) [`b28384b99`](https://github.com/baloise-incubator/design-system/commit/b28384b99c5831d592aeadbaf2888850946cfb8a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - update @baloise/web-app-utils to 3.10.0
+
+- [#1127](https://github.com/baloise-incubator/design-system/pull/1127) [`297d9c08b`](https://github.com/baloise-incubator/design-system/commit/297d9c08b3b08c4dbcd4b12fa5e28e587168dc25) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix focus and blur events in bal-checkbox
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.7.0
+  - @baloise/design-system-fonts@12.7.0
+  - @baloise/design-system-icons@12.7.0
+  - @baloise/design-system-tokens@12.7.0
+
 ## 12.6.0
 
 ### Minor Changes
