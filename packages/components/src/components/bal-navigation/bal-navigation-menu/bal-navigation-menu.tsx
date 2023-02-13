@@ -77,7 +77,14 @@ export class NavigationMenu {
                   </div>
                 </div>
               )}
-              {this.elements.some(subLevel => subLevel.color === 'grey') && (
+              {this.elements.some(
+                subLevel =>
+                  subLevel.color === 'grey' ||
+                  subLevel.color === 'yellow' ||
+                  subLevel.color === 'red' ||
+                  subLevel.color === 'purple' ||
+                  subLevel.color === 'green',
+              ) && (
                 <div
                   class={{
                     'column is-full is-6-desktop is-one-third-widescreen': true,
@@ -85,7 +92,14 @@ export class NavigationMenu {
                   }}
                 >
                   {this.elements
-                    .filter(subLevel => subLevel.color === 'grey')
+                    .filter(
+                      subLevel =>
+                        subLevel.color === 'grey' ||
+                        subLevel.color === 'yellow' ||
+                        subLevel.color === 'red' ||
+                        subLevel.color === 'purple' ||
+                        subLevel.color === 'green',
+                    )
                     .map(block => (
                       <bal-navigation-menu-list
                         headline={block.label}

@@ -89,3 +89,32 @@ describe('bal-navigation', () => {
     })
   }
 })
+
+describe('bal-navigation-colors', () => {
+  testNavigationOnDesktop('widescreen')
+
+  function testNavigationOnDesktop(platform: Platforms) {
+    describe(platform, () => {
+      beforeEach(() => {
+        cy.page('/components/bal-navigation/test/bal-navigation-colors.visual.html')
+          .platform(platform)
+          .getComponent('bal-navigation')
+          .then(() => {
+            return new Promise(resolve => {
+              if ('requestIdleCallback' in window) {
+                ;(window as any).requestIdleCallback(resolve)
+              } else {
+                setTimeout(resolve, 32)
+              }
+            })
+          })
+          .wait(500)
+      })
+
+      it('open menu', () => {
+        cy.contains('Versichern').click()
+        cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
+      })
+    })
+  }
+})

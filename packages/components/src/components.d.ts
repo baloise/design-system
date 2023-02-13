@@ -1517,7 +1517,7 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
@@ -1583,7 +1583,7 @@ export namespace Components {
         /**
           * Color of the menu list card background
          */
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -5186,7 +5186,7 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
@@ -5251,7 +5251,7 @@ declare namespace LocalJSX {
         /**
           * Color of the menu list card background
          */
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */

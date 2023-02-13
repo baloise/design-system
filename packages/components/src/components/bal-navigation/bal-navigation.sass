@@ -154,7 +154,7 @@
       padding-bottom: 1.5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
-      margin-top: 0
+      margin-top: 0 !important
       .column
         padding-top: 0
         padding-bottom: 0
@@ -184,7 +184,7 @@
         padding-bottom: 1rem
       > bal-card >:not(bal-badge):not(bal-tag):first-child
         padding-top: 1rem
-      +modifier(context-grey)
+      +modifiers(context-grey, context-yellow, context-red, context-purple, context-green)
         +touch
           padding-bottom: 1rem
           padding-top: 1rem
