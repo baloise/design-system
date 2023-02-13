@@ -267,6 +267,7 @@ export class Steps implements Loggable {
             class={{
               ...bemStepsNav.element('carousel').class(),
             }}
+            onBalChange={stopEventBubbling}
             controls="small"
             items-per-view="auto"
             steps={3}
