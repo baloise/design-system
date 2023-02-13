@@ -1,6 +1,6 @@
 import BalTabsTest from './bal-tabs.vue'
 
-describe('bal-popover.cy.ts', () => {
+describe('bal-tabs.cy.ts', () => {
   it('should fire change event', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 

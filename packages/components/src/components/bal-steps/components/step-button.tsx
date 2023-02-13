@@ -29,11 +29,12 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobil
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('clickable').class(clickable),
         ...bemEl.modifier('passed').class(item.passed),
-        'data-test-tab-item': true,
       }}
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
+      data-testid="bal-steps-option"
+      aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
       target={item.target}
       onClick={(event: MouseEvent) => onSelectTab(event, item)}
