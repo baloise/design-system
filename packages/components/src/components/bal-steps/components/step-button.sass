@@ -6,7 +6,7 @@
 .bal-steps__nav__item
   display: flex
   box-sizing: border-box
-  gap: 8px
+  gap: 0.5rem
   flex-direction: column
   flex-basis: 1rem
   flex-grow: 1
@@ -28,19 +28,19 @@
     content: " "
     display: block
     position: absolute
-    height: 2px
+    height: var(--bal-border-width-normal)
     left: 50%
     right: -50%
     top: 50%
     background-color: var(--bal-color-border-grey)
     border-radius: var(--bal-radius-rounded)
-    margin-left: 10px
-    margin-right: 20px
+    margin-left: calc(1.5rem - var(--bal-border-width-normal))
+    margin-right: 1.25rem
   +tablet
     &:not(:last-child)::after
       top: 1rem
-      margin-left: 22px
-      margin-right: 24px
+      margin-left: calc(1.5rem - var(--bal-border-width-normal))
+      margin-right: 1.5rem
   &--passed:not(:last-child)::after
     background-color: var(--bal-color-border-primary)
 
@@ -52,20 +52,20 @@
   content: " "
   display: block
   position: absolute
-  height: 2px
+  height: var(--bal-border-width-normal)
   left: 50%
   right: -50%
   top: 50%
   background-color: var(--bal-color-border-grey)
   border-radius: var(--bal-radius-rounded)
-  margin-left: 10px
-  margin-right: 20px
+  margin-left: calc(1.5rem - var(--bal-border-width-normal))
+  margin-right: 1.25rem
 
 .bal-steps__nav__carousel__item:not(:last-child)::after
   +tablet
     top: 1rem
-    margin-left: 22px
-    margin-right: 24px
+    margin-left: calc(1.5rem - var(--bal-border-width-normal))
+    margin-right: 1.5rem
 
 .bal-steps__nav__carousel__item--passed:not(:last-child)::after
   background-color: var(--bal-color-border-primary)
