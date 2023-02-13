@@ -8,7 +8,7 @@
 
 ### Patch Changes
 
-- [#1123](https://github.com/baloise-incubator/design-system/pull/1123) [`b28384b99`](https://github.com/baloise-incubator/design-system/commit/b28384b99c5831d592aeadbaf2888850946cfb8a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - update @baloise/web-app-utils to 3.10.0
+- [#1128](https://github.com/baloise-incubator/design-system/pull/1128) [`a47518315`](https://github.com/baloise-incubator/design-system/commit/b28384b99c5831d592aeadbaf2888850946cfb8a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - update @baloise/web-app-utils to 3.10.0
 
 - [#1127](https://github.com/baloise-incubator/design-system/pull/1127) [`297d9c08b`](https://github.com/baloise-incubator/design-system/commit/297d9c08b3b08c4dbcd4b12fa5e28e587168dc25) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix focus and blur events in bal-checkbox
 
