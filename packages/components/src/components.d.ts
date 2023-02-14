@@ -14,6 +14,7 @@ import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -2273,6 +2274,82 @@ export namespace Components {
          */
         "srcSet": string;
     }
+    interface BalStepItem {
+        /**
+          * Tells if this route is active and overrides the bal-tabs value property.
+         */
+        "active": boolean;
+        /**
+          * If `true` the tab is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the step is marked as done.
+         */
+        "done": boolean;
+        /**
+          * If `true` the step is marked as failed.
+         */
+        "failed": boolean;
+        /**
+          * Options of the tab like label, value etc.
+         */
+        "getOptions": () => Promise<BalStepOption>;
+        /**
+          * If `true` the step is hidden.
+         */
+        "hidden": boolean;
+        /**
+          * Link to path.
+         */
+        "href": string;
+        /**
+          * Label for the tab.
+         */
+        "label": string;
+        /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent": boolean;
+        /**
+          * Sets the tab active.
+         */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * This is the key of the tab.
+         */
+        "value": string;
+    }
+    interface BalSteps {
+        /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable": boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalStepOption | undefined>;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalStepOption[];
+        /**
+          * Go to tab with the given value
+         */
+        "select": (step: BalStepOption) => Promise<void>;
+        /**
+          * Value of the current active step
+         */
+        "value"?: string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -2692,6 +2769,14 @@ export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
 export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSnackbarElement;
+}
+export interface BalStepItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalStepItemElement;
+}
+export interface BalStepsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalStepsElement;
 }
 export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3434,6 +3519,18 @@ declare global {
         prototype: HTMLBalStageImageElement;
         new (): HTMLBalStageImageElement;
     };
+    interface HTMLBalStepItemElement extends Components.BalStepItem, HTMLStencilElement {
+    }
+    var HTMLBalStepItemElement: {
+        prototype: HTMLBalStepItemElement;
+        new (): HTMLBalStepItemElement;
+    };
+    interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+    }
+    var HTMLBalStepsElement: {
+        prototype: HTMLBalStepsElement;
+        new (): HTMLBalStepsElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -3603,6 +3700,8 @@ declare global {
         "bal-stage-foot": HTMLBalStageFootElement;
         "bal-stage-head": HTMLBalStageHeadElement;
         "bal-stage-image": HTMLBalStageImageElement;
+        "bal-step-item": HTMLBalStepItemElement;
+        "bal-steps": HTMLBalStepsElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -5966,6 +6065,74 @@ declare namespace LocalJSX {
          */
         "srcSet": string;
     }
+    interface BalStepItem {
+        /**
+          * Tells if this route is active and overrides the bal-tabs value property.
+         */
+        "active"?: boolean;
+        /**
+          * If `true` the tab is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the step is marked as done.
+         */
+        "done"?: boolean;
+        /**
+          * If `true` the step is marked as failed.
+         */
+        "failed"?: boolean;
+        /**
+          * If `true` the step is hidden.
+         */
+        "hidden"?: boolean;
+        /**
+          * Link to path.
+         */
+        "href"?: string;
+        /**
+          * Label for the tab.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalStepItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * This is the key of the tab.
+         */
+        "value"?: string;
+    }
+    interface BalSteps {
+        /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable"?: boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * Emitted when the changes has finished.
+         */
+        "onBalChange"?: (event: BalStepsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalStepOption[];
+        /**
+          * Value of the current active step
+         */
+        "value"?: string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -6397,6 +6564,8 @@ declare namespace LocalJSX {
         "bal-stage-foot": BalStageFoot;
         "bal-stage-head": BalStageHead;
         "bal-stage-image": BalStageImage;
+        "bal-step-item": BalStepItem;
+        "bal-steps": BalSteps;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -6531,6 +6700,8 @@ declare module "@stencil/core" {
             "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
             "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
+            "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
+            "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
