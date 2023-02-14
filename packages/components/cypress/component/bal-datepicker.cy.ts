@@ -16,6 +16,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     },
   //   })
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .type('{2}')
   //     .type('{.}')
@@ -40,9 +41,9 @@ describe('bal-datepicker.cy.ts', () => {
   //       onBalInput: onBalInputSpy,
   //     },
   //   })
-  //   cy.get('bal-datepicker').find('input.input').click()
-  //   cy.get('bal-datepicker').find('.bal-datepicker-grid__cell--today').click()
-  //   cy.get('bal-datepicker').find('input.input').should('have.value', format('de-CH', now()))
+  //   cy.get('bal-datepicker').waitForComponents().find('input.input').click()
+  //   cy.get('bal-datepicker').waitForComponents().find('.bal-datepicker-grid__cell--today').click()
+  //   cy.get('bal-datepicker').waitForComponents().find('input.input').should('have.value', format('de-CH', now()))
   //   cy.get('@balChange').should('have.been.calledOnce')
   //   cy.get('@balInput').should('not.have.been.called')
   // })
@@ -56,7 +57,7 @@ describe('bal-datepicker.cy.ts', () => {
   //       onBalInput: onBalInputSpy,
   //     },
   //   })
-  //   cy.get('bal-datepicker').find('input.input').should('have.value', '')
+  //   cy.get('bal-datepicker').waitForComponents().find('input.input').should('have.value', '')
   //   cy.get('@balChange').should('not.have.been.called')
   //   cy.get('@balInput').should('not.have.been.called')
   // })
@@ -68,6 +69,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     },
   //   })
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .type('{2}')
   //     .type('{.}')
@@ -94,6 +96,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     },
   //   })
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .type('{9}')
   //     .type('{.}')
@@ -106,6 +109,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .type('{3}')
   //     .type('{enter}')
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('.bal-datepicker-grid__row')
   //     .eq(2)
   //     .find('button')
@@ -113,6 +117,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .should('have.attr', 'disabled')
 
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .clear()
   //     .type('{1}')
@@ -127,6 +132,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .type('{3}')
   //     .type('{enter}')
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('.bal-datepicker-grid__row')
   //     .eq(2)
   //     .find('button')
@@ -134,6 +140,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .should('have.attr', 'disabled') // 10. disabled date
 
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .clear()
   //     .type('{1}')
@@ -148,6 +155,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .type('{3}')
   //     .type('{enter}')
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('.bal-datepicker-grid__row')
   //     .eq(2)
   //     .find('button')
@@ -155,6 +163,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .should('not.have.attr', 'disabled')
 
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .clear()
   //     .type('{0}')
@@ -167,7 +176,13 @@ describe('bal-datepicker.cy.ts', () => {
   //     .type('{0}')
   //     .type('{2}')
   //     .type('{3}')
-  //   cy.get('bal-datepicker').find('.bal-datepicker-grid__row').eq(2).find('button').eq(0).click({ force: true }) // change fired
+  //   cy.get('bal-datepicker')
+  //     .waitForComponents()
+  //     .find('.bal-datepicker-grid__row')
+  //     .eq(2)
+  //     .find('button')
+  //     .eq(0)
+  //     .click({ force: true }) // change fired
 
   //   // cy.get('@balChange').should('have.been.calledThrice')
   //   // cy.get('@balChange').should('not.have.been.called')
@@ -181,6 +196,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     },
   //   })
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('input.input')
   //     .type('{1}')
   //     .type('{5}')
@@ -194,6 +210,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     .type('{3}')
   //     .type('{enter}')
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('.bal-datepicker-grid__row')
   //     .eq(2)
   //     .find('button')
@@ -209,6 +226,7 @@ describe('bal-datepicker.cy.ts', () => {
   //     },
   //   })
   //   cy.get('bal-datepicker')
+  //     .waitForComponents()
   //     .find('.bal-datepicker-pagination__month-and-year__select--year')
   //     .find('select > option')
   //     .last()
@@ -224,6 +242,7 @@ describe('bal-datepicker.cy.ts', () => {
       },
     })
     cy.get('bal-datepicker')
+      .waitForComponents()
       .find('.bal-datepicker-pagination__month-and-year__select--year')
       .find('select > option')
       .first()
