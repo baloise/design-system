@@ -49,11 +49,13 @@ export class DocTokensSpacingSizes implements ComponentInterface {
                     <div class={`pt-${c.name} mt-x-small has-background-green`}></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
+                    <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{parseFloat(c.value.desktop.replace('rem')) * 16}px</span>
+                    <span class={`has-text-weight-bold is-size-small`}>
+                      {parseFloat(c.value.desktop.replace('rem')) * 16}px
+                    </span>
                   </td>
                 </tr>
               ))}

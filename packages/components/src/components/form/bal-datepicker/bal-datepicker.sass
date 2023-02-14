@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 +block(datepicker)
   display: block
@@ -38,8 +38,10 @@
         padding-top: 0 !important
         padding-bottom: 0 !important
         text-align: center !important
+        min-height: 2rem !important
         height: 2rem !important
         +tablet
+          min-height: 3rem !important
           height: 3rem !important
 
 +block(datepicker-grid)
@@ -118,6 +120,6 @@
     & > span
       border: none
       background: transparent
-      color: var(--bal-color-primary)
+      color: var(--bal-color-text-primary)
       font-weight: var(--bal-weight-bold)
       cursor: default

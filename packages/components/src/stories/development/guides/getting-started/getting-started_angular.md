@@ -22,6 +22,34 @@ module.exports = {
 }
 ``` -->
 
+### Setting up Zone.js
+
+To improve the performance of the web components we need to configure zone.js.
+
+To make these changes, you need to create a ´zone-flags.ts´ file, such as the following.
+
+```javascript
+// disable patching requestAnimationFrame
+(window as any).__Zone_disable_requestAnimationFrame = true;
+
+// disable patching custom elements (our web components)
+(window as any).__Zone_disable_customElements = true;
+```
+
+Next, import zone-flags before you import zone.js in the ´polyfills.ts´:
+
+```typescript
+/***************************************************************************************************
+ * Zone JS is required by default for Angular.
+ */
+import './zone-flags'
+import 'zone.js' // Included with Angular CLI.
+```
+
+> **TIP**
+>
+> Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
+
 ## Installation
 
 This section describes how to setup the Baloise Design System with an basic Angular applications.
@@ -72,16 +100,46 @@ npm run copy:fonts
 
 ### Import Styles
 
-Import the `global.sass` Sass file into the main `.sass` file of your application.
+To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
 // change variable before the import
 $font-path: '~assets/fonts';
 
-@import '@baloise/design-system-components/src/styles/global';
+// SASS mixins and variables (optional)
+@import '@baloise/design-system-css/sass/mixins';
 
-// add custom styles below
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
 ```
+
+> **TIP**
+>
+> - The CSS Framework provides CSS files and SASS files, just change the root folder `/css/` to `/sass/`.
+> - Import `@baloise/design-system-css/sass/baloise-design-system` to use the whole CSS Framework.
+> - Use `@import '@baloise/design-system-css/sass/mixins';` in the component stylesheets to use our provided SASS mixins.
 
 ### Import the ngModule
 

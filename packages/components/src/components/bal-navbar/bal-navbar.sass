@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 +block(navbar)
   +unselectable
@@ -44,17 +44,17 @@
         display: none
       +tablet
         display: inline-block
-        font-size: 1rem
+        font-size: var(--bal-size-medium)
         font-family: var(--bal-font-family-title)
-        font-weight: 800
-        color: var(--bal-color-primary-inverted)
+        font-weight: var(--bal-weight-bold)
+        color: var(--bal-color-text-primary-inverted)
       +desktop
-        font-size: 1.25rem
+        font-size: var(--bal-size-medium)
 
     +modifiers(context-app, context-simple)
-      color: var(--bal-color-primary-inverted)
+      color: var(--bal-color-text-primary-inverted)
       & > a
-        color: var(--bal-color-primary-inverted)
+        color: var(--bal-color-text-primary-inverted)
 
   +element(menu)
     position: static
@@ -133,11 +133,12 @@
   // Styling for light (white) background
   +modifiers(is-light)
     background-color: var(--bal-color-white)
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    box-shadow: var(--bal-shadow-normal)
     .bal-navbar__brand__title
-      color: var(--bal-color-primary)
+      color: var(--bal-color-text-primary)
     bal-logo
-      +fillSvg(var(--bal-color-primary))
+      svg
+        +fillSvg(var(--bal-color-primary))
 
 .bal-navbar__brand__burger.bal-button
   margin-left: auto

@@ -13,7 +13,7 @@ export class NavigationLevelBlock implements ComponentInterface {
 
   @Prop() label = ''
   @Prop() value = `block-value-${navigationLevelBlockIds++}`
-  @Prop() color: 'white' | 'grey' = 'white'
+  @Prop() color: Props.BalNavigationLevelBlockColor = 'white'
   @Prop() link?: string = undefined
   @Prop() linkLabel?: string = undefined
   @Prop() target: Props.BalButtonTarget = '_self'

@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 :root
   --bal-popover-backdrop-height: 100vh
@@ -33,7 +33,7 @@
     @extend %overlay
     z-index: 10
     position: fixed
-    background-color: rgba($blue-dark, .8)
+    background-color: rgba($bal-color-primary-6, .8)
     height: var(--bal-popover-backdrop-height)
     width: 100vw
 
@@ -48,7 +48,7 @@
     +modifier(expanded)
       min-width: 100%
     +modifier(no-shadow)
-      box-shadow: none
+      box-shadow: var(--bal-shadow-none)
     +modifier(radius-normal)
       border-radius: var(--bal-radius-normal)
     +modifier(radius-large)
@@ -57,20 +57,20 @@
       border-radius: var(--bal-radius-none)
     +modifier(radius-normal-bottom-none)
       border-radius: var(--bal-radius-normal)
-      border-bottom-right-radius: 0
-      border-bottom-left-radius: 0
+      border-bottom-right-radius: var(--bal-radius-none)
+      border-bottom-left-radius: var(--bal-radius-none)
     +modifier(radius-normal-top-none)
       border-radius: var(--bal-radius-normal)
-      border-top-left-radius: 0
-      border-top-right-radius: 0
+      border-top-left-radius: var(--bal-radius-none)
+      border-top-right-radius: var(--bal-radius-none)
     +modifier(radius-large-bottom-none)
       border-radius: var(--bal-radius-large)
-      border-bottom-right-radius: 0
-      border-bottom-left-radius: 0
+      border-bottom-right-radius: var(--bal-radius-none)
+      border-bottom-left-radius: var(--bal-radius-none)
     +modifier(radius-large-top-none)
       border-radius: var(--bal-radius-large)
-      border-top-left-radius: 0
-      border-top-right-radius: 0
+      border-top-left-radius: var(--bal-radius-none)
+      border-top-right-radius: var(--bal-radius-none)
     +modifier(on-top)
       border-top: 1px solid var(--bal-color-grey-2)
       height: var(--bal-popover-content-height-top-nav)
@@ -124,9 +124,11 @@
   +modifier(tooltip)
     .bal-popover__content
       min-width: unset
-      background: var(--bal-color-blue-6)
-      color: var(--bal-color-white)
-      font-family: var(--bal-font-family-text)
-      font-size: var(--bal-size-small)
+      background: var(--bal-color-primary-6)
       .bal-popover__content__inner
         padding: var(--bal-space-x-small)
+        &,
+        p
+          color: var(--bal-color-white)
+          font-family: var(--bal-font-family-text)
+          font-size: var(--bal-size-small)

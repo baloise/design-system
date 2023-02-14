@@ -18,6 +18,9 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-radio',
+  styleUrls: {
+    css: '../bal-checkbox/radio-checkbox.sass',
+  },
 })
 export class Radio implements ComponentInterface, Loggable {
   private inputId = `bal-rb-${radioIds++}`

@@ -1,5 +1,93 @@
 # @baloise/design-system-components
 
+## 12.7.0
+
+### Minor Changes
+
+- [#1126](https://github.com/baloise-incubator/design-system/pull/1126) [`f944a0729`](https://github.com/baloise-incubator/design-system/commit/f944a0729daeb96ee9a36affecf572a7955c1e24) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add yellow, red, purple and green colors to the navigation level block
+
+### Patch Changes
+
+- [#1128](https://github.com/baloise-incubator/design-system/pull/1128) [`a47518315`](https://github.com/baloise-incubator/design-system/commit/b28384b99c5831d592aeadbaf2888850946cfb8a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - update @baloise/web-app-utils to 3.10.0
+
+- [#1127](https://github.com/baloise-incubator/design-system/pull/1127) [`297d9c08b`](https://github.com/baloise-incubator/design-system/commit/297d9c08b3b08c4dbcd4b12fa5e28e587168dc25) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix focus and blur events in bal-checkbox
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.7.0
+  - @baloise/design-system-fonts@12.7.0
+  - @baloise/design-system-icons@12.7.0
+  - @baloise/design-system-tokens@12.7.0
+
+## 12.6.0
+
+### Minor Changes
+
+- [#1098](https://github.com/baloise-incubator/design-system/pull/1098) [`78ce9869c`](https://github.com/baloise-incubator/design-system/commit/78ce9869c1e071905ef11add4db3c30846a451cd) Thanks [@hirsch88](https://github.com/hirsch88)! - add vscode support for html elements and remove docs components from the build
+
+  - [Configuring VS Code](https://stenciljs.com/docs/docs-vscode#configuring-vs-code)
+
+- [#1084](https://github.com/baloise-incubator/design-system/pull/1084) [`26b23997c`](https://github.com/baloise-incubator/design-system/commit/26b23997c9c4fc72824a60fdf2928b1b82b62f26) Thanks [@hirsch88](https://github.com/hirsch88)! - split CSS-Package into smaller exports and moved to CSS-Variables.
+
+  Replace the import of the `global` SASS file with the CSS-Package.
+
+  **Before**
+
+  ```scss
+  @import '@baloise/design-system-components/src/styles/global';
+  ```
+
+  **After**
+
+  ```scss
+  @import '@baloise/design-system-css/sass/baloise-design-system';
+  ```
+
+  To be more flexible the new CSS exports can be used directly like that:
+
+  ```scss
+  // Resets CSS for all browser
+  @import '@baloise/design-system-css/css/normalize';
+  @import '@baloise/design-system-css/css/structure';
+  // Custom font faces
+  @import '@baloise/design-system-css/sass/font';
+  // Core CSS, always required
+  @import '@baloise/design-system-css/css/core';
+  // Deprecated styles will be removed with the next breaking version (optional)
+  @import '@baloise/design-system-css/sass/legacy';
+
+  // CSS utilities classes (optional)
+  @import '@baloise/design-system-css/css/border';
+  @import '@baloise/design-system-css/css/color';
+  @import '@baloise/design-system-css/css/display';
+  @import '@baloise/design-system-css/css/flex';
+  @import '@baloise/design-system-css/css/grid';
+  @import '@baloise/design-system-css/css/opacity';
+  @import '@baloise/design-system-css/css/radius';
+  @import '@baloise/design-system-css/css/shadow';
+  @import '@baloise/design-system-css/css/spacing';
+  @import '@baloise/design-system-css/css/typography';
+  ```
+
+### Patch Changes
+
+- [#1102](https://github.com/baloise-incubator/design-system/pull/1102) [`0819f32ee`](https://github.com/baloise-incubator/design-system/commit/0819f32eeb69d5c34bfdd8b70f2bbc7cac960276) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - replace hammerjs lib with contactjs
+
+- [#1084](https://github.com/baloise-incubator/design-system/pull/1084) [`a2258fd83`](https://github.com/baloise-incubator/design-system/commit/a2258fd8395160b3733af6e048e731b5ec52b02c) Thanks [@hirsch88](https://github.com/hirsch88)! - refactor global styles and move them to the components
+
+- [#1101](https://github.com/baloise-incubator/design-system/pull/1101) [`af1560a6e`](https://github.com/baloise-incubator/design-system/commit/af1560a6e5ed5abb3bc8ae0f4e7cb1507464634d) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - use tokens in the components instead of hard coded css values
+
+- [#1109](https://github.com/baloise-incubator/design-system/pull/1109) [`8bd20ac03`](https://github.com/baloise-incubator/design-system/commit/8bd20ac0313f799b0f98d5a029b62ba22bbf1929) Thanks [@hirsch88](https://github.com/hirsch88)! - add deepReady support to check all nested child elements
+
+- [#1110](https://github.com/baloise-incubator/design-system/pull/1110) [`76e3abe72`](https://github.com/baloise-incubator/design-system/commit/76e3abe726614424ad9fffaefe872dd8683b7b9d) Thanks [@hirsch88](https://github.com/hirsch88)! - add lazy loading to all image elements
+
+- [#1114](https://github.com/baloise-incubator/design-system/pull/1114) [`d2819d0cf`](https://github.com/baloise-incubator/design-system/commit/d2819d0cf3394a4d2e52b677ebbedde1670ebb1a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix select typeahead closing on click
+
+- Updated dependencies [[`a899f8102`](https://github.com/baloise-incubator/design-system/commit/a899f8102e0e8f4dc6c0f2ce8ce155357de80f32), [`af1560a6e`](https://github.com/baloise-incubator/design-system/commit/af1560a6e5ed5abb3bc8ae0f4e7cb1507464634d), [`26b23997c`](https://github.com/baloise-incubator/design-system/commit/26b23997c9c4fc72824a60fdf2928b1b82b62f26)]:
+  - @baloise/design-system-css@12.6.0
+  - @baloise/design-system-tokens@12.6.0
+  - @baloise/design-system-fonts@12.6.0
+  - @baloise/design-system-icons@12.6.0
+
 ## 12.5.0
 
 ### Minor Changes

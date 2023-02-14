@@ -32,7 +32,7 @@ export interface LevelInfo {
   link?: string
   target?: Props.BalButtonTarget
   linkLabel?: string
-  color?: 'white' | 'grey'
+  color?: Props.BalNavigationLevelBlockColor
   subLevels?: LevelInfo[]
   trackingData?: Attributes
   onClick: (event: MouseEvent) => void

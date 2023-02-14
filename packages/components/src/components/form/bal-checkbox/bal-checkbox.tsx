@@ -27,6 +27,9 @@ import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-checkbox',
+  styleUrls: {
+    css: 'radio-checkbox.sass',
+  },
 })
 export class Checkbox implements ComponentInterface, FormInput<any> {
   private inputId = `bal-cb-${checkboxIds++}`
@@ -219,8 +222,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
-      this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+      this.nativeInput?.focus()
+      this.balChange.emit(this.checked)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)

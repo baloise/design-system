@@ -26,20 +26,11 @@ Add the `bal-app` to your root element. Within this component we are able to use
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baloise Design System</title>
-    <link
-      rel="stylesheet"
-      href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
-    />
-
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
     <script
       type="module"
       src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
@@ -77,49 +68,18 @@ Add the `bal-app` to your root element. Within this component we are able to use
 >
 > Now you can run your server with `npm start` and the server is available under http://127.0.0.1:8080/.
 
-### Install Fonts
-
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
-
-Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
-
-```bash
-npm install copyfiles --save-dev
-```
-
-After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called `copy:fonts` and adjust the second path to your application.
-
-> **CSS**
-> If you use the styles with css than just put the fonts into a public/static folder with the path `assets/fonts`.
-
-Then we add the defined script copy:fonts in our postinstall script. Every time we install dependencies the copy:fonts script gets executed at the end.
-
-```json
-"scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* assets/fonts"
-}
-```
-
-> **TIP**
-> It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
-
 ### CDN
 
 An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
 
 > **TIP**
 > It is recommended to use the version directly and not the latest version to avoid incoming breaking changes.
-> Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts@10/css/fonts.cdn.css`
+> Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-css@10/css/baloise-design-system.css`
 
 Add the following 4 references to your `<head></head>`
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
-/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/css/fonts.cdn.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css" />
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"

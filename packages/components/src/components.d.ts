@@ -637,6 +637,7 @@ export namespace Components {
     }
     interface BalDocBanner {
         "color": string;
+        "shadowDom": boolean;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -958,7 +959,7 @@ export namespace Components {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space": 'none' | 'bottom' | 'top' | 'all';
+        "space"?: 'none' | 'bottom' | 'top' | 'all';
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -1517,7 +1518,7 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
@@ -1583,7 +1584,7 @@ export namespace Components {
         /**
           * Color of the menu list card background
          */
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -4366,6 +4367,7 @@ declare namespace LocalJSX {
     }
     interface BalDocBanner {
         "color"?: string;
+        "shadowDom"?: boolean;
         "subtitle"?: string;
     }
     interface BalDocColor {
@@ -5283,7 +5285,7 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
@@ -5348,7 +5350,7 @@ declare namespace LocalJSX {
         /**
           * Color of the menu list card background
          */
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */

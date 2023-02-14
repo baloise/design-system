@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 :root
   --bal-nav-main-mobile-height: 100vh
@@ -120,8 +120,8 @@
         > div
           align-items: center
         +modifier(active)
-          border-bottom-left-radius: 0 !important
-          border-bottom-right-radius: 0 !important
+          border-bottom-left-radius: var(--bal-radius-none) !important
+          border-bottom-right-radius: var(--bal-radius-none) !important
           transition: border-radius .3s ease-in-out
 
     .bal-nav__main-head-logo
@@ -154,7 +154,7 @@
       padding-bottom: 1.5rem
     .bal-nav__menu__wrapper.columns
       margin-bottom: 0
-      margin-top: 0
+      margin-top: 0 !important
       .column
         padding-top: 0
         padding-bottom: 0
@@ -162,15 +162,15 @@
       display: block
       padding-bottom: 1rem
       > a
-        color: var(--bal-color-blue)
+        color: var(--bal-color-text-primary)
         position: relative
         padding-right: 17px
-        font-size: 0.75rem
+        font-size: var(--bal-size-x-small)
         line-height: 1rem
         font-weight: var(--bal-weight-bold)
         +hover
           &:hover
-            color: var(--bal-color-light-blue-5)
+            color: var(--bal-color-text-light-blue)
             text-decoration: underline
     +element(white-list)
       +widescreen
@@ -184,7 +184,7 @@
         padding-bottom: 1rem
       > bal-card >:not(bal-badge):not(bal-tag):first-child
         padding-top: 1rem
-      +modifier(context-grey)
+      +modifiers(context-grey, context-yellow, context-red, context-purple, context-green)
         +touch
           padding-bottom: 1rem
           padding-top: 1rem
@@ -205,7 +205,7 @@
         +hover
           &:hover
             > bal-heading > h4
-              color: var(--bal-color-light-blue-5)
+              color: var(--bal-color-text-light-blue)
               text-decoration: underline
       +element(item)
         display: block
@@ -214,7 +214,7 @@
           margin-top: .5rem
           +hover
             &:hover
-              color: var(--bal-color-light-blue-5)
+              color: var(--bal-color-text-light-blue)
               text-decoration: underline
       +element(card)
         margin: 0
@@ -256,8 +256,8 @@
       padding-bottom: 1rem
       position: relative
       > a
-        color: var(--bal-color-blue)
-        font-size: 0.75rem
+        color: var(--bal-color-text-primary)
+        font-size: var(--bal-size-x-small)
         font-weight: var(--bal-weight-bold)
         line-height: 1rem
         padding-right: 1rem
@@ -270,7 +270,7 @@
           content: '\279E'
         +hover
           &:hover
-            color: var(--bal-color-light-blue-5)
+            color: var(--bal-color-text-light-blue)
     +element(logo)
       padding-top: 1rem
       padding-bottom: 1rem

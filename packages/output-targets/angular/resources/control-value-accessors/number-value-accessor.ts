@@ -21,7 +21,8 @@ export class NumericValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
   }
-  registerOnChange(fn: (_: number | null) => void) {
+
+  override registerOnChange(fn: (_: number | null) => void) {
     super.registerOnChange(value => {
       fn(value === '' ? null : parseFloat(value))
     })

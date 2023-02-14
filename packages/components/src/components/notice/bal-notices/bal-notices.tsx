@@ -2,6 +2,9 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-notices',
+  styleUrls: {
+    css: 'bal-notices.sass',
+  },
 })
 export class BalNotices {
   /**

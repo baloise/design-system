@@ -4,53 +4,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="/build/design-system-components.css" />
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
+
   <body class="bal-app">
-    <div class="container">
-      <h2 class="title is-size-xx-large">Basic</h2>
-      <section>
-        <span class="icon-text">
-          <span class="icon">
-            <bal-icon data-testid="icon" name="info-circle"></bal-icon>
+    <bal-doc-app>
+      <div class="container">
+        <h2 class="title is-size-xx-large">Basic</h2>
+        <section>
+          <span class="icon-text">
+            <span class="icon">
+              <bal-icon data-testid="icon" name="info-circle"></bal-icon>
+            </span>
+            <span>info-circle</span>
           </span>
-          <span>info-circle</span>
-        </span>
-      </section>
+        </section>
 
-      <h2 class="title is-size-xx-large">Size</h2>
-      <p>Here is how you can change the size:</p>
-      <section>
-        <bal-icon name="date" size="xsmall"></bal-icon>
-        <bal-icon name="date" size="small"></bal-icon>
-        <bal-icon name="date"></bal-icon>
-        <bal-icon name="date" size="medium"></bal-icon>
-        <bal-icon name="date" size="large"></bal-icon>
-        <bal-icon name="date" size="xlarge"></bal-icon>
-      </section>
+        <h2 class="title is-size-xx-large">Size</h2>
+        <p>Here is how you can change the size:</p>
+        <section>
+          <bal-icon name="date" size="xsmall"></bal-icon>
+          <bal-icon name="date" size="small"></bal-icon>
+          <bal-icon name="date"></bal-icon>
+          <bal-icon name="date" size="medium"></bal-icon>
+          <bal-icon name="date" size="large"></bal-icon>
+          <bal-icon name="date" size="xlarge"></bal-icon>
+        </section>
 
-      <h2 class="title is-size-xx-large">Colors</h2>
-      <section>
-        <bal-icon color="primary" name="github"></bal-icon>
-        <bal-icon color="info" name="github"></bal-icon>
-        <bal-icon color="success" name="github"></bal-icon>
-        <bal-icon color="warning" name="github"></bal-icon>
-        <bal-icon color="danger" name="github"></bal-icon>
-      </section>
+        <h2 class="title is-size-xx-large">Colors</h2>
+        <section>
+          <bal-icon color="primary" name="github"></bal-icon>
+          <bal-icon color="info" name="github"></bal-icon>
+          <bal-icon color="success" name="github"></bal-icon>
+          <bal-icon color="warning" name="github"></bal-icon>
+          <bal-icon color="danger" name="github"></bal-icon>
+        </section>
 
-      <h2 class="title is-size-xx-large">Custom Color</h2>
-      <p>Here is how you can change the color:</p>
-      <section>
-        <style type="text/css" scoped>
-          .custom-color {
-            fill: green !important;
-          }
-        </style>
+        <h2 class="title is-size-xx-large">Custom Color</h2>
+        <p>Here is how you can change the color:</p>
+        <section>
+          <style type="text/css" scoped>
+            .custom-color {
+              fill: green !important;
+            }
+          </style>
 
-        <bal-icon class="custom-color" name="check-circle"></bal-icon>
-      </section>
-    </div>
+          <bal-icon class="custom-color" name="check-circle"></bal-icon>
+        </section>
+      </div>
+    </bal-doc-app>
   </body>
 </html>

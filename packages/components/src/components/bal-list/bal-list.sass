@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 .bal-list,
 .bal-list__item,
@@ -56,7 +56,7 @@
   border: none
 
 .bal-list__item__subtitle
-  color: var(--bal-color-primary-5)
+  color: var(--bal-color-text-primary)
 
 .bal-list__item,
 .bal-list__item > a,
@@ -116,8 +116,9 @@
     +hover()
       &:hover
         .bal-list__item__title .title,
+        .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
-          color: var(--bal-color-light-blue-5) !important
+          color: var(--bal-color-text-light-blue) !important
 
         .bal-list__item__icon
           svg,
@@ -128,9 +129,10 @@
 
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
-          color: var(--bal-color-blue-6) !important
+          color: var(--bal-color-text-primary-dark) !important
 
       .bal-list__item__icon
         svg,
@@ -138,7 +140,7 @@
         svg path,
         svg circle
           +desktop()
-            fill: var(--bal-color-blue-6) !important
+            fill: var(--bal-color-primary-6) !important
 
     &:focus-visible
       box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-6) 0 0 0 5px !important
@@ -148,8 +150,9 @@
 .bal-list--background-dark
   .bal-list__item
     .bal-list__item__title .title,
+    .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
-      color: var(--bal-color-white)
+      color: var(--bal-color-text-white)
 
   .bal-list__item__icon
     svg,
@@ -165,6 +168,7 @@
     +hover()
       &:hover
         .bal-list__item__title .title,
+        .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
           color: var(--bal-color-light-blue-2) !important
 
@@ -177,6 +181,7 @@
 
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
           color: var(--bal-color-light-blue-4) !important
@@ -190,7 +195,7 @@
             fill: var(--bal-color-light-blue-4) !important
 
     &:focus-visible
-      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow-3) 0 0 0 5px !important
+      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow) 0 0 0 5px !important
       &:after
         content: none !important
 
@@ -237,7 +242,7 @@
     a:not(.is-link):active:after,
     button:not(.button):active:after
       +desktop()
-        background: var(--bal-color-blue-6)
+        background: var(--bal-color-primary-6)
 
   &.bal-list--background-color
     .bal-list__item
@@ -281,8 +286,9 @@
   a:not(.is-link),
   button:not(.button)
     .bal-list__item__title .title,
+    .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
-      color: var(--bal-color-grey-5) !important
+      color: var(--bal-color-text-grey) !important
 
     .bal-list__item__icon
       svg,
@@ -299,8 +305,9 @@
     &:hover,
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
-        color: var(--bal-color-grey-5) !important
+        color: var(--bal-color-text-grey) !important
 
       .bal-list__item__icon
         svg,
@@ -318,6 +325,7 @@
     &:hover,
     &:active
       .bal-list__item__title .title,
+      .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         color: var(--bal-color-primary-4) !important
 
@@ -428,7 +436,7 @@
   padding-left: 1rem
 
 .bal-list--background-dark .bal-list__item__accordion-body .bal-list__item__content > p
-  color: var(--bal-color-white)
+  color: var(--bal-color-text-white)
 
 .bal-list__item--animated > .bal-list__item__trigger
   transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)

@@ -89,7 +89,7 @@ const tokens = {
     // INFO
     'info-1': { hex: '#e8f1fb', inverted: 'primary', description: descriptions.color.alert },
     'info-2': { hex: '#a4c9ed', inverted: 'primary', description: descriptions.color.alert },
-    'info-3': { hex: '#60a0e0', inverted: 'primary', description: descriptions.color.alert },
+    'info-3': { hex: '#60a0e0', inverted: 'white', description: descriptions.color.alert },
     'info-4': { hex: '#1c77d2', inverted: 'white', description: descriptions.color.alert },
     'info-5': { hex: '#155ba3', inverted: 'white', description: descriptions.color.alert },
     'info-6': { hex: '#0e457b', inverted: 'white', description: descriptions.color.alert },
@@ -97,7 +97,7 @@ const tokens = {
     // SUCCESS
     'success-1': { hex: '#e8f3ec', inverted: 'primary', description: descriptions.color.alert },
     'success-2': { hex: '#a1cfb3', inverted: 'primary', description: descriptions.color.alert },
-    'success-3': { hex: '#5bab7a', inverted: 'primary', description: descriptions.color.alert },
+    'success-3': { hex: '#5bab7a', inverted: 'white', description: descriptions.color.alert },
     'success-4': { hex: '#168741', inverted: 'white', description: descriptions.color.alert },
     'success-5': { hex: '#116b34', inverted: 'white', description: descriptions.color.alert },
     'success-6': { hex: '#0b5227', inverted: 'white', description: descriptions.color.alert },
@@ -113,7 +113,7 @@ const tokens = {
     // DANGER
     'danger-1': { hex: '#fce8e6', inverted: 'primary', description: descriptions.color.alert },
     'danger-2': { hex: '#f7a299', inverted: 'primary', description: descriptions.color.alert },
-    'danger-3': { hex: '#f05d4d', inverted: 'primary', description: descriptions.color.alert },
+    'danger-3': { hex: '#f05d4d', inverted: 'white', description: descriptions.color.alert },
     'danger-4': { hex: '#ea1800', inverted: 'white', description: descriptions.color.alert },
     'danger-5': { hex: '#cb1501', inverted: 'white', description: descriptions.color.alert },
     'danger-6': { hex: '#a01100', inverted: 'white', description: descriptions.color.alert },
@@ -149,9 +149,17 @@ const tokens = {
     'rounded': { value: '9999px' },
   },
   shadow: {
-    none: { value: 'none' },
-    normal: { value: '0 0 10px 0 rgba(0, 7, 57, 0.15)' },
-    large: { value: '0 0 30px 0 rgba(0, 7, 57, 0.15)' },
+    box: {
+      none: { value: 'none' },
+      normal: { value: '0 0 10px 0 rgba(0, 7, 57, 0.15)' },
+      large: { value: '0 0 30px 0 rgba(0, 7, 57, 0.15)' },
+    },
+    text: {
+      none: { value: 'none' },
+      normal: {
+        value: '0px 0px 4px rgba(0, 0, 0, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.25), 0px 0px 80px rgba(0, 0, 0, 0.5)',
+      },
+    },
   },
   spacing: {
     'auto': {
@@ -539,7 +547,10 @@ export interface BaloiseDesignTokens {
     desktop: string
   }
   radius: BaloiseDesignTokenValues
-  shadow: BaloiseDesignTokenValues
+  shadow: {
+    box: BaloiseDesignTokenValues
+    text: BaloiseDesignTokenValues
+  }
   spacing: {
     [key: string]: {
       mobile: string

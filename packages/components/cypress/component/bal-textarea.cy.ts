@@ -26,6 +26,7 @@ describe('bal-textarea.cy.ts', () => {
         onBalKeyPress: onBalKeyPressSpy,
       },
     })
+    cy.get('bal-textarea').waitForComponents()
   })
 
   it('should only call balInput and no balChange, because the input has still the focus', () => {

@@ -51,31 +51,31 @@ export class DocTokensFontSizes implements ComponentInterface {
                     <span class={`title is-size-${c.name}`}>Aa</span>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-none mb-x-small">
+                    <p class="has-text-weight-bold is-size-large mt-none mb-x-small">
                       {c.name} <span class="is-size-medium">({c.value.figmaName})</span>
                     </p>
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-size-{c.name})
                     </p>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-line-height-{c.name})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{c.value.mobile.fontSize}</span>
+                    <span class={`has-text-weight-bold is-size-small`}>{c.value.mobile.fontSize}</span>
                     <br />
                     <span class={`is-size-small`}>{c.value.mobile.lineHeight}</span>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{c.value.tablet.fontSize}</span>
+                    <span class={`has-text-weight-bold is-size-small`}>{c.value.tablet.fontSize}</span>
                     <br />
                     <span class={`is-size-small`}>{c.value.tablet.lineHeight}</span>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <span class={`is-bold is-size-small`}>{c.value.desktop.fontSize}</span>
+                    <span class={`has-text-weight-bold is-size-small`}>{c.value.desktop.fontSize}</span>
                     <br />
                     <span class={`is-size-small`}>{c.value.desktop.lineHeight}</span>
                   </td>

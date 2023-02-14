@@ -143,11 +143,21 @@ export class CarouselItem implements ComponentInterface {
           onClick={this.onClick}
         >
           {this.src !== undefined ? (
-            <img class={{ ...image.class() }} draggable={false} onDragStart={() => false} src={this.src} />
+            <img
+              class={{ ...image.class() }}
+              loading="lazy"
+              draggable={false}
+              onDragStart={() => false}
+              src={this.src}
+            />
           ) : (
             ''
           )}
-          {this.label !== undefined ? <span class={{ ...label.class(), 'is-bold': true }}>{this.label}</span> : ''}
+          {this.label !== undefined ? (
+            <span class={{ ...label.class(), 'has-text-weight-bold': true }}>{this.label}</span>
+          ) : (
+            ''
+          )}
           <slot></slot>
         </TagType>
       </Host>

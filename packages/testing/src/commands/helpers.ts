@@ -79,7 +79,7 @@ export const areComponentsReady = ($el: any) => {
   const queue = []
   for (let index = 0; index < $el.length; index++) {
     const element = $el[index]
-    queue.push(deepReady(element))
+    queue.push(deepReady(element, true))
   }
   return Promise.all(queue)
 }

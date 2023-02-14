@@ -67,6 +67,7 @@
     "@angular/forms": "~13.3.12",
     "@angular/platform-browser": "~13.3.12",
     "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "~17.3.0",
     "@commitlint/config-conventional": "~17.3.0",
     "@rollup/plugin-commonjs": "~22.0.1",
@@ -84,7 +85,6 @@
     "@storybook/vue3": "~6.5.15",
     "@types/big.js": "~6.1.6",
     "@types/chai": "~4.3.4",
-    "@types/hammerjs": "^2.0.41",
     "@types/jquery": "~3.5.6",
     "@types/lodash.camelcase": "~4.3.6",
     "@types/lodash.capitalize": "~4.2.6",
@@ -107,8 +107,10 @@
     "archiver": "~5.3.0",
     "axe-core": "~4.6.1",
     "change-case": "~4.1.2",
+    "clean-css-cli": "^5.6.2",
     "compression": "^1.7.4",
     "concurrently": "~7.6.0",
+    "contactjs": "^2.1.5",
     "conventional-changelog-conventionalcommits": "~5.0.0",
     "copyfiles": "^2.4.1",
     "cspell": "~6.18.0",
@@ -127,13 +129,16 @@
     "http-server": "~14.1.1",
     "husky": "~8.0.2",
     "js-beautify": "~1.14.7",
+    "jsdom": "^21.1.0",
     "lint-staged": "~13.1.0",
     "lodash.camelcase": "~4.3.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isdate": "^4.0.1",
     "lodash.isequal": "^4.5.0",
     "lodash.upperfirst": "~4.3.1",
+    "minireset.css": "~0.0.7",
     "ng-packagr": "~13.3.1",
+    "normalize.css": "~8.0.1",
     "param-case": "~3.0.4",
     "pascal-case": "~3.1.2",
     "postcss": "^8.4.20",
@@ -160,8 +165,5 @@
     "vue": "^3.2.45",
     "workbox-build": "~4.3.1",
     "zone.js": "~0.11.4"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.26.0"
   }
 }

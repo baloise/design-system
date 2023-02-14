@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 +block(data)
   position: relative
@@ -28,7 +28,7 @@
 
   &.is-disabled .bal-data-label,
   &.is-disabled .bal-data-value
-    color: var(--bal-text-light)
+    color: var(--bal-color-text-grey-dark)
 
   +modifier(has-border)
     border-bottom: 1px solid var(--bal-color-grey-2)
@@ -36,12 +36,12 @@
 +block(data-label)
   position: relative
   display: block
-  color: var(--bal-color-blue)
+  color: var(--bal-color-text-primary)
   flex: 1 1
   flex-basis: 100%
 
   font-family: var(--bal-family-primary)
-  font-weight: $weight-bold
+  font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
   hyphens: auto
@@ -50,7 +50,7 @@
     margin-left: 8px
     position: absolute
     top: -3px
-    font-weight: $weight-normal
+    font-weight: var(--bal-weight-regular)
 
 +block(data-value)
   display: block
@@ -61,14 +61,14 @@
   overflow: visible !important
 
   font-family: var(--bal-family-primary)
-  font-weight: $weight-bold
+  font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
 
   &,
   & > div
     font-family: var(--bal-family-primary)
-    font-weight: $weight-normal
+    font-weight: var(--bal-weight-regular)
     font-size: var(--bal-size-normal)
     line-height: 1.25rem
     hyphens: auto
@@ -129,7 +129,7 @@
     gap: 8px
 
     &.has-border
-      border-bottom: 1px solid var(--bal-color-blue-2)
+      border-bottom: 1px solid var(--bal-color-primary-2)
 
     & > *
       flex-wrap: wrap

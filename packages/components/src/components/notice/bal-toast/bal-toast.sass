@@ -1,10 +1,32 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
-@import '../../../styles/mixins/_all'
+@import '@baloise/design-system-css/sass/mixins'
 
 +block(toast)
-  +alert-wrapper
+  +unselectable
+  display: inline-flex
+  position: relative
+  flex-grow: 0 !important
+  width: 100%
   +element(inner)
-    +alert-inner(var(--bal-color-info-2))
+    min-height: 56px
+    border-radius: var(--bal-radius-large)
+    font-size: var(--bal-size-normal)
+    font-family: var(--bal-font-family-text)
+    background: var(--bal-color-white)
+    +modifier(is-primary)
+      background: var(--bal-color-white)
+    +modifier(is-info)
+      background: var(--bal-color-info-2)
+    +modifier(is-danger)
+      background: var(--bal-color-danger-2)
+    +modifier(is-warning)
+      background: var(--bal-color-warning-2)
+    +modifier(is-success)
+      background: var(--bal-color-success-2)
+    position: relative
+    display: inline-flex
+    flex-grow: 1
+    margin: 0.5rem 0 0 0
+    box-shadow: var(--bal-shadow-normal)
     +padding('normal')
     // responsive
     +tablet
@@ -18,7 +40,7 @@
     hyphens: auto
 
 .bal-toast__close.bal-close
-  +alert-close
+  position: absolute
   top: 50%
   right: 1rem
   margin-top: -0.75rem

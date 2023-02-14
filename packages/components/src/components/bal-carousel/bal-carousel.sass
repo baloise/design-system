@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 @import './bal-carousel.vars'
 
 .bal-carousel
@@ -30,7 +30,7 @@
 
 .bal-carousel__item
   text-align: center
-  font-size: 18px
+  font-size: var(--bal-size-large)
   min-height: 2rem
   display: flex
   justify-content: center
@@ -225,7 +225,7 @@
     pointer-events: none
   .bal-carousel__item__button__label
     font-weight: var(--bal-weight-bold)
-    color: var(--bal-color-primary)
+    color: var(--bal-color-text-primary)
     font-size: var(--bal-size-normal)
     hyphens: auto
     height: 56px

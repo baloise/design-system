@@ -10,7 +10,7 @@ const BaloiseDesignToken = require('../packages/tokens/.tmp/index.js').BaloiseDe
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/css");
-const SASS_PATH = path.join(PACKAGE, 'scss/generated')
+const SASS_PATH = path.join(PACKAGE, 'src/generated')
 
 async function main() {
   generateBackgroundColors()
@@ -140,9 +140,14 @@ async function generateRadius() {
 async function generateShadow() {
   const shadow = BaloiseDesignToken.shadow
   const lines = []
-  for (const r in shadow) {
+  for (const r in shadow.box) {
     lines.push(`.has-shadow${parseKey(r)}`)
     lines.push(`  box-shadow: var(--bal-shadow${parseKey(r)}) !important`)
+    lines.push(``)
+  }
+  for (const r in shadow.text) {
+    lines.push(`.has-text-shadow${parseKey(r)}`)
+    lines.push(`  text-shadow: var(--bal-text-shadow${parseKey(r)}) !important`)
     lines.push(``)
   }
   await file.write(path.join(SASS_PATH, 'shadow.helpers.sass'), [...lines, ''].join('\n'))
@@ -152,39 +157,50 @@ async function generateTypography() {
   const sizes = BaloiseDesignToken.typography.sizes
   const spacing = BaloiseDesignToken.spacing
   const lines = []
+  const legacyLines = []
 
-  function createCssClasses(key, fontSize, lineHeight, space, legacy, indent = '') {
-    return `${indent}.is-size-${key},
-  ${indent}.is-size-${legacy}
-    ${indent}+typography(${fontSize}, ${lineHeight}, ${space})`
+  function createCssClasses(key, size, space, indent = '') {
+    return `${indent}.is-size-${key}
+${indent}  font-size: var(--bal-size-${size})
+${indent}  line-height: var(--bal-line-height-${size})
+${indent}  &:not(:last-child)
+${indent}    margin-bottom: var(--bal-space-${space})`
   }
 
   for (const k in sizes) {
     const sizeMobile = sizes[k].mobile
-    const spaceMobile = spacing[sizeMobile.spacing].mobile
+    lines.push(createCssClasses(k, k, sizeMobile.spacing))
+
     const legacy = sizes[k].legacy
-    lines.push(createCssClasses(k, sizeMobile.fontSize, sizeMobile.lineHeight, spaceMobile, legacy))
+    legacyLines.push(createCssClasses(legacy, k, sizeMobile.spacing))
   }
 
   lines.push('')
+  legacyLines.push('')
   lines.push('+tablet')
+  legacyLines.push('+tablet')
   for (const k in sizes) {
     const sizeTablet = sizes[k].tablet
-    const spaceTablet = spacing[sizeTablet.spacing].tablet
+    lines.push(createCssClasses(k, `tablet-${k}`, sizeTablet.spacing, '  '))
+
     const legacy = sizes[k].legacy
-    lines.push(createCssClasses(k, sizeTablet.fontSize, sizeTablet.lineHeight, spaceTablet, legacy, '  '))
+    legacyLines.push(createCssClasses(legacy, `tablet-${k}`, sizeTablet.spacing, '  '))
   }
 
   lines.push('')
+  legacyLines.push('')
   lines.push('+desktop')
+  legacyLines.push('+desktop')
   for (const k in sizes) {
     const sizeDesktop = sizes[k].desktop
-    const spaceDesktop = spacing[sizeDesktop.spacing].desktop
+    lines.push(createCssClasses(k, `desktop-${k}`, sizeDesktop.spacing, '  '))
+
     const legacy = sizes[k].legacy
-    lines.push(createCssClasses(k, sizeDesktop.fontSize, sizeDesktop.lineHeight, spaceDesktop, legacy, '  '))
+    legacyLines.push(createCssClasses(legacy, `desktop-${k}`, sizeDesktop.spacing, '  '))
   }
 
   await file.write(path.join(SASS_PATH, 'typography.helpers.sass'), [...lines, ''].join('\n'))
+  await file.write(path.join(SASS_PATH, 'typography.legacy.helpers.sass'), [...legacyLines, ''].join('\n'))
 }
 
 function parseKey(key) {

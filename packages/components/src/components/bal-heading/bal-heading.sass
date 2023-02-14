@@ -1,46 +1,65 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
+
+// Heading
+// --------------------------------------------------
 
 .bal-heading
   display: block
   position: static
   margin: 0
 
+// Heading Sizes
+// --------------------------------------------------
+
+.bal-heading:not(:last-child)
+  margin-bottom: var(--bal-space-x-small)
+
+.bal-heading.bal-heading--level-display:not(:last-child)
+  margin-bottom: var(--bal-space-normal)
+
+.bal-heading--space-all,
+.bal-heading--space-top
+  margin-top: var(--bal-space-x-small)
+
+.bal-heading--space-all,
+.bal-heading--space-bottom
+  margin-bottom: var(--bal-space-x-small)
+
 .bal-heading--level-display.bal-heading--space-all,
-.bal-heading--level-display.bal-heading--space-top,
-.bal-heading--level-display-2.bal-heading--space-all,
-.bal-heading--level-display-2.bal-heading--space-top
+.bal-heading--level-display.bal-heading--space-top
   margin-top: var(--bal-space-normal)
 
 .bal-heading--level-display.bal-heading--space-all,
-.bal-heading--level-display.bal-heading--space-bottom,
-.bal-heading--level-display-2.bal-heading--space-all,
-.bal-heading--level-display-2.bal-heading--space-bottom
+.bal-heading--level-display.bal-heading--space-bottom
   margin-bottom: var(--bal-space-normal)
 
-.bal-heading--level-h1.bal-heading--space-all,
-.bal-heading--level-h1.bal-heading--space-top
-  margin-top: var(--bal-space-small)
+// Native Heading Element
+// --------------------------------------------------
 
-.bal-heading--level-h1.bal-heading--space-all,
-.bal-heading--level-h1.bal-heading--space-bottom
-  margin-bottom: var(--bal-space-small)
+.bal-heading__text
+  margin: 0 !important
+  padding: 0
+  color: var(--bal-color-text-primary)
+  font-weight: var(--bal-weight-bold)
+  font-family: var(--bal-font-family-title)
 
-.bal-heading--level-h2.bal-heading--space-all,
-.bal-heading--level-h2.bal-heading--space-top,
-.bal-heading--level-h3.bal-heading--space-all,
-.bal-heading--level-h3.bal-heading--space-top,
-.bal-heading--level-h4.bal-heading--space-all,
-.bal-heading--level-h4.bal-heading--space-top,
-.bal-heading--level-h5.bal-heading--space-all,
-.bal-heading--level-h5.bal-heading--space-top
-  margin-top: var(--bal-space-x-small)
+// Heading Modifiers
+// --------------------------------------------------
 
-.bal-heading--level-h2.bal-heading--space-all,
-.bal-heading--level-h2.bal-heading--space-bottom,
-.bal-heading--level-h3.bal-heading--space-all,
-.bal-heading--level-h3.bal-heading--space-bottom,
-.bal-heading--level-h4.bal-heading--space-all,
-.bal-heading--level-h4.bal-heading--space-bottom,
-.bal-heading--level-h5.bal-heading--space-all,
-.bal-heading--level-h5.bal-heading--space-bottom
-  margin-bottom: var(--bal-space-x-small)
+.bal-heading__text--subtitle
+  font-weight: var(--bal-weight-light)
+
+.bal-heading__text--shadow
+  text-shadow: var(--bal-text-shadow-normal)
+
+.bal-heading__text--color-white
+  color: var(--bal-color-text-white)
+
+.bal-heading__text--color-success
+  color: var(--bal-color-text-success)
+
+.bal-heading__text--color-warning
+  color: var(--bal-color-text-warning)
+
+.bal-heading__text--color-danger
+  color: var(--bal-color-text-danger)

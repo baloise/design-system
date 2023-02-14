@@ -37,3 +37,43 @@ Cypress.Commands.add('disableAnimation', () => {
     ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
+
+export const deepReady = async (el: any | undefined, full = false): Promise<void> => {
+  const element = el as any
+  if (element) {
+    if (element.componentOnReady !== null && element.componentOnReady !== undefined) {
+      const stencilEl = await element.componentOnReady()
+      if (!full && stencilEl !== null && stencilEl !== undefined) {
+        return
+      }
+    }
+    await Promise.all(Array.from(element.children).map(child => deepReady(child, full)))
+  }
+}
+
+Cypress.Commands.add(
+  'waitForComponents',
+  {
+    prevSubject: 'element',
+  },
+  (subject, options?: Partial<Cypress.Loggable>) => {
+    return cy
+      .wrap(subject, options)
+      .then(($el: any) => deepReady($el, true))
+      .wait(100, { log: false })
+      .wrap(subject, options)
+  },
+)
+
+Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: string, asEventName?: string) => {
+  if (asEventName === undefined) {
+    asEventName = event
+  }
+  Cypress.log({
+    $el: subject as any,
+    type: 'parent',
+    displayName: 'spyEvent',
+    message: `${event} as @${asEventName}`,
+  })
+  return cy.wrap(subject, { log: false }).then($el => $el.on(event, cy.spy().as(asEventName))) as any
+})

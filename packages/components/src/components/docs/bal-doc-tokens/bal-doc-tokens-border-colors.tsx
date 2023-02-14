@@ -31,15 +31,15 @@ export class DocTokensBorderColors implements ComponentInterface {
                     <div class={`has-border-${c}`} style={{ width: '24px', height: '24px' }}></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large m-none">{c}</p>
+                    <p class="has-text-weight-bold is-size-large m-none">{c}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-color-border-{c})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class={`mt-none mb-x-small is-size-small is-bold py-xx-small`}>{values[i]}</p>
+                    <p class={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{values[i]}</p>
                   </td>
                 </tr>
               ))}

@@ -158,11 +158,6 @@ function generateColors(){
     }
   }
 
-  const typographyColors = BaloiseDesignToken.typography.colors
-  for (const color in typographyColors) {
-    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
-  }
-
   const borderColors = BaloiseDesignToken.border.colors
   for (const color in borderColors) {
     addToken(`color-border-${color}`, `border-${color}`, newAlias(`color-${borderColors[color]}`), colors[borderColors[color]].hex)
@@ -172,6 +167,12 @@ function generateColors(){
     if(colors[color].inverted) {
       addToken(`color-${color}-inverted`, `${color}-inverted`, newAlias(`color-${colors[color].inverted}`), colors[colors[color].inverted].hex)
     }
+  }
+
+  const typographyColors = BaloiseDesignToken.typography.colors
+  for (const color in typographyColors) {
+    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
+    addToken(`color-text-${color}-inverted`, `text-${color}-inverted`, newAlias(`color-${typographyColors[color]}-inverted`), colors[colors[typographyColors[color]].inverted].hex)
   }
 }
 
@@ -193,8 +194,6 @@ function generateBreakpoints() {
   const breakpoints = BaloiseDesignToken.breakpoint
   for (const breakpoint in breakpoints) {
     addToken(`breakpoint-${breakpoint}`, `breakpoint-${breakpoint}`, breakpoints[breakpoint])
-    // // legacy variable
-    // addToken(breakpoint, breakpoint, breakpoints[breakpoint])
   }
 }
 
@@ -207,21 +206,18 @@ function generateRadius() {
   const radius = BaloiseDesignToken.radius
   for (const r in radius) {
     addToken(`radius${parseKey(r)}`, `radius${parseKey(r)}`, radius[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`radius`, `radius`, radius[r].value)
-    // }
   }
 }
 
 function generateShadows() {
-  const shadow = BaloiseDesignToken.shadow
+  const shadow = BaloiseDesignToken.shadow.box
   for (const r in shadow) {
     addToken(`shadow${parseKey(r)}`, `shadow${parseKey(r)}`, shadow[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`shadow`, `shadow`, shadow[r].value)
-    // }
+  }
+
+  const textShadow = BaloiseDesignToken.shadow.text
+  for (const r in textShadow) {
+    addToken(`text-shadow${parseKey(r)}`, `text-shadow${parseKey(r)}`, textShadow[r].value)
   }
 }
 
