@@ -5,7 +5,6 @@
 
 .bal-steps__nav__item__icon
   position: relative
-  left: calc(50% - 1rem)
   display: flex
   align-items: center
   justify-content: center
@@ -18,9 +17,11 @@
   // Responive Sizes
   height: 1.5rem
   width: 1.5rem
+  left: calc(50% - 0.75rem)
   +tablet
-    height: 1.875rem
-    width: 1.875rem
+    height: 2rem
+    width: 2rem
+    left: calc(50% - 1rem)
     font-size: var(--bal-size-normal)
   //
   // Color status
@@ -43,3 +44,8 @@
     border-color: var(--bal-color-danger)
     background: var(--bal-color-danger)
     color: var(--bal-color-text-white)
+    font-size: var(--bal-size-normal)
+    +tablet
+      font-size: var(--bal-size-tablet-large)
+    +desktop
+      font-size: var(--bal-size-desktop-large)
