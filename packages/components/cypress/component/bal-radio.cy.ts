@@ -43,7 +43,7 @@ describe('bal-radio.cy.ts', () => {
       cy.get('bal-radio').eq(2).find('input').should('not.be.checked')
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balInput').should('have.been.calledOnce')
-      cy.get('@balFocus').should('have.been.callCount', 2)
+      cy.get('@balFocus').should('have.been.callCount', 2) // TODO: should fire balFocus event only once
       cy.get('@balBlur').should('not.have.been.called')
     })
 
