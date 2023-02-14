@@ -53,6 +53,8 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('bal-number-input').find('input').should('have.value', '12')
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balInput').should('have.been.callCount', 2)
+    cy.get('@balFocus').should('have.been.calledOnce')
+    cy.get('@balBlur').should('not.have.been.called')
   })
 
   it('should fire balChange and no balInput, because only the value of the web component is changed', () => {
@@ -88,5 +90,7 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('@click').should('have.been.calledTwice')
     cy.get('@balChange').should('have.been.calledTwice')
     cy.get('@balInput').should('have.been.calledTwice')
+    cy.get('@balFocus').should('have.been.calledTwice')
+    cy.get('@balBlur').should('have.been.calledTwice')
   })
 })
