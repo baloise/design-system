@@ -6,7 +6,6 @@ describe('bal-datepicker.cy.ts', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
     const onBalInputSpy = cy.spy().as('balInput')
     const onBalFocusSpy = cy.spy().as('balFocus')
-    const onClickSpy = cy.spy().as('click')
     const onBalBlurSpy = cy.spy().as('balBlur')
 
     cy.mount(BalDatepicker, {
@@ -15,7 +14,6 @@ describe('bal-datepicker.cy.ts', () => {
         onBalInput: onBalInputSpy,
         onBalFocus: onBalFocusSpy,
         onBalBlur: onBalBlurSpy,
-        onClick: onClickSpy,
       },
     })
 
@@ -33,8 +31,7 @@ describe('bal-datepicker.cy.ts', () => {
 
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
-    cy.get('@click').should('not.have.been.called')
-    cy.get('@balBlur').should('have.been.calledTwice')
+    cy.get('@balBlur').should('have.been.calledOnce')
     cy.get('@balInput').should('have.been.callCount', 8)
   })
 

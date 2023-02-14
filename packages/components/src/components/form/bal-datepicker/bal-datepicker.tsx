@@ -69,6 +69,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-datepicker',
@@ -76,7 +77,7 @@ import { ResizeHandler } from '../../../utils/resize'
     css: 'bal-datepicker.sass',
   },
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable {
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popoverElement!: HTMLBalPopoverElement
@@ -97,6 +98,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     year: getYear(now()),
     month: getMonth(now()),
     day: getDate(now()),
+  }
+
+  log!: LogInstance
+
+  @Logger('bal-datepicker')
+  createLogger(log: LogInstance) {
+    this.log = log
   }
 
   /**
@@ -545,11 +553,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    preventDefault(event)
-
-    if (!this.isPopoverOpen) {
-      this.balBlur.emit()
+    stopEventBubbling(event)
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (!this.isPopoverOpen) {
+        this.balBlur.emit()
+      }
     }
   }
 
