@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 12.7.1
+
+### Patch Changes
+
+- [#1141](https://github.com/baloise-incubator/design-system/pull/1141) [`d53ea8a46`](https://github.com/baloise-incubator/design-system/commit/d53ea8a46196415d856c090f1a1258a64e23cc12) Thanks [@hirsch88](https://github.com/hirsch88)! - fix globalscripts for stackblitz
+
+- [#1136](https://github.com/baloise-incubator/design-system/pull/1136) [`22389ae9b`](https://github.com/baloise-incubator/design-system/commit/22389ae9bdab2d65d68d77b6e65ef24793bfca2f) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust deprecation warning with a better path
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.7.1
+  - @baloise/design-system-fonts@12.7.1
+  - @baloise/design-system-icons@12.7.1
+  - @baloise/design-system-tokens@12.7.1
+
 ## 12.7.0
 
 ### Minor Changes
