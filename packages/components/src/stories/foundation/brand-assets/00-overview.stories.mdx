@@ -1,0 +1,155 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Foundation/Brand Assets/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner subtitle="Foundation" color="yellow">
+  Brand & Assets
+</bal-doc-banner>
+
+<bal-doc-lead></bal-doc-lead>
+
+## Logo
+
+The Baloise logo only appears in blue (positive) and white (negative). In all digital touch points,
+the Baloise logo and shapes appear in their full dynamic and beauty. There are two logo animations available:
+a short version for website and application design, and an extended animation for all AV media applications.
+
+import Logo1 from '../../../../public/assets/images/foundations/brand-assets/logo-1.png'
+import Logo2 from '../../../../public/assets/images/foundations/brand-assets/logo-2.png'
+
+<br />
+<div class="columns">
+  <div class="column is-6">
+    <img src={Logo1} />
+  </div>
+  <div class="column is-6">
+    <img src={Logo2} />
+  </div>
+</div>
+
+## Favicons
+
+To ensure that logos are clearly visible also on small touch points, we show our expression of the logo,
+the Baloise Shape, on a blue background. On top, colored backgrounds are allowed, as well a negative version of the logo.
+
+import FaviconColors from '../../../../public/assets/images/foundations/brand-assets/favicon-colors.svg'
+import FaviconSizes from '../../../../public/assets/images/foundations/brand-assets/favicon-sizes.svg'
+
+### Sizes
+
+<img src={FaviconSizes} />
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <h3 class="title m-none">Colors</h3>
+    <p>
+      We have 6 different colored favicons. The blue is the default / primary one.
+    </p>
+  </div>
+  <div class="column is-8">
+    <img src={FaviconColors} />
+  </div>
+</div>
+
+## Shapes
+
+On digital touchpoint, we use the animated version of the Baloise Shapes to convey a modern and dynamic approach to our brand.
+
+import ShapeSizes from '../../../../public/assets/images/foundations/brand-assets/shape-sizes.png'
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <h3 class="title m-none">Sizes</h3>
+    <p>We use 3 different shape sizes:
+
+- Desktop
+- Tablet
+- Mobile
+
+Each shape can be rotated in 90°, clockwise steps.
+
+</p>
+  </div>
+  <div class="column is-8">
+    <img src={ShapeSizes} />
+  </div>
+</div>
+
+import ShapeTypes from '../../../../public/assets/images/foundations/brand-assets/shape-types.png'
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <h3 class="title m-none">Types</h3>
+    <p>
+      We have 3 different type of shapes that can be randomly combined with one of the four Baloise primary colors (only
+      use Tint 3 of each color). The type of shape can be selected randomly and is not attached to any color.
+    </p>
+  </div>
+  <div class="column is-8">
+    <img src={ShapeTypes} />
+  </div>
+</div>
+
+import ShapePosition from '../../../../public/assets/images/foundations/brand-assets/shape-position.png'
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <h3 class="title m-none">Position</h3>
+    <p>
+   The Baloise Shape should be used in the header area and only once per page as a maximum.
+    </p>
+  </div>
+  <div class="column is-8">
+    <img src={ShapePosition} />
+  </div>
+</div>
+
+import ShapeColors from '../../../../public/assets/images/foundations/brand-assets/shape-colors.png'
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <h3 class="title m-none">Colors</h3>
+    <p>
+ColorsShape color combinations are important to ensure a consistent appearance throughout the brand. Only use the combinations showed in the example.
+    </p>
+  </div>
+  <div class="column is-8">
+    <img src={ShapeColors} />
+  </div>
+</div>
+
+### Don'ts
+
+import ShapeDonts1 from '../../../../public/assets/images/foundations/brand-assets/shape-donts-1.png'
+import ShapeDonts2 from '../../../../public/assets/images/foundations/brand-assets/shape-donts-2.png'
+import ShapeDonts3 from '../../../../public/assets/images/foundations/brand-assets/shape-donts-3.png'
+
+<br />
+<div class="columns">
+  <div class="column is-4">
+    <img src={ShapeDonts1} />
+    <p>Do not mix different foreground and background colors</p>
+  </div>
+  <div class="column is-4">
+    <img src={ShapeDonts2} />
+    <p>Don’t use the wrong shape size</p>
+  </div>
+  <div class="column is-4">
+    <img src={ShapeDonts3} />
+    <p>Don’t use more than one shape per page</p>
+  </div>
+</div>
+
+<bal-doc-github link="/stories/foundation/border-radius/00-overview.stories.mdx"></bal-doc-github>
