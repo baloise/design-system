@@ -1,5 +1,13 @@
 # @baloise/design-system-components-table
 
+## 12.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`d53ea8a46`](https://github.com/baloise-incubator/design-system/commit/d53ea8a46196415d856c090f1a1258a64e23cc12), [`22389ae9b`](https://github.com/baloise-incubator/design-system/commit/22389ae9bdab2d65d68d77b6e65ef24793bfca2f)]:
+  - @baloise/design-system-components@12.7.1
+  - @baloise/design-system-css@12.7.1
+
 ## 12.7.0
 
 ### Patch Changes
