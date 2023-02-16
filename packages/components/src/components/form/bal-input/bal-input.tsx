@@ -220,10 +220,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop({ mutable: true, reflect: true }) value?: string = undefined
 
   /**
-   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
    * Formatting for 'contract-number': '99/1.234.567-1'
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
+   * Formatting for 'be-enterprise-number': ('1234.567.890')
+   * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop() mask?: Props.BalInputMask = undefined
 
