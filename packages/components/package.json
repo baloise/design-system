@@ -75,9 +75,9 @@
     "@baloise/design-system-fonts": "12.7.1",
     "@baloise/design-system-icons": "12.7.1",
     "@baloise/design-system-tokens": "12.7.1",
-    "@baloise/web-app-utils": "3.10.0",
+    "@baloise/web-app-utils": "3.10.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~2.20.0",
+    "@stencil/core": "~3.0.1",
     "big.js": "~6.2.1",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
@@ -92,7 +92,7 @@
     "lodash.round": "~4.0.4",
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
-    "lottie-web": "5.8.1"
+    "lottie-web": "5.10.2"
   },
   "devDependencies": {
     "@baloise/design-system-output-target-angular": "12.7.1",
