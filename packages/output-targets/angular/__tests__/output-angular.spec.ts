@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZo
 import { BalSharedModule } from '../shared';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from 'component-library';
+import { Components, Events } from 'component-library';
 
 
 
@@ -44,7 +44,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZo
 import { BalSharedModule } from '../shared';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '../../angular/dist/types/components';
+import { Components, Events } from '../../angular/dist/types/components';
 
 
 
