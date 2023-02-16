@@ -1,11 +1,6 @@
 import sdk from '@stackblitz/sdk'
 import { loadSourceFiles, parseMarkdown } from './stackblitz.util'
-import {
-  DEFAULT_BALOISE_VERSION,
-  DEFAULT_EDITOR_DESCRIPTION,
-  DEFAULT_EDITOR_TITLE,
-  PLACEHOLDER_IMPORT,
-} from './stackblitz.const'
+import { DEFAULT_EDITOR_DESCRIPTION, DEFAULT_EDITOR_TITLE, PLACEHOLDER_IMPORT } from './stackblitz.const'
 
 interface AngularProject {
   template: string
