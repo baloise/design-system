@@ -20,8 +20,8 @@ export class App implements Loggable {
   }
 
   /**
-   * Mode defines how the styles are loaded. With `css` each component loads his own styles
-   * and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+   * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles
+   * and with `sass` the component styles needs to be imported with the file `components.sass`.
    */
   @Prop({ reflect: true }) mode: BalMode = 'css'
 
