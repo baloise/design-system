@@ -4,15 +4,10 @@
 export * from './utils/config'
 
 /**
- * Types
- */
-export * from './types'
-
-/**
  * Utils
  */
 export { initializeBaloiseDesignSystem } from './initialize'
-export * from './components/form/bal-select/utils/bal-option.util'
+export { NewBalOptionValue, NewBalSingleOptionValue } from './components/form/bal-select/utils/bal-option.util'
 export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './utils/helpers'
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { isBrowser, hasTouchSupport } from './utils/browser'

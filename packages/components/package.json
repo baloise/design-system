@@ -34,7 +34,7 @@
   "jsnext:main": "dist/esm/index.js",
   "collection:main": "dist/collection/index.js",
   "collection": "dist/collection/collection-manifest.json",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/types.d.ts",
   "unpkg": "dist/design-system-components/design-system-components.esm.js",
   "files": [
     "dist/",
