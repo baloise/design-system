@@ -27,6 +27,8 @@ export namespace Props {
 
   export type BalCarouselItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
 
+  export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
+
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget

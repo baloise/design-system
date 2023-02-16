@@ -16,7 +16,7 @@ import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 
-import { Props, Events } from '../../../../types'
+import { Events, Props } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 
 @Component({

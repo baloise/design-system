@@ -1,5 +1,9 @@
 # @baloise/design-system-output-target-angular
 
+## 12.7.1
+
+## 12.7.0
+
 ## 12.6.0
 
 ### Patch Changes

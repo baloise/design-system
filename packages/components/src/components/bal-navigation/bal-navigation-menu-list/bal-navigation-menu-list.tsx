@@ -12,7 +12,7 @@ export class NavigationMenuList {
   /**
    * Color of the menu list card background
    */
-  @Prop() color: 'white' | 'grey' = 'white'
+  @Prop() color: Props.BalNavigationLevelBlockColor = 'white'
   /**
    * Optional headline of the menu list card
    */
@@ -63,7 +63,15 @@ export class NavigationMenuList {
         <bal-card
           class={{ ...navMenuListEl.element('card').class() }}
           flat
-          color={this.color === 'grey' ? this.color : ''}
+          color={
+            this.color === 'grey' ||
+            this.color === 'yellow' ||
+            this.color === 'red' ||
+            this.color === 'purple' ||
+            this.color === 'green'
+              ? this.color
+              : ''
+          }
         >
           <bal-card-content>
             {this.href ? (

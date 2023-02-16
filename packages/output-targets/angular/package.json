@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-angular",
-  "version": "12.6.0",
+  "version": "12.7.1",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -22,7 +22,7 @@
     "@angular/core": ">=13.3.12",
     "@angular/forms": ">=13.3.12",
     "@angular/platform-browser": ">=13.3.12",
-    "@stencil/core": "^2.9.0",
+    "@stencil/core": "^3.0.1",
     "zone.js": ">=0.11.4"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"

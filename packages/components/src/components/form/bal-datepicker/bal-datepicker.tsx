@@ -64,7 +64,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'

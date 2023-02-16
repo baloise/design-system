@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'

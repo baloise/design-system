@@ -22,7 +22,7 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
@@ -222,8 +222,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
-      this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+      this.nativeInput?.focus()
+      this.balChange.emit(this.checked)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)

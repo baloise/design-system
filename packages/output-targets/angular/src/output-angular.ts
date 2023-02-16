@@ -90,4 +90,4 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';\n`
 }
 
 const GENERATED_DTS = 'components.d.ts'
-const IMPORT_TYPES = 'Components'
+const IMPORT_TYPES = 'Components, Events'

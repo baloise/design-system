@@ -1,10 +1,11 @@
 import { Component, h, Host, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalConfigObserver, Props } from '../../types'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import {
   attachComponentToConfig,
+  BalConfigObserver,
   BalConfigState,
   BalIcons,
   defaultConfig,

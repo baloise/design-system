@@ -12,7 +12,7 @@ import {
   Method,
 } from '@stencil/core'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
-import { Props, Events } from '../../../../types'
+import { Events, Props } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 

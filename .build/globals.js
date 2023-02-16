@@ -22,8 +22,8 @@ async function adjustGlobalVar(files){
   try {
     await replace({
       files: files,
-      from: `const global`,
-      to: `const globalImport`,
+      from: `const global =`,
+      to: `const globalImport =`,
     })
     const results = await replace({
       files: files,
