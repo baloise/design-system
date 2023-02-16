@@ -22,7 +22,7 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
