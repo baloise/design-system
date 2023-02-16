@@ -1,4 +1,4 @@
-import { formatClaim, formatOffer, formatPolicy } from '../bal-input-util'
+import { formatClaim, formatOffer, formatPolicy, formatBeEnterpriseNumber, formatBeIBAN } from '../bal-input-util'
 
 describe('bal-input-util testing:', () => {
   describe('formatClaim', () => {
@@ -81,6 +81,58 @@ describe('bal-input-util testing:', () => {
     test('11 characters', () => {
       const result = formatPolicy('90876543278')
       expect(result).toStrictEqual('90/8.765.432-7')
+    })
+  })
+  describe('formatBeEnterpriseNumber', () => {
+    test('full entry:', () => {
+      const result = formatBeEnterpriseNumber('1234567890')
+      expect(result).toStrictEqual('1234.567.890')
+    })
+    test('empty:', () => {
+      const result = formatBeEnterpriseNumber('')
+      expect(result).toStrictEqual('')
+    })
+    test('full entry:', () => {
+      const result = formatBeEnterpriseNumber('0123321123')
+      expect(result).toStrictEqual('0123.321.123')
+    })
+    test('9 characters:', () => {
+      const result = formatBeEnterpriseNumber('987654327')
+      expect(result).toStrictEqual('9876.543.27')
+    })
+    test('11 characters', () => {
+      const result = formatBeEnterpriseNumber('90876543278')
+      expect(result).toStrictEqual('9087.654.327')
+    })
+    describe('formatBeIBAN', () => {
+      test('full entry:', () => {
+        const result = formatBeIBAN('68539007547034')
+        expect(result).toStrictEqual('BE68 5390 0754 7034')
+      })
+      test('empty:', () => {
+        const result = formatBeIBAN('')
+        expect(result).toStrictEqual('')
+      })
+      test('full entry:', () => {
+        const result = formatBeIBAN('11234567890123')
+        expect(result).toStrictEqual('BE11 2345 6789 0123')
+      })
+      test('2 characters:', () => {
+        const result = formatBeIBAN('12')
+        expect(result).toStrictEqual('BE12')
+      })
+      test('4 characters', () => {
+        const result = formatBeIBAN('1234')
+        expect(result).toStrictEqual('BE12 34')
+      })
+      test('8 characters', () => {
+        const result = formatBeIBAN('12345678')
+        expect(result).toStrictEqual('BE12 3456 78')
+      })
+      test('12 characters', () => {
+        const result = formatBeIBAN('123456789012')
+        expect(result).toStrictEqual('BE12 3456 7890 12')
+      })
     })
   })
 })
