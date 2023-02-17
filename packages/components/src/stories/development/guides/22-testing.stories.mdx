@@ -12,17 +12,66 @@ import { Meta } from '@storybook/addon-docs'
 <bal-doc-banner id="testing" subtitle="Development">Testing</bal-doc-banner>
 
 <bal-doc-lead>
-  The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic
-  cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+  The Baloise Design System provides a collection of utility functions to test the web-components. Since the
+  web-components are executed async we need to wait for them in the test.
 </bal-doc-lead>
 
-## Prerequisites
+## Component Testing (Unit)
+
+To write unit test we recommand those tools:
+
+- [Karma + Jasmin](https://angular.io/guide/testing)
+- [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/overview)
+
+### Karma + Jasmin
+
+This is also the the default testing tools of the Angular framework.
+
+```typescript
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
+import { BrowserModule, By } from '@angular/platform-browser'
+import { BalCoreModule, BalInputModule } from '@baloise/design-system-components-angular'
+import { waitForComponent } from '@baloise/design-system-components'
+import { AppComponent } from './app.component'
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [BrowserModule, BalCoreModule.forRoot(), BalInputModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents()
+  })
+
+  it(`should render input value`, async () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.detectChanges()
+
+    // lets wait until all the web-components from this element and
+    // below are ready and rendered
+    await waitForComponent(fixture.nativeElement)
+
+    const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
+    expect(input.nativeElement.value).toContain('My Value')
+  })
+})
+```
+
+Use the `waitForComponent` util function to wait until the web-component tree has fully rendered.
+
+## E2E Testing with Cypress
+
+We provide collection of custom cypress commands for our components. Moreover, some basic
+cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+
+### Prerequisites
 
 For E-2-E testing we recommend to use the testing framework [Cypress](https://www.cypress.io/).
 
 If you are using Vue or Angular please install Cypress with the provided CLI.
 
-## Install testing library
+### Install testing library
 
 Install the library directly from npm.
 
@@ -38,7 +87,7 @@ import '@baloise/design-system-testing'
 
 Now the adjusted commands from the Baloise Design System should be available in your test files.
 
-## Usage
+### Usage
 
 Further documentations for each component commands is documented on the components page.
 
@@ -59,7 +108,7 @@ describe('Accordion', () => {
 })
 ```
 
-## Selectors
+### Selectors
 
 It is recommended to set specific test attributes `data-testid` on the elements to test.
 
@@ -101,9 +150,9 @@ describe('Accordion', () => {
 })
 ```
 
-## Component Commands
+### Component Commands
 
-### getByTestId
+#### getByTestId
 
 Gets the element / component by the attribute `data-testid` and waits until fully loaded.
 
@@ -111,7 +160,7 @@ Gets the element / component by the attribute `data-testid` and waits until full
 cy.getByTestId('button')
 ```
 
-### disableAnimation
+#### disableAnimation
 
 Disables the animation of all the components.
 
@@ -119,7 +168,7 @@ Disables the animation of all the components.
 cy.disableAnimation()
 ```
 
-### getComponent
+#### getComponent
 
 Gets the element / component by jquery selector and waits until fully loaded.
 
@@ -127,7 +176,7 @@ Gets the element / component by jquery selector and waits until fully loaded.
 cy.getComponent('bal-button')
 ```
 
-### wrapComponent
+#### wrapComponent
 
 Wraps the element / component and waits until fully loaded.
 
@@ -135,7 +184,7 @@ Wraps the element / component and waits until fully loaded.
 cy.wrapComponent($el)
 ```
 
-### waitForComponents
+#### waitForComponents
 
 Waits until the component has fully loaded.
 
@@ -143,7 +192,7 @@ Waits until the component has fully loaded.
 cy.get('button').waitForComponents()
 ```
 
-### Viewport / Platform
+#### Viewport / Platform
 
 The `platform` commands allows to switch between the breakpoints of the Design System
 
@@ -153,7 +202,7 @@ cy.platform('tablet')
 cy.platform('desktop')
 ```
 
-## Links
+### Links
 
 - [Testing Package](https://github.com/baloise/design-system/blob/master/packages/testing)
 - [Selectors](https://github.com/baloise/design-system/blob/master/packages/testing/src/selectors.ts)
