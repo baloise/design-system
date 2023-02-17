@@ -4,6 +4,7 @@
   "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
   "words": [
     "stackblitz",
+    "Jasmin",
     "mladenplaninicic",
     "nobilo",
     "Gagne",
