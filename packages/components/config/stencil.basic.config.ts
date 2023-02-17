@@ -31,6 +31,7 @@ export const StencilBaseConfig: Config = {
   outputTargets: [
     {
       type: 'dist-custom-elements',
+      generateTypeDeclarations: true,
     },
     {
       type: 'docs-vscode',
