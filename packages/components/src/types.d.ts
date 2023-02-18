@@ -1,5 +1,4 @@
-export { Components, JSX } from './components'
-export * from './index'
+export * from './interfaces'
 export { Props } from './props'
 export { Events } from './events'
 

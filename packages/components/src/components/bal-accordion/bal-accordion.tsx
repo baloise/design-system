@@ -95,7 +95,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * Emitted when the accordion has opened or closed
    */
-  @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalAccordionChangeDetail>
 
   /**
    * LIFECYCLE

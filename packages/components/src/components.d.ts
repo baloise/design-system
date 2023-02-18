@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
+import { Events, Props } from "./types";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
@@ -15,8 +15,8 @@ import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { Events, Props } from "./types";
 export { BalMode } from "./utils/config";
+export { Events, Props } from "./types";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
@@ -84,7 +84,7 @@ export namespace Components {
         /**
           * Define the alert color for the badge.
          */
-        "color": Props.BalBadgeColor;
+        "color": BalProps.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -92,11 +92,11 @@ export namespace Components {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position": Props.BalBadgePosition;
+        "position": BalProps.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size": Props.BalBadgeSize;
+        "size": BalProps.BalBadgeSize;
     }
     interface BalButton {
         /**
@@ -3645,7 +3645,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
+        "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -3675,7 +3675,7 @@ declare namespace LocalJSX {
         /**
           * Define the alert color for the badge.
          */
-        "color"?: Props.BalBadgeColor;
+        "color"?: BalProps.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -3683,11 +3683,11 @@ declare namespace LocalJSX {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position"?: Props.BalBadgePosition;
+        "position"?: BalProps.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: Props.BalBadgeSize;
+        "size"?: BalProps.BalBadgeSize;
     }
     interface BalButton {
         /**

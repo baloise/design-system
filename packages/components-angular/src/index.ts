@@ -22,3 +22,8 @@ export { BalSharedModule } from './shared'
 
 // HELPERS
 export { element, parseCustomEvent, ProxyComponent } from './helpers'
+
+const bubu: BalProps.BalAccordionColor = 'primary'
+const bub2: BalProps.BalBadgeColor = 'danger'
+console.log(bubu)
+console.log(bub2)
