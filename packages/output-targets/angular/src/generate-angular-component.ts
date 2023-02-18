@@ -58,7 +58,7 @@ export class ${tagNameAsPascal} {`,
     // Generate outputs
     outputs.forEach(output => {
       lines.push(`  /** ${output.docs.text} ${output.docs.tags.map(tag => `@${tag.name} ${tag.text}`)}*/`)
-      lines.push(`  ${output.name}!: EventEmitter<CustomEvent<${output.complexType.resolved}>>;`)
+      lines.push(`  ${output.name}!: EventEmitter<CustomEvent<${output.complexType.original}>>;`)
     })
 
     lines.push('  protected el: HTMLElement;')
