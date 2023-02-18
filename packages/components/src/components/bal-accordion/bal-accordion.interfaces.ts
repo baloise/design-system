@@ -10,7 +10,7 @@ namespace BalProps {
 namespace BalEvents {
   export type BalAccordionChangeDetail = boolean
 
-  export interface AccordionGroupCustomEvent extends CustomEvent {
+  export interface BalAccordionChangeCustomEvent extends CustomEvent {
     detail: BalAccordionChangeDetail
     target: HTMLBalAccordionElement
   }
