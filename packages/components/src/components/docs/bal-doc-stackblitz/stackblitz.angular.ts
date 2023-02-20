@@ -1,11 +1,6 @@
 import sdk from '@stackblitz/sdk'
 import { loadSourceFiles, parseMarkdown } from './stackblitz.util'
-import {
-  DEFAULT_BALOISE_VERSION,
-  DEFAULT_EDITOR_DESCRIPTION,
-  DEFAULT_EDITOR_TITLE,
-  PLACEHOLDER_IMPORT,
-} from './stackblitz.const'
+import { DEFAULT_EDITOR_DESCRIPTION, DEFAULT_EDITOR_TITLE, PLACEHOLDER_IMPORT } from './stackblitz.const'
 
 interface AngularProject {
   template: string
@@ -97,8 +92,8 @@ export const openAngularProject = async (project: AngularProject) => {
         'tsconfig.json': tsconfig_json,
       },
       dependencies: {
-        '@baloise/design-system-components': DEFAULT_BALOISE_VERSION,
-        '@baloise/design-system-components-angular': DEFAULT_BALOISE_VERSION,
+        '@baloise/design-system-components': '12.5.0',
+        '@baloise/design-system-components-angular': '12.5.0',
       },
     },
     {

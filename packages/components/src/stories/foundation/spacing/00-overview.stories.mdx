@@ -30,8 +30,54 @@ We use 10 spacings across the Design System.
 
 ### Heading + Content
 
-import SpacingHeadings from '../../../../public/assets/images/foundations/spacing/typo-spacing-container.svg'
+We use two sizes of spaces after a Heading to its own section 16px or 8px.
 
-<img src={SpacingHeadings} />
+import SpacingHeadings from '../../../../public/assets/images/foundations/spacing/heading-content.svg'
+
+<img loading="lazy" src={SpacingHeadings} />
+
+Sections are divided with 128px, however if the section is connected we use 64px instead.
+
+import Sections from '../../../../public/assets/images/foundations/spacing/sections.svg'
+
+<img loading="lazy" src={Sections} />
+
+### Cards
+
+To use multiple cards we recommend to use our grid to get the correct spacings. The space between cards is 32px.
+
+import CardLayout from '../../../../public/assets/images/foundations/spacing/card-layout.svg'
+
+<img loading="lazy" src={CardLayout} />
+
+#### Inner Spacings
+
+Inner spacings of card is less the then the Heading + Content section.
+
+import Card1 from '../../../../public/assets/images/foundations/spacing/card-1.svg'
+import Card2 from '../../../../public/assets/images/foundations/spacing/card-2.svg'
+
+<br />
+<div class="columns">
+  <div class="column is-6">
+    <img loading="lazy" src={Card1} />
+    <p>Inner sections space is 8px</p>
+  </div>
+  <div class="column is-6">
+    <img loading="lazy" src={Card2} />
+    <p>Sections have a space of 24px</p>
+  </div>
+</div>
+
+### Examples
+
+#### Content Page
+
+import ContentPage1 from '../../../../public/assets/images/foundations/spacing/content-page-1.svg'
+import ContentPage2 from '../../../../public/assets/images/foundations/spacing/content-page-2.svg'
+
+<img loading="lazy" src={ContentPage1} />
+
+<img loading="lazy" src={ContentPage2} />
 
 <bal-doc-github link="/stories/foundation/spacing/00-overview.stories.mdx"></bal-doc-github>
