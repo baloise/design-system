@@ -484,6 +484,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
         case 'offer-number':
           value = formatOffer(value)
+          break
+        case 'be-enterprise-number':
+          value = formatBeEnterpriseNumber(value)
+          break
+        case 'be-iban':
+          value = formatBeIBAN(value)
+          break
       }
     }
     const labelId = this.inputId + '-lbl'
