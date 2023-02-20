@@ -30,9 +30,13 @@ import {
 } from '../../../utils/form-input'
 import { Props, Events } from '../../../types'
 import {
+  formatBeEnterpriseNumber,
+  formatBeIBAN,
   formatClaim,
   formatOffer,
   formatPolicy,
+  MAX_LENGTH_BE_ENTERPRISE_NUMBER,
+  MAX_LENGTH_BE_IBAN,
   MAX_LENGTH_CLAIM_NUMBER,
   MAX_LENGTH_CONTRACT_NUMBER,
   MAX_LENGTH_OFFER_NUMBER,
@@ -216,10 +220,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop({ mutable: true, reflect: true }) value?: string = undefined
 
   /**
-   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
    * Formatting for 'contract-number': '99/1.234.567-1'
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
+   * Formatting for 'be-enterprise-number': ('1234.567.890')
+   * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop() mask?: Props.BalInputMask = undefined
 
@@ -387,6 +393,28 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             }
             break
           }
+          case 'be-enterprise-number': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
+            }
+            input.value = formatBeEnterpriseNumber(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
+          }
+          case 'be-iban': {
+            this.inputValue = input.value.replace(/\D/g, '')
+            if (this.inputValue.length > MAX_LENGTH_BE_IBAN) {
+              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_BE_IBAN)
+            }
+            input.value = formatBeIBAN(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
+          }
           default:
             this.inputValue = input.value
         }
@@ -456,6 +484,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
         case 'offer-number':
           value = formatOffer(value)
+          break
+        case 'be-enterprise-number':
+          value = formatBeEnterpriseNumber(value)
+          break
+        case 'be-iban':
+          value = formatBeIBAN(value)
+          break
       }
     }
     const labelId = this.inputId + '-lbl'
