@@ -427,7 +427,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      if (isHuman) {
+      if (isHuman && this.isDateInRange(parse(this.value as string) as Date)) {
         this.balChange.emit(this.value)
       }
     }
@@ -933,10 +933,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       })
     }
     if (this.min) {
-      return isAfter(parsedCellDate, parse(this.min) as Date)
+      return isAfter(parsedCellDate, parse(this.min) as Date) || isSameDay(parsedCellDate, parse(this.min) as Date)
     }
     if (this.max) {
-      return isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1))
+      return (
+        isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1)) ||
+        isSameDay(parsedCellDate, parse(this.max) as Date)
+      )
     }
     return true
   }

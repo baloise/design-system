@@ -87,7 +87,7 @@ describe('bal-datepicker.cy.ts', () => {
     })
     cy.get('bal-datepicker').find('input.input').should('have.attr', 'disabled')
   })
-  it.skip('should had disabled dates before min date', () => {
+  it('should had disabled dates before min date', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
     cy.mount(BalDatepicker, {
       props: {
@@ -115,7 +115,6 @@ describe('bal-datepicker.cy.ts', () => {
       .find('button')
       .eq(0)
       .should('have.attr', 'disabled')
-
     cy.get('bal-datepicker')
       .waitForComponents()
       .find('input.input')
@@ -137,8 +136,7 @@ describe('bal-datepicker.cy.ts', () => {
       .eq(2)
       .find('button')
       .eq(1)
-      .should('have.attr', 'disabled') // TODO: 10. should be enabled
-
+      .should('not.have.attr', 'disabled')
     cy.get('bal-datepicker')
       .waitForComponents()
       .find('input.input')
@@ -161,7 +159,15 @@ describe('bal-datepicker.cy.ts', () => {
       .find('button')
       .eq(2)
       .should('not.have.attr', 'disabled')
-
+  })
+  it('should not fire change event when clicking on disabled date', () => {
+    const onBalChangeSpy = cy.spy().as('balChange')
+    cy.mount(BalDatepicker, {
+      props: {
+        onBalChange: onBalChangeSpy,
+        min: '2023-01-10',
+      },
+    })
     cy.get('bal-datepicker')
       .waitForComponents()
       .find('input.input')
@@ -182,13 +188,11 @@ describe('bal-datepicker.cy.ts', () => {
       .eq(2)
       .find('button')
       .eq(0)
-      .click({ force: true }) // TODO: change event should't be fired
-
-    cy.get('@balChange').should('have.been.calledThrice')
+      .click({ force: true })
     cy.get('@balChange').should('not.have.been.called')
   })
   it('should had disabled dates after max date', () => {
-    const onBalChangeSpy = cy.spy().as('balChange') // TODO: add here the same as for a min
+    const onBalChangeSpy = cy.spy().as('balChange')
     cy.mount(BalDatepicker, {
       props: {
         onBalChange: onBalChangeSpy,
@@ -198,8 +202,7 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('bal-datepicker')
       .waitForComponents()
       .find('input.input')
-      .type('{1}')
-      .type('{5}')
+      .type('{9}')
       .type('{.}')
       .type('{0}')
       .type('{1}')
@@ -214,7 +217,51 @@ describe('bal-datepicker.cy.ts', () => {
       .find('.bal-datepicker-grid__row')
       .eq(2)
       .find('button')
-      .eq(6)
+      .eq(0)
+      .should('not.have.attr', 'disabled')
+    cy.get('bal-datepicker')
+      .waitForComponents()
+      .find('input.input')
+      .clear()
+      .type('{1}')
+      .type('{0}')
+      .type('{.}')
+      .type('{0}')
+      .type('{1}')
+      .type('{.}')
+      .type('{2}')
+      .type('{0}')
+      .type('{2}')
+      .type('{3}')
+      .type('{enter}')
+    cy.get('bal-datepicker')
+      .waitForComponents()
+      .find('.bal-datepicker-grid__row')
+      .eq(2)
+      .find('button')
+      .eq(1)
+      .should('not.have.attr', 'disabled')
+    cy.get('bal-datepicker')
+      .waitForComponents()
+      .find('input.input')
+      .clear()
+      .type('{1}')
+      .type('{1}')
+      .type('{.}')
+      .type('{0}')
+      .type('{1}')
+      .type('{.}')
+      .type('{2}')
+      .type('{0}')
+      .type('{2}')
+      .type('{3}')
+      .type('{enter}')
+    cy.get('bal-datepicker')
+      .waitForComponents()
+      .find('.bal-datepicker-grid__row')
+      .eq(2)
+      .find('button')
+      .eq(2)
       .should('have.attr', 'disabled')
   })
   it('should have set max year to the provided one', () => {

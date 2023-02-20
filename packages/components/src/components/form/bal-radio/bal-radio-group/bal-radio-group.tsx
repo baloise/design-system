@@ -11,6 +11,7 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
+import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
@@ -170,7 +171,8 @@ export class RadioGroup implements ComponentInterface, Loggable {
   radioFocusListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
-      this.balFocus.emit(event.detail)
+      // this.balFocus.emit(event.detail)
+      stopEventBubbling(event)
     }
   }
 
