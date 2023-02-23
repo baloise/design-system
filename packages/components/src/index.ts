@@ -28,6 +28,7 @@ export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/pla
 export { isBrowser, hasTouchSupport } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'
 export { BodyScrollBlocker } from './utils/toggle-scrolling-body'
+export { newBalRadioOption } from './components/form/bal-radio/bal-radio-group/bal-radio.util'
 
 /**
  * Controllers

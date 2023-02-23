@@ -10,16 +10,16 @@ import {
   ComponentInterface,
   Listen,
   Method,
-  State,
+  // State,
 } from '@stencil/core'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from './bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-import { newBalRadioOption } from './bal-radio.util'
-import { areArraysEqual } from '@baloise/web-app-utils'
-import { watchForRadios } from './watch-radios'
+// import { newBalRadioOption } from './bal-radio.util'
+// import { areArraysEqual } from '@baloise/web-app-utils'
+// import { watchForRadios } from './watch-radios'
 
 @Component({
   tag: 'bal-radio-group',
@@ -29,8 +29,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
   private initialValue?: any | null
 
   private mutationO?: MutationObserver
-
-  @State() store: BalRadioOption[] = []
 
   log!: LogInstance
 
@@ -108,7 +106,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Watch('invalid')
   invalidChanged(value: boolean | undefined) {
     if (value !== undefined) {
-      this.store.forEach(radio => {
+      this.getRadios().forEach(radio => {
         radio.invalid = value
       })
     }
@@ -180,9 +178,9 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.onOptionChange()
-    this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
-      this.onOptionChange()
-    })
+    // this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
+    //   this.onOptionChange()
+    // })
 
     // this.setRadioTabindex(this.value)
   }
@@ -288,7 +286,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
    */
   @Method()
   async getOptionByValue(value: string) {
-    const options = this.store
+    const options = this.options
     return options.find(option => option.value === value)
   }
 
@@ -327,20 +325,20 @@ export class RadioGroup implements ComponentInterface, Loggable {
     })
   }
 
-  private getStepOptions = () => {
-    if (this.options.length > 0) {
-      console.log('getStepOptions IF')
-      return [...this.options.map(newBalRadioOption)]
-    } else {
-      return Promise.all(this.getRadios().map(value => value.getOptions()))
-    }
-  }
+  // private getStepOptions = () => {
+  //   if (this.options.length > 0) {
+  //     console.log('getStepOptions IF')
+  //     return [...this.options.map(newBalRadioOption)]
+  //   } else {
+  //     return Promise.all(this.getRadios().map(value => value.getOptions()))
+  //   }
+  // }
 
-  private updateStore = (newStore: BalRadioOption[]) => {
-    if (!areArraysEqual(this.store, newStore)) {
-      this.store = newStore
-    }
-  }
+  // private updateStore = (newStore: BalRadioOption[]) => {
+  //   if (!areArraysEqual(this.store, newStore)) {
+  //     this.store = newStore
+  //   }
+  // }
 
   /**
    * GETTERS
@@ -379,11 +377,11 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   private onOptionChange = async () => {
     try {
-      const options = await this.getStepOptions()
-      this.updateStore(options)
+      // const options = await this.getStepOptions()
+      // this.updateStore(options)
       this.setRadioTabindex(this.value)
     } catch (e) {
-      console.warn('[WARN] - Could not read tab options')
+      console.warn('[WARN] - Could not read radio options')
     }
   }
 
@@ -396,7 +394,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
     const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
-    console.log('store ', this.store)
+
     return (
       <Host
         class={{
@@ -417,8 +415,8 @@ export class RadioGroup implements ComponentInterface, Loggable {
           }}
         >
           <slot></slot>
-          {this.store &&
-            this.store.map(option => (
+          {this.options &&
+            this.options.map(option => (
               <bal-radio
                 name={option.name}
                 value={option.value}

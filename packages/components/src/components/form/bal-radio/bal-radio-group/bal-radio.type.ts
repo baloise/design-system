@@ -1,9 +1,10 @@
 import { Props } from '../../../../..'
 
+// type PropertyFunction<T> = () => T
+
 export interface BalRadioOption {
   name: string
   value: any
-  label: string
   labelHidden: boolean
   flat: boolean
   interface: Props.BalRadioInterface
@@ -12,4 +13,6 @@ export interface BalRadioOption {
   required: boolean
   hidden: boolean
   invalid: boolean
+  // label: string | PropertyFunction<string>
+  label: string
 }
