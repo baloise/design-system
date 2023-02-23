@@ -136,6 +136,7 @@ export class Radio implements ComponentInterface, Loggable {
   @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
 
   /**
+   * @deprecated
    * Emitted when the input has clicked.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
@@ -224,7 +225,6 @@ export class Radio implements ComponentInterface, Loggable {
     }
 
     this.checked = this.nativeInput.checked
-    this.balClick.emit()
     this.nativeInput.focus()
   }
 

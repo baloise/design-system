@@ -168,6 +168,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
 
   /**
+   * @deprecated
    * Emitted when the input has clicked.
    */
   @Event() balClick!: EventEmitter<MouseEvent>

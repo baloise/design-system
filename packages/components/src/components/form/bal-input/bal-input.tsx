@@ -240,6 +240,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
+   * @deprecated
    * Emitted when the input has clicked.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
