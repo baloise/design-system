@@ -69,6 +69,42 @@
             <bal-input placeholder="Placeholder"></bal-input>
           </bal-radio-group>
         </section>
+
+        <bal-heading>Options</bal-heading>
+        <section>
+          <bal-radio-group id="options-test" data-testid="options" value="1"></bal-radio-group>
+          <script>
+            const stepEl = document.getElementById('options-test')
+            stepEl.options = [
+              {
+                value: '1',
+                name: 'test',
+                label: 'Label 1',
+                disabled: false,
+                hidden: false,
+                invalid: false,
+                required: false,
+                readonly: false,
+                flat: false,
+                labelHidden: false,
+                interface: 'radio'
+              },
+              {
+                value: '2',
+                name: 'test 2',
+                label: 'Label 2',
+                disabled: false,
+                hidden: false,
+                invalid: false,
+                required: false,
+                readonly: false,
+                flat: false,
+                labelHidden: false,
+                interface: 'radio'
+              },
+            ]
+          </script>
+        </section>
       </main>
     </bal-doc-app>
   </body>

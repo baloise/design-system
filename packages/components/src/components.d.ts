@@ -14,6 +14,7 @@ import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+import { BalRadioOption } from "./components/form/bal-radio/bal-radio-group/bal-radio.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -1914,6 +1915,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOptions": () => Promise<BalRadioOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -1970,6 +1975,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalRadioOption | undefined>;
+        /**
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
@@ -1981,6 +1990,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5676,6 +5689,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalInput"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
