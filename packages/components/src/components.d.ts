@@ -4223,17 +4223,21 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the icon has clicked.
+         */
+        "onBalIconClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when a keyboard input occurred.
          */
         "onBalInput"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerInputDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
         /**
           * The text to display when the select is empty.
          */
