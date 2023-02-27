@@ -1,4 +1,4 @@
-import { Props } from '../..'
+import { Props } from '../../types'
 import { EventEmitter } from '@stencil/core'
 import { Attributes } from '../../utils/attributes'
 
