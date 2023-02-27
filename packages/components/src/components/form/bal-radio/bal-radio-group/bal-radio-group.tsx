@@ -171,7 +171,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   radioFocusListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
-      // this.balFocus.emit(event.detail)
+      this.balFocus.emit(event.detail)
       stopEventBubbling(event)
     }
   }
