@@ -13,7 +13,7 @@ export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBal
     super(balModalController as any)
   }
 
-  create(opts: ModalOptions): Promise<HTMLBalModalElement> {
+  override create(opts: ModalOptions): Promise<HTMLBalModalElement> {
     return super.create({
       ...opts,
       delegate: this.angularDelegate.create(this.resolver, this.injector),

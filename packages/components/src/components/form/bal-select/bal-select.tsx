@@ -38,7 +38,7 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -821,17 +821,19 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private handlePopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    if (this.isPopoverOpen) {
-      this.updateFocus()
-    } else {
-      this.focusIndex = -1
-      if (this.multiple && this.typeahead) {
-        this.updateInputValue('')
-      }
-      this.balBlur.emit()
-    }
     event.stopPropagation()
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (this.isPopoverOpen) {
+        this.updateFocus()
+      } else {
+        this.focusIndex = -1
+        if (this.multiple && this.typeahead) {
+          this.updateInputValue('')
+        }
+        this.balBlur.emit()
+      }
+    }
   }
 
   private handleInputBlur = (event: FocusEvent) => {
@@ -862,7 +864,7 @@ export class Select implements ComponentInterface, Loggable {
     return isChipClicked
   }
 
-  private handleInputClick = async (event: MouseEvent) => {
+  private handleInputClick = async (event: MouseEvent, isIconClick = false) => {
     stopEventBubbling(event)
 
     if (this.isChipClicked(event)) {
@@ -876,7 +878,11 @@ export class Select implements ComponentInterface, Loggable {
       this.balClick.emit(event)
 
       if (this.typeahead) {
-        await this.popoverElement?.present()
+        if (this.isPopoverOpen && isIconClick) {
+          await this.popoverElement?.dismiss()
+        } else {
+          await this.popoverElement?.present()
+        }
       } else {
         if (this.isPopoverOpen) {
           await this.popoverElement?.dismiss()
@@ -1052,7 +1058,7 @@ export class Select implements ComponentInterface, Loggable {
               name="caret-down"
               color={this.disabled || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
-              onClick={this.handleInputClick}
+              onClick={ev => this.handleInputClick(ev, true)}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>

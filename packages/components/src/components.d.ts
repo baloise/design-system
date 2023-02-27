@@ -16,6 +16,17 @@ import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
+export { Events, Props } from "./types";
+export { BalMode } from "./utils/config";
+export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
+export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+export { Attributes } from "./utils/attributes";
+export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+export { BalStepOption } from "./components/bal-steps/bal-step.type";
+export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -65,7 +76,7 @@ export namespace Components {
          */
         "animated": boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode": BalMode;
         "ready": boolean;
@@ -307,6 +318,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -317,7 +332,7 @@ export namespace Components {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView": 'auto' | number;
+        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
         "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
@@ -1084,7 +1099,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -1518,7 +1533,7 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
@@ -1584,7 +1599,7 @@ export namespace Components {
         /**
           * Color of the menu list card background
          */
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -3754,7 +3769,7 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
@@ -4012,6 +4027,10 @@ declare namespace LocalJSX {
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
@@ -4022,7 +4041,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView"?: 'auto' | number;
+        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
         /**
           * Emitted when a option got selected.
          */
@@ -4806,7 +4825,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -5285,7 +5304,7 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
@@ -5350,7 +5369,7 @@ declare namespace LocalJSX {
         /**
           * Color of the menu list card background
          */
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */

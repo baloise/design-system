@@ -28,7 +28,7 @@ import {
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 
 @Component({
   tag: 'bal-textarea',

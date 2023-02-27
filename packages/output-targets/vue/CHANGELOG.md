@@ -1,5 +1,13 @@
 # @baloise/design-system-output-target-vue
 
+## 12.8.0
+
+## 12.7.1
+
+## 12.7.0
+
+## 12.6.0
+
 ## 12.5.0
 
 ## 12.4.1

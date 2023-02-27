@@ -21,7 +21,8 @@ export class BooleanValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
   }
-  writeValue(value: any) {
-    this.el.nativeElement.value = this.lastValue = value == null ? false : value
+
+  override writeValue(value: any) {
+    this.el.nativeElement.checked = this.lastValue = value == null ? false : value
   }
 }

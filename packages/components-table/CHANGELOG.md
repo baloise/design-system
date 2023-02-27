@@ -1,5 +1,81 @@
 # @baloise/design-system-components-table
 
+## 12.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`6f99084d9`](https://github.com/baloise-incubator/design-system/commit/6f99084d946491231bc8b4fe7d479f5dd3c86c8d), [`d3ab0905d`](https://github.com/baloise-incubator/design-system/commit/d3ab0905d868e9a32a69d028efb544b28bbd5796), [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f), [`b230a279d`](https://github.com/baloise-incubator/design-system/commit/b230a279d61c5928570b39e537c0a7ba18df8677)]:
+  - @baloise/design-system-components@12.8.0
+  - @baloise/design-system-css@12.8.0
+
+## 12.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`d53ea8a46`](https://github.com/baloise-incubator/design-system/commit/d53ea8a46196415d856c090f1a1258a64e23cc12), [`22389ae9b`](https://github.com/baloise-incubator/design-system/commit/22389ae9bdab2d65d68d77b6e65ef24793bfca2f)]:
+  - @baloise/design-system-components@12.7.1
+  - @baloise/design-system-css@12.7.1
+
+## 12.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`b28384b99`](https://github.com/baloise-incubator/design-system/commit/b28384b99c5831d592aeadbaf2888850946cfb8a), [`f944a0729`](https://github.com/baloise-incubator/design-system/commit/f944a0729daeb96ee9a36affecf572a7955c1e24), [`297d9c08b`](https://github.com/baloise-incubator/design-system/commit/297d9c08b3b08c4dbcd4b12fa5e28e587168dc25)]:
+  - @baloise/design-system-components@12.7.0
+  - @baloise/design-system-css@12.7.0
+
+## 12.6.0
+
+### Minor Changes
+
+- [#1084](https://github.com/baloise-incubator/design-system/pull/1084) [`26b23997c`](https://github.com/baloise-incubator/design-system/commit/26b23997c9c4fc72824a60fdf2928b1b82b62f26) Thanks [@hirsch88](https://github.com/hirsch88)! - split CSS-Package into smaller exports and moved to CSS-Variables.
+
+  Replace the import of the `global` SASS file with the CSS-Package.
+
+  **Before**
+
+  ```scss
+  @import '@baloise/design-system-components/src/styles/global';
+  ```
+
+  **After**
+
+  ```scss
+  @import '@baloise/design-system-css/sass/baloise-design-system';
+  ```
+
+  To be more flexible the new CSS exports can be used directly like that:
+
+  ```scss
+  // Resets CSS for all browser
+  @import '@baloise/design-system-css/css/normalize';
+  @import '@baloise/design-system-css/css/structure';
+  // Custom font faces
+  @import '@baloise/design-system-css/sass/font';
+  // Core CSS, always required
+  @import '@baloise/design-system-css/css/core';
+  // Deprecated styles will be removed with the next breaking version (optional)
+  @import '@baloise/design-system-css/sass/legacy';
+
+  // CSS utilities classes (optional)
+  @import '@baloise/design-system-css/css/border';
+  @import '@baloise/design-system-css/css/color';
+  @import '@baloise/design-system-css/css/display';
+  @import '@baloise/design-system-css/css/flex';
+  @import '@baloise/design-system-css/css/grid';
+  @import '@baloise/design-system-css/css/opacity';
+  @import '@baloise/design-system-css/css/radius';
+  @import '@baloise/design-system-css/css/shadow';
+  @import '@baloise/design-system-css/css/spacing';
+  @import '@baloise/design-system-css/css/typography';
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`0819f32ee`](https://github.com/baloise-incubator/design-system/commit/0819f32eeb69d5c34bfdd8b70f2bbc7cac960276), [`a2258fd83`](https://github.com/baloise-incubator/design-system/commit/a2258fd8395160b3733af6e048e731b5ec52b02c), [`a899f8102`](https://github.com/baloise-incubator/design-system/commit/a899f8102e0e8f4dc6c0f2ce8ce155357de80f32), [`af1560a6e`](https://github.com/baloise-incubator/design-system/commit/af1560a6e5ed5abb3bc8ae0f4e7cb1507464634d), [`8bd20ac03`](https://github.com/baloise-incubator/design-system/commit/8bd20ac0313f799b0f98d5a029b62ba22bbf1929), [`76e3abe72`](https://github.com/baloise-incubator/design-system/commit/76e3abe726614424ad9fffaefe872dd8683b7b9d), [`78ce9869c`](https://github.com/baloise-incubator/design-system/commit/78ce9869c1e071905ef11add4db3c30846a451cd), [`26b23997c`](https://github.com/baloise-incubator/design-system/commit/26b23997c9c4fc72824a60fdf2928b1b82b62f26), [`d2819d0cf`](https://github.com/baloise-incubator/design-system/commit/d2819d0cf3394a4d2e52b677ebbedde1670ebb1a)]:
+  - @baloise/design-system-components@12.6.0
+  - @baloise/design-system-css@12.6.0
+
 ## 12.5.0
 
 ### Patch Changes
