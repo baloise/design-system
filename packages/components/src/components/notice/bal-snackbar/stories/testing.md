@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-nest-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Snackbar', () => {
   it('should ...', () => {
@@ -22,6 +22,6 @@ describe('Snackbar', () => {
 
 A list of the custom commands for this specific component.
 
-| Command           | Description                    | Signature               |
-| ----------------- | ------------------------------ | ----------------------- |
-| `balSnackbarFind` | Returns the visible snackbars. | `(): Chainable<JQuery>` |
+| Command           | Description                    | Signature                                          |
+| ----------------- | ------------------------------ | -------------------------------------------------- |
+| `balSnackbarFind` | Returns the visible snackbars. | `(options?: Partial<Loggable>): Chainable<JQuery>` |

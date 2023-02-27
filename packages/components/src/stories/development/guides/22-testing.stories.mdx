@@ -92,7 +92,7 @@ Now the adjusted commands from the Baloise Design System should be available in 
 Further documentations for each component commands is documented on the components page.
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-nest-testing'
+import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
@@ -140,7 +140,7 @@ describe('Button', () => {
 For each component we define internally some data-testid selectors.
 
 ```typescript
-import { selectors } from '@baloise/design-system-nest-testing'
+import { selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   it('should ...', () => {

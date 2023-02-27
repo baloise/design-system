@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-nest-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Hint', () => {
   const hint = byTestId('my-hint') // [data-testid="my-hint"]
@@ -29,7 +29,7 @@ describe('Hint', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                  | Description                                                                    | Signature               |
-| ------------------------ | ------------------------------------------------------------------------------ | ----------------------- |
-| `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | `(): Chainable<JQuery>` |
-| `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(): Chainable<JQuery>` |
+| Command                  | Description                                                                    | Signature                                          |
+| ------------------------ | ------------------------------------------------------------------------------ | -------------------------------------------------- |
+| `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(options?: Partial<Loggable>): Chainable<JQuery>` |

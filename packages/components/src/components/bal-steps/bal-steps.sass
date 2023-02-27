@@ -1,0 +1,17 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './components/step-button'
+@import './components/step-icon'
+@import './components/step-label'
+
+.bal-steps
+  display: block
+  position: static
+  &__nav
+    +overflow-touch
+    +unselectable
+
+.bal-step-item
+  width: 100%
+  display: none
+  &--active
+    display: block
