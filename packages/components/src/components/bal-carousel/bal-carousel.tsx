@@ -62,12 +62,17 @@ export class Carousel implements ComponentInterface {
    * Defines how many slides are visible in the container for the user.
    * `auto` will use the size of the actual item content
    */
-  @Prop() itemsPerView: 'auto' | number = 1
+  @Prop() itemsPerView: 'auto' | 1 | 2 | 3 | 4 = 1
 
   /**
    * Defines the layout of the navigation controls.
    */
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
+
+  /**
+   * If `true` items move under the controls, instead of having a gap
+   */
+  @Prop() controlsOverflow = false
 
   /**
    * Defines the image aspect ratio.
@@ -197,15 +202,16 @@ export class Carousel implements ComponentInterface {
         const containerWidth = this.innerEl.clientWidth || 0
         const itemsWith = lastSlide.transformNext || 0
         const noNeedForSlide = itemsWith <= containerWidth
-        const maxAmount = itemsWith - containerWidth
-        const isLastSlideVisible = maxAmount < amount
+        // -1 one is needed for example when we use items per view 3 with 33.333%
+        const maxAmount = itemsWith - containerWidth - 1
+        const isLastSlideVisible = maxAmount <= amount
         const isFirst = amount === 0
         const hasSmallControls = this.controls === 'small'
         const hasLargeControls = this.controls === 'large'
 
         let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
 
-        if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
+        if (!this.controlsOverflow && !isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
           transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
         }
 
