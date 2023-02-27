@@ -1,4 +1,4 @@
-import { Props } from '../../../../dist/types'
+import { Props } from '../../../types'
 
 export interface BalRadioOption {
   name: string
