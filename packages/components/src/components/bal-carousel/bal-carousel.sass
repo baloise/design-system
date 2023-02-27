@@ -66,6 +66,18 @@
   &--items-per-view-auto
     .bal-carousel__item
       width: auto
+  &--items-per-view-1
+    .bal-carousel__item
+      width: 100%
+  &--items-per-view-2
+    .bal-carousel__item
+      width: 50%
+  &--items-per-view-3
+    .bal-carousel__item
+      width: 33.3333%
+  &--items-per-view-4
+    .bal-carousel__item
+      width: 25%
 
 .bal-carousel--card
   .bal-carousel__inner--shadow-left::before,
@@ -233,7 +245,6 @@
     line-height: 1.15rem
     word-break: break-word
 
-
 .bal-carousel__controls--large
   +mobile
     display: flex
@@ -268,4 +279,3 @@
   .bal-carousel__controls__button--hidden
     display: none !important
     visibility: hidden !important
-

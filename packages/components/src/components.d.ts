@@ -306,6 +306,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -3912,6 +3916,10 @@ declare namespace LocalJSX {
           * Defines the layout of the navigation controls.
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
+        /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
         /**
           * If `true` the controls will be sticky to the top.
          */

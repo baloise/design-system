@@ -193,3 +193,22 @@ ResponsiveSlider.args = {
   steps: 3,
 }
 ResponsiveSlider.parameters = { ...component.sourceCode(ResponsiveSlider) }
+
+export const TeaserSlider = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-carousel v-bind="args">
+  <bal-carousel-item src="/assets/images/brand/car.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/lamp.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/home.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/bars.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/plant.svg"></bal-carousel-item>
+</bal-carousel>`,
+})
+TeaserSlider.args = {
+  steps: 1,
+  itemsPerView: 3,
+  controlsOverflow: true,
+  controls: 'large',
+}
+TeaserSlider.parameters = { ...component.sourceCode(TeaserSlider) }
