@@ -74,7 +74,6 @@
     "@rollup/plugin-node-resolve": "~13.3.0",
     "@rollup/plugin-typescript": "~8.3.4",
     "@stackblitz/sdk": "~1.8.1",
-    "@stencil/angular-output-target": "^0.5.0",
     "@stencil/core": "~3.0.1",
     "@stencil/sass": "~2.0.1",
     "@storybook/addon-a11y": "~6.5.15",

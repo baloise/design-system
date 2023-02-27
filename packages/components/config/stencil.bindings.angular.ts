@@ -1,5 +1,4 @@
 import { ValueAccessorConfig, angularOutputTarget } from '@baloise/design-system-output-target-angular'
-// import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target'
 import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
