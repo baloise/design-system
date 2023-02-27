@@ -69,6 +69,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-datepicker',
@@ -76,7 +77,7 @@ import { ResizeHandler } from '../../../utils/resize'
     css: 'bal-datepicker.sass',
   },
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable {
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popoverElement!: HTMLBalPopoverElement
@@ -97,6 +98,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     year: getYear(now()),
     month: getMonth(now()),
     day: getDate(now()),
+  }
+
+  log!: LogInstance
+
+  @Logger('bal-datepicker')
+  createLogger(log: LogInstance) {
+    this.log = log
   }
 
   /**
@@ -419,7 +427,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      if (isHuman) {
+      if (isHuman && this.isDateInRange(parse(this.value as string) as Date)) {
         this.balChange.emit(this.value)
       }
     }
@@ -545,11 +553,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    preventDefault(event)
-
-    if (!this.isPopoverOpen) {
-      this.balBlur.emit()
+    stopEventBubbling(event)
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (!this.isPopoverOpen) {
+        this.balBlur.emit()
+      }
     }
   }
 
@@ -924,10 +933,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       })
     }
     if (this.min) {
-      return isAfter(parsedCellDate, parse(this.min) as Date)
+      return isAfter(parsedCellDate, parse(this.min) as Date) || isSameDay(parsedCellDate, parse(this.min) as Date)
     }
     if (this.max) {
-      return isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1))
+      return (
+        isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1)) ||
+        isSameDay(parsedCellDate, parse(this.max) as Date)
+      )
     }
     return true
   }
