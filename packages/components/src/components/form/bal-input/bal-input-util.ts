@@ -8,7 +8,7 @@ export function formatClaim(value: string): string {
   if (!value) {
     return ''
   }
-  const newValue = `${value}`.trim()
+  const newValue = `${value}`.trim().toUpperCase()
   const parts = [
     newValue.substring(0, 2),
     newValue.substring(2, 8),

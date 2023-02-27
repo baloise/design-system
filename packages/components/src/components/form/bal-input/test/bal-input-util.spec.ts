@@ -30,6 +30,10 @@ describe('bal-input-util testing:', () => {
       const result = formatClaim('7300772816X')
       expect(result).toStrictEqual('73/007728/16.X')
     })
+    test('claim number with a sign postfix correctly x', () => {
+      const result = formatClaim('7300772816x')
+      expect(result).toStrictEqual('73/007728/16.X')
+    })
   })
   describe('formatOffer', () => {
     test('full entry:', () => {
