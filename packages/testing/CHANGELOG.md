@@ -1,5 +1,12 @@
 # @baloise/design-system-testing
 
+## 12.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`6f99084d9`](https://github.com/baloise-incubator/design-system/commit/6f99084d946491231bc8b4fe7d479f5dd3c86c8d), [`d3ab0905d`](https://github.com/baloise-incubator/design-system/commit/d3ab0905d868e9a32a69d028efb544b28bbd5796), [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f), [`b230a279d`](https://github.com/baloise-incubator/design-system/commit/b230a279d61c5928570b39e537c0a7ba18df8677)]:
+  - @baloise/design-system-components@12.8.0
+
 ## 12.7.1
 
 ### Patch Changes
