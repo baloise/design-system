@@ -1,6 +1,6 @@
 import { BalInputStepper } from '../../.storybook/vue/generated/components'
 
-describe('bal-tag.cy.ts', () => {
+describe('bal-input-stepper.cy.ts', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
   let onBalIncreaseSpy: Cypress.Agent<sinon.SinonSpy>

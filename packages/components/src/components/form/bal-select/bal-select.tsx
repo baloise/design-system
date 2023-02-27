@@ -821,17 +821,19 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private handlePopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    if (this.isPopoverOpen) {
-      this.updateFocus()
-    } else {
-      this.focusIndex = -1
-      if (this.multiple && this.typeahead) {
-        this.updateInputValue('')
-      }
-      this.balBlur.emit()
-    }
     event.stopPropagation()
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (this.isPopoverOpen) {
+        this.updateFocus()
+      } else {
+        this.focusIndex = -1
+        if (this.multiple && this.typeahead) {
+          this.updateInputValue('')
+        }
+        this.balBlur.emit()
+      }
+    }
   }
 
   private handleInputBlur = (event: FocusEvent) => {

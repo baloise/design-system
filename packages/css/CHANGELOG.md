@@ -1,5 +1,15 @@
 # @baloise/design-system-css
 
+## 12.8.0
+
+### Patch Changes
+
+- [#1174](https://github.com/baloise-incubator/design-system/pull/1174) [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f) Thanks [@hirsch88](https://github.com/hirsch88)! - add autoprefixer for css files to solve hyphen issue
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@12.8.0
+  - @baloise/design-system-tokens@12.8.0
+
 ## 12.7.1
 
 ### Patch Changes

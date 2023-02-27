@@ -64,7 +64,7 @@
 
         <bal-heading>Multi-Select</bal-heading>
         <section>
-          <bal-select multiple placeholder="Try finding your hero" data-testid="multiple" scrollable="248">
+          <bal-select multiple placeholder="Try finding your hero" data-testid="multiple">
             <bal-select-option checkbox value="BlackWidow" label="Black Widow">
               <b style="display: block">Black Widow</b>
               <span>S.H.I.E.L.D.</span>
@@ -90,6 +90,50 @@
               <span>Asgard</span>
             </bal-select-option>
           </bal-select>
+        </section>
+
+        <bal-heading>Form-Reset</bal-heading>
+        <section>
+          <form>
+            <bal-select data-testid="reset-basic" placeholder="Try finding a year" value="v1996">
+              <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            </bal-select>
+            <bal-select data-testid="reset-typeahead" placeholder="Try finding a year" value="v1996" typeahead>
+              <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            </bal-select>
+            <bal-select data-testid="reset-multiple" placeholder="Try finding a year" value="v1996,v1997" multiple>
+              <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            </bal-select>
+            <bal-select
+              data-testid="reset-multiple-typeahead"
+              placeholder="Try finding a year"
+              value="v1996,v1997"
+              multiple
+              typeahead
+            >
+              <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            </bal-select>
+            <bal-select
+              data-testid="reset-typeahead-remote"
+              placeholder="Try finding a year"
+              value="v1996"
+              typeahead
+              remote
+            >
+              <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+            </bal-select>
+            <button type="reset" data-testid="reset-button">Reset</button>
+          </form>
         </section>
       </main>
     </bal-doc-app>

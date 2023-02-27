@@ -223,7 +223,7 @@ export namespace Props {
 
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
 
-  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number'
+  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number' | 'be-enterprise-number' | 'be-iban'
 
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
   export type BalInputInputType =
