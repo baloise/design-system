@@ -2,11 +2,6 @@ import { BalAccordion } from '../../.storybook/vue/generated/components'
 
 describe('bal-accordion', () => {
   beforeEach(() => {
-    cy.disableAnimation()
-    cy.get('bal-accordion').waitForComponents()
-  })
-
-  it('should have labels', () => {
     cy.mount(BalAccordion, {
       props: {
         openLabel: 'OPEN LABEL',
@@ -15,6 +10,11 @@ describe('bal-accordion', () => {
       slots: { default: () => 'TEST CONTENT' },
     })
 
+    cy.disableAnimation()
+    cy.get('bal-accordion').waitForComponents()
+  })
+
+  it('should have labels', () => {
     cy.get('bal-accordion').contains('TEST CONTENT')
     cy.get('bal-accordion').contains('OPEN LABEL')
     cy.get('bal-button').click()
@@ -26,11 +26,8 @@ describe('bal-accordion', () => {
 
     cy.mount(BalAccordion, {
       props: {
-        openLabel: 'OPEN LABEL',
-        closeLabel: 'CLOSE LABEL',
         onBalChange: onBalChangeSpy,
       },
-      slots: { default: () => 'TEST CONTENT' },
     })
 
     cy.get('bal-button').click()
@@ -44,11 +41,9 @@ describe('bal-accordion', () => {
     cy.mount(BalAccordion, {
       props: {
         value: true,
-        openLabel: 'OPEN LABEL',
         closeLabel: 'CLOSE LABEL',
         onBalChange: onBalChangeSpy,
       },
-      slots: { default: () => 'TEST CONTENT' },
     })
 
     cy.get('bal-accordion').contains('CLOSE LABEL')
