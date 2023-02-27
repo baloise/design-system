@@ -10,17 +10,13 @@ import {
   ComponentInterface,
   Listen,
   Method,
-  // State,
 } from '@stencil/core'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
-import { BalRadioOption } from './bal-radio.type'
+import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-// import { newBalRadioOption } from './bal-radio.util'
-// import { areArraysEqual } from '@baloise/web-app-utils'
-// import { watchForRadios } from './watch-radios'
-
+import { watchForRadios } from '../utils/watch-radios'
 @Component({
   tag: 'bal-radio-group',
 })
@@ -47,7 +43,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Steps can be passed as a property or through HTML markup.
    */
-  @Prop() options: BalRadioOption[] = []
+  @Prop() options?: BalRadioOption[]
 
   @Watch('options')
   protected async optionChanged() {
@@ -70,11 +66,8 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Prop({ mutable: true }) value?: any | null
 
   @Watch('value')
-  valueChanged(value: any | undefined) {
+  valueChanged() {
     this.onOptionChange()
-    // this.setRadioTabindex(value)
-    console.log(value)
-
     this.balInput.emit(this.value)
   }
 
@@ -178,11 +171,11 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.onOptionChange()
-    // this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
-    //   this.onOptionChange()
-    // })
-
-    // this.setRadioTabindex(this.value)
+    this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
+      if (this.options === undefined) {
+        this.onOptionChange()
+      }
+    })
   }
 
   disconnectedCallback() {
@@ -287,7 +280,10 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Method()
   async getOptionByValue(value: string) {
     const options = this.options
-    return options.find(option => option.value === value)
+    if (options) {
+      return options.find(option => option.value === value)
+    }
+    return undefined
   }
 
   /**
@@ -297,7 +293,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   private setRadioTabindex = (value: any | undefined) => {
     const radios = this.getRadios()
-    console.log('radios ', radios)
 
     // Get the first radio that is not disabled and the checked one
     const first = radios.find(radio => !radio.disabled)
@@ -324,21 +319,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
       }
     })
   }
-
-  // private getStepOptions = () => {
-  //   if (this.options.length > 0) {
-  //     console.log('getStepOptions IF')
-  //     return [...this.options.map(newBalRadioOption)]
-  //   } else {
-  //     return Promise.all(this.getRadios().map(value => value.getOptions()))
-  //   }
-  // }
-
-  // private updateStore = (newStore: BalRadioOption[]) => {
-  //   if (!areArraysEqual(this.store, newStore)) {
-  //     this.store = newStore
-  //   }
-  // }
 
   /**
    * GETTERS
@@ -377,8 +357,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   private onOptionChange = async () => {
     try {
-      // const options = await this.getStepOptions()
-      // this.updateStore(options)
       this.setRadioTabindex(this.value)
     } catch (e) {
       console.warn('[WARN] - Could not read radio options')

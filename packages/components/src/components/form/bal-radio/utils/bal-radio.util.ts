@@ -1,11 +1,9 @@
 import { Props } from '../../../../types'
-import { BalRadioOption } from './bal-radio.type'
+import { BalRadioOption } from '../bal-radio.type'
 
-// export type PropertyFunction<T> = () => T
 interface Option {
   name: string
   value: any
-  // label: string | PropertyFunction<string>
   label: string
   labelHidden?: boolean
   flat?: boolean

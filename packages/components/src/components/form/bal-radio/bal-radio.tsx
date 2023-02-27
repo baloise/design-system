@@ -15,7 +15,7 @@ import { Props, Events } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { BalRadioOption } from './bal-radio-group/bal-radio.type'
+import { BalRadioOption } from './bal-radio.type'
 
 @Component({
   tag: 'bal-radio',

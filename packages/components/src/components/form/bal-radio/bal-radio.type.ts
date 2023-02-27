@@ -1,6 +1,4 @@
-import { Props } from '../../../../..'
-
-// type PropertyFunction<T> = () => T
+import { Props } from '../../../../dist/types'
 
 export interface BalRadioOption {
   name: string
@@ -13,6 +11,5 @@ export interface BalRadioOption {
   required: boolean
   hidden: boolean
   invalid: boolean
-  // label: string | PropertyFunction<string>
   label: string
 }

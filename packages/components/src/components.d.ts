@@ -14,7 +14,7 @@ import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
-import { BalRadioOption } from "./components/form/bal-radio/bal-radio-group/bal-radio.type";
+import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -1993,7 +1993,7 @@ export namespace Components {
         /**
           * Steps can be passed as a property or through HTML markup.
          */
-        "options": BalRadioOption[];
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
