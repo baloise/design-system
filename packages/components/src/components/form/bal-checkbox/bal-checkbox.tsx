@@ -115,12 +115,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
-  /**
-   * @deprecated
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (

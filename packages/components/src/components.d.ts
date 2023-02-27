@@ -4037,10 +4037,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalCheckboxCustomEvent<Events.BalCheckboxChangeDetail>) => void;
         /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalCheckboxCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
@@ -4851,10 +4847,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalInputSliderCustomEvent<Events.BalInputSliderChangeDetail>) => void;
         /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalInputSliderCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalInputSliderCustomEvent<FocusEvent>) => void;
@@ -5414,10 +5406,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalNumberInputCustomEvent<Events.BalInputNumberChangeDetail>) => void;
         /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalNumberInputCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
@@ -5618,10 +5606,6 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalRadioCustomEvent<Events.BalRadioChangeDetail>) => void;
-        /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalRadioCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -6222,10 +6206,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed..
          */
         "onBalChange"?: (event: BalTextareaCustomEvent<Events.BalTextareaChangeDetail>) => void;
-        /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalTextareaCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */

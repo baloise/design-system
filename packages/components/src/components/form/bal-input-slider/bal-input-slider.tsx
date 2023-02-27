@@ -91,12 +91,6 @@ export class InputSlider {
   @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
-   * @deprecated
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
-  /**
    * Emitted when a keyboard key has pressed.
    */
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
