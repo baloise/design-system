@@ -48,7 +48,7 @@ export class Heading {
 
   private getFontSize(): string {
     const mapSize = (size: Props.BalHeadingLevel) => {
-      const sizes = {
+      const sizes: any = {
         'display': 'xxxxx-large',
         'display-2': 'xxxx-large',
         'h1': 'xxx-large',
