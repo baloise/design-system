@@ -239,7 +239,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -875,7 +875,7 @@ export class Select implements ComponentInterface, Loggable {
       preventDefault(event)
     } else {
       this.focusIndex = -1
-      this.balClick.emit(event)
+      this.balInputClick.emit(event)
 
       if (this.typeahead) {
         if (this.isPopoverOpen && isIconClick) {

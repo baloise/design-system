@@ -115,11 +115,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (
@@ -222,7 +217,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
-      this.balClick.emit(ev)
       this.nativeInput?.focus()
       this.balChange.emit(this.checked)
       ev.preventDefault()

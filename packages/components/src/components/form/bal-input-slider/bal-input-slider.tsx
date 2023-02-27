@@ -91,11 +91,6 @@ export class InputSlider {
   @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
-  /**
    * Emitted when a keyboard key has pressed.
    */
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
@@ -224,12 +219,6 @@ export class InputSlider {
     this.balChange.emit(this.value)
   }
 
-  private onClick = (ev: MouseEvent) => {
-    if (!this.disabled && !this.readonly) {
-      this.balClick.emit(ev)
-    }
-  }
-
   private getNumberOfSteps() {
     const steps = []
     for (let step = 0; step < this.numberOfSteps; step++) {
@@ -311,7 +300,6 @@ export class InputSlider {
             onInput={this.onInput}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
-            onClick={this.onClick}
             onKeyPress={e => this.balKeyPress.emit(e)}
           />
           <div class={{ ...inputValueEl.class(), ...inputValueRightEl.class() }}></div>

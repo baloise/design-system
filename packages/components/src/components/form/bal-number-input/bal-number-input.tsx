@@ -167,11 +167,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
    */
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
 
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
     inputListenOnClick(this, event)

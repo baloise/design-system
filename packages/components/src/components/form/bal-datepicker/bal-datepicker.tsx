@@ -256,7 +256,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<MouseEvent>
+
+  /**
+   * Emitted when the icon has clicked.
+   */
+  @Event() balIconClick!: EventEmitter<MouseEvent>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -539,7 +544,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
-    this.balClick.emit(event)
+    this.balIconClick.emit(event)
   }
 
   private onInputClick = (event: MouseEvent) => {
@@ -548,7 +553,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
     stopEventBubbling(event)
     if (!this.triggerIcon) {
-      this.balClick.emit(event)
+      this.balInputClick.emit(event)
     }
   }
 
