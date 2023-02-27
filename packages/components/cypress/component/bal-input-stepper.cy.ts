@@ -23,6 +23,8 @@ describe('bal-input-stepper.cy.ts', () => {
         onBalDecrease: onBalDecreaseSpy,
       },
     })
+
+    cy.get('bal-input-stepper').waitForComponents()
   })
 
   it('should increase a value and fire input, increase and change event', () => {

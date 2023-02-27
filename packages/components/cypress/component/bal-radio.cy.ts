@@ -33,6 +33,8 @@ describe('bal-radio.cy.ts', () => {
           onBalBlur: onBalBlurSpy,
         },
       })
+
+      cy.get('bal-radio').waitForComponents()
     })
 
     it('should select first one and send change event', () => {

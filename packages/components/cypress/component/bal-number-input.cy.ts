@@ -26,6 +26,8 @@ describe('bal-number-input.cy.ts', () => {
         onBalKeyPress: onBalKeyPressSpy,
       },
     })
+
+    cy.get('bal-number-input').waitForComponents()
   })
 
   it('should fire balChange because the input gets blurred', () => {
