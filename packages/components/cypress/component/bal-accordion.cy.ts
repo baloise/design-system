@@ -1,7 +1,10 @@
 import { BalAccordion } from '../../.storybook/vue/generated/components'
 
 describe('bal-accordion', () => {
-  beforeEach(() => cy.disableAnimation())
+  beforeEach(() => {
+    cy.disableAnimation()
+    cy.get('bal-accordion').waitForComponents()
+  })
 
   it('should have labels', () => {
     cy.mount(BalAccordion, {

@@ -1,6 +1,10 @@
 import { BalTag } from '../../.storybook/vue/generated/components'
 
 describe('bal-tag.cy.ts', () => {
+  beforeEach(() => {
+    cy.get('bal-tag').waitForComponents()
+  })
+
   it('should have a default slot', () => {
     cy.mount(BalTag, { slots: { default: () => 'My tag' } })
     cy.get('bal-tag').contains('My tag')

@@ -26,6 +26,8 @@ describe('bal-checkbox.cy.ts', () => {
         default: () => 'My label',
       },
     })
+
+    cy.get('bal-checkbox').waitForComponents()
   })
 
   it('should have a default slot', () => {
