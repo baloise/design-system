@@ -107,6 +107,12 @@
     </h2>
     <h4>MarkusTiede</h4>
   </a>
+  <a href="https://github.com/JasperDeLanghe" class="avatar">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/25288931?v=4" alt="JasperDeLanghe" style="width: 64px;">
+    </h2>
+    <h4>JasperDeLanghe</h4>
+  </a>
   <a href="https://github.com/svene" class="avatar">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/51710?v=4" alt="svene" style="width: 64px;">
@@ -154,12 +160,6 @@
       <img src="https://avatars.githubusercontent.com/u/20054412?v=4" alt="ArivinK" style="width: 64px;">
     </h2>
     <h4>ArivinK</h4>
-  </a>
-  <a href="https://github.com/aymenfurter" class="avatar">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/20464460?v=4" alt="aymenfurter" style="width: 64px;">
-    </h2>
-    <h4>aymenfurter</h4>
   </a>
 </div>
  

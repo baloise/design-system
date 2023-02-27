@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener } from '@angular/core'
 import { ControlValueAccessor } from '@angular/forms'
 
-@Directive()
+@Directive({})
 export class ValueAccessor implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {
     /**/
@@ -30,7 +30,7 @@ export class ValueAccessor implements ControlValueAccessor {
   }
 
   @HostListener('balBlur', ['$event.target'])
-  handleBlurEvent(el: any) {
+  _handleBlurEvent(el: any) {
     if (el === this.el.nativeElement) {
       this.onTouched()
     }
