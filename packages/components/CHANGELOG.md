@@ -1,5 +1,52 @@
 # @baloise/design-system-components
 
+## 12.8.0
+
+### Minor Changes
+
+- [#1153](https://github.com/baloise-incubator/design-system/pull/1153) [`b230a279d`](https://github.com/baloise-incubator/design-system/commit/b230a279d61c5928570b39e537c0a7ba18df8677) Thanks [@hirsch88](https://github.com/hirsch88)! - add `waitForComponent` util function for component testing. This waits until the web-component tree has fully rendered.
+
+  ```typescript
+  import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+  import { TestBed } from '@angular/core/testing'
+  import { BrowserModule, By } from '@angular/platform-browser'
+  import { BalCoreModule, BalInputModule } from '@baloise/design-system-components-angular'
+  import { waitForComponent } from '@baloise/design-system-components'
+  import { AppComponent } from './app.component'
+
+  describe('AppComponent', () => {
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [AppComponent],
+        imports: [BrowserModule, BalCoreModule.forRoot(), BalInputModule],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      }).compileComponents()
+    })
+
+    it(`should render input value`, async () => {
+      const fixture = TestBed.createComponent(AppComponent)
+      fixture.detectChanges()
+      await waitForComponent(fixture.nativeElement)
+      const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
+      expect(input.nativeElement.value).toContain('My Value')
+    })
+  })
+  ```
+
+### Patch Changes
+
+- [#1172](https://github.com/baloise-incubator/design-system/pull/1172) [`6f99084d9`](https://github.com/baloise-incubator/design-system/commit/6f99084d946491231bc8b4fe7d479f5dd3c86c8d) Thanks [@hirsch88](https://github.com/hirsch88)! - claimnumber accepts small x
+
+- [#1174](https://github.com/baloise-incubator/design-system/pull/1174) [`d3ab0905d`](https://github.com/baloise-incubator/design-system/commit/d3ab0905d868e9a32a69d028efb544b28bbd5796) Thanks [@hirsch88](https://github.com/hirsch88)! - fix carousel items-per-view if not set to auto
+
+- [#1174](https://github.com/baloise-incubator/design-system/pull/1174) [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f) Thanks [@hirsch88](https://github.com/hirsch88)! - add autoprefixer for css files to solve hyphen issue
+
+- Updated dependencies [[`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f)]:
+  - @baloise/design-system-css@12.8.0
+  - @baloise/design-system-fonts@12.8.0
+  - @baloise/design-system-icons@12.8.0
+  - @baloise/design-system-tokens@12.8.0
+
 ## 12.7.1
 
 ### Patch Changes

@@ -316,6 +316,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -326,7 +330,7 @@ export namespace Components {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView": 'auto' | number;
+        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
         "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
@@ -1093,7 +1097,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -3923,6 +3927,10 @@ declare namespace LocalJSX {
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
@@ -3933,7 +3941,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView"?: 'auto' | number;
+        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
         /**
           * Emitted when a option got selected.
          */
@@ -4717,7 +4725,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**

@@ -165,6 +165,8 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
+export const waitForComponent = async (el: HTMLElement | undefined) => deepReady(el, true)
+
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   return el.addEventListener(eventName, callback, opts)
 }
