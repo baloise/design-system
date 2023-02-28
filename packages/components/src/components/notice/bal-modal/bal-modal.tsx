@@ -74,7 +74,7 @@ export class Modal implements OverlayInterface {
   /**
    * If `true`, the modal can be closed with the click outside of the modal
    */
-  @Prop() backdropDissmis = false
+  @Prop() backdropDissmis = true
 
   /**
    * Emitted after the modal has presented.
