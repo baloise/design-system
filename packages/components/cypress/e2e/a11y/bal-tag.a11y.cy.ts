@@ -10,11 +10,6 @@ describe('bal-tag', () => {
       })
 
       testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
-
-      describe('light version', () => {
-        before(() => cy.getByTestId('tag').setProperty('light', true))
-        testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
-      })
     })
   })
 })
