@@ -1421,6 +1421,10 @@ export namespace Components {
          */
         "isClosable": boolean;
         /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "isClosableOnBackdropClick": boolean;
+        /**
           * Defines the width of the modal body
          */
         "modalWidth": number;
@@ -5087,6 +5091,10 @@ declare namespace LocalJSX {
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "isClosableOnBackdropClick"?: boolean;
         /**
           * Defines the width of the modal body
          */
