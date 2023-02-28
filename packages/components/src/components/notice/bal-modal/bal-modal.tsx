@@ -74,7 +74,7 @@ export class Modal implements OverlayInterface {
   /**
    * If `true`, the modal can be closed with the click outside of the modal
    */
-  @Prop() backdropDissmis = true
+  @Prop() backdropDismiss = true
 
   /**
    * Emitted after the modal has presented.
@@ -224,7 +224,7 @@ export class Modal implements OverlayInterface {
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
         await this.dismiss(undefined, 'model-close')
       }
-      if (isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown && this.backdropDissmis) {
+      if (isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown && this.backdropDismiss) {
         await this.dismiss(undefined, 'model-close')
       }
     }
@@ -232,7 +232,7 @@ export class Modal implements OverlayInterface {
 
   @Listen('mousedown')
   async onMouseDown(event: MouseEvent) {
-    if (this.isClosable && this.presented && event && event.target && this.backdropDissmis) {
+    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
       const element = event.target as HTMLElement
       this.isClickedOutsideOnMouseDown = element.classList.contains('bal-modal__container')
     }

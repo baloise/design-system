@@ -1396,7 +1396,7 @@ export namespace Components {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
          */
-        "backdropDissmis": boolean;
+        "backdropDismiss": boolean;
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -5072,7 +5072,7 @@ declare namespace LocalJSX {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
          */
-        "backdropDissmis"?: boolean;
+        "backdropDismiss"?: boolean;
         /**
           * The component to display inside of the modal.
          */
