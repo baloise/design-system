@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "12.8.0",
+  "version": "12.8.1",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "build:bundle": "rollup --config rollup.config.js"
   },
   "dependencies": {
-    "@baloise/design-system-components": "12.8.0",
+    "@baloise/design-system-components": "12.8.1",
     "date-fns": "~2.29.3"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
