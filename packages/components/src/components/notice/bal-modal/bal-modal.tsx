@@ -19,6 +19,7 @@ export class Modal implements OverlayInterface {
   private modalContainerElement?: HTMLElement
   private modalBackgroundElement?: HTMLElement
   private isClickedOutsideOnMouseDown = false
+  private isClickedOutsideOnMouseUp = false
 
   private bodyScrollBlocker = BodyScrollBlocker()
 
@@ -219,12 +220,11 @@ export class Modal implements OverlayInterface {
   async onClickCloseButton(event: MouseEvent) {
     if (this.isClosable && this.presented && event && event.target) {
       const element = event.target as HTMLElement
-      const isClickedOutsideOnMouseUp = element.classList.contains('bal-modal__container')
       const closestBalButton = element.closest('bal-button')
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
         await this.dismiss(undefined, 'model-close')
       }
-      if (isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown && this.backdropDismiss) {
+      if (this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown && this.backdropDismiss) {
         await this.dismiss(undefined, 'model-close')
       }
     }
@@ -235,6 +235,14 @@ export class Modal implements OverlayInterface {
     if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
       const element = event.target as HTMLElement
       this.isClickedOutsideOnMouseDown = element.classList.contains('bal-modal__container')
+    }
+  }
+
+  @Listen('mouseup')
+  async onMouseUp(event: MouseEvent) {
+    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
+      const element = event.target as HTMLElement
+      this.isClickedOutsideOnMouseUp = element.classList.contains('bal-modal__container')
     }
   }
 
