@@ -111,7 +111,6 @@
     "clean-css-cli": "^5.6.2",
     "compression": "^1.7.4",
     "concurrently": "~7.6.0",
-    "contactjs": "^2.1.5",
     "conventional-changelog-conventionalcommits": "~5.0.0",
     "copyfiles": "^2.4.1",
     "cspell": "~6.18.0",
