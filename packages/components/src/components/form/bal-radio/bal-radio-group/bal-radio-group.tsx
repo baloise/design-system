@@ -17,6 +17,8 @@ import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { watchForRadios } from '../utils/watch-radios'
+import isFunction from 'lodash.isfunction'
+
 @Component({
   tag: 'bal-radio-group',
 })
@@ -373,6 +375,17 @@ export class RadioGroup implements ComponentInterface, Loggable {
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
 
+    const rawOptions = this.options || []
+    const options = rawOptions.map(option => {
+      if (isFunction(option.html)) {
+        return { ...option, html: option.html() }
+      }
+      if (option.html === undefined) {
+        return { ...option, html: option.label }
+      }
+      return option
+    })
+
     return (
       <Host
         class={{
@@ -393,24 +406,21 @@ export class RadioGroup implements ComponentInterface, Loggable {
           }}
         >
           <slot></slot>
-          {this.options &&
-            this.options.map(option => (
-              <bal-radio
-                name={option.name}
-                value={option.value}
-                label={option.label}
-                labelHidden={option.labelHidden}
-                flat={option.flat}
-                interface={option.interface}
-                disabled={option.disabled}
-                readonly={option.readonly}
-                required={option.required}
-                hidden={option.hidden}
-                invalid={option.invalid}
-              >
-                {option.name}
-              </bal-radio>
-            ))}
+          {options.map(option => (
+            <bal-radio
+              name={option.name}
+              value={option.value}
+              labelHidden={option.labelHidden}
+              flat={option.flat}
+              interface={option.interface}
+              disabled={option.disabled}
+              readonly={option.readonly}
+              required={option.required}
+              hidden={option.hidden}
+              invalid={option.invalid}
+              innerHTML={option.html as string}
+            ></bal-radio>
+          ))}
         </div>
       </Host>
     )
