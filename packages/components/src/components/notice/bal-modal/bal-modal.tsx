@@ -232,18 +232,12 @@ export class Modal implements OverlayInterface {
 
   @Listen('mousedown')
   async onMouseDown(event: MouseEvent) {
-    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
-      const element = event.target as HTMLElement
-      this.isClickedOutsideOnMouseDown = element.classList.contains('bal-modal__container')
-    }
+    this.isClickedOutsideOnMouseDown = this.isClickedOutside(event)
   }
 
   @Listen('mouseup')
   async onMouseUp(event: MouseEvent) {
-    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
-      const element = event.target as HTMLElement
-      this.isClickedOutsideOnMouseUp = element.classList.contains('bal-modal__container')
-    }
+    this.isClickedOutsideOnMouseUp = this.isClickedOutside(event)
   }
 
   @Listen('keyup', { target: 'body' })
@@ -277,6 +271,15 @@ export class Modal implements OverlayInterface {
 
   private unsetModalActiveOnBody() {
     this.bodyScrollBlocker.allow()
+  }
+
+  private isClickedOutside(event: MouseEvent) {
+    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
+      const element = event.target as HTMLElement
+      return element.classList.contains('bal-modal__container')
+    }
+
+    return false
   }
 
   render() {
