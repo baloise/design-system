@@ -79,6 +79,7 @@
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.20.0",
     "big.js": "~6.2.1",
+    "contactjs": "~2.1.6",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
     "lodash.camelcase": "~4.3.0",
