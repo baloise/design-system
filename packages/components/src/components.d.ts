@@ -1393,6 +1393,10 @@ export namespace Components {
         "color": Props.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDissmis": boolean;
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -1420,10 +1424,6 @@ export namespace Components {
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable": boolean;
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "isClosableOnBackdropClick": boolean;
         /**
           * Defines the width of the modal body
          */
@@ -5070,6 +5070,10 @@ declare namespace LocalJSX {
     }
     interface BalModal {
         /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDissmis"?: boolean;
+        /**
           * The component to display inside of the modal.
          */
         "component": Props.ComponentRef;
@@ -5091,10 +5095,6 @@ declare namespace LocalJSX {
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable"?: boolean;
-        /**
-          * If `true`, the modal can be closed with the click outside of the modal
-         */
-        "isClosableOnBackdropClick"?: boolean;
         /**
           * Defines the width of the modal body
          */
