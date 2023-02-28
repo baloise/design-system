@@ -66,16 +66,16 @@ const tokens = {
     'green-1': { hex: '#e9fbf7', inverted: 'primary', description: descriptions.color.primary },
     'green-2': { hex: '#cbf2ec', inverted: 'primary', description: descriptions.color.primary },
     'green-3': { hex: '#94e3d4', inverted: 'primary', description: descriptions.color.primary },
-    'green-4': { hex: '#21d9ac', inverted: 'white', description: descriptions.color.primary },
-    'green-5': { hex: '#00b28f', inverted: 'white', description: descriptions.color.primary },
+    'green-4': { hex: '#21d9ac', inverted: 'primary', description: descriptions.color.primary },
+    'green-5': { hex: '#00b28f', inverted: 'primary', description: descriptions.color.primary },
     'green-6': { hex: '#1b5951', inverted: 'white', description: descriptions.color.primary },
     //
     // YELLOW / TANGERINE
     'yellow-1': { hex: '#fff9e8', inverted: 'primary', description: descriptions.color.primary },
     'yellow-2': { hex: '#ffecbc', inverted: 'primary', description: descriptions.color.primary },
     'yellow-3': { hex: '#fae052', inverted: 'primary', description: descriptions.color.primary },
-    'yellow-4': { hex: '#ffbe19', inverted: 'white', description: descriptions.color.primary },
-    'yellow-5': { hex: '#fa9319', inverted: 'white', description: descriptions.color.primary },
+    'yellow-4': { hex: '#ffbe19', inverted: 'primary', description: descriptions.color.primary },
+    'yellow-5': { hex: '#fa9319', inverted: 'primary', description: descriptions.color.primary },
     'yellow-6': { hex: '#b24a00', inverted: 'white', description: descriptions.color.primary },
     //
     // RED
@@ -107,8 +107,8 @@ const tokens = {
     'warning-2': { hex: '#ffe5a3', inverted: 'primary', description: descriptions.color.alert },
     'warning-3': { hex: '#ffd25e', inverted: 'primary', description: descriptions.color.alert },
     'warning-4': { hex: '#ffbe19', inverted: 'primary', description: descriptions.color.alert },
-    'warning-5': { hex: '#f99319', inverted: 'white', description: descriptions.color.alert },
-    'warning-6': { hex: '#c97612', inverted: 'white', description: descriptions.color.alert },
+    'warning-5': { hex: '#f99319', inverted: 'primary', description: descriptions.color.alert },
+    'warning-6': { hex: '#c97612', inverted: 'primary', description: descriptions.color.alert },
     //
     // DANGER
     'danger-1': { hex: '#fce8e6', inverted: 'primary', description: descriptions.color.alert },
