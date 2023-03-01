@@ -1,5 +1,4 @@
 import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch, ComponentInterface } from '@stencil/core'
-import { Props } from '../../../types'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
@@ -37,7 +36,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
   /**
    * Icon name string with value 'plus' on default
    */
-  @Prop() icon: Props.BalListItemAccordionHeadIcon = 'plus'
+  @Prop() icon: BalProps.BalListItemAccordionHeadIcon = 'plus'
 
   /**
    * Emitted when the accordion state is changed

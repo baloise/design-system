@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../../types'
 
 @Component({
   tag: 'bal-field-message',
@@ -8,7 +7,7 @@ export class FieldMessage {
   /**
    * Defines the color of the message.
    */
-  @Prop() color: Props.BalFieldMessageColor = ''
+  @Prop() color: BalProps.BalFieldMessageColor = ''
 
   /**
    * If `true` the component gets a invalid red style.

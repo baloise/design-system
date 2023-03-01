@@ -1,7 +1,5 @@
 import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
-import { Props } from '../../types'
-import { Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
@@ -73,7 +71,7 @@ export class Popover {
   /**
    * Define the position of the popover content.
    */
-  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+  @Prop() position: BalProps.BalPopoverPlacement = 'bottom-start'
 
   /**
    * If `true` the popover content is open.
@@ -100,7 +98,7 @@ export class Popover {
   /**
    * Listen when the popover opens or closes. Returns the current value.
    */
-  @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalPopoverChangeDetail>
 
   /**
    * @internal - Use this to close unused popovers.

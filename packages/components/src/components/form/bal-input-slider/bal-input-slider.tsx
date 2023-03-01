@@ -1,6 +1,5 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { Events } from '../../../types'
 import { debounceEvent } from '../../../utils/helpers'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
@@ -108,7 +107,7 @@ export class InputSlider {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputSliderChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalInputSliderChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

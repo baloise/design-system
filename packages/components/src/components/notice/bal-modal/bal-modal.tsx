@@ -42,7 +42,7 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the space/padding of the modal
    */
-  @Prop() space: Props.BalModalSpace = ''
+  @Prop() space: BalProps.BalModalSpace = ''
 
   /**
    * If `true`, a backdrop will be displayed behind the modal.

@@ -15,16 +15,6 @@ import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { BalMode } from "./utils/config";
-export { Events, Props } from "./types";
-export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
-export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
-export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
-export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
-export { Attributes } from "./utils/attributes";
-export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
-export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -106,7 +96,7 @@ export namespace Components {
         /**
           * The color to use from your application's color palette.
          */
-        "color": Props.BalButtonColor;
+        "color": BalProps.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -118,7 +108,7 @@ export namespace Components {
         /**
           * The type of button.
          */
-        "elementType": Props.BalButtonElementType;
+        "elementType": BalProps.BalButtonElementType;
         /**
           * If `true` the button has a full width
          */
@@ -174,7 +164,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": Props.BalButtonSize;
+        "size": BalProps.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -182,7 +172,7 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */
@@ -3697,7 +3687,7 @@ declare namespace LocalJSX {
         /**
           * The color to use from your application's color palette.
          */
-        "color"?: Props.BalButtonColor;
+        "color"?: BalProps.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -3709,7 +3699,7 @@ declare namespace LocalJSX {
         /**
           * The type of button.
          */
-        "elementType"?: Props.BalButtonElementType;
+        "elementType"?: BalProps.BalButtonElementType;
         /**
           * If `true` the button has a full width
          */
@@ -3781,7 +3771,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: Props.BalButtonSize;
+        "size"?: BalProps.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -3789,7 +3779,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: Props.BalButtonTarget;
+        "target"?: BalProps.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */

@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
-import { Props } from '../../../types'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
 import { isPlatform } from '../../../utils/platform'
@@ -40,12 +39,12 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
   /**
    * Sets space to content of the accordion body
    */
-  @Prop() contentSpace: Props.BalListContentSpacing = 'none'
+  @Prop() contentSpace: BalProps.BalListContentSpacing = 'none'
 
   /**
    * Sets justify-content of the items to start, center, end, or space-between. Default is start
    */
-  @Prop() contentAlignment: Props.BalListContentAlignment = 'start'
+  @Prop() contentAlignment: BalProps.BalListContentAlignment = 'start'
 
   /**
    * LIFECYCLE

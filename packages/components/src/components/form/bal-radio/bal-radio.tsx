@@ -11,7 +11,6 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Events, Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -93,7 +92,7 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: Props.BalRadioInterface = 'radio'
+  @Prop() interface: BalProps.BalRadioInterface = 'radio'
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -133,7 +132,7 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalRadioChangeDetail>
 
   /**
    * Emitted when the input has clicked.

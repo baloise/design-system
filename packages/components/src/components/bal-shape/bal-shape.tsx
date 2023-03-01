@@ -1,5 +1,4 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import { BaloiseDesignToken } from '@baloise/design-system-tokens'
 
@@ -15,17 +14,17 @@ export class Shape implements ComponentInterface {
   /**
    * The shape variation
    */
-  @Prop() variation: Props.BalShapeVariation = '1'
+  @Prop() variation: BalProps.BalShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop() color: Props.BalShapeColor = 'green'
+  @Prop() color: BalProps.BalShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop() rotation?: Props.BalShapeRotation = '0'
+  @Prop() rotation?: BalProps.BalShapeRotation = '0'
 
   getHex = () => {
     let color: string

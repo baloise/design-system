@@ -64,7 +64,6 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { Events, Props } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
@@ -223,17 +222,17 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop({ attribute: 'allowed-dates' }) allowedDates: Props.BalDatepickerCallback | undefined = undefined
+  @Prop({ attribute: 'allowed-dates' }) allowedDates: BalProps.BalDatepickerCallback | undefined = undefined
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalDatepickerChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalDatepickerChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalDatepickerInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalDatepickerInputDetail>
 
   /**
    * Emitted when the input loses focus.
@@ -523,7 +522,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       return true
     }
 
-    return (this.allowedDates as Props.BalDatepickerCallback)(formatDateString(dayDatePointer))
+    return (this.allowedDates as BalProps.BalDatepickerCallback)(formatDateString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {

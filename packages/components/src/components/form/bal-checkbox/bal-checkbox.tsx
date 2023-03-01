@@ -22,7 +22,6 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
@@ -60,7 +59,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
+  @Prop() interface: BalProps.BalCheckboxInterface = 'checkbox'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -113,7 +112,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   /**
    * Emitted when the value property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxChangeDetail>
 
   /**
    * Emitted when the input has clicked.

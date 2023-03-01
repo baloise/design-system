@@ -16,7 +16,6 @@ import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 
-import { Events, Props } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 
 @Component({
@@ -31,7 +30,7 @@ export class CheckboxGroup implements ComponentInterface {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface?: Props.BalCheckboxGroupInterface = undefined
+  @Prop() interface?: BalProps.BalCheckboxGroupInterface = undefined
 
   /**
    * If `true` it acts as the main form control
@@ -109,7 +108,7 @@ export class CheckboxGroup implements ComponentInterface {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxGroupChangeDetail>
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
