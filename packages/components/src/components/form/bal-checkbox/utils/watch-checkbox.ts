@@ -1,4 +1,4 @@
-export const watchForCheckboxs = <T extends HTMLElement>(
+export const watchForCheckbox = <T extends HTMLElement>(
   containerEl: HTMLElement,
   tagName: string,
   onChange: (el: T | undefined) => void,

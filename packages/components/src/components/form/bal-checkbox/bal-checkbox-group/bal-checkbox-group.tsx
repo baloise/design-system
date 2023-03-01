@@ -18,7 +18,7 @@ import { inheritAttributes } from '../../../../utils/attributes'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
-import { watchForCheckboxs } from '../utils/watch-checkbox'
+import { watchForCheckbox } from '../utils/watch-checkbox'
 import isFunction from 'lodash.isfunction'
 
 @Component({
@@ -153,7 +153,7 @@ export class CheckboxGroup implements ComponentInterface {
     }
 
     this.onOptionChange()
-    this.mutationO = watchForCheckboxs<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
+    this.mutationO = watchForCheckbox<HTMLBalCheckboxElement>(this.el, 'bal-step-item', () => {
       if (this.options === undefined) {
         this.onOptionChange()
       }
