@@ -133,7 +133,11 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
     }
   }
 
-  configChanged = (state: BalConfigState) => {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.animated = state.animated
   }
 

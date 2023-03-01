@@ -25,6 +25,7 @@ export { initializeBaloiseDesignSystem } from './initialize'
 export * from './components/form/bal-select/utils/bal-option.util'
 export {
   waitForComponent,
+  waitForDesignSystem,
   shallowReady,
   deepReady,
   wait,
