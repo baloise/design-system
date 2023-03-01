@@ -48,6 +48,44 @@
             <bal-checkbox value="C" disabled>Disabled</bal-checkbox>
           </bal-checkbox-group>
         </section>
+
+        <bal-heading>Options</bal-heading>
+        <section>
+          <bal-checkbox-group id="options-test" data-testid="options" value="1"></bal-checkbox-group>
+          <script>
+            const checkboxGroupEl = document.getElementById('options-test')
+            checkboxGroupEl.options = [
+              {
+                value: '1',
+                name: 'test',
+                html: 'Label 1',
+                isEmpty: false,
+                disabled: false,
+                hidden: false,
+                invalid: false,
+                required: false,
+                readonly: false,
+                flat: false,
+                labelHidden: false,
+                interface: 'checkbox',
+              },
+              {
+                value: '2',
+                name: 'test 2',
+                html: 'Label 2',
+                isEmpty: false,
+                disabled: false,
+                hidden: false,
+                invalid: false,
+                required: false,
+                readonly: false,
+                flat: false,
+                labelHidden: false,
+                interface: 'checkbox',
+              },
+            ]
+          </script>
+        </section>
       </main>
     </bal-doc-app>
   </body>

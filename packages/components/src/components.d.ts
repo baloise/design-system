@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -400,6 +401,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOptions": () => Promise<BalCheckboxOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -454,6 +459,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface"?: Props.BalCheckboxGroupInterface;
@@ -461,6 +470,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */
@@ -4090,6 +4103,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */

@@ -24,6 +24,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
+import { BalCheckboxOption } from './bal-checkbox.type'
 
 @Component({
   tag: 'bal-checkbox',
@@ -181,6 +182,30 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Method()
   getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
+  }
+
+  /**
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async getOptions(): Promise<BalCheckboxOption> {
+    return this.options
+  }
+
+  get options() {
+    return {
+      name: this.name,
+      value: this.value,
+      checked: this.checked,
+      labelHidden: this.labelHidden,
+      flat: this.flat,
+      interface: this.interface,
+      disabled: this.disabled,
+      readonly: this.readonly,
+      required: this.required,
+      hidden: this.hidden,
+      invalid: this.invalid,
+    }
   }
 
   get group(): HTMLBalCheckboxGroupElement | null {

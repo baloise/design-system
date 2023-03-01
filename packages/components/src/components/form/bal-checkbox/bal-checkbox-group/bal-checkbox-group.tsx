@@ -15,9 +15,11 @@ import {
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
-
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
+import { BalCheckboxOption } from '../bal-checkbox.type'
+import { watchForCheckboxs } from '../utils/watch-checkbox'
+import isFunction from 'lodash.isfunction'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -25,6 +27,8 @@ import { BEM } from '../../../../utils/bem'
 export class CheckboxGroup implements ComponentInterface {
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+
+  private mutationO?: MutationObserver
 
   @Element() el!: HTMLElement
 
@@ -99,11 +103,21 @@ export class CheckboxGroup implements ComponentInterface {
   valueChanged(_value: any[], oldValue: any[]) {
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
-        this.sync()
+        this.onOptionChange()
       }
     } else {
-      this.sync()
+      this.onOptionChange()
     }
+  }
+
+  /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options?: BalCheckboxOption[]
+
+  @Watch('options')
+  protected async optionChanged() {
+    this.onOptionChange()
   }
 
   /**
@@ -127,7 +141,7 @@ export class CheckboxGroup implements ComponentInterface {
       if (this.control) {
         this.value = []
       }
-      this.sync()
+      this.onOptionChange()
     }
   }
 
@@ -137,7 +151,20 @@ export class CheckboxGroup implements ComponentInterface {
       this.disabledChanged(this.disabled)
       this.readonlyChanged(this.readonly)
     }
-    this.sync()
+
+    this.onOptionChange()
+    this.mutationO = watchForCheckboxs<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
+      if (this.options === undefined) {
+        this.onOptionChange()
+      }
+    })
+  }
+
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
   }
 
   private get children(): HTMLBalCheckboxElement[] {
@@ -150,6 +177,18 @@ export class CheckboxGroup implements ComponentInterface {
     if (this.control) {
       this.value = value
     }
+  }
+
+  /**
+   * Find the options properties by its value
+   */
+  @Method()
+  async getOptionByValue(value: string) {
+    const options = this.options
+    if (options) {
+      return options.find(option => option.value === value)
+    }
+    return undefined
   }
 
   private sync() {
@@ -210,10 +249,26 @@ export class CheckboxGroup implements ComponentInterface {
     }
   }
 
+  private onOptionChange = async () => {
+    try {
+      this.sync()
+    } catch (e) {
+      console.warn('[WARN] - Could not read checkbox options')
+    }
+  }
+
   render() {
     const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
+
+    const rawOptions = this.options || []
+    const options = rawOptions.map(option => {
+      if (isFunction(option.html)) {
+        return { ...option, html: option.html() }
+      }
+      return option
+    })
 
     return (
       <Host
@@ -236,6 +291,21 @@ export class CheckboxGroup implements ComponentInterface {
           }}
         >
           <slot></slot>
+          {options.map(option => (
+            <bal-checkbox
+              name={option.name}
+              value={option.value}
+              labelHidden={option.labelHidden}
+              flat={option.flat}
+              interface={option.interface}
+              disabled={option.disabled}
+              readonly={option.readonly}
+              required={option.required}
+              hidden={option.hidden}
+              invalid={option.invalid}
+              innerHTML={option.html as string}
+            ></bal-checkbox>
+          ))}
         </div>
       </Host>
     )
