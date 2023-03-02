@@ -224,7 +224,7 @@ export class Modal implements OverlayInterface {
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
         await this.dismiss(undefined, 'model-close')
       }
-      if (this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown && this.backdropDismiss) {
+      if (this.backdropDismiss && this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown) {
         await this.dismiss(undefined, 'model-close')
       }
     }
