@@ -318,9 +318,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     detachComponentToConfig(this)
   }
 
-  configChanged(config: BalConfigState): void {
-    this.language = config.language
-    this.region = config.region
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**

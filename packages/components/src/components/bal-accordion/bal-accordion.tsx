@@ -118,7 +118,11 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * ------------------------------------------------------
    */
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.animated = state.animated
   }
 
