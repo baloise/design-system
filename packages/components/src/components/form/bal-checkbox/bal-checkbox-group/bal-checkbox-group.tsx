@@ -153,7 +153,7 @@ export class CheckboxGroup implements ComponentInterface {
     }
 
     this.onOptionChange()
-    this.mutationO = watchForCheckbox<HTMLBalCheckboxElement>(this.el, 'bal-step-item', () => {
+    this.mutationO = watchForCheckbox<HTMLBalCheckboxElement>(this.el, 'bal-checkbox', () => {
       if (this.options === undefined) {
         this.onOptionChange()
       }

@@ -188,11 +188,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * Options of the tab like label, value etc.
    */
   @Method()
-  async getOptions(): Promise<BalCheckboxOption> {
-    return this.options
+  async getOption(): Promise<BalCheckboxOption> {
+    return this.option
   }
 
-  get options() {
+  get option() {
     return {
       name: this.name,
       value: this.value,
