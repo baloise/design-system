@@ -403,7 +403,7 @@ export namespace Components {
         /**
           * Options of the tab like label, value etc.
          */
-        "getOptions": () => Promise<BalCheckboxOption>;
+        "getOption": () => Promise<BalCheckboxOption>;
         /**
           * If `true`, the value will not be send with a form submit
          */
