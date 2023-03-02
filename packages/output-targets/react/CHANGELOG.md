@@ -1,5 +1,7 @@
 # @baloise/design-system-output-target-react
 
+## 12.8.2
+
 ## 12.8.1
 
 ### Patch Changes

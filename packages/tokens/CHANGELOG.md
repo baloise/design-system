@@ -1,5 +1,11 @@
 # @baloise/design-system-tokens
 
+## 12.8.2
+
+### Patch Changes
+
+- [`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust colors due to contrast issues
+
 ## 12.8.1
 
 ### Patch Changes
