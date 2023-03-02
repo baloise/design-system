@@ -206,11 +206,11 @@ export class Radio implements ComponentInterface, Loggable {
    * Options of the tab like label, value etc.
    */
   @Method()
-  async getOptions(): Promise<BalRadioOption> {
-    return this.options
+  async getOption(): Promise<BalRadioOption> {
+    return this.option
   }
 
-  get options() {
+  get option() {
     return {
       name: this.name,
       value: this.value,

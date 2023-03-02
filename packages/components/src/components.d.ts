@@ -1934,7 +1934,7 @@ export namespace Components {
         /**
           * Options of the tab like label, value etc.
          */
-        "getOptions": () => Promise<BalRadioOption>;
+        "getOption": () => Promise<BalRadioOption>;
         /**
           * If `true`, the value will not be send with a form submit
          */

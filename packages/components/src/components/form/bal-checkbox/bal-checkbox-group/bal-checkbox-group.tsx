@@ -258,11 +258,7 @@ export class CheckboxGroup implements ComponentInterface {
   }
 
   private onOptionChange = async () => {
-    try {
-      this.sync()
-    } catch (e) {
-      console.warn('[WARN] - Could not read checkbox options')
-    }
+    this.sync()
   }
 
   render() {

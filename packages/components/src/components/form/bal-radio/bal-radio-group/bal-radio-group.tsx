@@ -17,8 +17,8 @@ import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-import { watchForRadios } from '../utils/watch-radios'
 import isFunction from 'lodash.isfunction'
+import { observeMutations } from '../../../../utils/mutations'
 
 @Component({
   tag: 'bal-radio-group',
@@ -174,11 +174,19 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.onOptionChange()
-    this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
-      if (this.options === undefined) {
-        this.onOptionChange()
-      }
-    })
+
+    this.mutationO = observeMutations(
+      {
+        el: this.el,
+        parentTag: 'bal-radio-group',
+        childTag: 'bal-radio',
+      },
+      () => {
+        if (this.options === undefined) {
+          this.onOptionChange()
+        }
+      },
+    )
   }
 
   disconnectedCallback() {
@@ -360,11 +368,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   }
 
   private onOptionChange = async () => {
-    try {
-      this.setRadioTabindex(this.value)
-    } catch (e) {
-      console.warn('[WARN] - Could not read radio options')
-    }
+    this.setRadioTabindex(this.value)
   }
 
   /**
