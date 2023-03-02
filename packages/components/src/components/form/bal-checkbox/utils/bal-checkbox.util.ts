@@ -2,8 +2,9 @@ import { Props } from '../../../../types'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 
 interface Option {
-  name: string
   value: any
+  label?: string
+  name?: string
   checked?: boolean
   labelHidden?: boolean
   flat?: boolean

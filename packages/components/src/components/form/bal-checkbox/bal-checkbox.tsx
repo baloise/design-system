@@ -25,6 +25,8 @@ import { BEM } from '../../../utils/bem'
 import { Props, Events } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import isArray from 'lodash.isarray'
 
 @Component({
   tag: 'bal-checkbox',
@@ -32,7 +34,7 @@ import { BalCheckboxOption } from './bal-checkbox.type'
     css: 'radio-checkbox.sass',
   },
 })
-export class Checkbox implements ComponentInterface, FormInput<any> {
+export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   private inputId = `bal-cb-${checkboxIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -43,10 +45,22 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @State() hasFocus = false
   @State() hasLabel = true
 
+  log!: LogInstance
+
+  @Logger('bal-checkbox')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
+
+  /**
+   * Label of the radio item.
+   */
+  @Prop() label = ''
 
   /**
    * If `true` the checkbox has no label
@@ -197,6 +211,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
       name: this.name,
       value: this.value,
       checked: this.checked,
+      label: this.label,
       labelHidden: this.labelHidden,
       flat: this.flat,
       interface: this.interface,
@@ -213,7 +228,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   }
 
   private updateState = () => {
-    if (this.group && this.group.control) {
+    if (this.group && this.group.control && isArray(this.group.value)) {
       this.checked = this.group.value.includes(this.value)
     }
   }
@@ -325,6 +340,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
               ...labelTextEl.modifier('flat').class(this.flat),
             }}
           >
+            {this.label}
             <slot></slot>
           </span>
         </label>

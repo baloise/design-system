@@ -3,9 +3,10 @@ import { Props } from '../../../types'
 type HtmlFunction = () => string
 
 export interface BalCheckboxOption {
-  name: string
   value: any
   checked: boolean
+  name?: string
+  label?: string
   html?: HtmlFunction | string
   labelHidden: boolean
   flat: boolean

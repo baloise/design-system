@@ -72,10 +72,10 @@
 
         <bal-heading>Options</bal-heading>
         <section>
-          <bal-radio-group id="options-test" data-testid="options" value="1"></bal-radio-group>
+          <bal-radio-group id="options-test" data-testid="options"></bal-radio-group>
           <script>
-            const stepEl = document.getElementById('options-test')
-            stepEl.options = [
+            const radioGroupElement = document.getElementById('options-test')
+            radioGroupElement.options = [
               {
                 value: '1',
                 name: 'test',
@@ -83,10 +83,11 @@
               },
               {
                 value: '2',
-                name: 'test 2',
+                name: 'test',
                 label: 'Label 2',
               },
             ]
+            radioGroupElement.value = '1'
           </script>
         </section>
       </main>

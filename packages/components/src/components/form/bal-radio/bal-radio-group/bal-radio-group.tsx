@@ -18,16 +18,18 @@ import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import isFunction from 'lodash.isfunction'
-import { observeMutations } from '../../../../utils/mutations'
+import { MutationHandler } from '../../../../utils/mutations'
+import { inheritAttributes } from '../../../../utils/attributes'
 
 @Component({
   tag: 'bal-radio-group',
 })
 export class RadioGroup implements ComponentInterface, Loggable {
   private inputId = `bal-rg-${radioGroupIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
 
-  private mutationO?: MutationObserver
+  private mutationHandler = MutationHandler({ tags: ['bal-radio-group', 'bal-radio'] })
 
   log!: LogInstance
 
@@ -51,6 +53,11 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   /**
@@ -163,6 +170,14 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.initialValue = this.value
+    this.mutationHandler.connect(this.el)
+    this.mutationHandler.onChange(() => this.onOptionChange())
+
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   componentWillLoad() {
@@ -170,30 +185,13 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-  }
-
-  componentDidLoad() {
     this.onOptionChange()
 
-    this.mutationO = observeMutations(
-      {
-        el: this.el,
-        parentTag: 'bal-radio-group',
-        childTag: 'bal-radio',
-      },
-      () => {
-        if (this.options === undefined) {
-          this.onOptionChange()
-        }
-      },
-    )
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   disconnectedCallback() {
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
-    }
+    this.mutationHandler.disconnect()
   }
 
   /**
@@ -401,6 +399,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
         aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
+        {...this.inheritedAttributes}
       >
         <div
           class={{

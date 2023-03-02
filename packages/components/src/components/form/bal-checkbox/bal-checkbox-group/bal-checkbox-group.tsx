@@ -19,18 +19,48 @@ import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
-import { observeMutations } from '../../../../utils/mutations'
+import { MutationHandler } from '../../../../utils/mutations'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 
 @Component({
   tag: 'bal-checkbox-group',
 })
-export class CheckboxGroup implements ComponentInterface {
+export class CheckboxGroup implements ComponentInterface, Loggable {
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
-  private mutationO?: MutationObserver
+  private mutationHandler = MutationHandler({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
+
+  log!: LogInstance
+
+  @Logger('bal-checkbox-group')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   @Element() el!: HTMLElement
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options?: BalCheckboxOption[]
+
+  @Watch('options')
+  protected async optionChanged() {
+    if (this.control) {
+      this.onOptionChange()
+      if (this.options === undefined) {
+        this.mutationHandler.observe()
+      } else {
+        this.mutationHandler.stopObserve()
+      }
+    }
+  }
 
   /**
    * Defines the layout of the checkbox button
@@ -111,19 +141,46 @@ export class CheckboxGroup implements ComponentInterface {
   }
 
   /**
-   * Steps can be passed as a property or through HTML markup.
-   */
-  @Prop() options?: BalCheckboxOption[]
-
-  @Watch('options')
-  protected async optionChanged() {
-    this.onOptionChange()
-  }
-
-  /**
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback(): void {
+    this.mutationHandler.connect(this.el)
+    this.mutationHandler.onChange(() => this.onOptionChange())
+
+    if (this.control) {
+      if (this.options === undefined) {
+        this.mutationHandler.observe()
+      } else {
+        this.mutationHandler.stopObserve()
+      }
+    }
+  }
+
+  componentWillLoad() {
+    if (this.control) {
+      this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+      this.disabledChanged(this.disabled)
+      this.readonlyChanged(this.readonly)
+    }
+
+    this.onOptionChange()
+  }
+
+  disconnectedCallback() {
+    this.mutationHandler.disconnect()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -145,39 +202,10 @@ export class CheckboxGroup implements ComponentInterface {
     }
   }
 
-  componentWillLoad() {
-    if (this.control) {
-      this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-      this.disabledChanged(this.disabled)
-      this.readonlyChanged(this.readonly)
-    }
-
-    this.onOptionChange()
-
-    this.mutationO = observeMutations(
-      {
-        el: this.el,
-        parentTag: 'bal-checkbox-group',
-        childTag: 'bal-checkbox',
-      },
-      () => {
-        if (this.options === undefined) {
-          this.onOptionChange()
-        }
-      },
-    )
-  }
-
-  disconnectedCallback() {
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
-    }
-  }
-
-  private get children(): HTMLBalCheckboxElement[] {
-    return Array.from(this.el.querySelectorAll('bal-checkbox'))
-  }
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /** @internal */
   @Method()
@@ -198,6 +226,11 @@ export class CheckboxGroup implements ComponentInterface {
     }
     return undefined
   }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private sync() {
     if (this.control) {
@@ -222,6 +255,20 @@ export class CheckboxGroup implements ComponentInterface {
       }
     })
   }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get children(): HTMLBalCheckboxElement[] {
+    return Array.from(this.el.querySelectorAll('bal-checkbox'))
+  }
+
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
 
   private onClick = (ev: Event) => {
     if (!this.control) {
@@ -261,6 +308,11 @@ export class CheckboxGroup implements ComponentInterface {
     this.sync()
   }
 
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
   render() {
     const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
@@ -270,6 +322,9 @@ export class CheckboxGroup implements ComponentInterface {
     const options = rawOptions.map(option => {
       if (isFunction(option.html)) {
         return { ...option, html: option.html() }
+      }
+      if (option.html === undefined) {
+        return { ...option, html: option.label }
       }
       return option
     })

@@ -418,6 +418,10 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * Label of the radio item.
+         */
+        "label": string;
+        /**
           * If `true` the checkbox has no label
          */
         "labelHidden": boolean;
@@ -4054,6 +4058,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * Label of the radio item.
+         */
+        "label"?: string;
         /**
           * If `true` the checkbox has no label
          */
