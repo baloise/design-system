@@ -15,7 +15,10 @@ import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
+import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
+import { watchForRadios } from '../utils/watch-radios'
+import isFunction from 'lodash.isfunction'
 
 @Component({
   tag: 'bal-radio-group',
@@ -23,6 +26,8 @@ import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 export class RadioGroup implements ComponentInterface, Loggable {
   private inputId = `bal-rg-${radioGroupIds++}`
   private initialValue?: any | null
+
+  private mutationO?: MutationObserver
 
   log!: LogInstance
 
@@ -37,6 +42,16 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
+
+  /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options?: BalRadioOption[]
+
+  @Watch('options')
+  protected async optionChanged() {
+    this.onOptionChange()
+  }
 
   /**
    * If `true`, the radios can be deselected.
@@ -54,9 +69,8 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Prop({ mutable: true }) value?: any | null
 
   @Watch('value')
-  valueChanged(value: any | undefined) {
-    this.setRadioTabindex(value)
-
+  valueChanged() {
+    this.onOptionChange()
     this.balInput.emit(this.value)
   }
 
@@ -159,7 +173,19 @@ export class RadioGroup implements ComponentInterface, Loggable {
   }
 
   componentDidLoad() {
-    this.setRadioTabindex(this.value)
+    this.onOptionChange()
+    this.mutationO = watchForRadios<HTMLBalRadioElement>(this.el, 'bal-step-item', () => {
+      if (this.options === undefined) {
+        this.onOptionChange()
+      }
+    })
+  }
+
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
   }
 
   /**
@@ -253,6 +279,18 @@ export class RadioGroup implements ComponentInterface, Loggable {
   }
 
   /**
+   * Find the options properties by its value
+   */
+  @Method()
+  async getOptionByValue(value: string) {
+    const options = this.options
+    if (options) {
+      return options.find(option => option.value === value)
+    }
+    return undefined
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -321,6 +359,14 @@ export class RadioGroup implements ComponentInterface, Loggable {
     }
   }
 
+  private onOptionChange = async () => {
+    try {
+      this.setRadioTabindex(this.value)
+    } catch (e) {
+      console.warn('[WARN] - Could not read radio options')
+    }
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -330,6 +376,17 @@ export class RadioGroup implements ComponentInterface, Loggable {
     const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
+
+    const rawOptions = this.options || []
+    const options = rawOptions.map(option => {
+      if (isFunction(option.html)) {
+        return { ...option, html: option.html() }
+      }
+      if (option.html === undefined) {
+        return { ...option, html: option.label }
+      }
+      return option
+    })
 
     return (
       <Host
@@ -351,6 +408,21 @@ export class RadioGroup implements ComponentInterface, Loggable {
           }}
         >
           <slot></slot>
+          {options.map(option => (
+            <bal-radio
+              name={option.name}
+              value={option.value}
+              labelHidden={option.labelHidden}
+              flat={option.flat}
+              interface={option.interface}
+              disabled={option.disabled}
+              readonly={option.readonly}
+              required={option.required}
+              hidden={option.hidden}
+              invalid={option.invalid}
+              innerHTML={option.html as string}
+            ></bal-radio>
+          ))}
         </div>
       </Host>
     )
