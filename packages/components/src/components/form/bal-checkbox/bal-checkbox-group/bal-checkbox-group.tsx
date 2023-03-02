@@ -18,8 +18,8 @@ import { inheritAttributes } from '../../../../utils/attributes'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
-import { watchForCheckbox } from '../utils/watch-checkbox'
 import isFunction from 'lodash.isfunction'
+import { observeMutations } from '../../../../utils/mutations'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -153,11 +153,19 @@ export class CheckboxGroup implements ComponentInterface {
     }
 
     this.onOptionChange()
-    this.mutationO = watchForCheckbox<HTMLBalCheckboxElement>(this.el, 'bal-checkbox', () => {
-      if (this.options === undefined) {
-        this.onOptionChange()
-      }
-    })
+
+    this.mutationO = observeMutations(
+      {
+        el: this.el,
+        parentTag: 'bal-checkbox-group',
+        childTag: 'bal-checkbox',
+      },
+      () => {
+        if (this.options === undefined) {
+          this.onOptionChange()
+        }
+      },
+    )
   }
 
   disconnectedCallback() {
