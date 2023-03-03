@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash'
+import { Props } from '../../../../types'
 import { BalRadioOption } from '../bal-radio.type'
 
 type HtmlFunction = () => string
@@ -14,6 +14,7 @@ interface Option {
   required?: boolean
   hidden?: boolean
   invalid?: boolean
+  interface?: Props.BalRadioInterface
 }
 
 export const newBalRadioOption = (option: Option): BalRadioOption => {
