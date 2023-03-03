@@ -33,6 +33,33 @@ import { Basic } from './bal-checkbox.stories'
   </bal-button-group>
 </bal-doc-app>
 
+We introduced a new way of adding a options to the bal-checkbox-group
+by introducing the `options` property in which options can be passed using a Javascript.
+
+To use the `bal-checkbox-group` with options we also need to set `control` attribute to true.
+
+```html
+<bal-checkbox-group control [options]="options"></bal-checkbox-group>
+```
+
+```typescript
+import { newBalCheckboxOption } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-example-component',
+  templateUrl: './example-component.component.html',
+})
+export class ExampleComponent {
+  options = [
+    newBalCheckboxOption({ value: '1', label: 'Label 1' }),
+    newBalCheckboxOption({
+      value: '2',
+      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+    }),
+  ]
+}
+```
+
 ## Examples
 
 <span id="story--components-form-checkbox--field-control" style={{ opacity: 0 }}></span>
@@ -92,27 +119,6 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
-
-## Tutorials and Templates
-
-A list of tutorials how to use or create this component and templates to see how it can
-be combined with other components.
-
-import IconDocument from '../../../../../../icons/svg/document.svg'
-import IconAccount from '../../../../../../icons/svg/account.svg'
-
-<bal-doc-link-list one-column>
-  <a href="?path=/story/implementation-form--page">
-    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
-      Documentation how to build forms and how to use the components.
-    </bal-doc-link-list-item>
-  </a>
-  <a href="?path=/story/design-common-templates--contact-form">
-    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
-      A template with to illustrate the structure of a form.
-    </bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
 
 import testing from './testing.md'
 

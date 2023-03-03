@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "12.8.1",
+  "version": "12.8.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -71,10 +71,10 @@
     "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "12.8.1",
-    "@baloise/design-system-fonts": "12.8.1",
-    "@baloise/design-system-icons": "12.8.1",
-    "@baloise/design-system-tokens": "12.8.1",
+    "@baloise/design-system-css": "12.8.2",
+    "@baloise/design-system-fonts": "12.8.2",
+    "@baloise/design-system-icons": "12.8.2",
+    "@baloise/design-system-tokens": "12.8.2",
     "@baloise/web-app-utils": "3.10.0",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.20.0",
@@ -86,6 +86,7 @@
     "lodash.capitalize": "~4.2.1",
     "lodash.isarray": "~4.0.0",
     "lodash.isempty": "~4.4.0",
+    "lodash.isfunction": "^3.0.9",
     "lodash.isnan": "~3.0.2",
     "lodash.isnil": "~4.0.0",
     "lodash.isstring": "~4.0.1",
@@ -96,9 +97,9 @@
     "lottie-web": "5.8.1"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "12.8.1",
-    "@baloise/design-system-output-target-react": "12.8.1",
-    "@baloise/design-system-output-target-vue": "12.8.1"
+    "@baloise/design-system-output-target-angular": "12.8.2",
+    "@baloise/design-system-output-target-react": "12.8.2",
+    "@baloise/design-system-output-target-vue": "12.8.2"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

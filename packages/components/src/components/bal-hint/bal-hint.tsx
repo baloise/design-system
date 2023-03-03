@@ -59,7 +59,11 @@ export class Hint implements BalConfigObserver {
     this.updateContent()
   }
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     if (!this.closeLabel) {
       switch (state.language) {
         case 'de':

@@ -43,6 +43,7 @@ export class Badge implements ComponentInterface {
         <span
           class={{
             'bal-badge__label': true,
+            [`bal-badge__label--has-color-${this.color}`]: true,
             'bal-badge__label--is-hidden': !!this.icon || this.size === 'small',
           }}
         >
@@ -55,7 +56,7 @@ export class Badge implements ComponentInterface {
           }}
           size={this.size === '' ? 'small' : ''}
           name={this.icon}
-          color="white"
+          color={this.color === 'warning' ? 'primary' : 'white'}
         ></bal-icon>
       </Host>
     )

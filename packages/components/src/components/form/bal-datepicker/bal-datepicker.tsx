@@ -45,7 +45,6 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { BalLanguage, BalConfigState, BalRegion } from '../../../utils/config/config.types'
 import {
   detachComponentToConfig,
   defaultConfig,
@@ -53,6 +52,9 @@ import {
   attachComponentToConfig,
   useBalConfig,
   defaultLocale,
+  BalLanguage,
+  BalConfigState,
+  BalRegion,
 } from '../../../utils/config'
 import {
   FormInput,
@@ -318,9 +320,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     detachComponentToConfig(this)
   }
 
-  configChanged(config: BalConfigState): void {
-    this.language = config.language
-    this.region = config.region
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**

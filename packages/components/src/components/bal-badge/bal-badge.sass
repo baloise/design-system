@@ -18,11 +18,11 @@
     height: 2rem
   // colors
   +modifier(has-background-danger)
-    background: var(--bal-color-danger)
+    background: var(--bal-color-danger-4)
   +modifier(has-background-warning)
-    background: var(--bal-color-warning)
+    background: var(--bal-color-warning-4)
   +modifier(has-background-success)
-    background: var(--bal-color-success)
+    background: var(--bal-color-success-4)
   // position
   +modifiers(has-position-card, has-position-button)
     position: absolute
@@ -45,6 +45,8 @@
     hyphens: auto
     +modifier(is-hidden)
       display: none !important
+    +modifier(has-color-warning)
+      color: var(--bal-color-primary)
 
     // icon
   +element(icon)

@@ -18,5 +18,9 @@ declare namespace Cypress {
      * Wraps component and waits until it is ready.
      */
     wrapComponent(element: any, options?: Partial<Loggable & Timeoutable>): Chainable<JQuery>
+    /**
+     * Waits until the Design System is fully loaded and rendered
+     */
+    waitForDesignSystem(): Chainable<JQuery>
   }
 }

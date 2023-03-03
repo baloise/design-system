@@ -1,5 +1,5 @@
 import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
+import { Component, Host, h, Prop, State, Watch, Method } from '@stencil/core'
 import {
   BalConfigObserver,
   defaultConfig,
@@ -48,10 +48,14 @@ export class Footer implements BalConfigObserver {
     this.updateFooterLinks()
   }
 
-  configChanged(config: BalConfigState) {
-    this.language = config.language
-    this.region = config.region
-    this.allowedLanguages = config.allowedLanguages
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
+    this.allowedLanguages = state.allowedLanguages
     this.updateFooterLinks()
   }
 

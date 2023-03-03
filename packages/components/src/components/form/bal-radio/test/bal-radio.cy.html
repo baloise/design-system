@@ -69,6 +69,27 @@
             <bal-input placeholder="Placeholder"></bal-input>
           </bal-radio-group>
         </section>
+
+        <bal-heading>Options</bal-heading>
+        <section>
+          <bal-radio-group id="options-test" data-testid="options"></bal-radio-group>
+          <script>
+            const radioGroupElement = document.getElementById('options-test')
+            radioGroupElement.options = [
+              {
+                value: '1',
+                name: 'test',
+                label: 'Label 1',
+              },
+              {
+                value: '2',
+                name: 'test',
+                label: 'Label 2',
+              },
+            ]
+            radioGroupElement.value = '1'
+          </script>
+        </section>
       </main>
     </bal-doc-app>
   </body>
