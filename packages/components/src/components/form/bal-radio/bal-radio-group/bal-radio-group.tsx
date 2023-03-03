@@ -170,8 +170,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.initialValue = this.value
-    this.mutationHandler.connect(this.el)
-    this.mutationHandler.onChange(() => this.onOptionChange())
+    this.mutationHandler.connect(this.el, () => this.onOptionChange())
 
     if (this.options === undefined) {
       this.mutationHandler.observe()

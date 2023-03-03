@@ -6,7 +6,7 @@ export type MutationHandlerObserver = () => void
 
 export const MutationHandler = (options: MutationObserverOptions) => {
   let mutationObserver: MutationObserver | undefined = undefined
-  let mutationHandlerObservers: MutationHandlerObserver[] = []
+  let mutationHandlerObserver: MutationHandlerObserver | undefined = undefined
   let targetNode: HTMLElement | null = null
   let isObserving = false
   const tags = options.tags.map(t => t.toUpperCase())
@@ -20,8 +20,8 @@ export const MutationHandler = (options: MutationObserverOptions) => {
 
   const callback = (mutationRecord: MutationRecord[]) => {
     const hasChanges = mutationRecord.some(record => tags.includes(record.target.nodeName))
-    if (hasChanges) {
-      mutationHandlerObservers.forEach(observer => observer())
+    if (hasChanges && mutationHandlerObserver) {
+      mutationHandlerObserver()
     }
   }
 
@@ -33,16 +33,14 @@ export const MutationHandler = (options: MutationObserverOptions) => {
   }
 
   return {
-    connect: (el: HTMLElement | null) => {
+    connect: (el: HTMLElement | null, observer: MutationHandlerObserver) => {
       if (typeof MutationObserver === 'undefined') {
         return
       }
       destroyMutationObserver()
       targetNode = el
+      mutationHandlerObserver = observer
       mutationObserver = new MutationObserver(callback)
-    },
-    onChange: (observer: MutationHandlerObserver) => {
-      mutationHandlerObservers.push(observer)
     },
     observe: () => {
       if (!isObserving && targetNode && mutationObserver) {
@@ -56,7 +54,7 @@ export const MutationHandler = (options: MutationObserverOptions) => {
     },
     disconnect: () => {
       destroyMutationObserver()
-      mutationHandlerObservers = []
+      mutationHandlerObserver = undefined
       isObserving = false
     },
   }

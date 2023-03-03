@@ -151,8 +151,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
    */
 
   connectedCallback(): void {
-    this.mutationHandler.connect(this.el)
-    this.mutationHandler.onChange(() => this.onOptionChange())
+    this.mutationHandler.connect(this.el, () => this.onOptionChange())
 
     if (this.control) {
       if (this.options === undefined) {
