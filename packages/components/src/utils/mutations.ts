@@ -19,9 +19,16 @@ export const MutationHandler = (options: MutationObserverOptions) => {
   }
 
   const callback = (mutationRecord: MutationRecord[]) => {
-    mutationRecord = mutationRecord.filter(record => tags.includes(record.target.nodeName))
-    if (mutationRecord.length > 0) {
+    const hasChanges = mutationRecord.some(record => tags.includes(record.target.nodeName))
+    if (hasChanges) {
       mutationHandlerObservers.forEach(observer => observer())
+    }
+  }
+
+  const destroyMutationObserver = () => {
+    if (mutationObserver !== undefined) {
+      mutationObserver.disconnect()
+      mutationObserver = undefined
     }
   }
 
@@ -30,17 +37,12 @@ export const MutationHandler = (options: MutationObserverOptions) => {
       if (typeof MutationObserver === 'undefined') {
         return
       }
-
-      if (mutationObserver !== undefined) {
-        mutationObserver.disconnect()
-        mutationObserver = undefined
-      }
-
+      destroyMutationObserver()
       targetNode = el
       mutationObserver = new MutationObserver(callback)
     },
-    onChange: (callback: MutationHandlerObserver) => {
-      mutationHandlerObservers.push(callback)
+    onChange: (observer: MutationHandlerObserver) => {
+      mutationHandlerObservers.push(observer)
     },
     observe: () => {
       if (!isObserving && targetNode && mutationObserver) {
@@ -53,8 +55,7 @@ export const MutationHandler = (options: MutationObserverOptions) => {
       isObserving = false
     },
     disconnect: () => {
-      mutationObserver?.disconnect()
-      mutationObserver = undefined
+      destroyMutationObserver()
       mutationHandlerObservers = []
       isObserving = false
     },
