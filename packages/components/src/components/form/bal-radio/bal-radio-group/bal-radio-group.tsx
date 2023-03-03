@@ -413,7 +413,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
           <slot></slot>
           {options.map(option => (
             <bal-radio
-              name={option.name}
+              name={option.name || this.name}
               value={option.value}
               labelHidden={option.labelHidden}
               flat={option.flat}

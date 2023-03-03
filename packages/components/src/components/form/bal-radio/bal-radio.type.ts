@@ -3,9 +3,9 @@ import { Props } from '../../../types'
 type HtmlFunction = () => string
 
 export interface BalRadioOption {
-  name: string
   value: any
   label: string
+  name?: string
   html?: HtmlFunction | string
   labelHidden: boolean
   flat: boolean

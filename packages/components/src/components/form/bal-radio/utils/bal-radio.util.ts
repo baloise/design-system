@@ -4,9 +4,9 @@ import { BalRadioOption } from '../bal-radio.type'
 type HtmlFunction = () => string
 
 interface Option {
-  name: string
   value: any
   label: HtmlFunction | string
+  name?: string
   labelHidden?: boolean
   flat?: boolean
   disabled?: boolean
