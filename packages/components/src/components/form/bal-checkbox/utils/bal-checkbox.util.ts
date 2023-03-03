@@ -5,8 +5,7 @@ type HtmlFunction = () => string
 
 interface Option {
   value: any
-  label?: string
-  html?: HtmlFunction | string
+  label: HtmlFunction | string
   name?: string
   checked?: boolean
   labelHidden?: boolean
@@ -21,15 +20,17 @@ interface Option {
 
 export const newBalCheckboxOption = (option: Option): BalCheckboxOption => {
   return {
-    checked: false,
+    interface: 'checkbox',
     labelHidden: false,
     flat: false,
-    interface: 'checkbox',
     disabled: false,
     readonly: false,
     required: false,
     hidden: false,
     invalid: false,
+    checked: false,
     ...option,
+    label: '',
+    html: option.label,
   }
 }
