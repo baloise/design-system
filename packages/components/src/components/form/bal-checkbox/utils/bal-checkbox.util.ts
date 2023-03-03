@@ -1,9 +1,12 @@
 import { Props } from '../../../../types'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 
+type HtmlFunction = () => string
+
 interface Option {
   value: any
   label?: string
+  html?: HtmlFunction | string
   name?: string
   checked?: boolean
   labelHidden?: boolean
