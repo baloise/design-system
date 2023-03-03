@@ -33,7 +33,7 @@
     "build:utils": "node ../../.build/generate-css-utils.js",
     "build:sass": "sass --load-path=../../node_modules --embed-sources ./sass:./css",
     "build:prefix": "postcss ./css/*.css --use autoprefixer -d ./css/",
-    "build:minify": "cleancss -O1 'specialComments:off' --batch --batch-suffix '' --source-map css/*.css",
+    "build:minify": "cleancss -O1 'specialComments:off' --batch --batch-suffix '.min' css/*.css",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1"
