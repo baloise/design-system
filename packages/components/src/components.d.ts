@@ -1419,6 +1419,10 @@ export namespace Components {
         "color": Props.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss": boolean;
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -5112,6 +5116,10 @@ declare namespace LocalJSX {
         "color"?: Props.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss"?: boolean;
         /**
           * The component to display inside of the modal.
          */
