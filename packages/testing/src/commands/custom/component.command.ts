@@ -44,3 +44,29 @@ Cypress.Commands.add('disableAnimation', () => {
     ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
+
+Cypress.Commands.add('waitForDesignSystem', () => {
+  cy.document().then(document => document.fonts.ready)
+
+  cy.disableAnimation()
+
+  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
+    .first({ log: false })
+    .waitForComponents({ log: false })
+    .invoke({ log: false }, 'attr', 'ready')
+    .should($el => {
+      expect($el, 'if bal-app is ready').to.eq('')
+    })
+    .wait(100, { log: false })
+
+  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
+    .first({ log: false })
+    .then($app => {
+      Cypress.log({
+        type: 'parent',
+        $el: $app,
+        displayName: 'bal-app',
+        message: 'is ready 🚀',
+      })
+    })
+})

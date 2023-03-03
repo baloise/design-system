@@ -60,6 +60,78 @@ describe('AppComponent', () => {
 
 Use the `waitForComponent` util function to wait until the web-component tree has fully rendered.
 
+## Component Testing with Cypress
+
+We recommend to use the [Component Testing with Cypress](https://docs.cypress.io/guides/component-testing/overview).
+Follow their installations guide.
+
+### Configure
+
+First install out testing library
+
+```bash
+npm add -D @baloise/design-system-testing
+```
+
+Go to the file `cypress/support/commands.ts` and import the testing library.
+After that you have access to all our custom cypress commands
+
+```typescript
+/// <reference types="cypress" />
+
+import '@baloise/design-system-testing'
+```
+
+Open the file `component-index.html` and use `bal-app`
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Components App</title>
+  </head>
+  <body>
+    <bal-app data-cy-root></bal-app>
+  </body>
+</html>
+```
+
+### First Test
+
+We created a simple component with our CSS-Framework and the components.
+
+```html
+<div class="p-large">
+  <h1 class="title">Native Title</h1>
+  <bal-heading>Component Title</bal-heading>
+</div>
+```
+
+Lets create our first test `hello.component.cy.ts`.
+
+```typescript
+import { BalCoreModule, BalHeadingModule } from '@baloise/design-system-components-angular'
+import { HelloComponent } from 'src/app/hello/hello.component'
+
+describe('hello.component.cy.ts', () => {
+  it('playground', () => {
+    // mount the angular component and import the needed
+    // Design System modules
+    cy.mount(HelloComponent, {
+      imports: [BalCoreModule.forRoot(), BalHeadingModule],
+    })
+    // lets wait until the Design System has loaded the custom font, ¨
+    // disabled the animations and the web-components have rendered
+    cy.waitForDesignSystem()
+
+    cy.get('bal-heading').contains('Component Title')
+  })
+})
+```
+
 ## E2E Testing with Cypress
 
 We provide collection of custom cypress commands for our components. Moreover, some basic
