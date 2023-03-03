@@ -20,9 +20,8 @@ import { newBalRadioOption } from '@baloise/design-system-components'
 })
 export class ExampleComponent {
   options = [
-    newBalRadioOption({ name: 'radio-example', label: 'Label 1', value: '1' }),
+    newBalRadioOption({ label: 'Label 1', value: '1' }),
     newBalRadioOption({
-      name: 'radio-example',
       label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
       value: '2',
     }),
