@@ -383,9 +383,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
       if (isFunction(option.html)) {
         return { ...option, html: option.html() }
       }
-      if (option.html === undefined) {
-        return { ...option, html: option.label }
-      }
       return option
     })
 
