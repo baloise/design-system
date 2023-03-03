@@ -86,6 +86,7 @@
     "lodash.capitalize": "~4.2.1",
     "lodash.isarray": "~4.0.0",
     "lodash.isempty": "~4.4.0",
+    "lodash.isfunction": "^3.0.9",
     "lodash.isnan": "~3.0.2",
     "lodash.isnil": "~4.0.0",
     "lodash.isstring": "~4.0.1",

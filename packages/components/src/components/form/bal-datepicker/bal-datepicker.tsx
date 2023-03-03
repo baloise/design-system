@@ -45,7 +45,6 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { BalLanguage, BalConfigState, BalRegion } from '../../../utils/config/config.types'
 import {
   detachComponentToConfig,
   defaultConfig,
@@ -53,6 +52,9 @@ import {
   attachComponentToConfig,
   useBalConfig,
   defaultLocale,
+  BalLanguage,
+  BalConfigState,
+  BalRegion,
 } from '../../../utils/config'
 import {
   FormInput,

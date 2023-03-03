@@ -30,6 +30,31 @@ import { Basic } from './bal-radio.stories'
   </bal-button-group>
 </bal-doc-app>
 
+We introduced a new way of adding a options to the bal-radio-group
+by introducing the `options` property in which options can be passed using a Javascript.
+
+```html
+<bal-radio-group [options]="options"></bal-radio-group>
+```
+
+```typescript
+import { newBalRadioOption } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-example-component',
+  templateUrl: './example-component.component.html',
+})
+export class ExampleComponent {
+  options = [
+    newBalRadioOption({ label: 'Label 1', value: '1' }),
+    newBalRadioOption({
+      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+      value: '2',
+    }),
+  ]
+}
+```
+
 ## Examples
 
 <span id="story--components-form-radio--field-control" style={{ opacity: 0 }}></span>
@@ -73,27 +98,6 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
-
-## Tutorials and Templates
-
-A list of tutorials how to use or create this component and templates to see how it can
-be combined with other components.
-
-import IconDocument from '../../../../../../icons/svg/document.svg'
-import IconAccount from '../../../../../../icons/svg/account.svg'
-
-<bal-doc-link-list one-column>
-  <a href="?path=/story/implementation-form--page">
-    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
-      Documentation how to build forms and how to use the components.
-    </bal-doc-link-list-item>
-  </a>
-  <a href="?path=/story/design-common-templates--contact-form">
-    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
-      A template with to illustrate the structure of a form.
-    </bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
 
 import testing from './testing.md'
 
