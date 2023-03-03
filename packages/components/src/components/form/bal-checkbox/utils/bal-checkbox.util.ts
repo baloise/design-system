@@ -10,12 +10,12 @@ interface Option {
   checked?: boolean
   labelHidden?: boolean
   flat?: boolean
-  interface?: Props.BalCheckboxInterface
   disabled?: boolean
   readonly?: boolean
   required?: boolean
   hidden?: boolean
   invalid?: boolean
+  interface?: Props.BalCheckboxInterface
 }
 
 export const newBalCheckboxOption = (option: Option): BalCheckboxOption => {
