@@ -238,7 +238,6 @@ export class Modal implements OverlayInterface {
       event.stopPropagation()
       if (this.presented && this.isClosable) {
         if (event.key === 'Escape' || event.key === 'Esc') {
-          event.preventDefault()
           if (this.delegate) {
             await this.dismiss(undefined, 'model-escape')
           } else {
