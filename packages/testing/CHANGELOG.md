@@ -1,5 +1,23 @@
 # @baloise/design-system-testing
 
+## 12.8.2
+
+### Patch Changes
+
+- [#1187](https://github.com/baloise-incubator/design-system/pull/1187) [`05aff7aa8`](https://github.com/baloise-incubator/design-system/commit/05aff7aa83f052a0a60be4c9f19bb4b7970b2411) Thanks [@hirsch88](https://github.com/hirsch88)! - add missing dep cypress-file-upload
+
+- Updated dependencies [[`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27)]:
+  - @baloise/design-system-components@12.8.2
+
+## 12.8.1
+
+### Patch Changes
+
+- [#1182](https://github.com/baloise-incubator/design-system/pull/1182) [`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust package.json to npm workspace structure and move contact.js to components dependencies
+
+- Updated dependencies [[`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4)]:
+  - @baloise/design-system-components@12.8.1
+
 ## 12.8.0
 
 ### Patch Changes

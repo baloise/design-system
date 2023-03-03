@@ -27,6 +27,8 @@ describe('bal-select.cy.ts', () => {
         onBalFocus: onBalFocusSpy,
       },
     })
+
+    cy.get('bal-select').waitForComponents()
   })
   // Basic
   it('should fire a balChange, balFocus and balBlur events when selecting an option', () => {
