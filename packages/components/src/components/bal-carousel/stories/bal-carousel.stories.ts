@@ -46,13 +46,13 @@ export const ImageSlider = args => ({
   template: `<div class="container is-compact">
   <bal-carousel v-bind="args">
     <bal-carousel-item
-      src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI">
+      src="https://fastly.picsum.photos/id/626/1280/720.jpg?hmac=pHWhzQeCr1Zq8_NquZJ51qZ0xXa4psCZpoeJbaUbkWM">
     </bal-carousel-item>
     <bal-carousel-item
-      src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I">
+      src="https://fastly.picsum.photos/id/921/1280/720.jpg?hmac=_kfenyYI38K4FYrzavn01cZUPqpu1pbn2OYNhrGqwvg">
     </bal-carousel-item>
     <bal-carousel-item
-      src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw">
+      src="https://fastly.picsum.photos/id/235/1280/720.jpg?hmac=MBlYf-BNbNbdxmF-qCtt9eNsT1SKJy_1JCHeLDRHYEw">
     </bal-carousel-item>
   </bal-carousel>
 </div>`,
@@ -193,3 +193,22 @@ ResponsiveSlider.args = {
   steps: 3,
 }
 ResponsiveSlider.parameters = { ...component.sourceCode(ResponsiveSlider) }
+
+export const TeaserSlider = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-carousel v-bind="args">
+  <bal-carousel-item src="/assets/images/brand/car.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/lamp.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/home.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/bars.svg"></bal-carousel-item>
+  <bal-carousel-item src="/assets/images/brand/plant.svg"></bal-carousel-item>
+</bal-carousel>`,
+})
+TeaserSlider.args = {
+  steps: 1,
+  itemsPerView: 3,
+  controlsOverflow: true,
+  controls: 'large',
+}
+TeaserSlider.parameters = { ...component.sourceCode(TeaserSlider) }

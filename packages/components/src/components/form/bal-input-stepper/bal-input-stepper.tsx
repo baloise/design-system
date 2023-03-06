@@ -144,7 +144,11 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     detachComponentToConfig(this)
   }
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
   }

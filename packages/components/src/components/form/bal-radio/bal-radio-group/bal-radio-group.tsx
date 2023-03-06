@@ -11,16 +11,24 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
+import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { BEM } from '../../../../utils/bem'
+import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
+import isFunction from 'lodash.isfunction'
+import { MutationHandler } from '../../../../utils/mutations'
+import { inheritAttributes } from '../../../../utils/attributes'
 
 @Component({
   tag: 'bal-radio-group',
 })
 export class RadioGroup implements ComponentInterface, Loggable {
   private inputId = `bal-rg-${radioGroupIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
+
+  private mutationHandler = MutationHandler({ tags: ['bal-radio-group', 'bal-radio'] })
 
   log!: LogInstance
 
@@ -35,6 +43,21 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
+
+  /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options?: BalRadioOption[]
+
+  @Watch('options')
+  protected async optionChanged() {
+    this.onOptionChange()
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
+  }
 
   /**
    * If `true`, the radios can be deselected.
@@ -52,9 +75,8 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Prop({ mutable: true }) value?: any | null
 
   @Watch('value')
-  valueChanged(value: any | undefined) {
-    this.setRadioTabindex(value)
-
+  valueChanged() {
+    this.onOptionChange()
     this.balInput.emit(this.value)
   }
 
@@ -147,6 +169,13 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.initialValue = this.value
+    this.mutationHandler.connect(this.el, () => this.onOptionChange())
+
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   componentWillLoad() {
@@ -154,10 +183,13 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
+    this.onOptionChange()
+
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  componentDidLoad() {
-    this.setRadioTabindex(this.value)
+  disconnectedCallback() {
+    this.mutationHandler.disconnect()
   }
 
   /**
@@ -170,6 +202,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
     const { target } = event
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
       this.balFocus.emit(event.detail)
+      stopEventBubbling(event)
     }
   }
 
@@ -250,6 +283,18 @@ export class RadioGroup implements ComponentInterface, Loggable {
   }
 
   /**
+   * Find the options properties by its value
+   */
+  @Method()
+  async getOptionByValue(value: string) {
+    const options = this.options
+    if (options) {
+      return options.find(option => option.value === value)
+    }
+    return undefined
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -318,6 +363,10 @@ export class RadioGroup implements ComponentInterface, Loggable {
     }
   }
 
+  private onOptionChange = async () => {
+    this.setRadioTabindex(this.value)
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -328,6 +377,14 @@ export class RadioGroup implements ComponentInterface, Loggable {
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
 
+    const rawOptions = this.options || []
+    const options = rawOptions.map(option => {
+      if (isFunction(option.html)) {
+        return { ...option, html: option.html() }
+      }
+      return option
+    })
+
     return (
       <Host
         class={{
@@ -337,6 +394,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
         aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
+        {...this.inheritedAttributes}
       >
         <div
           class={{
@@ -348,6 +406,21 @@ export class RadioGroup implements ComponentInterface, Loggable {
           }}
         >
           <slot></slot>
+          {options.map(option => (
+            <bal-radio
+              name={option.name || this.name}
+              value={option.value}
+              labelHidden={option.labelHidden}
+              flat={option.flat}
+              interface={option.interface}
+              disabled={option.disabled}
+              readonly={option.readonly}
+              required={option.required}
+              hidden={option.hidden}
+              invalid={option.invalid}
+              innerHTML={option.html as string}
+            ></bal-radio>
+          ))}
         </div>
       </Host>
     )

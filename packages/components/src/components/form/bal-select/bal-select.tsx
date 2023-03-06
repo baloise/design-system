@@ -238,7 +238,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -820,22 +820,25 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private handlePopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    if (this.isPopoverOpen) {
-      this.updateFocus()
-    } else {
-      this.focusIndex = -1
-      if (this.multiple && this.typeahead) {
-        this.updateInputValue('')
-      }
-      this.balBlur.emit()
-    }
     event.stopPropagation()
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (this.isPopoverOpen) {
+        this.updateFocus()
+      } else {
+        this.focusIndex = -1
+        if (this.multiple && this.typeahead) {
+          this.updateInputValue('')
+        }
+        this.balBlur.emit()
+      }
+    }
   }
 
   private handleInputBlur = (event: FocusEvent) => {
     preventDefault(event)
-    if (event.relatedTarget === null) {
+    const target = event.relatedTarget as null | HTMLElement
+    if (target === null || (target && target.nodeName && target.nodeName === 'BAL-MODAL')) {
       this.validateAfterBlur(isHuman)
     }
     this.hasFocus = false
@@ -872,7 +875,7 @@ export class Select implements ComponentInterface, Loggable {
       preventDefault(event)
     } else {
       this.focusIndex = -1
-      this.balClick.emit(event)
+      this.balInputClick.emit(event)
 
       if (this.typeahead) {
         if (this.isPopoverOpen && isIconClick) {

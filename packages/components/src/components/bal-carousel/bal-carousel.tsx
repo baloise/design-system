@@ -11,7 +11,7 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { debounce } from '../../utils/helpers'
+import { debounce, raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { MutationHandler } from '../../utils/observer'
 import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
@@ -36,8 +36,9 @@ export class Carousel implements ComponentInterface {
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private previousTransformValue = 0
+  private currentRaf: number | undefined
 
-  @State() isLastSlideVisible = false
+  @State() isLastSlideVisible = true
   @State() areControlsHidden = !isPlatform('mobile')
 
   @Element() el!: HTMLElement
@@ -50,7 +51,7 @@ export class Carousel implements ComponentInterface {
   /**
    * Defines the active slide index.
    */
-  @Prop() value = 0
+  @Prop({ mutable: true }) value = 0
 
   /**
    * When how many slides are moved when going forward or backward.
@@ -61,12 +62,17 @@ export class Carousel implements ComponentInterface {
    * Defines how many slides are visible in the container for the user.
    * `auto` will use the size of the actual item content
    */
-  @Prop() itemsPerView: 'auto' | number = 1
+  @Prop() itemsPerView: 'auto' | 1 | 2 | 3 | 4 = 1
 
   /**
    * Defines the layout of the navigation controls.
    */
   @Prop() controls: 'small' | 'large' | 'dots' | 'tabs' | 'none' = 'none'
+
+  /**
+   * If `true` items move under the controls, instead of having a gap
+   */
+  @Prop() controlsOverflow = false
 
   /**
    * Defines the image aspect ratio.
@@ -189,39 +195,54 @@ export class Carousel implements ComponentInterface {
    */
 
   private async animate(amount = 0, animated = true): Promise<boolean> {
-    if (this.containerEl && this.innerEl) {
-      const lastSlide = await this.buildSlide()
-
-      if (lastSlide) {
-        const containerWidth = this.innerEl.clientWidth || 0
-        const itemsWith = lastSlide.transformNext || 0
-        const noNeedForSlide = itemsWith <= containerWidth
-        const maxAmount = itemsWith - containerWidth
-        const isLastSlideVisible = maxAmount < amount
-        const isFirst = amount === 0
-        const hasSmallControls = this.controls === 'small'
-        const hasLargeControls = this.controls === 'large'
-
-        let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
-
-        if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
-          transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
-        }
-
-        this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
-        this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
-
-        const didAnimate = transformValue !== this.previousTransformValue
-        this.previousTransformValue = transformValue
-        this.isLastSlideVisible = isLastSlideVisible
-
-        if (!didAnimate) {
-          return Promise.resolve(false)
-        }
+    return new Promise(resolve => {
+      if (this.currentRaf !== undefined) {
+        cancelAnimationFrame(this.currentRaf)
       }
-    }
 
-    return Promise.resolve(true)
+      this.currentRaf = raf(async () => {
+        if (this.containerEl && this.innerEl) {
+          const lastSlide = await this.buildSlide()
+
+          if (lastSlide) {
+            const containerWidth = this.innerEl.clientWidth || 0
+            const itemsWith = lastSlide.transformNext || 0
+            const noNeedForSlide = itemsWith <= containerWidth
+            // -1 one is needed for example when we use items per view 3 with 33.333%
+            const maxAmount = itemsWith - containerWidth - 1
+            const isLastSlideVisible = maxAmount <= amount
+            const isFirst = amount === 0 || maxAmount <= 2
+
+            if (isFirst) {
+              this.value = 0
+              this.balChange.emit(this.value)
+            }
+
+            const hasSmallControls = this.controls === 'small'
+            const hasLargeControls = this.controls === 'large'
+
+            let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
+
+            if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
+              transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
+            }
+
+            this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
+            this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
+
+            const didAnimate = transformValue !== this.previousTransformValue
+            this.previousTransformValue = transformValue
+            this.isLastSlideVisible = isLastSlideVisible
+
+            if (!didAnimate) {
+              return resolve(false)
+            }
+
+            return resolve(true)
+          }
+        }
+      })
+    })
   }
 
   private async buildSlide(slideIndex?: number): Promise<BalSlide | undefined> {

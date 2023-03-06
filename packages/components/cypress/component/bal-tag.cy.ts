@@ -1,12 +1,7 @@
 import { BalTag } from '../../.storybook/vue/generated/components'
 
 describe('bal-tag.cy.ts', () => {
-  it('should have a default slot', () => {
-    cy.mount(BalTag, { slots: { default: () => 'My tag' } })
-    cy.get('bal-tag').contains('My tag')
-  })
-
-  it('should fire close event', () => {
+  beforeEach(() => {
     const onBalCloseClickSpy = cy.spy().as('balCloseClick')
 
     cy.mount(BalTag, {
@@ -19,6 +14,14 @@ describe('bal-tag.cy.ts', () => {
       },
     })
 
+    cy.get('bal-tag').waitForComponents()
+  })
+
+  it('should have a default slot', () => {
+    cy.get('bal-tag').contains('My tag')
+  })
+
+  it('should fire close event', () => {
     cy.get('bal-tag').find('bal-close').click()
     cy.get('@balCloseClick').should('have.been.calledOnce')
   })

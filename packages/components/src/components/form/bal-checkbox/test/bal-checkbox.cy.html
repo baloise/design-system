@@ -7,8 +7,9 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
+
   <body>
-    <bal-doc-app>
+    <bal-doc-app log-components="bal-checkbox-group">
       <main class="container">
         <bal-heading>Basic</bal-heading>
         <section>
@@ -47,6 +48,25 @@
             <bal-checkbox value="B">Checked</bal-checkbox>
             <bal-checkbox value="C" disabled>Disabled</bal-checkbox>
           </bal-checkbox-group>
+        </section>
+
+        <bal-heading>Options</bal-heading>
+        <section>
+          <bal-checkbox-group control id="options-test" data-testid="options"></bal-checkbox-group>
+          <script>
+            const checkboxGroupEl = document.getElementById('options-test')
+            checkboxGroupEl.options = [
+              {
+                value: '1',
+                label: 'Label',
+              },
+              {
+                value: '2',
+                html: () => 'Label html',
+              },
+            ]
+            checkboxGroupEl.value = ['1']
+          </script>
         </section>
       </main>
     </bal-doc-app>

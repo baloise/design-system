@@ -5,23 +5,31 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BalMode } from "./utils/config";
+import { Events, Props } from "./types";
+import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { BalMode } from "./utils/config";
+export { Events, Props } from "./types";
+export { BalConfigState, BalMode } from "./utils/config";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+export { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -37,6 +45,7 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -72,7 +81,7 @@ export namespace Components {
          */
         "animated": boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode": BalMode;
         "ready": boolean;
@@ -314,6 +323,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -324,7 +337,7 @@ export namespace Components {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView": 'auto' | number;
+        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
         "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
@@ -404,6 +417,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOption": () => Promise<BalCheckboxOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -415,6 +432,10 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * Label of the radio item.
+         */
+        "label": string;
         /**
           * If `true` the checkbox has no label
          */
@@ -458,6 +479,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface"?: BalProps.BalCheckboxGroupInterface;
@@ -465,6 +490,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */
@@ -546,6 +575,7 @@ export namespace Components {
           * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -567,7 +597,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -788,6 +818,7 @@ export namespace Components {
         "subject"?: string;
     }
     interface BalFieldLabel {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -914,6 +945,7 @@ export namespace Components {
         "value": File[];
     }
     interface BalFooter {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the language selection will be hidden.
          */
@@ -981,6 +1013,7 @@ export namespace Components {
           * Text for the close button.
          */
         "closeLabel"?: string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Closes the hint box.
          */
@@ -1006,7 +1039,8 @@ export namespace Components {
         /**
           * The theme type of the button.
          */
-        "color": BalProps.BalIconColor;
+        "color": Props.BalIconColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the icon has display inline style
          */
@@ -1087,11 +1121,11 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: BalProps.BalInputMask;
         /**
@@ -1232,6 +1266,7 @@ export namespace Components {
         "value"?: string | number;
     }
     interface BalInputStepper {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1308,6 +1343,7 @@ export namespace Components {
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the list item can be hovered
          */
@@ -1397,6 +1433,10 @@ export namespace Components {
         "color": BalProps.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss": boolean;
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -1709,6 +1749,7 @@ export namespace Components {
         "color": BalProps.BalNotificationColor;
     }
     interface BalNumberInput {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1922,6 +1963,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOption": () => Promise<BalRadioOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -1978,6 +2023,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalRadioOption | undefined>;
+        /**
           * Defines the layout of the radio button
          */
         "interface"?: BalProps.BalRadioGroupInterface;
@@ -1989,6 +2038,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -2232,9 +2285,9 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: boolean;
+        "inverted": boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -2281,6 +2334,82 @@ export namespace Components {
           * set of images to be used as background image
          */
         "srcSet": string;
+    }
+    interface BalStepItem {
+        /**
+          * Tells if this route is active and overrides the bal-tabs value property.
+         */
+        "active": boolean;
+        /**
+          * If `true` the tab is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the step is marked as done.
+         */
+        "done": boolean;
+        /**
+          * If `true` the step is marked as failed.
+         */
+        "failed": boolean;
+        /**
+          * Options of the tab like label, value etc.
+         */
+        "getOptions": () => Promise<BalStepOption>;
+        /**
+          * If `true` the step is hidden.
+         */
+        "hidden": boolean;
+        /**
+          * Link to path.
+         */
+        "href": string;
+        /**
+          * Label for the tab.
+         */
+        "label": string;
+        /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent": boolean;
+        /**
+          * Sets the tab active.
+         */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
+        /**
+          * This is the key of the tab.
+         */
+        "value": string;
+    }
+    interface BalSteps {
+        /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable": boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalStepOption | undefined>;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalStepOption[];
+        /**
+          * Go to tab with the given value
+         */
+        "select": (step: BalStepOption) => Promise<void>;
+        /**
+          * Value of the current active step
+         */
+        "value"?: string;
     }
     interface BalTabItem {
         /**
@@ -2518,7 +2647,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -2701,6 +2830,14 @@ export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
 export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalSnackbarElement;
+}
+export interface BalStepItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalStepItemElement;
+}
+export interface BalStepsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalStepsElement;
 }
 export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3443,6 +3580,18 @@ declare global {
         prototype: HTMLBalStageImageElement;
         new (): HTMLBalStageImageElement;
     };
+    interface HTMLBalStepItemElement extends Components.BalStepItem, HTMLStencilElement {
+    }
+    var HTMLBalStepItemElement: {
+        prototype: HTMLBalStepItemElement;
+        new (): HTMLBalStepItemElement;
+    };
+    interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+    }
+    var HTMLBalStepsElement: {
+        prototype: HTMLBalStepsElement;
+        new (): HTMLBalStepsElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -3612,6 +3761,8 @@ declare global {
         "bal-stage-foot": HTMLBalStageFootElement;
         "bal-stage-head": HTMLBalStageHeadElement;
         "bal-stage-image": HTMLBalStageImageElement;
+        "bal-step-item": HTMLBalStepItemElement;
+        "bal-steps": HTMLBalStepsElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -3663,7 +3814,7 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
@@ -3921,6 +4072,10 @@ declare namespace LocalJSX {
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
@@ -3931,7 +4086,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView"?: 'auto' | number;
+        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
         /**
           * Emitted when a option got selected.
          */
@@ -4029,6 +4184,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Label of the radio item.
+         */
+        "label"?: string;
+        /**
           * If `true` the checkbox has no label
          */
         "labelHidden"?: boolean;
@@ -4044,10 +4203,6 @@ declare namespace LocalJSX {
           * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalCheckboxCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -4090,6 +4245,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */
@@ -4195,7 +4354,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -4231,17 +4390,21 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the icon has clicked.
+         */
+        "onBalIconClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when a keyboard input occurred.
          */
         "onBalInput"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -4521,10 +4684,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
-        /**
           * Triggers when a file is added.
          */
         "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<File[]>) => void;
@@ -4536,6 +4695,10 @@ declare namespace LocalJSX {
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
@@ -4711,11 +4874,11 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: BalProps.BalInputMask;
         /**
@@ -4751,7 +4914,7 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalInputCustomEvent<BalEvents.BalInputChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
+          * @deprecated Emitted when the input has clicked.
          */
         "onBalClick"?: (event: BalInputCustomEvent<MouseEvent>) => void;
         /**
@@ -4854,10 +5017,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalInputSliderCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -5065,6 +5224,10 @@ declare namespace LocalJSX {
         "color"?: BalProps.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss"?: boolean;
         /**
           * The component to display inside of the modal.
          */
@@ -5418,10 +5581,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalNumberInputCustomEvent<BalEvents.BalInputNumberChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalNumberInputCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
@@ -5623,10 +5782,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalRadioCustomEvent<BalEvents.BalRadioChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalRadioCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
@@ -5684,6 +5839,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalInput"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5767,10 +5926,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalSelectCustomEvent<BalEvents.BalSelectChangeDetail>) => void;
         /**
-          * Emitted when the input got clicked.
-         */
-        "onBalClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
@@ -5778,6 +5933,10 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onBalInput"?: (event: BalSelectCustomEvent<string>) => void;
+        /**
+          * Emitted when the input got clicked.
+         */
+        "onBalInputClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus and key from the keyboard go hit.
          */
@@ -5926,7 +6085,7 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
         /**
@@ -5975,6 +6134,74 @@ declare namespace LocalJSX {
           * set of images to be used as background image
          */
         "srcSet": string;
+    }
+    interface BalStepItem {
+        /**
+          * Tells if this route is active and overrides the bal-tabs value property.
+         */
+        "active"?: boolean;
+        /**
+          * If `true` the tab is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the step is marked as done.
+         */
+        "done"?: boolean;
+        /**
+          * If `true` the step is marked as failed.
+         */
+        "failed"?: boolean;
+        /**
+          * If `true` the step is hidden.
+         */
+        "hidden"?: boolean;
+        /**
+          * Link to path.
+         */
+        "href"?: string;
+        /**
+          * Label for the tab.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalStepItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
+        /**
+          * This is the key of the tab.
+         */
+        "value"?: string;
+    }
+    interface BalSteps {
+        /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable"?: boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * Emitted when the changes has finished.
+         */
+        "onBalChange"?: (event: BalStepsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalStepOption[];
+        /**
+          * Value of the current active step
+         */
+        "value"?: string;
     }
     interface BalTabItem {
         /**
@@ -6203,7 +6430,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
@@ -6226,10 +6453,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed..
          */
         "onBalChange"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalTextareaCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -6407,6 +6630,8 @@ declare namespace LocalJSX {
         "bal-stage-foot": BalStageFoot;
         "bal-stage-head": BalStageHead;
         "bal-stage-image": BalStageImage;
+        "bal-step-item": BalStepItem;
+        "bal-steps": BalSteps;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -6541,6 +6766,8 @@ declare module "@stencil/core" {
             "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
             "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
+            "bal-step-item": LocalJSX.BalStepItem & JSXBase.HTMLAttributes<HTMLBalStepItemElement>;
+            "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

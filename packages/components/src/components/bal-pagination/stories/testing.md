@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-nest-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Pagination', () => {
   const pagination = byTestId('my-pagination') // [data-testid="my-pagination"]
@@ -26,9 +26,9 @@ describe('Pagination', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                           | Description                                               | Signature               |
-| --------------------------------- | --------------------------------------------------------- | ----------------------- |
-| `balPaginationFindPages`          | Returns all the page buttons.                             | `(): Chainable<JQuery>` |
-| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(): Chainable<JQuery>` |
-| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(): Chainable<JQuery>` |
-| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(): Chainable<JQuery>` |
+| Command                           | Description                                               | Signature                                          |
+| --------------------------------- | --------------------------------------------------------- | -------------------------------------------------- |
+| `balPaginationFindPages`          | Returns all the page buttons.                             | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(options?: Partial<Loggable>): Chainable<JQuery>` |

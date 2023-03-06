@@ -150,7 +150,7 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when the input loses focus.
@@ -347,7 +347,7 @@ export class FileUpload implements FormInput<File[]> {
 
   private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
 
-  private onInputClick = (event: MouseEvent) => this.balClick.emit(event)
+  private onInputClick = (event: MouseEvent) => this.balInputClick.emit(event)
 
   /**
    * RENDER

@@ -1,0 +1,71 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Step Button
+// --------------------------------------------------
+
+.bal-steps__nav__item
+  display: flex
+  box-sizing: border-box
+  gap: 0.5rem
+  flex-direction: column
+  flex-basis: 1rem
+  flex-grow: 1
+  flex-shrink: 1
+  text-decoration: none
+  cursor: default
+  position: relative
+  min-width: 5rem
+  &--hidden
+    +hide-element
+  //
+  // Cursor action on clickable
+  &--clickable
+    cursor: pointer
+    pointer-events: all
+  //
+  // Progress line
+  &:not(:last-child)::after
+    content: " "
+    display: block
+    position: absolute
+    height: var(--bal-border-width-normal)
+    left: 50%
+    right: -50%
+    top: 50%
+    background-color: var(--bal-color-border-grey)
+    border-radius: var(--bal-radius-rounded)
+    margin-left: calc(1.5rem - var(--bal-border-width-normal))
+    margin-right: 1.25rem
+  +tablet
+    &:not(:last-child)::after
+      top: 1rem
+      margin-left: calc(1.5rem - var(--bal-border-width-normal))
+      margin-right: 1.5rem
+  &--passed:not(:last-child)::after
+    background-color: var(--bal-color-border-primary)
+
+.bal-steps__nav__carousel__item
+  flex: 1rem
+  min-width: 6rem
+
+.bal-steps__nav__carousel__item:not(:last-child)::after
+  content: " "
+  display: block
+  position: absolute
+  height: var(--bal-border-width-normal)
+  left: 50%
+  right: -50%
+  top: 50%
+  background-color: var(--bal-color-border-grey)
+  border-radius: var(--bal-radius-rounded)
+  margin-left: 1.25rem
+  margin-right: 1.25rem
+
+.bal-steps__nav__carousel__item:not(:last-child)::after
+  +tablet
+    top: 1rem
+    margin-left: 1.5rem
+    margin-right: 1.5rem
+
+.bal-steps__nav__carousel__item--passed:not(:last-child)::after
+  background-color: var(--bal-color-border-primary)

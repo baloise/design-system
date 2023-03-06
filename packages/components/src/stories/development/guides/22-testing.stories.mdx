@@ -12,17 +12,138 @@ import { Meta } from '@storybook/addon-docs'
 <bal-doc-banner id="testing" subtitle="Development">Testing</bal-doc-banner>
 
 <bal-doc-lead>
-  The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic
-  cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+  The Baloise Design System provides a collection of utility functions to test the web-components. Since the
+  web-components are executed async we need to wait for them in the test.
 </bal-doc-lead>
 
-## Prerequisites
+## Component Testing (Unit)
+
+To write unit test we recommend those tools:
+
+- [Karma + Jasmin](https://angular.io/guide/testing)
+- [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/overview)
+
+### Karma + Jasmin
+
+This is also the the default testing tools of the Angular framework.
+
+```typescript
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
+import { BrowserModule, By } from '@angular/platform-browser'
+import { BalCoreModule, BalInputModule } from '@baloise/design-system-components-angular'
+import { waitForComponent } from '@baloise/design-system-components'
+import { AppComponent } from './app.component'
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [BrowserModule, BalCoreModule.forRoot(), BalInputModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents()
+  })
+
+  it(`should render input value`, async () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.detectChanges()
+
+    // lets wait until all the web-components from this element and
+    // below are ready and rendered
+    await waitForComponent(fixture.nativeElement)
+
+    const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
+    expect(input.nativeElement.value).toContain('My Value')
+  })
+})
+```
+
+Use the `waitForComponent` util function to wait until the web-component tree has fully rendered.
+
+## Component Testing with Cypress
+
+We recommend to use the [Component Testing with Cypress](https://docs.cypress.io/guides/component-testing/overview).
+Follow their installations guide.
+
+### Configure
+
+First install out testing library
+
+```bash
+npm add -D @baloise/design-system-testing
+```
+
+Go to the file `cypress/support/commands.ts` and import the testing library.
+After that you have access to all our custom cypress commands
+
+```typescript
+/// <reference types="cypress" />
+
+import '@baloise/design-system-testing'
+```
+
+Open the file `component-index.html` and use `bal-app`
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Components App</title>
+  </head>
+  <body>
+    <bal-app data-cy-root></bal-app>
+  </body>
+</html>
+```
+
+### First Test
+
+We created a simple component with our CSS-Framework and the components.
+
+```html
+<div class="p-large">
+  <h1 class="title">Native Title</h1>
+  <bal-heading>Component Title</bal-heading>
+</div>
+```
+
+Lets create our first test `hello.component.cy.ts`.
+
+```typescript
+import { BalCoreModule, BalHeadingModule } from '@baloise/design-system-components-angular'
+import { HelloComponent } from 'src/app/hello/hello.component'
+
+describe('hello.component.cy.ts', () => {
+  it('playground', () => {
+    // mount the angular component and import the needed
+    // Design System modules
+    cy.mount(HelloComponent, {
+      imports: [BalCoreModule.forRoot(), BalHeadingModule],
+    })
+    // lets wait until the Design System has loaded the custom font, ¨
+    // disabled the animations and the web-components have rendered
+    cy.waitForDesignSystem()
+
+    cy.get('bal-heading').contains('Component Title')
+  })
+})
+```
+
+## E2E Testing with Cypress
+
+We provide collection of custom cypress commands for our components. Moreover, some basic
+cypress commands like <b>should</b> or <b>click</b> have been overridden to work with our components.
+
+### Prerequisites
 
 For E-2-E testing we recommend to use the testing framework [Cypress](https://www.cypress.io/).
 
 If you are using Vue or Angular please install Cypress with the provided CLI.
 
-## Install testing library
+### Install testing library
 
 Install the library directly from npm.
 
@@ -38,12 +159,12 @@ import '@baloise/design-system-testing'
 
 Now the adjusted commands from the Baloise Design System should be available in your test files.
 
-## Usage
+### Usage
 
 Further documentations for each component commands is documented on the components page.
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-nest-testing'
+import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
@@ -59,7 +180,7 @@ describe('Accordion', () => {
 })
 ```
 
-## Selectors
+### Selectors
 
 It is recommended to set specific test attributes `data-testid` on the elements to test.
 
@@ -91,7 +212,7 @@ describe('Button', () => {
 For each component we define internally some data-testid selectors.
 
 ```typescript
-import { selectors } from '@baloise/design-system-nest-testing'
+import { selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   it('should ...', () => {
@@ -101,9 +222,9 @@ describe('Accordion', () => {
 })
 ```
 
-## Component Commands
+### Component Commands
 
-### getByTestId
+#### getByTestId
 
 Gets the element / component by the attribute `data-testid` and waits until fully loaded.
 
@@ -111,7 +232,7 @@ Gets the element / component by the attribute `data-testid` and waits until full
 cy.getByTestId('button')
 ```
 
-### disableAnimation
+#### disableAnimation
 
 Disables the animation of all the components.
 
@@ -119,7 +240,7 @@ Disables the animation of all the components.
 cy.disableAnimation()
 ```
 
-### getComponent
+#### getComponent
 
 Gets the element / component by jquery selector and waits until fully loaded.
 
@@ -127,7 +248,7 @@ Gets the element / component by jquery selector and waits until fully loaded.
 cy.getComponent('bal-button')
 ```
 
-### wrapComponent
+#### wrapComponent
 
 Wraps the element / component and waits until fully loaded.
 
@@ -135,7 +256,7 @@ Wraps the element / component and waits until fully loaded.
 cy.wrapComponent($el)
 ```
 
-### waitForComponents
+#### waitForComponents
 
 Waits until the component has fully loaded.
 
@@ -143,7 +264,7 @@ Waits until the component has fully loaded.
 cy.get('button').waitForComponents()
 ```
 
-### Viewport / Platform
+#### Viewport / Platform
 
 The `platform` commands allows to switch between the breakpoints of the Design System
 
@@ -153,7 +274,7 @@ cy.platform('tablet')
 cy.platform('desktop')
 ```
 
-## Links
+### Links
 
 - [Testing Package](https://github.com/baloise/design-system/blob/master/packages/testing)
 - [Selectors](https://github.com/baloise/design-system/blob/master/packages/testing/src/selectors.ts)

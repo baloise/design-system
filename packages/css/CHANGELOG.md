@@ -1,5 +1,35 @@
 # @baloise/design-system-css
 
+## 12.8.2
+
+### Patch Changes
+
+- [`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust colors due to contrast issues
+
+- Updated dependencies [[`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27)]:
+  - @baloise/design-system-tokens@12.8.2
+  - @baloise/design-system-fonts@12.8.2
+
+## 12.8.1
+
+### Patch Changes
+
+- [#1182](https://github.com/baloise-incubator/design-system/pull/1182) [`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust package.json to npm workspace structure and move contact.js to components dependencies
+
+- Updated dependencies [[`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4)]:
+  - @baloise/design-system-tokens@12.8.1
+  - @baloise/design-system-fonts@12.8.1
+
+## 12.8.0
+
+### Patch Changes
+
+- [#1174](https://github.com/baloise-incubator/design-system/pull/1174) [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f) Thanks [@hirsch88](https://github.com/hirsch88)! - add autoprefixer for css files to solve hyphen issue
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@12.8.0
+  - @baloise/design-system-tokens@12.8.0
+
 ## 12.7.1
 
 ### Patch Changes

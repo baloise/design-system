@@ -1,5 +1,28 @@
 # @baloise/design-system-components-vue
 
+## 12.8.2
+
+### Patch Changes
+
+- Updated dependencies [[`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27)]:
+  - @baloise/design-system-components@12.8.2
+
+## 12.8.1
+
+### Patch Changes
+
+- [#1182](https://github.com/baloise-incubator/design-system/pull/1182) [`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust package.json to npm workspace structure and move contact.js to components dependencies
+
+- Updated dependencies [[`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4)]:
+  - @baloise/design-system-components@12.8.1
+
+## 12.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`6f99084d9`](https://github.com/baloise-incubator/design-system/commit/6f99084d946491231bc8b4fe7d479f5dd3c86c8d), [`d3ab0905d`](https://github.com/baloise-incubator/design-system/commit/d3ab0905d868e9a32a69d028efb544b28bbd5796), [`a3a7c5f8f`](https://github.com/baloise-incubator/design-system/commit/a3a7c5f8f5953d3344fec22f63484e9cc6515b8f), [`b230a279d`](https://github.com/baloise-incubator/design-system/commit/b230a279d61c5928570b39e537c0a7ba18df8677)]:
+  - @baloise/design-system-components@12.8.0
+
 ## 12.7.1
 
 ### Patch Changes

@@ -1,5 +1,6 @@
 import { EventEmitter } from '@stencil/core'
 import { isWindowDefined } from './browser'
+import { BalConfig } from './config'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -165,10 +166,35 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
+export const waitForComponent = async (el: HTMLElement | null) => {
+  await deepReady(el, true)
+  await wait(20)
+}
+
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   return el.addEventListener(eventName, callback, opts)
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   return el.removeEventListener(eventName, callback, opts)
+}
+
+export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
+  const config: any = { animated: false, icons: {}, ..._config }
+  const element = el as any
+  if (element) {
+    const webComponents = Array.prototype.slice
+      .call(element.querySelectorAll('*'))
+      .filter(el => el.tagName.match(/^bal/i))
+
+    await Promise.all(webComponents.map(c => c.componentOnReady()))
+    await Promise.all(
+      webComponents.map(c => {
+        if (c.configChanged) {
+          return c.configChanged(config)
+        }
+      }),
+    )
+  }
+  await wait(20)
 }

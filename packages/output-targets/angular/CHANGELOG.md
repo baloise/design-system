@@ -1,5 +1,15 @@
 # @baloise/design-system-output-target-angular
 
+## 12.8.2
+
+## 12.8.1
+
+### Patch Changes
+
+- [#1182](https://github.com/baloise-incubator/design-system/pull/1182) [`38f0a7fd4`](https://github.com/baloise-incubator/design-system/commit/38f0a7fd492927a49e811e1b0461ed39ebe057d4) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust package.json to npm workspace structure and move contact.js to components dependencies
+
+## 12.8.0
+
 ## 12.7.1
 
 ## 12.7.0

@@ -33,6 +33,8 @@ describe('bal-radio.cy.ts', () => {
           onBalBlur: onBalBlurSpy,
         },
       })
+
+      cy.get('bal-radio').waitForComponents()
     })
 
     it('should select first one and send change event', () => {
@@ -42,6 +44,9 @@ describe('bal-radio.cy.ts', () => {
       cy.get('bal-radio').eq(1).find('input').should('not.be.checked')
       cy.get('bal-radio').eq(2).find('input').should('not.be.checked')
       cy.get('@balChange').should('have.been.calledOnce')
+      cy.get('@balInput').should('have.been.calledOnce')
+      cy.get('@balFocus').should('have.been.calledTwice')
+      cy.get('@balBlur').should('not.have.been.called')
     })
 
     it('should change prop value of the group and not sent change event', () => {

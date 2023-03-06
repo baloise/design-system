@@ -42,6 +42,14 @@ jobs:
       - name: Unit tests
         run: npm run test
 
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      - name: Uncommitted changes
+        if: steps.changes.outputs.changed == 1
+        run: exit 1
+
   Component:
     runs-on: ubuntu-latest
     steps:

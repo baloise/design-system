@@ -29,9 +29,13 @@ import {
   stopEventBubbling,
 } from '../../../utils/form-input'
 import {
+  formatBeEnterpriseNumber,
+  formatBeIBAN,
   formatClaim,
   formatOffer,
   formatPolicy,
+  MAX_LENGTH_BE_ENTERPRISE_NUMBER,
+  MAX_LENGTH_BE_IBAN,
   MAX_LENGTH_CLAIM_NUMBER,
   MAX_LENGTH_CONTRACT_NUMBER,
   MAX_LENGTH_OFFER_NUMBER,
@@ -172,7 +176,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop() spellcheck = false
 
   /**
-   * If `true` this component can be placed on dark background
+   * @deprecated  If `true` this component can be placed on dark background
    */
   @Prop() inverted = false
 
@@ -215,10 +219,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop({ mutable: true, reflect: true }) value?: string = undefined
 
   /**
-   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN.
    * Formatting for 'contract-number': '99/1.234.567-1'
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
+   * Formatting for 'be-enterprise-number': ('1234.567.890')
+   * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
   @Prop() mask?: BalProps.BalInputMask = undefined
 
@@ -233,6 +239,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
+   * @deprecated
    * Emitted when the input has clicked.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
@@ -318,27 +325,93 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     return `${value}${suffix}`
   }
 
+  private getInputValue = () => {
+    const input = this.nativeInput
+
+    let inputValue = ''
+    if (input) {
+      if (this.allowedKeyPress && input && !this.mask) {
+        const regex = new RegExp('^' + this.allowedKeyPress + '$')
+        const value = input.value
+          .split('')
+          .filter(val => regex.test(val))
+          .join('')
+        input.value = value
+        return value
+      }
+
+      if (this.mask) {
+        switch (this.mask) {
+          case 'contract-number': {
+            inputValue = input.value.replace(/\D/g, '')
+            if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+              inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+            }
+            return inputValue
+          }
+          case 'offer-number': {
+            inputValue = input.value.replace(/\D/g, '')
+            if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+              inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+            }
+            return inputValue
+          }
+          case 'claim-number': {
+            inputValue = input.value.replace(/[^\dXx]/g, '')
+            const inputParts = [
+              inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+            ].filter(val => val.length > 0)
+            switch (inputParts.length) {
+              case 1:
+                inputValue = `${inputParts[0].replace(/\D/g, '')}`
+                break
+              case 2:
+                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+                break
+              default:
+                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
+            }
+            if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+              inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+            }
+            return inputValue
+          }
+          case 'be-enterprise-number': {
+            inputValue = input.value.replace(/\D/g, '')
+            if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
+              inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
+            }
+            return inputValue
+          }
+          case 'be-iban': {
+            inputValue = input.value.replace(/\D/g, '')
+            if (inputValue.length > MAX_LENGTH_BE_IBAN) {
+              inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
+            }
+            return inputValue
+          }
+          default:
+            return input.value
+        }
+      }
+    }
+
+    return ''
+  }
+
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
     const cursorPositionStart = (ev as any).target?.selectionStart
     const cursorPositionEnd = (ev as any).target?.selectionEnd
 
-    if (this.allowedKeyPress && input && !this.mask) {
-      const regex = new RegExp('^' + this.allowedKeyPress + '$')
-      this.inputValue = input.value = input.value
-        .split('')
-        .filter(val => regex.test(val))
-        .join('')
-    }
+    this.inputValue = this.getInputValue()
 
     if (input) {
       if (input.value) {
         switch (this.mask) {
           case 'contract-number': {
-            this.inputValue = input.value.replace(/\D/g, '')
-            if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
-            }
             input.value = formatPolicy(this.inputValue)
             if (cursorPositionStart < this.inputValue.length) {
               input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
@@ -346,10 +419,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             break
           }
           case 'offer-number': {
-            this.inputValue = input.value.replace(/\D/g, '')
-            if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-            }
             input.value = formatOffer(this.inputValue)
             if (cursorPositionStart < this.inputValue.length) {
               input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
@@ -357,30 +426,22 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             break
           }
           case 'claim-number': {
-            this.inputValue = input.value.replace(/[^\dX]/g, '')
-            const inputParts = [
-              this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-              this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-            ].filter(val => val.length > 0)
-            switch (inputParts.length) {
-              case 1:
-                this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
-                break
-              case 2:
-                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-                break
-              default:
-                this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
-                  /\D/g,
-                  '',
-                )}`
-            }
-            if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-              this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-            }
             input.value = formatClaim(this.inputValue)
 
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
+          }
+          case 'be-enterprise-number': {
+            input.value = formatBeEnterpriseNumber(this.inputValue)
+            if (cursorPositionStart < this.inputValue.length) {
+              input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+            }
+            break
+          }
+          case 'be-iban': {
+            input.value = formatBeIBAN(this.inputValue)
             if (cursorPositionStart < this.inputValue.length) {
               input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
             }
@@ -417,13 +478,17 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
 
   private onKeydown = (event: KeyboardEvent) => {
     if (this.mask !== undefined && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      let inputLength = 0
+      if (this.inputValue) {
+        inputLength = this.inputValue.length
+      }
+
       if (
         !(
           this.getMaskAllowedKeys().includes(event.key) ||
           (this.mask === 'claim-number' &&
-            event.key === 'X' &&
-            this.inputValue &&
-            this.inputValue.length >= MAX_LENGTH_CLAIM_NUMBER - 1)
+            (event.key === 'X' || event.key === 'x') &&
+            inputLength >= MAX_LENGTH_CLAIM_NUMBER - 1)
         )
       ) {
         // do not trigger next event -> on input
@@ -455,6 +520,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
         case 'offer-number':
           value = formatOffer(value)
+          break
+        case 'be-enterprise-number':
+          value = formatBeEnterpriseNumber(value)
+          break
+        case 'be-iban':
+          value = formatBeIBAN(value)
+          break
       }
     }
     const labelId = this.inputId + '-lbl'

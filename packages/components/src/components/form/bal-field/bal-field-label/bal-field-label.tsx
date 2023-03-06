@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, State } from '@stencil/core'
+import { Component, h, Host, Prop, Element, State, Method } from '@stencil/core'
 import { BalConfigObserver } from '../../../../utils/config'
 import {
   attachComponentToConfig,
@@ -73,9 +73,13 @@ export class FieldLabel implements BalConfigObserver {
     }
   }
 
-  configChanged(config: BalConfigState): void {
-    this.language = config.language
-    this.region = config.region
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   render() {

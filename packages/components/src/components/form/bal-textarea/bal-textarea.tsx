@@ -93,7 +93,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() minLength?: number
 
   /**
-   * If `true` this component can be placed on dark background
+   * @deprecated If `true` this component can be placed on dark background
    */
   @Prop() inverted = false
 
@@ -158,11 +158,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Emitted when a keyboard input occurred.
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when a keyboard key has pressed.

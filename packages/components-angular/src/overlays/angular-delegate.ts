@@ -87,7 +87,7 @@ export const attachView = (
   const instance = componentRef.instance
   const hostElement = componentRef.location.nativeElement
   if (params) {
-    Object.assign(instance, params)
+    Object.assign(instance as any, params)
   }
   if (cssClasses) {
     for (const clazz of cssClasses) {

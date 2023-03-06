@@ -6,7 +6,7 @@ import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
-import { NEWLINE, SPACE } from './constants'
+import { NEWLINE, SPACE, WHITESPACE } from './constants'
 import testingCommands from '../../public/assets/data/commands.json'
 import contributors from '../../public/assets/data/contributors.json'
 
@@ -36,7 +36,8 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         console.error(err)
       }
 
-      const docsPath = path.join(component.dirPath || '', 'generated')
+      const docsPath = path.join(component.dirPath || '', 'stories')
+
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -72,17 +73,15 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
           const content = [
             `## Testing`,
-            SPACE,
+            WHITESPACE,
             'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
-            SPACE,
+            WHITESPACE,
             '- [More information about the installation and usage](?path=/docs/development-testing--page)',
-            SPACE,
+            WHITESPACE,
             '<!-- START: human documentation -->',
-            SPACE,
             ...humanLines,
-            SPACE,
             '<!-- END: human documentation -->',
-            SPACE,
+            WHITESPACE,
             ...commandsToMarkdown(componentCommands),
           ]
 

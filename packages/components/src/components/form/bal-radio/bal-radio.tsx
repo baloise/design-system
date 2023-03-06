@@ -14,6 +14,7 @@ import {
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BalRadioOption } from './bal-radio.type'
 
 @Component({
   tag: 'bal-radio',
@@ -135,11 +136,6 @@ export class Radio implements ComponentInterface, Loggable {
   @Event() balChange!: EventEmitter<BalEvents.BalRadioChangeDetail>
 
   /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
-  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -201,6 +197,30 @@ export class Radio implements ComponentInterface, Loggable {
   }
 
   /**
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async getOption(): Promise<BalRadioOption> {
+    return this.option
+  }
+
+  get option() {
+    return {
+      name: this.name,
+      value: this.value,
+      label: this.label,
+      labelHidden: this.labelHidden,
+      flat: this.flat,
+      interface: this.interface,
+      disabled: this.disabled,
+      readonly: this.readonly,
+      required: this.required,
+      hidden: this.hidden,
+      invalid: this.invalid,
+    }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -223,7 +243,6 @@ export class Radio implements ComponentInterface, Loggable {
     }
 
     this.checked = this.nativeInput.checked
-    this.balClick.emit()
     this.nativeInput.focus()
   }
 
