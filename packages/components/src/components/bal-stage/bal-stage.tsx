@@ -55,11 +55,6 @@ export class Stage implements ComponentInterface {
    */
   @Prop() shapeRotation?: Props.BalShapeRotation
 
-  /**
-   * @deprecated sets text color to white for images and dark backgrounds (optional)
-   */
-  @Prop() inverted = false
-
   getContainerWidth = () => {
     switch (this.containerSize) {
       case 'is-detail-page':

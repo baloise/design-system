@@ -177,11 +177,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop() spellcheck = false
 
   /**
-   * @deprecated  If `true` this component can be placed on dark background
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false

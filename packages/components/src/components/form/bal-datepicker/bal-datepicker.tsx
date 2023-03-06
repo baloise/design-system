@@ -137,11 +137,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   /**
-   * @deprecated Set this to `true` when the component is placed on a dark background.
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true` the attribute required is added to the native input.
    */
   @Prop() required = false
