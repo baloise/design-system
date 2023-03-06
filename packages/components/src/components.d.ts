@@ -5,7 +5,6 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Events, Props } from "./types";
 import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
@@ -16,9 +15,9 @@ import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+import { Events, Props } from "./types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { Events, Props } from "./types";
 export { BalConfigState, BalMode } from "./utils/config";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
@@ -29,6 +28,7 @@ export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+export { Events, Props } from "./types";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1039,7 +1039,7 @@ export namespace Components {
         /**
           * The theme type of the button.
          */
-        "color": Props.BalIconColor;
+        "color": BalProps.BalIconColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the icon has display inline style
