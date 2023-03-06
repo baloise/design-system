@@ -4,6 +4,5 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalFieldLabelWeight = 'bold' | 'regular'
-  export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
+  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 }

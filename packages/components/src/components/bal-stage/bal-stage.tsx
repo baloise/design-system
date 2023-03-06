@@ -121,7 +121,7 @@ export class Stage implements ComponentInterface {
           {this.shape && (
             <div class={{ container: true, [`${this.containerClass}`]: this.containerSize !== '' }}>
               <bal-shape
-                color={this.color as Props.BalShapeColor}
+                color={this.color as BalProps.BalShapeColor}
                 variation={this.shapeVariation}
                 rotation={this.shapeRotation}
               />

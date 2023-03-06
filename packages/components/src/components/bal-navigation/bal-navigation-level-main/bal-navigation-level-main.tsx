@@ -1,6 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
-import { Events, Props } from '../../../types'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 
 @Component({
@@ -19,8 +18,8 @@ export class NavigationLevelMain implements ComponentInterface {
    * It is 'true' when the meta item is used as a link and not as a tab
    */
   @Prop() isTabLink = false
-  @Prop() target: Props.BalButtonTarget = '_self'
-  @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
+  @Prop() target: BalProps.BalButtonTarget = '_self'
+  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

@@ -1,4 +1,3 @@
-import { Props } from '../../../props'
 import { Attributes } from '../../../utils/attributes'
 
 export const observeLevels = (target: Node, level: string, notify: () => void) => {
@@ -30,9 +29,9 @@ export interface LevelInfo {
   label: string
   isTabLink?: boolean
   link?: string
-  target?: Props.BalButtonTarget
+  target?: BalProps.BalButtonTarget
   linkLabel?: string
-  color?: Props.BalNavigationLevelBlockColor
+  color?: BalProps.BalNavigationLevelBlockColor
   subLevels?: LevelInfo[]
   trackingData?: Attributes
   onClick: (event: MouseEvent) => void

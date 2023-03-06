@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
 import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -21,7 +20,7 @@ export class NavbarBrand {
   /**
    * @deprecated Link target
    */
-  @Prop() linkTarget: Props.BalButtonTarget | '' = ''
+  @Prop() linkTarget: BalProps.BalButtonTarget | '' = ''
   @Watch('linkTarget')
   hasShapeHandler() {
     console.warn('[DEPRECATED] - Please use the property target instead')
@@ -38,7 +37,7 @@ export class NavbarBrand {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * @deprecated Use interface on bal-navbar instead.
@@ -62,7 +61,7 @@ export class NavbarBrand {
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
    * Meta and main are used for the website.
    */
-  @Prop() interface: Props.BalNavbarInterface = 'app'
+  @Prop() interface: BalProps.BalNavbarInterface = 'app'
 
   /**
    * Emitted when the link element has clicked

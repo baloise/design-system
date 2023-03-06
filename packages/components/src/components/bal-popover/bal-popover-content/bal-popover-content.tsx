@@ -1,5 +1,4 @@
 import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { ResizeHandler } from '../../../utils/resize'
 
@@ -32,7 +31,7 @@ export class PopoverContent {
   /**
    * Defines background color of the content.
    */
-  @Prop() color: Props.BalPopoverContentColor = 'white'
+  @Prop() color: BalProps.BalPopoverContentColor = 'white'
 
   /**
    * If `true` the content has a min width of 100%.
@@ -42,7 +41,7 @@ export class PopoverContent {
   /**
    * Defines border-radius of popover content.
    */
-  @Prop() radius: Props.BalPopoverContentRadius = 'normal'
+  @Prop() radius: BalProps.BalPopoverContentRadius = 'normal'
 
   /**
    * If `true` the popover does not have the shadow

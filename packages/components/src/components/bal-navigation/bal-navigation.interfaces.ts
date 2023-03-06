@@ -4,10 +4,10 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalCarouselItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
+  export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
 }
 
 namespace BalEvents {
-  export type BalCarouselChangeDetail = number | undefined
-  export type BalCarouselChange = CustomEvent<BalCarouselChangeDetail>
+  export type BalNavigationLevelClickDetail = MouseEvent
+  export type BalNavigationLEvelCloseClick = CustomEvent<BalNavigationLevelClickDetail>
 }
