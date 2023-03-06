@@ -177,7 +177,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop() spellcheck = false
 
   /**
-   * If `true` this component can be placed on dark background
+   * @deprecated  If `true` this component can be placed on dark background
    */
   @Prop() inverted = false
 

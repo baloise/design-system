@@ -597,7 +597,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1121,7 +1121,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -1433,6 +1433,10 @@ export namespace Components {
         "color": Props.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss": boolean;
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -2281,9 +2285,9 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: boolean;
+        "inverted": boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -2643,7 +2647,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -4350,7 +4354,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -4870,7 +4874,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
@@ -5220,6 +5224,10 @@ declare namespace LocalJSX {
         "color"?: Props.BalLogoColor;
     }
     interface BalModal {
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss"?: boolean;
         /**
           * The component to display inside of the modal.
          */
@@ -6077,7 +6085,7 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
         /**
@@ -6422,7 +6430,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**

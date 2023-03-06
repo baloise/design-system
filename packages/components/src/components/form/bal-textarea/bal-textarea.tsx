@@ -94,7 +94,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() minLength?: number
 
   /**
-   * If `true` this component can be placed on dark background
+   * @deprecated If `true` this component can be placed on dark background
    */
   @Prop() inverted = false
 

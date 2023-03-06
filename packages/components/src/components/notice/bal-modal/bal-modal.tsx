@@ -18,6 +18,8 @@ export class Modal implements OverlayInterface {
   private modalContentElement?: HTMLElement
   private modalContainerElement?: HTMLElement
   private modalBackgroundElement?: HTMLElement
+  private isClickedOutsideOnMouseDown = false
+  private isClickedOutsideOnMouseUp = false
 
   private bodyScrollBlocker = BodyScrollBlocker()
 
@@ -69,6 +71,11 @@ export class Modal implements OverlayInterface {
    * provided they should be separated by spaces.
    */
   @Prop() cssClass?: string | string[]
+
+  /**
+   * If `true`, the modal can be closed with the click outside of the modal
+   */
+  @Prop() backdropDismiss = true
 
   /**
    * Emitted after the modal has presented.
@@ -213,15 +220,24 @@ export class Modal implements OverlayInterface {
   async onClickCloseButton(event: MouseEvent) {
     if (this.isClosable && this.presented && event && event.target) {
       const element = event.target as HTMLElement
-      const isClickedOutside = element.classList.contains('bal-modal__container')
       const closestBalButton = element.closest('bal-button')
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
         await this.dismiss(undefined, 'model-close')
       }
-      if (isClickedOutside) {
+      if (this.backdropDismiss && this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown) {
         await this.dismiss(undefined, 'model-close')
       }
     }
+  }
+
+  @Listen('mousedown')
+  async onMouseDown(event: MouseEvent) {
+    this.isClickedOutsideOnMouseDown = this.isClickedOutside(event)
+  }
+
+  @Listen('mouseup')
+  async onMouseUp(event: MouseEvent) {
+    this.isClickedOutsideOnMouseUp = this.isClickedOutside(event)
   }
 
   @Listen('keyup', { target: 'body' })
@@ -238,7 +254,6 @@ export class Modal implements OverlayInterface {
       event.stopPropagation()
       if (this.presented && this.isClosable) {
         if (event.key === 'Escape' || event.key === 'Esc') {
-          event.preventDefault()
           if (this.delegate) {
             await this.dismiss(undefined, 'model-escape')
           } else {
@@ -255,6 +270,15 @@ export class Modal implements OverlayInterface {
 
   private unsetModalActiveOnBody() {
     this.bodyScrollBlocker.allow()
+  }
+
+  private isClickedOutside(event: MouseEvent) {
+    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
+      const element = event.target as HTMLElement
+      return element.classList.contains('bal-modal__container')
+    }
+
+    return false
   }
 
   render() {
