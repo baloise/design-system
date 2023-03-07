@@ -108,7 +108,6 @@ export class Stage implements ComponentInterface {
         <section
           class={{
             ...element.class(),
-            ...element.modifier('is-inverted').class(this.inverted),
             container: true,
             [`${this.containerClass}`]: this.containerSize !== '',
           }}

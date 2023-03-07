@@ -275,7 +275,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           class={{
             ...elNative.class(),
             'textarea': true,
-            'is-inverted': this.inverted,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'clickable': this.clickable,

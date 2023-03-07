@@ -721,7 +721,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
               'input': true,
               'data-test-input': true,
               'is-clickable': !this.disabled && !this.triggerIcon && !this.readonly,
-              'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
             }}
@@ -752,7 +751,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             }}
             is-right
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            inverted={this.inverted}
             name="date"
             onClick={this.onIconClick}
           />
