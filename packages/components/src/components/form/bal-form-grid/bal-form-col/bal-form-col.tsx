@@ -1,5 +1,4 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { Props } from '../../../../types'
 
 @Component({
   tag: 'bal-form-col',
@@ -7,7 +6,7 @@ import { Props } from '../../../../types'
 export class FormCol implements ComponentInterface {
   @Element() el!: HTMLElement
 
-  @Prop() size: Props.BalFormColSize = 'fullwidth'
+  @Prop() size: BalProps.BalFormColSize = 'fullwidth'
 
   render() {
     return (

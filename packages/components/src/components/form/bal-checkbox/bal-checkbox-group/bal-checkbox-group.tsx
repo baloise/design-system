@@ -15,7 +15,6 @@ import {
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
-import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
@@ -65,7 +64,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface?: Props.BalCheckboxGroupInterface = undefined
+  @Prop() interface?: BalProps.BalCheckboxGroupInterface = undefined
 
   /**
    * If `true` it acts as the main form control
@@ -143,7 +142,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxGroupChangeDetail>
 
   /**
    * LIFECYCLE

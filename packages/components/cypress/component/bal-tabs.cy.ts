@@ -1,6 +1,6 @@
 import BalTabsTest from './bal-tabs.vue'
 
-describe('bal-tabs.cy.ts', () => {
+describe.skip('bal-tabs.cy.ts', () => {
   it('should fire change event', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
 

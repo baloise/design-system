@@ -4,7 +4,6 @@ import { attachComponent, detachComponent } from '../../../utils/framework-deleg
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
 import { getClassMap } from '../../../utils/css-classes'
-import { Props } from '../../../types'
 import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
 @Component({
@@ -31,7 +30,7 @@ export class Modal implements OverlayInterface {
   @Prop({ mutable: true }) overlayIndex!: number
 
   /** @internal */
-  @Prop() delegate?: Props.FrameworkDelegate
+  @Prop() delegate?: BalProps.FrameworkDelegate
 
   /** @internal */
   @Prop() dataTestId?: string
@@ -44,7 +43,7 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the space/padding of the modal
    */
-  @Prop() space: Props.BalModalSpace = ''
+  @Prop() space: BalProps.BalModalSpace = ''
 
   /**
    * If `true`, a backdrop will be displayed behind the modal.
@@ -59,12 +58,12 @@ export class Modal implements OverlayInterface {
   /**
    * The component to display inside of the modal.
    */
-  @Prop() component!: Props.ComponentRef
+  @Prop() component!: BalProps.ComponentRef
 
   /**
    * The data to pass to the modal component.
    */
-  @Prop() componentProps?: Props.ComponentProps
+  @Prop() componentProps?: BalProps.ComponentProps
 
   /**
    * Additional classes to apply for custom CSS. If multiple classes are

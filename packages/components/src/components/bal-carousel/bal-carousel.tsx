@@ -17,7 +17,6 @@ import { MutationHandler } from '../../utils/observer'
 import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
 import { SwipeHandler } from '../../utils/swipe'
 import { BalSlide, ControlItem } from './bal-carousel.type'
-import { Events } from '../../types'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
@@ -99,7 +98,7 @@ export class Carousel implements ComponentInterface {
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalCarouselChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCarouselChangeDetail>
 
   /**
    * LIFECYCLE

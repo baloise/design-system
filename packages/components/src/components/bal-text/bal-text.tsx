@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -12,7 +11,7 @@ export class Text {
   /**
    * Defines the size of the paragraph
    */
-  @Prop() size: Props.BalTextSize = ''
+  @Prop() size: BalProps.BalTextSize = ''
 
   /**
    * If `true` the text has heading font family
@@ -32,12 +31,12 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: Props.BalTextColor = ''
+  @Prop() color: BalProps.BalTextColor = ''
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: Props.BalTextSpace = ''
+  @Prop() space: BalProps.BalTextSpace = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds

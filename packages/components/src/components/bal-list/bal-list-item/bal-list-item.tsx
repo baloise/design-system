@@ -10,7 +10,7 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import { AccordionState, Props } from '../../../types'
+import { AccordionState } from '../../../types'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -85,7 +85,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   /**
    * Specifies where to open the linked document
    */
-  @Prop() target: Props.BalListItemTarget = '_self'
+  @Prop() target: BalProps.BalListItemTarget = '_self'
 
   /**
    * Emitted when the link element has clicked

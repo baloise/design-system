@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop, Element, State, Method } from '@stencil/core'
 import { BalConfigObserver } from '../../../../utils/config'
-import { Props } from '../../../../types'
 import {
   attachComponentToConfig,
   BalConfigState,
@@ -52,7 +51,7 @@ export class FieldLabel implements BalConfigObserver {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() weight: Props.BalFieldLabelWeight = 'bold'
+  @Prop() weight: BalProps.BalFieldLabelWeight = 'bold'
 
   connectedCallback() {
     attachComponentToConfig(this)

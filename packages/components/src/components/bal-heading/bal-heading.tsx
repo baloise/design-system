@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -12,14 +11,14 @@ export class Heading {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop() level: Props.BalHeadingLevel = 'h1'
+  @Prop() level: BalProps.BalHeadingLevel = 'h1'
 
   /**
    * Make the visual style mimic a specific heading level.
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel?: Props.BalHeadingLevel
+  @Prop() visualLevel?: BalProps.BalHeadingLevel
 
   /**
    * If `true` the heading gets displayed slimmer.
@@ -34,7 +33,7 @@ export class Heading {
   /**
    * The theme type of the toast.
    */
-  @Prop() color: Props.BalHeadingColor = ''
+  @Prop() color: BalProps.BalHeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -47,7 +46,7 @@ export class Heading {
   @Prop() shadow = false
 
   private getFontSize(): string {
-    const mapSize = (size: Props.BalHeadingLevel) => {
+    const mapSize = (size: BalProps.BalHeadingLevel) => {
       const sizes: any = {
         'display': 'xxxxx-large',
         'display-2': 'xxxx-large',

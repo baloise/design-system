@@ -22,7 +22,6 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -75,7 +74,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
+  @Prop() interface: BalProps.BalCheckboxInterface = 'checkbox'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -128,7 +127,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   /**
    * Emitted when the value property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

@@ -1,5 +1,4 @@
 import { Component, h, Prop, Host, ComponentInterface } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -9,13 +8,13 @@ export class ButtonGroup implements ComponentInterface {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() position: Props.BalButtonGroupPosition = ''
+  @Prop() position: BalProps.BalButtonGroupPosition = ''
 
   /**
    * `auto` will position the button items vertical and full width.
    * `row` will force that the buttons are also horizontal on mobile.
    */
-  @Prop() direction: Props.BalButtonGroupDirection = 'auto'
+  @Prop() direction: BalProps.BalButtonGroupDirection = 'auto'
 
   /**
    * If `true` the flex direction is used in reverse on mobile.

@@ -87,7 +87,6 @@ export function generateProxies(
   const imports = `/* tslint:disable */
 /* auto-generated angular directive proxies */
 ${createImportStatement(angularCoreImports, '@angular/core')}
-
 ${createImportStatement(componentLibImports, './angular-component-lib/utils')}\n`
   /**
    * Generate JSX import type from correct location.

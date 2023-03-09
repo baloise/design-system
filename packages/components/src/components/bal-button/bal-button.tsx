@@ -1,5 +1,4 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { Props } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -13,12 +12,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: Props.BalButtonColor = 'primary'
+  @Prop() color: BalProps.BalButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop() elementType: Props.BalButtonElementType = 'button'
+  @Prop() elementType: BalProps.BalButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -28,7 +27,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: Props.BalButtonSize = ''
+  @Prop({ reflect: true }) size: BalProps.BalButtonSize = ''
 
   /**
    * Specifies the URL of the page the link goes to
@@ -39,7 +38,7 @@ export class Button implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.

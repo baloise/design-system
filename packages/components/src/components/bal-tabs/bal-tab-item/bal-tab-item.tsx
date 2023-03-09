@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
-import { Props } from '../../../types'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
@@ -37,7 +36,7 @@ export class TabItem {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * If `true` a small red bubble is added to the tab.

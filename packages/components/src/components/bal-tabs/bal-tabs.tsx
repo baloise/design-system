@@ -4,7 +4,6 @@ import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { StepList } from './components/steps'
-import { Events, Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import { getPlatforms, isPlatform, Platforms } from '../../utils/platform'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -36,18 +35,18 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: Props.BalTabsInterface = 'tabs'
+  @Prop() interface: BalProps.BalTabsInterface = 'tabs'
 
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
+  @Prop() iconPosition: BalProps.BalTabsIconPosition = 'horizontal'
 
   /**
    * Defines the layout of the tabs. Right only works from the breakpoint
    * high-definition and beyond.
    */
-  @Prop() float: Props.BalTabsFloat = 'left'
+  @Prop() float: BalProps.BalTabsFloat = 'left'
 
   /**
    * If `true` the field expands over the whole width.
@@ -92,12 +91,12 @@ export class Tabs {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical: Props.BalTabsVertical = false
+  @Prop() vertical: BalProps.BalTabsVertical = false
 
   /**
    * The col size of the tabs on vertical mode.
    */
-  @Prop() verticalColSize: Props.BalTabsColSize = 'one-third'
+  @Prop() verticalColSize: BalProps.BalTabsColSize = 'one-third'
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -118,7 +117,7 @@ export class Tabs {
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<BalEvents.BalTabsChangeDetail>
 
   resizeWidthHandler = ResizeHandler()
 
@@ -137,7 +136,7 @@ export class Tabs {
   }
 
   @Listen('balChange', { target: 'window' })
-  async accordionChangeHandler(event: Events.BalAccordionChange) {
+  async accordionChangeHandler(event: BalEvents.BalAccordionChange) {
     const accordion = this.el.closest('bal-accordion')
     if (event.target === accordion) {
       this.moveLine(this.getTargetElement(this.value))
@@ -248,7 +247,7 @@ export class Tabs {
     }
   }
 
-  private parseVertical(): Props.BalTabsVertical {
+  private parseVertical(): BalProps.BalTabsVertical {
     if ((this.vertical as any) === 'true' || (this.vertical as any) === '') {
       return true
     }

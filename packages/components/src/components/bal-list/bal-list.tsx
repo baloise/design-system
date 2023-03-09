@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -36,7 +35,7 @@ export class List {
   /**
    * If `true` the list can be used on a light, dark or colored backgrounds
    */
-  @Prop() background: Props.BalListBackground = 'light'
+  @Prop() background: BalProps.BalListBackground = 'light'
 
   /**
    * If `true` each list item has a bottom border
@@ -58,7 +57,7 @@ export class List {
   /**
    * Defines the min height of the list item
    */
-  @Prop() size: Props.BalListSize = ''
+  @Prop() size: BalProps.BalListSize = ''
 
   // /**
   //  * If `true` the list can be used as an accordion in meta nav

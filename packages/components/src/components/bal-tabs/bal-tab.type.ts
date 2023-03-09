@@ -1,4 +1,3 @@
-import { Props } from '../../types'
 import { EventEmitter } from '@stencil/core'
 import { Attributes } from '../../utils/attributes'
 
@@ -7,7 +6,7 @@ export interface BalTabOption {
   label: string
   icon?: string
   href: string
-  target: Props.BalButtonTarget
+  target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean
   done: boolean
@@ -17,13 +16,13 @@ export interface BalTabOption {
   prevent: boolean
   passed?: boolean
   index?: number
-  context?: Props.BalTabsInterface
+  context?: BalProps.BalTabsInterface
   navigate: EventEmitter<MouseEvent>
   trackingData?: Attributes
 }
 
 export interface TabLineProps {
-  context?: Props.BalTabsInterface
+  context?: BalProps.BalTabsInterface
   inverted: boolean
   isReady: boolean
   vertical: boolean | 'mobile' | 'tablet'
@@ -37,14 +36,14 @@ export interface TabProps {
   value: string | undefined
   expanded: boolean
   border: boolean
-  float: Props.BalTabsFloat
+  float: BalProps.BalTabsFloat
   spaceless: boolean
   clickable: boolean
   isReady: boolean
   inverted: boolean
-  iconPosition: Props.BalTabsIconPosition
+  iconPosition: BalProps.BalTabsIconPosition
   tabs: BalTabOption[]
-  context: Props.BalTabsInterface
+  context: BalProps.BalTabsInterface
   onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
   lineWidth?: number
   lineOffsetLeft?: number
@@ -63,10 +62,10 @@ export interface TabItemProps {
   disabled: boolean
   bubble: boolean | string
   href: string | undefined
-  target: Props.BalButtonTarget
+  target: BalProps.BalButtonTarget
   label: string | undefined
-  context: Props.BalTabsInterface
-  iconPosition: Props.BalTabsIconPosition
+  context: BalProps.BalTabsInterface
+  iconPosition: BalProps.BalTabsIconPosition
   trackingData?: Attributes
   onSelectTab: (event: MouseEvent) => void
 }

@@ -1,7 +1,4 @@
-export { Components, JSX } from './components'
-export * from './index'
-export { Props } from './props'
-export { Events } from './events'
+export * from './interfaces'
 
 export * from './components/form/bal-select/utils/bal-option.type'
 export * from './components/bal-tabs/bal-tab.type'

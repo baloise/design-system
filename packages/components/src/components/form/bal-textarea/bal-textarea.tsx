@@ -28,7 +28,6 @@ import {
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Events, Props } from '../../../types'
 
 @Component({
   tag: 'bal-textarea',
@@ -116,7 +115,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() wrap?: Props.BalTextareaWrap
+  @Prop() wrap?: BalProps.BalTextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -133,7 +132,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: Props.BalTextareaInputMode
+  @Prop() inputmode?: BalProps.BalTextareaInputMode
 
   /**
    * The value of the textarea.
@@ -143,12 +142,12 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Emitted when the input value has changed..
    */
-  @Event() balChange!: EventEmitter<Events.BalTextareaChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalTextareaChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalTextareaInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalTextareaInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.

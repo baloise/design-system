@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-notification',
@@ -12,7 +11,7 @@ export class Notification {
    * Defines the color of the element
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color: Props.BalNotificationColor = ''
+  @Prop() color: BalProps.BalNotificationColor = ''
 
   render() {
     return (

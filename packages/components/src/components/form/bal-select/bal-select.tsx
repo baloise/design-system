@@ -38,7 +38,6 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Events, Props } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -105,7 +104,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() filter: Props.BalSelectFilter = 'includes'
+  @Prop() filter: BalProps.BalSelectFilter = 'includes'
 
   /**
    * The tabindex of the control.
@@ -135,7 +134,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * @deprecated Enables the slide in animation for the option items.
@@ -227,14 +226,14 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
+  private emitChangeEvent(detail: BalEvents.BalSelectChangeDetail) {
     this.balChange.emit(detail)
   }
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalSelectChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalSelectChangeDetail>
 
   /**
    * Emitted when the input got clicked.
