@@ -20,5 +20,5 @@ The supported template presets are:
 
 ## Examples Project
 
-You can clone the our examples project to try the Baloise Design System in your preferred framework. 
+You can clone the our examples project to try the Baloise Design System in your preferred framework.
 Just clone the project from [Github](https://github.com/baloise/design-system-examples).
