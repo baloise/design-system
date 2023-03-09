@@ -17,3 +17,8 @@ The supported template presets are:
 <bal-doc-stackblitz framework="react" visible label="React"></bal-doc-stackblitz>
 <bal-doc-stackblitz framework="html" visible label="HTML + JavaScript"></bal-doc-stackblitz>
 </bal-button-group>
+
+## Examples Project
+
+You can clone the our examples project to try the Baloise Design System in your preferred framework.
+Just clone the project from [Github](https://github.com/baloise/design-system-examples).
