@@ -62,4 +62,9 @@ export namespace Events {
 
   export type BalPaginationChangeDetail = number
   export type BalPaginationChange = CustomEvent<BalPaginationChangeDetail>
+
+  export type BalInputTimeChangeDetail = string | undefined
+  export type BalInputTimeChange = CustomEvent<BalInputTimeChangeDetail>
+  export type BalInputTimeInputDetail = string | undefined
+  export type BalInputTimeInput = CustomEvent<BalInputTimeInputDetail>
 }

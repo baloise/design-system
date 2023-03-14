@@ -2608,6 +2608,48 @@ export namespace Components {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
+    interface BalTimeInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the input.
+         */
+        "value"?: string;
+    }
     interface BalToast {
         /**
           * Closes this toast
@@ -2759,6 +2801,10 @@ export interface BalTagCustomEvent<T> extends CustomEvent<T> {
 export interface BalTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalTextareaElement;
+}
+export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTimeInputElement;
 }
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3533,6 +3579,12 @@ declare global {
         prototype: HTMLBalTextareaElement;
         new (): HTMLBalTextareaElement;
     };
+    interface HTMLBalTimeInputElement extends Components.BalTimeInput, HTMLStencilElement {
+    }
+    var HTMLBalTimeInputElement: {
+        prototype: HTMLBalTimeInputElement;
+        new (): HTMLBalTimeInputElement;
+    };
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
     }
     var HTMLBalToastElement: {
@@ -3668,6 +3720,7 @@ declare global {
         "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
+        "bal-time-input": HTMLBalTimeInputElement;
         "bal-toast": HTMLBalToastElement;
     }
 }
@@ -6339,6 +6392,60 @@ declare namespace LocalJSX {
          */
         "wrap"?: Props.BalTextareaWrap;
     }
+    interface BalTimeInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalTimeInputCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeChangeDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: BalTimeInputCustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalTimeInputCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<KeyboardEvent>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the input.
+         */
+        "value"?: string;
+    }
     interface BalToast {
         "closeHandler"?: () => void;
         /**
@@ -6487,6 +6594,7 @@ declare namespace LocalJSX {
         "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
+        "bal-time-input": BalTimeInput;
         "bal-toast": BalToast;
     }
 }
@@ -6622,6 +6730,7 @@ declare module "@stencil/core" {
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
+            "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
         }
     }
