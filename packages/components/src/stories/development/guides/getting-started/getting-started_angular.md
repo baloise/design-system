@@ -67,31 +67,36 @@ npm install @baloise/design-system-components-angular
 > - The font, tokens and component package are included.
 > - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
-### Import Fonts
+### Import Fonts & Favicons
 
-The font package is included in the `@baloise/design-system-components-angular` package.
+The font package is included in the `@baloise/design-system-components-angular` package, however the favicons needs to be installed separately.
 
-Next step is to provide the fonts to our web application.
+```
+npm install @baloise/design-system-favicons
+```
+
+Next step is to provide the fonts and favicons to our web application.
 To do so we recommend the tool copyfiles to copy the font files into your assets folder.
 
 ```
 npm install copyfiles --save-dev
 ```
 
-After installing our copyfiles dependency we need to define the copy command in our **package.json** file.
-Add a new script called **copy:fonts** and adjust the second path to your application.
+After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
 
 ```json
 "scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:fonts && npm run copy:favicons",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
 }
 ```
 
-To copy the fonts run the following command.
+To copy all the assets run the following command.
 
 ```
-npm run copy:fonts
+npm run copy:assets
 ```
 
 > **TIP**

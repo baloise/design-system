@@ -45,23 +45,36 @@ To install the Baloise Design System run the following command.
 npm install @baloise/design-system-components-vue --save
 ```
 
-### Import fonts
+### Import Fonts & Favicons
 
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+The font package is included in the `@baloise/design-system-components-vue` package, however the favicons needs to be installed separately.
 
-After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called copy:fonts and adjust the second path to your application.
+```
+npm install @baloise/design-system-favicons
+```
+
+Next step is to provide the fonts and favicons to our web application.
+To do so we recommend the tool copyfiles to copy the font files into your assets folder.
+
+```
+npm install copyfiles --save-dev
+```
+
+After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
 
 ```json
 "scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:fonts && npm run copy:favicons",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts",
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* public/assets/favicons"
 }
 ```
 
-To copy the fonts run the following command.
+To copy all the assets run the following command.
 
 ```
-npm run copy:fonts
+npm run copy:assets
 ```
 
 > **TIP**
