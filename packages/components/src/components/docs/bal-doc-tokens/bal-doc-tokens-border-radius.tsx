@@ -11,10 +11,12 @@ export class DocTokensBorderRadius implements ComponentInterface {
     const radius = tokens.radius as any
     const sizes = []
     for (const k in radius) {
-      sizes.push({
-        name: k,
-        value: radius[k],
-      })
+      if (radius[k].deprecated !== true) {
+        sizes.push({
+          name: k,
+          value: radius[k],
+        })
+      }
     }
     return (
       <Host>

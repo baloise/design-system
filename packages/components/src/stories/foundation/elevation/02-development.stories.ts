@@ -15,20 +15,30 @@ export const Shadow = args => ({
   components: {},
   setup: () => ({ args }),
   template: `
-<div class="has-shadow-normal p-small mb-large">Shadow</div>
-<div class="has-shadow-large p-small">Large shadow</div>`,
+<div class="has-shadow-normal p-small mb-large">Shadow</div>`,
 })
 Shadow.args = {}
 Shadow.parameters = {
   ...sourceCode(
     () => ({
-      template: `
-      <div class="has-shadow-normal">Shadow</div>
-      <div class="has-shadow-large">Large shadow</div>`,
+      template: `<div class="has-shadow-normal">Shadow</div>`,
       components: [],
     }),
     Shadow.args,
     {},
   ),
+  controls: { exclude: [] },
+}
+
+export const TextShadow = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `
+<p class="has-text-shadow">Text with a light shadow to increase readability on images</p>
+`,
+})
+TextShadow.args = {}
+TextShadow.parameters = {
+  ...sourceCode(TextShadow, TextShadow.args, {}),
   controls: { exclude: [] },
 }

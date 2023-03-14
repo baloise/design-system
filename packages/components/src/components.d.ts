@@ -583,7 +583,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -722,6 +722,7 @@ export namespace Components {
     interface BalDocTokensBorder {
     }
     interface BalDocTokensBorderColors {
+        "overview": boolean;
     }
     interface BalDocTokensBreakpoints {
     }
@@ -744,6 +745,8 @@ export namespace Components {
     interface BalDocTokensSpacing {
     }
     interface BalDocTokensSpacingSizes {
+    }
+    interface BalDocTokensTextShadow {
     }
     interface BalField {
         /**
@@ -1107,7 +1110,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -2271,9 +2274,9 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: boolean;
+        "inverted": boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -2557,7 +2560,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -3049,6 +3052,12 @@ declare global {
     var HTMLBalDocTokensSpacingSizesElement: {
         prototype: HTMLBalDocTokensSpacingSizesElement;
         new (): HTMLBalDocTokensSpacingSizesElement;
+    };
+    interface HTMLBalDocTokensTextShadowElement extends Components.BalDocTokensTextShadow, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensTextShadowElement: {
+        prototype: HTMLBalDocTokensTextShadowElement;
+        new (): HTMLBalDocTokensTextShadowElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -3579,6 +3588,7 @@ declare global {
         "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
         "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
+        "bal-doc-tokens-text-shadow": HTMLBalDocTokensTextShadowElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4246,7 +4256,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -4389,6 +4399,7 @@ declare namespace LocalJSX {
     interface BalDocTokensBorder {
     }
     interface BalDocTokensBorderColors {
+        "overview"?: boolean;
     }
     interface BalDocTokensBreakpoints {
     }
@@ -4411,6 +4422,8 @@ declare namespace LocalJSX {
     interface BalDocTokensSpacing {
     }
     interface BalDocTokensSpacingSizes {
+    }
+    interface BalDocTokensTextShadow {
     }
     interface BalField {
         /**
@@ -4762,7 +4775,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
@@ -5985,7 +5998,7 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
         /**
@@ -6262,7 +6275,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
@@ -6394,6 +6407,7 @@ declare namespace LocalJSX {
         "bal-doc-tokens-shadow": BalDocTokensShadow;
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
         "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
+        "bal-doc-tokens-text-shadow": BalDocTokensTextShadow;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -6528,6 +6542,7 @@ declare module "@stencil/core" {
             "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
             "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
+            "bal-doc-tokens-text-shadow": LocalJSX.BalDocTokensTextShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensTextShadowElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

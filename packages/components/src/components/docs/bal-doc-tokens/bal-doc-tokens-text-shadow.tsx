@@ -2,18 +2,18 @@ import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 @Component({
-  tag: 'bal-doc-tokens-shadow',
+  tag: 'bal-doc-tokens-text-shadow',
 })
-export class DocTokensBorderShadow implements ComponentInterface {
+export class DocTokensBorderTextShadow implements ComponentInterface {
   @Element() el!: HTMLElement
 
   render() {
-    const boxShadows = tokens.shadow.box as any
+    const textShadows = tokens.shadow.text as any
     const shadowTokens = []
-    for (const k in boxShadows) {
+    for (const k in textShadows) {
       shadowTokens.push({
         name: k,
-        value: boxShadows[k],
+        value: textShadows[k],
       })
     }
     return (
@@ -34,8 +34,10 @@ export class DocTokensBorderShadow implements ComponentInterface {
                   <td style={{ verticalAlign: 'top' }}>
                     <div
                       style={{ height: '48px', width: '80px' }}
-                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-purple-2`}
-                    ></div>
+                      class={`mt-x-small has-background-yellow-1 p-x-small`}
+                    >
+                      <p class={`has-text-shadow${`-${c.name}`}`}>Shadow</p>
+                    </div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
@@ -43,7 +45,7 @@ export class DocTokensBorderShadow implements ComponentInterface {
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                      var(--bal-shadow{`-${c.name}`})
+                      var(--bal-text-shadow{`-${c.name}`})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>

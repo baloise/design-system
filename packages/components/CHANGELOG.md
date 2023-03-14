@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27) Thanks [@hirsch88](https://github.com/hirsch88)! - adjust colors due to contrast issues
+- [`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27) Thanks [@hirsch88](https://github.com/hirsch88)! - alert colors synchronized in bal-badge, bal-card, bal-tag and bal-button to fix accessibility issues.
 
 - Updated dependencies [[`ab352d875`](https://github.com/baloise-incubator/design-system/commit/ab352d8755332f0c8adc4801e3d5c7c391bb8f27)]:
   - @baloise/design-system-tokens@12.8.2
