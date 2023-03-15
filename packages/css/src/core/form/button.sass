@@ -1,7 +1,7 @@
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   &:not(.is-rounded)
-    border-radius: var(--bal-radius-small)
+    border-radius: var(--bal-radius-normal)
     font-size: var(--bal-size-small)
 =button-normal
   font-size: var(--bal-size-normal)
@@ -14,7 +14,7 @@
   position: relative
   display: inline-flex
   border-style: solid
-  border-radius: var(--bal-radius-small)
+  border-radius: var(--bal-radius-normal)
   border-color: var(--bal-color-blue)
   color: var(--bal-color-blue)
   +fillSvg(var(--bal-color-blue))
@@ -221,7 +221,7 @@
       +fillSvg(var(--bal-color-white))
   &.is-warning
     background: var(--bal-color-warning-1)
-    border-color: var(--bal-color-warning-6)
+    border-color: var(--bal-color-warning-5)
     color: var(--bal-color-primary)
     +fillSvg(var(--bal-color-primary))
     // States
@@ -247,8 +247,8 @@
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-danger-4)
-        border-color: var(--bal-color-danger-4)
+        background: var(--bal-color-danger-5)
+        border-color: var(--bal-color-danger-5)
         color: var(--bal-color-white)
         +fillSvg(var(--bal-color-white))
     &:active,

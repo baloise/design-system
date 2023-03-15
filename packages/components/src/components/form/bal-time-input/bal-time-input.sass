@@ -1,0 +1,66 @@
+@import '@baloise/design-system-css/sass/mixins'
+
++block(time-input)
+    +unselectable
+    display: block
+    position: relative
+    flex: 1
+    align-items: center
+    width: 100%
+    padding: 0
+    font-family: var(--bal-family-primary)
+    +element(native)
+        &::-webkit-datetime-edit-fields-wrapper
+            display: flex
+        &::-webkit-datetime-edit-text
+            color: var(--bal-color-blue-3)
+        &::-webkit-datetime-edit-hour-field
+            color: var(--bal-color-blue-3)
+        &::-webkit-datetime-edit-minute-field
+            color: var(--bal-color-blue-3)
+        &::-webkit-clear-button
+            display: none
+        &::-webkit-inner-spin-button
+            display: none
+        &::-webkit-calendar-picker-indicator
+            display: none
+            background: none
+        &::-webkit-datetime-edit-ampm-field
+            display: none
+        &.has-focus, &.has-value
+            &::-webkit-datetime-edit-text
+                color: var(--bal-color-primary)
+            &::-webkit-datetime-edit-hour-field
+                color: var(--bal-color-primary)
+            &::-webkit-datetime-edit-minute-field
+                color: var(--bal-color-primary)
+        &.is-disabled
+            &::-webkit-datetime-edit-text
+                color: var(--bal-color-grey-5)
+            &::-webkit-datetime-edit-hour-field
+                color: var(--bal-color-grey-5)
+            &::-webkit-datetime-edit-minute-field
+                color: var(--bal-color-grey-5)
+            &.has-value
+                &::-webkit-datetime-edit-text
+                    color: var(--bal-color-grey-4)
+                &::-webkit-datetime-edit-hour-field
+                    color: var(--bal-color-grey-4)
+                &::-webkit-datetime-edit-minute-field
+                    color: var(--bal-color-grey-4)
+        &.show-placeholder
+            &.is-disabled::before
+                color: var(--bal-color-grey-5)
+                background: var(--bal-color-grey-2)
+            &.is-danger::before
+                background: var(--bal-color-danger-1)
+            &.is-disabled.is-danger::before
+                background: var(--bal-color-grey-2)
+            &:hover::before
+                background: var(--bal-color-grey-1)
+            &::before
+                color: var(--bal-color-blue-3)
+                content: attr(placeholder)
+                pointer-events: none
+                position: absolute
+                background: var(--bal-color-white)

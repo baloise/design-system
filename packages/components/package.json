@@ -34,8 +34,7 @@
   "jsnext:main": "dist/esm/index.js",
   "collection:main": "dist/collection/index.js",
   "collection": "dist/collection/collection-manifest.json",
-  "types": "dist/types/types.d.ts",
-  "unpkg": "dist/design-system-components/design-system-components.esm.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist/",
     "loader/",
@@ -51,7 +50,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --no-cache && node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 && node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",

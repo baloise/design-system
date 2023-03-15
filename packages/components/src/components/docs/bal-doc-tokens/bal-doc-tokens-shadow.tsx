@@ -8,12 +8,12 @@ export class DocTokensBorderShadow implements ComponentInterface {
   @Element() el!: HTMLElement
 
   render() {
-    const shadow = tokens.shadow as any
-    const sizes = []
-    for (const k in shadow) {
-      sizes.push({
+    const boxShadows = tokens.shadow.box as any
+    const shadowTokens = []
+    for (const k in boxShadows) {
+      shadowTokens.push({
         name: k,
-        value: shadow[k],
+        value: boxShadows[k],
       })
     }
     return (
@@ -29,7 +29,7 @@ export class DocTokensBorderShadow implements ComponentInterface {
               </tr>
             </thead>
             <tbody>
-              {sizes.map(c => (
+              {shadowTokens.map(c => (
                 <tr>
                   <td style={{ verticalAlign: 'top' }}>
                     <div

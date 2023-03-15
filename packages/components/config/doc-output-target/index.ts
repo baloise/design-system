@@ -114,16 +114,9 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     }
 
     const htmlComponents = docs.components.filter(c => !c.tag.startsWith('bal-doc'))
-    const componentImports = htmlComponents
-      .map(
-        c =>
-          `import { defineCustomElement as define${capitalize(
-            c.tag,
-          )} } from '@baloise/design-system-components/dist/components/${c.tag}';`,
-      )
-      .join(NEWLINE)
+    const componentImports = htmlComponents.map(c => `  defineCustomElement${capitalize(c.tag)}`).join(`,${NEWLINE}`)
 
-    const componentDefinitions = htmlComponents.map(c => `define${capitalize(c.tag)}();`).join(NEWLINE)
+    const componentDefinitions = htmlComponents.map(c => `defineCustomElement${capitalize(c.tag)}();`).join(NEWLINE)
 
     const loaderContent = `/**
  * Stackblitz Initialization
@@ -133,11 +126,14 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
  */
 
 import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
-import '@baloise/design-system-components/dist/components';
+import { initializeBaloiseDesignSystem } from '@baloise/design-system-components';
+import {
 ${componentImports}
+} from '@baloise/design-system-components/dist/components';
 
 import './example';
 
+initializeBaloiseDesignSystem();
 ${componentDefinitions}
       `
 

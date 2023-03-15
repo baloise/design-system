@@ -22,8 +22,10 @@ Check out the [documentation](https://baloise-design.vercel.app).
 
 ## Packages
 
-| Package                                          | Status                                                                              | Description                                                             |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+## Packages
+
+| Package                                                 | Status                                                                         | Description                                                             |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | [Components](https://baloise-design.vercel.app)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.              |
 | [Components Angular](https://baloise-design.vercel.app) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
 | [Components Vue](https://baloise-design.vercel.app)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                    |
@@ -32,5 +34,6 @@ Check out the [documentation](https://baloise-design.vercel.app).
 | [Tokens](https://baloise-design.vercel.app)             | ![npm](https://img.shields.io/npm/v/@baloise/design-system-tokens)             | Design Tokens like color and spacing.                                   |
 | [CSS](https://baloise-design.vercel.app)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-css)                | Basic CSS styles with utility classes.                                  |
 | [Icons](https://baloise-design.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                         |
+| [Favicons](https://baloise-design.vercel.app)           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-favicons)           | Favicons of the design system.                                          |
 | [Fonts](https://baloise-design.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                          |
 | [Testing](https://baloise-design.vercel.app)            | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overridden commands for each component. |
