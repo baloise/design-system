@@ -1,4 +1,4 @@
-import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
+import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
 import { Component, Host, h, Prop, State, Watch, Method } from '@stencil/core'
 import {
   BalConfigObserver,
@@ -11,6 +11,7 @@ import {
   BalRegion,
 } from '../../utils/config'
 import { BEM } from '../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-footer',
@@ -18,11 +19,24 @@ import { BEM } from '../../utils/bem'
     css: 'bal-footer.sass',
   },
 })
-export class Footer implements BalConfigObserver {
+export class Footer implements BalConfigObserver, Loggable {
   @State() links: FooterLink[] = []
+  @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() allowedLanguages: BalLanguage[] = defaultConfig.allowedLanguages
+
+  log!: LogInstance
+
+  @Logger('bal-footer')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * @deprecated The languages in which the links will appear.
@@ -35,18 +49,34 @@ export class Footer implements BalConfigObserver {
   @Prop() hideLinks = false
 
   /**
+   * If `true` the social media links will be shown.
+   */
+  @Prop() showSocialMedia = false
+
+  /**
    * If `true` the language selection will be hidden.
    */
   @Prop() hideLanguageSelection = false
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    attachComponentToConfig(this)
+    this.updateFooterLinks()
+    this.updateSocialMediaLinks()
+  }
 
   disconnectedCallback() {
     detachComponentToConfig(this)
   }
 
-  connectedCallback() {
-    attachComponentToConfig(this)
-    this.updateFooterLinks()
-  }
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
   /**
    * @internal define config for the component
@@ -57,6 +87,7 @@ export class Footer implements BalConfigObserver {
     this.region = state.region
     this.allowedLanguages = state.allowedLanguages
     this.updateFooterLinks()
+    this.updateSocialMediaLinks()
   }
 
   @Watch('locale')
@@ -64,27 +95,51 @@ export class Footer implements BalConfigObserver {
     if (this.locale !== '') {
       this.language = this.locale
       this.updateFooterLinks()
+      this.updateSocialMediaLinks()
     }
   }
 
-  changeLanguage(language: BalLanguage) {
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private changeLanguage(language: BalLanguage) {
     updateBalLanguage(language)
   }
 
-  updateFooterLinks() {
+  private updateFooterLinks() {
     if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
       loadFooterLinks(new Language(this.language), this.region).then(links => (this.links = links))
     }
   }
 
+  private updateSocialMediaLinks() {
+    if (this.showSocialMedia && (this.region === 'CH' || this.region === 'DE')) {
+      // The following footer links only apply to swiss and german applications
+      loadSocialMediaLinks(new Language(this.language), this.region).then(links => (this.socialMediaLinks = links))
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
   render() {
     const block = BEM.block('footer')
     const elInner = block.element('inner')
-    const elContainer = elInner.element('container')
-    const elLinksContainer = elInner.element('links-container')
+    const elInnerWrapper = elInner.element('wrapper')
+    const elContainer = elInnerWrapper.element('container')
+    const elLinksContainer = elInnerWrapper.element('links-container')
+    const elHeaderContainer = elInnerWrapper.element('header-container')
+    const elLogo = elHeaderContainer.element('logo')
+    const elLanguage = elHeaderContainer.element('language')
+    const elWrapper = elLanguage.element('wrapper')
+    const elIcon = elLanguage.element('icon')
     const elLegalLinks = elLinksContainer.element('legal-links')
-    const elLanguageLinks = elLinksContainer.element('language-links')
+    const elSocialMediaLinks = elLinksContainer.element('social-media-links')
 
     return (
       <Host
@@ -97,53 +152,105 @@ export class Footer implements BalConfigObserver {
             ...elInner.class(),
           }}
         >
-          <slot></slot>
           <div
             class={{
-              container: true,
-              ...elContainer.class(),
-              ...elLinksContainer.class(),
+              ...elInnerWrapper.class(),
             }}
           >
             <div
               class={{
-                ...elLegalLinks.class(),
+                container: true,
+                ...elContainer.class(),
+                ...elHeaderContainer.class(),
               }}
-              style={{ display: this.hideLinks ? 'none' : 'flex' }}
             >
-              {this.links.map(link => (
-                <a
+              <div
+                class={{
+                  ...elLogo.class(),
+                }}
+              >
+                <bal-logo color="white"></bal-logo>
+              </div>
+              <div
+                class={{
+                  ...elLanguage.class(),
+                }}
+                style={{
+                  display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
+                }}
+              >
+                <div
                   class={{
-                    'is-link': true,
-                    'is-inverted': true,
+                    ...elWrapper.class(),
                   }}
-                  href={link.link}
-                  target="_blank"
                 >
-                  {link.label}
-                </a>
-              ))}
+                  <bal-input-group>
+                    <bal-icon
+                      class={{
+                        ...elIcon.class(),
+                      }}
+                      name="web"
+                      color="white"
+                    ></bal-icon>
+                    <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
+                      {this.allowedLanguages.map(language => (
+                        <bal-select-option label={language.toLocaleUpperCase()} value={language}>
+                          {language.toLocaleUpperCase()}
+                        </bal-select-option>
+                      ))}
+                    </bal-select>
+                  </bal-input-group>
+                </div>
+              </div>
             </div>
+            <slot></slot>
             <div
               class={{
-                ...elLanguageLinks.class(),
-              }}
-              style={{
-                display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
+                container: true,
+                ...elContainer.class(),
+                ...elLinksContainer.class(),
               }}
             >
-              {this.allowedLanguages.map(lang => (
-                <a
-                  class={[
-                    'is-link',
-                    'is-inverted',
-                    this.language.toLowerCase() == lang.toLowerCase() ? 'is-current' : '',
-                  ].join(' ')}
-                  onClick={() => this.changeLanguage(lang)}
-                >
-                  {lang.toUpperCase()}
-                </a>
-              ))}
+              <div
+                class={{
+                  ...elSocialMediaLinks.class(),
+                }}
+                style={{
+                  display: !this.showSocialMedia ? 'none' : 'flex',
+                }}
+              >
+                {this.socialMediaLinks.map(link => (
+                  <a
+                    href={link.link}
+                    target="_blank"
+                    class={{
+                      'is-link': true,
+                      'is-inverted': true,
+                    }}
+                  >
+                    <bal-icon name={link.label.toLowerCase()}></bal-icon>
+                  </a>
+                ))}
+              </div>
+              <div
+                class={{
+                  ...elLegalLinks.class(),
+                }}
+                style={{ display: this.hideLinks ? 'none' : 'flex' }}
+              >
+                {this.links.map(link => (
+                  <a
+                    href={link.link}
+                    target="_blank"
+                    class={{
+                      'is-link': true,
+                      'is-light': true,
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </footer>

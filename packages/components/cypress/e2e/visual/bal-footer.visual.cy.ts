@@ -3,13 +3,16 @@ describe('bal-footer', () => {
 
   it('basic component', () => {
     cy.platform('desktop').wait(1000)
-    cy.getByTestId('basic').compareSnapshot('footer-desktop', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-desktop', 0.0)
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop', 0.0)
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('footer-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-tablet', 0.0)
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-tablet', 0.0)
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('footer-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-mobile', 0.0)
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-mobile', 0.0)
   })
 
   it('component variants', () => {

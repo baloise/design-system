@@ -4,53 +4,113 @@
   +unselectable
   display: block
   position: static
+  user-select: auto
 
   +element(inner)
     position: relative
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-primary)
     color: var(--bal-color-text-white)
-    padding: var(--bal-space-large)
+    padding-top: var(--bal-space-x-small)
+    padding-bottom: var(--bal-space-large)
     +tablet
-      padding: var(--bal-space-tablet-large)
+      padding-top: var(--bal-space-large)
+      padding-bottom: var(--bal-space-large)
     +desktop
-      padding: var(--bal-space-desktop-large)
+      padding-top: var(--bal-space-large)
+      padding-bottom: var(--bal-space-large)
 
     &,
     p
       color: var(--bal-color-white)
 
-    +element(links-container)
+    +element(wrapper)
       display: flex
-      justify-content: space-between
-      flex-wrap: wrap
+      flex-direction: column
+      gap: var(--bal-space-large)
 
-      +tablet
-        flex-direction: column
+      +tablet-only
+        gap: var(--bal-space-tablet-medium)
 
-      +desktop
+      +mobile
+        gap: var(--bal-space-tablet-medium)
+
+      +element(header-container)
+        display: flex
+        justify-content: space-between
+        flex-wrap: nowrap
         flex-direction: row
 
-      +element(legal-links)
+        +element(language)
+          display: flex
+          flex-wrap: nowrap
+          align-items: center
+
+          &:hover
+            bal-icon
+              +fillSvg(var(--bal-color-light-blue-2))
+            .input
+              color: var(--bal-color-light-blue-2)
+
+          &:active
+            bal-icon
+              +fillSvg(var(--bal-color-light-blue-3))
+            .input
+              color: var(--bal-color-light-blue-3)
+
+          +element(wrapper)
+            width: 80px
+
+            bal-input-group
+              background: var(--bal-color-transparent)
+              border: none
+
+              &:hover
+                background: var(--bal-color-transparent) !important
+
+              bal-icon
+                min-width: 12px !important
+
+        +element(logo)
+          display: flex
+          align-items: center
+
+      +element(links-container)
         display: flex
+        justify-content: space-between
         flex-wrap: wrap
-        padding-top: var(--bal-space-normal)
-        gap: .75rem
 
-        & > a
-          white-space: nowrap
-          &.is-current
-            text-decoration: underline
+        +tablet
+          flex-direction: column
 
-      +element(language-links)
-        padding-top: var(--bal-space-normal)
-        gap: .75rem
-        & > a
-          white-space: nowrap
-          &.is-current
-            text-decoration: underline
-            text-underline-offset: 4px
-            text-decoration-thickness: 2px
+        +desktop
+          flex-direction: row
 
-      +tablet
-        flex-wrap: nowrap
+        +element(legal-links)
+          display: flex
+          flex-wrap: wrap
+          align-items: center
+          gap: var(--bal-space-desktop-large)
+
+          a
+            font-size: var(--bal-size-small) !important
+
+          +mobile
+            flex-direction: column
+            justify-content: center
+            width: 100%
+            gap: var(--bal-space-normal)
+
+        +element(social-media-links)
+          align-items: center
+          gap: var(--bal-space-desktop-large)
+          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
+
+          +tablet-only
+            padding-bottom: var(--bal-space-large)
+
+          +mobile
+            padding-bottom: var(--bal-space-large)
+            justify-content: center
+            width: 100%
+            padding: var(--bal-space-normal) var(--bal-space-none) var(--bal-space-normal) var(--bal-space-none)
