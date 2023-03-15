@@ -10,7 +10,14 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalCheckboxChangeDetail = boolean
-  export type BalCheckboxChange = CustomEvent<BalCheckboxChangeDetail>
+  export interface BalCheckboxChange extends CustomEvent {
+    detail: BalCheckboxChangeDetail
+    target: HTMLBalCheckboxElement
+  }
+
   export type BalCheckboxGroupChangeDetail = any[]
-  export type BalCheckboxGroupChange = CustomEvent<BalCheckboxGroupChangeDetail>
+  export interface BalCheckboxGroupChange extends CustomEvent {
+    detail: BalCheckboxGroupChangeDetail
+    target: HTMLBalCheckboxElement
+  }
 }

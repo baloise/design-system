@@ -33,5 +33,8 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalPopoverChangeDetail = boolean
-  export type BalPopoverChange = CustomEvent<BalPopoverChangeDetail>
+  export interface BalPopoverChange extends CustomEvent {
+    detail: BalPopoverChangeDetail
+    target: HTMLBalPopoverElement
+  }
 }

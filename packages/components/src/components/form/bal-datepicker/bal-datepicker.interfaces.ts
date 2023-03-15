@@ -9,7 +9,14 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalDatepickerChangeDetail = string | undefined
-  export type BalDatepickerChange = CustomEvent<BalDatepickerChangeDetail>
+  export interface BalDatepickerChange extends CustomEvent {
+    detail: BalDatepickerChangeDetail
+    target: HTMLBalDatepickerElement
+  }
+
   export type BalDatepickerInputDetail = string | undefined
-  export type BalDatepickerInput = CustomEvent<BalDatepickerInputDetail>
+  export interface BalDatepickerInput extends CustomEvent {
+    detail: BalDatepickerInputDetail
+    target: HTMLBalDatepickerElement
+  }
 }

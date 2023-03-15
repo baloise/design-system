@@ -41,7 +41,7 @@ export class ListItemAccordionHead implements ComponentInterface, Loggable {
   /**
    * Emitted when the accordion state is changed
    */
-  @Event() balAccordionChange!: EventEmitter<boolean>
+  @Event() balAccordionChange!: EventEmitter<BalEvents.BalListAccordionChangeDetail>
 
   /**
    * EVENT BINDING

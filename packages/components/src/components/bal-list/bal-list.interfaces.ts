@@ -11,3 +11,11 @@ namespace BalProps {
   export type BalListContentAlignment = 'start' | 'center' | 'end' | 'space-between'
   export type BalListContentSpacing = 'none' | 'normal'
 }
+
+namespace BalEvents {
+  export type BalListAccordionChangeDetail = boolean
+  export interface BalListAccordionChange extends CustomEvent {
+    detail: BalListAccordionChangeDetail
+    target: HTMLBalListItemAccordionHeadElement
+  }
+}

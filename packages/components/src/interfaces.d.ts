@@ -6,11 +6,13 @@ declare namespace BalProps {}
 declare namespace BalEvents {}
 
 import './components/bal-accordion/bal-accordion.interfaces'
+import './components/bal-app/bal-app.interfaces'
 import './components/bal-badge/bal-badge.interfaces'
 import './components/bal-button/bal-button.interfaces'
 import './components/bal-card/bal-card.interfaces'
 import './components/bal-carousel/bal-carousel.interfaces'
 import './components/bal-close/bal-close.interfaces'
+import './components/bal-data/bal-data.interfaces'
 import './components/bal-heading/bal-heading.interfaces'
 import './components/bal-icon/bal-icon.interfaces'
 import './components/bal-list/bal-list.interfaces'

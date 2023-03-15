@@ -6,7 +6,6 @@
 namespace BalProps {
   export type BalButtonGroupPosition = 'right' | 'center' | ''
   export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
-
   export type BalButtonColor =
     | 'text'
     | 'primary'

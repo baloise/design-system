@@ -6,3 +6,11 @@
 namespace BalProps {
   export type BalNavbarInterface = 'app' | 'simple'
 }
+
+namespace BalEvents {
+  export type BalNavbarBrandNavigationChangeDetail = MouseEvent
+  export interface BalNavbarBrandNavigationChange extends CustomEvent {
+    detail: BalNavbarBrandNavigationChangeDetail
+    target: HTMLBalNavbarBrandElement
+  }
+}

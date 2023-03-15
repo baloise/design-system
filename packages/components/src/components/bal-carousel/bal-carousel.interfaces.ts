@@ -9,5 +9,8 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalCarouselChangeDetail = number | undefined
-  export type BalCarouselChange = CustomEvent<BalCarouselChangeDetail>
+  export interface BalCarouselChange extends CustomEvent {
+    detail: BalCarouselChangeDetail
+    target: HTMLBalCarouselElement
+  }
 }
