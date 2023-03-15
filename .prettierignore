@@ -44,4 +44,5 @@ packages/components/src/utils/constants/icons.constant.ts
 packages/css/css
 packages/components-vue/src/proxies.ts
 packages/icons/src/index.ts
+packages/maps/src/markers.ts
 packages/tokens/.tmp
