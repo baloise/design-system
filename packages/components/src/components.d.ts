@@ -597,10 +597,6 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
-         */
-        "inverted": boolean;
-        /**
           * @deprecated Define the locale of month and day names.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
@@ -1123,10 +1119,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * @deprecated If `true` this component can be placed on dark background
-         */
-        "inverted": boolean;
         /**
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
@@ -2288,10 +2280,6 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
-          * @deprecated sets text color to white for images and dark backgrounds (optional)
-         */
-        "inverted": boolean;
-        /**
           * If true the Baloise Shape is set
          */
         "shape": boolean;
@@ -2649,10 +2637,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * @deprecated If `true` this component can be placed on dark background
-         */
-        "inverted": boolean;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
@@ -3880,7 +3864,7 @@ declare namespace LocalJSX {
           * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode"?: BalMode;
-        "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
+        "onBalAppLoad"?: (event: BalAppCustomEvent<BalEvents.BalAppLoadDetail>) => void;
         "ready"?: boolean;
     }
     interface BalBadge {
@@ -4417,10 +4401,6 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
-         */
-        "inverted"?: boolean;
-        /**
           * @deprecated Define the locale of month and day names.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
@@ -4940,10 +4920,6 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * @deprecated If `true` this component can be placed on dark background
-         */
-        "inverted"?: boolean;
-        /**
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: BalProps.BalInputMask;
@@ -5256,7 +5232,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion state is changed
          */
-        "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
+        "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<BalEvents.BalListAccordionChangeDetail>) => void;
     }
     interface BalListItemContent {
         "contentAlignment"?: string;
@@ -5381,7 +5357,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -6151,10 +6127,6 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
-          * @deprecated sets text color to white for images and dark backgrounds (optional)
-         */
-        "inverted"?: boolean;
-        /**
           * If true the Baloise Shape is set
          */
         "shape"?: boolean;
@@ -6495,10 +6467,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * @deprecated If `true` this component can be placed on dark background
-         */
-        "inverted"?: boolean;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */

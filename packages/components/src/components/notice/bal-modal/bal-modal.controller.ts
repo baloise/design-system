@@ -4,6 +4,8 @@ import { getOverlay } from '../../../utils/overlays/overlays'
 import { ModalOptions } from './bal-modal.type'
 import { isDocumentDefined } from '../../../utils/browser'
 
+export * from './bal-modal.type'
+
 export class BalModalController {
   tag = 'bal-modal'
   create(options: ModalOptions): Promise<HTMLBalModalElement> {
