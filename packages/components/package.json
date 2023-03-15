@@ -76,7 +76,7 @@
     "@baloise/design-system-tokens": "12.8.2",
     "@baloise/web-app-utils": "3.10.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~3.0.1",
+    "@stencil/core": "~3.2.0",
     "big.js": "~6.2.1",
     "contactjs": "~2.1.6",
     "date-fns": "~2.29.3",

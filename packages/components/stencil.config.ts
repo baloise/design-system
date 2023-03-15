@@ -21,11 +21,6 @@ export const config: Config = {
     /**
      * Library outputs
      */
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-      generateTypeDeclarations: true,
-    },
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),

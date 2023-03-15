@@ -10,7 +10,7 @@ const log = require('./utils/log.js')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/components");
-const DIST_PATH = path.join(PACKAGE, 'dist')
+const DIST_PATH = path.join(PACKAGE, 'dist/types')
 
 async function main(){
   log.title('interfaces')
@@ -20,12 +20,12 @@ async function main(){
 
 async function adjustInterfacesReference(files){
   try {
-    await replace({
+    replace.sync({
       files: files,
       from: `/// <reference path="../../../../src/interfaces.d.ts" />`,
       to: `/// <reference path="../../../interfaces.d.ts" />`,
     })
-    await replace({
+    replace.sync({
       files: files,
       from: `/// <reference path="../../../src/interfaces.d.ts" />`,
       to: `/// <reference path="../../interfaces.d.ts" />`,
