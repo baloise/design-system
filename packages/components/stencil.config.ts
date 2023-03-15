@@ -10,7 +10,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    dynamicImportShim: true,
+    __deprecated__dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
     appendChildSlotFix: true,
@@ -24,6 +24,7 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      generateTypeDeclarations: true,
     },
     VueGenerator(),
     AngularGenerator(),
