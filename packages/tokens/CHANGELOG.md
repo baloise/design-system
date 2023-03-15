@@ -1,5 +1,21 @@
 # @baloise/design-system-tokens
 
+## 12.9.0
+
+### Patch Changes
+
+- [#1198](https://github.com/baloise-incubator/design-system/pull/1198) [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c) Thanks [@hirsch88](https://github.com/hirsch88)! - deprecated radius token **small** and **x-large**. Please use normal for small and use rounded for x-large.
+
+- [#1198](https://github.com/baloise-incubator/design-system/pull/1198) [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c) Thanks [@hirsch88](https://github.com/hirsch88)! - deprecate container blog-page. Please use default container size.
+
+  Just use `<div class="container"></div>` instead of `<div class="container is-blog-page"></div>`
+
+- [#1198](https://github.com/baloise-incubator/design-system/pull/1198) [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c) Thanks [@hirsch88](https://github.com/hirsch88)! - adding missing inverted text and border color tokens.
+
+  - `primary-light` was added for disabled text on dark background
+  - `primary-light` was added for disabled border lines on dark background
+  - `white` was added as a primary border line color on dark background
+
 ## 12.8.2
 
 ### Patch Changes

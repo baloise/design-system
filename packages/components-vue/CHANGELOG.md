@@ -1,5 +1,16 @@
 # @baloise/design-system-components-vue
 
+## 12.9.0
+
+### Minor Changes
+
+- [#1167](https://github.com/baloise-incubator/design-system/pull/1167) [`855e6cbf5`](https://github.com/baloise-incubator/design-system/commit/855e6cbf5f23a822ac6c3e59a528154730ae6913) Thanks [@JasperDeLanghe](https://github.com/JasperDeLanghe)! - new form component bal-time-input added
+
+### Patch Changes
+
+- Updated dependencies [[`47c1e79a2`](https://github.com/baloise-incubator/design-system/commit/47c1e79a2cf955948a08acf6fbae936a08d44479), [`c89fd1312`](https://github.com/baloise-incubator/design-system/commit/c89fd13125a928195442e6ee22e28632d66dd95d), [`c2db6927d`](https://github.com/baloise-incubator/design-system/commit/c2db6927dfe29c2942d6dacb78a39d8930364064), [`855e6cbf5`](https://github.com/baloise-incubator/design-system/commit/855e6cbf5f23a822ac6c3e59a528154730ae6913), [`8a0dbc5af`](https://github.com/baloise-incubator/design-system/commit/8a0dbc5af1347904a6d79e317408ebea056aac1a), [`fff4c722a`](https://github.com/baloise-incubator/design-system/commit/fff4c722a0993ef59c088157286ec1114fc1fde1)]:
+  - @baloise/design-system-components@12.9.0
+
 ## 12.8.2
 
 ### Patch Changes
