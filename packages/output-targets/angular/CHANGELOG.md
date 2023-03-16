@@ -1,5 +1,7 @@
 # @baloise/design-system-output-target-angular
 
+## 12.9.0
+
 ## 12.8.2
 
 ## 12.8.1

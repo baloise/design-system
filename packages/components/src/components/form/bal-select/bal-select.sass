@@ -39,7 +39,7 @@
     min-height: 3rem
     +modifier(focused)
       border-color: var(--bal-color-primary)
-    &:not(#{&}--disabled):not(#{&}--invalid):hover
+    &:not(#{&}--disabled):not(#{&}--invalid):not(#{&}--inverted-footer):hover
       border-color: var(--bal-color-border-grey)
       background-color: var(--bal-color-grey-1)
       .bal-select__control__input
@@ -58,6 +58,20 @@
         user-select: none !important
         pointer-events: none !important
         color: var(--bal-color-text-grey)
+    +modifier(inverted-footer)
+      border: none
+      background-color: var(--bal-color-transparent) !important
+      background: var(--bal-color-transparent) !important
+      padding-right: var(--bal-space-none)
+      &:hover
+        background-color: var(--bal-color-transparent) !important
+
+      .input
+        color: var(--bal-color-text-white)
+        background-color: var(--bal-color-transparent) !important
+        &:hover
+          background-color: var(--bal-color-transparent) !important
+
     //
     // trigger icon on the right
     +element(icon)

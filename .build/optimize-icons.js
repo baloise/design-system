@@ -119,6 +119,14 @@ const main = async () => {
     'balIconTrash',
     'balIconUpload',
     'balIconMenuBars',
+    'balIconFacebook',
+    'balIconInstagram',
+    'balIconXing',
+    'balIconLinkedin',
+    'balIconTwitter',
+    'balIconYoutube',
+    'balIconWeb',
+    'balIconCaretUp',
   ]
 
   contents.forEach((value, key) => {

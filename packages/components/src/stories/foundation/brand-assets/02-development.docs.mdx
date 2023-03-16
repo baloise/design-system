@@ -32,7 +32,8 @@ Add a new script called **copy:favicons** and adjust the second path to your app
 
 ```json
 "scripts": {
-  "postinstall": "npm run copy:favicons",
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:favicons",
   "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
 }
 ```
@@ -65,5 +66,48 @@ The shape can be created with our [component](?path=/docs/components-shape--basi
 <Canvas withSource="open">
   <Story id="foundation-brand-assets-development--shape" />
 </Canvas>
+
+<span id="story--foundation-brand-assets-development--maps" style={{ opacity: 0 }}></span>
+
+## Maps
+
+The map markers and styles are provided in a separate package **@baloise/design-system-maps**.
+
+First install our maps package
+
+```
+npm install @baloise/design-system-maps
+npm install @types/googlemaps --save-dev
+```
+
+### Styles
+
+After installing import the **balMapTypeStyles** into your Google Maps config object.
+
+```typescript
+import { balMapTypeStyles } '@baloise/design-system-maps'
+
+const myMap = new google.maps.map(myMapElement, {
+  ...
+  styles: balMapTypeStyles
+})
+```
+
+### Markers
+
+To set a marker import the svg `balMapMarkerDefault` and pass it as the icon url.
+
+```typescript
+import { balMapMarkerDefault } '@baloise/design-system-maps'
+
+new google.maps.Marker({
+  position: { lat: 36.6163, lng: -100.61 },
+  map,
+  icon: {
+    url: balMapMarkerDefault,
+  },
+  title: 'My Marker',
+})
+```
 
 <bal-doc-github link="/stories/foundation/brand-assets/02-development.docs.mdx"></bal-doc-github>

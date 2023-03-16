@@ -124,6 +124,7 @@ packages/components-angular/src/directives/
 
 packages/tokens/src/tokens.ts
 packages/icons/src/icons.json
+packages/maps/src/markers.json
 packages/css/css/
 packages/css/assets/fonts/
 

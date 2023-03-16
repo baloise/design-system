@@ -1,5 +1,80 @@
 # @baloise/design-system-components
 
+## 12.9.0
+
+### Minor Changes
+
+- [#1206](https://github.com/baloise-incubator/design-system/pull/1206) [`47c1e79a2`](https://github.com/baloise-incubator/design-system/commit/47c1e79a2cf955948a08acf6fbae936a08d44479) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add social media links in footer component
+
+- [#1167](https://github.com/baloise-incubator/design-system/pull/1167) [`855e6cbf5`](https://github.com/baloise-incubator/design-system/commit/855e6cbf5f23a822ac6c3e59a528154730ae6913) Thanks [@JasperDeLanghe](https://github.com/JasperDeLanghe)! - new form component bal-time-input added
+
+- [#1192](https://github.com/baloise-incubator/design-system/pull/1192) [`8a0dbc5af`](https://github.com/baloise-incubator/design-system/commit/8a0dbc5af1347904a6d79e317408ebea056aac1a) Thanks [@hirsch88](https://github.com/hirsch88)! - We introduced a new way of adding a options to the bal-radio-group and bal-checkbox-group
+  by introducing the `options` property in which options can be passed using a Javascript.
+
+  **bal-radio-group**
+
+  ```html
+  <bal-radio-group [options]="options"></bal-radio-group>
+  ```
+
+  ```typescript
+  import { newBalRadioOption } from '@baloise/design-system-components'
+
+  @Component({
+    selector: 'app-example-component',
+    templateUrl: './example-component.component.html',
+  })
+  export class ExampleComponent {
+    options = [
+      newBalRadioOption({ label: 'Label 1', value: '1' }),
+      newBalRadioOption({
+        label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+        value: '2',
+      }),
+    ]
+  }
+  ```
+
+  **bal-checkbox-group**
+
+  To use the `bal-checkbox-group` with options we also need to set `control` attribute to true.
+
+  ```html
+  <bal-checkbox-group control [options]="options"></bal-checkbox-group>
+  ```
+
+  ```typescript
+  import { newBalCheckboxOption } from '@baloise/design-system-components'
+
+  @Component({
+    selector: 'app-example-component',
+    templateUrl: './example-component.component.html',
+  })
+  export class ExampleComponent {
+    options = [
+      newBalCheckboxOption({ value: '1', label: 'Label 1' }),
+      newBalCheckboxOption({
+        value: '2',
+        label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+      }),
+    ]
+  }
+  ```
+
+- [#1185](https://github.com/baloise-incubator/design-system/pull/1185) [`fff4c722a`](https://github.com/baloise-incubator/design-system/commit/fff4c722a0993ef59c088157286ec1114fc1fde1) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - added modal property backdropDismiss so the user can decide if modal can be closed on backdrop click or not
+
+### Patch Changes
+
+- [#1203](https://github.com/baloise-incubator/design-system/pull/1203) [`c89fd1312`](https://github.com/baloise-incubator/design-system/commit/c89fd13125a928195442e6ee22e28632d66dd95d) Thanks [@hirsch88](https://github.com/hirsch88)! - improve build config to support stackblitz with angular
+
+- [#1195](https://github.com/baloise-incubator/design-system/pull/1195) [`c2db6927d`](https://github.com/baloise-incubator/design-system/commit/c2db6927dfe29c2942d6dacb78a39d8930364064) Thanks [@hirsch88](https://github.com/hirsch88)! - fix for bal-select usage in modal with selectionOptional
+
+- Updated dependencies [[`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c)]:
+  - @baloise/design-system-tokens@12.9.0
+  - @baloise/design-system-css@12.9.0
+  - @baloise/design-system-fonts@12.9.0
+  - @baloise/design-system-icons@12.9.0
+
 ## 12.8.2
 
 ### Patch Changes

@@ -85,6 +85,7 @@
     "@storybook/vue3": "~6.5.15",
     "@types/big.js": "~6.1.6",
     "@types/chai": "~4.3.4",
+    "@types/googlemaps": "^3.43.3",
     "@types/jquery": "~3.5.6",
     "@types/lodash.camelcase": "~4.3.6",
     "@types/lodash.capitalize": "~4.2.6",

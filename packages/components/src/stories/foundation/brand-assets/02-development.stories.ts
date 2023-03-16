@@ -46,3 +46,21 @@ Shape.parameters = {
   ),
   controls: { exclude: [] },
 }
+
+export const Maps = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: ``,
+})
+Maps.args = {}
+Maps.parameters = {
+  ...sourceCode(
+    () => ({
+      template: ``,
+      components: [],
+    }),
+    Maps.args,
+    {},
+  ),
+  controls: { exclude: [] },
+}

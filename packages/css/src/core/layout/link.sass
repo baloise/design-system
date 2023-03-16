@@ -44,3 +44,19 @@ a.is-link:not(.button)
       text-underline-offset: 4px
       color: var(--bal-color-info-3)
       +fillSvg(var(--bal-color-info-3))
+
+  &.is-light
+    color: var(--bal-color-white)
+    font-weight: var(--bal-weight-regular)
+    font-family: var(--bal-font-family-text)
+    text-decoration: none
+    +fillSvg(var(--bal-color-white))
+
+    &:hover
+      color: var(--bal-color-light-blue-2)
+
+    &:focus-visible
+      @extend %focus-inverted-shadow
+
+    &:active
+      color: var(--bal-color-light-blue-3)

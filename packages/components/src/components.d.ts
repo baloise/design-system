@@ -957,6 +957,10 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+        /**
+          * If `true` the social media links will be shown.
+         */
+        "showSocialMedia": boolean;
     }
     interface BalForm {
         /**
@@ -4779,6 +4783,10 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+        /**
+          * If `true` the social media links will be shown.
+         */
+        "showSocialMedia"?: boolean;
     }
     interface BalForm {
         /**
