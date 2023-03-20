@@ -32,7 +32,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { BrowserModule, By } from '@angular/platform-browser'
 import { BalCoreModule, BalInputModule } from '@baloise/design-system-components-angular'
-import { waitForComponent } from '@baloise/design-system-components'
+import { waitForDesignSystem } from '@baloise/design-system-components'
 import { AppComponent } from './app.component'
 
 describe('AppComponent', () => {
@@ -48,9 +48,9 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent)
     fixture.detectChanges()
 
-    // lets wait until all the web-components from this element and
-    // below are ready and rendered
-    await waitForComponent(fixture.nativeElement)
+    // waits until the Design System has been initialized and the async
+    // web components have been rendered
+    await waitForDesignSystem(fixture.nativeElement)
 
     const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
     expect(input.nativeElement.value).toContain('My Value')
@@ -58,7 +58,9 @@ describe('AppComponent', () => {
 })
 ```
 
-Use the `waitForComponent` util function to wait until the web-component tree has fully rendered.
+Use the `waitForDesignSystem` util function to wait until the web-component tree has fully rendered.
+
+To wait after a user interaction use the util function `waitForComponent`.
 
 ## Component Testing with Cypress
 

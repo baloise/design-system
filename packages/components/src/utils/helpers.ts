@@ -1,6 +1,25 @@
 import { EventEmitter } from '@stencil/core'
 import { isWindowDefined } from './browser'
 import { BalConfig } from './config'
+import {
+  balIconCaretDown,
+  balIconCaretLeft,
+  balIconCheck,
+  balIconClose,
+  balIconDate,
+  balIconDocument,
+  balIconEdit,
+  balIconInfoCircle,
+  balIconMenuBars,
+  balIconMinus,
+  balIconNavGoDown,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconNavGoUp,
+  balIconPlus,
+  balIconTrash,
+  balIconUpload,
+} from './constants/icons.constant'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -75,7 +94,7 @@ export const getAppRoot = (doc: Document) => {
  * el.componentOnReady yourself.
  */
 export const componentOnReady = (el: any, callback: any) => {
-  if (el.componentOnReady) {
+  if (el.componentOnReady !== null && el.componentOnReady !== undefined) {
     el.componentOnReady().then((resolvedEl: any) => callback(resolvedEl))
   } else {
     raf(() => callback(el))
@@ -180,17 +199,40 @@ export const removeEventListener = (el: any, eventName: string, callback: any, o
 }
 
 export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
-  const config: any = { animated: false, icons: {}, ..._config }
+  const config: any = {
+    animated: false,
+    icons: {
+      balIconClose,
+      balIconInfoCircle,
+      balIconPlus,
+      balIconMinus,
+      balIconEdit,
+      balIconTrash,
+      balIconNavGoLeft,
+      balIconNavGoRight,
+      balIconNavGoDown,
+      balIconNavGoUp,
+      balIconCaretLeft,
+      balIconCaretDown,
+      balIconCheck,
+      balIconDate,
+      balIconDocument,
+      balIconUpload,
+      balIconMenuBars,
+    },
+    ..._config,
+  }
   const element = el as any
-  if (element) {
+  if (element !== null && element !== undefined) {
+    await deepReady(element, true)
+
     const webComponents = Array.prototype.slice
       .call(element.querySelectorAll('*'))
       .filter(el => el.tagName.match(/^bal/i))
 
-    await Promise.all(webComponents.map(c => c.componentOnReady()))
     await Promise.all(
       webComponents.map(c => {
-        if (c.configChanged) {
+        if (c.configChanged !== null && c.configChanged !== undefined) {
           return c.configChanged(config)
         }
       }),
