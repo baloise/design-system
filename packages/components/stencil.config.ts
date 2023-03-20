@@ -22,8 +22,8 @@ export const config: Config = {
      * Library outputs
      */
     {
-      type: 'dist',
-      esmLoaderPath: '../loader',
+      type: 'docs-json',
+      file: './public/assets/data/components.json',
     },
     VueGenerator(),
     AngularGenerator(),

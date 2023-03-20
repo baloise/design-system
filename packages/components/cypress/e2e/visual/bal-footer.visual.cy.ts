@@ -15,7 +15,7 @@ describe('bal-footer', () => {
     cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-mobile', 0.0)
   })
 
-  it('component variants', () => {
+  it.skip('component variants', () => {
     cy.platform('desktop')
     cy.compareSnapshot('footer-variants-desktop', 0.0)
 

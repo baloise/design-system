@@ -33,12 +33,12 @@ export const StencilBaseConfig: Config = {
       includeGlobalScripts: false,
     },
     {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     {
-      type: 'docs-json',
-      file: './public/assets/data/components.json',
+      type: 'docs-vscode',
+      file: 'vscode-data.json',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
@@ -149,6 +149,10 @@ export const StencilBaseConfig: Config = {
         async buildStart() {
           const styleFiles = await fg(resolve(__dirname, './src/**/*.sass'))
           for (const file of styleFiles) {
+            this.addWatchFile(file)
+          }
+          const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
+          for (const file of templateFiles) {
             this.addWatchFile(file)
           }
         },
