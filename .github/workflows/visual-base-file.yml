@@ -5,8 +5,8 @@ on:
     inputs:
       specFile:
         description: 'name of the visual test file'
-          required: true
-          type: string
+        required: true
+        type: string
 
 jobs:
   CreateBaseImages:
