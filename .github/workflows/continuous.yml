@@ -313,7 +313,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-css
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

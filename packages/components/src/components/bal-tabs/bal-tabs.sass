@@ -144,12 +144,6 @@
           position: relative
           hyphens: auto
           gap: 4px
-        &:hover
-          color: var(--bal-color-text-light-blue)
-          +fillSvg(var(--bal-color-light-blue-5))
-        &:active
-          color: var(--bal-color-text-primary-dark)
-          +fillSvg(var(--bal-color-primary-6))
         +modifier(icon-horizontal)
           flex-direction: row
         +touch
@@ -157,37 +151,6 @@
           padding: 1rem
           +modifier(icon-horizontal)
             flex-direction: column
-        +modifier(inverted)
-          color: var(--bal-color-text-primary-inverted)
-          +fillSvg(var(--bal-color-primary-inverted))
-          &:hover
-            color: var(--bal-color-light-blue-2)
-            +fillSvg(var(--bal-color-light-blue-2))
-          &:active
-            color: var(--bal-color-text-info)
-            +fillSvg(var(--bal-color-info))
-          &:focus-visible
-            &:not(:active)
-              @extend %focus-inverted-inset-shadow
-        +modifier(context-navbar)
-          +touch
-            color: var(--bal-color-text-primary)
-            +fillSvg(var(--bal-color-primary))
-            &:hover
-              color: var(--bal-color-text-light-blue)
-              +fillSvg(var(--bal-color-light-blue-5))
-            &:active
-              color: var(--bal-color-text-primary-dark)
-              +fillSvg(var(--bal-color-primary-6))
-        +modifier(disabled)
-          color: var(--bal-color-text-grey)
-          cursor: default
-          .bal-icon
-            +fillSvg(var(--bal-color-text-grey))
-          &:hover, &:focus, &:active
-            color: var(--bal-color-text-grey)
-            .bal-icon
-              +fillSvg(var(--bal-color-text-grey))
         +modifier(fullwidth)
           flex-grow: 1
           flex-basis: 0
@@ -296,3 +259,45 @@
   display: none
   +modifier(active)
     display: block
+
+a.bal-tabs__tabs__item__button
+  &:hover
+    color: var(--bal-color-text-light-blue)
+    +fillSvg(var(--bal-color-light-blue-5))
+  &:active
+    color: var(--bal-color-text-primary-dark)
+    +fillSvg(var(--bal-color-primary-6))
+
+a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--inverted
+  color: var(--bal-color-text-primary-inverted)
+  +fillSvg(var(--bal-color-primary-inverted))
+  &:hover
+    color: var(--bal-color-light-blue-2)
+    +fillSvg(var(--bal-color-light-blue-2))
+  &:active
+    color: var(--bal-color-text-info)
+    +fillSvg(var(--bal-color-info))
+  &:focus-visible
+    &:not(:active)
+      @extend %focus-inverted-inset-shadow
+
+a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--context-navbar
+  +touch
+    color: var(--bal-color-text-primary)
+    +fillSvg(var(--bal-color-primary))
+    &:hover
+      color: var(--bal-color-text-light-blue)
+      +fillSvg(var(--bal-color-light-blue-5))
+    &:active
+      color: var(--bal-color-text-primary-dark)
+      +fillSvg(var(--bal-color-primary-6))
+
+a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--disabled
+  color: var(--bal-color-text-grey)
+  cursor: default
+  .bal-icon
+    +fillSvg(var(--bal-color-text-grey))
+  &:hover, &:focus, &:active
+    color: var(--bal-color-text-grey)
+    .bal-icon
+      +fillSvg(var(--bal-color-text-grey))

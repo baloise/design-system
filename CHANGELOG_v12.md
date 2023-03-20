@@ -24,7 +24,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **select:** if empty string value set empty array for the rawValue ([595e110](https://github.com/baloise-incubator/design-system/commit/595e11002ae9d8b3a28d50c11fac92a6e33206ce))
 * **select:** improve hover style ([4ce3676](https://github.com/baloise-incubator/design-system/commit/4ce3676dc0c4edbef20608bc4dae72a170ab1e99))
 
-
 ### Performance Improvements
 
 * **popover:** reduce rendering by using componentWillLoad ([a99648f](https://github.com/baloise-incubator/design-system/commit/a99648fcc35f0683785266f87c6d2b66ba6950b9))

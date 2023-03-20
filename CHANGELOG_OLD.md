@@ -21,13 +21,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **form:** add new form component with scroll to first invalid field ([2e8b07a](https://github.com/baloise/design-system/commit/2e8b07acc507bffdefaa0c1e24f5eee3e6455b53))
 
-
 ## [10.14.0](https://github.com/baloise/design-system/compare/v10.13.5...v10.14.0) (2022-08-16)
 
 ### Features
 
 * **tabs:** add is-hidden property to bal-tab-item ([c0e7200](https://github.com/baloise/design-system/commit/c0e720064bd12e8c3cc13a0d89141503e9ed73cd))
-
 
 ### Bug Fixes
 
