@@ -1,5 +1,5 @@
 describe('bal-field', () => {
-  beforeEach(() => cy.page('/components/form/bal-field/test/bal-field.visual.html'))
+  beforeEach(() => cy.visit('/components/form/bal-field/test/bal-field.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

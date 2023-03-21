@@ -1,6 +1,7 @@
 describe('bal-input-stepper', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-input-stepper/test/bal-input-stepper.cy.html')
+    cy.visit('/components/form/bal-input-stepper/test/bal-input-stepper.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should have value', () => {

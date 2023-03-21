@@ -1,5 +1,8 @@
 describe('bal-button', () => {
-  beforeEach(() => cy.page('/components/bal-button/test/bal-button.cy.html'))
+  beforeEach(() => {
+    cy.visit('/components/bal-button/test/bal-button.cy.html')
+    cy.waitForDesignSystem()
+  })
 
   it('should contain label', () => {
     cy.getByTestId('primary-button').contains('Primary')

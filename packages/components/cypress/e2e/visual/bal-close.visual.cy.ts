@@ -1,5 +1,5 @@
 describe('bal-close', () => {
-  beforeEach(() => cy.page('/components/bal-close/test/bal-close.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-close/test/bal-close.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.getByTestId('basic').compareSnapshot('close-basic', 0.0)

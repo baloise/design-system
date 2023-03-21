@@ -8,7 +8,7 @@ describe('bal-select', () => {
   function visualSelectTest(platform: 'mobile' | 'desktop') {
     describe(platform, () => {
       beforeEach(() => {
-        cy.page('/components/form/bal-select/test/bal-select.visual.html').platform(platform)
+        cy.visit('/components/form/bal-select/test/bal-select.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('basic component', () => {
@@ -41,7 +41,9 @@ describe('bal-select', () => {
   function visualSelectMultipleTest(platform: 'mobile' | 'desktop') {
     describe(platform, () => {
       beforeEach(() => {
-        cy.page('/components/form/bal-select/test/bal-select-multiple.visual.html').platform(platform)
+        cy.visit('/components/form/bal-select/test/bal-select-multiple.visual.html')
+          .platform(platform)
+          .waitForDesignSystem()
       })
 
       it('basic multiple component', () => {

@@ -1,6 +1,7 @@
 describe('bal-number-input', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-number-input/test/bal-number-input.cy.html')
+    cy.visit('/components/form/bal-number-input/test/bal-number-input.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should have value and typeable', () => {

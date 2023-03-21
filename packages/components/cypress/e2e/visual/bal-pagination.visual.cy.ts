@@ -1,5 +1,5 @@
 describe('bal-pagination', () => {
-  beforeEach(() => cy.page('/components/bal-pagination/test/bal-pagination.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-pagination/test/bal-pagination.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')
@@ -16,7 +16,7 @@ describe('bal-pagination', () => {
   })
 
   it('basic component mobile', () => {
-    cy.platform('mobile').wait(400)
+    cy.platform('mobile')
     cy.getByTestId('basic').compareSnapshot('pagination-basic-mobile', 0.0)
     cy.getByTestId('small').compareSnapshot('pagination-small-mobile', 0.0)
     cy.getByTestId('small-with-dots').compareSnapshot('pagination-small-with-dots-mobile', 0.0)

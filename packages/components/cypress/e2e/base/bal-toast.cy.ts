@@ -1,5 +1,8 @@
 describe('bal-toast', () => {
-  beforeEach(() => cy.page('/components/notice/bal-toast/test/bal-toast.cy.html'))
+  beforeEach(() => {
+    cy.visit('/components/notice/bal-toast/test/bal-toast.cy.html')
+    cy.waitForDesignSystem()
+  })
 
   it('should navigate to Toast page and open Toast', () => {
     cy.getByTestId('toast').click()

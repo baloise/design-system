@@ -64,3 +64,18 @@ Cypress.Commands.add(
     return cy.wrapComponent(subject, o).should('have.class', `bal-tabs__steps__item--${state}`)
   },
 )
+
+Cypress.Commands.add(
+  'balTabItemShouldBeActive',
+  {
+    prevSubject: true,
+  },
+  (subject, active = true, options) => {
+    log('balTabItemShouldBeActive', '', subject, options)
+    const o = wrapOptions(options)
+    if (active) {
+      return cy.wrapComponent(subject, o).should('have.class', `bal-tabs__steps__item--active`)
+    }
+    return cy.wrapComponent(subject, o).should('not.have.class', `bal-tabs__steps__item--active`)
+  },
+)

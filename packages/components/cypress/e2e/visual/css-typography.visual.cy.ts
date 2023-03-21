@@ -1,5 +1,5 @@
 describe('css-typography.visual', () => {
-  beforeEach(() => cy.page('/test/css-typography.visual.html').platform('desktop'))
+  beforeEach(() => cy.visit('/test/css-typography.visual.html').platform('desktop').waitForDesignSystem())
 
   it('basic', () => {
     cy.getByTestId('display').compareSnapshot('css-typography-display', 0.0)

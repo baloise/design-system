@@ -1,6 +1,7 @@
 describe('bal-radio', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-radio/test/bal-radio.cy.html')
+    cy.visit('/components/form/bal-radio/test/bal-radio.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should select the 1st radio', () => {

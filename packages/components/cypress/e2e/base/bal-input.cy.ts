@@ -1,6 +1,7 @@
-describe('bal-textarea', () => {
+describe('bal-input', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-textarea/test/bal-textarea.cy.html')
+    cy.visit('/components/form/bal-input/test/bal-input.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should have value and typeable', () => {
@@ -10,7 +11,7 @@ describe('bal-textarea', () => {
   })
 
   it('should have placeholder', () => {
-    cy.getByTestId('basic').should('have.attr', 'placeholder', 'Enter your comment')
+    cy.getByTestId('basic').should('have.attr', 'placeholder', 'Enter your firstname')
     cy.getByTestId('basic').should('not.have.attr', 'placeholder', 'Enter your lastname')
   })
 

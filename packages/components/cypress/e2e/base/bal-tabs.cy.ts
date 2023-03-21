@@ -2,7 +2,10 @@ import { testOnPlatforms } from '../../../../testing/src'
 
 describe('bal-tabs', () => {
   testOnPlatforms(['mobile', 'desktop'], platform => {
-    beforeEach(() => cy.page('/components/bal-tabs/test/bal-tabs.cy.html'))
+    beforeEach(() => {
+      cy.visit('/components/bal-tabs/test/bal-tabs.cy.html')
+      cy.waitForDesignSystem()
+    })
 
     it('should have content', () => {
       cy.getByTestId('tabs').spyEvent('balChange')
@@ -24,6 +27,13 @@ describe('bal-tabs', () => {
         cy.getByTestId('steps').balTabsFindItems().eq(1).balTabItemShouldHaveState('failed')
         cy.getByTestId('steps').balTabsFindItems().eq(2).balTabItemShouldHaveState('active')
         cy.getByTestId('steps').balTabsFindItems().last().balTabItemShouldHaveState('disabled')
+      })
+
+      it('should be active or not', () => {
+        cy.getByTestId('steps').balTabsFindItems().first().balTabItemShouldBeActive(false)
+        cy.getByTestId('steps').balTabsFindItems().eq(1).balTabItemShouldBeActive(false)
+        cy.getByTestId('steps').balTabsFindItems().eq(2).balTabItemShouldBeActive()
+        cy.getByTestId('steps').balTabsFindItems().last().balTabItemShouldBeActive(false)
       })
 
       it('should have labels on desktop and on mobile they should be hidden', () => {

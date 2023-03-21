@@ -1,6 +1,6 @@
 describe('bal-stage', () => {
   it('basic component', () => {
-    cy.page('/components/bal-stage/test/bal-stage.visual.html')
+    cy.visit('/components/bal-stage/test/bal-stage.visual.html').waitForDesignSystem()
 
     cy.platform('desktop')
     cy.compareSnapshot('stage-basic', 0.0)
@@ -13,7 +13,7 @@ describe('bal-stage', () => {
   })
 
   it('large stage', () => {
-    cy.page('/components/bal-stage/test/bal-stage.large.visual.html')
+    cy.visit('/components/bal-stage/test/bal-stage.large.visual.html').waitForDesignSystem()
 
     cy.platform('desktop')
     cy.compareSnapshot('stage-large', 0.0)

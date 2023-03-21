@@ -165,6 +165,14 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
   return unregister
 }
 
+export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  return el.addEventListener(eventName, callback, opts)
+}
+
+export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  return el.removeEventListener(eventName, callback, opts)
+}
+
 export const shallowReady = (el: any | undefined): Promise<any> => {
   if (el) {
     return new Promise(resolve => componentOnReady(el, resolve))
@@ -187,15 +195,8 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
 
 export const waitForComponent = async (el: HTMLElement | null) => {
   await deepReady(el, true)
-  await wait(20)
-}
-
-export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  return el.addEventListener(eventName, callback, opts)
-}
-
-export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  return el.removeEventListener(eventName, callback, opts)
+  await waitAfterFramePaint()
+  await waitAfterIdleCallback()
 }
 
 export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
@@ -238,5 +239,29 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       }),
     )
   }
-  await wait(20)
+  await waitAfterFramePaint()
+  await waitAfterIdleCallback()
+}
+
+export const waitAfterFramePaint = () => {
+  return new Promise(resolve => raf(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitAfterIdleCallback = () => {
+  return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
+}
+
+export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
+  if (isWindowDefined() && 'MessageChannel' in window) {
+    const messageChannel = new (window as any).MessageChannel()
+    messageChannel.port1.onmessage = callback
+    messageChannel.port2.postMessage(undefined)
+  } else {
+    setTimeout(callback, 32)
+  }
+}
+
+export const waitForRequestIdleCallback = () => {
+  console.log('DEPRECATED - use waitAfterIdleCallback instead')
+  return waitAfterIdleCallback
 }

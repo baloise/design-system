@@ -8,31 +8,9 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('page', (url: string) => {
-  Cypress.log({
-    type: 'parent',
-    displayName: 'page',
-    message: url,
-  })
-
-  cy.visit(url, { log: false })
-
-  // wait until the custom fonts are loaded and ready
-  cy.document().then(document => document.fonts.ready)
-
-  cy.get('bal-app')
-    // wait for all stencil components to be fully rendered
-    .waitForComponents({ log: false })
-    // wait that the Design System has fully initialized
-    .invoke('attr', 'ready')
-    .should('eq', '', { log: false })
-    .wait(100, { log: false })
-
-  cy.disableAnimation()
-})
-
 Cypress.Commands.add('pageA11y', (url: string) => {
-  cy.page(url)
+  cy.visit(url)
+  cy.waitForDesignSystem()
   cy.injectAxe()
 })
 

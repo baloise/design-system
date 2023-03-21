@@ -50,7 +50,7 @@ describe('AppComponent', () => {
 
     // waits until the Design System has been initialized and the async
     // web components have been rendered
-    await waitForDesignSystem(fixture.nativeElement)
+    await waitForDesignSystem()
 
     const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
     expect(input.nativeElement.value).toContain('My Value')
@@ -61,6 +61,30 @@ describe('AppComponent', () => {
 Use the `waitForDesignSystem` util function to wait until the web-component tree has fully rendered.
 
 To wait after a user interaction use the util function `waitForComponent`.
+
+```typescript
+button.click()
+await fixture.whenStable()
+await waitForComponent(fixture.nativeElement)
+
+// now we can do the assertions
+expect(component.onEditButtonClick).toHaveBeenCalled()
+```
+
+#### Utils
+
+The Design System provides some utilities to write stable unit tests. All functions return a promise and can be resolved with `await`.
+
+```typescript
+await waitForDesignSystem()
+```
+
+| Util                                             | Description                                                                                                                                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `waitForDesignSystem(config?: BalConfig \| any)` | waits until the Design System has initialized and disables all animations. Moreover, it waits unit all components are ready and the first print is done. |
+| `waitForComponent(el: HTMLElement)`              | Waits until the component and his nested components has rendered.                                                                                        |
+| `waitAfterFramePaint()`                          | Waits until the browser has updated the DOM                                                                                                              |
+| `waitAfterIdleCallback()`                        | Waits until the browser goes in idle mode.                                                                                                               |
 
 ## Component Testing with Cypress
 
@@ -166,16 +190,16 @@ Now the adjusted commands from the Baloise Design System should be available in 
 Further documentations for each component commands is documented on the components page.
 
 ```typescript
-import { byTestId, selectors } from '@baloise/design-system-nest-testing'
+import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
 
   it('should ...', () => {
-    cy.get(accordion).find(selectors.accordion.header).contains('Show more')
+    cy.get(accordion).find(selectors.accordion.button).contains('Show more')
     cy.get(accordion).balAccordionIsClosed()
     cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(accordion).find(selectors.accordion.header).contains('Show less')
+    cy.get(accordion).find(selectors.accordion.button).contains('Show less')
     cy.get(accordion).find(selectors.accordion.content).contains('My Content')
     cy.get(accordion).click().balAccordionIsClosed()
   })
@@ -214,11 +238,11 @@ describe('Button', () => {
 For each component we define internally some data-testid selectors.
 
 ```typescript
-import { selectors } from '@baloise/design-system-nest-testing'
+import { selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
   it('should ...', () => {
-    cy.getByTestId('accordion').find(selectors.accordion.header).contains('Show more')
+    cy.getByTestId('accordion').find(selectors.accordion.button).contains('Show more')
     cy.getByTestId('accordion').find(selectors.accordion.content).contains('My Content')
   })
 })
@@ -229,33 +253,20 @@ describe('Accordion', () => {
 #### getByTestId
 
 Gets the element / component by the attribute `data-testid` and waits until fully loaded.
+Internally it calls `waitForComponents`.
 
 ```typescript
 cy.getByTestId('button')
 ```
 
-#### disableAnimation
+#### waitForDesignSystem
 
-Disables the animation of all the components.
-
-```typescript
-cy.disableAnimation()
-```
-
-#### getComponent
-
-Gets the element / component by jquery selector and waits until fully loaded.
+Waits until the custom font has loaded, Design System is initialized, web-components are ready
+and first browser print has fulfilled. Moreover, it disables all the animations for more stable
+and faster tests.
 
 ```typescript
-cy.getComponent('bal-button')
-```
-
-#### wrapComponent
-
-Wraps the element / component and waits until fully loaded.
-
-```typescript
-cy.wrapComponent($el)
+cy.waitForDesignSystem()
 ```
 
 #### waitForComponents

@@ -1,6 +1,7 @@
 describe('bal-snackbar', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/notice/bal-snackbar/test/bal-snackbar.cy.html')
+    cy.visit('/components/notice/bal-snackbar/test/bal-snackbar.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should open snackbars and check their content', () => {

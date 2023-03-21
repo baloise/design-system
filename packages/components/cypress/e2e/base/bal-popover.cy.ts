@@ -1,6 +1,7 @@
 describe('bal-popover', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/bal-popover/test/bal-popover.cy.html')
+    cy.visit('/components/bal-popover/test/bal-popover.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should open and close the popover', () => {

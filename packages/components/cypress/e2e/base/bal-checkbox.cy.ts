@@ -1,6 +1,7 @@
 describe('bal-checkbox', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
+    cy.visit('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should contain label', () => {

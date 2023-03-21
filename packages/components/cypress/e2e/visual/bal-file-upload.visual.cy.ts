@@ -1,5 +1,5 @@
 describe('bal-file-upload', () => {
-  beforeEach(() => cy.page('/components/form/bal-file-upload/test/bal-file-upload.visual.html'))
+  beforeEach(() => cy.visit('/components/form/bal-file-upload/test/bal-file-upload.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

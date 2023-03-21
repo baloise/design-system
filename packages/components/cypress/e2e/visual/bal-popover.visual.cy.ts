@@ -5,18 +5,7 @@ describe('bal-popover', () => {
   function testPopover(platform: 'desktop' | 'mobile') {
     describe(platform, () => {
       beforeEach(() =>
-        cy
-          .page('/components/bal-popover/test/bal-popover.visual.html')
-          .platform(platform)
-          .then(() => {
-            return new Promise(resolve => {
-              if ('requestIdleCallback' in window) {
-                ;(window as any).requestIdleCallback(resolve)
-              } else {
-                setTimeout(resolve, 32)
-              }
-            })
-          }),
+        cy.visit('/components/bal-popover/test/bal-popover.visual.html').platform(platform).waitForDesignSystem(),
       )
 
       it('basic component', () => {

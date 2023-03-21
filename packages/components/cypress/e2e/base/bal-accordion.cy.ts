@@ -1,7 +1,10 @@
 import { selectors } from '../../../../testing/src'
 
 describe('bal-accordion', () => {
-  beforeEach(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
+  beforeEach(() => {
+    cy.visit('/components/bal-accordion/test/bal-accordion.cy.html')
+    cy.waitForDesignSystem()
+  })
 
   it('should open open and close an accordions', () => {
     cy.getByTestId('accordion').balAccordionIsClosed()

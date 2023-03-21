@@ -1,5 +1,8 @@
 describe('bal-modal', () => {
-  beforeEach(() => cy.page('/components/notice/bal-modal/test/bal-modal.cy.html'))
+  beforeEach(() => {
+    cy.visit('/components/notice/bal-modal/test/bal-modal.cy.html')
+    cy.waitForDesignSystem()
+  })
 
   it('should open and close Modal 1', () => {
     cy.getByTestId('open-modal-button').click()

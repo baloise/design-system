@@ -1,5 +1,8 @@
 describe('bal-hint', () => {
-  beforeEach(() => cy.page('/components/bal-hint/test/bal-hint.cy.html'))
+  beforeEach(() => {
+    cy.visit('/components/bal-hint/test/bal-hint.cy.html')
+    cy.waitForDesignSystem()
+  })
 
   it('should open and close the hint overlay', () => {
     cy.getByTestId('hint').balHintFindOverlay().should('not.be.visible')

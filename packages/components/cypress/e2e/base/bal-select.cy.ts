@@ -1,6 +1,7 @@
 describe('bal-select', () => {
   beforeEach(() => {
-    cy.platform('desktop').page('/components/form/bal-select/test/bal-select.cy.html')
+    cy.visit('/components/form/bal-select/test/bal-select.cy.html')
+    cy.waitForDesignSystem()
   })
 
   it('should select label or value', () => {

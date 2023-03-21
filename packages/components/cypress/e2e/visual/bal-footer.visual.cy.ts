@@ -1,8 +1,16 @@
 describe('bal-footer', () => {
-  beforeEach(() => cy.page('/components/bal-footer/test/bal-footer.visual.html'))
+  beforeEach(() => {
+    cy.intercept('GET', 'https://www.baloise.ch/app-integration/v2/ch/footer/de.json', {
+      fixture: 'bal-footer.footer.json',
+    }).as('getFooterLinks')
+    cy.intercept('GET', 'https://www.baloise.ch/app-integration/v1/ch/socialmediachannels/de.json', {
+      fixture: 'bal-footer.socialmediachannels.json',
+    }).as('getSocialMediaChannels')
+    cy.visit('/components/bal-footer/test/bal-footer.visual.html').platform('desktop').waitForDesignSystem()
+  })
 
   it('basic component', () => {
-    cy.platform('desktop').wait(1000)
+    cy.platform('desktop')
     cy.getByTestId('basic').compareSnapshot('basic-footer-desktop', 0.0)
     cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop', 0.0)
 

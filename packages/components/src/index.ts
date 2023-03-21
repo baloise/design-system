@@ -28,6 +28,8 @@ export * from './components/form/bal-select/utils/bal-option.util'
 export {
   waitForComponent,
   waitForDesignSystem,
+  waitAfterFramePaint,
+  waitAfterIdleCallback,
   shallowReady,
   deepReady,
   wait,

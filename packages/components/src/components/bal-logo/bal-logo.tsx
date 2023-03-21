@@ -41,7 +41,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLElement
 
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = false
 
   /**
    * PUBLIC PROPERTY API
@@ -73,6 +73,10 @@ export class Logo implements ComponentInterface, Loggable {
     this.animatedWatcher()
   }
 
+  componentWillRender() {
+    this.updatePlatform()
+  }
+
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -94,18 +98,20 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      const newIsTouch = isPlatform('touch')
-      if (this.isTouch !== newIsTouch) {
-        this.isTouch = newIsTouch
-      }
-    })
+    this.resizeWidthHandler(() => this.updatePlatform())
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private updatePlatform = () => {
+    const newIsTouch = isPlatform('touch')
+    if (this.isTouch !== newIsTouch) {
+      this.isTouch = newIsTouch
+    }
+  }
 
   private async resetAnimation() {
     this.destroyAnimation()

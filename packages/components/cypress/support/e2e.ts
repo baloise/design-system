@@ -26,18 +26,10 @@ declare global {
   namespace Cypress {
     interface Chainable {
       /**
-       * Opens the page on the given url, waits until the component has loaded
-       */
-      page(url: string): Chainable<Element>
-      /**
        * Opens the page on the given url, waits until the component has loaded and
        * injects accessibility checking
        */
       pageA11y(url: string): Chainable<Element>
-      /**
-       * Opens the page on the given url, waits until the component has loaded
-       */
-      visualPage(url: string): Chainable<Element>
       /**
        * Runs the accessibility checking on the given state/page.
        */
