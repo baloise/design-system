@@ -1,5 +1,15 @@
 # @baloise/design-system-css
 
+## 12.10.0
+
+### Patch Changes
+
+- [#1221](https://github.com/baloise-incubator/design-system/pull/1221) [`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f) Thanks [@hirsch88](https://github.com/hirsch88)! - inherit color for link elements
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@12.10.0
+  - @baloise/design-system-tokens@12.10.0
+
 ## 12.9.0
 
 ### Patch Changes

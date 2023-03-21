@@ -1,5 +1,12 @@
 # @baloise/design-system-components-angular
 
+## 12.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`9fdf176ac`](https://github.com/baloise-incubator/design-system/commit/9fdf176ac82e6ac378200cf83928c98e61a3fe9e), [`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f), [`2d3ade3e5`](https://github.com/baloise-incubator/design-system/commit/2d3ade3e54cf919f4f2ad9323b5be8cd683a1c64)]:
+  - @baloise/design-system-components@12.10.0
+
 ## 12.9.0
 
 ### Minor Changes
