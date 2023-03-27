@@ -98,6 +98,7 @@ cypress/videos
 .vercel/
 
 # Design System
+packages/components/components/
 packages/components/loader/
 packages/components/lib/
 packages/components/www/

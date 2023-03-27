@@ -38,6 +38,7 @@
   "files": [
     "dist/",
     "loader/",
+    "components/",
     "src/styles/",
     "vscode-data.json",
     "src/components/**/*.sass",
@@ -50,7 +51,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 --docs-json dist/docs.json && node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 --no-cache --docs-json dist/docs.json && node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
