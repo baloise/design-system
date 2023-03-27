@@ -10,7 +10,6 @@ storybook-static/
 
 CHANGELOG.md
 
-packages/components/components/
 packages/components/src/stories/contributors.md
 packages/components/src/components.d.ts
 packages/icons/src/icons.ts

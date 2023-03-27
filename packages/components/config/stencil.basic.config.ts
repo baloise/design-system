@@ -41,22 +41,10 @@ export const StencilBaseConfig: Config = {
       type: 'docs-vscode',
       file: 'vscode-data.json',
     },
-    // {
-    //   type: 'dist-custom-elements',
-    //   includeGlobalScripts: false,
-    //   generateTypeDeclarations: true,
-    // },
     {
       type: 'dist-custom-elements',
-      dir: 'components',
-      copy: [
-        {
-          src: '../config/custom-elements',
-          dest: 'components',
-          warn: true,
-        },
-      ],
       includeGlobalScripts: false,
+      generateTypeDeclarations: true,
     },
     {
       type: 'dist',
