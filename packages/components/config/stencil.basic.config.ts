@@ -44,7 +44,7 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
-      generateTypeDeclarations: true,
+      generateTypeDeclarations: false,
     },
     {
       type: 'dist',
