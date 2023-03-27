@@ -2,7 +2,10 @@ import { testOnPlatforms } from '../../../../testing/src'
 
 describe('bal-steps', () => {
   testOnPlatforms(['mobile', 'desktop'], platform => {
-    beforeEach(() => cy.page('/components/bal-steps/test/bal-steps.cy.html'))
+    beforeEach(() => {
+      cy.visit('/components/bal-steps/test/bal-steps.cy.html')
+      cy.waitForDesignSystem()
+    })
 
     it('should have content', () => {
       cy.getByTestId('steps').should('have.value', 'Active')
