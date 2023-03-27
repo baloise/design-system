@@ -1,3 +1,4 @@
+import { waitAfterIdleCallback, waitAfterFramePaint } from '@baloise/design-system-components'
 import { areComponentsReady, log, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
@@ -6,11 +7,15 @@ Cypress.Commands.add(
     prevSubject: 'optional',
   },
   (subject, options?: Partial<Cypress.Loggable>) => {
+    cy.document({ log: false }).then(document => document.fonts.ready)
+
     log('waitForComponents', '', subject, options)
     const o = wrapOptions(options)
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
+      .then(() => waitAfterFramePaint())
+      .then(() => waitAfterIdleCallback())
       .wrap(subject, o) as any
   },
 )
@@ -40,33 +45,39 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add('disableAnimation', () => {
-  cy.window().then(win => {
+  cy.window({ log: false }).then(win => {
     ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
 
 Cypress.Commands.add('waitForDesignSystem', () => {
-  cy.document().then(document => document.fonts.ready)
+  cy.document({ log: false }).then(document => document.fonts.ready)
 
-  cy.disableAnimation()
-
-  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
-    .first({ log: false })
-    .waitForComponents({ log: false })
-    .invoke({ log: false }, 'attr', 'ready')
-    .should($el => {
-      expect($el, 'if bal-app is ready').to.eq('')
-    })
-    .wait(100, { log: false })
-
-  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
+  cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })
     .then($app => {
       Cypress.log({
         type: 'parent',
         $el: $app,
         displayName: 'bal-app',
-        message: 'is ready 🚀',
+        message: 'wait for DesignSystem to be ready',
+      })
+    })
+    .waitForComponents({ log: false })
+    .invoke({ log: false }, 'attr', 'ready')
+    .should($el => {
+      expect($el, 'if bal-app is ready').to.eq('')
+    })
+    .disableAnimation()
+
+  cy.get('bal-app,.bal-app', { log: false })
+    .first({ log: false })
+    .then($app => {
+      Cypress.log({
+        type: 'parent',
+        $el: $app,
+        displayName: 'bal-app',
+        message: 'DesignSystem is ready 🚀',
       })
     })
 })

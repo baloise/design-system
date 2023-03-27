@@ -1,5 +1,6 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
 import isNil from 'lodash.isnil'
+import { parseValue } from './utils/parsing'
 
 interface BalTableTextRendererOptions {
   color?: (params: ICellRendererParams) => BalProps.BalTextColor
@@ -36,7 +37,7 @@ export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}):
   }
 
   Renderer.prototype.update = function () {
-    this.text.innerHTML = this.params.value
+    this.text.innerHTML = parseValue(this.params.value)
 
     const color = isNil(options.color) ? '' : options.color(this.params)
     this.text.setAttribute('color', color)

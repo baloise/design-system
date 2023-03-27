@@ -335,61 +335,65 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
         return value
       }
 
-      if (this.mask) {
-        switch (this.mask) {
-          case 'contract-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+      if (input.value) {
+        if (this.mask) {
+          switch (this.mask) {
+            case 'contract-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+              }
+              return inputValue
             }
-            return inputValue
+            case 'offer-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+              }
+              return inputValue
+            }
+            case 'claim-number': {
+              inputValue = input.value.replace(/[^\dXx]/g, '')
+              const inputParts = [
+                inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+                inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+                inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+              ].filter(val => val.length > 0)
+              switch (inputParts.length) {
+                case 1:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}`
+                  break
+                case 2:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+                  break
+                default:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
+              }
+              if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+              }
+              return inputValue
+            }
+            case 'be-enterprise-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
+              }
+              return inputValue
+            }
+            case 'be-iban': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_BE_IBAN) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
+              }
+              return inputValue
+            }
+            default:
+              return input.value
           }
-          case 'offer-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-            }
-            return inputValue
-          }
-          case 'claim-number': {
-            inputValue = input.value.replace(/[^\dXx]/g, '')
-            const inputParts = [
-              inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-            ].filter(val => val.length > 0)
-            switch (inputParts.length) {
-              case 1:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}`
-                break
-              case 2:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-                break
-              default:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
-            }
-            if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-            }
-            return inputValue
-          }
-          case 'be-enterprise-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
-            }
-            return inputValue
-          }
-          case 'be-iban': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_BE_IBAN) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
-            }
-            return inputValue
-          }
-          default:
-            return input.value
         }
+      } else {
+        this.inputValue = input.value
       }
     }
 

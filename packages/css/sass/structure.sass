@@ -47,13 +47,6 @@ body
 a
   @extend %structure-link
 
-:any-link
-  color: var(--bal-color-primary)
-:any-link:hover
-  color: var(--bal-color-light-blue-5)
-:any-link:active
-  color: var(--bal-color-primary-6)
-
 p
   @extend %structure-paragraph
 
@@ -75,8 +68,9 @@ span
   font-style: inherit
   font-weight: inherit
 
+b,
 strong
-  color: var(--bal-color-primary)
+  color: currentcolor
   font-weight: var(--bal-weight-bold)
 
 fieldset

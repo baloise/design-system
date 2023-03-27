@@ -1,5 +1,5 @@
 describe('bal-badge', () => {
-  beforeEach(() => cy.page('/components/bal-badge/test/bal-badge.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-badge/test/bal-badge.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.getByTestId('basic').compareSnapshot('badge-basic', 0.0)

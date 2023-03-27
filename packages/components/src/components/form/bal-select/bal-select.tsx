@@ -13,7 +13,6 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import isArray from 'lodash.isarray'
 import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
@@ -699,7 +698,7 @@ export class Select implements ComponentInterface, Loggable {
     let newValue: string[] = []
 
     if (!isNil(this.value) && this.value !== '') {
-      if (isArray(this.value)) {
+      if (Array.isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
         if (this.value.split('').includes(',')) {

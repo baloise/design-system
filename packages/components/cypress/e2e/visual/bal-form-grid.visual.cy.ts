@@ -1,5 +1,5 @@
 describe('bal-form-grid', () => {
-  beforeEach(() => cy.page('/components/form/bal-form-grid/test/bal-form-grid.visual.html'))
+  beforeEach(() => cy.visit('/components/form/bal-form-grid/test/bal-form-grid.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

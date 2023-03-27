@@ -25,7 +25,6 @@ import { BEM } from '../../../utils/bem'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import isArray from 'lodash.isarray'
 
 @Component({
   tag: 'bal-checkbox',
@@ -222,7 +221,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   }
 
   private updateState = () => {
-    if (this.group && this.group.control && isArray(this.group.value)) {
+    if (this.group && this.group.control && Array.isArray(this.group.value)) {
       this.checked = this.group.value.includes(this.value)
     }
   }

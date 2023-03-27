@@ -1,5 +1,5 @@
 describe('bal-card', () => {
-  beforeEach(() => cy.page('/components/bal-card/test/bal-card.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-card/test/bal-card.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

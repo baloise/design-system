@@ -1,5 +1,5 @@
 describe('bal-time-input', () => {
-  beforeEach(() => cy.page('/components/form/bal-time-input/test/bal-time-input.visual.html'))
+  beforeEach(() => cy.visit('/components/form/bal-time-input/test/bal-time-input.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

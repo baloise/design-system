@@ -1,6 +1,25 @@
 import { EventEmitter } from '@stencil/core'
 import { isWindowDefined } from './browser'
 import { BalConfig } from './config'
+import {
+  balIconCaretDown,
+  balIconCaretLeft,
+  balIconCheck,
+  balIconClose,
+  balIconDate,
+  balIconDocument,
+  balIconEdit,
+  balIconInfoCircle,
+  balIconMenuBars,
+  balIconMinus,
+  balIconNavGoDown,
+  balIconNavGoLeft,
+  balIconNavGoRight,
+  balIconNavGoUp,
+  balIconPlus,
+  balIconTrash,
+  balIconUpload,
+} from './constants/icons.constant'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -75,7 +94,7 @@ export const getAppRoot = (doc: Document) => {
  * el.componentOnReady yourself.
  */
 export const componentOnReady = (el: any, callback: any) => {
-  if (el.componentOnReady) {
+  if (el.componentOnReady !== null && el.componentOnReady !== undefined) {
     el.componentOnReady().then((resolvedEl: any) => callback(resolvedEl))
   } else {
     raf(() => callback(el))
@@ -146,6 +165,14 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
   return unregister
 }
 
+export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  return el.addEventListener(eventName, callback, opts)
+}
+
+export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  return el.removeEventListener(eventName, callback, opts)
+}
+
 export const shallowReady = (el: any | undefined): Promise<any> => {
   if (el) {
     return new Promise(resolve => componentOnReady(el, resolve))
@@ -168,33 +195,73 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
 
 export const waitForComponent = async (el: HTMLElement | null) => {
   await deepReady(el, true)
-  await wait(20)
-}
-
-export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  return el.addEventListener(eventName, callback, opts)
-}
-
-export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
-  return el.removeEventListener(eventName, callback, opts)
+  await waitAfterFramePaint()
+  await waitAfterIdleCallback()
 }
 
 export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
-  const config: any = { animated: false, icons: {}, ..._config }
+  const config: any = {
+    animated: false,
+    icons: {
+      balIconClose,
+      balIconInfoCircle,
+      balIconPlus,
+      balIconMinus,
+      balIconEdit,
+      balIconTrash,
+      balIconNavGoLeft,
+      balIconNavGoRight,
+      balIconNavGoDown,
+      balIconNavGoUp,
+      balIconCaretLeft,
+      balIconCaretDown,
+      balIconCheck,
+      balIconDate,
+      balIconDocument,
+      balIconUpload,
+      balIconMenuBars,
+    },
+    ..._config,
+  }
   const element = el as any
-  if (element) {
+  if (element !== null && element !== undefined) {
+    await deepReady(element, true)
+
     const webComponents = Array.prototype.slice
       .call(element.querySelectorAll('*'))
       .filter(el => el.tagName.match(/^bal/i))
 
-    await Promise.all(webComponents.map(c => c.componentOnReady()))
     await Promise.all(
       webComponents.map(c => {
-        if (c.configChanged) {
+        if (c.configChanged !== null && c.configChanged !== undefined) {
           return c.configChanged(config)
         }
       }),
     )
   }
-  await wait(20)
+  await waitAfterFramePaint()
+  await waitAfterIdleCallback()
+}
+
+export const waitAfterFramePaint = () => {
+  return new Promise(resolve => raf(() => runHighPrioritizedTask(resolve)))
+}
+
+export const waitAfterIdleCallback = () => {
+  return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
+}
+
+export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
+  if (isWindowDefined() && 'MessageChannel' in window) {
+    const messageChannel = new (window as any).MessageChannel()
+    messageChannel.port1.onmessage = callback
+    messageChannel.port2.postMessage(undefined)
+  } else {
+    setTimeout(callback, 32)
+  }
+}
+
+export const waitForRequestIdleCallback = () => {
+  console.log('DEPRECATED - use waitAfterIdleCallback instead')
+  return waitAfterIdleCallback
 }

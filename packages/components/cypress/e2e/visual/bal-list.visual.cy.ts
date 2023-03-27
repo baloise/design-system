@@ -1,5 +1,5 @@
 describe('bal-list', () => {
-  beforeEach(() => cy.page('/components/bal-list/test/bal-list.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-list/test/bal-list.visual.html').waitForDesignSystem())
 
   it('basic component', () => cy.getByTestId('basic').compareSnapshot('list-basic', 0.0))
 

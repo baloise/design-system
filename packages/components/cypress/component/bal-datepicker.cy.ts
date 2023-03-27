@@ -15,8 +15,7 @@ describe('bal-datepicker.cy.ts', () => {
         onBalBlur: onBalBlurSpy,
       },
     })
-
-    cy.get('bal-datepicker').waitForComponents()
+    cy.waitForDesignSystem()
   })
   it('should change value through manual input', () => {
     cy.get('bal-datepicker')

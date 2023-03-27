@@ -21,7 +21,7 @@ import {
 
 describe('Legacy', () => {
   describe('Url', () => {
-    beforeEach(() => cy.page('/components/bal-button/test/bal-button.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-button/test/bal-button.cy.html').waitForDesignSystem())
 
     it('should include url', () => {
       cy.url().should('include', '/components/bal-button') // => true
@@ -29,7 +29,7 @@ describe('Legacy', () => {
   })
 
   describe('Accordion', () => {
-    beforeEach(() => cy.page('/components/bal-accordion/test/bal-accordion.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-accordion/test/bal-accordion.cy.html').waitForDesignSystem())
 
     const accordion = AccordionAccessor(byTestId('accordion'))
 
@@ -46,7 +46,7 @@ describe('Legacy', () => {
   })
 
   describe('Button', () => {
-    beforeEach(() => cy.page('/components/bal-button/test/bal-button.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-button/test/bal-button.cy.html').waitForDesignSystem())
 
     const primaryButton = ButtonAccessor(byTestId('primary-button'))
     const primaryButtonDisabled = ButtonAccessor(byTestId('primary-button-disabled'))
@@ -84,7 +84,7 @@ describe('Legacy', () => {
   })
 
   describe('Checkbox', () => {
-    beforeEach(() => cy.page('/components/form/bal-checkbox/test/bal-checkbox.cy.html'))
+    beforeEach(() => cy.visit('/components/form/bal-checkbox/test/bal-checkbox.cy.html').waitForDesignSystem())
 
     const normalCheckboxElement = CheckboxAccessor(byTestId('checkbox-normal'))
     const multiSelect = MultiSelectButtonAccessor(byTestId('multi-select'))
@@ -103,7 +103,7 @@ describe('Legacy', () => {
   })
 
   describe('Datepicker', () => {
-    beforeEach(() => cy.page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
+    beforeEach(() => cy.visit('/components/form/bal-datepicker/test/bal-datepicker.cy.html').waitForDesignSystem())
 
     const now = () => new Date()
 
@@ -119,7 +119,7 @@ describe('Legacy', () => {
   })
 
   describe('DropDown', () => {
-    beforeEach(() => cy.page('/components/form/bal-select/test/bal-select.cy.html'))
+    beforeEach(() => cy.visit('/components/form/bal-select/test/bal-select.cy.html').waitForDesignSystem())
 
     const dropdown = DropDownAccessor(byTestId('select'))
     const typeahead = TypeaheadAccessor(byTestId('typeahead'))
@@ -144,7 +144,7 @@ describe('Legacy', () => {
   })
 
   describe('Icon', () => {
-    beforeEach(() => cy.page('/components/bal-icon/test/bal-icon.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-icon/test/bal-icon.cy.html').waitForDesignSystem())
 
     const icon = IconAccessor(byTestId('icon'))
 
@@ -154,7 +154,7 @@ describe('Legacy', () => {
   })
 
   describe('Input', () => {
-    beforeEach(() => cy.page('/components/form/bal-input/test/bal-input.cy.html'))
+    beforeEach(() => cy.visit('/components/form/bal-input/test/bal-input.cy.html').waitForDesignSystem())
 
     const input = InputAccessor(byTestId('basic'))
 
@@ -164,7 +164,7 @@ describe('Legacy', () => {
   })
 
   describe('Pagination', () => {
-    beforeEach(() => cy.page('/components/bal-pagination/test/bal-pagination.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-pagination/test/bal-pagination.cy.html').waitForDesignSystem())
 
     const list = ListAccessor(byTestId('pagination'))
 
@@ -176,7 +176,7 @@ describe('Legacy', () => {
   })
 
   describe('Radio', () => {
-    beforeEach(() => cy.page('/components/form/bal-radio/test/bal-radio.cy.html'))
+    beforeEach(() => cy.visit('/components/form/bal-radio/test/bal-radio.cy.html').waitForDesignSystem())
 
     const selectButton = SelectButtonAccessor(byTestId('select-button'))
 
@@ -186,7 +186,7 @@ describe('Legacy', () => {
   })
 
   describe('Tabs', () => {
-    beforeEach(() => cy.page('/components/bal-tabs/test/bal-tabs.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-tabs/test/bal-tabs.cy.html').waitForDesignSystem())
 
     const tabs = TabsAccessor(byTestId('tabs'))
 
@@ -200,7 +200,7 @@ describe('Legacy', () => {
   })
 
   describe('Tile', () => {
-    beforeEach(() => cy.page('/components/bal-card/test/bal-card.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-card/test/bal-card.cy.html').waitForDesignSystem())
 
     const tile = TileAccessor(byTestId('card'))
 
@@ -210,7 +210,7 @@ describe('Legacy', () => {
   })
 
   describe('Toast', () => {
-    beforeEach(() => cy.page('/components/notice/bal-toast/test/bal-toast.cy.html'))
+    beforeEach(() => cy.visit('/components/notice/bal-toast/test/bal-toast.cy.html').waitForDesignSystem())
 
     const toast = ToastAccessor(byTestId('toast'))
 
@@ -221,7 +221,7 @@ describe('Legacy', () => {
   })
 
   describe('Tooltip', () => {
-    beforeEach(() => cy.page('/components/bal-hint/test/bal-hint.cy.html'))
+    beforeEach(() => cy.visit('/components/bal-hint/test/bal-hint.cy.html').waitForDesignSystem())
 
     const tooltip = TooltipAccessor(byTestId('hint'))
 

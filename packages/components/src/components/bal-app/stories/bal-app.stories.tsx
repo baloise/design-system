@@ -1,6 +1,6 @@
 import docs from './bal-app.docs.mdx'
 import { BalComponentStory, sourceCode } from '../../../stories/utils'
-import { getFramework } from '../../docs/bal-doc-stackblitz/stackblitz.util'
+import { getFramework } from '../../docs/bal-doc-code-sandbox/code-sandbox.util.ts'
 import {
   BalApp,
   BalFooter,

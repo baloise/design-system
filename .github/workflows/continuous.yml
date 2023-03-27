@@ -69,16 +69,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build:force
-
       - name: Install Cypress
         run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
-          build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
@@ -93,7 +92,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-components
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -126,16 +125,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build:force
-
       - name: Install Cypress
         run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
-          build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
@@ -151,7 +149,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-a11y
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -165,7 +163,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  Visual:
+  VisualComponentsA:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -184,16 +182,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build:force
-
       - name: Install Cypress
         run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
-          build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
@@ -201,7 +198,7 @@ jobs:
           browser: chrome
           env: type=actual
           spec: |
-            cypress/e2e/visual/*.cy.ts
+            cypress/e2e/visual/bal-!(navigation|button|field|input-group|popover|select|radio|navbar|checkbox|tabs|card|datepicker).visual.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -209,17 +206,115 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-a
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload videos
+  VisualComponentsB:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Update NPM registry
+        run: npm run registry
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          install: false
+          browser: chrome
+          env: type=actual
+          spec: |
+            cypress/e2e/visual/bal-button.visual.cy.ts
+            cypress/e2e/visual/bal-card.visual.cy.ts
+            cypress/e2e/visual/bal-checkbox.visual.cy.ts
+            cypress/e2e/visual/bal-datepicker.visual.cy.ts
+            cypress/e2e/visual/bal-field.visual.cy.ts
+            cypress/e2e/visual/bal-input-group.visual.cy.ts
+            cypress/e2e/visual/bal-navbar.visual.cy.ts
+            cypress/e2e/visual/bal-navigation.visual.cy.ts
+            cypress/e2e/visual/bal-popover.visual.cy.ts
+            cypress/e2e/visual/bal-radio.visual.cy.ts
+            cypress/e2e/visual/bal-select.visual.cy.ts
+            cypress/e2e/visual/bal-tabs.visual.cy.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload snapshots
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-videos
-          path: packages/components/cypress/videos
+          name: cypress-snapshots-b
+          path: packages/components/cypress/snapshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  VisualCSS:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Update NPM registry
+        run: npm run registry
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          install: false
+          browser: chrome
+          env: type=actual
+          spec: |
+            cypress/e2e/visual/css-*.cy.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-snapshots-css
+          path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -242,16 +337,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build:force
-
       - name: Install Cypress
         run: npm run cy:install
+
+      - name: Build
+        run: npm run cy:build
 
       - name: Run Cypress
         uses: cypress-io/github-action@v4
         with:
-          build: npm run cy:build
           start: npm run cy:start
           wait-on: 'http://localhost:3333'
           working-directory: packages/components

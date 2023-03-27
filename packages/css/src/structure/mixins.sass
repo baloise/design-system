@@ -6,11 +6,14 @@
   word-break: break-word
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  strong
+  strong,
+  &:any-link
     color: currentColor
-  &:hover
+  &:hover,
+  &:any-link:hover
     color: var(--bal-color-light-blue-5)
-  &:active
+  &:active,
+  &:any-link:active
     color: var(--bal-color-primary-6)
 
 =structure-paragraph

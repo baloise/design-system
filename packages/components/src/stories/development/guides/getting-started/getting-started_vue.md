@@ -45,49 +45,11 @@ To install the Baloise Design System run the following command.
 npm install @baloise/design-system-components-vue --save
 ```
 
-### Import Fonts & Favicons
-
-The font package is included in the `@baloise/design-system-components-vue` package, however the favicons needs to be installed separately.
-
-```
-npm install @baloise/design-system-favicons
-```
-
-Next step is to provide the fonts and favicons to our web application.
-To do so we recommend the tool copyfiles to copy the font files into your assets folder.
-
-```
-npm install copyfiles --save-dev
-```
-
-After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
-
-```json
-"scripts": {
-  "postinstall": "npm run copy:assets",
-  "copy:assets": "npm run copy:fonts && npm run copy:favicons",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* public/assets/favicons"
-}
-```
-
-To copy all the assets run the following command.
-
-```
-npm run copy:assets
-```
-
-> **TIP**
->
-> - Add the generated files to the `.gitignore` file.
-> - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
-
 ### Import styles
 
 To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
-// change variable before the import
 // SASS mixins and variables (optional)
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -205,3 +167,12 @@ npm run dev
 
 > **TIP**
 > Your app gets served under [http://localhost:3000](http://localhost:3000).
+
+## Provide the assets
+
+The Design System provides custom fonts and favicons.
+
+To add them to your application follow those guides:
+
+- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)

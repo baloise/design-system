@@ -1,5 +1,21 @@
 # @baloise/design-system-components
 
+## 12.10.0
+
+### Patch Changes
+
+- [#1222](https://github.com/baloise-incubator/design-system/pull/1222) [`9fdf176ac`](https://github.com/baloise-incubator/design-system/commit/9fdf176ac82e6ac378200cf83928c98e61a3fe9e) Thanks [@hirsch88](https://github.com/hirsch88)! - fix waitForDesignSystem helper for unit testing
+
+- [#1221](https://github.com/baloise-incubator/design-system/pull/1221) [`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f) Thanks [@hirsch88](https://github.com/hirsch88)! - inherit color for link elements
+
+- [#1219](https://github.com/baloise-incubator/design-system/pull/1219) [`2d3ade3e5`](https://github.com/baloise-incubator/design-system/commit/2d3ade3e54cf919f4f2ad9323b5be8cd683a1c64) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix error on clearing input with claim-number mask
+
+- Updated dependencies [[`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f)]:
+  - @baloise/design-system-css@12.10.0
+  - @baloise/design-system-fonts@12.10.0
+  - @baloise/design-system-icons@12.10.0
+  - @baloise/design-system-tokens@12.10.0
+
 ## 12.9.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "12.9.0",
+  "version": "12.10.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 && node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 --docs-json dist/docs.json && node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
@@ -70,10 +70,10 @@
     "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "12.9.0",
-    "@baloise/design-system-fonts": "12.9.0",
-    "@baloise/design-system-icons": "12.9.0",
-    "@baloise/design-system-tokens": "12.9.0",
+    "@baloise/design-system-css": "12.10.0",
+    "@baloise/design-system-fonts": "12.10.0",
+    "@baloise/design-system-icons": "12.10.0",
+    "@baloise/design-system-tokens": "12.10.0",
     "@baloise/web-app-utils": "3.11.0",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~3.2.0",
@@ -83,7 +83,6 @@
     "filesize.js": "~2.0.0",
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
-    "lodash.isarray": "~4.0.0",
     "lodash.isempty": "~4.4.0",
     "lodash.isfunction": "^3.0.9",
     "lodash.isnan": "~3.0.2",
@@ -93,12 +92,13 @@
     "lodash.round": "~4.0.4",
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
-    "lottie-web": "5.10.2"
+    "lottie-web": "5.10.2",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "12.9.0",
-    "@baloise/design-system-output-target-react": "12.9.0",
-    "@baloise/design-system-output-target-vue": "12.9.0"
+    "@baloise/design-system-output-target-angular": "12.10.0",
+    "@baloise/design-system-output-target-react": "12.10.0",
+    "@baloise/design-system-output-target-vue": "12.10.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

@@ -70,4 +70,16 @@ describe('bal-input.cy.ts', () => {
 
     cy.get('@click').should('have.been.calledOnce')
   })
+
+  it('should fire input event when a field is cleared for claim-number mask', () => {
+    cy.get('bal-input').invoke('attr', 'mask', 'claim-number')
+    cy.get('bal-input').find('input').click({ force: true })
+    cy.get('bal-input').find('input').type('1').blur()
+    cy.get('bal-input').find('input').clear().blur()
+
+    cy.get('@click').should('have.been.callCount', 2)
+    cy.get('@balChange').should('have.been.callCount', 2)
+    cy.get('@balInput').should('have.been.callCount', 2)
+    cy.get('bal-input').find('input').should('have.value', '')
+  })
 })

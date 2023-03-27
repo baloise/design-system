@@ -8,7 +8,7 @@ import {
   BalText,
   BalIcon,
 } from '../../../../.storybook/vue/generated/components'
-import { getFramework } from '../../../components/docs/bal-doc-stackblitz/stackblitz.util'
+import { getFramework } from '../../../components/docs/bal-doc-code-sandbox/code-sandbox.util.ts'
 
 export default {
   title: 'Foundation/Layout/Development',
