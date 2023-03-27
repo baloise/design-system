@@ -3,9 +3,11 @@
   "language": "en",
   "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
   "words": [
-    "stackblitz",
     "Jasmin",
+    "msapplication",
+    "browserconfig",
     "mladenplaninicic",
+    "codesandbox",
     "nobilo",
     "Gagne",
     "clastzoo",

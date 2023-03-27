@@ -92,17 +92,82 @@ Only the font family title has a light weight available. Text only supports regu
 
 ## Installation
 
+By default our custom fonts are provided from our static web server. However, if
+the fonts need to provided locally then please check out the next section.
+
+CSS-Utilities are provide by the CSS-Framework, which is already included in the components packages.
+
+### Font
+
+Next step is to provide the custom fonts from you web application server.
+
+#### Provide fonts files
+
+To do so we recommend the tool **copyfiles** to copy the font files into your assets folder.
+
+> **Important!**
+>
+> The font package is already included in the **component** packages.
+
+After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
+}
+```
+
+> **TIP**
+>
+> If favicons are provided to just extend the npm script `copy:assets` with `&& npm run copy:favicons`
+
+To copy all the assets run the npm installation script.
+
+```
+npm install
+```
+
+> **TIP**
+>
+> - Add the generated files to the `.gitignore` file.
+
+#### Change font asset path
+
+To change the path to the self provided font files we need to use SASS.
+In the main SASS file of you application add the SASS variable `$font-path` to top of the page.
+
+```scss
+// change variable before the import
+$font-path: '~assets/fonts';
+```
+
+> **TIP**
+>
+> `~` is used for webpack and angular application to create a dynamic path.
+
+After the declaration of the `$font-path` variable, we need to import the SASS font file,
+which uses this variable to create the correct path.
+
+```scss
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+```
+
+### CSS Utilities
+
 To install the CSS Framework run the following npm command:
 
 ```
 npm add @baloise/design-system-css
 ```
 
-> **TIP**
+> **Important!**
 >
 > The CSS package is already included in the **component** packages.
 
-### Import
+#### Import
 
 To use the CSS Utility Classes import the following stylesheet.
 

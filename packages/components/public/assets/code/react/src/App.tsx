@@ -4,14 +4,16 @@ import {
   BalApp,
 } from '@baloise/design-system-components-react';
 
-import Example from './example';
+import Example from './Example';
 
 export default function App() {
   useBaloiseDesignSystem();
 
   return (
     <BalApp>
-      <Example />
+      <main className="container py-large">
+        <Example />
+      </main>
     </BalApp>
   );
 }

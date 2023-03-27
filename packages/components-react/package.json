@@ -37,7 +37,8 @@
     "dist/"
   ],
   "dependencies": {
-    "@baloise/design-system-components": "12.10.0"
+    "@baloise/design-system-components": "12.10.0",
+    "tslib": "*"
   },
   "peerDependencies": {
     "react": ">=17.0.0",

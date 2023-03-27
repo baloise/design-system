@@ -17,6 +17,7 @@
 import './commands'
 
 import { mount } from 'cypress/vue'
+import { waitAfterFramePaint, waitAfterIdleCallback } from '../../src/utils/helpers'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -51,19 +52,63 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
+export const areComponentsReady = ($el: any) => {
+  const queue = []
+  for (let index = 0; index < $el.length; index++) {
+    const element = $el[index]
+    queue.push(deepReady(element, true))
+  }
+  return Promise.all(queue)
+}
+
 Cypress.Commands.add(
   'waitForComponents',
   {
     prevSubject: 'element',
   },
   (subject, options?: Partial<Cypress.Loggable>) => {
+    cy.document({ log: false }).then(document => document.fonts.ready)
+
     return cy
       .wrap(subject, options)
-      .then(($el: any) => deepReady($el, true))
-      .wait(100, { log: false })
+      .then(($el: any) => areComponentsReady($el))
+      .then(() => waitAfterFramePaint())
+      .then(() => waitAfterIdleCallback())
       .wrap(subject, options)
   },
 )
+
+Cypress.Commands.add('waitForDesignSystem', () => {
+  cy.document({ log: false }).then(document => document.fonts.ready)
+
+  cy.get('bal-app,.bal-app', { log: false })
+    .first({ log: false })
+    .then($app => {
+      Cypress.log({
+        type: 'parent',
+        $el: $app,
+        displayName: 'bal-app',
+        message: 'wait for DesignSystem to be ready',
+      })
+    })
+    .waitForComponents({ log: false })
+    .invoke({ log: false }, 'attr', 'ready')
+    .should($el => {
+      expect($el, 'if bal-app is ready').to.eq('')
+    })
+    .disableAnimation()
+
+  cy.get('bal-app,.bal-app', { log: false })
+    .first({ log: false })
+    .then($app => {
+      Cypress.log({
+        type: 'parent',
+        $el: $app,
+        displayName: 'bal-app',
+        message: 'DesignSystem is ready 🚀',
+      })
+    })
+})
 
 Cypress.Commands.add('spyEvent', { prevSubject: 'element' }, (subject, event: string, asEventName?: string) => {
   if (asEventName === undefined) {

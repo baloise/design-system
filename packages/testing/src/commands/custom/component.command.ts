@@ -7,6 +7,8 @@ Cypress.Commands.add(
     prevSubject: 'optional',
   },
   (subject, options?: Partial<Cypress.Loggable>) => {
+    cy.document({ log: false }).then(document => document.fonts.ready)
+
     log('waitForComponents', '', subject, options)
     const o = wrapOptions(options)
     return cy

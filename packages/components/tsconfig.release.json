@@ -4,7 +4,8 @@
     "jsx": "react",
     "jsxFactory": "h",
     "outDir": ".tmp",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "importHelpers": true
   },
   "include": ["src"],
   "exclude": ["dist", ".build", "node_modules", "generated", "test", "public", "cypress", "**/stories", "**/docs"]
