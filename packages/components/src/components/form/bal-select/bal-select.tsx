@@ -237,32 +237,32 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balInputClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalSelectInputClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<BalEvents.BalSelectInputDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalSelectBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalSelectFocusDetail>
 
   /**
    * Emitted when the user cancels the input.
    */
-  @Event() balCancel!: EventEmitter<KeyboardEvent>
+  @Event() balCancel!: EventEmitter<BalEvents.BalSelectCancelDetail>
 
   /**
    * Emitted when the input has focus and key from the keyboard go hit.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalSelectKeyPressDetail>
 
   /**
    * LIFECYCLE

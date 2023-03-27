@@ -36,7 +36,7 @@ export class Toast {
   /**
    * Emitted when toast is closed
    */
-  @Event({ eventName: 'balClose' }) balClose!: EventEmitter<string>
+  @Event({ eventName: 'balClose' }) balClose!: EventEmitter<BalEvents.BalToastCloseDetail>
 
   async componentWillLoad() {
     if (this.duration > 0) {

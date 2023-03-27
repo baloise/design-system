@@ -6,3 +6,17 @@
 namespace BalProps {
   export type BalSnackbarColor = BalNotificationColor
 }
+
+namespace BalEvents {
+  export type BalSnackbarCloseDetail = string
+  export interface BalSnackbarClose extends CustomEvent {
+    detail: BalSnackbarCloseDetail
+    target: HTMLBalSnackbarElement
+  }
+
+  export type BalSnackbarActionDetail = string
+  export interface BalSnackbarAction extends CustomEvent {
+    detail: BalSnackbarActionDetail
+    target: HTMLBalSnackbarElement
+  }
+}

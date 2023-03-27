@@ -15,3 +15,33 @@ namespace BalProps {
     removeViewFromDom(container: any, component: any): Promise<void>
   }
 }
+namespace BalEvents {
+  export type BalModalDidPresentDetail = void
+  export interface BalModalDidPresent extends CustomEvent {
+    detail: BalModalDidPresentDetail
+    target: HTMLBalModalElement
+  }
+
+  export type BalModalWillPresentDetail = void
+  export interface BalModalWillPresent extends CustomEvent {
+    detail: BalModalWillPresentDetail
+    target: HTMLBalModalElement
+  }
+
+  export interface OverlayEventDetail<T = any> {
+    data?: T
+    role?: string
+  }
+
+  export type BalModalDidDismissDetail = OverlayEventDetail
+  export interface BalModalDidDismiss extends CustomEvent {
+    detail: BalModalDidDismissDetail
+    target: HTMLBalModalElement
+  }
+
+  export type BalModalWillDismissDetail = OverlayEventDetail
+  export interface BalModalWillDismiss extends CustomEvent {
+    detail: BalModalWillDismissDetail
+    target: HTMLBalModalElement
+  }
+}

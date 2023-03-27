@@ -21,3 +21,29 @@ namespace BalProps {
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
 }
+
+namespace BalEvents {
+  export type BalButtonBlurDetail = void
+  export interface BalButtonBlur extends CustomEvent {
+    detail: BalButtonBlurDetail
+    target: HTMLBalButtonElement
+  }
+
+  export type BalButtonFocusDetail = void
+  export interface BalButtonFocus extends CustomEvent {
+    detail: BalButtonFocusDetail
+    target: HTMLBalButtonElement
+  }
+
+  export type BalButtonNavigateDetail = MouseEvent
+  export interface BalButtonNavigate extends CustomEvent {
+    detail: BalButtonNavigateDetail
+    target: HTMLBalButtonElement
+  }
+
+  export type BalButtonDidRenderDetail = void
+  export interface BalButtonDidRender extends CustomEvent {
+    detail: BalButtonDidRenderDetail
+    target: HTMLBalButtonElement
+  }
+}

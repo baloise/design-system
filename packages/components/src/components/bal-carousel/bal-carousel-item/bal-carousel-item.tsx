@@ -66,17 +66,17 @@ export class CarouselItem implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalCarouselItemNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCarouselItemFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCarouselItemBlurDetail>
 
   @Method() async getData(): Promise<BalCarouselItemData> {
     return {

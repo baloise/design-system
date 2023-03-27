@@ -123,12 +123,12 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioBlurDetail>
 
   /**
    * Emitted when the checked property has changed.

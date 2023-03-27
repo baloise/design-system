@@ -26,17 +26,17 @@ export class DataValue {
   /**
    * Emitted when the edit button has focus.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balClick!: EventEmitter<BalEvents.BalDataValueClickDetail>
 
   /**
    * Emitted when the edit button has focus.
    */
-  @Event() balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<BalEvents.BalDataValueFocusDetail>
 
   /**
    * Emitted when the edit button loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<BalEvents.BalDataValueBlurDetail>
 
   onClickHandler(event: MouseEvent) {
     this.balClick.emit(event)

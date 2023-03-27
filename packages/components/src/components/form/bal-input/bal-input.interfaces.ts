@@ -90,7 +90,32 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalInputChangeDetail = string | undefined
-  export type BalInputChange = CustomEvent<BalInputChangeDetail>
+  export interface BalInputChange extends CustomEvent {
+    detail: BalInputChangeDetail
+    target: HTMLBalInputElement
+  }
+
   export type BalInputInputDetail = string | undefined
-  export type BalInputInput = CustomEvent<BalInputInputDetail>
+  export interface BalInputInput extends CustomEvent {
+    detail: BalInputInputDetail
+    target: HTMLBalInputElement
+  }
+
+  export type BalInputBlurDetail = FocusEvent
+  export interface BalInputBlur extends CustomEvent {
+    detail: BalInputBlurDetail
+    target: HTMLBalInputElement
+  }
+
+  export type BalInputKeyPressDetail = KeyboardEvent
+  export interface BalInputKeyPress extends CustomEvent {
+    detail: BalInputKeyPressDetail
+    target: HTMLBalInputElement
+  }
+
+  export type BalInputFocusDetail = FocusEvent
+  export interface BalInputFocus extends CustomEvent {
+    detail: BalInputFocusDetail
+    target: HTMLBalInputElement
+  }
 }

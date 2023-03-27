@@ -116,12 +116,12 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCheckboxFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCheckboxBlurDetail>
 
   /**
    * Emitted when the value property has changed.

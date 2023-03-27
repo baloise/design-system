@@ -132,22 +132,22 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<BalEvents.BalButtonFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<BalEvents.BalButtonBlurDetail>
 
   /**
    * Emitted when the button has been  rendered.
    */
-  @Event() balDidRender!: EventEmitter<void>
+  @Event() balDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

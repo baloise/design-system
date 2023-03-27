@@ -79,24 +79,24 @@ export class Modal implements OverlayInterface {
   /**
    * Emitted after the modal has presented.
    */
-  @Event({ eventName: 'balModalDidPresent' }) didPresent!: EventEmitter<void>
+  @Event({ eventName: 'balModalDidPresent' }) didPresent!: EventEmitter<BalEvents.BalModalDidPresentDetail>
 
   /**
    * Emitted before the modal has presented.
    */
-  @Event({ eventName: 'balModalWillPresent' }) willPresent!: EventEmitter<void>
+  @Event({ eventName: 'balModalWillPresent' }) willPresent!: EventEmitter<BalEvents.BalModalWillPresentDetail>
 
   /**
    * Emitted before the modal has dismissed.
    */
   @Event({ eventName: 'balModalWillDismiss' })
-  willDismiss!: EventEmitter<OverlayEventDetail>
+  willDismiss!: EventEmitter<BalEvents.BalModalWillDismissDetail>
 
   /**
    * Emitted after the modal has dismissed.
    */
   @Event({ eventName: 'balModalDidDismiss' })
-  didDismiss!: EventEmitter<OverlayEventDetail>
+  didDismiss!: EventEmitter<BalEvents.BalModalDidDismissDetail>
 
   connectedCallback() {
     prepareOverlay(this)

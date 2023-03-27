@@ -68,12 +68,12 @@ export class Snackbar {
   /**
    * Emitted when snackbar is closed
    */
-  @Event() balClose!: EventEmitter<string>
+  @Event() balClose!: EventEmitter<BalEvents.BalSnackbarCloseDetail>
 
   /**
    * Emitted when the action button is clicked
    */
-  @Event() balAction!: EventEmitter<string>
+  @Event() balAction!: EventEmitter<BalEvents.BalSnackbarActionDetail>
 
   async componentWillLoad() {
     if (this.duration > 0) {

@@ -13,4 +13,22 @@ namespace BalEvents {
     detail: BalCarouselChangeDetail
     target: HTMLBalCarouselElement
   }
+
+  export type BalCarouselItemBlurDetail = void
+  export interface BalCarouselItemBlur extends CustomEvent {
+    detail: BalCarouselItemBlurDetail
+    target: HTMLBalCarouselItemElement
+  }
+
+  export type BalCarouselItemFocusDetail = void
+  export interface BalCarouselItemFocus extends CustomEvent {
+    detail: BalCarouselItemFocusDetail
+    target: HTMLBalCarouselItemElement
+  }
+
+  export type BalCarouselItemNavigateDetail = MouseEvent
+  export interface BalCarouselItemNavigate extends CustomEvent {
+    detail: BalCarouselItemNavigateDetail
+    target: HTMLBalCarouselItemElement
+  }
 }

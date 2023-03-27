@@ -104,32 +104,32 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalInputTimeInputDetail>
+  @Event() balInput!: EventEmitter<Events.BalTimeInputInputDetail>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputTimeChangeDetail>
+  @Event() balChange!: EventEmitter<Events.BalTimeInputChangeDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<Events.BalTimeInputBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<Events.BalTimeInputFocusDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<Events.BalTimeInputKeyPressDetail>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balClick!: EventEmitter<Events.BalTimeInputClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {

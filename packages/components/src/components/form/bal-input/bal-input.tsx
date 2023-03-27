@@ -231,7 +231,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputBlurDetail>
 
   /**
    * @deprecated
@@ -242,12 +242,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalInputKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputFocusDetail>
 
   /**
    * Emitted when the input value has changed.

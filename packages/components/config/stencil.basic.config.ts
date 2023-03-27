@@ -16,7 +16,7 @@ export const StencilBaseConfig: Config = {
   autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
-  enableCache: true,
+  enableCache: false,
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',

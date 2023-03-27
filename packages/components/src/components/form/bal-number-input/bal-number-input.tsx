@@ -144,27 +144,27 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<BalEvents.BalInputNumberInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalNumberInputInputDetail>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<BalEvents.BalInputNumberChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalNumberInputChangeDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalNumberInputBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalNumberInputFocusDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalNumberInputKeyPressDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {

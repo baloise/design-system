@@ -19,4 +19,28 @@ namespace BalEvents {
     detail: BalDatepickerInputDetail
     target: HTMLBalDatepickerElement
   }
+
+  export type BalDatepickerBlurDetail = FocusEvent
+  export interface BalDatepickerBlur extends CustomEvent {
+    detail: BalDatepickerBlurDetail
+    target: HTMLBalDatepickerElement
+  }
+
+  export type BalDatepickerFocusDetail = FocusEvent
+  export interface BalDatepickerFocus extends CustomEvent {
+    detail: BalDatepickerFocusDetail
+    target: HTMLBalDatepickerElement
+  }
+
+  export type BalDatepickerInputClickDetail = MouseEvent
+  export interface BalDatepickerInputClick extends CustomEvent {
+    detail: BalDatepickerInputClickDetail
+    target: HTMLBalDatepickerElement
+  }
+
+  export type BalDatepickerIconClickDetail = MouseEvent
+  export interface BalDatepickerIconClick extends CustomEvent {
+    detail: BalDatepickerIconClickDetail
+    target: HTMLBalDatepickerElement
+  }
 }

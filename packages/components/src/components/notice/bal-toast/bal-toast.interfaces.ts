@@ -6,3 +6,11 @@
 namespace BalProps {
   export type BalToastColor = BalNotificationColor
 }
+
+namespace BalEvents {
+  export type BalToastCloseDetail = string
+  export interface BalToastClose extends CustomEvent {
+    detail: BalToastCloseDetail
+    target: HTMLBalToastElement
+  }
+}

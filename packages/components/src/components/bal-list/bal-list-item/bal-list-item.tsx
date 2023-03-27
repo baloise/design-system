@@ -90,12 +90,12 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalListItemNavigateDetail>
 
   /**
    * Emitted when the state of the group is changing
    */
-  @Event() balGroupStateChanged!: EventEmitter<MouseEvent>
+  @Event() balGroupStateChanged!: EventEmitter<BalEvents.BalListItemGroupStateChangedDetail>
 
   /**
    * LIFECYCLE

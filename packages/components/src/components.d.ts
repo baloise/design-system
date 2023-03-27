@@ -9,7 +9,6 @@ import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
-import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
@@ -22,7 +21,6 @@ export { BalConfigState, BalMode } from "./utils/config";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
-export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
@@ -3949,19 +3947,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onBalBlur"?: (event: BalButtonCustomEvent<void>) => void;
+        "onBalBlur"?: (event: BalButtonCustomEvent<BalEvents.BalButtonBlurDetail>) => void;
         /**
           * Emitted when the button has been  rendered.
          */
-        "onBalDidRender"?: (event: BalButtonCustomEvent<void>) => void;
+        "onBalDidRender"?: (event: BalButtonCustomEvent<BalEvents.BalButtonDidRenderDetail>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onBalFocus"?: (event: BalButtonCustomEvent<void>) => void;
+        "onBalFocus"?: (event: BalButtonCustomEvent<BalEvents.BalButtonFocusDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalNavigate"?: (event: BalButtonCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalButtonCustomEvent<BalEvents.BalButtonNavigateDetail>) => void;
         /**
           * If `true` the button is outlined
          */
@@ -4183,15 +4181,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onBalBlur"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        "onBalBlur"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemBlurDetail>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onBalFocus"?: (event: BalCarouselItemCustomEvent<void>) => void;
+        "onBalFocus"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemFocusDetail>) => void;
         /**
           * Emitted when the link element has clicked.
          */
-        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalCarouselItemCustomEvent<BalEvents.BalCarouselItemNavigateDetail>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -4249,7 +4247,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxBlurDetail>) => void;
         /**
           * Emitted when the value property has changed.
          */
@@ -4257,7 +4255,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4369,15 +4367,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the edit button loses focus.
          */
-        "onBalBlur"?: (event: BalDataValueCustomEvent<void>) => void;
+        "onBalBlur"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueBlurDetail>) => void;
         /**
           * Emitted when the edit button has focus.
          */
-        "onBalClick"?: (event: BalDataValueCustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueClickDetail>) => void;
         /**
           * Emitted when the edit button has focus.
          */
-        "onBalFocus"?: (event: BalDataValueCustomEvent<void>) => void;
+        "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
     }
     interface BalDatepicker {
         /**
@@ -4431,7 +4429,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerBlurDetail>) => void;
         /**
           * Emitted when a option got selected.
          */
@@ -4439,11 +4437,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerFocusDetail>) => void;
         /**
           * Emitted when the icon has clicked.
          */
-        "onBalIconClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
+        "onBalIconClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerIconClickDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
@@ -4451,7 +4449,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has clicked.
          */
-        "onBalInputClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
+        "onBalInputClick"?: (event: BalDatepickerCustomEvent<BalEvents.BalDatepickerInputClickDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -4728,31 +4726,31 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadBlurDetail>) => void;
         /**
           * Triggers when a file is added or removed.
          */
-        "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        "onBalChange"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadChangeDetail>) => void;
         /**
           * Triggers when a file is added.
          */
-        "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesAddedDetail>) => void;
         /**
           * Triggers when a file is removed.
          */
-        "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<File[]>) => void;
+        "onBalFilesRemoved"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFilesRemovedDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadFocusDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalInputClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
+        "onBalInputClick"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadInputClickDetail>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
-        "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<FileUploadRejectedFile>) => void;
+        "onBalRejectedFile"?: (event: BalFileUploadCustomEvent<BalEvents.BalFileUploadRejectedFileDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4958,7 +4956,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: BalInputCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalInputCustomEvent<BalEvents.BalInputBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
@@ -4970,7 +4968,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalInputCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalInputCustomEvent<BalEvents.BalInputFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
@@ -4978,7 +4976,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalInputCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalInputCustomEvent<BalEvents.BalInputKeyPressDetail>) => void;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -5062,7 +5060,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: BalInputSliderCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderBlurDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
@@ -5070,15 +5068,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalInputSliderCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalInputSliderCustomEvent<string | number | null>) => void;
+        "onBalInput"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalInputSliderCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalInputSliderCustomEvent<BalEvents.BalInputSliderKeyPressDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5128,11 +5126,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has decreased.
          */
-        "onBalDecrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperChangeDetail>) => void;
+        "onBalDecrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperDecreaseDetail>) => void;
         /**
           * Emitted when the input value has increased.
          */
-        "onBalIncrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperChangeDetail>) => void;
+        "onBalIncrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperIncreaseDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
@@ -5196,11 +5194,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the state of the group is changing
          */
-        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        "onBalGroupStateChanged"?: (event: BalListItemCustomEvent<BalEvents.BalListItemGroupStateChangedDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -5307,19 +5305,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the modal has dismissed.
          */
-        "onBalModalDidDismiss"?: (event: BalModalCustomEvent<OverlayEventDetail>) => void;
+        "onBalModalDidDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalDidDismissDetail>) => void;
         /**
           * Emitted after the modal has presented.
          */
-        "onBalModalDidPresent"?: (event: BalModalCustomEvent<void>) => void;
+        "onBalModalDidPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalDidPresentDetail>) => void;
         /**
           * Emitted before the modal has dismissed.
          */
-        "onBalModalWillDismiss"?: (event: BalModalCustomEvent<OverlayEventDetail>) => void;
+        "onBalModalWillDismiss"?: (event: BalModalCustomEvent<BalEvents.BalModalWillDismissDetail>) => void;
         /**
           * Emitted before the modal has presented.
          */
-        "onBalModalWillPresent"?: (event: BalModalCustomEvent<void>) => void;
+        "onBalModalWillPresent"?: (event: BalModalCustomEvent<BalEvents.BalModalWillPresentDetail>) => void;
         "overlayIndex": number;
         /**
           * Defines the space/padding of the modal
@@ -5625,23 +5623,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputBlurDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalNumberInputCustomEvent<BalEvents.BalInputNumberChangeDetail>) => void;
+        "onBalChange"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputChangeDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalNumberInputCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalNumberInputCustomEvent<BalEvents.BalInputNumberInputDetail>) => void;
+        "onBalInput"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalNumberInputCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -5826,7 +5824,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalRadioCustomEvent<BalEvents.BalRadioBlurDetail>) => void;
         /**
           * Emitted when the checked property has changed.
          */
@@ -5834,7 +5832,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalRadioCustomEvent<BalEvents.BalRadioFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5876,7 +5874,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupBlurDetail>) => void;
         /**
           * Emitted when the checked property has changed.
          */
@@ -5884,11 +5882,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupFocusDetail>) => void;
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalInput"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupChangeDetail>) => void;
+        "onBalInput"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupInputDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
@@ -5966,11 +5964,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalSelectCustomEvent<BalEvents.BalSelectBlurDetail>) => void;
         /**
           * Emitted when the user cancels the input.
          */
-        "onBalCancel"?: (event: BalSelectCustomEvent<KeyboardEvent>) => void;
+        "onBalCancel"?: (event: BalSelectCustomEvent<BalEvents.BalSelectCancelDetail>) => void;
         /**
           * Emitted when a option got selected.
          */
@@ -5978,19 +5976,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalSelectCustomEvent<BalEvents.BalSelectFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalSelectCustomEvent<string>) => void;
+        "onBalInput"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputDetail>) => void;
         /**
           * Emitted when the input got clicked.
          */
-        "onBalInputClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
+        "onBalInputClick"?: (event: BalSelectCustomEvent<BalEvents.BalSelectInputClickDetail>) => void;
         /**
           * Emitted when the input has focus and key from the keyboard go hit.
          */
-        "onBalKeyPress"?: (event: BalSelectCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalSelectCustomEvent<BalEvents.BalSelectKeyPressDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -6089,11 +6087,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button is clicked
          */
-        "onBalAction"?: (event: BalSnackbarCustomEvent<string>) => void;
+        "onBalAction"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarActionDetail>) => void;
         /**
           * Emitted when snackbar is closed
          */
-        "onBalClose"?: (event: BalSnackbarCustomEvent<string>) => void;
+        "onBalClose"?: (event: BalSnackbarCustomEvent<BalEvents.BalSnackbarCloseDetail>) => void;
         /**
           * The subject of the snackbar header
          */
@@ -6490,7 +6488,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalBlur"?: (event: BalTextareaCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaBlurDetail>) => void;
         /**
           * Emitted when the input value has changed..
          */
@@ -6498,7 +6496,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalTextareaCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
@@ -6506,7 +6504,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalTextareaCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalTextareaCustomEvent<BalEvents.BalTextareaKeyPressDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -6552,27 +6550,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalTimeInputCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputBlurDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeChangeDetail>) => void;
+        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: BalTimeInputCustomEvent<MouseEvent>) => void;
+        "onBalClick"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputClickDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalTimeInputCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeInputDetail>) => void;
+        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<KeyboardEvent>) => void;
+        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputKeyPressDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -6603,7 +6601,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when toast is closed
          */
-        "onBalClose"?: (event: BalToastCustomEvent<string>) => void;
+        "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;

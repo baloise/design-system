@@ -10,7 +10,32 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalTextareaChangeDetail = string | undefined
-  export type BalTextareaChange = CustomEvent<BalTextareaChangeDetail>
+  export interface BalTextareaChange extends CustomEvent {
+    detail: BalTextareaChangeDetail
+    target: HTMLBalTextareaElement
+  }
+
   export type BalTextareaInputDetail = string | undefined
-  export type BalTextareaInput = CustomEvent<BalTextareaInputDetail>
+  export interface BalTextareaInput extends CustomEvent {
+    detail: BalTextareaInputDetail
+    target: HTMLBalTextareaElement
+  }
+
+  export type BalTextareaBlurDetail = FocusEvent
+  export interface BalTextareaBlur extends CustomEvent {
+    detail: BalTextareaBlurDetail
+    target: HTMLBalTextareaElement
+  }
+
+  export type BalTextareaKeyPressDetail = KeyboardEvent
+  export interface BalTextareaKeyPress extends CustomEvent {
+    detail: BalTextareaKeyPressDetail
+    target: HTMLBalTextareaElement
+  }
+
+  export type BalTextareaFocusDetail = FocusEvent
+  export interface BalTextareaFocus extends CustomEvent {
+    detail: BalTextareaFocusDetail
+    target: HTMLBalTextareaElement
+  }
 }

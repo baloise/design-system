@@ -242,22 +242,22 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalDatepickerBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalDatepickerFocusDetail>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balInputClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalDatepickerInputClickDetail>
 
   /**
    * Emitted when the icon has clicked.
    */
-  @Event() balIconClick!: EventEmitter<MouseEvent>
+  @Event() balIconClick!: EventEmitter<BalEvents.BalDatepickerIconClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {

@@ -18,4 +18,16 @@ namespace BalEvents {
     detail: BalListAccordionChangeDetail
     target: HTMLBalListItemAccordionHeadElement
   }
+
+  export type BalListItemNavigateDetail = MouseEvent
+  export interface BalListItemNavigate extends CustomEvent {
+    detail: BalListItemNavigateDetail
+    target: HTMLBalListItemElement
+  }
+
+  export type BalListItemGroupStateChangedDetail = MouseEvent
+  export interface BalListItemGroupStateChanged extends CustomEvent {
+    detail: BalListItemGroupStateChangedDetail
+    target: HTMLBalListItemElement
+  }
 }

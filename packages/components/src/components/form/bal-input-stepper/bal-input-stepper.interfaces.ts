@@ -5,7 +5,26 @@
 
 namespace BalEvents {
   export type BalInputStepperChangeDetail = number | undefined
-  export type BalInputStepperChange = CustomEvent<BalInputStepperChangeDetail>
+  export interface BalInputStepperChange extends CustomEvent {
+    detail: BalInputStepperChangeDetail
+    target: HTMLBalInputStepperElement
+  }
+
   export type BalInputStepperInputDetail = number | undefined
-  export type BalInputStepperInput = CustomEvent<BalInputStepperInputDetail>
+  export interface BalInputStepperInput extends CustomEvent {
+    detail: BalInputStepperInputDetail
+    target: HTMLBalInputStepperElement
+  }
+
+  export type BalInputStepperIncreaseDetail = number | undefined
+  export interface BalInputStepperIncrease extends CustomEvent {
+    detail: BalInputStepperIncreaseDetail
+    target: HTMLBalInputStepperElement
+  }
+
+  export type BalInputStepperDecreaseDetail = number | undefined
+  export interface BalInputStepperDecrease extends CustomEvent {
+    detail: BalInputStepperDecreaseDetail
+    target: HTMLBalInputStepperElement
+  }
 }
