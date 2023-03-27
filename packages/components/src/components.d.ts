@@ -21,7 +21,7 @@ import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
-export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";

@@ -33,3 +33,4 @@ A list of the custom commands for this specific component.
 | `balTabsFindLabel`          | Returns the label of the tab item.            | `(options?: Partial<Loggable>): Chainable<JQuery>`                                                      |
 | `balTabsShouldHaveItems`    | Assert that the tab has the given item.       | `(labels: string[], dataType?: 'label' \| 'value', options?: Partial<Loggable>): Chainable<JQuery>`     |
 | `balTabItemShouldHaveState` | Assert that the tab item has the given state. | `(state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balTabItemShouldBeActive`  | Assert that the tab item is active or not.    | `(active?: boolean, options?: Partial<Loggable>): Chainable<JQuery>`                                    |
