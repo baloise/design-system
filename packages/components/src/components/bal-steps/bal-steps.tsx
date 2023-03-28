@@ -4,13 +4,13 @@ import { Events } from '../../types'
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
-import { watchForSteps } from './utils/watch-tabs'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import { stopEventBubbling } from '../../utils/form-input'
 import { ResizeHandler } from '../../utils/resize'
 import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
+import { MutationHandler } from '../../utils/mutations'
 
 @Component({
   tag: 'bal-steps',
@@ -21,7 +21,7 @@ import { newBalStepOption } from './bal-step.util'
 export class Steps implements Loggable {
   @Element() el!: HTMLElement
 
-  private mutationO?: MutationObserver
+  private mutationHandler = MutationHandler({ tags: ['bal-steps', 'bal-step-item'] })
   private resizeWidthHandler = ResizeHandler()
   private stepsId = `bal-steps-${StepsIds++}`
 
@@ -48,6 +48,11 @@ export class Steps implements Loggable {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   /**
@@ -89,20 +94,21 @@ export class Steps implements Loggable {
 
   connectedCallback() {
     this.debounceChanged()
-  }
+    this.mutationHandler.connect(this.el, () => this.onOptionChange())
 
-  disconnectedCallback() {
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
     }
   }
 
   componentDidLoad() {
     this.onOptionChange()
-    this.mutationO = watchForSteps<HTMLBalStepItemElement>(this.el, 'bal-step-item', () => {
-      this.onOptionChange()
-    })
+  }
+
+  disconnectedCallback() {
+    this.mutationHandler.disconnect()
   }
 
   /**

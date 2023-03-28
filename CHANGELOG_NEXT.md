@@ -47,11 +47,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.9](https://github.com/baloise-incubator/design-system/compare/v10.24.8...v10.24.9) (2022-10-11)
 
-
 ### Features
 
 * **bal-navigation:** added the target attr for meta and main tabs ([c252771](https://github.com/baloise-incubator/design-system/commit/c252771fad01be7436cdb042a9f2efdd10634d11))
-
 
 
 ## [10.24.8](https://github.com/baloise-incubator/design-system/compare/v10.24.7...v10.24.8) (2022-10-11)

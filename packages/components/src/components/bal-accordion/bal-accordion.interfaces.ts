@@ -13,4 +13,16 @@ namespace BalEvents {
     detail: BalAccordionChangeDetail
     target: HTMLBalAccordionElement
   }
+
+  export type BalAccordionWillAnimateDetail = void
+  export interface BalAccordionWillAnimate extends CustomEvent {
+    detail: BalAccordionWillAnimateDetail
+    target: HTMLBalAccordionElement
+  }
+
+  export type BalAccordionDidAnimateDetail = void
+  export interface BalAccordionDidAnimate extends CustomEvent {
+    detail: BalAccordionDidAnimateDetail
+    target: HTMLBalAccordionElement
+  }
 }

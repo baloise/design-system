@@ -77,6 +77,17 @@ export const isDescendant = (parent: HTMLElement, child: HTMLElement | EventTarg
   return false
 }
 
+export const hasParent = (parentTag: string, child: HTMLElement | EventTarget) => {
+  let node = (child as any).parentNode
+  while (node != null) {
+    if (node.tagName === parentTag.toUpperCase()) {
+      return true
+    }
+    node = node.parentNode
+  }
+  return false
+}
+
 export const getAppRoot = (doc: Document) => {
   return doc.querySelector('bal-app') || doc.body
 }
@@ -197,6 +208,12 @@ export const waitForComponent = async (el: HTMLElement | null) => {
   await deepReady(el, true)
   await waitAfterFramePaint()
   await waitAfterIdleCallback()
+}
+
+export const isChildOfEventTarget = async (event: any, el: HTMLElement, callback: () => void) => {
+  if (event && event.target && el && el !== event.target && isDescendant(event.target as HTMLElement, el)) {
+    callback()
+  }
 }
 
 export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {

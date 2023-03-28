@@ -16,7 +16,7 @@ export const StencilBaseConfig: Config = {
   autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
-  enableCache: false,
+  enableCache: true,
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
@@ -36,10 +36,6 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
     },
     {
       type: 'dist-custom-elements',

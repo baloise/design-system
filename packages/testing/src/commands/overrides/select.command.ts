@@ -33,7 +33,7 @@ Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any
       return cy
         .wrap(element, { log: false })
         .find(
-          `${selectors.tabs.tabItems}[data-label="${values}"], ${selectors.tabs.tabItems}[data-value="${values}"], ${selectors.tabs.tabItems}[data-index="${values}"]`,
+          `${selectors.tabs.item}[data-label="${values}"], ${selectors.tabs.item}[data-value="${values}"], ${selectors.tabs.item}[data-index="${values}"]`,
         )
         .click()
         .wrap(element, { log: false })

@@ -481,13 +481,13 @@ const tokens = {
     width: '2px',
     colors: {
       'primary': 'primary-5',
+      'primary-light': 'primary-3', // inverted disabled
+      'white': 'white', // inverted
       'grey': 'grey-3',
       'grey-dark': 'grey-4',
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
-      'primary-light': 'primary-3', // inverted disabled
-      'white': 'white', // inverted
     },
   },
   /**

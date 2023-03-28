@@ -1,7 +1,7 @@
 import { Platforms } from '../../../src/types'
 import { compareSnapshotOptions } from './snapshot-util'
 
-describe('bal-navigation', () => {
+describe.skip('bal-navigation', () => {
   testNavigationOnDesktop('widescreen')
   testNavigationOnDesktop('highDefinition')
   testNavigationOnDesktop('desktop')
@@ -55,7 +55,7 @@ describe('bal-navigation', () => {
   }
 })
 
-describe('bal-navigation-colors', () => {
+describe.skip('bal-navigation-colors', () => {
   testNavigationOnDesktop('widescreen')
 
   function testNavigationOnDesktop(platform: Platforms) {

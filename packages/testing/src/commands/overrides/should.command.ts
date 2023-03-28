@@ -173,7 +173,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (hasClass(element, selectors.tabs.tabItems.replace('li.', ''))) {
+  if (hasTestId(element, parseDataTestID(selectors.tabs.item))) {
     switch (condition) {
       case 'have.value':
         return originalFn(element, 'have.attr', 'data-label', key, value)
@@ -182,10 +182,10 @@ const shouldAndAndCommand = (
         return originalFn(element, 'not.have.attr', 'data-label', key, value)
 
       case 'be.disabled':
-        return originalFn(element.find('a', { log: false }), 'have.attr', 'aria-disabled', 'true')
+        return originalFn(element, 'have.attr', 'aria-disabled', 'true')
 
       case 'not.be.disabled':
-        return originalFn(element.find('a', { log: false }), 'not.have.attr', 'aria-disabled', 'false')
+        return originalFn(element, 'not.have.attr', 'aria-disabled', 'false')
     }
   }
 

@@ -37,4 +37,16 @@ namespace BalEvents {
     detail: BalPopoverChangeDetail
     target: HTMLBalPopoverElement
   }
+
+  export type BalPopoverWillAnimateDetail = void
+  export interface BalPopoverWillAnimate extends CustomEvent {
+    detail: BalPopoverWillAnimateDetail
+    target: HTMLBalPopoverElement
+  }
+
+  export type BalPopoverDidAnimateDetail = void
+  export interface BalPopoverDidAnimate extends CustomEvent {
+    detail: BalPopoverDidAnimateDetail
+    target: HTMLBalPopoverElement
+  }
 }

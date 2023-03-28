@@ -1,58 +1,48 @@
 describe('bal-tabs', () => {
-  beforeEach(() => cy.visit('/components/bal-tabs/test/bal-tabs.visual.html').waitForDesignSystem())
+  const errorThreshold = 0
 
-  it('basic component', () => {
-    cy.platform('desktop').wait(400)
-    cy.getByTestId('basic').compareSnapshot('tabs-basic', 0.0)
+  context('desktop', () => {
+    beforeEach(() => {
+      cy.visit('/components/bal-tabs/test/bal-tabs.visual.html').platform('desktop').waitForDesignSystem()
+    })
 
-    cy.platform('tablet').wait(400)
-    cy.getByTestId('basic').compareSnapshot('tabs-basic-tablet', 0.0)
-
-    cy.platform('mobile').wait(400)
-    cy.getByTestId('basic').compareSnapshot('tabs-basic-mobile', 0.0)
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('tabs-basic', errorThreshold)
+      cy.getByTestId('expanded').compareSnapshot('tabs-expanded', errorThreshold)
+      cy.getByTestId('meta').compareSnapshot('tabs-meta', errorThreshold)
+      cy.getByTestId('navbar').compareSnapshot('tabs-navbar', errorThreshold)
+      cy.getByTestId('navigation').compareSnapshot('tabs-navigation', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical', errorThreshold)
+    })
   })
 
-  it('expanded', () => {
-    cy.platform('desktop').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded', 0.01)
+  context('tablet', () => {
+    beforeEach(() => {
+      cy.visit('/components/bal-tabs/test/bal-tabs.visual.html').platform('tablet').waitForDesignSystem()
+    })
 
-    cy.platform('tablet').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-tablet', 0.02)
-
-    cy.platform('mobile').wait(400)
-    cy.getByTestId('expanded').compareSnapshot('tabs-expanded-mobile', 0.02)
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('tabs-basic-tablet', errorThreshold)
+      cy.getByTestId('expanded').compareSnapshot('tabs-expanded-tablet', errorThreshold)
+      cy.getByTestId('meta').compareSnapshot('tabs-meta-tablet', errorThreshold)
+      cy.getByTestId('navbar').compareSnapshot('tabs-navbar-tablet', errorThreshold)
+      cy.getByTestId('navigation').compareSnapshot('tabs-navigation-tablet', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical-tablet', errorThreshold)
+    })
   })
 
-  it('meta', () => {
-    cy.platform('desktop').wait(400)
-    cy.getByTestId('meta').compareSnapshot('tabs-meta', 0.01)
+  context('mobile', () => {
+    beforeEach(() => {
+      cy.visit('/components/bal-tabs/test/bal-tabs.visual.html').platform('mobile').waitForDesignSystem()
+    })
 
-    cy.platform('tablet').wait(400)
-    cy.getByTestId('meta').compareSnapshot('tabs-meta-tablet', 0.02)
-
-    cy.platform('mobile').wait(400)
-    cy.getByTestId('meta').compareSnapshot('tabs-meta-mobile', 0.02)
-  })
-
-  it('navbar', () => {
-    cy.platform('desktop').wait(400)
-    cy.getByTestId('navbar').compareSnapshot('tabs-navbar', 0.01)
-
-    cy.platform('tablet').wait(400)
-    cy.getByTestId('navbar').compareSnapshot('tabs-navbar-tablet', 0.02)
-
-    cy.platform('mobile').wait(400)
-    cy.getByTestId('navbar').compareSnapshot('tabs-navbar-mobile', 0.02)
-  })
-
-  it('navigation', () => {
-    cy.platform('desktop').wait(400)
-    cy.getByTestId('navigation').compareSnapshot('tabs-navigation', 0.01)
-
-    cy.platform('tablet').wait(400)
-    cy.getByTestId('navigation').compareSnapshot('tabs-navigation-tablet', 0.02)
-
-    cy.platform('mobile').wait(400)
-    cy.getByTestId('navigation').compareSnapshot('tabs-navigation-mobile', 0.02)
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('tabs-basic-mobile', errorThreshold)
+      cy.getByTestId('expanded').compareSnapshot('tabs-expanded-mobile', errorThreshold)
+      cy.getByTestId('meta').compareSnapshot('tabs-meta-mobile', errorThreshold)
+      cy.getByTestId('navbar').compareSnapshot('tabs-navbar-mobile', errorThreshold)
+      cy.getByTestId('navigation').compareSnapshot('tabs-navigation-mobile', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical-mobile', errorThreshold)
+    })
   })
 })

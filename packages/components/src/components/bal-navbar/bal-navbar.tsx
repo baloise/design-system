@@ -65,6 +65,7 @@ export class Navbar {
           role="navigation"
           aria-label="main navigation"
           class={{
+            ...navbarEl.element('nav').class(),
             container: true,
             [`is-${this.container}`]: this.container !== '',
           }}

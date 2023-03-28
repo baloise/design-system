@@ -16,7 +16,6 @@ export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
 export const hasTestId = (el: Cypress.Chainable<JQuery>, testId: string) => {
   if (typeof el === 'object' && (el as any).length > 0) {
     const dataTestId = (el as unknown as JQuery).data('testid')
-    console.warn('hasTestId', el, dataTestId)
     return dataTestId === testId
   }
   return false

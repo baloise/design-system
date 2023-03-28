@@ -39,7 +39,6 @@
     "dist/",
     "loader/",
     "src/styles/",
-    "vscode-data.json",
     "src/components/**/*.sass",
     "src/components/**/*.scss"
   ],
@@ -50,7 +49,9 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --es5 --no-cache --docs-json dist/docs.json && node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
+    "build:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
+    "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
@@ -92,7 +93,7 @@
     "lodash.round": "~4.0.4",
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
-    "lottie-web": "5.10.2",
+    "lottie-web": "5.8.1",
     "tslib": "^2.1.0"
   },
   "devDependencies": {

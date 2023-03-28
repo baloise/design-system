@@ -4,20 +4,18 @@ import { Attributes } from '../../utils/attributes'
 export interface BalTabOption {
   value: string
   label: string
-  icon?: string
   href: string
   target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean
-  done: boolean
   hidden: boolean
-  failed: boolean
   bubble: boolean | string
   prevent: boolean
+  icon?: string
   passed?: boolean
   index?: number
   context?: BalProps.BalTabsInterface
-  navigate: EventEmitter<MouseEvent>
+  navigate?: EventEmitter<MouseEvent>
   trackingData?: Attributes
 }
 

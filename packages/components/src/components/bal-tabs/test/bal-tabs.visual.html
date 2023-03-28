@@ -16,7 +16,7 @@
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
 
-  <body class="bal-body">
+  <body>
     <bal-doc-app>
       <main>
         <section data-testid="basic">
@@ -55,11 +55,20 @@
         </section>
 
         <section data-testid="navigation">
-          <bal-tabs value="tab-a" interface="navigation" spaceless float="right" fullwidth>
-            <bal-tab-item value="tab-a" icon="nav-go-down" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" icon="nav-go-down" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" icon="nav-go-down" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" icon="nav-go-down" label="Tab D">Content of Tab D</bal-tab-item>
+          <bal-tabs value="tab-a" spaceless float="right" fullwidth accordion>
+            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+          </bal-tabs>
+        </section>
+
+        <section data-testid="vertical">
+          <bal-tabs vertical value="tab-a" border>
+            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
           </bal-tabs>
         </section>
       </main>

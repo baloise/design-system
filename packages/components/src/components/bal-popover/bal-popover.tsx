@@ -105,6 +105,16 @@ export class Popover {
    */
   @Event() balPopoverPrepare!: EventEmitter<string>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
+
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(event: CustomEvent<string>) {
     const popoverId = event.detail
@@ -232,6 +242,7 @@ export class Popover {
         this.menuInnerElement.scrollTo(0, 0)
       }
       this.balPopoverPrepare.emit(this.popoverId)
+      this.balWillAnimate.emit()
       this.value = true
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -240,6 +251,7 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
+      this.balDidAnimate.emit()
     }
   }
 
@@ -251,6 +263,7 @@ export class Popover {
     if (this.value || options.force) {
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
+      this.balWillAnimate.emit()
       this.value = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -259,6 +272,7 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
+      this.balDidAnimate.emit()
     }
   }
 

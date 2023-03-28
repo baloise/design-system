@@ -13,4 +13,16 @@ namespace BalEvents {
     detail: BalNavbarBrandNavigationChangeDetail
     target: HTMLBalNavbarBrandElement
   }
+
+  export type BalNavbarMenuWillAnimateDetail = void
+  export interface BalNavbarMenuWillAnimate extends CustomEvent {
+    detail: BalNavbarMenuWillAnimateDetail
+    target: HTMLBalNavbarBrandElement
+  }
+
+  export type BalNavbarMenuDidAnimateDetail = void
+  export interface BalNavbarMenuDidAnimate extends CustomEvent {
+    detail: BalNavbarMenuDidAnimateDetail
+    target: HTMLBalNavbarBrandElement
+  }
 }

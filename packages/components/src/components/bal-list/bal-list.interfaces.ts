@@ -30,4 +30,16 @@ namespace BalEvents {
     detail: BalListItemGroupStateChangedDetail
     target: HTMLBalListItemElement
   }
+
+  export type BalListItemWillAnimateDetail = void
+  export interface BalListItemWillAnimate extends CustomEvent {
+    detail: BalListItemWillAnimateDetail
+    target: HTMLBalListItemElement
+  }
+
+  export type BalListItemDidAnimateDetail = void
+  export interface BalListItemDidAnimate extends CustomEvent {
+    detail: BalListItemDidAnimateDetail
+    target: HTMLBalListItemElement
+  }
 }

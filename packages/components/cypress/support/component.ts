@@ -78,6 +78,14 @@ Cypress.Commands.add(
   },
 )
 
+Cypress.Commands.add('waitAfterFramePaint', () => {
+  cy.then(() => waitAfterFramePaint())
+})
+
+Cypress.Commands.add('waitAfterIdleCallback', () => {
+  cy.then(() => waitAfterIdleCallback())
+})
+
 Cypress.Commands.add('waitForDesignSystem', () => {
   cy.document({ log: false }).then(document => document.fonts.ready)
 

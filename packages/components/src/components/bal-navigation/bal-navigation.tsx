@@ -196,8 +196,8 @@ export class Navigation implements ComponentInterface {
   }
 
   onMainTabChange = async (event: BalEvents.BalTabsChange) => {
-    const isMainNavOpen = event.detail !== ''
-    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
+    const isMainNavOpen = event.detail !== '' && event.detail !== undefined
+    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail || '')
     const isLink = option?.href !== '' && option?.href !== undefined
 
     if (hasTouchSupport()) {
@@ -287,7 +287,7 @@ export class Navigation implements ComponentInterface {
                 fullwidth
                 spaceless
                 value={this.selectedMainValue}
-                onBalChange={this.onMainTabChange}
+                onBalChange={(event: any) => this.onMainTabChange(event)}
                 ref={el => {
                   this.mainNavTabsEl = el
                 }}

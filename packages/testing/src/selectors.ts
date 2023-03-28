@@ -67,8 +67,8 @@ export const selectors = {
     chips: '.bal-select__control__selections > .bal-tag',
   },
   tabs: {
-    tabItems: 'li.data-test-tab-item',
-    action: '.data-test-tabs-action',
+    item: byTestId('bal-tabs-item'),
+    itemLabel: byTestId('bal-tabs-item-label'),
   },
   toast: {
     main: '.bal-notices > .bal-toast',

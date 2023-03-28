@@ -317,6 +317,10 @@ export namespace Components {
          */
         "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
         /**
+          * If `true` a light border is shown at the bottom.
+         */
+        "border": boolean;
+        /**
           * Defines the layout of the navigation controls.
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
@@ -329,9 +333,17 @@ export namespace Components {
          */
         "controlsSticky": boolean;
         /**
+          * If `true` the carousel uses the full height
+         */
+        "fullHeight": boolean;
+        /**
           * Defines special looks.
          */
         "interface": 'card' | 'image' | 'product' | '';
+        /**
+          * If `true` the carousel can be used on dark background
+         */
+        "inverted": boolean;
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
@@ -2418,14 +2430,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the step is marked as done.
-         */
-        "done": boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed": boolean;
-        /**
           * Options of the tab like label, value etc.
          */
         "getOptions": () => Promise<BalTabOption>;
@@ -2470,6 +2474,10 @@ export namespace Components {
     }
     interface BalTabs {
         /**
+          * If `true` the tab items can be open and closed
+         */
+        "accordion": boolean;
+        /**
           * If `true` a light border is shown for the tabs.
          */
         "border": boolean;
@@ -2486,11 +2494,11 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float": BalProps.BalTabsFloat;
         /**
-          * If `true` the tabs is a block element and uses 100% of the width
+          * @deprecated If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
         /**
@@ -2502,13 +2510,21 @@ export namespace Components {
          */
         "iconPosition": BalProps.BalTabsIconPosition;
         /**
-          * Defines the layout of the tabs.
+          * @deprecated Defines the layout of the tabs.
          */
         "interface": BalProps.BalTabsInterface;
         /**
-          * If `true` the field expands over the whole width.
+          * If `true` the tabs can be uses on dark background
          */
         "inverted": boolean;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalTabOption[];
+        /**
+          * If `true` the tabs have a carousel if they need more space than provided.
+         */
+        "overflow": boolean;
         "renderLine": () => Promise<void>;
         /**
           * Go to tab with the given value
@@ -3844,6 +3860,8 @@ declare namespace LocalJSX {
           * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -4117,6 +4135,10 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
         /**
+          * If `true` a light border is shown at the bottom.
+         */
+        "border"?: boolean;
+        /**
           * Defines the layout of the navigation controls.
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
@@ -4129,9 +4151,17 @@ declare namespace LocalJSX {
          */
         "controlsSticky"?: boolean;
         /**
+          * If `true` the carousel uses the full height
+         */
+        "fullHeight"?: boolean;
+        /**
           * Defines special looks.
          */
         "interface"?: 'card' | 'image' | 'product' | '';
+        /**
+          * If `true` the carousel can be used on dark background
+         */
+        "inverted"?: boolean;
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
@@ -5191,6 +5221,7 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
         /**
           * Emitted when the state of the group is changing
          */
@@ -5199,6 +5230,7 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -5360,10 +5392,12 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuDidAnimateDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
+        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -5728,7 +5762,9 @@ declare namespace LocalJSX {
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
+        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
          */
@@ -6261,14 +6297,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the step is marked as done.
-         */
-        "done"?: boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed"?: boolean;
-        /**
           * If `true` the step is hidden.
          */
         "hidden"?: boolean;
@@ -6309,6 +6337,10 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
+          * If `true` the tab items can be open and closed
+         */
+        "accordion"?: boolean;
+        /**
           * If `true` a light border is shown for the tabs.
          */
         "border"?: boolean;
@@ -6325,11 +6357,11 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float"?: BalProps.BalTabsFloat;
         /**
-          * If `true` the tabs is a block element and uses 100% of the width
+          * @deprecated If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
         /**
@@ -6337,17 +6369,27 @@ declare namespace LocalJSX {
          */
         "iconPosition"?: BalProps.BalTabsIconPosition;
         /**
-          * Defines the layout of the tabs.
+          * @deprecated Defines the layout of the tabs.
          */
         "interface"?: BalProps.BalTabsInterface;
         /**
-          * If `true` the field expands over the whole width.
+          * If `true` the tabs can be uses on dark background
          */
         "inverted"?: boolean;
         /**
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalTabOption[];
+        /**
+          * If `true` the tabs have a carousel if they need more space than provided.
+         */
+        "overflow"?: boolean;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */
