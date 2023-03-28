@@ -39,7 +39,7 @@ export {
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { isBrowser, hasTouchSupport } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'
-export { BodyScrollBlocker } from './utils/toggle-scrolling-body'
+export { ScrollHandler } from './utils/scroll'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'

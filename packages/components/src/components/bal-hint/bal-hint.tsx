@@ -3,7 +3,7 @@ import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachCompo
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
+import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({
@@ -19,7 +19,7 @@ export class Hint implements BalConfigObserver {
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
 
-  private bodyScrollBlocker = BodyScrollBlocker()
+  private bodyScrollHandler = ScrollHandler()
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
@@ -48,10 +48,12 @@ export class Hint implements BalConfigObserver {
   }
 
   connectedCallback() {
+    this.bodyScrollHandler.connect()
     attachComponentToConfig(this)
   }
 
   disconnectedCallback() {
+    this.bodyScrollHandler.disconnect()
     detachComponentToConfig(this)
   }
 
@@ -106,7 +108,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.present()
     }
     if (this.isMobile) {
-      this.bodyScrollBlocker.block()
+      this.bodyScrollHandler.disable()
     }
     this.isActive = true
   }
@@ -120,7 +122,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.dismiss()
     }
     if (this.isMobile) {
-      this.bodyScrollBlocker.allow()
+      this.bodyScrollHandler.enable()
     }
     this.isActive = false
   }

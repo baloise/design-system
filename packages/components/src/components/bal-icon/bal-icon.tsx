@@ -76,17 +76,17 @@ export class Icon implements BalConfigObserver {
     this.icons = state.icons
   }
 
-  private get svgContent() {
+  private svgContent = (iconName: string) => {
     const hasIcons = Object.keys(this.icons).length > 0
-    if (hasIcons && this.name && this.name.length > 0) {
+    if (hasIcons && iconName && iconName.length > 0) {
       // We are doing this to avoid breaking change.
-      if (this.name.startsWith('alert')) {
-        this.name = 'alert-triangle'
+      if (iconName.startsWith('alert')) {
+        iconName = 'alert-triangle'
       }
-      if (this.name.startsWith('info')) {
-        this.name = 'info-circle'
+      if (iconName.startsWith('info')) {
+        iconName = 'info-circle'
       }
-      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(this.name))}`]
+      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(iconName))}`]
       if (icon) {
         return icon
       }
@@ -111,6 +111,7 @@ export class Icon implements BalConfigObserver {
       : 'primary'
 
     const block = BEM.block('icon')
+    const svgContent = this.svgContent(this.name)
 
     return (
       <Host
@@ -129,7 +130,7 @@ export class Icon implements BalConfigObserver {
             ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
             ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
-          innerHTML={this.svgContent}
+          innerHTML={svgContent}
         ></div>
       </Host>
     )
