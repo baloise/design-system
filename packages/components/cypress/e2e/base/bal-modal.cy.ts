@@ -17,6 +17,11 @@ describe('bal-modal', () => {
     cy.getByTestId('modal').balModalIsClosed()
   })
 
+  it('should open and find the open one and close it again', () => {
+    cy.getByTestId('open-modal-button').click()
+    cy.balModalFindOpen().balModalIsOpen().balModalClose().balModalIsClosed()
+  })
+
   it('should contain title', () => {
     cy.getByTestId('open-modal-button').click()
     cy.getByTestId('modal').find('bal-modal-header').contains('Modal Title')

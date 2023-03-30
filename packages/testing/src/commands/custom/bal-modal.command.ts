@@ -8,7 +8,7 @@ Cypress.Commands.add(
   options => {
     const o = wrapOptions(options)
     return cy
-      .getComponent('bal-modal[aria-presented="true"] .sc-bal-modal', o)
+      .getComponent('bal-modal[aria-presented="true"]', o)
       .then($el => {
         log('balModalFindOpen', '', $el, options)
         return $el
