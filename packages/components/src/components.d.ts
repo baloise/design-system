@@ -10,10 +10,11 @@ import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events, Props } from "./types";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
-import { Events, Props } from "./types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
@@ -21,10 +22,11 @@ export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+export { Events, Props } from "./types";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+export { Attributes } from "./utils/attributes";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
-export { Events, Props } from "./types";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1572,12 +1574,12 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": BalProps.BalNavigationLevelBlockColor;
+        "color": Props.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": BalProps.BalButtonTarget;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelBlockItem {
@@ -1585,7 +1587,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": BalProps.BalButtonTarget;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMain {
@@ -1597,7 +1599,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": BalProps.BalButtonTarget;
+        "target": Props.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMeta {
@@ -1616,6 +1618,135 @@ export namespace Components {
     }
     interface BalNavigationLevels {
         "getLevelInfos": () => Promise<LevelInfo[]>;
+    }
+    interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
+        "ariaLabelMain"?: string;
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
+    interface BalNavigationMenu {
+        "elements": LevelInfo[];
+        "linkHref"?: string;
+        "linkName"?: string;
+        "target": Props.BalButtonTarget;
+        "tracking": Attributes;
+    }
+    interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
+        "color": Props.BalNavigationLevelBlockColor;
+        /**
+          * Optional headline of the menu list card
+         */
+        "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
+        "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
+        "target": Props.BalButtonTarget;
+        "tracking": Attributes;
+    }
+    interface BalNavigationMenuListItem {
+        "href"?: string;
+        "target": Props.BalButtonTarget;
+        "tracking": Attributes;
+    }
+    interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
+        "ariaLabelMeta"?: string;
+    }
+    interface BalNavigationMetaEnd {
+    }
+    interface BalNavigationMetaStart {
+    }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor": Props.BalButtonColor;
+        /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow": boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop": boolean;
+        /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable": boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded": boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth": number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow": boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius": Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth": number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor": Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted": boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label": string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop": boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY": number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position": Props.BalPopoverPlacement;
+        /**
+          * Defines the size of the button
+         */
+        "size": Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -2355,6 +2486,10 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "context"?: BalProps.BalTabsContext;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
@@ -2378,10 +2513,6 @@ export namespace Components {
           * Defines the layout of the tabs.
          */
         "iconPosition": BalProps.BalTabsIconPosition;
-        /**
-          * @deprecated Defines the layout of the tabs.
-         */
-        "interface": BalProps.BalTabsInterface;
         /**
           * If `true` the tabs can be uses on dark background
          */
@@ -3326,6 +3457,66 @@ declare global {
         prototype: HTMLBalNavigationLevelsElement;
         new (): HTMLBalNavigationLevelsElement;
     };
+    interface HTMLBalNavigationMainElement extends Components.BalNavigationMain, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainElement: {
+        prototype: HTMLBalNavigationMainElement;
+        new (): HTMLBalNavigationMainElement;
+    };
+    interface HTMLBalNavigationMainBodyElement extends Components.BalNavigationMainBody, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainBodyElement: {
+        prototype: HTMLBalNavigationMainBodyElement;
+        new (): HTMLBalNavigationMainBodyElement;
+    };
+    interface HTMLBalNavigationMainHeadElement extends Components.BalNavigationMainHead, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainHeadElement: {
+        prototype: HTMLBalNavigationMainHeadElement;
+        new (): HTMLBalNavigationMainHeadElement;
+    };
+    interface HTMLBalNavigationMenuElement extends Components.BalNavigationMenu, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuElement: {
+        prototype: HTMLBalNavigationMenuElement;
+        new (): HTMLBalNavigationMenuElement;
+    };
+    interface HTMLBalNavigationMenuListElement extends Components.BalNavigationMenuList, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuListElement: {
+        prototype: HTMLBalNavigationMenuListElement;
+        new (): HTMLBalNavigationMenuListElement;
+    };
+    interface HTMLBalNavigationMenuListItemElement extends Components.BalNavigationMenuListItem, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuListItemElement: {
+        prototype: HTMLBalNavigationMenuListItemElement;
+        new (): HTMLBalNavigationMenuListItemElement;
+    };
+    interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaElement: {
+        prototype: HTMLBalNavigationMetaElement;
+        new (): HTMLBalNavigationMetaElement;
+    };
+    interface HTMLBalNavigationMetaEndElement extends Components.BalNavigationMetaEnd, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaEndElement: {
+        prototype: HTMLBalNavigationMetaEndElement;
+        new (): HTMLBalNavigationMetaEndElement;
+    };
+    interface HTMLBalNavigationMetaStartElement extends Components.BalNavigationMetaStart, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaStartElement: {
+        prototype: HTMLBalNavigationMetaStartElement;
+        new (): HTMLBalNavigationMetaStartElement;
+    };
+    interface HTMLBalNavigationPopoverElement extends Components.BalNavigationPopover, HTMLStencilElement {
+    }
+    var HTMLBalNavigationPopoverElement: {
+        prototype: HTMLBalNavigationPopoverElement;
+        new (): HTMLBalNavigationPopoverElement;
+    };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
     var HTMLBalNoticesElement: {
@@ -3604,6 +3795,16 @@ declare global {
         "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
         "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
         "bal-navigation-levels": HTMLBalNavigationLevelsElement;
+        "bal-navigation-main": HTMLBalNavigationMainElement;
+        "bal-navigation-main-body": HTMLBalNavigationMainBodyElement;
+        "bal-navigation-main-head": HTMLBalNavigationMainHeadElement;
+        "bal-navigation-menu": HTMLBalNavigationMenuElement;
+        "bal-navigation-menu-list": HTMLBalNavigationMenuListElement;
+        "bal-navigation-menu-list-item": HTMLBalNavigationMenuListItemElement;
+        "bal-navigation-meta": HTMLBalNavigationMetaElement;
+        "bal-navigation-meta-end": HTMLBalNavigationMetaEndElement;
+        "bal-navigation-meta-start": HTMLBalNavigationMetaStartElement;
+        "bal-navigation-popover": HTMLBalNavigationPopoverElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -5238,20 +5439,20 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: BalProps.BalNavigationLevelBlockColor;
+        "color"?: Props.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
-        "target"?: BalProps.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelBlockItem {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
-        "target"?: BalProps.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMain {
@@ -5262,8 +5463,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
-        "target"?: BalProps.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "target"?: Props.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMeta {
@@ -5277,10 +5478,139 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
         "value"?: string;
     }
     interface BalNavigationLevels {
+    }
+    interface BalNavigationMain {
+        /**
+          * aria label for main navigation bar
+         */
+        "ariaLabelMain"?: string;
+    }
+    interface BalNavigationMainBody {
+    }
+    interface BalNavigationMainHead {
+    }
+    interface BalNavigationMenu {
+        "elements"?: LevelInfo[];
+        "linkHref"?: string;
+        "linkName"?: string;
+        "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
+    }
+    interface BalNavigationMenuList {
+        /**
+          * Color of the menu list card background
+         */
+        "color"?: Props.BalNavigationLevelBlockColor;
+        /**
+          * Optional headline of the menu list card
+         */
+        "headline"?: string;
+        /**
+          * Optional href of the menu list card headline as link
+         */
+        "href"?: string;
+        /**
+          * Target of the menu list card headline target as link
+         */
+        "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
+    }
+    interface BalNavigationMenuListItem {
+        "href"?: string;
+        "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
+    }
+    interface BalNavigationMeta {
+        /**
+          * aria label for meta navigation bar
+         */
+        "ariaLabelMeta"?: string;
+    }
+    interface BalNavigationMetaEnd {
+    }
+    interface BalNavigationMetaStart {
+    }
+    interface BalNavigationPopover {
+        /**
+          * Color style of the button when the popover is open.
+         */
+        "activeColor"?: Props.BalButtonColor;
+        /**
+          * If `true` a little arrow is added, which points to the trigger element
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true` a backdrop is added
+         */
+        "backdrop"?: boolean;
+        /**
+          * If 'false', the closing button is not displayed
+         */
+        "closable"?: boolean;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "contentExpanded"?: boolean;
+        /**
+          * Define the min width of the popover content.
+         */
+        "contentMinWidth"?: number;
+        /**
+          * If `true` the popover does not have the shadow
+         */
+        "contentNoShadow"?: boolean;
+        /**
+          * Defines border-radius of popover content.
+         */
+        "contentRadius"?: Props.BalPopoverContentRadius;
+        /**
+          * Define the max width of the popover content.
+         */
+        "contentWidth"?: number;
+        /**
+          * Defines the heading of the popover
+         */
+        "heading"?: string;
+        /**
+          * Defines the icon of the trigger button.
+         */
+        "icon"?: string;
+        /**
+          * Color style of the button when the popover is closed.
+         */
+        "inactiveColor"?: Props.BalButtonColor;
+        /**
+          * Turns the trigger button to inverted style.
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the label of the button
+         */
+        "label"?: string;
+        /**
+          * If `true` its content will have a divider line on top
+         */
+        "mobileTop"?: boolean;
+        /**
+          * Define the offset of the popover content.
+         */
+        "offsetY"?: number;
+        /**
+          * Define the position of the popover content.
+         */
+        "position"?: Props.BalPopoverPlacement;
+        /**
+          * Defines the size of the button
+         */
+        "size"?: Props.BalButtonSize;
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -6019,6 +6349,10 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Defines the layout of the tabs.
+         */
+        "context"?: BalProps.BalTabsContext;
+        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
@@ -6038,10 +6372,6 @@ declare namespace LocalJSX {
           * Defines the layout of the tabs.
          */
         "iconPosition"?: BalProps.BalTabsIconPosition;
-        /**
-          * @deprecated Defines the layout of the tabs.
-         */
-        "interface"?: BalProps.BalTabsInterface;
         /**
           * If `true` the tabs can be uses on dark background
          */
@@ -6407,6 +6737,16 @@ declare namespace LocalJSX {
         "bal-navigation-level-main": BalNavigationLevelMain;
         "bal-navigation-level-meta": BalNavigationLevelMeta;
         "bal-navigation-levels": BalNavigationLevels;
+        "bal-navigation-main": BalNavigationMain;
+        "bal-navigation-main-body": BalNavigationMainBody;
+        "bal-navigation-main-head": BalNavigationMainHead;
+        "bal-navigation-menu": BalNavigationMenu;
+        "bal-navigation-menu-list": BalNavigationMenuList;
+        "bal-navigation-menu-list-item": BalNavigationMenuListItem;
+        "bal-navigation-meta": BalNavigationMeta;
+        "bal-navigation-meta-end": BalNavigationMetaEnd;
+        "bal-navigation-meta-start": BalNavigationMetaStart;
+        "bal-navigation-popover": BalNavigationPopover;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -6535,6 +6875,16 @@ declare module "@stencil/core" {
             "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
             "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
             "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
+            "bal-navigation-main": LocalJSX.BalNavigationMain & JSXBase.HTMLAttributes<HTMLBalNavigationMainElement>;
+            "bal-navigation-main-body": LocalJSX.BalNavigationMainBody & JSXBase.HTMLAttributes<HTMLBalNavigationMainBodyElement>;
+            "bal-navigation-main-head": LocalJSX.BalNavigationMainHead & JSXBase.HTMLAttributes<HTMLBalNavigationMainHeadElement>;
+            "bal-navigation-menu": LocalJSX.BalNavigationMenu & JSXBase.HTMLAttributes<HTMLBalNavigationMenuElement>;
+            "bal-navigation-menu-list": LocalJSX.BalNavigationMenuList & JSXBase.HTMLAttributes<HTMLBalNavigationMenuListElement>;
+            "bal-navigation-menu-list-item": LocalJSX.BalNavigationMenuListItem & JSXBase.HTMLAttributes<HTMLBalNavigationMenuListItemElement>;
+            "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
+            "bal-navigation-meta-end": LocalJSX.BalNavigationMetaEnd & JSXBase.HTMLAttributes<HTMLBalNavigationMetaEndElement>;
+            "bal-navigation-meta-start": LocalJSX.BalNavigationMetaStart & JSXBase.HTMLAttributes<HTMLBalNavigationMetaStartElement>;
+            "bal-navigation-popover": LocalJSX.BalNavigationPopover & JSXBase.HTMLAttributes<HTMLBalNavigationPopoverElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;

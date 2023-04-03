@@ -24,6 +24,7 @@ export interface TabNavProps {
   expanded: boolean
   verticalColSize: Props.BalTabsColSize
   iconPosition: Props.BalTabsIconPosition
+  context?: BalProps.BalTabsContext
   onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
 }
 
@@ -46,6 +47,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   expanded,
   verticalColSize,
   iconPosition,
+  context,
   onSelectTab,
 }) => {
   const bemEl = BEM.block('tabs').element('nav')
@@ -66,6 +68,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       inverted={inverted}
       accordion={accordion}
       isAccordionOpen={isAccordionOpen}
+      context={context}
       expanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}

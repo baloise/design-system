@@ -48,7 +48,7 @@ export class Steps implements Loggable {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
-    if (this.options === undefined) {
+    if (this.options === undefined || this.options.length < 1) {
       this.mutationHandler.observe()
     } else {
       this.mutationHandler.stopObserve()

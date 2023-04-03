@@ -4,7 +4,7 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
+  export type BalTabsContext = 'meta' | 'navigation' | 'navbar'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
   export type BalTabsVertical = boolean | 'mobile' | 'tablet'
   export type BalTabsFloat = 'left' | 'right'

@@ -112,7 +112,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 ## [11.0.11](https://github.com/baloise-incubator/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
 
-
 ### Performance Improvements
 
 * lazy load component styles ([53ea546](https://github.com/baloise-incubator/design-system/commit/53ea5460bd46e1a4525fccccdd5c039cad8938eb))
@@ -123,7 +122,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 ### Bug Fixes
 
 * remove source maps ([9ac37b1](https://github.com/baloise-incubator/design-system/commit/9ac37b13e4d634d43b51c4467e7174249f542c31))
-
 
 ### Performance Improvements
 

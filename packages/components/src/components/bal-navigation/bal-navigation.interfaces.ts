@@ -7,7 +7,4 @@ namespace BalProps {
   export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
 }
 
-namespace BalEvents {
-  export type BalNavigationLevelClickDetail = MouseEvent
-  export type BalNavigationLEvelCloseClick = CustomEvent<BalNavigationLevelClickDetail>
-}
+namespace BalEvents {}

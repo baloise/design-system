@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Event, EventEmitter, Element } from '@stencil/core'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
+import { Events } from '../../../types'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 
 @Component({
@@ -22,7 +23,7 @@ export class NavigationLevelMeta implements ComponentInterface {
    */
   @Prop() isTabLink?: boolean
 
-  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
+  @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

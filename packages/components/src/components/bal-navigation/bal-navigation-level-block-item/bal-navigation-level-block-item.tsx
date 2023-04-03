@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Event, EventEmitter, Element } from '@stencil/core'
+import { Events, Props } from '../../../types'
 import { LevelInfo } from '../utils/level.utils'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 
@@ -14,9 +15,9 @@ export class NavigationLevelBlockItem implements ComponentInterface {
   @Prop() value = `block-value-${navigationLevelBlockItemIds++}`
   @Prop() link?: string = undefined
   @Prop() linkLabel?: string = undefined
-  @Prop() target: BalProps.BalButtonTarget = '_self'
+  @Prop() target: Props.BalButtonTarget = '_self'
 
-  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
+  @Event() balClick!: EventEmitter<Events.BalNavigationLevelClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

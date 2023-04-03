@@ -14,13 +14,13 @@ export interface BalTabOption {
   icon?: string
   passed?: boolean
   index?: number
-  context?: BalProps.BalTabsInterface
+  context?: BalProps.BalTabsContext
   navigate?: EventEmitter<MouseEvent>
   trackingData?: Attributes
 }
 
 export interface TabLineProps {
-  context?: BalProps.BalTabsInterface
+  context?: BalProps.BalTabsContext
   inverted: boolean
   isReady: boolean
   vertical: boolean | 'mobile' | 'tablet'
@@ -41,7 +41,7 @@ export interface TabProps {
   inverted: boolean
   iconPosition: BalProps.BalTabsIconPosition
   tabs: BalTabOption[]
-  context: BalProps.BalTabsInterface
+  context: BalProps.BalTabsContext
   onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
   lineWidth?: number
   lineOffsetLeft?: number
@@ -62,7 +62,7 @@ export interface TabItemProps {
   href: string | undefined
   target: BalProps.BalButtonTarget
   label: string | undefined
-  context: BalProps.BalTabsInterface
+  context: BalProps.BalTabsContext
   iconPosition: BalProps.BalTabsIconPosition
   trackingData?: Attributes
   onSelectTab: (event: MouseEvent) => void

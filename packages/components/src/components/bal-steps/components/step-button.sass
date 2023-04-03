@@ -15,6 +15,7 @@
   cursor: default
   position: relative
   min-width: 5rem
+  padding-top: 6px
   &--hidden
     +hide-element
   //
@@ -22,6 +23,12 @@
   &--clickable
     cursor: pointer
     pointer-events: all
+  //
+  // focus style
+  &.bal-focused .bal-steps__nav__item__icon
+    @extend %focus-shadow
+  &.bal-focused#{&}--inverted .bal-steps__nav__item__icon
+    @extend %focus-inverted-shadow
   //
   // Progress line
   &:not(:last-child)::after
@@ -34,11 +41,13 @@
     top: 50%
     background-color: var(--bal-color-border-grey)
     border-radius: var(--bal-radius-rounded)
+    margin-top: 6px
     margin-left: calc(1.5rem - var(--bal-border-width-normal))
     margin-right: 1.25rem
   +tablet
     &:not(:last-child)::after
       top: 1rem
+      margin-top: 6px
       margin-left: calc(1.5rem - var(--bal-border-width-normal))
       margin-right: 1.5rem
   &--passed:not(:last-child)::after
@@ -58,12 +67,14 @@
   top: 50%
   background-color: var(--bal-color-border-grey)
   border-radius: var(--bal-radius-rounded)
+  margin-top: 6px
   margin-left: 1.25rem
   margin-right: 1.25rem
 
 .bal-steps__nav__carousel__item:not(:last-child)::after
   +tablet
     top: 1rem
+    margin-top: 6px
     margin-left: 1.5rem
     margin-right: 1.5rem
 

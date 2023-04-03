@@ -406,6 +406,7 @@ export class Carousel implements ComponentInterface {
           <div
             class={{
               ...container.class(),
+              ...container.modifier(`border`).class(this.border),
               ...container.modifier(`is-${this.aspectRatio}`).class(),
             }}
             ref={el => (this.containerEl = el)}

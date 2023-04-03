@@ -16,7 +16,8 @@
   text-decoration: none
   cursor: default
   gap: 0.5rem
-  padding: 1rem 0.75rem
+  padding: 0.25rem 0.75rem
+  border-radius: var(--bal-radius-normal)
   min-width: 3rem
   min-height: 3rem
   user-select: none
@@ -32,6 +33,12 @@
     flex: 1
     width: 5rem
     min-width: 5rem
+  //
+  // focus style
+  &.bal-focused
+    @extend %focus-inset-shadow
+  &.bal-focused#{&}--inverted
+    @extend %focus-inverted-inset-shadow
   //
   // default icon position is horizontal
   &--icon-position-vertical
@@ -81,3 +88,18 @@
     padding-left: 0
   &--spaceless#{&}--last
     padding-right: 0
+  //
+  // context changes
+  &--context-meta
+    min-height: 3rem
+    height: 3rem
+  &--context-navigation
+    +desktop
+      min-height: 3rem
+      height: 3rem
+    +high-definition
+      min-height: 4rem
+      height: 4rem
+    +widescreen
+      min-height: 5rem
+      height: 5rem

@@ -1,7 +1,7 @@
 import { Platforms } from '../../../src/types'
 import { compareSnapshotOptions } from './snapshot-util'
 
-describe.skip('bal-navigation', () => {
+describe('bal-navigation', () => {
   testNavigationOnDesktop('widescreen')
   testNavigationOnDesktop('highDefinition')
   testNavigationOnDesktop('desktop')
@@ -12,7 +12,10 @@ describe.skip('bal-navigation', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.visit('/components/bal-navigation/test/bal-navigation.visual.html').platform(platform).waitForDesignSystem()
+        cy.visit('/components/bal-navigation/test/bal-navigation.visual.html')
+          .platform(platform)
+          .waitForDesignSystem()
+          .wait(400)
       })
 
       it('closed menu on top', () => {
@@ -26,8 +29,8 @@ describe.skip('bal-navigation', () => {
         )
       })
       it('open menu', () => {
-        cy.scrollTo('top')
         cy.contains('Versichern').click()
+        cy.wait(400)
         cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
     })
@@ -55,7 +58,7 @@ describe.skip('bal-navigation', () => {
   }
 })
 
-describe.skip('bal-navigation-colors', () => {
+describe('bal-navigation-colors', () => {
   testNavigationOnDesktop('widescreen')
 
   function testNavigationOnDesktop(platform: Platforms) {
@@ -68,6 +71,7 @@ describe.skip('bal-navigation-colors', () => {
 
       it('open menu', () => {
         cy.contains('Versichern').click()
+        cy.wait(400)
         cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
     })

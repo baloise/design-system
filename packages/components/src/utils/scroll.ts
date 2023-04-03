@@ -46,6 +46,7 @@ export const ScrollHandler = () => {
   let y = 0
   let onscroll: any = null
   let onkeydown: any = null
+  let isDisabled = false
 
   return {
     connect: (el?: HTMLElement) => {
@@ -64,6 +65,7 @@ export const ScrollHandler = () => {
       onscroll = null
       onkeydown = null
     },
+    isDisabled: () => isDisabled,
     disable: () => {
       if (target) {
         target.addEventListener('wheel', wheel, { passive: false })
@@ -81,6 +83,7 @@ export const ScrollHandler = () => {
         }
 
         target.addEventListener('touchmove', preventDefault, { passive: false })
+        isDisabled = true
       }
     },
     enable: () => {
@@ -97,7 +100,41 @@ export const ScrollHandler = () => {
         }
 
         target.removeEventListener('touchmove', preventDefault, { capture: false })
+        isDisabled = false
       }
     },
+  }
+}
+
+const getBody = (doc: Document) => doc.body
+const getHtml = (doc: Document) => doc.firstChild?.nextSibling as HTMLElement
+
+const getHtmlStyles = (doc: Document) => getComputedStyle(getHtml(doc))
+
+const hasScrollSmoothOnHtml = (doc: Document) => getHtmlStyles(doc).scrollBehavior === 'smooth'
+
+export const disableSmoothScrolling = () => {
+  if (isDocumentDefined()) {
+    const doc = document
+    const body = getBody(doc)
+
+    body.style.scrollBehavior = 'auto'
+    if (hasScrollSmoothOnHtml(doc)) {
+      const html = getHtml(doc)
+      html.style.scrollBehavior = 'auto'
+    }
+  }
+}
+
+export const enableSmoothScrolling = () => {
+  if (isDocumentDefined()) {
+    const doc = document
+    const body = getBody(doc)
+
+    body.style.scrollBehavior = 'smooth'
+    if (hasScrollSmoothOnHtml(doc)) {
+      const html = getHtml(doc)
+      html.style.scrollBehavior = 'smooth'
+    }
   }
 }

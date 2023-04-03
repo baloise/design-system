@@ -29,6 +29,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobil
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('clickable').class(clickable),
         ...bemEl.modifier('passed').class(item.passed),
+        'bal-focusable': !item.disabled && !item.hidden,
       }}
       data-label={item.label}
       data-value={item.value}
