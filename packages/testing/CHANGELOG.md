@@ -1,5 +1,14 @@
 # @baloise/design-system-testing
 
+## 12.11.0
+
+### Patch Changes
+
+- [#1238](https://github.com/baloise-incubator/design-system/pull/1238) [`fff9237f6`](https://github.com/baloise-incubator/design-system/commit/fff9237f6656711c39cbfa7ac00a0f902cb8e20f) Thanks [@predrag-arsic](https://github.com/predrag-arsic)! - adjust selector of the balModalFindOpen cypress command
+
+- Updated dependencies [[`0952e9121`](https://github.com/baloise-incubator/design-system/commit/0952e9121d45dffb7697995a3fa9ad14fff5e173), [`2e3437cca`](https://github.com/baloise-incubator/design-system/commit/2e3437ccadcb52774266d43085488d28a72783b6), [`f167ba3a6`](https://github.com/baloise-incubator/design-system/commit/f167ba3a648c8a26b1554baee0ed5ff4def044f3), [`74b7736bb`](https://github.com/baloise-incubator/design-system/commit/74b7736bbc5a8a37b4871f5184216cb3cd6f6a5c)]:
+  - @baloise/design-system-components@12.11.0
+
 ## 12.10.0
 
 ### Minor Changes

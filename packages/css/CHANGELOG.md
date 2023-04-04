@@ -1,5 +1,15 @@
 # @baloise/design-system-css
 
+## 12.11.0
+
+### Patch Changes
+
+- [#1226](https://github.com/baloise-incubator/design-system/pull/1226) [`884b91285`](https://github.com/baloise-incubator/design-system/commit/884b91285953a2f8b078b0e4a69b43649bc3af3e) Thanks [@hirsch88](https://github.com/hirsch88)! - add missing legacy sass variable
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@12.11.0
+  - @baloise/design-system-tokens@12.11.0
+
 ## 12.10.0
 
 ### Patch Changes
