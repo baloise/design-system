@@ -48,6 +48,7 @@ import {
   parseFloatString,
   formatFloatString,
   getNegativeSymbol,
+  getDecimalSeparators,
 } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
@@ -246,7 +247,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol()]
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ...getDecimalSeparators(), getNegativeSymbol()]
   }
 
   private getRawValue(): string {
@@ -280,7 +281,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
-    if (input && (input.value === getDecimalSeparator() || input.value === getNegativeSymbol())) {
+    if (input && (getDecimalSeparators().indexOf(input.value) >= 0 || input.value === getNegativeSymbol())) {
       this.inputValue = undefined
       input.value = ''
     }
@@ -301,8 +302,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
       const value = getNativeInputValue(this)
 
-      if (event.key === getDecimalSeparator()) {
-        if (!this.decimal || value.includes(getDecimalSeparator())) {
+      if (getDecimalSeparators().indexOf(event.key) >= 0) {
+        if (!this.decimal || value.split('').some(el => getDecimalSeparators().includes(el))) {
           return stopEventBubbling(event)
         }
       }
@@ -313,11 +314,21 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         }
       }
 
-      if ([...NUMBER_KEYS, getDecimalSeparator(), getNegativeSymbol()].indexOf(event.key) >= 0) {
+      if ([...NUMBER_KEYS, ...getDecimalSeparators(), getNegativeSymbol()].indexOf(event.key) >= 0) {
         const newValue = getUpcomingValue(this, event)
-        const decimalValue = newValue.includes(getDecimalSeparator()) ? newValue?.split(getDecimalSeparator())[1] : ''
-        if (decimalValue && decimalValue.length > this.decimal) {
-          return stopEventBubbling(event)
+        let separator = ''
+
+        value.split('').some(el => {
+          if (getDecimalSeparators().includes(el)) {
+            separator = el
+          }
+        })
+
+        if (separator !== '') {
+          const decimalValue = separator !== '' && newValue.includes(separator) ? newValue?.split(separator)[1] : ''
+          if (decimalValue && decimalValue.length > this.decimal) {
+            return stopEventBubbling(event)
+          }
         }
       }
     }
@@ -341,6 +352,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   render() {
     const value = this.hasFocus ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
+
+    if (this.nativeInput && this.nativeInput.value) {
+      this.nativeInput.value = value
+    }
+
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
