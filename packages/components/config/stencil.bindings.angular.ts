@@ -3,7 +3,14 @@ import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['bal-radio-group', 'bal-checkbox-group', 'bal-select', 'bal-datepicker', 'bal-tabs'],
+    elementSelectors: [
+      'bal-radio-group',
+      'bal-checkbox-group',
+      'bal-select',
+      'bal-datepicker',
+      'bal-tabs',
+      'bal-time-input',
+    ],
     event: 'balChange',
     targetAttr: 'value',
     type: 'select',
