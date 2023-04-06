@@ -1,8 +1,7 @@
 /**
  * Selector utilities
  */
-import './selectors'
-export * from './selectors'
+export { byTestId, dataTestSelector, selectors } from './selectors'
 
 /**
  * Helpers

@@ -1,11 +1,7 @@
-// @deprecated standard ist data-testid instead of data-test-id
-export const dataTestSelector = (testId: string): string => `[data-test-id="${testId}"]`
+import { byTestId } from './selectors.util'
 
-export const byTestId = (testId: string): string => `[data-testid="${testId}"]`
+export { byTestId, dataTestSelector } from './selectors.util'
 
-/**
- * Selectors
- */
 export const selectors = {
   accordion: {
     button: byTestId('bal-accordion-button'),

@@ -155,11 +155,11 @@
     </h2>
     <h4>Sw0rdiX</h4>
   </a>
-  <a href="https://github.com/ArivinK" class="avatar">
+  <a href="https://github.com/predrag-arsic" class="avatar">
     <h2>
-      <img src="https://avatars.githubusercontent.com/u/20054412?v=4" alt="ArivinK" style="width: 64px;">
+      <img src="https://avatars.githubusercontent.com/u/19598046?v=4" alt="predrag-arsic" style="width: 64px;">
     </h2>
-    <h4>ArivinK</h4>
+    <h4>predrag-arsic</h4>
   </a>
 </div>
  
