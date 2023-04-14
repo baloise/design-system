@@ -99,6 +99,7 @@ export class Tag {
             ...elLabel.modifier(disabledClass).class(hasDisabled),
             ...elLabel.modifier('is-invalid').class(this.invalid),
           }}
+          data-testid="bal-tag-label"
         >
           <slot />
         </span>
@@ -117,6 +118,7 @@ export class Tag {
               !this.light) ||
             this.invalid
           }
+          data-testid="bal-tag-close"
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
           {...this.inheritedAttributesClose}
         ></bal-close>

@@ -50,7 +50,7 @@
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
     "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
-    "build:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
+    "build:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
     "build:post": "node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",

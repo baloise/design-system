@@ -46,6 +46,7 @@ export class Badge implements ComponentInterface {
             [`bal-badge__label--has-color-${this.color}`]: true,
             'bal-badge__label--is-hidden': !!this.icon || this.size === 'small',
           }}
+          data-testid="bal-badge-label"
         >
           <slot></slot>
         </span>

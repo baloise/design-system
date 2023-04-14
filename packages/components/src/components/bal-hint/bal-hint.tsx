@@ -150,8 +150,8 @@ export class Hint implements BalConfigObserver {
         <bal-icon
           class={{
             ...elIcon.class(),
-            'data-test-hint-trigger': true,
           }}
+          data-testid="bal-hint-trigger"
           bal-popover-trigger
           aria-haspopup="true"
           role="button"
@@ -166,8 +166,8 @@ export class Hint implements BalConfigObserver {
         <div
           class={{
             ...elContent.class(),
-            'data-test-hint-content': true,
           }}
+          data-testid="bal-hint-content"
         >
           <div ref={el => (this.hintContentEl = el)}></div>
           <bal-button-group
@@ -176,7 +176,7 @@ export class Hint implements BalConfigObserver {
               ...elButtons.modifier('is-hidden-desktop').class(this.small),
             }}
           >
-            <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
+            <bal-button data-testid="bal-hint-close" color="info" onClick={() => this.dismiss()}>
               {this.closeLabel ? this.closeLabel : this.innerCloseLabel}
             </bal-button>
           </bal-button-group>

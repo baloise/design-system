@@ -72,8 +72,8 @@ export class Text {
             'has-text-weight-bold': this.bold,
             'is-family-title': this.heading,
             'has-text-shadow': this.shadow,
-            'data-test-text': true,
           }}
+          data-testid="bal-text"
         >
           <slot></slot>
         </Text>

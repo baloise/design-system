@@ -288,6 +288,7 @@ export class Button implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
+          data-testid="bal-button"
         >
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
@@ -299,10 +300,11 @@ export class Button implements ComponentInterface {
           />
           <span
             class={{
-              'data-test-button-label button-label': true,
+              'button-label': true,
               'is-small': this.size === 'small',
             }}
             style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
+            data-testid="bal-button-label"
           >
             <slot />
           </span>

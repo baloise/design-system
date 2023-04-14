@@ -16,11 +16,11 @@ Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress
   const command = wrapCommand('click', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {
-    return command(selectors.accordion.button)
+    return command(selectors.accordion.trigger)
   }
 
   if (isButton(element)) {
-    return command(selectors.button.main)
+    return command(selectors.button.native)
   }
 
   if (isCheckbox(element)) {

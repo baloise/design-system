@@ -23,11 +23,21 @@ describe('Modal', () => {
 
 <!-- END: human documentation -->
 
-### Custom Commands
+### Component Commands
 
 A list of the custom commands for this specific component.
 
-| Command            | Description                    | Signature               |
-| ------------------ | ------------------------------ | ----------------------- |
-| `balModalIsOpen`   | Assert if the modal is open.   | `(): Chainable<JQuery>` |
-| `balModalIsClosed` | Assert if the modal is closed. | `(): Chainable<JQuery>` |
+| Command            | Description                                                                                         | Signature                                          |
+| ------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `balModalFindOpen` | Finds the open modal and returns it.                                                                | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balModalIsOpen`   | Assert if the modal is open.                                                                        | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balModalClose`    | Closes the selected modal.                                                                          | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+
+
+### Component Element Selectors
+
+| Selector     | Element        |
+| ------------ | -------------- |
+| `modal.main` | Modal element. |
+

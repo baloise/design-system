@@ -5,10 +5,12 @@ import { commandsToMarkdown } from './markdown-commands'
 import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
+import { selectorsToMarkdown } from './markdown-selectors'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
 import testingCommands from '../../public/assets/data/commands.json'
 import contributors from '../../public/assets/data/contributors.json'
+import testingSelectors from '../../public/assets/data/selectors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -16,6 +18,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     for (let index = 0; index < docs.components.length; index++) {
       // Component API
       const component = docs.components[index]
+      const componentName = component.tag
 
       const props = propsToMarkdown(component.props)
       const events = eventsToMarkdown(component.events)
@@ -24,10 +27,18 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       const componentApi = [...props, ...events, ...methods, ...slots]
       const hasComponentApi = componentApi.length > 0
 
+      let selectorsList: string[] = []
+      if (testingSelectors[0][formatComponentName(componentName)] != undefined) {
+        selectorsList = selectorsToMarkdown(
+          testingSelectors[0][formatComponentName(componentName)],
+          formatComponentName(componentName),
+        )
+      }
+
       let content: string[] = []
 
       if (hasComponentApi) {
-        content = [`### ${component.tag}`, SPACE, ...componentApi, SPACE]
+        content = [`### ${componentName}`, SPACE, ...componentApi, SPACE]
       }
 
       try {
@@ -35,8 +46,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       } catch (err) {
         console.error(err)
       }
-
-      const docsPath = path.join(component.dirPath || '', 'generated')
+      const docsPath = path.join(component.dirPath || '', 'stories')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -67,25 +77,25 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
               hasReachedHumanPart = true
             }
           }
-
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
 
           const content = [
             `## Testing`,
-            SPACE,
+            '',
             'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
-            SPACE,
+            '',
             '- [More information about the installation and usage](?path=/docs/development-testing--page)',
-            SPACE,
+            '',
             '<!-- START: human documentation -->',
-            SPACE,
-            ...humanLines,
-            SPACE,
+            '',
+            humanLines.join(NEWLINE).trim(),
+            '',
             '<!-- END: human documentation -->',
-            SPACE,
+            '',
             ...commandsToMarkdown(componentCommands),
+            '',
+            ...selectorsList,
           ]
-
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))
         } catch (err) {
           console.error(err)
@@ -108,4 +118,11 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       console.error(err)
     }
   },
+}
+
+const formatComponentName = (name: string) => {
+  const componentName = name.split('-')
+  return componentName.length === 2
+    ? componentName[1]
+    : componentName[1] + componentName[2].charAt(0).toUpperCase() + componentName[2].slice(1)
 }

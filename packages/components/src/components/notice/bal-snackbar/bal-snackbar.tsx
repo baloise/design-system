@@ -134,18 +134,28 @@ export class Snackbar {
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
                 <bal-icon name={this.icon} color={'primary'}></bal-icon>
               </span>
-              <bal-heading level="h5" space="none">
+              <bal-heading level="h5" space="none" data-testid="bal-snackbar-heading">
                 {this.subject}
               </bal-heading>
             </span>
           </div>
-          <span class="bal-snackbar__label" {...labelAttributes}>
+          <span class="bal-snackbar__label" data-testid="bal-snackbar-label" {...labelAttributes}>
             <slot />
             <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
           </span>
-          <bal-close class="bal-snackbar__close" onClick={() => this.close()}></bal-close>
+          <bal-close
+            class="bal-snackbar__close"
+            data-testid="bal-snackbar-close"
+            onClick={() => this.close()}
+          ></bal-close>
           <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
-            <bal-button color="info" href={this.href} target={this.target} onClick={() => this.onActionHandler()}>
+            <bal-button
+              color="info"
+              href={this.href}
+              target={this.target}
+              onClick={() => this.onActionHandler()}
+              data-testid="bal-snackbar-action"
+            >
               {this.action}
             </bal-button>
           </div>

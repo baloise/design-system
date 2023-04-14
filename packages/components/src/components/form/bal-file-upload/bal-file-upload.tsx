@@ -392,6 +392,7 @@ export class FileUpload implements FormInput<File[]> {
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
               ref={el => (this.nativeInput = el)}
+              data-testid="bal-file-upload-input"
             />
             {this.loading ? (
               <span class="file-cta">
@@ -408,7 +409,9 @@ export class FileUpload implements FormInput<File[]> {
                     }
                   ></bal-icon>
                 </span>
-                <span class="file-label">{this.label}</span>
+                <span class="file-label" data-testid="bal-file-upload-label">
+                  {this.label}
+                </span>
               </span>
             )}
           </label>

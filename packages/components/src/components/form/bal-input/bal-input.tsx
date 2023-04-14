@@ -557,7 +557,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
         <input
           class={{
             'input': true,
-            'data-test-input': true,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'is-inverted': this.inverted,
@@ -567,6 +566,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             'has-text-centered': this.textAlign === 'center',
             'has-text-right': this.textAlign === 'right',
           }}
+          data-testid="bal-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
           aria-labelledby={labelId}

@@ -195,7 +195,12 @@ export class Pagination {
     }
     return (
       <li>
-        <bal-button square color={isActive ? 'primary' : 'text'} onClick={() => this.selectPage(pageNumber)}>
+        <bal-button
+          square
+          color={isActive ? 'primary' : 'text'}
+          onClick={() => this.selectPage(pageNumber)}
+          data-testid="bal-pagination-page-number"
+        >
           {pageNumber}
         </bal-button>
       </li>
@@ -239,6 +244,7 @@ export class Pagination {
           ...elList.modifier(`context-${this.interface}`).class(),
           'is-disabled': this.disabled,
         }}
+        data-testid="bal-pagination-list"
       >
         {tabletItems}
       </ul>
@@ -251,6 +257,7 @@ export class Pagination {
           ...elList.modifier(`context-${this.interface}`).class(),
           'is-disabled': this.disabled,
         }}
+        data-testid="bal-pagination-list"
       >
         {mobileItems}
       </ul>
@@ -282,6 +289,7 @@ export class Pagination {
             }}
             disabled={this._value < 2 || this.disabled}
             onClick={() => this.previous()}
+            data-testid="bal-pagination-controls-left"
           >
             <bal-icon name="nav-go-left" size="small" />
           </bal-button>
@@ -296,6 +304,7 @@ export class Pagination {
             }}
             disabled={this._value === this.totalPages || this.disabled}
             onClick={() => this.next()}
+            data-testid="bal-pagination-controls-right"
           >
             <bal-icon name="nav-go-right" size="small" />
           </bal-button>

@@ -18,3 +18,13 @@ describe('Radio', () => {
 ```
 
 <!-- END: human documentation -->
+
+
+### Component Element Selectors
+
+| Selector      | Element               |
+| ------------- | --------------------- |
+| `radio.input` | Native input element. |
+| `radio.label` | Native label element. |
+| `radio.text`  | Native span element.  |
+

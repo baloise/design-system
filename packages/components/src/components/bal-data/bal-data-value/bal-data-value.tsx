@@ -47,20 +47,24 @@ export class DataValue {
   }
 
   render() {
-    const element = BEM.block('data-value')
+    const block = BEM.block('data-value')
+    const buttonEl = block.element('button')
     return (
       <Host
         class={{
-          ...element.class(),
-          ...element.modifier('is-editable').class(this.editable),
-          ...element.modifier('is-multiline').class(this.multiline),
+          ...block.class(),
+          ...block.modifier('is-editable').class(this.editable),
+          ...block.modifier('is-multiline').class(this.multiline),
         }}
       >
         <div>
           <slot></slot>
         </div>
         <bal-button
-          class="bal-data-value-btn"
+          class={{
+            ...buttonEl.class(),
+          }}
+          data-testid="bal-data-value-button"
           square
           outlined
           color="text"

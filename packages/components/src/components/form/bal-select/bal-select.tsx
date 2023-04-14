@@ -953,6 +953,7 @@ export class Select implements ComponentInterface, Loggable {
         invalid={this.invalid}
         tabindex={-1}
         onBalCloseClick={_ => this.removeValue(props.value)}
+        data-testid="bal-select-chip"
       >
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
@@ -1040,6 +1041,7 @@ export class Select implements ComponentInterface, Loggable {
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
+                data-testid="bal-select-input"
                 autocomplete={this.autocomplete}
                 placeholder={this.inputPlaceholder}
                 readonly={!this.typeahead || this.disabled || this.readonly}
@@ -1094,6 +1096,7 @@ export class Select implements ComponentInterface, Loggable {
                   ...optionEl.modifier('checkbox').class(this.multiple),
                   ...optionEl.modifier('disabled').class(option.disabled === true),
                 }}
+                data-testid="bal-select-option"
                 disabled={option.disabled}
                 tabIndex={-1}
                 onMouseEnter={() => this.handleOptionMouseEnter(index)}

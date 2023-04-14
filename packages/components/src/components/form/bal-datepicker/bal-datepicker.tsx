@@ -746,6 +746,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
             }}
+            data-testid="bal-datepicker-input"
             ref={el => (this.nativeInput = el as HTMLInputElement)}
             id={this.inputId}
             aria-labelledby={labelId}

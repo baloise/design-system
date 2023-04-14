@@ -13,32 +13,32 @@ describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
 
   it('should ...', () => {
-    cy.get(accordion).find(selectors.accordion.button).contains('Show more')
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show more')
     cy.get(accordion).balAccordionIsClosed()
     cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(accordion).find(selectors.accordion.button).contains('Show less')
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show less')
     cy.get(accordion).find(selectors.accordion.content).contains('My Content')
     cy.get(accordion).click().balAccordionIsClosed()
   })
 })
 ```
 
-### Custom Selectors
+<!-- END: human documentation -->
+
+### Component Commands
 
 A list of the custom commands for this specific component.
+
+| Command                | Description                         | Signature                                          |
+| ---------------------- | ----------------------------------- | -------------------------------------------------- |
+| `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balAccordionIsClosed` | Asserts if the accordion is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+
+
+### Component Element Selectors
 
 | Selector            | Element             |
 | ------------------- | ------------------- |
-| `accordion.button`  | The trigger button. |
+| `accordion.trigger` | The trigger button. |
 | `accordion.content` | Content wrapper.    |
 
-<!-- END: human documentation -->
-
-### Custom Commands
-
-A list of the custom commands for this specific component.
-
-| Command                | Description                         | Signature               |
-| ---------------------- | ----------------------------------- | ----------------------- |
-| `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(): Chainable<JQuery>` |
-| `balAccordionIsClosed` | Asserts if the accordion is closed. | `(): Chainable<JQuery>` |

@@ -215,7 +215,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           <bal-button
             size="small"
             square
-            data-testid="decrease"
+            data-testid="bal-input-stepper-decrease"
             outlined={!this.invalid}
             icon="minus"
             color={this.invalid ? 'danger' : 'info'}
@@ -229,12 +229,13 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             class={{
               ...elText.class(),
             }}
+            data-testid="bal-input-stepper-text"
           >
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
             size="small"
-            data-testid="increase"
+            data-testid="bal-input-stepper-increase"
             square
             outlined={!this.invalid}
             icon="plus"
@@ -247,6 +248,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           class={{
             ...elInput.class(),
           }}
+          data-testid="bal-input-stepper"
           type="text"
           value={this.value}
           name={this.name}

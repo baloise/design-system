@@ -20,3 +20,11 @@ describe('Input', () => {
 ```
 
 <!-- END: human documentation -->
+
+
+### Component Element Selectors
+
+| Selector       | Element               |
+| -------------- | --------------------- |
+| `input.native` | Native input element. |
+

@@ -313,6 +313,7 @@ export class InputSlider {
             onFocus={this.onFocus}
             onClick={this.onClick}
             onKeyPress={e => this.balKeyPress.emit(e)}
+            data-testid="bal-input-slider"
           />
           <div class={{ ...inputValueEl.class(), ...inputValueRightEl.class() }}></div>
         </div>

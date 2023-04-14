@@ -18,3 +18,4 @@ describe('Input Slider', () => {
 ```
 
 <!-- END: human documentation -->
+

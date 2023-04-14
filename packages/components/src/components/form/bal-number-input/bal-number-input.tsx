@@ -380,6 +380,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
           }}
+          data-testid="bal-number-input"
           ref={input => (this.nativeInput = input)}
           id={this.inputId}
           aria-labelledby={label ? labelId : null}

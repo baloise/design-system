@@ -290,6 +290,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
             'is-danger': this.invalid,
             'clickable': this.clickable,
           }}
+          data-testid="bal-textarea-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           name={this.name}
           id={this.inputId}

@@ -95,8 +95,8 @@ export class Heading {
             ...bemTextEl.modifier('shadow').class(this.shadow),
             ...bemTextEl.modifier(`color-${this.getFontColor()}`).class(this.getFontColor() !== ''),
             [`is-size-${this.getFontSize()}`]: true,
-            'data-test-heading': true,
           }}
+          data-testid="bal-heading"
         >
           <slot />
         </Heading>
