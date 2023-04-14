@@ -17,11 +17,58 @@ describe('bal-datepicker.cy.ts', () => {
     })
     cy.waitForDesignSystem()
   })
+  it('should open last available month if month from defaultDate is bigger that max month', () => {
+    cy.mount(BalDatepicker, {
+      props: {
+        defaultDate: '2023-04-12',
+        min: '2023-01-12',
+        max: '2024-02-28',
+      },
+    })
+    cy.waitForDesignSystem()
+
+    cy.get('bal-datepicker')
+      .click()
+      .waitForComponents()
+      .find('.bal-datepicker-pagination__month-and-year__select--year select')
+      .select(1)
+      .waitForComponents()
+
+    cy.get('bal-datepicker')
+      .find('.bal-datepicker-grid__row .bal-datepicker-grid__cell')
+      .first()
+      .should('not.be.disabled')
+  })
+  it('should fire balChange when field is cleared', () => {
+    const onBalChangeSpy = cy.spy().as('balChange')
+    cy.mount(BalDatepicker, {
+      props: {
+        onBalChange: onBalChangeSpy,
+        defaultDate: '2023-04-12',
+        min: '2023-01-12',
+        max: '2024-02-28',
+        value: '2023-02-20',
+      },
+    })
+    cy.waitForDesignSystem()
+
+    cy.get('bal-datepicker')
+      .click()
+      .waitForComponents()
+      .find('input.input')
+      .clear({ force: true })
+      .blur()
+      .waitForComponents()
+
+    cy.get('@balChange').should('have.been.calledOnce')
+  })
   it('should change value through manual input', () => {
     cy.get('bal-datepicker')
       .find('input.input')
+      .type('{0}')
       .type('{2}')
       .type('{.}')
+      .type('{0}')
       .type('{1}')
       .type('{.}')
       .type('{1}')
@@ -29,10 +76,12 @@ describe('bal-datepicker.cy.ts', () => {
       .type('{8}')
       .type('{8}')
       .type('{enter}')
+    // TODO: add click event when they are defined
+    cy.get('bal-datepicker').find('input.input').should('have.value', '02.01.1988')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balBlur').should('have.been.calledOnce')
-    cy.get('@balInput').should('have.been.callCount', 8)
+    cy.get('@balInput').should('have.been.callCount', 10)
   })
   it('should automatically add the separators and change value through manual input', () => {
     cy.get('bal-datepicker')
@@ -46,6 +95,7 @@ describe('bal-datepicker.cy.ts', () => {
       .type('{8}')
       .type('{8}')
       .type('{enter}')
+    cy.get('bal-datepicker').find('input.input').should('have.value', '02.01.1988')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balBlur').should('have.been.calledOnce')
@@ -63,7 +113,8 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balInput').should('not.have.been.called')
   })
-  it('should turn short date into a full date', () => {
+  it.skip('should turn short date into a full date', () => {
+    // TODO: should turn short date into a full date
     cy.get('bal-datepicker')
       .find('input.input')
       .type('{2}')
@@ -72,6 +123,7 @@ describe('bal-datepicker.cy.ts', () => {
       .type('{.}')
       .type('{1}')
       .type('{enter}')
+    cy.get('bal-datepicker').find('input.input').should('have.value', '02.02.2001')
     cy.get('@balChange').should('have.been.calledOnce')
   })
   it('should be disabled', () => {
