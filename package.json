@@ -82,7 +82,7 @@
     "@storybook/addon-links": "^6.5.16",
     "@storybook/addons": "^6.5.16",
     "@storybook/theming": "^6.5.16",
-    "@storybook/vue3": "^6.5.16",
+    "@storybook/vue3": "^7.0.5",
     "@types/big.js": "~6.1.6",
     "@types/chai": "~4.3.4",
     "@types/google.maps": "^3.52.2",
