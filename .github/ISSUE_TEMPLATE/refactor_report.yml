@@ -1,0 +1,25 @@
+name: ♻️ Refactor
+description: Create a report to refactor a component or library 
+title: ":recycle: refactor(component)"
+labels: ["♻️ Refactor"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Please describe what and why the element needs to refactored.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information
+      description: Please include any additional information that may be relevant to your issue. Logs, related issues, Stack Overflow links, forum links or even a suggestions on how to fix.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/baloise-incubator/design-system/blob/next/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

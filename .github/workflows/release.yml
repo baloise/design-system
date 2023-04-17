@@ -46,3 +46,27 @@ jobs:
           BAL_DS_RELEASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - name: Echo Changeset output
+        run: |
+          echo "Changeset published - ${{ steps.changesets.outputs.published }}"
+          echo "Changeset publishedPackages - ${{ steps.changesets.outputs.publishedPackages }}"
+          echo "Changeset hasChangesets - ${{ steps.changesets.outputs.hasChangesets }}"
+          echo "Changeset pullRequestNumber - ${{ steps.changesets.outputs.pullRequestNumber }}"
+
+      - name: Merge main -> released
+        if: steps.changesets.outputs.published == 'true'
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: released
+          message: ":bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag release
+        if: steps.changesets.outputs.published == 'true'
+        uses: thejeff77/action-push-tag@v1.0.0
+        with:
+          tag: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
+          message: 'v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'

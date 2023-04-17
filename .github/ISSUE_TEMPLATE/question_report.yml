@@ -1,0 +1,29 @@
+name: 💬 Question
+description: Usage question or discussion about the Baloise Design System
+title: ":speech_balloon: question(component): title"
+labels: ["💬 Question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks in advance for your feedback!
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Please describe your question in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information
+      description: Please include any additional information that may be relevant to your issue. Logs, related issues, Stack Overflow links, forum links or even a suggestions on how to fix.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/baloise-incubator/design-system/blob/next/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

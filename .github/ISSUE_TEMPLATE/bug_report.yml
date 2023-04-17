@@ -1,0 +1,84 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve the Baloise Design System
+title: ":bug: fix(component): title"
+labels: ["🐛 Bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this report!
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Behavior
+      description: Describe in detail the issue you're having.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A precise explanation of what you expected to happen.
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Please outline the necessary steps to replicate this problem.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      placeholder: 12.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browsers
+      description: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      description: On what device did you find the problem?
+      multiple: true
+      options:
+        - Mobile
+        - Tablet
+        - Desktop
+  - type: input
+    id: reproduction-url
+    attributes:
+      label: Code Reproduction URL
+      description: Please recreate this problem in an empty Baloise Design System starter application or CodeSandBox and share the repository link. Give our [Getting Started Guide](https://baloise-design-system.vercel.app/?path=/docs/development-getting-started--page) a try to rapidly set up a starter application.
+      placeholder: https://codesandbox.io/...
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information
+      description: Please include any additional information that may be relevant to your issue. Logs, related issues, Stack Overflow links, forum links or even a suggestions on how to fix.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/baloise-incubator/design-system/blob/next/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

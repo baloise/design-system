@@ -48,11 +48,11 @@ jobs:
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
-            --username "baopso" \
-            --password "${{ secrets.BAOPSO_GITOPSCLI_TOKEN }}" \
-            --git-user "baopso" \
-            --git-email "Group.CH_Open-Source@baloise.ch" \
-            --organisation "baloise" \
+            --username ${{ secrets.INCUBATOR_GITHUB_USER }} \
+            --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
+            --git-user "Baloise Incubator" \
+            --git-email "incubator@baloise.dev" \
+            --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
             --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"

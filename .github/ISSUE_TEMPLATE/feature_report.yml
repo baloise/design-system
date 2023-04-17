@@ -1,0 +1,43 @@
+name: ✨ Feature Report
+description: Suggest an idea for this project
+title: ":sparkles: feat(component): title"
+labels: ["✨ Feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Summary
+      description: A clear and concise description of what the feature does.
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Provide a use case for the problem that this feature would address.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Preferred Solution
+      description: Provide a precise and succinct explanation of how you want to add this feature into the Baloise Design System.
+  - type: dropdown
+    id: breaking-changes
+    attributes:
+      label: Will this feature introduce breaking changes?
+      description: By developing this feature we need to change the interface and introduce breaking changes.
+      options:
+        - Yes, it has breaking changes
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/baloise-incubator/design-system/blob/next/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
