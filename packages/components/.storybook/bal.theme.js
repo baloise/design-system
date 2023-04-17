@@ -5,7 +5,7 @@ export default create({
   ...themes.light,
   base: 'light',
   brandTitle: 'Baloise Design System',
-  brandUrl: 'https://github.com/baloise-incubator/design-system',
+  brandUrl: 'https://github.com/baloise/design-system',
   brandImage: Logo,
 
   fontBase: 'BaloiseCreateText, "Open Sans", Arial, sans-serif',

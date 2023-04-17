@@ -11,7 +11,7 @@ import { BalTabs, BalTabItem } from '../../.storybook/vue/generated/components'
     <BalTabItem
       value="tab-link"
       label="Tab link"
-      href="https://github.com/baloise-incubator/design-system"
+      href="https://github.com/baloise/design-system"
       target="_blank"
       >Content of Tab link</BalTabItem
     >

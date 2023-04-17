@@ -3,7 +3,7 @@ name: Documentation
 on:
   workflow_run:
     workflows: ['Release']
-    branches: [next]
+    branches: [released]
     types:
       - completed
   workflow_dispatch:
@@ -52,7 +52,7 @@ jobs:
             --password "${{ secrets.BAOPSO_GITOPSCLI_TOKEN }}" \
             --git-user "baopso" \
             --git-email "Group.CH_Open-Source@baloise.ch" \
-            --organisation "baloise-incubator" \
+            --organisation "baloise" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
             --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"

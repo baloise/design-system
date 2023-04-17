@@ -1,12 +1,12 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "baloise-incubator/design-system" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "baloise/design-system" }],
   "commit": false,
   "fixed": [["@baloise/design-system-*"]],
   "ignore ": [["@baloise/design-system-output-target-*"]],
   "linked": [],
   "access": "public",
-  "baseBranch": "next",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
