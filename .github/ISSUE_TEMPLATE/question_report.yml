@@ -1,7 +1,7 @@
 name: 💬 Question
 description: Usage question or discussion about the Baloise Design System
 title: ":speech_balloon: question(component): title"
-labels: ["💬 Question"]
+labels: ["💬 question"]
 body:
   - type: markdown
     attributes:

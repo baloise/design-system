@@ -1,7 +1,7 @@
 name: ♻️ Refactor
-description: Create a report to refactor a component or library 
+description: Create a report to refactor a component or library
 title: ":recycle: refactor(component)"
-labels: ["♻️ Refactor"]
+labels: ["♻️ refactor"]
 body:
   - type: textarea
     id: summary

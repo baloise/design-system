@@ -1,7 +1,7 @@
 name: ✨ Feature Report
 description: Suggest an idea for this project
 title: ":sparkles: feat(component): title"
-labels: ["✨ Feature"]
+labels: ["✨ feature"]
 body:
   - type: markdown
     attributes:
@@ -26,6 +26,11 @@ body:
     attributes:
       label: Preferred Solution
       description: Provide a precise and succinct explanation of how you want to add this feature into the Baloise Design System.
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information
+      description: Please include any additional information that may be relevant to your feature.
   - type: dropdown
     id: breaking-changes
     attributes:
