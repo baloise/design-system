@@ -4,22 +4,22 @@ copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
 branchName: short
 branches:
-  - label: '🐛 Bug'
+  - label: '🐛 bug'
     prefix: fix/
     skip: false
-  - label: '✨ Feature'
+  - label: '✨ feature'
     prefix: feat/
-    skip: false  
-  - label: '💥 Breaking Change'
+    skip: false
+  - label: '💥 breaking change'
     prefix: breaking/
-    skip: false  
-  - label: '♻️ Refactor'
+    skip: false
+  - label: '♻️ refactor'
     prefix: refactor/
     skip: false
-  - label: '🔧 Chore'
+  - label: '🔧 chore'
     prefix: chore/
     skip: false
-  - label: '🚀 Release'
+  - label: '🚀 release'
     prefix: release/
     skip: false
   - label: '*'
