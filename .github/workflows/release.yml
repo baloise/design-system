@@ -54,13 +54,13 @@ jobs:
           echo "Changeset hasChangesets - ${{ steps.changesets.outputs.hasChangesets }}"
           echo "Changeset pullRequestNumber - ${{ steps.changesets.outputs.pullRequestNumber }}"
 
-      - name: Merge main -> released
+      - name: Merge main -> production
         if: steps.changesets.outputs.published == 'true'
         uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: main
-          target_branch: released
+          target_branch: production
           message: ":bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
