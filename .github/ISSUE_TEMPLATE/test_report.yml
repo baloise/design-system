@@ -15,7 +15,7 @@ body:
     attributes:
       label: Acceptance Criteria
       description: Please describe the acceptance criteria of the test task.
-      placeholder: |
+      value: |
         - [ ] Criteria 1
         - [ ] Criteria 2
     validations:
