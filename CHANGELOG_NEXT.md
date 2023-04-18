@@ -53,7 +53,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-navigation:** added the target attr for meta and main tabs ([c252771](https://github.com/baloise/design-system/commit/c252771fad01be7436cdb042a9f2efdd10634d11))
 
 
-
 ## [10.24.8](https://github.com/baloise/design-system/compare/v10.24.7...v10.24.8) (2022-10-11)
 
 
