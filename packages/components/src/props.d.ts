@@ -3,6 +3,14 @@ export namespace Props {
 
   export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 
+  export type BalContentDirection = 'column' | 'row' | ''
+  export type BalContentSpace = 'xx-small' | 'x-small' | 'small' | 'normal' | ''
+  export type BalContentAlignment = 'start' | 'center' | 'end' | ''
+
+  export type BalStackDirection = 'row' | 'column' | ''
+  export type BalStackSpace = 'normal' | 'large' | 'x-large' | 'xx-large' | ''
+  export type BalStackAlignment = 'center' | 'end' | 'start' | ''
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
@@ -98,9 +106,10 @@ export namespace Props {
     | 'grey-light'
     | 'primary'
     | 'primary-light'
+    | 'auto'
     | ''
     | string
-  export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
+  export type BalIconSize = 'xsmall' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | ''
 
   export type BalListItemAccordionHeadIcon = 'plus' | 'nav-go-down'
   export type BalListItemTarget = BalButtonTarget
@@ -210,11 +219,18 @@ export namespace Props {
   export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 
+  export type BalLabelWeight = 'bold' | 'regular'
+  export type BalLabelSize = '' | 'small' | 'large'
+
   export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
   export type BalCheckboxInterface = BalCheckboxGroupInterface
+  export type BalCheckboxGroupColumns = 1 | 2 | 3 | 4
+  export type BalCheckboxButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'
   export type BalRadioInterface = BalRadioGroupInterface
+  export type BalRadioGroupColumns = 1 | 2 | 3 | 4
+  export type BalRadioButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export type BalTextareaWrap = 'hard' | 'soft' | 'off'
   export type BalTextareaInputMode = BalInputInputMode

@@ -144,6 +144,36 @@ export class RadioGroup implements ComponentInterface, Loggable {
   }
 
   /**
+   * Defines the column size like the grid.
+   */
+  @Prop() columns: Props.BalRadioGroupColumns = 1
+
+  @Watch('columns')
+  columnsChanged(value: Props.BalRadioGroupColumns) {
+    this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
+  }
+
+  /**
+   * Defines the column size for tablet and bigger like the grid.
+   */
+  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsTablet')
+  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
+  }
+
+  /**
+   * Defines the column size for mobile and bigger like the grid.
+   */
+  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsMobile')
+  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+    this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
+  }
+
+  /**
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
@@ -184,6 +214,9 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
 
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
@@ -198,20 +231,28 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('balFocus', { target: 'document' })
-  radioFocusListener(event: CustomEvent<FocusEvent>) {
-    const { target } = event
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
-      this.balFocus.emit(event.detail)
-      stopEventBubbling(event)
+  @Listen('balChange', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (isDescendant(this.el, ev.target as HTMLElement)) {
+      stopEventBubbling(ev)
     }
   }
 
-  @Listen('balBlur', { target: 'document' })
+  @Listen('balFocus', { capture: true, target: 'document' })
+  radioFocusListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
+      stopEventBubbling(event)
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('balBlur', { capture: true, target: 'document' })
   radioBlurListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-blur')) {
-      this.balFocus.emit(event.detail)
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
+      stopEventBubbling(event)
+      this.balBlur.emit(event.detail)
     }
   }
 
@@ -272,6 +313,11 @@ export class RadioGroup implements ComponentInterface, Loggable {
     }
   }
 
+  private onOptionChange = async () => {
+    this.setRadioTabindex(this.value)
+    this.setRadioChecked()
+  }
+
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------
@@ -329,6 +375,14 @@ export class RadioGroup implements ComponentInterface, Loggable {
     })
   }
 
+  private setRadioChecked() {
+    this.getRadios().forEach((radio: HTMLBalRadioElement) => {
+      if (radio.updateState) {
+        radio.updateState()
+      }
+    })
+  }
+
   /**
    * GETTERS
    * ------------------------------------------------------
@@ -336,6 +390,10 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   private getRadios(): HTMLBalRadioElement[] {
     return Array.from(this.el.querySelectorAll('bal-radio'))
+  }
+
+  private getRadioButtons(): HTMLBalRadioButtonElement[] {
+    return Array.from(this.el.querySelectorAll('bal-radio-button'))
   }
 
   /**
@@ -362,10 +420,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
       }
       this.balChange.emit(this.value)
     }
-  }
-
-  private onOptionChange = async () => {
-    this.setRadioTabindex(this.value)
   }
 
   /**

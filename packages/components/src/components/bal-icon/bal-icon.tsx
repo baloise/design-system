@@ -10,6 +10,7 @@ import {
   defaultConfig,
   detachComponentToConfig,
 } from '../../utils/config'
+import { ComponentElementState } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-icon',
@@ -17,13 +18,18 @@ import {
     css: 'bal-icon.sass',
   },
 })
-export class Icon implements BalConfigObserver {
+export class Icon implements BalConfigObserver, ComponentElementState {
   @State() icons: BalIcons = defaultConfig.icons
+
+  /**
+   * PUBLIC API
+   * ------------------------------------------------------
+   */
 
   /**
    * Name of the baloise icon.
    */
-  @Prop({ reflect: true }) name = ''
+  @Prop({ reflect: true, mutable: true }) name = ''
 
   /**
    * Svg content.
@@ -60,6 +66,31 @@ export class Icon implements BalConfigObserver {
    * */
   @Prop() shadow = false
 
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled?: boolean = undefined
+
+  /**
+   * If `true` the component gets a invalid red style.
+   */
+  @Prop() invalid?: boolean = undefined
+
+  /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
   connectedCallback() {
     attachComponentToConfig(this)
   }
@@ -69,12 +100,22 @@ export class Icon implements BalConfigObserver {
   }
 
   /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  /**
    * @internal define config for the component
    */
   @Method()
   async configChanged(state: BalConfigState): Promise<void> {
     this.icons = state.icons
   }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
 
   private get svgContent() {
     const hasIcons = Object.keys(this.icons).length > 0
@@ -95,8 +136,31 @@ export class Icon implements BalConfigObserver {
     return this.svg || ''
   }
 
-  render() {
-    const color = [
+  private parseColor() {
+    if (!!this.disabled) {
+      return 'grey'
+    }
+
+    if (!!this.invalid) {
+      if (this.pressed) {
+        return 'danger-darker'
+      } else if (this.hovered) {
+        return 'danger-dark'
+      } else {
+        return 'danger'
+      }
+    }
+
+    if (this.color !== 'auto') {
+      if (this.pressed) {
+        return 'primary-dark'
+      } else if (this.hovered) {
+        return 'light-blue'
+      }
+    }
+
+    return [
+      'auto',
       'white',
       'blue',
       'grey',
@@ -109,7 +173,15 @@ export class Icon implements BalConfigObserver {
     ].includes(this.color)
       ? this.color
       : 'primary'
+  }
 
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
+  render() {
+    const color = this.parseColor()
     const block = BEM.block('icon')
 
     return (

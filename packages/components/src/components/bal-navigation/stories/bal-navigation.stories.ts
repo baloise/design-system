@@ -22,7 +22,7 @@ import {
 import { withContent } from '../../../stories/utils'
 
 const component = BalComponentStory({
-  title: 'Components/Navigation',
+  title: 'Components/Navigation/Navigation',
   component: BalNavigation,
   subcomponents: {
     BalNavigationLevels,

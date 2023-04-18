@@ -12,6 +12,16 @@ import { Basic } from './bal-icon.stories'
   fill elements instead of strokes.
 </bal-doc-lead>
 
+There are three ways in which the Baloise Design System offers support for icons:
+
+1. Standardized [Design System icons](?path=/docs/foundation-icons-overview--page#overview).
+2. Custom SVG icons [passed into the component](?path=/docs/components-icon--basic#svg).
+3. Custom SVG added to the [Design System config](?path=/docs/foundation-icons-development--page#import-during-initialization) during the initialization phase.
+
+> **TIP**
+>
+> The bal-icon is based on the [icons foundation](?path=/docs/foundation-icons-development--page) so check this out for adding more icons to your set.
+
 <Canvas withSource="open">
   <Story id="components-icon--basic" />
 </Canvas>
@@ -34,25 +44,25 @@ import { Basic } from './bal-icon.stories'
   </bal-button-group>
 </bal-doc-app>
 
-> **TIP**
->
-> The bal-icon is based on the [icons foundation](?path=/docs/foundation-icons-development--page) so check this out for adding more icons to your set.
-
 ## Examples
 
 <span id="story--components-icon--svg" style={{ opacity: 0 }}></span>
 
 ### SVG
 
-<Canvas withSource="closed">
+Custom SVG images can be added with the property `svg` and set color to `auto` to use the colors of the imported SVG image.
+
+<Canvas withSource="open">
   <Story id="components-icon--svg" />
 </Canvas>
+
+> **TIP**
+>
+> In the [icon foundation development](?path=/docs/foundation-icons-development--page#import-into-the-component) page is a more detail usage guide.
 
 <span id="story--components-icon--sizes" style={{ opacity: 0 }}></span>
 
 ### Sizes
-
-Here is how you can change the size:
 
 <Canvas withSource="open">
   <Story id="components-icon--sizes" />

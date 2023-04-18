@@ -14,5 +14,6 @@ export interface BalRadioOption {
   readonly: boolean
   required: boolean
   hidden: boolean
+  invisible: boolean
   invalid: boolean
 }

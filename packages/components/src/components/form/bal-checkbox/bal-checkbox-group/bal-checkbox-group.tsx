@@ -13,7 +13,7 @@ import {
   Method,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
-import { findItemLabel, isDescendant } from '../../../../utils/helpers'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
@@ -101,7 +101,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   disabledChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(child => {
+        this.getCheckboxes().forEach(child => {
           child.disabled = value
         })
       }
@@ -117,7 +117,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   readonlyChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(child => {
+        this.getCheckboxes().forEach(child => {
           child.readonly = value
         })
       }
@@ -135,15 +135,61 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()
       }
+      this.balInput.emit(this.value)
     } else {
       this.onOptionChange()
     }
   }
 
   /**
+   * Defines the column size like the grid.
+   */
+  @Prop() columns: Props.BalRadioGroupColumns = 1
+
+  @Watch('columns')
+  columnsChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
+  }
+
+  /**
+   * Defines the column size for tablet and bigger like the grid.
+   */
+  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsTablet')
+  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeTablet = value))
+  }
+
+  /**
+   * Defines the column size for mobile and bigger like the grid.
+   */
+  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsMobile')
+  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeMobile = value))
+  }
+
+  /**
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+
+  /**
+   * @deprecated Emitted when the checked property has changed.
+   */
+  @Event() balInput!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+
+  /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * LIFECYCLE
@@ -169,6 +215,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
       this.readonlyChanged(this.readonly)
     }
 
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 
@@ -198,6 +247,24 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
         this.value = []
       }
       this.onOptionChange()
+    }
+  }
+
+  @Listen('balFocus', { capture: true, target: 'document' })
+  checkboxFocusListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
+      stopEventBubbling(event)
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('balBlur', { capture: true, target: 'document' })
+  checkboxBlurListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
+      stopEventBubbling(event)
+      this.balBlur.emit(event.detail)
     }
   }
 
@@ -243,12 +310,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
         return false
       }
 
-      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+      this.getCheckboxes().forEach((checkbox: HTMLBalCheckboxElement) => {
         checkbox.checked = isChecked(checkbox)
       })
     }
 
-    this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+    this.getCheckboxes().forEach((checkbox: HTMLBalCheckboxElement) => {
       if (this.interface) {
         checkbox.interface = this.interface
       }
@@ -260,8 +327,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private get children(): HTMLBalCheckboxElement[] {
+  private getCheckboxes(): HTMLBalCheckboxElement[] {
     return Array.from(this.el.querySelectorAll('bal-checkbox'))
+  }
+
+  private getCheckboxButtons(): HTMLBalCheckboxButtonElement[] {
+    return Array.from(this.el.querySelectorAll('bal-checkbox-button'))
   }
 
   /**
@@ -280,18 +351,16 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     }
     ev.preventDefault()
 
-    // toggle clicked checkbox
     const selectedCheckbox = ev.target && (ev.target as HTMLElement).closest('bal-checkbox')
     if (selectedCheckbox) {
       if (selectedCheckbox.disabled || selectedCheckbox.readonly) {
-        ev.stopPropagation()
-        return
+        return ev.stopPropagation()
       }
     }
 
     // generate new value array out of the checked checkboxes
     const newValue: any[] = []
-    this.children.forEach(cb => {
+    this.getCheckboxes().forEach(cb => {
       if (cb.checked) {
         newValue.push(cb.value)
       }

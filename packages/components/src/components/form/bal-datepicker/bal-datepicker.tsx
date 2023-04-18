@@ -93,7 +93,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isMobile = isPlatform('mobile')
-  @State() hasFocus = false
+  @State() focused = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
   @State() pointerDate: BalPointerDate = {
@@ -572,15 +572,24 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   private formatDate(value: string): string {
     const separator = dateSeparator(this.getLocale())
     const length = value.length
-    const lastChar = value.charAt(length - 1)
+    const currentChar = value.charAt(length - 1)
+    const lastChar = value.charAt(length - 2)
 
-    if (length === 3 || length === 6) {
-      if (lastChar !== separator) {
+    if (currentChar === separator) {
+      if (length === 1 || lastChar === separator || value.split(separator).filter(val => val.length > 0).length >= 3) {
+        return value.substring(0, length - 1)
+      }
+    }
+
+    if (length === 5) {
+      if (value.split(separator)[0].split('').length === 1 && lastChar !== separator && currentChar !== separator) {
         return value.substring(0, length - 1) + separator + value.substring(length - 1, length)
       }
-    } else {
-      if (lastChar === separator) {
-        return value.substring(0, length - 1)
+    }
+
+    if (length === 3 || length === 6) {
+      if (currentChar !== separator && lastChar !== separator && value.split(separator).length <= 2) {
+        return value.substring(0, length - 1) + separator + value.substring(length - 1, length)
       }
     }
 
@@ -701,7 +710,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputBlur = (event: FocusEvent) => {
     preventDefault(event)
-    this.hasFocus = false
+    this.focused = false
   }
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)

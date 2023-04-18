@@ -4,7 +4,7 @@ export interface FormInput<Value> {
   el: HTMLElement
   disabled: boolean
   readonly: boolean
-  hasFocus: boolean
+  focused: boolean
   value?: Value
   inputValue?: Value
   nativeInput?: HTMLInputElement | HTMLTextAreaElement
@@ -68,7 +68,7 @@ export const inputHandleClick = <Value>(component: FormInput<Value>, event: Mous
 }
 
 export const inputHandleFocus = <Value>(component: FormInput<Value>, event: FocusEvent) => {
-  component.hasFocus = true
+  component.focused = true
   component.inputValue = component.value
   if (!component.disabled && component.balFocus) {
     component.balFocus.emit(event)
@@ -91,7 +91,7 @@ export const inputHandleReset = <Value>(
 }
 
 export const inputHandleBlur = <Value>(component: FormInput<Value>, event: FocusEvent) => {
-  component.hasFocus = false
+  component.focused = false
   if (!component.disabled && component.balBlur) {
     component.balBlur.emit(event)
   }

@@ -1,0 +1,89 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-radio-button
+  display: block
+  position: relative
+  //
+  // grid
+  flex: 0 0 100%
+  +tablet
+    &--column-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +mobile
+    &--column-mobile-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-mobile-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-mobile-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +tablet
+    &--column-tablet-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-tablet-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-tablet-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  +desktop
+    &--column-2
+      flex: 0 0 calc(50% - calc(var(--bal-space-normal) * 1 / 2))
+    &--column-3
+      flex: 0 0 calc(33.3333333333% - calc(var(--bal-space-normal) * 2 / 3))
+    &--column-4
+      flex: 0 0 calc(25% - calc(var(--bal-space-normal) * 3 / 4))
+  //
+  // native button element
+  &__native
+    display: block
+    width: 100%
+    height: 100%
+    background: transparent
+    border-style: solid
+    border-radius: var(--bal-radius-normal)
+    border-width: var(--bal-border-width-normal)
+    border-color: var(--bal-color-border-grey)
+    padding: var(--bal-size-medium)
+    cursor: pointer
+    user-select: none
+    //
+    // checked state
+    &--checked
+      border-color: var(--bal-color-border-primary)
+    &--checked#{&}--color-green
+      background: var(--bal-color-green-1)
+    &--checked#{&}--color-purple
+      background: var(--bal-color-purple-1)
+    &--checked#{&}--color-red
+      background: var(--bal-color-red-1)
+    &--checked#{&}--color-yellow
+      background: var(--bal-color-yellow-1)
+    //
+    // color states
+    &:disabled,
+    &--disabled
+      background: var(--bal-color-grey-1)
+      border-color: var(--bal-color-border-grey-dark)
+      cursor: default
+    &--invalid
+      border-color: var(--bal-color-border-danger)
+    //
+    // user interactions
+    +hover()
+      &:hover:not(:disabled):not(.bal-radio-button__native--colored)
+        background: var(--bal-color-grey-1)
+        border-color: var(--bal-color-border-light-blue)
+    &:active:not(:disabled)
+      border-color: var(--bal-color-border-primary-dark)
+    &--invalid
+      +hover()
+        &:hover:not(:disabled)
+          border-color: var(--bal-color-border-danger-dark)
+        &:active:not(:disabled)
+          border-color: var(--bal-color-border-danger-darker)
+    //
+    // flying focus
+    &.bal-focused
+      @extend %focus-shadow

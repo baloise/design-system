@@ -26,6 +26,7 @@ export const newBalRadioOption = (option: Option): BalRadioOption => {
     readonly: false,
     required: false,
     hidden: false,
+    invisible: false,
     invalid: false,
     ...option,
     label: '',

@@ -96,6 +96,13 @@ export class Field {
     this.triggerAllHandlers()
   }
 
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
+  }
+
   private triggerAllHandlers() {
     this.requiredHandler()
     this.invalidHandler()

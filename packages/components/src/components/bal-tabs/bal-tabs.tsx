@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
-import { debounceEvent } from '../../utils/helpers'
+import { debounceEvent, isChildOfEventTarget } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
@@ -120,6 +120,16 @@ export class Tabs {
    */
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalTabsWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalTabsDidAnimateDetail>
+
   resizeWidthHandler = ResizeHandler()
 
   @Listen('resize', { target: 'window' })
@@ -178,6 +188,16 @@ export class Tabs {
 
   componentDidRender() {
     this.moveLine(this.getTargetElement(this.value))
+  }
+
+  @Listen('balWillAnimate', { target: 'window' })
+  listenToWillAnimate(event: UIEvent) {
+    isChildOfEventTarget(event, this.el, () => this.renderLine())
+  }
+
+  @Listen('balDidAnimate', { target: 'window' })
+  listenToDidAnimate(event: UIEvent) {
+    isChildOfEventTarget(event, this.el, () => this.renderLine())
   }
 
   /**
@@ -313,6 +333,8 @@ export class Tabs {
         } else {
           this.lineWidth = 0
         }
+        this.balWillAnimate.emit()
+        this.balDidAnimate.emit()
       }
     }, timeout)
   }

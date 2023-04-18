@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
-import { BooleanValueAccessor } from './generated/boolean-value-accessor'
 import { TextValueAccessor } from './generated/text-value-accessor'
 import { SelectValueAccessor } from './generated/select-value-accessor'
 import { CheckboxValueAccessor } from './generated/checkbox-value-accessor'
@@ -15,7 +14,6 @@ const DECLARATIONS = [
 
   // ngModel accessors
   CheckboxValueAccessor,
-  BooleanValueAccessor,
   TextValueAccessor,
   SelectValueAccessor,
   NumericValueAccessor,

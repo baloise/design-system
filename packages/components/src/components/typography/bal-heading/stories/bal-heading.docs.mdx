@@ -1,0 +1,96 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../../stories/utils'
+import readme from '../readme.md'
+import { Basic } from './bal-heading.stories'
+
+<bal-doc-banner id="story--components-typography-heading--basic">Heading</bal-doc-banner>
+
+<bal-doc-lead>
+  <b>Heading</b> provides some additional helpers.
+</bal-doc-lead>
+
+<Canvas withSource="open">
+  <Story id="components-typography-heading--basic" />
+</Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="center">
+    <a class="button is-primary" href="?path=/story/components-typography-heading--basic">
+      Go to playground (Canvas)
+    </a>
+    <bal-doc-code-sandbox
+      framework="angular"
+      template={Basic.parameters.docs.source.code}
+      modules="heading"
+    ></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox
+      framework="html"
+      template={Basic.parameters.docs.source.code}
+      modules="heading"
+    ></bal-doc-code-sandbox>
+  </bal-button-group>
+</bal-doc-app>
+
+<span id="story--components-typography-heading--basic" style={{ opacity: 0 }}></span>
+
+## Examples
+
+<span id="story--components-typography-heading--subtitle" style={{ opacity: 0 }}></span>
+
+### Subtitle
+
+<Canvas>
+  <Story id="components-typography-heading--subtitle" />
+</Canvas>
+
+<span id="story--components-typography-heading--levels" style={{ opacity: 0 }}></span>
+
+### Levels
+
+<Canvas>
+  <Story id="components-typography-heading--levels" />
+</Canvas>
+
+<span id="story--components-typography-heading--colors" style={{ opacity: 0 }}></span>
+
+### Colors
+
+<Canvas>
+  <Story id="components-typography-heading--colors" />
+</Canvas>
+
+<span id="story--components-typography-heading--spacing" style={{ opacity: 0 }}></span>
+
+### Spacing
+
+<Canvas>
+  <Story id="components-typography-heading--spacing" />
+</Canvas>
+
+<span id="story--components-typography-heading--css-utilities" style={{ opacity: 0 }}></span>
+
+### CSS Utilities
+
+<Canvas>
+  <Story id="components-typography-heading--css-utilities" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/typography/bal-heading/stories/bal-heading.docs.mdx"></bal-doc-github>

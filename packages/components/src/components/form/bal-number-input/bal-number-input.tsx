@@ -69,7 +69,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
 
@@ -214,7 +214,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     this.language = state.language
     this.region = state.region
 
-    if (!this.hasFocus && this.nativeInput) {
+    if (!this.focused && this.nativeInput) {
       this.nativeInput.value = this.getFormattedValue()
     }
   }
@@ -351,8 +351,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   render() {
-    const value = this.hasFocus ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
-
+    const value = this.focused ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
     if (this.nativeInput && this.nativeInput.value) {
       this.nativeInput.value = value
     }

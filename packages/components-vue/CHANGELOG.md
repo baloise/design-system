@@ -1,5 +1,12 @@
 # @baloise/design-system-components-vue
 
+## 12.12.0
+
+### Patch Changes
+
+- Updated dependencies [[`c0b500bf7`](https://github.com/baloise-incubator/design-system/commit/c0b500bf7f48cc3a81041c0ccd8aec60d546c04a), [`b0992bdc5`](https://github.com/baloise-incubator/design-system/commit/b0992bdc55f4ba98f770745546b770bcebde9056), [`bf9634662`](https://github.com/baloise-incubator/design-system/commit/bf963466275cfaeffba82c2310c9b2ff690eb2ef), [`302c0f7c4`](https://github.com/baloise-incubator/design-system/commit/302c0f7c46d3fdf4da730a5f5ff8f22e9ee74267), [`73bb7e173`](https://github.com/baloise-incubator/design-system/commit/73bb7e1738bfd215cb8b47fce04fdaba5ba26e09), [`f9144f085`](https://github.com/baloise-incubator/design-system/commit/f9144f08528edd3dc58a17366a4426198b42410f)]:
+  - @baloise/design-system-components@12.12.0
+
 ## 12.11.0
 
 ### Patch Changes

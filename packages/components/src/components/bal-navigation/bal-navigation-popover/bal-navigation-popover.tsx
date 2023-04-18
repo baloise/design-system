@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/co
 import { stopEventBubbling } from '../../../utils/form-input'
 import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
-import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/toggle-scrolling-body'
+import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/scroll'
 
 @Component({
   tag: 'bal-navigation-popover',

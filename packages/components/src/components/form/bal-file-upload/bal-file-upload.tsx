@@ -30,7 +30,7 @@ export class FileUpload implements FormInput<File[]> {
   private labelEl: HTMLLabelElement | undefined
 
   @State() files: File[] = []
-  @State() hasFocus = false
+  @State() focused = false
 
   log!: LogInstance
 

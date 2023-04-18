@@ -1,5 +1,5 @@
 name: 🔧 Chore Task
-description: Create a report to chore a component or library
+description: Create a chore task for maintenance or architectural changes.
 title: ":wrench: chore(component): title"
 labels: ["🔧 chore"]
 body:

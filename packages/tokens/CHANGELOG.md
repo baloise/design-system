@@ -1,5 +1,26 @@
 # @baloise/design-system-tokens
 
+## 12.12.0
+
+### Minor Changes
+
+- [#1245](https://github.com/baloise-incubator/design-system/pull/1245) [`f9144f085`](https://github.com/baloise-incubator/design-system/commit/f9144f08528edd3dc58a17366a4426198b42410f) Thanks [@hirsch88](https://github.com/hirsch88)! - add new components bal-content, bal-stack and add new styles for radio and checkbox.
+
+  New components:
+
+  - [bal-content](https://baloise-design-system.vercel.app/?path=/docs/components-layout-content--basic)
+  - [bal-stack](https://baloise-design-system.vercel.app/?path=/docs/components-layout-stack--basic)
+
+  New radio and checkbox style:
+
+  - [bal-checkbox button](https://baloise-design-system.vercel.app/?path=/docs/components-form-checkbox--basic#checkbox-button)
+  - [bal-radio button](https://baloise-design-system.vercel.app/?path=/docs/components-form-radio--basic#radio-button)
+
+  Updated bal-icon component. New colors, sizes are added and state properties invalid and disabled. Moreover, the color `auto` can
+  be used to leave the color as it is.
+
+  Check out the updated [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-icon--basic) for the bal-icon.
+
 ## 12.11.0
 
 ## 12.10.0

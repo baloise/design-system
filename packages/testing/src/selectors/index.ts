@@ -7,13 +7,17 @@ export { byTestId, dataTestSelector } from './selectors.util'
 export const selectors = {
   accordion: {
     /**
-     * The trigger button.
+     * The trigger button, which shows and hides the content / details.
      */
-    trigger: byTestId('bal-accordion-button'),
+    trigger: byTestId('bal-accordion-trigger'),
     /**
-     * Content wrapper.
+     * The content or the hidden part of the accordion.
      */
-    content: byTestId('bal-accordion-content'),
+    details: byTestId('bal-accordion-details'),
+    /**
+     * The header or visible part of the accordion
+     */
+    summary: byTestId('bal-accordion-summary'),
   },
   badge: {
     /**

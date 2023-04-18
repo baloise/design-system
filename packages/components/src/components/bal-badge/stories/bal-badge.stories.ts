@@ -43,13 +43,6 @@ export const CardBadge = args => ({
   <bal-card-content>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </bal-card-content>
-</bal-card>
-  <bal-card>
-  <bal-badge v-bind="args">42</bal-badge>
-  <bal-card-title>Title</bal-card-title>
-  <bal-card-content>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </bal-card-content>
 </bal-card>`,
 })
 CardBadge.args = {

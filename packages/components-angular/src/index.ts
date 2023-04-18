@@ -3,7 +3,6 @@ export { BalNgErrorComponent } from './components/error/error.component'
 
 // DIRECTIVES
 export * from './generated/proxies'
-export { BooleanValueAccessor } from './generated/boolean-value-accessor'
 export { CheckboxValueAccessor } from './generated/checkbox-value-accessor'
 export { NumericValueAccessor } from './generated/number-value-accessor'
 export { SelectValueAccessor } from './generated/select-value-accessor'
