@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN CYPRESS_INSTALL_BINARY=0 npm ci --unsafe-perm
+RUN CYPRESS_INSTALL_BINARY=0 npm install
 RUN npm run docs
 
 FROM bitnami/nginx:latest

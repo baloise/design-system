@@ -35,8 +35,9 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector            | Element             |
-| ------------------- | ------------------- |
-| `accordion.trigger` | The trigger button. |
-| `accordion.content` | Content wrapper.    |
+| Selector            | Element                                                          |
+| ------------------- | ---------------------------------------------------------------- |
+| `accordion.trigger` | The trigger button, which shows and hides the content / details. |
+| `accordion.details` | The content or the hidden part of the accordion.                 |
+| `accordion.summary` | The header or visible part of the accordion                      |
 
