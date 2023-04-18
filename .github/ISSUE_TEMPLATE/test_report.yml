@@ -1,13 +1,23 @@
-name: 🔧 Chore Task
-description: Create a chore task for maintenance or architectural changes.
-title: ":wrench: chore(component): title"
-labels: ["🔧 chore"]
+name: 🧪 Test Task
+description: Create a test task to improve the Design System
+title: ":test_tube: test(component): title"
+labels: ["🧪 test"]
 body:
   - type: textarea
     id: summary
     attributes:
       label: Summary
-      description: Please describe the chore task.
+      description: Please describe the use case of this test task.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Please describe the acceptance criteria of the test task.
+      placeholder: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
     validations:
       required: true
   - type: textarea
