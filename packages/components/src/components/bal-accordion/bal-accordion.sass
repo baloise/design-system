@@ -6,12 +6,26 @@
   width: 100%
   z-index: 0
 
-.bal-accordion--card
+.bal-accordion--card-v1,
+.bal-accordion--card-v2
   margin-top: var(--bal-space-medium)
   +tablet
     margin-top: var(--bal-space-tablet-medium)
   +desktop
     margin-top: var(--bal-space-desktop-medium)
+
+.bal-accordion--card-v2
+  padding-left: var(--bal-space-medium)
+  padding-right: var(--bal-space-medium)
+  padding-bottom: var(--bal-space-medium)
+  +tablet
+    padding-left: var(--bal-space-tablet-medium)
+    padding-right: var(--bal-space-tablet-medium)
+    padding-bottom: var(--bal-space-tablet-medium)
+  +desktop
+    padding-left: var(--bal-space-desktop-medium)
+    padding-right: var(--bal-space-desktop-medium)
+    padding-bottom: var(--bal-space-desktop-medium)
 
 .bal-accordion__wrapper
   display: flex

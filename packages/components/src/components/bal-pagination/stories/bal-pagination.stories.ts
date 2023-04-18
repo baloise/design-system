@@ -3,6 +3,7 @@ import { BalComponentStory } from '../../../stories/utils'
 import { BalPagination } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Navigation/Pagination',
   component: BalPagination,
   docs,
 })

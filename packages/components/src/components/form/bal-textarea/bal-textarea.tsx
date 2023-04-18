@@ -46,7 +46,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
 
   /**
    * The name of the control, which is submitted with the form data.

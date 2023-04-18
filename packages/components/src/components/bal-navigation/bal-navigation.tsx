@@ -4,7 +4,7 @@ import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
 import { hasTouchSupport } from '../../utils/browser'
 import { Events } from '../../types'
-import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
+import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({
@@ -21,7 +21,7 @@ export class Navigation implements ComponentInterface {
   private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
-  private bodyScrollBlocker = BodyScrollBlocker()
+  private scrollHandler = ScrollHandler()
 
   @State() mainMobileHeight = ''
   @State() isMetaHidden = false
@@ -101,7 +101,7 @@ export class Navigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
-    if (isPlatform('desktop') && !this.bodyScrollBlocker.isBlocked()) {
+    if (isPlatform('desktop') && !this.scrollHandler.isDisabled()) {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -114,6 +114,7 @@ export class Navigation implements ComponentInterface {
   }
 
   async connectedCallback() {
+    this.scrollHandler.connect()
     this.selectedMetaValue = this.metaValue
     await this.readSubLevels()
     this.updateIndexes()
@@ -121,6 +122,7 @@ export class Navigation implements ComponentInterface {
   }
 
   disconnectedCallback() {
+    this.scrollHandler.disconnect()
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
@@ -150,9 +152,9 @@ export class Navigation implements ComponentInterface {
     const isNavPopoverOpen = customEvent.detail
 
     if (isNavPopoverOpen) {
-      this.bodyScrollBlocker.block()
+      this.scrollHandler.disable()
     } else {
-      this.bodyScrollBlocker.allow()
+      this.scrollHandler.enable()
     }
 
     if (isNavPopoverOpen) {
@@ -190,9 +192,9 @@ export class Navigation implements ComponentInterface {
     this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
     if (this.isMainBodyOpen) {
-      this.bodyScrollBlocker.block()
+      this.scrollHandler.disable()
     } else {
-      this.bodyScrollBlocker.allow()
+      this.scrollHandler.enable()
     }
   }
 
@@ -205,12 +207,12 @@ export class Navigation implements ComponentInterface {
       if (isMainNavOpen) {
         this.isMetaHidden = false
         if (!isLink) {
-          this.bodyScrollBlocker.block()
+          this.scrollHandler.disable()
         } else {
-          this.bodyScrollBlocker.allow()
+          this.scrollHandler.enable()
         }
       } else {
-        this.bodyScrollBlocker.allow()
+        this.scrollHandler.enable()
       }
     }
   }

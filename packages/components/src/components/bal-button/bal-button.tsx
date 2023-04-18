@@ -116,6 +116,11 @@ export class Button implements ComponentInterface {
   @Prop() icon = ''
 
   /**
+   * If `true` the icon turns
+   */
+  @Prop() iconTurn = false
+
+  /**
    * Name of the right button icon
    */
   @Prop() iconRight = ''
@@ -296,6 +301,7 @@ export class Button implements ComponentInterface {
             class="icon-left"
             name={this.icon}
             size={this.square ? this.size : 'small'}
+            turn={this.iconTurn}
             inverted={this.isIconInverted}
           />
           <span
@@ -313,6 +319,7 @@ export class Button implements ComponentInterface {
             class="icon-right"
             name={this.iconRight}
             size={'small'}
+            turn={this.iconTurn}
             inverted={this.isIconInverted}
           />
         </TagType>

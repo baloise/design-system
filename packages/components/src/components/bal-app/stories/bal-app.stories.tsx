@@ -11,6 +11,7 @@ import {
 } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Layout/App',
   component: BalApp,
   docs,
 })

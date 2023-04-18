@@ -10,15 +10,13 @@ The Baloise Design System provides a collection of custom cypress commands for o
 import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
-  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
 
   it('should ...', () => {
-    cy.get(accordion).find(selectors.accordion.trigger).contains('Show more')
-    cy.get(accordion).balAccordionIsClosed()
-    cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(accordion).find(selectors.accordion.trigger).contains('Show less')
-    cy.get(accordion).find(selectors.accordion.content).contains('My Content')
-    cy.get(accordion).click().balAccordionIsClosed()
+    cy.getByTestId('my-accordion').find(selectors.accordion.trigger).contains('Show more')
+    cy.getByTestId('my-accordion').balAccordionIsClosed()
+    cy.getByTestId('my-accordion').find(selectors.accordion.trigger).click()
+    cy.getByTestId('my-accordion').balAccordionIsOpen()
+    cy.getByTestId('my-accordion').find(selectors.accordion.details).contains('My Content')
   })
 })
 ```

@@ -43,7 +43,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
 
@@ -202,7 +202,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
-        aria-focused={this.hasFocus ? 'true' : null}
+        aria-focused={this.focused ? 'true' : null}
         class={{
           ...block.class(),
         }}

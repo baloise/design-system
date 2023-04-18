@@ -1,0 +1,53 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-stack
+  display: flex
+  flex: 1
+  flex-direction: row
+  align-items: center
+  height: 100%
+  gap: 1rem
+  //
+  // direction
+  &--direction-row
+    flex-direction: row
+    align-items: center
+  &--direction-column
+    flex-direction: column
+    align-items: flex-start
+  //
+  // alignment
+  &--alignment-start
+    align-items: flex-start
+  &--alignment-center
+    align-items: center
+  &--alignment-end
+    align-items: flex-end
+  //
+  // spaces
+  &--space-large
+    gap: var(--bal-space-large)
+    +tablet
+      gap: var(--bal-space-tablet-large)
+    +desktop
+      gap: var(--bal-space-desktop-large)
+  &--space-x-large
+    gap: var(--bal-space-x-large)
+    +tablet
+      gap: var(--bal-space-tablet-x-large)
+    +desktop
+      gap: var(--bal-space-desktop-x-large)
+  &--space-xx-large
+    gap: var(--bal-space-xx-large)
+    +tablet
+      gap: var(--bal-space-tablet-xx-large)
+    +desktop
+      gap: var(--bal-space-desktop-xx-large)
+
+//
+// custom position
+.bal-stack >  bal-radio
+  margin-top: -4px
+
+.bal-stack > .bal-text
+  margin: 0

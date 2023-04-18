@@ -10,7 +10,7 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import { AccordionState, Props } from '../../../types'
+import { AccordionState, Events, Props } from '../../../types'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -96,6 +96,16 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * Emitted when the state of the group is changing
    */
   @Event() balGroupStateChanged!: EventEmitter<MouseEvent>
+
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalListItemWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalListItemDidAnimateDetail>
 
   /**
    * LIFECYCLE
@@ -253,15 +263,19 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
           const waitForTransition = transitionEndAsync(contentEl, 300)
           contentEl.style.setProperty('max-height', `${contentHeight}px`)
+          this.balWillAnimate.emit()
 
           await waitForTransition
 
           this.state = AccordionState.Expanded
           contentEl.style.removeProperty('max-height')
+          this.balDidAnimate.emit()
         })
       })
     } else {
+      this.balWillAnimate.emit()
       this.state = AccordionState.Expanded
+      this.balDidAnimate.emit()
     }
   }
 
@@ -296,17 +310,20 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
         raf(async () => {
           const waitForTransition = transitionEndAsync(contentEl, 300)
-
           this.state = AccordionState.Collapsing
+          this.balWillAnimate.emit()
 
           await waitForTransition
 
           this.state = AccordionState.Collapsed
           contentEl.style.removeProperty('max-height')
+          this.balDidAnimate.emit()
         })
       })
     } else {
+      this.balWillAnimate.emit()
       this.state = AccordionState.Collapsed
+      this.balDidAnimate.emit()
     }
   }
 

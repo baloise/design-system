@@ -4,7 +4,7 @@ import { balSnackbarController } from '../bal-snackbar.controller'
 import docs from './bal-snackbar.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Overlay/Snackbar',
+  title: 'Components/Feedback/Snackbar',
   component: BalSnackbar,
   args: {
     message: 'Hello World',

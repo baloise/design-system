@@ -9,6 +9,7 @@ import {
 } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Feedback/Spinner',
   component: BalSpinner,
   docs,
 })

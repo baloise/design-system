@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "12.11.0",
+  "version": "12.12.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
     "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
-    "build:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
+    "build:pre": "npm run cy:copy && node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
     "build:post": "node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
@@ -63,18 +63,19 @@
     "e2e:server": "stencil build --config stencil.config.e2e.ts --serve --watch",
     "==================== CYPRESS =======================": "================================",
     "cy:install": "cypress install",
-    "cy:open": "cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
-    "cy:build": "stencil build --config stencil.config.e2e.ts --prod",
+    "cy:open": "npm run cy:copy && cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
+    "cy:build": "npm run cy:copy && stencil build --config stencil.config.e2e.ts --prod",
     "cy:start": "node ./web-server.js",
+    "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
     "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "12.11.0",
-    "@baloise/design-system-fonts": "12.11.0",
-    "@baloise/design-system-icons": "12.11.0",
-    "@baloise/design-system-tokens": "12.11.0",
+    "@baloise/design-system-css": "12.12.0",
+    "@baloise/design-system-fonts": "12.12.0",
+    "@baloise/design-system-icons": "12.12.0",
+    "@baloise/design-system-tokens": "12.12.0",
     "@baloise/web-app-utils": "3.11.0",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "~2.20.0",
@@ -97,9 +98,9 @@
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "12.11.0",
-    "@baloise/design-system-output-target-react": "12.11.0",
-    "@baloise/design-system-output-target-vue": "12.11.0"
+    "@baloise/design-system-output-target-angular": "12.12.0",
+    "@baloise/design-system-output-target-react": "12.12.0",
+    "@baloise/design-system-output-target-vue": "12.12.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

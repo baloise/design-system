@@ -1,13 +1,13 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
-import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
-import { Props } from '../../../types'
+import { Events, Props } from '../../../types'
+import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
 })
 export class NavbarBrand {
-  private bodyScrollBlocker = BodyScrollBlocker()
+  private scrollHandler = ScrollHandler()
 
   @Element() el!: HTMLElement
 
@@ -69,14 +69,29 @@ export class NavbarBrand {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalNavbarBrandWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalNavbarBrandDidAnimateDetail>
+
   connectedCallback() {
     this.migrateLinkTarget()
+    this.scrollHandler.connect()
   }
 
   componentWillLoad() {
     if (window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
+  }
+
+  disconnectedCallback() {
+    this.scrollHandler.disconnect()
   }
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
@@ -86,12 +101,13 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
+    this.balWillAnimate.emit()
     this.isMenuActive = isMenuActive
 
     if (this.isMenuActive) {
-      this.bodyScrollBlocker.block()
+      this.scrollHandler.disable()
     } else {
-      this.bodyScrollBlocker.allow()
+      this.scrollHandler.enable()
     }
 
     const navbar = this.el.closest('bal-navbar')
@@ -101,6 +117,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
+    this.balDidAnimate.emit()
   }
 
   async onClick() {

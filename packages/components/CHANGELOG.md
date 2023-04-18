@@ -1,5 +1,72 @@
 # @baloise/design-system-components
 
+## 12.12.0
+
+### Minor Changes
+
+- [#1253](https://github.com/baloise-incubator/design-system/pull/1253) [`b0992bdc5`](https://github.com/baloise-incubator/design-system/commit/b0992bdc55f4ba98f770745546b770bcebde9056) Thanks [@hirsch88](https://github.com/hirsch88)! - Use JavaScript to prevent scrolling instead of CSS to remember to user scroll position.
+
+- [#1240](https://github.com/baloise-incubator/design-system/pull/1240) [`bf9634662`](https://github.com/baloise-incubator/design-system/commit/bf963466275cfaeffba82c2310c9b2ff690eb2ef) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add missing selectors with data-testid in testing library
+
+- [#1252](https://github.com/baloise-incubator/design-system/pull/1252) [`302c0f7c4`](https://github.com/baloise-incubator/design-system/commit/302c0f7c46d3fdf4da730a5f5ff8f22e9ee74267) Thanks [@hirsch88](https://github.com/hirsch88)! - improve accordion structure to a more flexible solution.
+
+  **old**
+
+  The old button accordion solution is still active.
+
+  ```html
+  <bal-accordion>
+    <p class="py-medium">Hidden content</p>
+  </bal-accordion>
+  ```
+
+  **new**
+
+  In the new structure the header of the accordion can be designed as the situation demands it.
+
+  ```html
+  <bal-accordion>
+    <bal-accordion-details>
+      <p class="py-medium">Hidden content</p>
+    </bal-accordion-details>
+    <bal-accordion-summary>
+      My custom header
+      <bal-accordion-trigger></bal-accordion-trigger>
+    </bal-accordion-summary>
+  </bal-accordion>
+  ```
+
+- [#1245](https://github.com/baloise-incubator/design-system/pull/1245) [`f9144f085`](https://github.com/baloise-incubator/design-system/commit/f9144f08528edd3dc58a17366a4426198b42410f) Thanks [@hirsch88](https://github.com/hirsch88)! - add new components bal-content, bal-stack and add new styles for radio and checkbox.
+
+  New components:
+
+  - [bal-content](https://baloise-design-system.vercel.app/?path=/docs/components-layout-content--basic)
+  - [bal-stack](https://baloise-design-system.vercel.app/?path=/docs/components-layout-stack--basic)
+
+  New radio and checkbox style:
+
+  - [bal-checkbox button](https://baloise-design-system.vercel.app/?path=/docs/components-form-checkbox--basic#checkbox-button)
+  - [bal-radio button](https://baloise-design-system.vercel.app/?path=/docs/components-form-radio--basic#radio-button)
+
+  Updated bal-icon component. New colors, sizes are added and state properties invalid and disabled. Moreover, the color `auto` can
+  be used to leave the color as it is.
+
+  Check out the updated [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-icon--basic) for the bal-icon.
+
+### Patch Changes
+
+- [#1249](https://github.com/baloise-incubator/design-system/pull/1249) [`c0b500bf7`](https://github.com/baloise-incubator/design-system/commit/c0b500bf7f48cc3a81041c0ccd8aec60d546c04a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - trigger balChange on empty value when min and max props are set
+
+  enable dates who are in the range when switching the year and min and max prop are set
+
+- [#1244](https://github.com/baloise-incubator/design-system/pull/1244) [`73bb7e173`](https://github.com/baloise-incubator/design-system/commit/73bb7e1738bfd215cb8b47fce04fdaba5ba26e09) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - fix the datepicker by allowing the separators to be entered even when day or month which are 0-9 are entered without the 0 in front (e.g 2/2/2022)
+
+- Updated dependencies [[`f9144f085`](https://github.com/baloise-incubator/design-system/commit/f9144f08528edd3dc58a17366a4426198b42410f)]:
+  - @baloise/design-system-tokens@12.12.0
+  - @baloise/design-system-css@12.12.0
+  - @baloise/design-system-fonts@12.12.0
+  - @baloise/design-system-icons@12.12.0
+
 ## 12.11.0
 
 ### Minor Changes

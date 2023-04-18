@@ -3,6 +3,7 @@ import { BalComponentStory } from '../../../stories/utils'
 import { BalTabs, BalTabItem } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Navigation/Tabs',
   component: BalTabs,
   subcomponents: { BalTabItem },
   docs,

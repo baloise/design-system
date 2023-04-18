@@ -46,7 +46,7 @@ export const StencilBaseConfig: Config = {
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
   bundles: [
-    { components: ['bal-accordion'] },
+    { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
     { components: ['bal-app'] },
     { components: ['bal-badge'] },
     { components: ['bal-button', 'bal-button-group'] },

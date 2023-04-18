@@ -1,5 +1,13 @@
 # @baloise/design-system-css
 
+## 12.12.0
+
+### Patch Changes
+
+- Updated dependencies [[`f9144f085`](https://github.com/baloise-incubator/design-system/commit/f9144f08528edd3dc58a17366a4426198b42410f)]:
+  - @baloise/design-system-tokens@12.12.0
+  - @baloise/design-system-fonts@12.12.0
+
 ## 12.11.0
 
 ### Patch Changes

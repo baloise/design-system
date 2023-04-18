@@ -1,0 +1,36 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  align-items: flex-start
+  text-align: left
+  gap: 0.25rem
+  //
+  // alignment
+  &--alignment-center
+    align-items: center
+    text-align: center
+  &--alignment-end
+    align-items: flex-end
+    text-align: right
+  //
+  // direction
+  &--direction-row
+    flex-direction: row
+  &--direction-column
+    flex-direction: column
+  //
+  // spaces
+  &--space-x-small
+    gap: 0.5rem
+  &--space-small
+    gap: 0.75rem
+  &--space-normal
+    gap: 1rem
+
+//
+// custom position
+.bal-content > .bal-text
+  margin: 0

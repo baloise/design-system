@@ -3,9 +3,9 @@ import { dismiss, eventMethod, prepareOverlay } from '../../../utils/overlays/ov
 import { attachComponent, detachComponent } from '../../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
+import { ScrollHandler } from '../../../utils/scroll'
 import { getClassMap } from '../../../utils/css-classes'
 import { Props } from '../../../types'
-import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 
 @Component({
   tag: 'bal-modal',
@@ -21,7 +21,7 @@ export class Modal implements OverlayInterface {
   private isClickedOutsideOnMouseDown = false
   private isClickedOutsideOnMouseUp = false
 
-  private bodyScrollBlocker = BodyScrollBlocker()
+  private scrollHandler = ScrollHandler()
 
   @State() presented = false
 
@@ -101,6 +101,11 @@ export class Modal implements OverlayInterface {
 
   connectedCallback() {
     prepareOverlay(this)
+    this.scrollHandler.connect()
+  }
+
+  disconnectedCallback() {
+    this.scrollHandler.disconnect()
   }
 
   /**
@@ -265,11 +270,11 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
-    this.bodyScrollBlocker.block()
+    this.scrollHandler.disable()
   }
 
   private unsetModalActiveOnBody() {
-    this.bodyScrollBlocker.allow()
+    this.scrollHandler.enable()
   }
 
   private isClickedOutside(event: MouseEvent) {

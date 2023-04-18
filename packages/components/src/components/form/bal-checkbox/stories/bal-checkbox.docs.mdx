@@ -1,7 +1,5 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../../stories/utils'
-import { withLink } from './bal-checkbox.templates.ts'
-import readme from '../readme.md'
 import { Basic } from './bal-checkbox.stories'
 
 <bal-doc-banner id="story--components-form-checkbox--basic" >Checkbox</bal-doc-banner>
@@ -106,9 +104,39 @@ Switches are used to toggle between exactly two states (like on and off).
   <Story id="components-form-checkbox--filter-buttons" />
 </Canvas>
 
+<span id="story--components-form-checkbox--checkbox-button" style={{ opacity: 0 }}></span>
+
+### Checkbox Button
+
+The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic) and [content component](?path=/docs/components-layout-content--basic).
+
+The states invalid and disabled are also supported.
+
+<Canvas>
+  <Story id="components-form-checkbox--checkbox-button" />
+</Canvas>
+
+<span id="story--components-form-checkbox--checkbox-button-grid" style={{ opacity: 0 }}></span>
+
+### Checkbox Button Grid
+
+The checkbox buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+
+By default on mobile we only support one item per line. To overwrite this use the prop `columns-mobile`.
+
+<Canvas>
+  <Story id="components-form-checkbox--checkbox-button-grid" />
+</Canvas>
+
 ## Component Api
 
+import readme from '../readme.md'
+import checkboxGroup from '../bal-checkbox-group/readme.md'
+import checkboxButton from '../bal-checkbox-button/readme.md'
+
 <Description markdown={readme} />
+<Description markdown={checkboxGroup} />
+<Description markdown={checkboxButton} />
 
 <br />
 

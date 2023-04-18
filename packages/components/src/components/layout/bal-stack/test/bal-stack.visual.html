@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .bal-body {
+        visibility: hidden;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body class="bal-body">
+    <bal-doc-app>
+      <main class="container py-medium">
+        <section data-testid="basic">
+          <bal-stack>
+            <bal-icon name="plus"></bal-icon>
+            <bal-content>
+              <bal-label>Label</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+        </section>
+        <hr />
+        <section data-testid="alignment">
+          <bal-stack alignment="start">
+            <bal-content>
+              <bal-label>Alignment Start</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+
+          <bal-stack alignment="center">
+            <bal-content>
+              <bal-label>Alignment Center</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+
+          <bal-stack alignment="end">
+            <bal-content>
+              <bal-label>Alignment End</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+        </section>
+        <hr />
+        <section data-testid="direction">
+          <bal-stack direction="column">
+            <bal-content>
+              <bal-label>Direction Column</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+
+          <bal-stack direction="column" alignment="center">
+            <bal-content alignment="center">
+              <bal-label>Direction Column / Alignment Center</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+
+          <bal-stack direction="column" alignment="end">
+            <bal-content alignment="end">
+              <bal-label>Direction Column / Alignment End</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button square size="small" icon="date"></bal-button>
+          </bal-stack>
+        </section>
+        <hr />
+        <section data-testid="space">
+          <bal-stack>
+            <bal-content>
+              <bal-label>Space Default</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="large">
+            <bal-content>
+              <bal-label>Space Large</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="x-large">
+            <bal-content>
+              <bal-label>Space X-Large</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="xx-large">
+            <bal-content>
+              <bal-label>Space XX-Large</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

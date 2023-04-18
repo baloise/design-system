@@ -1,7 +1,6 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import { Basic } from './bal-accordion.stories'
-import readme from '../readme.md'
 
 <bal-doc-banner id="story--components-accordion--basic">Accordion</bal-doc-banner>
 
@@ -11,6 +10,12 @@ import readme from '../readme.md'
   users find content they need. The component can be used standalone, in combination or inside{' '}
   <a href="?path=/docs/components-card--basic">BalCard</a>.
 </bal-doc-lead>
+
+The accordion is build on 3 child components:
+
+- `bal-accordion-summary` defines the visible header of the accordion and can also act as a trigger.
+- `bal-accordion-trigger` shows and hides the details of the accordion.
+- `bal-accordion-details` is the content to be hidden by default.
 
 <Canvas withSource="open">
   <Story id="components-accordion--basic" />
@@ -33,41 +38,45 @@ import htmlExampleTs from './usage/html/example_ts.md'
   </bal-button-group>
 </bal-doc-app>
 
+> **TIP**
+>
+> Check out the layout components [bal-stack](?path=/docs/components-layout-stack--basic) and [bal-content](?path=/docs/components-layout-content--basic) of the above example.
+
 ## Examples
 
-<span id="story--components-accordion--with-icons" style={{ opacity: 0 }}></span>
+<span id="story--components-accordion--button-accordion" style={{ opacity: 0 }}></span>
 
-### With Icons
+### Button Accordion
 
 To change the label use the properties `open-label` & `close-label`. The icon can be changed with the properties `open-icon` and `close-icon`.
 
 <Canvas>
-  <Story id="components-accordion--with-icons" />
+  <Story id="components-accordion--button-accordion" />
 </Canvas>
 
-<span id="story--components-accordion--with-card" style={{ opacity: 0 }}></span>
+<span id="story--components-accordion---old-version" style={{ opacity: 0 }}></span>
 
-### With Card
+### Old Version
 
-The accordion can be combined with the card component to hide some secondary information.
-
-<Canvas>
-  <Story id="components-accordion--with-card" />
-</Canvas>
-
-<span id="story--components-accordion--with-tabs" style={{ opacity: 0 }}></span>
-
-### With Tabs
-
-The accordion can be combined with the tabs component if needed.
+The old version was created / designed in the previous style guide. We learned that we need a more flexible solution,
+therefore we restructured the accordion.
+We keep the old version intact, but highly recommend to use the new version above.
 
 <Canvas>
-  <Story id="components-accordion--with-tabs" />
+  <Story id="components-accordion--old-version" />
 </Canvas>
 
 ## Component Api
 
+import readme from '../readme.md'
+import readmeSummary from '../bal-accordion-summary/readme.md'
+import readmeTrigger from '../bal-accordion-trigger/readme.md'
+import readmeDetails from '../bal-accordion-details/readme.md'
+
 <Description markdown={readme} />
+<Description markdown={readmeSummary} />
+<Description markdown={readmeTrigger} />
+<Description markdown={readmeDetails} />
 
 <br />
 
