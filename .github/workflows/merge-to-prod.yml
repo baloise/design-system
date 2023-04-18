@@ -26,7 +26,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge main -> production
-        if: steps.changesets.outputs.published == 'true'
         uses: devmasx/merge-branch@master
         with:
           type: now
