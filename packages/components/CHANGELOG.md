@@ -1,5 +1,23 @@
 # @baloise/design-system-components
 
+## 12.12.0
+
+### Minor Changes
+
+- [`bf9634662`](https://github.com/baloise/design-system/commit/bf963466275cfaeffba82c2310c9b2ff690eb2ef) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add missing selectors with data-testid in testing library
+
+### Patch Changes
+
+- [`c0b500bf7`](https://github.com/baloise/design-system/commit/c0b500bf7f48cc3a81041c0ccd8aec60d546c04a) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - trigger balChange on empty value when min and max props are set
+
+  enable dates who are in the range when switching the year and min and max prop are set
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.12.0
+  - @baloise/design-system-fonts@12.12.0
+  - @baloise/design-system-icons@12.12.0
+  - @baloise/design-system-tokens@12.12.0
+
 ## 12.11.0
 
 ### Minor Changes

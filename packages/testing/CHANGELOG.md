@@ -1,5 +1,25 @@
 # @baloise/design-system-testing
 
+## 12.12.0
+
+### Minor Changes
+
+- [`bf9634662`](https://github.com/baloise/design-system/commit/bf963466275cfaeffba82c2310c9b2ff690eb2ef) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - add missing selectors with data-testid in testing library
+
+- [`7587d19d7`](https://github.com/baloise/design-system/commit/7587d19d765427185df45f02b92cd80475e87bab) Thanks [@hirsch88](https://github.com/hirsch88)! - cypress byTestID and getByTestId are selecting all possible data-test-id combinations
+
+  - `data-test-id`
+  - `data-testid`
+  - `data-test`
+  - `data-cy`
+
+  Here are the [best practices](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements) how to select an element for a cypress tests.
+
+### Patch Changes
+
+- Updated dependencies [[`c0b500bf7`](https://github.com/baloise/design-system/commit/c0b500bf7f48cc3a81041c0ccd8aec60d546c04a), [`bf9634662`](https://github.com/baloise/design-system/commit/bf963466275cfaeffba82c2310c9b2ff690eb2ef)]:
+  - @baloise/design-system-components@12.12.0
+
 ## 12.11.0
 
 ### Patch Changes
