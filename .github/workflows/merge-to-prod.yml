@@ -1,0 +1,36 @@
+name: Merge to Production
+
+on:
+  workflow_dispatch:
+    branches:
+      - 'main'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Git Identity
+        run: |
+          git config --global user.name 'baopso'
+          git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge main -> production
+        if: steps.changesets.outputs.published == 'true'
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: production
+          message: ":bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
