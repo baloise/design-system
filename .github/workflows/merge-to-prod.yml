@@ -32,5 +32,5 @@ jobs:
           type: now
           from_branch: main
           target_branch: production
-          message: ":bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}"
+          message: ":wrench: chore: merge main to production"
           github_token: ${{ secrets.GITHUB_TOKEN }}
