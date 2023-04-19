@@ -1,4 +1,7 @@
-@import '@baloise/design-system-css/sass/mixins'
+@import './bal-badge.vars'
+
+// Badge
+// --------------------------------------------------
 
 +block(badge)
   +unselectable
@@ -6,8 +9,8 @@
   display: flex
   justify-content: center
   align-items: center
-  background: var(--bal-color-danger)
-  border-radius: var(--bal-radius-rounded)
+  background: var(--bal-badge-background)
+  border-radius: var(--bal-badge-radius)
   width: 1.5rem
   height: 1.5rem
   +modifier(has-size-small)
@@ -16,13 +19,15 @@
   +modifier(has-size-large)
     width: 2rem
     height: 2rem
+  //
   // colors
   +modifier(has-background-danger)
-    background: var(--bal-color-danger-4)
+    background: var(--bal-badge-background-danger)
   +modifier(has-background-warning)
-    background: var(--bal-color-warning-4)
+    background: var(--bal-badge-background-warning)
   +modifier(has-background-success)
-    background: var(--bal-color-success-4)
+    background: var(--bal-badge-background-success)
+  //
   // position
   +modifiers(has-position-card, has-position-button)
     position: absolute
@@ -34,21 +39,25 @@
     right: -26px
     &.bal-badge--has-size-small
       right: -16px
-
+  //
   // label
   +element(label)
     font-weight: var(--bal-weight-bold) !important
     font-family: var(--bal-font-family-text) !important
     font-size: var(--bal-size-small) !important
-    color: var(--bal-color-text-white)
+    color: var(--bal-badge-text-color)
     line-height: 1.5rem !important
     hyphens: auto
     +modifier(is-hidden)
       display: none !important
+    +modifier(has-color-danger)
+      color: var(--bal-badge-text-color-danger)
     +modifier(has-color-warning)
-      color: var(--bal-color-primary)
-
-    // icon
+      color: var(--bal-badge-text-color-warning)
+    +modifier(has-color-success)
+      color: var(--bal-badge-text-color-success)
+  //
+  // icon
   +element(icon)
     +modifier(is-hidden)
       display: none !important

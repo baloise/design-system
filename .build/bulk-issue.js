@@ -60,32 +60,32 @@ async function main() {
   }
   log.info('found base image to clone from')
 
-  // for (let index = 0; index < tags.length; index++) {
-  //   const tag = tags[index];
-  //   let response = {}
-  //   try {
-  //     response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
-  //       owner: OWNER,
-  //       repo: REPO,
-  //       headers: {
-  //         'X-GitHub-Api-Version': API_VERSION
-  //       },
-  //       title: issueResponse.data.title.replace('{component}', tag),
-  //       labels: issueResponse.data.labels.map(label => label.name),
-  //       milestone: issueResponse.data.milestone.number,
-  //       body: issueResponse.data.body,
-  //     })
-  //   } catch(error) {
-  //     log.error(`could not create issue for ${tag}`)
-  //     return process.exit(1)
-  //   }
+  for (let index = 0; index < tags.length; index++) {
+    const tag = tags[index];
+    let response = {}
+    try {
+      response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
+        owner: OWNER,
+        repo: REPO,
+        headers: {
+          'X-GitHub-Api-Version': API_VERSION
+        },
+        title: issueResponse.data.title.replace('{component}', tag),
+        labels: issueResponse.data.labels.map(label => label.name),
+        milestone: issueResponse.data.milestone.number,
+        body: issueResponse.data.body,
+      })
+    } catch(error) {
+      log.error(`could not create issue for ${tag}`)
+      return process.exit(1)
+    }
 
-  //   if(response.status !== 201){
-  //     log.error(`could not create issue for ${tag}`)
-  //     return process.exit(1)
-  //   }
-  //   log.list(`${tag} issue created`)
-  // }
+    if(response.status !== 201){
+      log.error(`could not create issue for ${tag}`)
+      return process.exit(1)
+    }
+    log.list(`${tag} issue created`)
+  }
 }
 
 main()
