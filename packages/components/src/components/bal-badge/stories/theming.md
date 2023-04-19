@@ -6,8 +6,6 @@ The component can be customization by changing the CSS variables.
 
 <!-- START: human documentation -->
 
-
-
 <!-- END: human documentation -->
 
 ### CSS Custom Variables​
