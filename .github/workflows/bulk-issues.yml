@@ -1,0 +1,37 @@
+name: Create component issues
+
+on:
+  workflow_dispatch:
+    inputs:
+      issueNumber:
+        description: 'issue number of the base issue to clone from'
+        required: true
+        type: string
+
+jobs:
+  CreateBulkIssues:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Update npm registry
+        run: npm run registry
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: node .build/bulk-issue.js issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}
