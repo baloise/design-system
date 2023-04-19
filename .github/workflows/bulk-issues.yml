@@ -26,7 +26,7 @@ jobs:
         run: npm run registry
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Cypress
         run: node .build/bulk-issue.js issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}
