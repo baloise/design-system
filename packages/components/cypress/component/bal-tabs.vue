@@ -8,11 +8,7 @@ import { BalTabs, BalTabItem } from '../../.storybook/vue/generated/components'
     <BalTabItem bubble value="tab-c" label="Tab C">Content of Tab C</BalTabItem>
     <BalTabItem value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</BalTabItem>
     <BalTabItem value="tab-e" label="Tab E" disabled>Content of Tab E</BalTabItem>
-    <BalTabItem
-      value="tab-link"
-      label="Tab link"
-      href="https://github.com/baloise/design-system"
-      target="_blank"
+    <BalTabItem value="tab-link" label="Tab link" href="https://github.com/baloise/design-system" target="_blank"
       >Content of Tab link</BalTabItem
     >
   </BalTabs>

@@ -48,24 +48,28 @@ export const createThemingMarkdown = (docsPath: string, component: JsonDocsCompo
       table.addRow([`\`${styleVariable.name}\``, styleVariable.docs])
     })
 
-    content = [
-      `## Theming`,
-      '',
-      'The component can be customization by changing the CSS variables.',
-      '',
-      '<a class="button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>',
-      '',
-      '<!-- START: human documentation -->',
-      '',
-      humanLines.join(NEWLINE).trim(),
-      '',
-      '<!-- END: human documentation -->',
-      '',
-      '### CSS Custom Variables​',
-      '',
-      ...table.toMarkdown(),
-      '',
-    ]
+    const hasTheming = styleDocs.length > 0
+
+    if (hasTheming) {
+      content = [
+        `## Theming`,
+        '',
+        'The component can be customization by changing the CSS variables.',
+        '',
+        '<a class="button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>',
+        '',
+        '<!-- START: human documentation -->',
+        '',
+        humanLines.join(NEWLINE).trim(),
+        '',
+        '<!-- END: human documentation -->',
+        '',
+        '### CSS Custom Variables​',
+        '',
+        ...table.toMarkdown(),
+        '',
+      ]
+    }
   } catch (_error) {
     // skip components without vars files
   }
