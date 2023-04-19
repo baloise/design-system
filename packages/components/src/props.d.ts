@@ -12,7 +12,7 @@ export namespace Props {
   export type BalStackAlignment = 'center' | 'end' | 'start' | ''
 
   export type BalBadgeSize = 'small' | 'large' | ''
-  export type BalBadgeColor = 'danger' | 'warning' | 'success'
+  export type BalBadgeColor = 'danger' | 'warning' | 'success' | ''
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
 
   export type BalButtonGroupPosition = 'right' | 'center' | ''
