@@ -23,6 +23,7 @@ packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
 packages/components/src/components/**/testing.md
+packages/components/src/components/**/theming.md
 
 packages/components/public/assets/fonts/
 packages/components/public/assets/data/
