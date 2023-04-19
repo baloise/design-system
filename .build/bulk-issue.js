@@ -22,7 +22,7 @@ async function main() {
   const issueNumberList = process.argv.filter(arg => arg.startsWith('issue'))
   if(issueNumberList.length < 1) {
     log.error('issue argument is not provided')
-    return
+    return process.exit(1)
   }
   const issueNumber = formatArg(issueNumberList)
   log.info(`issue number is ${issueNumber}`);
@@ -30,7 +30,7 @@ async function main() {
   const tokenList = process.argv.filter(arg => arg.startsWith('token'))
   if(tokenList.length < 1) {
     log.error('token argument is not provided')
-    return
+    return process.exit(1)
   }
   const token = formatArg(tokenList)
   log.info(`token is set`);
@@ -51,12 +51,12 @@ async function main() {
     })
   } catch(error){
     log.error('could not find base issue to clone from!')
-    return
+    return process.exit(1)
   }
 
   if(issueResponse.status !== 200){
     log.error('could not find base issue to clone from!')
-    return
+    return process.exit(1)
   }
   log.info('found base image to clone from')
 
@@ -77,12 +77,12 @@ async function main() {
   //     })
   //   } catch(error) {
   //     log.error(`could not create issue for ${tag}`)
-  //     return
+  //     return process.exit(1)
   //   }
 
   //   if(response.status !== 201){
   //     log.error(`could not create issue for ${tag}`)
-  //     return
+  //     return process.exit(1)
   //   }
   //   log.list(`${tag} issue created`)
   // }
