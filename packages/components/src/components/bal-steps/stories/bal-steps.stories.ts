@@ -3,6 +3,7 @@ import { BalComponentStory } from '../../../stories/utils'
 import { BalSteps, BalStepItem } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Navigation/Steps',
   component: BalSteps,
   subcomponents: { BalStepItem },
   docs,
