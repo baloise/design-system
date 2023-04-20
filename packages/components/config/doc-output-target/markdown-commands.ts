@@ -1,5 +1,5 @@
 import { MarkdownTable } from './docs-util'
-import { WHITESPACE, SPACE } from './constants'
+import { SPACE } from './constants'
 
 export interface TestingCommand {
   name: string
@@ -15,10 +15,10 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
     return content
   }
 
-  content.push(`### Custom Commands`)
-  content.push(WHITESPACE)
+  content.push(`### Component Commands`)
+  content.push('')
   content.push(`A list of the custom commands for this specific component.`)
-  content.push(WHITESPACE)
+  content.push('')
 
   const table = new MarkdownTable()
 
@@ -37,7 +37,7 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
   })
 
   content.push(...table.toMarkdown())
-  content.push(WHITESPACE)
+  content.push('')
 
   return content
 }

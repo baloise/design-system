@@ -12,7 +12,7 @@ import {
 } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
-  title: 'Components/Stage',
+  title: 'Components/Layout/Stage',
   component: BalStage,
   subcomponents: {
     BalStageBody,

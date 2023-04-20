@@ -82,7 +82,7 @@
       margin-bottom: 0 !important
       margin-left: 1.5rem !important
 
-  .bal-data-value-btn
+  +block(button)
     display: none
   +modifier(is-multiline)
     &,
@@ -100,7 +100,7 @@
     & > div > bal-input input.input
       flex: 1
     +modifier(is-editable)
-      .bal-data-value-btn
+      .bal-data-value__button
         display: block
     & > bal-button
       margin-left: 8px

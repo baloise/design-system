@@ -74,10 +74,10 @@ export class Toast {
     return (
       <Host id={this.toastId} class="bal-toast">
         <div role="alert" onClick={() => this.close()} class={`bal-toast__inner ${this.colorType}`}>
-          <span class="bal-toast__label" innerHTML={this.message}>
+          <span class="bal-toast__label" innerHTML={this.message} data-testid="bal-toast-label">
             <slot />
           </span>
-          <bal-close class="bal-toast__close" inverted={false}></bal-close>
+          <bal-close class="bal-toast__close" inverted={false} data-testid="bal-toast-close"></bal-close>
         </div>
       </Host>
     )

@@ -1,0 +1,67 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-label
+  display: inline
+  //
+  // native label html element
+  &__native
+    hyphens: auto
+    white-space: pre
+    overflow: hidden
+    text-overflow: ellipsis
+    min-width: 0
+    color: var(--bal-color-text-primary)
+    font-weight: var(--bal-weight-bold)
+    font-size: var(--bal-size-normal)
+    font-family: var(--bal-font-family-title)
+    line-height: var(--bal-line-height-normal)
+    +tablet
+      font-size: var(--bal-size-tablet-normal)
+      line-height: var(--bal-line-height-tablet-normal)
+    +desktop
+      font-size: var(--bal-size-desktop-normal)
+      line-height: var(--bal-line-height-desktop-normal)
+    //
+    // font sizes
+    &--small
+      font-family: var(--bal-font-family-text)
+      font-size: var(--bal-size-small)
+      line-height: var(--bal-line-height-small)
+      +tablet
+        font-size: var(--bal-size-tablet-small)
+        line-height: var(--bal-line-height-tablet-small)
+      +desktop
+        font-size: var(--bal-size-desktop-small)
+        line-height: var(--bal-line-height-desktop-small)
+    &--large
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-large)
+      line-height: var(--bal-line-height-large)
+      +tablet
+        font-size: var(--bal-size-tablet-large)
+        line-height: var(--bal-line-height-tablet-large)
+      +desktop
+        font-size: var(--bal-size-desktop-large)
+        line-height: var(--bal-line-height-desktop-large)
+    //
+    // color styles
+    &--success
+      color: var(--bal-color-text-success)
+    &--danger
+      color: var(--bal-color-text-danger)
+    &--disabled
+      color: var(--bal-color-text-grey) !important
+    //
+    // font weight
+    &--regular
+      font-weight: var(--bal-weight-regular)
+    //
+    // interactions
+    &--hovered
+      color: var(--bal-color-text-light-blue)
+    &--pressed
+      color: var(--bal-color-text-primary-dark)
+    &--danger#{&}--hovered
+      color: var(--bal-color-text-danger-dark)
+    &--danger#{&}--pressed
+      color: var(--bal-color-text-danger-darker)

@@ -32,7 +32,7 @@ describe('bal-select.cy.ts', () => {
   })
   // Basic
   it('should fire a balChange, balFocus and balBlur events when selecting an option', () => {
-    cy.get('bal-select').find('.data-test-select-input').click()
+    cy.get('bal-select').find('.bal-select__control__input').click()
     cy.get('.bal-select__option').eq(2).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -42,9 +42,9 @@ describe('bal-select.cy.ts', () => {
   })
 
   it('should fire a balChange event after value change', () => {
-    cy.get('bal-select').find('.data-test-select-input').click()
+    cy.get('bal-select').find('.bal-select__control__input').click()
     cy.get('.bal-select__option').eq(2).click()
-    cy.get('bal-select').find('.data-test-select-input').click()
+    cy.get('bal-select').find('.bal-select__control__input').click()
     cy.get('.bal-select__option').eq(3).click()
 
     cy.get('@balChange').should('have.been.callCount', 2)
@@ -52,7 +52,7 @@ describe('bal-select.cy.ts', () => {
   })
 
   it('should select option with the key entry plus enter', () => {
-    cy.get('bal-select').find('.data-test-select-input').click()
+    cy.get('bal-select').find('.bal-select__control__input').click()
     cy.get('bal-select').type('Cypress.io{downArrow}').type('Cypress.io{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -62,7 +62,7 @@ describe('bal-select.cy.ts', () => {
   it('should not fire a click event, because the select is disabled', () => {
     cy.get('bal-select').invoke('attr', 'disabled', true)
     cy.get('bal-select').should('have.attr', 'disabled')
-    cy.get('bal-select').find('.data-test-select-input').click({ force: true })
+    cy.get('bal-select').find('.bal-select__control__input').click({ force: true })
 
     cy.get('@balClick').should('not.have.been.calledOnce')
   })
@@ -71,8 +71,8 @@ describe('bal-select.cy.ts', () => {
   it('should fire input event when typing and should fire balFocus and balChange events (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}').type('{8}').blur()
+    cy.get('bal-select').find('.bal-select__control__input').click()
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}').type('{8}').blur()
 
     cy.get('@balInput').should('have.been.callCount', 4)
     cy.get('@balChange').should('have.been.calledOnce')
@@ -83,8 +83,8 @@ describe('bal-select.cy.ts', () => {
   it('should fire a balBlur when select the option (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}').type('{8}')
+    cy.get('bal-select').find('.bal-select__control__input').click()
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}').type('{8}')
     cy.get('.bal-select__option').eq(0).click()
 
     cy.get('@balBlur').should('have.been.calledOnce')
@@ -93,8 +93,8 @@ describe('bal-select.cy.ts', () => {
   it('should find and select option with the key navigation search and arrow keys plus enter (typeahead)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}')
+    cy.get('bal-select').find('.bal-select__control__input').click()
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -176,8 +176,8 @@ describe('bal-select.cy.ts', () => {
   it('should fire balInput and balChange event after value change (typeahead + multiple)', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}')
+    cy.get('bal-select').find('.bal-select__control__input').click()
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
     cy.get('.bal-select__option').eq(0).click()
     cy.get('.bal-select__option').eq(1).click()
 
@@ -191,8 +191,8 @@ describe('bal-select.cy.ts', () => {
   it('should fire input event when typing and should fire balFocus and balChange events (typeahead + remote)', () => {
     cy.get('bal-select').invoke('attr', 'typeahead', true).invoke('attr', 'remote', true)
 
-    cy.get('bal-select').find('.data-test-select-input').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}').type('{8}').blur()
+    cy.get('bal-select').find('.bal-select__control__input').click()
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}').type('{8}').blur()
 
     cy.get('@balInput').should('have.been.callCount', 4)
     cy.get('@balChange').should('have.been.calledOnce')
@@ -204,7 +204,7 @@ describe('bal-select.cy.ts', () => {
     cy.get('bal-select').invoke('attr', 'multiple', true).invoke('attr', 'typeahead', true)
 
     cy.get('bal-select').find('.bal-select__control__selections').click()
-    cy.get('bal-select').find('.data-test-select-input').type('{1}').type('{9}').type('{9}')
+    cy.get('bal-select').find('.bal-select__control__input').type('{1}').type('{9}').type('{9}')
     cy.get('bal-select').type('{downArrow}').type('{enter}')
 
     cy.get('@balChange').should('have.been.callCount', 1)

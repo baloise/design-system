@@ -67,7 +67,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -508,7 +508,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
-    let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    let value = this.focused ? this.getRawValue() : this.getFormattedValue()
     if (this.mask !== undefined) {
       switch (this.mask) {
         case 'contract-number':
@@ -552,7 +552,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
         <input
           class={{
             'input': true,
-            'data-test-input': true,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'clickable': this.clickable,
@@ -561,6 +560,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             'has-text-centered': this.textAlign === 'center',
             'has-text-right': this.textAlign === 'right',
           }}
+          data-testid="bal-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
           aria-labelledby={labelId}

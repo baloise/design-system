@@ -78,6 +78,16 @@ export class NavbarBrand {
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalNavbarMenuDidAnimateDetail>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalNavbarBrandWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalNavbarBrandDidAnimateDetail>
+
   connectedCallback() {
     this.bodyScrollHandler.connect()
     this.migrateLinkTarget()

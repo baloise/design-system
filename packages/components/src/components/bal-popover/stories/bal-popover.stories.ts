@@ -12,7 +12,7 @@ import {
 import { BalComponentStory } from '../../../stories/utils/story'
 
 const component = BalComponentStory({
-  title: 'Components/Overlay/Popover',
+  title: 'Components/Popover',
   component: BalPopover,
   subcomponents: { BalPopoverContent, BalTabs, BalTabItem },
   argTypes: {

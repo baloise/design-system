@@ -469,6 +469,8 @@ const tokens = {
       'info': 'info-4',
       'warning': 'warning-5',
       'danger': 'danger-4',
+      'danger-dark': 'danger-5', // hover color
+      'danger-darker': 'danger-6', // active color
     },
   },
   /**
@@ -481,13 +483,17 @@ const tokens = {
     width: '2px',
     colors: {
       'primary': 'primary-5',
-      'primary-light': 'primary-3', // inverted disabled
-      'white': 'white', // inverted
       'grey': 'grey-3',
       'grey-dark': 'grey-4',
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
+      'danger-dark': 'danger-5', // hover color
+      'danger-darker': 'danger-6', // active color
+      'primary-light': 'primary-3', // inverted disabled
+      'white': 'white', // inverted
+      'light-blue': 'light-blue-5', // hover color
+      'primary-dark': 'primary-6', // active color
     },
   },
   /**

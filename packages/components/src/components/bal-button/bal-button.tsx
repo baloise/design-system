@@ -115,6 +115,11 @@ export class Button implements ComponentInterface {
   @Prop() icon = ''
 
   /**
+   * If `true` the icon turns
+   */
+  @Prop() iconTurn = false
+
+  /**
    * Name of the right button icon
    */
   @Prop() iconRight = ''
@@ -287,6 +292,7 @@ export class Button implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
+          data-testid="bal-button"
         >
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
@@ -294,14 +300,16 @@ export class Button implements ComponentInterface {
             class="icon-left"
             name={this.icon}
             size={this.square ? this.size : 'small'}
+            turn={this.iconTurn}
             inverted={this.isIconInverted}
           />
           <span
             class={{
-              'data-test-button-label button-label': true,
+              'button-label': true,
               'is-small': this.size === 'small',
             }}
             style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
+            data-testid="bal-button-label"
           >
             <slot />
           </span>
@@ -310,6 +318,7 @@ export class Button implements ComponentInterface {
             class="icon-right"
             name={this.iconRight}
             size={'small'}
+            turn={this.iconTurn}
             inverted={this.isIconInverted}
           />
         </TagType>

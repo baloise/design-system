@@ -4,19 +4,19 @@ import readme from '../readme.md'
 import menu from '../bal-popover-content/readme.md'
 import { Basic } from './bal-popover.stories'
 
-<bal-doc-banner id="story--components-overlay-popover--basic">Popover</bal-doc-banner>
+<bal-doc-banner id="story--components-popover--basic">Popover</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Popover</b> shows and hides content close to the trigger element.
 </bal-doc-lead>
 
 <Canvas withSource="open" className="has-visible-overflow">
-  <Story id="components-overlay-popover--basic" />
+  <Story id="components-popover--basic" />
 </Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-overlay-popover--basic">
+    <a class="button is-primary" href="?path=/story/components-popover--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox
@@ -34,20 +34,20 @@ import { Basic } from './bal-popover.stories'
 
 ## Examples
 
-<span id="story--components-overlay-popover--arrow" style={{ opacity: 0 }}></span>
+<span id="story--components-popover--arrow" style={{ opacity: 0 }}></span>
 
 ### Arrow
 
 <Canvas withSource="closed" className="has-visible-overflow">
-  <Story id="components-overlay-popover--arrow" />
+  <Story id="components-popover--arrow" />
 </Canvas>
 
-<span id="story--components-overlay-popover--tooltip" style={{ opacity: 0 }}></span>
+<span id="story--components-popover--tooltip" style={{ opacity: 0 }}></span>
 
 ### Tooltip
 
 <Canvas withSource="closed" className="has-visible-overflow">
-  <Story id="components-overlay-popover--tooltip" />
+  <Story id="components-popover--tooltip" />
 </Canvas>
 
 ## Component Api
@@ -64,6 +64,10 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 import testing from './testing.md'
 

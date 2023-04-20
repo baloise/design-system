@@ -22,7 +22,7 @@ export class Badge implements ComponentInterface {
   /**
    * Define the alert color for the badge.
    */
-  @Prop() color: BalProps.BalBadgeColor = 'danger'
+  @Prop() color: Props.BalBadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
@@ -45,6 +45,7 @@ export class Badge implements ComponentInterface {
             [`bal-badge__label--has-color-${this.color}`]: true,
             'bal-badge__label--is-hidden': !!this.icon || this.size === 'small',
           }}
+          data-testid="bal-badge-label"
         >
           <slot></slot>
         </span>

@@ -18,11 +18,11 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
   const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {
-    return command(selectors.accordion.button)
+    return command(selectors.accordion.trigger)
   }
 
   if (isButton(element)) {
-    return command(selectors.button.main)
+    return command(selectors.button.native)
   }
 
   if (isCheckbox(element)) {
@@ -33,16 +33,20 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
     return command(selectors.datepicker.input)
   }
 
-  if (isInput(element) || isNumberInput(element)) {
-    return command(selectors.input.main)
+  if (isInput(element)) {
+    return command(selectors.input.native)
+  }
+
+  if (isNumberInput(element)) {
+    return command(selectors.numberInput.native)
   }
 
   if (isTextarea(element)) {
-    return command(selectors.textarea.main)
+    return command(selectors.textarea.native)
   }
 
   if (isSlider(element)) {
-    return command(selectors.slider.main)
+    return command(selectors.slider.native)
   }
 
   if (isRadio(element)) {

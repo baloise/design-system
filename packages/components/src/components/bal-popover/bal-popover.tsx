@@ -177,7 +177,7 @@ export class Popover {
       this.updatePopper()
     }
 
-    // Bug fix for https://github.com/baloise-incubator/design-system/issues/551
+    // Bug fix for https://github.com/baloise/design-system/issues/551
     if (isBrowser('Safari') && !this.isTouch) {
       clearTimeout(this.componentDidRenderTimer)
       this.componentDidRenderTimer = setTimeout(() => {

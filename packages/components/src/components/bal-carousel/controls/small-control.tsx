@@ -40,6 +40,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         inverted={inverted}
         onClick={() => onPreviousClick()}
         disabled={isFirst}
+        data-testid="bal-carousel-control-left"
       ></bal-button>
       <bal-button
         class={{
@@ -54,6 +55,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         inverted={inverted}
         onClick={() => onNextClick()}
         disabled={isLast}
+        data-testid="bal-carousel-control-right"
       ></bal-button>
     </div>
   )

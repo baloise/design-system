@@ -92,7 +92,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isMobile = isPlatform('mobile')
-  @State() hasFocus = false
+  @State() focused = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
   @State() pointerDate: BalPointerDate = {
@@ -432,7 +432,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      if (isHuman && this.isDateInRange(parse(this.value as string) as Date)) {
+
+      if (isHuman && (this.isDateInRange(parse(this.value as string) as Date) || this.value === '')) {
         this.balChange.emit(this.value)
       }
     }
@@ -567,11 +568,41 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
+  private formatDate(value: string): string {
+    const separator = dateSeparator(this.getLocale())
+    const length = value.length
+    const currentChar = value.charAt(length - 1)
+    const lastChar = value.charAt(length - 2)
+
+    if (currentChar === separator) {
+      if (length === 1 || lastChar === separator || value.split(separator).filter(val => val.length > 0).length >= 3) {
+        return value.substring(0, length - 1)
+      }
+    }
+
+    if (length === 5) {
+      if (value.split(separator)[0].split('').length === 1 && lastChar !== separator && currentChar !== separator) {
+        return value.substring(0, length - 1) + separator + value.substring(length - 1, length)
+      }
+    }
+
+    if (length === 3 || length === 6) {
+      if (currentChar !== separator && lastChar !== separator && value.split(separator).length <= 2) {
+        return value.substring(0, length - 1) + separator + value.substring(length - 1, length)
+      }
+    }
+
+    return value
+  }
+
   private onInput = (event: Event) => {
     const input = getInputTarget(event)
 
     if (input) {
       this.inputValue = input.value
+      if (input.value) {
+        this.nativeInput.value = this.formatDate(this.inputValue)
+      }
       if (this.inputValue && this.inputValue.length >= 6) {
         const date = parse(this.inputValue, this.getLocale())
         const dateString = formatDateString(date as Date)
@@ -647,10 +678,30 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   private onYearSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const yearValue = parseInt(inputValue, 10)
+    let month = undefined
+
+    if (this.defaultDate) {
+      const defaultDate = parse(this.defaultDate) as Date
+
+      if (this.max) {
+        const maxDate = parse(this.max) as Date
+        if (defaultDate.getMonth() > maxDate.getMonth()) {
+          month = maxDate.getMonth()
+        }
+      }
+
+      if (this.min) {
+        const minDate = parse(this.min) as Date
+        if (defaultDate.getMonth() < minDate.getMonth()) {
+          month = minDate.getMonth()
+        }
+      }
+    }
+
     this.pointerDate = {
-      ...this.pointerDate,
       day: 1,
       year: yearValue,
+      month: month !== undefined ? month : this.pointerDate.month,
     }
   }
 
@@ -658,7 +709,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputBlur = (event: FocusEvent) => {
     preventDefault(event)
-    this.hasFocus = false
+    this.focused = false
   }
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
@@ -723,6 +774,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
             }}
+            data-testid="bal-datepicker-input"
             ref={el => (this.nativeInput = el as HTMLInputElement)}
             id={this.inputId}
             aria-labelledby={labelId}

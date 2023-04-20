@@ -3,7 +3,7 @@ import { BalComponentStory } from '../../../stories/utils'
 import { BalShape } from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
-  title: 'Components/Shape',
+  title: 'Components/Layout/Shape',
   component: BalShape,
   docs,
 })

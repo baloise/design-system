@@ -2,7 +2,7 @@
 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
-- [More information about the installation and usage](?path=/docs/development-testing--page)
+<a class="button is-primary" href="../?path=/docs/development-testing--page">Go to testing guide</a>
 
 <!-- START: human documentation -->
 
@@ -29,7 +29,7 @@ describe('Datepicker', () => {
 
 <!-- END: human documentation -->
 
-### Custom Commands
+### Component Commands
 
 A list of the custom commands for this specific component.
 
@@ -41,3 +41,11 @@ A list of the custom commands for this specific component.
 | `balDatepickerPick`             | Picks the date in the datepicker like a human.                       | `(date: Date, options?: Partial<Loggable>): Chainable<JQuery>` |
 | `balDatepickerIsDateInRange`    | Asserts if the given date is in range in the datepicker popover.     | `(date: Date, options?: Partial<Loggable>): Chainable<JQuery>` |
 | `balDatepickerIsDateNotInRange` | Asserts if the given date is not in range in the datepicker popover. | `(date: Date, options?: Partial<Loggable>): Chainable<JQuery>` |
+
+
+### Component Element Selectors
+
+| Selector           | Element               |
+| ------------------ | --------------------- |
+| `datepicker.input` | Native input element. |
+

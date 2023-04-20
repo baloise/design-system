@@ -14,7 +14,7 @@ import {
 import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../stories/utils/config'
 
 const component = BalComponentStory({
-  title: 'Components/Overlay/Hint',
+  title: 'Components/Hint',
   component: BalHint,
   subcomponents: { BalHintText, BalHintTitle },
   argTypes: {

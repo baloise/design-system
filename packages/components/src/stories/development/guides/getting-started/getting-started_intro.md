@@ -4,7 +4,7 @@
 
 All the Baloise Design System packages are available on [NPM](https://www.npmjs.com/).
 
-You can learn more about the rationale behind the project in the [Architecture](?path=/docs/design-system--page#architecture) section.
+You can learn more about the rationale behind the project in the [Architecture](../?path=/docs/design-system--page#architecture) section.
 
 ### Trying Online
 

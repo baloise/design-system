@@ -8,10 +8,10 @@
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise-incubator/design-system.git"
+    "url": "https://github.com/baloise/design-system.git"
   },
   "bugs": {
-    "url": "https://github.com/baloise-incubator/design-system/issues"
+    "url": "https://github.com/baloise/design-system/issues"
   },
   "homepage": "https://baloise-design.vercel.app",
   "contributors": [
@@ -34,8 +34,9 @@
     "serve": "npm run build && npm --prefix packages/components run serve",
     "dev": "npm run build && npm --prefix packages/components run dev",
     "==================== BUILD ====================": "================================",
-    "build": "turbo run build && node .build/docs-copy.js && node .build/version.js",
-    "build:force": "turbo run build --force && node .build/docs-copy.js",
+    "build": "turbo run build && npm run build:post",
+    "build:force": "turbo run build --force && npm run build:post",
+    "build:post": "node .build/docs-copy.js && node .build/version.js && node .build/create-tags-list.js",
     "release": "npm run build:force && changeset publish",
     "==================== TEST =====================": "================================",
     "test": "turbo run test",
@@ -43,7 +44,7 @@
     "==================== RELEASE ==================": "================================",
     "changeset": "changeset",
     "==================== DOCUMENTATION ============": "================================",
-    "docs": "npm run build:force && npm --prefix packages/components run docs",
+    "docs": "npm run build && npm --prefix packages/components run docs",
     "docs:serve": "http-server storybook -p 8080",
     "storybook": "npm run docs",
     "==================== INSTALLATION / SETUP =====": "================================",
@@ -67,10 +68,11 @@
     "@angular/core": "~13.3.12",
     "@angular/forms": "~13.3.12",
     "@angular/platform-browser": "~13.3.12",
-    "@changesets/changelog-github": "~0.4.8",
-    "@changesets/cli": "~2.26.0",
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "~17.4.3",
     "@commitlint/config-conventional": "~17.4.3",
+    "@octokit/core": "^4.2.0",
     "@rollup/plugin-commonjs": "~22.0.1",
     "@rollup/plugin-node-resolve": "~13.3.0",
     "@rollup/plugin-typescript": "^8.3.4",

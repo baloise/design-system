@@ -2,7 +2,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 import { Basic } from './bal-stage.stories'
 
-<bal-doc-banner id="story--components-stage--basic">Stage</bal-doc-banner>
+<bal-doc-banner id="story--components-layout-stage--basic">Stage</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Stage</b> is an imposing banner to showcase something. The stage component allows you to add a full width banner to
@@ -10,12 +10,12 @@ import { Basic } from './bal-stage.stories'
 </bal-doc-lead>
 
 <Canvas withSource="open">
-  <Story id="components-stage--basic" />
+  <Story id="components-layout-stage--basic" />
 </Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-stage--simple-stage">
+    <a class="button is-primary" href="?path=/story/components-layout-stage--simple-stage">
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox
@@ -37,28 +37,28 @@ import { Basic } from './bal-stage.stories'
 
 ## Examples
 
-<span id="story--components-stage--small-stage" style={{ opacity: 0 }}></span>
+<span id="story--components-layout-stage--small-stage" style={{ opacity: 0 }}></span>
 
 ### Small Stage
 
 <Canvas>
-  <Story id="components-stage--small-stage" />
+  <Story id="components-layout-stage--small-stage" />
 </Canvas>
 
-<span id="story--components-stage--large-stage" style={{ opacity: 0 }}></span>
+<span id="story--components-layout-stage--large-stage" style={{ opacity: 0 }}></span>
 
 ### Large Stage
 
 <Canvas>
-  <Story id="components-stage--large-stage" />
+  <Story id="components-layout-stage--large-stage" />
 </Canvas>
 
-<span id="story--components-stage--stage-with-image" style={{ opacity: 0 }}></span>
+<span id="story--components-layout-stage--stage-with-image" style={{ opacity: 0 }}></span>
 
 ### Stage With Image
 
 <Canvas>
-  <Story id="components-stage--stage-with-image" />
+  <Story id="components-layout-stage--stage-with-image" />
 </Canvas>
 
 ## Component Api
@@ -74,6 +74,10 @@ This documentation explains how to implement and use Baloise Design System compo
 </a>
 
 <br />
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 import testing from './testing.md'
 

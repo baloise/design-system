@@ -81,13 +81,39 @@ export class ExampleComponent {
   <Story id="components-form-radio--select-button" />
 </Canvas>
 
+<span id="story--components-form-radio--radio-button" style={{ opacity: 0 }}></span>
+
+### Radio Button
+
+The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic) and [content component](?path=/docs/components-layout-content--basic).
+
+The states invalid and disabled are also supported.
+
+<Canvas>
+  <Story id="components-form-radio--radio-button" />
+</Canvas>
+
+<span id="story--components-form-radio--radio-button-grid" style={{ opacity: 0 }}></span>
+
+### Radio Button Grid
+
+The radio buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+
+By default on mobile we only support one item per line. To overwrite this use the prop `columns-mobile`.
+
+<Canvas>
+  <Story id="components-form-radio--radio-button-grid" />
+</Canvas>
+
 ## Component Api
 
 import readme from '../readme.md'
 import radioGroup from '../bal-radio-group/readme.md'
+import radioButton from '../bal-radio-button/readme.md'
 
-<Description markdown={radioGroup} />
 <Description markdown={readme} />
+<Description markdown={radioGroup} />
+<Description markdown={radioButton} />
 
 <br />
 
@@ -98,6 +124,10 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 import testing from './testing.md'
 

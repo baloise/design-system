@@ -1,0 +1,23 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-accordion__details
+  display: block
+  box-sizing: border-box
+  overflow: hidden
+  will-change: max-height
+  min-block-size: auto
+  min-height: auto
+  min-inline-size: auto
+  min-width: auto
+  &--animated
+    transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+  &--collapsing
+    max-height: 0 !important
+  &--collapsed
+    display: none
+  &--expanding
+    max-height: 0
+
+@media (prefers-reduced-motion: reduce)
+  .bal-accordion__details
+    transition: none !important

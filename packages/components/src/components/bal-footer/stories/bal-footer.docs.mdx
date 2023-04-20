@@ -3,19 +3,19 @@ import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import { Basic } from './bal-footer.stories'
 
-<bal-doc-banner id="story--components-footer--basic">Footer</bal-doc-banner>
+<bal-doc-banner id="story--components-layout-footer--basic">Footer</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Footer</b> for the Baloise Applications. The footer runs pure in blue or with a decorated track line below.
 </bal-doc-lead>
 
 <Canvas withSource="open">
-  <Story id="components-footer--basic" />
+  <Story id="components-layout-footer--basic" />
 </Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-footer--basic">
+    <a class="button is-primary" href="?path=/story/components-layout-footer--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox
@@ -33,7 +33,7 @@ import { Basic } from './bal-footer.stories'
 
 ## Examples
 
-<span id="story--components-footer--footer-of-germany" style={{ opacity: 0 }}></span>
+<span id="story--components-layout-footer--footer-of-germany" style={{ opacity: 0 }}></span>
 
 ### Footer of Germany
 
@@ -41,7 +41,7 @@ At the moment only Switzerland and Germany are supported to load the footer link
 Change the property `region` to change the links.
 
 <Canvas>
-  <Story id="components-footer--footer-of-germany" />
+  <Story id="components-layout-footer--footer-of-germany" />
 </Canvas>
 
 ## Component Api
@@ -57,6 +57,10 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 import testing from './testing.md'
 

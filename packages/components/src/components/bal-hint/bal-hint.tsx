@@ -3,8 +3,8 @@ import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachCompo
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
+import { ScrollHandler } from '../../utils/scroll'
 
 @Component({
   tag: 'bal-hint',
@@ -52,13 +52,13 @@ export class Hint implements BalConfigObserver {
     attachComponentToConfig(this)
   }
 
+  componentDidRender() {
+    this.updateContent()
+  }
+
   disconnectedCallback() {
     this.bodyScrollHandler.disconnect()
     detachComponentToConfig(this)
-  }
-
-  componentDidRender() {
-    this.updateContent()
   }
 
   /**
@@ -152,8 +152,8 @@ export class Hint implements BalConfigObserver {
         <bal-icon
           class={{
             ...elIcon.class(),
-            'data-test-hint-trigger': true,
           }}
+          data-testid="bal-hint-trigger"
           bal-popover-trigger
           aria-haspopup="true"
           role="button"
@@ -168,8 +168,8 @@ export class Hint implements BalConfigObserver {
         <div
           class={{
             ...elContent.class(),
-            'data-test-hint-content': true,
           }}
+          data-testid="bal-hint-content"
         >
           <div ref={el => (this.hintContentEl = el)}></div>
           <bal-button-group
@@ -178,7 +178,7 @@ export class Hint implements BalConfigObserver {
               ...elButtons.modifier('is-hidden-desktop').class(this.small),
             }}
           >
-            <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
+            <bal-button data-testid="bal-hint-close" color="info" onClick={() => this.dismiss()}>
               {this.closeLabel ? this.closeLabel : this.innerCloseLabel}
             </bal-button>
           </bal-button-group>

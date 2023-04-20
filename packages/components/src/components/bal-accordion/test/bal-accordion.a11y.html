@@ -11,20 +11,33 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <bal-accordion class="box" open-label="Show more" close-label="Show less" data-testid="accordion">
-          <p class="p-normal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
-        </bal-accordion>
-        <br />
-        <br />
-        <bal-accordion class="box" open-label="Show more" close-label="Show less">
-          <p class="p-normal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
-        </bal-accordion>
+        <section>
+          <bal-accordion data-testid="accordion" open-label="Show more" close-label="Show less">
+            <p class="p-normal">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+          </bal-accordion>
+        </section>
+        <hr />
+        <section>
+          <bal-accordion data-testid="accordion-v2">
+            <bal-accordion-summary>
+              <bal-stack>
+                <bal-content>
+                  <bal-label>Label</bal-label>
+                </bal-content>
+                <bal-accordion-trigger></bal-accordion-trigger>
+              </bal-stack>
+            </bal-accordion-summary>
+            <bal-accordion-details>
+              <p class="p-normal">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+            </bal-accordion-details>
+          </bal-accordion>
+        </section>
       </main>
     </bal-doc-app>
   </body>

@@ -16,7 +16,10 @@ export class Notification {
   render() {
     return (
       <Host class="bal-notification">
-        <div class={`bal-notification__inner bal-notification__inner--is-${this.color}`}>
+        <div
+          class={`bal-notification__inner bal-notification__inner--is-${this.color}`}
+          data-testid="bal-notification-content"
+        >
           <slot></slot>
         </div>
       </Host>

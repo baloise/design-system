@@ -3,7 +3,7 @@ import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import { Basic } from './bal-pagination.stories'
 
-<bal-doc-banner id="story--components-pagination--basic">Pagination</bal-doc-banner>
+<bal-doc-banner id="story--components-navigation-pagination--basic">Pagination</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Pagination</b> allows you to divide large amounts of content into smaller chunks across multiple pages. Generally,
@@ -12,12 +12,12 @@ import { Basic } from './bal-pagination.stories'
 </bal-doc-lead>
 
 <Canvas withSource="open">
-  <Story id="components-pagination--basic" />
+  <Story id="components-navigation-pagination--basic" />
 </Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-pagination--basic">
+    <a class="button is-primary" href="?path=/story/components-navigation-pagination--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox
@@ -35,20 +35,20 @@ import { Basic } from './bal-pagination.stories'
 
 ## Examples
 
-<span id="story--components-pagination--small-pagination" style={{ opacity: 0 }}></span>
+<span id="story--components-navigation-pagination--small-pagination" style={{ opacity: 0 }}></span>
 
 ### Small Pagination
 
 <Canvas>
-  <Story id="components-pagination--small-pagination" />
+  <Story id="components-navigation-pagination--small-pagination" />
 </Canvas>
 
-<span id="story--components-pagination--small-pagination-with-dots" style={{ opacity: 0 }}></span>
+<span id="story--components-navigation-pagination--small-pagination-with-dots" style={{ opacity: 0 }}></span>
 
 ### Small Pagination With Dots
 
 <Canvas>
-  <Story id="components-pagination--small-pagination-with-dots" />
+  <Story id="components-navigation-pagination--small-pagination-with-dots" />
 </Canvas>
 
 ## Component Api
@@ -64,6 +64,10 @@ This documentation explains how to implement and use Baloise Design System compo
 <a class="button is-primary" href="?path=/docs/development-components--page">
   Go to component usage
 </a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 import testing from './testing.md'
 

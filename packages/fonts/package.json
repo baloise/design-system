@@ -1,16 +1,16 @@
 {
   "name": "@baloise/design-system-fonts",
-  "version": "12.10.0",
+  "version": "12.12.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise-incubator/design-system.git"
+    "url": "https://github.com/baloise/design-system.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/baloise-incubator/design-system/issues"
+    "url": "https://github.com/baloise/design-system/issues"
   },
   "homepage": "https://baloise-design.vercel.app",
   "contributors": [

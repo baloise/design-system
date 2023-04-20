@@ -34,6 +34,7 @@ export class FieldHint {
           class={{
             ...block.element('hint').class(),
           }}
+          data-testid="bal-field-hint"
           closeLabel={this.closeLabel}
           small={this.small}
         >

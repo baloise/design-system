@@ -1,19 +1,19 @@
 name: Documentation
 
 on:
-  workflow_run:
-    workflows: ['Release']
-    branches: [next]
-    types:
-      - completed
+  push:
+    branches:
+      - production
   workflow_dispatch:
+    branches:
+      - 'production'
 
 jobs:
   Publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Declare some variables
         id: vars
@@ -48,10 +48,10 @@ jobs:
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
-            --username "baopso" \
-            --password "${{ secrets.BAOPSO_GITOPSCLI_TOKEN }}" \
-            --git-user "baopso" \
-            --git-email "Group.CH_Open-Source@baloise.ch" \
+            --username ${{ secrets.INCUBATOR_GITHUB_USER }} \
+            --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
+            --git-user "Baloise Incubator" \
+            --git-email "incubator@baloise.dev" \
             --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \

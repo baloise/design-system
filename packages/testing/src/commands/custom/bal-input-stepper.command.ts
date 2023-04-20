@@ -8,7 +8,11 @@ Cypress.Commands.add(
   (subject, options) => {
     log('balInputStepperIncrease', '', subject, options)
     const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).find('[data-testid="increase"]', o).click(o).wrapComponent(subject, o)
+    return cy
+      .wrapComponent(subject, o)
+      .find('[data-testid="bal-input-stepper-increase"]', o)
+      .click(o)
+      .wrapComponent(subject, o)
   },
 )
 
@@ -20,6 +24,10 @@ Cypress.Commands.add(
   (subject, options) => {
     log('balInputStepperDecrease', '', subject, options)
     const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).find('[data-testid="decrease"]', o).click(o).wrapComponent(subject, o)
+    return cy
+      .wrapComponent(subject, o)
+      .find('[data-testid="bal-input-stepper-decrease"]', o)
+      .click(o)
+      .wrapComponent(subject, o)
   },
 )

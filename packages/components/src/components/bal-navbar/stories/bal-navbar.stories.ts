@@ -23,6 +23,7 @@ import {
 import { isPlatform } from '../../../../dist'
 
 const component = BalComponentStory({
+  title: 'Components/Navigation/Navbar',
   component: BalNavbar,
   subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   docs,

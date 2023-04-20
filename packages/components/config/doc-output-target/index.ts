@@ -1,14 +1,14 @@
 import path from 'path'
 import { JsonDocs, OutputTargetDocsCustom } from '@stencil/core/internal'
-import { writeFileSync, existsSync, readFileSync } from 'fs'
-import { commandsToMarkdown } from './markdown-commands'
+import { writeFileSync, existsSync } from 'fs'
 import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
-import { NEWLINE, SPACE, WHITESPACE } from './constants'
-import testingCommands from '../../public/assets/data/commands.json'
+import { NEWLINE, SPACE } from './constants'
 import contributors from '../../public/assets/data/contributors.json'
+import { createTestingMarkdown } from './markdown-testing'
+import { createThemingMarkdown } from './markdown-theming'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -16,6 +16,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     for (let index = 0; index < docs.components.length; index++) {
       // Component API
       const component = docs.components[index]
+      const componentName = component.tag
 
       const props = propsToMarkdown(component.props)
       const events = eventsToMarkdown(component.events)
@@ -27,7 +28,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       let content: string[] = []
 
       if (hasComponentApi) {
-        content = [`### ${component.tag}`, SPACE, ...componentApi, SPACE]
+        content = [`### ${componentName}`, SPACE, ...componentApi, SPACE]
       }
 
       try {
@@ -35,57 +36,18 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       } catch (err) {
         console.error(err)
       }
-
       const docsPath = path.join(component.dirPath || '', 'stories')
-
       if (existsSync(docsPath)) {
         // Testing
         try {
-          const START_TAG_TOP = '<!-- START: human documentation -->'
-          const END_TAG_TOP = '<!-- END: human documentation -->'
-          const pathToTestingMarkdown = path.join(docsPath, 'testing.md')
+          createTestingMarkdown(docsPath, component)
+        } catch (err) {
+          console.error(err)
+        }
 
-          let file = ''
-          if (existsSync(path.join(docsPath, 'testing.md'))) {
-            file = readFileSync(pathToTestingMarkdown, 'utf8')
-          }
-
-          const markdownLines = file.split(NEWLINE)
-          const humanLines: string[] = []
-          let hasReachedHumanPart = false
-          for (let index = 0; index < markdownLines.length; index++) {
-            const line = markdownLines[index]
-
-            if (line === END_TAG_TOP) {
-              hasReachedHumanPart = false
-            }
-
-            if (hasReachedHumanPart) {
-              humanLines.push(line)
-            }
-
-            if (line === START_TAG_TOP) {
-              hasReachedHumanPart = true
-            }
-          }
-
-          const componentCommands = testingCommands.filter(c => c.component === component.tag)
-
-          const content = [
-            `## Testing`,
-            WHITESPACE,
-            'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
-            WHITESPACE,
-            '- [More information about the installation and usage](?path=/docs/development-testing--page)',
-            WHITESPACE,
-            '<!-- START: human documentation -->',
-            ...humanLines,
-            '<!-- END: human documentation -->',
-            WHITESPACE,
-            ...commandsToMarkdown(componentCommands),
-          ]
-
-          writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))
+        // Theming
+        try {
+          createThemingMarkdown(docsPath, component)
         } catch (err) {
           console.error(err)
         }

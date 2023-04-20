@@ -3,7 +3,7 @@ import { BalComponentStory, withContent } from '../../../../stories/utils'
 import { BalNotification } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
-  title: 'Components/Notification',
+  title: 'Components/Feedback/Notification',
   component: BalNotification,
   argTypes: {
     ...withContent(),

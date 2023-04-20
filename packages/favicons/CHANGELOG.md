@@ -1,12 +1,16 @@
 # @baloise/design-system-favicons
 
+## 12.12.0
+
+## 12.11.0
+
 ## 12.10.0
 
 ## 12.9.0
 
 ### Minor Changes
 
-- [#989](https://github.com/baloise-incubator/design-system/pull/989) [`021727efd`](https://github.com/baloise-incubator/design-system/commit/021727efd8e6e841a6024917e6b1c8ad6ef127d5) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - Providing favicons in 6 various colors
+- [#989](https://github.com/baloise/design-system/pull/989) [`021727efd`](https://github.com/baloise/design-system/commit/021727efd8e6e841a6024917e6b1c8ad6ef127d5) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - Providing favicons in 6 various colors
 
   **Installation**
 
@@ -50,5 +54,5 @@
 
 ## Previous Versions
 
-- [Older versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_v12.md)
-- [Rebranding versions](https://github.com/baloise-incubator/design-system/blob/next/CHANGELOG_NEXT.md)
+- [Older versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_v12.md)
+- [Rebranding versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_NEXT.md)

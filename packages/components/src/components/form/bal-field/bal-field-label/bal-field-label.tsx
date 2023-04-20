@@ -1,31 +1,26 @@
-import { Component, h, Host, Prop, Element, State, Method } from '@stencil/core'
-import { BalConfigObserver } from '../../../../utils/config'
-import {
-  attachComponentToConfig,
-  BalConfigState,
-  BalLanguage,
-  BalRegion,
-  defaultConfig,
-  detachComponentToConfig,
-} from '../../../../utils/config'
-import { i18nFieldLabel } from './bal-field-label.i18n'
+import { Component, h, Host, Prop, Element } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-label',
   shadow: false,
   scoped: true,
 })
-export class FieldLabel implements BalConfigObserver {
+export class FieldLabel {
   @Element() element!: HTMLElement
-  parentBalFieldElement!: HTMLBalFieldElement | null
 
-  @State() language: BalLanguage = defaultConfig.language
-  @State() region: BalRegion = defaultConfig.region
+  private parentBalFieldElement!: HTMLBalFieldElement | null
 
   /**
-   * If `true` the component gets a invalid red style.
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
    */
-  @Prop() invalid = false
+
+  /**
+   * The value of the for attribute must be a single id for a labeled
+   * form-related element in the same document as the <label> element.
+   * So, any given label element can be associated with only one form control.
+   */
+  @Prop() htmlFor?: string = undefined
 
   /**
    * If `true` the form control needs to be filled. If it is set to
@@ -36,26 +31,32 @@ export class FieldLabel implements BalConfigObserver {
   /**
    * If `true` the component gets a valid green style.
    */
-  @Prop() valid = false
+  @Prop() valid?: boolean = undefined
+
+  /**
+   * If `true` the component gets a invalid red style.
+   */
+  @Prop() invalid?: boolean = undefined
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() disabled?: boolean = undefined
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly?: boolean = undefined
 
   /**
    * If `true` the component gets a invalid style.
    */
   @Prop() weight: BalProps.BalFieldLabelWeight = 'bold'
 
-  connectedCallback() {
-    attachComponentToConfig(this)
-  }
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   componentDidLoad() {
     if (this.element) {
@@ -67,37 +68,31 @@ export class FieldLabel implements BalConfigObserver {
   }
 
   disconnectedCallback() {
-    detachComponentToConfig(this)
     if (this.parentBalFieldElement) {
       this.parentBalFieldElement.classList.remove('has-label')
     }
   }
 
   /**
-   * @internal define config for the component
+   * RENDER
+   * ------------------------------------------------------
    */
-  @Method()
-  async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-  }
 
   render() {
-    const suffix = this.required === false ? i18nFieldLabel[this.language].optional || '' : ''
     return (
       <Host class="bal-field-label">
-        <label
-          class={{
-            'label': true,
-            'is-disabled': this.disabled || this.readonly,
-            'is-success': this.valid,
-            'is-danger': this.invalid,
-            'has-text-weight-normal': this.weight === 'regular',
-          }}
+        <bal-label
+          size="small"
+          htmlFor={this.htmlFor}
+          required={this.required}
+          valid={this.valid}
+          invalid={this.invalid}
+          disabled={this.disabled}
+          readonly={this.readonly}
+          weight={this.weight}
         >
           <slot></slot>
-          {suffix}
-        </label>
+        </bal-label>
       </Host>
     )
   }

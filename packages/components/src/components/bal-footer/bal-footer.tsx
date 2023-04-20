@@ -192,7 +192,11 @@ export class Footer implements BalConfigObserver, Loggable {
                       name="web"
                       color="white"
                     ></bal-icon>
-                    <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
+                    <bal-select
+                      value={this.language}
+                      onBalChange={event => this.changeLanguage(event.detail as any)}
+                      data-testid="bal-footer-language"
+                    >
                       {this.allowedLanguages.map(language => (
                         <bal-select-option label={language.toLocaleUpperCase()} value={language}>
                           {language.toLocaleUpperCase()}

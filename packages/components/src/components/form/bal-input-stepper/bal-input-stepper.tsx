@@ -42,7 +42,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
 
@@ -201,7 +201,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
-        aria-focused={this.hasFocus ? 'true' : null}
+        aria-focused={this.focused ? 'true' : null}
         class={{
           ...block.class(),
         }}
@@ -214,7 +214,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           <bal-button
             size="small"
             square
-            data-testid="decrease"
+            data-testid="bal-input-stepper-decrease"
             outlined={!this.invalid}
             icon="minus"
             color={this.invalid ? 'danger' : 'info'}
@@ -228,12 +228,13 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             class={{
               ...elText.class(),
             }}
+            data-testid="bal-input-stepper-text"
           >
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
             size="small"
-            data-testid="increase"
+            data-testid="bal-input-stepper-increase"
             square
             outlined={!this.invalid}
             icon="plus"
@@ -246,6 +247,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           class={{
             ...elInput.class(),
           }}
+          data-testid="bal-input-stepper"
           type="text"
           value={this.value}
           name={this.name}

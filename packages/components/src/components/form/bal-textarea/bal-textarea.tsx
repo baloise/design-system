@@ -45,7 +45,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -278,6 +278,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
             'is-danger': this.invalid,
             'clickable': this.clickable,
           }}
+          data-testid="bal-textarea-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           name={this.name}
           id={this.inputId}

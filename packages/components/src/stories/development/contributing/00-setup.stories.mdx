@@ -25,7 +25,7 @@ To work with this project a recent LTS version of NodeJS and npm is required. Ma
 To start building a new web component using Stencil, clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/baloise-incubator/design-system.git design-system
+git clone https://github.com/baloise/design-system.git design-system
 cd design-system
 ```
 
@@ -61,7 +61,7 @@ The Baloise Design System is divided into multiple NPM packages. Development for
 
 ### CI & CD
 
-For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-system/tree/master/.github/workflows). The following actions are in the folder `.github/workflows`:
+For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-system/tree/main/.github/workflows). The following actions are in the folder `.github/workflows`:
 
 - `continuous.yml`
 
@@ -140,9 +140,6 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  │
 │  ├── stories                    # documentation files.
 │  ├── utils                      # global utils.
-│  ├── styles                     # global styles which extends the bulma sass files
-│  │  ├── global.sass             # global stylesheet of the Design System
-│  │  └── global.utilities.sass   # exports variables, mixins... (no-styles)
 │  │
 │  ├── types      # global types for all the components like colors.
 │  └── config.ts  # global config definitions for the angular module and the vue plugin.

@@ -2,7 +2,7 @@
 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
-- [More information about the installation and usage](?path=/docs/development-testing--page)
+<a class="button is-primary" href="../?path=/docs/development-testing--page">Go to testing guide</a>
 
 <!-- START: human documentation -->
 
@@ -10,31 +10,20 @@ The Baloise Design System provides a collection of custom cypress commands for o
 import { byTestId, selectors } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
-  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
 
   it('should ...', () => {
-    cy.get(accordion).find(selectors.accordion.button).contains('Show more')
-    cy.get(accordion).balAccordionIsClosed()
-    cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(accordion).find(selectors.accordion.button).contains('Show less')
-    cy.get(accordion).find(selectors.accordion.content).contains('My Content')
-    cy.get(accordion).click().balAccordionIsClosed()
+    cy.getByTestId('my-accordion').find(selectors.accordion.trigger).contains('Show more')
+    cy.getByTestId('my-accordion').balAccordionIsClosed()
+    cy.getByTestId('my-accordion').find(selectors.accordion.trigger).click()
+    cy.getByTestId('my-accordion').balAccordionIsOpen()
+    cy.getByTestId('my-accordion').find(selectors.accordion.details).contains('My Content')
   })
 })
 ```
 
-### Custom Selectors
-
-A list of the custom commands for this specific component.
-
-| Selector            | Element             |
-| ------------------- | ------------------- |
-| `accordion.button`  | The trigger button. |
-| `accordion.content` | Content wrapper.    |
-
 <!-- END: human documentation -->
 
-### Custom Commands
+### Component Commands
 
 A list of the custom commands for this specific component.
 
@@ -42,3 +31,13 @@ A list of the custom commands for this specific component.
 | ---------------------- | ----------------------------------- | -------------------------------------------------- |
 | `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 | `balAccordionIsClosed` | Asserts if the accordion is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+
+
+### Component Element Selectors
+
+| Selector            | Element                                                          |
+| ------------------- | ---------------------------------------------------------------- |
+| `accordion.trigger` | The trigger button, which shows and hides the content / details. |
+| `accordion.details` | The content or the hidden part of the accordion.                 |
+| `accordion.summary` | The header or visible part of the accordion                      |
+

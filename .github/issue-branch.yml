@@ -1,0 +1,29 @@
+mode: chatops
+openPR: true
+copyIssueLabelsToPR: true
+copyIssueAssigneeToPR: true
+branchName: short
+branches:
+  - label: '🐛 bug'
+    prefix: fix/
+    skip: false
+  - label: '🧪 test'
+    prefix: test/
+    skip: false
+  - label: '✨ feature'
+    prefix: feat/
+    skip: false
+  - label: '💥 breaking change'
+    prefix: breaking/
+    skip: false
+  - label: '♻️ refactor'
+    prefix: refactor/
+    skip: false
+  - label: '🔧 chore'
+    prefix: chore/
+    skip: false
+  - label: '🚀 release'
+    prefix: pre-release/
+    skip: false
+  - label: '*'
+    skip: true

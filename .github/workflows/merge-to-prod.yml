@@ -1,0 +1,25 @@
+name: Merge to Production
+
+on:
+  workflow_dispatch:
+    branches:
+      - 'main'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  Merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Merge main -> production
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: production
+          message: ":wrench: chore: merge main to production"
+          github_token: ${{ secrets.GITHUB_TOKEN }}

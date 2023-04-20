@@ -88,7 +88,7 @@ import { isInput, selectors, wrapRoot } from '../helpers'
 
 Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
   if (isInput(element)) {
-    return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
+    return wrapRoot(element, selectors.input.native, $el => originalFn($el, content, options))
   }
 
   return originalFn(element, content, options)

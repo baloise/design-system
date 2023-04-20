@@ -3,8 +3,8 @@ import { dismiss, eventMethod, prepareOverlay } from '../../../utils/overlays/ov
 import { attachComponent, detachComponent } from '../../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
-import { getClassMap } from '../../../utils/css-classes'
 import { ScrollHandler } from '../../../utils/scroll'
+import { getClassMap } from '../../../utils/css-classes'
 
 @Component({
   tag: 'bal-modal',

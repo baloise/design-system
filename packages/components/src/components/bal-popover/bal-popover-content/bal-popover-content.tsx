@@ -119,6 +119,7 @@ export class PopoverContent {
           ...block.modifier(`color-${this.color}`).class(),
           ...block.modifier('on-top').class(this.mobileTop),
         }}
+        data-testid="bal-popover-content"
         role="tooltip"
         style={this.contentStyle}
       >

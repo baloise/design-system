@@ -42,6 +42,7 @@ export class Close implements ComponentInterface {
             ...buttonEl.modifier('inverted').class(this.inverted),
             ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
           }}
+          data-testid="bal-close"
           {...this.inheritedAttributes}
         >
           <bal-icon

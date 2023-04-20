@@ -108,6 +108,16 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalListItemDidAnimateDetail>
 
   /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalListItemWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalListItemDidAnimateDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -273,8 +283,8 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         })
       })
     } else {
-      this.state = AccordionState.Expanded
       this.balWillAnimate.emit()
+      this.state = AccordionState.Expanded
       this.balDidAnimate.emit()
     }
   }
@@ -321,8 +331,8 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         })
       })
     } else {
-      this.state = AccordionState.Collapsed
       this.balWillAnimate.emit()
+      this.state = AccordionState.Collapsed
       this.balDidAnimate.emit()
     }
   }

@@ -4,7 +4,7 @@ import { balToastController } from '../bal-toast.controller'
 import docs from './bal-toast.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Overlay/Toast',
+  title: 'Components/Feedback/Toast',
   component: BalToast,
   args: {
     message: '<b>Message: </b>Hello World Hello World Hello World Hello World Hello World Hello World Hello World',

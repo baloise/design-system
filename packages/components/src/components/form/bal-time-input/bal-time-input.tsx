@@ -57,7 +57,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
 
   @Element() el!: HTMLElement
 
-  @State() hasFocus = false
+  @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
 
@@ -168,7 +168,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     this.language = state.language
     this.region = state.region
 
-    if (!this.hasFocus && this.nativeInput) {
+    if (!this.focused && this.nativeInput) {
       this.nativeInput.value = this.getFormattedValue()
     }
   }
@@ -246,7 +246,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   }
 
   render() {
-    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    const value = this.focused ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
@@ -271,8 +271,8 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
               'input': true,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
-              'has-focus': this.hasFocus,
-              'show-placeholder': !this.hasFocus && (this.value === '' || this.value === undefined),
+              'has-focus': this.focused,
+              'show-placeholder': !this.focused && (this.value === '' || this.value === undefined),
               'has-value': this.value !== '' && this.value !== undefined,
               ...native.class(),
             }}
