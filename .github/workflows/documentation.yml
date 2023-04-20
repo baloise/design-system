@@ -52,7 +52,7 @@ jobs:
             --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
             --git-user "Baloise Incubator" \
             --git-email "incubator@baloise.dev" \
-            --organisation "baloise-incubator" \
+            --organisation "baloise" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
             --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"
