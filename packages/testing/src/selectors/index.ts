@@ -1,5 +1,5 @@
 import { byTestId } from './selectors.util'
-export { byTestId, dataTestSelector } from './selectors.util'
+export { byTestId, dataTestSelector, parseDataTestID } from './selectors.util'
 
 /**
  * Selectors
@@ -259,13 +259,13 @@ export const selectors = {
   },
   tabs: {
     /**
-     * Tab item element.
+     * Tab item.
      */
-    tabItems: 'li.data-test-tab-item',
+    item: byTestId('bal-tabs-item'),
     /**
-     * Tab action element.
+     * Tab item label.
      */
-    action: '.data-test-tabs-action',
+    itemLabel: byTestId('bal-tabs-item-label'),
   },
   toast: {
     /**

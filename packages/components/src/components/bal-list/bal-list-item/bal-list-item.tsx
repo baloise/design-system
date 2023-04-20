@@ -108,16 +108,6 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalListItemDidAnimateDetail>
 
   /**
-   * @internal Emitted before the animation starts
-   */
-  @Event() balWillAnimate!: EventEmitter<Events.BalListItemWillAnimateDetail>
-
-  /**
-   * @internal Emitted after the animation has finished
-   */
-  @Event() balDidAnimate!: EventEmitter<Events.BalListItemDidAnimateDetail>
-
-  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */

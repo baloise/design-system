@@ -5,6 +5,7 @@
 
 namespace BalProps {
   export type BalRadioGroupInterface = 'radio' | 'select-button'
+  export type BalRadioGroupColumns = 1 | 2 | 3 | 4
   export type BalRadioInterface = BalRadioGroupInterface
 }
 

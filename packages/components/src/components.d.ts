@@ -5,13 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionState, Events, Props } from "./types";
 import { BalConfigState, BalMode } from "./utils/config";
+import { AccordionState, Events, Props } from "./types";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-import { Events, Props } from "./types";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
@@ -19,11 +18,11 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
+export { AccordionState, Events, Props } from "./types";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-export { Events, Props } from "./types";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
@@ -557,15 +556,15 @@ export namespace Components {
         /**
           * Defines the column size like the grid.
          */
-        "columns": Props.BalRadioGroupColumns;
+        "columns": BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
-        "columnsMobile": Props.BalRadioGroupColumns;
+        "columnsMobile": BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
          */
-        "columnsTablet": Props.BalRadioGroupColumns;
+        "columnsTablet": BalProps.BalCheckboxGroupColumns;
         /**
           * If `true` it acts as the main form control
          */
@@ -626,15 +625,15 @@ export namespace Components {
         /**
           * Defines the text positioning like center, end or default to start.
          */
-        "alignment": Props.BalContentAlignment;
+        "alignment": BalProps.BalContentAlignment;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
-        "direction": Props.BalContentDirection;
+        "direction": BalProps.BalContentDirection;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space": Props.BalContentSpace;
+        "space": BalProps.BalContentSpace;
     }
     interface BalData {
         /**
@@ -2206,15 +2205,15 @@ export namespace Components {
         /**
           * Defines the column size like the grid.
          */
-        "columns": Props.BalRadioGroupColumns;
+        "columns": BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
-        "columnsMobile": Props.BalRadioGroupColumns;
+        "columnsMobile": BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
          */
-        "columnsTablet": Props.BalRadioGroupColumns;
+        "columnsTablet": BalProps.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -4143,9 +4142,9 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
-        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionDidAnimateDetail>) => void;
-        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionWillAnimateDetail>) => void;
+        "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -4616,7 +4615,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalCheckboxCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalCheckboxCustomEvent<BalEvents.BalCheckboxFocusDetail>) => void;
         "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -4664,15 +4663,15 @@ declare namespace LocalJSX {
         /**
           * Defines the column size like the grid.
          */
-        "columns"?: Props.BalRadioGroupColumns;
+        "columns"?: BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
-        "columnsMobile"?: Props.BalRadioGroupColumns;
+        "columnsMobile"?: BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
          */
-        "columnsTablet"?: Props.BalRadioGroupColumns;
+        "columnsTablet"?: BalProps.BalCheckboxGroupColumns;
         /**
           * If `true` it acts as the main form control
          */
@@ -4705,10 +4704,6 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<FocusEvent>) => void;
-        /**
-          * @deprecated Emitted when the checked property has changed.
-         */
-        "onBalInput"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
@@ -4744,15 +4739,15 @@ declare namespace LocalJSX {
         /**
           * Defines the text positioning like center, end or default to start.
          */
-        "alignment"?: Props.BalContentAlignment;
+        "alignment"?: BalProps.BalContentAlignment;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
-        "direction"?: Props.BalContentDirection;
+        "direction"?: BalProps.BalContentDirection;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
-        "space"?: Props.BalContentSpace;
+        "space"?: BalProps.BalContentSpace;
     }
     interface BalData {
         /**
@@ -5667,7 +5662,7 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
-        "onBalDidAnimate"?: (event: BalListItemCustomEvent<Events.BalListItemDidAnimateDetail>) => void;
+        "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
         /**
           * Emitted when the state of the group is changing
          */
@@ -5675,8 +5670,8 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
-        "onBalWillAnimate"?: (event: BalListItemCustomEvent<Events.BalListItemWillAnimateDetail>) => void;
+        "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -5838,12 +5833,12 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
-        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarBrandDidAnimateDetail>) => void;
+        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuDidAnimateDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
-        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarBrandWillAnimateDetail>) => void;
+        "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
+        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -6207,10 +6202,10 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: BalPopoverCustomEvent<Events.BalPopoverChangeDetail>) => void;
-        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverDidAnimateDetail>) => void;
+        "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
-        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverWillAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
          */
@@ -6319,7 +6314,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalRadioCustomEvent<BalEvents.BalRadioFocusDetail>) => void;
         "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -6371,15 +6366,15 @@ declare namespace LocalJSX {
         /**
           * Defines the column size like the grid.
          */
-        "columns"?: Props.BalRadioGroupColumns;
+        "columns"?: BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for mobile and bigger like the grid.
          */
-        "columnsMobile"?: Props.BalRadioGroupColumns;
+        "columnsMobile"?: BalProps.BalRadioGroupColumns;
         /**
           * Defines the column size for tablet and bigger like the grid.
          */
-        "columnsTablet"?: Props.BalRadioGroupColumns;
+        "columnsTablet"?: BalProps.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -6886,9 +6881,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the changes has finished.
          */
-        "onBalChange"?: (event: BalTabsCustomEvent<Events.BalTabsChangeDetail>) => void;
-        "onBalDidAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsDidAnimateDetail>) => void;
-        "onBalWillAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsWillAnimateDetail>) => void;
+        "onBalChange"?: (event: BalTabsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalTabOption[];
+        /**
+          * If `true` the tabs have a carousel if they need more space than provided.
+         */
+        "overflow"?: boolean;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */

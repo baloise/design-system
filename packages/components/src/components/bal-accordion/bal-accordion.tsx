@@ -124,16 +124,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalAccordionDidAnimateDetail>
 
   /**
-   * @internal Emitted before the animation starts
-   */
-  @Event() balWillAnimate!: EventEmitter<Events.BalAccordionWillAnimateDetail>
-
-  /**
-   * @internal Emitted after the animation has finished
-   */
-  @Event() balDidAnimate!: EventEmitter<Events.BalAccordionDidAnimateDetail>
-
-  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */

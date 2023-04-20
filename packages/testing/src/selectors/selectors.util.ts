@@ -9,3 +9,7 @@ export const byTestId = (testId: string): string => dataTestSelectors(testId).jo
 
 // @deprecated standard is byTestId
 export const dataTestSelector = (testId: string): string => byTestId(testId)
+
+export const parseDataTestID = (testId: string): string => {
+  return testId.split(', ')[2].slice(0, -2).slice(14).trim()
+}

@@ -22,7 +22,7 @@ export class Badge implements ComponentInterface {
   /**
    * Define the alert color for the badge.
    */
-  @Prop() color: Props.BalBadgeColor = ''
+  @Prop() color: BalProps.BalBadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.

@@ -5,6 +5,6 @@
 
 namespace BalProps {
   export type BalBadgeSize = 'small' | 'large' | ''
-  export type BalBadgeColor = 'danger' | 'warning' | 'success'
+  export type BalBadgeColor = 'danger' | 'warning' | 'success' | ''
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
 }

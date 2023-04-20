@@ -145,30 +145,30 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: Props.BalRadioGroupColumns = 1
+  @Prop() columns: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columns')
-  columnsChanged(value: Props.BalRadioGroupColumns) {
+  columnsChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
   }
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+  @Prop() columnsTablet: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columnsTablet')
-  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+  columnsTabletChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
   }
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+  @Prop() columnsMobile: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columnsMobile')
-  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+  columnsMobileChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
   }
 

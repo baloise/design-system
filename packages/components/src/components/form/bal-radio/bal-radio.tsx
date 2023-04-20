@@ -331,7 +331,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
-      this.balClick.emit(ev)
       this.nativeInput?.focus()
       this.balChange.emit(this.checked)
       ev.preventDefault()
