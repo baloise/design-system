@@ -4033,6 +4033,8 @@ declare namespace LocalJSX {
           * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionWillAnimateDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -5554,6 +5556,7 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        "onBalDidAnimate"?: (event: BalListItemCustomEvent<Events.BalListItemDidAnimateDetail>) => void;
         /**
           * Emitted when the state of the group is changing
          */
@@ -5562,6 +5565,7 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        "onBalWillAnimate"?: (event: BalListItemCustomEvent<Events.BalListItemWillAnimateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -5723,10 +5727,12 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarBrandDidAnimateDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
+        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarBrandWillAnimateDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -6095,7 +6101,9 @@ declare namespace LocalJSX {
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalPopoverCustomEvent<Events.BalPopoverChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
+        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
          */
@@ -6716,6 +6724,8 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsWillAnimateDetail>) => void;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */

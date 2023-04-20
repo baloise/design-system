@@ -135,6 +135,7 @@ export const parameters = {
           'Components',
           'Form',
           'Internationalization',
+          'Theming',
           'Testing',
           'Contributing',
           'Migration',

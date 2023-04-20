@@ -2,7 +2,7 @@
 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
-- [More information about the installation and usage](?path=/docs/development-testing--page)
+<a class="button is-primary" href="../?path=/docs/development-testing--page">Go to testing guide</a>
 
 <!-- START: human documentation -->
 
@@ -35,8 +35,9 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector            | Element             |
-| ------------------- | ------------------- |
-| `accordion.trigger` | The trigger button. |
-| `accordion.content` | Content wrapper.    |
+| Selector            | Element                                                          |
+| ------------------- | ---------------------------------------------------------------- |
+| `accordion.trigger` | The trigger button, which shows and hides the content / details. |
+| `accordion.details` | The content or the hidden part of the accordion.                 |
+| `accordion.summary` | The header or visible part of the accordion                      |
 

@@ -44,8 +44,8 @@
             <g transform="translate(579.000000, -0.000000)" id="Group">
                 <g>
                     <rect id="Rectangle" fill="#003399" x="0" y="0" width="200" height="119.811912" rx="5"></rect>
-                    <text id="Master-Github" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#FFFFFF">
-                        <tspan x="67.7636719" y="56">Master</tspan>
+                    <text id="Main-Github" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#FFFFFF">
+                        <tspan x="67.7636719" y="56">Main</tspan>
                         <tspan x="77.4516602" y="78" font-size="14">Github</tspan>
                     </text>
                 </g>
