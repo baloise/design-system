@@ -209,5 +209,5 @@ The Design System provides custom fonts and favicons.
 
 To add them to your application follow those guides:
 
-- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
-- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)
+- [Font Installation](../?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](../?path=/docs/foundation-brand-assets-development--logo#favicons)
