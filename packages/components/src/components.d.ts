@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
-import { AccordionState, Events, Props } from "./types";
+import { AccordionState } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -18,7 +18,7 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
-export { AccordionState, Events, Props } from "./types";
+export { AccordionState } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -531,13 +531,13 @@ export namespace Components {
         "value": string | number;
     }
     interface BalCheckboxButton {
-        "colSize": Props.BalCheckboxGroupColumns;
-        "colSizeMobile": Props.BalCheckboxGroupColumns;
-        "colSizeTablet": Props.BalCheckboxGroupColumns;
+        "colSize": BalProps.BalCheckboxGroupColumns;
+        "colSizeMobile": BalProps.BalCheckboxGroupColumns;
+        "colSizeTablet": BalProps.BalCheckboxGroupColumns;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "color"?: Props.BalCheckboxButtonColor;
+        "color"?: BalProps.BalCheckboxButtonColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -1460,12 +1460,12 @@ export namespace Components {
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size": Props.BalLabelSize;
+        "size": BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
-        "weight": Props.BalLabelWeight;
+        "weight": BalProps.BalLabelWeight;
     }
     interface BalList {
         /**
@@ -1724,12 +1724,12 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": Props.BalNavigationLevelBlockColor;
+        "color": BalProps.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelBlockItem {
@@ -1737,7 +1737,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMain {
@@ -1749,7 +1749,7 @@ export namespace Components {
         "label": string;
         "link"?: string;
         "linkLabel"?: string;
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "value": string;
     }
     interface BalNavigationLevelMeta {
@@ -1783,14 +1783,14 @@ export namespace Components {
         "elements": LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "tracking": Attributes;
     }
     interface BalNavigationMenuList {
         /**
           * Color of the menu list card background
          */
-        "color": Props.BalNavigationLevelBlockColor;
+        "color": BalProps.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -1802,12 +1802,12 @@ export namespace Components {
         /**
           * Target of the menu list card headline target as link
          */
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "tracking": Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         "tracking": Attributes;
     }
     interface BalNavigationMeta {
@@ -1824,7 +1824,7 @@ export namespace Components {
         /**
           * Color style of the button when the popover is open.
          */
-        "activeColor": Props.BalButtonColor;
+        "activeColor": BalProps.BalButtonColor;
         /**
           * If `true` a little arrow is added, which points to the trigger element
          */
@@ -1852,7 +1852,7 @@ export namespace Components {
         /**
           * Defines border-radius of popover content.
          */
-        "contentRadius": Props.BalPopoverContentRadius;
+        "contentRadius": BalProps.BalPopoverContentRadius;
         /**
           * Define the max width of the popover content.
          */
@@ -1868,7 +1868,7 @@ export namespace Components {
         /**
           * Color style of the button when the popover is closed.
          */
-        "inactiveColor": Props.BalButtonColor;
+        "inactiveColor": BalProps.BalButtonColor;
         /**
           * Turns the trigger button to inverted style.
          */
@@ -1888,11 +1888,11 @@ export namespace Components {
         /**
           * Define the position of the popover content.
          */
-        "position": Props.BalPopoverPlacement;
+        "position": BalProps.BalPopoverPlacement;
         /**
           * Defines the size of the button
          */
-        "size": Props.BalButtonSize;
+        "size": BalProps.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -2176,13 +2176,13 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BalRadioButton {
-        "colSize": Props.BalRadioGroupColumns;
-        "colSizeMobile": Props.BalRadioGroupColumns;
-        "colSizeTablet": Props.BalRadioGroupColumns;
+        "colSize": BalProps.BalRadioGroupColumns;
+        "colSizeMobile": BalProps.BalRadioGroupColumns;
+        "colSizeTablet": BalProps.BalRadioGroupColumns;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "color"?: Props.BalRadioButtonColor;
+        "color"?: BalProps.BalRadioButtonColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -2475,15 +2475,15 @@ export namespace Components {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "alignment": Props.BalStackAlignment;
+        "alignment": BalProps.BalStackAlignment;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "direction": Props.BalStackDirection;
+        "direction": BalProps.BalStackDirection;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space": Props.BalStackSpace;
+        "space": BalProps.BalStackSpace;
     }
     interface BalStage {
         /**
@@ -2589,7 +2589,7 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": Props.BalButtonTarget;
+        "target": BalProps.BalButtonTarget;
         /**
           * This is the key of the tab.
          */
@@ -4631,13 +4631,13 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface BalCheckboxButton {
-        "colSize"?: Props.BalCheckboxGroupColumns;
-        "colSizeMobile"?: Props.BalCheckboxGroupColumns;
-        "colSizeTablet"?: Props.BalCheckboxGroupColumns;
+        "colSize"?: BalProps.BalCheckboxGroupColumns;
+        "colSizeMobile"?: BalProps.BalCheckboxGroupColumns;
+        "colSizeTablet"?: BalProps.BalCheckboxGroupColumns;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "color"?: Props.BalCheckboxButtonColor;
+        "color"?: BalProps.BalCheckboxButtonColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -5612,12 +5612,12 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
-        "size"?: Props.BalLabelSize;
+        "size"?: BalProps.BalLabelSize;
         /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
-        "weight"?: Props.BalLabelWeight;
+        "weight"?: BalProps.BalLabelWeight;
     }
     interface BalList {
         /**
@@ -5880,20 +5880,20 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: Props.BalNavigationLevelBlockColor;
+        "color"?: BalProps.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
-        "target"?: Props.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelBlockItem {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
-        "target"?: Props.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMain {
@@ -5904,8 +5904,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
-        "target"?: Props.BalButtonTarget;
+        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
     interface BalNavigationLevelMeta {
@@ -5919,7 +5919,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<Events.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
         "value"?: string;
     }
     interface BalNavigationLevels {
@@ -5938,14 +5938,14 @@ declare namespace LocalJSX {
         "elements"?: LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
-        "target"?: Props.BalButtonTarget;
+        "target"?: BalProps.BalButtonTarget;
         "tracking"?: Attributes;
     }
     interface BalNavigationMenuList {
         /**
           * Color of the menu list card background
          */
-        "color"?: Props.BalNavigationLevelBlockColor;
+        "color"?: BalProps.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -5957,12 +5957,12 @@ declare namespace LocalJSX {
         /**
           * Target of the menu list card headline target as link
          */
-        "target"?: Props.BalButtonTarget;
+        "target"?: BalProps.BalButtonTarget;
         "tracking"?: Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
-        "target"?: Props.BalButtonTarget;
+        "target"?: BalProps.BalButtonTarget;
         "tracking"?: Attributes;
     }
     interface BalNavigationMeta {
@@ -5979,7 +5979,7 @@ declare namespace LocalJSX {
         /**
           * Color style of the button when the popover is open.
          */
-        "activeColor"?: Props.BalButtonColor;
+        "activeColor"?: BalProps.BalButtonColor;
         /**
           * If `true` a little arrow is added, which points to the trigger element
          */
@@ -6007,7 +6007,7 @@ declare namespace LocalJSX {
         /**
           * Defines border-radius of popover content.
          */
-        "contentRadius"?: Props.BalPopoverContentRadius;
+        "contentRadius"?: BalProps.BalPopoverContentRadius;
         /**
           * Define the max width of the popover content.
          */
@@ -6023,7 +6023,7 @@ declare namespace LocalJSX {
         /**
           * Color style of the button when the popover is closed.
          */
-        "inactiveColor"?: Props.BalButtonColor;
+        "inactiveColor"?: BalProps.BalButtonColor;
         /**
           * Turns the trigger button to inverted style.
          */
@@ -6043,11 +6043,11 @@ declare namespace LocalJSX {
         /**
           * Define the position of the popover content.
          */
-        "position"?: Props.BalPopoverPlacement;
+        "position"?: BalProps.BalPopoverPlacement;
         /**
           * Defines the size of the button
          */
-        "size"?: Props.BalButtonSize;
+        "size"?: BalProps.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -6330,13 +6330,13 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BalRadioButton {
-        "colSize"?: Props.BalRadioGroupColumns;
-        "colSizeMobile"?: Props.BalRadioGroupColumns;
-        "colSizeTablet"?: Props.BalRadioGroupColumns;
+        "colSize"?: BalProps.BalRadioGroupColumns;
+        "colSizeMobile"?: BalProps.BalRadioGroupColumns;
+        "colSizeTablet"?: BalProps.BalRadioGroupColumns;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "color"?: Props.BalRadioButtonColor;
+        "color"?: BalProps.BalRadioButtonColor;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -6647,15 +6647,15 @@ declare namespace LocalJSX {
         /**
           * Defines the text positioning like center, right or default to start.
          */
-        "alignment"?: Props.BalStackAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "direction"?: Props.BalStackDirection;
+        "direction"?: BalProps.BalStackDirection;
         /**
           * Defines the space between the child elements. Default is normal.
          */
-        "space"?: Props.BalStackSpace;
+        "space"?: BalProps.BalStackSpace;
     }
     interface BalStage {
         /**
@@ -6757,7 +6757,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: Props.BalButtonTarget;
+        "target"?: BalProps.BalButtonTarget;
         /**
           * This is the key of the tab.
          */
@@ -6775,7 +6775,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the changes has finished.
          */
-        "onBalChange"?: (event: BalStepsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        "onBalChange"?: (event: BalStepsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
@@ -7104,27 +7104,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onBalBlur"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputBlurDetail>) => void;
+        "onBalBlur"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputBlurDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputChangeDetail>) => void;
+        "onBalChange"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
-        "onBalClick"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputClickDetail>) => void;
+        "onBalClick"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputClickDetail>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onBalFocus"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputFocusDetail>) => void;
+        "onBalFocus"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputInputDetail>) => void;
+        "onBalInput"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
-        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<Events.BalTimeInputKeyPressDetail>) => void;
+        "onBalKeyPress"?: (event: BalTimeInputCustomEvent<BalEvents.BalTimeInputKeyPressDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */

@@ -1,11 +1,10 @@
-import { Props } from '../../types'
 import { BalStepOption } from './bal-step.type'
 
 interface Option {
   value: string
   label: string
   href?: string
-  target?: Props.BalButtonTarget
+  target?: BalProps.BalButtonTarget
   active?: boolean
   disabled?: boolean
   done?: boolean

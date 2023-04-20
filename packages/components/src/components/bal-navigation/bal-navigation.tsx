@@ -3,7 +3,6 @@ import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
 import { hasTouchSupport } from '../../utils/browser'
-import { Events } from '../../types'
 import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 
@@ -148,7 +147,7 @@ export class Navigation implements ComponentInterface {
   bodyOffset = 0
 
   private listenToPopoverChangeEvent = async (event: Event) => {
-    const customEvent = event as Events.BalPopoverChange
+    const customEvent = event as BalEvents.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
 
     if (isNavPopoverOpen) {
@@ -198,9 +197,9 @@ export class Navigation implements ComponentInterface {
     }
   }
 
-  onMainTabChange = async (event: Events.BalTabsChange) => {
+  onMainTabChange = async (event: BalEvents.BalTabsChange) => {
     const isMainNavOpen = event.detail !== ''
-    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
+    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail as any)
     const isLink = option?.href !== '' && option?.href !== undefined
 
     if (hasTouchSupport()) {
@@ -289,7 +288,7 @@ export class Navigation implements ComponentInterface {
                 spaceless
                 context="navigation"
                 value={this.selectedMainValue}
-                onBalChange={this.onMainTabChange}
+                onBalChange={event => this.onMainTabChange(event as any)}
                 ref={el => {
                   this.mainNavTabsEl = el
                 }}

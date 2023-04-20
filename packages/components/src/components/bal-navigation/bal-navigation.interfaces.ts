@@ -7,4 +7,10 @@ namespace BalProps {
   export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
 }
 
-namespace BalEvents {}
+namespace BalEvents {
+  export type BalNavigationLevelClickDetail = MouseEvent
+  export interface BalNavigationLevelClick extends CustomEvent {
+    detail: BalNavigationLevelClickDetail
+    target: HTMLElement
+  }
+}

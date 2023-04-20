@@ -1,5 +1,3 @@
-import { Props } from '../../../types'
-
 type HtmlFunction = () => string
 
 export interface BalCheckboxOption {
@@ -10,7 +8,7 @@ export interface BalCheckboxOption {
   html?: HtmlFunction | string
   labelHidden: boolean
   flat: boolean
-  interface: Props.BalCheckboxInterface
+  interface: BalProps.BalCheckboxInterface
   disabled: boolean
   readonly: boolean
   required: boolean

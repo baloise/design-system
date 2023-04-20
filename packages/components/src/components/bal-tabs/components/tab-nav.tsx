@@ -1,5 +1,4 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BalTabOption } from '../bal-tab.type'
@@ -22,8 +21,8 @@ export interface TabNavProps {
   animated: boolean
   spaceless: boolean
   expanded: boolean
-  verticalColSize: Props.BalTabsColSize
-  iconPosition: Props.BalTabsIconPosition
+  verticalColSize: BalProps.BalTabsColSize
+  iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
   onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
 }

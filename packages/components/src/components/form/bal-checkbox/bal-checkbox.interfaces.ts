@@ -6,6 +6,7 @@
 namespace BalProps {
   export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
   export type BalCheckboxGroupColumns = 1 | 2 | 3 | 4
+  export type BalCheckboxButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
   export type BalCheckboxInterface = BalCheckboxGroupInterface
 }
 

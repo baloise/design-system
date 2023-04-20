@@ -1,5 +1,4 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
@@ -18,7 +17,7 @@ export interface TabButtonProps {
   expanded: boolean
   spaceless: boolean
   clickable: boolean
-  iconPosition: Props.BalTabsIconPosition
+  iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
   onSelectTab: (event: MouseEvent, item: BalTabOption) => void
 }

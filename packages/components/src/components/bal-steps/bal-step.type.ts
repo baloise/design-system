@@ -1,4 +1,3 @@
-import { Props } from '../../types'
 import { EventEmitter } from '@stencil/core'
 import { Attributes } from '../../utils/attributes'
 
@@ -6,7 +5,7 @@ export interface BalStepOption {
   value: string
   label: string
   href: string
-  target: Props.BalButtonTarget
+  target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean
   done: boolean

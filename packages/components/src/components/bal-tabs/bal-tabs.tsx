@@ -21,7 +21,7 @@ import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
 import { MutationHandler } from '../../utils/mutations'
-import { AccordionState } from '../../types'
+import { AccordionState } from '../../interfaces'
 
 @Component({
   tag: 'bal-tabs',

@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
@@ -26,18 +25,18 @@ export class BalStack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() direction: Props.BalStackDirection = 'row'
+  @Prop() direction: BalProps.BalStackDirection = 'row'
 
   /**
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() alignment: Props.BalStackAlignment = ''
+  @Prop() alignment: BalProps.BalStackAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
-  @Prop() space: Props.BalStackSpace = 'normal'
+  @Prop() space: BalProps.BalStackSpace = 'normal'
 
   /**
    * RENDER

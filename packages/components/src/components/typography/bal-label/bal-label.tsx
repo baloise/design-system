@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import {
   attachComponentToConfig,
@@ -79,13 +78,13 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
-  @Prop() size: Props.BalLabelSize = ''
+  @Prop() size: BalProps.BalLabelSize = ''
 
   /**
    * @internal
    * Defines the font weight of the label.
    */
-  @Prop() weight: Props.BalLabelWeight = 'bold'
+  @Prop() weight: BalProps.BalLabelWeight = 'bold'
 
   /**
    * @internal

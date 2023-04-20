@@ -13,7 +13,6 @@ import {
   Watch,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { Events } from '../../../types'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -104,32 +103,32 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalTimeInputInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalTimeInputInputDetail>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalTimeInputChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalTimeInputChangeDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<Events.BalTimeInputBlurDetail>
+  @Event() balBlur!: EventEmitter<BalEvents.BalTimeInputBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<Events.BalTimeInputFocusDetail>
+  @Event() balFocus!: EventEmitter<BalEvents.BalTimeInputFocusDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<Events.BalTimeInputKeyPressDetail>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalTimeInputKeyPressDetail>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<Events.BalTimeInputClickDetail>
+  @Event() balClick!: EventEmitter<BalEvents.BalTimeInputClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {

@@ -1,11 +1,10 @@
-import { Props } from '../../types'
 import { BalTabOption } from './bal-tab.type'
 
 interface Option {
   value: string
   label: string
   href?: string
-  target?: Props.BalButtonTarget
+  target?: BalProps.BalButtonTarget
   active?: boolean
   disabled?: boolean
   done?: boolean

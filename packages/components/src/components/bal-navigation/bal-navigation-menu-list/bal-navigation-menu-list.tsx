@@ -1,6 +1,5 @@
 import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Props } from '../../../types'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
 import { Attributes } from '../../../utils/attributes'
@@ -12,7 +11,7 @@ export class NavigationMenuList {
   /**
    * Color of the menu list card background
    */
-  @Prop() color: Props.BalNavigationLevelBlockColor = 'white'
+  @Prop() color: BalProps.BalNavigationLevelBlockColor = 'white'
   /**
    * Optional headline of the menu list card
    */
@@ -24,7 +23,7 @@ export class NavigationMenuList {
   /**
    * Target of the menu list card headline target as link
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
   @Prop() tracking: Attributes = {}
 
   @State() headingLevel!: 'h3' | 'h4' | 'h5'

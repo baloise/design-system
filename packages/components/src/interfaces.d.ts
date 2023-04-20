@@ -48,3 +48,23 @@ import './components/notice/bal-toast/bal-toast.interfaces'
 
 export * from './components'
 export * from './index'
+
+export const enum AccordionState {
+  Collapsed = 1 << 0,
+  Collapsing = 1 << 1,
+  Expanded = 1 << 2,
+  Expanding = 1 << 3,
+}
+
+export interface I18n<T> {
+  en: T
+  de: T
+  fr: T
+  it: T
+  nl: T
+  es: T
+  pl: T
+  pt: T
+  sv: T
+  fi: T
+}

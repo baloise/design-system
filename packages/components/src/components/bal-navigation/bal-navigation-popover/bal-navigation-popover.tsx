@@ -1,6 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/scroll'
 
@@ -31,17 +30,17 @@ export class NavigationPopover implements ComponentInterface {
   /**
    * Defines the size of the button
    */
-  @Prop() size: Props.BalButtonSize = ''
+  @Prop() size: BalProps.BalButtonSize = ''
 
   /**
    * Color style of the button when the popover is closed.
    */
-  @Prop() inactiveColor: Props.BalButtonColor = 'light'
+  @Prop() inactiveColor: BalProps.BalButtonColor = 'light'
 
   /**
    * Color style of the button when the popover is open.
    */
-  @Prop() activeColor: Props.BalButtonColor = 'primary'
+  @Prop() activeColor: BalProps.BalButtonColor = 'primary'
 
   /**
    * Defines the heading of the popover
@@ -56,12 +55,12 @@ export class NavigationPopover implements ComponentInterface {
   /**
    * Defines border-radius of popover content.
    */
-  @Prop() contentRadius: Props.BalPopoverContentRadius = 'normal'
+  @Prop() contentRadius: BalProps.BalPopoverContentRadius = 'normal'
 
   /**
    * Define the position of the popover content.
    */
-  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+  @Prop() position: BalProps.BalPopoverPlacement = 'bottom-start'
 
   /**
    * Define the max width of the popover content.

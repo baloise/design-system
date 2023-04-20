@@ -1,6 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { debounceEvent } from '../../utils/helpers'
-import { Events } from '../../types'
 import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
@@ -85,7 +84,7 @@ export class Steps implements Loggable {
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<BalEvents.BalTabsChangeDetail>
 
   /**
    * LIFECYCLE

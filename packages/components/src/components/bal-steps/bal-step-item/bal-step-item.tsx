@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
-import { Props } from '../../../types'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalStepOption } from '../bal-step.type'
 
@@ -37,7 +36,7 @@ export class StepItem {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * If `true` the tab is disabled.

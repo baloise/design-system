@@ -15,7 +15,6 @@ import { BEM } from '../../../../utils/bem'
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { defaultElementStateState, ElementStateHandler, ElementStateState } from '../../../../utils/element-states'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-import { Props } from '../../../../types'
 import { FOCUS_KEYS } from '../../../../utils/focus-visible'
 import { isDescendant } from '../../../../utils/helpers'
 
@@ -80,22 +79,22 @@ export class BalCheckboxButton implements ComponentInterface, Loggable {
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() color?: Props.BalCheckboxButtonColor
+  @Prop() color?: BalProps.BalCheckboxButtonColor
 
   /**
    * @internal
    */
-  @Prop() colSize: Props.BalCheckboxGroupColumns = 1
+  @Prop() colSize: BalProps.BalCheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colSizeTablet: Props.BalCheckboxGroupColumns = 1
+  @Prop() colSizeTablet: BalProps.BalCheckboxGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colSizeMobile: Props.BalCheckboxGroupColumns = 1
+  @Prop() colSizeMobile: BalProps.BalCheckboxGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.

@@ -1,5 +1,4 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 
@@ -22,7 +21,7 @@ export const TabIcon: FunctionalComponent<TabIconProps> = ({
 }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item').element('icon')
 
-  let iconColor: Props.BalIconColor = item.disabled ? 'grey' : 'primary'
+  let iconColor: BalProps.BalIconColor = item.disabled ? 'grey' : 'primary'
   if (inverted) {
     iconColor = item.disabled ? 'primary-light' : 'white'
   }

@@ -10,7 +10,6 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import { AccordionState } from '../../../types'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -20,6 +19,7 @@ import {
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { raf, transitionEndAsync } from '../../../utils/helpers'
+import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-list-item',
