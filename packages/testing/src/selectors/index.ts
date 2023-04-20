@@ -247,6 +247,16 @@ export const selectors = {
      */
     main: 'div.modal',
   },
+  steps: {
+    /**
+     * Step option
+     */
+    option: byTestId('bal-steps-option'),
+    /**
+     * Step option label
+     */
+    optionLabel: byTestId('bal-steps-option-label'),
+  },
   tabs: {
     /**
      * Tab item element.
