@@ -7,6 +7,9 @@ branches:
   - label: '🐛 bug'
     prefix: fix/
     skip: false
+  - label: '🧪 test'
+    prefix: test/
+    skip: false
   - label: '✨ feature'
     prefix: feat/
     skip: false
@@ -20,7 +23,7 @@ branches:
     prefix: chore/
     skip: false
   - label: '🚀 release'
-    prefix: release/
+    prefix: pre-release/
     skip: false
   - label: '*'
     skip: true
