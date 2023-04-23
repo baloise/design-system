@@ -1,5 +1,6 @@
 import { isSelect, isSteps, isTabs } from '../helpers'
 import { selectors } from '../../selectors'
+import { byDataSelectors } from '../../selectors/selectors.util'
 
 Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any, options) => {
   if (isSelect(element)) {
@@ -32,9 +33,7 @@ Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any
     if (typeof values === 'string') {
       return cy
         .wrap(element, { log: false })
-        .find(
-          `${selectors.tabs.item}[data-label="${values}"], ${selectors.tabs.item}[data-value="${values}"], ${selectors.tabs.item}[data-index="${values}"]`,
-        )
+        .find(byDataSelectors(selectors.tabs.item, ['label', 'value', 'index'], values), { log: false })
         .click()
         .wrap(element, { log: false })
     }
@@ -44,9 +43,7 @@ Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any
     if (typeof values === 'string') {
       return cy
         .wrap(element, { log: false })
-        .find(
-          `${selectors.steps.option}[data-label="${values}"], ${selectors.steps.option}[data-value="${values}"], ${selectors.steps.option}[data-index="${values}"]`,
-        )
+        .find(byDataSelectors(selectors.steps.option, ['label', 'value', 'index'], values), { log: false })
         .click()
         .wrap(element, { log: false })
     }
