@@ -80,7 +80,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.5](https://github.com/baloise/design-system/compare/v10.23.2...v10.24.5) (2022-10-05)
 
-
 ### Bug Fixes
 
 * **card:** adjust tag and button alignment in the title. Closes [#547](https://github.com/baloise/design-system/issues/547) ([3d04ec2](https://github.com/baloise/design-system/commit/3d04ec218e33a7fc0aeccbc673fab962e77ab736))
