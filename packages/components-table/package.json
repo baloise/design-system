@@ -46,7 +46,7 @@
     "scss": "scss"
   },
   "peerDependencies": {
-    "ag-grid-community": ">=25.2.1"
+    "ag-grid-community": ">=29.3.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6",
   "dependencies": {
