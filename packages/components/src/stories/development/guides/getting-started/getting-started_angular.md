@@ -32,8 +32,7 @@ To improve the performance of the web components we need to configure zone.js.
  * Zone JS is required by default for Angular itself.
  */
 import './zone-flags'
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js' // Included with Angular CLI.
 ```
 
 3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
