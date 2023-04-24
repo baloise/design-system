@@ -13,7 +13,7 @@ The global import of the main styles and his utility classes move to the CSS fra
 **before**
 
 ```scss
-@import '@baloise/design-system-next-components/src/styles/global';
+@import '@baloise/design-system-components/src/styles/global';
 ```
 
 **after**
@@ -57,7 +57,7 @@ The location of the `variable` & `mixins` has changed to `@baloise/design-system
 **before**
 
 ```scss
-@import '@baloise/design-system-next-components/src/styles/global.utilities';
+@import '@baloise/design-system-components/src/styles/global.utilities';
 ```
 
 **after**

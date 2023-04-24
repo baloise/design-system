@@ -20,7 +20,7 @@ export const DiffSource = ({ code }) => {
 }
 
 <Meta
-  title="Development/Migration/Migration 11.x to 12.x"
+  title="Development/Upgrade Guides/Updating to v12"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -28,13 +28,13 @@ export const DiffSource = ({ code }) => {
   }}
 />
 
-# Migration from 11.x to 12.x
+# Updating to Design System v12
 
-The following workflow walks you through the migration steps.
-Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
-rather than strict instructions.
+<bal-doc-lead>Updating from v11 to v12</bal-doc-lead>
 
-Checkout our migration example project with Angular [GitHub](https://github.com/baloise/design-system-ng-migrations). There we migrated from v11 to v12 with the below mentioned breaking changes.
+> The following workflow walks you through the upgrade steps.
+> Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+> rather than strict instructions.
 
 ## Overview
 
@@ -47,29 +47,101 @@ Version 12.0.0 is here! This major release includes a lot of performance changes
 
 **Performance:**
 
-- [Load Custom Icons](?path=/story/development-migration-migration-from-11-x-to-12-x--page#load-custom-icons)
-- [Lazy Loading Component Styles](?path=/story/development-migration-migration-from-11-x-to-12-x--page#lazy-loading-component-styles)
-- [Design Token Reduction](?path=/story/development-migration-migration-from-11-x-to-12-x--page#design-token-reduction)
-- [CSS-Helper Reduction](?path=/story/development-migration-migration-from-11-x-to-12-x--page#css-helper-reduction)
-- [Separation of bal-number-input & bal-input](?path=/story/development-migration-migration-from-11-x-to-12-x--page#css-helper-reduction)
+- [Load Custom Icons](?path=/docs/development-upgrade-guides-updating-to-v12--page#load-custom-icons)
+- [Lazy Loading Component Styles](?path=/docs/development-upgrade-guides-updating-to-v12--page#lazy-loading-component-styles)
+- [Design Token Reduction](?path=/docs/development-upgrade-guides-updating-to-v12--page#design-token-reduction)
+- [CSS-Helper Reduction](?path=/docs/development-upgrade-guides-updating-to-v12--page#css-helper-reduction)
+- [Separation of bal-number-input & bal-input](?path=/docs/development-upgrade-guides-updating-to-v12--page#css-helper-reduction)
 
 **Features:**
 
-- [Carousel](?path=/story/development-migration-migration-from-11-x-to-12-x--page#carousel)
+- [Carousel](?path=/docs/development-upgrade-guides-updating-to-v12--page#carousel)
 
-<br />
-<br />
+## Getting Started​
 
-## Angular Example Migration
+Checkout our upgrade example project with Angular [GitHub](https://github.com/baloise/design-system-ng-migrations). There we migrated from v11 to v12 with the below mentioned breaking changes.
 
-Minimal changes setup => [GitHub Repo](https://github.com/baloise/design-system-ng-migrations)
+### Angular
 
-## Performance
+1. The Design System v12 supports Angular 12+. To upgrade to the most recent version of Angular, please consult the [Angular Update Guide](https://update.angular.io/).
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-angular@12
+```
+
+3. Load custom icons
+
+<DiffSource
+  code={`@NgModule({
+  imports: [
+    BalCoreModule.forRoot({
+      defaults: {
++       icons: { balIconAccount }, // just the icons you need
++       icons: { ...balIcons }, // or all the icons at once
+      },
+    }),
+  ],
+})
+export class AppModule {}`}
+/>
+
+### React
+
+1. The Design System v12 supports React 17+.
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-react@12
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+### Vue
+
+1. The Design System v12 supports vue 3+.
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-vue@12
+```
+
+3. Load custom icons
+
+<DiffSource
+  code={`createApp(App)
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
++       icons: { balIconAccount }, // just the icons you need
++       icons: { ...balIcons }, // or all the icons at once
+      },
+    }),
+  )
+  .mount('#app')`}
+/>
+
+> **TIP** Do the same with the other Design System packages.
+
+### HTML + Javascript
+
+1. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components@12
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+
+## Updating Your Code
+
+### Performance
 
 The main changes of the major version 12 is related to achieve better performance results.
 In most of the cases we reduced the initial page load or added lazy loading of certain resources.
 
-### Load Custom Icons
+#### Load Custom Icons
 
 [How to use the bal-icon component](?path=/docs/components-icon--basic#import-into-the-component)
 
@@ -86,38 +158,7 @@ import { balIconAccount } from '@baloise/design-system-icons'
 import * as balIcons from '@baloise/design-system-icons'
 ```
 
-#### Angular
-
-<DiffSource
-  code={`@NgModule({
-  imports: [
-    BalCoreModule.forRoot({
-      defaults: {
-+       icons: { balIconAccount }, // just the icons you need
-+       icons: { ...balIcons }, // or all the icons at once
-      },
-    }),
-  ],
-})
-export class AppModule {}`}
-/>
-
-#### Vue
-
-<DiffSource
-  code={`createApp(App)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-+       icons: { balIconAccount }, // just the icons you need
-+       icons: { ...balIcons }, // or all the icons at once
-      },
-    }),
-  )
-  .mount('#app')`}
-/>
-
-### Lazy Loading Component Styles
+#### Lazy Loading Component Styles
 
 To reduce the initial page load we now lazy load the component styles. This reduces our
 global style file by 44%. Styles of the components are loaded, when they are used.
@@ -357,13 +398,11 @@ This leads to a smaller payload for the `bal-input` component.
 +<bal-number-input decimal="2"></bal-number-input>`}
 />
 
-## Features
-
 ### Carousel
 
 The new component carousel replaces the `bal-slider`, `bal-product-slider` and `bal-image-slider` components.
 
-#### Card Slider
+### Card Slider
 
 [Implementation detail](?path=/story/components-carousel--card-slider)
 
@@ -382,7 +421,7 @@ The new component carousel replaces the `bal-slider`, `bal-product-slider` and `
 +</bal-carousel>`}
 />
 
-#### Product Slider
+### Product Slider
 
 [Implementation detail](?path=/story/components-carousel--product-slider)
 
@@ -396,7 +435,7 @@ The new component carousel replaces the `bal-slider`, `bal-product-slider` and `
 +</bal-carousel>`}
 />
 
-#### Image Slider
+### Image Slider
 
 [Implementation detail](?path=/story/components-carousel--image-slider)
 
@@ -410,4 +449,6 @@ The new component carousel replaces the `bal-slider`, `bal-product-slider` and `
 +</bal-carousel>`}
 />
 
-<bal-doc-github link="/stories/development/migration/11-migration-from-11x-to-12x.stories.mdx"></bal-doc-github>
+
+
+<bal-doc-github link="/stories/development/upgrade/upgrade-guide.v12.stories.mdx"></bal-doc-github>

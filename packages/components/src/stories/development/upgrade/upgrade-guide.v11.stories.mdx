@@ -1,7 +1,26 @@
 import { Meta } from '@storybook/addon-docs'
 
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
+import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+export const DiffSource = ({ code }) => {
+  SyntaxHighlighter.registerLanguage('diff', diff)
+  const [isReady, updateState] = React.useState(false)
+  if (isReady) {
+    return (
+      <SyntaxHighlighter className="my-diff-source" language="diff" style={coy}>
+        {code}
+      </SyntaxHighlighter>
+    )
+  } else {
+    setTimeout(() => updateState(true), 100)
+  }
+  return <div></div>
+}
+
 <Meta
-  title="Development/Migration/Migration 10.x to 11.x"
+  title="Development/Upgrade Guides/Updating to v11"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,12 +28,74 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Migration from 10.x to 11.x
+# Updating to Design System v11
 
-The following workflow walks you through the migration steps.
-Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+<bal-doc-lead>Updating from v10 to v11</bal-doc-lead>
 
-## bal-radio checked
+> The following workflow walks you through the upgrade steps.
+> Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+> rather than strict instructions.
+
+## Getting Started​
+
+### Angular
+
+1. The Design System v11 supports Angular 12+. To upgrade to the most recent version of Angular, please consult the [Angular Update Guide](https://update.angular.io/).
+2. Update to the latest version of Design System v11:
+
+```
+npm install @baloise/design-system-components-angular@11
+```
+
+### React
+
+1. The Design System v11 supports React 17+.
+2. Update to the latest version of Design System v11:
+
+```
+npm install @baloise/design-system-components-react@11
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+### Vue
+
+1. The Design System v11 supports vue 3+.
+2. Update to the latest version of Design System v11:
+
+```
+npm install @baloise/design-system-components-vue@11
+```
+
+3. In order to get the `~` alias working, update the vite.config.ts file and add the resolve config to the defineConfig function.
+
+```typescript
+  resolve: {
+    alias: [
+      {
+        // this is required for the SCSS modules
+        find: /^~(.*)$/,
+        replacement: "$1",
+      },
+    ],
+  },
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+### HTML + Javascript
+
+1. Update to the latest version of Design System v11:
+
+```
+npm install @baloise/design-system-components@11
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+## Updating Your Code
+
+### bal-radio checked
 
 The **checked** property of the `bal-radio` has been removed. Please use the `bal-radio-group` an its property **value**.
 
@@ -32,7 +113,7 @@ The **checked** property of the `bal-radio` has been removed. Please use the `ba
 </bal-radio-group>
 ```
 
-## bal-input pattern
+### bal-input pattern
 
 To disable certain key presses we added a new prop called `allowedKeyPress`.
 To validate the pattern of the input use the prop `pattern`.
@@ -47,19 +128,19 @@ Here is an example for a postal code input.
 <bal-input pattern="[0-9]{4}" allowed-key-press="[0-9]"></bal-input>
 ```
 
-## bal-input type to elementType
+### bal-input type to elementType
 
 The prop `type` was renamed to `elementType` to avoid html attribute conflicts.
 
-## bal-text small to size
+### bal-text small to size
 
 With the new brand we have various text sizes, therefore the small prop was removed and replace with an enum type size.
 
-## Prop inverted
+### Prop inverted
 
 Property inverted was removed, since there will be no inverted styles for the new brand.
 
-## Improved SASS styles
+### Improved SASS styles
 
 In the new version 11 we introduced the packages tokens and css. Those are build on SASS not SCSS and
 provide a lot of CSS-Variables.
@@ -84,31 +165,15 @@ To style your components we recommend to use css variables, however if you want 
 
 do not import for example `global.variables` everything should be provided by `global.utilities`.
 
-### Vue / Vite
 
-In order to get the `~` alias working, update the vite.config.ts file and add the resolve config
-to the defineConfig function.
-
-```typescript
-  resolve: {
-    alias: [
-      {
-        // this is required for the SCSS modules
-        find: /^~(.*)$/,
-        replacement: "$1",
-      },
-    ],
-  },
-```
-
-## Performance update icons
+### Performance update icons
 
 To reduce the initial page load, the icon fetching was changed. In the new version the icons will not be
 automatically fetched.
 
 There are two ways to import the svg icons.
 
-### 1. import svg directly (recommended)
+#### 1. import svg directly (recommended)
 
 Import the svg into your component and pass it with the prop `svg` of the `bal-icon` component.
 
@@ -124,7 +189,7 @@ import { balIconAccount } from '@baloise/design-system-icons'
 <bal-icon :svg="balIconAccount"></bal-cion
 ```
 
-### 2. import all svg
+#### 2. import all svg
 
 Second variant is to import all the svg icons during the initialization. This is not recommended,
 because it increases the payload of your app.
@@ -154,7 +219,7 @@ import * as balIcons from '@baloise/design-system-icons'
 export class AppModule {}
 ```
 
-#### Vue
+##### Vue
 
 ```typescript
 ...
@@ -175,13 +240,13 @@ createApp(App)
   .mount('#app')
 ```
 
-## New breakpoint high-definition
+### New breakpoint high-definition
 
 The high-definition breakpoint gets introduced in the new version. It starts at 1280px and is added between desktop and widescreen.
 
 The only breaking change is that the range of the sass mixin desktop-only is changed.
 
-## Improve initial page load
+### Improve initial page load
 
 The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
 To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
@@ -196,4 +261,7 @@ To avoid that set the below style tag into your head of the `index.html`. This w
 
 Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`.
 
-<bal-doc-github link="/stories/development/migration/10-migration-from-10x-to-11x.stories.mdx"></bal-doc-github>
+
+
+
+<bal-doc-github link="/stories/development/upgrade/upgrade-guide.v11.stories.mdx"></bal-doc-github>

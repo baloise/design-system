@@ -1,0 +1,467 @@
+import { Meta } from '@storybook/addon-docs'
+
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff'
+import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+export const DiffSource = ({ code }) => {
+  SyntaxHighlighter.registerLanguage('diff', diff)
+  const [isReady, updateState] = React.useState(false)
+  if (isReady) {
+    return (
+      <SyntaxHighlighter className="my-diff-source" language="diff" style={coy}>
+        {code}
+      </SyntaxHighlighter>
+    )
+  } else {
+    setTimeout(() => updateState(true), 100)
+  }
+  return <div></div>
+}
+
+<Meta
+  title="Development/Upgrade Guides/Updating to v13"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Updating to Design System v13
+
+<bal-doc-lead>Updating from v12 to v13</bal-doc-lead>
+
+> The following workflow walks you through the upgrade steps.
+> Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+> rather than strict instructions.
+
+## Getting Started​
+
+### Angular
+
+Remove Angular component modules, because of Zone.js optimization.
+Tree-shaking is given by Stencil and therefor to have Angular component modules
+does not have any advantages anymore.
+
+1. The Design System v13 supports Angular 13+. To upgrade to the most recent version of Angular, please consult the [Angular Update Guide](https://update.angular.io/).
+2. Update to the latest version of Design System v13:
+
+```
+npm install @baloise/design-system-components-angular@13
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+3. Rename the main Design System module from `BalCoreModule` to `BaloiseDesignSystemModule` in `app.module.ts`
+
+<DiffSource
+  code={`@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    ...
+-   BalCoreModule.forRoot(),
++   BaloiseDesignSystemModule.forRoot(),
+    ...
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}`}
+/>
+
+> **TIP** The new module `BaloiseDesignSystemModule` imports all the components.
+
+4. Remove all components module like `BalButtonModule`.
+
+<DiffSource
+  code={`@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    ...
+-   BalButtonModule,
+    ...
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}`}
+/>
+
+### React
+
+1. The Design System v13 supports React 17+.
+2. Update to the latest version of Design System v13:
+
+```
+npm install @baloise/design-system-components-react@13
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+### Vue
+
+1. The Design System v13 supports vue 3+.
+2. Update to the latest version of Design System v13:
+
+```
+npm install @baloise/design-system-components-vue@13
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+### HTML + Javascript
+
+1. Update to the latest version of Design System v13:
+
+```
+npm install @baloise/design-system-components@13
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+## Updating Your Code
+
+### Shortlist
+
+#### 1. Replace global component styles:
+
+<DiffSource
+  code={`- @import '@baloise/design-system-components/src/styles/global';
+//
+// SASS mixins and variables
++ @import '@baloise/design-system-css/sass/mixins';
+//
+// Resets CSS for all browser
++ @import '@baloise/design-system-css/css/normalize';
++ @import '@baloise/design-system-css/css/structure';
+//
+// Custom font faces
++ @import '@baloise/design-system-css/sass/font';
+//
+// Core CSS, always required
++ @import '@baloise/design-system-css/css/core';
+//
+// Deprecated styles will be removed with the next breaking version (optional)
++ @import '@baloise/design-system-css/sass/legacy';
+//
+// CSS utilities classes (optional)
++ @import '@baloise/design-system-css/css/border';
++ @import '@baloise/design-system-css/css/color';
++ @import '@baloise/design-system-css/css/display';
++ @import '@baloise/design-system-css/css/flex';
++ @import '@baloise/design-system-css/css/grid';
++ @import '@baloise/design-system-css/css/opacity';
++ @import '@baloise/design-system-css/css/radius';
++ @import '@baloise/design-system-css/css/shadow';
++ @import '@baloise/design-system-css/css/spacing';
++ @import '@baloise/design-system-css/css/typography';`}
+/>
+
+#### 2. Replace global utility Sass files:
+
+<DiffSource
+  code={`- @import '@baloise/design-system-components/src/styles/global.utilities';
++ @import '@baloise/design-system-css/sass/mixins';`}
+/>
+
+> **TIP** If you depend on legacy sass variables you need to import `legacy` file too.
+>
+> ```scss
+> @import '@baloise/design-system-css/sass/legacy';
+> @import '@baloise/design-system-css/sass/mixins';
+> ```
+
+#### 3. Use new steps component:
+
+<DiffSource
+  code={`- <bal-tabs interface="o-steps" value="tab-a">
+-   <bal-tab-item done value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+- </bal-tabs>
++ <bal-steps value="tab-a">
++   <bal-step-item done value="tab-a" label="Tab A">Content of Tab A</bal-step-item>
++ </bal-steps>`}
+/>
+
+> **TIP** Remove the prop interface and rename the element tags. The component interface is still the same.
+
+#### 4 Accordion rename property value to active
+
+<DiffSource
+  code={`- <bal-accordion value="true">
++ <bal-accordion active="true">
+    <p>...</p>
+  </bal-accordion>`}
+/>
+
+#### 5. Popover rename property value to active
+
+<DiffSource
+  code={`- <bal-popover value="true">
++ <bal-popover active="true">
+    <bal-button bal-popover-trigger>...</bal-button>
+    <bal-popover-content>...</bal-popover-content>
+  </bal-popover>`}
+/>
+
+#### 6. Rename namespace Props to BalProps:
+
+<DiffSource
+  code={`- import { Props } from '@baloise/design-system-components'';
+- const myColor: Props.BalButtonColor = 'primary'
++ const myColor: BalProps.BalButtonColor = 'primary'`}
+/>
+
+#### 7. Rename namespace Events to BalEvents:
+
+<DiffSource
+  code={`- import { Events } from '@baloise/design-system-components'';
+- const onChange = (event: Events.BalAccordionChange) => {
++ const onChange = (event: BalEvents.BalAccordionChange) => {
+  ...
+}`}
+/>
+
+#### 8. AG-Grid update
+
+```
+npm install @baloise/design-system-components-table@13 ag-grid-communit@29
+```
+
+<DiffSource
+  code={`- @import '@baloise/design-system-components-table/scss';
++ @import 'ag-grid-community/styles/ag-grid';
++ @import 'ag-grid-community/styles/ag-theme-alpine';
++ @import '@baloise/design-system-components-table/css/design-system-table';`}
+/>
+
+### Global Styles
+
+Remove deprecated global component styles.
+Component styles will be loaded lazy to optimize the speed of the first render, there for only import the needed CSS files.
+
+#### Global import
+
+The global import of the main styles and his utility classes move to the CSS framework.
+
+**before**
+
+```scss
+@import '@baloise/design-system-components/src/styles/global';
+```
+
+**after**
+
+With the solution we are able to add only what we need.
+
+```scss
+// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
+```
+
+#### Component utilities import
+
+The location of the `variable` & `mixins` has changed to `@baloise/design-system-css/sass/mixins`.
+
+**before**
+
+```scss
+@import '@baloise/design-system-components/src/styles/global.utilities';
+```
+
+**after**
+
+```scss
+@import '@baloise/design-system-css/sass/mixins';
+```
+
+### New Steps Component
+
+Add new `steps` component with options property and overflow solution
+
+**before**
+
+```html
+<bal-tabs interface="o-steps" value="tab-a">
+  <bal-tab-item done value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+</bal-tabs>
+```
+
+**after**
+
+The interface of the components are the same as before.
+Only the tag names of the component changed and to pass the `interface` property is not needed anymore.
+
+```html
+<bal-steps value="tab-a">
+  <bal-step-item done value="tab-a" label="Tab A">Content of Tab A</bal-step-item>
+</bal-steps>
+```
+
+### Prop Change Accordion and Popover
+
+Accordion & Popover renamed property `value` to `active`, since they are not considered as a form control component.
+
+**before**
+
+```html
+<bal-accordion value="true">My hidden Content</bal-accordion>
+```
+
+**after**
+
+```html
+<bal-accordion active="true">My hidden Content</bal-accordion>
+```
+
+### New Namespace for Props & Events
+
+The namespaces Props and Events are renamed to BalProps and BalEvents.
+As long as the packages `@baloise/design-system-components` is imported into your project
+you have direct access to the new namespaces.
+
+#### With Props
+
+**before**
+
+```typescript
+import { Props } from '@baloise/design-system-components'
+
+const myColor: Props.BalButtonColor = 'primary'
+```
+
+**after**
+
+```typescript
+const myColor: BalProps.BalButtonColor = 'primary'
+```
+
+#### With Events
+
+**before**
+
+```typescript
+import type { Events } from "@baloise/design-system-components"
+
+const onChange = (event: Events.BalAccordionChange) => {
+  const myAccordion = event.target // type => EventTarget
+  const myDetail = event.detail // type => boolean
+  ...
+}
+```
+
+**after**
+
+```typescript
+const onChange = (event: BalEvents.BalAccordionChange) => {
+  const myAccordion = event.target // type => HTMLBalAccordion
+  const myDetail = event.detail // type => boolean
+  ...
+}
+```
+
+All component types are now located in the component folders `*.interfaces.ts` file.
+
+### Major AG-Grid update
+
+Breaking changes are the theming that changed from SASS variables to CSS variables.
+Moreover, our styles are just an extension to the `AG-Grid` styles.
+Therefor please import them before the Baloise styles also check out our [documentation](https://design.baloise.dev/?path=/docs/components-table--basic#aggrid)
+
+##### 1. The Design System v13 supports AG-Grid 29+.
+
+```
+npm install @baloise/design-system-components-table@13 ag-grid-communit@29
+```
+
+##### 2. Change the import of the styles
+
+**before**
+
+```scss
+@import '@baloise/design-system-components-table/scss';
+```
+
+**after**
+
+```scss
+@import 'ag-grid-community/styles/ag-grid';
+@import 'ag-grid-community/styles/ag-theme-alpine';
+@import '@baloise/design-system-components-table/css/design-system-table';
+```
+
+### Inverted Styles
+
+Remove inverted property from bal-stage, bal-datepicker, bal-input, bal-textarea.
+
+Inverted property is removed because is not supported in our new rebranded style.
+
+Components that are affected are:
+
+| Component        | Property |
+| :--------------- | :------- |
+| `bal-stage`      | inverted |
+| `bal-datepicker` | inverted |
+| `bal-input`      | inverted |
+| `bal-textarea`   | inverted |
+
+### Scroll Handler
+
+Scroll handler blocks scrolling now with Javascript instead of CSS.
+With that we are able to remember the last scroll position of the user.
+
+**before**
+
+```typescript
+const scrollHandler = BodyScrollBlocker()
+this.bodyScrollBlocker.block()
+this.bodyScrollBlocker.allow()
+```
+
+**after**
+
+Rename the handler to `ScrollHandler` and call the `connect` function to
+connect the handler to the target element (Default is document). `block` and `allow` have been
+renamed to `disable` and `enable`. The new function `disconnect` removes all
+the defined event listeners and resets the handler.
+
+```typescript
+const scrollHandler = ScrollHandler()
+
+// can also pass in a custom element instead of using document
+scrollHandler.connect()
+scrollHandler.disable()
+scrollHandler.enable()
+scrollHandler.disconnect()
+```
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<bal-doc-github link="/stories/development/upgrade/upgrade-guide.v13.stories.mdx"></bal-doc-github>
