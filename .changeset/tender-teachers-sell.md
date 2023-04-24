@@ -3,7 +3,7 @@
 ---
 
 Remove Angular component modules, because of Zone.js optimization.
-Tree-shaking is given by stencil and therefor to have Angular component modules
+Tree-shaking is given by Stencil and therefor to have Angular component modules
 does not have any advantages anymore.
 
 **before**

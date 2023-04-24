@@ -2,4 +2,4 @@
 '@baloise/design-system-components': major
 ---
 
-update to stencil v3
+update dependency stencil to v3.
