@@ -48,16 +48,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
 
   /**
-   * @deprecated use `active` property instead.
-   * If `true` the accordion is open.
-   */
-  @Prop() value = false
-  @Watch('value')
-  protected async valueChanged(newValue: boolean) {
-    this.activeChanged(newValue, this.active)
-  }
-
-  /**
    * If `true` the accordion is open.
    */
   @Prop({ mutable: true, reflect: true }) active = false

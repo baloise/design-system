@@ -73,10 +73,6 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<boolean>;
-        /**
-          * @deprecated use `active` property instead. If `true` the accordion is open.
-         */
-        "value": boolean;
         "version": number;
     }
     interface BalAccordionDetails {
@@ -2014,6 +2010,10 @@ export namespace Components {
     }
     interface BalPopover {
         /**
+          * If `true` the popover content is open.
+         */
+        "active": boolean;
+        /**
           * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow": boolean;
@@ -2065,10 +2065,6 @@ export namespace Components {
           * If `true` the popover is shown as a tooltip
          */
         "tooltip": boolean;
-        /**
-          * If `true` the popover content is open.
-         */
-        "value": boolean;
     }
     interface BalPopoverContent {
         /**
@@ -4153,10 +4149,6 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
-        /**
-          * @deprecated use `active` property instead. If `true` the accordion is open.
-         */
-        "value"?: boolean;
         "version"?: number;
     }
     interface BalAccordionDetails {
@@ -6172,6 +6164,10 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
+          * If `true` the popover content is open.
+         */
+        "active"?: boolean;
+        /**
           * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow"?: boolean;
@@ -6218,10 +6214,6 @@ declare namespace LocalJSX {
           * If `true` the popover is shown as a tooltip
          */
         "tooltip"?: boolean;
-        /**
-          * If `true` the popover content is open.
-         */
-        "value"?: boolean;
     }
     interface BalPopoverContent {
         /**

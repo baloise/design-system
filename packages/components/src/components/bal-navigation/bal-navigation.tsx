@@ -183,7 +183,7 @@ export class Navigation implements ComponentInterface {
   private dismissPopover() {
     const popoverElements = this.el.querySelectorAll('bal-popover')
     popoverElements?.forEach(popoverEl => {
-      popoverEl.value = false
+      popoverEl.active = false
     })
   }
 

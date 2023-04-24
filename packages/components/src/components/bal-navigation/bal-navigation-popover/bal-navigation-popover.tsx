@@ -142,7 +142,7 @@ export class NavigationPopover implements ComponentInterface {
         }}
       >
         <bal-popover
-          value={this.isActive}
+          active={this.isActive}
           onBalChange={event => (this.isActive = event.detail)}
           arrow={this.arrow}
           backdrop={this.backdrop}
