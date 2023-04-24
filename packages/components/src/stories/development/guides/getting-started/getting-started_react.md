@@ -66,7 +66,7 @@ import '@baloise/design-system-css/css/typography.css'
 #### Import Sass Styles
 
 ```scss
-// SASS mixins and variables (optional)
+// SASS mixins and variables
 @import '@baloise/design-system-css/sass/mixins';
 
 // Resets CSS for all browser
