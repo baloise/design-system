@@ -8,25 +8,13 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 > - We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
 > - We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 
-<!-- ### Deep import config
-
-To use/ignore deep imports in an Angular applications create a file called `ngcc.config.js` in the root folder and add the following content.
-
-```javascript
-module.exports = {
-  packages: {
-    '@baloise/design-system-components-angular': {
-      ignorableDeepImportMatchers: [/@baloise\//],
-    },
-  },
-}
-``` -->
-
 ### Setting up Zone.js
 
 To improve the performance of the web components we need to configure zone.js.
 
-To make these changes, you need to create a **zone-flags.ts** file, such as the following.
+> Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
+
+1. To make these changes, you need to create a **zone-flags.ts** file, such as the following.
 
 ```javascript
 // disable patching requestAnimationFrame
@@ -34,21 +22,22 @@ To make these changes, you need to create a **zone-flags.ts** file, such as the 
 
 // disable patching custom elements (our web components)
 (window as any).__Zone_disable_customElements = true;
+
 ```
 
-Next, import zone-flags before you import zone.js in the **polyfills.ts**:
+2. Next, import zone-flags before you import zone.js in the **polyfills.ts**:
 
 ```typescript
 /***************************************************************************************************
- * Zone JS is required by default for Angular.
+ * Zone JS is required by default for Angular itself.
  */
 import './zone-flags'
-import 'zone.js' // Included with Angular CLI.
+import 'zone.js';  // Included with Angular CLI.
+
 ```
 
-> **TIP**
->
-> Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
+3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
+4. List the `src/polyfills.ts` as a file in the `tsconfig.app.json`.
 
 ## Installation
 
@@ -120,13 +109,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
-import {
-  BalCoreModule,
-  BalButtonModule,
-  BalHeadingModule,
-  BalFooterModule,
-} from '@baloise/design-system-components-angular'
-
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -137,12 +120,8 @@ import { AppComponent } from './app.component'
     // Enables the usage of ngModel on form components
     FormsModule,
     ReactiveFormsModule,
-    // Enables the Design System globally for your application
-    BalCoreModule.forRoot(),
-    // Import the Design System components
-    BalButtonModule,
-    BalHeadingModule,
-    BalFooterModule,
+    // Add all components to you application
+    BaloiseDesignSystemModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -176,21 +155,6 @@ Add the `bal-app` to your `app.component.html` root element. Within this compone
 </bal-app>
 ```
 
-<!-- ### Improve initial page load
-
-The browser needs some time to load the web-components, because of that when the page is loaded we see some unfinished layout.
-To avoid that set the below style tag into your head of the `index.html`. This will hide the app content until the web-components are ready.
-
-```html
-<style>
-  .bal-body {
-    visibility: hidden;
-  }
-</style>
-```
-
-Next set the class `.bal-body` to your app container. In the most cases it is the body element of your `index.html`. -->
-
 ## Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
@@ -199,9 +163,7 @@ Now everything is ready to be used. Add some Baloise components and start the ap
 npm start
 ```
 
-> **TIP**
->
-> Your app gets served under [http://localhost:4200](http://localhost:4200).
+> **TIP** Your app gets served under [http://localhost:4200](http://localhost:4200).
 
 ## Provide the assets
 
