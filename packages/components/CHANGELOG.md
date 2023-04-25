@@ -1,5 +1,31 @@
 # @baloise/design-system-components
 
+## 12.13.0
+
+### Minor Changes
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - more space values are available for the bal-stack component
+
+- [#779](https://github.com/baloise/design-system/pull/779) [`14990cf12`](https://github.com/baloise/design-system/commit/14990cf12e7925544d758ff77493488dba84a0b9) Thanks [@github-actions](https://github.com/apps/github-actions)! - badge supports theming
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-popover has new property `auto-trigger`, which automatically opens the popover content on a click on the trigger element.
+
+### Patch Changes
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - typography elements inherit default color from parent element
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - footer improve loading links only in idle mode
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-accordion updates state after value was changed
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-stack normalizes margins of the child elements and expands over the whole width
+
+- Updated dependencies [[`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe), [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe)]:
+  - @baloise/design-system-css@12.13.0
+  - @baloise/design-system-fonts@12.13.0
+  - @baloise/design-system-icons@12.13.0
+  - @baloise/design-system-tokens@12.13.0
+
 ## 12.12.0
 
 ### Minor Changes

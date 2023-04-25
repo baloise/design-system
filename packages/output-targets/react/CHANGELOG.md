@@ -1,5 +1,7 @@
 # @baloise/design-system-output-target-react
 
+## 12.13.0
+
 ## 12.12.0
 
 ## 12.11.0

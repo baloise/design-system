@@ -1,5 +1,7 @@
 # @baloise/design-system-tokens
 
+## 12.13.0
+
 ## 12.12.0
 
 ### Minor Changes
