@@ -16,23 +16,6 @@ export class List {
   @Prop() disabled = false
 
   /**
-   * @deprecated
-   * If `true` the list can be used on a dark background
-   */
-  @Prop() inverted = undefined
-  @Watch('inverted')
-  invertedHandler() {
-    if (this.inverted !== undefined) {
-      console.warn('[DEPRECATED] - Please use the property background="dark" instead of inverted')
-      if (this.inverted === true) {
-        this.background = 'dark'
-      } else {
-        this.background = 'light'
-      }
-    }
-  }
-
-  /**
    * If `true` the list can be used on a light, dark or colored backgrounds
    */
   @Prop() background: BalProps.BalListBackground = 'light'
@@ -59,13 +42,7 @@ export class List {
    */
   @Prop() size: BalProps.BalListSize = ''
 
-  // /**
-  //  * If `true` the list can be used as an accordion in meta nav
-  //  */
-  // @Prop() inMainNav = false
-
   componentWillLoad() {
-    this.invertedHandler()
     this.accordionOneLevelHandler(this.accordionOneLevel, false)
   }
 

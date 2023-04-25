@@ -119,23 +119,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @Prop() invalid = false
 
   /**
-   * @deprecated Define the locale of month and day names.
-   */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
-
-  @Watch('locale')
-  watchLocaleHandler() {
-    console.warn('[DEPRECATED] - Please use the window.BaloiseDesignSystem.config instead')
-    this.migrateLocale()
-  }
-
-  private migrateLocale() {
-    if (this.locale !== '') {
-      this.language = this.locale
-    }
-  }
-
-  /**
    * If `true` the attribute required is added to the native input.
    */
   @Prop() required = false
@@ -300,7 +283,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     this.debounceChanged()
     attachComponentToConfig(this)
     this.initialValue = this.value
-    this.migrateLocale()
   }
 
   componentDidLoad() {

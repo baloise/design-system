@@ -49,7 +49,6 @@ export class Tag {
   @Prop() light = false
 
   /**
-   * @deprecated
    * @internal
    * Sets background color to transparent
    */

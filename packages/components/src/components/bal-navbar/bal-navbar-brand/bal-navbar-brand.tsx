@@ -18,22 +18,6 @@ export class NavbarBrand {
   @Prop() href?: string = ''
 
   /**
-   * @deprecated Link target
-   */
-  @Prop() linkTarget: BalProps.BalButtonTarget | '' = ''
-  @Watch('linkTarget')
-  hasShapeHandler() {
-    console.warn('[DEPRECATED] - Please use the property target instead')
-    this.migrateLinkTarget()
-  }
-
-  private migrateLinkTarget() {
-    if (this.linkTarget !== '') {
-      this.target = this.linkTarget
-    }
-  }
-
-  /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
@@ -80,7 +64,6 @@ export class NavbarBrand {
 
   connectedCallback() {
     this.bodyScrollHandler.connect()
-    this.migrateLinkTarget()
   }
 
   componentWillLoad() {

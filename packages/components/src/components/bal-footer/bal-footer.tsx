@@ -39,11 +39,6 @@ export class Footer implements BalConfigObserver, Loggable {
    */
 
   /**
-   * @deprecated The languages in which the links will appear.
-   */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
-
-  /**
    * If `true` the legal Baloise links will be hidden.
    */
   @Prop() hideLinks = false

@@ -430,6 +430,7 @@ Components that are affected are:
 | `bal-stage`      | inverted |
 | `bal-datepicker` | inverted |
 | `bal-input`      | inverted |
+| `bal-list`       | inverted |
 | `bal-textarea`   | inverted |
 
 ### Scroll Handler
@@ -462,26 +463,56 @@ scrollHandler.enable()
 scrollHandler.disconnect()
 ```
 
-## Event changes
+## Locale changes
 
-### Event Renamings
+Please follow [internationalization guide](https://design.baloise.dev/?path=/docs/development-internationalization--page) to set languages and regions.
 
-| Component          | Before   | After         |
-| ------------------ | -------- | ------------- |
-| `bal-file-upload`  | balClick | balInputClick |
-| `bal-select`       | balClick | balInputClick |
-| `bal-datepicker`   | balClick | balInputClick |
-| `bal-checkbox`     | balClick | click         |
-| `bal-input-slider` | balClick | click         |
-| `bal-number-input` | balClick | click         |
-| `bal-radio`        | balClick | click         |
-| `bal-textarea`     | balClick | click         |
+The property `locale` has been removed on the components `bal-footer` and `bal-datepicker`. They will get the locale information automatically
+from our Design System config object and get notified when there is a change.
 
-### Added new Events
+## Click Event changes
 
-| Component        | Event        | Description                                  |
-| ---------------- | ------------ | -------------------------------------------- |
-| `bal-datepicker` | balIconClick | Fired when the icon in the input was clicked |
+We recommend to use the native event click instead of our balClick.
+Moreover, we renamed the event to match the event target element.
+
+| Component            | Before   | After         |
+| -------------------- | -------- | ------------- |
+| **bal-file-upload**  | balClick | balInputClick |
+| **bal-select**       | balClick | balInputClick |
+| **bal-datepicker**   | balClick | balInputClick |
+| **bal-checkbox**     | balClick | click         |
+| **bal-input-slider** | balClick | click         |
+| **bal-input**        | balClick | click         |
+| **bal-number-input** | balClick | click         |
+| **bal-radio**        | balClick | click         |
+| **bal-textarea**     | balClick | click         |
+| **bal-datepicker**   | -        | balIconClick  |
+
+## Deprecated parts
+
+### Design Token Removal
+
+| Component     | Value     | Why                                     |
+| ------------- | --------- | --------------------------------------- |
+| **radius**    | `small`   | Is not supported in the new Style Guide |
+| **radius**    | `x-large` | Is not supported in the new Style Guide |
+| **container** | `is-blog` | Use default container instead           |
+
+### Component Property Renaming
+
+| Component            | Before        | After              |
+| -------------------- | ------------- | ------------------ |
+| **bal-card-actions** | `right`       | `position="right"` |
+| **bal-navbar-brand** | `link-target` | `target`           |
+| **bal-stage**        | `has-shape`   | `shape`            |
+| **bal-radio**        | `is-empty`    | `label-hidden`     |
+
+### Component Property Removal
+
+| Component      | Property       | Why                                                              |
+| -------------- | -------------- | ---------------------------------------------------------------- |
+| **bal-select** | `no-border`    | Left over from the old style guide. Was event not active anymore |
+| **bal-select** | `has-movement` | Left over from the old style guide. Was event not active anymore |
 
 ## Visual changes
 

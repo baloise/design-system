@@ -234,12 +234,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Event() balBlur!: EventEmitter<BalEvents.BalInputBlurDetail>
 
   /**
-   * @deprecated
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
-  /**
    * Emitted when a keyboard key has pressed.
    */
   @Event() balKeyPress!: EventEmitter<BalEvents.BalInputKeyPressDetail>

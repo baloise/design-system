@@ -29,22 +29,6 @@ export class Stage implements ComponentInterface {
   @Prop() shape = false
 
   /**
-   * @deprecated If true the Baloise Shape is set
-   */
-  @Prop() hasShape = false
-  @Watch('hasShape')
-  hasShapeHandler() {
-    console.warn('[DEPRECATED] - Please use the property shape instead')
-    this.migrateHasShape()
-  }
-
-  private migrateHasShape() {
-    if (this.hasShape === true) {
-      this.shape = this.hasShape
-    }
-  }
-
-  /**
    * Shape Variation
    */
   @Prop() shapeVariation?: BalProps.BalShapeVariation
@@ -73,10 +57,6 @@ export class Stage implements ComponentInterface {
       default:
         return '1400px'
     }
-  }
-
-  connectedCallback() {
-    this.migrateHasShape()
   }
 
   private get containerClass(): string {

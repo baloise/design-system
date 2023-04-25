@@ -297,10 +297,6 @@ export namespace Components {
           * The value of the button, which is submitted with the form data.
          */
         "position": BalProps.BalCardActionsPosition;
-        /**
-          * @deprecated use position="right" If `true` the buttons start form right to left.
-         */
-        "right": boolean;
     }
     interface BalCardButton {
         /**
@@ -706,10 +702,6 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * @deprecated Define the locale of month and day names.
-         */
-        "locale": 'en' | 'de' | 'fr' | 'it' | '';
-        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -1065,10 +1057,6 @@ export namespace Components {
           * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
-        /**
-          * @deprecated The languages in which the links will appear.
-         */
-        "locale": 'en' | 'de' | 'fr' | 'it' | '';
         /**
           * If `true` the social media links will be shown.
          */
@@ -1481,10 +1469,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * @deprecated If `true` the list can be used on a dark background
-         */
-        "inverted": undefined;
-        /**
           * Defines the min height of the list item
          */
         "size": BalProps.BalListSize;
@@ -1670,10 +1654,6 @@ export namespace Components {
          */
         "href"?: string;
         "interface": BalProps.BalNavbarInterface;
-        /**
-          * @deprecated Link target
-         */
-        "linkTarget": BalProps.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -2139,10 +2119,6 @@ export namespace Components {
          */
         "invisible": boolean;
         /**
-          * @deprecated If `true` the radio has no label
-         */
-        "isEmpty": undefined;
-        /**
           * Label of the radio item.
          */
         "label": string;
@@ -2290,16 +2266,9 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * @deprecated Enables the slide in animation for the option items.
-         */
-        "hasMovement": boolean;
-        /**
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
-         */
         "inverted": boolean;
         /**
           * Defines if the select is in a loading state.
@@ -2317,10 +2286,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * @deprecated Removes the border of the input.
-         */
-        "noBorder": boolean;
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
@@ -2490,10 +2455,6 @@ export namespace Components {
           * Defines content width of the stage
          */
         "containerSize": BalProps.BalStageContainer;
-        /**
-          * @deprecated If true the Baloise Shape is set
-         */
-        "hasShape": boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -2778,9 +2739,6 @@ export namespace Components {
           * The size of the tag element
          */
         "size": BalProps.BalTagSize;
-        /**
-          * @deprecated
-         */
         "transparent": boolean;
     }
     interface BalTagGroup {
@@ -4389,10 +4347,6 @@ declare namespace LocalJSX {
           * The value of the button, which is submitted with the form data.
          */
         "position"?: BalProps.BalCardActionsPosition;
-        /**
-          * @deprecated use position="right" If `true` the buttons start form right to left.
-         */
-        "right"?: boolean;
     }
     interface BalCardButton {
         /**
@@ -4819,10 +4773,6 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * @deprecated Define the locale of month and day names.
-         */
-        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
-        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -5198,10 +5148,6 @@ declare namespace LocalJSX {
          */
         "hideLinks"?: boolean;
         /**
-          * @deprecated The languages in which the links will appear.
-         */
-        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
-        /**
           * If `true` the social media links will be shown.
          */
         "showSocialMedia"?: boolean;
@@ -5391,10 +5337,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: BalInputCustomEvent<BalEvents.BalInputChangeDetail>) => void;
-        /**
-          * @deprecated Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalInputCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -5629,10 +5571,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * @deprecated If `true` the list can be used on a dark background
-         */
-        "inverted"?: undefined;
-        /**
           * Defines the min height of the list item
          */
         "size"?: BalProps.BalListSize;
@@ -5817,10 +5755,6 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         "interface"?: BalProps.BalNavbarInterface;
-        /**
-          * @deprecated Link target
-         */
-        "linkTarget"?: BalProps.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -6280,10 +6214,6 @@ declare namespace LocalJSX {
          */
         "invisible"?: boolean;
         /**
-          * @deprecated If `true` the radio has no label
-         */
-        "isEmpty"?: undefined;
-        /**
           * Label of the radio item.
          */
         "label"?: string;
@@ -6442,16 +6372,9 @@ declare namespace LocalJSX {
          */
         "filter"?: BalProps.BalSelectFilter;
         /**
-          * @deprecated Enables the slide in animation for the option items.
-         */
-        "hasMovement"?: boolean;
-        /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
-         */
         "inverted"?: boolean;
         /**
           * Defines if the select is in a loading state.
@@ -6469,10 +6392,6 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * @deprecated Removes the border of the input.
-         */
-        "noBorder"?: boolean;
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
@@ -6658,10 +6577,6 @@ declare namespace LocalJSX {
           * Defines content width of the stage
          */
         "containerSize"?: BalProps.BalStageContainer;
-        /**
-          * @deprecated If true the Baloise Shape is set
-         */
-        "hasShape"?: boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -6935,9 +6850,6 @@ declare namespace LocalJSX {
           * The size of the tag element
          */
         "size"?: BalProps.BalTagSize;
-        /**
-          * @deprecated
-         */
         "transparent"?: boolean;
     }
     interface BalTagGroup {

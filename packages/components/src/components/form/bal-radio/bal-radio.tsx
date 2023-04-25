@@ -9,7 +9,6 @@ import {
   Method,
   ComponentInterface,
   State,
-  Watch,
   Listen,
 } from '@stencil/core'
 import { isDescendant } from '../../../utils/helpers'
@@ -61,17 +60,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
    * the value of the radio.
    */
   @Prop() value?: any | null
-
-  /**
-   * @deprecated If `true` the radio has no label
-   */
-  @Prop() isEmpty = undefined
-  @Watch('isEmpty') isEmptyHandler() {
-    if (this.isEmpty !== undefined) {
-      this.labelHidden = this.isEmpty
-      console.warn('[DEPRECATED] - Use label-hidden instead')
-    }
-  }
 
   /**
    * Label of the radio item.
@@ -175,7 +163,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   }
 
   componentWillLoad() {
-    this.isEmptyHandler()
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 

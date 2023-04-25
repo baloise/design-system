@@ -126,19 +126,9 @@ export class Select implements ComponentInterface, Loggable {
   @Prop() noDataLabel?: string
 
   /**
-   * @deprecated  Removes the border of the input.
-   */
-  @Prop() noBorder = false
-
-  /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
-
-  /**
-   * @deprecated Enables the slide in animation for the option items.
-   */
-  @Prop() hasMovement = false
 
   /**
    * If `true` the user can search by typing into the input field.
@@ -167,7 +157,8 @@ export class Select implements ComponentInterface, Loggable {
   @Prop() required = false
 
   /**
-   * @deprecated  Set this to `true` when the component is placed on a dark background.
+   * @internal
+   * Set this to `true` when the component is placed on a dark background.
    * Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
