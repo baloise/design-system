@@ -122,9 +122,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     this.debounceChanged()
     attachComponentToConfig(this)
 
-    if (this.value && this.active === false) {
-      this.valueChanged(this.value)
-    }
     if (this.active) {
       this.activeChanged(this.active, false)
     }
