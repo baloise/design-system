@@ -12,6 +12,7 @@ import {
 } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { rIC } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-footer',
@@ -78,11 +79,13 @@ export class Footer implements BalConfigObserver, Loggable {
    */
   @Method()
   async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-    this.allowedLanguages = state.allowedLanguages
-    this.updateFooterLinks()
-    this.updateSocialMediaLinks()
+    if (this.language !== state.language || this.region !== state.region) {
+      this.language = state.language
+      this.region = state.region
+      this.allowedLanguages = state.allowedLanguages
+      this.updateFooterLinks()
+      this.updateSocialMediaLinks()
+    }
   }
 
   /**
@@ -97,14 +100,20 @@ export class Footer implements BalConfigObserver, Loggable {
   private updateFooterLinks() {
     if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
-      loadFooterLinks(new Language(this.language), this.region).then(links => (this.links = links))
+      const region = this.region
+      rIC(() => {
+        loadFooterLinks(new Language(this.language), region).then(links => (this.links = links))
+      })
     }
   }
 
   private updateSocialMediaLinks() {
     if (this.showSocialMedia && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
-      loadSocialMediaLinks(new Language(this.language), this.region).then(links => (this.socialMediaLinks = links))
+      const region = this.region
+      rIC(() => {
+        loadSocialMediaLinks(new Language(this.language), region).then(links => (this.socialMediaLinks = links))
+      })
     }
   }
 
