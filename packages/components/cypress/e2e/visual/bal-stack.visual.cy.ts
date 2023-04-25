@@ -8,5 +8,6 @@ describe('bal-stack', () => {
     cy.getByTestId('alignment').compareSnapshot('stack-alignment', 0.0)
     cy.getByTestId('direction').compareSnapshot('stack-direction', 0.0)
     cy.getByTestId('space').compareSnapshot('stack-space', 0.0)
+    cy.getByTestId('margins').compareSnapshot('stack-margins', 0.0)
   })
 })

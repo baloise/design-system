@@ -8,7 +8,17 @@ export namespace Props {
   export type BalContentAlignment = 'start' | 'center' | 'end' | ''
 
   export type BalStackDirection = 'row' | 'column' | ''
-  export type BalStackSpace = 'normal' | 'large' | 'x-large' | 'xx-large' | ''
+  export type BalStackSpace =
+    | 'none'
+    | 'xx-small'
+    | 'x-small'
+    | 'small'
+    | 'normal'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | ''
   export type BalStackAlignment = 'center' | 'end' | 'start' | ''
 
   export type BalBadgeSize = 'small' | 'large' | ''
