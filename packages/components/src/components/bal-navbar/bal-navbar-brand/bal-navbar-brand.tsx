@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
 import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
 

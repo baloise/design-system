@@ -16,5 +16,5 @@ namespace BalProps {
     | 'primary-light'
     | ''
     | string
-  export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
+  export type BalIconSize = 'xsmall' | 'x-small' | 'small' | 'medium' | 'large' | ''
 }

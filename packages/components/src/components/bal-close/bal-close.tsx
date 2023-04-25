@@ -47,7 +47,7 @@ export class Close implements ComponentInterface {
         >
           <bal-icon
             name="close"
-            size={this.size === 'small' ? 'xsmall' : this.size === 'medium' ? 'medium' : 'small'}
+            size={this.size === 'small' ? 'x-small' : this.size === 'medium' ? 'medium' : 'small'}
             inverted={this.inverted}
             class={{
               ...iconEl.class(),

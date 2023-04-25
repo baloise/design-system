@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Prop, Watch } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
