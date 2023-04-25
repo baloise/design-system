@@ -11,7 +11,7 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section>
-          <bal-popover id="bal-popover-1" is-active="false" data-testid="popover">
+          <bal-popover id="bal-popover-1" is-active="false" data-testid="popover" auto-trigger>
             <bal-button
               bal-popover-trigger
               id="bal-popover-1-trigger"
@@ -36,14 +36,6 @@
             </bal-popover-content>
           </bal-popover>
         </section>
-        <script>
-          var popover = document.getElementById('bal-popover-1')
-          var trigger = document.getElementById('bal-popover-1-trigger')
-
-          trigger.addEventListener('click', function (event) {
-            popover.toggle()
-          })
-        </script>
       </main>
     </bal-doc-app>
   </body>

@@ -2002,6 +2002,10 @@ export namespace Components {
          */
         "arrow": boolean;
         /**
+          * If `true` the popover automatically opens on a click
+         */
+        "autoTrigger": boolean;
+        /**
           * If `true` a backdrop is added
          */
         "backdrop": boolean;
@@ -6073,6 +6077,10 @@ declare namespace LocalJSX {
           * If `true` a little arrow is added, which points to the trigger element
          */
         "arrow"?: boolean;
+        /**
+          * If `true` the popover automatically opens on a click
+         */
+        "autoTrigger"?: boolean;
         /**
           * If `true` a backdrop is added
          */

@@ -1,5 +1,17 @@
 # @baloise/design-system-css
 
+## 12.13.0
+
+### Patch Changes
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - typography elements inherit default color from parent element
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - default button color is set to primary
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@12.13.0
+  - @baloise/design-system-tokens@12.13.0
+
 ## 12.12.0
 
 ### Patch Changes

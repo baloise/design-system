@@ -6,6 +6,7 @@
   flex-direction: row
   align-items: center
   height: 100%
+  width: 100%
   gap: 1rem
   //
   // direction
@@ -25,6 +26,36 @@
     align-items: flex-end
   //
   // spaces
+  &--space-none
+    gap: 0
+    +tablet
+      gap: 0
+    +desktop
+      gap: 0
+  &--space-xx-small
+    gap: var(--bal-space-xx-small)
+    +tablet
+      gap: var(--bal-space-tablet-xx-small)
+    +desktop
+      gap: var(--bal-space-desktop-xx-small)
+  &--space-x-small
+    gap: var(--bal-space-x-small)
+    +tablet
+      gap: var(--bal-space-tablet-x-small)
+    +desktop
+      gap: var(--bal-space-desktop-x-small)
+  &--space-small
+    gap: var(--bal-space-small)
+    +tablet
+      gap: var(--bal-space-tablet-small)
+    +desktop
+      gap: var(--bal-space-desktop-small)
+  &--space-medium
+    gap: var(--bal-space-medium)
+    +tablet
+      gap: var(--bal-space-tablet-medium)
+    +desktop
+      gap: var(--bal-space-desktop-medium)
   &--space-large
     gap: var(--bal-space-large)
     +tablet
@@ -46,8 +77,16 @@
 
 //
 // custom position
-.bal-stack >  bal-radio
+.bal-stack > bal-radio
   margin-top: -4px
 
-.bal-stack > .bal-text
+//
+// reset margin botton space
+.bal-stack > .bal-text,
+.bal-stack > .bal-heading,
+.bal-stack > .bal-heading:not(:last-child),
+.bal-stack > .title,
+.bal-stack > .subtitle,
+.bal-stack > .is-link,
+.bal-stack > p
   margin: 0

@@ -1,4 +1,17 @@
-import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Listen,
+  Method,
+  Prop,
+  Watch,
+  Element,
+  Event,
+  EventEmitter,
+  State,
+  ComponentInterface,
+} from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { Props } from '../../types'
 import { Events } from '../../types'
@@ -8,6 +21,7 @@ import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -19,16 +33,34 @@ export interface PopoverPresentOptions {
     css: 'bal-popover.sass',
   },
 })
-export class Popover {
+export class Popover implements ComponentInterface, Loggable {
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
+  private resizeWidthHandler = ResizeHandler()
 
   @Element() element!: HTMLElement
 
   @State() isTouch = isPlatform('touch')
   @State() isInMainNav = false
   @State() backdropHeight = 0
+
+  log!: LogInstance
+
+  @Logger('bal-popover')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * If `true` the popover automatically opens on a click
+   */
+  @Prop() autoTrigger = false
 
   /**
    * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
@@ -117,6 +149,88 @@ export class Popover {
    */
   @Event() balDidAnimate!: EventEmitter<Events.BalPopoverDidAnimateDetail>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  componentWillLoad() {
+    this.backdropHeight = this.getBackdropHeight()
+  }
+
+  componentDidLoad() {
+    this.isInMainNav = this.footMobileNav !== null
+    this.isTouch = isPlatform('touch')
+
+    if (this.triggerElement && this.menuElement) {
+      this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
+        placement: this.tooltip ? 'bottom' : this.position,
+        modifiers: [this.modifierOffset, this.modifierPreventOverflow],
+      })
+      let showEvents: string[] = []
+      let hideEvents: string[] = []
+
+      if (this.autoTrigger) {
+        showEvents = ['click']
+      }
+
+      if (this.tooltip) {
+        showEvents = ['mouseenter', 'focus']
+        hideEvents = ['mouseleave', 'blur']
+      }
+
+      showEvents.forEach(event => {
+        if (this.triggerElement) {
+          if (event === 'click') {
+            this.triggerElement.addEventListener(event, () => this.toggle())
+          } else {
+            this.triggerElement.addEventListener(event, () => this.present())
+          }
+        }
+      })
+
+      hideEvents.forEach(event => {
+        if (this.triggerElement) {
+          this.triggerElement.addEventListener(event, () => this.dismiss())
+        }
+      })
+    }
+  }
+
+  componentDidRenderTimer?: NodeJS.Timer
+  componentDidRender() {
+    if (this.popperInstance) {
+      this.popperInstance.setOptions((options: any) => ({
+        ...options,
+        placement: this.tooltip ? 'bottom' : this.position,
+        modifiers: [
+          ...options.modifiers.filter((m: any) => m.name !== 'offset' && m.name !== 'preventOverflow'),
+          this.modifierOffset,
+          this.modifierPreventOverflow,
+        ],
+      }))
+      this.updatePopper()
+    }
+
+    // Bug fix for https://github.com/baloise/design-system/issues/551
+    if (isBrowser('Safari') && !this.isTouch) {
+      clearTimeout(this.componentDidRenderTimer)
+      this.componentDidRenderTimer = setTimeout(() => {
+        const triggerWidth = this.element?.clientWidth
+        if (triggerWidth) {
+          this.element.style.maxWidth = `${triggerWidth}px`
+        } else {
+          this.element.style.maxWidth = `initial`
+        }
+      })
+    }
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(event: CustomEvent<string>) {
     const popoverId = event.detail
@@ -153,8 +267,6 @@ export class Popover {
     }
   }
 
-  resizeWidthHandler = ResizeHandler()
-
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
@@ -164,73 +276,10 @@ export class Popover {
     })
   }
 
-  componentDidRenderTimer?: NodeJS.Timer
-  componentDidRender() {
-    if (this.popperInstance) {
-      this.popperInstance.setOptions((options: any) => ({
-        ...options,
-        placement: this.tooltip ? 'bottom' : this.position,
-        modifiers: [
-          ...options.modifiers.filter((m: any) => m.name !== 'offset' && m.name !== 'preventOverflow'),
-          this.modifierOffset,
-          this.modifierPreventOverflow,
-        ],
-      }))
-      this.updatePopper()
-    }
-
-    // Bug fix for https://github.com/baloise/design-system/issues/551
-    if (isBrowser('Safari') && !this.isTouch) {
-      clearTimeout(this.componentDidRenderTimer)
-      this.componentDidRenderTimer = setTimeout(() => {
-        const triggerWidth = this.element?.clientWidth
-        if (triggerWidth) {
-          this.element.style.maxWidth = `${triggerWidth}px`
-        } else {
-          this.element.style.maxWidth = `initial`
-        }
-      })
-    }
-  }
-
-  private get footMobileNav(): HTMLElement | null {
-    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
-  }
-
-  componentWillLoad() {
-    this.backdropHeight = this.getBackdropHeight()
-  }
-
-  componentDidLoad() {
-    this.isInMainNav = this.footMobileNav !== null
-    this.isTouch = isPlatform('touch')
-
-    if (this.triggerElement && this.menuElement) {
-      this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
-        placement: this.tooltip ? 'bottom' : this.position,
-        modifiers: [this.modifierOffset, this.modifierPreventOverflow],
-      })
-      let showEvents: string[] = []
-      let hideEvents: string[] = []
-
-      if (this.tooltip) {
-        showEvents = ['mouseenter', 'focus']
-        hideEvents = ['mouseleave', 'blur']
-      }
-
-      showEvents.forEach(event => {
-        if (this.triggerElement) {
-          this.triggerElement.addEventListener(event, () => this.present())
-        }
-      })
-
-      hideEvents.forEach(event => {
-        if (this.triggerElement) {
-          this.triggerElement.addEventListener(event, () => this.dismiss())
-        }
-      })
-    }
-  }
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Open the popover
@@ -290,8 +339,13 @@ export class Popover {
     }
   }
 
-  private updatePopper() {
-    this.popperInstance.update()
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get footMobileNav(): HTMLElement | null {
+    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
   }
 
   private get modifierOffset(): Partial<OffsetModifier> {
@@ -328,6 +382,20 @@ export class Popover {
   private getBackdropHeight() {
     return this.isInMainNav ? (window.innerHeight - (this.isTouch ? 64 : 48)) / 16 : window.innerHeight / 16
   }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private updatePopper() {
+    this.popperInstance.update()
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const block = BEM.block('popover')

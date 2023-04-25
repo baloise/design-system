@@ -50,7 +50,7 @@ npm install @baloise/design-system-components-vue --save
 To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
-// SASS mixins and variables (optional)
+// SASS mixins and variables
 @import '@baloise/design-system-css/sass/mixins';
 
 // Resets CSS for all browser

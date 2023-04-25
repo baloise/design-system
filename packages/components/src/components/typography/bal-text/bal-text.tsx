@@ -96,7 +96,7 @@ export class Text implements ComponentInterface, ComponentElementState {
       return 'danger'
     }
 
-    const color = this.inverted ? 'white' : this.color === '' || this.color === 'info' ? 'primary' : this.color
+    const color = this.inverted ? 'white' : this.color === 'info' ? 'primary' : this.color
 
     if (this.pressed) {
       return 'primary-dark'
