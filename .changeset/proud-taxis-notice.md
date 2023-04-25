@@ -1,5 +1,5 @@
 ---
-'@baloise/design-system-components': patch
+'@baloise/design-system-components': minor
 ---
 
-bal-popover listen on click event on his trigger element to toggle the popover
+bal-popover has new property `auto-trigger`, which automatically opens the popover on a click on the trigger element.

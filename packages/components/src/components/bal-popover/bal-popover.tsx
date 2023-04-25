@@ -58,6 +58,11 @@ export class Popover implements ComponentInterface, Loggable {
    */
 
   /**
+   * If `true` the popover automatically opens on a click
+   */
+  @Prop() autoTrigger = false
+
+  /**
    * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
    */
   @Prop() hint = false
@@ -162,8 +167,12 @@ export class Popover implements ComponentInterface, Loggable {
         placement: this.tooltip ? 'bottom' : this.position,
         modifiers: [this.modifierOffset, this.modifierPreventOverflow],
       })
-      let showEvents: string[] = ['click']
+      let showEvents: string[] = []
       let hideEvents: string[] = []
+
+      if (this.autoTrigger) {
+        showEvents = ['click']
+      }
 
       if (this.tooltip) {
         showEvents = ['mouseenter', 'focus']
