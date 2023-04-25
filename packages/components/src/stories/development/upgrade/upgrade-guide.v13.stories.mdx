@@ -187,7 +187,7 @@ npm install @baloise/design-system-components@13
 
 > **TIP** Remove the prop interface and rename the element tags. The component interface is still the same.
 
-#### 4 Accordion rename property value to active
+#### 4. Accordion rename property value to active
 
 <DiffSource
   code={`- <bal-accordion value="true">
@@ -461,6 +461,34 @@ scrollHandler.disable()
 scrollHandler.enable()
 scrollHandler.disconnect()
 ```
+
+## Event changes
+
+### Event Renamings
+
+| Component          | Before   | After         |
+| ------------------ | -------- | ------------- |
+| `bal-file-upload`  | balClick | balInputClick |
+| `bal-select`       | balClick | balInputClick |
+| `bal-datepicker`   | balClick | balInputClick |
+| `bal-checkbox`     | balClick | click         |
+| `bal-input-slider` | balClick | click         |
+| `bal-number-input` | balClick | click         |
+| `bal-radio`        | balClick | click         |
+| `bal-textarea`     | balClick | click         |
+
+### Added new Events
+
+| Component        | Event        | Description                                  |
+| ---------------- | ------------ | -------------------------------------------- |
+| `bal-datepicker` | balIconClick | Fired when the icon in the input was clicked |
+
+## Visual changes
+
+### Icons Sizes
+
+Icon size `large` changed form `3.125rem` (50px) to `2.5rem` (40px). We only support sizes which are
+dividable by 8.
 
 ## Need Help Upgrading?​
 
