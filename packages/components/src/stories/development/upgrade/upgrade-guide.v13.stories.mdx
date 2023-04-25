@@ -417,22 +417,6 @@ npm install @baloise/design-system-components-table@13 ag-grid-community@29
 @import '@baloise/design-system-components-table/css/design-system-table';
 ```
 
-### Inverted Styles
-
-Remove inverted property from bal-stage, bal-datepicker, bal-input, bal-textarea.
-
-Inverted property is removed because is not supported in our new rebranded style.
-
-Components that are affected are:
-
-| Component        | Property |
-| :--------------- | :------- |
-| `bal-stage`      | inverted |
-| `bal-datepicker` | inverted |
-| `bal-input`      | inverted |
-| `bal-list`       | inverted |
-| `bal-textarea`   | inverted |
-
 ### Scroll Handler
 
 Scroll handler blocks scrolling now with Javascript instead of CSS.
@@ -463,14 +447,16 @@ scrollHandler.enable()
 scrollHandler.disconnect()
 ```
 
-## Locale changes
+## Deprecated parts
+
+### Locale changes
 
 Please follow [internationalization guide](https://design.baloise.dev/?path=/docs/development-internationalization--page) to set languages and regions.
 
 The property `locale` has been removed on the components `bal-footer` and `bal-datepicker`. They will get the locale information automatically
 from our Design System config object and get notified when there is a change.
 
-## Click Event changes
+### Click Event changes
 
 We recommend to use the native event click instead of our balClick.
 Moreover, we renamed the event to match the event target element.
@@ -488,7 +474,21 @@ Moreover, we renamed the event to match the event target element.
 | **bal-textarea**     | balClick | click         |
 | **bal-datepicker**   | -        | balIconClick  |
 
-## Deprecated parts
+### Inverted Styles
+
+Remove inverted property from bal-stage, bal-datepicker, bal-input, bal-textarea.
+
+Inverted property is removed because is not supported in our new rebranded style.
+
+Components that are affected are:
+
+| Component        | Property |
+| :--------------- | :------- |
+| `bal-stage`      | inverted |
+| `bal-datepicker` | inverted |
+| `bal-input`      | inverted |
+| `bal-list`       | inverted |
+| `bal-textarea`   | inverted |
 
 ### Design Token Removal
 
