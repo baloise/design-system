@@ -6,7 +6,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 export class FormCol implements ComponentInterface {
   @Element() el!: HTMLElement
 
-  @Prop() size: BalProps.BalFormColSize = 'fullwidth'
+  @Prop() size: BalProps.BalFormGridColSize = 'fullwidth'
 
   render() {
     return (
