@@ -25,4 +25,12 @@ namespace BalEvents {
 
   export type BalTabsDidAnimateDetail = void
   export type BalTabsDidAnimate = BalTabsCustomEvent<BalTabsDidAnimateDetail>
+
+  export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalTabItemElement
+  }
+
+  export type BalTabItemNavigateDetail = MouseEvent
+  export type BalTabItemNavigate = BalTabItemCustomEvent<BalTabItemNavigateDetail>
 }

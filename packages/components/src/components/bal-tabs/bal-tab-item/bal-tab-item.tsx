@@ -66,7 +66,7 @@ export class TabItem {
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)
