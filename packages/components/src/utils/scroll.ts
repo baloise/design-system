@@ -12,6 +12,7 @@ export const ScrollHandler = () => {
         document.body.classList.remove('noscroll')
         document.body.style.position = ''
         document.body.style.top = ''
+        document.body.style.width = ''
         window.scrollTo(x, y)
         isDisabled = false
       }
@@ -26,6 +27,7 @@ export const ScrollHandler = () => {
         document.body.classList.add('noscroll')
         document.body.style.position = 'fixed'
         document.body.style.top = `-${y}px`
+        document.body.style.width = `100%`
         isDisabled = true
       }
     }

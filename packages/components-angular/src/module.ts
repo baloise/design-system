@@ -12,6 +12,7 @@ import { AngularDelegate } from './overlays/angular-delegate'
 import { BalModalService } from './overlays/modal.service'
 import { BalToastService } from './overlays/toast.service'
 import { BalSnackbarService } from './overlays/snackbar.service'
+import { BalNgErrorComponent } from './components/error/error.component'
 
 export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 
@@ -25,6 +26,7 @@ const DECLARATIONS = [
   TextValueAccessor,
   // custom directives
   BalAutoFocus,
+  BalNgErrorComponent,
 ]
 
 @NgModule({
