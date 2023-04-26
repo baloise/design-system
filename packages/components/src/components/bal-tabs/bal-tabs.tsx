@@ -45,6 +45,7 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   @State() isNavbarOpen = false
   @State() inNavbar = false
+  @State() inNavbarLight = false
 
   @State() isMobile = isPlatform('mobile')
   @State() isTablet = isPlatform('tablet')
@@ -191,6 +192,12 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   connectedCallback() {
     this.inNavbar = hasParent('bal-navbar', this.el)
+    if (this.inNavbar) {
+      const parentNavbar = this.el.closest('bal-navbar')
+      if (parentNavbar) {
+        this.inNavbarLight = parentNavbar.light
+      }
+    }
     this.debounceChanged()
     attachComponentToConfig(this)
     this.mutationHandler.connect(this.el, () => this.onOptionChange())
@@ -638,7 +645,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     const isTablet = isPlatform('tablet')
     const isTouch = isMobile || isTablet
 
-    const isInverted = (this.inNavbar && !isTouch) || (!this.inNavbar && this.inverted)
+    const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)
     const isVertical = this.isVertical()
     const hasCarousel = !isVertical && this.overflow && !this.expanded
 

@@ -162,6 +162,7 @@ export const parameters = {
           'Icon',
           'Layout',
           'List',
+          'Navigation',
           'Popover',
           'Table',
           'Tag',
