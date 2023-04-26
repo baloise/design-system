@@ -6728,7 +6728,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalTabItemCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalTabItemCustomEvent<BalEvents.BalTabItemNavigateDetail>) => void;
         /**
           * Tell's if the linking is done by a router.
          */
