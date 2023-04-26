@@ -12,17 +12,17 @@ import { ValueAccessor } from './value-accessor'
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BooleanValueAccessor),
+      useExisting: forwardRef(() => CheckboxValueAccessor),
       multi: true,
     },
   ],
 })
-export class BooleanValueAccessor extends ValueAccessor {
+export class CheckboxValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el)
   }
 
   override writeValue(value: any) {
-    this.el.nativeElement.value = this.lastValue = value == null ? false : value
+    this.el.nativeElement.checked = this.lastValue = value == null ? false : value
   }
 }

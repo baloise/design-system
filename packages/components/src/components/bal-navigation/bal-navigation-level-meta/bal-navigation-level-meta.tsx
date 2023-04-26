@@ -22,7 +22,7 @@ export class NavigationLevelMeta implements ComponentInterface {
    */
   @Prop() isTabLink?: boolean
 
-  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
+  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelMetaClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

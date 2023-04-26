@@ -17,7 +17,7 @@ export class NavigationLevelBlock implements ComponentInterface {
   @Prop() linkLabel?: string = undefined
   @Prop() target: BalProps.BalButtonTarget = '_self'
 
-  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
+  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelBlockClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

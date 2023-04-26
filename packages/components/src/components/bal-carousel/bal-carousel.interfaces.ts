@@ -8,27 +8,25 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalCarouselChangeDetail = number | undefined
-  export interface BalCarouselChange extends CustomEvent {
-    detail: BalCarouselChangeDetail
+  export interface BalCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalCarouselElement
   }
 
-  export type BalCarouselItemBlurDetail = void
-  export interface BalCarouselItemBlur extends CustomEvent {
-    detail: BalCarouselItemBlurDetail
+  export type BalCarouselChangeDetail = number | undefined
+  export type BalCarouselChange = BalCarouselCustomEvent<BalCarouselChangeDetail>
+
+  export interface BalCarouselItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalCarouselItemElement
   }
+
+  export type BalCarouselItemBlurDetail = void
+  export type BalCarouselItemBlur = BalCarouselItemCustomEvent<BalCarouselItemBlurDetail>
 
   export type BalCarouselItemFocusDetail = void
-  export interface BalCarouselItemFocus extends CustomEvent {
-    detail: BalCarouselItemFocusDetail
-    target: HTMLBalCarouselItemElement
-  }
+  export type BalCarouselItemFocus = BalCarouselItemCustomEvent<BalCarouselItemFocusDetail>
 
   export type BalCarouselItemNavigateDetail = MouseEvent
-  export interface BalCarouselItemNavigate extends CustomEvent {
-    detail: BalCarouselItemNavigateDetail
-    target: HTMLBalCarouselItemElement
-  }
+  export type BalCarouselItemNavigate = BalCarouselItemCustomEvent<BalCarouselItemNavigateDetail>
 }

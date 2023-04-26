@@ -8,21 +8,17 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalAccordionChangeDetail = boolean
-  export interface BalAccordionChange extends CustomEvent {
-    detail: BalAccordionChangeDetail
+  export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalAccordionElement
   }
+
+  export type BalAccordionChangeDetail = boolean
+  export type BalAccordionChange = BalAccordionCustomEvent<BalAccordionChangeDetail>
 
   export type BalAccordionWillAnimateDetail = void
-  export interface BalAccordionWillAnimate extends CustomEvent {
-    detail: BalAccordionWillAnimateDetail
-    target: HTMLBalAccordionElement
-  }
+  export type BalAccordionWillAnimate = BalAccordionCustomEvent<BalAccordionWillAnimateDetail>
 
   export type BalAccordionDidAnimateDetail = void
-  export interface BalAccordionDidAnimate extends CustomEvent {
-    detail: BalAccordionDidAnimateDetail
-    target: HTMLBalAccordionElement
-  }
+  export type BalAccordionDidAnimate = BalAccordionCustomEvent<BalAccordionDidAnimateDetail>
 }

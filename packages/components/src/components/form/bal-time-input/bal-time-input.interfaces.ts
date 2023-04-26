@@ -4,38 +4,26 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalEvents {
+  export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalTimeInputElement
+  }
+
   export type BalTimeInputChangeDetail = string | undefined
-  export interface BalTimeInputChange extends CustomEvent {
-    detail: BalTimeInputChangeDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputChange = BalTimeInputCustomEvent<BalTimeInputChangeDetail>
+
   export type BalTimeInputInputDetail = string | undefined
-  export interface BalTimeInputInput extends CustomEvent {
-    detail: BalTimeInputInputDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputInput = BalTimeInputCustomEvent<BalTimeInputInputDetail>
 
   export type BalTimeInputBlurDetail = FocusEvent
-  export interface BalTimeInputBlur extends CustomEvent {
-    detail: BalTimeInputBlurDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputBlur = BalTimeInputCustomEvent<BalTimeInputBlurDetail>
 
   export type BalTimeInputKeyPressDetail = KeyboardEvent
-  export interface BalTimeInputKeyPress extends CustomEvent {
-    detail: BalTimeInputKeyPressDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputKeyPress = BalTimeInputCustomEvent<BalTimeInputKeyPressDetail>
 
   export type BalTimeInputFocusDetail = FocusEvent
-  export interface BalTimeInputFocus extends CustomEvent {
-    detail: BalTimeInputFocusDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputFocus = BalTimeInputCustomEvent<BalTimeInputFocusDetail>
 
   export type BalTimeInputClickDetail = MouseEvent
-  export interface BalTimeInputClick extends CustomEvent {
-    detail: BalTimeInputClickDetail
-    target: HTMLBalTimeInputElement
-  }
+  export type BalTimeInputClick = BalTimeInputCustomEvent<BalTimeInputClickDetail>
 }

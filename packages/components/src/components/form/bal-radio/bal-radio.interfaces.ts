@@ -11,45 +11,42 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalRadioChangeDetail = boolean
-  export interface BalRadioChange extends CustomEvent {
-    detail: BalRadioChangeDetail
+  export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalRadioElement
   }
+
+  export type BalRadioChangeDetail = boolean
+  export type BalRadioChange = BalRadioCustomEvent<BalRadioChangeDetail>
 
   export type BalRadioBlurDetail = FocusEvent
-  export interface BalRadioBlur extends CustomEvent {
-    detail: BalRadioBlurDetail
-    target: HTMLBalRadioElement
-  }
+  export type BalRadioBlur = BalRadioCustomEvent<BalRadioBlurDetail>
 
   export type BalRadioFocusDetail = FocusEvent
-  export interface BalRadioFocus extends CustomEvent {
-    detail: BalRadioFocusDetail
-    target: HTMLBalRadioElement
+  export type BalRadioFocus = BalRadioCustomEvent<BalRadioFocusDetail>
+
+  export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalRadioGroupElement
   }
 
   export type BalRadioGroupChangeDetail = number | string | boolean
-  export interface BalRadioGroupChange extends CustomEvent {
-    detail: BalRadioGroupChangeDetail
-    target: HTMLBalRadioGroupElement
-  }
+  export type BalRadioGroupChange = BalRadioGroupCustomEvent<BalRadioGroupChangeDetail>
 
   export type BalRadioGroupBlurDetail = FocusEvent
-  export interface BalRadioGroupBlur extends CustomEvent {
-    detail: BalRadioGroupBlurDetail
-    target: HTMLBalRadioGroupElement
-  }
+  export type BalRadioGroupBlur = BalRadioGroupCustomEvent<BalRadioGroupBlurDetail>
 
   export type BalRadioGroupFocusDetail = FocusEvent
-  export interface BalRadioGroupFocus extends CustomEvent {
-    detail: BalRadioGroupFocusDetail
-    target: HTMLBalRadioGroupElement
+  export type BalRadioGroupFocus = BalRadioGroupCustomEvent<BalRadioGroupFocusDetail>
+
+  export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalRadioButtonElement
   }
 
-  export type BalRadioGroupInputDetail = FocusEvent
-  export interface BalRadioGroupInput extends CustomEvent {
-    detail: BalRadioGroupInputDetail
-    target: HTMLBalRadioGroupElement
-  }
+  export type BalRadioButtonBlurDetail = FocusEvent
+  export type BalRadioButtonBlur = BalRadioButtonCustomEvent<BalRadioButtonBlurDetail>
+
+  export type BalRadioButtonFocusDetail = FocusEvent
+  export type BalRadioButtonFocus = BalRadioButtonCustomEvent<BalRadioButtonFocusDetail>
 }

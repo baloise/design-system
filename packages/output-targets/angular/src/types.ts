@@ -1,19 +1,22 @@
 export interface OutputTargetAngular {
-  /**
-   * The package name of the component library.
-   * This is used to generate the import statements.
-   */
-  componentCorePackage: string
-  /**
-   * The path to the proxy file that will be generated. This can be an absolute path
-   * or a relative path from the root directory of the Stencil library.
-   */
+  componentCorePackage?: string
   directivesProxyFile: string
   directivesArrayFile?: string
+  directivesUtilsFile?: string
   valueAccessorConfigs?: ValueAccessorConfig[]
   excludeComponents?: string[]
-  includeImportCustomElements?: boolean
-  customElementsDir?: string
+  componentGroups?: { [key: string]: ComponentGroup }
+}
+
+export interface ComponentGroup {
+  components?: string[]
+  providers?: ComponentProvider[]
+  declarations?: ComponentProvider[]
+}
+
+export interface ComponentProvider {
+  import: string
+  name: string
 }
 
 export type ValueAccessorTypes = 'text' | 'radio' | 'select' | 'number' | 'boolean'

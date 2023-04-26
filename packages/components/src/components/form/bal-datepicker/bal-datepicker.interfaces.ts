@@ -8,39 +8,26 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalDatepickerChangeDetail = string | undefined
-  export interface BalDatepickerChange extends CustomEvent {
-    detail: BalDatepickerChangeDetail
+  export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalDatepickerElement
   }
+
+  export type BalDatepickerChangeDetail = string | undefined
+  export type BalDatepickerChange = BalDatepickerCustomEvent<BalDatepickerChangeDetail>
 
   export type BalDatepickerInputDetail = string | undefined
-  export interface BalDatepickerInput extends CustomEvent {
-    detail: BalDatepickerInputDetail
-    target: HTMLBalDatepickerElement
-  }
+  export type BalDatepickerInput = BalDatepickerCustomEvent<BalDatepickerInputDetail>
 
   export type BalDatepickerBlurDetail = FocusEvent
-  export interface BalDatepickerBlur extends CustomEvent {
-    detail: BalDatepickerBlurDetail
-    target: HTMLBalDatepickerElement
-  }
+  export type BalDatepickerBlur = BalDatepickerCustomEvent<BalDatepickerBlurDetail>
 
   export type BalDatepickerFocusDetail = FocusEvent
-  export interface BalDatepickerFocus extends CustomEvent {
-    detail: BalDatepickerFocusDetail
-    target: HTMLBalDatepickerElement
-  }
+  export type BalDatepickerFocus = BalDatepickerCustomEvent<BalDatepickerFocusDetail>
 
   export type BalDatepickerInputClickDetail = MouseEvent
-  export interface BalDatepickerInputClick extends CustomEvent {
-    detail: BalDatepickerInputClickDetail
-    target: HTMLBalDatepickerElement
-  }
+  export type BalDatepickerInputClick = BalDatepickerCustomEvent<BalDatepickerInputClickDetail>
 
   export type BalDatepickerIconClickDetail = MouseEvent
-  export interface BalDatepickerIconClick extends CustomEvent {
-    detail: BalDatepickerIconClickDetail
-    target: HTMLBalDatepickerElement
-  }
+  export type BalDatepickerIconClick = BalDatepickerCustomEvent<BalDatepickerIconClickDetail>
 }

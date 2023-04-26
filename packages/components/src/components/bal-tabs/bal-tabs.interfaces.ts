@@ -12,21 +12,17 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalTabsChangeDetail = string | undefined
-  export interface BalTabsChange extends CustomEvent {
-    detail: BalTabsChangeDetail
-    target: HTMLBalPopoverElement
+  export interface BalTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalTabsElement
   }
+
+  export type BalTabsChangeDetail = string | undefined
+  export type BalTabsChange = BalTabsCustomEvent<BalTabsChangeDetail>
 
   export type BalTabsWillAnimateDetail = void
-  export interface BalTabsWillAnimate extends CustomEvent {
-    detail: BalTabsWillAnimateDetail
-    target: HTMLBalPopoverElement
-  }
+  export type BalTabsWillAnimate = BalTabsCustomEvent<BalTabsWillAnimateDetail>
 
   export type BalTabsDidAnimateDetail = void
-  export interface BalTabsDidAnimate extends CustomEvent {
-    detail: BalTabsDidAnimateDetail
-    target: HTMLBalPopoverElement
-  }
+  export type BalTabsDidAnimate = BalTabsCustomEvent<BalTabsDidAnimateDetail>
 }

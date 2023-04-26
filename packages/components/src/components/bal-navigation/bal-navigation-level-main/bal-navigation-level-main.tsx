@@ -19,7 +19,7 @@ export class NavigationLevelMain implements ComponentInterface {
    */
   @Prop() isTabLink = false
   @Prop() target: BalProps.BalButtonTarget = '_self'
-  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelClickDetail>
+  @Event() balClick!: EventEmitter<BalEvents.BalNavigationLevelMainClickDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)

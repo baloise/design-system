@@ -21,6 +21,7 @@ import './components/bal-pagination/bal-pagination.interfaces'
 import './components/bal-popover/bal-popover.interfaces'
 import './components/bal-shape/bal-shape.interfaces'
 import './components/bal-stage/bal-stage.interfaces'
+import './components/bal-steps/bal-steps.interfaces'
 import './components/bal-tabs/bal-tabs.interfaces'
 import './components/bal-tag/bal-tag.interfaces'
 import './components/bal-navigation/bal-navigation.interfaces'
@@ -50,6 +51,24 @@ import './components/notice/bal-toast/bal-toast.interfaces'
 
 export * from './components'
 export * from './index'
+
+export enum FileUploadRejectionReason {
+  BAD_EXTENSION = 'BAD_EXTENSION',
+  FILE_TOO_BIG = 'FILE_TOO_BIG',
+  FILE_SIZE_SUM_TOO_BIG = 'FILE_SIZE_SUM_TOO_BIG',
+  TOO_MANY_FILES = 'TOO_MANY_FILES',
+  DUPLICATED_FILE = 'DUPLICATED_FILE',
+}
+
+export interface OverlayEventDetail<T = any> {
+  data?: T
+  role?: string
+}
+
+export interface FileUploadRejectedFile {
+  reasons: FileUploadRejectionReason[]
+  file: File
+}
 
 export const enum AccordionState {
   Collapsed = 1 << 0,

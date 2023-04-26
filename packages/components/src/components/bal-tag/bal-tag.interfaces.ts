@@ -23,9 +23,11 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalTagCloseClickDetail = MouseEvent
-  export interface BalTagCloseClick extends CustomEvent {
-    detail: BalTagCloseClickDetail
+  export interface BalTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalTagElement
   }
+
+  export type BalTagCloseClickDetail = MouseEvent
+  export type BalTagCloseClick = BalTagCustomEvent<BalTagCloseClickDetail>
 }

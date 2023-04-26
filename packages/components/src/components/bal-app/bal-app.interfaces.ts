@@ -4,9 +4,11 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalAppLoadDetail = boolean
-  export interface BalAppLoad extends CustomEvent {
-    detail: BalAppLoadDetail
+  export interface BalAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalAppElement
   }
+
+  export type BalAppLoadDetail = boolean
+  export type BalAppLoad = BalAppCustomEvent<BalAppLoadDetail>
 }

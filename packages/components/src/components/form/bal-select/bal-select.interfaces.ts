@@ -8,45 +8,29 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalSelectChangeDetail = string | string[] | undefined
-  export interface BalSelectChange extends CustomEvent {
-    detail: BalSelectChangeDetail
+  export interface BalSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalSelectElement
   }
+
+  export type BalSelectChangeDetail = string | string[] | undefined
+  export type BalSelectChange = BalSelectCustomEvent<BalSelectChangeDetail>
 
   export type BalSelectBlurDetail = FocusEvent
-  export interface BalSelectBlur extends CustomEvent {
-    detail: BalSelectBlurDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectBlur = BalSelectCustomEvent<BalSelectBlurDetail>
 
   export type BalSelectKeyPressDetail = KeyboardEvent
-  export interface BalSelectKeyPress extends CustomEvent {
-    detail: BalSelectKeyPressDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectKeyPress = BalSelectCustomEvent<BalSelectKeyPressDetail>
 
   export type BalSelectFocusDetail = FocusEvent
-  export interface BalSelectFocus extends CustomEvent {
-    detail: BalSelectFocusDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectFocus = BalSelectCustomEvent<BalSelectFocusDetail>
 
   export type BalSelectInputDetail = string
-  export interface BalSelectInput extends CustomEvent {
-    detail: BalSelectInputDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectInput = BalSelectCustomEvent<BalSelectInputDetail>
 
   export type BalSelectInputClickDetail = MouseEvent
-  export interface BalSelectInputClick extends CustomEvent {
-    detail: BalSelectInputClickDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectInputClick = BalSelectCustomEvent<BalSelectInputClickDetail>
 
   export type BalSelectCancelDetail = KeyboardEvent
-  export interface BalSelectCancel extends CustomEvent {
-    detail: BalSelectCancelDetail
-    target: HTMLBalSelectElement
-  }
+  export type BalSelectCancel = BalSelectCustomEvent<BalSelectCancelDetail>
 }

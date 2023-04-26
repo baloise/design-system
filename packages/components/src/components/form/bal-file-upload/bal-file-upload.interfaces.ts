@@ -2,25 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../interfaces.d.ts" />
+
 namespace BalEvents {
-  export type BalFileUploadChangeDetail = File[]
-  export interface BalFileUploadChange extends CustomEvent {
-    detail: BalFileUploadChangeDetail
-    target: HTMLBalFileUploadElement
-  }
-
-  export type BalFileUploadFilesAddedDetail = File[]
-  export interface BalFileUploadFilesAdded extends CustomEvent {
-    detail: BalFileUploadFilesAddedDetail
-    target: HTMLBalFileUploadElement
-  }
-
-  export type BalFileUploadFilesRemovedDetail = File[]
-  export interface BalFileUploadFilesRemoved extends CustomEvent {
-    detail: BalFileUploadFilesRemovedDetail
-    target: HTMLBalFileUploadElement
-  }
-
   export enum FileUploadRejectionReason {
     BAD_EXTENSION = 'BAD_EXTENSION',
     FILE_TOO_BIG = 'FILE_TOO_BIG',
@@ -28,32 +11,35 @@ namespace BalEvents {
     TOO_MANY_FILES = 'TOO_MANY_FILES',
     DUPLICATED_FILE = 'DUPLICATED_FILE',
   }
+
   export interface FileUploadRejectedFile {
     reasons: FileUploadRejectionReason[]
     file: File
   }
 
-  export type BalFileUploadRejectedFileDetail = FileUploadRejectedFile
-  export interface BalFileUploadRejectedFile extends CustomEvent {
-    detail: BalFileUploadRejectedFileDetail
+  export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalFileUploadElement
   }
+
+  export type BalFileUploadChangeDetail = File[]
+  export type BalFileUploadChange = BalFileUploadCustomEvent<BalFileUploadChangeDetail>
+
+  export type BalFileUploadFilesAddedDetail = File[]
+  export type BalFileUploadFilesAdded = BalFileUploadCustomEvent<BalFileUploadFilesAddedDetail>
+
+  export type BalFileUploadFilesRemovedDetail = File[]
+  export type BalFileUploadFilesRemoved = BalFileUploadCustomEvent<BalFileUploadFilesRemovedDetail>
+
+  export type BalFileUploadRejectedFileDetail = FileUploadRejectedFile
+  export type BalFileUploadRejectedFile = BalFileUploadCustomEvent<BalFileUploadRejectedFileDetail>
 
   export type BalFileUploadInputClickDetail = MouseEvent
-  export interface BalFileUploadInputClick extends CustomEvent {
-    detail: BalFileUploadInputClickDetail
-    target: HTMLBalFileUploadElement
-  }
+  export type BalFileUploadInputClick = BalFileUploadCustomEvent<BalFileUploadInputClickDetail>
 
   export type BalFileUploadBlurDetail = FocusEvent
-  export interface BalFileUploadBlur extends CustomEvent {
-    detail: BalFileUploadBlurDetail
-    target: HTMLBalFileUploadElement
-  }
+  export type BalFileUploadBlur = BalFileUploadCustomEvent<BalFileUploadBlurDetail>
 
   export type BalFileUploadFocusDetail = FocusEvent
-  export interface BalFileUploadFocus extends CustomEvent {
-    detail: BalFileUploadFocusDetail
-    target: HTMLBalFileUploadElement
-  }
+  export type BalFileUploadFocus = BalFileUploadCustomEvent<BalFileUploadFocusDetail>
 }

@@ -3,8 +3,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../interfaces.d.ts" />
 
-import { BalInputCustomEvent } from '../../../components'
-
 namespace BalProps {
   export type BalInputAutocorrect = 'on' | 'off'
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
@@ -91,30 +89,23 @@ namespace BalProps {
 }
 
 namespace BalEvents {
+  export interface BalInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalInputElement
+  }
+
   export type BalInputInputDetail = string | undefined
   export type BalInputInput = BalInputCustomEvent<BalInputInputDetail>
 
   export type BalInputChangeDetail = string | undefined
-  export interface BalInputChange extends CustomEvent {
-    detail: BalInputChangeDetail
-    target: HTMLBalInputElement
-  }
+  export type BalInputChange = BalInputCustomEvent<BalInputChangeDetail>
 
   export type BalInputBlurDetail = FocusEvent
-  export interface BalInputBlur extends CustomEvent {
-    detail: BalInputBlurDetail
-    target: HTMLBalInputElement
-  }
+  export type BalInputBlur = BalInputCustomEvent<BalInputBlurDetail>
 
   export type BalInputKeyPressDetail = KeyboardEvent
-  export interface BalInputKeyPress extends CustomEvent {
-    detail: BalInputKeyPressDetail
-    target: HTMLBalInputElement
-  }
+  export type BalInputKeyPress = BalInputCustomEvent<BalInputKeyPressDetail>
 
   export type BalInputFocusDetail = FocusEvent
-  export interface BalInputFocus extends CustomEvent {
-    detail: BalInputFocusDetail
-    target: HTMLBalInputElement
-  }
+  export type BalInputFocus = BalInputCustomEvent<BalInputFocusDetail>
 }

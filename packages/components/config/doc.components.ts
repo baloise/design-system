@@ -11,6 +11,7 @@ export const docComponents = [
   'bal-doc-link-list',
   'bal-doc-link-list-item',
   'bal-doc-shades',
+  'bal-doc-code-sandbox',
   'bal-doc-support-color',
   'bal-doc-tabs',
   'bal-doc-tokens-radius',

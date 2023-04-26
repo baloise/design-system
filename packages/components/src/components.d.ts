@@ -4599,11 +4599,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonBlurDetail>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4645,7 +4645,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalCheckboxGroupCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupBlurDetail>) => void;
         /**
           * Emitted when the checked property has changed.
          */
@@ -4653,7 +4653,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<BalEvents.BalCheckboxGroupFocusDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
@@ -5814,7 +5814,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelBlockCustomEvent<BalEvents.BalNavigationLevelBlockClickDetail>) => void;
         "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
@@ -5822,7 +5822,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelBlockItemCustomEvent<BalEvents.BalNavigationLevelBlockItemClickDetail>) => void;
         "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
@@ -5834,7 +5834,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelMainCustomEvent<BalEvents.BalNavigationLevelMainClickDetail>) => void;
         "target"?: BalProps.BalButtonTarget;
         "value"?: string;
     }
@@ -5849,7 +5849,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         "linkLabel"?: string;
-        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<BalEvents.BalNavigationLevelClickDetail>) => void;
+        "onBalClick"?: (event: BalNavigationLevelMetaCustomEvent<BalEvents.BalNavigationLevelMetaClickDetail>) => void;
         "value"?: string;
     }
     interface BalNavigationLevels {
@@ -6278,11 +6278,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: BalRadioButtonCustomEvent<FocusEvent>) => void;
+        "onBalBlur"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonBlurDetail>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: BalRadioButtonCustomEvent<FocusEvent>) => void;
+        "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -6337,10 +6337,6 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupFocusDetail>) => void;
-        /**
-          * Emitted when the checked property has changed.
-         */
-        "onBalInput"?: (event: BalRadioGroupCustomEvent<BalEvents.BalRadioGroupInputDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
@@ -6664,7 +6660,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: BalStepItemCustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: BalStepItemCustomEvent<BalEvents.BalStepItemNavigateDetail>) => void;
         /**
           * Tell's if the linking is done by a router.
          */

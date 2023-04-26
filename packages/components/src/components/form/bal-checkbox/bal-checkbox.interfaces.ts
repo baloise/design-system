@@ -11,27 +11,42 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalCheckboxChangeDetail = boolean
-  export interface BalCheckboxChange extends CustomEvent {
-    detail: BalCheckboxChangeDetail
+  export interface BalCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalCheckboxElement
   }
 
-  export type BalCheckboxGroupChangeDetail = any[]
-  export interface BalCheckboxGroupChange extends CustomEvent {
-    detail: BalCheckboxGroupChangeDetail
+  export type BalCheckboxChangeDetail = boolean
+  export type BalCheckboxChange = BalCheckboxCustomEvent<BalCheckboxChangeDetail>
+
+  export type BalCheckboxFocusDetail = FocusEvent
+  export type BalCheckboxFocus = BalCheckboxCustomEvent<BalCheckboxFocusDetail>
+
+  export type BalCheckboxBlurDetail = FocusEvent
+  export type BalCheckboxBlur = BalCheckboxCustomEvent<BalCheckboxBlurDetail>
+
+  export interface BalCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalCheckboxGroupElement
   }
 
-  export type BalCheckboxFocusDetail = FocusEvent
-  export interface BalCheckboxFocus extends CustomEvent {
-    detail: BalCheckboxFocusDetail
-    target: HTMLBalCheckboxElement
+  export type BalCheckboxGroupChangeDetail = any[]
+  export type BalCheckboxGroupChange = BalCheckboxGroupCustomEvent<BalCheckboxGroupChangeDetail>
+
+  export type BalCheckboxGroupBlurDetail = FocusEvent
+  export type BalCheckboxGroupBlur = BalCheckboxGroupCustomEvent<BalCheckboxGroupBlurDetail>
+
+  export type BalCheckboxGroupFocusDetail = FocusEvent
+  export type BalCheckboxGroupFocus = BalCheckboxGroupCustomEvent<BalCheckboxGroupFocusDetail>
+
+  export interface BalCheckboxButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalCheckboxButtonElement
   }
 
-  export type BalCheckboxBlurDetail = FocusEvent
-  export interface BalCheckboxBlur extends CustomEvent {
-    detail: BalCheckboxBlurDetail
-    target: HTMLBalCheckboxElement
-  }
+  export type BalCheckboxButtonBlurDetail = FocusEvent
+  export type BalCheckboxButtonBlur = BalCheckboxButtonCustomEvent<BalCheckboxButtonBlurDetail>
+
+  export type BalCheckboxButtonFocusDetail = FocusEvent
+  export type BalCheckboxButtonFocus = BalCheckboxButtonCustomEvent<BalCheckboxButtonFocusDetail>
 }

@@ -8,9 +8,11 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalPaginationChangeDetail = number
-  export interface BalPaginationChange extends CustomEvent {
-    detail: BalPaginationChangeDetail
+  export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalPaginationElement
   }
+
+  export type BalPaginationChangeDetail = number
+  export type BalPaginationChange = BalPaginationCustomEvent<BalPaginationChangeDetail>
 }

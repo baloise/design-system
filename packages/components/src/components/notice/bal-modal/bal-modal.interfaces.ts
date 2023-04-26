@@ -16,32 +16,25 @@ namespace BalProps {
   }
 }
 namespace BalEvents {
-  export type BalModalDidPresentDetail = void
-  export interface BalModalDidPresent extends CustomEvent {
-    detail: BalModalDidPresentDetail
-    target: HTMLBalModalElement
-  }
-
-  export type BalModalWillPresentDetail = void
-  export interface BalModalWillPresent extends CustomEvent {
-    detail: BalModalWillPresentDetail
-    target: HTMLBalModalElement
-  }
-
   export interface OverlayEventDetail<T = any> {
     data?: T
     role?: string
   }
 
-  export type BalModalDidDismissDetail = OverlayEventDetail
-  export interface BalModalDidDismiss extends CustomEvent {
-    detail: BalModalDidDismissDetail
+  export interface BalModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalModalElement
   }
 
-  export type BalModalWillDismissDetail = OverlayEventDetail
-  export interface BalModalWillDismiss extends CustomEvent {
-    detail: BalModalWillDismissDetail
-    target: HTMLBalModalElement
-  }
+  export type BalModalDidPresentDetail = void
+  export type BalModalDidPresent = BalModalCustomEvent<BalModalDidPresentDetail>
+
+  export type BalModalWillPresentDetail = void
+  export type BalModalWillPresent = BalModalCustomEvent<BalModalWillPresentDetail>
+
+  export type BalModalDidDismissDetail = any
+  export type BalModalDidDismiss = BalModalCustomEvent<BalModalDidDismissDetail>
+
+  export type BalModalWillDismissDetail = any
+  export type BalModalWillDismiss = BalModalCustomEvent<BalModalWillDismissDetail>
 }

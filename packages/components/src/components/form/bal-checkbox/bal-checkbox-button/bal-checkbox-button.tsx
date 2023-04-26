@@ -99,12 +99,12 @@ export class BalCheckboxButton implements ComponentInterface, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCheckboxButtonFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCheckboxButtonBlurDetail>
 
   /**
    * LIFECYCLE

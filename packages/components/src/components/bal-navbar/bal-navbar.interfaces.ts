@@ -8,21 +8,17 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalNavbarBrandNavigationChangeDetail = MouseEvent
-  export interface BalNavbarBrandNavigationChange extends CustomEvent {
-    detail: BalNavbarBrandNavigationChangeDetail
+  export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalNavbarBrandElement
   }
+
+  export type BalNavbarBrandNavigationChangeDetail = MouseEvent
+  export type BalNavbarBrandNavigationChange = BalNavbarBrandCustomEvent<BalNavbarBrandNavigationChangeDetail>
 
   export type BalNavbarMenuWillAnimateDetail = void
-  export interface BalNavbarMenuWillAnimate extends CustomEvent {
-    detail: BalNavbarMenuWillAnimateDetail
-    target: HTMLBalNavbarBrandElement
-  }
+  export type BalNavbarMenuWillAnimate = BalNavbarBrandCustomEvent<BalNavbarMenuWillAnimateDetail>
 
   export type BalNavbarMenuDidAnimateDetail = void
-  export interface BalNavbarMenuDidAnimate extends CustomEvent {
-    detail: BalNavbarMenuDidAnimateDetail
-    target: HTMLBalNavbarBrandElement
-  }
+  export type BalNavbarMenuDidAnimate = BalNavbarBrandCustomEvent<BalNavbarMenuDidAnimateDetail>
 }

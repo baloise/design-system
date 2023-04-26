@@ -4,21 +4,17 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalDataValueClickDetail = MouseEvent
-  export interface BalDataValueClick extends CustomEvent {
-    detail: BalDataValueClickDetail
+  export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalDataValueElement
   }
+
+  export type BalDataValueClickDetail = MouseEvent
+  export type BalDataValueClick = BalDataValueCustomEvent<BalDataValueClickDetail>
 
   export type BalDataValueFocusDetail = void
-  export interface BalDataValueFocus extends CustomEvent {
-    detail: BalDataValueFocusDetail
-    target: HTMLBalDataValueElement
-  }
+  export type BalDataValueFocus = BalDataValueCustomEvent<BalDataValueFocusDetail>
 
   export type BalDataValueBlurDetail = void
-  export interface BalDataValueBlur extends CustomEvent {
-    detail: BalDataValueBlurDetail
-    target: HTMLBalDataValueElement
-  }
+  export type BalDataValueBlur = BalDataValueCustomEvent<BalDataValueBlurDetail>
 }

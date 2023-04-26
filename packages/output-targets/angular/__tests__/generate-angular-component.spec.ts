@@ -1,18 +1,27 @@
-import { createComponentTypeDefinition, createAngularComponentDefinition } from '../src/generate-angular-component'
+import { ComponentCompilerTypeReferences } from '@stencil/core/internal'
+import { createComponentDefinition } from '../src/generate-angular-component'
 
-describe('createAngularComponentDefinition()', () => {
-  describe('www output', () => {
-    it('generates a component', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], [], false)
+describe('createComponentDefinition', () => {
+  const generateComponent = createComponentDefinition('component-library', '', '')
 
-      expect(component).toEqual(`@ProxyCmp({
-})
+  test('should create a Angular component', () => {
+    const finalText = generateComponent({
+      tagName: 'my-component',
+      properties: [],
+      virtualProperties: [],
+      events: [],
+      methods: [],
+      sourceFilePath: '',
+      componentClassName: 'MyComponent',
+    } as any)
+    expect(finalText).toEqual(`
+
+export declare interface MyComponent extends Components.MyComponent {}
+
 @Component({
   selector: 'my-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  template: '<ng-content></ng-content>'
 })
 export class MyComponent {
   protected el: HTMLElement;
@@ -21,332 +30,189 @@ export class MyComponent {
     this.el = r.nativeElement;
   }
 }`)
-    })
-
-    it('generates a component with inputs', () => {
-      const component = createAngularComponentDefinition('my-component', ['my-input', 'my-other-input'], [], [], false)
-      expect(component).toMatch(`@ProxyCmp({
-  inputs: ['my-input', 'my-other-input']
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['my-input', 'my-other-input'],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}`)
-    })
-
-    it('generates a component with outputs', () => {
-      const component = createAngularComponentDefinition(
-        'my-component',
-        [],
-        ['my-output', 'my-other-output'],
-        [],
-        false,
-      )
-
-      expect(component).toMatch(`@ProxyCmp({
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['my-output', 'my-other-output']);
-  }
-}`)
-    })
-
-    it('generates a component with methods', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], ['myMethod', 'myOtherMethod'], false)
-
-      expect(component).toMatch(`@ProxyCmp({
-  methods: ['myMethod', 'myOtherMethod']
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}`)
-    })
   })
 
-  describe('custom elements output', () => {
-    it('generates a component', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], [], true)
+  test('should create a Angular component with an event', () => {
+    const finalText = generateComponent({
+      tagName: 'my-component',
+      properties: [],
+      virtualProperties: [],
+      events: [
+        {
+          internal: false,
+          name: 'my-event',
+          method: '',
+          bubbles: true,
+          cancelable: true,
+          composed: false,
+          docs: {
+            text: '',
+            tags: [],
+          },
+          complexType: {
+            original: 'boolean',
+            resolved: 'boolean',
+            references: {},
+          },
+        },
+      ],
+      methods: [],
+      sourceFilePath: '',
+      componentClassName: 'MyComponent',
+    } as any)
+    expect(finalText).toEqual(`
 
-      expect(component).toEqual(`@ProxyCmp({
-  defineCustomElementFn: defineMyComponent
-})
+export declare interface MyComponent extends Components.MyComponent {}
+
 @Component({
   selector: 'my-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  outputs: ['my-event']
 })
 export class MyComponent {
+  /**  */
+  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<boolean>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['my-event']);
   }
 }`)
-    })
-
-    it('generates a component with inputs', () => {
-      const component = createAngularComponentDefinition('my-component', ['my-input', 'my-other-input'], [], [], true)
-
-      expect(component).toEqual(`@ProxyCmp({
-  defineCustomElementFn: defineMyComponent,
-  inputs: ['my-input', 'my-other-input']
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['my-input', 'my-other-input'],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}`)
-    })
-
-    it('generates a component with outputs', () => {
-      const component = createAngularComponentDefinition('my-component', [], ['my-output', 'my-other-output'], [], true)
-      expect(component).toMatch(`@ProxyCmp({
-  defineCustomElementFn: defineMyComponent
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['my-output', 'my-other-output']);
-  }
-}`)
-    })
-
-    it('generates a component with methods', () => {
-      const component = createAngularComponentDefinition('my-component', [], [], ['myMethod', 'myOtherMethod'], true)
-
-      expect(component).toMatch(`@ProxyCmp({
-  defineCustomElementFn: defineMyComponent,
-  methods: ['myMethod', 'myOtherMethod']
-})
-@Component({
-  selector: 'my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class MyComponent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}`)
-    })
-  })
-})
-
-describe('createComponentTypeDefinition()', () => {
-  const testEvents: any[] = [
-    {
-      name: 'myEvent',
-      complexType: {
-        references: {
-          MyEvent: {
-            location: 'import',
-          },
-        },
-        original: 'MyEvent',
-        resolved: 'MyEvent',
-      },
-      docs: {
-        text: 'This is an example event.',
-        tags: [
-          {
-            text: 'Bar',
-            name: 'Foo',
-          },
-        ],
-      },
-    },
-    {
-      name: 'myOtherEvent',
-      complexType: {
-        references: {
-          MyOtherEvent: {
-            location: 'import',
-          },
-        },
-        original: 'MyOtherEvent',
-      },
-      docs: {
-        text: 'This is the other event.',
-        tags: [],
-      },
-    },
-    {
-      name: 'myDoclessEvent',
-      complexType: {
-        references: {
-          MyDoclessEvent: {
-            location: 'import',
-          },
-        },
-        original: 'MyDoclessEvent',
-      },
-      docs: {
-        text: '',
-        tags: [],
-      },
-    },
-    {
-      name: 'my-kebab-event',
-      complexType: {
-        references: {
-          MyKebabEvent: {
-            location: 'import',
-          },
-        },
-        original: 'MyKebabEvent',
-      },
-      docs: {
-        text: '',
-        tags: [],
-      },
-    },
-  ]
-
-  describe('www build', () => {
-    it('creates a type definition', () => {
-      const definition = createComponentTypeDefinition('MyComponent', testEvents, '@ionic/core', false)
-
-      expect(definition).toEqual(
-        `import type { MyEvent as IMyComponentMyEvent } from '@ionic/core';
-import type { MyOtherEvent as IMyComponentMyOtherEvent } from '@ionic/core';
-import type { MyDoclessEvent as IMyComponentMyDoclessEvent } from '@ionic/core';
-import type { MyKebabEvent as IMyComponentMyKebabEvent } from '@ionic/core';
-
-export declare interface MyComponent extends Components.MyComponent {
-  /**
-   * This is an example event. @Foo Bar
-   */
-  myEvent: EventEmitter<CustomEvent<IMyComponentMyEvent>>;
-  /**
-   * This is the other event.
-   */
-  myOtherEvent: EventEmitter<CustomEvent<IMyComponentMyOtherEvent>>;
-
-  myDoclessEvent: EventEmitter<CustomEvent<IMyComponentMyDoclessEvent>>;
-
-  'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
-}`,
-      )
-    })
   })
 
-  describe('custom elements output', () => {
-    describe('with a custom elements directory provided', () => {
-      it('creates a type definition', () => {
-        const definition = createComponentTypeDefinition(
-          'MyComponent',
-          testEvents,
-          '@ionic/core',
-          true,
-          'custom-elements',
-        )
+  test('should create a Angular component with a event with a custom type', () => {
+    const references: ComponentCompilerTypeReferences = {
+      BalTabOption: {
+        location: 'import',
+        path: './bal-tab.type',
+      },
+    }
 
-        expect(definition).toEqual(
-          `import type { MyEvent as IMyComponentMyEvent } from '@ionic/core/custom-elements';
-import type { MyOtherEvent as IMyComponentMyOtherEvent } from '@ionic/core/custom-elements';
-import type { MyDoclessEvent as IMyComponentMyDoclessEvent } from '@ionic/core/custom-elements';
-import type { MyKebabEvent as IMyComponentMyKebabEvent } from '@ionic/core/custom-elements';
+    const finalText = generateComponent({
+      tagName: 'my-component',
+      properties: [],
+      virtualProperties: [],
+      events: [
+        {
+          internal: false,
+          name: 'my-event',
+          method: '',
+          bubbles: true,
+          cancelable: true,
+          composed: false,
+          docs: {
+            text: '',
+            tags: [],
+          },
+          complexType: {
+            original: 'BalTabOption',
+            resolved: 'BalTabOption',
+            references: references,
+          },
+        },
+        {
+          internal: false,
+          name: 'my-event-two',
+          method: '',
+          bubbles: true,
+          cancelable: true,
+          composed: false,
+          docs: {
+            text: '',
+            tags: [],
+          },
+          complexType: {
+            original: 'BalTabOption',
+            resolved: 'BalTabOption',
+            references: references,
+          },
+        },
+      ],
+      methods: [],
+      sourceFilePath: '',
+      componentClassName: 'MyComponent',
+    } as any)
 
-export declare interface MyComponent extends Components.MyComponent {
-  /**
-   * This is an example event. @Foo Bar
-   */
-  myEvent: EventEmitter<CustomEvent<IMyComponentMyEvent>>;
-  /**
-   * This is the other event.
-   */
-  myOtherEvent: EventEmitter<CustomEvent<IMyComponentMyOtherEvent>>;
+    expect(finalText).toEqual(`
+import { BalTabOption } from 'component-library';
+export declare interface MyComponent extends Components.MyComponent {}
 
-  myDoclessEvent: EventEmitter<CustomEvent<IMyComponentMyDoclessEvent>>;
+@Component({
+  selector: 'my-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  outputs: ['my-event', 'my-event-two']
+})
+export class MyComponent {
+  /**  */
+  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<BalTabOption>>;
+  /**  */
+  my-event-two!: EventEmitter<BalEvents.MyComponentCustomEvent<BalTabOption>>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['my-event', 'my-event-two']);
+  }
+}`)
+  })
 
-  'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
-}`,
-        )
-      })
-    })
+  test('should create a Angular component with a event with a custom type', () => {
+    const references: ComponentCompilerTypeReferences = {
+      MouseEvent: {
+        location: 'global',
+      },
+    }
 
-    describe('without a custom elements directory provided', () => {
-      it('creates a type definition', () => {
-        const definition = createComponentTypeDefinition('MyComponent', testEvents, '@ionic/core', true)
+    const finalText = generateComponent({
+      tagName: 'my-component',
+      properties: [],
+      virtualProperties: [],
+      events: [
+        {
+          internal: false,
+          name: 'my-event',
+          method: '',
+          bubbles: true,
+          cancelable: true,
+          composed: false,
+          docs: {
+            text: '',
+            tags: [],
+          },
+          complexType: {
+            original: 'MouseEvent',
+            resolved: 'MouseEvent',
+            references: references,
+          },
+        },
+      ],
+      methods: [],
+      sourceFilePath: '',
+      componentClassName: 'MyComponent',
+    } as any)
 
-        expect(definition).toEqual(
-          `import type { MyEvent as IMyComponentMyEvent } from '@ionic/core/components';
-import type { MyOtherEvent as IMyComponentMyOtherEvent } from '@ionic/core/components';
-import type { MyDoclessEvent as IMyComponentMyDoclessEvent } from '@ionic/core/components';
-import type { MyKebabEvent as IMyComponentMyKebabEvent } from '@ionic/core/components';
+    expect(finalText).toEqual(`
 
-export declare interface MyComponent extends Components.MyComponent {
-  /**
-   * This is an example event. @Foo Bar
-   */
-  myEvent: EventEmitter<CustomEvent<IMyComponentMyEvent>>;
-  /**
-   * This is the other event.
-   */
-  myOtherEvent: EventEmitter<CustomEvent<IMyComponentMyOtherEvent>>;
+export declare interface MyComponent extends Components.MyComponent {}
 
-  myDoclessEvent: EventEmitter<CustomEvent<IMyComponentMyDoclessEvent>>;
-
-  'my-kebab-event': EventEmitter<CustomEvent<IMyComponentMyKebabEvent>>;
-}`,
-        )
-      })
-    })
+@Component({
+  selector: 'my-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  outputs: ['my-event']
+})
+export class MyComponent {
+  /**  */
+  my-event!: EventEmitter<BalEvents.MyComponentCustomEvent<MouseEvent>>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['my-event']);
+  }
+}`)
   })
 })

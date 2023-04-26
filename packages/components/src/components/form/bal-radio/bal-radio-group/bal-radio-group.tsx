@@ -77,7 +77,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Watch('value')
   valueChanged() {
     this.onOptionChange()
-    this.balInput.emit(this.value)
   }
 
   /**
@@ -176,11 +175,6 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalRadioGroupChangeDetail>
-
-  /**
-   * Emitted when the checked property has changed.
-   */
-  @Event() balInput!: EventEmitter<BalEvents.BalRadioGroupInputDetail>
 
   /**
    * Emitted when the toggle has focus.

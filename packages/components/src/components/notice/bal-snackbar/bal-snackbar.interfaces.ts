@@ -8,15 +8,14 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalSnackbarCloseDetail = string
-  export interface BalSnackbarClose extends CustomEvent {
-    detail: BalSnackbarCloseDetail
+  export interface BalSnackbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalSnackbarElement
   }
 
+  export type BalSnackbarCloseDetail = string
+  export type BalSnackbarClose = BalSnackbarCustomEvent<BalSnackbarCloseDetail>
+
   export type BalSnackbarActionDetail = string
-  export interface BalSnackbarAction extends CustomEvent {
-    detail: BalSnackbarActionDetail
-    target: HTMLBalSnackbarElement
-  }
+  export type BalSnackbarAction = BalSnackbarCustomEvent<BalSnackbarActionDetail>
 }

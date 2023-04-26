@@ -4,33 +4,23 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalInputSliderChangeDetail = string | number | null
-  export interface BalInputSliderChange extends CustomEvent {
-    detail: BalInputSliderChangeDetail
+  export interface BalInputSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalInputSliderElement
   }
+
+  export type BalInputSliderChangeDetail = string | number | null
+  export type BalInputSliderChange = BalInputSliderCustomEvent<BalInputSliderChangeDetail>
 
   export type BalInputSliderInputDetail = string | number | null
-  export interface BalInputSliderInput extends CustomEvent {
-    detail: BalInputSliderInputDetail
-    target: HTMLBalInputSliderElement
-  }
+  export type BalInputSliderInput = BalInputSliderCustomEvent<BalInputSliderInputDetail>
 
   export type BalInputSliderBlurDetail = FocusEvent
-  export interface BalInputSliderBlur extends CustomEvent {
-    detail: BalInputSliderBlurDetail
-    target: HTMLBalInputSliderElement
-  }
+  export type BalInputSliderBlur = BalInputSliderCustomEvent<BalInputSliderBlurDetail>
 
   export type BalInputSliderKeyPressDetail = KeyboardEvent
-  export interface BalInputSliderKeyPress extends CustomEvent {
-    detail: BalInputSliderKeyPressDetail
-    target: HTMLBalInputSliderElement
-  }
+  export type BalInputSliderKeyPress = BalInputSliderCustomEvent<BalInputSliderKeyPressDetail>
 
   export type BalInputSliderFocusDetail = FocusEvent
-  export interface BalInputSliderFocus extends CustomEvent {
-    detail: BalInputSliderFocusDetail
-    target: HTMLBalInputSliderElement
-  }
+  export type BalInputSliderFocus = BalInputSliderCustomEvent<BalInputSliderFocusDetail>
 }

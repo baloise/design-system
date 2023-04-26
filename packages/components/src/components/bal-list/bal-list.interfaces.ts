@@ -13,33 +13,28 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalListAccordionChangeDetail = boolean
-  export interface BalListAccordionChange extends CustomEvent {
-    detail: BalListAccordionChangeDetail
-    target: HTMLBalListItemAccordionHeadElement
+  export interface BalListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalListItemElement
   }
 
   export type BalListItemNavigateDetail = MouseEvent
-  export interface BalListItemNavigate extends CustomEvent {
-    detail: BalListItemNavigateDetail
-    target: HTMLBalListItemElement
-  }
+  export type BalListItemNavigate = BalListItemCustomEvent<BalListItemNavigateDetail>
 
   export type BalListItemGroupStateChangedDetail = MouseEvent
-  export interface BalListItemGroupStateChanged extends CustomEvent {
-    detail: BalListItemGroupStateChangedDetail
-    target: HTMLBalListItemElement
-  }
+  export type BalListItemGroupStateChanged = BalListItemCustomEvent<BalListItemGroupStateChangedDetail>
 
   export type BalListItemWillAnimateDetail = void
-  export interface BalListItemWillAnimate extends CustomEvent {
-    detail: BalListItemWillAnimateDetail
-    target: HTMLBalListItemElement
-  }
+  export type BalListItemWillAnimate = BalListItemCustomEvent<BalListItemWillAnimateDetail>
 
   export type BalListItemDidAnimateDetail = void
-  export interface BalListItemDidAnimate extends CustomEvent {
-    detail: BalListItemDidAnimateDetail
-    target: HTMLBalListItemElement
+  export type BalListItemDidAnimate = BalListItemCustomEvent<BalListItemDidAnimateDetail>
+
+  export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalListItemAccordionHeadElement
   }
+
+  export type BalListAccordionChangeDetail = boolean
+  export type BalListAccordionChange = BalListItemAccordionHeadCustomEvent<BalListAccordionChangeDetail>
 }

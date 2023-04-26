@@ -8,9 +8,11 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalToastCloseDetail = string
-  export interface BalToastClose extends CustomEvent {
-    detail: BalToastCloseDetail
+  export interface BalToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalToastElement
   }
+
+  export type BalToastCloseDetail = string
+  export type BalToastClose = BalToastCustomEvent<BalToastCloseDetail>
 }

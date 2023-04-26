@@ -8,9 +8,36 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalNavigationLevelClickDetail = MouseEvent
-  export interface BalNavigationLevelClick extends CustomEvent {
-    detail: BalNavigationLevelClickDetail
-    target: HTMLElement
+  export interface BalNavigationLevelBlockCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavigationLevelBlockElement
   }
+
+  export type BalNavigationLevelBlockClickDetail = MouseEvent
+  export type BalNavigationLevelBlockClick = BalNavigationLevelBlockCustomEvent<BalNavigationLevelBlockClickDetail>
+
+  export interface BalNavigationLevelBlockItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavigationLevelBlockItemElement
+  }
+
+  export type BalNavigationLevelBlockItemClickDetail = MouseEvent
+  export type BalNavigationLevelBlockItemClick =
+    BalNavigationLevelBlockItemCustomEvent<BalNavigationLevelBlockItemClickDetail>
+
+  export interface BalNavigationLevelMainCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavigationLevelMainElement
+  }
+
+  export type BalNavigationLevelMainClickDetail = MouseEvent
+  export type BalNavigationLevelMainClick = BalNavigationLevelMainCustomEvent<BalNavigationLevelMainClickDetail>
+
+  export interface BalNavigationLevelMetaCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavigationLevelMetaElement
+  }
+
+  export type BalNavigationLevelMetaClickDetail = MouseEvent
+  export type BalNavigationLevelMetaClick = BalNavigationLevelMetaCustomEvent<BalNavigationLevelMetaClickDetail>
 }

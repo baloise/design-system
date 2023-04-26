@@ -23,27 +23,20 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalButtonBlurDetail = void
-  export interface BalButtonBlur extends CustomEvent {
-    detail: BalButtonBlurDetail
+  export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalButtonElement
   }
+
+  export type BalButtonBlurDetail = void
+  export type BalButtonBlur = BalButtonCustomEvent<BalButtonBlurDetail>
 
   export type BalButtonFocusDetail = void
-  export interface BalButtonFocus extends CustomEvent {
-    detail: BalButtonFocusDetail
-    target: HTMLBalButtonElement
-  }
+  export type BalButtonFocus = BalButtonCustomEvent<BalButtonFocusDetail>
 
   export type BalButtonNavigateDetail = MouseEvent
-  export interface BalButtonNavigate extends CustomEvent {
-    detail: BalButtonNavigateDetail
-    target: HTMLBalButtonElement
-  }
+  export type BalButtonNavigate = BalButtonCustomEvent<BalButtonNavigateDetail>
 
   export type BalButtonDidRenderDetail = void
-  export interface BalButtonDidRender extends CustomEvent {
-    detail: BalButtonDidRenderDetail
-    target: HTMLBalButtonElement
-  }
+  export type BalButtonDidRender = BalButtonCustomEvent<BalButtonDidRenderDetail>
 }

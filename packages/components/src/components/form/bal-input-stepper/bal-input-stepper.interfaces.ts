@@ -4,27 +4,20 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalInputStepperChangeDetail = number | undefined
-  export interface BalInputStepperChange extends CustomEvent {
-    detail: BalInputStepperChangeDetail
+  export interface BalInputStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T
     target: HTMLBalInputStepperElement
   }
+
+  export type BalInputStepperChangeDetail = number | undefined
+  export type BalInputStepperChange = BalInputStepperCustomEvent<BalInputStepperChangeDetail>
 
   export type BalInputStepperInputDetail = number | undefined
-  export interface BalInputStepperInput extends CustomEvent {
-    detail: BalInputStepperInputDetail
-    target: HTMLBalInputStepperElement
-  }
+  export type BalInputStepperInput = BalInputStepperCustomEvent<BalInputStepperInputDetail>
 
   export type BalInputStepperIncreaseDetail = number | undefined
-  export interface BalInputStepperIncrease extends CustomEvent {
-    detail: BalInputStepperIncreaseDetail
-    target: HTMLBalInputStepperElement
-  }
+  export type BalInputStepperIncrease = BalInputStepperCustomEvent<BalInputStepperIncreaseDetail>
 
   export type BalInputStepperDecreaseDetail = number | undefined
-  export interface BalInputStepperDecrease extends CustomEvent {
-    detail: BalInputStepperDecreaseDetail
-    target: HTMLBalInputStepperElement
-  }
+  export type BalInputStepperDecrease = BalInputStepperCustomEvent<BalInputStepperDecreaseDetail>
 }
