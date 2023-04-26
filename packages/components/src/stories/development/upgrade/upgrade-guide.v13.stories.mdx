@@ -72,23 +72,31 @@ export class AppModule {}`}
 
 > **TIP** The new module `BaloiseDesignSystemModule` imports all the components.
 
-4. Remove all components module like `BalButtonModule`.
+4. Remove all components module like `BalButtonModule`, but add the `BaloiseDesignSystemModule` into your shared or sub-modules to provide components and value-accessors.
 
 <DiffSource
-  code={`@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    ...
--   BalButtonModule,
-    ...
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  code={`const sharedModules = [
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
+-  BalButtonModule,
+-  BalHeadingModule,
++  BaloiseDesignSystemModule,
+];
+
+@NgModule({
+  declarations: [],
+  imports: [...sharedModules],
+  exports: [...sharedModules],
 })
-export class AppModule {}`}
+export class SharedModule {}
+`}
 />
 
-> **TIP** Checkout our example upgrade project [baloise-incubator/ng-upgrade-v13](https://github.com/baloise-incubator/ng-upgrade-v13)
+> **TIP**
+>
+> - Checkout our example upgrade project [baloise-incubator/ng-upgrade-v13](https://github.com/baloise-incubator/ng-upgrade-v13)
+> - If you use `standalone` components you need to import the `BaloiseDesignSystemModule`.
 
 ### React
 
