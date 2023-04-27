@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        gap: 1rem;
+      }
+      div {
+        width: 80px;
+        height: 48px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <section data-testid="basic">
+          <div class="has-shadow-none has-background-purple"></div>
+          <div class="has-shadow-normal has-background-purple"></div>
+          <div class="has-shadow-large has-background-purple"></div>
+        </section>
+        <section data-testid="text-shadow">
+          <h4 class="title is-size-large has-text-shadow-none">Title 4</h4>
+          <h4 class="title is-size-large has-text-shadow-normal">Title 4</h4>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

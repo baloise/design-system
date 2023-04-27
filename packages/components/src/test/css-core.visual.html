@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+    <style>
+    </style>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <section data-testid="basic">
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Grid</h1>
+            <div class="columns is-multiline m-none">
+              <div class="column is-2 has-background-danger">1</div>
+              <div class="column is-2 has-background-warning">2</div>
+              <div class="column has-background-success">AUTO</div>
+            </div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Text Colors</h1>
+            <p>Default - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-hover">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-active">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-grey">Grey / Disabled - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-hint">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-success">Success / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-warning">Warning - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <p class="has-text-danger">Danger / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Shadow Text & Button</h1>
+            <h1 class="title is-1 has-text-shadow">Title</h1>
+            <p class="has-text-shadow">Paragraph</p>
+            <button class="button is-primary has-button-shadow">Button</button>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">List</h1>
+            <ul class="is-list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. A vitae veniam debitis blanditiis nisi, voluptatem
+                non praesentium corporis accusantium nihil, magnam quisquam! Consequuntur corrupti fuga dolorem. Laudantium
+                deserunt voluptatibus inventore.
+              </li>
+            </ul>
+            <ul class="is-list has-bullet-circle">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nemo vero. Ex amet beatae veniam veritatis
+                vitae, labore saepe sed earum. Omnis repellendus, voluptates doloremque necessitatibus alias mollitia
+                accusamus commodi!
+              </li>
+            </ul>
+            <ol class="is-list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima fuga, quod nobis id neque sit dolor debitis
+                explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
+              </li>
+            </ol>
+            <ul class="is-list has-bullet-check">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima fuga, quod nobis id neque sit dolor debitis
+                explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
+              </li>
+            </ul>
+            <ul class="is-list has-bullet-close has-opacity-50">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima fuga, quod nobis id neque sit dolor debitis
+                explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
+              </li>
+            </ul>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Border & Radius</h1>
+            <div class="has-border-blue p-x-small mb-x-small has-radius-none">Blue / None</div>
+            <div class="has-border-normal p-x-small mb-x-small has-radius-small">Normal / Small</div>
+            <div class="has-border-hover p-x-small mb-x-small has-radius-normal">Hover / Normal</div>
+            <div class="has-border-active p-x-small mb-x-small has-radius-large">Active / Large</div>
+            <div class="has-border-valid p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
+            <div class="has-border-invalid p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
+            <div class="has-border-warning p-x-small mb-x-small has-radius-rounded">Warning / Rounded</div>
+            <div class="has-border-disabled p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Typography</h1>
+            <div class="columns m-none">
+              <div class="column has-background-yellow-1">
+                <h1 class="title is-size-xxxxx-large">Display</h1>
+                <h1 class="title is-size-xxxx-large">Display-2</h1>
+              </div>
+              <div class="column has-background-yellow-2">
+                <h1 class="subtitle is-size-display">Display</h1>
+                <h1 class="subtitle is-size-display-2">Display-2</h1>
+              </div>
+            </div>
+    
+            <div class="columns m-none mt-large">
+              <div class="column has-background-red-1">
+                <h1 class="title is-size-xxx-large">Title 1</h1>
+                <h2 class="title is-size-xx-large">Title 2</h2>
+                <h3 class="title is-size-x-large">Title 3</h3>
+                <h4 class="title is-size-large">Title 4</h4>
+                <h5 class="title is-size-normal">Title 5</h5>
+              </div>
+              <div class="column has-background-red-2">
+                <h1 class="subtitle is-size-xxx-large">Subtitle 1</h1>
+                <h2 class="subtitle is-size-xx-large">Subtitle 2</h2>
+                <h3 class="subtitle is-size-x-large">Subtitle 3</h3>
+                <h4 class="subtitle is-size-large">Subtitle 4</h4>
+                <h5 class="subtitle is-size-medium">Subtitle 5</h5>
+              </div>
+            </div>
+    
+            <div class="columns m-none mt-large">
+              <div class="column has-background-purple-1">
+                <p class="is-size-large">lead-text</p>
+                <p class="is-size-medium">block-text</p>
+                <p class="is-size-normal">normal</p>
+                <p class="is-size-small">small-text</p>
+                <p class="is-size-x-small">x-small-text</p>
+              </div>
+              <div class="column has-background-purple-2">
+                <p class="has-text-weight-bold">bold</p>
+                <a class="is-link"><span>Link</span></a>
+              </div>
+            </div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Table</h1>
+            <table class="table is-fullwidth is-striped is-hoverable p-none">
+              <thead>
+                <th>ID</th>
+                <th>Name</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Tony Stark</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Form</h1>
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Text input" />
+              </div>
+              <p class="help">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control is-loading">
+                <input class="input" type="text" placeholder="Text input" />
+              </div>
+              <p class="help">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label is-disabled">Name</label>
+              <div class="control">
+                <input class="input is-disabled" disabled type="text" placeholder="Text input" />
+              </div>
+              <p class="help is-disabled">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label is-success">Name</label>
+              <div class="control">
+                <input class="input is-success" type="text" placeholder="Text input" />
+              </div>
+              <p class="help is-success">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label is-danger">Name</label>
+              <div class="control">
+                <input class="input is-danger" type="text" placeholder="Text input" />
+              </div>
+              <p class="help is-danger">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label is-warning">Name</label>
+              <div class="control">
+                <input class="input is-warning" type="text" placeholder="Text input" />
+              </div>
+              <p class="help is-warning">This username is available</p>
+            </div>
+            <div class="field">
+              <label class="label">Message</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Message</label>
+              <div class="control">
+                <textarea class="textarea is-disabled" disabled placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-success">Message</label>
+              <div class="control">
+                <textarea class="textarea is-success" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-danger">Message</label>
+              <div class="control">
+                <textarea class="textarea is-danger" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-warning">Message</label>
+              <div class="control">
+                <textarea class="textarea is-warning" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Subject</label>
+              <div class="control">
+                <div class="select">
+                  <select>
+                    <option>Select dropdown</option>
+                    <option>With options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-disabled">Subject</label>
+              <div class="control">
+                <div class="select is-disabled">
+                  <select disabled>
+                    <option>Select dropdown</option>
+                    <option>With options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-success">Subject</label>
+              <div class="control">
+                <div class="select is-success">
+                  <select>
+                    <option>Select dropdown</option>
+                    <option>With options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-danger">Subject</label>
+              <div class="control">
+                <div class="select is-danger">
+                  <select>
+                    <option>Select dropdown</option>
+                    <option>With options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label is-warning">Subject</label>
+              <div class="control">
+                <div class="select is-warning">
+                  <select>
+                    <option>Select dropdown</option>
+                    <option>With options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <div class="file">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume" />
+                <span class="file-cta">
+                  <span class="file-icon"> icon </span>
+                  <span class="file-label"> Choose a file… </span>
+                </span>
+              </label>
+            </div>
+            <div class="file is-disabled mt-normal">
+              <label class="file-label">
+                <input class="file-input" disabled type="file" name="resume" />
+                <span class="file-cta">
+                  <span class="file-icon"> icon </span>
+                  <span class="file-label"> Choose a file… </span>
+                </span>
+              </label>
+            </div>
+            <div class="file is-success mt-normal">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume" />
+                <span class="file-cta">
+                  <span class="file-icon"> icon </span>
+                  <span class="file-label"> Choose a file… </span>
+                </span>
+              </label>
+            </div>
+            <div class="file is-danger mt-normal">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume" />
+                <span class="file-cta">
+                  <span class="file-icon"> icon </span>
+                  <span class="file-label"> Choose a file… </span>
+                </span>
+              </label>
+            </div>
+            <div class="file is-warning mt-normal">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume" />
+                <span class="file-cta">
+                  <span class="file-icon"> icon </span>
+                  <span class="file-label"> Choose a file… </span>
+                </span>
+              </label>
+            </div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Button</h1>
+            <h2 class="title is-4">Colors</h2>
+            <section>
+              <div class="buttons">
+                <button class="button"><span>Default__</span></button>
+                <button class="button is-primary">Primary</button>
+                <button class="button is-info">Info</button>
+                <button class="button is-text">Text</button>
+                <button class="button is-link"><span>Link</span></button>
+                <button class="button is-light">Light</button>
+                <button class="button is-success">S5s</button>
+                <button class="button is-warning">W5g</button>
+                <button class="button is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-hovered">Hover___</button>
+                <button class="button is-hovered is-primary">Primary</button>
+                <button class="button is-hovered is-info">Info</button>
+                <button class="button is-hovered is-text">Text</button>
+                <button class="button is-hovered is-link"><span>Link</span></button>
+                <button class="button is-hovered is-light">Light</button>
+                <button class="button is-hovered is-success">S5s</button>
+                <button class="button is-hovered is-warning">W5g</button>
+                <button class="button is-hovered is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-active">Active___</button>
+                <button class="button is-active is-primary">Primary</button>
+                <button class="button is-active is-info">Info</button>
+                <button class="button is-active is-text">Text</button>
+                <button class="button is-active is-link"><span>Link</span></button>
+                <button class="button is-active is-light">Light</button>
+                <button class="button is-active is-success">S5s</button>
+                <button class="button is-active is-warning">W5g</button>
+                <button class="button is-active is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-focused">Focus___</button>
+                <button class="button is-focused is-primary">Primary</button>
+                <button class="button is-focused is-info">Info</button>
+                <button class="button is-focused is-text">Text</button>
+                <button class="button is-focused is-link"><span>Link</span></button>
+                <button class="button is-focused is-light">Light</button>
+                <button class="button is-focused is-success">S5s</button>
+                <button class="button is-focused is-warning">W5g</button>
+                <button class="button is-focused is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-disabled">Disabled</button>
+                <button class="button is-disabled is-primary">Primary</button>
+                <button class="button is-disabled is-info">Info</button>
+                <button class="button is-disabled is-text">Text</button>
+                <button class="button is-disabled is-link"><span>Link</span></button>
+                <button class="button is-disabled is-light">Light</button>
+                <button class="button is-disabled is-success">S5s</button>
+                <button class="button is-disabled is-warning">W5g</button>
+                <button class="button is-disabled is-danger">D4r</button>
+              </div>
+            </section>
+    
+            <section class="has-background-blue p-xx-small my-normal">
+              <div class="buttons">
+                <button class="button is-inverted">Default__</button>
+                <button class="button is-inverted is-primary">Primary</button>
+                <button class="button is-inverted is-info">Info</button>
+                <button class="button is-inverted is-text">Text</button>
+                <button class="button is-inverted is-link"><span>Link</span></button>
+                <button class="button is-inverted is-light">Light</button>
+                <button class="button is-inverted is-success">S5s</button>
+                <button class="button is-inverted is-warning">W5g</button>
+                <button class="button is-inverted is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-inverted is-hovered">Hover___</button>
+                <button class="button is-inverted is-hovered is-primary">Primary</button>
+                <button class="button is-inverted is-hovered is-info">Info</button>
+                <button class="button is-inverted is-hovered is-text">Text</button>
+                <button class="button is-inverted is-hovered is-link"><span>Link</span></button>
+                <button class="button is-inverted is-hovered is-light">Light</button>
+                <button class="button is-inverted is-hovered is-success">S5s</button>
+                <button class="button is-inverted is-hovered is-warning">W5g</button>
+                <button class="button is-inverted is-hovered is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-inverted is-active">Active___</button>
+                <button class="button is-inverted is-active is-primary">Primary</button>
+                <button class="button is-inverted is-active is-info">Info</button>
+                <button class="button is-inverted is-active is-text">Text</button>
+                <button class="button is-inverted is-active is-link"><span>Link</span></button>
+                <button class="button is-inverted is-active is-light">Light</button>
+                <button class="button is-inverted is-active is-success">S5s</button>
+                <button class="button is-inverted is-active is-warning">W5g</button>
+                <button class="button is-inverted is-active is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-inverted is-focused">Focus___</button>
+                <button class="button is-inverted is-focused is-primary">Primary</button>
+                <button class="button is-inverted is-focused is-info">Info</button>
+                <button class="button is-inverted is-focused is-text">Text</button>
+                <button class="button is-inverted is-focused is-link"><span>Link</span></button>
+                <button class="button is-inverted is-focused is-light">Light</button>
+                <button class="button is-inverted is-focused is-success">S5s</button>
+                <button class="button is-inverted is-focused is-warning">W5g</button>
+                <button class="button is-inverted is-focused is-danger">D4r</button>
+              </div>
+              <div class="buttons">
+                <button class="button is-inverted is-disabled">Disabled</button>
+                <button class="button is-inverted is-disabled is-primary">Primary</button>
+                <button class="button is-inverted is-disabled is-info">Info</button>
+                <button class="button is-inverted is-disabled is-text">Text</button>
+                <button class="button is-inverted is-disabled is-link"><span>Link</span></button>
+                <button class="button is-inverted is-disabled is-light">Light</button>
+                <button class="button is-inverted is-disabled is-success">S5s</button>
+                <button class="button is-inverted is-disabled is-warning">W5g</button>
+                <button class="button is-inverted is-disabled is-danger">D4r</button>
+              </div>
+            </section>
+    
+            <h2 class="title is-4">Modifiers</h2>
+            <div class="buttons">
+              <button class="button is-small">Small</button>
+              <button class="button">Normal</button>
+              <button class="button is-large">Large</button>
+            </div>
+            <div class="buttons">
+              <button class="button is-square">42</button>
+            </div>
+            <div class="buttons">
+              <button class="button is-fullwidth">42</button>
+            </div>
+            <div class="field is-grouped has-direction-auto">
+              <button class="button control">Button A</button>
+              <button class="button control">Button B</button>
+              <button class="button control">Button C</button>
+            </div>
+          </section>
+          <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+            <h1 class="title is-3">Colors</h1>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-blue-1 has-text-blue-1-inverted">1</div>
+              <div class="column is-2 has-background-blue-2 has-text-blue-2-inverted">2</div>
+              <div class="column is-2 has-background-blue-3 has-text-blue-3-inverted">3</div>
+              <div class="column is-2 has-background-blue-4 has-text-blue-4-inverted">4</div>
+              <div class="column is-2 has-background-blue-5 has-text-blue-5-inverted">5</div>
+              <div class="column is-2 has-background-blue-6 has-text-blue-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-light-blue-1 has-text-light-blue-1-inverted">1</div>
+              <div class="column is-2 has-background-light-blue-2 has-text-light-blue-2-inverted">2</div>
+              <div class="column is-2 has-background-light-blue-3 has-text-light-blue-3-inverted">3</div>
+              <div class="column is-2 has-background-light-blue-4 has-text-light-blue-4-inverted">4</div>
+              <div class="column is-2 has-background-light-blue-5 has-text-light-blue-5-inverted">5</div>
+              <div class="column is-2 has-background-light-blue-6 has-text-light-blue-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-grey-1 has-text-grey-1-inverted">1</div>
+              <div class="column is-2 has-background-grey-2 has-text-grey-2-inverted">2</div>
+              <div class="column is-2 has-background-grey-3 has-text-grey-3-inverted">3</div>
+              <div class="column is-2 has-background-grey-4 has-text-grey-4-inverted">4</div>
+              <div class="column is-2 has-background-grey-5 has-text-grey-5-inverted">5</div>
+              <div class="column is-2 has-background-grey-6 has-text-grey-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-purple-1 has-text-purple-1-inverted">1</div>
+              <div class="column is-2 has-background-purple-2 has-text-purple-2-inverted">2</div>
+              <div class="column is-2 has-background-purple-3 has-text-purple-3-inverted">3</div>
+              <div class="column is-2 has-background-purple-4 has-text-purple-4-inverted">4</div>
+              <div class="column is-2 has-background-purple-5 has-text-purple-5-inverted">5</div>
+              <div class="column is-2 has-background-purple-6 has-text-purple-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-red-1 has-text-red-1-inverted">1</div>
+              <div class="column is-2 has-background-red-2 has-text-red-2-inverted">2</div>
+              <div class="column is-2 has-background-red-3 has-text-red-3-inverted">3</div>
+              <div class="column is-2 has-background-red-4 has-text-red-4-inverted">4</div>
+              <div class="column is-2 has-background-red-5 has-text-red-5-inverted">5</div>
+              <div class="column is-2 has-background-red-6 has-text-red-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-yellow-1 has-text-yellow-1-inverted">1</div>
+              <div class="column is-2 has-background-yellow-2 has-text-yellow-2-inverted">2</div>
+              <div class="column is-2 has-background-yellow-3 has-text-yellow-3-inverted">3</div>
+              <div class="column is-2 has-background-yellow-4 has-text-yellow-4-inverted">4</div>
+              <div class="column is-2 has-background-yellow-5 has-text-yellow-5-inverted">5</div>
+              <div class="column is-2 has-background-yellow-6 has-text-yellow-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-green-1 has-text-green-1-inverted">1</div>
+              <div class="column is-2 has-background-green-2 has-text-green-2-inverted">2</div>
+              <div class="column is-2 has-background-green-3 has-text-green-3-inverted">3</div>
+              <div class="column is-2 has-background-green-4 has-text-green-4-inverted">4</div>
+              <div class="column is-2 has-background-green-5 has-text-green-5-inverted">5</div>
+              <div class="column is-2 has-background-green-6 has-text-green-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-info-1 has-text-info-1-inverted">1</div>
+              <div class="column is-2 has-background-info-2 has-text-info-2-inverted">2</div>
+              <div class="column is-2 has-background-info-3 has-text-info-3-inverted">3</div>
+              <div class="column is-2 has-background-info-4 has-text-info-4-inverted">4</div>
+              <div class="column is-2 has-background-info-5 has-text-info-5-inverted">5</div>
+              <div class="column is-2 has-background-info-6 has-text-info-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-success-1 has-text-success-1-inverted">1</div>
+              <div class="column is-2 has-background-success-2 has-text-success-2-inverted">2</div>
+              <div class="column is-2 has-background-success-3 has-text-success-3-inverted">3</div>
+              <div class="column is-2 has-background-success-4 has-text-success-4-inverted">4</div>
+              <div class="column is-2 has-background-success-5 has-text-success-5-inverted">5</div>
+              <div class="column is-2 has-background-success-6 has-text-success-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-warning-1 has-text-warning-1-inverted">1</div>
+              <div class="column is-2 has-background-warning-2 has-text-warning-2-inverted">2</div>
+              <div class="column is-2 has-background-warning-3 has-text-warning-3-inverted">3</div>
+              <div class="column is-2 has-background-warning-4 has-text-warning-4-inverted">4</div>
+              <div class="column is-2 has-background-warning-5 has-text-warning-5-inverted">5</div>
+              <div class="column is-2 has-background-warning-6 has-text-warning-6-inverted">6</div>
+            </div>
+            <div class="columns m-none">
+              <div class="column is-2 has-background-danger-1 has-text-danger-1-inverted">1</div>
+              <div class="column is-2 has-background-danger-2 has-text-danger-2-inverted">2</div>
+              <div class="column is-2 has-background-danger-3 has-text-danger-3-inverted">3</div>
+              <div class="column is-2 has-background-danger-4 has-text-danger-4-inverted">4</div>
+              <div class="column is-2 has-background-danger-5 has-text-danger-5-inverted">5</div>
+              <div class="column is-2 has-background-danger-6 has-text-danger-6-inverted">6</div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
