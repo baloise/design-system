@@ -25,6 +25,13 @@ export class Text implements ComponentInterface, ComponentElementState {
   @Prop() heading = false
 
   /**
+   * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
+   * Please note that text overflow can only occur in block or inline-block level elements,
+   * as these elements require a width to overflow.
+   */
+  @Prop() noWrap = false
+
+  /**
    * If `true` the text is bold
    */
   @Prop() bold = false
@@ -130,6 +137,7 @@ export class Text implements ComponentInterface, ComponentElementState {
           class={{
             ...block.element('text').class(),
             ...block.element('text').modifier(`has-text-${color}`).class(),
+            ...block.element('text').modifier(`no-wrap`).class(this.noWrap),
             'is-size-small': this.size === 'small',
             'is-size-large': this.size === 'lead',
             'is-size-medium': this.size === 'block',

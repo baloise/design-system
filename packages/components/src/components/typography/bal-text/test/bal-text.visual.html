@@ -1,87 +1,112 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
-  <body>
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section>
-          <bal-text data-testid="basic">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Colors -->
-        <section>
-          <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="danger">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="primary-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="success">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="warning">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text color="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Sizes -->
-        <section>
-          <bal-text size="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text size="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text size="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Bold -->
-        <section>
-          <bal-text bold>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Heading -->
-        <section>
-          <bal-text heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Inline -->
-        <section>
-          <bal-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Inverted -->
-        <section class="has-background-primary">
-          <bal-text inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Shadow -->
-        <section>
-          <bal-text shadow>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-        <!-- Space -->
-        <section>
-          <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text space="top">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text space="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text space="all">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-          <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
-        </section>
-        <br />
-        <br />
-      </main>
-    </bal-doc-app>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <bal-doc-app>
+    <main class="container py-medium">
+      <section>
+        <bal-text data-testid="basic">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- No Wrap -->
+      <section>
+        <bal-text data-testid="no-wrap" no-wrap>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum,
+          voluptatum. Fugit tempore harum, aut impedit non illum numquam consequuntur porro dolore itaque explicabo
+          maiores sint velit corrupti enim asperiores. Ratione.
+          Dolorum a exercitationem quaerat asperiores modi accusantium maiores dolorem non veritatis itaque dolor iste
+          quis omnis ullam tenetur hic vitae, excepturi expedita sed reprehenderit delectus magni eum. Nihil, veritatis
+          voluptatum?
+          Totam maxime officiis est officia necessitatibus quidem delectus eveniet nostrum beatae. Amet blanditiis
+          laudantium, quas eveniet dolor pariatur, tempore magnam qui aspernatur similique est nostrum, nesciunt nisi
+          dignissimos quasi cumque!
+          Molestias consectetur consequuntur architecto voluptatum non officiis, doloribus nihil repudiandae tempora
+          autem optio voluptates rem iure nostrum est inventore officia animi repellat error aliquam beatae vel quod.
+          Sed, eum repellat.
+          Asperiores non deleniti accusantium sed qui, dolore, quasi error fuga quam unde at eveniet esse officia natus?
+          Temporibus nam quibusdam, modi assumenda, impedit adipisci totam quos beatae dolor repudiandae possimus!
+          Rem est consequatur numquam voluptates, quaerat quidem quasi nisi, corporis pariatur non, quas esse neque!
+          Sint fuga excepturi molestiae placeat sapiente animi iusto? Sit voluptas rem aspernatur quisquam. Ut,
+          sunt?</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Colors -->
+      <section>
+        <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="danger">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="primary-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="success">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="warning">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text color="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Sizes -->
+      <section>
+        <bal-text size="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text size="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text size="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Bold -->
+      <section>
+        <bal-text bold>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Heading -->
+      <section>
+        <bal-text heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Inline -->
+      <section>
+        <bal-text inline>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Inverted -->
+      <section class="has-background-primary">
+        <bal-text inverted>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Shadow -->
+      <section>
+        <bal-text shadow>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+      <!-- Space -->
+      <section>
+        <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="top">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="all">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+        <bal-text space="none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bal-text>
+      </section>
+      <br />
+      <br />
+    </main>
+  </bal-doc-app>
+</body>
+
 </html>

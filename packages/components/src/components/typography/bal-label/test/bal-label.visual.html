@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
 
-      section {
-        padding: 1rem;
-      }
-    </style>
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
 
-  <body class="bal-body">
-    <bal-doc-app>
-      <main class="container py-medium">
-        <section data-testid="basic">
-          <bal-label>Label default</bal-label>
-          <br />
-          <bal-label weight="regular">Label weight regular</bal-label>
-        </section>
-        <section data-testid="sizes">
-          <bal-label size="small">Label small</bal-label>
-          <br />
-          <bal-label>Label disabled</bal-label>
-          <br />
-          <bal-label size="large">Label large</bal-label>
-        </section>
-        <section data-testid="states">
-          <bal-label disabled>Label disabled</bal-label>
-          <br />
-          <bal-label valid>Label valid</bal-label>
-          <br />
-          <bal-label invalid>Label invalid</bal-label>
-        </section>
-      </main>
-    </bal-doc-app>
-  </body>
+    section {
+      padding: 1rem;
+    }
+  </style>
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body class="bal-body">
+  <bal-doc-app>
+    <main class="container py-medium">
+      <section data-testid="basic">
+        <bal-label>Label default</bal-label>
+        <br />
+        <bal-label weight="regular">Label weight regular</bal-label>
+      </section>
+      <section data-testid="no-wrap">
+        <bal-label no-wrap>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ut adipisci eveniet fugiat repudiandae
+          placeat nemo pariatur! Expedita fugiat exercitationem quibusdam! Tempora reprehenderit vero eos explicabo iste
+          velit quas id!
+          Voluptatem ratione laboriosam minima dolorem! Consequuntur rerum suscipit nam praesentium ad quos ut quisquam
+          saepe doloribus, sit repudiandae veniam voluptate debitis ipsa laboriosam officiis vero quidem. Numquam
+          molestias rerum nemo!
+          Ullam et consequatur, at, saepe animi natus, fuga neque deserunt ad dolore autem. Ea deleniti illo
+          reprehenderit animi possimus non, voluptatum facere fugiat architecto sapiente ipsam aspernatur aliquam vero
+          amet.
+          Deleniti perferendis explicabo sit nobis, mollitia praesentium ipsam obcaecati officia quas perspiciatis?
+          Minima rerum laborum molestias explicabo magnam iste tempore, ipsam pariatur? Dolor, perferendis doloremque.
+          Delectus deleniti maxime voluptatibus sint.</bal-label>
+      </section>
+      <section data-testid="sizes">
+        <bal-label size="small">Label small</bal-label>
+        <br />
+        <bal-label>Label disabled</bal-label>
+        <br />
+        <bal-label size="large">Label large</bal-label>
+      </section>
+      <section data-testid="states">
+        <bal-label disabled>Label disabled</bal-label>
+        <br />
+        <bal-label valid>Label valid</bal-label>
+        <br />
+        <bal-label invalid>Label invalid</bal-label>
+      </section>
+    </main>
+  </bal-doc-app>
+</body>
+
 </html>

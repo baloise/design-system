@@ -1095,6 +1095,10 @@ export namespace Components {
          */
         "level": BalProps.BalHeadingLevel;
         /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap": boolean;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow": boolean;
@@ -1432,6 +1436,10 @@ export namespace Components {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap": boolean;
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -2777,6 +2785,10 @@ export namespace Components {
           * If `true` the color gets inverted for dark backgrounds
          */
         "inverted": boolean;
+        /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap": boolean;
         "pressed": boolean;
         /**
           * If `true` adds a text shadow to improve readability on image background
@@ -5185,6 +5197,10 @@ declare namespace LocalJSX {
          */
         "level"?: BalProps.BalHeadingLevel;
         /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap"?: boolean;
+        /**
           * If `true` adds a text shadow to improve readability on image background
          */
         "shadow"?: boolean;
@@ -5538,6 +5554,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap"?: boolean;
         "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -6888,6 +6908,10 @@ declare namespace LocalJSX {
           * If `true` the color gets inverted for dark backgrounds
          */
         "inverted"?: boolean;
+        /**
+          * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
+         */
+        "noWrap"?: boolean;
         "pressed"?: boolean;
         /**
           * If `true` adds a text shadow to improve readability on image background
