@@ -2462,6 +2462,10 @@ export namespace Components {
          */
         "space": BalProps.BalStackSpace;
         /**
+          * Defines if the child elements will wrap to the next line if there is not enough space left
+         */
+        "useWrap": boolean;
+        /**
           * Defines the padding top and left of the stack element.
          */
         "verticalPadding": BalProps.BalStackPadding;
@@ -6603,6 +6607,10 @@ declare namespace LocalJSX {
           * Defines the space between the child elements. Default is normal.
          */
         "space"?: BalProps.BalStackSpace;
+        /**
+          * Defines if the child elements will wrap to the next line if there is not enough space left
+         */
+        "useWrap"?: boolean;
         /**
           * Defines the padding top and left of the stack element.
          */

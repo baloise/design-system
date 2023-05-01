@@ -184,6 +184,48 @@ Space.parameters = {
   controls: { exclude: excludedControls },
 }
 
+export const Padding = args => ({
+  components: {
+    ...component.components,
+  },
+  setup: () => ({ args }),
+  template: `<div>
+  <bal-stack horizontal-padding="medium" class="has-background-red-2">
+    <bal-content class="has-background-green-2">
+      <bal-label>Padding Horizontal Medium</bal-label>
+    </bal-content>
+  </bal-stack>
+  <br/>
+  <bal-stack vertical-padding="medium" class="has-background-red-2">
+  <bal-content class="has-background-green-2">
+    <bal-label>Padding Vertical Medium</bal-label>
+  </bal-content>
+</bal-stack>
+</div>`,
+})
+Padding.args = {}
+Padding.parameters = {
+  ...sourceCode(
+    () => ({
+      template: `<bal-stack horizontal-padding="medium">
+    <bal-content>
+      <bal-label>Padding Horizontal Medium</bal-label>
+    </bal-content>
+  </bal-stack>
+  <br/>
+  <bal-stack vertical-padding="medium">
+  <bal-content>
+    <bal-label>Padding Vertical Medium</bal-label>
+  </bal-content>
+</bal-stack>`,
+      components: [],
+    }),
+    Padding.args,
+    {},
+  ),
+  controls: { exclude: excludedControls },
+}
+
 export const TeaserCards = args => ({
   components: {
     ...component.components,

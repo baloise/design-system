@@ -49,6 +49,12 @@ export class BalStack implements ComponentInterface, Loggable {
   @Prop() horizontalPadding: BalProps.BalStackPadding = ''
 
   /**
+   * Defines if the child elements will wrap to the next line if there
+   * is not enough space left
+   */
+  @Prop() useWrap = false
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -57,6 +63,7 @@ export class BalStack implements ComponentInterface, Loggable {
     const direction = !!this.direction
     const alignment = !!this.alignment
     const space = !!this.space
+    const useWrap = !!this.useWrap
     const verticalPadding = !!this.verticalPadding
     const horizontalPadding = !!this.horizontalPadding
 
@@ -64,6 +71,7 @@ export class BalStack implements ComponentInterface, Loggable {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier(`use-wrap`).class(useWrap),
           ...block.modifier(`direction-${this.direction}`).class(direction),
           ...block.modifier(`alignment-${this.alignment.split(' ').join('-')}`).class(alignment),
           ...block.modifier(`space-${this.space}`).class(space),
