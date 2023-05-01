@@ -39,6 +39,16 @@ export class BalStack implements ComponentInterface, Loggable {
   @Prop() space: BalProps.BalStackSpace = 'normal'
 
   /**
+   * Defines the padding top and left of the stack element.
+   */
+  @Prop() verticalPadding: BalProps.BalStackPadding = ''
+
+  /**
+   * Defines the padding left and right of the stack element.
+   */
+  @Prop() horizontalPadding: BalProps.BalStackPadding = ''
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -47,14 +57,18 @@ export class BalStack implements ComponentInterface, Loggable {
     const direction = !!this.direction
     const alignment = !!this.alignment
     const space = !!this.space
+    const verticalPadding = !!this.verticalPadding
+    const horizontalPadding = !!this.horizontalPadding
 
     return (
       <Host
         class={{
           ...block.class(),
           ...block.modifier(`direction-${this.direction}`).class(direction),
-          ...block.modifier(`alignment-${this.alignment}`).class(alignment),
+          ...block.modifier(`alignment-${this.alignment.split(' ').join('-')}`).class(alignment),
           ...block.modifier(`space-${this.space}`).class(space),
+          ...block.modifier(`vertical-padding-${this.verticalPadding}`).class(verticalPadding),
+          ...block.modifier(`horizontal-padding-${this.horizontalPadding}`).class(horizontalPadding),
         }}
       >
         <slot></slot>

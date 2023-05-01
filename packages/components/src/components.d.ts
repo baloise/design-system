@@ -2454,9 +2454,17 @@ export namespace Components {
          */
         "direction": BalProps.BalStackDirection;
         /**
+          * Defines the padding left and right of the stack element.
+         */
+        "horizontalPadding": BalProps.BalStackPadding;
+        /**
           * Defines the space between the child elements. Default is normal.
          */
         "space": BalProps.BalStackSpace;
+        /**
+          * Defines the padding top and left of the stack element.
+         */
+        "verticalPadding": BalProps.BalStackPadding;
     }
     interface BalStage {
         /**
@@ -6588,9 +6596,17 @@ declare namespace LocalJSX {
          */
         "direction"?: BalProps.BalStackDirection;
         /**
+          * Defines the padding left and right of the stack element.
+         */
+        "horizontalPadding"?: BalProps.BalStackPadding;
+        /**
           * Defines the space between the child elements. Default is normal.
          */
         "space"?: BalProps.BalStackSpace;
+        /**
+          * Defines the padding top and left of the stack element.
+         */
+        "verticalPadding"?: BalProps.BalStackPadding;
     }
     interface BalStage {
         /**
