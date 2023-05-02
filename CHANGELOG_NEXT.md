@@ -230,7 +230,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * hide glitches during page load ([44069d9](https://github.com/baloise/design-system/commit/44069d905aa54657851adfcb4c7909fcc2664ed1))
 * show version of the DS in the window object ([eb16543](https://github.com/baloise/design-system/commit/eb16543b6dca1e59dee9aed9b3f23f2cb302aef6))
 
-
 ### Bug Fixes
 
 * add missing comma and adjust version path ([d78f214](https://github.com/baloise/design-system/commit/d78f214c81df0949d07666956ffb0009473bbbc8))

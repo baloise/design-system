@@ -247,18 +247,18 @@ export const RadioButtonGrid = args => ({
   template: `
     <bal-radio-group v-bind="args" v-model="args.value" columns="3" columns-tablet="2">
       <bal-radio-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Radio Button 1</bal-label>
           </bal-content>
           <bal-radio label-hidden name="radio-example" value="1"></bal-radio>
         </bal-stack>
       </bal-radio-button>
       <bal-radio-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Radio Button 2</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
           </bal-content>
@@ -266,9 +266,9 @@ export const RadioButtonGrid = args => ({
         </bal-stack>
       </bal-radio-button>
       <bal-radio-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Radio Button 3</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
           </bal-content>
@@ -276,9 +276,9 @@ export const RadioButtonGrid = args => ({
         </bal-stack>
       </bal-radio-button>
       <bal-radio-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Radio Button 4</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
           </bal-content>
@@ -286,9 +286,9 @@ export const RadioButtonGrid = args => ({
         </bal-stack>
       </bal-radio-button>
       <bal-radio-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Radio Button 5</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group.</bal-text>
           </bal-content>

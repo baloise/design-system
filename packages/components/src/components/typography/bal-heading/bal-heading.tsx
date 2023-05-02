@@ -21,6 +21,13 @@ export class Heading {
   @Prop() visualLevel?: BalProps.BalHeadingLevel
 
   /**
+   * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
+   * Please note that text overflow can only occur in block or inline-block level elements,
+   * as these elements require a width to overflow.
+   */
+  @Prop() noWrap = false
+
+  /**
    * If `true` the heading gets displayed slimmer.
    */
   @Prop() subtitle = false
@@ -90,6 +97,7 @@ export class Heading {
         <Heading
           class={{
             ...bemTextEl.class(),
+            ...bemTextEl.modifier('no-wrap').class(this.noWrap),
             ...bemTextEl.modifier('subtitle').class(this.subtitle),
             ...bemTextEl.modifier('shadow').class(this.shadow),
             ...bemTextEl.modifier(`color-${this.getFontColor()}`).class(this.getFontColor() !== ''),

@@ -55,6 +55,13 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
   @Prop() required = true
 
   /**
+   * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
+   * Please note that text overflow can only occur in block or inline-block level elements,
+   * as these elements require a width to overflow.
+   */
+  @Prop() noWrap = false
+
+  /**
    * If `true` the component gets a valid green style.
    */
   @Prop() valid?: boolean = undefined
@@ -173,6 +180,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
           htmlFor={this.htmlFor || this.inputId}
           class={{
             ...block.element('native').class(),
+            ...block.element('native').modifier('no-wrap').class(this.noWrap),
             ...block.element('native').modifier('disabled').class(disabled),
             ...block.element('native').modifier('danger').class(danger),
             ...block.element('native').modifier('success').class(success),

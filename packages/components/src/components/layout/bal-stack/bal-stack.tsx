@@ -25,18 +25,46 @@ export class BalStack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() direction: BalProps.BalStackDirection = 'row'
+  @Prop() layout: BalProps.BalStackLayout = 'horizontal'
 
   /**
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() alignment: BalProps.BalStackAlignment = ''
+  @Prop() align: BalProps.BalStackAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is normal.
    */
   @Prop() space: BalProps.BalStackSpace = 'normal'
+
+  /**
+   * Defines the horizontal padding left and right of the stack element.
+   */
+  @Prop() px: BalProps.BalStackPadding = ''
+
+  /**
+   * Defines the vertical padding top and bottom of the stack element.
+   */
+  @Prop() py: BalProps.BalStackPadding = ''
+
+  /**
+   * Defines if the child elements will wrap to the next line if there
+   * is not enough space left
+   */
+  @Prop() useWrap = false
+
+  /**
+   * @internal
+   * Please use layout instead.
+   */
+  @Prop() direction: BalProps.BalStackDirection = ''
+
+  /**
+   * @internal
+   * Please use align instead.
+   */
+  @Prop() alignment: BalProps.BalStackAlignment = ''
 
   /**
    * RENDER
@@ -45,16 +73,34 @@ export class BalStack implements ComponentInterface, Loggable {
   render() {
     const block = BEM.block('stack')
     const direction = !!this.direction
+    const layout = !!this.layout
+    const align = !!this.align
     const alignment = !!this.alignment
     const space = !!this.space
+    const useWrap = !!this.useWrap
+    const px = !!this.px
+    const py = !!this.py
+
+    let layoutValue = this.layout
+    if (direction) {
+      layoutValue = this.direction === 'row' ? 'horizontal' : 'vertical'
+    }
+
+    let alignValue = this.align.split(' ').join('-')
+    if (alignment) {
+      alignValue = this.alignment.split(' ').join('-')
+    }
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`direction-${this.direction}`).class(direction),
-          ...block.modifier(`alignment-${this.alignment}`).class(alignment),
+          ...block.modifier(`use-wrap `).class(useWrap),
+          ...block.modifier(`layout-${layoutValue}`).class(layout || direction),
+          ...block.modifier(`align-${alignValue}`).class(align || alignment),
           ...block.modifier(`space-${this.space}`).class(space),
+          ...block.modifier(`px-${this.px}`).class(px),
+          ...block.modifier(`py-${this.py}`).class(py),
         }}
       >
         <slot></slot>
