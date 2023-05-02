@@ -34,7 +34,7 @@ export const Layout = args => ({
   <bal-text>Left</bal-text>
   <bal-divider layout="vertical" color="primary"></bal-divider>
   <bal-text>Right</bal-text>
-</bal-stack`,
+</bal-stack>`,
 })
 Layout.args = {}
 Layout.parameters = {
@@ -44,7 +44,7 @@ Layout.parameters = {
       <bal-text>Left</bal-text>
       <bal-divider layout="vertical" color="primary"></bal-divider>
       <bal-text>Right</bal-text>
-    </bal-stack`,
+    </bal-stack>`,
       components: [],
     }),
     Layout.args,
