@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 12.13.1
+
+### Patch Changes
+
+- [#815](https://github.com/baloise/design-system/pull/815) [`55e69fdf0`](https://github.com/baloise/design-system/commit/55e69fdf07a37c32a0f85c8f0a9bd492c0629f74) Thanks [@hirsch88](https://github.com/hirsch88)! - fix scroll handler by using css to keep it as smooth as possible
+
+- [#815](https://github.com/baloise/design-system/pull/815) [`55e69fdf0`](https://github.com/baloise/design-system/commit/55e69fdf07a37c32a0f85c8f0a9bd492c0629f74) Thanks [@hirsch88](https://github.com/hirsch88)! - add missing download property to the bal-list-item
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.13.1
+  - @baloise/design-system-fonts@12.13.1
+  - @baloise/design-system-icons@12.13.1
+  - @baloise/design-system-tokens@12.13.1
+
 ## 12.13.0
 
 ### Minor Changes
