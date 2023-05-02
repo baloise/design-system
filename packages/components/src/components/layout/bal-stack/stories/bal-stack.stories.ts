@@ -40,8 +40,8 @@ const Template = args => ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  direction: '',
-  alignment: '',
+  layout: '',
+  align: '',
   space: '',
 }
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
@@ -51,7 +51,7 @@ export const Alignment = args => ({
   setup: () => ({ args }),
   template: `<bal-stack v-bind="args">
   <bal-icon name="date" size="medium"></bal-icon>
-  <bal-content alignment="center">
+  <bal-content align="center">
     <bal-label>My Item</bal-label>
     <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
   </bal-content>
@@ -59,8 +59,8 @@ export const Alignment = args => ({
 </bal-stack>`,
 })
 Alignment.args = {
-  direction: 'column',
-  alignment: 'center',
+  layout: 'vertical',
+  align: 'center',
   space: 'large',
 }
 Alignment.parameters = {
@@ -70,8 +70,8 @@ Alignment.parameters = {
 
 export const Direction = Template.bind({})
 Direction.args = {
-  direction: 'column',
-  alignment: '',
+  layout: 'vertical',
+  align: '',
   space: '',
 }
 Direction.parameters = { ...component.sourceCode(Direction), controls: { exclude: excludedControls } }
@@ -190,13 +190,13 @@ export const Padding = args => ({
   },
   setup: () => ({ args }),
   template: `<div>
-  <bal-stack horizontal-padding="medium" class="has-background-red-2">
+  <bal-stack py="medium" class="has-background-red-2">
     <bal-content class="has-background-green-2">
       <bal-label>Padding Horizontal Medium</bal-label>
     </bal-content>
   </bal-stack>
   <br/>
-  <bal-stack vertical-padding="medium" class="has-background-red-2">
+  <bal-stack px="medium" class="has-background-red-2">
   <bal-content class="has-background-green-2">
     <bal-label>Padding Vertical Medium</bal-label>
   </bal-content>
@@ -207,13 +207,13 @@ Padding.args = {}
 Padding.parameters = {
   ...sourceCode(
     () => ({
-      template: `<bal-stack horizontal-padding="medium">
+      template: `<bal-stack py="medium">
     <bal-content>
       <bal-label>Padding Horizontal Medium</bal-label>
     </bal-content>
   </bal-stack>
   <br/>
-  <bal-stack vertical-padding="medium">
+  <bal-stack px="medium">
   <bal-content>
     <bal-label>Padding Vertical Medium</bal-label>
   </bal-content>
@@ -246,9 +246,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="purple-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigPurple" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Teaser Card</bal-heading>
             <bal-text>The item component can easily be combined with the card component to achieve a nice
             teaser layout.</bal-text>
@@ -261,9 +261,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="yellow-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigYellow" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Auto Height</bal-heading>
             <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
           </bal-content>
@@ -275,9 +275,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="red-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigRed" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Item Component</bal-heading>
             <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
           </bal-content>

@@ -4,7 +4,8 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalStackDirection = 'row' | 'column' | ''
+  export type BalStackLayout = 'horizontal' | 'vertical' | ''
+
   export type BalStackSpace =
     | 'none'
     | 'xx-small'
@@ -38,4 +39,7 @@ namespace BalProps {
     | 'bottom center'
     | 'bottom end'
     | ''
+
+  // deprecated
+  export type BalStackDirection = 'row' | 'column' | ''
 }

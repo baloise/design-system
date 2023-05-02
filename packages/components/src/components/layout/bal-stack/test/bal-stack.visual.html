@@ -36,7 +36,7 @@
         </section>
         <hr />
         <section data-testid="alignment">
-          <bal-stack alignment="top start">
+          <bal-stack align="top start">
             <bal-content>
               <bal-label>Alignment Start</bal-label>
               <bal-text
@@ -48,7 +48,7 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack alignment="center">
+          <bal-stack align="center">
             <bal-content>
               <bal-label>Alignment Center</bal-label>
               <bal-text
@@ -60,7 +60,7 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack alignment="bottom end">
+          <bal-stack align="bottom end">
             <bal-content>
               <bal-label>Alignment End</bal-label>
               <bal-text
@@ -74,7 +74,7 @@
         </section>
         <hr />
         <section data-testid="direction">
-          <bal-stack direction="column">
+          <bal-stack layout="vertical">
             <bal-content>
               <bal-label>Direction Column</bal-label>
               <bal-text
@@ -86,8 +86,8 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack direction="column" alignment="center">
-            <bal-content alignment="center">
+          <bal-stack layout="vertical" align="center">
+            <bal-content align="center">
               <bal-label>Direction Column / Alignment Center</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -98,8 +98,8 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack direction="column" alignment="end">
-            <bal-content alignment="end">
+          <bal-stack layout="vertical" align="end">
+            <bal-content align="end">
               <bal-label>Direction Column / Alignment End</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -213,7 +213,7 @@
           </bal-stack>
         </section>
         <section data-testid="margins">
-          <bal-stack direction="column" space="none">
+          <bal-stack layout="vertical" space="none">
             <bal-heading>Heading</bal-heading>
             <bal-text>Text</bal-text>
             <bal-label>Label</bal-label>
@@ -224,69 +224,69 @@
           </bal-stack>
         </section>
         <section>
-          <bal-stack direction="row" alignment="top start" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="top start" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top start</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="top center" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="top center" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top center</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="top end" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="top end" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top end</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="start" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="start" class="has-background-green-2" style="height: 5rem"
             ><bal-button>start</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="center" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="center" class="has-background-green-2" style="height: 5rem"
             ><bal-button>center</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="end" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="end" class="has-background-green-2" style="height: 5rem"
             ><bal-button>end</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="bottom start" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="bottom start" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom start</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="bottom center" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="bottom center" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom center</bal-button></bal-stack
           >
-          <bal-stack direction="row" alignment="bottom end" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="horizontal" align="bottom end" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom end</bal-button></bal-stack
           >
         </section>
         <section>
-          <bal-stack direction="column" alignment="top start" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="top start" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top start</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="top center" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="top center" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top center</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="top end" class="has-background-red-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="top end" class="has-background-red-2" style="height: 5rem"
             ><bal-button>top end</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="start" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="start" class="has-background-green-2" style="height: 5rem"
             ><bal-button>start</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="center" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="center" class="has-background-green-2" style="height: 5rem"
             ><bal-button>center</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="end" class="has-background-green-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="end" class="has-background-green-2" style="height: 5rem"
             ><bal-button>end</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="bottom start" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="bottom start" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom start</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="bottom center" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="bottom center" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom center</bal-button></bal-stack
           >
-          <bal-stack direction="column" alignment="bottom end" class="has-background-yellow-2" style="height: 5rem"
+          <bal-stack layout="vertical" align="bottom end" class="has-background-yellow-2" style="height: 5rem"
             ><bal-button>bottom end</bal-button></bal-stack
           >
         </section>
         <section>
-          <bal-stack vertical-padding="medium" class="has-background-purple-2">
+          <bal-stack px="medium" class="has-background-purple-2">
             <bal-button>Button 1</bal-button>
             <bal-button>Button 2</bal-button>
           </bal-stack>
-          <bal-stack horizontal-padding="medium" class="has-background-purple-2">
+          <bal-stack py="medium" class="has-background-purple-2">
             <bal-button>Button 1</bal-button>
             <bal-button>Button 2</bal-button>
           </bal-stack>

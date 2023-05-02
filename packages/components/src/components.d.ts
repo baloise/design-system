@@ -617,11 +617,13 @@ export namespace Components {
         /**
           * Defines the text positioning like center, end or default to start.
          */
-        "alignment": BalProps.BalContentAlignment;
+        "align": BalProps.BalContentAlignment;
+        "alignment": BalProps.BalStackAlignment;
+        "direction": BalProps.BalStackDirection;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
-        "direction": BalProps.BalContentDirection;
+        "layout": BalProps.BalContentLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
@@ -757,6 +759,20 @@ export namespace Components {
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "color": BalProps.BalDividerColor;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout": BalProps.BalDividerLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space": BalProps.BalDividerSpace;
     }
     interface BalDocApp {
         /**
@@ -1499,6 +1515,10 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": (ignoreNested?: boolean) => Promise<void>;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
         /**
           * Specifies the URL of the page the link goes to
          */
@@ -2448,15 +2468,21 @@ export namespace Components {
         /**
           * Defines the text positioning like center, right or default to start.
          */
+        "align": BalProps.BalStackAlignment;
         "alignment": BalProps.BalStackAlignment;
+        "direction": BalProps.BalStackDirection;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "direction": BalProps.BalStackDirection;
+        "layout": BalProps.BalStackLayout;
         /**
-          * Defines the padding left and right of the stack element.
+          * Defines the horizontal padding left and right of the stack element.
          */
-        "horizontalPadding": BalProps.BalStackPadding;
+        "px": BalProps.BalStackPadding;
+        /**
+          * Defines the vertical padding top and bottom of the stack element.
+         */
+        "py": BalProps.BalStackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
@@ -2465,10 +2491,6 @@ export namespace Components {
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
         "useWrap": boolean;
-        /**
-          * Defines the padding top and left of the stack element.
-         */
-        "verticalPadding": BalProps.BalStackPadding;
     }
     interface BalStage {
         /**
@@ -3272,6 +3294,12 @@ declare global {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
     };
+    interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
+    }
+    var HTMLBalDividerElement: {
+        prototype: HTMLBalDividerElement;
+        new (): HTMLBalDividerElement;
+    };
     interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
     }
     var HTMLBalDocAppElement: {
@@ -3983,6 +4011,7 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-banner": HTMLBalDocBannerElement;
         "bal-doc-code-sandbox": HTMLBalDocCodeSandboxElement;
@@ -4713,11 +4742,13 @@ declare namespace LocalJSX {
         /**
           * Defines the text positioning like center, end or default to start.
          */
-        "alignment"?: BalProps.BalContentAlignment;
+        "align"?: BalProps.BalContentAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
+        "direction"?: BalProps.BalStackDirection;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
-        "direction"?: BalProps.BalContentDirection;
+        "layout"?: BalProps.BalContentLayout;
         /**
           * Defines the space between the child elements. Default is xx-small.
          */
@@ -4864,6 +4895,20 @@ declare namespace LocalJSX {
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "color"?: BalProps.BalDividerColor;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout"?: BalProps.BalDividerLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space"?: BalProps.BalDividerSpace;
     }
     interface BalDocApp {
         /**
@@ -5624,6 +5669,10 @@ declare namespace LocalJSX {
           * If `true` the list item can be hovered
          */
         "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string;
         /**
           * Specifies the URL of the page the link goes to
          */
@@ -6594,15 +6643,21 @@ declare namespace LocalJSX {
         /**
           * Defines the text positioning like center, right or default to start.
          */
+        "align"?: BalProps.BalStackAlignment;
         "alignment"?: BalProps.BalStackAlignment;
+        "direction"?: BalProps.BalStackDirection;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
-        "direction"?: BalProps.BalStackDirection;
+        "layout"?: BalProps.BalStackLayout;
         /**
-          * Defines the padding left and right of the stack element.
+          * Defines the horizontal padding left and right of the stack element.
          */
-        "horizontalPadding"?: BalProps.BalStackPadding;
+        "px"?: BalProps.BalStackPadding;
+        /**
+          * Defines the vertical padding top and bottom of the stack element.
+         */
+        "py"?: BalProps.BalStackPadding;
         /**
           * Defines the space between the child elements. Default is normal.
          */
@@ -6611,10 +6666,6 @@ declare namespace LocalJSX {
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
         "useWrap"?: boolean;
-        /**
-          * Defines the padding top and left of the stack element.
-         */
-        "verticalPadding"?: BalProps.BalStackPadding;
     }
     interface BalStage {
         /**
@@ -7140,6 +7191,7 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
+        "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
         "bal-doc-banner": BalDocBanner;
         "bal-doc-code-sandbox": BalDocCodeSandbox;
@@ -7286,6 +7338,7 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
             "bal-doc-code-sandbox": LocalJSX.BalDocCodeSandbox & JSXBase.HTMLAttributes<HTMLBalDocCodeSandboxElement>;
