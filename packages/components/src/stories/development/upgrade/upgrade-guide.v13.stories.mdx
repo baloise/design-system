@@ -92,6 +92,12 @@ export class SharedModule {}
 `}
 />
 
+5. If you use `@baloise/web-app-ng-utils` please update them to v4.
+
+```
+npm install @baloise/web-app-ng-utils@4
+```
+
 > **TIP**
 >
 > - Checkout our example upgrade project [baloise-incubator/ng-upgrade-v13](https://github.com/baloise-incubator/ng-upgrade-v13)
@@ -216,7 +222,7 @@ npm install @baloise/design-system-components@13
 #### 6. Rename namespace Props to BalProps:
 
 <DiffSource
-  code={`- import { Props } from '@baloise/design-system-components'';
+  code={`- import { Props } from '@baloise/design-system-components';
 - const myColor: Props.BalButtonColor = 'primary'
 + const myColor: BalProps.BalButtonColor = 'primary'`}
 />
@@ -224,7 +230,7 @@ npm install @baloise/design-system-components@13
 #### 7. Rename namespace Events to BalEvents:
 
 <DiffSource
-  code={`- import { Events } from '@baloise/design-system-components'';
+  code={`- import { Events } from '@baloise/design-system-components';
 - const onChange = (event: Events.BalAccordionChange) => {
 + const onChange = (event: BalEvents.BalAccordionChange) => {
   ...
