@@ -38,21 +38,23 @@ export const BreakpointsHandler: BreakpointsHandlerType = () => {
   const resizeHandler = ResizeHandler(true)
   let breakpoints = { ...initialBreakpoints }
 
+  function update() {
+    const platforms = getPlatforms()
+    breakpoints = {
+      ...breakpoints,
+      mobile: platforms.includes('mobile'),
+      tablet: platforms.includes('tablet'),
+      touch: platforms.includes('touch'),
+      desktop: platforms.includes('desktop'),
+      highDefinition: platforms.includes('highDefinition'),
+      widescreen: platforms.includes('widescreen'),
+      fullhd: platforms.includes('fullhd'),
+    }
+    callbackHandler(breakpoints)
+  }
+
   function onResize() {
-    resizeHandler(() => {
-      const platforms = getPlatforms()
-      breakpoints = {
-        ...breakpoints,
-        mobile: platforms.includes('mobile'),
-        tablet: platforms.includes('tablet'),
-        touch: platforms.includes('touch'),
-        desktop: platforms.includes('desktop'),
-        highDefinition: platforms.includes('highDefinition'),
-        widescreen: platforms.includes('widescreen'),
-        fullhd: platforms.includes('fullhd'),
-      }
-      callbackHandler(breakpoints)
-    })
+    resizeHandler(update)
   }
 
   return {
@@ -61,6 +63,7 @@ export const BreakpointsHandler: BreakpointsHandlerType = () => {
         window.addEventListener('resize', onResize, { passive: true })
       }
       callbackHandler = callback
+      update()
     },
     disconnect: () => {
       if (isWindowDefined()) {
