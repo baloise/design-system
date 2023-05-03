@@ -1,5 +1,35 @@
 # @baloise/design-system-tokens
 
+## 13.0.0
+
+### Major Changes
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - remove deprecated parts
+
+  ### Design Token Removal
+
+  | Component     | Value     | Why                                     |
+  | ------------- | --------- | --------------------------------------- |
+  | **radius**    | `small`   | Is not supported in the new Style Guide |
+  | **radius**    | `x-large` | Is not supported in the new Style Guide |
+  | **container** | `is-blog` | Use default container instead           |
+
+  ### Component Property Renaming
+
+  | Component            | Before        | After              |
+  | -------------------- | ------------- | ------------------ |
+  | **bal-card-actions** | `right`       | `position="right"` |
+  | **bal-navbar-brand** | `link-target` | `target`           |
+  | **bal-stage**        | `has-shape`   | `shape`            |
+  | **bal-radio**        | `is-empty`    | `label-hidden`     |
+
+  ### Component Property Removal
+
+  | Component      | Property       | Why                                                              |
+  | -------------- | -------------- | ---------------------------------------------------------------- |
+  | **bal-select** | `no-border`    | Left over from the old style guide. Was event not active anymore |
+  | **bal-select** | `has-movement` | Left over from the old style guide. Was event not active anymore |
+
 ## 12.13.1
 
 ## 12.13.0

@@ -1,5 +1,33 @@
 # @baloise/design-system-components-table
 
+## 13.0.0
+
+### Major Changes
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - upgrade to `AG-Grid` v29. Breaking changes are the theming that changed from SASS variables to CSS variables.
+  Moreover, our styles are just an extension to the `AG-Grid` styles.
+  Therefor please import them before the Baloise styles also check out our [documentation](https://design.baloise.dev/?path=/docs/components-table--basic#aggrid)
+
+  **before**
+
+  ```scss
+  @import '@baloise/design-system-components-table/scss';
+  ```
+
+  **after**
+
+  ```scss
+  @import 'ag-grid-community/styles/ag-grid';
+  @import 'ag-grid-community/styles/ag-theme-alpine';
+  @import '@baloise/design-system-components-table/css/design-system-table';
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c)]:
+  - @baloise/design-system-components@13.0.0
+  - @baloise/design-system-css@13.0.0
+
 ## 12.13.1
 
 ### Patch Changes
