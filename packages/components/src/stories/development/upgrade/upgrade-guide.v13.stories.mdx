@@ -100,11 +100,39 @@ npm install @baloise/web-app-ng-utils@4
 
 6. If you used **NgModel** with `bal-tabs`, `bal-accordion` or `bal-popover` then replace them with a normal binding, since they are not considered as form controls.
 
+##### Tabs
+
 <DiffSource
   code={`- <bal-tabs [(NgModel)]="selectedTab">
-+ <bal-tabs [value]="selectedTab" balChange="onTabChanged($event)">
++ <bal-tabs [value]="selectedTab" balChange="onChange($event)">
     <bal-tab-item done value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
   </bal-tabs>`}
+/>
+
+```typescript
+class MyComponent
+  onChange(event: BalEvents.BalTabsChange) {
+    this.selectedTab = event.detail
+  }
+}
+```
+
+##### Accordion
+
+<DiffSource
+  code={`- <bal-accordion [(NgModel)]="isActive">
++ <bal-accordion [active]="isActive" balChange="onChange($event)">
+    Content
+  </bal-accordion>`}
+/>
+
+##### Popover
+
+<DiffSource
+  code={`- <bal-popover [(NgModel)]="isActive">
++ <bal-popover [active]="isActive" balChange="onChange($event)">
+    Content
+  </bal-popover>`}
 />
 
 <hr />
