@@ -2714,7 +2714,7 @@ export namespace Components {
          */
         "float": BalProps.BalTabsFloat;
         /**
-          * @deprecated If `true` the tabs is a block element and uses 100% of the width
+          * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
         /**
@@ -6881,7 +6881,7 @@ declare namespace LocalJSX {
          */
         "float"?: BalProps.BalTabsFloat;
         /**
-          * @deprecated If `true` the tabs is a block element and uses 100% of the width
+          * If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
         /**

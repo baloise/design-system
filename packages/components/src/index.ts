@@ -37,6 +37,7 @@ export {
   isDescendant,
 } from './utils/helpers'
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
+export { BreakpointsHandler, Breakpoints, BreakpointsHandlerCallback } from './utils/breakpoints'
 export { isBrowser, hasTouchSupport } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'
 export { ScrollHandler } from './utils/scroll'

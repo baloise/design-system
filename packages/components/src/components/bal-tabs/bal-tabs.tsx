@@ -72,7 +72,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Prop() float: BalProps.BalTabsFloat = 'left'
 
   /**
-   * @deprecated If `true` the tabs is a block element and uses 100% of the width
+   * If `true` the tabs is a block element and uses 100% of the width
    */
   @Prop() fullwidth = false
 
