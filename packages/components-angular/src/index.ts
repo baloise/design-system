@@ -14,6 +14,7 @@ export { AngularDelegate } from './overlays/angular-delegate'
 export { BalToastService } from './overlays/toast.service'
 export { BalSnackbarService } from './overlays/snackbar.service'
 export { BalModalService } from './overlays/modal.service'
+export { BalBreakpointsService } from './breakpoints.service'
 
 // PACKAGE MODULE
 export { BaloiseDesignSystemModule } from './module'

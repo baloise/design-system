@@ -28,12 +28,12 @@ export const initialBreakpoints: Breakpoints = {
   fullhd: false,
 }
 
-export type BreakpointsHandlerType = () => {
+export type BreakpointsHandlerType = {
   connect: (callback: BreakpointsHandlerCallback) => void
   disconnect: () => void
 }
 
-export const BreakpointsHandler: BreakpointsHandlerType = () => {
+export const BreakpointsHandler = (): BreakpointsHandlerType => {
   let callbackHandler: BreakpointsHandlerCallback = emptyCallback
   const resizeHandler = ResizeHandler(true)
   let breakpoints = { ...initialBreakpoints }
