@@ -20,12 +20,9 @@ describe('generateProxies', () => {
       `/* tslint:disable */
 /* auto-generated angular directive proxies */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BalSharedModule } from '../shared';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from 'component-library';
-
-
+import { Components, FileUploadRejectedFile } from 'component-library';
 
 `,
     )
@@ -41,12 +38,9 @@ import { Components } from 'component-library';
       `/* tslint:disable */
 /* auto-generated angular directive proxies */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BalSharedModule } from '../shared';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '../../angular/dist/types/components';
-
-
+import { Components, FileUploadRejectedFile } from '../../angular/dist/types/components';
 
 `,
     )

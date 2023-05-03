@@ -1,5 +1,57 @@
 # @baloise/design-system-components-angular
 
+## 13.0.0
+
+### Major Changes
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - Remove Angular component modules, because of Zone.js optimization.
+  Tree-shaking is given by Stencil and therefor to have Angular component modules
+  does not have any advantages anymore.
+
+  **before**
+
+  ```typescript
+  import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+  import { BrowserModule } from '@angular/platform-browser'
+  import { AppComponent } from './app.component'
+  import { BalCoreModule, BalHeadingModule, BalButtonModule } from '@baloise/design-system-components-angular'
+
+  @NgModule({
+    declarations: [AppComponent],
+    imports: [BrowserModule, BalCoreModule.forRoot(), BalHeadingModule, BalButtonModule],
+    providers: [],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  })
+  export class AppModule {}
+  ```
+
+  **after**
+
+  Import the new module `BaloiseDesignSystemModule`, which adds all the components.
+  After remove all old component modules like `BalButtonModule` from your project.
+
+  ```typescript
+  import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+  import { BrowserModule } from '@angular/platform-browser'
+  import { AppComponent } from './app.component'
+  import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+  @NgModule({
+    declarations: [AppComponent],
+    imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+    providers: [],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  })
+  export class AppModule {}
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c)]:
+  - @baloise/design-system-components@13.0.0
+
 ## 12.13.1
 
 ### Patch Changes

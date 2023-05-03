@@ -25,7 +25,15 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
   table.addHeader(['Command', 'Description', 'Signature'])
 
   commands.forEach(command => {
-    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `\`${command.signature}\``])
+    const signature = command.signature
+      .split(',\n      ')
+      .join(', ')
+      .split(',\n    )')
+      .join(')')
+      .split('(\n      ')
+      .join('(')
+
+    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `\`${signature}\``])
   })
 
   content.push(...table.toMarkdown())

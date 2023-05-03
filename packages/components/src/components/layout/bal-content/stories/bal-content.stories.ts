@@ -26,27 +26,27 @@ const Template = args => ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  direction: '',
-  alignment: '',
+  layout: '',
+  align: '',
   space: '',
 }
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
 export const Alignment = Template.bind({})
 Alignment.args = {
-  direction: '',
-  alignment: 'center',
+  layout: '',
+  align: 'center',
   space: '',
 }
 Alignment.parameters = { ...component.sourceCode(Alignment), controls: { exclude: excludedControls } }
 
-export const Direction = Template.bind({})
-Direction.args = {
-  direction: 'row',
-  alignment: '',
+export const Layout = Template.bind({})
+Layout.args = {
+  layout: 'horizontal',
+  align: '',
   space: 'normal',
 }
-Direction.parameters = { ...component.sourceCode(Direction), controls: { exclude: excludedControls } }
+Layout.parameters = { ...component.sourceCode(Layout), controls: { exclude: excludedControls } }
 
 export const Space = args => ({
   components: {

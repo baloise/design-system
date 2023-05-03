@@ -98,39 +98,24 @@ To include the necessary CSS in a project, add the following to the root App com
 
 ### Import the ngModule
 
-Import the `BalCoreModule.forRoot()` and add it to your angular root module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-Import each angular module of the components you need one by one.
+Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
+To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
 
 **app.module.ts**
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { CommonModule } from '@angular/common'
-import {
-  BalCoreModule,
-  BalButtonModule,
-  BalHeadingModule,
-  BalFooterModule,
-} from '@baloise/design-system-components-angular'
-
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CommonModule,
-    // Enables the usage of ngModel on form components
-    FormsModule,
-    ReactiveFormsModule,
-    // Enables the Design System globally for your application
-    BalCoreModule.forRoot(),
-    // Import the Design System components
-    BalButtonModule,
-    BalHeadingModule,
-    BalFooterModule,
+    // Provide all components and value accessors to the app module.
+    BaloiseDesignSystemModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -139,6 +124,19 @@ import { AppComponent } from './app.component'
 })
 export class AppModule {}
 ```
+
+> **TIP** We recommend to import the `BaloiseDesignSystemModule` also in you `SharedModule` to provide the components and the value accessors.
+>
+> ```typescript
+> const sharedModules = [CommonModule, FormsModule, ReactiveFormsModule, BaloiseDesignSystemModule]
+>
+> @NgModule({
+>   declarations: [],
+>   imports: [...sharedModules],
+>   exports: [...sharedModules],
+> })
+> export class SharedModule {}
+> ```
 
 > **Internationalization**
 >

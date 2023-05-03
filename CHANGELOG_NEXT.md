@@ -47,7 +47,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.9](https://github.com/baloise/design-system/compare/v10.24.8...v10.24.9) (2022-10-11)
 
-
 ### Features
 
 * **bal-navigation:** added the target attr for meta and main tabs ([c252771](https://github.com/baloise/design-system/commit/c252771fad01be7436cdb042a9f2efdd10634d11))
@@ -55,12 +54,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.8](https://github.com/baloise/design-system/compare/v10.24.7...v10.24.8) (2022-10-11)
 
-
 ### Features
 
 * **bal-navigation-menu-list-item:** added the target attr for grey menu list headline ([ddc8339](https://github.com/baloise/design-system/commit/ddc8339de57fd27bae24d41f3a2bac022b0ab08c))
 * **bal-navigation-menu-list-item:** added the target attribute for items from grey lists ([773362e](https://github.com/baloise/design-system/commit/773362e2f1face1585ecbeae0c41ab0413900030))
-
 
 ### Bug Fixes
 
@@ -83,7 +80,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.5](https://github.com/baloise/design-system/compare/v10.23.2...v10.24.5) (2022-10-05)
 
-
 ### Bug Fixes
 
 * **card:** adjust tag and button alignment in the title. Closes [#547](https://github.com/baloise/design-system/issues/547) ([3d04ec2](https://github.com/baloise/design-system/commit/3d04ec218e33a7fc0aeccbc673fab962e77ab736))
@@ -95,7 +91,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** scroll to top when popover is opened and add space around the main nav. Closes [#533](https://github.com/baloise/design-system/issues/533) ([4f841bf](https://github.com/baloise/design-system/commit/4f841bf02363e441fd7811dad3da1ff790188893))
 
 ## 10.23.2 (2022-09-27)
-
 
 
 ## [10.24.7](https://github.com/baloise/design-system/compare/v10.24.6...v10.24.7) (2022-10-06)
@@ -159,7 +154,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **list:** synchronices the accrodion bodies is set ([f6bd2e5](https://github.com/baloise/design-system/commit/f6bd2e57cba71983bf97abd11d3541db75c6ea39))
 
-
 ### Bug Fixes
 
 * **bal-pagination:** add prop to disable controls and dots for context small ([#662](https://github.com/baloise/design-system/issues/662)) ([e684bd0](https://github.com/baloise/design-system/commit/e684bd02413fe165e1107b92f7a5c02e8a2b0c35))
@@ -217,7 +211,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
-
 ### Features
 
 * **bal-input-slider:** rename adjustments ([d8a5dea](https://github.com/baloise/design-system/commit/d8a5dea2dd4477efc6bb33b5caf1f333017853ff))
@@ -235,7 +228,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **css:** add close, check and forbidden list item style ([fdf3643](https://github.com/baloise/design-system/commit/fdf36433ad2b53dbda596017babfae7959f59621))
 * hide glitches during page load ([44069d9](https://github.com/baloise/design-system/commit/44069d905aa54657851adfcb4c7909fcc2664ed1))
 * show version of the DS in the window object ([eb16543](https://github.com/baloise/design-system/commit/eb16543b6dca1e59dee9aed9b3f23f2cb302aef6))
-
 
 ### Bug Fixes
 
@@ -7326,7 +7318,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 
-Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-8-x-to-9-x--page)
+Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### ⚠ BREAKING CHANGES
 
@@ -7379,7 +7371,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### ⚠ BREAKING CHANGES
 
 - **tabs:** `rounded` prop is removed use `interface` `tabs-sub`
-  - Follow the migration guide [Migration from 7.x to 8.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-7-x-to-8-x--page)
+  - Follow the migration guide [Migration from 7.x to 8.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -7400,14 +7392,14 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### BREAKING CHANGES
 
 - The unsupported browsers has been moved to [@baloise/web-app-unsupported-browsers](https://github.com/baloise/web-app-utils/tree/master/packages/unsupported-browsers).
-  - Follow the migration guide [Migration from 6.x to 7.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-6-x-to-7-x--page)
+  - Follow the migration guide [Migration from 6.x to 7.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 # [6.0.0](https://github.com/baloise/design-system/compare/v5.0.0...v6.0.0) (2021-12-28)
 
 ### BREAKING CHANGES
 
 - Added and improved the css helper classes.
-  - Follow the migration guide [Migration from 5.x to 6.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-5-x-to-6-x--page)
+  - Follow the migration guide [Migration from 5.x to 6.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -7424,7 +7416,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### BREAKING CHANGES
 
 - The component `bal-app` lost his props, due better integration for our proxy libraries.
-  - Follow the migration guide [Migration from 4.x to 5.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-4-x-to-5-x--page)
+  - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -7511,7 +7503,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### BREAKING CHANGES
 
 - The breakpoints and spacing helpers are adjusted to new guidlines and duplicated/old css class are removed.
-  - Follow the migration guide [Migration from 3.x to 4.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-3-x-to-4-x--page)
+  - Follow the migration guide [Migration from 3.x to 4.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -7531,7 +7523,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### BREAKING CHANGES
 
 - `has-sticky-footer` has to be set explicit to the `ba-app` component.
-  - Follow the migration guide [Migration from 2.x to 3.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-2-x-to-3-x--page)
+  - Follow the migration guide [Migration from 2.x to 3.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 
@@ -7550,7 +7542,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://baloise-design.ve
 ### BREAKING CHANGES
 
 - Moved utils, filters/pipes and validators to [web-app-utils](https://github.com/baloise/web-app-utils) packages.
-  - Follow the migration guide [Migration from 1.x to 2.x](https://baloise-design.vercel.app/components/migration/migration-from-1.x.html)
+  - Follow the migration guide [Migration from 1.x to 2.x](https://design.baloise.dev/components/migration/migration-from-1.x.html)
 
 ### Bug Fixes
 

@@ -1,7 +1,6 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
 import { deepReady } from '../../../utils/helpers'
 import { isPlatform } from '../../../utils/platform'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -21,7 +20,7 @@ export class NavbarMenu {
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
    * Meta and main are used for the website.
    */
-  @Prop() interface: Props.BalNavbarInterface = 'app'
+  @Prop() interface: BalProps.BalNavbarInterface = 'app'
 
   /**
    * @internal - If the menu is open it closes it and the other way around.

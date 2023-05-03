@@ -1,5 +1,3 @@
-import { Props } from '../../../types'
-
 type HtmlFunction = () => string
 
 export interface BalRadioOption {
@@ -9,7 +7,7 @@ export interface BalRadioOption {
   html?: HtmlFunction | string
   labelHidden: boolean
   flat: boolean
-  interface: Props.BalRadioInterface
+  interface: BalProps.BalRadioInterface
   disabled: boolean
   readonly: boolean
   required: boolean

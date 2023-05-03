@@ -1,10 +1,10 @@
 import { Component, h, Host, Method, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalConfigObserver, Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import {
   attachComponentToConfig,
+  BalConfigObserver,
   BalConfigState,
   BalIcons,
   defaultConfig,
@@ -39,12 +39,12 @@ export class Icon implements BalConfigObserver, ComponentElementState {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: Props.BalIconSize = ''
+  @Prop() size: BalProps.BalIconSize = ''
 
   /**
    * The theme type of the button.
    */
-  @Prop() color: Props.BalIconColor = ''
+  @Prop() color: BalProps.BalIconColor = ''
 
   /**
    * If `true` the icon has display inline style
@@ -117,17 +117,17 @@ export class Icon implements BalConfigObserver, ComponentElementState {
    * ------------------------------------------------------
    */
 
-  private get svgContent() {
+  private svgContent = (iconName: string) => {
     const hasIcons = Object.keys(this.icons).length > 0
-    if (hasIcons && this.name && this.name.length > 0) {
+    if (hasIcons && iconName && iconName.length > 0) {
       // We are doing this to avoid breaking change.
-      if (this.name.startsWith('alert')) {
-        this.name = 'alert-triangle'
+      if (iconName.startsWith('alert')) {
+        iconName = 'alert-triangle'
       }
-      if (this.name.startsWith('info')) {
-        this.name = 'info-circle'
+      if (iconName.startsWith('info')) {
+        iconName = 'info-circle'
       }
-      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(this.name))}`]
+      const icon: string | undefined = this.icons[`balIcon${upperFirst(camelCase(iconName))}`]
       if (icon) {
         return icon
       }
@@ -183,6 +183,7 @@ export class Icon implements BalConfigObserver, ComponentElementState {
   render() {
     const color = this.parseColor()
     const block = BEM.block('icon')
+    const svgContent = this.svgContent(this.name)
 
     return (
       <Host
@@ -201,7 +202,7 @@ export class Icon implements BalConfigObserver, ComponentElementState {
             ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
             ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
-          innerHTML={this.svgContent}
+          innerHTML={svgContent}
         ></div>
       </Host>
     )

@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
-import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-snackbar',
@@ -18,7 +17,7 @@ export class Snackbar {
   /**
    * The theme type of the snackbar.
    */
-  @Prop() color: Props.BalSnackbarColor = ''
+  @Prop() color: BalProps.BalSnackbarColor = ''
 
   /**
    * The duration of the snackbar
@@ -64,17 +63,17 @@ export class Snackbar {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * Emitted when snackbar is closed
    */
-  @Event() balClose!: EventEmitter<string>
+  @Event() balClose!: EventEmitter<BalEvents.BalSnackbarCloseDetail>
 
   /**
    * Emitted when the action button is clicked
    */
-  @Event() balAction!: EventEmitter<string>
+  @Event() balAction!: EventEmitter<BalEvents.BalSnackbarActionDetail>
 
   async componentWillLoad() {
     if (this.duration > 0) {
@@ -113,7 +112,7 @@ export class Snackbar {
     return `bal-snackbar__inner--is-${this.color}`
   }
 
-  get buttonType(): Props.BalButtonColor {
+  get buttonType(): BalProps.BalButtonColor {
     if (this.color === '') {
       return 'info'
     }

@@ -38,7 +38,7 @@ export class StageBackLink implements ComponentInterface {
           <bal-icon
             class="mr-x-small"
             name="caret-left"
-            size="xsmall"
+            size="x-small"
             inverted={this.inverted}
             shadow={this.shadow}
           ></bal-icon>

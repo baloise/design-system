@@ -11,13 +11,12 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { debounce } from '../../utils/helpers'
+import { debounce, raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
 import { MutationHandler } from '../../utils/observer'
 import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
 import { SwipeHandler } from '../../utils/swipe'
 import { BalSlide, ControlItem } from './bal-carousel.type'
-import { Events } from '../../types'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
@@ -36,9 +35,12 @@ export class Carousel implements ComponentInterface {
   private swipeHandler = SwipeHandler()
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
+  private borderEl?: HTMLDivElement
   private previousTransformValue = 0
+  private currentRaf: number | undefined
+  private carouselId = `bal-carousel-${CarouselIds++}`
 
-  @State() isLastSlideVisible = false
+  @State() isLastSlideVisible = true
   @State() areControlsHidden = !isPlatform('mobile')
 
   @Element() el!: HTMLElement
@@ -51,7 +53,7 @@ export class Carousel implements ComponentInterface {
   /**
    * Defines the active slide index.
    */
-  @Prop() value = 0
+  @Prop({ mutable: true }) value = 0
 
   /**
    * When how many slides are moved when going forward or backward.
@@ -75,6 +77,16 @@ export class Carousel implements ComponentInterface {
   @Prop() controlsOverflow = false
 
   /**
+   * If `true` the carousel can be used on dark background
+   */
+  @Prop() inverted = false
+
+  /**
+   * If `true` the carousel uses the full height
+   */
+  @Prop() fullHeight = false
+
+  /**
    * Defines the image aspect ratio.
    * Should be combined with the interface `product`
    */
@@ -96,9 +108,14 @@ export class Carousel implements ComponentInterface {
   @Prop() scrollY = true
 
   /**
+   * If `true` a light border is shown at the bottom.
+   */
+  @Prop() border = false
+
+  /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalCarouselChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCarouselChangeDetail>
 
   /**
    * LIFECYCLE
@@ -195,40 +212,63 @@ export class Carousel implements ComponentInterface {
    */
 
   private async animate(amount = 0, animated = true): Promise<boolean> {
-    if (this.containerEl && this.innerEl) {
-      const lastSlide = await this.buildSlide()
-
-      if (lastSlide) {
-        const containerWidth = this.innerEl.clientWidth || 0
-        const itemsWith = lastSlide.transformNext || 0
-        const noNeedForSlide = itemsWith <= containerWidth
-        // -1 one is needed for example when we use items per view 3 with 33.333%
-        const maxAmount = itemsWith - containerWidth - 1
-        const isLastSlideVisible = maxAmount <= amount
-        const isFirst = amount === 0
-        const hasSmallControls = this.controls === 'small'
-        const hasLargeControls = this.controls === 'large'
-
-        let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
-
-        if (!this.controlsOverflow && !isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
-          transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
-        }
-
-        this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
-        this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
-
-        const didAnimate = transformValue !== this.previousTransformValue
-        this.previousTransformValue = transformValue
-        this.isLastSlideVisible = isLastSlideVisible
-
-        if (!didAnimate) {
-          return Promise.resolve(false)
-        }
+    return new Promise(resolve => {
+      if (this.currentRaf !== undefined) {
+        cancelAnimationFrame(this.currentRaf)
       }
-    }
 
-    return Promise.resolve(true)
+      this.currentRaf = raf(async () => {
+        if (this.containerEl && this.innerEl) {
+          const lastSlide = await this.buildSlide()
+
+          if (lastSlide) {
+            const containerWidth = this.innerEl.clientWidth || 0
+            const itemsWith = lastSlide.transformNext || 0
+            const noNeedForSlide = itemsWith <= containerWidth
+            let maxAmount = itemsWith - containerWidth
+            let isLastSlideVisible = maxAmount <= amount
+            // -1 one is needed for example when we use items per view 3 with 33.333%
+            if (this.itemsPerView === 3) {
+              maxAmount = itemsWith - containerWidth - 1
+              isLastSlideVisible = maxAmount <= amount
+            }
+            const isFirst = amount === 0 || maxAmount <= 2
+
+            if (isFirst) {
+              this.value = 0
+              this.balChange.emit(this.value)
+            }
+
+            const hasSmallControls = this.controls === 'small'
+            const hasLargeControls = this.controls === 'large'
+
+            let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
+
+            if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
+              transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
+            }
+
+            this.containerEl.style.transitionDuration = animated ? '0.6s' : '0'
+            this.containerEl.style.transform = `translate3d(-${transformValue}px, 0px, 0px)`
+
+            const didAnimate = transformValue !== this.previousTransformValue
+            this.previousTransformValue = transformValue
+            this.isLastSlideVisible = isLastSlideVisible
+
+            if (this.borderEl) {
+              this.borderEl.style.transitionDuration = animated ? '0.6s' : '0'
+              this.borderEl.style.transform = `translate3d(${transformValue}px, 0px, 0px)`
+            }
+
+            if (!didAnimate) {
+              return resolve(false)
+            }
+
+            return resolve(true)
+          }
+        }
+      })
+    })
   }
 
   private async buildSlide(slideIndex?: number): Promise<BalSlide | undefined> {
@@ -281,7 +321,7 @@ export class Carousel implements ComponentInterface {
   }
 
   private hasShadow(): boolean {
-    return this.itemsPerView > 1 || this.itemsPerView === 'auto' || this.interface === 'card'
+    return this.itemsPerView === 'auto' || this.itemsPerView > 1 || this.interface === 'card'
   }
 
   private hasShadowLeft(): boolean {
@@ -337,6 +377,7 @@ export class Carousel implements ComponentInterface {
         class={{
           ...block.class(),
           ...block.modifier(this.interface).class(this.interface !== ''),
+          ...block.modifier(`full-height`).class(this.fullHeight),
           ...block.modifier('controls-sticky').class(this.controlsSticky),
           ...block.modifier(`controls-${this.controls}`).class(),
         }}
@@ -355,6 +396,8 @@ export class Carousel implements ComponentInterface {
             ...inner.class(),
             ...inner.modifier(`items-per-view-${this.itemsPerView}`).class(),
             ...inner.modifier(`is-${this.aspectRatio}`).class(),
+            ...inner.modifier(`inverted`).class(this.inverted),
+            ...inner.modifier(`full-height`).class(this.fullHeight),
             ...inner.modifier(`shadow-left`).class(this.hasShadowLeft()),
             ...inner.modifier(`shadow-right`).class(this.hasShadowRight()),
           }}
@@ -363,11 +406,24 @@ export class Carousel implements ComponentInterface {
           <div
             class={{
               ...container.class(),
+              ...container.modifier(`border`).class(this.border),
               ...container.modifier(`is-${this.aspectRatio}`).class(),
             }}
             ref={el => (this.containerEl = el)}
           >
             <slot></slot>
+            {this.border ? (
+              <div
+                id={`${this.carouselId}-border`}
+                class={{
+                  ...container.element('border').class(),
+                  ...container.element('border').modifier('inverted').class(this.inverted),
+                }}
+                ref={el => (this.borderEl = el)}
+              ></div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
 
@@ -385,6 +441,7 @@ export class Carousel implements ComponentInterface {
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
+            inverted={this.inverted}
             areControlsHidden={this.areControlsHidden}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
@@ -397,6 +454,7 @@ export class Carousel implements ComponentInterface {
           <SmallControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
+            inverted={this.inverted}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></SmallControl>
@@ -407,3 +465,5 @@ export class Carousel implements ComponentInterface {
     )
   }
 }
+
+let CarouselIds = 0

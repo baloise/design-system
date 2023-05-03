@@ -31,7 +31,7 @@
     color: var(--bal-color-text-grey-dark)
 
   +modifier(has-border)
-    border-bottom: 1px solid var(--bal-color-grey-2)
+    border-bottom: var(--bal-border-width-normal) solid var(--bal-color-grey-2)
 
 +block(data-label)
   position: relative
@@ -40,7 +40,7 @@
   flex: 1 1
   flex-basis: 100%
 
-  font-family: var(--bal-family-primary)
+  font-family: var(--bal-font-family-text)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
@@ -60,14 +60,14 @@
   min-height: 1.5rem
   overflow: visible !important
 
-  font-family: var(--bal-family-primary)
+  font-family: var(--bal-font-family-text)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
 
   &,
   & > div
-    font-family: var(--bal-family-primary)
+    font-family: var(--bal-font-family-text)
     font-weight: var(--bal-weight-regular)
     font-size: var(--bal-size-normal)
     line-height: 1.25rem

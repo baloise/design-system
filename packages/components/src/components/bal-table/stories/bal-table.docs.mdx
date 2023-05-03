@@ -3,7 +3,11 @@ import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import { Basic } from './bal-table.stories'
 
-<script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/dist/ag-grid-community.noStyle.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/styles/ag-grid.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/styles/ag-theme-alpine.css" />
+<link rel="stylesheet" href="assets/css/design-system-table.css" />
 
 <bal-doc-banner id="story--components-table--basic">Table</bal-doc-banner>
 
@@ -41,25 +45,45 @@ import { Basic } from './bal-table.stories'
 
 ### AgGrid
 
+For more advanced table layout we recommend to use the library [AG-Grid](https://www.ag-grid.com/).
+
 <Canvas>
   <Story id="components-table--ag-grid" />
 </Canvas>
 
+#### Installation
+
 To use the AG-Grid install the following packages:
 
-```bash
+```
 npm install --save @baloise/design-system-components-table ag-grid-community
 ```
 
-Next we need to link the stylesheet into our global scss file.
+To get the Baloise style import the following stylesheets:
 
 ```scss
-@import 'node_modules/@baloise/design-system-components-table/scss';
+@import 'ag-grid-community/styles/ag-grid';
+@import 'ag-grid-community/styles/ag-theme-alpine';
+@import '@baloise/design-system-components-table/css/design-system-table';
 ```
 
-The package has three render functions.
+> **TIP!**
+>
+> If you do now use `bal-table` as the AG-Grid container,
+> please set the class `ag-theme-alpine` to the AG-Grid element to get the Baloise styles.
 
-#### BalTableButtonRenderer
+Follow the further documentation of AG-Grid installation guides:
+
+- for [Javascript](https://www.ag-grid.com/javascript-data-grid/getting-started/)
+- for [Angular](https://www.ag-grid.com/angular-data-grid/getting-started/)
+- for [React](https://www.ag-grid.com/react-data-grid/getting-started/)
+- for [Vue](https://www.ag-grid.com/vue-data-grid/getting-started/)
+
+#### Custom Renderer
+
+The package provides three render functions to use components of the Design System inside the AG-Grid.
+
+##### BalTableButtonRenderer
 
 Renders a button into the grid.
 
@@ -96,7 +120,7 @@ interface BalTableButtonRendererOptions {
 }
 ```
 
-#### BalTableTagRenderer
+##### BalTableTagRenderer
 
 Renders a tag element into the grid.
 
@@ -123,7 +147,7 @@ interface BalTableTagRendererOptions {
 }
 ```
 
-#### BalTableTextRenderer
+##### BalTableTextRenderer
 
 Renders a text into the grid.
 
@@ -153,64 +177,6 @@ interface BalTableTextRendererOptions {
   iconRight?: (params: ICellRendererParams) => boolean
 }
 ```
-
-#### Further integrations
-
-##### Angular
-
-To use AG-Grid with angular install the package `ag-grid-angular`
-
-```bash
-npm install --save ag-grid-angular
-npm install # in certain circumstances npm will perform an "auto prune". This step ensures all expected dependencies are | present
-```
-
-After installing the AG-Grid add the component in our html component file.
-
-```html
-<ag-grid-angular
-  class="ag-theme-alpine"
-  style="width: 100%; height: 400px"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs"
-  (gridReady)="onGridReady($event)"
->
-</ag-grid-angular>
-```
-
-Define the `columnDefs` and `rowData` as described in the AG-Grid documentation. Moreover, if your table has 100% of width it is helpful to use the `gridApi.sizeColumnsToFit()` function to resize the table.
-
-```typescript
-import { GridApi, ColumnApi } from 'ag-grid-community'
-
-@Component({
-  selector: 'app-table-page',
-  templateUrl: './table-page.component.html',
-})
-export class TablePageComponent {
-  private gridApi!: GridApi
-  private gridColumnApi!: ColumnApi
-
-  columnDefs = [...]
-  rowData = [...]
-
-  constructor(private router: Router) {}
-
-  // every time the window gets resized the chart width gets adjusted if 100%.
-  onGridReady(params: { api: GridApi }) {
-    this.gridApi = params.api
-    this.gridApi.sizeColumnsToFit()
-    window.addEventListener('resize', () => {
-      setTimeout(() => this.gridApi.sizeColumnsToFit())
-    })
-  }
-}
-```
-
-**Links**
-
-- [More documentation to AG-Grid with Angular](https://www.ag-grid.com/angular-grid/getting-started/)
-- [Example implementation](https://github.com/baloise/design-system/tree/main/examples/angular)
 
 ## Component Api
 

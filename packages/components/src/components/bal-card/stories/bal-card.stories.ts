@@ -139,9 +139,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="purple-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigPurple" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Teaser Card</bal-heading>
             <bal-text>The item component can easily be combined with the card component to achieve a nice
             teaser layout.</bal-text>
@@ -154,9 +154,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="yellow-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigYellow" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Auto Height</bal-heading>
             <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
           </bal-content>
@@ -168,9 +168,9 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="red-light" fullheight>
       <bal-card-content>
-        <bal-stack direction="column" alignment="center" space="large">
+        <bal-stack layout="vertical" align="center" space="large">
           <bal-icon :svg="svgPigRed" color="auto" size="xx-large"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-heading level="x-large">Item Component</bal-heading>
             <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
           </bal-content>
@@ -248,7 +248,7 @@ export const CardVariations = args => ({
                     <bal-list-item-subtitle>Description</bal-list-item-subtitle>
                 </bal-list-item-content>
                 <bal-list-item-icon right>
-                    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
                 </bal-list-item-icon>
               </bal-list-item>
               <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
@@ -257,7 +257,7 @@ export const CardVariations = args => ({
                   <bal-list-item-subtitle>Description</bal-list-item-subtitle>
                 </bal-list-item-content>
                 <bal-list-item-icon right>
-                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                  <bal-icon name="nav-go-right" size="x-small"></bal-icon>
                 </bal-list-item-icon>
               </bal-list-item>
             </bal-list>

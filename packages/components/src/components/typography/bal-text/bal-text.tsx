@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { ComponentElementState } from '../../../utils/element-states'
 
@@ -18,12 +17,19 @@ export class Text implements ComponentInterface, ComponentElementState {
   /**
    * Defines the size of the paragraph
    */
-  @Prop() size: Props.BalTextSize = ''
+  @Prop() size: BalProps.BalTextSize = ''
 
   /**
    * If `true` the text has heading font family
    */
   @Prop() heading = false
+
+  /**
+   * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
+   * Please note that text overflow can only occur in block or inline-block level elements,
+   * as these elements require a width to overflow.
+   */
+  @Prop() noWrap = false
 
   /**
    * If `true` the text is bold
@@ -38,12 +44,12 @@ export class Text implements ComponentInterface, ComponentElementState {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: Props.BalTextColor = ''
+  @Prop() color: BalProps.BalTextColor = ''
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: Props.BalTextSpace = ''
+  @Prop() space: BalProps.BalTextSpace = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -131,6 +137,7 @@ export class Text implements ComponentInterface, ComponentElementState {
           class={{
             ...block.element('text').class(),
             ...block.element('text').modifier(`has-text-${color}`).class(),
+            ...block.element('text').modifier(`no-wrap`).class(this.noWrap),
             'is-size-small': this.size === 'small',
             'is-size-large': this.size === 'lead',
             'is-size-medium': this.size === 'block',

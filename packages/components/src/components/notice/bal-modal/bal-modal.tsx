@@ -5,7 +5,6 @@ import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
 import { ScrollHandler } from '../../../utils/scroll'
 import { getClassMap } from '../../../utils/css-classes'
-import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-modal',
@@ -21,7 +20,7 @@ export class Modal implements OverlayInterface {
   private isClickedOutsideOnMouseDown = false
   private isClickedOutsideOnMouseUp = false
 
-  private scrollHandler = ScrollHandler()
+  private bodyScrollHandler = ScrollHandler()
 
   @State() presented = false
 
@@ -31,7 +30,7 @@ export class Modal implements OverlayInterface {
   @Prop({ mutable: true }) overlayIndex!: number
 
   /** @internal */
-  @Prop() delegate?: Props.FrameworkDelegate
+  @Prop() delegate?: BalProps.FrameworkDelegate
 
   /** @internal */
   @Prop() dataTestId?: string
@@ -44,7 +43,7 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the space/padding of the modal
    */
-  @Prop() space: Props.BalModalSpace = ''
+  @Prop() space: BalProps.BalModalSpace = ''
 
   /**
    * If `true`, a backdrop will be displayed behind the modal.
@@ -59,12 +58,12 @@ export class Modal implements OverlayInterface {
   /**
    * The component to display inside of the modal.
    */
-  @Prop() component!: Props.ComponentRef
+  @Prop() component!: BalProps.ComponentRef
 
   /**
    * The data to pass to the modal component.
    */
-  @Prop() componentProps?: Props.ComponentProps
+  @Prop() componentProps?: BalProps.ComponentProps
 
   /**
    * Additional classes to apply for custom CSS. If multiple classes are
@@ -80,32 +79,32 @@ export class Modal implements OverlayInterface {
   /**
    * Emitted after the modal has presented.
    */
-  @Event({ eventName: 'balModalDidPresent' }) didPresent!: EventEmitter<void>
+  @Event({ eventName: 'balModalDidPresent' }) didPresent!: EventEmitter<BalEvents.BalModalDidPresentDetail>
 
   /**
    * Emitted before the modal has presented.
    */
-  @Event({ eventName: 'balModalWillPresent' }) willPresent!: EventEmitter<void>
+  @Event({ eventName: 'balModalWillPresent' }) willPresent!: EventEmitter<BalEvents.BalModalWillPresentDetail>
 
   /**
    * Emitted before the modal has dismissed.
    */
   @Event({ eventName: 'balModalWillDismiss' })
-  willDismiss!: EventEmitter<OverlayEventDetail>
+  willDismiss!: EventEmitter<BalEvents.BalModalWillDismissDetail>
 
   /**
    * Emitted after the modal has dismissed.
    */
   @Event({ eventName: 'balModalDidDismiss' })
-  didDismiss!: EventEmitter<OverlayEventDetail>
+  didDismiss!: EventEmitter<BalEvents.BalModalDidDismissDetail>
 
   connectedCallback() {
+    this.bodyScrollHandler.connect()
     prepareOverlay(this)
-    this.scrollHandler.connect()
   }
 
   disconnectedCallback() {
-    this.scrollHandler.disconnect()
+    this.bodyScrollHandler.disconnect()
   }
 
   /**
@@ -270,11 +269,11 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
-    this.scrollHandler.disable()
+    this.bodyScrollHandler.disable()
   }
 
   private unsetModalActiveOnBody() {
-    this.scrollHandler.enable()
+    this.bodyScrollHandler.enable()
   }
 
   private isClickedOutside(event: MouseEvent) {

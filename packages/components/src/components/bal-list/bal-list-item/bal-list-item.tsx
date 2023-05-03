@@ -10,7 +10,6 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import { AccordionState, Events, Props } from '../../../types'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -20,6 +19,7 @@ import {
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { raf, transitionEndAsync } from '../../../utils/helpers'
+import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-list-item',
@@ -85,7 +85,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   /**
    * Specifies where to open the linked document
    */
-  @Prop() target: Props.BalListItemTarget = '_self'
+  @Prop() target: BalProps.BalListItemTarget = '_self'
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -98,22 +98,22 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalListItemNavigateDetail>
 
   /**
    * Emitted when the state of the group is changing
    */
-  @Event() balGroupStateChanged!: EventEmitter<MouseEvent>
+  @Event() balGroupStateChanged!: EventEmitter<BalEvents.BalListItemGroupStateChangedDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalListItemWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalListItemWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalListItemDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalListItemDidAnimateDetail>
 
   /**
    * LIFECYCLE
@@ -271,19 +271,19 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
           const waitForTransition = transitionEndAsync(contentEl, 300)
           contentEl.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.accordionOpen)
 
           await waitForTransition
 
           this.state = AccordionState.Expanded
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.accordionOpen)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.accordionOpen)
       this.state = AccordionState.Expanded
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.accordionOpen)
     }
   }
 
@@ -319,19 +319,19 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         raf(async () => {
           const waitForTransition = transitionEndAsync(contentEl, 300)
           this.state = AccordionState.Collapsing
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.accordionOpen)
 
           await waitForTransition
 
           this.state = AccordionState.Collapsed
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.accordionOpen)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.accordionOpen)
       this.state = AccordionState.Collapsed
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.accordionOpen)
     }
   }
 

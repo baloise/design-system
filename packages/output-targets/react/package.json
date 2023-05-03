@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-react",
-  "version": "12.13.1",
+  "version": "13.0.0",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -17,7 +17,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "peerDependencies": {
-    "@stencil/core": "^2.9.0",
+    "@stencil/core": "^3.2.0",
     "react": "~17.0.2",
     "react-dom": "~17.0.2"
   },

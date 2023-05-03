@@ -1,11 +1,10 @@
 import path from 'path'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetAngular, PackageJSON } from './types'
-import { relativeImport, normalizePath, sortBy, readPackageJson, dashToPascalCase } from './utils'
+import { relativeImport, normalizePath, sortBy, readPackageJson } from './utils'
 import { createComponentDefinition } from './generate-angular-component'
 import { generateAngularDirectivesFile } from './generate-angular-directives-file'
 import generateValueAccessors from './generate-value-accessors'
-import { createComponentModule } from './generate-angular-module'
 
 export async function angularDirectiveProxyOutput(
   compilerCtx: CompilerCtx,
@@ -64,15 +63,7 @@ export function generateProxies(
   const imports = `/* tslint:disable */
 /* auto-generated angular directive proxies */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BalSharedModule } from '../shared';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';\n`
-
-  const componentImports = components.map(
-    c =>
-      `import { defineCustomElement as define${dashToPascalCase(c.tagName)} } from '${normalizePath(
-        outputTarget.componentCorePackage || '',
-      )}/dist/components/${c.tagName}';`,
-  )
 
   const typeImports = !outputTarget.componentCorePackage
     ? `import { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
@@ -81,13 +72,11 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';\n`
   const final: string[] = [
     imports,
     typeImports,
-    componentImports.join('\n'),
     components.map(createComponentDefinition(outputTarget.componentCorePackage!, distTypesDir, rootDir)).join('\n'),
-    components.map(createComponentModule(outputTarget.componentGroups)).join('\n'),
   ]
 
   return final.join('\n') + '\n'
 }
 
 const GENERATED_DTS = 'components.d.ts'
-const IMPORT_TYPES = 'Components'
+const IMPORT_TYPES = 'Components, FileUploadRejectedFile'

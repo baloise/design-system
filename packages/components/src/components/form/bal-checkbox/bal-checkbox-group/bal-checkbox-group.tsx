@@ -15,7 +15,6 @@ import {
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
-import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
@@ -65,7 +64,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface?: Props.BalCheckboxGroupInterface = undefined
+  @Prop() interface?: BalProps.BalCheckboxGroupInterface = undefined
 
   /**
    * If `true` it acts as the main form control
@@ -135,7 +134,6 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()
       }
-      this.balInput.emit(this.value)
     } else {
       this.onOptionChange()
     }
@@ -144,52 +142,47 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: Props.BalRadioGroupColumns = 1
+  @Prop() columns: BalProps.BalCheckboxGroupColumns = 1
 
   @Watch('columns')
-  columnsChanged(value: Props.BalRadioGroupColumns) {
+  columnsChanged(value: BalProps.BalCheckboxGroupColumns) {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
   }
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+  @Prop() columnsTablet: BalProps.BalCheckboxGroupColumns = 1
 
   @Watch('columnsTablet')
-  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+  columnsTabletChanged(value: BalProps.BalCheckboxGroupColumns) {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeTablet = value))
   }
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+  @Prop() columnsMobile: BalProps.BalCheckboxGroupColumns = 1
 
   @Watch('columnsMobile')
-  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+  columnsMobileChanged(value: BalProps.BalCheckboxGroupColumns) {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeMobile = value))
   }
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
-
-  /**
-   * @deprecated Emitted when the checked property has changed.
-   */
-  @Event() balInput!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxGroupChangeDetail>
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCheckboxGroupFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCheckboxGroupBlurDetail>
 
   /**
    * LIFECYCLE

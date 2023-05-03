@@ -1,15 +1,19 @@
 import docs from './bal-label.docs.mdx'
-import { BalComponentStory, sourceCode, withContent } from '../../../../stories/utils'
-import { BalLabel } from '../../../../../.storybook/vue/generated/components'
+import { BalComponentStory, sourceCode } from '../../../../stories/utils'
+import {
+  BalLabel,
+  BalInput,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Typography/Label',
   component: BalLabel,
-  // subcomponents: { BalRadio },
+  subcomponents: { BalInput, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   docs,
-  argTypes: {
-    ...withContent(),
-  },
   args: {},
 })
 
@@ -20,12 +24,11 @@ const excludedControls = []
 const Template = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-label v-bind="args">{{ args.content }}</bal-label>`,
+  template: `<bal-label v-bind="args">Label</bal-label>`,
 })
 
 export const Basic = Template.bind({})
 Basic.args = {
-  content: 'Label',
   required: undefined,
   invalid: false,
   disabled: false,
@@ -35,7 +38,6 @@ Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: exclud
 
 export const RequiredAndOptional = Template.bind({})
 RequiredAndOptional.args = {
-  content: 'Label',
   required: false,
   invalid: false,
   disabled: false,

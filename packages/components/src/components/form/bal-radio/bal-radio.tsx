@@ -9,10 +9,8 @@ import {
   Method,
   ComponentInterface,
   State,
-  Watch,
   Listen,
 } from '@stencil/core'
-import { Props, Events } from '../../../types'
 import { isDescendant } from '../../../utils/helpers'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
@@ -64,17 +62,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   @Prop() value?: any | null
 
   /**
-   * @deprecated If `true` the radio has no label
-   */
-  @Prop() isEmpty = undefined
-  @Watch('isEmpty') isEmptyHandler() {
-    if (this.isEmpty !== undefined) {
-      this.labelHidden = this.isEmpty
-      console.warn('[DEPRECATED] - Use label-hidden instead')
-    }
-  }
-
-  /**
    * Label of the radio item.
    */
   @Prop() label = ''
@@ -97,7 +84,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: Props.BalRadioInterface = 'radio'
+  @Prop() interface: BalProps.BalRadioInterface = 'radio'
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -137,22 +124,17 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioBlurDetail>
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balChange!: EventEmitter<BalEvents.BalRadioChangeDetail>
 
   /**
    * LIFECYCLE
@@ -181,7 +163,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   }
 
   componentWillLoad() {
-    this.isEmptyHandler()
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -337,7 +318,6 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
-      this.balClick.emit(ev)
       this.nativeInput?.focus()
       this.balChange.emit(this.checked)
       ev.preventDefault()

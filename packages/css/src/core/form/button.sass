@@ -58,6 +58,11 @@
     text-align: center
   &::-moz-focus-inner
     border: 0
+  // Wrap
+  &.has-no-wrap
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
   // Shadow
   &.has-blur-shadow:not(&.is-link)
     box-shadow: var(--bal-text-shadow-normal)

@@ -1,303 +1,57 @@
 @import '@baloise/design-system-css/sass/mixins'
-@import './bal-tabs__steps'
+@import './components/tab-nav'
+@import './components/tab-button'
+@import './components/tab-icon'
+@import './components/tab-label'
+@import './components/tab-select'
 
-+block(tabs)
-  display: inline-block
-  position: static
-  +modifier(context-navbar)
-    +desktop
-      height: 80px
-      .bal-tabs__tabs > ul
-        justify-content: flex-end
-  +modifier(context-navigation)
-    height: 64px
-    +widescreen
-      height: 80px
-  +modifier(fullwidth)
-    display: block
-    flex: 1
+.bal-tabs
+  display: block
+  min-width: 0
+  //
+  //
+  &--fullwidth
     width: 100%
-
-  +element(col-items)
-    padding-bottom: 0 !important
-    +modifier(vertical)
-      +tablet
-        padding-bottom: var(--bal-column-gap) !important
-    +modifier(context-meta)
-      padding: 0 !important
-  +element(col-content)
-    padding-top: 0 !important
-    padding-bottom: 0 !important
-    +modifier(vertical)
-      +tablet
-        padding-top: var(--bal-column-gap) !important
-        padding-bottom: var(--bal-column-gap) !important
-    +modifier(full)
-      padding-top: 0 !important
-      padding-bottom: 0 !important
-
-  +element(tabs)
-    +overflow-touch
-    +unselectable
-    position: relative
-    align-items: stretch
-    display: flex
-    font-size: var(--bal-size-normal)
-    justify-content: space-between
-    white-space: nowrap
-    overflow-x: auto
-    ul
-      align-items: center
+  //
+  // Vertical layout
+  &--vertical
+    display: block
+    +tablet
       display: flex
-      flex-grow: 1
-      flex-shrink: 0
-      justify-content: flex-start
-    +modifier(spaceless)
-      ul
-        margin-left: -0.75rem
-    +modifier(float-right)
-      +high-definition
-        ul
-          justify-content: flex-end
-    +modifier(vertical)
-      white-space: normal
-      ul
-        flex-direction: column
-        align-items: flex-start
-        max-width: 100%
-    +modifier(vertical-on-mobile)
-      +mobile
-        white-space: normal
-        ul
-          flex-direction: column
-          align-items: flex-start
-          max-width: 100%
-    +modifier(vertical-on-tablet)
-      white-space: normal
-      +touch
-        ul
-          flex-direction: column
-          align-items: flex-start
-          max-width: 100%
-
-    // tab items
-    +element(item)
-      display: flex
-      padding: 0
-      justify-content: center
-      align-items: center
-      display: flex
-      +modifier(hidden)
-        display: none
-      +modifier(fullwidth)
-        flex-grow: 1
-        flex-basis: 0
-      +modifier(vertical)
-        flex-grow: 1
-        flex-basis: 0
-        width: 100%
-        justify-content: flex-start
-      +modifier(vertical-on-mobile)
-        +mobile
-          flex-grow: 1
-          flex-basis: 0
-          width: 100%
-          justify-content: flex-start
-      +modifier(vertical-on-tablet)
-        +touch
-          flex-grow: 1
-          flex-basis: 0
-          width: 100%
-          justify-content: flex-start
-
-      +element(button)
-        position: relative
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        font-family: var(--bal-font-family-title)
-        font-weight: var(--bal-weight-bold)
-        gap: .5rem
-        padding: 1rem .75rem
-        flex-grow: 1
-        flex-basis: 0
-        width: 100%
-        outline: none !important
-        border-radius: var(--bal-radius-normal)
-        z-index: 1
-        -webkit-user-select: none
-        -khtml-user-select: none
-        -moz-user-select: none
-        -o-user-select: none
-        user-select: none
-        -webkit-user-drag: none
-        -khtml-user-drag: none
-        -moz-user-drag: none
-        -o-user-drag: none
-        user-drag: none
-        &:focus-visible
-          &:not(:active)
-            @extend %focus-inset-shadow
-        span
-          display: flex
-          position: relative
-          hyphens: auto
-          gap: 4px
-        +modifier(icon-horizontal)
-          flex-direction: row
-        +touch
-          gap: .5rem
-          padding: 1rem
-          +modifier(icon-horizontal)
-            flex-direction: column
-        +modifier(fullwidth)
-          flex-grow: 1
-          flex-basis: 0
-        +modifier(vertical)
-          align-items: flex-start
-          justify-content: flex-start
-          padding: .5rem 1rem
-        +modifier(vertical-on-mobile)
-          +mobile
-            align-items: flex-start
-            justify-content: flex-start
-            padding: .5rem 1rem
-        +modifier(vertical-on-tablet)
-          +touch
-            align-items: flex-start
-            justify-content: flex-start
-            padding: .5rem 1rem
-        +modifier(icon)
-          +mobile
-            gap: 0
-            font-size: var(--bal-size-small)
-          +touch
-            gap: .25rem
-            padding: .5rem
-        .bal-icon
-          margin-top: -1px
-        +modifier(context-navbar)
-          +desktop
-            height: 80px
-        +modifier(context-navigation)
-          flex-direction: row-reverse
-          height: 3rem
-          +high-definition
-            height: 4rem
-          +widescreen
-            height: 5rem
-        +modifier(context-meta)
-          height: 3rem
-          font-size: var(--bal-size-small)
-          font-family: var(--bal-font-family-text)
-          font-weight: var(--bal-weight-regular)
-          &.bal-tabs__tabs__item__button--active
-            font-weight: var(--bal-weight-bold)
-
-    +element(border)
-      position: absolute
-      background: var(--bal-color-border-grey)
-      border-radius: var(--bal-radius-normal)
-      height: 2px
-      width: 100%
-      bottom: 0
-      +modifier(vertical)
-        height: auto
-        width: 2px
-        top: 4px
-        bottom: 4px
-        left: 0
-      +modifier(vertical-on-mobile)
-        +mobile
-          height: auto
-          width: 2px
-          top: 4px
-          bottom: 4px
-          left: 0
-      +modifier(vertical-on-tablet)
-        +touch
-          height: auto
-          width: 2px
-          top: 4px
-          bottom: 4px
-          left: 0
-
-    +element(line)
-      position: absolute
-      background: var(--bal-color-primary)
-      border-radius: var(--bal-radius-normal)
-      height: 2px
-      bottom: 0
-      +modifier(inverted)
-        background: var(--bal-color-primary-inverted)
-      +modifier(context-navbar)
-        +touch
-          background: var(--bal-color-primary)
-      +modifier(ready)
-        transition: 0.4s
-      +modifier(vertical)
-        height: auto
-        width: 2px
-        top: 0
-        left: 0
-      +modifier(vertical-on-mobile)
-        +mobile
-          height: auto
-          width: 2px
-          top: 0
-          left: 0
-      +modifier(vertical-on-tablet)
-        +touch
-          height: auto
-          width: 2px
-          top: 0
-          left: 0
-
-+block(tabs-item)
+  //
+  // Navbar layout
+  &--navbar
+    +tablet
+      height: 100%
+.bal-tab-item
   width: 100%
   display: none
-  +modifier(active)
+  &--active
     display: block
 
-a.bal-tabs__tabs__item__button
-  &:hover
-    color: var(--bal-color-text-light-blue)
-    +fillSvg(var(--bal-color-light-blue-5))
-  &:active
-    color: var(--bal-color-text-primary-dark)
-    +fillSvg(var(--bal-color-primary-6))
+//
+// Accordion animation
+.bal-tabs--animated
+  transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
 
-a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--inverted
-  color: var(--bal-color-text-primary-inverted)
-  +fillSvg(var(--bal-color-primary-inverted))
-  &:hover
-    color: var(--bal-color-light-blue-2)
-    +fillSvg(var(--bal-color-light-blue-2))
-  &:active
-    color: var(--bal-color-text-info)
-    +fillSvg(var(--bal-color-info))
-  &:focus-visible
-    &:not(:active)
-      @extend %focus-inverted-inset-shadow
+  & .bal-tabs__tabs__content
+    transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
 
-a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--context-navbar
-  +touch
-    color: var(--bal-color-text-primary)
-    +fillSvg(var(--bal-color-primary))
-    &:hover
-      color: var(--bal-color-text-light-blue)
-      +fillSvg(var(--bal-color-light-blue-5))
-    &:active
-      color: var(--bal-color-text-primary-dark)
-      +fillSvg(var(--bal-color-primary-6))
+.bal-tabs--accordion
+  .bal-tabs__tabs__content
+    overflow: hidden
+    will-change: max-height
 
-a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--disabled
-  color: var(--bal-color-text-grey)
-  cursor: default
-  .bal-icon
-    +fillSvg(var(--bal-color-text-grey))
-  &:hover, &:focus, &:active
-    color: var(--bal-color-text-grey)
-    .bal-icon
-      +fillSvg(var(--bal-color-text-grey))
+  &.bal-tabs--collapsing .bal-tabs__tabs__content
+    max-height: 0 !important
+
+  &.bal-tabs--collapsed .bal-tabs__tabs__content
+    display: none
+
+  &.bal-tabs--expanding .bal-tabs__tabs__content
+    max-height: 0
+
+  @media (prefers-reduced-motion: reduce)
+    .bal-tabs,
+    .bal-tabs__tabs__content
+      transition: none !important

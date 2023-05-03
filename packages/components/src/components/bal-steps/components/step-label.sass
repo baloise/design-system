@@ -1,0 +1,27 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Step Label
+// --------------------------------------------------
+
+.bal-steps__nav__item__label
+  display: none
+  +tablet
+    display: block
+    font-family: var(--bal-font-family-title)
+    font-weight: var(--bal-weight-bold)
+    font-size: var(--bal-size-normal)
+    text-align: center
+    width: 100%
+    hyphens: auto
+    user-select: none
+    //
+    // Color status
+    color: var(--bal-color-text-primary-light)
+    &--done
+      color: var(--bal-color-text-primary)
+    &--active
+      color: var(--bal-color-text-primary)
+    &--failed
+      color: var(--bal-color-text-danger)
+    &--disabled
+      color: var(--bal-color-text-grey)

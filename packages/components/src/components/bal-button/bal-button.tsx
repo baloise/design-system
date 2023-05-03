@@ -1,5 +1,4 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { Props } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -13,12 +12,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: Props.BalButtonColor = 'primary'
+  @Prop() color: BalProps.BalButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop() elementType: Props.BalButtonElementType = 'button'
+  @Prop() elementType: BalProps.BalButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -28,7 +27,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: Props.BalButtonSize = ''
+  @Prop({ reflect: true }) size: BalProps.BalButtonSize = ''
 
   /**
    * Specifies the URL of the page the link goes to
@@ -39,7 +38,7 @@ export class Button implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -126,6 +125,11 @@ export class Button implements ComponentInterface {
   @Prop() iconRight = ''
 
   /**
+   * The label of the button will not break
+   */
+  @Prop() noWrap = false
+
+  /**
    * The name of the button, which is submitted with the form data.
    */
   @Prop() name?: string = ''
@@ -138,22 +142,22 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<BalEvents.BalButtonFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<BalEvents.BalButtonBlurDetail>
 
   /**
    * Emitted when the button has been  rendered.
    */
-  @Event() balDidRender!: EventEmitter<void>
+  @Event() balDidRender!: EventEmitter<BalEvents.BalButtonDidRenderDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -174,6 +178,7 @@ export class Button implements ComponentInterface {
   private get buttonCssClass(): { [className: string]: boolean } {
     return {
       'button': true,
+      // 'has-no-wrap': this.noWrap,
       [`is-${this.color}`]: true,
       'is-flat': this.flat,
       'is-square': this.square,
@@ -307,6 +312,7 @@ export class Button implements ComponentInterface {
           <span
             class={{
               'button-label': true,
+              'has-no-wrap': this.noWrap,
               'is-small': this.size === 'small',
             }}
             style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}

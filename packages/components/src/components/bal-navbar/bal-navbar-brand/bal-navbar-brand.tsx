@@ -1,5 +1,4 @@
-import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
-import { Events, Props } from '../../../types'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
 import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
 
@@ -7,7 +6,7 @@ import { BEM } from '../../../utils/bem'
   tag: 'bal-navbar-brand',
 })
 export class NavbarBrand {
-  private scrollHandler = ScrollHandler()
+  private bodyScrollHandler = ScrollHandler()
 
   @Element() el!: HTMLElement
 
@@ -19,26 +18,10 @@ export class NavbarBrand {
   @Prop() href?: string = ''
 
   /**
-   * @deprecated Link target
-   */
-  @Prop() linkTarget: Props.BalButtonTarget | '' = ''
-  @Watch('linkTarget')
-  hasShapeHandler() {
-    console.warn('[DEPRECATED] - Please use the property target instead')
-    this.migrateLinkTarget()
-  }
-
-  private migrateLinkTarget() {
-    if (this.linkTarget !== '') {
-      this.target = this.linkTarget
-    }
-  }
-
-  /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * @deprecated Use interface on bal-navbar instead.
@@ -62,26 +45,25 @@ export class NavbarBrand {
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
    * Meta and main are used for the website.
    */
-  @Prop() interface: Props.BalNavbarInterface = 'app'
+  @Prop() interface: BalProps.BalNavbarInterface = 'app'
 
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalNavbarBrandNavigationChangeDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalNavbarBrandWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalNavbarMenuWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalNavbarBrandDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalNavbarMenuDidAnimateDetail>
 
   connectedCallback() {
-    this.migrateLinkTarget()
-    this.scrollHandler.connect()
+    this.bodyScrollHandler.connect()
   }
 
   componentWillLoad() {
@@ -91,7 +73,7 @@ export class NavbarBrand {
   }
 
   disconnectedCallback() {
-    this.scrollHandler.disconnect()
+    this.bodyScrollHandler.disconnect()
   }
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
@@ -101,13 +83,13 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
-    this.balWillAnimate.emit()
     this.isMenuActive = isMenuActive
+    this.balWillAnimate.emit(this.isMenuActive)
 
     if (this.isMenuActive) {
-      this.scrollHandler.disable()
+      this.bodyScrollHandler.disable()
     } else {
-      this.scrollHandler.enable()
+      this.bodyScrollHandler.enable()
     }
 
     const navbar = this.el.closest('bal-navbar')
@@ -117,7 +99,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
-    this.balDidAnimate.emit()
+    this.balDidAnimate.emit(this.isMenuActive)
   }
 
   async onClick() {

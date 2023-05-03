@@ -14,7 +14,6 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { Events, Props } from '../../types'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({
@@ -31,7 +30,7 @@ export class Pagination {
   /**
    * Defines the layout of the pagination
    */
-  @Prop() interface: Props.BalPaginationInterface = ''
+  @Prop() interface: BalProps.BalPaginationInterface = ''
 
   /**
    * Disables component
@@ -78,7 +77,7 @@ export class Pagination {
   /**
    * Triggers when a page change happens
    */
-  @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<Events.BalPaginationChangeDetail>
+  @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<BalEvents.BalPaginationChangeDetail>
 
   componentWillLoad() {
     this._value = this.value

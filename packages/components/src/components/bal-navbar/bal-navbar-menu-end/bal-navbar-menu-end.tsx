@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -14,7 +13,7 @@ export class NavbarMenuEnd {
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
    * Meta and main are used for the website.
    */
-  @Prop() interface: Props.BalNavbarInterface = 'app'
+  @Prop() interface: BalProps.BalNavbarInterface = 'app'
 
   render() {
     const menuEndEl = BEM.block('navbar').element('menu').element('end')

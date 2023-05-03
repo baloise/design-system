@@ -1,0 +1,20 @@
+name: ⬆️ Upgrade Assistance
+description: Need Help Upgrading?
+title: ":arrow_up: upgrade <app> to <version>"
+labels: ["⬆️ upgrade"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Please describe the use case of this upgrade task.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/baloise/design-system/blob/next/.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
