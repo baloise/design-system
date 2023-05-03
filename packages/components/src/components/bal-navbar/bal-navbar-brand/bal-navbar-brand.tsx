@@ -53,12 +53,12 @@ export class NavbarBrand {
   @Event() balNavigate!: EventEmitter<BalEvents.BalNavbarBrandNavigationChangeDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
   @Event() balWillAnimate!: EventEmitter<BalEvents.BalNavbarMenuWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalNavbarMenuDidAnimateDetail>
 
@@ -83,8 +83,8 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
-    this.balWillAnimate.emit()
     this.isMenuActive = isMenuActive
+    this.balWillAnimate.emit(this.isMenuActive)
 
     if (this.isMenuActive) {
       this.bodyScrollHandler.disable()
@@ -99,7 +99,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
-    this.balDidAnimate.emit()
+    this.balDidAnimate.emit(this.isMenuActive)
   }
 
   async onClick() {

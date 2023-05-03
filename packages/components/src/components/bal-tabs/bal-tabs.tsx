@@ -176,12 +176,12 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Event() balChange!: EventEmitter<BalEvents.BalTabsChangeDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
   @Event() balWillAnimate!: EventEmitter<BalEvents.BalTabsWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalTabsDidAnimateDetail>
 
@@ -460,7 +460,7 @@ export class Tabs implements Loggable, BalConfigObserver {
         const lineElement = this.getLineElement()
         if (lineElement) {
           const isVertical = this.isVertical()
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.value)
           const waitForTransition = transitionEndAsync(lineElement, 300)
 
           if (isVertical) {
@@ -484,7 +484,7 @@ export class Tabs implements Loggable, BalConfigObserver {
             }
 
             await waitForTransition
-            this.balDidAnimate.emit()
+            this.balDidAnimate.emit(this.value)
           }
         }
       })
@@ -526,19 +526,19 @@ export class Tabs implements Loggable, BalConfigObserver {
           const contentHeight = contentElWrapper.offsetHeight
           const waitForTransition = transitionEndAsync(contentEl, 300)
           contentEl.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.value)
 
           await waitForTransition
 
           this.accordionState = AccordionState.Expanded
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.value)
         })
       })
     } else {
       this.accordionState = AccordionState.Expanded
-      this.balWillAnimate.emit()
-      this.balDidAnimate.emit()
+      this.balWillAnimate.emit(this.value)
+      this.balDidAnimate.emit(this.value)
     }
   }
 
@@ -567,19 +567,19 @@ export class Tabs implements Loggable, BalConfigObserver {
         raf(async () => {
           const waitForTransition = transitionEndAsync(contentEl, 300)
           this.accordionState = AccordionState.Collapsing
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.value)
 
           await waitForTransition
 
           this.accordionState = AccordionState.Collapsed
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.value)
         })
       })
     } else {
       this.accordionState = AccordionState.Collapsed
-      this.balWillAnimate.emit()
-      this.balDidAnimate.emit()
+      this.balWillAnimate.emit(this.value)
+      this.balDidAnimate.emit(this.value)
     }
   }
 

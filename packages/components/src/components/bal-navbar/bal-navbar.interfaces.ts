@@ -16,9 +16,9 @@ namespace BalEvents {
   export type BalNavbarBrandNavigationChangeDetail = MouseEvent
   export type BalNavbarBrandNavigationChange = BalNavbarBrandCustomEvent<BalNavbarBrandNavigationChangeDetail>
 
-  export type BalNavbarMenuWillAnimateDetail = void
+  export type BalNavbarMenuWillAnimateDetail = boolean
   export type BalNavbarMenuWillAnimate = BalNavbarBrandCustomEvent<BalNavbarMenuWillAnimateDetail>
 
-  export type BalNavbarMenuDidAnimateDetail = void
+  export type BalNavbarMenuDidAnimateDetail = boolean
   export type BalNavbarMenuDidAnimate = BalNavbarBrandCustomEvent<BalNavbarMenuDidAnimateDetail>
 }

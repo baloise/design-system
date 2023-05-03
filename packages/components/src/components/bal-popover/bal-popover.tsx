@@ -133,19 +133,19 @@ export class Popover implements ComponentInterface, Loggable {
   @Event() balChange!: EventEmitter<BalEvents.BalPopoverChangeDetail>
 
   /**
-   * @internal - Use this to close unused popovers.
-   */
-  @Event() balPopoverPrepare!: EventEmitter<string>
-
-  /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
   @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
+
+  /**
+   * @internal - Use this to close unused popovers.
+   */
+  @Event() balPopoverPrepare!: EventEmitter<string>
 
   /**
    * LIFECYCLE
@@ -291,7 +291,7 @@ export class Popover implements ComponentInterface, Loggable {
         this.menuInnerElement.scrollTo(0, 0)
       }
       this.balPopoverPrepare.emit(this.popoverId)
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.active)
       this.active = true
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -300,7 +300,7 @@ export class Popover implements ComponentInterface, Loggable {
       this.updatePopper()
 
       this.balChange.emit(this.active)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
   }
 
@@ -312,7 +312,7 @@ export class Popover implements ComponentInterface, Loggable {
     if (this.active || options.force) {
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.active)
       this.active = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -321,7 +321,7 @@ export class Popover implements ComponentInterface, Loggable {
       this.updatePopper()
 
       this.balChange.emit(this.active)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
   }
 

@@ -106,12 +106,12 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   @Event() balGroupStateChanged!: EventEmitter<BalEvents.BalListItemGroupStateChangedDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
   @Event() balWillAnimate!: EventEmitter<BalEvents.BalListItemWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalListItemDidAnimateDetail>
 
@@ -271,19 +271,19 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
 
           const waitForTransition = transitionEndAsync(contentEl, 300)
           contentEl.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.accordionOpen)
 
           await waitForTransition
 
           this.state = AccordionState.Expanded
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.accordionOpen)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.accordionOpen)
       this.state = AccordionState.Expanded
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.accordionOpen)
     }
   }
 
@@ -319,19 +319,19 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
         raf(async () => {
           const waitForTransition = transitionEndAsync(contentEl, 300)
           this.state = AccordionState.Collapsing
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.accordionOpen)
 
           await waitForTransition
 
           this.state = AccordionState.Collapsed
           contentEl.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.accordionOpen)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.accordionOpen)
       this.state = AccordionState.Collapsed
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.accordionOpen)
     }
   }
 

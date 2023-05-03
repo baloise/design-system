@@ -20,10 +20,10 @@ namespace BalEvents {
   export type BalTabsChangeDetail = string | undefined
   export type BalTabsChange = BalTabsCustomEvent<BalTabsChangeDetail>
 
-  export type BalTabsWillAnimateDetail = void
+  export type BalTabsWillAnimateDetail = string | undefined
   export type BalTabsWillAnimate = BalTabsCustomEvent<BalTabsWillAnimateDetail>
 
-  export type BalTabsDidAnimateDetail = void
+  export type BalTabsDidAnimateDetail = string | undefined
   export type BalTabsDidAnimate = BalTabsCustomEvent<BalTabsDidAnimateDetail>
 
   export interface BalTabItemCustomEvent<T> extends CustomEvent<T> {

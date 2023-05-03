@@ -24,10 +24,10 @@ namespace BalEvents {
   export type BalListItemGroupStateChangedDetail = MouseEvent
   export type BalListItemGroupStateChanged = BalListItemCustomEvent<BalListItemGroupStateChangedDetail>
 
-  export type BalListItemWillAnimateDetail = void
+  export type BalListItemWillAnimateDetail = boolean
   export type BalListItemWillAnimate = BalListItemCustomEvent<BalListItemWillAnimateDetail>
 
-  export type BalListItemDidAnimateDetail = void
+  export type BalListItemDidAnimateDetail = boolean
   export type BalListItemDidAnimate = BalListItemCustomEvent<BalListItemDidAnimateDetail>
 
   export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {

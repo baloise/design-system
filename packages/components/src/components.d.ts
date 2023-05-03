@@ -4158,7 +4158,13 @@ declare namespace LocalJSX {
           * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
         "onBalDidAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
         "onBalWillAnimate"?: (event: BalAccordionCustomEvent<BalEvents.BalAccordionWillAnimateDetail>) => void;
         /**
           * BalIcon of the open trigger button
@@ -5685,6 +5691,9 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        /**
+          * Emitted after the animation has finished
+         */
         "onBalDidAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemDidAnimateDetail>) => void;
         /**
           * Emitted when the state of the group is changing
@@ -5694,6 +5703,9 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemNavigateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
         "onBalWillAnimate"?: (event: BalListItemCustomEvent<BalEvents.BalListItemWillAnimateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
@@ -5852,11 +5864,17 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * Emitted after the animation has finished
+         */
         "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuDidAnimateDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarBrandNavigationChangeDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
         "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<BalEvents.BalNavbarMenuWillAnimateDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
@@ -6230,8 +6248,14 @@ declare namespace LocalJSX {
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
         "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
+        /**
+          * Emitted before the animation starts
+         */
         "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
@@ -6896,7 +6920,13 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<BalEvents.BalTabsChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
         "onBalDidAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
         "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.

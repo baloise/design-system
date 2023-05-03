@@ -40,9 +40,9 @@ namespace BalEvents {
   export type BalPopoverChangeDetail = boolean
   export type BalPopoverChange = BalPopoverCustomEvent<BalPopoverChangeDetail>
 
-  export type BalPopoverWillAnimateDetail = void
+  export type BalPopoverWillAnimateDetail = boolean
   export type BalPopoverWillAnimate = BalPopoverCustomEvent<BalPopoverWillAnimateDetail>
 
-  export type BalPopoverDidAnimateDetail = void
+  export type BalPopoverDidAnimateDetail = boolean
   export type BalPopoverDidAnimate = BalPopoverCustomEvent<BalPopoverDidAnimateDetail>
 }
