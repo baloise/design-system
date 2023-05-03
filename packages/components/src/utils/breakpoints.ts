@@ -18,7 +18,7 @@ const emptyCallback = (_breakpoints: Breakpoints) => {
   // empty callback
 }
 
-const defaultBreakpoints: Breakpoints = {
+export const initialBreakpoints: Breakpoints = {
   mobile: false,
   tablet: false,
   touch: false,
@@ -28,10 +28,15 @@ const defaultBreakpoints: Breakpoints = {
   fullhd: false,
 }
 
-export const BreakpointsHandler = () => {
+export type BreakpointsHandlerType = () => {
+  connect: (callback: BreakpointsHandlerCallback) => void
+  disconnect: () => void
+}
+
+export const BreakpointsHandler: BreakpointsHandlerType = () => {
   let callbackHandler: BreakpointsHandlerCallback = emptyCallback
   const resizeHandler = ResizeHandler(true)
-  let breakpoints = { ...defaultBreakpoints }
+  let breakpoints = { ...initialBreakpoints }
 
   function onResize() {
     resizeHandler(() => {
@@ -61,7 +66,7 @@ export const BreakpointsHandler = () => {
       if (isWindowDefined()) {
         window.removeEventListener('resize', onResize)
       }
-      breakpoints = { ...defaultBreakpoints }
+      breakpoints = { ...initialBreakpoints }
       callbackHandler = emptyCallback
     },
   }
