@@ -98,7 +98,18 @@ export class SharedModule {}
 npm install @baloise/web-app-ng-utils@4
 ```
 
-> **TIP**
+6. If you used **NgModel** with `bal-tabs`, `bal-accordion` or `bal-popover` then replace them with a normal binding, since they are not considered as form controls.
+
+<DiffSource
+  code={`- <bal-tabs [(NgModel)]="selectedTab">
++ <bal-tabs [value]="selectedTab" balChange="onTabChanged($event)">
+    <bal-tab-item done value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+  </bal-tabs>`}
+/>
+
+<hr />
+
+> **More Information**
 >
 > - Checkout our example upgrade project [baloise-incubator/ng-upgrade-v13](https://github.com/baloise-incubator/ng-upgrade-v13)
 > - If you use `standalone` components you need to import the `BaloiseDesignSystemModule`.

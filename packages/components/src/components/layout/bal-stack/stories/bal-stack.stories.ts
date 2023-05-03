@@ -293,3 +293,26 @@ TeaserCards.parameters = {
   ...component.sourceCode(TeaserCards),
   controls: { exclude: excludedControls },
 }
+
+export const StackedTabs = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-stack v-bind="args">
+  <bal-tabs value="tab-a">
+    <bal-tab-item value="tab-a" label="Tab A Tab A Tab A"></bal-tab-item>
+    <bal-tab-item value="tab-b" label="Tab B Tab B Tab B"></bal-tab-item>
+    <bal-tab-item value="tab-c" label="Tab C Tab C Tab C"></bal-tab-item>
+    <bal-tab-item value="tab-d" label="Tab D Tab D Tab D"></bal-tab-item>
+    <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E"></bal-tab-item>
+    <bal-tab-item value="tab-f" label="Tab F Tab F Tab F Tab F Tab F Tab F"></bal-tab-item>
+    <bal-tab-item value="tab-g" label="Tab G Tab G Tab G Tab G Tab G Tab G"></bal-tab-item>
+  </bal-tabs>
+  <bal-button no-wrap>Click me!</bal-button>
+</bal-stack>`,
+})
+StackedTabs.args = {
+  layout: '',
+  align: 'center',
+  space: 'normal',
+}
+StackedTabs.parameters = { ...component.sourceCode(StackedTabs), controls: { exclude: excludedControls } }
