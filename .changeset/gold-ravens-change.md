@@ -2,7 +2,7 @@
 '@baloise/design-system-components': major
 ---
 
-scroll handler blocks scrolling now with JS instead of CSS.
+improved scroll handler blocks scrolling with only CSS.
 With that we are able to remember the last scroll position of the user.
 
 **before**
