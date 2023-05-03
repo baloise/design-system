@@ -4,6 +4,7 @@ import { BEM } from '../../../utils/bem'
 export interface LargeControlProps {
   isFirst: boolean
   isLast: boolean
+  inverted: boolean
   areControlsHidden: boolean
   onPreviousClick: () => void
   onNextClick: () => void
@@ -12,6 +13,7 @@ export interface LargeControlProps {
 export const LargeControl: FunctionalComponent<LargeControlProps> = ({
   isFirst,
   isLast,
+  inverted,
   areControlsHidden,
   onNextClick,
   onPreviousClick,
@@ -36,6 +38,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         square
         icon="nav-go-left"
         rounded
+        inverted={inverted}
         onClick={() => onPreviousClick()}
         disabled={isFirst}
         data-testid="bal-carousel-control-left"
@@ -49,6 +52,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         square
         icon="nav-go-right"
         rounded
+        inverted={inverted}
         onClick={() => onNextClick()}
         disabled={isLast}
         data-testid="bal-carousel-control-right"

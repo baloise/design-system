@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -12,14 +11,21 @@ export class Heading {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop() level: Props.BalHeadingLevel = 'h1'
+  @Prop() level: BalProps.BalHeadingLevel = 'h1'
 
   /**
    * Make the visual style mimic a specific heading level.
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel?: Props.BalHeadingLevel
+  @Prop() visualLevel?: BalProps.BalHeadingLevel
+
+  /**
+   * When true, the text will be truncated with a text overflow ellipsis instead of wrapping.
+   * Please note that text overflow can only occur in block or inline-block level elements,
+   * as these elements require a width to overflow.
+   */
+  @Prop() noWrap = false
 
   /**
    * If `true` the heading gets displayed slimmer.
@@ -34,7 +40,7 @@ export class Heading {
   /**
    * The theme type of the toast.
    */
-  @Prop() color: Props.BalHeadingColor = ''
+  @Prop() color: BalProps.BalHeadingColor = ''
 
   /**
    * If `true` the color gets inverted for dark backgrounds
@@ -47,7 +53,7 @@ export class Heading {
   @Prop() shadow = false
 
   private getFontSize(): string {
-    const mapSize = (size: Props.BalHeadingLevel) => {
+    const mapSize = (size: BalProps.BalHeadingLevel) => {
       const sizes: any = {
         'display': 'xxxxx-large',
         'display-2': 'xxxx-large',
@@ -91,6 +97,7 @@ export class Heading {
         <Heading
           class={{
             ...bemTextEl.class(),
+            ...bemTextEl.modifier('no-wrap').class(this.noWrap),
             ...bemTextEl.modifier('subtitle').class(this.subtitle),
             ...bemTextEl.modifier('shadow').class(this.shadow),
             ...bemTextEl.modifier(`color-${this.getFontColor()}`).class(this.getFontColor() !== ''),

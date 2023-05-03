@@ -1,5 +1,5 @@
 import { byTestId } from './selectors.util'
-export { byTestId, dataTestSelector } from './selectors.util'
+export { byTestId, dataTestSelector, parseDataTestID } from './selectors.util'
 
 /**
  * Selectors
@@ -247,15 +247,25 @@ export const selectors = {
      */
     main: 'div.modal',
   },
+  steps: {
+    /**
+     * Step option
+     */
+    option: byTestId('bal-steps-option'),
+    /**
+     * Step option label
+     */
+    optionLabel: byTestId('bal-steps-option-label'),
+  },
   tabs: {
     /**
-     * Tab item element.
+     * Tab item.
      */
-    tabItems: 'li.data-test-tab-item',
+    item: byTestId('bal-tabs-item'),
     /**
-     * Tab action element.
+     * Tab item label.
      */
-    action: '.data-test-tabs-action',
+    itemLabel: byTestId('bal-tabs-item-label'),
   },
   toast: {
     /**

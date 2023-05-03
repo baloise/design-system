@@ -50,6 +50,18 @@ Cypress.Commands.add('disableAnimation', () => {
   })
 })
 
+Cypress.Commands.add('disableLogger', () => {
+  cy.window({ log: false }).then(win => {
+    ;(win as any).BaloiseDesignSystem.config.logger = {
+      components: [],
+      event: false,
+      lifecycle: false,
+      render: false,
+      custom: false,
+    }
+  })
+})
+
 Cypress.Commands.add('waitForDesignSystem', () => {
   cy.document({ log: false }).then(document => document.fonts.ready)
 
@@ -69,6 +81,7 @@ Cypress.Commands.add('waitForDesignSystem', () => {
       expect($el, 'if bal-app is ready').to.eq('')
     })
     .disableAnimation()
+    .disableLogger()
 
   cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })

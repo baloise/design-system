@@ -1,6 +1,5 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { Events } from '../../../types'
 import { debounceEvent } from '../../../utils/helpers'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
@@ -83,32 +82,27 @@ export class InputSlider {
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | number | null>
+  @Event() balInput!: EventEmitter<BalEvents.BalInputSliderInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputSliderBlurDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalInputSliderKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputSliderFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputSliderChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalInputSliderChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -224,12 +218,6 @@ export class InputSlider {
     this.balChange.emit(this.value)
   }
 
-  private onClick = (ev: MouseEvent) => {
-    if (!this.disabled && !this.readonly) {
-      this.balClick.emit(ev)
-    }
-  }
-
   private getNumberOfSteps() {
     const steps = []
     for (let step = 0; step < this.numberOfSteps; step++) {
@@ -311,7 +299,6 @@ export class InputSlider {
             onInput={this.onInput}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
-            onClick={this.onClick}
             onKeyPress={e => this.balKeyPress.emit(e)}
             data-testid="bal-input-slider"
           />

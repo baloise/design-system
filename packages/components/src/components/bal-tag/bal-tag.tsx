@@ -1,7 +1,6 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
-import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
@@ -18,12 +17,12 @@ export class Tag {
   /**
    * The theme type of the tag.
    */
-  @Prop() color: Props.BalTagColor = ''
+  @Prop() color: BalProps.BalTagColor = ''
 
   /**
    * The size of the tag element
    */
-  @Prop() size: Props.BalTagSize = ''
+  @Prop() size: BalProps.BalTagSize = ''
 
   /**
    * The theme type of the tag.
@@ -43,14 +42,13 @@ export class Tag {
   /**
    * Choosing left or center the tag is aligned to that side in the bal-card.
    */
-  @Prop() position: Props.BalTagPlacement = 'left'
+  @Prop() position: BalProps.BalTagPlacement = 'left'
   /**
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
 
   /**
-   * @deprecated
    * @internal
    * Sets background color to transparent
    */
@@ -59,7 +57,7 @@ export class Tag {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<Events.BalTagCloseClickDetail>
+  @Event() balCloseClick!: EventEmitter<BalEvents.BalTagCloseClickDetail>
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])

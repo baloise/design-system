@@ -33,16 +33,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### 10.13.4 (2022-06-23)
 
-
 ### [10.13.5](https://github.com/baloise/design-system/compare/v10.13.4...v10.13.5) (2022-07-05)
 
 ### Bug Fixes
 
 * claim number formatter can accept small x and transfer it uppercase ([4b4b3e7](https://github.com/baloise/design-system/commit/4b4b3e7d43427e41ae39cc185042e5c6680a0c0c))
 
-
 ### [10.13.4](https://github.com/baloise/design-system/compare/v10.13.3...v10.13.4) (2022-06-23)
-
 
 ### Bug Fixes
 
@@ -760,7 +757,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 
-Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/story/migration-migration-from-8-x-to-9-x--page)
+Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### ⚠ BREAKING CHANGES
 
@@ -813,7 +810,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### ⚠ BREAKING CHANGES
 
 - **tabs:** `rounded` prop is removed use `interface` `tabs-sub`
-  - Follow the migration guide [Migration from 7.x to 8.x](https://design.baloise.dev/?path=/story/migration-migration-from-7-x-to-8-x--page)
+  - Follow the migration guide [Migration from 7.x to 8.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -834,14 +831,14 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The unsupported browsers has been moved to [@baloise/web-app-unsupported-browsers](https://github.com/baloise/web-app-utils/tree/master/packages/unsupported-browsers).
-  - Follow the migration guide [Migration from 6.x to 7.x](https://design.baloise.dev/?path=/story/migration-migration-from-6-x-to-7-x--page)
+  - Follow the migration guide [Migration from 6.x to 7.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 # [6.0.0](https://github.com/baloise/design-system/compare/v5.0.0...v6.0.0) (2021-12-28)
 
 ### BREAKING CHANGES
 
 - Added and improved the css helper classes.
-  - Follow the migration guide [Migration from 5.x to 6.x](https://design.baloise.dev/?path=/story/migration-migration-from-5-x-to-6-x--page)
+  - Follow the migration guide [Migration from 5.x to 6.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -858,7 +855,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The component `bal-app` lost his props, due better integration for our proxy libraries.
-  - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/story/migration-migration-from-4-x-to-5-x--page)
+  - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -945,7 +942,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The breakpoints and spacing helpers are adjusted to new guidlines and duplicated/old css class are removed.
-  - Follow the migration guide [Migration from 3.x to 4.x](https://design.baloise.dev/?path=/story/migration-migration-from-3-x-to-4-x--page)
+  - Follow the migration guide [Migration from 3.x to 4.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ### Features
 
@@ -965,7 +962,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - `has-sticky-footer` has to be set explicit to the `ba-app` component.
-  - Follow the migration guide [Migration from 2.x to 3.x](https://design.baloise.dev/?path=/story/migration-migration-from-2-x-to-3-x--page)
+  - Follow the migration guide [Migration from 2.x to 3.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v10--page)
 
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 

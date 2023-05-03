@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -21,7 +20,7 @@ export class Navbar {
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
    * Meta and main are used for the website.
    */
-  @Prop() interface: Props.BalNavbarInterface = 'app'
+  @Prop() interface: BalProps.BalNavbarInterface = 'app'
 
   @Watch('interface')
   interfaceHandler() {
@@ -66,6 +65,7 @@ export class Navbar {
           role="navigation"
           aria-label="main navigation"
           class={{
+            ...navbarEl.element('nav').class(),
             container: true,
             [`is-${this.container}`]: this.container !== '',
           }}

@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
-import { Props } from '../../../types'
 import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
@@ -37,7 +36,7 @@ export class TabItem {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * If `true` a small red bubble is added to the tab.
@@ -50,19 +49,9 @@ export class TabItem {
   @Prop({ reflect: true }) disabled = false
 
   /**
-   * If `true` the step is marked as done.
-   */
-  @Prop({ reflect: true }) done = false
-
-  /**
    * If `true` the step is hidden.
    */
   @Prop({ reflect: true }) hidden = false
-
-  /**
-   * If `true` the step is marked as failed.
-   */
-  @Prop({ reflect: true }) failed = false
 
   /**
    * Tell's if the linking is done by a router.
@@ -77,7 +66,7 @@ export class TabItem {
   /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalTabItemNavigateDetail>
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)
@@ -108,9 +97,7 @@ export class TabItem {
       target: this.target,
       active: this.active,
       disabled: this.disabled,
-      done: this.done,
       hidden: this.hidden,
-      failed: this.failed,
       bubble: this.bubble,
       passed: false,
       prevent: this.prevent,
@@ -122,9 +109,10 @@ export class TabItem {
   render() {
     return (
       <Host
+        role="tabpanel"
         class={{
-          'bal-tabs-item': true,
-          'bal-tabs-item--active': this.isActive,
+          'bal-tab-item': true,
+          'bal-tab-item--active': this.isActive,
         }}
       >
         <slot />

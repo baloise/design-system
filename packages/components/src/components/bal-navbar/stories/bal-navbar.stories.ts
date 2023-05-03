@@ -76,7 +76,7 @@ export const Basic = args => ({
   <bal-navbar-brand href="/" target="_blank">App Header</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
-      <bal-tabs interface="navbar" inverted v-model="myActiveTab">
+      <bal-tabs interface="navbar" v-model="myActiveTab">
         <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
         <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
         <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
@@ -196,7 +196,7 @@ export const Simple = args => ({
         </bal-popover-content>
       </bal-popover>
       <bal-button :square="square" href="tel://00800 24 800 800" color="light" inverted icon="call">
-        <span class="is-hidden-mobile">00800 24 800 800</span>
+        <span class="is-hidden-mobile">Call us</span>
       </bal-button>
     </bal-navbar-menu-end>
   </bal-navbar-menu>

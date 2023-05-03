@@ -13,6 +13,14 @@ export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
   return typeof el === 'object' && (el as any).length > 0 && (el as unknown as JQuery).hasClass(name)
 }
 
+export const hasTestId = (el: Cypress.Chainable<JQuery>, testId: string) => {
+  if (typeof el === 'object' && (el as any).length > 0) {
+    const dataTestId = (el as unknown as JQuery).data('testid')
+    return dataTestId === testId
+  }
+  return false
+}
+
 export const isLabel: isElementType = el => isElement(el, 'LABEL')
 export const isAccordion: isElementType = el => isElement(el, 'BAL-ACCORDION')
 export const isButton: isElementType = el => isElement(el, 'BAL-BUTTON')
@@ -26,6 +34,7 @@ export const isRadio: isElementType = el => isElement(el, 'BAL-RADIO')
 export const isSelect: isElementType = el => isElement(el, 'BAL-SELECT')
 export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
+export const isSteps: isElementType = el => isElement(el, 'BAL-STEPS')
 export const isSlider: isElementType = el => isElement(el, 'BAL-INPUT-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
 export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')

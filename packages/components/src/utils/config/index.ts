@@ -1,7 +1,7 @@
-import { BalConfigObserver } from '../../types'
 import { isWindowDefined } from '../browser'
 import { Config } from './config'
 import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
+import { BalConfigObserver } from './observable/observer'
 
 export * from './initialize'
 export * from './config.types'

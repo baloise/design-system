@@ -13,7 +13,6 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
-import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
@@ -78,13 +77,12 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Watch('value')
   valueChanged() {
     this.onOptionChange()
-    this.balInput.emit(this.value)
   }
 
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface?: Props.BalRadioGroupInterface = undefined
+  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
 
   /**
    * Displays the checkboxes vertically
@@ -146,52 +144,47 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: Props.BalRadioGroupColumns = 1
+  @Prop() columns: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columns')
-  columnsChanged(value: Props.BalRadioGroupColumns) {
+  columnsChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
   }
 
   /**
    * Defines the column size for tablet and bigger like the grid.
    */
-  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+  @Prop() columnsTablet: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columnsTablet')
-  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+  columnsTabletChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
   }
 
   /**
    * Defines the column size for mobile and bigger like the grid.
    */
-  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+  @Prop() columnsMobile: BalProps.BalRadioGroupColumns = 1
 
   @Watch('columnsMobile')
-  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+  columnsMobileChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeMobile = value))
   }
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
-
-  /**
-   * Emitted when the checked property has changed.
-   */
-  @Event() balInput!: EventEmitter<Events.BalRadioGroupChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalRadioGroupChangeDetail>
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioGroupFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioGroupBlurDetail>
 
   /**
    * LIFECYCLE

@@ -19,7 +19,7 @@ export class Hint implements BalConfigObserver {
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
 
-  private scrollHandler = ScrollHandler()
+  private bodyScrollHandler = ScrollHandler()
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
@@ -48,8 +48,8 @@ export class Hint implements BalConfigObserver {
   }
 
   connectedCallback() {
+    this.bodyScrollHandler.connect()
     attachComponentToConfig(this)
-    this.scrollHandler.connect()
   }
 
   componentDidRender() {
@@ -57,8 +57,8 @@ export class Hint implements BalConfigObserver {
   }
 
   disconnectedCallback() {
+    this.bodyScrollHandler.disconnect()
     detachComponentToConfig(this)
-    this.scrollHandler.disconnect()
   }
 
   /**
@@ -108,7 +108,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.present()
     }
     if (this.isMobile) {
-      this.scrollHandler.disable()
+      this.bodyScrollHandler.disable()
     }
     this.isActive = true
   }
@@ -122,7 +122,7 @@ export class Hint implements BalConfigObserver {
       this.popoverElement.dismiss()
     }
     if (this.isMobile) {
-      this.scrollHandler.enable()
+      this.bodyScrollHandler.enable()
     }
     this.isActive = false
   }

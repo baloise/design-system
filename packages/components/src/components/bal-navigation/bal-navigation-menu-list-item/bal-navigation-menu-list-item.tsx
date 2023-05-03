@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Props } from '../../../types'
 import { Attributes } from '../../../utils/attributes'
 
 @Component({
@@ -9,7 +8,7 @@ import { Attributes } from '../../../utils/attributes'
 export class NavigationMenuListItem {
   @Prop() href?: string
   @Prop() tracking: Attributes = {}
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   render() {
     const navMenuListItemEl = BEM.block('nav').element('menu').element('list').element('item')

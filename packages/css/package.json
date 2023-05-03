@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/baloise/design-system/issues"
   },
-  "homepage": "https://baloise-design.vercel.app",
+  "homepage": "https://design.baloise.dev",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
@@ -42,7 +42,6 @@
   "style": "css/baloise-design-system.css",
   "files": [
     "css/",
-    "scss/",
     "sass/",
     "src/"
   ],

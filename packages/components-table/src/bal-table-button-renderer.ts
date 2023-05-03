@@ -1,10 +1,9 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import type { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
 import { parseValue } from './utils/parsing'
 
 interface BalTableButtonRendererOptions {
-  color?: (params: ICellRendererParams) => Props.BalButtonColor
+  color?: (params: ICellRendererParams) => BalProps.BalButtonColor
   loading?: (params: ICellRendererParams) => boolean
   href?: (params: ICellRendererParams) => string
   icon?: string

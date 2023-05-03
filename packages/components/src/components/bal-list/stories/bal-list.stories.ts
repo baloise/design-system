@@ -145,7 +145,7 @@ export const LinkedList = args => ({
     <bal-list-item-title>Internal Link</bal-list-item-title>
   </bal-list-item-content>
   <bal-list-item-icon right>
-    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
   </bal-list-item-icon>
   </bal-list-item>
   <bal-list-item clickable href="www.baloise.com" target="_blank">
@@ -154,7 +154,7 @@ export const LinkedList = args => ({
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
     <bal-list-item-icon right>
-      <bal-icon name="link" size="xsmall"></bal-icon>
+      <bal-icon name="link" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
   <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
@@ -163,7 +163,7 @@ export const LinkedList = args => ({
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
     <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 </bal-list>`,

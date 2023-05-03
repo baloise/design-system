@@ -1,18 +1,53 @@
-@use "sass:map"
-
-@import '@baloise/design-system-css/sass/mixins'
-@import 'ag-grid-community/src/styles/mixins/_ag-theme-params'
-@import 'ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss'
-@import 'ag-grid-community/src/styles/ag-grid'
-
-$ag-theme-alpine-params: ( header-background-color: $bal-color-grey-1, borders: false, borders-critical: true, border-color: $bal-color-primary, header-foreground-color: $bal-color-primary, header-column-separator: false, row-border-color: $bal-color-grey-2, selected-row-background-color: $bal-color-primary-1, odd-row-background-color: null, row-hover-color: $bal-color-grey-1, range-selection-border-color: $bal-color-primary, checkbox-border-radius: 4px, checkbox-checked-color: $bal-color-primary, checkbox-unchecked-color: $bal-color-primary)
+// Import the necessary stylesheets directly from AG-GRID
+// --------------------------------------------------------
+//
+// @import 'ag-grid-community/styles/ag-grid'
+// @import 'ag-grid-community/styles/ag-theme-alpine'
 
 .ag-theme-alpine
-  +ag-theme-alpine($ag-theme-alpine-params)
+  // colours & fonts => https://www.ag-grid.com/javascript-data-grid/global-style-customisation-colours/
+  --ag-font-size: 14px
+  --ag-font-family: var(--bal-font-family-text)
+  --ag-alpine-active-color: var(--bal-color-primary)
+  --ag-data-color: var(--bal-color-primary)
+  --ag-invalid-color: var(--bal-color-danger)
+  --ag-input-disabled-border-color: var(--bal-color-grey)
+  --ag-input-disabled-background-color: var(--bal-color-grey)
+  // headers => https://www.ag-grid.com/javascript-data-grid/global-style-customisation-headers/
+  --ag-header-height: 32px
+  --ag-header-foreground-color: var(--bal-color-primary)
+  --ag-header-background-color: var(--bal-color-grey-1)
+  --ag-header-cell-hover-background-color: var(--bal-color-grey-2)
+  --ag-header-cell-moving-background-color: var(--bal-color-primary-1)
+  // borders => https://www.ag-grid.com/javascript-data-grid/global-style-customisation-borders/
+  --ag-border-radius: 4px
+  --ag-borders: none
+  --ag-border-color: var(--bal-color-primary)
+  --ag-borders-critical: solid 1px
+  --ag-borders-secondary: solid 1px
+  --ag-row-border-color: var(--bal-color-grey-2)
+  // rows
+  --ag-row-hover-color: var(--bal-color-grey-2)
+  --ag-selected-row-background-color: var(--bal-color-primary-1)
+  --ag-odd-row-background-color: var(--bal-color-grey-1)
+  // checkbox
+  --ag-checkbox-border-radius: 4px
+  --ag-checkbox-background-color: var(--bal-color-white)
+  --ag-checkbox-checked-color: var(--bal-color-primary)
+  --ag-checkbox-unchecked-color: var(--bal-color-grey-4)
+  --ag-checkbox-indeterminate-color: var(--bal-color-primary-3)
+  // range selection
+  --ag-range-selection-border-color: var(--bal-color-primary)
+  // input
+  --ag-borders-input: solid 1px
+  --ag-input-border-color: var(--bal-color-grey-4)
+  --ag-input-border-color-invalid: var(--bal-color-danger-4)
+  --ag-input-focus-box-shadow: none
+  --ag-input-focus-border-color: var(--bal-color-primary)
 
 .ag-theme-alpine,
 .ag-cell
-  font-family: $bal-font-family-text
+  font-family: var(--bal-font-family-text)
 
 .bal-table-cell-text
   display: flex

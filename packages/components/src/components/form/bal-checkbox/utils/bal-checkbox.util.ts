@@ -1,4 +1,3 @@
-import { Props } from '../../../../types'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 
 type HtmlFunction = () => string
@@ -15,7 +14,7 @@ interface Option {
   required?: boolean
   hidden?: boolean
   invalid?: boolean
-  interface?: Props.BalCheckboxInterface
+  interface?: BalProps.BalCheckboxInterface
 }
 
 export const newBalCheckboxOption = (option: Option): BalCheckboxOption => {

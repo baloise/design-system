@@ -1,8 +1,8 @@
 import { Component, Host, h, Element, ComponentInterface, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { AccordionState } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
+import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-accordion-summary',

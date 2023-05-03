@@ -332,18 +332,18 @@ export const CheckboxButtonGrid = args => ({
   template: `
     <bal-checkbox-group v-bind="args" v-model="args.value" columns="3" columns-tablet="2">
       <bal-checkbox-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Checkbox Button 1</bal-label>
           </bal-content>
           <bal-checkbox label-hidden name="checkbox-example" value="1"></bal-checkbox>
         </bal-stack>
       </bal-checkbox-button>
       <bal-checkbox-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Checkbox Button 2</bal-label>
             <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
           </bal-content>
@@ -351,9 +351,9 @@ export const CheckboxButtonGrid = args => ({
         </bal-stack>
       </bal-checkbox-button>
       <bal-checkbox-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Checkbox Button 3</bal-label>
             <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
           </bal-content>
@@ -361,9 +361,9 @@ export const CheckboxButtonGrid = args => ({
         </bal-stack>
       </bal-checkbox-button>
       <bal-checkbox-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Checkbox Button 4</bal-label>
             <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
           </bal-content>
@@ -371,9 +371,9 @@ export const CheckboxButtonGrid = args => ({
         </bal-stack>
       </bal-checkbox-button>
       <bal-checkbox-button>
-        <bal-stack direction="column" alignment="center">
+        <bal-stack layout="vertical" align="center">
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
-          <bal-content alignment="center">
+          <bal-content align="center">
             <bal-label size="large">Checkbox Button 5</bal-label>
             <bal-text size="small">Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.</bal-text>
           </bal-content>

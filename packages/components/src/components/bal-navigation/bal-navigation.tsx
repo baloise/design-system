@@ -3,7 +3,6 @@ import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
 import { hasTouchSupport } from '../../utils/browser'
-import { Events } from '../../types'
 import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 
@@ -21,7 +20,7 @@ export class Navigation implements ComponentInterface {
   private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
-  private scrollHandler = ScrollHandler()
+  private bodyScrollBlocker = ScrollHandler()
 
   @State() mainMobileHeight = ''
   @State() isMetaHidden = false
@@ -101,7 +100,7 @@ export class Navigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
-    if (isPlatform('desktop') && !this.scrollHandler.isDisabled()) {
+    if (isPlatform('desktop') && !this.bodyScrollBlocker.isDisabled()) {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -114,19 +113,19 @@ export class Navigation implements ComponentInterface {
   }
 
   async connectedCallback() {
-    this.scrollHandler.connect()
     this.selectedMetaValue = this.metaValue
     await this.readSubLevels()
     this.updateIndexes()
     this.mutationO = observeLevels(this.el, 'bal-navigation-levels', () => this.readSubLevels())
+    this.bodyScrollBlocker.connect()
   }
 
   disconnectedCallback() {
-    this.scrollHandler.disconnect()
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
+    this.bodyScrollBlocker.disconnect()
     this.metaMobileActionsElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
     this.metaDesktopEndElement?.removeEventListener('balChange', this.listenToPopoverChangeEvent)
   }
@@ -148,13 +147,13 @@ export class Navigation implements ComponentInterface {
   bodyOffset = 0
 
   private listenToPopoverChangeEvent = async (event: Event) => {
-    const customEvent = event as Events.BalPopoverChange
+    const customEvent = event as BalEvents.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
 
     if (isNavPopoverOpen) {
-      this.scrollHandler.disable()
+      this.bodyScrollBlocker.disable()
     } else {
-      this.scrollHandler.enable()
+      this.bodyScrollBlocker.enable()
     }
 
     if (isNavPopoverOpen) {
@@ -184,7 +183,7 @@ export class Navigation implements ComponentInterface {
   private dismissPopover() {
     const popoverElements = this.el.querySelectorAll('bal-popover')
     popoverElements?.forEach(popoverEl => {
-      popoverEl.value = false
+      popoverEl.active = false
     })
   }
 
@@ -192,27 +191,27 @@ export class Navigation implements ComponentInterface {
     this.dismissPopover()
     this.isMainBodyOpen = !this.isMainBodyOpen
     if (this.isMainBodyOpen) {
-      this.scrollHandler.disable()
+      this.bodyScrollBlocker.disable()
     } else {
-      this.scrollHandler.enable()
+      this.bodyScrollBlocker.enable()
     }
   }
 
-  onMainTabChange = async (event: Events.BalTabsChange) => {
+  onMainTabChange = async (event: BalEvents.BalTabsChange) => {
     const isMainNavOpen = event.detail !== ''
-    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
+    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail as any)
     const isLink = option?.href !== '' && option?.href !== undefined
 
     if (hasTouchSupport()) {
       if (isMainNavOpen) {
         this.isMetaHidden = false
         if (!isLink) {
-          this.scrollHandler.disable()
+          this.bodyScrollBlocker.disable()
         } else {
-          this.scrollHandler.enable()
+          this.bodyScrollBlocker.enable()
         }
       } else {
-        this.scrollHandler.enable()
+        this.bodyScrollBlocker.enable()
       }
     }
   }
@@ -231,7 +230,7 @@ export class Navigation implements ComponentInterface {
         <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
           <bal-navigation-meta-start>
             {hasLevels && (
-              <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
+              <bal-tabs spaceless inverted context="meta" value={this.selectedMetaValue}>
                 {this.levels.map((meta, index) => {
                   return meta.isTabLink ? (
                     <bal-tab-item
@@ -285,12 +284,11 @@ export class Navigation implements ComponentInterface {
                 <bal-logo color="blue" animated={this.logoAnimated && !this.isTouch}></bal-logo>
               </a>
               <bal-tabs
-                interface="navigation"
-                float="right"
-                fullwidth
+                accordion
                 spaceless
+                context="navigation"
                 value={this.selectedMainValue}
-                onBalChange={this.onMainTabChange}
+                onBalChange={event => this.onMainTabChange(event as any)}
                 ref={el => {
                   this.mainNavTabsEl = el
                 }}
@@ -314,7 +312,6 @@ export class Navigation implements ComponentInterface {
                       <bal-tab-item
                         label={main.label}
                         value={main.value}
-                        icon="nav-go-down"
                         {...main.trackingData}
                         onBalNavigate={ev => {
                           main.onClick(ev.detail)

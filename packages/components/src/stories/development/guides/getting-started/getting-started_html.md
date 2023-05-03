@@ -40,7 +40,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
       src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
     ></script>
   </head>
-  <body class="bal-body">
+  <body>
     <bal-app>
       <main class="container mt-normal">
         <bal-heading>Hello World</bal-heading>

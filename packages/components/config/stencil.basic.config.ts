@@ -17,7 +17,6 @@ export const StencilBaseConfig: Config = {
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
   enableCache: true,
-  globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
@@ -37,7 +36,7 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
-      generateTypeDeclarations: true,
+      generateTypeDeclarations: false,
     },
     {
       type: 'dist',
@@ -91,16 +90,6 @@ export const StencilBaseConfig: Config = {
         'bal-navigation-level-main',
         'bal-navigation-level-meta',
         'bal-navigation-levels',
-        'bal-navigation-main',
-        'bal-navigation-main-body',
-        'bal-navigation-main-head',
-        'bal-navigation-menu',
-        'bal-navigation-menu-list',
-        'bal-navigation-menu-list-item',
-        'bal-navigation-meta',
-        'bal-navigation-meta-end',
-        'bal-navigation-meta-start',
-        'bal-navigation-popover',
       ],
     },
     { components: ['bal-pagination'] },

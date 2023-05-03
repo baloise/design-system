@@ -13,8 +13,6 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
-import { Props } from '../../types'
-import { Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
@@ -105,12 +103,12 @@ export class Popover implements ComponentInterface, Loggable {
   /**
    * Define the position of the popover content.
    */
-  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+  @Prop() position: BalProps.BalPopoverPlacement = 'bottom-start'
 
   /**
    * If `true` the popover content is open.
    */
-  @Prop({ mutable: true, reflect: true }) value = false
+  @Prop({ mutable: true, reflect: true }) active = false
 
   /**
    * If `true` there will be no backdrop
@@ -120,8 +118,8 @@ export class Popover implements ComponentInterface, Loggable {
   /**
    * Update the native input element when the value changes
    */
-  @Watch('value')
-  protected async valueChanged(newValue: boolean, oldValue: boolean) {
+  @Watch('active')
+  protected async activeChanged(newValue: boolean, oldValue: boolean) {
     if (newValue === true && newValue !== oldValue) {
       this.present({ force: true })
     } else {
@@ -132,22 +130,22 @@ export class Popover implements ComponentInterface, Loggable {
   /**
    * Listen when the popover opens or closes. Returns the current value.
    */
-  @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalPopoverChangeDetail>
+
+  /**
+   * Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
+
+  /**
+   * Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
 
   /**
    * @internal - Use this to close unused popovers.
    */
   @Event() balPopoverPrepare!: EventEmitter<string>
-
-  /**
-   * @internal Emitted before the animation starts
-   */
-  @Event() balWillAnimate!: EventEmitter<Events.BalPopoverWillAnimateDetail>
-
-  /**
-   * @internal Emitted after the animation has finished
-   */
-  @Event() balDidAnimate!: EventEmitter<Events.BalPopoverDidAnimateDetail>
 
   /**
    * LIFECYCLE
@@ -241,20 +239,20 @@ export class Popover implements ComponentInterface, Loggable {
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (this.value) {
+    if (this.active) {
       if (!this.element.contains(event.target as Node)) {
-        this.value = false
+        this.active = false
       }
 
       if (this.backdropElement?.isEqualNode(event.target as Node)) {
-        this.value = false
+        this.active = false
       }
     }
   }
 
   @Listen('keydown', { target: 'window' })
   handleKeyUp(event: KeyboardEvent) {
-    if (this.value && (event.key === 'Escape' || event.key === 'Esc')) {
+    if (this.active && (event.key === 'Escape' || event.key === 'Esc')) {
       event.preventDefault()
       this.dismiss()
     }
@@ -262,7 +260,7 @@ export class Popover implements ComponentInterface, Loggable {
 
   @Listen('keyup', { target: 'document' })
   async tabOutside(event: KeyboardEvent) {
-    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.value) {
+    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.active) {
       await this.toggle()
     }
   }
@@ -286,23 +284,23 @@ export class Popover implements ComponentInterface, Loggable {
    */
   @Method()
   async present(options: PopoverPresentOptions = { force: false }) {
-    if (!this.value || options.force) {
+    if (!this.active || options.force) {
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
       if (this.menuInnerElement) {
         this.menuInnerElement.scrollTo(0, 0)
       }
       this.balPopoverPrepare.emit(this.popoverId)
-      this.balWillAnimate.emit()
-      this.value = true
+      this.balWillAnimate.emit(this.active)
+      this.active = true
       this.popperInstance.setOptions((options: any) => ({
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: true }],
       }))
       this.updatePopper()
 
-      this.balChange.emit(this.value)
-      this.balDidAnimate.emit()
+      this.balChange.emit(this.active)
+      this.balDidAnimate.emit(this.active)
     }
   }
 
@@ -311,19 +309,19 @@ export class Popover implements ComponentInterface, Loggable {
    */
   @Method()
   async dismiss(options: PopoverPresentOptions = { force: false }) {
-    if (this.value || options.force) {
+    if (this.active || options.force) {
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
-      this.balWillAnimate.emit()
-      this.value = false
+      this.balWillAnimate.emit(this.active)
+      this.active = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: false }],
       }))
       this.updatePopper()
 
-      this.balChange.emit(this.value)
-      this.balDidAnimate.emit()
+      this.balChange.emit(this.active)
+      this.balDidAnimate.emit(this.active)
     }
   }
 
@@ -332,7 +330,7 @@ export class Popover implements ComponentInterface, Loggable {
    */
   @Method()
   async toggle(options: PopoverPresentOptions = { force: false }) {
-    if (this.value) {
+    if (this.active) {
       await this.dismiss(options)
     } else {
       await this.present(options)
@@ -402,11 +400,11 @@ export class Popover implements ComponentInterface, Loggable {
 
     return (
       <Host
-        aria-presented={this.value ? 'true' : null}
+        aria-presented={this.active ? 'true' : null}
         data-id={this.popoverId}
         class={{
           ...block.class(),
-          ...block.modifier('active').class(this.value),
+          ...block.modifier('active').class(this.active),
           ...block.modifier('tooltip').class(this.tooltip),
           ...block.modifier('arrow').class(this.arrow),
           ...block.modifier('hint').class(this.hint),
@@ -420,7 +418,7 @@ export class Popover implements ComponentInterface, Loggable {
               this.backdropElement = el
             }}
             class={{
-              ...block.element('backdrop').class(this.backdrop && this.value),
+              ...block.element('backdrop').class(this.backdrop && this.active),
             }}
             style={{
               '--bal-popover-backdrop-height': `${this.backdropHeight}rem`,

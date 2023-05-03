@@ -1,5 +1,5 @@
 import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State, Watch, Method } from '@stencil/core'
+import { Component, Host, h, Prop, State, Method } from '@stencil/core'
 import {
   BalConfigObserver,
   defaultConfig,
@@ -38,11 +38,6 @@ export class Footer implements BalConfigObserver, Loggable {
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
-
-  /**
-   * @deprecated The languages in which the links will appear.
-   */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
 
   /**
    * If `true` the legal Baloise links will be hidden.
@@ -88,15 +83,6 @@ export class Footer implements BalConfigObserver, Loggable {
       this.language = state.language
       this.region = state.region
       this.allowedLanguages = state.allowedLanguages
-      this.updateFooterLinks()
-      this.updateSocialMediaLinks()
-    }
-  }
-
-  @Watch('locale')
-  watchLocaleHandler() {
-    if (this.locale !== '') {
-      this.language = this.locale
       this.updateFooterLinks()
       this.updateSocialMediaLinks()
     }

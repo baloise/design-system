@@ -13,8 +13,10 @@ import {
   isTextarea,
   isNumberInput,
   isInputStepper,
+  isSteps,
+  hasTestId,
 } from '../helpers'
-import { selectors } from '../../selectors'
+import { parseDataTestID, selectors } from '../../selectors'
 
 const shouldAndAndCommand = (
   originalFn: any,
@@ -176,7 +178,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (hasClass(element, selectors.tabs.tabItems.replace('li.', ''))) {
+  if (hasTestId(element, parseDataTestID(selectors.tabs.item))) {
     switch (condition) {
       case 'have.value':
         return originalFn(element, 'have.attr', 'data-label', key, value)
@@ -185,10 +187,36 @@ const shouldAndAndCommand = (
         return originalFn(element, 'not.have.attr', 'data-label', key, value)
 
       case 'be.disabled':
-        return originalFn(element.find('a', { log: false }), 'have.attr', 'aria-disabled', 'true')
+        return originalFn(element, 'have.attr', 'aria-disabled', 'true')
 
       case 'not.be.disabled':
-        return originalFn(element.find('a', { log: false }), 'not.have.attr', 'aria-disabled', 'false')
+        return originalFn(element, 'not.have.attr', 'aria-disabled', 'false')
+    }
+  }
+
+  if (isSteps(element)) {
+    switch (condition) {
+      case 'have.value':
+        return originalFn(element, 'have.attr', 'data-label', key, value)
+
+      case 'not.have.value':
+        return originalFn(element, 'not.have.attr', 'data-label', key, value)
+    }
+  }
+
+  if (hasTestId(element, parseDataTestID(selectors.steps.option))) {
+    switch (condition) {
+      case 'have.value':
+        return originalFn(element, 'have.attr', 'data-label', key, value)
+
+      case 'not.have.value':
+        return originalFn(element, 'not.have.attr', 'data-label', key, value)
+
+      case 'be.disabled':
+        return originalFn(element, 'have.attr', 'aria-disabled', 'true')
+
+      case 'not.be.disabled':
+        return originalFn(element, 'not.have.attr', 'aria-disabled', 'false')
     }
   }
 

@@ -38,7 +38,7 @@
       vertical-align: top
   //
   // sizes
-  +modifier(is-xsmall) // deprecated
+  +modifier(is-xsmall)
     +iconSize(0.75rem)
   +modifier(is-x-small)
     +iconSize(0.75rem)
@@ -47,10 +47,7 @@
   +modifier(is-medium)
     +iconSize(1.625rem)
   +modifier(is-large)
-    +iconSize(3.125rem)
-  // TODO: breaking changes for v13
-  // +modifier(is-large)
-  //   +iconSize(2.5rem)
+    +iconSize(2.5rem)
   +modifier(is-x-large)
     +iconSize(5rem)
   +modifier(is-xx-large)
@@ -80,7 +77,7 @@
   +modifier(is-light-blue)
     +fillSvg(var(--bal-color-light-blue-5))
   +modifiers(is-primary-light)
-    +fillSvg(var(--bal-color-primary-2))
+    +fillSvg(var(--bal-color-primary-3))
   +modifiers(is-white, is-inverted)
     +fillSvg(var(--bal-color-white))
 
@@ -98,6 +95,8 @@
     line-height: 1.5rem
   &.is-large
     line-height: 3rem
+  &.is-x-large
+    line-height: 4rem
   &.is-xlarge
     line-height: 4rem
   .icon

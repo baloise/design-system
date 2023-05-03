@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import isEmpty from 'lodash.isempty'
-import { Props } from '../../types'
 
 @Component({
   tag: 'bal-card',
@@ -47,12 +46,12 @@ export class BalCard {
   /**
    * Defines the space of the card content.
    */
-  @Prop() space: Props.BalCardSpace = ''
+  @Prop() space: BalProps.BalCardSpace = ''
 
   /**
    * Defines the color of the card.
    */
-  @Prop() color: Props.BalCardColor = 'white'
+  @Prop() color: BalProps.BalCardColor = 'white'
 
   get colorTypeClass(): string {
     return isEmpty(this.color) ? '' : `is-${this.inverted ? 'blue' : this.color}`

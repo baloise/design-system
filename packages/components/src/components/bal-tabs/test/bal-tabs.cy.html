@@ -7,10 +7,12 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
+
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <bal-tabs data-testid="tabs" value="tab-c">
+        <bal-heading>Basic</bal-heading>
+        <bal-tabs data-testid="tabs" value="tab-c" border>
           <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
           <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
           <bal-tab-item value="tab-c" label="Tab C" bubble>Content of Tab C</bal-tab-item>
@@ -19,11 +21,167 @@
 
         <hr class="lined" />
 
-        <bal-tabs data-testid="steps" value="tab-c" interface="steps">
-          <bal-tab-item value="tab-a" label="Tab A" done>Content of Tab A</bal-tab-item>
-          <bal-tab-item value="tab-b" label="Tab B" failed>Content of Tab B</bal-tab-item>
-          <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+        <bal-heading>Icons</bal-heading>
+        <bal-tabs value="tab-c" border>
+          <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Icon Position Vertical</bal-heading>
+        <bal-tabs value="tab-c" icon-position="vertical" border>
+          <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Vertical</bal-heading>
+        <bal-tabs value="tab-c" vertical border>
+          <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Vertical Mobile</bal-heading>
+        <bal-tabs value="tab-c" vertical="mobile" expanded border>
+          <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+          <bal-tab-item value="tab-e" label="Tab E">Content of Tab E</bal-tab-item>
+          <bal-tab-item value="tab-f" label="Tab F">Content of Tab F</bal-tab-item>
+          <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+          <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Select on Mobile</bal-heading>
+        <bal-tabs value="tab-c" select-on-mobile border>
+          <bal-tab-item value="tab-a" label="Tab A" icon="account">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" icon="account">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" icon="account" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" icon="account" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Expanded</bal-heading>
+        <bal-tabs expanded value="tab-c" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" bubble>Content of Tab C</bal-tab-item>
           <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
+          <bal-tab-item value="tab-e" label="Tab E">Content of Tab E</bal-tab-item>
+          <bal-tab-item value="tab-f" label="Tab F">Content of Tab F</bal-tab-item>
+          <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+          <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Spaceless</bal-heading>
+        <bal-tabs spaceless border value="tab-c">
+          <bal-tab-item value="tab-a" label="My large Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="My event larger Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Long</bal-heading>
+        <bal-tabs value="tab-c" border>
+          <bal-tab-item value="tab-a" label="My Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="My long Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="My very longTab C" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="My very longest Tab D" disabled>Content of Tab D</bal-tab-item>
+          <bal-tab-item value="tab-e" label="My tab with a very long label">Content of Tab E</bal-tab-item>
+          <bal-tab-item value="tab-f" label="My tab with a very longest label">Content of Tab F</bal-tab-item>
+          <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+          <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-heading>Combi + Accordion</bal-heading>
+        <bal-accordion>
+          <bal-tabs value="tab-c" border>
+            <bal-tab-item value="tab-a" label="My Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="My long Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item value="tab-c" label="My very longTab C" bubble>Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-d" label="My very longest Tab D" disabled>Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-e" label="My tab with a very long label">Content of Tab E</bal-tab-item>
+            <bal-tab-item value="tab-f" label="My tab with a very longest label">Content of Tab F</bal-tab-item>
+            <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+            <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+          </bal-tabs>
+        </bal-accordion>
+
+        <hr class="lined" />
+
+        <bal-heading>Combi + Popover</bal-heading>
+        <bal-popover id="popover">
+          <bal-button id="popover-trigger" bal-popover-trigger aria-haspopup="true" color="info"> Popover </bal-button>
+          <bal-popover-content>
+            <bal-tabs value="tab-c" border>
+              <bal-tab-item value="tab-a" label="My Tab A">Content of Tab A</bal-tab-item>
+              <bal-tab-item value="tab-b" label="My long Tab B">Content of Tab B</bal-tab-item>
+              <bal-tab-item value="tab-c" label="My very longTab C" bubble>Content of Tab C</bal-tab-item>
+              <bal-tab-item value="tab-d" label="My very longest Tab D" disabled>Content of Tab D</bal-tab-item>
+              <bal-tab-item value="tab-e" label="My tab with a very long label">Content of Tab E</bal-tab-item>
+              <bal-tab-item value="tab-f" label="My tab with a very longest label">Content of Tab F</bal-tab-item>
+              <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+              <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+            </bal-tabs>
+          </bal-popover-content>
+        </bal-popover>
+        <script>
+          const popover = document.getElementById('popover')
+          const popoverTrigger = document.getElementById('popover-trigger')
+          popoverTrigger.addEventListener('click', () => (popover.value = !popover.value))
+        </script>
+
+        <hr class="lined" />
+
+        <bal-heading>Inverted</bal-heading>
+        <div class="has-background-primary p-medium">
+          <bal-tabs value="tab-c" border inverted>
+            <bal-tab-item value="tab-a" label="My Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="My Tab B" icon="account">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-c" label="My Tab A" bubble>Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-d" label="Disabled Tab D" disabled icon="account">Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-e" label="My tab with a very long label">Content of Tab E</bal-tab-item>
+            <bal-tab-item value="tab-f" label="My tab with a very longest label">Content of Tab F</bal-tab-item>
+            <bal-tab-item value="tab-g" label="Tab G">Content of Tab G</bal-tab-item>
+            <bal-tab-item value="tab-h" label="Tab H">Content of Tab H</bal-tab-item>
+          </bal-tabs>
+        </div>
+
+        <hr class="lined" />
+
+        <bal-heading>Accordion Tabs</bal-heading>
+        <bal-tabs value="tab-c" border accordion>
+          <bal-tab-item value="tab-a" label="My Tab A">
+            <bal-heading>Content of Tab A</bal-heading>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure nam magnam et a sunt illo animi
+              distinctio officia aliquam, accusamus, nobis exercitationem itaque quas libero soluta, repellendus
+              perferendis reiciendis.
+            </p>
+          </bal-tab-item>
+          <bal-tab-item value="tab-b" label="My Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="My Tab C" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Disabled Tab D" disabled>Content of Tab D</bal-tab-item>
         </bal-tabs>
       </main>
     </bal-doc-app>

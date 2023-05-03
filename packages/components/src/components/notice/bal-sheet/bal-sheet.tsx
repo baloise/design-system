@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -12,7 +11,7 @@ export class Sheet {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: Props.BalSheetContainer = ''
+  @Prop() containerSize: BalProps.BalSheetContainer = ''
 
   render() {
     const block = BEM.block('sheet')

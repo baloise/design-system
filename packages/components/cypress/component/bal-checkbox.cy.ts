@@ -73,14 +73,12 @@ describe('bal-checkbox.cy.ts', () => {
   describe('checkbox-group', () => {
     let onClickSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
-    let onBalInputSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalBlurSpy: Cypress.Agent<sinon.SinonSpy>
 
     beforeEach(() => {
       onClickSpy = cy.spy().as('click')
       onBalFocusSpy = cy.spy().as('balFocus')
-      onBalInputSpy = cy.spy().as('balInput')
       onBalChangeSpy = cy.spy().as('balChange')
       onBalBlurSpy = cy.spy().as('balBlur')
 
@@ -89,7 +87,6 @@ describe('bal-checkbox.cy.ts', () => {
           value: ['3'],
           onClick: onClickSpy,
           onBalFocus: onBalFocusSpy,
-          onBalInput: onBalInputSpy,
           onBalChange: onBalChangeSpy,
           onBalBlur: onBalBlurSpy,
         },
@@ -107,7 +104,6 @@ describe('bal-checkbox.cy.ts', () => {
 
       cy.get('@click').should('have.been.calledOnce')
       cy.get('@balFocus').should('have.been.calledOnce')
-      cy.get('@balInput').should('have.been.calledOnce')
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balBlur').should('have.have.been.calledOnce')
     })

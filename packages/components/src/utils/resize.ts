@@ -16,7 +16,7 @@ const windowHeight = () => {
 
 const isLandscape = () => windowWidth() > windowHeight()
 
-export const ResizeHandler = () => {
+export const ResizeHandler = (onlyWidth = false) => {
   let previousWidth = windowWidth()
   let previousHeight = windowHeight()
   let previousIsLandscape = isLandscape()
@@ -34,9 +34,16 @@ export const ResizeHandler = () => {
         resetPreviousValues()
       }
     } else {
-      if (previousWidth !== windowWidth() || previousHeight !== windowHeight()) {
-        callback()
-        resetPreviousValues()
+      if (onlyWidth) {
+        if (previousWidth !== windowWidth()) {
+          callback()
+          resetPreviousValues()
+        }
+      } else {
+        if (previousWidth !== windowWidth() || previousHeight !== windowHeight()) {
+          callback()
+          resetPreviousValues()
+        }
       }
     }
   }
