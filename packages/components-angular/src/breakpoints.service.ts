@@ -24,7 +24,7 @@ export class BalBreakpointsService {
   widescreen$: Observable<boolean>
   fullhd$: Observable<boolean>
 
-  constructor(zone: NgZone) {
+  constructor() {
     this._breakpoints$ = new BehaviorSubject<Breakpoints>(initialBreakpoints)
     this.state$ = this._breakpoints$.asObservable()
     this.mobile$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.mobile))
@@ -36,11 +36,9 @@ export class BalBreakpointsService {
     this.fullhd$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.fullhd))
 
     this.breakpointsHandler = BreakpointsHandler()
-    zone.runOutsideAngular(() => {
-      if (this.breakpointsHandler) {
-        this.breakpointsHandler.connect(breakpoints => this.onChange(breakpoints))
-      }
-    })
+    if (this.breakpointsHandler) {
+      this.breakpointsHandler.connect(breakpoints => this.onChange(breakpoints))
+    }
   }
 
   ngOnDestroy() {

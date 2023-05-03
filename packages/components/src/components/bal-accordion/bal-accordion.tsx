@@ -104,12 +104,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Event() balChange!: EventEmitter<BalEvents.BalAccordionChangeDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
   @Event() balWillAnimate!: EventEmitter<BalEvents.BalAccordionWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalAccordionDidAnimateDetail>
 
@@ -296,19 +296,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const contentHeight = detailsWrapperElement.offsetHeight
           const waitForTransition = transitionEndAsync(detailsElement, 300)
           detailsElement.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.active)
 
           await waitForTransition
 
           this.setState(AccordionState.Expanded)
           detailsElement.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.active)
       this.setState(AccordionState.Expanded)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
 
     return this.active
@@ -340,19 +340,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const waitForTransition = transitionEndAsync(detailsElement, 300)
 
           this.setState(AccordionState.Collapsing)
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
 
           await waitForTransition
 
           this.setState(AccordionState.Collapsed)
           detailsElement.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
         })
       })
     } else {
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
       this.setState(AccordionState.Collapsed)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
 
     return this.active

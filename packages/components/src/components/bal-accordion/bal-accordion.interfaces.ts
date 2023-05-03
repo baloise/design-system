@@ -16,9 +16,9 @@ namespace BalEvents {
   export type BalAccordionChangeDetail = boolean
   export type BalAccordionChange = BalAccordionCustomEvent<BalAccordionChangeDetail>
 
-  export type BalAccordionWillAnimateDetail = void
+  export type BalAccordionWillAnimateDetail = boolean
   export type BalAccordionWillAnimate = BalAccordionCustomEvent<BalAccordionWillAnimateDetail>
 
-  export type BalAccordionDidAnimateDetail = void
+  export type BalAccordionDidAnimateDetail = boolean
   export type BalAccordionDidAnimate = BalAccordionCustomEvent<BalAccordionDidAnimateDetail>
 }
