@@ -211,7 +211,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
-
 ### Features
 
 * **bal-input-slider:** rename adjustments ([d8a5dea](https://github.com/baloise/design-system/commit/d8a5dea2dd4477efc6bb33b5caf1f333017853ff))
