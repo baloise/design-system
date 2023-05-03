@@ -6,9 +6,13 @@ bal-button,
   position: static
   &.is-fullwidth
     width: 100%
-  &[disabled]
-    bal-icon
-      pointer-events: none
+  &[disabled] bal-icon
+    pointer-events: none
+
+.bal-button .button-label.has-no-wrap
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
 
 +block(button-group)
   display: flex

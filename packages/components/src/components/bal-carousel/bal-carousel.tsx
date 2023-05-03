@@ -321,7 +321,7 @@ export class Carousel implements ComponentInterface {
   }
 
   private hasShadow(): boolean {
-    return this.itemsPerView > 1 || this.itemsPerView === 'auto' || this.interface === 'card'
+    return this.itemsPerView === 'auto' || this.itemsPerView > 1 || this.interface === 'card'
   }
 
   private hasShadowLeft(): boolean {

@@ -204,6 +204,10 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * The label of the button will not break
+         */
+        "noWrap": boolean;
+        /**
           * If `true` the button is outlined
          */
         "outlined": boolean;
@@ -4294,6 +4298,10 @@ declare namespace LocalJSX {
           * The name of the button, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * The label of the button will not break
+         */
+        "noWrap"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
