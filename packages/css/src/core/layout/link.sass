@@ -3,13 +3,13 @@ a.is-link:not(.button)
   font-weight: var(--bal-link-font-weight)
   text-decoration: var(--bal-link-text-decoration)
   text-underline-offset: var(--bal-link-text-underline-offset)
-  text-decoration-thickness: (--bal-link-text-decoration-thickness)
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness)
   border-radius: var(--bal-link-radius)
   +fillSvg(var(--bal-link-color))
 
   &:hover
     text-decoration: var(--bal-link-text-decoration)
-    text-decoration-thickness: (--bal-link-text-decoration-thickness)
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness)
     text-underline-offset: var(--bal-link-text-underline-offset)
     color: var(--bal-link-color-hover)
     +fillSvg(var(--bal-link-color-hover))
@@ -19,7 +19,7 @@ a.is-link:not(.button)
 
   &:active
     text-decoration: var(--bal-link-text-decoration)
-    text-decoration-thickness: (--bal-link-text-decoration-thickness)
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness)
     text-underline-offset: var(--bal-link-text-underline-offset)
     color: var(--bal-link-color-active)
     +fillSvg(var(--bal-link-color-active))
@@ -30,7 +30,7 @@ a.is-link:not(.button)
 
     &:hover
       text-decoration: var(--bal-link-text-decoration)
-      text-decoration-thickness: (--bal-link-text-decoration-thickness)
+      text-decoration-thickness: var(--bal-link-text-decoration-thickness)
       text-underline-offset: var(--bal-link-text-underline-offset)
       color: var(--bal-link-inverted-color-hover)
       +fillSvg(var(--bal-link-inverted-color-hover))
@@ -40,7 +40,7 @@ a.is-link:not(.button)
 
     &:active
       text-decoration: var(--bal-link-text-decoration)
-      text-decoration-thickness: (--bal-link-text-decoration-thickness)
+      text-decoration-thickness: var(--bal-link-text-decoration-thickness)
       text-underline-offset: var(--bal-link-text-underline-offset)
       color: var(--bal-link-inverted-color-active)
       +fillSvg(var(--bal-link-inverted-color-active))
