@@ -5,38 +5,39 @@
     transform: rotate(359deg)
 
 .label
-  color: var(--bal-color-blue)
   display: block
-  font-size: var(--bal-size-small)
-  font-weight: var(--bal-weight-bold)
+  color: var(--bal-form-field-label-color)
+  font-size: var(--bal-form-field-label-font-size)
+  font-weight: var(--bal-form-field-label-font-weight)
   hyphens: auto
   &:not(:last-child)
     margin-bottom: 4px
   &.is-danger
-    color: var(--bal-color-text-danger)
+    color: var(--bal-form-field-label-danger-color)
+  &.is-success
+    color: var(--bal-form-field-label-success-color)
+  // deprecated
   &.is-warning
     color: var(--bal-color-text-warning)
-  &.is-success
-    color: var(--bal-color-text-success)
   &.is-disabled
-    color: var(--bal-color-text-grey)
+    color: var(--bal-form-field-label-disabled-color)
 
 .help
   display: block
   margin-top: -2px
-  font-size: var(--bal-size-x-small)
-  color: var(--bal-color-text-primary-light)
+  color: var(--bal-form-field-message-color)
+  font-size: var(--bal-form-field-message-font-size)
+  font-weight: var(--bal-form-field-message-font-weight)
   hyphens: auto
   &.is-danger
-    color: var(--bal-color-text-danger)
+    color: var(--bal-form-field-message-danger-color)
   &.is-success
-    color: var(--bal-color-text-success)
+    color: var(--bal-form-field-message-success-color)
+  // deprecated
   &.is-warning
     color: var(--bal-color-text-warning)
   &.is-disabled
-    color: var(--bal-color-text-grey)
-
-// Containers
+    color: var(--bal-form-field-message-disabled-color)
 
 .field
   &:not(:last-child)
@@ -155,13 +156,13 @@
 .control
   box-sizing: border-box
   clear: both
-  font-size: var(--bal-size-normal)
+  font-size: var(--bal-form-field-control-font-size)
   position: relative
   text-align: inherit
   &.is-loading
     &::after
       animation: spinAround 500ms infinite linear
-      border: 2px solid var(--bal-color-primary)
+      border: 2px solid var(--bal-form-field-control-border-color-active)
       border-radius: var(--bal-radius-rounded)
       border-right-color: transparent
       border-top-color: transparent

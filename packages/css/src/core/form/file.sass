@@ -5,7 +5,7 @@
   justify-content: flex-start
   position: relative
   width: 100%
-  font-size: var(--bal-size-normal)
+  font-size: var(--bal-form-field-control-font-size)
   justify-content: center
   .file-label
     width: 100%
@@ -26,25 +26,25 @@
   overflow: hidden
   position: relative
   gap: 8px
-  font-weight: var(--bal-weight-bold)
-  color: var(--bal-color-primary)
+  font-weight: var(--bal-form-field-label-font-weight)
+  color: var(--bal-form-field-label-color)
   text-align: center
   hyphens: auto
   &:hover
     .file-cta,
     .file-label
-      color: var(--bal-color-light-blue-5)
+      color: var(--bal-form-field-label-color-hover)
     .file-cta
-      background-color: var(--bal-color-grey-1)
-      border-color: var(--bal-color-border-grey)
+      background-color: var(--bal-form-field-control-background-hover)
+      border-color: var(--bal-form-field-control-border-color-hover)
   &:active,
   &:focus-within
     .file-cta,
     .file-label
-      color: var(--bal-color-primary-6)
+      color: var(--bal-form-field-label-color-active)
     .file-cta
-      background-color: var(--bal-color-grey-1)
-      border-color: var(--bal-color-border-primary)
+      background-color: var(--bal-form-field-control-background-active)
+      border-color: var(--bal-form-field-control-border-color-active)
 
 .file-input
   height: 100%
@@ -58,10 +58,10 @@
 .file-cta
   @extend %control
   justify-content: flex-start
-  border-style: dashed
-  border-color: var(--bal-color-border-grey)
-  border-radius: var(--bal-radius-normal)
-  background: var(--bal-color-white)
+  border-style: var(--bal-file-border-style)
+  border-color: var(--bal-form-field-control-border-color)
+  border-radius: var(--bal-form-field-control-radius)
+  background: var(--bal-form-field-control-background)
   font-size: 1em
   padding-left: 1em
   padding-right: 1em
@@ -69,8 +69,8 @@
   gap: .5rem
 
 .file-cta
-  background-color: var(--bal-color-white)
-  color: var(--bal-color-primary)
+  background-color: var(--bal-form-field-control-background)
+  color: var(--bal-form-field-control-color)
 
 .file-icon
   align-items: center
@@ -80,47 +80,39 @@
   +ltr-property("margin", 0.5em)
   width: 1em
 
-.file.is-danger
-  .file-label,
-  .file-cta
-    color: var(--bal-color-text-danger)
-  .file-cta
-    border-color: var(--bal-color-border-danger)
-    background: var(--bal-color-danger-1)
-  .file-label
-    &:active,
-    &:focus-within
-      .file-cta
-        border-color: var(--bal-color-border-primary)
-        color: var(--bal-color-primary-6)
-        .file-label
-          color: var(--bal-color-primary-6)
-
-.file.is-disabled
-  .file-label,
-  .file-cta
-    @extend %disabled
-    color: var(--bal-color-text-grey)
-  .file-cta
-    border-color: var(--bal-color-border-grey-dark)
-    background: var(--bal-color-grey-2)
-
 .file.is-success
   .file-label,
   .file-cta
-    color: var(--bal-color-text-success)
+    color: var(--bal-form-field-label-success-color)
   .file-cta
-    border-color: var(--bal-color-border-success)
-    background: var(--bal-color-success-1)
+    border-color: var(--bal-form-field-control-success-border-color)
+    background: var(--bal-form-field-control-success-background)
   .file-label
     &:active,
     &:focus-within
       .file-cta
-        border-color: var(--bal-color-border-primary)
-        color: var(--bal-color-primary-6)
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
         .file-label
-          color: var(--bal-color-primary-6)
+          color: var(--bal-link-color-active)
 
+.file.is-danger
+  .file-label,
+  .file-cta
+    color: var(--bal-form-field-label-danger-color)
+  .file-cta
+    border-color: var(--bal-form-field-control-danger-border-color)
+    background: var(--bal-form-field-control-danger-background)
+  .file-label
+    &:active,
+    &:focus-within
+      .file-cta
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
+        .file-label
+          color: var(--bal-link-color-active)
+
+// warning is deprecated
 .file.is-warning
   .file-label,
   .file-cta
@@ -132,7 +124,16 @@
     &:active,
     &:focus-within
       .file-cta
-        border-color: var(--bal-color-border-primary)
-        color: var(--bal-color-primary-6)
+        border-color: var(--bal-form-field-control-border-color-active)
+        color: var(--bal-link-color-active)
         .file-label
-          color: var(--bal-color-primary-6)
+          color: var(--bal-link-color-active)
+
+.file.is-disabled
+  .file-label,
+  .file-cta
+    @extend %disabled
+    color: var(--bal-file-label-disabled-color)
+  .file-cta
+    border-color: var(--bal-form-field-control-disabled-border-color)
+    background: var(--bal-form-field-control-disabled-background)

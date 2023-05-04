@@ -10,6 +10,17 @@
   <body class="bal-app has-sticky-footer has-background-grey-1">
     <main class="container py-normal">
       <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
+        <h1 class="title is-3">Links</h1>
+        <a>Link</a><br/>
+        <a href="/">Link with href</a><br/>
+        <a class="is-link">Link</a><br/>
+        <a class="is-link" href="/">Link with href</a><br/>
+        <div class="has-background-primary p-normal">
+          <a class="is-link is-inverted" href="/">Link with href</a><br/>
+          <a class="is-link is-light" href="/">Link with href</a><br/>
+        </div>
+      </section>
+      <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
         <h1 class="title is-3">Grid</h1>
         <div class="columns is-multiline m-none">
           <div class="column is-2 has-background-danger">1</div>
@@ -54,6 +65,33 @@
             accusamus commodi!
           </li>
         </ul>
+        <ul class="is-list has-bullet-circle has-bullet-yellow">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nemo vero. Ex amet beatae veniam veritatis
+            vitae, labore saepe sed earum. Omnis repellendus, voluptates doloremque necessitatibus alias mollitia
+            accusamus commodi!
+          </li>
+        </ul>
+        <ul class="is-list has-bullet-circle has-bullet-red">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nemo vero. Ex amet beatae veniam veritatis
+            vitae, labore saepe sed earum. Omnis repellendus, voluptates doloremque necessitatibus alias mollitia
+            accusamus commodi!
+          </li>
+        </ul>
+        <ul class="is-list has-bullet-circle has-bullet-purple">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, nemo vero. Ex amet beatae veniam veritatis
+            vitae, labore saepe sed earum. Omnis repellendus, voluptates doloremque necessitatibus alias mollitia
+            accusamus commodi!
+          </li>
+        </ul>
         <ol class="is-list">
           <li>List Item 1</li>
           <li>List Item 2</li>
@@ -78,17 +116,33 @@
             explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
           </li>
         </ul>
+        <ul class="is-list has-bullet-check has-bullet-green">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima fuga, quod nobis id neque sit dolor debitis
+            explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
+          </li>
+        </ul>
+        <ul class="is-list has-bullet-close has-opacity-50 has-bullet-red">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima fuga, quod nobis id neque sit dolor debitis
+            explicabo quisquam cum iure, quia temporibus velit? Ipsa aut aliquam tempore repudiandae vero.
+          </li>
+        </ul>
       </section>
       <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
         <h1 class="title is-3">Border & Radius</h1>
-        <div class="has-border-blue p-x-small mb-x-small has-radius-none">Blue / None</div>
-        <div class="has-border-normal p-x-small mb-x-small has-radius-small">Normal / Small</div>
-        <div class="has-border-hover p-x-small mb-x-small has-radius-normal">Hover / Normal</div>
-        <div class="has-border-active p-x-small mb-x-small has-radius-large">Active / Large</div>
-        <div class="has-border-valid p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
-        <div class="has-border-invalid p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
+        <div class="has-border-primary p-x-small mb-x-small has-radius-none">Blue / None</div>
+        <div class="has-border-grey p-x-small mb-x-small has-radius-small">Normal / Small</div>
+        <div class="has-border-light-blue p-x-small mb-x-small has-radius-normal">Hover / Normal</div>
+        <div class="has-border-primary-dark p-x-small mb-x-small has-radius-large">Active / Large</div>
+        <div class="has-border-success p-x-small mb-x-small has-radius-rounded">Valid / Rounded</div>
+        <div class="has-border-danger p-x-small mb-x-small has-radius-rounded">Invalid / Rounded</div>
         <div class="has-border-warning p-x-small mb-x-small has-radius-rounded">Warning / Rounded</div>
-        <div class="has-border-disabled p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>
+        <div class="has-border-grey-dark p-x-small mb-x-small has-radius-rounded">Disabled / Rounded</div>
       </section>
       <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
         <h1 class="title is-3">Typography</h1>
@@ -146,6 +200,18 @@
               <td>1</td>
               <td>Tony Stark</td>
             </tr>
+            <tr>
+              <td>1</td>
+              <td>Tony Stark</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Tony Stark</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Tony Stark</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -187,13 +253,6 @@
           <p class="help is-danger">This username is available</p>
         </div>
         <div class="field">
-          <label class="label is-warning">Name</label>
-          <div class="control">
-            <input class="input is-warning" type="text" placeholder="Text input" />
-          </div>
-          <p class="help is-warning">This username is available</p>
-        </div>
-        <div class="field">
           <label class="label">Message</label>
           <div class="control">
             <textarea class="textarea" placeholder="Textarea"></textarea>
@@ -215,12 +274,6 @@
           <label class="label is-danger">Message</label>
           <div class="control">
             <textarea class="textarea is-danger" placeholder="Textarea"></textarea>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label is-warning">Message</label>
-          <div class="control">
-            <textarea class="textarea is-warning" placeholder="Textarea"></textarea>
           </div>
         </div>
         <div class="field">
@@ -267,17 +320,6 @@
             </div>
           </div>
         </div>
-        <div class="field">
-          <label class="label is-warning">Subject</label>
-          <div class="control">
-            <div class="select is-warning">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
-            </div>
-          </div>
-        </div>
       </section>
       <section class="has-background-white has-radius-normal has-shadow-normal p-normal mb-normal">
         <div class="file">
@@ -308,15 +350,6 @@
           </label>
         </div>
         <div class="file is-danger mt-normal">
-          <label class="file-label">
-            <input class="file-input" type="file" name="resume" />
-            <span class="file-cta">
-              <span class="file-icon"> icon </span>
-              <span class="file-label"> Choose a file… </span>
-            </span>
-          </label>
-        </div>
-        <div class="file is-warning mt-normal">
           <label class="file-label">
             <input class="file-input" type="file" name="resume" />
             <span class="file-cta">

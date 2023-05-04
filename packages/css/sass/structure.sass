@@ -2,7 +2,7 @@
 @import '../src/structure/_all'
 
 html
-  background-color: var(--bal-color-white)
+  background-color: var(--bal-body-background)
   font-size: 16px
   min-width: 300px
   overflow-x: hidden
@@ -35,16 +35,16 @@ input,
 optgroup,
 select,
 textarea
-  font-family: var(--bal-font-family-text)
+  font-family: var(--bal-body-font-family)
 
 button
-  color: var(--bal-color-primary)
+  color: var(--bal-body-color)
 
 body
-  color: var(--bal-color-primary)
-  font-size: var(--bal-size-normal)
-  font-weight: var(--bal-weight-regular)
-  line-height: var(--bal-line-height-normal)
+  color: var(--bal-body-color)
+  font-size: var(--bal-body-font-size)
+  font-weight: var(--bal-body-font-weight)
+  line-height: var(--bal-body-line-height)
   -webkit-overflow-scrolling: auto
 
 a
@@ -65,7 +65,7 @@ input[type="radio"]
   vertical-align: baseline
 
 small
-  font-size: var(--bal-size-small)
+  font-size: var(--bal-small-font-size)
 
 span
   font-style: inherit
@@ -73,8 +73,8 @@ span
 
 b,
 strong
-  color: currentcolor
-  font-weight: var(--bal-weight-bold)
+  color: var(--bal-strong-color)
+  font-weight: var(--bal-strong-font-weight)
 
 fieldset
   border: none

@@ -460,6 +460,8 @@ const tokens = {
       'grey-dark': 'grey-6', // value of disabled inputs
       'grey': 'grey-5', // placeholder texts
       'light-blue': 'light-blue-5', // hover color
+      'light-blue-light': 'light-blue-2', // inverted hover color
+      'info-light': 'info-3', // inverted active color
       'primary-dark': 'primary-6', // active color
       'primary-light': 'primary-3', // inverted disabled
       'success': 'success-4',
