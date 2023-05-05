@@ -52,9 +52,11 @@ export {
   initialBreakpoints,
   BreakpointsHandlerType,
 } from './utils/breakpoints'
+export { balBrowser } from './utils/browser'
+export { balDevice } from './utils/device'
 
 // deprecated
-// export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
+export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { isBrowser, hasTouchSupport } from './utils/legacy'
 
 /**
