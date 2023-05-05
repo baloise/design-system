@@ -20,7 +20,7 @@ import {
   BalTabs,
   BalTabItem,
 } from '../../../../.storybook/vue/generated/components'
-import { isPlatform } from '../../../../dist'
+import { balBreakpoints } from '../../../../dist'
 
 const component = BalComponentStory({
   title: 'Components/Navigation/Navbar',
