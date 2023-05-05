@@ -1,6 +1,6 @@
 import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
+import { balBreakpoints } from '../../../utils/breakpoints'
 import { ResizeHandler } from '../../../utils/resize'
 import { Attributes } from '../../../utils/attributes'
 
@@ -42,7 +42,7 @@ export class NavigationMenuList {
   }
 
   setHeadingLevel = () => {
-    if (isPlatform('touch')) {
+    if (balBreakpoints.isTouch) {
       this.headingLevel = 'h5'
       return
     }

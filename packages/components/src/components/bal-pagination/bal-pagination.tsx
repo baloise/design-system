@@ -13,7 +13,7 @@ import {
   FunctionalComponent,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/platform'
+import { balBreakpoints } from '../../utils/breakpoints'
 import { ResizeHandler } from '../../utils/resize'
 
 @Component({
@@ -25,7 +25,7 @@ import { ResizeHandler } from '../../utils/resize'
 export class Pagination {
   @Element() el!: HTMLBalPaginationElement
   @State() _value = 1
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
 
   /**
    * Defines the layout of the pagination
@@ -89,7 +89,7 @@ export class Pagination {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
+      this.isMobile = balBreakpoints.isMobile
     })
   }
 

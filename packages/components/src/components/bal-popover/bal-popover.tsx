@@ -14,10 +14,10 @@ import {
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { BEM } from '../../utils/bem'
-import { isBrowser } from '../../utils/browser'
+import { balBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
-import { isPlatform } from '../../utils/platform'
+import { balBreakpoints } from '../../utils/breakpoints'
 import { ResizeHandler } from '../../utils/resize'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 
@@ -39,7 +39,7 @@ export class Popover implements ComponentInterface, Loggable {
 
   @Element() element!: HTMLElement
 
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = balBreakpoints.isTouch
   @State() isInMainNav = false
   @State() backdropHeight = 0
 
@@ -158,7 +158,7 @@ export class Popover implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.isInMainNav = this.footMobileNav !== null
-    this.isTouch = isPlatform('touch')
+    this.isTouch = balBreakpoints.isTouch
 
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
@@ -211,7 +211,7 @@ export class Popover implements ComponentInterface, Loggable {
     }
 
     // Bug fix for https://github.com/baloise/design-system/issues/551
-    if (isBrowser('Safari') && !this.isTouch) {
+    if (balBrowser.isSafari && !this.isTouch) {
       clearTimeout(this.componentDidRenderTimer)
       this.componentDidRenderTimer = setTimeout(() => {
         const triggerWidth = this.element?.clientWidth
@@ -268,7 +268,7 @@ export class Popover implements ComponentInterface, Loggable {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isTouch = isPlatform('touch')
+      this.isTouch = balBreakpoints.isTouch
       this.isInMainNav = this.footMobileNav !== null
       this.backdropHeight = this.getBackdropHeight()
     })

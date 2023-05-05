@@ -1,6 +1,6 @@
-import { isWindowDefined } from './browser'
-import { ResizeHandler } from './resize'
-import { getPlatforms } from './platform'
+import { ResizeHandler } from '../resize'
+import { isWindowDefined } from '../browser'
+import { balBreakpoints } from './breakpoints'
 
 export type BreakpointsHandlerCallback = (breakpoints: Breakpoints) => void
 
@@ -39,16 +39,16 @@ export const BreakpointsHandler = (): BreakpointsHandlerType => {
   let breakpoints = { ...initialBreakpoints }
 
   function update() {
-    const platforms = getPlatforms()
+    const detectedBreakpoints = balBreakpoints.detect()
     breakpoints = {
       ...breakpoints,
-      mobile: platforms.includes('mobile'),
-      tablet: platforms.includes('tablet'),
-      touch: platforms.includes('touch'),
-      desktop: platforms.includes('desktop'),
-      highDefinition: platforms.includes('highDefinition'),
-      widescreen: platforms.includes('widescreen'),
-      fullhd: platforms.includes('fullhd'),
+      mobile: detectedBreakpoints.includes('mobile'),
+      tablet: detectedBreakpoints.includes('tablet'),
+      touch: detectedBreakpoints.includes('touch'),
+      desktop: detectedBreakpoints.includes('desktop'),
+      highDefinition: detectedBreakpoints.includes('highDefinition'),
+      widescreen: detectedBreakpoints.includes('widescreen'),
+      fullhd: detectedBreakpoints.includes('fullhd'),
     }
     callbackHandler(breakpoints)
   }

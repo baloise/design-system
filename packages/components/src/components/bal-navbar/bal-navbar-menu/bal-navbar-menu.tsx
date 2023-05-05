@@ -1,6 +1,6 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
 import { deepReady } from '../../../utils/helpers'
-import { isPlatform } from '../../../utils/platform'
+import { balBreakpoints } from '../../../utils/breakpoints'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -12,7 +12,7 @@ export class NavbarMenu {
   @Element() element!: HTMLElement
 
   @State() isMenuActive = false
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = balBreakpoints.isTouch
 
   /**
    * @internal

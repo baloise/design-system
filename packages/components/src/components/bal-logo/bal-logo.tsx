@@ -12,7 +12,7 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { isPlatform } from '../../utils/platform'
+import { balBreakpoints } from '../../utils/breakpoints'
 import { ResizeHandler } from '../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
@@ -106,7 +106,7 @@ export class Logo implements ComponentInterface, Loggable {
    */
 
   private updatePlatform = () => {
-    const newIsTouch = isPlatform('touch')
+    const newIsTouch = balBreakpoints.isTouch
     if (this.isTouch !== newIsTouch) {
       this.isTouch = newIsTouch
     }

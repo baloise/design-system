@@ -22,7 +22,7 @@ import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
-import { isPlatform } from '../../utils/platform'
+import { balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-carousel',
@@ -41,7 +41,7 @@ export class Carousel implements ComponentInterface {
   private carouselId = `bal-carousel-${CarouselIds++}`
 
   @State() isLastSlideVisible = true
-  @State() areControlsHidden = !isPlatform('mobile')
+  @State() areControlsHidden = !balBreakpoints.isMobile
 
   @Element() el!: HTMLElement
 
@@ -154,7 +154,7 @@ export class Carousel implements ComponentInterface {
   @Listen('resize', { target: 'window' })
   async resizeListener() {
     this.resizeWidthHandler(() => {
-      this.areControlsHidden = !isPlatform('mobile')
+      this.areControlsHidden = !balBreakpoints.isMobile
     })
   }
 

@@ -1,5 +1,4 @@
 import { EventEmitter } from '@stencil/core'
-import { isWindowDefined } from './browser'
 import { BalConfig } from './config'
 import {
   balIconCaretDown,
@@ -20,6 +19,7 @@ import {
   balIconTrash,
   balIconUpload,
 } from './constants/icons.constant'
+import { isWindowDefined } from './browser'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any

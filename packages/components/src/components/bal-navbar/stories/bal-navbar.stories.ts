@@ -142,7 +142,7 @@ export const Simple = args => ({
   setup: () => {
     const isActive = ref(true)
     const myActiveTab = ref('tab-a')
-    const square = ref(isPlatform('mobile'))
+    const square = ref(balBreakpoints.isMobile)
 
     const toggle = () => {
       isActive.value = !isActive.value
@@ -156,7 +156,7 @@ export const Simple = args => ({
     onUnmounted(() => window.removeEventListener('resize', onResize))
 
     function onResize() {
-      square.value = isPlatform('mobile')
+      square.value = balBreakpoints.isMobile
     }
 
     return {
@@ -227,7 +227,7 @@ export const Light = args => ({
   },
   setup: () => {
     const isActive = ref(true)
-    const square = ref(isPlatform('mobile'))
+    const square = ref(balBreakpoints.isMobile)
 
     const toggle = () => {
       isActive.value = !isActive.value
@@ -241,7 +241,7 @@ export const Light = args => ({
     onUnmounted(() => window.removeEventListener('resize', onResize))
 
     function onResize() {
-      square.value = isPlatform('mobile')
+      square.value = balBreakpoints.isMobile
     }
 
     return {

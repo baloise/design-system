@@ -68,7 +68,7 @@ import {
 } from '../../../utils/form-input'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
+import { balBreakpoints } from '../../../utils/breakpoints'
 import { ResizeHandler } from '../../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
@@ -91,7 +91,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   @State() focused = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
@@ -275,7 +275,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
+      this.isMobile = balBreakpoints.isMobile
     })
   }
 

@@ -1,6 +1,6 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { isPlatform } from '../../utils/platform'
+import { balBreakpoints } from '../../utils/breakpoints'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { ResizeHandler } from '../../utils/resize'
@@ -23,7 +23,7 @@ export class Hint implements BalConfigObserver {
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   /**
    * Text for the close button.
    */
@@ -39,7 +39,7 @@ export class Hint implements BalConfigObserver {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      const isCurrentMobile = isPlatform('mobile')
+      const isCurrentMobile = balBreakpoints.isMobile
       if (isCurrentMobile !== this.isMobile) {
         this.isActive = false
       }

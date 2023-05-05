@@ -1,6 +1,5 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { debounceEvent } from '../../utils/helpers'
-import { isPlatform } from '../../utils/platform'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -10,6 +9,7 @@ import { ResizeHandler } from '../../utils/resize'
 import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
 import { MutationHandler } from '../../utils/mutations'
+import { balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-steps',
@@ -24,7 +24,7 @@ export class Steps implements Loggable {
   private resizeWidthHandler = ResizeHandler()
   private stepsId = `bal-steps-${StepsIds++}`
 
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   @State() store: BalStepOption[] = []
 
   log!: LogInstance
@@ -118,7 +118,7 @@ export class Steps implements Loggable {
   @Listen('resize', { target: 'window' })
   async resizeListener() {
     this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
+      this.isMobile = balBreakpoints.isMobile
     })
   }
 

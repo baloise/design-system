@@ -12,7 +12,6 @@ import {
 import { BalTabOption } from './bal-tab.type'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
@@ -22,6 +21,7 @@ import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
 import { MutationHandler } from '../../utils/mutations'
 import { AccordionState } from '../../interfaces'
+import { balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-tabs',
@@ -47,8 +47,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   @State() inNavbar = false
   @State() inNavbarLight = false
 
-  @State() isMobile = isPlatform('mobile')
-  @State() isTablet = isPlatform('tablet')
+  @State() isMobile = balBreakpoints.isMobile
+  @State() isTablet = balBreakpoints.isTablet
 
   @State() store: BalTabOption[] = []
   @State() animated = true
@@ -239,8 +239,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-      this.isTablet = isPlatform('tablet')
+      this.isMobile = balBreakpoints.isMobile
+      this.isTablet = balBreakpoints.isTablet
       this.animateLine()
     })
   }
@@ -362,8 +362,8 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   private isVertical(): boolean {
     const isVertical = this.parseVertical()
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = balBreakpoints.isMobile
+    const isTablet = balBreakpoints.isTablet
     const isTouch = isMobile || isTablet
 
     return isVertical || (isTouch && this.inNavbar)
@@ -641,8 +641,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   render() {
     const block = BEM.block('tabs')
 
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = balBreakpoints.isMobile
+    const isTablet = balBreakpoints.isTablet
     const isTouch = isMobile || isTablet
 
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)

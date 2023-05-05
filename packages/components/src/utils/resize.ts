@@ -1,4 +1,5 @@
-import { hasTouchSupport, isWindowDefined } from './browser'
+import { isWindowDefined } from './browser'
+import { balDevice } from './device'
 
 const windowWidth = () => {
   if (isWindowDefined()) {
@@ -28,7 +29,7 @@ export const ResizeHandler = (onlyWidth = false) => {
       previousIsLandscape = isLandscape()
     }
 
-    if (hasTouchSupport()) {
+    if (balDevice.hasTouchScreen) {
       if (previousWidth !== windowWidth() || previousIsLandscape !== isLandscape()) {
         callback()
         resetPreviousValues()

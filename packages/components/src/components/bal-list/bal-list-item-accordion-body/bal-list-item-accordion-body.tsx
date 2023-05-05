@@ -1,7 +1,7 @@
 import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
-import { isPlatform } from '../../../utils/platform'
+import { balBreakpoints } from '../../../utils/breakpoints'
 import { ResizeHandler, ResizeObserverHandler } from '../../../utils/resize'
 
 @Component({
@@ -14,7 +14,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
   private currentRaf: number | undefined
   private resizeHandler = ResizeObserverHandler()
   private resizeWidthHandler = ResizeHandler()
-  private isMobile = isPlatform('mobile')
+  private isMobile = balBreakpoints.isMobile
 
   @Element() el!: HTMLElement
 
@@ -72,7 +72,7 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
   @Listen('resize', { target: 'window' })
   async resizeListener() {
     this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
+      this.isMobile = balBreakpoints.isMobile
       this.debounceSetMinHeightForAnimation()
     })
   }
