@@ -1,29 +1,17 @@
-export const isWindowDefined = () => typeof window !== 'undefined'
-export const isNavigatorDefined = () => typeof navigator !== 'undefined'
-export const isDocumentDefined = () => typeof document !== 'undefined'
+import { balBrowser } from './browser'
+import { balDevice } from './device'
 
-export const getUserAgent = (): string => {
-  if (isWindowDefined() && isNavigatorDefined()) {
-    return navigator.userAgent ?? ''
-  }
+/**
+ * deprecated: Please use balDevice.hasTouchScreen
+ */
+export const hasTouchSupport = () => balDevice.hasTouchScreen
 
-  return ''
-}
-
-export const hasTouchSupport = () => {
-  if (isWindowDefined() && isNavigatorDefined()) {
-    return !!('ontouchstart' in window || (navigator as any).msMaxTouchPoints)
-  }
-  return false
-}
-
-type Browser = 'Safari' | 'others'
-
-const isSafari = /^((?!chrome|android).)*safari/i.test(getUserAgent())
-
-export const isBrowser = (browser: Browser): boolean => {
+/**
+ * deprecated: Please use balBrowser.isSafari
+ */
+export const isBrowser = (browser: 'Safari' | 'others'): boolean => {
   if (browser === 'Safari') {
-    return isSafari
+    return balBrowser.isSafari
   }
   return false
 }
