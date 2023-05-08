@@ -1,5 +1,5 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { isDocumentDefined } from '../browser'
+import { balBrowser } from '../browser'
 
 export interface BalNoticeOptions {
   message: string
@@ -27,7 +27,7 @@ export abstract class BalNoticeController {
   constructor(private options: NoticeOptions) {}
 
   create(options: BalNoticeOptions): any {
-    if (isDocumentDefined()) {
+    if (balBrowser.hasDocument) {
       this.setupContainer()
       const clone = this.findClone(options)
       if (clone === undefined) {
@@ -81,7 +81,7 @@ export abstract class BalNoticeController {
   }
 
   private setupContainer() {
-    if (isDocumentDefined()) {
+    if (balBrowser.hasDocument) {
       const containerId = `${this.options.tag}-container`
       this.container = document.getElementById(containerId)
 

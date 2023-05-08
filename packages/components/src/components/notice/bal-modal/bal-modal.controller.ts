@@ -2,7 +2,7 @@ import { getOverlays } from '../../../utils/overlays/overlays'
 import { componentOnReady, getAppRoot } from '../../../utils/helpers'
 import { getOverlay } from '../../../utils/overlays/overlays'
 import { ModalOptions } from './bal-modal.type'
-import { isDocumentDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 
 export * from './bal-modal.type'
 
@@ -10,7 +10,7 @@ export class BalModalController {
   tag = 'bal-modal'
   create(options: ModalOptions): Promise<HTMLBalModalElement> {
     /* tslint:disable-next-line */
-    if (typeof customElements !== 'undefined' && isDocumentDefined()) {
+    if (typeof customElements !== 'undefined' && balBrowser.hasDocument) {
       return customElements.whenDefined(this.tag).then(() => {
         const element = document.createElement(this.tag) as HTMLBalModalElement
 
@@ -28,14 +28,14 @@ export class BalModalController {
   }
 
   async dismissAll(data?: any, role?: string): Promise<void> {
-    if (isDocumentDefined()) {
+    if (balBrowser.hasDocument) {
       const overlays = getOverlays(document, this.tag)
       await Promise.all(overlays.map(o => o.dismiss(data, role)))
     }
   }
 
   dismiss(data?: any, role?: string, id?: string): Promise<boolean> {
-    if (isDocumentDefined()) {
+    if (balBrowser.hasDocument) {
       const overlay = getOverlay(document, this.tag, id)
       if (!overlay) {
         return Promise.reject('overlay does not exist')
@@ -46,7 +46,7 @@ export class BalModalController {
   }
 
   async getTop(): Promise<HTMLBalModalElement | undefined> {
-    if (isDocumentDefined()) {
+    if (balBrowser.hasDocument) {
       return getOverlay(document, this.tag) as any
     }
     return

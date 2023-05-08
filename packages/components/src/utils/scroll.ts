@@ -1,4 +1,4 @@
-import { isDocumentDefined, isWindowDefined } from './browser'
+import { balBrowser } from './browser'
 
 export const ScrollHandler = () => {
   let target: HTMLElement | Document | undefined
@@ -8,7 +8,7 @@ export const ScrollHandler = () => {
 
   function enable() {
     if (target) {
-      if (isWindowDefined() && isDocumentDefined()) {
+      if (balBrowser.hasWindow && balBrowser.hasDocument) {
         document.body.classList.remove('noscroll')
         document.body.style.position = ''
         document.body.style.top = ''
@@ -21,7 +21,7 @@ export const ScrollHandler = () => {
 
   function disable() {
     if (target) {
-      if (isWindowDefined() && isDocumentDefined()) {
+      if (balBrowser.hasWindow && balBrowser.hasDocument) {
         x = window.pageXOffset || document.documentElement.scrollLeft
         y = window.pageYOffset || document.documentElement.scrollTop
         document.body.classList.add('noscroll')
@@ -38,7 +38,7 @@ export const ScrollHandler = () => {
       if (el) {
         target = el
       } else {
-        if (isDocumentDefined()) {
+        if (balBrowser.hasDocument) {
           target = document
         }
       }
@@ -65,7 +65,7 @@ const getHtmlStyles = (doc: Document) => getComputedStyle(getHtml(doc))
 const hasScrollSmoothOnHtml = (doc: Document) => getHtmlStyles(doc).scrollBehavior === 'smooth'
 
 export const disableSmoothScrolling = () => {
-  if (isDocumentDefined()) {
+  if (balBrowser.hasDocument) {
     const doc = document
     const body = getBody(doc)
 
@@ -78,7 +78,7 @@ export const disableSmoothScrolling = () => {
 }
 
 export const enableSmoothScrolling = () => {
-  if (isDocumentDefined()) {
+  if (balBrowser.hasDocument) {
     const doc = document
     const body = getBody(doc)
 

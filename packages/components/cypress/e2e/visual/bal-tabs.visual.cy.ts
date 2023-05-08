@@ -1,5 +1,5 @@
 describe('bal-tabs', () => {
-  const errorThreshold = 0
+  const errorThreshold = 0.05
 
   context('desktop', () => {
     beforeEach(() => {

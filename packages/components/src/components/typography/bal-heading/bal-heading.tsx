@@ -9,7 +9,7 @@ import {
   HeadingSize,
   HeadingTag,
 } from './bal-heading.const'
-import { isWindowDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-heading',
@@ -125,7 +125,7 @@ export class Heading implements ComponentInterface {
    */
 
   private get rows() {
-    if (this.headingEl && isWindowDefined()) {
+    if (this.headingEl && balBrowser.hasWindow) {
       const computedStyle = window.getComputedStyle(this.headingEl)
       const lineHeight = parseInt(computedStyle.lineHeight.slice(0, -2), 10)
       const height = this.headingEl.offsetHeight
