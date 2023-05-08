@@ -161,7 +161,15 @@ export const FormWizardDesktop = args => ({
     <div class="container is-compact" style="margin-top: -12rem">
       <bal-card>
         <bal-card-title>How did the damage occur?</bal-card-title>
-        <bal-card-content>Place your form content here</bal-card-content>
+        <bal-card-content>
+          <bal-field>
+            <bal-field-label>Label</bal-field-label>
+            <bal-field-control>
+              <bal-input></bal-input>
+            </bal-field-control>
+          </bal-field>
+          Place your form content here
+        </bal-card-content>
       </bal-card>
       <bal-stack space="auto" class="mt-medium">
         <bal-button color="text">Back</bal-button>
