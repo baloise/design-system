@@ -57,6 +57,9 @@ These are the variables of the CSS-Framework which inherit from the design token
 | `--bal-focus-shadow-inverted-end-color`   | Focus shadow end color                  |
 | `--bal-focus-shadow-inverted`             | Focus shadow on a dark background       |
 | `--bal-focus-shadow-inverted-inset`       | Focus shadow on a dark background inset |
+| `--bal-small-font-size`                   | TBD                                     |
+| `--bal-strong-color`                      | TBD                                     |
+| `--bal-strong-font-weight`                | TBD                                     |
 
 ### List
 

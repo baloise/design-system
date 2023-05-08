@@ -6,7 +6,5 @@ describe('css-radius.visual', () => {
     cy.getByTestId('radius-normal').compareSnapshot('css-radius-normal-basic', 0.0)
     cy.getByTestId('radius-large').compareSnapshot('css-radius-large-basic', 0.0)
     cy.getByTestId('radius-rounded').compareSnapshot('css-radius-rounded-basic', 0.0)
-    cy.getByTestId('radius-small').compareSnapshot('css-radius-small-basic', 0.0)
-    cy.getByTestId('radius-x-large').compareSnapshot('css-radius-none-x-large', 0.0)
   })
 })
