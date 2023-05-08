@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '@/components/utils/bem'
 
 @Component({
   tag: 'bal-stage-image',

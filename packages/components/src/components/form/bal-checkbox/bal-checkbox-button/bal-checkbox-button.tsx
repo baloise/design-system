@@ -11,12 +11,12 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core'
-import { BEM } from '../../../../utils/bem'
-import { stopEventBubbling } from '../../../../utils/form-input'
-import { defaultElementStateState, ElementStateHandler, ElementStateState } from '../../../../utils/element-states'
-import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-import { FOCUS_KEYS } from '../../../../utils/focus-visible'
-import { isDescendant } from '../../../../utils/helpers'
+import { BEM } from '@/components/utils/bem'
+import { stopEventBubbling } from '@/components/utils/form-input'
+import { defaultElementStateState, ElementStateHandler, ElementStateState } from '@/components/utils/element-states'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { FOCUS_KEYS } from '@/components/utils/focus-visible'
+import { isDescendant } from '@/components/utils/helpers'
 
 @Component({
   tag: 'bal-checkbox-button',

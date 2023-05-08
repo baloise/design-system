@@ -1,10 +1,10 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { balBreakpoints } from '../../utils/breakpoints'
-import { BEM } from '../../utils/bem'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '@/components/utils/config'
+import { balBreakpoints } from '@/components/utils/breakpoints'
+import { BEM } from '@/components/utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { ResizeHandler } from '../../utils/resize'
-import { ScrollHandler } from '../../utils/scroll'
+import { ResizeHandler } from '@/components/utils/resize'
+import { ScrollHandler } from '@/components/utils/scroll'
 
 @Component({
   tag: 'bal-hint',

@@ -25,8 +25,8 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@/core/utils/*": ["./packages/components/src/utils/*"],
-      "@/core/interfaces": ["./packages/components/src/interfaces.d.ts"]
+      "@/components/utils/*": ["./packages/components/src/utils/*"],
+      "@/components/types": ["./packages/components/src/global-types.d.ts"]
     }
   },
   "compileOnSave": false,

@@ -1,6 +1,6 @@
 import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { ResizeHandler } from '../../../utils/resize'
+import { BEM } from '@/components/utils/bem'
+import { ResizeHandler } from '@/components/utils/resize'
 
 @Component({
   tag: 'bal-popover-content',

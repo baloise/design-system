@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '@/components/utils/bem'
 import { BalStepOption } from '../bal-step.type'
 import { StepIcon } from './step-icon'
 import { StepLabel } from './step-label'

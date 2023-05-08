@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { balBrowser } from '../../../utils/browser'
+import { BEM } from '@/components/utils/bem'
+import { balBrowser } from '@/components/utils/browser'
 import { BalTabOption } from '../bal-tab.type'
 
 export interface TabSelectProps {

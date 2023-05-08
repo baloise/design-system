@@ -21,8 +21,8 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../utils/config'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
+} from '@/components/utils/config'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '@/components/utils/constants/keys.constant'
 import {
   FormInput,
   getInputTarget,
@@ -38,9 +38,9 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../utils/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
+} from '@/components/utils/form-input'
+import { debounceEvent, findItemLabel } from '@/components/utils/helpers'
+import { inheritAttributes } from '@/components/utils/attributes'
 import {
   getDecimalSeparator,
   getThousandSeparator,
@@ -48,9 +48,9 @@ import {
   formatFloatString,
   getNegativeSymbol,
   getDecimalSeparators,
-} from '../../../utils/number'
+} from '@/components/utils/number'
 import { formatInputValue } from './bal-input.utils'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '@/components/utils/bem'
 
 @Component({
   tag: 'bal-number-input',

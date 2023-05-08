@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Attributes } from '../../../utils/attributes'
+import { BEM } from '@/components/utils/bem'
+import { Attributes } from '@/components/utils/attributes'
 
 @Component({
   tag: 'bal-navigation-menu-list-item',

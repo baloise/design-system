@@ -29,8 +29,8 @@ import {
   isSameMonth,
   lastDayOfMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
+import { debounceEvent, findItemLabel } from '@/components/utils/helpers'
+import { inheritAttributes } from '@/components/utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {
   isSpaceKey,
@@ -43,7 +43,7 @@ import {
   dateSeparator,
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '@/components/utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import {
   detachComponentToConfig,
@@ -55,7 +55,7 @@ import {
   BalLanguage,
   BalConfigState,
   BalRegion,
-} from '../../../utils/config'
+} from '@/components/utils/config'
 import {
   FormInput,
   getInputTarget,
@@ -65,12 +65,12 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../utils/form-input'
+} from '@/components/utils/form-input'
 import { preventDefault } from '../bal-select/utils/utils'
-import { BEM } from '../../../utils/bem'
-import { balBreakpoints } from '../../../utils/breakpoints'
-import { ResizeHandler } from '../../../utils/resize'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BEM } from '@/components/utils/bem'
+import { balBreakpoints } from '@/components/utils/breakpoints'
+import { ResizeHandler } from '@/components/utils/resize'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
 
 @Component({
   tag: 'bal-datepicker',

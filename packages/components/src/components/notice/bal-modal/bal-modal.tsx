@@ -1,10 +1,10 @@
 import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
-import { dismiss, eventMethod, prepareOverlay } from '../../../utils/overlays/overlays'
-import { attachComponent, detachComponent } from '../../../utils/framework-delegate'
+import { dismiss, eventMethod, prepareOverlay } from '@/components/utils/overlays/overlays'
+import { attachComponent, detachComponent } from '@/components/utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
-import { deepReady, wait } from '../../../utils/helpers'
-import { ScrollHandler } from '../../../utils/scroll'
-import { getClassMap } from '../../../utils/css-classes'
+import { deepReady, wait } from '@/components/utils/helpers'
+import { ScrollHandler } from '@/components/utils/scroll'
+import { getClassMap } from '@/components/utils/css-classes'
 
 @Component({
   tag: 'bal-modal',

@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
-import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
+import { Attributes, inheritTrackingAttributes } from '@/components/utils/attributes'
 
 @Component({
   tag: 'bal-navigation-level-main',

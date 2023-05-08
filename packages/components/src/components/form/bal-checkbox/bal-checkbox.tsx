@@ -11,14 +11,14 @@ import {
   State,
   ComponentInterface,
 } from '@stencil/core'
-import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../../utils/form-input'
-import { isDescendant } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
-import { BEM } from '../../../utils/bem'
+import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '@/components/utils/form-input'
+import { isDescendant } from '@/components/utils/helpers'
+import { inheritAttributes } from '@/components/utils/attributes'
+import { BEM } from '@/components/utils/bem'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { FOCUS_KEYS } from '../../../utils/focus-visible'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { FOCUS_KEYS } from '@/components/utils/focus-visible'
 
 @Component({
   tag: 'bal-checkbox',

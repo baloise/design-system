@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '@/components/utils/bem'
 
 @Component({
   tag: 'bal-hint-text',

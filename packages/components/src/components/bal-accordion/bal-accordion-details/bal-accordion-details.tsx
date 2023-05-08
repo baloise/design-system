@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, ComponentInterface, State, Prop } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { AccordionState } from '../../../interfaces'
+import { BEM } from '@/components/utils/bem'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { AccordionState } from '@/components/types'
 
 @Component({
   tag: 'bal-accordion-details',

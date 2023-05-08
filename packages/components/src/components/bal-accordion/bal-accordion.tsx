@@ -11,12 +11,17 @@ import {
   State,
   ComponentInterface,
 } from '@stencil/core'
-import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { BEM } from '../../utils/bem'
-import { raf } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '@/core/utils/log'
-import { AccordionState } from '@/core/interfaces'
+import { debounceEvent, transitionEndAsync } from '@/components/utils/helpers'
+import {
+  attachComponentToConfig,
+  BalConfigObserver,
+  BalConfigState,
+  detachComponentToConfig,
+} from '@/components/utils/config'
+import { BEM } from '@/components/utils/bem'
+import { raf } from '@/components/utils/helpers'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { AccordionState } from '@/components/types'
 
 @Component({
   tag: 'bal-accordion',

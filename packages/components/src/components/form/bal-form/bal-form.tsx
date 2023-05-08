@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Element } from '@stencil/core'
-import { scrollToFirstInvalidField } from '../../../utils/form'
+import { scrollToFirstInvalidField } from '@/components/utils/form'
 
 @Component({
   tag: 'bal-form',

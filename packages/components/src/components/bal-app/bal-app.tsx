@@ -1,9 +1,9 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Method } from '@stencil/core'
-import { BalMode, initStyleMode, updateBalAnimated } from '../../utils/config'
-import { rIC } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { balBrowser } from '../../utils/browser'
-import { balDevice } from '../../utils/device'
+import { BalMode, initStyleMode, updateBalAnimated } from '@/components/utils/config'
+import { rIC } from '@/components/utils/helpers'
+import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { balBrowser } from '@/components/utils/browser'
+import { balDevice } from '@/components/utils/device'
 
 @Component({
   tag: 'bal-app',
@@ -51,7 +51,7 @@ export class App implements Loggable {
     rIC(async () => {
       this.balAppLoad.emit(true)
       this.ready = true
-      import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
+      import('@/components/utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
     })
   }
 
