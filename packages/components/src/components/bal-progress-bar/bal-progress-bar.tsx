@@ -1,5 +1,6 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -11,6 +12,7 @@ export class ProgressBar implements ComponentInterface {
   @Element() el!: HTMLElement
 
   private lineEl?: HTMLDivElement
+  private resizeHandler = ResizeHandler()
 
   /**
    * PUBLIC PROPERTY API
@@ -33,6 +35,27 @@ export class ProgressBar implements ComponentInterface {
    */
 
   componentDidRender(): void {
+    this.updateProgress()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('resize', { target: 'window' })
+  async resizeListener() {
+    this.resizeHandler(() => {
+      this.updateProgress()
+    })
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private updateProgress() {
     if (this.lineEl) {
       const maxWidth = this.el.clientWidth
       const value = Math.max(0, Math.min(100, this.value))
