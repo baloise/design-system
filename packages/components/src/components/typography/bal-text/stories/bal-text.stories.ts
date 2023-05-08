@@ -27,5 +27,18 @@ Basic.args = {
   size: '',
   bold: false,
   paragraph: false,
+  noWrap: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const NoWrap = Template.bind({})
+NoWrap.args = {
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  color: '',
+  size: '',
+  bold: false,
+  paragraph: false,
+  noWrap: true,
+}
+NoWrap.parameters = { ...component.sourceCode(NoWrap) }

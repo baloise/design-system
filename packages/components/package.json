@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "12.12.0",
+  "version": "13.0.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/baloise/design-system/issues"
   },
-  "homepage": "https://baloise-design.vercel.app",
+  "homepage": "https://design.baloise.dev",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
@@ -34,7 +34,7 @@
   "jsnext:main": "dist/esm/index.js",
   "collection:main": "dist/collection/index.js",
   "collection": "dist/collection/collection-manifest.json",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/interfaces.d.ts",
   "files": [
     "dist/",
     "loader/",
@@ -51,7 +51,7 @@
     "==================== BUILD =========================": "================================",
     "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
     "build:pre": "npm run cy:copy && node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js && stencil build --config stencil.config.pre.ts --es5",
-    "build:post": "node ../../.build/globals.js",
+    "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
@@ -72,13 +72,13 @@
     "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "12.12.0",
-    "@baloise/design-system-fonts": "12.12.0",
-    "@baloise/design-system-icons": "12.12.0",
-    "@baloise/design-system-tokens": "12.12.0",
-    "@baloise/web-app-utils": "3.11.0",
+    "@baloise/design-system-css": "13.0.0",
+    "@baloise/design-system-fonts": "13.0.0",
+    "@baloise/design-system-icons": "13.0.0",
+    "@baloise/design-system-tokens": "13.0.0",
+    "@baloise/web-app-utils": "3.11.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~2.20.0",
+    "@stencil/core": "~3.2.0",
     "big.js": "~6.2.1",
     "contactjs": "~2.1.6",
     "date-fns": "~2.29.3",
@@ -98,9 +98,9 @@
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "12.12.0",
-    "@baloise/design-system-output-target-react": "12.12.0",
-    "@baloise/design-system-output-target-vue": "12.12.0"
+    "@baloise/design-system-output-target-angular": "13.0.0",
+    "@baloise/design-system-output-target-react": "13.0.0",
+    "@baloise/design-system-output-target-vue": "13.0.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

@@ -15,7 +15,6 @@ import { BEM } from '../../../../utils/bem'
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { defaultElementStateState, ElementStateHandler, ElementStateState } from '../../../../utils/element-states'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
-import { Props } from '../../../../types'
 import { FOCUS_KEYS } from '../../../../utils/focus-visible'
 import { isDescendant } from '../../../../utils/helpers'
 
@@ -80,32 +79,32 @@ export class BalRadioButton implements ComponentInterface, Loggable {
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() color?: Props.BalRadioButtonColor
+  @Prop() color?: BalProps.BalRadioButtonColor
 
   /**
    * @internal
    */
-  @Prop() colSize: Props.BalRadioGroupColumns = 1
+  @Prop() colSize: BalProps.BalRadioGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colSizeTablet: Props.BalRadioGroupColumns = 1
+  @Prop() colSizeTablet: BalProps.BalRadioGroupColumns = 1
 
   /**
    * @internal
    */
-  @Prop() colSizeMobile: Props.BalRadioGroupColumns = 1
+  @Prop() colSizeMobile: BalProps.BalRadioGroupColumns = 1
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioButtonFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioButtonBlurDetail>
 
   /**
    * LIFECYCLE

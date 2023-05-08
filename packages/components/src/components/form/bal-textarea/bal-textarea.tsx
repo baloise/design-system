@@ -28,7 +28,6 @@ import {
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-textarea',
@@ -94,11 +93,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() minLength?: number
 
   /**
-   * @deprecated If `true` this component can be placed on dark background
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
@@ -121,7 +115,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() wrap?: Props.BalTextareaWrap
+  @Prop() wrap?: BalProps.BalTextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -138,7 +132,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: Props.BalTextareaInputMode
+  @Prop() inputmode?: BalProps.BalTextareaInputMode
 
   /**
    * The value of the textarea.
@@ -148,32 +142,27 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Emitted when the input value has changed..
    */
-  @Event() balChange!: EventEmitter<Events.BalTextareaChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalTextareaChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalTextareaInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalTextareaInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalTextareaBlurDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalTextareaKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalTextareaFocusDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -285,7 +274,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           class={{
             ...elNative.class(),
             'textarea': true,
-            'is-inverted': this.inverted,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'clickable': this.clickable,

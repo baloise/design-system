@@ -15,6 +15,10 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs'
 
 ## Breakpoints
 
+To create a responsive layout you can either structure your app with the Sass mixins, CSS classes or use Javascript utilities.
+
+### Sass Mixins
+
 There are nine responsive mixins, which can be easily used in your sass files.
 
 Use the scss mixins in your application the following:
@@ -116,6 +120,28 @@ isPlatform(window, 'desktop')
 isPlatform(window, 'high-definition')
 isPlatform(window, 'widescreen')
 isPlatform(window, 'fullhd')
+```
+
+#### Angular
+
+In the angular package we provide a `BalBreakpointsService` with observables. This service listens
+on resize events and inform all subscribes.
+
+Just import the `BalBreakpointsService` from the '@baloise/design-system-components-angular' package
+and set is as **public** in the constructor so that we can use it in the template.
+
+```typescript
+import { BalBreakpointsService } from '@baloise/design-system-components-angular'
+
+class MyComponent {
+  constructor(public breakpoints: BalBreakpointsService)
+}
+```
+
+In the template access the breakpoint you need with `breakpoints.touch$`.
+
+```html
+<div *ngIf="breakpoints.touch$ | async">... come content ...</div>
 ```
 
 <span id="story--foundation-grid-development--container-css-utility" style={{ opacity: 0 }}></span>

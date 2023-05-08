@@ -7,6 +7,10 @@ declare namespace Cypress {
      */
     disableAnimation(): Chainable<JQuery>
     /**
+     * Disabled all logs for the Design System components.
+     */
+    disableLogger(): Chainable<JQuery>
+    /**
      * Waits until the component is fully loaded.
      */
     waitForComponents(options?: Partial<Loggable>): Chainable<JQuery>

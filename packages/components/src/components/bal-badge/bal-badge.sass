@@ -3,62 +3,80 @@
 
 // Badge
 // --------------------------------------------------
-
-+block(badge)
+.bal-badge
   +unselectable
-  position: static
   display: flex
   justify-content: center
   align-items: center
-  background: var(--bal-badge-background)
-  border-radius: var(--bal-badge-radius)
   width: 1.5rem
   height: 1.5rem
-  +modifier(has-size-small)
+  border-radius: var(--bal-badge-radius)
+  background: var(--bal-badge-background)
+  //
+  // sizes
+  &--size-small
     width: .75rem
     height: .75rem
-  +modifier(has-size-large)
+  &--size-large
     width: 2rem
     height: 2rem
   //
-  // colors
-  +modifier(has-background-danger)
-    background: var(--bal-badge-background-danger)
-  +modifier(has-background-warning)
-    background: var(--bal-badge-background-warning)
-  +modifier(has-background-success)
-    background: var(--bal-badge-background-success)
+  // background colors
+  &--background-red,
+  &--background-danger
+    background: var(--bal-badge-background-red)
+  &--background-yellow,
+  &--background-warning
+    background: var(--bal-badge-background-yellow)
+  &--background-green,
+  &--background-success
+    background: var(--bal-badge-background-green)
+  &--background-purple
+    background: var(--bal-badge-background-purple)
+  &--background-grey
+    background: var(--bal-badge-background-grey)
   //
   // position
-  +modifiers(has-position-card, has-position-button)
+  &--position-card,
+  &--position-button
     position: absolute
     right: -0.5rem
     top: -0.5rem
-  +modifier(has-position-tabs)
+  &--position-tabs
     margin-top: -4px
     position: absolute
     right: -26px
-    &.bal-badge--has-size-small
+    &.bal-badge--size-small
       right: -16px
+
+// Badge Label
+// --------------------------------------------------
+span.bal-badge__label
+  font-weight: var(--bal-weight-bold) !important
+  font-family: var(--bal-font-family-text) !important
+  font-size: var(--bal-size-small) !important
+  color: var(--bal-badge-text-color)
+  line-height: 1.5rem !important
+  hyphens: auto
+  &--hidden
+    display: none !important
   //
-  // label
-  +element(label)
-    font-weight: var(--bal-weight-bold) !important
-    font-family: var(--bal-font-family-text) !important
-    font-size: var(--bal-size-small) !important
-    color: var(--bal-badge-text-color)
-    line-height: 1.5rem !important
-    hyphens: auto
-    +modifier(is-hidden)
-      display: none !important
-    +modifier(has-color-danger)
-      color: var(--bal-badge-text-color-danger)
-    +modifier(has-color-warning)
-      color: var(--bal-badge-text-color-warning)
-    +modifier(has-color-success)
-      color: var(--bal-badge-text-color-success)
-  //
-  // icon
-  +element(icon)
-    +modifier(is-hidden)
-      display: none !important
+  // text colors
+  &--color-red,
+  &--color-danger
+    color: var(--bal-badge-text-color-red)
+  &--color-yellow,
+  &--color-warning
+    color: var(--bal-badge-text-color-yellow)
+  &--color-green,
+  &--color-success
+    color: var(--bal-badge-text-color-green)
+  &--color-grey
+    color: var(--bal-badge-text-color-grey)
+  &--color-purple
+    color: var(--bal-badge-text-color-purple)
+
+// Badge Icon
+// --------------------------------------------------
+.bal-badge__icon--hidden
+  display: none !important

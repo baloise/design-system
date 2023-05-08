@@ -10,7 +10,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    dynamicImportShim: true,
+    __deprecated__dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
   },
@@ -45,6 +45,7 @@ export const config: Config = {
         {
           src: 'components.d.ts',
         },
+        { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
         { src: '../public/assets/images', dest: 'assets/images', warn: true },
       ],

@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-badge',
@@ -18,33 +18,41 @@ export class Badge implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop() size: Props.BalBadgeSize = ''
+  @Prop() size: BalProps.BalBadgeSize = ''
 
   /**
    * Define the alert color for the badge.
    */
-  @Prop() color: Props.BalBadgeColor = ''
+  @Prop() color: BalProps.BalBadgeColor = ''
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop() position: Props.BalBadgePosition = ''
+  @Prop() position: BalProps.BalBadgePosition = ''
 
   render() {
+    const block = BEM.block('badge')
+    const labelEl = block.element('label')
+    const iconEl = block.element('icon')
+    const color = this.color !== ''
+    const size = this.size !== ''
+    const position = this.position !== ''
+    const labelHidden = !!this.icon || this.size === 'small'
+
     return (
       <Host
         class={{
-          'bal-badge': true,
-          [`bal-badge--has-background-${this.color}`]: true,
-          [`bal-badge--has-position-${this.position}`]: this.position !== '',
-          [`bal-badge--has-size-${this.size}`]: this.size !== '',
+          ...block.class(),
+          ...block.modifier(`background-${this.color}`).class(color),
+          ...block.modifier(`position-${this.position}`).class(position),
+          ...block.modifier(`size-${this.size}`).class(size),
         }}
       >
         <span
           class={{
-            'bal-badge__label': true,
-            [`bal-badge__label--has-color-${this.color}`]: true,
-            'bal-badge__label--is-hidden': !!this.icon || this.size === 'small',
+            ...labelEl.class(),
+            ...labelEl.modifier(`color-${this.color}`).class(color),
+            ...labelEl.modifier(`hidden`).class(labelHidden),
           }}
           data-testid="bal-badge-label"
         >
@@ -52,12 +60,12 @@ export class Badge implements ComponentInterface {
         </span>
         <bal-icon
           class={{
-            'bal-badge__icon': true,
-            'bal-badge__icon--is-hidden': !this.icon || this.size === 'small',
+            ...iconEl.class(),
+            ...iconEl.modifier(`hidden`).class(!labelHidden),
           }}
           size={this.size === '' ? 'small' : ''}
           name={this.icon}
-          color={this.color === 'warning' ? 'primary' : 'white'}
+          color={this.color === 'grey' ? 'grey' : 'primary'}
         ></bal-icon>
       </Host>
     )

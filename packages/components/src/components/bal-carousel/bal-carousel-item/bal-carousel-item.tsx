@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, EventEmitter } from '@stencil/core'
-import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
 
@@ -22,7 +21,7 @@ export class CarouselItem implements ComponentInterface {
   /**
    * The type of button.
    */
-  @Prop() elementType: Props.BalButtonElementType = 'button'
+  @Prop() elementType: BalProps.BalButtonElementType = 'button'
 
   /**
    * The name of the button, which is submitted with the form data.
@@ -43,7 +42,7 @@ export class CarouselItem implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -62,22 +61,22 @@ export class CarouselItem implements ComponentInterface {
   /**
    * Color of the background
    */
-  @Prop() color?: Props.BalCarouselItemColor
+  @Prop() color?: BalProps.BalCarouselItemColor
 
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<BalEvents.BalCarouselItemNavigateDetail>
 
   /**
    * Emitted when the button has focus.
    */
-  @Event() balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCarouselItemFocusDetail>
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCarouselItemBlurDetail>
 
   @Method() async getData(): Promise<BalCarouselItemData> {
     return {

@@ -12,7 +12,7 @@ export class BalDocGithub {
         <section class="mt-xx-large pt-normal has-border-top-light">
           <p class="mb-small">
             If you experience any issues while using a component, please head over to the{' '}
-            <a class="sbdocs-a" href="https://baloise-design.vercel.app/?path=/docs/support--page">
+            <a class="sbdocs-a" href="https://design.baloise.dev/?path=/docs/support--page">
               Support page
             </a>{' '}
             for more guidelines and help.

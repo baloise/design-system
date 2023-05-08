@@ -1,5 +1,282 @@
 # @baloise/design-system-components
 
+## 13.0.0
+
+### Major Changes
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - improved scroll handler blocks scrolling with only CSS.
+  With that we are able to remember the last scroll position of the user.
+
+  **before**
+
+  ```typescript
+  const scrollHandler = BodyScrollBlocker()
+  this.bodyScrollBlocker.block()
+  this.bodyScrollBlocker.allow()
+  ```
+
+  **after**
+
+  Rename the handler to `ScrollHandler` and call the `connect` function to
+  connect the handler to the target element (Default is document). `block` and `allow` have been
+  renamed to `disable` and `enable`. The new function `disconnect` removes all
+  the defined event listeners and resets the handler.
+
+  ```typescript
+  const scrollHandler = ScrollHandler()
+
+  // can also pass in a custom element instead of using document
+  scrollHandler.connect()
+  scrollHandler.disable()
+  scrollHandler.enable()
+  scrollHandler.disconnect()
+  ```
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - The namespaces Props and Events are renamed to BalProps and BalEvents.
+  As long as the packages `@baloise/design-system-components` is imported into your project
+  you have direct access to the new namespaces.
+
+  #### With Props
+
+  **before**
+
+  ```typescript
+  import { Props } from '@baloise/design-system-components'
+
+  const myColor: Props.BalButtonColor = 'primary'
+  ```
+
+  **after**
+
+  ```typescript
+  const myColor: BalProps.BalButtonColor = 'primary'
+  ```
+
+  #### With Events
+
+  **before**
+
+  ```typescript
+  import type { Events } from "@baloise/design-system-components"
+
+  const onChange = (event: Events.BalAccordionChange) => {
+    const myAccordion = event.target // type => EventTarget
+    const myDetail = event.detail // type => boolean
+    ...
+  }
+  ```
+
+  **after**
+
+  ```typescript
+  const onChange = (event: BalEvents.BalAccordionChange) => {
+    const myAccordion = event.target // type => HTMLBalAccordion
+    const myDetail = event.detail // type => boolean
+    ...
+  }
+  ```
+
+  All component types are now located in the component folders `*.interfaces.ts` file.
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - add new `steps` component with options property and overflow solution
+
+  **before**
+
+  ```html
+  <bal-tabs interface="o-steps" value="tab-a">
+    <bal-tab-item done value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+  </bal-tabs>
+  ```
+
+  **after**
+
+  The interface of the components are the same as before.
+  Only the tag names of the component changed and to pass the `interface` property is not needed anymore.
+
+  ```html
+  <bal-steps value="tab-a">
+    <bal-step-item done value="tab-a" label="Tab A">Content of Tab A</bal-step-item>
+  </bal-steps>
+  ```
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - update dependency stencil to v3.
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - Remove inverted property from bal-stage, bal-datepicker, bal-input, bal-textarea.
+
+  Inverted property is removed because is not supported in our new rebranded style.
+
+  Components that are affected are:
+
+  | Component        | Property |
+  | :--------------- | :------- |
+  | `bal-stage`      | inverted |
+  | `bal-datepicker` | inverted |
+  | `bal-input`      | inverted |
+  | `bal-textarea`   | inverted |
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - accordion & popover renamed property `value` to `active`, since they are not considered as a form control component.
+
+  **before**
+
+  ```html
+  <bal-accordion value="true">My hidden Content</bal-accordion>
+  ```
+
+  **after**
+
+  ```html
+  <bal-accordion active="true">My hidden Content</bal-accordion>
+  ```
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - remove deprecated global component styles.
+  Component styles will be loaded lazy to optimize the speed of the first render, there for only import the needed CSS files.
+
+  #### Global import
+
+  The global import of the main styles and his utility classes move to the CSS framework.
+
+  **before**
+
+  ```scss
+  @import '@baloise/design-system-components/src/styles/global';
+  ```
+
+  **after**
+
+  With the solution we are able to add only what we need.
+
+  ```scss
+  // SASS mixins and variables
+  @import '@baloise/design-system-css/sass/mixins';
+
+  // Resets CSS for all browser
+  @import '@baloise/design-system-css/css/normalize';
+  @import '@baloise/design-system-css/css/structure';
+
+  // Custom font faces
+  @import '@baloise/design-system-css/sass/font';
+
+  // Core CSS, always required
+  @import '@baloise/design-system-css/css/core';
+
+  // Deprecated styles will be removed with the next breaking version (optional)
+  @import '@baloise/design-system-css/sass/legacy';
+
+  // CSS utilities classes (optional)
+  @import '@baloise/design-system-css/css/border';
+  @import '@baloise/design-system-css/css/color';
+  @import '@baloise/design-system-css/css/display';
+  @import '@baloise/design-system-css/css/flex';
+  @import '@baloise/design-system-css/css/grid';
+  @import '@baloise/design-system-css/css/opacity';
+  @import '@baloise/design-system-css/css/radius';
+  @import '@baloise/design-system-css/css/shadow';
+  @import '@baloise/design-system-css/css/spacing';
+  @import '@baloise/design-system-css/css/typography';
+  ```
+
+  #### Component utilities import
+
+  The location of the `variable` & `mixins` has changed to `@baloise/design-system-css/sass/mixins`.
+
+  **before**
+
+  ```scss
+  @import '@baloise/design-system-components/src/styles/global.utilities';
+  ```
+
+  **after**
+
+  ```scss
+  @import '@baloise/design-system-css/sass/mixins';
+  ```
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - .title, bal-heading, bal-text and bal-label inherit default color
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - remove deprecated parts
+
+  ### Design Token Removal
+
+  | Component     | Value     | Why                                     |
+  | ------------- | --------- | --------------------------------------- |
+  | **radius**    | `small`   | Is not supported in the new Style Guide |
+  | **radius**    | `x-large` | Is not supported in the new Style Guide |
+  | **container** | `is-blog` | Use default container instead           |
+
+  ### Component Property Renaming
+
+  | Component            | Before        | After              |
+  | -------------------- | ------------- | ------------------ |
+  | **bal-card-actions** | `right`       | `position="right"` |
+  | **bal-navbar-brand** | `link-target` | `target`           |
+  | **bal-stage**        | `has-shape`   | `shape`            |
+  | **bal-radio**        | `is-empty`    | `label-hidden`     |
+
+  ### Component Property Removal
+
+  | Component      | Property       | Why                                                              |
+  | -------------- | -------------- | ---------------------------------------------------------------- |
+  | **bal-select** | `no-border`    | Left over from the old style guide. Was event not active anymore |
+  | **bal-select** | `has-movement` | Left over from the old style guide. Was event not active anymore |
+
+### Minor Changes
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - add `border` property to bal-carousel to show a light border at the bottom.
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - add more alignment options and add padding properties to the bal-stack
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - add no-wrap option to typography components to cut long text with ellipse
+
+- [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - add new component divider
+
+### Patch Changes
+
+- Updated dependencies [[`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c), [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c)]:
+  - @baloise/design-system-css@13.0.0
+  - @baloise/design-system-tokens@13.0.0
+  - @baloise/design-system-fonts@13.0.0
+  - @baloise/design-system-icons@13.0.0
+
+## 12.13.1
+
+### Patch Changes
+
+- [#815](https://github.com/baloise/design-system/pull/815) [`55e69fdf0`](https://github.com/baloise/design-system/commit/55e69fdf07a37c32a0f85c8f0a9bd492c0629f74) Thanks [@hirsch88](https://github.com/hirsch88)! - fix scroll handler by using css to keep it as smooth as possible
+
+- [#815](https://github.com/baloise/design-system/pull/815) [`55e69fdf0`](https://github.com/baloise/design-system/commit/55e69fdf07a37c32a0f85c8f0a9bd492c0629f74) Thanks [@hirsch88](https://github.com/hirsch88)! - add missing download property to the bal-list-item
+
+- Updated dependencies []:
+  - @baloise/design-system-css@12.13.1
+  - @baloise/design-system-fonts@12.13.1
+  - @baloise/design-system-icons@12.13.1
+  - @baloise/design-system-tokens@12.13.1
+
+## 12.13.0
+
+### Minor Changes
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - more space values are available for the bal-stack component
+
+- [#779](https://github.com/baloise/design-system/pull/779) [`14990cf12`](https://github.com/baloise/design-system/commit/14990cf12e7925544d758ff77493488dba84a0b9) Thanks [@github-actions](https://github.com/apps/github-actions)! - badge supports theming
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-popover has new property `auto-trigger`, which automatically opens the popover content on a click on the trigger element.
+
+### Patch Changes
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - typography elements inherit default color from parent element
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - footer improve loading links only in idle mode
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-accordion updates state after value was changed
+
+- [#808](https://github.com/baloise/design-system/pull/808) [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe) Thanks [@github-actions](https://github.com/apps/github-actions)! - bal-stack normalizes margins of the child elements and expands over the whole width
+
+- Updated dependencies [[`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe), [`69115d725`](https://github.com/baloise/design-system/commit/69115d725815663c12a65e92d8f0f40f10c7eafe)]:
+  - @baloise/design-system-css@12.13.0
+  - @baloise/design-system-fonts@12.13.0
+  - @baloise/design-system-icons@12.13.0
+  - @baloise/design-system-tokens@12.13.0
+
 ## 12.12.0
 
 ### Minor Changes

@@ -1,5 +1,5 @@
 import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State, Watch, Method } from '@stencil/core'
+import { Component, Host, h, Prop, State, Method } from '@stencil/core'
 import {
   BalConfigObserver,
   defaultConfig,
@@ -12,6 +12,7 @@ import {
 } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { rIC } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-footer',
@@ -37,11 +38,6 @@ export class Footer implements BalConfigObserver, Loggable {
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
-
-  /**
-   * @deprecated The languages in which the links will appear.
-   */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
 
   /**
    * If `true` the legal Baloise links will be hidden.
@@ -83,17 +79,10 @@ export class Footer implements BalConfigObserver, Loggable {
    */
   @Method()
   async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
-    this.allowedLanguages = state.allowedLanguages
-    this.updateFooterLinks()
-    this.updateSocialMediaLinks()
-  }
-
-  @Watch('locale')
-  watchLocaleHandler() {
-    if (this.locale !== '') {
-      this.language = this.locale
+    if (this.language !== state.language || this.region !== state.region) {
+      this.language = state.language
+      this.region = state.region
+      this.allowedLanguages = state.allowedLanguages
       this.updateFooterLinks()
       this.updateSocialMediaLinks()
     }
@@ -111,14 +100,20 @@ export class Footer implements BalConfigObserver, Loggable {
   private updateFooterLinks() {
     if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
-      loadFooterLinks(new Language(this.language), this.region).then(links => (this.links = links))
+      const region = this.region
+      rIC(() => {
+        loadFooterLinks(new Language(this.language), region).then(links => (this.links = links))
+      })
     }
   }
 
   private updateSocialMediaLinks() {
     if (this.showSocialMedia && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
-      loadSocialMediaLinks(new Language(this.language), this.region).then(links => (this.socialMediaLinks = links))
+      const region = this.region
+      rIC(() => {
+        loadSocialMediaLinks(new Language(this.language), region).then(links => (this.socialMediaLinks = links))
+      })
     }
   }
 

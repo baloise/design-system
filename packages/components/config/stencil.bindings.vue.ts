@@ -7,8 +7,6 @@ export const vueComponentModels: any[] = [
       'bal-radio-group',
       'bal-datepicker',
       'bal-select',
-      'bal-accordion',
-      'bal-popover',
       'bal-tabs',
       'bal-input-stepper',
       'bal-checkbox-group',

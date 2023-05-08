@@ -66,7 +66,6 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { Props, Events } from '../../../types'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
@@ -118,28 +117,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
-
-  /**
-   * @deprecated Define the locale of month and day names.
-   */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
-
-  @Watch('locale')
-  watchLocaleHandler() {
-    console.warn('[DEPRECATED] - Please use the window.BaloiseDesignSystem.config instead')
-    this.migrateLocale()
-  }
-
-  private migrateLocale() {
-    if (this.locale !== '') {
-      this.language = this.locale
-    }
-  }
-
-  /**
-   * @deprecated Set this to `true` when the component is placed on a dark background.
-   */
-  @Prop() inverted = false
 
   /**
    * If `true` the attribute required is added to the native input.
@@ -233,32 +210,37 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop({ attribute: 'allowed-dates' }) allowedDates: Props.BalDatepickerCallback | undefined = undefined
+  @Prop({ attribute: 'allowed-dates' }) allowedDates: BalProps.BalDatepickerCallback | undefined = undefined
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalDatepickerChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalDatepickerChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalDatepickerInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalDatepickerInputDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalDatepickerBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalDatepickerFocusDetail>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalDatepickerInputClickDetail>
+
+  /**
+   * Emitted when the icon has clicked.
+   */
+  @Event() balIconClick!: EventEmitter<BalEvents.BalDatepickerIconClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -301,7 +283,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     this.debounceChanged()
     attachComponentToConfig(this)
     this.initialValue = this.value
-    this.migrateLocale()
   }
 
   componentDidLoad() {
@@ -538,7 +519,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       return true
     }
 
-    return (this.allowedDates as Props.BalDatepickerCallback)(formatDateString(dayDatePointer))
+    return (this.allowedDates as BalProps.BalDatepickerCallback)(formatDateString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {
@@ -546,7 +527,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
-    this.balClick.emit(event)
+    this.balIconClick.emit(event)
   }
 
   private onInputClick = (event: MouseEvent) => {
@@ -555,7 +536,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
     stopEventBubbling(event)
     if (!this.triggerIcon) {
-      this.balClick.emit(event)
+      this.balInputClick.emit(event)
     }
   }
 
@@ -772,7 +753,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
               'input': true,
               'data-test-input': true,
               'is-clickable': !this.disabled && !this.triggerIcon && !this.readonly,
-              'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
             }}
@@ -804,7 +784,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             }}
             is-right
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            inverted={this.inverted}
             name="date"
             onClick={this.onIconClick}
           />

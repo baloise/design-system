@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { Props } from '../../../types'
 import { LevelInfo } from '../utils/level.utils'
 import { Attributes } from '../../../utils/attributes'
 
@@ -10,7 +9,7 @@ import { Attributes } from '../../../utils/attributes'
 export class NavigationMenu {
   @Prop() linkHref?: string
   @Prop() linkName?: string
-  @Prop() target: Props.BalButtonTarget = '_self'
+  @Prop() target: BalProps.BalButtonTarget = '_self'
   @Prop() elements: LevelInfo[] = []
   @Prop() tracking: Attributes = {}
 

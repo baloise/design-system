@@ -24,7 +24,7 @@ CSS Variables enable a value to be stored in a single location and referenced in
 They also facilitate dynamic CSS modification at runtime, a task that previously necessitated a CSS preprocessor.
 Thanks to CSS variables, it is simpler than ever to replace Baloise Design System components to align with a brand or theme.
 
-### Global Variables​
+## Global Theming
 
 In an application, CSS variables can be established globally within the `:root` selector.
 
@@ -39,7 +39,7 @@ In an application, CSS variables can be established globally within the `:root` 
 }
 ```
 
-### Component Variables​
+## Component Theming
 
 To assign a CSS variable for a specific component, incorporate the variable within its selector.
 
@@ -55,7 +55,7 @@ bal-badge {
 }
 ```
 
-### Variables set via JavaScript​
+## Variables set via JavaScript​
 
 Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty) in JavaScript, CSS variables can also be altered:
 
@@ -63,5 +63,9 @@ Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleD
 const el = document.querySelector('.my-badge')
 el.style.setProperty('--bal-badge-background', 'lime')
 ```
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
 
 <bal-doc-github link="/stories/development/guides/theming/theming.stories.mdx"></bal-doc-github>

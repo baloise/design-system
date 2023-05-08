@@ -33,15 +33,26 @@
 .bal-heading--level-display.bal-heading--space-bottom
   margin-bottom: var(--bal-space-normal)
 
+.bal-heading--space-top,
+.bal-heading--space-top:not(:last-child)
+  margin-bottom: 0
+
+.bal-heading--space-none,
+.bal-heading--space-none:not(:last-child)
+  margin: 0
+
 // Native Heading Element
 // --------------------------------------------------
 
 .bal-heading__text
   margin: 0 !important
   padding: 0
-  color: var(--bal-color-text-primary)
   font-weight: var(--bal-weight-bold)
   font-family: var(--bal-font-family-title)
+  &--no-wrap
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
 
 // Heading Modifiers
 // --------------------------------------------------

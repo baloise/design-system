@@ -16,11 +16,14 @@ module.exports = {
   previewHead: head => `
     ${head}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/font.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/swot.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/avatars.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/table-of-content.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/styles/ag-grid.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/styles/ag-theme-alpine.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.0/dist/ag-grid-community.noStyle.js"></script>
     `,
 }

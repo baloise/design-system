@@ -12,11 +12,11 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { AccordionState, Events } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { AccordionState } from '../../interfaces'
 
 @Component({
   tag: 'bal-accordion',
@@ -46,16 +46,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * PUBLIC PROPERTY API
    * ------------------------------------------------------
    */
-
-  /**
-   * @deprecated use `active` property instead.
-   * If `true` the accordion is open.
-   */
-  @Prop() value = false
-  @Watch('value')
-  protected async valueChanged(newValue: boolean) {
-    this.activeChanged(newValue, this.active)
-  }
 
   /**
    * If `true` the accordion is open.
@@ -111,17 +101,17 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * Emitted when the accordion has opened or closed
    */
-  @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalAccordionChangeDetail>
 
   /**
-   * @internal Emitted before the animation starts
+   * Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalAccordionWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalAccordionWillAnimateDetail>
 
   /**
-   * @internal Emitted after the animation has finished
+   * Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalAccordionDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalAccordionDidAnimateDetail>
 
   /**
    * LIFECYCLE
@@ -131,6 +121,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+
+    if (this.active) {
+      this.activeChanged(this.active, false)
+    }
 
     this.updateState(true)
   }
@@ -302,19 +296,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const contentHeight = detailsWrapperElement.offsetHeight
           const waitForTransition = transitionEndAsync(detailsElement, 300)
           detailsElement.style.setProperty('max-height', `${contentHeight}px`)
-          this.balWillAnimate.emit()
+          this.balWillAnimate.emit(this.active)
 
           await waitForTransition
 
           this.setState(AccordionState.Expanded)
           detailsElement.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
         })
       })
     } else {
-      this.balWillAnimate.emit()
+      this.balWillAnimate.emit(this.active)
       this.setState(AccordionState.Expanded)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
 
     return this.active
@@ -346,19 +340,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const waitForTransition = transitionEndAsync(detailsElement, 300)
 
           this.setState(AccordionState.Collapsing)
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
 
           await waitForTransition
 
           this.setState(AccordionState.Collapsed)
           detailsElement.style.removeProperty('max-height')
-          this.balDidAnimate.emit()
+          this.balDidAnimate.emit(this.active)
         })
       })
     } else {
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
       this.setState(AccordionState.Collapsed)
-      this.balDidAnimate.emit()
+      this.balDidAnimate.emit(this.active)
     }
 
     return this.active

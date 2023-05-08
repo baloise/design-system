@@ -2,15 +2,18 @@
 
 .bal-label
   display: inline
+  box-sizing: content-box
+  position: static
+  word-break: break-word
   //
   // native label html element
   &__native
+    display: inline
     hyphens: auto
     white-space: pre
     overflow: hidden
     text-overflow: ellipsis
     min-width: 0
-    color: var(--bal-color-text-primary)
     font-weight: var(--bal-weight-bold)
     font-size: var(--bal-size-normal)
     font-family: var(--bal-font-family-title)
@@ -21,6 +24,11 @@
     +desktop
       font-size: var(--bal-size-desktop-normal)
       line-height: var(--bal-line-height-desktop-normal)
+    &--no-wrap
+      display: block
+      text-overflow: ellipsis
+      overflow: hidden
+      white-space: nowrap
     //
     // font sizes
     &--small

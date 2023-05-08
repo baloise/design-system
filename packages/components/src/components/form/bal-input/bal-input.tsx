@@ -28,7 +28,6 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { Props, Events } from '../../../types'
 import {
   formatBeEnterpriseNumber,
   formatBeIBAN,
@@ -88,7 +87,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: Props.BalInputInputType = 'text'
+  @Prop() type: BalProps.BalInputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -104,12 +103,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
-  @Prop() autocorrect: Props.BalInputAutocorrect = 'off'
+  @Prop() autocorrect: BalProps.BalInputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -177,11 +176,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop() spellcheck = false
 
   /**
-   * @deprecated  If `true` this component can be placed on dark background
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
@@ -212,7 +206,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: Props.BalInputInputMode
+  @Prop() inputmode?: BalProps.BalInputInputMode
 
   /**
    * The value of the input.
@@ -227,37 +221,32 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
    * Formatting for 'be-enterprise-number': ('1234.567.890')
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
-  @Prop() mask?: Props.BalInputMask = undefined
+  @Prop() mask?: BalProps.BalInputMask = undefined
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalInputInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalInputInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputBlurDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalInputKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalInputChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -559,7 +548,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             'input': true,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
-            'is-inverted': this.inverted,
             'clickable': this.clickable,
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,

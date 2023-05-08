@@ -6,8 +6,8 @@
 
 const fs = require('fs')
 const fse = require('fs-extra')
-const glob = require('glob')
 const path = require('path')
+const { glob } = require('glob')
 const log = require('./log')
 
 const read = async filePath => {
@@ -49,14 +49,7 @@ const write = async (filePath, data) => {
 
 const scan = async filePath => {
   // glop always returns and works with forward slashes
-  return new Promise((resolve, reject) => {
-    glob(filePath.replace(/\\/g, '\/'), (err, filterFilePaths) => {
-      if (err) {
-        return reject(err)
-      }
-      resolve(filterFilePaths)
-    })
-  })
+  return glob(filePath.replace(/\\/g, '\/'))
 }
 
 const remove = async filePath => {

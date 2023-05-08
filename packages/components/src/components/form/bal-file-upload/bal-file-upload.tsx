@@ -10,7 +10,6 @@ import {
   stopEventBubbling,
 } from '../../../utils/form-input'
 import { Logger, LogInstance } from '../../../utils/log'
-import { FileUploadRejectedFile } from './bal-file-upload.type'
 import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
@@ -130,37 +129,37 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Triggers when a file is added or removed.
    */
-  @Event() balChange!: EventEmitter<File[]>
+  @Event() balChange!: EventEmitter<BalEvents.BalFileUploadChangeDetail>
 
   /**
    * Triggers when a file is added.
    */
-  @Event() balFilesAdded!: EventEmitter<File[]>
+  @Event() balFilesAdded!: EventEmitter<BalEvents.BalFileUploadFilesAddedDetail>
 
   /**
    * Triggers when a file is removed.
    */
-  @Event() balFilesRemoved!: EventEmitter<File[]>
+  @Event() balFilesRemoved!: EventEmitter<BalEvents.BalFileUploadFilesRemovedDetail>
 
   /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
    */
-  @Event() balRejectedFile!: EventEmitter<FileUploadRejectedFile>
+  @Event() balRejectedFile!: EventEmitter<BalEvents.BalFileUploadRejectedFileDetail>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalFileUploadInputClickDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalFileUploadBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalFileUploadFocusDetail>
 
   /**
    * LIFECYCLE
@@ -347,7 +346,7 @@ export class FileUpload implements FormInput<File[]> {
 
   private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
 
-  private onInputClick = (event: MouseEvent) => this.balClick.emit(event)
+  private onInputClick = (event: MouseEvent) => this.balInputClick.emit(event)
 
   /**
    * RENDER

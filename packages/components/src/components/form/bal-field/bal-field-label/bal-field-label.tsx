@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core'
-import { Props } from '../../../../types'
 
 @Component({
   tag: 'bal-field-label',
@@ -52,7 +51,7 @@ export class FieldLabel {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() weight: Props.BalFieldLabelWeight = 'bold'
+  @Prop() weight: BalProps.BalFieldLabelWeight = 'bold'
 
   /**
    * LIFECYCLE

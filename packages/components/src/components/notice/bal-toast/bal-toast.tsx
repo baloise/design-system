@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
-import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-toast',
@@ -17,7 +16,7 @@ export class Toast {
    * The theme type of the toast.
    * Color type primary is deprecated, please use info instead.
    */
-  @Prop() color: Props.BalTostColor = ''
+  @Prop() color: BalProps.BalToastColor = ''
 
   /**
    * The duration of the toast in milliseconds.
@@ -37,7 +36,7 @@ export class Toast {
   /**
    * Emitted when toast is closed
    */
-  @Event({ eventName: 'balClose' }) balClose!: EventEmitter<string>
+  @Event({ eventName: 'balClose' }) balClose!: EventEmitter<BalEvents.BalToastCloseDetail>
 
   async componentWillLoad() {
     if (this.duration > 0) {

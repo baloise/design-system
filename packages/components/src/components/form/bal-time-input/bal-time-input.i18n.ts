@@ -1,4 +1,4 @@
-import { I18n } from '../../../types'
+import { I18n } from '../../../interfaces'
 
 interface I18nTime {
   hours: string

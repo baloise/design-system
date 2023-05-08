@@ -54,6 +54,18 @@ jobs:
           echo "Changeset hasChangesets - ${{ steps.changesets.outputs.hasChangesets }}"
           echo "Changeset pullRequestNumber - ${{ steps.changesets.outputs.pullRequestNumber }}"
 
+      - name: Update lock file
+        if: steps.changesets.outputs.published == 'true'
+        run: npm install
+
+      - name: Commit lock file
+        if: steps.changesets.outputs.published == 'true'
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'chore(): update lock file'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Merge main -> production
         if: steps.changesets.outputs.published == 'true'
         uses: devmasx/merge-branch@master
@@ -61,7 +73,7 @@ jobs:
           type: now
           from_branch: main
           target_branch: production
-          message: ":bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}"
+          message: ':bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tag release

@@ -1,5 +1,4 @@
-import { Component, h, ComponentInterface, Host, Prop, Watch } from '@stencil/core'
-import { Props } from '../../types'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -12,17 +11,17 @@ export class Stage implements ComponentInterface {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: Props.BalStageContainer = ''
+  @Prop() containerSize: BalProps.BalStageContainer = ''
 
   /**
    * Defines size of the stage
    */
-  @Prop() size: Props.BalStageSize = ''
+  @Prop() size: BalProps.BalStageSize = ''
 
   /**
    * Defines the background color of the stage section
    */
-  @Prop() color: Props.BalStageColor = 'purple'
+  @Prop() color: BalProps.BalStageColor = 'purple'
 
   /**
    * If true the Baloise Shape is set
@@ -30,35 +29,14 @@ export class Stage implements ComponentInterface {
   @Prop() shape = false
 
   /**
-   * @deprecated If true the Baloise Shape is set
-   */
-  @Prop() hasShape = false
-  @Watch('hasShape')
-  hasShapeHandler() {
-    console.warn('[DEPRECATED] - Please use the property shape instead')
-    this.migrateHasShape()
-  }
-
-  private migrateHasShape() {
-    if (this.hasShape === true) {
-      this.shape = this.hasShape
-    }
-  }
-
-  /**
    * Shape Variation
    */
-  @Prop() shapeVariation?: Props.BalShapeVariation
+  @Prop() shapeVariation?: BalProps.BalShapeVariation
 
   /**
    * Shape Rotation
    */
-  @Prop() shapeRotation?: Props.BalShapeRotation
-
-  /**
-   * @deprecated sets text color to white for images and dark backgrounds (optional)
-   */
-  @Prop() inverted = false
+  @Prop() shapeRotation?: BalProps.BalShapeRotation
 
   getContainerWidth = () => {
     switch (this.containerSize) {
@@ -79,10 +57,6 @@ export class Stage implements ComponentInterface {
       default:
         return '1400px'
     }
-  }
-
-  connectedCallback() {
-    this.migrateHasShape()
   }
 
   private get containerClass(): string {
@@ -113,7 +87,6 @@ export class Stage implements ComponentInterface {
         <section
           class={{
             ...element.class(),
-            ...element.modifier('is-inverted').class(this.inverted),
             container: true,
             [`${this.containerClass}`]: this.containerSize !== '',
           }}
@@ -122,7 +95,7 @@ export class Stage implements ComponentInterface {
           {this.shape && (
             <div class={{ container: true, [`${this.containerClass}`]: this.containerSize !== '' }}>
               <bal-shape
-                color={this.color as Props.BalShapeColor}
+                color={this.color as BalProps.BalShapeColor}
                 variation={this.shapeVariation}
                 rotation={this.shapeRotation}
               />

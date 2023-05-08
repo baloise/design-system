@@ -21,6 +21,7 @@ export const docComponents = [
   'bal-doc-tokens-font-sizes',
   'bal-doc-tokens-font-weight',
   'bal-doc-tokens-font',
+  'bal-doc-tokens-text-shadow',
   'bal-doc-tokens-shadow',
   'bal-doc-tokens-spacing',
   'bal-doc-code-sandbox',

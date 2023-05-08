@@ -15,16 +15,16 @@
   -webkit-overflow-scrolling: touch
 
 =focus-shadow
-  box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-6) 0 0 0 5px !important
+  box-shadow: var(--bal-focus-shadow) !important
 
 =focus-inset-shadow
-  box-shadow: inset var(--bal-color-purple-6) 0 0 0 3px, inset var(--bal-color-white) 0 0 0 5px !important
+  box-shadow: var(--bal-focus-shadow-inset) !important
 
 =focus-inverted-shadow
-  box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow) 0 0 0 5px !important
+  box-shadow: var(--bal-focus-shadow-inverted) !important
 
 =focus-inverted-inset-shadow
-  box-shadow: inset var(--bal-color-yellow) 0 0 0 3px, inset var(--bal-color-white) 0 0 0 5px !important
+  box-shadow: var(--bal-focus-shadow-inverted-inset) !important
 
 =placeholder
   $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
@@ -176,6 +176,10 @@
   position: absolute
   right: $offset
   top: $offset
+
+=hide-element
+  display: none !important
+  visibility: hidden !important
 
 =hidden-input
   position: absolute !important

@@ -121,7 +121,9 @@ export const NativeList = args => ({
   </ul>
   <ul class="is-list has-bullets">
     <li class="has-bullet-check">Checked List Item 1</li>
+    <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>
     <li class="has-bullet-close has-opacity-50">Close List Item 2</li>
+    <li class="has-bullet-close has-opacity-50 has-bullet-red">Red Close List Item 2</li>
   </ul>
   <div class="has-background-blue p-x-small">
     <ul class="is-list has-bullets is-inverted">
@@ -145,7 +147,7 @@ export const LinkedList = args => ({
     <bal-list-item-title>Internal Link</bal-list-item-title>
   </bal-list-item-content>
   <bal-list-item-icon right>
-    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
   </bal-list-item-icon>
   </bal-list-item>
   <bal-list-item clickable href="www.baloise.com" target="_blank">
@@ -154,7 +156,7 @@ export const LinkedList = args => ({
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
     <bal-list-item-icon right>
-      <bal-icon name="link" size="xsmall"></bal-icon>
+      <bal-icon name="link" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
   <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
@@ -163,7 +165,7 @@ export const LinkedList = args => ({
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
     <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 </bal-list>`,

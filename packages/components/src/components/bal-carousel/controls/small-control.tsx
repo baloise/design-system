@@ -4,6 +4,7 @@ import { BEM } from '../../../utils/bem'
 export interface SmallControlProps {
   isFirst: boolean
   isLast: boolean
+  inverted: boolean
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -11,6 +12,7 @@ export interface SmallControlProps {
 export const SmallControl: FunctionalComponent<SmallControlProps> = ({
   isFirst,
   isLast,
+  inverted,
   onNextClick,
   onPreviousClick,
 }) => {
@@ -35,6 +37,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         size="small"
         icon="nav-go-left"
         rounded
+        inverted={inverted}
         onClick={() => onPreviousClick()}
         disabled={isFirst}
         data-testid="bal-carousel-control-left"
@@ -49,6 +52,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         size="small"
         icon="nav-go-right"
         rounded
+        inverted={inverted}
         onClick={() => onNextClick()}
         disabled={isLast}
         data-testid="bal-carousel-control-right"

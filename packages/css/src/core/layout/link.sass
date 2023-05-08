@@ -1,62 +1,63 @@
 a.is-link:not(.button)
-  font-weight: var(--bal-weight-bold)
-  text-decoration: underline
-  text-underline-offset: 4px
-  text-decoration-thickness: 2px
-  border-radius: var(--bal-radius-normal)
-  color: var(--bal-color-blue)
-  +fillSvg(var(--bal-color-blue))
+  color: var(--bal-link-color)
+  font-weight: var(--bal-link-font-weight)
+  text-decoration: var(--bal-link-text-decoration)
+  text-underline-offset: var(--bal-link-text-underline-offset)
+  text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+  border-radius: var(--bal-link-radius)
+  +fillSvg(var(--bal-link-color))
 
   &:hover
-    text-decoration: underline
-    text-decoration-thickness: 2px
-    text-underline-offset: 4px
-    color: var(--bal-color-light-blue-5)
-    +fillSvg(var(--bal-color-light-blue-5))
+    text-decoration: var(--bal-link-text-decoration)
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+    text-underline-offset: var(--bal-link-text-underline-offset)
+    color: var(--bal-link-color-hover)
+    +fillSvg(var(--bal-link-color-hover))
 
   &:focus-visible
     @extend %focus-shadow
 
   &:active
-    text-decoration: underline
-    text-decoration-thickness: 2px
-    text-underline-offset: 4px
-    color: var(--bal-color-blue-6)
-    +fillSvg(var(--bal-color-blue-6))
+    text-decoration: var(--bal-link-text-decoration)
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+    text-underline-offset: var(--bal-link-text-underline-offset)
+    color: var(--bal-link-color-active)
+    +fillSvg(var(--bal-link-color-active))
 
   &.is-inverted
-    color: var(--bal-color-white)
-    +fillSvg(var(--bal-color-white))
+    color: var(--bal-link-inverted-color)
+    +fillSvg(var(--bal-link-inverted-color))
 
     &:hover
-      text-decoration: underline
-      text-decoration-thickness: 2px
-      text-underline-offset: 4px
-      color: var(--bal-color-light-blue-2)
-      +fillSvg(var(--bal-color-light-blue-2))
+      text-decoration: var(--bal-link-text-decoration)
+      text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+      text-underline-offset: var(--bal-link-text-underline-offset)
+      color: var(--bal-link-inverted-color-hover)
+      +fillSvg(var(--bal-link-inverted-color-hover))
 
     &:focus-visible
       @extend %focus-inverted-shadow
 
     &:active
-      text-decoration: underline
-      text-decoration-thickness: 2px
-      text-underline-offset: 4px
-      color: var(--bal-color-info-3)
-      +fillSvg(var(--bal-color-info-3))
+      text-decoration: var(--bal-link-text-decoration)
+      text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+      text-underline-offset: var(--bal-link-text-underline-offset)
+      color: var(--bal-link-inverted-color-active)
+      +fillSvg(var(--bal-link-inverted-color-active))
 
   &.is-light
-    color: var(--bal-color-white)
-    font-weight: var(--bal-weight-regular)
-    font-family: var(--bal-font-family-text)
-    text-decoration: none
-    +fillSvg(var(--bal-color-white))
+    text-decoration: var(--bal-link-inverted-light-text-decoration)
+    font-weight: var(--bal-link-inverted-light-font-weight)
+    color: var(--bal-link-inverted-color)
+    +fillSvg(var(--bal-link-inverted-color))
 
     &:hover
-      color: var(--bal-color-light-blue-2)
+      color: var(--bal-link-inverted-color-hover)
+      +fillSvg(var(--bal-link-inverted-color-hover))
 
     &:focus-visible
       @extend %focus-inverted-shadow
 
     &:active
-      color: var(--bal-color-light-blue-3)
+      color: var(--bal-link-inverted-color-active)
+      +fillSvg(var(--bal-link-inverted-color-active))

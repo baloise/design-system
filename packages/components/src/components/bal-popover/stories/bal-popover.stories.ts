@@ -44,7 +44,7 @@ export const Basic = args => ({
       myTab,
     }
   },
-  template: `<bal-popover v-bind="args" v-model="isActive">
+  template: `<bal-popover v-bind="args" :active="isActive">
   <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true" color="info">
     Trigger
   </bal-button>
@@ -56,7 +56,7 @@ export const Basic = args => ({
         dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
         error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
       </p>
-      <bal-tabs spaceless border fullwidth interface="tabs" v-model="myTab">
+      <bal-tabs spaceless border fullwidth interface="tabs" :value="myTab">
         <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
         <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
         <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
@@ -93,7 +93,7 @@ export const Arrow = args => ({
       toggle,
     }
   },
-  template: `<bal-popover v-bind="args" v-model="isActive">
+  template: `<bal-popover v-bind="args" :active="isActive">
   <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true">
     Trigger
   </bal-button>
@@ -138,7 +138,7 @@ export const Tooltip = args => ({
       toggle,
     }
   },
-  template: `<bal-popover v-bind="args" v-model="isActive" class="m-large">
+  template: `<bal-popover v-bind="args" :active="isActive" class="m-large">
   <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true" aria-describedby="tooltip">
     Tooltip Trigger
   </bal-button>

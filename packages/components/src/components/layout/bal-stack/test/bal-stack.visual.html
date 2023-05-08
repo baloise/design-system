@@ -36,7 +36,7 @@
         </section>
         <hr />
         <section data-testid="alignment">
-          <bal-stack alignment="start">
+          <bal-stack align="top start">
             <bal-content>
               <bal-label>Alignment Start</bal-label>
               <bal-text
@@ -48,7 +48,7 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack alignment="center">
+          <bal-stack align="center">
             <bal-content>
               <bal-label>Alignment Center</bal-label>
               <bal-text
@@ -60,7 +60,7 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack alignment="end">
+          <bal-stack align="bottom end">
             <bal-content>
               <bal-label>Alignment End</bal-label>
               <bal-text
@@ -74,7 +74,7 @@
         </section>
         <hr />
         <section data-testid="direction">
-          <bal-stack direction="column">
+          <bal-stack layout="vertical">
             <bal-content>
               <bal-label>Direction Column</bal-label>
               <bal-text
@@ -86,8 +86,8 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack direction="column" alignment="center">
-            <bal-content alignment="center">
+          <bal-stack layout="vertical" align="center">
+            <bal-content align="center">
               <bal-label>Direction Column / Alignment Center</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -98,8 +98,8 @@
             <bal-button square size="small" icon="date"></bal-button>
           </bal-stack>
 
-          <bal-stack direction="column" alignment="end">
-            <bal-content alignment="end">
+          <bal-stack layout="vertical" align="end">
+            <bal-content align="end">
               <bal-label>Direction Column / Alignment End</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -111,9 +111,53 @@
           </bal-stack>
         </section>
         <hr />
-        <section data-testid="space">
+        <section data-testid="space" class="has-background-red-2">
+          <bal-stack space="none">
+            <bal-content class="has-background-green-2">
+              <bal-label>Space None</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="xx-small">
+            <bal-content class="has-background-green-2">
+              <bal-label>Space xx-small</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="x-small">
+            <bal-content class="has-background-green-2">
+              <bal-label>Space x-small</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
+          <bal-stack space="small">
+            <bal-content class="has-background-green-2">
+              <bal-label>Space small</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
           <bal-stack>
-            <bal-content>
+            <bal-content class="has-background-green-2">
               <bal-label>Space Default</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -123,8 +167,19 @@
             </bal-content>
             <bal-button size="small">Button</bal-button>
           </bal-stack>
+          <bal-stack space="medium">
+            <bal-content class="has-background-green-2">
+              <bal-label>Space medium</bal-label>
+              <bal-text
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
+                accusamus quibusdam accusantium ducimus reprehenderit fugiat laudantium ut inventore. Reprehenderit
+                necessitatibus architecto a, consequuntur aliquid distinctio.</bal-text
+              >
+            </bal-content>
+            <bal-button size="small">Button</bal-button>
+          </bal-stack>
           <bal-stack space="large">
-            <bal-content>
+            <bal-content class="has-background-green-2">
               <bal-label>Space Large</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -135,7 +190,7 @@
             <bal-button size="small">Button</bal-button>
           </bal-stack>
           <bal-stack space="x-large">
-            <bal-content>
+            <bal-content class="has-background-green-2">
               <bal-label>Space X-Large</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -146,7 +201,7 @@
             <bal-button size="small">Button</bal-button>
           </bal-stack>
           <bal-stack space="xx-large">
-            <bal-content>
+            <bal-content class="has-background-green-2">
               <bal-label>Space XX-Large</bal-label>
               <bal-text
                 >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ipsum, hic iste officiis doloribus,
@@ -155,6 +210,85 @@
               >
             </bal-content>
             <bal-button size="small">Button</bal-button>
+          </bal-stack>
+        </section>
+        <section data-testid="margins">
+          <bal-stack layout="vertical" space="none">
+            <bal-heading>Heading</bal-heading>
+            <bal-text>Text</bal-text>
+            <bal-label>Label</bal-label>
+            <h1>Heading Native</h1>
+            <h1 class="title">Title Native</h1>
+            <h1 class="subtitle">SubTitle Native</h1>
+            <p>Paragraph</p>
+          </bal-stack>
+        </section>
+        <section>
+          <bal-stack layout="horizontal" align="top start" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top start</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="top center" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top center</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="top end" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top end</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="start" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>start</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="center" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>center</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="end" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>end</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="bottom start" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom start</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="bottom center" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom center</bal-button></bal-stack
+          >
+          <bal-stack layout="horizontal" align="bottom end" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom end</bal-button></bal-stack
+          >
+        </section>
+        <section>
+          <bal-stack layout="vertical" align="top start" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top start</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="top center" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top center</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="top end" class="has-background-red-2" style="height: 5rem"
+            ><bal-button>top end</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="start" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>start</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="center" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>center</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="end" class="has-background-green-2" style="height: 5rem"
+            ><bal-button>end</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="bottom start" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom start</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="bottom center" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom center</bal-button></bal-stack
+          >
+          <bal-stack layout="vertical" align="bottom end" class="has-background-yellow-2" style="height: 5rem"
+            ><bal-button>bottom end</bal-button></bal-stack
+          >
+        </section>
+        <section>
+          <bal-stack px="medium" class="has-background-purple-2">
+            <bal-button>Button 1</bal-button>
+            <bal-button>Button 2</bal-button>
+          </bal-stack>
+          <bal-stack py="medium" class="has-background-purple-2">
+            <bal-button>Button 1</bal-button>
+            <bal-button>Button 2</bal-button>
           </bal-stack>
         </section>
       </main>

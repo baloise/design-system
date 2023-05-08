@@ -56,6 +56,14 @@ declare global {
        * Removes attribute/property to component
        */
       removeProperty(attr: string): Chainable<Element>
+      /**
+       * Wait until the first browser paint has been done
+       */
+      waitAfterFramePaint(): Chainable<Element>
+      /**
+       * Wait until the browser goes in idle mode
+       */
+      waitAfterIdleCallback(): Chainable<Element>
     }
   }
 }

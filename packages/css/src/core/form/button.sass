@@ -1,10 +1,10 @@
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   &:not(.is-rounded)
-    border-radius: var(--bal-radius-normal)
-    font-size: var(--bal-size-small)
+    border-radius: var(--bal-button-radius)
+    font-size: var(--bal-button-small-font-size)
 =button-normal
-  font-size: var(--bal-size-normal)
+  font-size: var(--bal-button-font-size)
 
 .button
   @extend %unselectable
@@ -13,17 +13,17 @@
   -webkit-appearance: none !important
   position: relative
   display: inline-flex
-  border-style: solid
-  border-radius: var(--bal-radius-normal)
-  border-color: var(--bal-color-blue)
-  color: var(--bal-color-blue)
-  +fillSvg(var(--bal-color-blue))
-  font-family: var(--bal-font-family-title)
-  font-size: var(--bal-size-normal)
-  font-weight: var(--bal-weight-bold)
+  border-radius: var(--bal-button-radius)
+  border-style: var(--bal-button-border-style)
+  border-color: var(--bal-button-border-color)
+  border-width: var(--bal-button-border-width)
+  color: var(--bal-button-color)
+  +fillSvg(var(--bal-button-color))
+  font-family: var(--bal-button-font-family)
+  font-size: var(--bal-button-font-size)
+  font-weight: var(--bal-button-font-weight)
+  background-color: var(--bal-button-background)
   line-height: 1.5
-  background-color: transparent
-  border-width: 2px
   cursor: pointer
   justify-content: center
   align-items: center
@@ -52,12 +52,17 @@
   span,
   strong
     color: inherit
-    font-family: var(--bal-font-family-title)
-    font-weight: var(--bal-weight-bold)
+    font-family: var(--bal-button-font-family)
+    font-weight: var(--bal-button-font-weight)
     hyphens: auto
     text-align: center
   &::-moz-focus-inner
     border: 0
+  // Wrap
+  &.has-no-wrap
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
   // Shadow
   &.has-blur-shadow:not(&.is-link)
     box-shadow: var(--bal-text-shadow-normal)
@@ -93,7 +98,7 @@
     padding-right: 12px
     padding-top: 0px
     padding-bottom: 0px
-    font-size: var(--bal-size-small)
+    font-size: var(--bal-button-small-font-size)
     line-height: 20px
     &.is-square
       width: 32px
@@ -108,79 +113,84 @@
   +hover
     &:hover,
     &.is-hovered
-      background: var(--bal-color-light-blue)
-      border-color: var(--bal-color-light-blue-5)
-      color: var(--bal-color-light-blue-5)
-      +fillSvg(var(--bal-color-light-blue-5))
+      background: var(--bal-button-background-hover)
+      border-color: var(--bal-button-border-color-hover)
+      color: var(--bal-button-color-hover)
+      +fillSvg(var(--bal-button-color-hover))
   &:focus-visible,
   &.is-focused
     &:not(:active)
       @extend %focus-shadow
   &:active,
   &.is-active
-    background: var(--bal-color-light-blue)
-    border-color: var(--bal-color-blue-6)
-    color: var(--bal-color-blue-6)
-    +fillSvg(var(--bal-color-blue-6))
+    background: var(--bal-button-background-active)
+    border-color: var(--bal-button-border-color-active)
+    color: var(--bal-button-color-active)
+    +fillSvg(var(--bal-button-color-active))
   // Colors
   &.is-primary
-    background: var(--bal-color-blue)
-    border-color: var(--bal-color-blue)
-    color: var(--bal-color-white)
-    +fillSvg(var(--bal-color-white))
+    background: var(--bal-button-primary-background)
+    border-color: var(--bal-button-primary-border-color)
+    color: var(--bal-button-primary-color)
+    +fillSvg(var(--bal-button-primary-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-light-blue-5)
-        border-color: var(--bal-color-light-blue-5)
+        background: var(--bal-button-primary-background-hover)
+        border-color: var(--bal-button-primary-border-color-hover)
+        color: var(--bal-button-primary-color-hover)
+        +fillSvg(var(--bal-button-primary-color-hover))
     &:active,
     &.is-active
-      background: var(--bal-color-blue-6)
-      border-color: var(--bal-color-blue-6)
+      background: var(--bal-button-primary-background-active)
+      border-color: var(--bal-button-primary-border-color-active)
+      color: var(--bal-button-primary-color-active)
+      +fillSvg(var(--bal-button-primary-color-active))
   &.is-text,
   &.is-link
-    border-color: transparent
+    border-color: var(--bal-link-border-color)
   &.is-link
     border: none
-    text-decoration: underline
-    text-underline-offset: 4px
-    text-decoration-thickness: 2px
+    text-decoration: var(--bal-link-text-decoration)
+    text-underline-offset: var(--bal-link-text-underline-offset)
+    text-decoration-thickness: var(--bal-link-text-decoration-thickness)
     // States
     +hover
       &:hover,
       &.is-hovered
-        text-decoration: underline
-        text-underline-offset: 4px
-        text-decoration-thickness: 2px
-        background: transparent
-        border-color: transparent
-        color: var(--bal-color-light-blue-5)
-        +fillSvg(var(--bal-color-light-blue-5))
+        text-decoration: var(--bal-link-text-decoration)
+        text-underline-offset: var(--bal-link-text-underline-offset)
+        text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+        background: var(--bal-link-background)
+        border-color: var(--bal-link-border-color)
+        color: var(--bal-link-color-hover)
+        +fillSvg(var(--bal-link-color-hover))
     &:active,
     &.is-active
-      text-decoration: underline
-      text-underline-offset: 4px
-      text-decoration-thickness: 2px
-      background: transparent
-      border-color: transparent
-      color: var(--bal-color-blue-6)
-      +fillSvg(var(--bal-color-blue-6))
+      text-decoration: var(--bal-link-text-decoration)
+      text-underline-offset: var(--bal-link-text-underline-offset)
+      text-decoration-thickness: var(--bal-link-text-decoration-thickness)
+      background: var(--bal-link-background)
+      border-color: var(--bal-link-border-color)
+      color: var(--bal-link-color-active)
+      +fillSvg(var(--bal-link-color-active))
   &.is-text
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-light-blue)
-        border-color: var(--bal-color-light-blue)
-        color: var(--bal-color-light-blue-5)
-        +fillSvg(var(--bal-color-light-blue-5))
+        background: var(--bal-button-text-background-hover)
+        border-color: var(--bal-button-text-border-color-hover)
+        color: var(--bal-link-color-hover)
+        +fillSvg(var(--bal-link-color-hover))
     &:active,
     &.is-active
-      background: var(--bal-color-light-blue)
-      border-color: var(--bal-color-light-blue)
-      color: var(--bal-color-blue-6)
-      +fillSvg(var(--bal-color-blue-6))
+      background: var(--bal-button-text-background-active)
+      border-color: var(--bal-button-text-border-color-active)
+      color: var(--bal-link-color-active)
+      +fillSvg(var(--bal-link-color-active))
+  // deprecated
   &.is-info-light
     background: var(--bal-color-info-1)
     border-color: var(--bal-color-info-5)
@@ -201,167 +211,170 @@
       color: var(--bal-color-white)
       +fillSvg(var(--bal-color-white))
   &.is-success
-    background: var(--bal-color-success-1)
-    border-color: var(--bal-color-success-5)
-    color: var(--bal-color-primary)
-    +fillSvg(var(--bal-color-primary))
+    background: var(--bal-button-success-background)
+    border-color: var(--bal-button-success-border-color)
+    color: var(--bal-button-success-color)
+    +fillSvg(var(--bal-button-success-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-success-5)
-        border-color: var(--bal-color-success-5)
-        color: var(--bal-color-white)
-        +fillSvg(var(--bal-color-white))
+        background: var(--bal-button-success-background-hover)
+        border-color: var(--bal-button-success-border-color-hover)
+        color: var(--bal-button-success-color-hover)
+        +fillSvg(var(--bal-button-success-color-hover))
     &:active,
     &.is-active
-      background: var(--bal-color-success-6)
-      border-color: var(--bal-color-success-6)
-      color: var(--bal-color-white)
-      +fillSvg(var(--bal-color-white))
+      background: var(--bal-button-success-background-active)
+      border-color: var(--bal-button-success-background-active)
+      color: var(--bal-button-success-color-active)
+      +fillSvg(var(--bal-button-success-color-active))
   &.is-warning
-    background: var(--bal-color-warning-1)
-    border-color: var(--bal-color-warning-5)
-    color: var(--bal-color-primary)
-    +fillSvg(var(--bal-color-primary))
+    background: var(--bal-button-warning-background)
+    border-color: var(--bal-button-warning-border-color)
+    color: var(--bal-button-warning-color)
+    +fillSvg(var(--bal-button-warning-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-warning-3)
-        border-color: var(--bal-color-warning-3)
-        color: var(--bal-color-primary)
-        +fillSvg(var(--bal-color-primary))
+        background: var(--bal-button-warning-background-hover)
+        border-color: var(--bal-button-warning-border-color-hover)
+        color: var(--bal-button-warning-color-hover)
+        +fillSvg(var(--bal-button-warning-color-hover))
     &:active,
     &.is-active
-      background: var(--bal-color-warning-4)
-      border-color: var(--bal-color-warning-4)
-      color: var(--bal-color-primary)
-      +fillSvg(var(--bal-color-primary))
+      background: var(--bal-button-warning-background-active)
+      border-color: var(--bal-button-warning-background-active)
+      color: var(--bal-button-warning-color-active)
+      +fillSvg(var(--bal-button-warning-color-active))
   &.is-danger
-    background: var(--bal-color-danger-1)
-    border-color: var(--bal-color-danger-5)
-    color: var(--bal-color-primary)
-    +fillSvg(var(--bal-color-primary))
+    background: var(--bal-button-danger-background)
+    border-color: var(--bal-button-danger-border-color)
+    color: var(--bal-button-danger-color)
+    +fillSvg(var(--bal-button-danger-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-danger-5)
-        border-color: var(--bal-color-danger-5)
-        color: var(--bal-color-white)
-        +fillSvg(var(--bal-color-white))
+        background: var(--bal-button-danger-background-hover)
+        border-color: var(--bal-button-danger-border-color-hover)
+        color: var(--bal-button-danger-color-hover)
+        +fillSvg(var(--bal-button-danger-color-hover))
     &:active,
     &.is-active
-      background: var(--bal-color-danger-6)
-      border-color: var(--bal-color-danger-6)
-      color: var(--bal-color-white)
-      +fillSvg(var(--bal-color-white))
+      background: var(--bal-button-danger-background-active)
+      border-color: var(--bal-button-danger-background-active)
+      color: var(--bal-button-danger-color-active)
+      +fillSvg(var(--bal-button-danger-color-active))
   &.is-light
-    background: var(--bal-color-grey-2)
-    border-color: var(--bal-color-grey-2)
-    color: var(--bal-color-blue)
-    +fillSvg(var(--bal-color-blue))
+    background: var(--bal-button-light-background)
+    border-color: var(--bal-button-light-border-color)
+    color: var(--bal-button-light-color)
+    +fillSvg(var(--bal-button-light-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-light-blue-1)
-        border-color: var(--bal-color-light-blue-1)
-        color: var(--bal-color-blue)
-        +fillSvg(var(--bal-color-blue))
+        background: var(--bal-button-light-background-hover)
+        border-color: var(--bal-button-light-border-color-hover)
+        color: var(--bal-button-light-color-hover)
+        +fillSvg(var(--bal-button-light-color-hover))
     &:focus-visible,
     &.is-focused
       &:not(:active)
         @extend %focus-inverted-shadow
     &:active,
     &.is-active
-      background: var(--bal-color-light-blue-2)
-      border-color: var(--bal-color-light-blue-2)
-      color: var(--bal-color-blue)
-      +fillSvg(var(--bal-color-blue))
+      background: var(--bal-button-light-background-active)
+      border-color: var(--bal-button-light-border-color-active)
+      color: var(--bal-button-light-color-active)
+      +fillSvg(var(--bal-button-light-color-active))
   &.is-inverted
-    background: transparent
-    border-color: var(--bal-color-white)
-    color: var(--bal-color-white)
-    +fillSvg(var(--bal-color-white))
+    background: var(--bal-button-inverted-background)
+    border-color: var(--bal-button-inverted-border-color)
+    color: var(--bal-button-inverted-color)
+    +fillSvg(var(--bal-button-inverted-color))
     // States
     +hover
       &:hover,
       &.is-hovered
-        background: var(--bal-color-blue-3)
-        border-color: var(--bal-color-light-blue-3)
-        color: var(--bal-color-white)
-        +fillSvg(var(--bal-color-white))
+        background: var(--bal-button-inverted-background-hover)
+        border-color: var(--bal-button-inverted-border-color-hover)
+        color: var(--bal-button-inverted-color-hover)
+        +fillSvg(var(--bal-button-inverted-color-hover))
     &:focus-visible,
     &.is-focused
       &:not(:active)
         @extend %focus-inverted-shadow
     &:active,
     &.is-active
-      background: var(--bal-color-blue-3)
-      border-color: var(--bal-color-light-blue-5)
-      color: var(--bal-color-white)
-      +fillSvg(var(--bal-color-white))
+      background: var(--bal-button-inverted-background-active)
+      border-color: var(--bal-button-inverted-border-color-active)
+      color: var(--bal-button-inverted-color-active)
+      +fillSvg(var(--bal-button-inverted-color-active))
     &.is-primary
-      background: var(--bal-color-white)
-      border-color: var(--bal-color-white)
-      color: var(--bal-color-blue)
-      +fillSvg(var(--bal-color-blue))
+      background: var(--bal-button-inverted-primary-background)
+      border-color: var(--bal-button-inverted-primary-border-color)
+      color: var(--bal-button-inverted-primary-color)
+      +fillSvg(var(--bal-button-inverted-primary-color))
       // States
       +hover
         &:hover,
         &.is-hovered
-          background: var(--bal-color-light-blue-2)
-          border-color: var(--bal-color-light-blue-2)
-          color: var(--bal-color-blue)
-          +fillSvg(var(--bal-color-blue))
+          background: var(--bal-button-inverted-primary-background-hover)
+          border-color: var(--bal-button-inverted-primary-border-color-hover)
+          color: var(--bal-button-inverted-primary-color-hover)
+          +fillSvg(var(--bal-button-inverted-primary-color-hover))
       &:active,
       &.is-active
-        background: var(--bal-color-light-blue-5)
-        border-color: var(--bal-color-light-blue-5)
-        color: var(--bal-color-white)
-        +fillSvg(var(--bal-color-white))
+        background: var(--bal-button-inverted-primary-background-active)
+        border-color: var(--bal-button-inverted-primary-border-color-active)
+        color: var(--bal-button-inverted-primary-color-active)
+        +fillSvg(var(--bal-button-inverted-primary-color-active))
     &.is-link,
     &.is-text
-      background: transparent
-      border-color: transparent
-      color: var(--bal-color-white)
+      background: var(--bal-button-inverted-text-background)
+      border-color: var(--bal-button-inverted-text-border-color)
+      color: var(--bal-button-inverted-text-color)
+      +fillSvg(var(--bal-button-inverted-text-color))
       // States
       +hover
         &:hover,
         &.is-hovered
-          background: transparent
-          border-color: transparent
-          color: var(--bal-color-light-blue-2)
+          background: var(--bal-button-inverted-text-background-hover)
+          border-color: var(--bal-button-inverted-text-border-color-hover)
+          color: var(--bal-button-inverted-text-color-hover)
+          +fillSvg(var(--bal-button-inverted-text-color-hover))
       &:active,
       &.is-active
-        background: transparent
-        border-color: transparent
-        color: var(--bal-color-info-3)
+        background: var(--bal-button-inverted-text-background-active)
+        border-color: var(--bal-button-inverted-text-border-color-active)
+        color: var(--bal-button-inverted-text-color-active)
+        +fillSvg(var(--bal-button-inverted-text-color-active))
     &.is-light
-      background: var(--bal-color-blue-4)
-      border-color: var(--bal-color-blue-4)
-      color: var(--bal-color-white)
-      +fillSvg(var(--bal-color-white))
+      background: var(--bal-button-inverted-light-background)
+      border-color: var(--bal-button-inverted-light-border-color)
+      color: var(--bal-button-inverted-light-color)
+      +fillSvg(var(--bal-button-inverted-light-color))
       // States
       +hover
         &:hover,
         &.is-hovered
-          background: var(--bal-color-light-blue-2)
-          border-color: var(--bal-color-light-blue-2)
-          color: var(--bal-color-blue)
-          +fillSvg(var(--bal-color-blue))
+          background: var(--bal-button-inverted-light-background-hover)
+          border-color: var(--bal-button-inverted-light-border-color-hover)
+          color: var(--bal-button-inverted-light-color-hover)
+          +fillSvg(var(--bal-button-inverted-light-color-hover))
       &:focus-visible,
       &.is-focused
         &:not(:active)
           @extend %focus-inverted-shadow
       &:active,
       &.is-active
-        background: var(--bal-color-white)
-        border-color: var(--bal-color-white)
-        color: var(--bal-color-blue)
-        +fillSvg(var(--bal-color-blue))
+        background: var(--bal-button-inverted-light-background-active)
+        border-color: var(--bal-button-inverted-light-border-color-active)
+        color: var(--bal-button-inverted-light-color-active)
+        +fillSvg(var(--bal-button-inverted-light-color-active))
   // Disabled
   &.is-disabled.is-inverted,
   &.is-disabled,
@@ -371,10 +384,10 @@
   &.is-inverted:disabled,
   &:disabled
     @extend %disabled
-    background: var(--bal-color-grey)
-    border-color: var(--bal-color-grey)
-    color: var(--bal-color-grey-5)
-    +fillSvg(var(--bal-color-grey-5))
+    background: var(--bal-button-disablde-background)
+    border-color: var(--bal-button-disablde-border-color)
+    color: var(--bal-button-disablde-color)
+    +fillSvg(var(--bal-button-disablde-color))
     opacity: 1
     & > span::after
       display: none

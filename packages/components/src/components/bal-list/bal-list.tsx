@@ -1,5 +1,4 @@
 import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -17,26 +16,9 @@ export class List {
   @Prop() disabled = false
 
   /**
-   * @deprecated
-   * If `true` the list can be used on a dark background
-   */
-  @Prop() inverted = undefined
-  @Watch('inverted')
-  invertedHandler() {
-    if (this.inverted !== undefined) {
-      console.warn('[DEPRECATED] - Please use the property background="dark" instead of inverted')
-      if (this.inverted === true) {
-        this.background = 'dark'
-      } else {
-        this.background = 'light'
-      }
-    }
-  }
-
-  /**
    * If `true` the list can be used on a light, dark or colored backgrounds
    */
-  @Prop() background: Props.BalListBackground = 'light'
+  @Prop() background: BalProps.BalListBackground = 'light'
 
   /**
    * If `true` each list item has a bottom border
@@ -58,15 +40,9 @@ export class List {
   /**
    * Defines the min height of the list item
    */
-  @Prop() size: Props.BalListSize = ''
-
-  // /**
-  //  * If `true` the list can be used as an accordion in meta nav
-  //  */
-  // @Prop() inMainNav = false
+  @Prop() size: BalProps.BalListSize = ''
 
   componentWillLoad() {
-    this.invertedHandler()
     this.accordionOneLevelHandler(this.accordionOneLevel, false)
   }
 

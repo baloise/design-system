@@ -1,13 +1,25 @@
-import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Listen,
+  Method,
+  Prop,
+  Watch,
+  Element,
+  Event,
+  EventEmitter,
+  State,
+  ComponentInterface,
+} from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
-import { Props } from '../../types'
-import { Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
+import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -19,16 +31,34 @@ export interface PopoverPresentOptions {
     css: 'bal-popover.sass',
   },
 })
-export class Popover {
+export class Popover implements ComponentInterface, Loggable {
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
+  private resizeWidthHandler = ResizeHandler()
 
   @Element() element!: HTMLElement
 
   @State() isTouch = isPlatform('touch')
   @State() isInMainNav = false
   @State() backdropHeight = 0
+
+  log!: LogInstance
+
+  @Logger('bal-popover')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * If `true` the popover automatically opens on a click
+   */
+  @Prop() autoTrigger = false
 
   /**
    * If `true` the popover has max-width on tablet and desktop. On mobile it uses the whole viewport.
@@ -73,12 +103,12 @@ export class Popover {
   /**
    * Define the position of the popover content.
    */
-  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+  @Prop() position: BalProps.BalPopoverPlacement = 'bottom-start'
 
   /**
    * If `true` the popover content is open.
    */
-  @Prop({ mutable: true, reflect: true }) value = false
+  @Prop({ mutable: true, reflect: true }) active = false
 
   /**
    * If `true` there will be no backdrop
@@ -88,8 +118,8 @@ export class Popover {
   /**
    * Update the native input element when the value changes
    */
-  @Watch('value')
-  protected async valueChanged(newValue: boolean, oldValue: boolean) {
+  @Watch('active')
+  protected async activeChanged(newValue: boolean, oldValue: boolean) {
     if (newValue === true && newValue !== oldValue) {
       this.present({ force: true })
     } else {
@@ -100,7 +130,17 @@ export class Popover {
   /**
    * Listen when the popover opens or closes. Returns the current value.
    */
-  @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalPopoverChangeDetail>
+
+  /**
+   * Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
+
+  /**
+   * Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
 
   /**
    * @internal - Use this to close unused popovers.
@@ -108,60 +148,51 @@ export class Popover {
   @Event() balPopoverPrepare!: EventEmitter<string>
 
   /**
-   * @internal Emitted before the animation starts
+   * LIFECYCLE
+   * ------------------------------------------------------
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalPopoverWillAnimateDetail>
 
-  /**
-   * @internal Emitted after the animation has finished
-   */
-  @Event() balDidAnimate!: EventEmitter<Events.BalPopoverDidAnimateDetail>
-
-  @Listen('balPopoverPrepare', { target: 'body' })
-  handlePopoverPrepare(event: CustomEvent<string>) {
-    const popoverId = event.detail
-    if (this.popoverId !== popoverId) {
-      this.dismiss()
-    }
+  componentWillLoad() {
+    this.backdropHeight = this.getBackdropHeight()
   }
 
-  @Listen('click', { target: 'document' })
-  async clickOnOutside(event: UIEvent) {
-    if (this.value) {
-      if (!this.element.contains(event.target as Node)) {
-        this.value = false
+  componentDidLoad() {
+    this.isInMainNav = this.footMobileNav !== null
+    this.isTouch = isPlatform('touch')
+
+    if (this.triggerElement && this.menuElement) {
+      this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
+        placement: this.tooltip ? 'bottom' : this.position,
+        modifiers: [this.modifierOffset, this.modifierPreventOverflow],
+      })
+      let showEvents: string[] = []
+      let hideEvents: string[] = []
+
+      if (this.autoTrigger) {
+        showEvents = ['click']
       }
 
-      if (this.backdropElement?.isEqualNode(event.target as Node)) {
-        this.value = false
+      if (this.tooltip) {
+        showEvents = ['mouseenter', 'focus']
+        hideEvents = ['mouseleave', 'blur']
       }
+
+      showEvents.forEach(event => {
+        if (this.triggerElement) {
+          if (event === 'click') {
+            this.triggerElement.addEventListener(event, () => this.toggle())
+          } else {
+            this.triggerElement.addEventListener(event, () => this.present())
+          }
+        }
+      })
+
+      hideEvents.forEach(event => {
+        if (this.triggerElement) {
+          this.triggerElement.addEventListener(event, () => this.dismiss())
+        }
+      })
     }
-  }
-
-  @Listen('keydown', { target: 'window' })
-  handleKeyUp(event: KeyboardEvent) {
-    if (this.value && (event.key === 'Escape' || event.key === 'Esc')) {
-      event.preventDefault()
-      this.dismiss()
-    }
-  }
-
-  @Listen('keyup', { target: 'document' })
-  async tabOutside(event: KeyboardEvent) {
-    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.value) {
-      await this.toggle()
-    }
-  }
-
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isTouch = isPlatform('touch')
-      this.isInMainNav = this.footMobileNav !== null
-      this.backdropHeight = this.getBackdropHeight()
-    })
   }
 
   componentDidRenderTimer?: NodeJS.Timer
@@ -193,67 +224,83 @@ export class Popover {
     }
   }
 
-  private get footMobileNav(): HTMLElement | null {
-    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
-  }
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
-  componentWillLoad() {
-    this.backdropHeight = this.getBackdropHeight()
-  }
-
-  componentDidLoad() {
-    this.isInMainNav = this.footMobileNav !== null
-    this.isTouch = isPlatform('touch')
-
-    if (this.triggerElement && this.menuElement) {
-      this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
-        placement: this.tooltip ? 'bottom' : this.position,
-        modifiers: [this.modifierOffset, this.modifierPreventOverflow],
-      })
-      let showEvents: string[] = []
-      let hideEvents: string[] = []
-
-      if (this.tooltip) {
-        showEvents = ['mouseenter', 'focus']
-        hideEvents = ['mouseleave', 'blur']
-      }
-
-      showEvents.forEach(event => {
-        if (this.triggerElement) {
-          this.triggerElement.addEventListener(event, () => this.present())
-        }
-      })
-
-      hideEvents.forEach(event => {
-        if (this.triggerElement) {
-          this.triggerElement.addEventListener(event, () => this.dismiss())
-        }
-      })
+  @Listen('balPopoverPrepare', { target: 'body' })
+  handlePopoverPrepare(event: CustomEvent<string>) {
+    const popoverId = event.detail
+    if (this.popoverId !== popoverId) {
+      this.dismiss()
     }
   }
+
+  @Listen('click', { target: 'document' })
+  async clickOnOutside(event: UIEvent) {
+    if (this.active) {
+      if (!this.element.contains(event.target as Node)) {
+        this.active = false
+      }
+
+      if (this.backdropElement?.isEqualNode(event.target as Node)) {
+        this.active = false
+      }
+    }
+  }
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyUp(event: KeyboardEvent) {
+    if (this.active && (event.key === 'Escape' || event.key === 'Esc')) {
+      event.preventDefault()
+      this.dismiss()
+    }
+  }
+
+  @Listen('keyup', { target: 'document' })
+  async tabOutside(event: KeyboardEvent) {
+    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.active) {
+      await this.toggle()
+    }
+  }
+
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.resizeWidthHandler(() => {
+      this.isTouch = isPlatform('touch')
+      this.isInMainNav = this.footMobileNav !== null
+      this.backdropHeight = this.getBackdropHeight()
+    })
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Open the popover
    */
   @Method()
   async present(options: PopoverPresentOptions = { force: false }) {
-    if (!this.value || options.force) {
+    if (!this.active || options.force) {
       this.menuElement?.setAttribute('data-show', '')
       this.menuElement?.setAttribute('aria-hidden', 'false')
       if (this.menuInnerElement) {
         this.menuInnerElement.scrollTo(0, 0)
       }
       this.balPopoverPrepare.emit(this.popoverId)
-      this.balWillAnimate.emit()
-      this.value = true
+      this.balWillAnimate.emit(this.active)
+      this.active = true
       this.popperInstance.setOptions((options: any) => ({
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: true }],
       }))
       this.updatePopper()
 
-      this.balChange.emit(this.value)
-      this.balDidAnimate.emit()
+      this.balChange.emit(this.active)
+      this.balDidAnimate.emit(this.active)
     }
   }
 
@@ -262,19 +309,19 @@ export class Popover {
    */
   @Method()
   async dismiss(options: PopoverPresentOptions = { force: false }) {
-    if (this.value || options.force) {
+    if (this.active || options.force) {
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
-      this.balWillAnimate.emit()
-      this.value = false
+      this.balWillAnimate.emit(this.active)
+      this.active = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
         modifiers: [...options.modifiers, { name: 'eventListeners', enabled: false }],
       }))
       this.updatePopper()
 
-      this.balChange.emit(this.value)
-      this.balDidAnimate.emit()
+      this.balChange.emit(this.active)
+      this.balDidAnimate.emit(this.active)
     }
   }
 
@@ -283,15 +330,20 @@ export class Popover {
    */
   @Method()
   async toggle(options: PopoverPresentOptions = { force: false }) {
-    if (this.value) {
+    if (this.active) {
       await this.dismiss(options)
     } else {
       await this.present(options)
     }
   }
 
-  private updatePopper() {
-    this.popperInstance.update()
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get footMobileNav(): HTMLElement | null {
+    return this.element.closest('[slot="meta-mobile-foot"]') as HTMLElement
   }
 
   private get modifierOffset(): Partial<OffsetModifier> {
@@ -329,16 +381,30 @@ export class Popover {
     return this.isInMainNav ? (window.innerHeight - (this.isTouch ? 64 : 48)) / 16 : window.innerHeight / 16
   }
 
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private updatePopper() {
+    this.popperInstance.update()
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
   render() {
     const block = BEM.block('popover')
 
     return (
       <Host
-        aria-presented={this.value ? 'true' : null}
+        aria-presented={this.active ? 'true' : null}
         data-id={this.popoverId}
         class={{
           ...block.class(),
-          ...block.modifier('active').class(this.value),
+          ...block.modifier('active').class(this.active),
           ...block.modifier('tooltip').class(this.tooltip),
           ...block.modifier('arrow').class(this.arrow),
           ...block.modifier('hint').class(this.hint),
@@ -352,7 +418,7 @@ export class Popover {
               this.backdropElement = el
             }}
             class={{
-              ...block.element('backdrop').class(this.backdrop && this.value),
+              ...block.element('backdrop').class(this.backdrop && this.active),
             }}
             style={{
               '--bal-popover-backdrop-height': `${this.backdropHeight}rem`,

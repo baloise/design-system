@@ -112,7 +112,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 ## [11.0.11](https://github.com/baloise/design-system/compare/v11.0.10...v11.0.11) (2022-11-03)
 
-
 ### Performance Improvements
 
 * lazy load component styles ([53ea546](https://github.com/baloise/design-system/commit/53ea5460bd46e1a4525fccccdd5c039cad8938eb))
@@ -123,7 +122,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 ### Bug Fixes
 
 * remove source maps ([9ac37b1](https://github.com/baloise/design-system/commit/9ac37b13e4d634d43b51c4467e7174249f542c31))
-
 
 ### Performance Improvements
 
@@ -548,7 +546,7 @@ There are 2 other changelogs for previous states of the Design System
 
 # [11.0.0](https://github.com/baloise/design-system/compare/v10.24.10...v11.0.0) (2022-10-17)
 
-Follow the migration guide [Migration from 10.x to 11.x](https://baloise-design.vercel.app/?path=/story/migration-migration-from-10-x-to-11-x--page)
+Follow the migration guide [Migration from 10.x to 11.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v11--page)
 
 ### ⚠ BREAKING CHANGES
 

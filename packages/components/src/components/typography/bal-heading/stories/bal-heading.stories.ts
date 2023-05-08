@@ -101,6 +101,19 @@ export const Spacing = args => ({
 })
 Spacing.parameters = { ...component.sourceCode(Spacing), controls: { exclude: excludedControls } }
 
+export const AutoLevel = Template.bind({})
+AutoLevel.args = {
+  content:
+    'This heading is actual a H1 level, but since it requires more than one line we shrink it until it matches or is the same level as the auto-level.',
+  level: 'h1',
+  autoLevel: 'h5',
+  subtitle: false,
+  space: 'bottom',
+  color: '',
+  inverted: false,
+}
+AutoLevel.parameters = { ...component.sourceCode(AutoLevel), controls: { exclude: excludedControls } }
+
 export const CSSUtilities = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
