@@ -95,7 +95,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.7](https://github.com/baloise/design-system/compare/v10.24.6...v10.24.7) (2022-10-06)
 
-
 ### Bug Fixes
 
 * improve variables.scss to import all from subdirectory ([c1d19ea](https://github.com/baloise/design-system/commit/c1d19ea41c9920cfc64cc98c365bd1479ab6171d))
