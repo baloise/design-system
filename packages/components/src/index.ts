@@ -36,7 +36,6 @@ export {
   componentOnReady,
   isDescendant,
 } from './utils/helpers'
-export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export {
   BreakpointsHandler,
   Breakpoints,
@@ -44,13 +43,25 @@ export {
   initialBreakpoints,
   BreakpointsHandlerType,
 } from './utils/breakpoints'
-export { isBrowser, hasTouchSupport } from './utils/browser'
+export {
+  Orientation,
+  OrientationHandler,
+  OrientationHandlerCallback,
+  OrientationHandlerType,
+  initialOrientation,
+} from './utils/orientation'
 export { scrollToFirstInvalidField } from './utils/form'
 export { ScrollHandler } from './utils/scroll'
+export { balBrowser } from './utils/browser'
+export { balDevice } from './utils/device'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'
 export { newBalRadioOption } from './components/form/bal-radio/utils/bal-radio.util'
+
+// deprecated
+export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
+export { isBrowser, hasTouchSupport } from './utils/legacy'
 
 /**
  * Controllers

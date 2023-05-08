@@ -1,6 +1,5 @@
-import { isWindowDefined } from './browser'
-import { ResizeHandler } from './resize'
-import { getPlatforms } from './platform'
+import { ResizeListener } from '../resize'
+import { balBreakpoints } from './breakpoints'
 
 export type BreakpointsHandlerCallback = (breakpoints: Breakpoints) => void
 
@@ -34,42 +33,34 @@ export type BreakpointsHandlerType = {
 }
 
 export const BreakpointsHandler = (): BreakpointsHandlerType => {
+  const resizeListener = ResizeListener()
   let callbackHandler: BreakpointsHandlerCallback = emptyCallback
-  const resizeHandler = ResizeHandler(true)
   let breakpoints = { ...initialBreakpoints }
 
   function update() {
-    const platforms = getPlatforms()
+    const detectedBreakpoints = balBreakpoints.detect()
     breakpoints = {
       ...breakpoints,
-      mobile: platforms.includes('mobile'),
-      tablet: platforms.includes('tablet'),
-      touch: platforms.includes('touch'),
-      desktop: platforms.includes('desktop'),
-      highDefinition: platforms.includes('highDefinition'),
-      widescreen: platforms.includes('widescreen'),
-      fullhd: platforms.includes('fullhd'),
+      mobile: detectedBreakpoints.includes('mobile'),
+      tablet: detectedBreakpoints.includes('tablet'),
+      touch: detectedBreakpoints.includes('touch'),
+      desktop: detectedBreakpoints.includes('desktop'),
+      highDefinition: detectedBreakpoints.includes('highDefinition'),
+      widescreen: detectedBreakpoints.includes('widescreen'),
+      fullhd: detectedBreakpoints.includes('fullhd'),
     }
     callbackHandler(breakpoints)
   }
 
-  function onResize() {
-    resizeHandler(update)
-  }
-
   return {
     connect: (callback: BreakpointsHandlerCallback) => {
-      if (isWindowDefined()) {
-        window.addEventListener('resize', onResize, { passive: true })
-      }
       callbackHandler = callback
       update()
+
+      resizeListener.connect(() => update())
     },
     disconnect: () => {
-      if (isWindowDefined()) {
-        window.removeEventListener('resize', onResize)
-      }
-      breakpoints = { ...initialBreakpoints }
+      resizeListener.disconnect()
       callbackHandler = emptyCallback
     },
   }

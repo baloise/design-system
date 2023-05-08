@@ -15,6 +15,7 @@ export { BalToastService } from './overlays/toast.service'
 export { BalSnackbarService } from './overlays/snackbar.service'
 export { BalModalService } from './overlays/modal.service'
 export { BalBreakpointsService } from './breakpoints.service'
+export { BalOrientationService } from './orientation.service'
 
 // PACKAGE MODULE
 export { BaloiseDesignSystemModule } from './module'

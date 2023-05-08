@@ -109,17 +109,25 @@ Change the visibility with the help of the CSS utility classes.
 
 ### JavaScript Utility
 
-`isPlatform` returns a boolean if the Design System is running in the given **breakpoint**.
+To work with breakpoints in JavaScript use the `balBreakpoints` utility.
 
 ```typescript
-import { isPlatform } from '@baloise/design-system-components'
+import { balBreakpoints } from '@baloise/design-system-components'
 
-isPlatform(window, 'mobile')
-isPlatform(window, 'tablet')
-isPlatform(window, 'desktop')
-isPlatform(window, 'high-definition')
-isPlatform(window, 'widescreen')
-isPlatform(window, 'fullhd')
+// Each breakpoint has a getter function which returns a boolean
+balBreakpoints.isMobile
+balBreakpoints.isTablet
+balBreakpoints.isTouch
+balBreakpoints.isDesktop
+balBreakpoints.isHighDefinition
+balBreakpoints.isWidescreen
+balBreakpoints.isFullHD
+
+// Returns a boolean if the given breakpoint is active
+balBreakpoints.includes('mobile')
+
+// Detects breakpoints
+balBreakpoints.detect()
 ```
 
 #### Angular
@@ -142,6 +150,67 @@ In the template access the breakpoint you need with `breakpoints.touch$`.
 
 ```html
 <div *ngIf="breakpoints.touch$ | async">... come content ...</div>
+```
+
+## Browser Utilities
+
+```typescript
+import { balBrowser } from '@baloise/design-system-components'
+
+// Is true when it is a Safari browser
+balBrowser.isSafari
+
+// Is true when the window object is defined
+balBrowser.hasWindow
+
+// Is true when the navigator object is defined
+balBrowser.hasNavigator
+
+// Is true when the document object is defined
+balBrowser.hasDocument
+
+// Returns a string with the user agents
+balBrowser.userAgent
+```
+
+## Device Utilities
+
+```typescript
+import { balDevice } from '@baloise/design-system-components'
+
+// Is true if the device supports touchscreen
+balDevice.hasTouchScreen
+
+// Is true if it is a native mobile device like a iPhone
+balDevice.isMobile
+
+// Is true when the orientation is in portrait mode
+balDevice.orientation.isPortrait
+
+// Is true when the orientation is in isLandscape mode
+balDevice.orientation.isLandscape
+```
+
+#### Angular
+
+In the angular package we provide a `BalOrientationService` with observables. This service listens
+on resize events and inform all subscribes.
+
+Just import the `BalOrientationService` from the '@baloise/design-system-components-angular' package
+and set is as **public** in the constructor so that we can use it in the template.
+
+```typescript
+import { BalOrientationService } from '@baloise/design-system-components-angular'
+
+class MyComponent {
+  constructor(public orientation: BalOrientationService)
+}
+```
+
+In the template access the orientation you need with `orientation.portrait$` or `orientation.landscape$`.
+
+```html
+<div *ngIf="orientation.portrait$ | async">... come content ...</div>
 ```
 
 <span id="story--foundation-grid-development--container-css-utility" style={{ opacity: 0 }}></span>

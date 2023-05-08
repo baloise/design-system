@@ -1,5 +1,5 @@
 import { EventEmitter } from '@stencil/core'
-import { isWindowDefined } from './browser'
+import { balBrowser } from './browser'
 import { BalConfig } from './config'
 import {
   balIconCaretDown,
@@ -25,7 +25,7 @@ declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
 export const rIC = (callback: () => void) => {
-  if (isWindowDefined() && 'requestIdleCallback' in window) {
+  if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
     ;(window as any).requestIdleCallback(callback)
   } else {
     setTimeout(callback, 32)
@@ -269,7 +269,7 @@ export const waitAfterIdleCallback = () => {
 }
 
 export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
-  if (isWindowDefined() && 'MessageChannel' in window) {
+  if (balBrowser.hasWindow && 'MessageChannel' in window) {
     const messageChannel = new (window as any).MessageChannel()
     messageChannel.port1.onmessage = callback
     messageChannel.port2.postMessage(undefined)

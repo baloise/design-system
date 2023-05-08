@@ -1,4 +1,4 @@
-import { isWindowDefined } from '../browser'
+import { balBrowser } from '../browser'
 import { BalLogger, defaultLoggerConfig } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
@@ -191,7 +191,7 @@ export class Config {
       }
     }
 
-    if (isWindowDefined()) {
+    if (balBrowser.hasWindow) {
       saveConfig(window, this._config)
     }
   }

@@ -14,6 +14,7 @@ import { BalToastService } from './overlays/toast.service'
 import { BalSnackbarService } from './overlays/snackbar.service'
 import { BalNgErrorComponent } from './components/error/error.component'
 import { BalBreakpointsService } from './breakpoints.service'
+import { BalOrientationService } from './orientation.service'
 
 export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 
@@ -34,7 +35,14 @@ const DECLARATIONS = [
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [CommonModule],
-  providers: [AngularDelegate, BalModalService, BalToastService, BalSnackbarService, BalBreakpointsService],
+  providers: [
+    AngularDelegate,
+    BalModalService,
+    BalToastService,
+    BalSnackbarService,
+    BalBreakpointsService,
+    BalOrientationService,
+  ],
 })
 export class BaloiseDesignSystemModule {
   static forRoot(config: BaloiseDesignSystemAngularConfig = {}): ModuleWithProviders<BaloiseDesignSystemModule> {

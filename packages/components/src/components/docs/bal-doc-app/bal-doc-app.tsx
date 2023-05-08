@@ -1,7 +1,7 @@
 import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
 import { updateBalIcons } from '../../../utils/config'
-import { isWindowDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
 import globalScript from '../../../global'
 
@@ -37,7 +37,7 @@ export class DocApp implements ComponentInterface {
       render: this.logRender,
       custom: this.logCustom,
     }
-    if (isWindowDefined()) {
+    if (balBrowser.hasWindow) {
       ;(window as any).BaloiseDesignSystem.config.logger = logConfig
     }
   }

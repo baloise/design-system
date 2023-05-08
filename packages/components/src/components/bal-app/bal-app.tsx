@@ -1,5 +1,6 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Method } from '@stencil/core'
-import { isBrowser } from '../../utils/browser'
+import { balBrowser } from '../../utils/browser'
+import { balDevice } from '../../utils/device'
 import { BalMode, initStyleMode, updateBalAnimated } from '../../utils/config'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -67,8 +68,8 @@ export class App implements Loggable {
         role="application"
         class={{
           'bal-app': true,
-          'bal-app--safari': isBrowser('Safari'),
-          'bal-app--touch': isBrowser('touch'),
+          'bal-app--safari': balBrowser.isSafari,
+          'bal-app--touch': balDevice.hasTouchScreen,
         }}
       >
         <slot></slot>
