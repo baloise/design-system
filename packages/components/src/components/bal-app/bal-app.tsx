@@ -70,8 +70,6 @@ export class App implements Loggable {
           'bal-app': true,
           'bal-app--safari': balBrowser.isSafari,
           'bal-app--touch': balDevice.hasTouchScreen,
-          'bal-app--landscape': balDevice.orientation.isLandscape,
-          'bal-app--portrait': balDevice.orientation.isPortrait,
         }}
       >
         <slot></slot>
