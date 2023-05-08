@@ -2124,6 +2124,16 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
+    interface BalProgressBar {
+        /**
+          * The shape color
+         */
+        "background": BalProps.BalProgressBarBackground;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+         */
+        "value": number;
+    }
     interface BalRadio {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -3830,6 +3840,12 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
+    }
+    var HTMLBalProgressBarElement: {
+        prototype: HTMLBalProgressBarElement;
+        new (): HTMLBalProgressBarElement;
+    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -4107,6 +4123,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
@@ -6316,6 +6333,16 @@ declare namespace LocalJSX {
          */
         "spaceless"?: boolean;
     }
+    interface BalProgressBar {
+        /**
+          * The shape color
+         */
+        "background"?: BalProps.BalProgressBarBackground;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+         */
+        "value"?: number;
+    }
     interface BalRadio {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -7325,6 +7352,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
         "bal-radio-group": BalRadioGroup;
@@ -7472,6 +7500,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;

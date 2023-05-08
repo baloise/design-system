@@ -1,14 +1,18 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
-import { Basic } from './bal-navigation.stories'
+import { Basic } from './bal-progress-bar.stories'
 
-<bal-doc-banner id="story--components-navigation-navigation--basic">Navigation</bal-doc-banner>
+<bal-doc-banner id="story--components-progress-bar--basic">Progress Bar</bal-doc-banner>
 
-<bal-doc-lead>A responsive horizontal <b>Navigation</b> that contains the brand, action buttons and the meta tabs with sub levels </bal-doc-lead>
+<bal-doc-lead><strong>Progress bar</strong> indicators are used to show the duration of a process or to indicate an unspecified waiting time.</bal-doc-lead>
+
+<Canvas withSource="open">
+  <Story id="components-progress-bar--basic" />
+</Canvas>
 
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
-    <a class="button is-primary" href="?path=/story/components-navigation-navigation--basic">
+    <a class="button is-primary" href="?path=/story/components-progress-bar--basic">
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox
@@ -18,7 +22,7 @@ import { Basic } from './bal-navigation.stories'
     <bal-doc-code-sandbox
       framework="html"
       template={Basic.parameters.docs.source.code}
-      modules="navigation,card,heading"
+      modules="progress"
     ></bal-doc-code-sandbox>
   </bal-button-group>
 </bal-doc-app>
@@ -45,4 +49,4 @@ import testing from './testing.md'
 
 <Description markdown={testing} />
 
-<bal-doc-github link="/components/bal-navigation/stories/bal-navigation.docs.mdx"></bal-doc-github>
+<bal-doc-github link="/components/bal-progress-bar/stories/bal-progress-bar.docs.mdx"></bal-doc-github>

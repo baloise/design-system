@@ -31,7 +31,7 @@ This is also the the default testing tools of the Angular framework.
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { BrowserModule, By } from '@angular/platform-browser'
-import { BalCoreModule, BalInputModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { waitForDesignSystem } from '@baloise/design-system-components'
 import { AppComponent } from './app.component'
 
@@ -39,7 +39,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [BrowserModule, BalCoreModule.forRoot(), BalInputModule],
+      imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents()
   })
@@ -139,7 +139,7 @@ We created a simple component with our CSS-Framework and the components.
 Lets create our first test `hello.component.cy.ts`.
 
 ```typescript
-import { BalCoreModule, BalHeadingModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { HelloComponent } from 'src/app/hello/hello.component'
 
 describe('hello.component.cy.ts', () => {
@@ -147,7 +147,7 @@ describe('hello.component.cy.ts', () => {
     // mount the angular component and import the needed
     // Design System modules
     cy.mount(HelloComponent, {
-      imports: [BalCoreModule.forRoot(), BalHeadingModule],
+      imports: [BaloiseDesignSystemModule.forRoot()],
     })
     // lets wait until the Design System has loaded the custom font, ¨
     // disabled the animations and the web-components have rendered
