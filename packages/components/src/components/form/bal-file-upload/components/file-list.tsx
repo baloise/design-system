@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
 import fileSize from 'filesize.js'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../../../utils/bem'
 
 const bemListEl = BEM.block('file-upload').element('list')
 

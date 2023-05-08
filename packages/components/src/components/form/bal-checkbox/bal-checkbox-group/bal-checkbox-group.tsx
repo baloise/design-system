@@ -12,14 +12,14 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
-import { stopEventBubbling } from '@/components/utils/form-input'
-import { findItemLabel, hasTagName, isDescendant } from '@/components/utils/helpers'
-import { inheritAttributes } from '@/components/utils/attributes'
-import { BEM } from '@/components/utils/bem'
+import { stopEventBubbling } from '../../../../utils/form-input'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
+import { inheritAttributes } from '../../../../utils/attributes'
+import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
-import { MutationHandler } from '@/components/utils/mutations'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { MutationHandler } from '../../../../utils/mutations'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 
 @Component({
   tag: 'bal-checkbox-group',

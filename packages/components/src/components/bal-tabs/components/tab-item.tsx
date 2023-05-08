@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../../utils/bem'
 import { TabItemProps } from '../bal-tab.type'
 
 const buttonEl = BEM.block('tabs').element('tabs').element('item').element('button')

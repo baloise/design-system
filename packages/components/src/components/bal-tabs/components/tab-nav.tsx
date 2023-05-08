@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
-import { stopEventBubbling } from '@/components/utils/form-input'
+import { BEM } from '../../../utils/bem'
+import { stopEventBubbling } from '../../../utils/form-input'
 import { BalTabOption } from '../bal-tab.type'
 import { TabButton } from './tab-button'
 

@@ -1,10 +1,10 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
-import { BEM } from '@/components/utils/bem'
-import { balBreakpoints } from '@/components/utils/breakpoints'
-import { ScrollHandler } from '@/components/utils/scroll'
-import { ResizeHandler } from '@/components/utils/resize'
-import { balDevice } from '@/components/utils/device'
+import { BEM } from '../../utils/bem'
+import { balBreakpoints } from '../../utils/breakpoints'
+import { ScrollHandler } from '../../utils/scroll'
+import { ResizeHandler } from '../../utils/resize'
+import { balDevice } from '../../utils/device'
 
 @Component({
   tag: 'bal-navigation',

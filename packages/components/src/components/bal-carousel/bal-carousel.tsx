@@ -11,18 +11,18 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { debounce, raf } from '@/components/utils/helpers'
-import { BEM } from '@/components/utils/bem'
-import { MutationHandler } from '@/components/utils/observer'
-import { ResizeHandler, ResizeObserverHandler } from '@/components/utils/resize'
-import { SwipeHandler } from '@/components/utils/swipe'
+import { debounce, raf } from '../../utils/helpers'
+import { BEM } from '../../utils/bem'
+import { MutationHandler } from '../../utils/observer'
+import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
+import { SwipeHandler } from '../../utils/swipe'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
-import { stopEventBubbling } from '@/components/utils/form-input'
-import { balBreakpoints } from '@/components/utils/breakpoints'
+import { stopEventBubbling } from '../../utils/form-input'
+import { balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-carousel',

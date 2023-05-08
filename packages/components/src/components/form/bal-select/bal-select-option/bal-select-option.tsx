@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 
 @Component({
   tag: 'bal-select-option',

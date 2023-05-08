@@ -1,7 +1,7 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
-import { deepReady } from '@/components/utils/helpers'
-import { balBreakpoints } from '@/components/utils/breakpoints'
-import { BEM } from '@/components/utils/bem'
+import { deepReady } from '../../../utils/helpers'
+import { balBreakpoints } from '../../../utils/breakpoints'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-menu',

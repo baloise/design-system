@@ -10,12 +10,12 @@ import {
   FunctionalComponent,
   Watch,
 } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { balBreakpoints } from '@/components/utils/breakpoints'
-import { ResizeHandler } from '@/components/utils/resize'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
-import { rIC } from '@/components/utils/helpers'
+import { balBreakpoints } from '../../utils/breakpoints'
+import { ResizeHandler } from '../../utils/resize'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { rIC } from '../../utils/helpers'
 
 type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => AnimationItem
 

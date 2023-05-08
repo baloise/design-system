@@ -13,7 +13,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, findItemLabel, isDescendant } from '@/components/utils/helpers'
+import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -37,9 +37,9 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { stopEventBubbling } from '@/components/utils/form-input'
-import { BEM } from '@/components/utils/bem'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 export interface BalOptionController extends BalOptionValue {
   id: string

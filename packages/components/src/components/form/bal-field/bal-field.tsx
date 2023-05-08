@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, Watch } from '@stencil/core'
-import { observeItems } from '@/components/utils/observer'
+import { observeItems } from '../../../utils/observer'
 
 @Component({
   tag: 'bal-field',

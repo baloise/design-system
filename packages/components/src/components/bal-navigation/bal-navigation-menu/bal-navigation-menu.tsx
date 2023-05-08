@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../../utils/bem'
 import { LevelInfo } from '../utils/level.utils'
-import { Attributes } from '@/components/utils/attributes'
+import { Attributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-navigation-menu',

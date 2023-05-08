@@ -8,25 +8,20 @@ import {
   isDescendant,
   raf,
   transitionEndAsync,
-} from '@/components/utils/helpers'
+} from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  detachComponentToConfig,
-} from '@/components/utils/config'
-import { BEM } from '@/components/utils/bem'
-import { ResizeHandler } from '@/components/utils/resize'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
+import { BEM } from '../../utils/bem'
+import { ResizeHandler } from '../../utils/resize'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
-import { stopEventBubbling } from '@/components/utils/form-input'
+import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
-import { getPadding, Padding } from '@/components/utils/style'
-import { MutationHandler } from '@/components/utils/mutations'
-import { AccordionState } from '@/components/types'
-import { balBreakpoints } from '@/components/utils/breakpoints'
+import { getPadding, Padding } from '../../utils/style'
+import { MutationHandler } from '../../utils/mutations'
+import { AccordionState } from '../../interfaces'
+import { balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-tabs',

@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../../utils/bem'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -8,11 +8,11 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '@/components/utils/config'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+} from '../../../utils/config'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
-import { ComponentElementState } from '@/components/utils/element-states'
-import { MutationHandler } from '@/components/utils/mutations'
+import { ComponentElementState } from '../../../utils/element-states'
+import { MutationHandler } from '../../../utils/mutations'
 
 @Component({
   tag: 'bal-label',

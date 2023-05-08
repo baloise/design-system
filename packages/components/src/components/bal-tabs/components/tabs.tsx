@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
-import { balBrowser } from '@/components/utils/browser'
-import { balBreakpoints } from '@/components/utils/breakpoints'
+import { balBrowser } from '../../../utils/browser'
+import { balBreakpoints } from '../../../interfaces'
 
 const tabsEl = BEM.block('tabs').element('tabs')
 const tabItemEl = tabsEl.element('item')

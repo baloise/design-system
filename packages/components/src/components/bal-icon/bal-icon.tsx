@@ -1,7 +1,7 @@
 import { Component, h, Host, Method, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BEM } from '@/components/utils/bem'
+import { BEM } from '../../utils/bem'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -9,8 +9,8 @@ import {
   BalIcons,
   defaultConfig,
   detachComponentToConfig,
-} from '@/components/utils/config'
-import { ComponentElementState } from '@/components/utils/element-states'
+} from '../../utils/config'
+import { ComponentElementState } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-icon',

@@ -12,8 +12,8 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel } from '@/components/utils/helpers'
-import { inheritAttributes } from '@/components/utils/attributes'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
 import {
   FormInput,
   getInputTarget,
@@ -27,7 +27,7 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '@/components/utils/form-input'
+} from '../../../utils/form-input'
 import {
   formatBeEnterpriseNumber,
   formatBeIBAN,
@@ -41,9 +41,9 @@ import {
   MAX_LENGTH_OFFER_NUMBER,
 } from './bal-input-util'
 import isNil from 'lodash.isnil'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '@/components/utils/constants/keys.constant'
-import { BEM } from '@/components/utils/bem'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-input',

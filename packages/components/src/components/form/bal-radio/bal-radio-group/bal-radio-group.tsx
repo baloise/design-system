@@ -11,14 +11,14 @@ import {
   Listen,
   Method,
 } from '@stencil/core'
-import { stopEventBubbling } from '@/components/utils/form-input'
-import { findItemLabel, hasTagName, isDescendant } from '@/components/utils/helpers'
-import { BEM } from '@/components/utils/bem'
+import { stopEventBubbling } from '../../../../utils/form-input'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
+import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
-import { Loggable, Logger, LogInstance } from '@/components/utils/log'
+import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import isFunction from 'lodash.isfunction'
-import { MutationHandler } from '@/components/utils/mutations'
-import { inheritAttributes } from '@/components/utils/attributes'
+import { MutationHandler } from '../../../../utils/mutations'
+import { inheritAttributes } from '../../../../utils/attributes'
 
 @Component({
   tag: 'bal-radio-group',

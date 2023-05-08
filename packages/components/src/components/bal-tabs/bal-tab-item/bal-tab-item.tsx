@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Method, State, Element, EventEmitter, Event } from '@stencil/core'
-import { Attributes, inheritTrackingAttributes } from '@/components/utils/attributes'
+import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
 import { BalTabOption } from '../bal-tab.type'
 
 @Component({

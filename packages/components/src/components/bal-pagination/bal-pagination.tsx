@@ -12,9 +12,9 @@ import {
   Listen,
   FunctionalComponent,
 } from '@stencil/core'
-import { BEM } from '@/components/utils/bem'
-import { balBreakpoints } from '@/components/utils/breakpoints'
-import { ResizeHandler } from '@/components/utils/resize'
+import { BEM } from '../../utils/bem'
+import { balBreakpoints } from '../../utils/breakpoints'
+import { ResizeHandler } from '../../utils/resize'
 
 @Component({
   tag: 'bal-pagination',

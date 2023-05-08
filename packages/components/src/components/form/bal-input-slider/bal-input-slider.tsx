@@ -1,8 +1,8 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounceEvent } from '@/components/utils/helpers'
-import { stopEventBubbling } from '@/components/utils/form-input'
-import { BEM } from '@/components/utils/bem'
+import { debounceEvent } from '../../../utils/helpers'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-input-slider',
