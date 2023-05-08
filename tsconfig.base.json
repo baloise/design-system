@@ -22,12 +22,7 @@
     "removeComments": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/core/utils/*": ["./packages/components/src/utils/*"],
-      "@/core/interfaces": ["./packages/components/src/interfaces.d.ts"]
-    }
+    "resolveJsonModule": true
   },
   "compileOnSave": false,
   "buildOnSave": false
