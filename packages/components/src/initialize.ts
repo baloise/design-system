@@ -2,11 +2,11 @@ import { balToastController } from './components/notice/bal-toast/bal-toast.cont
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
 import { BalConfig, BalMode, initialize, initStyleMode } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
-import { isDocumentDefined, isWindowDefined } from './utils/browser'
+import { balBrowser } from './utils/browser'
 import { balBreakpoints } from './utils/breakpoints'
 
 export const initializeBaloiseDesignSystem = (initConfig: BalConfig = {}) => {
-  if (isWindowDefined()) {
+  if (balBrowser.hasWindow) {
     const win = window as any
     win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
@@ -19,7 +19,7 @@ export const initializeBaloiseDesignSystem = (initConfig: BalConfig = {}) => {
     win.BaloiseDesignSystem.version = VERSION
 
     const onReady = () => {
-      if (isDocumentDefined()) {
+      if (balBrowser.hasDocument) {
         const body = document.querySelector('.bal-body')
         if (body && body.classList) {
           body.classList.add('is-ready')

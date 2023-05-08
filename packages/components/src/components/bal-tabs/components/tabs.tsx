@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
-import { isWindowDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 import { balBreakpoints } from '../../../interfaces'
 
 const tabsEl = BEM.block('tabs').element('tabs')
@@ -33,7 +33,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
       if (selectedTabs.length > 0) {
         const selectedTab = selectedTabs[0]
         if (selectedTab.href !== '' && selectedTab.href !== undefined) {
-          if (isWindowDefined()) {
+          if (balBrowser.hasWindow) {
             window.open(selectedTab.href, selectedTab.target)
           }
         }

@@ -1,5 +1,4 @@
-import { ResizeHandler } from '../resize'
-import { isWindowDefined } from '../browser'
+import { ResizeListener } from '../resize'
 import { balBreakpoints } from './breakpoints'
 
 export type BreakpointsHandlerCallback = (breakpoints: Breakpoints) => void
@@ -34,8 +33,8 @@ export type BreakpointsHandlerType = {
 }
 
 export const BreakpointsHandler = (): BreakpointsHandlerType => {
+  const resizeListener = ResizeListener()
   let callbackHandler: BreakpointsHandlerCallback = emptyCallback
-  const resizeHandler = ResizeHandler(true)
   let breakpoints = { ...initialBreakpoints }
 
   function update() {
@@ -53,23 +52,15 @@ export const BreakpointsHandler = (): BreakpointsHandlerType => {
     callbackHandler(breakpoints)
   }
 
-  function onResize() {
-    resizeHandler(update)
-  }
-
   return {
     connect: (callback: BreakpointsHandlerCallback) => {
-      if (isWindowDefined()) {
-        window.addEventListener('resize', onResize, { passive: true })
-      }
       callbackHandler = callback
       update()
+
+      resizeListener.connect(() => update())
     },
     disconnect: () => {
-      if (isWindowDefined()) {
-        window.removeEventListener('resize', onResize)
-      }
-      breakpoints = { ...initialBreakpoints }
+      resizeListener.disconnect()
       callbackHandler = emptyCallback
     },
   }

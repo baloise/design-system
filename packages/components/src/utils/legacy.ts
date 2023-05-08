@@ -1,4 +1,14 @@
-import { isWindowDefined, isNavigatorDefined, getUserAgent } from './browser'
+export const isWindowDefined = () => typeof window !== 'undefined'
+export const isNavigatorDefined = () => typeof navigator !== 'undefined'
+export const isDocumentDefined = () => typeof document !== 'undefined'
+
+export const getUserAgent = (): string => {
+  if (isWindowDefined() && isNavigatorDefined()) {
+    return navigator.userAgent ?? ''
+  }
+
+  return ''
+}
 
 export const hasTouchSupport = () => {
   if (isWindowDefined() && isNavigatorDefined()) {

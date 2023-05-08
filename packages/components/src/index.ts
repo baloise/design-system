@@ -54,6 +54,13 @@ export {
 } from './utils/breakpoints'
 export { balBrowser } from './utils/browser'
 export { balDevice } from './utils/device'
+export {
+  Orientation,
+  OrientationHandler,
+  OrientationHandlerCallback,
+  OrientationHandlerType,
+  initialOrientation,
+} from './utils/orientation'
 
 // deprecated
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'

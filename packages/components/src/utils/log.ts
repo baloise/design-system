@@ -1,5 +1,5 @@
 import { ComponentInterface } from '@stencil/core'
-import { isWindowDefined } from './browser'
+import { balBrowser } from './browser'
 
 export interface BalLogger {
   components: string[]
@@ -28,7 +28,7 @@ const getConfig = () => {
   let loggerConfig = defaultLoggerConfig
 
   if (
-    isWindowDefined() &&
+    balBrowser.hasWindow &&
     (window as any).BaloiseDesignSystem &&
     (window as any).BaloiseDesignSystem.config &&
     (window as any).BaloiseDesignSystem.config.logger

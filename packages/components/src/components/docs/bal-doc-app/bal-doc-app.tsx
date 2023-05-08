@@ -3,7 +3,7 @@ import * as balIcons from '@baloise/design-system-icons'
 import { updateBalIcons } from '../../../utils/config'
 import { BalLogger } from '../../../utils/log'
 import globalScript from '../../../global'
-import { isWindowDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-doc-app',
@@ -37,7 +37,7 @@ export class DocApp implements ComponentInterface {
       render: this.logRender,
       custom: this.logCustom,
     }
-    if (isWindowDefined()) {
+    if (balBrowser.hasWindow) {
       ;(window as any).BaloiseDesignSystem.config.logger = logConfig
     }
   }
