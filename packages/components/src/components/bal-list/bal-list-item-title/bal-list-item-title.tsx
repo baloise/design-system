@@ -16,7 +16,7 @@ export class ListItemTitle {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel?: BalProps.BalHeadingLevel
+  @Prop() visualLevel?: BalProps.BalHeadingVisualLevel
 
   render() {
     return (

@@ -4,7 +4,7 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalHeadingLevel =
+  export type BalHeadingVisualLevel =
     | 'display'
     | 'display-2'
     | 'h1'
@@ -20,5 +20,6 @@ namespace BalProps {
     | 'large'
     | 'medium'
     | 'normal'
+  export type BalHeadingLevel = BalHeadingVisualLevel | 'span' | 'p'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 }
