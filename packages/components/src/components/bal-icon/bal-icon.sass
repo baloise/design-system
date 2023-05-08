@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-icon.vars'
 
 =iconSize($size: 1rem)
   width: $size
@@ -55,31 +56,31 @@
   //
   // colors
   +modifier(is-grey)
-    +fillSvg(var(--bal-color-grey-5))
+    +fillSvg(var(--bal-icon-color-grey))
   +modifier(is-grey-light)
-    +fillSvg(var(--bal-color-border-grey-dark))
+    +fillSvg(var(--bal-icon-color-grey-light))
   +modifier(is-success)
-    +fillSvg(var(--bal-color-success))
+    +fillSvg(var(--bal-icon-color-success))
   +modifier(is-warning)
-    +fillSvg(var(--bal-color-warning))
+    +fillSvg(var(--bal-icon-color-warning))
   +modifier(is-danger)
-    +fillSvg(var(--bal-color-danger))
+    +fillSvg(var(--bal-icon-color-danger))
   +modifier(is-danger-dark)
-    +fillSvg(var(--bal-color-danger-5))
+    +fillSvg(var(--bal-icon-color-danger-dark))
   +modifier(is-danger-darker)
-    +fillSvg(var(--bal-color-danger-6))
+    +fillSvg(var(--bal-icon-color-danger-darker))
   +modifier(is-primary)
-    +fillSvg(var(--bal-color-primary))
+    +fillSvg(var(--bal-icon-color-primary))
   +modifier(is-primary-dark)
-    +fillSvg(var(--bal-color-primary-6))
+    +fillSvg(var(--bal-icon-color-primary-dark))
   +modifier(is-blue)
-    +fillSvg(var(--bal-color-primary))
+    +fillSvg(var(--bal-icon-color-blue))
   +modifier(is-light-blue)
-    +fillSvg(var(--bal-color-light-blue-5))
+    +fillSvg(var(--bal-icon-color-light-blue))
   +modifiers(is-primary-light)
-    +fillSvg(var(--bal-color-primary-3))
+    +fillSvg(var(--bal-icon-color-primary-light))
   +modifiers(is-white, is-inverted)
-    +fillSvg(var(--bal-color-white))
+    +fillSvg(var(--bal-icon-color-white))
 
 .icon-text
   align-items: center
