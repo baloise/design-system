@@ -14,7 +14,7 @@ The component can be customization by changing the CSS variables.
 
 | Variable                             | Description                          |
 | ------------------------------------ | ------------------------------------ |
-| `--bal-progess-bar-background-white` | Background of the progress.          |
-| `--bal-progess-bar-background-grey`  | Background of the progress.          |
-| `--bal-progess-bar-line-background`  | Background of the progress line bar. |
-| `--bal-progess-bar-line-radius`      | Radius of the progress line bar.     |
+| `--bal-progress-bar-background-white` | Background of the progress.          |
+| `--bal-progress-bar-background-grey`  | Background of the progress.          |
+| `--bal-progress-bar-line-background`  | Background of the progress line bar. |
+| `--bal-progress-bar-line-radius`      | Radius of the progress line bar.     |

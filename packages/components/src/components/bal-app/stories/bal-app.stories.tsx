@@ -161,12 +161,7 @@ export const FormWizardDesktop = args => ({
     <div class="container is-compact" style="margin-top: -12rem">
       <bal-card>
         <bal-card-title>How did the damage occur?</bal-card-title>
-        <bal-card-content>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem unde a, error quaerat modi porro, dolorem neque sed aspernatur distinctio quidem exercitationem magnam, velit quo? Aut corrupti ratione cumque eum?
-          Natus, molestias ex nulla nemo obcaecati earum fuga aliquam, voluptate laboriosam, minus enim. Ratione quod eos aut iste ipsa, explicabo deleniti temporibus autem earum adipisci nihil recusandae in commodi ea.
-          Aut distinctio corporis quos accusamus quia ab deserunt excepturi laborum nulla vel voluptatibus dolores, asperiores dignissimos dolor, eos accusantium omnis. Mollitia inventore earum error deleniti odio quibusdam fugit, iure quas?
-          Error laborum ipsam nisi, libero laboriosam rem. Exercitationem error vel quod corrupti illum ducimus reiciendis labore ex voluptatum officiis reprehenderit aspernatur nobis autem facere dignissimos suscipit nulla optio, aliquid a?
-        </bal-card-content>
+        <bal-card-content>Place your form content here</bal-card-content>
       </bal-card>
       <bal-stack space="auto" class="mt-medium">
         <bal-button color="text">Back</bal-button>
@@ -209,28 +204,8 @@ export const FormWizardMobile = args => ({
     <main>
     <div class="container my-medium pb-xxx-large">
       <bal-heading level="h5">How did the damage occur?</bal-heading>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem unde a, error quaerat modi porro, dolorem neque sed aspernatur distinctio quidem exercitationem magnam, velit quo? Aut corrupti ratione cumque eum?
-        Natus, molestias ex nulla nemo obcaecati earum fuga aliquam, voluptate laboriosam, minus enim. Ratione quod eos aut iste ipsa, explicabo deleniti temporibus autem earum adipisci nihil recusandae in commodi ea.
-      </p>
-      <bal-heading level="h5">How did the damage occur?</bal-heading>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem unde a, error quaerat modi porro, dolorem neque sed aspernatur distinctio quidem exercitationem magnam, velit quo? Aut corrupti ratione cumque eum?
-        Natus, molestias ex nulla nemo obcaecati earum fuga aliquam, voluptate laboriosam, minus enim. Ratione quod eos aut iste ipsa, explicabo deleniti temporibus autem earum adipisci nihil recusandae in commodi ea.
-      </p>
-      <bal-heading level="h5">How did the damage occur?</bal-heading>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem unde a, error quaerat modi porro, dolorem neque sed aspernatur distinctio quidem exercitationem magnam, velit quo? Aut corrupti ratione cumque eum?
-        Natus, molestias ex nulla nemo obcaecati earum fuga aliquam, voluptate laboriosam, minus enim. Ratione quod eos aut iste ipsa, explicabo deleniti temporibus autem earum adipisci nihil recusandae in commodi ea.
-      </p>
-      <bal-heading level="h5">How did the damage occur?</bal-heading>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem unde a, error quaerat modi porro, dolorem neque sed aspernatur distinctio quidem exercitationem magnam, velit quo? Aut corrupti ratione cumque eum?
-        Natus, molestias ex nulla nemo obcaecati earum fuga aliquam, voluptate laboriosam, minus enim. Ratione quod eos aut iste ipsa, explicabo deleniti temporibus autem earum adipisci nihil recusandae in commodi ea.
-      </p>
-      <bal-heading level="h5">Last Line</bal-heading>
+      Place your form content here
     </div>
-
     <div class="has-background-white" style="position: fixed; bottom: 0; width:100%">
       <bal-progress-bar background="grey" value="75"></bal-progress-bar>
       <bal-stack py="normal" px="normal" space="auto">
