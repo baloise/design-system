@@ -10,7 +10,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
-    __deprecated__dynamicImportShim: true,
+    dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
   },
