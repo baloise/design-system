@@ -1,5 +1,12 @@
 # @baloise/design-system-components-react
 
+## 13.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`458564b23`](https://github.com/baloise/design-system/commit/458564b235adec25efd819a46ec4a0c6034d2221), [`33a99a667`](https://github.com/baloise/design-system/commit/33a99a667cb312e3bdc000baf3068a8f9f1b2b1c)]:
+  - @baloise/design-system-components@13.2.0
+
 ## 13.1.0
 
 ### Patch Changes
