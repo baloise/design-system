@@ -1,5 +1,21 @@
 # @baloise/design-system-components
 
+## 13.2.0
+
+### Minor Changes
+
+- [#832](https://github.com/baloise/design-system/pull/832) [`33a99a667`](https://github.com/baloise/design-system/commit/33a99a667cb312e3bdc000baf3068a8f9f1b2b1c) Thanks [@github-actions](https://github.com/apps/github-actions)! - add progress-bar component
+
+### Patch Changes
+
+- [#829](https://github.com/baloise/design-system/pull/829) [`458564b23`](https://github.com/baloise/design-system/commit/458564b235adec25efd819a46ec4a0c6034d2221) Thanks [@github-actions](https://github.com/apps/github-actions)! - add theming to the bal-icon
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.2.0
+  - @baloise/design-system-fonts@13.2.0
+  - @baloise/design-system-icons@13.2.0
+  - @baloise/design-system-tokens@13.2.0
+
 ## 13.1.0
 
 ### Minor Changes
