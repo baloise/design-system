@@ -18,11 +18,7 @@ import { Basic } from './bal-heading.stories'
     <a class="button is-primary" href="?path=/story/components-typography-heading--basic">
       Go to playground (Canvas)
     </a>
-    <bal-doc-code-sandbox
-      framework="angular"
-      template={Basic.parameters.docs.source.code}
-      modules="heading"
-    ></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="angular" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
     <bal-doc-code-sandbox
       framework="html"
       template={Basic.parameters.docs.source.code}
@@ -65,6 +61,17 @@ import { Basic } from './bal-heading.stories'
 
 <Canvas>
   <Story id="components-typography-heading--spacing" />
+</Canvas>
+
+<span id="story--components-typography-heading--auto-level" style={{ opacity: 0 }}></span>
+
+### Auto Level
+
+In some place in your app the heading requires a line break.
+With `auto-level` we can define the min visual level the heading can be to shrink it dynamically.
+
+<Canvas>
+  <Story id="components-typography-heading--auto-level" />
 </Canvas>
 
 <span id="story--components-typography-heading--css-utilities" style={{ opacity: 0 }}></span>

@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { isWindowDefined } from '../../../utils/browser'
+import { balBrowser } from '../../../utils/browser'
 import { BalTabOption } from '../bal-tab.type'
 
 export interface TabSelectProps {
@@ -17,7 +17,7 @@ export const TabSelect: FunctionalComponent<TabSelectProps> = ({ items, value, o
     if (selectedTabs.length > 0) {
       const selectedTab = selectedTabs[0]
       if (selectedTab.href !== '' && selectedTab.href !== undefined) {
-        if (isWindowDefined()) {
+        if (balBrowser.hasWindow) {
           window.open(selectedTab.href, selectedTab.target)
         }
       }

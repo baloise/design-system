@@ -6,14 +6,12 @@ After importing the Baloise Design System Angular components, the components can
 **app.module.ts**
 
 ```typescript
-import { BalCoreModule, BalHeadingModule } from '@baloise/design-system-components-angular';
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular';
 
 @NgModule({
   ...
   imports: [
-    BalCoreModule.forRoot(),
-    // Each component set needs to be imported
-    BalHeadingModule,
+    BaloiseDesignSystemModule.forRoot(),
   ],
   ...
 })

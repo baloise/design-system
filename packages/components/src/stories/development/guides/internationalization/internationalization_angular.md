@@ -5,7 +5,7 @@ In the Angular framework define them with the module.
 ```typescript
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BalCoreModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
@@ -13,7 +13,7 @@ import { AppComponent } from './app.component'
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    BalCoreModule.forRoot({
+    BaloiseDesignSystemModule.forRoot({
       defaults: {
         region: 'DE',
         language: 'de',

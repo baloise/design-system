@@ -1103,6 +1103,10 @@ export namespace Components {
     }
     interface BalHeading {
         /**
+          * The actual heading level used in the HTML markup.
+         */
+        "autoLevel"?: BalProps.BalHeadingVisualLevel;
+        /**
           * The theme type of the toast.
          */
         "color": BalProps.BalHeadingColor;
@@ -1133,7 +1137,7 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingLevel;
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalHint {
         /**
@@ -1591,7 +1595,7 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingLevel;
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalLogo {
         /**
@@ -2119,6 +2123,16 @@ export namespace Components {
           * If `true` the popover has no padding space.
          */
         "spaceless": boolean;
+    }
+    interface BalProgressBar {
+        /**
+          * The shape color
+         */
+        "background": BalProps.BalProgressBarBackground;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+         */
+        "value": number;
     }
     interface BalRadio {
         /**
@@ -3826,6 +3840,12 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
+    }
+    var HTMLBalProgressBarElement: {
+        prototype: HTMLBalProgressBarElement;
+        new (): HTMLBalProgressBarElement;
+    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -4103,6 +4123,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
@@ -5256,6 +5277,10 @@ declare namespace LocalJSX {
     }
     interface BalHeading {
         /**
+          * The actual heading level used in the HTML markup.
+         */
+        "autoLevel"?: BalProps.BalHeadingVisualLevel;
+        /**
           * The theme type of the toast.
          */
         "color"?: BalProps.BalHeadingColor;
@@ -5286,7 +5311,7 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingLevel;
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalHint {
         /**
@@ -5767,7 +5792,7 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: BalProps.BalHeadingLevel;
+        "visualLevel"?: BalProps.BalHeadingVisualLevel;
     }
     interface BalLogo {
         /**
@@ -6307,6 +6332,16 @@ declare namespace LocalJSX {
           * If `true` the popover has no padding space.
          */
         "spaceless"?: boolean;
+    }
+    interface BalProgressBar {
+        /**
+          * The shape color
+         */
+        "background"?: BalProps.BalProgressBarBackground;
+        /**
+          * The value of the bar in percentage. So min is 0 and 100 would be the max value.
+         */
+        "value"?: number;
     }
     interface BalRadio {
         /**
@@ -7317,6 +7352,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
         "bal-radio-group": BalRadioGroup;
@@ -7464,6 +7500,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;

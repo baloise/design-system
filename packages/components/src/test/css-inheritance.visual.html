@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      div {
+        width: 80px;
+        height: 48px;
+        border-radius: 10px;
+      }
+
+      .colors > div {
+        background-color: #5bab7a !important;
+      }
+
+      .border > div {
+        border: 2px solid #5bab7a !important;
+      }
+
+      .display > div {
+        display: block !important;
+      }
+
+      .opacity > div {
+        opacity: 100% !important;
+      }
+
+      .shadow > h4 {
+        text-shadow: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <section data-testid="colors" class="colors">
+          <div class="has-background-blue"></div>
+          <div class="has-background-blue"></div>
+          <div class="has-background-blue"></div>
+          <div class="has-background-blue"></div>
+        </section>
+        <section data-testid="border" class="border">
+          <div class="has-border-none">Primary</div>
+        </section>
+        <section data-testid="display" class="display">
+          <div class="is-flex">
+            <div class="has-border-success">Flex 1</div>
+            <div class="has-border-success">Flex 2</div>
+          </div>
+        </section>
+        <section data-testid="opacity" class="opacity">
+          <div class="has-background-success has-opacity-50">50</div>
+        </section>
+        <section data-testid="shadow" class="shadow">
+          <h4 class="title is-size-large has-text-shadow-normal">Shadow Title 4</h4>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

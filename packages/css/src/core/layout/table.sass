@@ -1,24 +1,4 @@
 .table
-  --bal-table-color: var(--bal-color-primary)
-  --bal-table-background-color: var(--bal-color-white)
-  --bal-table-cell-border: 2px solid var(--bal-color-border-grey)
-  --bal-table-cell-border-width: 0 0 2px
-  --bal-table-cell-padding: 0.5em 0.75em
-  --bal-table-cell-heading-color: var(--bal-color-primary)
-  --bal-table-head-cell-border-width: 0 0 1px
-  --bal-table-head-cell-color: var(--bal-color-primary)
-  --bal-table-foot-cell-border-width: 0 0 0
-  --bal-table-foot-cell-color: var(--bal-color-primary)
-  --bal-table-head-background-color: transparent
-  --bal-table-body-background-color: transparent
-  --bal-table-foot-background-color: transparent
-  --bal-table-row-hover-background-color: var(--bal-color-grey-1)
-  --bal-table-row-active-background-color: var(--bal-color-primary-1)
-  --bal-table-row-active-color: var(--bal-color-primary)
-  --bal-table-striped-row-even-background-color: var(--bal-color-grey-1)
-  --bal-table-striped-row-even-hover-background-color: var(--bal-color-grey-1)
-
-.table
   @extend %bottomSpacing
   background-color: var(--bal-table-background-color)
   color: var(--bal-table-color)
@@ -33,8 +13,8 @@
       white-space: nowrap
       width: 1%
     &.is-selected
-      background-color: var(--bal-table-row-active-background-color)
-      color: var(--bal-table-row-active-color)
+      background-color: var(--bal-table-row-background-color-active)
+      color: var(--bal-table-row-color-active)
       a,
       strong
         color: currentColor
@@ -46,14 +26,14 @@
       text-align: inherit
   tr
     &.is-selected
-      background-color: var(--bal-table-row-active-background-color)
-      color: var(--bal-table-row-active-color)
+      background-color: var(--bal-table-row-background-color-active)
+      color: var(--bal-table-row-color-active)
       a,
       strong
         color: currentColor
       td,
       th
-        border-color: var(--bal-table-row-active-color)
+        border-color: var(--bal-table-row-color-active)
         color: currentColor
   thead
     background-color: var(--bal-table-head-background-color)
@@ -90,14 +70,14 @@
     tbody
       tr:not(.is-selected)
         &:hover
-          background-color: var(--bal-table-row-hover-background-color)
+          background-color: var(--bal-table-row-background-color-hover)
     &.is-striped
       tbody
         tr:not(.is-selected)
           &:hover
-            background-color: var(--bal-table-row-hover-background-color)
+            background-color: var(--bal-table-row-background-color-hover)
             &:nth-child(even)
-              background-color: var(--bal-table-striped-row-even-hover-background-color)
+              background-color: var(--bal-table-striped-row-even-background-color-hover)
   &.is-narrow
     td,
     th
@@ -123,22 +103,22 @@ table.table
     tr
       border-top: 0
     th
-      border-color: var(--bal-color-primary)
+      border-color: var(--bal-table-head-cell-border-color)
       border-bottom-width: 2px
   th:not([align])
     text-align: left
   td,
   th
-    font-size: var(--bal-size-normal)
-    font-family: var(--bal-font-family-text)
+    font-size: var(--bal-table-head-font-size)
+    font-family: var(--bal-table-head-font-family)
     vertical-align: middle
-    color: var(--bal-color-primary)
+    color: var(--bal-table-color)
     text-align: left
     .bal-checkbox
       padding: 0
       margin-top: 1px
   td
-    color: var(--bal-color-primary)
+    color: var(--bal-table-color)
     hyphens: auto
   td.has-buttons
     padding: 2px

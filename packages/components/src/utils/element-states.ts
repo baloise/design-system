@@ -1,4 +1,4 @@
-import { isDocumentDefined } from './browser'
+import { balBrowser } from './browser'
 
 export type ElementStateObserver = (state: ElementStateState) => void
 
@@ -72,7 +72,7 @@ export const ElementStateHandler = () => {
       target.addEventListener('mouseleave', onMouseLeave, eventListenerOptions)
       target.addEventListener('pointerdown', onPointerDown, eventListenerOptions)
 
-      if (isDocumentDefined()) {
+      if (balBrowser.hasDocument) {
         document.addEventListener('pointerup', onPointerUp, eventListenerOptions)
       }
     },
@@ -82,7 +82,7 @@ export const ElementStateHandler = () => {
         target.removeEventListener('mouseleave', onMouseLeave)
         target.removeEventListener('pointerdown', onPointerDown)
 
-        if (isDocumentDefined()) {
+        if (balBrowser.hasDocument) {
           document.removeEventListener('pointerup', onPointerUp)
         }
       }

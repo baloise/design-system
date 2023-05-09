@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 /** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@ang
   templateUrl: 'example.component.html',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule],
+  imports: [CommonModule, BaloiseDesignSystemModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleComponent {}

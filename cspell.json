@@ -1,7 +1,12 @@
 {
   "version": "0.2",
   "language": "en",
-  "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
+  "ignorePaths": [
+    "node_modules/**",
+    "contributors.md",
+    "packages/components/src/components/**/usage/**",
+    "packages/components/src/stories/development/guides/theming/theming.md"
+  ],
   "words": [
     "Jasmin",
     "msapplication",

@@ -33,6 +33,32 @@ WithIcon.args = {
 }
 WithIcon.parameters = { ...component.sourceCode(WithIcon) }
 
+export const Colors = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-stack>
+  <bal-badge>D</bal-badge>
+  <bal-badge color="green">G</bal-badge>
+  <bal-badge color="yellow">Y</bal-badge>
+  <bal-badge color="purple">P</bal-badge>
+  <bal-badge color="grey">G</bal-badge>
+</bal-stack>`,
+})
+Colors.args = {}
+Colors.parameters = { ...component.sourceCode(Colors) }
+
+export const Sizes = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-stack>
+  <bal-badge size="small">S</bal-badge>
+  <bal-badge>D</bal-badge>
+  <bal-badge size="large">L</bal-badge>
+</bal-stack>`,
+})
+Sizes.args = {}
+Sizes.parameters = { ...component.sourceCode(Sizes) }
+
 export const CardBadge = args => ({
   components: { ...component.components, BalCard, BalCardContent },
   setup: () => ({ args }),
@@ -81,3 +107,61 @@ TabsBadge.args = {
   position: 'tabs',
 }
 TabsBadge.parameters = { ...component.sourceCode(TabsBadge) }
+
+export const ListBadges = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+  <bal-list border>
+    <bal-list-item clickable>
+      <bal-list-item-icon>
+        <bal-badge color="green" size="large" icon="check">1</bal-badge>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Clickable item</bal-list-item-title>
+        <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+        <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+      </bal-list-item-icon>
+    </bal-list-item>
+    <bal-list-item clickable>
+      <bal-list-item-icon>
+        <bal-badge color="purple" size="large">2</bal-badge>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Clickable item</bal-list-item-title>
+        <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+        <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+      </bal-list-item-icon>
+    </bal-list-item>
+    <bal-list-item disabled>
+      <bal-list-item-icon>
+        <bal-badge color="grey" size="large">3</bal-badge>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Clickable item</bal-list-item-title>
+        <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+        <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+      </bal-list-item-icon>
+    </bal-list-item>
+    <bal-list-item disabled>
+      <bal-list-item-icon>
+        <bal-badge color="grey" size="large" icon="document"></bal-badge>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Clickable item</bal-list-item-title>
+        <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+        <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+      </bal-list-item-icon>
+    </bal-list-item>
+  </bal-list>`,
+})
+ListBadges.args = {}
+ListBadges.parameters = { ...component.sourceCode(ListBadges) }

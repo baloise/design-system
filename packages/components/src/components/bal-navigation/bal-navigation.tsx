@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { hasTouchSupport } from '../../utils/browser'
+import { balDevice } from '../../utils/device'
 import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 
@@ -202,7 +202,7 @@ export class Navigation implements ComponentInterface {
     const option = await this.mainNavTabsEl?.getOptionByValue(event.detail as any)
     const isLink = option?.href !== '' && option?.href !== undefined
 
-    if (hasTouchSupport()) {
+    if (balDevice.hasTouchScreen) {
       if (isMainNavOpen) {
         this.isMetaHidden = false
         if (!isLink) {

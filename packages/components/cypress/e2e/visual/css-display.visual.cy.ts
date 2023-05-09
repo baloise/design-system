@@ -1,0 +1,32 @@
+describe('css-display.visual', () => {
+  beforeEach(() => cy.visit('/test/css-display.visual.html').platform('desktop').waitForDesignSystem())
+
+  it('basic', () => {
+    cy.platform('desktop')
+    cy.getByTestId('display-block').compareSnapshot('css-display-block-desktop', 0.0)
+    cy.getByTestId('display-flex').compareSnapshot('css-display-flex-desktop', 0.0)
+    cy.getByTestId('display-inline').compareSnapshot('css-display-inline-desktop', 0.0)
+    cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-desktop', 0.0)
+    cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-desktop', 0.0)
+    cy.getByTestId('hidden').compareSnapshot('css-display-hidden-desktop', 0.0)
+    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-desktop', 0.0)
+
+    cy.platform('tablet')
+    cy.getByTestId('display-block').compareSnapshot('css-display-block-tablet', 0.0)
+    cy.getByTestId('display-flex').compareSnapshot('css-display-flex-tablet', 0.0)
+    cy.getByTestId('display-inline').compareSnapshot('css-display-inline-tablet', 0.0)
+    cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-tablet', 0.0)
+    cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-tablet', 0.0)
+    cy.getByTestId('hidden').compareSnapshot('css-display-hidden-tablet', 0.0)
+    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-tablet', 0.0)
+
+    cy.platform('mobile')
+    cy.getByTestId('display-block').compareSnapshot('css-display-block-mobile', 0.0)
+    cy.getByTestId('display-flex').compareSnapshot('css-display-flex-mobile', 0.0)
+    cy.getByTestId('display-inline').compareSnapshot('css-display-inline-mobile', 0.0)
+    cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-mobile', 0.0)
+    cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-mobile', 0.0)
+    cy.getByTestId('hidden').compareSnapshot('css-display-hidden-mobile', 0.0)
+    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-mobile', 0.0)
+  })
+})

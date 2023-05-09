@@ -1,46 +1,33 @@
-import { hasTouchSupport, isWindowDefined } from './browser'
+import { balBrowser } from './browser'
+import { balDevice } from './device'
 
-const windowWidth = () => {
-  if (isWindowDefined()) {
-    return window.innerWidth
-  }
-  return 0
-}
-
-const windowHeight = () => {
-  if (isWindowDefined()) {
-    return window.innerHeight
-  }
-  return 0
-}
-
-const isLandscape = () => windowWidth() > windowHeight()
+const isLandscape = () => balBrowser.window.width > balBrowser.window.height
 
 export const ResizeHandler = (onlyWidth = false) => {
-  let previousWidth = windowWidth()
-  let previousHeight = windowHeight()
+  let previousWidth = balBrowser.window.width
+  let previousHeight = balBrowser.window.height
   let previousIsLandscape = isLandscape()
 
   return (callback: () => void) => {
     const resetPreviousValues = () => {
-      previousWidth = windowWidth()
-      previousHeight = windowHeight()
+      previousWidth = balBrowser.window.width
+      previousHeight = balBrowser.window.height
       previousIsLandscape = isLandscape()
     }
 
-    if (hasTouchSupport()) {
-      if (previousWidth !== windowWidth() || previousIsLandscape !== isLandscape()) {
+    if (balDevice.hasTouchScreen) {
+      if (previousWidth !== balBrowser.window.width || previousIsLandscape !== isLandscape()) {
         callback()
         resetPreviousValues()
       }
     } else {
       if (onlyWidth) {
-        if (previousWidth !== windowWidth()) {
+        if (previousWidth !== balBrowser.window.width) {
           callback()
           resetPreviousValues()
         }
       } else {
-        if (previousWidth !== windowWidth() || previousHeight !== windowHeight()) {
+        if (previousWidth !== balBrowser.window.width || previousHeight !== balBrowser.window.height) {
           callback()
           resetPreviousValues()
         }
@@ -69,6 +56,42 @@ export const ResizeObserverHandler = () => {
     disconnect: () => {
       resizeO?.disconnect()
       resizeO = undefined
+    },
+  }
+}
+
+export type ResizeListenerCallback = () => void
+
+const emptyCallback = () => {
+  // empty callback
+}
+
+export type ResizeListenerType = {
+  connect: (callback: ResizeListenerCallback) => void
+  disconnect: () => void
+}
+
+export const ResizeListener = (): ResizeListenerType => {
+  let callbackHandler: ResizeListenerCallback = emptyCallback
+  const resizeHandler = ResizeHandler(true)
+
+  function onResize() {
+    resizeHandler(() => callbackHandler())
+  }
+
+  return {
+    connect: (callback: ResizeListenerCallback) => {
+      if (balBrowser.hasWindow) {
+        window.addEventListener('resize', onResize, { passive: true })
+      }
+      callbackHandler = callback
+      callbackHandler()
+    },
+    disconnect: () => {
+      if (balBrowser.hasWindow) {
+        window.removeEventListener('resize', onResize)
+      }
+      callbackHandler = emptyCallback
     },
   }
 }

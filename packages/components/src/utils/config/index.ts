@@ -1,4 +1,4 @@
-import { isWindowDefined } from '../browser'
+import { balBrowser } from '../browser'
 import { Config } from './config'
 import { BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
@@ -20,7 +20,7 @@ export const onBalConfigChange = (callback: BalConfigChangeFn) => {
 }
 
 export const useBalConfig = (): Config | undefined => {
-  if (!isWindowDefined()) {
+  if (!balBrowser.hasWindow) {
     return
   }
 

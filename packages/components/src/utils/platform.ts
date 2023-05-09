@@ -1,4 +1,4 @@
-import { isWindowDefined } from './browser'
+import { balBrowser } from './browser'
 
 export type Platforms = keyof typeof PLATFORMS_MAP
 
@@ -31,7 +31,7 @@ export const isPlatform: IsPlatformSignature = (
 }
 
 export const setupPlatforms = (win = {} as any) => {
-  if (!isWindowDefined()) {
+  if (!balBrowser.hasWindow) {
     return []
   }
 

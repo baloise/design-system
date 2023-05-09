@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
@@ -33,6 +37,27 @@
             <bal-badge color="danger" position="button">42</bal-badge>
             Button
           </bal-button>
+        </section>
+        <section>
+          <bal-stack>
+            <bal-badge size="small">S</bal-badge>
+            <bal-badge>N</bal-badge>
+            <bal-badge size="large">L</bal-badge>
+          </bal-stack>
+        </section>
+        <section>
+          <bal-stack>
+            <bal-badge color="red">42</bal-badge>
+            <bal-badge color="yellow">42</bal-badge>
+            <bal-badge color="green">42</bal-badge>
+            <bal-badge color="purple">42</bal-badge>
+            <bal-badge color="grey">42</bal-badge>
+            <bal-badge color="red" icon="check">42</bal-badge>
+            <bal-badge color="yellow" icon="check">42</bal-badge>
+            <bal-badge color="green" icon="check">42</bal-badge>
+            <bal-badge color="purple" icon="check">42</bal-badge>
+            <bal-badge color="grey" icon="check">42</bal-badge>
+          </bal-stack>
         </section>
       </main>
     </bal-doc-app>

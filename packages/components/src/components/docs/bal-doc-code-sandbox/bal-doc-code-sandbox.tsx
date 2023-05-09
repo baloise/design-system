@@ -59,7 +59,6 @@ export class DocCodeSandbox implements ComponentInterface {
       this.parameters = await buildAngularParameters({
         template: this.template,
         component: this.component,
-        modules: this.modules,
         name2: this.name2,
         template2: this.template2,
         component2: this.component2,

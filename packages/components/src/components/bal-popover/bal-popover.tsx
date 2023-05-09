@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { BEM } from '../../utils/bem'
-import { isBrowser } from '../../utils/browser'
+import { balBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
@@ -211,7 +211,7 @@ export class Popover implements ComponentInterface, Loggable {
     }
 
     // Bug fix for https://github.com/baloise/design-system/issues/551
-    if (isBrowser('Safari') && !this.isTouch) {
+    if (balBrowser.isSafari && !this.isTouch) {
       clearTimeout(this.componentDidRenderTimer)
       this.componentDidRenderTimer = setTimeout(() => {
         const triggerWidth = this.element?.clientWidth
