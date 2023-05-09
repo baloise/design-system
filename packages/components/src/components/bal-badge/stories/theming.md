@@ -21,7 +21,7 @@ The component can be customization by changing the CSS variables.
 | `--bal-badge-background-purple` |
 | `--bal-badge-radius`            |
 | `--bal-badge-text-color`        |
-| `--bal-badge-text-color-red`    |
-| `--bal-badge-text-color-yellow` |
-| `--bal-badge-text-color-green`  |
-| `--bal-badge-text-color-purple` |
+| `--bal-badge-color-red`         |
+| `--bal-badge-color-yellow`      |
+| `--bal-badge-color-green`       |
+| `--bal-badge-color-purple`      |

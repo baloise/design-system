@@ -12,9 +12,9 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                           |
-| ---------------------------------- |
-| `--bal-heading-text-color-white`   |
-| `--bal-heading-text-color-success` |
-| `--bal-heading-text-color-warning` |
-| `--bal-heading-text-color-danger`  |
+| Variable                      |
+| ----------------------------- |
+| `--bal-heading-color-white`   |
+| `--bal-heading-color-success` |
+| `--bal-heading-color-warning` |
+| `--bal-heading-color-danger`  |
