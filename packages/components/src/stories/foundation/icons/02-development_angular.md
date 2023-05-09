@@ -38,7 +38,7 @@ import { balIconAccount } from '@baloise/design-system-icons'
 
 @NgModule({
   imports: [
-    BalCoreModule.forRoot({
+    BaloiseDesignSystemModule.forRoot({
       defaults: {
         icons: { balIconAccount },
       },

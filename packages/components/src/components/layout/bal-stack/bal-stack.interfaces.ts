@@ -7,6 +7,7 @@ namespace BalProps {
   export type BalStackLayout = 'horizontal' | 'vertical' | ''
 
   export type BalStackSpace =
+    | 'auto'
     | 'none'
     | 'xx-small'
     | 'x-small'

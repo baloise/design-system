@@ -2,14 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {
-  BalButtonModule,
-  BalCoreModule,
-  BalFooterModule,
-  BalHeadingModule,
-  BalNavbarModule,
-  BalStageModule,
-} from '@baloise/design-system-components-angular';
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular';
 
 import { AppComponent } from './app.component';
 
@@ -17,12 +10,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    BalCoreModule.forRoot(),
-    BalHeadingModule,
-    BalButtonModule,
-    BalFooterModule,
-    BalNavbarModule,
-    BalStageModule
+    BaloiseDesignSystemModule.forRoot(),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
