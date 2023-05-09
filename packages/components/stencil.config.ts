@@ -8,12 +8,12 @@ import { ReactGenerator } from './config/stencil.bindings.react'
 
 export const config: Config = {
   ...StencilBaseConfig,
-  buildEs5: 'prod',
-  extras: {
-    dynamicImportShim: true,
-    initializeNextTick: true,
-    scriptDataOpts: true,
-  },
+  // buildEs5: 'prod',
+  // extras: {
+  //   dynamicImportShim: true,
+  //   initializeNextTick: true,
+  //   scriptDataOpts: true,
+  // },
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
     /**
