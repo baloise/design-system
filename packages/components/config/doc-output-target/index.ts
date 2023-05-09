@@ -86,9 +86,9 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     let themingLines: string[] = []
     for (const key in cssVars) {
       const table = new MarkdownTable()
-      table.addHeader(['Variable', 'Description'])
+      table.addHeader(['Variable'])
       cssVars[key].forEach(styleVariable => {
-        table.addRow([`\`${styleVariable.name}\``, styleVariable.docs])
+        table.addRow([`\`${styleVariable.name}\``])
       })
       themingLines = [...themingLines, '', `### ${key}`, '', ...table.toMarkdown()]
     }

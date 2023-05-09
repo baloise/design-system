@@ -43,9 +43,9 @@ export const createThemingMarkdown = (docsPath: string, component: JsonDocsCompo
     parseStyleDocs(styleDocs, varsFile)
 
     const table = new MarkdownTable()
-    table.addHeader(['Variable', 'Description'])
+    table.addHeader(['Variable'])
     styleDocs.forEach(styleVariable => {
-      table.addRow([`\`${styleVariable.name}\``, styleVariable.docs])
+      table.addRow([`\`${styleVariable.name}\``])
     })
 
     const hasTheming = styleDocs.length > 0
