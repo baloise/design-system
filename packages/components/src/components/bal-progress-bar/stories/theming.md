@@ -12,8 +12,8 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                             | Description                          |
-| ------------------------------------ | ------------------------------------ |
+| Variable                              | Description                          |
+| ------------------------------------- | ------------------------------------ |
 | `--bal-progress-bar-background-white` | Background of the progress.          |
 | `--bal-progress-bar-background-grey`  | Background of the progress.          |
 | `--bal-progress-bar-line-background`  | Background of the progress line bar. |
