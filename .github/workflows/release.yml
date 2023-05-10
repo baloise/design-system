@@ -62,6 +62,7 @@ jobs:
         if: steps.changesets.outputs.published == 'true'
         uses: EndBug/add-and-commit@v9
         with:
+          add: 'package-lock.json'
           message: 'chore(): update lock file'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
