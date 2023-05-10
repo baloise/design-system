@@ -8,8 +8,8 @@ import {
   inputSetBlur,
   inputSetFocus,
   stopEventBubbling,
-} from '../../../utils/form-input'
-import { Logger, LogInstance } from '../../../utils/log'
+} from '../../../utils-new/form-input'
+import { Logger, LogInstance } from '../../../utils-new/log'
 import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'

@@ -1,4 +1,4 @@
-import { balDevice } from '../../utils/device'
+import { balDevice } from '../device'
 import { BalResizeListener } from '../resize'
 import { Subject } from '../types/signal'
 import { BalOrientationInfo, BalOrientationObserver } from './orientation.interfaces'

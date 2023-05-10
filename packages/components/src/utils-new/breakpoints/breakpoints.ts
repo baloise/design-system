@@ -1,4 +1,4 @@
-import { balBrowser } from '../../utils/browser'
+import { balBrowser } from '../browser'
 import { BalBreakpoints } from './breakpoints.interfaces'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 

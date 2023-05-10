@@ -1,4 +1,4 @@
-import { debounce } from '../../utils/helpers'
+import { debounce } from '../helpers'
 import { SingleSubject } from '../types/signal'
 import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
 import { BalMutationListener } from './mutation.listener'

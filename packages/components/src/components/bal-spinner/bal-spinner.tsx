@@ -1,8 +1,8 @@
 import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { rIC } from '../../utils/helpers'
-import { Loggable, Logger, LogInstance } from '../../utils/log'
-import { raf } from '../../utils/helpers'
+import { rIC } from '../../utils-new/helpers'
+import { Loggable, Logger, LogInstance } from '../../utils-new/log'
+import { raf } from '../../utils-new/helpers'
 
 type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationItem
 

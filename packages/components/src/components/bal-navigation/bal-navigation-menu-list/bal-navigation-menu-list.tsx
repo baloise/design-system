@@ -1,8 +1,8 @@
 import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
-import { Attributes } from '../../../utils/attributes'
+import { Attributes } from '../../../utils-new/attributes'
 
 @Component({
   tag: 'bal-navigation-menu-list',

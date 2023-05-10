@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 import { ComponentElementState } from '../../../utils/element-states'
 
 @Component({

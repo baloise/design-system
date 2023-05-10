@@ -1,5 +1,5 @@
 import { EventEmitter } from '@stencil/core'
-import { Attributes } from '../../utils/attributes'
+import { Attributes } from '../../utils-new/attributes'
 
 export interface BalStepOption {
   value: string

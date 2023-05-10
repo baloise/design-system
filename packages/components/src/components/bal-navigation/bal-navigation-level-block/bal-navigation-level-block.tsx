@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop, Method, Event, Element, EventEmitter } from '@stencil/core'
-import { Attributes, inheritTrackingAttributes } from '../../../utils/attributes'
+import { Attributes, inheritTrackingAttributes } from '../../../utils-new/attributes'
 import { LevelInfo, readSubLevels } from '../utils/level.utils'
 
 @Component({

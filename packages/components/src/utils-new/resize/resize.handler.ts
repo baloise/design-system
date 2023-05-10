@@ -1,5 +1,5 @@
-import { balBrowser } from '../../utils/browser'
-import { balDevice } from '../../utils/device'
+import { balBrowser } from '../browser'
+import { balDevice } from '../device'
 
 export type BalResizeHandlerObserver = () => void
 

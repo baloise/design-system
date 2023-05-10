@@ -1,8 +1,8 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
-import { BEM } from '../../utils/bem'
+import { BEM } from '../../utils-new/bem'
 import { isPlatform } from '../../utils/platform'
-import { balDevice } from '../../utils/device'
+import { balDevice } from '../../utils-new/device'
 import { ScrollHandler } from '../../utils/scroll'
 import { ResizeHandler } from '../../utils/resize'
 

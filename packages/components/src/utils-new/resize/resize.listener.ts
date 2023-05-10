@@ -1,4 +1,4 @@
-import { debounce } from '../../utils/helpers'
+import { debounce } from '../helpers'
 import { BalResizeHandler } from './resize.handler'
 import { ListenerAbstract } from '../types/listener'
 

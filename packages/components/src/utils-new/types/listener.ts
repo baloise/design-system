@@ -1,4 +1,4 @@
-import { balBrowser } from '../../utils/browser'
+import { balBrowser } from '../browser'
 import { Subject } from './signal'
 
 export type ListenerFn = () => void

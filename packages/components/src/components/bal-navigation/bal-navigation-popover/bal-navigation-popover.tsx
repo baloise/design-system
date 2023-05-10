@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
-import { stopEventBubbling } from '../../../utils/form-input'
-import { BEM } from '../../../utils/bem'
+import { stopEventBubbling } from '../../../utils-new/form-input'
+import { BEM } from '../../../utils-new/bem'
 import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/scroll'
 
 @Component({

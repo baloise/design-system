@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Observable } from 'rxjs'
 import {
-  Breakpoints,
-  BreakpointsHandler,
-  BreakpointsHandlerType,
-  initialBreakpoints,
+  BalBreakpointObserver,
+  BalBreakpoints,
+  balBreakpointSubject,
+  balBreakpoints,
 } from '@baloise/design-system-components'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
-export class BalBreakpointsService {
-  private _breakpoints$: BehaviorSubject<Breakpoints>
-  private readonly breakpointsHandler: BreakpointsHandlerType
+export class BalBreakpointsService implements BalBreakpointObserver {
+  private _breakpoints$: BehaviorSubject<BalBreakpoints>
 
-  state$: Observable<Breakpoints>
+  state$: Observable<BalBreakpoints>
   mobile$: Observable<boolean>
   tablet$: Observable<boolean>
   touch$: Observable<boolean>
@@ -25,7 +24,7 @@ export class BalBreakpointsService {
   fullhd$: Observable<boolean>
 
   constructor() {
-    this._breakpoints$ = new BehaviorSubject<Breakpoints>(initialBreakpoints)
+    this._breakpoints$ = new BehaviorSubject<BalBreakpoints>(balBreakpoints.toObject())
     this.state$ = this._breakpoints$.asObservable()
     this.mobile$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.mobile))
     this.tablet$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.tablet))
@@ -35,28 +34,23 @@ export class BalBreakpointsService {
     this.widescreen$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.widescreen))
     this.fullhd$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.fullhd))
 
-    this.breakpointsHandler = BreakpointsHandler()
-    if (this.breakpointsHandler) {
-      this.breakpointsHandler.connect(breakpoints => this.onChange(breakpoints))
+    balBreakpointSubject.attach(this)
+  }
+
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    if (this._breakpoints$) {
+      this._breakpoints$.next(breakpoints)
     }
   }
 
   ngOnDestroy() {
-    if (this.breakpointsHandler) {
-      this.breakpointsHandler.disconnect()
-    }
+    balBreakpointSubject.detach(this)
   }
 
-  get value(): Breakpoints {
+  get value(): BalBreakpoints {
     if (this._breakpoints$) {
       return this._breakpoints$.getValue()
     }
-    return initialBreakpoints
-  }
-
-  private onChange(breakpoints: Breakpoints) {
-    if (this._breakpoints$) {
-      this._breakpoints$.next(breakpoints)
-    }
+    return balBreakpoints.toObject()
   }
 }

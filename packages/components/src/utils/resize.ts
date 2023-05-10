@@ -1,5 +1,5 @@
-import { balBrowser } from './browser'
-import { balDevice } from './device'
+import { balBrowser } from '../utils-new/browser'
+import { balDevice } from '../utils-new/device'
 
 const isLandscape = () => balBrowser.window.width > balBrowser.window.height
 

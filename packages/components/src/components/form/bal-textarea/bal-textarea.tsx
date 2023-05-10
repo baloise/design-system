@@ -24,10 +24,10 @@ import {
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
-} from '../../../utils/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
-import { BEM } from '../../../utils/bem'
+} from '../../../utils-new/form-input'
+import { debounceEvent, findItemLabel } from '../../../utils-new/helpers'
+import { inheritAttributes } from '../../../utils-new/attributes'
+import { BEM } from '../../../utils-new/bem'
 
 @Component({
   tag: 'bal-textarea',

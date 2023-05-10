@@ -13,13 +13,13 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
-import { BEM } from '../../utils/bem'
-import { balBrowser } from '../../utils/browser'
+import { BEM } from '../../utils-new/bem'
+import { balBrowser } from '../../utils-new/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
 import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { LogInstance, Loggable, Logger } from '../../utils-new/log'
 
 export interface PopoverPresentOptions {
   force: boolean

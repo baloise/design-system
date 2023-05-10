@@ -12,7 +12,7 @@ import {
   Listen,
   FunctionalComponent,
 } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import { BEM } from '../../utils-new/bem'
 import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
 

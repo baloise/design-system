@@ -1,6 +1,6 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
-import { inheritAttributes } from '../../utils/attributes'
-import { BEM } from '../../utils/bem'
+import { inheritAttributes } from '../../utils-new/attributes'
+import { BEM } from '../../utils-new/bem'
 
 @Component({
   tag: 'bal-tag',

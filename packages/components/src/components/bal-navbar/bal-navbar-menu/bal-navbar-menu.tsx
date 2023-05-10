@@ -1,7 +1,7 @@
 import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
-import { deepReady } from '../../../utils/helpers'
+import { deepReady } from '../../../utils-new/helpers'
 import { isPlatform } from '../../../utils/platform'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 
 @Component({
   tag: 'bal-navbar-menu',

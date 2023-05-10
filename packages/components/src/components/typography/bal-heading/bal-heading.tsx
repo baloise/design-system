@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Prop, Element, State, Watch } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 import {
   HEADING_COLORS,
   HEADING_ORDER,
@@ -9,7 +9,7 @@ import {
   HeadingSize,
   HeadingTag,
 } from './bal-heading.const'
-import { balBrowser } from '../../../utils/browser'
+import { balBrowser } from '../../../utils-new/browser'
 
 @Component({
   tag: 'bal-heading',

@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 
 export interface LargeControlProps {
   isFirst: boolean

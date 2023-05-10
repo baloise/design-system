@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import { BEM } from '../../utils-new/bem'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from '../../utils-new/breakpoints'
 import { ListenToBreakpoints } from '../../utils-new/breakpoints/breakpoint.decorator'
 

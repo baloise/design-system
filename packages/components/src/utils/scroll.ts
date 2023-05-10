@@ -1,4 +1,4 @@
-import { balBrowser } from './browser'
+import { balBrowser } from '../utils-new/browser'
 
 export const ScrollHandler = () => {
   let target: HTMLElement | Document | undefined

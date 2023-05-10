@@ -14,9 +14,9 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
-import { inheritAttributes } from '../../../utils/attributes'
-import { FormInput, inputListenOnClick } from '../../../utils/form-input'
+import { debounceEvent, findItemLabel } from '../../../utils-new/helpers'
+import { inheritAttributes } from '../../../utils-new/attributes'
+import { FormInput, inputListenOnClick } from '../../../utils-new/form-input'
 import {
   attachComponentToConfig,
   BalConfigObserver,
@@ -25,8 +25,8 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../utils/config'
-import { BEM } from '../../../utils/bem'
+} from '../../../utils-new/config'
+import { BEM } from '../../../utils-new/bem'
 
 @Component({
   tag: 'bal-input-stepper',

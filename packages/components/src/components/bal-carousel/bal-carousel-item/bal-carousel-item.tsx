@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, EventEmitter } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
 
 @Component({

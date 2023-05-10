@@ -1,8 +1,8 @@
 import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
-import { updateBalIcons } from '../../../utils/config'
-import { balBrowser } from '../../../utils/browser'
-import { BalLogger } from '../../../utils/log'
+import { updateBalIcons } from '../../../utils-new/config'
+import { balBrowser } from '../../../utils-new/browser'
+import { BalLogger } from '../../../utils-new/log'
 import globalScript from '../../../global'
 
 @Component({

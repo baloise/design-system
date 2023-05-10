@@ -11,14 +11,14 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { raf } from '../../utils/helpers'
-import { BEM } from '../../utils/bem'
+import { raf } from '../../utils-new/helpers'
+import { BEM } from '../../utils-new/bem'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
-import { stopEventBubbling } from '../../utils/form-input'
+import { stopEventBubbling } from '../../utils-new/form-input'
 import { isPlatform } from '../../utils/platform'
 import { BalBreakpointObserver, BalBreakpoints } from '../../utils-new/breakpoints'
 import { ListenToBreakpoints } from '../../utils-new/breakpoints/breakpoint.decorator'

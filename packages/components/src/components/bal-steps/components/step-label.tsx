@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils-new/bem'
 import { BalStepOption } from '../bal-step.type'
 
 export const StepLabel: FunctionalComponent<{ item: BalStepOption }> = ({ item }) => {
