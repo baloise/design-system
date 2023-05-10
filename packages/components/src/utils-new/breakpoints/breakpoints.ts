@@ -1,5 +1,5 @@
-import { BalBreakpoints } from '../../utils-new/breakpoints/breakpoints.interfaces'
-import { balBrowser } from '../browser'
+import { balBrowser } from '../../utils/browser'
+import { BalBreakpoints } from './breakpoints.interfaces'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
 export type Breakpoint = keyof typeof BREAKPOINTS_MAP
@@ -88,6 +88,10 @@ class BreakpointsClass {
     return this.breakpoints
   }
 
+  /**
+   * Turns the breakpoints array to a object.
+   * @returns Object with all the breakpoints
+   */
   public toObject(): BalBreakpoints {
     return {
       mobile: this.breakpoints.includes('mobile'),

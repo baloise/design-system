@@ -1,5 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from '../../utils-new/breakpoints'
+import { ListenToBreakpoints } from '../../utils-new/breakpoints/breakpoint.decorator'
 
 @Component({
   tag: 'bal-badge',
@@ -7,7 +9,12 @@ import { BEM } from '../../utils/bem'
     css: 'bal-badge.sass',
   },
 })
-export class Badge implements ComponentInterface {
+export class Badge implements ComponentInterface, BalBreakpointObserver {
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    console.log('breakpointChanged', breakpoints)
+  }
+
   @Element() el!: HTMLElement
 
   /**
@@ -29,6 +36,10 @@ export class Badge implements ComponentInterface {
    * If `true` the badge is added to the top right corner of the card.
    */
   @Prop() position: BalProps.BalBadgePosition = ''
+
+  // connectedCallback(): void {
+  //   balBreakpointSubject.connect(this)
+  // }
 
   render() {
     const block = BEM.block('badge')

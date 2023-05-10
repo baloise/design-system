@@ -11,11 +11,8 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { debounce, raf } from '../../utils/helpers'
+import { raf } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'
-import { MutationHandler } from '../../utils/observer'
-import { ResizeHandler, ResizeObserverHandler } from '../../utils/resize'
-import { SwipeHandler } from '../../utils/swipe'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
@@ -23,16 +20,20 @@ import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
 import { isPlatform } from '../../utils/platform'
+import { BalBreakpointObserver, BalBreakpoints } from '../../utils-new/breakpoints'
+import { ListenToBreakpoints } from '../../utils-new/breakpoints/breakpoint.decorator'
+import { ListenToSwipe } from '../../utils-new/swipe/swipe.decorator'
+import { BalSwipeInfo, BalSwipeObserver } from '../../utils-new/swipe'
+import { BalMutationObserver, ListenToMutation } from '../../utils-new/mutation'
+import { BalOrientationInfo, BalOrientationObserver, ListenToOrientation } from '../../utils-new/orientation'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
-export class Carousel implements ComponentInterface {
-  private resizeHandler = ResizeObserverHandler()
-  private resizeWidthHandler = ResizeHandler()
-  private mutationHandler = MutationHandler()
-  private swipeHandler = SwipeHandler()
+export class Carousel
+  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalOrientationObserver
+{
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private borderEl?: HTMLDivElement
@@ -122,23 +123,6 @@ export class Carousel implements ComponentInterface {
    * ------------------------------------------------------
    */
 
-  connectedCallback(): void {
-    const debounceItemsChanged = debounce(this.itemsChanged.bind(this), 100)
-
-    this.swipeHandler.connect(this.el)
-    this.mutationHandler.connect(this.el, 'bal-carousel-item', debounceItemsChanged)
-    this.resizeHandler.connect(this.el, debounceItemsChanged)
-
-    this.swipeHandler.onSwipeLeft(this.next.bind(this))
-    this.swipeHandler.onSwipeRight(this.previous.bind(this))
-  }
-
-  disconnectedCallback() {
-    this.mutationHandler.disconnect()
-    this.resizeHandler.disconnect()
-    this.swipeHandler.disconnect()
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
@@ -151,11 +135,34 @@ export class Carousel implements ComponentInterface {
     }
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeListener() {
-    this.resizeWidthHandler(() => {
-      this.areControlsHidden = !isPlatform('mobile')
-    })
+  mutationObserverActive = true
+
+  @ListenToMutation({ tags: ['bal-carousel-item'], characterData: false })
+  mutationListener() {
+    console.warn('mutationListener')
+    this.itemsChanged()
+  }
+
+  @ListenToSwipe()
+  swipeListener({ left, right }: BalSwipeInfo) {
+    console.warn('swipeListener')
+    if (left) {
+      this.next()
+    } else if (right) {
+      this.previous()
+    }
+  }
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    console.warn('breakpointListener', breakpoints)
+    this.areControlsHidden = !breakpoints.mobile
+    this.itemsChanged()
+  }
+
+  @ListenToOrientation()
+  orientationListener(info: BalOrientationInfo): void {
+    console.warn('orientationListener', info)
   }
 
   /**

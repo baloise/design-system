@@ -6,7 +6,9 @@ export const SwipeHandler = () => {
   let target: HTMLElement | undefined
   let observersSwipeLeft: SwipeObserver[] = []
   let observersSwipeRight: SwipeObserver[] = []
+
   let pointerListener: PointerListener | undefined
+
   return {
     connect: (el: HTMLElement) => {
       observersSwipeLeft = []
