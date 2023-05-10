@@ -1,5 +1,35 @@
 # @baloise/design-system-components
 
+## 13.2.1
+
+### Patch Changes
+
+- [#836](https://github.com/baloise/design-system/pull/836) [`d15d31f84`](https://github.com/baloise/design-system/commit/d15d31f847dd7dfd3b1d2e083cba058df1b37229) Thanks [@hirsch88](https://github.com/hirsch88)! - fix gatsby build
+
+- [#841](https://github.com/baloise/design-system/pull/841) [`3daa7fd9e`](https://github.com/baloise/design-system/commit/3daa7fd9e13985bf731da4e65ac70775f388b97f) Thanks [@hirsch88](https://github.com/hirsch88)! - fix accordion active prop watcher
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.2.1
+  - @baloise/design-system-fonts@13.2.1
+  - @baloise/design-system-icons@13.2.1
+  - @baloise/design-system-tokens@13.2.1
+
+## 13.2.0
+
+### Minor Changes
+
+- [#832](https://github.com/baloise/design-system/pull/832) [`33a99a667`](https://github.com/baloise/design-system/commit/33a99a667cb312e3bdc000baf3068a8f9f1b2b1c) Thanks [@github-actions](https://github.com/apps/github-actions)! - add progress-bar component
+
+### Patch Changes
+
+- [#829](https://github.com/baloise/design-system/pull/829) [`458564b23`](https://github.com/baloise/design-system/commit/458564b235adec25efd819a46ec4a0c6034d2221) Thanks [@github-actions](https://github.com/apps/github-actions)! - add theming to the bal-icon
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.2.0
+  - @baloise/design-system-fonts@13.2.0
+  - @baloise/design-system-icons@13.2.0
+  - @baloise/design-system-tokens@13.2.0
+
 ## 13.1.0
 
 ### Minor Changes
