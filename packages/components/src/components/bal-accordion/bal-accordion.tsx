@@ -55,6 +55,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   protected async activeChanged(newActive: boolean, oldActive: boolean) {
     if (newActive !== oldActive) {
       this.active = newActive
+      this.updateState()
     }
   }
 
