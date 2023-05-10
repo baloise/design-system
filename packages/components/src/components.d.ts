@@ -9,7 +9,6 @@ import { BalConfigState, BalMode } from "./utils/config";
 import { AccordionState } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
-import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
@@ -21,7 +20,6 @@ export { BalConfigState, BalMode } from "./utils/config";
 export { AccordionState } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
-export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
@@ -777,107 +775,6 @@ export namespace Components {
           * Defines the space between the child elements. Default is xx-small.
          */
         "space": BalProps.BalDividerSpace;
-    }
-    interface BalDocApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated": boolean;
-        "logComponents": string;
-        "logCustom": boolean;
-        "logEvents": boolean;
-        "logLifecycle": boolean;
-        "logRender": boolean;
-    }
-    interface BalDocBanner {
-        "color": string;
-        "shadowDom": boolean;
-        "subtitle": string;
-    }
-    interface BalDocCodeSandbox {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen": boolean;
-        "label": string;
-        "logo": boolean;
-        "modules": string;
-        "name2": string;
-        "primary": boolean;
-        "template": string;
-        "template2": string;
-        "visible": boolean;
-    }
-    interface BalDocColor {
-        "background": boolean;
-        "color": string;
-        "description": string;
-        "inverted": boolean;
-        "subject": string;
-    }
-    interface BalDocDownload {
-        "iconLeft": string;
-        "iconRight": string;
-        "link": string;
-        "subject": string;
-        "subtitle": string;
-    }
-    interface BalDocGithub {
-        "link": string;
-    }
-    interface BalDocIcons {
-        "icons": string;
-    }
-    interface BalDocImage {
-        "src": string;
-        "text": string;
-    }
-    interface BalDocLead {
-    }
-    interface BalDocLinkList {
-        "oneColumn": boolean;
-    }
-    interface BalDocLinkListItem {
-        "image": string;
-        "subject": string;
-        "template": '' | 'html5' | 'angular' | 'vue' | 'react';
-    }
-    interface BalDocPreview {
-    }
-    interface BalDocShades {
-        "color": string;
-    }
-    interface BalDocSupportColor {
-        "color": string;
-    }
-    interface BalDocTokensBorder {
-    }
-    interface BalDocTokensBorderColors {
-        "overview": boolean;
-    }
-    interface BalDocTokensBreakpoints {
-    }
-    interface BalDocTokensColors {
-    }
-    interface BalDocTokensContainers {
-    }
-    interface BalDocTokensFont {
-    }
-    interface BalDocTokensFontColors {
-    }
-    interface BalDocTokensFontSizes {
-    }
-    interface BalDocTokensFontWeight {
-    }
-    interface BalDocTokensRadius {
-    }
-    interface BalDocTokensShadow {
-    }
-    interface BalDocTokensSpacing {
-    }
-    interface BalDocTokensSpacingSizes {
-    }
-    interface BalDocTokensTextShadow {
     }
     interface BalField {
         /**
@@ -3318,174 +3215,6 @@ declare global {
         prototype: HTMLBalDividerElement;
         new (): HTMLBalDividerElement;
     };
-    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
-    }
-    var HTMLBalDocAppElement: {
-        prototype: HTMLBalDocAppElement;
-        new (): HTMLBalDocAppElement;
-    };
-    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
-    }
-    var HTMLBalDocBannerElement: {
-        prototype: HTMLBalDocBannerElement;
-        new (): HTMLBalDocBannerElement;
-    };
-    interface HTMLBalDocCodeSandboxElement extends Components.BalDocCodeSandbox, HTMLStencilElement {
-    }
-    var HTMLBalDocCodeSandboxElement: {
-        prototype: HTMLBalDocCodeSandboxElement;
-        new (): HTMLBalDocCodeSandboxElement;
-    };
-    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
-    }
-    var HTMLBalDocColorElement: {
-        prototype: HTMLBalDocColorElement;
-        new (): HTMLBalDocColorElement;
-    };
-    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
-    }
-    var HTMLBalDocDownloadElement: {
-        prototype: HTMLBalDocDownloadElement;
-        new (): HTMLBalDocDownloadElement;
-    };
-    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
-    }
-    var HTMLBalDocGithubElement: {
-        prototype: HTMLBalDocGithubElement;
-        new (): HTMLBalDocGithubElement;
-    };
-    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
-    }
-    var HTMLBalDocIconsElement: {
-        prototype: HTMLBalDocIconsElement;
-        new (): HTMLBalDocIconsElement;
-    };
-    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
-    }
-    var HTMLBalDocImageElement: {
-        prototype: HTMLBalDocImageElement;
-        new (): HTMLBalDocImageElement;
-    };
-    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
-    }
-    var HTMLBalDocLeadElement: {
-        prototype: HTMLBalDocLeadElement;
-        new (): HTMLBalDocLeadElement;
-    };
-    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
-    }
-    var HTMLBalDocLinkListElement: {
-        prototype: HTMLBalDocLinkListElement;
-        new (): HTMLBalDocLinkListElement;
-    };
-    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
-    }
-    var HTMLBalDocLinkListItemElement: {
-        prototype: HTMLBalDocLinkListItemElement;
-        new (): HTMLBalDocLinkListItemElement;
-    };
-    interface HTMLBalDocPreviewElement extends Components.BalDocPreview, HTMLStencilElement {
-    }
-    var HTMLBalDocPreviewElement: {
-        prototype: HTMLBalDocPreviewElement;
-        new (): HTMLBalDocPreviewElement;
-    };
-    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
-    }
-    var HTMLBalDocShadesElement: {
-        prototype: HTMLBalDocShadesElement;
-        new (): HTMLBalDocShadesElement;
-    };
-    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
-    }
-    var HTMLBalDocSupportColorElement: {
-        prototype: HTMLBalDocSupportColorElement;
-        new (): HTMLBalDocSupportColorElement;
-    };
-    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBorderElement: {
-        prototype: HTMLBalDocTokensBorderElement;
-        new (): HTMLBalDocTokensBorderElement;
-    };
-    interface HTMLBalDocTokensBorderColorsElement extends Components.BalDocTokensBorderColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBorderColorsElement: {
-        prototype: HTMLBalDocTokensBorderColorsElement;
-        new (): HTMLBalDocTokensBorderColorsElement;
-    };
-    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBreakpointsElement: {
-        prototype: HTMLBalDocTokensBreakpointsElement;
-        new (): HTMLBalDocTokensBreakpointsElement;
-    };
-    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensColorsElement: {
-        prototype: HTMLBalDocTokensColorsElement;
-        new (): HTMLBalDocTokensColorsElement;
-    };
-    interface HTMLBalDocTokensContainersElement extends Components.BalDocTokensContainers, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensContainersElement: {
-        prototype: HTMLBalDocTokensContainersElement;
-        new (): HTMLBalDocTokensContainersElement;
-    };
-    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontElement: {
-        prototype: HTMLBalDocTokensFontElement;
-        new (): HTMLBalDocTokensFontElement;
-    };
-    interface HTMLBalDocTokensFontColorsElement extends Components.BalDocTokensFontColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontColorsElement: {
-        prototype: HTMLBalDocTokensFontColorsElement;
-        new (): HTMLBalDocTokensFontColorsElement;
-    };
-    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontSizesElement: {
-        prototype: HTMLBalDocTokensFontSizesElement;
-        new (): HTMLBalDocTokensFontSizesElement;
-    };
-    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontWeightElement: {
-        prototype: HTMLBalDocTokensFontWeightElement;
-        new (): HTMLBalDocTokensFontWeightElement;
-    };
-    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensRadiusElement: {
-        prototype: HTMLBalDocTokensRadiusElement;
-        new (): HTMLBalDocTokensRadiusElement;
-    };
-    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensShadowElement: {
-        prototype: HTMLBalDocTokensShadowElement;
-        new (): HTMLBalDocTokensShadowElement;
-    };
-    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensSpacingElement: {
-        prototype: HTMLBalDocTokensSpacingElement;
-        new (): HTMLBalDocTokensSpacingElement;
-    };
-    interface HTMLBalDocTokensSpacingSizesElement extends Components.BalDocTokensSpacingSizes, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensSpacingSizesElement: {
-        prototype: HTMLBalDocTokensSpacingSizesElement;
-        new (): HTMLBalDocTokensSpacingSizesElement;
-    };
-    interface HTMLBalDocTokensTextShadowElement extends Components.BalDocTokensTextShadow, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensTextShadowElement: {
-        prototype: HTMLBalDocTokensTextShadowElement;
-        new (): HTMLBalDocTokensTextShadowElement;
-    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -4036,34 +3765,6 @@ declare global {
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
-        "bal-doc-app": HTMLBalDocAppElement;
-        "bal-doc-banner": HTMLBalDocBannerElement;
-        "bal-doc-code-sandbox": HTMLBalDocCodeSandboxElement;
-        "bal-doc-color": HTMLBalDocColorElement;
-        "bal-doc-download": HTMLBalDocDownloadElement;
-        "bal-doc-github": HTMLBalDocGithubElement;
-        "bal-doc-icons": HTMLBalDocIconsElement;
-        "bal-doc-image": HTMLBalDocImageElement;
-        "bal-doc-lead": HTMLBalDocLeadElement;
-        "bal-doc-link-list": HTMLBalDocLinkListElement;
-        "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
-        "bal-doc-preview": HTMLBalDocPreviewElement;
-        "bal-doc-shades": HTMLBalDocShadesElement;
-        "bal-doc-support-color": HTMLBalDocSupportColorElement;
-        "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
-        "bal-doc-tokens-border-colors": HTMLBalDocTokensBorderColorsElement;
-        "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
-        "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
-        "bal-doc-tokens-containers": HTMLBalDocTokensContainersElement;
-        "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
-        "bal-doc-tokens-font-colors": HTMLBalDocTokensFontColorsElement;
-        "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
-        "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
-        "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
-        "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
-        "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
-        "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
-        "bal-doc-tokens-text-shadow": HTMLBalDocTokensTextShadowElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4944,107 +4645,6 @@ declare namespace LocalJSX {
           * Defines the space between the child elements. Default is xx-small.
          */
         "space"?: BalProps.BalDividerSpace;
-    }
-    interface BalDocApp {
-        /**
-          * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
-         */
-        "animated"?: boolean;
-        "logComponents"?: string;
-        "logCustom"?: boolean;
-        "logEvents"?: boolean;
-        "logLifecycle"?: boolean;
-        "logRender"?: boolean;
-    }
-    interface BalDocBanner {
-        "color"?: string;
-        "shadowDom"?: boolean;
-        "subtitle"?: string;
-    }
-    interface BalDocCodeSandbox {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen"?: boolean;
-        "label": string;
-        "logo"?: boolean;
-        "modules": string;
-        "name2": string;
-        "primary"?: boolean;
-        "template": string;
-        "template2": string;
-        "visible"?: boolean;
-    }
-    interface BalDocColor {
-        "background"?: boolean;
-        "color"?: string;
-        "description"?: string;
-        "inverted"?: boolean;
-        "subject"?: string;
-    }
-    interface BalDocDownload {
-        "iconLeft"?: string;
-        "iconRight"?: string;
-        "link"?: string;
-        "subject"?: string;
-        "subtitle"?: string;
-    }
-    interface BalDocGithub {
-        "link"?: string;
-    }
-    interface BalDocIcons {
-        "icons"?: string;
-    }
-    interface BalDocImage {
-        "src"?: string;
-        "text"?: string;
-    }
-    interface BalDocLead {
-    }
-    interface BalDocLinkList {
-        "oneColumn"?: boolean;
-    }
-    interface BalDocLinkListItem {
-        "image"?: string;
-        "subject"?: string;
-        "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
-    }
-    interface BalDocPreview {
-    }
-    interface BalDocShades {
-        "color"?: string;
-    }
-    interface BalDocSupportColor {
-        "color"?: string;
-    }
-    interface BalDocTokensBorder {
-    }
-    interface BalDocTokensBorderColors {
-        "overview"?: boolean;
-    }
-    interface BalDocTokensBreakpoints {
-    }
-    interface BalDocTokensColors {
-    }
-    interface BalDocTokensContainers {
-    }
-    interface BalDocTokensFont {
-    }
-    interface BalDocTokensFontColors {
-    }
-    interface BalDocTokensFontSizes {
-    }
-    interface BalDocTokensFontWeight {
-    }
-    interface BalDocTokensRadius {
-    }
-    interface BalDocTokensShadow {
-    }
-    interface BalDocTokensSpacing {
-    }
-    interface BalDocTokensSpacingSizes {
-    }
-    interface BalDocTokensTextShadow {
     }
     interface BalField {
         /**
@@ -7265,34 +6865,6 @@ declare namespace LocalJSX {
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
-        "bal-doc-app": BalDocApp;
-        "bal-doc-banner": BalDocBanner;
-        "bal-doc-code-sandbox": BalDocCodeSandbox;
-        "bal-doc-color": BalDocColor;
-        "bal-doc-download": BalDocDownload;
-        "bal-doc-github": BalDocGithub;
-        "bal-doc-icons": BalDocIcons;
-        "bal-doc-image": BalDocImage;
-        "bal-doc-lead": BalDocLead;
-        "bal-doc-link-list": BalDocLinkList;
-        "bal-doc-link-list-item": BalDocLinkListItem;
-        "bal-doc-preview": BalDocPreview;
-        "bal-doc-shades": BalDocShades;
-        "bal-doc-support-color": BalDocSupportColor;
-        "bal-doc-tokens-border": BalDocTokensBorder;
-        "bal-doc-tokens-border-colors": BalDocTokensBorderColors;
-        "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
-        "bal-doc-tokens-colors": BalDocTokensColors;
-        "bal-doc-tokens-containers": BalDocTokensContainers;
-        "bal-doc-tokens-font": BalDocTokensFont;
-        "bal-doc-tokens-font-colors": BalDocTokensFontColors;
-        "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
-        "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
-        "bal-doc-tokens-radius": BalDocTokensRadius;
-        "bal-doc-tokens-shadow": BalDocTokensShadow;
-        "bal-doc-tokens-spacing": BalDocTokensSpacing;
-        "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
-        "bal-doc-tokens-text-shadow": BalDocTokensTextShadow;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -7413,34 +6985,6 @@ declare module "@stencil/core" {
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
-            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
-            "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
-            "bal-doc-code-sandbox": LocalJSX.BalDocCodeSandbox & JSXBase.HTMLAttributes<HTMLBalDocCodeSandboxElement>;
-            "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
-            "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
-            "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
-            "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
-            "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
-            "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
-            "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
-            "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
-            "bal-doc-preview": LocalJSX.BalDocPreview & JSXBase.HTMLAttributes<HTMLBalDocPreviewElement>;
-            "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
-            "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
-            "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
-            "bal-doc-tokens-border-colors": LocalJSX.BalDocTokensBorderColors & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderColorsElement>;
-            "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
-            "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
-            "bal-doc-tokens-containers": LocalJSX.BalDocTokensContainers & JSXBase.HTMLAttributes<HTMLBalDocTokensContainersElement>;
-            "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
-            "bal-doc-tokens-font-colors": LocalJSX.BalDocTokensFontColors & JSXBase.HTMLAttributes<HTMLBalDocTokensFontColorsElement>;
-            "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
-            "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
-            "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
-            "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
-            "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
-            "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
-            "bal-doc-tokens-text-shadow": LocalJSX.BalDocTokensTextShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensTextShadowElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
