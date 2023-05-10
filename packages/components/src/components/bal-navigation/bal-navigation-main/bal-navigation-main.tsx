@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navigation-main',

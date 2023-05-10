@@ -1,10 +1,10 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils-new/config'
-import { isPlatform } from '../../utils/platform'
-import { BEM } from '../../utils-new/bem'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
+import { isPlatform } from '../../utils-old/platform'
+import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { ResizeHandler } from '../../utils/resize'
-import { ScrollHandler } from '../../utils/scroll'
+import { ResizeHandler } from '../../utils-old/resize'
+import { ScrollHandler } from '../../utils-old/scroll'
 
 @Component({
   tag: 'bal-hint',

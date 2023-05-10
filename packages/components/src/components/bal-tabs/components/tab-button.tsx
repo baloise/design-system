@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
+import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 import { TabIcon } from './tab-icon'
 import { TabLabel } from './tab-label'

@@ -21,7 +21,7 @@ import {
   BalRegion,
   defaultConfig,
   detachComponentToConfig,
-} from '../../../utils-new/config'
+} from '../../../utils/config'
 import {
   FormInput,
   inputListenOnClick,
@@ -33,11 +33,11 @@ import {
   inputHandleBlur,
   inputHandleChange,
   stopEventBubbling,
-} from '../../../utils-new/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils-new/helpers'
-import { inheritAttributes } from '../../../utils-new/attributes'
-import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils-new/constants/keys.constant'
-import { BEM } from '../../../utils-new/bem'
+} from '../../../utils/form-input'
+import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { inheritAttributes } from '../../../utils/attributes'
+import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
+import { BEM } from '../../../utils/bem'
 import { i18nTime } from './bal-time-input.i18n'
 
 @Component({

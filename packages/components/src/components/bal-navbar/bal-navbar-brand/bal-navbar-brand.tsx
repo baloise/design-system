@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
-import { ScrollHandler } from '../../../utils/scroll'
-import { BEM } from '../../../utils-new/bem'
+import { ScrollHandler } from '../../../utils-old/scroll'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',

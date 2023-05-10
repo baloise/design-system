@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Watch, Element } from '@stencil/core'
-import { BEM } from '../../utils-new/bem'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-list',

@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch, ComponentInterface } from '@stencil/core'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-list-item-accordion-head',

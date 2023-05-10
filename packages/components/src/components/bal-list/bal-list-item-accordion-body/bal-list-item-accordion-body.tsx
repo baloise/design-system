@@ -1,8 +1,8 @@
 import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
-import { debounce, raf } from '../../../utils-new/helpers'
-import { Loggable, LogInstance, Logger } from '../../../utils-new/log'
-import { isPlatform } from '../../../utils/platform'
-import { ResizeHandler, ResizeObserverHandler } from '../../../utils/resize'
+import { debounce, raf } from '../../../utils/helpers'
+import { Loggable, LogInstance, Logger } from '../../../utils/log'
+import { isPlatform } from '../../../utils-old/platform'
+import { ResizeHandler, ResizeObserverHandler } from '../../../utils-old/resize'
 
 @Component({
   tag: 'bal-list-item-accordion-body',

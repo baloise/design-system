@@ -1,9 +1,9 @@
 import { balToastController } from './components/notice/bal-toast/bal-toast.controller'
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
-import { BalConfig, BalMode, initialize, initStyleMode } from './utils-new/config'
-import { setupPlatforms } from './utils/platform'
-import { VERSION } from './utils-new/constants/version.constant'
-import { balBrowser } from './utils-new/browser'
+import { BalConfig, BalMode, initialize, initStyleMode } from './utils/config'
+import { setupPlatforms } from './utils-old/platform'
+import { VERSION } from './utils/constants/version.constant'
+import { balBrowser } from './utils/browser'
 
 export const initializeBaloiseDesignSystem = (initConfig: BalConfig = {}) => {
   if (balBrowser.hasWindow) {

@@ -12,9 +12,9 @@ import {
   Listen,
   FunctionalComponent,
 } from '@stencil/core'
-import { BEM } from '../../utils-new/bem'
-import { isPlatform } from '../../utils/platform'
-import { ResizeHandler } from '../../utils/resize'
+import { BEM } from '../../utils/bem'
+import { isPlatform } from '../../utils-old/platform'
+import { ResizeHandler } from '../../utils-old/resize'
 
 @Component({
   tag: 'bal-pagination',

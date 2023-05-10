@@ -8,24 +8,24 @@ import {
   isDescendant,
   raf,
   transitionEndAsync,
-} from '../../utils-new/helpers'
+} from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import {
   attachComponentToConfig,
   BalConfigObserver,
   BalConfigState,
   detachComponentToConfig,
-} from '../../utils-new/config'
-import { BEM } from '../../utils-new/bem'
-import { isPlatform } from '../../utils/platform'
-import { ResizeHandler } from '../../utils/resize'
-import { Loggable, Logger, LogInstance } from '../../utils-new/log'
+} from '../../utils/config'
+import { BEM } from '../../utils/bem'
+import { isPlatform } from '../../utils-old/platform'
+import { ResizeHandler } from '../../utils-old/resize'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
-import { stopEventBubbling } from '../../utils-new/form-input'
+import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
-import { getPadding, Padding } from '../../utils-new/style'
-import { MutationHandler } from '../../utils/mutations'
+import { getPadding, Padding } from '../../utils/style'
+import { MutationHandler } from '../../utils-old/mutations'
 import { AccordionState } from '../../interfaces'
 
 @Component({

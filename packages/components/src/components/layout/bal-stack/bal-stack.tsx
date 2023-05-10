@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-stack',

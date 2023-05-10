@@ -11,14 +11,14 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { isDescendant } from '../../../utils-new/helpers'
-import { BEM } from '../../../utils-new/bem'
-import { FOCUS_KEYS } from '../../../utils-new/focus-visible'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
+import { isDescendant } from '../../../utils/helpers'
+import { BEM } from '../../../utils/bem'
+import { FOCUS_KEYS } from '../../../utils/focus-visible'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
-import { ComponentElementState } from '../../../utils/element-states'
-import { inheritAttributes } from '../../../utils-new/attributes'
-import { stopEventBubbling } from '../../../utils-new/form-input'
+import { ComponentElementState } from '../../../utils-old/element-states'
+import { inheritAttributes } from '../../../utils/attributes'
+import { stopEventBubbling } from '../../../utils/form-input'
 import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({

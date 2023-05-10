@@ -1,5 +1,5 @@
 import { Components } from '../../../components'
-import { BalNoticeController, BalNoticeOptions } from '../../../utils-new/overlays/notice.controller'
+import { BalNoticeController, BalNoticeOptions } from '../../../utils/overlays/notice.controller'
 
 export type BalToastOptions = BalNoticeOptions
 

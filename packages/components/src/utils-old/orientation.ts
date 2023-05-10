@@ -1,5 +1,5 @@
 import { ResizeListener } from './resize'
-import { balDevice } from '../utils-new/device'
+import { balDevice } from '../utils/device'
 
 export type OrientationHandlerCallback = (orientation: Orientation) => void
 

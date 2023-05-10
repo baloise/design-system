@@ -9,10 +9,10 @@ import {
   attachComponentToConfig,
   updateBalLanguage,
   BalRegion,
-} from '../../utils-new/config'
-import { BEM } from '../../utils-new/bem'
-import { Loggable, Logger, LogInstance } from '../../utils-new/log'
-import { rIC } from '../../utils-new/helpers'
+} from '../../utils/config'
+import { BEM } from '../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { rIC } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-footer',

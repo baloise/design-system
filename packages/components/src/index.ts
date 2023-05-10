@@ -1,7 +1,7 @@
 /**
  * Config
  */
-export * from './utils-new/config'
+export * from './utils/config'
 
 /**
  * Components
@@ -35,22 +35,22 @@ export {
   getAppRoot,
   componentOnReady,
   isDescendant,
-} from './utils-new/helpers'
-export { scrollToFirstInvalidField } from './utils-new/form'
-export { ScrollHandler } from './utils/scroll'
+} from './utils/helpers'
+export { scrollToFirstInvalidField } from './utils/form'
+export { ScrollHandler } from './utils-old/scroll'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'
 export { newBalRadioOption } from './components/form/bal-radio/utils/bal-radio.util'
-export { balBrowser } from './utils-new/browser'
-export { balDevice } from './utils-new/device'
-export * from './utils-new/breakpoints'
-export * from './utils-new/orientation'
-export * from './utils-new/swipe'
+export { balBrowser } from './utils/browser'
+export { balDevice } from './utils/device'
+export * from './utils/breakpoints'
+export * from './utils/orientation'
+export * from './utils/swipe'
 
 // deprecated
-export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
-export { isBrowser, hasTouchSupport } from './utils-new/legacy'
+export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils-old/platform'
+export { isBrowser, hasTouchSupport } from './utils/legacy'
 
 /**
  * Controllers

@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { isPlatform } from '../../../utils/platform'
-import { BEM } from '../../../utils-new/bem'
+import { isPlatform } from '../../../utils-old/platform'
+import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
-import { balBrowser } from '../../../utils-new/browser'
+import { balBrowser } from '../../../utils/browser'
 
 const tabsEl = BEM.block('tabs').element('tabs')
 const tabItemEl = tabsEl.element('item')

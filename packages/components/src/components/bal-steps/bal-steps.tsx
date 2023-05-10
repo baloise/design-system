@@ -1,15 +1,15 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
-import { debounceEvent } from '../../utils-new/helpers'
-import { isPlatform } from '../../utils/platform'
-import { BEM } from '../../utils-new/bem'
+import { debounceEvent } from '../../utils/helpers'
+import { isPlatform } from '../../utils-old/platform'
+import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
-import { Loggable, Logger, LogInstance } from '../../utils-new/log'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { stopEventBubbling } from '../../utils-new/form-input'
-import { ResizeHandler } from '../../utils/resize'
+import { stopEventBubbling } from '../../utils/form-input'
+import { ResizeHandler } from '../../utils-old/resize'
 import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
-import { MutationHandler } from '../../utils/mutations'
+import { MutationHandler } from '../../utils-old/mutations'
 
 @Component({
   tag: 'bal-steps',

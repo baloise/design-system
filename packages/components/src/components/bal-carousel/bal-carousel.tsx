@@ -11,21 +11,21 @@ import {
   State,
   Listen,
 } from '@stencil/core'
-import { raf } from '../../utils-new/helpers'
-import { BEM } from '../../utils-new/bem'
+import { raf } from '../../utils/helpers'
+import { BEM } from '../../utils/bem'
 import { BalSlide, ControlItem } from './bal-carousel.type'
 import { TabControl } from './controls/tab-control'
 import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
-import { stopEventBubbling } from '../../utils-new/form-input'
-import { isPlatform } from '../../utils/platform'
-import { BalBreakpointObserver, BalBreakpoints } from '../../utils-new/breakpoints'
-import { ListenToBreakpoints } from '../../utils-new/breakpoints/breakpoint.decorator'
-import { ListenToSwipe } from '../../utils-new/swipe/swipe.decorator'
-import { BalSwipeInfo, BalSwipeObserver } from '../../utils-new/swipe'
-import { BalMutationObserver, ListenToMutation } from '../../utils-new/mutation'
-import { BalOrientationInfo, BalOrientationObserver, ListenToOrientation } from '../../utils-new/orientation'
+import { stopEventBubbling } from '../../utils/form-input'
+import { isPlatform } from '../../utils-old/platform'
+import { BalBreakpointObserver, BalBreakpoints } from '../../utils/breakpoints'
+import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoint.decorator'
+import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
+import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalOrientationInfo, BalOrientationObserver, ListenToOrientation } from '../../utils/orientation'
 
 @Component({
   tag: 'bal-carousel',

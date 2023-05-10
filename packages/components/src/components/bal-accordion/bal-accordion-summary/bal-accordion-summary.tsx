@@ -1,7 +1,7 @@
 import { Component, Host, h, Element, ComponentInterface, Prop, State } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
-import { stopEventBubbling } from '../../../utils-new/form-input'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { stopEventBubbling } from '../../../utils/form-input'
 import { AccordionState } from '../../../interfaces'
 
 @Component({

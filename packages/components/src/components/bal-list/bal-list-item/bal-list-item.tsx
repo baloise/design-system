@@ -15,10 +15,10 @@ import {
   BalConfigObserver,
   BalConfigState,
   detachComponentToConfig,
-} from '../../../utils-new/config'
-import { BEM } from '../../../utils-new/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
-import { raf, transitionEndAsync } from '../../../utils-new/helpers'
+} from '../../../utils/config'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { raf, transitionEndAsync } from '../../../utils/helpers'
 import { AccordionState } from '../../../interfaces'
 
 @Component({

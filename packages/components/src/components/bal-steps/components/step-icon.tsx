@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
+import { BEM } from '../../../utils/bem'
 import { BalStepOption } from '../bal-step.type'
 
 export const StepIcon: FunctionalComponent<{ item: BalStepOption; isMobile: boolean }> = ({ item, isMobile }) => {

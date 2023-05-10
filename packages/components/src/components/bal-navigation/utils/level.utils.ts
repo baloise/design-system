@@ -1,4 +1,4 @@
-import { Attributes } from '../../../utils-new/attributes'
+import { Attributes } from '../../../utils/attributes'
 
 export const observeLevels = (target: Node, level: string, notify: () => void) => {
   /* tslint:disable-next-line */

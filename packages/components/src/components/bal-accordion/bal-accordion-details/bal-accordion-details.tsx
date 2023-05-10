@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, ComponentInterface, State, Prop } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
-import { Loggable, Logger, LogInstance } from '../../../utils-new/log'
+import { BEM } from '../../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { AccordionState } from '../../../interfaces'
 
 @Component({

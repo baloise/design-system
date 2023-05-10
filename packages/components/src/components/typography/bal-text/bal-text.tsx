@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
-import { BEM } from '../../../utils-new/bem'
-import { ComponentElementState } from '../../../utils/element-states'
+import { BEM } from '../../../utils/bem'
+import { ComponentElementState } from '../../../utils-old/element-states'
 
 @Component({
   tag: 'bal-text',
