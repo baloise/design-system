@@ -21,7 +21,8 @@
     "pretty": true,
     "removeComments": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "compileOnSave": false,
   "buildOnSave": false
