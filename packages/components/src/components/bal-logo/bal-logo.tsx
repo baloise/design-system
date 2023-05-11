@@ -59,10 +59,6 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     this.animatedWatcher()
   }
 
-  componentWillRender() {
-    this.updatePlatform(balBreakpoints.toObject())
-  }
-
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -84,20 +80,13 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
-    this.updatePlatform(breakpoints)
+    this.isTouch = breakpoints.touch
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
-
-  private updatePlatform = (breakpoints: BalBreakpoints) => {
-    const newIsTouch = breakpoints.touch
-    if (this.isTouch !== newIsTouch) {
-      this.isTouch = newIsTouch
-    }
-  }
 
   private async resetAnimation() {
     this.destroyAnimation()
