@@ -1,3 +1,4 @@
+import { newBalOptionValue, newBalSingleOptionValue } from '../components/form/bal-select/utils/bal-option.util'
 import { BalBreakpoints, BalBreakpoint, balBreakpoints } from './breakpoints'
 import { balBrowser } from './browser'
 import { balDevice } from './device'
@@ -37,3 +38,9 @@ export const isPlatform: IsPlatformSignature = (winOrPlatform: Window | Platform
   }
   return false
 }
+
+/**
+ * deprecated
+ */
+export const NewBalOptionValue = newBalOptionValue
+export const NewBalSingleOptionValue = newBalSingleOptionValue
