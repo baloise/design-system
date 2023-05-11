@@ -37,7 +37,7 @@ export {
   isDescendant,
 } from './utils/helpers'
 export { scrollToFirstInvalidField } from './utils/form'
-export { ScrollHandler } from './utils-old/scroll'
+export { BalScrollHandler } from './utils/scroll'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'

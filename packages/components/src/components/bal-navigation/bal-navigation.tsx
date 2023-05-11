@@ -3,8 +3,8 @@ import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/legacy'
 import { balDevice } from '../../utils/device'
-import { ScrollHandler } from '../../utils-old/scroll'
 import { ResizeHandler } from '../../utils-old/resize'
+import { BalScrollHandler } from '../../utils/scroll'
 
 @Component({
   tag: 'bal-navigation',
@@ -20,7 +20,7 @@ export class Navigation implements ComponentInterface {
   private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
-  private bodyScrollBlocker = ScrollHandler()
+  private bodyScrollBlocker = new BalScrollHandler()
 
   @State() mainMobileHeight = ''
   @State() isMetaHidden = false

@@ -4,7 +4,7 @@ import { isPlatform } from '../../utils/legacy'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { ResizeHandler } from '../../utils-old/resize'
-import { ScrollHandler } from '../../utils-old/scroll'
+import { BalScrollHandler } from '../../utils/scroll'
 
 @Component({
   tag: 'bal-hint',
@@ -19,7 +19,7 @@ export class Hint implements BalConfigObserver {
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
 
-  private bodyScrollHandler = ScrollHandler()
+  private bodyScrollHandler = new BalScrollHandler()
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
