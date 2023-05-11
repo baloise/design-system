@@ -1,6 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Method } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState } from '../../utils/config'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -8,9 +9,10 @@ import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../.
     css: 'bal-progress-bar.sass',
   },
 })
-export class ProgressBar implements ComponentInterface, BalBreakpointObserver {
+export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
+  private animated = true
   private lineEl?: HTMLDivElement
 
   /**
@@ -43,8 +45,13 @@ export class ProgressBar implements ComponentInterface, BalBreakpointObserver {
    */
 
   @ListenToBreakpoints()
-  breakpointListener(_breakpoints: BalBreakpoints): void {
+  breakpointListener(_breakpoints: BalBreakpoints) {
     this.updateProgress()
+  }
+
+  @Method()
+  async configChanged(state: BalConfigState) {
+    this.animated = state.animated
   }
 
   /**
@@ -86,6 +93,7 @@ export class ProgressBar implements ComponentInterface, BalBreakpointObserver {
         <div
           class={{
             ...bemLineEl.class(),
+            ...bemLineEl.modifier(`animated`).class(this.animated),
           }}
           ref={lineEl => (this.lineEl = lineEl)}
         ></div>

@@ -53,7 +53,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Prop({ mutable: true, reflect: true }) active = false
   @Watch('active')
   protected async activeChanged(newActive: boolean, oldActive: boolean) {
-    console.log('activeChanged', newActive, oldActive)
     if (newActive !== oldActive) {
       this.active = newActive
       this.updateState()

@@ -24,15 +24,12 @@ import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorat
 import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
 import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { BalOrientationInfo, BalOrientationObserver, ListenToOrientation } from '../../utils/orientation'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
-export class Carousel
-  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalOrientationObserver
-{
+export class Carousel implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver {
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private borderEl?: HTMLDivElement
@@ -154,11 +151,6 @@ export class Carousel
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.areControlsHidden = !breakpoints.mobile
     this.itemsChanged()
-  }
-
-  @ListenToOrientation()
-  orientationListener(info: BalOrientationInfo): void {
-    console.warn('orientationListener', info)
   }
 
   /**

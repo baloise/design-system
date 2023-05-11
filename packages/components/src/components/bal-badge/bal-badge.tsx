@@ -30,10 +30,6 @@ export class Badge implements ComponentInterface {
    */
   @Prop() position: BalProps.BalBadgePosition = ''
 
-  // connectedCallback(): void {
-  //   balBreakpointSubject.connect(this)
-  // }
-
   render() {
     const block = BEM.block('badge')
     const labelEl = block.element('label')

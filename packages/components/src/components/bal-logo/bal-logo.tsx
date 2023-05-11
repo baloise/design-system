@@ -27,7 +27,7 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
   @Element() el!: HTMLElement
 
-  @State() isTouch = false
+  @State() isTouch = balBreakpoints.isTouch
 
   /**
    * PUBLIC PROPERTY API

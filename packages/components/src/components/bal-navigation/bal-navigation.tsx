@@ -81,10 +81,10 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
     this.isMetaHidden = false
     this.mainMobileHeight = this.getMaxHeight()
 
-    if (this.isTouch !== breakpoints.tablet) {
+    if (this.isTouch !== breakpoints.touch) {
       this.isMainBodyOpen = false
       this.selectedMainValue = ''
-      this.isTouch = breakpoints.tablet
+      this.isTouch = breakpoints.touch
     }
 
     this.isDesktop = breakpoints.desktop
