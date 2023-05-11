@@ -16,10 +16,10 @@ import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
-import { ComponentElementState } from '../../../utils-old/element-states'
 import { inheritAttributes } from '../../../utils/attributes'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { isSpaceKey } from '@baloise/web-app-utils'
+import { BalElementStateInfo } from '../../../utils/element-states'
 
 @Component({
   tag: 'bal-radio',
@@ -27,7 +27,7 @@ import { isSpaceKey } from '@baloise/web-app-utils'
     css: '../bal-checkbox/radio-checkbox.sass',
   },
 })
-export class Radio implements ComponentInterface, ComponentElementState, Loggable {
+export class Radio implements ComponentInterface, BalElementStateInfo, Loggable {
   private inputId = `bal-rb-${radioIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true

@@ -13,10 +13,11 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../../../utils/bem'
 import { stopEventBubbling } from '../../../../utils/form-input'
-import { defaultElementStateState, ElementStateHandler, ElementStateState } from '../../../../utils-old/element-states'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { FOCUS_KEYS } from '../../../../utils/focus-visible'
 import { isDescendant } from '../../../../utils/helpers'
+import { BalElementStateInfo, BalElementStateObserver, ListenToElementStates } from '../../../../utils/element-states'
+import { BalElementStateListener } from '../../../../utils/element-states/element-states.listener'
 
 @Component({
   tag: 'bal-radio-button',
@@ -24,10 +25,9 @@ import { isDescendant } from '../../../../utils/helpers'
     css: './bal-radio-button.sass',
   },
 })
-export class BalRadioButton implements ComponentInterface, Loggable {
+export class BalRadioButton implements ComponentInterface, Loggable, BalElementStateObserver {
   @Element() el!: HTMLElement
 
-  private elementStateHandler = ElementStateHandler()
   private keyboardMode = true
 
   log!: LogInstance
@@ -37,7 +37,7 @@ export class BalRadioButton implements ComponentInterface, Loggable {
     this.log = log
   }
 
-  @State() interactionState: ElementStateState = defaultElementStateState
+  @State() interactionState: BalElementStateInfo = BalElementStateListener.DefaultState
   @State() checked = false
   @State() focused = false
 
@@ -113,14 +113,6 @@ export class BalRadioButton implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.triggerAllHandlers()
-    this.elementStateHandler.connect(this.el)
-    this.elementStateHandler.onStateChange(state => {
-      this.interactionChildElements.forEach(element => {
-        element.hovered = state.hovered
-        element.pressed = state.pressed
-      })
-    })
-
     this.el.addEventListener('keydown', this.onKeydown)
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
@@ -131,11 +123,22 @@ export class BalRadioButton implements ComponentInterface, Loggable {
   }
 
   disconnectedCallback(): void {
-    this.elementStateHandler.disconnect()
-
     this.el.removeEventListener('keydown', this.onKeydown)
     this.el.removeEventListener('touchstart', this.onPointerDown)
     this.el.removeEventListener('mousedown', this.onPointerDown)
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @ListenToElementStates()
+  elementStateListener(info: BalElementStateInfo) {
+    this.interactionChildElements.forEach(element => {
+      element.hovered = info.hovered
+      element.pressed = info.pressed
+    })
   }
 
   /**

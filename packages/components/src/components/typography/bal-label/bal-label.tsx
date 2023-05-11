@@ -11,8 +11,8 @@ import {
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
-import { ComponentElementState } from '../../../utils-old/element-states'
 import { MutationHandler } from '../../../utils-old/mutations'
+import { BalElementStateInfo } from '../../../utils/element-states'
 
 @Component({
   tag: 'bal-label',
@@ -20,7 +20,7 @@ import { MutationHandler } from '../../../utils-old/mutations'
     css: './bal-label.sass',
   },
 })
-export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable, ComponentElementState {
+export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable, BalElementStateInfo {
   @Element() el!: HTMLElement
 
   @State() inputId?: string
