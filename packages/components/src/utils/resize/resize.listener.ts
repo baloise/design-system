@@ -4,7 +4,7 @@ import { BalResizeInfo } from './resize.interfaces'
 
 export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
   private resizeObserver: ResizeObserver | undefined
-  private debouncedNotify = debounce(() => this.notify(), 50)
+  private debouncedNotify = debounce(() => this.notify(), 10)
 
   connect(el: HTMLElement): void {
     super.connect(el)

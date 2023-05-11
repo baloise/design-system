@@ -5,7 +5,7 @@ import { BalMutationListener } from './mutation.listener'
 
 export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
   private listener?: BalMutationListener
-  private debouncedNotify = debounce(() => this.notify(), 50)
+  private debouncedNotify = debounce(() => this.notify(), 10)
 
   constructor(private options: Partial<MutationObserverOptions>) {
     super(observer => {

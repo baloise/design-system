@@ -4,7 +4,7 @@ import { ListenerAbstract } from '../types/listener'
 
 export class BalWindowResizeListener extends ListenerAbstract {
   private resizeHandler = new BalWindowResizeHandler({ onlyListenToWidthChanges: true })
-  private debouncedNotify = debounce(() => this.notify(), 50)
+  private debouncedNotify = debounce(() => this.notify(), 10)
 
   connect(): void {
     super.connect()
