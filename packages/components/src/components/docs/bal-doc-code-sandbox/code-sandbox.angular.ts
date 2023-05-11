@@ -4,7 +4,6 @@ import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 interface AngularProject {
   template: string
   component: string
-  modules: string
   name2: string
   template2: string
   component2: string
@@ -57,9 +56,7 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
       ? parseMarkdown(project.template)
       : '<h1 class="title is-size-xxx-large">Hello World</h1>'
 
-    const new_example_component_ts = project.component
-      ? parseMarkdown(project.component)
-      : updateModules(src_app_example_component_ts, project)
+    const new_example_component_ts = project.component ? parseMarkdown(project.component) : src_app_example_component_ts
 
     exampleFiles = {
       'src/app/example.component.ts': {
@@ -144,17 +141,4 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
       ...secondComponent,
     },
   })
-}
-
-const updateModules = (content: string, project: AngularProject) => {
-  const toPascalCase = (text: string) => text.replace(/(^\w|-\w)/g, clearAndUpper)
-  const clearAndUpper = (text: string) => text.replace(/-/, '').toUpperCase()
-  const modules = project.modules.split(',').map(m => `Bal${toPascalCase(m.trim())}Module`)
-
-  let newContent = content.replace('imports: [CommonModule],', `imports: [CommonModule, ${modules.join(', ')}],`)
-  newContent = newContent.replace(
-    PLACEHOLDER_IMPORT,
-    `import { ${modules.join(', ')} } from '@baloise/design-system-components-angular'`,
-  )
-  return newContent
 }

@@ -1,7 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "importHelpers": true
-  },
+  "compilerOptions": {},
   "exclude": ["dist", ".build", "node_modules", "generated", "test", "public", "cypress", "**/stories"]
 }
