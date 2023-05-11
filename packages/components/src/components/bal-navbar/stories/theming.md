@@ -12,9 +12,12 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                     | Description                                    |
-| ---------------------------- | ---------------------------------------------- |
-| `--bal-badge-background`     | Background of the badge                        |
-| `--bal-badge-background-red` | Background of the badge with the color danger. |
-| `--bal-badge-text-color`     | Text color of the badge.                       |
-| `--bal-badge-text-color-red` | Text color of the badge with the color danger. |
+| Variable                                    | Description                                                    |
+| ------------------------------------------- | -------------------------------------------------------------- |
+| `--bal-navbar-background`                   | Background of the navbar.                                      |
+| `--bal-navbar-light-background`             | Background of the light navbar.                                |
+| `--bal-navbar-active-menu-background`       | Background of the navbar on touch devices when menu is active. |
+| `--bal-navbar-brand-title-text-color`       | Text color of the navbar brand title.                          |
+| `--bal-navbar-brand-title-light-text-color` | Text color of the light navbar brand title.                    |
+| `--bal-navbar-brand-text-color`             | Text color of the navbar brand.                                |
+| `--bal-navbar-brand-logo-link-color`        | Text color of the navbar brand logo link color.                |
