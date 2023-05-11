@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { debounceEvent } from '../../utils/helpers'
-import { isPlatform } from '../../utils-old/platform'
+import { isPlatform } from '../../utils/legacy'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'

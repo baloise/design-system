@@ -1,6 +1,6 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { isPlatform } from '../../utils-old/platform'
+import { isPlatform } from '../../utils/legacy'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { ResizeHandler } from '../../utils-old/resize'

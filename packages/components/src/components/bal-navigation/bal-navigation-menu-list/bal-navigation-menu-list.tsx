@@ -1,6 +1,6 @@
 import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils-old/platform'
+import { isPlatform } from '../../../utils/legacy'
 import { ResizeHandler } from '../../../utils-old/resize'
 import { Attributes } from '../../../utils/attributes'
 

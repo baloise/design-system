@@ -68,7 +68,7 @@ import {
 } from '../../../utils/form-input'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils-old/platform'
+import { isPlatform } from '../../../utils/legacy'
 import { ResizeHandler } from '../../../utils-old/resize'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 

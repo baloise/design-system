@@ -12,7 +12,7 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { isPlatform } from '../../utils-old/platform'
+import { isPlatform } from '../../utils/legacy'
 import { ResizeHandler } from '../../utils-old/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'

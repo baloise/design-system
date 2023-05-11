@@ -10,14 +10,9 @@ import {
   transitionEndAsync,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  detachComponentToConfig,
-} from '../../utils/config'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils-old/platform'
+import { isPlatform } from '../../utils/legacy'
 import { ResizeHandler } from '../../utils-old/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'

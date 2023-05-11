@@ -1,7 +1,7 @@
 import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
-import { isPlatform } from '../../../utils-old/platform'
+import { isPlatform } from '../../../utils/legacy'
 import { ResizeHandler, ResizeObserverHandler } from '../../../utils-old/resize'
 
 @Component({

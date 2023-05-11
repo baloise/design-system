@@ -17,7 +17,7 @@ import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
-import { isPlatform } from '../../utils-old/platform'
+import { isPlatform } from '../../utils/legacy'
 import { ResizeHandler } from '../../utils-old/resize'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 

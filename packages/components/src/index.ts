@@ -49,7 +49,7 @@ export * from './utils/orientation'
 export * from './utils/swipe'
 
 // deprecated
-export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils-old/platform'
+export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/legacy'
 export { isBrowser, hasTouchSupport } from './utils/legacy'
 
 /**

@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { isPlatform } from '../../../utils-old/platform'
+import { isPlatform } from '../../../utils/legacy'
 import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
