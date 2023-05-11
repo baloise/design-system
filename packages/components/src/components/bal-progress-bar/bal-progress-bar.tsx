@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { ResizeHandler } from '../../utils/resize'
+import { ResizeHandler } from '../../utils-old/resize'
 
 @Component({
   tag: 'bal-progress-bar',
