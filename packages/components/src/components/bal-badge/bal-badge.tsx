@@ -1,7 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from '../../utils/breakpoints'
-import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
 
 @Component({
   tag: 'bal-badge',
@@ -9,12 +7,7 @@ import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorat
     css: 'bal-badge.sass',
   },
 })
-export class Badge implements ComponentInterface, BalBreakpointObserver {
-  @ListenToBreakpoints()
-  breakpointListener(breakpoints: BalBreakpoints): void {
-    console.log('breakpointChanged', breakpoints)
-  }
-
+export class Badge implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**

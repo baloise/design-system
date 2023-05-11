@@ -208,7 +208,7 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
    * ------------------------------------------------------
    */
 
-  mutationObserverActive = false
+  mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'] })
   mutationListener(): void {

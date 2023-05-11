@@ -207,7 +207,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
    * ------------------------------------------------------
    */
 
-  mutationObserverActive = false
+  mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
   mutationListener(): void {

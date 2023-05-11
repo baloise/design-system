@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Listen, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
