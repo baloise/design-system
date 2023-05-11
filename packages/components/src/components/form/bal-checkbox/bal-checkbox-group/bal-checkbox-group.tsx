@@ -18,17 +18,15 @@ import { inheritAttributes } from '../../../../utils/attributes'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
-import { MutationHandler } from '../../../../utils-old/mutations'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
+import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
 
 @Component({
   tag: 'bal-checkbox-group',
 })
-export class CheckboxGroup implements ComponentInterface, Loggable {
+export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationObserver {
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
-
-  private mutationHandler = MutationHandler({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
 
   log!: LogInstance
 
@@ -53,11 +51,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   protected async optionChanged() {
     if (this.control) {
       this.onOptionChange()
-      if (this.options === undefined) {
-        this.mutationHandler.observe()
-      } else {
-        this.mutationHandler.stopObserve()
-      }
+      this.mutationObserverActive = this.options === undefined
     }
   }
 
@@ -190,14 +184,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
    */
 
   connectedCallback(): void {
-    this.mutationHandler.connect(this.el, () => this.onOptionChange())
-
     if (this.control) {
-      if (this.options === undefined) {
-        this.mutationHandler.observe()
-      } else {
-        this.mutationHandler.stopObserve()
-      }
+      this.mutationObserverActive = this.options === undefined
     }
   }
 
@@ -214,14 +202,17 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     this.onOptionChange()
   }
 
-  disconnectedCallback() {
-    this.mutationHandler.disconnect()
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  mutationObserverActive = false
+
+  @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
+  mutationListener(): void {
+    this.onOptionChange()
+  }
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

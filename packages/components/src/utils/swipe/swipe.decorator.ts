@@ -11,13 +11,13 @@ export function ListenToSwipe() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      this.balSwipeSubject = new BalSwipeSubject()
-      this.balSwipeSubject.attach(this)
+      this._balSwipeSubject = new BalSwipeSubject()
+      this._balSwipeSubject.attach(this)
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      this.balSwipeSubject.detach()
+      this._balSwipeSubject.detach()
       return disconnectedCallback && disconnectedCallback.call(this)
     }
   }

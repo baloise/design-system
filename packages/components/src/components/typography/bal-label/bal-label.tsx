@@ -11,8 +11,8 @@ import {
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
-import { MutationHandler } from '../../../utils-old/mutations'
 import { BalElementStateInfo } from '../../../utils/element-states'
+import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 
 @Component({
   tag: 'bal-label',
@@ -20,7 +20,9 @@ import { BalElementStateInfo } from '../../../utils/element-states'
     css: './bal-label.sass',
   },
 })
-export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable, BalElementStateInfo {
+export class BalLabel
+  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalMutationObserver
+{
   @Element() el!: HTMLElement
 
   @State() inputId?: string
@@ -28,8 +30,6 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
   @State() region: BalRegion = defaultConfig.region
 
   log!: LogInstance
-
-  private radioMutationHandler = MutationHandler({ tags: ['bal-radio'] })
 
   @Logger('bal-label')
   createLogger(log: LogInstance) {
@@ -115,7 +115,18 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
 
   disconnectedCallback() {
     detachComponentToConfig(this)
-    this.radioMutationHandler.disconnect()
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  mutationObserverActive = false
+
+  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button' })
+  mutationListener(): void {
+    this.setHtmlFor()
   }
 
   /**
@@ -125,12 +136,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
 
   async attachLabelToInput() {
     const radio = this.getRadioElement()
-
-    if (radio) {
-      this.radioMutationHandler.connect(radio, () => this.setHtmlFor())
-      this.radioMutationHandler.observe()
-    }
-
+    this.mutationObserverActive = !!radio
     await this.setHtmlFor()
   }
 

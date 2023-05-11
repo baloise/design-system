@@ -9,7 +9,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { ResizeHandler } from '../../utils-old/resize'
 import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
-import { MutationHandler } from '../../utils-old/mutations'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 
 @Component({
   tag: 'bal-steps',
@@ -17,10 +17,9 @@ import { MutationHandler } from '../../utils-old/mutations'
     css: 'bal-steps.sass',
   },
 })
-export class Steps implements Loggable {
+export class Steps implements Loggable, BalMutationObserver {
   @Element() el!: HTMLElement
 
-  private mutationHandler = MutationHandler({ tags: ['bal-steps', 'bal-step-item'] })
   private resizeWidthHandler = ResizeHandler()
   private stepsId = `bal-steps-${StepsIds++}`
 
@@ -48,9 +47,9 @@ export class Steps implements Loggable {
   protected async optionChanged() {
     this.onOptionChange()
     if (this.options === undefined || this.options.length < 1) {
-      this.mutationHandler.observe()
+      this.mutationObserverActive = true
     } else {
-      this.mutationHandler.stopObserve()
+      this.mutationObserverActive = false
     }
   }
 
@@ -93,27 +92,24 @@ export class Steps implements Loggable {
 
   connectedCallback() {
     this.debounceChanged()
-    this.mutationHandler.connect(this.el, () => this.onOptionChange())
-
-    if (this.options === undefined) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined
   }
 
   componentDidLoad() {
     this.onOptionChange()
   }
 
-  disconnectedCallback() {
-    this.mutationHandler.disconnect()
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  mutationObserverActive = false
+
+  @ListenToMutation({ tags: ['bal-steps', 'bal-step-item'] })
+  mutationListener(): void {
+    this.onOptionChange()
+  }
 
   @Listen('resize', { target: 'window' })
   async resizeListener() {

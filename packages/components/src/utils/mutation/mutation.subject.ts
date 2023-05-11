@@ -7,7 +7,7 @@ export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
   private listener?: BalMutationListener
   private debouncedNotify = debounce(() => this.notify(), 100)
 
-  constructor(options: Partial<MutationObserverOptions>) {
+  constructor(private options: Partial<MutationObserverOptions>) {
     super(observer => {
       if (observer.mutationObserverActive) {
         observer.mutationListener()
@@ -18,7 +18,14 @@ export class BalMutationSubject extends SingleSubject<BalMutationObserver> {
 
   override attach(observer: BalMutationObserver): void {
     super.attach(observer)
-    this.listener?.connect(observer.el)
+    if (this.options.closest) {
+      const closestElement = observer.el.closest<HTMLElement>(this.options.closest)
+      if (closestElement) {
+        this.listener?.connect(closestElement)
+      }
+    } else {
+      this.listener?.connect(observer.el)
+    }
     this.listener?.add(() => this.debouncedNotify())
   }
 

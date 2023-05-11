@@ -1,5 +1,6 @@
 export interface MutationObserverOptions extends MutationObserverInit {
   tags: string[]
+  closest?: string
 }
 
 export interface BalMutationObserver {

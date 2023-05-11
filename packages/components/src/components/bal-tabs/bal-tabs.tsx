@@ -1,4 +1,17 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  State,
+  Event,
+  EventEmitter,
+  Method,
+  Prop,
+  Watch,
+  Listen,
+  ComponentInterface,
+} from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import {
   debounceEvent,
@@ -20,8 +33,8 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
-import { MutationHandler } from '../../utils-old/mutations'
 import { AccordionState } from '../../interfaces'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 
 @Component({
   tag: 'bal-tabs',
@@ -29,11 +42,10 @@ import { AccordionState } from '../../interfaces'
     css: 'bal-tabs.sass',
   },
 })
-export class Tabs implements Loggable, BalConfigObserver {
+export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver {
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
 
-  private mutationHandler = MutationHandler({ tags: ['bal-tabs', 'bal-tab-item'] })
   private resizeWidthHandler = ResizeHandler()
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
@@ -94,11 +106,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
-    if (this.options === undefined) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined
   }
 
   /**
@@ -200,13 +208,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     }
     this.debounceChanged()
     attachComponentToConfig(this)
-    this.mutationHandler.connect(this.el, () => this.onOptionChange())
-
-    if (this.options === undefined || this.options.length < 1) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
       const isAccordionOpen = this.value !== undefined && this.value.length > 0
@@ -224,13 +226,19 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   disconnectedCallback() {
     detachComponentToConfig(this)
-    this.mutationHandler.disconnect()
   }
 
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  mutationObserverActive = false
+
+  @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
+  mutationListener(): void {
+    this.onOptionChange()
+  }
 
   configChanged(state: BalConfigState): void {
     this.animated = state.animated
