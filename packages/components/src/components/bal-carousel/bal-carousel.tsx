@@ -19,9 +19,8 @@ import { DotControl } from './controls/dot-control'
 import { LargeControl } from './controls/large-control'
 import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
-import { isPlatform } from '../../utils/legacy'
-import { BalBreakpointObserver, BalBreakpoints } from '../../utils/breakpoints'
-import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoint.decorator'
+import { BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
 import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
 import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
@@ -42,7 +41,7 @@ export class Carousel
   private carouselId = `bal-carousel-${CarouselIds++}`
 
   @State() isLastSlideVisible = true
-  @State() areControlsHidden = !isPlatform('mobile')
+  @State() areControlsHidden = !balBreakpoints.isMobile
 
   @Element() el!: HTMLElement
 
@@ -139,13 +138,11 @@ export class Carousel
 
   @ListenToMutation({ tags: ['bal-carousel-item'], characterData: false })
   mutationListener() {
-    console.warn('mutationListener')
     this.itemsChanged()
   }
 
   @ListenToSwipe()
   swipeListener({ left, right }: BalSwipeInfo) {
-    console.warn('swipeListener')
     if (left) {
       this.next()
     } else if (right) {
@@ -155,7 +152,6 @@ export class Carousel
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
-    console.warn('breakpointListener', breakpoints)
     this.areControlsHidden = !breakpoints.mobile
     this.itemsChanged()
   }

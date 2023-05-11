@@ -1,20 +1,19 @@
-import { Component, Host, h, Prop, Element, ComponentInterface, Listen } from '@stencil/core'
+import { Component, Host, h, Prop, Element, ComponentInterface } from '@stencil/core'
 import { debounce, raf } from '../../../utils/helpers'
 import { Loggable, LogInstance, Logger } from '../../../utils/log'
-import { isPlatform } from '../../../utils/legacy'
-import { ResizeHandler, ResizeObserverHandler } from '../../../utils-old/resize'
+import { BalBreakpointObserver, BalBreakpoints } from '../../../interfaces'
+import { ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
 
 @Component({
   tag: 'bal-list-item-accordion-body',
   scoped: false,
   shadow: false,
 })
-export class ListItemAccordionBody implements ComponentInterface, Loggable {
+export class ListItemAccordionBody implements ComponentInterface, Loggable, BalBreakpointObserver, BalResizeObserver {
   private contentElWrapper: HTMLDivElement | undefined
   private currentRaf: number | undefined
-  private resizeHandler = ResizeObserverHandler()
-  private resizeWidthHandler = ResizeHandler()
-  private isMobile = isPlatform('mobile')
+  private isMobile = balBreakpoints.isMobile
 
   @Element() el!: HTMLElement
 
@@ -52,7 +51,6 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
    */
 
   connectedCallback() {
-    this.resizeHandler.connect(this.el, this.debounceSetMinHeightForAnimation)
     this.setMinHeightForAnimation()
   }
 
@@ -60,21 +58,20 @@ export class ListItemAccordionBody implements ComponentInterface, Loggable {
     this.setMinHeightForAnimation()
   }
 
-  disconnectedCallback() {
-    this.resizeHandler.disconnect()
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
 
-  @Listen('resize', { target: 'window' })
-  async resizeListener() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-      this.debounceSetMinHeightForAnimation()
-    })
+  @ListenToResize()
+  resizeListener() {
+    this.debounceSetMinHeightForAnimation
+  }
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
+    this.debounceSetMinHeightForAnimation()
   }
 
   /**

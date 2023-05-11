@@ -17,9 +17,8 @@ import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 import { PreventOverflowModifier } from '@popperjs/core/lib/modifiers/preventOverflow'
-import { isPlatform } from '../../utils/legacy'
-import { ResizeHandler } from '../../utils-old/resize'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 export interface PopoverPresentOptions {
   force: boolean
@@ -31,15 +30,14 @@ export interface PopoverPresentOptions {
     css: 'bal-popover.sass',
   },
 })
-export class Popover implements ComponentInterface, Loggable {
+export class Popover implements ComponentInterface, Loggable, BalBreakpointObserver {
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
   private backdropElement?: HTMLDivElement
-  private resizeWidthHandler = ResizeHandler()
 
   @Element() element!: HTMLElement
 
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = balBreakpoints.isTouch
   @State() isInMainNav = false
   @State() backdropHeight = 0
 
@@ -158,7 +156,6 @@ export class Popover implements ComponentInterface, Loggable {
 
   componentDidLoad() {
     this.isInMainNav = this.footMobileNav !== null
-    this.isTouch = isPlatform('touch')
 
     if (this.triggerElement && this.menuElement) {
       this.popperInstance = createPopper(this.triggerElement, this.menuElement, {
@@ -265,13 +262,11 @@ export class Popover implements ComponentInterface, Loggable {
     }
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isTouch = isPlatform('touch')
-      this.isInMainNav = this.footMobileNav !== null
-      this.backdropHeight = this.getBackdropHeight()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isTouch = breakpoints.touch
+    this.isInMainNav = this.footMobileNav !== null
+    this.backdropHeight = this.getBackdropHeight()
   }
 
   /**

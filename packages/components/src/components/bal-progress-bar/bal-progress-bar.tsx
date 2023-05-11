@@ -1,6 +1,6 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { ResizeHandler } from '../../utils-old/resize'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -8,11 +8,10 @@ import { ResizeHandler } from '../../utils-old/resize'
     css: 'bal-progress-bar.sass',
   },
 })
-export class ProgressBar implements ComponentInterface {
+export class ProgressBar implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
   private lineEl?: HTMLDivElement
-  private resizeHandler = ResizeHandler()
 
   /**
    * PUBLIC PROPERTY API
@@ -43,11 +42,9 @@ export class ProgressBar implements ComponentInterface {
    * ------------------------------------------------------
    */
 
-  @Listen('resize', { target: 'window' })
-  async resizeListener() {
-    this.resizeHandler(() => {
-      this.updateProgress()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(_breakpoints: BalBreakpoints): void {
+    this.updateProgress()
   }
 
   /**

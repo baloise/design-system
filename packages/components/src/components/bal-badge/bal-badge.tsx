@@ -1,7 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from '../../utils/breakpoints'
-import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoint.decorator'
+import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
 
 @Component({
   tag: 'bal-badge',

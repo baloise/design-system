@@ -25,16 +25,15 @@ import {
 import { BalTabOption } from './bal-tab.type'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/legacy'
-import { ResizeHandler } from '../../utils-old/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
-import { AccordionState } from '../../interfaces'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { AccordionState } from '../../interfaces'
 
 @Component({
   tag: 'bal-tabs',
@@ -42,11 +41,12 @@ import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
     css: 'bal-tabs.sass',
   },
 })
-export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver {
+export class Tabs
+  implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver, BalBreakpointObserver
+{
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
 
-  private resizeWidthHandler = ResizeHandler()
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
 
@@ -59,8 +59,8 @@ export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, Ba
   @State() inNavbar = false
   @State() inNavbarLight = false
 
-  @State() isMobile = isPlatform('mobile')
-  @State() isTablet = isPlatform('tablet')
+  @State() isMobile = balBreakpoints.isMobile
+  @State() isTablet = balBreakpoints.isTablet
 
   @State() store: BalTabOption[] = []
   @State() animated = true
@@ -233,7 +233,7 @@ export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, Ba
    * ------------------------------------------------------
    */
 
-  mutationObserverActive = false
+  mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
   mutationListener(): void {
@@ -244,13 +244,11 @@ export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, Ba
     this.animated = state.animated
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-      this.isTablet = isPlatform('tablet')
-      this.animateLine()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
+    this.isTablet = breakpoints.tablet
+    this.animateLine()
   }
 
   @Listen('balWillAnimate', { target: 'window' })
@@ -370,8 +368,8 @@ export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, Ba
 
   private isVertical(): boolean {
     const isVertical = this.parseVertical()
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = this.isMobile
+    const isTablet = this.isTablet
     const isTouch = isMobile || isTablet
 
     return isVertical || (isTouch && this.inNavbar)
@@ -649,8 +647,8 @@ export class Tabs implements ComponentInterface, Loggable, BalConfigObserver, Ba
   render() {
     const block = BEM.block('tabs')
 
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = this.isMobile
+    const isTablet = this.isTablet
     const isTouch = isMobile || isTablet
 
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)

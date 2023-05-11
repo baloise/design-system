@@ -1,21 +1,21 @@
 import { balBrowser } from '../browser'
 import { balDevice } from '../device'
 
-export type BalResizeHandlerObserver = () => void
+export type BalWindowResizeHandlerObserver = () => void
 
-export type BalResizeHandlerOptions = {
+export type BalWindowResizeHandlerOptions = {
   onlyListenToWidthChanges: boolean
 }
 
-export class BalResizeHandler {
+export class BalWindowResizeHandler {
   private previousWidth = balBrowser.window.width
   private previousHeight = balBrowser.window.height
   private previousIsLandscape = this.isLandscape
-  private options: BalResizeHandlerOptions = {
+  private options: BalWindowResizeHandlerOptions = {
     onlyListenToWidthChanges: false,
   }
 
-  constructor(options: Partial<BalResizeHandlerOptions> = {}) {
+  constructor(options: Partial<BalWindowResizeHandlerOptions> = {}) {
     this.options = { ...this.options, ...options }
   }
 

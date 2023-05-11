@@ -1,10 +1,10 @@
 import { balDevice } from '../device'
-import { BalResizeListener } from '../resize'
+import { BalWindowResizeListener } from '../resize'
 import { Subject } from '../types/signal'
 import { BalOrientationInfo, BalOrientationObserver } from './orientation.interfaces'
 
 export class BalOrientationSubject extends Subject<BalOrientationObserver> {
-  private listener = new BalResizeListener()
+  private listener = new BalWindowResizeListener()
   private state: BalOrientationInfo = balDevice.orientation.toObject()
 
   constructor() {

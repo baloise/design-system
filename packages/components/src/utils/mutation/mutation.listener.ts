@@ -54,6 +54,10 @@ export class BalMutationListener extends ListenerAbstract {
     if (hasCharacterDataChanges) {
       return this.notify(undefined)
     }
+
+    if (this.tags.length === 0 && mutationRecord.length > 0) {
+      return this.notify(undefined)
+    }
   }
 
   private destroyMutationObserver() {

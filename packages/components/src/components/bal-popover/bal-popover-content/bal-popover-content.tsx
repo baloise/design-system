@@ -1,11 +1,11 @@
-import { Component, h, Host, Element, Prop, State, Listen } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Listen, ComponentInterface } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { ResizeHandler } from '../../../utils-old/resize'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-popover-content',
 })
-export class PopoverContent {
+export class PopoverContent implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
   /**
@@ -55,13 +55,9 @@ export class PopoverContent {
 
   @State() contentHeightOnTop = 0
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.contentHeightOnTop = window.innerHeight - 64
-    })
+  @ListenToBreakpoints()
+  breakpointListener(_breakpoints: BalBreakpoints): void {
+    this.contentHeightOnTop = window.innerHeight - 64
   }
 
   get innerStyle() {

@@ -1,28 +1,28 @@
 import { debounce } from '../helpers'
-import { BalResizeHandler } from './resize.handler'
 import { ListenerAbstract } from '../types/listener'
+import { BalResizeInfo } from './resize.interfaces'
 
-export class BalResizeListener extends ListenerAbstract {
-  private resizeHandler = new BalResizeHandler({ onlyListenToWidthChanges: true })
+export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, BalResizeInfo> {
+  private resizeObserver: ResizeObserver | undefined
   private debouncedNotify = debounce(() => this.notify(), 100)
 
-  connect(): void {
-    super.connect()
-    if (this.el) {
-      this.el.addEventListener('resize', this.debouncedNotify, { passive: true })
+  connect(el: HTMLElement): void {
+    super.connect(el)
+    if (typeof ResizeObserver === 'undefined') {
+      return
     }
+    if (this.resizeObserver !== undefined) {
+      this.resizeObserver?.disconnect()
+      this.resizeObserver = undefined
+    }
+
+    this.resizeObserver = new ResizeObserver(() => this.debouncedNotify())
+    this.resizeObserver.observe(el)
   }
 
   disconnect(): void {
     super.disconnect()
-    if (this.el) {
-      this.el.removeEventListener('resize', this.debouncedNotify)
-    }
-  }
-
-  notify = async () => {
-    if (await this.resizeHandler.hasResized()) {
-      super.notify(undefined)
-    }
+    this.resizeObserver?.disconnect()
+    this.resizeObserver = undefined
   }
 }

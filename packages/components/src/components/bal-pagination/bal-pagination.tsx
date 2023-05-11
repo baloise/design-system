@@ -9,12 +9,11 @@ import {
   Event,
   EventEmitter,
   Element,
-  Listen,
   FunctionalComponent,
+  ComponentInterface,
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/legacy'
-import { ResizeHandler } from '../../utils-old/resize'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-pagination',
@@ -22,10 +21,10 @@ import { ResizeHandler } from '../../utils-old/resize'
     css: 'bal-pagination.sass',
   },
 })
-export class Pagination {
+export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLBalPaginationElement
   @State() _value = 1
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
 
   /**
    * Defines the layout of the pagination
@@ -84,13 +83,9 @@ export class Pagination {
     this.topValueChanged(this.top)
   }
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
   }
 
   /**

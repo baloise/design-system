@@ -1,10 +1,19 @@
-import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
+import {
+  Component,
+  Host,
+  h,
+  Method,
+  State,
+  Prop,
+  Element,
+  FunctionalComponent,
+  ComponentInterface,
+} from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { isPlatform } from '../../utils/legacy'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { ResizeHandler } from '../../utils-old/resize'
 import { BalScrollHandler } from '../../utils/scroll'
+import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-hint',
@@ -12,7 +21,7 @@ import { BalScrollHandler } from '../../utils/scroll'
     css: 'bal-hint.sass',
   },
 })
-export class Hint implements BalConfigObserver {
+export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement
 
   private popoverElement!: HTMLBalPopoverElement
@@ -23,7 +32,7 @@ export class Hint implements BalConfigObserver {
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   /**
    * Text for the close button.
    */
@@ -33,19 +42,6 @@ export class Hint implements BalConfigObserver {
    * Disables the close button for tablet and desktop
    */
   @Prop() small = false
-
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      const isCurrentMobile = isPlatform('mobile')
-      if (isCurrentMobile !== this.isMobile) {
-        this.isActive = false
-      }
-      this.isMobile = isCurrentMobile
-    })
-  }
 
   connectedCallback() {
     this.bodyScrollHandler.connect()
@@ -59,6 +55,15 @@ export class Hint implements BalConfigObserver {
   disconnectedCallback() {
     this.bodyScrollHandler.disconnect()
     detachComponentToConfig(this)
+  }
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    const isCurrentMobile = breakpoints.mobile
+    if (isCurrentMobile !== this.isMobile) {
+      this.isActive = false
+    }
+    this.isMobile = isCurrentMobile
   }
 
   /**

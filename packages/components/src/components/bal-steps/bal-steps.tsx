@@ -1,15 +1,14 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
+import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
 import { debounceEvent } from '../../utils/helpers'
-import { isPlatform } from '../../utils/legacy'
 import { BEM } from '../../utils/bem'
 import { BalStepOption } from './bal-step.type'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import { stopEventBubbling } from '../../utils/form-input'
-import { ResizeHandler } from '../../utils-old/resize'
 import { StepButton } from './components/step-button'
 import { newBalStepOption } from './bal-step.util'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-steps',
@@ -17,13 +16,12 @@ import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
     css: 'bal-steps.sass',
   },
 })
-export class Steps implements Loggable, BalMutationObserver {
+export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
-  private resizeWidthHandler = ResizeHandler()
   private stepsId = `bal-steps-${StepsIds++}`
 
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   @State() store: BalStepOption[] = []
 
   log!: LogInstance
@@ -104,18 +102,16 @@ export class Steps implements Loggable, BalMutationObserver {
    * ------------------------------------------------------
    */
 
-  mutationObserverActive = false
+  mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-steps', 'bal-step-item'] })
   mutationListener(): void {
     this.onOptionChange()
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeListener() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
   }
 
   /**

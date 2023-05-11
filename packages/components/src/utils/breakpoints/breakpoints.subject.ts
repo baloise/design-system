@@ -1,4 +1,4 @@
-import { BalResizeListener } from '../resize/resize.listener'
+import { BalWindowResizeListener } from '../resize/window-resize.listener'
 import { BalBreakpointObserver, BalBreakpoints } from './breakpoints.interfaces'
 import { balBreakpoints } from './breakpoints'
 import { initialBreakpoints } from './breakpoints.const'
@@ -6,7 +6,7 @@ import { Subject } from '../types/signal'
 
 export class BalBreakpointSubject extends Subject<BalBreakpointObserver> {
   private state: BalBreakpoints = initialBreakpoints
-  private listener: BalResizeListener = new BalResizeListener()
+  private listener: BalWindowResizeListener = new BalWindowResizeListener()
 
   constructor() {
     super(observer => observer.breakpointListener(this.state))
