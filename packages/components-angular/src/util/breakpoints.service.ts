@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { ApplicationRef, Injectable } from '@angular/core'
 import {
   BalBreakpointObserver,
   BalBreakpoints,
@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class BalBreakpointsService implements BalBreakpointObserver {
-  private _breakpoints$: BehaviorSubject<BalBreakpoints>
+  private _breakpoints$ = new BehaviorSubject<BalBreakpoints>(balBreakpoints.toObject())
 
   state$: Observable<BalBreakpoints>
   mobile$: Observable<boolean>
@@ -23,8 +23,7 @@ export class BalBreakpointsService implements BalBreakpointObserver {
   widescreen$: Observable<boolean>
   fullhd$: Observable<boolean>
 
-  constructor() {
-    this._breakpoints$ = new BehaviorSubject<BalBreakpoints>(balBreakpoints.toObject())
+  constructor(private app: ApplicationRef) {
     this.state$ = this._breakpoints$.asObservable()
     this.mobile$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.mobile))
     this.tablet$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.tablet))
@@ -38,9 +37,8 @@ export class BalBreakpointsService implements BalBreakpointObserver {
   }
 
   breakpointListener(breakpoints: BalBreakpoints): void {
-    if (this._breakpoints$) {
-      this._breakpoints$.next(breakpoints)
-    }
+    this._breakpoints$.next(breakpoints)
+    this.app.tick()
   }
 
   ngOnDestroy() {

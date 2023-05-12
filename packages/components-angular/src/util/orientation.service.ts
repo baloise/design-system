@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { ApplicationRef, Injectable } from '@angular/core'
 import { BehaviorSubject, Observable, map } from 'rxjs'
 import {
   balOrientationSubject,
@@ -11,14 +11,13 @@ import {
   providedIn: 'root',
 })
 export class BalOrientationService implements BalOrientationObserver {
-  private _orientation$: BehaviorSubject<BalOrientationInfo>
+  private _orientation$ = new BehaviorSubject<BalOrientationInfo>(balDevice.orientation.toObject())
 
   state$: Observable<BalOrientationInfo>
   portrait$: Observable<boolean>
   landscape$: Observable<boolean>
 
-  constructor() {
-    this._orientation$ = new BehaviorSubject<BalOrientationInfo>(balDevice.orientation.toObject())
+  constructor(private app: ApplicationRef) {
     this.state$ = this._orientation$.asObservable()
     this.portrait$ = this._orientation$.asObservable().pipe(map(orientation => orientation.portrait))
     this.landscape$ = this._orientation$.asObservable().pipe(map(orientation => orientation.landscape))
@@ -27,9 +26,8 @@ export class BalOrientationService implements BalOrientationObserver {
   }
 
   orientationListener(info: BalOrientationInfo): void {
-    if (this._orientation$) {
-      this._orientation$.next(info)
-    }
+    this._orientation$.next(info)
+    this.app.tick()
   }
 
   ngOnDestroy() {
