@@ -202,6 +202,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Report Visual Failures
+        if: failure()
+        run: npm run visual:report
+
       - name: Upload snapshots
         uses: actions/upload-artifact@v3
         if: failure()
@@ -261,6 +265,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Report Visual Failures
+        if: failure()
+        run: npm run visual:report
+
       - name: Upload snapshots
         uses: actions/upload-artifact@v3
         if: failure()
@@ -308,6 +316,10 @@ jobs:
             cypress/e2e/visual/css-*.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Report Visual Failures
+        if: failure()
+        run: npm run visual:report
 
       - name: Upload snapshots
         uses: actions/upload-artifact@v3
