@@ -44,7 +44,18 @@ jobs:
           browser: chrome
           env: type=base
           spec: |
-            cypress/e2e/visual/*.cy.ts
+            cypress/e2e/visual/bal-button.visual.cy.ts
+            cypress/e2e/visual/bal-card.visual.cy.ts
+            cypress/e2e/visual/bal-checkbox.visual.cy.ts
+            cypress/e2e/visual/bal-datepicker.visual.cy.ts
+            cypress/e2e/visual/bal-field.visual.cy.ts
+            cypress/e2e/visual/bal-input-group.visual.cy.ts
+            cypress/e2e/visual/bal-navbar.visual.cy.ts
+            cypress/e2e/visual/bal-navigation.visual.cy.ts
+            cypress/e2e/visual/bal-popover.visual.cy.ts
+            cypress/e2e/visual/bal-radio.visual.cy.ts
+            cypress/e2e/visual/bal-select.visual.cy.ts
+            cypress/e2e/visual/bal-tabs.visual.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
