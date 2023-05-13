@@ -1,4 +1,4 @@
-name: Visual Regression Test - Base Image
+name: Visual CSS Regression Test - Base Image
 
 on:
   workflow_dispatch:
