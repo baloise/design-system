@@ -126,7 +126,7 @@ export namespace Components {
     }
     interface BalBadge {
         /**
-          * Define the alert color for the badge.
+          * Define the color for the badge.
          */
         "color": BalProps.BalBadgeColor;
         /**
@@ -4248,7 +4248,7 @@ declare namespace LocalJSX {
     }
     interface BalBadge {
         /**
-          * Define the alert color for the badge.
+          * Define the color for the badge.
          */
         "color"?: BalProps.BalBadgeColor;
         /**
