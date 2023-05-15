@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import '../bal-radio-checkbox.vars'
 
 .bal-checkbox-button
   display: block
@@ -40,49 +41,49 @@
     display: block
     width: 100%
     height: 100%
-    background: transparent
-    border-style: solid
-    border-radius: var(--bal-radius-normal)
-    border-width: var(--bal-border-width-normal)
-    border-color: var(--bal-color-border-grey)
+    background: var(--bal-radio-checkbox-button-background)
+    border-style: var(--bal-form-field-control-border-style)
+    border-radius: var(--bal-form-field-control-radius)
+    border-width: var(--bal-form-field-control-border-width)
+    border-color: var(--bal-radio-checkbox-button-border-color)
     padding: var(--bal-size-medium)
     cursor: pointer
     user-select: none
     //
     // checked state
     &--checked
-      border-color: var(--bal-color-border-primary)
+      border-color: var(--bal-radio-checkbox-button-border-color-checked)
     &--checked#{&}--color-green
-      background: var(--bal-color-green-1)
+      background: var(--bal-radio-checkbox-button-background-checked-green)
     &--checked#{&}--color-purple
-      background: var(--bal-color-purple-1)
+      background: var(--bal-radio-checkbox-button-background-checked-purple)
     &--checked#{&}--color-red
-      background: var(--bal-color-red-1)
+      background: var(--bal-radio-checkbox-button-background-checked-red)
     &--checked#{&}--color-yellow
-      background: var(--bal-color-yellow-1)
+      background: var(--bal-radio-checkbox-button-background-checked-yellow)
     //
     // color states
     &:disabled,
     &--disabled
-      background: var(--bal-color-grey-1)
-      border-color: var(--bal-color-border-grey-dark)
+      background: var(--bal-radio-checkbox-button-background-disabled)
+      border-color: var(--bal-radio-checkbox-button-border-color-disabled)
       cursor: default
     &--invalid
-      border-color: var(--bal-color-border-danger)
+      border-color: var(--bal-radio-checkbox-button-border-color-invalid)
     //
     // user interactions
     +hover()
       &:hover:not(:disabled):not(.bal-checkbox-button__native--colored)
-        background: var(--bal-color-grey-1)
-        border-color: var(--bal-color-border-light-blue)
+        background: var(--bal-radio-checkbox-button-background-hover)
+        border-color: var(--bal-radio-checkbox-button-border-color-hover)
     &:active:not(:disabled)
-      border-color: var(--bal-color-border-primary-dark)
+      border-color: var(--bal-radio-checkbox-button-border-color-active)
     &--invalid
       +hover()
         &:hover:not(:disabled)
-          border-color: var(--bal-color-border-danger-dark)
+          border-color: var(--bal-radio-checkbox-button-border-color-invalid-hover)
         &:active:not(:disabled)
-          border-color: var(--bal-color-border-danger-darker)
+          border-color: var(--bal-radio-checkbox-button-border-color-invalid-active)
     //
     // flying focus
     &.bal-focused
