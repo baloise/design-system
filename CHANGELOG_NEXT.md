@@ -35,7 +35,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** adjust the numbering of the steps. Closes [#586](https://github.com/baloise/design-system/issues/586) ([dda1799](https://github.com/baloise/design-system/commit/dda1799b6f7adde17ac36e6fd62a2f60e338b43d))
 * **tabs:** break tab label on vertical. Closes [#688](https://github.com/baloise/design-system/issues/688) ([1f62ddf](https://github.com/baloise/design-system/commit/1f62ddfecd781ab912c2c70839248b85a9c9393b))
 
-
 ### Performance Improvements
 
 * **button:** only active lottie when loading is true ([602fb70](https://github.com/baloise/design-system/commit/602fb700db56cfeaf0f04212b715b3c2948a3ba1))

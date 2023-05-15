@@ -14,6 +14,13 @@ export class Orientation {
   public get isLandscape(): boolean {
     return window.matchMedia('(orientation: landscape)').matches
   }
+
+  public toObject() {
+    return {
+      landscape: this.isLandscape,
+      portrait: this.isPortrait,
+    }
+  }
 }
 
 class Device {

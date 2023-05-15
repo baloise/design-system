@@ -1,18 +1,18 @@
-import { Component, h, Host, Method, State, Element, Prop } from '@stencil/core'
+import { Component, h, Host, Method, State, Element, Prop, ComponentInterface } from '@stencil/core'
 import { deepReady } from '../../../utils/helpers'
-import { isPlatform } from '../../../utils/platform'
 import { BEM } from '../../../utils/bem'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-navbar-menu',
   scoped: false,
   shadow: false,
 })
-export class NavbarMenu {
+export class NavbarMenu implements ComponentInterface, BalBreakpointObserver {
   @Element() element!: HTMLElement
 
   @State() isMenuActive = false
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = balBreakpoints.isTouch
 
   /**
    * @internal
@@ -21,6 +21,11 @@ export class NavbarMenu {
    * Meta and main are used for the website.
    */
   @Prop() interface: BalProps.BalNavbarInterface = 'app'
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isTouch = breakpoints.touch
+  }
 
   /**
    * @internal - If the menu is open it closes it and the other way around.
