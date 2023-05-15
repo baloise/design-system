@@ -1,5 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
-@import './bal-modal.vars'
+@import './bal-modal-customization.vars'
 
 $modal-breakpoint: 769px !default
 
@@ -26,7 +26,7 @@ $modal-breakpoint: 769px !default
   // backdrop background
   +element(background)
     @extend %overlay
-    background-color: var(--bal-modal-backdrop-background)
+    background-color: rgba(var(--bal-modal-backdrop-background), .8)
 
   +element(header)
     +element(title)
