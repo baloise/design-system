@@ -1,4 +1,4 @@
-name: Visual B Regression Test - Base Image
+name: Visual B Regression Test
 
 on:
   workflow_dispatch:

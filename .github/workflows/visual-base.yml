@@ -1,4 +1,4 @@
-name: Visual CSS Regression Test
+name: Visual All Regression Test
 
 on:
   workflow_dispatch:
@@ -44,7 +44,7 @@ jobs:
           browser: chrome
           env: type=base
           spec: |
-            cypress/e2e/visual/css-*.cy.ts
+            cypress/e2e/visual/*.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
