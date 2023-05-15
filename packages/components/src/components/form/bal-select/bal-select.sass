@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-select.vars'
 
 +component(select-option)
   display: none !important
@@ -10,11 +11,11 @@
   flex: 1
   font-family: var(--bal-font-family-text)
   +element(popover)
-    border: 0.125rem solid var(--bal-color-grey-2)
+    border: 0.125rem solid var(--bal-select-popover-border-color)
     +element(empty)
       padding: .5rem 1rem
       font-family: var(--bal-font-family-text)
-      color: var(--bal-color-text-primary)
+      color: var(--bal-select-popover-empty-text-color)
       +modifier(hidden)
         display: none
   //
@@ -27,50 +28,49 @@
     display: flex
     border-width: 0.125rem
     border-style: solid
-    border-color: var(--bal-color-border-grey)
-    border-radius: var(--bal-radius-normal)
-    background: var(--bal-color-primary-inverted)
+    border-color: var(--bal-select-control-border-color)
+    border-radius: var(--bal-select-control-border-radius)
+    background: var(--bal-select-control-background)
     font-size: var(--bal-weight-regular)
     font-family: var(--bal-font-family-text)
-    color: var(--bal-color-text-primary)
+    color: var(--bal-select-control-text-color)
     outline: none
     box-shadow: var(--bal-shadow-none)
     padding-right: 1rem
     min-height: 3rem
     +modifier(focused)
-      border-color: var(--bal-color-primary)
+      border-color: var(--bal-select-control-border-color-focused)
     &:not(#{&}--disabled):not(#{&}--invalid):not(#{&}--inverted-footer):hover
-      border-color: var(--bal-color-border-grey)
-      background-color: var(--bal-color-grey-1)
+      border-color: var(--bal-select-control-border-color-hover)
+      background-color: var(--bal-select-control-background-hover)
       .bal-select__control__input
-        background-color: var(--bal-color-grey-1)
+        background-color: var(--bal-select-control-input-background)
     &--invalid:not(#{&}--disabled)
-      border-color: var(--bal-color-border-danger) !important
-      background: var(--bal-color-danger-1) !important
+      border-color: var(--bal-select-control-border-color-invalid) !important
+      background: var(--bal-select-control-background-invalid) !important
     &:focus-within
-      border-color: var(--bal-color-primary) !important
+      border-color: var(--bal-select-control-border-color-focus-within) !important
     +modifier(disabled)
-      background-color: var(--bal-color-grey-2) !important
-      border-color: var(--bal-color-border-grey-dark) !important
+      background-color: var(--bal-select-control-background-disabled) !important
+      border-color: var(--bal-select-control-border-color-disabled) !important
       &,
       & input
         cursor: default !important
         user-select: none !important
         pointer-events: none !important
-        color: var(--bal-color-text-grey)
+        color: var(--bal-select-input-text-color-disabled)
     +modifier(inverted-footer)
       border: none
-      background-color: var(--bal-color-transparent) !important
-      background: var(--bal-color-transparent) !important
+      background-color: var(--bal-select-control-input-inverted-footer-background) !important
       padding-right: var(--bal-space-none)
       &:hover
-        background-color: var(--bal-color-transparent) !important
+        background-color: var(--bal-select-control-input-inverted-footer-background-hover) !important
 
       .input
-        color: var(--bal-color-text-white)
-        background-color: var(--bal-color-transparent) !important
+        color: var(--bal-select-native-input-text-color-disabled)
+        background-color: var(--bal-select-control-native-input-background) !important
         &:hover
-          background-color: var(--bal-color-transparent) !important
+          background-color: var(--bal-select-control-native-input-background-hover) !important
 
     //
     // trigger icon on the right
@@ -108,7 +108,7 @@
       outline-width: 0 !important
       height: calc(3rem - 0.25rem) !important
       box-shadow: var(--bal-shadow-none) !important
-      background: transparent
+      background: var(--bal-select-control-input-multiple-background)
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
       padding-left: 0.25rem !important
@@ -118,15 +118,15 @@
         user-select: none !important
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
         &::selection
-          background: transparent
+          background: var(--bal-select-control-input-multiple-background-read-only-selection)
         &::-moz-selection
-          background: transparent
+          background: var(--bal-select-control-input-multiple-background-read-only-selection)
   //
   // select options
   +element(option)
     visibility: visible
     font-family: var(--bal-font-family-text)
-    background: transparent
+    background: var(--bal-select-control-input-option-background)
     border: none
     cursor: pointer
     outline: none
@@ -135,7 +135,7 @@
     align-items: center
     padding: 0
     margin: 0
-    border-top: 0.125rem solid var(--bal-color-grey-2)
+    border-top: 0.125rem solid var(--bal-select-option-border-top-color)
     text-align: inherit
     white-space: nowrap
     width: 100%
@@ -144,13 +144,13 @@
     &::-moz-focus-inner
       border: none
     +modifier(selected)
-      background: var(--bal-color-primary-1)
+      background: var(--bal-select-control-input-option-background-selected)
       .bal-select__option__content__label
         font-weight: var(--bal-weight-bold)
     +modifier(focused)
-      background: var(--bal-color-grey-2)
+      background: var(--bal-select-control-input-option-background-focused)
     &:hover
-      background: var(--bal-color-grey-2)
+      background: var(--bal-select-control-input-option-background-hover)
     +element(content)
       display: flex
       flex: 1
@@ -166,7 +166,7 @@
         padding: 0
         font-family: var(--bal-font-family-text)
         font-weight: var(--bal-weight-regular)
-        color: var(--bal-color-text-primary)
+        color: var(--bal-select-option-content-label-text-color)
         line-height: 1.125rem
         word-break: break-word
         white-space: normal
