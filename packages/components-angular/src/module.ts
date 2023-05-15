@@ -13,8 +13,8 @@ import { BalModalService } from './overlays/modal.service'
 import { BalToastService } from './overlays/toast.service'
 import { BalSnackbarService } from './overlays/snackbar.service'
 import { BalNgErrorComponent } from './components/error/error.component'
-import { BalBreakpointsService } from './breakpoints.service'
-import { BalOrientationService } from './orientation.service'
+import { BalBreakpointsService } from './util/breakpoints.service'
+import { BalOrientationService } from './util/orientation.service'
 
 export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 

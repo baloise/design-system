@@ -28,8 +28,9 @@
   background: var(--bal-progress-bar-line-background)
   border-top-right-radius: var(--bal-progress-bar-line-radius)
   border-bottom-right-radius: var(--bal-progress-bar-line-radius)
-  will-change: width
-  transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+  &--animated
+    will-change: width
+    transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
   &--full
     border-top-right-radius: 0
     border-bottom-right-radius: 0

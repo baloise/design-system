@@ -23,7 +23,11 @@ export * from './components/form/bal-radio/bal-radio.type'
  * Utils
  */
 export { initializeBaloiseDesignSystem } from './initialize'
-export { NewBalOptionValue, NewBalSingleOptionValue } from './components/form/bal-select/utils/bal-option.util'
+export { newBalStepOption } from './components/bal-steps/bal-step.util'
+export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
+export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'
+export { newBalRadioOption } from './components/form/bal-radio/utils/bal-radio.util'
+export { newBalOptionValue, newBalSingleOptionValue } from './components/form/bal-select/utils/bal-option.util'
 export {
   waitForComponent,
   waitForDesignSystem,
@@ -36,32 +40,13 @@ export {
   componentOnReady,
   isDescendant,
 } from './utils/helpers'
-export {
-  BreakpointsHandler,
-  Breakpoints,
-  BreakpointsHandlerCallback,
-  initialBreakpoints,
-  BreakpointsHandlerType,
-} from './utils/breakpoints'
-export {
-  Orientation,
-  OrientationHandler,
-  OrientationHandlerCallback,
-  OrientationHandlerType,
-  initialOrientation,
-} from './utils/orientation'
 export { scrollToFirstInvalidField } from './utils/form'
-export { ScrollHandler } from './utils/scroll'
+export { BalScrollHandler } from './utils/scroll'
 export { balBrowser } from './utils/browser'
 export { balDevice } from './utils/device'
-export { newBalStepOption } from './components/bal-steps/bal-step.util'
-export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
-export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'
-export { newBalRadioOption } from './components/form/bal-radio/utils/bal-radio.util'
-
-// deprecated
-export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
-export { isBrowser, hasTouchSupport } from './utils/legacy'
+export { balBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from './utils/breakpoints'
+export { BalOrientationObserver, BalOrientationInfo, balOrientationSubject } from './utils/orientation'
+export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
 
 /**
  * Controllers
@@ -69,3 +54,9 @@ export { isBrowser, hasTouchSupport } from './utils/legacy'
 export * from './components/notice/bal-toast/bal-toast.controller'
 export * from './components/notice/bal-snackbar/bal-snackbar.controller'
 export * from './components/notice/bal-modal/bal-modal.controller'
+
+/**
+ * deprecated
+ */
+export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/legacy'
+export { isBrowser, hasTouchSupport, NewBalOptionValue, NewBalSingleOptionValue } from './utils/legacy'

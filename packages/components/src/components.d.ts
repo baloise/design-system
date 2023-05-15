@@ -2129,6 +2129,7 @@ export namespace Components {
           * The shape color
          */
         "background": BalProps.BalProgressBarBackground;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The value of the bar in percentage. So min is 0 and 100 would be the max value.
          */
