@@ -7,6 +7,8 @@ generated/
 public/
 storybook/
 storybook-static/
+report.html
+reg.json
 
 CHANGELOG.md
 

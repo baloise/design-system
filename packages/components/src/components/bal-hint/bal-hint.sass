@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-hint.vars'
 
 +block(hint)
   +unselectable
@@ -11,7 +12,7 @@
       &:focus
         +fillSvg(var(--bal-color-light-blue-5))
   +element(content)
-    background: var(--bal-color-grey-2)
+    background: var(--bal-hint-content-background)
     display: flex
     gap: 1.5rem
     flex-direction: column

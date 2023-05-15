@@ -1,9 +1,9 @@
 import { balToastController } from './components/notice/bal-toast/bal-toast.controller'
 import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
 import { BalConfig, BalMode, initialize, initStyleMode } from './utils/config'
-import { setupPlatforms } from './utils/platform'
 import { VERSION } from './utils/constants/version.constant'
 import { balBrowser } from './utils/browser'
+import { balBreakpoints } from './utils/breakpoints'
 
 export const initializeBaloiseDesignSystem = (initConfig: BalConfig = {}) => {
   if (balBrowser.hasWindow) {
@@ -11,7 +11,7 @@ export const initializeBaloiseDesignSystem = (initConfig: BalConfig = {}) => {
     win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
     initialize(initConfig, win)
-    setupPlatforms(win)
+    balBreakpoints.detect()
 
     win.BaloiseDesignSystem.toastController = balToastController
     win.BaloiseDesignSystem.snackbarController = balSnackbarController

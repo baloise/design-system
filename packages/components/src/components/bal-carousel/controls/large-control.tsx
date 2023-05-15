@@ -24,6 +24,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
 
   return (
     <div
+      data-mutation="false"
       class={{
         ...controls.class(),
         ...controls.modifier('large').class(),

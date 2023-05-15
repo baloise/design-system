@@ -1,4 +1,17 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  State,
+  Event,
+  EventEmitter,
+  Method,
+  Prop,
+  Watch,
+  Listen,
+  ComponentInterface,
+} from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import {
   debounceEvent,
@@ -12,15 +25,14 @@ import {
 import { BalTabOption } from './bal-tab.type'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/platform'
-import { ResizeHandler } from '../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
-import { MutationHandler } from '../../utils/mutations'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
 
 @Component({
@@ -29,12 +41,12 @@ import { AccordionState } from '../../interfaces'
     css: 'bal-tabs.sass',
   },
 })
-export class Tabs implements Loggable, BalConfigObserver {
+export class Tabs
+  implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver, BalBreakpointObserver
+{
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
 
-  private mutationHandler = MutationHandler({ tags: ['bal-tabs', 'bal-tab-item'] })
-  private resizeWidthHandler = ResizeHandler()
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
 
@@ -47,8 +59,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   @State() inNavbar = false
   @State() inNavbarLight = false
 
-  @State() isMobile = isPlatform('mobile')
-  @State() isTablet = isPlatform('tablet')
+  @State() isMobile = balBreakpoints.isMobile
+  @State() isTablet = balBreakpoints.isTablet
 
   @State() store: BalTabOption[] = []
   @State() animated = true
@@ -94,11 +106,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
-    if (this.options === undefined) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined
   }
 
   /**
@@ -200,13 +208,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     }
     this.debounceChanged()
     attachComponentToConfig(this)
-    this.mutationHandler.connect(this.el, () => this.onOptionChange())
-
-    if (this.options === undefined || this.options.length < 1) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
       const isAccordionOpen = this.value !== undefined && this.value.length > 0
@@ -224,7 +226,6 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   disconnectedCallback() {
     detachComponentToConfig(this)
-    this.mutationHandler.disconnect()
   }
 
   /**
@@ -232,17 +233,22 @@ export class Tabs implements Loggable, BalConfigObserver {
    * ------------------------------------------------------
    */
 
+  mutationObserverActive = true
+
+  @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
+  mutationListener(): void {
+    this.onOptionChange()
+  }
+
   configChanged(state: BalConfigState): void {
     this.animated = state.animated
   }
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-      this.isTablet = isPlatform('tablet')
-      this.animateLine()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
+    this.isTablet = breakpoints.tablet
+    this.animateLine()
   }
 
   @Listen('balWillAnimate', { target: 'window' })
@@ -362,8 +368,8 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   private isVertical(): boolean {
     const isVertical = this.parseVertical()
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = this.isMobile
+    const isTablet = this.isTablet
     const isTouch = isMobile || isTablet
 
     return isVertical || (isTouch && this.inNavbar)
@@ -641,8 +647,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   render() {
     const block = BEM.block('tabs')
 
-    const isMobile = isPlatform('mobile')
-    const isTablet = isPlatform('tablet')
+    const isMobile = this.isMobile
+    const isTablet = this.isTablet
     const isTouch = isMobile || isTablet
 
     const isInverted = (this.inNavbar && !isTouch && !this.inNavbarLight) || (!this.inNavbar && this.inverted)

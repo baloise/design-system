@@ -1,21 +1,9 @@
-import {
-  Component,
-  h,
-  ComponentInterface,
-  Host,
-  Element,
-  Prop,
-  Listen,
-  State,
-  FunctionalComponent,
-  Watch,
-} from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, FunctionalComponent, Watch } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { isPlatform } from '../../utils/platform'
-import { ResizeHandler } from '../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => AnimationItem
 
@@ -25,11 +13,10 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
     css: 'bal-logo.sass',
   },
 })
-export class Logo implements ComponentInterface, Loggable {
+export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver {
   private animationItem!: AnimationItem
   private animatedLogoElement!: HTMLDivElement
   private animationFunction?: LogoAnimationFunction
-  private resizeWidthHandler = ResizeHandler()
 
   log!: LogInstance
 
@@ -40,7 +27,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLElement
 
-  @State() isTouch = false
+  @State() isTouch = balBreakpoints.isTouch
 
   /**
    * PUBLIC PROPERTY API
@@ -72,10 +59,6 @@ export class Logo implements ComponentInterface, Loggable {
     this.animatedWatcher()
   }
 
-  componentWillRender() {
-    this.updatePlatform()
-  }
-
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -95,22 +78,15 @@ export class Logo implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => this.updatePlatform())
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isTouch = breakpoints.touch
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
-
-  private updatePlatform = () => {
-    const newIsTouch = isPlatform('touch')
-    if (this.isTouch !== newIsTouch) {
-      this.isTouch = newIsTouch
-    }
-  }
 
   private async resetAnimation() {
     this.destroyAnimation()

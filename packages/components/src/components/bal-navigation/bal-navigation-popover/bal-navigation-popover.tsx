@@ -1,7 +1,7 @@
 import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/core'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
-import { disableSmoothScrolling, enableSmoothScrolling } from '../../../utils/scroll'
+import { BalScrollHandler } from '../../../utils/scroll'
 
 @Component({
   tag: 'bal-navigation-popover',
@@ -120,13 +120,13 @@ export class NavigationPopover implements ComponentInterface {
     this.clearTimeouts()
 
     if (!this.isActive) {
-      disableSmoothScrolling()
+      BalScrollHandler.disableSmoothScrolling()
       this.scrollToTopTimer = setTimeout(() => {
         window.scrollTo(0, 0)
       }, 0)
     }
     this.setActiveTimer = setTimeout(() => {
-      enableSmoothScrolling()
+      BalScrollHandler.enableSmoothScrolling()
       this.isActive = !this.isActive
     }, 100)
   }

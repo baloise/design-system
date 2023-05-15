@@ -1,12 +1,12 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
-import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
+import { BalScrollHandler } from '../../../utils/scroll'
 
 @Component({
   tag: 'bal-navbar-brand',
 })
 export class NavbarBrand {
-  private bodyScrollHandler = ScrollHandler()
+  private bodyScrollHandler = new BalScrollHandler()
 
   @Element() el!: HTMLElement
 
