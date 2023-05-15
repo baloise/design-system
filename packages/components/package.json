@@ -67,6 +67,7 @@
     "cy:build": "npm run cy:copy && stencil build --config stencil.config.e2e.ts --prod",
     "cy:start": "node ./web-server.js",
     "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
+    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
     "docs:build": "node ../../.build/docs-github.js"
