@@ -162,7 +162,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
    */
   @Method()
   @ListenToConfig()
-  configChanged(state: BalConfigState): void {
+  async configChanged(state: BalConfigState) {
     this.language = state.language
     this.region = state.region
 
