@@ -1,13 +1,12 @@
-import { Component, h, Host, Listen, Prop, State } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
-import { ResizeHandler } from '../../../utils/resize'
 import { Attributes } from '../../../utils/attributes'
+import { BalBreakpointObserver, balBreakpoints, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-navigation-menu-list',
 })
-export class NavigationMenuList {
+export class NavigationMenuList implements ComponentInterface, BalBreakpointObserver {
   /**
    * Color of the menu list card background
    */
@@ -28,13 +27,9 @@ export class NavigationMenuList {
 
   @State() headingLevel!: 'h3' | 'h4' | 'h5'
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.setHeadingLevel()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(_breakpoints: BalBreakpoints): void {
+    this.setHeadingLevel()
   }
 
   connectedCallback() {
@@ -42,7 +37,7 @@ export class NavigationMenuList {
   }
 
   setHeadingLevel = () => {
-    if (isPlatform('touch')) {
+    if (balBreakpoints.isTouch) {
       this.headingLevel = 'h5'
       return
     }

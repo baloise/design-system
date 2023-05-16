@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { ComponentElementState } from '../../../utils/element-states'
+import { BalElementStateInfo } from '../../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
@@ -8,7 +8,7 @@ import { ComponentElementState } from '../../../utils/element-states'
     css: 'bal-text.sass',
   },
 })
-export class Text implements ComponentInterface, ComponentElementState {
+export class Text implements ComponentInterface, BalElementStateInfo {
   /**
    * PUBLIC API
    * ------------------------------------------------------

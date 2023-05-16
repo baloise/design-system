@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-navbar.vars'
 
 +block(navbar)
   +unselectable
@@ -6,7 +7,7 @@
   display: block
   +modifiers(context-app, context-simple)
     &:not(.bal-navbar--is-light)
-      background: var(--bal-color-primary)
+      background: var(--bal-navbar-background)
   +modifiers(context-app, context-simple)
     height: 64px
     max-height: 64px
@@ -47,14 +48,14 @@
         font-size: var(--bal-size-medium)
         font-family: var(--bal-font-family-title)
         font-weight: var(--bal-weight-bold)
-        color: var(--bal-color-text-primary-inverted)
+        color: var(--bal-navbar-brand-title-text-color)
       +desktop
         font-size: var(--bal-size-medium)
 
     +modifiers(context-app, context-simple)
-      color: var(--bal-color-text-primary-inverted)
+      color: var(--bal-navbar-brand-text-color)
       & > a
-        color: var(--bal-color-text-primary-inverted)
+        color: var(--bal-navbar-brand-logo-link-color)
 
   +element(menu)
     position: static
@@ -65,7 +66,7 @@
       +touch
         position: fixed !important
         display: block
-        background: var(--bal-color-white)
+        background: var(--bal-navbar-active-menu-background)
 
     +modifiers(context-app)
       +touch
@@ -132,10 +133,10 @@
           align-items: center
   // Styling for light (white) background
   +modifiers(is-light)
-    background-color: var(--bal-color-white)
+    background-color: var(--bal-navbar-light-background)
     box-shadow: var(--bal-shadow-normal)
     .bal-navbar__brand__title
-      color: var(--bal-color-text-primary)
+      color: var(--bal-navbar-brand-title-light-text-color)
     bal-logo
       svg
         +fillSvg(var(--bal-color-primary))

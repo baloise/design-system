@@ -10,7 +10,7 @@ import {
   defaultConfig,
   detachComponentToConfig,
 } from '../../utils/config'
-import { ComponentElementState } from '../../utils/element-states'
+import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-icon',
@@ -18,7 +18,7 @@ import { ComponentElementState } from '../../utils/element-states'
     css: 'bal-icon.sass',
   },
 })
-export class Icon implements BalConfigObserver, ComponentElementState {
+export class Icon implements BalConfigObserver, BalElementStateInfo {
   @State() icons: BalIcons = defaultConfig.icons
 
   /**

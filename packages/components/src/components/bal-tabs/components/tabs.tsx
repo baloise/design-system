@@ -1,9 +1,9 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { isPlatform } from '../../../utils/platform'
 import { BEM } from '../../../utils/bem'
 import { TabProps, TabLineProps } from '../bal-tab.type'
 import { TabItem } from './tab-item'
 import { balBrowser } from '../../../utils/browser'
+import { balBreakpoints } from '../../../interfaces'
 
 const tabsEl = BEM.block('tabs').element('tabs')
 const tabItemEl = tabsEl.element('item')
@@ -27,7 +27,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
   context,
   inverted,
 }) => {
-  if (isPlatform('mobile') && selectOnMobile) {
+  if (balBreakpoints.isMobile && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
       const selectedTabs = tabs.filter(tab => tab.value === event.detail)
       if (selectedTabs.length > 0) {
@@ -147,8 +147,8 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
 }) => {
   const tabLineEl = tabsEl.element('line')
   let style = {}
-  const isMobile = isPlatform('mobile')
-  const isTablet = isPlatform('tablet')
+  const isMobile = balBreakpoints.isMobile
+  const isTablet = balBreakpoints.isTablet
   const isNavbarTablet = context === 'navbar' && (isMobile || isTablet)
 
   const isVertical = vertical === true

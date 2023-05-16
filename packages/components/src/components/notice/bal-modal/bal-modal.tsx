@@ -3,8 +3,8 @@ import { dismiss, eventMethod, prepareOverlay } from '../../../utils/overlays/ov
 import { attachComponent, detachComponent } from '../../../utils/framework-delegate'
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
-import { ScrollHandler } from '../../../utils/scroll'
 import { getClassMap } from '../../../utils/css-classes'
+import { BalScrollHandler } from '../../../utils/scroll'
 
 @Component({
   tag: 'bal-modal',
@@ -20,7 +20,7 @@ export class Modal implements OverlayInterface {
   private isClickedOutsideOnMouseDown = false
   private isClickedOutsideOnMouseUp = false
 
-  private bodyScrollHandler = ScrollHandler()
+  private bodyScrollHandler = new BalScrollHandler()
 
   @State() presented = false
 

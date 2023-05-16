@@ -1,6 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Method } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { ResizeHandler } from '../../utils/resize'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalConfigObserver, BalConfigState } from '../../utils/config'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -8,11 +9,11 @@ import { ResizeHandler } from '../../utils/resize'
     css: 'bal-progress-bar.sass',
   },
 })
-export class ProgressBar implements ComponentInterface {
+export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
+  private animated = true
   private lineEl?: HTMLDivElement
-  private resizeHandler = ResizeHandler()
 
   /**
    * PUBLIC PROPERTY API
@@ -43,11 +44,14 @@ export class ProgressBar implements ComponentInterface {
    * ------------------------------------------------------
    */
 
-  @Listen('resize', { target: 'window' })
-  async resizeListener() {
-    this.resizeHandler(() => {
-      this.updateProgress()
-    })
+  @ListenToBreakpoints()
+  breakpointListener(_breakpoints: BalBreakpoints) {
+    this.updateProgress()
+  }
+
+  @Method()
+  async configChanged(state: BalConfigState) {
+    this.animated = state.animated
   }
 
   /**
@@ -89,6 +93,7 @@ export class ProgressBar implements ComponentInterface {
         <div
           class={{
             ...bemLineEl.class(),
+            ...bemLineEl.modifier(`animated`).class(this.animated),
           }}
           ref={lineEl => (this.lineEl = lineEl)}
         ></div>

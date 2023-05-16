@@ -14,9 +14,11 @@ if (IS_BAL_DS_RELEASE) {
 
 export const StencilBaseConfig: Config = {
   autoprefixCss: true,
+  sourceMap: false,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
   enableCache: true,
+  buildEs5: 'prod',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
@@ -34,13 +36,13 @@ export const StencilBaseConfig: Config = {
       sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
     },
     {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
-    },
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],

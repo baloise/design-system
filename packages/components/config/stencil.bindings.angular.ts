@@ -11,7 +11,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['bal-checkbox'],
     event: 'balChange',
-    targetAttr: 'value',
+    targetAttr: 'checked',
     type: 'boolean',
   },
   {

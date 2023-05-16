@@ -1,10 +1,9 @@
 import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } from '@stencil/core'
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../utils/platform'
 import { balDevice } from '../../utils/device'
-import { ScrollHandler } from '../../utils/scroll'
-import { ResizeHandler } from '../../utils/resize'
+import { BalScrollHandler } from '../../utils/scroll'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-navigation',
@@ -12,7 +11,7 @@ import { ResizeHandler } from '../../utils/resize'
     css: 'bal-navigation.sass',
   },
 })
-export class Navigation implements ComponentInterface {
+export class Navigation implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLElement
 
   private mutationO?: MutationObserver
@@ -20,7 +19,7 @@ export class Navigation implements ComponentInterface {
   private mainNavTabsEl?: HTMLBalTabsElement
   private previousY = 0
 
-  private bodyScrollBlocker = ScrollHandler()
+  private bodyScrollBlocker = new BalScrollHandler()
 
   @State() mainMobileHeight = ''
   @State() isMetaHidden = false
@@ -30,7 +29,8 @@ export class Navigation implements ComponentInterface {
   @State() isMainBodyOpen = false
   @State() selectedMetaValue? = ''
   @State() selectedMainValue? = ''
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = balBreakpoints.isTouch
+  @State() isDesktop = balBreakpoints.isDesktop
   /**
    * Defines if the animation should be active
    */
@@ -54,14 +54,14 @@ export class Navigation implements ComponentInterface {
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (isPlatform('desktop')) {
+    if (this.isDesktop) {
       if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
         this.isMainBodyOpen = false
         this.selectedMainValue = ''
       }
     }
 
-    if (isPlatform('touch')) {
+    if (this.isTouch) {
       if (this.metaMobileActionsElement?.contains(event.target as Node)) {
         this.isMainBodyOpen = false
       }
@@ -76,20 +76,18 @@ export class Navigation implements ComponentInterface {
     return this.el.querySelector('bal-navigation-meta-end') as HTMLElement
   }
 
-  resizeWidthHandler = ResizeHandler()
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMetaHidden = false
+    this.mainMobileHeight = this.getMaxHeight()
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isMetaHidden = false
-      this.mainMobileHeight = this.getMaxHeight()
+    if (this.isTouch !== breakpoints.touch) {
+      this.isMainBodyOpen = false
+      this.selectedMainValue = ''
+      this.isTouch = breakpoints.touch
+    }
 
-      if (this.isTouch !== isPlatform('touch')) {
-        this.isMainBodyOpen = false
-        this.selectedMainValue = ''
-        this.isTouch = isPlatform('touch')
-      }
-    })
+    this.isDesktop = breakpoints.desktop
   }
 
   @Listen('orientationchange', { target: 'window' })
@@ -100,7 +98,7 @@ export class Navigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
-    if (isPlatform('desktop') && !this.bodyScrollBlocker.isDisabled()) {
+    if (this.isDesktop && !this.bodyScrollBlocker.isDisabled()) {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -136,8 +134,6 @@ export class Navigation implements ComponentInterface {
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
     this.metaDesktopEndElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
-
-    this.isTouch = isPlatform('touch')
   }
 
   componentDidUpdate() {

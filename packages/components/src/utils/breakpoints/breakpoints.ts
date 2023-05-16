@@ -1,11 +1,12 @@
 import { balBrowser } from '../browser'
+import { BalBreakpoints } from './breakpoints.interfaces'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
-export type Breakpoint = keyof typeof BREAKPOINTS_MAP
+export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
 
 class BreakpointsClass {
   private win?: any
-  private breakpoints: Breakpoint[] = []
+  private breakpoints: BalBreakpoint[] = []
 
   constructor() {
     if (balBrowser.hasWindow) {
@@ -69,7 +70,7 @@ class BreakpointsClass {
    * @param breakpoint
    * @returns boolean: True if breakpoint is active
    */
-  public includes(breakpoint: Breakpoint): boolean {
+  public includes(breakpoint: BalBreakpoint): boolean {
     this.detect()
     return !!this.breakpoints?.includes(breakpoint)
   }
@@ -78,13 +79,29 @@ class BreakpointsClass {
    * Detects breakpoints and updates state
    * @returns breakpoints: list of breakpoints which are active
    */
-  public detect(): Breakpoint[] {
+  public detect(): BalBreakpoint[] {
     if (this.win) {
-      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as Breakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
+      this.breakpoints = (Object.keys(BREAKPOINTS_MAP) as BalBreakpoint[]).filter(p => BREAKPOINTS_MAP[p](this.win))
       this.win.BaloiseDesignSystem.breakpoints = this.breakpoints
       this.win.BaloiseDesignSystem.platforms = this.breakpoints
     }
     return this.breakpoints
+  }
+
+  /**
+   * Turns the breakpoints array to a object.
+   * @returns Object with all the breakpoints
+   */
+  public toObject(): BalBreakpoints {
+    return {
+      mobile: this.breakpoints.includes('mobile'),
+      tablet: this.breakpoints.includes('tablet'),
+      touch: this.breakpoints.includes('touch'),
+      desktop: this.breakpoints.includes('desktop'),
+      highDefinition: this.breakpoints.includes('highDefinition'),
+      widescreen: this.breakpoints.includes('widescreen'),
+      fullhd: this.breakpoints.includes('fullhd'),
+    }
   }
 }
 

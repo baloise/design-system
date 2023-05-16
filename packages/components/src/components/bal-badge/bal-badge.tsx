@@ -21,7 +21,7 @@ export class Badge implements ComponentInterface {
   @Prop() size: BalProps.BalBadgeSize = ''
 
   /**
-   * Define the alert color for the badge.
+   * Define the color for the badge.
    */
   @Prop() color: BalProps.BalBadgeColor = ''
 
