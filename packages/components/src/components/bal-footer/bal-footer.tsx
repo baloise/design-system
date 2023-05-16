@@ -5,15 +5,13 @@ import {
   defaultConfig,
   BalConfigState,
   BalLanguage,
-  detachComponentFromConfig,
-  attachComponentToConfig,
+  ListenToConfig,
   updateBalLanguage,
   BalRegion,
 } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
-import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-footer',

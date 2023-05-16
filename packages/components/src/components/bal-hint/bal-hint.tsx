@@ -9,12 +9,11 @@ import {
   FunctionalComponent,
   ComponentInterface,
 } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentFromConfig } from '../../utils/config'
+import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { BalScrollHandler } from '../../utils/scroll'
 import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-hint',

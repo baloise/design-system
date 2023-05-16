@@ -14,13 +14,12 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
-  attachComponentToConfig,
+  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentFromConfig,
 } from '../../../utils/config'
 import {
   FormInput,
@@ -39,7 +38,6 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
 import { i18nTime } from './bal-time-input.i18n'
-import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-time-input',

@@ -8,6 +8,7 @@ export * from './config.types'
 export * from './config'
 export * from './observable/observer'
 export * from './mode'
+export * from './config.decorator'
 
 export type BalConfigChangeFn = (config: BalConfigState) => void
 

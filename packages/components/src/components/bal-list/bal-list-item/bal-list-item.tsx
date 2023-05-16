@@ -10,17 +10,11 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  detachComponentFromConfig,
-} from '../../../utils/config'
+import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { raf, transitionEndAsync } from '../../../utils/helpers'
 import { AccordionState } from '../../../interfaces'
-import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-list-item',

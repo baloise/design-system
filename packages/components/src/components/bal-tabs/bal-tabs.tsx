@@ -23,12 +23,7 @@ import {
   transitionEndAsync,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  detachComponentFromConfig,
-} from '../../utils/config'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
@@ -39,7 +34,6 @@ import { getPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
-import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-tabs',

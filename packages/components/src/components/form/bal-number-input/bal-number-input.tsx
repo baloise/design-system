@@ -14,13 +14,12 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
-  attachComponentToConfig,
+  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentFromConfig,
 } from '../../../utils/config'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import {
@@ -51,7 +50,6 @@ import {
 } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
-import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-number-input',

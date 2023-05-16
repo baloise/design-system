@@ -12,12 +12,11 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentFromConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { AccordionState } from '../../interfaces'
-import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-accordion',
@@ -129,7 +128,6 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
     this.updateState(true)
   }
-
 
   /**
    * LISTENERS

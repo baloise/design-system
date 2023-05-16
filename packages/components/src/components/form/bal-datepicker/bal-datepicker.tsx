@@ -46,10 +46,9 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import {
-  detachComponentFromConfig,
   defaultConfig,
   BalConfigObserver,
-  attachComponentToConfig,
+  ListenToConfig,
   useBalConfig,
   defaultLocale,
   BalLanguage,
@@ -70,7 +69,6 @@ import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
-import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-datepicker',

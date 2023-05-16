@@ -18,16 +18,14 @@ import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { FormInput, inputListenOnClick } from '../../../utils/form-input'
 import {
-  attachComponentToConfig,
+  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentFromConfig,
 } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
-import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-input-stepper',
