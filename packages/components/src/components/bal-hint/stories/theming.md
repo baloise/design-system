@@ -12,6 +12,6 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                        | Description                    |
-| ------------------------------- | ------------------------------ |
-| `--bal-hint-content-background` | Background of the hint content |
+| Variable                        |
+| ------------------------------- |
+| `--bal-hint-content-background` |

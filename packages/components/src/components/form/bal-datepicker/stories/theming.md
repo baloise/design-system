@@ -12,11 +12,11 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                                          | Description |
-| ------------------------------------------------- | ----------- |
-| `--bal-datepicker-popover-background`             | TBD         |
-| `--bal-datepicker-cell-background`                | TBD         |
-| `--bal-datepicker-cell-selected-background`       | TBD         |
-| `--bal-datepicker-cell-selected-today-background` | TBD         |
-| `--bal-datepicker-cell-today-background`          | TBD         |
-| `--bal-datepicker-cell-today-radius`              | TBD         |
+| Variable                                          |
+| ------------------------------------------------- |
+| `--bal-datepicker-popover-background`             |
+| `--bal-datepicker-cell-background`                |
+| `--bal-datepicker-cell-selected-background`       |
+| `--bal-datepicker-cell-selected-today-background` |
+| `--bal-datepicker-cell-today-background`          |
+| `--bal-datepicker-cell-today-radius`              |
