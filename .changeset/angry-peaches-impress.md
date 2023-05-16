@@ -18,3 +18,5 @@ add new css variables for theming to components and css-framework
 - bal-modal
 - bal-hint
 - bal-divider
+- bal-sheet
+- bal-select
