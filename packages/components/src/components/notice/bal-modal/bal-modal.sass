@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-modal-customization.vars'
 
 $modal-breakpoint: 769px !default
 
@@ -6,6 +7,9 @@ $modal-breakpoint: 769px !default
   padding: $size
   .bal-modal__header
     padding-bottom: $size
+
+// Modal
+// --------------------------------------------------
 
 +block(modal)
   @extend %overlay
@@ -18,10 +22,11 @@ $modal-breakpoint: 769px !default
   z-index: 40
   +modifier(is-active)
     display: flex
-
+  //
+  // backdrop background
   +element(background)
     @extend %overlay
-    background-color: rgba($bal-color-primary-6, .8)
+    background-color: rgba(var(--bal-modal-backdrop-background), .8)
 
   +element(header)
     +element(title)
@@ -58,8 +63,8 @@ $modal-breakpoint: 769px !default
     width: 100%
     display: flex
     flex-direction: column
-    background: var(--bal-color-white)
-    border-radius: var(--bal-radius-large)
+    background: var(--bal-modal-background)
+    border-radius: var(--bal-modal-radius)
     //
     // responsiveness
     +from($modal-breakpoint)

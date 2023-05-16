@@ -126,7 +126,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.2](https://github.com/baloise/design-system/compare/v10.24.1...v10.24.2) (2022-10-03)
 
-
 ### Bug Fixes
 
 * verify if window object exist when checking if current browser is Safari ([f726876](https://github.com/baloise/design-system/commit/f72687602750aba646b50f98914f095f53023fbb))
