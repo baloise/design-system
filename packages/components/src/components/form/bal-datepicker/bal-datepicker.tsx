@@ -46,10 +46,9 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import {
-  detachComponentToConfig,
   defaultConfig,
   BalConfigObserver,
-  attachComponentToConfig,
+  ListenToConfig,
   useBalConfig,
   defaultLocale,
   BalLanguage,
@@ -278,7 +277,6 @@ export class Datepicker
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value
   }
 
@@ -294,14 +292,11 @@ export class Datepicker
     this.updateValue(this.value, false)
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region

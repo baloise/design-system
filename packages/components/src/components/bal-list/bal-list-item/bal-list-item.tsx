@@ -10,12 +10,7 @@ import {
   ComponentInterface,
   Method,
 } from '@stencil/core'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  detachComponentToConfig,
-} from '../../../utils/config'
+import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { raf, transitionEndAsync } from '../../../utils/helpers'
@@ -121,7 +116,6 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    */
 
   connectedCallback() {
-    attachComponentToConfig(this)
     if (this.accordion) {
       this.addEventListenerAccordionChange()
     }
@@ -134,7 +128,6 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
   }
 
   disconnectedCallback() {
-    detachComponentToConfig(this)
     this.removeEventListenerAccordionChange()
   }
 
@@ -155,6 +148,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.animated = state.animated
   }
