@@ -272,7 +272,7 @@ export class Tabs
    */
   @Method()
   @ListenToConfig()
-  configChanged(state: BalConfigState): void {
+  async configChanged(state: BalConfigState) {
     this.animated = state.animated
   }
 

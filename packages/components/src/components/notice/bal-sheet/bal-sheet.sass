@@ -1,7 +1,7 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-sheet.vars'
 
 .bal-sheet
-  --bal-sheet-position-bottom: .5rem
   display: block
   position: fixed
   bottom: var(--bal-sheet-position-bottom)
@@ -16,9 +16,9 @@
 .bal-sheet__container,
 .bal-sheet__container.container
   .bal-sheet__container__inner
-    border-radius: var(--bal-radius-large)
-    background-color: var(--bal-color-white)
-    box-shadow: var(--bal-shadow-normal)
+    border-radius: var(--bal-sheet-radius)
+    background: var(--bal-sheet-background)
+    box-shadow: var(--bal-sheet-shadow)
     padding: 1rem
     +tablet
       padding: 1rem 1.5rem
