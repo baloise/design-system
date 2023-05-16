@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-data.vars'
 
 +block(data)
   position: relative
@@ -28,15 +29,15 @@
 
   &.is-disabled .bal-data-label,
   &.is-disabled .bal-data-value
-    color: var(--bal-color-text-grey-dark)
+    color: var(--bal-data-item-text-color-disabled)
 
   +modifier(has-border)
-    border-bottom: var(--bal-border-width-normal) solid var(--bal-color-grey-2)
+    border-bottom: var(--bal-data-item-border-width) var(--bal-data-item-border-style) var(--bal-data-item-border-color)
 
 +block(data-label)
   position: relative
   display: block
-  color: var(--bal-color-text-primary)
+  color: var(--bal-data-label-text-color)
   flex: 1 1
   flex-basis: 100%
 
@@ -129,7 +130,7 @@
     gap: 8px
 
     &.has-border
-      border-bottom: 1px solid var(--bal-color-primary-2)
+      border-bottom: 1px var(--bal-data-item-border-style) var(--bal-data-horizontal-border-color)
 
     & > *
       flex-wrap: wrap
@@ -138,7 +139,7 @@
       flex-wrap: wrap
       min-width: 80px
       align-items: flex-start
-      border-bottom: none
+      border-bottom: var(--bal-data-item-border-bottom)
 
       +block(data-value)
         min-height: 100%
