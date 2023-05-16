@@ -298,7 +298,6 @@ export class Datepicker
   @Method()
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
-    console.log('configChanged')
     this.language = state.language
     this.region = state.region
   }
