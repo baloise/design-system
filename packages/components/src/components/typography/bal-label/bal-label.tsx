@@ -1,13 +1,12 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import {
-  attachComponentToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  ListenToConfig,
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
@@ -109,12 +108,7 @@ export class BalLabel
    */
 
   connectedCallback() {
-    attachComponentToConfig(this)
     this.attachLabelToInput()
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
   }
 
   /**
@@ -127,6 +121,16 @@ export class BalLabel
   @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button' })
   mutationListener(): void {
     this.setHtmlFor()
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -149,20 +153,6 @@ export class BalLabel
     const radio = this.getRadioElement()
     const radioInput = await radio?.getInputElement()
     this.inputId = radioInput?.id
-  }
-
-  /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
   }
 
   /**

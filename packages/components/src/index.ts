@@ -1,7 +1,30 @@
 /**
  * Config
  */
-export * from './utils/config'
+export {
+  attachToConfig,
+  detachFromConfig,
+  defaultConfig,
+  updateBalAllowedLanguages,
+  updateBalAnimated,
+  updateBalIcons,
+  updateBalLanguage,
+  updateBalRegion,
+  onBalConfigChange,
+  initStyleMode,
+  initialize,
+  BalConfig,
+  BalConfigState,
+  BalConfigObserver,
+  BalMode,
+  BalRegion,
+  BalLanguage,
+  BalSwissLanguage,
+  BalLuxembourgLanguage,
+  BalLuxembourgInternationalLanguage,
+  BalGermanLanguage,
+  BalIcons,
+} from './utils/config'
 
 /**
  * Components

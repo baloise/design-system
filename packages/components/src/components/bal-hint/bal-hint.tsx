@@ -9,7 +9,7 @@ import {
   FunctionalComponent,
   ComponentInterface,
 } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
+import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { BalScrollHandler } from '../../utils/scroll'
@@ -45,7 +45,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
 
   connectedCallback() {
     this.bodyScrollHandler.connect()
-    attachComponentToConfig(this)
   }
 
   componentDidRender() {
@@ -54,7 +53,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
 
   disconnectedCallback() {
     this.bodyScrollHandler.disconnect()
-    detachComponentToConfig(this)
   }
 
   @ListenToBreakpoints()
@@ -70,6 +68,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     if (!this.closeLabel) {
       switch (state.language) {

@@ -1,27 +1,17 @@
-$modal-z: 40 !default;
+/**
+ * @prop --bal-modal-background: Background of the modal.
+ * @prop --bal-modal-backdrop-background: Background of the modal backdrop.
+ *
+ * @prop --bal-modal-radius: Radius of the modal.
+ */
 
-$modal-content-width: var(--bal-width, 640px) !default;
+:root
+  //
+  // background colors
+  --bal-modal-background: var(--bal-color-white)
+  --bal-modal-backdrop-background: var(--bal-color-primary-6)
+  --bal-modal-backdrop-opacity: .8
 
-$modal-content-margin-mobile: 16px !default;
-$modal-content-spacing-mobile: 0 !default;
-$modal-content-spacing-tablet: 40px !default;
-
-$modal-close-dimensions: 40px !default;
-$modal-close-right: 32px !default;
-$modal-close-top: 32px !default;
-
-$modal-card-body-padding: 0px !default;
-$modal-card-head-radius: 0px !default;
-$modal-card-head-padding: 16px !default;
-
-$modal-card-head-radius: 0px !default;
-$modal-card-foot-radius: 0px !default;
-
-$modal-card-head-background-color: $scheme-main !default;
-
-$modal-card-title-size: $size-large !default;
-
-$modal-card-foot-border-top: none !default;
-$modal-card-head-border-bottom: none !default;
-
-$modal-background-background-color: bulmaRgba(darken($bal-color-primary-6, 10), 0.86) !default;
+  //
+  // radius
+  --bal-modal-radius: var(--bal-radius-large)
