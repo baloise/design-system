@@ -14,13 +14,12 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
-  attachComponentToConfig,
+  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
 } from '../../../utils/config'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import {
@@ -184,7 +183,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value || 0
   }
 
@@ -196,14 +194,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region

@@ -15,6 +15,7 @@ import { BalSnackbarService } from './overlays/snackbar.service'
 import { BalNgErrorComponent } from './components/error/error.component'
 import { BalBreakpointsService } from './util/breakpoints.service'
 import { BalOrientationService } from './util/orientation.service'
+import { BalConfigService } from './util/config.service'
 
 export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 
@@ -42,6 +43,7 @@ const DECLARATIONS = [
     BalSnackbarService,
     BalBreakpointsService,
     BalOrientationService,
+    BalConfigService,
   ],
 })
 export class BaloiseDesignSystemModule {
