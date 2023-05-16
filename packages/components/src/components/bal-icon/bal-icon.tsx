@@ -8,9 +8,10 @@ import {
   BalConfigState,
   BalIcons,
   defaultConfig,
-  detachComponentToConfig,
+  detachComponentFromConfig,
 } from '../../utils/config'
 import { BalElementStateInfo } from '../../utils/element-states'
+import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-icon',
@@ -87,19 +88,6 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
   @Prop() pressed = false
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    attachComponentToConfig(this)
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -108,6 +96,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.icons = state.icons
   }

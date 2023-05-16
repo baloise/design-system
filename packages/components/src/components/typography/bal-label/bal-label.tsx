@@ -7,12 +7,13 @@ import {
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  detachComponentFromConfig,
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
 import { BalElementStateInfo } from '../../../utils/element-states'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
+import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-label',
@@ -109,12 +110,7 @@ export class BalLabel
    */
 
   connectedCallback() {
-    attachComponentToConfig(this)
     this.attachLabelToInput()
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
   }
 
   /**
@@ -127,6 +123,16 @@ export class BalLabel
   @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button' })
   mutationListener(): void {
     this.setHtmlFor()
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -149,20 +155,6 @@ export class BalLabel
     const radio = this.getRadioElement()
     const radioInput = await radio?.getInputElement()
     this.inputId = radioInput?.id
-  }
-
-  /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
   }
 
   /**

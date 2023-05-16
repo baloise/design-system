@@ -36,6 +36,14 @@ export const attachToConfig = (observer: BalConfigObserver): void => {
   }
 }
 
+export const detachFromConfig = (observer: BalConfigObserver): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.detach(observer)
+  }
+}
+
 export const attachComponentToConfig = (observer: BalConfigObserver): void => {
   const config = useBalConfig()
 
@@ -44,7 +52,7 @@ export const attachComponentToConfig = (observer: BalConfigObserver): void => {
   }
 }
 
-export const detachComponentToConfig = (observer: BalConfigObserver): void => {
+export const detachComponentFromConfig = (observer: BalConfigObserver): void => {
   const config = useBalConfig()
 
   if (config) {

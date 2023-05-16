@@ -24,9 +24,10 @@ import {
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  detachComponentFromConfig,
 } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
+import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -132,7 +133,6 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value
   }
 
@@ -140,14 +140,11 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region

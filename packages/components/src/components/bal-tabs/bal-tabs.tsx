@@ -23,7 +23,12 @@ import {
   transitionEndAsync,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
+import {
+  attachComponentToConfig,
+  BalConfigObserver,
+  BalConfigState,
+  detachComponentFromConfig,
+} from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { newBalTabOption } from './bal-tab.util'
@@ -34,6 +39,7 @@ import { getPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
+import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-tabs',
@@ -207,7 +213,6 @@ export class Tabs
       }
     }
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
@@ -224,10 +229,6 @@ export class Tabs
     this.onOptionChange()
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
@@ -238,10 +239,6 @@ export class Tabs
   @ListenToMutation({ tags: ['bal-tabs', 'bal-tab-item'] })
   mutationListener(): void {
     this.onOptionChange()
-  }
-
-  configChanged(state: BalConfigState): void {
-    this.animated = state.animated
   }
 
   @ListenToBreakpoints()
@@ -275,6 +272,15 @@ export class Tabs
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.animated = state.animated
+  }
 
   /**
    * Go to tab with the given value

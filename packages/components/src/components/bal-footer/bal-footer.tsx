@@ -5,7 +5,7 @@ import {
   defaultConfig,
   BalConfigState,
   BalLanguage,
-  detachComponentToConfig,
+  detachComponentFromConfig,
   attachComponentToConfig,
   updateBalLanguage,
   BalRegion,
@@ -13,6 +13,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 import { rIC } from '../../utils/helpers'
+import { ListenToConfig } from '../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-footer',
@@ -60,13 +61,8 @@ export class Footer implements BalConfigObserver, Loggable {
    */
 
   connectedCallback() {
-    attachComponentToConfig(this)
     this.updateFooterLinks()
     this.updateSocialMediaLinks()
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
   }
 
   /**
@@ -78,6 +74,7 @@ export class Footer implements BalConfigObserver, Loggable {
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     if (this.language !== state.language || this.region !== state.region) {
       this.language = state.language

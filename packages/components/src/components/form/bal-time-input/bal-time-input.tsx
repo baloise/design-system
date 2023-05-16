@@ -20,7 +20,7 @@ import {
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  detachComponentFromConfig,
 } from '../../../utils/config'
 import {
   FormInput,
@@ -39,6 +39,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
 import { i18nTime } from './bal-time-input.i18n'
+import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-time-input',
@@ -147,7 +148,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value || ''
   }
 
@@ -159,10 +159,11 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
   configChanged(state: BalConfigState): void {
     this.language = state.language
     this.region = state.region

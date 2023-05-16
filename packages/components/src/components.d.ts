@@ -2712,6 +2712,7 @@ export namespace Components {
           * If `true` the tabs or steps can be clicked.
          */
         "clickable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the layout of the tabs.
          */
@@ -2939,6 +2940,7 @@ export namespace Components {
         "wrap"?: BalProps.BalTextareaWrap;
     }
     interface BalTimeInput {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */

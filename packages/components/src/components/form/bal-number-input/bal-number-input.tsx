@@ -20,7 +20,7 @@ import {
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  detachComponentFromConfig,
 } from '../../../utils/config'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import {
@@ -51,6 +51,7 @@ import {
 } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
+import { ListenToConfig } from '../../../utils/config/config.decorator'
 
 @Component({
   tag: 'bal-number-input',
@@ -184,7 +185,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value || 0
   }
 
@@ -196,14 +196,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
