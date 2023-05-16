@@ -17,4 +17,6 @@ add new css variables for theming to components and css-framework
 - bal-datepicker
 - bal-modal
 - bal-hint
+- bal-sheet
+- bal-select
 - bal-tabs
