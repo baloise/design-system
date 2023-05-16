@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import '../bal-tabs.vars'
 
 // Tab Nav List
 // --------------------------------------------------
@@ -46,8 +47,8 @@
   // Border style
   &__border
     position: absolute
-    background: var(--bal-color-border-grey)
-    border-radius: var(--bal-radius-rounded)
+    background: var(--bal-tabs-tab-nav-border-background)
+    border-radius: var(--bal-tabs-tab-nav-border-radius)
     height: var(--bal-border-width-normal)
     left: 1px
     right: 1px
@@ -59,13 +60,13 @@
       top: 0
       right: auto
     &--inverted
-      background: var(--bal-color-border-white)
+      background: var(--bal-tabs-tab-nav-border-background-inverted)
   //
   // Line style
   &__line
     position: absolute
-    background: var(--bal-color-border-primary)
-    border-radius: var(--bal-radius-rounded)
+    background: var(--bal-tabs-tab-nav-line-background)
+    border-radius: var(--bal-tabs-tab-nav-line-radius)
     left: 1px
     z-index: 2
     &:not(&--vertical)
@@ -82,4 +83,4 @@
       will-change: min-width, width, min-height, height, transform
       transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
     &--inverted
-      background: var(--bal-color-border-white)
+      background: var(--bal-tabs-tab-nav-line-background-inverted)
