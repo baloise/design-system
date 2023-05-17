@@ -4,17 +4,17 @@ describe('bal-logo', () => {
   })
 
   it('basic component', () => {
-    cy.platform('desktop')
+    cy.platform('desktop').wait(100)
     cy.getByTestId('basic').compareSnapshot('logo-basic-desktop', 0)
     cy.getByTestId('colors').compareSnapshot('logo-colors-desktop', 0)
     cy.getByTestId('colors-inverted').compareSnapshot('logo-colors-inverted-desktop', 0)
 
-    cy.platform('tablet')
+    cy.platform('tablet').wait(100)
     cy.getByTestId('basic').compareSnapshot('logo-basic-tablet', 0)
     cy.getByTestId('colors').compareSnapshot('logo-colors-tablet', 0)
     cy.getByTestId('colors-inverted').compareSnapshot('logo-colors-inverted-tablet', 0)
 
-    cy.platform('mobile')
+    cy.platform('mobile').wait(100)
     cy.getByTestId('basic').compareSnapshot('logo-basic-mobile', 0)
     cy.getByTestId('colors').compareSnapshot('logo-colors-mobile', 0)
     cy.getByTestId('colors-inverted').compareSnapshot('logo-colors-inverted-mobile', 0)
