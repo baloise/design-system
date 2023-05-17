@@ -39,8 +39,8 @@
 
 .bal-carousel__inner__container__border
   position: absolute
-  background: var(--bal-color-border-grey)
-  border-radius: var(--bal-radius-rounded)
+  background: var(--bal-carousel-inner-border-background)
+  border-radius: var(--bal-carousel-inner-border-radius)
   height: var(--bal-border-width-normal)
   width: 100%
   bottom: 0
@@ -48,7 +48,7 @@
   transform: translate3d(0px,0px,0px)
 
 .bal-carousel__inner__container__border--inverted
-  background: var(--bal-color-border-primary-light)
+  background: var(--bal-carousel-inner-border-background-inverted)
 
 .bal-carousel__item
   text-align: center
@@ -77,18 +77,18 @@
 .bal-carousel__inner--shadow-left::before
   content: ''
   left: 0
-  background: linear-gradient(90deg, var(--bal-color-white) 50%, rgba(255, 255, 255, 0) 100%)
+  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-before) 50%, rgba(255, 255, 255, 0) 100%)
 
 .bal-carousel__inner--shadow-right::after
   content: ''
   right: 0
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 50%)
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-after) 50%)
 
 .bal-carousel__inner--shadow-left.bal-carousel__inner--inverted::before
-  background: linear-gradient(90deg, var(--bal-color-primary) 50%, rgba(255, 255, 255, 0) 100%)
+  background: linear-gradient(90deg, var(--bal-carousel-inner-shadow-left-background-inverted-before) 50%, rgba(255, 255, 255, 0) 100%)
 
 .bal-carousel__inner--shadow-right.bal-carousel__inner--inverted::after
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-primary) 50%)
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-carousel-inner-shadow-right-background-inverted-after) 50%)
 
 .bal-carousel__inner
   &--items-per-view-auto
@@ -159,7 +159,7 @@
 
 .bal-carousel--image
   .bal-carousel__inner
-    border-radius: var(--bal-radius-normal)
+    border-radius: var(--bal-carousel-image-border-radius)
 
 .bal-carousel--image
   .bal-carousel__inner--is-1by1
@@ -215,49 +215,49 @@
     flex-direction: column
     align-items: center
     gap: 1rem
-    border-radius: var(--bal-radius-large)
+    border-radius: var(--bal-carousel-product-item-button-border-radius)
     padding: var(--bal-size-x-small)
     border: none
     cursor: pointer
     user-select: none
     outline: none
-    background: var(--bal-color-white)
+    background: var(--bal-carousel-product-item-button-background)
 
     &:focus-visible:not(:active)
       +focus-shadow
 
   .bal-carousel__item__button--color-green
     +touch
-      background: var(--bal-color-green-1)
+      background: var(--bal-carousel-product-item-button-background-green)
     +desktop
       &:hover
-        background: var(--bal-color-green-1)
+        background: var(--bal-carousel-product-item-button-background-green-hover)
       &:active
-        background: var(--bal-color-green-2)
+        background: var(--bal-carousel-product-item-button-background-green-active)
   .bal-carousel__item__button--color-red
     +touch
-      background: var(--bal-color-red-1)
+      background: var(--bal-carousel-product-item-button-background-red)
     +desktop
       &:hover
-        background: var(--bal-color-red-1)
+        background: var(--bal-carousel-product-item-button-background-red-hover)
       &:active
-        background: var(--bal-color-red-2)
+        background: var(--bal-carousel-product-item-button-background-red-active)
   .bal-carousel__item__button--color-yellow
     +touch
-      background: var(--bal-color-yellow-1)
+      background: var(--bal-carousel-product-item-button-background-yellow)
     +desktop
       &:hover
-        background: var(--bal-color-yellow-1)
+        background: var(---bal-carousel-product-item-button-background-yellow-hover)
       &:active
-        background: var(--bal-color-yellow-2)
+        background: var(--bal-carousel-product-item-button-background-yellow-active)
   .bal-carousel__item__button--color-purple
     +touch
-      background: var(--bal-color-purple-1)
+      background: var(--bal-carousel-product-item-button-background-purple)
     +desktop
       &:hover
-        background: var(--bal-color-purple-1)
+        background: var(--bal-carousel-product-item-button-background-purple-hover)
       &:active
-        background: var(--bal-color-purple-2)
+        background: var(--bal-carousel-product-item-button-background-purple-active)
 
   .bal-carousel__item__button__image
     width: 80px
@@ -265,7 +265,7 @@
     pointer-events: none
   .bal-carousel__item__button__label
     font-weight: var(--bal-weight-bold)
-    color: var(--bal-color-text-primary)
+    color: var(--bal-carousel-product-item-button-label-text-color)
     font-size: var(--bal-size-normal)
     hyphens: auto
     height: 56px
