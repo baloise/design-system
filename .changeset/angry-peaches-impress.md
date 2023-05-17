@@ -20,3 +20,5 @@ add new css variables for theming to components and css-framework
 - bal-sheet
 - bal-select
 - bal-data
+- bal-close
+- bal-steps
