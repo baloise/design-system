@@ -20,6 +20,7 @@ add new css variables for theming to components and css-framework
 - bal-divider
 - bal-sheet
 - bal-select
+- bal-data
 - bal-list
 - bal-popover
 - bal-stage
