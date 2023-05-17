@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-stage.vars'
 
 +block(stage)
   display: block
@@ -7,13 +8,13 @@
   //
   // Color modifiers
   +modifier(is-purple)
-    background: var(--bal-color-purple)
+    background: var(--bal-stage-background-purple)
   +modifier(is-green)
-    background: var(--bal-color-green)
+    background: var(--bal-stage-background-green)
   +modifier(is-red)
-    background: var(--bal-color-red)
+    background: var(--bal-stage-background-red)
   +modifier(is-yellow)
-    background: var(--bal-color-yellow)
+    background: var(--bal-stage-background-yellow)
 
   +block(stage-content)
     display: block
@@ -51,8 +52,8 @@
         a
           display: inline-flex
           align-items: center
-          font-family: var(--bal-font-family-title)
-          font-weight: var(--bal-weight-bold)
+          font-family: var(--bal-stage-back-font-family)
+          font-weight: var(--bal-stage-back-font-weight)
           text-decoration: none
           &:hover
             text-decoration: underline
