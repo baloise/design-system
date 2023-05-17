@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-pagination.vars'
 
 +block(pagination)
   +unselectable
@@ -55,27 +56,27 @@
         min-width: 63px
         min-height: 1.25rem
         margin: 0 20px 0 !important
-        background: var(--bal-color-grey)
-        border-radius: var(--bal-radius-normal)
+        background: var(--bal-pagination-small-background)
+        border-radius: var(--bal-pagination-small-radius)
 
       +modifier(context-tabs)
         flex-grow: 1
         padding: 8px
-        background: var(--bal-color-white)
-        box-shadow: var(--bal-shadow-normal)
-        border-radius: var(--bal-radius-large)
+        background: var(--bal-pagination-tabs-background)
+        box-shadow: var(--bal-pagination-tabs-shadow)
+        border-radius: var(--bal-pagination-tabs-radius)
 
       +element(dot)
         cursor: pointer
         height: 8px
         width: 8px
         gap: 30px
-        border-radius: var(--bal-radius-rounded)
+        border-radius: var(--bal-pagination-dot-radius)
         display: block
         +modifier(active)
-          background-color: var(--bal-color-primary)
+          background-color: var(--bal-pagination-dot-background-active)
         +modifier(inactive)
-          background-color: var(--bal-color-white)
+          background-color: var(--bal-pagination-dot-background-inactive)
 
       +element(tab)
         flex: 1
