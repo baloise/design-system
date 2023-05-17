@@ -132,8 +132,7 @@ const changelogFunctions = {
         user: null
       };
     })();
-    const users = usersFromSummary.length ? usersFromSummary.map(userFromSummary => `[@${userFromSummary}](https://github.com/${userFromSummary})`).join(", ") : links.user;
-    const prefix = [links.pull === null ? "" : ` ${links.pull}`, links.commit === null ? "" : ` ${links.commit}`, users === null ? "" : ` Thanks ${users}!`].join("");
+    const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`;
     return `\n\n-${prefix ? `${prefix} -` : ""} ${firstLine}\n${futureLines.map(l => `  ${l}`).join("\n")}`;
   }
 };
