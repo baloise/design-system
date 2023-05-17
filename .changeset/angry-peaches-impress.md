@@ -29,3 +29,4 @@ add new css variables for theming to components and css-framework
 - bal-pagination
 - bal-close
 - bal-steps
+- bal-tabs
