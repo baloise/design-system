@@ -1,8 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
-
-:root
-  --bal-popover-backdrop-height: 100vh
-  --bal-popover-content-height-top-nav: 100vh
+@import './bal-popover.vars'
 
 +block(popover)
   display: block
@@ -33,15 +30,16 @@
     @extend %overlay
     z-index: 10
     position: fixed
-    background-color: rgba($bal-color-primary-6, .8)
+    background: var(--bal-popover-backdrop-background)
+    opacity: var(--bal-popover-backdrop-opacity)
     height: var(--bal-popover-backdrop-height)
     width: 100vw
 
   +element(content)
     display: none
     z-index: 25
-    box-shadow: var(--bal-shadow-normal)
-    background: var(--bal-color-white)
+    box-shadow: var(--bal-popover-content-shadow)
+    background: var(--bal-popover-content-background)
     min-width: 16.25rem
     &[data-show]
       display: block
@@ -76,7 +74,7 @@
       height: var(--bal-popover-content-height-top-nav)
       overflow-y: auto
     +modifier(color-grey)
-      background: var(--bal-color-grey-2)
+      background: var(--bal-popover-content-background-grey)
     +element(inner)
       max-height: calc(100vh - 4.5rem)
       overflow: auto
@@ -124,11 +122,11 @@
   +modifier(tooltip)
     .bal-popover__content
       min-width: unset
-      background: var(--bal-color-primary-6)
+      background: var(--bal-popover-tooltip-background)
       .bal-popover__content__inner
         padding: var(--bal-space-x-small)
         &,
         p
-          color: var(--bal-color-white)
-          font-family: var(--bal-font-family-text)
-          font-size: var(--bal-size-small)
+          color: var(--bal-popover-tooltip-color)
+          font-family: var(--bal-popover-tooltip-font-family)
+          font-size: var(--bal-popover-tooltip-font-size)
