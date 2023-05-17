@@ -30,3 +30,6 @@ add new css variables for theming to components and css-framework
 - bal-close
 - bal-steps
 - bal-tabs
+- bal-toast
+- bal-snackbar
+- bal-notification
