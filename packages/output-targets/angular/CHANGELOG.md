@@ -1,5 +1,11 @@
 # @baloise/design-system-output-target-angular
 
+## 13.3.0
+
+### Patch Changes
+
+- [#856](https://github.com/baloise/design-system/pull/856) - checkbox fix writing value in BooleanValueAccessor
+
 ## 13.2.1
 
 ## 13.2.0
