@@ -1,4 +1,4 @@
-import { I18n } from '../../../interfaces'
+import { I18n } from '../../../../interfaces'
 
 interface I18nDate {
   months: string[]
