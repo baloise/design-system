@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-snackbar.vars'
 
 +block(snackbar)
   +unselectable
@@ -15,20 +16,27 @@
   justify-content: flex-end
   +element(inner)
     min-height: 56px
-    border-radius: var(--bal-radius-large)
-    font-size: var(--bal-size-normal)
-    font-family: var(--bal-font-family-text)
-    background: var(--bal-color-white)
+    border-radius: var(--bal-snackbar-radius)
+    font-size: var(--bal-snackbar-font-size)
+    font-family: var(--bal-snackbar-font-family)
+    background: var(--bal-snackbar-background)
+    color: var(--bal-snackbar-color)
+    hyphens: auto
     +modifier(is-primary)
-      background: var(--bal-color-white)
+      background: var(--bal-snackbar-background-primary)
+      color: var(--bal-snackbar-color-primary)
     +modifier(is-info)
-      background: var(--bal-color-info-2)
+      background: var(--bal-snackbar-background-info)
+      color: var(--bal-snackbar-color-info)
     +modifier(is-danger)
-      background: var(--bal-color-danger-2)
+      background: var(--bal-snackbar-background-danger)
+      color: var(--bal-snackbar-color-danger)
     +modifier(is-warning)
-      background: var(--bal-color-warning-2)
+      background: var(--bal-snackbar-background-warning)
+      color: var(--bal-snackbar-color-warning)
     +modifier(is-success)
-      background: var(--bal-color-success-2)
+      background: var(--bal-snackbar-background-success)
+      color: var(--bal-snackbar-color-success)
     position: relative
     display: inline-flex
     flex-grow: 1
