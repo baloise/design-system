@@ -12,7 +12,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
+import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
@@ -121,17 +121,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
 
     if (this.active) {
       this.activeChanged(this.active, false)
     }
 
     this.updateState(true)
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
   }
 
   /**
@@ -143,6 +138,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.animated = state.animated
   }

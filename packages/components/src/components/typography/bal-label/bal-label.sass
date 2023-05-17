@@ -1,5 +1,8 @@
 @import '@baloise/design-system-css/sass/mixins'
 
+// Label
+// --------------------------------------------------
+
 .bal-label
   display: inline
   box-sizing: content-box
@@ -14,16 +17,10 @@
     overflow: hidden
     text-overflow: ellipsis
     min-width: 0
-    font-weight: var(--bal-weight-bold)
+    font-family: var(--bal-form-field-label-font-family)
+    font-weight: var(--bal-form-field-label-font-weight)
     font-size: var(--bal-size-normal)
-    font-family: var(--bal-font-family-title)
     line-height: var(--bal-line-height-normal)
-    +tablet
-      font-size: var(--bal-size-tablet-normal)
-      line-height: var(--bal-line-height-tablet-normal)
-    +desktop
-      font-size: var(--bal-size-desktop-normal)
-      line-height: var(--bal-line-height-desktop-normal)
     &--no-wrap
       display: block
       text-overflow: ellipsis
@@ -54,11 +51,11 @@
     //
     // color styles
     &--success
-      color: var(--bal-color-text-success)
+      color: var(--bal-form-field-label-success-color)
     &--danger
-      color: var(--bal-color-text-danger)
+      color: var(--bal-form-field-label-danger-color)
     &--disabled
-      color: var(--bal-color-text-grey) !important
+      color: var(--bal-form-field-label-disabled-color) !important
     //
     // font weight
     &--regular
@@ -66,10 +63,10 @@
     //
     // interactions
     &--hovered
-      color: var(--bal-color-text-light-blue)
+      color: var(--bal-form-field-label-color-hover)
     &--pressed
-      color: var(--bal-color-text-primary-dark)
+      color: var(--bal-form-field-label-color-active)
     &--danger#{&}--hovered
-      color: var(--bal-color-text-danger-dark)
+      color: var(--bal-form-field-label-danger-color-hover)
     &--danger#{&}--pressed
-      color: var(--bal-color-text-danger-darker)
+      color: var(--bal-form-field-label-danger-color-active)

@@ -2,15 +2,8 @@ import { Component, h, Host, Method, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
 import { BEM } from '../../utils/bem'
-import {
-  attachComponentToConfig,
-  BalConfigObserver,
-  BalConfigState,
-  BalIcons,
-  defaultConfig,
-  detachComponentToConfig,
-} from '../../utils/config'
-import { ComponentElementState } from '../../utils/element-states'
+import { ListenToConfig, BalConfigObserver, BalConfigState, BalIcons, defaultConfig } from '../../utils/config'
+import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-icon',
@@ -18,7 +11,7 @@ import { ComponentElementState } from '../../utils/element-states'
     css: 'bal-icon.sass',
   },
 })
-export class Icon implements BalConfigObserver, ComponentElementState {
+export class Icon implements BalConfigObserver, BalElementStateInfo {
   @State() icons: BalIcons = defaultConfig.icons
 
   /**
@@ -87,19 +80,6 @@ export class Icon implements BalConfigObserver, ComponentElementState {
   @Prop() pressed = false
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    attachComponentToConfig(this)
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -108,6 +88,7 @@ export class Icon implements BalConfigObserver, ComponentElementState {
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.icons = state.icons
   }

@@ -1,10 +1,19 @@
-import { Component, Host, h, Method, State, Prop, Element, Listen, FunctionalComponent } from '@stencil/core'
-import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
-import { isPlatform } from '../../utils/platform'
+import {
+  Component,
+  Host,
+  h,
+  Method,
+  State,
+  Prop,
+  Element,
+  FunctionalComponent,
+  ComponentInterface,
+} from '@stencil/core'
+import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
-import { ResizeHandler } from '../../utils/resize'
-import { ScrollHandler } from '../../utils/scroll'
+import { BalScrollHandler } from '../../utils/scroll'
+import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 
 @Component({
   tag: 'bal-hint',
@@ -12,18 +21,18 @@ import { ScrollHandler } from '../../utils/scroll'
     css: 'bal-hint.sass',
   },
 })
-export class Hint implements BalConfigObserver {
+export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement
 
   private popoverElement!: HTMLBalPopoverElement
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
 
-  private bodyScrollHandler = ScrollHandler()
+  private bodyScrollHandler = new BalScrollHandler()
 
   @State() isActive = false
   @State() innerCloseLabel = 'Close'
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   /**
    * Text for the close button.
    */
@@ -34,22 +43,8 @@ export class Hint implements BalConfigObserver {
    */
   @Prop() small = false
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      const isCurrentMobile = isPlatform('mobile')
-      if (isCurrentMobile !== this.isMobile) {
-        this.isActive = false
-      }
-      this.isMobile = isCurrentMobile
-    })
-  }
-
   connectedCallback() {
     this.bodyScrollHandler.connect()
-    attachComponentToConfig(this)
   }
 
   componentDidRender() {
@@ -58,13 +53,22 @@ export class Hint implements BalConfigObserver {
 
   disconnectedCallback() {
     this.bodyScrollHandler.disconnect()
-    detachComponentToConfig(this)
+  }
+
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    const isCurrentMobile = breakpoints.mobile
+    if (isCurrentMobile !== this.isMobile) {
+      this.isActive = false
+    }
+    this.isMobile = isCurrentMobile
   }
 
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     if (!this.closeLabel) {
       switch (state.language) {

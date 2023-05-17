@@ -14,13 +14,12 @@ import {
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import {
-  attachComponentToConfig,
+  ListenToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
 } from '../../../utils/config'
 import {
   FormInput,
@@ -147,7 +146,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value || ''
   }
 
@@ -159,11 +157,12 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState) {
     this.language = state.language
     this.region = state.region
 

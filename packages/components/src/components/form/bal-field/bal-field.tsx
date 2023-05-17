@@ -1,5 +1,5 @@
-import { Component, h, Host, Prop, Element, Watch } from '@stencil/core'
-import { observeItems } from '../../../utils/observer'
+import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
+import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 
 @Component({
   tag: 'bal-field',
@@ -7,10 +7,9 @@ import { observeItems } from '../../../utils/observer'
     css: 'bal-field.sass',
   },
 })
-export class Field {
+export class Field implements ComponentInterface, BalMutationObserver {
   @Element() el!: HTMLElement
 
-  private mutationO?: MutationObserver
   private formControlElement = ['bal-field-control']
   private inputElements = [
     'bal-input',
@@ -88,7 +87,6 @@ export class Field {
   }
 
   connectedCallback() {
-    this.mutationO = observeItems(this.el, undefined, () => this.triggerAllHandlers())
     this.triggerAllHandlers()
   }
 
@@ -96,11 +94,11 @@ export class Field {
     this.triggerAllHandlers()
   }
 
-  disconnectedCallback() {
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
-    }
+  mutationObserverActive = true
+
+  @ListenToMutation({ subtree: false })
+  mutationListener(): void {
+    this.triggerAllHandlers()
   }
 
   private triggerAllHandlers() {

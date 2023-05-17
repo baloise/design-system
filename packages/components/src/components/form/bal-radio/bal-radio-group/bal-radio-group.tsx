@@ -17,18 +17,16 @@ import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import isFunction from 'lodash.isfunction'
-import { MutationHandler } from '../../../../utils/mutations'
 import { inheritAttributes } from '../../../../utils/attributes'
+import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
 
 @Component({
   tag: 'bal-radio-group',
 })
-export class RadioGroup implements ComponentInterface, Loggable {
+export class RadioGroup implements ComponentInterface, Loggable, BalMutationObserver {
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
-
-  private mutationHandler = MutationHandler({ tags: ['bal-radio-group', 'bal-radio'] })
 
   log!: LogInstance
 
@@ -52,11 +50,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
-    if (this.options === undefined) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined
   }
 
   /**
@@ -193,13 +187,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.initialValue = this.value
-    this.mutationHandler.connect(this.el, () => this.onOptionChange())
-
-    if (this.options === undefined) {
-      this.mutationHandler.observe()
-    } else {
-      this.mutationHandler.stopObserve()
-    }
+    this.mutationObserverActive = this.options === undefined
   }
 
   componentWillLoad() {
@@ -215,14 +203,17 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
-  disconnectedCallback() {
-    this.mutationHandler.disconnect()
-  }
-
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
+
+  mutationObserverActive = true
+
+  @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'] })
+  mutationListener(): void {
+    this.onOptionChange()
+  }
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

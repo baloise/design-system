@@ -1,6 +1,6 @@
 import { BalOptionValue } from './bal-option.type'
 
-export const NewBalOptionValue = <T>(value: string, label: string, disabled = false, data?: T): BalOptionValue<T> => {
+export const newBalOptionValue = <T>(value: string, label: string, disabled = false, data?: T): BalOptionValue<T> => {
   return {
     value,
     label,
@@ -9,6 +9,6 @@ export const NewBalOptionValue = <T>(value: string, label: string, disabled = fa
   }
 }
 
-export const NewBalSingleOptionValue = <T>(valueAndLabel: string, disabled = false, data?: T): BalOptionValue<T> => {
-  return NewBalOptionValue(valueAndLabel, valueAndLabel, disabled, data)
+export const newBalSingleOptionValue = <T>(valueAndLabel: string, disabled = false, data?: T): BalOptionValue<T> => {
+  return newBalOptionValue(valueAndLabel, valueAndLabel, disabled, data)
 }

@@ -46,10 +46,9 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import {
-  detachComponentToConfig,
   defaultConfig,
   BalConfigObserver,
-  attachComponentToConfig,
+  ListenToConfig,
   useBalConfig,
   defaultLocale,
   BalLanguage,
@@ -68,9 +67,8 @@ import {
 } from '../../../utils/form-input'
 import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
-import { ResizeHandler } from '../../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-datepicker',
@@ -78,7 +76,9 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
     css: 'bal-datepicker.sass',
   },
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable {
+export class Datepicker
+  implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable, BalBreakpointObserver
+{
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popoverElement!: HTMLBalPopoverElement
@@ -91,7 +91,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
-  @State() isMobile = isPlatform('mobile')
+  @State() isMobile = balBreakpoints.isMobile
   @State() focused = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
@@ -270,18 +270,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
-  resizeWidthHandler = ResizeHandler()
-
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.isMobile = isPlatform('mobile')
-    })
+  @ListenToBreakpoints()
+  breakpointListener(breakpoints: BalBreakpoints): void {
+    this.isMobile = breakpoints.mobile
   }
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
     this.initialValue = this.value
   }
 
@@ -297,14 +292,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     this.updateValue(this.value, false)
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
   /**
    * @internal define config for the component
    */
   @Method()
+  @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region

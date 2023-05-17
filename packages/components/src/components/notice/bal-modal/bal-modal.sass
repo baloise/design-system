@@ -1,11 +1,13 @@
 @import '@baloise/design-system-css/sass/mixins'
-
-$modal-breakpoint: 769px !default
+@import './bal-modal.vars'
 
 =modalPadding($size: 1rem)
   padding: $size
   .bal-modal__header
     padding-bottom: $size
+
+// Modal
+// --------------------------------------------------
 
 +block(modal)
   @extend %overlay
@@ -18,10 +20,12 @@ $modal-breakpoint: 769px !default
   z-index: 40
   +modifier(is-active)
     display: flex
-
+  //
+  // backdrop background
   +element(background)
     @extend %overlay
-    background-color: rgba($bal-color-primary-6, .8)
+    background: var(--bal-modal-backdrop-background)
+    opacity: var(--bal-modal-backdrop-opacity)
 
   +element(header)
     +element(title)
@@ -49,7 +53,7 @@ $modal-breakpoint: 769px !default
     overflow-y: auto
     -ms-overflow-y: visible
     padding: .5rem
-    +from($modal-breakpoint)
+    +tablet
       padding: 0
 
   +element(content)
@@ -58,12 +62,13 @@ $modal-breakpoint: 769px !default
     width: 100%
     display: flex
     flex-direction: column
-    background: var(--bal-color-white)
-    border-radius: var(--bal-radius-large)
+    background: var(--bal-modal-background)
+    border-radius: var(--bal-modal-radius)
     //
     // responsiveness
-    +from($modal-breakpoint)
+    +tablet
       margin: 3rem auto
+
       // --bal-width is deprecated and will be removed in the next major release
       width: var(--bal-modal-width, var(--bal-width, 640px))
     //

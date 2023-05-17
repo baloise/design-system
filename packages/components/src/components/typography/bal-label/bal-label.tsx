@@ -1,18 +1,17 @@
 import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import {
-  attachComponentToConfig,
   BalConfigObserver,
   BalConfigState,
   BalLanguage,
   BalRegion,
   defaultConfig,
-  detachComponentToConfig,
+  ListenToConfig,
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nLabel } from './bal-label.i18n'
-import { ComponentElementState } from '../../../utils/element-states'
-import { MutationHandler } from '../../../utils/mutations'
+import { BalElementStateInfo } from '../../../utils/element-states'
+import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 
 @Component({
   tag: 'bal-label',
@@ -20,7 +19,9 @@ import { MutationHandler } from '../../../utils/mutations'
     css: './bal-label.sass',
   },
 })
-export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable, ComponentElementState {
+export class BalLabel
+  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalMutationObserver
+{
   @Element() el!: HTMLElement
 
   @State() inputId?: string
@@ -28,8 +29,6 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
   @State() region: BalRegion = defaultConfig.region
 
   log!: LogInstance
-
-  private radioMutationHandler = MutationHandler({ tags: ['bal-radio'] })
 
   @Logger('bal-label')
   createLogger(log: LogInstance) {
@@ -109,13 +108,29 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
    */
 
   connectedCallback() {
-    attachComponentToConfig(this)
     this.attachLabelToInput()
   }
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-    this.radioMutationHandler.disconnect()
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  mutationObserverActive = false
+
+  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button' })
+  mutationListener(): void {
+    this.setHtmlFor()
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -125,12 +140,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
 
   async attachLabelToInput() {
     const radio = this.getRadioElement()
-
-    if (radio) {
-      this.radioMutationHandler.connect(radio, () => this.setHtmlFor())
-      this.radioMutationHandler.observe()
-    }
-
+    this.mutationObserverActive = !!radio
     await this.setHtmlFor()
   }
 
@@ -143,20 +153,6 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
     const radio = this.getRadioElement()
     const radioInput = await radio?.getInputElement()
     this.inputId = radioInput?.id
-  }
-
-  /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
-  /**
-   * @internal define config for the component
-   */
-  @Method()
-  async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
-    this.region = state.region
   }
 
   /**

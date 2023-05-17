@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-time-input.vars'
 
 +block(time-input)
     +unselectable
@@ -13,11 +14,11 @@
         &::-webkit-datetime-edit-fields-wrapper
             display: flex
         &::-webkit-datetime-edit-text
-            color: var(--bal-color-blue-3)
+            color: var(--bal-time-input-native-text-color)
         &::-webkit-datetime-edit-hour-field
-            color: var(--bal-color-blue-3)
+            color: var(--bal-time-input-native-text-color)
         &::-webkit-datetime-edit-minute-field
-            color: var(--bal-color-blue-3)
+            color: var(--bal-time-input-native-text-color)
         &::-webkit-clear-button
             display: none
         &::-webkit-inner-spin-button
@@ -29,38 +30,38 @@
             display: none
         &.has-focus, &.has-value
             &::-webkit-datetime-edit-text
-                color: var(--bal-color-primary)
+                color: var(--bal-time-input-native-text-color-focus-value)
             &::-webkit-datetime-edit-hour-field
-                color: var(--bal-color-primary)
+                color: var(--bal-time-input-native-text-color-focus-value)
             &::-webkit-datetime-edit-minute-field
-                color: var(--bal-color-primary)
+                color: var(--bal-time-input-native-text-color-focus-value)
         &.is-disabled
             &::-webkit-datetime-edit-text
-                color: var(--bal-color-grey-5)
+                color: var(--bal-time-input-native-text-color-disabled)
             &::-webkit-datetime-edit-hour-field
-                color: var(--bal-color-grey-5)
+                color: var(--bal-time-input-native-text-color-disabled)
             &::-webkit-datetime-edit-minute-field
-                color: var(--bal-color-grey-5)
+                color: var(--bal-time-input-native-text-color-disabled)
             &.has-value
                 &::-webkit-datetime-edit-text
-                    color: var(--bal-color-grey-4)
+                    color: var(--bal-time-input-native-text-color-disabled-value)
                 &::-webkit-datetime-edit-hour-field
-                    color: var(--bal-color-grey-4)
+                    color: var(--bal-time-input-native-text-color-disabled-value)
                 &::-webkit-datetime-edit-minute-field
-                    color: var(--bal-color-grey-4)
+                    color: var(--bal-time-input-native-text-color-disabled-value)
         &.show-placeholder
             &.is-disabled::before
-                color: var(--bal-color-grey-5)
-                background: var(--bal-color-grey-2)
+                color: var(--bal-time-input-native-placeholder-text-color-disabled-before)
+                background: var(--bal-time-input-native-placeholder-background-disabled-before)
             &.is-danger::before
-                background: var(--bal-color-danger-1)
+                background: var(--bal-time-input-native-placeholder-background-danger-before)
             &.is-disabled.is-danger::before
-                background: var(--bal-color-grey-2)
+                background: var(--bal-time-input-native-placeholder-background-disabled-danger-before)
             &:hover::before
-                background: var(--bal-color-grey-1)
+                background: var(--bal-time-input-native-placeholder-background-hover-before)
             &::before
-                color: var(--bal-color-blue-3)
+                color: var(--bal-time-input-native-placeholder-text-color-before)
                 content: attr(placeholder)
                 pointer-events: none
                 position: absolute
-                background: var(--bal-color-white)
+                background: var(--bal-time-input-native-placeholder-background-before)

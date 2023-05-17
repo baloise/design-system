@@ -1,4 +1,8 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-text.vars'
+
+// Text
+// --------------------------------------------------
 
 .bal-text
   display: block
@@ -9,6 +13,8 @@
   &--inline
     display: inline
     margin: 0
+  //
+  // spaces
   &--space-all
     margin-top: var(--bal-space-normal)
     margin-bottom: var(--bal-space-normal)
@@ -20,6 +26,8 @@
     margin-bottom: var(--bal-space-normal)
   &--space-none
     margin: 0
+  //
+  // inner text element
   &__text
     padding: 0
     margin: 0
@@ -27,35 +35,37 @@
       text-overflow: ellipsis
       overflow: hidden
       white-space: nowrap
+    //
+    // text colors
     &--has-text-light-blue
-      color: var(--bal-color-text-light-blue)
+      color: var(--bal-text-color-light-blue)
     &--has-text-blue-dark
-      color: var(--bal-color-text-primary-dark)
+      color: var(--bal-text-color-primary-dark)
     &--has-text-blue-light
-      color: var(--bal-color-text-blue-light)
+      color: var(--bal-text-color-blue-light)
     &--has-text-primary-light
-      color: var(--bal-color-text-primary-light)
+      color: var(--bal-text-color-primary-light)
     &--has-text-primary-dark
-      color: var(--bal-color-text-primary-dark)
+      color: var(--bal-text-color-primary-dark)
     &--has-text-white
-      color: var(--bal-color-text-white)
+      color: var(--bal-text-color-white)
     &--has-text-black
-      color: var(--bal-color-text-black)
+      color: var(--bal-text-color-black)
     &--has-text-grey
-      color: var(--bal-color-text-grey)
+      color: var(--bal-text-color-grey)
     &--has-text-primary
-      color: var(--bal-color-text-primary)
+      color: var(--bal-text-color-primary)
     &--has-text-blue
-      color: var(--bal-color-text-primary)
+      color: var(--bal-text-color-primary)
     &--has-text-info
-      color: var(--bal-color-text-info)
+      color: var(--bal-text-color-info)
     &--has-text-success
-      color: var(--bal-color-text-success)
+      color: var(--bal-text-color-success)
     &--has-text-warning
-      color: var(--bal-color-text-warning)
+      color: var(--bal-text-color-warning)
     &--has-text-danger
-      color: var(--bal-color-text-danger)
+      color: var(--bal-text-color-danger)
     &--has-text-danger-dark
-      color: var(--bal-color-text-danger-dark)
+      color: var(--bal-text-color-danger-dark)
     &--has-text-danger-darker
-      color: var(--bal-color-text-danger-darker)
+      color: var(--bal-text-color-danger-darker)
