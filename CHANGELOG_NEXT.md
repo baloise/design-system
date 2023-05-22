@@ -157,7 +157,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.3](https://github.com/baloise/design-system/compare/v10.23.2...v10.23.3) (2022-09-29)
 
-
 ### Features
 
 * **bal-slider:** added description for label prop ([0ced762](https://github.com/baloise/design-system/commit/0ced7625d74bb9ea49102c40b21860a9def8046d))
