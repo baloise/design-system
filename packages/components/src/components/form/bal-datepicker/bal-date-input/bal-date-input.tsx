@@ -16,11 +16,7 @@ import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalConfigObserver, BalConfigState } from '../../../../interfaces'
 import { BalLanguage, BalRegion, ListenToConfig, defaultConfig } from '../../../../utils/config'
-import { dateSeparator } from '@baloise/web-app-utils'
-import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../../utils/constants/keys.constant'
-import { stopEventBubbling } from '../../../../utils/form-input'
-import { DateMaskKeyboardEvent } from '../utils/mask-event'
-import { MaskDate } from '../utils/mask-date'
+import { DateMask } from '../utils/date/mask-date'
 
 @Component({
   tag: 'bal-date-input',
@@ -29,8 +25,6 @@ import { MaskDate } from '../utils/mask-date'
   },
 })
 export class Datepicker implements ComponentInterface, Loggable, BalConfigObserver {
-  private static DATE_MASK = '__.__.____'
-
   private inputId = `bal-di-${dateInputIds++}`
   private nativeInput!: HTMLInputElement
   private inheritedAttributes: { [k: string]: any } = {}
@@ -87,7 +81,7 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
    */
   @Prop({ mutable: true }) value?: string
 
-  @State() private userValue?: string = this.value || Datepicker.DATE_MASK
+  @State() private userValue?: string = this.value
   private initialValue?: string = this.value
 
   @Watch('value')
@@ -125,6 +119,10 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
     this.valueChanged(this.value, undefined)
   }
 
+  componentDidLoad() {
+    this.dateMask.bindComponentDidLoad(this.nativeInput)
+  }
+
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
@@ -135,187 +133,53 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
    */
 
   /**
-   * @internal define config for the component
-   */
-  @Method()
-  @ListenToConfig()
-  async configChanged(config: BalConfigState) {
-    this.region = config.region
-    this.language = config.language
-    this.locale = `${this.language}-${this.region}`
-  }
-
-  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
-
-  // private blockKeyboardHits(event: KeyboardEvent) {
-  //   const separator = dateSeparator(this.locale)
-  //   const allowedKeys = [...NUMBER_KEYS, separator, ...ACTION_KEYS]
-  //   if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
-  //     stopEventBubbling(event)
-  //   }
-  // }
-
-  // private maskInput(event: KeyboardEvent) {
-
-  // this.dateMask.mask(event)
-
-  // const target: HTMLInputElement = event.target as any
-  // const key = event.key
-  // if (target) {
-  //   const position = target.selectionStart || 0
-
-  //   /**
-  //    * Delete
-  //    */
-  //   if (key === 'Backspace') {
-  //     const positionToRemove = position - 1
-  //     const charToRemove = target.value.charAt(positionToRemove)
-  //     if (charToRemove === '.') {
-  //       target.selectionStart = positionToRemove
-  //       target.selectionEnd = positionToRemove
-  //     } else {
-  //       console.warn(positionToRemove)
-  //       console.warn(charToRemove)
-  //       console.warn(this.replaceAt(target.value, positionToRemove, '_'))
-  //       target.value = this.replaceAt(target.value, positionToRemove, '_')
-  //       setTimeout(() => {
-  //         target.selectionStart = positionToRemove
-  //         target.selectionEnd = positionToRemove
-  //       })
-  //     }
-  //   }
-  //   if (key === 'Delete' || key === 'Del') {
-  //   }
-
-  //   /**
-  //    * Day
-  //    */
-  //   if (position === 0) {
-  //     if (['0', '1', '2', '3'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 1
-  //       target.selectionEnd = 1
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   } else if (position === 1) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 3
-  //       target.selectionEnd = 3
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //     /**
-  //      * Month
-  //      */
-  //   } else if (position === 3) {
-  //     if (['0', '1'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 4
-  //       target.selectionEnd = 4
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   } else if (position === 4) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 6
-  //       target.selectionEnd = 6
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //     /**
-  //      * Year
-  //      */
-  //   } else if (position === 6) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 7
-  //       target.selectionEnd = 7
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   } else if (position === 7) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 8
-  //       target.selectionEnd = 8
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   } else if (position === 8) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 9
-  //       target.selectionEnd = 9
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   } else if (position === 9) {
-  //     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(key)) {
-  //       target.value = this.replaceAt(target.value, position, key)
-  //       target.selectionStart = 10
-  //       target.selectionEnd = 10
-  //     } else {
-  //       stopEventBubbling(event)
-  //     }
-  //   }
-  //   console.log('maskInput', target.selectionStart)
-  // }
-  // }
-
-  // private replaceAt(value: string, index: number, replacement: string) {
-  //   return value.substring(0, index) + replacement + value.substring(index + replacement.length)
-  // }
 
   /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
 
+  private dateMask = new DateMask()
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(config: BalConfigState) {
+    this.dateMask.bindI18nChange(`${config.language}-${config.region}`)
+  }
+
   private onKeyDown = (event: KeyboardEvent) => {
-    const separator = dateSeparator(this.locale)
-    const maskEvent = new DateMaskKeyboardEvent(event)
-    const maskDate = new MaskDate(maskEvent, separator)
-    if (maskDate.isKeyPressAllowed() && this.nativeInput) {
-      maskDate.mask()
-    }
+    this.dateMask.bindKeyDown(event)
+  }
+
+  private onPaste = (event: ClipboardEvent) => {
+    this.dateMask.bindPast(event)
   }
 
   private onKeyUp = (_event: KeyboardEvent) => {
-    // console.log('onKeyUp', event)
+    // console.log('onKeyUp', _event)
   }
 
   private onInput = (_event: InputEvent) => {
-    // console.log('onInput', event)
-    // this.maskInput(event)
-    // const target: HTMLInputElement = event.target as any
-    // const value = target.value
-    // const formattedValue = value
-    //   .replace(/\D/g, '') // Remove non-digit characters
-    //   .replace(/(\d{2})(\d)/, '$1/$2') // Add slash after second digit
-    //   .replace(/(\d{2})(\d)/, '$1/$2') // Add slash after fourth digit
-    //   .replace(/(\d{4})\d+?$/, '$1') // Remove extra digits after year
-    // target.value = formattedValue
+    // this.dateMask.bindInput(event)
   }
 
   private onClick = (event: MouseEvent) => {
-    const target: HTMLInputElement = event.target as any
-    if (this.userValue === Datepicker.DATE_MASK) {
-      target.selectionStart = 0
-      target.selectionEnd = 0
-    }
+    this.dateMask.bindClick(event)
+    // const target: HTMLInputElement = event.target as any
   }
 
   private onChange = (_event: Event) => {
     // console.log('onChange', event)
   }
 
-  private onBlur = (_event: FocusEvent) => {
+  private onBlur = (event: FocusEvent) => {
+    this.dateMask.bindBlur(event)
     // console.log('onBlur', event)
   }
 
@@ -363,6 +227,7 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
             onChange={this.onChange}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
+            onPaste={this.onPaste}
             {...this.inheritedAttributes}
           />
         </bal-input-group>

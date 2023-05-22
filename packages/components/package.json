@@ -84,6 +84,7 @@
     "contactjs": "~2.1.6",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
+    "imask": "^6.6.1",
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
     "lodash.isempty": "~4.4.0",
@@ -96,7 +97,7 @@
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
-    "imask": "^6.6.1",
+    "luxon": "^3.3.0",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
