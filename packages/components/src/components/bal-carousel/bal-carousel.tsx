@@ -25,6 +25,7 @@ import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
 import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
+import { getComputedWidth } from '../../utils/style'
 
 @Component({
   tag: 'bal-carousel',
@@ -285,8 +286,12 @@ export class Carousel
       return {
         el: items[index],
         data: data[index],
-        transformNext: items.filter((_, n) => n < index + 1).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
-        transformActive: items.filter((_, n) => n < index).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
+        transformNext: items
+          .filter((_, n) => n < index + 1)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+        transformActive: items
+          .filter((_, n) => n < index)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
         isFirst: index === 0,
         isLast: index === items.length - 1,
         total: items.length,

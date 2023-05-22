@@ -30,7 +30,7 @@ import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
-import { getPadding, Padding } from '../../utils/style'
+import { getComputedPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
@@ -471,7 +471,7 @@ export class Tabs
           return
         }
 
-        const padding = getPadding(target)
+        const padding = getComputedPadding(target)
         const size = this.getLineSize(target, padding)
         const offset = this.getOffset(target, padding)
 
