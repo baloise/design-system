@@ -13,6 +13,8 @@ describe('bal-tabs', () => {
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation', errorThreshold)
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical', errorThreshold)
+      cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack', errorThreshold)
+      cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex', errorThreshold)
     })
   })
 
@@ -28,6 +30,8 @@ describe('bal-tabs', () => {
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar-tablet', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation-tablet', errorThreshold)
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical-tablet', errorThreshold)
+      cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-tablet', errorThreshold)
+      cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-tablet', errorThreshold)
     })
   })
 
@@ -43,6 +47,8 @@ describe('bal-tabs', () => {
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar-mobile', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation-mobile', errorThreshold)
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical-mobile', errorThreshold)
+      cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-mobile', errorThreshold)
+      cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-mobile', errorThreshold)
     })
   })
 })
