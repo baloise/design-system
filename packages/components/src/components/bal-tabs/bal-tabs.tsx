@@ -34,6 +34,7 @@ import { getPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
@@ -42,7 +43,13 @@ import { AccordionState } from '../../interfaces'
   },
 })
 export class Tabs
-  implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver, BalBreakpointObserver
+  implements
+    ComponentInterface,
+    Loggable,
+    BalConfigObserver,
+    BalMutationObserver,
+    BalBreakpointObserver,
+    BalResizeObserver
 {
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
@@ -239,6 +246,11 @@ export class Tabs
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
     this.isTablet = breakpoints.tablet
+    this.animateLine()
+  }
+
+  @ListenToResize()
+  resizeListener() {
     this.animateLine()
   }
 

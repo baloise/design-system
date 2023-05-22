@@ -24,12 +24,15 @@ import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorat
 import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
 import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
-export class Carousel implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver {
+export class Carousel
+  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalResizeObserver
+{
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private borderEl?: HTMLDivElement
@@ -150,6 +153,11 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.areControlsHidden = !breakpoints.mobile
+    this.itemsChanged()
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
     this.itemsChanged()
   }
 
@@ -366,7 +374,6 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
     const container = inner.element('container')
 
     const controlItems = this.getAllControlItems()
-
     return (
       <Host
         class={{
