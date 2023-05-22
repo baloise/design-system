@@ -170,7 +170,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-slider:** updated named tabs story ([80273cd](https://github.com/baloise/design-system/commit/80273cdb104a56edbeedb368fcadf2d41da75a28))
 * **bal-slider:** updated the stories ([fc4d6d4](https://github.com/baloise/design-system/commit/fc4d6d4620e6611597b91734050636a54d2adfa4))
 
-
 ### Bug Fixes
 
 * **card:** adjust tag and button alignment in the title. Closes [#547](https://github.com/baloise/design-system/issues/547) ([3d04ec2](https://github.com/baloise/design-system/commit/3d04ec218e33a7fc0aeccbc673fab962e77ab736))
