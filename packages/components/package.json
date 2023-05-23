@@ -84,7 +84,6 @@
     "contactjs": "~2.1.6",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
-    "imask": "^6.6.1",
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
     "lodash.isempty": "~4.4.0",
