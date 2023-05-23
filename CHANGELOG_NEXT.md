@@ -154,7 +154,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-pagination:** add prop to disable controls and dots for context small ([#662](https://github.com/baloise/design-system/issues/662)) ([e684bd0](https://github.com/baloise/design-system/commit/e684bd02413fe165e1107b92f7a5c02e8a2b0c35))
 
 
-
 ## [10.23.3](https://github.com/baloise/design-system/compare/v10.23.2...v10.23.3) (2022-09-29)
 
 ### Features

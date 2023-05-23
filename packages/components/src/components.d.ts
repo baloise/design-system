@@ -1461,6 +1461,10 @@ export namespace Components {
          */
         "invalid"?: boolean;
         /**
+          * When true, the text will is able to break on multiple lines.
+         */
+        "multiline": boolean;
+        /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
          */
         "noWrap": boolean;
@@ -5653,6 +5657,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * When true, the text will is able to break on multiple lines.
+         */
+        "multiline"?: boolean;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
          */
