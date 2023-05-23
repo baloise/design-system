@@ -2,4 +2,4 @@
 '@baloise/design-system-components': minor
 ---
 
-break heading text in bal-file-upload
+heading content can break in bal-file-upload
