@@ -201,7 +201,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
 
 
-
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
 ### Features
