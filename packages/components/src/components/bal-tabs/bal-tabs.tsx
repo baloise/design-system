@@ -30,10 +30,11 @@ import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
-import { getPadding, Padding } from '../../utils/style'
+import { getComputedPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
@@ -42,7 +43,13 @@ import { AccordionState } from '../../interfaces'
   },
 })
 export class Tabs
-  implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver, BalBreakpointObserver
+  implements
+    ComponentInterface,
+    Loggable,
+    BalConfigObserver,
+    BalMutationObserver,
+    BalBreakpointObserver,
+    BalResizeObserver
 {
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
@@ -239,6 +246,11 @@ export class Tabs
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.isMobile = breakpoints.mobile
     this.isTablet = breakpoints.tablet
+    this.animateLine()
+  }
+
+  @ListenToResize()
+  resizeListener() {
     this.animateLine()
   }
 
@@ -459,7 +471,7 @@ export class Tabs
           return
         }
 
-        const padding = getPadding(target)
+        const padding = getComputedPadding(target)
         const size = this.getLineSize(target, padding)
         const offset = this.getOffset(target, padding)
 

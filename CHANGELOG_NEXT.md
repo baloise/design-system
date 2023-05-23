@@ -154,9 +154,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-pagination:** add prop to disable controls and dots for context small ([#662](https://github.com/baloise/design-system/issues/662)) ([e684bd0](https://github.com/baloise/design-system/commit/e684bd02413fe165e1107b92f7a5c02e8a2b0c35))
 
 
-
 ## [10.23.3](https://github.com/baloise/design-system/compare/v10.23.2...v10.23.3) (2022-09-29)
-
 
 ### Features
 
@@ -170,7 +168,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-slider:** set tabs names from slide items labels ([6e9fc4b](https://github.com/baloise/design-system/commit/6e9fc4b557621d273a729a953b6705a9f34bc4fa))
 * **bal-slider:** updated named tabs story ([80273cd](https://github.com/baloise/design-system/commit/80273cdb104a56edbeedb368fcadf2d41da75a28))
 * **bal-slider:** updated the stories ([fc4d6d4](https://github.com/baloise/design-system/commit/fc4d6d4620e6611597b91734050636a54d2adfa4))
-
 
 ### Bug Fixes
 
@@ -201,7 +198,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
 * **stage:** stage position ([2839688](https://github.com/baloise/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
-
 
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)

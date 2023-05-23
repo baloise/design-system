@@ -24,12 +24,16 @@ import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorat
 import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
 import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
+import { getComputedWidth } from '../../utils/style'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
-export class Carousel implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver {
+export class Carousel
+  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalResizeObserver
+{
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private borderEl?: HTMLDivElement
@@ -150,6 +154,11 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.areControlsHidden = !breakpoints.mobile
+    this.itemsChanged()
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
     this.itemsChanged()
   }
 
@@ -277,8 +286,12 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
       return {
         el: items[index],
         data: data[index],
-        transformNext: items.filter((_, n) => n < index + 1).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
-        transformActive: items.filter((_, n) => n < index).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
+        transformNext: items
+          .filter((_, n) => n < index + 1)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+        transformActive: items
+          .filter((_, n) => n < index)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
         isFirst: index === 0,
         isLast: index === items.length - 1,
         total: items.length,
@@ -366,7 +379,6 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
     const container = inner.element('container')
 
     const controlItems = this.getAllControlItems()
-
     return (
       <Host
         class={{
