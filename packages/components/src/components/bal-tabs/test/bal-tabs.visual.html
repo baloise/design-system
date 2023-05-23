@@ -1,104 +1,144 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
 
-      section {
-        padding: 1rem;
-      }
-    </style>
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
 
-  <body>
-    <bal-doc-app>
-      <main>
-        <section data-testid="basic">
-          <bal-tabs data-testid="tabs" value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+    section {
+      padding: 1rem;
+    }
+  </style>
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <bal-doc-app>
+    <main>
+      <section data-testid="basic">
+        <bal-tabs data-testid="tabs" value="tab-a" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="expanded">
+        <bal-tabs expanded value="tab-a" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="meta" class="has-background-primary">
+        <bal-tabs value="tab-a" interface="meta" spaceless inverted>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="navbar">
+        <bal-tabs value="tab-a" interface="navbar" spaceless>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="navigation">
+        <bal-tabs value="tab-a" spaceless float="right" fullwidth accordion>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="vertical">
+        <bal-tabs vertical value="tab-a" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section class="container" data-testid="overflow-stack">
+        <bal-stack class="has-background-red-2">
+          <bal-tabs value="tab-a" class="is-flex-grow-1 has-background-green-2">
+            <bal-tab-item value="tab-a" label="Tab A Tab A Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B Tab B Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item bubble value="tab-c" label="Tab C Tab C Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-d" label="Tab D Tab D Tab D">Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E">Content of Tab D</bal-tab-item>
           </bal-tabs>
-        </section>
+          <bal-button no-wrap>Click Me! Click Me!</bal-button>
+        </bal-stack>
+      </section>
 
-        <section data-testid="expanded">
-          <bal-tabs expanded value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+      <section class="container" data-testid="overflow-flex">
+        <div class="is-flex">
+          <bal-tabs value="tab-a" class="is-flex-grow-1 has-background-green-2">
+            <bal-tab-item value="tab-a" label="Tab A Tab A Tab A">Content of Tab A</bal-tab-item>
+            <bal-tab-item value="tab-b" label="Tab B Tab B Tab B">Content of Tab B</bal-tab-item>
+            <bal-tab-item bubble value="tab-c" label="Tab C Tab C Tab C">Content of Tab C</bal-tab-item>
+            <bal-tab-item value="tab-d" label="Tab D Tab D Tab D">Content of Tab D</bal-tab-item>
+            <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E">Content of Tab D</bal-tab-item>
           </bal-tabs>
-        </section>
+          <bal-button no-wrap>Click Me! Click Me!</bal-button>
+        </div>
+      </section>
 
-        <section data-testid="meta" class="has-background-primary">
-          <bal-tabs value="tab-a" interface="meta" spaceless inverted>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
+      <section data-testid="vertical-list" class="container">
+        <bal-tabs vertical border value="tab-a">
+          <bal-tab-item value="tab-a" label="ab A">
+            <bal-list border size="small">
+              <bal-list-item accordion>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                    <bal-list-item-title>
+                      Wie ermittle ich die Versicherungssumme meines Hausrats?</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body content-space="normal">
+                  Die Versicherungssumme hängt von der Anzahl Zimmer sowie der Anzahl Personen im Haushalt ab. Ein
+                  weiterer wichtiger Punkt ist der Einrichtungsstandard. Geben Sie diese Informationen in unseren
+                  Prämienrechner ein. Anhand von Durchschnittswerten erhalten Sie dann einen Vorschlag für die passende
+                  Versicherungssumme. Oder nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den
+                  Hausrat», um den genauen Betrag zu berechnen. </bal-list-item-accordion-body>
+              </bal-list-item>
+              <bal-list-item accordion>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                    <bal-list-item-title>Was deckt die Haushaltversicherung?</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body content-space="normal">
+                  Die Haushaltversicherung deckt Schäden an Ihren persönlichen beweglichen Sachen (Hausrat) sowie
+                  Schäden, die Sie Drittpersonen zufügen (Haftpflicht). Mit verschiedenen Zusatzdeckungen können Sie den
+                  Versicherungsschutz abrunden.
+                </bal-list-item-accordion-body>
+              </bal-list-item>
+            </bal-list>
+            <bal-button color="secondary" class="mt-normal">Show More</bal-button>
+          </bal-tab-item>
 
-        <section data-testid="navbar">
-          <bal-tabs value="tab-a" interface="navbar" spaceless>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+        </bal-tabs>
+      </section>
+    </main>
+  </bal-doc-app>
+</body>
 
-        <section data-testid="navigation">
-          <bal-tabs value="tab-a" spaceless float="right" fullwidth accordion>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
-
-        <section data-testid="vertical">
-          <bal-tabs vertical value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
-
-        <section class="container" data-testid="overflow-stack">
-          <bal-stack class="has-background-red-2">
-            <bal-tabs value="tab-a" class="is-flex-grow-1 has-background-green-2">
-              <bal-tab-item value="tab-a" label="Tab A Tab A Tab A">Content of Tab A</bal-tab-item>
-              <bal-tab-item value="tab-b" label="Tab B Tab B Tab B">Content of Tab B</bal-tab-item>
-              <bal-tab-item bubble value="tab-c" label="Tab C Tab C Tab C">Content of Tab C</bal-tab-item>
-              <bal-tab-item value="tab-d" label="Tab D Tab D Tab D">Content of Tab D</bal-tab-item>
-              <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E">Content of Tab D</bal-tab-item>
-            </bal-tabs>
-            <bal-button no-wrap>Click Me! Click Me!</bal-button>
-          </bal-stack>
-        </section>
-
-        <section class="container" data-testid="overflow-flex">
-          <div class="is-flex">
-            <bal-tabs value="tab-a" class="is-flex-grow-1 has-background-green-2">
-              <bal-tab-item value="tab-a" label="Tab A Tab A Tab A">Content of Tab A</bal-tab-item>
-              <bal-tab-item value="tab-b" label="Tab B Tab B Tab B">Content of Tab B</bal-tab-item>
-              <bal-tab-item bubble value="tab-c" label="Tab C Tab C Tab C">Content of Tab C</bal-tab-item>
-              <bal-tab-item value="tab-d" label="Tab D Tab D Tab D">Content of Tab D</bal-tab-item>
-              <bal-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E">Content of Tab D</bal-tab-item>
-            </bal-tabs>
-            <bal-button no-wrap>Click Me! Click Me!</bal-button>
-          </div>
-        </section>
-      </main>
-    </bal-doc-app>
-  </body>
 </html>

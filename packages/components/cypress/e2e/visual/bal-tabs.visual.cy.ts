@@ -15,6 +15,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical', errorThreshold)
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex', errorThreshold)
+      cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list', errorThreshold)
     })
   })
 
@@ -32,6 +33,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical-tablet', errorThreshold)
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-tablet', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-tablet', errorThreshold)
+      cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list-tablet', errorThreshold)
     })
   })
 
@@ -49,6 +51,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('vertical').compareSnapshot('tabs-vertical-mobile', errorThreshold)
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-mobile', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-mobile', errorThreshold)
+      cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list-mobile', errorThreshold)
     })
   })
 })
