@@ -82,6 +82,7 @@ export class FieldLabel {
     return (
       <Host class="bal-field-label">
         <bal-label
+          multiline
           size="small"
           htmlFor={this.htmlFor}
           required={this.required}

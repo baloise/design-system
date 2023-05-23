@@ -13,13 +13,14 @@
   &__native
     display: inline
     hyphens: auto
-    overflow: hidden
-    text-overflow: ellipsis
+    white-space: pre
     min-width: 0
     font-family: var(--bal-form-field-label-font-family)
     font-weight: var(--bal-form-field-label-font-weight)
     font-size: var(--bal-size-normal)
     line-height: var(--bal-line-height-normal)
+    &--multiline
+      white-space: normal
     &--no-wrap
       display: block
       text-overflow: ellipsis

@@ -61,6 +61,11 @@ export class BalLabel
   @Prop() noWrap = false
 
   /**
+   * When true, the text will is able to break on multiple lines.
+   */
+  @Prop() multiline = false
+
+  /**
    * If `true` the component gets a valid green style.
    */
   @Prop() valid?: boolean = undefined
@@ -176,6 +181,7 @@ export class BalLabel
           htmlFor={this.htmlFor || this.inputId}
           class={{
             ...block.element('native').class(),
+            ...block.element('native').modifier('multiline').class(this.multiline),
             ...block.element('native').modifier('no-wrap').class(this.noWrap),
             ...block.element('native').modifier('disabled').class(disabled),
             ...block.element('native').modifier('danger').class(danger),
