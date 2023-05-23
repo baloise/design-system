@@ -1,5 +1,25 @@
 # @baloise/design-system-components
 
+## 13.3.1
+
+### Patch Changes
+
+- [#891](https://github.com/baloise/design-system/pull/891) - border of the vertical tabs will not be 100% height and content stretches to the whole width.
+
+- [#892](https://github.com/baloise/design-system/pull/892) - heading content can break in bal-file-upload
+
+- [#889](https://github.com/baloise/design-system/pull/889) - label content can break
+
+- [#887](https://github.com/baloise/design-system/pull/887) - carousel uses computed width instead of rounded client width
+
+- [#885](https://github.com/baloise/design-system/pull/885) - fix carousel resize listener, improves tabs overflow option.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.3.1
+  - @baloise/design-system-fonts@13.3.1
+  - @baloise/design-system-icons@13.3.1
+  - @baloise/design-system-tokens@13.3.1
+
 ## 13.3.0
 
 ### Minor Changes
