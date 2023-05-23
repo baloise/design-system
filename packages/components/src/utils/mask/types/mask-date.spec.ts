@@ -1,5 +1,10 @@
 import { initialize } from '../../config'
-import { MaskClipboardContextEventMock, MaskFocusContextMock, MaskKeyboardContextEventMock, MaskMouseContextEventMock } from './_mocks'
+import {
+  MaskClipboardContextEventMock,
+  MaskFocusContextMock,
+  MaskKeyboardContextEventMock,
+  MaskMouseContextEventMock,
+} from './_mocks'
 import { DateMask } from './mask-date'
 
 describe('mask', () => {
