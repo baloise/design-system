@@ -16,7 +16,7 @@ import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalConfigObserver, BalConfigState } from '../../../../interfaces'
 import { BalLanguage, BalRegion, ListenToConfig, defaultConfig } from '../../../../utils/config'
-import { DateMask } from '../utils/date/mask-date'
+import { DateMask } from '../../../../utils/mask/types/mask-date'
 
 @Component({
   tag: 'bal-date-input',
@@ -120,7 +120,7 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
   }
 
   componentDidLoad() {
-    this.dateMask.bindComponentDidLoad(this.nativeInput)
+    this.dateMask.fireComponentDidLoad(this.nativeInput)
   }
 
   componentWillLoad() {
@@ -150,7 +150,10 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
   @Method()
   @ListenToConfig()
   async configChanged(config: BalConfigState) {
-    this.dateMask.bindI18nChange(`${config.language}-${config.region}`)
+    this.dateMask.fireI18nChange({
+      locale: `${config.language}-${config.region}`,
+      target: this.nativeInput,
+    })
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
@@ -158,7 +161,7 @@ export class Datepicker implements ComponentInterface, Loggable, BalConfigObserv
   }
 
   private onPaste = (event: ClipboardEvent) => {
-    this.dateMask.bindPast(event)
+    this.dateMask.bindPaste(event)
   }
 
   private onKeyUp = (_event: KeyboardEvent) => {

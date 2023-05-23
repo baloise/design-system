@@ -1,9 +1,15 @@
-import { MaskPosition } from './mask-position'
+import { MaskPosition, MaskPositionTarget } from './mask-position'
 
-export abstract class MaskContext<T = Event> {
+export interface MaskContextEvent {
+  target: MaskPositionTarget | null
+  preventDefault?(): void
+  stopPropagation?(): void
+}
+
+export abstract class MaskContext<T = MaskContextEvent> {
   public position!: MaskPosition
 
-  constructor(protected event: T & Event) {
+  constructor(protected event: T & MaskContextEvent) {
     this.position = new MaskPosition(event.target)
   }
 
@@ -24,11 +30,15 @@ export abstract class MaskContext<T = Event> {
   }
 
   public preventDefault() {
-    this.event.preventDefault()
+    if (this.event.preventDefault) {
+      this.event.preventDefault()
+    }
   }
 
   public stopPropagation() {
     this.preventDefault()
-    this.event.stopPropagation()
+    if (this.event.stopPropagation) {
+      this.event.stopPropagation()
+    }
   }
 }

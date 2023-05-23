@@ -18,7 +18,7 @@ export class MaskBlock {
   private _mask!: MaskValue
   private _isSeparator = false
   private _allowedKeys: string[] = []
-  private _format: ((value: string) => string) | undefined
+  private _format: ((value: string, locale: string) => string) | undefined
   private _locale = 'de-CH'
 
   constructor(option: Partial<MaskBlockOption>) {
@@ -32,7 +32,7 @@ export class MaskBlock {
 
   public format(value: string): string {
     if (this._format) {
-      return this._format(value)
+      return this._format(value.replace(this.mask, ''), this._locale)
     }
     return value
   }
@@ -62,5 +62,14 @@ export class MaskBlock {
 
   onI18nChange(locale: string) {
     this._locale = locale
+  }
+
+  sliceFromValue(value: string): string {
+    return value.slice(this._from, this._to)
+  }
+
+  isTouched(value: string): boolean {
+    const blockValue = this.sliceFromValue(value)
+    return !blockValue.split('').every(char => char === this.mask)
   }
 }

@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { useBalConfig } from '../../../../../utils/config'
+import { useBalConfig } from '../config'
 import { dateSeparator } from '@baloise/web-app-utils'
 
 export class BalDate {

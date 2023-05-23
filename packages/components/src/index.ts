@@ -70,6 +70,7 @@ export { balDevice } from './utils/device'
 export { balBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from './utils/breakpoints'
 export { BalOrientationObserver, BalOrientationInfo, balOrientationSubject } from './utils/orientation'
 export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
+export { BalDate } from './utils/date'
 
 /**
  * Controllers

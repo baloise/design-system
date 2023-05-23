@@ -1,7 +1,13 @@
-import { MaskContext } from './mask-context'
+import { MaskContext, MaskContextEvent } from './mask-context'
 import { MaskPosition } from './mask-position'
 
-export class MaskKeyboardContext extends MaskContext<KeyboardEvent> {
+export interface MaskKeyboardContextEvent extends MaskContextEvent {
+  key: string
+  metaKey: boolean
+  ctrlKey: boolean
+}
+
+export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
   private static NUMBER_KEYS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
   private static NAVIGATION_KEYS = [
@@ -19,7 +25,7 @@ export class MaskKeyboardContext extends MaskContext<KeyboardEvent> {
 
   public position!: MaskPosition
 
-  constructor(event: KeyboardEvent) {
+  constructor(event: MaskKeyboardContextEvent) {
     super(event)
     this.position = new MaskPosition(event.target, event.key === 'Backspace')
   }
