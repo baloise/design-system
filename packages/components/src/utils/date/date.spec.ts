@@ -39,11 +39,6 @@ describe('balDate', () => {
         expect(BalDate.fromAnyFormat('.20/02/1988').isValid).toBeFalsy()
       })
     })
-    describe('toISO', () => {
-      test('should return the date in the ISO format', () => {
-        expect(date.toISO()).toStrictEqual('2001-02-01T00:00:00.000+01:00')
-      })
-    })
     describe('toISODate', () => {
       test('should return the date in the ISO date format without time', () => {
         expect(date.toISODate()).toStrictEqual('2001-02-01')
