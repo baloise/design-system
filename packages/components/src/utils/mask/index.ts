@@ -1,4 +1,5 @@
 export * from './context'
-export * from './mask'
+export * from './types'
 export * from './mask-block'
 export * from './mask-interfaces'
+export * from './mask'

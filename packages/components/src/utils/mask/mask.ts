@@ -6,10 +6,11 @@ import {
   MaskFocusContextEvent,
   MaskKeyboardContext,
   MaskKeyboardContextEvent,
+  MaskLocaleContext,
+  MaskLocaleContextEvent,
   MaskMouseContext,
   MaskMouseContextEvent,
 } from './context'
-import { MaskLocaleContext, MaskLocaleContextEvent } from './context/mask-locale-context'
 import { MaskBlock } from './mask-block'
 
 export abstract class Mask {

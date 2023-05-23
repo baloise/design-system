@@ -1,5 +1,4 @@
-import { MaskClipboardContext, MaskFocusContext, MaskKeyboardContext } from './context'
-import { MaskLocaleContext } from './context/mask-locale-context'
+import { MaskClipboardContext, MaskFocusContext, MaskKeyboardContext, MaskLocaleContext } from './context'
 import { MaskBlock } from './mask-block'
 
 export interface OnBlockChange {
