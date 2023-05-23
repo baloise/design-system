@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-footer.vars'
 
 +block(footer)
   +unselectable
@@ -8,9 +9,9 @@
 
   +element(inner)
     position: relative
-    font-family: var(--bal-font-family-text)
-    background-color: var(--bal-color-primary)
-    color: var(--bal-color-text-white)
+    font-family: var(--bal-footer-font-family)
+    background-color: var(--bal-footer-background)
+    color: var(--bal-footer-color)
     padding-top: var(--bal-space-x-small)
     padding-bottom: var(--bal-space-large)
     +tablet
@@ -22,7 +23,7 @@
 
     &,
     p
-      color: var(--bal-color-white)
+      color: var(--bal-footer-color)
 
     +element(wrapper)
       display: flex
@@ -48,15 +49,15 @@
 
           &:hover
             bal-icon
-              +fillSvg(var(--bal-color-light-blue-2))
+              +fillSvg(var(--bal-footer-language-background-hover))
             .input
-              color: var(--bal-color-light-blue-2)
+              color: var(--bal-footer-language-color-hover)
 
           &:active
             bal-icon
-              +fillSvg(var(--bal-color-light-blue-3))
+              +fillSvg(var(--bal-footer-language-background-active))
             .input
-              color: var(--bal-color-light-blue-3)
+              color: var(--bal-footer-language-color-active)
 
           +element(wrapper)
             width: 80px

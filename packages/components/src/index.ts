@@ -11,6 +11,7 @@ export {
   updateBalLanguage,
   updateBalRegion,
   onBalConfigChange,
+  useBalConfig,
   initStyleMode,
   initialize,
   BalConfig,

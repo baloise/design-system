@@ -6,5 +6,5 @@ export type BalKeyboardListenerFn = (info: BalKeyboardInfo) => void
 
 export interface BalKeyboardObserver {
   el: HTMLElement
-  keyboardListener: BalKeyboardListenerFn
+  keyboardListener(info: BalKeyboardInfo): void
 }
