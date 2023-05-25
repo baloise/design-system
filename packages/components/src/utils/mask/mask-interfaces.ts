@@ -76,10 +76,6 @@ export interface OnFocus {
   onFocus(context: MaskFocusContext): void
 }
 
-export interface OnRender {
-  onRender(): void
-}
-
 export interface OnValueChanged {
   onValueChanged(value?: string): void
 }
@@ -118,8 +114,9 @@ export interface MaskEvents
     OnInput,
     OnChange,
     OnValueChanged,
-    OnFormReset,
-    OnRender {}
+    OnFormReset {
+  maxLength: number
+}
 
 export interface MaskedComponent {
   attributes: MaskAttributes
@@ -131,7 +128,6 @@ export interface MaskedComponent {
   bindBlur(event: FocusEvent): void
   bindPaste(event: ClipboardEvent): void
   bindValueChanged(newValue?: string, oldValue?: string): void
-  bindRender(): void
   bindFormReset(event: UIEvent): void
   bindClick(event: MouseEvent): void
   bindHostClick(event: MouseEvent): void
@@ -146,5 +142,4 @@ export interface MaskedTest {
   firePaste(context: MaskClipboardContextEvent): void
   fireClick(context: MaskMouseContextEvent): void
   fireValueChanged(value?: string): void
-  fireRender(): void
 }

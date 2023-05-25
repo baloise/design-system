@@ -73,13 +73,9 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
 
   public bindValueChanged = (newValue: string | undefined, oldValue: string | undefined) => {
     if (newValue !== oldValue) {
-      this.component.value = newValue
+      // this.component.value = newValue
       return this.fireValueChanged(newValue)
     }
-  }
-
-  public bindRender = () => {
-    return this.fireRender()
   }
 
   public bindConfigChanged = (config: BalConfigState) => {
@@ -97,7 +93,6 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
   }
 
   public bindClick = (event: MouseEvent) => {
-    console.warn('bindClick')
     this.fireClick(event as MaskMouseContextEvent)
   }
 
@@ -125,7 +120,6 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
   }
 
   public bindFocus = (event: FocusEvent) => {
-    console.warn('bindFocus')
     this.fireFocus(event as MaskFocusContextEvent)
 
     if (this.isComponentAccessible) {
@@ -184,7 +178,7 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
     const newValue = this.onParseValue(inputValue)
     const valueHasChanged = newValue !== oldValue
     if (valueHasChanged) {
-      this.component.valueChanged(newValue, oldValue)
+      this.component.value = newValue
       this.component.balChange.emit(newValue)
     }
   }
@@ -255,14 +249,11 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
     }
   }
 
-  public onRender() {
-    // empty placeholder
-  }
-
   public onValueChanged(rawValue: string | undefined) {
     if (this.component && this.component.nativeInput) {
       const formattedValue = this.onFormatValue(rawValue)
-      this.component.inputValue = formattedValue
+      this.component.inputValue =
+        this.component.focused && formattedValue === '' ? this.createPlaceholderMask() : formattedValue
       this.component.nativeInput.value = this.component.inputValue
     }
   }
@@ -310,10 +301,6 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
     this.onLocaleChange(context, oldLocale, oldBlocks)
   }
 
-  public fireRender() {
-    return this.onRender()
-  }
-
   public fireValueChanged(value: string | undefined) {
     return this.onValueChanged(value)
   }
@@ -334,7 +321,7 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
       const context = new MaskKeyboardContext(event, this)
       const index = this.getBlockIndexFromContext(context)
 
-      if (index !== undefined) {
+      if (index !== undefined && !context.position.isRangeSelection) {
         const currentBlock = this.blocks[index]
         //
         // Navigation keys like arrows and tabs
@@ -436,16 +423,13 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
    */
 
   protected resetInputValueWithMask(context: MaskContext) {
-    context.value = this.createPlaceholderMask()
+    this.onChange(this.createPlaceholderMask())
     context.position.toStart()
     context.position.syncToInputElement()
-    this.onChange(context.value)
   }
 
   protected emptyInputValue(context: MaskContext) {
     context.value = ''
-    context.position.toStart()
-    context.position.syncToInputElement()
   }
 
   protected getRawValueWithoutMaskByContext(context: MaskContext): string {

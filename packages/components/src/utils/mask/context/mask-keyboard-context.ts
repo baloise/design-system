@@ -28,7 +28,7 @@ export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
 
   constructor(event: MaskKeyboardContextEvent, mask: MaskEvents) {
     super(event, mask)
-    this.position = new MaskPosition(event.target, event.key === 'Backspace')
+    this.position = new MaskPosition(event.target, event.key === 'Backspace', mask.maxLength)
   }
 
   get key(): string {

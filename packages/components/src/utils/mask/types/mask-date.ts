@@ -2,11 +2,11 @@ import { dateSeparator } from '@baloise/web-app-utils'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
 import { MaskBlock } from '../mask-block'
 import { AbstractMask } from '../mask'
-import { OnBlur, OnFormatValue, OnPaste, OnRender } from '../mask-interfaces'
+import { OnBlur, OnFormatValue, OnPaste } from '../mask-interfaces'
 import { MaskClipboardContext, MaskFocusContext } from '../context'
 import { BalDate } from '../../date'
 
-export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnRender, OnFormatValue {
+export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnFormatValue {
   maxLength = 10
   minLength = 10
 
@@ -38,10 +38,6 @@ export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnRender,
       }
     }
     return ''
-  }
-
-  override onRender() {
-    return BalDate.fromISO(this.component.value).toFormat()
   }
 
   override onPaste(context: MaskClipboardContext, _block: MaskBlock, _index: number): void {

@@ -177,7 +177,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
   render() {
     const block = BEM.block('date-input')
-    this.mask.bindRender()
 
     return (
       <Host
@@ -213,6 +212,8 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           onBlur={event => this.mask.bindBlur(event)}
           onPaste={event => this.mask.bindPaste(event)}
         />
+        <p>{this.value}</p>
+        <p>{this.inputValue}</p>
       </Host>
     )
   }

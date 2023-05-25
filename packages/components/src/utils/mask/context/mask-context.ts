@@ -11,7 +11,7 @@ export abstract class MaskContext<T = MaskContextEvent> {
   public position!: MaskPosition
 
   constructor(protected event: T & MaskContextEvent, protected mask: MaskEvents) {
-    this.position = new MaskPosition(event.target)
+    this.position = new MaskPosition(event.target, false, mask.maxLength)
   }
 
   public get target(): HTMLInputElement {
