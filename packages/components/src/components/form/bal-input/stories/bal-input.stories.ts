@@ -30,7 +30,6 @@ const component = BalComponentStory({
     placeholder: 'Enter a text',
     disabled: false,
     readonly: false,
-    invalid: false,
     type: 'text',
   },
   docs,
@@ -228,6 +227,35 @@ export const NativeInput = args => ({
 NativeInput.args = {}
 NativeInput.parameters = {
   ...component.sourceCode(NativeInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const InputDate = args => ({
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
+  setup: () => ({ args }),
+  template: `<bal-field>
+  <bal-field-label for="bday">Birthday</bal-field-label>
+  <bal-field-control>
+    <bal-input-date name="bday" autocomplete="bday"></bal-input-date>
+  </bal-field-control>
+</bal-field>`,
+})
+InputDate.args = {
+  placeholder: 'dd.mm.yyyy',
+  disabled: false,
+  readonly: false,
+  invalid: false,
+}
+InputDate.parameters = {
+  ...component.sourceCode(InputDate),
   controls: {
     exclude: excludedControls,
   },

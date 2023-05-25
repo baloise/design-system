@@ -20,11 +20,14 @@ describe('mask', () => {
   })
   describe('DateMask', () => {
     test('should add the empty mask when clicking the input and it is empty', () => {
-      const context = new MaskMouseContextEventMock()
-
+      const target = new MaskPositionTargetMock()
+      const context = new MaskFocusContextMock(target)
       expect(context.target.value).toBe('')
-      dateMask.fireClick(context)
+
+      dateMask.fireFocus(context)
+      expect(component.focused).toBeTruthy()
       expect(context.target.value).toBe('__.__.____')
+
       dateMask.fireBlur(context)
       expect(context.target.value).toBe('')
 
@@ -77,9 +80,12 @@ describe('mask', () => {
     })
 
     test('should add date', () => {
-      const clickContext = new MaskMouseContextEventMock()
-      const keyContext = new MaskKeyboardContextEventMock()
+      const target = new MaskPositionTargetMock()
+      const focusContext = new MaskFocusContextMock(target)
+      const clickContext = new MaskMouseContextEventMock(target)
+      const keyContext = new MaskKeyboardContextEventMock(target)
 
+      dateMask.fireFocus(focusContext)
       dateMask.fireClick(clickContext)
       keyContext.target.value = clickContext.target.value
       keyContext.key = '2'

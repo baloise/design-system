@@ -97,6 +97,7 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
   }
 
   public bindClick = (event: MouseEvent) => {
+    console.warn('bindClick')
     this.fireClick(event as MaskMouseContextEvent)
   }
 
@@ -124,6 +125,7 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
   }
 
   public bindFocus = (event: FocusEvent) => {
+    console.warn('bindFocus')
     this.fireFocus(event as MaskFocusContextEvent)
 
     if (this.isComponentAccessible) {
@@ -319,8 +321,10 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
   public fireClick(event: MaskMouseContextEvent): void {
     if (this.isComponentAccessible) {
       const context = new MaskMouseContext(event as MaskMouseContext, this)
-      if (context.target && context.isValueEmpty()) {
-        this.resetInputValueWithMask(context)
+      const maskPlaceholder = this.createPlaceholderMask()
+      if (maskPlaceholder === context.value) {
+        context.position.toStart()
+        context.position.syncToInputElement()
       }
     }
   }
@@ -387,10 +391,13 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
     }
   }
 
-  public fireFocus(_event: MaskFocusContextEvent): void {
+  public fireFocus(event: MaskFocusContextEvent): void {
     if (this.isComponentAccessible) {
       this.component.focused = true
       const context = new MaskFocusContext(event as MaskFocusContextEvent, this)
+      if (context.target && context.isValueEmpty()) {
+        this.resetInputValueWithMask(context)
+      }
       this.onFocus(context)
     }
   }
