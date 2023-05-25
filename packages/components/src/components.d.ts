@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
-import { AccordionState } from "./interfaces";
+import { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -18,7 +18,7 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
-export { AccordionState } from "./interfaces";
+export { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -1333,6 +1333,46 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string;
+    }
+    interface BalInputDate {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": BalProps.BalInputAutocomplete;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable": boolean;
+        "configChanged": (config: BalConfigState1) => Promise<void>;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        "hasIconRight": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "value": string | undefined;
     }
     interface BalInputGroup {
         /**
@@ -3058,6 +3098,10 @@ export interface BalInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalInputElement;
 }
+export interface BalInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalInputDateElement;
+}
 export interface BalInputSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalInputSliderElement;
@@ -3589,6 +3633,12 @@ declare global {
         prototype: HTMLBalInputElement;
         new (): HTMLBalInputElement;
     };
+    interface HTMLBalInputDateElement extends Components.BalInputDate, HTMLStencilElement {
+    }
+    var HTMLBalInputDateElement: {
+        prototype: HTMLBalInputDateElement;
+        new (): HTMLBalInputDateElement;
+    };
     interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
     }
     var HTMLBalInputGroupElement: {
@@ -4087,6 +4137,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
+        "bal-input-date": HTMLBalInputDateElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-slider": HTMLBalInputSliderElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
@@ -5508,6 +5559,65 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string;
+    }
+    interface BalInputDate {
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: BalProps.BalInputAutocomplete;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable"?: boolean;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hasIconRight"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateBlurDetail>) => void;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateChangeDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateFocusDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateInputDetail>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: BalInputDateCustomEvent<BalEvents.BalInputDateKeyPressDetail>) => void;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "value"?: string | undefined;
     }
     interface BalInputGroup {
         /**
@@ -7320,6 +7430,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-input": BalInput;
+        "bal-input-date": BalInputDate;
         "bal-input-group": BalInputGroup;
         "bal-input-slider": BalInputSlider;
         "bal-input-stepper": BalInputStepper;
@@ -7468,6 +7579,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
+            "bal-input-date": LocalJSX.BalInputDate & JSXBase.HTMLAttributes<HTMLBalInputDateElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;

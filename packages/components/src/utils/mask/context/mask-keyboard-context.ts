@@ -1,3 +1,4 @@
+import { MaskEvents } from '../mask-interfaces'
 import { MaskContext, MaskContextEvent } from './mask-context'
 import { MaskPosition } from './mask-position'
 
@@ -25,8 +26,8 @@ export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
 
   public position!: MaskPosition
 
-  constructor(event: MaskKeyboardContextEvent) {
-    super(event)
+  constructor(event: MaskKeyboardContextEvent, mask: MaskEvents) {
+    super(event, mask)
     this.position = new MaskPosition(event.target, event.key === 'Backspace')
   }
 

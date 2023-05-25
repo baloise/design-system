@@ -10,8 +10,8 @@ export class BalDate {
     return new BalDate(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
   }
 
-  public static fromISO(value: string) {
-    return new BalDate(DateTime.fromISO(value))
+  public static fromISO(value: string | undefined) {
+    return new BalDate(DateTime.fromISO(value || ''))
   }
 
   constructor(private dt: DateTime) {}
@@ -21,17 +21,26 @@ export class BalDate {
   }
 
   public toISO() {
-    return this.dt.toISO()
+    if (this.isValid) {
+      return this.dt.toISO()
+    }
+    return ''
   }
 
   public toISODate() {
-    return this.dt.toISODate()
+    if (this.isValid) {
+      return this.dt.toISODate() as string
+    }
+    return ''
   }
 
   public toFormat() {
-    const config = useBalConfig()
-    const locale = config?.locale || 'de-CH'
-    const separator = dateSeparator(locale)
-    return this.dt.toFormat(`dd${separator}MM${separator}yyyy`)
+    if (this.isValid) {
+      const config = useBalConfig()
+      const locale = config?.locale || 'de-CH'
+      const separator = dateSeparator(locale)
+      return this.dt.toFormat(`dd${separator}MM${separator}yyyy`)
+    }
+    return ''
   }
 }

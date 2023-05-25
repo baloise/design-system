@@ -1,3 +1,4 @@
+import { MaskEvents } from '../mask-interfaces'
 import { MaskPosition, MaskPositionTarget } from './mask-position'
 
 export interface MaskContextEvent {
@@ -9,7 +10,7 @@ export interface MaskContextEvent {
 export abstract class MaskContext<T = MaskContextEvent> {
   public position!: MaskPosition
 
-  constructor(protected event: T & MaskContextEvent) {
+  constructor(protected event: T & MaskContextEvent, protected mask: MaskEvents) {
     this.position = new MaskPosition(event.target)
   }
 
@@ -23,6 +24,7 @@ export abstract class MaskContext<T = MaskContextEvent> {
 
   public set value(newValue: string) {
     this.target.value = newValue
+    this.mask.onInput(newValue)
   }
 
   public isValueEmpty(): boolean {

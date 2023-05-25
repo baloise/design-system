@@ -12,22 +12,135 @@ import {
   MaskMouseContextEvent,
 } from './context'
 import { MaskBlock } from './mask-block'
+import { BalConfigState } from '../config'
+import { MaskComponent, MaskEvents, MaskedComponent, MaskedTest } from './mask-interfaces'
 
-export abstract class Mask {
+export abstract class AbstractMask implements MaskEvents, MaskedComponent, MaskedTest {
   protected nativeInputElement?: HTMLInputElement
   protected blocks: MaskBlock[] = []
   protected locale = 'de-CH'
+  protected component!: MaskComponent
+  private resetHandlerTimer?: NodeJS.Timer
+
+  public abstract maxLength: number
+  public abstract minLength: number
+  public inputMode: BalProps.BalInputInputMode = 'text'
 
   constructor(blocks: MaskBlock[] = []) {
     this.blocks = blocks
   }
 
   /**
-   * ABSTRACT METHODS
+   * GETTERS
    * ------------------------------------------------------
    */
 
-  onLocaleChange(context: MaskLocaleContext, _oldLocale: string, oldBlocks: MaskBlock[]) {
+  public get attributes() {
+    return {
+      inputMode: this.inputMode,
+      maxLength: this.maxLength,
+      minLength: this.minLength,
+      type: 'text',
+      autoCapitalize: 'off',
+      autoCorrect: 'off',
+      spellcheck: false,
+    }
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  public bindFormReset = (event: UIEvent) => {
+    const formElement = event.target as HTMLElement
+    if (formElement && formElement.contains(this.component.el)) {
+      this.fireFormReset()
+    }
+  }
+
+  public bindComponent = (component: MaskComponent) => {
+    this.component = component
+    this.component.initialValue = this.component.value || ''
+    this.bindValueChanged(this.component.value, undefined)
+  }
+
+  public bindComponentDidLoad = (): void => {
+    if (this.component && this.component.nativeInput) {
+      this.component.nativeInput.value = this.component.value || ''
+    }
+  }
+
+  public bindValueChanged = (newValue: string | undefined, oldValue: string | undefined) => {
+    if (newValue !== oldValue) {
+      this.component.value = newValue
+      return this.fireValueChanged(newValue)
+    }
+  }
+
+  public bindRender = () => {
+    return this.fireRender()
+  }
+
+  public bindConfigChanged = (config: BalConfigState) => {
+    this.fireI18nChange({
+      locale: `${config.language}-${config.region}`,
+      target: this.component?.nativeInput || null,
+    })
+  }
+
+  public bindKeyDown = (event: KeyboardEvent) => {
+    this.fireKeyDown(event as MaskKeyboardContextEvent)
+    if (this.isComponentAccessible) {
+      this.component.balKeyPress.emit(event)
+    }
+  }
+
+  public bindClick = (event: MouseEvent) => {
+    this.fireClick(event as MaskMouseContextEvent)
+  }
+
+  public bindHostClick = (event: MouseEvent) => {
+    if (!this.isComponentAccessible) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
+  public bindGlobalClick = (event: UIEvent) => {
+    if (!this.isComponentAccessible) {
+      if (event.target && event.target === this.component.el) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+    }
+  }
+
+  public bindBlur = (event: FocusEvent) => {
+    this.fireBlur(event as MaskFocusContextEvent)
+    if (this.isComponentAccessible) {
+      this.component.balBlur.emit(event)
+    }
+  }
+
+  public bindFocus = (event: FocusEvent) => {
+    this.fireFocus(event as MaskFocusContextEvent)
+
+    if (this.isComponentAccessible) {
+      this.component.balFocus.emit(event)
+    }
+  }
+
+  public bindPaste = (event: ClipboardEvent) => {
+    this.firePaste(event as MaskClipboardContextEvent)
+  }
+
+  /**
+   * ABSTRACT EVENT METHODS
+   * ------------------------------------------------------
+   */
+
+  public onLocaleChange(context: MaskLocaleContext, _oldLocale: string, oldBlocks: MaskBlock[]) {
     if (context.target) {
       const value = context.target.value
       const chars = value.split('')
@@ -49,26 +162,47 @@ export abstract class Mask {
     }
   }
 
-  onFormatValue(_context: MaskFocusContext) {
+  public onFocus(_context: MaskFocusContext) {
     // empty placeholder
   }
 
-  onNavigationDown(_context: MaskKeyboardContext, _block: MaskBlock, _index: number): void {
+  public onBlur(_context: MaskFocusContext) {
     // empty placeholder
   }
 
-  onSelectAll(_context: MaskKeyboardContext, _block: MaskBlock, _index: number): void {
+  public onInput(value?: string) {
+    if (this.component) {
+      this.component.inputValue = value
+      this.component.balInput.emit(this.getRawValueWithoutMask(value) as any)
+    }
+  }
+
+  public onChange(inputValue?: string) {
+    const oldValue = this.component.value || ''
+    const newValue = this.onParseValue(inputValue)
+    const valueHasChanged = newValue !== oldValue
+    if (valueHasChanged) {
+      this.component.valueChanged(newValue, oldValue)
+      this.component.balChange.emit(newValue)
+    }
+  }
+
+  public onNavigationDown(_context: MaskKeyboardContext, _block: MaskBlock, _index: number): void {
     // empty placeholder
   }
 
-  onPaste(context: MaskClipboardContext, _block: MaskBlock, _index: number): void {
+  public onSelectAll(_context: MaskKeyboardContext, _block: MaskBlock, _index: number): void {
+    // empty placeholder
+  }
+
+  public onPaste(context: MaskClipboardContext, _block: MaskBlock, _index: number): void {
     const value = context.clipboardData || ''
     context.value = value
     context.position.toEnd()
     context.position.syncToInputElement()
   }
 
-  onBlockChange(context: MaskKeyboardContext, block: MaskBlock, index: number) {
+  public onBlockChange(context: MaskKeyboardContext, block: MaskBlock, index: number) {
     if (block.isSeparator) {
       context.position.next()
       context.position.syncToInputElement()
@@ -85,7 +219,7 @@ export abstract class Mask {
     }
   }
 
-  onBackspaceDown(context: MaskKeyboardContext, block: MaskBlock, index: number): void {
+  public onBackspaceDown(context: MaskKeyboardContext, block: MaskBlock, index: number): void {
     if (block.isSeparator) {
       context.position.previous()
       context.position.syncToInputElement()
@@ -102,7 +236,7 @@ export abstract class Mask {
     }
   }
 
-  onDeleteDown(context: MaskKeyboardContext, block: MaskBlock, index: number): void {
+  public onDeleteDown(context: MaskKeyboardContext, block: MaskBlock, index: number): void {
     if (block.isSeparator) {
       context.position.next()
       context.position.syncToInputElement()
@@ -119,17 +253,54 @@ export abstract class Mask {
     }
   }
 
+  public onRender() {
+    // empty placeholder
+  }
+
+  public onValueChanged(rawValue: string | undefined) {
+    if (this.component && this.component.nativeInput) {
+      const formattedValue = this.onFormatValue(rawValue)
+      this.component.inputValue = formattedValue
+      this.component.nativeInput.value = this.component.inputValue
+    }
+  }
+
+  public onParseValue(inputValue?: string) {
+    if (inputValue) {
+      return inputValue.trim()
+    }
+    return inputValue || ''
+  }
+
+  public onFormatValue(rawValue?: string) {
+    if (rawValue) {
+      return rawValue.trim()
+    }
+    return rawValue || ''
+  }
+
+  public onFormReset() {
+    this.component.value = this.component.initialValue
+    this.component.inputValue = this.component.initialValue
+    clearTimeout(this.resetHandlerTimer)
+    this.resetHandlerTimer = setTimeout(() => {
+      if (this.component.nativeInput) {
+        this.component.nativeInput.value = this.component.value || ''
+      }
+    })
+  }
+
   /**
-   * LISTENERS
+   * FIRE EVENT WITH CONTEXT
    * ------------------------------------------------------
    */
 
-  public fireComponentDidLoad(el: HTMLInputElement): void {
-    this.nativeInputElement = el
+  public fireFormReset() {
+    this.onFormReset()
   }
 
   public fireI18nChange(event: MaskLocaleContextEvent) {
-    const context = new MaskLocaleContext(event)
+    const context = new MaskLocaleContext(event, this)
     const oldBlocks = [...this.blocks]
     const oldLocale = `${context.locale}`
     this.locale = context.locale
@@ -137,139 +308,164 @@ export abstract class Mask {
     this.onLocaleChange(context, oldLocale, oldBlocks)
   }
 
-  public async bindKeyDown(event: KeyboardEvent) {
-    this.fireKeyDown(event as MaskKeyboardContextEvent)
+  public fireRender() {
+    return this.onRender()
   }
 
-  public async fireKeyDown(event: MaskKeyboardContextEvent) {
-    const context = new MaskKeyboardContext(event)
-    const index = this.getBlockIndexFromContext(context)
+  public fireValueChanged(value: string | undefined) {
+    return this.onValueChanged(value)
+  }
 
-    if (index !== undefined) {
-      const currentBlock = this.blocks[index]
-      //
-      // Navigation keys like arrows and tabs
-      if (context.isNavigationKey) {
-        this.onNavigationDown(context, currentBlock, index)
-        //
-        // Select the whole value of the input
-      } else if (context.isSelectAllCommand) {
-        this.onSelectAll(context, currentBlock, index)
-        //
-        // On copy a the value
-      } else if (context.isCopyCommand) {
-        // this.onCopy(context, currentBlock, index)
-        //
-        // On paste a new value into
-      } else if (context.isPasteCommand) {
-        //
-        // On backspace to remove a previous char
-      } else if (context.isBackspaceKey) {
-        context.preventDefault()
-        this.onBackspaceDown(context, currentBlock, index)
-        //
-        // On delete to remove a next char
-      } else if (context.isDeleteKey) {
-        context.preventDefault()
-        this.onDeleteDown(context, currentBlock, index)
-        //
-        // On a normal key down with the allowed key hits
-      } else if (this.verifyAllowedKeyHits(context, currentBlock, index)) {
-        context.preventDefault()
-        this.onBlockChange(context, currentBlock, index)
-        //
-        // if the user hits the next separator we jump to the next user block
-      } else if (this.verifyCallOfNextSeparator(context, currentBlock, index)) {
-        context.preventDefault()
-      }
-
-      //
-      // format all blocks where the cursor is not active
-      const newIndex = this.getBlockIndexFromContext(context)
-      if (newIndex && !context.isBackspaceKey) {
-        const newBlock = this.blocks[newIndex]
-        this.formatInActiveBlocks(context, newBlock, newIndex)
-      }
-
-      //
-      // hit a range of chars
-    } else {
-      if (context.isBackspaceKey || context.isDeleteKey) {
-        context.preventDefault()
+  public fireClick(event: MaskMouseContextEvent): void {
+    if (this.isComponentAccessible) {
+      const context = new MaskMouseContext(event as MaskMouseContext, this)
+      if (context.target && context.isValueEmpty()) {
         this.resetInputValueWithMask(context)
       }
     }
   }
 
-  public bindClick(event: MouseEvent) {
-    this.fireClick(event as MaskMouseContextEvent)
-  }
+  public async fireKeyDown(event: MaskKeyboardContextEvent) {
+    if (this.isComponentAccessible) {
+      const context = new MaskKeyboardContext(event, this)
+      const index = this.getBlockIndexFromContext(context)
 
-  public fireClick(event: MaskMouseContextEvent): void {
-    const context = new MaskMouseContext(event as MaskMouseContext)
-    if (context.target && context.isValueEmpty()) {
-      this.resetInputValueWithMask(context)
-    }
-  }
+      if (index !== undefined) {
+        const currentBlock = this.blocks[index]
+        //
+        // Navigation keys like arrows and tabs
+        if (context.isNavigationKey) {
+          this.onNavigationDown(context, currentBlock, index)
+          //
+          // Select the whole value of the input
+        } else if (context.isSelectAllCommand) {
+          this.onSelectAll(context, currentBlock, index)
+          //
+          // On copy a the value
+        } else if (context.isCopyCommand) {
+          // this.onCopy(context, currentBlock, index)
+          //
+          // On paste a new value into
+        } else if (context.isPasteCommand) {
+          //
+          // On backspace to remove a previous char
+        } else if (context.isBackspaceKey) {
+          context.preventDefault()
+          this.onBackspaceDown(context, currentBlock, index)
+          //
+          // On delete to remove a next char
+        } else if (context.isDeleteKey) {
+          context.preventDefault()
+          this.onDeleteDown(context, currentBlock, index)
+          //
+          // On a normal key down with the allowed key hits
+        } else if (this.verifyAllowedKeyHits(context, currentBlock, index)) {
+          context.preventDefault()
+          this.onBlockChange(context, currentBlock, index)
+          //
+          // if the user hits the next separator we jump to the next user block
+        } else if (this.verifyCallOfNextSeparator(context, currentBlock, index)) {
+          context.preventDefault()
+        }
 
-  public bindBlur(event: FocusEvent) {
-    this.fireBlur(event as MaskFocusContextEvent)
-  }
+        //
+        // format all blocks where the cursor is not active
+        const newIndex = this.getBlockIndexFromContext(context)
+        if (newIndex && !context.isBackspaceKey) {
+          const newBlock = this.blocks[newIndex]
+          this.formatInActiveBlocks(context, newBlock, newIndex)
+        }
 
-  public fireBlur(event: MaskFocusContextEvent): void {
-    const context = new MaskFocusContext(event as MaskFocusContextEvent)
-    if (context.target) {
-      if (this.isValueEmptyMask(context)) {
-        this.emptyInputValue(context)
+        //
+        // hit a range of chars
       } else {
-        this.onFormatValue(context)
+        if (context.isBackspaceKey || context.isDeleteKey) {
+          context.preventDefault()
+          this.resetInputValueWithMask(context)
+        }
       }
     }
   }
 
-  public bindPaste(event: ClipboardEvent) {
-    this.firePaste(event as MaskClipboardContextEvent)
+  public fireFocus(_event: MaskFocusContextEvent): void {
+    if (this.isComponentAccessible) {
+      this.component.focused = true
+      const context = new MaskFocusContext(event as MaskFocusContextEvent, this)
+      this.onFocus(context)
+    }
+  }
+
+  public fireBlur(event: MaskFocusContextEvent): void {
+    if (this.isComponentAccessible) {
+      const context = new MaskFocusContext(event as MaskFocusContextEvent, this)
+      if (context.target) {
+        if (this.isValueEmptyMask(context)) {
+          this.emptyInputValue(context)
+        } else {
+          this.onBlur(context)
+        }
+        this.onChange(context.target?.value)
+      }
+
+      this.component.focused = false
+    }
   }
 
   public firePaste(event: MaskClipboardContextEvent) {
-    const context = new MaskClipboardContext(event as MaskClipboardContextEvent)
-    const index = this.getBlockIndexFromContext(context)
-    if (index !== undefined) {
-      const currentBlock = this.blocks[index]
-      this.onPaste(context, currentBlock, index)
+    if (this.isComponentAccessible) {
+      const context = new MaskClipboardContext(event as MaskClipboardContextEvent, this)
+      const index = this.getBlockIndexFromContext(context)
+      if (index !== undefined) {
+        const currentBlock = this.blocks[index]
+        this.onPaste(context, currentBlock, index)
+        this.onChange(context.target.value)
+      }
     }
   }
 
   /**
-   * PUBLIC METHODS
+   * PROTECTED HELPER METHODS
    * ------------------------------------------------------
    */
 
-  public resetInputValueWithMask(context: MaskContext) {
+  protected resetInputValueWithMask(context: MaskContext) {
     context.value = this.createPlaceholderMask()
     context.position.toStart()
     context.position.syncToInputElement()
+    this.onChange(context.value)
   }
 
-  public emptyInputValue(context: MaskContext) {
+  protected emptyInputValue(context: MaskContext) {
     context.value = ''
     context.position.toStart()
     context.position.syncToInputElement()
   }
 
-  protected getRawValueWithoutMask(context: MaskContext): string {
-    const rawValue: string[] = []
-    const chars = context.target.value.split('')
-    for (let index = 0; index < chars.length; index++) {
-      const char = chars[index]
-      const block = this.findBlockByIndex(index)
-      if (block && !block.isSeparator) {
-        rawValue.push(char.replace(block.mask, ''))
-      } else {
-        rawValue.push(char)
+  protected getRawValueWithoutMaskByContext(context: MaskContext): string {
+    return this.getRawValueWithoutMask(context.target.value)
+  }
+
+  protected getRawValueWithoutMask(value?: string): string {
+    if (value) {
+      let rawValue: string[] = []
+      const chars = value.split('')
+      for (let index = 0; index < chars.length; index++) {
+        const char = chars[index]
+        const block = this.findBlockByIndex(index)
+        if (block && !block.isSeparator) {
+          rawValue.push(char.replace(block.mask, ''))
+        } else {
+          rawValue.push(char)
+        }
       }
+      rawValue = rawValue.filter(v => v)
+      const amountSeparators = this.blocks.filter(block => block.isSeparator).length
+      if (amountSeparators === rawValue.length) {
+        return ''
+      }
+      return rawValue.join('')
     }
-    return rawValue.join('')
+    return ''
   }
 
   /**
@@ -359,5 +555,9 @@ export abstract class Mask {
     context.target.value = value
     context.position.value = position
     context.position.syncToInputElement()
+  }
+
+  private get isComponentAccessible() {
+    return !this.component.disabled && !this.component.readonly
   }
 }
