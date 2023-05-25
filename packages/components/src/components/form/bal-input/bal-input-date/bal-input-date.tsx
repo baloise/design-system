@@ -179,7 +179,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
     const block = BEM.block('date-input')
     this.mask.bindRender()
 
-    console.trace('render')
     return (
       <Host
         onClick={(event: MouseEvent) => this.mask.bindHostClick(event)}
