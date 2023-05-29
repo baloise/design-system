@@ -423,7 +423,8 @@ export abstract class AbstractMask implements MaskEvents, MaskedComponent, Maske
    */
 
   protected resetInputValueWithMask(context: MaskContext) {
-    this.onChange(this.createPlaceholderMask())
+    context.value = this.createPlaceholderMask()
+    this.onChange()
     context.position.toStart()
     context.position.syncToInputElement()
   }

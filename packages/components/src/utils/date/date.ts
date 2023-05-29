@@ -7,6 +7,34 @@ export class BalDate {
     const separator = value.replace(/[0-9]/g, '').charAt(0)
     const config = useBalConfig()
     const locale = config?.locale || 'de-CH'
+    const pairs = value.split(separator)
+
+    const length = pairs.length
+    if (length === 2) {
+      const year = new Date().getFullYear()
+      return new BalDate(
+        DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
+          locale,
+        }),
+      )
+    }
+    if (length === 3) {
+      if (pairs[2] === '0') {
+        return new BalDate(
+          DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}2000`, `d${separator}M${separator}yy`, {
+            locale,
+          }),
+        )
+      } else if (pairs[2] === '') {
+        const year = new Date().getFullYear()
+        return new BalDate(
+          DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}${year}`, `d${separator}M${separator}yy`, {
+            locale,
+          }),
+        )
+      }
+    }
+
     return new BalDate(DateTime.fromFormat(value, `d${separator}M${separator}yy`, { locale }))
   }
 
