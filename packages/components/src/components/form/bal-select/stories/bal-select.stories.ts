@@ -172,6 +172,7 @@ export const TypeaheadRemote = args => ({
     const onChange = async (event: CustomEvent<string>) => {
       const search = event.detail
       options.value = await mockedApiCall(search, 0)
+      loading.value = false
     }
 
     const onInput = debounce(async (event: CustomEvent<string>) => {
