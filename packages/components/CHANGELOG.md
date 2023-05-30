@@ -1,5 +1,23 @@
 # @baloise/design-system-components
 
+## 13.4.0
+
+### Minor Changes
+
+- [#897](https://github.com/baloise/design-system/pull/897) - add free-solo variant to bal-select. hides trigger icon
+
+### Patch Changes
+
+- [#899](https://github.com/baloise/design-system/pull/899) - fix bal-close state background colors and remove unnecessary customization variables
+
+- [#897](https://github.com/baloise/design-system/pull/897) - fix loading state for datepicker and select
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.0
+  - @baloise/design-system-fonts@13.4.0
+  - @baloise/design-system-icons@13.4.0
+  - @baloise/design-system-tokens@13.4.0
+
 ## 13.3.1
 
 ### Patch Changes
