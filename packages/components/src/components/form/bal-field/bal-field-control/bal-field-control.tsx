@@ -7,11 +7,13 @@ import { Component, h, Host, Prop } from '@stencil/core'
 })
 export class FieldControl {
   /**
+   * @deprecated
    * Baloise icon for the right side of the input
    */
   @Prop() iconRight = ''
 
   /**
+   * @deprecated
    * Baloise icon for the left side of the input
    */
   @Prop() iconLeft = ''
@@ -47,7 +49,7 @@ export class FieldControl {
           'bal-field-control': true,
           'control': true,
           'has-icons-left': !!this.iconLeft,
-          'has-icons-right': !!this.iconRight || this.loading,
+          'has-icons-right': !!this.iconRight,
           'is-loading': this.loading,
           'bal-field-control--expanded-on-mobile': !!this.expandedOnMobile,
         }}

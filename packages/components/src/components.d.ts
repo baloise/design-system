@@ -708,6 +708,10 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -911,11 +915,11 @@ export namespace Components {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft": string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight": string;
         /**
@@ -4878,6 +4882,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -5089,11 +5097,11 @@ declare namespace LocalJSX {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight"?: string;
         /**

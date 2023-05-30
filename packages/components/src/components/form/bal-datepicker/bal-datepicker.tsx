@@ -134,6 +134,11 @@ export class Datepicker
   @Prop() readonly = false
 
   /**
+   * Defines if the select is in a loading state.
+   */
+  @Prop() loading = false
+
+  /**
    * The text to display when the select is empty.
    */
   @Prop() placeholder?: string
@@ -769,16 +774,20 @@ export class Datepicker
             onFocus={this.onInputFocus}
             {...this.inheritedAttributes}
           />
-          <bal-icon
-            class={{
-              'datepicker-trigger-icon': true,
-              'is-clickable': !this.disabled && !this.readonly,
-            }}
-            is-right
-            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            name="date"
-            onClick={this.onIconClick}
-          />
+          {!this.loading ? (
+            <bal-icon
+              class={{
+                'datepicker-trigger-icon': true,
+                'is-clickable': !this.disabled && !this.readonly,
+              }}
+              is-right
+              color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
+              name="date"
+              onClick={this.onIconClick}
+            />
+          ) : (
+            ''
+          )}
         </bal-input-group>
       </div>
     )

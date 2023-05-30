@@ -1053,7 +1053,7 @@ export class Select implements ComponentInterface, Loggable {
                 ref={el => (this.inputElement = el as HTMLInputElement)}
               />
             </div>
-            {!this.freeSolo ? (
+            {!this.freeSolo && !this.loading ? (
               <bal-icon
                 class={{
                   ...controlIconEl.class(),
