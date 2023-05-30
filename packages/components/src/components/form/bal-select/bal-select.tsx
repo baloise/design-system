@@ -111,6 +111,11 @@ export class Select implements ComponentInterface, Loggable {
   @Prop() balTabindex = 0
 
   /**
+   * If `true` there will be on trigger icon visible
+   */
+  @Prop() freeSolo = false
+
+  /**
    * If `true` multiple option can be selected
    */
   @Prop() multiple = false
@@ -1048,26 +1053,30 @@ export class Select implements ComponentInterface, Loggable {
                 ref={el => (this.inputElement = el as HTMLInputElement)}
               />
             </div>
-            <bal-icon
-              class={{
-                ...controlIconEl.class(),
-                ...controlIconEl.modifier('loading').class(this.loading),
-                ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
-              }}
-              name={!this.inverted ? 'caret-down' : 'caret-up'}
-              color={
-                this.disabled || this.readonly
-                  ? 'grey-light'
-                  : this.inverted
-                  ? 'white'
-                  : this.invalid
-                  ? 'danger'
-                  : 'primary'
-              }
-              turn={this.isPopoverOpen}
-              onClick={ev => this.handleInputClick(ev, true)}
-              size={!this.inverted ? '' : 'x-small'}
-            ></bal-icon>
+            {!this.freeSolo && !this.loading ? (
+              <bal-icon
+                class={{
+                  ...controlIconEl.class(),
+                  ...controlIconEl.modifier('loading').class(this.loading),
+                  ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
+                }}
+                name={!this.inverted ? 'caret-down' : 'caret-up'}
+                color={
+                  this.disabled || this.readonly
+                    ? 'grey-light'
+                    : this.inverted
+                    ? 'white'
+                    : this.invalid
+                    ? 'danger'
+                    : 'primary'
+                }
+                turn={this.isPopoverOpen}
+                onClick={ev => this.handleInputClick(ev, true)}
+                size={!this.inverted ? '' : 'x-small'}
+              ></bal-icon>
+            ) : (
+              ''
+            )}
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
