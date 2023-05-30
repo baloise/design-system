@@ -35,6 +35,10 @@ describe('bal-select', () => {
       it('field component', () => {
         cy.getByTestId('field').compareSnapshot(`select-field-${platform}`, 0.0)
       })
+
+      it('free-solo component', () => {
+        cy.getByTestId('free-solo').compareSnapshot(`select-free-solo-${platform}`, 0.0)
+      })
     })
   }
 

@@ -2317,6 +2317,10 @@ export namespace Components {
          */
         "filter": BalProps.BalSelectFilter;
         /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo": boolean;
+        /**
           * Sets the focus on the input element
          */
         "getValue": () => Promise<string[] | undefined>;
@@ -6534,6 +6538,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "filter"?: BalProps.BalSelectFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
