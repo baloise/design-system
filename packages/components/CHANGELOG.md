@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 13.4.1
+
+### Patch Changes
+
+- [#912](https://github.com/baloise/design-system/pull/912) - fix steps carousel option for mobile breakpoint
+
+- [#913](https://github.com/baloise/design-system/pull/913) - fix label overflow on vertical tabs
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.1
+  - @baloise/design-system-fonts@13.4.1
+  - @baloise/design-system-icons@13.4.1
+  - @baloise/design-system-tokens@13.4.1
+
 ## 13.4.0
 
 ### Minor Changes
