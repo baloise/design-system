@@ -4,11 +4,14 @@ describe('bal-steps', () => {
   it('basic component', () => {
     cy.platform('desktop').wait(400)
     cy.getByTestId('steps').compareSnapshot('tabs-steps', 0.0)
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four', 0.0)
 
     cy.platform('tablet').wait(400)
     cy.getByTestId('steps').compareSnapshot('tabs-steps-tablet', 0.0)
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four-tablet', 0.0)
 
     cy.platform('mobile').wait(400)
     cy.getByTestId('steps').compareSnapshot('tabs-steps-mobile', 0.0)
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four-mobile', 0.0)
   })
 })
