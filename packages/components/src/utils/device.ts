@@ -5,14 +5,22 @@ export class Orientation {
    * Is true when the orientation is in portrait mode
    */
   public get isPortrait(): boolean {
-    return window.matchMedia('(orientation: portrait)').matches
+    if (window && window.matchMedia) {
+      return window.matchMedia('(orientation: portrait)').matches
+    }
+
+    return false
   }
 
   /**
    * Is true when the orientation is in landscape mode
    */
   public get isLandscape(): boolean {
-    return window.matchMedia('(orientation: landscape)').matches
+    if (window && window.matchMedia) {
+      return window.matchMedia('(orientation: landscape)').matches
+    }
+
+    return false
   }
 
   public toObject() {
