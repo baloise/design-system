@@ -239,7 +239,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.22.2](https://github.com/baloise/design-system/compare/v10.22.1...v10.22.2) (2022-09-21)
 
-
 ### Bug Fixes
 
 * **button-group:** column alignment. Closes [#562](https://github.com/baloise/design-system/issues/562) ([77dbc07](https://github.com/baloise/design-system/commit/77dbc07f3936ecd58c9db1ae40bbdee5aedca55c))
