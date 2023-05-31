@@ -177,7 +177,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** safari 16 login button text stays on one line. Closes [#638](https://github.com/baloise/design-system/issues/638) ([9a31d91](https://github.com/baloise/design-system/commit/9a31d9147eb29c1b757acae2270b039d91d486ef))
 
 
-
 ## [10.23.2](https://github.com/baloise/design-system/compare/v10.23.1...v10.23.2) (2022-09-27)
 
 ### Bug Fixes
