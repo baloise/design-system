@@ -101,7 +101,10 @@
 
         <section data-testid="vertical-list" class="container">
           <bal-tabs vertical border value="tab-a">
-            <bal-tab-item value="tab-a" label="ab A">
+            <bal-tab-item
+              value="tab-a"
+              label="First tab with a very long label to test text overflow, so it breaks on the next line"
+            >
               <bal-list border size="small">
                 <bal-list-item accordion>
                   <bal-list-item-accordion-head>
@@ -134,7 +137,6 @@
               </bal-list>
               <bal-button color="secondary" class="mt-normal">Show More</bal-button>
             </bal-tab-item>
-
             <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
           </bal-tabs>
         </section>
