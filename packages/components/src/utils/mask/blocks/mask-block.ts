@@ -1,5 +1,4 @@
 import isFunction from 'lodash.isfunction'
-import { MaskKeyboardContext } from '../context/mask-keyboard-context'
 import { MaskBlockOption, MaskValue } from './mask-block-interfaces'
 
 export class MaskBlock {
