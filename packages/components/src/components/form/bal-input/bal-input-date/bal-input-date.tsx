@@ -212,8 +212,10 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           onBlur={event => this.maskAdapter.bindBlur(event)}
           onPaste={event => this.maskAdapter.bindPaste(event)}
         />
+        <hr />
         <p>{this.value}</p>
         <p>{this.inputValue}</p>
+        <hr />
       </Host>
     )
   }

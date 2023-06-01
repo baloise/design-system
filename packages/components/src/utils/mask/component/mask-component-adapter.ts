@@ -1,4 +1,5 @@
 import { BalConfigState } from '../../config'
+import { waitAfterFramePaint } from '../../helpers'
 import {
   MaskClipboardContext,
   MaskFocusContext,
@@ -36,6 +37,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
     if (this.component && this.component.nativeInput) {
       this.component.nativeInput.value = this.component.value || ''
     }
+    this.bindValueChanged(this.component.value, undefined)
   }
 
   bindConfigChanged(config: BalConfigState): void {
