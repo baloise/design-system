@@ -4,7 +4,7 @@ import { BEM } from '../../utils/bem'
 import { balDevice } from '../../utils/device'
 import { BalScrollHandler } from '../../utils/scroll'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { balBrowser } from '../../interfaces'
+import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-navigation',

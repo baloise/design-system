@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Prop, State } from '@stencil/co
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { BalScrollHandler } from '../../../utils/scroll'
-import { balBrowser } from '../../../interfaces'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-navigation-popover',

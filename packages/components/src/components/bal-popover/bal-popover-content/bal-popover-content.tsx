@@ -1,7 +1,7 @@
 import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
-import { balBrowser } from '../../../interfaces'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-popover-content',
