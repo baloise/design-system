@@ -1,14 +1,13 @@
 import { dateSeparator } from '@baloise/web-app-utils'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
-import { MaskBlock } from '../mask-block'
+import { MaskBlock } from '../blocks'
 import { AbstractMask } from '../mask'
-import { OnBlur, OnFormatValue, OnPaste } from '../mask-interfaces'
-import { MaskClipboardContext, MaskFocusContext } from '../context'
 import { BalDate } from '../../date'
+import { MaskClipboardContext, MaskFocusContext } from '../context'
 
-export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnFormatValue {
-  maxLength = 10
-  minLength = 10
+export class DateMask extends AbstractMask {
+  public maxLength = 10
+  public minLength = 10
 
   constructor() {
     super([
@@ -22,7 +21,7 @@ export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnFormatV
 
   override onParseValue(inputValue?: string): string {
     if (inputValue) {
-      const date = BalDate.fromAnyFormat(inputValue)
+      const date = BalDate.fromAnyFormat(this.blocks.getRawValueWithoutMask(inputValue))
       if (date.isValid) {
         return date.toISODate()
       }
@@ -47,18 +46,16 @@ export class DateMask extends AbstractMask implements OnPaste, OnBlur, OnFormatV
     if (date.isValid) {
       context.value = date.toFormat()
       context.position.toEnd()
-      context.position.syncToInputElement()
     }
   }
 
   override onBlur(context: MaskFocusContext) {
-    const rawValue = this.getRawValueWithoutMaskByContext(context)
+    const rawValue = this.blocks.getRawValueWithoutMaskByContext(context)
     const date = BalDate.fromAnyFormat(rawValue)
     if (date.isValid) {
       const formattedDate = date.toFormat()
-      if (formattedDate !== context.target.value) {
-        context.target.value = formattedDate
-        this.onInput(formattedDate)
+      if (formattedDate !== context.value) {
+        context.value = formattedDate
       }
     }
   }

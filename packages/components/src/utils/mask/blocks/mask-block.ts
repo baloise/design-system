@@ -1,16 +1,6 @@
 import isFunction from 'lodash.isfunction'
-
-export type MaskValueFn = (locale: string) => string
-export type MaskValue = string | MaskValueFn
-
-export interface MaskBlockOption {
-  from: number
-  to: number
-  isSeparator: boolean
-  mask: MaskValue
-  allowedKeys: string[]
-  format: (value: string) => string
-}
+import { MaskKeyboardContext } from '../context/mask-keyboard-context'
+import { MaskBlockOption, MaskValue } from './mask-block-interfaces'
 
 export class MaskBlock {
   private _from!: number
@@ -64,12 +54,23 @@ export class MaskBlock {
     this._locale = locale
   }
 
-  sliceFromValue(value: string): string {
+  getValueOfTheBlock(value: string): string {
     return value.slice(this._from, this._to)
   }
 
   isTouched(value: string): boolean {
-    const blockValue = this.sliceFromValue(value)
+    const blockValue = this.getValueOfTheBlock(value)
     return !blockValue.split('').every(char => char === this.mask)
+  }
+
+  verifyAllowedKeyHits(key: string): boolean {
+    if (this.isSeparator && key === this.mask) {
+      return true
+    } else if (this.allowedKeys.indexOf(key) >= 0) {
+      return true
+    } else {
+      // context.stopPropagation()
+      return false
+    }
   }
 }

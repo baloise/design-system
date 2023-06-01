@@ -1,46 +1,78 @@
-import { MaskEvents } from '../mask-interfaces'
-import { MaskPosition, MaskPositionTarget } from './mask-position'
-
-export interface MaskContextEvent {
-  target: MaskPositionTarget | null
-  preventDefault?(): void
-  stopPropagation?(): void
-}
+import { MaskContextEvent, MaskContextOptions } from './mask-context-interfaces'
+import { MaskPosition } from './mask-position'
 
 export abstract class MaskContext<T = MaskContextEvent> {
+  private _value = ''
   public position!: MaskPosition
 
-  constructor(protected event: T & MaskContextEvent, protected mask: MaskEvents) {
-    this.position = new MaskPosition(event.target, false, mask.maxLength)
+  constructor(protected _options: MaskContextOptions<T>) {
+    if (this._options.component && this._options.component.nativeInput) {
+      this._value = this._options.component.nativeInput.value
+    }
+    this.position = new MaskPosition(this._options)
   }
 
-  public get target(): HTMLInputElement {
-    return this.event.target as any
+  get target(): HTMLInputElement | undefined {
+    if (this._options.component && this._options.component.nativeInput) {
+      return this._options.component.nativeInput
+    }
+    return undefined
   }
 
-  public get value(): string {
-    return this.target.value
+  get value(): string {
+    return this._value
   }
 
-  public set value(newValue: string) {
-    this.target.value = newValue
-    this.mask.onInput(newValue)
+  set value(newValue: string) {
+    this._value = newValue
   }
 
-  public isValueEmpty(): boolean {
+  get focused(): boolean {
+    return this._options.component.focused
+  }
+
+  isValueEmpty(): boolean {
     return this.value === '' || this.value === undefined || this.value === null
   }
 
-  public preventDefault() {
-    if (this.event.preventDefault) {
-      this.event.preventDefault()
+  preventDefault() {
+    if (this._options.event.preventDefault) {
+      this._options.event.preventDefault()
     }
   }
 
-  public stopPropagation() {
+  stopPropagation() {
     this.preventDefault()
-    if (this.event.stopPropagation) {
-      this.event.stopPropagation()
+    if (this._options.event.stopPropagation) {
+      this._options.event.stopPropagation()
+    }
+  }
+
+  submit(eventType: 'input' | 'change' = 'input', parsedValue?: string) {
+    if (this.target) {
+      this.target.value = this.value
+    }
+    this.position.submit()
+
+    if (this._options.component) {
+      if (eventType === 'input') {
+        this._options.component.balInput.emit(this.value)
+      }
+      if (eventType === 'change' && parsedValue !== undefined) {
+        const valueChanged = this._options.component.value !== parsedValue
+
+        console.log(
+          'change',
+          valueChanged,
+          parsedValue,
+          this._options.component.value,
+          this._options.component.inputValue,
+        )
+        if (valueChanged) {
+          this._options.component.value = parsedValue
+          this._options.component.balChange.emit(parsedValue)
+        }
+      }
     }
   }
 }

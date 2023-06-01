@@ -17,8 +17,7 @@ import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalConfigObserver, BalConfigState } from '../../../../interfaces'
 import { ListenToConfig } from '../../../../utils/config'
-import { DateMask } from '../../../../utils/mask/types/mask-date'
-import { MaskedComponent } from '../../../../utils/mask'
+import { DateMask, MaskComponentAdapter } from '../../../../utils/mask'
 
 @Component({
   tag: 'bal-input-date',
@@ -26,7 +25,8 @@ import { MaskedComponent } from '../../../../utils/mask'
 export class InputDate implements ComponentInterface, Loggable, BalConfigObserver {
   private inputId = `bal-i-date-${inputDateIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
-  private mask: MaskedComponent = new DateMask()
+
+  private maskAdapter = new MaskComponentAdapter(new DateMask())
 
   nativeInput!: HTMLInputElement
   log!: LogInstance
@@ -101,7 +101,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
   @Watch('value')
   valueChanged(newValue: string | undefined, oldValue: string | undefined) {
-    this.mask.bindValueChanged(newValue, oldValue)
+    this.maskAdapter.bindValueChanged(newValue, oldValue)
   }
 
   /**
@@ -135,11 +135,11 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
    */
 
   connectedCallback(): void {
-    this.mask.bindComponent(this)
+    this.maskAdapter.bindComponent(this)
   }
 
   componentDidLoad(): void {
-    this.mask.bindComponentDidLoad()
+    this.maskAdapter.bindComponentDidLoad()
   }
 
   componentWillLoad() {
@@ -157,17 +157,17 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   @Method()
   @ListenToConfig()
   async configChanged(config: BalConfigState) {
-    this.mask.bindConfigChanged(config)
+    this.maskAdapter.bindConfigChanged(config)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(event: UIEvent) {
-    this.mask.bindFormReset(event)
+    this.maskAdapter.bindFormReset(event)
   }
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: MouseEvent) {
-    this.mask.bindGlobalClick(event)
+    this.maskAdapter.bindGlobalClick(event)
   }
 
   /**
@@ -180,7 +180,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
     return (
       <Host
-        onClick={(event: MouseEvent) => this.mask.bindHostClick(event)}
+        onClick={(event: MouseEvent) => this.maskAdapter.bindHostClick(event)}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
@@ -202,15 +202,15 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           disabled={this.disabled}
           readonly={this.readonly}
           autoComplete={this.autocomplete}
-          {...this.mask.attributes}
+          {...this.maskAdapter.attributes}
           {...this.inheritedAttributes}
           placeholder={this.placeholder}
           value={this.inputValue}
-          onKeyDown={event => this.mask.bindKeyDown(event)}
-          onClick={event => this.mask.bindClick(event)}
-          onFocus={event => this.mask.bindFocus(event)}
-          onBlur={event => this.mask.bindBlur(event)}
-          onPaste={event => this.mask.bindPaste(event)}
+          onKeyDown={event => this.maskAdapter.bindKeyDown(event)}
+          onClick={event => this.maskAdapter.bindClick(event)}
+          onFocus={event => this.maskAdapter.bindFocus(event)}
+          onBlur={event => this.maskAdapter.bindBlur(event)}
+          onPaste={event => this.maskAdapter.bindPaste(event)}
         />
         <p>{this.value}</p>
         <p>{this.inputValue}</p>

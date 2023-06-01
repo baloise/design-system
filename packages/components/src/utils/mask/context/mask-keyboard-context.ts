@@ -1,11 +1,11 @@
-import { MaskEvents } from '../mask-interfaces'
-import { MaskContext, MaskContextEvent } from './mask-context'
-import { MaskPosition } from './mask-position'
+import { MaskContext } from './mask-context'
+import { MaskContextEvent } from './mask-context-interfaces'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MaskKeyboardContextEvent extends MaskContextEvent {
   key: string
-  metaKey: boolean
-  ctrlKey: boolean
+  metaKey?: boolean
+  ctrlKey?: boolean
 }
 
 export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
@@ -24,47 +24,40 @@ export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
     'Escape',
   ]
 
-  public position!: MaskPosition
-
-  constructor(event: MaskKeyboardContextEvent, mask: MaskEvents) {
-    super(event, mask)
-    this.position = new MaskPosition(event.target, event.key === 'Backspace', mask.maxLength)
-  }
-
   get key(): string {
-    return this.event.key
+    return this._options.event.key
   }
 
   get isCtrlOrCommandKey() {
-    return this.event.metaKey || this.event.ctrlKey
+    return this._options.event.metaKey || this._options.event.ctrlKey
   }
 
   get isBackspaceKey() {
-    return this.event.key === 'Backspace'
+    return this._options.event.key === 'Backspace'
   }
 
   get isDeleteKey() {
-    return this.event.key === 'Delete' || this.event.key === 'Del'
+    return this._options.event.key === 'Delete' || this._options.event.key === 'Del'
   }
 
   get isNumberKey() {
-    return MaskKeyboardContext.NUMBER_KEYS.includes(this.event.key)
+    return MaskKeyboardContext.NUMBER_KEYS.includes(this._options.event.key)
   }
 
   get isNavigationKey() {
-    return MaskKeyboardContext.NAVIGATION_KEYS.includes(this.event.key)
+    return MaskKeyboardContext.NAVIGATION_KEYS.includes(this._options.event.key)
   }
 
   get isSelectAllCommand() {
-    return (this.event.ctrlKey || this.event.metaKey) && this.key === 'a'
+    return (this._options.event.ctrlKey || this._options.event.metaKey) && this.key === 'a'
   }
 
   get isCopyCommand() {
-    return (this.event.ctrlKey || this.event.metaKey) && this.key === 'c'
+    return (this._options.event.ctrlKey || this._options.event.metaKey) && this.key === 'c'
   }
 
   get isPasteCommand() {
-    return (this.event.ctrlKey || this.event.metaKey) && this.key === 'v'
+    return (this._options.event.ctrlKey || this._options.event.metaKey) && this.key === 'v'
   }
 
   public getCharAt(position = this.position.value): string {
@@ -75,7 +68,7 @@ export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
     return this.getCharAt(this.position.value - 1)
   }
 
-  public setChar(char = this.event.key, position = this.position.value): void {
+  public setChar(char = this._options.event.key, position = this.position.value): void {
     this.value = this.value.substring(0, position) + char + this.value.substring(position + 1)
   }
 }

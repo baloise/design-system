@@ -19,11 +19,15 @@ export class BalDate {
       )
     }
     if (length === 3) {
-      if (pairs[2] === '0') {
+      if (pairs[2].length === 1) {
         return new BalDate(
-          DateTime.fromFormat(`${pairs[0]}${separator}${pairs[1]}${separator}2000`, `d${separator}M${separator}yy`, {
-            locale,
-          }),
+          DateTime.fromFormat(
+            `${pairs[0]}${separator}${pairs[1]}${separator}${2000 + parseInt(pairs[2], 10)}`,
+            `d${separator}M${separator}yy`,
+            {
+              locale,
+            },
+          ),
         )
       } else if (pairs[2] === '') {
         const year = new Date().getFullYear()

@@ -1,4 +1,5 @@
-import { MaskContext, MaskContextEvent } from './mask-context'
+import { MaskContext } from './mask-context'
+import { MaskContextEvent } from './mask-context-interfaces'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MaskFocusContextEvent extends MaskContextEvent {}
