@@ -373,7 +373,10 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
   }
 
   private getBackdropHeight() {
-    return this.isInMainNav ? (window.innerHeight - (this.isTouch ? 64 : 48)) / 16 : window.innerHeight / 16
+    if (balBrowser.hasWindow) {
+      return this.isInMainNav ? (window.innerHeight - (this.isTouch ? 64 : 48)) / 16 : window.innerHeight / 16
+    }
+    return 0
   }
 
   /**

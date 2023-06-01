@@ -4,6 +4,7 @@ import { BEM } from '../../utils/bem'
 import { balDevice } from '../../utils/device'
 import { BalScrollHandler } from '../../utils/scroll'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-navigation',
@@ -98,7 +99,7 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
-    if (this.isDesktop && !this.bodyScrollBlocker.isDisabled()) {
+    if (this.isDesktop && !this.bodyScrollBlocker.isDisabled() && balBrowser.hasWindow) {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -129,7 +130,9 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   }
 
   componentDidLoad() {
-    this.previousY = window.scrollY
+    if (balBrowser.hasWindow) {
+      this.previousY = window.scrollY
+    }
     this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
@@ -173,7 +176,10 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   }
 
   private getMaxHeight() {
-    return `${(window.innerHeight - 64) / 16}rem`
+    if (balBrowser.hasWindow) {
+      return `${(window.innerHeight - 64) / 16}rem`
+    }
+    return '0'
   }
 
   private dismissPopover() {
