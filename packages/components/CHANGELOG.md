@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 13.4.2
+
+### Patch Changes
+
+- [#916](https://github.com/baloise/design-system/pull/916) - check if window is defined
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.2
+  - @baloise/design-system-fonts@13.4.2
+  - @baloise/design-system-icons@13.4.2
+  - @baloise/design-system-tokens@13.4.2
+
 ## 13.4.1
 
 ### Patch Changes
