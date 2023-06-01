@@ -1,4 +1,3 @@
-import { waitAfterFramePaint, waitAfterIdleCallback } from '../../helpers'
 import { MaskContextEvent, MaskContextOptions } from './mask-context-interfaces'
 import { MaskPosition } from './mask-position'
 

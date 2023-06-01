@@ -1,5 +1,4 @@
 import { BalConfigState } from '../../config'
-import { waitAfterFramePaint } from '../../helpers'
 import {
   MaskClipboardContext,
   MaskFocusContext,
