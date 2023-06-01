@@ -1,6 +1,5 @@
 import { initialize } from '../../config'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
-import { MaskKeyboardContext } from '../context'
 import { MaskBlock } from './mask-block'
 
 describe('MaskBlock', () => {

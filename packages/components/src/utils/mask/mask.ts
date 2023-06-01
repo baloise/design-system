@@ -29,7 +29,7 @@ export abstract class AbstractMask implements Mask {
 
   public onLocaleChange(context: MaskLocaleContext, _oldLocale: string, oldBlocks: MaskBlockList) {
     if (context.target) {
-      const value = context.target.value
+      const value = context.value
       const chars = value.split('')
 
       for (let index = 0; index < chars.length; index++) {
@@ -45,7 +45,7 @@ export abstract class AbstractMask implements Mask {
         }
       }
 
-      context.target.value = chars.join('')
+      context.value = chars.join('')
     }
   }
 
@@ -76,16 +76,12 @@ export abstract class AbstractMask implements Mask {
   }
 
   public onBlockChange(context: MaskKeyboardContext, block: MaskBlock, index: number) {
-    if (block.isSeparator) {
-      context.position.next()
-    } else {
-      context.setChar()
-      context.position.next()
+    context.setChar()
+    context.position.next()
 
-      const nextBlock = this.blocks.list[index + 1]
-      if (context.position.value === block.to && nextBlock && nextBlock.isSeparator) {
-        context.position.next()
-      }
+    const nextBlock = this.blocks.list[index + 1]
+    if (context.position.value === block.to && nextBlock && nextBlock.isSeparator) {
+      context.position.next()
     }
   }
 
@@ -95,23 +91,19 @@ export abstract class AbstractMask implements Mask {
       context.setChar(block.mask)
 
       const previousBlock = this.blocks.list[index - 1]
-      if (context.position.value === block.from - 1 && previousBlock && previousBlock.isSeparator) {
+      if (context.position.value === block.from && previousBlock && previousBlock.isSeparator) {
         context.position.previous()
       }
     }
   }
 
   public onDeleteDown(context: MaskKeyboardContext, block: MaskBlock, index: number): void {
-    if (block.isSeparator) {
-      context.position.next()
-    } else {
-      context.setChar(block.mask)
-      context.position.next()
+    context.setChar(block.mask)
+    context.position.next()
 
-      const nextBlock = this.blocks.list[index + 1]
-      if (context.position.value === block.to && nextBlock && nextBlock.isSeparator) {
-        context.position.next()
-      }
+    const nextBlock = this.blocks.list[index + 1]
+    if (context.position.value === block.to && nextBlock && nextBlock.isSeparator) {
+      context.position.next()
     }
   }
 
@@ -189,17 +181,6 @@ export abstract class AbstractMask implements Mask {
     }
   }
 
-  // private moveToNextBlockWhenSeparator(context: MaskContext, block: MaskBlock) {
-  // move to the next block when in front of a separator
-  // if (block && block.isSeparator && (context as MaskKeyboardContext).key) {
-  //   const nextBlock = this.blocks.list[index + 1]
-  //   if (nextBlock && nextBlock.allowedKeys.indexOf((context as MaskKeyboardContext).key) >= 0) {
-  //     context.position.next()
-  //     return Math.min(length, index + 1)
-  //   }
-  // }
-  // }
-
   fireKeyDown(context: MaskKeyboardContext): void {
     const position = context.isBackspaceKey ? Math.max(0, context.position.value - 1) : context.position.value
     const index = this.blocks.getBlockIndexFromPosition(position)
@@ -275,7 +256,6 @@ export abstract class AbstractMask implements Mask {
 
   protected resetInputValueWithMask(context: MaskContext) {
     context.value = this.blocks.getPlaceholderMask()
-    // this.onChange()
     context.position.toStart()
   }
 

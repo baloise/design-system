@@ -14,7 +14,6 @@ export class MaskPosition {
   private _position = 0
   private _positionEnd = 0
   private _isRangeSelection = false
-  // private target: MaskPositionTarget
 
   constructor(protected _options: MaskPositionOptions) {
     if (_options.component && _options.component.nativeInput) {

@@ -1,12 +1,14 @@
 import { BalConfigState } from '../../config'
-import { MaskClipboardContext } from '../context/mask-clipboard-context'
-import { MaskFocusContext } from '../context/mask-focus-context'
-import { MaskKeyboardContext } from '../context/mask-keyboard-context'
-import { MaskMouseContext } from '../context/mask-mouse-context'
-import { MaskLocaleContext } from '../context/mask-locale-context'
+import {
+  MaskClipboardContext,
+  MaskFocusContext,
+  MaskKeyboardContext,
+  MaskLocaleContext,
+  MaskMouseContext,
+  MaskValueChangedContext,
+} from '../context'
 import { Mask } from '../mask-interfaces'
 import { MaskAttributes, MaskComponent, MaskComponentAdapterType } from './mask-component-interfaces'
-import { MaskValueChangedContext } from '../context/mask-value-changed-context'
 
 export class MaskComponentAdapter implements MaskComponentAdapterType {
   private component!: MaskComponent

@@ -60,14 +60,6 @@ export abstract class MaskContext<T = MaskContextEvent> {
       }
       if (eventType === 'change' && parsedValue !== undefined) {
         const valueChanged = this._options.component.value !== parsedValue
-
-        console.log(
-          'change',
-          valueChanged,
-          parsedValue,
-          this._options.component.value,
-          this._options.component.inputValue,
-        )
         if (valueChanged) {
           this._options.component.value = parsedValue
           this._options.component.balChange.emit(parsedValue)

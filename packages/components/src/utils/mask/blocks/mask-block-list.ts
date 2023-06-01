@@ -74,6 +74,10 @@ export class MaskBlockList {
 
   getBlockIndexFromPosition(position: number): number | undefined {
     const length = this.list.reduce((acc, block) => acc + block.to - block.from, 0)
+    if (position === length) {
+      return this.list.length - 1
+    }
+
     const index = this.list.findIndex(block => block.from <= position && position < block.to)
     return index < 0 ? undefined : Math.min(length, index)
   }
@@ -89,5 +93,4 @@ export class MaskBlockList {
 
     return false
   }
-
 }

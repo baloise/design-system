@@ -69,6 +69,7 @@ describe('MaskBlockList', () => {
     expect(block.getBlockIndexFromPosition(1)).toBe(0)
     expect(block.getBlockIndexFromPosition(2)).toBe(1)
     expect(block.getBlockIndexFromPosition(3)).toBe(2)
+    expect(block.getBlockIndexFromPosition(10)).toBe(4)
   })
 
   test('should verify if the next separator was pressed', () => {
