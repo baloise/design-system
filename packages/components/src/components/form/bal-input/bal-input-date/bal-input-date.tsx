@@ -195,7 +195,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,
           }}
-          data-testid="bal-input-date"
+          data-testid="bal-input"
           ref={el => (this.nativeInput = el as HTMLInputElement)}
           id={this.inputId}
           required={this.required}

@@ -19,6 +19,13 @@
         <bal-heading>Basic</bal-heading>
         <section>
           <bal-input-date id="basic" data-testid="basic" value="2001-08-23" placeholder="dd.mm.yyyy"></bal-input-date>
+          <bal-input-date
+            id="disabled"
+            data-testid="disabled"
+            disabled
+            value="2001-08-23"
+            placeholder="dd.mm.yyyy"
+          ></bal-input-date>
           <bal-button id="today">Set Date</bal-button>
           <bal-button id="disabled">Toggle Disable</bal-button>
           <bal-data border>
@@ -52,13 +59,13 @@
           })
         </script>
         <bal-heading>Form Reset</bal-heading>
-        <!-- <section>
+        <section>
           <form action="https://www.w3schools.com/action_page.php" target="_blank">
             <bal-form-grid>
               <bal-form-col>
                 <bal-field required>
                   <bal-field-control>
-                    <bal-input-date data-testid="reset-empty" placeholder="dd.mm.yyyy"></bal-input-date>
+                    <bal-input-date data-testid="reset" placeholder="dd.mm.yyyy"></bal-input-date>
                     <bal-input-date
                       data-testid="reset-filled"
                       value="2021-10-21"
@@ -87,8 +94,6 @@
               <bal-form-col>
                 <bal-field required>
                   <bal-field-control>
-                    <bal-input autocomplete="given-name" name="firstName"></bal-input>
-
                     <label for="bday">bday:</label>
                     <bal-input-date autocomplete="bday" name="bday"></bal-input-date>
                   </bal-field-control>
@@ -99,7 +104,7 @@
               <bal-button element-type="submit" color="primary">Submit</bal-button>
             </bal-button-group>
           </form>
-        </section> -->
+        </section>
       </main>
     </bal-doc-app>
   </body>

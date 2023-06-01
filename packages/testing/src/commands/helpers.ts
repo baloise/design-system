@@ -26,7 +26,6 @@ export const isAccordion: isElementType = el => isElement(el, 'BAL-ACCORDION')
 export const isButton: isElementType = el => isElement(el, 'BAL-BUTTON')
 export const isCheckbox: isElementType = el => isElement(el, 'BAL-CHECKBOX')
 export const isDatepicker: isElementType = el => isElement(el, 'BAL-DATEPICKER')
-export const isInput: isElementType = el => isElement(el, 'BAL-INPUT')
 export const isNumberInput: isElementType = el => isElement(el, 'BAL-NUMBER-INPUT')
 export const isModal: isElementType = el => isElement(el, 'BAL-MODAL')
 export const isRadioGroup: isElementType = el => isElement(el, 'BAL-RADIO-GROUP')
@@ -42,6 +41,7 @@ export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
 export const isHeading: isElementType = el => isElement(el, 'BAL-HEADING')
 export const isText: isElementType = el => isElement(el, 'BAL-TEXT')
 export const isInputStepper: isElementType = el => isElement(el, 'BAL-INPUT-STEPPER')
+export const isInput: isElementType = el => isElement(el, 'BAL-INPUT') || isElement(el, 'BAL-INPUT-DATE')
 
 /**
  * Executes a command on a child element and wraps back to the main element/component

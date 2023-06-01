@@ -69,6 +69,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       const context = new MaskKeyboardContext({ event, component, mask })
       this.mask.fireKeyDown(context)
       context.submit()
+      component.balKeyPress.emit(event)
     }
   }
 
@@ -79,6 +80,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       const context = new MaskFocusContext({ event, component, mask })
       this.mask.fireFocus(context)
       context.submit()
+      component.balFocus.emit(event)
     }
   }
 
@@ -89,6 +91,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       const context = new MaskFocusContext({ event, component, mask })
       this.mask.fireBlur(context)
       context.submit()
+      component.balBlur.emit(event)
     }
   }
 
