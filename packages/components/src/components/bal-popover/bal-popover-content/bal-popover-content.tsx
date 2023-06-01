@@ -1,6 +1,7 @@
 import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-popover-content',
@@ -57,7 +58,9 @@ export class PopoverContent implements ComponentInterface, BalBreakpointObserver
 
   @ListenToBreakpoints()
   breakpointListener(_breakpoints: BalBreakpoints): void {
-    this.contentHeightOnTop = window.innerHeight - 64
+    if (balBrowser.hasWindow) {
+      this.contentHeightOnTop = window.innerHeight - 64
+    }
   }
 
   get innerStyle() {
@@ -98,7 +101,9 @@ export class PopoverContent implements ComponentInterface, BalBreakpointObserver
   }
 
   componentWillLoad() {
-    this.contentHeightOnTop = window.innerHeight - 64
+    if (balBrowser.hasWindow) {
+      this.contentHeightOnTop = window.innerHeight - 64
+    }
   }
 
   render() {
