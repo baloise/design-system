@@ -2,6 +2,7 @@ import docs from './bal-input.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
   BalInput,
+  BalInputDate,
   BalField,
   BalFieldControl,
   BalFieldLabel,
@@ -13,6 +14,7 @@ const balFieldArgTypes = stencilArgType(BalField)
 const component = BalComponentStory({
   title: 'Components/Form/Input',
   component: BalInput,
+  subcomponents: { BalInputDate },
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
