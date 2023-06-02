@@ -88,9 +88,9 @@ export class Field implements ComponentInterface, BalMutationObserver {
   }
 
   /**
-   * Emitted before the animation starts
+   * Emitted after render when element is labelled
    */
-  @Event() balArialabelledBy!: EventEmitter<HTMLElement>
+  @Event() balArialabelledBy!: EventEmitter<BalEvents.BalFieldAriaLabelledByDetail>
 
   connectedCallback() {
     this.triggerAllHandlers()
@@ -101,7 +101,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
   }
 
   componentDidRender() {
-    this.balArialabelledBy.emit(this.el as any)
+    this.balArialabelledBy.emit(this.el)
   }
 
   mutationObserverActive = true

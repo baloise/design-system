@@ -107,9 +107,9 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
   @Event() balBlur!: EventEmitter<BalEvents.BalRadioButtonBlurDetail>
 
   /**
-   * Emitted before the animation starts
+   * Emitted after render when element is labelled
    */
-  @Event() balArialabelledBy!: EventEmitter<HTMLElement>
+  @Event() balArialabelledBy!: EventEmitter<BalEvents.BalRadioButtonAriaLabelledByDetail>
 
   /**
    * LIFECYCLE
@@ -128,7 +128,7 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
   }
 
   componentDidRender() {
-    this.balArialabelledBy.emit(this.el as any)
+    this.balArialabelledBy.emit(this.el)
   }
 
   disconnectedCallback(): void {

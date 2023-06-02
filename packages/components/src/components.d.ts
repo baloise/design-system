@@ -4692,9 +4692,9 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Emitted before the animation starts
+          * Emitted after render when element is labelled
          */
-        "onBalArialabelledBy"?: (event: BalCheckboxButtonCustomEvent<HTMLElement>) => void;
+        "onBalArialabelledBy"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
         /**
           * Emitted when the toggle loses focus.
          */
@@ -5071,9 +5071,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Emitted before the animation starts
+          * Emitted after render when element is labelled
          */
-        "onBalArialabelledBy"?: (event: BalFieldCustomEvent<HTMLElement>) => void;
+        "onBalArialabelledBy"?: (event: BalFieldCustomEvent<BalEvents.BalFieldAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -6439,9 +6439,9 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Emitted before the animation starts
+          * Emitted after render when element is labelled
          */
-        "onBalArialabelledBy"?: (event: BalRadioButtonCustomEvent<HTMLElement>) => void;
+        "onBalArialabelledBy"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
         /**
           * Emitted when the toggle loses focus.
          */
