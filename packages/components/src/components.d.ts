@@ -3046,6 +3046,10 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
+export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalFieldElement;
+}
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFileUploadElement;
@@ -4688,6 +4692,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Emitted before the animation starts
+         */
+        "onBalArialabelledBy"?: (event: BalCheckboxButtonCustomEvent<HTMLElement>) => void;
+        /**
           * Emitted when the toggle loses focus.
          */
         "onBalBlur"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonBlurDetail>) => void;
@@ -5062,6 +5070,10 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalArialabelledBy"?: (event: BalFieldCustomEvent<HTMLElement>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -6426,6 +6438,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalArialabelledBy"?: (event: BalRadioButtonCustomEvent<HTMLElement>) => void;
         /**
           * Emitted when the toggle loses focus.
          */

@@ -107,6 +107,10 @@ export class BalCheckboxButton implements ComponentInterface, Loggable, BalEleme
   @Event() balBlur!: EventEmitter<BalEvents.BalCheckboxButtonBlurDetail>
 
   /**
+   * Emitted before the animation starts
+   */
+  @Event() balArialabelledBy!: EventEmitter<HTMLElement>
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -120,6 +124,10 @@ export class BalCheckboxButton implements ComponentInterface, Loggable, BalEleme
 
   componentWillLoad() {
     this.triggerAllHandlers()
+  }
+
+  componentDidRender() {
+    this.balArialabelledBy.emit(this.el as any)
   }
 
   disconnectedCallback(): void {

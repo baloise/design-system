@@ -385,7 +385,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     if (this.buttonTabindex !== undefined) {
       inputAttributes.tabIndex = this.buttonTabindex
     }
-
     const LabelTag = this.labelHidden ? 'span' : 'label'
 
     return (
@@ -431,6 +430,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
+          aria-labelledby={!this.labelHidden ? this.inputId : ''}
           {...inputAttributes}
         />
         {!this.invisible ? (
