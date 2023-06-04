@@ -1,3 +1,4 @@
+import { balBrowser } from '../browser'
 import { debounce } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalResizeInfo } from './resize.interfaces'
@@ -16,7 +17,16 @@ export class BalResizeListener<TObserver> extends ListenerAbstract<TObserver, Ba
       this.resizeObserver = undefined
     }
 
-    this.resizeObserver = new ResizeObserver(() => this.debouncedNotify())
+    this.resizeObserver = new ResizeObserver(entries => {
+      if (balBrowser.hasWindow) {
+        window.requestAnimationFrame(() => {
+          if (!Array.isArray(entries) || !entries.length) {
+            return
+          }
+          this.debouncedNotify()
+        })
+      }
+    })
     this.resizeObserver.observe(el)
   }
 
