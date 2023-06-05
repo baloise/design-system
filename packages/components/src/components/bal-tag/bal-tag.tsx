@@ -117,7 +117,7 @@ export class Tag {
             this.invalid
           }
           data-testid="bal-tag-close"
-          onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
+          onClick={(ev: MouseEvent) => this.balCloseClick.emit(ev)}
           {...this.inheritedAttributesClose}
         ></bal-close>
       </Host>

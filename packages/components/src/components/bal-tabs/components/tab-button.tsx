@@ -19,7 +19,7 @@ export interface TabButtonProps {
   clickable: boolean
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
-  onSelectTab: (event: MouseEvent, item: BalTabOption) => void
+  onSelectTab: (ev: MouseEvent, item: BalTabOption) => void
 }
 
 export const TabButton: FunctionalComponent<TabButtonProps> = ({
@@ -89,7 +89,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
       target={item.target}
-      onClick={(event: MouseEvent) => onSelectTab(event, item)}
+      onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
       {item.icon ? (
         <TabIcon

@@ -8,7 +8,7 @@ export interface StepButtonProps {
   item: BalStepOption
   isMobile: boolean
   clickable: boolean
-  onSelectTab: (event: MouseEvent, item: BalStepOption) => void
+  onSelectTab: (ev: MouseEvent, item: BalStepOption) => void
 }
 
 export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobile, clickable, onSelectTab }) => {
@@ -38,7 +38,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobil
       aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
       target={item.target}
-      onClick={(event: MouseEvent) => onSelectTab(event, item)}
+      onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
       <StepIcon item={item} isMobile={isMobile}></StepIcon>
       <StepLabel item={item}></StepLabel>
