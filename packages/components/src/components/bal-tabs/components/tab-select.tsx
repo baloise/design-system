@@ -6,14 +6,14 @@ import { BalTabOption } from '../bal-tab.type'
 export interface TabSelectProps {
   items: BalTabOption[]
   value: string | undefined
-  onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
+  onSelectTab: (ev: MouseEvent, tab: BalTabOption) => void
 }
 
 export const TabSelect: FunctionalComponent<TabSelectProps> = ({ items, value, onSelectTab }) => {
   const bemEl = BEM.block('tabs').element('select')
 
-  const onChange = (event: CustomEvent<string | string[] | undefined>) => {
-    const selectedTabs = items.filter(tab => tab.value === event.detail)
+  const onChange = (ev: CustomEvent<string | string[] | undefined>) => {
+    const selectedTabs = items.filter(tab => tab.value === ev.detail)
     if (selectedTabs.length > 0) {
       const selectedTab = selectedTabs[0]
       if (selectedTab.href !== '' && selectedTab.href !== undefined) {
@@ -21,7 +21,7 @@ export const TabSelect: FunctionalComponent<TabSelectProps> = ({ items, value, o
           window.open(selectedTab.href, selectedTab.target)
         }
       }
-      onSelectTab(event as any, selectedTab)
+      onSelectTab(ev as any, selectedTab)
     }
   }
 

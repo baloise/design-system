@@ -117,13 +117,13 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   @Event() balDecrease!: EventEmitter<BalEvents.BalInputStepperDecreaseDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.value = this.initialValue
     }

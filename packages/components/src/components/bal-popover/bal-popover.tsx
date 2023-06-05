@@ -227,37 +227,37 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
    */
 
   @Listen('balPopoverPrepare', { target: 'body' })
-  handlePopoverPrepare(event: CustomEvent<string>) {
-    const popoverId = event.detail
+  handlePopoverPrepare(ev: CustomEvent<string>) {
+    const popoverId = ev.detail
     if (this.popoverId !== popoverId) {
       this.dismiss()
     }
   }
 
   @Listen('click', { target: 'document' })
-  async clickOnOutside(event: UIEvent) {
+  async clickOnOutside(ev: UIEvent) {
     if (this.active) {
-      if (!this.element.contains(event.target as Node)) {
+      if (!this.element.contains(ev.target as Node)) {
         this.active = false
       }
 
-      if (this.backdropElement?.isEqualNode(event.target as Node)) {
+      if (this.backdropElement?.isEqualNode(ev.target as Node)) {
         this.active = false
       }
     }
   }
 
   @Listen('keydown', { target: 'window' })
-  handleKeyUp(event: KeyboardEvent) {
-    if (this.active && (event.key === 'Escape' || event.key === 'Esc')) {
-      event.preventDefault()
+  handleKeyUp(ev: KeyboardEvent) {
+    if (this.active && (ev.key === 'Escape' || ev.key === 'Esc')) {
+      ev.preventDefault()
       this.dismiss()
     }
   }
 
   @Listen('keyup', { target: 'document' })
-  async tabOutside(event: KeyboardEvent) {
-    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.active) {
+  async tabOutside(ev: KeyboardEvent) {
+    if (ev.key === 'Tab' && !this.element.contains(document.activeElement) && this.active) {
       await this.toggle()
     }
   }

@@ -33,8 +33,8 @@ export abstract class BalNoticeController {
       if (clone === undefined) {
         const el: HTMLNoticeElement = document.createElement(this.options.tag) as unknown as HTMLNoticeElement
         Object.assign(el, options)
-        el.addEventListener('balClose', event => {
-          this.removeFromQueue((<any>event).detail)
+        el.addEventListener('balClose', ev => {
+          this.removeFromQueue((<any>ev).detail)
         })
         this.preQueue.push(el)
         this.updateQueue()

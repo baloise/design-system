@@ -30,7 +30,7 @@ export class NavigationLevelBlockItem implements ComponentInterface {
       link: this.link,
       target: this.target,
       trackingData: this.inheritAttributes,
-      onClick: (event: MouseEvent) => this.balClick.emit(event),
+      onClick: (ev: MouseEvent) => this.balClick.emit(ev),
     }
   }
 

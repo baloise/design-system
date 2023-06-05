@@ -38,10 +38,10 @@ export const wait = (ms = 0): Promise<void> => {
   })
 }
 
-export const debounceEvent = (event: EventEmitter, wait: number): EventEmitter => {
-  const original = (event as any)._original || event
+export const debounceEvent = (ev: EventEmitter, wait: number): EventEmitter => {
+  const original = (ev as any)._original || ev
   return {
-    _original: event,
+    _original: ev,
     emit: debounce(original.emit.bind(original), wait),
   } as EventEmitter
 }
@@ -210,8 +210,8 @@ export const waitForComponent = async (el: HTMLElement | null) => {
   await waitAfterIdleCallback()
 }
 
-export const isChildOfEventTarget = async (event: any, el: HTMLElement, callback: () => void) => {
-  if (event && event.target && el && el !== event.target && isDescendant(event.target as HTMLElement, el)) {
+export const isChildOfEventTarget = async (ev: any, el: HTMLElement, callback: () => void) => {
+  if (ev && ev.target && el && el !== ev.target && isDescendant(ev.target as HTMLElement, el)) {
     callback()
   }
 }

@@ -227,10 +227,10 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private handleClick(event: MouseEvent) {
+  private handleClick(ev: MouseEvent) {
     if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
+      ev.preventDefault()
+      ev.stopPropagation()
     }
   }
 
@@ -242,9 +242,9 @@ export class Button implements ComponentInterface {
     this.balBlur.emit()
   }
 
-  private onClick = (event: MouseEvent) => {
+  private onClick = (ev: MouseEvent) => {
     if (this.href !== undefined) {
-      this.balNavigate.emit(event)
+      this.balNavigate.emit(ev)
     }
   }
 

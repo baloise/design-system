@@ -85,9 +85,9 @@ export class CarouselItem implements ComponentInterface {
     }
   }
 
-  private onClick = (event: MouseEvent) => {
+  private onClick = (ev: MouseEvent) => {
     if (this.href !== undefined) {
-      this.balNavigate.emit(event)
+      this.balNavigate.emit(ev)
     }
   }
 
