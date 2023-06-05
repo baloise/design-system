@@ -136,8 +136,8 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * ------------------------------------------------------
    */
 
-  private accordionChanged = (event: CustomEvent<boolean>) => {
-    const { detail } = event
+  private accordionChanged = (ev: CustomEvent<boolean>) => {
+    const { detail } = ev
     if (detail !== this.accordionOpen) {
       this.accordionOpen = detail
       this.updateState()
@@ -342,14 +342,14 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
    * ------------------------------------------------------
    */
 
-  private onClickTrigger = (event: MouseEvent) => {
+  private onClickTrigger = (ev: MouseEvent) => {
     const accordionBodyEl = this.el.querySelector<any>(ListItem.selectors.accordionBody)
     if (accordionBodyEl) {
-      if (!accordionBodyEl.contains(event.target)) {
-        this.balNavigate.emit(event)
+      if (!accordionBodyEl.contains(ev.target)) {
+        this.balNavigate.emit(ev)
       }
     } else {
-      this.balNavigate.emit(event)
+      this.balNavigate.emit(ev)
     }
   }
 
@@ -390,7 +390,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
             href={this.href}
             target={this.target}
             download={this.download}
-            onClick={(event: MouseEvent) => this.onClickTrigger(event)}
+            onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
           >
             <slot></slot>
           </a>
@@ -409,7 +409,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
           <button
             class={{ ...trigger.class() }}
             disabled={this.disabled}
-            onClick={(event: MouseEvent) => this.onClickTrigger(event)}
+            onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
           >
             <slot></slot>
           </button>
@@ -424,7 +424,7 @@ export class ListItem implements ComponentInterface, BalConfigObserver, Loggable
           class={{
             ...basicClasses,
           }}
-          onClick={(event: MouseEvent) => this.onClickTrigger(event)}
+          onClick={(ev: MouseEvent) => this.onClickTrigger(ev)}
         >
           <div class={{ ...trigger.class() }}>
             <slot></slot>

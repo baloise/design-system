@@ -129,9 +129,9 @@ export class Carousel
    */
 
   @Listen('touchmove', { target: 'window', passive: false })
-  async blockVerticalScrolling(event: any) {
-    if (!this.scrollY && this.el?.contains(event.target)) {
-      stopEventBubbling(event)
+  async blockVerticalScrolling(ev: any) {
+    if (!this.scrollY && this.el?.contains(ev.target)) {
+      stopEventBubbling(ev)
     }
   }
 

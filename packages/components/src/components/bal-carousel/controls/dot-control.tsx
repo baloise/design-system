@@ -15,8 +15,8 @@ export const DotControl: FunctionalComponent<DotControlProps> = ({ value, items,
   const block = BEM.block('carousel')
   const controls = block.element('controls')
 
-  const onChange = (event: BalEvents.BalPaginationChange) => {
-    let selectedValue = event.detail - 1
+  const onChange = (ev: BalEvents.BalPaginationChange) => {
+    let selectedValue = ev.detail - 1
 
     if (selectedValue < 0) {
       selectedValue = 0

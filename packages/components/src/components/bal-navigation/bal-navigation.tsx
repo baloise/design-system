@@ -54,16 +54,16 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })
-  async clickOnOutside(event: UIEvent) {
+  async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
-      if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
+      if (!this.mainNavElement?.contains(ev.target as Node) && this.isMainBodyOpen) {
         this.isMainBodyOpen = false
         this.selectedMainValue = ''
       }
     }
 
     if (this.isTouch) {
-      if (this.metaMobileActionsElement?.contains(event.target as Node)) {
+      if (this.metaMobileActionsElement?.contains(ev.target as Node)) {
         this.isMainBodyOpen = false
       }
     }
