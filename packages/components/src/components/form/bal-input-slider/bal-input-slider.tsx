@@ -114,8 +114,8 @@ export class InputSlider {
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.value = this.initialValue
       clearTimeout(this.resetHandlerTimer)
@@ -200,10 +200,10 @@ export class InputSlider {
     this.balInput.emit(this.value)
   }
 
-  private handleClick = (event: MouseEvent) => {
+  private handleClick = (ev: MouseEvent) => {
     if (this.disabled || this.readonly) {
-      event.preventDefault()
-      event.stopPropagation()
+      ev.preventDefault()
+      ev.stopPropagation()
     }
   }
 
