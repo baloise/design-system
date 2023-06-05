@@ -130,15 +130,15 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   @Event() balClick!: EventEmitter<BalEvents.BalTimeInputClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
@@ -221,8 +221,8 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     this.balInput.emit(this.inputValue)
   }
 
-  private onFocus = (event: FocusEvent) => {
-    inputHandleFocus(this, event)
+  private onFocus = (ev: FocusEvent) => {
+    inputHandleFocus(this, ev)
   }
 
   private onBlur = (ev: FocusEvent) => {
@@ -235,10 +235,10 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     }
   }
 
-  private onKeydown = (event: KeyboardEvent) => {
-    if (!isNil(event) && !isCtrlOrCommandKey(event)) {
-      if (!this.getAllowedKeys().includes(event.key)) {
-        return stopEventBubbling(event)
+  private onKeydown = (ev: KeyboardEvent) => {
+    if (!isNil(ev) && !isCtrlOrCommandKey(ev)) {
+      if (!this.getAllowedKeys().includes(ev.key)) {
+        return stopEventBubbling(ev)
       }
     }
   }
