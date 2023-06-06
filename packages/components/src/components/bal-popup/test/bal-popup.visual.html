@@ -17,11 +17,39 @@
     <bal-doc-app log-components="bal-popup">
       <main class="container py-medium">
         <section>
+          <bal-button
+            data-test="basic-trigger"
+            bal-popup="my-basic-trigger"
+            class="bal-popup-variant-popover-trigger-permanent"
+          >
+            Basic
+          </bal-button>
+
+          <hr />
+          <bal-popup id="my-basic-trigger" data-testid="basic">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+          </bal-popup>
+        </section>
+        <section>
           <bal-stack space="auto">
-            <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent"
+            <bal-button
+              data-test="popover-left-trigger"
+              bal-popup="my-trigger"
+              class="bal-popup-variant-popover-trigger-permanent"
               >Left Popover</bal-button
             >
-            <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent"
+            <bal-button
+              data-test="popover-right-trigger"
+              bal-popup="my-trigger"
+              class="bal-popup-variant-popover-trigger-permanent"
               >Right Popover</bal-button
             >
           </bal-stack>
@@ -29,7 +57,7 @@
           <bal-popup
             content-width="520"
             id="my-trigger"
-            data-testid="basic"
+            data-testid="popover"
             label="My Title"
             arrow
             backdrop
@@ -51,11 +79,11 @@
           </bal-popup>
         </section>
         <section>
-          <bal-button bal-popup="my-trigger-2">Trigger Overlay</bal-button>
+          <bal-button data-test="fullscreen-trigger" bal-popup="my-trigger-2">Trigger Overlay</bal-button>
           <hr />
           <bal-popup
             id="my-trigger-2"
-            data-testid="overlay"
+            data-testid="fullscreen"
             label="My Title"
             touch-position="top"
             arrow
@@ -78,11 +106,11 @@
           </bal-popup>
         </section>
         <section>
-          <bal-button bal-popup="my-trigger-3">Trigger Sheet</bal-button>
+          <bal-button data-test="drawer-trigger" bal-popup="my-trigger-3">Trigger Sheet</bal-button>
           <hr />
           <bal-popup
             id="my-trigger-3"
-            data-testid="sheet"
+            data-testid="drawer"
             label="My Title"
             touch-position="bottom"
             arrow

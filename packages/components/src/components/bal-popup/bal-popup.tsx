@@ -168,10 +168,11 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
     }
   }
 
-  @Listen('click', { target: 'body' })
+  @Listen('click', { target: 'window' })
   async listenOnGlobalClick(ev: MouseEvent): Promise<void> {
     const target = ev.target as HTMLElement
     const trigger = target.closest('[bal-popup]')
+    console.warn(trigger)
 
     if (trigger && balBrowser.hasWindow) {
       const popupId = trigger.attributes.getNamedItem('bal-popup')?.nodeValue || ''
@@ -390,21 +391,26 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
               ...innerBlock.class(),
             }}
           >
-            <bal-stack
-              space="auto"
-              class={{
-                ...innerHeadBlock.class(),
-              }}
-            >
-              <bal-heading level="span" visual-level="large" id={`${this.popupId}-heading`}>
-                {this.label}
-              </bal-heading>
-              <bal-close onClick={() => this.dismiss()}></bal-close>
-            </bal-stack>
+            {this.label ? (
+              <bal-stack
+                space="auto"
+                class={{
+                  ...innerHeadBlock.class(),
+                }}
+              >
+                <bal-heading data-test="popup-heading" level="span" visual-level="large" id={`${this.popupId}-heading`}>
+                  {this.label}
+                </bal-heading>
+                <bal-close data-test="popup-close" onClick={() => this.dismiss()}></bal-close>
+              </bal-stack>
+            ) : (
+              ''
+            )}
             <div
               class={{
                 ...innerContentBlock.class(),
               }}
+              data-test="popup-content"
             >
               <slot></slot>
             </div>
