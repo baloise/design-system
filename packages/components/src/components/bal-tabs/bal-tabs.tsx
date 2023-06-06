@@ -388,7 +388,7 @@ export class Tabs
   }
 
   private getTargetElement(value?: string) {
-    const selector = `#${this.tabsId}-button`
+    const selector = `[data-tabs="${this.tabsId}"]`
     const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
     return elements.filter(element => element.getAttribute('data-value') == value)[0]
   }

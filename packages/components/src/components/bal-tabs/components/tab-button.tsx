@@ -63,7 +63,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   return (
     <a
       role="tab"
-      id={`${tabsId}-button`}
+      id={`${tabsId}-button-${TabButtonIds++}`}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -82,6 +82,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'bal-focusable': !item.disabled && !item.hidden,
       }}
       draggable={false}
+      data-tabs={tabsId}
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
@@ -125,3 +126,5 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     </a>
   )
 }
+
+let TabButtonIds = 0
