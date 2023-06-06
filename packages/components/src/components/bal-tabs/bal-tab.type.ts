@@ -42,7 +42,7 @@ export interface TabProps {
   iconPosition: BalProps.BalTabsIconPosition
   tabs: BalTabOption[]
   context: BalProps.BalTabsContext
-  onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
+  onSelectTab: (ev: MouseEvent, tab: BalTabOption) => void
   lineWidth?: number
   lineOffsetLeft?: number
   lineHeight?: number
@@ -65,5 +65,5 @@ export interface TabItemProps {
   context: BalProps.BalTabsContext
   iconPosition: BalProps.BalTabsIconPosition
   trackingData?: Attributes
-  onSelectTab: (event: MouseEvent) => void
+  onSelectTab: (ev: MouseEvent) => void
 }

@@ -98,8 +98,8 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private onClick = (event: MouseEvent) => {
-    stopEventBubbling(event)
+  private onClick = (ev: MouseEvent) => {
+    stopEventBubbling(ev)
     this.parentAccordionElement?.humanToggle()
   }
 

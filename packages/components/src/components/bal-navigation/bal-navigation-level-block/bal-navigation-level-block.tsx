@@ -36,7 +36,7 @@ export class NavigationLevelBlock implements ComponentInterface {
       color: this.color,
       subLevels,
       trackingData: this.inheritAttributes,
-      onClick: (event: MouseEvent) => this.balClick.emit(event),
+      onClick: (ev: MouseEvent) => this.balClick.emit(ev),
     }
   }
 

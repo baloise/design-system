@@ -8,7 +8,7 @@ export interface FileListComponentProps {
   files: File[]
   disabled: boolean
   subTitle?: (file: File) => string
-  onRemoveFile: (event: Event, index: number) => void
+  onRemoveFile: (ev: Event, index: number) => void
 }
 
 export const FileListComponent: FunctionalComponent<FileListComponentProps> = ({

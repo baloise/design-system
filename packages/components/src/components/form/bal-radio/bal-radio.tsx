@@ -326,25 +326,25 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
     }
   }
 
-  private onFocus = (event: FocusEvent) => {
+  private onFocus = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
       this.focused = false
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
-    this.balFocus.emit(event)
+    this.balFocus.emit(ev)
 
     if (this.keyboardMode) {
       this.focused = true
     }
   }
 
-  private onBlur = (event: FocusEvent) => {
+  private onBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
-    this.balBlur.emit(event)
+    this.balBlur.emit(ev)
     this.focused = false
   }
 
