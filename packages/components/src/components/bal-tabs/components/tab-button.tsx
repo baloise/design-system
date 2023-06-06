@@ -82,6 +82,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'bal-focusable': !item.disabled && !item.hidden,
       }}
       draggable={false}
+      data-tabs={tabsId}
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
