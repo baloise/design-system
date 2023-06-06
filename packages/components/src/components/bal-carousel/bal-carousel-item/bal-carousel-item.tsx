@@ -1,11 +1,15 @@
 import { Component, ComponentInterface, h, Host, Method, Element, Prop, Event, EventEmitter } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalCarouselItemData } from '../bal-carousel.type'
+import { Attributes } from '../../../interfaces'
+import { inheritAttributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-carousel-item',
 })
 export class CarouselItem implements ComponentInterface {
+  private imageInheritAttributes: Attributes = {}
+
   @Element() el!: HTMLElement
 
   /**
@@ -78,6 +82,10 @@ export class CarouselItem implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalCarouselItemBlurDetail>
 
+  componentWillLoad() {
+    this.imageInheritAttributes = inheritAttributes(this.el, ['alt'])
+  }
+
   @Method() async getData(): Promise<BalCarouselItemData> {
     return {
       clientWidth: this.el.clientWidth,
@@ -108,7 +116,11 @@ export class CarouselItem implements ComponentInterface {
     if (!isProduct) {
       return (
         <Host class={{ ...itemEl.class() }}>
-          {this.src !== undefined ? <img draggable={false} onDragStart={() => false} src={this.src} /> : ''}
+          {this.src !== undefined ? (
+            <img draggable={false} onDragStart={() => false} src={this.src} {...this.imageInheritAttributes} />
+          ) : (
+            ''
+          )}
           <slot></slot>
         </Host>
       )
@@ -148,6 +160,7 @@ export class CarouselItem implements ComponentInterface {
               draggable={false}
               onDragStart={() => false}
               src={this.src}
+              {...this.imageInheritAttributes}
             />
           ) : (
             ''

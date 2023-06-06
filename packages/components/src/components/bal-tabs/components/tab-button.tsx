@@ -63,7 +63,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   return (
     <a
       role="tab"
-      id={`${tabsId}-button`}
+      id={`${tabsId}-button-${TabButtonIds++}`}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -125,3 +125,5 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     </a>
   )
 }
+
+let TabButtonIds = 0
