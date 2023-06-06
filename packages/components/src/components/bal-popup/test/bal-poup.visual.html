@@ -1,76 +1,101 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <style>
-    section {
-      margin-bottom: 2rem;
-    }
-  </style>
-  <script type="module" src="/build/design-system-components.esm.js"></script>
-  <script nomodule src="/build/design-system-components.js"></script>
-</head>
-
-<body>
-  <bal-doc-app log-components="bal-popup">
-    <main class="container py-medium">
-      <section>
-        <bal-stack space="auto">
-          <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent">Left Popover</bal-button>
-          <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent">Right Popover</bal-button>
-        </bal-stack>
-        <hr>
-        <bal-popup content-width="520" id="my-trigger" data-testid="basic" label="My Title" arrow backdrop backdrop-dismiss>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
-            numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
-            reprehenderit dolor.
-            Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum nobis, vitae, doloribus
-            molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo omnis quaerat quas
-            corporis harum ea.
-            Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus libero velit quos distinctio porro optio
-            eos nulla cumque accusantium quis, officiis a! Voluptas natus vitae perferendis excepturi laudantium quo
-            eius!</p>
-          <bal-stack>
-            <bal-button color="info">Button 1</bal-button>
-            <bal-button color="info">Button 2</bal-button>
+  <body>
+    <bal-doc-app log-components="bal-popup">
+      <main class="container py-medium">
+        <section>
+          <bal-stack space="auto">
+            <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent"
+              >Left Popover</bal-button
+            >
+            <bal-button bal-popup="my-trigger" class="bal-popup-variant-popover-trigger-permanent"
+              >Right Popover</bal-button
+            >
           </bal-stack>
-        </bal-popup>
-      </section>
-      <section>
-        <bal-button bal-popup="my-trigger-2">Trigger Overlay</bal-button>
-        <hr>
-        <bal-popup id="my-trigger-2" data-testid="overlay" label="My Title" touch-position="top" arrow backdrop backdrop-dismiss>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
-            numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
-            reprehenderit dolor.
-            Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum nobis, vitae, doloribus
-            molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo omnis quaerat quas
-            corporis harum ea.
-            Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus libero velit quos distinctio porro optio
-            eos nulla cumque accusantium quis, officiis a! Voluptas natus vitae perferendis excepturi laudantium quo
-            eius!</p>
-          <bal-stack layout="vertical">
-            <bal-button color="info">Button 1</bal-button>
-            <bal-button color="info">Button 2</bal-button>
-          </bal-stack>
-        </bal-popup>
-      </section>
-      <section>
-        <bal-button bal-popup="my-trigger-3">Trigger Sheet</bal-button>
-        <hr>
-        <bal-popup id="my-trigger-3" data-testid="sheet" label="My Title" touch-position="bottom" arrow
-        backdrop backdrop-dismiss>
-          <bal-stack layout="vertical">
-            <bal-button color="info">Button 1</bal-button>
-            <bal-button color="info">Button 2</bal-button>
-          </bal-stack>
-        </bal-popup>
-      </section>
-    </main>
-  </bal-doc-app>
-</body>
-
+          <hr />
+          <bal-popup
+            content-width="520"
+            id="my-trigger"
+            data-testid="basic"
+            label="My Title"
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+            <bal-stack>
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+        </section>
+        <section>
+          <bal-button bal-popup="my-trigger-2">Trigger Overlay</bal-button>
+          <hr />
+          <bal-popup
+            id="my-trigger-2"
+            data-testid="overlay"
+            label="My Title"
+            touch-position="top"
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+        </section>
+        <section>
+          <bal-button bal-popup="my-trigger-3">Trigger Sheet</bal-button>
+          <hr />
+          <bal-popup
+            id="my-trigger-3"
+            data-testid="sheet"
+            label="My Title"
+            touch-position="bottom"
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
 </html>
