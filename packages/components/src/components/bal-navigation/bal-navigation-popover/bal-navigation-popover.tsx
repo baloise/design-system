@@ -116,8 +116,8 @@ export class NavigationPopover implements ComponentInterface {
     }
   }
 
-  private toggle = (event: Event) => {
-    stopEventBubbling(event)
+  private toggle = (ev: Event) => {
+    stopEventBubbling(ev)
     this.clearTimeouts()
 
     if (!this.isActive) {

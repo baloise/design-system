@@ -21,8 +21,8 @@ export class BalKeyboardListener<TObserver> extends ListenerAbstract<TObserver, 
     }
   }
 
-  private onKeydown = (event: KeyboardEvent) => {
-    this.info.keyboardFocus = FOCUS_KEYS.includes(event.key)
+  private onKeydown = (ev: KeyboardEvent) => {
+    this.info.keyboardFocus = FOCUS_KEYS.includes(ev.key)
     this.notify(this.info)
   }
 

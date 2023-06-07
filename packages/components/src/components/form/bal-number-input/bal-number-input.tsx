@@ -167,15 +167,15 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Event() balKeyPress!: EventEmitter<BalEvents.BalNumberInputKeyPressDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
@@ -266,10 +266,10 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     this.balInput.emit(this.inputValue)
   }
 
-  private onBlur = (event: FocusEvent) => {
-    inputHandleBlur(this, event)
+  private onBlur = (ev: FocusEvent) => {
+    inputHandleBlur(this, ev)
 
-    const input = getInputTarget(event)
+    const input = getInputTarget(ev)
     if (input && (getDecimalSeparators().indexOf(input.value) >= 0 || input.value === getNegativeSymbol())) {
       this.inputValue = undefined
       input.value = ''
@@ -283,28 +283,28 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputHandleChange(this)
   }
 
-  private onKeydown = (event: KeyboardEvent) => {
-    if (!isNil(event) && !isCtrlOrCommandKey(event)) {
-      if (!this.getAllowedKeys().includes(event.key)) {
-        return stopEventBubbling(event)
+  private onKeydown = (ev: KeyboardEvent) => {
+    if (!isNil(ev) && !isCtrlOrCommandKey(ev)) {
+      if (!this.getAllowedKeys().includes(ev.key)) {
+        return stopEventBubbling(ev)
       }
 
       const value = getNativeInputValue(this)
 
-      if (getDecimalSeparators().indexOf(event.key) >= 0) {
+      if (getDecimalSeparators().indexOf(ev.key) >= 0) {
         if (!this.decimal || value.split('').some(el => getDecimalSeparators().includes(el))) {
-          return stopEventBubbling(event)
+          return stopEventBubbling(ev)
         }
       }
 
-      if (event.key === getNegativeSymbol()) {
+      if (ev.key === getNegativeSymbol()) {
         if (value.length !== 0) {
-          return stopEventBubbling(event)
+          return stopEventBubbling(ev)
         }
       }
 
-      if ([...NUMBER_KEYS, ...getDecimalSeparators(), getNegativeSymbol()].indexOf(event.key) >= 0) {
-        const newValue = getUpcomingValue(this, event)
+      if ([...NUMBER_KEYS, ...getDecimalSeparators(), getNegativeSymbol()].indexOf(ev.key) >= 0) {
+        const newValue = getUpcomingValue(this, ev)
         let separator = ''
 
         value.split('').some(el => {
@@ -316,18 +316,18 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         if (separator !== '') {
           const decimalValue = separator !== '' && newValue.includes(separator) ? newValue?.split(separator)[1] : ''
           if (decimalValue && decimalValue.length > this.decimal) {
-            return stopEventBubbling(event)
+            return stopEventBubbling(ev)
           }
         }
       }
     }
   }
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
 
-  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
+  private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
 
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
   get pattern() {
     let suffix = this.suffix

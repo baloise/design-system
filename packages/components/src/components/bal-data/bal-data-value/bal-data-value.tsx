@@ -38,8 +38,8 @@ export class DataValue {
    */
   @Event() balBlur!: EventEmitter<BalEvents.BalDataValueBlurDetail>
 
-  onClickHandler(event: MouseEvent) {
-    this.balClick.emit(event)
+  onClickHandler(ev: MouseEvent) {
+    this.balClick.emit(ev)
     const input = this.el.querySelector('bal-input')
     if (!isNil(input)) {
       input.setFocus()

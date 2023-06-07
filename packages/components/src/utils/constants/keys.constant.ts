@@ -16,4 +16,4 @@ export const ACTION_KEYS = [
   'Delete',
 ]
 
-export const isCtrlOrCommandKey = (event: KeyboardEvent) => event.metaKey || event.ctrlKey
+export const isCtrlOrCommandKey = (ev: KeyboardEvent) => ev.metaKey || ev.ctrlKey

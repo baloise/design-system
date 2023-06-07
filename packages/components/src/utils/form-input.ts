@@ -14,23 +14,23 @@ export interface FormInput<Value> {
   balChange: EventEmitter<Value>
 }
 
-export const stopEventBubbling = (event: Event): void => {
-  event.preventDefault()
-  event.stopPropagation()
+export const stopEventBubbling = (ev: Event): void => {
+  ev.preventDefault()
+  ev.stopPropagation()
 }
 
-export const getInputTarget = (event: Event): HTMLInputElement | null => {
-  return event.target as HTMLInputElement | null
+export const getInputTarget = (ev: Event): HTMLInputElement | null => {
+  return ev.target as HTMLInputElement | null
 }
 
 export const getNativeInputValue = <Value>(component: FormInput<Value>): string => {
   return component.nativeInput?.value || ''
 }
 
-export const getUpcomingValue = <Value>(component: FormInput<Value>, event: KeyboardEvent) => {
+export const getUpcomingValue = <Value>(component: FormInput<Value>, ev: KeyboardEvent) => {
   const value = component.nativeInput?.value || ''
-  const idx = (event as any).target?.selectionStart
-  return value.slice(0, idx) + event.key + value.slice(idx + Math.abs(0))
+  const idx = (ev as any).target?.selectionStart
+  return value.slice(0, idx) + ev.key + value.slice(idx + Math.abs(0))
 }
 
 export const inputSetBlur = <Value>(component: FormInput<Value>): void => {
@@ -39,9 +39,9 @@ export const inputSetBlur = <Value>(component: FormInput<Value>): void => {
   }
 }
 
-export const inputListenOnClick = <Value>(component: FormInput<Value>, event: UIEvent): void => {
-  if ((component.disabled || component.readonly) && event.target && event.target === component.el) {
-    stopEventBubbling(event)
+export const inputListenOnClick = <Value>(component: FormInput<Value>, ev: UIEvent): void => {
+  if ((component.disabled || component.readonly) && ev.target && ev.target === component.el) {
+    stopEventBubbling(ev)
   }
 }
 
@@ -55,23 +55,23 @@ export const inputSetFocus = <Value>(component: FormInput<Value>): void => {
   }, 0)
 }
 
-export const inputHandleHostClick = <Value>(component: FormInput<Value>, event: MouseEvent) => {
+export const inputHandleHostClick = <Value>(component: FormInput<Value>, ev: MouseEvent) => {
   if (component.disabled || component.readonly) {
-    stopEventBubbling(event)
+    stopEventBubbling(ev)
   }
 }
 
-export const inputHandleClick = <Value>(component: FormInput<Value>, event: MouseEvent) => {
+export const inputHandleClick = <Value>(component: FormInput<Value>, ev: MouseEvent) => {
   if (!component.disabled && !component.readonly && component.balClick) {
-    component.balClick.emit(event)
+    component.balClick.emit(ev)
   }
 }
 
-export const inputHandleFocus = <Value>(component: FormInput<Value>, event: FocusEvent) => {
+export const inputHandleFocus = <Value>(component: FormInput<Value>, ev: FocusEvent) => {
   component.focused = true
   component.inputValue = component.value
   if (!component.disabled && component.balFocus) {
-    component.balFocus.emit(event)
+    component.balFocus.emit(ev)
   }
 }
 
@@ -90,10 +90,10 @@ export const inputHandleReset = <Value>(
   })
 }
 
-export const inputHandleBlur = <Value>(component: FormInput<Value>, event: FocusEvent) => {
+export const inputHandleBlur = <Value>(component: FormInput<Value>, ev: FocusEvent) => {
   component.focused = false
   if (!component.disabled && component.balBlur) {
-    component.balBlur.emit(event)
+    component.balBlur.emit(ev)
   }
 }
 

@@ -90,8 +90,8 @@ export const dismiss = async (
 export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise<T> => {
   let resolve: (detail: T) => void
   const promise = new Promise<T>(r => (resolve = r))
-  onceEvent(element, eventName, (event: any) => {
-    resolve(event.detail)
+  onceEvent(element, eventName, (ev: any) => {
+    resolve(ev.detail)
   })
   return promise
 }

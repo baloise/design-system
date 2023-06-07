@@ -221,9 +221,9 @@ export class Modal implements OverlayInterface {
   }
 
   @Listen('click')
-  async onClickCloseButton(event: MouseEvent) {
-    if (this.isClosable && this.presented && event && event.target) {
-      const element = event.target as HTMLElement
+  async onClickCloseButton(ev: MouseEvent) {
+    if (this.isClosable && this.presented && ev && ev.target) {
+      const element = ev.target as HTMLElement
       const closestBalButton = element.closest('bal-button')
       if (closestBalButton && closestBalButton.hasAttribute('modal-close')) {
         await this.dismiss(undefined, 'model-close')
@@ -235,17 +235,17 @@ export class Modal implements OverlayInterface {
   }
 
   @Listen('mousedown')
-  async onMouseDown(event: MouseEvent) {
-    this.isClickedOutsideOnMouseDown = this.isClickedOutside(event)
+  async onMouseDown(ev: MouseEvent) {
+    this.isClickedOutsideOnMouseDown = this.isClickedOutside(ev)
   }
 
   @Listen('mouseup')
-  async onMouseUp(event: MouseEvent) {
-    this.isClickedOutsideOnMouseUp = this.isClickedOutside(event)
+  async onMouseUp(ev: MouseEvent) {
+    this.isClickedOutsideOnMouseUp = this.isClickedOutside(ev)
   }
 
   @Listen('keyup', { target: 'body' })
-  async handleKeyUp(event: KeyboardEvent) {
+  async handleKeyUp(ev: KeyboardEvent) {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
     const numbers = modals
       .map(el => el.overlayIndex)
@@ -254,10 +254,10 @@ export class Modal implements OverlayInterface {
     const max = Math.max(...numbers)
 
     if (this.overlayIndex === max) {
-      event.preventDefault()
-      event.stopPropagation()
+      ev.preventDefault()
+      ev.stopPropagation()
       if (this.presented && this.isClosable) {
-        if (event.key === 'Escape' || event.key === 'Esc') {
+        if (ev.key === 'Escape' || ev.key === 'Esc') {
           if (this.delegate) {
             await this.dismiss(undefined, 'model-escape')
           } else {
@@ -276,9 +276,9 @@ export class Modal implements OverlayInterface {
     this.bodyScrollHandler.enable()
   }
 
-  private isClickedOutside(event: MouseEvent) {
-    if (this.isClosable && this.presented && event && event.target && this.backdropDismiss) {
-      const element = event.target as HTMLElement
+  private isClickedOutside(ev: MouseEvent) {
+    if (this.isClosable && this.presented && ev && ev.target && this.backdropDismiss) {
+      const element = ev.target as HTMLElement
       return element.classList.contains('bal-modal__container')
     }
 

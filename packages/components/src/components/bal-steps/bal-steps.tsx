@@ -198,14 +198,14 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
     }
   }
 
-  private onSelectTab = async (event: MouseEvent, step: BalStepOption) => {
+  private onSelectTab = async (ev: MouseEvent, step: BalStepOption) => {
     if (step.prevent || step.disabled || !this.clickable) {
-      stopEventBubbling(event)
+      stopEventBubbling(ev)
     }
 
     if (!step.disabled) {
       if (step.navigate) {
-        step.navigate.emit(event)
+        step.navigate.emit(ev)
       }
       if (this.clickable) {
         if (step.value !== this.value) {

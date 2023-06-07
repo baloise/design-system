@@ -19,7 +19,7 @@ export interface TabButtonProps {
   clickable: boolean
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
-  onSelectTab: (event: MouseEvent, item: BalTabOption) => void
+  onSelectTab: (ev: MouseEvent, item: BalTabOption) => void
 }
 
 export const TabButton: FunctionalComponent<TabButtonProps> = ({
@@ -63,7 +63,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   return (
     <a
       role="tab"
-      id={`${tabsId}-button`}
+      id={`${tabsId}-button-${TabButtonIds++}`}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -82,6 +82,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         'bal-focusable': !item.disabled && !item.hidden,
       }}
       draggable={false}
+      data-tabs={tabsId}
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
@@ -89,7 +90,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
       target={item.target}
-      onClick={(event: MouseEvent) => onSelectTab(event, item)}
+      onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
       {item.icon ? (
         <TabIcon
@@ -125,3 +126,5 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     </a>
   )
 }
+
+let TabButtonIds = 0
