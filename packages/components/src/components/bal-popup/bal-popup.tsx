@@ -172,7 +172,6 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
   async listenOnGlobalClick(ev: MouseEvent): Promise<void> {
     const target = ev.target as HTMLElement
     const trigger = target.closest('[bal-popup]')
-    console.warn(trigger)
 
     if (trigger && balBrowser.hasWindow) {
       const popupId = trigger.attributes.getNamedItem('bal-popup')?.nodeValue || ''
@@ -398,10 +397,15 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
                   ...innerHeadBlock.class(),
                 }}
               >
-                <bal-heading data-test="popup-heading" level="span" visual-level="large" id={`${this.popupId}-heading`}>
+                <bal-heading
+                  data-test="bal-popup-label"
+                  level="span"
+                  visual-level="large"
+                  id={`${this.popupId}-heading`}
+                >
                   {this.label}
                 </bal-heading>
-                <bal-close data-test="popup-close" onClick={() => this.dismiss()}></bal-close>
+                <bal-close data-test="bal-popup-close" onClick={() => this.dismiss()}></bal-close>
               </bal-stack>
             ) : (
               ''
@@ -410,7 +414,7 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
               class={{
                 ...innerContentBlock.class(),
               }}
-              data-test="popup-content"
+              data-test="bal-popup-content"
             >
               <slot></slot>
             </div>
