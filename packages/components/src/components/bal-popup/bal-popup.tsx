@@ -13,10 +13,8 @@ import {
   Event,
 } from '@stencil/core'
 import { isEscapeKey } from '@baloise/web-app-utils'
-import type { BalBreakpointObserver, BalBreakpoints } from '../../interfaces'
 import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
-import { ListenToBreakpoints } from '../../utils/breakpoints'
 import { stopEventBubbling } from '../../utils/form-input'
 import {
   PopupComponentInterface,
@@ -35,7 +33,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
     css: 'bal-popup.sass',
   },
 })
-export class Popup implements ComponentInterface, BalBreakpointObserver, PopupComponentInterface, Loggable {
+export class Popup implements ComponentInterface, PopupComponentInterface, Loggable {
   private popupId = `bal-pu-${popupIds++}`
 
   private isClickedOutsideOnMouseDown = false
@@ -48,9 +46,9 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
 
   @Element() el!: HTMLElement
   containerEl: HTMLDivElement | undefined
+  backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
 
-  @State() isTouch = false
   @State() trigger?: Element
   @State() lastTrigger?: Element
 
@@ -72,9 +70,23 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
   @Prop() label = ''
 
   /**
+   *
+   */
+  @Prop() variant: BalProps.BalPopupVariant = 'popover'
+  @Watch('variant')
+  protected async variantChanged(newVariant: BalProps.BalPopupVariant, oldVariant: BalProps.BalPopupVariant) {
+    if (newVariant !== oldVariant) {
+      await this.getVariantRenderer(oldVariant).dismiss(this)
+      if (this.presented) {
+        await this.getVariantRenderer(newVariant).present(this)
+      }
+    }
+  }
+
+  /**
    * If set it turns a popover into a fullscreen or a drawer on touch devices
    */
-  @Prop() touchPosition?: 'top' | 'bottom'
+  @Prop() placement: BalProps.BalPopupPlacement = 'bottom'
 
   /**
    * If `true`, it shows a little indicator to the trigger element.
@@ -85,6 +97,11 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
    * If `true`, a backdrop will be displayed behind the modal.
    */
   @Prop() backdrop = false
+
+  /**
+   * If `true`, the modal can be closed with the escape key or the little close button.
+   */
+  @Prop() closable = false
 
   /**
    * If `true`, the modal can be closed with the click outside of the modal
@@ -183,7 +200,7 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
 
   @Listen('keydown', { target: 'body' })
   async listenOnKeyDown(ev: KeyboardEvent) {
-    if (this.presented && isEscapeKey(ev)) {
+    if (this.closable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
       this.dismiss()
     }
@@ -191,26 +208,18 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
 
   @Listen('mousedown')
   async listenOnMouseDown(ev: MouseEvent) {
-    this.isClickedOutsideOnMouseDown = this.isClickedOutside(ev)
+    this.isClickedOutsideOnMouseDown = this.onBackdropClick(ev)
   }
 
   @Listen('mouseup')
   async listenOnMouseUp(ev: MouseEvent) {
-    this.isClickedOutsideOnMouseUp = this.isClickedOutside(ev)
+    this.isClickedOutsideOnMouseUp = this.onBackdropClick(ev)
   }
 
   @Listen('click')
   async listenOnComponentClick() {
     if (this.presented && this.backdropDismiss && this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown) {
       await this.dismiss()
-    }
-  }
-
-  @ListenToBreakpoints()
-  breakpointListener(breakpoints: BalBreakpoints): void {
-    this.isTouch = breakpoints.touch
-    if (this.presented) {
-      this._present()
     }
   }
 
@@ -284,10 +293,6 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
    * ------------------------------------------------------
    */
 
-  private get variant(): PopupVariant {
-    return !this.isTouch ? 'popover' : this.touchPosition === 'bottom' ? 'drawer' : 'fullscreen'
-  }
-
   private getVariantRenderer(variant = this.variant): PopupVariantRenderer {
     switch (variant) {
       case 'fullscreen':
@@ -327,13 +332,24 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
     }
   }
 
-  private isClickedOutside(ev: MouseEvent) {
-    if (this.presented && ev && ev.target && this.backdropDismiss) {
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
+
+  private onBackdropClick = (ev: MouseEvent) => {
+    if (this.backdropDismiss && this.presented && ev && ev.target) {
       const element = ev.target as HTMLElement
       return element.classList.contains('bal-popup__backdrop')
     }
 
     return false
+  }
+
+  private onCloseClick = (): void => {
+    if (this.closable) {
+      this.dismiss()
+    }
   }
 
   /**
@@ -364,27 +380,19 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
         <div
           class={{
             ...backdropBlock.class(),
-            ...backdropBlock.modifier('active').class(this.presented && this.backdrop && this.variant !== 'fullscreen'),
           }}
-        ></div>
-        <div
-          class={{
-            ...arrowBlock.class(),
-            ...arrowBlock.modifier('active').class(this.presented && this.arrow && this.variant === 'popover'),
-          }}
-          ref={arrowEl => (this.arrowEl = arrowEl)}
+          ref={backdropEl => (this.backdropEl = backdropEl)}
         ></div>
         <div
           class={{
             ...containerBlock.class(),
-            ...containerBlock.modifier('active').class(this.presented),
-            ...containerBlock.modifier(`variant-${this.variant}`).class(this.presented),
+            ...containerBlock.modifier(`variant-${this.variant}`).class(),
           }}
           ref={containerEl => (this.containerEl = containerEl)}
         >
           <bal-stack
             layout="vertical"
-            px="large"
+            px={this.variant === 'popover' ? 'large' : 'none'}
             py="large"
             class={{
               ...innerBlock.class(),
@@ -405,7 +413,11 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
                 >
                   {this.label}
                 </bal-heading>
-                <bal-close data-test="bal-popup-close" onClick={() => this.dismiss()}></bal-close>
+                {this.closable ? (
+                  <bal-close data-test="bal-popup-close" onClick={() => this.onCloseClick()}></bal-close>
+                ) : (
+                  ''
+                )}
               </bal-stack>
             ) : (
               ''
@@ -419,6 +431,12 @@ export class Popup implements ComponentInterface, BalBreakpointObserver, PopupCo
               <slot></slot>
             </div>
           </bal-stack>
+          <div
+            class={{
+              ...arrowBlock.class(),
+            }}
+            ref={arrowEl => (this.arrowEl = arrowEl)}
+          ></div>
         </div>
       </Host>
     )

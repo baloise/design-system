@@ -2153,6 +2153,10 @@ export namespace Components {
          */
         "backdropDismiss": boolean;
         /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable": boolean;
+        /**
           * Defines the width of the content
          */
         "contentWidth": number;
@@ -2165,6 +2169,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalPopupPlacement;
+        /**
           * Opens the popup
          */
         "present": () => Promise<void>;
@@ -2172,10 +2180,7 @@ export namespace Components {
           * Triggers the popup
          */
         "toggle": () => Promise<void>;
-        /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
-         */
-        "touchPosition"?: 'top' | 'bottom';
+        "variant": BalProps.BalPopupVariant;
     }
     interface BalProgressBar {
         /**
@@ -6430,6 +6435,10 @@ declare namespace LocalJSX {
          */
         "backdropDismiss"?: boolean;
         /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable"?: boolean;
+        /**
           * Defines the width of the content
          */
         "contentWidth"?: number;
@@ -6452,7 +6461,8 @@ declare namespace LocalJSX {
         /**
           * If set it turns a popover into a fullscreen or a drawer on touch devices
          */
-        "touchPosition"?: 'top' | 'bottom';
+        "placement"?: BalProps.BalPopupPlacement;
+        "variant"?: BalProps.BalPopupVariant;
     }
     interface BalProgressBar {
         /**

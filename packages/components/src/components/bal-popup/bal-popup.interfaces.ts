@@ -3,7 +3,24 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../interfaces.d.ts" />
 
-namespace BalProps {}
+namespace BalProps {
+  export type BalPopupTouchPosition = 'top' | 'bottom'
+  export type BalPopupVariant = 'popover' | 'fullscreen' | 'drawer'
+
+  export type BalPopupPlacement =
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end'
+}
 
 namespace BalEvents {
   export interface BalPopupCustomEvent<T> extends CustomEvent<T> {

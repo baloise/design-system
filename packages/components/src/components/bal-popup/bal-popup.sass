@@ -4,33 +4,35 @@
 // Popup
 // --------------------------------------------------
 .bal-popup
-  +unselectable
+  position: static
+  display: inline
 
 // Popup Container
 // --------------------------------------------------
 .bal-popup__container
   background: var(--bal-popup-container-background)
-  overflow-y: auto
   display: none
+  visibility: hidden
   padding-top: var(--bal-popup-container-padding-top)
   padding-bottom: var(--bal-popup-container-padding-bottom)
-  &--active
-    display: block
+
   //
   // variants
   &--variant-popover
-    position: absolute
     border-radius: var(--bal-popup-variant-popover-radius)
     box-shadow: var(--bal-popup-variant-popover-shadow)
-    margin: 0
     z-index: 25
-    max-height: calc(100vh - 8rem)
     max-width: var(--bal-popup-variant-popover-max-width)
+    position: absolute
+    top: 0
+    left: 0
   &--variant-fullscreen
     position: fixed
     margin: 0
     z-index: 25
     width: 100%
+    min-width: 100%
+    max-width: 100% !important
     min-height: 100vh
   &--variant-drawer
     position: fixed
@@ -40,34 +42,38 @@
     z-index: 25
     width: 100%
 
+// Popup Container Inner
+// --------------------------------------------------
+
+.bal-popup__inner
+  overflow-y: auto
+  max-height: calc(100vh - 8rem)
+
+// Popup Head
+// --------------------------------------------------
+
+.bal-popup__inner__head
+  +unselectable
+
 // Popup Arrow
 // --------------------------------------------------
 
 .bal-popup__arrow
+  +unselectable
   position: absolute
   width: 8px
   height: 8px
   background: var(--bal-popup-arrow-background)
-  display: none
-  top: -4px
   z-index: 25
+  transform: rotate(45deg)
+  display: none
   visibility: hidden
-  &--active
-    display: block
-  &::before
-    position: absolute
-    visibility: visible
-    width: 8px
-    height: 8px
-    background: inherit
-    content: ""
-    z-index: 25
-    transform: rotate(45deg)
 
 // Popup Backdrop
 // --------------------------------------------------
 
 .bal-popup__backdrop
+  +unselectable
   position: fixed
   bottom: 0
   left: 0
@@ -77,8 +83,7 @@
   background-color: var(--bal-popup-backdrop-background)
   width: 100vw
   display: none
-  &--active
-    display: block
+  visibility: hidden
 
 .bal-popup-variant-popover-trigger,
 .bal-popup-variant-popover-trigger-permanent
