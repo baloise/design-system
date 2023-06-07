@@ -186,7 +186,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.1](https://github.com/baloise/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
-
 ### Bug Fixes
 
 * **angular:** provide missing component modules ([774696f](https://github.com/baloise/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
