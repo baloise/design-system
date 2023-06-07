@@ -2159,7 +2159,7 @@ export namespace Components {
         /**
           * Defines the width of the content
          */
-        "contentWidth": number;
+        "contentWidth"?: number;
         /**
           * Closes the popup
          */

@@ -133,11 +133,15 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   /**
    * Defines the width of the content
    */
-  @Prop() contentWidth = 440
+  @Prop() contentWidth?: number
   @Watch('contentWidth')
-  contentWidthChanged(newValue: number, oldValue: number) {
+  contentWidthChanged(newValue?: number, oldValue?: number) {
     if (newValue !== oldValue) {
-      this.el.style.setProperty('--bal-popup-variant-popover-max-width', `${this.contentWidth}px`)
+      if (newValue === undefined) {
+        this.el.style.removeProperty('--bal-popup-variant-popover-max-width')
+      } else {
+        this.el.style.setProperty('--bal-popup-variant-popover-max-width', `${this.contentWidth}px`)
+      }
     }
   }
 
