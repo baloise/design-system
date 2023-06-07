@@ -5,7 +5,7 @@ export class DrawerVariantRenderer extends AbstractVariantRenderer implements Po
   async present(component: PopupComponentInterface): Promise<boolean> {
     if (component.containerEl) {
       component.balWillAnimate.emit()
-      component.containerEl.style.setProperty('inset', `auto auto 0px 0px`)
+      component.containerEl.style.setProperty('inset', `auto 0px 0px 0px`)
       component.containerEl.classList.add('container')
       this.showBackdropElement(component)
       this.showContainerElement(component)

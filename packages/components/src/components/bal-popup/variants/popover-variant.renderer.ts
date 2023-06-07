@@ -39,7 +39,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         middleware: [
           shift(),
           flip(),
-          offset(16),
+          offset(component.arrow ? 16 : 0),
           arrow({
             element: component.arrowEl,
             padding: 4,

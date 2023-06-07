@@ -14,19 +14,21 @@
   </head>
 
   <body>
-    <bal-doc-app log-components="bal-popupd">
+    <bal-doc-app log-components="bal-popup">
       <main class="container py-medium">
         <section>
-          <bal-button
-            data-test="basic-trigger"
-            bal-popup="my-basic-trigger"
-            class="bal-popup-variant-popover-trigger-permanent"
-          >
-            Basic
-          </bal-button>
+          <bal-stack>
+            <bal-button data-test="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
+            <bal-button data-test="popover-left-trigger" bal-popup="popup-popover">Left Pop</bal-button>
+            <bal-button data-test="fullscreen-trigger" bal-popup="popup-fullscreen">Fullscreen</bal-button>
+            <bal-button data-test="drawer-trigger" bal-popup="popup-drawer">Drawer</bal-button>
+            <div class="is-flex-grow-1"></div>
+            <bal-button data-test="popover-right-trigger" bal-popup="popup-popover" class="bal-popup-permanent-trigger"
+              >Right Pop</bal-button
+            >
+          </bal-stack>
 
-          <hr />
-          <bal-popup id="my-basic-trigger" data-testid="basic">
+          <bal-popup id="popup-basic" data-testid="basic">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
               numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
@@ -37,26 +39,10 @@
               vitae perferendis excepturi laudantium quo eius!
             </p>
           </bal-popup>
-        </section>
-        <section>
-          <bal-stack space="auto">
-            <bal-button
-              data-test="popover-left-trigger"
-              bal-popup="my-trigger"
-              class="bal-popup-variant-popover-trigger-permanent"
-              >Left Popover</bal-button
-            >
-            <bal-button
-              data-test="popover-right-trigger"
-              bal-popup="my-trigger"
-              class="bal-popup-variant-popover-trigger-permanent"
-              >Right Popover</bal-button
-            >
-          </bal-stack>
-          <hr />
+
           <bal-popup
             content-width="520"
-            id="my-trigger"
+            id="popup-popover"
             data-testid="popover"
             variant="popover"
             placement="bottom-end"
@@ -80,12 +66,9 @@
               <bal-button color="info">Button 2</bal-button>
             </bal-stack>
           </bal-popup>
-        </section>
-        <section>
-          <bal-button data-test="fullscreen-trigger" bal-popup="my-trigger-2">Trigger Overlay</bal-button>
-          <hr />
+
           <bal-popup
-            id="my-trigger-2"
+            id="popup-fullscreen"
             data-testid="fullscreen"
             variant="fullscreen"
             label="My Title"
@@ -108,12 +91,9 @@
               <bal-button color="info">Button 2</bal-button>
             </bal-stack>
           </bal-popup>
-        </section>
-        <section>
-          <bal-button data-test="drawer-trigger" bal-popup="my-trigger-3">Trigger Drawer</bal-button>
-          <hr />
+
           <bal-popup
-            id="my-trigger-3"
+            id="popup-drawer"
             data-testid="drawer"
             label="My Title"
             variant="drawer"
@@ -127,29 +107,6 @@
               <bal-button color="info">Button 2</bal-button>
             </bal-stack>
           </bal-popup>
-        </section>
-        <section>
-          <bal-button bal-popup="my-trigger-4">Trigger</bal-button>
-          <bal-button color="info" id="fullscreen-switch" data-test="fullscreen-switch">Fullscreen</bal-button>
-          <bal-button color="info" id="popover-switch" data-test="popover-switch">Popover</bal-button>
-          <bal-button color="info" id="drawer-switch" data-test="drawer-switch">Drawer</bal-button>
-          <hr />
-          <bal-popup id="my-trigger-4" label="My Title" closable arrow backdrop backdrop-dismiss>
-            <bal-stack layout="vertical">
-              <bal-button color="info">Button 1</bal-button>
-              <bal-button color="info">Button 2</bal-button>
-            </bal-stack>
-          </bal-popup>
-          <script>
-            const drawerSwitchEl = document.getElementById('drawer-switch')
-            const popoverSwitchEl = document.getElementById('popover-switch')
-            const fullscreenSwitchEl = document.getElementById('fullscreen-switch')
-            const popupEl = document.getElementById('my-trigger-4')
-
-            popoverSwitchEl.addEventListener('click', () => (popupEl.variant = 'popover'))
-            drawerSwitchEl.addEventListener('click', () => (popupEl.variant = 'drawer'))
-            fullscreenSwitchEl.addEventListener('click', () => (popupEl.variant = 'fullscreen'))
-          </script>
         </section>
       </main>
     </bal-doc-app>

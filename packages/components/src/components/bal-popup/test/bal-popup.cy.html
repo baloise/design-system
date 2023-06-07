@@ -14,14 +14,30 @@
   </head>
 
   <body>
-    <bal-doc-app>
+    <bal-doc-app log-components="bal-popup">
       <main class="container py-medium">
         <section>
-          <bal-button date-test="trigger" bal-popup="my-trigger">Basic</bal-button>
+          <bal-button bal-popup="my-trigger-4">Trigger</bal-button>
+          <bal-button color="info" id="fullscreen-switch" data-test="fullscreen-switch">Fullscreen</bal-button>
+          <bal-button color="info" id="popover-switch" data-test="popover-switch">Popover</bal-button>
+          <bal-button color="info" id="drawer-switch" data-test="drawer-switch">Drawer</bal-button>
           <hr />
-          <bal-popup id="my-trigger" data-testid="popup" arrow backdrop backdrop-dismiss>
-            <p>TEST CONTENT</p>
+          <bal-popup id="my-trigger-4" label="My Title" closable arrow backdrop backdrop-dismiss>
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
           </bal-popup>
+          <script>
+            const drawerSwitchEl = document.getElementById('drawer-switch')
+            const popoverSwitchEl = document.getElementById('popover-switch')
+            const fullscreenSwitchEl = document.getElementById('fullscreen-switch')
+            const popupEl = document.getElementById('my-trigger-4')
+
+            popoverSwitchEl.addEventListener('click', () => (popupEl.variant = 'popover'))
+            drawerSwitchEl.addEventListener('click', () => (popupEl.variant = 'drawer'))
+            fullscreenSwitchEl.addEventListener('click', () => (popupEl.variant = 'fullscreen'))
+          </script>
         </section>
       </main>
     </bal-doc-app>
