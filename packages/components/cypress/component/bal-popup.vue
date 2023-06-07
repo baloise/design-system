@@ -12,6 +12,6 @@ const emit = defineEmits(['balChange'])
 <template>
   <div>
     <BalButton id="trigger" bal-popup="popup-test">Button</BalButton>
-    <BalPopup id="popup-test" label="My Title" :active="active" @bal-change="emit('balChange')">TEST CONTENT</BalPopup>
+    <BalPopup id="popup-test" label="My Title" closable @bal-change="emit('balChange')">TEST CONTENT</BalPopup>
   </div>
 </template>

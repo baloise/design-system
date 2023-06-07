@@ -134,14 +134,7 @@
           <bal-button color="info" id="popover-switch" data-test="popover-switch">Popover</bal-button>
           <bal-button color="info" id="drawer-switch" data-test="drawer-switch">Drawer</bal-button>
           <hr />
-          <bal-popup
-            id="my-trigger-4"
-            label="My Title"
-            closable
-            arrow
-            backdrop
-            backdrop-dismiss
-          >
+          <bal-popup id="my-trigger-4" label="My Title" closable arrow backdrop backdrop-dismiss>
             <bal-stack layout="vertical">
               <bal-button color="info">Button 1</bal-button>
               <bal-button color="info">Button 2</bal-button>
@@ -153,9 +146,9 @@
             const fullscreenSwitchEl = document.getElementById('fullscreen-switch')
             const popupEl = document.getElementById('my-trigger-4')
 
-            popoverSwitchEl.addEventListener('click', () => popupEl.variant = 'popover')
-            drawerSwitchEl.addEventListener('click', () => popupEl.variant = 'drawer')
-            fullscreenSwitchEl.addEventListener('click', () => popupEl.variant = 'fullscreen')
+            popoverSwitchEl.addEventListener('click', () => (popupEl.variant = 'popover'))
+            drawerSwitchEl.addEventListener('click', () => (popupEl.variant = 'drawer'))
+            fullscreenSwitchEl.addEventListener('click', () => (popupEl.variant = 'fullscreen'))
           </script>
         </section>
       </main>
