@@ -52,6 +52,7 @@ jobs:
             cypress/e2e/visual/bal-input-group.visual.cy.ts
             cypress/e2e/visual/bal-navbar.visual.cy.ts
             cypress/e2e/visual/bal-navigation.visual.cy.ts
+            cypress/e2e/visual/bal-popup.visual.cy.ts
             cypress/e2e/visual/bal-popover.visual.cy.ts
             cypress/e2e/visual/bal-radio.visual.cy.ts
             cypress/e2e/visual/bal-select.visual.cy.ts
