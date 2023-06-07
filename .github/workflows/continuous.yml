@@ -190,7 +190,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   VisualComponentsA:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -249,7 +249,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   VisualComponentsB:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -319,7 +319,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   VisualCSS:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
