@@ -3,33 +3,33 @@ describe('bal-textarea', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('textarea-basic', 0.0)
+    cy.getByTestId('basic').compareSnapshot('textarea-basic')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('textarea-basic-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('textarea-basic-mobile')
   })
 
   it('disabled component', () => {
     cy.platform('desktop')
-    cy.getByTestId('disabled').compareSnapshot('textarea-disabled', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('textarea-disabled')
 
     cy.platform('mobile')
-    cy.getByTestId('disabled').compareSnapshot('textarea-disabled-mobile', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('textarea-disabled-mobile')
   })
 
   it('invalid component', () => {
     cy.platform('desktop')
-    cy.getByTestId('invalid').compareSnapshot('textarea-invalid', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('textarea-invalid')
 
     cy.platform('mobile')
-    cy.getByTestId('invalid').compareSnapshot('textarea-invalid-mobile', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('textarea-invalid-mobile')
   })
 
   it('field component', () => {
     cy.platform('desktop')
-    cy.getByTestId('field').compareSnapshot('textarea-field', 0.0)
+    cy.getByTestId('field').compareSnapshot('textarea-field')
 
     cy.platform('mobile')
-    cy.getByTestId('field').compareSnapshot('textarea-field-mobile', 0.0)
+    cy.getByTestId('field').compareSnapshot('textarea-field-mobile')
   })
 })
