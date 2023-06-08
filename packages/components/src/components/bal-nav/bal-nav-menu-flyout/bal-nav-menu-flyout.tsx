@@ -35,7 +35,7 @@ export class NavMenuFlyout implements ComponentInterface, Loggable {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: BalProps.BalNavMenuBarContainer = 'default'
+  @Prop() containerSize: BalProps.BalNavMenuFlyoutContainer = 'default'
 
   /**
    * LISTENERS

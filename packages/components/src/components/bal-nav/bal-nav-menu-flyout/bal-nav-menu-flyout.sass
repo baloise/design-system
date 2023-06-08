@@ -5,14 +5,13 @@
 // --------------------------------------------------
 
 .bal-nav-menu-flyout
+  position: relative
   +unselectable
   display: block
   width: 100%
   padding-top: 2.5rem
   padding-bottom: 2.5rem
   overflow-y: auto
-  border-top: 1px solid var(--bal-color-grey)
-
   max-height: calc(100vh - 90px - 48px - 16px)
   width: calc( 100% + 1rem + 1rem)
   margin-left: -1rem
@@ -27,3 +26,10 @@
     margin-right: -3rem
   +widescreen
     max-height: calc(100vh - 96px - 48px - 16px)
+  &--active::before
+    position: absolute
+    top: 0
+    content: ""
+    height: 1px
+    width: 100%
+    background: var(--bal-nav-menu-flyout-border-background)

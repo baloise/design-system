@@ -1722,7 +1722,7 @@ export namespace Components {
         /**
           * Defines content width of the stage
          */
-        "containerSize": BalProps.BalNavMenuBarContainer;
+        "containerSize": BalProps.BalNavMenuFlyoutContainer;
     }
     interface BalNavMetaBar {
         /**
@@ -6108,7 +6108,7 @@ declare namespace LocalJSX {
         /**
           * Defines content width of the stage
          */
-        "containerSize"?: BalProps.BalNavMenuBarContainer;
+        "containerSize"?: BalProps.BalNavMenuFlyoutContainer;
     }
     interface BalNavMetaBar {
         /**
