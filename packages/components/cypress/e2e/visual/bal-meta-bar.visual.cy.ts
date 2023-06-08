@@ -4,13 +4,13 @@ describe('bal-meta-bar', () => {
 
     it('basic component', () => {
       cy.platform('desktop')
-      cy.getByTestId('basic').compareSnapshot('meta-bar-desktop', 0.0)
+      cy.compareSnapshot('meta-bar-desktop')
 
       cy.platform('tablet')
-      cy.getByTestId('basic').compareSnapshot('meta-bar-tablet', 0.0)
+      cy.compareSnapshot('meta-bar-tablet')
 
       cy.platform('mobile')
-      cy.getByTestId('basic').compareSnapshot('meta-bar-mobile', 0.0)
+      cy.compareSnapshot('meta-bar-mobile')
     })
   })
 })
