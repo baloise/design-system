@@ -1,6 +1,6 @@
-import { Component, h, ComponentInterface, Host, Element, State, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BEM } from '../../../utils/bem'
-import { LogInstance, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-link',
@@ -8,11 +8,7 @@ import { LogInstance, Logger } from '../../../utils/log'
     css: 'bal-nav-link.sass',
   },
 })
-export class NavigationLink implements ComponentInterface {
-  @Element() el!: HTMLElement
-
-  @State() inputId?: string
-
+export class NavigationLink implements ComponentInterface, Loggable {
   log!: LogInstance
 
   @Logger('bal-nav-link')
@@ -36,6 +32,11 @@ export class NavigationLink implements ComponentInterface {
   @Prop() selected = false
 
   /**
+   * If `true` the link can be clickable
+   */
+  @Prop() clickable = false
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href?: string
@@ -53,33 +54,34 @@ export class NavigationLink implements ComponentInterface {
 
   render() {
     const block = BEM.block('nav-link')
+    const { href, target } = this
+    const hasLink = href !== undefined && href !== ''
+    const hasVariant = this.variant !== ''
+
+    const Link = hasLink || this.clickable ? 'a' : 'span'
+    let linkAttributes = {}
+    if (hasLink) {
+      linkAttributes = { href, target }
+    }
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`has-variant-${this.variant}`).class(this.variant !== ''),
+          ...block.modifier(`variant-${this.variant}`).class(hasVariant),
         }}
       >
-        <a
+        <Link
+          data-test="bal-nav-link"
           class={{
             ...block.element('native').class(),
-            ...block
-              .element('native')
-              .modifier(`has-variant-${this.variant}`)
-              .class(this.variant !== ''),
+            ...block.element('native').modifier(`variant-${this.variant}`).class(hasVariant),
             ...block.element('native').modifier('selected').class(this.selected),
-            ...block
-              .element('native')
-              .modifier('has-link')
-              .class(this.href !== undefined),
           }}
-          data-testid="bal-nav-link"
-          href={this.href}
-          target={this.target}
+          {...linkAttributes}
         >
           <slot></slot>
-        </a>
+        </Link>
       </Host>
     )
   }

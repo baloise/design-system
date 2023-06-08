@@ -1676,6 +1676,10 @@ export namespace Components {
     }
     interface BalNavLink {
         /**
+          * If `true` the link can be clickable
+         */
+        "clickable": boolean;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -5910,6 +5914,10 @@ declare namespace LocalJSX {
     interface BalModalHeader {
     }
     interface BalNavLink {
+        /**
+          * If `true` the link can be clickable
+         */
+        "clickable"?: boolean;
         /**
           * Specifies the URL of the page the link goes to
          */

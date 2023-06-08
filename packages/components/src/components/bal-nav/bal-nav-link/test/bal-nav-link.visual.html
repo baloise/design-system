@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <style>
-      .bal-body {
-        visibility: hidden;
-      }
       section {
         padding: 2rem;
       }
@@ -20,21 +17,21 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-nav-link variant="overview">Alle Versicherungslösungen</bal-nav-link>
+          <bal-nav-link href="https://google.com" variant="overview">Alle Versicherungslösungen</bal-nav-link>
           <br />
           <bal-nav-link variant="title">Wohnen & Recht</bal-nav-link>
-          <bal-nav-link>Haushaltsversicherung</bal-nav-link>
-          <bal-nav-link selected>Haftpflicht</bal-nav-link>
-          <bal-nav-link>Einzel Gegenstände vom Handy bis zum e-Bike</bal-nav-link>
-          <bal-nav-link>Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-nav-link>
-          <bal-nav-link>Rechtsschutz</bal-nav-link>
+          <bal-nav-link href="https://google.com">Haushaltsversicherung</bal-nav-link>
+          <bal-nav-link href="https://google.com" selected>Haftpflicht</bal-nav-link>
+          <bal-nav-link href="https://google.com">Einzel Gegenstände vom Handy bis zum e-Bike</bal-nav-link>
+          <bal-nav-link href="https://google.com">Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-nav-link>
+          <bal-nav-link href="https://google.com">Rechtsschutz</bal-nav-link>
         </section>
         <br />
         <section data-testid="with-title-link">
           <bal-nav-link variant="title" href="https://google.com">Wohneigentum</bal-nav-link>
-          <bal-nav-link>Gebäudeversicherung</bal-nav-link>
-          <bal-nav-link>Erdbebenversicherung</bal-nav-link>
-          <bal-nav-link>Bauversicherung</bal-nav-link>
+          <bal-nav-link href="https://google.com">Gebäudeversicherung</bal-nav-link>
+          <bal-nav-link href="https://google.com">Erdbebenversicherung</bal-nav-link>
+          <bal-nav-link clickable>Bauversicherung</bal-nav-link>
         </section>
       </main>
     </bal-doc-app>
