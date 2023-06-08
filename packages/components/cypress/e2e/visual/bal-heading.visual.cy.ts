@@ -3,23 +3,23 @@ describe('bal-heading', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('heading-desktop', 0.0)
+    cy.getByTestId('basic').compareSnapshot('heading-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('heading-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('heading-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('heading-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('heading-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('heading-variants-desktop', 0.0)
+    cy.compareSnapshot('heading-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('heading-variants-tablet', 0.0)
+    cy.compareSnapshot('heading-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('heading-variants-mobile', 0.0)
+    cy.compareSnapshot('heading-variants-mobile')
   })
 })

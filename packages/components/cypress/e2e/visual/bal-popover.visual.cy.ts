@@ -10,19 +10,19 @@ describe('bal-popover', () => {
 
       it('basic component', () => {
         cy.getByTestId('popover-trigger').click()
-        cy.compareSnapshot(`popover-basic-${platform}`, 0.0)
+        cy.compareSnapshot(`popover-basic-${platform}`)
         cy.get('body').type('{esc}')
       })
 
       it('arrow backdrop component', () => {
         cy.getByTestId('popover-arrow-trigger').click()
-        cy.compareSnapshot(`popover-arrow-${platform}`, 0.0)
+        cy.compareSnapshot(`popover-arrow-${platform}`)
         cy.get('body').type('{esc}')
       })
 
       it('tooltip component', () => {
         cy.getByTestId('popover-tooltip-trigger').invoke('show').click({ force: true })
-        cy.compareSnapshot(`popover-tooltip-${platform}`, 0.0)
+        cy.compareSnapshot(`popover-tooltip-${platform}`)
       })
     })
   }

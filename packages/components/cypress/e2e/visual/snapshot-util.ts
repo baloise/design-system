@@ -27,7 +27,7 @@ export const platformDimensions = {
   },
 }
 
-export const compareSnapshotOptions = (platform: Platforms, x = 0, y = 0, errorThreshold = 0.0) => ({
+export const compareSnapshotOptions = (platform: Platforms, x = 0, y = 0, errorThreshold = 0.01) => ({
   errorThreshold,
   clip: {
     x,

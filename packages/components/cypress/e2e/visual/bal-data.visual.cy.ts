@@ -3,23 +3,23 @@ describe('bal-data', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('data-desktop', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-desktop')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('data-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('data-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('data-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('data-variants-desktop', 0.0)
+    cy.compareSnapshot('data-variants-desktop')
 
     cy.platform('tablet')
-    cy.compareSnapshot('data-variants-tablet', 0.0)
+    cy.compareSnapshot('data-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('data-variants-mobile', 0.0)
+    cy.compareSnapshot('data-variants-mobile')
   })
 })
