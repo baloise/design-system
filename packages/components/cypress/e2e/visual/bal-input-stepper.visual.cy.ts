@@ -5,33 +5,33 @@ describe('bal-input-stepper', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('input-stepper-basic', 0.0)
+    cy.getByTestId('basic').compareSnapshot('input-stepper-basic')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('input-stepper-basic-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('input-stepper-basic-mobile')
   })
 
   it('disabled component', () => {
     cy.platform('desktop')
-    cy.getByTestId('disabled').compareSnapshot('input-stepper-disabled', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('input-stepper-disabled')
 
     cy.platform('mobile')
-    cy.getByTestId('disabled').compareSnapshot('input-stepper-disabled-mobile', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('input-stepper-disabled-mobile')
   })
 
   it('invalid component', () => {
     cy.platform('desktop')
-    cy.getByTestId('invalid').compareSnapshot('input-stepper-invalid', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('input-stepper-invalid')
 
     cy.platform('mobile')
-    cy.getByTestId('invalid').compareSnapshot('input-stepper-invalid-mobile', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('input-stepper-invalid-mobile')
   })
 
   it('field component', () => {
     cy.platform('desktop')
-    cy.getByTestId('field').compareSnapshot('input-stepper-field', 0.0)
+    cy.getByTestId('field').compareSnapshot('input-stepper-field')
 
     cy.platform('mobile')
-    cy.getByTestId('field').compareSnapshot('input-stepper-field-mobile', 0.0)
+    cy.getByTestId('field').compareSnapshot('input-stepper-field-mobile')
   })
 })
