@@ -2,6 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } 
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { balBrowser } from '../../../utils/browser'
+import { getSibling } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-nav-meta-bar',
@@ -70,6 +71,23 @@ export class NavMetaBar implements ComponentInterface, Loggable {
 
       this.isHidden = !isOnTop && (didMoveDownwards || isOverViewportBottom || isOverViewportTop)
       this.previousY = window.scrollY
+
+      const navMenuBar = getSibling(this.el, 'bal-nav-menu-bar')
+      if (navMenuBar) {
+        navMenuBar.classList.add(`bal-nav-meta-bar-transformed`)
+        if (this.isHidden) {
+          if (this.size === 'small') {
+            navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-normal`)
+            navMenuBar.classList.add(`bal-nav-meta-bar-transformed-small`)
+          } else {
+            navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-small`)
+            navMenuBar.classList.add(`bal-nav-meta-bar-transformed-normal`)
+          }
+        } else {
+          navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-small`)
+          navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-normal`)
+        }
+      }
     }
   }
 
@@ -79,7 +97,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
    */
 
   render() {
-    const block = BEM.block('meta-bar')
+    const block = BEM.block('nav-meta-bar')
 
     return (
       <Host

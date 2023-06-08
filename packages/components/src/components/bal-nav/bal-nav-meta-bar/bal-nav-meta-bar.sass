@@ -42,14 +42,14 @@
   //
   // variants
   &--variant-primary
-    background: var(--bal-meta-bar-variant-primary-background)
-    box-shadow: var(--bal-meta-bar-variant-primary-shadow)
+    background: var(--bal-nav-meta-bar-variant-primary-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-primary-shadow)
   &--variant-grey
-    background: var(--bal-meta-bar-variant-grey-background)
-    box-shadow: var(--bal-meta-bar-variant-grey-shadow)
+    background: var(--bal-nav-meta-bar-variant-grey-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-grey-shadow)
   &--variant-white
-    background: var(--bal-meta-bar-variant-white-background)
-    box-shadow: var(--bal-meta-bar-variant-white-shadow)
+    background: var(--bal-nav-meta-bar-variant-white-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-white-shadow)
   //
   // hidden
   &--hidden-mobile
@@ -69,3 +69,13 @@
 
 .bal-nav-meta-bar .button-label
   word-break: keep-all !important
+
+// Nav Main
+// --------------------------------------------------
+
+.bal-nav-meta-bar-transformed
+  transition: transform .3s ease-in-out
+.bal-nav-meta-bar-transformed-small
+  transform: translateY(-3rem)
+.bal-nav-meta-bar-transformed-normal
+  transform: translateY(-5rem)

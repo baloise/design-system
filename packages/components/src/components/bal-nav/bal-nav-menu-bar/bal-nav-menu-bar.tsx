@@ -1,6 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-nav-menu-bar',
@@ -38,6 +39,11 @@ export class NavMenuBar implements ComponentInterface, Loggable {
   @Prop() containerSize: BalProps.BalNavMenuBarContainer = 'default'
 
   /**
+   * Defines the position of the bar
+   */
+  @Prop() position: BalProps.BalNavMenuBarPosition = 'none'
+
+  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -58,6 +64,7 @@ export class NavMenuBar implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier(`hidden-mobile`).class(this.hidden === 'mobile'),
           ...block.modifier(`hidden-tablet`).class(this.hidden === 'tablet'),
+          ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
         }}
       >
         <div

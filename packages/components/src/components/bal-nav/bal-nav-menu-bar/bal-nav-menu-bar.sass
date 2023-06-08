@@ -27,21 +27,29 @@
   +widescreen
     position: fixed
     margin-top: 1rem
+  //
+  //
+  &--position-fixed-top
+    position: fixed
 
 // Inner
 // --------------------------------------------------
 
 .bal-nav-menu-bar__inner
-  background: var(--bal-color-white)
+  background: var(--bal-nav-menu-bar-background)
+  box-shadow: var(--bal-nav-menu-bar-shadow)
   +widescreen
     background: transparent
+    box-shadow: none
 
 .bal-nav-menu-bar__inner > .container
   +widescreen
-    background: var(--bal-color-white)
-    border-radius: var(--bal-radius-large)
+    background: var(--bal-nav-menu-bar-background)
+    border-radius: var(--bal-nav-menu-bar-radius)
+    box-shadow: var(--bal-nav-menu-bar-shadow)
   +between(1440px, 1496px)
     background: transparent
+    box-shadow: none
     &::before
       position: absolute
       content: ''
@@ -49,11 +57,13 @@
       top: 0
       left: 1rem
       right: 1rem
-      background: var(--bal-color-white)
-      border-radius: var(--bal-radius-large)
+      background: var(--bal-nav-menu-bar-background)
+      border-radius: var(--bal-nav-menu-bar-radius)
+      box-shadow: var(--bal-nav-menu-bar-shadow)
   +between(1496px, 1540px)
-    background: var(--bal-color-white)
-    border-radius: var(--bal-radius-large)
+    background: var(--bal-nav-menu-bar-background)
+    border-radius: var(--bal-nav-menu-bar-radius)
+    box-shadow: var(--bal-nav-menu-bar-shadow)
     padding-left: 2rem
     padding-right: 2rem
     max-width: 93.5rem - 2rem
@@ -68,6 +78,8 @@
   padding-top: .8em
   +desktop
     padding-top: 1rem
+  +widescreen
+    padding-top: 1.5rem
 
 // Space helpers for the content after the bar
 // --------------------------------------------------
@@ -81,3 +93,9 @@
   margin-top: 1rem
   +widescreen
     margin-top: 7rem
+
+.bal-nav-menu-bar-fixed-body-padding
+  padding-top: 8rem
+
+.bal-nav-menu-bar-fixed-body-margin
+  margin-top: 8rem

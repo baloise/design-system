@@ -6,4 +6,5 @@
 namespace BalProps {
   export type BalNavMenuBarHidden = 'none' | 'mobile' | 'tablet'
   export type BalNavMenuBarContainer = 'default' | 'fluid' | 'compact'
+  export type BalNavMenuBarPosition = 'none' | 'fixed-top'
 }

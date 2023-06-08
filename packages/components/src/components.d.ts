@@ -1705,6 +1705,10 @@ export namespace Components {
           * Tells when to hide the bar
          */
         "hidden": BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMetaBar {
         /**
@@ -6066,6 +6070,10 @@ declare namespace LocalJSX {
           * Tells when to hide the bar
          */
         "hidden"?: BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMetaBar {
         /**
