@@ -55,6 +55,11 @@ export class BalStack implements ComponentInterface, Loggable {
   @Prop() useWrap = false
 
   /**
+   * Defines the width of the stack to be exactly the with of the content.
+   */
+  @Prop() fitContent = false
+
+  /**
    * @internal
    * Please use layout instead.
    */
@@ -78,6 +83,7 @@ export class BalStack implements ComponentInterface, Loggable {
     const alignment = !!this.alignment
     const space = !!this.space
     const useWrap = !!this.useWrap
+    const fitContent = !!this.fitContent
     const px = !!this.px
     const py = !!this.py
 
@@ -101,6 +107,7 @@ export class BalStack implements ComponentInterface, Loggable {
           ...block.modifier(`space-${this.space}`).class(space),
           ...block.modifier(`px-${this.px}`).class(px),
           ...block.modifier(`py-${this.py}`).class(py),
+          ...block.modifier(`fit-content`).class(fitContent),
         }}
       >
         <slot></slot>
