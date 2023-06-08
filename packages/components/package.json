@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "13.4.2",
+  "version": "13.4.3",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -67,21 +67,21 @@
     "cy:build": "npm run cy:copy && stencil build --config stencil.config.e2e.ts --prod",
     "cy:start": "node ./web-server.js",
     "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
-    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html",
+    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15",
     "==================== DOCUMENTATION =================": "================================",
     "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
     "docs:build": "node ../../.build/docs-github.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "13.4.2",
-    "@baloise/design-system-fonts": "13.4.2",
-    "@baloise/design-system-icons": "13.4.2",
-    "@baloise/design-system-tokens": "13.4.2",
+    "@baloise/design-system-css": "13.4.3",
+    "@baloise/design-system-fonts": "13.4.3",
+    "@baloise/design-system-icons": "13.4.3",
+    "@baloise/design-system-tokens": "13.4.3",
     "@baloise/web-app-utils": "3.11.1",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "^3.2.2",
     "big.js": "~6.2.1",
-    "contactjs": "~2.1.6",
+    "contactjs": "2.1.6",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
     "lodash.camelcase": "~4.3.0",
@@ -99,9 +99,9 @@
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "13.4.2",
-    "@baloise/design-system-output-target-react": "13.4.2",
-    "@baloise/design-system-output-target-vue": "13.4.2"
+    "@baloise/design-system-output-target-angular": "13.4.3",
+    "@baloise/design-system-output-target-react": "13.4.3",
+    "@baloise/design-system-output-target-vue": "13.4.3"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

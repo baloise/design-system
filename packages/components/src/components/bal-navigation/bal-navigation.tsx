@@ -54,16 +54,16 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })
-  async clickOnOutside(event: UIEvent) {
+  async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
-      if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
+      if (!this.mainNavElement?.contains(ev.target as Node) && this.isMainBodyOpen) {
         this.isMainBodyOpen = false
         this.selectedMainValue = ''
       }
     }
 
     if (this.isTouch) {
-      if (this.metaMobileActionsElement?.contains(event.target as Node)) {
+      if (this.metaMobileActionsElement?.contains(ev.target as Node)) {
         this.isMainBodyOpen = false
       }
     }
@@ -145,8 +145,8 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
 
   bodyOffset = 0
 
-  private listenToPopoverChangeEvent = async (event: Event) => {
-    const customEvent = event as BalEvents.BalPopoverChange
+  private listenToPopoverChangeEvent = async (ev: Event) => {
+    const customEvent = ev as BalEvents.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
 
     if (isNavPopoverOpen) {
@@ -199,9 +199,9 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
     }
   }
 
-  onMainTabChange = async (event: BalEvents.BalTabsChange) => {
-    const isMainNavOpen = event.detail !== ''
-    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail as any)
+  onMainTabChange = async (ev: BalEvents.BalTabsChange) => {
+    const isMainNavOpen = ev.detail !== ''
+    const option = await this.mainNavTabsEl?.getOptionByValue(ev.detail as any)
     const isLink = option?.href !== '' && option?.href !== undefined
 
     if (balDevice.hasTouchScreen) {

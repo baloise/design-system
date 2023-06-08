@@ -191,8 +191,8 @@ export class FileUpload implements FormInput<File[]> {
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.files = [...this.initialValue]
       clearTimeout(this.resetHandlerTimer)
@@ -300,18 +300,18 @@ export class FileUpload implements FormInput<File[]> {
    * ------------------------------------------------------
    */
 
-  private onDragenter = (event: Event) => {
-    stopEventBubbling(event)
+  private onDragenter = (ev: Event) => {
+    stopEventBubbling(ev)
   }
 
-  private onDragover = (event: Event) => {
-    stopEventBubbling(event)
+  private onDragover = (ev: Event) => {
+    stopEventBubbling(ev)
   }
 
-  private onDrop = (event: DragEvent) => {
-    stopEventBubbling(event)
+  private onDrop = (ev: DragEvent) => {
+    stopEventBubbling(ev)
     if (!this.disabled && !this.readonly && !this.loading) {
-      const dataTransfer = event.dataTransfer
+      const dataTransfer = ev.dataTransfer
       if (dataTransfer) {
         this.handleFiles(dataTransfer.files)
       }
@@ -326,8 +326,8 @@ export class FileUpload implements FormInput<File[]> {
     }
   }
 
-  private onRemoveFile = (event: Event, index: number): void => {
-    stopEventBubbling(event)
+  private onRemoveFile = (ev: Event, index: number): void => {
+    stopEventBubbling(ev)
 
     if (index >= 0 && index < this.files.length) {
       const files = this.files
@@ -340,13 +340,13 @@ export class FileUpload implements FormInput<File[]> {
     }
   }
 
-  private onHostClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private onHostClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
-  private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onInputFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
 
-  private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
+  private onInputBlur = (ev: FocusEvent) => inputHandleBlur(this, ev)
 
-  private onInputClick = (event: MouseEvent) => this.balInputClick.emit(event)
+  private onInputClick = (ev: MouseEvent) => this.balInputClick.emit(ev)
 
   /**
    * RENDER

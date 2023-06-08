@@ -24,7 +24,7 @@ export interface TabNavProps {
   verticalColSize: BalProps.BalTabsColSize
   iconPosition: BalProps.BalTabsIconPosition
   context?: BalProps.BalTabsContext
-  onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
+  onSelectTab: (ev: MouseEvent, tab: BalTabOption) => void
 }
 
 export const TabNav: FunctionalComponent<TabNavProps> = ({

@@ -124,7 +124,7 @@ export class NavbarBrand {
         }}
       >
         {this.href ? (
-          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+          <a href={this.href} target={this.target} onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}>
             {logoTemplate}
           </a>
         ) : (

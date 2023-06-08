@@ -249,15 +249,15 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Event() balChange!: EventEmitter<BalEvents.BalInputChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
@@ -451,7 +451,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     this.balInput.emit(this.inputValue)
   }
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
 
   private onBlur = (ev: FocusEvent) => {
     inputHandleBlur(this, ev)
@@ -469,8 +469,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     return [...NUMBER_KEYS, ...ACTION_KEYS]
   }
 
-  private onKeydown = (event: KeyboardEvent) => {
-    if (this.mask !== undefined && !isNil(event) && !isCtrlOrCommandKey(event)) {
+  private onKeydown = (ev: KeyboardEvent) => {
+    if (this.mask !== undefined && !isNil(ev) && !isCtrlOrCommandKey(ev)) {
       let inputLength = 0
       if (this.inputValue) {
         inputLength = this.inputValue.length
@@ -478,28 +478,28 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
 
       if (
         !(
-          this.getMaskAllowedKeys().includes(event.key) ||
+          this.getMaskAllowedKeys().includes(ev.key) ||
           (this.mask === 'claim-number' &&
-            (event.key === 'X' || event.key === 'x') &&
+            (ev.key === 'X' || ev.key === 'x') &&
             inputLength >= MAX_LENGTH_CLAIM_NUMBER - 1)
         )
       ) {
         // do not trigger next event -> on input
-        return stopEventBubbling(event)
+        return stopEventBubbling(ev)
       }
     }
 
-    if (this.allowedKeyPress && !this.mask && !isNil(event) && !isCtrlOrCommandKey(event)) {
+    if (this.allowedKeyPress && !this.mask && !isNil(ev) && !isCtrlOrCommandKey(ev)) {
       const regex = new RegExp('^' + this.allowedKeyPress + '$')
-      if (!regex.test(event.key) && ![...ACTION_KEYS].includes(event.key)) {
-        return stopEventBubbling(event)
+      if (!regex.test(ev.key) && ![...ACTION_KEYS].includes(ev.key)) {
+        return stopEventBubbling(ev)
       }
     }
   }
 
-  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
+  private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
 
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
   render() {
     let value = this.focused ? this.getRawValue() : this.getFormattedValue()
