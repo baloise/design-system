@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-popup">
+      <main class="container py-medium">
+        <section>
+          <bal-button bal-popup="popup">Trigger</bal-button>
+          <bal-button color="info" id="fullscreen-switch" data-test="fullscreen-switch">Fullscreen</bal-button>
+          <bal-button color="info" id="popover-switch" data-test="popover-switch">Popover</bal-button>
+          <bal-button color="info" id="drawer-switch" data-test="drawer-switch">Drawer</bal-button>
+          <br />
+          <br />
+          <bal-button color="info" bal-popup="popup">Trigger</bal-button>
+          <bal-button color="info" bal-popup="popup" bal-popup-variant="fullscreen">Fullscreen</bal-button>
+          <bal-button color="info" bal-popup="popup" bal-popup-variant="popover" bal-popup-placement="right"
+            >Popover</bal-button
+          >
+          <bal-button color="info" bal-popup="popup" bal-popup-variant="drawer">Drawer</bal-button>
+          <hr />
+          <bal-popup id="popup" label="My Title" closable arrow backdrop backdrop-dismiss>
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+          <script>
+            const drawerSwitchEl = document.getElementById('drawer-switch')
+            const popoverSwitchEl = document.getElementById('popover-switch')
+            const fullscreenSwitchEl = document.getElementById('fullscreen-switch')
+            const popupEl = document.getElementById('popup')
+
+            popoverSwitchEl.addEventListener('click', () => (popupEl.variant = 'popover'))
+            drawerSwitchEl.addEventListener('click', () => (popupEl.variant = 'drawer'))
+            fullscreenSwitchEl.addEventListener('click', () => (popupEl.variant = 'fullscreen'))
+          </script>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
