@@ -1615,6 +1615,28 @@ export namespace Components {
          */
         "color": BalProps.BalLogoColor;
     }
+    interface BalMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size": BalProps.BalMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant": BalProps.BalMetaBarVariant;
+    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -2555,6 +2577,10 @@ export namespace Components {
         "align": BalProps.BalStackAlignment;
         "alignment": BalProps.BalStackAlignment;
         "direction": BalProps.BalStackDirection;
+        /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent": boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
@@ -3732,6 +3758,12 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
+    interface HTMLBalMetaBarElement extends Components.BalMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalMetaBarElement: {
+        prototype: HTMLBalMetaBarElement;
+        new (): HTMLBalMetaBarElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -4171,6 +4203,7 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
+        "bal-meta-bar": HTMLBalMetaBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -5891,6 +5924,28 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalLogoColor;
     }
+    interface BalMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size"?: BalProps.BalMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant"?: BalProps.BalMetaBarVariant;
+    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -6855,6 +6910,10 @@ declare namespace LocalJSX {
         "alignment"?: BalProps.BalStackAlignment;
         "direction"?: BalProps.BalStackDirection;
         /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent"?: boolean;
+        /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "layout"?: BalProps.BalStackLayout;
@@ -7463,6 +7522,7 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
+        "bal-meta-bar": BalMetaBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -7612,6 +7672,7 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
+            "bal-meta-bar": LocalJSX.BalMetaBar & JSXBase.HTMLAttributes<HTMLBalMetaBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;

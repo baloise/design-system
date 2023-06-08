@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body class="has-background-green-1">
+    <bal-doc-app>
+      <main class="pb-medium">
+        <section class="mb-medium">
+          <bal-meta-bar data-testid="basic" size="small" position="sticky-top">
+            <bal-stack space="auto">
+              <bal-tabs spaceless inverted context="meta">
+                <bal-tab-item label="Private clients"></bal-tab-item>
+                <bal-tab-item label="Business clients"></bal-tab-item>
+                <bal-tab-item label="International investors"></bal-tab-item>
+                <bal-tab-item label="About us"></bal-tab-item>
+              </bal-tabs>
+              <bal-stack space="x-small" fit-content>
+                <bal-button color="light" inverted size="small" icon="call" square></bal-button>
+                <bal-button color="light" inverted size="small" square>EN</bal-button>
+                <bal-button color="light" inverted size="small" icon="search" square></bal-button>
+                <bal-button color="light" inverted size="small" icon="account">Login</bal-button>
+              </bal-stack>
+            </bal-stack>
+          </bal-meta-bar>
+        </section>
+
+        <section class="mb-medium">
+          <bal-meta-bar data-testid="basic" variant="white">
+            <bal-stack space="auto">
+              <bal-logo></bal-logo>
+              <bal-stack space="x-small" fit-content>
+                <bal-button color="light" icon="call" square></bal-button>
+                <bal-button color="light" square>EN</bal-button>
+                <bal-button color="light" icon="search" square></bal-button>
+                <bal-button color="light" icon="account">Login</bal-button>
+              </bal-stack>
+            </bal-stack>
+          </bal-meta-bar>
+        </section>
+
+        <section class="mb-medium">
+          <bal-meta-bar data-testid="basic" variant="grey">
+            <bal-stack space="x-small" space="x-small" align="center">
+              <bal-button color="info" icon="call" square></bal-button>
+              <bal-button color="info" square>EN</bal-button>
+              <bal-button color="info" icon="search" square></bal-button>
+            </bal-stack>
+          </bal-meta-bar>
+        </section>
+
+        <section class="mb-medium">
+          <bal-meta-bar data-testid="basic" variant="primary" hidden="mobile">
+            <bal-stack>
+              <bal-logo color="white"></bal-logo>
+              <bal-text color="white">Mobile</bal-text>
+            </bal-stack>
+          </bal-meta-bar>
+          <bal-meta-bar data-testid="basic" variant="primary" hidden="tablet">
+            <bal-stack>
+              <bal-logo color="white"></bal-logo>
+              <bal-text color="white">Tablet</bal-text>
+            </bal-stack>
+          </bal-meta-bar>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
