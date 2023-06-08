@@ -1696,6 +1696,28 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
+    interface BalNavLink {
+        /**
+          * If `true` the link can be clickable
+         */
+        "clickable": boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * If `true` the link gets selected with a underline
+         */
+        "selected": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": BalProps.BalButtonTarget;
+        /**
+          * Defines the variant of the link
+         */
+        "variant": BalProps.BalNavLinkVariant;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -3782,6 +3804,12 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
+    interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkElement: {
+        prototype: HTMLBalNavLinkElement;
+        new (): HTMLBalNavLinkElement;
+    };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
     var HTMLBalNavbarElement: {
@@ -4207,6 +4235,7 @@ declare global {
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
+        "bal-nav-link": HTMLBalNavLinkElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -6003,6 +6032,28 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
+    interface BalNavLink {
+        /**
+          * If `true` the link can be clickable
+         */
+        "clickable"?: boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * If `true` the link gets selected with a underline
+         */
+        "selected"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: BalProps.BalButtonTarget;
+        /**
+          * Defines the variant of the link
+         */
+        "variant"?: BalProps.BalNavLinkVariant;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -7526,6 +7577,7 @@ declare namespace LocalJSX {
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
+        "bal-nav-link": BalNavLink;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -7676,6 +7728,7 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+            "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;

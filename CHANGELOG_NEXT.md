@@ -775,7 +775,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
 * **tabs:** add hidden, spaceless and float ([1111288](https://github.com/baloise/design-system/commit/1111288f66f137e6ad68d2aeb8afce8e66d4dc75))
 
-
 ### Bug Fixes
 
 * **button:** adjust start height to 48px ([1b11e1b](https://github.com/baloise/design-system/commit/1b11e1b18bdccf2f73231fd32921b98b2ef8f395))
