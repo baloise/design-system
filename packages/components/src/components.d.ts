@@ -1615,15 +1615,6 @@ export namespace Components {
          */
         "color": BalProps.BalLogoColor;
     }
-    /**
-     * TODO
-     * -----
-     * - hide if scroll and bring back on upper scroll
-     * - variant primary, grey, white
-     * - size small and normal
-     * - alignment center or stretch, left right
-     * - hide tabs if one or empty
-     */
     interface BalMetaBar {
         /**
           * Defines content width of the stage
@@ -3710,15 +3701,6 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
-    /**
-     * TODO
-     * -----
-     * - hide if scroll and bring back on upper scroll
-     * - variant primary, grey, white
-     * - size small and normal
-     * - alignment center or stretch, left right
-     * - hide tabs if one or empty
-     */
     interface HTMLBalMetaBarElement extends Components.BalMetaBar, HTMLStencilElement {
     }
     var HTMLBalMetaBarElement: {
@@ -5878,15 +5860,6 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalLogoColor;
     }
-    /**
-     * TODO
-     * -----
-     * - hide if scroll and bring back on upper scroll
-     * - variant primary, grey, white
-     * - size small and normal
-     * - alignment center or stretch, left right
-     * - hide tabs if one or empty
-     */
     interface BalMetaBar {
         /**
           * Defines content width of the stage
@@ -7584,15 +7557,6 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            /**
-             * TODO
-             * -----
-             * - hide if scroll and bring back on upper scroll
-             * - variant primary, grey, white
-             * - size small and normal
-             * - alignment center or stretch, left right
-             * - hide tabs if one or empty
-             */
             "bal-meta-bar": LocalJSX.BalMetaBar & JSXBase.HTMLAttributes<HTMLBalMetaBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
