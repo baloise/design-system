@@ -33,12 +33,6 @@
     bottom: 0
     left: 0
     width: 100%
-  &--position-sticky-top
-    transition: transform .3s ease-in-out
-  &--position-sticky-top-transformed-small
-    transform: translateY(-3rem)
-  &--position-sticky-top-transformed-normal
-    transform: translateY(-5rem)
   //
   // variants
   &--variant-primary
@@ -70,12 +64,13 @@
 .bal-nav-meta-bar .button-label
   word-break: keep-all !important
 
-// Nav Main
+// Transform Animation
 // --------------------------------------------------
 
-.bal-nav-meta-bar-transformed
+.bal-nav-meta-bar-transform
+  will-change: transition
   transition: transform .3s ease-in-out
-.bal-nav-meta-bar-transformed-small
+.bal-nav-meta-bar-transform-small
   transform: translateY(-3rem)
-.bal-nav-meta-bar-transformed-normal
+.bal-nav-meta-bar-transform-normal
   transform: translateY(-5rem)

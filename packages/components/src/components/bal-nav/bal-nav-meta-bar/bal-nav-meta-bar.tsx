@@ -2,7 +2,6 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } 
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { balBrowser } from '../../../utils/browser'
-import { getSibling } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-nav-meta-bar',
@@ -62,7 +61,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll() {
-    if (balBrowser.hasWindow && this.position === 'sticky-top') {
+    if (balBrowser.hasWindow && balBrowser.hasDocument && this.position === 'sticky-top') {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -72,20 +71,22 @@ export class NavMetaBar implements ComponentInterface, Loggable {
       this.isHidden = !isOnTop && (didMoveDownwards || isOverViewportBottom || isOverViewportTop)
       this.previousY = window.scrollY
 
-      const navMenuBar = getSibling(this.el, 'bal-nav-menu-bar')
-      if (navMenuBar) {
-        navMenuBar.classList.add(`bal-nav-meta-bar-transformed`)
-        if (this.isHidden) {
-          if (this.size === 'small') {
-            navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-normal`)
-            navMenuBar.classList.add(`bal-nav-meta-bar-transformed-small`)
+      const transformElements = Array.from(document.querySelectorAll('.bal-nav-meta-bar-transform'))
+      if (transformElements.length > 0) {
+        for (let index = 0; index < transformElements.length; index++) {
+          const transformElement = transformElements[index]
+          if (this.isHidden) {
+            if (this.size === 'small') {
+              transformElement.classList.remove(`bal-nav-meta-bar-transform-normal`)
+              transformElement.classList.add(`bal-nav-meta-bar-transform-small`)
+            } else {
+              transformElement.classList.remove(`bal-nav-meta-bar-transform-small`)
+              transformElement.classList.add(`bal-nav-meta-bar-transform-normal`)
+            }
           } else {
-            navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-small`)
-            navMenuBar.classList.add(`bal-nav-meta-bar-transformed-normal`)
+            transformElement.classList.remove(`bal-nav-meta-bar-transform-small`)
+            transformElement.classList.remove(`bal-nav-meta-bar-transform-normal`)
           }
-        } else {
-          navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-small`)
-          navMenuBar.classList.remove(`bal-nav-meta-bar-transformed-normal`)
         }
       }
     }
@@ -109,7 +110,6 @@ export class NavMetaBar implements ComponentInterface, Loggable {
           ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
           ...block.modifier(`hidden-mobile`).class(this.hidden === 'mobile'),
           ...block.modifier(`hidden-tablet`).class(this.hidden === 'tablet'),
-          ...block.modifier(`position-sticky-top-transformed-${this.size}`).class(this.isHidden),
         }}
       >
         <div
