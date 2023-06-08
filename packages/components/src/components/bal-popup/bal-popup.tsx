@@ -26,6 +26,7 @@ import {
 } from './variants'
 import { debounce } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
+import { VariantRenderer } from './variants/variant.renderer'
 
 @Component({
   tag: 'bal-popup',
@@ -39,9 +40,9 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private isClickedOutsideOnMouseDown = false
   private isClickedOutsideOnMouseUp = false
 
-  private popoverVariantRenderer = new PopoverVariantRenderer()
-  private fullscreenVariantRenderer = new FullscreenVariantRenderer()
-  private drawerVariantRenderer = new DrawerVariantRenderer()
+  private popoverVariantRenderer = new VariantRenderer(new PopoverVariantRenderer())
+  private fullscreenVariantRenderer = new VariantRenderer(new FullscreenVariantRenderer())
+  private drawerVariantRenderer = new VariantRenderer(new DrawerVariantRenderer())
   private lastVariant: PopupVariant = 'popover'
 
   @Element() el!: HTMLElement
@@ -49,6 +50,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
 
+  @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
 
@@ -70,13 +72,20 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   @Prop() label = ''
 
   /**
-   *
+   * Defines the variant / type of popup
    */
   @Prop() variant: BalProps.BalPopupVariant = 'popover'
   @Watch('variant')
   protected async variantChanged(newVariant: BalProps.BalPopupVariant, oldVariant: BalProps.BalPopupVariant) {
     if (newVariant !== oldVariant) {
       await this.getVariantRenderer(oldVariant).dismiss(this)
+
+      if (this.activeVariant !== newVariant) {
+        this.lastVariant = this.activeVariant
+        this.activeVariant = newVariant
+        await this.getVariantRenderer(this.lastVariant).dismiss(this)
+      }
+
       if (this.presented) {
         await this.getVariantRenderer(newVariant).present(this)
       }
@@ -179,9 +188,15 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   private debouncedGlobalClick = debounce((trigger: HTMLElement) => this.notifyGlobalClick(trigger), 10)
 
-  notifyGlobalClick(trigger: HTMLElement) {
+  private notifyGlobalClick(trigger: HTMLElement) {
     this.trigger = trigger
     this.lastTrigger = this.lastTrigger === undefined ? this.trigger : this.lastTrigger
+    const triggerVariantAttr = trigger.attributes.getNamedItem('bal-popup-variant')
+    if (triggerVariantAttr) {
+      this.activeVariant = triggerVariantAttr.value as BalProps.BalPopupVariant
+    } else {
+      this.activeVariant = this.variant
+    }
     if (this.presented && this.lastTrigger !== this.trigger) {
       this._present()
     } else {
@@ -297,7 +312,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    * ------------------------------------------------------
    */
 
-  private getVariantRenderer(variant = this.variant): PopupVariantRenderer {
+  private getVariantRenderer(variant = this.activeVariant): PopupVariantRenderer {
     switch (variant) {
       case 'fullscreen':
         return this.fullscreenVariantRenderer
@@ -316,11 +331,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private async resetAllVariants() {
     await this.dismissAllOtherPopups()
 
-    if (this.lastVariant !== this.variant) {
+    if (this.lastVariant !== this.activeVariant) {
       const lastVariant = this.getVariantRenderer(this.lastVariant)
       await lastVariant.dismiss(this)
     }
-    this.lastVariant = this.variant
+    this.lastVariant = this.activeVariant
   }
 
   private async dismissAllOtherPopups() {
@@ -390,13 +405,13 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
         <div
           class={{
             ...containerBlock.class(),
-            ...containerBlock.modifier(`variant-${this.variant}`).class(),
+            ...containerBlock.modifier(`variant-${this.activeVariant}`).class(),
           }}
           ref={containerEl => (this.containerEl = containerEl)}
         >
           <bal-stack
             layout="vertical"
-            px={this.variant === 'popover' ? 'large' : 'none'}
+            px={this.activeVariant === 'popover' ? 'large' : 'none'}
             py="large"
             class={{
               ...innerBlock.class(),

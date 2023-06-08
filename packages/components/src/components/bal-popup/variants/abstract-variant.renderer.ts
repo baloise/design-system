@@ -2,9 +2,7 @@ import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfa
 
 export abstract class AbstractVariantRenderer implements PopupVariantRenderer {
   abstract present(component: PopupComponentInterface): Promise<boolean>
-
   abstract update(component: PopupComponentInterface): Promise<boolean>
-
   abstract dismiss(component: PopupComponentInterface): Promise<boolean>
 
   showContainerElement(component: PopupComponentInterface) {

@@ -24,8 +24,6 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         this.update(component)
       })
 
-      component.presented = true
-      component.balDidAnimate.emit()
       return true
     }
     return false
@@ -33,7 +31,6 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
   async update(component: PopupComponentInterface): Promise<boolean> {
     if (component.trigger && component.containerEl && component.arrowEl) {
-      component.balWillAnimate.emit()
       computePosition(component.trigger, component.containerEl, {
         placement: component.placement,
         middleware: [
@@ -73,7 +70,6 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
           })
         }
       })
-      component.balDidAnimate.emit()
       return true
     }
     return false
@@ -85,16 +81,12 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         this.cleanup()
       }
 
-      component.balWillAnimate.emit()
-
       component.trigger.classList.remove('bal-popup-variant-popover-trigger')
 
       this.hideBackdropElement(component)
       this.hideContainerElement(component)
       this.hideArrowElement(component)
 
-      component.presented = false
-      component.balDidAnimate.emit()
       return true
     }
     return false

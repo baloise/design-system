@@ -2180,6 +2180,9 @@ export namespace Components {
           * Triggers the popup
          */
         "toggle": () => Promise<void>;
+        /**
+          * Defines the variant / type of popup
+         */
         "variant": BalProps.BalPopupVariant;
     }
     interface BalProgressBar {
@@ -6462,6 +6465,9 @@ declare namespace LocalJSX {
           * If set it turns a popover into a fullscreen or a drawer on touch devices
          */
         "placement"?: BalProps.BalPopupPlacement;
+        /**
+          * Defines the variant / type of popup
+         */
         "variant"?: BalProps.BalPopupVariant;
     }
     interface BalProgressBar {
