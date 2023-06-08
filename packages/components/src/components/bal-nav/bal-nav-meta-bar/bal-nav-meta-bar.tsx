@@ -1,16 +1,16 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } from '@stencil/core'
-import { BEM } from '../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { balBrowser } from '../../utils/browser'
+import { BEM } from '../../../utils/bem'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
-  tag: 'bal-meta-bar',
+  tag: 'bal-nav-meta-bar',
   styleUrls: {
-    css: 'bal-meta-bar.sass',
+    css: 'bal-nav-meta-bar.sass',
   },
 })
-export class MetaBar implements ComponentInterface, Loggable {
-  private metaBarId = `bal-meta-bar-${MetaBarIds++}`
+export class NavMetaBar implements ComponentInterface, Loggable {
+  private navMetaBarId = `bal-nav-meta-bar-${NavMetaBarIds++}`
   private previousY = 0
 
   @Element() el!: HTMLElement
@@ -32,27 +32,27 @@ export class MetaBar implements ComponentInterface, Loggable {
   /**
    * Defines the color variant
    */
-  @Prop() variant: BalProps.BalMetaBarVariant = 'primary'
+  @Prop() variant: BalProps.BalNavMetaBarVariant = 'primary'
 
   /**
    * Defines the height of the bar
    */
-  @Prop() size: BalProps.BalMetaBarSize = 'normal'
+  @Prop() size: BalProps.BalNavMetaBarSize = 'normal'
 
   /**
    * Tells when to hide the bar
    */
-  @Prop() hidden: BalProps.BalMetaBarHidden = 'none'
+  @Prop() hidden: BalProps.BalNavMetaBarHidden = 'none'
 
   /**
    * Defines the position of the bar
    */
-  @Prop() position: BalProps.BalMetaBarPosition = 'none'
+  @Prop() position: BalProps.BalNavMetaBarPosition = 'none'
 
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: BalProps.BalMetaBarContainer = 'default'
+  @Prop() containerSize: BalProps.BalNavMetaBarContainer = 'default'
 
   /**
    * LISTENERS
@@ -83,7 +83,7 @@ export class MetaBar implements ComponentInterface, Loggable {
 
     return (
       <Host
-        id={this.metaBarId}
+        id={this.navMetaBarId}
         class={{
           ...block.class(),
           ...block.modifier(`variant-${this.variant}`).class(),
@@ -107,4 +107,4 @@ export class MetaBar implements ComponentInterface, Loggable {
   }
 }
 
-let MetaBarIds = 0
+let NavMetaBarIds = 0
