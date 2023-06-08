@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-popup">
+      <main class="container py-medium">
+        <section>
+          <bal-stack>
+            <bal-button data-test="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
+            <bal-button data-test="popover-left-trigger" bal-popup="popup-popover">Left Pop</bal-button>
+            <bal-button data-test="fullscreen-trigger" bal-popup="popup-fullscreen">Fullscreen</bal-button>
+            <bal-button data-test="drawer-trigger" bal-popup="popup-drawer">Drawer</bal-button>
+            <div class="is-flex-grow-1"></div>
+            <bal-button data-test="popover-right-trigger" bal-popup="popup-popover" class="bal-popup-permanent-trigger"
+              >Right Pop</bal-button
+            >
+          </bal-stack>
+
+          <bal-popup id="popup-basic" data-testid="basic">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+          </bal-popup>
+
+          <bal-popup
+            content-width="520"
+            id="popup-popover"
+            data-testid="popover"
+            variant="popover"
+            placement="bottom-end"
+            label="My Title"
+            closable
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+            <bal-stack>
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+
+          <bal-popup
+            id="popup-fullscreen"
+            data-testid="fullscreen"
+            variant="fullscreen"
+            label="My Title"
+            closable
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
+              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
+              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
+              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
+              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
+              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
+              vitae perferendis excepturi laudantium quo eius!
+            </p>
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+
+          <bal-popup
+            id="popup-drawer"
+            data-testid="drawer"
+            label="My Title"
+            variant="drawer"
+            closable
+            arrow
+            backdrop
+            backdrop-dismiss
+          >
+            <bal-stack layout="vertical">
+              <bal-button color="info">Button 1</bal-button>
+              <bal-button color="info">Button 2</bal-button>
+            </bal-stack>
+          </bal-popup>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

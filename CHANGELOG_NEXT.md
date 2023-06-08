@@ -12,6 +12,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
+
 * add new language es, pl, pt, sv and fi ([1d6a73f](https://github.com/baloise/design-system/commit/1d6a73f2af53b730fccf0af48fe108e2f08ded4f))
 * adjust small spacing value to 0.75rem. Closes [#706](https://github.com/baloise/design-system/issues/706) ([2bdc29a](https://github.com/baloise/design-system/commit/2bdc29af2ed232d871a73ec5f754c49f77dceb97))
 * **angular:** add dismissAll method to the toast and snackbar service. Closes [#703](https://github.com/baloise/design-system/issues/703) ([4e9070a](https://github.com/baloise/design-system/commit/4e9070ad37e6a441c045cc39f7e91bfb09ea26cb))
@@ -185,7 +186,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.1](https://github.com/baloise/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
-
 ### Bug Fixes
 
 * **angular:** provide missing component modules ([774696f](https://github.com/baloise/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
@@ -195,7 +195,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
 * **stage:** stage position ([2839688](https://github.com/baloise/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
-
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 

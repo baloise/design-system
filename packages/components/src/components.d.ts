@@ -1615,6 +1615,28 @@ export namespace Components {
          */
         "color": BalProps.BalLogoColor;
     }
+    interface BalMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size": BalProps.BalMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant": BalProps.BalMetaBarVariant;
+    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -2132,6 +2154,59 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
+    interface BalPopup {
+        "_dismiss": () => Promise<boolean>;
+        "_emitChange": () => Promise<void>;
+        "_present": () => Promise<boolean>;
+        /**
+          * If `true` the popup is open.
+         */
+        "active": boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow": boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop": boolean;
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable": boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Closes the popup
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Label or title of the popup element
+         */
+        "label": string;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalPopupPlacement;
+        /**
+          * Opens the popup
+         */
+        "present": () => Promise<void>;
+        /**
+          * Triggers the popup
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Defines the variant / type of popup
+         */
+        "variant": BalProps.BalPopupVariant;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -2502,6 +2577,10 @@ export namespace Components {
         "align": BalProps.BalStackAlignment;
         "alignment": BalProps.BalStackAlignment;
         "direction": BalProps.BalStackDirection;
+        /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent": boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
@@ -3118,6 +3197,10 @@ export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
 }
+export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalPopupElement;
+}
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
@@ -3675,6 +3758,12 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
+    interface HTMLBalMetaBarElement extends Components.BalMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalMetaBarElement: {
+        prototype: HTMLBalMetaBarElement;
+        new (): HTMLBalMetaBarElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -3854,6 +3943,12 @@ declare global {
     var HTMLBalPopoverContentElement: {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
+    };
+    interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
+    }
+    var HTMLBalPopupElement: {
+        prototype: HTMLBalPopupElement;
+        new (): HTMLBalPopupElement;
     };
     interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
     }
@@ -4108,6 +4203,7 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
+        "bal-meta-bar": HTMLBalMetaBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -4138,6 +4234,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-popup": HTMLBalPopupElement;
         "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
@@ -5827,6 +5924,28 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalLogoColor;
     }
+    interface BalMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size"?: BalProps.BalMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant"?: BalProps.BalMetaBarVariant;
+    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -6356,6 +6475,56 @@ declare namespace LocalJSX {
          */
         "spaceless"?: boolean;
     }
+    interface BalPopup {
+        /**
+          * If `true` the popup is open.
+         */
+        "active"?: boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable"?: boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Label or title of the popup element
+         */
+        "label"?: string;
+        /**
+          * Emitted when the accordion has opened or closed
+         */
+        "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement"?: BalProps.BalPopupPlacement;
+        /**
+          * Defines the variant / type of popup
+         */
+        "variant"?: BalProps.BalPopupVariant;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -6740,6 +6909,10 @@ declare namespace LocalJSX {
         "align"?: BalProps.BalStackAlignment;
         "alignment"?: BalProps.BalStackAlignment;
         "direction"?: BalProps.BalStackDirection;
+        /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent"?: boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
@@ -7349,6 +7522,7 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
+        "bal-meta-bar": BalMetaBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -7379,6 +7553,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-popup": BalPopup;
         "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
@@ -7497,6 +7672,7 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
+            "bal-meta-bar": LocalJSX.BalMetaBar & JSXBase.HTMLAttributes<HTMLBalMetaBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
@@ -7527,6 +7703,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
             "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;

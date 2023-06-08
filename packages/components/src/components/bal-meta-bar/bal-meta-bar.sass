@@ -1,0 +1,71 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-meta-bar.vars'
+
+// Meta bar
+// --------------------------------------------------
+
+.bal-meta-bar
+  +unselectable
+  display: block
+  width: 100%
+  //
+  // container adjustment
+  .container
+    height: 100%
+  //
+  // size
+  &--size-normal
+    padding-top: .5rem
+    padding-bottom: .5rem
+    height: 4rem
+    max-height: 4rem
+  &--size-small
+    min-height: 2rem
+  //
+  // position
+  &--position-fixed-top
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+  &--position-fixed-bottom
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+  &--position-sticky-top
+    transition: transform .3s ease-in-out
+  &--position-sticky-top-transformed-small
+    transform: translateY(-3rem)
+  &--position-sticky-top-transformed-normal
+    transform: translateY(-5rem)
+  //
+  // variants
+  &--variant-primary
+    background: var(--bal-meta-bar-variant-primary-background)
+    box-shadow: var(--bal-meta-bar-variant-primary-shadow)
+  &--variant-grey
+    background: var(--bal-meta-bar-variant-grey-background)
+    box-shadow: var(--bal-meta-bar-variant-grey-shadow)
+  &--variant-white
+    background: var(--bal-meta-bar-variant-white-background)
+    box-shadow: var(--bal-meta-bar-variant-white-shadow)
+  //
+  // hidden
+  &--hidden-mobile
+    +mobile
+      display: hidden
+      visibility: hidden
+  &--hidden-tablet
+    +mobile
+      display: hidden
+      visibility: hidden
+    +tablet-only
+      display: hidden
+      visibility: hidden
+
+// Troubleshooting
+// --------------------------------------------------
+
+.bal-meta-bar .button-label
+  word-break: keep-all !important
