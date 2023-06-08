@@ -5,6 +5,7 @@ import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfa
 
 export class PopoverVariantRenderer extends AbstractVariantRenderer implements PopupVariantRenderer {
   private cleanup?: () => void
+  private placement: BalProps.BalPopupPlacement = 'bottom'
 
   async present(component: PopupComponentInterface): Promise<boolean> {
     //
@@ -15,6 +16,17 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
     }
 
     if (component.trigger && component.containerEl && component.arrowEl) {
+      //
+      // get placement type of the trigger
+      const triggerVariantAttr = component.trigger.attributes.getNamedItem('bal-popup-placement')
+      if (triggerVariantAttr) {
+        this.placement = triggerVariantAttr.value as BalProps.BalPopupPlacement
+      } else {
+        this.placement = component.placement
+      }
+
+      //
+      // show all required elements
       this.showBackdropElement(component)
       this.showContainerElement(component)
       this.showArrowElement(component)
@@ -32,7 +44,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
   async update(component: PopupComponentInterface): Promise<boolean> {
     if (component.trigger && component.containerEl && component.arrowEl) {
       computePosition(component.trigger, component.containerEl, {
-        placement: component.placement,
+        placement: this.placement,
         middleware: [
           shift(),
           flip(),

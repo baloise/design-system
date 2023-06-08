@@ -191,12 +191,16 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private notifyGlobalClick(trigger: HTMLElement) {
     this.trigger = trigger
     this.lastTrigger = this.lastTrigger === undefined ? this.trigger : this.lastTrigger
+
+    // get variant type of the trigger
     const triggerVariantAttr = trigger.attributes.getNamedItem('bal-popup-variant')
     if (triggerVariantAttr) {
       this.activeVariant = triggerVariantAttr.value as BalProps.BalPopupVariant
     } else {
       this.activeVariant = this.variant
     }
+
+    // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
       this._present()
     } else {
