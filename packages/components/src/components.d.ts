@@ -1698,6 +1698,10 @@ export namespace Components {
     }
     interface BalNavMenuBar {
         /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
           * Defines content width of the stage
          */
         "containerSize": BalProps.BalNavMenuBarContainer;
@@ -1709,6 +1713,16 @@ export namespace Components {
           * Defines the position of the bar
          */
         "position": BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuBarContainer;
     }
     interface BalNavMetaBar {
         /**
@@ -3832,6 +3846,12 @@ declare global {
         prototype: HTMLBalNavMenuBarElement;
         new (): HTMLBalNavMenuBarElement;
     };
+    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+    }
+    var HTMLBalNavMenuFlyoutElement: {
+        prototype: HTMLBalNavMenuFlyoutElement;
+        new (): HTMLBalNavMenuFlyoutElement;
+    };
     interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
     }
     var HTMLBalNavMetaBarElement: {
@@ -4264,6 +4284,7 @@ declare global {
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-nav-link": HTMLBalNavLinkElement;
         "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
+        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
         "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
@@ -6063,6 +6084,10 @@ declare namespace LocalJSX {
     }
     interface BalNavMenuBar {
         /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
           * Defines content width of the stage
          */
         "containerSize"?: BalProps.BalNavMenuBarContainer;
@@ -6074,6 +6099,16 @@ declare namespace LocalJSX {
           * Defines the position of the bar
          */
         "position"?: BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuBarContainer;
     }
     interface BalNavMetaBar {
         /**
@@ -7629,6 +7664,7 @@ declare namespace LocalJSX {
         "bal-modal-header": BalModalHeader;
         "bal-nav-link": BalNavLink;
         "bal-nav-menu-bar": BalNavMenuBar;
+        "bal-nav-menu-flyout": BalNavMenuFlyout;
         "bal-nav-meta-bar": BalNavMetaBar;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
@@ -7781,6 +7817,7 @@ declare module "@stencil/core" {
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
             "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
+            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
             "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;

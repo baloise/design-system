@@ -1,7 +1,6 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
-import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-nav-menu-bar',
@@ -29,6 +28,11 @@ export class NavMenuBar implements ComponentInterface, Loggable {
    */
 
   /**
+   * If `true` the flyout is open
+   */
+  @Prop() active = false
+
+  /**
    * Tells when to hide the bar
    */
   @Prop() hidden: BalProps.BalNavMenuBarHidden = 'none'
@@ -44,9 +48,26 @@ export class NavMenuBar implements ComponentInterface, Loggable {
   @Prop() position: BalProps.BalNavMenuBarPosition = 'none'
 
   /**
-   * LISTENERS
+   * LIFECYCLE
    * ------------------------------------------------------
    */
+
+  componentWillRender() {
+    const flyout = this.flyoutElement
+    if (flyout) {
+      flyout.active = this.active
+      flyout.containerSize = this.containerSize
+    }
+  }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get flyoutElement() {
+    return this.el.querySelector('bal-nav-menu-flyout')
+  }
 
   /**
    * RENDER
