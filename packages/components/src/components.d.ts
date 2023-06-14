@@ -1718,6 +1718,20 @@ export namespace Components {
          */
         "variant": BalProps.BalNavLinkVariant;
     }
+    interface BalNavLinkGrid {
+    }
+    interface BalNavLinkGridCol {
+        /**
+          * Defines the static column which is always aligned to the right
+         */
+        "staticCol": BalProps.BalNavLinkGridCol;
+    }
+    interface BalNavLinkGroup {
+        /**
+          * Defines the color of the group
+         */
+        "color": BalProps.BalNavLinkGroupColor;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -3810,6 +3824,24 @@ declare global {
         prototype: HTMLBalNavLinkElement;
         new (): HTMLBalNavLinkElement;
     };
+    interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGridElement: {
+        prototype: HTMLBalNavLinkGridElement;
+        new (): HTMLBalNavLinkGridElement;
+    };
+    interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGridColElement: {
+        prototype: HTMLBalNavLinkGridColElement;
+        new (): HTMLBalNavLinkGridColElement;
+    };
+    interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGroupElement: {
+        prototype: HTMLBalNavLinkGroupElement;
+        new (): HTMLBalNavLinkGroupElement;
+    };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
     var HTMLBalNavbarElement: {
@@ -4236,6 +4268,9 @@ declare global {
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-nav-link": HTMLBalNavLinkElement;
+        "bal-nav-link-grid": HTMLBalNavLinkGridElement;
+        "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
+        "bal-nav-link-group": HTMLBalNavLinkGroupElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -6054,6 +6089,20 @@ declare namespace LocalJSX {
          */
         "variant"?: BalProps.BalNavLinkVariant;
     }
+    interface BalNavLinkGrid {
+    }
+    interface BalNavLinkGridCol {
+        /**
+          * Defines the static column which is always aligned to the right
+         */
+        "staticCol"?: BalProps.BalNavLinkGridCol;
+    }
+    interface BalNavLinkGroup {
+        /**
+          * Defines the color of the group
+         */
+        "color"?: BalProps.BalNavLinkGroupColor;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -7578,6 +7627,9 @@ declare namespace LocalJSX {
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
         "bal-nav-link": BalNavLink;
+        "bal-nav-link-grid": BalNavLinkGrid;
+        "bal-nav-link-grid-col": BalNavLinkGridCol;
+        "bal-nav-link-group": BalNavLinkGroup;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -7729,6 +7781,9 @@ declare module "@stencil/core" {
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
+            "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
+            "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
+            "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;

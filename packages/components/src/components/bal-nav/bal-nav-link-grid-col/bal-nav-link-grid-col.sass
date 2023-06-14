@@ -1,0 +1,33 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Nav link grid col
+// --------------------------------------------------
+
+.bal-nav-link-grid-col
+  display: flex
+  flex-wrap: wrap
+
+  +desktop
+    width: 100%
+
+  &:not(is-static)
+    +widescreen
+      flex-grow: 2
+  
+  +modifier(is-static)
+    +desktop
+      margin-left: auto
+    +widescreen
+      flex-grow: 1 !important
+  //
+  // inner group element
+  +element(inner)
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: stretch
+    flex-wrap: nowrap
+    width: 100%
+
+    +widescreen
+       flex-wrap: wrap
