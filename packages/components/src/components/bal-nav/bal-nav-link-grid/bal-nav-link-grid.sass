@@ -3,31 +3,8 @@
 // Nav link grid
 // --------------------------------------------------
 
-.bal-nav-link-grid
-  display: flex
-  width: 100%
-  flex-direction: column
-  gap: var(--bal-space-x-large)
+.bal-nav-link-grid .bal-nav-link-grid-col:not(:last-child)
+  margin-bottom: var(--bal-space-normal)
 
-  +desktop 
-    flex-direction: row
-
-.wrapper
-  display: grid
-  // grid-template-columns: repeat(3, 1fr)
-  gap: 10px
-  // grid-auto-rows: minmax(100px, auto)
-.one
-  background: red
-  grid-column: 1 / 3
-  grid-row: 1
-
-.two
-  background: green
-  grid-column: 1 / 3
-  grid-row: 2
-
-.three
-  background: blue
-  grid-column: 3
-  grid-row: 1 / 3
+  +desktop
+    margin-bottom: var(--bal-space-none)

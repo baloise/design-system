@@ -4,30 +4,33 @@
 // --------------------------------------------------
 
 .bal-nav-link-grid-col
-  display: flex
-  flex-wrap: wrap
+  padding: 0
 
   +desktop
-    width: 100%
-
-  &:not(is-static)
-    +widescreen
-      flex-grow: 2
-  
-  +modifier(is-static)
-    +desktop
-      margin-left: auto
-    +widescreen
-      flex-grow: 1 !important
+    padding-top: 0
+    padding-bottom: 0
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
   //
-  // inner group element
-  +element(inner)
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: stretch
-    flex-wrap: nowrap
-    width: 100%
+  // Link group
+  .bal-nav-link-group
+    margin-bottom: var(--bal-space-normal)
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
+  //
+  // Non static columns
+  &:not(.bal-nav-link-grid-col--is-static)
+    .bal-nav-link-grid-col__inner
+      +widescreen
+        display: flex
+        flex-wrap: wrap
+      //
+      // Link group
+      .bal-nav-link-group
+        margin: 0
+        width: 100%
 
-    +widescreen
-       flex-wrap: wrap
+        +desktop
+          padding-left: 0
+          padding-right: 0
+          width: 50%

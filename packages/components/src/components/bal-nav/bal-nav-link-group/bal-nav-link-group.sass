@@ -5,6 +5,7 @@
 // --------------------------------------------------
 
 .bal-nav-link-group
+  display: block
   background: var(--bal-nav-link-group-background)
   border-radius: var(--bal-nav-link-group-radius)
   padding-top: var(--bal-space-normal)
@@ -13,14 +14,9 @@
   padding-right: var(--bal-space-normal)
 
   +desktop
-    padding-top: var(--bal-space-normal)
-    padding-bottom: var(--bal-space-normal)
     padding-left: var(--bal-space-large)
     padding-right: var(--bal-space-large)
 
-  +widescreen
-    flex: 0 0 30%
-    align-items: flex-start
   //
   // Colors
   +modifier(is-grey)
