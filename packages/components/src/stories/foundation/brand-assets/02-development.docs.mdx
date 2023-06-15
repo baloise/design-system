@@ -96,7 +96,7 @@ npm install @types/googlemaps --save-dev
 After installing import the **balMapTypeStyles** into your Google Maps config object.
 
 ```typescript
-import { balMapTypeStyles } '@baloise/design-system-maps'
+import { balMapTypeStyles } from '@baloise/design-system-maps'
 
 const myMap = new google.maps.map(myMapElement, {
   ...
@@ -109,7 +109,7 @@ const myMap = new google.maps.map(myMapElement, {
 To set a marker import the svg `balMapMarkerDefault` and pass it as the icon url.
 
 ```typescript
-import { balMapMarkerDefault } '@baloise/design-system-maps'
+import { balMapMarkerDefault } from '@baloise/design-system-maps'
 
 new google.maps.Marker({
   position: { lat: 36.6163, lng: -100.61 },

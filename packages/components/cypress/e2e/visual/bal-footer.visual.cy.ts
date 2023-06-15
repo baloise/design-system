@@ -11,26 +11,26 @@ describe('bal-footer', () => {
 
   it('basic component', () => {
     cy.platform('desktop').wait(100)
-    cy.getByTestId('basic').compareSnapshot('basic-footer-desktop', 0.0)
-    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-desktop')
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop')
 
     cy.platform('tablet').wait(100)
-    cy.getByTestId('basic').compareSnapshot('basic-footer-tablet', 0.0)
-    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-tablet')
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-tablet')
 
     cy.platform('mobile').wait(100)
-    cy.getByTestId('basic').compareSnapshot('basic-footer-mobile', 0.0)
-    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('basic-footer-mobile')
+    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-mobile')
   })
 
   it.skip('component variants', () => {
     cy.platform('desktop').wait(100)
-    cy.compareSnapshot('footer-variants-desktop', 0.0)
+    cy.compareSnapshot('footer-variants-desktop')
 
     cy.platform('tablet').wait(100)
-    cy.compareSnapshot('footer-variants-tablet', 0.0)
+    cy.compareSnapshot('footer-variants-tablet')
 
     cy.platform('mobile').wait(100)
-    cy.compareSnapshot('footer-variants-mobile', 0.0)
+    cy.compareSnapshot('footer-variants-mobile')
   })
 })

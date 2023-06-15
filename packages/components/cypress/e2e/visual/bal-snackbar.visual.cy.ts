@@ -3,23 +3,23 @@ describe('bal-snackbar', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('snackbar-basic', 0.0)
+    cy.getByTestId('basic').compareSnapshot('snackbar-basic')
 
     cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('snackbar-basic-tablet', 0.0)
+    cy.getByTestId('basic').compareSnapshot('snackbar-basic-tablet')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('snackbar-basic-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('snackbar-basic-mobile')
   })
 
   it('component variants', () => {
     cy.platform('desktop')
-    cy.compareSnapshot('snackbar-variants', 0.0)
+    cy.compareSnapshot('snackbar-variants')
 
     cy.platform('tablet')
-    cy.compareSnapshot('snackbar-variants-tablet', 0.0)
+    cy.compareSnapshot('snackbar-variants-tablet')
 
     cy.platform('mobile')
-    cy.compareSnapshot('snackbar-variants-mobile', 0.0)
+    cy.compareSnapshot('snackbar-variants-mobile')
   })
 })

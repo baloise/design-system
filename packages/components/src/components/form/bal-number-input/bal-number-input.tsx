@@ -330,7 +330,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
   get pattern() {
-    let suffix = this.suffix
+    let suffix = this.suffix || ''
     if (suffix !== '') {
       suffix = ` ${suffix}`
     }
