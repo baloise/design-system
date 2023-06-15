@@ -1615,28 +1615,6 @@ export namespace Components {
          */
         "color": BalProps.BalLogoColor;
     }
-    interface BalMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalMetaBarContainer;
-        /**
-          * Tells when to hide the bar
-         */
-        "hidden": BalProps.BalMetaBarHidden;
-        /**
-          * Defines the position of the bar
-         */
-        "position": BalProps.BalMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size": BalProps.BalMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant": BalProps.BalMetaBarVariant;
-    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -1717,6 +1695,56 @@ export namespace Components {
           * Defines the variant of the link
          */
         "variant": BalProps.BalNavLinkVariant;
+    }
+    interface BalNavMenuBar {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size": BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant": BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -2619,6 +2647,14 @@ export namespace Components {
           * Defines the space between the child elements. Default is normal.
          */
         "space": BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
@@ -3780,12 +3816,6 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
-    interface HTMLBalMetaBarElement extends Components.BalMetaBar, HTMLStencilElement {
-    }
-    var HTMLBalMetaBarElement: {
-        prototype: HTMLBalMetaBarElement;
-        new (): HTMLBalMetaBarElement;
-    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -3809,6 +3839,24 @@ declare global {
     var HTMLBalNavLinkElement: {
         prototype: HTMLBalNavLinkElement;
         new (): HTMLBalNavLinkElement;
+    };
+    interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
+    }
+    var HTMLBalNavMenuBarElement: {
+        prototype: HTMLBalNavMenuBarElement;
+        new (): HTMLBalNavMenuBarElement;
+    };
+    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+    }
+    var HTMLBalNavMenuFlyoutElement: {
+        prototype: HTMLBalNavMenuFlyoutElement;
+        new (): HTMLBalNavMenuFlyoutElement;
+    };
+    interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalNavMetaBarElement: {
+        prototype: HTMLBalNavMetaBarElement;
+        new (): HTMLBalNavMetaBarElement;
     };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
@@ -4231,11 +4279,13 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
-        "bal-meta-bar": HTMLBalMetaBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-nav-link": HTMLBalNavLinkElement;
+        "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
+        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
+        "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -5953,28 +6003,6 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalLogoColor;
     }
-    interface BalMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalMetaBarContainer;
-        /**
-          * Tells when to hide the bar
-         */
-        "hidden"?: BalProps.BalMetaBarHidden;
-        /**
-          * Defines the position of the bar
-         */
-        "position"?: BalProps.BalMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size"?: BalProps.BalMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant"?: BalProps.BalMetaBarVariant;
-    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -6053,6 +6081,56 @@ declare namespace LocalJSX {
           * Defines the variant of the link
          */
         "variant"?: BalProps.BalNavLinkVariant;
+    }
+    interface BalNavMenuBar {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size"?: BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant"?: BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -6981,6 +7059,14 @@ declare namespace LocalJSX {
          */
         "space"?: BalProps.BalStackSpace;
         /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
+        /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
         "useWrap"?: boolean;
@@ -7573,11 +7659,13 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
-        "bal-meta-bar": BalMetaBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
         "bal-nav-link": BalNavLink;
+        "bal-nav-menu-bar": BalNavMenuBar;
+        "bal-nav-menu-flyout": BalNavMenuFlyout;
+        "bal-nav-meta-bar": BalNavMetaBar;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -7724,11 +7812,13 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-meta-bar": LocalJSX.BalMetaBar & JSXBase.HTMLAttributes<HTMLBalMetaBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
+            "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
+            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
+            "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
