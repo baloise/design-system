@@ -1,0 +1,53 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-link.vars'
+
+// Nav link
+// --------------------------------------------------
+
+.bal-nav-link
+  display: block
+  //
+  // Space to next nav link
+  &:not(:last-child)
+    margin-bottom: var(--bal-space-x-small)
+  //
+  // Link element can be span or a tag
+  &__native
+    display: block
+    color: var(--bal-nav-link-text-color)
+    font-size: var(--bal-size-normal)
+    //
+    // Variants
+    &--variant-title
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-normal)
+      font-weight: var(--bal-weight-bold)
+      text-decoration: none
+      margin-bottom: var(--bal-space-normal)
+      +desktop
+        font-size: var(--bal-size-xx-large)
+    &--variant-overview
+      font-size: var(--bal-size-small)
+      font-weight: var(--bal-weight-bold)
+    //
+    // Selected state, defines the current path like a breadcrumb
+    &--selected
+      text-decoration: var(--bal-link-text-decoration)
+      text-decoration-thickness: 1px
+
+// Native link element
+// --------------------------------------------------
+
+a.bal-nav-link__native
+  cursor: pointer
+  +hover
+    &:hover
+      text-decoration: var(--bal-link-text-decoration)
+      text-decoration-thickness: 1px
+      color: var(--bal-nav-link-text-color-hover)
+  &:focus-visible
+    @extend %focus-shadow
+  &:active
+    text-decoration: var(--bal-link-text-decoration)
+    text-decoration-thickness: 1px
+    color: var(--bal-nav-link-text-color-active)

@@ -143,7 +143,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.0](https://github.com/baloise/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)
 
-
 ### Features
 
 * **list:** synchronices the accrodion bodies is set ([f6bd2e5](https://github.com/baloise/design-system/commit/f6bd2e57cba71983bf97abd11d3541db75c6ea39))
@@ -185,7 +184,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.1](https://github.com/baloise/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
-
 ### Bug Fixes
 
 * **angular:** provide missing component modules ([774696f](https://github.com/baloise/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
@@ -195,7 +193,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
 * **stage:** stage position ([2839688](https://github.com/baloise/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
-
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
@@ -775,7 +772,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
 * **tabs:** add hidden, spaceless and float ([1111288](https://github.com/baloise/design-system/commit/1111288f66f137e6ad68d2aeb8afce8e66d4dc75))
-
 
 ### Bug Fixes
 

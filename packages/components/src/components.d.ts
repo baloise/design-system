@@ -1674,6 +1674,78 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
+    interface BalNavLink {
+        /**
+          * If `true` the link can be clickable
+         */
+        "clickable": boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * If `true` the link gets selected with a underline
+         */
+        "selected": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": BalProps.BalButtonTarget;
+        /**
+          * Defines the variant of the link
+         */
+        "variant": BalProps.BalNavLinkVariant;
+    }
+    interface BalNavMenuBar {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size": BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant": BalProps.BalNavMetaBarVariant;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -2132,6 +2204,59 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
+    interface BalPopup {
+        "_dismiss": () => Promise<boolean>;
+        "_emitChange": () => Promise<void>;
+        "_present": () => Promise<boolean>;
+        /**
+          * If `true` the popup is open.
+         */
+        "active": boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow": boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop": boolean;
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss": boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable": boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Closes the popup
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * Label or title of the popup element
+         */
+        "label": string;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalPopupPlacement;
+        /**
+          * Opens the popup
+         */
+        "present": () => Promise<void>;
+        /**
+          * Triggers the popup
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Defines the variant / type of popup
+         */
+        "variant": BalProps.BalPopupVariant;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -2503,6 +2628,10 @@ export namespace Components {
         "alignment": BalProps.BalStackAlignment;
         "direction": BalProps.BalStackDirection;
         /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent": boolean;
+        /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "layout": BalProps.BalStackLayout;
@@ -2518,6 +2647,14 @@ export namespace Components {
           * Defines the space between the child elements. Default is normal.
          */
         "space": BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
@@ -3118,6 +3255,10 @@ export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
 }
+export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalPopupElement;
+}
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
@@ -3693,6 +3834,30 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
+    interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkElement: {
+        prototype: HTMLBalNavLinkElement;
+        new (): HTMLBalNavLinkElement;
+    };
+    interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
+    }
+    var HTMLBalNavMenuBarElement: {
+        prototype: HTMLBalNavMenuBarElement;
+        new (): HTMLBalNavMenuBarElement;
+    };
+    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
+    }
+    var HTMLBalNavMenuFlyoutElement: {
+        prototype: HTMLBalNavMenuFlyoutElement;
+        new (): HTMLBalNavMenuFlyoutElement;
+    };
+    interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalNavMetaBarElement: {
+        prototype: HTMLBalNavMetaBarElement;
+        new (): HTMLBalNavMetaBarElement;
+    };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
     var HTMLBalNavbarElement: {
@@ -3854,6 +4019,12 @@ declare global {
     var HTMLBalPopoverContentElement: {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
+    };
+    interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
+    }
+    var HTMLBalPopupElement: {
+        prototype: HTMLBalPopupElement;
+        new (): HTMLBalPopupElement;
     };
     interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
     }
@@ -4111,6 +4282,10 @@ declare global {
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
+        "bal-nav-link": HTMLBalNavLinkElement;
+        "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
+        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
+        "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -4138,6 +4313,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-popup": HTMLBalPopupElement;
         "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
@@ -5884,6 +6060,78 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
+    interface BalNavLink {
+        /**
+          * If `true` the link can be clickable
+         */
+        "clickable"?: boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * If `true` the link gets selected with a underline
+         */
+        "selected"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: BalProps.BalButtonTarget;
+        /**
+          * Defines the variant of the link
+         */
+        "variant"?: BalProps.BalNavLinkVariant;
+    }
+    interface BalNavMenuBar {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size"?: BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant"?: BalProps.BalNavMetaBarVariant;
+    }
     interface BalNavbar {
         /**
           * Sets the content content width with the regular container classes
@@ -6356,6 +6604,56 @@ declare namespace LocalJSX {
          */
         "spaceless"?: boolean;
     }
+    interface BalPopup {
+        /**
+          * If `true` the popup is open.
+         */
+        "active"?: boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the click outside of the modal
+         */
+        "backdropDismiss"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable"?: boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Label or title of the popup element
+         */
+        "label"?: string;
+        /**
+          * Emitted when the accordion has opened or closed
+         */
+        "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement"?: BalProps.BalPopupPlacement;
+        /**
+          * Defines the variant / type of popup
+         */
+        "variant"?: BalProps.BalPopupVariant;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -6741,6 +7039,10 @@ declare namespace LocalJSX {
         "alignment"?: BalProps.BalStackAlignment;
         "direction"?: BalProps.BalStackDirection;
         /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent"?: boolean;
+        /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "layout"?: BalProps.BalStackLayout;
@@ -6756,6 +7058,14 @@ declare namespace LocalJSX {
           * Defines the space between the child elements. Default is normal.
          */
         "space"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
@@ -7352,6 +7662,10 @@ declare namespace LocalJSX {
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
+        "bal-nav-link": BalNavLink;
+        "bal-nav-menu-bar": BalNavMenuBar;
+        "bal-nav-menu-flyout": BalNavMenuFlyout;
+        "bal-nav-meta-bar": BalNavMetaBar;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -7379,6 +7693,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-popup": BalPopup;
         "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
@@ -7500,6 +7815,10 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+            "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
+            "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
+            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
+            "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
@@ -7527,6 +7846,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
             "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
