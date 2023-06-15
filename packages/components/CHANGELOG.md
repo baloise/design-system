@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 13.4.4
+
+### Patch Changes
+
+- [#936](https://github.com/baloise/design-system/pull/936) - enable bal-steps item state to be changed dynamically during component life
+
+- [#938](https://github.com/baloise/design-system/pull/938) - number-inputs attribute pattern no longer shows undefined
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.4
+  - @baloise/design-system-fonts@13.4.4
+  - @baloise/design-system-icons@13.4.4
+  - @baloise/design-system-tokens@13.4.4
+
 ## 13.4.3
 
 ### Patch Changes
