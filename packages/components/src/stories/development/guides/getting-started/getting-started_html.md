@@ -81,7 +81,7 @@ To add them to your application follow those guides:
 
 As part of our design system, we offer [CDN](https://www.jsdelivr.com/) (Content Delivery Network) integration.
 
-While we provide CDN integration as part of our design system, it is essential to note that it is not recommended for use in production applications. 
+While we provide CDN integration as part of our design system, it is essential to note that it is not recommended for use in production applications.
 The reason for this recommendation is that we rely on a third-party service to host and distribute the assets through the CDN.
 
 > **TIP**
@@ -129,9 +129,7 @@ Here is how you can integrate it into your project.
     <bal-app class="has-sticky-footer">
       <header>
         <bal-navbar>
-          <bal-navbar-brand href="/" target="_blank"
-            >Design System</bal-navbar-brand
-          >
+          <bal-navbar-brand href="/" target="_blank">Design System</bal-navbar-brand>
         </bal-navbar>
       </header>
       <bal-stage color="green" size="small">
@@ -142,14 +140,10 @@ Here is how you can integrate it into your project.
       </bal-stage>
       <main class="container mt-xx-large">
         <p>
-          The Baloise Design System consists of UI components and a clearly
-          defined visual style, released as both code implementations and design
-          artifacts to build any number of web applications.
+          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          implementations and design artifacts to build any number of web applications.
         </p>
-        <bal-button
-          href="https://baloise-design-system.vercel.app"
-          target="_blank"
-        >
+        <bal-button href="https://baloise-design-system.vercel.app" target="_blank">
           Check out the Documentation</bal-button
         >
       </main>
