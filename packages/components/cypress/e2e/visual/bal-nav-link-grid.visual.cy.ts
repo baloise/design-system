@@ -4,6 +4,9 @@ describe('bal-nav-link-grid', () => {
   )
 
   it('basic component', () => {
+    cy.platform('widescreen')
+    cy.getByTestId('basic').compareSnapshot('basic-widescreen', 0.0)
+
     cy.platform('desktop')
     cy.getByTestId('basic').compareSnapshot('basic-desktop', 0.0)
 
