@@ -19,6 +19,7 @@ async function main() {
   generateRadius()
   generateShadow()
   generateTypography()
+  generateZIndex()
 }
 
 async function generateBackgroundColors() {
@@ -153,9 +154,19 @@ async function generateShadow() {
   await file.write(path.join(SASS_PATH, 'shadow.helpers.sass'), [...lines, ''].join('\n'))
 }
 
+async function generateZIndex() {
+  const zIndex = BaloiseDesignToken.zIndex
+  const lines = []
+  for (const r in zIndex) {
+    lines.push(`.has-z-index-${r}`)
+    lines.push(`  z-index: var(--bal-z-index-${r}) !important`)
+    lines.push(``)
+  }
+  await file.write(path.join(SASS_PATH, 'z-index.helpers.sass'), [...lines, ''].join('\n'))
+}
+
 async function generateTypography() {
   const sizes = BaloiseDesignToken.typography.sizes
-  const spacing = BaloiseDesignToken.spacing
   const lines = []
   const legacyLines = []
 

@@ -24,6 +24,7 @@ export const docComponents = [
   'bal-doc-tokens-text-shadow',
   'bal-doc-tokens-shadow',
   'bal-doc-tokens-spacing',
+  'bal-doc-tokens-z-index',
   'bal-doc-code-sandbox',
   'bal-doc-preview',
   'bal-doc-usage',
