@@ -17,14 +17,14 @@ export abstract class AbstractVariantRenderer implements PopupVariantRenderer {
     }
   }
 
-  showArrowElement(component: PopupComponentInterface) {
-    if (component.arrow && component.arrowEl) {
+  showArrowElement(component: PopupComponentInterface, hasArrow = component.arrow) {
+    if (hasArrow && component.arrowEl) {
       this.showElement(component.arrowEl)
     }
   }
 
   hideArrowElement(component: PopupComponentInterface) {
-    if (component.arrow && component.arrowEl) {
+    if (component.arrowEl) {
       Object.assign(component.arrowEl.style, {
         left: '',
         top: '',
@@ -34,14 +34,14 @@ export abstract class AbstractVariantRenderer implements PopupVariantRenderer {
     }
   }
 
-  showBackdropElement(component: PopupComponentInterface) {
-    if (component.backdrop && component.backdropEl) {
+  showBackdropElement(component: PopupComponentInterface, hasBackdrop = component.backdrop) {
+    if (hasBackdrop && component.backdropEl) {
       this.showElement(component.backdropEl)
     }
   }
 
   hideBackdropElement(component: PopupComponentInterface) {
-    if (component.backdrop && component.backdropEl) {
+    if (component.backdropEl) {
       this.hideElement(component.backdropEl)
     }
   }

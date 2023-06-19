@@ -26,10 +26,5 @@
     margin-right: -3rem
   +widescreen
     max-height: calc(100vh - 96px - 48px - 16px)
-  &--active::before
-    position: absolute
-    top: 0
-    content: ""
-    height: 1px
-    width: 100%
-    background: var(--bal-nav-menu-flyout-border-background)
+  &--active
+    border-top: 1px solid var(--bal-nav-menu-flyout-border-background)

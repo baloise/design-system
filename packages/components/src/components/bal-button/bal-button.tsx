@@ -315,7 +315,7 @@ export class Button implements ComponentInterface {
               'has-no-wrap': this.noWrap,
               'is-small': this.size === 'small',
             }}
-            style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
+            style={{ opacity: this.loading ? '0' : '1' }}
             data-testid="bal-button-label"
           >
             <slot />

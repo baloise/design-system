@@ -43,13 +43,16 @@
     box-shadow: none
 
 .bal-nav-menu-bar__inner > .container
+  min-height: 64px
   +widescreen
     background: var(--bal-nav-menu-bar-background)
     border-radius: var(--bal-nav-menu-bar-radius)
     box-shadow: var(--bal-nav-menu-bar-shadow)
+    min-height: 80px
   +between(1440px, 1496px)
     background: transparent
     box-shadow: none
+    min-height: 80px
     &::before
       position: absolute
       content: ''
@@ -67,6 +70,8 @@
     padding-left: 2rem
     padding-right: 2rem
     max-width: 93.5rem - 2rem
+    min-height: 80px
+
 
 // Troubleshooting
 // --------------------------------------------------

@@ -1674,6 +1674,20 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
+    interface BalNav {
+        /**
+          * Link level structure.
+         */
+        "buttons": BalProps.BalNavMetaButtons;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavContainer;
+        /**
+          * Link level structure.
+         */
+        "options": BalProps.BalNavOptions;
+    }
     interface BalNavLink {
         /**
           * If `true` the link can be clickable
@@ -2240,6 +2254,10 @@ export namespace Components {
           * Label or title of the popup element
          */
         "label": string;
+        /**
+          * Offset form trigger to popup.
+         */
+        "offset": number;
         /**
           * If set it turns a popover into a fullscreen or a drawer on touch devices
          */
@@ -3834,6 +3852,12 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
+    interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
+    }
+    var HTMLBalNavElement: {
+        prototype: HTMLBalNavElement;
+        new (): HTMLBalNavElement;
+    };
     interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
     }
     var HTMLBalNavLinkElement: {
@@ -4282,6 +4306,7 @@ declare global {
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
+        "bal-nav": HTMLBalNavElement;
         "bal-nav-link": HTMLBalNavLinkElement;
         "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
         "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
@@ -6060,6 +6085,20 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
+    interface BalNav {
+        /**
+          * Link level structure.
+         */
+        "buttons"?: BalProps.BalNavMetaButtons;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavContainer;
+        /**
+          * Link level structure.
+         */
+        "options"?: BalProps.BalNavOptions;
+    }
     interface BalNavLink {
         /**
           * If `true` the link can be clickable
@@ -6633,6 +6672,10 @@ declare namespace LocalJSX {
           * Label or title of the popup element
          */
         "label"?: string;
+        /**
+          * Offset form trigger to popup.
+         */
+        "offset"?: number;
         /**
           * Emitted when the accordion has opened or closed
          */
@@ -7662,6 +7705,7 @@ declare namespace LocalJSX {
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
+        "bal-nav": BalNav;
         "bal-nav-link": BalNavLink;
         "bal-nav-menu-bar": BalNavMenuBar;
         "bal-nav-menu-flyout": BalNavMenuFlyout;
@@ -7815,6 +7859,7 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+            "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
             "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
             "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;

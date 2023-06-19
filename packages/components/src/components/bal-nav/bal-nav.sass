@@ -1,0 +1,22 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav.vars'
+
+// Navigation
+// --------------------------------------------------
+
+.bal-nav
+  +unselectable
+  display: block
+  width: 100%
+
+// Flyout
+// --------------------------------------------------
+.bal-nav__flyout
+  background: var(--bal-color-white)
+  padding-top: 1rem
+  padding-bottom: 1rem
+  height: calc(100vh - 4rem - 4rem)
+  overflow-y: auto
+  +desktop
+    display: none
+    visibility: hidden
