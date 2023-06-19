@@ -128,13 +128,11 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       )}
       {!hasCarousel ? (
         <div
-          id={`${tabsId}-line`}
+          id={`${tabsId}-border`}
           class={{
-            ...bemEl.element('line').class(),
-            ...bemEl.element('line').modifier(`active`).class(lineActive),
-            ...bemEl.element('line').modifier(`inverted`).class(inverted),
-            ...bemEl.element('line').modifier(`animated`).class(animated),
-            ...bemEl.element('line').modifier(`vertical`).class(isVertical),
+            ...bemEl.element('border').class(),
+            ...bemEl.element('border').modifier(`inverted`).class(inverted),
+            ...bemEl.element('border').modifier(`vertical`).class(isVertical),
           }}
         ></div>
       ) : (
@@ -142,11 +140,13 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       )}
       {!hasCarousel ? (
         <div
-          id={`${tabsId}-border`}
+          id={`${tabsId}-line`}
           class={{
-            ...bemEl.element('border').class(),
-            ...bemEl.element('border').modifier(`inverted`).class(inverted),
-            ...bemEl.element('border').modifier(`vertical`).class(isVertical),
+            ...bemEl.element('line').class(),
+            ...bemEl.element('line').modifier(`active`).class(lineActive),
+            ...bemEl.element('line').modifier(`inverted`).class(inverted),
+            ...bemEl.element('line').modifier(`animated`).class(animated),
+            ...bemEl.element('line').modifier(`vertical`).class(isVertical),
           }}
         ></div>
       ) : (

@@ -13,7 +13,7 @@
       display: block
   +modifier(backdrop)
     [bal-popover-trigger]
-      z-index: 20
+      z-index: calc(var(--bal-z-index-popup) - 1)
       position: relative
   +modifier(hint)
     .bal-popover__content
@@ -28,7 +28,7 @@
 
   +element(backdrop)
     @extend %overlay
-    z-index: 10
+    z-index: calc(var(--bal-z-index-popup) - 2)
     position: fixed
     background: var(--bal-popover-backdrop-background)
     opacity: var(--bal-popover-backdrop-opacity)
@@ -37,7 +37,7 @@
 
   +element(content)
     display: none
-    z-index: 25
+    z-index: var(--bal-z-index-popup)
     box-shadow: var(--bal-popover-content-shadow)
     background: var(--bal-popover-content-background)
     min-width: 16.25rem
