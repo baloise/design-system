@@ -10,6 +10,12 @@
   // Space to next nav link
   &:not(:last-child)
     margin-bottom: var(--bal-space-x-small)
+
+  &--variant-overview:not(:last-child)
+    margin-bottom: var(--bal-space-none) !important
+
+    +desktop
+      margin-bottom: var(--bal-space-normal) !important
   //
   // Link element can be span or a tag
   &__native

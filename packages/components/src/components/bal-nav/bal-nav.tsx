@@ -292,7 +292,17 @@ export class NavMetaBar
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout>{this.renderGridLinks(this.activeMenuLinkItem)}</bal-nav-menu-flyout>
+                <bal-nav-menu-flyout>
+                  <bal-nav-link
+                    role="listitem"
+                    variant="overview"
+                    href={this.activeMenuLinkItem?.overviewLink?.href}
+                    target={this.activeMenuLinkItem?.overviewLink?.target}
+                  >
+                    {this.activeMenuLinkItem?.overviewLink?.label}
+                  </bal-nav-link>
+                  {this.renderGridLinks(this.activeMenuLinkItem)}
+                </bal-nav-menu-flyout>
               ) : (
                 ''
               )}
@@ -358,7 +368,17 @@ export class NavMetaBar
                                 </bal-list-item-content>
                               </bal-list-item-accordion-head>
                               <bal-list-item-accordion-body>
-                                <div style={{ width: '100%' }}>{this.renderGridLinks(menuItem)}</div>
+                                <div style={{ width: '100%' }}>
+                                  <bal-nav-link
+                                    role="listitem"
+                                    variant="overview"
+                                    href={this.activeMenuLinkItem?.overviewLink?.href}
+                                    target={this.activeMenuLinkItem?.overviewLink?.target}
+                                  >
+                                    {this.activeMenuLinkItem?.overviewLink?.label}
+                                  </bal-nav-link>
+                                  {this.renderGridLinks(menuItem)}
+                                </div>
                               </bal-list-item-accordion-body>
                             </bal-list-item>
                           ),

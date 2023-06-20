@@ -7,12 +7,14 @@ import { NavServiceLinkItem } from './bal-nav-service-link-item'
 export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuLinkItem {
   sectionLinkItems: NavSectionLinkItem[] = []
   serviceLinkItems: NavServiceLinkItem[] = []
+  overviewLink?: NavLinkItem
 
   constructor(item: BalProps.BalNavMenuLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
     this.value = item.value || `nav-menu-link-item-${NavMenuLinkItemIDs++}`
     this.sectionLinkItems = (item.sectionLinkItems || []).map(item => new NavSectionLinkItem(item, observer))
     this.serviceLinkItems = (item.serviceLinkItems || []).map(item => new NavServiceLinkItem(item, observer))
+    this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
   override render(context?: { onClick: () => void }) {
