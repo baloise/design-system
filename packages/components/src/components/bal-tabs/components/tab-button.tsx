@@ -98,7 +98,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-index={item.index}
       data-testid="bal-tabs-item"
       aria-disabled={`${item.disabled}`}
-      aria-controls={tabsId}
+      aria-label={item.label}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >

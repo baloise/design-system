@@ -93,6 +93,7 @@ export class TabItem {
       value: this.value,
       icon: this.icon,
       label: this.label,
+      ariaLabel: this.label,
       href: this.href,
       target: this.target,
       active: this.active,
