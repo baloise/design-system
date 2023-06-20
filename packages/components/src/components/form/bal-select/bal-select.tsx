@@ -691,8 +691,6 @@ export class Select implements ComponentInterface, Loggable {
    ********************************************************/
 
   private syncRawValue(isHuman = true) {
-    console.log('asdf')
-    console.log(this.value)
     let newValue: string[] = []
 
     if (!isNil(this.value) && this.value !== '') {
@@ -711,7 +709,6 @@ export class Select implements ComponentInterface, Loggable {
         }
       }
     }
-    console.log(newValue)
     // trigger the raw value change
     this.updateRawValue(newValue, isHuman)
   }
