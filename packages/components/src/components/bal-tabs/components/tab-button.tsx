@@ -60,9 +60,19 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     (hasBubble && !isMobile && iconPosition === 'horizontal' && !accordion) ||
     (hasBubble && isVertical && !accordion)
 
+  const TagType = item.href === undefined || item.href === '' ? 'button' : 'a'
+  const attrs =
+    TagType === 'button'
+      ? { type: "button" }
+      : {
+          href: item.href,
+          target: item.target,
+        }
+    
   return (
-    <a
+    <TagType
       role="tab"
+      color="link"
       id={`${tabsId}-button-${TabButtonIds++}`}
       class={{
         ...bemEl.class(),
@@ -88,8 +98,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-index={item.index}
       data-testid="bal-tabs-item"
       aria-disabled={`${item.disabled}`}
-      href={item.href === '' ? 'javascript:;' : item.href}
-      target={item.target}
+      aria-controls={tabsId}
+      {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
       {item.icon ? (
@@ -123,7 +133,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       ) : (
         ''
       )}
-    </a>
+    </TagType>
   )
 }
 
