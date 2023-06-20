@@ -11,7 +11,7 @@ import {
   State,
   ComponentInterface,
 } from '@stencil/core'
-import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
+import { debounceEvent, transitionEndAsync, waitForComponent } from '../../utils/helpers'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
@@ -98,6 +98,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * defines the version of the component
    */
   @Prop() version = 1
+  // @Watch('version')
+  // protected versionChanged() {
+  //   this.updateState(true)
+  // }
 
   /**
    * Emitted when the accordion has opened or closed
@@ -119,8 +123,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * ------------------------------------------------------
    */
 
-  connectedCallback() {
+  async connectedCallback() {
     this.debounceChanged()
+
+    await waitForComponent(this.el as any)
 
     if (this.active) {
       this.activeChanged(this.active, false)
@@ -234,6 +240,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   private setState = (state: AccordionState) => {
+    console.log('setState', state, this.version)
     this.state = state
     if (this.version === 2) {
       this.updateTriggerElement()
@@ -268,6 +275,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   private expand = (initialUpdate = false): boolean => {
+    console.log('expand')
     this.active = true
 
     const detailsElement = this.detailsElement
@@ -312,6 +320,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   private collapse = (initialUpdate = false): boolean => {
+    console.log('collapse')
     this.active = false
 
     const detailsElement = this.detailsElement
