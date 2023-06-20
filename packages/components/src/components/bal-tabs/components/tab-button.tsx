@@ -6,7 +6,7 @@ import { TabLabel } from './tab-label'
 
 export interface TabButtonProps {
   item: BalTabOption
-  tabsId: string
+  tabsId: string,
   isFirst: boolean
   isLast: boolean
   isMobile: boolean
@@ -71,9 +71,10 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     
   return (
     <TagType
+      id={`${tabsId}-button-${TabButtonIds++}`}
       role="tab"
       color="link"
-      id={`${tabsId}-button-${TabButtonIds++}`}
+      aria-selected={item.active ? 'true' : 'false'}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -99,6 +100,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-testid="bal-tabs-item"
       aria-disabled={`${item.disabled}`}
       aria-label={item.label}
+      aria-controls={item.tabPanelID}
       {...attrs}
       onClick={(ev: MouseEvent) => onSelectTab(ev, item)}
     >
