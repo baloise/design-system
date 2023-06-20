@@ -1712,6 +1712,20 @@ export namespace Components {
          */
         "variant": BalProps.BalNavLinkVariant;
     }
+    interface BalNavLinkGrid {
+    }
+    interface BalNavLinkGridCol {
+        /**
+          * Defines the static column which is always aligned to the right
+         */
+        "staticCol": BalProps.BalNavLinkGridCol;
+    }
+    interface BalNavLinkGroup {
+        /**
+          * Defines the color of the group
+         */
+        "color": BalProps.BalNavLinkGroupColor;
+    }
     interface BalNavMenuBar {
         /**
           * If `true` the flyout is open
@@ -3872,6 +3886,24 @@ declare global {
         prototype: HTMLBalNavLinkElement;
         new (): HTMLBalNavLinkElement;
     };
+    interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGridElement: {
+        prototype: HTMLBalNavLinkGridElement;
+        new (): HTMLBalNavLinkGridElement;
+    };
+    interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGridColElement: {
+        prototype: HTMLBalNavLinkGridColElement;
+        new (): HTMLBalNavLinkGridColElement;
+    };
+    interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
+    }
+    var HTMLBalNavLinkGroupElement: {
+        prototype: HTMLBalNavLinkGroupElement;
+        new (): HTMLBalNavLinkGroupElement;
+    };
     interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
     }
     var HTMLBalNavMenuBarElement: {
@@ -4317,6 +4349,9 @@ declare global {
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-nav": HTMLBalNavElement;
         "bal-nav-link": HTMLBalNavLinkElement;
+        "bal-nav-link-grid": HTMLBalNavLinkGridElement;
+        "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
+        "bal-nav-link-group": HTMLBalNavLinkGroupElement;
         "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
         "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
         "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
@@ -6132,6 +6167,20 @@ declare namespace LocalJSX {
          */
         "variant"?: BalProps.BalNavLinkVariant;
     }
+    interface BalNavLinkGrid {
+    }
+    interface BalNavLinkGridCol {
+        /**
+          * Defines the static column which is always aligned to the right
+         */
+        "staticCol"?: BalProps.BalNavLinkGridCol;
+    }
+    interface BalNavLinkGroup {
+        /**
+          * Defines the color of the group
+         */
+        "color"?: BalProps.BalNavLinkGroupColor;
+    }
     interface BalNavMenuBar {
         /**
           * If `true` the flyout is open
@@ -7719,6 +7768,9 @@ declare namespace LocalJSX {
         "bal-modal-header": BalModalHeader;
         "bal-nav": BalNav;
         "bal-nav-link": BalNavLink;
+        "bal-nav-link-grid": BalNavLinkGrid;
+        "bal-nav-link-grid-col": BalNavLinkGridCol;
+        "bal-nav-link-group": BalNavLinkGroup;
         "bal-nav-menu-bar": BalNavMenuBar;
         "bal-nav-menu-flyout": BalNavMenuFlyout;
         "bal-nav-meta-bar": BalNavMetaBar;
@@ -7874,6 +7926,9 @@ declare module "@stencil/core" {
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
+            "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
+            "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
+            "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
             "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
             "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
             "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
