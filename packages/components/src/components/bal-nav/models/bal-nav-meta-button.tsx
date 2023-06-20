@@ -1,6 +1,7 @@
 import { h } from '@stencil/core'
-import { NavLinkItem, NavLinkItemObserver } from './bal-nav-link-item'
+import { NavLinkItem } from './bal-nav-link-item'
 import { balBrowser } from '../../../utils/browser'
+import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaButton {
   touchPlacement: 'top' | 'bottom' | 'none' = 'top'

@@ -58,7 +58,7 @@ export class NavigationLink implements ComponentInterface, Loggable {
     const hasLink = href !== undefined && href !== ''
     const hasVariant = this.variant !== ''
 
-    const Link = hasLink || this.clickable ? 'a' : 'span'
+    const Link = hasLink ? 'a' : this.clickable ? 'button' : 'span'
     let linkAttributes = {}
     if (hasLink) {
       linkAttributes = { href, target }

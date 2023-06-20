@@ -6,8 +6,8 @@ import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../.
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
-import { NavLinkItemObserver } from './models/bal-nav-link-item'
 import { BalScrollHandler } from '../../utils/scroll'
+import { NavLinkItemObserver } from './bal-nav.types'
 
 @Component({
   tag: 'bal-nav',
@@ -256,32 +256,26 @@ export class NavMetaBar
                     )}
                 </bal-tabs>
               </bal-stack>
-              {this.isFlyoutActive ? <bal-nav-menu-flyout>Flyout</bal-nav-menu-flyout> : ''}
-              {/* <section>
-                  <bal-nav-link href="https://google.com" variant="overview">
-                    Alle Versicherungslösungen
-                  </bal-nav-link>
-                  <br />
-                  <bal-nav-link variant="title">Wohnen & Recht</bal-nav-link>
-                  <bal-nav-link href="https://google.com">Haushaltsversicherung</bal-nav-link>
-                  <bal-nav-link href="https://google.com" selected>
-                    Haftpflicht
-                  </bal-nav-link>
-                  <bal-nav-link href="https://google.com">Einzel Gegenstände vom Handy bis zum e-Bike</bal-nav-link>
-                  <bal-nav-link href="https://google.com">
-                    Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)
-                  </bal-nav-link>
-                  <bal-nav-link href="https://google.com">Rechtsschutz</bal-nav-link>
-                </section>
-                <br />
-                <section data-testid="with-title-link">
-                  <bal-nav-link variant="title" href="https://google.com">
-                    Wohneigentum
-                  </bal-nav-link>
-                  <bal-nav-link href="https://google.com">Gebäudeversicherung</bal-nav-link>
-                  <bal-nav-link href="https://google.com">Erdbebenversicherung</bal-nav-link>
-                  <bal-nav-link clickable>Bauversicherung</bal-nav-link>
-                </section> */}
+              {this.isFlyoutActive ? (
+                <bal-nav-menu-flyout>
+                  <bal-nav-link-grid>
+                    <bal-nav-link-grid-col>
+                      {this.linkItems
+                        .find(item => item.value === this.activeMetaLink)
+                        ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
+                        ?.sectionLinkItems?.map(itemGroup => itemGroup.render())}
+                    </bal-nav-link-grid-col>
+                    <bal-nav-link-grid-col static-col>
+                      {this.linkItems
+                        .find(item => item.value === this.activeMetaLink)
+                        ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
+                        ?.serviceLinkItems?.map(itemGroup => itemGroup.render())}
+                    </bal-nav-link-grid-col>
+                  </bal-nav-link-grid>
+                </bal-nav-menu-flyout>
+              ) : (
+                ''
+              )}
             </bal-nav-menu-bar>
           ) : (
             ''

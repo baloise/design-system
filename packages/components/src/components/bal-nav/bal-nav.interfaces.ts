@@ -26,11 +26,13 @@ namespace BalProps {
 
   export interface BalNavSectionLinkItem extends BalNavLinkItem {
     linkItems?: BalNavLinkItem[]
+    render(context?: { onClick: () => void }): any
   }
 
   export interface BalNavServiceLinkItem extends BalNavLinkItem {
     color?: 'grey' | 'purple' | 'yellow' | 'red' | 'green'
     linkItems?: BalNavLinkItem[]
+    render(context?: { onClick: () => void }): any
   }
 
   export interface BalNavLinkItem {
@@ -39,6 +41,8 @@ namespace BalProps {
     htmlTitle?: string
     href?: string
     target?: BalProps.BalButtonTarget
+    clickable?: boolean
     onClick?: (ev: MouseEvent) => void
+    render(context?: { onClick: () => void }): any
   }
 }

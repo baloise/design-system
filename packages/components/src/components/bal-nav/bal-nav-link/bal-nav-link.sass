@@ -16,6 +16,11 @@
     display: block
     color: var(--bal-nav-link-text-color)
     font-size: var(--bal-size-normal)
+    line-height: var(--bal-body-line-height)
+    font-family: var(--bal-font-family-text)
+    padding: 0
+    border: none
+    background: none
     //
     // Variants
     &--variant-title
@@ -38,6 +43,7 @@
 // Native link element
 // --------------------------------------------------
 
+button.bal-nav-link__native,
 a.bal-nav-link__native
   cursor: pointer
   +hover

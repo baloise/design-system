@@ -1,8 +1,10 @@
+import { h } from '@stencil/core'
 import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavLinkItem implements BalProps.BalNavLinkItem {
   label: string
   value: string
+  clickable = false
 
   href?: string
   target?: BalProps.BalButtonTarget
@@ -13,6 +15,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     this.value = item.value || `nav-link-item-${NavLinkItemIDs++}`
     this.href = item.href
     this.target = item.target
+    this.clickable = !!item.clickable
 
     this.onClick = (ev: MouseEvent) => {
       this.observer.linkItemClickListener(this)
@@ -30,11 +33,13 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     return this.constructor.name
   }
 
-  render(): string {
-    return ''
+  render(_context?: { onClick: () => void }) {
+    return (
+      <bal-nav-link role="listitem" href={this.href} target={this.target} clickable={this.clickable}>
+        {this.label}
+      </bal-nav-link>
+    )
   }
 }
 
 let NavLinkItemIDs = 0
-export { NavLinkItemObserver }
-

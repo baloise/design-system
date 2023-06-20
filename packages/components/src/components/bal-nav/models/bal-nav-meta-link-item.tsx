@@ -1,6 +1,7 @@
 import { h } from '@stencil/core'
-import { NavLinkItem, NavLinkItemObserver } from './bal-nav-link-item'
+import { NavLinkItem } from './bal-nav-link-item'
 import { NavMainLinkItem } from './bal-nav-main-link-item'
+import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaLinkItem {
   mainLinkItems: BalProps.BalNavMainLinkItem[] = []
