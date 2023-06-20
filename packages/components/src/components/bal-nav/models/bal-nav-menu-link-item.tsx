@@ -4,13 +4,13 @@ import { NavLinkItem } from './bal-nav-link-item'
 import { NavSectionLinkItem } from './bal-nav-section-link-item'
 import { NavServiceLinkItem } from './bal-nav-service-link-item'
 
-export class NavMainLinkItem extends NavLinkItem implements BalProps.BalNavMainLinkItem {
-  sectionLinkItems: BalProps.BalNavSectionLinkItem[] = []
-  serviceLinkItems: BalProps.BalNavServiceLinkItem[] = []
+export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuLinkItem {
+  sectionLinkItems: NavSectionLinkItem[] = []
+  serviceLinkItems: NavServiceLinkItem[] = []
 
-  constructor(item: BalProps.BalNavMainLinkItem, observer: NavLinkItemObserver) {
+  constructor(item: BalProps.BalNavMenuLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
-    this.value = item.value || `nav-main-link-item-${NavMainLinkItemIDs++}`
+    this.value = item.value || `nav-menu-link-item-${NavMenuLinkItemIDs++}`
     this.sectionLinkItems = (item.sectionLinkItems || []).map(item => new NavSectionLinkItem(item, observer))
     this.serviceLinkItems = (item.serviceLinkItems || []).map(item => new NavServiceLinkItem(item, observer))
   }
@@ -35,4 +35,4 @@ export class NavMainLinkItem extends NavLinkItem implements BalProps.BalNavMainL
   }
 }
 
-let NavMainLinkItemIDs = 0
+let NavMenuLinkItemIDs = 0

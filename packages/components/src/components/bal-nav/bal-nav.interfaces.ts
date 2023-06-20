@@ -15,10 +15,10 @@ namespace BalProps {
   }
 
   export interface BalNavMetaLinkItem extends BalNavLinkItem {
-    mainLinkItems?: BalNavMainLinkItem[]
+    mainLinkItems?: BalNavMenuLinkItem[]
   }
 
-  export interface BalNavMainLinkItem extends BalNavLinkItem {
+  export interface BalNavMenuLinkItem extends BalNavLinkItem {
     render(context?: { onClick: () => void }): any
     sectionLinkItems?: BalNavSectionLinkItem[]
     serviceLinkItems?: BalNavServiceLinkItem[]

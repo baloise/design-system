@@ -88,10 +88,13 @@
   & > .bal-list__item:not(.bal-list__item__accordion-body) > a,
   & > .bal-list__item:not(.bal-list__item__accordion-body) > div,
   & > .bal-list__item:not(.bal-list__item__accordion-body) > button,
-  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head > .bal-list__item__icon,
-  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head,
   & > .bal-list__item > .bal-list__item__icon
     min-height: 48px
+
+.bal-list--size-small
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head > .bal-list__item__icon,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head
+    min-height: 32px
 
 .bal-list--size-large
   & > .bal-list__item:not(.bal-list__item__accordion-body),
@@ -102,6 +105,11 @@
   & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head,
   & > .bal-list__item > .bal-list__item__icon
     min-height: 72px
+
+.bal-list--size-large
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head > .bal-list__item__icon,
+  & > .bal-list__item > .bal-list__item__trigger > .bal-list__item__accordion-head
+    min-height: 56px
 
 .bal-list__item--clickable
   .bal-list__item__accordion-head,

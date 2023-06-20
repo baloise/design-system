@@ -4,7 +4,7 @@ import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavServiceLinkItem {
   color: 'grey' | 'purple' | 'yellow' | 'red' | 'green' = 'grey'
-  linkItems: BalProps.BalNavLinkItem[] = []
+  linkItems: NavLinkItem[] = []
 
   constructor(item: BalProps.BalNavServiceLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
