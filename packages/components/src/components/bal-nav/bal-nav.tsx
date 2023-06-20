@@ -283,15 +283,19 @@ export class NavMetaBar
           {this.isDesktop ? (
             <bal-nav-meta-bar variant="primary" size="small" position="sticky-top">
               <bal-stack space="auto">
-                <bal-tabs
-                  spaceless
-                  inverted
-                  context="meta"
-                  value={this.activeMetaLinkValue}
-                  onBalChange={ev => this.onMetaBarTabChange(ev)}
-                >
-                  {this.linkItems.map(item => item.render())}
-                </bal-tabs>
+                {this.linkItems.length > 1 ? (
+                  <bal-tabs
+                    spaceless
+                    inverted
+                    context="meta"
+                    value={this.activeMetaLinkValue}
+                    onBalChange={ev => this.onMetaBarTabChange(ev)}
+                  >
+                    {this.linkItems.map(item => item.render())}
+                  </bal-tabs>
+                ) : (
+                  <span></span>
+                )}
                 <bal-stack space="x-small" fit-content>
                   {this.metaButtons.map(button => button.renderAtMetaBar())}
                 </bal-stack>
@@ -350,47 +354,26 @@ export class NavMetaBar
         {this.isTouch && this.isFlyoutActive ? (
           <div class={{ ...flyoutBlock.class() }}>
             <div class="container">
-              <bal-list border accordion-one-level>
-                {this.linkItems.map(metaItem => (
-                  <bal-list-item accordion>
-                    <bal-list-item-accordion-head icon="nav-go-down">
-                      <bal-list-item-content>
-                        <bal-list-item-title visual-level="large" level="span">
-                          {metaItem.label}
-                        </bal-list-item-title>
-                      </bal-list-item-content>
-                    </bal-list-item-accordion-head>
-                    <bal-list-item-accordion-body>
-                      <bal-list accordion-one-level size="small">
-                        {metaItem.mainLinkItems.map(menuItem =>
-                          menuItem.isLink ? (
-                            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
-                              <bal-list-item-content>
-                                <bal-list-item-title visual-level="medium" level="span">
-                                  {menuItem.label}
-                                </bal-list-item-title>
-                              </bal-list-item-content>
-                            </bal-list-item>
-                          ) : (
-                            <bal-list-item accordion sub-accordion-item>
-                              <bal-list-item-accordion-head icon="nav-go-down">
-                                <bal-list-item-content>
-                                  <bal-list-item-title visual-level="medium" level="span">
-                                    {menuItem.label}
-                                  </bal-list-item-title>
-                                </bal-list-item-content>
-                              </bal-list-item-accordion-head>
-                              <bal-list-item-accordion-body>
-                                <div style={{ width: '100%' }}>{this.renderGridLinks(menuItem)}</div>
-                              </bal-list-item-accordion-body>
-                            </bal-list-item>
-                          ),
-                        )}
-                      </bal-list>
-                    </bal-list-item-accordion-body>
-                  </bal-list-item>
-                ))}
-              </bal-list>
+              {this.linkItems.length > 1 ? (
+                <bal-list border accordion-one-level>
+                  {this.linkItems.map(metaItem => (
+                    <bal-list-item accordion>
+                      <bal-list-item-accordion-head icon="nav-go-down">
+                        <bal-list-item-content>
+                          <bal-list-item-title visual-level="large" level="span">
+                            {metaItem.label}
+                          </bal-list-item-title>
+                        </bal-list-item-content>
+                      </bal-list-item-accordion-head>
+                      <bal-list-item-accordion-body>
+                        {this.renderTouchMenuAccordions(metaItem)}
+                      </bal-list-item-accordion-body>
+                    </bal-list-item>
+                  ))}
+                </bal-list>
+              ) : (
+                this.renderTouchMenuAccordions(this.linkItems[0])
+              )}
             </div>
           </div>
         ) : (
@@ -423,6 +406,37 @@ export class NavMetaBar
           {linkItem.serviceLinkItems?.map(itemGroup => itemGroup.render())}
         </bal-nav-link-grid-col>
       </bal-nav-link-grid>
+    )
+  }
+
+  renderTouchMenuAccordions(metaItem: NavMetaLinkItem) {
+    return (
+      <bal-list accordion-one-level size="small">
+        {metaItem.mainLinkItems.map(menuItem =>
+          menuItem.isLink ? (
+            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
+              <bal-list-item-content>
+                <bal-list-item-title visual-level="medium" level="span">
+                  {menuItem.label}
+                </bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+          ) : (
+            <bal-list-item accordion sub-accordion-item>
+              <bal-list-item-accordion-head icon="nav-go-down">
+                <bal-list-item-content>
+                  <bal-list-item-title visual-level="medium" level="span">
+                    {menuItem.label}
+                  </bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <div style={{ width: '100%' }}>{this.renderGridLinks(menuItem)}</div>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          ),
+        )}
+      </bal-list>
     )
   }
 }
