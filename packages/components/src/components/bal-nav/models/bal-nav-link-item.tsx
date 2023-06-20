@@ -5,6 +5,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
   label: string
   value: string
   clickable = false
+  active = false
 
   href?: string
   target?: BalProps.BalButtonTarget
@@ -15,6 +16,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     this.value = item.value || `nav-link-item-${NavLinkItemIDs++}`
     this.href = item.href
     this.target = item.target
+    this.active = !!item.active
     this.clickable = !!item.clickable
 
     this.onClick = (ev: MouseEvent) => {
@@ -35,7 +37,13 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
 
   render(_context?: { onClick: () => void }) {
     return (
-      <bal-nav-link role="listitem" href={this.href} target={this.target} clickable={this.clickable}>
+      <bal-nav-link
+        role="listitem"
+        href={this.href}
+        target={this.target}
+        clickable={this.clickable}
+        selected={this.active}
+      >
         {this.label}
       </bal-nav-link>
     )

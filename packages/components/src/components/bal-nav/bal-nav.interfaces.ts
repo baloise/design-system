@@ -38,6 +38,7 @@ namespace BalProps {
   export interface BalNavLinkItem {
     label: string
     value?: string
+    active?: boolean
     htmlTitle?: string
     ariaLabel?: string
     href?: string

@@ -75,6 +75,7 @@ export class NavMetaBar
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
+    this.updateTabs()
   }
 
   /**
@@ -100,6 +101,7 @@ export class NavMetaBar
 
   componentWillLoad() {
     this.onOptionChange()
+    this.updateTabs()
   }
 
   disconnectedCallback() {
@@ -174,6 +176,21 @@ export class NavMetaBar
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private updateTabs() {
+    const previousActiveMetaLinkValue = this.activeMetaLinkValue
+    const newActiveMetaLinkValue = this.linkItems.find(item => item.active)?.value || previousActiveMetaLinkValue
+    if (previousActiveMetaLinkValue !== newActiveMetaLinkValue) {
+      this.activeMetaLinkValue = newActiveMetaLinkValue
+    }
+
+    const previousActiveMenuLinkValue = this.activeMenuLinkValue
+    const newActiveMenuLinkValue =
+      this.activeMenuLinkItems.find(item => item.active)?.value || previousActiveMenuLinkValue
+    if (previousActiveMenuLinkValue !== newActiveMenuLinkValue) {
+      this.activeMenuLinkValue = newActiveMenuLinkValue
+    }
+  }
 
   /**
    * EVENT BINDING
@@ -266,7 +283,13 @@ export class NavMetaBar
           {this.isDesktop ? (
             <bal-nav-meta-bar variant="primary" size="small" position="sticky-top">
               <bal-stack space="auto">
-                <bal-tabs spaceless inverted context="meta" onBalChange={ev => this.onMetaBarTabChange(ev)}>
+                <bal-tabs
+                  spaceless
+                  inverted
+                  context="meta"
+                  value={this.activeMetaLinkValue}
+                  onBalChange={ev => this.onMetaBarTabChange(ev)}
+                >
                   {this.linkItems.map(item => item.render())}
                 </bal-tabs>
                 <bal-stack space="x-small" fit-content>
@@ -281,7 +304,7 @@ export class NavMetaBar
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
                 <bal-logo></bal-logo>
-                <bal-tabs context="navigation" accordion spaceless>
+                <bal-tabs context="navigation" accordion spaceless value={this.activeMenuLinkValue}>
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
                     ?.mainLinkItems.map(item =>
