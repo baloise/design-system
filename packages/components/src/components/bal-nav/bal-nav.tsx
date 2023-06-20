@@ -194,7 +194,6 @@ export class NavMetaBar
 
   private onMetaBarTabChange = (ev: BalEvents.BalTabsChange): void => {
     this.activeMetaLink = ev.detail
-    console.log(ev, this.activeMetaLink)
   }
 
   private onMenuBarTabChange = (value?: string): void => {
@@ -258,6 +257,10 @@ export class NavMetaBar
               </bal-stack>
               {this.isFlyoutActive ? (
                 <bal-nav-menu-flyout>
+                  {this.linkItems
+                    .find(item => item.value === this.activeMetaLink)
+                    ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
+                    ?.overviewLink?.render()}
                   <bal-nav-link-grid>
                     <bal-nav-link-grid-col>
                       {this.linkItems
