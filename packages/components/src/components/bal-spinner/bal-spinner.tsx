@@ -149,6 +149,6 @@ export class Spinner implements ComponentInterface, Loggable {
    */
 
   render() {
-    return <Host style={{ width: this.small ? '32px' : '64px' }}></Host>
+    return <Host aria-hidden="true" style={{ width: this.small ? '32px' : '64px' }}></Host>
   }
 }

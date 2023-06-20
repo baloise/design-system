@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Listen, Method } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
@@ -8,6 +8,15 @@ import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { BalScrollHandler } from '../../utils/scroll'
 import { NavLinkItemObserver } from './bal-nav.types'
+import {
+  BalConfigObserver,
+  BalConfigState,
+  BalLanguage,
+  BalRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '../../utils/config'
+import { i18nNavBars } from './bal-nav.i18n'
 
 @Component({
   tag: 'bal-nav',
@@ -22,7 +31,8 @@ export class NavMetaBar
     BalResizeObserver,
     BalBreakpointObserver,
     BalMutationObserver,
-    NavLinkItemObserver
+    NavLinkItemObserver,
+    BalConfigObserver
 {
   private navId = `bal-nav-${NavIds++}`
   private bodyScrollHandler = new BalScrollHandler()
@@ -34,6 +44,8 @@ export class NavMetaBar
 
   @State() isTouch = false
   @State() isDesktop = false
+  @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
   @State() activeMetaLinkValue?: string
   @State() activeMenuLinkValue?: string
@@ -146,6 +158,16 @@ export class NavMetaBar
         this.activeMetaLinkValue = item.value
         break
     }
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -293,6 +315,7 @@ export class NavMetaBar
                   square
                   color={this.isFlyoutActive ? 'primary' : 'light'}
                   icon={this.isFlyoutActive ? 'close' : 'menu-bars'}
+                  aria-label={this.isFlyoutActive ? i18nNavBars[this.language].close : i18nNavBars[this.language].open}
                   onClick={ev => this.onTouchToggleFlyout(ev)}
                 ></bal-button>
               </bal-stack>

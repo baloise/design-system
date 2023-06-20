@@ -168,6 +168,7 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
 
     return (
       <Host
+        aria-hidden="true"
         class={{
           ...block.class(),
           ...block.modifier('is-inverted').class(this.inverted),
