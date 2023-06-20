@@ -8,7 +8,7 @@
   +unselectable
   display: block
   width: 100%
-  z-index: 20
+  z-index: var(--bal-z-index-navigation)
   //
   // hidden
   &--hidden-mobile
@@ -49,7 +49,7 @@
     border-radius: var(--bal-nav-menu-bar-radius)
     box-shadow: var(--bal-nav-menu-bar-shadow)
     min-height: 80px
-  +between(1440px, 1496px)
+  +between(1440px, 1540px)
     background: transparent
     box-shadow: none
     min-height: 80px
@@ -63,15 +63,6 @@
       background: var(--bal-nav-menu-bar-background)
       border-radius: var(--bal-nav-menu-bar-radius)
       box-shadow: var(--bal-nav-menu-bar-shadow)
-  +between(1496px, 1540px)
-    background: var(--bal-nav-menu-bar-background)
-    border-radius: var(--bal-nav-menu-bar-radius)
-    box-shadow: var(--bal-nav-menu-bar-shadow)
-    padding-left: 2rem
-    padding-right: 2rem
-    max-width: 93.5rem - 2rem
-    min-height: 80px
-
 
 // Troubleshooting
 // --------------------------------------------------

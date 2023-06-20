@@ -419,6 +419,12 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
           }}
           ref={containerEl => (this.containerEl = containerEl)}
         >
+          <div
+            class={{
+              ...arrowBlock.class(),
+            }}
+            ref={arrowEl => (this.arrowEl = arrowEl)}
+          ></div>
           <bal-stack
             layout="vertical"
             px={this.activeVariant === 'popover' ? 'medium' : 'none'}
@@ -460,12 +466,6 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
               <slot></slot>
             </div>
           </bal-stack>
-          <div
-            class={{
-              ...arrowBlock.class(),
-            }}
-            ref={arrowEl => (this.arrowEl = arrowEl)}
-          ></div>
         </div>
       </Host>
     )

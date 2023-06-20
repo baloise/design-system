@@ -8,6 +8,7 @@
   +unselectable
   display: block
   width: 100%
+  z-index: var(--bal-z-index-navigation)
 
 // Flyout
 // --------------------------------------------------
@@ -20,3 +21,7 @@
   +desktop
     display: none
     visibility: hidden
+
+.bal-nav .bal-nav-meta-bar,
+.bal-nav .bal-nav-menu-bar
+  z-index: auto !important
