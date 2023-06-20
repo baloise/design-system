@@ -1,15 +1,15 @@
 import { h } from '@stencil/core'
 import { NavLinkItem } from './bal-nav-link-item'
-import { NavMainLinkItem } from './bal-nav-main-link-item'
+import { NavMenuLinkItem } from './bal-nav-menu-link-item'
 import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaLinkItem {
-  mainLinkItems: BalProps.BalNavMainLinkItem[] = []
+  mainLinkItems: NavMenuLinkItem[] = []
 
   constructor(item: BalProps.BalNavMetaLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
     this.value = item.value || `nav-meta-link-item-${NavMetaLinkItemIDs++}`
-    this.mainLinkItems = (item.mainLinkItems || []).map(item => new NavMainLinkItem(item, observer))
+    this.mainLinkItems = (item.mainLinkItems || []).map(item => new NavMenuLinkItem(item, observer))
   }
 
   override render() {

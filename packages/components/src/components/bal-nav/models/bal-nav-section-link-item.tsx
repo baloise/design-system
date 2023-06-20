@@ -3,7 +3,7 @@ import { NavLinkItem } from './bal-nav-link-item'
 import { NavLinkItemObserver } from '../bal-nav.types'
 
 export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSectionLinkItem {
-  linkItems: BalProps.BalNavLinkItem[] = []
+  linkItems: NavLinkItem[] = []
   htmlTitle: string | undefined
 
   constructor(item: BalProps.BalNavSectionLinkItem, observer: NavLinkItemObserver) {

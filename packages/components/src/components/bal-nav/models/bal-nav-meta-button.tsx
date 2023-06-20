@@ -8,6 +8,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
 
   popoverId?: string
   icon?: string
+  ariaLabel?: string
+  htmlTitle?: string
   id = `nav-meta-button-${NavMetaButtonIDs++}`
 
   constructor(item: BalProps.BalNavMetaButton, observer: NavLinkItemObserver) {
@@ -16,6 +18,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
     this.value = item.value || this.id
     this.icon = item.icon
     this.popoverId = item.popupId
+    this.ariaLabel = item.ariaLabel
+    this.htmlTitle = item.htmlTitle
   }
 
   renderAtMetaBar() {
@@ -27,6 +31,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         size="small"
         icon={this.icon}
         square={!this.label || this.label.length < 3}
+        aria-label={this.ariaLabel}
+        title={this.htmlTitle}
         inverted={true}
         bal-popup={this.popoverId}
         bal-popup-variant="popover"
@@ -50,6 +56,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           icon={this.icon}
           square={!!this.icon || !this.label || this.label.length < 3}
           inverted={false}
+          aria-label={this.ariaLabel}
+          title={this.htmlTitle}
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
           bal-popup-closable="true"
@@ -71,6 +79,8 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           square={!this.label || this.label.length < 3}
           color="info"
           inverted={false}
+          aria-label={this.ariaLabel}
+          title={this.htmlTitle}
           bal-popup={this.popoverId}
           bal-popup-variant="drawer"
           bal-popup-closable="true"

@@ -15,10 +15,10 @@ namespace BalProps {
   }
 
   export interface BalNavMetaLinkItem extends BalNavLinkItem {
-    mainLinkItems?: BalNavMainLinkItem[]
+    mainLinkItems?: BalNavMenuLinkItem[]
   }
 
-  export interface BalNavMainLinkItem extends BalNavLinkItem {
+  export interface BalNavMenuLinkItem extends BalNavLinkItem {
     render(context?: { onClick: () => void }): any
     overviewLink?: BalNavLinkItem
     sectionLinkItems?: BalNavSectionLinkItem[]
@@ -40,6 +40,7 @@ namespace BalProps {
     label: string
     value?: string
     htmlTitle?: string
+    ariaLabel?: string
     href?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean

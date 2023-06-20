@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Listen, Method } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
@@ -8,6 +8,15 @@ import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { BalScrollHandler } from '../../utils/scroll'
 import { NavLinkItemObserver } from './bal-nav.types'
+import {
+  BalConfigObserver,
+  BalConfigState,
+  BalLanguage,
+  BalRegion,
+  ListenToConfig,
+  defaultConfig,
+} from '../../utils/config'
+import { i18nNavBars } from './bal-nav.i18n'
 
 @Component({
   tag: 'bal-nav',
@@ -22,7 +31,8 @@ export class NavMetaBar
     BalResizeObserver,
     BalBreakpointObserver,
     BalMutationObserver,
-    NavLinkItemObserver
+    NavLinkItemObserver,
+    BalConfigObserver
 {
   private navId = `bal-nav-${NavIds++}`
   private bodyScrollHandler = new BalScrollHandler()
@@ -34,9 +44,11 @@ export class NavMetaBar
 
   @State() isTouch = false
   @State() isDesktop = false
+  @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
-  @State() activeMetaLink?: string
-  @State() activeMenuLink?: string
+  @State() activeMetaLinkValue?: string
+  @State() activeMenuLinkValue?: string
 
   @Logger('bal-nav')
   createLogger(log: LogInstance) {
@@ -143,9 +155,19 @@ export class NavMetaBar
   linkItemClickListener(item: any) {
     switch (item.type) {
       case 'NavMetaLinkItem':
-        this.activeMetaLink = item.value
+        this.activeMetaLinkValue = item.value
         break
     }
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -193,22 +215,36 @@ export class NavMetaBar
   }
 
   private onMetaBarTabChange = (ev: BalEvents.BalTabsChange): void => {
-    this.activeMetaLink = ev.detail
+    this.activeMetaLinkValue = ev.detail
+    console.log(ev, this.activeMetaLinkValue)
   }
 
   private onMenuBarTabChange = (value?: string): void => {
-    if (this.activeMenuLink === value) {
+    if (this.activeMenuLinkValue === value) {
       this.isFlyoutActive = !this.isFlyoutActive
     } else {
       this.isFlyoutActive = true
     }
-    this.activeMenuLink = value
+    this.activeMenuLinkValue = value
   }
 
   /**
    * RENDER
    * ------------------------------------------------------
    */
+
+  private get activeMenuLinkItems(): BalProps.BalNavMenuLinkItem[] {
+    const foundLinkItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
+    if (foundLinkItem) {
+      return foundLinkItem.mainLinkItems
+    }
+    return []
+  }
+
+  private get activeMenuLinkItem(): BalProps.BalNavMenuLinkItem | undefined {
+    const foundLinkItem = this.activeMenuLinkItems.find(item => item.value === this.activeMenuLinkValue)
+    return foundLinkItem ? foundLinkItem : undefined
+  }
 
   render() {
     const block = BEM.block('nav')
@@ -247,7 +283,7 @@ export class NavMetaBar
                 <bal-logo></bal-logo>
                 <bal-tabs context="navigation" accordion spaceless>
                   {this.linkItems
-                    .find(item => item.value === this.activeMetaLink)
+                    .find(item => item.value === this.activeMetaLinkValue)
                     ?.mainLinkItems.map(item =>
                       item.render({
                         onClick: () => this.onMenuBarTabChange(item.value),
@@ -256,26 +292,7 @@ export class NavMetaBar
                 </bal-tabs>
               </bal-stack>
               {this.isFlyoutActive ? (
-                <bal-nav-menu-flyout>
-                  {this.linkItems
-                    .find(item => item.value === this.activeMetaLink)
-                    ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
-                    ?.overviewLink?.render()}
-                  <bal-nav-link-grid>
-                    <bal-nav-link-grid-col>
-                      {this.linkItems
-                        .find(item => item.value === this.activeMetaLink)
-                        ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
-                        ?.sectionLinkItems?.map(itemGroup => itemGroup.render())}
-                    </bal-nav-link-grid-col>
-                    <bal-nav-link-grid-col static-col>
-                      {this.linkItems
-                        .find(item => item.value === this.activeMetaLink)
-                        ?.mainLinkItems.find(item => item.value === this.activeMenuLink)
-                        ?.serviceLinkItems?.map(itemGroup => itemGroup.render())}
-                    </bal-nav-link-grid-col>
-                  </bal-nav-link-grid>
-                </bal-nav-menu-flyout>
+                <bal-nav-menu-flyout>{this.renderGridLinks(this.activeMenuLinkItem)}</bal-nav-menu-flyout>
               ) : (
                 ''
               )}
@@ -298,6 +315,7 @@ export class NavMetaBar
                   square
                   color={this.isFlyoutActive ? 'primary' : 'light'}
                   icon={this.isFlyoutActive ? 'close' : 'menu-bars'}
+                  aria-label={this.isFlyoutActive ? i18nNavBars[this.language].close : i18nNavBars[this.language].open}
                   onClick={ev => this.onTouchToggleFlyout(ev)}
                 ></bal-button>
               </bal-stack>
@@ -309,81 +327,47 @@ export class NavMetaBar
         {this.isTouch && this.isFlyoutActive ? (
           <div class={{ ...flyoutBlock.class() }}>
             <div class="container">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque reiciendis necessitatibus similique
-              aspernatur laudantium odio, doloremque esse sapiente veniam, atque provident eos? Laudantium repudiandae
-              consequuntur voluptatum. Debitis consectetur ad dolore. Reiciendis id saepe, illum in porro tenetur velit,
-              aperiam tempore corrupti sit exercitationem dolor. Dolores sequi a maiores ea, aliquid, rem explicabo,
-              obcaecati neque natus laudantium vero eaque voluptatibus illo. Ducimus enim quae recusandae esse commodi
-              sit minima libero debitis. Debitis soluta quaerat pariatur dignissimos tempora autem nostrum, porro quia
-              excepturi atque saepe modi ab. Sit quidem sed veritatis reprehenderit! Qui nobis enim dolorem, harum totam
-              consequatur quibusdam itaque voluptatem exercitationem fugit eos non libero quasi, expedita aspernatur,
-              earum animi. Inventore optio doloremque numquam dolorem labore blanditiis dignissimos, quos quisquam?
-              Repudiandae, odit, dolores consequuntur numquam maxime sequi voluptas quasi rem dolor ex suscipit animi
-              quae ratione velit dignissimos vel architecto autem minus sint odio! Voluptatem dolore pariatur quia
-              doloremque velit. Facilis temporibus neque ad, quam aperiam omnis officiis quidem dicta delectus ducimus
-              dolores saepe blanditiis nobis consequuntur at praesentium dolore quae! Dolor quidem quibusdam laudantium
-              quae sit earum praesentium minima. Veritatis sequi molestias numquam reiciendis labore commodi nisi non
-              magnam velit, ea laudantium eos quas iure sed ullam quisquam cupiditate harum repellendus natus. Velit,
-              molestias ipsum quod sint perspiciatis nisi! Iste modi aperiam, nesciunt voluptatem quidem quos asperiores
-              animi, excepturi nulla distinctio voluptate molestias debitis? Rem aliquam excepturi corporis neque
-              nesciunt fugit similique sed quidem illum et quae, perferendis necessitatibus! Quae esse iste odio, harum
-              tempora pariatur nisi iusto veritatis. Aliquid, voluptate. Voluptates nihil, excepturi delectus
-              voluptatibus perspiciatis dolore esse ullam molestias unde dolores illum cumque! Ullam doloremque dolores
-              repellendus. Doloribus in ad aut, quaerat suscipit, odit facere laborum minus unde est sapiente adipisci
-              sint exercitationem, quasi tenetur placeat qui ab veniam assumenda dolor nemo quibusdam nam deserunt
-              repellat. Eveniet. Et illum vel cupiditate porro quibusdam? Reprehenderit similique asperiores repellat
-              magnam qui, sed omnis adipisci libero voluptas in assumenda nesciunt rerum perspiciatis minima autem neque
-              rem necessitatibus! Velit, neque aspernatur! Repudiandae iste architecto facere aliquam nihil, laboriosam
-              nobis explicabo, quam repellat, id labore. Sed consequatur vero, dolorum delectus magnam quam cum dicta
-              cupiditate, iure quos neque molestias fugit, ipsa recusandae. Suscipit modi corporis commodi ea minus
-              dolor nostrum beatae veritatis, ipsam eos cumque et vero quas, odit quam! Sed itaque alias minus
-              voluptatem non corporis eveniet. Placeat nobis ipsa excepturi! Nostrum, vitae dolores eaque sit blanditiis
-              ipsum libero cupiditate saepe veniam magnam, distinctio exercitationem magni. Dicta sapiente reprehenderit
-              iure illo excepturi, nobis aut! Sed corporis autem quia quis. Quo, possimus. Quibusdam quaerat iste
-              impedit itaque, obcaecati accusamus placeat iure omnis molestiae, vero voluptate aliquid! Deserunt
-              laboriosam vitae enim ex molestias eligendi voluptatibus iste quisquam sunt, modi culpa asperiores
-              exercitationem aperiam. Rerum reprehenderit molestiae distinctio ad, vero labore in est. Expedita iste,
-              possimus magnam, tenetur illum esse error modi repudiandae consequatur dignissimos animi earum incidunt
-              aliquid odit reprehenderit recusandae dolor. Ducimus. Numquam aliquam nostrum impedit consequuntur
-              molestias possimus debitis excepturi dicta provident a laborum, fugiat voluptates porro reiciendis non,
-              quia totam nemo consectetur error, odio magni atque? Optio tempore aliquid explicabo. Dicta, labore
-              laudantium odio autem ex corporis sed culpa! Sint, veniam. Esse excepturi, temporibus asperiores ea
-              corporis vero dolore explicabo culpa facere delectus quisquam repellat, officia eum voluptatibus
-              blanditiis debitis. Enim a dolore, fugiat ut dicta quos itaque ullam! Tempore doloremque nemo hic ipsam
-              nulla id assumenda distinctio, at, animi eligendi facilis ab commodi quibusdam repellat dicta error non
-              labore. Similique unde tempore provident nobis eligendi saepe assumenda repellat dignissimos, dolorem in
-              totam nemo beatae. Odit fuga vel nihil adipisci architecto maxime quae, consectetur ipsa sit, alias saepe
-              hic. Odio. Velit necessitatibus labore, in expedita quia ad qui. Eveniet cumque voluptatum corporis
-              possimus minima ut rem ea, aut ab magni voluptate corrupti asperiores, distinctio repellat fugiat iusto!
-              Illum, repellendus ab. Sequi perferendis culpa itaque? Odit officia porro doloribus, eaque necessitatibus
-              molestias earum, voluptates, ullam cumque alias fuga sapiente. Totam nemo saepe consequuntur molestias
-              cumque atque veniam eligendi perspiciatis, mollitia quis! Repudiandae, mollitia quod beatae aperiam enim
-              quisquam, soluta sed, dicta adipisci non eaque laudantium! Eius explicabo reprehenderit odit a, iusto quae
-              commodi aliquam ullam asperiores aut veritatis at nemo voluptatibus! Nostrum ullam neque mollitia nisi,
-              excepturi atque deserunt inventore similique temporibus, ad quia suscipit nemo aut a nulla itaque.
-              Architecto consequatur libero vel aspernatur enim distinctio consequuntur debitis exercitationem unde?
-              Tenetur debitis ullam soluta cumque! Ducimus, exercitationem delectus voluptas corporis deserunt molestias
-              similique mollitia libero quis nulla accusamus quas, perspiciatis consequuntur ipsa, quia voluptate quos
-              praesentium aliquid officiis. Modi, natus. Temporibus in nemo a expedita earum ullam voluptatum similique,
-              minus sed aspernatur eligendi consequuntur quos quas ut aut ex dolore ab inventore delectus cum doloribus
-              facere! Soluta repudiandae praesentium vitae! Minima animi harum autem vel quia atque quas modi. Doloribus
-              libero quasi nihil excepturi saepe cum assumenda ratione blanditiis ipsa, iure hic esse, suscipit autem
-              mollitia. Quam deleniti molestias molestiae. Non quam praesentium assumenda asperiores quas optio ex illum
-              id aspernatur incidunt hic quo enim fugiat at, voluptatum eos perferendis, eligendi tempore rem
-              dignissimos. Perferendis ad autem possimus explicabo? Unde. Obcaecati consectetur totam fugiat eius alias
-              voluptatum aliquid, odio cumque hic, sit modi, expedita asperiores voluptate! Iusto perspiciatis maiores
-              amet reprehenderit, rerum doloremque quisquam quibusdam, quas repellat quae eius iste. Ad quis rerum,
-              placeat aspernatur aliquid delectus fugiat fugit? Eius quibusdam, non accusamus corporis tempora
-              praesentium ea nam? Fugiat, quia. Rerum, adipisci harum officia maiores quo fugit voluptate et ea? Fuga
-              rem voluptatum assumenda, numquam corporis magnam autem. Neque quas sunt accusantium eligendi. Voluptas
-              harum atque, ex, dolorum delectus quasi, ad illo nisi odit accusamus fugiat veniam. Maxime, aut animi?
-              Quibusdam voluptas sed voluptatibus maxime doloribus labore molestiae, reiciendis ratione placeat fuga
-              alias non nulla id dolore iste tempora libero! Harum ipsa soluta ad distinctio tempora pariatur inventore,
-              omnis animi. Aspernatur id voluptatem consequatur dignissimos, laborum corrupti officiis placeat facere
-              ea, eius dolorum quam magni neque repellendus sapiente. Consequatur earum a doloribus numquam cum ab
-              cupiditate illum, aliquid rerum adipisci! Impedit iusto, enim itaque quam voluptate sed nemo obcaecati
-              nisi possimus cumque accusamus a? Non debitis provident voluptate, accusantium placeat obcaecati
-              recusandae officia voluptatem sequi reprehenderit beatae magnam id. Minima.
+              <bal-list border accordion-one-level>
+                {this.linkItems.map(metaItem => (
+                  <bal-list-item accordion>
+                    <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-content>
+                        <bal-list-item-title visual-level="large" level="span">
+                          {metaItem.label}
+                        </bal-list-item-title>
+                      </bal-list-item-content>
+                    </bal-list-item-accordion-head>
+                    <bal-list-item-accordion-body>
+                      <bal-list accordion-one-level size="small">
+                        {metaItem.mainLinkItems.map(menuItem =>
+                          menuItem.isLink ? (
+                            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
+                              <bal-list-item-content>
+                                <bal-list-item-title visual-level="medium" level="span">
+                                  {menuItem.label}
+                                </bal-list-item-title>
+                              </bal-list-item-content>
+                            </bal-list-item>
+                          ) : (
+                            <bal-list-item accordion sub-accordion-item>
+                              <bal-list-item-accordion-head icon="nav-go-down">
+                                <bal-list-item-content>
+                                  <bal-list-item-title visual-level="medium" level="span">
+                                    {menuItem.label}
+                                  </bal-list-item-title>
+                                </bal-list-item-content>
+                              </bal-list-item-accordion-head>
+                              <bal-list-item-accordion-body>
+                                <div style={{ width: '100%' }}>{this.renderGridLinks(menuItem)}</div>
+                              </bal-list-item-accordion-body>
+                            </bal-list-item>
+                          ),
+                        )}
+                      </bal-list>
+                    </bal-list-item-accordion-body>
+                  </bal-list-item>
+                ))}
+              </bal-list>
             </div>
           </div>
         ) : (
@@ -402,6 +386,20 @@ export class NavMetaBar
           <slot></slot>
         </div>
       </Host>
+    )
+  }
+
+  renderGridLinks(linkItem?: BalProps.BalNavMenuLinkItem) {
+    if (!linkItem) {
+      return ''
+    }
+    return (
+      <bal-nav-link-grid>
+        <bal-nav-link-grid-col>{linkItem.sectionLinkItems?.map(itemGroup => itemGroup.render())}</bal-nav-link-grid-col>
+        <bal-nav-link-grid-col static-col>
+          {linkItem.serviceLinkItems?.map(itemGroup => itemGroup.render())}
+        </bal-nav-link-grid-col>
+      </bal-nav-link-grid>
     )
   }
 }

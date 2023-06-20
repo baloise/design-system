@@ -1681,6 +1681,7 @@ export namespace Components {
           * Link level structure.
          */
         "buttons": BalProps.BalNavMetaButtons;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines content width of the stage
          */
