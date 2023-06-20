@@ -1,5 +1,12 @@
 # @baloise/design-system-components-vue
 
+## 13.4.4
+
+### Patch Changes
+
+- Updated dependencies [[`6d153268e`](https://github.com/baloise/design-system/commit/6d153268ed1812ce03543b54090621967026a029), [`4822792a8`](https://github.com/baloise/design-system/commit/4822792a80fc74cd7591aea16b1dc7ac7450a22e)]:
+  - @baloise/design-system-components@13.4.4
+
 ## 13.4.3
 
 ### Patch Changes

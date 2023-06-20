@@ -1,13 +1,15 @@
 @import '@baloise/design-system-css/sass/mixins'
-@import './bal-meta-bar.vars'
+@import './bal-nav-meta-bar.vars'
 
 // Meta bar
 // --------------------------------------------------
 
-.bal-meta-bar
+.bal-nav-meta-bar
   +unselectable
   display: block
+  position: relative
   width: 100%
+  z-index: var(--bal-z-index-navigation)
   //
   // container adjustment
   .container
@@ -33,23 +35,17 @@
     bottom: 0
     left: 0
     width: 100%
-  &--position-sticky-top
-    transition: transform .3s ease-in-out
-  &--position-sticky-top-transformed-small
-    transform: translateY(-3rem)
-  &--position-sticky-top-transformed-normal
-    transform: translateY(-5rem)
   //
   // variants
   &--variant-primary
-    background: var(--bal-meta-bar-variant-primary-background)
-    box-shadow: var(--bal-meta-bar-variant-primary-shadow)
+    background: var(--bal-nav-meta-bar-variant-primary-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-primary-shadow)
   &--variant-grey
-    background: var(--bal-meta-bar-variant-grey-background)
-    box-shadow: var(--bal-meta-bar-variant-grey-shadow)
+    background: var(--bal-nav-meta-bar-variant-grey-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-grey-shadow)
   &--variant-white
-    background: var(--bal-meta-bar-variant-white-background)
-    box-shadow: var(--bal-meta-bar-variant-white-shadow)
+    background: var(--bal-nav-meta-bar-variant-white-background)
+    box-shadow: var(--bal-nav-meta-bar-variant-white-shadow)
   //
   // hidden
   &--hidden-mobile
@@ -67,5 +63,19 @@
 // Troubleshooting
 // --------------------------------------------------
 
-.bal-meta-bar .button-label
+.bal-nav-meta-bar .button-label
   word-break: keep-all !important
+
+// Transform Animation
+// --------------------------------------------------
+
+.bal-nav-meta-bar-transform
+  will-change: transition
+  transition: transform .3s ease-in-out
+  position: fixed
+  display: block
+  width: 100%
+.bal-nav-meta-bar-transform-small
+  transform: translateY(-3rem)
+.bal-nav-meta-bar-transform-normal
+  transform: translateY(-5rem)

@@ -90,7 +90,7 @@ export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserv
 
   connectedCallback() {
     this.debounceChanged()
-    this.mutationObserverActive = this.options === undefined
+    this.mutationObserverActive = this.options === undefined || this.options.length < 1
   }
 
   componentDidLoad() {

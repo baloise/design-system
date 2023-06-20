@@ -16,8 +16,10 @@ export interface PopupComponentInterface {
     | 'left'
     | 'left-start'
     | 'left-end'
+  offset: number
   presented: boolean
   arrow: boolean
+  closable: boolean
   backdrop: boolean
   balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
   balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
@@ -27,6 +29,7 @@ export interface PopupComponentInterface {
   arrowEl?: HTMLDivElement
   trigger?: Element
   lastTrigger?: Element
+  getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any
 }
 
 export interface PopupVariantRenderer {

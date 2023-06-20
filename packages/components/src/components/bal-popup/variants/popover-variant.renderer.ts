@@ -6,6 +6,9 @@ import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfa
 export class PopoverVariantRenderer extends AbstractVariantRenderer implements PopupVariantRenderer {
   private cleanup?: () => void
   private placement: BalProps.BalPopupPlacement = 'bottom'
+  private arrow = false
+  // private closable = false
+  private backdrop = false
 
   async present(component: PopupComponentInterface): Promise<boolean> {
     //
@@ -16,20 +19,15 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
     }
 
     if (component.trigger && component.containerEl && component.arrowEl) {
-      //
-      // get placement type of the trigger
-      const triggerVariantAttr = component.trigger.attributes.getNamedItem('bal-popup-placement')
-      if (triggerVariantAttr) {
-        this.placement = triggerVariantAttr.value as BalProps.BalPopupPlacement
-      } else {
-        this.placement = component.placement
-      }
+      this.placement = component.getValue(component.trigger, 'bal-popup-placement', component.placement)
+      this.arrow = component.getValue(component.trigger, 'bal-popup-arrow', component.arrow)
+      this.backdrop = component.getValue(component.trigger, 'bal-popup-backdrop', component.backdrop)
 
       //
       // show all required elements
-      this.showBackdropElement(component)
       this.showContainerElement(component)
-      this.showArrowElement(component)
+      this.showBackdropElement(component, this.backdrop)
+      this.showArrowElement(component, this.arrow)
       component.trigger.classList.add('bal-popup-variant-popover-trigger')
 
       this.cleanup = autoUpdate(component.trigger, component.containerEl, () => {
@@ -48,7 +46,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         middleware: [
           shift(),
           flip(),
-          offset(component.arrow ? 16 : 0),
+          offset(this.arrow ? 16 : 0),
           arrow({
             element: component.arrowEl,
             padding: 4,

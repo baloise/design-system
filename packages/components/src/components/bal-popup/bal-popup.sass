@@ -6,6 +6,7 @@
 .bal-popup
   position: static
   display: inline
+  z-index: var(--bal-z-index-popup)
 
 // Popup Container
 // --------------------------------------------------
@@ -15,13 +16,14 @@
   visibility: hidden
   padding-top: var(--bal-popup-container-padding-top)
   padding-bottom: var(--bal-popup-container-padding-bottom)
+  // z-index: var(--bal-z-index-popup)
 
   //
   // variants
   &--variant-popover
     border-radius: var(--bal-popup-variant-popover-radius)
     box-shadow: var(--bal-popup-variant-popover-shadow)
-    z-index: 25
+    // z-index: var(--bal-z-index-popup)
     width: var(--bal-popup-variant-popover-max-width)
     max-width: calc(100vw - 16px)
     position: absolute
@@ -30,7 +32,7 @@
   &--variant-fullscreen
     position: fixed
     margin: 0
-    z-index: 25
+    // z-index: var(--bal-z-index-popup)
     width: 100%
     min-width: 100%
     max-width: 100% !important
@@ -39,7 +41,7 @@
     position: fixed
     border-top-left-radius: var(--bal-popup-variant-drawer-radius)
     border-top-right-radius: var(--bal-popup-variant-drawer-radius)
-    z-index: 25
+    // z-index: var(--bal-z-index-popup)
     width: 100%
 
 // Popup Container Inner
@@ -55,6 +57,12 @@
 .bal-popup__inner__head
   +unselectable
 
+// Popup Content
+// --------------------------------------------------
+
+.bal-popup__inner__content
+  width: 100%
+
 // Popup Arrow
 // --------------------------------------------------
 
@@ -64,7 +72,7 @@
   width: 8px
   height: 8px
   background: var(--bal-popup-arrow-background)
-  z-index: 25
+  // z-index: var(--bal-z-index-popup)
   transform: rotate(45deg)
   display: none
   visibility: hidden
@@ -79,7 +87,7 @@
   left: 0
   right: 0
   top: 0
-  z-index: 10
+  // z-index: calc(var(--bal-z-index-popup) - 1)
   background-color: var(--bal-popup-backdrop-background)
   width: 100vw
   display: none
@@ -87,5 +95,5 @@
 
 .bal-popup-variant-popover-trigger,
 .bal-popup-permanent-trigger
-  z-index: 20
+  z-index: calc(var(--bal-z-index-popup) + 1)
   position: relative

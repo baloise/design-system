@@ -88,6 +88,11 @@ export const hasParent = (parentTag: string, child: HTMLElement | EventTarget) =
   return false
 }
 
+export const getSibling = (parentTag: HTMLElement | EventTarget, child: string): HTMLElement | null => {
+  const node: HTMLElement = (parentTag as any).parentNode
+  return node.querySelector(child)
+}
+
 export const getAppRoot = (doc: Document) => {
   return doc.querySelector('bal-app') || doc.body
 }

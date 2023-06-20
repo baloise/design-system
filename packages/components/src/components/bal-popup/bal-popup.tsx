@@ -50,6 +50,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
 
+  @State() activeClosable = false
   @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
@@ -106,6 +107,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    * If `true`, a backdrop will be displayed behind the modal.
    */
   @Prop() backdrop = false
+
+  /**
+   * Offset form trigger to popup.
+   */
+  @Prop() offset = 0
 
   /**
    * If `true`, the modal can be closed with the escape key or the little close button.
@@ -188,17 +194,17 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   private debouncedGlobalClick = debounce((trigger: HTMLElement) => this.notifyGlobalClick(trigger), 10)
 
+  getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any {
+    const attributeValue = trigger.attributes.getNamedItem(attributeName)
+    return attributeValue ? attributeValue.value : componentValue
+  }
+
   private notifyGlobalClick(trigger: HTMLElement) {
     this.trigger = trigger
     this.lastTrigger = this.lastTrigger === undefined ? this.trigger : this.lastTrigger
 
-    // get variant type of the trigger
-    const triggerVariantAttr = trigger.attributes.getNamedItem('bal-popup-variant')
-    if (triggerVariantAttr) {
-      this.activeVariant = triggerVariantAttr.value as BalProps.BalPopupVariant
-    } else {
-      this.activeVariant = this.variant
-    }
+    this.activeVariant = this.getValue(trigger, 'bal-popup-variant', this.variant)
+    this.activeClosable = this.getValue(trigger, 'bal-popup-closable', this.closable)
 
     // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
@@ -223,7 +229,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   @Listen('keydown', { target: 'body' })
   async listenOnKeyDown(ev: KeyboardEvent) {
-    if (this.closable && this.presented && isEscapeKey(ev)) {
+    if (this.activeClosable && this.presented && isEscapeKey(ev)) {
       stopEventBubbling(ev)
       this.dismiss()
     }
@@ -370,7 +376,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   }
 
   private onCloseClick = (): void => {
-    if (this.closable) {
+    if (this.activeClosable) {
       this.dismiss()
     }
   }
@@ -413,10 +419,16 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
           }}
           ref={containerEl => (this.containerEl = containerEl)}
         >
+          <div
+            class={{
+              ...arrowBlock.class(),
+            }}
+            ref={arrowEl => (this.arrowEl = arrowEl)}
+          ></div>
           <bal-stack
             layout="vertical"
-            px={this.activeVariant === 'popover' ? 'large' : 'none'}
-            py="large"
+            px={this.activeVariant === 'popover' ? 'medium' : 'none'}
+            py="medium"
             class={{
               ...innerBlock.class(),
             }}
@@ -436,7 +448,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
                 >
                   {this.label}
                 </bal-heading>
-                {this.closable ? (
+                {this.activeClosable ? (
                   <bal-close data-test="bal-popup-close" onClick={() => this.onCloseClick()}></bal-close>
                 ) : (
                   ''
@@ -454,12 +466,6 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
               <slot></slot>
             </div>
           </bal-stack>
-          <div
-            class={{
-              ...arrowBlock.class(),
-            }}
-            ref={arrowEl => (this.arrowEl = arrowEl)}
-          ></div>
         </div>
       </Host>
     )

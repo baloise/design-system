@@ -39,6 +39,16 @@ export class BalStack implements ComponentInterface, Loggable {
   @Prop() space: BalProps.BalStackSpace = 'normal'
 
   /**
+   * Defines the space between the child elements. Default is normal.
+   */
+  @Prop() spaceRow?: BalProps.BalStackSpace
+
+  /**
+   * Defines the space between the child elements. Default is normal.
+   */
+  @Prop() spaceColumn?: BalProps.BalStackSpace
+
+  /**
    * Defines the horizontal padding left and right of the stack element.
    */
   @Prop() px: BalProps.BalStackPadding = ''
@@ -82,6 +92,8 @@ export class BalStack implements ComponentInterface, Loggable {
     const align = !!this.align
     const alignment = !!this.alignment
     const space = !!this.space
+    const spaceRow = !!this.spaceRow
+    const spaceColumn = !!this.spaceColumn
     const useWrap = !!this.useWrap
     const fitContent = !!this.fitContent
     const px = !!this.px
@@ -101,10 +113,12 @@ export class BalStack implements ComponentInterface, Loggable {
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`use-wrap `).class(useWrap),
+          ...block.modifier(`use-wrap`).class(useWrap),
           ...block.modifier(`layout-${layoutValue}`).class(layout || direction),
           ...block.modifier(`align-${alignValue}`).class(align || alignment),
           ...block.modifier(`space-${this.space}`).class(space),
+          ...block.modifier(`space-row-${this.spaceRow}`).class(spaceRow),
+          ...block.modifier(`space-row-${this.spaceColumn}`).class(spaceColumn),
           ...block.modifier(`px-${this.px}`).class(px),
           ...block.modifier(`py-${this.py}`).class(py),
           ...block.modifier(`fit-content`).class(fitContent),

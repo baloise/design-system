@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-angular",
-  "version": "13.4.3",
+  "version": "13.4.4",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

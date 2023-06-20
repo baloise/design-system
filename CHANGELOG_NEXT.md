@@ -12,7 +12,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-
 * add new language es, pl, pt, sv and fi ([1d6a73f](https://github.com/baloise/design-system/commit/1d6a73f2af53b730fccf0af48fe108e2f08ded4f))
 * adjust small spacing value to 0.75rem. Closes [#706](https://github.com/baloise/design-system/issues/706) ([2bdc29a](https://github.com/baloise/design-system/commit/2bdc29af2ed232d871a73ec5f754c49f77dceb97))
 * **angular:** add dismissAll method to the toast and snackbar service. Closes [#703](https://github.com/baloise/design-system/issues/703) ([4e9070a](https://github.com/baloise/design-system/commit/4e9070ad37e6a441c045cc39f7e91bfb09ea26cb))
@@ -143,7 +142,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [10.24.0](https://github.com/baloise/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)
-
 
 ### Features
 

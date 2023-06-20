@@ -18,7 +18,7 @@ export const StepIcon: FunctionalComponent<{ item: BalStepOption; isMobile: bool
       <bal-icon
         style={{ display: item.done ? 'block' : 'none' }}
         size={isMobile ? 'small' : ''}
-        color="white"
+        color={item.disabled ? 'grey' : 'white'}
         name="check"
       ></bal-icon>
       <span style={{ display: !item.done ? 'block' : 'none' }}>{item.failed ? '!' : (item.index || 0) + 1}</span>

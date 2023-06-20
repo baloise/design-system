@@ -1,0 +1,30 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-menu-flyout.vars'
+
+// Nav Menu Flyout
+// --------------------------------------------------
+
+.bal-nav-menu-flyout
+  position: relative
+  +unselectable
+  display: block
+  width: 100%
+  padding-top: 2.5rem
+  padding-bottom: 2.5rem
+  overflow-y: auto
+  max-height: calc(100vh - 90px - 48px - 16px)
+  width: calc( 100% + 1rem + 1rem)
+  margin-left: -1rem
+  margin-right: -1rem
+  +tablet
+    width: calc( 100% + 2.5rem + 2.5rem)
+    margin-left: -2.5rem
+    margin-right: -2.5rem
+  +desktop
+    width: calc( 100% + 3rem + 3rem)
+    margin-left: -3rem
+    margin-right: -3rem
+  +widescreen
+    max-height: calc(100vh - 96px - 48px - 16px)
+  &--active
+    border-top: 1px solid var(--bal-nav-menu-flyout-border-background)

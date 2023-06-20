@@ -883,6 +883,8 @@ export namespace Components {
     }
     interface BalDocTokensTextShadow {
     }
+    interface BalDocTokensZIndex {
+    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -1615,28 +1617,6 @@ export namespace Components {
          */
         "color": BalProps.BalLogoColor;
     }
-    interface BalMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalMetaBarContainer;
-        /**
-          * Tells when to hide the bar
-         */
-        "hidden": BalProps.BalMetaBarHidden;
-        /**
-          * Defines the position of the bar
-         */
-        "position": BalProps.BalMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size": BalProps.BalMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant": BalProps.BalMetaBarVariant;
-    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -1696,6 +1676,20 @@ export namespace Components {
     }
     interface BalModalHeader {
     }
+    interface BalNav {
+        /**
+          * Link level structure.
+         */
+        "buttons": BalProps.BalNavMetaButtons;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavContainer;
+        /**
+          * Link level structure.
+         */
+        "options": BalProps.BalNavOptions;
+    }
     interface BalNavLink {
         /**
           * If `true` the link can be clickable
@@ -1718,19 +1712,55 @@ export namespace Components {
          */
         "variant": BalProps.BalNavLinkVariant;
     }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
+    interface BalNavMenuBar {
         /**
-          * Defines the static column which is always aligned to the right
+          * If `true` the flyout is open
          */
-        "staticCol": BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
+        "active": boolean;
         /**
-          * Defines the color of the group
+          * Defines content width of the stage
          */
-        "color": BalProps.BalNavLinkGroupColor;
+        "containerSize": BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active": boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize": BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden": BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position": BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size": BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant": BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -2227,6 +2257,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Offset form trigger to popup.
+         */
+        "offset": number;
+        /**
           * If set it turns a popover into a fullscreen or a drawer on touch devices
          */
         "placement": BalProps.BalPopupPlacement;
@@ -2633,6 +2667,14 @@ export namespace Components {
           * Defines the space between the child elements. Default is normal.
          */
         "space": BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
@@ -3620,6 +3662,12 @@ declare global {
         prototype: HTMLBalDocTokensTextShadowElement;
         new (): HTMLBalDocTokensTextShadowElement;
     };
+    interface HTMLBalDocTokensZIndexElement extends Components.BalDocTokensZIndex, HTMLStencilElement {
+    }
+    var HTMLBalDocTokensZIndexElement: {
+        prototype: HTMLBalDocTokensZIndexElement;
+        new (): HTMLBalDocTokensZIndexElement;
+    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -3794,12 +3842,6 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
-    interface HTMLBalMetaBarElement extends Components.BalMetaBar, HTMLStencilElement {
-    }
-    var HTMLBalMetaBarElement: {
-        prototype: HTMLBalMetaBarElement;
-        new (): HTMLBalMetaBarElement;
-    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -3818,29 +3860,35 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
+    interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
+    }
+    var HTMLBalNavElement: {
+        prototype: HTMLBalNavElement;
+        new (): HTMLBalNavElement;
+    };
     interface HTMLBalNavLinkElement extends Components.BalNavLink, HTMLStencilElement {
     }
     var HTMLBalNavLinkElement: {
         prototype: HTMLBalNavLinkElement;
         new (): HTMLBalNavLinkElement;
     };
-    interface HTMLBalNavLinkGridElement extends Components.BalNavLinkGrid, HTMLStencilElement {
+    interface HTMLBalNavMenuBarElement extends Components.BalNavMenuBar, HTMLStencilElement {
     }
-    var HTMLBalNavLinkGridElement: {
-        prototype: HTMLBalNavLinkGridElement;
-        new (): HTMLBalNavLinkGridElement;
+    var HTMLBalNavMenuBarElement: {
+        prototype: HTMLBalNavMenuBarElement;
+        new (): HTMLBalNavMenuBarElement;
     };
-    interface HTMLBalNavLinkGridColElement extends Components.BalNavLinkGridCol, HTMLStencilElement {
+    interface HTMLBalNavMenuFlyoutElement extends Components.BalNavMenuFlyout, HTMLStencilElement {
     }
-    var HTMLBalNavLinkGridColElement: {
-        prototype: HTMLBalNavLinkGridColElement;
-        new (): HTMLBalNavLinkGridColElement;
+    var HTMLBalNavMenuFlyoutElement: {
+        prototype: HTMLBalNavMenuFlyoutElement;
+        new (): HTMLBalNavMenuFlyoutElement;
     };
-    interface HTMLBalNavLinkGroupElement extends Components.BalNavLinkGroup, HTMLStencilElement {
+    interface HTMLBalNavMetaBarElement extends Components.BalNavMetaBar, HTMLStencilElement {
     }
-    var HTMLBalNavLinkGroupElement: {
-        prototype: HTMLBalNavLinkGroupElement;
-        new (): HTMLBalNavLinkGroupElement;
+    var HTMLBalNavMetaBarElement: {
+        prototype: HTMLBalNavMetaBarElement;
+        new (): HTMLBalNavMetaBarElement;
     };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
@@ -4234,6 +4282,7 @@ declare global {
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
         "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
         "bal-doc-tokens-text-shadow": HTMLBalDocTokensTextShadowElement;
+        "bal-doc-tokens-z-index": HTMLBalDocTokensZIndexElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -4263,14 +4312,14 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
-        "bal-meta-bar": HTMLBalMetaBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
+        "bal-nav": HTMLBalNavElement;
         "bal-nav-link": HTMLBalNavLinkElement;
-        "bal-nav-link-grid": HTMLBalNavLinkGridElement;
-        "bal-nav-link-grid-col": HTMLBalNavLinkGridColElement;
-        "bal-nav-link-group": HTMLBalNavLinkGroupElement;
+        "bal-nav-menu-bar": HTMLBalNavMenuBarElement;
+        "bal-nav-menu-flyout": HTMLBalNavMenuFlyoutElement;
+        "bal-nav-meta-bar": HTMLBalNavMetaBarElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -5226,6 +5275,8 @@ declare namespace LocalJSX {
     }
     interface BalDocTokensTextShadow {
     }
+    interface BalDocTokensZIndex {
+    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -5988,28 +6039,6 @@ declare namespace LocalJSX {
          */
         "color"?: BalProps.BalLogoColor;
     }
-    interface BalMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalMetaBarContainer;
-        /**
-          * Tells when to hide the bar
-         */
-        "hidden"?: BalProps.BalMetaBarHidden;
-        /**
-          * Defines the position of the bar
-         */
-        "position"?: BalProps.BalMetaBarPosition;
-        /**
-          * Defines the height of the bar
-         */
-        "size"?: BalProps.BalMetaBarSize;
-        /**
-          * Defines the color variant
-         */
-        "variant"?: BalProps.BalMetaBarVariant;
-    }
     interface BalModal {
         /**
           * If `true`, the modal can be closed with the click outside of the modal
@@ -6067,6 +6096,20 @@ declare namespace LocalJSX {
     }
     interface BalModalHeader {
     }
+    interface BalNav {
+        /**
+          * Link level structure.
+         */
+        "buttons"?: BalProps.BalNavMetaButtons;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavContainer;
+        /**
+          * Link level structure.
+         */
+        "options"?: BalProps.BalNavOptions;
+    }
     interface BalNavLink {
         /**
           * If `true` the link can be clickable
@@ -6089,19 +6132,55 @@ declare namespace LocalJSX {
          */
         "variant"?: BalProps.BalNavLinkVariant;
     }
-    interface BalNavLinkGrid {
-    }
-    interface BalNavLinkGridCol {
+    interface BalNavMenuBar {
         /**
-          * Defines the static column which is always aligned to the right
+          * If `true` the flyout is open
          */
-        "staticCol"?: BalProps.BalNavLinkGridCol;
-    }
-    interface BalNavLinkGroup {
+        "active"?: boolean;
         /**
-          * Defines the color of the group
+          * Defines content width of the stage
          */
-        "color"?: BalProps.BalNavLinkGroupColor;
+        "containerSize"?: BalProps.BalNavMenuBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMenuBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMenuBarPosition;
+    }
+    interface BalNavMenuFlyout {
+        /**
+          * If `true` the flyout is open
+         */
+        "active"?: boolean;
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMenuFlyoutContainer;
+    }
+    interface BalNavMetaBar {
+        /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: BalProps.BalNavMetaBarContainer;
+        /**
+          * Tells when to hide the bar
+         */
+        "hidden"?: BalProps.BalNavMetaBarHidden;
+        /**
+          * Defines the position of the bar
+         */
+        "position"?: BalProps.BalNavMetaBarPosition;
+        /**
+          * Defines the height of the bar
+         */
+        "size"?: BalProps.BalNavMetaBarSize;
+        /**
+          * Defines the color variant
+         */
+        "variant"?: BalProps.BalNavMetaBarVariant;
     }
     interface BalNavbar {
         /**
@@ -6605,6 +6684,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Offset form trigger to popup.
+         */
+        "offset"?: number;
+        /**
           * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
@@ -7029,6 +7112,14 @@ declare namespace LocalJSX {
           * Defines the space between the child elements. Default is normal.
          */
         "space"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
         /**
           * Defines if the child elements will wrap to the next line if there is not enough space left
          */
@@ -7593,6 +7684,7 @@ declare namespace LocalJSX {
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
         "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
         "bal-doc-tokens-text-shadow": BalDocTokensTextShadow;
+        "bal-doc-tokens-z-index": BalDocTokensZIndex;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -7622,14 +7714,14 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
-        "bal-meta-bar": BalMetaBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
+        "bal-nav": BalNav;
         "bal-nav-link": BalNavLink;
-        "bal-nav-link-grid": BalNavLinkGrid;
-        "bal-nav-link-grid-col": BalNavLinkGridCol;
-        "bal-nav-link-group": BalNavLinkGroup;
+        "bal-nav-menu-bar": BalNavMenuBar;
+        "bal-nav-menu-flyout": BalNavMenuFlyout;
+        "bal-nav-meta-bar": BalNavMetaBar;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -7747,6 +7839,7 @@ declare module "@stencil/core" {
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
             "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
             "bal-doc-tokens-text-shadow": LocalJSX.BalDocTokensTextShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensTextShadowElement>;
+            "bal-doc-tokens-z-index": LocalJSX.BalDocTokensZIndex & JSXBase.HTMLAttributes<HTMLBalDocTokensZIndexElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
@@ -7776,14 +7869,14 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-meta-bar": LocalJSX.BalMetaBar & JSXBase.HTMLAttributes<HTMLBalMetaBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
+            "bal-nav": LocalJSX.BalNav & JSXBase.HTMLAttributes<HTMLBalNavElement>;
             "bal-nav-link": LocalJSX.BalNavLink & JSXBase.HTMLAttributes<HTMLBalNavLinkElement>;
-            "bal-nav-link-grid": LocalJSX.BalNavLinkGrid & JSXBase.HTMLAttributes<HTMLBalNavLinkGridElement>;
-            "bal-nav-link-grid-col": LocalJSX.BalNavLinkGridCol & JSXBase.HTMLAttributes<HTMLBalNavLinkGridColElement>;
-            "bal-nav-link-group": LocalJSX.BalNavLinkGroup & JSXBase.HTMLAttributes<HTMLBalNavLinkGroupElement>;
+            "bal-nav-menu-bar": LocalJSX.BalNavMenuBar & JSXBase.HTMLAttributes<HTMLBalNavMenuBarElement>;
+            "bal-nav-menu-flyout": LocalJSX.BalNavMenuFlyout & JSXBase.HTMLAttributes<HTMLBalNavMenuFlyoutElement>;
+            "bal-nav-meta-bar": LocalJSX.BalNavMetaBar & JSXBase.HTMLAttributes<HTMLBalNavMetaBarElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;

@@ -1,16 +1,16 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Listen, State } from '@stencil/core'
-import { BEM } from '../../utils/bem'
-import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { balBrowser } from '../../utils/browser'
+import { BEM } from '../../../utils/bem'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
-  tag: 'bal-meta-bar',
+  tag: 'bal-nav-meta-bar',
   styleUrls: {
-    css: 'bal-meta-bar.sass',
+    css: 'bal-nav-meta-bar.sass',
   },
 })
-export class MetaBar implements ComponentInterface, Loggable {
-  private metaBarId = `bal-meta-bar-${MetaBarIds++}`
+export class NavMetaBar implements ComponentInterface, Loggable {
+  private navMetaBarId = `bal-nav-meta-bar-${NavMetaBarIds++}`
   private previousY = 0
 
   @Element() el!: HTMLElement
@@ -32,36 +32,37 @@ export class MetaBar implements ComponentInterface, Loggable {
   /**
    * Defines the color variant
    */
-  @Prop() variant: BalProps.BalMetaBarVariant = 'primary'
+  @Prop() variant: BalProps.BalNavMetaBarVariant = 'primary'
 
   /**
    * Defines the height of the bar
    */
-  @Prop() size: BalProps.BalMetaBarSize = 'normal'
+  @Prop() size: BalProps.BalNavMetaBarSize = 'normal'
 
   /**
    * Tells when to hide the bar
    */
-  @Prop() hidden: BalProps.BalMetaBarHidden = 'none'
+  @Prop() hidden: BalProps.BalNavMetaBarHidden = 'none'
 
   /**
    * Defines the position of the bar
    */
-  @Prop() position: BalProps.BalMetaBarPosition = 'none'
+  @Prop() position: BalProps.BalNavMetaBarPosition = 'none'
 
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: BalProps.BalMetaBarContainer = 'default'
+  @Prop() containerSize: BalProps.BalNavMetaBarContainer = 'default'
 
   /**
    * LISTENERS
    * ------------------------------------------------------
    */
 
-  @Listen('scroll', { target: 'window', passive: false })
+  @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    if (balBrowser.hasWindow && this.position === 'sticky-top') {
+    if (balBrowser.hasWindow && balBrowser.hasDocument && this.position === 'sticky-top') {
+      console.log('handleScroll')
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -70,6 +71,25 @@ export class MetaBar implements ComponentInterface, Loggable {
 
       this.isHidden = !isOnTop && (didMoveDownwards || isOverViewportBottom || isOverViewportTop)
       this.previousY = window.scrollY
+
+      const transformElements = Array.from(document.querySelectorAll('.bal-nav-meta-bar-transform'))
+      if (transformElements.length > 0) {
+        for (let index = 0; index < transformElements.length; index++) {
+          const transformElement = transformElements[index]
+          if (this.isHidden) {
+            if (this.size === 'small') {
+              transformElement.classList.remove(`bal-nav-meta-bar-transform-normal`)
+              transformElement.classList.add(`bal-nav-meta-bar-transform-small`)
+            } else {
+              transformElement.classList.remove(`bal-nav-meta-bar-transform-small`)
+              transformElement.classList.add(`bal-nav-meta-bar-transform-normal`)
+            }
+          } else {
+            transformElement.classList.remove(`bal-nav-meta-bar-transform-small`)
+            transformElement.classList.remove(`bal-nav-meta-bar-transform-normal`)
+          }
+        }
+      }
     }
   }
 
@@ -79,11 +99,11 @@ export class MetaBar implements ComponentInterface, Loggable {
    */
 
   render() {
-    const block = BEM.block('meta-bar')
+    const block = BEM.block('nav-meta-bar')
 
     return (
       <Host
-        id={this.metaBarId}
+        id={this.navMetaBarId}
         class={{
           ...block.class(),
           ...block.modifier(`variant-${this.variant}`).class(),
@@ -91,7 +111,6 @@ export class MetaBar implements ComponentInterface, Loggable {
           ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
           ...block.modifier(`hidden-mobile`).class(this.hidden === 'mobile'),
           ...block.modifier(`hidden-tablet`).class(this.hidden === 'tablet'),
-          ...block.modifier(`position-sticky-top-transformed-${this.size}`).class(this.isHidden),
         }}
       >
         <div
@@ -107,4 +126,4 @@ export class MetaBar implements ComponentInterface, Loggable {
   }
 }
 
-let MetaBarIds = 0
+let NavMetaBarIds = 0

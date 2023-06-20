@@ -10,7 +10,6 @@
   align-items: center
   justify-content: center
   overflow: hidden
-  z-index: 5
   font-weight: var(--bal-weight-bold)
   border-radius: var(--bal-steps-step-icon-radius)
   font-size: var(--bal-size-small)
@@ -33,10 +32,6 @@
     border-color: var(--bal-steps-step-border-color-active)
     background: var(--bal-steps-step-icon-background-active)
     color: var(--bal-steps-step-icon-text-color-active)
-  &--disabled
-    border-color: var(--bal-steps-step-border-color-disabled)
-    background: var(--bal-steps-step-icon-background-disabled)
-    color: var(--bal-steps-step-icon-text-color-disabled)
   &--done
     border-color: var(--bal-steps-step-border-color-done)
     background: var(--bal-steps-step-icon-background-done)
@@ -50,3 +45,7 @@
       font-size: var(--bal-size-tablet-large)
     +desktop
       font-size: var(--bal-size-desktop-large)
+  &--disabled
+    border-color: var(--bal-steps-step-border-color-disabled)
+    background: var(--bal-steps-step-icon-background-disabled)
+    color: var(--bal-steps-step-icon-text-color-disabled)

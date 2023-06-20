@@ -1,6 +1,8 @@
-describe('bal-meta-bar', () => {
+describe('bal-nav-meta-bar', () => {
   describe('basic', () => {
-    beforeEach(() => cy.visit('/components/bal-meta-bar/test/bal-meta-bar.visual.html').waitForDesignSystem())
+    beforeEach(() =>
+      cy.visit('/components/bal-nav/bal-nav-meta-bar/test/bal-nav-meta-bar.visual.html').waitForDesignSystem(),
+    )
 
     it('basic component', () => {
       cy.platform('desktop')

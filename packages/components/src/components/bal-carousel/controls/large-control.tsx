@@ -42,6 +42,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         inverted={inverted}
         onClick={() => onPreviousClick()}
         disabled={isFirst}
+        aria-hidden={isFirst && areControlsHidden ? 'true' : null}
         data-testid="bal-carousel-control-left"
       ></bal-button>
       <bal-button
@@ -56,6 +57,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         inverted={inverted}
         onClick={() => onNextClick()}
         disabled={isLast}
+        aria-hidden={isLast && areControlsHidden ? 'true' : null}
         data-testid="bal-carousel-control-right"
       ></bal-button>
     </div>
