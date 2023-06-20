@@ -437,6 +437,12 @@
         <script>
           const nav = document.getElementById('nav')
 
+          const logoLinkItem = {
+            href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+            ariaLabel: 'Homepage',
+            htmlTitle: 'Homepage',
+          }
+
           const serviceLinkItem = {
             value: 'Services',
             label: 'Services',
@@ -478,6 +484,8 @@
             sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
             serviceLinkItems: [serviceLinkItem],
           })
+
+          nav.logo = logoLinkItem
 
           nav.buttons = [
             {

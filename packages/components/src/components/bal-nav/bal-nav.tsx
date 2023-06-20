@@ -17,6 +17,7 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { i18nNavBars } from './bal-nav.i18n'
+import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 
 @Component({
   tag: 'bal-nav',
@@ -64,6 +65,11 @@ export class NavMetaBar
    * Defines content width of the stage
    */
   @Prop() containerSize: BalProps.BalNavContainer = 'default'
+
+  /**
+   * Link level structure.
+   */
+  @Prop() logo?: BalProps.BalNavLogoLink
 
   /**
    * Link level structure.
@@ -250,7 +256,7 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
-  private get activeMenuLinkItems(): BalProps.BalNavMenuLinkItem[] {
+  private get activeMenuLinkItems(): NavMenuLinkItem[] {
     const foundLinkItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
     if (foundLinkItem) {
       return foundLinkItem.mainLinkItems
@@ -258,7 +264,7 @@ export class NavMetaBar
     return []
   }
 
-  private get activeMenuLinkItem(): BalProps.BalNavMenuLinkItem | undefined {
+  private get activeMenuLinkItem(): NavMenuLinkItem | undefined {
     const foundLinkItem = this.activeMenuLinkItems.find(item => item.value === this.activeMenuLinkValue)
     return foundLinkItem ? foundLinkItem : undefined
   }
@@ -307,7 +313,7 @@ export class NavMetaBar
           {this.isDesktop ? (
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
-                <bal-logo></bal-logo>
+                {this.renderLogo()}
                 <bal-tabs context="navigation" accordion spaceless value={this.activeMenuLinkValue}>
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
@@ -335,7 +341,7 @@ export class NavMetaBar
         {this.isTouch ? (
           <bal-nav-meta-bar variant="white" size="normal">
             <bal-stack space="auto">
-              <bal-logo></bal-logo>
+              {this.renderLogo()}
               <bal-stack space="x-small" fit-content>
                 {this.metaButtons.map(button => button.renderAtTouchTopMetaBar())}
                 <bal-button
@@ -395,7 +401,7 @@ export class NavMetaBar
     )
   }
 
-  renderGridLinks(linkItem?: BalProps.BalNavMenuLinkItem) {
+  renderGridLinks(linkItem?: NavMenuLinkItem) {
     if (!linkItem) {
       return ''
     }
@@ -437,6 +443,20 @@ export class NavMetaBar
           ),
         )}
       </bal-list>
+    )
+  }
+
+  renderLogo() {
+    const Link = this.logo?.href ? 'a' : this.logo?.clickable ? 'button' : 'div'
+    return (
+      <Link
+        aria-label={this.logo?.ariaLabel}
+        title={this.logo?.htmlTitle}
+        href={this.logo?.href}
+        target={this.logo?.target}
+      >
+        <bal-logo></bal-logo>
+      </Link>
     )
   }
 }

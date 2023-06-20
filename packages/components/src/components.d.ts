@@ -1689,6 +1689,10 @@ export namespace Components {
         /**
           * Link level structure.
          */
+        "logo"?: BalProps.BalNavLogoLink;
+        /**
+          * Link level structure.
+         */
         "options": BalProps.BalNavOptions;
     }
     interface BalNavLink {
@@ -6141,6 +6145,10 @@ declare namespace LocalJSX {
           * Defines content width of the stage
          */
         "containerSize"?: BalProps.BalNavContainer;
+        /**
+          * Link level structure.
+         */
+        "logo"?: BalProps.BalNavLogoLink;
         /**
           * Link level structure.
          */
