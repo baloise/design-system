@@ -73,7 +73,6 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     <TagType
       id={`${tabsId}-button-${TabButtonIds++}`}
       role="tab"
-      color="link"
       aria-selected={item.active ? 'true' : 'false'}
       class={{
         ...bemEl.class(),
