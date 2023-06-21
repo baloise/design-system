@@ -834,7 +834,12 @@ export class Select implements ComponentInterface, Loggable {
   private handleInputBlur = (ev: FocusEvent) => {
     preventDefault(ev)
     const target = ev.relatedTarget as null | HTMLElement
-    if (target === null || (target && target.nodeName && target.nodeName === 'BAL-MODAL')) {
+    if (
+      target === null ||
+      (target &&
+        target.nodeName &&
+        (target.nodeName === 'BAL-MODAL' || target.nodeName === 'INPUT' || target.nodeName === 'BUTTON'))
+    ) {
       this.validateAfterBlur(isHuman)
     }
     this.hasFocus = false
