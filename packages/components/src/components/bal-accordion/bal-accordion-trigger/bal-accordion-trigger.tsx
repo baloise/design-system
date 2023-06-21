@@ -55,6 +55,16 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
   @Prop() closeIcon = ''
 
   /**
+   * The color to use from your application's color palette.
+   */
+  @Prop() color: BalProps.BalButtonColor = 'info'
+
+  /**
+   * Size of the button
+   */
+  @Prop() size: BalProps.BalButtonSize = ''
+
+  /**
    * @internal
    */
   @Prop({ mutable: true, reflect: true }) active = false
@@ -139,9 +149,10 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             part={buttonPart}
             data-testid="bal-accordion-trigger"
             expanded={true}
-            color={'info'}
             icon={icon}
             iconTurn={turn}
+            color={this.color}
+            size={this.size}
             onClick={this.onClick}
           >
             {label}
