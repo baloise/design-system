@@ -365,57 +365,6 @@ export class NavMetaBar
         {this.isTouch && this.isFlyoutActive ? (
           <div class={{ ...flyoutBlock.class() }}>
             <div class="container">
-              <bal-list border accordion-one-level>
-                {this.linkItems.map(metaItem => (
-                  <bal-list-item accordion>
-                    <bal-list-item-accordion-head icon="nav-go-down">
-                      <bal-list-item-content>
-                        <bal-list-item-title visual-level="large" level="span">
-                          {metaItem.label}
-                        </bal-list-item-title>
-                      </bal-list-item-content>
-                    </bal-list-item-accordion-head>
-                    <bal-list-item-accordion-body>
-                      <bal-list accordion-one-level size="small">
-                        {metaItem.mainLinkItems.map(menuItem =>
-                          menuItem.isLink ? (
-                            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
-                              <bal-list-item-content>
-                                <bal-list-item-title visual-level="medium" level="span">
-                                  {menuItem.label}
-                                </bal-list-item-title>
-                              </bal-list-item-content>
-                            </bal-list-item>
-                          ) : (
-                            <bal-list-item accordion sub-accordion-item>
-                              <bal-list-item-accordion-head icon="nav-go-down">
-                                <bal-list-item-content>
-                                  <bal-list-item-title visual-level="medium" level="span">
-                                    {menuItem.label}
-                                  </bal-list-item-title>
-                                </bal-list-item-content>
-                              </bal-list-item-accordion-head>
-                              <bal-list-item-accordion-body>
-                                <div style={{ width: '100%' }}>
-                                  <bal-nav-link
-                                    role="listitem"
-                                    variant="overview"
-                                    href={this.activeMenuLinkItem?.overviewLink?.href}
-                                    target={this.activeMenuLinkItem?.overviewLink?.target}
-                                  >
-                                    {this.activeMenuLinkItem?.overviewLink?.label}
-                                  </bal-nav-link>
-                                  {this.renderGridLinks(menuItem)}
-                                </div>
-                              </bal-list-item-accordion-body>
-                            </bal-list-item>
-                          ),
-                        )}
-                      </bal-list>
-                    </bal-list-item-accordion-body>
-                  </bal-list-item>
-                ))}
-              </bal-list>
               {this.linkItems.length > 1 ? (
                 <bal-list border accordion-one-level>
                   {this.linkItems.map(metaItem => (
