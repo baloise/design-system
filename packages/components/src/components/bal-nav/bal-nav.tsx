@@ -343,6 +343,9 @@ export class NavMetaBar
           ) : (
             ''
           )}
+          <div>
+            <slot></slot>
+          </div>
         </div>
         {/*
           Touch Variant
@@ -413,9 +416,6 @@ export class NavMetaBar
         ) : (
           ''
         )}
-        <div>
-          <slot></slot>
-        </div>
       </Host>
     )
   }
