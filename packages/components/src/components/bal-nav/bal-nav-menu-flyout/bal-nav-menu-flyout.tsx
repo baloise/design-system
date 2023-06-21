@@ -31,11 +31,6 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
    */
 
   /**
-   * Defines content width of the stage
-   */
-  @Prop() containerSize: BalProps.BalNavMenuFlyoutContainer = 'default'
-
-  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -89,7 +84,6 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
         <div
           class={{
             container: true,
-            [`is-${this.containerSize}`]: this.containerSize !== 'default',
           }}
         >
           <slot></slot>

@@ -62,11 +62,6 @@ export class NavMetaBar
    */
 
   /**
-   * Defines content width of the stage
-   */
-  @Prop() containerSize: BalProps.BalNavContainer = 'default'
-
-  /**
    * Link level structure.
    */
   @Prop() logo?: BalProps.BalNavLogoLink

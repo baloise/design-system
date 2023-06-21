@@ -50,11 +50,6 @@ export class NavMetaBar implements ComponentInterface, Loggable {
   @Prop() position: BalProps.BalNavMetaBarPosition = 'none'
 
   /**
-   * Defines content width of the stage
-   */
-  @Prop() containerSize: BalProps.BalNavMetaBarContainer = 'default'
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
@@ -116,7 +111,6 @@ export class NavMetaBar implements ComponentInterface, Loggable {
         <div
           class={{
             container: true,
-            [`is-${this.containerSize}`]: this.containerSize !== 'default',
           }}
         >
           <slot></slot>
