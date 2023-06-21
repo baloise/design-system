@@ -1,5 +1,25 @@
 # @baloise/design-system-components
 
+## 13.5.0
+
+### Minor Changes
+
+- [#958](https://github.com/baloise/design-system/pull/958) - accordion trigger accepts color and size to set for the button
+
+### Patch Changes
+
+- [#958](https://github.com/baloise/design-system/pull/958) - accordion sets initial active state
+
+- [#959](https://github.com/baloise/design-system/pull/959) - list title and subtitle have text align left
+
+- [#960](https://github.com/baloise/design-system/pull/960) - select validates after blur on button and input
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.5.0
+  - @baloise/design-system-fonts@13.5.0
+  - @baloise/design-system-icons@13.5.0
+  - @baloise/design-system-tokens@13.5.0
+
 ## 13.4.4
 
 ### Patch Changes
