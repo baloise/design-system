@@ -13,7 +13,7 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section>
-          <bal-accordion>
+          <bal-accordion data-testid="basic">
             <bal-accordion-details>
               <p class="p-medium">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -30,7 +30,7 @@
         </section>
         <hr />
         <section>
-          <bal-accordion>
+          <bal-accordion data-testid="stack">
             <bal-accordion-summary trigger>
               <bal-stack>
                 <bal-icon color="auto" size="large"></bal-icon>
@@ -57,6 +57,23 @@
                 eius quos error atque inventore vitae. Iste exercitationem illo voluptate laudantium voluptatem ipsa?
               </p>
             </bal-accordion-details>
+          </bal-accordion>
+        </section>
+        <hr />
+        <section>
+          <bal-accordion active data-testid="button">
+            <bal-accordion-details>
+              <p class="p-medium">Accordion Content</p>
+            </bal-accordion-details>
+            <bal-accordion-summary>
+              <bal-accordion-trigger
+                button
+                color="primary"
+                size="small"
+                close-label="Show less"
+                open-label="Show more"
+              ></bal-accordion-trigger>
+            </bal-accordion-summary>
           </bal-accordion>
         </section>
       </main>
