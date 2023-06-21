@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalResizeObserver, ListenToResize } from '../../../utils/resize'
