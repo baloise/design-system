@@ -437,6 +437,12 @@
         <script>
           const nav = document.getElementById('nav')
 
+          const logoLinkItem = {
+            href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+            ariaLabel: 'Homepage',
+            htmlTitle: 'Homepage',
+          }
+
           const serviceLinkItem = {
             value: 'Services',
             label: 'Services',
@@ -478,6 +484,8 @@
             sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
             serviceLinkItems: [serviceLinkItem],
           })
+
+          nav.logo = logoLinkItem
 
           nav.buttons = [
             {
@@ -521,20 +529,24 @@
             {
               value: 'privatkunden',
               label: 'Privatkunden',
+              active: true,
               mainLinkItems: [
                 {
                   value: 'Versichern',
                   label: 'Versichern',
+                  active: true,
                   sectionLinkItems: [
                     {
                       value: 'Wohnen & Recht',
                       label: 'Wohnen & Recht',
                       href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                      active: true,
                       linkItems: [
                         {
                           value: 'Hausratversicherung',
                           label: 'Hausratversicherung',
                           clickable: true,
+                          active: true,
                         },
                         {
                           value: 'Haushaltversicherung für alle unter 30',
@@ -925,6 +937,7 @@
             {
               value: 'unternehmenskunden',
               label: 'Unternehmenskunden',
+              active: false,
               mainLinkItems: [
                 mainLinkItem('Versichern'),
                 mainLinkItem('Firma gründen'),

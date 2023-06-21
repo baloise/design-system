@@ -17,6 +17,7 @@ import {
   defaultConfig,
 } from '../../utils/config'
 import { i18nNavBars } from './bal-nav.i18n'
+import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 
 @Component({
   tag: 'bal-nav',
@@ -68,6 +69,11 @@ export class NavMetaBar
   /**
    * Link level structure.
    */
+  @Prop() logo?: BalProps.BalNavLogoLink
+
+  /**
+   * Link level structure.
+   */
   @Prop() options: BalProps.BalNavOptions = []
 
   @State() linkItems: NavMetaLinkItem[] = []
@@ -75,6 +81,7 @@ export class NavMetaBar
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
+    this.updateTabs()
   }
 
   /**
@@ -100,6 +107,7 @@ export class NavMetaBar
 
   componentWillLoad() {
     this.onOptionChange()
+    this.updateTabs()
   }
 
   disconnectedCallback() {
@@ -175,6 +183,21 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
+  private updateTabs() {
+    const previousActiveMetaLinkValue = this.activeMetaLinkValue
+    const newActiveMetaLinkValue = this.linkItems.find(item => item.active)?.value || previousActiveMetaLinkValue
+    if (previousActiveMetaLinkValue !== newActiveMetaLinkValue) {
+      this.activeMetaLinkValue = newActiveMetaLinkValue
+    }
+
+    const previousActiveMenuLinkValue = this.activeMenuLinkValue
+    const newActiveMenuLinkValue =
+      this.activeMenuLinkItems.find(item => item.active)?.value || previousActiveMenuLinkValue
+    if (previousActiveMenuLinkValue !== newActiveMenuLinkValue) {
+      this.activeMenuLinkValue = newActiveMenuLinkValue
+    }
+  }
+
   /**
    * EVENT BINDING
    * ------------------------------------------------------
@@ -233,7 +256,7 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
-  private get activeMenuLinkItems(): BalProps.BalNavMenuLinkItem[] {
+  private get activeMenuLinkItems(): NavMenuLinkItem[] {
     const foundLinkItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
     if (foundLinkItem) {
       return foundLinkItem.mainLinkItems
@@ -241,7 +264,7 @@ export class NavMetaBar
     return []
   }
 
-  private get activeMenuLinkItem(): BalProps.BalNavMenuLinkItem | undefined {
+  private get activeMenuLinkItem(): NavMenuLinkItem | undefined {
     const foundLinkItem = this.activeMenuLinkItems.find(item => item.value === this.activeMenuLinkValue)
     return foundLinkItem ? foundLinkItem : undefined
   }
@@ -266,9 +289,19 @@ export class NavMetaBar
           {this.isDesktop ? (
             <bal-nav-meta-bar variant="primary" size="small" position="sticky-top">
               <bal-stack space="auto">
-                <bal-tabs spaceless inverted context="meta" onBalChange={ev => this.onMetaBarTabChange(ev)}>
-                  {this.linkItems.map(item => item.render())}
-                </bal-tabs>
+                {this.linkItems.length > 1 ? (
+                  <bal-tabs
+                    spaceless
+                    inverted
+                    context="meta"
+                    value={this.activeMetaLinkValue}
+                    onBalChange={ev => this.onMetaBarTabChange(ev)}
+                  >
+                    {this.linkItems.map(item => item.render())}
+                  </bal-tabs>
+                ) : (
+                  <span></span>
+                )}
                 <bal-stack space="x-small" fit-content>
                   {this.metaButtons.map(button => button.renderAtMetaBar())}
                 </bal-stack>
@@ -280,8 +313,8 @@ export class NavMetaBar
           {this.isDesktop ? (
             <bal-nav-menu-bar position="fixed-top" ref={menuBarEl => (this.menuBarEl = menuBarEl)}>
               <bal-stack space="auto" space-row="none" use-wrap>
-                <bal-logo></bal-logo>
-                <bal-tabs context="navigation" accordion spaceless>
+                {this.renderLogo()}
+                <bal-tabs context="navigation" accordion spaceless value={this.activeMenuLinkValue}>
                   {this.linkItems
                     .find(item => item.value === this.activeMetaLinkValue)
                     ?.mainLinkItems.map(item =>
@@ -318,7 +351,7 @@ export class NavMetaBar
         {this.isTouch ? (
           <bal-nav-meta-bar variant="white" size="normal">
             <bal-stack space="auto">
-              <bal-logo></bal-logo>
+              {this.renderLogo()}
               <bal-stack space="x-small" fit-content>
                 {this.metaButtons.map(button => button.renderAtTouchTopMetaBar())}
                 <bal-button
@@ -388,6 +421,26 @@ export class NavMetaBar
                   </bal-list-item>
                 ))}
               </bal-list>
+              {this.linkItems.length > 1 ? (
+                <bal-list border accordion-one-level>
+                  {this.linkItems.map(metaItem => (
+                    <bal-list-item accordion>
+                      <bal-list-item-accordion-head icon="nav-go-down">
+                        <bal-list-item-content>
+                          <bal-list-item-title visual-level="large" level="span">
+                            {metaItem.label}
+                          </bal-list-item-title>
+                        </bal-list-item-content>
+                      </bal-list-item-accordion-head>
+                      <bal-list-item-accordion-body>
+                        {this.renderTouchMenuAccordions(metaItem)}
+                      </bal-list-item-accordion-body>
+                    </bal-list-item>
+                  ))}
+                </bal-list>
+              ) : (
+                this.renderTouchMenuAccordions(this.linkItems[0])
+              )}
             </div>
           </div>
         ) : (
@@ -409,7 +462,7 @@ export class NavMetaBar
     )
   }
 
-  renderGridLinks(linkItem?: BalProps.BalNavMenuLinkItem) {
+  renderGridLinks(linkItem?: NavMenuLinkItem) {
     if (!linkItem) {
       return ''
     }
@@ -420,6 +473,62 @@ export class NavMetaBar
           {linkItem.serviceLinkItems?.map(itemGroup => itemGroup.render())}
         </bal-nav-link-grid-col>
       </bal-nav-link-grid>
+    )
+  }
+
+  renderTouchMenuAccordions(metaItem: NavMetaLinkItem) {
+    return (
+      <bal-list accordion-one-level size="small">
+        {metaItem.mainLinkItems.map(menuItem =>
+          menuItem.isLink ? (
+            <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
+              <bal-list-item-content>
+                <bal-list-item-title visual-level="medium" level="span">
+                  {menuItem.label}
+                </bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+          ) : (
+            <bal-list-item accordion sub-accordion-item>
+              <bal-list-item-accordion-head icon="nav-go-down">
+                <bal-list-item-content>
+                  <bal-list-item-title visual-level="medium" level="span">
+                    {menuItem.label}
+                  </bal-list-item-title>
+                </bal-list-item-content>
+              </bal-list-item-accordion-head>
+              <bal-list-item-accordion-body>
+                <div style={{ width: '100%' }}>
+                  <bal-nav-link
+                    role="listitem"
+                    variant="overview"
+                    href={this.activeMenuLinkItem?.overviewLink?.href}
+                    target={this.activeMenuLinkItem?.overviewLink?.target}
+                  >
+                    {this.activeMenuLinkItem?.overviewLink?.label}
+                  </bal-nav-link>
+                  {this.renderGridLinks(menuItem)}
+                </div>
+              </bal-list-item-accordion-body>
+            </bal-list-item>
+          ),
+        )}
+      </bal-list>
+    )
+  }
+
+  renderLogo() {
+    const Link = this.logo?.href ? 'a' : this.logo?.clickable ? 'button' : 'div'
+    return (
+      <Link
+        class="bal-nav__logo"
+        aria-label={this.logo?.ariaLabel}
+        title={this.logo?.htmlTitle}
+        href={this.logo?.href}
+        target={this.logo?.target}
+      >
+        <bal-logo></bal-logo>
+      </Link>
     )
   }
 }
