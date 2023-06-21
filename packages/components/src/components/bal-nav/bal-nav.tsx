@@ -447,16 +447,16 @@ export class NavMetaBar
                 </bal-list-item-content>
               </bal-list-item-accordion-head>
               <bal-list-item-accordion-body>
-                 <div style={{ width: '100%' }}>
-                   <bal-nav-link
-                     role="listitem"
-                     variant="overview"
-                     href={this.activeMenuLinkItem?.overviewLink?.href}
-                     target={this.activeMenuLinkItem?.overviewLink?.target}
-                     >
-                     {this.activeMenuLinkItem?.overviewLink?.label}
-                   </bal-nav-link>
-                   {this.renderGridLinks(menuItem)}
+                <div style={{ width: '100%' }}>
+                  <bal-nav-link
+                    role="listitem"
+                    variant="overview"
+                    href={this.activeMenuLinkItem?.overviewLink?.href}
+                    target={this.activeMenuLinkItem?.overviewLink?.target}
+                  >
+                    {this.activeMenuLinkItem?.overviewLink?.label}
+                  </bal-nav-link>
+                  {this.renderGridLinks(menuItem)}
                 </div>
               </bal-list-item-accordion-body>
             </bal-list-item>
@@ -470,6 +470,7 @@ export class NavMetaBar
     const Link = this.logo?.href ? 'a' : this.logo?.clickable ? 'button' : 'div'
     return (
       <Link
+        class="bal-nav__logo"
         aria-label={this.logo?.ariaLabel}
         title={this.logo?.htmlTitle}
         href={this.logo?.href}
