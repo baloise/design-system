@@ -6,7 +6,7 @@ import { TabLabel } from './tab-label'
 
 export interface TabButtonProps {
   item: BalTabOption
-  tabsId: string,
+  tabsId: string
   isFirst: boolean
   isLast: boolean
   isMobile: boolean
@@ -63,12 +63,12 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   const TagType = item.href === undefined || item.href === '' ? 'button' : 'a'
   const attrs =
     TagType === 'button'
-      ? { type: "button" }
+      ? { type: 'button' }
       : {
           href: item.href,
           target: item.target,
         }
-    
+
   return (
     <TagType
       id={`${tabsId}-button-${TabButtonIds++}`}
