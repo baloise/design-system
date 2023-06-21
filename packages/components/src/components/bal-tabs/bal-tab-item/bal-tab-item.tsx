@@ -114,7 +114,7 @@ export class TabItem {
         id={this.tabPanelID}
         role="tabpanel"
         aria-label={this.label}
-        aria-hidden={!this.isActive ? "true" : "false"}
+        aria-hidden={!this.isActive ? 'true' : 'false'}
         tabindex={this.isActive ? '0' : '-1'}
         class={{
           'bal-tab-item': true,
