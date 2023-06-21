@@ -14,7 +14,6 @@ First import the bal-icon module and the SVG icon.
 Then use it directly with the `bal-icon` component inside your app component.
 
 ```typescript
-import { BalIconModule } from '@baloise/design-system-components-angular'
 import { balIconAccount } from '@baloise/design-system-icons'
 
 @Component({
@@ -22,7 +21,7 @@ import { balIconAccount } from '@baloise/design-system-icons'
   template: '<bal-icon [svg]="balIconAccount"></bal-icon>',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, BalIconModule],
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleComponent {}
