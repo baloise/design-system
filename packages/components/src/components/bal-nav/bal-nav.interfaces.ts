@@ -19,6 +19,7 @@ namespace BalProps {
   }
 
   export interface BalNavMenuLinkItem extends BalNavLinkItem {
+    overviewLink?: BalNavLinkItem
     sectionLinkItems?: BalNavSectionLinkItem[]
     serviceLinkItems?: BalNavServiceLinkItem[]
   }

@@ -1733,10 +1733,6 @@ export namespace Components {
     }
     interface BalNavMenuBar {
         /**
-          * If `true` the flyout is open
-         */
-        "active": boolean;
-        /**
           * Defines content width of the stage
          */
         "containerSize": BalProps.BalNavMenuBarContainer;
@@ -1750,10 +1746,6 @@ export namespace Components {
         "position": BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
-        /**
-          * If `true` the flyout is open
-         */
-        "active": boolean;
         /**
           * Defines content width of the stage
          */
@@ -6192,10 +6184,6 @@ declare namespace LocalJSX {
     }
     interface BalNavMenuBar {
         /**
-          * If `true` the flyout is open
-         */
-        "active"?: boolean;
-        /**
           * Defines content width of the stage
          */
         "containerSize"?: BalProps.BalNavMenuBarContainer;
@@ -6209,10 +6197,6 @@ declare namespace LocalJSX {
         "position"?: BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
-        /**
-          * If `true` the flyout is open
-         */
-        "active"?: boolean;
         /**
           * Defines content width of the stage
          */

@@ -28,11 +28,6 @@ export class NavMenuFlyout implements ComponentInterface, Loggable {
    */
 
   /**
-   * If `true` the flyout is open
-   */
-  @Prop() active = false
-
-  /**
    * Defines content width of the stage
    */
   @Prop() containerSize: BalProps.BalNavMenuFlyoutContainer = 'default'
@@ -55,7 +50,6 @@ export class NavMenuFlyout implements ComponentInterface, Loggable {
         id={this.navMenuFlyoutId}
         class={{
           ...block.class(),
-          ...block.modifier('active').class(this.active),
         }}
       >
         <div

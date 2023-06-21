@@ -28,11 +28,6 @@ export class NavMenuBar implements ComponentInterface, Loggable {
    */
 
   /**
-   * If `true` the flyout is open
-   */
-  @Prop() active = false
-
-  /**
    * Tells when to hide the bar
    */
   @Prop() hidden: BalProps.BalNavMenuBarHidden = 'none'
@@ -55,7 +50,6 @@ export class NavMenuBar implements ComponentInterface, Loggable {
   componentWillRender() {
     const flyout = this.flyoutElement
     if (flyout) {
-      flyout.active = this.active
       flyout.containerSize = this.containerSize
     }
   }
