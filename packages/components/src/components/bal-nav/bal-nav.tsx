@@ -369,7 +369,7 @@ export class NavMetaBar
                 <bal-list border accordion-one-level>
                   {this.linkItems.map(metaItem => (
                     <bal-list-item accordion>
-                      <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-accordion-head icon="nav-go-down" accordion-open={metaItem.active}>
                         <bal-list-item-content>
                           <bal-list-item-title visual-level="large" level="span">
                             {metaItem.label}
@@ -434,7 +434,7 @@ export class NavMetaBar
             </bal-list-item>
           ) : (
             <bal-list-item accordion sub-accordion-item>
-              <bal-list-item-accordion-head icon="nav-go-down">
+              <bal-list-item-accordion-head icon="nav-go-down" accordion-open={menuItem.active}>
                 <bal-list-item-content>
                   <bal-list-item-title visual-level="medium" level="span">
                     {menuItem.label}
