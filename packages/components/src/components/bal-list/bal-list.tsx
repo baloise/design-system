@@ -60,7 +60,7 @@ export class List {
           ...block.modifier('nested').class(nested),
           ...block.modifier('disabled').class(this.disabled),
           ...block.modifier('border').class(this.border),
-          ...block.modifier(`size-${this.size}`).class(this.size !== ''),
+          ...block.modifier(`size-${this.size || 'normal'}`).class(),
           ...block.modifier(`background-${this.background}`).class(),
         }}
       >

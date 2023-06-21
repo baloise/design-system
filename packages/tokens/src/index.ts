@@ -482,6 +482,7 @@ const tokens = {
     width: '2px',
     colors: {
       'primary': 'primary-5',
+      'grey-light': 'grey-2',
       'grey': 'grey-3',
       'grey-dark': 'grey-4',
       'warning': 'warning-5',

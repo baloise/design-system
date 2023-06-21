@@ -371,7 +371,7 @@ export class NavMetaBar
           <div class={{ ...flyoutBlock.class() }}>
             <div class="container">
               {this.linkItems.length > 1 ? (
-                <bal-list border accordion-one-level>
+                <bal-list border accordion-one-level size="large">
                   {this.linkItems.map(metaItem => (
                     <bal-list-item accordion>
                       <bal-list-item-accordion-head icon="nav-go-down">
@@ -382,6 +382,15 @@ export class NavMetaBar
                         </bal-list-item-content>
                       </bal-list-item-accordion-head>
                       <bal-list-item-accordion-body>
+                        <bal-nav-link
+                          role="listitem"
+                          variant="overview"
+                          href={metaItem.overviewLink?.href}
+                          target={metaItem.overviewLink?.target}
+                        >
+                          {metaItem.overviewLink?.label}
+                        </bal-nav-link>
+                        <bal-divider space="large" color="grey-light"></bal-divider>
                         {this.renderTouchMenuAccordions(metaItem)}
                       </bal-list-item-accordion-body>
                     </bal-list-item>
@@ -427,7 +436,7 @@ export class NavMetaBar
 
   renderTouchMenuAccordions(metaItem: NavMetaLinkItem) {
     return (
-      <bal-list accordion-one-level size="small">
+      <bal-list accordion-one-level class="pt-xxx-small pb-normal">
         {metaItem.mainLinkItems.map(menuItem =>
           menuItem.isLink ? (
             <bal-list-item sub-accordion-item href={menuItem.href} target={menuItem.target}>
@@ -451,12 +460,12 @@ export class NavMetaBar
                   <bal-nav-link
                     role="listitem"
                     variant="overview"
-                    href={this.activeMenuLinkItem?.overviewLink?.href}
-                    target={this.activeMenuLinkItem?.overviewLink?.target}
+                    href={menuItem.overviewLink?.href}
+                    target={menuItem.overviewLink?.target}
                   >
-                    {this.activeMenuLinkItem?.overviewLink?.label}
+                    {menuItem.overviewLink?.label}
                   </bal-nav-link>
-                  {this.renderGridLinks(menuItem)}
+                  <div class="pt-normal">{this.renderGridLinks(menuItem)}</div>
                 </div>
               </bal-list-item-accordion-body>
             </bal-list-item>
