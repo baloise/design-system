@@ -217,11 +217,16 @@ export class Tabs
     this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
-      const isAccordionOpen = this.value !== undefined && this.value.length > 0
-      if (isAccordionOpen) {
-        this.expandAccordion(true)
+      const inNavMenuBar = hasParent('bal-nav-menu-bar', this.el)
+      if (inNavMenuBar) {
+        this.isAccordionOpen = false
       } else {
-        this.collapseAccordion(true)
+        const isAccordionOpen = this.value !== undefined && this.value.length > 0
+        if (isAccordionOpen) {
+          this.expandAccordion(true)
+        } else {
+          this.collapseAccordion(true)
+        }
       }
     }
   }

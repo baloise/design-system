@@ -1,0 +1,31 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-link-group.vars'
+
+// Nav link group
+// --------------------------------------------------
+
+.bal-nav-link-group
+  display: block
+  background: var(--bal-nav-link-group-background)
+  border-radius: var(--bal-nav-link-group-radius)
+  padding-top: var(--bal-space-normal)
+  padding-bottom: var(--bal-space-normal)
+  padding-left: var(--bal-space-normal)
+  padding-right: var(--bal-space-normal)
+
+  +desktop
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
+
+  //
+  // Colors
+  +modifier(is-grey)
+    background: var(--bal-nav-link-group-background-grey)
+  +modifier(is-purple)
+    background: var(--bal-nav-link-group-background-purple)
+  +modifier(is-red)
+    background: var(--bal-nav-link-group-background-red)
+  +modifier(is-yellow)
+    background: var(--bal-nav-link-group-background-yellow)
+  +modifier(is-green)
+    background: var(--bal-nav-link-group-background-green)

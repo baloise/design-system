@@ -22,6 +22,7 @@ import "@baloise/design-system-css/css/radius.css";
 import "@baloise/design-system-css/css/shadow.css";
 import "@baloise/design-system-css/css/spacing.css";
 import "@baloise/design-system-css/css/typography.css";
+import "@baloise/design-system-css/css/z-index.css";
 
 import App from "./App";
 

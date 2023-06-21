@@ -504,6 +504,25 @@ const tokens = {
       easing: 'cubic-bezier(0.25, 0.8, 0.5, 1)',
     },
   },
+  /**
+   * Z-index tokens
+   */
+  zIndex: {
+    deep: { value: '-999999', description: 'Deep z-index is used to stack something behind everything else.' },
+    default: { value: '1', description: 'The default z-index for components and elements inside components.' },
+    masked: { value: '100', description: 'Default z-index for masked interface elements.' },
+    mask: { value: '200', description: 'Default z-index for masking interface elements.' },
+    sticky: { value: '300', description: 'Default z-index for sticky interface elements.' },
+    navigation: { value: '400', description: 'Default z-index for navigation.' },
+    toast: { value: '1000', description: 'Default z-index for toast and snackbar messages.' },
+    popup: { value: '1100', description: 'Default z-index for popups that stacks on top of all other elements.' },
+    modal: {
+      value: '1200',
+      description:
+        'Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible.',
+    },
+    tooltip: { value: '1300', description: 'Default z-index for tooltips.' },
+  },
 } as BaloiseDesignTokens
 
 /************************************************************

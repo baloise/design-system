@@ -78,12 +78,14 @@
     "@baloise/design-system-icons": "13.4.4",
     "@baloise/design-system-tokens": "13.4.4",
     "@baloise/web-app-utils": "3.11.1",
+    "@floating-ui/dom": "^1.2.9",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "^3.2.2",
     "big.js": "~6.2.1",
     "contactjs": "2.1.6",
     "date-fns": "~2.29.3",
     "filesize.js": "~2.0.0",
+    "install": "^0.13.0",
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
     "lodash.isempty": "~4.4.0",
@@ -96,6 +98,7 @@
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
+    "npm": "^9.6.7",
     "tslib": "^2.1.0"
   },
   "devDependencies": {

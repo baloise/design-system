@@ -709,7 +709,6 @@ export class Select implements ComponentInterface, Loggable {
         }
       }
     }
-
     // trigger the raw value change
     this.updateRawValue(newValue, isHuman)
   }
