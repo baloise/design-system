@@ -16,7 +16,7 @@ export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavSe
   override render(_context?: { onClick: () => void }) {
     return (
       <bal-nav-link-group color={this.color as any} role="list">
-        <bal-nav-link role="listitem" variant="title" href={this.href} target={this.target}>
+        <bal-nav-link role="listitem" variant="title" href={this.href} target={this.target} selected={this.active}>
           {this.label}
         </bal-nav-link>
         {this.linkItems.map(item => item.render())}

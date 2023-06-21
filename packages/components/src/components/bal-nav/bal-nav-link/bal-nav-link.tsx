@@ -76,7 +76,10 @@ export class NavigationLink implements ComponentInterface, Loggable {
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier(`variant-${this.variant}`).class(hasVariant),
-            ...block.element('native').modifier('selected').class(this.selected),
+            ...block
+              .element('native')
+              .modifier('selected')
+              .class(this.selected && (hasLink || this.clickable)),
           }}
           {...linkAttributes}
         >
