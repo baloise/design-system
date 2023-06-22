@@ -7,6 +7,7 @@ import { BalTabOption } from '../bal-tab.type'
 })
 export class TabItem {
   private inheritAttributes: Attributes = {}
+  private tabPanelID = `bal-tab-panel-id-${panelID++}`
 
   @Element() el!: HTMLElement
 
@@ -90,6 +91,7 @@ export class TabItem {
 
   get options() {
     return {
+      tabPanelID: this.tabPanelID,
       value: this.value,
       icon: this.icon,
       label: this.label,
@@ -109,7 +111,11 @@ export class TabItem {
   render() {
     return (
       <Host
+        id={this.tabPanelID}
         role="tabpanel"
+        aria-label={this.label}
+        aria-hidden={!this.isActive ? 'true' : 'false'}
+        tabindex={this.isActive ? '0' : '-1'}
         class={{
           'bal-tab-item': true,
           'bal-tab-item--active': this.isActive,
@@ -120,3 +126,5 @@ export class TabItem {
     )
   }
 }
+
+let panelID = 0
