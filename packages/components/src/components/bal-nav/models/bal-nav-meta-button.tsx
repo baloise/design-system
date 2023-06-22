@@ -36,10 +36,11 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         inverted={true}
         bal-popup={this.popoverId}
         bal-popup-variant="popover"
-        bal-popup-placement="bottom-end"
         bal-popup-arrow="true"
         bal-popup-backdrop="true"
         bal-popup-closable="true"
+        bal-popup-placement="bottom-end"
+        bal-popup-reference="bal-nav__meta-buttons"
       >
         {this.label}
       </bal-button>

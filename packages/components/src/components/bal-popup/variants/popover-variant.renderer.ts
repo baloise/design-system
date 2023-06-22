@@ -7,8 +7,9 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
   private cleanup?: () => void
   private placement: BalProps.BalPopupPlacement = 'bottom'
   private arrow = false
-  // private closable = false
   private backdrop = false
+  private reference = ''
+  private triggerEl: Element | null = null
 
   async present(component: PopupComponentInterface): Promise<boolean> {
     //
@@ -22,26 +23,45 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
       this.placement = component.getValue(component.trigger, 'bal-popup-placement', component.placement)
       this.arrow = component.getValue(component.trigger, 'bal-popup-arrow', component.arrow)
       this.backdrop = component.getValue(component.trigger, 'bal-popup-backdrop', component.backdrop)
+      this.reference = component.getValue(component.trigger, 'bal-popup-reference', component.reference)
 
-      //
-      // show all required elements
-      this.showContainerElement(component)
-      this.showBackdropElement(component, this.backdrop)
-      this.showArrowElement(component, this.arrow)
-      component.trigger.classList.add('bal-popup-variant-popover-trigger')
+      if (this.reference && balBrowser.hasDocument) {
+        const referenceEl = document.getElementById(this.reference)
+        this.triggerEl = referenceEl ? referenceEl : component.trigger
+      }
 
-      this.cleanup = autoUpdate(component.trigger, component.containerEl, () => {
-        this.update(component)
-      })
+      if (this.triggerEl) {
+        //
+        // show all required elements
+        this.showContainerElement(component)
+        this.showBackdropElement(component, this.backdrop)
+        this.showArrowElement(component, this.arrow)
 
-      return true
+        this.triggerEl.classList.add('bal-popup-variant-popover-trigger')
+
+        this.cleanup = autoUpdate(this.triggerEl, component.containerEl, () => {
+          this.update(component)
+        })
+
+        return true
+      }
     }
     return false
   }
 
   async update(component: PopupComponentInterface): Promise<boolean> {
-    if (component.trigger && component.containerEl && component.arrowEl) {
-      computePosition(component.trigger, component.containerEl, {
+    if (this.triggerEl && component.trigger && component.containerEl && component.arrowEl) {
+      const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
+      let arrowX = 0
+      if (isNavMetaDesktopPopup) {
+        const referenceRect = this.triggerEl?.getBoundingClientRect()
+        const triggerRect = component.trigger?.getBoundingClientRect()
+        const diff = triggerRect.x - referenceRect.x
+        const width = 440 - referenceRect.width
+        arrowX = width + diff + triggerRect.width / 2 - 4
+      }
+
+      computePosition(this.triggerEl, component.containerEl, {
         placement: this.placement,
         middleware: [
           shift(),
@@ -53,45 +73,58 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
           }),
         ],
       }).then(({ x, y, middlewareData, placement }) => {
-        const side = placement.split('-')[0]
-
-        const staticSide = {
-          top: 'bottom',
-          right: 'left',
-          bottom: 'top',
-          left: 'right',
-        }[side] as string
-
         if (component.containerEl) {
           Object.assign(component.containerEl.style, {
             left: `${x}px`,
             top: `${y}px`,
           })
-        }
 
-        if (middlewareData.arrow && component.arrowEl) {
-          const arrowPosition = middlewareData.arrow
-          Object.assign(component.arrowEl.style, {
-            left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
-            top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-            right: '',
-            bottom: '',
-            [staticSide]: `${-4}px`,
-          })
+          const side = placement.split('-')[0]
+
+          const staticSide = {
+            top: 'bottom',
+            right: 'left',
+            bottom: 'top',
+            left: 'right',
+          }[side] as string
+
+          if (middlewareData.arrow && component.arrowEl) {
+            const arrowPosition = middlewareData.arrow
+
+            if (isNavMetaDesktopPopup) {
+              Object.assign(component.arrowEl.style, {
+                left: `${arrowX}px`,
+                top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+                right: '',
+                bottom: '',
+                [staticSide]: `${-4}px`,
+              })
+            } else {
+              Object.assign(component.arrowEl.style, {
+                left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
+                top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+                right: '',
+                bottom: '',
+                [staticSide]: `${-4}px`,
+              })
+            }
+          }
         }
       })
+      console.log('trigger', component.trigger, this.triggerEl)
+
       return true
     }
     return false
   }
 
   async dismiss(component: PopupComponentInterface): Promise<boolean> {
-    if (component.containerEl && component.arrowEl && component.trigger) {
+    if (component.containerEl && component.arrowEl && this.triggerEl) {
       if (this.cleanup) {
         this.cleanup()
       }
 
-      component.trigger.classList.remove('bal-popup-variant-popover-trigger')
+      this.triggerEl.classList.remove('bal-popup-variant-popover-trigger')
 
       this.hideBackdropElement(component)
       this.hideContainerElement(component)

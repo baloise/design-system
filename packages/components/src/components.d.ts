@@ -2280,6 +2280,10 @@ export namespace Components {
          */
         "present": () => Promise<void>;
         /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference": string;
+        /**
           * Triggers the popup
          */
         "toggle": () => Promise<void>;
@@ -6745,6 +6749,10 @@ declare namespace LocalJSX {
           * If set it turns a popover into a fullscreen or a drawer on touch devices
          */
         "placement"?: BalProps.BalPopupPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference"?: string;
         /**
           * Defines the variant / type of popup
          */

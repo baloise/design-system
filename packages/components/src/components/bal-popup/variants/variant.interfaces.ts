@@ -21,6 +21,7 @@ export interface PopupComponentInterface {
   arrow: boolean
   closable: boolean
   backdrop: boolean
+  reference: string
   balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
   balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
   el: HTMLElement

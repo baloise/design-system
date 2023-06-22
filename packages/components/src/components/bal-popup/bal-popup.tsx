@@ -73,6 +73,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   @Prop() label = ''
 
   /**
+   * Id of the reference element default is the trigger element.
+   */
+  @Prop() reference = ''
+
+  /**
    * Defines the variant / type of popup
    */
   @Prop() variant: BalProps.BalPopupVariant = 'popover'

@@ -44,7 +44,7 @@ export class NavMetaBar
   log!: LogInstance
 
   @State() isTouch = false
-  @State() isDesktop = false
+  @State() isDesktop = true
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
@@ -151,8 +151,11 @@ export class NavMetaBar
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
-    this.isTouch = breakpoints.touch
-    this.isDesktop = breakpoints.desktop
+    if (this.isTouch !== breakpoints.touch) {
+      this.isTouch = breakpoints.touch
+      this.isDesktop = breakpoints.desktop
+      this.closeAllPopups()
+    }
   }
 
   @ListenToResize()
@@ -179,6 +182,24 @@ export class NavMetaBar
   }
 
   /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get activeMenuLinkItems(): NavMenuLinkItem[] {
+    const foundLinkItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
+    if (foundLinkItem) {
+      return foundLinkItem.mainLinkItems
+    }
+    return []
+  }
+
+  private get activeMenuLinkItem(): NavMenuLinkItem | undefined {
+    const foundLinkItem = this.activeMenuLinkItems.find(item => item.value === this.activeMenuLinkValue)
+    return foundLinkItem ? foundLinkItem : undefined
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -196,6 +217,11 @@ export class NavMetaBar
     if (previousActiveMenuLinkValue !== newActiveMenuLinkValue) {
       this.activeMenuLinkValue = newActiveMenuLinkValue
     }
+  }
+
+  private closeAllPopups() {
+    const popups = Array.from(this.el.querySelectorAll('bal-popup'))
+    popups.forEach(popup => popup.dismiss())
   }
 
   /**
@@ -256,19 +282,6 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
-  private get activeMenuLinkItems(): NavMenuLinkItem[] {
-    const foundLinkItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
-    if (foundLinkItem) {
-      return foundLinkItem.mainLinkItems
-    }
-    return []
-  }
-
-  private get activeMenuLinkItem(): NavMenuLinkItem | undefined {
-    const foundLinkItem = this.activeMenuLinkItems.find(item => item.value === this.activeMenuLinkValue)
-    return foundLinkItem ? foundLinkItem : undefined
-  }
-
   render() {
     const block = BEM.block('nav')
     const flyoutBlock = block.element('flyout')
@@ -302,7 +315,7 @@ export class NavMetaBar
                 ) : (
                   <span></span>
                 )}
-                <bal-stack space="x-small" fit-content>
+                <bal-stack id="bal-nav__meta-buttons" space="x-small" fit-content>
                   {this.metaButtons.map(button => button.renderAtMetaBar())}
                 </bal-stack>
               </bal-stack>
