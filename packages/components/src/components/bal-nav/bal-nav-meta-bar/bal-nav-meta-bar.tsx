@@ -57,7 +57,6 @@ export class NavMetaBar implements ComponentInterface, Loggable {
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
     if (balBrowser.hasWindow && balBrowser.hasDocument && this.position === 'sticky-top') {
-      console.log('handleScroll')
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY

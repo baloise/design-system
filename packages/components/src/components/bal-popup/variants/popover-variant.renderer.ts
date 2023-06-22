@@ -111,8 +111,6 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
           }
         }
       })
-      console.log('trigger', component.trigger, this.triggerEl)
-
       return true
     }
     return false

@@ -97,7 +97,6 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
   resetTouchBottomMetaBar() {
     if (balBrowser.hasDocument && this.touchPlacement === 'bottom') {
       const button = document.getElementById(this.value) as HTMLBalButtonElement | null
-      console.log(button)
       if (button && (button as any).balPopupVariant === 'drawer') {
         button.color = 'info'
       }
@@ -107,7 +106,6 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
   resetDesktopMetaBar() {
     if (balBrowser.hasDocument) {
       const button = document.getElementById(this.value) as HTMLBalButtonElement | null
-      console.log(button)
       if (button && (button as any).balPopupVariant === 'popover') {
         button.color = 'info'
       }
