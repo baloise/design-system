@@ -3,7 +3,6 @@ import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { BalScrollHandler } from '../../utils/scroll'
@@ -29,7 +28,6 @@ export class NavMetaBar
   implements
     ComponentInterface,
     Loggable,
-    BalResizeObserver,
     BalBreakpointObserver,
     BalMutationObserver,
     NavLinkItemObserver,
@@ -162,11 +160,6 @@ export class NavMetaBar
       this.isDesktop = breakpoints.desktop
       this.closeAllPopups()
     }
-  }
-
-  @ListenToResize()
-  resizeListener() {
-    // empty
   }
 
   linkItemClickListener(item: any) {
