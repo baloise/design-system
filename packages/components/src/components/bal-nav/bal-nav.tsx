@@ -127,6 +127,12 @@ export class NavMetaBar
       const triggers = Array.from(this.el.querySelectorAll<HTMLBalButtonElement>(`[bal-popup="${id}"]`))
       if (event.detail === true) {
         this.onPopupOpen(triggers)
+        const isTouchMetaTopButtonClicked = triggers.some(triggerEl =>
+          triggerEl.classList.contains('bal-nav__popup--touch-top'),
+        )
+        if (isTouchMetaTopButtonClicked) {
+          this.isFlyoutActive = false
+        }
       } else {
         this.onPopupClose(triggers)
       }
@@ -235,6 +241,7 @@ export class NavMetaBar
   }
 
   private onTouchToggleFlyout = (_ev: MouseEvent) => {
+    this.closeAllPopups()
     this.isFlyoutActive = !this.isFlyoutActive
     if (this.isFlyoutActive) {
       this.bodyScrollHandler.disable()
@@ -249,6 +256,8 @@ export class NavMetaBar
         trigger.inverted = false
       } else if (trigger.classList.contains('bal-nav__popup--touch-bottom')) {
         trigger.color = 'primary'
+      } else if (trigger.classList.contains('bal-nav__popup--touch-top')) {
+        trigger.color = 'primary'
       }
     })
   }
@@ -259,13 +268,14 @@ export class NavMetaBar
         trigger.inverted = true
       } else if (trigger.classList.contains('bal-nav__popup--touch-bottom')) {
         trigger.color = 'info'
+      } else if (trigger.classList.contains('bal-nav__popup--touch-top')) {
+        trigger.color = 'light'
       }
     })
   }
 
   private onMetaBarTabChange = (ev: BalEvents.BalTabsChange): void => {
     this.activeMetaLinkValue = ev.detail
-    console.log(ev, this.activeMetaLinkValue)
   }
 
   private onMenuBarTabChange = (value?: string): void => {

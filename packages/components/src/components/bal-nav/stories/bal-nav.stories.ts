@@ -33,14 +33,14 @@ export const Basic = args => ({
     }
   },
   template: `<div>
-  <bal-nav :logo="logo" :buttons="buttons" :options="options">
+  <bal-nav :logo="logo" :buttons="buttons" :options="options" content-width="440">
     <bal-popup id="popup-call" label="24h Kundenservice">
       <bal-stack layout="vertical">
         <bal-button expanded>00800 24 800 800</bal-button>
       </bal-stack>
     </bal-popup>
 
-    <bal-popup id="popup-locale" label="Sprache wählen">
+    <bal-popup id="popup-locale" label="Sprache wählen" content-width="440">
       <bal-stack layout="vertical">
         <bal-button expanded color="light">Deutsch</bal-button>
         <bal-button expanded color="light">Francais</bal-button>
@@ -59,7 +59,7 @@ export const Basic = args => ({
       </p>
     </bal-popup>
 
-    <bal-popup id="popup-login" label="Anmelden">
+    <bal-popup id="popup-login" label="Anmelden" content-width="440">
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis qui vero nulla vitae nemo harum laborum
         iusto voluptate. Enim facilis quod iste dolores sit quidem aspernatur molestias itaque consequatur
