@@ -75,7 +75,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   )
 
   return (
-    <nav
+    <div
       role="tablist"
       id={`${tabsId}-nav`}
       class={{
@@ -152,6 +152,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       ) : (
         ''
       )}
-    </nav>
+    </div>
   )
 }

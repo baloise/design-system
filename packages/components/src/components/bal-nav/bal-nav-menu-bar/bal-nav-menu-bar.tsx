@@ -33,26 +33,9 @@ export class NavMenuBar implements ComponentInterface, Loggable {
   @Prop() hidden: BalProps.BalNavMenuBarHidden = 'none'
 
   /**
-   * Defines content width of the stage
-   */
-  @Prop() containerSize: BalProps.BalNavMenuBarContainer = 'default'
-
-  /**
    * Defines the position of the bar
    */
   @Prop() position: BalProps.BalNavMenuBarPosition = 'none'
-
-  /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  componentWillRender() {
-    const flyout = this.flyoutElement
-    if (flyout) {
-      flyout.containerSize = this.containerSize
-    }
-  }
 
   /**
    * GETTERS
@@ -90,7 +73,6 @@ export class NavMenuBar implements ComponentInterface, Loggable {
           <div
             class={{
               container: true,
-              [`is-${this.containerSize}`]: this.containerSize !== 'default',
             }}
           >
             <slot></slot>

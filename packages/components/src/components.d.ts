@@ -1683,10 +1683,6 @@ export namespace Components {
         "buttons": BalProps.BalNavMetaButtons;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalNavContainer;
-        /**
           * Link level structure.
          */
         "logo"?: BalProps.BalNavLogoLink;
@@ -1733,10 +1729,6 @@ export namespace Components {
     }
     interface BalNavMenuBar {
         /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalNavMenuBarContainer;
-        /**
           * Tells when to hide the bar
          */
         "hidden": BalProps.BalNavMenuBarHidden;
@@ -1746,16 +1738,8 @@ export namespace Components {
         "position": BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalNavMenuFlyoutContainer;
     }
     interface BalNavMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize": BalProps.BalNavMetaBarContainer;
         /**
           * Tells when to hide the bar
          */
@@ -6142,10 +6126,6 @@ declare namespace LocalJSX {
          */
         "buttons"?: BalProps.BalNavMetaButtons;
         /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalNavContainer;
-        /**
           * Link level structure.
          */
         "logo"?: BalProps.BalNavLogoLink;
@@ -6196,10 +6176,6 @@ declare namespace LocalJSX {
     }
     interface BalNavMenuBar {
         /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalNavMenuBarContainer;
-        /**
           * Tells when to hide the bar
          */
         "hidden"?: BalProps.BalNavMenuBarHidden;
@@ -6209,16 +6185,8 @@ declare namespace LocalJSX {
         "position"?: BalProps.BalNavMenuBarPosition;
     }
     interface BalNavMenuFlyout {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalNavMenuFlyoutContainer;
     }
     interface BalNavMetaBar {
-        /**
-          * Defines content width of the stage
-         */
-        "containerSize"?: BalProps.BalNavMetaBarContainer;
         /**
           * Tells when to hide the bar
          */

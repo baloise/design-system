@@ -20,6 +20,7 @@ namespace BalProps {
   }
 
   export interface BalNavMenuLinkItem extends BalNavLinkItem {
+    render(context?: { onClick: () => void }): any
     overviewLink?: BalNavLinkItem
     sectionLinkItems?: BalNavSectionLinkItem[]
     serviceLinkItems?: BalNavServiceLinkItem[]

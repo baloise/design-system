@@ -74,11 +74,6 @@ export class NavMetaBar
    */
 
   /**
-   * Defines content width of the stage
-   */
-  @Prop() containerSize: BalProps.BalNavContainer = 'default'
-
-  /**
    * Link level structure.
    */
   @Prop() logo?: BalProps.BalNavLogoLink
@@ -423,7 +418,7 @@ export class NavMetaBar
                 <bal-list border accordion-one-level size="large">
                   {this.linkItems.map(metaItem => (
                     <bal-list-item accordion>
-                      <bal-list-item-accordion-head icon="nav-go-down">
+                      <bal-list-item-accordion-head icon="nav-go-down" accordion-open={metaItem.active}>
                         <bal-list-item-content>
                           <bal-list-item-title visual-level="large" level="span">
                             {metaItem.label}
@@ -495,7 +490,7 @@ export class NavMetaBar
             </bal-list-item>
           ) : (
             <bal-list-item accordion sub-accordion-item>
-              <bal-list-item-accordion-head icon="nav-go-down">
+              <bal-list-item-accordion-head icon="nav-go-down" accordion-open={menuItem.active}>
                 <bal-list-item-content>
                   <bal-list-item-title visual-level="medium" level="span">
                     {menuItem.label}

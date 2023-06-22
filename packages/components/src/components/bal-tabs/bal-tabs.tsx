@@ -476,6 +476,10 @@ export class Tabs
           return
         }
 
+        if (target.getAttribute('target') === '_blank') {
+          return
+        }
+
         const padding = getComputedPadding(target)
         const size = this.getLineSize(target, padding)
         const offset = this.getOffset(target, padding)

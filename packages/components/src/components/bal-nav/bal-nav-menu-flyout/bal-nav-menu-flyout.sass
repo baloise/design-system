@@ -16,7 +16,18 @@
   width: calc( 100% + 1rem + 1rem)
   margin-left: -1rem
   margin-right: -1rem
-  border-top: 1px solid var(--bal-nav-menu-flyout-border-background)
+
+  // Line
+  // --------------------------------------------------
+  &::before
+    position: absolute
+    content: ""
+    width: 100%
+    left: 0
+    top: 0
+    height: 1px
+    background-color: var(--bal-color-grey)
+
   +tablet
     width: calc( 100% + 2.5rem + 2.5rem)
     margin-left: -2.5rem
@@ -27,3 +38,14 @@
     margin-right: -3rem
   +widescreen
     max-height: calc(100vh - 96px - 48px - 16px)
+  // Line width on the specific device size
+  // --------------------------------------------------
+  +between(1440px, 1540px)
+    &::before
+      position: absolute
+      content: ""
+      width: calc(100% - 2rem)
+      left: 1rem
+      top: 0
+      height: 1px
+      background-color: var(--bal-color-grey)
