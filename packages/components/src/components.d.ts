@@ -3258,6 +3258,10 @@ export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalModalElement;
 }
+export interface BalNavCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavElement;
+}
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
@@ -6145,6 +6149,10 @@ declare namespace LocalJSX {
           * Link level structure.
          */
         "logo"?: BalProps.BalNavLogoLink;
+        /**
+          * Emitted when a nav link item is clicked. This event can be used to add data tracking
+         */
+        "onBalNavItemClick"?: (event: BalNavCustomEvent<BalEvents.BalNavItemClickDetail>) => void;
         /**
           * Link level structure.
          */

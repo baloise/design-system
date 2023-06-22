@@ -35,6 +35,15 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     return this.constructor.name
   }
 
+  toJson(): BalEvents.BalNavClickedItem {
+    return {
+      label: this.label,
+      value: this.value,
+      href: this.href,
+      target: this.target,
+    }
+  }
+
   render(_context?: { onClick: () => void }) {
     return (
       <bal-nav-link
@@ -43,6 +52,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
         target={this.target}
         clickable={this.clickable}
         selected={this.active}
+        onClick={ev => this.onClick(ev)}
       >
         {this.label}
       </bal-nav-link>

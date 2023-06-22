@@ -1,3 +1,5 @@
+import { NavLinkItem } from './models/bal-nav-link-item'
+
 export interface NavLinkItemObserver {
-  linkItemClickListener(item: BalProps.BalNavLinkItem): void
+  linkItemClickListener(item?: NavLinkItem): void
 }

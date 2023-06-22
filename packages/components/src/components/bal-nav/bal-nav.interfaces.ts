@@ -55,3 +55,20 @@ namespace BalProps {
     onClick?: (ev: MouseEvent) => void
   }
 }
+
+namespace BalEvents {
+  export interface BalNavCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalNavElement
+  }
+
+  export interface BalNavClickedItem {
+    label: string
+    value?: string
+    href?: string
+    target?: BalProps.BalButtonTarget
+  }
+
+  export type BalNavItemClickDetail = BalNavClickedItem
+  export type BalNavItemClick = BalInputCustomEvent<BalNavItemClickDetail>
+}

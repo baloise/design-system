@@ -1,4 +1,17 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Listen, Method } from '@stencil/core'
+import {
+  Component,
+  h,
+  ComponentInterface,
+  Host,
+  Element,
+  Prop,
+  State,
+  Watch,
+  Listen,
+  Method,
+  EventEmitter,
+  Event,
+} from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
@@ -17,6 +30,7 @@ import {
 } from '../../utils/config'
 import { i18nNavBars } from './bal-nav.i18n'
 import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
+import { NavLinkItem } from './models/bal-nav-link-item'
 
 @Component({
   tag: 'bal-nav',
@@ -95,6 +109,12 @@ export class NavMetaBar
   }
 
   /**
+   * Emitted when a nav link item is clicked. This event can be used to
+   * add data tracking
+   */
+  @Event() balNavItemClick!: EventEmitter<BalEvents.BalNavItemClickDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -162,11 +182,9 @@ export class NavMetaBar
     }
   }
 
-  linkItemClickListener(item: any) {
-    switch (item.type) {
-      case 'NavMetaLinkItem':
-        this.activeMetaLinkValue = item.value
-        break
+  linkItemClickListener(item?: NavLinkItem) {
+    if (item && item.toJson) {
+      this.balNavItemClick.emit(item.toJson())
     }
   }
 
@@ -268,7 +286,13 @@ export class NavMetaBar
   }
 
   private onMetaBarTabChange = (ev: BalEvents.BalTabsChange): void => {
-    this.activeMetaLinkValue = ev.detail
+    if (ev.detail !== this.activeMetaLinkValue) {
+      this.activeMetaLinkValue = ev.detail
+      const activeMetaItem = this.linkItems.find(item => item.value === this.activeMetaLinkValue)
+      if (activeMetaItem && activeMetaItem.mainLinkItems.length > 0) {
+        this.activeMenuLinkValue = activeMetaItem.mainLinkItems[0].value
+      }
+    }
   }
 
   private onMenuBarTabChange = (value?: string): void => {
@@ -352,6 +376,7 @@ export class NavMetaBar
                     variant="overview"
                     href={this.activeMenuLinkItem?.overviewLink?.href}
                     target={this.activeMenuLinkItem?.overviewLink?.target}
+                    onClick={() => this.linkItemClickListener(this.activeMenuLinkItem?.overviewLink)}
                   >
                     {this.activeMenuLinkItem?.overviewLink?.label}
                   </bal-nav-link>
@@ -411,6 +436,7 @@ export class NavMetaBar
                           variant="overview"
                           href={metaItem.overviewLink?.href}
                           target={metaItem.overviewLink?.target}
+                          onClick={() => this.linkItemClickListener(metaItem.overviewLink)}
                         >
                           {metaItem.overviewLink?.label}
                         </bal-nav-link>
@@ -483,6 +509,7 @@ export class NavMetaBar
                     variant="overview"
                     href={menuItem.overviewLink?.href}
                     target={menuItem.overviewLink?.target}
+                    onClick={() => this.linkItemClickListener(menuItem.overviewLink)}
                   >
                     {menuItem.overviewLink?.label}
                   </bal-nav-link>
@@ -505,6 +532,14 @@ export class NavMetaBar
         title={this.logo?.htmlTitle}
         href={this.logo?.href}
         target={this.logo?.target}
+        onClick={() =>
+          this.balNavItemClick.emit({
+            value: 'logo',
+            label: 'Logo',
+            href: this.logo?.href,
+            target: this.logo?.target,
+          })
+        }
       >
         <bal-logo></bal-logo>
       </Link>
