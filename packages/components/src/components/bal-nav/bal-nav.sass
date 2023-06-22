@@ -6,10 +6,10 @@
 
 .bal-nav
   +unselectable
-  position: relative
+  // position: relative
   display: block
   width: 100%
-  z-index: var(--bal-z-index-navigation)
+  // z-index: var(--bal-z-index-navigation)
 
 // Flyout
 // --------------------------------------------------
@@ -32,3 +32,10 @@
 
 .bal-list__item__accordion-head:after
   background: transparent !important
+
+// Touch Meta Bottom Bar Z-Index Fix
+// --------------------------------------------------
+
+.bal-nav-meta-bar-transform-touch
+  z-index: var(--bal-z-index-popup)
+  position: relative

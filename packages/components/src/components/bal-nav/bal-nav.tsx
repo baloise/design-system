@@ -298,7 +298,12 @@ export class NavMetaBar
           Desktop Variant
           ----------------------------
         */}
-        <div class="bal-nav-meta-bar-transform">
+        <div
+          class={{
+            'bal-nav-meta-bar-transform': true,
+            'bal-nav-meta-bar-transform-touch': this.isTouch,
+          }}
+        >
           {this.isDesktop ? (
             <bal-nav-meta-bar variant="primary" size="small" position="sticky-top">
               <bal-stack space="auto">
