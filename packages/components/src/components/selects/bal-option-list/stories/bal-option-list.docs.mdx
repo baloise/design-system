@@ -1,0 +1,62 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import readme from '../readme.md'
+import { Basic } from './bal-option.stories'
+
+<bal-doc-banner id="story--components-form-selectes-option--basic">Badge</bal-doc-banner>
+
+<bal-doc-lead>
+  <b>Badge</b> indicates a not visited or read action. It can only be used in combination with other components like{' '}
+  <a href="?path=/docs/components-button--primary">BalButton</a>,{' '}
+  <a href="?path=/docs/components-card--basic">BalCard</a> or <a href="?path=/docs/components-tabs--basic">BalTabs</a>.
+</bal-doc-lead>
+
+<Canvas withSource="open">
+  <Story id="components-form-selectes-option--basic" />
+</Canvas>
+
+import reactExampleTsx from './usage/react/example_tsx.md'
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="center">
+    <a class="button is-primary" href="?path=/story/components-accordion--basic">
+      Go to playground (Canvas)
+    </a>
+    <bal-doc-code-sandbox framework="angular" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="html" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="react" component={reactExampleTsx}></bal-doc-code-sandbox>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-form-selectes-option--with-icon" style={{ opacity: 0 }}></span>
+
+### With Icon
+
+<Canvas>
+  <Story id="components-form-selectes-option--with-icon" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/bal-badge/stories/bal-badge.docs.mdx"></bal-doc-github>

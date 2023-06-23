@@ -50,6 +50,8 @@ import './components/notice/bal-notification/bal-notification.interfaces'
 import './components/notice/bal-sheet/bal-sheet.interfaces'
 import './components/notice/bal-snackbar/bal-snackbar.interfaces'
 import './components/notice/bal-toast/bal-toast.interfaces'
+import './components/selects/bal-option/bal-option.interfaces'
+import './components/selects/bal-option-list/bal-option-list.interfaces'
 
 export * from './components'
 export * from './index'

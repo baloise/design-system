@@ -1,0 +1,79 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-option.vars'
+
+// Option
+// --------------------------------------------------
+.bal-option
+  +unselectable
+  position: relative
+  display: block
+  list-style: none
+  cursor: pointer
+  border-top: 0.125rem solid var(--bal-color-grey-2)
+  background: var(--bal-color-transparent)
+  min-height: 3rem
+  transition: background 70ms cubic-bezier(.2,0,.38,.9)
+  & > bal-stack
+    min-height: 3rem
+  &:first-child
+    border-top: none
+  &::-moz-focus-inner
+    border: none
+  &__inner
+    font-family: var(--bal-font-family-text)
+    color: var(--bal-select-option-content-label-text-color)
+    font-weight: var(--bal-weight-regular)
+    line-height: 1.125rem
+    word-break: break-word
+    white-space: normal
+    hyphens: auto
+    transition: color 70ms cubic-bezier(.2,0,.38,.9)
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    &--multiline
+      white-space: normal
+
+// Focused Option
+// --------------------------------------------------
+.bal-option--focused
+  background: var(--bal-color-grey-2)
+
+.bal-option
+  +hover
+    &:hover
+      background: var(--bal-color-grey-2)
+
+// Selected Option
+// --------------------------------------------------
+.bal-option--selected
+  background: var(--bal-color-primary-1)
+  +hover
+    &:hover
+      background: #cccfe2
+
+.bal-option__inner--selected
+  font-weight: var(--bal-weight-bold)
+
+// Invalid Option
+// --------------------------------------------------
+.bal-option--invalid
+  background: var(--bal-color-danger-1)
+  +hover
+    &:hover
+      background: #f5d0cc
+
+.bal-option__inner--invalid
+  color: var(--bal-color-text-danger)
+
+// Disbaled Option
+// --------------------------------------------------
+.bal-option--disabled
+  background: var(--bal-color-transparent)
+  opacity: .7
+  cursor: default
+  &:hover
+    background: var(--bal-color-transparent)
+
+.bal-option__inner--disabled
+  color: var(--bal-color-text-grey)
