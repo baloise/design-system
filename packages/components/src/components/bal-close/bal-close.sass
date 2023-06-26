@@ -22,17 +22,21 @@
     vertical-align: top
     padding: 5px
     &:hover
-      background: rgba($bal-color-primary-6, 0.1)
+      +hover
+        background: rgba($bal-color-primary-6, 0.1)
     &:focus-visible:not(:active)
-      background: var(--bal-close-background-focus-visible)
+      +hover
+        background: var(--bal-close-background-focus-visible)
       @extend %focus-shadow
     &:active
       background: rgba($bal-color-primary-6, 0.3)
     +modifier(inverted)
       &:hover
-        background: rgba($bal-color-white, 0.3)
+        +hover
+          background: rgba($bal-color-white, 0.3)
       &:focus-visible:not(:active)
-        background: var(--bal-close-background-focus-inverted-focus-visible)
+        +hover
+          background: var(--bal-close-background-focus-inverted-focus-visible)
         @extend %focus-shadow
       &:active
         background: rgba($bal-color-white, 0.5)

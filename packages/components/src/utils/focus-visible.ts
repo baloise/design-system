@@ -16,7 +16,7 @@ export const FOCUS_KEYS = [
 ]
 
 export const focusableQueryString =
-  '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .ion-focusable:not([tabindex^="-"])'
+  '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .bal-focusable:not([tabindex^="-"])'
 
 export const startFocusVisible = (rootEl?: HTMLElement) => {
   let currentFocus: Element[] = []
