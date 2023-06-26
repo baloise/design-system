@@ -2038,9 +2038,6 @@ export namespace Components {
     }
     interface BalOptionList {
         "contentHeight"?: number;
-        /**
-          * PUBLIC METHODS ------------------------------------------------------
-         */
         "focusFirst": () => Promise<number>;
         /**
           * PUBLIC PROPERTY API ------------------------------------------------------
@@ -2049,7 +2046,10 @@ export namespace Components {
         "focusLast": () => Promise<number>;
         "focusNext": () => Promise<number>;
         "focusPrevious": () => Promise<number>;
-        "scrollToFocusedOption": () => Promise<boolean>;
+        /**
+          * PUBLIC METHODS ------------------------------------------------------
+         */
+        "resetFocus": () => Promise<number>;
     }
     interface BalPagination {
         /**
@@ -3166,6 +3166,10 @@ export interface BalNavigationLevelMetaCustomEvent<T> extends CustomEvent<T> {
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNumberInputElement;
+}
+export interface BalOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalOptionElement;
 }
 export interface BalPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -6325,6 +6329,7 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the option.
          */
         "multiline"?: boolean;
+        "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
         /**
           * If `true`, the user cannot interact with the option.
          */

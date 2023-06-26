@@ -3,6 +3,19 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../interfaces.d.ts" />
 
-namespace BalProps {
-  // export type BalBadgeSize = 'small' | 'large' | ''
+namespace BalProps {}
+
+namespace BalEvents {
+  export interface BalOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalOptionElement
+  }
+
+  export interface BalOption {
+    value: string
+    label: string
+  }
+
+  export type BalOptionFocusDetail = BalOption
+  export type BalOptionFocus = BalOptionCustomEvent<BalOptionFocusDetail>
 }

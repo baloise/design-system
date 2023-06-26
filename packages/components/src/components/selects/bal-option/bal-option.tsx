@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Listen, Event, EventEmitter } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { preventDefault } from '../../form/bal-select/utils/utils'
@@ -55,17 +55,34 @@ export class Option implements ComponentInterface, Loggable {
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) selected = false
+  @Prop({ reflect: true, mutable: true }) selected = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop({ reflect: true }) focused = false
+  @Prop({ reflect: true, mutable: true }) focused = false
 
   /**
    * If `true`, the user cannot interact with the option.
    */
   @Prop({ reflect: true }) checkbox = false
+
+  /**
+   * @internal
+   * Emitted when a option gets focused.
+   */
+  @Event() balOptionFocus!: EventEmitter<BalEvents.BalOptionFocusDetail>
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('mouseenter')
+  listenToMouseEnter() {
+    const { label, value } = this
+    this.balOptionFocus.emit({ label, value })
+  }
 
   /**
    * EVENT BINDING
