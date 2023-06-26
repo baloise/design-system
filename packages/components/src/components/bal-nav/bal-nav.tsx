@@ -174,6 +174,7 @@ export class NavMetaBar
       this.isTouch = breakpoints.touch
       this.isDesktop = breakpoints.desktop
       this.closeAllPopups()
+      this.isFlyoutActive = false
     }
   }
 
