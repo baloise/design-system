@@ -1731,7 +1731,7 @@ export namespace Components {
         /**
           * Tells when to hide the bar
          */
-        "hidden": BalProps.BalNavMenuBarHidden;
+        "invisible": BalProps.BalNavMenuBarInvisible;
         /**
           * Defines the position of the bar
          */
@@ -1743,7 +1743,7 @@ export namespace Components {
         /**
           * Tells when to hide the bar
          */
-        "hidden": BalProps.BalNavMetaBarHidden;
+        "invisible": BalProps.BalNavMetaBarInvisible;
         /**
           * Defines the position of the bar
          */
@@ -6178,7 +6178,7 @@ declare namespace LocalJSX {
         /**
           * Tells when to hide the bar
          */
-        "hidden"?: BalProps.BalNavMenuBarHidden;
+        "invisible"?: BalProps.BalNavMenuBarInvisible;
         /**
           * Defines the position of the bar
          */
@@ -6190,7 +6190,7 @@ declare namespace LocalJSX {
         /**
           * Tells when to hide the bar
          */
-        "hidden"?: BalProps.BalNavMetaBarHidden;
+        "invisible"?: BalProps.BalNavMetaBarInvisible;
         /**
           * Defines the position of the bar
          */

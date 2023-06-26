@@ -7,6 +7,6 @@ namespace BalProps {
   export type BalNavMetaBarVariant = 'primary' | 'white' | 'grey'
   export type BalNavMetaBarSize = 'small' | 'normal'
   export type BalNavMetaBarPosition = 'none' | 'fixed-top' | 'fixed-bottom' | 'sticky-top'
-  export type BalNavMetaBarHidden = 'none' | 'mobile' | 'tablet'
+  export type BalNavMetaBarInvisible = 'none' | 'mobile' | 'tablet'
   export type BalNavMetaBarContainer = 'default' | 'fluid' | 'compact'
 }
