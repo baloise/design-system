@@ -257,6 +257,7 @@ export class NavMetaBar
   }
 
   private onPopupOpen = (triggers: HTMLBalButtonElement[]) => {
+    this.bodyScrollHandler.disable()
     triggers.forEach(trigger => {
       if (trigger.classList.contains('bal-nav__popup--desktop')) {
         trigger.inverted = false
@@ -269,6 +270,7 @@ export class NavMetaBar
   }
 
   private onPopupClose = (triggers: HTMLBalButtonElement[]) => {
+    this.bodyScrollHandler.enable()
     triggers.forEach(trigger => {
       if (trigger.classList.contains('bal-nav__popup--desktop')) {
         trigger.inverted = true
