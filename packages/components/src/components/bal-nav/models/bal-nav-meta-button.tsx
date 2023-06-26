@@ -38,6 +38,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         bal-popup-variant="popover"
         bal-popup-arrow="true"
         bal-popup-backdrop="true"
+        bal-popup-backdrop-dismiss="true"
         bal-popup-closable="true"
         bal-popup-placement="bottom-end"
         bal-popup-reference="bal-nav__meta-buttons"
@@ -86,6 +87,7 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           bal-popup-variant="drawer"
           bal-popup-closable="true"
           bal-popup-backdrop="true"
+          bal-popup-backdrop-dismiss="true"
           bal-popup-offset="64"
         >
           {this.label}

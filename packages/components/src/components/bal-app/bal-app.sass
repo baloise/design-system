@@ -1,3 +1,6 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-app.vars'
+
 .bal-app
   position: relative
   display: block
@@ -10,7 +13,7 @@
 
 .bal-app.has-sticky-footer,
 .bal-app .has-sticky-footer
-  min-height: 100vh
+  min-height: var(--bal-app-height, 100%)
   display: flex
   flex-direction: column
 

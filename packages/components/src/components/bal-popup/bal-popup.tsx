@@ -27,6 +27,7 @@ import {
 import { debounce } from '../../utils/helpers'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { VariantRenderer } from './variants/variant.renderer'
+import { focusableQueryString } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-popup',
@@ -44,13 +45,16 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private fullscreenVariantRenderer = new VariantRenderer(new FullscreenVariantRenderer())
   private drawerVariantRenderer = new VariantRenderer(new DrawerVariantRenderer())
   private lastVariant: PopupVariant = 'popover'
+  private lastFocus?: HTMLElement
 
   @Element() el!: HTMLElement
   containerEl: HTMLDivElement | undefined
+  contentEl: HTMLDivElement | undefined
   backdropEl: HTMLDivElement | undefined
   arrowEl: HTMLDivElement | undefined
 
   @State() activeClosable = false
+  @State() activeBackdropDismiss = false
   @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
@@ -210,6 +214,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
     this.activeVariant = this.getValue(trigger, 'bal-popup-variant', this.variant)
     this.activeClosable = this.getValue(trigger, 'bal-popup-closable', this.closable)
+    this.activeBackdropDismiss = this.getValue(trigger, 'bal-popup-backdrop-dismiss', this.backdropDismiss)
 
     // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
@@ -252,7 +257,12 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   @Listen('click')
   async listenOnComponentClick() {
-    if (this.presented && this.backdropDismiss && this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown) {
+    if (
+      this.presented &&
+      this.activeBackdropDismiss &&
+      this.isClickedOutsideOnMouseUp &&
+      this.isClickedOutsideOnMouseDown
+    ) {
       await this.dismiss()
     }
   }
@@ -311,7 +321,13 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    */
   @Method()
   async _present(): Promise<boolean> {
-    return this.getVariantRenderer().present(this)
+    if (balBrowser.hasDocument) {
+      this.lastFocus = (document.activeElement as HTMLElement) || undefined
+    }
+    const result = await this.getVariantRenderer().present(this)
+
+    this.focusFirstDescendant()
+    return result
   }
 
   /**
@@ -319,7 +335,12 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    */
   @Method()
   async _dismiss(): Promise<boolean> {
-    return this.getVariantRenderer().dismiss(this)
+    const result = await this.getVariantRenderer().dismiss(this)
+
+    if (this.lastFocus && this.lastFocus.focus) {
+      this.lastFocus?.focus()
+    }
+    return result
   }
 
   /**
@@ -366,13 +387,24 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
+  private focusFirstDescendant() {
+    const { el } = this
+    const firstInput = el.querySelector(focusableQueryString) as HTMLElement | null
+
+    if (firstInput) {
+      firstInput.focus()
+    } else {
+      el.focus()
+    }
+  }
+
   /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
 
   private onBackdropClick = (ev: MouseEvent) => {
-    if (this.backdropDismiss && this.presented && ev && ev.target) {
+    if (this.activeBackdropDismiss && this.presented && ev && ev.target) {
       const element = ev.target as HTMLElement
       return element.classList.contains('bal-popup__backdrop')
     }
@@ -454,7 +486,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
                   {this.label}
                 </bal-heading>
                 {this.activeClosable ? (
-                  <bal-close data-test="bal-popup-close" onClick={() => this.onCloseClick()}></bal-close>
+                  <bal-close data-test="bal-popup-close" tabindex={-1} onClick={() => this.onCloseClick()}></bal-close>
                 ) : (
                   ''
                 )}
@@ -466,6 +498,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
               class={{
                 ...innerContentBlock.class(),
               }}
+              ref={contentEl => (this.contentEl = contentEl)}
               data-test="bal-popup-content"
             >
               <slot></slot>
