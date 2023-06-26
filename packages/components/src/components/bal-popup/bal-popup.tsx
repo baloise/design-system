@@ -54,6 +54,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   arrowEl: HTMLDivElement | undefined
 
   @State() activeClosable = false
+  @State() activeBackdropDismiss = false
   @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
@@ -213,6 +214,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
     this.activeVariant = this.getValue(trigger, 'bal-popup-variant', this.variant)
     this.activeClosable = this.getValue(trigger, 'bal-popup-closable', this.closable)
+    this.activeBackdropDismiss = this.getValue(trigger, 'bal-popup-backdrop-dismiss', this.backdropDismiss)
 
     // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
@@ -255,7 +257,12 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   @Listen('click')
   async listenOnComponentClick() {
-    if (this.presented && this.backdropDismiss && this.isClickedOutsideOnMouseUp && this.isClickedOutsideOnMouseDown) {
+    if (
+      this.presented &&
+      this.activeBackdropDismiss &&
+      this.isClickedOutsideOnMouseUp &&
+      this.isClickedOutsideOnMouseDown
+    ) {
       await this.dismiss()
     }
   }
@@ -397,7 +404,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    */
 
   private onBackdropClick = (ev: MouseEvent) => {
-    if (this.backdropDismiss && this.presented && ev && ev.target) {
+    if (this.activeBackdropDismiss && this.presented && ev && ev.target) {
       const element = ev.target as HTMLElement
       return element.classList.contains('bal-popup__backdrop')
     }
