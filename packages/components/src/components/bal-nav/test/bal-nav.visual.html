@@ -28,10 +28,10 @@
 
             <bal-popup id="popup-locale" label="Sprache wählen" content-width="440">
               <bal-stack layout="vertical">
-                <bal-button expanded color="light">Deutsch</bal-button>
-                <bal-button expanded color="light">Francais</bal-button>
-                <bal-button expanded color="light">Italian</bal-button>
-                <bal-button expanded color="light">English</bal-button>
+                <bal-button expanded color="light">DE</bal-button>
+                <bal-button expanded color="light">EN</bal-button>
+                <bal-button expanded color="light">FR</bal-button>
+                <bal-button expanded color="light">IT</bal-button>
               </bal-stack>
             </bal-popup>
 
@@ -921,10 +921,102 @@
                       ],
                     },
                   ],
+                  overviewLink: {
+                    value: 'Alle Anlage- und Vorsorgelösungen ➞',
+                    label: 'Alle Anlage- und Vorsorgelösungen ➞',
+                    href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                  },
                 },
                 {
                   value: 'Konten, Karten & Finanzierung',
                   label: 'Konten, Karten & Finanzierung',
+                  sectionLinkItems: [
+                    {
+                      value: 'Zahlen und Sparen',
+                      label: 'Zahlen und Sparen',
+                      linkItems: [
+                        {
+                          value: 'Konten',
+                          label: 'Konten',
+                        },
+                        {
+                          value: 'Bankpakete der Baloise Bank',
+                          label: 'Bankpakete der Baloise Bank',
+                        },
+                        {
+                          value: 'Karten',
+                          label: 'Karten',
+                        },
+                        {
+                          value: 'Reisezahlungsmittel',
+                          label: 'Reisezahlungsmittel',
+                        },
+                      ],
+                    },
+                    {
+                      value: 'Finanzieren',
+                      label: 'Finanzieren',
+                      linkItems: [
+                        {
+                          value: 'Alle Hypotheken',
+                          label: 'Alle Hypotheken',
+                        },
+                        {
+                          value: 'Zinsrabatte mit Hypobonus',
+                          label: 'Zinsrabatte mit Hypobonus',
+                        },
+                        {
+                          value: 'Online-Hypothek',
+                          label: 'Online-Hypothek',
+                        },
+                        {
+                          value: 'Festhypothek',
+                          label: 'Festhypothek',
+                        },
+                        {
+                          value: 'Baukredit',
+                          label: 'Baukredit',
+                        },
+                        {
+                          value: 'Privatkredit',
+                          label: 'Privatkredit',
+                        },
+                      ],
+                    },
+                  ],
+                  serviceLinkItems: [
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      linkItems: [
+                        {
+                          value: 'Karte sperren',
+                          label: 'Karte sperren',
+                        },
+                        {
+                          value: 'E-Banking',
+                          label: 'E-Banking',
+                        },
+                        {
+                          value: 'Bankkonditionen',
+                          label: 'Bankkonditionen',
+                        },
+                        {
+                          value: 'Mobile Payment',
+                          label: 'Mobile Payment',
+                        },
+                        {
+                          value: 'Nutzungsbestimmungen Online-Hypothek',
+                          label: 'Nutzungsbestimmungen Online-Hypothek',
+                        },
+                      ],
+                    },
+                  ],
+                  overviewLink: {
+                    value: 'Alle Bankprodukte ➞',
+                    label: 'Alle Bankprodukte ➞',
+                    href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                  },
                 },
                 {
                   value: 'Kontakt & Services',
