@@ -59,10 +59,10 @@
 .bal-list__item__subtitle
   color: var(--bal-list-item-subtile-color)
 
-.bal-list__item,
-.bal-list__item > a,
-.bal-list__item > div,
-.bal-list__item > button,
+.bal-list__item:not(.bal-list__item__accordion-head),
+.bal-list__item:not(.bal-list__item__accordion-head) > a,
+.bal-list__item:not(.bal-list__item__accordion-head) > div,
+.bal-list__item:not(.bal-list__item__accordion-head) > button,
 .bal-list__item__content
   flex: 1
 
