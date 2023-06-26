@@ -50,6 +50,7 @@ export class NavMetaBar
   private navId = `bal-nav-${NavIds++}`
   private bodyScrollHandler = new BalScrollHandler()
   private menuBarEl: HTMLBalNavMenuBarElement | undefined
+  private metaBarEl: HTMLBalNavMetaBarElement | undefined
 
   @Element() el!: HTMLElement
 
@@ -155,8 +156,13 @@ export class NavMetaBar
   @Listen('click', { target: 'document', passive: true })
   async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
-      if (!this.menuBarEl?.querySelector('.container')?.contains(ev.target as Node) && this.isFlyoutActive) {
-        this.isFlyoutActive = false
+      if (this.isFlyoutActive) {
+        const targetIsInMetaBar = this.metaBarEl?.querySelector('.container')?.contains(ev.target as Node)
+        const targetIsInMenuBar = this.menuBarEl?.querySelector('.container')?.contains(ev.target as Node)
+
+        if (!targetIsInMetaBar && !targetIsInMenuBar) {
+          this.isFlyoutActive = false
+        }
       }
     }
   }
@@ -330,7 +336,12 @@ export class NavMetaBar
           }}
         >
           {this.isDesktop ? (
-            <bal-nav-meta-bar variant="primary" size="small" position="sticky-top">
+            <bal-nav-meta-bar
+              variant="primary"
+              size="small"
+              position="sticky-top"
+              ref={metaBarEl => (this.metaBarEl = metaBarEl)}
+            >
               <bal-stack space="auto">
                 {this.linkItems.length > 1 ? (
                   <bal-tabs
