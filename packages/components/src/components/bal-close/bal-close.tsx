@@ -23,7 +23,7 @@ export class Close implements ComponentInterface {
    */
   @Prop() inverted = false
 
-  componentWillLoad() {
+  componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
   }
 
