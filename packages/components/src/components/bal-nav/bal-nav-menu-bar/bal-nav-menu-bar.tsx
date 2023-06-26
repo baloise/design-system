@@ -30,7 +30,7 @@ export class NavMenuBar implements ComponentInterface, Loggable {
   /**
    * Tells when to hide the bar
    */
-  @Prop() hidden: BalProps.BalNavMenuBarHidden = 'none'
+  @Prop() invisible: BalProps.BalNavMenuBarInvisible = 'none'
 
   /**
    * Defines the position of the bar
@@ -60,8 +60,8 @@ export class NavMenuBar implements ComponentInterface, Loggable {
         id={this.navMenuBarId}
         class={{
           ...block.class(),
-          ...block.modifier(`hidden-mobile`).class(this.hidden === 'mobile'),
-          ...block.modifier(`hidden-tablet`).class(this.hidden === 'tablet'),
+          ...block.modifier(`hidden-mobile`).class(this.invisible === 'mobile'),
+          ...block.modifier(`hidden-tablet`).class(this.invisible === 'tablet'),
           ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
         }}
       >

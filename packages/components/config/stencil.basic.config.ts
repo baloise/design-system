@@ -111,6 +111,18 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-table'] },
     { components: ['bal-tabs', 'bal-tab-item'] },
     { components: ['bal-tag', 'bal-tag-group'] },
+    {
+      components: [
+        'bal-nav',
+        'bal-nav-link',
+        'bal-nav-link-grid',
+        'bal-nav-link-grid-col',
+        'bal-nav-link-group',
+        'bal-nav-menu-bar',
+        'bal-nav-menu-flyout',
+        'bal-nav-meta-bar',
+      ],
+    },
     //
     // form components
     { components: ['bal-checkbox', 'bal-checkbox-group'] },

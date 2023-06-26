@@ -42,7 +42,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
   /**
    * Tells when to hide the bar
    */
-  @Prop() hidden: BalProps.BalNavMetaBarHidden = 'none'
+  @Prop() invisible: BalProps.BalNavMetaBarInvisible = 'none'
 
   /**
    * Defines the position of the bar
@@ -103,8 +103,8 @@ export class NavMetaBar implements ComponentInterface, Loggable {
           ...block.modifier(`variant-${this.variant}`).class(),
           ...block.modifier(`size-${this.size}`).class(),
           ...block.modifier(`position-${this.position}`).class(this.position !== 'none'),
-          ...block.modifier(`hidden-mobile`).class(this.hidden === 'mobile'),
-          ...block.modifier(`hidden-tablet`).class(this.hidden === 'tablet'),
+          ...block.modifier(`hidden-mobile`).class(this.invisible === 'mobile'),
+          ...block.modifier(`hidden-tablet`).class(this.invisible === 'tablet'),
         }}
       >
         <div
