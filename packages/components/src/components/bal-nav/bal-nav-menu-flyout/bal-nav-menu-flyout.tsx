@@ -73,6 +73,7 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
 
   render() {
     const block = BEM.block('nav-menu-flyout')
+    const line = block.element('line')
 
     return (
       <Host
@@ -81,6 +82,11 @@ export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObs
           ...block.class(),
         }}
       >
+        <div
+          class={{
+            ...line.class(),
+          }}
+        ></div>
         <div
           class={{
             container: true,
