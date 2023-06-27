@@ -35,6 +35,10 @@
             <bal-button data-test="drawer-trigger" bal-popup="popup-small" bal-popup-variant="drawer" bal-popup-closable bal-popup-backdrop>Drawer</bal-button>
           </bal-stack>
 
+          <bal-stack py="medium">
+            <bal-button data-test="tabs-trigger" bal-popup="popup-tabs" bal-popup-closable>Tabs</bal-button>
+          </bal-stack>
+
           <bal-popup id="popup-basic" data-testid="basic" label="Basic Popup">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
@@ -48,6 +52,24 @@
           </bal-popup>
 
           <bal-popup id="popup-small" data-testid="small" label="Small Popup">Small Content</bal-popup>
+
+          <bal-popup id="popup-tabs" data-testid="tabs" label="Tabs Popup">
+            <div class="py-small">
+              <h5 class="title is-size-x-large" style="margin-top: 0px">Title</h5>
+              <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
+                  dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
+                  error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
+              </p>
+              <bal-tabs spaceless border fullwidth value="tab-a">
+                  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+                  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+                  <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+                  <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
+                  <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+              </bal-tabs>
+          </div>
+          </bal-popup>
 
         </section>
       </main>

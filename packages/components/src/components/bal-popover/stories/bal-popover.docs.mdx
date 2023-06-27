@@ -4,11 +4,16 @@ import readme from '../readme.md'
 import menu from '../bal-popover-content/readme.md'
 import { Basic } from './bal-popover.stories'
 
-<bal-doc-banner id="story--components-popover--basic">Popover</bal-doc-banner>
+<bal-doc-banner id="story--components-popover--basic" color="yellow">Popover (deprecated)</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Popover</b> shows and hides content close to the trigger element.
 </bal-doc-lead>
+
+<p class="has-background-yellow-2 p-normal has-radius-normal">
+  <b>Deprecation Warning!</b> Please use the new component <a href="?path=/docs/components-popup--basic">Popup</a>, because this
+  component is marked as deprecated and will be removed with the next major releases.
+</p>
 
 <Canvas withSource="open" className="has-visible-overflow">
   <Story id="components-popover--basic" />
@@ -23,7 +28,6 @@ import { Basic } from './bal-popover.stories'
     <bal-doc-code-sandbox
       framework="html"
       template={Basic.parameters.docs.source.code}
-      modules="popover,button,tabs"
     ></bal-doc-code-sandbox>
   </bal-button-group>
 </bal-doc-app>
