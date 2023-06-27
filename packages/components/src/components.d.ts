@@ -103,6 +103,10 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color": BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon": string;
@@ -110,6 +114,10 @@ export namespace Components {
           * Label of the open trigger button
          */
         "openLabel": string;
+        /**
+          * Size of the button
+         */
+        "size": BalProps.BalButtonSize;
         "state": AccordionState;
     }
     interface BalApp {
@@ -4474,6 +4482,10 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color"?: BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon"?: string;
@@ -4481,6 +4493,10 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+        /**
+          * Size of the button
+         */
+        "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
     }
     interface BalApp {
