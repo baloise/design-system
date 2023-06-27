@@ -17,27 +17,26 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-option-list id="list">
-            <bal-option value="v1988" label="1988">1988</bal-option>
-            <bal-option value="v1989" label="1989">1989</bal-option>
-            <bal-option value="v1990" label="1990">1990</bal-option>
-            <bal-option value="v1991" label="1990">1991</bal-option>
-            <bal-option value="v1992" label="1990">1992</bal-option>
-            <bal-option value="v1993" label="1990">1993</bal-option>
-            <bal-option value="v1994" label="1990">1994</bal-option>
-            <bal-option value="v1995" label="1990">1995</bal-option>
-            <bal-option value="v1996" label="1990">1996</bal-option>
-            <bal-option value="v1997" label="1990">1997</bal-option>
-            <bal-option value="v1998" label="1990">1998</bal-option>
-            <bal-option value="v1999" label="1990">1999</bal-option>
-            <bal-option value="v2000" label="1990">2000</bal-option>
+          <bal-option-list id="list" multiple>
+            <bal-option value="v1988" label="1988" disabled selected>1988</bal-option>
+            <bal-option value="v1989" label="1989" invalid>1989</bal-option>
+            <bal-option value="v1990" label="1990" disabled>1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000" disabled>2000</bal-option>
           </bal-option-list>
           <bal-stack py="normal">
             <bal-button color="info" id="first">Focus First</bal-button>
             <bal-button color="info" id="last">Focus Last</bal-button>
             <bal-button color="info" id="next">Focus Next</bal-button>
             <bal-button color="info" id="prev">Focus Previous</bal-button>
-            <bal-button color="info" id="scroll">Scroll To</bal-button>
           </bal-stack>
           <script>
             const list = document.getElementById('list')
@@ -45,13 +44,11 @@
             const lastBtn = document.getElementById('last')
             const nextBtn = document.getElementById('next')
             const prevBtn = document.getElementById('prev')
-            const scrollBtn = document.getElementById('scroll')
 
             firstBtn.addEventListener('click', () => list.focusFirst())
             lastBtn.addEventListener('click', () => list.focusLast())
             nextBtn.addEventListener('click', () => list.focusNext())
             prevBtn.addEventListener('click', () => list.focusPrevious())
-            scrollBtn.addEventListener('click', () => list.scrollToFocusedOption())
           </script>
         </section>
       </main>

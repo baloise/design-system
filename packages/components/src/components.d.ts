@@ -2039,17 +2039,19 @@ export namespace Components {
     interface BalOptionList {
         "contentHeight"?: number;
         "focusFirst": () => Promise<number>;
-        /**
-          * PUBLIC PROPERTY API ------------------------------------------------------
-         */
         "focusIndex": number;
         "focusLast": () => Promise<number>;
         "focusNext": () => Promise<number>;
         "focusPrevious": () => Promise<number>;
         /**
+          * PUBLIC PROPERTY API ------------------------------------------------------
+         */
+        "multiple": boolean;
+        "resetFocus": () => Promise<number>;
+        /**
           * PUBLIC METHODS ------------------------------------------------------
          */
-        "resetFocus": () => Promise<number>;
+        "resetSelected": () => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -6329,6 +6331,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the option.
          */
         "multiline"?: boolean;
+        /**
+          * Emitted when the option gets selected or unselected
+         */
+        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalChangeDetail>) => void;
         "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
         /**
           * If `true`, the user cannot interact with the option.
@@ -6341,10 +6347,11 @@ declare namespace LocalJSX {
     }
     interface BalOptionList {
         "contentHeight"?: number;
+        "focusIndex"?: number;
         /**
           * PUBLIC PROPERTY API ------------------------------------------------------
          */
-        "focusIndex"?: number;
+        "multiple"?: boolean;
     }
     interface BalPagination {
         /**

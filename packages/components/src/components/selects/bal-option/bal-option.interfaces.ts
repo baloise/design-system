@@ -14,8 +14,12 @@ namespace BalEvents {
   export interface BalOption {
     value: string
     label: string
+    selected: boolean
   }
 
   export type BalOptionFocusDetail = BalOption
   export type BalOptionFocus = BalOptionCustomEvent<BalOptionFocusDetail>
+
+  export type BalChangeDetail = BalOption
+  export type BalChange = BalOptionCustomEvent<BalChangeDetail>
 }

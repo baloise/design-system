@@ -12,7 +12,6 @@
   border-top: 0.125rem solid var(--bal-color-grey-2)
   background: var(--bal-color-transparent)
   min-height: 3rem
-  transition: background 70ms cubic-bezier(.2,0,.38,.9)
   & > bal-stack
     min-height: 3rem
   &:first-child
@@ -27,7 +26,6 @@
     word-break: break-word
     white-space: normal
     hyphens: auto
-    transition: color 70ms cubic-bezier(.2,0,.38,.9)
     overflow: hidden
     text-overflow: ellipsis
     white-space: nowrap
@@ -55,6 +53,11 @@
 .bal-option__inner--selected
   font-weight: var(--bal-weight-bold)
 
+.bal-option--selected.bal-option--focused
+  background: #cccfe2
+  .bal-option__inner
+    font-weight: var(--bal-weight-bold)
+
 // Invalid Option
 // --------------------------------------------------
 .bal-option--invalid
@@ -66,9 +69,13 @@
 .bal-option__inner--invalid
   color: var(--bal-color-text-danger)
 
+.bal-option--invalid.bal-option--focused
+  background: #f5d0cc
+
 // Disbaled Option
 // --------------------------------------------------
-.bal-option--disabled
+.bal-option--disabled,
+.bal-option--disabled.bal-option--focused
   background: var(--bal-color-transparent)
   opacity: .7
   cursor: default

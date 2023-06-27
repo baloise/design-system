@@ -29,6 +29,8 @@ export class OptionList implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
+  @Prop({ mutable: true }) multiple = false
+
   @Prop({ mutable: true }) focusIndex = -1
 
   @Prop() contentHeight?: number = 282
@@ -67,15 +69,27 @@ export class OptionList implements ComponentInterface, Loggable {
     }
   }
 
+  @Listen('balOptionChange', { passive: false })
+  listenToOptionChange({ detail }: BalEvents.BalOptionFocus) {
+    if (!this.multiple) {
+      this.options.filter(option => option.value !== detail.value).forEach(option => (option.selected = false))
+    }
+  }
+
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
 
+  @Method() async resetSelected(): Promise<void> {
+    this.options.forEach(option => (option.selected = false))
+  }
+
   @Method() async resetFocus(): Promise<number> {
     const options = this.options
     const indexToFocus = -1
     this.updateFocus(options, indexToFocus)
+
     return indexToFocus
   }
 
@@ -185,7 +199,7 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   private async scrollTo(scrollTop: number) {
-    if (scrollTop) {
+    if (scrollTop !== undefined && scrollTop !== null) {
       if (this.focusRaf !== undefined) {
         cancelAnimationFrame(this.focusRaf)
       }
@@ -225,25 +239,36 @@ export class OptionList implements ComponentInterface, Loggable {
     return this.focusIndex
   }
 
-  private getNextOptionIndex(options: HTMLBalOptionElement[]): number {
-    if (this.focusIndex < 0) {
-      return 0
+  private getNextOptionIndex(options: HTMLBalOptionElement[], index = this.focusIndex): number {
+    if (index <= 0) {
+      return this.getFirstOptionIndex(options)
     }
 
-    const lastIndex = options.length - 1
-    if (this.focusIndex !== lastIndex) {
-      return this.focusIndex + 1
+    const lastIndex = this.getLength(options)
+    let newIndex = index
+    if (index < lastIndex) {
+      newIndex = index + 1
+      if (options[newIndex].disabled) {
+        return this.getNextOptionIndex(options, newIndex)
+      }
     }
 
-    return this.focusIndex
+    return newIndex
   }
 
-  private getPreviousOptionIndex(_options: HTMLBalOptionElement[]): number {
-    if (this.focusIndex <= 0) {
-      return 0
+  private getPreviousOptionIndex(options: HTMLBalOptionElement[], index = this.focusIndex): number {
+    const firstIndex = this.getFirstOptionIndex(options)
+    if (index <= firstIndex) {
+      return firstIndex
     }
 
-    return this.focusIndex - 1
+    let newIndex = index
+    newIndex = index - 1
+    if (options[newIndex].disabled) {
+      return this.getPreviousOptionIndex(options, newIndex)
+    }
+
+    return newIndex
   }
 
   private getLastOptionIndex(options: HTMLBalOptionElement[]): number {
@@ -254,6 +279,12 @@ export class OptionList implements ComponentInterface, Loggable {
       }
     }
     return this.focusIndex
+  }
+
+  private getLength(options: HTMLBalOptionElement[]): number {
+    const indexes: number[] = options.map((option, index) => (option.disabled ? 0 : index))
+    const length = Math.max(...indexes)
+    return length
   }
 
   /**

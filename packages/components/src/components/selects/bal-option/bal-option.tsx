@@ -68,6 +68,11 @@ export class Option implements ComponentInterface, Loggable {
   @Prop({ reflect: true }) checkbox = false
 
   /**
+   * Emitted when the option gets selected or unselected
+   */
+  @Event() balOptionChange!: EventEmitter<BalEvents.BalChangeDetail>
+
+  /**
    * @internal
    * Emitted when a option gets focused.
    */
@@ -80,8 +85,8 @@ export class Option implements ComponentInterface, Loggable {
 
   @Listen('mouseenter')
   listenToMouseEnter() {
-    const { label, value } = this
-    this.balOptionFocus.emit({ label, value })
+    const { label, value, selected } = this
+    this.balOptionFocus.emit({ label, value, selected })
   }
 
   /**
@@ -95,6 +100,8 @@ export class Option implements ComponentInterface, Loggable {
       ev.stopPropagation()
     } else {
       this.selected = !this.selected
+      const { label, value, selected } = this
+      this.balOptionChange.emit({ label, value, selected })
     }
   }
 
@@ -155,7 +162,15 @@ export class Option implements ComponentInterface, Loggable {
           >
             <slot></slot>
           </div>
-          {this.selected && !this.checkbox ? <bal-icon name="check" size="small"></bal-icon> : ''}
+          {this.selected && !this.checkbox ? (
+            <bal-icon
+              name="check"
+              size="small"
+              color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            ></bal-icon>
+          ) : (
+            ''
+          )}
         </bal-stack>
       </Host>
     )
