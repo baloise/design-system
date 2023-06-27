@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="has-background-green-2">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Navigation</title>
+    <meta
+      name="description"
+      content="Learn how to develop a tone of voice for your brand and use our template to get started."
+    />
+
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <div>
+        <header>
+          <bal-nav id="nav" data-testid="basic">
+            <bal-popup id="popup-call" label="24h Kundenservice" content-width="440">
+              <bal-stack layout="vertical">
+                <bal-button expanded>00800 24 800 800</bal-button>
+              </bal-stack>
+            </bal-popup>
+          </bal-nav>
+        </header>
+        <main>
+          <bal-stage color="purple" shape size="small" containerSize="wide">
+            <bal-stage-body>
+              <bal-stage-back-link href="#" class="mb-medium">Back</bal-stage-back-link>
+              <bal-heading class="mb-x-small" space="none">Small title</bal-heading>
+            </bal-stage-body>
+          </bal-stage>
+        </div>
+        </main>
+        <script>
+          const nav = document.getElementById('nav')
+
+          const logoLinkItem = {
+            href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+            ariaLabel: 'Homepage',
+            htmlTitle: 'Homepage',
+          }
+
+          const serviceLinkItem = {
+            value: 'Services',
+            label: 'Services',
+            linkItems: [
+              {
+                label: 'Service link 1',
+              },
+              {
+                label: 'Service link 2',
+              },
+              {
+                label: 'Service link 3',
+              },
+            ],
+          }
+
+          const sectionLinkItem = {
+            value: 'Section Title',
+            label: 'Section Title',
+            linkItems: [
+              {
+                label: 'Section link 1',
+              },
+              {
+                label: 'Section link 2',
+              },
+              {
+                label: 'Section link 3',
+              },
+              {
+                label: 'Section link 4',
+              },
+            ],
+          }
+
+          const mainLinkItem = label => ({
+            value: label,
+            label: label,
+            sectionLinkItems: [sectionLinkItem, sectionLinkItem, sectionLinkItem],
+            serviceLinkItems: [serviceLinkItem],
+          })
+
+          nav.logo = logoLinkItem
+
+          nav.options = [
+            {
+              value: 'privatkunden',
+              label: 'Privatkunden',
+              active: true,
+              overviewLink: {
+                value: 'Privatkunden ➞',
+                label: 'Privatkunden ➞',
+                href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+              },
+              mainLinkItems: [
+                {
+                  value: 'Versichern',
+                  label: 'Versichern',
+                  active: true,
+                  sectionLinkItems: [
+                    {
+                      value: 'Wohnen & Recht',
+                      label: 'Wohnen & Recht',
+                      href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                      active: true,
+                      linkItems: [
+                        {
+                          value: 'Hausratversicherung',
+                          label: 'Hausratversicherung',
+                          clickable: true,
+                          active: true,
+                        },
+                        {
+                          value: 'Haushaltversicherung für alle unter 30',
+                          label: 'Haushaltversicherung für alle unter 30',
+                          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          value: 'Haftpflichtversicherung',
+                          label: 'Haftpflichtversicherung',
+                          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          value: 'Rechtsschutzversicherung',
+                          label: 'Rechtsschutzversicherung',
+                          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          value: 'Cyber-Versicherung',
+                          label: 'Cyber-Versicherung',
+                          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                        {
+                          value: 'Wertsachen- & Elektronikversicherungen',
+                          label: 'Wertsachen- & Elektronikversicherungen',
+                          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+                        },
+                      ],
+                    },
+                  ],
+                  serviceLinkItems: [
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      linkItems: [
+                        {
+                          value: 'Schaden melden',
+                          label: 'Schaden melden',
+                        },
+                        {
+                          value: 'Pannenhilfe',
+                          label: 'Pannenhilfe',
+                        },
+                      ],
+                    },
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      color: 'purple',
+                      linkItems: [
+                        {
+                          value: 'Schaden melden',
+                          label: 'Schaden melden',
+                        },
+                        {
+                          value: 'Pannenhilfe',
+                          label: 'Pannenhilfe',
+                        },
+                      ],
+                    },
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      color: 'red',
+                      linkItems: [
+                        {
+                          value: 'Schaden melden',
+                          label: 'Schaden melden',
+                        },
+                        {
+                          value: 'Pannenhilfe',
+                          label: 'Pannenhilfe',
+                        },
+                      ],
+                    },
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      color: 'yellow',
+                      linkItems: [
+                        {
+                          value: 'Schaden melden',
+                          label: 'Schaden melden',
+                        },
+                        {
+                          value: 'Pannenhilfe',
+                          label: 'Pannenhilfe',
+                        },
+                      ],
+                    },
+                    {
+                      value: 'Services',
+                      label: 'Services',
+                      color: 'green',
+                      linkItems: [
+                        {
+                          value: 'Schaden melden',
+                          label: 'Schaden melden',
+                        },
+                        {
+                          value: 'Pannenhilfe',
+                          label: 'Pannenhilfe',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ]
+        </script>
+      </div>
+    </bal-doc-app>
+  </body>
+</html>
