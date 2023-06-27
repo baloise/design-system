@@ -4,7 +4,7 @@ describe('bal-popup', () => {
 
   function testRadioButton(platform: 'mobile' | 'desktop') {
     context(platform, () => {
-      beforeEach(() =>
+      before(() =>
         cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform(platform).waitForDesignSystem().wait(32),
       )
 
