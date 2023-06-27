@@ -21,7 +21,7 @@ export interface PopupComponentInterface {
   arrow: boolean
   closable: boolean
   backdrop: boolean
-  reference: string
+  reference?: string
   balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
   balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
   el: HTMLElement
@@ -31,6 +31,8 @@ export interface PopupComponentInterface {
   trigger?: Element
   lastTrigger?: Element
   getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any
+  getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue:  number): number
+  getBooleanValue(trigger: Element | HTMLElement, attributeName: string, componentValue: boolean): boolean
 }
 
 export interface PopupVariantRenderer {

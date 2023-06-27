@@ -6,9 +6,10 @@ import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfa
 export class PopoverVariantRenderer extends AbstractVariantRenderer implements PopupVariantRenderer {
   private cleanup?: () => void
   private placement: BalProps.BalPopupPlacement = 'bottom'
+  private offset = 0
   private arrow = false
   private backdrop = false
-  private reference = ''
+  private reference?: string = undefined
   private triggerEl: Element | null = null
 
   async present(component: PopupComponentInterface): Promise<boolean> {
@@ -21,9 +22,11 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
     if (component.trigger && component.containerEl && component.arrowEl) {
       this.placement = component.getValue(component.trigger, 'bal-popup-placement', component.placement)
-      this.arrow = component.getValue(component.trigger, 'bal-popup-arrow', component.arrow)
-      this.backdrop = component.getValue(component.trigger, 'bal-popup-backdrop', component.backdrop)
+      this.arrow = component.getBooleanValue(component.trigger, 'bal-popup-arrow', component.arrow)
+      this.backdrop = component.getBooleanValue(component.trigger, 'bal-popup-backdrop', component.backdrop)
       this.reference = component.getValue(component.trigger, 'bal-popup-reference', component.reference)
+      this.offset = component.getNumberValue(component.trigger, 'bal-popup-offset', component.offset)
+      this.triggerEl = component.trigger
 
       if (this.reference && balBrowser.hasDocument) {
         const referenceEl = document.getElementById(this.reference)
@@ -66,7 +69,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
         middleware: [
           shift(),
           flip(),
-          offset(this.arrow ? 16 : 0),
+          offset(this.arrow ? 16 : this.offset),
           arrow({
             element: component.arrowEl,
             padding: 4,
@@ -93,7 +96,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
             if (isNavMetaDesktopPopup) {
               Object.assign(component.arrowEl.style, {
-                left: `${arrowX}px`,
+                left: `${arrowX - 16}px`,
                 top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
                 right: '',
                 bottom: '',

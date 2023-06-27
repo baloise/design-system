@@ -46,6 +46,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   private drawerVariantRenderer = new VariantRenderer(new DrawerVariantRenderer())
   private lastVariant: PopupVariant = 'popover'
   private lastFocus?: HTMLElement
+  private lastVariantRenderer?: PopupVariantRenderer
 
   @Element() el!: HTMLElement
   containerEl: HTMLDivElement | undefined
@@ -79,7 +80,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   /**
    * Id of the reference element default is the trigger element.
    */
-  @Prop() reference = ''
+  @Prop() reference?: string
 
   /**
    * Defines the variant / type of popup
@@ -203,27 +204,6 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
 
   private debouncedGlobalClick = debounce((trigger: HTMLElement) => this.notifyGlobalClick(trigger), 10)
 
-  getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any {
-    const attributeValue = trigger.attributes.getNamedItem(attributeName)
-    return attributeValue ? attributeValue.value : componentValue
-  }
-
-  private notifyGlobalClick(trigger: HTMLElement) {
-    this.trigger = trigger
-    this.lastTrigger = this.lastTrigger === undefined ? this.trigger : this.lastTrigger
-
-    this.activeVariant = this.getValue(trigger, 'bal-popup-variant', this.variant)
-    this.activeClosable = this.getValue(trigger, 'bal-popup-closable', this.closable)
-    this.activeBackdropDismiss = this.getValue(trigger, 'bal-popup-backdrop-dismiss', this.backdropDismiss)
-
-    // present or dismiss active variant
-    if (this.presented && this.lastTrigger !== this.trigger) {
-      this._present()
-    } else {
-      this.toggle()
-    }
-  }
-
   @Listen('click', { target: 'window' })
   async listenOnGlobalClick(ev: MouseEvent): Promise<void> {
     const target = ev.target as HTMLElement
@@ -324,7 +304,14 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     if (balBrowser.hasDocument) {
       this.lastFocus = (document.activeElement as HTMLElement) || undefined
     }
-    const result = await this.getVariantRenderer().present(this)
+
+    if (this.lastVariantRenderer) {
+      await this.lastVariantRenderer.dismiss(this)
+      this.presented = true
+    }
+
+    this.lastVariantRenderer = this.getVariantRenderer()
+    const result = await this.lastVariantRenderer.present(this)
 
     this.focusFirstDescendant()
     return result
@@ -336,6 +323,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   @Method()
   async _dismiss(): Promise<boolean> {
     const result = await this.getVariantRenderer().dismiss(this)
+    this.lastVariantRenderer = undefined
 
     if (this.lastFocus && this.lastFocus.focus) {
       this.lastFocus?.focus()
@@ -359,10 +347,48 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     }
   }
 
+  getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any {
+    const attributeValue = trigger.attributes.getNamedItem(attributeName)
+    return attributeValue ? attributeValue.value : componentValue
+  }
+
+  getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue: number): number {
+    const attributeValue = trigger.attributes.getNamedItem(attributeName)
+    if (attributeValue) {
+      return parseInt(attributeValue.value, 10) || componentValue
+    }
+    return componentValue
+  }
+
+  getBooleanValue(trigger: Element | HTMLElement, attributeName: string, componentValue: boolean): boolean {
+    const attributeValue = trigger.attributes.getNamedItem(attributeName)
+    if (attributeValue) {
+      const booleanValue = attributeValue.value === '' || attributeValue.value === 'true' ? true : false
+      return attributeValue ? booleanValue : componentValue
+    }
+    return componentValue
+  }
+
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private notifyGlobalClick(trigger: HTMLElement) {
+    this.trigger = trigger
+    this.lastTrigger = this.lastTrigger === undefined ? this.trigger : this.lastTrigger
+
+    this.activeVariant = this.getValue(trigger, 'bal-popup-variant', this.variant)
+    this.activeClosable = this.getBooleanValue(trigger, 'bal-popup-closable', this.closable)
+    this.activeBackdropDismiss = this.getBooleanValue(trigger, 'bal-popup-backdrop-dismiss', this.backdropDismiss)
+
+    // present or dismiss active variant
+    if (this.presented && this.lastTrigger !== this.trigger) {
+      this._present()
+    } else {
+      this.toggle()
+    }
+  }
 
   private async resetAllVariants() {
     await this.dismissAllOtherPopups()

@@ -2274,7 +2274,7 @@ export namespace Components {
         /**
           * Id of the reference element default is the trigger element.
          */
-        "reference": string;
+        "reference"?: string;
         /**
           * Triggers the popup
          */

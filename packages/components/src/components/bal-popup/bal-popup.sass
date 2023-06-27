@@ -16,23 +16,19 @@
   visibility: hidden
   padding-top: var(--bal-popup-container-padding-top)
   padding-bottom: var(--bal-popup-container-padding-bottom)
-  // z-index: var(--bal-z-index-popup)
 
   //
   // variants
   &--variant-popover
     border-radius: var(--bal-popup-variant-popover-radius)
     box-shadow: var(--bal-popup-variant-popover-shadow)
-    // z-index: var(--bal-z-index-popup)
     width: var(--bal-popup-variant-popover-max-width)
-    max-width: calc(100vw - 16px)
     position: absolute
     top: 0
     left: 0
   &--variant-fullscreen
     position: fixed
     margin: 0
-    // z-index: var(--bal-z-index-popup)
     width: 100%
     min-width: 100%
     max-width: 100% !important
@@ -41,7 +37,6 @@
     position: fixed
     border-top-left-radius: var(--bal-popup-variant-drawer-radius)
     border-top-right-radius: var(--bal-popup-variant-drawer-radius)
-    // z-index: var(--bal-z-index-popup)
     width: 100%
 
 // Popup Container Inner

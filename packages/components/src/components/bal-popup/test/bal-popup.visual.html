@@ -19,16 +19,23 @@
         <section>
           <bal-stack>
             <bal-button data-test="basic-trigger" bal-popup="popup-basic">Basic</bal-button>
-            <bal-button data-test="popover-left-trigger" bal-popup="popup-popover">Left Pop</bal-button>
-            <bal-button data-test="fullscreen-trigger" bal-popup="popup-fullscreen">Fullscreen</bal-button>
-            <bal-button data-test="drawer-trigger" bal-popup="popup-drawer">Drawer</bal-button>
-            <div class="is-flex-grow-1"></div>
-            <bal-button data-test="popover-right-trigger" bal-popup="popup-popover" class="bal-popup-permanent-trigger"
-              >Right Pop</bal-button
-            >
+            <bal-button data-test="basic-backdrop-arrow-trigger" bal-popup="popup-basic" bal-popup-backdrop bal-popup-arrow>Backdrop & Arrow</bal-button>
+            <bal-button data-test="basic-backdrop-offset" bal-popup="popup-basic" bal-popup-backdrop bal-popup-offset="32">Offset</bal-button>
           </bal-stack>
 
-          <bal-popup id="popup-basic" data-testid="basic">
+          <bal-stack py="medium">
+            <bal-button data-test="small-trigger-right" bal-popup="popup-small" bal-popup-placement="right">Small Right</bal-button>
+            <bal-button data-test="small-trigger-left" bal-popup="popup-small" bal-popup-placement="left">Small Left</bal-button>
+            <bal-button data-test="small-trigger-top" bal-popup="popup-small" bal-popup-placement="top">Small Top</bal-button>
+            <bal-button data-test="small-trigger-bottom" bal-popup="popup-small" bal-popup-placement="bottom">Small Bottom</bal-button>
+          </bal-stack>
+
+          <bal-stack py="medium">
+            <bal-button data-test="fullscreen-trigger" bal-popup="popup-small" bal-popup-variant="fullscreen" bal-popup-closable>Fullscreen</bal-button>
+            <bal-button data-test="drawer-trigger" bal-popup="popup-small" bal-popup-variant="drawer" bal-popup-closable bal-popup-backdrop>Drawer</bal-button>
+          </bal-stack>
+
+          <bal-popup id="popup-basic" data-testid="basic" label="Basic Popup">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
               numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
@@ -40,73 +47,8 @@
             </p>
           </bal-popup>
 
-          <bal-popup
-            content-width="520"
-            id="popup-popover"
-            data-testid="popover"
-            variant="popover"
-            placement="bottom-end"
-            label="My Title"
-            closable
-            arrow
-            backdrop
-            backdrop-dismiss
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
-              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
-              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
-              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
-              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
-              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
-              vitae perferendis excepturi laudantium quo eius!
-            </p>
-            <bal-stack>
-              <bal-button color="info">Button 1</bal-button>
-              <bal-button color="info">Button 2</bal-button>
-            </bal-stack>
-          </bal-popup>
+          <bal-popup id="popup-small" data-testid="small" label="Small Popup">Small Content</bal-popup>
 
-          <bal-popup
-            id="popup-fullscreen"
-            data-testid="fullscreen"
-            variant="fullscreen"
-            label="My Title"
-            closable
-            arrow
-            backdrop
-            backdrop-dismiss
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, reiciendis aspernatur id autem dolorum,
-              numquam dolorem porro nemo repellat optio iste error aliquam. Sint velit consequuntur ratione, voluptate
-              reprehenderit dolor. Obcaecati repudiandae ea nisi placeat. Repellendus ipsum nihil perspiciatis! Earum
-              nobis, vitae, doloribus molestias inventore consequatur sunt praesentium officiis vel quo quae saepe nemo
-              omnis quaerat quas corporis harum ea. Quasi aperiam fuga dolorem odio odit porro. Placeat necessitatibus
-              libero velit quos distinctio porro optio eos nulla cumque accusantium quis, officiis a! Voluptas natus
-              vitae perferendis excepturi laudantium quo eius!
-            </p>
-            <bal-stack layout="vertical">
-              <bal-button color="info">Button 1</bal-button>
-              <bal-button color="info">Button 2</bal-button>
-            </bal-stack>
-          </bal-popup>
-
-          <bal-popup
-            id="popup-drawer"
-            data-testid="drawer"
-            label="My Title"
-            variant="drawer"
-            closable
-            arrow
-            backdrop
-            backdrop-dismiss
-          >
-            <bal-stack layout="vertical">
-              <bal-button color="info">Button 1</bal-button>
-              <bal-button color="info">Button 2</bal-button>
-            </bal-stack>
-          </bal-popup>
         </section>
       </main>
     </bal-doc-app>
