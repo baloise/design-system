@@ -9,7 +9,6 @@
   +unselectable
   display: block
   width: 100%
-  padding-top: 2.5rem
   padding-bottom: 2.5rem
   overflow-y: auto
   max-height: calc(var(--bal-app-height, 100%) - 90px - 48px - 16px)
@@ -19,14 +18,20 @@
 
   // Line
   // --------------------------------------------------
-  &::before
-    position: absolute
-    content: ""
+  .bal-nav-menu-flyout__line
+    position: sticky
     width: 100%
     left: 0
     top: 0
     height: 1px
     background-color: var(--bal-color-grey)
+    margin-bottom: 2.5rem
+
+    // Line width on the specific device size
+    // --------------------------------------------------
+    +between(1440px, 1540px)
+      width: calc(100% - 2rem)
+      left: 1rem
 
   +tablet
     width: calc( 100% + 2.5rem + 2.5rem)
@@ -38,14 +43,3 @@
     margin-right: -3rem
   +widescreen
     max-height: calc(var(--bal-app-height, 100%) - 96px - 48px - 16px)
-  // Line width on the specific device size
-  // --------------------------------------------------
-  +between(1440px, 1540px)
-    &::before
-      position: absolute
-      content: ""
-      width: calc(100% - 2rem)
-      left: 1rem
-      top: 0
-      height: 1px
-      background-color: var(--bal-color-grey)
