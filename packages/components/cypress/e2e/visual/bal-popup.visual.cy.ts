@@ -3,31 +3,39 @@ describe('bal-popup', () => {
   testRadioButton('desktop')
 
   function testRadioButton(platform: 'mobile' | 'desktop') {
-    beforeEach(() =>
-      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform(platform).waitForDesignSystem().wait(32),
-    )
+    context(platform, () => {
+      beforeEach(() =>
+        cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform(platform).waitForDesignSystem().wait(32),
+      )
 
-    it('basic component ' + platform, () => {
-      cy.compareSnapshot(`popup-basic-${platform}`, 0.0)
-      cy.getByTestId('basic-trigger').click()
-      cy.compareSnapshot(`popup-basic-${platform}-open`, 0.0)
-      cy.get('body').type('{esc}').wait(32)
+      function testPopup(name: string) {
+        cy.compareSnapshot(`popup-${name}-${platform}`, 0.0)
+        cy.getByTestId(`${name}-trigger`).click()
+        cy.compareSnapshot(`popup-${name}-${platform}-open`, 0.0)
+        cy.get('body').type('{esc}').wait(32)
+      }
 
-      cy.getByTestId('popover-left-trigger').click().wait(32)
-      cy.compareSnapshot(`popup-popover-left-${platform}-open`, 0.0)
-      cy.getByTestId('popover-right-trigger').click().wait(32)
-      cy.compareSnapshot(`popup-popover-right-${platform}-open`, 0.0)
-      cy.get('body').type('{esc}').wait(32)
+      it('basic component ' + platform, () => {
+        testPopup('basic')
+        testPopup('basic-backdrop-arrow')
+        testPopup('basic-backdrop-offset')
+      })
 
-      cy.compareSnapshot(`popup-fullscreen-${platform}`, 0.0)
-      cy.getByTestId('fullscreen-trigger').click().wait(32)
-      cy.compareSnapshot(`popup-fullscreen-${platform}-open`, 0.0)
-      cy.get('body').type('{esc}').wait(32)
+      it('placement property ' + platform, () => {
+        testPopup('placement-right')
+        testPopup('placement-left')
+        testPopup('placement-top')
+        testPopup('placement-bottom')
+      })
 
-      cy.compareSnapshot(`popup-drawer-${platform}`, 0.0)
-      cy.getByTestId('drawer-trigger').click().wait(32)
-      cy.compareSnapshot(`popup-drawer-${platform}-open`, 0.0)
-      cy.get('body').type('{esc}').wait(32)
+      it('variant property ' + platform, () => {
+        testPopup('fullscreen')
+        testPopup('drawer')
+      })
+
+      it('tabs combination ' + platform, () => {
+        testPopup('tabs')
+      })
     })
   }
 })
