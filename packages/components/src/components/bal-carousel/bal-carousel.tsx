@@ -433,7 +433,7 @@ export class Carousel
           </div>
         </div>
 
-        {this.controls === 'dots' ? (
+        {this.controls === 'dots' && !this.areControlsHidden ? (
           <DotControl
             value={this.value}
             items={controlItems}
@@ -443,7 +443,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'large' ? (
+        {this.controls === 'large' && !this.areControlsHidden ? (
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
@@ -456,7 +456,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'small' ? (
+        {this.controls === 'small' && !this.areControlsHidden ? (
           <SmallControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}

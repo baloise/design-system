@@ -41,7 +41,6 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         onClick={() => onPreviousClick()}
         disabled={isFirst}
         aria-hidden={isFirst ? 'true' : null}
-        role="button"
         tabindex="-1"
         data-testid="bal-carousel-control-left"
       ></bal-button>
@@ -59,7 +58,6 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         onClick={() => onNextClick()}
         disabled={isLast}
         aria-hidden={isLast ? 'true' : null}
-        role="button"
         tabindex="-1"
         data-testid="bal-carousel-control-right"
       ></bal-button>

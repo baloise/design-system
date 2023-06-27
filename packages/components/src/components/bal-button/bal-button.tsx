@@ -175,7 +175,7 @@ export class Button implements ComponentInterface {
   }
 
   componentWillRender() {
-    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label'])
+    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-hidden', 'tabindex'])
   }
 
   private get isIconInverted() {
