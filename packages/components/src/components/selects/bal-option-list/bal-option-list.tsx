@@ -89,6 +89,7 @@ export class OptionList implements ComponentInterface, Loggable {
     const options = this.options
     const indexToFocus = -1
     this.updateFocus(options, indexToFocus)
+    this.scrollTo(0)
 
     return indexToFocus
   }
@@ -97,7 +98,9 @@ export class OptionList implements ComponentInterface, Loggable {
     const options = this.options
     const indexToFocus = this.getFirstOptionIndex(options)
     this.updateFocus(options, indexToFocus)
-    this.scrollTo(0)
+
+    const option = options[indexToFocus]
+    this.updateScrollTopPosition(option)
 
     return indexToFocus
   }
