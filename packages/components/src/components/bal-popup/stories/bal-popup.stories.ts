@@ -1,4 +1,3 @@
-import { ref, watchEffect } from 'vue'
 import docs from './bal-popup.docs.mdx'
 import { BalPopup } from '../../../../.storybook/vue/generated/components'
 import { BalComponentStory, sourceCode } from '../../../stories/utils/story'

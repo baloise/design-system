@@ -1,5 +1,4 @@
 import { log, wrapOptions } from '../helpers'
-import { selectors } from '../../selectors'
 
 Cypress.Commands.add(
   'balPopupIsOpen',
