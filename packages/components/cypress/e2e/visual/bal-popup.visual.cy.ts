@@ -6,33 +6,40 @@ describe('bal-popup', () => {
     cy.getByTestId(`${name}-trigger`).click()
   }
 
-  // context('mobile', () => {
-  //   beforeEach(() => {
-  //     cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem().wait(32)
-  //   })
+  context('mobile', () => {
+    beforeEach(() => {
+      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem().wait(32)
+    })
 
-  //   it('basic component mobile', () => {
-  //     testPopup('basic', 'mobile')
-  //     testPopup('basic-backdrop-arrow', 'mobile')
-  //     testPopup('basic-backdrop-offset', 'mobile')
-  //   })
+    it('basic component mobile', () => {
+      testPopup('basic', 'mobile')
+      testPopup('basic-backdrop-arrow', 'mobile')
+      testPopup('basic-backdrop-offset', 'mobile')
+    })
 
-  //   it('placement property mobile', () => {
-  //     testPopup('placement-right', 'mobile')
-  //     testPopup('placement-left', 'mobile')
-  //     testPopup('placement-top', 'mobile')
-  //     testPopup('placement-bottom', 'mobile')
-  //   })
+    it('placement property mobile', () => {
+      testPopup('placement-right', 'mobile')
+      testPopup('placement-left', 'mobile')
+      testPopup('placement-top', 'mobile')
+      testPopup('placement-bottom', 'mobile')
+    })
 
-  //   it('variant property mobile', () => {
-  //     testPopup('fullscreen', 'mobile')
-  //     testPopup('drawer', 'mobile')
-  //   })
+    it('tabs combination mobile', () => {
+      testPopup('tabs', 'mobile')
+    })
 
-  //   it('tabs combination mobile', () => {
-  //     testPopup('tabs', 'mobile')
-  //   })
-  // })
+    it('variant property mobile', () => {
+      cy.compareSnapshot(`popup-fullscreen-mobile`, 0.0)
+      cy.getByTestId(`fullscreen-trigger`).click()
+      cy.compareSnapshot(`popup-fullscreen-mobile-open`, 0.0)
+      cy.get('body').type('{esc}').wait(32)
+
+      cy.compareSnapshot(`popup-drawer-mobile`, 0.0)
+      cy.getByTestId(`drawer-trigger`).click()
+      cy.compareSnapshot(`popup-drawer-mobile-open`, 0.0)
+      cy.get('body').type('{esc}').wait(32)
+    })
+  })
 
   context('desktop', () => {
     beforeEach(() => {
