@@ -4,7 +4,7 @@ describe('bal-popup', () => {
 
   function testRadioButton(platform: 'mobile' | 'desktop') {
     context(platform, () => {
-      before(() =>
+      beforeEach(() =>
         cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform(platform).waitForDesignSystem().wait(32),
       )
 
@@ -12,7 +12,7 @@ describe('bal-popup', () => {
         cy.compareSnapshot(`popup-${name}-${platform}`, 0.0)
         cy.getByTestId(`${name}-trigger`).click()
         cy.compareSnapshot(`popup-${name}-${platform}-open`, 0.0)
-        cy.get('body').type('{esc}').wait(32)
+        cy.getByTestId(`${name}-trigger`).click()
       }
 
       it('basic component ' + platform, () => {
