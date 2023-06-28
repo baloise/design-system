@@ -2,6 +2,7 @@ describe('bal-popup', () => {
   function testPopup(name: string, platform: 'mobile' | 'desktop' = 'desktop') {
     cy.compareSnapshot(`popup-${name}-${platform}`, 0.0)
     cy.getByTestId(`${name}-trigger`).click()
+    cy.getByTestId(`${name}`)
     cy.compareSnapshot(`popup-${name}-${platform}-open`, 0.0)
     cy.getByTestId(`${name}-trigger`).click()
   }
