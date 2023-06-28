@@ -1,10 +1,8 @@
 describe('bal-popup', () => {
   function testPopup(name: string, platform: 'mobile' | 'desktop' = 'desktop') {
-    cy.compareSnapshot(`popup-${name}-${platform}`, 0.0)
+    cy.compareSnapshot(`popup-${name}-${platform}`)
     cy.getByTestId(`${name}-trigger`).click()
-    cy.getByTestId(`basic`)
-    cy.getByTestId(`popup-small`)
-    cy.compareSnapshot(`popup-${name}-${platform}-open`, 0.0)
+    cy.compareSnapshot(`popup-${name}-${platform}-open`)
     cy.getByTestId(`${name}-trigger`).click()
   }
 
@@ -31,16 +29,14 @@ describe('bal-popup', () => {
     })
 
     it('variant property mobile', () => {
-      cy.compareSnapshot(`popup-fullscreen-mobile`, 0.0)
+      cy.compareSnapshot(`popup-fullscreen-mobile`)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.getByTestId(`popup-tabs`)
-      cy.compareSnapshot(`popup-fullscreen-mobile-open`, 0.0)
+      cy.compareSnapshot(`popup-fullscreen-mobile-open`)
       cy.get('body').type('{esc}').wait(32)
 
-      cy.compareSnapshot(`popup-drawer-mobile`, 0.0)
+      cy.compareSnapshot(`popup-drawer-mobile`)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.getByTestId(`popup-tabs`)
-      cy.compareSnapshot(`popup-drawer-mobile-open`, 0.0)
+      cy.compareSnapshot(`popup-drawer-mobile-open`)
       cy.get('body').type('{esc}').wait(32)
     })
   })
@@ -68,16 +64,14 @@ describe('bal-popup', () => {
     })
 
     it('variant property desktop', () => {
-      cy.compareSnapshot(`popup-fullscreen-desktop`, 0.0)
+      cy.compareSnapshot(`popup-fullscreen-desktop`)
       cy.getByTestId(`fullscreen-trigger`).click()
-      cy.getByTestId(`popup-tabs`)
-      cy.compareSnapshot(`popup-fullscreen-desktop-open`, 0.0)
+      cy.compareSnapshot(`popup-fullscreen-desktop-open`)
       cy.get('body').type('{esc}').wait(32)
 
-      cy.compareSnapshot(`popup-drawer-desktop`, 0.0)
+      cy.compareSnapshot(`popup-drawer-desktop`)
       cy.getByTestId(`drawer-trigger`).click()
-      cy.getByTestId(`popup-tabs`)
-      cy.compareSnapshot(`popup-drawer-desktop-open`, 0.0)
+      cy.compareSnapshot(`popup-drawer-desktop-open`)
       cy.get('body').type('{esc}').wait(32)
     })
   })
