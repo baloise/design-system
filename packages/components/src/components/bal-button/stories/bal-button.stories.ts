@@ -49,8 +49,12 @@ export const ButtonVariants = args => ({
   setup: () => ({ args }),
   template: `<bal-button-group :direction="args.groupDirection" :position="args.groupPosition">
   <bal-button v-bind="args">Primary</bal-button>
-  <bal-button v-bind="args" color="info">Secondary</bal-button>
-  <bal-button v-bind="args" color="info" outlined>Tertiary</bal-button>
+  <bal-button v-bind="args" color="secondary">Secondary</bal-button>
+  <bal-button v-bind="args" color="tertiary">Tertiary</bal-button>
+  <bal-button v-bind="args" color="tertiary-purple">Tertiary Purple</bal-button>
+  <bal-button v-bind="args" color="tertiary-red">Tertiary Red</bal-button>
+  <bal-button v-bind="args" color="tertiary-yellow">Tertiary Yellow</bal-button>
+  <bal-button v-bind="args" color="tertiary-green">Tertiary Green</bal-button>
   <bal-button v-bind="args" color="link">Link</bal-button>
 </bal-button-group>`,
 })
@@ -145,13 +149,20 @@ Link.parameters = { ...component.sourceCode(Link), controls: { exclude: excluded
 export const NativeButton = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `
+  template: `<div>
 <div class="buttons p-small">
   <button class="button is-primary">Primary</button>
-  <button class="button is-info">Secondary</button>
-  <button class="button is-text">Text</button>
+  <button class="button is-secondary">Secondary</button>
+  <button class="button is-tertiary">Tertiary</button>
   <button class="button is-link">Link</button>
-  <button class="button is-light">Light</button>
+</div>
+<div class="buttons p-small">
+  <button class="button is-tertiary-purple">Tertiary Purple</button>
+  <button class="button is-tertiary-red">Tertiary Red</button>
+  <button class="button is-tertiary-yellow">Tertiary Yellow</button>
+  <button class="button is-tertiary-green">Tertiary Green</button>
+</div>
+<div class="buttons p-small">
   <button class="button is-success">S5s</button>
   <button class="button is-warning">W5g</button>
   <button class="button is-danger">D4r</button>
@@ -159,14 +170,22 @@ export const NativeButton = args => ({
 </div>
 <div class="buttons has-background-primary p-small">
   <button class="button is-inverted is-primary">Primary</button>
-  <button class="button is-inverted is-info">Secondary</button>
-  <button class="button is-inverted is-text">Text</button>
-  <button class="button is-inverted is-link"><span>Link</span></button>
-  <button class="button is-inverted is-light">Light</button>
-  <button class="button is-inverted is-success">S5s</button>
-  <button class="button is-inverted is-warning">W5g</button>
-  <button class="button is-inverted is-danger">D4r</button>
-  <button class="button is-inverted is-disabled">Disabled</button>
+  <button class="button is-inverted is-secondary">Secondary</button>
+  <button class="button is-inverted is-tertiary">Tertiary</button>
+  <button class="button is-inverted is-link">Link</button>
+</div>
+<div class="buttons has-background-primary p-small">
+<button class="button is-inverted is-tertiary-purple">Tertiary Purple</button>
+<button class="button is-inverted is-tertiary-red">Tertiary Red</button>
+<button class="button is-inverted is-tertiary-yellow">Tertiary Yellow</button>
+<button class="button is-inverted is-tertiary-green">Tertiary Green</button>
+</div>
+<div class="buttons has-background-primary p-small">
+<button class="button is-inverted is-success">S5s</button>
+<button class="button is-inverted is-warning">W5g</button>
+<button class="button is-inverted is-danger">D4r</button>
+<button class="button is-inverted is-disabled">Disabled</button>
+</div>
 </div>
 `,
 })
