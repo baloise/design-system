@@ -16,6 +16,13 @@ describe('bal-popup', () => {
     testPopup('basic-backdrop-offset')
   })
 
+  it('placement property desktop', () => {
+    testPopup('placement-right')
+    testPopup('placement-left')
+    testPopup('placement-top')
+    testPopup('placement-bottom')
+  })
+
   // testRadioButton('mobile')
   // testRadioButton('desktop')
 
