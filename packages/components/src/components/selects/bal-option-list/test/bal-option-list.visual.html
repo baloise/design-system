@@ -30,13 +30,22 @@
             <bal-option value="v1997" label="1997">1997</bal-option>
             <bal-option value="v1998" label="1998">1998</bal-option>
             <bal-option value="v1999" label="1999">1999</bal-option>
-            <bal-option value="v2000" label="2000" disabled>2000</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007" disabled>2007</bal-option>
           </bal-option-list>
           <bal-stack py="normal">
             <bal-button color="info" id="first">Focus First</bal-button>
             <bal-button color="info" id="last">Focus Last</bal-button>
             <bal-button color="info" id="next">Focus Next</bal-button>
             <bal-button color="info" id="prev">Focus Previous</bal-button>
+            <bal-button color="info" id="label">Focus Label</bal-button>
+            <bal-button color="info" id="filter">Filter Label</bal-button>
           </bal-stack>
           <script>
             const list = document.getElementById('list')
@@ -44,11 +53,15 @@
             const lastBtn = document.getElementById('last')
             const nextBtn = document.getElementById('next')
             const prevBtn = document.getElementById('prev')
+            const labelBtn = document.getElementById('label')
+            const filterBtn = document.getElementById('filter')
 
             firstBtn.addEventListener('click', () => list.focusFirst())
             lastBtn.addEventListener('click', () => list.focusLast())
             nextBtn.addEventListener('click', () => list.focusNext())
             prevBtn.addEventListener('click', () => list.focusPrevious())
+            labelBtn.addEventListener('click', () => list.focusByLabel('20'))
+            filterBtn.addEventListener('click', () => list.filterByContent('20'))
           </script>
         </section>
       </main>

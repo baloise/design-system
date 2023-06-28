@@ -2,7 +2,9 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Watch, Method, L
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { Attributes, inheritAttributes } from '../../../utils/attributes'
-import { raf } from '../../../utils/helpers'
+import { raf, waitAfterFramePaint } from '../../../utils/helpers'
+import isNil from 'lodash.isnil'
+import { includes, startsWith } from '../utils/filter.util'
 
 @Component({
   tag: 'bal-option-list',
@@ -29,10 +31,24 @@ export class OptionList implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
+  /**
+   * If `true` the list supports multiple selections
+   */
   @Prop({ mutable: true }) multiple = false
 
+  /**
+   * Defines the focused option with his index value
+   */
   @Prop({ mutable: true }) focusIndex = -1
 
+  /**
+   * Defines the filter logic of the list
+   */
+  @Prop() filter: BalProps.BalOptionListFilter = 'includes'
+
+  /**
+   * Defines the max height of the list element
+   */
   @Prop() contentHeight?: number = 282
   @Watch('contentHeight') contentHeightChanged(value?: number) {
     if (value === undefined) {
@@ -81,19 +97,10 @@ export class OptionList implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Method() async resetSelected(): Promise<void> {
-    this.options.forEach(option => (option.selected = false))
-  }
-
-  @Method() async resetFocus(): Promise<number> {
-    const options = this.options
-    const indexToFocus = -1
-    this.updateFocus(options, indexToFocus)
-    this.scrollTo(0)
-
-    return indexToFocus
-  }
-
+  /**
+   * Focus the first visible option in the list
+   * @returns focusIndex
+   */
   @Method() async focusFirst(): Promise<number> {
     const options = this.options
     const indexToFocus = this.getFirstOptionIndex(options)
@@ -102,9 +109,14 @@ export class OptionList implements ComponentInterface, Loggable {
     const option = options[indexToFocus]
     this.updateScrollTopPosition(option)
 
+    await waitAfterFramePaint()
     return indexToFocus
   }
 
+  /**
+   * Focus the last visible option in the list
+   * @returns focusIndex
+   */
   @Method() async focusLast(): Promise<number> {
     const options = this.options
     const indexToFocus = this.getLastOptionIndex(options)
@@ -113,9 +125,14 @@ export class OptionList implements ComponentInterface, Loggable {
     const option = options[indexToFocus]
     this.updateScrollBottomPosition(option)
 
+    await waitAfterFramePaint()
     return indexToFocus
   }
 
+  /**
+   * Focus the next visible option in the list
+   * @returns focusIndex
+   */
   @Method() async focusNext(): Promise<number> {
     const options = this.options
     const indexToFocus = this.getNextOptionIndex(options)
@@ -124,9 +141,14 @@ export class OptionList implements ComponentInterface, Loggable {
     const option = options[indexToFocus]
     this.updateScrollBottomPosition(option)
 
+    await waitAfterFramePaint()
     return indexToFocus
   }
 
+  /**
+   * Focus the previous visible option in the list
+   * @returns focusIndex
+   */
   @Method() async focusPrevious(): Promise<number> {
     const options = this.options
     const indexToFocus = this.getPreviousOptionIndex(options)
@@ -135,6 +157,64 @@ export class OptionList implements ComponentInterface, Loggable {
     const option = options[indexToFocus]
     this.updateScrollTopPosition(option)
 
+    await waitAfterFramePaint()
+    return indexToFocus
+  }
+
+  /**
+   * Focus the option with the label that starts with the search property
+   * @returns focusIndex
+   */
+  @Method() async focusByLabel(search: string): Promise<number> {
+    const options = this.options
+    const indexToFocus = this.getOptionIndexByLabel(options, search)
+    this.updateFocus(options, indexToFocus)
+
+    const option = options[indexToFocus]
+    this.updateScrollTopPosition(option)
+
+    await waitAfterFramePaint()
+    return indexToFocus
+  }
+
+  /**
+   * Filter the options by the given filter property and hides options
+   * @returns focusIndex
+   */
+  @Method() async filterByContent(search: string): Promise<number> {
+    const options = this.allOptions
+    this.filterOptions(options, search)
+    await waitAfterFramePaint()
+    return this.focusFirst()
+  }
+
+  /**
+   * Shows or hides all options
+   */
+  @Method() async resetHidden(hidden = false): Promise<void> {
+    this.options.forEach(option => (option.hidden = hidden))
+    await waitAfterFramePaint()
+    this.resetFocus()
+  }
+
+  /**
+   * Selects or deselects all options
+   */
+  @Method() async resetSelected(selected = false): Promise<void> {
+    this.options.forEach(option => (option.selected = selected))
+    await waitAfterFramePaint()
+  }
+
+  /**
+   * Resets the focus index to pristine and scrolls to the top of the list
+   */
+  @Method() async resetFocus(): Promise<number> {
+    const options = this.options
+    const indexToFocus = -1
+    this.updateFocus(options, indexToFocus)
+    this.scrollTo(0)
+
+    await waitAfterFramePaint()
     return indexToFocus
   }
 
@@ -144,6 +224,10 @@ export class OptionList implements ComponentInterface, Loggable {
    */
 
   private get options(): HTMLBalOptionElement[] {
+    return Array.from(this.el.querySelectorAll('bal-option')).filter(o => !o.hidden)
+  }
+
+  private get allOptions(): HTMLBalOptionElement[] {
     return Array.from(this.el.querySelectorAll('bal-option'))
   }
 
@@ -151,6 +235,26 @@ export class OptionList implements ComponentInterface, Loggable {
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private filterOptions(options: HTMLBalOptionElement[], search: string): HTMLBalOptionElement[] {
+    const filteredOptions: HTMLBalOptionElement[] = []
+
+    const filter = this.filter === 'includes' ? includes : startsWith
+
+    for (let index = 0; index < options.length; index++) {
+      const option = options[index]
+      const content = option.textContent || ''
+
+      if (filter(content, search)) {
+        filteredOptions.push(option)
+        option.hidden = false
+      } else {
+        option.hidden = true
+      }
+    }
+
+    return filteredOptions
+  }
 
   private isOptionVisible(option: HTMLBalOptionElement): boolean {
     const visibleHeight = this.el.clientHeight
@@ -243,7 +347,7 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   private getNextOptionIndex(options: HTMLBalOptionElement[], index = this.focusIndex): number {
-    if (index <= 0) {
+    if (index < 0) {
       return this.getFirstOptionIndex(options)
     }
 
@@ -281,6 +385,19 @@ export class OptionList implements ComponentInterface, Loggable {
         return index
       }
     }
+    return this.focusIndex
+  }
+
+  private getOptionIndexByLabel(options: HTMLBalOptionElement[], label: string): number {
+    if (label === undefined || label === '') {
+      return this.focusIndex
+    }
+
+    const option = options.find(o => startsWith(o.label || '', label))
+    if (!isNil(option) && option.id) {
+      return options.indexOf(option)
+    }
+
     return this.focusIndex
   }
 

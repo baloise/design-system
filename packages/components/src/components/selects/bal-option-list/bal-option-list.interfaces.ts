@@ -4,5 +4,5 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  // export type BalBadgeSize = 'small' | 'large' | ''
+  export type BalOptionListFilter = 'includes' | 'starts-with'
 }

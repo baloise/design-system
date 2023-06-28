@@ -68,6 +68,11 @@ export class Option implements ComponentInterface, Loggable {
   @Prop({ reflect: true }) checkbox = false
 
   /**
+   * If `true`, the option is hidden.
+   */
+  @Prop({ reflect: true }) hidden = false
+
+  /**
    * Emitted when the option gets selected or unselected
    */
   @Event() balOptionChange!: EventEmitter<BalEvents.BalChangeDetail>
@@ -85,8 +90,10 @@ export class Option implements ComponentInterface, Loggable {
 
   @Listen('mouseenter')
   listenToMouseEnter() {
-    const { label, value, selected } = this
-    this.balOptionFocus.emit({ label, value, selected })
+    const { label, value, selected, disabled, hidden } = this
+    if (!hidden && !disabled) {
+      this.balOptionFocus.emit({ label, value, selected })
+    }
   }
 
   /**
@@ -122,6 +129,7 @@ export class Option implements ComponentInterface, Loggable {
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('selected').class(this.selected),
           ...block.modifier('disabled').class(this.disabled),
+          ...block.modifier('hidden').class(this.hidden),
         }}
         role="option"
         id={this.id}
@@ -129,6 +137,7 @@ export class Option implements ComponentInterface, Loggable {
         data-value={this.value}
         data-label={this.label}
         aria-label={this.label}
+        aria-hidden={ariaBooleanToString(this.hidden)}
         aria-selected={ariaBooleanToString(this.selected)}
         aria-disabled={ariaBooleanToString(this.disabled)}
         tabIndex={-1}

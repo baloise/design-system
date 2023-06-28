@@ -2016,6 +2016,10 @@ export namespace Components {
          */
         "focused": boolean;
         /**
+          * If `true`, the option is hidden.
+         */
+        "hidden": boolean;
+        /**
           * If `true`, the user cannot interact with the option.
          */
         "invalid": boolean;
@@ -2037,21 +2041,64 @@ export namespace Components {
         "value": string;
     }
     interface BalOptionList {
+        /**
+          * Defines the max height of the list element
+         */
         "contentHeight"?: number;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * Filter the options by the given filter property and hides options
+          * @returns focusIndex
+         */
+        "filterByContent": (search: string) => Promise<number>;
+        /**
+          * Focus the option with the label that starts with the search property
+          * @returns focusIndex
+         */
+        "focusByLabel": (search: string) => Promise<number>;
+        /**
+          * Focus the first visible option in the list
+          * @returns focusIndex
+         */
         "focusFirst": () => Promise<number>;
+        /**
+          * Defines the focused option with his index value
+         */
         "focusIndex": number;
+        /**
+          * Focus the last visible option in the list
+          * @returns focusIndex
+         */
         "focusLast": () => Promise<number>;
+        /**
+          * Focus the next visible option in the list
+          * @returns focusIndex
+         */
         "focusNext": () => Promise<number>;
+        /**
+          * Focus the previous visible option in the list
+          * @returns focusIndex
+         */
         "focusPrevious": () => Promise<number>;
         /**
-          * PUBLIC PROPERTY API ------------------------------------------------------
+          * If `true` the list supports multiple selections
          */
         "multiple": boolean;
+        /**
+          * Resets the focus index to pristine and scrolls to the top of the list
+         */
         "resetFocus": () => Promise<number>;
         /**
-          * PUBLIC METHODS ------------------------------------------------------
+          * Shows or hides all options
          */
-        "resetSelected": () => Promise<void>;
+        "resetHidden": (hidden?: boolean) => Promise<void>;
+        /**
+          * Selects or deselects all options
+         */
+        "resetSelected": (selected?: boolean) => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -6320,6 +6367,10 @@ declare namespace LocalJSX {
          */
         "focused"?: boolean;
         /**
+          * If `true`, the option is hidden.
+         */
+        "hidden"?: boolean;
+        /**
           * If `true`, the user cannot interact with the option.
          */
         "invalid"?: boolean;
@@ -6346,10 +6397,20 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalOptionList {
+        /**
+          * Defines the max height of the list element
+         */
         "contentHeight"?: number;
+        /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * Defines the focused option with his index value
+         */
         "focusIndex"?: number;
         /**
-          * PUBLIC PROPERTY API ------------------------------------------------------
+          * If `true` the list supports multiple selections
          */
         "multiple"?: boolean;
     }
