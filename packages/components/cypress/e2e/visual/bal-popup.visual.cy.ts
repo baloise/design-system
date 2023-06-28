@@ -23,6 +23,15 @@ describe('bal-popup', () => {
     testPopup('placement-bottom')
   })
 
+  it('variant property desktop', () => {
+    testPopup('fullscreen')
+    testPopup('drawer')
+  })
+
+  it('tabs combination desktop', () => {
+    testPopup('tabs')
+  })
+
   // testRadioButton('mobile')
   // testRadioButton('desktop')
 
