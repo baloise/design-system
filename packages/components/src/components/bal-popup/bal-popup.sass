@@ -67,7 +67,6 @@
   width: 8px
   height: 8px
   background: var(--bal-popup-arrow-background)
-  // z-index: var(--bal-z-index-popup)
   transform: rotate(45deg)
   display: none
   visibility: hidden
@@ -82,7 +81,6 @@
   left: 0
   right: 0
   top: 0
-  // z-index: calc(var(--bal-z-index-popup) - 1)
   background-color: var(--bal-popup-backdrop-background)
   width: 100vw
   display: none
@@ -90,5 +88,5 @@
 
 .bal-popup-variant-popover-trigger,
 .bal-popup-permanent-trigger
-  z-index: calc(var(--bal-z-index-popup) + 1)
-  position: relative
+  z-index: calc(var(--bal-z-index-popup) + 1) !important
+  position: relative !important

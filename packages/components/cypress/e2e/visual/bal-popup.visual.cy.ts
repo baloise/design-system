@@ -1,5 +1,5 @@
 describe('bal-popup', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('desktop').waitForDesignSystem().wait(32)
   })
 

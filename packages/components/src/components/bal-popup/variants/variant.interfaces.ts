@@ -31,7 +31,7 @@ export interface PopupComponentInterface {
   trigger?: Element
   lastTrigger?: Element
   getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any
-  getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue:  number): number
+  getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue: number): number
   getBooleanValue(trigger: Element | HTMLElement, attributeName: string, componentValue: boolean): boolean
 }
 
