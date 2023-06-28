@@ -163,9 +163,9 @@ export const NativeButton = args => ({
   <button class="button is-tertiary-green">Tertiary Green</button>
 </div>
 <div class="buttons p-small">
-  <button class="button is-success">S5s</button>
-  <button class="button is-warning">W5g</button>
-  <button class="button is-danger">D4r</button>
+  <button class="button is-success">Success</button>
+  <button class="button is-warning">Warning</button>
+  <button class="button is-danger">Danger</button>
   <button class="button is-disabled">Disabled</button>
 </div>
 <div class="buttons has-background-primary p-small">
@@ -173,18 +173,6 @@ export const NativeButton = args => ({
   <button class="button is-inverted is-secondary">Secondary</button>
   <button class="button is-inverted is-tertiary">Tertiary</button>
   <button class="button is-inverted is-link">Link</button>
-</div>
-<div class="buttons has-background-primary p-small">
-<button class="button is-inverted is-tertiary-purple">Tertiary Purple</button>
-<button class="button is-inverted is-tertiary-red">Tertiary Red</button>
-<button class="button is-inverted is-tertiary-yellow">Tertiary Yellow</button>
-<button class="button is-inverted is-tertiary-green">Tertiary Green</button>
-</div>
-<div class="buttons has-background-primary p-small">
-<button class="button is-inverted is-success">S5s</button>
-<button class="button is-inverted is-warning">W5g</button>
-<button class="button is-inverted is-danger">D4r</button>
-<button class="button is-inverted is-disabled">Disabled</button>
 </div>
 </div>
 `,
