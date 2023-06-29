@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-dropdown">
+      <main class="container py-medium">
+        <section data-testid="basic">
+          <bal-dropdown placeholder="Select one year">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-dropdown>
+        </section>
+        <section data-testid="multiple" >
+          <bal-dropdown multiple value="v1988,v1989">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+            <bal-option value="v1989" label="1989">1989</bal-option>
+            <bal-option value="v1990" label="1990">1990</bal-option>
+            <bal-option value="v1991" label="1991">1991</bal-option>
+            <bal-option value="v1992" label="1992">1992</bal-option>
+            <bal-option value="v1993" label="1993">1993</bal-option>
+            <bal-option value="v1994" label="1994">1994</bal-option>
+            <bal-option value="v1995" label="1995">1995</bal-option>
+            <bal-option value="v1996" label="1996">1996</bal-option>
+            <bal-option value="v1997" label="1997">1997</bal-option>
+            <bal-option value="v1998" label="1998">1998</bal-option>
+            <bal-option value="v1999" label="1999">1999</bal-option>
+            <bal-option value="v2000" label="2000">2000</bal-option>
+            <bal-option value="v2001" label="2001">2001</bal-option>
+            <bal-option value="v2002" label="2002">2002</bal-option>
+            <bal-option value="v2003" label="2003">2003</bal-option>
+            <bal-option value="v2004" label="2004">2004</bal-option>
+            <bal-option value="v2005" label="2005">2005</bal-option>
+            <bal-option value="v2006" label="2006">2006</bal-option>
+            <bal-option value="v2007" label="2007">2007</bal-option>
+          </bal-dropdown>
+        </section>
+        <section data-testid="invalid">
+          <bal-dropdown placeholder="Select one year" invalid value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-dropdown>
+          <bal-dropdown placeholder="Select one year" invalid>
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-dropdown>
+        </section>
+        <section data-testid="disabled">
+          <bal-dropdown placeholder="Select one year" disabled value="v1988">
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-dropdown>
+          <bal-dropdown placeholder="Select one year" disabled>
+            <bal-option value="v1988" label="1988">1988</bal-option>
+          </bal-dropdown>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

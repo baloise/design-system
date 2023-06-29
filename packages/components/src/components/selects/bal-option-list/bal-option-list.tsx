@@ -219,6 +219,29 @@ export class OptionList implements ComponentInterface, Loggable {
   }
 
   /**
+   * Returns a list of option values
+   */
+  @Method() async getSelectedOptions(): Promise<string[]> {
+    const options = this.options
+    return options.filter(option => option.selected).map(option => option.value)
+  }
+
+  /**
+   * Selects the option with the current focus
+   */
+  @Method() async selectByFocus(): Promise<void> {
+    const options = this.options
+    const option = options[this.focusIndex]
+    if (option) {
+      if (this.multiple) {
+        option.select(!option.selected)
+      } else {
+        option.select(true)
+      }
+    }
+  }
+
+  /**
    * GETTERS
    * ------------------------------------------------------
    */

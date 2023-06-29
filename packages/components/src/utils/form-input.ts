@@ -14,6 +14,10 @@ export interface FormInput<Value> {
   balChange: EventEmitter<Value>
 }
 
+export const preventDefault = (ev: Event): void => {
+  ev.preventDefault()
+}
+
 export const stopEventBubbling = (ev: Event): void => {
   ev.preventDefault()
   ev.stopPropagation()

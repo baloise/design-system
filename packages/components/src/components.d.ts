@@ -891,6 +891,32 @@ export namespace Components {
     }
     interface BalDocTokensTextShadow {
     }
+    interface BalDropdown {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid": boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple": boolean;
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder": string;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
+    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -2032,6 +2058,10 @@ export namespace Components {
          */
         "multiline": boolean;
         /**
+          * Selects or deselects the option and informs other components
+         */
+        "select": (selected?: boolean) => Promise<void>;
+        /**
           * If `true`, the user cannot interact with the option.
          */
         "selected": boolean;
@@ -2084,6 +2114,10 @@ export namespace Components {
          */
         "focusPrevious": () => Promise<number>;
         /**
+          * Returns a list of option values
+         */
+        "getSelectedOptions": () => Promise<string[]>;
+        /**
           * If `true` the list supports multiple selections
          */
         "multiple": boolean;
@@ -2099,6 +2133,10 @@ export namespace Components {
           * Selects or deselects all options
          */
         "resetSelected": (selected?: boolean) => Promise<void>;
+        /**
+          * Selects the option with the current focus
+         */
+        "selectByFocus": () => Promise<void>;
     }
     interface BalPagination {
         /**
@@ -3164,6 +3202,10 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
+export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDropdownElement;
+}
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFileUploadElement;
@@ -3610,6 +3652,12 @@ declare global {
     var HTMLBalDocTokensTextShadowElement: {
         prototype: HTMLBalDocTokensTextShadowElement;
         new (): HTMLBalDocTokensTextShadowElement;
+    };
+    interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
+    }
+    var HTMLBalDropdownElement: {
+        prototype: HTMLBalDropdownElement;
+        new (): HTMLBalDropdownElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -4201,6 +4249,7 @@ declare global {
         "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
         "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
         "bal-doc-tokens-text-shadow": HTMLBalDocTokensTextShadowElement;
+        "bal-dropdown": HTMLBalDropdownElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -5196,6 +5245,36 @@ declare namespace LocalJSX {
     interface BalDocTokensSpacingSizes {
     }
     interface BalDocTokensTextShadow {
+    }
+    interface BalDropdown {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, the component will be shown as invalid
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true`, the user can select multiple options.
+         */
+        "multiple"?: boolean;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalDropdownCustomEvent<BalEvents.BalDropdownChangeDetail>) => void;
+        /**
+          * Defines the placeholder of the component. Only shown when the value is empty
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The value of the selected options.
+         */
+        "value"?: string | string[];
     }
     interface BalField {
         /**
@@ -6385,7 +6464,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the option gets selected or unselected
          */
-        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalChangeDetail>) => void;
+        "onBalOptionChange"?: (event: BalOptionCustomEvent<BalEvents.BalOptionChangeDetail>) => void;
         "onBalOptionFocus"?: (event: BalOptionCustomEvent<BalEvents.BalOptionFocusDetail>) => void;
         /**
           * If `true`, the user cannot interact with the option.
@@ -7513,6 +7592,7 @@ declare namespace LocalJSX {
         "bal-doc-tokens-spacing": BalDocTokensSpacing;
         "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
         "bal-doc-tokens-text-shadow": BalDocTokensTextShadow;
+        "bal-dropdown": BalDropdown;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -7663,6 +7743,7 @@ declare module "@stencil/core" {
             "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
             "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
             "bal-doc-tokens-text-shadow": LocalJSX.BalDocTokensTextShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensTextShadowElement>;
+            "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

@@ -52,6 +52,7 @@ import './components/notice/bal-snackbar/bal-snackbar.interfaces'
 import './components/notice/bal-toast/bal-toast.interfaces'
 import './components/selects/bal-option/bal-option.interfaces'
 import './components/selects/bal-option-list/bal-option-list.interfaces'
+import './components/selects/bal-dropdown/bal-dropdown.interfaces'
 
 export * from './components'
 export * from './index'

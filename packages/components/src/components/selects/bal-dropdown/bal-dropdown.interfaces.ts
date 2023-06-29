@@ -1,0 +1,16 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../interfaces.d.ts" />
+
+namespace BalProps {}
+
+namespace BalEvents {
+  export interface BalDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalDropdownElement
+  }
+
+  export type BalDropdownChangeDetail = string | string[]
+  export type BalDropdownChange = BalDropdownCustomEvent<BalDropdownChangeDetail>
+}

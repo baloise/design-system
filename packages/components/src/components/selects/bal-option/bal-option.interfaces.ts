@@ -20,6 +20,6 @@ namespace BalEvents {
   export type BalOptionFocusDetail = BalOption
   export type BalOptionFocus = BalOptionCustomEvent<BalOptionFocusDetail>
 
-  export type BalChangeDetail = BalOption
-  export type BalChange = BalOptionCustomEvent<BalChangeDetail>
+  export type BalOptionChangeDetail = BalOption
+  export type BalOptionChange = BalOptionCustomEvent<BalOptionChangeDetail>
 }

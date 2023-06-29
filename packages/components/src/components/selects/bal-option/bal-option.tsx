@@ -1,4 +1,15 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, Listen, Event, EventEmitter } from '@stencil/core'
+import {
+  Component,
+  h,
+  ComponentInterface,
+  Host,
+  Element,
+  Prop,
+  Listen,
+  Event,
+  EventEmitter,
+  Method,
+} from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { preventDefault } from '../../form/bal-select/utils/utils'
@@ -75,7 +86,7 @@ export class Option implements ComponentInterface, Loggable {
   /**
    * Emitted when the option gets selected or unselected
    */
-  @Event() balOptionChange!: EventEmitter<BalEvents.BalChangeDetail>
+  @Event() balOptionChange!: EventEmitter<BalEvents.BalOptionChangeDetail>
 
   /**
    * @internal
@@ -97,6 +108,20 @@ export class Option implements ComponentInterface, Loggable {
   }
 
   /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Selects or deselects the option and informs other components
+   */
+  @Method() async select(selected = true): Promise<void> {
+    this.selected = selected
+    const { label, value } = this
+    this.balOptionChange.emit({ label, value, selected })
+  }
+
+  /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
@@ -106,9 +131,7 @@ export class Option implements ComponentInterface, Loggable {
       ev.preventDefault()
       ev.stopPropagation()
     } else {
-      this.selected = !this.selected
-      const { label, value, selected } = this
-      this.balOptionChange.emit({ label, value, selected })
+      this.select(!this.selected)
     }
   }
 
