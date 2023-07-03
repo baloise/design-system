@@ -11,9 +11,29 @@ export class DateMask extends AbstractMask {
 
   constructor() {
     super([
-      new MaskBlock({ from: 0, to: 2, allowedKeys: [...NUMBER_KEYS], format: value => value.padStart(2, '0') }),
+      new MaskBlock({
+        from: 0,
+        to: 2,
+        allowedKeys: [...NUMBER_KEYS],
+        format: (value, _locale, mask) => {
+          if (Number.isNaN(parseInt(value, 10))) {
+            return `${mask}${mask}`
+          }
+          return value.padStart(2, '0')
+        },
+      }),
       new MaskBlock({ from: 2, to: 3, mask: locale => dateSeparator(locale), isSeparator: true }),
-      new MaskBlock({ from: 3, to: 5, allowedKeys: [...NUMBER_KEYS], format: value => value.padStart(2, '0') }),
+      new MaskBlock({
+        from: 3,
+        to: 5,
+        allowedKeys: [...NUMBER_KEYS],
+        format: (value, _locale, mask) => {
+          if (Number.isNaN(parseInt(value, 10))) {
+            return `${mask}${mask}`
+          }
+          return value.padStart(2, '0')
+        },
+      }),
       new MaskBlock({ from: 5, to: 6, mask: locale => dateSeparator(locale), isSeparator: true }),
       new MaskBlock({ from: 6, to: 10, allowedKeys: [...NUMBER_KEYS] }),
     ])

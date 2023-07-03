@@ -7,7 +7,7 @@ export class MaskBlock {
   private _mask!: MaskValue
   private _isSeparator = false
   private _allowedKeys: string[] = []
-  private _format: ((value: string, locale: string) => string) | undefined
+  private _format: ((value: string, locale: string, mask: string) => string) | undefined
   private _locale = 'de-CH'
 
   constructor(option: Partial<MaskBlockOption>) {
@@ -21,7 +21,7 @@ export class MaskBlock {
 
   public format(value: string): string {
     if (this._format) {
-      return this._format(value.replace(this.mask, ''), this._locale)
+      return this._format(value.replace(this.mask, ''), this._locale, this.mask)
     }
     return value
   }

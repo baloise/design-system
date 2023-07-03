@@ -7,5 +7,5 @@ export interface MaskBlockOption {
   isSeparator: boolean
   mask: MaskValue
   allowedKeys: string[]
-  format: (value: string) => string
+  format: (value: string, locale: string, mask: string) => string
 }
