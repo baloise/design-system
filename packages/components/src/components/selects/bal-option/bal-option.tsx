@@ -20,6 +20,7 @@ import { ariaBooleanToString } from '../../../utils/aria'
   styleUrls: {
     css: 'bal-option.sass',
   },
+  shadow: true,
 })
 export class Option implements ComponentInterface, Loggable {
   private id = `bal-option-${balOptionIds++}`
@@ -166,8 +167,8 @@ export class Option implements ComponentInterface, Loggable {
         tabIndex={-1}
         onClick={this.handleClick}
       >
-        <bal-stack px="small" py="small">
-          {this.checkbox ? (
+        <bal-stack py="small">
+          {/* {this.checkbox ? (
             <bal-checkbox
               hidden
               label-hidden
@@ -180,17 +181,20 @@ export class Option implements ComponentInterface, Loggable {
             ></bal-checkbox>
           ) : (
             ''
-          )}
+          )} */}
           <div
+            id="content"
             class={{
-              ...block.element('inner').class(),
-              ...block.element('inner').modifier('focused').class(this.focused),
-              ...block.element('inner').modifier('invalid').class(this.invalid),
-              ...block.element('inner').modifier('selected').class(this.selected),
-              ...block.element('inner').modifier('disabled').class(this.disabled),
-              ...block.element('inner').modifier('multiline').class(this.multiline),
-              'is-flex-grow-1': true,
+              'is-multiline': this.multiline,
             }}
+            //   ...block.element('inner').class(),
+            //   ...block.element('inner').modifier('focused').class(this.focused),
+            //   ...block.element('inner').modifier('invalid').class(this.invalid),
+            //   ...block.element('inner').modifier('selected').class(this.selected),
+            //   ...block.element('inner').modifier('disabled').class(this.disabled),
+            //   ...block.element('inner').modifier('multiline').class(this.multiline),
+            //   'is-flex-grow-1': true,
+            // }}
           >
             <slot></slot>
           </div>

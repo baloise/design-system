@@ -3,7 +3,8 @@
 
 // Option
 // --------------------------------------------------
-.bal-option
+:host
+  font-size: 16px
   +unselectable
   position: relative
   display: block
@@ -11,9 +12,9 @@
   cursor: pointer
   border-top: 0.125rem solid var(--bal-color-grey-2)
   background: var(--bal-color-transparent)
-  min-height: 3rem
+  min-height: 1.5rem
   & > bal-stack
-    min-height: 3rem
+    min-height: 1.5rem
   &:first-child
     border-top: none
   &::-moz-focus-inner
@@ -21,69 +22,75 @@
   &--hidden
     display: none
     visibility: hidden
-  &__inner
-    font-family: var(--bal-font-family-text)
-    color: var(--bal-select-option-content-label-text-color)
-    font-weight: var(--bal-weight-regular)
-    line-height: 1.125rem
-    word-break: break-word
-    white-space: normal
-    hyphens: auto
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
-    &--multiline
-      white-space: normal
+
+// Option Content
+// --------------------------------------------------
+
+#content
+  font-family: var(--bal-font-family-text)
+  color: var(--bal-select-option-content-label-text-color)
+  font-weight: var(--bal-weight-regular)
+  line-height: 1.125rem
+  word-break: break-word
+  white-space: normal
+  hyphens: auto
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  flex: 1
+
+#content.is-multiline
+  white-space: normal
 
 // Focused Option
 // --------------------------------------------------
-.bal-option--focused
+:host(.bal-option--focused)
   background: var(--bal-color-grey-2)
 
-.bal-option
+:host
   +hover
     &:hover
       background: var(--bal-color-grey-2)
 
 // Selected Option
 // --------------------------------------------------
-.bal-option--selected
+:host(.bal-option--selected)
   background: var(--bal-color-primary-1)
   +hover
     &:hover
       background: #cccfe2
 
-.bal-option__inner--selected
+:host(.bal-option--selected) #content
   font-weight: var(--bal-weight-bold)
 
-.bal-option--selected.bal-option--focused
+:host(.bal-option--selected.bal-option--focused)
   background: #cccfe2
   .bal-option__inner
     font-weight: var(--bal-weight-bold)
 
 // Invalid Option
 // --------------------------------------------------
-.bal-option--invalid
+:host(.bal-option--invalid)
   background: var(--bal-color-danger-1)
   +hover
     &:hover
       background: #f5d0cc
 
-.bal-option__inner--invalid
+:host(.bal-option--invalid) #content
   color: var(--bal-color-text-danger)
 
-.bal-option--invalid.bal-option--focused
+:host(.bal-option--invalid.bal-option--focused)
   background: #f5d0cc
 
 // Disbaled Option
 // --------------------------------------------------
-.bal-option--disabled,
-.bal-option--disabled.bal-option--focused
+:host(.bal-option--disabled),
+:host(.bal-option--disabled.bal-option--focused)
   background: var(--bal-color-transparent)
   opacity: .7
   cursor: default
   &:hover
     background: var(--bal-color-transparent)
 
-.bal-option__inner--disabled
+:host(.bal-option__inner--disabled)
   color: var(--bal-color-text-grey)

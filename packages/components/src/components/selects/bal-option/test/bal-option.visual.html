@@ -11,12 +11,14 @@
     </style>
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
+    <title>Visual Test Page</title>
+    <meta name="description" content="Visual Test Page">
   </head>
 
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <section data-testid="basic">
+        <section data-testid="basic" role="listbox">
           <bal-option value="BlackWidow" label="Black Widow">
             <b style="display: block">Black Widow</b>
             <span>S.H.I.E.L.D.</span>
@@ -28,7 +30,7 @@
           <bal-option value="LongText" label="Lorem ipsum dolor">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab perferendis porro est non esse quibusdam, facere vel minus quam unde nisi vitae provident maxime maiores inventore amet culpa illum nam.</bal-option>
           <bal-option value="LongText" label="Lorem ipsum dolor" multiline>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab perferendis porro est non esse quibusdam, facere vel minus quam unde nisi vitae provident maxime maiores inventore amet culpa illum nam.</bal-option>
         </section>
-        <section data-testid="basic">
+        <section data-testid="basic" role="listbox">
           <bal-option value="Default" label="Default">Default</bal-option>
           <bal-option focused value="Focused" label="Focused">Focused</bal-option>
           <bal-option selected value="Selected" label="Selected">Selected</bal-option>

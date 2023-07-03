@@ -164,7 +164,6 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * @internal
    * Set this to `true` when the component is placed on a dark background.
-   * Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
 

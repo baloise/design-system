@@ -893,21 +893,46 @@ export namespace Components {
     }
     interface BalDropdown {
         /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
           * If `true`, the user cannot interact with the option.
          */
         "disabled": boolean;
         /**
+          * Defines the filter logic of the list
+         */
+        "filter": BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon": string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid": boolean;
+        "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
         /**
           * If `true`, the user can select multiple options.
          */
         "multiple": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * Defines the placeholder of the component. Only shown when the value is empty
          */
         "placeholder": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
          */
@@ -5248,17 +5273,38 @@ declare namespace LocalJSX {
     }
     interface BalDropdown {
         /**
+          * Defines the max height of the list element
+         */
+        "contentHeight"?: number;
+        /**
           * If `true`, the user cannot interact with the option.
          */
         "disabled"?: boolean;
         /**
+          * Defines the filter logic of the list
+         */
+        "filter"?: BalProps.BalOptionListFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "icon"?: string;
+        /**
           * If `true`, the component will be shown as invalid
          */
         "invalid"?: boolean;
+        "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * If `true`, the user can select multiple options.
          */
         "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Emitted when a option got selected.
          */
@@ -5267,6 +5313,10 @@ declare namespace LocalJSX {
           * Defines the placeholder of the component. Only shown when the value is empty
          */
         "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
          */

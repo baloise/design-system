@@ -18,6 +18,7 @@ import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isSpaceKey } 
 import isNil from 'lodash.isnil'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { autoUpdate, computePosition, flip, shift } from '@floating-ui/dom'
+import { Attributes, inheritAttributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-dropdown',
@@ -26,9 +27,12 @@ import { autoUpdate, computePosition, flip, shift } from '@floating-ui/dom'
   },
 })
 export class Dropdown implements ComponentInterface, Loggable {
+  private inheritedAttributes: Attributes = {}
   private id = `bal-dropdown-${balDropdownIds++}`
   private panelEl: HTMLDivElement | undefined
   private listEl: HTMLBalOptionListElement | undefined
+  private initialValue?: string | string[] = []
+  private resetHandlerTimer?: NodeJS.Timer
   private panelCleanup?: () => void
 
   @Element() el!: HTMLElement
@@ -55,9 +59,19 @@ export class Dropdown implements ComponentInterface, Loggable {
    */
 
   /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.id
+
+  /**
    * Defines the placeholder of the component. Only shown when the value is empty
    */
   @Prop() placeholder = ''
+
+  /**
+   * If `true` there will be on trigger icon visible
+   */
+  @Prop() icon = 'caret-down'
 
   /**
    * The value of the selected options.
@@ -87,6 +101,11 @@ export class Dropdown implements ComponentInterface, Loggable {
   @Prop() disabled = false
 
   /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
+
+  /**
    * If `true`, the user can select multiple options.
    */
   @Prop() multiple = false
@@ -102,6 +121,27 @@ export class Dropdown implements ComponentInterface, Loggable {
   @Prop() required = false
 
   /**
+   * Defines if the select is in a loading state.
+   */
+  @Prop() loading = false
+
+  /**
+   * Defines the filter logic of the list
+   */
+  @Prop() filter: BalProps.BalOptionListFilter = 'includes'
+
+  /**
+   * Defines the max height of the list element
+   */
+  @Prop() contentHeight?: number = 282
+
+  /**
+   * @internal
+   * Set this to `true` when the component is placed on a dark background.
+   */
+  @Prop() inverted = false
+
+  /**
    * Emitted when a option got selected.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalDropdownChangeDetail>
@@ -113,6 +153,11 @@ export class Dropdown implements ComponentInterface, Loggable {
 
   connectedCallback(): void {
     this.valueChanged(this.value, undefined)
+    this.initialValue = this.value
+  }
+
+  componentWillRender() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
   }
 
   /**
@@ -144,6 +189,30 @@ export class Dropdown implements ComponentInterface, Loggable {
         this.listEl?.resetFocus()
       }
     }
+  }
+
+  @Listen('reset', { capture: true, target: 'document' })
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
+    if (formElement?.contains(this.el)) {
+      if (this.resetHandlerTimer) {
+        clearTimeout(this.resetHandlerTimer)
+      }
+
+      this.resetHandlerTimer = setTimeout(() => {
+        this.value = this.initialValue
+        this.valueChanged(this.initialValue, [])
+      }, 0)
+    }
+  }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get isDisabled(): boolean {
+    return this.disabled || this.readonly
   }
 
   /**
@@ -310,41 +379,43 @@ export class Dropdown implements ComponentInterface, Loggable {
             ...block.element('root').class(),
             ...block.element('root').modifier('focused').class(this.hasFocus),
             ...block.element('root').modifier('invalid').class(this.invalid),
-            ...block.element('root').modifier('disabled').class(this.disabled),
+            ...block.element('root').modifier('disabled').class(this.isDisabled),
           }}
           tabindex="0"
           role="button"
           aria-expanded={ariaBooleanToString(this.isExpanded)}
-          aria-disabled={ariaBooleanToString(this.disabled)}
+          aria-disabled={ariaBooleanToString(this.isDisabled)}
           aria-haspopup="listbox"
           onClick={ev => this.handleClick(ev)}
           onFocus={ev => this.handleFocus(ev)}
           onBlur={ev => this.handleBlur(ev)}
           onKeyDown={ev => this.handleKeyDown(ev)}
+          {...this.inheritedAttributes}
         >
           <span
             class={{
               ...block.element('root').element('content').class(),
-              ...block.element('root').element('content').modifier('disabled').class(this.disabled),
+              ...block.element('root').element('content').modifier('disabled').class(this.isDisabled),
               ...block.element('root').element('content').modifier('placeholder').class(!this.inputContent),
             }}
           >
             {this.inputContent ? this.inputContent : this.placeholder}
           </span>
           <bal-icon
-            name="caret-down"
+            name={this.icon}
             turn={this.isExpanded}
-            color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            color={this.isDisabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
           ></bal-icon>
         </div>
         <input
           class={{
             ...block.element('native').class(),
           }}
-          aria-required={ariaBooleanToString(this.required)}
+          name={this.name}
           aria-invalid={ariaBooleanToString(this.invalid)}
           aria-hidden="true"
           disabled={this.disabled}
+          readonly={this.readonly}
           required={this.required}
           tabindex="-1"
           value={this.inputValue}
@@ -356,7 +427,12 @@ export class Dropdown implements ComponentInterface, Loggable {
           }}
           ref={panelEl => (this.panelEl = panelEl)}
         >
-          <bal-option-list multiple={this.multiple} ref={listEl => (this.listEl = listEl)}>
+          <bal-option-list
+            multiple={this.multiple}
+            filter={this.filter}
+            contentHeight={this.contentHeight}
+            ref={listEl => (this.listEl = listEl)}
+          >
             <slot></slot>
           </bal-option-list>
         </div>
