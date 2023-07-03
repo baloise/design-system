@@ -1,10 +1,9 @@
 <bal-doc-banner id="story--foundation-typography-development--heading-and-display" subtitle="Foundation/Icons" color="purple">Development</bal-doc-banner>
 
 <bal-doc-lead>
-  <b>Icons</b> are pure svg files. To add a new icon just place your svg file into the
-  <a href="https://github.com/baloise/design-system/tree/master/packages/icons/svg">folder</a>. Then the build script
-  will automatically optimize the svg and provide it to the component. It is important that the svg icons are made with
-  fill elements instead of strokes.
+    Our icons are clear, minimal and consistent across all our digital platforms. They are used to represent ideas,
+  objects or actions. They also communicate messages at a glance, draw attention to important information and are used
+  to provide interactivity for the user.
 </bal-doc-lead>
 
 ## Installation

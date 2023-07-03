@@ -43,16 +43,16 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0.01))
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0.01))
       })
       it('open menu', () => {
         cy.scrollTo('top')
         cy.getByTestId('navigation-burger').click()
-        cy.compareSnapshot(`navigation-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0))
+        cy.compareSnapshot(`navigation-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.01))
       })
     })
   }

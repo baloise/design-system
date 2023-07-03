@@ -21,8 +21,7 @@ import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
-import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
-import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
+import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { getComputedWidth } from '../../utils/style'
@@ -129,9 +128,9 @@ export class Carousel
    */
 
   @Listen('touchmove', { target: 'window', passive: false })
-  async blockVerticalScrolling(event: any) {
-    if (!this.scrollY && this.el?.contains(event.target)) {
-      stopEventBubbling(event)
+  async blockVerticalScrolling(ev: any) {
+    if (!this.scrollY && this.el?.contains(ev.target)) {
+      stopEventBubbling(ev)
     }
   }
 

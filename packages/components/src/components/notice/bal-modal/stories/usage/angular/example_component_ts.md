@@ -1,7 +1,7 @@
 ```ts
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
-import { BalButtonModule, BalModalModule, BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/design-system-components-angular'
 import { ModalComponent } from './modal.component'
 
 @Component({
@@ -9,7 +9,7 @@ import { ModalComponent } from './modal.component'
   templateUrl: 'example.component.html',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, BalButtonModule, BalModalModule],
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleComponent {

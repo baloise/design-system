@@ -79,10 +79,13 @@ To add them to your application follow those guides:
 
 ### CDN
 
-An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
+As part of our design system, we offer [CDN](https://www.jsdelivr.com/) (Content Delivery Network) integration.
+
+While we provide CDN integration as part of our design system, it is essential to note that it is not recommended for use in production applications.
+The reason for this recommendation is that we rely on a third-party service to host and distribute the assets through the CDN.
 
 > **TIP**
-> It is recommended to use the version directly and not the latest version to avoid incoming breaking changes.
+> To avoid potential breaking changes, it is recommended to use a specific version directly rather than relying on the latest version.
 > Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-css@10/css/baloise-design-system.css`
 
 Add the following 4 references to your `<head></head>`
@@ -98,3 +101,60 @@ Add the following 4 references to your `<head></head>`
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```
+
+Here is how you can integrate it into your project.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CDN Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+    ></script>
+  </head>
+  <body>
+    <bal-app class="has-sticky-footer">
+      <header>
+        <bal-navbar>
+          <bal-navbar-brand href="/" target="_blank">Design System</bal-navbar-brand>
+        </bal-navbar>
+      </header>
+      <bal-stage color="green" size="small">
+        <bal-stage-body>
+          <bal-heading>Welcome to the</bal-heading>
+          <bal-heading subtitle>Baloise Design System</bal-heading>
+        </bal-stage-body>
+      </bal-stage>
+      <main class="container mt-xx-large">
+        <p>
+          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          implementations and design artifacts to build any number of web applications.
+        </p>
+        <bal-button href="https://baloise-design-system.vercel.app" target="_blank">
+          Check out the Documentation</bal-button
+        >
+      </main>
+      <bal-footer>
+        <!-- Footer content -->
+      </bal-footer>
+    </bal-app>
+  </body>
+</html>
+```
+
+Here you can try it online.
+
+<bal-button target="_blank" href="https://codesandbox.io/s/baloise-design-system-cdn-qn7ffg?file=/index.html">Try Online</bal-button>

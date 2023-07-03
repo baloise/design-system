@@ -34,7 +34,7 @@ export interface LevelInfo {
   color?: BalProps.BalNavigationLevelBlockColor
   subLevels?: LevelInfo[]
   trackingData?: Attributes
-  onClick: (event: MouseEvent) => void
+  onClick: (ev: MouseEvent) => void
 }
 
 export const readSubLevels = async (element: HTMLElement, target: string): Promise<LevelInfo[]> => {

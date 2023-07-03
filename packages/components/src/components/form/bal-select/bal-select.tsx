@@ -111,6 +111,11 @@ export class Select implements ComponentInterface, Loggable {
   @Prop() balTabindex = 0
 
   /**
+   * If `true` there will be on trigger icon visible
+   */
+  @Prop() freeSolo = false
+
+  /**
    * If `true` multiple option can be selected
    */
   @Prop() multiple = false
@@ -306,17 +311,17 @@ export class Select implements ComponentInterface, Loggable {
    */
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    if (this.disabled && event.target && event.target === this.el) {
-      preventDefault(event)
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      preventDefault(ev)
     }
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       if (this.resetHandlerTimer) {
         clearTimeout(this.resetHandlerTimer)
@@ -336,40 +341,40 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   @Listen('keydown', { target: 'window' })
-  async handleKeyDown(event: KeyboardEvent) {
+  async handleKeyDown(ev: KeyboardEvent) {
     if (this.isPopoverOpen) {
-      if (isArrowDownKey(event) || isArrowUpKey(event)) {
-        preventDefault(event)
-        this.navigateWithArrowKey(event)
+      if (isArrowDownKey(ev) || isArrowUpKey(ev)) {
+        preventDefault(ev)
+        this.navigateWithArrowKey(ev)
         this.updateFocus()
       }
-      if (isEnterKey(event)) {
-        preventDefault(event)
+      if (isEnterKey(ev)) {
+        preventDefault(ev)
         this.selectedFocusedOption()
       }
-      if (isEscapeKey(event)) {
+      if (isEscapeKey(ev)) {
         this.cancel()
       }
-      if (isBackspaceKey(event) && this.typeahead && this.multiple) {
+      if (isBackspaceKey(ev) && this.typeahead && this.multiple) {
         if (this.inputElement.value === '' && length(this.rawValue) > 0) {
           const valuesArray = getValues(this.rawValue)
           this.removeValue(valuesArray[length(this.rawValue) - 1])
         }
       }
-      if (!this.typeahead && event.key.length === 1) {
-        this.focusOptionByLabel(event.key)
+      if (!this.typeahead && ev.key.length === 1) {
+        this.focusOptionByLabel(ev.key)
       }
-      if (isSpaceKey(event) && !this.typeahead) {
-        preventDefault(event)
+      if (isSpaceKey(ev) && !this.typeahead) {
+        preventDefault(ev)
       }
     } else {
       if (this.hasFocus) {
-        if (isArrowDownKey(event) || isArrowUpKey(event)) {
-          preventDefault(event)
+        if (isArrowDownKey(ev) || isArrowUpKey(ev)) {
+          preventDefault(ev)
           await this.open()
         }
-        if (!this.typeahead && event.key.length === 1) {
-          this.selectOptionByLabel(event.key)
+        if (!this.typeahead && ev.key.length === 1) {
+          this.selectOptionByLabel(ev.key)
         }
       }
     }
@@ -624,11 +629,11 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private navigateWithArrowKey(event: KeyboardEvent) {
-    if (isArrowDownKey(event)) {
+  private navigateWithArrowKey(ev: KeyboardEvent) {
+    if (isArrowDownKey(ev)) {
       this.focusIndex = this.focusIndex + 1
     } else {
-      if (isArrowUpKey(event)) {
+      if (isArrowUpKey(ev)) {
         this.focusIndex = this.focusIndex - 1
       }
     }
@@ -804,16 +809,16 @@ export class Select implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private handleClick = (event: MouseEvent) => {
+  private handleClick = (ev: MouseEvent) => {
     if (this.disabled || this.readonly) {
-      preventDefault(event)
+      preventDefault(ev)
     }
   }
 
-  private handlePopoverChange = (event: CustomEvent<boolean>) => {
-    event.stopPropagation()
-    if (this.isPopoverOpen !== event.detail) {
-      this.isPopoverOpen = event.detail
+  private handlePopoverChange = (ev: CustomEvent<boolean>) => {
+    ev.stopPropagation()
+    if (this.isPopoverOpen !== ev.detail) {
+      this.isPopoverOpen = ev.detail
       if (this.isPopoverOpen) {
         this.updateFocus()
       } else {
@@ -826,25 +831,30 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private handleInputBlur = (event: FocusEvent) => {
-    preventDefault(event)
-    const target = event.relatedTarget as null | HTMLElement
-    if (target === null || (target && target.nodeName && target.nodeName === 'BAL-MODAL')) {
+  private handleInputBlur = (ev: FocusEvent) => {
+    preventDefault(ev)
+    const target = ev.relatedTarget as null | HTMLElement
+    if (
+      target === null ||
+      (target &&
+        target.nodeName &&
+        (target.nodeName === 'BAL-MODAL' || target.nodeName === 'INPUT' || target.nodeName === 'BUTTON'))
+    ) {
       this.validateAfterBlur(isHuman)
     }
     this.hasFocus = false
   }
 
-  private handleInputFocus = (event: FocusEvent) => {
-    this.balFocus.emit(event)
+  private handleInputFocus = (ev: FocusEvent) => {
+    this.balFocus.emit(ev)
     this.hasFocus = true
   }
 
-  private isChipClicked(event: MouseEvent) {
+  private isChipClicked(ev: MouseEvent) {
     let isChipClicked = false
     if (this.multiple) {
       const chips = this.selectionEl.querySelectorAll('bal-tag')
-      const target = event.target as HTMLElement
+      const target = ev.target as HTMLElement
       chips.forEach(chip => {
         const isChip = isDescendant(chip, target) || chip === target
         if (isChip) {
@@ -855,18 +865,18 @@ export class Select implements ComponentInterface, Loggable {
     return isChipClicked
   }
 
-  private handleInputClick = async (event: MouseEvent, isIconClick = false) => {
-    stopEventBubbling(event)
+  private handleInputClick = async (ev: MouseEvent, isIconClick = false) => {
+    stopEventBubbling(ev)
 
-    if (this.isChipClicked(event)) {
+    if (this.isChipClicked(ev)) {
       return
     }
 
     if (this.disabled || this.readonly) {
-      preventDefault(event)
+      preventDefault(ev)
     } else {
       this.focusIndex = -1
-      this.balInputClick.emit(event)
+      this.balInputClick.emit(ev)
 
       if (this.typeahead) {
         if (this.isPopoverOpen && isIconClick) {
@@ -884,23 +894,23 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private handleKeyPress = async (event: KeyboardEvent) => {
-    if (!this.isPopoverOpen && isSpaceKey(event)) {
-      preventDefault(event)
+  private handleKeyPress = async (ev: KeyboardEvent) => {
+    if (!this.isPopoverOpen && isSpaceKey(ev)) {
+      preventDefault(ev)
       await this.open()
     }
-    this.balKeyPress.emit(event)
+    this.balKeyPress.emit(ev)
   }
 
-  private handleInputChange = (event: Event) => {
+  private handleInputChange = (ev: Event) => {
     if (!this.disabled && !this.readonly) {
-      this.inputValue = (event.target as HTMLInputElement).value
+      this.inputValue = (ev.target as HTMLInputElement).value
     }
   }
 
-  private handleInput = async (event: Event) => {
+  private handleInput = async (ev: Event) => {
     if (!this.disabled && !this.readonly) {
-      this.inputValue = (event.target as HTMLInputElement).value
+      this.inputValue = (ev.target as HTMLInputElement).value
 
       if (!this.isPopoverOpen) {
         this.popoverElement.present()
@@ -908,7 +918,7 @@ export class Select implements ComponentInterface, Loggable {
 
       this.focusIndex = -1
       this.updateFocus()
-      preventDefault(event)
+      preventDefault(ev)
 
       this.balInput.emit(this.inputValue)
     }
@@ -1048,26 +1058,30 @@ export class Select implements ComponentInterface, Loggable {
                 ref={el => (this.inputElement = el as HTMLInputElement)}
               />
             </div>
-            <bal-icon
-              class={{
-                ...controlIconEl.class(),
-                ...controlIconEl.modifier('loading').class(this.loading),
-                ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
-              }}
-              name={!this.inverted ? 'caret-down' : 'caret-up'}
-              color={
-                this.disabled || this.readonly
-                  ? 'grey-light'
-                  : this.inverted
-                  ? 'white'
-                  : this.invalid
-                  ? 'danger'
-                  : 'primary'
-              }
-              turn={this.isPopoverOpen}
-              onClick={ev => this.handleInputClick(ev, true)}
-              size={!this.inverted ? '' : 'x-small'}
-            ></bal-icon>
+            {!this.freeSolo && !this.loading ? (
+              <bal-icon
+                class={{
+                  ...controlIconEl.class(),
+                  ...controlIconEl.modifier('loading').class(this.loading),
+                  ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
+                }}
+                name={!this.inverted ? 'caret-down' : 'caret-up'}
+                color={
+                  this.disabled || this.readonly
+                    ? 'grey-light'
+                    : this.inverted
+                    ? 'white'
+                    : this.invalid
+                    ? 'danger'
+                    : 'primary'
+                }
+                turn={this.isPopoverOpen}
+                onClick={ev => this.handleInputClick(ev, true)}
+                size={!this.inverted ? '' : 'x-small'}
+              ></bal-icon>
+            ) : (
+              ''
+            )}
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (

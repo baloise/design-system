@@ -11,7 +11,7 @@ import {
   State,
   ComponentInterface,
 } from '@stencil/core'
-import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
+import { debounceEvent, transitionEndAsync, waitForComponent } from '../../utils/helpers'
 import { BalConfigObserver, BalConfigState, ListenToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
@@ -119,8 +119,10 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * ------------------------------------------------------
    */
 
-  connectedCallback() {
+  async connectedCallback() {
     this.debounceChanged()
+
+    await waitForComponent(this.el as any)
 
     if (this.active) {
       this.activeChanged(this.active, false)

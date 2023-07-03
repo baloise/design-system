@@ -20,10 +20,10 @@ export default component.story
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
   setup: () => {
-    const onBalRejectedFile = (event: any) => {
-      if (event && event.detail) {
+    const onBalRejectedFile = (ev: any) => {
+      if (ev && ev.detail) {
         balToastController.create({
-          message: `${event.detail.file.name} => ${event.detail.reasons.join(', ')}`,
+          message: `${ev.detail.file.name} => ${ev.detail.reasons.join(', ')}`,
           duration: 2000,
           color: 'danger',
         })

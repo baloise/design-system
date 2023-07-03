@@ -3,34 +3,34 @@ describe('bal-input', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('input-basic', 0.0)
+    cy.getByTestId('basic').compareSnapshot('input-basic')
 
     cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('input-basic-mobile', 0.0)
+    cy.getByTestId('basic').compareSnapshot('input-basic-mobile')
   })
 
   it('disabled component', () => {
     cy.platform('desktop')
-    cy.getByTestId('disabled').compareSnapshot('input-disabled', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('input-disabled')
 
     cy.platform('mobile')
-    cy.getByTestId('disabled').compareSnapshot('input-disabled-mobile', 0.0)
+    cy.getByTestId('disabled').compareSnapshot('input-disabled-mobile')
   })
 
   it('invalid component', () => {
     cy.platform('desktop')
-    cy.getByTestId('invalid').compareSnapshot('input-invalid', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('input-invalid')
 
     cy.platform('mobile')
-    cy.getByTestId('invalid').compareSnapshot('input-invalid-mobile', 0.0)
+    cy.getByTestId('invalid').compareSnapshot('input-invalid-mobile')
   })
 
   it('field component', () => {
     cy.platform('desktop')
-    cy.getByTestId('field').compareSnapshot('input-field', 0.0)
+    cy.getByTestId('field').compareSnapshot('input-field')
 
     cy.platform('mobile')
-    cy.getByTestId('field').compareSnapshot('input-field-mobile', 0.0)
+    cy.getByTestId('field').compareSnapshot('input-field-mobile')
   })
 
   it('input-date', () => {

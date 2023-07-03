@@ -169,13 +169,14 @@ export const TypeaheadRemote = args => ({
       })
     }
 
-    const onChange = async (event: CustomEvent<string>) => {
-      const search = event.detail
+    const onChange = async (ev: CustomEvent<string>) => {
+      const search = ev.detail
       options.value = await mockedApiCall(search, 0)
+      loading.value = false
     }
 
-    const onInput = debounce(async (event: CustomEvent<string>) => {
-      const search = event.detail
+    const onInput = debounce(async (ev: CustomEvent<string>) => {
+      const search = ev.detail
       loading.value = true
       options.value = await mockedApiCall(search)
       loading.value = false

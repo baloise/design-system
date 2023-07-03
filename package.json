@@ -159,7 +159,7 @@
     "react": "~17.0.2",
     "react-dom": "~17.0.2",
     "react-syntax-highlighter": "~15.5.0",
-    "reg-cli": "^0.17.7",
+    "reg-cli": "0.17.7",
     "replace-in-file": "~6.3.5",
     "rimraf": "~4.1.2",
     "rollup": "~2.77.2",

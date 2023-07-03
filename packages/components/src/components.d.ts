@@ -103,6 +103,10 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color": BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon": string;
@@ -110,6 +114,10 @@ export namespace Components {
           * Label of the open trigger button
          */
         "openLabel": string;
+        /**
+          * Size of the button
+         */
+        "size": BalProps.BalButtonSize;
         "state": AccordionState;
     }
     interface BalApp {
@@ -708,6 +716,10 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -911,11 +923,11 @@ export namespace Components {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft": string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight": string;
         /**
@@ -2356,6 +2368,10 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "filter": BalProps.BalSelectFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo": boolean;
         /**
           * Sets the focus on the input element
          */
@@ -4283,6 +4299,10 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color"?: BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon"?: string;
@@ -4290,6 +4310,10 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+        /**
+          * Size of the button
+         */
+        "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
     }
     interface BalApp {
@@ -4925,6 +4949,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -5136,11 +5164,11 @@ declare namespace LocalJSX {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight"?: string;
         /**
@@ -6644,6 +6672,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "filter"?: BalProps.BalSelectFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */

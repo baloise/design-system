@@ -39,3 +39,13 @@ Then the icon can be found with the name prop of the component. Just remove the 
 <bal-icon name="account"></bal-icon>
 <bal-icon name="plus"></bal-icon>
 ```
+
+> **TIP** If you want to use the icons directly without any builder use the ES module file and the script type module.
+>
+> ```
+> <script type="module">
+>     import { balIconAccount } from 'https://cdn.jsdelivr.net/npm/@baloise/design-system-icons/dist/index.esm.js'
+>
+>     console.log('balIconAccount', balIconAccount)
+> </script>
+> ```

@@ -3,12 +3,15 @@ describe('bal-steps', () => {
 
   it('basic component', () => {
     cy.platform('desktop').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps', 0.0)
+    cy.getByTestId('steps').compareSnapshot('tabs-steps')
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four')
 
     cy.platform('tablet').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps-tablet', 0.0)
+    cy.getByTestId('steps').compareSnapshot('tabs-steps-tablet')
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four-tablet')
 
     cy.platform('mobile').wait(400)
-    cy.getByTestId('steps').compareSnapshot('tabs-steps-mobile', 0.0)
+    cy.getByTestId('steps').compareSnapshot('tabs-steps-mobile')
+    cy.getByTestId('steps-with-four').compareSnapshot('tabs-steps-with-four-mobile')
   })
 })

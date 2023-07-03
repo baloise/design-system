@@ -255,20 +255,20 @@ export class Tabs
   }
 
   @Listen('balWillAnimate', { target: 'window' })
-  listenToWillAnimate(event: UIEvent) {
-    isChildOfEventTarget(event, this.el, () => this.animateLine())
+  listenToWillAnimate(ev: UIEvent) {
+    isChildOfEventTarget(ev, this.el, () => this.animateLine())
   }
 
   @Listen('balDidAnimate', { target: 'window' })
-  listenToDidAnimate(event: UIEvent) {
-    isChildOfEventTarget(event, this.el, () => this.animateLine())
-    this.isUsedInNavbar(event)
+  listenToDidAnimate(ev: UIEvent) {
+    isChildOfEventTarget(ev, this.el, () => this.animateLine())
+    this.isUsedInNavbar(ev)
   }
 
-  isUsedInNavbar(event: UIEvent) {
-    const target = event.target as HTMLElement
+  isUsedInNavbar(ev: UIEvent) {
+    const target = ev.target as HTMLElement
     const parentNavbar = target.closest('bal-navbar')
-    const isNavbarOpen = event.target as any | false
+    const isNavbarOpen = ev.target as any | false
     if (parentNavbar && isDescendant(parentNavbar, this.el)) {
       this.isNavbarOpen = isNavbarOpen
     }
@@ -388,7 +388,7 @@ export class Tabs
   }
 
   private getTargetElement(value?: string) {
-    const selector = `#${this.tabsId}-button`
+    const selector = `[data-tabs="${this.tabsId}"]`
     const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
     return elements.filter(element => element.getAttribute('data-value') == value)[0]
   }
@@ -626,9 +626,9 @@ export class Tabs
     }
   }
 
-  private onSelectTab = async (event: MouseEvent, step: BalTabOption) => {
+  private onSelectTab = async (ev: MouseEvent, step: BalTabOption) => {
     if (step.prevent || step.disabled || !this.clickable) {
-      stopEventBubbling(event)
+      stopEventBubbling(ev)
     }
 
     if (!step.disabled && this.clickable) {
@@ -641,7 +641,7 @@ export class Tabs
       }
 
       if (step.navigate) {
-        step.navigate.emit(event)
+        step.navigate.emit(ev)
       }
 
       if (step.value !== this.value) {

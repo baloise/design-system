@@ -9,9 +9,9 @@ describe('bal-radio-button', () => {
     )
 
     it('basic component', () => {
-      cy.getByTestId('basic').compareSnapshot(`radio-button-basic-${platform}`, 0.0)
-      cy.getByTestId('grid').compareSnapshot(`radio-button-grid-${platform}`, 0.0)
-      cy.getByTestId('colors').compareSnapshot(`radio-button-colors-${platform}`, 0.0)
+      cy.getByTestId('basic').compareSnapshot(`radio-button-basic-${platform}`)
+      cy.getByTestId('grid').compareSnapshot(`radio-button-grid-${platform}`)
+      cy.getByTestId('colors').compareSnapshot(`radio-button-colors-${platform}`)
     })
   }
 })

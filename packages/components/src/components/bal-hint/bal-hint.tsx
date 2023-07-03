@@ -131,9 +131,9 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
     this.isActive = false
   }
 
-  private onPopoverChange = (event: CustomEvent<boolean>) => {
-    this.isActive = event.detail
-    preventDefault(event)
+  private onPopoverChange = (ev: CustomEvent<boolean>) => {
+    this.isActive = ev.detail
+    preventDefault(ev)
   }
 
   private updateContent() {

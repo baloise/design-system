@@ -1,5 +1,53 @@
 # @baloise/design-system-css
 
+## 13.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.5.0
+  - @baloise/design-system-tokens@13.5.0
+
+## 13.4.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.4.4
+  - @baloise/design-system-tokens@13.4.4
+
+## 13.4.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.4.3
+  - @baloise/design-system-tokens@13.4.3
+
+## 13.4.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.4.2
+  - @baloise/design-system-tokens@13.4.2
+
+## 13.4.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.4.1
+  - @baloise/design-system-tokens@13.4.1
+
+## 13.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.4.0
+  - @baloise/design-system-tokens@13.4.0
+
 ## 13.3.1
 
 ### Patch Changes
