@@ -21,6 +21,8 @@ import { DateMask, MaskComponentAdapter } from '../../../../utils/mask'
 
 @Component({
   tag: 'bal-input-date',
+  styleUrl: 'bal-input-date.sass',
+  shadow: true,
 })
 export class InputDate implements ComponentInterface, Loggable, BalConfigObserver {
   private inputId = `bal-i-date-${inputDateIds++}`
@@ -142,7 +144,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
     this.maskAdapter.bindComponentDidLoad()
   }
 
-  componentWillLoad() {
+  componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -181,7 +183,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
     return (
       <Host
         onClick={(event: MouseEvent) => this.maskAdapter.bindHostClick(event)}
-        aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
         }}
@@ -199,6 +200,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           ref={el => (this.nativeInput = el as HTMLInputElement)}
           id={this.inputId}
           required={this.required}
+          aria-disabled={this.disabled ? 'true' : null}
           disabled={this.disabled}
           readonly={this.readonly}
           autoComplete={this.autocomplete}

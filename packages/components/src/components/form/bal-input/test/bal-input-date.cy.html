@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
+    <title>Test Page</title>
+    <meta name="description" content="Test Page" />
     <style>
       section {
         padding-bottom: 3rem;
@@ -27,7 +29,7 @@
             placeholder="dd.mm.yyyy"
           ></bal-input-date>
           <bal-button id="today">Set Date</bal-button>
-          <bal-button id="disabled">Toggle Disable</bal-button>
+          <bal-button id="disabled-toggle">Toggle Disable</bal-button>
           <bal-data border>
             <bal-data-item>
               <bal-data-label>Input</bal-data-label>
@@ -42,7 +44,7 @@
         <script>
           const input = document.getElementById('basic')
           const todayButton = document.getElementById('today')
-          const disabledButton = document.getElementById('disabled')
+          const disabledButton = document.getElementById('disabled-toggle')
           const inputValue = document.getElementById('input-value')
           const changeValue = document.getElementById('change-value')
           input.addEventListener('balInput', event => {
@@ -55,6 +57,7 @@
             input.value = `2021-10-21`
           })
           disabledButton.addEventListener('click', () => {
+            console.log('disable toggle', input)
             input.disabled = !input.disabled
           })
         </script>
