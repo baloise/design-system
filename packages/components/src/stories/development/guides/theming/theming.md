@@ -246,6 +246,8 @@ These are the variables of the CSS-Framework which inherit from the design token
 | `--bal-button-inverted-primary-background-hover`    |
 | `--bal-button-inverted-primary-background-active`   |
 | `--bal-button-inverted-text-color`                  |
+| `--bal-button-inverted-text-color-hover`            |
+| `--bal-button-inverted-text-color-active`           |
 | `--bal-button-inverted-text-border-color`           |
 | `--bal-button-inverted-text-border-color-hover`     |
 | `--bal-button-inverted-text-border-color-active`    |
