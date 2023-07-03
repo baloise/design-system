@@ -17,9 +17,7 @@ import { ariaBooleanToString } from '../../../utils/aria'
 
 @Component({
   tag: 'bal-option',
-  styleUrls: {
-    css: 'bal-option.sass',
-  },
+  styleUrl: 'bal-option.sass',
   shadow: true,
 })
 export class Option implements ComponentInterface, Loggable {
