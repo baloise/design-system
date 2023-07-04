@@ -147,11 +147,87 @@
       border-color: var(--bal-button-primary-border-color-active)
       color: var(--bal-button-primary-color-active)
       +fillSvg(var(--bal-button-primary-color-active))
+  &.is-tertiary-purple
+    background: var(--bal-button-tertiary-purple-background)
+    border-color: var(--bal-button-tertiary-purple-border-color)
+    color: var(--bal-button-tertiary-purple-color)
+    +fillSvg(var(--bal-button-tertiary-purple-color))
+    // States
+    +hover
+      &:hover,
+      &.is-hovered
+        background: var(--bal-button-tertiary-purple-background-hover)
+        border-color: var(--bal-button-tertiary-purple-border-color-hover)
+        color: var(--bal-button--tertiary-purple-color-hover)
+        +fillSvg(var(--bal-button-tertiary-purple-color-hover))
+    &:active,
+    &.is-active
+      background: var(--bal-button-tertiary-purple-background-active)
+      border-color: var(--bal-button-tertiary-purple-border-color-active)
+      color: var(--bal-button-tertiary-purple-color-active)
+      +fillSvg(var(--bal-button-tertiary-purple-color-active))
+  &.is-tertiary-red
+    background: var(--bal-button-tertiary-red-background)
+    border-color: var(--bal-button-tertiary-red-border-color)
+    color: var(--bal-button-tertiary-red-color)
+    +fillSvg(var(--bal-button-tertiary-red-color))
+    // States
+    +hover
+      &:hover,
+      &.is-hovered
+        background: var(--bal-button-tertiary-red-background-hover)
+        border-color: var(--bal-button-tertiary-red-border-color-hover)
+        color: var(--bal-button--tertiary-red-color-hover)
+        +fillSvg(var(--bal-button-tertiary-red-color-hover))
+    &:active,
+    &.is-active
+      background: var(--bal-button-tertiary-red-background-active)
+      border-color: var(--bal-button-tertiary-red-border-color-active)
+      color: var(--bal-button-tertiary-red-color-active)
+      +fillSvg(var(--bal-button-tertiary-red-color-active))
+  &.is-tertiary-yellow
+    background: var(--bal-button-tertiary-yellow-background)
+    border-color: var(--bal-button-tertiary-yellow-border-color)
+    color: var(--bal-button-tertiary-yellow-color)
+    +fillSvg(var(--bal-button-tertiary-yellow-color))
+    // States
+    +hover
+      &:hover,
+      &.is-hovered
+        background: var(--bal-button-tertiary-yellow-background-hover)
+        border-color: var(--bal-button-tertiary-yellow-border-color-hover)
+        color: var(--bal-button--tertiary-yellow-color-hover)
+        +fillSvg(var(--bal-button-tertiary-yellow-color-hover))
+    &:active,
+    &.is-active
+      background: var(--bal-button-tertiary-yellow-background-active)
+      border-color: var(--bal-button-tertiary-yellow-border-color-active)
+      color: var(--bal-button-tertiary-yellow-color-active)
+      +fillSvg(var(--bal-button-tertiary-yellow-color-active))
+  &.is-tertiary-green
+    background: var(--bal-button-tertiary-green-background)
+    border-color: var(--bal-button-tertiary-green-border-color)
+    color: var(--bal-button-tertiary-green-color)
+    +fillSvg(var(--bal-button-tertiary-green-color))
+    // States
+    +hover
+      &:hover,
+      &.is-hovered
+        background: var(--bal-button-tertiary-green-background-hover)
+        border-color: var(--bal-button-tertiary-green-border-color-hover)
+        color: var(--bal-button--tertiary-green-color-hover)
+        +fillSvg(var(--bal-button-tertiary-green-color-hover))
+    &:active,
+    &.is-active
+      background: var(--bal-button-tertiary-green-background-active)
+      border-color: var(--bal-button-tertiary-green-border-color-active)
+      color: var(--bal-button-tertiary-green-color-active)
+      +fillSvg(var(--bal-button-tertiary-green-color-active))
+  &.is-tertiary,
   &.is-text,
   &.is-link
     border-color: var(--bal-link-border-color)
   &.is-link
-    border: none
     text-decoration: var(--bal-link-text-decoration)
     text-underline-offset: var(--bal-link-text-underline-offset)
     text-decoration-thickness: var(--bal-link-text-decoration-thickness)
@@ -175,6 +251,7 @@
       border-color: var(--bal-link-border-color)
       color: var(--bal-link-color-active)
       +fillSvg(var(--bal-link-color-active))
+  &.is-tertiary,
   &.is-text
     // States
     +hover
@@ -332,6 +409,11 @@
         border-color: var(--bal-button-inverted-primary-border-color-active)
         color: var(--bal-button-inverted-primary-color-active)
         +fillSvg(var(--bal-button-inverted-primary-color-active))
+    &.is-tertiary,
+    &.is-tertiary-purple,
+    &.is-tertiary-red,
+    &.is-tertiary-yellow,
+    &.is-tertiary-green,
     &.is-link,
     &.is-text
       background: var(--bal-button-inverted-text-background)

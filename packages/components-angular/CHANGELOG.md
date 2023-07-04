@@ -1,5 +1,12 @@
 # @baloise/design-system-components-angular
 
+## 13.6.0
+
+### Patch Changes
+
+- Updated dependencies [[`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f)]:
+  - @baloise/design-system-components@13.6.0
+
 ## 13.5.0
 
 ### Patch Changes
