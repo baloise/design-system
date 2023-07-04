@@ -100,7 +100,15 @@ export class Shape implements ComponentInterface {
           ...block.modifier(`is-rotation-${this.rotation}`).class(),
         }}
       >
-        <svg version="1.1" x="0px" y="0px" viewBox="0 0 198 198" fill={this.getHex()}>
+        <svg
+          version="1.1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 198 198"
+          focusable="false"
+          aria-hidden="true"
+          fill={this.getHex()}
+        >
           {shapes[parseInt(this.variation) - 1]}
         </svg>
       </Host>
