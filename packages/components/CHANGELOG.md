@@ -1,5 +1,23 @@
 # @baloise/design-system-components
 
+## 13.6.0
+
+### Minor Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - hide svg from screen readers
+
+- [#976](https://github.com/baloise/design-system/pull/976) - add new tertiary button with a themed option
+
+### Patch Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - add role progressbar to spinner
+
+- Updated dependencies [[`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f)]:
+  - @baloise/design-system-icons@13.6.0
+  - @baloise/design-system-css@13.6.0
+  - @baloise/design-system-fonts@13.6.0
+  - @baloise/design-system-tokens@13.6.0
+
 ## 13.5.0
 
 ### Minor Changes
