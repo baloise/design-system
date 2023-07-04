@@ -41,7 +41,8 @@ export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
 export const isHeading: isElementType = el => isElement(el, 'BAL-HEADING')
 export const isText: isElementType = el => isElement(el, 'BAL-TEXT')
 export const isInputStepper: isElementType = el => isElement(el, 'BAL-INPUT-STEPPER')
-export const isInput: isElementType = el => isElement(el, 'BAL-INPUT') || isElement(el, 'BAL-INPUT-DATE')
+export const isInput: isElementType = el => isElement(el, 'BAL-INPUT')
+export const isInputDate: isElementType = el => isElement(el, 'BAL-INPUT-DATE')
 
 /**
  * Executes a command on a child element and wraps back to the main element/component
@@ -58,6 +59,31 @@ export const wrapCommand = (
     return cy
       .wrapComponent(element as any, { log: false })
       .waitForComponents()
+      .find(selector, { log: false })
+      .then($el => {
+        Cypress.log({
+          type: 'parent',
+          $el,
+          displayName,
+          message,
+        })
+        return fn($el)
+      })
+      .wrapComponent(element as any, { log: false })
+  }
+}
+
+export const wrapShadowCommand = (
+  displayName: string,
+  element: Cypress.Chainable<JQuery>,
+  message: any,
+  fn: ($el: any) => Cypress.Chainable<JQuery> | void,
+) => {
+  return (selector: string) => {
+    return cy
+      .wrapComponent(element as any, { log: false })
+      .waitForComponents()
+      .shadow()
       .find(selector, { log: false })
       .then($el => {
         Cypress.log({

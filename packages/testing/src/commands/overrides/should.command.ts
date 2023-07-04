@@ -15,6 +15,7 @@ import {
   isInputStepper,
   isSteps,
   hasTestId,
+  isInputDate,
 } from '../helpers'
 import { parseDataTestID, selectors } from '../../selectors'
 
@@ -113,6 +114,22 @@ const shouldAndAndCommand = (
       )
     ) {
       return originalFn(element.find(selectors.input.native, { log: false }), condition, key, value, options)
+    }
+  }
+
+  if (isInputDate(element)) {
+    if (
+      ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
+        condition,
+      )
+    ) {
+      return originalFn(
+        Cypress.$((element as any)[0].shadowRoot).find(selectors.input.native),
+        condition,
+        key,
+        value,
+        options,
+      )
     }
   }
 

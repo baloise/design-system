@@ -12,10 +12,15 @@ import {
   isNumberInput,
   wrapOptions,
   wrapCommand,
+  isInputDate,
+  wrapShadowCommand,
 } from '../helpers'
 
 Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
+  const commandShadow = wrapShadowCommand('blur', element, '', $el =>
+    originalFn($el, wrapOptions({ ...options, force: true })),
+  )
 
   if (isAccordion(element)) {
     return command(selectors.accordion.trigger)
@@ -35,6 +40,10 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return commandShadow(selectors.input.native)
   }
 
   if (isNumberInput(element)) {

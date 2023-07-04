@@ -9,11 +9,14 @@ import {
   isNumberInput,
   wrapCommand,
   wrapOptions,
+  isInputDate,
+  wrapShadowCommand,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('clear', element, '', $el => originalFn($el, wrapOptions(options)))
+  const commandShadow = wrapShadowCommand('clear', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isCheckbox(element)) {
     return command(selectors.checkbox.input)
@@ -25,6 +28,10 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return commandShadow(selectors.input.native)
   }
 
   if (isNumberInput(element)) {

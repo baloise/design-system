@@ -4,6 +4,7 @@ import {
   isCheckbox,
   isDatepicker,
   isInput,
+  isInputDate,
   isNumberInput,
   isRadio,
   isSelect,
@@ -11,11 +12,13 @@ import {
   isTextarea,
   wrapCommand,
   wrapOptions,
+  wrapShadowCommand,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('focus', element, '', $el => originalFn($el, wrapOptions(options)))
+  const commandShadow = wrapShadowCommand('focus', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {
     return command(selectors.accordion.trigger)
@@ -35,6 +38,10 @@ Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return commandShadow(selectors.input.native)
   }
 
   if (isNumberInput(element)) {
