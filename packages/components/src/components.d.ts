@@ -681,6 +681,13 @@ export namespace Components {
          */
         "multiline": boolean;
     }
+    interface BalDateCalendar {
+        "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * TODO:
+         */
+        "value"?: string;
+    }
     interface BalDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable.
@@ -3373,6 +3380,12 @@ declare global {
         prototype: HTMLBalDataValueElement;
         new (): HTMLBalDataValueElement;
     };
+    interface HTMLBalDateCalendarElement extends Components.BalDateCalendar, HTMLStencilElement {
+    }
+    var HTMLBalDateCalendarElement: {
+        prototype: HTMLBalDateCalendarElement;
+        new (): HTMLBalDateCalendarElement;
+    };
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
     }
     var HTMLBalDatepickerElement: {
@@ -4107,6 +4120,7 @@ declare global {
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
+        "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
@@ -4922,6 +4936,12 @@ declare namespace LocalJSX {
           * Emitted when the edit button has focus.
          */
         "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
+    }
+    interface BalDateCalendar {
+        /**
+          * TODO:
+         */
+        "value"?: string;
     }
     interface BalDatepicker {
         /**
@@ -7416,6 +7436,7 @@ declare namespace LocalJSX {
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
+        "bal-date-calendar": BalDateCalendar;
         "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
@@ -7565,6 +7586,7 @@ declare module "@stencil/core" {
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
+            "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;

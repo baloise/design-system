@@ -75,4 +75,18 @@ export class BalDate {
     }
     return ''
   }
+
+  public get month() {
+    if (this.isValid) {
+      return this.dt.month
+    }
+    return undefined
+  }
+
+  public get year() {
+    if (this.isValid) {
+      return this.dt.year
+    }
+    return undefined
+  }
 }

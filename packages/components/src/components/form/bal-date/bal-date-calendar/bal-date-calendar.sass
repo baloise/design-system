@@ -1,0 +1,72 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-date-calendar.vars'
+
+// Date Calendar
+// --------------------------------------------------
+
+:host
+  +unselectable
+
+#day-of-week,
+#date-grid
+  display: grid
+  grid-template-columns: repeat(7, 1fr)
+  column-gap: .5rem
+  row-gap: .5rem
+  width: fit-content
+
+#day-of-week > span,
+#date-grid > .day-cell
+  width: 2rem
+  height: 2rem
+  text-align: center
+  font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-height-normal)
+  hyphens: auto
+
+// Row of the weekdays
+// --------------------------------------------------
+
+#day-of-week
+  border-bottom: 2px solid var(--bal-color-border-grey)
+  margin-bottom: .5rem
+
+#day-of-week > span
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+
+// Cell of a day
+// --------------------------------------------------
+
+#date-grid > .day-cell:first-child
+  grid-column: var(--bal-date-first-week-day)
+
+#date-grid > .day-cell
+  cursor: pointer
+  border-radius: var(--bal-radius-rounded)
+  font-family: var(--bal-font-family-text)
+  font-weight: var(--bal-weight-regular)
+  color: var(--bal-color-text-primary)
+  border: none
+  background: transparent
+  &:not(&--selected)
+    +hover
+      &:hover
+        background: var(--bal-color-light-blue-1)
+    &:active
+      background: var(--bal-color-light-blue-2)
+  &--today
+    color: var(--bal-color-light-blue-3)
+    font-weight: var(--bal-weight-bold)
+    +hover
+      &:hover
+        color: var(--bal-color-text-primary)
+    &:active
+      color: var(--bal-color-text-primary)
+  &--selected
+    background: var(--bal-color-primary)
+    color: var(--bal-color-text-white)
+    font-weight: var(--bal-weight-bold)
