@@ -25,6 +25,15 @@ describe('Popup', () => {
 
 <!-- END: human documentation -->
 
+### Component Commands
+
+A list of the custom commands for this specific component.
+
+| Command            | Description                       | Signature                                          |
+| ------------------ | --------------------------------- | -------------------------------------------------- |
+| `balPopupIsOpen`   | Asserts if the popover is open.   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPopupIsClosed` | Asserts if the popover is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+
 
 ### Component Element Selectors
 
