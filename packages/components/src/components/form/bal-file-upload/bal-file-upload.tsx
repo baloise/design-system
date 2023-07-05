@@ -322,6 +322,7 @@ export class FileUpload implements FormInput<File[]> {
     if (!this.disabled && !this.readonly && !this.loading) {
       if (this.nativeInput?.files) {
         this.handleFiles(this.nativeInput.files)
+        this.nativeInput.value = ''
       }
     }
   }
