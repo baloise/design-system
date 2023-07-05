@@ -14,7 +14,7 @@ if (IS_BAL_DS_RELEASE) {
 
 export const StencilBaseConfig: Config = {
   autoprefixCss: true,
-  sourceMap: false,
+  sourceMap: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
   enableCache: true,
