@@ -1,5 +1,21 @@
 # @baloise/design-system-components
 
+## 13.6.1
+
+### Patch Changes
+
+- [#990](https://github.com/baloise/design-system/pull/990) - add a11y labels to close component
+
+- [#993](https://github.com/baloise/design-system/pull/993) - radio and checkbox groups update children on runtime
+
+- [#988](https://github.com/baloise/design-system/pull/988) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.1
+  - @baloise/design-system-fonts@13.6.1
+  - @baloise/design-system-icons@13.6.1
+  - @baloise/design-system-tokens@13.6.1
+
 ## 13.6.0
 
 ### Minor Changes

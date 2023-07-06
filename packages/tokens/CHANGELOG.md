@@ -1,5 +1,7 @@
 # @baloise/design-system-tokens
 
+## 13.6.1
+
 ## 13.6.0
 
 ## 13.5.0
