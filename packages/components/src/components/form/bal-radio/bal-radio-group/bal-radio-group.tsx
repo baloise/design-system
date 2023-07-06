@@ -210,8 +210,15 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
 
   mutationObserverActive = true
 
-  @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'] })
+  @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'], attributes: false, characterData: false })
   mutationListener(): void {
+    this.setRadioInterface()
+    this.disabledChanged(this.disabled)
+    this.readonlyChanged(this.readonly)
+    this.invalidChanged(this.invalid)
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 

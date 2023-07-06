@@ -123,7 +123,7 @@ export class BalLabel
 
   mutationObserverActive = false
 
-  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button' })
+  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button', attributes: false, characterData: false })
   mutationListener(): void {
     this.setHtmlFor()
   }

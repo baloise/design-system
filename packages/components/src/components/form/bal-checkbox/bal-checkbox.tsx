@@ -261,7 +261,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   @Method()
   async updateState() {
     if (this.group && this.group.control && Array.isArray(this.group.value)) {
-      this.checked = this.group.value.includes(this.value)
+      const newChecked = this.group.value.includes(this.value)
+      if (newChecked !== this.checked) {
+        this.checked = newChecked
+      }
     }
 
     if (this.checkboxButton) {
@@ -309,6 +312,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
    * ------------------------------------------------------
    */
 
+  private toggleChecked() {
+    this.checked = !this.checked
+    this.balChange.emit(this.checked)
+  }
+
   private onKeypress = (ev: KeyboardEvent) => {
     if (isSpaceKey(ev)) {
       const element = ev.target as HTMLAnchorElement
@@ -317,8 +325,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
       }
 
       if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.checked = !this.checked
-        this.balChange.emit(this.checked)
+        this.toggleChecked()
         ev.preventDefault()
       } else {
         stopEventBubbling(ev)
@@ -333,9 +340,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     }
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.checked = !this.checked
+      this.toggleChecked()
       this.nativeInput?.focus()
-      this.balChange.emit(this.checked)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)
