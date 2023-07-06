@@ -624,7 +624,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav:** add navigation and open logic ([91a529a](https://github.com/baloise/design-system/commit/91a529a19e9ff4c021d50d9bfe14a04f7b28b300))
 * **nav:** first draft ([c830521](https://github.com/baloise/design-system/commit/c8305210ab777cda59d35f85e463fdef63d26a75))
 
-
 ### Bug Fixes
 
 * removed the width definition ([6af80d5](https://github.com/baloise/design-system/commit/6af80d54b7b5c402d11015e470b76a4e704b9c61))

@@ -145,7 +145,15 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
     const LargeLogo: FunctionalComponent = () => {
       return (
-        <svg width="158" height="32" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          width="158"
+          height="32"
+          viewBox="0 0 158 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -158,7 +166,15 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
 
     const SmallLogo: FunctionalComponent = () => {
       return (
-        <svg width="100" height="22" viewBox="0 0 100 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          width="100"
+          height="22"
+          viewBox="0 0 100 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
