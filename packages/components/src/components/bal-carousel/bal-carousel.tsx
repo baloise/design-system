@@ -373,6 +373,7 @@ export class Carousel
    */
 
   render() {
+    console.log('render', this.controls, this.areControlsHidden)
     const block = BEM.block('carousel')
     const inner = block.element('inner')
     const container = inner.element('container')
@@ -433,7 +434,7 @@ export class Carousel
           </div>
         </div>
 
-        {this.controls === 'dots' && !this.areControlsHidden ? (
+        {this.controls === 'dots' ? (
           <DotControl
             value={this.value}
             items={controlItems}
@@ -443,7 +444,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'large' && !this.areControlsHidden ? (
+        {this.controls === 'large' ? (
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
@@ -456,7 +457,7 @@ export class Carousel
           ''
         )}
 
-        {this.controls === 'small' && !this.areControlsHidden ? (
+        {this.controls === 'small' ? (
           <SmallControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
