@@ -23,12 +23,27 @@ import NavigationImage from '../../../../public/assets/images/navigation/navigat
 <img src={NavigationImage} />
 
 <ol>
-  <li><b>Meta Tabs:</b> Provide a high-level overview of the application's key sections and feature action buttons for quick access to common actions.</li>
-  <li><b>Main Tabs:</b> Offer a detailed navigation structure, allowing users to explore specific sections and pages within the application.</li>
-  <li><b>Flyout:</b> Providing additional navigation options for a more comprehensive user experience.</li>
-  <li><b>Action buttons:</b> Represent action buttons within the Meta Tabs section of the Navigation component</li>
-  <li><b>Section links:</b> Used to define the section link items within the main part of the Navigation component.</li>
-  <li><b>Service links:</b> Used to define the service section link items within the main part of the Navigation component.</li>
+  <li>
+    <b>Meta Tabs:</b> Provide a high-level overview of the application's key sections and feature action buttons for
+    quick access to common actions.
+  </li>
+  <li>
+    <b>Main Tabs:</b> Offer a detailed navigation structure, allowing users to explore specific sections and pages
+    within the application.
+  </li>
+  <li>
+    <b>Flyout:</b> Providing additional navigation options for a more comprehensive user experience.
+  </li>
+  <li>
+    <b>Action buttons:</b> Represent action buttons within the Meta Tabs section of the Navigation component
+  </li>
+  <li>
+    <b>Section links:</b> Used to define the section link items within the main part of the Navigation component.
+  </li>
+  <li>
+    <b>Service links:</b> Used to define the service section link items within the main part of the Navigation
+    component.
+  </li>
 </ol>
 
 ## Meta Tabs
@@ -63,7 +78,8 @@ By leveraging these elements within the Navigation component, developers can cre
 Navigation component accepts the following properties to provide the necessary data for rendering:
 
 ### buttons
-<bal-tag>Type: BalNavMetaButton[]</bal-tag>  
+
+<bal-tag>Type: BalNavMetaButton[]</bal-tag>
 
 The buttons property allows you to specify a list of BalNavMetaButton objects, which represent action buttons within the Meta Tabs section of the Navigation component.
 
@@ -128,7 +144,8 @@ Example usage of the popup component which is displayed when action button is cl
 ```
 
 ### logo
-<bal-tag>Type: BalNavLogoLink</bal-tag>  
+
+<bal-tag>Type: BalNavLogoLink</bal-tag>
 
 The logo property allows you to configure the logo within the Main Tabs section of the Navigation component. The BalNavLogoLink object represents the logo and its associated link.
 
@@ -154,7 +171,8 @@ export const logoLinkItem = {
 ```
 
 ### options
-<bal-tag>Type: BalNavOptions[]</bal-tag>  
+
+<bal-tag>Type: BalNavOptions[]</bal-tag>
 
 The options property is used to construct the Navigation component. It expects a list of BalNavOptions objects.
 
@@ -168,7 +186,8 @@ Each BalNavMetaLinkItem object should include the following properties:
 | mainLinkItems | BalNavMenuLinkItem[] | The mainLinkItems property is used to define the main link items within the main part of the Navigation component |
 
 ### overviewLink
-<bal-tag>Type: BalNavLinkItem</bal-tag>  
+
+<bal-tag>Type: BalNavLinkItem</bal-tag>
 
 The overviewLink property is used in the Main Navigation Flyout section as an overview link. It allows you to specify a URL or path to provide users with a high-level overview of the application or section.
 
@@ -185,7 +204,8 @@ The overviewLink property is used in the Main Navigation Flyout section as an ov
 | valonClickue | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                     |
 
 ### mainLinkItems
-<bal-tag>Type: BalNavMenuLinkItem[]</bal-tag>  
+
+<bal-tag>Type: BalNavMenuLinkItem[]</bal-tag>
 
 The mainLinkItems property is used to define the main link items within the main part of the Navigation component. These link items represent the primary navigation options that are displayed prominently in the main section of the Navigation component.
 
@@ -196,7 +216,8 @@ The mainLinkItems property is used to define the main link items within the main
 | serviceLinkItems | BalNavServiceLinkItem[] | The serviceLinkItems property represents a list of service link items within the Navigation component. |
 
 ### sectionLinkItems
-<bal-tag>Type: BalNavSectionLinkItem[]</bal-tag>  
+
+<bal-tag>Type: BalNavSectionLinkItem[]</bal-tag>
 
 The sectionLinkItems property is used to define the section link items within the main part of the Navigation component. These link items represent the navigation options for different sections or subsections within the main section of the Navigation component.
 
@@ -205,7 +226,8 @@ The sectionLinkItems property is used to define the section link items within th
 | linkItems | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
 
 ### serviceLinkItems
-<bal-tag>Type: BalNavServiceLinkItem[]</bal-tag>  
+
+<bal-tag>Type: BalNavServiceLinkItem[]</bal-tag>
 
 The serviceLinkItems property is used to define the service section link items within the main part of the Navigation component. These link items represent navigation options specific to the service section of the application.
 
