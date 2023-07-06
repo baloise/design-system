@@ -87,8 +87,8 @@ These buttons can be used to trigger various popups, such as login, search, lang
 
 Each BalNavMetaButton object should include the following properties:
 
-| Property       | Type   | Description                                                                                      |
-| :------------- | :----- | :----------------------------------------------------------------------------------------------- |
+| Property         | Type   | Description                                                                                      |
+| :--------------- | :----- | :----------------------------------------------------------------------------------------------- |
 | `touchPlacement` | String | The placement where buttons will be placed on touch devices. Options are 'top', 'bottom', 'none' |
 | `icon`           | String | The icon associated with the button.                                                             |
 | `popupId`        | String | The id of the popup to be displayed when the button is clicked.                                  |
@@ -151,8 +151,8 @@ The logo property allows you to configure the logo within the Main Tabs section 
 
 The BalNavLogoLink object should include the following properties:
 
-| Property  | Type                     | Description                                                                                                                                                                               |
-| :-------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type                     | Description                                                                                                                                                                               |
+| :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ariaLabel` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively. |
 | `htmlTitle` | String                   | The alternative text for the logo image, used for accessibility purposes.                                                                                                                 |
 | `href`      | String                   | The URL or path that the logo should link to when clicked.                                                                                                                                |
@@ -180,8 +180,8 @@ BalNavOptions object is a type BalNavMetaLinkItem.
 
 Each BalNavMetaLinkItem object should include the following properties:
 
-| Property      | Type                 | Description                                                                                                       |
-| :------------ | :------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| Property        | Type                 | Description                                                                                                       |
+| :-------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | `overviewLink`  | BalNavLinkItem       | The overviewLink property is used in the Main Navigation Flyout section as an overview link                       |
 | `mainLinkItems` | BalNavMenuLinkItem[] | The mainLinkItems property is used to define the main link items within the main part of the Navigation component |
 
@@ -191,8 +191,8 @@ Each BalNavMetaLinkItem object should include the following properties:
 
 The overviewLink property is used in the Main Navigation Flyout section as an overview link. It allows you to specify a URL or path to provide users with a high-level overview of the application or section.
 
-| Property  | Type                     | Description                                                                                                                                                                              |
-| :-------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type                     | Description                                                                                                                                                                              |
+| :---------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `label`     | String                   | The label or text for the link item.                                                                                                                                                     |
 | `value`     | String                   | The value for the link item.                                                                                                                                                             |
 | `active`    | boolean                  | The active property is used to indicate the active state of a link within the Navigation component.                                                                                      |
@@ -209,8 +209,8 @@ The overviewLink property is used in the Main Navigation Flyout section as an ov
 
 The mainLinkItems property is used to define the main link items within the main part of the Navigation component. These link items represent the primary navigation options that are displayed prominently in the main section of the Navigation component.
 
-| Property         | Type                    | Description                                                                                            |
-| :--------------- | :---------------------- | :----------------------------------------------------------------------------------------------------- |
+| Property           | Type                    | Description                                                                                            |
+| :----------------- | :---------------------- | :----------------------------------------------------------------------------------------------------- |
 | `overviewLink`     | BalNavLinkItem          | The overviewLink property is used in the Main Navigation Flyout section as an overview link            |
 | `sectionLinkItems` | BalNavSectionLinkItem[] | The sectionLinkItems property represents a list of section link items within the Navigation component. |
 | `serviceLinkItems` | BalNavServiceLinkItem[] | The serviceLinkItems property represents a list of service link items within the Navigation component. |
@@ -221,8 +221,8 @@ The mainLinkItems property is used to define the main link items within the main
 
 The sectionLinkItems property is used to define the section link items within the main part of the Navigation component. These link items represent the navigation options for different sections or subsections within the main section of the Navigation component.
 
-| Property  | Type             | Description                                                                            |
-| :-------- | :--------------- | :------------------------------------------------------------------------------------- |
+| Property    | Type             | Description                                                                            |
+| :---------- | :--------------- | :------------------------------------------------------------------------------------- |
 | `linkItems` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
 
 ### serviceLinkItems
@@ -231,8 +231,8 @@ The sectionLinkItems property is used to define the section link items within th
 
 The serviceLinkItems property is used to define the service section link items within the main part of the Navigation component. These link items represent navigation options specific to the service section of the application.
 
-| Property  | Type             | Description                                                                            |
-| :-------- | :--------------- | :------------------------------------------------------------------------------------- |
+| Property    | Type             | Description                                                                            |
+| :---------- | :--------------- | :------------------------------------------------------------------------------------- |
 | `color`     | color            | The color property is used to define the color of the service section.                 |
 | `linkItems` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
 
