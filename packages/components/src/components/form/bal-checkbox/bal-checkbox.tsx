@@ -315,7 +315,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   private toggleChecked() {
     this.checked = !this.checked
     this.balChange.emit(this.checked)
-    this.updateState()
   }
 
   private onKeypress = (ev: KeyboardEvent) => {
