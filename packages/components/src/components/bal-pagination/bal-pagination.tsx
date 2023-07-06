@@ -211,7 +211,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const elNext = elNav.element('pagination-next')
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
-    const buttonColor = isSmall ? 'link' : 'text'
+    const buttonColor = isSmall ? 'tertiary' : 'text'
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
 
