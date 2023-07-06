@@ -76,6 +76,38 @@ export class BalDate {
     return ''
   }
 
+  public isBefore(isoDate: string): boolean {
+    const date = DateTime.fromISO(isoDate || '')
+    if (date.isValid) {
+      return this.dt < date
+    }
+    return false
+  }
+
+  public isBeforeOrEqual(isoDate: string): boolean {
+    const date = DateTime.fromISO(isoDate || '')
+    if (date.isValid) {
+      return this.dt <= date
+    }
+    return false
+  }
+
+  public isAfter(isoDate: string): boolean {
+    const date = DateTime.fromISO(isoDate || '')
+    if (date.isValid) {
+      return this.dt > date
+    }
+    return false
+  }
+
+  public isAfterOrEqual(isoDate: string): boolean {
+    const date = DateTime.fromISO(isoDate || '')
+    if (date.isValid) {
+      return this.dt >= date
+    }
+    return false
+  }
+
   public get month() {
     if (this.isValid) {
       return this.dt.month

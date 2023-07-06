@@ -6,6 +6,9 @@ export interface I18nDate {
   weekdays: string[]
   weekdaysShort: string[]
   weekdaysMin: string[]
+  nextMonth: string
+  previousMonth: string
+  selectMonth: string
 }
 
 export const i18nDate: I18n<I18nDate> = {
@@ -15,6 +18,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split('_'),
     weekdaysShort: 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
     weekdaysMin: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+    nextMonth: 'nächsten Monat',
+    previousMonth: 'Vormonat',
+    selectMonth: 'Monat und Jahr auswählen',
   },
   en: {
     months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
@@ -22,6 +28,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
     weekdaysShort: 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
     weekdaysMin: 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+    nextMonth: 'next month',
+    previousMonth: 'previous month',
+    selectMonth: 'select month and year',
   },
   fr: {
     months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
@@ -29,6 +38,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
     weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
     weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
+    nextMonth: 'mois prochain',
+    previousMonth: 'mois précédent',
+    selectMonth: "sélectionner le mois et l'année",
   },
   it: {
     months: 'gennaio_febbraio_marzo_aprile_maggio_giugno_luglio_agosto_settembre_ottobre_novembre_dicembre'.split('_'),
@@ -36,6 +48,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'domenica_lunedì_martedì_mercoledì_giovedì_venerdì_sabato'.split('_'),
     weekdaysShort: 'dom_lun_mar_mer_gio_ven_sab'.split('_'),
     weekdaysMin: 'do_lu_ma_me_gi_ve_sa'.split('_'),
+    nextMonth: 'prossimo mese',
+    previousMonth: 'mese scorso',
+    selectMonth: "seleziona il mese e l'anno",
   },
   nl: {
     months: 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
@@ -43,6 +58,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
     weekdaysShort: 'zo_ma_di_woe_do_vr_za'.split('_'),
     weekdaysMin: 'zo_ma_di_wo_do_vr_za'.split('_'),
+    nextMonth: 'volgende maand',
+    previousMonth: 'vorige maand',
+    selectMonth: 'selecteer maand en jaar',
   },
   es: {
     months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
@@ -50,6 +68,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'domingo_lunes_martes_miércoles_jueves_viernes_sábado'.split('_'),
     weekdaysShort: 'dom._lun._mar._mié._jue._vie._sáb.'.split('_'),
     weekdaysMin: 'do_lu_ma_mi_ju_vi_sá'.split('_'),
+    nextMonth: 'próximo mes',
+    previousMonth: 'mes anterior',
+    selectMonth: 'seleccionar mes y año',
   },
   pl: {
     months: 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split(
@@ -59,6 +80,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota'.split('_'),
     weekdaysShort: 'ndz_pon_wt_śr_czw_pt_sob'.split('_'),
     weekdaysMin: 'Nd_Pn_Wt_Śr_Cz_Pt_So'.split('_'),
+    nextMonth: 'przyszłym miesiącu',
+    previousMonth: 'poprzedni miesiąc',
+    selectMonth: 'wybierz miesiąc i rok',
   },
   pt: {
     months: 'janeiro_fevereiro_março_abril_maio_junho_julho_agosto_setembro_outubro_novembro_dezembro'.split('_'),
@@ -66,6 +90,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado'.split('_'),
     weekdaysShort: 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
     weekdaysMin: 'Do_2ª_3ª_4ª_5ª_6ª_Sá'.split('_'),
+    nextMonth: 'próximo mês',
+    previousMonth: 'mês anterior',
+    selectMonth: 'selecionar mês e ano',
   },
   sv: {
     months: 'januari_februari_mars_april_maj_juni_juli_augusti_september_oktober_november_december'.split('_'),
@@ -73,6 +100,9 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'söndag_måndag_tisdag_onsdag_torsdag_fredag_lördag'.split('_'),
     weekdaysShort: 'sön_mån_tis_ons_tor_fre_lör'.split('_'),
     weekdaysMin: 'sö_må_ti_on_to_fr_lö'.split('_'),
+    nextMonth: 'nästa månad',
+    previousMonth: 'förra månaden',
+    selectMonth: 'välj månad och år',
   },
   fi: {
     months:
@@ -83,5 +113,8 @@ export const i18nDate: I18n<I18nDate> = {
     weekdays: 'sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai'.split('_'),
     weekdaysShort: 'su_ma_ti_ke_to_pe_la'.split('_'),
     weekdaysMin: 'su_ma_ti_ke_to_pe_la'.split('_'),
+    nextMonth: 'ensi kuussa',
+    previousMonth: 'edellinen kuukausi',
+    selectMonth: 'valitse kuukausi ja vuosi',
   },
 }

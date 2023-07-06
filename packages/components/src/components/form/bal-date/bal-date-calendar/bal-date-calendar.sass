@@ -6,6 +6,13 @@
 
 :host
   +unselectable
+  display: inline-block
+  background: var(--bal-color-white)
+  border-radius: var(--bal-radius-normal)
+
+#grid
+  width: fit-content
+  padding: .5rem
 
 #day-of-week,
 #date-grid
@@ -28,8 +35,16 @@
 // --------------------------------------------------
 
 #day-of-week
-  border-bottom: 2px solid var(--bal-color-border-grey)
-  margin-bottom: .5rem
+  position: relative
+  &::after
+    content: ''
+    background: var(--bal-color-border-grey)
+    height: 2px
+    width: calc(100% + 1rem)
+    position: absolute
+    bottom: -2px
+    left: -0.5rem
+    right: -0.5rem
 
 #day-of-week > span
   display: flex
@@ -44,7 +59,82 @@
 #date-grid > .day-cell:first-child
   grid-column: var(--bal-date-first-week-day)
 
-#date-grid > .day-cell
+// Navigation Row
+// --------------------------------------------------
+
+#nav
+  display: flex
+  width: calc(100% - 1rem)
+  justify-content: space-between
+  align-items: center
+  padding: .5rem
+  gap: .5rem
+
+#nav-start > button
+  display: flex
+  gap: .5rem
+
+#nav-end
+  display: flex
+  gap: .5rem
+
+#nav button
+  min-height: 2rem
+  min-width: 2rem
+  padding: .25rem
+  background: transparent
+  display: flex
+  justify-content: center
+  align-items: center
+  border: none
+  border-radius: var(--bal-button-radius)
+  color: var(--bal-color-text-primary)
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-normal)
+  cursor: pointer
+  +hover
+    &:hover
+      background: var(--bal-button-text-background-hover)
+      border-color: var(--bal-button-text-border-color-hover)
+      color: var(--bal-link-color-hover)
+      +fillSvg(var(--bal-link-color-hover))
+  &:active
+    background: var(--bal-button-text-background-active)
+    border-color: var(--bal-button-text-border-color-active)
+    color: var(--bal-link-color-active)
+    +fillSvg(var(--bal-link-color-active))
+
+// Year List
+// --------------------------------------------------
+
+#month-list,
+#year-list
+  list-style: none
+  margin: 0
+  padding: 0
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  column-gap: .5rem
+  row-gap: .5rem
+  width: calc(100% - 1rem)
+  overflow-y: scroll
+  max-height: 288px
+  position: relative
+  padding: .5rem
+  border-top: 2px solid var(--bal-color-border-grey)
+  & button
+    width: 100%
+
+#month-list
+  grid-template-columns: repeat(2, 1fr)
+// Buttons
+// --------------------------------------------------
+
+.button
+  display: flex
+  justify-content: center
+  align-items: center
   cursor: pointer
   border-radius: var(--bal-radius-rounded)
   font-family: var(--bal-font-family-text)
@@ -52,13 +142,18 @@
   color: var(--bal-color-text-primary)
   border: none
   background: transparent
-  &:not(&--selected)
+  text-align: center
+  font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-height-normal)
+  hyphens: auto
+  outline: none
+  &:not(&--selected):not(&--disabled)
     +hover
       &:hover
         background: var(--bal-color-light-blue-1)
     &:active
       background: var(--bal-color-light-blue-2)
-  &--today
+  &--today:not(&--selected)
     color: var(--bal-color-light-blue-3)
     font-weight: var(--bal-weight-bold)
     +hover
@@ -70,3 +165,7 @@
     background: var(--bal-color-primary)
     color: var(--bal-color-text-white)
     font-weight: var(--bal-weight-bold)
+  &--disabled
+    cursor: default
+    background: transparent
+    color: var(--bal-color-text-grey-light)

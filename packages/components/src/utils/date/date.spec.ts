@@ -62,5 +62,31 @@ describe('balDate', () => {
         expect(date.toFormat()).toStrictEqual('01/02/2001')
       })
     })
+    describe('isAfter', () => {
+      test('should return the date formatted for the user', () => {
+        const date1 = '2023-01-05'
+        const date2 = '2023-01-04'
+
+        expect(BalDate.fromISO(date1).isAfter(date2)).toBeTruthy()
+        expect(BalDate.fromISO(date2).isAfter(date1)).toBeFalsy()
+        expect(BalDate.fromISO(date1).isAfter(date1)).toBeFalsy()
+        expect(BalDate.fromISO(date1).isAfterOrEqual(date1)).toBeTruthy()
+        expect(BalDate.fromISO(date1).isAfterOrEqual(date2)).toBeTruthy()
+        expect(BalDate.fromISO(date2).isAfterOrEqual(date1)).toBeFalsy()
+      })
+    })
+    describe('isBefore', () => {
+      test('should return the date formatted for the user', () => {
+        const date1 = '2023-01-04'
+        const date2 = '2023-01-05'
+
+        expect(BalDate.fromISO(date1).isBefore(date2)).toBeTruthy()
+        expect(BalDate.fromISO(date2).isBefore(date1)).toBeFalsy()
+        expect(BalDate.fromISO(date1).isBefore(date1)).toBeFalsy()
+        expect(BalDate.fromISO(date1).isBeforeOrEqual(date1)).toBeTruthy()
+        expect(BalDate.fromISO(date1).isBeforeOrEqual(date2)).toBeTruthy()
+        expect(BalDate.fromISO(date2).isBeforeOrEqual(date1)).toBeFalsy()
+      })
+    })
   })
 })

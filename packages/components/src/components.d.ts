@@ -682,11 +682,48 @@ export namespace Components {
         "multiline": boolean;
     }
     interface BalDateCalendar {
+        /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates": BalProps.BalDateCalendarAllowedDatesCallback | undefined;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
-          * TODO:
+          * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
+         */
+        "defaultDate"?: string;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * Latest year available for selection
+         */
+        "maxYearProp"?: number;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
+        /**
+          * Earliest year available for selection
+         */
+        "minYearProp"?: number;
+        /**
+          * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDateCalendarCell {
+        /**
+          * PUBLIC PROPERTY API ------------------------------------------------------
+         */
+        "day"?: number;
+        "disabled": boolean;
+        "fullDate": string;
+        "isoDate": string;
+        "month"?: number;
+        "selected": boolean;
+        "today": boolean;
+        "year"?: number;
     }
     interface BalDatepicker {
         /**
@@ -3109,6 +3146,14 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDataValueElement;
 }
+export interface BalDateCalendarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDateCalendarElement;
+}
+export interface BalDateCalendarCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDateCalendarCellElement;
+}
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
@@ -3385,6 +3430,12 @@ declare global {
     var HTMLBalDateCalendarElement: {
         prototype: HTMLBalDateCalendarElement;
         new (): HTMLBalDateCalendarElement;
+    };
+    interface HTMLBalDateCalendarCellElement extends Components.BalDateCalendarCell, HTMLStencilElement {
+    }
+    var HTMLBalDateCalendarCellElement: {
+        prototype: HTMLBalDateCalendarCellElement;
+        new (): HTMLBalDateCalendarCellElement;
     };
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
     }
@@ -4121,6 +4172,7 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-date-calendar": HTMLBalDateCalendarElement;
+        "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
@@ -4939,9 +4991,54 @@ declare namespace LocalJSX {
     }
     interface BalDateCalendar {
         /**
-          * TODO:
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates"?: BalProps.BalDateCalendarAllowedDatesCallback | undefined;
+        /**
+          * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
+         */
+        "defaultDate"?: string;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * Latest year available for selection
+         */
+        "maxYearProp"?: number;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
+        /**
+          * Earliest year available for selection
+         */
+        "minYearProp"?: number;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalChange"?: (event: BalDateCalendarCustomEvent<BalEvents.BalDateCalendarChangeDetail>) => void;
+        /**
+          * The value of selected date, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDateCalendarCell {
+        /**
+          * PUBLIC PROPERTY API ------------------------------------------------------
+         */
+        "day"?: number;
+        "disabled"?: boolean;
+        "fullDate": string;
+        "isoDate": string;
+        "month"?: number;
+        /**
+          * Emitted when a option got selected.
+         */
+        "onBalSelectDay"?: (event: BalDateCalendarCellCustomEvent<BalEvents.BalDateCellSelectDetail>) => void;
+        "selected"?: boolean;
+        "today"?: boolean;
+        "year"?: number;
     }
     interface BalDatepicker {
         /**
@@ -7437,6 +7534,7 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-date-calendar": BalDateCalendar;
+        "bal-date-calendar-cell": BalDateCalendarCell;
         "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
@@ -7587,6 +7685,7 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
+            "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;

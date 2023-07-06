@@ -1,4 +1,6 @@
+import padStart from 'lodash.padstart'
 import { I18n } from '../../../../interfaces'
+import { BalDate } from '../../../../utils/date'
 import { I18nDate, i18nDate } from '../bal-date.i18n'
 
 // Function to get the number of days in a month
@@ -6,8 +8,46 @@ export function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
+export interface DayCell {
+  day: number
+  month: number
+  year: number
+  isoDate: string
+  fullDate: string
+  empty: boolean
+  today: boolean
+  disabled: boolean
+}
+
+export function emptyCell() {
+  return {
+    day: 0,
+    month: 0,
+    year: 0,
+    isoDate: '',
+    fullDate: '',
+    empty: true,
+    today: false,
+    disabled: false,
+  }
+}
+
+function isoDateOfDay(day: number, month: number, year: number): string {
+  return `${year}-${padStart(`${month}`, 2, '0')}-${padStart(`${day}`, 2, '0')}`
+}
+
+function isoDateOfToday(): string {
+  const today = new Date()
+  return `${today.getFullYear()}-${padStart(`${today.getMonth() + 1}`, 2, '0')}-${padStart(
+    `${today.getDate()}`,
+    2,
+    '0',
+  )}`
+}
+
 // Function to generate the calendar grid
-export function generateCalendarGrid(year: number, month: number): number[][] {
+export function generateCalendarGrid(year: number, month: number, min?: string, max?: string): DayCell[][] {
+  console.log('generateCalendarGrid')
   // Get the number of days in the month
   const numDays: number = getDaysInMonth(year, month)
 
@@ -18,22 +58,37 @@ export function generateCalendarGrid(year: number, month: number): number[][] {
   const firstDayIndex: number = firstDay.getDay()
 
   // Create an empty grid array
-  const grid: number[][] = []
+  const grid: DayCell[][] = []
 
   // Calculate the number of rows needed in the grid
   const numRows: number = Math.ceil((numDays + firstDayIndex) / 7)
 
+  const isoToday = isoDateOfToday()
+  const dateMin = BalDate.fromISO(min)
+  const dateMax = BalDate.fromISO(max)
+
   // Fill the grid with day numbers
   let day = 1
   for (let row = 0; row < numRows; row++) {
-    const week: number[] = []
+    const week: DayCell[] = []
     for (let col = 0; col < 7; col++) {
       if ((row === 0 && col < firstDayIndex) || day > numDays) {
         // Empty cell before the first day or after the last day
-        week.push(0)
+        week.push(emptyCell())
       } else {
         // Fill cell with day number
-        week.push(day++)
+        const isoDate = isoDateOfDay(day, month, year)
+        week.push({
+          day,
+          month,
+          year,
+          isoDate,
+          fullDate: BalDate.fromISO(isoDate).toFormat(),
+          empty: false,
+          today: isoToday === isoDate,
+          disabled: dateMin.isAfter(isoDate) || dateMax.isBefore(isoDate),
+        })
+        day++
       }
     }
     grid.push(week)
