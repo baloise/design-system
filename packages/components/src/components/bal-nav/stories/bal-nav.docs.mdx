@@ -89,9 +89,9 @@ Each BalNavMetaButton object should include the following properties:
 
 | Property       | Type   | Description                                                                                      |
 | :------------- | :----- | :----------------------------------------------------------------------------------------------- |
-| touchPlacement | String | The placement where buttons will be placed on touch devices. Options are 'top', 'bottom', 'none' |
-| icon           | String | The icon associated with the button.                                                             |
-| popupId        | String | The id of the popup to be displayed when the button is clicked.                                  |
+| `touchPlacement` | String | The placement where buttons will be placed on touch devices. Options are 'top', 'bottom', 'none' |
+| `icon`           | String | The icon associated with the button.                                                             |
+| `popupId`        | String | The id of the popup to be displayed when the button is clicked.                                  |
 
 Example usage of the buttons property:
 
@@ -153,12 +153,12 @@ The BalNavLogoLink object should include the following properties:
 
 | Property  | Type                     | Description                                                                                                                                                                               |
 | :-------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ariaLabel | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively. |
-| htmlTitle | String                   | The alternative text for the logo image, used for accessibility purposes.                                                                                                                 |
-| href      | String                   | The URL or path that the logo should link to when clicked.                                                                                                                                |
-| target    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self', '\_top'.                  |
-| clickable | boolean                  | Makes the element clickable.                                                                                                                                                              |
-| onClick   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                      |
+| `ariaLabel` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively. |
+| `htmlTitle` | String                   | The alternative text for the logo image, used for accessibility purposes.                                                                                                                 |
+| `href`      | String                   | The URL or path that the logo should link to when clicked.                                                                                                                                |
+| `target`    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self', '\_top'.                  |
+| `clickable` | boolean                  | Makes the element clickable.                                                                                                                                                              |
+| `onClick`   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                      |
 
 Example usage of the logo property:
 
@@ -182,8 +182,8 @@ Each BalNavMetaLinkItem object should include the following properties:
 
 | Property      | Type                 | Description                                                                                                       |
 | :------------ | :------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| overviewLink  | BalNavLinkItem       | The overviewLink property is used in the Main Navigation Flyout section as an overview link                       |
-| mainLinkItems | BalNavMenuLinkItem[] | The mainLinkItems property is used to define the main link items within the main part of the Navigation component |
+| `overviewLink`  | BalNavLinkItem       | The overviewLink property is used in the Main Navigation Flyout section as an overview link                       |
+| `mainLinkItems` | BalNavMenuLinkItem[] | The mainLinkItems property is used to define the main link items within the main part of the Navigation component |
 
 ### overviewLink
 
@@ -193,15 +193,15 @@ The overviewLink property is used in the Main Navigation Flyout section as an ov
 
 | Property  | Type                     | Description                                                                                                                                                                              |
 | :-------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| label     | String                   | The label or text for the link item.                                                                                                                                                     |
-| value     | String                   | The value for the link item.                                                                                                                                                             |
-| active    | boolean                  | The active property is used to indicate the active state of a link within the Navigation component.                                                                                      |
-| htmlTitle | String                   | The alternative text for the link item, used for accessibility purposes.                                                                                                                 |
-| ariaLabel | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively |
-| href      | String                   | The URL or path that the link item should link to when clicked.                                                                                                                          |
-| target    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self','\_top'.                  |
-| clickable | boolean                  | Makes the element clickable.                                                                                                                                                             |
-| onClick   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                     |
+| `label`     | String                   | The label or text for the link item.                                                                                                                                                     |
+| `value`     | String                   | The value for the link item.                                                                                                                                                             |
+| `active`    | boolean                  | The active property is used to indicate the active state of a link within the Navigation component.                                                                                      |
+| `htmlTitle` | String                   | The alternative text for the link item, used for accessibility purposes.                                                                                                                 |
+| `ariaLabel` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively |
+| `href`      | String                   | The URL or path that the link item should link to when clicked.                                                                                                                          |
+| `target`    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self','\_top'.                  |
+| `clickable` | boolean                  | Makes the element clickable.                                                                                                                                                             |
+| `onClick`   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                     |
 
 ### mainLinkItems
 
@@ -211,9 +211,9 @@ The mainLinkItems property is used to define the main link items within the main
 
 | Property         | Type                    | Description                                                                                            |
 | :--------------- | :---------------------- | :----------------------------------------------------------------------------------------------------- |
-| overviewLink     | BalNavLinkItem          | The overviewLink property is used in the Main Navigation Flyout section as an overview link            |
-| sectionLinkItems | BalNavSectionLinkItem[] | The sectionLinkItems property represents a list of section link items within the Navigation component. |
-| serviceLinkItems | BalNavServiceLinkItem[] | The serviceLinkItems property represents a list of service link items within the Navigation component. |
+| `overviewLink`     | BalNavLinkItem          | The overviewLink property is used in the Main Navigation Flyout section as an overview link            |
+| `sectionLinkItems` | BalNavSectionLinkItem[] | The sectionLinkItems property represents a list of section link items within the Navigation component. |
+| `serviceLinkItems` | BalNavServiceLinkItem[] | The serviceLinkItems property represents a list of service link items within the Navigation component. |
 
 ### sectionLinkItems
 
@@ -223,7 +223,7 @@ The sectionLinkItems property is used to define the section link items within th
 
 | Property  | Type             | Description                                                                            |
 | :-------- | :--------------- | :------------------------------------------------------------------------------------- |
-| linkItems | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
+| `linkItems` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
 
 ### serviceLinkItems
 
@@ -233,8 +233,8 @@ The serviceLinkItems property is used to define the service section link items w
 
 | Property  | Type             | Description                                                                            |
 | :-------- | :--------------- | :------------------------------------------------------------------------------------- |
-| color     | color            | The color property is used to define the color of the service section.                 |
-| linkItems | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
+| `color`     | color            | The color property is used to define the color of the service section.                 |
+| `linkItems` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
 
 Example usage of the options property:
 
