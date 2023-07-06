@@ -73,7 +73,6 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
     <TagType
       id={`${tabsId}-button-${TabButtonIds++}`}
       role="tab"
-      aria-selected={item.active ? 'true' : 'false'}
       class={{
         ...bemEl.class(),
         ...bemEl.modifier('active').class(item.active),
@@ -97,6 +96,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-value={item.value}
       data-index={item.index}
       data-testid="bal-tabs-item"
+      aria-selected={item.active ? 'true' : 'false'}
       aria-disabled={`${item.disabled}`}
       aria-label={item.label}
       aria-controls={item.tabPanelID}
