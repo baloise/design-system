@@ -1,5 +1,7 @@
 # @baloise/design-system-icons
 
+## 13.6.1
+
 ## 13.6.0
 
 ### Minor Changes
