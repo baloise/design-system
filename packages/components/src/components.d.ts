@@ -2141,6 +2141,40 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
+    interface BalPopup {
+        /**
+          * If `true` the popup is open.
+         */
+        "active": boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow": boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop": boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable": boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Offset form trigger to popup.
+         */
+        "offset": number;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalPopupPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference"?: string;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -3127,6 +3161,10 @@ export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
 }
+export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalPopupElement;
+}
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
@@ -3864,6 +3902,12 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
+    }
+    var HTMLBalPopupElement: {
+        prototype: HTMLBalPopupElement;
+        new (): HTMLBalPopupElement;
+    };
     interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
     }
     var HTMLBalProgressBarElement: {
@@ -4147,6 +4191,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-popup": HTMLBalPopupElement;
         "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
@@ -6373,6 +6418,52 @@ declare namespace LocalJSX {
          */
         "spaceless"?: boolean;
     }
+    interface BalPopup {
+        /**
+          * If `true` the popup is open.
+         */
+        "active"?: boolean;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow"?: boolean;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "backdrop"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "closable"?: boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Offset form trigger to popup.
+         */
+        "offset"?: number;
+        /**
+          * Emitted when the accordion has opened or closed
+         */
+        "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement"?: BalProps.BalPopupPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference"?: string;
+    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -7396,6 +7487,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-popup": BalPopup;
         "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
@@ -7544,6 +7636,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
             "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
