@@ -90,7 +90,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    * If set it turns a popover into a fullscreen or a drawer on touch devices
    */
   @Prop() placement: BalProps.BalPopupPlacement = 'bottom'
-
+  // test
   /**
    * If `true`, it shows a little indicator to the trigger element.
    */
