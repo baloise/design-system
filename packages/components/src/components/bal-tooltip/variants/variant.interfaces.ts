@@ -1,8 +1,5 @@
 import { EventEmitter } from '@stencil/core'
-
-export type PopupVariant = 'popover' | 'fullscreen' | 'drawer'
-
-export interface PopupComponentInterface {
+export interface TooltipComponentInterface {
   placement:
     | 'top'
     | 'top-start'
@@ -22,21 +19,18 @@ export interface PopupComponentInterface {
   // closable: boolean
   // backdrop: boolean
   reference?: string
-  balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
-  balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
+  balWillAnimate: EventEmitter<BalEvents.BalTooltipWillAnimateDetail>
+  balDidAnimate: EventEmitter<BalEvents.BalTooltipDidAnimateDetail>
   el: HTMLElement
   backdropEl?: HTMLDivElement
   containerEl?: HTMLDivElement
   arrowEl?: HTMLDivElement
   trigger?: Element
   lastTrigger?: Element
-  getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any
-  getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue: number): number
-  getBooleanValue(trigger: Element | HTMLElement, attributeName: string, componentValue: boolean): boolean
 }
 
-export interface PopupVariantRenderer {
-  present(component: PopupComponentInterface): Promise<boolean>
-  update(component: PopupComponentInterface): Promise<boolean>
-  dismiss(component: PopupComponentInterface): Promise<boolean>
+export interface TooltipVariantRenderer {
+  present(component: TooltipComponentInterface): Promise<boolean>
+  update(component: TooltipComponentInterface): Promise<boolean>
+  dismiss(component: TooltipComponentInterface): Promise<boolean>
 }

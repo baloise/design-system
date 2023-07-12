@@ -1,29 +1,29 @@
-import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
+import { TooltipVariantRenderer, TooltipComponentInterface } from './variant.interfaces'
 
-export abstract class AbstractVariantRenderer implements PopupVariantRenderer {
-  abstract present(component: PopupComponentInterface): Promise<boolean>
-  abstract update(component: PopupComponentInterface): Promise<boolean>
-  abstract dismiss(component: PopupComponentInterface): Promise<boolean>
+export abstract class AbstractVariantRenderer implements TooltipVariantRenderer {
+  abstract present(component: TooltipComponentInterface): Promise<boolean>
+  abstract update(component: TooltipComponentInterface): Promise<boolean>
+  abstract dismiss(component: TooltipComponentInterface): Promise<boolean>
 
-  showContainerElement(component: PopupComponentInterface) {
+  showContainerElement(component: TooltipComponentInterface) {
     if (component.containerEl) {
       this.showElement(component.containerEl)
     }
   }
 
-  hideContainerElement(component: PopupComponentInterface) {
+  hideContainerElement(component: TooltipComponentInterface) {
     if (component.containerEl) {
       this.hideElement(component.containerEl)
     }
   }
 
-  showArrowElement(component: PopupComponentInterface, hasArrow = component.arrow) {
+  showArrowElement(component: TooltipComponentInterface, hasArrow = component.arrow) {
     if (hasArrow && component.arrowEl) {
       this.showElement(component.arrowEl)
     }
   }
 
-  hideArrowElement(component: PopupComponentInterface) {
+  hideArrowElement(component: TooltipComponentInterface) {
     if (component.arrowEl) {
       Object.assign(component.arrowEl.style, {
         left: '',
@@ -33,18 +33,6 @@ export abstract class AbstractVariantRenderer implements PopupVariantRenderer {
       })
     }
   }
-
-  // showBackdropElement(component: PopupComponentInterface, hasBackdrop = component.backdrop) {
-  //   if (hasBackdrop && component.backdropEl) {
-  //     this.showElement(component.backdropEl)
-  //   }
-  // }
-
-  // hideBackdropElement(component: PopupComponentInterface) {
-  //   if (component.backdropEl) {
-  //     this.hideElement(component.backdropEl)
-  //   }
-  // }
 
   showElement(element?: HTMLElement) {
     if (element) {

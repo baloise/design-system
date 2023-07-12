@@ -1,9 +1,9 @@
-import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
+import { TooltipVariantRenderer, TooltipComponentInterface } from './variant.interfaces'
 
-export class VariantRenderer implements PopupVariantRenderer {
-  constructor(private renderer: PopupVariantRenderer) {}
+export class VariantRenderer implements TooltipVariantRenderer {
+  constructor(private renderer: TooltipVariantRenderer) {}
 
-  async present(component: PopupComponentInterface): Promise<boolean> {
+  async present(component: TooltipComponentInterface): Promise<boolean> {
     component.balWillAnimate.emit()
     const didRender = await this.renderer.present(component)
     if (didRender) {
@@ -13,7 +13,7 @@ export class VariantRenderer implements PopupVariantRenderer {
     return didRender
   }
 
-  async update(component: PopupComponentInterface): Promise<boolean> {
+  async update(component: TooltipComponentInterface): Promise<boolean> {
     component.balWillAnimate.emit()
     const didRender = await this.renderer.update(component)
     if (didRender) {
@@ -22,7 +22,7 @@ export class VariantRenderer implements PopupVariantRenderer {
     return didRender
   }
 
-  async dismiss(component: PopupComponentInterface): Promise<boolean> {
+  async dismiss(component: TooltipComponentInterface): Promise<boolean> {
     component.balWillAnimate.emit()
     const didRender = await this.renderer.dismiss(component)
     if (didRender) {

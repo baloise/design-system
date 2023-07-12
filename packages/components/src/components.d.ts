@@ -2141,40 +2141,6 @@ export namespace Components {
          */
         "spaceless": boolean;
     }
-    interface BalPopup {
-        /**
-          * If `true` the popup is open.
-         */
-        "active": boolean;
-        /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow": boolean;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "backdrop": boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "closable": boolean;
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        /**
-          * Offset form trigger to popup.
-         */
-        "offset": number;
-        /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
-         */
-        "placement": BalProps.BalPopupPlacement;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference"?: string;
-    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -3060,6 +3026,30 @@ export namespace Components {
          */
         "message": string;
     }
+    interface BalTooltip {
+        "_dismiss": () => Promise<boolean>;
+        "_present": () => Promise<boolean>;
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow": boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Offset form trigger to tooltip.
+         */
+        "offset": number;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalTooltipPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference": string;
+    }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3161,10 +3151,6 @@ export interface BalPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalPopoverElement;
 }
-export interface BalPopupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalPopupElement;
-}
 export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
@@ -3216,6 +3202,10 @@ export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalToastElement;
+}
+export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTooltipElement;
 }
 declare global {
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
@@ -3902,12 +3892,6 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
-    interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
-    }
-    var HTMLBalPopupElement: {
-        prototype: HTMLBalPopupElement;
-        new (): HTMLBalPopupElement;
-    };
     interface HTMLBalProgressBarElement extends Components.BalProgressBar, HTMLStencilElement {
     }
     var HTMLBalProgressBarElement: {
@@ -4076,6 +4060,12 @@ declare global {
         prototype: HTMLBalToastElement;
         new (): HTMLBalToastElement;
     };
+    interface HTMLBalTooltipElement extends Components.BalTooltip, HTMLStencilElement {
+    }
+    var HTMLBalTooltipElement: {
+        prototype: HTMLBalTooltipElement;
+        new (): HTMLBalTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-accordion-details": HTMLBalAccordionDetailsElement;
@@ -4191,7 +4181,6 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
-        "bal-popup": HTMLBalPopupElement;
         "bal-progress-bar": HTMLBalProgressBarElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-button": HTMLBalRadioButtonElement;
@@ -4220,6 +4209,7 @@ declare global {
         "bal-textarea": HTMLBalTextareaElement;
         "bal-time-input": HTMLBalTimeInputElement;
         "bal-toast": HTMLBalToastElement;
+        "bal-tooltip": HTMLBalTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -6418,52 +6408,6 @@ declare namespace LocalJSX {
          */
         "spaceless"?: boolean;
     }
-    interface BalPopup {
-        /**
-          * If `true` the popup is open.
-         */
-        "active"?: boolean;
-        /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow"?: boolean;
-        /**
-          * If `true`, a backdrop will be displayed behind the modal.
-         */
-        "backdrop"?: boolean;
-        /**
-          * If `true`, the modal can be closed with the escape key or the little close button.
-         */
-        "closable"?: boolean;
-        /**
-          * Defines the width of the content
-         */
-        "contentWidth"?: number;
-        /**
-          * Offset form trigger to popup.
-         */
-        "offset"?: number;
-        /**
-          * Emitted when the accordion has opened or closed
-         */
-        "onBalChange"?: (event: BalPopupCustomEvent<BalEvents.BalPopupChangeDetail>) => void;
-        /**
-          * Emitted after the animation has finished
-         */
-        "onBalDidAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupDidAnimateDetail>) => void;
-        /**
-          * Emitted before the animation starts
-         */
-        "onBalWillAnimate"?: (event: BalPopupCustomEvent<BalEvents.BalPopupWillAnimateDetail>) => void;
-        /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
-         */
-        "placement"?: BalProps.BalPopupPlacement;
-        /**
-          * Id of the reference element default is the trigger element.
-         */
-        "reference"?: string;
-    }
     interface BalProgressBar {
         /**
           * The shape color
@@ -7372,6 +7316,40 @@ declare namespace LocalJSX {
          */
         "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
     }
+    interface BalTooltip {
+        /**
+          * If `true`, it shows a little indicator to the trigger element.
+         */
+        "arrow"?: boolean;
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Offset form trigger to tooltip.
+         */
+        "offset"?: number;
+        /**
+          * Emitted when the accordion has opened or closed
+         */
+        "onBalChange"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipWillAnimateDetail>) => void;
+        /**
+          * If set it turns a popover into a fullscreen or a drawer on touch devices
+         */
+        "placement"?: BalProps.BalTooltipPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference"?: string;
+    }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-accordion-details": BalAccordionDetails;
@@ -7487,7 +7465,6 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
-        "bal-popup": BalPopup;
         "bal-progress-bar": BalProgressBar;
         "bal-radio": BalRadio;
         "bal-radio-button": BalRadioButton;
@@ -7516,6 +7493,7 @@ declare namespace LocalJSX {
         "bal-textarea": BalTextarea;
         "bal-time-input": BalTimeInput;
         "bal-toast": BalToast;
+        "bal-tooltip": BalTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -7636,7 +7614,6 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
-            "bal-popup": LocalJSX.BalPopup & JSXBase.HTMLAttributes<HTMLBalPopupElement>;
             "bal-progress-bar": LocalJSX.BalProgressBar & JSXBase.HTMLAttributes<HTMLBalProgressBarElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
@@ -7665,6 +7642,7 @@ declare module "@stencil/core" {
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
+            "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
         }
     }
 }

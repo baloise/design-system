@@ -1,13 +1,13 @@
 import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
 import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
-import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
+import { TooltipVariantRenderer, TooltipComponentInterface } from './variant.interfaces'
 
-export class TooltipVariantRenderer extends AbstractVariantRenderer implements PopupVariantRenderer {
+export class TooltipVariantRenderer extends AbstractVariantRenderer implements TooltipVariantRenderer {
   private cleanup?: () => void
-  private placement: BalProps.BalPopupPlacement = 'bottom'
+  private placement: BalProps.BalTooltipPlacement = 'bottom'
 
-  async present(component: PopupComponentInterface): Promise<boolean> {
+  async present(component: TooltipComponentInterface): Promise<boolean> {
     console.log('present 2')
     //
     // identify trigger element or the the closest trigger available
@@ -21,7 +21,7 @@ export class TooltipVariantRenderer extends AbstractVariantRenderer implements P
       // get placement type of the trigger
       const triggerVariantAttr = component.trigger.attributes.getNamedItem('bal-popup-placement')
       if (triggerVariantAttr) {
-        this.placement = triggerVariantAttr.value as BalProps.BalPopupPlacement
+        this.placement = triggerVariantAttr.value as BalProps.BalTooltipPlacement
       } else {
         this.placement = component.placement
       }
@@ -42,7 +42,7 @@ export class TooltipVariantRenderer extends AbstractVariantRenderer implements P
     return false
   }
 
-  async update(component: PopupComponentInterface): Promise<boolean> {
+  async update(component: TooltipComponentInterface): Promise<boolean> {
     console.log('update')
     if (component.trigger && component.containerEl && component.arrowEl) {
       computePosition(component.trigger, component.containerEl, {
@@ -89,7 +89,7 @@ export class TooltipVariantRenderer extends AbstractVariantRenderer implements P
     return false
   }
 
-  async dismiss(component: PopupComponentInterface): Promise<boolean> {
+  async dismiss(component: TooltipComponentInterface): Promise<boolean> {
     if (component.containerEl && component.arrowEl && component.trigger) {
       if (this.cleanup) {
         this.cleanup()
