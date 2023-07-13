@@ -34,6 +34,18 @@ export abstract class AbstractVariantRenderer implements TooltipVariantRenderer 
     }
   }
 
+  // showBackdropElement(component: TooltipComponentInterface, hasBackdrop = component.backdrop) {
+  //   if (hasBackdrop && component.backdropEl) {
+  //     this.showElement(component.backdropEl)
+  //   }
+  // }
+
+  // hideBackdropElement(component: TooltipComponentInterface) {
+  //   if (component.backdropEl) {
+  //     this.hideElement(component.backdropEl)
+  //   }
+  // }
+
   showElement(element?: HTMLElement) {
     if (element) {
       element.style.setProperty('display', 'block')

@@ -3038,17 +3038,29 @@ export namespace Components {
          */
         "contentWidth"?: number;
         /**
+          * Closes the tooltip
+         */
+        "dismiss": () => Promise<void>;
+        /**
           * Offset form trigger to tooltip.
          */
         "offset": number;
         /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
+          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
          */
         "placement": BalProps.BalTooltipPlacement;
+        /**
+          * Opens the tooltip
+         */
+        "present": () => Promise<void>;
         /**
           * Id of the reference element default is the trigger element.
          */
         "reference": string;
+        /**
+          * Triggers the tooltip
+         */
+        "toggle": () => Promise<void>;
     }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
@@ -7342,7 +7354,7 @@ declare namespace LocalJSX {
          */
         "onBalWillAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipWillAnimateDetail>) => void;
         /**
-          * If set it turns a popover into a fullscreen or a drawer on touch devices
+          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
          */
         "placement"?: BalProps.BalTooltipPlacement;
         /**

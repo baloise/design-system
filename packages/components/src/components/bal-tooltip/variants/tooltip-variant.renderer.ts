@@ -3,16 +3,15 @@ import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
 import { TooltipVariantRenderer, TooltipComponentInterface } from './variant.interfaces'
 
-export class TooltipVariantRenderer extends AbstractVariantRenderer implements TooltipVariantRenderer {
+export class MainVariantRenderer extends AbstractVariantRenderer implements TooltipVariantRenderer {
   private cleanup?: () => void
   private placement: BalProps.BalTooltipPlacement = 'bottom'
 
   async present(component: TooltipComponentInterface): Promise<boolean> {
-    console.log('present 2')
     //
     // identify trigger element or the the closest trigger available
     if (!component.trigger && balBrowser.hasDocument) {
-      const firstTrigger = Array.from(document.querySelectorAll(`[bal-popup="${component.el.id}"]`))[0]
+      const firstTrigger = Array.from(document.querySelectorAll(`[bal-tooltip="${component.reference}"]`))[0]
       component.trigger = firstTrigger
     }
 
@@ -43,7 +42,6 @@ export class TooltipVariantRenderer extends AbstractVariantRenderer implements T
   }
 
   async update(component: TooltipComponentInterface): Promise<boolean> {
-    console.log('update')
     if (component.trigger && component.containerEl && component.arrowEl) {
       computePosition(component.trigger, component.containerEl, {
         placement: this.placement,

@@ -1,4 +1,5 @@
 import { EventEmitter } from '@stencil/core'
+
 export interface TooltipComponentInterface {
   placement:
     | 'top'

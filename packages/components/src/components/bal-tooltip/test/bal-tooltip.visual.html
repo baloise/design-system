@@ -16,10 +16,27 @@
   <body>
     <bal-doc-app>
       <main class="container py-medium">
-        <bal-button data-test="basic-trigger" bal-popup="popup-basic" id="tooltip-1">Basic</bal-button>
-        <bal-tooltip id="popup-basic" data-test="basic" label="Basic Popup" reference="tooltip-1">
+        <bal-stack>
+          <bal-button data-test="basic-trigger" bal-tooltip="basic-tooltip">Basic</bal-button>
+          <bal-button data-test="arrow-trigger" bal-tooltip="arrow-tooltip">Arrow</bal-button>
+          <bal-button data-test="placement-right-trigger" bal-tooltip="placement-right-tooltip">Right</bal-button>
+        </bal-stack>
+        
+        <bal-tooltip id="tooltip-basic" data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Basic Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip id="tooltip-arrow" data-test="arrow" label="Arrow Tooltip" reference="arrow-tooltip" arrow>
+          <p>
+            Tooltip with arrow
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip id="tooltip-placement-right" data-test="placement-right" label="Placement Right" reference="placement-right-tooltip" arrow placement="right">
+          <p>
+            Tooltip right placement
           </p>
         </bal-tooltip>
       </main>

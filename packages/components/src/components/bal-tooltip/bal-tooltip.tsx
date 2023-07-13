@@ -6,22 +6,15 @@ import {
   Element,
   Prop,
   State,
-  // Listen,
   Watch,
   Method,
   EventEmitter,
   Event,
 } from '@stencil/core'
-// import { isEscapeKey } from '@baloise/web-app-utils'
 import { BEM } from '../../utils/bem'
-// import { balBrowser } from '../../utils/browser'
-// import { stopEventBubbling } from '../../utils/form-input'
-import { PopupComponentInterface, TooltipVariantRenderer } from './variants'
-// import { debounce } from '../../utils/helpers'
+import { TooltipComponentInterface, MainVariantRenderer } from './variants'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { VariantRenderer } from './variants/variant.renderer'
-// import { balBrowser } from '../../utils/browser'
-// import { focusableQueryString } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-tooltip',
@@ -29,10 +22,14 @@ import { VariantRenderer } from './variants/variant.renderer'
     css: 'bal-tooltip.sass',
   },
 })
-export class Tooltip implements ComponentInterface, PopupComponentInterface, Loggable {
+export class Tooltip implements ComponentInterface, TooltipComponentInterface, Loggable {
+  // do we need public methods?
+  // handle presented
+  // backdrop?
+
   private tooltipId = `bal-to-${tooltipIds++}`
 
-  private tooltipVariantRenderer = new VariantRenderer(new TooltipVariantRenderer())
+  private tooltipVariantRenderer = new VariantRenderer(new MainVariantRenderer())
 
   @Element() el!: HTMLElement
   containerEl: HTMLDivElement | undefined
@@ -57,7 +54,7 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
   @Prop() reference = ''
 
   /**
-   * If set it turns a popover into a fullscreen or a drawer on touch devices
+   * If set it turns a tooltip into a fullscreen or a drawer on touch devices
    */
   @Prop() placement: BalProps.BalTooltipPlacement = 'bottom'
   // test
@@ -83,9 +80,9 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
   contentWidthChanged(newValue?: number, oldValue?: number) {
     if (newValue !== oldValue) {
       if (newValue === undefined) {
-        this.el.style.removeProperty('--bal-tooltip-variant-popover-max-width')
+        this.el.style.removeProperty('--bal-tooltip-variant-tooltip-max-width')
       } else {
-        this.el.style.setProperty('--bal-tooltip-variant-popover-max-width', `${this.contentWidth}px`)
+        this.el.style.setProperty('--bal-tooltip-variant-tooltip-max-width', `${this.contentWidth}px`)
       }
     }
   }
@@ -112,12 +109,12 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
 
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
+
     let showEvents: string[] = []
     let hideEvents: string[] = []
 
     showEvents = ['mouseenter', 'focus']
     hideEvents = ['mouseleave', 'blur']
-    console.log('reference', this.triggerElement)
 
     showEvents.forEach(event => {
       if (this.triggerElement) {
@@ -132,40 +129,49 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
     })
   }
 
-  private get triggerElement(): HTMLElement | null {
-    return document.querySelector(`#${this.reference}`)
-  }
-
-  /**
-   * LISTENERS
-   * ------------------------------------------------------
-   */
-
   /**
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
 
   /**
+   * Opens the tooltip
+   */
+  @Method()
+  async present(): Promise<void> {
+    if (await this._present()) {
+      this.balChange.emit(this.presented)
+    }
+  }
+
+  /**
+   * Closes the tooltip
+   */
+  @Method()
+  async dismiss(): Promise<void> {
+    if (await this._dismiss()) {
+      this.balChange.emit(this.presented)
+    }
+  }
+
+  /**
+   * Triggers the tooltip
+   */
+  @Method()
+  async toggle(): Promise<void> {
+    if (this.presented) {
+      return this.dismiss()
+    } else {
+      return this.present()
+    }
+  }
+
+  /**
    * @internal
    */
   @Method()
   async _present(): Promise<boolean> {
-    console.log('_present')
-    // if (balBrowser.hasDocument) {
-    //   this.lastFocus = (document.activeElement as HTMLElement) || undefined
-    // }
-
-    // if (this.lastVariantRenderer) {
-    //   await this.lastVariantRenderer.dismiss(this)
-    //   this.presented = true
-    // }
-
-    // this.lastVariantRenderer = this.tooltipVariantRenderer
-    const result = await this.tooltipVariantRenderer.present(this)
-
-    // this.focusFirstDescendant()
-    return result
+    return await this.tooltipVariantRenderer.present(this)
   }
 
   /**
@@ -173,13 +179,7 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
    */
   @Method()
   async _dismiss(): Promise<boolean> {
-    const result = await this.tooltipVariantRenderer.dismiss(this)
-    // this.lastVariantRenderer = undefined
-
-    // if (this.lastFocus && this.lastFocus.focus) {
-    //   this.lastFocus?.focus()
-    // }
-    return result
+    return await this.tooltipVariantRenderer.dismiss(this)
   }
 
   /**
@@ -187,10 +187,9 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
    * ------------------------------------------------------
    */
 
-  /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
+  private get triggerElement(): HTMLElement | null {
+    return document.querySelector(`[bal-tooltip="${this.reference}"]`)
+  }
 
   /**
    * RENDER
@@ -230,8 +229,8 @@ export class Tooltip implements ComponentInterface, PopupComponentInterface, Log
           ></div>
           <bal-stack
             layout="vertical"
-            px="medium"
-            py="medium"
+            px="small"
+            py="small"
             class={{
               ...innerBlock.class(),
             }}
