@@ -1,0 +1,72 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import readme from '../readme.md'
+import { Basic } from './bal-tooltip.stories'
+
+<bal-doc-banner id="story--components-tooltip--basic">tooltip</bal-doc-banner>
+
+<bal-doc-lead>
+  <b>Tooltips</b> provide informative text that is displayed when users hover over, focus on, or tap an element,
+  offering additional context or details. When triggered, Tooltips present a textual label that identifies an element,
+  providing information about its purpose or function.
+</bal-doc-lead>
+
+<Canvas withSource="open" className="has-visible-overflow">
+  <Story id="components-tooltip--basic" />
+</Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="center">
+    <a class="button is-primary" href="?path=/story/components-tooltip--basic">
+      Go to playground (Canvas)
+    </a>
+    <bal-doc-code-sandbox framework="angular" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="html" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+  </bal-button-group>
+</bal-doc-app>
+
+## Usage
+
+To link the tooltip component to a trigger element, you need to assign an ID to your tooltip component and add the bal-tooltip attribute to the trigger element, as shown in the example below:
+
+```html
+<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-tooltip id="my-tooltip" label="tooltip Label">tooltip content</bal-tooltip>
+```
+
+Furthermore, most of the properties of the tooltip component can be set on the trigger element. Here's an HTML snippet demonstrating the usage:
+
+```html
+<bal-button bal-tooltip="my-poptooltipup" bal-potooltippup-position="top" bal-tooltip-arrow>Click me</bal-button>
+<bal-tooltip id="my-tooltip" label="tooltip Label">tooltip content</bal-tooltip>
+```
+
+In this example, the bal-button element serves as the trigger element for the tooltip component.
+It includes the bal-tooltip attribute, which references the ID of the tooltip component, "my-tooltip". Additionally, it specifies the position of the tooltip using bal-tooltip-position="top" and enables the arrow indicator with bal-tooltip-arrow.
+
+The actual content of the tooltip is defined within the bal-tooltip element.
+It includes a label attribute, "tooltip Label", for accessibility purposes and to show a heading.
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/bal-tooltip/stories/bal-tooltip.docs.mdx"></bal-doc-github>

@@ -12,14 +12,14 @@ The component can be customization by changing the CSS variables.
 
 ### CSS Custom Variables​
 
-| Variable                                |
-| --------------------------------------- |
-| `--bal-popup-backdrop-background`       |
-| `--bal-popup-container-padding-top`     |
-| `--bal-popup-container-padding-bottom`  |
-| `--bal-popup-container-background`      |
-| `--bal-popup-variant-popover-max-width` |
-| `--bal-popup-variant-popover-radius`    |
-| `--bal-popup-variant-popover-shadow`    |
-| `--bal-popup-variant-drawer-radius`     |
-| `--bal-popup-arrow-background`          |
+| Variable                                  |
+| ----------------------------------------- |
+| `--bal-tooltip-backdrop-background`       |
+| `--bal-tooltip-container-padding-top`     |
+| `--bal-tooltip-container-padding-bottom`  |
+| `--bal-tooltip-container-background`      |
+| `--bal-tooltip-variant-popover-max-width` |
+| `--bal-tooltip-variant-popover-radius`    |
+| `--bal-tooltip-variant-popover-shadow`    |
+| `--bal-tooltip-variant-drawer-radius`     |
+| `--bal-tooltip-arrow-background`          |

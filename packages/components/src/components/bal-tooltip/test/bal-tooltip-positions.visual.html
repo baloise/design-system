@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <main class="container is-compact">
+        <div class="is-flex is-justify-content-center fg-medium mt-xx-large">
+          <div class="columna">
+            <bal-button bal-tooltip="top-start">TOP-START</bal-button>
+          </div>
+          <div class="columna">
+            <bal-button bal-tooltip="top">TOP</bal-button>
+          </div>
+          <div class="columna">
+            <bal-button bal-tooltip="top-end">TOP-END</bal-button>
+          </div>
+        </div>
+        <div class="is-flex is-justify-content-space-between">
+          <div class="columna">
+            <bal-button bal-tooltip="left-start">LEFT-START</bal-button>
+          </div>
+          <div class="columan">
+            <bal-button bal-tooltip="right-start">RIGHT-START</bal-button>
+          </div>
+        </div>
+        <br />
+        <div class="is-flex is-justify-content-space-between">
+          <div class="columna">
+            <bal-button bal-tooltip="left">LEFT</bal-button>
+          </div>
+          <div class="columan">
+            <bal-button bal-tooltip="right">RIGHT</bal-button>
+          </div>
+        </div>
+        <br />
+        <div class="is-flex is-justify-content-space-between">
+          <div class="columna">
+            <bal-button bal-tooltip="left-end">LEFT-END</bal-button>
+          </div>
+          <div class="columan">
+            <bal-button bal-tooltip="right-end">RIGHT-END</bal-button>
+          </div>
+        </div>
+
+        <div class="is-flex is-justify-content-center fg-medium">
+          <div class="columna">
+            <bal-button bal-tooltip="bottom-start">BOTTOM-START</bal-button>
+          </div>
+          <div class="columna">
+            <bal-button bal-tooltip="bottom">BOTTOM</bal-button>
+          </div>
+          <div class="columna">
+            <bal-button bal-tooltip="bottom-end">BOTTOM-END</bal-button>
+          </div>
+        </div>
+
+        <bal-tooltip reference="top-start" arrow placement="top-start">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="top" arrow placement="top">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="top-end" arrow placement="top-end">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="left-start" arrow placement="left-start">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="right-start" arrow placement="right-start">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="left" arrow placement="left">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="right" arrow placement="right">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+        
+        <bal-tooltip reference="left-end" arrow placement="left-end">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="right-end" arrow placement="right-end">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="bottom-start" arrow placement="bottom-start">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="bottom" arrow placement="bottom">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+
+        <bal-tooltip reference="bottom-end" arrow placement="bottom-end">
+          <p>
+            Tooltip
+          </p>
+        </bal-tooltip>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
