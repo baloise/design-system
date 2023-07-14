@@ -27,25 +27,37 @@ import { Basic } from './bal-tooltip.stories'
 
 ## Usage
 
-To link the tooltip component to a trigger element, you need to assign an ID to your tooltip component and add the bal-tooltip attribute to the trigger element, as shown in the example below:
+To link the tooltip component to a trigger element, you need to assign a reference to your tooltip component and add the bal-tooltip attribute to the trigger element, as shown in the example below:
 
 ```html
 <bal-button bal-tooltip="my-tooltip">Click me</bal-button>
-<bal-tooltip id="my-tooltip" label="tooltip Label">tooltip content</bal-tooltip>
-```
-
-Furthermore, most of the properties of the tooltip component can be set on the trigger element. Here's an HTML snippet demonstrating the usage:
-
-```html
-<bal-button bal-tooltip="my-poptooltipup" bal-potooltippup-position="top" bal-tooltip-arrow>Click me</bal-button>
-<bal-tooltip id="my-tooltip" label="tooltip Label">tooltip content</bal-tooltip>
+<bal-tooltip label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
 ```
 
 In this example, the bal-button element serves as the trigger element for the tooltip component.
-It includes the bal-tooltip attribute, which references the ID of the tooltip component, "my-tooltip". Additionally, it specifies the position of the tooltip using bal-tooltip-position="top" and enables the arrow indicator with bal-tooltip-arrow.
+It includes the bal-tooltip attribute, which references the reference of the tooltip component, "my-tooltip". 
 
 The actual content of the tooltip is defined within the bal-tooltip element.
-It includes a label attribute, "tooltip Label", for accessibility purposes and to show a heading.
+It includes a label attribute, "Tooltip Label", for accessibility purposes and to show a heading.
+
+### Positioned tooltips
+
+The Tooltip offers a selection of 12 placement options, each without directional arrows. Instead, they utilize motion originating from the source element to indicate the intended direction.  
+You can use the `placement` property to specify the position of the Tooltip. This property allows you to choose from a variety of options to determine where the Tooltip should appear in relation to its source element. Here's an example:
+
+```html
+<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-tooltip label="tooltip Label" reference="my-tooltip" placement="right">Tooltip content</bal-tooltip>
+```
+
+### Arrow tooltips
+
+The `arrow` prop can be utilized to include an arrow in the Tooltip, visually indicating the associated element to which it pertains. This arrow serves as a directional cue, providing a clear visual connection between the Tooltip and its relevant element.
+
+```html
+<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-tooltip label="tooltip Label" reference="my-tooltip" arrow>Tooltip content</bal-tooltip>
+```
 
 ## Component Api
 
