@@ -371,6 +371,7 @@ export namespace Components {
           * If `true` a light border is shown at the bottom.
          */
         "border": boolean;
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Defines the layout of the navigation controls.
          */
@@ -2004,6 +2005,7 @@ export namespace Components {
         "value"?: number;
     }
     interface BalPagination {
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Disables component
          */
