@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 13.6.2
+
+### Patch Changes
+
+- [#995](https://github.com/baloise/design-system/pull/995) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.2
+  - @baloise/design-system-fonts@13.6.2
+  - @baloise/design-system-icons@13.6.2
+  - @baloise/design-system-tokens@13.6.2
+
 ## 13.6.1
 
 ### Patch Changes
