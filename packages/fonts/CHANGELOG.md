@@ -1,5 +1,7 @@
 # @baloise/design-system-fonts
 
+## 13.6.2
+
 ## 13.6.1
 
 ## 13.6.0
