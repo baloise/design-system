@@ -1,47 +1,44 @@
 @import '@baloise/design-system-css/sass/mixins'
-@import './bal-tooltip.vars'
+@import './bal-tooltip.vars.sass'
 
 // Tooltip
 // --------------------------------------------------
-.bal-tooltip
+:host
   position: static
   display: inline
   z-index: var(--bal-z-index-tooltip)
 
 // Tooltip Container
 // --------------------------------------------------
-.bal-tooltip__container
-  background: var(--bal-tooltip-container-background)
+#container
+  background-color: var(--bal-tooltip-container-background)
   display: none
   visibility: hidden
-
-  //
-  // variants
-  &--tooltip
-    border-radius: var(--bal-tooltip-radius)
-    box-shadow: var(--bal-tooltip-shadow)
-    width: var(--bal-tooltip-max-width)
-    position: absolute
-    top: 0
-    left: 0
+  color: white
+  padding: var(--bal-space-x-small)
+  border-radius: var(--bal-tooltip-radius)
+  box-shadow: var(--bal-tooltip-shadow)
+  width: var(--bal-tooltip-max-width)
+  position: absolute
+  top: 0
+  left: 0
 
 // Tooltip Container Inner
 // --------------------------------------------------
-
-.bal-tooltip__inner
+#inner
   overflow-y: auto
   max-height: calc(var(--bal-app-height, 100%) - 8rem)
 
 // Tooltip Content
 // --------------------------------------------------
-
-.bal-tooltip__inner__content
+#content
   width: 100%
+  font-family: var(--bal-tooltip-font-family)
+  font-size: var(--bal-tooltip-font-size)
 
 // Tooltip Arrow
 // --------------------------------------------------
-
-.bal-tooltip__arrow
+#arrow
   +unselectable
   position: absolute
   width: 8px
