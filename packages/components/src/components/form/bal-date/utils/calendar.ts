@@ -2,6 +2,7 @@ import padStart from 'lodash.padstart'
 import { I18n } from '../../../../interfaces'
 import { BalDate } from '../../../../utils/date'
 import { I18nDate, i18nDate } from '../bal-date.i18n'
+import isNil from 'lodash.isnil'
 
 // Function to get the number of days in a month
 export function getDaysInMonth(year: number, month: number): number {
@@ -46,7 +47,13 @@ function isoDateOfToday(): string {
 }
 
 // Function to generate the calendar grid
-export function generateCalendarGrid(year: number, month: number, min?: string, max?: string): DayCell[][] {
+export function generateCalendarGrid(
+  year: number,
+  month: number,
+  min?: string,
+  max?: string,
+  allowedDates?: BalProps.BalDateCalendarAllowedDatesCallback,
+): DayCell[][] {
   console.log('generateCalendarGrid')
   // Get the number of days in the month
   const numDays: number = getDaysInMonth(year, month)
@@ -67,6 +74,13 @@ export function generateCalendarGrid(year: number, month: number, min?: string, 
   const dateMin = BalDate.fromISO(min)
   const dateMax = BalDate.fromISO(max)
 
+  const allowedDate = (isoDate: string) => {
+    if (isNil(allowedDates)) {
+      return false
+    }
+    return !(allowedDates as BalProps.BalDatepickerCallback)(isoDate)
+  }
+
   // Fill the grid with day numbers
   let day = 1
   for (let row = 0; row < numRows; row++) {
@@ -86,7 +100,7 @@ export function generateCalendarGrid(year: number, month: number, min?: string, 
           fullDate: BalDate.fromISO(isoDate).toFormat(),
           empty: false,
           today: isoToday === isoDate,
-          disabled: dateMin.isAfter(isoDate) || dateMax.isBefore(isoDate),
+          disabled: dateMin.isAfter(isoDate) || dateMax.isBefore(isoDate) || allowedDate(isoDate),
         })
         day++
       }

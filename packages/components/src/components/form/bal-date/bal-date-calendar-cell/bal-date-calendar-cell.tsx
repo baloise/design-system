@@ -49,8 +49,8 @@ export class DateCalendar implements ComponentInterface {
         class={{
           'day-cell': true,
           'button': true,
-          'button--today': this.today,
-          'button--selected': this.selected,
+          'button--today': !this.disabled && this.today,
+          'button--selected': !this.disabled && this.selected,
           'button--disabled': this.disabled,
         }}
         tabIndex={-1}

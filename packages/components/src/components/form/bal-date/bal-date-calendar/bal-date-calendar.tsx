@@ -65,6 +65,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
         this.selectedDate = ''
       } else {
         this.generateGridByDate(date)
+        this.selectedDate = date.toISODate()
       }
     }
   }
@@ -196,7 +197,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   private generateGridByDate(date: BalDate) {
     if (date.year !== undefined && date.month !== undefined) {
       this.generateGridByMonthAndYear(date.month, date.year)
-      this.selectedDate = date.toISODate()
     }
   }
 
@@ -209,7 +209,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
       const today = new Date()
       this.month = today.getMonth() + 1
       this.year = today.getFullYear()
-      this.calendarGrid = generateCalendarGrid(this.year, this.month, this.min, this.max)
+      this.calendarGrid = generateCalendarGrid(this.year, this.month, this.min, this.max, this.allowedDates)
       this.firstDayOfWeek = getFirstWeekdayOfMonth(this.year, this.month)
     }
   }
@@ -217,7 +217,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   private generateGridByMonthAndYear(month: number, year: number) {
     // Only generate when mont and year has changed
     if (this.month !== month || this.year !== year) {
-      this.calendarGrid = generateCalendarGrid(year, month, this.min, this.max)
+      this.calendarGrid = generateCalendarGrid(year, month, this.min, this.max, this.allowedDates)
       this.firstDayOfWeek = getFirstWeekdayOfMonth(year, month)
     }
     this.month = month
@@ -304,6 +304,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     const selectMonthLabel = i18nDate[this.language].selectMonth
 
     const girdHeight = this.gridEl?.clientHeight
+    console.log('girdHeight', this.gridEl, girdHeight)
+    console.log('el', this.el, this.el.clientHeight)
 
     return (
       <Host>
@@ -321,7 +323,12 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
               <bal-icon name="caret-up" color="primary" size="small" turn={this.isCalendarVisible}></bal-icon>
             </button>
           </div>
-          <div id="nav-end">
+          <div
+            id="nav-end"
+            style={{
+              display: this.isMonthListVisible || this.isYearListVisible ? 'none' : 'flex',
+            }}
+          >
             <button
               title={previousMonthLabel}
               aria-label={previousMonthLabel}
@@ -373,6 +380,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           aria-hidden={this.isYearListVisible ? 'false' : 'grue'}
           style={{
             display: this.isYearListVisible ? 'grid' : 'none',
+            height: `${(this.gridEl?.clientHeight || 0) - 2 - 8 - 8}px`,
           }}
           ref={el => (this.yearListEl = el)}
         >
@@ -397,6 +405,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           aria-hidden={this.isMonthListVisible ? 'false' : 'grue'}
           style={{
             display: this.isMonthListVisible ? 'grid' : 'none',
+            height: `${(this.gridEl?.clientHeight || 0) - 2 - 8 - 8}px`,
           }}
         >
           {this.monthList.map(month => (
