@@ -27,15 +27,15 @@ import { Basic } from './bal-tooltip.stories'
 
 ## Usage
 
-To link the tooltip component to a trigger element, you need to assign a reference to your tooltip component and add the bal-tooltip attribute to the trigger element, as shown in the example below:
+To link the tooltip component to a trigger element, you need to assign a reference to your tooltip component and add the id attribute to the trigger element, as shown in the example below:
 
 ```html
-<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-button id="my-tooltip">Click me</bal-button>
 <bal-tooltip label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
 ```
 
 In this example, the bal-button element serves as the trigger element for the tooltip component.
-It includes the bal-tooltip attribute, which references the reference of the tooltip component, "my-tooltip".
+It includes the id attribute, which references the reference of the tooltip component, "my-tooltip".
 
 The actual content of the tooltip is defined within the bal-tooltip element.
 It includes a label attribute, "Tooltip Label", for accessibility purposes and to show a heading.
@@ -46,7 +46,7 @@ The Tooltip offers a selection of 12 placement options, each without directional
 You can use the `placement` property to specify the position of the Tooltip. This property allows you to choose from a variety of options to determine where the Tooltip should appear in relation to its source element. Here's an example:
 
 ```html
-<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-button id="my-tooltip">Click me</bal-button>
 <bal-tooltip label="tooltip Label" reference="my-tooltip" placement="right">Tooltip content</bal-tooltip>
 ```
 
@@ -55,8 +55,19 @@ You can use the `placement` property to specify the position of the Tooltip. Thi
 The `arrow` prop can be utilized to include an arrow in the Tooltip, visually indicating the associated element to which it pertains. This arrow serves as a directional cue, providing a clear visual connection between the Tooltip and its relevant element.
 
 ```html
-<bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+<bal-button id="my-tooltip">Click me</bal-button>
 <bal-tooltip label="tooltip Label" reference="my-tooltip" arrow>Tooltip content</bal-tooltip>
+```
+
+### Angular
+Given that the component you provided must be created upon popover presentation and destroyed upon dismissal, internal content projection using `<ng-content>` is not feasible. Instead, we utilize `<ng-container>`, which requires an `<ng-template>` to be passed in. Therefore, when providing your component, it should be enclosed within an `<ng-template>`:
+
+```html
+<bal-tooltip>
+  <ng-template>
+    <app-tooltip-content></app-tooltip-content>
+  </ng-template>
+</bal-tooltip>
 ```
 
 ## Component Api

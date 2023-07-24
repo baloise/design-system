@@ -3038,10 +3038,6 @@ export namespace Components {
          */
         "contentWidth"?: number;
         /**
-          * Closes the tooltip
-         */
-        "dismiss": () => Promise<void>;
-        /**
           * Offset form trigger to tooltip.
          */
         "offset": number;
@@ -3050,17 +3046,9 @@ export namespace Components {
          */
         "placement": BalProps.BalTooltipPlacement;
         /**
-          * Opens the tooltip
-         */
-        "present": () => Promise<void>;
-        /**
           * Id of the reference element default is the trigger element.
          */
         "reference": string;
-        /**
-          * Triggers the tooltip
-         */
-        "toggle": () => Promise<void>;
     }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {

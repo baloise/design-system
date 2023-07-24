@@ -20,7 +20,7 @@ export const Basic = args => ({
   },
   template: `
 <div>
-  <bal-button bal-tooltip="my-tooltip">Click me</bal-button>
+  <bal-button id="my-tooltip">Hover over me</bal-button>
   <bal-tooltip v-bind="args" id="my-tooltip" label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
 </div>
 `,

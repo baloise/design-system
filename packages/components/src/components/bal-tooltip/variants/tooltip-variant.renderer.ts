@@ -11,7 +11,7 @@ export class MainVariantRenderer extends AbstractVariantRenderer implements Tool
     //
     // identify trigger element or the the closest trigger available
     if (!component.trigger && balBrowser.hasDocument) {
-      const firstTrigger = Array.from(document.querySelectorAll(`[bal-tooltip="${component.reference}"]`))[0]
+      const firstTrigger = Array.from(document.querySelectorAll(`[id="${component.reference}"]`))[0]
       component.trigger = firstTrigger
     }
 
@@ -27,7 +27,6 @@ export class MainVariantRenderer extends AbstractVariantRenderer implements Tool
 
       //
       // show all required elements
-      // this.showBackdropElement(component)
       this.showContainerElement(component)
       this.showArrowElement(component)
       component.trigger.classList.add('bal-popup-variant-popover-trigger')
@@ -48,7 +47,7 @@ export class MainVariantRenderer extends AbstractVariantRenderer implements Tool
         middleware: [
           shift(),
           flip(),
-          offset(component.arrow ? 16 : 0),
+          offset(8),
           arrow({
             element: component.arrowEl,
             padding: 4,
@@ -95,7 +94,6 @@ export class MainVariantRenderer extends AbstractVariantRenderer implements Tool
 
       component.trigger.classList.remove('bal-popup-variant-popover-trigger')
 
-      // this.hideBackdropElement(component)
       this.hideContainerElement(component)
       this.hideArrowElement(component)
 

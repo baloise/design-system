@@ -7,19 +7,7 @@ namespace BalProps {
   export type BalTooltipTouchPosition = 'top' | 'bottom'
   export type BalTooltipVariant = 'popover' | 'fullscreen' | 'drawer'
 
-  export type BalTooltipPlacement =
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end'
+  export type BalTooltipPlacement = 'top' | 'right' | 'bottom' | 'left'
 }
 
 namespace BalEvents {

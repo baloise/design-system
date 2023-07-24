@@ -23,9 +23,7 @@ import { VariantRenderer } from './variants/variant.renderer'
   shadow: true,
 })
 export class Tooltip implements ComponentInterface, TooltipComponentInterface, Loggable {
-  // do we need public methods?
-  // handle presented
-  // css variables in shadow dom?
+  // fix visual test position right
 
   private tooltipId = `bal-to-${tooltipIds++}`
 
@@ -130,47 +128,17 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
   }
 
   /**
-   * PUBLIC METHODS
+   * INTERNAL METHODS
    * ------------------------------------------------------
    */
-
-  /**
-   * Opens the tooltip
-   */
-  @Method()
-  async present(): Promise<void> {
-    if (await this._present()) {
-      this.balChange.emit(this.presented)
-    }
-  }
-
-  /**
-   * Closes the tooltip
-   */
-  @Method()
-  async dismiss(): Promise<void> {
-    if (await this._dismiss()) {
-      this.balChange.emit(this.presented)
-    }
-  }
-
-  /**
-   * Triggers the tooltip
-   */
-  @Method()
-  async toggle(): Promise<void> {
-    if (this.presented) {
-      return this.dismiss()
-    } else {
-      return this.present()
-    }
-  }
 
   /**
    * @internal
    */
   @Method()
   async _present(): Promise<boolean> {
+    this.presented = true
+    this.balChange.emit(this.presented)
     return await this.tooltipVariantRenderer.present(this)
   }
 
@@ -179,6 +147,8 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    */
   @Method()
   async _dismiss(): Promise<boolean> {
+    this.balChange.emit(this.presented)
+    this.presented = false
     return await this.tooltipVariantRenderer.dismiss(this)
   }
 
@@ -188,7 +158,7 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    */
 
   private get triggerElement(): HTMLElement | null {
-    return document.querySelector(`[bal-tooltip="${this.reference}"]`)
+    return document.querySelector(`[id="${this.reference}"]`)
   }
 
   /**
@@ -204,7 +174,6 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
         aria-hidden={`${this.presented !== true}`}
         aria-modal={`${this.presented === true}`}
         aria-presented={`${this.presented === true}`}
-        aria-labelledby={`${this.tooltipId}-heading`}
       >
         <div id="container" ref={containerEl => (this.containerEl = containerEl)}>
           <div id="arrow" ref={arrowEl => (this.arrowEl = arrowEl)}></div>

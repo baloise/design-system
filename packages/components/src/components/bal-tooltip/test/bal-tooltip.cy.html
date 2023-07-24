@@ -14,12 +14,12 @@
   </head>
 
   <body>
-    <bal-doc-app log-components="bal-popup">
+    <bal-doc-app log-components="bal-tooltip">
       <main class="container py-medium">
-        <bal-button bal-popup="popup" data-test="popup-trigger">Click Me</bal-button>
-        <bal-popup id="popup" data-test="popup" label="My Title" closable arrow backdrop backdrop-dismiss
-          >TEST CONTENT</bal-popup
-        >
+        <bal-button data-test="basic-trigger" id="basic-tooltip">Basic</bal-button>
+        <bal-tooltip id="tooltip-basic" data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
+          <p>Basic Tooltip</p>
+        </bal-tooltip>
       </main>
     </bal-doc-app>
   </body>
