@@ -60,6 +60,7 @@ The `arrow` prop can be utilized to include an arrow in the Tooltip, visually in
 ```
 
 ### Angular
+
 Given that the component you provided must be created upon popover presentation and destroyed upon dismissal, internal content projection using `<ng-content>` is not feasible. Instead, we utilize `<ng-container>`, which requires an `<ng-template>` to be passed in. Therefore, when providing your component, it should be enclosed within an `<ng-template>`:
 
 ```html
