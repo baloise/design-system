@@ -77,17 +77,12 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
   contentWidthChanged(newValue?: number, oldValue?: number) {
     if (newValue !== oldValue) {
       if (newValue === undefined) {
-        this.el.style.removeProperty('--bal-tooltip-variant-tooltip-max-width')
+        this.el.style.removeProperty('--bal-tooltip-max-width')
       } else {
-        this.el.style.setProperty('--bal-tooltip-variant-tooltip-max-width', `${this.contentWidth}px`)
+        this.el.style.setProperty('--bal-tooltip-max-width', `${this.contentWidth}px`)
       }
     }
   }
-
-  /**
-   * Emitted when the accordion has opened or closed
-   */
-  @Event() balChange!: EventEmitter<BalEvents.BalTooltipChangeDetail>
 
   /**
    * Emitted before the animation starts
@@ -115,13 +110,13 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
 
     showEvents.forEach(event => {
       if (this.triggerElement) {
-        this.triggerElement.addEventListener(event, () => this._present())
+        this.triggerElement.addEventListener(event, () => this.present())
       }
     })
 
     hideEvents.forEach(event => {
       if (this.triggerElement) {
-        this.triggerElement.addEventListener(event, () => this._dismiss())
+        this.triggerElement.addEventListener(event, () => this.dismiss())
       }
     })
   }
@@ -135,9 +130,8 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    * @internal
    */
   @Method()
-  async _present(): Promise<boolean> {
+  async present(): Promise<boolean> {
     this.presented = true
-    this.balChange.emit(this.presented)
     return await this.tooltipVariantRenderer.present(this)
   }
 
@@ -145,8 +139,7 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    * @internal
    */
   @Method()
-  async _dismiss(): Promise<boolean> {
-    this.balChange.emit(this.presented)
+  async dismiss(): Promise<boolean> {
     this.presented = false
     return await this.tooltipVariantRenderer.dismiss(this)
   }

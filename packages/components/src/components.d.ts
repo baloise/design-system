@@ -3027,8 +3027,6 @@ export namespace Components {
         "message": string;
     }
     interface BalTooltip {
-        "_dismiss": () => Promise<boolean>;
-        "_present": () => Promise<boolean>;
         /**
           * If `true`, it shows a little indicator to the trigger element.
          */
@@ -3037,6 +3035,7 @@ export namespace Components {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "dismiss": () => Promise<boolean>;
         /**
           * Offset form trigger to tooltip.
          */
@@ -3045,6 +3044,7 @@ export namespace Components {
           * If set it turns a tooltip into a fullscreen or a drawer on touch devices
          */
         "placement": BalProps.BalTooltipPlacement;
+        "present": () => Promise<boolean>;
         /**
           * Id of the reference element default is the trigger element.
          */
@@ -7329,10 +7329,6 @@ declare namespace LocalJSX {
           * Offset form trigger to tooltip.
          */
         "offset"?: number;
-        /**
-          * Emitted when the accordion has opened or closed
-         */
-        "onBalChange"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipChangeDetail>) => void;
         /**
           * Emitted after the animation has finished
          */
