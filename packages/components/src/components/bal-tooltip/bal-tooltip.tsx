@@ -14,6 +14,7 @@ import {
 import { TooltipComponentInterface, MainVariantRenderer } from './variants'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { VariantRenderer } from './variants/variant.renderer'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-tooltip',
@@ -23,8 +24,6 @@ import { VariantRenderer } from './variants/variant.renderer'
   shadow: true,
 })
 export class Tooltip implements ComponentInterface, TooltipComponentInterface, Loggable {
-  // fix visual test position right
-
   private tooltipId = `bal-to-${tooltipIds++}`
 
   private tooltipVariantRenderer = new VariantRenderer(new MainVariantRenderer())
@@ -167,18 +166,47 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    */
 
   render() {
+    const block = BEM.block('tooltip')
+    const containerBlock = block.element('container')
+    const arrowBlock = block.element('arrow')
+    const innerBlock = block.element('inner')
+    const innerContentBlock = innerBlock.element('content')
+
     return (
       <Host
-        id="tooltip"
+        class={{
+          ...block.class(),
+        }}
         role="dialog"
         aria-hidden={`${this.presented !== true}`}
         aria-modal={`${this.presented === true}`}
         aria-presented={`${this.presented === true}`}
       >
-        <div id="container" ref={containerEl => (this.containerEl = containerEl)}>
-          <div id="arrow" ref={arrowEl => (this.arrowEl = arrowEl)}></div>
-          <bal-stack layout="vertical" id="inner">
-            <div id="content" ref={contentEl => (this.contentEl = contentEl)} data-test="bal-tooltip-content">
+        <div
+          class={{
+            ...containerBlock.class(),
+          }}
+          ref={containerEl => (this.containerEl = containerEl)}
+        >
+          <div
+            class={{
+              ...arrowBlock.class(),
+            }}
+            ref={arrowEl => (this.arrowEl = arrowEl)}
+          ></div>
+          <bal-stack
+            layout="vertical"
+            class={{
+              ...innerBlock.class(),
+            }}
+          >
+            <div
+              class={{
+                ...innerContentBlock.class(),
+              }}
+              ref={contentEl => (this.contentEl = contentEl)}
+              data-test="bal-tooltip-content"
+            >
               <slot></slot>
             </div>
           </bal-stack>

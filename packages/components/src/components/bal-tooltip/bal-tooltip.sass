@@ -10,7 +10,7 @@
 
 // Tooltip Container
 // --------------------------------------------------
-#container
+.bal-tooltip__container
   background-color: var(--bal-tooltip-container-background)
   display: none
   visibility: hidden
@@ -25,20 +25,20 @@
 
 // Tooltip Container Inner
 // --------------------------------------------------
-#inner
+.bal-tooltip__inner
   overflow-y: auto
   max-height: calc(var(--bal-app-height, 100%) - 8rem)
 
 // Tooltip Content
 // --------------------------------------------------
-#content
+.bal-tooltip__inner__content
   width: 100%
   font-family: var(--bal-tooltip-font-family)
   font-size: var(--bal-tooltip-font-size)
 
 // Tooltip Arrow
 // --------------------------------------------------
-#arrow
+.bal-tooltip__arrow
   +unselectable
   position: absolute
   width: 8px
