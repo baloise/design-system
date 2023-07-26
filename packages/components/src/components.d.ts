@@ -692,6 +692,10 @@ export namespace Components {
          */
         "defaultDate"?: string;
         /**
+          * The calendar will be shown as a model in fullscreen mode.
+         */
+        "fullscreen": boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -4998,6 +5002,10 @@ declare namespace LocalJSX {
           * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
          */
         "defaultDate"?: string;
+        /**
+          * The calendar will be shown as a model in fullscreen mode.
+         */
+        "fullscreen"?: boolean;
         /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */

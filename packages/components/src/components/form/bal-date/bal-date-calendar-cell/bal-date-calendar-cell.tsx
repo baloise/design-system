@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Prop, Event, EventEmitter } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
+import { BEM } from '../../../../utils/bem'
 
 @Component({
   tag: 'bal-date-calendar-cell',
@@ -44,14 +45,15 @@ export class DateCalendar implements ComponentInterface {
    */
 
   render() {
+    const block = BEM.block('date-calendar-cell')
+
     return (
       <Host
         class={{
-          'day-cell': true,
-          'button': true,
-          'button--today': !this.disabled && this.today,
-          'button--selected': !this.disabled && this.selected,
-          'button--disabled': this.disabled,
+          ...block.class(),
+          ...block.modifier('today').class(!this.disabled && this.today),
+          ...block.modifier('selected').class(!this.disabled && this.selected),
+          ...block.modifier('disabled').class(this.disabled),
         }}
         tabIndex={-1}
         type="button"

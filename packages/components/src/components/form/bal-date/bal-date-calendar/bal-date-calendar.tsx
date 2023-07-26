@@ -17,6 +17,7 @@ import { LogInstance, Loggable, Logger } from '../../../../utils/log'
 import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../../utils/config'
 import { i18nDate } from '../bal-date.i18n'
 import { waitAfterFramePaint } from '../../../../utils/helpers'
+import { BEM } from '../../../../utils/bem'
 
 @Component({
   tag: 'bal-date-calendar',
@@ -31,7 +32,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
 
   @State() selectedDate = ''
   @State() weekdays: WeekdayCell[] = []
-  @State() calendarGrid: DayCell[][] = []
+  @State() calendarGrid: DayCell[] = []
   @State() firstDayOfWeek = 0
   @State() month = 0
   @State() year = 0
@@ -69,6 +70,11 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
       }
     }
   }
+
+  /**
+   * The calendar will be shown as a model in fullscreen mode.
+   */
+  @Prop() fullscreen = false
 
   /**
    * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
@@ -303,18 +309,39 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     const previousMonthLabel = i18nDate[this.language].previousMonth
     const selectMonthLabel = i18nDate[this.language].selectMonth
 
-    const girdHeight = this.gridEl?.clientHeight
-    console.log('girdHeight', this.gridEl, girdHeight)
-    console.log('el', this.el, this.el.clientHeight)
+    const girdHeight = this.gridEl?.clientHeight || 0
+
+    const block = BEM.block('date-calendar')
+    const blockHead = block.element('head')
+    const blockNav = block.element('nav')
+    const blockBody = block.element('body')
+    const blockBodyGrid = blockBody.element('grid')
+    const blockBodyList = blockBody.element('list')
+    const blockFoot = block.element('foot')
 
     return (
-      <Host>
-        <div id="nav">
-          <div id="nav-start">
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier('fullscreen').class(this.fullscreen),
+        }}
+      >
+        <div
+          class={{
+            ...blockHead.class(),
+          }}
+        ></div>
+        <div
+          class={{
+            ...blockNav.class(),
+          }}
+        >
+          <div class={{ ...blockNav.modifier('start').class() }}>
             <button
               title={selectMonthLabel}
               aria-label={selectMonthLabel}
               onClick={this.onClickSelectMonthAndYear}
+              data-test="change-year-month"
               tabIndex={-1}
             >
               <span>
@@ -324,7 +351,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             </button>
           </div>
           <div
-            id="nav-end"
+            class={{ ...blockNav.modifier('end').class() }}
             style={{
               display: this.isMonthListVisible || this.isYearListVisible ? 'none' : 'flex',
             }}
@@ -334,97 +361,129 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
               aria-label={previousMonthLabel}
               onClick={this.onClickPreviousMonth}
               tabIndex={-1}
+              data-test="previous-month"
             >
               <bal-icon name="caret-left" color="primary" size="small"></bal-icon>
             </button>
-            <button title={nextMonthLabel} aria-label={nextMonthLabel} onClick={this.onClickNextMonth} tabIndex={-1}>
+            <button
+              title={nextMonthLabel}
+              aria-label={nextMonthLabel}
+              onClick={this.onClickNextMonth}
+              tabIndex={-1}
+              data-test="next-month"
+            >
               <bal-icon name="caret-right" color="primary" size="small"></bal-icon>
             </button>
           </div>
         </div>
         <div
-          id="grid"
-          role="grid"
-          aria-hidden={this.isCalendarVisible ? 'false' : 'true'}
-          style={{
-            height: this.isCalendarVisible ? 'auto' : '0',
-            paddingTop: this.isCalendarVisible ? '.5rem' : '0',
-            paddingBottom: this.isCalendarVisible ? '.5rem' : '0',
-            visibility: this.isCalendarVisible ? 'visible' : 'hidden',
+          class={{
+            ...blockBody.class(),
           }}
-          ref={el => (this.gridEl = el)}
         >
-          <div id="day-of-week" role="row">
-            {this.weekdays.map(weekday => (
-              <span role="columnheader" aria-label={weekday.ariaLabel} title={weekday.ariaLabel}>
-                {weekday.textContent}
-              </span>
+          <div
+            role="grid"
+            class={{
+              ...blockBodyGrid.class(),
+              ...blockBodyGrid.modifier('visible').class(this.isCalendarVisible),
+            }}
+            aria-hidden={this.isCalendarVisible ? 'false' : 'true'}
+            ref={el => (this.gridEl = el)}
+          >
+            <div role="row" class={{ ...blockBodyGrid.element('head').class() }}>
+              {this.weekdays.map(weekday => (
+                <span role="columnheader" aria-label={weekday.ariaLabel} title={weekday.ariaLabel}>
+                  {weekday.textContent}
+                </span>
+              ))}
+            </div>
+            <div
+              role="row"
+              class={{ ...blockBodyGrid.element('body').class() }}
+              style={{ '--bal-date-first-week-day': `${this.firstDayOfWeek}` }}
+            >
+              {this.calendarGrid.map(cell => (
+                <bal-date-calendar-cell
+                  {...cell}
+                  selected={cell.isoDate === this.selectedDate}
+                  onBalSelectDay={this.onClick}
+                ></bal-date-calendar-cell>
+              ))}
+            </div>
+          </div>
+          <ul
+            class={{
+              ...blockBodyList.class(),
+              ...blockBodyList.modifier('year').class(),
+              ...blockBodyList.modifier('visible').class(this.isYearListVisible),
+            }}
+            aria-hidden={this.isYearListVisible ? 'false' : 'grue'}
+            style={{
+              height: `${girdHeight - 2 - 8 - 8}px`,
+            }}
+            ref={el => (this.yearListEl = el)}
+          >
+            {this.yearList.map(year => (
+              <li id={`year-${year}`}>
+                <button
+                  class={{
+                    ...blockBodyList.element('item').class(),
+                    ...blockBodyList
+                      .element('item')
+                      .modifier('today')
+                      .class(year === todayYear),
+                    ...blockBodyList
+                      .element('item')
+                      .modifier('selected')
+                      .class(year === this.year),
+                  }}
+                  tabIndex={-1}
+                  onClick={() => this.onClickYear(year)}
+                >
+                  {year}
+                </button>
+              </li>
             ))}
-          </div>
-          <div id="date-grid" role="row" style={{ '--bal-date-first-week-day': `${this.firstDayOfWeek}` }}>
-            {this.calendarGrid.map(row =>
-              row
-                .filter(cell => !cell.empty)
-                .map(cell => (
-                  <bal-date-calendar-cell
-                    {...cell}
-                    selected={cell.isoDate === this.selectedDate}
-                    onBalSelectDay={this.onClick}
-                  ></bal-date-calendar-cell>
-                )),
-            )}
-          </div>
+          </ul>
+          <ul
+            class={{
+              ...blockBodyList.class(),
+              ...blockBodyList.modifier('month').class(),
+              ...blockBodyList.modifier('visible').class(this.isMonthListVisible),
+            }}
+            aria-hidden={this.isMonthListVisible ? 'false' : 'grue'}
+            style={{
+              height: `${girdHeight - 2 - 8 - 8}px`,
+            }}
+          >
+            {this.monthList.map(month => (
+              <li id={`month-${month.value}`}>
+                <button
+                  class={{
+                    ...blockBodyList.element('item').class(),
+                    ...blockBodyList
+                      .element('item')
+                      .modifier('today')
+                      .class(month.value === todayMonth),
+                    ...blockBodyList
+                      .element('item')
+                      .modifier('selected')
+                      .class(month.value === this.month),
+                  }}
+                  tabIndex={-1}
+                  onClick={() => this.onClickMonth(month.value)}
+                >
+                  {month.label}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul
-          id="year-list"
-          aria-hidden={this.isYearListVisible ? 'false' : 'grue'}
-          style={{
-            display: this.isYearListVisible ? 'grid' : 'none',
-            height: `${(this.gridEl?.clientHeight || 0) - 2 - 8 - 8}px`,
-          }}
-          ref={el => (this.yearListEl = el)}
-        >
-          {this.yearList.map(year => (
-            <li id={`year-${year}`}>
-              <button
-                class={{
-                  'button': true,
-                  'button--selected': year === this.year,
-                  'button--today': year === todayYear,
-                }}
-                tabIndex={-1}
-                onClick={() => this.onClickYear(year)}
-              >
-                {year}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <ul
-          id="month-list"
-          aria-hidden={this.isMonthListVisible ? 'false' : 'grue'}
-          style={{
-            display: this.isMonthListVisible ? 'grid' : 'none',
-            height: `${(this.gridEl?.clientHeight || 0) - 2 - 8 - 8}px`,
+        <div
+          class={{
+            ...blockFoot.class(),
           }}
         >
-          {this.monthList.map(month => (
-            <li>
-              <button
-                class={{
-                  'button': true,
-                  'button--selected': month.value === this.month,
-                  'button--today': month.value === todayMonth,
-                }}
-                tabIndex={-1}
-                onClick={() => this.onClickMonth(month.value)}
-              >
-                {month.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div id="footer">
           <slot></slot>
         </div>
       </Host>

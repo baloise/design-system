@@ -1,11 +1,14 @@
 import padStart from 'lodash.padstart'
+import isNil from 'lodash.isnil'
 import { I18n } from '../../../../interfaces'
 import { BalDate } from '../../../../utils/date'
 import { I18nDate, i18nDate } from '../bal-date.i18n'
-import isNil from 'lodash.isnil'
 
 // Function to get the number of days in a month
-export function getDaysInMonth(year: number, month: number): number {
+export function getDaysInMonth(year: number, month: number): number | undefined {
+  if (month < 1 || year < 1900) {
+    return undefined
+  }
   return new Date(year, month, 0).getDate()
 }
 
@@ -15,7 +18,6 @@ export interface DayCell {
   year: number
   isoDate: string
   fullDate: string
-  empty: boolean
   today: boolean
   disabled: boolean
 }
@@ -27,7 +29,6 @@ export function emptyCell() {
     year: 0,
     isoDate: '',
     fullDate: '',
-    empty: true,
     today: false,
     disabled: false,
   }
@@ -53,81 +54,73 @@ export function generateCalendarGrid(
   min?: string,
   max?: string,
   allowedDates?: BalProps.BalDateCalendarAllowedDatesCallback,
-): DayCell[][] {
-  console.log('generateCalendarGrid')
-  // Get the number of days in the month
-  const numDays: number = getDaysInMonth(year, month)
-
-  // Create a new Date object for the first day of the month
-  const firstDay: Date = new Date(year, month - 1, 1)
-
-  // Determine the index of the first day in the week (0-6)
-  const firstDayIndex: number = firstDay.getDay()
-
+): DayCell[] {
   // Create an empty grid array
-  const grid: DayCell[][] = []
+  const grid: DayCell[] = []
 
-  // Calculate the number of rows needed in the grid
-  const numRows: number = Math.ceil((numDays + firstDayIndex) / 7)
+  // Get the number of days in the month
+  const numDays = getDaysInMonth(year, month)
+  const firstDay = getFirstDayOfMonth(year, month)
 
-  const isoToday = isoDateOfToday()
-  const dateMin = BalDate.fromISO(min)
-  const dateMax = BalDate.fromISO(max)
+  if (numDays !== undefined && firstDay) {
+    // Create a new Date object for the first day of the month
+    const isoToday = isoDateOfToday()
+    const dateMin = BalDate.fromISO(min)
+    const dateMax = BalDate.fromISO(max)
 
-  const allowedDate = (isoDate: string) => {
-    if (isNil(allowedDates)) {
-      return false
-    }
-    return !(allowedDates as BalProps.BalDatepickerCallback)(isoDate)
-  }
-
-  // Fill the grid with day numbers
-  let day = 1
-  for (let row = 0; row < numRows; row++) {
-    const week: DayCell[] = []
-    for (let col = 0; col < 7; col++) {
-      if ((row === 0 && col < firstDayIndex) || day > numDays) {
-        // Empty cell before the first day or after the last day
-        week.push(emptyCell())
-      } else {
-        // Fill cell with day number
-        const isoDate = isoDateOfDay(day, month, year)
-        week.push({
-          day,
-          month,
-          year,
-          isoDate,
-          fullDate: BalDate.fromISO(isoDate).toFormat(),
-          empty: false,
-          today: isoToday === isoDate,
-          disabled: dateMin.isAfter(isoDate) || dateMax.isBefore(isoDate) || allowedDate(isoDate),
-        })
-        day++
+    const allowedDate = (isoDate: string) => {
+      if (isNil(allowedDates)) {
+        return false
       }
+      return !(allowedDates as BalProps.BalDatepickerCallback)(isoDate)
     }
-    grid.push(week)
-  }
 
+    // Fill the grid with day numbers
+    for (let day = 1; day <= numDays; day++) {
+      const isoDate = isoDateOfDay(day, month, year)
+      grid.push({
+        day,
+        month,
+        year,
+        isoDate,
+        fullDate: BalDate.fromISO(isoDate).toFormat(),
+        today: isoToday === isoDate,
+        disabled: dateMin.isAfter(isoDate) || dateMax.isBefore(isoDate) || allowedDate(isoDate),
+      })
+    }
+  }
   return grid
 }
 
 // Function to get the first weekday of the month
 export function getFirstWeekdayOfMonth(year: number, month: number): number {
+  if (month < 1 || year < 1900) {
+    return 1
+  }
+
   // Create a new Date object with the given year and month
   const date = new Date(year, month - 1, 1)
 
   // Get the weekday of the first day of the month (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
   const weekday = date.getDay()
 
-  return weekday
+  return weekday === 0 ? 7 : weekday
 }
 
 export type WeekdayCell = { ariaLabel: string; textContent: string }
 
+export function validateLanguage(language: string): keyof I18n<I18nDate> {
+  if (['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'pt', 'sv', 'fi'].includes(language)) {
+    return language as keyof I18n<I18nDate>
+  }
+  return 'de'
+}
+
 // Function to generate the weekday header row with the label and the content
 export function generateWeekDays(language: keyof I18n<I18nDate>): WeekdayCell[] {
-  const weekdaysMin = [...i18nDate[language].weekdaysMin]
-  const weekdays = [...i18nDate[language].weekdays]
+  const locale = validateLanguage(language)
+  const weekdaysMin = [...i18nDate[locale].weekdaysMin]
+  const weekdays = [...i18nDate[locale].weekdays]
 
   // Start the week on mondays instead of sundays
   weekdaysMin.push(weekdaysMin.shift() || '')
@@ -137,4 +130,12 @@ export function generateWeekDays(language: keyof I18n<I18nDate>): WeekdayCell[] 
     ariaLabel: weekdays[index],
     textContent: weekdayMin,
   }))
+}
+
+export function getFirstDayOfMonth(year: number, month: number): Date | undefined {
+  if (month < 1 || month > 12 || year < 1900) {
+    return undefined
+  }
+
+  return new Date(year, month - 1, 1)
 }
