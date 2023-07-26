@@ -13,7 +13,7 @@ describe('bal-input-date', () => {
       .type('2.')
       .type('23')
       .should('have.value', '10.02.23__')
-      .blur()
+      .blur({ force: true })
       .should('have.value', '10.02.2023')
   })
 
