@@ -22,7 +22,7 @@ describe('BalDateCalendarCell Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('.day-cell').click()
+    cy.get('.bal-date-calendar-cell').click()
     cy.get('@balSelectDay').should('have.been.calledOnce')
   })
 
@@ -44,7 +44,7 @@ describe('BalDateCalendarCell Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('.day-cell').click({ force: true })
+    cy.get('.bal-date-calendar-cell').click({ force: true })
     cy.get('@balSelectDay').should('not.have.been.called')
   })
 })
