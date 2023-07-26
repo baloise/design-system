@@ -72,11 +72,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   }
 
   /**
-   * The calendar will be shown as a model in fullscreen mode.
-   */
-  @Prop() fullscreen = false
-
-  /**
    * The date to defines where the calendar starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD). Default is today.
    */
   @Prop() defaultDate?: string
@@ -312,7 +307,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     const girdHeight = this.gridEl?.clientHeight || 0
 
     const block = BEM.block('date-calendar')
-    const blockHead = block.element('head')
     const blockNav = block.element('nav')
     const blockBody = block.element('body')
     const blockBodyGrid = blockBody.element('grid')
@@ -323,14 +317,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
       <Host
         class={{
           ...block.class(),
-          ...block.modifier('fullscreen').class(this.fullscreen),
         }}
       >
-        <div
-          class={{
-            ...blockHead.class(),
-          }}
-        ></div>
         <div
           class={{
             ...blockNav.class(),
