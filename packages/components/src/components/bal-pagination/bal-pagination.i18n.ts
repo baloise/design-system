@@ -7,43 +7,43 @@ interface I18nPaginationContolLabel {
 
 export const i18nControlLabel: I18n<I18nPaginationContolLabel> = {
   de: {
-    left: 'Linke Steuerung',
-    right: 'R echte Steuerung',
+    left: 'Vorherige Seite',
+    right: 'Nächste Seite',
   },
   en: {
-    left: 'Left Control',
-    right: 'Right Contol',
+    left: 'Previous Page',
+    right: 'Next Page',
   },
   fr: {
-    left: 'Contrôle gauche',
-    right: 'Contrôle droit',
+    left: 'Page précédente',
+    right: 'Page suivante',
   },
   it: {
-    left: 'Controllo sinistro',
-    right: 'Controllo destro',
+    left: 'Pagina precedente',
+    right: 'Pagina successiva',
   },
   nl: {
-    left: 'Linkerbesturing',
-    right: 'Rechterbesturing',
+    left: 'Vorige pagina',
+    right: 'Volgende pagina',
   },
   es: {
-    left: 'Control izquierdo',
-    right: 'Control derecho',
+    left: 'Página anterior',
+    right: 'Página siguiente',
   },
   pl: {
-    left: 'Lewy klawisz Ctrl',
-    right: 'Prawy klawisz Ctrl',
+    left: 'Poprzednia strona',
+    right: 'Następna strona',
   },
   pt: {
-    left: 'Controlo esquerdo',
-    right: 'Controlo direito',
+    left: 'Página anterior',
+    right: 'Próxima página',
   },
   sv: {
-    left: 'Vänsterkontroll',
-    right: 'Högerkontroll',
+    left: 'Föregående sida',
+    right: 'Nästa sida',
   },
   fi: {
-    left: 'Vasen Control',
-    right: 'Oikea Control',
+    left: 'Edellinen sivu',
+    right: 'Seuraava sivu',
   },
 }

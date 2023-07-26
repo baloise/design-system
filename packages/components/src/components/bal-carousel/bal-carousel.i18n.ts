@@ -7,43 +7,43 @@ interface I18nCarouselLabel {
 
 export const i18nControlLabel: I18n<I18nCarouselLabel> = {
   de: {
-    left: 'Linke Steuerung',
-    right: 'R echte Steuerung',
+    left: 'vorherige',
+    right: 'nächste',
   },
   en: {
-    left: 'Left Control',
-    right: 'Right Contol',
+    left: 'previous',
+    right: 'next',
   },
   fr: {
-    left: 'Contrôle gauche',
-    right: 'Contrôle droit',
+    left: 'précédent',
+    right: 'suivant',
   },
   it: {
-    left: 'Controllo sinistro',
-    right: 'Controllo destro',
+    left: 'precedente',
+    right: 'successivo',
   },
   nl: {
-    left: 'Linkerbesturing',
-    right: 'Rechterbesturing',
+    left: 'vorige',
+    right: 'volgende',
   },
   es: {
-    left: 'Control izquierdo',
-    right: 'Control derecho',
+    left: 'anterior',
+    right: 'siguiente',
   },
   pl: {
-    left: 'Lewy klawisz Ctrl',
-    right: 'Prawy klawisz Ctrl',
+    left: 'poprzedni',
+    right: 'następny',
   },
   pt: {
-    left: 'Controlo esquerdo',
-    right: 'Controlo direito',
+    left: 'anterior',
+    right: 'próximo',
   },
   sv: {
-    left: 'Vänsterkontroll',
-    right: 'Högerkontroll',
+    left: 'föregående',
+    right: 'nästa',
   },
   fi: {
-    left: 'Vasen Control',
-    right: 'Oikea Control',
+    left: 'edellinen',
+    right: 'seuraava',
   },
 }
