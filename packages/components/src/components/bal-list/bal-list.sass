@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-list.vars'
 
 .bal-list,
 .bal-list__item,
@@ -16,6 +17,10 @@
 .bal-list,
 .bal-list__item__content
   flex-direction: column
+
+.bal-list__item__title,
+.bal-list__item__subtitle
+  text-align: left
 
 .bal-list,
 .bal-list__item,
@@ -43,7 +48,7 @@
   padding: .5rem 0
   margin: 0
   outline: none
-  border-radius: var(--bal-radius-normal)
+  border-radius: var(--bal-list-item-radius)
 
 .bal-list__item
   position: relative
@@ -56,7 +61,7 @@
   border: none
 
 .bal-list__item__subtitle
-  color: var(--bal-color-text-primary)
+  color: var(--bal-list-item-subtile-color)
 
 .bal-list__item,
 .bal-list__item > a,
@@ -118,21 +123,21 @@
         .bal-list__item__title .title,
         .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
-          color: var(--bal-color-text-light-blue) !important
+          color: var(--bal-list-accordion-head-color-hover) !important
 
         .bal-list__item__icon
           svg,
           svg g,
           svg path,
           svg circle
-            fill: var(--bal-color-light-blue-5) !important
+            fill: var(--bal-list-accordion-head-background-hover) !important
 
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
-          color: var(--bal-color-text-primary-dark) !important
+          color: var(--bal-list-accordion-head-color-active) !important
 
       .bal-list__item__icon
         svg,
@@ -140,10 +145,10 @@
         svg path,
         svg circle
           +desktop()
-            fill: var(--bal-color-primary-6) !important
+            fill: var(--bal-list-accordion-head-background-active) !important
 
     &:focus-visible
-      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-6) 0 0 0 5px !important
+      box-shadow: var(--bal-focus-shadow) !important
       &:after
         content: none !important
 
@@ -152,14 +157,14 @@
     .bal-list__item__title .title,
     .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
-      color: var(--bal-color-text-white)
+      color: var(--bal-list-item-on-dark-color)
 
   .bal-list__item__icon
     svg,
     svg g,
     svg path,
     svg circle
-      fill: var(--bal-color-white)
+      fill: var(--bal-list-item-on-dark-color)
 
 .bal-list:not(.bal-list--disabled).bal-list--background-dark .bal-list__item--clickable
   .bal-list__item__accordion-head,
@@ -170,21 +175,21 @@
         .bal-list__item__title .title,
         .bal-list__item__title .bal-heading__text,
         .bal-list__item__subtitle p
-          color: var(--bal-color-light-blue-2) !important
+          color: var(--bal-list-accordion-head-on-dark-color-hover) !important
 
         .bal-list__item__icon
           svg,
           svg g,
           svg path,
           svg circle
-            fill: var(--bal-color-light-blue-2) !important
+            fill: var(--bal-list-accordion-head-on-dark-background-hover) !important
 
     &:active
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
         +desktop()
-          color: var(--bal-color-light-blue-3) !important
+          color: var(--bal-list-accordion-head-on-dark-color-active) !important
 
       .bal-list__item__icon
         svg,
@@ -192,10 +197,10 @@
         svg path,
         svg circle
           +desktop()
-            fill: var(--bal-color-light-blue-3) !important
+            fill: var(--bal-list-accordion-head-on-dark-background-active) !important
 
     &:focus-visible
-      box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow) 0 0 0 5px !important
+      box-shadow: var(--bal-focus-shadow-inverted) !important
       &:after
         content: none !important
 
@@ -215,7 +220,7 @@
   & > button.bal-list__item__trigger:not(.button):not([type='button']):after
     content: ''
     height: 2px
-    border-radius: var(--bal-radius-normal)
+    border-radius: var(--bal-list-item-radius)
     width: 100%
     position: absolute
     bottom: 0
@@ -228,7 +233,7 @@
     & > div:after,
     a:not(.is-link):after,
     button:not(.button):not([type='button']):after
-      background: var(--bal-color-grey-2)
+      background: var(--bal-list-item-disabled-background)
 
   .bal-list__item.bal-list__item--clickable:not(.bal-list__item--accordion):not(.bal-list__item--disabled)
     & > div,
@@ -236,13 +241,13 @@
     button:not(.button)
       +hover()
         &:hover:after
-          background: var(--bal-color-light-blue-5)
+          background: var(--bal-list-item-background-hover)
 
     & > div:active:after,
     a:not(.is-link):active:after,
     button:not(.button):active:after
       +desktop()
-        background: var(--bal-color-primary-6)
+        background: var(--bal-list-item-background-active)
 
   &.bal-list--background-color
     .bal-list__item
@@ -255,31 +260,31 @@
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: var(--bal-color-primary-4)
+        background: var(--bal-list-item-disabled-on-color-background)
 
   &.bal-list--background-dark
     .bal-list__item
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: var(--bal-color-primary-4)
+        background: var(--bal-list-item-disabled-on-dark-background)
 
     .bal-list__item--disabled
       & > div:after,
       a:not(.is-link):after,
       button:not(.button):after
-        background: var(--bal-color-primary-4)
+        background: var(--bal-list-item-disabled-on-dark-background)
 
     .bal-list__item.bal-list__item--clickable:not(.bal-list__item--accordion):not(.bal-list__item--disabled)
       & > div:hover:after,
       a:not(.is-link):hover:after,
       button:not(.button):hover:after
-        background: var(--bal-color-light-blue-2)
+        background: var(--bal-list-item-on-dark-background-hover)
 
       & > div:active:after,
       a:not(.is-link):active:after,
       button:not(.button):active:after
-        background: var(--bal-color-light-blue-4)
+        background: var(--bal-list-item-on-dark-background-active)
 
 .bal-list:not(.bal-list--background-dark) .bal-list__item--disabled
   &,
@@ -288,14 +293,14 @@
     .bal-list__item__title .title,
     .bal-list__item__title .bal-heading__text,
     .bal-list__item__subtitle p
-      color: var(--bal-color-text-grey) !important
+      color: var(--bal-list-item-disabled-on-dark-color) !important
 
     .bal-list__item__icon
       svg,
       svg g,
       svg path,
       svg circle
-        fill: var(--bal-color-grey-5) !important
+        fill: var(--bal-list-item-disabled-on-dark-fill) !important
 
 .bal-list:not(.bal-list--disabled):not(.bal-list--background-dark) .bal-list__item--disabled
   &,
@@ -307,14 +312,14 @@
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
-        color: var(--bal-color-text-grey) !important
+        color: var(--bal-list-item-disabled-color) !important
 
       .bal-list__item__icon
         svg,
         svg g,
         svg path,
         svg circle
-          fill: var(--bal-color-grey-5) !important
+          fill: var(--bal-list-item-disabled-fill) !important
 
 .bal-list:not(.bal-list--disabled).bal-list--background-color .bal-list__item--disabled,
 .bal-list:not(.bal-list--disabled).bal-list--background-dark .bal-list__item--disabled
@@ -327,14 +332,14 @@
       .bal-list__item__title .title,
       .bal-list__item__title .bal-heading__text,
       .bal-list__item__subtitle p
-        color: var(--bal-color-primary-4) !important
+        color: var(--bal-list-item-disabled-on-color-color) !important
 
       .bal-list__item__icon
         svg,
         svg g,
         svg path,
         svg circle
-          fill: var(--bal-color-primary-4) !important
+          fill: var(--bal-list-item-disabled-on-color-fill) !important
 
 .bal-card > .bal-list.p-none
   .bal-list__item:last-child
@@ -419,24 +424,24 @@
   content: ''
   height: 2px
   width: 100%
-  border-radius: var(--bal-radius-normal)
-  background: var(--bal-color-grey-2)
+  border-radius: var(--bal-list-item-radius)
+  background: var(--bal-list-item-border-background)
 
 .bal-list--border.bal-list--background-color > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
 .bal-list--border.bal-list--background-color > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
 .bal-list--border.bal-list--background-color > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
-  background: var(--bal-color-primary)
+  background: var(--bal-list-item-border-on-color-background)
 
 .bal-list--border.bal-list--background-dark > .bal-list__item--expanded > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
 .bal-list--border.bal-list--background-dark > .bal-list__item--collapsing > .bal-list__item__trigger > .bal-list__item__accordion-head:after,
 .bal-list--border.bal-list--background-dark > .bal-list__item--expanding > .bal-list__item__trigger > .bal-list__item__accordion-head:after
-  background: var(--bal-color-primary-4)
+  background: var(--bal-list-item-border-on-dark-background)
 
 .bal-list__item__accordion-body__content > .bal-list
   padding-left: 1rem
 
 .bal-list--background-dark .bal-list__item__accordion-body .bal-list__item__content > p
-  color: var(--bal-color-text-white)
+  color: var(--bal-list-accordion-body-color)
 
 .bal-list__item--animated > .bal-list__item__trigger
   transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)

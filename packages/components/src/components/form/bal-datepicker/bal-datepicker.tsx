@@ -134,6 +134,11 @@ export class Datepicker
   @Prop() readonly = false
 
   /**
+   * Defines if the select is in a loading state.
+   */
+  @Prop() loading = false
+
+  /**
    * The text to display when the select is empty.
    */
   @Prop() placeholder?: string
@@ -243,15 +248,15 @@ export class Datepicker
   @Event() balIconClick!: EventEmitter<BalEvents.BalDatepickerIconClickDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       if (this.resetHandlerTimer) {
         clearTimeout(this.resetHandlerTimer)
@@ -514,28 +519,28 @@ export class Datepicker
     return (this.allowedDates as BalProps.BalDatepickerCallback)(formatDateString(dayDatePointer))
   }
 
-  private onIconClick = (event: MouseEvent) => {
+  private onIconClick = (ev: MouseEvent) => {
     if (!this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
-    stopEventBubbling(event)
-    this.balIconClick.emit(event)
+    stopEventBubbling(ev)
+    this.balIconClick.emit(ev)
   }
 
-  private onInputClick = (event: MouseEvent) => {
+  private onInputClick = (ev: MouseEvent) => {
     if (!this.triggerIcon && !this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
-    stopEventBubbling(event)
+    stopEventBubbling(ev)
     if (!this.triggerIcon) {
-      this.balInputClick.emit(event)
+      this.balInputClick.emit(ev)
     }
   }
 
-  private onPopoverChange = (event: CustomEvent<boolean>) => {
-    stopEventBubbling(event)
-    if (this.isPopoverOpen !== event.detail) {
-      this.isPopoverOpen = event.detail
+  private onPopoverChange = (ev: CustomEvent<boolean>) => {
+    stopEventBubbling(ev)
+    if (this.isPopoverOpen !== ev.detail) {
+      this.isPopoverOpen = ev.detail
       if (!this.isPopoverOpen) {
         this.balBlur.emit()
       }
@@ -569,8 +574,8 @@ export class Datepicker
     return value
   }
 
-  private onInput = (event: Event) => {
-    const input = getInputTarget(event)
+  private onInput = (ev: Event) => {
+    const input = getInputTarget(ev)
 
     if (input) {
       this.inputValue = input.value
@@ -590,8 +595,8 @@ export class Datepicker
     this.balInput.emit(this.inputValue)
   }
 
-  private onInputChange = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
+  private onInputChange = (ev: Event) => {
+    const inputValue = (ev.target as HTMLInputElement).value
     const date = parse(inputValue, this.getLocale())
     const dateString = formatDateString(date as Date)
     const formattedValue = format(this.getLocale(), date)
@@ -607,8 +612,8 @@ export class Datepicker
     }
   }
 
-  private onInputKeyUp = (event: KeyboardEvent) => {
-    if (isSpaceKey(event) && !this.triggerIcon) {
+  private onInputKeyUp = (ev: KeyboardEvent) => {
+    if (isSpaceKey(ev) && !this.triggerIcon) {
       if (this.isPopoverOpen) {
         this.close()
       } else {
@@ -616,7 +621,7 @@ export class Datepicker
       }
     }
 
-    if (isEnterKey(event) && !this.triggerIcon) {
+    if (isEnterKey(ev) && !this.triggerIcon) {
       const date = parse(this.nativeInput.value, this.getLocale())
       const dateString = formatDateString(date as Date)
 
@@ -628,20 +633,20 @@ export class Datepicker
     }
   }
 
-  private onInputKeyDown = (event: KeyboardEvent) => {
+  private onInputKeyDown = (ev: KeyboardEvent) => {
     const separator = dateSeparator(this.getLocale())
     const allowedKeys = [...NUMBER_KEYS, separator, ...ACTION_KEYS]
-    if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
-      event.preventDefault()
-      event.stopPropagation()
+    if (!isCtrlOrCommandKey(ev) && allowedKeys.indexOf(ev.key) < 0) {
+      ev.preventDefault()
+      ev.stopPropagation()
     }
-    if (event.key === 'Tab') {
+    if (ev.key === 'Tab') {
       this.close()
     }
   }
 
-  private onMonthSelect = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
+  private onMonthSelect = (ev: Event) => {
+    const inputValue = (ev.target as HTMLInputElement).value
     this.pointerDate = {
       ...this.pointerDate,
       day: 1,
@@ -649,8 +654,8 @@ export class Datepicker
     }
   }
 
-  private onYearSelect = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
+  private onYearSelect = (ev: Event) => {
+    const inputValue = (ev.target as HTMLInputElement).value
     const yearValue = parseInt(inputValue, 10)
     let month = undefined
 
@@ -679,14 +684,14 @@ export class Datepicker
     }
   }
 
-  private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onInputFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
 
-  private onInputBlur = (event: FocusEvent) => {
-    preventDefault(event)
+  private onInputBlur = (ev: FocusEvent) => {
+    preventDefault(ev)
     this.focused = false
   }
 
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
   render() {
     const block = BEM.block('datepicker')
@@ -769,16 +774,20 @@ export class Datepicker
             onFocus={this.onInputFocus}
             {...this.inheritedAttributes}
           />
-          <bal-icon
-            class={{
-              'datepicker-trigger-icon': true,
-              'is-clickable': !this.disabled && !this.readonly,
-            }}
-            is-right
-            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            name="date"
-            onClick={this.onIconClick}
-          />
+          {!this.loading ? (
+            <bal-icon
+              class={{
+                'datepicker-trigger-icon': true,
+                'is-clickable': !this.disabled && !this.readonly,
+              }}
+              is-right
+              color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
+              name="date"
+              onClick={this.onIconClick}
+            />
+          ) : (
+            ''
+          )}
         </bal-input-group>
       </div>
     )

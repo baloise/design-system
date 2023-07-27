@@ -40,6 +40,19 @@ const readSVG = async (name, filePath) => {
           name: 'removeDimensions',
           params: { removeDimensions: true },
         },
+        {
+          name: 'addAttributesToSVGElement',
+          params: {
+            attributes: [
+              {
+                focusable: false
+              },
+              {
+                'aria-hidden': 'true'
+              }
+            ]
+          },
+        },
       ],
     })
     svgContent = svg.data

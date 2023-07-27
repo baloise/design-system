@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import '../bal-steps.vars'
 
 // Step Icons
 // --------------------------------------------------
@@ -11,7 +12,7 @@
   overflow: hidden
   z-index: 5
   font-weight: var(--bal-weight-bold)
-  border-radius: var(--bal-radius-rounded)
+  border-radius: var(--bal-steps-step-icon-radius)
   font-size: var(--bal-size-small)
   //
   // Responive Sizes
@@ -25,27 +26,27 @@
     font-size: var(--bal-size-normal)
   //
   // Color status
-  border: var(--bal-border-width-normal) solid var(--bal-color-border-grey)
-  background: var(--bal-color-white)
-  color: var(--bal-color-text-white-inverted)
+  border: var(--bal-steps-step-border-width) var(--bal-steps-step-border-style) var(--bal-steps-step-border-color)
+  background: var(--bal-steps-step-icon-background)
+  color: var(--bal-steps-step-icon-text-color)
   &--active
-    border-color: var(--bal-color-primary)
-    background: var(--bal-color-primary)
-    color: var(--bal-color-text-primary-inverted)
-  &--disabled
-    border-color: var(--bal-color-grey-2)
-    background: var(--bal-color-grey-2)
-    color: var(--bal-color-text-grey)
+    border-color: var(--bal-steps-step-border-color-active)
+    background: var(--bal-steps-step-icon-background-active)
+    color: var(--bal-steps-step-icon-text-color-active)
   &--done
-    border-color: var(--bal-color-primary)
-    background: var(--bal-color-primary)
-    color: var(--bal-color-text-primary-inverted)
+    border-color: var(--bal-steps-step-border-color-done)
+    background: var(--bal-steps-step-icon-background-done)
+    color: var(--bal-steps-step-icon-text-color-done)
   &--failed
-    border-color: var(--bal-color-danger)
-    background: var(--bal-color-danger)
-    color: var(--bal-color-text-white)
+    border-color: var(--bal-steps-step-border-color-failed)
+    background: var(--bal-steps-step-icon-background-failed)
+    color: var(--bal-steps-step-icon-text-color-failed)
     font-size: var(--bal-size-normal)
     +tablet
       font-size: var(--bal-size-tablet-large)
     +desktop
       font-size: var(--bal-size-desktop-large)
+  &--disabled
+    border-color: var(--bal-steps-step-border-color-disabled)
+    background: var(--bal-steps-step-icon-background-disabled)
+    color: var(--bal-steps-step-icon-text-color-disabled)

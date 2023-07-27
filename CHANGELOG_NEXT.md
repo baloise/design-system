@@ -102,7 +102,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package root
 
 
-
 ## [10.24.5](https://github.com/baloise/design-system/compare/v10.24.4...v10.24.5) (2022-10-05)
 
 **Note:** Version bump only for package root
@@ -111,7 +110,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [10.24.4](https://github.com/baloise/design-system/compare/v10.24.3...v10.24.4) (2022-10-05)
 
 **Note:** Version bump only for package root
-
 
 
 
@@ -130,7 +128,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * verify if window object exist when checking if current browser is Safari ([f726876](https://github.com/baloise/design-system/commit/f72687602750aba646b50f98914f095f53023fbb))
 * verify if window object exist when checking if current browser is Safari ([e3239d3](https://github.com/baloise/design-system/commit/e3239d3eaf704f477e1495e7fd9848bf13beed25))
-
 
 
 ## [10.24.1](https://github.com/baloise/design-system/compare/v10.24.0...v10.24.1) (2022-10-03)
@@ -153,10 +150,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **bal-pagination:** add prop to disable controls and dots for context small ([#662](https://github.com/baloise/design-system/issues/662)) ([e684bd0](https://github.com/baloise/design-system/commit/e684bd02413fe165e1107b92f7a5c02e8a2b0c35))
 
-
-
 ## [10.23.3](https://github.com/baloise/design-system/compare/v10.23.2...v10.23.3) (2022-09-29)
-
 
 ### Features
 
@@ -171,7 +165,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **bal-slider:** updated named tabs story ([80273cd](https://github.com/baloise/design-system/commit/80273cdb104a56edbeedb368fcadf2d41da75a28))
 * **bal-slider:** updated the stories ([fc4d6d4](https://github.com/baloise/design-system/commit/fc4d6d4620e6611597b91734050636a54d2adfa4))
 
-
 ### Bug Fixes
 
 * **card:** adjust tag and button alignment in the title. Closes [#547](https://github.com/baloise/design-system/issues/547) ([3d04ec2](https://github.com/baloise/design-system/commit/3d04ec218e33a7fc0aeccbc673fab962e77ab736))
@@ -179,7 +172,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **datepicker:** grid date cannot be smaller than min or bigger than max .Closes [#595](https://github.com/baloise/design-system/issues/595) ([1550cc7](https://github.com/baloise/design-system/commit/1550cc7e6d295e6e6683bc5bfde481922a0831d8))
 * **navigation:** block scrolling when main nav is open and scrollable ([1cc54bd](https://github.com/baloise/design-system/commit/1cc54bd9fdcf94ba2f77fdc069e5b8484c5a0340))
 * **navigation:** safari 16 login button text stays on one line. Closes [#638](https://github.com/baloise/design-system/issues/638) ([9a31d91](https://github.com/baloise/design-system/commit/9a31d9147eb29c1b757acae2270b039d91d486ef))
-
 
 
 ## [10.23.2](https://github.com/baloise/design-system/compare/v10.23.1...v10.23.2) (2022-09-27)
@@ -201,7 +193,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
 * **stage:** stage position ([2839688](https://github.com/baloise/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
-
 
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
@@ -244,7 +235,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * use .bal-body instead of body element ([5c8fdb5](https://github.com/baloise/design-system/commit/5c8fdb539bc345b63ff6030da5b5783da6c1d4e6))
 
 ## [10.22.2](https://github.com/baloise/design-system/compare/v10.22.1...v10.22.2) (2022-09-21)
-
 
 ### Bug Fixes
 
@@ -637,7 +627,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **meta-nav:** fix tabs columns classes rendering ([abf6080](https://github.com/baloise/design-system/commit/abf6080607b787b036ffeda39761cb7848c6b415))
 * **nav:** add navigation and open logic ([91a529a](https://github.com/baloise/design-system/commit/91a529a19e9ff4c021d50d9bfe14a04f7b28b300))
 * **nav:** first draft ([c830521](https://github.com/baloise/design-system/commit/c8305210ab777cda59d35f85e463fdef63d26a75))
-
 
 ### Bug Fixes
 

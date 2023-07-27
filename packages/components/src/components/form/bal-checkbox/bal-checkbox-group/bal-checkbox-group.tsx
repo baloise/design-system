@@ -209,8 +209,15 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
 
   mutationObserverActive = true
 
-  @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
+  @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'], attributes: false, characterData: false })
   mutationListener(): void {
+    if (this.control) {
+      this.disabledChanged(this.disabled)
+      this.readonlyChanged(this.readonly)
+    }
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 
@@ -224,8 +231,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       if (this.control) {
         this.value = []
@@ -235,20 +242,20 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
   }
 
   @Listen('balFocus', { capture: true, target: 'document' })
-  checkboxFocusListener(event: CustomEvent<FocusEvent>) {
-    const { target } = event
+  checkboxFocusListener(ev: CustomEvent<FocusEvent>) {
+    const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
-      stopEventBubbling(event)
-      this.balFocus.emit(event.detail)
+      stopEventBubbling(ev)
+      this.balFocus.emit(ev.detail)
     }
   }
 
   @Listen('balBlur', { capture: true, target: 'document' })
-  checkboxBlurListener(event: CustomEvent<FocusEvent>) {
-    const { target } = event
+  checkboxBlurListener(ev: CustomEvent<FocusEvent>) {
+    const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
-      stopEventBubbling(event)
-      this.balBlur.emit(event.detail)
+      stopEventBubbling(ev)
+      this.balBlur.emit(ev.detail)
     }
   }
 

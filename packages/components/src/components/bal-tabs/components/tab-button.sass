@@ -17,7 +17,7 @@
   cursor: default
   gap: 0.5rem
   padding: 0.25rem 0.75rem
-  border-radius: var(--bal-radius-normal)
+  border-radius: var(--bal-tabs-tab-button-radius)
   min-width: 3rem
   min-height: 3rem
   user-select: none
@@ -54,26 +54,26 @@
     +hover()
       &:hover
         .bal-tabs__nav__item__label
-          color: var(--bal-color-light-blue-5)
+          color: var(--bal-tabs-tab-button-label-text-color-hover)
         .bal-tabs__nav__item__icon
-          +fillSvg(var(--bal-color-light-blue-5))
+          +fillSvg(var(--bal-tabs-tab-button-icon-text-color-hover))
     &:active
       .bal-tabs__nav__item__label
-        color: var(--bal-color-primary-6)
+        color: var(--bal-tabs-tab-button-label-text-color-active)
       .bal-tabs__nav__item__icon
-        +fillSvg(var(--bal-color-primary-6))
+        +fillSvg(var(--bal-tabs-tab-button-icon-text-color-active))
   &:not(&--disabled)#{&}--inverted
     +hover()
       &:hover
         .bal-tabs__nav__item__label
-          color: var(--bal-color-light-blue-2)
+          color: var(--bal-tabs-tab-button-label-text-color-inverted-hover)
         .bal-tabs__nav__item__icon
-          +fillSvg(var(--bal-color-light-blue-2))
+          +fillSvg(var(--bal-tabs-tab-button-icon-text-color-inverted-hover))
     &:active
       .bal-tabs__nav__item__label
-        color: var(--bal-color-text-info)
+        color: var(--bal-tabs-tab-button-label-text-color-inverted-active)
       .bal-tabs__nav__item__icon
-        +fillSvg(var(--bal-color-text-info))
+        +fillSvg(var(--bal-tabs-tab-button-icon-text-color-inverted-active))
   //
   // Vertical layout
   &--vertical

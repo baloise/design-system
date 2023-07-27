@@ -165,15 +165,15 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Event() balFocus!: EventEmitter<BalEvents.BalTextareaFocusDetail>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(event: UIEvent) {
-    inputListenOnClick(this, event)
+  listenOnClick(ev: UIEvent) {
+    inputListenOnClick(this, ev)
   }
 
   private resetHandlerTimer?: NodeJS.Timer
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       inputHandleReset(this, this.initialValue, this.resetHandlerTimer)
     }
@@ -233,7 +233,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     this.balInput.emit(this.inputValue)
   }
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
 
   private onBlur = (ev: FocusEvent) => {
     inputHandleBlur(this, ev)
@@ -246,9 +246,9 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     inputHandleChange(this)
   }
 
-  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
+  private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
 
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
+  private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
   render() {
     const value = this.getValue()

@@ -40,7 +40,7 @@ export class NavigationLevelMeta implements ComponentInterface {
       isTabLink: this.isTabLink,
       subLevels,
       trackingData: this.inheritAttributes,
-      onClick: (event: MouseEvent) => this.balClick.emit(event),
+      onClick: (ev: MouseEvent) => this.balClick.emit(ev),
     }
   }
 

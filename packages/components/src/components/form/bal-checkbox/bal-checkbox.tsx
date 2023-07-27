@@ -198,8 +198,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   }
 
   @Listen('reset', { capture: true, target: 'document' })
-  resetHandler(event: UIEvent) {
-    const formElement = event.target as HTMLElement
+  resetHandler(ev: UIEvent) {
+    const formElement = ev.target as HTMLElement
     if (formElement?.contains(this.el)) {
       this.checked = this.initialValue
     }
@@ -261,7 +261,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   @Method()
   async updateState() {
     if (this.group && this.group.control && Array.isArray(this.group.value)) {
-      this.checked = this.group.value.includes(this.value)
+      const newChecked = this.group.value.includes(this.value)
+      if (newChecked !== this.checked) {
+        this.checked = newChecked
+      }
     }
 
     if (this.checkboxButton) {
@@ -309,6 +312,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
    * ------------------------------------------------------
    */
 
+  private toggleChecked() {
+    this.checked = !this.checked
+    this.balChange.emit(this.checked)
+  }
+
   private onKeypress = (ev: KeyboardEvent) => {
     if (isSpaceKey(ev)) {
       const element = ev.target as HTMLAnchorElement
@@ -317,8 +325,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
       }
 
       if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.checked = !this.checked
-        this.balChange.emit(this.checked)
+        this.toggleChecked()
         ev.preventDefault()
       } else {
         stopEventBubbling(ev)
@@ -333,34 +340,33 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     }
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.checked = !this.checked
+      this.toggleChecked()
       this.nativeInput?.focus()
-      this.balChange.emit(this.checked)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)
     }
   }
 
-  private onFocus = (event: FocusEvent) => {
+  private onFocus = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
       this.focused = false
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
-    this.balFocus.emit(event)
+    this.balFocus.emit(ev)
 
     if (this.keyboardMode) {
       this.focused = true
     }
   }
 
-  private onBlur = (event: FocusEvent) => {
+  private onBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
-    this.balBlur.emit(event)
+    this.balBlur.emit(ev)
     this.focused = false
   }
 

@@ -15,14 +15,14 @@
   user-select: none
   //
   // Color status
-  color: var(--bal-color-text-primary)
+  color: var(--bal-tabs-tab-label-text-color)
   &--disabled
-    color: var(--bal-color-text-grey)
+    color: var(--bal-tabs-tab-label-text-color-disabled)
   &--inverted
     font-family: var(--bal-font-family-text)
-    color: var(--bal-color-text-white)
+    color: var(--bal-tabs-tab-label-text-color-inverted)
   &--inverted#{&}--disabled
-    color: var(--bal-color-text-primary-light)
+    color: var(--bal-tabs-tab-label-text-color-inverted-disabled)
   &--inverted
     font-weight: var(--bal-weight-regular)
     letter-spacing: 0.059px
@@ -40,6 +40,7 @@
   &--vertical
     text-align: left
     width: auto
+    white-space: normal
   //
   // context styles
   &--context-meta

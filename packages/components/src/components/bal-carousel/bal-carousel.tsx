@@ -21,15 +21,18 @@ import { SmallControl } from './controls/small-control'
 import { stopEventBubbling } from '../../utils/form-input'
 import { BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { ListenToBreakpoints } from '../../utils/breakpoints/breakpoints.decorator'
-import { ListenToSwipe } from '../../utils/swipe/swipe.decorator'
-import { BalSwipeInfo, BalSwipeObserver } from '../../utils/swipe'
+import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
+import { getComputedWidth } from '../../utils/style'
 
 @Component({
   tag: 'bal-carousel',
   styleUrl: 'bal-carousel.sass',
 })
-export class Carousel implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver {
+export class Carousel
+  implements ComponentInterface, BalBreakpointObserver, BalSwipeObserver, BalMutationObserver, BalResizeObserver
+{
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
   private borderEl?: HTMLDivElement
@@ -125,9 +128,9 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
    */
 
   @Listen('touchmove', { target: 'window', passive: false })
-  async blockVerticalScrolling(event: any) {
-    if (!this.scrollY && this.el?.contains(event.target)) {
-      stopEventBubbling(event)
+  async blockVerticalScrolling(ev: any) {
+    if (!this.scrollY && this.el?.contains(ev.target)) {
+      stopEventBubbling(ev)
     }
   }
 
@@ -150,6 +153,11 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
     this.areControlsHidden = !breakpoints.mobile
+    this.itemsChanged()
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
     this.itemsChanged()
   }
 
@@ -277,8 +285,12 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
       return {
         el: items[index],
         data: data[index],
-        transformNext: items.filter((_, n) => n < index + 1).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
-        transformActive: items.filter((_, n) => n < index).reduce((acc, item) => acc + item.clientWidth + gapSize, 0),
+        transformNext: items
+          .filter((_, n) => n < index + 1)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+        transformActive: items
+          .filter((_, n) => n < index)
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
         isFirst: index === 0,
         isLast: index === items.length - 1,
         total: items.length,
@@ -366,7 +378,6 @@ export class Carousel implements ComponentInterface, BalBreakpointObserver, BalS
     const container = inner.element('container')
 
     const controlItems = this.getAllControlItems()
-
     return (
       <Host
         class={{

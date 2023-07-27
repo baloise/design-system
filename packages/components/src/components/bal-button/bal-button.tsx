@@ -178,7 +178,6 @@ export class Button implements ComponentInterface {
   private get buttonCssClass(): { [className: string]: boolean } {
     return {
       'button': true,
-      // 'has-no-wrap': this.noWrap,
       [`is-${this.color}`]: true,
       'is-flat': this.flat,
       'is-square': this.square,
@@ -227,10 +226,10 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private handleClick(event: MouseEvent) {
+  private handleClick(ev: MouseEvent) {
     if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
+      ev.preventDefault()
+      ev.stopPropagation()
     }
   }
 
@@ -242,9 +241,9 @@ export class Button implements ComponentInterface {
     this.balBlur.emit()
   }
 
-  private onClick = (event: MouseEvent) => {
+  private onClick = (ev: MouseEvent) => {
     if (this.href !== undefined) {
-      this.balNavigate.emit(event)
+      this.balNavigate.emit(ev)
     }
   }
 
@@ -281,7 +280,6 @@ export class Button implements ComponentInterface {
     return (
       <Host
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
         class={{
           'bal-button': true,
           'control': true,
@@ -298,6 +296,7 @@ export class Button implements ComponentInterface {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.onClick}
+          aria-disabled={this.disabled ? 'true' : null}
           data-testid="bal-button"
         >
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />

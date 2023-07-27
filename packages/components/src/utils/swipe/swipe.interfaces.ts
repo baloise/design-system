@@ -7,5 +7,5 @@ export type BalSwipeListenerFn = (info: BalSwipeInfo) => void
 
 export interface BalSwipeObserver {
   el: HTMLElement
-  swipeListener: BalSwipeListenerFn
+  swipeListener(info: BalSwipeInfo): void
 }

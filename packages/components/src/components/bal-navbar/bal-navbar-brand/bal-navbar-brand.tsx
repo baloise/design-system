@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import { BalScrollHandler } from '../../../utils/scroll'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -67,7 +68,7 @@ export class NavbarBrand {
   }
 
   componentWillLoad() {
-    if (window.matchMedia) {
+    if (balBrowser.hasWindow && window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
   }
@@ -123,7 +124,7 @@ export class NavbarBrand {
         }}
       >
         {this.href ? (
-          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+          <a href={this.href} target={this.target} onClick={(ev: MouseEvent) => this.balNavigate.emit(ev)}>
             {logoTemplate}
           </a>
         ) : (

@@ -28,8 +28,8 @@ export const TabList: FunctionalComponent<TabProps> = ({
   inverted,
 }) => {
   if (balBreakpoints.isMobile && selectOnMobile) {
-    const onChange = (event: CustomEvent<string | string[] | undefined>) => {
-      const selectedTabs = tabs.filter(tab => tab.value === event.detail)
+    const onChange = (ev: CustomEvent<string | string[] | undefined>) => {
+      const selectedTabs = tabs.filter(tab => tab.value === ev.detail)
       if (selectedTabs.length > 0) {
         const selectedTab = selectedTabs[0]
         if (selectedTab.href !== '' && selectedTab.href !== undefined) {
@@ -37,7 +37,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
             window.open(selectedTab.href, selectedTab.target)
           }
         }
-        onSelectTab(event as any, selectedTab)
+        onSelectTab(ev as any, selectedTab)
       }
     }
 

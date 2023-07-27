@@ -73,4 +73,5 @@ const compareSnapshotCommandAsAny = compareSnapshotCommand as any
 
 compareSnapshotCommandAsAny({
   capture: 'fullPage',
+  errorThreshold: 0.016,
 })

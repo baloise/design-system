@@ -30,10 +30,11 @@ import { newBalTabOption } from './bal-tab.util'
 import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
-import { getPadding, Padding } from '../../utils/style'
+import { getComputedPadding, Padding } from '../../utils/style'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { AccordionState } from '../../interfaces'
+import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
@@ -42,7 +43,13 @@ import { AccordionState } from '../../interfaces'
   },
 })
 export class Tabs
-  implements ComponentInterface, Loggable, BalConfigObserver, BalMutationObserver, BalBreakpointObserver
+  implements
+    ComponentInterface,
+    Loggable,
+    BalConfigObserver,
+    BalMutationObserver,
+    BalBreakpointObserver,
+    BalResizeObserver
 {
   private contentEl: HTMLDivElement | undefined
   private contentElWrapper: HTMLDivElement | undefined
@@ -242,21 +249,26 @@ export class Tabs
     this.animateLine()
   }
 
+  @ListenToResize()
+  resizeListener() {
+    this.animateLine()
+  }
+
   @Listen('balWillAnimate', { target: 'window' })
-  listenToWillAnimate(event: UIEvent) {
-    isChildOfEventTarget(event, this.el, () => this.animateLine())
+  listenToWillAnimate(ev: UIEvent) {
+    isChildOfEventTarget(ev, this.el, () => this.animateLine())
   }
 
   @Listen('balDidAnimate', { target: 'window' })
-  listenToDidAnimate(event: UIEvent) {
-    isChildOfEventTarget(event, this.el, () => this.animateLine())
-    this.isUsedInNavbar(event)
+  listenToDidAnimate(ev: UIEvent) {
+    isChildOfEventTarget(ev, this.el, () => this.animateLine())
+    this.isUsedInNavbar(ev)
   }
 
-  isUsedInNavbar(event: UIEvent) {
-    const target = event.target as HTMLElement
+  isUsedInNavbar(ev: UIEvent) {
+    const target = ev.target as HTMLElement
     const parentNavbar = target.closest('bal-navbar')
-    const isNavbarOpen = event.target as any | false
+    const isNavbarOpen = ev.target as any | false
     if (parentNavbar && isDescendant(parentNavbar, this.el)) {
       this.isNavbarOpen = isNavbarOpen
     }
@@ -376,7 +388,7 @@ export class Tabs
   }
 
   private getTargetElement(value?: string) {
-    const selector = `#${this.tabsId}-button`
+    const selector = `[data-tabs="${this.tabsId}"]`
     const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
     return elements.filter(element => element.getAttribute('data-value') == value)[0]
   }
@@ -459,7 +471,7 @@ export class Tabs
           return
         }
 
-        const padding = getPadding(target)
+        const padding = getComputedPadding(target)
         const size = this.getLineSize(target, padding)
         const offset = this.getOffset(target, padding)
 
@@ -614,9 +626,9 @@ export class Tabs
     }
   }
 
-  private onSelectTab = async (event: MouseEvent, step: BalTabOption) => {
+  private onSelectTab = async (ev: MouseEvent, step: BalTabOption) => {
     if (step.prevent || step.disabled || !this.clickable) {
-      stopEventBubbling(event)
+      stopEventBubbling(ev)
     }
 
     if (!step.disabled && this.clickable) {
@@ -629,7 +641,7 @@ export class Tabs
       }
 
       if (step.navigate) {
-        step.navigate.emit(event)
+        step.navigate.emit(ev)
       }
 
       if (step.value !== this.value) {

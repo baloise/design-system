@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
-import { AccordionState } from "./interfaces";
+import { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -18,7 +18,7 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
-export { AccordionState } from "./interfaces";
+export { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
@@ -103,6 +103,10 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color": BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon": string;
@@ -110,6 +114,10 @@ export namespace Components {
           * Label of the open trigger button
          */
         "openLabel": string;
+        /**
+          * Size of the button
+         */
+        "size": BalProps.BalButtonSize;
         "state": AccordionState;
     }
     interface BalApp {
@@ -608,6 +616,7 @@ export namespace Components {
         "verticalOnMobile": boolean;
     }
     interface BalClose {
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * If `true` it supports dark backgrounds.
          */
@@ -708,6 +717,10 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading": boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -788,6 +801,7 @@ export namespace Components {
         "logEvents": boolean;
         "logLifecycle": boolean;
         "logRender": boolean;
+        "stickyFooter": boolean;
     }
     interface BalDocBanner {
         "color": string;
@@ -911,11 +925,11 @@ export namespace Components {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft": string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight": string;
         /**
@@ -1460,6 +1474,10 @@ export namespace Components {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * When true, the text will is able to break on multiple lines.
+         */
+        "multiline": boolean;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
          */
@@ -2312,6 +2330,10 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "filter": BalProps.BalSelectFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo": boolean;
         /**
           * Sets the focus on the input element
          */
@@ -4232,6 +4254,10 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * The color to use from your application's color palette.
+         */
+        "color"?: BalProps.BalButtonColor;
+        /**
           * BalIcon of the open trigger button
          */
         "openIcon"?: string;
@@ -4239,6 +4265,10 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+        /**
+          * Size of the button
+         */
+        "size"?: BalProps.BalButtonSize;
         "state"?: AccordionState;
     }
     interface BalApp {
@@ -4878,6 +4908,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Defines if the select is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
         "max"?: string;
@@ -4966,6 +5000,7 @@ declare namespace LocalJSX {
         "logEvents"?: boolean;
         "logLifecycle"?: boolean;
         "logRender"?: boolean;
+        "stickyFooter"?: boolean;
     }
     interface BalDocBanner {
         "color"?: string;
@@ -5093,11 +5128,11 @@ declare namespace LocalJSX {
          */
         "expandedOnMobile"?: boolean;
         /**
-          * Baloise icon for the left side of the input
+          * @deprecated Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
         /**
-          * Baloise icon for the right side of the input
+          * @deprecated Baloise icon for the right side of the input
          */
         "iconRight"?: string;
         /**
@@ -5665,6 +5700,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * When true, the text will is able to break on multiple lines.
+         */
+        "multiline"?: boolean;
         /**
           * When true, the text will be truncated with a text overflow ellipsis instead of wrapping. Please note that text overflow can only occur in block or inline-block level elements, as these elements require a width to overflow.
          */
@@ -6542,6 +6581,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "filter"?: BalProps.BalSelectFilter;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */

@@ -15,6 +15,7 @@ export class DocApp implements ComponentInterface {
   @Prop() logEvents = true
   @Prop() logRender = true
   @Prop() logCustom = true
+  @Prop() stickyFooter = false
 
   /**
    * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
@@ -46,7 +47,9 @@ export class DocApp implements ComponentInterface {
     return (
       <Host>
         <bal-app animated={this.animated}>
-          <slot></slot>
+          <div class={{ 'has-sticky-footer': this.stickyFooter }}>
+            <slot></slot>
+          </div>
         </bal-app>
       </Host>
     )

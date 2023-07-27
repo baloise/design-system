@@ -195,35 +195,35 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
    * ------------------------------------------------------
    */
 
-  private onClick = (event: Event) => {
+  private onClick = (ev: Event) => {
     if (this.disabled || this.readonly) {
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
-    const element = event.target as HTMLAnchorElement
+    const element = ev.target as HTMLAnchorElement
     if (element && element.href) {
       return
     }
 
     const radioEl = this.el.querySelector('bal-radio')
-    const targetEl = event.target
+    const targetEl = ev.target
 
     if (radioEl && targetEl) {
       const isCheckbox = targetEl === radioEl || isDescendant(radioEl, targetEl)
       if (!isCheckbox) {
-        stopEventBubbling(event)
+        stopEventBubbling(ev)
         radioEl.click()
       }
     }
   }
 
-  private onFocus = (event: FocusEvent) => {
+  private onFocus = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
     const radioEl = this.el.querySelector('bal-radio')
-    const targetEl = event.target
+    const targetEl = ev.target
 
     if (this.keyboardMode) {
       this.focused = true
@@ -232,7 +232,7 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
     if (radioEl && targetEl) {
       const isCheckbox = targetEl === radioEl || isDescendant(radioEl, targetEl)
       if (isCheckbox) {
-        stopEventBubbling(event)
+        stopEventBubbling(ev)
         radioEl.querySelector('input')?.focus()
       }
     } else {
@@ -240,20 +240,20 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
     }
   }
 
-  private onBlur = (event: FocusEvent) => {
+  private onBlur = (ev: FocusEvent) => {
     if (this.disabled || this.readonly) {
-      return stopEventBubbling(event)
+      return stopEventBubbling(ev)
     }
 
     const radioEl = this.el.querySelector('bal-radio')
-    const targetEl = event.target
+    const targetEl = ev.target
 
     this.focused = false
 
     if (radioEl && targetEl) {
       const isRadio = targetEl === radioEl || isDescendant(radioEl, targetEl)
       if (isRadio) {
-        stopEventBubbling(event)
+        stopEventBubbling(ev)
         radioEl.querySelector('input')?.blur()
       }
     } else {

@@ -1,5 +1,33 @@
 # @baloise/design-system-icons
 
+## 13.6.2
+
+## 13.6.1
+
+## 13.6.0
+
+### Minor Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - add new icons close-circle and map
+
+- [#984](https://github.com/baloise/design-system/pull/984) - hide svg from screen readers
+
+## 13.5.0
+
+## 13.4.4
+
+## 13.4.3
+
+## 13.4.2
+
+## 13.4.1
+
+## 13.4.0
+
+## 13.3.1
+
+## 13.3.0
+
 ## 13.2.1
 
 ## 13.2.0

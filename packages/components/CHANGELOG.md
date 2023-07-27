@@ -1,5 +1,213 @@
 # @baloise/design-system-components
 
+## 13.6.2
+
+### Patch Changes
+
+- [#995](https://github.com/baloise/design-system/pull/995) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.2
+  - @baloise/design-system-fonts@13.6.2
+  - @baloise/design-system-icons@13.6.2
+  - @baloise/design-system-tokens@13.6.2
+
+## 13.6.1
+
+### Patch Changes
+
+- [#990](https://github.com/baloise/design-system/pull/990) - add a11y labels to close component
+
+- [#993](https://github.com/baloise/design-system/pull/993) - radio and checkbox groups update children on runtime
+
+- [#988](https://github.com/baloise/design-system/pull/988) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.1
+  - @baloise/design-system-fonts@13.6.1
+  - @baloise/design-system-icons@13.6.1
+  - @baloise/design-system-tokens@13.6.1
+
+## 13.6.0
+
+### Minor Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - hide svg from screen readers
+
+- [#976](https://github.com/baloise/design-system/pull/976) - add new tertiary button with a themed option
+
+### Patch Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - add role progressbar to spinner
+
+- Updated dependencies [[`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f)]:
+  - @baloise/design-system-icons@13.6.0
+  - @baloise/design-system-css@13.6.0
+  - @baloise/design-system-fonts@13.6.0
+  - @baloise/design-system-tokens@13.6.0
+
+## 13.5.0
+
+### Minor Changes
+
+- [#958](https://github.com/baloise/design-system/pull/958) - accordion trigger accepts color and size to set for the button
+
+### Patch Changes
+
+- [#958](https://github.com/baloise/design-system/pull/958) - accordion sets initial active state
+
+- [#959](https://github.com/baloise/design-system/pull/959) - list title and subtitle have text align left
+
+- [#960](https://github.com/baloise/design-system/pull/960) - select validates after blur on button and input
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.5.0
+  - @baloise/design-system-fonts@13.5.0
+  - @baloise/design-system-icons@13.5.0
+  - @baloise/design-system-tokens@13.5.0
+
+## 13.4.4
+
+### Patch Changes
+
+- [#936](https://github.com/baloise/design-system/pull/936) - enable bal-steps item state to be changed dynamically during component life
+
+- [#938](https://github.com/baloise/design-system/pull/938) - number-inputs attribute pattern no longer shows undefined
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.4
+  - @baloise/design-system-fonts@13.4.4
+  - @baloise/design-system-icons@13.4.4
+  - @baloise/design-system-tokens@13.4.4
+
+## 13.4.3
+
+### Patch Changes
+
+- [#927](https://github.com/baloise/design-system/pull/927) - create unique ids for tab items
+
+- [#920](https://github.com/baloise/design-system/pull/920) - handle ResizeObserver callback inside a AnimationFrame
+
+- [#922](https://github.com/baloise/design-system/pull/922) - rename event to ev to prevent reference errors
+
+- [#927](https://github.com/baloise/design-system/pull/927) - pass alt tag to stage-image and carousel image
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.3
+  - @baloise/design-system-fonts@13.4.3
+  - @baloise/design-system-icons@13.4.3
+  - @baloise/design-system-tokens@13.4.3
+
+## 13.4.2
+
+### Patch Changes
+
+- [#916](https://github.com/baloise/design-system/pull/916) - check if window is defined
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.2
+  - @baloise/design-system-fonts@13.4.2
+  - @baloise/design-system-icons@13.4.2
+  - @baloise/design-system-tokens@13.4.2
+
+## 13.4.1
+
+### Patch Changes
+
+- [#912](https://github.com/baloise/design-system/pull/912) - fix steps carousel option for mobile breakpoint
+
+- [#913](https://github.com/baloise/design-system/pull/913) - fix label overflow on vertical tabs
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.1
+  - @baloise/design-system-fonts@13.4.1
+  - @baloise/design-system-icons@13.4.1
+  - @baloise/design-system-tokens@13.4.1
+
+## 13.4.0
+
+### Minor Changes
+
+- [#897](https://github.com/baloise/design-system/pull/897) - add free-solo variant to bal-select. hides trigger icon
+
+### Patch Changes
+
+- [#899](https://github.com/baloise/design-system/pull/899) - fix bal-close state background colors and remove unnecessary customization variables
+
+- [#897](https://github.com/baloise/design-system/pull/897) - fix loading state for datepicker and select
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.4.0
+  - @baloise/design-system-fonts@13.4.0
+  - @baloise/design-system-icons@13.4.0
+  - @baloise/design-system-tokens@13.4.0
+
+## 13.3.1
+
+### Patch Changes
+
+- [#891](https://github.com/baloise/design-system/pull/891) - border of the vertical tabs will not be 100% height and content stretches to the whole width.
+
+- [#892](https://github.com/baloise/design-system/pull/892) - heading content can break in bal-file-upload
+
+- [#889](https://github.com/baloise/design-system/pull/889) - label content can break
+
+- [#887](https://github.com/baloise/design-system/pull/887) - carousel uses computed width instead of rounded client width
+
+- [#885](https://github.com/baloise/design-system/pull/885) - fix carousel resize listener, improves tabs overflow option.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.3.1
+  - @baloise/design-system-fonts@13.3.1
+  - @baloise/design-system-icons@13.3.1
+  - @baloise/design-system-tokens@13.3.1
+
+## 13.3.0
+
+### Minor Changes
+
+- [#834](https://github.com/baloise/design-system/pull/834) - add new css variables for theming to components and css-framework
+
+  - bal-card
+  - bal-radio
+  - bal-checkbox
+  - bal-navbar
+  - bal-tag
+  - bal-time-input
+  - bal-button
+  - bal-text
+  - bal-heading
+  - bal-label
+  - bal-datepicker
+  - bal-modal
+  - bal-hint
+  - bal-divider
+  - bal-sheet
+  - bal-select
+  - bal-carousel
+  - bal-data
+  - bal-list
+  - bal-popover
+  - bal-stage
+  - bal-footer
+  - bal-pagination
+  - bal-close
+  - bal-steps
+  - bal-tabs
+  - bal-toast
+  - bal-snackbar
+  - bal-notification
+
+### Patch Changes
+
+- [#849](https://github.com/baloise/design-system/pull/849) - improved performance of the utils
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.3.0
+  - @baloise/design-system-fonts@13.3.0
+  - @baloise/design-system-icons@13.3.0
+  - @baloise/design-system-tokens@13.3.0
+
 ## 13.2.1
 
 ### Patch Changes

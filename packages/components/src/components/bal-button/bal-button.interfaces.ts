@@ -7,16 +7,22 @@ namespace BalProps {
   export type BalButtonGroupPosition = 'right' | 'center' | ''
   export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
   export type BalButtonColor =
-    | 'text'
     | 'primary'
-    | 'info'
+    | 'secondary'
+    | 'tertiary'
+    | 'tertiary-purple'
+    | 'tertiary-red'
+    | 'tertiary-yellow'
+    | 'tertiary-green'
+    | 'link'
+    | 'light'
     | 'success'
     | 'warning'
     | 'danger'
-    | 'link'
-    | 'light'
-    | 'primary-light'
-    | 'info-light'
+    | 'text' // deprecated
+    | 'info' // deprecated
+    | 'primary-light' // deprecated
+    | 'info-light' // deprecated
   export type BalButtonElementType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'

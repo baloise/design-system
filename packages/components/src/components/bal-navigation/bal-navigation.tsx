@@ -4,6 +4,7 @@ import { BEM } from '../../utils/bem'
 import { balDevice } from '../../utils/device'
 import { BalScrollHandler } from '../../utils/scroll'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-navigation',
@@ -53,16 +54,16 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   @Prop() metaValue?: string
 
   @Listen('click', { target: 'document' })
-  async clickOnOutside(event: UIEvent) {
+  async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
-      if (!this.mainNavElement?.contains(event.target as Node) && this.isMainBodyOpen) {
+      if (!this.mainNavElement?.contains(ev.target as Node) && this.isMainBodyOpen) {
         this.isMainBodyOpen = false
         this.selectedMainValue = ''
       }
     }
 
     if (this.isTouch) {
-      if (this.metaMobileActionsElement?.contains(event.target as Node)) {
+      if (this.metaMobileActionsElement?.contains(ev.target as Node)) {
         this.isMainBodyOpen = false
       }
     }
@@ -98,7 +99,7 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
 
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
-    if (this.isDesktop && !this.bodyScrollBlocker.isDisabled()) {
+    if (this.isDesktop && !this.bodyScrollBlocker.isDisabled() && balBrowser.hasWindow) {
       const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
@@ -129,7 +130,9 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   }
 
   componentDidLoad() {
-    this.previousY = window.scrollY
+    if (balBrowser.hasWindow) {
+      this.previousY = window.scrollY
+    }
     this.mainMobileHeight = this.getMaxHeight()
 
     this.metaMobileActionsElement?.addEventListener('balChange', this.listenToPopoverChangeEvent)
@@ -142,8 +145,8 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
 
   bodyOffset = 0
 
-  private listenToPopoverChangeEvent = async (event: Event) => {
-    const customEvent = event as BalEvents.BalPopoverChange
+  private listenToPopoverChangeEvent = async (ev: Event) => {
+    const customEvent = ev as BalEvents.BalPopoverChange
     const isNavPopoverOpen = customEvent.detail
 
     if (isNavPopoverOpen) {
@@ -173,7 +176,10 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
   }
 
   private getMaxHeight() {
-    return `${(window.innerHeight - 64) / 16}rem`
+    if (balBrowser.hasWindow) {
+      return `${(window.innerHeight - 64) / 16}rem`
+    }
+    return '0'
   }
 
   private dismissPopover() {
@@ -193,9 +199,9 @@ export class Navigation implements ComponentInterface, BalBreakpointObserver {
     }
   }
 
-  onMainTabChange = async (event: BalEvents.BalTabsChange) => {
-    const isMainNavOpen = event.detail !== ''
-    const option = await this.mainNavTabsEl?.getOptionByValue(event.detail as any)
+  onMainTabChange = async (ev: BalEvents.BalTabsChange) => {
+    const isMainNavOpen = ev.detail !== ''
+    const option = await this.mainNavTabsEl?.getOptionByValue(ev.detail as any)
     const isLink = option?.href !== '' && option?.href !== undefined
 
     if (balDevice.hasTouchScreen) {

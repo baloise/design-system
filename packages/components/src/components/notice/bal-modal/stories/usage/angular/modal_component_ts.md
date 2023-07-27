@@ -1,12 +1,12 @@
 ```ts
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
-import { BalButtonModule, BalModalModule, BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/design-system-components-angular'
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   standalone: true,
-  imports: [BalModalModule, BalButtonModule],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

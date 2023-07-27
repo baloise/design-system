@@ -23,11 +23,7 @@ import { Basic } from './bal-button.stories'
       Go to playground (Canvas)
     </a>
     <bal-doc-code-sandbox framework="angular" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
-    <bal-doc-code-sandbox
-      framework="html"
-      template={Basic.parameters.docs.source.code}
-      modules="button"
-    ></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="html" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
   </bal-button-group>
 </bal-doc-app>
 
@@ -36,6 +32,10 @@ import { Basic } from './bal-button.stories'
 <span id="story--components-button--button-variants" style={{ opacity: 0 }}></span>
 
 ### Variants
+
+Buttons are available in four main levels: **primary**, **secondary**, **tertiary**, and **link**. The primary level is specifically designed for prominent call-to-action elements.
+Tertiary buttons can be customized with branding colors to align with the overall theme. However, it's important to note that themed tertiary buttons
+are not suitable for use on non-white backgrounds.
 
 <Canvas>
   <Story id="components-button--button-variants" />
