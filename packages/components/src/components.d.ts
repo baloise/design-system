@@ -681,6 +681,8 @@ export namespace Components {
          */
         "multiline": boolean;
     }
+    interface BalDate {
+    }
     interface BalDateCalendar {
         /**
           * Callback to determine which date in the datepicker should be selectable.
@@ -3425,6 +3427,12 @@ declare global {
         prototype: HTMLBalDataValueElement;
         new (): HTMLBalDataValueElement;
     };
+    interface HTMLBalDateElement extends Components.BalDate, HTMLStencilElement {
+    }
+    var HTMLBalDateElement: {
+        prototype: HTMLBalDateElement;
+        new (): HTMLBalDateElement;
+    };
     interface HTMLBalDateCalendarElement extends Components.BalDateCalendar, HTMLStencilElement {
     }
     var HTMLBalDateCalendarElement: {
@@ -4171,6 +4179,7 @@ declare global {
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
+        "bal-date": HTMLBalDateElement;
         "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
         "bal-datepicker": HTMLBalDatepickerElement;
@@ -4988,6 +4997,8 @@ declare namespace LocalJSX {
           * Emitted when the edit button has focus.
          */
         "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
+    }
+    interface BalDate {
     }
     interface BalDateCalendar {
         /**
@@ -7533,6 +7544,7 @@ declare namespace LocalJSX {
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
+        "bal-date": BalDate;
         "bal-date-calendar": BalDateCalendar;
         "bal-date-calendar-cell": BalDateCalendarCell;
         "bal-datepicker": BalDatepicker;
@@ -7684,6 +7696,7 @@ declare module "@stencil/core" {
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
+            "bal-date": LocalJSX.BalDate & JSXBase.HTMLAttributes<HTMLBalDateElement>;
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;

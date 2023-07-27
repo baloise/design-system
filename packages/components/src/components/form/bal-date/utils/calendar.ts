@@ -12,6 +12,12 @@ export function getDaysInMonth(year: number, month: number): number | undefined 
   return new Date(year, month, 0).getDate()
 }
 
+export interface ListItem {
+  value: number
+  label: string
+  disabled?: boolean
+}
+
 export interface DayCell {
   day: number
   month: number
@@ -116,15 +122,65 @@ export function validateLanguage(language: string): keyof I18n<I18nDate> {
   return 'de'
 }
 
+// Function to generate the year list for the selection
+export function generateYears(minYear: number, maxYear: number): ListItem[] {
+  const list: ListItem[] = []
+  for (let year = minYear; year <= maxYear; year++) {
+    list.push({
+      value: year,
+      label: `${year}`,
+      disabled: false,
+    })
+  }
+  return list
+}
+
+// Function to generate the month list for the selection
+export function generateMonths(
+  language: keyof I18n<I18nDate>,
+  currentYear?: number,
+  min?: string,
+  max?: string,
+): ListItem[] {
+  const locale = validateLanguage(language)
+  const months = BalDate.infoMonths({ format: 'long', locale })
+
+  let minMonth = 0
+  if (min && currentYear !== undefined) {
+    const minDate = BalDate.fromISO(min)
+    if (minDate.isValid) {
+      if (currentYear > (minDate.year as number)) {
+        minMonth = 12
+      } else {
+        minMonth = minDate.month || minMonth
+      }
+    }
+  }
+
+  let maxMonth = 12
+  if (max && currentYear !== undefined) {
+    const maxDate = BalDate.fromISO(max)
+    if (maxDate.isValid) {
+      if (currentYear < (maxDate.year as number)) {
+        maxMonth = 0
+      } else {
+        maxMonth = maxDate.month || maxMonth
+      }
+    }
+  }
+
+  return months.map((label, index) => ({
+    label,
+    value: index + 1,
+    disabled: index < minMonth - 1 || index > maxMonth - 1,
+  }))
+}
+
 // Function to generate the weekday header row with the label and the content
 export function generateWeekDays(language: keyof I18n<I18nDate>): WeekdayCell[] {
   const locale = validateLanguage(language)
-  const weekdaysMin = [...i18nDate[locale].weekdaysMin]
-  const weekdays = [...i18nDate[locale].weekdays]
-
-  // Start the week on mondays instead of sundays
-  weekdaysMin.push(weekdaysMin.shift() || '')
-  weekdays.push(weekdays.shift() || '')
+  const weekdaysMin = BalDate.infoWeekdays({ format: 'short', locale })
+  const weekdays = BalDate.infoWeekdays({ format: 'long', locale })
 
   return weekdaysMin.map((weekdayMin, index) => ({
     ariaLabel: weekdays[index],

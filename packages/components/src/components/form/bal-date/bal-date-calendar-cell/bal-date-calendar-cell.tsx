@@ -53,7 +53,7 @@ export class DateCalendar implements ComponentInterface {
           ...block.class(),
           ...block.modifier('today').class(!this.disabled && this.today),
           ...block.modifier('selected').class(!this.disabled && this.selected),
-          ...block.modifier('disabled').class(this.disabled),
+          ...block.modifier('disabled').class(this.disabled === true),
         }}
         tabIndex={-1}
         type="button"

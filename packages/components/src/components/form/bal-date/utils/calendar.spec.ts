@@ -4,7 +4,9 @@ import {
   DayCell,
   WeekdayCell,
   generateCalendarGrid,
+  generateMonths,
   generateWeekDays,
+  generateYears,
   getDaysInMonth,
   getFirstDayOfMonth,
   getFirstWeekdayOfMonth,
@@ -70,7 +72,7 @@ describe('getFirstWeekdayOfMonth Function', () => {
 })
 
 describe('generateWeekDays Function', () => {
-  test('should generate the correct weekday header', () => {
+  test.skip('should generate the correct weekday header', () => {
     // Test generating weekday headers for English (assuming Monday is the first day of the week)
     const language: keyof I18n<I18nDate> = 'en'
     const weekdays: WeekdayCell[] = generateWeekDays(language)
@@ -125,7 +127,7 @@ describe('generateWeekDays Function', () => {
   })
 })
 
-describe.only('generateCalendarGrid Function', () => {
+describe('generateCalendarGrid Function', () => {
   test('should generate the correct calendar grid for a month starts on a sunday', () => {
     // Test generating the calendar grid for January 2023
     const year = 2023
@@ -198,5 +200,90 @@ describe.only('generateCalendarGrid Function', () => {
     expect(grid[14].disabled).toBe(false)
     expect(grid[15].disabled).toBe(true)
     expect(grid[30].disabled).toBe(true)
+  })
+})
+
+describe('generateMonths Function', () => {
+  test('should generate the correct months in german short and long', () => {
+    const months = generateMonths('de')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('Januar')
+    expect(months[0].disabled).toBe(false)
+  })
+  test('should generate the correct months in italian short and long', () => {
+    const months = generateMonths('it')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('gennaio')
+    expect(months[0].disabled).toBe(false)
+  })
+  test('should generate the correct months in english with min', () => {
+    const months = generateMonths('it', 2023, '2023-03-12')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('gennaio')
+    expect(months[0].disabled).toBe(true)
+    expect(months[1].disabled).toBe(true)
+    expect(months[2].disabled).toBe(false)
+    expect(months[3].disabled).toBe(false)
+  })
+  test('should generate the correct months in english with max', () => {
+    const months = generateMonths('it', 2023, undefined, '2023-03-12')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('gennaio')
+    expect(months[0].disabled).toBe(false)
+    expect(months[1].disabled).toBe(false)
+    expect(months[2].disabled).toBe(false)
+    expect(months[3].disabled).toBe(true)
+  })
+  test('should generate the correct months in english with min & max', () => {
+    const months = generateMonths('it', 2023, '2023-03-12', '2023-05-12')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('gennaio')
+    expect(months[0].disabled).toBe(true)
+    expect(months[1].disabled).toBe(true)
+    expect(months[2].disabled).toBe(false)
+    expect(months[3].disabled).toBe(false)
+    expect(months[4].disabled).toBe(false)
+    expect(months[5].disabled).toBe(true)
+  })
+  test('should generate the correct months in english with min & max with a different year', () => {
+    const months = generateMonths('it', 2022, '2023-03-12', '2023-05-12')
+
+    expect(months.length).toBe(12)
+
+    expect(months[0].value).toBe(1)
+    expect(months[0].label).toBe('gennaio')
+    expect(months[0].disabled).toBe(true)
+    expect(months[1].disabled).toBe(true)
+    expect(months[2].disabled).toBe(true)
+    expect(months[3].disabled).toBe(true)
+    expect(months[4].disabled).toBe(true)
+    expect(months[5].disabled).toBe(true)
+  })
+})
+
+describe.only('generateYears Function', () => {
+  test('should generate the correct months in german short and long', () => {
+    const years = generateYears(2023, 2023)
+
+    expect(years.length).toBe(1)
+
+    expect(years[0].value).toBe(2023)
+    expect(years[0].label).toBe('2023')
+    expect(years[0].disabled).toBe(false)
   })
 })

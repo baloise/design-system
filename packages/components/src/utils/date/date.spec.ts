@@ -8,6 +8,54 @@ describe('balDate', () => {
     date = BalDate.fromISO('2001-02-01')
   })
   describe('static', () => {
+    describe('infoMonths', () => {
+      test('should print german months long', () => {
+        const months = BalDate.infoMonths({ locale: 'de-CH' })
+        expect(months).toHaveLength(12)
+        expect(months[0]).toBe('Januar')
+      })
+      test('should print german months short', () => {
+        const months = BalDate.infoMonths({ locale: 'de-CH', format: 'short' })
+        expect(months).toHaveLength(12)
+        expect(months[0]).toBe('Jan')
+      })
+      test('should print other languages months long', () => {
+        expect(BalDate.infoMonths({ locale: 'en' })[0]).toBe('January')
+        expect(BalDate.infoMonths({ locale: 'fr' })[0]).toBe('janvier')
+        expect(BalDate.infoMonths({ locale: 'it' })[0]).toBe('gennaio')
+        expect(BalDate.infoMonths({ locale: 'nl' })[0]).toBe('januari')
+        expect(BalDate.infoMonths({ locale: 'es' })[0]).toBe('enero')
+        expect(BalDate.infoMonths({ locale: 'pl' })[0]).toBe('styczeń')
+        expect(BalDate.infoMonths({ locale: 'pt' })[0]).toBe('janeiro')
+        expect(BalDate.infoMonths({ locale: 'sv' })[0]).toBe('januari')
+        expect(BalDate.infoMonths({ locale: 'fi' })[0]).toBe('tammikuu')
+      })
+    })
+
+    describe('infoWeekdays', () => {
+      test('should print german weekdays long', () => {
+        const weekdays = BalDate.infoWeekdays({ locale: 'de-CH' })
+        expect(weekdays).toHaveLength(7)
+        expect(weekdays[0]).toBe('Montag')
+      })
+      test('should print german weekdays short', () => {
+        const weekdays = BalDate.infoWeekdays({ locale: 'de-CH', format: 'short' })
+        expect(weekdays).toHaveLength(7)
+        expect(weekdays[0]).toBe('Mo')
+      })
+      test('should print other languages weekdays long', () => {
+        expect(BalDate.infoWeekdays({ locale: 'en' })[0]).toBe('Monday')
+        expect(BalDate.infoWeekdays({ locale: 'fr' })[0]).toBe('lundi')
+        expect(BalDate.infoWeekdays({ locale: 'it' })[0]).toBe('lunedì')
+        expect(BalDate.infoWeekdays({ locale: 'nl' })[0]).toBe('maandag')
+        expect(BalDate.infoWeekdays({ locale: 'es' })[0]).toBe('lunes')
+        expect(BalDate.infoWeekdays({ locale: 'pl' })[0]).toBe('poniedziałek')
+        expect(BalDate.infoWeekdays({ locale: 'pt' })[0]).toBe('segunda-feira')
+        expect(BalDate.infoWeekdays({ locale: 'sv' })[0]).toBe('måndag')
+        expect(BalDate.infoWeekdays({ locale: 'fi' })[0]).toBe('maanantai')
+      })
+    })
+
     describe('fromAnyFormat', () => {
       test('should parse all supported formats with separator', () => {
         expect(BalDate.fromAnyFormat('20.02.1988').toISODate()).toStrictEqual('1988-02-20')

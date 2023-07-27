@@ -11,13 +11,24 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core'
-import { DayCell, WeekdayCell, generateCalendarGrid, generateWeekDays, getFirstWeekdayOfMonth } from '../utils/calendar'
+import {
+  DayCell,
+  ListItem,
+  WeekdayCell,
+  generateCalendarGrid,
+  generateMonths,
+  generateWeekDays,
+  generateYears,
+  getFirstWeekdayOfMonth,
+} from '../utils/calendar'
 import { BalDate } from '../../../../utils/date'
 import { LogInstance, Loggable, Logger } from '../../../../utils/log'
 import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../../utils/config'
 import { i18nDate } from '../bal-date.i18n'
 import { waitAfterFramePaint } from '../../../../utils/helpers'
 import { BEM } from '../../../../utils/bem'
+import { SelectionList } from './components/selection-list'
+import { Grid } from './components/gird'
 
 @Component({
   tag: 'bal-date-calendar',
@@ -32,6 +43,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
 
   @State() selectedDate = ''
   @State() weekdays: WeekdayCell[] = []
+  @State() months: ListItem[] = []
+  @State() years: ListItem[] = []
   @State() calendarGrid: DayCell[] = []
   @State() firstDayOfWeek = 0
   @State() month = 0
@@ -101,6 +114,13 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
    */
   @Prop({ mutable: true }) max?: string
 
+  @Watch('min')
+  @Watch('max')
+  rangePropChanged() {
+    this.months = generateMonths(this.language, this.year, this.min, this.max)
+    this.years = generateYears(this.minYear, this.maxYear)
+  }
+
   /**
    * Earliest year available for selection
    */
@@ -110,6 +130,12 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
    * Latest year available for selection
    */
   @Prop({ attribute: 'max-year' }) maxYearProp?: number
+
+  @Watch('minYearProp')
+  @Watch('maxYearProp')
+  yearRangePropChanged() {
+    this.years = generateYears(this.minYear, this.maxYear)
+  }
 
   /**
    * Emitted when a option got selected.
@@ -136,7 +162,10 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Method()
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
+    this.years = generateYears(this.minYear, this.maxYear)
+    this.months = generateMonths(state.language, this.year, this.min, this.max)
     this.weekdays = generateWeekDays(state.language)
+    console.log('this.weekdays', this.weekdays)
     this.language = state.language
   }
 
@@ -175,19 +204,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
       }
     }
     return this.maxYearProp
-  }
-
-  private get yearList(): number[] {
-    const list: number[] = []
-    for (let year = this.minYear; year <= this.maxYear; year++) {
-      list.push(year)
-    }
-    return list
-  }
-
-  private get monthList(): { value: number; label: string }[] {
-    const months = [...i18nDate[this.language].months]
-    return months.map((label, index) => ({ label, value: index + 1 }))
   }
 
   /**
@@ -230,8 +246,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
    * ------------------------------------------------------
    */
 
-  private onClick = ({ detail }: BalEvents.BalDateCellSelect): void => {
-    this.valueChanged(detail, this.selectedDate)
+  private onSelectDay = (isoDate: string | undefined): void => {
+    this.valueChanged(isoDate, this.selectedDate)
     this.balChange.emit(this.selectedDate)
   }
 
@@ -257,6 +273,11 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
 
   private onClickSelectMonthAndYear = async (_ev: MouseEvent) => {
     if (this.isCalendarVisible === true) {
+      // if (this.years.length < 2) {
+      //   this.isCalendarVisible = false
+      //   this.isYearListVisible = false
+      //   this.isMonthListVisible = true
+      // } else {
       this.isCalendarVisible = false
       this.isYearListVisible = true
       this.isMonthListVisible = false
@@ -269,6 +290,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           const rowHeight = 26 + 8 + 4
           this.yearListEl.scrollTop = selectedYearEl.offsetTop - rowHeight * 2
         }
+        // }
       }
     } else {
       this.isCalendarVisible = true
@@ -309,8 +331,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     const block = BEM.block('date-calendar')
     const blockNav = block.element('nav')
     const blockBody = block.element('body')
-    const blockBodyGrid = blockBody.element('grid')
-    const blockBodyList = blockBody.element('list')
     const blockFoot = block.element('foot')
 
     return (
@@ -328,9 +348,9 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             <button
               title={selectMonthLabel}
               aria-label={selectMonthLabel}
-              onClick={this.onClickSelectMonthAndYear}
-              data-test="change-year-month"
               tabIndex={-1}
+              data-test="change-year-month"
+              onClick={this.onClickSelectMonthAndYear}
             >
               <span>
                 {monthFullNames[this.month - 1]} {this.year}
@@ -369,37 +389,35 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             ...blockBody.class(),
           }}
         >
-          <div
-            role="grid"
-            class={{
-              ...blockBodyGrid.class(),
-              ...blockBodyGrid.modifier('visible').class(this.isCalendarVisible),
-            }}
-            aria-hidden={this.isCalendarVisible ? 'false' : 'true'}
+          <Grid
+            isVisible={this.isCalendarVisible}
+            grid={this.calendarGrid}
+            weekdays={this.weekdays}
+            firstDayOfWeek={this.firstDayOfWeek}
+            selectedDate={this.selectedDate}
             ref={el => (this.gridEl = el)}
-          >
-            <div role="row" class={{ ...blockBodyGrid.element('head').class() }}>
-              {this.weekdays.map(weekday => (
-                <span role="columnheader" aria-label={weekday.ariaLabel} title={weekday.ariaLabel}>
-                  {weekday.textContent}
-                </span>
-              ))}
-            </div>
-            <div
-              role="row"
-              class={{ ...blockBodyGrid.element('body').class() }}
-              style={{ '--bal-date-first-week-day': `${this.firstDayOfWeek}` }}
-            >
-              {this.calendarGrid.map(cell => (
-                <bal-date-calendar-cell
-                  {...cell}
-                  selected={cell.isoDate === this.selectedDate}
-                  onBalSelectDay={this.onClick}
-                ></bal-date-calendar-cell>
-              ))}
-            </div>
-          </div>
-          <ul
+            onSelectDay={isoDate => this.onSelectDay(isoDate)}
+          ></Grid>
+          <SelectionList
+            name="year"
+            isVisible={this.isYearListVisible}
+            girdHeight={girdHeight - 2 - 8 - 8}
+            todayValue={todayYear}
+            selectedValue={this.year}
+            list={this.years}
+            ref={el => (this.yearListEl = el)}
+            onSelect={item => this.onClickYear(item.value)}
+          ></SelectionList>
+          <SelectionList
+            name="month"
+            isVisible={this.isMonthListVisible}
+            girdHeight={girdHeight - 2 - 8 - 8}
+            todayValue={todayMonth}
+            selectedValue={this.month}
+            list={this.months}
+            onSelect={item => this.onClickMonth(item.value)}
+          ></SelectionList>
+          {/* <ul
             class={{
               ...blockBodyList.class(),
               ...blockBodyList.modifier('year').class(),
@@ -411,7 +429,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             }}
             ref={el => (this.yearListEl = el)}
           >
-            {this.yearList.map(year => (
+            {this.years.map(year => (
               <li id={`year-${year}`}>
                 <button
                   class={{
@@ -419,21 +437,21 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
                     ...blockBodyList
                       .element('item')
                       .modifier('today')
-                      .class(year === todayYear),
+                      .class(year.value === todayYear),
                     ...blockBodyList
                       .element('item')
                       .modifier('selected')
-                      .class(year === this.year),
+                      .class(year.value === this.year),
                   }}
                   tabIndex={-1}
-                  onClick={() => this.onClickYear(year)}
+                  onClick={() => this.onClickYear(year.value)}
                 >
-                  {year}
+                  {year.label}
                 </button>
               </li>
             ))}
-          </ul>
-          <ul
+          </ul> */}
+          {/* <ul
             class={{
               ...blockBodyList.class(),
               ...blockBodyList.modifier('month').class(),
@@ -444,7 +462,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
               height: `${girdHeight - 2 - 8 - 8}px`,
             }}
           >
-            {this.monthList.map(month => (
+            {this.months.map(month => (
               <li id={`month-${month.value}`}>
                 <button
                   class={{
@@ -465,7 +483,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
                 </button>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
         <div
           class={{

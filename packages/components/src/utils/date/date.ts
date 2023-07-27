@@ -1,7 +1,11 @@
-import { DateTime } from 'luxon'
+import { DateTime, Info } from 'luxon'
 import { useBalConfig } from '../config'
 import { dateSeparator } from '@baloise/web-app-utils'
 
+export interface BalDateInfoOptions {
+  format?: 'narrow' | 'short' | 'long'
+  locale?: string
+}
 export class BalDate {
   public static fromAnyFormat(value: string) {
     const separator = value.replace(/[0-9]/g, '').charAt(0)
@@ -44,6 +48,18 @@ export class BalDate {
 
   public static fromISO(value: string | undefined) {
     return new BalDate(DateTime.fromISO(value || ''))
+  }
+
+  public static infoMonths({ format, locale }: BalDateInfoOptions = {}) {
+    const config = useBalConfig()
+    return Info.months(format || 'long', { locale: locale || config?.locale || 'de-CH' })
+  }
+
+  public static infoWeekdays({ format, locale }: BalDateInfoOptions = {}) {
+    const config = useBalConfig()
+    const weekdays = Info.weekdays(format, { locale: locale || config?.locale || 'de-CH' })
+    console.log('weekdays', weekdays)
+    return weekdays
   }
 
   constructor(private dt: DateTime) {}

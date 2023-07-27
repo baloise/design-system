@@ -6,7 +6,7 @@
   justify-content: center
   align-items: center
   cursor: pointer
-  border-radius: var(--bal-radius-rounded)
+  border-radius: var(--bal-radius-normal)
   font-family: var(--bal-font-family-text)
   font-weight: var(--bal-weight-regular)
   color: var(--bal-color-text-primary)
@@ -23,7 +23,7 @@
         background: var(--bal-color-light-blue-1)
     &:active
       background: var(--bal-color-light-blue-2)
-  &--today:not(&--selected)
+  &--today:not(&--selected):not(&--disabled)
     color: var(--bal-color-light-blue-3)
     font-weight: var(--bal-weight-bold)
     +hover
