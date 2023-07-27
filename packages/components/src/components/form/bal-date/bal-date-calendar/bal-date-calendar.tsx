@@ -29,13 +29,15 @@ import { waitAfterFramePaint } from '../../../../utils/helpers'
 import { BEM } from '../../../../utils/bem'
 import { SelectionList } from './components/selection-list'
 import { Grid } from './components/gird'
+import { BalSwipeInfo, BalSwipeObserver } from '../../../../interfaces'
+import { ListenToSwipe } from '../../../../utils/swipe'
 
 @Component({
   tag: 'bal-date-calendar',
   styleUrl: 'bal-date-calendar.sass',
   shadow: true,
 })
-export class DateCalendar implements ComponentInterface, Loggable, BalConfigObserver {
+export class DateCalendar implements ComponentInterface, Loggable, BalConfigObserver, BalSwipeObserver {
   private yearListEl: HTMLUListElement | undefined
   private gridEl: HTMLDivElement | undefined
 
@@ -165,8 +167,16 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.years = generateYears(this.minYear, this.maxYear)
     this.months = generateMonths(state.language, this.year, this.min, this.max)
     this.weekdays = generateWeekDays(state.language)
-    console.log('this.weekdays', this.weekdays)
     this.language = state.language
+  }
+
+  @ListenToSwipe()
+  swipeListener({ left, right }: BalSwipeInfo) {
+    if (left) {
+      this.onClickNextMonth()
+    } else if (right) {
+      this.onClickPreviousMonth()
+    }
   }
 
   /**
@@ -251,7 +261,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.balChange.emit(this.selectedDate)
   }
 
-  private onClickNextMonth = (_ev: MouseEvent): void => {
+  private onClickNextMonth = (): void => {
     let nextYear = this.year
     let nextMonth = this.month + 1
     if (nextMonth > 12) {
@@ -261,7 +271,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.generateGridByMonthAndYear(nextMonth, nextYear)
   }
 
-  private onClickPreviousMonth = (_ev: MouseEvent): void => {
+  private onClickPreviousMonth = (): void => {
     let nextYear = this.year
     let nextMonth = this.month - 1
     if (nextMonth < 1) {
@@ -271,13 +281,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.generateGridByMonthAndYear(nextMonth, nextYear)
   }
 
-  private onClickSelectMonthAndYear = async (_ev: MouseEvent) => {
+  private onClickSelectMonthAndYear = async () => {
     if (this.isCalendarVisible === true) {
-      // if (this.years.length < 2) {
-      //   this.isCalendarVisible = false
-      //   this.isYearListVisible = false
-      //   this.isMonthListVisible = true
-      // } else {
       this.isCalendarVisible = false
       this.isYearListVisible = true
       this.isMonthListVisible = false
@@ -290,7 +295,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           const rowHeight = 26 + 8 + 4
           this.yearListEl.scrollTop = selectedYearEl.offsetTop - rowHeight * 2
         }
-        // }
       }
     } else {
       this.isCalendarVisible = true

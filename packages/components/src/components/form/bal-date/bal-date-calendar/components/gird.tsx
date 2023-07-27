@@ -25,8 +25,6 @@ export const Grid: FunctionalComponent<GridProps> = ({
   const blockBody = block.element('body')
   const blockBodyGrid = blockBody.element('grid')
 
-  console.log('grid weekdays', weekdays)
-
   return (
     <div
       role="grid"
