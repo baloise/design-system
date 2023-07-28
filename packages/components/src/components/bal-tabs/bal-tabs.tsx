@@ -342,11 +342,6 @@ export class Tabs
     if (activeTabs.length > 0) {
       const firstActiveTab = activeTabs[0]
       this.value = firstActiveTab.value
-    } else {
-      if (!this.accordion && this.value === undefined && this.store.length > 0) {
-        const firstStep = this.store[0]
-        this.value = firstStep.value
-      }
     }
   }
 
