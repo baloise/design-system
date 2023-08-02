@@ -40,7 +40,7 @@ describe('BalDateCalendarCell Component', () => {
     cy.get('@balChange').shouldHaveEventDetail('2021-10-21')
   })
 
-  it.only('select a date with the next arrow navigation', () => {
+  it('select a date with the next arrow navigation', () => {
     onBalChangeSpy = cy.spy().as('balChange')
     cy.mount(BalDateCalendar, {
       props: {
@@ -57,7 +57,7 @@ describe('BalDateCalendarCell Component', () => {
     cy.get('@balChange').shouldHaveEventDetail('2023-02-21')
   })
 
-  it.only('select a date with the previous arrow navigation', () => {
+  it('select a date with the previous arrow navigation', () => {
     onBalChangeSpy = cy.spy().as('balChange')
     cy.mount(BalDateCalendar, {
       props: {

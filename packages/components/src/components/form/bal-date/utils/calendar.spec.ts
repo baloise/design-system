@@ -72,7 +72,7 @@ describe('getFirstWeekdayOfMonth Function', () => {
 })
 
 describe('generateWeekDays Function', () => {
-  test.skip('should generate the correct weekday header', () => {
+  test('should generate the correct weekday header', () => {
     // Test generating weekday headers for English (assuming Monday is the first day of the week)
     const language: keyof I18n<I18nDate> = 'en'
     const weekdays: WeekdayCell[] = generateWeekDays(language)
@@ -81,13 +81,13 @@ describe('generateWeekDays Function', () => {
     expect(weekdays.length).toBe(7) // There should be 7 weekdays
 
     // Assuming Monday is the first day of the week in the "en" locale
-    expect(weekdays[0].textContent).toBe('Mo')
-    expect(weekdays[1].textContent).toBe('Tu')
-    expect(weekdays[2].textContent).toBe('We')
-    expect(weekdays[3].textContent).toBe('Th')
-    expect(weekdays[4].textContent).toBe('Fr')
-    expect(weekdays[5].textContent).toBe('Sa')
-    expect(weekdays[6].textContent).toBe('Su')
+    expect(weekdays[0].textContent).toBe('Mon')
+    expect(weekdays[1].textContent).toBe('Tue')
+    expect(weekdays[2].textContent).toBe('Wed')
+    expect(weekdays[3].textContent).toBe('Thu')
+    expect(weekdays[4].textContent).toBe('Fri')
+    expect(weekdays[5].textContent).toBe('Sat')
+    expect(weekdays[6].textContent).toBe('Sun')
   })
 
   test('should generate the correct weekday header in german', () => {
@@ -276,7 +276,7 @@ describe('generateMonths Function', () => {
   })
 })
 
-describe.only('generateYears Function', () => {
+describe('generateYears Function', () => {
   test('should generate the correct months in german short and long', () => {
     const years = generateYears(2023, 2023)
 
