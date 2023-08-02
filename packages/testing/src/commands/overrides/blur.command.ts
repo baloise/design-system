@@ -16,7 +16,7 @@ import {
   wrapShadowCommand,
 } from '../helpers'
 
-Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options: any) => {
   const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
   const commandShadow = wrapShadowCommand('blur', element, '', $el =>
     originalFn($el, wrapOptions({ ...options, force: true })),
