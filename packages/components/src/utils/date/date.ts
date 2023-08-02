@@ -58,7 +58,6 @@ export class BalDate {
   public static infoWeekdays({ format, locale }: BalDateInfoOptions = {}) {
     const config = useBalConfig()
     const weekdays = Info.weekdays(format, { locale: locale || config?.locale || 'de-CH' })
-    console.log('weekdays', weekdays)
     return weekdays
   }
 

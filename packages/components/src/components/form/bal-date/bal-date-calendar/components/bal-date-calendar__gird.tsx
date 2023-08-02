@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from '@stencil/core'
 import { BEM } from '../../../../../utils/bem'
 import { DayCell, WeekdayCell } from '../../utils/calendar'
 
-export interface GridProps {
+export interface CalendarGridProps {
   isVisible: boolean
   grid: DayCell[]
   weekdays: WeekdayCell[]
@@ -12,7 +12,7 @@ export interface GridProps {
   onSelectDay: (isoDate: string | undefined) => void
 }
 
-export const Grid: FunctionalComponent<GridProps> = ({
+export const CalendarGrid: FunctionalComponent<CalendarGridProps> = ({
   isVisible,
   ref,
   grid,

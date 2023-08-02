@@ -24,13 +24,13 @@ import {
 import { BalDate } from '../../../../utils/date'
 import { LogInstance, Loggable, Logger } from '../../../../utils/log'
 import { BalConfigObserver, BalConfigState, BalLanguage, ListenToConfig, defaultConfig } from '../../../../utils/config'
-import { i18nDate } from '../bal-date.i18n'
 import { waitAfterFramePaint } from '../../../../utils/helpers'
 import { BEM } from '../../../../utils/bem'
-import { SelectionList } from './components/selection-list'
-import { Grid } from './components/gird'
+import { CalendarList } from './components/bal-date-calendar__list'
+import { CalendarGrid } from './components/bal-date-calendar__gird'
 import { BalSwipeInfo, BalSwipeObserver } from '../../../../interfaces'
 import { ListenToSwipe } from '../../../../utils/swipe'
+import { CalendarNav } from './components/bal-date-calendar__nav'
 
 @Component({
   tag: 'bal-date-calendar',
@@ -44,6 +44,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Element() el!: HTMLElement
 
   @State() selectedDate = ''
+  @State() monthFullNames: string[] = []
   @State() weekdays: WeekdayCell[] = []
   @State() months: ListItem[] = []
   @State() years: ListItem[] = []
@@ -167,10 +168,11 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.years = generateYears(this.minYear, this.maxYear)
     this.months = generateMonths(state.language, this.year, this.min, this.max)
     this.weekdays = generateWeekDays(state.language)
+    this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: this.language })
     this.language = state.language
   }
 
-  @ListenToSwipe()
+  @ListenToSwipe({ mobileOnly: true })
   swipeListener({ left, right }: BalSwipeInfo) {
     if (left) {
       this.onClickNextMonth()
@@ -325,15 +327,9 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     const today = new Date()
     const todayYear = today.getFullYear()
     const todayMonth = today.getMonth() + 1
-    const monthFullNames = [...i18nDate[this.language].months]
-    const nextMonthLabel = i18nDate[this.language].nextMonth
-    const previousMonthLabel = i18nDate[this.language].previousMonth
-    const selectMonthLabel = i18nDate[this.language].selectMonth
-
     const girdHeight = this.gridEl?.clientHeight || 0
 
     const block = BEM.block('date-calendar')
-    const blockNav = block.element('nav')
     const blockBody = block.element('body')
     const blockFoot = block.element('foot')
 
@@ -343,57 +339,23 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           ...block.class(),
         }}
       >
-        <div
-          class={{
-            ...blockNav.class(),
-          }}
-        >
-          <div class={{ ...blockNav.modifier('start').class() }}>
-            <button
-              title={selectMonthLabel}
-              aria-label={selectMonthLabel}
-              tabIndex={-1}
-              data-test="change-year-month"
-              onClick={this.onClickSelectMonthAndYear}
-            >
-              <span>
-                {monthFullNames[this.month - 1]} {this.year}
-              </span>
-              <bal-icon name="caret-up" color="primary" size="small" turn={this.isCalendarVisible}></bal-icon>
-            </button>
-          </div>
-          <div
-            class={{ ...blockNav.modifier('end').class() }}
-            style={{
-              display: this.isMonthListVisible || this.isYearListVisible ? 'none' : 'flex',
-            }}
-          >
-            <button
-              title={previousMonthLabel}
-              aria-label={previousMonthLabel}
-              onClick={this.onClickPreviousMonth}
-              tabIndex={-1}
-              data-test="previous-month"
-            >
-              <bal-icon name="caret-left" color="primary" size="small"></bal-icon>
-            </button>
-            <button
-              title={nextMonthLabel}
-              aria-label={nextMonthLabel}
-              onClick={this.onClickNextMonth}
-              tabIndex={-1}
-              data-test="next-month"
-            >
-              <bal-icon name="caret-right" color="primary" size="small"></bal-icon>
-            </button>
-          </div>
-        </div>
+        <CalendarNav
+          language={this.language}
+          monthFullNames={this.monthFullNames}
+          month={this.month}
+          year={this.year}
+          isCalendarVisible={this.isCalendarVisible}
+          isListVisible={this.isMonthListVisible || this.isYearListVisible}
+          onClickSelectMonthAndYear={this.onClickSelectMonthAndYear}
+          onClickPreviousMonth={this.onClickPreviousMonth}
+          onClickNextMonth={this.onClickNextMonth}
+        ></CalendarNav>
         <div
           class={{
             ...blockBody.class(),
           }}
         >
-          <Grid
+          <CalendarGrid
             isVisible={this.isCalendarVisible}
             grid={this.calendarGrid}
             weekdays={this.weekdays}
@@ -401,8 +363,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             selectedDate={this.selectedDate}
             ref={el => (this.gridEl = el)}
             onSelectDay={isoDate => this.onSelectDay(isoDate)}
-          ></Grid>
-          <SelectionList
+          ></CalendarGrid>
+          <CalendarList
             name="year"
             isVisible={this.isYearListVisible}
             girdHeight={girdHeight - 2 - 8 - 8}
@@ -411,8 +373,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             list={this.years}
             ref={el => (this.yearListEl = el)}
             onSelect={item => this.onClickYear(item.value)}
-          ></SelectionList>
-          <SelectionList
+          ></CalendarList>
+          <CalendarList
             name="month"
             isVisible={this.isMonthListVisible}
             girdHeight={girdHeight - 2 - 8 - 8}
@@ -420,74 +382,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             selectedValue={this.month}
             list={this.months}
             onSelect={item => this.onClickMonth(item.value)}
-          ></SelectionList>
-          {/* <ul
-            class={{
-              ...blockBodyList.class(),
-              ...blockBodyList.modifier('year').class(),
-              ...blockBodyList.modifier('visible').class(this.isYearListVisible),
-            }}
-            aria-hidden={this.isYearListVisible ? 'false' : 'grue'}
-            style={{
-              height: `${girdHeight - 2 - 8 - 8}px`,
-            }}
-            ref={el => (this.yearListEl = el)}
-          >
-            {this.years.map(year => (
-              <li id={`year-${year}`}>
-                <button
-                  class={{
-                    ...blockBodyList.element('item').class(),
-                    ...blockBodyList
-                      .element('item')
-                      .modifier('today')
-                      .class(year.value === todayYear),
-                    ...blockBodyList
-                      .element('item')
-                      .modifier('selected')
-                      .class(year.value === this.year),
-                  }}
-                  tabIndex={-1}
-                  onClick={() => this.onClickYear(year.value)}
-                >
-                  {year.label}
-                </button>
-              </li>
-            ))}
-          </ul> */}
-          {/* <ul
-            class={{
-              ...blockBodyList.class(),
-              ...blockBodyList.modifier('month').class(),
-              ...blockBodyList.modifier('visible').class(this.isMonthListVisible),
-            }}
-            aria-hidden={this.isMonthListVisible ? 'false' : 'grue'}
-            style={{
-              height: `${girdHeight - 2 - 8 - 8}px`,
-            }}
-          >
-            {this.months.map(month => (
-              <li id={`month-${month.value}`}>
-                <button
-                  class={{
-                    ...blockBodyList.element('item').class(),
-                    ...blockBodyList
-                      .element('item')
-                      .modifier('today')
-                      .class(month.value === todayMonth),
-                    ...blockBodyList
-                      .element('item')
-                      .modifier('selected')
-                      .class(month.value === this.month),
-                  }}
-                  tabIndex={-1}
-                  onClick={() => this.onClickMonth(month.value)}
-                >
-                  {month.label}
-                </button>
-              </li>
-            ))}
-          </ul> */}
+          ></CalendarList>
         </div>
         <div
           class={{

@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from '@stencil/core'
 import { ListItem } from '../../utils/calendar'
 import { BEM } from '../../../../../utils/bem'
 
-export interface SelectionListProps {
+export interface CalendarListProps {
   name: string
   list: ListItem[]
   isVisible: boolean
@@ -13,7 +13,7 @@ export interface SelectionListProps {
   onSelect: (item: ListItem) => void
 }
 
-export const SelectionList: FunctionalComponent<SelectionListProps> = ({
+export const CalendarList: FunctionalComponent<CalendarListProps> = ({
   name,
   isVisible,
   girdHeight,
