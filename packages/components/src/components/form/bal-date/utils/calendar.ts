@@ -2,7 +2,6 @@ import padStart from 'lodash.padstart'
 import isNil from 'lodash.isnil'
 import { I18n } from '../../../../interfaces'
 import { BalDate } from '../../../../utils/date'
-import { I18nDate, i18nDate } from '../bal-date.i18n'
 
 // Function to get the number of days in a month
 export function getDaysInMonth(year: number, month: number): number | undefined {
@@ -115,9 +114,9 @@ export function getFirstWeekdayOfMonth(year: number, month: number): number {
 
 export type WeekdayCell = { ariaLabel: string; textContent: string }
 
-export function validateLanguage(language: string): keyof I18n<I18nDate> {
+export function validateLanguage(language: string): keyof I18n<any> {
   if (['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'pt', 'sv', 'fi'].includes(language)) {
-    return language as keyof I18n<I18nDate>
+    return language as keyof I18n<any>
   }
   return 'de'
 }
@@ -137,7 +136,7 @@ export function generateYears(minYear: number, maxYear: number): ListItem[] {
 
 // Function to generate the month list for the selection
 export function generateMonths(
-  language: keyof I18n<I18nDate>,
+  language: keyof I18n<any>,
   currentYear?: number,
   min?: string,
   max?: string,
@@ -177,7 +176,7 @@ export function generateMonths(
 }
 
 // Function to generate the weekday header row with the label and the content
-export function generateWeekDays(language: keyof I18n<I18nDate>): WeekdayCell[] {
+export function generateWeekDays(language: keyof I18n<any>): WeekdayCell[] {
   const locale = validateLanguage(language)
   const weekdaysMin = BalDate.infoWeekdays({ format: 'short', locale })
   const weekdays = BalDate.infoWeekdays({ format: 'long', locale })
