@@ -36,6 +36,10 @@ export class MaskKeyboardContext extends MaskContext<MaskKeyboardContextEvent> {
     return this._options.event.key === 'Backspace'
   }
 
+  get isWhiteSpaceKey() {
+    return this._options.event.key === ' '
+  }
+
   get isDeleteKey() {
     return this._options.event.key === 'Delete' || this._options.event.key === 'Del'
   }

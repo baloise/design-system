@@ -5124,6 +5124,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: BalDateCustomEvent<BalEvents.BalDateBlurDetail>) => void;
+        /**
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalDateCustomEvent<BalEvents.BalDateChangeDetail>) => void;
@@ -5131,6 +5135,18 @@ declare namespace LocalJSX {
           * Emitted after the animation has finished
          */
         "onBalDidAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateDidAnimateDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalDateCustomEvent<BalEvents.BalDateFocusDetail>) => void;
+        /**
+          * Emitted when the icon has clicked.
+         */
+        "onBalIconClick"?: (event: BalDateCustomEvent<BalEvents.BalDateIconClickDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalDateCustomEvent<BalEvents.BalDateInputClickDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalDateCustomEvent<string>) => void;
         /**
           * Emitted before the animation starts

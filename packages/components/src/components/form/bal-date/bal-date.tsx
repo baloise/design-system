@@ -16,6 +16,9 @@ import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { autoUpdate, computePosition, flip, shift, offset } from '@floating-ui/dom'
 import { BalDate } from '../../../utils/date'
+import { inheritAttributes } from '../../../utils/attributes'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-date',
@@ -24,6 +27,7 @@ import { BalDate } from '../../../utils/date'
 })
 export class Date implements ComponentInterface, Loggable {
   private inputId = `bal-da-${dateIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
   private popupCleanup?: () => void
   private referenceEl: HTMLElement | undefined
   private floatingEl: HTMLDivElement | undefined
@@ -87,6 +91,11 @@ export class Date implements ComponentInterface, Loggable {
   @Prop() triggerIcon = false
 
   /**
+   * Closes the datepicker popover after selection
+   */
+  @Prop() closeOnSelect = true
+
+  /**
    * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
    */
   @Prop({ mutable: true }) value: string | undefined = undefined
@@ -115,11 +124,6 @@ export class Date implements ComponentInterface, Loggable {
    * Defaults to the end of this year.
    */
   @Prop({ mutable: true }) max?: string
-
-  /**
-   * Closes the datepicker popover after selection
-   */
-  @Prop() closeOnSelect = true
 
   /**
    * Earliest year available for selection
@@ -157,6 +161,26 @@ export class Date implements ComponentInterface, Loggable {
   @Event() balDidAnimate!: EventEmitter<BalEvents.BalDateDidAnimateDetail>
 
   /**
+   * Emitted when the input loses focus.
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalDateBlurDetail>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalDateFocusDetail>
+
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balInputClick!: EventEmitter<BalEvents.BalDateInputClickDetail>
+
+  /**
+   * Emitted when the icon has clicked.
+   */
+  @Event() balIconClick!: EventEmitter<BalEvents.BalDateIconClickDetail>
+
+  /**
    * @internal - Use this to close unused popovers.
    */
   @Event() balPopoverPrepare!: EventEmitter<string>
@@ -168,6 +192,10 @@ export class Date implements ComponentInterface, Loggable {
 
   connectedCallback(): void {
     this.valueChanged()
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   /**
@@ -217,7 +245,6 @@ export class Date implements ComponentInterface, Loggable {
    */
   @Method()
   async present(): Promise<boolean> {
-    console.warn('present')
     return this.expand()
   }
 
@@ -226,7 +253,6 @@ export class Date implements ComponentInterface, Loggable {
    */
   @Method()
   async dismiss(): Promise<boolean> {
-    console.trace('dismiss')
     return this.collapse()
   }
 
@@ -326,6 +352,28 @@ export class Date implements ComponentInterface, Loggable {
     this.balChange.emit(this.value)
   }
 
+  private onInputFocus = (ev: CustomEvent<FocusEvent>) => {
+    stopEventBubbling(ev)
+    this.balFocus.emit(ev.detail)
+  }
+
+  private onInputBlur = (ev: CustomEvent<FocusEvent>) => {
+    stopEventBubbling(ev)
+    this.balFocus.emit(ev.detail)
+  }
+
+  // onKeyPress: ((event: BalInputDateCustomEvent<KeyboardEvent>) => void) | undefined
+
+  private onKeyPress = async ({ detail }: CustomEvent<KeyboardEvent>) => {
+    if (isSpaceKey(detail) && !this.triggerIcon) {
+      if (this.isExpanded) {
+        await this.dismiss()
+      } else {
+        await this.present()
+      }
+    }
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -359,6 +407,10 @@ export class Date implements ComponentInterface, Loggable {
             onClick={this.onInputClick}
             onBalInput={this.onInputInput}
             onBalChange={this.onInputChange}
+            onBalFocus={this.onInputFocus}
+            onBalBlur={this.onInputBlur}
+            onBalKeyPress={this.onKeyPress}
+            {...this.inheritedAttributes}
           ></bal-input-date>
           {!this.freeSolo ? (
             <bal-icon

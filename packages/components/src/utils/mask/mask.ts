@@ -213,6 +213,16 @@ export abstract class AbstractMask implements Mask {
         context.preventDefault()
         this.onDeleteDown(context, currentBlock, index)
         //
+        // On double space key hit only happens on mac
+      } else if (context.isWhiteSpaceKey) {
+        context.preventDefault()
+        const lastWrittenChar = context.value[context.position.value]
+        if (lastWrittenChar === '.') {
+          context.stopPropagation()
+          const value = context.value
+          context.value = value.substring(0, context.position.value) + '_' + value.substring(context.position.value + 1)
+        }
+        //
         // On a normal key down with the allowed key hits
       } else if (currentBlock.verifyAllowedKeyHits(context.key)) {
         context.preventDefault()
