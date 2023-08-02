@@ -17,6 +17,7 @@ import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalConfigObserver, BalConfigState } from '../../../../interfaces'
 import { ListenToConfig } from '../../../../utils/config'
+import { hasParent } from '../../../../utils/helpers'
 import { DateMask, MaskComponentAdapter } from '../../../../utils/mask'
 
 @Component({
@@ -36,6 +37,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   @Element() el!: HTMLElement
 
   @State() focused = false
+  @State() isGrouped = false
 
   @Logger('bal-input-date')
   createLogger(log: LogInstance) {
@@ -138,6 +140,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
   connectedCallback(): void {
     this.maskAdapter.bindComponent(this)
+    this.isGrouped = hasParent('bal-input-group', this.el)
   }
 
   componentDidLoad(): void {
@@ -195,6 +198,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
             'is-clickable': this.clickable && !(this.disabled || this.readonly),
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,
+            'is-grouped': true,
           }}
           data-testid="bal-input"
           ref={el => (this.nativeInput = el as HTMLInputElement)}

@@ -19,6 +19,21 @@
       <main class="container">
         <section>
           <bal-date data-testid="basic"></bal-date>
+          <bal-date data-testid="basic-placeholder" placeholder="Placeholder"></bal-date>
+          <bal-date data-testid="basic-value" value="2021-10-21"></bal-date>
+        </section>
+        <section>
+          <bal-date data-testid="invalid" invalid></bal-date>
+          <bal-date data-testid="invalid-placeholder" invalid placeholder="Placeholder"></bal-date>
+          <bal-date data-testid="invalid-invalid" invalid value="2021-10-21"></bal-date>
+        </section>
+        <section>
+          <bal-date data-testid="disabled" disabled></bal-date>
+          <bal-date data-testid="disabled-placeholder" disabled placeholder="Placeholder"></bal-date>
+          <bal-date data-testid="disabled-disabled" disabled value="2021-10-21"></bal-date>
+        </section>
+        <section>
+          <bal-date data-testid="free-solo" free-solo></bal-date>
         </section>
       </main>
     </bal-doc-app>

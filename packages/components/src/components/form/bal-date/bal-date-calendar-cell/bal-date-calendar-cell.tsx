@@ -59,6 +59,8 @@ export class DateCalendar implements ComponentInterface {
         type="button"
         role="button"
         aria-label={this.fullDate}
+        aria-selected={this.selected ? 'true' : 'false'}
+        aria-disabled={this.disabled ? 'true' : 'false'}
         title={this.fullDate}
         onClick={(ev: MouseEvent) => this.onClick(ev, this.isoDate)}
       >

@@ -1,0 +1,25 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-date.vars'
+
+// Date Picker
+// --------------------------------------------------
+
+// Date Picker - trigger icon
+// --------------------------------------------------
+
+.bal-date__icon--clickable
+  cursor: pointer
+
+// Date Picker - popup
+// --------------------------------------------------
+
+.bal-date__popup
+  display: none
+  width: max-content
+  position: absolute
+  top: 0
+  left: 0
+  z-index: var(--bal-z-index-tooltip)
+
+.bal-date__popup--visible
+  display: block

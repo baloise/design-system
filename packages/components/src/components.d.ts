@@ -682,6 +682,82 @@ export namespace Components {
         "multiline": boolean;
     }
     interface BalDate {
+        /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates": BalProps.BalDateCallback | undefined;
+        /**
+          * Closes the datepicker popover after selection
+         */
+        "closeOnSelect": boolean;
+        /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * Closes the accordion
+         */
+        "dismiss": () => Promise<boolean>;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * Latest year available for selection
+         */
+        "maxYearProp"?: number;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
+        /**
+          * Earliest year available for selection
+         */
+        "minYearProp"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * Opens the accordion
+         */
+        "present": () => Promise<boolean>;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
+          * Triggers the accordion
+         */
+        "toggle": () => Promise<boolean>;
+        /**
+          * If `true` the datepicker only open on click of the icon
+         */
+        "triggerIcon": boolean;
+        /**
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "value": string | undefined;
     }
     interface BalDateCalendar {
         /**
@@ -3148,6 +3224,10 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDataValueElement;
 }
+export interface BalDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalDateElement;
+}
 export interface BalDateCalendarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDateCalendarElement;
@@ -4999,6 +5079,83 @@ declare namespace LocalJSX {
         "onBalFocus"?: (event: BalDataValueCustomEvent<BalEvents.BalDataValueFocusDetail>) => void;
     }
     interface BalDate {
+        /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates"?: BalProps.BalDateCallback | undefined;
+        /**
+          * Closes the datepicker popover after selection
+         */
+        "closeOnSelect"?: boolean;
+        /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` there will be on trigger icon visible
+         */
+        "freeSolo"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+         */
+        "max"?: string;
+        /**
+          * Latest year available for selection
+         */
+        "maxYearProp"?: number;
+        /**
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
+         */
+        "min"?: string;
+        /**
+          * Earliest year available for selection
+         */
+        "minYearProp"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Listen when the popover opens or closes. Returns the current value.
+         */
+        "onBalChange"?: (event: BalDateCustomEvent<BalEvents.BalDateChangeDetail>) => void;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateDidAnimateDetail>) => void;
+        "onBalPopoverPrepare"?: (event: BalDateCustomEvent<string>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalDateCustomEvent<BalEvents.BalDateWillAnimateDetail>) => void;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
+          * If `true` the datepicker only open on click of the icon
+         */
+        "triggerIcon"?: boolean;
+        /**
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "value"?: string | undefined;
     }
     interface BalDateCalendar {
         /**

@@ -221,12 +221,17 @@ export abstract class AbstractMask implements Mask {
         // if the user hits the next separator we jump to the next user block
       } else if (this.blocks.verifyCallOfNextSeparator(context.key, index)) {
         context.preventDefault()
-        const nextBlock = this.blocks.list[index + 1]
-        const value = context.value
-        const blockValue = currentBlock.getValueOfTheBlock(value)
-        const newBlockValue = currentBlock.format(blockValue)
-        context.value = value.substring(0, currentBlock.from) + newBlockValue + value.substring(currentBlock.to)
-        context.position.value = nextBlock.to
+        const activeBlock = this.blocks.list[index]
+
+        if (context.position.value > activeBlock.from) {
+          const nextBlock = this.blocks.list[index + 1]
+          const value = context.value
+          const blockValue = currentBlock.getValueOfTheBlock(value)
+          const newBlockValue = currentBlock.format(blockValue)
+
+          context.value = value.substring(0, currentBlock.from) + newBlockValue + value.substring(currentBlock.to)
+          context.position.value = nextBlock.to
+        }
       }
 
       //

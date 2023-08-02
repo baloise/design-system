@@ -78,6 +78,7 @@
     "@baloise/design-system-icons": "13.5.0",
     "@baloise/design-system-tokens": "13.5.0",
     "@baloise/web-app-utils": "3.11.1",
+    "@floating-ui/dom": "^1.5.1",
     "@popperjs/core": "~2.11.4",
     "@stencil/core": "^3.2.2",
     "big.js": "~6.2.1",
