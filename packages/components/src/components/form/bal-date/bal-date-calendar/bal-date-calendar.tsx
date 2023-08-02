@@ -367,7 +367,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           <CalendarList
             name="year"
             isVisible={this.isYearListVisible}
-            girdHeight={girdHeight - 2 - 8 - 8}
+            girdHeight={girdHeight}
             todayValue={todayYear}
             selectedValue={this.year}
             list={this.years}
@@ -377,7 +377,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
           <CalendarList
             name="month"
             isVisible={this.isMonthListVisible}
-            girdHeight={girdHeight - 2 - 8 - 8}
+            girdHeight={girdHeight}
             todayValue={todayMonth}
             selectedValue={this.month}
             list={this.months}

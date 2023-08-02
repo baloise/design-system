@@ -1,6 +1,9 @@
 @import '@baloise/design-system-css/sass/mixins'
 @import './bal-date.vars'
 
+:host
+  --bal-z-index-tooltip: 1300
+
 // Date Picker
 // --------------------------------------------------
 
@@ -19,7 +22,8 @@
   position: absolute
   top: 0
   left: 0
-  z-index: var(--bal-z-index-tooltip)
+  z-index: var(--bal-date-popup-z-index)
+  box-shadow: var(--bal-date-popup-shadow)
 
 .bal-date__popup--visible
   display: block
