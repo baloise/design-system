@@ -373,7 +373,6 @@ export class Carousel
    */
 
   render() {
-    console.log('render', this.controls, this.areControlsHidden)
     const block = BEM.block('carousel')
     const inner = block.element('inner')
     const container = inner.element('container')

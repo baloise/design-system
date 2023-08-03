@@ -96,7 +96,7 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
             if (isNavMetaDesktopPopup) {
               Object.assign(component.arrowEl.style, {
-                left: `${arrowX - 16}px`,
+                left: `${arrowX}px`,
                 top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
                 right: '',
                 bottom: '',

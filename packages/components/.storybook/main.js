@@ -16,6 +16,7 @@ module.exports = {
   previewHead: head => `
     ${head}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="google-site-verification" content="V-xdh42LRf35hk9zTuOMYVMciysyMM3MoUTljpUMn4Q" />
     <link rel="stylesheet" type="text/css" href="assets/css/font.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/swot.css" />
