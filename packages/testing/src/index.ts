@@ -16,9 +16,9 @@ export * from './legacy'
 /**
  * Custom Commands
  */
-import './custom-commands'
+import './add-custom-commands'
 
 /**
  * Override Commands
  */
-import './override-commands'
+import './add-override-commands'

@@ -35,8 +35,8 @@
     "src/"
   ],
   "scripts": {
-    "build": "npm run build:bundle",
-    "build:bundle": "rollup --config rollup.config.js"
+    "build": "npm run clean && tsc src/*.ts --outDir dist --target esnext --declaration --moduleResolution node --skipLibCheck",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@baloise/design-system-components": "13.6.2",
