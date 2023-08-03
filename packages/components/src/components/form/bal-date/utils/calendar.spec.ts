@@ -142,6 +142,20 @@ describe('generateCalendarGrid Function', () => {
     expect(grid[grid.length - 1].day).toBe(31) // Last day of January 2023
   })
 
+  test('should generate the correct calendar grid for the year < 1900', () => {
+    // Test generating the calendar grid for January 2023
+    const year = 1899
+    const month = 1 // January (1-based index)
+    const grid: DayCell[] = generateCalendarGrid(year, month)
+
+    // Assert that the grid has the correct number of rows and columns
+    expect(grid.length).toBe(31) // At most 6 rows in a month
+
+    // Assert that the first and last days of the month are correct
+    expect(grid[0].day).toBe(1) // First day of January 2023 (assuming Sunday is the first day of the week)
+    expect(grid[grid.length - 1].day).toBe(31) // Last day of January 2023
+  })
+
   test('should generate the correct calendar grid for the month february', () => {
     // Test generating the calendar grid for Mai 2023
     const year = 2023

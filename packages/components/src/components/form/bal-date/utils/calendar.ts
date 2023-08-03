@@ -5,7 +5,7 @@ import { BalDate } from '../../../../utils/date'
 
 // Function to get the number of days in a month
 export function getDaysInMonth(year: number, month: number): number | undefined {
-  if (month < 1 || year < 1900) {
+  if (month < 1 || year < 0) {
     return undefined
   }
   return new Date(year, month, 0).getDate()
@@ -99,7 +99,7 @@ export function generateCalendarGrid(
 
 // Function to get the first weekday of the month
 export function getFirstWeekdayOfMonth(year: number, month: number): number {
-  if (month < 1 || year < 1900) {
+  if (month < 1 || year < 0) {
     return 1
   }
 
@@ -188,7 +188,7 @@ export function generateWeekDays(language: keyof I18n<any>): WeekdayCell[] {
 }
 
 export function getFirstDayOfMonth(year: number, month: number): Date | undefined {
-  if (month < 1 || month > 12 || year < 1900) {
+  if (month < 1 || month > 12 || year < 0) {
     return undefined
   }
 

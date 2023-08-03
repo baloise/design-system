@@ -185,6 +185,13 @@ export abstract class AbstractMask implements Mask {
     const position = context.isBackspaceKey ? Math.max(0, context.position.value - 1) : context.position.value
     const index = this.blocks.getBlockIndexFromPosition(position)
 
+    // prevent of adding more chars than possible
+    if (position >= this.blocks.lastPosition && !context.isNavigationKey && !context.isSelectAllCommand) {
+      context.preventDefault()
+      context.stopPropagation()
+      return
+    }
+
     if (index !== undefined && !context.position.isRangeSelection) {
       const currentBlock = this.blocks.list[index]
       //

@@ -4,6 +4,10 @@ import { MaskBlock } from './mask-block'
 export class MaskBlockList {
   constructor(private _list: MaskBlock[] = []) {}
 
+  get lastPosition(): number {
+    return this._list[this._list.length - 1].to
+  }
+
   get list(): MaskBlock[] {
     return this._list
   }

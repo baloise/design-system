@@ -292,10 +292,12 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
       await waitAfterFramePaint()
 
       if (this.yearListEl) {
-        const selectedYearEl = this.yearListEl.querySelector<HTMLElement>('#year-2023')
+        const selectedYearEl = this.yearListEl.querySelector<HTMLElement>(`#year-${this.year}`)
         if (selectedYearEl) {
           const rowHeight = 26 + 8 + 4
           this.yearListEl.scrollTop = selectedYearEl.offsetTop - rowHeight * 2
+        } else {
+          this.yearListEl.scrollTop = 0
         }
       }
     } else {
