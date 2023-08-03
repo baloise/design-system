@@ -35,7 +35,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "npm run clean && tsc src/*.ts --outDir dist --target esnext --declaration --moduleResolution node --skipLibCheck",
+    "build": "npm run clean && tsc src/*.ts --outDir dist --target es5 --declaration --moduleResolution node --skipLibCheck",
     "clean": "rimraf dist"
   },
   "dependencies": {
