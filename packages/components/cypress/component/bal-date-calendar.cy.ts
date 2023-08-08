@@ -2,7 +2,7 @@
 import { byTestId } from '../support/generated'
 import { BalDateCalendar } from '../../.storybook/vue/generated/components'
 
-describe('BalDateCalendarCell Component', () => {
+describe('BalDateCalendar Component', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
 
   it('emits balChange event when clicked', () => {

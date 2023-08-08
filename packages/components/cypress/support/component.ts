@@ -34,7 +34,7 @@ declare global {
 Cypress.Commands.add('mount', mount)
 
 Cypress.Commands.add('disableAnimation', () => {
-  cy.window().then(win => {
+  cy.window({ log: false }).then(win => {
     ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
@@ -74,7 +74,7 @@ Cypress.Commands.add(
       .then(($el: any) => areComponentsReady($el))
       .then(() => waitAfterFramePaint())
       .then(() => waitAfterIdleCallback())
-      .wait(32)
+      .wait(32, options)
       .wrap(subject, options)
   },
 )

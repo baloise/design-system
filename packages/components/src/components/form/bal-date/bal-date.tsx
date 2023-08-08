@@ -12,13 +12,16 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core'
+import { isSpaceKey } from '@baloise/web-app-utils'
+import { autoUpdate, computePosition, flip, shift, offset } from '@floating-ui/dom'
+import { i18nDate } from './bal-date.i18n'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
-import { autoUpdate, computePosition, flip, shift, offset } from '@floating-ui/dom'
 import { BalDate } from '../../../utils/date'
 import { inheritAttributes } from '../../../utils/attributes'
 import { stopEventBubbling } from '../../../utils/form-input'
-import { isSpaceKey } from '@baloise/web-app-utils'
+import { BalConfigState, ListenToConfig, defaultConfig } from '../../../utils/config'
+import { BalLanguage } from '../../../interfaces'
 
 @Component({
   tag: 'bal-date',
@@ -35,7 +38,7 @@ export class Date implements ComponentInterface, Loggable {
   @Element() el!: HTMLElement
 
   @State() private isExpanded = false
-
+  @State() private language: BalLanguage = defaultConfig.language
   @State() private calendarValue: string | undefined
 
   log!: LogInstance
@@ -269,6 +272,15 @@ export class Date implements ComponentInterface, Loggable {
   }
 
   /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+  }
+
+  /**
    * PRIVATE METHOD
    * ------------------------------------------------------
    */
@@ -330,8 +342,9 @@ export class Date implements ComponentInterface, Loggable {
     }
   }
 
-  private onCalendarChange = ({ detail }: BalEvents.BalDateCalendarChange) => {
-    this.value = detail
+  private onCalendarChange = (ev: BalEvents.BalDateCalendarChange) => {
+    stopEventBubbling(ev)
+    this.value = ev.detail
     this.balChange.emit(this.value)
     if (this.closeOnSelect) {
       this.dismiss()
@@ -347,8 +360,9 @@ export class Date implements ComponentInterface, Loggable {
     }
   }
 
-  private onInputChange = ({ detail }: BalEvents.BalInputDateChange) => {
-    this.value = detail
+  private onInputChange = (ev: BalEvents.BalInputDateChange) => {
+    stopEventBubbling(ev)
+    this.value = ev.detail
     this.balChange.emit(this.value)
   }
 
@@ -361,8 +375,6 @@ export class Date implements ComponentInterface, Loggable {
     stopEventBubbling(ev)
     this.balFocus.emit(ev.detail)
   }
-
-  // onKeyPress: ((event: BalInputDateCustomEvent<KeyboardEvent>) => void) | undefined
 
   private onKeyPress = async ({ detail }: CustomEvent<KeyboardEvent>) => {
     if (isSpaceKey(detail) && !this.triggerIcon) {
@@ -415,6 +427,8 @@ export class Date implements ComponentInterface, Loggable {
           {!this.freeSolo ? (
             <bal-icon
               name="date"
+              role="button"
+              tabindex={-1}
               class={{
                 ...blockIcon.class(),
                 ...blockIcon.modifier('clickable').class(!this.disabled && !this.readonly),
@@ -422,6 +436,7 @@ export class Date implements ComponentInterface, Loggable {
               is-right
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               onClick={this.onIconClick}
+              aria-label={i18nDate[this.language].toggleDatepicker}
               aria-haspopup="true"
               aria-expanded={this.isExpanded ? 'true' : 'false'}
             />

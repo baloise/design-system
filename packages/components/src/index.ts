@@ -44,6 +44,11 @@ export * from './components/form/bal-checkbox/bal-checkbox.type'
 export * from './components/form/bal-radio/bal-radio.type'
 
 /**
+ * i18n
+ */
+export * from './components/form/bal-date/bal-date.i18n'
+
+/**
  * Utils
  */
 export { initializeBaloiseDesignSystem } from './initialize'

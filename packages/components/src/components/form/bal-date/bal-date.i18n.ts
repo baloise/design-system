@@ -1,60 +1,71 @@
 import { I18n } from '../../../interfaces'
 
 export interface I18nDate {
+  toggleDatepicker: string
   nextMonth: string
   previousMonth: string
   selectMonth: string
 }
 
 export const i18nDate: I18n<I18nDate> = {
+  en: {
+    toggleDatepicker: 'Open datepicker',
+    nextMonth: 'Next month',
+    previousMonth: 'Previous month',
+    selectMonth: 'Select month and year',
+  },
+  fr: {
+    toggleDatepicker: 'Ouvrir le sélecteur de dates',
+    nextMonth: 'Mois suivant',
+    previousMonth: 'Mois précédent',
+    selectMonth: "Sélectionner le mois et l'année",
+  },
+  it: {
+    toggleDatepicker: 'Apri il selettore della data',
+    nextMonth: 'Mese successivo',
+    previousMonth: 'Mese precedente',
+    selectMonth: 'Seleziona mese e anno',
+  },
+  nl: {
+    toggleDatepicker: 'Open datumkiezer',
+    nextMonth: 'Volgende maand',
+    previousMonth: 'Vorige maand',
+    selectMonth: 'Selecteer maand en jaar',
+  },
+  es: {
+    toggleDatepicker: 'Abrir selector de fechas',
+    nextMonth: 'Mes siguiente',
+    previousMonth: 'Mes anterior',
+    selectMonth: 'Seleccionar mes y año',
+  },
+  pt: {
+    toggleDatepicker: 'Abrir seletor de datas',
+    nextMonth: 'Próximo mês',
+    previousMonth: 'Mês anterior',
+    selectMonth: 'Selecionar mês e ano',
+  },
+  sv: {
+    toggleDatepicker: 'Öppna datumväljare',
+    nextMonth: 'Nästa månad',
+    previousMonth: 'Föregående månad',
+    selectMonth: 'Välj månad och år',
+  },
+  fi: {
+    toggleDatepicker: 'Avaa päivämäärän valitsin',
+    nextMonth: 'Seuraava kuukausi',
+    previousMonth: 'Edellinen kuukausi',
+    selectMonth: 'Valitse kuukausi ja vuosi',
+  },
   de: {
-    nextMonth: 'nächsten Monat',
+    toggleDatepicker: 'Öffne den Datumswähler',
+    nextMonth: 'Nächster Monat',
     previousMonth: 'Vormonat',
     selectMonth: 'Monat und Jahr auswählen',
   },
-  en: {
-    nextMonth: 'next month',
-    previousMonth: 'previous month',
-    selectMonth: 'select month and year',
-  },
-  fr: {
-    nextMonth: 'mois prochain',
-    previousMonth: 'mois précédent',
-    selectMonth: "sélectionner le mois et l'année",
-  },
-  it: {
-    nextMonth: 'prossimo mese',
-    previousMonth: 'mese scorso',
-    selectMonth: "seleziona il mese e l'anno",
-  },
-  nl: {
-    nextMonth: 'volgende maand',
-    previousMonth: 'vorige maand',
-    selectMonth: 'selecteer maand en jaar',
-  },
-  es: {
-    nextMonth: 'próximo mes',
-    previousMonth: 'mes anterior',
-    selectMonth: 'seleccionar mes y año',
-  },
   pl: {
-    nextMonth: 'przyszłym miesiącu',
-    previousMonth: 'poprzedni miesiąc',
-    selectMonth: 'wybierz miesiąc i rok',
-  },
-  pt: {
-    nextMonth: 'próximo mês',
-    previousMonth: 'mês anterior',
-    selectMonth: 'selecionar mês e ano',
-  },
-  sv: {
-    nextMonth: 'nästa månad',
-    previousMonth: 'förra månaden',
-    selectMonth: 'välj månad och år',
-  },
-  fi: {
-    nextMonth: 'ensi kuussa',
-    previousMonth: 'edellinen kuukausi',
-    selectMonth: 'valitse kuukausi ja vuosi',
+    toggleDatepicker: 'Otwórz wybierak daty',
+    nextMonth: 'Następny miesiąc',
+    previousMonth: 'Poprzedni miesiąc',
+    selectMonth: 'Wybierz miesiąc i rok',
   },
 }

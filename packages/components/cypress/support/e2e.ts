@@ -15,7 +15,7 @@
 
 import './commands'
 
-import '../../../testing/src'
+import '../../../testing/src/add-override-commands'
 
 import 'cypress-file-upload'
 import 'cypress-axe'

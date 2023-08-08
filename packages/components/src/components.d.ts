@@ -690,6 +690,7 @@ export namespace Components {
           * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */

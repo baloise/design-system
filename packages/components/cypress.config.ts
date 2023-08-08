@@ -2,11 +2,12 @@ import { defineConfig } from 'cypress'
 import getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
 
 export default defineConfig({
-  projectId: 'dnm1ky',
   video: false,
   screenshotOnRunFailure: true,
   screenshotsFolder: './cypress/snapshots/actual',
   trashAssetsBeforeRuns: true,
+
+  includeShadowDom: true,
 
   viewportWidth: 1024,
   viewportHeight: 1280,

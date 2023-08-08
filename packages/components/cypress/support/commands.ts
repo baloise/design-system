@@ -8,9 +8,10 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import '../../../testing/src/add-custom-commands'
+
 Cypress.Commands.add('pageA11y', (url: string) => {
-  cy.visit(url)
-  cy.waitForDesignSystem()
+  cy.visit(url).platform('desktop').waitForDesignSystem()
   cy.injectAxe()
 })
 
