@@ -714,7 +714,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
           * If `true` the component gets a invalid style.
          */

@@ -35,7 +35,7 @@ export class Date implements ComponentInterface, Loggable {
   private popupCleanup?: () => void
   private referenceEl: HTMLElement | undefined
   private floatingEl: HTMLDivElement | undefined
-  private inputEl!: HTMLBalInputDateElement
+  private inputEl: HTMLBalInputDateElement | undefined
 
   @Element() el!: HTMLElement
 
@@ -315,7 +315,7 @@ export class Date implements ComponentInterface, Loggable {
    */
   @Method()
   async setFocus() {
-    this.inputEl.setFocus()
+    this.inputEl?.setFocus()
   }
 
   /**
@@ -325,15 +325,15 @@ export class Date implements ComponentInterface, Loggable {
    */
   @Method()
   async setBlur() {
-    this.inputEl.setBlur()
+    this.inputEl?.setBlur()
   }
 
   /**
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return this.inputEl.getInputElement()
+  async getInputElement(): Promise<HTMLInputElement | undefined> {
+    return this.inputEl?.getInputElement()
   }
 
   /**
