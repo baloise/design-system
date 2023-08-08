@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { autoUpdate, computePosition, flip, shift, offset } from '@floating-ui/dom'
-import { i18nDate } from './bal-date.i18n'
+import { i18nBalDate } from './bal-date.i18n'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BalDate } from '../../../utils/date'
@@ -495,7 +495,7 @@ export class Date implements ComponentInterface, Loggable {
               is-right
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               onClick={this.onIconClick}
-              aria-label={i18nDate[this.language].toggleDatepicker}
+              aria-label={i18nBalDate[this.language].toggleDatepicker}
               aria-haspopup="true"
               aria-expanded={this.isExpanded ? 'true' : 'false'}
             />

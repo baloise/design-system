@@ -1,13 +1,13 @@
 import { I18n } from '../../../interfaces'
 
-export interface I18nDate {
+export interface I18nBalDate {
   toggleDatepicker: string
   nextMonth: string
   previousMonth: string
   selectMonth: string
 }
 
-export const i18nDate: I18n<I18nDate> = {
+export const i18nBalDate: I18n<I18nBalDate> = {
   en: {
     toggleDatepicker: 'Open datepicker',
     nextMonth: 'Next month',

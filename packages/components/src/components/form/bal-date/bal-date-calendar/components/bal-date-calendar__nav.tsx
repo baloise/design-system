@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core'
 import { BEM } from '../../../../../utils/bem'
-import { i18nDate } from '../../bal-date.i18n'
+import { i18nBalDate } from '../../bal-date.i18n'
 import { I18n } from '../../../../../interfaces'
 
 export interface CalendarNavProps {
@@ -28,9 +28,9 @@ export const CalendarNav: FunctionalComponent<CalendarNavProps> = ({
 }) => {
   const block = BEM.block('date-calendar')
   const blockNav = block.element('nav')
-  const nextMonthLabel = i18nDate[language].nextMonth
-  const previousMonthLabel = i18nDate[language].previousMonth
-  const selectMonthLabel = i18nDate[language].selectMonth
+  const nextMonthLabel = i18nBalDate[language].nextMonth
+  const previousMonthLabel = i18nBalDate[language].previousMonth
+  const selectMonthLabel = i18nBalDate[language].selectMonth
 
   return (
     <div

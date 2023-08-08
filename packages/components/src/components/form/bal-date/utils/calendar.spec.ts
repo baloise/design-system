@@ -1,5 +1,5 @@
 import { I18n } from '../../../../interfaces'
-import { I18nDate } from '../bal-date.i18n'
+import { I18nBalDate } from '../bal-date.i18n'
 import {
   DayCell,
   WeekdayCell,
@@ -74,7 +74,7 @@ describe('getFirstWeekdayOfMonth Function', () => {
 describe('generateWeekDays Function', () => {
   test('should generate the correct weekday header', () => {
     // Test generating weekday headers for English (assuming Monday is the first day of the week)
-    const language: keyof I18n<I18nDate> = 'en'
+    const language: keyof I18n<I18nBalDate> = 'en'
     const weekdays: WeekdayCell[] = generateWeekDays(language)
 
     // Assert that the weekday headers are correct
@@ -91,7 +91,7 @@ describe('generateWeekDays Function', () => {
   })
 
   test('should generate the correct weekday header in german', () => {
-    const language: keyof I18n<I18nDate> = 'de'
+    const language: keyof I18n<I18nBalDate> = 'de'
     const weekdays: WeekdayCell[] = generateWeekDays(language)
 
     // Assert that the weekday headers are correct
