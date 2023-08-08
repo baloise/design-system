@@ -293,8 +293,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
     if (this.control) {
       const isChecked = (checkbox: HTMLBalCheckboxElement) => {
         for (let index = 0; index < this.value.length; index++) {
-          const item = this.value[index]
-          if (item.toString() === checkbox.value.toString()) {
+          const valueItem = this.value[index]
+          if (valueItem !== undefined && valueItem.toString() === checkbox.value.toString()) {
             return true
           }
         }
