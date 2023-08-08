@@ -9,7 +9,7 @@ import {
   ListenToConfig,
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { i18nLabel } from './bal-label.i18n'
+import { i18nBalLabel } from './bal-label.i18n'
 import { BalElementStateInfo } from '../../../utils/element-states'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 
@@ -167,7 +167,7 @@ export class BalLabel
 
   render() {
     const block = BEM.block('label')
-    const suffix = this.required === false ? i18nLabel[this.language].optional || '' : ''
+    const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
     const disabled = !!this.disabled || !!this.readonly
     const danger = !!this.invalid
     const success = !!this.valid
