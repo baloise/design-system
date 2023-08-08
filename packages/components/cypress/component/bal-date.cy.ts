@@ -53,6 +53,7 @@ describe('BalDate Component', () => {
     }).as('calendar')
 
     cy.waitForDesignSystem()
+
     cy.getByRole('button', { name: i18nDate.de.toggleDatepicker }).click()
     cy.getByRole('button', { name: 'Januar 2023' }).click()
     cy.getByRole('button', { name: '2024' }).click()

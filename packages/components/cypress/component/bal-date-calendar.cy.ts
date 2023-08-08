@@ -1,6 +1,7 @@
 // Import the necessary Cypress commands
 import { byTestId } from '../support/generated'
 import { BalDateCalendar } from '../../.storybook/vue/generated/components'
+import { i18nDate } from '../../dist'
 
 describe('BalDateCalendar Component', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
@@ -16,7 +17,8 @@ describe('BalDateCalendar Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('bal-date-calendar').shadow().find('.day-cell').eq(6).click()
+    cy.getByRole('button', { name: '07.01.2023' }).click()
+
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('2023-01-07')
   })
@@ -32,12 +34,13 @@ describe('BalDateCalendar Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('bal-date-calendar').shadow().find(byTestId('change-year-month')).click().wait(32)
-    cy.get('bal-date-calendar').shadow().find(`#year-${2021}`).click().wait(32)
-    cy.get('bal-date-calendar').shadow().find(`#month-${10}`).click().wait(32)
-    cy.get('bal-date-calendar').shadow().find(`[aria-label="21.10.2021"]`).click()
+    cy.getByRole('button', { name: 'Januar 2023' }).click()
+    cy.getByRole('button', { name: '2024' }).click()
+    cy.getByRole('button', { name: 'Februar' }).click()
+    cy.getByRole('button', { name: '11.02.2024' }).click()
+
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('2021-10-21')
+    cy.get('@balChange').shouldHaveEventDetail('2024-02-11')
   })
 
   it('select a date with the next arrow navigation', () => {
@@ -51,10 +54,11 @@ describe('BalDateCalendar Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('bal-date-calendar').shadow().find(byTestId('next-month')).click().wait(32)
-    cy.get('bal-date-calendar').shadow().find(`[aria-label="21.02.2023"]`).click()
+    cy.getByRole('button', { name: i18nDate.de.nextMonth }).click()
+    cy.getByRole('button', { name: '11.02.2023' }).click()
+
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('2023-02-21')
+    cy.get('@balChange').shouldHaveEventDetail('2023-02-11')
   })
 
   it('select a date with the previous arrow navigation', () => {
@@ -68,9 +72,10 @@ describe('BalDateCalendar Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.get('bal-date-calendar').shadow().find(byTestId('previous-month')).click().wait(32)
-    cy.get('bal-date-calendar').shadow().find(`[aria-label="21.12.2022"]`).click()
+    cy.getByRole('button', { name: i18nDate.de.previousMonth }).click()
+    cy.getByRole('button', { name: '11.12.2022' }).click()
+
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balChange').shouldHaveEventDetail('2022-12-21')
+    cy.get('@balChange').shouldHaveEventDetail('2022-12-11')
   })
 })
