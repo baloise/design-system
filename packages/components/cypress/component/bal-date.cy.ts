@@ -15,7 +15,11 @@ describe('BalDate Component', () => {
     }).as('calendar')
 
     cy.waitForDesignSystem()
-    cy.getByPlaceholder('Enter date').click().type('2.2.23', { delay: 20 }).blur({ force: true })
+    cy.getByPlaceholder('Enter date')
+      .click()
+      .type('2.2.23', { delay: 20 })
+      .blur({ force: true })
+      .should('have.value', '02.02.2023')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balChange').shouldHaveEventDetail('2023-02-02')
   })

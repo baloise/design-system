@@ -22,6 +22,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BalConfigState, ListenToConfig, defaultConfig } from '../../../utils/config'
 import { BalLanguage } from '../../../interfaces'
+import { debounceEvent } from '../../../utils/helpers'
 
 @Component({
   tag: 'bal-date',
@@ -34,6 +35,7 @@ export class Date implements ComponentInterface, Loggable {
   private popupCleanup?: () => void
   private referenceEl: HTMLElement | undefined
   private floatingEl: HTMLDivElement | undefined
+  private inputEl!: HTMLBalInputDateElement
 
   @Element() el!: HTMLElement
 
@@ -149,7 +151,22 @@ export class Date implements ComponentInterface, Loggable {
   @Prop({ attribute: 'allowed-dates' }) allowedDates: BalProps.BalDateCallback | undefined = undefined
 
   /**
-   * Listen when the popover opens or closes. Returns the current value.
+   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() balInput!: EventEmitter<BalEvents.BalDateInputDetail>
+
+  /**
+   * Emitted when a option got selected.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalDateChangeDetail>
 
@@ -210,7 +227,7 @@ export class Date implements ComponentInterface, Loggable {
   async listenToKeydown(ev: KeyboardEvent) {
     if (this.isExpanded && (ev.key === 'Escape' || ev.key === 'Esc')) {
       ev.preventDefault()
-      await this.dismiss()
+      await this.close()
     }
   }
 
@@ -218,7 +235,7 @@ export class Date implements ComponentInterface, Loggable {
   async listenOnKeyup(ev: KeyboardEvent) {
     // dismiss popup when focus next form control
     if (ev.key === 'Tab' && !this.el.contains(document.activeElement) && this.isExpanded) {
-      await this.dismiss()
+      await this.close()
     }
   }
 
@@ -226,7 +243,7 @@ export class Date implements ComponentInterface, Loggable {
   async listenOnclick(ev: UIEvent) {
     // when clicked outside dismiss popup
     if (this.isExpanded && !this.el.contains(ev.target as Node)) {
-      await this.dismiss()
+      await this.close()
     }
   }
 
@@ -234,8 +251,17 @@ export class Date implements ComponentInterface, Loggable {
   async listenOnPopoverPrepare(ev: CustomEvent<string>) {
     // dismiss this popover, because another will open
     if (this.inputId !== ev.detail) {
-      await this.dismiss()
+      await this.close()
     }
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
   }
 
   /**
@@ -247,7 +273,7 @@ export class Date implements ComponentInterface, Loggable {
    * Opens the accordion
    */
   @Method()
-  async present(): Promise<boolean> {
+  async open(): Promise<boolean> {
     return this.expand()
   }
 
@@ -255,7 +281,7 @@ export class Date implements ComponentInterface, Loggable {
    * Closes the accordion
    */
   @Method()
-  async dismiss(): Promise<boolean> {
+  async close(): Promise<boolean> {
     return this.collapse()
   }
 
@@ -272,12 +298,42 @@ export class Date implements ComponentInterface, Loggable {
   }
 
   /**
-   * @internal define config for the component
+   * Selects an option
    */
   @Method()
-  @ListenToConfig()
-  async configChanged(state: BalConfigState): Promise<void> {
-    this.language = state.language
+  async select(dateString: string) {
+    const date = BalDate.fromISO(dateString)
+    if (date.isValid) {
+      this.value = date.toISODate()
+      this.calendarValue = this.value
+    }
+  }
+
+  /**
+   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.focus()`.
+   */
+  @Method()
+  async setFocus() {
+    this.inputEl.setFocus()
+  }
+
+  /**
+   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    this.inputEl.setBlur()
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return this.inputEl.getInputElement()
   }
 
   /**
@@ -332,13 +388,13 @@ export class Date implements ComponentInterface, Loggable {
     if (this.triggerIcon) {
       await this.toggle()
     } else {
-      await this.present()
+      await this.open()
     }
   }
 
   private onInputClick = async (_ev: MouseEvent) => {
     if (!this.triggerIcon) {
-      await this.present()
+      await this.open()
     }
   }
 
@@ -347,13 +403,15 @@ export class Date implements ComponentInterface, Loggable {
     this.value = ev.detail
     this.balChange.emit(this.value)
     if (this.closeOnSelect) {
-      this.dismiss()
+      this.close()
     }
   }
 
-  private onInputInput = ({ detail }: BalEvents.BalInputDateInput) => {
-    if (detail) {
-      const date = BalDate.fromAnyFormat(detail)
+  private onInputInput = (ev: BalEvents.BalInputDateInput) => {
+    stopEventBubbling(ev)
+    this.balInput.emit(ev.detail)
+    if (ev.detail) {
+      const date = BalDate.fromAnyFormat(ev.detail)
       if (date.isValid) {
         this.calendarValue = date.toISODate()
       }
@@ -379,9 +437,9 @@ export class Date implements ComponentInterface, Loggable {
   private onKeyPress = async ({ detail }: CustomEvent<KeyboardEvent>) => {
     if (isSpaceKey(detail) && !this.triggerIcon) {
       if (this.isExpanded) {
-        await this.dismiss()
+        await this.close()
       } else {
-        await this.present()
+        await this.open()
       }
     }
   }
@@ -422,6 +480,7 @@ export class Date implements ComponentInterface, Loggable {
             onBalFocus={this.onInputFocus}
             onBalBlur={this.onInputBlur}
             onBalKeyPress={this.onKeyPress}
+            ref={el => (this.inputEl = el)}
             {...this.inheritedAttributes}
           ></bal-input-date>
           {!this.freeSolo ? (

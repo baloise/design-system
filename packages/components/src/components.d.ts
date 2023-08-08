@@ -687,10 +687,18 @@ export namespace Components {
          */
         "allowedDates": BalProps.BalDateCallback | undefined;
         /**
+          * Closes the accordion
+         */
+        "close": () => Promise<boolean>;
+        /**
           * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
         "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
@@ -700,13 +708,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Closes the accordion
-         */
-        "dismiss": () => Promise<boolean>;
-        /**
           * If `true` there will be on trigger icon visible
          */
         "freeSolo": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -732,13 +740,13 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Opens the accordion
+         */
+        "open": () => Promise<boolean>;
+        /**
           * The text to display when the select is empty.
          */
         "placeholder"?: string;
-        /**
-          * Opens the accordion
-         */
-        "present": () => Promise<boolean>;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -747,6 +755,18 @@ export namespace Components {
           * If `true` the attribute required is added to the native input.
          */
         "required": boolean;
+        /**
+          * Selects an option
+         */
+        "select": (dateString: string) => Promise<void>;
+        /**
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * Triggers the accordion
          */
@@ -1483,6 +1503,10 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
         "hasIconRight": boolean;
         /**
           * If `true` the component gets a invalid style.
@@ -1504,6 +1528,14 @@ export namespace Components {
           * If `true` the attribute required is added to the native input.
          */
         "required": boolean;
+        /**
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
@@ -5089,6 +5121,10 @@ declare namespace LocalJSX {
          */
         "closeOnSelect"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "defaultDate"?: string;
@@ -5129,7 +5165,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: BalDateCustomEvent<BalEvents.BalDateBlurDetail>) => void;
         /**
-          * Listen when the popover opens or closes. Returns the current value.
+          * Emitted when a option got selected.
          */
         "onBalChange"?: (event: BalDateCustomEvent<BalEvents.BalDateChangeDetail>) => void;
         /**
@@ -5144,6 +5180,10 @@ declare namespace LocalJSX {
           * Emitted when the icon has clicked.
          */
         "onBalIconClick"?: (event: BalDateCustomEvent<BalEvents.BalDateIconClickDetail>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: BalDateCustomEvent<BalEvents.BalDateInputDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */

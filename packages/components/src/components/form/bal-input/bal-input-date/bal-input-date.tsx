@@ -19,6 +19,7 @@ import { BalConfigObserver, BalConfigState } from '../../../../interfaces'
 import { ListenToConfig } from '../../../../utils/config'
 import { hasParent } from '../../../../utils/helpers'
 import { DateMask, MaskComponentAdapter } from '../../../../utils/mask'
+import { inputSetBlur, inputSetFocus } from '../../../../utils/form-input'
 
 @Component({
   tag: 'bal-input-date',
@@ -173,6 +174,38 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: MouseEvent) {
     this.maskAdapter.bindGlobalClick(event)
+  }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
+
+  /**
+   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.focus()`.
+   */
+  @Method()
+  async setFocus() {
+    inputSetFocus(this)
+  }
+
+  /**
+   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur(this)
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!)
   }
 
   /**
