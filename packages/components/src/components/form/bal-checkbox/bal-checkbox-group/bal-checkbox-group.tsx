@@ -209,8 +209,15 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
 
   mutationObserverActive = true
 
-  @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'] })
+  @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'], attributes: false, characterData: false })
   mutationListener(): void {
+    if (this.control) {
+      this.disabledChanged(this.disabled)
+      this.readonlyChanged(this.readonly)
+    }
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 
@@ -286,8 +293,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
     if (this.control) {
       const isChecked = (checkbox: HTMLBalCheckboxElement) => {
         for (let index = 0; index < this.value.length; index++) {
-          const item = this.value[index]
-          if (item.toString() === checkbox.value.toString()) {
+          const valueItem = this.value[index]
+          if (valueItem !== undefined && valueItem.toString() === checkbox.value.toString()) {
             return true
           }
         }

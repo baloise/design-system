@@ -15,10 +15,10 @@ export class BalMutationListener extends ListenerAbstract {
     super()
     this.tags = (options.tags || []).map(t => t.toUpperCase())
     this.mutationObserverInit = {
-      childList: options.childList || true,
-      subtree: options.subtree || true,
-      attributes: options.attributes || true,
-      characterData: options.characterData || true,
+      childList: options.childList === false ? false : true,
+      subtree: options.subtree === false ? false : true,
+      attributes: options.attributes === false ? false : true,
+      characterData: options.characterData === false ? false : true,
     }
   }
 

@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-add a11y labels to close component
+check if checkbox is checked in group

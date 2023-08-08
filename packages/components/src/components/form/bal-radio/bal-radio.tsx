@@ -241,7 +241,10 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
   @Method()
   async updateState() {
     if (this.radioGroup) {
-      this.checked = this.radioGroup.value === this.value
+      const newChecked = this.radioGroup.value === this.value
+      if (newChecked !== this.checked) {
+        this.checked = newChecked
+      }
     }
 
     if (this.radioButton) {
@@ -293,6 +296,12 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
    * ------------------------------------------------------
    */
 
+  private toggleChecked() {
+    this.checked = !this.checked
+    this.balChange.emit(this.checked)
+    this.updateState()
+  }
+
   private onKeypress = (ev: KeyboardEvent) => {
     if (isSpaceKey(ev)) {
       const element = ev.target as HTMLAnchorElement
@@ -301,8 +310,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
       }
 
       if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
-        this.checked = !this.checked
-        this.balChange.emit(this.checked)
+        this.toggleChecked()
         ev.preventDefault()
       } else {
         stopEventBubbling(ev)
@@ -317,9 +325,8 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
     }
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
-      this.checked = !this.checked
+      this.toggleChecked()
       this.nativeInput?.focus()
-      this.balChange.emit(this.checked)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)

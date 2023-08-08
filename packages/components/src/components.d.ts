@@ -801,6 +801,7 @@ export namespace Components {
         "logEvents": boolean;
         "logLifecycle": boolean;
         "logRender": boolean;
+        "stickyFooter": boolean;
     }
     interface BalDocBanner {
         "color": string;
@@ -5225,6 +5226,7 @@ declare namespace LocalJSX {
         "logEvents"?: boolean;
         "logLifecycle"?: boolean;
         "logRender"?: boolean;
+        "stickyFooter"?: boolean;
     }
     interface BalDocBanner {
         "color"?: string;

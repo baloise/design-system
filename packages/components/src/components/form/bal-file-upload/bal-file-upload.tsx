@@ -346,8 +346,12 @@ export class FileUpload implements FormInput<File[]> {
 
   private onInputBlur = (ev: FocusEvent) => inputHandleBlur(this, ev)
 
-  private onInputClick = (ev: MouseEvent) => this.balInputClick.emit(ev)
-
+  private onInputClick = (ev: MouseEvent) => {
+    if (this.nativeInput && !this.disabled && !this.readonly && !this.loading) {
+      this.nativeInput.value = ''
+    }
+    this.balInputClick.emit(ev)
+  }
   /**
    * RENDER
    * ------------------------------------------------------
