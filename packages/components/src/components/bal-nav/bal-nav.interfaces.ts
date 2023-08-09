@@ -53,6 +53,7 @@ namespace BalProps {
     href?: string
     target?: BalProps.BalButtonTarget
     clickable?: boolean
+    data?: any
     onClick?: (ev: MouseEvent) => void
   }
 }
@@ -67,6 +68,7 @@ namespace BalEvents {
     label: string
     value?: string
     href?: string
+    data?: any
     target?: BalProps.BalButtonTarget
   }
 

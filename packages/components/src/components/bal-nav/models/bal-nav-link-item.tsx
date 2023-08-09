@@ -6,6 +6,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
   value: string
   clickable = false
   active = false
+  data = undefined
 
   href?: string
   target?: BalProps.BalButtonTarget
@@ -18,6 +19,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     this.target = item.target
     this.active = !!item.active
     this.clickable = !!item.clickable
+    this.data = item.data
 
     this.onClick = (ev: MouseEvent) => {
       this.observer.linkItemClickListener(this)
@@ -41,6 +43,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
       value: this.value,
       href: this.href,
       target: this.target,
+      data: this.data,
     }
   }
 
