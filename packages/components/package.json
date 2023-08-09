@@ -62,6 +62,7 @@
     "e2e:test": "npm run cy:open",
     "e2e:server": "stencil build --config stencil.config.e2e.ts --serve --watch",
     "==================== CYPRESS =======================": "================================",
+    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
     "cy:install": "cypress install",
     "cy:open": "npm run cy:copy && cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
     "cy:build": "npm run cy:copy && stencil build --config stencil.config.e2e.ts --prod",

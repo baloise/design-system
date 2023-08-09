@@ -17,12 +17,21 @@ export const config: Config = {
      * Library outputs
      */
     {
+      type: 'docs-vscode',
+      file: 'dist/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+    },
+    {
       type: 'docs-json',
       file: './public/assets/data/components.json',
     },
+    VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
+    /**
+     * Proxy outputs
+     */
     VueGenerator(),
-    AngularGenerator(),
     ReactGenerator(),
+    AngularGenerator(),
     /**
      * Documentation outputs
      */

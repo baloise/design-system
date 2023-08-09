@@ -28,9 +28,10 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run clean && npm run build:compile && npm run clean:package",
+    "build": "npm run clean && npm run build:compile && npm run clean:package && npm run build:copy",
     "build:compile": "ng-packagr -p ng-package.json -c ./tsconfig.json",
-    "clean": "rimraf dist",
+    "build:copy": "copyfiles src/* src/**/* src/generated/**/* ../../apps/angular/src/generated",
+    "clean": "rimraf dist && rimraf ../../apps/angular/src/generated",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"
   },
   "dependencies": {

@@ -31,11 +31,6 @@ export const StencilBaseConfig: Config = {
   ],
   outputTargets: [
     {
-      type: 'docs-vscode',
-      file: 'dist/html.html-data.json',
-      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-    },
-    {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
@@ -44,7 +39,6 @@ export const StencilBaseConfig: Config = {
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
     },
-    VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
   bundles: [
     { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },

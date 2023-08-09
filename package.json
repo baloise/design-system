@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "packages/output-targets/*"
+    "packages/output-targets/*",
+    "apps/*"
   ],
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
@@ -60,7 +61,13 @@
     "format": "prettier --write ./packages",
     "lint:check": "eslint --ext .tsx,.ts packages/",
     "lint": "eslint --ext .tsx,.ts packages/ --fix",
-    "spell": "cspell \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress"
+    "spell": "cspell \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress",
+    "==================== APPS / ANGULAR ===========": "================================",
+    "ng:start": "npm --prefix apps/angular run start",
+    "ng:build": "npm --prefix packages/components run ng:build",
+    "ng:e2e": "npm --prefix apps/angular run e2e",
+    "ng:test": "npm --prefix apps/angular run test"
+
   },
   "devDependencies": {
     "@angular/cli": "~13.3.10",
