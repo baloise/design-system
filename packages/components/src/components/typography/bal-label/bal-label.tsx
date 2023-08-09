@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Prop, State, Element, Listen } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import {
   BalConfigObserver,
@@ -11,7 +11,6 @@ import {
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nBalLabel } from './bal-label.i18n'
 import { BalElementStateInfo } from '../../../utils/element-states'
-import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 
 @Component({
   tag: 'bal-label',
@@ -19,12 +18,10 @@ import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
     css: './bal-label.sass',
   },
 })
-export class BalLabel
-  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalMutationObserver
-{
+export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo {
   @Element() el!: HTMLElement
 
-  @State() inputId?: string
+  private inputId = `bal-lbl-${labelIds++}`
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
 
@@ -108,24 +105,14 @@ export class BalLabel
   @Prop() pressed = false
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    this.attachLabelToInput()
-  }
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
 
-  mutationObserverActive = false
-
-  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button', attributes: false, characterData: false })
-  mutationListener(): void {
-    this.setHtmlFor()
+  @Listen('balFormControlDidLoad', { target: 'window' })
+  listenToBalFormControlDidLoad(event: CustomEvent) {
+    const tagName = event.detail.tagName.toLowerCase()
+    this.sync(tagName)
   }
 
   /**
@@ -143,21 +130,52 @@ export class BalLabel
    * ------------------------------------------------------
    */
 
-  async attachLabelToInput() {
-    const radio = this.getRadioElement()
-    this.mutationObserverActive = !!radio
-    await this.setHtmlFor()
-  }
-
   private getRadioElement() {
     const radioButton = this.el.closest('bal-radio-button')
-    return radioButton?.querySelector('bal-radio')
+    return radioButton?.querySelectorAll('input')
   }
 
-  private async setHtmlFor() {
-    const radio = this.getRadioElement()
-    const radioInput = await radio?.getInputElement()
-    this.inputId = radioInput?.id
+  private getCheckboxElement() {
+    const checkboxButton = this.el.closest('bal-checkbox-button')
+    return checkboxButton?.querySelectorAll('input')
+  }
+
+  private getFieldControlElement() {
+    const fieldControl = this.el.closest('bal-field-label')?.closest('bal-field')
+    return fieldControl?.querySelector('bal-field-control')?.querySelectorAll('input')
+  }
+
+  private setHtmlFor(value: string): void {
+    this.htmlFor = value
+  }
+
+  private valueExistInString(value: any, id: string): boolean {
+    return value.includes(id)
+  }
+
+  private setAriaLabelledBy(controls: NodeListOf<Element> | undefined) {
+    if (controls) {
+      this.setHtmlFor(controls[0]?.id as any)
+      controls.forEach(control => {
+        const labelledby = control.getAttribute('aria-labelledby')
+        const exist = this.valueExistInString(labelledby, this.inputId)
+        const labels = !exist ? `${labelledby} ${this.inputId}` : `${labelledby}`
+        control.setAttribute('aria-labelledby', labels)
+      })
+    }
+  }
+
+  private sync(tagName: string) {
+    if (tagName === 'bal-field') {
+      const controls = this.getFieldControlElement()
+      this.setAriaLabelledBy(controls)
+    } else if (tagName === 'bal-checkbox-button') {
+      const controls = this.getCheckboxElement()
+      this.setAriaLabelledBy(controls)
+    } else if (tagName === 'bal-radio-button') {
+      const controls = this.getRadioElement()
+      this.setAriaLabelledBy(controls)
+    }
   }
 
   /**
@@ -179,6 +197,7 @@ export class BalLabel
       <Host class={{ ...block.class() }}>
         <label
           htmlFor={this.htmlFor || this.inputId}
+          id={this.inputId}
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier('multiline').class(this.multiline),
@@ -200,3 +219,5 @@ export class BalLabel
     )
   }
 }
+
+let labelIds = 0

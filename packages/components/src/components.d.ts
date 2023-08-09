@@ -3068,6 +3068,10 @@ export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
 }
+export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalFieldElement;
+}
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalFileUploadElement;
@@ -4725,6 +4729,7 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
+        "onBalFormControlDidLoad"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5097,6 +5102,10 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
+        /**
+          * Emitted after render when element is labelled
+         */
+        "onBalFormControlDidLoad"?: (event: BalFieldCustomEvent<BalEvents.BalFieldAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -6473,6 +6482,10 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
+        /**
+          * Emitted after render when element is labelled
+         */
+        "onBalFormControlDidLoad"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
