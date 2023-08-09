@@ -2,7 +2,6 @@ import { defineConfig } from 'cypress'
 import getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
 
 export default defineConfig({
-  projectId: 'dnm1ky',
   video: false,
   screenshotOnRunFailure: true,
   screenshotsFolder: './cypress/snapshots/actual',
@@ -14,6 +13,8 @@ export default defineConfig({
   env: {
     failSilently: false,
   },
+
+  includeShadowDom: true,
 
   e2e: {
     // We've imported your old cypress plugins here.
