@@ -114,6 +114,37 @@ for your testing needs. It covers topics such as installation, project setup, an
 
 ### Configure
 
+#### Cypress
+
+To effectively interact with web components, it's essential to [configure Cypress](https://docs.cypress.io/guides/references/configuration#Options) to accommodate shadow DOM.
+This involves modifying the `cypress.config.ts` file and including the `includeShadowDom` option, setting it to `true`.
+
+Follow these steps to configure Cypress for shadow DOM support:
+
+1. Open the `cypress.config.ts` file in your project.
+
+2. Add the following option to enable shadow DOM support:
+
+```typescript
+{
+  // Other configuration options...
+
+  includeShadowDom: true,
+
+  // More configuration options...
+}
+```
+
+3. Save the file.
+
+This configuration adjustment ensures that Cypress can properly interact with and test web components that utilize shadow DOM.
+
+With this setting in place, you'll be able to seamlessly navigate and test web components that leverage shadow DOM for encapsulation and styling.
+
+Remember that shadow DOM support enhances the accuracy and effectiveness of your tests when dealing with modern web components.
+
+#### Testing Library
+
 Begin by installing our testing library.
 
 ```bash
