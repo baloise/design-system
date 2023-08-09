@@ -111,7 +111,8 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
 
   @Listen('balArialabelledBy', { target: 'window' })
   listenToBalArialabelledBy(event: CustomEvent) {
-    this.sync(event)
+    const tagName = event.detail.tagName.toLowerCase()
+    this.sync(tagName)
   }
 
   /**
@@ -139,7 +140,7 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
     return checkboxButton?.querySelectorAll('input')
   }
 
-  private getFieldElement() {
+  private getFieldControlElement() {
     const fieldControl = this.el.closest('bal-field-label')?.closest('bal-field')
     return fieldControl?.querySelector('bal-field-control')?.querySelectorAll('input')
   }
@@ -164,11 +165,9 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
     }
   }
 
-  sync(event: CustomEvent) {
-    const tagName = event.detail.tagName.toLowerCase()
-
+  private sync(tagName: string) {
     if (tagName === 'bal-field') {
-      const controls = this.getFieldElement()
+      const controls = this.getFieldControlElement()
       this.setAriaLabelledBy(controls)
     } else if (tagName === 'bal-checkbox-button') {
       const controls = this.getCheckboxElement()
