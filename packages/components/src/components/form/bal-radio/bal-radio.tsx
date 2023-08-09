@@ -20,6 +20,7 @@ import { inheritAttributes } from '../../../utils/attributes'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalElementStateInfo } from '../../../utils/element-states'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-radio',
@@ -27,7 +28,7 @@ import { BalElementStateInfo } from '../../../utils/element-states'
     css: '../bal-checkbox/radio-checkbox.sass',
   },
 })
-export class Radio implements ComponentInterface, BalElementStateInfo, Loggable {
+export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
@@ -45,6 +46,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
   @State() checked = false
   @State() focused = false
   @State() buttonTabindex?: number
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -257,6 +259,14 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * GETTERS
    * ------------------------------------------------------
    */
@@ -379,7 +389,17 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
       inputAttributes.tabIndex = this.buttonTabindex
     }
 
+    const id = this.ariaForm.controlId || this.inputId
+    let labelId = this.ariaForm.labelId || ''
     const LabelTag = this.labelHidden ? 'span' : 'label'
+
+    const labelAttributes: any = {}
+    if (!this.labelHidden) {
+      labelId = `${labelId} ${id}-lbl`.trim()
+      labelAttributes.id = `${id}-lbl`
+      labelAttributes.htmlFor = id
+    }
+
     return (
       <Host
         role="radio"
@@ -410,35 +430,40 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
           }}
           data-testid="bal-radio-input"
           type="radio"
-          id={this.inputId}
+          id={id}
+          aria-labelledby={labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
+          aria-checked={`${this.checked}`}
           name={this.name}
           value={value}
           checked={this.checked}
-          aria-checked={`${this.checked}`}
           disabled={this.disabled}
           readonly={this.readonly}
           required={this.required}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl as HTMLInputElement)}
-          aria-labelledby={!this.labelHidden ? this.inputId : ''}
           {...inputAttributes}
         />
         {!this.invisible ? (
           <LabelTag
             class={{
               ...labelEl.class(),
-              ...labelEl.modifier('checked').class(this.checked),
               ...labelEl.modifier('radio').class(),
+              ...labelEl.modifier('checked').class(this.checked),
+              ...labelEl.modifier('hidden').class(this.labelHidden),
+              ...labelEl.modifier('flat').class(this.flat),
             }}
+            {...labelAttributes}
             data-testid="bal-radio-label"
-            htmlFor={this.inputId}
-            {...inputAttributes}
           >
             <span
               class={{
                 ...labelTextEl.class(),
                 ...labelTextEl.modifier('hidden').class(this.labelHidden),
+                ...labelTextEl.modifier('flat').class(this.flat),
               }}
               data-testid="bal-radio-text"
             >

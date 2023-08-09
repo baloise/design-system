@@ -74,7 +74,6 @@ Cypress.Commands.add('getByLabelText', labelText => {
     .contains('label', labelText)
     .invoke('attr', 'for')
     .then(forAttributeValue => {
-      debugger
       cy.get(`input[id="${forAttributeValue}"]`)
     })
 })

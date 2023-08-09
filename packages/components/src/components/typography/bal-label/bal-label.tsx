@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Method, Prop, State, Element, Listen } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Method, Prop, State, Element } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 import {
   BalConfigObserver,
@@ -11,6 +11,7 @@ import {
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { i18nBalLabel } from './bal-label.i18n'
 import { BalElementStateInfo } from '../../../utils/element-states'
+import { BalAriaFormLinking, BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-label',
@@ -18,12 +19,16 @@ import { BalElementStateInfo } from '../../../utils/element-states'
     css: './bal-label.sass',
   },
 })
-export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo {
+export class BalLabel
+  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking
+{
   @Element() el!: HTMLElement
 
   private inputId = `bal-lbl-${labelIds++}`
+
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -109,12 +114,6 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
    * ------------------------------------------------------
    */
 
-  @Listen('balFormControlDidLoad', { target: 'window' })
-  listenToBalFormControlDidLoad(event: CustomEvent) {
-    const tagName = event.detail.tagName.toLowerCase()
-    this.sync(tagName)
-  }
-
   /**
    * @internal define config for the component
    */
@@ -126,56 +125,16 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
   }
 
   /**
-   * PRIVATE METHODS
+   * PUBLIC METHODS
    * ------------------------------------------------------
    */
 
-  private getRadioElement() {
-    const radioButton = this.el.closest('bal-radio-button')
-    return radioButton?.querySelectorAll('input')
-  }
-
-  private getCheckboxElement() {
-    const checkboxButton = this.el.closest('bal-checkbox-button')
-    return checkboxButton?.querySelectorAll('input')
-  }
-
-  private getFieldControlElement() {
-    const fieldControl = this.el.closest('bal-field-label')?.closest('bal-field')
-    return fieldControl?.querySelector('bal-field-control')?.querySelectorAll('input')
-  }
-
-  private setHtmlFor(value: string): void {
-    this.htmlFor = value
-  }
-
-  private valueExistInString(value: any, id: string): boolean {
-    return value.includes(id)
-  }
-
-  private setAriaLabelledBy(controls: NodeListOf<Element> | undefined) {
-    if (controls) {
-      this.setHtmlFor(controls[0]?.id as any)
-      controls.forEach(control => {
-        const labelledby = control.getAttribute('aria-labelledby')
-        const exist = this.valueExistInString(labelledby, this.inputId)
-        const labels = !exist ? `${labelledby} ${this.inputId}` : `${labelledby}`
-        control.setAttribute('aria-labelledby', labels)
-      })
-    }
-  }
-
-  private sync(tagName: string) {
-    if (tagName === 'bal-field') {
-      const controls = this.getFieldControlElement()
-      this.setAriaLabelledBy(controls)
-    } else if (tagName === 'bal-checkbox-button') {
-      const controls = this.getCheckboxElement()
-      this.setAriaLabelledBy(controls)
-    } else if (tagName === 'bal-radio-button') {
-      const controls = this.getRadioElement()
-      this.setAriaLabelledBy(controls)
-    }
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm) {
+    this.ariaForm = { ...ariaForm }
   }
 
   /**
@@ -193,11 +152,14 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
     const small = this.size === 'small'
     const large = this.size === 'large'
 
+    const id = this.ariaForm.labelId || this.inputId
+    const htmlFor = this.htmlFor || this.ariaForm.controlId
+
     return (
       <Host class={{ ...block.class() }}>
         <label
-          htmlFor={this.htmlFor || this.inputId}
-          id={this.inputId}
+          id={id}
+          htmlFor={htmlFor}
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier('multiline').class(this.multiline),

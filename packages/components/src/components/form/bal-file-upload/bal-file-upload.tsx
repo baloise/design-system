@@ -13,6 +13,7 @@ import { Logger, LogInstance } from '../../../utils/log'
 import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-file-upload',
@@ -20,7 +21,7 @@ import { validateFileArray } from './utils/file-validation.util'
     css: 'bal-file-upload.sass',
   },
 })
-export class FileUpload implements FormInput<File[]> {
+export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Element() el!: HTMLElement
 
   private fileUploadId = `bal-file-upload-${FileUploadIds++}`
@@ -30,6 +31,7 @@ export class FileUpload implements FormInput<File[]> {
 
   @State() files: File[] = []
   @State() focused = false
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -246,6 +248,14 @@ export class FileUpload implements FormInput<File[]> {
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -358,9 +368,12 @@ export class FileUpload implements FormInput<File[]> {
    */
 
   render() {
+    const id = this.ariaForm.controlId || this.fileUploadId
+
     return (
       <Host
         onClick={this.onHostClick}
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           'bal-file-upload': true,
         }}
@@ -373,7 +386,7 @@ export class FileUpload implements FormInput<File[]> {
           }}
         >
           <label
-            htmlFor={this.fileUploadId}
+            htmlFor={id}
             ref={el => (this.labelEl = el)}
             class={{
               'file-label': true,
@@ -383,7 +396,11 @@ export class FileUpload implements FormInput<File[]> {
             <input
               class="file-input"
               type="file"
-              id={this.fileUploadId}
+              id={id}
+              aria-labelledby={this.ariaForm.labelId}
+              aria-describedby={this.ariaForm.messageId}
+              aria-invalid={this.invalid === true ? 'true' : 'false'}
+              aria-disabled={this.disabled ? 'true' : null}
               name={this.name}
               multiple={this.multiple}
               disabled={this.disabled || this.loading || this.readonly}

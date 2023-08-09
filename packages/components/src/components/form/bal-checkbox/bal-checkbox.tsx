@@ -19,6 +19,7 @@ import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-checkbox',
@@ -26,7 +27,7 @@ import { FOCUS_KEYS } from '../../../utils/focus-visible'
     css: 'radio-checkbox.sass',
   },
 })
-export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
+export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, BalAriaFormLinking {
   private inputId = `bal-cb-${checkboxIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
@@ -37,6 +38,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   @State() hasLabel = true
   @State() focused = false
   @State() buttonTabindex?: number
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -277,6 +279,14 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * GETTERS
    * ------------------------------------------------------
    */
@@ -391,7 +401,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     if (this.buttonTabindex !== undefined) {
       inputAttributes.tabIndex = this.buttonTabindex
     }
+
+    const id = this.ariaForm.controlId || this.inputId
+    let labelId = this.ariaForm.labelId || ''
     const LabelTag = this.labelHidden ? 'span' : 'label'
+
+    const labelAttributes: any = {}
+    if (!this.labelHidden) {
+      labelId = `${labelId} ${id}-lbl`.trim()
+      labelAttributes.id = `${id}-lbl`
+      labelAttributes.htmlFor = id
+    }
 
     return (
       <Host
@@ -425,31 +445,34 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           }}
           data-testid="bal-checkbox-input"
           type="checkbox"
-          id={this.inputId}
+          id={id}
+          aria-labelledby={labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
+          aria-checked={`${this.checked}`}
           name={this.name}
           value={this.value}
           checked={this.checked}
-          aria-checked={`${this.checked}`}
           disabled={this.disabled || this.hidden}
           readonly={this.readonly}
           required={this.required}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
-          aria-labelledby={!this.labelHidden ? this.inputId : ''}
           {...inputAttributes}
         />
         {!this.invisible ? (
           <LabelTag
             class={{
               ...labelEl.class(),
-              ...labelEl.modifier('checked').class(this.checked),
-              ...labelEl.modifier('switch').class(this.interface === 'switch'),
               ...labelEl.modifier('checkbox').class(),
+              ...labelEl.modifier('checked').class(this.checked),
               ...labelEl.modifier('hidden').class(this.labelHidden),
               ...labelEl.modifier('flat').class(this.flat),
+              ...labelEl.modifier('switch').class(this.interface === 'switch'),
             }}
-            htmlFor={this.inputId}
+            {...labelAttributes}
             data-testid="bal-checkbox-label"
           >
             <span

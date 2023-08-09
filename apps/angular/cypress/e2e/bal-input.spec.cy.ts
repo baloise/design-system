@@ -3,8 +3,7 @@ describe('bal-input', () => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    // cy.getByLabelText('Text Input')
-    cy.getByPlaceholder('Enter text')
+    cy.getByLabelText('Text Input')
       .should('have.value', '')
       .click()
       .blur()
