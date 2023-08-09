@@ -11,10 +11,12 @@ import {
   EventEmitter,
   Event,
 } from '@stencil/core'
-import { TooltipComponentInterface, MainVariantRenderer } from './variants'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
-import { VariantRenderer } from './variants/variant.renderer'
 import { BEM } from '../../utils/bem'
+import { balBreakpoints } from '../../utils/breakpoints'
+import { balBrowser } from '../../utils/browser'
+import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
+import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
 
 @Component({
   tag: 'bal-tooltip',
@@ -23,15 +25,16 @@ import { BEM } from '../../utils/bem'
   },
   shadow: true,
 })
-export class Tooltip implements ComponentInterface, TooltipComponentInterface, Loggable {
+export class Tooltip implements ComponentInterface, Loggable {
   private tooltipId = `bal-to-${tooltipIds++}`
 
-  private tooltipVariantRenderer = new VariantRenderer(new MainVariantRenderer())
-
   @Element() el!: HTMLElement
-  containerEl: HTMLDivElement | undefined
-  contentEl: HTMLDivElement | undefined
-  arrowEl: HTMLDivElement | undefined
+
+  private containerEl: HTMLDivElement | undefined
+  private contentEl: HTMLDivElement | undefined
+  private arrowEl: HTMLDivElement | undefined
+  private trigger: Element | undefined
+  private cleanup?: () => void
 
   log!: LogInstance
 
@@ -54,11 +57,6 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    * If set it turns a tooltip into a fullscreen or a drawer on touch devices
    */
   @Prop() placement: BalProps.BalTooltipPlacement = 'bottom'
-  // test
-  /**
-   * If `true`, it shows a little indicator to the trigger element.
-   */
-  @Prop() arrow = false
 
   /**
    * Offset form trigger to tooltip.
@@ -102,23 +100,25 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
 
-    let showEvents: string[] = []
-    let hideEvents: string[] = []
+    if (!balBreakpoints.isTouch) {
+      let showEvents: string[] = []
+      let hideEvents: string[] = []
 
-    showEvents = ['mouseenter', 'focus']
-    hideEvents = ['mouseleave', 'blur']
+      showEvents = ['mouseenter', 'focus']
+      hideEvents = ['mouseleave', 'blur']
 
-    showEvents.forEach(event => {
-      if (this.triggerElement) {
-        this.triggerElement.addEventListener(event, () => this.present())
-      }
-    })
+      showEvents.forEach(event => {
+        if (this.triggerElement) {
+          this.triggerElement.addEventListener(event, () => this.present())
+        }
+      })
 
-    hideEvents.forEach(event => {
-      if (this.triggerElement) {
-        this.triggerElement.addEventListener(event, () => this.dismiss())
-      }
-    })
+      hideEvents.forEach(event => {
+        if (this.triggerElement) {
+          this.triggerElement.addEventListener(event, () => this.dismiss())
+        }
+      })
+    }
   }
 
   /**
@@ -131,8 +131,40 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    */
   @Method()
   async present(): Promise<boolean> {
-    this.presented = true
-    return await this.tooltipVariantRenderer.present(this)
+    //
+    // identify trigger element or the the closest trigger available
+    if (!this.trigger && balBrowser.hasDocument) {
+      const firstTrigger = Array.from(document.querySelectorAll(`[id="${this.reference}"]`))[0]
+      this.trigger = firstTrigger
+    }
+
+    if (this.trigger && this.containerEl && this.arrowEl) {
+      this.balWillAnimate.emit()
+      //
+      // get placement type of the trigger
+      const triggerVariantAttr = this.trigger.attributes.getNamedItem('bal-tooltip-placement')
+      if (triggerVariantAttr) {
+        this.placement = triggerVariantAttr.value as BalProps.BalTooltipPlacement
+      } else {
+        this.placement = this.placement
+      }
+
+      //
+      // show all required elements
+      showContainerElement(this.containerEl)
+      showArrowElement(this.arrowEl)
+      this.trigger.classList.add('bal-tooltip-trigger')
+      this.presented = true
+
+      this.cleanup = autoUpdate(this.trigger, this.containerEl, () => {
+        this.update()
+      })
+
+      this.balDidAnimate.emit()
+
+      return true
+    }
+    return false
   }
 
   /**
@@ -140,8 +172,76 @@ export class Tooltip implements ComponentInterface, TooltipComponentInterface, L
    */
   @Method()
   async dismiss(): Promise<boolean> {
-    this.presented = false
-    return await this.tooltipVariantRenderer.dismiss(this)
+    if (this.containerEl && this.arrowEl && this.trigger) {
+      this.balWillAnimate.emit()
+
+      if (this.cleanup) {
+        this.cleanup()
+      }
+
+      this.trigger.classList.remove('bal-tooltip-trigger')
+
+      hideContainerElement(this.containerEl)
+      hideArrowElement(this.arrowEl)
+      this.presented = false
+      this.balDidAnimate.emit()
+
+      return true
+    }
+    return false
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async update(): Promise<boolean> {
+    if (this.trigger && this.containerEl && this.arrowEl) {
+      this.balWillAnimate.emit()
+      computePosition(this.trigger, this.containerEl, {
+        placement: this.placement,
+        middleware: [
+          shift(),
+          flip(),
+          offset(8),
+          arrow({
+            element: this.arrowEl,
+            padding: 4,
+          }),
+        ],
+      }).then(({ x, y, middlewareData, placement }) => {
+        const side = placement.split('-')[0]
+
+        const staticSide = {
+          top: 'bottom',
+          right: 'left',
+          bottom: 'top',
+          left: 'right',
+        }[side] as string
+
+        if (this.containerEl) {
+          Object.assign(this.containerEl.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          })
+        }
+
+        if (middlewareData.arrow && this.arrowEl) {
+          const arrowPosition = middlewareData.arrow
+          Object.assign(this.arrowEl.style, {
+            left: x != null && arrowPosition.x != null ? `${arrowPosition.x}px` : '',
+            top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
+            right: '',
+            bottom: '',
+            [staticSide]: `${-4}px`,
+          })
+        }
+      })
+      this.balDidAnimate.emit()
+
+      return true
+    }
+    return false
   }
 
   /**

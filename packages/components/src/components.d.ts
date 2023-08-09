@@ -3028,10 +3028,6 @@ export namespace Components {
     }
     interface BalTooltip {
         /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow": boolean;
-        /**
           * Defines the width of the content
          */
         "contentWidth"?: number;
@@ -3049,6 +3045,7 @@ export namespace Components {
           * Id of the reference element default is the trigger element.
          */
         "reference": string;
+        "update": () => Promise<boolean>;
     }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
@@ -7317,10 +7314,6 @@ declare namespace LocalJSX {
         "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
     }
     interface BalTooltip {
-        /**
-          * If `true`, it shows a little indicator to the trigger element.
-         */
-        "arrow"?: boolean;
         /**
           * Defines the width of the content
          */

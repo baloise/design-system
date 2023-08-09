@@ -27,7 +27,7 @@ import { Basic } from './bal-tooltip.stories'
 
 ## Usage
 
-To link the tooltip component to a trigger element, you need to assign a reference to your tooltip component and add the id attribute to the trigger element, as shown in the example below:
+To link the tooltip component to a trigger element, you need to assign a `reference` to your tooltip component and add the `id` attribute to the trigger element, as shown in the example below:
 
 ```html
 <bal-button id="my-tooltip">Click me</bal-button>
@@ -48,15 +48,6 @@ You can use the `placement` property to specify the position of the Tooltip. Thi
 ```html
 <bal-button id="my-tooltip">Click me</bal-button>
 <bal-tooltip label="tooltip Label" reference="my-tooltip" placement="right">Tooltip content</bal-tooltip>
-```
-
-### Arrow tooltips
-
-The `arrow` prop can be utilized to include an arrow in the Tooltip, visually indicating the associated element to which it pertains. This arrow serves as a directional cue, providing a clear visual connection between the Tooltip and its relevant element.
-
-```html
-<bal-button id="my-tooltip">Click me</bal-button>
-<bal-tooltip label="tooltip Label" reference="my-tooltip" arrow>Tooltip content</bal-tooltip>
 ```
 
 ### Angular

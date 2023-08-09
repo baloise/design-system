@@ -18,24 +18,17 @@
       <main class="container py-medium">
         <bal-stack>
           <bal-button data-test="basic-trigger" id="basic-tooltip">Basic</bal-button>
-          <bal-button data-test="arrow-trigger" id="arrow-tooltip">Arrow</bal-button>
           <bal-button data-test="placement-right-trigger" id="placement-right-tooltip">Right</bal-button>
         </bal-stack>
 
-        <bal-tooltip id="tooltip-basic" data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
+        <bal-tooltip data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
           <p>Basic Tooltip</p>
         </bal-tooltip>
 
-        <bal-tooltip id="tooltip-arrow" data-test="arrow" label="Arrow Tooltip" reference="arrow-tooltip" arrow>
-          <p>Tooltip with arrow</p>
-        </bal-tooltip>
-
         <bal-tooltip
-          id="tooltip-placement-right"
           data-test="placement-right"
           label="Placement Right"
           reference="placement-right-tooltip"
-          arrow
           placement="right"
         >
           <p>Tooltip right placement</p>

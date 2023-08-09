@@ -21,13 +21,12 @@ export const Basic = args => ({
   template: `
 <div>
   <bal-button id="my-tooltip">Hover over me</bal-button>
-  <bal-tooltip v-bind="args" id="my-tooltip" label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
+  <bal-tooltip v-bind="args" label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
 </div>
 `,
 })
 Basic.args = {
   label: 'Tooltip Label',
-  arrow: true,
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),

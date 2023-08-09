@@ -1,5 +1,4 @@
 describe('bal-tooltip', () => {
-  // testPopover('mobile')
   testTooltip('desktop')
 
   function testTooltip(platform: 'desktop' | 'mobile') {
@@ -11,12 +10,6 @@ describe('bal-tooltip', () => {
       it('basic tooltip', () => {
         cy.getByTestId('basic-trigger').click()
         cy.compareSnapshot(`tooltip-basic-${platform}`)
-        cy.get('body').type('{esc}')
-      })
-
-      it('with arrow tooltip', () => {
-        cy.getByTestId('arrow-trigger').click()
-        cy.compareSnapshot(`tooltip-arrow-${platform}`)
         cy.get('body').type('{esc}')
       })
 
