@@ -25,5 +25,12 @@ declare namespace Cypress {
       state: 'done' | 'failed' | 'active' | 'disabled',
       options?: Partial<Loggable>,
     ): Chainable<JQuery>
+    /**
+     * Assert that the tab item has not the given state.
+     */
+    balStepsItemShouldNotHaveState(
+      state: 'done' | 'failed' | 'active' | 'disabled',
+      options?: Partial<Loggable>,
+    ): Chainable<JQuery>
   }
 }

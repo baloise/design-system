@@ -31,11 +31,13 @@
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ],
   "scripts": {
-    "build": "npm run build:bundle",
-    "build:bundle": "rollup --config rollup.config.js"
+    "build": "npm run build:clean && npm run build:compile",
+    "build:compile": "tsc src/*.ts --outDir dist --target es5 --declaration --moduleResolution node --skipLibCheck",
+    "build:clean": "rimraf dist"
   },
   "dependencies": {
     "@baloise/design-system-components": "13.6.2",

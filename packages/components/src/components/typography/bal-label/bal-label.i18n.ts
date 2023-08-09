@@ -1,10 +1,10 @@
 import { I18n } from '../../../interfaces'
 
-interface I18nLabel {
+interface I18nBalLabel {
   optional: string
 }
 
-export const i18nLabel: I18n<I18nLabel> = {
+export const i18nBalLabel: I18n<I18nBalLabel> = {
   de: {
     optional: ' (optional)',
   },

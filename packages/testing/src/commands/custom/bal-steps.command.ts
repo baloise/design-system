@@ -64,3 +64,15 @@ Cypress.Commands.add(
     return cy.wrapComponent(subject, o).should('have.class', `bal-steps__nav__item--${state}`)
   },
 )
+
+Cypress.Commands.add(
+  'balStepsItemShouldNotHaveState',
+  {
+    prevSubject: true,
+  },
+  (subject, state = 'done', options) => {
+    log('balStepsItemShouldNotHaveState', '', subject, options)
+    const o = wrapOptions(options)
+    return cy.wrapComponent(subject, o).should('not.have.class', `bal-steps__nav__item--${state}`)
+  },
+)

@@ -1,11 +1,11 @@
 import { I18n } from '../../../interfaces'
 
-interface I18nTime {
+interface I18nBalTimeInput {
   hours: string
   minutes: string
 }
 
-export const i18nTime: I18n<I18nTime> = {
+export const i18nBalTimeInput: I18n<I18nBalTimeInput> = {
   de: {
     hours: 'hh',
     minutes: 'mm',

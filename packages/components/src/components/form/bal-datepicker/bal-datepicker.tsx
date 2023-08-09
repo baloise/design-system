@@ -44,7 +44,7 @@ import {
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
-import { i18nDate } from './bal-datepicker.i18n'
+import { i18nBalDatepicker } from './bal-datepicker.i18n'
 import {
   defaultConfig,
   BalConfigObserver,
@@ -449,7 +449,7 @@ export class Datepicker
   }
 
   get months(): { name: string; index: number }[] {
-    const monthNames = i18nDate[this.language].monthsShort
+    const monthNames = i18nBalDatepicker[this.language].monthsShort
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min && this.pointerDate.year === getYear(parse(this.min) as Date)) {
@@ -466,7 +466,7 @@ export class Datepicker
   }
 
   get weekDays(): string[] {
-    const translations = [...i18nDate[this.language].weekdaysMin]
+    const translations = [...i18nBalDatepicker[this.language].weekdaysMin]
     translations.push(translations.shift() || '')
     return translations
   }
