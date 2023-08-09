@@ -3,30 +3,23 @@ import { CommonModule } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { BaloiseDesignSystemModule } from 'src/generated/src'
+import { InputComponent } from './form-components/input.component'
+
+export interface UpdateControl {
+  name: string
+  value: string
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, BaloiseDesignSystemModule],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, BaloiseDesignSystemModule, InputComponent],
   template: `
     <bal-app class="has-sticky-footer">
       <main class="container py-normal">
         <form class="is-flex fg-normal is-flex-direction-column" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-          <bal-card>
-            <bal-card-title>Input</bal-card-title>
-            <bal-card-content>
-              <bal-field>
-                <bal-field-label>Text Input</bal-field-label>
-                <bal-field-control>
-                  <bal-input placeholder="Enter text" formControlName="textInput"></bal-input>
-                </bal-field-control>
-              </bal-field>
-              <bal-button color="secondary" (click)="updateValue('textInput', 'updated value')">
-                Update Value
-              </bal-button>
-            </bal-card-content>
-          </bal-card>
+          <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
 
           <!-- <bal-card>
             <bal-card-title>Textarea</bal-card-title>
@@ -135,10 +128,11 @@ export class AppComponent {
     textInput: new FormControl('', [Validators.required]),
   })
 
-  updateValue(formControlName: string, value: any) {
-    const control = this.myForm.get(formControlName)
+  updateValue(option: UpdateControl) {
+    console.log('updateValue', option)
+    const control = this.myForm.get(option.name)
     if (control) {
-      control.setValue(value)
+      control.setValue(option.value)
     }
   }
 
