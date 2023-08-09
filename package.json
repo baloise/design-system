@@ -67,7 +67,6 @@
     "ng:build": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-css --filter=@baloise/design-system-output-target-angular && npm --prefix packages/components run ng:build && npm --prefix packages/testing run build",
     "ng:e2e": "npm --prefix apps/angular run e2e",
     "ng:test": "npm --prefix apps/angular run test"
-
   },
   "devDependencies": {
     "@angular/cli": "~13.3.10",
