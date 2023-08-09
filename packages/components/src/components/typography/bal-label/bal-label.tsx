@@ -109,8 +109,8 @@ export class BalLabel implements ComponentInterface, Loggable, BalConfigObserver
    * ------------------------------------------------------
    */
 
-  @Listen('balArialabelledBy', { target: 'window' })
-  listenToBalArialabelledBy(event: CustomEvent) {
+  @Listen('balFormControlDidLoad', { target: 'window' })
+  listenToBalFormControlDidLoad(event: CustomEvent) {
     const tagName = event.detail.tagName.toLowerCase()
     this.sync(tagName)
   }
