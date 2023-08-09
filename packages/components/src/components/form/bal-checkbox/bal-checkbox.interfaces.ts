@@ -49,4 +49,7 @@ namespace BalEvents {
 
   export type BalCheckboxButtonFocusDetail = FocusEvent
   export type BalCheckboxButtonFocus = BalCheckboxButtonCustomEvent<BalCheckboxButtonFocusDetail>
+
+  export type BalCheckboxButtonAriaLabelledByDetail = HTMLElement
+  export type BalCheckboxButtonAriaLabelledBy = BalCheckboxButtonCustomEvent<BalCheckboxButtonAriaLabelledByDetail>
 }

@@ -380,7 +380,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
     }
 
     const LabelTag = this.labelHidden ? 'span' : 'label'
-
     return (
       <Host
         role="radio"
@@ -422,6 +421,7 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable 
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl as HTMLInputElement)}
+          aria-labelledby={!this.labelHidden ? this.inputId : ''}
           {...inputAttributes}
         />
         {!this.invisible ? (

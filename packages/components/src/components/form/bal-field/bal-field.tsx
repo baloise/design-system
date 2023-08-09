@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
+import { Event, EventEmitter } from '@stencil/core'
 
 @Component({
   tag: 'bal-field',
@@ -86,12 +87,21 @@ export class Field implements ComponentInterface, BalMutationObserver {
     this.updateProps([...this.inputElements, ...this.formControlElement], 'loading')
   }
 
+  /**
+   * Emitted after render when element is labelled
+   */
+  @Event() balFormControlDidLoad!: EventEmitter<BalEvents.BalFieldAriaLabelledByDetail>
+
   connectedCallback() {
     this.triggerAllHandlers()
   }
 
   componentWillLoad() {
     this.triggerAllHandlers()
+  }
+
+  componentDidLoad() {
+    this.balFormControlDidLoad.emit(this.el)
   }
 
   mutationObserverActive = true
