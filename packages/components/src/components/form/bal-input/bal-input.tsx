@@ -12,7 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent, findItemLabel, findItemMessage } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import {
   FormInput,
@@ -522,15 +522,32 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
       }
     }
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
+
     let inputProps = {}
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
+    }
+
+    debugger
+    const label = findItemLabel(this.el)
+    if (label) {
+      const labelId = this.inputId + '-lbl'
+      label.id = labelId
+      label.htmlFor = this.inputId
+      inputProps = {
+        ...inputProps,
+        'aria-labelledby': labelId,
+      }
+    }
+
+    const message = findItemMessage(this.el)
+    if (message) {
+      const messageId = this.inputId + '-msg'
+      message.id = messageId
+      inputProps = {
+        ...inputProps,
+        'aria-describedby': messageId,
+      }
     }
 
     const block = BEM.block('input')
@@ -557,7 +574,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           data-testid="bal-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
-          aria-labelledby={labelId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
           disabled={this.disabled}
           accept={this.accept}
           inputMode={this.inputmode}

@@ -32,8 +32,8 @@ Cypress.Commands.add('getByRole', (role, options) => {
       }
       const label = Cypress.$(element).attr('aria-label')
       const title = Cypress.$(element).attr('title')
-      const text = Cypress.$(element).text()
-      return text === options.name || label === options.name || title === options.name
+      const text = Cypress.$(element).text().trim()
+      return text === options.name.trim() || label === options.name.trim() || title === options.name.trim()
     }, o)
 
     const firstButton = labeledButtons.first(o).waitForComponents(o)

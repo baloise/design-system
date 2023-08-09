@@ -12,15 +12,26 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Input</bal-card-title>
       <bal-card-content>
-        <bal-field>
+        <bal-field
+          required
+          [disabled]="form.get('textInput')?.disabled"
+          [invalid]="form.get('textInput')?.touched && form.get('textInput')?.invalid"
+        >
           <bal-field-label>Text Input</bal-field-label>
           <bal-field-control>
             <bal-input placeholder="Enter text" formControlName="textInput"></bal-input>
           </bal-field-control>
+          <bal-field-message>
+            <bal-ng-error controlName="textInput" error="required">This field is required</bal-ng-error>
+          </bal-field-message>
         </bal-field>
-        <bal-button color="secondary" (click)="updateControl.emit({ name: 'textInput', value: 'updated value' })">
-          Update Value
-        </bal-button>
+        <bal-button-group>
+          <bal-button color="secondary" (click)="updateControl.emit({ name: 'textInput', value: 'updated value' })">
+            Update Input
+          </bal-button>
+          <bal-button color="tertiary" (click)="form.get('textInput')?.enable()">Enable Input</bal-button>
+          <bal-button color="tertiary" (click)="form.get('textInput')?.disable()">Disable Input</bal-button>
+        </bal-button-group>
       </bal-card-content>
     </bal-card>
   `,

@@ -62,6 +62,14 @@ export const findItemLabel = (componentEl: HTMLElement): HTMLLabelElement | null
   return null
 }
 
+export const findItemMessage = (componentEl: HTMLElement): HTMLBalFieldMessageElement | null => {
+  const fieldLabelEl = componentEl.closest('bal-field')
+  if (fieldLabelEl) {
+    return fieldLabelEl.querySelector('bal-field-message')
+  }
+  return null
+}
+
 export const hasTagName = (element: any, tag: string) => {
   return element && element.tagName && element.tagName === tag.toUpperCase()
 }
