@@ -24,7 +24,7 @@ runs:
       shell: bash
 
     - name: Build Core
-      run: turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts
+      run: npm run ci:new
       shell: bash
 
     - uses: ./.github/workflows/actions/upload-archive
@@ -38,3 +38,9 @@ runs:
         name: fonts
         output: packages/fonts/FontsBuild.zip
         paths: packages/fonts/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+        with:
+          name: icons
+          output: packages/icons/IconsBuild.zip
+          paths: packages/icons/dist

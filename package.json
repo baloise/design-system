@@ -29,6 +29,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "ci:new": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons",
     "==================== START ====================": "================================",
     "start": "npm run dev",
     "serve": "npm run build:serve && npm --prefix packages/components run serve",
