@@ -29,7 +29,7 @@ import {
   isSameMonth,
   lastDayOfMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {

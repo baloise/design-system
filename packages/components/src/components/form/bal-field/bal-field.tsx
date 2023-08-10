@@ -119,6 +119,8 @@ export class Field implements ComponentInterface, BalMutationObserver {
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-datepicker')),
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox')),
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox-group')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio-group')),
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-number-input')),
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-time-input')),
       ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-slider')),

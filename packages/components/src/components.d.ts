@@ -604,6 +604,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the checkboxes.
          */
         "readonly"?: boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
@@ -2299,6 +2300,7 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * the value of the radio group.

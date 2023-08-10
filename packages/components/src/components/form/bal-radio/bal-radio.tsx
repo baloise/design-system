@@ -390,12 +390,12 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
     }
 
     const id = this.ariaForm.controlId || this.inputId
-    let labelId = this.ariaForm.labelId || ''
+    let labelId = this.ariaForm.labelId || null
     const LabelTag = this.labelHidden ? 'span' : 'label'
 
     const labelAttributes: any = {}
     if (!this.labelHidden) {
-      labelId = `${labelId} ${id}-lbl`.trim()
+      labelId = `${labelId || ''} ${id}-lbl`.trim()
       labelAttributes.id = `${id}-lbl`
       labelAttributes.htmlFor = id
     }
