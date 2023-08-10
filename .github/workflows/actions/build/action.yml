@@ -46,7 +46,7 @@ runs:
         paths: packages/icons/dist
 
     - uses: ./.github/workflows/actions/upload-archive
-        with:
-          name: css
-          output: packages/css/CssBuild.zip
-          paths: packages/css/css
+      with:
+        name: css
+        output: packages/css/CssBuild.zip
+        paths: packages/css/css
