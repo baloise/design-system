@@ -43,10 +43,16 @@ runs:
       with:
         name: icons
         output: packages/icons/IconsBuild.zip
-        paths: packages/icons/dist
+        paths: packages/icons/dist packages/icons/src/index.ts
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: css
         output: packages/css/CssBuild.zip
         paths: packages/css/css
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components
+        output: packages/components/ComponentsBuild.zip
+        paths: packages/components/dist packages/components/loader packages/components/www packages/components/src/components.d.ts
