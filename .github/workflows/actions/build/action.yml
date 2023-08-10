@@ -17,6 +17,7 @@ runs:
 
     - name: Update NPM registry
       run: npm run registry
+      shell: bash
 
     - name: Install Dependencies
       run: npm install
