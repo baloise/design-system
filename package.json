@@ -29,6 +29,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "==================== CI =======================": "================================",
+    "ci:format": "npx prettier --check ./packages",
     "ci:new": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons",
     "==================== START ====================": "================================",
     "start": "npm run dev",
