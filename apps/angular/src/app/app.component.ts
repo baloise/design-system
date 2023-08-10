@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { InputComponent } from './form-components/input.component'
+import { TextareaComponent } from './form-components/textarea.component'
 
 export interface UpdateControl {
   name: string
@@ -14,19 +15,27 @@ export interface UpdateControl {
   selector: 'app-root',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, BaloiseDesignSystemModule, InputComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    ReactiveFormsModule,
+    BaloiseDesignSystemModule,
+    InputComponent,
+    TextareaComponent,
+  ],
   template: `
     <bal-app class="has-sticky-footer">
       <main class="container py-normal">
         <form class="is-flex fg-normal is-flex-direction-column" [formGroup]="myForm" (ngSubmit)="onSubmit()">
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
+          <app-textarea [form]="myForm" (updateControl)="updateValue($event)"></app-textarea>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
             <bal-button elementType="submit" [disabled]="!myForm.valid">Submit</bal-button>
           </div>
 
-          {{ myForm.value | json }}
+          <pre data-test="result">{{ myForm.value | json }}</pre>
 
           <router-outlet></router-outlet>
         </form>
@@ -36,7 +45,8 @@ export interface UpdateControl {
 })
 export class AppComponent {
   myForm = new FormGroup({
-    textInput: new FormControl('', [Validators.required]),
+    input: new FormControl('', [Validators.required]),
+    textarea: new FormControl('', [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {

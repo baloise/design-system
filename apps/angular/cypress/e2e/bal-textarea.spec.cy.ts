@@ -1,9 +1,9 @@
-describe('bal-input', () => {
+describe('bal-textarea', () => {
   beforeEach(() => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Input Label')
+    cy.getByLabelText('Textarea Label')
       .should('have.value', '')
       .click()
       .blur()
@@ -11,7 +11,7 @@ describe('bal-input', () => {
       .getDescribingElement()
       .contains('This field is required')
 
-    cy.getByPlaceholder('Enter text')
+    cy.getByPlaceholder('Enter comment')
       .type('Hello World')
       .blur()
       .should('have.value', 'Hello World')
@@ -19,19 +19,19 @@ describe('bal-input', () => {
       .getDescribingElement()
       .should('not.contain', 'This field is required')
 
-    cy.getByRole('button', { name: 'Update Input' }).click()
-    cy.getByPlaceholder('Enter text')
+    cy.getByRole('button', { name: 'Update Textarea' }).click()
+    cy.getByPlaceholder('Enter comment')
       .should('have.value', 'updated value')
       .shouldBeValid()
       .getDescribingElement()
       .should('not.contain', 'This field is required')
 
-    cy.getByRole('button', { name: 'Disable Input' }).click()
-    cy.getByPlaceholder('Enter text').should('be.disabled')
+    cy.getByRole('button', { name: 'Disable Textarea' }).click()
+    cy.getByPlaceholder('Enter comment').should('be.disabled')
 
-    cy.getByRole('button', { name: 'Enable Input' }).click()
-    cy.getByPlaceholder('Enter text').should('not.be.disabled')
+    cy.getByRole('button', { name: 'Enable Textarea' }).click()
+    cy.getByPlaceholder('Enter comment').should('not.be.disabled')
 
-    cy.getByTestId('result').contains('"input": "updated value"')
+    cy.getByTestId('result').contains('"textarea": "updated value"')
   })
 })

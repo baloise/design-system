@@ -44,7 +44,7 @@ declare global {
     interface Chainable {
       getDescribingElement(): Chainable<void>
       shouldBeInvalid(): Chainable<void>
-      shouldNotBeInvalid(): Chainable<void>
+      shouldBeValid(): Chainable<void>
       getByLabelText(labelText: string): Chainable<void>
     }
   }
@@ -65,7 +65,7 @@ Cypress.Commands.add('shouldBeInvalid', { prevSubject: true }, subject => {
   return cy.wrap(subject).should('have.attr', 'aria-invalid', 'true')
 })
 
-Cypress.Commands.add('shouldNotBeInvalid', { prevSubject: true }, subject => {
+Cypress.Commands.add('shouldBeValid', { prevSubject: true }, subject => {
   return cy.wrap(subject).should('not.have.attr', 'aria-invalid', 'true')
 })
 
@@ -74,6 +74,6 @@ Cypress.Commands.add('getByLabelText', labelText => {
     .contains('label', labelText)
     .invoke('attr', 'for')
     .then(forAttributeValue => {
-      cy.get(`input[id="${forAttributeValue}"]`)
+      cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`)
     })
 })

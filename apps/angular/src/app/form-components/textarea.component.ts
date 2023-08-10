@@ -5,32 +5,32 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { UpdateControl } from '../app.component'
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-textarea',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, BaloiseDesignSystemModule],
   template: `
     <bal-card [formGroup]="form">
-      <bal-card-title>Input</bal-card-title>
+      <bal-card-title>Textarea</bal-card-title>
       <bal-card-content>
         <bal-field
           required
-          [disabled]="form.get('input')?.disabled"
-          [invalid]="form.get('input')?.touched && form.get('input')?.invalid"
+          [disabled]="form.get('textarea')?.disabled"
+          [invalid]="form.get('textarea')?.touched && form.get('textarea')?.invalid"
         >
-          <bal-field-label>Input Label</bal-field-label>
+          <bal-field-label>Textarea Label</bal-field-label>
           <bal-field-control>
-            <bal-input placeholder="Enter text" formControlName="input"></bal-input>
+            <bal-textarea placeholder="Enter comment" formControlName="textarea"></bal-textarea>
           </bal-field-control>
           <bal-field-message>
-            <bal-ng-error controlName="input" error="required">This field is required</bal-ng-error>
+            <bal-ng-error controlName="textarea" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
         <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'input', value: 'updated value' })">
-            Update Input
+          <bal-button color="secondary" (click)="updateControl.emit({ name: 'textarea', value: 'updated value' })">
+            Update Textarea
           </bal-button>
-          <bal-button color="tertiary" (click)="form.get('input')?.enable()">Enable Input</bal-button>
-          <bal-button color="tertiary" (click)="form.get('input')?.disable()">Disable Input</bal-button>
+          <bal-button color="tertiary" (click)="form.get('textarea')?.enable()">Enable Textarea</bal-button>
+          <bal-button color="tertiary" (click)="form.get('textarea')?.disable()">Disable Textarea</bal-button>
         </bal-button-group>
       </bal-card-content>
     </bal-card>
@@ -38,7 +38,7 @@ import { UpdateControl } from '../app.component'
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent {
+export class TextareaComponent {
   @Input() form!: FormGroup
 
   @Output() updateControl = new EventEmitter<UpdateControl>()

@@ -10,7 +10,9 @@ Cypress.Commands.add('getByTestId', (testID, options?: Partial<Cypress.Loggable>
 
 Cypress.Commands.add('getByPlaceholder', (placeholder, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
-  const element = cy.get(`input[placeholder="${placeholder}"]`, o).waitForComponents(o)
+  const element = cy
+    .get(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o)
+    .waitForComponents(o)
   element.then(o, $el => log('getByPlaceholder', placeholder, $el, options))
   return element
 })
