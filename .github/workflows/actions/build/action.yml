@@ -40,7 +40,7 @@ runs:
         paths: packages/fonts/dist
 
     - uses: ./.github/workflows/actions/upload-archive
-        with:
-          name: icons
-          output: packages/icons/IconsBuild.zip
-          paths: packages/icons/dist
+      with:
+        name: icons
+        output: packages/icons/IconsBuild.zip
+        paths: packages/icons/dist
