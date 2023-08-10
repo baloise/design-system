@@ -3,17 +3,30 @@ description: 'Build'
 runs:
   using: 'composite'
   steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
       with:
-        node-version: 16.x
+        fetch-depth: 2
+
+    - name: Setup NodeJS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Update NPM registry
+      run: npm run registry
+
     - name: Install Dependencies
       run: npm install
       shell: bash
+
     - name: Build Core
       run: npm run build
       working-directory: ./packages/tokens
       shell: bash
+
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: tokens
