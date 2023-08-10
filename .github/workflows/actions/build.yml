@@ -1,0 +1,21 @@
+name: 'Build'
+description: 'Build'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+    - name: Install Dependencies
+      run: npm install
+      shell: bash
+    - name: Build Core
+      run: npm run build
+      working-directory: ./packages/tokens
+      shell: bash
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: tokens
+        output: packages/tokens/TokenBuild.zip
+        paths: packages/tokens/dist
