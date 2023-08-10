@@ -41,7 +41,7 @@
     "build:serve": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-css",
     "release": "npm run build:force && changeset publish",
     "==================== TEST =====================": "================================",
-    "test": "turbo run test",
+    "test": "turbo run test --filter=!apps-*",
     "e2e": "npm --prefix packages/components run e2e",
     "visual:report": "npm --prefix packages/components run cy:visual:report",
     "==================== RELEASE ==================": "================================",

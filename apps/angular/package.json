@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "@baloise/design-system-components": "13.6.2",
+    "@baloise/design-system-components-angular": "13.6.2",
     "@baloise/design-system-testing": "13.6.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
