@@ -1,5 +1,5 @@
-name: 'Format'
-description: 'Format'
+name: 'Spell'
+description: 'Spell'
 runs:
   using: 'composite'
   steps:
@@ -15,6 +15,6 @@ runs:
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
 
-    - name: Format Check
-      run: npm run ci:format
+    - name: Spell Check
+      run: npm run ci:spell
       shell: bash

@@ -2,9 +2,9 @@ name: Continuous@3
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: [ '**' ]
+    branches: ['**']
     types: [opened, synchronize, reopened]
   merge_group:
   workflow_dispatch:
@@ -25,3 +25,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/format
+
+  spell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/spell
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/lint

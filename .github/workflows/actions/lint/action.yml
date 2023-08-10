@@ -1,5 +1,5 @@
-name: 'Format'
-description: 'Format'
+name: 'Lint'
+description: 'Lint'
 runs:
   using: 'composite'
   steps:
@@ -15,6 +15,14 @@ runs:
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
 
-    - name: Format Check
-      run: npm run ci:format
+    - name: Update NPM registry
+      run: npm run registry
+      shell: bash
+
+    - name: Install Dependencies
+      run: npm install
+      shell: bash
+
+    - name: Lint Check
+      run: npm run lint
       shell: bash
