@@ -2,6 +2,10 @@ name: 'Cypress E2E'
 description: 'Cypress E2E'
 runs:
   using: 'composite'
+  strategy:
+    fail-fast: false
+    matrix:
+      containers: [1, 2, 3]
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -33,15 +37,18 @@ runs:
         path: ./packages/components
         filename: ComponentsBuild.zip
 
-    - name: Run Cypress
-      uses: cypress-io/github-action@v4
+    - name: Run split Cypress tests 🧪
+      uses: cypress-io/github-action@v5
       with:
         start: npm run cy:start
         wait-on: 'http://localhost:3333'
         working-directory: packages/components
         install: false
         browser: chrome
-        env: type=actual
+        env:
+          type: actual
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
         spec: |
           cypress/e2e/a11y/*.cy.ts
 
