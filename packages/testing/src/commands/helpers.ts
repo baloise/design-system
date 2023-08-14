@@ -1,7 +1,7 @@
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
-export type Platforms = ''
+export type Platforms = 'mobile' | 'tablet' | 'touch' | 'desktop' | 'highDefinition' | 'widescreen' | 'fullhd'
 
 export const deepReady = async (el: any | undefined, full = false): Promise<void> => {
   const element = el as any
