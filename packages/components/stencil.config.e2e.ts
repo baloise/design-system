@@ -7,9 +7,26 @@ export const config: Config = {
   tsconfig: 'tsconfig.docs.json',
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
+    // {
+    //   type: 'www',
+    //   dir: 'www',
+    //   serviceWorker: false,
+    //   empty: true,
+    //   copy: [
+    //     {
+    //       src: '**/*.html',
+    //     },
+    //     {
+    //       src: 'components.d.ts',
+    //     },
+    //     { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
+    //     { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+    //     { src: '../public/assets/images', dest: 'assets/images', warn: true },
+    //   ],
+    // },
     {
       type: 'www',
-      dir: 'www',
+      dir: '../../test/generated/www',
       serviceWorker: false,
       empty: true,
       copy: [

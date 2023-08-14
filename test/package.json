@@ -1,0 +1,13 @@
+{
+  "name": "e2e-tests",
+  "version": "13.6.2",
+  "private": true,
+  "description": "Cypress E2E Tests",
+  "scripts": {
+    "cy:install": "cypress install",
+    "cy:open": "npm run cy:copy && cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
+    "cy:start": "node ./web-server.js",
+    "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
+    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
+  }
+}
