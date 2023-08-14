@@ -1,0 +1,24 @@
+name: 'Cypress Setup'
+description: 'Cypress Setup'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Dependencies
+      run: npm install
+      shell: bash
+
+    - name: Install Cypress
+      run: npm run cy:install
+      shell: bash
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components
+        path: ./packages/components
+        filename: ComponentsBuild.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: test-e2e
+        path: ./test
+        filename: TestE2eBuild.zip
