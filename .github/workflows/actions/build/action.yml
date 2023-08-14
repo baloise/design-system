@@ -55,7 +55,7 @@ runs:
       with:
         name: components
         output: packages/components/ComponentsBuild.zip
-        paths: packages/components/dist packages/components/loader packages/components/www packages/components/src/components.d.ts packages/components/.storybook/vue
+        paths: packages/components/dist packages/components/loader packages/components/www packages/components/src/components.d.ts packages/components/.storybook/vue packages/components/cypress/support/generated
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
