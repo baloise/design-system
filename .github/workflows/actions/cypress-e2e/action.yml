@@ -25,6 +25,7 @@ runs:
 
     - name: Install Cypress
       run: npm run cy:install
+      shell: bash
 
     - uses: ./.github/workflows/actions/download-archive
       with:
