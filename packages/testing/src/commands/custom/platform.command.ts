@@ -1,4 +1,4 @@
-import { waitAfterFramePaint } from "../helpers"
+import { waitAfterFramePaint } from '../helpers'
 
 Cypress.Commands.add<any>('platform', platform => {
   Cypress.log({

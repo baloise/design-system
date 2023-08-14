@@ -1,7 +1,9 @@
+import { deepReady, Platforms } from '@baloise/design-system-components'
+export { deepReady, waitAfterFramePaint, waitAfterIdleCallback, Platforms } from '@baloise/design-system-components'
+
 /**
  * Helper fn to identify the element/component
  */
-export type Platforms = 'mobile' | 'tablet' | 'touch' | 'desktop' | 'highDefinition' | 'widescreen' | 'fullhd'
 export type isElementType = (el: Cypress.Chainable<JQuery>) => boolean
 
 export const isElement = (el: Cypress.Chainable<JQuery>, name: string) => {
@@ -101,56 +103,4 @@ export const testOnPlatforms = (platforms: Platforms[], fn: (platform: Platforms
       fn(platform)
     })
   }
-}
-
-export const deepReady = async (el: any | undefined, full = false): Promise<void> => {
-  const element = el as any
-  if (element) {
-    if (element.componentOnReady !== null && element.componentOnReady !== undefined) {
-      const stencilEl = await element.componentOnReady()
-      if (!full && stencilEl !== null && stencilEl !== undefined) {
-        return
-      }
-    }
-    await Promise.all(Array.from(element.children).map(child => deepReady(child, full)))
-  }
-}
-
-export const waitAfterFramePaint = () => {
-  return new Promise(resolve => raf(() => runHighPrioritizedTask(resolve)))
-}
-
-export const waitAfterIdleCallback = () => {
-  return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
-}
-
-export const runHighPrioritizedTask = (callback: (value: unknown) => void) => {
-  if (typeof window !== 'undefined' && 'MessageChannel' in window) {
-    const messageChannel = new (window as any).MessageChannel()
-    messageChannel.port1.onmessage = callback
-    messageChannel.port2.postMessage(undefined)
-  } else {
-    setTimeout(callback, 32)
-  }
-}
-
-declare const __zone_symbol__requestAnimationFrame: any
-declare const requestAnimationFrame: any
-
-export const rIC = (callback: () => void) => {
-  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback)
-  } else {
-    setTimeout(callback, 32)
-  }
-}
-
-export const raf = (h: any) => {
-  if (typeof __zone_symbol__requestAnimationFrame === 'function') {
-    return __zone_symbol__requestAnimationFrame(h)
-  }
-  if (typeof requestAnimationFrame === 'function') {
-    return requestAnimationFrame(h)
-  }
-  return setTimeout(h)
 }
