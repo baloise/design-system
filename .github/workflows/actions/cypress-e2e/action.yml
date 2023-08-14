@@ -3,17 +3,6 @@ description: 'Cypress E2E'
 runs:
   using: 'composite'
   steps:
-    - name: Setup NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-
-    - name: Update NPM registry
-      run: npm run registry
-      shell: bash
-
     - name: Install Dependencies
       run: npm install
       shell: bash

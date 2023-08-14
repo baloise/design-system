@@ -3,13 +3,6 @@ description: 'Format'
 runs:
   using: 'composite'
   steps:
-    - name: Setup NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-
     - name: Format Check
       run: npm run ci:format
       shell: bash

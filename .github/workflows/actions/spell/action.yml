@@ -3,13 +3,6 @@ description: 'Spell'
 runs:
   using: 'composite'
   steps:
-    - name: Setup NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-
     - name: Spell Check
       run: npm run ci:spell
       shell: bash
