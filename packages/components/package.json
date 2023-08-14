@@ -49,7 +49,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --es5 --docs-json dist/docs.json && npm run build:post",
+    "build": "stencil build --es5 && npm run build:post",
     "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
