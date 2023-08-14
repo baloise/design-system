@@ -28,6 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "docs": "npm run build",
     "build": "npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ../../.build/vue-web-types.js",

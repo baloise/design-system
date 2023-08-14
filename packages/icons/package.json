@@ -28,7 +28,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:icons && npm run build:bundle && npm run build:archive && npm run build:copy",
+    "docs": "npm run build && npm run build:archive",
+    "build": "npm run build:icons && npm run build:bundle && npm run build:copy",
     "build:icons": "node ../../.build/optimize-icons.js",
     "build:bundle": "rollup --config rollup.config.js",
     "build:archive": "node ../../.build/archive-icons.js",

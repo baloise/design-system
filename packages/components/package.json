@@ -49,8 +49,7 @@
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
-    "build:pre": "npm run cy:copy && node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js",
+    "build": "stencil build --es5 --docs-json dist/docs.json && npm run build:post",
     "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
@@ -69,8 +68,9 @@
     "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
     "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15",
     "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
-    "docs:build": "node ../../.build/docs-github.js"
+    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && npm run build:post && npm run docs:post",
+    "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js",
+    "docs:post": "node ../../.build/docs-github.js && build-storybook -o ../../storybook  --quiet"
   },
   "dependencies": {
     "@baloise/design-system-css": "13.6.2",

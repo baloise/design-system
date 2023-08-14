@@ -28,8 +28,9 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rollup --config rollup.config.js && npm run build:copy",
-    "build:copy": "copyfiles --flat ./css/design-system-table.css ../components/public/assets/css"
+    "docs": "npm run build && npm run docs:copy",
+    "build": "rollup --config rollup.config.js",
+    "docs:copy": "copyfiles --flat ./css/design-system-table.css ../components/public/assets/css"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

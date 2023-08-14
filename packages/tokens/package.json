@@ -28,6 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "docs": "npm run build",
     "build": "npm run rollup:pre && npm run build:tokens && npm run rollup:post",
     "build:tokens": "node ../../.build/tokens-generator.js",
     "rollup:pre": "rollup --config rollup.config.js",
