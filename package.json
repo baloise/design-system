@@ -32,7 +32,7 @@
     "==================== CI =======================": "================================",
     "ci:format": "npx prettier@2.8.8 --check ./packages",
     "ci:spell": "npx cspell@6.31.1 \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress",
-    "ci:build": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-css --filter=@baloise/design-system-output-* --filter=@baloise/design-system-components",
+    "ci:build": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-css --filter=@baloise/design-system-output-* --filter=@baloise/design-system-components --filter=@baloise/design-system-components-*",
     "==================== START ====================": "================================",
     "start": "npm run dev",
     "serve": "npm run build:serve && npm --prefix packages/components run serve",

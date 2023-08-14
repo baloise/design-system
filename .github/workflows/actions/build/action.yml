@@ -55,4 +55,10 @@ runs:
       with:
         name: components
         output: packages/components/ComponentsBuild.zip
-        paths: packages/components/dist packages/components/loader packages/components/www packages/components/src/components.d.ts
+        paths: packages/components/dist packages/components/loader packages/components/www packages/components/src/components.d.ts packages/components/.storybook/vue
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular
+        output: packages/components/ComponentsAngularBuild.zip
+        paths: packages/components-angular/dist packages/components-angular/src/generated
