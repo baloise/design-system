@@ -3,8 +3,14 @@ description: 'Cypress Setup'
 runs:
   using: 'composite'
   steps:
+    - name: Install Dependencies
+      run: npm install
+      working-directory: ./test
+      shell: bash
+
     - name: Install Cypress
       run: npm run cy:install
+      working-directory: ./test
       shell: bash
 
     - uses: ./.github/workflows/actions/download-archive
