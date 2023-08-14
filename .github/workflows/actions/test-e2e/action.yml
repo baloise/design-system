@@ -18,6 +18,7 @@ runs:
     - name: Report Visual Failures
       if: failure()
       run: npm run visual:report
+      shell: bash
 
     - name: Upload snapshots
       uses: actions/upload-artifact@v3
