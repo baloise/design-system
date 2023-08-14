@@ -25,7 +25,9 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import 'cypress-axe'
-import '../../../packages/testing/src'
+
+import '../../../packages/testing/src/add-custom-commands'
+import '../../../packages/testing/src/add-override-commands'
 
 import type { RunOptions } from 'axe-core'
 
