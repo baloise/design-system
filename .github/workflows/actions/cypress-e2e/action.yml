@@ -36,11 +36,11 @@ runs:
         working-directory: packages/components
         install: false
         browser: chrome
-        env:
-          SPLIT: ${{ strategy.job-total }}
-          SPLIT_INDEX: ${{ strategy.job-index }}
         spec: |
           cypress/e2e/a11y/*.cy.ts
+      env:
+        SPLIT: ${{ strategy.job-total }}
+        SPLIT_INDEX: ${{ strategy.job-index }}
 
     - name: Upload snapshots
       uses: actions/upload-artifact@v3
