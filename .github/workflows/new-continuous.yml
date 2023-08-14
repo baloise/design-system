@@ -17,24 +17,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/build
 
   format:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/format
 
   spell:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/spell
 
   lint:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/lint
 
@@ -46,5 +50,6 @@ jobs:
       matrix:
         containers: [1, 2]
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/cypress-e2e
