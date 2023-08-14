@@ -1,4 +1,4 @@
-import { waitAfterFramePaint } from '@baloise/design-system-components'
+import { waitAfterFramePaint } from "../helpers"
 
 Cypress.Commands.add<any>('platform', platform => {
   Cypress.log({

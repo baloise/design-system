@@ -1,5 +1,4 @@
-import { waitAfterIdleCallback, waitAfterFramePaint } from '@baloise/design-system-components'
-import { areComponentsReady, log, wrapOptions } from '../helpers'
+import { areComponentsReady, log, waitAfterFramePaint, waitAfterIdleCallback, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'waitForComponents',
