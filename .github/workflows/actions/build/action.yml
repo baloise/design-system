@@ -2,6 +2,7 @@ name: 'Build'
 description: 'Build'
 runs:
   using: 'composite'
+  steps:
     - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
