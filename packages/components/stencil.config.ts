@@ -15,10 +15,10 @@ export const config: Config = {
     /**
      * Library outputs
      */
-    // {
-    //   type: 'docs-json',
-    //   file: './public/assets/data/components.json',
-    // },
+    {
+      type: 'docs-json',
+      file: './public/assets/data/components.json',
+    },
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),
