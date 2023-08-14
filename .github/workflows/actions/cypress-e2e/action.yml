@@ -40,10 +40,9 @@ runs:
         working-directory: packages/components
         install: false
         browser: chrome
-        component: true
         env: type=actual
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        spec: |
+          cypress/e2e/a11y/*.cy.ts
 
     - name: Upload snapshots
       uses: actions/upload-artifact@v3
@@ -51,5 +50,3 @@ runs:
       with:
         name: cypress-snapshots-components
         path: packages/components/cypress/snapshots
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
