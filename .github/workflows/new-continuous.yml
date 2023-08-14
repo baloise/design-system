@@ -42,6 +42,13 @@ jobs:
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/lint
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/test
+
   test-e2e:
     runs-on: ubuntu-latest
     needs: [build]
