@@ -2,12 +2,6 @@ name: 'Build'
 description: 'Build'
 runs:
   using: 'composite'
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-
     - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:

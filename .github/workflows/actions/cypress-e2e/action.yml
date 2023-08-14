@@ -3,11 +3,6 @@ description: 'Cypress E2E'
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-
     - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
@@ -42,7 +37,6 @@ runs:
         install: false
         browser: chrome
         env:
-          type: actual
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
         spec: |
