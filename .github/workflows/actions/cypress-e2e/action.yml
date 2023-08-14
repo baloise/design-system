@@ -1,0 +1,59 @@
+name: 'Cypress E2E'
+description: 'Cypress E2E'
+runs:
+  using: 'composite'
+  env:
+    TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    TURBO_REMOTE_ONLY: true
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+
+    - name: Setup NodeJS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Update NPM registry
+      run: npm run registry
+      shell: bash
+
+    - name: Install Dependencies
+      run: npm install
+      shell: bash
+
+    - name: Install Cypress
+      run: npm run cy:install
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components
+        path: ./packages/components
+        filename: ComponentsBuild.zip
+
+    - name: Run Cypress
+      uses: cypress-io/github-action@v4
+      with:
+        start: npm run cy:start
+        wait-on: 'http://localhost:3333'
+        working-directory: packages/components
+        install: false
+        browser: chrome
+        component: true
+        env: type=actual
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload snapshots
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: cypress-snapshots-components
+        path: packages/components/cypress/snapshots
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
