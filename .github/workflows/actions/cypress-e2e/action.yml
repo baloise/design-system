@@ -2,10 +2,6 @@ name: 'Cypress E2E'
 description: 'Cypress E2E'
 runs:
   using: 'composite'
-  strategy:
-    fail-fast: false
-    matrix:
-      containers: [1, 2, 3]
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
