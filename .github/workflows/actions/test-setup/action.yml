@@ -5,6 +5,7 @@ runs:
   steps:
     - name: Install Dependencies
       run: npm install
+      working-directory: ./test
       shell: bash
 
     - name: Install Cypress
