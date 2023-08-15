@@ -3,8 +3,12 @@ description: 'Cypress Setup'
 runs:
   using: 'composite'
   steps:
+    - name: Install Husky
+      run: npm run prepare
+      shell: bash
+
     - name: Install Dependencies
-      run: npm ci --only=production --ignore-scripts
+      run: npm ci
       working-directory: ./test
       shell: bash
 
