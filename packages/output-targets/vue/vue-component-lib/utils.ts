@@ -211,21 +211,27 @@ export const defineContainer = <Props>(
     return text.replace(/-/, '').toUpperCase()
   }
 
+  // @ts-ignore:next-line
   Container.displayName = name
   // @ts-ignore:next-line
   Container.name = toPascalCase(name)
 
+  // @ts-ignore:next-line
   Container.props = {
     [ROUTER_LINK_VALUE]: DEFAULT_EMPTY_PROP,
   }
 
   componentProps.forEach(componentProp => {
+    // @ts-ignore:next-line
     Container.props[componentProp] = DEFAULT_EMPTY_PROP
   })
 
+  // @ts-ignore:next-line
   Container.emits = [...componentEvents]
   if (modelProp) {
+    // @ts-ignore:next-line
     Container.props[MODEL_VALUE] = DEFAULT_EMPTY_PROP
+    // @ts-ignore:next-line
     Container.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent, ...componentEvents]
   }
 
