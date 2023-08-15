@@ -3,24 +3,36 @@ describe('bal-hint', () => {
     cy.visit('/components/bal-hint/test/bal-hint.visual.html').waitForDesignSystem()
   })
 
-  it('basic component', () => {
-    cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('hint-basic-desktop')
-    cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-desktop')
-    cy.getByTestId('basic').balHintFindCloseButton().click()
-    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop')
+  context('desktop', () => {
+    beforeEach(() => cy.platform('desktop'))
 
-    cy.platform('tablet')
-    cy.getByTestId('basic').compareSnapshot('hint-basic-tablet')
-    cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-tablet')
-    cy.getByTestId('basic').balHintFindCloseButton().click()
-    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet')
-    cy.getByTestId('small').click(0, 0)
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('hint-basic-desktop')
+      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-desktop')
+      cy.getByTestId('basic').balHintFindCloseButton().click()
+      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-desktop')
+    })
+  })
 
-    cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('hint-basic-mobile')
-    cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-mobile')
-    cy.getByTestId('basic').balHintFindCloseButton().click()
-    cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-mobile')
+  context('tablet', () => {
+    beforeEach(() => cy.platform('tablet'))
+
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('hint-basic-tablet')
+      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-tablet')
+      cy.getByTestId('basic').balHintFindCloseButton().click()
+      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-tablet')
+    })
+  })
+
+  context('mobile', () => {
+    beforeEach(() => cy.platform('mobile'))
+
+    it('basic component', () => {
+      cy.getByTestId('basic').compareSnapshot('hint-basic-mobile')
+      cy.getByTestId('basic').click().balHintFindOverlay().compareSnapshot('hint-basic-open-mobile')
+      cy.getByTestId('basic').balHintFindCloseButton().click()
+      cy.getByTestId('small').click().balHintFindOverlay().compareSnapshot('hint-small-mobile')
+    })
   })
 })
