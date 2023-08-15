@@ -8,8 +8,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  CreateBaseImages:
+  build:
+    name: 👷 Build Design System
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/build
+  screenshots:
+    name: 📸 Updating Screenshots
     runs-on: ubuntu-22.04
+    needs: [build]
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
