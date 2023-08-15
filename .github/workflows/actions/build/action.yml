@@ -11,14 +11,14 @@ runs:
       run: npm run ci:build
       shell: bash
 
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: test-ng-e2e
+        output: apps/anuglar/TestNgE2eBuild.zip
+        paths: apps/anuglar/dist
+
     # - uses: ./.github/workflows/actions/upload-archive
     #   with:
     #     name: components
     #     output: packages/components/ComponentsBuild.zip
     #     paths: packages/components/dist packages/components/loader packages/components/src/components.d.ts
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: test-e2e
-    #     output: test/TestE2eBuild.zip
-    #     paths: test/generated

@@ -1,14 +1,15 @@
-name: 'Cypress Components'
-description: 'Cypress Components'
+name: 'Test Angular'
+description: 'Test Angular'
 runs:
   using: 'composite'
   steps:
-    - name: Run split Cypress tests 🧪
+    - name: Run Cypress tests 🧪
       uses: cypress-io/github-action@v5
       with:
-        working-directory: test
+        start: npm run cy:start
+        wait-on: 'http://localhost:3333'
+        working-directory: apps/angular
         install: false
-        component: true
         browser: chrome
 
     - name: Upload snapshots
@@ -16,5 +17,5 @@ runs:
       if: failure()
       with:
         name: cypress-snapshots-components
-        path: test/cypress/snapshots
+        path: apps/angular/cypress/snapshots
 

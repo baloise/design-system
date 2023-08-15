@@ -56,7 +56,7 @@ jobs:
         if: failure()
         with:
           name: cypress-snapshots
-          path: packages/components/cypress/snapshots
+          path: test/cypress/snapshots
 
       - name: Commit base images
         uses: EndBug/add-and-commit@v9
