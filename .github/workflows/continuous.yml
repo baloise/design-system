@@ -1,4 +1,4 @@
-name: Continuous@3
+name: Continuous
 
 on:
   push:
