@@ -1,5 +1,5 @@
 describe('bal-hint', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('/components/bal-hint/test/bal-hint.visual.html').waitForDesignSystem()
   })
 

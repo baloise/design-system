@@ -44,7 +44,6 @@ export const StencilBaseConfig: Config = {
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
     },
-    // VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
     VueGenerator('../', '../../test/generated/components/index.ts', []),
   ],
   bundles: [

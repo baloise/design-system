@@ -22,7 +22,7 @@ describe('bal-pagination', () => {
   })
 
   context('mobile', () => {
-    beforeEach(() => cy.platform('mobile'))
+    beforeEach(() => cy.platform('mobile').wait(100))
 
     it('basic component', () => {
       cy.getByTestId('basic').compareSnapshot('pagination-basic-mobile')
