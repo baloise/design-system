@@ -9,7 +9,7 @@ export const config: Config = {
     ...(StencilBaseConfig.outputTargets as any),
     {
       type: 'www',
-      dir: '../../test/generated/www',
+      dir: 'www',
       serviceWorker: false,
       empty: true,
       copy: [
