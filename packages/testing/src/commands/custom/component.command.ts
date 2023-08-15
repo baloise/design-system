@@ -92,4 +92,6 @@ Cypress.Commands.add('waitForDesignSystem', () => {
         message: 'DesignSystem is ready 🚀',
       })
     })
+    .then(() => waitAfterFramePaint())
+    .then(() => waitAfterIdleCallback())
 })
