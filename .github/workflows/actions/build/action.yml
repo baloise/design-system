@@ -13,40 +13,9 @@ runs:
 
     # - uses: ./.github/workflows/actions/upload-archive
     #   with:
-    #     name: tokens
-    #     output: packages/tokens/TokenBuild.zip
-    #     paths: packages/tokens/dist
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: fonts
-    #     output: packages/fonts/FontsBuild.zip
-    #     paths: packages/fonts/dist
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: icons
-    #     output: packages/icons/IconsBuild.zip
-    #     paths: packages/icons/dist packages/icons/src/index.ts
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: css
-    #     output: packages/css/CssBuild.zip
-    #     paths: packages/css/css
-
-    - uses: ./.github/workflows/actions/upload-archive
-      with:
-        name: components
-        output: packages/components/ComponentsBuild.zip
-        paths: packages/components/dist packages/components/loader packages/components/src/components.d.ts
-    # packages/components/www packages/components/.storybook/vue packages/components/cypress/support/generated
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: components-angular
-    #     output: packages/components/ComponentsAngularBuild.zip
-    #     paths: packages/components-angular/dist packages/components-angular/src/generated
+    #     name: components
+    #     output: packages/components/ComponentsBuild.zip
+    #     paths: packages/components/dist packages/components/loader packages/components/src/components.d.ts
 
     - uses: ./.github/workflows/actions/upload-archive
       with:

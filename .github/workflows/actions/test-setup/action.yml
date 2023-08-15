@@ -19,12 +19,6 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
-        name: components
-        path: ./packages/components
-        filename: ComponentsBuild.zip
-
-    - uses: ./.github/workflows/actions/download-archive
-      with:
         name: test-e2e
         path: ./test
         filename: TestE2eBuild.zip
