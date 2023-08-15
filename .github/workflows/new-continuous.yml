@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/build
 
@@ -27,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/format
 
@@ -35,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/spell
 
@@ -47,6 +53,8 @@ jobs:
       TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/lint
 
@@ -59,6 +67,8 @@ jobs:
       TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/test
 
@@ -76,6 +86,8 @@ jobs:
         containers: [1, 2, 3, 4, 5, 6, 7, 8]
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/test-setup
       - uses: ./.github/workflows/actions/test-e2e
@@ -90,6 +102,8 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/test-setup
       - uses: ./.github/workflows/actions/test-components
