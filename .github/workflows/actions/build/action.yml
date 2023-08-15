@@ -7,7 +7,7 @@ runs:
       run: npm install
       shell: bash
 
-    - name: Build Core
+    - name: Build
       run: npm run ci:build
       shell: bash
 

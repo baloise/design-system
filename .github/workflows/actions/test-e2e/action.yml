@@ -12,6 +12,7 @@ runs:
         install: false
         browser: chrome
       env:
+        type: actual
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}
 
