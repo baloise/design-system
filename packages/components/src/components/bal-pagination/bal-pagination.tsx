@@ -132,7 +132,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
 
       if (rangeStart <= 1) {
         rangeStart = 1
-        rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
+        rangeEnd = Math.min(pageRange * 2 + 3, this.totalPages)
       }
     }
 
@@ -142,7 +142,9 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
         items.push(this.renderEllipsisElement())
       }
     }
-
+    if (rangeEnd == this.totalPages) {
+      rangeStart = rangeStart - 2
+    }
     for (let i = rangeStart; i <= rangeEnd; i++) {
       items.push(this.renderPageElement(i))
     }
@@ -160,7 +162,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   renderEllipsisElement() {
     return (
       <li>
-        <div class="pagination-more">
+        <div class="pagination-more" style={{ width: '48px' }}>
           <bal-text bold heading inline space="none">
             &hellip;
           </bal-text>
