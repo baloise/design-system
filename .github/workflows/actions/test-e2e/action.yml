@@ -27,4 +27,4 @@ runs:
       if: failure()
       with:
         name: cypress-snapshots-components-${{ strategy.job-index }}
-        path: packages/components/cypress/snapshots
+        path: test/cypress/snapshots
