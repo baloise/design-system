@@ -133,3 +133,7 @@ packages/css/assets/fonts/
 packages/components/cypress/snapshots/actual
 packages/components/cypress/snapshots/diff
 packages/components/cypress/videos
+
+test/cypress/snapshots/actual
+test/cypress/snapshots/diff
+test/cypress/videos
