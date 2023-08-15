@@ -18,7 +18,8 @@ runs:
 
     - name: Report Visual Failures
       if: failure()
-      run: npm run visual:report
+      working-directory: ./test
+      run: npm run cy:visual:report
       shell: bash
 
     - name: Upload snapshots
