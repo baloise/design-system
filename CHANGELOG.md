@@ -26,4 +26,3 @@ Each package has its own changelog file.
 Previous version below 12.2.0 are document in a separate changelog file.
 
 - [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_v12.md)
-
