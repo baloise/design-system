@@ -1,4 +1,4 @@
-import { Platforms } from '../../../src/types'
+import { Platforms } from '../../support/utils'
 
 describe('bal-navbar', () => {
   testNavbar('desktop')

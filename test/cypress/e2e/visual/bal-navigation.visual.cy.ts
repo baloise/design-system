@@ -1,4 +1,4 @@
-import { Platforms } from '../../../src/types'
+import { Platforms } from '../../support/utils'
 import { compareSnapshotOptions } from './snapshot-util'
 
 describe('bal-navigation', () => {
