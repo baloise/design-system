@@ -137,3 +137,6 @@ packages/components/cypress/videos
 test/cypress/snapshots/actual
 test/cypress/snapshots/diff
 test/cypress/videos
+
+ComponentsBuild.zip
+TestE2eBuild.zip
