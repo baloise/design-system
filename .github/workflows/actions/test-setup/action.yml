@@ -3,8 +3,8 @@ description: 'Cypress Setup'
 runs:
   using: 'composite'
   steps:
-    - name: Install Husky
-      run: npm run prepare
+    - name: Disable Husky
+      run: npm pkg delete scripts.prepare
       shell: bash
 
     - name: Install Dependencies
