@@ -2,8 +2,6 @@ name: Snapshot Release
 
 on:
   workflow_dispatch:
-    branches:
-      - '!main'
 
 jobs:
   Publish:
