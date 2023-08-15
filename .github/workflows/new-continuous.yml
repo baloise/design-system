@@ -31,7 +31,7 @@ jobs:
       - uses: ./.github/workflows/actions/format
 
   spell:
-    name: 🚨 Verify Lint
+    name: 🚨 Spell Checking
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
