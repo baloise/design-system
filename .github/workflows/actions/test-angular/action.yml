@@ -7,7 +7,7 @@ runs:
       uses: cypress-io/github-action@v5
       with:
         start: npm run cy:start
-        wait-on: 'http://localhost:3333'
+        wait-on: 'http://localhost:4200'
         working-directory: apps/angular
         install: false
         browser: chrome

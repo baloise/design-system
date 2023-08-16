@@ -5,7 +5,7 @@ const serveIndex = require('serve-index')
 
 const app = express()
 
-app.set('port', 3333)
+app.set('port', 4200)
 
 app.use(compression())
 app.use(express.static(path.join(__dirname, 'dist')))
