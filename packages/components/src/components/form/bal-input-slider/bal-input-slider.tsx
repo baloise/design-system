@@ -43,6 +43,11 @@ export class InputSlider implements BalAriaFormLinking {
   @Prop() max = 100
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex = 0
@@ -301,6 +306,7 @@ export class InputSlider implements BalAriaFormLinking {
             aria-labelledby={this.ariaForm.labelId}
             aria-describedby={this.ariaForm.messageId}
             aria-disabled={this.disabled ? 'true' : null}
+            aria-invalid={this.invalid === true ? 'true' : 'false'}
             disabled={this.disabled}
             readonly={this.readonly}
             name={this.name}

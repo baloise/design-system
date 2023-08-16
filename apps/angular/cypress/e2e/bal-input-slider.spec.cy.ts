@@ -1,0 +1,30 @@
+describe('bal-input-slider', () => {
+  beforeEach(() => {
+    cy.visit('/').platform('desktop').waitForDesignSystem()
+  })
+  it('should change value', () => {
+    cy.getByLabelText('Slider Label')
+      .should('have.value', 0)
+      .click()
+      .blur()
+      .shouldBeInvalid()
+      .getDescribingElement()
+      .contains('Min is 10')
+
+    cy.getByLabelText('Slider Label')
+      .invoke('val', 20)
+      .trigger('input')
+      .click()
+      .blur()
+      .should('have.value', 20)
+      .shouldBeValid()
+      .getDescribingElement()
+      .should('not.contain', 'Min is 10')
+
+    cy.getByRole('button', { name: 'Disable Slider' }).click()
+    cy.getByLabelText('Slider Label').should('be.disabled')
+    cy.getByRole('button', { name: 'Enable Slider' }).click()
+    cy.getByLabelText('Slider Label').should('not.be.disabled')
+    cy.getByTestId('result').contains('"slider": "20"')
+  })
+})
