@@ -10,6 +10,7 @@
     "vue-component-lib/"
   ],
   "scripts": {
+    "docs": "npm run build",
     "build": "npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
     "test": "vitest run",

@@ -1,6 +1,8 @@
 import { Component, h, Host, Prop, Element, Watch, ComponentInterface } from '@stencil/core'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { Event, EventEmitter } from '@stencil/core'
+import { deepReady, waitAfterFramePaint } from '../../../utils/helpers'
+import { BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-field',
@@ -11,6 +13,7 @@ import { Event, EventEmitter } from '@stencil/core'
 export class Field implements ComponentInterface, BalMutationObserver {
   @Element() el!: HTMLElement
 
+  private fieldId = `bal-field-${FieldIds++}`
   private formControlElement = ['bal-field-control']
   private inputElements = [
     'bal-input',
@@ -100,8 +103,56 @@ export class Field implements ComponentInterface, BalMutationObserver {
     this.triggerAllHandlers()
   }
 
-  componentDidLoad() {
-    this.balFormControlDidLoad.emit(this.el)
+  async componentDidLoad() {
+    await this.syncAriaAttributes()
+  }
+
+  async syncAriaAttributes(): Promise<void> {
+    await deepReady(this.el)
+    await waitAfterFramePaint()
+
+    const label: BalAriaFormLinking = this.el.querySelector<any>('bal-field-label bal-label')
+    const message: BalAriaFormLinking = this.el.querySelector<any>('bal-field-message')
+    const controls: BalAriaFormLinking[] = [
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-select')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-datepicker')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox-group')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio-group')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-number-input')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-time-input')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-slider')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-stepper')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-textarea')),
+      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-file-upload')),
+    ]
+
+    const ariaForm = defaultBalAriaForm
+
+    if (label) {
+      ariaForm.labelId = `${this.fieldId}-lbl`
+    }
+
+    if (message) {
+      ariaForm.messageId = `${this.fieldId}-msg`
+    }
+
+    for (let index = 0; index < controls.length; index++) {
+      const control = controls[index]
+
+      if (index === 0) {
+        ariaForm.controlId = `${this.fieldId}-ctrl`
+
+        await label?.setAriaForm(ariaForm)
+        await message?.setAriaForm(ariaForm)
+        await control?.setAriaForm(ariaForm)
+      } else {
+        ariaForm.controlId = `${this.fieldId}-ctrl-${index}`
+        await control?.setAriaForm(ariaForm)
+      }
+    }
   }
 
   mutationObserverActive = true
@@ -109,6 +160,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
   @ListenToMutation({ subtree: false })
   mutationListener(): void {
     this.triggerAllHandlers()
+    this.syncAriaAttributes()
   }
 
   private triggerAllHandlers() {
@@ -135,6 +187,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
   render() {
     return (
       <Host
+        id={this.fieldId}
         class={{
           'bal-field': true,
           'field': true,
@@ -147,3 +200,5 @@ export class Field implements ComponentInterface, BalMutationObserver {
     )
   }
 }
+
+let FieldIds = 0

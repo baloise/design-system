@@ -33,11 +33,12 @@ import {
   inputHandleChange,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
 import { i18nBalTimeInput } from './bal-time-input.i18n'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-time-input',
@@ -45,7 +46,9 @@ import { i18nBalTimeInput } from './bal-time-input.i18n'
     css: 'bal-time-input.sass',
   },
 })
-export class TimeInput implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class TimeInput
+  implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, BalAriaFormLinking
+{
   private inputId = `bal-time-input-${timeInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -58,6 +61,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -198,6 +202,14 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     return this.nativeInput!
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private getAllowedKeys() {
     return [...NUMBER_KEYS, ...ACTION_KEYS, ':']
   }
@@ -245,12 +257,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
 
   render() {
     const value = this.focused ? this.getRawValue() : this.getFormattedValue()
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
 
     const block = BEM.block('time-input')
     const native = block.element('native')
@@ -275,8 +281,11 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
               ...native.class(),
             }}
             ref={input => (this.nativeInput = input)}
-            id={this.inputId}
-            aria-labelledby={label ? labelId : null}
+            id={this.ariaForm.controlId || this.inputId}
+            aria-labelledby={this.ariaForm.labelId}
+            aria-describedby={this.ariaForm.messageId}
+            aria-invalid={this.invalid === true ? 'true' : 'false'}
+            aria-disabled={this.disabled ? 'true' : null}
             name={this.name}
             disabled={this.disabled}
             readonly={this.readonly}

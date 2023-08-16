@@ -16,6 +16,7 @@ export const BalApp = /*@__PURE__*/ defineComponent((_, { attrs, slots }) => {
   }
 })
 
+// @ts-ignore:next-line
 BalApp.name = 'BalApp'
 
 /**

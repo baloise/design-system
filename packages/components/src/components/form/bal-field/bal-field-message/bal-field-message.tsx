@@ -1,9 +1,12 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Method, Prop, State } from '@stencil/core'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
 
 @Component({
   tag: 'bal-field-message',
 })
-export class FieldMessage {
+export class FieldMessage implements BalAriaFormLinking {
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
   /**
    * Defines the color of the message.
    */
@@ -29,9 +32,18 @@ export class FieldMessage {
    */
   @Prop() readonly = false
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm) {
+    this.ariaForm = { ...ariaForm }
+  }
+
   render() {
     return (
       <Host
+        id={this.ariaForm.messageId}
         class={{
           'bal-field-message': true,
           'help': true,

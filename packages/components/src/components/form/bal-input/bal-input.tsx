@@ -12,7 +12,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import {
   FormInput,
@@ -44,6 +44,7 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-input',
@@ -51,7 +52,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
     css: 'bal-input.sass',
   },
 })
-export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable {
+export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable, BalAriaFormLinking {
   private inputId = `bal-input-${InputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -68,6 +69,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Element() el!: HTMLElement
 
   @State() focused = false
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -303,6 +305,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     return Promise.resolve(this.nativeInput!)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private getRawValue(): string {
     const value = (this.value || '').toString()
     return value
@@ -522,18 +532,15 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           break
       }
     }
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
+
     let inputProps = {}
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
     }
 
     const block = BEM.block('input')
+
+    const id = this.ariaForm.controlId || this.inputId
 
     return (
       <Host
@@ -556,8 +563,11 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
           }}
           data-testid="bal-input"
           ref={inputEl => (this.nativeInput = inputEl)}
-          id={this.inputId}
-          aria-labelledby={labelId}
+          id={id}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           disabled={this.disabled}
           accept={this.accept}
           inputMode={this.inputmode}

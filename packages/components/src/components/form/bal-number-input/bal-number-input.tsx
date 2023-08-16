@@ -38,7 +38,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import {
   getDecimalSeparator,
@@ -50,6 +50,7 @@ import {
 } from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-number-input',
@@ -57,7 +58,9 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-number-input.sass',
   },
 })
-export class NumberInput implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
+export class NumberInput
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
+{
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -70,6 +73,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -235,6 +239,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     return Promise.resolve(this.nativeInput!)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private getAllowedKeys() {
     return [...NUMBER_KEYS, ...ACTION_KEYS, ...getDecimalSeparators(), getNegativeSymbol()]
   }
@@ -344,14 +356,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     if (this.nativeInput && this.nativeInput.value) {
       this.nativeInput.value = value
     }
-
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
-
     const block = BEM.block('number-input')
 
     return (
@@ -370,8 +374,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           }}
           data-testid="bal-number-input"
           ref={input => (this.nativeInput = input)}
-          id={this.inputId}
-          aria-labelledby={label ? labelId : null}
+          id={this.ariaForm.controlId || this.inputId}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           name={this.name}
           disabled={this.disabled}
           placeholder={this.placeholder || ''}

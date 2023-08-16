@@ -25,9 +25,10 @@ import {
   inputSetBlur,
   inputSetFocus,
 } from '../../../utils/form-input'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-textarea',
@@ -35,7 +36,7 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-textarea.sass',
   },
 })
-export class Textarea implements ComponentInterface, FormInput<string | undefined> {
+export class Textarea implements ComponentInterface, FormInput<string | undefined>, BalAriaFormLinking {
   private inputId = `bal-textarea-${TextareaIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -46,6 +47,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Element() el!: HTMLElement
 
   @State() focused = false
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -219,6 +221,14 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     return Promise.resolve(this.nativeInput)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private getValue(): string {
     return this.value || ''
   }
@@ -252,12 +262,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
 
   render() {
     const value = this.getValue()
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
 
     const block = BEM.block('textarea')
     const elNative = block.element('native')
@@ -281,8 +285,11 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           data-testid="bal-textarea-input"
           ref={inputEl => (this.nativeInput = inputEl)}
           name={this.name}
-          id={this.inputId}
-          aria-labelledby={labelId}
+          id={this.ariaForm.controlId || this.inputId}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           disabled={this.disabled}
           readonly={this.readonly}
           required={this.required}

@@ -1,4 +1,4 @@
-import { deepReady } from '@baloise/design-system-components'
+import { deepReady } from '../helpers'
 
 Cypress.Commands.add('visitBalApp', (url: string, options: any) => {
   cy.visit(url, options)

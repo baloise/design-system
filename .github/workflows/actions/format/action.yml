@@ -1,0 +1,8 @@
+name: 'Format'
+description: 'Format'
+runs:
+  using: 'composite'
+  steps:
+    - name: Format Check
+      run: npm run ci:format
+      shell: bash

@@ -1,0 +1,32 @@
+name: Nightly Release
+
+on:
+  schedule:
+    # Run every Monday-Friday
+    # at 6:00 UTC (6:00 am UTC)
+    - cron: '00 06 * * 1-5'
+
+jobs:
+  Release:
+    name: 🚀 Release Nightly
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/workflows/actions/setup-release
+
+      - name: Release nightly
+        run: |
+          npx changeset version --snapshot nightly
+          npx changeset publish --no-git-tag --tag nightly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Git Reset
+        run: git reset --hard
