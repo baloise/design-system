@@ -26,17 +26,17 @@ jobs:
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/build
 
-  # build-e2e:
-  #   name: 👷 Build for E2E
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     HUSKY: 0
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 2
-  #     - uses: ./.github/workflows/actions/setup
-  #     - uses: ./.github/workflows/actions/build-e2e
+  docs:
+    name: 📝 Build Documentation
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - uses: ./.github/workflows/actions/setup
+      - uses: ./.github/workflows/actions/build
 
   format:
     name: 🚨 Verify Code Format
