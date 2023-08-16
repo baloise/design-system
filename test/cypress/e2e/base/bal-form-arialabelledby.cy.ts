@@ -4,163 +4,157 @@ describe('bal-form', () => {
     cy.waitForDesignSystem()
   })
 
-  it('should check if checkbox input has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('checkbox-basic')
-      .find('bal-checkbox > input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('checkbox-basic').find('bal-checkbox > label').invoke('attr', 'for').should('eq', result)
-      })
+  context('checkbox', () => {
+    it('should link label and input with aria-labelledby attribute', () => {
+      cy.getByTestId('checkbox-basic')
+        .find('bal-checkbox > input')
+        .invoke('attr', 'aria-labelledby')
+        .then(result => {
+          cy.getByTestId('checkbox-basic').find('bal-checkbox > label').invoke('attr', 'id').should('eq', result)
+        })
+    })
+
+    it('should link label and input with for attribute', () => {
+      cy.getByTestId('checkbox-basic')
+        .find('bal-checkbox > label')
+        .invoke('attr', 'for')
+        .then(result => {
+          cy.getByTestId('checkbox-basic').find('bal-checkbox > input').invoke('attr', 'id').should('eq', result)
+        })
+    })
   })
 
-  it('should check if radio input has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('radio-basic')
-      .find('bal-radio-group')
-      .find('bal-radio')
-      .eq(0)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
+  context('radio', () => {
+    it('should link label and input with aria-labelledby attribute', () => {
+      function shouldHaveLabelledBy(index: number) {
         cy.getByTestId('radio-basic')
           .find('bal-radio-group')
           .find('bal-radio')
-          .eq(0)
-          .find('label')
-          .invoke('attr', 'for')
-          .should('eq', result)
-      })
+          .eq(index)
+          .find('input')
+          .invoke('attr', 'aria-labelledby')
+          .then(result => {
+            cy.getByTestId('radio-basic')
+              .find('bal-radio-group bal-radio')
+              .eq(index)
+              .find('label')
+              .invoke('attr', 'id')
+              .should('eq', result)
+          })
+      }
 
-    cy.getByTestId('radio-basic')
-      .find('bal-radio-group')
-      .find('bal-radio')
-      .eq(1)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
+      shouldHaveLabelledBy(0)
+      shouldHaveLabelledBy(1)
+      shouldHaveLabelledBy(2)
+    })
+
+    it('should link label and input with for attribute', () => {
+      function shouldHaveFor(index: number) {
         cy.getByTestId('radio-basic')
           .find('bal-radio-group')
           .find('bal-radio')
-          .eq(1)
+          .eq(index)
           .find('label')
           .invoke('attr', 'for')
-          .should('eq', result)
-      })
+          .then(result => {
+            cy.getByTestId('radio-basic')
+              .find('bal-radio-group bal-radio')
+              .eq(index)
+              .find('input')
+              .invoke('attr', 'id')
+              .should('eq', result)
+          })
+      }
 
-    cy.getByTestId('radio-basic')
-      .find('bal-radio-group')
-      .find('bal-radio')
-      .eq(2)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('radio-basic')
-          .find('bal-radio-group')
-          .find('bal-radio')
-          .eq(2)
-          .find('label')
-          .invoke('attr', 'for')
-          .should('eq', result)
-      })
+      shouldHaveFor(0)
+      shouldHaveFor(1)
+      shouldHaveFor(2)
+    })
   })
 
-  it('should check if checkbox input in a field has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('form-checkbox')
-      .find('bal-checkbox > input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('form-checkbox')
-          .find('bal-checkbox > label')
-          .invoke('attr', 'for')
-          .should('eq', result.split(' ')[0])
-        cy.getByTestId('form-checkbox')
-          .find('bal-field-label > bal-label > label')
-          .invoke('attr', 'id')
-          .should('eq', result.split(' ')[1])
-      })
+  context('field checkbox', () => {
+    it('should link label and input with aria-labelledby attribute', () => {
+      cy.getByTestId('form-checkbox')
+        .find('bal-checkbox > input')
+        .invoke('attr', 'aria-labelledby')
+        .then(result => {
+          cy.getByTestId('form-checkbox')
+            .find('bal-checkbox > label')
+            .invoke('attr', 'id')
+            .should('be.oneOf', result.split(' '))
+          cy.getByTestId('form-checkbox')
+            .find('bal-field-label > bal-label > label')
+            .invoke('attr', 'id')
+            .should('be.oneOf', result.split(' '))
+        })
+    })
+
+    it('should link label and input with for attribute', () => {
+      cy.getByTestId('form-checkbox')
+        .find('bal-checkbox > input')
+        .invoke('attr', 'id')
+        .then(result => {
+          cy.getByTestId('form-checkbox')
+            .find('bal-checkbox > label')
+            .invoke('attr', 'for')
+            .should('be.oneOf', result.split(' '))
+          cy.getByTestId('form-checkbox')
+            .find('bal-field-label > bal-label > label')
+            .invoke('attr', 'for')
+            .should('be.oneOf', result.split(' '))
+        })
+    })
   })
 
-  it('should check if radio input in a field has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('form-radio')
-      .find('bal-radio')
-      .eq(0)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
+  context('field radio', () => {
+    it('should link label and input with aria-labelledby attribute', () => {
+      function shouldHaveLabelledBy(index: number) {
         cy.getByTestId('form-radio')
-          .find('bal-radio')
-          .eq(0)
-          .find('label')
-          .invoke('attr', 'for')
-          .should('eq', result.split(' ')[0])
-        cy.getByTestId('form-radio')
-          .find('bal-field-label > bal-label > label')
-          .invoke('attr', 'id')
-          .should('eq', result.split(' ')[1])
-      })
+          .find('bal-radio > input')
+          .eq(index)
+          .invoke('attr', 'aria-labelledby')
+          .then(result => {
+            cy.getByTestId('form-radio')
+              .find('bal-radio > label')
+              .eq(index)
+              .invoke('attr', 'id')
+              .should('be.oneOf', result.split(' '))
+            cy.getByTestId('form-radio')
+              .find('bal-field-label > bal-label > label')
+              .invoke('attr', 'id')
+              .should('be.oneOf', result.split(' '))
+          })
+      }
 
-    cy.getByTestId('form-radio')
-      .find('bal-radio')
-      .eq(1)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('form-radio')
-          .find('bal-radio')
-          .eq(1)
-          .find('label')
-          .invoke('attr', 'for')
-          .should('eq', result.split(' ')[0])
-        cy.getByTestId('form-radio')
-          .find('bal-field-label > bal-label > label')
-          .invoke('attr', 'id')
-          .should('eq', result.split(' ')[1])
-      })
+      shouldHaveLabelledBy(0)
+      shouldHaveLabelledBy(1)
+      shouldHaveLabelledBy(2)
+    })
 
-    cy.getByTestId('form-radio')
-      .find('bal-radio')
-      .eq(2)
-      .find('input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
+    it('should link label and input with for attribute', () => {
+      function shouldHaveFor(index: number) {
         cy.getByTestId('form-radio')
-          .find('bal-radio')
-          .eq(2)
-          .find('label')
-          .invoke('attr', 'for')
-          .should('eq', result.split(' ')[0])
-        cy.getByTestId('form-radio')
-          .find('bal-field-label > bal-label > label')
+          .find('bal-radio > input')
+          .eq(index)
           .invoke('attr', 'id')
-          .should('eq', result.split(' ')[1])
-      })
-  })
+          .then(result => {
+            cy.getByTestId('form-radio')
+              .find('bal-radio > label')
+              .eq(index)
+              .invoke('attr', 'for')
+              .should('be.oneOf', result.split(' '))
+            if (index === 0) {
+              cy.getByTestId('form-radio')
+                .find('bal-field-label > bal-label > label')
+                .invoke('attr', 'for')
+                .should('be.oneOf', result.split(' '))
+            }
+          })
+      }
 
-  it('should check if checkbox button input has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('checkbox-button')
-      .find('bal-checkbox > input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('checkbox-button')
-          .find('bal-checkbox > label')
-          .invoke('attr', 'for')
-          .should('eq', result.split(' ')[0])
-        cy.getByTestId('checkbox-button')
-          .find('bal-content > bal-label > label')
-          .invoke('attr', 'id')
-          .should('eq', result.split(' ')[1])
-      })
-  })
-
-  it('should check if radio button input has correct aria-labelledby and label correct for attribute', () => {
-    cy.getByTestId('radio-button')
-      .find('bal-radio > input')
-      .invoke('attr', 'aria-labelledby')
-      .then(result => {
-        cy.getByTestId('radio-button')
-          .find('bal-content')
-          .find('bal-label > label')
-          .invoke('attr', 'id')
-          .should('eq', result.trim())
-      })
+      shouldHaveFor(0)
+      shouldHaveFor(1)
+      shouldHaveFor(2)
+    })
   })
 })

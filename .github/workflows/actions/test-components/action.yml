@@ -16,5 +16,5 @@ runs:
       if: failure()
       with:
         name: cypress-snapshots-components
-        path: packages/components/cypress/snapshots
+        path: test/cypress/snapshots
 

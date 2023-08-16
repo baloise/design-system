@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/build
+
   screenshots:
     name: 📸 Updating Screenshots
     runs-on: ubuntu-22.04
@@ -56,7 +57,7 @@ jobs:
         if: failure()
         with:
           name: cypress-snapshots
-          path: packages/components/cypress/snapshots
+          path: test/cypress/snapshots
 
       - name: Commit base images
         uses: EndBug/add-and-commit@v9

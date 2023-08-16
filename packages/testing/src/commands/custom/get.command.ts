@@ -10,7 +10,9 @@ Cypress.Commands.add('getByTestId', (testID, options?: Partial<Cypress.Loggable>
 
 Cypress.Commands.add('getByPlaceholder', (placeholder, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
-  const element = cy.get(`input[placeholder="${placeholder}"]`, o).waitForComponents(o)
+  const element = cy
+    .get(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o)
+    .waitForComponents(o)
   element.then(o, $el => log('getByPlaceholder', placeholder, $el, options))
   return element
 })
@@ -32,8 +34,8 @@ Cypress.Commands.add('getByRole', (role, options) => {
       }
       const label = Cypress.$(element).attr('aria-label')
       const title = Cypress.$(element).attr('title')
-      const text = Cypress.$(element).text()
-      return text === options.name || label === options.name || title === options.name
+      const text = Cypress.$(element).text().trim()
+      return text === options.name.trim() || label === options.name.trim() || title === options.name.trim()
     }, o)
 
     const firstButton = labeledButtons.first(o).waitForComponents(o)

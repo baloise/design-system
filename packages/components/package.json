@@ -51,6 +51,7 @@
     "==================== BUILD =========================": "================================",
     "build": "stencil build --es5 && npm run build:post",
     "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",

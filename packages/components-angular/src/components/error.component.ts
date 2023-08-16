@@ -3,8 +3,14 @@ import { AbstractControl, ControlContainer } from '@angular/forms'
 
 @Component({
   selector: 'bal-ng-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss'],
+  template: `<ng-content *ngIf="hasError"></ng-content>`,
+  styles: [
+    `
+      :host {
+        display: inline-block;
+      }
+    `,
+  ],
 })
 export class BalNgErrorComponent implements OnChanges {
   control?: AbstractControl | null

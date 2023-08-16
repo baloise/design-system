@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { FormInput, inputListenOnClick } from '../../../utils/form-input'
 import {
@@ -26,6 +26,7 @@ import {
   defaultConfig,
 } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -33,7 +34,9 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-input-stepper.sass',
   },
 })
-export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
+export class InputStepper
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
+{
   private inputId = `bal-input-stepper${InputStepperIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -44,6 +47,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -156,6 +160,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return Promise.resolve(this.nativeInput)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   increase() {
     if (!this.disabled && !this.readonly) {
       const newValue = new Big(this.value).plus(this.steps).toNumber()
@@ -181,13 +193,6 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   }
 
   render() {
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
-
     const block = BEM.block('input-stepper')
     const elInput = block.element('input')
     const elInner = block.element('inner')
@@ -242,14 +247,17 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           class={{
             ...elInput.class(),
           }}
+          id={this.ariaForm.controlId || this.inputId}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           data-testid="bal-input-stepper"
           type="text"
           value={this.value}
           name={this.name}
           tabindex="-1"
           ref={inputEl => (this.nativeInput = inputEl)}
-          id={this.inputId}
-          aria-labelledby={labelId}
           readonly={this.readonly}
           disabled={this.disabled}
           {...this.inheritedAttributes}
