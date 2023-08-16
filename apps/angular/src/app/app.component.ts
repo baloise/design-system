@@ -5,6 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
+import { NumberInputComponent } from './form-components/number-input.component'
 
 export interface UpdateControl {
   name: string
@@ -22,6 +23,7 @@ export interface UpdateControl {
     BaloiseDesignSystemModule,
     InputComponent,
     TextareaComponent,
+    NumberInputComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -29,6 +31,7 @@ export interface UpdateControl {
         <form class="is-flex fg-normal is-flex-direction-column" [formGroup]="myForm" (ngSubmit)="onSubmit()">
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
           <app-textarea [form]="myForm" (updateControl)="updateValue($event)"></app-textarea>
+          <app-number-input [form]="myForm" (updateControl)="updateValue($event)"></app-number-input>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -46,6 +49,7 @@ export interface UpdateControl {
 export class AppComponent {
   myForm = new FormGroup({
     input: new FormControl('', [Validators.required]),
+    numberInput: new FormControl('', [Validators.required]),
     textarea: new FormControl('', [Validators.required]),
   })
 
