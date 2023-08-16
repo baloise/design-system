@@ -36,7 +36,7 @@ jobs:
         with:
           fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
-      - uses: ./.github/workflows/actions/build
+      - uses: ./.github/workflows/actions/build-docs
 
   format:
     name: 🚨 Verify Code Format
