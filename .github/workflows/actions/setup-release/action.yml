@@ -1,0 +1,39 @@
+name: 'Setup Release'
+description: 'Setup Release'
+runs:
+  using: 'composite'
+  steps:
+    - name: Git Identity
+      run: |
+        git config --global user.name 'baopso'
+        git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup NodeJS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Update NPM registry
+      run: npm run registry
+      shell: bash
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build:force
+      env:
+        BAL_DS_RELEASE: true
+
+    - name: Create .npmrc
+      run: |
+        cat << EOF > "$HOME/.npmrc"
+          //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        EOF
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

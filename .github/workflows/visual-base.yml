@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/build
+
   screenshots:
     name: 📸 Updating Screenshots
     runs-on: ubuntu-22.04

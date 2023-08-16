@@ -17,11 +17,11 @@ runs:
         output: apps/angular/TestNgE2eBuild.zip
         paths: apps/angular/dist
 
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: test-e2e
-    #     output: test/TestE2eBuild.zip
-    #     paths: test/generated
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: test-e2e
+        output: test/TestE2eBuild.zip
+        paths: test/generated
 
     # - uses: ./.github/workflows/actions/upload-archive
     #   with:
