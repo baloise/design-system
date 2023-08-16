@@ -74,7 +74,7 @@
     "ng:start": "npm --prefix apps/angular run start",
     "ng:build": "turbo run build && npm run build:post",
     "ng:e2e": "npm --prefix apps/angular run e2e",
-    "ng:test": "npm --prefix apps/angular run test"
+    "ng:test": "npm --prefix apps/angular run ng:test"
   },
   "devDependencies": {
     "@angular/cli": "~13.3.10",
