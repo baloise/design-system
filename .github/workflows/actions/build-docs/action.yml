@@ -8,7 +8,7 @@ runs:
       shell: bash
 
     - name: Build
-      run: npm run docs
+      run: npm run storybook
       shell: bash
 
     - uses: ./.github/workflows/actions/upload-archive
