@@ -6,6 +6,7 @@ import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
+import { DateComponent } from './form-components/date.component'
 
 export interface UpdateControl {
   name: string
@@ -24,6 +25,7 @@ export interface UpdateControl {
     InputComponent,
     TextareaComponent,
     NumberInputComponent,
+    DateComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -32,6 +34,7 @@ export interface UpdateControl {
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
           <app-textarea [form]="myForm" (updateControl)="updateValue($event)"></app-textarea>
           <app-number-input [form]="myForm" (updateControl)="updateValue($event)"></app-number-input>
+          <app-date [form]="myForm" (updateControl)="updateValue($event)"></app-date>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -49,8 +52,9 @@ export interface UpdateControl {
 export class AppComponent {
   myForm = new FormGroup({
     input: new FormControl('', [Validators.required]),
-    numberInput: new FormControl('', [Validators.required]),
     textarea: new FormControl('', [Validators.required]),
+    numberInput: new FormControl('', [Validators.required]),
+    date: new FormControl('', [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {
