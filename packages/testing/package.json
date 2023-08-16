@@ -37,7 +37,8 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:compile",
     "build:compile": "tsc src/*.ts --outDir dist --target es5 --declaration --moduleResolution node --skipLibCheck",
-    "build:clean": "rimraf dist"
+    "build:clean": "rimraf dist",
+    "ng:build": "npm run build"
   },
   "dependencies": {
     "@baloise/design-system-components": "13.6.2",

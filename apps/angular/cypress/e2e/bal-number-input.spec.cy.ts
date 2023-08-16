@@ -12,9 +12,9 @@ describe('bal-number-input', () => {
       .contains('This field is required')
 
     cy.getByPlaceholder('Enter a number')
-      .type('88')
+      .type('8')
       .blur()
-      .should('have.value', '88')
+      .should('have.value', '8')
       .shouldBeValid()
       .getDescribingElement()
       .should('not.contain', 'This field is required')

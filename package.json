@@ -72,8 +72,8 @@
     "spell": "cspell \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress",
     "==================== APPS / ANGULAR ===========": "================================",
     "ng:start": "npm --prefix apps/angular run start",
-    "ng:build": "turbo run build && npm run build:post",
-    "ng:e2e": "npm --prefix apps/angular run e2e",
+    "ng:build": "turbo run ng:build",
+    "ng:e2e": "npm run ng:build && npm --prefix apps/angular run e2e",
     "ng:test": "npm --prefix apps/angular run ng:test"
   },
   "devDependencies": {
