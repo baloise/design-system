@@ -20,7 +20,7 @@ runs:
     - uses: ./.github/workflows/actions/download-archive
       with:
         name: test-ng-e2e
-        path: ./apps/anuglar/dist
+        path: ./apps/angular/dist
         filename: TestNgE2eBuild.zip
 
     # - uses: ./.github/workflows/actions/download-archive

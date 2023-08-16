@@ -14,8 +14,8 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: test-ng-e2e
-        output: apps/anuglar/TestNgE2eBuild.zip
-        paths: apps/anuglar/dist
+        output: apps/angular/TestNgE2eBuild.zip
+        paths: apps/angular/dist
 
     # - uses: ./.github/workflows/actions/upload-archive
     #   with:
