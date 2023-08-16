@@ -10,6 +10,7 @@ import { DateComponent } from './form-components/date.component'
 import { TimeComponent } from './form-components/time.component'
 import { InputStepperComponent } from './form-components/input-stepper.component'
 import { SliderComponent } from './form-components/input-slider.component'
+import { DropdownComponent } from './form-components/select-dropdown.component'
 
 export interface UpdateControl {
   name: string
@@ -32,6 +33,7 @@ export interface UpdateControl {
     TimeComponent,
     InputStepperComponent,
     SliderComponent,
+    DropdownComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -44,6 +46,7 @@ export interface UpdateControl {
           <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
+          <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -67,6 +70,7 @@ export class AppComponent {
     time: new FormControl('', [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(0, [Validators.min(10)]),
+    dropdown: new FormControl('', [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {
