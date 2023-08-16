@@ -26,6 +26,11 @@ namespace BalProps {
   export type BalButtonElementType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
+  export type BalButtonAria = {
+    controls?: string
+    title?: string
+    label?: string
+  }
 }
 
 namespace BalEvents {

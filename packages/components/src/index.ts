@@ -50,6 +50,7 @@ export * from './components/bal-close/bal-close.i18n'
 export * from './components/form/bal-field/bal-field-label/bal-field-label.i18n'
 export * from './components/form/bal-datepicker/bal-datepicker.i18n'
 export * from './components/form/bal-time-input/bal-time-input.i18n'
+export * from './components/form/bal-input-stepper/bal-input-stepper.i18n'
 export * from './components/typography/bal-label/bal-label.i18n'
 
 /**

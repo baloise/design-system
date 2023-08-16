@@ -154,6 +154,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "aria"?: BalProps.BalButtonAria;
+        /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded": undefined | boolean;
@@ -4319,6 +4323,10 @@ declare namespace LocalJSX {
         "size"?: BalProps.BalBadgeSize;
     }
     interface BalButton {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "aria"?: BalProps.BalButtonAria;
         /**
           * If `true` the bottom corners get rounded
          */
