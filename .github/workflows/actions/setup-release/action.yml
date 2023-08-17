@@ -24,9 +24,11 @@ runs:
 
     - name: Install dependencies
       run: npm ci
+      shell: bash
 
     - name: Build
       run: npm run build:force
+      shell: bash
       env:
         BAL_DS_RELEASE: true
 
@@ -35,5 +37,6 @@ runs:
         cat << EOF > "$HOME/.npmrc"
           //registry.npmjs.org/:_authToken=$NPM_TOKEN
         EOF
+      shell: bash
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
