@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import '@baloise/design-system-testing/src/add-custom-commands'
+import { checkAriaLabel, log, wrapOptions } from './helpers'
 
 declare global {
   namespace Cypress {
@@ -30,25 +31,14 @@ declare global {
   }
 }
 
-const wrapOptions = o => o
-const log = console.log
-
-function checkAriaLabel(element, label) {
-  if (label === undefined || label === null || label === '') {
-    return true
-  }
-  const ariaLabel = Cypress.$(element).attr('aria-label')
-  const title = Cypress.$(element).attr('title')
-  const text = Cypress.$(element).text().trim()
-  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
-}
-
 Cypress.Commands.add('getDescribingElement', { prevSubject: true }, (subject, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
   return cy.wrap(subject, o).then(subjectElement => {
     const ariaDescribedBy = subjectElement.attr('aria-describedby')
     if (ariaDescribedBy) {
-      return cy.get(`[id="${ariaDescribedBy}"]`)
+      return cy
+        .get(`[id="${ariaDescribedBy}"]`, o)
+        .then(o, $el => log('-getDescribingElement', ariaDescribedBy, $el, options))
     } else {
       throw new Error(`The subject element does not have an aria-describedby attribute.`)
     }
@@ -70,20 +60,22 @@ Cypress.Commands.add('getByLabelText', { prevSubject: 'optional' }, (subject, la
 
   if (subject) {
     return cy
-      .wrap(subject)
-      .contains('label', labelText)
-      .invoke('attr', 'for')
+      .wrap(subject, o)
+      .contains('label', labelText, o)
+      .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
-        cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+        return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
       })
+      .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options))
   }
 
   return cy
-    .contains('label', labelText)
-    .invoke('attr', 'for')
+    .contains('label', labelText, o)
+    .invoke(o, 'attr', 'for')
     .then(forAttributeValue => {
-      cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
+      return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
     })
+    .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options))
 })
 
 Cypress.Commands.add(
@@ -101,7 +93,7 @@ Cypress.Commands.add(
           .waitForComponents(o)
       : cy.get(`input[placeholder="${placeholder}"], textarea[placeholder="${placeholder}"]`, o).waitForComponents(o)
 
-    element.then(o, $el => log('getByPlaceholder', placeholder, $el, options))
+    element.then(o, $el => log(!!subject ? '-getByPlaceholder' : 'getByPlaceholder', placeholder, $el, options))
     return element
   },
 )
@@ -126,16 +118,16 @@ Cypress.Commands.add(
     }
 
     function filterLabeling(elements) {
-      return elements.filter((_index, element) => {
-        return checkAriaLabel(element, options.name)
-      }, o)
+      return elements.filter((_index, element) => checkAriaLabel(element, options.name), o)
     }
 
     const elements = findElements()
     const visibleElements = filterVisibleElements(elements)
     const labeledElements = filterLabeling(visibleElements)
     const firstElement = labeledElements.first(o).waitForComponents(o)
-    firstElement.then(o, $el => log('getByRole', `${role} ${JSON.stringify(options)}`, $el, options))
+    firstElement.then(o, $el =>
+      log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
+    )
     return firstElement
   },
 )
@@ -150,11 +142,11 @@ Cypress.Commands.add(
 
     const clearedLabelText = `${labelText || ''}`.trim()
 
-    cy.wrap(subject, o)
-      .invoke('attr', 'id')
-      .then(id => cy.get(`button[aria-controls="${id}"]`))
-      .filter((_index, element) => {
-        return checkAriaLabel(element, clearedLabelText)
-      })
+    return cy
+      .wrap(subject, o)
+      .invoke(o, 'attr', 'id')
+      .then(id => cy.get(`button[aria-controls="${id}"]`, o))
+      .filter((_index, element) => checkAriaLabel(element, clearedLabelText), o)
+      .then(o, $el => log('-getControl', `${labelText}`, $el, options))
   },
 )
