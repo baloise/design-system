@@ -23,7 +23,7 @@ declare global {
         options?: Partial<Loggable & Timeoutable & Withinable & Shadow>,
       ): Chainable<JQuery>
       getByRole(
-        role: 'button',
+        role: 'button' | 'label',
         options: GetByRoleOptions & Partial<Loggable & Timeoutable & Withinable & Shadow>,
       ): Chainable<JQuery>
     }
@@ -32,6 +32,16 @@ declare global {
 
 const wrapOptions = o => o
 const log = console.log
+
+function checkAriaLabel(element, label) {
+  if (label === undefined || label === null || label === '') {
+    return true
+  }
+  const ariaLabel = Cypress.$(element).attr('aria-label')
+  const title = Cypress.$(element).attr('title')
+  const text = Cypress.$(element).text().trim()
+  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
+}
 
 Cypress.Commands.add('getDescribingElement', { prevSubject: true }, (subject, options?: Partial<Cypress.Loggable>) => {
   const o = wrapOptions(options)
@@ -104,33 +114,29 @@ Cypress.Commands.add(
   (subject, role, options) => {
     const o = wrapOptions(options)
 
-    if (role === 'button') {
-      const buttons = subject
-        ? cy.wrap(subject, o).find('button, [role="button"]', o)
-        : cy.get('button, [role="button"]', o)
+    function findElements() {
+      return subject ? cy.wrap(subject, o).find(`${role}, [role="${role}"]`, o) : cy.get(`${role}, [role="${role}"]`, o)
+    }
 
-      const visibleButtons = buttons.filter((_index, element) => {
+    function filterVisibleElements(elements) {
+      return elements.filter((_index, element) => {
         const isElementAriaHidden = options.hidden === true ? false : !!Cypress.$(element).attr('aria-hidden')
         return !isElementAriaHidden
       }, o)
-
-      const labeledButtons = visibleButtons.filter((_index, element) => {
-        if (options.name === undefined || options.name === null || options.name === '') {
-          return true
-        }
-        const label = Cypress.$(element).attr('aria-label')
-        const title = Cypress.$(element).attr('title')
-        const text = Cypress.$(element).text().trim()
-        return text === options.name.trim() || label === options.name.trim() || title === options.name.trim()
-      }, o)
-
-      const firstButton = labeledButtons.first(o).waitForComponents(o)
-
-      firstButton.then(o, $el => log('getByRole', `button ${JSON.stringify(options)}`, $el, options))
-      return firstButton
     }
 
-    return subject ? cy.wrap(subject, o).waitForComponents(o) : cy.get(o).waitForComponents(o)
+    function filterLabeling(elements) {
+      return elements.filter((_index, element) => {
+        return checkAriaLabel(element, options.name)
+      }, o)
+    }
+
+    const elements = findElements()
+    const visibleElements = filterVisibleElements(elements)
+    const labeledElements = filterLabeling(visibleElements)
+    const firstElement = labeledElements.first(o).waitForComponents(o)
+    firstElement.then(o, $el => log('getByRole', `${role} ${JSON.stringify(options)}`, $el, options))
+    return firstElement
   },
 )
 
@@ -148,15 +154,7 @@ Cypress.Commands.add(
       .invoke('attr', 'id')
       .then(id => cy.get(`button[aria-controls="${id}"]`))
       .filter((_index, element) => {
-        if (clearedLabelText === '') {
-          return true
-        }
-
-        const label = Cypress.$(element).attr('aria-label')
-        const title = Cypress.$(element).attr('title')
-        const text = Cypress.$(element).text().trim()
-
-        return text === clearedLabelText || label === clearedLabelText || title === clearedLabelText
+        return checkAriaLabel(element, clearedLabelText)
       })
   },
 )

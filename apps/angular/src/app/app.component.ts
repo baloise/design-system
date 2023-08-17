@@ -11,6 +11,9 @@ import { TimeComponent } from './form-components/time.component'
 import { InputStepperComponent } from './form-components/input-stepper.component'
 import { SliderComponent } from './form-components/input-slider.component'
 import { DropdownComponent } from './form-components/select-dropdown.component'
+import { CheckboxComponent } from './form-components/checkbox.component'
+import { CheckboxGroupComponent } from './form-components/checkbox-group.component'
+import { CheckboxButtonsComponent } from './form-components/checkbox-buttons.component'
 
 export interface UpdateControl {
   name: string
@@ -34,6 +37,9 @@ export interface UpdateControl {
     InputStepperComponent,
     SliderComponent,
     DropdownComponent,
+    CheckboxComponent,
+    CheckboxGroupComponent,
+    CheckboxButtonsComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -49,6 +55,9 @@ export interface UpdateControl {
           <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
           <app-dropdown [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
           <app-dropdown [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-checkbox [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox>
+          <app-checkbox-group [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-group>
+          <app-checkbox-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-buttons>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -75,6 +84,9 @@ export class AppComponent {
     dropdown: new FormControl('', [Validators.required]),
     dropdownMultiple: new FormControl([], [Validators.required]),
     typeahead: new FormControl([], [Validators.required]),
+    checkbox: new FormControl(false, [Validators.requiredTrue]),
+    checkboxGroup: new FormControl(['Kiwi'], [Validators.required]),
+    checkboxButtons: new FormControl(['Kiwi'], [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {
