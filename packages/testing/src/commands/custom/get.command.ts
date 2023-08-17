@@ -36,7 +36,8 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
   const o = wrapOptions(options)
 
   if (subject) {
-    return cy.wrap(subject, o)
+    return cy
+      .wrap(subject, o)
       .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
@@ -44,7 +45,8 @@ Cypress.Commands.add('getByLabelText', { prevSubject: ['optional'] }, (subject, 
       })
       .then(o, $el => log(!!subject ? '-getByLabelText' : 'getByLabelText', labelText, $el, options)) as any
   } else {
-    return cy.contains('label', labelText, o)
+    return cy
+      .contains('label', labelText, o)
       .invoke(o, 'attr', 'for')
       .then(forAttributeValue => {
         return cy.get(`input[id="${forAttributeValue}"], textarea[id="${forAttributeValue}"]`, o)
