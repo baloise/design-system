@@ -47,6 +47,8 @@ export interface UpdateControl {
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
           <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-dropdown [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-dropdown [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -71,6 +73,8 @@ export class AppComponent {
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(0, [Validators.min(10)]),
     dropdown: new FormControl('', [Validators.required]),
+    dropdownMultiple: new FormControl([], [Validators.required]),
+    typeahead: new FormControl([], [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {
