@@ -1,5 +1,51 @@
 # @baloise/design-system-components
 
+## 13.6.2
+
+### Patch Changes
+
+- [#995](https://github.com/baloise/design-system/pull/995) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.2
+  - @baloise/design-system-fonts@13.6.2
+  - @baloise/design-system-icons@13.6.2
+  - @baloise/design-system-tokens@13.6.2
+
+## 13.6.1
+
+### Patch Changes
+
+- [#990](https://github.com/baloise/design-system/pull/990) - add a11y labels to close component
+
+- [#993](https://github.com/baloise/design-system/pull/993) - radio and checkbox groups update children on runtime
+
+- [#988](https://github.com/baloise/design-system/pull/988) - file-upload input handles every change event to detect duplicated files
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.6.1
+  - @baloise/design-system-fonts@13.6.1
+  - @baloise/design-system-icons@13.6.1
+  - @baloise/design-system-tokens@13.6.1
+
+## 13.6.0
+
+### Minor Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - hide svg from screen readers
+
+- [#976](https://github.com/baloise/design-system/pull/976) - add new tertiary button with a themed option
+
+### Patch Changes
+
+- [#984](https://github.com/baloise/design-system/pull/984) - add role progressbar to spinner
+
+- Updated dependencies [[`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`2742f1175`](https://github.com/baloise/design-system/commit/2742f1175a0758413cc03d01ad9f031c8f92c4dc), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f), [`de4626053`](https://github.com/baloise/design-system/commit/de46260536aa3e53e0aa7cf96796a7566f08177f)]:
+  - @baloise/design-system-icons@13.6.0
+  - @baloise/design-system-css@13.6.0
+  - @baloise/design-system-fonts@13.6.0
+  - @baloise/design-system-tokens@13.6.0
+
 ## 13.5.0
 
 ### Minor Changes

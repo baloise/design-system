@@ -17,7 +17,7 @@ import {
   hasTestId,
   isInputDate,
 } from '../helpers'
-import { parseDataTestID, selectors } from '../../selectors'
+import { parseDataTestID, selectors } from '../../selectors/index'
 
 const shouldAndAndCommand = (
   originalFn: any,

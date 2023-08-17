@@ -20,6 +20,12 @@
     "browserconfig",
     "bubu",
     "timeframe",
+    "myusername",
+    "googlemaps",
+    "gapless",
+    "FAVICONS",
+    "vcentered",
+    "sbdocs",
     "Bulma",
     "camelcase",
     "Chainable",
@@ -126,5 +132,17 @@
     "vue",
     "WCAG",
     "xsmall"
+    "Versichern",
+    "xsmall",
+    "footmobile",
+    "mainmobile",
+    "metamobile",
+    "verticaly",
+    "splitted",
+    "Rebranding",
+    "fakepath",
+    "iban",
+    "enterprisenumber",
+    "Arialabelled"
   ]
 }

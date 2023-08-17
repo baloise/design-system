@@ -130,6 +130,12 @@ packages/css/css/
 packages/css/assets/fonts/
 
 # Design System Cypress
-packages/components/cypress/snapshots/actual
-packages/components/cypress/snapshots/diff
-packages/components/cypress/videos
+packages/components/cypress
+
+test/cypress/snapshots/actual
+test/cypress/snapshots/diff
+test/cypress/videos
+
+ComponentsBuild.zip
+TestE2eBuild.zip
+TestNgE2eBuild.zip

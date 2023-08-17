@@ -1,6 +1,5 @@
 import { Config } from '@stencil/core'
 
-import { CustomDocumentationGenerator } from './config/doc-output-target'
 import { StencilBaseConfig } from './config/stencil.basic.config'
 import { AngularGenerator } from './config/stencil.bindings.angular'
 import { VueGenerator } from './config/stencil.bindings.vue'
@@ -26,7 +25,7 @@ export const config: Config = {
     /**
      * Documentation outputs
      */
-    CustomDocumentationGenerator,
+    // CustomDocumentationGenerator,
     /**
      * Copy assets for E2E testing
      */

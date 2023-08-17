@@ -49,4 +49,7 @@ namespace BalEvents {
 
   export type BalRadioButtonFocusDetail = FocusEvent
   export type BalRadioButtonFocus = BalRadioButtonCustomEvent<BalRadioButtonFocusDetail>
+
+  export type BalRadioButtonAriaLabelledByDetail = HTMLElement
+  export type BalRadioButtonAriaLabelledBy = BalRadioButtonCustomEvent<BalRadioButtonAriaLabelledByDetail>
 }

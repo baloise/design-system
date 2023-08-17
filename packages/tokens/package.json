@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-tokens",
-  "version": "13.5.0",
+  "version": "13.6.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "docs": "npm run build",
+    "ng:build": "npm run build",
     "build": "npm run rollup:pre && npm run build:tokens && npm run rollup:post",
     "build:tokens": "node ../../.build/tokens-generator.js",
     "rollup:pre": "rollup --config rollup.config.js",

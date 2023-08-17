@@ -1,0 +1,18 @@
+name: 'Build Docs'
+description: 'Build Docs'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Dependencies
+      run: npm ci
+      shell: bash
+
+    - name: Build
+      run: npm run storybook
+      shell: bash
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: storybook
+        output: StorybookBuild.zip
+        paths: storybook

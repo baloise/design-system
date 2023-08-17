@@ -1,10 +1,10 @@
 import { I18n } from '../../../../interfaces'
 
-interface I18nFieldLabel {
+interface I18nBalFieldLabel {
   optional: string
 }
 
-export const i18nFieldLabel: I18n<I18nFieldLabel> = {
+export const i18nBalFieldLabel: I18n<I18nBalFieldLabel> = {
   de: {
     optional: ' (optional)',
   },

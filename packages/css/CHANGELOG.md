@@ -1,5 +1,35 @@
 # @baloise/design-system-css
 
+## 13.6.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.6.2
+  - @baloise/design-system-tokens@13.6.2
+
+## 13.6.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.6.1
+  - @baloise/design-system-tokens@13.6.1
+
+## 13.6.0
+
+### Minor Changes
+
+- [#976](https://github.com/baloise/design-system/pull/976) - add new tertiary button with a themed option
+
+### Patch Changes
+
+- [#976](https://github.com/baloise/design-system/pull/976) - fix inverted hover style for text and link buttons
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.6.0
+  - @baloise/design-system-tokens@13.6.0
+
 ## 13.5.0
 
 ### Patch Changes

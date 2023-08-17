@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "13.5.0",
+  "version": "13.6.2",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -45,38 +45,30 @@
   "scripts": {
     "==================== START =========================": "================================",
     "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
-    "dev": "npm run docs:build && concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:build\" \"npm:dev:server\"",
+    "dev": "concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:build\" \"npm:dev:server\"",
     "dev:build": "stencil build --config stencil.config.dev.ts --watch",
     "dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
-    "build": "npm run build:pre && stencil build --es5 --docs-json dist/docs.json && npm run build:post",
-    "build:pre": "npm run cy:copy && node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js",
+    "build": "stencil build --es5 && npm run build:post",
     "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
+    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "==================== E2E TEST ======================": "================================",
-    "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",
-    "e2e:test": "npm run cy:open",
-    "e2e:server": "stencil build --config stencil.config.e2e.ts --serve --watch",
-    "==================== CYPRESS =======================": "================================",
-    "cy:install": "cypress install",
-    "cy:open": "npm run cy:copy && cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
-    "cy:build": "npm run cy:copy && stencil build --config stencil.config.e2e.ts --prod",
-    "cy:start": "node ./web-server.js",
-    "cy:copy": "copyfiles --flat ../testing/src/selectors/* ./cypress/support/generated",
-    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15",
+    "cy:build": "stencil build --config stencil.config.e2e.ts",
     "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:build && build-storybook -o ../../storybook  --quiet",
-    "docs:build": "node ../../.build/docs-github.js"
+    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && npm run build:post && npm run docs:post",
+    "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js",
+    "docs:post": "node ../../.build/docs-github.js",
+    "storybook": "build-storybook -o ../../storybook  --quiet"
   },
   "dependencies": {
-    "@baloise/design-system-css": "13.5.0",
-    "@baloise/design-system-fonts": "13.5.0",
-    "@baloise/design-system-icons": "13.5.0",
-    "@baloise/design-system-tokens": "13.5.0",
+    "@baloise/design-system-css": "13.6.2",
+    "@baloise/design-system-fonts": "13.6.2",
+    "@baloise/design-system-icons": "13.6.2",
+    "@baloise/design-system-tokens": "13.6.2",
     "@baloise/web-app-utils": "3.11.1",
     "@floating-ui/dom": "^1.5.1",
     "@popperjs/core": "~2.11.4",
@@ -101,9 +93,9 @@
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "13.5.0",
-    "@baloise/design-system-output-target-react": "13.5.0",
-    "@baloise/design-system-output-target-vue": "13.5.0"
+    "@baloise/design-system-output-target-angular": "13.6.2",
+    "@baloise/design-system-output-target-react": "13.6.2",
+    "@baloise/design-system-output-target-vue": "13.6.2"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

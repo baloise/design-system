@@ -10,20 +10,22 @@ import {
   ComponentInterface,
   Listen,
   Method,
+  State,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
-import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
+import { hasTagName, isDescendant } from '../../../../utils/helpers'
 import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import isFunction from 'lodash.isfunction'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
 
 @Component({
   tag: 'bal-radio-group',
 })
-export class RadioGroup implements ComponentInterface, Loggable, BalMutationObserver {
+export class RadioGroup implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking {
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
@@ -36,6 +38,7 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   }
 
   @Element() el!: HTMLBalRadioGroupElement
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -210,8 +213,15 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
 
   mutationObserverActive = true
 
-  @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'] })
+  @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'], attributes: false, characterData: false })
   mutationListener(): void {
+    this.setRadioInterface()
+    this.disabledChanged(this.disabled)
+    this.readonlyChanged(this.readonly)
+    this.invalidChanged(this.invalid)
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 
@@ -326,6 +336,14 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -412,7 +430,6 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
    */
 
   render() {
-    const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
 
@@ -430,7 +447,8 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
           ...block.class(),
         }}
         role="radiogroup"
-        aria-labelledby={label?.id}
+        aria-labelledby={this.ariaForm.labelId}
+        aria-describedby={this.ariaForm.messageId}
         aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
         {...this.inheritedAttributes}
