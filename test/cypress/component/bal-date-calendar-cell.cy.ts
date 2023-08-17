@@ -1,5 +1,5 @@
 // Import the necessary Cypress commands
-import { BalDateCalendarCell } from '../../.storybook/vue/generated/components'
+import { BalDateCalendarCell } from '../support/utils'
 
 describe('BalDateCalendarCell Component', () => {
   let onBalSelectDaySpy: Cypress.Agent<sinon.SinonSpy>

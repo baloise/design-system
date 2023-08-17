@@ -1,4 +1,4 @@
-import { BalInputDate } from '../../.storybook/vue/generated/components'
+import { BalInputDate } from '../support/utils'
 
 describe('bal-input-date.cy.ts', () => {
   let onClickSpy: Cypress.Agent<sinon.SinonSpy>

@@ -1,5 +1,4 @@
-import { BalDate } from '../../.storybook/vue/generated/components'
-import { i18nDate } from '../../dist'
+import { BalDate, i18nDate } from 'i18nBalDate'
 
 describe('BalDate Component', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>

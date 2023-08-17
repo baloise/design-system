@@ -181,3 +181,13 @@ export const testOnPlatforms = (platforms: Platforms[], fn: (platform: Platforms
     })
   }
 }
+
+export function checkAriaLabel(element, label) {
+  if (label === undefined || label === null || label === '') {
+    return true
+  }
+  const ariaLabel = Cypress.$(element).attr('aria-label')
+  const title = Cypress.$(element).attr('title')
+  const text = Cypress.$(element).text().trim()
+  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
+}
