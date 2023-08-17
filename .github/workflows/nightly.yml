@@ -19,16 +19,19 @@ jobs:
           fetch-depth: 0
 
       - uses: ./.github/workflows/actions/setup-release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
 
       - name: Release nightly
         run: |
           npx changeset version --snapshot nightly
           npx changeset publish --no-git-tag --tag nightly
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        shell: bash
 
       - name: Git Reset
         run: git reset --hard

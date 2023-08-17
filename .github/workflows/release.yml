@@ -19,6 +19,9 @@ jobs:
           fetch-depth: 0
 
       - uses: ./.github/workflows/actions/setup-release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

@@ -1,5 +1,10 @@
 name: 'Setup Release'
 description: 'Setup Release'
+inputs:
+  token:
+    description: 'The GitHub token required.'
+  npm-token:
+    description: 'The NPM authentication token required to publish.'
 runs:
   using: 'composite'
   steps:
@@ -9,7 +14,7 @@ runs:
         git config --global user.email 'Group.CH_Open-Source@baloise.ch'
         git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.token }}
 
     - name: Setup NodeJS
       uses: actions/setup-node@v3
@@ -39,4 +44,4 @@ runs:
         EOF
       shell: bash
       env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ inputs.npm-token }}
