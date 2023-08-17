@@ -4,7 +4,8 @@ describe('bal-date', () => {
   })
   it('should change value', () => {
     cy.getByLabelText('Date Label')
-      .should('have.value', '')
+      .should('have.value', '09.09.2023')
+      .clear()
       .click()
       .blur()
       .shouldBeInvalid()
@@ -18,6 +19,8 @@ describe('bal-date', () => {
       .shouldBeValid()
       .getDescribingElement()
       .should('not.contain', 'This field is required')
+
+    cy.get('body').type('{esc}')
 
     cy.getByRole('button', { name: 'Update Date' }).click()
     cy.getByPlaceholder('Enter a date')

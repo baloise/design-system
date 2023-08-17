@@ -3,12 +3,12 @@ describe('bal-dropdown-multiple', () => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Dropdown Multiple Label').should('have.value', '').click().blur()
+    cy.getByLabelText('Dropdown Multiple Label').click()
+    cy.getByTestId('dropdownMultiple').getByRole('button', { name: 'Kiwi' }).click()
 
     cy.get('body').type('{esc}')
 
     cy.getByLabelText('Dropdown Multiple Label')
-      .should('have.value', '')
       .shouldBeInvalid()
       .getDescribingElement()
       .contains('This field is required')

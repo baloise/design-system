@@ -82,9 +82,9 @@ export class AppComponent {
   myForm = new FormGroup({
     input: new FormControl('Init Value', [Validators.required]),
     textarea: new FormControl('Init Value', [Validators.required]),
-    numberInput: new FormControl(7, [Validators.required]),
+    numberInput: new FormControl(null, [Validators.required]),
     date: new FormControl('2023-09-09', [Validators.required]),
-    time: new FormControl('14:42', [Validators.required]),
+    time: new FormControl(null, [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
     slider: new FormControl(30, [Validators.min(10)]),
     dropdown: new FormControl('Kiwi', [Validators.required]),

@@ -4,7 +4,9 @@ describe('bal-input-slider', () => {
   })
   it('should change value', () => {
     cy.getByLabelText('Slider Label')
-      .should('have.value', 0)
+      .should('have.value', 30)
+      .invoke('val', 0)
+      .trigger('input')
       .click()
       .blur()
       .shouldBeInvalid()

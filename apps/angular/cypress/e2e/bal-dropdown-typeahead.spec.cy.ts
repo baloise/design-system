@@ -3,7 +3,7 @@ describe('bal-dropdown-typeahead', () => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Typeahead Label').should('have.value', '').click().blur()
+    cy.getByLabelText('Typeahead Label').should('have.value', 'Kiwi').clear().blur()
 
     cy.get('body').type('{esc}')
 

@@ -4,6 +4,8 @@ describe('bal-textarea', () => {
   })
   it('should change value', () => {
     cy.getByLabelText('Textarea Label')
+      .should('have.value', 'Init Value')
+      .clear()
       .should('have.value', '')
       .click()
       .blur()

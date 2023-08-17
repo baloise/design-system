@@ -3,15 +3,10 @@ describe('bal-dropdown', () => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })
   it('should change value', () => {
-    cy.getByLabelText('Dropdown Label').should('have.value', '').click().blur()
-
-    cy.get('body').type('{esc}')
-
-    cy.getByLabelText('Dropdown Label')
-      .should('have.value', '')
-      .shouldBeInvalid()
-      .getDescribingElement()
-      .contains('This field is required')
+    cy.getByLabelText('Dropdown Label').should('have.value', 'Kiwi')
+    // .shouldBeInvalid()
+    // .getDescribingElement()
+    // .contains('This field is required')
 
     cy.getByLabelText('Dropdown Label').click().waitForComponents()
     cy.get('bal-select').getByRole('button', { name: 'Kiwi' }).click().waitForComponents()

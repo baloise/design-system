@@ -4,7 +4,8 @@ describe('bal-input', () => {
   })
   it('should change value', () => {
     cy.getByLabelText('Input Label')
-      .should('have.value', '')
+      .should('have.value', 'Init Value')
+      .clear()
       .click()
       .blur()
       .shouldBeInvalid()
