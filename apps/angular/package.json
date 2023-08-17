@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "./build.sh && ng serve",
     "build": "./build.sh && ng build",
+    "ng:build": "./build.sh",
     "watch": "ng build --watch --configuration development",
     "ng:test": "ng test",
     "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",

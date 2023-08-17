@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
       BaloiseDesignSystemModule.forRoot({
         defaults: {
           logger: {
-            components: ['bal-input'],
+            components: ['bal-select'],
             lifecycle: true,
             custom: false,
             render: true,

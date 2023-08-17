@@ -33,6 +33,22 @@
         "**/assets/fonts/**"
       ]
     },
+    "ng:build": {
+      "dependsOn": ["^ng:build"],
+      "outputs": [
+        "dist/**",
+        "loader/**",
+        "wwww/**",
+        ".tmp/**",
+        "css/baloise-design-system.css",
+        "css/design-system-table.css",
+        "**/components/**/readme.md",
+        "**/generated/**",
+        "**/assets/data/**",
+        "**/assets/download/**",
+        "**/assets/fonts/**"
+      ]
+    },
     "registry": {
       "dependsOn": ["^registry"],
       "inputs": ["package.json", "package-lock.json"]

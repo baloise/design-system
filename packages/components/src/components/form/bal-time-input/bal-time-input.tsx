@@ -39,6 +39,7 @@ import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/con
 import { BEM } from '../../../utils/bem'
 import { i18nBalTimeInput } from './bal-time-input.i18n'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-time-input',
@@ -47,7 +48,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../ut
   },
 })
 export class TimeInput
-  implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, BalAriaFormLinking
+  implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, BalAriaFormLinking, Loggable
 {
   private inputId = `bal-time-input-${timeInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
@@ -57,6 +58,12 @@ export class TimeInput
   initialValue = ''
 
   @Element() el!: HTMLElement
+
+  log!: LogInstance
+  @Logger('bal-time-input')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language

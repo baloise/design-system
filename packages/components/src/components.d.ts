@@ -154,6 +154,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * A11y attributes for the native button element.
+         */
+        "aria"?: BalProps.BalButtonAria;
+        /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded": undefined | boolean;
@@ -1391,6 +1395,10 @@ export namespace Components {
           * If `true`, small ticks for the steps are shown.
          */
         "hasTicks": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * Max value of the model.
          */
@@ -4320,6 +4328,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * A11y attributes for the native button element.
+         */
+        "aria"?: BalProps.BalButtonAria;
+        /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded"?: undefined | boolean;
@@ -5597,6 +5609,10 @@ declare namespace LocalJSX {
           * If `true`, small ticks for the steps are shown.
          */
         "hasTicks"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * Max value of the model.
          */

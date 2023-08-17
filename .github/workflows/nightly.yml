@@ -1,6 +1,7 @@
 name: Nightly Release
 
 on:
+  workflow_dispatch:
   schedule:
     # Run every Monday-Friday
     # at 6:00 UTC (6:00 am UTC)
@@ -27,6 +28,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        shell: bash
 
       - name: Git Reset
         run: git reset --hard
+        shell: bash

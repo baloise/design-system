@@ -27,6 +27,7 @@ import {
 } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { i18nBalInputStepper } from './bal-input-stepper.i18n'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -37,7 +38,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../ut
 export class InputStepper
   implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
 {
-  private inputId = `bal-input-stepper${InputStepperIds++}`
+  private inputId = `bal-input-stepper-${InputStepperIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
   nativeInput?: HTMLInputElement
@@ -198,6 +199,9 @@ export class InputStepper
     const elInner = block.element('inner')
     const elText = elInner.element('text')
 
+    const increaseLabel = i18nBalInputStepper[this.language].increase
+    const decreaseLabel = i18nBalInputStepper[this.language].decrease
+
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
@@ -212,6 +216,11 @@ export class InputStepper
           }}
         >
           <bal-button
+            aria={{
+              title: decreaseLabel,
+              label: decreaseLabel,
+              controls: this.ariaForm.controlId || this.inputId,
+            }}
             size="small"
             square
             data-testid="bal-input-stepper-decrease"
@@ -233,6 +242,11 @@ export class InputStepper
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
+            aria={{
+              title: increaseLabel,
+              label: increaseLabel,
+              controls: this.ariaForm.controlId || this.inputId,
+            }}
             size="small"
             data-testid="bal-input-stepper-increase"
             square

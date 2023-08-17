@@ -25,6 +25,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
     'bal-radio',
     'bal-input-group',
     'bal-input-stepper',
+    'bal-input-slider',
     'bal-file-upload',
   ]
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']

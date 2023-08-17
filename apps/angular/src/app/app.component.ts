@@ -5,6 +5,17 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
+import { NumberInputComponent } from './form-components/number-input.component'
+import { DateComponent } from './form-components/date.component'
+import { TimeComponent } from './form-components/time.component'
+import { InputStepperComponent } from './form-components/input-stepper.component'
+import { SliderComponent } from './form-components/input-slider.component'
+import { DropdownComponent } from './form-components/select-dropdown.component'
+import { CheckboxComponent } from './form-components/checkbox.component'
+import { CheckboxGroupComponent } from './form-components/checkbox-group.component'
+import { CheckboxButtonsComponent } from './form-components/checkbox-buttons.component'
+import { RadioComponent } from './form-components/radio.component'
+import { RadioButtonsComponent } from './form-components/radio-buttons.component'
 
 export interface UpdateControl {
   name: string
@@ -22,6 +33,17 @@ export interface UpdateControl {
     BaloiseDesignSystemModule,
     InputComponent,
     TextareaComponent,
+    NumberInputComponent,
+    DateComponent,
+    TimeComponent,
+    InputStepperComponent,
+    SliderComponent,
+    DropdownComponent,
+    CheckboxComponent,
+    CheckboxGroupComponent,
+    CheckboxButtonsComponent,
+    RadioComponent,
+    RadioButtonsComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -29,6 +51,19 @@ export interface UpdateControl {
         <form class="is-flex fg-normal is-flex-direction-column" [formGroup]="myForm" (ngSubmit)="onSubmit()">
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
           <app-textarea [form]="myForm" (updateControl)="updateValue($event)"></app-textarea>
+          <app-number-input [form]="myForm" (updateControl)="updateValue($event)"></app-number-input>
+          <app-date [form]="myForm" (updateControl)="updateValue($event)"></app-date>
+          <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
+          <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
+          <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
+          <app-dropdown [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-dropdown [multiple]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-dropdown [typeahead]="true" [form]="myForm" (updateControl)="updateValue($event)"></app-dropdown>
+          <app-checkbox [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox>
+          <app-checkbox-group [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-group>
+          <app-checkbox-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-checkbox-buttons>
+          <app-radio [form]="myForm" (updateControl)="updateValue($event)"></app-radio>
+          <app-radio-buttons [form]="myForm" (updateControl)="updateValue($event)"></app-radio-buttons>
 
           <div>
             <p class="pt-medium">Complete the form to enable button.</p>
@@ -45,8 +80,21 @@ export interface UpdateControl {
 })
 export class AppComponent {
   myForm = new FormGroup({
-    input: new FormControl('', [Validators.required]),
-    textarea: new FormControl('', [Validators.required]),
+    input: new FormControl('Init Value', [Validators.required]),
+    textarea: new FormControl('Init Value', [Validators.required]),
+    numberInput: new FormControl(null, [Validators.required]),
+    date: new FormControl('2023-09-09', [Validators.required]),
+    time: new FormControl(null, [Validators.required]),
+    inputStepper: new FormControl(0, [Validators.min(2)]),
+    slider: new FormControl(30, [Validators.min(10)]),
+    dropdown: new FormControl('Kiwi', [Validators.required]),
+    dropdownMultiple: new FormControl(['Kiwi'], [Validators.required]),
+    typeahead: new FormControl('Kiwi', [Validators.required]),
+    checkbox: new FormControl(false, [Validators.requiredTrue]),
+    checkboxGroup: new FormControl(['Kiwi'], [Validators.required]),
+    checkboxButtons: new FormControl(['Kiwi'], [Validators.required]),
+    radio: new FormControl('Kiwi', [Validators.required]),
+    radioButtons: new FormControl('Kiwi', [Validators.required]),
   })
 
   updateValue(option: UpdateControl) {
