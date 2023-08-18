@@ -11,20 +11,22 @@ import {
   EventEmitter,
   Listen,
   Method,
+  State,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
-import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
+import { hasTagName, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BEM } from '../../../../utils/bem'
 import { BalCheckboxOption } from '../bal-checkbox.type'
 import isFunction from 'lodash.isfunction'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
 
 @Component({
   tag: 'bal-checkbox-group',
 })
-export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationObserver {
+export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking {
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -36,6 +38,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
   }
 
   @Element() el!: HTMLElement
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -285,6 +288,14 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -293,8 +304,8 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
     if (this.control) {
       const isChecked = (checkbox: HTMLBalCheckboxElement) => {
         for (let index = 0; index < this.value.length; index++) {
-          const item = this.value[index]
-          if (item.toString() === checkbox.value.toString()) {
+          const valueItem = this.value[index]
+          if (valueItem !== undefined && valueItem.toString() === checkbox.value.toString()) {
             return true
           }
         }
@@ -373,7 +384,6 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
    */
 
   render() {
-    const label = findItemLabel(this.el)
     const block = BEM.block('radio-checkbox-group')
     const innerEl = block.element('inner')
 
@@ -391,8 +401,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
           ...block.class(),
         }}
         role="group"
-        aria-labelledby={label?.id}
         aria-disabled={this.disabled ? 'true' : null}
+        aria-labelledby={this.ariaForm.labelId}
+        aria-describedby={this.ariaForm.messageId}
         onClick={this.onClick}
         {...this.inheritedAttributes}
       >

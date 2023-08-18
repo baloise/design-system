@@ -1,0 +1,8 @@
+name: 'Spell'
+description: 'Spell'
+runs:
+  using: 'composite'
+  steps:
+    - name: Spell Check
+      run: npm run ci:spell
+      shell: bash

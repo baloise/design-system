@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body>
+    <bal-app>
+      <div class="container">
+        <section>
+          <bal-field>
+            <bal-field-label>Input Label without a message</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Enter text input"></bal-input>
+            </bal-field-control>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Input Label</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Enter text input"></bal-input>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid text input</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Textarea Label</bal-field-label>
+            <bal-field-control>
+              <bal-textarea placeholder="Enter text textarea"></bal-textarea>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid text textarea</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Number Label</bal-field-label>
+            <bal-field-control>
+              <bal-number-input placeholder="Enter text number"></bal-number-input>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid number</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Time Label</bal-field-label>
+            <bal-field-control>
+              <bal-time-input placeholder="Enter text time"></bal-time-input>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid time</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Stepper Label</bal-field-label>
+            <bal-field-control>
+              <bal-input-stepper></bal-input-stepper>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid step</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Datepicker Label</bal-field-label>
+            <bal-field-control>
+              <bal-datepicker></bal-datepicker>
+            </bal-field-control>
+            <bal-field-message>Please enter a valid date</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>File Upload Label</bal-field-label>
+            <bal-field-control>
+              <bal-file-upload
+                name="my-files"
+                accept="image/png"
+                max-files="3"
+                max-file-size="10000000"
+                max-bundle-size="100000000"
+              ></bal-file-upload>
+            </bal-field-control>
+            <bal-field-message>Please add a valid files</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Slider Label</bal-field-label>
+            <bal-field-control>
+              <bal-input-slider></bal-input-slider>
+            </bal-field-control>
+            <bal-field-message>Please add a valid slide value</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Select Label</bal-field-label>
+            <bal-field-control>
+              <bal-select placeholder="Try finding a year">
+                <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+                <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+                <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+                <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+                <bal-select-option value="v1999" label="1999">1999</bal-select-option>
+                <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+              </bal-select>
+            </bal-field-control>
+            <bal-field-message>Please chose a valid option</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Checkbox Label</bal-field-label>
+            <bal-field-control>
+              <bal-checkbox>My checkbox</bal-checkbox>
+            </bal-field-control>
+            <bal-field-message>Please check checkbox</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Checkbox Group Label</bal-field-label>
+            <bal-field-control>
+              <bal-checkbox-group control>
+                <bal-checkbox name="checkbox-group" value="1">One</bal-checkbox>
+                <bal-checkbox name="checkbox-group" value="2">Two</bal-checkbox>
+                <bal-checkbox name="checkbox-group" value="3">Three</bal-checkbox>
+              </bal-checkbox-group>
+            </bal-field-control>
+            <bal-field-message>Please check checkboxes</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Checkbox Button Group Label</bal-field-label>
+            <bal-field-control>
+              <bal-checkbox-group control>
+                <bal-checkbox-button>
+                  <bal-stack>
+                    <bal-icon size="large" color="auto"></bal-icon>
+                    <bal-content>
+                      <bal-label>One</bal-label>
+                    </bal-content>
+                    <bal-checkbox label-hidden name="checkbox-button-example" value="1"></bal-checkbox>
+                  </bal-stack>
+                </bal-checkbox-button>
+                <bal-checkbox-button>
+                  <bal-stack>
+                    <bal-icon size="large" color="auto"></bal-icon>
+                    <bal-content>
+                      <bal-label>Two</bal-label>
+                    </bal-content>
+                    <bal-checkbox label-hidden name="checkbox-button-example" value="2"></bal-checkbox>
+                  </bal-stack>
+                </bal-checkbox-button>
+                <bal-checkbox-button>
+                  <bal-stack>
+                    <bal-icon size="large" color="auto"></bal-icon>
+                    <bal-content>
+                      <bal-label>Three</bal-label>
+                    </bal-content>
+                    <bal-checkbox label-hidden name="checkbox-button-example" value="3"></bal-checkbox>
+                  </bal-stack>
+                </bal-checkbox-button>
+              </bal-checkbox-group>
+            </bal-field-control>
+            <bal-field-message>Please check checkboxes</bal-field-message>
+          </bal-field>
+
+          <bal-field>
+            <bal-field-label>Radio Label</bal-field-label>
+            <bal-field-control>
+              <bal-radio-group>
+                <bal-radio name="radio-example" value="1">One</bal-radio>
+                <bal-radio name="radio-example" value="2">Two</bal-radio>
+                <bal-radio name="radio-example" value="3">Three</bal-radio>
+              </bal-radio-group>
+            </bal-field-control>
+            <bal-field-message>Please check radios</bal-field-message>
+          </bal-field>
+        </section>
+      </div>
+    </bal-app>
+  </body>
+</html>

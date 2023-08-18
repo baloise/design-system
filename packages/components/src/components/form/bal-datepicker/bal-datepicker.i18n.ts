@@ -1,6 +1,6 @@
 import { I18n } from '../../../interfaces'
 
-interface I18nDate {
+interface I18nBalDatepicker {
   months: string[]
   monthsShort: string[]
   weekdays: string[]
@@ -8,7 +8,7 @@ interface I18nDate {
   weekdaysMin: string[]
 }
 
-export const i18nDate: I18n<I18nDate> = {
+export const i18nBalDatepicker: I18n<I18nBalDatepicker> = {
   de: {
     months: 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
     monthsShort: 'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),

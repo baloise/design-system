@@ -1,0 +1,12 @@
+name: 'Test'
+description: 'Test'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Dependencies
+      run: npm install
+      shell: bash
+
+    - name: Test Check
+      run: npm run test
+      shell: bash

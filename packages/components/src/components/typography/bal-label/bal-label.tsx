@@ -9,9 +9,9 @@ import {
   ListenToConfig,
 } from '../../../utils/config'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { i18nLabel } from './bal-label.i18n'
+import { i18nBalLabel } from './bal-label.i18n'
 import { BalElementStateInfo } from '../../../utils/element-states'
-import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
+import { BalAriaFormLinking, BalAriaForm, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-label',
@@ -20,13 +20,15 @@ import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
   },
 })
 export class BalLabel
-  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalMutationObserver
+  implements ComponentInterface, Loggable, BalConfigObserver, BalElementStateInfo, BalAriaFormLinking
 {
   @Element() el!: HTMLElement
 
-  @State() inputId?: string
+  private inputId = `bal-lbl-${labelIds++}`
+
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -108,25 +110,9 @@ export class BalLabel
   @Prop() pressed = false
 
   /**
-   * LIFECYCLE
-   * ------------------------------------------------------
-   */
-
-  connectedCallback() {
-    this.attachLabelToInput()
-  }
-
-  /**
    * LISTENERS
    * ------------------------------------------------------
    */
-
-  mutationObserverActive = false
-
-  @ListenToMutation({ tags: ['bal-radio'], closest: 'bal-radio-button', attributes: false, characterData: false })
-  mutationListener(): void {
-    this.setHtmlFor()
-  }
 
   /**
    * @internal define config for the component
@@ -139,25 +125,16 @@ export class BalLabel
   }
 
   /**
-   * PRIVATE METHODS
+   * PUBLIC METHODS
    * ------------------------------------------------------
    */
 
-  async attachLabelToInput() {
-    const radio = this.getRadioElement()
-    this.mutationObserverActive = !!radio
-    await this.setHtmlFor()
-  }
-
-  private getRadioElement() {
-    const radioButton = this.el.closest('bal-radio-button')
-    return radioButton?.querySelector('bal-radio')
-  }
-
-  private async setHtmlFor() {
-    const radio = this.getRadioElement()
-    const radioInput = await radio?.getInputElement()
-    this.inputId = radioInput?.id
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm) {
+    this.ariaForm = { ...ariaForm }
   }
 
   /**
@@ -167,7 +144,7 @@ export class BalLabel
 
   render() {
     const block = BEM.block('label')
-    const suffix = this.required === false ? i18nLabel[this.language].optional || '' : ''
+    const suffix = this.required === false ? i18nBalLabel[this.language].optional || '' : ''
     const disabled = !!this.disabled || !!this.readonly
     const danger = !!this.invalid
     const success = !!this.valid
@@ -175,10 +152,14 @@ export class BalLabel
     const small = this.size === 'small'
     const large = this.size === 'large'
 
+    const id = this.ariaForm.labelId || this.inputId
+    const htmlFor = this.htmlFor || this.ariaForm.controlId
+
     return (
       <Host class={{ ...block.class() }}>
         <label
-          htmlFor={this.htmlFor || this.inputId}
+          id={id}
+          htmlFor={htmlFor}
           class={{
             ...block.element('native').class(),
             ...block.element('native').modifier('multiline').class(this.multiline),
@@ -200,3 +181,5 @@ export class BalLabel
     )
   }
 }
+
+let labelIds = 0

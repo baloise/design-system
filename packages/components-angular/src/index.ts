@@ -1,5 +1,5 @@
 // COMPONENTS
-export { BalNgErrorComponent } from './components/error/error.component'
+export { BalNgErrorComponent } from './components/error.component'
 
 // DIRECTIVES
 export * from './generated/proxies'

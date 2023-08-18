@@ -28,9 +28,9 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:archive",
-    "build:clean": "rimraf ./dist",
-    "build:archive": "node ../../.build/archive-font.js"
+    "docs": "npm run docs:clean && npm run docs:archive",
+    "docs:clean": "rimraf ./dist",
+    "docs:archive": "node ../../.build/archive-font.js"
   },
   "main": "./css/fonts.css",
   "files": [
