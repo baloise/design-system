@@ -2890,6 +2890,7 @@ export namespace Components {
           * If `true` the tabs or steps can be clicked.
          */
         "clickable": boolean;
+        "closeAccordion": () => Promise<void>;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Defines the layout of the tabs.

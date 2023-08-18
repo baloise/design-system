@@ -320,6 +320,18 @@ export class Tabs
   }
 
   /**
+   * @internal
+   * Closes the accordion
+   */
+  @Method()
+  async closeAccordion() {
+    console.log('in collapseAccordionGlobal')
+    if (this.isAccordionOpen) {
+      this.collapseAccordion()
+    }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */

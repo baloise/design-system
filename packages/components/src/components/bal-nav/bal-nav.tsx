@@ -31,6 +31,7 @@ import {
 import { i18nNavBars } from './bal-nav.i18n'
 import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavLinkItem } from './models/bal-nav-link-item'
+import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-nav',
@@ -162,6 +163,8 @@ export class NavMetaBar
 
         if (!targetIsInMetaBar && !targetIsInMenuBar) {
           this.isFlyoutActive = false
+          const tabs = this.menuBarEl?.querySelector('.bal-tabs') as HTMLBalTabsElement
+          tabs.closeAccordion()
         }
       }
     }
@@ -256,6 +259,11 @@ export class NavMetaBar
   private onTouchToggleFlyout = (_ev: MouseEvent) => {
     this.closeAllPopups()
     this.isFlyoutActive = !this.isFlyoutActive
+
+    if (balBrowser.hasWindow && window.scrollY > 0) {
+      window.scrollTo(0, 0)
+    }
+
     if (this.isFlyoutActive) {
       this.bodyScrollHandler.disable()
     } else {
@@ -277,7 +285,9 @@ export class NavMetaBar
   }
 
   private onPopupClose = (triggers: HTMLBalButtonElement[]) => {
-    this.bodyScrollHandler.enable()
+    if (!this.isFlyoutActive) {
+      this.bodyScrollHandler.enable()
+    }
     triggers.forEach(trigger => {
       if (trigger.classList.contains('bal-nav__popup--desktop')) {
         trigger.inverted = true
