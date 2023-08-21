@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
-import { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
+import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
@@ -19,7 +19,7 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
-export { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
+export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
@@ -769,6 +769,7 @@ export namespace Components {
           * Selects an option
          */
         "select": (dateString: string) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm1) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */
@@ -1543,6 +1544,7 @@ export namespace Components {
           * If `true` the attribute required is added to the native input.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */

@@ -20,13 +20,13 @@ import { ListenToConfig } from '../../../../utils/config'
 import { hasParent } from '../../../../utils/helpers'
 import { DateMask, MaskComponentAdapter } from '../../../../utils/mask'
 import { inputSetBlur, inputSetFocus } from '../../../../utils/form-input'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
 
 @Component({
   tag: 'bal-input-date',
   styleUrl: 'bal-input-date.sass',
-  shadow: true,
 })
-export class InputDate implements ComponentInterface, Loggable, BalConfigObserver {
+export class InputDate implements ComponentInterface, Loggable, BalConfigObserver, BalAriaFormLinking {
   private inputId = `bal-i-date-${inputDateIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -39,6 +39,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
   @State() focused = false
   @State() isGrouped = false
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   @Logger('bal-input-date')
   createLogger(log: LogInstance) {
@@ -209,12 +210,20 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   }
 
   /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
 
   render() {
-    const block = BEM.block('date-input')
+    const block = BEM.block('input-date')
 
     return (
       <Host
@@ -235,9 +244,12 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           }}
           data-testid="bal-input"
           ref={el => (this.nativeInput = el as HTMLInputElement)}
-          id={this.inputId}
-          required={this.required}
+          id={this.ariaForm.controlId || this.inputId}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
           aria-disabled={this.disabled ? 'true' : null}
+          required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
           autoComplete={this.autocomplete}

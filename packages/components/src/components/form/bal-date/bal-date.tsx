@@ -21,15 +21,15 @@ import { BalDate } from '../../../utils/date'
 import { inheritAttributes } from '../../../utils/attributes'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BalConfigState, ListenToConfig, defaultConfig } from '../../../utils/config'
-import { BalLanguage } from '../../../interfaces'
+import { BalAriaForm, BalLanguage } from '../../../interfaces'
 import { debounceEvent } from '../../../utils/helpers'
+import { defaultBalAriaForm, BalAriaFormLinking } from '../../../utils/form'
 
 @Component({
   tag: 'bal-date',
   styleUrl: 'bal-date.sass',
-  shadow: true,
 })
-export class Date implements ComponentInterface, Loggable {
+export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputId = `bal-da-${dateIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popupCleanup?: () => void
@@ -42,6 +42,7 @@ export class Date implements ComponentInterface, Loggable {
   @State() private isExpanded = false
   @State() private language: BalLanguage = defaultConfig.language
   @State() private calendarValue: string | undefined
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -334,6 +335,15 @@ export class Date implements ComponentInterface, Loggable {
   @Method()
   async getInputElement(): Promise<HTMLInputElement | undefined> {
     return this.inputEl?.getInputElement()
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+    this.inputEl?.setAriaForm(ariaForm)
   }
 
   /**

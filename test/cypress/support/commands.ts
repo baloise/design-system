@@ -77,8 +77,6 @@ declare global {
   }
 }
 
-import '../../../testing/src/add-custom-commands'
-
 Cypress.Commands.add('pageA11y', (url: string) => {
   cy.visit(url).platform('desktop').waitForDesignSystem()
   cy.injectAxe()
