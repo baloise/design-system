@@ -14,6 +14,9 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { BalConfigState } from '../../interfaces'
+import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { i18nControlLabel } from './bal-pagination.i18n'
 
 @Component({
   tag: 'bal-pagination',
@@ -25,6 +28,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLBalPaginationElement
   @State() _value = 1
   @State() isMobile = balBreakpoints.isMobile
+  @State() language: BalLanguage = defaultConfig.language
 
   /**
    * Defines the layout of the pagination
@@ -108,6 +112,15 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
       this._value = this._value - 1
       this.balChangeEventEmitter.emit(this._value)
     }
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
   }
 
   selectPage(pageNumber: number) {
@@ -215,6 +228,9 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
 
+    const leftControlTitle = i18nControlLabel[this.language].left
+    const rightControlTitle = i18nControlLabel[this.language].right
+
     const hasBasicNavigationButtons = this.interface === '' || (isSmall && this.totalPages <= 5)
 
     const SmallWithText: FunctionalComponent = () => (
@@ -284,6 +300,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
             disabled={this._value < 2 || this.disabled}
             onClick={() => this.previous()}
             data-testid="bal-pagination-controls-left"
+            title={leftControlTitle}
           >
             <bal-icon name="nav-go-left" size="small" />
           </bal-button>
@@ -299,6 +316,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
             disabled={this._value === this.totalPages || this.disabled}
             onClick={() => this.next()}
             data-testid="bal-pagination-controls-right"
+            title={rightControlTitle}
           >
             <bal-icon name="nav-go-right" size="small" />
           </bal-button>

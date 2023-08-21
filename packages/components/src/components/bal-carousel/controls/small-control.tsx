@@ -5,6 +5,8 @@ export interface SmallControlProps {
   isFirst: boolean
   isLast: boolean
   inverted: boolean
+  leftControlTitle: string
+  rightControlTitle: string
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -13,6 +15,8 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
   isFirst,
   isLast,
   inverted,
+  leftControlTitle,
+  rightControlTitle,
   onNextClick,
   onPreviousClick,
 }) => {
@@ -41,6 +45,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         onClick={() => onPreviousClick()}
         disabled={isFirst}
         data-testid="bal-carousel-control-left"
+        title={leftControlTitle}
       ></bal-button>
       <bal-button
         class={{
@@ -56,6 +61,7 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         onClick={() => onNextClick()}
         disabled={isLast}
         data-testid="bal-carousel-control-right"
+        title={rightControlTitle}
       ></bal-button>
     </div>
   )

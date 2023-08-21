@@ -6,6 +6,8 @@ export interface LargeControlProps {
   isLast: boolean
   inverted: boolean
   areControlsHidden: boolean
+  leftControlTitle: string
+  rightControlTitle: string
   onPreviousClick: () => void
   onNextClick: () => void
 }
@@ -17,6 +19,8 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
   areControlsHidden,
   onNextClick,
   onPreviousClick,
+  leftControlTitle,
+  rightControlTitle,
 }) => {
   const block = BEM.block('carousel')
   const controls = block.element('controls')
@@ -43,6 +47,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         onClick={() => onPreviousClick()}
         disabled={isFirst}
         data-testid="bal-carousel-control-left"
+        title={leftControlTitle}
       ></bal-button>
       <bal-button
         class={{
@@ -57,6 +62,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         onClick={() => onNextClick()}
         disabled={isLast}
         data-testid="bal-carousel-control-right"
+        title={rightControlTitle}
       ></bal-button>
     </div>
   )

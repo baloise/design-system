@@ -25,6 +25,9 @@ import { BalSwipeInfo, BalSwipeObserver, ListenToSwipe } from '../../utils/swipe
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
 import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 import { getComputedWidth } from '../../utils/style'
+import { BalConfigState } from '../../interfaces'
+import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
+import { i18nControlLabel } from './bal-carousel.i18n'
 
 @Component({
   tag: 'bal-carousel',
@@ -42,6 +45,7 @@ export class Carousel
 
   @State() isLastSlideVisible = true
   @State() areControlsHidden = !balBreakpoints.isMobile
+  @State() language: BalLanguage = defaultConfig.language
 
   @Element() el!: HTMLElement
 
@@ -159,6 +163,15 @@ export class Carousel
   @ListenToResize()
   resizeListener(): void {
     this.itemsChanged()
+  }
+
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  @ListenToConfig()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
   }
 
   /**
@@ -376,6 +389,8 @@ export class Carousel
     const block = BEM.block('carousel')
     const inner = block.element('inner')
     const container = inner.element('container')
+    const leftControlTitle = i18nControlLabel[this.language].left
+    const rightControlTitle = i18nControlLabel[this.language].right
 
     const controlItems = this.getAllControlItems()
     return (
@@ -449,6 +464,8 @@ export class Carousel
             isLast={this.isLast()}
             inverted={this.inverted}
             areControlsHidden={this.areControlsHidden}
+            leftControlTitle={leftControlTitle}
+            rightControlTitle={rightControlTitle}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></LargeControl>
@@ -461,6 +478,8 @@ export class Carousel
             isFirst={this.isFirst()}
             isLast={this.isLast()}
             inverted={this.inverted}
+            leftControlTitle={leftControlTitle}
+            rightControlTitle={rightControlTitle}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></SmallControl>
