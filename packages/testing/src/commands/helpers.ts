@@ -125,31 +125,6 @@ export const wrapCommand = (
   }
 }
 
-export const wrapShadowCommand = (
-  displayName: string,
-  element: Cypress.Chainable<JQuery>,
-  message: any,
-  fn: ($el: any) => Cypress.Chainable<JQuery> | void,
-) => {
-  return (selector: string) => {
-    return cy
-      .wrapComponent(element as any, { log: false })
-      .waitForComponents()
-      .shadow()
-      .find(selector, { log: false })
-      .then($el => {
-        Cypress.log({
-          type: 'parent',
-          $el,
-          displayName,
-          message,
-        })
-        return fn($el)
-      })
-      .wrapComponent(element as any, { log: false })
-  }
-}
-
 export const shouldLog = (options?: Partial<Cypress.Loggable>) => options === undefined || options.log !== false
 export const log = (displayName: string, message: any = '', $el: any, options?: Partial<Cypress.Loggable>) => {
   if (shouldLog(options)) {

@@ -1,25 +1,15 @@
-import {
-  isInput,
-  isInputDate,
-  isNumberInput,
-  isSlider,
-  isTextarea,
-  wrapCommand,
-  wrapOptions,
-  wrapShadowCommand,
-} from '../helpers'
+import { isInput, isInputDate, isNumberInput, isSlider, isTextarea, wrapCommand, wrapOptions } from '../helpers'
 import { selectors } from '../../selectors'
 
 Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any, options) => {
   const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))
-  const commandShadow = wrapShadowCommand('type', element, '', $el => originalFn($el, content, wrapOptions(options)))
 
   if (isInput(element)) {
     return command(selectors.input.native)
   }
 
   if (isInputDate(element)) {
-    return commandShadow(selectors.input.native)
+    return command(selectors.input.native)
   }
 
   if (isNumberInput(element)) {
