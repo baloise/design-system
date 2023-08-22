@@ -26,5 +26,5 @@ runs:
       uses: actions/upload-artifact@v3
       if: failure()
       with:
-        name: cypress-snapshots-components-${{ strategy.job-index }}
+        name: cypress-snapshots-components-${{ strategy.job-index + 1 }}
         path: test/cypress/snapshots

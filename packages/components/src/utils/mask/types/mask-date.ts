@@ -21,7 +21,7 @@ export class DateMask extends AbstractMask {
           }
           return value.padStart(2, '0')
         },
-        // mask: 'D',
+        mask: 'D',
       }),
       new MaskBlock({ from: 2, to: 3, mask: locale => dateSeparator(locale), isSeparator: true }),
       new MaskBlock({
@@ -34,10 +34,10 @@ export class DateMask extends AbstractMask {
           }
           return value.padStart(2, '0')
         },
-        // mask: 'M',
+        mask: 'M',
       }),
       new MaskBlock({ from: 5, to: 6, mask: locale => dateSeparator(locale), isSeparator: true }),
-      new MaskBlock({ from: 6, to: 10, allowedKeys: [...NUMBER_KEYS] /*, mask: 'Y'*/ }),
+      new MaskBlock({ from: 6, to: 10, allowedKeys: [...NUMBER_KEYS], mask: 'Y' }),
     ])
   }
 

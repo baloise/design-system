@@ -81,8 +81,8 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('@click').should('have.been.calledOnce')
   })
 
-  it.only('should not fire a click event, because the input is disabled', () => {
-    cy.get('bal-input-date').invoke('attr', 'disabled', true).waitForComponents()
+  it('should not fire a click event, because the input is disabled', () => {
+    cy.get('bal-input-date').invoke('attr', 'disabled', true)
     cy.get('bal-input-date').find('input').should('have.class', 'is-disabled')
     cy.get('bal-input-date').find('input').should('have.attr', 'aria-disabled', 'true')
     cy.get('bal-input-date').find('input').should('have.attr', 'disabled', 'disabled')
