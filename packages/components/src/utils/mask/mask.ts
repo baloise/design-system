@@ -177,7 +177,6 @@ export abstract class AbstractMask implements Mask {
       } else {
         this.onBlur(context)
       }
-      // this.onChange(context)
     }
   }
 
@@ -288,5 +287,6 @@ export abstract class AbstractMask implements Mask {
 
   protected emptyInputValue(context: MaskContext) {
     context.value = ''
+    context.submit('blur')
   }
 }

@@ -173,7 +173,7 @@ describe('MaskComponentAdapter', () => {
 
       expect(context.value).toBe('')
       expect(mask.onBlur).toBeCalledTimes(0)
-      expect(mask.onChange).toBeCalledTimes(1)
+      expect(mask.onChange).toBeCalledTimes(0)
       expect(context.submit).toBeCalledTimes(1)
     })
 
@@ -190,7 +190,7 @@ describe('MaskComponentAdapter', () => {
 
       expect(context.value).toBe('99-99')
       expect(mask.onBlur).toBeCalledTimes(1)
-      expect(mask.onChange).toBeCalledTimes(1)
+      expect(mask.onChange).toBeCalledTimes(0)
       expect(context.submit).toBeCalledTimes(1)
     })
   })
