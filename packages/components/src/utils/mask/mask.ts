@@ -53,8 +53,8 @@ export abstract class AbstractMask implements Mask {
     // empty placeholder
   }
 
-  public onBlur(_context: MaskFocusContext) {
-    // empty placeholder
+  public onBlur(context: MaskFocusContext) {
+    context.submit('blur', this.onParseValue(context.value))
   }
 
   public onChange(context: MaskContext) {
@@ -177,7 +177,7 @@ export abstract class AbstractMask implements Mask {
       } else {
         this.onBlur(context)
       }
-      this.onChange(context)
+      // this.onChange(context)
     }
   }
 

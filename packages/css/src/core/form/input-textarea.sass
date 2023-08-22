@@ -1,0 +1,80 @@
+%input-textarea
+  @extend %input
+  max-width: 100%
+  width: 100%
+  &[readonly]
+    box-shadow: none
+  // Modifiers
+  &.is-fullwidth
+    display: block
+    width: 100%
+  &.is-inline
+    display: inline
+    width: auto
+
+.input
+  @extend %input-textarea
+
+.textarea
+  @extend %input-textarea
+  display: block
+  max-width: 100%
+  min-width: 100%
+  resize: vertical
+  padding: calc(0.75em - 2px)
+  &:not([rows])
+    max-height: 40em
+    min-height: 8em
+  &[rows]
+    height: initial
+  // Modifiers
+  &.has-fixed-size
+    resize: none
+
+input.input,
+textarea.textarea
+  border-width: 2px
+  border-radius: var(--bal-form-field-control-radius)
+  font-size: var(--bal-form-field-control-font-size)
+  font-family: var(--bal-form-field-control-font-family)
+  color: var(--bal-form-field-control-color)
+  outline: none
+  box-shadow: none
+  &.is-danger
+    border-color: var(--bal-form-field-control-danger-border-color)
+    background: var(--bal-form-field-control-danger-background)
+    &.bal-focused,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active
+      border-color: var(--bal-form-field-control-border-color-active)
+  &.is-success
+    border-color: var(--bal-form-field-control-success-border-color)
+    background: var(--bal-form-field-control-success-background)
+    &.bal-focused,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active
+      border-color: var(--bal-form-field-control-border-color-active)
+  // deprecated
+  &.is-warning
+    border-color: var(--bal-color-border-warning)
+    background: var(--bal-color-warning-1)
+    &.bal-focused,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active
+      border-color: var(--bal-form-field-control-border-color-active)
+  &.is-disabled
+    color: var(--bal-form-field-control-disabled-color)
+    border-color: var(--bal-form-field-control-disabled-border-color)
+    background: var(--bal-form-field-control-disabled-background)
+
+// overrides style for inputs in a group input
+input.is-grouped
+  background: none !important
+  border: none !important
+  box-shadow: none !important

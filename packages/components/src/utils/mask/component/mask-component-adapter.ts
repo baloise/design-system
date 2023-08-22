@@ -90,7 +90,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       component.focused = false
       const context = new MaskFocusContext({ event, component, mask })
       this.mask.fireBlur(context)
-      context.submit()
+      context.submit('blur')
       component.balBlur.emit(event)
     }
   }

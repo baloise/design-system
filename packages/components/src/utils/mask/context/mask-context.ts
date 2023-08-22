@@ -48,16 +48,18 @@ export abstract class MaskContext<T = MaskContextEvent> {
     }
   }
 
-  async submit(eventType: 'input' | 'change' = 'input', parsedValue?: string) {
+  async submit(eventType: 'input' | 'change' | 'blur' = 'input', parsedValue?: string) {
     if (this.target) {
       this.target.value = this.value
-      this.position.submit()
+      if (eventType !== 'blur') {
+        this.position.submit()
+      }
 
       if (this._options.component) {
         if (eventType === 'input') {
           this._options.component.balInput.emit(this.value)
         }
-        if (eventType === 'change' && parsedValue !== undefined) {
+        if ((eventType === 'change' || eventType === 'blur') && parsedValue !== undefined) {
           const valueChanged = this._options.component.value !== parsedValue
           if (valueChanged) {
             this._options.component.value = parsedValue
