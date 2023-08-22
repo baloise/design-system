@@ -26,7 +26,7 @@ describe('MaskComponentAdapter', () => {
   })
   describe('onPaste', () => {
     test('should paste and format value', () => {
-      component.nativeInput.value = '__.__.____'
+      component.nativeInput.value = 'tt.mm.jjjj'
       const event = { clipboardData: { getData: vi.fn().mockReturnValue('1.1.23') } } as MaskClipboardContextEvent
       const context = new MaskClipboardContext({ mask, event, component })
 
@@ -38,10 +38,10 @@ describe('MaskComponentAdapter', () => {
   })
   describe('onBlur', () => {
     test('should format value after blur', () => {
-      component.nativeInput.value = '__.__.____'
+      component.nativeInput.value = 'tt.mm.jjjj'
       const event = {} as MaskFocusContextEvent
       const context = new MaskFocusContext({ mask, event, component })
-      context.value = '01.01.___'
+      context.value = '01.01.'
 
       mask.onBlur(context)
 

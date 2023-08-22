@@ -26,12 +26,12 @@ runs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: cypress-snapshots-components-actual-${{ strategy.job-index + 1 }}
+        name: cypress-snapshots-components-actual-${{ strategy.job-index }}
         path: test/cypress/snapshots/actual
 
     - name: Upload snapshots
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: cypress-snapshots-components-diff-${{ strategy.job-index + 1 }}
+        name: cypress-snapshots-components-diff-${{ strategy.job-index }}
         path: test/cypress/snapshots/diff

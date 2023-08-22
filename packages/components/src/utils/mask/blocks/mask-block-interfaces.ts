@@ -1,4 +1,6 @@
-export type MaskValueFn = (locale: string) => string
+import { I18nKeys } from '../../../interfaces'
+
+export type MaskValueFn = (locale: I18nKeys) => string
 export type MaskValue = string | MaskValueFn
 
 export interface MaskBlockOption {
@@ -7,5 +9,5 @@ export interface MaskBlockOption {
   isSeparator: boolean
   mask: MaskValue
   allowedKeys: string[]
-  format: (value: string, locale: string, mask: string) => string
+  format: (value: string, locale: I18nKeys, mask: string) => string
 }
