@@ -4,49 +4,49 @@ import { MaskBlock } from '../blocks'
 import { AbstractMask } from '../mask'
 import { BalDate } from '../../date'
 import { MaskClipboardContext, MaskFocusContext } from '../context'
-import { I18n } from '../../../interfaces'
+import { I18n, I18nKeys } from '../../../interfaces'
 
 export class DateMask extends AbstractMask {
   public maxLength = 10
   public minLength = 10
 
   private dayMask: I18n<string> = {
-    de: 't',
-    en: 'd',
-    fr: 'j',
-    it: 'g',
-    nl: 'd',
-    es: 'd',
-    pl: 'd',
-    pt: 'd',
-    sv: 'd',
-    fi: 'm',
+    de: 'T',
+    en: 'D',
+    fr: 'J',
+    it: 'G',
+    nl: 'D',
+    es: 'D',
+    pl: 'D',
+    pt: 'D',
+    sv: 'D',
+    fi: 'M',
   }
 
   private monthMask: I18n<string> = {
-    de: 'm',
-    en: 'm',
-    fr: 'm',
-    it: 'm',
-    nl: 'm',
-    es: 'm',
-    pl: 'm',
-    pt: 'm',
-    sv: 'm',
-    fi: 'k',
+    de: 'M',
+    en: 'M',
+    fr: 'M',
+    it: 'M',
+    nl: 'M',
+    es: 'M',
+    pl: 'M',
+    pt: 'M',
+    sv: 'M',
+    fi: 'K',
   }
 
   private yearMask: I18n<string> = {
-    de: 'j',
-    en: 'y',
-    fr: 'a',
-    it: 'a',
-    nl: 'j',
-    es: 'a',
-    pl: 'r',
-    pt: 'a',
-    sv: 'å',
-    fi: 'v',
+    de: 'J',
+    en: 'Y',
+    fr: 'A',
+    it: 'A',
+    nl: 'J',
+    es: 'A',
+    pl: 'R',
+    pt: 'A',
+    sv: 'Å',
+    fi: 'V',
   }
 
   constructor() {
@@ -61,7 +61,9 @@ export class DateMask extends AbstractMask {
           }
           return value.padStart(2, '0')
         },
-        mask: locale => this.dayMask[locale],
+        mask: locale => {
+          return this.dayMask[locale.split('-')[0] as I18nKeys] || this.dayMask['de']
+        },
       }),
       new MaskBlock({ from: 2, to: 3, mask: locale => dateSeparator(locale), isSeparator: true }),
       new MaskBlock({
@@ -74,14 +76,14 @@ export class DateMask extends AbstractMask {
           }
           return value.padStart(2, '0')
         },
-        mask: locale => this.monthMask[locale],
+        mask: locale => this.monthMask[locale.split('-')[0] as I18nKeys] || this.monthMask['de'],
       }),
       new MaskBlock({ from: 5, to: 6, mask: locale => dateSeparator(locale), isSeparator: true }),
       new MaskBlock({
         from: 6,
         to: 10,
         allowedKeys: [...NUMBER_KEYS],
-        mask: locale => this.yearMask[locale],
+        mask: locale => this.yearMask[locale.split('-')[0] as I18nKeys] || this.yearMask['de'],
       }),
     ])
   }

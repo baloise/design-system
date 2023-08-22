@@ -1,5 +1,6 @@
 import isFunction from 'lodash.isfunction'
 import { MaskBlockOption, MaskValue } from './mask-block-interfaces'
+import { I18nKeys } from '../../../interfaces'
 
 export class MaskBlock {
   private _from!: number
@@ -7,7 +8,7 @@ export class MaskBlock {
   private _mask!: MaskValue
   private _isSeparator = false
   private _allowedKeys: string[] = []
-  private _format: ((value: string, locale: string, mask: string) => string) | undefined
+  private _format: ((value: string, locale: I18nKeys | string, mask: string) => string) | undefined
   private _locale = 'de-CH'
 
   constructor(option: Partial<MaskBlockOption>) {
