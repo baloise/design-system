@@ -240,7 +240,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
             'is-clickable': this.clickable && !(this.disabled || this.readonly),
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,
-            'is-grouped': true,
           }}
           data-testid="bal-input"
           ref={el => (this.nativeInput = el as HTMLInputElement)}
