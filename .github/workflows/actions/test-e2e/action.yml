@@ -22,16 +22,28 @@ runs:
     #   run: npm run cy:visual:report
     #   shell: bash
 
-    - name: Upload snapshots
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: cypress-snapshots-components-actual-${{ strategy.job-index }}
-        path: test/cypress/snapshots/actual
+    # - name: Upload snapshots
+    #   if: always()
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: cypress-snapshots-components-actual-${{ strategy.job-index }}
+    #     path: test/cypress/snapshots/actual
 
-    - name: Upload snapshots
-      if: always()
-      uses: actions/upload-artifact@v3
+    # - name: Upload snapshots
+    #   if: always()
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: cypress-snapshots-components-diff-${{ strategy.job-index }}
+    #     path: test/cypress/snapshots/diff
+
+    - uses: ./.github/workflows/actions/upload-archive
       with:
-        name: cypress-snapshots-components-diff-${{ strategy.job-index }}
-        path: test/cypress/snapshots/diff
+        name: test-e2e-actual-${{ strategy.job-index }}
+        output: test/cypress/snapshots/UpdatedScreenshots-${{ strategy.job-index }}.zip
+        paths: test/cypress/snapshots/actual
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: test-e2e-diff-${{ strategy.job-index }}
+        output: test/cypress/snapshots/UpdatedScreenshots-${{ strategy.job-index }}.zip
+        paths: test/cypress/snapshots/diff

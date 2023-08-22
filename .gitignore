@@ -139,3 +139,5 @@ test/cypress/videos
 ComponentsBuild.zip
 TestE2eBuild.zip
 TestNgE2eBuild.zip
+
+test/cypress/snapshots/*.zip

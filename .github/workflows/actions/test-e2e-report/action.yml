@@ -15,22 +15,29 @@ runs:
       with:
         path: ./test/cypress/snapshots/diff
 
-    # - name: Extract Archives
-    #   # This finds all .zip files in the ./artifacts
-    #   # directory, including nested directories.
-    #   # It then unzips every .zip to the root directory
-    #   run: |
-    #     find . -type f -name 'UpdatedScreenshots-*.zip' -exec unzip -q -o -d ../ {} \;
-    #   shell: bash
-    #   working-directory: ./artifacts
+    - name: Extract Archives
+      # This finds all .zip files in the ./artifacts
+      # directory, including nested directories.
+      # It then unzips every .zip to the root directory
+      run: |
+        find . -type f -name 'UpdatedScreenshots-*.zip' -exec unzip -q -o -d ../ {} \;
+      shell: bash
+      working-directory: ./test/cypress/snapshots
 
     - name: Report Visual Failures
       working-directory: ./test
       run: npx reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15
       shell: bash
 
-    - name: Upload snapshots
-      uses: actions/upload-artifact@v3
+    # - name: Upload snapshots
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: cypress-snapshots-components
+    #     path: test/cypress/snapshots
+
+    - uses: ./.github/workflows/actions/upload-archive
       with:
         name: cypress-snapshots-components
-        path: test/cypress/snapshots
+        output: test/cypress/snapshots/UpdatedScreenshots.zip
+        paths: test/cypress/snapshots
+
