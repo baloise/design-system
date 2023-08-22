@@ -16,6 +16,21 @@ runs:
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}
 
+    - name: List files in the repository
+      if: failure()
+      run: ls ./test/cypress/snapshots
+      shell: bash
+
+    - name: List files in the repository
+      if: failure()
+      run: ls ./test/cypress/snapshots/actual
+      shell: bash
+
+    - name: List files in the repository
+      if: failure()
+      run: ls ./test/cypress/snapshots/diff
+      shell: bash
+
     # - name: Report Visual Failures
     #   if: failure()
     #   working-directory: ./test
@@ -37,13 +52,15 @@ runs:
     #     path: test/cypress/snapshots/diff
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: failure()
       with:
         name: test-e2e-actual-${{ strategy.job-index }}
-        output: test/cypress/snapshots/UpdatedScreenshots-${{ strategy.job-index }}.zip
+        output: test/cypress/snapshots/UpdatedScreenshots-Actual-${{ strategy.job-index }}.zip
         paths: test/cypress/snapshots/actual
 
     - uses: ./.github/workflows/actions/upload-archive
+      if: failure()
       with:
         name: test-e2e-diff-${{ strategy.job-index }}
-        output: test/cypress/snapshots/UpdatedScreenshots-${{ strategy.job-index }}.zip
+        output: test/cypress/snapshots/UpdatedScreenshots-Diff-${{ strategy.job-index }}.zip
         paths: test/cypress/snapshots/diff
