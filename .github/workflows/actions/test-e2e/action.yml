@@ -3,22 +3,6 @@ description: 'Cypress E2E'
 runs:
   using: 'composite'
   steps:
-    - name: List files in the repository
-      run: ls .
-      shell: bash
-
-    - name: List files in the repository
-      run: ls test
-      shell: bash
-
-    - name: List files in the repository
-      run: ls test/cypress
-      shell: bash
-
-    - name: List files in the repository
-      run: ls test/cypress/snapshots
-      shell: bash
-
     - name: Run Cypress
       uses: cypress-io/github-action@v5
       with:
@@ -31,36 +15,6 @@ runs:
       env:
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}
-
-    - name: List files in the repository
-      if: failure()
-      run: ls .
-      shell: bash
-
-    - name: List files in the repository
-      if: failure()
-      run: ls test
-      shell: bash
-
-    - name: List files in the repository
-      if: failure()
-      run: ls test/cypress
-      shell: bash
-
-    - name: List files in the repository
-      if: failure()
-      run: ls test/cypress/snapshots
-      shell: bash
-
-    - name: List files in the repository
-      if: failure()
-      run: ls test/cypress/snapshots/actual
-      shell: bash
-
-    - name: List files in the repository
-      if: failure()
-      run: ls test/cypress/snapshots/diff
-      shell: bash
 
     - name: Report Visual Failures
       if: failure()
