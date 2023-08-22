@@ -1,4 +1,4 @@
-import { BalDate, i18nDate } from 'i18nBalDate'
+import { BalDate, i18nBalDate } from '../support/utils'
 
 describe('BalDate Component', () => {
   let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
@@ -34,7 +34,7 @@ describe('BalDate Component', () => {
     }).as('calendar')
 
     cy.waitForDesignSystem()
-    cy.getByRole('button', { name: i18nDate.de.toggleDatepicker }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker }).click()
     cy.getByRole('button', { name: '11.01.2023' }).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -53,7 +53,7 @@ describe('BalDate Component', () => {
 
     cy.waitForDesignSystem()
 
-    cy.getByRole('button', { name: i18nDate.de.toggleDatepicker }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker }).click()
     cy.getByRole('button', { name: 'Januar 2023' }).click()
     cy.getByRole('button', { name: '2024' }).click()
     cy.getByRole('button', { name: 'Februar' }).click()
@@ -74,8 +74,8 @@ describe('BalDate Component', () => {
     }).as('calendar')
 
     cy.waitForDesignSystem()
-    cy.getByRole('button', { name: i18nDate.de.toggleDatepicker }).click()
-    cy.getByRole('button', { name: i18nDate.de.nextMonth }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.nextMonth }).click()
     cy.getByRole('button', { name: '11.02.2023' }).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -93,8 +93,8 @@ describe('BalDate Component', () => {
     }).as('calendar')
 
     cy.waitForDesignSystem()
-    cy.getByRole('button', { name: i18nDate.de.toggleDatepicker }).click()
-    cy.getByRole('button', { name: i18nDate.de.previousMonth }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.toggleDatepicker }).click()
+    cy.getByRole('button', { name: i18nBalDate.de.previousMonth }).click()
     cy.getByRole('button', { name: '11.12.2022' }).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
