@@ -16,15 +16,22 @@ runs:
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}
 
-    - name: Report Visual Failures
-      if: failure()
-      working-directory: ./test
-      run: npm run cy:visual:report
-      shell: bash
+    # - name: Report Visual Failures
+    #   if: failure()
+    #   working-directory: ./test
+    #   run: npm run cy:visual:report
+    #   shell: bash
 
     - name: Upload snapshots
+      if: always()
       uses: actions/upload-artifact@v3
-      if: failure()
       with:
-        name: cypress-snapshots-components-${{ strategy.job-index + 1 }}
-        path: test/cypress/snapshots
+        name: cypress-snapshots-components-actual-${{ strategy.job-index + 1 }}
+        path: test/cypress/snapshots/actual
+
+    - name: Upload snapshots
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-snapshots-components-diff-${{ strategy.job-index + 1 }}
+        path: test/cypress/snapshots/diff
