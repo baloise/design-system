@@ -5,32 +5,32 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { UpdateControl } from '../app.component'
 
 @Component({
-  selector: 'app-date',
+  selector: 'app-datepicker',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, BaloiseDesignSystemModule],
   template: `
     <bal-card [formGroup]="form">
-      <bal-card-title>Date</bal-card-title>
+      <bal-card-title>Datepicker</bal-card-title>
       <bal-card-content>
         <bal-field
           required
-          [disabled]="form.get('date')?.disabled"
-          [invalid]="form.get('date')?.touched && form.get('date')?.invalid"
+          [disabled]="form.get('datepicker')?.disabled"
+          [invalid]="form.get('datepicker')?.touched && form.get('datepicker')?.invalid"
         >
-          <bal-field-label>Date Label</bal-field-label>
+          <bal-field-label>Datepicker Label</bal-field-label>
           <bal-field-control>
-            <bal-date placeholder="Enter a date" formControlName="date"></bal-date>
+            <bal-datepicker placeholder="Pick a date" formControlName="datepicker"></bal-datepicker>
           </bal-field-control>
           <bal-field-message>
-            <bal-ng-error controlName="date" error="required">This field is required</bal-ng-error>
+            <bal-ng-error controlName="datepicker" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
         <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'date', value: '2023-10-21' })">
-            Update Date
+          <bal-button color="secondary" (click)="updateControl.emit({ name: 'datepicker', value: '2023-10-21' })">
+            Update Datepicker
           </bal-button>
-          <bal-button color="tertiary" (click)="form.get('date')?.enable()">Enable Date</bal-button>
-          <bal-button color="tertiary" (click)="form.get('date')?.disable()">Disable Date</bal-button>
+          <bal-button color="tertiary" (click)="form.get('datepicker')?.enable()">Enable Datepicker</bal-button>
+          <bal-button color="tertiary" (click)="form.get('datepicker')?.disable()">Disable Datepicker</bal-button>
         </bal-button-group>
       </bal-card-content>
     </bal-card>
@@ -38,7 +38,7 @@ import { UpdateControl } from '../app.component'
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateComponent {
+export class DatePickerComponent {
   @Input() form!: FormGroup
 
   @Output() updateControl = new EventEmitter<UpdateControl>()
