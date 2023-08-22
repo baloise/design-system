@@ -17,6 +17,7 @@ import { CheckboxButtonsComponent } from './form-components/checkbox-buttons.com
 import { RadioComponent } from './form-components/radio.component'
 import { RadioButtonsComponent } from './form-components/radio-buttons.component'
 import { DateComponent } from './form-components/date.component'
+import { InputDateComponent } from './form-components/input-date.component'
 
 export interface UpdateControl {
   name: string
@@ -46,6 +47,7 @@ export interface UpdateControl {
     RadioComponent,
     RadioButtonsComponent,
     DateComponent,
+    InputDateComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -56,6 +58,7 @@ export interface UpdateControl {
           <app-number-input [form]="myForm" (updateControl)="updateValue($event)"></app-number-input>
           <app-datepicker [form]="myForm" (updateControl)="updateValue($event)"></app-datepicker>
           <app-date [form]="myForm" (updateControl)="updateValue($event)"></app-date>
+          <app-input-date [form]="myForm" (updateControl)="updateValue($event)"></app-input-date>
           <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
@@ -86,6 +89,7 @@ export class AppComponent {
     input: new FormControl('Init Value', [Validators.required]),
     textarea: new FormControl('Init Value', [Validators.required]),
     numberInput: new FormControl(null, [Validators.required]),
+    inputDate: new FormControl('2023-09-09', [Validators.required]),
     datepicker: new FormControl('2023-09-09', [Validators.required]),
     date: new FormControl('2023-09-09', [Validators.required]),
     time: new FormControl(null, [Validators.required]),

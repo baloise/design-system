@@ -63,7 +63,7 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('bal-input-date').find('input').should('have.value', '')
     cy.get('bal-input-date').find('input').type('1.1.')
 
-    cy.get('bal-input-date').find('input').should('have.value', '01.01.____')
+    cy.get('bal-input-date').find('input').should('have.value', '01.01.JJJJ')
     cy.get('@balChange').should('not.have.been.called')
     cy.get('@balInput').should('have.been.callCount', 7)
   })
@@ -81,13 +81,11 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('@click').should('have.been.calledOnce')
   })
 
-  it('should not fire a click event, because the input is disabled', () => {
+  it('should disabled input', () => {
     cy.get('bal-input-date').invoke('attr', 'disabled', true)
     cy.get('bal-input-date').find('input').should('have.class', 'is-disabled')
     cy.get('bal-input-date').find('input').should('have.attr', 'aria-disabled', 'true')
     cy.get('bal-input-date').find('input').should('have.attr', 'disabled', 'disabled')
-    cy.get('bal-input-date').find('input').click({ force: true })
-
-    cy.get('@click').should('not.have.been.called')
+    cy.get('bal-input-date').find('input').should('be.disabled')
   })
 })

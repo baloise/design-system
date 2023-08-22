@@ -441,7 +441,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
 
   private onInputBlur = (ev: CustomEvent<FocusEvent>) => {
     stopEventBubbling(ev)
-    this.balFocus.emit(ev.detail)
+    this.balBlur.emit(ev.detail)
   }
 
   private onKeyPress = async ({ detail }: CustomEvent<KeyboardEvent>) => {

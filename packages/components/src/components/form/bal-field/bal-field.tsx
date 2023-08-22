@@ -24,6 +24,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
     'bal-checkbox',
     'bal-radio',
     'bal-input-group',
+    'bal-date',
     'bal-input-date',
     'bal-input-stepper',
     'bal-input-slider',
