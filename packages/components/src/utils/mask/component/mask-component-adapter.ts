@@ -68,7 +68,8 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       const { component, mask } = this
       const context = new MaskKeyboardContext({ event, component, mask })
       this.mask.fireKeyDown(context)
-      context.submit()
+      const isTabKey = event.key === 'Tab'
+      context.submit(isTabKey ? 'tab' : 'input')
       component.balKeyPress.emit(event)
     }
   }

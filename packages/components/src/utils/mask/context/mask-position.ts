@@ -70,7 +70,7 @@ export class MaskPosition {
 
   submit() {
     const target = this.getTarget()
-    if (target) {
+    if (target && target.selectionStart !== this._position && target.selectionEnd !== this._position) {
       target.selectionStart = this._position
       target.selectionEnd = this._position
     }
