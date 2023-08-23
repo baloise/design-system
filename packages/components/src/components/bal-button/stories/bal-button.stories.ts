@@ -48,14 +48,14 @@ export const ButtonVariants = args => ({
   components: { ...component.components, BalButtonGroup },
   setup: () => ({ args }),
   template: `<bal-button-group :direction="args.groupDirection" :position="args.groupPosition">
-  <bal-button v-bind="args">Primary</bal-button>
-  <bal-button v-bind="args" color="secondary">Secondary</bal-button>
-  <bal-button v-bind="args" color="tertiary">Tertiary</bal-button>
-  <bal-button v-bind="args" color="tertiary-purple">Tertiary Purple</bal-button>
-  <bal-button v-bind="args" color="tertiary-red">Tertiary Red</bal-button>
-  <bal-button v-bind="args" color="tertiary-yellow">Tertiary Yellow</bal-button>
-  <bal-button v-bind="args" color="tertiary-green">Tertiary Green</bal-button>
-  <bal-button v-bind="args" color="link">Link</bal-button>
+  <bal-button>Primary</bal-button>
+  <bal-button color="secondary">Secondary</bal-button>
+  <bal-button color="tertiary">Tertiary</bal-button>
+  <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
+  <bal-button color="tertiary-red">Tertiary Red</bal-button>
+  <bal-button color="tertiary-yellow">Tertiary Yellow</bal-button>
+  <bal-button color="tertiary-green">Tertiary Green</bal-button>
+  <bal-button color="link">Link</bal-button>
 </bal-button-group>`,
 })
 ButtonVariants.args = {
