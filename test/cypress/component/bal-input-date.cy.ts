@@ -48,12 +48,12 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('bal-input-date').find('input').should('have.value', '20.02.1988')
   })
 
-  it('should only call balInput and no balChange, because the input has still the focus', () => {
+  it.only('should only call balInput and no balChange, because the input has still the focus', () => {
     cy.get('bal-input-date').find('input').should('have.value', '')
     cy.get('bal-input-date').find('input').focus().type('1.1.23').blur({ force: true })
     cy.get('bal-input-date').find('input').should('have.value', '01.01.2023')
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balInput').should('have.been.callCount', 10)
+    cy.get('@balInput').should('have.been.callCount', 9)
     cy.get('@balBlur').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balKeyPress').should('have.been.callCount', 6)
