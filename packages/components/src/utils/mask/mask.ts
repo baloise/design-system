@@ -264,9 +264,12 @@ export abstract class AbstractMask implements Mask {
       //
       // hit a range of chars
     } else {
+      context.preventDefault()
+
       if (context.isBackspaceKey || context.isDeleteKey) {
-        context.preventDefault()
         this.resetInputValueWithMask(context)
+      } else if (this.blocks.list[0].verifyAllowedKeyHits(context.key)) {
+        this.onBlockChange(context, this.blocks.list[0], 0)
       }
     }
   }
