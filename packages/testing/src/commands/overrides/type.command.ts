@@ -9,7 +9,7 @@ Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any,
   }
 
   if (isInputDate(element)) {
-    return command(selectors.input.native)
+    return command(selectors.dateInput.native)
   }
 
   if (isNumberInput(element)) {

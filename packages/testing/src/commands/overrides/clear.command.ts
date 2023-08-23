@@ -29,7 +29,7 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
   }
 
   if (isInputDate(element)) {
-    return command(selectors.input.native)
+    return command(selectors.dateInput.native)
   }
 
   if (isNumberInput(element)) {

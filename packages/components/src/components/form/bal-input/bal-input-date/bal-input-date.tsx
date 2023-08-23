@@ -241,7 +241,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,
           }}
-          data-testid="bal-input"
+          data-testid="bal-date-input"
           ref={el => (this.nativeInput = el as HTMLInputElement)}
           id={this.ariaForm.controlId || this.inputId}
           aria-labelledby={this.ariaForm.labelId}

@@ -123,13 +123,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(
-        Cypress.$((element as any)[0].shadowRoot).find(selectors.input.native),
-        condition,
-        key,
-        value,
-        options,
-      )
+      return originalFn(Cypress.$((element as any)[0]).find(selectors.dateInput.native), condition, key, value, options)
     }
   }
 
