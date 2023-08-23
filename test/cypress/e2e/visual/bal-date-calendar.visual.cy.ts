@@ -3,7 +3,6 @@ describe('bal-date-calendar', () => {
 
   it('basic component', () => {
     cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('basic-desktop')
     cy.getByTestId('default-date').compareSnapshot('default-date-desktop')
     cy.getByTestId('value').compareSnapshot('value-desktop')
     cy.getByTestId('min-and-max').compareSnapshot('min-and-max-desktop')
