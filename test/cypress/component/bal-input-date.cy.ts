@@ -53,7 +53,7 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('bal-input-date').find('input').focus().type('1.1.23').blur({ force: true })
     cy.get('bal-input-date').find('input').should('have.value', '01.01.2023')
     cy.get('@balChange').should('have.been.calledOnce')
-    cy.get('@balInput').should('have.been.callCount', 9)
+    cy.get('@balInput').should('have.been.callCount', 7)
     cy.get('@balBlur').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balKeyPress').should('have.been.callCount', 6)
