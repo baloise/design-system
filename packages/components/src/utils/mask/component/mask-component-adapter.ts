@@ -60,7 +60,7 @@ export class MaskComponentAdapter implements MaskComponentAdapterType {
       event: { newValue, oldValue },
     })
     this.mask.fireValueChanged(context)
-    context.submit()
+    context.submit('blur')
   }
 
   bindKeyDown(event: KeyboardEvent): void {
