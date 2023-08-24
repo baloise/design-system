@@ -16,7 +16,7 @@ import {
   isSteps,
   hasTestId,
 } from '../helpers'
-import { parseDataTestID, selectors } from '../../selectors'
+import { parseDataTestID, selectors } from '../../selectors/index'
 
 const shouldAndAndCommand = (
   originalFn: any,

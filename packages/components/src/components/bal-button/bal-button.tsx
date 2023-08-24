@@ -143,6 +143,11 @@ export class Button implements ComponentInterface {
   @Prop() value?: string | number = ''
 
   /**
+   * A11y attributes for the native button element.
+   */
+  @Prop() aria?: BalProps.BalButtonAria = undefined
+
+  /**
    * Emitted when the link element has clicked.
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalButtonNavigateDetail>
@@ -168,6 +173,10 @@ export class Button implements ComponentInterface {
       ev.preventDefault()
       ev.stopPropagation()
     }
+  }
+
+  componentWillLoad() {
+    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-controls'])
   }
 
   componentDidRender() {
@@ -284,6 +293,12 @@ export class Button implements ComponentInterface {
       }
     }
 
+    const ariaAttributes = {
+      'title': this.aria?.title || this.inheritAttributes['title'],
+      'aria-label': this.aria?.label || this.inheritAttributes['aria-label'],
+      'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
+    }
+
     return (
       <Host
         onClick={this.handleClick}
@@ -306,6 +321,7 @@ export class Button implements ComponentInterface {
           onClick={this.onClick}
           aria-disabled={this.disabled ? 'true' : null}
           data-testid="bal-button"
+          {...ariaAttributes}
         >
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon

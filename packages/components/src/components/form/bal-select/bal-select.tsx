@@ -13,7 +13,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
+import { debounce, deepReady, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -40,6 +40,7 @@ import { BalOptionValue } from './utils/bal-option.type'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -56,7 +57,7 @@ const isNotHuman = false
     css: 'bal-select.sass',
   },
 })
-export class Select implements ComponentInterface, Loggable {
+export class Select implements ComponentInterface, Loggable, BalAriaFormLinking {
   private inputElement!: HTMLInputElement
   private nativeSelectEl!: HTMLSelectElement
   private popoverElement!: HTMLBalPopoverElement
@@ -84,6 +85,7 @@ export class Select implements ComponentInterface, Loggable {
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo = ''
   @State() labelToSelectTo = ''
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * PUBLIC PROPERTY API
@@ -459,6 +461,14 @@ export class Select implements ComponentInterface, Loggable {
     if (!isNil(option)) {
       this.optionSelected(option)
     }
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
   }
 
   /**
@@ -937,13 +947,6 @@ export class Select implements ComponentInterface, Loggable {
    */
 
   render() {
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
-
     const Chip = (props: { value: string }) => (
       <bal-tag
         size=""
@@ -1040,6 +1043,11 @@ export class Select implements ComponentInterface, Loggable {
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
+                id={this.ariaForm.controlId || this.inputId}
+                aria-labelledby={this.ariaForm.labelId}
+                aria-describedby={this.ariaForm.messageId}
+                aria-invalid={this.invalid === true ? 'true' : 'false'}
+                aria-disabled={this.disabled ? 'true' : null}
                 data-testid="bal-select-input"
                 autocomplete={this.autocomplete}
                 placeholder={this.inputPlaceholder}

@@ -81,7 +81,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 ## [11.0.14](https://github.com/baloise/design-system/compare/v11.0.13...v11.0.14) (2022-11-22)
 
-
 ### Bug Fixes
 
 * fixes [#787](https://github.com/baloise/design-system/issues/787) add visualLevel for bal-list-item-title ([f157772](https://github.com/baloise/design-system/commit/f157772bddf32f611e93a6942cf799b9d7dd927d))

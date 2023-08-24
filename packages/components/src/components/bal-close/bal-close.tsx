@@ -3,7 +3,7 @@ import { inheritAttributes } from '../../utils/attributes'
 import { BEM } from '../../utils/bem'
 import { BalConfigObserver, BalConfigState } from '../../interfaces'
 import { BalLanguage, BalRegion, ListenToConfig, defaultConfig } from '../../utils/config'
-import { i18nCloseLabel } from './bal-close.i18n'
+import { i18nBalClose } from './bal-close.i18n'
 
 @Component({
   tag: 'bal-close',
@@ -47,7 +47,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
     const blockEl = BEM.block('close')
     const buttonEl = blockEl.element('button')
     const iconEl = buttonEl.element('icon')
-    const label = i18nCloseLabel[this.language].close
+    const label = i18nBalClose[this.language].close
 
     return (
       <Host class={{ ...blockEl.class() }}>

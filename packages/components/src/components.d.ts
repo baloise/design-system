@@ -9,6 +9,7 @@ import { BalConfigState, BalMode } from "./utils/config";
 import { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
+import { BalAriaForm } from "./utils/form";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
@@ -21,6 +22,7 @@ export { BalConfigState, BalMode } from "./utils/config";
 export { AccordionState, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
+export { BalAriaForm } from "./utils/form";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
@@ -151,6 +153,10 @@ export namespace Components {
         "size": BalProps.BalBadgeSize;
     }
     interface BalButton {
+        /**
+          * A11y attributes for the native button element.
+         */
+        "aria"?: BalProps.BalButtonAria;
         /**
           * If `true` the bottom corners get rounded
          */
@@ -371,6 +377,7 @@ export namespace Components {
           * If `true` a light border is shown at the bottom.
          */
         "border": boolean;
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Defines the layout of the navigation controls.
          */
@@ -519,6 +526,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -601,6 +609,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the checkboxes.
          */
         "readonly"?: boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
@@ -760,6 +769,7 @@ export namespace Components {
           * Selects an option
          */
         "select": (dateString: string) => Promise<void>;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -1000,6 +1010,7 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -1066,6 +1077,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -1321,6 +1333,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */
@@ -1386,6 +1399,10 @@ export namespace Components {
          */
         "hasTicks": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Max value of the model.
          */
         "max": number;
@@ -1405,6 +1422,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
@@ -1452,6 +1470,7 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * The steps in which the input increases or decreases
          */
@@ -1493,6 +1512,7 @@ export namespace Components {
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
@@ -2070,6 +2090,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -2088,6 +2109,7 @@ export namespace Components {
         "value"?: number;
     }
     interface BalPagination {
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Disables component
          */
@@ -2352,6 +2374,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setButtonTabindex": (value: number) => Promise<void>;
         "setFocus": (ev: any) => Promise<void>;
         "updateState": () => Promise<void>;
@@ -2431,6 +2454,7 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * the value of the radio group.
@@ -2539,6 +2563,7 @@ export namespace Components {
           * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
          */
         "selectionOptional": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets the focus on the input element
          */
@@ -3101,6 +3126,7 @@ export namespace Components {
           * The number of visible text lines for the control.
          */
         "rows"?: number;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
          */
@@ -3148,6 +3174,7 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        "setAriaForm": (ariaForm: BalAriaForm) => Promise<void>;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -3224,6 +3251,10 @@ export interface BalDataValueCustomEvent<T> extends CustomEvent<T> {
 export interface BalDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalDatepickerElement;
+}
+export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalFieldElement;
 }
 export interface BalFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4534,6 +4565,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * A11y attributes for the native button element.
+         */
+        "aria"?: BalProps.BalButtonAria;
+        /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded"?: undefined | boolean;
@@ -4960,6 +4995,7 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonFocusDetail>) => void;
+        "onBalFormControlDidLoad"?: (event: BalCheckboxButtonCustomEvent<BalEvents.BalCheckboxButtonAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5334,6 +5370,10 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
+        /**
+          * Emitted after render when element is labelled
+         */
+        "onBalFormControlDidLoad"?: (event: BalFieldCustomEvent<BalEvents.BalFieldAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5808,6 +5848,10 @@ declare namespace LocalJSX {
           * If `true`, small ticks for the steps are shown.
          */
         "hasTicks"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * Max value of the model.
          */
@@ -6852,6 +6896,10 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonFocusDetail>) => void;
+        /**
+          * Emitted after render when element is labelled
+         */
+        "onBalFormControlDidLoad"?: (event: BalRadioButtonCustomEvent<BalEvents.BalRadioButtonAriaLabelledByDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
