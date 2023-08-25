@@ -14,6 +14,7 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { generatePaginationControl } from './bal-pagination.util'
 
 @Component({
   tag: 'bal-pagination',
@@ -116,47 +117,14 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   }
 
   private getItems(pageRange = 1) {
-    const items = []
-    let rangeStart = this._value - pageRange
-    let rangeEnd = this._value + pageRange
-
-    if (this.interface === 'small') {
-      rangeStart = 1
-      rangeEnd = this.totalPages - 1
-    } else {
-      if (rangeEnd > this.totalPages) {
-        rangeEnd = this.totalPages
-        rangeStart = this.totalPages - pageRange * 2
-        rangeStart = rangeStart < 1 ? 1 : rangeStart
+    const controls = generatePaginationControl(this._value, this.totalPages, pageRange)
+    return controls.map((control: any) => {
+      if (control.type === 'page') {
+        return this.renderPageElement(Number(control.label))
+      } else {
+        return this.renderEllipsisElement()
       }
-
-      if (rangeStart <= 1) {
-        rangeStart = 1
-        rangeEnd = Math.min(pageRange * 2 + 3, this.totalPages)
-      }
-    }
-
-    if (rangeStart > 1) {
-      items.push(this.renderPageElement(1))
-      if (this.interface !== 'small') {
-        items.push(this.renderEllipsisElement())
-      }
-    }
-    if (rangeEnd == this.totalPages) {
-      rangeStart = rangeStart - 2
-    }
-    for (let i = rangeStart; i <= rangeEnd; i++) {
-      items.push(this.renderPageElement(i))
-    }
-
-    if (rangeEnd < this.totalPages) {
-      if (this.interface !== 'small') {
-        items.push(this.renderEllipsisElement())
-      }
-      items.push(this.renderPageElement(this.totalPages))
-    }
-
-    return items
+    })
   }
 
   renderEllipsisElement() {
