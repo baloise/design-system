@@ -1,4 +1,4 @@
-name: Add UX Testing checklist
+name: Auto UX Testing checklist
 
 on:
   pull_request:
