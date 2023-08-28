@@ -19,14 +19,19 @@ import { UpdateControl } from '../app.component'
         >
           <bal-field-label>Number Input Label</bal-field-label>
           <bal-field-control>
-            <bal-number-input placeholder="Enter a number" formControlName="numberInput"></bal-number-input>
+            <bal-number-input
+              placeholder="Enter a number"
+              formControlName="numberInput"
+              decimal="2"
+              suffix="CHF"
+            ></bal-number-input>
           </bal-field-control>
           <bal-field-message>
             <bal-ng-error controlName="numberInput" error="required">This field is required</bal-ng-error>
           </bal-field-message>
         </bal-field>
         <bal-button-group>
-          <bal-button color="secondary" (click)="updateControl.emit({ name: 'numberInput', value: 42 })">
+          <bal-button color="secondary" (click)="updateControl.emit({ name: 'numberInput', value: 42.15 })">
             Update Number Input
           </bal-button>
           <bal-button color="tertiary" (click)="form.get('numberInput')?.enable()">Enable Number Input</bal-button>
