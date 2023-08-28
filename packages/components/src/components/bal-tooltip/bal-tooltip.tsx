@@ -13,8 +13,8 @@ import {
 } from '@stencil/core'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BEM } from '../../utils/bem'
-import { balBreakpoints } from '../../utils/breakpoints'
 import { balBrowser } from '../../utils/browser'
+import { balDevice } from '../../utils/device'
 import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
 import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
 
@@ -100,7 +100,7 @@ export class Tooltip implements ComponentInterface, Loggable {
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
 
-    if (!balBreakpoints.isTouch) {
+    if (!balDevice.hasTouchScreen) {
       let showEvents: string[] = []
       let hideEvents: string[] = []
 
