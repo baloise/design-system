@@ -20,6 +20,7 @@ jobs:
       #       const prNumber = context.payload.issue.number;
       #       console.log(comment);
       #       console.log(prNumber);
+      - run: echo ${{ github.event.number }}
 
       - name: Create comment
         if: github.event.issue.pull_request && contains(github.event.comment.body, '/ux-checklist')
