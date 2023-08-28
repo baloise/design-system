@@ -485,6 +485,7 @@ export class Tabs
           const waitForTransition = transitionEndAsync(lineElement, 300)
 
           if (isVertical) {
+            // test
             lineElement.style.setProperty('transform', `translateY(${offset}px)`)
             lineElement.style.setProperty('min-height', `${size}px`)
             lineElement.style.setProperty('height', `${size}px`)
