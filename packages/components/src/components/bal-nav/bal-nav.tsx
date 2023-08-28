@@ -330,7 +330,6 @@ export class NavMetaBar
     return (
       <Host
         id={this.navId}
-        role="navigation"
         class={{
           ...block.class(),
         }}
@@ -435,10 +434,76 @@ export class NavMetaBar
         ) : (
           ''
         )}
-        {this.isTouch && this.isFlyoutActive ? (
-          <div class={{ ...flyoutBlock.class() }}>
-            <div class="container">
-              {this.linkItems.length > 1 ? (
+        {this.isTouch ? (
+          <div class={{ ...flyoutBlock.class(), ...flyoutBlock.modifier('visible').class(this.isFlyoutActive) }}>
+            <nav class="container">
+              <ul>
+                {this.linkItems.map(metaItem => {
+                  return (
+                    <li>
+                      <a href={metaItem.href} target={metaItem.target}>
+                        {metaItem.label}
+                      </a>
+                      <ul style={{ margin: '1rem' }}>
+                        {metaItem.mainLinkItems.map(menuItem => {
+                          return (
+                            <li>
+                              <a href={menuItem.href} target={menuItem.target}>
+                                {menuItem.label}
+                              </a>
+                              <ul style={{ margin: '1rem' }}>
+                                {menuItem.sectionLinkItems?.map(itemGroup => {
+                                  return (
+                                    <li>
+                                      <a href={itemGroup.href} target={itemGroup.target}>
+                                        {itemGroup.label}
+                                      </a>
+                                      <ul style={{ margin: '1rem' }}>
+                                        {itemGroup.linkItems?.map(item => {
+                                          return (
+                                            <li>
+                                              <a href={item.href} target={item.target}>
+                                                {item.label}
+                                              </a>
+                                            </li>
+                                          )
+                                        })}
+                                      </ul>
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                              <ul style={{ margin: '1rem' }}>
+                                {menuItem.serviceLinkItems?.map(serviceGroup => {
+                                  return (
+                                    <li>
+                                      <a href={serviceGroup.href} target={serviceGroup.target}>
+                                        {serviceGroup.label}
+                                      </a>
+                                      <ul style={{ margin: '1rem' }}>
+                                        {serviceGroup.linkItems?.map(item => {
+                                          return (
+                                            <li>
+                                              <a href={item.href} target={item.target}>
+                                                {item.label}
+                                              </a>
+                                            </li>
+                                          )
+                                        })}
+                                      </ul>
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </li>
+                  )
+                })}
+              </ul>
+              {/* {this.linkItems.length > 1 ? (
                 <bal-list border accordion-one-level size="large">
                   {this.linkItems.map(metaItem => (
                     <bal-list-item accordion>
@@ -467,8 +532,8 @@ export class NavMetaBar
                 </bal-list>
               ) : (
                 this.renderTouchMenuAccordions(this.linkItems[0])
-              )}
-            </div>
+              )} */}
+            </nav>
           </div>
         ) : (
           ''
