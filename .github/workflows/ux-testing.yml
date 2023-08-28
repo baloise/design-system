@@ -17,18 +17,20 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            ## 🧪 UX Checklist
+            ## 🧪 UX-Checklist
 
             @clastzoo @samira-liebendoerfer please help us testing this component.
 
-            **Browsers:**
-            - iPhone & iPad
+            - iPhone
               - [ ] Safari
+            - iPad
+              - [ ] Safari *(only responsive relevancy)*
             - Android
               - [ ] Chrome
             - MacOs
               - [ ] Safari
-              - Firefox and Chrome if there is time
+              - [ ] Firefox *(if there is time)*
+              - [ ] Chrome *(if there is time)*
             - Windows
               - [ ] Edge
               - [ ] Chrome
