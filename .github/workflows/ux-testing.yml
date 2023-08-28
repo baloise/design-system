@@ -1,4 +1,4 @@
-name: Auto UX Testing checklist
+name: Auto UX Checklist
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ jobs:
         if: github.event.issue.pull_request && contains(github.event.comment.body, '/ux-checklist')
         uses: peter-evans/create-or-update-comment@v3
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.number }}
           body: |
             This is a multi-line test comment
             - With GitHub **Markdown** :sparkles:
