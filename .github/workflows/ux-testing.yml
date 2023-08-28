@@ -21,12 +21,13 @@ jobs:
       #       console.log(comment);
       #       console.log(prNumber);
       - run: echo ${{ github.event.number }}
+      - run: echo ${{ github.event.issue.number }}
 
       - name: Create comment
         if: github.event.issue.pull_request && contains(github.event.comment.body, '/ux-checklist')
         uses: peter-evans/create-or-update-comment@v3
         with:
-          issue-number: ${{ github.event.number }}
+          issue-number: ${{ github.event.issue.number }}
           body: |
             This is a multi-line test comment
             - With GitHub **Markdown** :sparkles:
