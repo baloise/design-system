@@ -11,26 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      # - name: Check for /ux-checklist command
-      #   id: ux-checklist
-      #   uses: actions/github-script@v5
-      #   with:
-      #     script: |
-      #       const comment = context.payload.comment.body;
-      #       const prNumber = context.payload.issue.number;
-      #       console.log(comment);
-      #       console.log(prNumber);
-      - run: echo ${{ github.event.number }}
-      - run: echo ${{ github.event.issue.number }}
-
       - name: Create comment
         if: github.event.issue.pull_request && contains(github.event.comment.body, '/ux-checklist')
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [create-or-update-comment][1]
+            ## 🧪 UX Checklist
 
-            [1]: https://github.com/peter-evans/create-or-update-comment
+            @clastzoo @samira-liebendoerfer please help us testing this component.
+
+            **Browsers:**
+            - iPhone & iPad
+              - [ ] Safari
+            - Android
+              - [ ] Chrome
+            - MacOs
+              - [ ] Safari
+              - Firefox and Chrome if there is time
+            - Windows
+              - [ ] Edge
+              - [ ] Chrome
+              - [ ] Firefox
