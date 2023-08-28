@@ -107,6 +107,11 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
   @Event() balBlur!: EventEmitter<BalEvents.BalRadioButtonBlurDetail>
 
   /**
+   * Emitted after render when element is labelled
+   */
+  @Event() balFormControlDidLoad!: EventEmitter<BalEvents.BalRadioButtonAriaLabelledByDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -120,6 +125,10 @@ export class BalRadioButton implements ComponentInterface, Loggable, BalElementS
 
   componentWillLoad() {
     this.triggerAllHandlers()
+  }
+
+  componentDidLoad() {
+    this.balFormControlDidLoad.emit(this.el)
   }
 
   disconnectedCallback(): void {

@@ -7,3 +7,13 @@ namespace BalProps {
   export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 }
+
+namespace BalEvents {
+  export interface BalFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalFieldElement
+  }
+
+  export type BalFieldAriaLabelledByDetail = HTMLElement
+  export type BalFieldAriaLabelledBy = BalFieldCustomEvent<BalFieldAriaLabelledByDetail>
+}

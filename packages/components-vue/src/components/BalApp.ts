@@ -1,34 +1,33 @@
 import { h, defineComponent, shallowRef, VNode } from 'vue'
 import { defineCustomElement } from '@baloise/design-system-components/dist/components/bal-app'
 
-defineCustomElement()
-
 const userComponents = shallowRef<any[]>([]) // eslint-disable-line
 
-export const BalApp = defineComponent({
-  name: 'BalApp',
-  setup(_, { attrs, slots }) {
-    return () => {
-      return h(
-        'bal-app',
-        {
-          ...attrs,
-        },
-        [slots.default && slots.default(), ...userComponents.value],
-      )
-    }
-  },
+export const BalApp = /*@__PURE__*/ defineComponent((_, { attrs, slots }) => {
+  defineCustomElement()
+  return () => {
+    return h(
+      'bal-app',
+      {
+        ...attrs,
+      },
+      [slots.default && slots.default(), ...userComponents.value],
+    )
+  }
 })
+
+// @ts-ignore:next-line
+BalApp.name = 'BalApp'
 
 /**
  * When rendering user components inside of
- * bal-modal the component
+ * ion-modal, or ion-popover the component
  * needs to be created inside of the current application
  * context otherwise libraries such as vue-i18n or vuex
  * will not work properly.
  *
  * `userComponents` renders teleported components as children
- * of `bal-app` within the current application context.
+ * of `ion-app` within the current application context.
  */
 export const addTeleportedUserComponent = (component: VNode) => {
   userComponents.value = [...userComponents.value, component]

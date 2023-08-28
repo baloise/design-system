@@ -1,8 +1,9 @@
-import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
+import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch, State } from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { debounceEvent } from '../../../utils/helpers'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-input-slider',
@@ -10,7 +11,7 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-input-slider.sass',
   },
 })
-export class InputSlider {
+export class InputSlider implements BalAriaFormLinking {
   @Element() el!: HTMLElement
 
   private inputId = `bal-input-slider-${inputSliderIds++}`
@@ -18,6 +19,8 @@ export class InputSlider {
   private didInit = false
   private hasFocus = false
   private initialValue?: string | number = ''
+
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -38,6 +41,11 @@ export class InputSlider {
    * Max value of the model.
    */
   @Prop() max = 100
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
 
   /**
    * The tabindex of the control.
@@ -173,6 +181,14 @@ export class InputSlider {
     return Promise.resolve(this.nativeInput)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   get numberOfSteps(): number {
     const max = this.max - this.min
     if (this.step <= 0 || this.step >= max) {
@@ -286,7 +302,11 @@ export class InputSlider {
               ...inputNativeEl.modifier('disabled').class(this.disabled || this.readonly),
             }}
             ref={inputEl => (this.nativeInput = inputEl)}
-            id={this.inputId}
+            id={this.ariaForm.controlId || this.inputId}
+            aria-labelledby={this.ariaForm.labelId}
+            aria-describedby={this.ariaForm.messageId}
+            aria-disabled={this.disabled ? 'true' : null}
+            aria-invalid={this.invalid === true ? 'true' : 'false'}
             disabled={this.disabled}
             readonly={this.readonly}
             name={this.name}

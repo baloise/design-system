@@ -1,0 +1,30 @@
+name: 'Cypress E2E'
+description: 'Cypress E2E'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Cypress
+      uses: cypress-io/github-action@v5
+      with:
+        start: npm run cy:start
+        wait-on: 'http://localhost:3333'
+        working-directory: test
+        install: false
+        browser: chrome
+        env: type=actual
+      env:
+        SPLIT: ${{ strategy.job-total }}
+        SPLIT_INDEX: ${{ strategy.job-index }}
+
+    - name: Report Visual Failures
+      if: failure()
+      working-directory: ./test
+      run: npm run cy:visual:report
+      shell: bash
+
+    - name: Upload snapshots
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: cypress-snapshots-components-${{ strategy.job-index }}
+        path: test/cypress/snapshots
