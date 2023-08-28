@@ -1,0 +1,29 @@
+name: Add UX Testing checklist
+
+on:
+  pull_request:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  CreateUXChecklist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check for /ux-checklist command
+        id: ux-checklist
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const comment = context.payload.comment.body;
+            if (comment.includes('/ux-checklist')) {
+              console.log('UX Checklist command found');
+              const newComment = `## UX Checklist\n- [ ] Item 1\n- [ ] Item 2\n- [ ] Item 3`;
+              github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: newComment
+              });
+            }
