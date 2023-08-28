@@ -20,17 +20,3 @@ jobs:
             const prNumber = context.payload.issue.number;
             console.log(comment);
             console.log(prNumber);
-
-            if (comment.includes('/ux-checklist')) {
-              console.log('UX Checklist command found');
-              const newComment = `## UX Checklist\n- [ ] Item 1\n- [ ] Item 2\n- [ ] Item 3`;
-
-              const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
-              await octokit.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: prNumber,
-                body: newComment
-              });
-            }
-
