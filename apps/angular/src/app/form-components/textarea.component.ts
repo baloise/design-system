@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Textarea</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('textarea')?.disabled"
-          [invalid]="form.get('textarea')?.touched && form.get('textarea')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Textarea Label</bal-field-label>
           <bal-field-control>
             <bal-textarea placeholder="Enter comment" formControlName="textarea"></bal-textarea>
