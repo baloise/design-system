@@ -13,15 +13,17 @@ export function generatePaginationControl(value: number, totalPages: number, pag
     value = 1
   }
 
-  if (totalPages < 0) {
+  if (totalPages <= 0) {
     totalPages = 10
   }
 
-  if (pageRange < 0) {
+  if (pageRange <= 0) {
     pageRange = 1
   }
 
-  if (totalPages <= 7) {
+  const numberOfPages = 5 + pageRange * 2
+
+  if (totalPages <= numberOfPages) {
     for (let i = 1; i <= totalPages; i++) {
       paginationArray.push({
         type: 'page',
@@ -30,8 +32,8 @@ export function generatePaginationControl(value: number, totalPages: number, pag
       })
     }
   } else {
-    if (value <= 4) {
-      for (let i = 1; i <= 5; i++) {
+    if (value <= numberOfPages - 2 - pageRange) {
+      for (let i = 1; i <= numberOfPages - 2; i++) {
         paginationArray.push({
           type: 'page',
           label: i.toString(),
@@ -51,7 +53,7 @@ export function generatePaginationControl(value: number, totalPages: number, pag
         active: false,
       })
       paginationArray.push({ type: 'dots', label: '...', active: false })
-      for (let i = totalPages - 4; i <= totalPages; i++) {
+      for (let i = totalPages - numberOfPages + 3; i <= totalPages; i++) {
         paginationArray.push({
           type: 'page',
           label: i.toString(),

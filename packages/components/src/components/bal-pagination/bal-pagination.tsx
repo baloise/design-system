@@ -128,9 +128,15 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   }
 
   renderEllipsisElement() {
+    const more = BEM.block('pagination').element('nav').element('pagination-list').modifier('more')
+
     return (
       <li>
-        <div class="pagination-more" style={{ width: '48px' }}>
+        <div
+          class={{
+            ...more.class(),
+          }}
+        >
           <bal-text bold heading inline space="none">
             &hellip;
           </bal-text>
@@ -164,6 +170,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
           color={isActive ? 'primary' : 'text'}
           onClick={() => this.selectPage(pageNumber)}
           data-testid="bal-pagination-page-number"
+          size={this.isMobile ? 'small' : ''}
         >
           {pageNumber}
         </bal-button>
@@ -182,7 +189,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
     const buttonColor = isSmall ? 'link' : 'text'
-    const buttonSize = isSmall ? 'small' : ''
+    const buttonSize = isSmall || this.isMobile ? 'small' : ''
     const flat = isSmall
 
     const hasBasicNavigationButtons = this.interface === '' || (isSmall && this.totalPages <= 5)
