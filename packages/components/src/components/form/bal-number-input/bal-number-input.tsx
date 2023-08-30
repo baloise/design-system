@@ -346,9 +346,13 @@ export class NumberInput
     if (suffix !== '') {
       suffix = ` ${suffix}`
     }
-    return `[${getNegativeSymbol()}0-9${getThousandSeparator()}${
-      this.decimal > 0 ? getDecimalSeparator() : ''
-    }${suffix}]*`
+
+    let thousandSeparator = getThousandSeparator()
+    if (thousandSeparator === '’') {
+      thousandSeparator = "'"
+    }
+
+    return `^-?([1-9]\d{0,2}(?:${thousandSeparator}\d{3})*|\d+)(?:\\${getDecimalSeparator()}\d{${this.decimal}})?$`
   }
 
   render() {
