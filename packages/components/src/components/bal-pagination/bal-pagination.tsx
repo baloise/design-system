@@ -116,7 +116,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     this.balChangeEventEmitter.emit(this._value)
   }
 
-  private getItems(pageRange = 1) {
+  private getItems(pageRange = 2) {
     const controls = generatePaginationControl(this._value, this.totalPages, pageRange)
     return controls.map((control: any) => {
       if (control.type === 'page') {

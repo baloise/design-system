@@ -18,7 +18,7 @@ export function generatePaginationControl(value: number, totalPages: number, pag
   }
 
   if (pageRange <= 0) {
-    pageRange = 1
+    pageRange = 2
   }
 
   const numberOfPages = 5 + pageRange * 2
