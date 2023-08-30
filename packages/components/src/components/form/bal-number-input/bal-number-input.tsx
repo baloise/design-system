@@ -51,6 +51,7 @@ import {
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-number-input',
@@ -59,7 +60,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../ut
   },
 })
 export class NumberInput
-  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
 {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
@@ -74,6 +75,13 @@ export class NumberInput
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  log!: LogInstance
+
+  @Logger('bal-number-input')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -264,6 +272,7 @@ export class NumberInput
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
     if (input) {
+      console.log('onInput', input.value, this.value)
       const parsedValue = parseFloat(parseFloat(parseFloatString(input.value)).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
         this.inputValue = parsedValue
@@ -282,6 +291,7 @@ export class NumberInput
     inputHandleBlur(this, ev)
 
     const input = getInputTarget(ev)
+    console.log('onBlur', input?.value, this.value)
     if (input && (getDecimalSeparators().indexOf(input.value) >= 0 || input.value === getNegativeSymbol())) {
       this.inputValue = undefined
       input.value = ''
@@ -356,7 +366,14 @@ export class NumberInput
   }
 
   render() {
+    console.log('render')
+    console.log('this.getRawValue()', this.getRawValue())
+    console.log('formatFloatString(this.getRawValue())', formatFloatString(this.getRawValue()))
+    console.log('this.getFormattedValue()', this.getFormattedValue())
     const value = this.focused ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
+    console.log('value', value)
+    console.log('this.value', this.value)
+
     if (this.nativeInput && this.nativeInput.value) {
       this.nativeInput.value = value
     }

@@ -819,6 +819,12 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
+  private fireBlur = (ev: Event) => {
+    if (!this.isPopoverOpen && !this.hasFocus) {
+      this.balBlur.emit(ev as any)
+    }
+  }
+
   private handleClick = (ev: MouseEvent) => {
     if (this.disabled || this.readonly) {
       preventDefault(ev)
@@ -836,7 +842,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
         if (this.multiple && this.typeahead) {
           this.updateInputValue('')
         }
-        this.balBlur.emit()
+        this.fireBlur(ev)
       }
     }
   }
@@ -853,6 +859,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       this.validateAfterBlur(isHuman)
     }
     this.hasFocus = false
+    this.fireBlur(ev)
   }
 
   private handleInputFocus = (ev: FocusEvent) => {

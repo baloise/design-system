@@ -7,7 +7,8 @@ export interface BaloiseDesignSystemAngularConfig {
   applyPolyfills?: boolean
   defaults?: BalConfig
   forms?: {
-    setInvalid: boolean
+    setInvalid?: boolean
+    invalidateOn?: 'touched' | 'dirty'
   }
 }
 
