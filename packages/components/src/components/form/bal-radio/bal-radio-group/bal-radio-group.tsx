@@ -208,7 +208,7 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   }
 
   componentDidLoad(): void {
-    if (this.interface === 'select-button' && this.vertical && !balDevice.hasTouchScreen && !this.verticalOnMobile) {
+    if (this.interface === 'select-button' && this.vertical && !balDevice.hasTouchScreen) {
       this.setEqualWidthsForRadios()
     }
   }
