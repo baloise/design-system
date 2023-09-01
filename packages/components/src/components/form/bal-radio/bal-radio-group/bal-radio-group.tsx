@@ -21,6 +21,7 @@ import isFunction from 'lodash.isfunction'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
+import { balDevice } from '../../../../utils/device'
 
 @Component({
   tag: 'bal-radio-group',
@@ -206,6 +207,12 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
+  componentDidLoad(): void {
+    if (this.interface === 'select-button' && this.vertical && !balDevice.hasTouchScreen) {
+      this.setEqualWidthsForRadios()
+    }
+  }
+
   /**
    * LISTENERS
    * ------------------------------------------------------
@@ -385,6 +392,22 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
     })
   }
 
+  private setEqualWidthsForRadios(): void {
+    let maxWidth = 0
+    const group = this.getSelectButtons()
+
+    group?.forEach(radio => {
+      const radioWidth = radio.getBoundingClientRect().right - radio.getBoundingClientRect().left
+      maxWidth = Math.max(maxWidth, radioWidth)
+    })
+
+    group?.forEach(radio => {
+      if (radio.clientWidth <= maxWidth) {
+        radio.style.width = maxWidth + 'px'
+      }
+    })
+  }
+
   /**
    * GETTERS
    * ------------------------------------------------------
@@ -396,6 +419,10 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
 
   private getRadioButtons(): HTMLBalRadioButtonElement[] {
     return Array.from(this.el.querySelectorAll('bal-radio-button'))
+  }
+
+  private getSelectButtons() {
+    return this.el.querySelector('.bal-radio-checkbox-group__inner--select-button')?.querySelectorAll('bal-radio')
   }
 
   /**
