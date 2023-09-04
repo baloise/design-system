@@ -18,7 +18,7 @@
 
 The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
 
-Check out the [documentation](https://design.baloise.dev).
+Check out the [documentation](https://design.baloise.dev) or direct on [Vercel](https://baloise-design-system.vercel.app)
 
 ## Packages
 
