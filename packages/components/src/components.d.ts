@@ -3054,6 +3054,27 @@ export namespace Components {
          */
         "message": string;
     }
+    interface BalTooltip {
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        "dismiss": () => Promise<boolean>;
+        /**
+          * Offset form trigger to tooltip.
+         */
+        "offset": number;
+        /**
+          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
+         */
+        "placement": BalProps.BalTooltipPlacement;
+        "present": () => Promise<boolean>;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference": string;
+        "update": () => Promise<boolean>;
+    }
 }
 export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3210,6 +3231,10 @@ export interface BalTimeInputCustomEvent<T> extends CustomEvent<T> {
 export interface BalToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalToastElement;
+}
+export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalTooltipElement;
 }
 declare global {
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
@@ -4064,6 +4089,12 @@ declare global {
         prototype: HTMLBalToastElement;
         new (): HTMLBalToastElement;
     };
+    interface HTMLBalTooltipElement extends Components.BalTooltip, HTMLStencilElement {
+    }
+    var HTMLBalTooltipElement: {
+        prototype: HTMLBalTooltipElement;
+        new (): HTMLBalTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-accordion-details": HTMLBalAccordionDetailsElement;
@@ -4207,6 +4238,7 @@ declare global {
         "bal-textarea": HTMLBalTextareaElement;
         "bal-time-input": HTMLBalTimeInputElement;
         "bal-toast": HTMLBalToastElement;
+        "bal-tooltip": HTMLBalTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -7331,6 +7363,32 @@ declare namespace LocalJSX {
          */
         "onBalClose"?: (event: BalToastCustomEvent<BalEvents.BalToastCloseDetail>) => void;
     }
+    interface BalTooltip {
+        /**
+          * Defines the width of the content
+         */
+        "contentWidth"?: number;
+        /**
+          * Offset form trigger to tooltip.
+         */
+        "offset"?: number;
+        /**
+          * Emitted after the animation has finished
+         */
+        "onBalDidAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipDidAnimateDetail>) => void;
+        /**
+          * Emitted before the animation starts
+         */
+        "onBalWillAnimate"?: (event: BalTooltipCustomEvent<BalEvents.BalTooltipWillAnimateDetail>) => void;
+        /**
+          * If set it turns a tooltip into a fullscreen or a drawer on touch devices
+         */
+        "placement"?: BalProps.BalTooltipPlacement;
+        /**
+          * Id of the reference element default is the trigger element.
+         */
+        "reference"?: string;
+    }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-accordion-details": BalAccordionDetails;
@@ -7474,6 +7532,7 @@ declare namespace LocalJSX {
         "bal-textarea": BalTextarea;
         "bal-time-input": BalTimeInput;
         "bal-toast": BalToast;
+        "bal-tooltip": BalTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -7622,6 +7681,7 @@ declare module "@stencil/core" {
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-time-input": LocalJSX.BalTimeInput & JSXBase.HTMLAttributes<HTMLBalTimeInputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
+            "bal-tooltip": LocalJSX.BalTooltip & JSXBase.HTMLAttributes<HTMLBalTooltipElement>;
         }
     }
 }
