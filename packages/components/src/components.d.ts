@@ -2793,6 +2793,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the tabs selected line is optional
+         */
+        "optionalTabSelection": boolean;
+        /**
           * Steps can be passed as a property or through HTML markup.
          */
         "options": BalTabOption[];
@@ -7089,6 +7093,10 @@ declare namespace LocalJSX {
           * Emitted before the animation starts
          */
         "onBalWillAnimate"?: (event: BalTabsCustomEvent<BalEvents.BalTabsWillAnimateDetail>) => void;
+        /**
+          * If `true` the tabs selected line is optional
+         */
+        "optionalTabSelection"?: boolean;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
