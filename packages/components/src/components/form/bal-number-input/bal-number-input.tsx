@@ -329,7 +329,7 @@ export class NumberInput
   }
 
   private get lastValueGetter(): string {
-    if (isNil(this.lastValue) || isEmpty(this.lastValue)) {
+    if (this.exactNumber && (isNil(this.lastValue) || isEmpty(this.lastValue))) {
       return '0'
     }
     return this.lastValue
