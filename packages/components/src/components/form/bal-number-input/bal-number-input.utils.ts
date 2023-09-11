@@ -13,7 +13,6 @@ export function isNotNumber(value: any): boolean {
 }
 
 export function toNumber(value: any, decimalPoints = 0): number | undefined {
-  console.log(value, isNaN(value))
   if (
     value === '' ||
     value === undefined ||

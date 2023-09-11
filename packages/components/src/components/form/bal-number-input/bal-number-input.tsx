@@ -49,6 +49,9 @@ import {
   validateKeyDown,
   mapDecimalSeparator,
 } from './bal-number-input.utils'
+import isNil from 'lodash.isnil'
+import isEmpty from 'lodash.isempty'
+import isNaN from 'lodash.isnan'
 
 @Component({
   tag: 'bal-number-input',
@@ -161,7 +164,10 @@ export class NumberInput
   @Watch('value')
   protected valueChanged(newValue: number | undefined, oldValue?: number) {
     if (newValue !== oldValue) {
-      const value = newValue === undefined ? '' : newValue.toString()
+      const isValueNotDefined = (newValue as any) === '' || isNil(newValue) || isNaN(newValue)
+      const emptyValue = this.exactNumber ? '0' : ''
+      const value = isValueNotDefined ? emptyValue : newValue.toString()
+
       this.inputValue = toNumber(toFixedNumber(value, this.decimal), this.decimal)
       this.lastValue = toFixedNumber(value, this.decimal)
       if (this.focused) {
@@ -322,6 +328,13 @@ export class NumberInput
     return `^-?([1-9]\d{0,2}(?:${thousandSeparator}\d{3})*|\d+)(?:\\${decimalSeparator}\d{${this.decimal}})?$`
   }
 
+  private get lastValueGetter(): string {
+    if (isNil(this.lastValue) || isEmpty(this.lastValue)) {
+      return '0'
+    }
+    return this.lastValue
+  }
+
   /**
    * EVENT BINDING
    * ------------------------------------------------------
@@ -363,11 +376,12 @@ export class NumberInput
     //
     // on focus out the input value gets a pretty format
     if (this.nativeInput) {
-      this.lastValue = toFixedNumber(this.lastValue, this.decimal)
-      this.nativeInputValue = toUserFormattedNumber(this.lastValue, this.decimal, this.suffix)
+      this.lastValue = toFixedNumber(this.lastValueGetter, this.decimal)
+      this.nativeInputValue = toUserFormattedNumber(this.lastValueGetter, this.decimal, this.suffix)
     }
 
-    this.inputValue = toNumber(this.lastValue, this.decimal)
+    this.inputValue = toNumber(this.lastValueGetter, this.decimal)
+
     inputHandleChange(this)
   }
 

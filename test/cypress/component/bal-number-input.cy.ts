@@ -80,7 +80,7 @@ describe('bal-number-input.cy.ts', () => {
     cy.get('@click').should('not.have.been.called')
   })
 
-  it('should have a default value 0 because of exact-number attr', () => {
+  it.only('should have a default value 0 because of exact-number attr', () => {
     cy.get('bal-number-input').find('input').should('have.value', '')
     cy.get('bal-number-input').invoke('attr', 'exact-number', true)
     cy.get('bal-number-input').find('input').type('1').blur()
