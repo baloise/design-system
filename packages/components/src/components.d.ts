@@ -806,11 +806,13 @@ export namespace Components {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated": boolean;
+        "language"?: string;
         "logComponents": string;
         "logCustom": boolean;
         "logEvents": boolean;
         "logLifecycle": boolean;
         "logRender": boolean;
+        "region"?: string;
         "stickyFooter": boolean;
     }
     interface BalDocBanner {
@@ -5023,11 +5025,13 @@ declare namespace LocalJSX {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated"?: boolean;
+        "language"?: string;
         "logComponents"?: string;
         "logCustom"?: boolean;
         "logEvents"?: boolean;
         "logLifecycle"?: boolean;
         "logRender"?: boolean;
+        "region"?: string;
         "stickyFooter"?: boolean;
     }
     interface BalDocBanner {
