@@ -5730,6 +5730,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperBlurDetail>) => void;
+        /**
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperChangeDetail>) => void;
@@ -5737,6 +5741,10 @@ declare namespace LocalJSX {
           * Emitted when the input value has decreased.
          */
         "onBalDecrease"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperDecreaseDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: BalInputStepperCustomEvent<BalEvents.BalInputStepperFocusDetail>) => void;
         /**
           * Emitted when the input value has increased.
          */
