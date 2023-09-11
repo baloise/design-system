@@ -16,6 +16,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex', errorThreshold)
       cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list', errorThreshold)
+      cy.getByTestId('without-active-tab').compareSnapshot('tabs-without-active-tab', errorThreshold)
     })
   })
 
@@ -34,6 +35,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-tablet', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-tablet', errorThreshold)
       cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list-tablet', errorThreshold)
+      cy.getByTestId('without-active-tab').compareSnapshot('tabs-without-active-tab-tablet', errorThreshold)
     })
   })
 
@@ -52,6 +54,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('overflow-stack').compareSnapshot('tabs-overflow-stack-mobile', errorThreshold)
       cy.getByTestId('overflow-flex').compareSnapshot('tabs-overflow-flex-mobile', errorThreshold)
       cy.getByTestId('vertical-list').compareSnapshot('tabs-vertical-list-mobile', errorThreshold)
+      cy.getByTestId('without-active-tab').compareSnapshot('tabs-without-active-tab-mobile', errorThreshold)
     })
   })
 })
