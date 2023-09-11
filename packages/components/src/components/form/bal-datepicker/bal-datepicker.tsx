@@ -29,7 +29,7 @@ import {
   isSameMonth,
   lastDayOfMonth,
 } from 'date-fns'
-import { debounceEvent } from '../../../utils/helpers'
+import { debounceEvent, rIC } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {
@@ -708,7 +708,7 @@ export class Datepicker
 
   private fireBlur = (ev: Event) => {
     if (!this.isPopoverOpen && !this.focused) {
-      this.balBlur.emit(ev as any)
+      rIC(() => this.balBlur.emit(ev as any))
     }
   }
 
