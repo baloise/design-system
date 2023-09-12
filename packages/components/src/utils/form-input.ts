@@ -15,8 +15,10 @@ export interface FormInput<Value> {
 }
 
 export const stopEventBubbling = (ev: Event): void => {
-  ev.preventDefault()
-  ev.stopPropagation()
+  if (ev) {
+    ev.preventDefault()
+    ev.stopPropagation()
+  }
 }
 
 export const getInputTarget = (ev: Event): HTMLInputElement | null => {

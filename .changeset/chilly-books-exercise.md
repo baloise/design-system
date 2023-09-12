@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-remove tab line if there is no active tab
+Hide the tab line when no active tab is present.
