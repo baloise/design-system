@@ -4,4 +4,4 @@
 '@baloise/design-system-css': patch
 ---
 
-move sticky footer styles to core css file and updated bal-app for vue applications
+Relocate sticky footer styles to the core CSS file and update 'bal-app' for Vue applications.

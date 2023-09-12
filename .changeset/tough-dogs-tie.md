@@ -2,4 +2,4 @@
 '@baloise/design-system-output-target-angular': minor
 ---
 
-provide component events as a stream
+In Angular, component events can be accessed through an RxJS stream.

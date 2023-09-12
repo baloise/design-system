@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-connect aria-labelledby with the correct label and for attribute with the correct input
+Ensure that `aria-labelledby` is correctly linked to the appropriate label, and that the `for` attribute corresponds to the correct input.
