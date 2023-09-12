@@ -132,7 +132,7 @@ describe('bal-radio.cy.ts', () => {
     })
   })
 
-  describe.only('radio-button', () => {
+  describe('radio-button', () => {
     let onClickSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalChangeSpy: Cypress.Agent<sinon.SinonSpy>
     let onBalFocusSpy: Cypress.Agent<sinon.SinonSpy>
