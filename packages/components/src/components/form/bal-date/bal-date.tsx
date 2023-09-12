@@ -13,7 +13,7 @@ import {
   Watch,
 } from '@stencil/core'
 import { isSpaceKey } from '@baloise/web-app-utils'
-import { autoUpdate, computePosition, flip, shift, offset } from '@floating-ui/dom'
+import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom'
 import { i18nBalDate } from './bal-date.i18n'
 import { BEM } from '../../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
@@ -379,7 +379,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   private updatePosition(referenceEl: HTMLElement, floatingEl: HTMLElement) {
     computePosition(referenceEl, floatingEl, {
       placement: 'bottom-start',
-      middleware: [flip(), shift({ padding: 8 }), offset(4)],
+      middleware: [offset(4), flip({ crossAxis: false })],
     }).then(({ x, y }) => {
       Object.assign(floatingEl.style, {
         left: `${x}px`,
