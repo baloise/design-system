@@ -19,3 +19,20 @@ export const scrollToFirstInvalidField = (options: ScrollToFirstInvalidFieldOpti
     }
   }
 }
+
+export interface BalAriaForm {
+  controlId?: string
+  labelId?: string
+  messageId?: string
+}
+
+export interface BalAriaFormLinking {
+  ariaForm: BalAriaForm
+  setAriaForm(ariaForm: BalAriaForm): Promise<void>
+}
+
+export const defaultBalAriaForm: BalAriaForm = {
+  controlId: undefined,
+  labelId: undefined,
+  messageId: undefined,
+}

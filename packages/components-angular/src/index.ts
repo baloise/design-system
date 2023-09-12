@@ -1,5 +1,5 @@
 // COMPONENTS
-export { BalNgErrorComponent } from './components/error/error.component'
+export { BalNgErrorComponent } from './components/error.component'
 
 // DIRECTIVES
 export * from './generated/proxies'
@@ -19,7 +19,8 @@ export { BalOrientationService } from './util/orientation.service'
 export { BalConfigService } from './util/config.service'
 
 // PACKAGE MODULE
-export { BaloiseDesignSystemModule } from './module'
+export type { BaloiseDesignSystemAngularConfig } from './app-initialize'
+export { BaloiseDesignSystemModule, BalConfigToken } from './module'
 
 // HELPERS
 export { element, parseCustomEvent, ProxyComponent } from './helpers'

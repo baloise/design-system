@@ -1,0 +1,35 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-date.vars'
+
+:root
+  --bal-z-index-tooltip: 1300
+
+// Date Picker
+// --------------------------------------------------
+
+.bal-date
+  display: block
+  font-family: var(--bal-font-family-text)
+  width: 100%
+
+// Date Picker - trigger icon
+// --------------------------------------------------
+
+.bal-date__icon--clickable
+  cursor: pointer
+
+// Date Picker - popup
+// --------------------------------------------------
+
+.bal-date__popup
+  display: none
+  width: max-content
+  position: absolute
+  top: 0
+  left: 0
+  z-index: var(--bal-date-popup-z-index)
+  box-shadow: var(--bal-date-popup-shadow)
+  border-radius: var(--bal-date-popup-radius)
+
+.bal-date__popup--visible
+  display: block

@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-maps",
-  "version": "13.6.2",
+  "version": "13.7.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:markers && npm run build:bundle && npm run build:archive",
+    "docs": "npm run build && npm run build:archive",
+    "build": "npm run build:markers && npm run build:bundle",
     "build:bundle": "rollup --config rollup.config.js",
     "build:markers": "node ../../.build/optimize-map-markers.js",
     "build:archive": "node ../../.build/archive-maps.js"

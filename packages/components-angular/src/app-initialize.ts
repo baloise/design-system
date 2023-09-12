@@ -6,6 +6,10 @@ import { raf } from './util/util'
 export interface BaloiseDesignSystemAngularConfig {
   applyPolyfills?: boolean
   defaults?: BalConfig
+  forms?: {
+    setInvalid?: boolean
+    invalidateOn?: 'touched' | 'dirty'
+  }
 }
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
@@ -23,10 +27,14 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
           raf,
           jmp: (h: any) => zone.runOutsideAngular(h),
           ael(elm, eventName, cb, opts) {
-            ;(elm as any)[aelFn](eventName, cb, opts)
+            if (elm && (elm as any)[aelFn]) {
+              ;(elm as any)[aelFn](eventName, cb, opts)
+            }
           },
           rel(elm, eventName, cb, opts) {
-            elm.removeEventListener(eventName, cb, opts)
+            if (elm) {
+              elm.removeEventListener(eventName, cb, opts)
+            }
           },
         })
       })

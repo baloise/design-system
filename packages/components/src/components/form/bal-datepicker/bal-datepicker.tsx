@@ -29,7 +29,7 @@ import {
   isSameMonth,
   lastDayOfMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent, rIC } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import {
@@ -44,7 +44,7 @@ import {
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
-import { i18nDate } from './bal-datepicker.i18n'
+import { i18nBalDatepicker } from './bal-datepicker.i18n'
 import {
   defaultConfig,
   BalConfigObserver,
@@ -69,6 +69,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 
 @Component({
   tag: 'bal-datepicker',
@@ -77,7 +78,13 @@ import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoi
   },
 })
 export class Datepicker
-  implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable, BalBreakpointObserver
+  implements
+    ComponentInterface,
+    BalConfigObserver,
+    FormInput<string | undefined>,
+    Loggable,
+    BalBreakpointObserver,
+    BalAriaFormLinking
 {
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
@@ -100,6 +107,7 @@ export class Datepicker
     month: getMonth(now()),
     day: getDate(now()),
   }
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
 
   log!: LogInstance
 
@@ -368,6 +376,14 @@ export class Datepicker
     return Promise.resolve(this.nativeInput)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   private updatePointerDates() {
     let date = now()
     date.setDate(1)
@@ -449,7 +465,7 @@ export class Datepicker
   }
 
   get months(): { name: string; index: number }[] {
-    const monthNames = i18nDate[this.language].monthsShort
+    const monthNames = i18nBalDatepicker[this.language].monthsShort
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min && this.pointerDate.year === getYear(parse(this.min) as Date)) {
@@ -466,7 +482,7 @@ export class Datepicker
   }
 
   get weekDays(): string[] {
-    const translations = [...i18nDate[this.language].weekdaysMin]
+    const translations = [...i18nBalDatepicker[this.language].weekdaysMin]
     translations.push(translations.shift() || '')
     return translations
   }
@@ -541,9 +557,7 @@ export class Datepicker
     stopEventBubbling(ev)
     if (this.isPopoverOpen !== ev.detail) {
       this.isPopoverOpen = ev.detail
-      if (!this.isPopoverOpen) {
-        this.balBlur.emit()
-      }
+      this.fireBlur(ev)
     }
   }
 
@@ -689,6 +703,13 @@ export class Datepicker
   private onInputBlur = (ev: FocusEvent) => {
     preventDefault(ev)
     this.focused = false
+    this.fireBlur(ev)
+  }
+
+  private fireBlur = (ev: Event) => {
+    if (!this.isPopoverOpen && !this.focused) {
+      rIC(() => this.balBlur.emit(ev as any))
+    }
   }
 
   private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
@@ -713,10 +734,11 @@ export class Datepicker
           type="date"
           class={{ ...native.class() }}
           name={this.name}
-          value={this.value}
           min={this.min}
           max={this.max}
+          value={this.value}
           tabindex={-1}
+          aria-hidden="true"
         ></input>
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
@@ -735,13 +757,6 @@ export class Datepicker
   }
 
   renderInput() {
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
-
     return (
       <div bal-popover-trigger class="control">
         <bal-input-group disabled={this.disabled || this.readonly} invalid={this.invalid}>
@@ -755,8 +770,11 @@ export class Datepicker
             }}
             data-testid="bal-datepicker-input"
             ref={el => (this.nativeInput = el as HTMLInputElement)}
-            id={this.inputId}
-            aria-labelledby={labelId}
+            id={this.ariaForm.controlId || this.inputId}
+            aria-labelledby={this.ariaForm.labelId}
+            aria-describedby={this.ariaForm.messageId}
+            aria-invalid={this.invalid === true ? 'true' : 'false'}
+            aria-disabled={this.disabled ? 'true' : null}
             type="text"
             maxlength="10"
             autoComplete="off"

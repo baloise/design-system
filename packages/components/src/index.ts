@@ -44,6 +44,17 @@ export * from './components/form/bal-checkbox/bal-checkbox.type'
 export * from './components/form/bal-radio/bal-radio.type'
 
 /**
+ * i18n
+ */
+export * from './components/form/bal-date/bal-date.i18n'
+export * from './components/bal-close/bal-close.i18n'
+export * from './components/form/bal-field/bal-field-label/bal-field-label.i18n'
+export * from './components/form/bal-datepicker/bal-datepicker.i18n'
+export * from './components/form/bal-time-input/bal-time-input.i18n'
+export * from './components/form/bal-input-stepper/bal-input-stepper.i18n'
+export * from './components/typography/bal-label/bal-label.i18n'
+
+/**
  * Utils
  */
 export { initializeBaloiseDesignSystem } from './initialize'
@@ -71,6 +82,7 @@ export { balDevice } from './utils/device'
 export { balBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from './utils/breakpoints'
 export { BalOrientationObserver, BalOrientationInfo, balOrientationSubject } from './utils/orientation'
 export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
+export { BalDate } from './utils/date'
 
 /**
  * Controllers

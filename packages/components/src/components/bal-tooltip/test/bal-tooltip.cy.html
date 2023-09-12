@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      section {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app log-components="bal-tooltip">
+      <main class="container py-medium">
+        <bal-button data-test="basic-trigger" id="basic-tooltip">Basic</bal-button>
+        <bal-tooltip data-test="basic" label="Basic Tooltip" reference="basic-tooltip">
+          <p>Basic Tooltip</p>
+        </bal-tooltip>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

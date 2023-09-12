@@ -14,9 +14,9 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel } from '../../../utils/helpers'
+import { debounceEvent, rIC } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
-import { FormInput, inputListenOnClick } from '../../../utils/form-input'
+import { FormInput, inputListenOnClick, stopEventBubbling } from '../../../utils/form-input'
 import {
   ListenToConfig,
   BalConfigObserver,
@@ -26,6 +26,9 @@ import {
   defaultConfig,
 } from '../../../utils/config'
 import { BEM } from '../../../utils/bem'
+import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { i18nBalInputStepper } from './bal-input-stepper.i18n'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -33,9 +36,14 @@ import { BEM } from '../../../utils/bem'
     css: 'bal-input-stepper.sass',
   },
 })
-export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
-  private inputId = `bal-input-stepper${InputStepperIds++}`
+export class InputStepper
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
+{
+  private inputId = `bal-input-stepper-${InputStepperIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+
+  private decreaseHasFocus = false
+  private increaseHasFocus = false
 
   nativeInput?: HTMLInputElement
 
@@ -44,6 +52,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   @State() focused = false
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
+  @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  log!: LogInstance
+
+  @Logger('bal-input-stepper')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -116,6 +132,16 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    */
   @Event() balDecrease!: EventEmitter<BalEvents.BalInputStepperDecreaseDetail>
 
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputStepperFocusDetail>
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputStepperBlurDetail>
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
@@ -156,6 +182,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     return Promise.resolve(this.nativeInput)
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async setAriaForm(ariaForm: BalAriaForm): Promise<void> {
+    this.ariaForm = { ...ariaForm }
+  }
+
   increase() {
     if (!this.disabled && !this.readonly) {
       const newValue = new Big(this.value).plus(this.steps).toNumber()
@@ -180,18 +214,49 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     }
   }
 
-  render() {
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
+  private onFocusDecrease = (ev: CustomEvent) => {
+    this.decreaseHasFocus = true
+    this.onFocus(ev)
+  }
 
+  private onFocusIncrease = (ev: CustomEvent) => {
+    this.increaseHasFocus = true
+    this.onFocus(ev)
+  }
+
+  private onFocus = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.balFocus.emit(ev.detail)
+  }
+
+  private onBlurDecrease = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.decreaseHasFocus = false
+
+    rIC(() => this.onBlur(ev.detail))
+  }
+
+  private onBlurIncrease = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.increaseHasFocus = false
+
+    rIC(() => this.onBlur(ev.detail))
+  }
+
+  private onBlur = (ev: FocusEvent) => {
+    if (!(this.decreaseHasFocus || this.increaseHasFocus)) {
+      this.balBlur.emit(ev)
+    }
+  }
+
+  render() {
     const block = BEM.block('input-stepper')
     const elInput = block.element('input')
     const elInner = block.element('inner')
     const elText = elInner.element('text')
+
+    const increaseLabel = i18nBalInputStepper[this.language].increase
+    const decreaseLabel = i18nBalInputStepper[this.language].decrease
 
     return (
       <Host
@@ -207,6 +272,11 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           }}
         >
           <bal-button
+            aria={{
+              title: decreaseLabel,
+              label: decreaseLabel,
+              controls: this.ariaForm.controlId || this.inputId,
+            }}
             size="small"
             square
             data-testid="bal-input-stepper-decrease"
@@ -215,6 +285,8 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             color={this.invalid ? 'danger' : 'info'}
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
+            onBalFocus={ev => this.onFocusDecrease(ev)}
+            onBalBlur={ev => this.onBlurDecrease(ev)}
           ></bal-button>
           <bal-text
             space="none"
@@ -228,6 +300,11 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
+            aria={{
+              title: increaseLabel,
+              label: increaseLabel,
+              controls: this.ariaForm.controlId || this.inputId,
+            }}
             size="small"
             data-testid="bal-input-stepper-increase"
             square
@@ -236,20 +313,25 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             color={this.invalid ? 'danger' : 'info'}
             disabled={this.disabled || this.readonly || this.value >= this.max}
             onClick={_ => this.increase()}
+            onBalFocus={ev => this.onFocusIncrease(ev)}
+            onBalBlur={ev => this.onBlurIncrease(ev)}
           ></bal-button>
         </div>
         <input
           class={{
             ...elInput.class(),
           }}
+          id={this.ariaForm.controlId || this.inputId}
+          aria-labelledby={this.ariaForm.labelId}
+          aria-describedby={this.ariaForm.messageId}
+          aria-invalid={this.invalid === true ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           data-testid="bal-input-stepper"
           type="text"
           value={this.value}
           name={this.name}
           tabindex="-1"
           ref={inputEl => (this.nativeInput = inputEl)}
-          id={this.inputId}
-          aria-labelledby={labelId}
           readonly={this.readonly}
           disabled={this.disabled}
           {...this.inheritedAttributes}

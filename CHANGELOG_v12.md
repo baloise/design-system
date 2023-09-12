@@ -65,7 +65,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 ## [11.0.15](https://github.com/baloise/design-system/compare/v11.0.14...v11.0.15) (2022-11-29)
 
-
 ### Bug Fixes
 
 * **bal-radio:** change link color to inverted when selected ([f1068ed](https://github.com/baloise/design-system/commit/f1068edeb069c048853a32e73a1f0e8db215ccec))
@@ -80,7 +79,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * **tabs:** set index ([2abe233](https://github.com/baloise/design-system/commit/2abe23315b4b214e5f67a5c25cc745c170229483))
 
 ## [11.0.14](https://github.com/baloise/design-system/compare/v11.0.13...v11.0.14) (2022-11-22)
-
 
 ### Bug Fixes
 
@@ -553,3 +551,4 @@ Follow the migration guide [Migration from 10.x to 11.x](https://design.baloise.
 - Rebranded components
 - New breakpoint high-definition
 - bal-input pattern
+
