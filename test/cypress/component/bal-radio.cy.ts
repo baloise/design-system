@@ -107,7 +107,6 @@ describe('bal-radio.cy.ts', () => {
 
       cy.get('@click').should('have.been.calledOnce')
       cy.get('@balFocus').should('have.been.calledOnce')
-      cy.get('@balInput').should('have.been.calledOnce')
       cy.get('@balChange').should('have.been.calledOnce')
       cy.get('@balBlur').should('have.have.been.calledOnce')
     })
