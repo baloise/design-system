@@ -1,5 +1,15 @@
 # @baloise/design-system-css
 
+## 13.7.0
+
+### Patch Changes
+
+- [#1007](https://github.com/baloise/design-system/pull/1007) - Relocate sticky footer styles to the core CSS file and update 'bal-app' for Vue applications.
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.7.0
+  - @baloise/design-system-tokens@13.7.0
+
 ## 13.6.2
 
 ### Patch Changes
