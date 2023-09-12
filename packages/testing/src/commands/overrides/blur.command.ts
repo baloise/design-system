@@ -12,9 +12,10 @@ import {
   isNumberInput,
   wrapOptions,
   wrapCommand,
+  isInputDate,
 } from '../helpers'
 
-Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options: any) => {
   const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {
@@ -35,6 +36,10 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return command(selectors.dateInput.native)
   }
 
   if (isNumberInput(element)) {

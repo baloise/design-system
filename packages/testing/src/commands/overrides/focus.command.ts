@@ -4,6 +4,7 @@ import {
   isCheckbox,
   isDatepicker,
   isInput,
+  isInputDate,
   isNumberInput,
   isRadio,
   isSelect,
@@ -35,6 +36,10 @@ Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return command(selectors.dateInput.native)
   }
 
   if (isNumberInput(element)) {

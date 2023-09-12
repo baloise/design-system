@@ -65,7 +65,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 ## [11.0.15](https://github.com/baloise/design-system/compare/v11.0.14...v11.0.15) (2022-11-29)
 
-
 ### Bug Fixes
 
 * **bal-radio:** change link color to inverted when selected ([f1068ed](https://github.com/baloise/design-system/commit/f1068edeb069c048853a32e73a1f0e8db215ccec))

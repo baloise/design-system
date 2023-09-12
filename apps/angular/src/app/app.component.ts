@@ -6,7 +6,7 @@ import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
-import { DateComponent } from './form-components/date.component'
+import { DatePickerComponent } from './form-components/datepicker.component'
 import { TimeComponent } from './form-components/time.component'
 import { InputStepperComponent } from './form-components/input-stepper.component'
 import { SliderComponent } from './form-components/input-slider.component'
@@ -16,6 +16,8 @@ import { CheckboxGroupComponent } from './form-components/checkbox-group.compone
 import { CheckboxButtonsComponent } from './form-components/checkbox-buttons.component'
 import { RadioComponent } from './form-components/radio.component'
 import { RadioButtonsComponent } from './form-components/radio-buttons.component'
+import { DateComponent } from './form-components/date.component'
+import { InputDateComponent } from './form-components/input-date.component'
 
 export interface UpdateControl {
   name: string
@@ -34,7 +36,7 @@ export interface UpdateControl {
     InputComponent,
     TextareaComponent,
     NumberInputComponent,
-    DateComponent,
+    DatePickerComponent,
     TimeComponent,
     InputStepperComponent,
     SliderComponent,
@@ -44,6 +46,8 @@ export interface UpdateControl {
     CheckboxButtonsComponent,
     RadioComponent,
     RadioButtonsComponent,
+    DateComponent,
+    InputDateComponent,
   ],
   template: `
     <bal-app class="has-sticky-footer">
@@ -52,7 +56,9 @@ export interface UpdateControl {
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>
           <app-textarea [form]="myForm" (updateControl)="updateValue($event)"></app-textarea>
           <app-number-input [form]="myForm" (updateControl)="updateValue($event)"></app-number-input>
+          <app-datepicker [form]="myForm" (updateControl)="updateValue($event)"></app-datepicker>
           <app-date [form]="myForm" (updateControl)="updateValue($event)"></app-date>
+          <app-input-date [form]="myForm" (updateControl)="updateValue($event)"></app-input-date>
           <app-time [form]="myForm" (updateControl)="updateValue($event)"></app-time>
           <app-input-stepper [form]="myForm" (updateControl)="updateValue($event)"></app-input-stepper>
           <app-slider [form]="myForm" (updateControl)="updateValue($event)"></app-slider>
@@ -83,6 +89,8 @@ export class AppComponent {
     input: new FormControl('Init Value', [Validators.required]),
     textarea: new FormControl('Init Value', [Validators.required]),
     numberInput: new FormControl(null, [Validators.required]),
+    inputDate: new FormControl('2023-09-09', [Validators.required]),
+    datepicker: new FormControl('2023-09-09', [Validators.required]),
     date: new FormControl('2023-09-09', [Validators.required]),
     time: new FormControl(null, [Validators.required]),
     inputStepper: new FormControl(0, [Validators.min(2)]),
