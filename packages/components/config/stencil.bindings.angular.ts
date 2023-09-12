@@ -10,6 +10,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
       'bal-datepicker',
       'bal-date',
       'bal-input-date',
+      'bal-file-upload',
     ],
     event: 'balChange',
     targetAttr: 'value',

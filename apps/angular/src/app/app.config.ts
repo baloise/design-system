@@ -19,6 +19,9 @@ export const appConfig: ApplicationConfig = {
             event: true,
           },
         },
+        forms: {
+          setInvalid: true,
+        },
       }),
     ),
   ],
