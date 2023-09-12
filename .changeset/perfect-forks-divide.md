@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-scroll to top on mobile navbar toggle to prevent space between navbar brand and navbar menu
+Implement a 'scroll to top' feature upon toggling the mobile navbar to prevent any space between the navbar brand and the menu.
