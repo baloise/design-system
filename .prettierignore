@@ -1,4 +1,3 @@
-.build/
 .storybook/
 dist/
 dist-transpiled/

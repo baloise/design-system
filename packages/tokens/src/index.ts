@@ -480,7 +480,12 @@ const tokens = {
     gap: '1rem',
   },
   border: {
-    width: '2px',
+    width: {
+      none: { value: '0' },
+      small: { value: '0.063rem' },
+      normal: { value: '0.125rem' },
+      medium: { value: '0.25rem' },
+    },
     colors: {
       'primary': 'primary-5',
       'grey': 'grey-3',
@@ -568,7 +573,7 @@ export interface BaloiseDesignTokens {
     }
   }
   border: {
-    width: string
+    width: BaloiseDesignTokenValues
     colors: {
       [key: string]: string
     }

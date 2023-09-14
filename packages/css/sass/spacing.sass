@@ -1,11 +1,5 @@
 @import '../src/mixins/_all'
 
-.is-marginless
-  margin: 0 !important
-
-.is-paddingless
-  padding: 0 !important
-
 $spacing-shortcuts: ("margin": "m", "padding": "p") !default
 $spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l") !default
 $spacing-horizontal: "x" !default
@@ -155,3 +149,12 @@ $spacing-vertical: "y" !default
           #{$property}-bottom: $value !important
 
 
+// ****************************************************
+// LEGACY
+// ****************************************************
+
+.is-marginless
+  margin: 0 !important
+
+.is-paddingless
+  padding: 0 !important

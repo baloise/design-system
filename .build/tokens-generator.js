@@ -73,7 +73,7 @@ const newToken = (key, legacySassKey, value, aliasValue) => ({ key, legacySassKe
 
 const addToken = (key, legacySassKey, value, aliasValue) => tokens.push(newToken(key, legacySassKey, value, aliasValue))
 
-const isTokenAlias = token => token.value.startsWith(ALIAS)
+const isTokenAlias = token => token && token.value && token.value.startsWith ? token.value.startsWith(ALIAS) : false
 
 const cssValue = token => isTokenAlias(token)
   ? cssVarKey(token.value.slice(ALIAS.length + 1, token.value.length - 1))
@@ -294,7 +294,10 @@ function generateAnimation() {
 
 function generateBorder() {
   const border = BaloiseDesignToken.border
-  addToken(`border-width-normal`, `border-width-normal`, border.width)
+  addToken(`border-width-none`, `border-width-none`, border.width.none.value)
+  addToken(`border-width-small`, `border-width-small`, border.width.small.value)
+  addToken(`border-width-normal`, `border-width-normal`, border.width.normal.value)
+  addToken(`border-width-medium`, `border-width-medium`, border.width.medium.value)
 }
 
 main()
