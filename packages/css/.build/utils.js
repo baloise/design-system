@@ -55,7 +55,7 @@ class Rule {
     const values = this.values.map(value => {
       return [`  ${value.toString(indent)}`].join(NEWLINE)
     })
-    return [selector, values].join(NEWLINE) + NEWLINE
+    return [selector, ...values].join(NEWLINE) + NEWLINE
   }
 }
 
