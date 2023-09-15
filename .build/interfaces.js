@@ -22,6 +22,11 @@ async function adjustInterfacesReference(files){
   try {
     replace.sync({
       files: files,
+      from: `/// <reference path="../../../../../src/interfaces.d.ts" />`,
+      to: `/// <reference path="../../../../interfaces.d.ts" />`,
+    })
+    replace.sync({
+      files: files,
       from: `/// <reference path="../../../../src/interfaces.d.ts" />`,
       to: `/// <reference path="../../../interfaces.d.ts" />`,
     })

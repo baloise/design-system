@@ -96,4 +96,4 @@ export interface I18n<T> {
   fi: T
 }
 
-export type I18nKeys = keyof I18n<T>
+export type I18nKeys = keyof I18n<any>
