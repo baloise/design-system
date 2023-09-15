@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 13.7.1
+
+### Patch Changes
+
+- [#1037](https://github.com/baloise/design-system/pull/1037) - fix types errors
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.7.1
+  - @baloise/design-system-fonts@13.7.1
+  - @baloise/design-system-icons@13.7.1
+  - @baloise/design-system-tokens@13.7.1
+
 ## 13.7.0
 
 ### Minor Changes

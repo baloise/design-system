@@ -1,5 +1,7 @@
 # @baloise/design-system-output-target-angular
 
+## 13.7.1
+
 ## 13.7.0
 
 ### Minor Changes
