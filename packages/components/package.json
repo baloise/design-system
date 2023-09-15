@@ -90,6 +90,7 @@
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
     "luxon": "^3.3.0",
+    "@types/luxon": "^3.3.0",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
