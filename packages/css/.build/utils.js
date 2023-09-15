@@ -2,12 +2,7 @@ const NEWLINE = '\n'
 const DASH_SEPARATOR = '-'
 const COLON_SEPARATOR = `\\:`
 const pseudoStates = ['focus', 'hover', 'active']
-const minBreakpoints = [
-  'tablet',
-  'tablet-only',
-  'touch',
-  'desktop',
-]
+const minBreakpoints = ['tablet', 'tablet-only', 'touch', 'desktop']
 
 const allBreakpoints = [
   'mobile',
@@ -92,7 +87,15 @@ class RuleGroup {
   }
 }
 
-const styleClass = (prefix = '', propName = '', obj = {}, important = false, responsive = false, states = false, breakpoints = minBreakpoints) => {
+const styleClass = (
+  prefix = '',
+  propName = '',
+  obj = {},
+  important = false,
+  responsive = false,
+  states = false,
+  breakpoints = minBreakpoints,
+) => {
   const propNames = Array.isArray(propName) ? propName : [propName]
   const rules = new RuleGroup()
 
@@ -125,7 +128,7 @@ const styleClass = (prefix = '', propName = '', obj = {}, important = false, res
       for (const className in obj) {
         let rule = new Rule({
           selectors: [
-            prefix !== '' ? `.${[prefix, className, breakpoint].join(DASH_SEPARATOR)}`:'',
+            prefix !== '' ? `.${[prefix, className, breakpoint].join(DASH_SEPARATOR)}` : '',
             `.${breakpoint}${COLON_SEPARATOR}${className}`,
           ],
         })

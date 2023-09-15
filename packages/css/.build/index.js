@@ -18,7 +18,7 @@ const opacity = require('./opacity')
 const interactivity = require('./interactivity')
 const transform = require('./transform')
 
-const DIRNAME = path.normalize(__dirname);
+const DIRNAME = path.normalize(__dirname)
 const SASS_PATH = path.join(DIRNAME, '../src/generated')
 
 async function main() {

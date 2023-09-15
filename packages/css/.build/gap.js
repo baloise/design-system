@@ -14,7 +14,9 @@ const generate = () => {
   for (const level in spacing) {
     const space = spacing[level]
 
-    let rule = new utils.Rule({ selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`] })
+    let rule = new utils.Rule({
+      selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`],
+    })
     rule.append({ prop: 'gap', value: `var(--bal-space-${level})`, important: true })
 
     let ruleRow = new utils.Rule({
@@ -35,7 +37,9 @@ const generate = () => {
   for (const level in spacing) {
     const space = spacing[level]
 
-    let rule = new utils.Rule({ selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`] })
+    let rule = new utils.Rule({
+      selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`],
+    })
     rule.append({ prop: 'gap', value: `var(--bal-space-tablet-${level})`, important: true })
 
     let ruleRow = new utils.Rule({
@@ -57,7 +61,9 @@ const generate = () => {
   for (const level in spacing) {
     const space = spacing[level]
 
-    let rule = new utils.Rule({ selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`] })
+    let rule = new utils.Rule({
+      selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`],
+    })
     rule.append({ prop: 'gap', value: `var(--bal-space-desktop-${level})`, important: true })
 
     let ruleRow = new utils.Rule({

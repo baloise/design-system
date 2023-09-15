@@ -51,28 +51,28 @@ const generate = () => {
     'w-9': '75%',
     'w-10': '83.3333%',
     'w-11': '91.6667%',
-    'w-12': '100%'
-};
+    'w-12': '100%',
+  }
 
-let minWidths = {
+  let minWidths = {
     'min-w-auto': 'auto',
     'min-w-0': '0px',
     'min-w-full': '100%',
     'min-w-screen': '100vw',
     'min-w-min': 'min-content',
     'min-w-max': 'max-content',
-    'min-w-fit': 'fit-content'
-}
+    'min-w-fit': 'fit-content',
+  }
 
-let maxWidths = {
+  let maxWidths = {
     'max-w-auto': 'auto',
     'max-w-0': '0px',
     'max-w-full': '100%',
     'max-w-screen': '100vw',
     'max-w-min': 'min-content',
     'max-w-max': 'max-content',
-    'max-w-fit': 'fit-content'
-}
+    'max-w-fit': 'fit-content',
+  }
 
   return [
     utils.styleClass('', 'height', heights, true, true, false).toString(),

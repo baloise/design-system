@@ -37,11 +37,7 @@ const generate = () => {
   ruleWhite.append({ prop: 'background-color', value: `var(--bal-color-white)`, important: true })
   invertedWhite.append(ruleWhite)
 
-  return [
-    rules.toString(),
-    invertedPrimary.toString(),
-    invertedWhite.toString(),
-  ].join(utils.NEWLINE)
+  return [rules.toString(), invertedPrimary.toString(), invertedWhite.toString()].join(utils.NEWLINE)
 }
 
 module.exports = {
