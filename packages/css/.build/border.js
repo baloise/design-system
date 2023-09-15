@@ -11,7 +11,7 @@ const generate = () => {
   function props(propName = 'border') {
     const _props = {}
     for (const color in borderColors) {
-      _props[`${propName}-${color}`] = `var(--bal-border-width-normal) solid var(--bal-color-${color})`
+      _props[`${propName}-${color}`] = `var(--bal-border-width-normal) solid var(--bal-color-border-${color})`
     }
     return _props
   }

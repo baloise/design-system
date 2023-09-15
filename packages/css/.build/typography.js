@@ -16,6 +16,8 @@ const generate = () => {
     'text-right': 'right',
     'text-start': 'start',
     'text-end': 'end',
+    'text-centered': 'center', // legacy
+    'text-justified': 'justify', // legacy
   }
 
   const textDecorationProps = {
@@ -28,6 +30,7 @@ const generate = () => {
     lowercase: 'lowercase',
     uppercase: 'uppercase',
     capitalize: 'capitalize',
+    capitalized: 'capitalize', // legacy
   }
 
   const textOverflowProps = {
@@ -44,6 +47,7 @@ const generate = () => {
   const whiteSpaceProps = {
     'white-space-normal': 'normal',
     'white-space-nowrap': 'nowrap',
+    'no-wrap': 'nowrap', // legacy
   }
 
   const verticalAlignProps = {
