@@ -15,17 +15,17 @@ const generate = () => {
     const space = spacing[level]
 
     let rule = new utils.Rule({
-      selectors: [`fg-${level}`, `fg-${space.legacy}`, `gap-${level}`, `gap-${space.legacy}`],
+      selectors: [`.fg-${level}`, `.fg-${space.legacy}`, `.gap-${level}`, `.gap-${space.legacy}`],
     })
     rule.append({ prop: 'gap', value: `var(--bal-space-${level})`, important: true })
 
     let ruleRow = new utils.Rule({
-      selectors: [`row-gap-${level}`, `row-gap-${space.legacy}`],
+      selectors: [`.row-gap-${level}`, `.row-gap-${space.legacy}`],
     })
     ruleRow.append({ prop: 'row-gap', value: `var(--bal-space-${level})`, important: true })
 
     let ruleColumn = new utils.Rule({
-      selectors: [`column-gap-${level}`, `column-gap-${space.legacy}`],
+      selectors: [`.column-gap-${level}`, `.column-gap-${space.legacy}`],
     })
     ruleColumn.append({ prop: 'column-gap', value: `var(--bal-space-${level})`, important: true })
 

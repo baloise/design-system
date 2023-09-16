@@ -11,10 +11,23 @@ const generate = () => {
     'flex-column-reverse': 'column-reverse',
   }
 
+  const flexDirectionLegacy = {
+    'flex-direction-row': 'row',
+    'flex-direction-row-reverse': 'row-reverse',
+    'flex-direction-column': 'column',
+    'flex-direction-column-reverse': 'column-reverse',
+  }
+
   const flexWrap = {
     'flex-wrap': 'wrap',
     'flex-wrap-reverse': 'wrap-reverse',
     'flex-nowrap': 'nowrap',
+  }
+
+  const flexWrapLegacy = {
+    'flex-wrap-wrap': 'wrap',
+    'flex-wrap-wrap-reverse': 'wrap-reverse',
+    'flex-wrap-nowrap': 'nowrap',
   }
 
   const justifyContent = {
@@ -102,14 +115,16 @@ const generate = () => {
   return [
     utils.styleClass('', 'flex-direction', flexDirection, true, true, false).toString(),
     utils.styleClass('', 'flex-wrap', flexWrap, true, true, false).toString(),
-    utils.styleClass('', 'justify-content', justifyContent, true, true, false).toString(),
-    utils.styleClass('', 'align-content', alignContent, true, true, false).toString(),
-    utils.styleClass('', 'align-items', alignItems, true, true, false).toString(),
+    utils.styleClass('is', 'justify-content', justifyContent, true, true, false).toString(),
+    utils.styleClass('is', 'align-content', alignContent, true, true, false).toString(),
+    utils.styleClass('is', 'align-items', alignItems, true, true, false).toString(),
     utils.styleClass('is', 'align-self', alignSelf, true, true, false).toString(),
     utils.styleClass('', 'order', order, true, true, false).toString(),
     utils.styleClass('', 'flex', flex, true, true, false).toString(),
     utils.styleClass('is', 'flex-grow', flexGrow, true, true, false).toString(),
     utils.styleClass('is', 'flex-shrink', flexShrink, true, true, false).toString(),
+    utils.styleClass('is', 'flex-wrap', flexWrapLegacy, true, false, false).toString(),
+    utils.styleClass('is', 'flex-direction', flexDirectionLegacy, true, false, false).toString(),
   ].join(utils.NEWLINE)
 }
 
