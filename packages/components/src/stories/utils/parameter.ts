@@ -168,6 +168,8 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
+      .replace(' :direction="args.groupDirection"', ` direction="${(args as any).groupDirection}"`)
+      .replace(' :position="args.groupPosition"', ` position="${(args as any).groupPosition}"`)
       .replace(
         ` :color="args.invalid ? 'danger' : 'hint'"`,
         ` color="${(args as any).invalid === true ? 'danger' : 'hint'}"`,

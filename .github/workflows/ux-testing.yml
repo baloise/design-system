@@ -1,0 +1,37 @@
+name: Auto UX Checklist
+
+on:
+  pull_request:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  CreateUXChecklist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Create comment
+        if: github.event.issue.pull_request && contains(github.event.comment.body, '/ux-checklist')
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ## 🧪 UX-Checklist
+
+            @clastzoo @samira-liebendoerfer please help us testing this component.
+
+            - iPhone
+              - [ ] Safari
+            - iPad
+              - [ ] Safari *(only responsive relevancy)*
+            - Android
+              - [ ] Chrome
+            - MacOs
+              - [ ] Safari
+              - [ ] Firefox *(if there is time)*
+              - [ ] Chrome *(if there is time)*
+            - Windows
+              - [ ] Edge
+              - [ ] Chrome
+              - [ ] Firefox

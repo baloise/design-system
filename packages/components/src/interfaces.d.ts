@@ -34,6 +34,8 @@ import './components/bal-stage/bal-stage.interfaces'
 import './components/bal-steps/bal-steps.interfaces'
 import './components/bal-tabs/bal-tabs.interfaces'
 import './components/bal-tag/bal-tag.interfaces'
+import './components/bal-tooltip/bal-tooltip.interfaces'
+import './components/bal-navigation/bal-navigation.interfaces'
 import './components/typography/bal-heading/bal-heading.interfaces'
 import './components/typography/bal-label/bal-label.interfaces'
 import './components/typography/bal-text/bal-text.interfaces'
@@ -41,6 +43,8 @@ import './components/layout/bal-content/bal-content.interfaces'
 import './components/layout/bal-divider/bal-divider.interfaces'
 import './components/layout/bal-stack/bal-stack.interfaces'
 import './components/form/bal-checkbox/bal-checkbox.interfaces'
+import './components/form/bal-date/bal-date.interfaces'
+import './components/form/bal-date/bal-date-calendar/bal-date-calendar.interfaces'
 import './components/form/bal-datepicker/bal-datepicker.interfaces'
 import './components/form/bal-file-upload/bal-file-upload.interfaces'
 import './components/form/bal-field/bal-field.interfaces'
@@ -53,6 +57,7 @@ import './components/form/bal-time-input/bal-time-input.interfaces'
 import './components/form/bal-radio/bal-radio.interfaces'
 import './components/form/bal-select/bal-select.interfaces'
 import './components/form/bal-textarea/bal-textarea.interfaces'
+import './components/form/bal-date/bal-date-calendar/bal-date-calendar.interfaces'
 import './components/notice/bal-modal/bal-modal.interfaces'
 import './components/notice/bal-notification/bal-notification.interfaces'
 import './components/notice/bal-sheet/bal-sheet.interfaces'
@@ -99,3 +104,5 @@ export interface I18n<T> {
   sv: T
   fi: T
 }
+
+export type I18nKeys = keyof I18n<any>

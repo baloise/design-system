@@ -12,7 +12,6 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import isNil from 'lodash.isnil'
 import {
   ListenToConfig,
   BalConfigObserver,
@@ -21,10 +20,8 @@ import {
   BalRegion,
   defaultConfig,
 } from '../../../utils/config'
-import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import {
   FormInput,
-  getInputTarget,
   getNativeInputValue,
   getUpcomingValue,
   inputHandleBlur,
@@ -40,17 +37,21 @@ import {
 } from '../../../utils/form-input'
 import { debounceEvent } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
-import {
-  getDecimalSeparator,
-  getThousandSeparator,
-  parseFloatString,
-  formatFloatString,
-  getNegativeSymbol,
-  getDecimalSeparators,
-} from '../../../utils/number'
-import { formatInputValue } from './bal-input.utils'
+import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number'
 import { BEM } from '../../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import {
+  toUserFormattedNumber,
+  isNotNumber,
+  toNumber,
+  toFixedNumber,
+  validateKeyDown,
+  mapDecimalSeparator,
+} from './bal-number-input.utils'
+import isNil from 'lodash.isnil'
+import isEmpty from 'lodash.isempty'
+import isNaN from 'lodash.isnan'
 
 @Component({
   tag: 'bal-number-input',
@@ -59,14 +60,15 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../ut
   },
 })
 export class NumberInput
-  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
 {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
+  lastValue = ''
   nativeInput?: HTMLInputElement
-  inputValue = this.value
-  initialValue = 0
+  inputValue?: number = this.value
+  initialValue?: number = undefined
 
   @Element() el!: HTMLElement
 
@@ -74,6 +76,20 @@ export class NumberInput
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+  @State() nativeInputValue = ''
+  @State() inputPattern = this.pattern
+
+  log!: LogInstance
+
+  @Logger('bal-number-input')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -145,6 +161,23 @@ export class NumberInput
    */
   @Prop({ mutable: true }) value?: number = undefined
 
+  @Watch('value')
+  protected valueChanged(newValue: number | undefined, oldValue?: number) {
+    if (newValue !== oldValue) {
+      const isValueNotDefined = (newValue as any) === '' || isNil(newValue) || isNaN(newValue)
+      const emptyValue = this.exactNumber ? '0' : ''
+      const value = isValueNotDefined ? emptyValue : newValue.toString()
+
+      this.inputValue = toNumber(toFixedNumber(value, this.decimal), this.decimal)
+      this.lastValue = toFixedNumber(value, this.decimal)
+      if (this.focused) {
+        this.nativeInputValue = mapDecimalSeparator(this.lastValue)
+      } else {
+        this.nativeInputValue = toUserFormattedNumber(this.lastValue, this.decimal, this.suffix)
+      }
+    }
+  }
+
   /**
    * Emitted when a keyboard input occurred.
    */
@@ -170,6 +203,32 @@ export class NumberInput
    */
   @Event() balKeyPress!: EventEmitter<BalEvents.BalNumberInputKeyPressDetail>
 
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    this.debounceChanged()
+    this.initialValue = this.value || 0
+    if (this.value !== undefined) {
+      this.valueChanged(this.value, undefined)
+    }
+  }
+
+  componentDidLoad() {
+    this.inputValue = this.value
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     inputListenOnClick(this, ev)
@@ -185,18 +244,10 @@ export class NumberInput
     }
   }
 
-  connectedCallback() {
-    this.debounceChanged()
-    this.initialValue = this.value || 0
-  }
-
-  componentDidLoad() {
-    this.inputValue = this.value
-  }
-
-  componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * @internal define config for the component
@@ -207,8 +258,14 @@ export class NumberInput
     this.language = state.language
     this.region = state.region
 
-    if (!this.focused && this.nativeInput) {
-      this.nativeInput.value = this.getFormattedValue()
+    this.inputPattern = this.pattern
+
+    if (this.nativeInput) {
+      if (this.focused) {
+        this.nativeInputValue = mapDecimalSeparator(this.lastValue)
+      } else {
+        this.nativeInputValue = toUserFormattedNumber(this.lastValue, this.decimal, this.suffix)
+      }
     }
   }
 
@@ -247,115 +304,113 @@ export class NumberInput
     this.ariaForm = { ...ariaForm }
   }
 
-  private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, ...getDecimalSeparators(), getNegativeSymbol()]
-  }
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
 
-  private getRawValue(): string {
-    return typeof this.value === 'number' && !isNaN(this.value) ? this.value.toString() : (this.value || '').toString()
-  }
-
-  private getFormattedValue(): string {
-    const value = this.getRawValue()
-    const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    return `${formatInputValue(value, this.decimal)}${suffix}`
-  }
-
-  private onInput = (ev: Event) => {
-    const input = getInputTarget(ev)
-    if (input) {
-      const parsedValue = parseFloat(parseFloat(parseFloatString(input.value)).toFixed(this.decimal))
-      if (!isNaN(parsedValue)) {
-        this.inputValue = parsedValue
-      } else {
-        if (!this.decimal && input.value !== getNegativeSymbol() && input.value !== getDecimalSeparator()) {
-          this.inputValue = undefined
-          input.value = ''
-        }
-      }
+  private get pattern() {
+    let suffix = this.suffix || ''
+    if (suffix !== '') {
+      suffix = ` ${suffix}`
     }
 
-    this.balInput.emit(this.inputValue)
-  }
-
-  private onBlur = (ev: FocusEvent) => {
-    inputHandleBlur(this, ev)
-
-    const input = getInputTarget(ev)
-    if (input && (getDecimalSeparators().indexOf(input.value) >= 0 || input.value === getNegativeSymbol())) {
-      this.inputValue = undefined
-      input.value = ''
+    let thousandSeparator = getThousandSeparator()
+    if (thousandSeparator === '’') {
+      thousandSeparator = "'"
     }
 
-    if (this.exactNumber && input && (input.value === undefined || input.value === '' || input.value === null)) {
-      this.inputValue = 0
-      input.value = '0'
+    let decimalSeparator = getDecimalSeparator()
+    if (decimalSeparator === ',') {
+      decimalSeparator = '\\,'
     }
 
-    inputHandleChange(this)
+    return `^-?([1-9]\d{0,2}(?:${thousandSeparator}\d{3})*|\d+)(?:\\${decimalSeparator}\d{${this.decimal}})?$`
   }
 
-  private onKeydown = (ev: KeyboardEvent) => {
-    if (!isNil(ev) && !isCtrlOrCommandKey(ev)) {
-      if (!this.getAllowedKeys().includes(ev.key)) {
-        return stopEventBubbling(ev)
-      }
-
-      const value = getNativeInputValue(this)
-
-      if (getDecimalSeparators().indexOf(ev.key) >= 0) {
-        if (!this.decimal || value.split('').some(el => getDecimalSeparators().includes(el))) {
-          return stopEventBubbling(ev)
-        }
-      }
-
-      if (ev.key === getNegativeSymbol()) {
-        if (value.length !== 0) {
-          return stopEventBubbling(ev)
-        }
-      }
-
-      if ([...NUMBER_KEYS, ...getDecimalSeparators(), getNegativeSymbol()].indexOf(ev.key) >= 0) {
-        const newValue = getUpcomingValue(this, ev)
-        let separator = ''
-
-        value.split('').some(el => {
-          if (getDecimalSeparators().includes(el)) {
-            separator = el
-          }
-        })
-
-        if (separator !== '') {
-          const decimalValue = separator !== '' && newValue.includes(separator) ? newValue?.split(separator)[1] : ''
-          if (decimalValue && decimalValue.length > this.decimal) {
-            return stopEventBubbling(ev)
-          }
-        }
-      }
+  private get lastValueGetter(): string {
+    if (this.exactNumber && (isNil(this.lastValue) || isEmpty(this.lastValue))) {
+      return '0'
     }
+    return this.lastValue
   }
 
-  private onFocus = (ev: FocusEvent) => inputHandleFocus(this, ev)
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
 
   private onClick = (ev: MouseEvent) => inputHandleClick(this, ev)
 
   private handleClick = (ev: MouseEvent) => inputHandleHostClick(this, ev)
 
-  get pattern() {
-    let suffix = this.suffix || ''
-    if (suffix !== '') {
-      suffix = ` ${suffix}`
+  private onInput = (_ev: Event) => {
+    //
+    // if the new value is not a number, the last value will be restored
+    if (this.nativeInput) {
+      if (isNotNumber(this.nativeInput.value)) {
+        this.nativeInputValue = this.lastValue || ''
+        return
+      }
     }
-    return `[${getNegativeSymbol()}0-9${getThousandSeparator()}${
-      this.decimal > 0 ? getDecimalSeparator() : ''
-    }${suffix}]*`
+
+    //
+    // if new value is accepted the last value gets updated and input event will be fired
+    this.lastValue = this.nativeInput?.value || ''
+    this.balInput.emit(toNumber(this.lastValue, this.decimal))
   }
 
-  render() {
-    const value = this.focused ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
-    if (this.nativeInput && this.nativeInput.value) {
-      this.nativeInput.value = value
+  private onFocus = (ev: FocusEvent) => {
+    inputHandleFocus(this, ev)
+
+    //
+    // restore the input with the last user value without the formatting
+    if (this.nativeInput) {
+      this.nativeInputValue = mapDecimalSeparator(this.lastValue || '')
     }
+  }
+
+  private onBlur = (ev: FocusEvent) => {
+    inputHandleBlur(this, ev)
+
+    //
+    // on focus out the input value gets a pretty format
+    if (this.nativeInput) {
+      this.lastValue = toFixedNumber(this.lastValueGetter, this.decimal)
+      this.nativeInputValue = toUserFormattedNumber(this.lastValueGetter, this.decimal, this.suffix)
+    }
+
+    this.inputValue = toNumber(this.lastValueGetter, this.decimal)
+
+    inputHandleChange(this)
+  }
+
+  private onKeydown = (ev: KeyboardEvent) => {
+    const oldValue = getNativeInputValue(this)
+    const newValue = getUpcomingValue(this, ev)
+    const input = ev?.target as HTMLInputElement
+
+    if (
+      input &&
+      !validateKeyDown({
+        key: ev.key,
+        decimal: this.decimal,
+        newValue,
+        oldValue,
+        selectionStart: input.selectionStart,
+        selectionEnd: input.selectionEnd,
+      })
+    ) {
+      return stopEventBubbling(ev)
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
+  render() {
     const block = BEM.block('number-input')
 
     return (
@@ -384,10 +439,10 @@ export class NumberInput
           placeholder={this.placeholder || ''}
           readonly={this.readonly}
           required={this.required}
-          pattern={this.pattern}
+          pattern={this.inputPattern}
           min={this.min}
           max={this.max}
-          value={value}
+          value={this.nativeInputValue}
           onInput={e => this.onInput(e)}
           onFocus={e => this.onFocus(e)}
           onBlur={e => this.onBlur(e)}

@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Input Stepper</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('inputStepper')?.disabled"
-          [invalid]="form.get('inputStepper')?.touched && form.get('inputStepper')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Input Stepper Label</bal-field-label>
           <bal-field-control>
             <bal-input-stepper formControlName="inputStepper"></bal-input-stepper>

@@ -4,7 +4,7 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalStackLayout = 'horizontal' | 'vertical' | ''
+  export type BalStackLayout = 'horizontal' | 'vertical' | 'horizontal-reverse' | 'vertical-reverse' | ''
 
   export type BalStackSpace =
     | 'auto'

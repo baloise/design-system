@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Radio Buttons</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('radioButtons')?.disabled"
-          [invalid]="form.get('radioButtons')?.touched && form.get('radioButtons')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Radio Buttons Label</bal-field-label>
           <bal-field-control>
             <bal-radio-group formControlName="radioButtons" data-test="radioButtons">

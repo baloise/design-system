@@ -87,6 +87,10 @@ export class NavbarBrand {
     this.isMenuActive = isMenuActive
     this.balWillAnimate.emit(this.isMenuActive)
 
+    if (balBrowser.hasWindow && window.scrollY > 0) {
+      window.scrollTo(0, 0)
+    }
+
     if (this.isMenuActive) {
       this.bodyScrollHandler.disable()
     } else {

@@ -20,4 +20,10 @@ namespace BalEvents {
 
   export type BalInputStepperDecreaseDetail = number | undefined
   export type BalInputStepperDecrease = BalInputStepperCustomEvent<BalInputStepperDecreaseDetail>
+
+  export type BalInputStepperBlurDetail = FocusEvent
+  export type BalInputStepperBlur = BalInputStepperCustomEvent<BalInputStepperBlurDetail>
+
+  export type BalInputStepperFocusDetail = FocusEvent
+  export type BalInputStepperFocus = BalInputStepperCustomEvent<BalInputStepperFocusDetail>
 }

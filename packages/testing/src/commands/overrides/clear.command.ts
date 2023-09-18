@@ -9,6 +9,7 @@ import {
   isNumberInput,
   wrapCommand,
   wrapOptions,
+  isInputDate,
 } from '../helpers'
 import { selectors } from '../../selectors'
 
@@ -25,6 +26,10 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
 
   if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isInputDate(element)) {
+    return command(selectors.dateInput.native)
   }
 
   if (isNumberInput(element)) {
