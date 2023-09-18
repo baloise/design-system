@@ -55,6 +55,7 @@ namespace BalProps {
     clickable?: boolean
     data?: any
     onClick?: (ev: MouseEvent) => void
+    onAccordionClick: (ev: MouseEvent) => void
   }
 }
 

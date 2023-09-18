@@ -2,6 +2,9 @@ import { h } from '@stencil/core'
 import { NavLinkItem } from './bal-nav-link-item'
 import { NavMenuLinkItem } from './bal-nav-menu-link-item'
 import { NavLinkItemObserver } from '../bal-nav.types'
+import { AccordionButton } from '../components/accordion-button'
+import { OverviewLink } from '../components/overview-link'
+import { BEM } from '../../../utils/bem'
 
 export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaLinkItem {
   mainLinkItems: NavMenuLinkItem[] = []
@@ -12,6 +15,57 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     this.value = item.value || `nav-meta-link-item-${NavMetaLinkItemIDs++}`
     this.mainLinkItems = (item.mainLinkItems || []).map(item => new NavMenuLinkItem(item, observer))
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
+  }
+
+  override renderTouch(
+    context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>,
+  ) {
+    const block = BEM.block('nav')
+
+    const isSelected = context?.activeMetaLinkValue === this.value
+
+    return (
+      <li>
+        <AccordionButton
+          level="meta"
+          label={this.label}
+          open={isSelected}
+          onClick={ev => this.onAccordionClick(ev)}
+        ></AccordionButton>
+        {isSelected ? <OverviewLink item={this.overviewLink} onClick={ev => this.onClick(ev)}></OverviewLink> : ''}
+        {isSelected ? (
+          <hr
+            class={{
+              ...block.element('line').class(),
+              ...block.element('line').modifier('up').class(),
+            }}
+          />
+        ) : (
+          ''
+        )}
+        {isSelected && this.mainLinkItems && this.mainLinkItems.length > 0 ? (
+          <ul
+            class={{
+              ...block.element('mobile-menu-list').class(),
+            }}
+          >
+            {this.mainLinkItems.map(item =>
+              item.renderTouch({
+                activeMetaLinkValue: context.activeMetaLinkValue,
+                activeMenuLinkValue: context.activeMenuLinkValue,
+              }),
+            )}
+          </ul>
+        ) : (
+          ''
+        )}
+        <hr
+          class={{
+            ...block.element('line').class(),
+          }}
+        />
+      </li>
+    )
   }
 
   override render() {

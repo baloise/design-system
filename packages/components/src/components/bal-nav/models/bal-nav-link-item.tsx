@@ -1,5 +1,6 @@
 import { h } from '@stencil/core'
 import { NavLinkItemObserver } from '../bal-nav.types'
+import { BEM } from '../../../utils/bem'
 
 export class NavLinkItem implements BalProps.BalNavLinkItem {
   label: string
@@ -11,6 +12,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
   href?: string
   target?: BalProps.BalButtonTarget
   onClick: (ev: MouseEvent) => void
+  onAccordionClick: (ev: MouseEvent) => void
 
   constructor(item: BalProps.BalNavLinkItem, private observer: NavLinkItemObserver) {
     this.label = item.label
@@ -25,6 +27,13 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
       this.observer.linkItemClickListener(this)
       if (item.onClick) {
         item.onClick(ev)
+      }
+    }
+
+    this.onAccordionClick = (ev: MouseEvent) => {
+      this.observer.accordionClickListener(this)
+      if (item.onAccordionClick) {
+        item.onAccordionClick(ev)
       }
     }
   }
@@ -45,6 +54,27 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
       target: this.target,
       data: this.data,
     }
+  }
+
+  renderTouch(_context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>) {
+    const block = BEM.block('nav')
+
+    return (
+      <li>
+        <a
+          class={{
+            ...block.element('mobile-links').class(),
+            ...block.element('mobile-links').modifier('selected').class(this.active),
+            ...block.element('mobile-links').modifier('clickable').class(this.clickable),
+          }}
+          href={this.href}
+          target={this.target}
+          onClick={ev => this.onClick(ev)}
+        >
+          {this.label}
+        </a>
+      </li>
+    )
   }
 
   render(_context?: { onClick: () => void }) {

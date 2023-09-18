@@ -63,7 +63,7 @@ export class NavMetaBar
   @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
   @State() activeMetaLinkValue?: string
-  @State() activeMenuLinkValue?: string
+  @State() activeMenuLinkValue?: string // only for desktop tab view
 
   @Logger('bal-nav')
   createLogger(log: LogInstance) {
@@ -185,11 +185,21 @@ export class NavMetaBar
       this.closeAllPopups()
       this.isFlyoutActive = false
     }
+
+    if (this.isTouch) {
+      this.updateTabs()
+    }
   }
 
   linkItemClickListener(item?: NavLinkItem) {
     if (item && item.toJson) {
       this.balNavItemClick.emit(item.toJson())
+    }
+  }
+
+  accordionClickListener(item?: NavLinkItem) {
+    if (this.isTouch && item) {
+      this.updateActiveItem(item)
     }
   }
 
@@ -225,6 +235,16 @@ export class NavMetaBar
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private updateActiveItem(item: NavLinkItem) {
+    if ('NavMetaLinkItem' === item.type) {
+      this.activeMetaLinkValue = this.activeMetaLinkValue === item.value ? undefined : item.value
+      this.activeMenuLinkValue = undefined
+    }
+    if ('NavMenuLinkItem' === item.type) {
+      this.activeMenuLinkValue = this.activeMenuLinkValue === item.value ? undefined : item.value
+    }
+  }
 
   private updateTabs() {
     const previousActiveMetaLinkValue = this.activeMetaLinkValue
@@ -437,102 +457,18 @@ export class NavMetaBar
         {this.isTouch ? (
           <div class={{ ...flyoutBlock.class(), ...flyoutBlock.modifier('visible').class(this.isFlyoutActive) }}>
             <nav class="container">
-              <ul>
-                {this.linkItems.map(metaItem => {
-                  return (
-                    <li>
-                      <a href={metaItem.href} target={metaItem.target}>
-                        {metaItem.label}
-                      </a>
-                      <ul style={{ margin: '1rem' }}>
-                        {metaItem.mainLinkItems.map(menuItem => {
-                          return (
-                            <li>
-                              <a href={menuItem.href} target={menuItem.target}>
-                                {menuItem.label}
-                              </a>
-                              <ul style={{ margin: '1rem' }}>
-                                {menuItem.sectionLinkItems?.map(itemGroup => {
-                                  return (
-                                    <li>
-                                      <a href={itemGroup.href} target={itemGroup.target}>
-                                        {itemGroup.label}
-                                      </a>
-                                      <ul style={{ margin: '1rem' }}>
-                                        {itemGroup.linkItems?.map(item => {
-                                          return (
-                                            <li>
-                                              <a href={item.href} target={item.target}>
-                                                {item.label}
-                                              </a>
-                                            </li>
-                                          )
-                                        })}
-                                      </ul>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                              <ul style={{ margin: '1rem' }}>
-                                {menuItem.serviceLinkItems?.map(serviceGroup => {
-                                  return (
-                                    <li>
-                                      <a href={serviceGroup.href} target={serviceGroup.target}>
-                                        {serviceGroup.label}
-                                      </a>
-                                      <ul style={{ margin: '1rem' }}>
-                                        {serviceGroup.linkItems?.map(item => {
-                                          return (
-                                            <li>
-                                              <a href={item.href} target={item.target}>
-                                                {item.label}
-                                              </a>
-                                            </li>
-                                          )
-                                        })}
-                                      </ul>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    </li>
-                  )
-                })}
+              <ul
+                class={{
+                  ...block.element('mobile-meta-list').class(),
+                }}
+              >
+                {this.linkItems.map(item =>
+                  item.renderTouch({
+                    activeMetaLinkValue: this.activeMetaLinkValue,
+                    activeMenuLinkValue: this.activeMenuLinkValue,
+                  }),
+                )}
               </ul>
-              {/* {this.linkItems.length > 1 ? (
-                <bal-list border accordion-one-level size="large">
-                  {this.linkItems.map(metaItem => (
-                    <bal-list-item accordion>
-                      <bal-list-item-accordion-head icon="nav-go-down" accordion-open={metaItem.active}>
-                        <bal-list-item-content>
-                          <bal-list-item-title visual-level="large" level="span">
-                            {metaItem.label}
-                          </bal-list-item-title>
-                        </bal-list-item-content>
-                      </bal-list-item-accordion-head>
-                      <bal-list-item-accordion-body>
-                        <bal-nav-link
-                          role="listitem"
-                          variant="overview"
-                          href={metaItem.overviewLink?.href}
-                          target={metaItem.overviewLink?.target}
-                          onClick={() => this.linkItemClickListener(metaItem.overviewLink)}
-                        >
-                          {metaItem.overviewLink?.label}
-                        </bal-nav-link>
-                        <bal-divider space="large" color="grey-light"></bal-divider>
-                        {this.renderTouchMenuAccordions(metaItem)}
-                      </bal-list-item-accordion-body>
-                    </bal-list-item>
-                  ))}
-                </bal-list>
-              ) : (
-                this.renderTouchMenuAccordions(this.linkItems[0])
-              )} */}
             </nav>
           </div>
         ) : (
