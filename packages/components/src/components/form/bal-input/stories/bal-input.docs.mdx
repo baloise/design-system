@@ -1,5 +1,4 @@
 import { Canvas, Description, Story } from '@storybook/addon-docs'
-import readme from '../readme.md'
 import IconDocument from '../../../../../../icons/svg/document.svg'
 import IconAccount from '../../../../../../icons/svg/account.svg'
 import testing from './testing.md'
@@ -104,9 +103,26 @@ Suggestion how to make phone number input field until new phone input component 
   <Story id="components-form-input--native-input" />
 </Canvas>
 
+<span id="story--components-form-input--input-date" style={{ opacity: 0 }}></span>
+
+### Input Date
+
+This is a dedicated component for date inputs. It employs a mask to ensure the entry of dates in the correct format (dd.mm.yyyy).
+The format adapts automatically based on the locale of the Design System. Separation characters, such as the dot (.),
+facilitate seamless navigation between individual blocks of the date. Additionally, the entered date is automatically
+formatted upon leaving the input field.
+
+<Canvas>
+  <Story id="components-form-input--input-date" />
+</Canvas>
+
 ## Component Api
 
+import readme from '../readme.md'
+import readmeDate from '../bal-input-date/readme.md'
+
 <Description markdown={readme} />
+<Description markdown={readmeDate} />
 
 <br />
 

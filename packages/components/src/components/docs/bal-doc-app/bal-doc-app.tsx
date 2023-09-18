@@ -16,6 +16,8 @@ export class DocApp implements ComponentInterface {
   @Prop() logRender = true
   @Prop() logCustom = true
   @Prop() stickyFooter = false
+  @Prop() region?: string // = 'CH'
+  @Prop() language?: string // = 'de'
 
   /**
    * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
@@ -40,6 +42,12 @@ export class DocApp implements ComponentInterface {
     }
     if (balBrowser.hasWindow) {
       ;(window as any).BaloiseDesignSystem.config.logger = logConfig
+      if (this.region) {
+        ;(window as any).BaloiseDesignSystem.config.region = this.region
+      }
+      if (this.language) {
+        ;(window as any).BaloiseDesignSystem.config.language = this.language
+      }
     }
   }
 

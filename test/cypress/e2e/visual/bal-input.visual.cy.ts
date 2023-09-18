@@ -32,4 +32,9 @@ describe('bal-input', () => {
     cy.platform('mobile')
     cy.getByTestId('field').compareSnapshot('input-field-mobile')
   })
+
+  it('input-date', () => {
+    cy.platform('desktop')
+    cy.getByTestId('input-date').compareSnapshot('input-date', 0.0)
+  })
 })

@@ -1,5 +1,13 @@
 # @baloise/design-system-output-target-angular
 
+## 13.7.1
+
+## 13.7.0
+
+### Minor Changes
+
+- [#1024](https://github.com/baloise/design-system/pull/1024) - In Angular, component events can be accessed through an RxJS stream.
+
 ## 13.6.2
 
 ## 13.6.1

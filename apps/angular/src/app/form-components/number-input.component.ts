@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Number Input</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('numberInput')?.disabled"
-          [invalid]="form.get('numberInput')?.touched && form.get('numberInput')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Number Input Label</bal-field-label>
           <bal-field-control>
             <bal-number-input

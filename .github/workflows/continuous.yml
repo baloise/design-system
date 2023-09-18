@@ -17,6 +17,7 @@ jobs:
   build:
     name: 👷 Build Design System
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       HUSKY: 0
     steps:
@@ -29,6 +30,7 @@ jobs:
   docs:
     name: 📝 Build Documentation
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       HUSKY: 0
     steps:
@@ -41,6 +43,7 @@ jobs:
   format:
     name: 🚨 Verify Code Format
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       HUSKY: 0
     steps:
@@ -53,6 +56,7 @@ jobs:
   spell:
     name: 🚨 Spell Checking
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       HUSKY: 0
     steps:
@@ -65,6 +69,7 @@ jobs:
   lint:
     name: 🚨 Analyze Code
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -80,6 +85,7 @@ jobs:
   test:
     name: 🧪 Unit Tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -95,6 +101,7 @@ jobs:
   test-components:
     name: 🧪 Component Tests
     runs-on: ubuntu-22.04
+    timeout-minutes: 30
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -112,6 +119,7 @@ jobs:
   test-angular:
     name: 🧪 Angular Tests
     runs-on: ubuntu-22.04
+    timeout-minutes: 30
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -129,6 +137,7 @@ jobs:
   test-e2e:
     name: 🧪 E2E Tests
     runs-on: ubuntu-22.04
+    timeout-minutes: 30
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}

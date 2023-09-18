@@ -1,5 +1,17 @@
-import { Component, Host, HostBinding, Input, OnChanges, Optional, SkipSelf } from '@angular/core'
+import {
+  Component,
+  Host,
+  HostBinding,
+  Inject,
+  Injector,
+  Input,
+  OnChanges,
+  OnInit,
+  Optional,
+  SkipSelf,
+} from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
+import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
 
 @Component({
   selector: 'bal-ng-error',
@@ -12,8 +24,9 @@ import { AbstractControl, ControlContainer } from '@angular/forms'
     `,
   ],
 })
-export class BalNgErrorComponent implements OnChanges {
+export class BalNgErrorComponent implements OnChanges, OnInit {
   control?: AbstractControl | null
+  config!: BaloiseDesignSystemAngularConfig
 
   @Input() error?: string
 
@@ -26,7 +39,12 @@ export class BalNgErrorComponent implements OnChanges {
     @Host()
     @SkipSelf()
     private controlContainer: ControlContainer,
+    @Inject(Injector) private injector: Injector,
   ) {}
+
+  ngOnInit(): void {
+    this.config = this.injector.get(BalConfigToken) as BaloiseDesignSystemAngularConfig
+  }
 
   get hasError(): boolean {
     if (
@@ -37,7 +55,8 @@ export class BalNgErrorComponent implements OnChanges {
     ) {
       return false
     } else {
-      if (!this.control.touched) {
+      const invalidateOn = this.config?.forms?.invalidateOn || 'touched'
+      if (!this.control[invalidateOn]) {
         return false
       }
 

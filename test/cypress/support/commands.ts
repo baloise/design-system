@@ -78,8 +78,7 @@ declare global {
 }
 
 Cypress.Commands.add('pageA11y', (url: string) => {
-  cy.visit(url)
-  cy.waitForDesignSystem()
+  cy.visit(url).platform('desktop').waitForDesignSystem()
   cy.injectAxe()
 })
 

@@ -13,7 +13,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, isDescendant } from '../../../utils/helpers'
+import { debounce, deepReady, isDescendant, rIC } from '../../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -763,6 +763,8 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       if (this.multiple && this.typeahead) {
         this.setFocus()
       }
+
+      this.fireBlur()
     }
   }
 
@@ -819,6 +821,12 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
+  private fireBlur = (ev: Event = new CustomEvent('blur')) => {
+    if (!this.isPopoverOpen && !this.hasFocus) {
+      rIC(() => this.balBlur.emit(ev as any))
+    }
+  }
+
   private handleClick = (ev: MouseEvent) => {
     if (this.disabled || this.readonly) {
       preventDefault(ev)
@@ -836,7 +844,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
         if (this.multiple && this.typeahead) {
           this.updateInputValue('')
         }
-        this.balBlur.emit()
+        this.fireBlur(ev)
       }
     }
   }
@@ -853,6 +861,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       this.validateAfterBlur(isHuman)
     }
     this.hasFocus = false
+    this.fireBlur(ev)
   }
 
   private handleInputFocus = (ev: FocusEvent) => {

@@ -1,5 +1,53 @@
 # @baloise/design-system-components
 
+## 13.7.1
+
+### Patch Changes
+
+- [#1037](https://github.com/baloise/design-system/pull/1037) - fix types errors
+
+- Updated dependencies []:
+  - @baloise/design-system-css@13.7.1
+  - @baloise/design-system-fonts@13.7.1
+  - @baloise/design-system-icons@13.7.1
+  - @baloise/design-system-tokens@13.7.1
+
+## 13.7.0
+
+### Minor Changes
+
+- [#877](https://github.com/baloise/design-system/pull/877) - Enhance the newly refactored `bal-date` components. `bal-datepicker` is marked as deprecated.
+
+- [#999](https://github.com/baloise/design-system/pull/999) - Implement the tooltip component.
+
+- [#1033](https://github.com/baloise/design-system/pull/1033) - Implement a reverse layout option for the stack component.
+
+### Patch Changes
+
+- [#1008](https://github.com/baloise/design-system/pull/1008) - Hide the tab line when no active tab is present.
+
+- [#1007](https://github.com/baloise/design-system/pull/1007) - Relocate sticky footer styles to the core CSS file and update 'bal-app' for Vue applications.
+
+- [#1001](https://github.com/baloise/design-system/pull/1001) - Include accessibility (a11y) labels for both the accordion and pagination components.
+
+- [#1033](https://github.com/baloise/design-system/pull/1033) - The datepicker, select, and number-input components trigger a blur event when they lose focus or when any associated pop-up or dropdown is closed. Additionally, the blur event occurs after the value change.
+
+- [#1025](https://github.com/baloise/design-system/pull/1025) - Implement a 'scroll to top' feature upon toggling the mobile navbar to prevent any space between the navbar brand and the menu.
+
+- [#1033](https://github.com/baloise/design-system/pull/1033) - Addressed event propagation issues and refined the event sequence for the number-input component.
+
+- [#1014](https://github.com/baloise/design-system/pull/1014) - Verify if a checkbox is selected within a group.
+
+- [#881](https://github.com/baloise/design-system/pull/881) - Ensure that `aria-labelledby` is correctly linked to the appropriate label, and that the `for` attribute corresponds to the correct input.
+
+- [#1027](https://github.com/baloise/design-system/pull/1027) - Resolve pattern issue with the number-input component.
+
+- Updated dependencies [[`bfd7493b2`](https://github.com/baloise/design-system/commit/bfd7493b2263cd62929f6e5f1421e914cbe6efbd)]:
+  - @baloise/design-system-css@13.7.0
+  - @baloise/design-system-fonts@13.7.0
+  - @baloise/design-system-icons@13.7.0
+  - @baloise/design-system-tokens@13.7.0
+
 ## 13.6.2
 
 ### Patch Changes
