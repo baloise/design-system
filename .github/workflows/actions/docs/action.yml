@@ -24,6 +24,7 @@ runs:
     #     echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
     - name: Set output
+      id: output-sha-short
       shell: bash
       run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
@@ -44,7 +45,7 @@ runs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: baloise/design-system-docs:${{ steps.vars.outputs.sha_short }},baloise/design-system-docs:latest
+        tags: baloise/design-system-docs:${{ steps.output-sha-short.outputs.sha_short }},baloise/design-system-docs:latest
 
     # - name: Deploy
     #   uses: addnab/docker-run-action@v3
