@@ -192,7 +192,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   }
 
   render() {
-    const mobileItems = this.getItems()
+    const mobileItems = this.getItems(1)
     const tabletItems = this.getItems(this.pageRange)
 
     const block = BEM.block('pagination')
