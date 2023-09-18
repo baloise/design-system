@@ -11,6 +11,7 @@ runs:
     #     echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
     - name: Set output
+      shell: bash
       run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
     - name: Set up QEMU
