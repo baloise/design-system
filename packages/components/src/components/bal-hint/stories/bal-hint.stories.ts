@@ -85,8 +85,9 @@ export const FieldHint = args => ({
     }
   },
   template: `<bal-field expanded class="mt-x-large">
-  <bal-field-label>Firstname</bal-field-label>
+  <bal-field-label>Firstname FirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstnameFirstname
   <bal-field-hint v-bind="args" subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+  </bal-field-label>
   <bal-field-control>
     <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
   </bal-field-control>

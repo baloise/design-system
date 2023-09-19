@@ -54,8 +54,9 @@ export const FormStructure = args => ({
 
         <bal-form-col size="half">
           <bal-field :invalid="invalid" :disabled="disabled" required>
-            <bal-field-label>Input</bal-field-label>
+            <bal-field-label>Input
             <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+            </bal-field-label>
             <bal-field-control>
               <bal-input placeholder="Placeholder"></bal-input>
             </bal-field-control>

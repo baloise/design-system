@@ -239,6 +239,7 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
         class={{
           ...block.class(),
         }}
+        aria-hidden={true}
       >
         <HintElement></HintElement>
 
