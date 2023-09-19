@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BalPopup, BalButton } from '../../.storybook/vue/generated/components'
+import { BalPopup, BalButton } from '../support/utils'
 
 defineProps({
   active: Boolean,

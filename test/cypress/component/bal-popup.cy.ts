@@ -1,4 +1,4 @@
-import { selectors } from '../support/generated'
+import { selectors } from '../support/utils'
 import BalPopupTest from './bal-popup.vue'
 
 describe('bal-popup', () => {

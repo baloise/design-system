@@ -87,26 +87,32 @@ Cypress.Commands.add(
       return subject ? cy.wrap(subject, o).find(`${role}, [role="${role}"]`, o) : cy.get(`${role}, [role="${role}"]`, o)
     }
 
-    function filterVisibleElements(elements: Cypress.Chainable<JQuery<HTMLElement>>) {
-      return elements.filter((_index, element) => {
+    function filterVisibleElements(elements: HTMLElement[]) {
+      return elements.filter(element => {
         const isElementAriaHidden = options.hidden === true ? false : !!Cypress.$(element).attr('aria-hidden')
         return !isElementAriaHidden
-      }, o)
+      })
     }
 
-    function filterLabeling(elements: Cypress.Chainable<JQuery<HTMLElement>>) {
-      return elements.filter((_index, element) => checkAriaLabel(element, options.name), o)
+    function filterLabeling(elements: HTMLElement[]) {
+      return elements.filter(element => checkAriaLabel(element, options.name))
     }
 
-    const elements = findElements()
-    const visibleElements = filterVisibleElements(elements)
-    const labeledElements = filterLabeling(visibleElements)
-    const firstElement = labeledElements.first(o).waitForComponents(o)
+    return findElements().then($buttons => {
+      const buttons = $buttons.toArray()
+      const visibleElements = filterVisibleElements(buttons)
+      const labeledElements = filterLabeling(visibleElements)
 
-    firstElement.then(o, $el =>
-      log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
-    )
-    return firstElement
+      if (labeledElements.length > 0) {
+        const firstElement = cy.wrap(labeledElements[0]).waitForComponents()
+        firstElement.then(o, $el =>
+          log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
+        )
+        return firstElement
+      }
+
+      return subject
+    })
   },
 )
 
