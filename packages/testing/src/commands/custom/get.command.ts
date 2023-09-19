@@ -78,7 +78,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'getByRole',
   {
-    prevSubject: 'optional',
+    prevSubject: ['optional'],
   },
   (subject, role, options) => {
     const o = wrapOptions(options)
@@ -108,7 +108,7 @@ Cypress.Commands.add(
         firstElement.then(o, $el =>
           log(!!subject ? '-getByRole' : 'getByRole', `${role} ${JSON.stringify(options)}`, $el, options),
         )
-        return firstElement
+        return firstElement as any
       }
 
       return subject
