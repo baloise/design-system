@@ -199,7 +199,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 ## 10.24.5 (2022-10-05)
 
 
-
 ## [11.0.18](https://github.com/baloise/design-system/compare/v11.0.17...v11.0.18) (2022-12-05)
 
 
