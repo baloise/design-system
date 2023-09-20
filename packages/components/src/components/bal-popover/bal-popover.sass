@@ -95,8 +95,8 @@
       &,
       &:before
         position: absolute
-        width: 8px
-        height: 8px
+        width: 0.5rem
+        height: 0.5rem
         background: inherit
       &:before
         visibility: visible
@@ -104,16 +104,16 @@
         transform: rotate(45deg)
 
     &[data-popper-placement^='top'] > .bal-popover__content__arrow
-      bottom: -4px
+      bottom: -0.25rem
 
     &[data-popper-placement^='bottom'] > .bal-popover__content__arrow
-      top: -4px
+      top: -0.25rem
 
     &[data-popper-placement^='left'] > .bal-popover__content__arrow
-      right: -4px
+      right: -0.25rem
 
     &[data-popper-placement^='right'] > .bal-popover__content__arrow
-      left: -4px
+      left: -0.25rem
 
 +block(popover)
   +modifier(arrow)

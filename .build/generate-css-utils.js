@@ -19,6 +19,7 @@ async function main() {
   generateRadius()
   generateShadow()
   generateTypography()
+  generateCompactOverride()
 }
 
 async function generateBackgroundColors() {
@@ -201,6 +202,20 @@ ${indent}    margin-bottom: var(--bal-space-${space})`
 
   await file.write(path.join(SASS_PATH, 'typography.helpers.sass'), [...lines, ''].join('\n'))
   await file.write(path.join(SASS_PATH, 'typography.legacy.helpers.sass'), [...legacyLines, ''].join('\n'))
+}
+
+async function generateCompactOverride(){
+  const sizes = BaloiseDesignToken.typography.sizes
+  const spacing = BaloiseDesignToken.spacing
+  const lines = []
+
+  lines.push(':root')
+  for (const k in spacing) {
+    lines.push(`  --bal-space-tablet-${k}: var(--bal-space-${k})`)
+    lines.push(`  --bal-space-desktop-${k}: var(--bal-space-${k})`)
+  }
+
+  await file.write(path.join(SASS_PATH, 'compact.override.sass'), [...lines, ''].join('\n'))
 }
 
 function parseKey(key) {

@@ -9,11 +9,11 @@
     &:not(.bal-navbar--is-light)
       background: var(--bal-navbar-background)
   +modifiers(context-app, context-simple)
-    height: 64px
-    max-height: 64px
+    height: var(--bal-navbar-height)
+    max-height: var(--bal-navbar-height)
     +desktop
-      height: 80px
-      max-height: 80px
+      height: var(--bal-navbar-height-desktop)
+      max-height: var(--bal-navbar-height-desktop)
   +element(nav)
     display: flex
     height: 100%
@@ -33,10 +33,10 @@
       height: 100%
 
     +element(logo)
-      height: calc(100% - 16px)
+      height: calc(100% - 1rem)
       object-fit: contain
       +desktop
-        height: calc(100% - 32px)
+        height: calc(100% - 2rem)
 
     +element(title)
       display: none
@@ -45,12 +45,12 @@
         display: none
       +tablet
         display: inline-block
-        font-size: var(--bal-size-medium)
+        font-size: var(--bal-navbar-brand-title-font-size)
         font-family: var(--bal-font-family-title)
         font-weight: var(--bal-weight-bold)
         color: var(--bal-navbar-brand-title-text-color)
       +desktop
-        font-size: var(--bal-size-medium)
+        font-size: var(--bal-navbar-brand-title-font-size)
 
     +modifiers(context-app, context-simple)
       color: var(--bal-navbar-brand-text-color)
@@ -74,7 +74,7 @@
         padding-bottom: 1rem
         overflow-y: auto
         flex-direction: column-reverse
-        top: 64px
+        top: 4rem
         left: 0
         bottom: 0
         right: 0
