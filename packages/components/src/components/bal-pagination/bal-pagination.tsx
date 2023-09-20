@@ -32,6 +32,16 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @State() language: BalLanguage = defaultConfig.language
 
   /**
+   * Align the buttons to start, center or end
+   */
+  @Prop() align: BalProps.BalPaginationAlignment = ''
+
+  /**
+   * Size of the buttons
+   */
+  @Prop() size: BalProps.BalPaginationSize = ''
+
+  /**
    * Defines the layout of the pagination
    */
   @Prop() interface: BalProps.BalPaginationInterface = ''
@@ -183,7 +193,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
           color={isActive ? 'primary' : 'text'}
           onClick={() => this.selectPage(pageNumber)}
           data-testid="bal-pagination-page-number"
-          size={this.isMobile ? 'small' : ''}
+          size={this.isMobile || this.size === 'small' ? 'small' : ''}
         >
           {pageNumber}
         </bal-button>
@@ -202,7 +212,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
     const buttonColor = isSmall ? 'link' : 'text'
-    const buttonSize = isSmall || this.isMobile ? 'small' : ''
+    const buttonSize = isSmall || this.size === 'small' || this.isMobile ? 'small' : ''
     const flat = isSmall
 
     const leftControlTitle = i18nControlLabel[this.language].left
@@ -260,7 +270,8 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
         <nav
           class={{
             ...elNav.class(),
-            ...elNav.modifier(`context-${this.interface}`).class(),
+            ...elNav.modifier(`context-${this.interface}`).class(this.interface !== ''),
+            ...elNav.modifier(`align-${this.align}`).class(this.align !== ''),
           }}
           role="navigation"
           aria-label="pagination"

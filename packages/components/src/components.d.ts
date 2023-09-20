@@ -2237,6 +2237,10 @@ export namespace Components {
         "value"?: number;
     }
     interface BalPagination {
+        /**
+          * Align the buttons to start, center or end
+         */
+        "align": BalProps.BalPaginationAlignment;
         "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Disables component
@@ -2258,6 +2262,10 @@ export namespace Components {
           * Go to the previous page
          */
         "previous": () => Promise<void>;
+        /**
+          * Size of the buttons
+         */
+        "size": BalProps.BalPaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
          */
@@ -6812,6 +6820,10 @@ declare namespace LocalJSX {
     }
     interface BalPagination {
         /**
+          * Align the buttons to start, center or end
+         */
+        "align"?: BalProps.BalPaginationAlignment;
+        /**
           * Disables component
          */
         "disabled"?: boolean;
@@ -6827,6 +6839,10 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
          */
         "pageRange"?: number;
+        /**
+          * Size of the buttons
+         */
+        "size"?: BalProps.BalPaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
          */

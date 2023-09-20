@@ -4,7 +4,9 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
+  export type BalPaginationSize = '' | 'small'
   export type BalPaginationInterface = '' | 'small'
+  export type BalPaginationAlignment = '' | 'end' | 'start'
 }
 
 namespace BalEvents {
