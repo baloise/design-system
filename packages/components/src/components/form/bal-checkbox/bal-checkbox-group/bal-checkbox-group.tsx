@@ -22,11 +22,14 @@ import isFunction from 'lodash.isfunction'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
+import { BalFocusObserver, ListenToFocus } from '../../../../utils/focus'
 
 @Component({
   tag: 'bal-checkbox-group',
 })
-export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking {
+export class CheckboxGroup
+  implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
+{
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -210,6 +213,18 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
    * ------------------------------------------------------
    */
 
+  hasFocus = false
+
+  @ListenToFocus()
+  focusInListener(ev: FocusEvent): void {
+    this.balFocus.emit(ev)
+  }
+
+  @ListenToFocus()
+  focusOutListener(ev: FocusEvent): void {
+    this.balBlur.emit(ev)
+  }
+
   mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-checkbox-group', 'bal-checkbox'], attributes: false, characterData: false })
@@ -249,7 +264,6 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
       stopEventBubbling(ev)
-      this.balFocus.emit(ev.detail)
     }
   }
 
@@ -258,7 +272,6 @@ export class CheckboxGroup implements ComponentInterface, Loggable, BalMutationO
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
       stopEventBubbling(ev)
-      this.balBlur.emit(ev.detail)
     }
   }
 

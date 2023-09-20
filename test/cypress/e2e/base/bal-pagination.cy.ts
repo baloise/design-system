@@ -5,7 +5,7 @@ describe('bal-pagination', () => {
   })
 
   it('should verify the page setup', () => {
-    cy.getByTestId('pagination').balPaginationFindPages().should('have.length', '8')
+    cy.getByTestId('pagination').balPaginationFindPages().should('have.length', '10')
     cy.getByTestId('pagination').balPaginationFindPages().first().contains('1')
     cy.getByTestId('pagination').balPaginationFindPages().last().contains('20')
     cy.getByTestId('pagination').balPaginationFindCurrentPage().contains('2')
@@ -21,7 +21,7 @@ describe('bal-pagination', () => {
   it('should go to the last page and verify the page buttons', () => {
     cy.getByTestId('pagination').balPaginationFindPages().last().click()
     cy.getByTestId('pagination').balPaginationFindPages().first().contains('1')
-    cy.getByTestId('pagination').balPaginationFindPages().eq(1).contains('14')
+    cy.getByTestId('pagination').balPaginationFindPages().eq(1).contains('12')
     cy.getByTestId('pagination').balPaginationFindPages().last().contains('20')
   })
 })
