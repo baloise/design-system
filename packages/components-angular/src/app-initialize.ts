@@ -6,6 +6,10 @@ import { raf } from './util/util'
 export interface BaloiseDesignSystemAngularConfig {
   applyPolyfills?: boolean
   defaults?: BalConfig
+  forms?: {
+    setInvalid?: boolean
+    invalidateOn?: 'touched' | 'dirty'
+  }
 }
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {

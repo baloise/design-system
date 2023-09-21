@@ -11,7 +11,7 @@ export class BalSwipeListener<TObserver> extends ListenerAbstract<TObserver, Bal
     super.connect(el)
     await this.loadLib()
     if (this.PointerListenerLib) {
-      this.pointerListener = new this.PointerListenerLib(el, {})
+      this.pointerListener = new this.PointerListenerLib(el, { DEBUG: true })
       this.pointerListener.on('swipeleft', () => this.notify({ left: true, right: false }))
       this.pointerListener.on('swiperight', () => this.notify({ left: false, right: true }))
     }

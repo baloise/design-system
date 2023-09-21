@@ -75,3 +75,8 @@ jobs:
 
       - uses: ./.github/workflows/actions/docs
         if: steps.changesets.outputs.published == 'true'
+        with:
+          docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          docker_password: ${{ secrets.DOCKERHUB_TOKEN }}
+          incubator_github_user: ${{ secrets.INCUBATOR_GITHUB_USER }}
+          incubator_github_token: ${{ secrets.INCUBATOR_GITHUB_TOKEN }}

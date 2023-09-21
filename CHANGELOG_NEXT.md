@@ -141,7 +141,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.24.0](https://github.com/baloise/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)
 
-
 ### Features
 
 * **list:** synchronices the accrodion bodies is set ([f6bd2e5](https://github.com/baloise/design-system/commit/f6bd2e57cba71983bf97abd11d3541db75c6ea39))

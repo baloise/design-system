@@ -23,11 +23,14 @@ import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutatio
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
 import { ListenToResize } from '../../../../utils/resize'
 import { balBreakpoints } from '../../../../utils/breakpoints'
+import { BalFocusObserver, ListenToFocus } from '../../../../utils/focus'
 
 @Component({
   tag: 'bal-radio-group',
 })
-export class RadioGroup implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking {
+export class RadioGroup
+  implements ComponentInterface, Loggable, BalMutationObserver, BalAriaFormLinking, BalFocusObserver
+{
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
@@ -228,6 +231,18 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
    * ------------------------------------------------------
    */
 
+  hasFocus = false
+
+  @ListenToFocus()
+  focusInListener(ev: FocusEvent): void {
+    this.balFocus.emit(ev)
+  }
+
+  @ListenToFocus()
+  focusOutListener(ev: FocusEvent): void {
+    this.balBlur.emit(ev)
+  }
+
   mutationObserverActive = true
 
   @ListenToMutation({ tags: ['bal-radio-group', 'bal-radio'], attributes: false, characterData: false })
@@ -254,7 +269,6 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
       stopEventBubbling(ev)
-      this.balFocus.emit(ev.detail)
     }
   }
 
@@ -263,7 +277,6 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
       stopEventBubbling(ev)
-      this.balBlur.emit(ev.detail)
     }
   }
 

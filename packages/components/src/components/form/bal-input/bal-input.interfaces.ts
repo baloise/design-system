@@ -108,4 +108,24 @@ namespace BalEvents {
 
   export type BalInputFocusDetail = FocusEvent
   export type BalInputFocus = BalInputCustomEvent<BalInputFocusDetail>
+
+  export interface BalInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T
+    target: HTMLBalInputDateElement
+  }
+
+  export type BalInputDateInputDetail = string | undefined
+  export type BalInputDateInput = BalInputDateCustomEvent<BalInputDateInputDetail>
+
+  export type BalInputDateChangeDetail = string | undefined
+  export type BalInputDateChange = BalInputDateCustomEvent<BalInputDateChangeDetail>
+
+  export type BalInputDateBlurDetail = FocusEvent
+  export type BalInputDateBlur = BalInputDateCustomEvent<BalInputDateBlurDetail>
+
+  export type BalInputDateKeyPressDetail = KeyboardEvent
+  export type BalInputDateKeyPress = BalInputDateCustomEvent<BalInputDateKeyPressDetail>
+
+  export type BalInputDateFocusDetail = FocusEvent
+  export type BalInputDateFocus = BalInputDateCustomEvent<BalInputDateFocusDetail>
 }

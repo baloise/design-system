@@ -191,6 +191,12 @@ export const selectors = {
      */
     native: byTestId('bal-input'),
   },
+  dateInput: {
+    /**
+     * Native input element.
+     */
+    native: byTestId('bal-date-input'),
+  },
   numberInput: {
     /**
      * Native input element.

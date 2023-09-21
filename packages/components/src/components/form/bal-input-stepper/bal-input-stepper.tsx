@@ -14,9 +14,9 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent } from '../../../utils/helpers'
+import { debounceEvent, rIC } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
-import { FormInput, inputListenOnClick } from '../../../utils/form-input'
+import { FormInput, inputListenOnClick, stopEventBubbling } from '../../../utils/form-input'
 import {
   ListenToConfig,
   BalConfigObserver,
@@ -28,6 +28,7 @@ import {
 import { BEM } from '../../../utils/bem'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { i18nBalInputStepper } from './bal-input-stepper.i18n'
+import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -36,10 +37,13 @@ import { i18nBalInputStepper } from './bal-input-stepper.i18n'
   },
 })
 export class InputStepper
-  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking
+  implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
 {
   private inputId = `bal-input-stepper-${InputStepperIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+
+  private decreaseHasFocus = false
+  private increaseHasFocus = false
 
   nativeInput?: HTMLInputElement
 
@@ -49,6 +53,13 @@ export class InputStepper
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
+
+  log!: LogInstance
+
+  @Logger('bal-input-stepper')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -120,6 +131,16 @@ export class InputStepper
    * Emitted when the input value has decreased.
    */
   @Event() balDecrease!: EventEmitter<BalEvents.BalInputStepperDecreaseDetail>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputStepperFocusDetail>
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputStepperBlurDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -193,6 +214,41 @@ export class InputStepper
     }
   }
 
+  private onFocusDecrease = (ev: CustomEvent) => {
+    this.decreaseHasFocus = true
+    this.onFocus(ev)
+  }
+
+  private onFocusIncrease = (ev: CustomEvent) => {
+    this.increaseHasFocus = true
+    this.onFocus(ev)
+  }
+
+  private onFocus = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.balFocus.emit(ev.detail)
+  }
+
+  private onBlurDecrease = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.decreaseHasFocus = false
+
+    rIC(() => this.onBlur(ev.detail))
+  }
+
+  private onBlurIncrease = (ev: CustomEvent) => {
+    stopEventBubbling(ev)
+    this.increaseHasFocus = false
+
+    rIC(() => this.onBlur(ev.detail))
+  }
+
+  private onBlur = (ev: FocusEvent) => {
+    if (!(this.decreaseHasFocus || this.increaseHasFocus)) {
+      this.balBlur.emit(ev)
+    }
+  }
+
   render() {
     const block = BEM.block('input-stepper')
     const elInput = block.element('input')
@@ -229,6 +285,8 @@ export class InputStepper
             color={this.invalid ? 'danger' : 'info'}
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
+            onBalFocus={ev => this.onFocusDecrease(ev)}
+            onBalBlur={ev => this.onBlurDecrease(ev)}
           ></bal-button>
           <bal-text
             space="none"
@@ -255,6 +313,8 @@ export class InputStepper
             color={this.invalid ? 'danger' : 'info'}
             disabled={this.disabled || this.readonly || this.value >= this.max}
             onClick={_ => this.increase()}
+            onBalFocus={ev => this.onFocusIncrease(ev)}
+            onBalBlur={ev => this.onBlurIncrease(ev)}
           ></bal-button>
         </div>
         <input

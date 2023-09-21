@@ -12,14 +12,10 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Date</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('date')?.disabled"
-          [invalid]="form.get('date')?.touched && form.get('date')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Date Label</bal-field-label>
           <bal-field-control>
-            <bal-datepicker placeholder="Enter a date" formControlName="date"></bal-datepicker>
+            <bal-date placeholder="Enter a date" formControlName="date"></bal-date>
           </bal-field-control>
           <bal-field-message>
             <bal-ng-error controlName="date" error="required">This field is required</bal-ng-error>

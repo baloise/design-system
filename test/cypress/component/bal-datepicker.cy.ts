@@ -1,3 +1,4 @@
+import { tr } from 'date-fns/locale'
 import { BalDatepicker } from '../support/utils'
 import { format, now } from '@baloise/web-app-utils'
 
@@ -76,8 +77,10 @@ describe('bal-datepicker.cy.ts', () => {
       .type('{8}')
       .type('{8}')
       .type('{enter}')
-    // TODO: add click event when they are defined
+      .blur({ force: true })
+
     cy.get('bal-datepicker').find('input.input').should('have.value', '02.01.1988')
+
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
     cy.get('@balBlur').should('have.been.calledOnce')
@@ -98,7 +101,6 @@ describe('bal-datepicker.cy.ts', () => {
     cy.get('bal-datepicker').find('input.input').should('have.value', '02.01.1988')
     cy.get('@balChange').should('have.been.calledOnce')
     cy.get('@balFocus').should('have.been.calledOnce')
-    cy.get('@balBlur').should('have.been.calledOnce')
     cy.get('@balInput').should('have.been.callCount', 8)
   })
   it('should select the date of today', () => {

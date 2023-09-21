@@ -1,7 +1,7 @@
 {
   "name": "apps-angular",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "./build.sh && ng serve",
@@ -25,9 +25,9 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
-    "@baloise/design-system-components": "13.6.2",
-    "@baloise/design-system-components-angular": "13.6.2",
-    "@baloise/design-system-testing": "13.6.2",
+    "@baloise/design-system-components": "13.7.1",
+    "@baloise/design-system-components-angular": "13.7.1",
+    "@baloise/design-system-testing": "13.7.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
