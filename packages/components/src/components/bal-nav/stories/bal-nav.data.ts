@@ -492,6 +492,11 @@ export const optionLinkItems = [
         target: '_blank',
       },
     ],
+    overviewLink: {
+      value: 'Privatkunden ➞',
+      label: 'Privatkunden ➞',
+      href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+    },
   },
   {
     value: 'unternehmenskunden',
