@@ -21,7 +21,8 @@ import isFunction from 'lodash.isfunction'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../../utils/form'
-import { balDevice } from '../../../../utils/device'
+import { ListenToResize } from '../../../../utils/resize'
+import { balBreakpoints } from '../../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-radio-group',
@@ -30,6 +31,7 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
+  private maxRadioWidth = 0
 
   log!: LogInstance
 
@@ -208,7 +210,15 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   }
 
   componentDidLoad(): void {
-    if (this.interface === 'select-button' && this.vertical && !balDevice.hasTouchScreen) {
+    if (this.interface === 'select-button' && this.vertical) {
+      this.setEqualWidthsForRadios()
+    } else {
+    }
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
+    if (this.interface === 'select-button' && this.vertical) {
       this.setEqualWidthsForRadios()
     }
   }
@@ -393,19 +403,25 @@ export class RadioGroup implements ComponentInterface, Loggable, BalMutationObse
   }
 
   private setEqualWidthsForRadios(): void {
-    let maxWidth = 0
     const group = this.getSelectButtons()
+    if (!balBreakpoints.isMobile) {
+      group?.forEach(radio => {
+        const radioWidth = radio.getBoundingClientRect().right - radio.getBoundingClientRect().left
+        this.maxRadioWidth = Math.max(this.maxRadioWidth, radioWidth)
+      })
 
-    group?.forEach(radio => {
-      const radioWidth = radio.getBoundingClientRect().right - radio.getBoundingClientRect().left
-      maxWidth = Math.max(maxWidth, radioWidth)
-    })
-
-    group?.forEach(radio => {
-      if (radio.clientWidth <= maxWidth) {
-        radio.style.width = maxWidth + 'px'
-      }
-    })
+      group?.forEach(radio => {
+        if (radio.clientWidth <= this.maxRadioWidth) {
+          radio.style.width = this.maxRadioWidth + 'px'
+        }
+      })
+    } else {
+      group?.forEach(radio => {
+        if (radio.clientWidth <= this.maxRadioWidth) {
+          radio.style.width = 'unset'
+        }
+      })
+    }
   }
 
   /**
