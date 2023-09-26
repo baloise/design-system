@@ -58,60 +58,69 @@
   display: flex
   justify-content: space-between
   align-items: center
+  text-align: start
   width: 100%
   min-height: 3rem
   border: none
   padding: 0
   margin: 0
+  gap: var(--bal-space-normal)
   background: transparent
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-x-large)
-  // background: pink
+  line-height: var(--bal-line-heigh-x-large)
 
 .bal-nav__mobile-menu-item
   display: flex
   justify-content: space-between
   align-items: center
+  text-align: start
   width: 100%
   min-height: 3rem
   border: none
   margin: 0
   padding: 0 0 0 1rem
+  gap: var(--bal-space-normal)
   background: transparent
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-large)
-  // background: lime
+  line-height: var(--bal-line-heigh-large)
 
 .bal-nav__mobile-section-item,
 .bal-nav__mobile-service-item
   display: flex
   justify-content: space-between
   align-items: center
+  text-align: start
   width: 100%
   min-height: 2rem
   border: none
   margin: 0
-  padding: 0 0 0 2rem
+  padding: 0 2rem 0 2rem
+  gap: var(--bal-space-normal)
   background: transparent
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-normal)
-  // background: aqua
+  line-height: var(--bal-line-heigh-normal)
 
 .bal-nav__mobile-links
   display: flex
   justify-content: space-between
   align-items: center
+  text-align: start
   width: 100%
   min-height: 2rem
   border: none
   margin: 0
-  padding: 0 0 0 2rem
+  padding: 0 2rem 0 2rem
+  gap: var(--bal-space-normal)
   background: transparent
   font-family: var(--bal-font-family-text)
   font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-heigh-normal)
 
 .bal-nav__mobile-meta-list,
 .bal-nav__mobile-meta-list > li,
@@ -158,7 +167,8 @@
 .bal-nav__mobile-overview-link
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
-  font-size: 12px !important
+  font-size: var(--bal-size-x-small)
+  line-height: var(--bal-line-height-x-small)
 
 .bal-nav__mobile-overview-link--menu
   padding: 0 0 0 1rem
@@ -172,9 +182,6 @@
   width: 100%
   margin: 0
   padding: 0
-
-.bal-nav__line--up
-  margin-top: -1rem
 
 .bal-nav__mobile-links--clickable,
 .bal-nav__mobile-section-item--clickable,
