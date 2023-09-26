@@ -13,7 +13,7 @@
 
   <body>
     <bal-doc-app>
-      <header class="has-background-grey-2">
+      <header class="has-background-grey-2" data-test="navbar">
         <bal-navbar>
           <bal-navbar-brand href="/" target="_blank" animated="false" logo-size="small"
             >Compact Theme
@@ -35,7 +35,7 @@
         </bal-tabs>
       </header>
       <main class="container py-medium">
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="typography">
           <bal-card-content>
             <bal-heading>Heading 1</bal-heading>
             <bal-heading level="h2">Heading 2</bal-heading>
@@ -47,7 +47,7 @@
           </bal-card-content>
         </bal-card>
 
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="buttons">
           <bal-card-content>
             <bal-button>Default Buttons</bal-button>
             <bal-button square icon="plus"></bal-button>
@@ -58,7 +58,7 @@
           </bal-card-content>
         </bal-card>
 
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="tags">
           <bal-card-content>
             <bal-tag>Tag</bal-tag>
             <bal-tag closable>Tag</bal-tag>
@@ -69,7 +69,7 @@
           </bal-card-content>
         </bal-card>
 
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="card">
           <bal-card-title>Card Title</bal-card-title>
           <bal-card-subtitle>Subtitle</bal-card-subtitle>
           <bal-card-content>
@@ -85,7 +85,7 @@
           </bal-card-content>
         </bal-card>
 
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="table">
           <bal-card-title>Table</bal-card-title>
           <bal-card-content>
             <table class="table is-fullwidth is-striped is-hoverable p-none">
@@ -146,7 +146,7 @@
           </bal-card-content>
         </bal-card>
 
-        <bal-card class="my-normal">
+        <bal-card class="my-normal" data-test="form">
           <bal-card-title>Form</bal-card-title>
           <bal-card-content>
             <bal-form-grid>
