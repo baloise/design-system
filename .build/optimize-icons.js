@@ -137,6 +137,7 @@ const main = async () => {
     'balIconXing',
     'balIconLinkedin',
     'balIconTwitter',
+    'balIconX',
     'balIconYoutube',
     'balIconWeb',
     'balIconCaretUp',

@@ -21,7 +21,6 @@
       order: 1
       +modifier(context-small)
         &[disabled]
-          button,
           button:hover
             background-color: transparent
             border-color: transparent
@@ -30,7 +29,6 @@
       order: 3
       +modifier(context-small)
         &[disabled]
-          button,
           button:hover
             background-color: transparent
             border-color: transparent
@@ -79,6 +77,13 @@
           background-color: var(--bal-pagination-dot-background-active)
         +modifier(inactive)
           background-color: var(--bal-pagination-dot-background-inactive)
+
+      +modifier(more)
+        width: 2rem
+        +tablet
+          width: 2rem
+        +desktop
+          width: 3rem
 
       +element(tab)
         flex: 1

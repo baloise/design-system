@@ -21,7 +21,7 @@
     defaults: { ... },
     forms: {
       setInvalid: true,
-       invalidateOn: 'touched' // Alternatively, it can also be set to 'dirty'.
+      invalidateOn: 'touched' // Alternatively, it can also be set to 'dirty'.
     },
   })
   ```
