@@ -12,7 +12,8 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
 
   constructor(item: BalProps.BalNavMetaLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
-    this.value = item.value || `nav-meta-link-item-${NavMetaLinkItemIDs++}`
+    this.id = `nav-meta-link-item-${NavMetaLinkItemIDs++}`
+    this.value = item.value || this.id
     this.mainLinkItems = (item.mainLinkItems || []).map(item => new NavMenuLinkItem(item, observer))
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
@@ -27,6 +28,7 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
     return (
       <li>
         <AccordionButton
+          id={this.id}
           level="meta"
           label={this.label}
           open={isSelected}

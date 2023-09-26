@@ -3,6 +3,7 @@ import { NavLinkItemObserver } from '../bal-nav.types'
 import { BEM } from '../../../utils/bem'
 
 export class NavLinkItem implements BalProps.BalNavLinkItem {
+  id: string
   label: string
   value: string
   clickable = false
@@ -16,7 +17,8 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
 
   constructor(item: BalProps.BalNavLinkItem, private observer: NavLinkItemObserver) {
     this.label = item.label
-    this.value = item.value || `nav-link-item-${NavLinkItemIDs++}`
+    this.id = `nav-link-item-${NavLinkItemIDs++}`
+    this.value = item.value || this.id
     this.href = item.href
     this.target = item.target
     this.active = !!item.active
@@ -62,6 +64,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     return (
       <li>
         <a
+          id={this.id}
           class={{
             ...block.element('mobile-links').class(),
             ...block.element('mobile-links').modifier('selected').class(this.active),

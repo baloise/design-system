@@ -45,6 +45,7 @@ namespace BalProps {
   }
 
   export interface BalNavLinkItem {
+    id: string
     label: string
     value?: string
     active?: boolean

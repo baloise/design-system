@@ -14,7 +14,8 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
 
   constructor(item: BalProps.BalNavMenuLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
-    this.value = item.value || `nav-menu-link-item-${NavMenuLinkItemIDs++}`
+    this.id = `nav-menu-link-item-${NavMenuLinkItemIDs++}`
+    this.value = item.value || this.id
     this.sectionLinkItems = (item.sectionLinkItems || []).map(item => new NavSectionLinkItem(item, observer))
     this.serviceLinkItems = (item.serviceLinkItems || []).map(item => new NavServiceLinkItem(item, observer))
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
@@ -32,6 +33,7 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     return (
       <li>
         <AccordionButton
+          id={this.id}
           level="menu"
           label={this.label}
           open={isSelected}

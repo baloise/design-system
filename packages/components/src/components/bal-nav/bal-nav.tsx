@@ -32,6 +32,7 @@ import { i18nNavBars } from './bal-nav.i18n'
 import { NavMenuLinkItem } from './models/bal-nav-menu-link-item'
 import { NavLinkItem } from './models/bal-nav-link-item'
 import { balBrowser } from '../../utils/browser'
+import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-nav',
@@ -236,13 +237,24 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
-  private updateActiveItem(item: NavLinkItem) {
+  private async updateActiveItem(item: NavLinkItem) {
     if ('NavMetaLinkItem' === item.type) {
       this.activeMetaLinkValue = this.activeMetaLinkValue === item.value ? undefined : item.value
       this.activeMenuLinkValue = undefined
     }
     if ('NavMenuLinkItem' === item.type) {
       this.activeMenuLinkValue = this.activeMenuLinkValue === item.value ? undefined : item.value
+    }
+
+    await waitForComponent(this.el)
+    await waitAfterIdleCallback()
+
+    const elementToScroll = this.el.querySelector(`#${item.id}`)
+    if (elementToScroll) {
+      elementToScroll.scrollIntoView()
+
+      // location.href = '#'
+      // location.href = `#${item.id}`
     }
   }
 

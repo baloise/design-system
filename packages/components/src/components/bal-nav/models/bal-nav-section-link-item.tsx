@@ -13,7 +13,8 @@ export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSe
     this.label = item.label
     this.href = item.href
     this.target = item.target
-    this.value = item.value || `nav-section-link-item-${NavSectionLinkItemIDs++}`
+    this.id = `nav-section-link-item-${NavSectionLinkItemIDs++}`
+    this.value = item.value || this.id
     this.linkItems = (item.linkItems || []).map(item => new NavLinkItem(item, observer))
   }
 
@@ -27,6 +28,7 @@ export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSe
     return (
       <li>
         <a
+          id={this.id}
           class={{
             ...block.element('mobile-section-item').class(),
             ...block.element('mobile-section-item').modifier('selected').class(this.active),

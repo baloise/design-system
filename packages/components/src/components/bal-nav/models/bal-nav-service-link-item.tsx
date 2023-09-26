@@ -9,7 +9,8 @@ export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavSe
 
   constructor(item: BalProps.BalNavServiceLinkItem, observer: NavLinkItemObserver) {
     super(item, observer)
-    this.value = item.value || `nav-service-link-item-${NavServiceLinkItemIDs++}`
+    this.id = `nav-service-link-item-${NavServiceLinkItemIDs++}`
+    this.value = item.value || this.id
     this.color = item.color || 'grey'
     this.linkItems = (item.linkItems || []).map(item => new NavLinkItem(item, observer))
   }
@@ -24,6 +25,7 @@ export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavSe
     return (
       <li>
         <a
+          id={this.id}
           class={{
             ...block.element('mobile-service-item').class(),
             ...block.element('mobile-service-item').modifier('selected').class(this.active),
