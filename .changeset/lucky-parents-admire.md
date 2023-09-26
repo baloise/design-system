@@ -3,4 +3,4 @@
 '@baloise/design-system-icons': minor
 ---
 
-add new x icon and replace twitter icon with a new one (x)
+Introduce a new 'X' icon and replace the existing Twitter icon with the new one (X).
