@@ -7,7 +7,7 @@
     border: var(--bal-table-cell-border)
     border-width: var(--bal-table-cell-border-width)
     padding: var(--bal-table-cell-padding)
-    vertical-align: top
+    vertical-align: middle
     // Modifiers
     &.is-narrow
       white-space: nowrap
@@ -18,8 +18,6 @@
       a,
       strong
         color: currentColor
-    &.is-vcentered
-      vertical-align: middle
   th
     color: var(--bal-table-cell-heading-color)
     &:not([align])
@@ -123,7 +121,7 @@ table.table
   td.has-buttons
     padding: 2px
     .bal-button
-      margin-right: 4px
+      margin-right: 0.25rem
       &:last-child
         margin-right: 0px
     .buttons

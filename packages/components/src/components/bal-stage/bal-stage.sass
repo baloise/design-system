@@ -66,35 +66,35 @@
     +block(stage-content)
       +block(stage-body)
         +desktop
-          min-height: 400px
+          min-height: 25rem
   +modifier(is-large)
     +block(stage-content)
       +block(stage-body)
-        min-height: 375px
+        min-height: 23.438rem
         +tablet
-          min-height: 560px
+          min-height: 35rem
         +desktop
-          min-height: 840px
+          min-height: 52.5rem
 
   // Shape Modifier
   +modifier(has-shape)
     +block(stage-content)
-      margin-bottom: 22px
+      margin-bottom: 1.375rem
       +tablet
-        margin-bottom: 40px
+        margin-bottom: 2.5rem
       +desktop
-        margin-bottom: 66px
+        margin-bottom: 4.125rem
       +block(stage-body)
         & > *
           +tablet
-            max-width: calc(100% - 120px)
+            max-width: calc(100% - 7.5rem)
           +desktop
-            max-width: calc(100% - 198px)
+            max-width: calc(100% - 12.375rem)
       +block(shape)
         position: absolute
-        bottom: -22px
+        bottom: -1.375rem
         right: 0
         +tablet
-          bottom: -40px
+          bottom: -2.5rem
         +desktop
-          bottom: -66px
+          bottom: -4.125rem

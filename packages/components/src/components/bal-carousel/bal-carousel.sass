@@ -192,11 +192,11 @@
     width: fit-content
   .bal-carousel__item
     display: flex
-    width: 160px
-    height: 176px
+    width: 10rem
+    height: 11rem
     text-align: center
-    padding-top: 8px
-    padding-bottom: 8px
+    padding-top: 0.5rem
+    padding-bottom: 0.5rem
     user-select: none
     user-zoom: fixed
     user-drag: none
@@ -255,15 +255,15 @@
         background: var(--bal-carousel-product-item-button-background-purple-active)
 
   .bal-carousel__item__button__image
-    width: 80px
-    height: 80px
+    width: 5rem
+    height: 5rem
     pointer-events: none
   .bal-carousel__item__button__label
     font-weight: var(--bal-weight-bold)
     color: var(--bal-carousel-product-item-button-label-text-color)
     font-size: var(--bal-size-normal)
     hyphens: auto
-    height: 56px
+    height: 3.5rem
     overflow: hidden
     line-height: 1.15rem
     word-break: break-word
@@ -280,6 +280,7 @@
     .bal-carousel__controls__button
       position: absolute
       top: calc(50% - 24px)
+      z-index: 7
     .bal-carousel__controls__button--left
       left: 0
     .bal-carousel__controls__button--right
@@ -292,7 +293,8 @@
 .bal-carousel__controls--small
   .bal-carousel__controls__button
     position: absolute
-    top: calc(50% - 16px)
+    top: calc(50% - 1rem)
+    z-index: 7
   .bal-carousel__controls__button--left
     left: 0
   .bal-carousel__controls__button--right

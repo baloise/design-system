@@ -78,6 +78,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @Prop() flat = false
 
   /**
+   * If `true` the control is displayed as inline
+   */
+  @Prop() inline = false
+
+  /**
    * Defines the layout of the checkbox button
    */
   @Prop() interface: BalProps.BalCheckboxInterface = 'checkbox'
@@ -434,6 +439,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('hovered').class(this.hovered),
           ...block.modifier('pressed').class(this.pressed),
+          ...block.modifier('inline').class(this.inline),
         }}
         onKeypress={this.onKeypress}
         onClick={this.onClick}

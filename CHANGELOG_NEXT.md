@@ -129,14 +129,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * verify if window object exist when checking if current browser is Safari ([f726876](https://github.com/baloise/design-system/commit/f72687602750aba646b50f98914f095f53023fbb))
 * verify if window object exist when checking if current browser is Safari ([e3239d3](https://github.com/baloise/design-system/commit/e3239d3eaf704f477e1495e7fd9848bf13beed25))
 
-
 ## [10.24.1](https://github.com/baloise/design-system/compare/v10.24.0...v10.24.1) (2022-10-03)
 
 
 ### Bug Fixes
 
 * bind balBlur to onTouch in angular, fixes [#453](https://github.com/baloise/design-system/issues/453),[#623](https://github.com/baloise/design-system/issues/623) ([a02e597](https://github.com/baloise/design-system/commit/a02e597f69ee3102920b85d9b1d9736aac98f0c3))
-
 
 
 ## [10.24.0](https://github.com/baloise/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)

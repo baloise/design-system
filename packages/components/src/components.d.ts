@@ -494,6 +494,10 @@ export namespace Components {
         "hidden": boolean;
         "hovered": boolean;
         /**
+          * If `true` the control is displayed as inline
+         */
+        "inline": boolean;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface": BalProps.BalCheckboxInterface;
@@ -1845,6 +1849,10 @@ export namespace Components {
           * Defines the color of the logo.
          */
         "color": BalProps.BalLogoColor;
+        /**
+          * Size of the logo svg
+         */
+        "size": BalProps.BalLogoSize;
     }
     interface BalModal {
         /**
@@ -2014,6 +2022,10 @@ export namespace Components {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * Size of the logo SVG
+         */
+        "logoSize": BalProps.BalLogoSize;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -2308,6 +2320,10 @@ export namespace Components {
         "value"?: number;
     }
     interface BalPagination {
+        /**
+          * Align the buttons to start, center or end
+         */
+        "align": BalProps.BalPaginationAlignment;
         "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Disables component
@@ -2329,6 +2345,10 @@ export namespace Components {
           * Go to the previous page
          */
         "previous": () => Promise<void>;
+        /**
+          * Size of the buttons
+         */
+        "size": BalProps.BalPaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
          */
@@ -5201,6 +5221,10 @@ declare namespace LocalJSX {
         "hidden"?: boolean;
         "hovered"?: boolean;
         /**
+          * If `true` the control is displayed as inline
+         */
+        "inline"?: boolean;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface"?: BalProps.BalCheckboxInterface;
@@ -6628,6 +6652,10 @@ declare namespace LocalJSX {
           * Defines the color of the logo.
          */
         "color"?: BalProps.BalLogoColor;
+        /**
+          * Size of the logo svg
+         */
+        "size"?: BalProps.BalLogoSize;
     }
     interface BalModal {
         /**
@@ -6798,6 +6826,10 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * Size of the logo SVG
+         */
+        "logoSize"?: BalProps.BalLogoSize;
         /**
           * Emitted after the animation has finished
          */
@@ -7109,6 +7141,10 @@ declare namespace LocalJSX {
     }
     interface BalPagination {
         /**
+          * Align the buttons to start, center or end
+         */
+        "align"?: BalProps.BalPaginationAlignment;
+        /**
           * Disables component
          */
         "disabled"?: boolean;
@@ -7124,6 +7160,10 @@ declare namespace LocalJSX {
           * Specify the max visible pages before and after the selected page
          */
         "pageRange"?: number;
+        /**
+          * Size of the buttons
+         */
+        "size"?: BalProps.BalPaginationSize;
         /**
           * If 'true, the pagination will be sticky to the top
          */

@@ -40,6 +40,11 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
   @Prop() color: BalProps.BalLogoColor = 'blue'
 
   /**
+   * Size of the logo svg
+   */
+  @Prop() size: BalProps.BalLogoSize = ''
+
+  /**
    * Defines if the animation should be active
    */
   @Prop() animated = false
@@ -185,13 +190,18 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
       )
     }
 
-    const LogoElement = this.animated ? AnimatedLogo : this.isTouch ? SmallLogo : LargeLogo
+    const LogoElement = this.animated
+      ? AnimatedLogo
+      : (this.isTouch && this.size === '') || this.size === 'small'
+      ? SmallLogo
+      : LargeLogo
 
     return (
       <Host
         class={{
           ...logoBlock.class(),
           ...logoBlock.modifier(this.color).class(),
+          ...logoBlock.modifier(`size-${this.size}`).class(this.size !== ''),
           ...logoBlock.modifier('animated').class(this.animated),
         }}
       >
