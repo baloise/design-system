@@ -1,6 +1,5 @@
 ---
 '@baloise/design-system-components': patch
-'e2e-tests': patch
 ---
 
-set fixed pagination width
+To enhance the user experience during page navigation, the pagination component will now maintain a consistent width.

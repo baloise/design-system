@@ -109,8 +109,8 @@ bal-radio .bal-radio-checkbox__label
     +element(text)
       padding-left: 2rem
       hyphens: auto
-      padding-top: 4px
-      padding-bottom: 4px
+      padding-top: 0.25rem
+      padding-bottom: 0.25rem
       +modifier(hidden)
         padding-left: 0
         display: none
@@ -133,7 +133,7 @@ bal-radio .bal-radio-checkbox__label
       display: inline-block
       position: absolute
       left: 0
-      top: 4px
+      top: 0.25rem
       height: 1.5rem
       width: 1.5rem
       background-color: transparent
@@ -171,10 +171,10 @@ bal-radio .bal-radio-checkbox__label
         border-bottom-width: 2px
         border-left: 0
         border-radius: 1px
-        width: 7px
-        height: 13px
-        left: 9px
-        margin-top: 4px
+        width: calc(0.5rem - 1px)
+        height: calc(0.875rem - 1px)
+        left: calc(0.5rem + 1px)
+        margin-top: 0.25rem
         transform: rotate(45deg)
   //
   // Symbol colors main, inverted and background
@@ -222,6 +222,11 @@ bal-radio .bal-radio-checkbox__label
     +radioCheckboxLabel(--bal-color-text-grey)
   //
   //
+  // inline display for tables
+  &--inline
+    display: inline
+  //
+  //
   // select button styles
   &--select-button
     padding-left: 0.75rem
@@ -251,8 +256,8 @@ bal-radio .bal-radio-checkbox__label
         margin-top: -3px
         top: unset !important
       .bal-radio-checkbox__label__text--flat
-        padding-top: 4px
-        padding-bottom: 4px
+        padding-top: 0.25rem
+        padding-bottom: 0.25rem
   &--select-button#{&}--checked
     background: var(--bal-radio-checkbox-select-button-background-checked)
     .bal-radio-checkbox__label
@@ -331,7 +336,7 @@ bal-radio .bal-radio-checkbox__label
       border: 1.6px solid transparent
       content: ''
       transition: left 0.25s ease-out, background 0.25s ease-out
-      margin-top: 4px
+      margin-top: 0.25rem
     .bal-radio-checkbox__label::after
       border: none
       margin: 0
@@ -342,7 +347,7 @@ bal-radio .bal-radio-checkbox__label
       left: 0.25rem
       width: 1rem
       height: 1rem
-      margin-top: 4px
+      margin-top: 0.25rem
       transform: translate3d(0, 0, 0)
       transition: left 0.25s ease-out, background 0.25s ease-out
       content: ''
