@@ -5,22 +5,22 @@ describe('bal-nav-menu-bar', () => {
     )
 
     it('basic component', () => {
-      cy.platform('fullhd').waitAfterIdleCallback()
+      cy.platform('fullhd').wait(32)
       cy.compareSnapshot('menu-bar-fullhd')
 
-      cy.platform('highDefinition').waitAfterIdleCallback()
+      cy.platform('highDefinition').wait(32)
       cy.compareSnapshot('menu-bar-highDefinition')
 
-      cy.platform('widescreen').waitAfterIdleCallback()
+      cy.platform('widescreen').wait(32)
       cy.compareSnapshot('menu-bar-widescreen')
 
-      cy.platform('desktop').waitAfterIdleCallback()
+      cy.platform('desktop').wait(32)
       cy.compareSnapshot('menu-bar-desktop')
 
-      cy.platform('tablet').waitAfterIdleCallback()
+      cy.platform('tablet').wait(32)
       cy.compareSnapshot('menu-bar-tablet')
 
-      cy.platform('mobile').waitAfterIdleCallback()
+      cy.platform('mobile').wait(32)
       cy.compareSnapshot('menu-bar-mobile')
     })
   })

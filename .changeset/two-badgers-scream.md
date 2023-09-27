@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-adjust disabled look of small controls of the pagination
+Refine the appearance of disabled small controls on the pagination.

@@ -2,4 +2,5 @@
 '@baloise/design-system-components': minor
 ---
 
-add new component bal-nav-menu-bar
+Introducing the new and optimized `bal-nav` component. Designed for enhanced SEO and performance, 
+it will replace the `bar-navigation` component in the upcoming breaking version release.
