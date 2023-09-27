@@ -1,11 +1,11 @@
 describe('bal-nav-menu-flyout', () => {
   describe('basic', () => {
-    beforeEach(() =>
-      cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html').waitForDesignSystem(),
-    )
-
     it('basic component', () => {
-      cy.platform('fullhd').wait(32)
+      cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
+        .platform('fullhd')
+        .waitForDesignSystem()
+        .wait(32)
+
       cy.compareSnapshot('menu-flyout-fullhd')
 
       cy.platform('highDefinition').wait(32)
@@ -16,11 +16,17 @@ describe('bal-nav-menu-flyout', () => {
 
       cy.platform('desktop').wait(32)
       cy.compareSnapshot('menu-flyout-desktop')
+    })
 
-      cy.platform('tablet').wait(32)
+    it('basic component touch', () => {
+      cy.visit('/components/bal-nav/bal-nav-menu-flyout/test/bal-nav-menu-flyout.visual.html')
+        .platform('tablet')
+        .waitForDesignSystem()
+        .wait(400)
+
       cy.compareSnapshot('menu-flyout-tablet')
 
-      cy.platform('mobile').wait(32)
+      cy.platform('mobile').wait(400)
       cy.compareSnapshot('menu-flyout-mobile')
     })
   })
