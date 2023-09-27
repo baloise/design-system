@@ -32,6 +32,9 @@ export class NavMetaLinkItem extends NavLinkItem implements BalProps.BalNavMetaL
           level="meta"
           label={this.label}
           open={isSelected}
+          link={this.isLink}
+          href={this.href}
+          target={this.target}
           onClick={ev => this.onAccordionClick(ev)}
         ></AccordionButton>
         {isSelected ? <OverviewLink item={this.overviewLink} onClick={ev => this.onClick(ev)}></OverviewLink> : ''}

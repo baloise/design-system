@@ -36,6 +36,9 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
           id={this.id}
           level="menu"
           label={this.label}
+          href={this.href}
+          target={this.target}
+          link={this.isLink}
           open={isSelected}
           onClick={ev => this.onAccordionClick(ev)}
         ></AccordionButton>
