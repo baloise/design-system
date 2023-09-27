@@ -4,13 +4,13 @@ describe('bal-nav-link-grid', () => {
   )
 
   it('basic component', () => {
-    cy.platform('widescreen')
-    cy.getByTestId('basic').compareSnapshot('basic-widescreen', 0.0)
+    cy.platform('widescreen').wait(32)
+    cy.getByTestId('basic').compareSnapshot('basic-widescreen')
 
-    cy.platform('desktop')
-    cy.getByTestId('basic').compareSnapshot('basic-desktop', 0.0)
+    cy.platform('desktop').wait(32)
+    cy.getByTestId('basic').compareSnapshot('basic-desktop')
 
-    cy.platform('mobile')
-    cy.getByTestId('basic').compareSnapshot('basic-mobile', 0.0)
+    cy.platform('mobile').wait(32)
+    cy.getByTestId('basic').compareSnapshot('basic-mobile')
   })
 })
