@@ -3,12 +3,12 @@ describe('bal-popup', () => {
     cy.compareSnapshot(`popup-${name}-${platform}`)
     cy.getByTestId(`${name}-trigger`).click().wait(400)
     cy.compareSnapshot(`popup-${name}-${platform}-open`)
-    cy.getByTestId(`${name}-trigger`).click().wait(32)
+    cy.getByTestId(`${name}-trigger`).click().wait(400)
   }
 
   context('mobile', () => {
     beforeEach(() => {
-      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem().wait(32)
+      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('mobile').waitForDesignSystem().wait(400)
     })
 
     it('basic component mobile', () => {
@@ -32,18 +32,18 @@ describe('bal-popup', () => {
       cy.compareSnapshot(`popup-fullscreen-mobile`)
       cy.getByTestId(`fullscreen-trigger`).click()
       cy.compareSnapshot(`popup-fullscreen-mobile-open`)
-      cy.get('body').type('{esc}').wait(32)
+      cy.get('body').type('{esc}').wait(400)
 
       cy.compareSnapshot(`popup-drawer-mobile`)
       cy.getByTestId(`drawer-trigger`).click()
       cy.compareSnapshot(`popup-drawer-mobile-open`)
-      cy.get('body').type('{esc}').wait(32)
+      cy.get('body').type('{esc}').wait(400)
     })
   })
 
   context('desktop', () => {
     beforeEach(() => {
-      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('desktop').waitForDesignSystem().wait(32)
+      cy.visit('/components/bal-popup/test/bal-popup.visual.html').platform('desktop').waitForDesignSystem().wait(400)
     })
 
     it('basic component desktop', () => {
@@ -67,12 +67,12 @@ describe('bal-popup', () => {
       cy.compareSnapshot(`popup-fullscreen-desktop`)
       cy.getByTestId(`fullscreen-trigger`).click()
       cy.compareSnapshot(`popup-fullscreen-desktop-open`)
-      cy.get('body').type('{esc}').wait(32)
+      cy.get('body').type('{esc}').wait(400)
 
       cy.compareSnapshot(`popup-drawer-desktop`)
       cy.getByTestId(`drawer-trigger`).click()
       cy.compareSnapshot(`popup-drawer-desktop-open`)
-      cy.get('body').type('{esc}').wait(32)
+      cy.get('body').type('{esc}').wait(400)
     })
   })
 })
