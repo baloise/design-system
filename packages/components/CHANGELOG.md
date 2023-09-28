@@ -1,5 +1,42 @@
 # @baloise/design-system-components
 
+## 14.0.0
+
+### Major Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Create z-index design tokens and adjust the components.
+
+### Minor Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Introducing the new and optimized `bal-nav` component. Designed for enhanced SEO and performance,
+  it will replace the `bar-navigation` component in the upcoming breaking version release.
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The size of the logo component(in the navbar too) can be manually set to either 'normal' or 'small', allowing for manual adjustment and overriding the automatic responsive selection.
+
+- [#940](https://github.com/baloise/design-system/pull/940) - add new component popup
+
+- [#1040](https://github.com/baloise/design-system/pull/1040) - Introduce a new 'X' icon and replace the existing Twitter icon with the new one (X).
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The display of the checkbox component can be switched to 'inline'. This feature proves particularly useful for table integrations.
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The pagination component offers alignment options: 'start', 'center' (default), and 'end'. Additionally, the size can be adjusted to 'small' or 'normal' (default).
+
+### Patch Changes
+
+- [#1044](https://github.com/baloise/design-system/pull/1044) - Send the `balBlur` event only when the group of radios or checkboxes is left.
+
+- [#1013](https://github.com/baloise/design-system/pull/1013) - To enhance the user experience during page navigation, the pagination component will now maintain a consistent width.
+
+- [#1050](https://github.com/baloise/design-system/pull/1050) - The scroll handler will now only scroll on disconnection when it is disabled.
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Refine the appearance of disabled small controls on the pagination.
+
+- Updated dependencies [[`01cfd5654`](https://github.com/baloise/design-system/commit/01cfd56549b2b602bb684c0b46d26d5262bd183b), [`c7224e882`](https://github.com/baloise/design-system/commit/c7224e882e0150b6de84772c52bb7c6eb2d724d4), [`0c9eea8ec`](https://github.com/baloise/design-system/commit/0c9eea8ec9492f1eaa0e1ff536fbccb09c56f8fc)]:
+  - @baloise/design-system-tokens@14.0.0
+  - @baloise/design-system-css@14.0.0
+  - @baloise/design-system-icons@14.0.0
+  - @baloise/design-system-fonts@14.0.0
+
 ## 13.7.1
 
 ### Patch Changes
