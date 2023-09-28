@@ -719,7 +719,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
         }
       }
     }
-
     // trigger the raw value change
     this.updateRawValue(newValue, isHuman)
   }

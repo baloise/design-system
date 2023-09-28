@@ -15,16 +15,20 @@
   -webkit-overflow-scrolling: touch
 
 =focus-shadow
-  box-shadow: var(--bal-focus-shadow) !important
+  +hover
+    box-shadow: var(--bal-focus-shadow) !important
 
 =focus-inset-shadow
-  box-shadow: var(--bal-focus-shadow-inset) !important
+  +hover
+    box-shadow: var(--bal-focus-shadow-inset) !important
 
 =focus-inverted-shadow
-  box-shadow: var(--bal-focus-shadow-inverted) !important
+  +hover
+    box-shadow: var(--bal-focus-shadow-inverted) !important
 
 =focus-inverted-inset-shadow
-  box-shadow: var(--bal-focus-shadow-inverted-inset) !important
+  +hover
+    box-shadow: var(--bal-focus-shadow-inverted-inset) !important
 
 =placeholder
   $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'

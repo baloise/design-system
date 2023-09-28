@@ -1,0 +1,96 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import readme from '../readme.md'
+import { Basic } from './bal-popup.stories'
+
+<bal-doc-banner id="story--components-popup--basic">Popup</bal-doc-banner>
+
+<bal-doc-lead>
+  A <b>Popup</b> serves the purpose of presenting additional content overlaying an existing element.
+</bal-doc-lead>
+
+<Canvas withSource="open" className="has-visible-overflow">
+  <Story id="components-popup--basic" />
+</Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="center">
+    <a class="button is-primary" href="?path=/story/components-popup--basic">
+      Go to playground (Canvas)
+    </a>
+    <bal-doc-code-sandbox framework="angular" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+    <bal-doc-code-sandbox framework="html" template={Basic.parameters.docs.source.code}></bal-doc-code-sandbox>
+  </bal-button-group>
+</bal-doc-app>
+
+## Usage
+
+To link the popup component to a trigger element, you need to assign an ID to your popup component and add the bal-popup attribute to the trigger element, as shown in the example below:
+
+```html
+<bal-button bal-popup="my-popup">Click me</bal-button>
+<bal-popup id="my-popup" label="Popup Label">Popup content</bal-popup>
+```
+
+Furthermore, most of the properties of the popup component can be set on the trigger element. Here's an HTML snippet demonstrating the usage:
+
+```html
+<bal-button bal-popup="my-popup" bal-popup-position="top" bal-popup-arrow>Click me</bal-button>
+<bal-popup id="my-popup" label="Popup Label">Popup content</bal-popup>
+```
+
+In this example, the bal-button element serves as the trigger element for the popup component.
+It includes the bal-popup attribute, which references the ID of the popup component, "my-popup". Additionally, it specifies the position of the popup using bal-popup-position="top" and enables the arrow indicator with bal-popup-arrow.
+
+The actual content of the popup is defined within the bal-popup element.
+It includes a label attribute, "Popup Label", for accessibility purposes and to show a heading.
+
+<span id="story--components-popup--popover" style={{ opacity: 0 }}></span>
+<span id="story--components-popup--fullscreen" style={{ opacity: 0 }}></span>
+<span id="story--components-popup--drawer" style={{ opacity: 0 }}></span>
+
+## Variants
+
+The popup component offers three variants: Popover, Fullscreen, and Drawer.
+
+- The **Popover** variant, which is the default, functions similarly to a tooltip but allows for displaying more extensive content.
+- The **Fullscreen** variant behaves like a modal, covering the entire window and is particularly useful for mobile solutions.
+- Lastly, the **Drawer** variant slides up from the bottom of the window.
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="left">
+    <a class="button is-info" href="?path=/story/components-popup--popover">
+      Popover
+    </a>
+    <a class="button is-info" href="?path=/story/components-popup--fullscreen">
+      Fullscreen
+    </a>
+    <a class="button is-info" href="?path=/story/components-popup--drawer">
+      Drawer
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
+
+import theming from './theming.md'
+
+<Description markdown={theming} />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/bal-popup/stories/bal-popup.docs.mdx"></bal-doc-github>

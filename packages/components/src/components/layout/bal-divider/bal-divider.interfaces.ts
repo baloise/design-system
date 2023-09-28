@@ -9,6 +9,7 @@ namespace BalProps {
     | 'primary'
     | 'primary-light'
     | 'primary-dark'
+    | 'grey-light'
     | 'grey'
     | 'grey-dark'
     | 'warning'

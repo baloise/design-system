@@ -1,8 +1,8 @@
-import { Component, Host, h, Event, EventEmitter, Prop, Method } from '@stencil/core'
+import { Component, Host, h, Event, EventEmitter, Prop, Method, Element } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { BalMode, initStyleMode, updateBalAnimated } from '../../utils/config'
-import { rIC } from '../../utils/helpers'
+import { debounce, rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
@@ -13,6 +13,10 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 })
 export class App implements Loggable {
   private focusVisible?: any
+  private debouncedNotify = debounce(() => this.notifyResize(), 100)
+
+  @Element() el?: HTMLElement
+
   log!: LogInstance
 
   @Logger('bal-app')
@@ -45,6 +49,11 @@ export class App implements Loggable {
   connectedCallback() {
     initStyleMode(this.mode)
     updateBalAnimated(this.animated)
+
+    if (balBrowser.hasWindow) {
+      window.addEventListener('resize', this.debouncedNotify)
+      this.debouncedNotify()
+    }
   }
 
   componentDidLoad() {
@@ -55,10 +64,23 @@ export class App implements Loggable {
     })
   }
 
+  disconnectedCallback() {
+    if (balBrowser.hasWindow) {
+      window.removeEventListener('resize', this.debouncedNotify)
+    }
+  }
+
   @Method()
   async setFocus(elements: HTMLElement[]) {
     if (this.focusVisible) {
       this.focusVisible.setFocus(elements)
+    }
+  }
+
+  notifyResize = async () => {
+    if (balBrowser.hasDocument && balBrowser.hasWindow) {
+      const doc = document.documentElement
+      doc.style.setProperty('--bal-app-height', `${window.innerHeight}px`)
     }
   }
 

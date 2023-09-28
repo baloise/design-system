@@ -75,7 +75,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   )
 
   return (
-    <nav
+    <div
       role="tablist"
       id={`${tabsId}-nav`}
       class={{
@@ -128,6 +128,18 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       )}
       {!hasCarousel ? (
         <div
+          id={`${tabsId}-border`}
+          class={{
+            ...bemEl.element('border').class(),
+            ...bemEl.element('border').modifier(`inverted`).class(inverted),
+            ...bemEl.element('border').modifier(`vertical`).class(isVertical),
+          }}
+        ></div>
+      ) : (
+        ''
+      )}
+      {!hasCarousel ? (
+        <div
           id={`${tabsId}-line`}
           class={{
             ...bemEl.element('line').class(),
@@ -140,18 +152,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       ) : (
         ''
       )}
-      {!hasCarousel ? (
-        <div
-          id={`${tabsId}-border`}
-          class={{
-            ...bemEl.element('border').class(),
-            ...bemEl.element('border').modifier(`inverted`).class(inverted),
-            ...bemEl.element('border').modifier(`vertical`).class(isVertical),
-          }}
-        ></div>
-      ) : (
-        ''
-      )}
-    </nav>
+    </div>
   )
 }
