@@ -516,13 +516,13 @@ const tokens = {
     mask: { value: '200', description: 'Default z-index for masking interface elements.' },
     sticky: { value: '300', description: 'Default z-index for sticky interface elements.' },
     navigation: { value: '400', description: 'Default z-index for navigation.' },
-    toast: { value: '1000', description: 'Default z-index for toast and snackbar messages.' },
-    popup: { value: '1100', description: 'Default z-index for popups that stacks on top of all other elements.' },
+    popup: { value: '1000', description: 'Default z-index for popups that stacks on top of all other elements.' },
     modal: {
-      value: '1200',
+      value: '1100',
       description:
         'Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible.',
     },
+    toast: { value: '1200', description: 'Default z-index for toast and snackbar messages.' },
     tooltip: { value: '1300', description: 'Default z-index for tooltips.' },
   },
 } as BaloiseDesignTokens

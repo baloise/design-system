@@ -1,5 +1,7 @@
 # @baloise/design-system-favicons
 
+## 14.0.1
+
 ## 14.0.0
 
 ## 13.7.1
