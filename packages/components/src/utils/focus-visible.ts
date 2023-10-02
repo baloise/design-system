@@ -15,6 +15,9 @@ export const FOCUS_KEYS = [
   'End',
 ]
 
+export const focusableQueryString =
+  '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .bal-focusable:not([tabindex^="-"])'
+
 export const startFocusVisible = (rootEl?: HTMLElement) => {
   let currentFocus: Element[] = []
   let keyboardMode = true

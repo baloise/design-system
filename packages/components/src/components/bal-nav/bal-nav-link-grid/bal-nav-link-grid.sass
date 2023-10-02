@@ -1,0 +1,16 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Nav link grid
+// --------------------------------------------------
+
+.bal-nav-link-grid
+  --bal-column-gap: 0
+  margin-top: 0
+  +desktop
+    --bal-column-gap: 1.5rem
+
+.bal-nav-link-grid .bal-nav-link-grid-col:not(:last-child)
+  margin-bottom: var(--bal-space-normal)
+
+  +desktop
+    margin-bottom: var(--bal-space-none)

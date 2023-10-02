@@ -21,21 +21,20 @@
   +fillSvg(var(--bal-button-color))
   font-family: var(--bal-button-font-family)
   font-size: var(--bal-button-font-size)
+  line-height: var(--bal-button-line-height)
   font-weight: var(--bal-button-font-weight)
   background-color: var(--bal-button-background)
-  line-height: 1.5
   cursor: pointer
   justify-content: center
   align-items: center
   vertical-align: top
-  padding: 10px 24px
-  min-height: 48px
+  padding: 0.625rem 1.5rem
+  min-height: 3rem
   height: auto
   text-align: left
   word-break: break-word
   box-shadow: none
   outline: none
-  z-index: 0
   box-sizing: border-box
   appearance: none
   text-decoration: none
@@ -75,14 +74,14 @@
     display: inline-flex
     justify-content: center
   .icon-left
-    margin-right: 8px
+    margin-right: 0.5rem
   .icon-right
-    margin-left: 8px
+    margin-left: 0.5rem
   // Modifiers
   &.is-fullwidth
     width: 100%
   &.is-square
-    width: 48px
+    width: 3rem
     padding: 0
     .icon-left
       +margin('none')
@@ -91,23 +90,22 @@
     min-height: 1.5rem
   // Sizes
   &.is-small
-    min-height: 32px
-    max-height: 32px
-    min-width: 32px
-    padding-left: 12px
-    padding-right: 12px
+    min-height: 2rem
+    max-height: 2rem
+    min-width: 2rem
+    padding-left: 0.75rem
+    padding-right: 0.75rem
     padding-top: 0px
     padding-bottom: 0px
     font-size: var(--bal-button-small-font-size)
-    line-height: 20px
+    line-height: 1.25rem
     &.is-square
-      width: 32px
+      width: 2rem
       padding: 0
   &.is-large
-    min-height: 56px
-    padding: 16px 24px
+    min-height: 3.5rem
     &.is-square
-      width: 56px
+      width: 3.5rem
       padding: 0
   // States
   +hover

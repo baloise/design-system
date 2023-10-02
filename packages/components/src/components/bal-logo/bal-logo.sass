@@ -3,13 +3,13 @@
 +block(logo)
   position: static
   display: block
-  height: 1.25rem
+  height: 22px
   // there is lottie issue, svgs are blurry: https://github.com/airbnb/lottie-web/issues/1976
   svg
     transform: unset !important
     +fillSvg($bal-color-primary)
   & > div
-    height: 1.25rem
+    height: 22px
   +modifier('animated')
     +desktop
       margin-left: -7px
@@ -17,6 +17,10 @@
     svg
       +fillSvg($bal-color-white)
   +desktop
-    height: 2rem
+    height: 32px
     & > div
-      height: 2rem
+      height: 32px
+  +modifier('size-small')
+    height: 22px
+    & > div
+      height: 22px

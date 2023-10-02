@@ -1,0 +1,36 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Nav link grid col
+// --------------------------------------------------
+
+.bal-nav-link-grid-col
+  padding: 0
+
+  +desktop
+    padding-top: 0
+    padding-bottom: 0
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
+  //
+  // Link group
+  .bal-nav-link-group
+    margin-bottom: var(--bal-space-normal)
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
+  //
+  // Non static columns
+  &:not(.bal-nav-link-grid-col--is-static)
+    .bal-nav-link-grid-col__inner
+      +widescreen
+        display: flex
+        flex-wrap: wrap
+      //
+      // Link group
+      .bal-nav-link-group
+        margin: 0
+        width: 100%
+        +desktop
+          padding-left: 0
+          padding-right: 0
+        +widescreen
+          width: 50%

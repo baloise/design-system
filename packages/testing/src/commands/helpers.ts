@@ -157,7 +157,7 @@ export const testOnPlatforms = (platforms: Platforms[], fn: (platform: Platforms
   }
 }
 
-export function checkAriaLabel(element, label) {
+export function checkAriaLabel(element: HTMLElement, label: string | undefined | null) {
   if (label === undefined || label === null || label === '') {
     return true
   }
