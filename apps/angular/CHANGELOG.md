@@ -1,5 +1,14 @@
 # apps-angular
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`af2c20f52`](https://github.com/baloise/design-system/commit/af2c20f520d1978df0547be5767803ead6d66ed4)]:
+  - @baloise/design-system-components@14.0.1
+  - @baloise/design-system-components-angular@14.0.1
+  - @baloise/design-system-testing@14.0.1
+
 ## 0.0.3
 
 ### Patch Changes

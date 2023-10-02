@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-react",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@baloise/design-system-components": "14.0.0",
+    "@baloise/design-system-components": "14.0.1",
     "tslib": "*"
   },
   "peerDependencies": {
