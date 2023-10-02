@@ -128,6 +128,7 @@ These are the variables of the CSS-Framework which inherit from the design token
 | `--bal-form-field-label-line-height`                   |
 | `--bal-form-field-label-font-weight`                   |
 | `--bal-form-field-label-font-family`                   |
+| `--bal-form-field-label-margin-bottom`                 |
 | `--bal-form-field-label-color-hover`                   |
 | `--bal-form-field-label-color-active`                  |
 | `--bal-form-field-label-success-color`                 |
@@ -160,6 +161,7 @@ These are the variables of the CSS-Framework which inherit from the design token
 | Variable                                            |
 | --------------------------------------------------- |
 | `--bal-button-font-size`                            |
+| `--bal-button-line-height`                          |
 | `--bal-button-font-family`                          |
 | `--bal-button-font-weight`                          |
 | `--bal-button-radius`                               |
