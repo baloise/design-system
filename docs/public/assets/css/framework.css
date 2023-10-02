@@ -1,0 +1,73 @@
+.my-framework__button {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: bold;
+  height: 28px;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 8px 7px;
+  background-color: rgba(30, 167, 253, 0.07);
+  color: #d9304c;
+  gap: 4px;
+}
+
+.my-framework__button:hover,
+.my-framework__button:focus-visible {
+  background: rgba(217, 48, 76, 0.12);
+  color: #d9304c;
+}
+
+.my-framework__button:focus-visible {
+  outline: auto;
+}
+
+.my-framework__button__icon {
+  height: 18px;
+  width: 18px;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+  display: block;
+}
+
+.my-framework__button__label {
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 1364px) {
+  .my-framework__button__label {
+    display: none !important;
+  }
+}
+
+.my-framework__tooltip {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.my-framework__tooltip__item {
+  font-size: 12px;
+  transition: all 150ms ease-out;
+  color: rgba(0, 13, 110, 1);
+  text-decoration: none;
+  cursor: pointer;
+  justify-content: flex-start;
+  gap: 8px;
+  line-height: 18px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.my-framework__tooltip__item:hover {
+  background: rgba(30, 167, 253, 0.07);
+}
+
+.my-framework__tooltip__item--active {
+  font-weight: 700;
+}

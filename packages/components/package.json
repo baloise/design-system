@@ -72,7 +72,7 @@
     "@baloise/web-app-utils": "3.11.2",
     "@floating-ui/dom": "^1.5.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "^3.2.2",
+    "@stencil/core": "~3.2.2",
     "big.js": "~6.2.1",
     "contactjs": "2.1.6",
     "date-fns": "~2.29.3",
