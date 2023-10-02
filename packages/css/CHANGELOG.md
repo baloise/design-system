@@ -1,5 +1,35 @@
 # @baloise/design-system-css
 
+## 14.0.0
+
+### Major Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Create z-index design tokens and adjust the components.
+
+### Minor Changes
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - Introduce a compact theme option for the dashboard or internal applications.
+
+  The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
+
+  To activate the compact theme, import the `theme-compact` stylesheet into the root App component or a global stylesheet.
+
+  It is recommended to import the `theme-compact` file at the end of your stylesheet, after the other imports from the Design System.
+
+  ```scss
+  @import '@baloise/design-system-css/css/theme-compact';
+
+  // or for SASS
+
+  @import '@baloise/design-system-css/sass/theme-compact';
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`01cfd5654`](https://github.com/baloise/design-system/commit/01cfd56549b2b602bb684c0b46d26d5262bd183b)]:
+  - @baloise/design-system-tokens@14.0.0
+  - @baloise/design-system-fonts@14.0.0
+
 ## 13.7.1
 
 ### Patch Changes

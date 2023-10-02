@@ -1,5 +1,11 @@
 # @baloise/design-system-tokens
 
+## 14.0.0
+
+### Major Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Create z-index design tokens and adjust the components.
+
 ## 13.7.1
 
 ## 13.7.0
