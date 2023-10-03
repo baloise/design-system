@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as ToastStories from './bal-toast.stories'
+
+<Meta of={ToastStories} />
+
+<StoryHeading of={ToastStories.Basic} hidden></StoryHeading>
+
+<Banner of={ToastStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={ToastStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={ToastStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Secondary}></StoryHeading>
+
+<Canvas of={ToastStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

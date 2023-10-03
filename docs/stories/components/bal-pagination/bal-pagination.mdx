@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as PaginationStories from './bal-pagination.stories'
+
+<Meta of={PaginationStories} />
+
+<StoryHeading of={PaginationStories.Basic} hidden></StoryHeading>
+
+<Banner of={PaginationStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={PaginationStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={PaginationStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.Secondary}></StoryHeading>
+
+<Canvas of={PaginationStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

@@ -16,7 +16,7 @@ const meta: Meta<Args> = {
   title: 'Components/Tag',
   args: {
     ...withDefaultContent(),
-    color: 'primary',
+    color: undefined,
     closable: false,
   },
   argTypes: {
@@ -35,7 +35,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Primary = Story()
+export const Basic = Story()
 
 export const Closable = Story({
   args: {

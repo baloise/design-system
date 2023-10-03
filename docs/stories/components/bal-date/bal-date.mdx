@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as DateStories from './bal-date.stories'
+
+<Meta of={DateStories} />
+
+<StoryHeading of={DateStories.Basic} hidden></StoryHeading>
+
+<Banner of={DateStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={DateStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={DateStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.Secondary}></StoryHeading>
+
+<Canvas of={DateStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

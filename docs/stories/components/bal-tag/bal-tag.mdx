@@ -1,42 +1,53 @@
 import { Canvas, Meta, ArgTypes, ColorPalette, ColorItem, Unstyled, Subtitle, Title, Markdown } from '@storybook/blocks'
-import { Banner, Lead, VueFramework, AngularFramework, CodeSandbox, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as TagStories from './bal-tag.stories'
 
 <Meta of={TagStories} />
+
+<StoryHeading of={TagStories.Basic} hidden></StoryHeading>
 
 <Banner of={TagStories} />
 
 <Lead>**Tag** highlights a label for quick recognition.</Lead>
 
-<Canvas of={TagStories.Primary} sourceState="shown"/>
+<Canvas of={TagStories.Basic} sourceState="shown" />
 
-<PlaygroundBar of={TagStories.Primary}></PlaygroundBar>
+<PlaygroundBar of={TagStories.Basic}></PlaygroundBar>
 
-## Examples
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
 
 <StoryHeading of={TagStories.Closable}></StoryHeading>
 
 The tag component can include a close button by using the `closable` property.
 
-<Canvas of={TagStories.Closable} sourceState="shown"/>
+<Canvas of={TagStories.Closable} sourceState="shown" />
 
-<StoryHeading of={TagStories.TagGroup}></StoryHeading>
-
-The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
-
-<Canvas of={TagStories.TagGroup} sourceState="shown"/>
+{/* ------------------------------------------------------ */}
 
 <StoryHeading of={TagStories.Colors}></StoryHeading>
 
 The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
 
-<Canvas of={TagStories.Colors}/>
+<Canvas of={TagStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TagStories.TagGroup}></StoryHeading>
+
+The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
+
+<Canvas of={TagStories.TagGroup} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
 
 <StoryHeading of={TagStories.TagCard}></StoryHeading>
 
 Tags can be seamlessly integrated with a `bal-card` component. Additionally, you have the flexibility to position them either on the left or at the center.
 
-<Canvas of={TagStories.TagCard}/>
+<Canvas of={TagStories.TagCard} />
+
+{/* ------------------------------------------------------ */}
 
 ## Component API
 

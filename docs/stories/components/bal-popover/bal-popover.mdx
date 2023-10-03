@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as PopoverStories from './bal-popover.stories'
+
+<Meta of={PopoverStories} />
+
+<StoryHeading of={PopoverStories.Basic} hidden></StoryHeading>
+
+<Banner of={PopoverStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={PopoverStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={PopoverStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PopoverStories.Secondary}></StoryHeading>
+
+<Canvas of={PopoverStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

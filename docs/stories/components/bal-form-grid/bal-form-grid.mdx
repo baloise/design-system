@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as FormGridStories from './bal-form-grid.stories'
+
+<Meta of={FormGridStories} />
+
+<StoryHeading of={FormGridStories.Basic} hidden></StoryHeading>
+
+<Banner of={FormGridStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={FormGridStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FormGridStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormGridStories.Secondary}></StoryHeading>
+
+<Canvas of={FormGridStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

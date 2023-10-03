@@ -2,12 +2,19 @@
 import { Unstyled, useOf } from '@storybook/blocks';
 import React from 'react';
 
-export const StoryHeading = ({ of, children }) => {
+export const StoryHeading = ({ of, children, hidden }) => {
   const { story } = useOf(of || 'story', ['story']);
   const id = (children || story.id).toString().trim().toLowerCase()
 
   return <Unstyled>
-    <h3 id={id} className='sb-unstyled title has-text-primary is-size-xx-large' style={{ marginBottom: '.5rem', marginTop: '4rem' }}>
+    <h2 id={id} className='sb-unstyled title has-text-primary is-size-xxx-large' style={{
+      marginBottom: hidden === true ? '0': '.5rem',
+      marginTop: hidden === true ? '0': '4rem',
+      paddingBottom: hidden === true ? '0': '4px',
+      borderBottom: hidden === true ? '0': '1px solid hsla(203, 50%, 30%, 0.15)',
+      lineHeight: hidden === true ? '0' : 'var(--bal-line-height-desktop-xxx-large)',
+      visibility: hidden === true ? 'hidden' : 'visible'
+    }}>
       <a aria-hidden="true" href={`#${id}`} tabIndex={-1} target="_self" style={{
         float: 'left',
         lineHeight: 'inherit',
@@ -20,7 +27,7 @@ export const StoryHeading = ({ of, children }) => {
         </svg>
       </a>
       {children || story.name}
-    </h3>
+    </h2>
   </Unstyled>
 };
 

@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as DividerStories from './bal-divider.stories'
+
+<Meta of={DividerStories} />
+
+<StoryHeading of={DividerStories.Basic} hidden></StoryHeading>
+
+<Banner of={DividerStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={DividerStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={DividerStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.Secondary}></StoryHeading>
+
+<Canvas of={DividerStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

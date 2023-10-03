@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as StepsStories from './bal-steps.stories'
+
+<Meta of={StepsStories} />
+
+<StoryHeading of={StepsStories.Basic} hidden></StoryHeading>
+
+<Banner of={StepsStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={StepsStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={StepsStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StepsStories.Secondary}></StoryHeading>
+
+<Canvas of={StepsStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>

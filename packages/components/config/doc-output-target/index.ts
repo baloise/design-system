@@ -12,6 +12,7 @@ import { createTestingMarkdown } from './markdown-testing'
 import { createThemingMarkdown } from './markdown-theming'
 import { parseStyleDocs } from './markdonw-styles'
 import { MarkdownTable } from './docs-util'
+import { createStory } from './markdown-story'
 
 const DOC_PATH = path.join(__dirname, '../../../../docs')
 
@@ -28,12 +29,20 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       if (!isDocs) {
         const componentName = component.tag
         const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
+
         const componentFolderDepth = component.filePath?.split('/').length
         const isNested = ['form', 'layout', 'notice', 'typography'].some(d => component.filePath?.includes(`/${d}/`))
         const isRoot = isNested ? componentFolderDepth === 6 : componentFolderDepth === 5
 
+        // const [base] = storyPath.split('/docs/stories/components/')
+        // const normalizedPath = path.join(base, 'docs/stories/components', component.tag)
+        const normalizedPath = storyPath
+          .split('/')
+          .filter(p => !['form', 'layout', 'notice', 'typography'].includes(p))
+          .join('/')
+
         try {
-          mkdirSync(storyPath, { recursive: true })
+          mkdirSync(normalizedPath, { recursive: true })
         } catch (err) {
           console.error(err)
         }
@@ -53,7 +62,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         }
 
         try {
-          writeFileSync(path.join(storyPath, 'api.md'), content.join(NEWLINE))
+          writeFileSync(path.join(normalizedPath, 'api.md'), content.join(NEWLINE))
         } catch (err) {
           console.error(err)
         }
@@ -61,14 +70,21 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         if (isRoot) {
           // Testing
           try {
-            createTestingMarkdown(storyPath, component)
+            createTestingMarkdown(normalizedPath, component)
           } catch (err) {
             console.error(err)
           }
 
           // Theming
           try {
-            createThemingMarkdown(storyPath, component)
+            createThemingMarkdown(normalizedPath, component)
+          } catch (err) {
+            console.error(err)
+          }
+
+          // Story
+          try {
+            createStory(normalizedPath, component)
           } catch (err) {
             console.error(err)
           }

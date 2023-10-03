@@ -1,0 +1,45 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import * as InputSliderStories from './bal-input-slider.stories'
+
+<Meta of={InputSliderStories} />
+
+<StoryHeading of={InputSliderStories.Basic} hidden></StoryHeading>
+
+<Banner of={InputSliderStories} />
+
+<Lead>**TODO** Place a lead text here.</Lead>
+
+<Canvas of={InputSliderStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={InputSliderStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={InputSliderStories.Secondary}></StoryHeading>
+
+<Canvas of={InputSliderStories.Secondary} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
