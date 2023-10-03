@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/html'
 
 export const StoryFactory = <TArgs>(meta: Meta<TArgs>) => {
-  return (story: StoryObj<TArgs>) => {
+  return (story: StoryObj<TArgs> = {}) => {
     const renderer = story.render ? story.render : meta.render
     const args = { ...meta.args, ...story.args } as TArgs
     let template = 'No source code available'

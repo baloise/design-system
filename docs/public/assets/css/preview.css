@@ -1,23 +1,134 @@
-#docs-root > .sbdocs-wrapper {
+#storybook-docs > .sbdocs-wrapper {
   /* padding: 0 4rem 4rem 4rem; */
-  padding: 0 3rem 3rem 3rem;
+  padding: 1rem 3rem 3rem 3rem;
   justify-content: flex-start;
 }
 
-#docs-root > .sbdocs-wrapper > .sbdocs-content {
+#storybook-docs > .sbdocs-wrapper > .sbdocs-content {
   max-width: 992px;
 }
 
-.sbdocs-content > h1.sbdocs-h1,
-.sbdocs-content > div > div > h1.sbdocs-h1 {
-  margin-top: 4rem;
+#storybook-docs .title a svg {
+  visibility: hidden;
 }
 
-h1.sbdocs,
-h2.sbdocs,
-h3.sbdocs,
-h4.sbdocs,
-h5.sbdocs {
+#storybook-docs .title:hover a svg,
+#storybook-docs .title a:hover svg {
+  visibility: visible;
+}
+
+.sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)){
+  font-family: 'BaloiseCreateText' !important;
+  font-size: 1rem !important;
+  color: #000d6e !important;
+}
+
+.sbdocs-content > h1,
+.sbdocs-content > div:not(.sb-unstyled) > h1,
+.sbdocs-content > h2,
+.sbdocs-content > div:not(.sb-unstyled) > h2,
+.sbdocs-content > h3,
+.sbdocs-content > div:not(.sb-unstyled) > h3,
+.sbdocs-content > h4,
+.sbdocs-content > div:not(.sb-unstyled) > h4,
+.sbdocs-content > h5,
+.sbdocs-content > div:not(.sb-unstyled) > h5,
+.sbdocs-content > h6,
+.sbdocs-content > div:not(.sb-unstyled) > h6 {
+  font-family: 'BaloiseCreateHeadline';
+  font-weight: 700;
+  color: #000d6e;
+  font-size: 1rem;
+}
+
+.sbdocs-content > h1,
+.sbdocs-content > div:not(.sb-unstyled) > h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-top: 3rem !important;
+}
+
+@media screen and (min-width: 769px) {
+  .sbdocs-content > h1,
+  .sbdocs-content > div:not(.sb-unstyled) > h1 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-top: 4rem !important;
+  }
+}
+
+.sbdocs-content > h2,
+.sbdocs-content > div:not(.sb-unstyled) > h2 {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  margin-top: 4rem !important;
+}
+
+@media screen and (min-width: 769px) {
+  .sbdocs-content > h2,
+  .sbdocs-content > div:not(.sb-unstyled) > h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-top: 6rem !important;
+  }
+}
+
+.sbdocs-content > h3,
+.sbdocs-content > div:not(.sb-unstyled) > h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 2rem !important;
+}
+
+@media screen and (min-width: 769px) {
+  .sbdocs-content > h3,
+  .sbdocs-content > div:not(.sb-unstyled) > h3 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-top: 4rem !important;
+  }
+}
+
+.sbdocs-content > h4,
+.sbdocs-content > div:not(.sb-unstyled) > h4 {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin-top: 1.5rem !important;
+}
+
+@media screen and (min-width: 769px) {
+  .sbdocs-content > h4,
+  .sbdocs-content > div:not(.sb-unstyled) > h4 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 2rem !important;
+  }
+}
+
+.sbdocs-content > h5,
+.sbdocs-content > div:not(.sb-unstyled) > h5 {
+  font-size: 1.125rem;
+  line-height: 2rem !important;
+}
+
+.sbdocs-content > h6,
+.sbdocs-content > div:not(.sb-unstyled) > h6 {
+  font-size: 1rem;
+  line-height: 1.5rem !important;
+}
+
+
+
+/* .sbdocs-content > h1.sbdocs-h1,
+.sbdocs-content > div > div > h1.sbdocs-h1 {
+  margin-top: 4rem;
+} */
+
+/* #storybook-docs > h1,
+#storybook-docs > h2,
+#storybook-docs > h3,
+#storybook-docs > h4,
+#storybook-docs > h5 {
   font-family: 'BaloiseCreateHeadline';
   font-weight: 700;
   color: #000d6e;
@@ -28,7 +139,7 @@ h5.sbdocs {
   border: none;
 }
 
-h1.sbdocs.sbdocs-h1 {
+h1.sbdocs-h1 {
   font-size: 2rem;
   line-height: 2.5rem;
   margin-top: 3rem;
@@ -436,4 +547,4 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 
 hr.sbdocs-hr {
   height: 2px;
-}
+} */

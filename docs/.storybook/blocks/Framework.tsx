@@ -2,16 +2,6 @@
 import React from 'react';
 import { global } from '@storybook/global';
 
-// export const Framework = ({children, value}, b) => {
-//   const globalFramework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
-
-//   if(globalFramework === (value || 'angular')) {
-//     return <div>{children}</div>
-//   }
-
-//   return null
-// };
-
 export const AngularFramework = ({children}) => {
   const globalFramework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
 

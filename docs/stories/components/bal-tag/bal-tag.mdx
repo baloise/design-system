@@ -1,76 +1,53 @@
-import { Canvas, Meta, ArgTypes, ColorPalette, ColorItem } from '@storybook/blocks'
-
+import { Canvas, Meta, ArgTypes, ColorPalette, ColorItem, Unstyled, Subtitle, Title, Markdown } from '@storybook/blocks'
+import { Banner, Lead, VueFramework, AngularFramework, CodeSandbox, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as TagStories from './bal-tag.stories'
-import { VueFramework, AngularFramework, CodeSandbox } from '../../../.storybook/blocks';
 
 <Meta of={TagStories} />
 
-<CodeSandbox of={TagStories.Primary} />
+<Banner of={TagStories} />
 
-# Checkbox
+<Lead>**Tag** highlights a label for quick recognition.</Lead>
 
-<AngularFramework>
+<Canvas of={TagStories.Primary} sourceState="shown"/>
 
-## Heading Angular
+<PlaygroundBar of={TagStories.Primary}></PlaygroundBar>
 
-Use checkboxes to select one or more options from a list of choices.
+## Examples
 
-</AngularFramework>
+<StoryHeading of={TagStories.TagGroup}></StoryHeading>
 
-<VueFramework>
+The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
 
-## Heading vue
+<Canvas of={TagStories.TagGroup} sourceState="shown"/>
 
-Use checkboxes to select one or more options from a list of choices.
+<StoryHeading of={TagStories.Colors}></StoryHeading>
 
-</VueFramework>
+The tag component can be grouped alongside the `bal-tag-group` component, which offers optimal spacing options.
 
-A checkbox is a square box that can be activated or deactivated when ticked.
+<Canvas of={TagStories.Colors}/>
 
-## Heading 1
+<StoryHeading of={TagStories.TagCard}></StoryHeading>
 
-Use checkboxes to select one or more options from a list of choices.
+Tags can be seamlessly integrated with a `bal-card` component. Additionally, you have the flexibility to position them either on the left or at the center.
 
-### Primary
+<Canvas of={TagStories.TagCard}/>
 
-Use checkboxes to select one or more options from a list of choices.
+## Component API
 
-#### Props
+import api from './api.md?raw'
 
-Use checkboxes to select one or more options from a list of choices.
+<Markdown>{api}</Markdown>
 
-#### Events
+## Integration
 
-Use checkboxes to select one or more options from a list of choices.
+import integration from '../../snippets/integration.md?raw'
 
-#### Methods
+<Markdown>{integration}</Markdown>
 
-<Canvas of={TagStories.Primary} />
+import theming from './theming.md?raw'
 
-## Heading 2
+<Markdown>{theming}</Markdown>
 
-### Secondary
+import testing from './testing.md?raw'
 
-<ArgTypes of={TagStories} />
-
-## Heading 3
-
-<ColorPalette>
-  <ColorItem
-    title="theme.color.greyscale"
-    subtitle="Some of the greys"
-    colors={{ White: '#FFFFFF', Alabaster: '#F8F8F8', Concrete: '#F3F3F3' }}
-  />
-  <ColorItem title="theme.color.primary" subtitle="Coral" colors={{ WildWatermelon: '#FF4785' }} />
-  <ColorItem title="theme.color.secondary" subtitle="Ocean" colors={{ DodgerBlue: '#1EA7FD' }} />
-  <ColorItem
-    title="theme.color.positive"
-    subtitle="Green"
-    colors={{
-      Apple: 'rgba(102,191,60,1)',
-      Apple80: 'rgba(102,191,60,.8)',
-      Apple60: 'rgba(102,191,60,.6)',
-      Apple30: 'rgba(102,191,60,.3)',
-    }}
-  />
-</ColorPalette>
+<Markdown>{testing}</Markdown>

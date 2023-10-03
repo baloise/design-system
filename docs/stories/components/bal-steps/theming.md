@@ -2,7 +2,7 @@
 
 The component can be customization by changing the CSS variables.
 
-<a class="button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>
+<a class="sb-unstyled button is-primary" href="../?path=/docs/development-theming--page">Go to theming guide</a>
 
 <!-- START: human documentation -->
 
