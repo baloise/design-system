@@ -14,9 +14,9 @@ const config = {
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
+    './addons/version/index.js',
     './addons/framework/index.js',
     './addons/source/index.js',
-    './addons/version/index.js',
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-vite'),

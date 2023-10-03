@@ -21,7 +21,7 @@ export const Banner = ({of, children, color}) => {
     marginBottom: '3rem',
   }}>
     <span className='subtitle is-size-large mb-none'>{subtitle}</span>
-    <h1 className={`title is-size-xxx-large ${text}`} style={{marginTop: '-0.5rem'}}>{title}</h1>
+    <h1 className={`title is-size-xxxx-large ${text}`} style={{marginTop: '-0.5rem'}}>{title}</h1>
     {children}
   </div>
 };
