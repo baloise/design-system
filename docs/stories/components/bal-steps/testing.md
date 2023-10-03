@@ -23,7 +23,7 @@ A list of the custom commands for this specific component.
 | `balStepsItemShouldNotHaveState` | Assert that the tab item has not the given state. | `(state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector            | Element           |
 | ------------------- | ----------------- |

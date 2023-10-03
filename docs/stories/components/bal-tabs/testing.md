@@ -24,7 +24,7 @@ A list of the custom commands for this specific component.
 | `balTabItemShouldBeActive`  | Assert that the tab item is active or not.    | `(active?: boolean, options?: Partial<Loggable>): Chainable<JQuery>`                                    |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector         | Element         |
 | ---------------- | --------------- |

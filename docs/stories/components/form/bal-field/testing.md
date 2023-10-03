@@ -19,7 +19,7 @@ A list of the custom commands for this specific component.
 | `balFieldFindHint` | Returns the hint component of the label. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector     | Element       |
 | ------------ | ------------- |

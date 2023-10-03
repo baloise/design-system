@@ -22,7 +22,7 @@ A list of the custom commands for this specific component.
 | `balModalClose`    | Closes the selected modal.                                                                          | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector     | Element        |
 | ------------ | -------------- |

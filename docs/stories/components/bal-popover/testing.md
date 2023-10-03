@@ -23,7 +23,7 @@ A list of the custom commands for this specific component.
 | `balPopoverContentContains` | Asserts if the popover menu contains the given content.   | `(content: string \| number \| RegExp, options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector          | Element                  |
 | ----------------- | ------------------------ |

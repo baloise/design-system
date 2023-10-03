@@ -10,7 +10,7 @@ The component can be customization by changing the CSS variables.
 
 <!-- END: human documentation -->
 
-### CSS Custom Variables​
+### Variables​
 
 | Variable                                                             |
 | -------------------------------------------------------------------- |

@@ -64,7 +64,7 @@ export const createThemingMarkdown = (docsPath: string, component: JsonDocsCompo
         '',
         '<!-- END: human documentation -->',
         '',
-        '### CSS Custom Variables​',
+        '### Variables​',
         '',
         ...table.toMarkdown(),
         '',

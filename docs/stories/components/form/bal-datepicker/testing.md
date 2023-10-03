@@ -24,7 +24,7 @@ A list of the custom commands for this specific component.
 | `balDatepickerIsDateNotInRange` | Asserts if the given date is not in range in the datepicker popover. | `(date: Date, options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector           | Element               |
 | ------------------ | --------------------- |

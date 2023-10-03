@@ -37,6 +37,12 @@ const Story = StoryFactory<Args>(meta)
 
 export const Primary = Story()
 
+export const Closable = Story({
+  args: {
+    closable: true,
+  },
+})
+
 export const TagGroup = Story({
   ...withRender(
     () => `

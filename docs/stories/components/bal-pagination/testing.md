@@ -22,7 +22,7 @@ A list of the custom commands for this specific component.
 | `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector                | Element                                      |
 | ----------------------- | -------------------------------------------- |

@@ -15,15 +15,12 @@ const preview = {
     controls: { expanded: true },
     docs: {
       toc: {
-        // contentsSelector: '.sbdocs-content',
+        contentsSelector: '.sbdocs-content',
         headingSelector: 'h2, h3, h4',
-        // ignoreSelector: '#primary',
+        ignoreSelector: '.docs-story',
         title: 'On this page',
         disable: false,
-        // unsafeTocbotOptions: {
-        //   orderedList: true,
-        // },
-      }, // 👈 Enables the table of contents
+      },
     },
     viewport: {
       viewports: {

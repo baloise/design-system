@@ -20,7 +20,7 @@ A list of the custom commands for this specific component.
 | `balAccordionIsClosed` | Asserts if the accordion is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector            | Element                                                          |
 | ------------------- | ---------------------------------------------------------------- |

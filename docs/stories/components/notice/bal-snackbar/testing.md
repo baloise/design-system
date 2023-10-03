@@ -19,7 +19,7 @@ A list of the custom commands for this specific component.
 | `balSnackbarFind` | Returns the visible snackbars. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector           | Element                   |
 | ------------------ | ------------------------- |

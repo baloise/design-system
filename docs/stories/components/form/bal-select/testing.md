@@ -21,7 +21,7 @@ A list of the custom commands for this specific component.
 | `balSelectShouldHaveOptions` | Asserts that the select has the given options.             | `(labels: string[], dataType?: 'label' \| 'value', options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector         | Element               |
 | ---------------- | --------------------- |

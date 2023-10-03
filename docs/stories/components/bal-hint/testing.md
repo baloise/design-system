@@ -20,7 +20,7 @@ A list of the custom commands for this specific component.
 | `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector       | Element               |
 | -------------- | --------------------- |

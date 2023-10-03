@@ -20,7 +20,7 @@ A list of the custom commands for this specific component.
 | `balInputStepperDecrease` | Decreases the value of the control | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 
 
-### Component Element Selectors
+### Selectors
 
 | Selector                | Element               |
 | ----------------------- | --------------------- |
