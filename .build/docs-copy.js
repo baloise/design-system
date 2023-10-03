@@ -11,30 +11,45 @@ const file = require('./utils/file')
 const DIRNAME = path.normalize(__dirname, '..');
 const PACKAGES = path.join(DIRNAME, "../packages");
 const PACKAGES_COMPONENTS = path.join(PACKAGES, "components");
-const PACKAGES_COMPONENTS_PUBLIC = path.join(PACKAGES_COMPONENTS, "public");
 const PACKAGES_MAPS = path.join(PACKAGES, "maps");
 const PACKAGES_ICONS = path.join(PACKAGES, "icons");
 const PACKAGES_FAVICONS = path.join(PACKAGES, "favicons");
 const PACKAGES_FONTS = path.join(PACKAGES, "fonts");
 const PACKAGES_TABLE = path.join(PACKAGES, "components-table");
+const DOCS = path.join(DIRNAME, "../docs/public");
 
 async function main() {
   log.title('copy files to packages')
 
+  // fonts
   await copyToPublic(path.join(PACKAGES_FONTS, 'lib'), 'assets/fonts')
+
+  // download
   await copyToPublic(path.join(PACKAGES_FONTS, 'dist/fonts.zip'), 'assets/download/fonts.zip')
   await copyToPublic(path.join(PACKAGES_FAVICONS, 'dist/favicons.zip'), 'assets/download/favicons.zip')
   await copyToPublic(path.join(PACKAGES_MAPS, 'dist/map-markers.zip'), 'assets/download/map-markers.zip')
-  await copyToPublic(path.join(PACKAGES_MAPS, 'markers'), 'assets/images/map-markers')
   await copyToPublic(path.join(PACKAGES_ICONS, 'dist/icons.zip'), 'assets/download/icons.zip')
+
+  // images
+  await copyToPublic(path.join(PACKAGES_MAPS, 'markers'), 'assets/images/map-markers')
+
+  // data
   await copyToPublic(path.join(PACKAGES_ICONS, 'dist/icons.json'), 'assets/data/icons.json')
+  await copyToPublic(path.join(PACKAGES_COMPONENTS, '.tmp/commands.json'), 'assets/data/commands.json')
+  await copyToPublic(path.join(PACKAGES_COMPONENTS, '.tmp/components.json'), 'assets/data/components.json')
+  await copyToPublic(path.join(PACKAGES_COMPONENTS, '.tmp/components.d.ts'), 'assets/data/components.d.ts')
+  await copyToPublic(path.join(PACKAGES_COMPONENTS, '.tmp/contributors.json'), 'assets/data/contributors.json')
+  await copyToPublic(path.join(PACKAGES_COMPONENTS, '.tmp/selectors.json'), 'assets/data/selectors.json')
+  await copyToPublic(path.join(DIRNAME, 'data/tags.json'), 'assets/data/tags.json')
+
+  // stylesheets
   await copyToPublic(path.join(PACKAGES_TABLE, 'css/design-system-table.css'), 'assets/css/design-system-table.css')
 
   log.success('Resources are copied')
 }
 
 async function copyToPublic(src, target) {
-  await file.copy(src, path.join(PACKAGES_COMPONENTS_PUBLIC, target))
+  await file.copy(src, path.join(DOCS, target))
 }
 
 main()

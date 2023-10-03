@@ -1,4 +1,4 @@
-import buildCtx from '../../../public/assets/data/components.json'
+import buildCtx from '../../../.tmp/components.json'
 
 export const findComponent = (tag: string) => {
   const index = buildCtx.components.findIndex(c => c.tag === tag)

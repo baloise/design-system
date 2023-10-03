@@ -45,9 +45,10 @@
   "scripts": {
     "==================== START =========================": "================================",
     "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
-    "dev": "concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:build\" \"npm:dev:server\"",
-    "dev:build": "stencil build --config stencil.config.dev.ts --watch",
-    "dev:server": "start-storybook -p 6006 --quiet",
+    "dev": "stencil build --config stencil.config.docs.ts --watch",
+    "old_dev": "concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:build\" \"npm:dev:server\"",
+    "old_dev:build": "stencil build --config stencil.config.dev.ts --watch",
+    "old_dev:server": "start-storybook -p 6006 --quiet",
     "==================== BUILD =========================": "================================",
     "build": "stencil build --es5 && npm run build:post",
     "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
@@ -59,7 +60,7 @@
     "test:coverage": "vitest run --coverage",
     "cy:build": "stencil build --config stencil.config.e2e.ts",
     "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && npm run build:post && npm run docs:post",
+    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && npm run build:post",
     "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js",
     "docs:post": "node ../../.build/docs-github.js",
     "storybook": "build-storybook -o ../../storybook  --quiet"

@@ -65,8 +65,8 @@ const run = async () => {
     }
   })
 
-  await file.makeDir(path.join(PACKAGE, 'public/assets/data'))
-  await file.save(path.join(PACKAGE, 'public/assets/data/commands.json'), JSON.stringify(commands))
+  await file.makeDir(path.join(PACKAGE, '.tmp'))
+  await file.save(path.join(PACKAGE, '.tmp/commands.json'), JSON.stringify(commands))
 }
 
 run()

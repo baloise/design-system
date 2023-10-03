@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "storybook dev -p 6006 --no-open",
-    "build": "storybook build"
+    "docs": "storybook build -o ../storybook --quiet --disable-telemetry",
+    "dev": "npm run start"
   },
   "keywords": [],
   "author": "",

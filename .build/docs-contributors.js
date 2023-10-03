@@ -15,7 +15,7 @@ const PACKAGE = path.join(DIRNAME, "../packages/components");
 async function main() {
   await log.title('contributors : fetching')
 
-  const filePath = path.join(PACKAGE, 'public/assets/data/contributors.json')
+  const filePath = path.join(PACKAGE, '.tmp/contributors.json')
   try {
     const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
     const json = await res.json()

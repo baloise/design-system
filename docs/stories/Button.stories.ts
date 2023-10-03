@@ -1,32 +1,39 @@
 import type { JSX } from '@baloise/design-system-components'
-import type { Meta, StoryObj } from '@storybook/html'
-import { withContent, withComponentControls, props, render } from './utils'
+import type { Meta } from '@storybook/html'
+import { withContent, withComponentControls, props, StoryFactory, withRender } from './utils'
 
-type Args = JSX.BalButton & { content: string }
-type Story = StoryObj<Args>
+type Args = JSX.BalTag & { content: string }
 
-export default {
+const meta: Meta<Args> = {
   title: 'Example/Button',
-  render: ({ content, ...args }) => {
-    return render({
-      args,
-      template: `<bal-button ${props(args)}>${content}</bal-button>`,
-    })
-  },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-button' }),
   },
-} as Meta<Args>
+  ...withRender(({ content, ...args }) => `<bal-button ${props(args)}>${content}</bal-button>`),
+}
+
+export default meta
 
 /**
  * STORIES
  * ------------------------------------------------------
  */
 
-export const Primary: Story = {
+const Story = StoryFactory<Args>(meta)
+
+export const Primary = Story({
   args: {
     content: 'Winnie',
     color: 'primary',
+    closable: true,
   },
-}
+})
+
+export const Secondary = Story({
+  args: {
+    color: 'danger',
+    closable: false,
+  },
+  ...withRender(args => `<bal-button ${props(args)}>Secondary</bal-button>`),
+})
