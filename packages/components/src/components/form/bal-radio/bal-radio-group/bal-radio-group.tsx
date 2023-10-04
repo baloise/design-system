@@ -35,6 +35,7 @@ export class RadioGroup
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
   private maxRadioWidth = 0
+  private isComponentLoaded = false
 
   log!: LogInstance
 
@@ -213,15 +214,15 @@ export class RadioGroup
   }
 
   componentDidLoad(): void {
+    this.isComponentLoaded = true
     if (this.interface === 'select-button' && this.vertical) {
       this.setEqualWidthsForRadios()
-    } else {
     }
   }
 
   @ListenToResize()
   resizeListener(): void {
-    if (this.interface === 'select-button' && this.vertical) {
+    if (this.interface === 'select-button' && this.vertical && this.isComponentLoaded) {
       this.setEqualWidthsForRadios()
     }
   }
