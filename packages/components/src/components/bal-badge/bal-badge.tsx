@@ -30,22 +30,7 @@ export class Badge implements ComponentInterface {
    */
   @Prop() position: BalProps.BalBadgePosition = ''
 
-  /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private setWidth() {
-    const badgeWidth = this.el.offsetWidth
-    if (badgeWidth > 24) {
-      this.el.style.paddingLeft = `${4}px`
-      this.el.style.paddingRight = `${4}px`
-    }
-  }
-
   render() {
-    this.setWidth()
-
     const block = BEM.block('badge')
     const labelEl = block.element('label')
     const iconEl = block.element('icon')
