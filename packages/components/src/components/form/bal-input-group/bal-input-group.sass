@@ -13,6 +13,15 @@
   border-radius: var(--bal-radius-normal)
   background: var(--bal-color-white)
 
+  // &::before
+  //   position: absolute
+  //   content: ''
+  //   height: 100%
+  //   top: 0
+  //   left: 1rem
+  //   right: 1rem
+  //   background: red
+
   .input
     min-height: 2.75rem
     height: 2.75rem
@@ -23,6 +32,16 @@
     padding-right: 0
     padding-bottom: calc(0.5em - 0.313rem)
     padding-top: calc(0.5em - 0.313rem)
+
+  // bal-select
+  //   &::after
+  //     position: absolute
+  //     content: ''
+  //     height: 100%
+  //     width: 2px
+  //     top: 0
+  //     left: 100%
+  //     background: var(--bal-color-grey-3)
 
   .bal-select__control
     border: none
@@ -114,3 +133,26 @@
   &:not(.bal-input-group--is-disabled)
     &:focus-within
       border-color: var(--bal-color-primary)
+
+.bal-input-group > *::after:not(bal-icon)
+  position: absolute
+  content: ''
+  height: 100%
+  width: 2px
+  top: 0
+  bottom: 0
+  left: 100%
+  background: var(--bal-color-grey-3)
+
+.bal-input-group > .bal-icon::after
+  position: absolute
+  content: ''
+  height: 100%
+  width: 2px
+  top: 0
+  bottom: 0
+  margin-left: 50px
+  background: var(--bal-color-grey-3)
+
+.bal-input-group > *:last-child::after
+  content: none
