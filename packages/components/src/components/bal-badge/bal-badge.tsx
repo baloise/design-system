@@ -36,10 +36,11 @@ export class Badge implements ComponentInterface {
    */
 
   private setWidth() {
+    const padding = 4
     const badgeWidth = this.el.offsetWidth
     if (badgeWidth > 24) {
-      this.el.style.paddingLeft = `${4}px`
-      this.el.style.paddingRight = `${4}px`
+      this.el.style.paddingLeft = `${padding}px`
+      this.el.style.paddingRight = `${padding}px`
     }
   }
 
