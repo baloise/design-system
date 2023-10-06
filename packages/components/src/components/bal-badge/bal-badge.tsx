@@ -30,22 +30,25 @@ export class Badge implements ComponentInterface {
    */
   @Prop() position: BalProps.BalBadgePosition = ''
 
+  componentDidLoad() {
+    this.setWidth()
+  }
+
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
 
   private setWidth() {
-    const padding = 4
-    const badgeWidth = this.el.offsetWidth
+    const badge = this.el.querySelector('.bal-badge__label') as HTMLElement
+    const badgeWidth = badge.offsetWidth
+    console.log(badgeWidth)
     if (badgeWidth > 24) {
-      this.el.style.paddingLeft = `${padding}px`
-      this.el.style.paddingRight = `${padding}px`
+      this.el.style.width = `${badgeWidth + 8}px`
     }
   }
 
   render() {
-    this.setWidth()
     const block = BEM.block('badge')
     const labelEl = block.element('label')
     const iconEl = block.element('icon')
