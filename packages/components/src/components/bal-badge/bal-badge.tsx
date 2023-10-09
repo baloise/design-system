@@ -42,7 +42,6 @@ export class Badge implements ComponentInterface {
   private setWidth() {
     const badge = this.el.querySelector('.bal-badge__label') as HTMLElement
     const badgeWidth = badge.offsetWidth
-    console.log(badgeWidth)
     if (badgeWidth > 24) {
       this.el.style.width = `${badgeWidth + 8}px`
     }
