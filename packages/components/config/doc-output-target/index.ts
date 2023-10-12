@@ -82,12 +82,12 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             console.error(err)
           }
 
-          // Story
-          try {
-            createStory(normalizedPath, component)
-          } catch (err) {
-            console.error(err)
-          }
+          // // Story
+          // try {
+          //   createStory(normalizedPath, component)
+          // } catch (err) {
+          //   console.error(err)
+          // }
         }
       }
     }
@@ -138,15 +138,21 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
     /**
      * Create contributors page
      */
-
-    const avatar = contributor => `  <a href="${contributor.url}" class="avatar">
-    <h2>
-      <img src="${contributor.avatar}" alt="${contributor.name}" style="width: 64px;">
-    </h2>
-    <h4>${contributor.name}</h4>
+    const avatar =
+      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+  >
+    <span className='is-display-block is-size-xx-large has-text-centered'>
+      <img src="${contributor.avatar}" alt="${contributor.name}" />
+    </span>
+    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
   </a>`
 
-    const contributorsContent = [`<div class="avatars">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
+    const contributorsContent = [
+      `<div className="sb-unstyled is-flex is-flex-wrap-wrap fg-normal">`,
+      ...contributors.map(c => avatar(c)),
+      `</div>`,
+      SPACE,
+    ]
 
     try {
       writeFileSync(path.join(DOC_PATH, 'stories', 'contributors.md'), contributorsContent.join(NEWLINE))

@@ -7,8 +7,11 @@ namespace BalProps {
   export type BalIconColor =
     | 'blue'
     | 'success'
+    | 'success-dark'
     | 'danger'
+    | 'danger-dark'
     | 'warning'
+    | 'warning-dark'
     | 'white'
     | 'grey'
     | 'grey-light'

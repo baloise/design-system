@@ -1,4 +1,4 @@
-import { components } from '../assets/components.json'
+import { components } from '../assets/data/components.json'
 
 interface ComponentProp {
   name: string

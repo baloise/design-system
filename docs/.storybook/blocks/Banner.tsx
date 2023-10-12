@@ -2,12 +2,17 @@
 import React from 'react';
 import { useOf } from '@storybook/blocks';
 
-export const Banner = ({of, children, color}) => {
-  const resolvedOf = useOf(of || 'story', ['meta']);
-  const metaTitle = resolvedOf.preparedMeta.title
-  const metaTitles = metaTitle.split('/')
-  const title = metaTitles[metaTitles.length-1]
-  const subtitle = metaTitles[metaTitles.length-2]
+export const Banner = ({of, children, color, label, section}) => {
+  let title = label
+  let subtitle = section
+
+  if(of){
+    const resolvedOf = useOf(of || 'story', ['meta']);
+    const metaTitle = resolvedOf.preparedMeta.title
+    const metaTitles = metaTitle.split('/')
+     title = label || metaTitles[metaTitles.length-1]
+     subtitle = section || metaTitles[metaTitles.length-2]
+  }
 
   const definedColor = color || 'primary'
   const background = `has-background-${definedColor}`

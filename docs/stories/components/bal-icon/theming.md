@@ -17,7 +17,9 @@ The component can be customization by changing the CSS variables.
 | `--bal-icon-color-grey`          |
 | `--bal-icon-color-grey-light`    |
 | `--bal-icon-color-success`       |
+| `--bal-icon-color-success-dark`  |
 | `--bal-icon-color-warning`       |
+| `--bal-icon-color-warning-dark`  |
 | `--bal-icon-color-danger`        |
 | `--bal-icon-color-danger-dark`   |
 | `--bal-icon-color-danger-darker` |

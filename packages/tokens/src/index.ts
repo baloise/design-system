@@ -418,17 +418,17 @@ const tokens = {
         description: 'Should only be used for label texts.',
         mobile: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
       },
@@ -438,17 +438,17 @@ const tokens = {
         description: 'Should only be used for helper texts or validation messages of a form control.',
         mobile: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
       },

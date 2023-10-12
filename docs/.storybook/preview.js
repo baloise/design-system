@@ -22,6 +22,17 @@ const preview = {
         disable: false,
       },
     },
+    options: {
+      storySort: {
+        order: [
+          'Welcome',
+          'Design System',
+          'Changelog',
+          'Support',
+          'Foundation',
+        ],
+      }
+    },
     viewport: {
       viewports: {
         small: {
