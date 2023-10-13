@@ -109,7 +109,7 @@ export class NavMetaBar implements ComponentInterface, Loggable {
       >
         <div
           class={{
-            container: true,
+            ...block.modifier('container').class(),
           }}
         >
           <slot></slot>
