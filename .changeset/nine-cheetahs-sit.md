@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-change modal backdrop color opacity from 0.8 to 0.6
+Adjust the opacity of the modal backdrop color, changing it from 0.8 to 0.6.
