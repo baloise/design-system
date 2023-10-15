@@ -1,0 +1,49 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssBorderColors } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Border/Border Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Border Colors" section="CSS Utilities" color="green" />
+
+<Lead>Diverse color palettes available for element borders.</Lead>
+
+## Classes
+
+<CssBorderColors />
+
+## Examples
+
+<Code language="html" code={`<div class="has-border-primary p-normal"></div>`} />
+
+### Colors
+
+<Code
+  language="html"
+  code={`<div class="has-border-primary p-x-small mb-x-small">Primary</div>
+<div class="has-border-grey p-x-small mb-x-small">Grey</div>
+<div class="has-border-grey-dark p-x-small mb-x-small">Grey Dark</div>
+<div class="has-border-success p-x-small mb-x-small">Success</div>
+<div class="has-border-danger p-x-small mb-x-small">Danger</div>
+<div class="has-border-warning p-x-small mb-x-small">Warning</div>`}
+/>
+
+### Postiton
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal">
+  <div class="has-border-top-primary p-x-small has-background-green-2 is-flex-grow-1">Top</div>
+  <div class="has-border-right-primary p-x-small has-background-green-2 is-flex-grow-1">Right</div>
+  <div class="has-border-bottom-primary p-x-small has-background-green-2 is-flex-grow-1">Bottom</div>
+  <div class="has-border-left-primary p-x-small has-background-green-2 is-flex-grow-1">Left</div>
+</div>
+`}
+/>

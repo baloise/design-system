@@ -1,0 +1,45 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssBackgroundColors } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Background/Background Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Background Colors" section="CSS Utilities" color="green" />
+
+<Lead>Select from a range of colors for the background of an element.</Lead>
+
+## Classes
+
+Background colors can be set with the CSS class `has-background-***` for example `has-background-green`.
+
+Every color of the [Design Tokens]() can be used like that.
+
+<CssBackgroundColors />
+
+## Examples
+
+### Basic
+
+<Code language="html" code={`
+<div class="has-background-green p-normal">Green background</div>
+`} />
+
+### Inverted Colors
+
+For every color, an inverted variant is defined to ensure optimal readability when combining background and font colors.
+
+<Code language="html" code={`
+<div class="has-background-primary p-normal">
+  <p class="has-text-primary-inverted">Hello World</p>
+</div>
+`} />
+
+
+
+

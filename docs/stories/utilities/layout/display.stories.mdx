@@ -1,0 +1,105 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssLayoutDisplay } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Layout/Display"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Display" section="CSS Utilities" color="green" />
+
+<Lead>Specifies the display behavior of an element on a page.</Lead>
+
+## Classes
+
+<CssLayoutDisplay />
+
+## Examples
+
+### Hidden
+
+An element that is hidden is not visible and does not occupy any space.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal">
+  <div class="is-hidden has-background-green p-normal has-radius-normal">1</div>
+  <div class="has-background-green p-normal has-radius-normal">2</div>
+  <div class="has-background-green p-normal has-radius-normal">3</div>
+</div>
+`}
+/>
+
+### Block
+
+A block element begins on a new line.
+
+<Code
+  language="html"
+  code={`
+<div class="is-block has-background-green has-text-centered p-normal has-radius-normal mb-normal">1</div>
+<div class="is-block has-background-green has-text-centered p-normal has-radius-normal mb-normal">2</div>
+<div class="is-block has-background-green has-text-centered p-normal has-radius-normal mb-normal">3</div>
+`}
+/>
+
+### Inline
+
+An inline element does not initiate on a new line and takes up width as required.
+
+<Code
+  language="html"
+  code={`
+<div class="is-inline has-background-green has-text-centered p-normal has-radius-normal mx-normal">1</div>
+<div class="is-inline has-background-green has-text-centered p-normal has-radius-normal">2</div>
+<div class="is-inline has-background-green has-text-centered p-normal has-radius-normal mx-normal">3</div>
+`}
+/>
+
+### Inline Block
+
+Inline block behaves much like an inline element, but it also respects properties such as width, height, and top/bottom paddings/margins.
+
+<Code
+  language="html"
+  code={`
+<div class="is-inline-block has-background-green has-text-centered p-normal has-radius-normal">1</div>
+<div class="is-inline-block has-background-green has-text-centered p-normal has-radius-normal mx-normal">2</div>
+<div class="is-inline-block has-background-green has-text-centered p-normal has-radius-normal">3</div>
+`}
+/>
+
+### Flex
+
+Sets the element to display as a block-level flex container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal">
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">1</div>
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">2</div>
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">3</div>
+</div>
+`}
+/>
+
+### Inline Flex
+
+Sets the element to display as an inline-level flex container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-inline-flex fg-normal">
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">1</div>
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">2</div>
+    <div class="is-flex-grow-1 has-background-green has-text-centered p-normal has-radius-normal">3</div>
+</div>
+`}
+/>

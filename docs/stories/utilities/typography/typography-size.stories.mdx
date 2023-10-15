@@ -1,0 +1,47 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographySize } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Font Size"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Font Size" section="CSS Utilities" color="green" />
+
+<Lead>Diverse color palettes available for the text of an element.</Lead>
+
+## Classes
+
+The classes `has-text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
+
+<CssTypographySize />
+
+## Examples
+
+Light is only available for font family title.
+
+### Text Font Family
+
+<Code language="html" code={`
+<p>Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-weight-light">Light - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+`} />
+
+### Title Font Family
+
+<Code language="html" code={`
+<p class="is-family-title">Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="is-family-title has-text-weight-light">Light - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="is-family-title has-text-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+`} />
+
+
+
+
+
+

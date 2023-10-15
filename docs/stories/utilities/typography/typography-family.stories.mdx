@@ -1,0 +1,46 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyFamily } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Font Family"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Font Family" section="CSS Utilities" color="green" />
+
+<Lead>Diverse color palettes available for the text of an element.</Lead>
+
+## Classes
+
+The classes `has-text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
+
+<CssTypographyFamily />
+
+## Examples
+
+Light is only available for font family title.
+
+### Text Font Family
+
+<Code language="html" code={`
+<h1 class="title is-family-text">Text - Lorem ipsum dolor sit.</h1>
+<p>Text - Lorem ipsum dolor sit.</p>
+`} />
+
+### Title Font Family
+
+<Code language="html" code={`
+<h1 class="title">Title - Lorem ipsum dolor sit.</h1>
+<h1 class="subtitle">Subtitle - Lorem ipsum dolor sit.</h1>
+<p class="is-family-title">Title - Lorem ipsum dolor sit.</p>
+`} />
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssBorderRadius } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Border/Border Radius"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Border Radius" section="CSS Utilities" color="green" />
+
+<Lead>Defines the radius of an element's corners.</Lead>
+
+## Classes
+
+<CssBorderRadius />
+
+## Examples
+
+<Code language="html" code={`
+<div class="has-border-primary has-radius-none p-small mb-small">None</div>
+<div class="has-border-primary has-radius-normal p-small mb-small">Normal</div>
+<div class="has-border-primary has-radius-large p-small mb-small">Large</div>
+<div class="has-border-primary has-radius-rounded p-small mb-small">Rounded</div>
+`} />

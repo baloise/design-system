@@ -1,0 +1,69 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxDirection } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Flex Direction"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Flex Direction" section="CSS Utilities" color="green" />
+
+<Lead>Determines the direction of flexible items.</Lead>
+
+## Classes
+
+<CssFlexboxDirection />
+
+## Row
+
+Elements are arranged in a horizontal display.
+
+<Code language="html" code={`
+<div class="is-flex is-flex-direction-row fg-normal">
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+</div>
+`} />
+
+## Row Reverse
+
+Elements are arranged horizontally, but in the reverse order.
+
+<Code language="html" code={`
+<div class="is-flex is-flex-direction-row-reverse fg-normal">
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+</div>
+`} />
+
+## Column
+
+Elements are arranged in a vertical display.
+
+<Code language="html" code={`
+<div class="is-flex is-flex-direction-column fg-normal">
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+</div>
+`} />
+
+## Column Reverse
+
+Elements are arranged vertically, but in the reverse order.
+
+<Code language="html" code={`
+<div class="is-flex is-flex-direction-column-reverse fg-normal">
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-text-centered has-radius-normal p-normal">3</div>
+</div>
+`} />
+
+

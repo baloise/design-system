@@ -36,6 +36,18 @@ $flex-operators: grow, shrink
     .is-flex-#{$operator}-#{$i}
       flex-#{$operator}: $i
 
+.is-flex-1
+  flex: 1 1 0%
+
+.is-flex-auto
+  flex: 1 1 auto
+
+.is-flex-initial
+  flex: 0 1 auto
+
+.is-flex-none
+  flex: none
+
 @each $name, $value in $bal-spacing-values
   .fg-#{$name}
     gap: $value

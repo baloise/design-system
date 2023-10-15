@@ -1,4 +1,5 @@
 import { join, dirname } from 'path'
+// import remarkGfm from 'remark-gfm';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -17,6 +18,16 @@ const config = {
     './addons/version/index.js',
     './addons/framework/index.js',
     './addons/source/index.js',
+    // {
+    //   name: '@storybook/addon-docs',
+    //   options: {
+    //     mdxPluginOptions: {
+    //       mdxCompileOptions: {
+    //         remarkPlugins: [remarkGfm],
+    //       },
+    //     },
+    //   },
+    // },
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-vite'),
@@ -40,4 +51,5 @@ const config = {
   <script nomodule src="/build/design-system-components.js"></script>
   `,
 }
+
 export default config

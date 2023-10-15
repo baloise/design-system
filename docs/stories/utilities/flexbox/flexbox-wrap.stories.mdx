@@ -1,0 +1,66 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxWrap } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Flex Wrap"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Flex Wrap" section="CSS Utilities" color="green" />
+
+<Lead>Determines whether flexible items should wrap or not.</Lead>
+
+## Classes
+
+<CssFlexboxWrap />
+
+
+## Wrap
+
+Flexible items will wrap if needed.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap" style="max-width: 500px">
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+## Wrap-Reverse
+
+Flexible items will wrap if needed, but in reverse order.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap-reverse" style="max-width: 500px">
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+## Nowrap
+
+Flexible items maintain their position without wrapping.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-nowrap" style="max-width: 500px">
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">1</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">2</div>
+  <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 m-normal has-radius-normal" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+

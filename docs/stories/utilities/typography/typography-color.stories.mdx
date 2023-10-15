@@ -1,0 +1,51 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyColors } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Text Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Colors" section="CSS Utilities" color="green" />
+
+<Lead>Diverse color palettes available for the text of an element.</Lead>
+
+## Classes
+
+The classes `has-text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
+
+<CssTypographyColors />
+
+## Examples
+
+<Code language="html" code={`
+<p>Default - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-light-blue">Light-Blue / Hover - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-dark">Blue-Dark / Active - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-grey">Grey / Disabled - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-blue-light">Hint / Help - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-success">Success / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-warning">Warning - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p class="has-text-danger">Danger / Valid - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+
+<hr />
+
+<bal-text color="primary-light">Text with the color primary-light</bal-text>
+<bal-text color="danger">Text with the color danger</bal-text>
+`} />
+
+### Inverted Colors
+
+<Code language="html" code={`
+<div class="has-background-green-6 p-normal">
+    <span class="has-text-green-6-inverted">My Colored Text</span>
+</div>
+`} />
+
+
+
+
