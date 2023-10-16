@@ -339,6 +339,22 @@ a.sbdocs-a.text-decoration-none {
   border-radius: var(--bal-radius-normal);
 }
 
+.doc-image-canvas img {
+  flex: 1
+}
+
+.doc-image-canvas--size-small img {
+  max-width: 220px;
+}
+
+.doc-image-canvas--size-normal img {
+  max-width: 440px;
+}
+
+.doc-image-canvas--size-large img {
+  max-width: 880px;
+}
+
 /***************************************
  * SUPPORT
  ***************************************/

@@ -1,7 +1,7 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
-export const TokensColor = ({ overview }) => {
+export const TokensColors = ({ overview }) => {
   const color = tokens.color as any
   const colors = []
   const validColors = [

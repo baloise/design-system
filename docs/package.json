@@ -11,10 +11,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "@baloise/design-system-tokens": "^13.7.1",
-    "@baloise/design-system-components": "13.7.1",
-    "@baloise/design-system-css": "13.7.1"
+    "@baloise/design-system-tokens": "14.0.1",
+    "@baloise/design-system-components": "14.0.1",
+    "@baloise/design-system-css": "14.0.1"
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
-export const TokensFontSizes = ({ overview }) => {
+export const TokensFontWeight = ({ overview }) => {
   const typography = tokens.typography as any
   const weights = []
 
