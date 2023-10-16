@@ -1,0 +1,102 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  ButtonCard,
+  Banner,
+  Lead,
+  InfoQuote,
+  ImageCanvas,
+  ColorCards,
+  ColorCard,
+  ColorCardRow,
+  TokensSpacing,
+} from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Spacing"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Spacing" section="Foundation" color="yellow" />
+
+<Lead>
+  Global spacings help us design experiences that scale with consistency, rhythm, and focus. Our spacing system follows
+  the same principles as our <a href="?path=/docs/foundation-grid-overview--page#grid">grid system</a>. It creates a
+  visual balance that makes content easier to scan for the user. With the application of consistent spacing the quality
+  of the UI can be improved.
+</Lead>
+
+## Spacing Sizes
+
+We use 10 spacings across the Design System.
+
+<TokensSpacing />
+
+## Spacing Guidelines
+
+### Heading + Content
+
+We use two sizes of spaces after a Heading to its own section 16px or 8px.
+
+import SpacingHeadings from '../assets/images/foundations/spacing/heading-content.svg'
+
+<ImageCanvas size="large">
+  <img loading="lazy" src={SpacingHeadings} />
+</ImageCanvas>
+
+Sections are divided with 128px, however if the section is connected we use 64px instead.
+
+import Sections from '../assets/images/foundations/spacing/sections.svg'
+
+<ImageCanvas size="large">
+  <img loading="lazy" src={Sections} />
+</ImageCanvas>
+
+### Cards
+
+To use multiple cards we recommend to use our grid to get the correct spacings. The space between cards is 32px.
+
+import CardLayout from '../assets/images/foundations/spacing/card-layout.svg'
+
+<ImageCanvas size="large">
+  <img loading="lazy" src={CardLayout} />
+</ImageCanvas>
+
+#### Inner Spacings
+
+Inner spacings of card is less the then the Heading + Content section.
+
+import Card1 from '../assets/images/foundations/spacing/card-1.svg'
+import Card2 from '../assets/images/foundations/spacing/card-2.svg'
+
+<br />
+<div class="columns">
+  <div class="column is-6">
+    <img loading="lazy" src={Card1} />
+    <p>Inner sections space is 8px</p>
+  </div>
+  <div class="column is-6">
+    <img loading="lazy" src={Card2} />
+    <p>Sections have a space of 24px</p>
+  </div>
+</div>
+
+### Examples
+
+#### Content Page
+
+import ContentPage1 from '../assets/images/foundations/spacing/content-page-1.svg'
+import ContentPage2 from '../assets/images/foundations/spacing/content-page-2.svg'
+
+<ImageCanvas size="large">
+  <img loading="lazy" src={ContentPage1} />
+</ImageCanvas>
+
+<br />
+
+<ImageCanvas size="large">
+  <img loading="lazy" src={ContentPage2} />
+</ImageCanvas>

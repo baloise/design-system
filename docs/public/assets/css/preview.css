@@ -132,7 +132,7 @@
 
 a.sbdocs-a:not(.button) {
   color: var(--bal-color-primary);
-  font-size: 1rem;
+  font-size: inherit;
   font-weight: var(--bal-link-font-weight) !important;
   text-decoration: var(--bal-link-text-decoration) !important;
   text-underline-offset: var(--bal-link-text-underline-offset) !important;
@@ -340,19 +340,23 @@ a.sbdocs-a.text-decoration-none {
 }
 
 .doc-image-canvas img {
-  flex: 1
+  flex: 1;
+  width: 80%;
 }
 
 .doc-image-canvas--size-small img {
   max-width: 220px;
+  max-height: 120px;
 }
 
 .doc-image-canvas--size-normal img {
   max-width: 440px;
+  max-height: 220px;
 }
 
 .doc-image-canvas--size-large img {
   max-width: 880px;
+  max-height: 440px;
 }
 
 /***************************************

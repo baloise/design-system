@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs'
+import { Banner, Lead, Code } from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Layout"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Layout" section="Foundation" color="red" />
+
+<Lead>The layout defines the skeleton of your page.</Lead>
+
+## Basic Application
+
+This is the layout for a basic web application.
+
+The layout is constructed with a container to give the content a max-width and a standard space to the right and left side
+of the screen. Navbar should be used for web applications and the Navigation for Webpages.
+The footer component automatically grabs the necessary links from our CMS so that they are always up to date.
+
+<Code
+  language="html"
+  border
+  code={`
+<bal-app class="has-sticky-footer">
+  <header>
+    <bal-navbar>
+      <bal-navbar-brand>App Title</bal-navbar-brand>
+    </bal-navbar>
+  </header>
+  <main>
+    <div class="container my-large">
+      <h1 class="title">Hello World!</h1>
+      <!-- Page content -->
+    </div>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+  </bal-app>
+`}
+/>
+
