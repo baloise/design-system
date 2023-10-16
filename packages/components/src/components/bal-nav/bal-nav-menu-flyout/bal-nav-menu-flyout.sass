@@ -15,6 +15,31 @@
   width: calc( 100% + 1rem + 1rem)
   margin-left: -1rem
   margin-right: -1rem
+  //
+  // container adjustment
+  &__container
+    flex-grow: 1
+    margin: 0 auto
+    position: relative
+    width: auto
+    width: 100% !important
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+    &--fluid
+      max-width: var(--bal-container-size-fluid) !important
+    &--detail-page
+      max-width: var(--bal-container-size-detail-page) !important
+    &--compact
+      max-width: var(--bal-container-size-compact) !important
+    &--blog-page
+      max-width: var(--bal-container-size-blog-page) !important
+    +tablet
+      padding-left: var(--bal-container-space-tablet)
+      padding-right: var(--bal-container-space-tablet)
+    +desktop
+      padding-left: var(--bal-container-space-desktop)
+      padding-right: var(--bal-container-space-desktop)
+      max-width: var(--bal-container-size-normal)
 
   // Line
   // --------------------------------------------------
