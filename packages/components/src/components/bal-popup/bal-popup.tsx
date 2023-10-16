@@ -59,6 +59,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
+  @State() minContainerWidth = 0
 
   log!: LogInstance
 
@@ -292,6 +293,17 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
    * @internal
    */
   @Method()
+  async setMinWidth(value: number): Promise<void> {
+    if (this.containerEl) {
+      this.containerEl.style.minWidth = `${value}px`
+      this.minContainerWidth = value
+    }
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
   async _emitChange(): Promise<void> {
     this.balChange.emit(this.presented)
   }
@@ -481,6 +493,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
             ...containerBlock.modifier(`variant-${this.activeVariant}`).class(),
           }}
           ref={containerEl => (this.containerEl = containerEl)}
+          style={{ minWidth: `${this.minContainerWidth}px` }}
         >
           <div
             class={{

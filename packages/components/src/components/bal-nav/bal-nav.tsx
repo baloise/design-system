@@ -136,24 +136,6 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
-  private toggleFlyout() {
-    if (this.isFlyoutActive) {
-      this.closeFlyout()
-    } else {
-      this.openFlyout()
-    }
-  }
-
-  private closeFlyout() {
-    console.trace('closeFlyout')
-    this.isFlyoutActive = false
-  }
-
-  private openFlyout() {
-    console.warn('openFlyout')
-    this.isFlyoutActive = true
-  }
-
   @Listen('balChange')
   listenToPopupChanges(event: BalEvents.BalPopupChange) {
     const target = event.target
@@ -260,6 +242,22 @@ export class NavMetaBar
    * ------------------------------------------------------
    */
 
+  private toggleFlyout() {
+    if (this.isFlyoutActive) {
+      this.closeFlyout()
+    } else {
+      this.openFlyout()
+    }
+  }
+
+  private closeFlyout() {
+    this.isFlyoutActive = false
+  }
+
+  private openFlyout() {
+    this.isFlyoutActive = true
+  }
+
   private async updateActiveItem(item: NavLinkItem) {
     if ('NavMetaLinkItem' === item.type) {
       this.activeMetaLinkValue = this.activeMetaLinkValue === item.value ? undefined : item.value
@@ -312,7 +310,6 @@ export class NavMetaBar
   }
 
   private onTouchToggleFlyout = (_ev: MouseEvent) => {
-    console.warn('onTouchToggleFlyout --> this.isFlyoutActive', this.isFlyoutActive)
     this.closeAllPopups()
     this.toggleFlyout()
 
@@ -368,7 +365,6 @@ export class NavMetaBar
   private onMenuBarTabChange = (value?: string): void => {
     if (this.activeMenuLinkValue === value) {
       this.toggleFlyout()
-      console.warn('onMenuBarTabChange --> this.isFlyoutActive', this.isFlyoutActive)
     } else {
       this.openFlyout()
     }
@@ -384,7 +380,6 @@ export class NavMetaBar
     const block = BEM.block('nav')
     const flyoutBlock = block.element('flyout')
 
-    console.warn('this.isFlyoutActive', this.isFlyoutActive)
     this.hasRenderedWithFlyoutActive = this.isFlyoutActive
 
     return (
