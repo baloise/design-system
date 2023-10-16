@@ -1,5 +1,9 @@
 # @baloise/design-system-icons
 
+## 14.0.1
+
+## 14.0.0
+
 ## 13.7.1
 
 ## 13.7.0

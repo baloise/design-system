@@ -1,5 +1,74 @@
 # @baloise/design-system-components
 
+## 14.0.1
+
+### Patch Changes
+
+- [`af2c20f52`](https://github.com/baloise/design-system/commit/af2c20f520d1978df0547be5767803ead6d66ed4) - Raise the z-index value of the toast to ensure it overlays a modal.
+
+- Updated dependencies [[`af2c20f52`](https://github.com/baloise/design-system/commit/af2c20f520d1978df0547be5767803ead6d66ed4)]:
+  - @baloise/design-system-tokens@14.0.1
+  - @baloise/design-system-css@14.0.1
+  - @baloise/design-system-fonts@14.0.1
+  - @baloise/design-system-icons@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Create z-index design tokens and adjust the components.
+
+In version 14, we've introduced `z-index` values as design tokens. Consequently, adjustments were made to each component.
+If you've been using **custom z-index values** in your app, please be aware that this could potentially result in broken layouts.
+
+After upgrading the design system in your app, please take a moment to check if any layouts are affected. If necessary, make adjustments to the z-index accordingly.
+
+| Name       | CSS-Variable               | Value     | Description                                                                                                          |
+| ---------- | -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| deep       | `--bal-z-index-deep`       | `-999999` | Deep z-index is used to stack something behind everything else.                                                      |
+| default    | `--bal-z-index-default`    | `1`       | The default z-index for components and elements inside components.                                                   |
+| masked     | `--bal-z-index-masked`     | `100`     | Default z-index for masked interface elements.                                                                       |
+| mask       | `--bal-z-index-mask`       | `200`     | Default z-index for masking interface elements.                                                                      |
+| sticky     | `--bal-z-index-sticky`     | `300`     | Default z-index for sticky interface elements.                                                                       |
+| navigation | `--bal-z-index-navigation` | `400`     | Default z-index for navigation.                                                                                      |
+| popup      | `--bal-z-index-popup`      | `1000`    | Default z-index for popups that stacks on top of all other elements.                                                 |
+| modal      | `--bal-z-index-modal`      | `1100`    | Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible. |
+| toast      | `--bal-z-index-toast`      | `1200`    | Default z-index for toast and snackbar messages.                                                                     |
+| tooltip    | `--bal-z-index-tooltip`    | `1300`    | Default z-index for tooltips.                                                                                        |
+
+Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs/foundation-elevation-design-tokens--page).
+
+### Minor Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Introducing the new and optimized `bal-nav` component. Designed for enhanced SEO and performance,
+  it will replace the `bar-navigation` component in the upcoming breaking version release.
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The size of the logo component(in the navbar too) can be manually set to either 'normal' or 'small', allowing for manual adjustment and overriding the automatic responsive selection.
+
+- [#940](https://github.com/baloise/design-system/pull/940) - add new component popup
+
+- [#1040](https://github.com/baloise/design-system/pull/1040) - Introduce a new 'X' icon and replace the existing Twitter icon with the new one (X).
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The display of the checkbox component can be switched to 'inline'. This feature proves particularly useful for table integrations.
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - The pagination component offers alignment options: 'start', 'center' (default), and 'end'. Additionally, the size can be adjusted to 'small' or 'normal' (default).
+
+### Patch Changes
+
+- [#1044](https://github.com/baloise/design-system/pull/1044) - Send the `balBlur` event only when the group of radios or checkboxes is left.
+
+- [#1013](https://github.com/baloise/design-system/pull/1013) - To enhance the user experience during page navigation, the pagination component will now maintain a consistent width.
+
+- [#1050](https://github.com/baloise/design-system/pull/1050) - The scroll handler will now only scroll on disconnection when it is disabled.
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Refine the appearance of disabled small controls on the pagination.
+
+- Updated dependencies [[`01cfd5654`](https://github.com/baloise/design-system/commit/01cfd56549b2b602bb684c0b46d26d5262bd183b), [`c7224e882`](https://github.com/baloise/design-system/commit/c7224e882e0150b6de84772c52bb7c6eb2d724d4), [`0c9eea8ec`](https://github.com/baloise/design-system/commit/0c9eea8ec9492f1eaa0e1ff536fbccb09c56f8fc)]:
+  - @baloise/design-system-tokens@14.0.0
+  - @baloise/design-system-css@14.0.0
+  - @baloise/design-system-icons@14.0.0
+  - @baloise/design-system-fonts@14.0.0
+
 ## 13.7.1
 
 ### Patch Changes

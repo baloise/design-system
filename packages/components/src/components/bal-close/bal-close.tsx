@@ -29,7 +29,7 @@ export class Close implements ComponentInterface, BalConfigObserver {
    */
   @Prop() inverted = false
 
-  componentWillLoad() {
+  componentWillRender() {
     this.inheritedAttributes = inheritAttributes(this.el, ['tabindex'])
   }
 

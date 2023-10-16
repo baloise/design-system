@@ -409,7 +409,6 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
           ...block.modifier('backdrop').class(this.backdrop),
         }}
       >
-        <slot></slot>
         {!this.mobileTop && (
           <div
             ref={el => {
@@ -423,6 +422,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
             }}
           ></div>
         )}
+        <slot></slot>
       </Host>
     )
   }

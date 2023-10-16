@@ -1,5 +1,13 @@
 # @baloise/design-system-icons
 
+## 14.0.1
+
+## 14.0.0
+
+### Minor Changes
+
+- [#1040](https://github.com/baloise/design-system/pull/1040) - Introduce a new 'X' icon and replace the existing Twitter icon with the new one (X).
+
 ## 13.7.1
 
 ## 13.7.0

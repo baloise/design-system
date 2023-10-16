@@ -44,6 +44,8 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         inverted={inverted}
         onClick={() => onPreviousClick()}
         disabled={isFirst}
+        aria-hidden={isFirst ? 'true' : null}
+        tabindex="-1"
         data-testid="bal-carousel-control-left"
         title={leftControlTitle}
       ></bal-button>
@@ -60,6 +62,8 @@ export const SmallControl: FunctionalComponent<SmallControlProps> = ({
         inverted={inverted}
         onClick={() => onNextClick()}
         disabled={isLast}
+        aria-hidden={isLast ? 'true' : null}
+        tabindex="-1"
         data-testid="bal-carousel-control-right"
         title={rightControlTitle}
       ></bal-button>
