@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-16T08:37:18",
+  "timestamp": "2023-10-16T12:25:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "3.2.2",
@@ -1353,6 +1353,7 @@
         "bal-doc-code-sandbox",
         "bal-hint",
         "bal-input-stepper",
+        "bal-nav",
         "bal-navbar-brand",
         "bal-navigation",
         "bal-navigation-popover",
@@ -1393,6 +1394,9 @@
           "bal-button"
         ],
         "bal-input-stepper": [
+          "bal-button"
+        ],
+        "bal-nav": [
           "bal-button"
         ],
         "bal-navbar-brand": [
@@ -3794,6 +3798,7 @@
       "dependents": [
         "bal-modal-header",
         "bal-navigation-popover",
+        "bal-popup",
         "bal-snackbar",
         "bal-tag",
         "bal-toast"
@@ -3809,6 +3814,9 @@
           "bal-close"
         ],
         "bal-navigation-popover": [
+          "bal-close"
+        ],
+        "bal-popup": [
           "bal-close"
         ],
         "bal-snackbar": [
@@ -5510,7 +5518,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"danger-dark\" | \"danger-darker\" | \"grey\" | \"grey-dark\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
+          "type": "\"danger\" | \"danger-dark\" | \"danger-darker\" | \"grey\" | \"grey-dark\" | \"grey-light\" | \"light-blue\" | \"primary\" | \"primary-dark\" | \"primary-light\" | \"success\" | \"warning\" | \"white\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
@@ -5536,6 +5544,10 @@
             },
             {
               "value": "grey-dark",
+              "type": "string"
+            },
+            {
+              "value": "grey-light",
               "type": "string"
             },
             {
@@ -5852,7 +5864,8 @@
         "bal-doc-tokens-shadow",
         "bal-doc-tokens-spacing",
         "bal-doc-tokens-spacing-sizes",
-        "bal-doc-tokens-text-shadow"
+        "bal-doc-tokens-text-shadow",
+        "bal-doc-tokens-z-index"
       ],
       "dependencies": [
         "bal-app"
@@ -5910,6 +5923,9 @@
           "bal-doc-app"
         ],
         "bal-doc-tokens-text-shadow": [
+          "bal-doc-app"
+        ],
+        "bal-doc-tokens-z-index": [
           "bal-doc-app"
         ]
       }
@@ -7271,6 +7287,33 @@
       ],
       "dependencyGraph": {
         "bal-doc-tokens-text-shadow": [
+          "bal-doc-app"
+        ],
+        "bal-doc-app": [
+          "bal-app"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-z-index.tsx",
+      "encapsulation": "none",
+      "tag": "bal-doc-tokens-z-index",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "bal-doc-app"
+      ],
+      "dependencyGraph": {
+        "bal-doc-tokens-z-index": [
           "bal-doc-app"
         ],
         "bal-doc-app": [
@@ -8956,6 +8999,7 @@
         "bal-modal-header",
         "bal-navigation-menu-list",
         "bal-navigation-popover",
+        "bal-popup",
         "bal-snackbar"
       ],
       "dependencies": [],
@@ -8976,6 +9020,9 @@
           "bal-heading"
         ],
         "bal-navigation-popover": [
+          "bal-heading"
+        ],
+        "bal-popup": [
           "bal-heading"
         ],
         "bal-snackbar": [
@@ -9369,6 +9416,7 @@
         "bal-footer",
         "bal-hint",
         "bal-list-item-accordion-head",
+        "bal-nav",
         "bal-pagination",
         "bal-select",
         "bal-snackbar",
@@ -9419,6 +9467,9 @@
           "bal-icon"
         ],
         "bal-list-item-accordion-head": [
+          "bal-icon"
+        ],
+        "bal-nav": [
           "bal-icon"
         ],
         "bal-pagination": [
@@ -11840,6 +11891,7 @@
       "dependents": [
         "bal-doc-download",
         "bal-file-upload",
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
@@ -11848,6 +11900,9 @@
           "bal-list"
         ],
         "bal-file-upload": [
+          "bal-list"
+        ],
+        "bal-nav": [
           "bal-list"
         ],
         "bal-navigation": [
@@ -12095,6 +12150,7 @@
       "dependents": [
         "bal-doc-download",
         "bal-file-upload",
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
@@ -12103,6 +12159,9 @@
           "bal-list-item"
         ],
         "bal-file-upload": [
+          "bal-list-item"
+        ],
+        "bal-nav": [
           "bal-list-item"
         ],
         "bal-navigation": [
@@ -12197,10 +12256,14 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-nav": [
+          "bal-list-item-accordion-body"
+        ],
         "bal-navigation": [
           "bal-list-item-accordion-body"
         ]
@@ -12271,6 +12334,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [
@@ -12281,6 +12345,9 @@
         "bal-list-item-accordion-head": [
           "bal-list-item-icon",
           "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-list-item-accordion-head"
         ],
         "bal-navigation": [
           "bal-list-item-accordion-head"
@@ -12324,6 +12391,7 @@
       "dependents": [
         "bal-doc-download",
         "bal-file-upload",
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
@@ -12332,6 +12400,9 @@
           "bal-list-item-content"
         ],
         "bal-file-upload": [
+          "bal-list-item-content"
+        ],
+        "bal-nav": [
           "bal-list-item-content"
         ],
         "bal-navigation": [
@@ -12593,6 +12664,7 @@
       "dependents": [
         "bal-doc-download",
         "bal-file-upload",
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [
@@ -12606,6 +12678,9 @@
           "bal-list-item-title"
         ],
         "bal-file-upload": [
+          "bal-list-item-title"
+        ],
+        "bal-nav": [
           "bal-list-item-title"
         ],
         "bal-navigation": [
@@ -12690,12 +12765,16 @@
       "parts": [],
       "dependents": [
         "bal-footer",
+        "bal-nav",
         "bal-navbar-brand",
         "bal-navigation"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-footer": [
+          "bal-logo"
+        ],
+        "bal-nav": [
           "bal-logo"
         ],
         "bal-navbar-brand": [
@@ -13031,6 +13110,669 @@
         ],
         "bal-close": [
           "bal-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "buttons",
+          "type": "BalNavMetaButton[]",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Link level structure.",
+          "docsTags": [],
+          "default": "[]",
+          "values": [
+            {
+              "type": "BalNavMetaButton[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "logo",
+          "type": "BalNavLogoLink | undefined",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Link level structure.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "BalNavLogoLink"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "options",
+          "type": "BalNavMetaLinkItem[]",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Link level structure.",
+          "docsTags": [],
+          "default": "[]",
+          "values": [
+            {
+              "type": "BalNavMetaLinkItem[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "balNavItemClick",
+          "detail": "BalNavClickedItem",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when a nav link item is clicked. This event can be used to\nadd data tracking",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "balChange",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "click",
+          "target": "document",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "bal-nav-meta-bar",
+        "bal-stack",
+        "bal-tabs",
+        "bal-nav-menu-bar",
+        "bal-nav-menu-flyout",
+        "bal-nav-link",
+        "bal-button",
+        "bal-nav-link-grid",
+        "bal-nav-link-grid-col",
+        "bal-list",
+        "bal-list-item",
+        "bal-list-item-content",
+        "bal-list-item-title",
+        "bal-list-item-accordion-head",
+        "bal-list-item-accordion-body",
+        "bal-logo",
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-meta-bar",
+          "bal-stack",
+          "bal-tabs",
+          "bal-nav-menu-bar",
+          "bal-nav-menu-flyout",
+          "bal-nav-link",
+          "bal-button",
+          "bal-nav-link-grid",
+          "bal-nav-link-grid-col",
+          "bal-list",
+          "bal-list-item",
+          "bal-list-item-content",
+          "bal-list-item-title",
+          "bal-list-item-accordion-head",
+          "bal-list-item-accordion-body",
+          "bal-logo",
+          "bal-icon"
+        ],
+        "bal-tabs": [
+          "bal-select",
+          "bal-select-option",
+          "bal-carousel",
+          "bal-carousel-item",
+          "bal-icon",
+          "bal-badge"
+        ],
+        "bal-select": [
+          "bal-tag",
+          "bal-popover",
+          "bal-icon",
+          "bal-popover-content",
+          "bal-checkbox"
+        ],
+        "bal-tag": [
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ],
+        "bal-carousel": [
+          "bal-card",
+          "bal-card-content",
+          "bal-button",
+          "bal-pagination"
+        ],
+        "bal-button": [
+          "bal-spinner",
+          "bal-icon"
+        ],
+        "bal-pagination": [
+          "bal-text",
+          "bal-button",
+          "bal-icon"
+        ],
+        "bal-badge": [
+          "bal-icon"
+        ],
+        "bal-list-item-title": [
+          "bal-heading"
+        ],
+        "bal-list-item-accordion-head": [
+          "bal-list-item-icon",
+          "bal-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-link/bal-nav-link.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-link",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "clickable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "clickable",
+          "reflectToAttr": false,
+          "docs": "If `true` the link can be clickable",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "href",
+          "type": "string | undefined",
+          "mutable": false,
+          "attr": "href",
+          "reflectToAttr": false,
+          "docs": "Specifies the URL of the page the link goes to",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "selected",
+          "reflectToAttr": false,
+          "docs": "If `true` the link gets selected with a underline",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "target",
+          "type": "\" _parent\" | \"_blank\" | \"_self\" | \"_top\"",
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "Specifies where to display the linked URL.\nOnly applies when an `href` is provided.",
+          "docsTags": [],
+          "default": "'_self'",
+          "values": [
+            {
+              "value": " _parent",
+              "type": "string"
+            },
+            {
+              "value": "_blank",
+              "type": "string"
+            },
+            {
+              "value": "_self",
+              "type": "string"
+            },
+            {
+              "value": "_top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"\" | \"overview\" | \"title\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Defines the variant of the link",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "overview",
+              "type": "string"
+            },
+            {
+              "value": "title",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-link"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-link-grid/bal-nav-link-grid.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-link-grid",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-link-grid"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-link-grid-col/bal-nav-link-grid-col.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-link-grid-col",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "staticCol",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "static-col",
+          "reflectToAttr": false,
+          "docs": "Defines the static column which is always aligned to the right",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-link-grid-col"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-link-group/bal-nav-link-group.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-link-group",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the group",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "gray",
+              "type": "string"
+            },
+            {
+              "value": "green",
+              "type": "string"
+            },
+            {
+              "value": "purple",
+              "type": "string"
+            },
+            {
+              "value": "red",
+              "type": "string"
+            },
+            {
+              "value": "yellow",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-menu-bar/bal-nav-menu-bar.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-menu-bar",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "invisible",
+          "type": "\"mobile\" | \"none\" | \"tablet\"",
+          "mutable": false,
+          "attr": "invisible",
+          "reflectToAttr": false,
+          "docs": "Tells when to hide the bar",
+          "docsTags": [],
+          "default": "'none'",
+          "values": [
+            {
+              "value": "mobile",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "tablet",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"fixed-top\" | \"none\"",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the bar",
+          "docsTags": [],
+          "default": "'none'",
+          "values": [
+            {
+              "value": "fixed-top",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-menu-bar"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-menu-flyout/bal-nav-menu-flyout.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-menu-flyout",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-menu-flyout"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/bal-nav/bal-nav-meta-bar/bal-nav-meta-bar.tsx",
+      "encapsulation": "none",
+      "tag": "bal-nav-meta-bar",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "invisible",
+          "type": "\"mobile\" | \"none\" | \"tablet\"",
+          "mutable": false,
+          "attr": "invisible",
+          "reflectToAttr": false,
+          "docs": "Tells when to hide the bar",
+          "docsTags": [],
+          "default": "'none'",
+          "values": [
+            {
+              "value": "mobile",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "tablet",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"fixed-bottom\" | \"fixed-top\" | \"none\" | \"sticky-top\"",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "Defines the position of the bar",
+          "docsTags": [],
+          "default": "'none'",
+          "values": [
+            {
+              "value": "fixed-bottom",
+              "type": "string"
+            },
+            {
+              "value": "fixed-top",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "sticky-top",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "\"normal\" | \"small\"",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Defines the height of the bar",
+          "docsTags": [],
+          "default": "'normal'",
+          "values": [
+            {
+              "value": "normal",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"grey\" | \"primary\" | \"white\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Defines the color variant",
+          "docsTags": [],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "white",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [
+        {
+          "event": "scroll",
+          "target": "window",
+          "capture": false,
+          "passive": true
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [
+        "bal-nav"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-nav": [
+          "bal-nav-meta-bar"
         ]
       }
     },
@@ -16639,6 +17381,373 @@
       }
     },
     {
+      "filePath": "./src/components/bal-popup/bal-popup.tsx",
+      "encapsulation": "none",
+      "tag": "bal-popup",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "active",
+          "reflectToAttr": false,
+          "docs": "If `true` the popup is open.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "arrow",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "arrow",
+          "reflectToAttr": false,
+          "docs": "If `true`, it shows a little indicator to the trigger element.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "backdrop",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "backdrop",
+          "reflectToAttr": false,
+          "docs": "If `true`, a backdrop will be displayed behind the modal.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "backdropDismiss",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "backdrop-dismiss",
+          "reflectToAttr": false,
+          "docs": "If `true`, the modal can be closed with the click outside of the modal",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": false,
+          "docs": "If `true`, the modal can be closed with the escape key or the little close button.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "contentWidth",
+          "type": "number | undefined",
+          "mutable": false,
+          "attr": "content-width",
+          "reflectToAttr": false,
+          "docs": "Defines the width of the content",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Label or title of the popup element",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "mutable": false,
+          "attr": "offset",
+          "reflectToAttr": false,
+          "docs": "Offset form trigger to popup.",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placement",
+          "type": "\"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+          "mutable": false,
+          "attr": "placement",
+          "reflectToAttr": false,
+          "docs": "If set it turns a popover into a fullscreen or a drawer on touch devices",
+          "docsTags": [],
+          "default": "'bottom'",
+          "values": [
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reference",
+          "type": "string | undefined",
+          "mutable": false,
+          "attr": "reference",
+          "reflectToAttr": false,
+          "docs": "Id of the reference element default is the trigger element.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"drawer\" | \"fullscreen\" | \"popover\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "Defines the variant / type of popup",
+          "docsTags": [],
+          "default": "'popover'",
+          "values": [
+            {
+              "value": "drawer",
+              "type": "string"
+            },
+            {
+              "value": "fullscreen",
+              "type": "string"
+            },
+            {
+              "value": "popover",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "dismiss",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "dismiss() => Promise<void>",
+          "parameters": [],
+          "docs": "Closes the popup",
+          "docsTags": []
+        },
+        {
+          "name": "present",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "present() => Promise<void>",
+          "parameters": [],
+          "docs": "Opens the popup",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "Triggers the popup",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "balChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the accordion has opened or closed",
+          "docsTags": []
+        },
+        {
+          "event": "balDidAnimate",
+          "detail": "boolean",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the animation has finished",
+          "docsTags": []
+        },
+        {
+          "event": "balWillAnimate",
+          "detail": "boolean",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted before the animation starts",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "window",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "keydown",
+          "target": "body",
+          "capture": false,
+          "passive": false
+        },
+        {
+          "event": "mousedown",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "mouseup",
+          "capture": false,
+          "passive": true
+        },
+        {
+          "event": "click",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "bal-stack",
+        "bal-heading",
+        "bal-close"
+      ],
+      "dependencyGraph": {
+        "bal-popup": [
+          "bal-stack",
+          "bal-heading",
+          "bal-close"
+        ],
+        "bal-close": [
+          "bal-icon"
+        ]
+      }
+    },
+    {
       "filePath": "./src/components/bal-progress-bar/bal-progress-bar.tsx",
       "encapsulation": "none",
       "tag": "bal-progress-bar",
@@ -18974,6 +20083,23 @@
           "required": false
         },
         {
+          "name": "fitContent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "fit-content",
+          "reflectToAttr": false,
+          "docs": "Defines the width of the stack to be exactly the with of the content.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "layout",
           "type": "\"\" | \"horizontal\" | \"horizontal-reverse\" | \"vertical\" | \"vertical-reverse\"",
           "mutable": false,
@@ -19170,6 +20296,124 @@
           "required": false
         },
         {
+          "name": "spaceColumn",
+          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+          "mutable": false,
+          "attr": "space-column",
+          "reflectToAttr": false,
+          "docs": "Defines the space between the child elements. Default is normal.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "normal",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "x-small",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
+              "type": "string"
+            },
+            {
+              "value": "xx-small",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "spaceRow",
+          "type": "\"\" | \"auto\" | \"large\" | \"medium\" | \"none\" | \"normal\" | \"small\" | \"x-large\" | \"x-small\" | \"xx-large\" | \"xx-small\" | undefined",
+          "mutable": false,
+          "attr": "space-row",
+          "reflectToAttr": false,
+          "docs": "Defines the space between the child elements. Default is normal.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "medium",
+              "type": "string"
+            },
+            {
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "value": "normal",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "x-small",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
+              "type": "string"
+            },
+            {
+              "value": "xx-small",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "useWrap",
           "type": "boolean",
           "mutable": false,
@@ -19194,10 +20438,18 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-nav",
+        "bal-popup",
         "bal-tooltip"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-nav": [
+          "bal-stack"
+        ],
+        "bal-popup": [
+          "bal-stack"
+        ],
         "bal-tooltip": [
           "bal-stack"
         ]
@@ -20673,6 +21925,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [
@@ -20722,6 +21975,9 @@
         ],
         "bal-badge": [
           "bal-icon"
+        ],
+        "bal-nav": [
+          "bal-tabs"
         ],
         "bal-navigation": [
           "bal-tabs"

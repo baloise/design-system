@@ -12,6 +12,6 @@ The component can be customization by changing the CSS variables.
 
 ### Variables​
 
-| Variable           |
-| ------------------ |
-| `--bal-app-height` |
+| Variable               |
+| ---------------------- |
+| `--bal-nav-background` |

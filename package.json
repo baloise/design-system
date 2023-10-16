@@ -61,9 +61,9 @@
     "==================== DOCUMENTATION ============": "================================",
     "docs": "turbo run docs --force --filter=@baloise* && npm run docs:post",
     "docs:start": "npm --prefix docs run start",
-    "docs:post": "node .build/create-tags-list.js && node .build/docs-copy.js && node .build/version.js",
+    "docs:post": "node .build/create-tags-list.js && node .build/docs-copy.js",
     "docs:serve": "http-server storybook -p 8080",
-    "storybook": "npm run docs && npm --prefix packages/components run storybook",
+    "storybook": "npm run docs && npm --prefix docs run storybook",
     "==================== INSTALLATION / SETUP =====": "================================",
     "precommit": "lint-staged --allow-empty",
     "cy:install": "npm --prefix test run install",
@@ -174,7 +174,17 @@
     "vitest": "~0.34.2",
     "vue": "~3.3.4",
     "workbox-build": "~4.3.1",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@storybook/addon-essentials": "^7.4.5",
+    "@storybook/addon-interactions": "^7.4.5",
+    "@storybook/addon-links": "^7.4.5",
+    "@storybook/blocks": "^7.4.5",
+    "@storybook/html": "^7.4.5",
+    "@storybook/html-vite": "^7.4.5",
+    "@storybook/manager-api": "^7.4.5",
+    "@storybook/testing-library": "^0.2.1",
+    "remark-gfm": "^4.0.0",
+    "storybook": "^7.4.5"
   },
   "dependencies": {
     "immer": "^10.0.2"
