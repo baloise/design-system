@@ -1,0 +1,31 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyTextTransform, CssResponsiveTable } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Text Transform"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Transform" section="CSS Utilities" color="green" />
+
+<Lead>Determines the transformation applied to text within an element.</Lead>
+
+## Classes
+
+<CssTypographyTextTransform />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<p class="is-capitalized">capitalized - Lorem ipsum dolor sit amet</p>
+<p class="is-lowercase">lowercase -Lorem ipsum dolor sit amet</p>
+<p class="is-uppercase">uppercase - Lorem ipsum dolor sit amet</p>
+`}
+/>
+

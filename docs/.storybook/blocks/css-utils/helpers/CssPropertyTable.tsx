@@ -5,12 +5,14 @@ export const CssPropertyTable = ({
   property,
   prefix = '',
   list = [],
+  responsive = false,
   withoutProperty = false,
 }: {
-  keyValue?: any
-  property: string
   prefix: string
+  keyValue?: any
+  property?: string
   list?: string[]
+  responsive?: boolean
   withoutProperty?: boolean
 }) => {
   if (!keyValue) {
@@ -31,8 +33,13 @@ export const CssPropertyTable = ({
           style={{ position: 'sticky', top: '0', left: '0' }}
         >
           <tr style={{ position: 'sticky', top: '0', left: '0' }}>
-            <th className="pt-medium">Class</th>
+            <th className="pt-medium" style={{ minWidth: '220px' }}>
+              Class
+            </th>
             <th className="pt-medium">Property</th>
+            {responsive ? <th className="pt-medium">Mobile</th> : ''}
+            {responsive ? <th className="pt-medium">Tablet</th> : ''}
+            {responsive ? <th className="pt-medium">Desktop</th> : ''}
           </tr>
         </thead>
         <tbody>
@@ -44,10 +51,14 @@ export const CssPropertyTable = ({
               <td>
                 <pre className="doc-table-pre">
                   <code>
-                    {property}: {item.value}
+                    {property || item.property}{(property || item.property) && item.value ? ': ' : ''}
+                    {item.value}
                   </code>
                 </pre>
               </td>
+              {responsive ? <td>{item.valueMobile}</td> : ''}
+              {responsive ? <td>{item.valueTablet}</td> : ''}
+              {responsive ? <td>{item.valueDesktop}</td> : ''}
             </tr>
           ))}
         </tbody>

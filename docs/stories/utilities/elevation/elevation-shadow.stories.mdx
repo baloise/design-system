@@ -1,0 +1,44 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssElevationShadow } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Elevation/Shadow"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Shadow" section="CSS Utilities" color="green" />
+
+<Lead>Determines the box-shadow or text-shadow effect applied to an element.</Lead>
+
+## Classes
+
+<CssElevationShadow />
+
+## Box Shadow
+
+The default shadow for cards is the normal one. Reserve the large shadow, for instance, for hover effects.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-center is-justify-content-center fg-xx-large">
+    <div class="has-shadow-normal is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">shadow-normal</div>
+    <div class="has-shadow-large is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">shadow-large</div>
+</div>
+`}
+/>
+
+## Text Shadow
+
+Text with a light shadow to increase readability on images.
+
+<Code
+  language="html"
+  code={`
+<p class="has-text-shadow">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+`}
+/>

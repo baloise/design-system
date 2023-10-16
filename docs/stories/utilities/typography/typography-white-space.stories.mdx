@@ -1,0 +1,30 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyWhiteSpace, CssResponsiveTable } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/White Space"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="White Space" section="CSS Utilities" color="green" />
+
+<Lead>Determines if a word should wrap based on white space or not.</Lead>
+
+## Classes
+
+<CssTypographyWhiteSpace />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<p class="is-white-space-normal">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+<p class="is-white-space-nowrap">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+`}
+/>
+

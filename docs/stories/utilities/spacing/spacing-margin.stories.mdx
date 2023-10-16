@@ -1,0 +1,83 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssSpacingMargin, CssResponsiveTable } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Spacing/Marging"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Margin" section="CSS Utilities" color="green" />
+
+<Lead>Determines if a word should wrap based on white space or not.</Lead>
+
+## Classes
+
+Spacing can be set with **margin** `m*` for all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+
+<CssSpacingMargin />
+
+## Single Side Margin
+
+Margin can be defined for a specific edge.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+  <div class="has-background-red-2">
+      <div class="mt-normal has-background-green-3 p-large">mt-normal</div>
+  </div>
+  <div class="has-background-red-2">
+      <div class="mr-large has-background-green-3 p-large">mr-large</div>
+  </div>
+  <div class="has-background-red-2">
+      <div class="mb-small has-background-green-3 p-large">mb-small</div>
+  </div>
+  <div class="has-background-red-2">
+      <div class="ml-medium has-background-green-3 p-large">ml-medium</div>
+  </div>
+</div>
+`}
+/>
+
+## Horizontal Margin
+
+Shorthand classes allow you to define the same margin value for both the left and right sides.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+    <div class="has-background-red-2 has-radius-normal">
+        <div class="mx-large has-radius-normal has-background-green-3 font-bold p-normal">mx-large</div>
+    </div>
+</div>
+`}
+/>
+
+## Vertical Margin
+
+The same margin value can also be defined at the top and bottom sides using shorthand classes.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+    <div class="has-background-red-2 has-radius-normal">
+        <div class="my-large has-radius-normal has-background-green-3 font-bold p-normal">my-large</div>
+    </div>
+</div>
+`}
+/>
