@@ -1,0 +1,94 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxAlignSelf } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Align Self"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Align Self" section="CSS Utilities" color="green" />
+
+<Lead>Specifies the alignment for a specific element along the cross axis.</Lead>
+
+## Classes
+
+<CssFlexboxAlignSelf />
+
+## Start
+
+Elements are positioned at the beginning of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="is-flex is-align-self-start is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## Center
+
+Elements are centered within the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="is-flex is-align-self-center is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## End
+
+Elements are aligned to the end of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="is-flex is-align-self-end is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>
+
+## Stretch
+
+The elements are expanded to fill the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; height: 50px">1</div>
+    <div class="is-flex is-align-self-stretch is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; height: 50px">3</div>
+</div>
+`}
+/>
+
+## Baseline
+
+Elements are aligned with the baseline of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">1</div>
+    <div class="is-flex is-align-self-baseline is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">2</div>
+    <div class="is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal" style="min-width: 200px; min-height: 50px">3</div>
+</div>
+`}
+/>

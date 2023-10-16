@@ -5,11 +5,13 @@ export const CssPropertyTable = ({
   property,
   prefix = '',
   list = [],
+  withoutProperty = false,
 }: {
   keyValue?: any
   property: string
   prefix: string
   list?: string[]
+  withoutProperty?: boolean
 }) => {
   if (!keyValue) {
     keyValue = list.map(item => ({ key: item, value: item })) as any
@@ -37,10 +39,7 @@ export const CssPropertyTable = ({
           {keyValue.map(item => (
             <tr key={item.key}>
               <td>
-                <b>
-                  {prefix}
-                  {property}-{item.key}
-                </b>
+                <b>{`${prefix}${withoutProperty ? '' : `${property}-`}${item.key}`}</b>
               </td>
               <td>
                 <pre className="doc-table-pre">

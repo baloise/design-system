@@ -20,27 +20,30 @@ The classes `has-text-xxx` defines the font-color. For more colors have a look a
 
 <CssTypographyFamily />
 
-## Examples
+## Text Font Family
 
-Light is only available for font family title.
+The default font family is **BaloiseText**, which is available in both `regular` and `bold` weights.
+It defaults to using the primary color and has a font size of 1rem. Use the class `is-family-text` to overide a given font-family.
 
-### Text Font Family
-
-<Code language="html" code={`
+<Code
+  language="html"
+  code={`
 <h1 class="title is-family-text">Text - Lorem ipsum dolor sit.</h1>
 <p>Text - Lorem ipsum dolor sit.</p>
-`} />
+`}
+/>
 
-### Title Font Family
+## Title Font Family
 
-<Code language="html" code={`
+For headings and titles, the **BaloiseHeadline** font family is available in both `light` and `bold` variants.
+By default, HTML heading tags and the classes `title` and `subtitle` automatically apply the title font family.
+To use a different font family, override it using the class `is-family-title`.
+
+<Code
+  language="html"
+  code={`
 <h1 class="title">Title - Lorem ipsum dolor sit.</h1>
 <h1 class="subtitle">Subtitle - Lorem ipsum dolor sit.</h1>
 <p class="is-family-title">Title - Lorem ipsum dolor sit.</p>
-`} />
-
-
-
-
-
-
+`}
+/>

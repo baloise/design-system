@@ -16,32 +16,30 @@ import { Banner, Lead, Code, CssTypographyWeight } from '../../../.storybook/blo
 
 ## Classes
 
-The classes `has-text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
-
 <CssTypographyWeight />
 
-## Examples
+## Bold
 
-Light is only available for font family title.
-
-### Text Font Family
+Both font families offer a bold style option.
 
 <Code language="html" code={`
-<p>Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="has-text-weight-light">Light - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<h1 class="has-text-weight-bold title">Bold - Title</h1>
 <p class="has-text-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 `} />
 
-### Title Font Family
+## Regular
+
+Onyl the **text** font families, which is default, offer a regular style option.
 
 <Code language="html" code={`
-<p class="is-family-title">Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="is-family-title has-text-weight-light">Light - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-<p class="is-family-title has-text-weight-bold">Bold - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+<p>Regular - Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
 `} />
 
+## Light
 
+Onyl the **title** font families offer a light style option.
 
-
-
+<Code language="html" code={`
+<h1 class="has-text-weight-light title">Light - Title</h1>
+`} />
 

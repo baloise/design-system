@@ -1,0 +1,38 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxGap } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Gap"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Gap" section="CSS Utilities" color="green" />
+
+<Lead>Specifies the gap size between rows and columns. It is a shorthand for column-gap and row-gap.</Lead>
+
+## Classes
+
+<CssFlexboxGap />
+
+## Gap
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap fg-normal mb-normal">
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+</div>
+<div class="is-flex is-flex-wrap-wrap fg-xx-large">
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+</div>
+`}
+/>
+
