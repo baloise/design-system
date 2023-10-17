@@ -397,6 +397,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
       this._present()
+      this.lastTrigger = this.trigger
     } else {
       this.toggle()
     }
