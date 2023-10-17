@@ -20,18 +20,6 @@
   margin: 0 auto
   position: relative
   width: auto
-  width: 100% !important
-  padding-left: var(--bal-container-space)
-  padding-right: var(--bal-container-space)
-  +tablet
-    padding-left: var(--bal-container-space-tablet)
-    padding-right: var(--bal-container-space-tablet)
-  +desktop
-    padding-left: var(--bal-container-space-desktop)
-    padding-right: var(--bal-container-space-desktop)
-    max-width: var(--bal-container-size-normal)
-
-
   //
   // variants
   &--variant-popover
@@ -48,10 +36,14 @@
     min-width: 100%
     max-width: 100% !important
     min-height: var(--bal-app-height, 100%)
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
   &--variant-drawer
     position: fixed
     border-top-left-radius: var(--bal-popup-variant-drawer-radius)
     border-top-right-radius: var(--bal-popup-variant-drawer-radius)
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
     width: 100%
 
 // Popup Container Inner
