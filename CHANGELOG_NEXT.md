@@ -700,7 +700,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.20.2](https://github.com/baloise/design-system/compare/v10.20.1...v10.20.2) (2022-09-02)
 
-
 ### Bug Fixes
 
 * fix bal-input mask when deleting last character error popped up ([db14042](https://github.com/baloise/design-system/commit/db14042311dc516a2b752b41593ae4dcdb5fba09))
