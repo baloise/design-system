@@ -12,7 +12,7 @@ addons.register('my/toolbar', () => {
     // match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: ({ active }) => {
       return (
-        <a className="my-version" href='?path=/docs/changelog--page'>
+        <a className="my-version" href="?path=/docs/changelog--page">
           <span className="my-version__label">Latest:</span>
           {version}
         </a>

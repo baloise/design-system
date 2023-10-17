@@ -125,9 +125,7 @@ export const parameters = {
         'Changelog',
         'Support',
         'Foundation',
-        [
-          'Overview',
-        ],
+        ['Overview'],
         'Development',
         [
           'Overview',
@@ -139,13 +137,7 @@ export const parameters = {
           'Testing',
           'Contributing',
           'Upgrade Guides',
-          [
-            'Updating to v13',
-            'Updating to v12',
-            'Updating to v11',
-            'Updating to v10',
-            'Updating to v9',
-          ],
+          ['Updating to v13', 'Updating to v12', 'Updating to v11', 'Updating to v10', 'Updating to v9'],
         ],
         'Components',
         [

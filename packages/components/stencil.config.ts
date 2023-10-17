@@ -17,6 +17,10 @@ export const config: Config = {
      */
     {
       type: 'docs-json',
+      file: './.tmp/components.json',
+    },
+    {
+      type: 'docs-json',
       file: './public/assets/data/components.json',
     },
     VueGenerator(),

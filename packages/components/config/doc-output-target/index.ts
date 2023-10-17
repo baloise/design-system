@@ -1,7 +1,7 @@
 import path from 'path'
 import { globSync } from 'glob'
 import { JsonDocs, JsonDocsStyle, OutputTargetDocsCustom } from '@stencil/core/internal'
-import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs'
+import { writeFileSync, mkdirSync, readFileSync } from 'fs'
 import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
@@ -12,7 +12,6 @@ import { createTestingMarkdown } from './markdown-testing'
 import { createThemingMarkdown } from './markdown-theming'
 import { parseStyleDocs } from './markdonw-styles'
 import { MarkdownTable } from './docs-util'
-import { createStory } from './markdown-story'
 
 const DOC_PATH = path.join(__dirname, '../../../../docs')
 
