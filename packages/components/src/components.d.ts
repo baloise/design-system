@@ -1580,6 +1580,8 @@ export namespace Components {
          */
         "readonly": boolean;
     }
+    interface BalInputGroupDivider {
+    }
     interface BalInputSlider {
         /**
           * The tabindex of the control.
@@ -4103,6 +4105,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputGroupDividerElement extends Components.BalInputGroupDivider, HTMLStencilElement {
+    }
+    var HTMLBalInputGroupDividerElement: {
+        prototype: HTMLBalInputGroupDividerElement;
+        new (): HTMLBalInputGroupDividerElement;
+    };
     interface HTMLBalInputSliderElement extends Components.BalInputSlider, HTMLStencilElement {
     }
     var HTMLBalInputSliderElement: {
@@ -4661,6 +4669,7 @@ declare global {
         "bal-input": HTMLBalInputElement;
         "bal-input-date": HTMLBalInputDateElement;
         "bal-input-group": HTMLBalInputGroupElement;
+        "bal-input-group-divider": HTMLBalInputGroupDividerElement;
         "bal-input-slider": HTMLBalInputSliderElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-label": HTMLBalLabelElement;
@@ -6348,6 +6357,8 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+    }
+    interface BalInputGroupDivider {
     }
     interface BalInputSlider {
         /**
@@ -8372,6 +8383,7 @@ declare namespace LocalJSX {
         "bal-input": BalInput;
         "bal-input-date": BalInputDate;
         "bal-input-group": BalInputGroup;
+        "bal-input-group-divider": BalInputGroupDivider;
         "bal-input-slider": BalInputSlider;
         "bal-input-stepper": BalInputStepper;
         "bal-label": BalLabel;
@@ -8535,6 +8547,7 @@ declare module "@stencil/core" {
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-date": LocalJSX.BalInputDate & JSXBase.HTMLAttributes<HTMLBalInputDateElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+            "bal-input-group-divider": LocalJSX.BalInputGroupDivider & JSXBase.HTMLAttributes<HTMLBalInputGroupDividerElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
