@@ -710,7 +710,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.20.1](https://github.com/baloise/design-system/compare/v10.20.0...v10.20.1) (2022-09-01)
 
-
 ### Bug Fixes
 
 * **closable-popover:** fix the click outside on popover ([f44dfe0](https://github.com/baloise/design-system/commit/f44dfe0bea15bcbe42e43f8eb0d1b7dc9e4c4b7a))
