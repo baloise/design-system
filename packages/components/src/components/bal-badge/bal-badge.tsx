@@ -58,15 +58,19 @@ export class Badge implements ComponentInterface {
         >
           <slot></slot>
         </span>
-        <bal-icon
-          class={{
-            ...iconEl.class(),
-            ...iconEl.modifier(`hidden`).class(!labelHidden),
-          }}
-          size={this.size === '' ? 'small' : ''}
-          name={this.icon}
-          color={this.color === 'grey' ? 'grey' : 'primary'}
-        ></bal-icon>
+        {this.size !== 'small' ? (
+          <bal-icon
+            class={{
+              ...iconEl.class(),
+              ...iconEl.modifier(`hidden`).class(!labelHidden),
+            }}
+            size={this.size === '' ? 'small' : ''}
+            name={this.icon}
+            color={this.color === 'grey' ? 'grey' : 'primary'}
+          ></bal-icon>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
