@@ -63,6 +63,7 @@ export class NavMetaBar
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false
+  private hasRenderedWithFlyoutActive = false
   @State() activeMetaLinkValue?: string
   @State() activeMenuLinkValue?: string // only for desktop tab view
 
@@ -147,7 +148,7 @@ export class NavMetaBar
           triggerEl.classList.contains('bal-nav__popup--touch-top'),
         )
         if (isTouchMetaTopButtonClicked) {
-          this.isFlyoutActive = false
+          this.closeFlyout()
         }
       } else {
         this.onPopupClose(triggers)
@@ -158,12 +159,16 @@ export class NavMetaBar
   @Listen('click', { target: 'document', passive: true })
   async clickOnOutside(ev: UIEvent) {
     if (this.isDesktop) {
-      if (this.isFlyoutActive) {
-        const targetIsInMetaBar = this.metaBarEl?.querySelector('.container')?.contains(ev.target as Node)
-        const targetIsInMenuBar = this.menuBarEl?.querySelector('.container')?.contains(ev.target as Node)
+      if (this.hasRenderedWithFlyoutActive) {
+        const targetIsInMetaBar = this.metaBarEl
+          ?.querySelector('.bal-nav-meta-bar__container')
+          ?.contains(ev.target as Node)
+        const targetIsInMenuBar = this.menuBarEl
+          ?.querySelector('.bal-nav-menu-bar__container')
+          ?.contains(ev.target as Node)
 
         if (!targetIsInMetaBar && !targetIsInMenuBar) {
-          this.isFlyoutActive = false
+          this.closeFlyout()
           const tabs = this.menuBarEl?.querySelector('.bal-tabs') as HTMLBalTabsElement
           tabs.closeAccordion()
         }
@@ -184,7 +189,7 @@ export class NavMetaBar
       this.isTouch = breakpoints.touch
       this.isDesktop = breakpoints.desktop
       this.closeAllPopups()
-      this.isFlyoutActive = false
+      this.closeFlyout()
     }
 
     if (this.isTouch) {
@@ -236,6 +241,22 @@ export class NavMetaBar
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private toggleFlyout() {
+    if (this.isFlyoutActive) {
+      this.closeFlyout()
+    } else {
+      this.openFlyout()
+    }
+  }
+
+  private closeFlyout() {
+    this.isFlyoutActive = false
+  }
+
+  private openFlyout() {
+    this.isFlyoutActive = true
+  }
 
   private async updateActiveItem(item: NavLinkItem) {
     if ('NavMetaLinkItem' === item.type) {
@@ -290,7 +311,7 @@ export class NavMetaBar
 
   private onTouchToggleFlyout = (_ev: MouseEvent) => {
     this.closeAllPopups()
-    this.isFlyoutActive = !this.isFlyoutActive
+    this.toggleFlyout()
 
     if (balBrowser.hasWindow && window.scrollY > 0) {
       window.scrollTo(0, 0)
@@ -343,9 +364,9 @@ export class NavMetaBar
 
   private onMenuBarTabChange = (value?: string): void => {
     if (this.activeMenuLinkValue === value) {
-      this.isFlyoutActive = !this.isFlyoutActive
+      this.toggleFlyout()
     } else {
-      this.isFlyoutActive = true
+      this.openFlyout()
     }
     this.activeMenuLinkValue = value
   }
@@ -358,6 +379,8 @@ export class NavMetaBar
   render() {
     const block = BEM.block('nav')
     const flyoutBlock = block.element('flyout')
+
+    this.hasRenderedWithFlyoutActive = this.isFlyoutActive
 
     return (
       <Host
@@ -468,7 +491,7 @@ export class NavMetaBar
         )}
         {this.isTouch ? (
           <div class={{ ...flyoutBlock.class(), ...flyoutBlock.modifier('visible').class(this.isFlyoutActive) }}>
-            <nav class="container">
+            <nav class={{ ...flyoutBlock.element('container').class() }}>
               <ul
                 class={{
                   ...block.element('mobile-meta-list').class(),

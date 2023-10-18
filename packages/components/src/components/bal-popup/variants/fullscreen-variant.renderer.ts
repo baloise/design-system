@@ -17,7 +17,6 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
       this.showContainerElement(component)
       this.showArrowElement(component)
 
-      component.containerEl.classList.add('container')
       return true
     }
     return false
@@ -34,7 +33,6 @@ export class FullscreenVariantRenderer extends AbstractVariantRenderer implement
       this.hideArrowElement(component)
       component.containerEl.style.removeProperty('box-shadow')
       component.containerEl.style.removeProperty('inset')
-      component.containerEl.classList.remove('container')
       return true
     }
     return false

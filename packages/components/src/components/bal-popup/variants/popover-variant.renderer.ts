@@ -42,6 +42,11 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
         this.triggerEl.classList.add('bal-popup-variant-popover-trigger')
 
+        const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
+        if (isNavMetaDesktopPopup) {
+          component.setMinWidth(this.triggerEl.clientWidth)
+        }
+
         this.cleanup = autoUpdate(this.triggerEl, component.containerEl, () => {
           this.update(component)
         })
@@ -55,14 +60,8 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
   async update(component: PopupComponentInterface): Promise<boolean> {
     if (this.triggerEl && component.trigger && component.containerEl && component.arrowEl) {
       const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
-      let arrowX = 0
-      if (isNavMetaDesktopPopup) {
-        const referenceRect = this.triggerEl?.getBoundingClientRect()
-        const triggerRect = component.trigger?.getBoundingClientRect()
-        const diff = triggerRect.x - referenceRect.x
-        const width = 440 - referenceRect.width
-        arrowX = width + diff + triggerRect.width / 2 - 4
-      }
+      const referenceRect = this.triggerEl?.getBoundingClientRect()
+      const triggerRect = component.trigger?.getBoundingClientRect()
 
       computePosition(this.triggerEl, component.containerEl, {
         placement: this.placement,
@@ -95,10 +94,11 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
             const arrowPosition = middlewareData.arrow
 
             if (isNavMetaDesktopPopup) {
+              const diff = referenceRect.right - triggerRect.right - 4
               Object.assign(component.arrowEl.style, {
-                left: `${arrowX}px`,
+                right: `${diff + triggerRect.width / 2}px`,
+                left: '',
                 top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-                right: '',
                 bottom: '',
                 [staticSide]: `${-4}px`,
               })

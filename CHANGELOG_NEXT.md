@@ -559,7 +559,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **main nav desktop:** other test ([7cc4394](https://github.com/baloise/design-system/commit/7cc439496b2e5d3c37383853a25950f4dae74794))
 * **main nav desktop:** updated dependencies ([35973d0](https://github.com/baloise/design-system/commit/35973d002d0cdcfa49e393198a1baf1d8e609166))
 
-
 ### Bug Fixes
 
 * **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
@@ -701,7 +700,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.20.2](https://github.com/baloise/design-system/compare/v10.20.1...v10.20.2) (2022-09-02)
 
-
 ### Bug Fixes
 
 * fix bal-input mask when deleting last character error popped up ([db14042](https://github.com/baloise/design-system/commit/db14042311dc516a2b752b41593ae4dcdb5fba09))
@@ -711,7 +709,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **toggle-scrolling:** test adjustements on global util ([2e173fc](https://github.com/baloise/design-system/commit/2e173fc37e84bf13b34400e0c7ab5170cc40ff72))
 
 ## [10.20.1](https://github.com/baloise/design-system/compare/v10.20.0...v10.20.1) (2022-09-01)
-
 
 ### Bug Fixes
 
