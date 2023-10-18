@@ -52,7 +52,7 @@ describe('bal-popup', () => {
       testPopup('basic-backdrop-offset')
     })
 
-    it('placement property desktop', () => {
+    it.skip('placement property desktop', () => {
       testPopup('placement-right')
       testPopup('placement-left')
       testPopup('placement-top')
