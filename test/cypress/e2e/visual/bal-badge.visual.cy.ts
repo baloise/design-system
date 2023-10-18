@@ -7,6 +7,7 @@ describe('bal-badge', () => {
       cy.getByTestId('icon').compareSnapshot('badge-icon')
       cy.getByTestId('card').compareSnapshot('badge-card')
       cy.getByTestId('button').compareSnapshot('badge-button')
+      cy.getByTestId('long-content').compareSnapshot('badge-long-content')
     })
 
     it('component variants', () => {
