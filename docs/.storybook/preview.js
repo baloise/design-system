@@ -30,6 +30,7 @@ const preview = {
           'Changelog',
           'Support',
           'Foundation',
+          'Development',
           'CSS Utilities',
         ],
       }

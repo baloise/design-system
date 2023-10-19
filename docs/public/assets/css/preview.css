@@ -149,17 +149,30 @@ a.sbdocs-a:not(.button) {
  * LIST
  ***************************************/
 
-.sbdocs-content > ul li {
+.sbdocs-content > ol > li,
+.sbdocs-content > ul > li {
   color: var(--bal-color-primary);
   font-size: 1rem;
   hyphens: auto;
+}
+
+.sbdocs-content > ul > li:not(:first-child),
+.sbdocs-content > ol > li:not(:first-child) {
+  margin-top: var(--bal-space-small)
 }
 
 .sbdocs-content > ul li::marker {
   color: var(--bal-list-marker-color);
 }
 
-.sbdocs-content > ul{
+.sbdocs-content > ol li::marker {
+  color: var(--bal-list-marker-color);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.sbdocs-content > ol,
+.sbdocs-content > ul {
   margin-bottom: var(--bal-space-x-large)
 }
 

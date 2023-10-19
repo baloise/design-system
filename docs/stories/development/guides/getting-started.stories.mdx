@@ -1,0 +1,700 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Getting Started" />
+
+<Banner label="Getting Started" section="Development" color="red" />
+
+<Lead>A guide to integrate Design System Components into your application.</Lead>
+
+All the Baloise Design System packages are available on [NPM](https://www.npmjs.com/).
+
+<AngularFramework>
+
+## Prerequisite
+
+If you do not have an Angular app yet create one with the [Angular CLI](https://angular.io/guide/setup-local).
+
+<InfoQuote>
+  **Recommendations**
+
+- We recommend to use **SCSS** as stylesheet format.
+- We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
+- We recommend to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+</InfoQuote>
+
+### Setting up Zone.js
+
+To improve the performance of the web components we need to configure zone.js.
+
+<InfoQuote>
+  Check out the official Angular Documentation to [Setting up Zone.js](https://angular.io/guide/zone#setting-up-zonejs).
+</InfoQuote>
+
+1. To make these changes, you need to create a **zone-flags.ts** file, such as the following.
+
+<Code
+  language="javascript"
+  noPreview
+  code={`
+// disable patching requestAnimationFrame
+(window as any).__Zone_disable_requestAnimationFrame = true;
+
+// disable patching custom elements (our web components)
+(window as any).\_\_Zone_disable_customElements = true;
+`}
+/>
+
+2. Next, import zone-flags before you import zone.js in the **polyfills.ts**:
+
+<Code
+  language="typescript"
+  noPreview
+  code={`
+/***************************************************************************************************
+ * Zone JS is required by default for Angular itself.
+ */
+import './zone-flags'
+import 'zone.js' // Included with Angular CLI.
+`}
+/>
+
+3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
+4. List the `src/polyfills.ts` as a file in the `tsconfig.app.json`.
+
+## Installation
+
+Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
+
+<Code language="bash" noPreview code={`npm install @baloise/design-system-components-angular`} />
+
+## Import Styles
+
+Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
+fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
+imported as either **SASS** or **CSS** files.
+
+For **application components**, we recommend using
+`@baloise/design-system-css/sass/mixins` to gain access to SASS mixins, such as breakpoints.
+
+The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
+However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/design-system-css/sass/baloise-design-system`
+, which has all style definitions.
+
+<Code
+  language="css"
+  noPreview
+  code={`
+// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
+`}
+/>
+
+## Module Based Application
+
+Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
+To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
+
+**app.module.ts**
+
+<Code
+  language="typescript"
+  noPreview
+  code={`
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { AppComponent } from './app.component'
+
+@NgModule({
+${' '}declarations: [AppComponent],
+${' '}imports: [
+${' '}${' '}BrowserModule,
+${' '}${' '}// Provide all components and value accessors to the app module.
+${' '}${' '}BaloiseDesignSystemModule.forRoot({
+${' '}${' '}${' '}forms: {
+${' '}${' '}${' '}${' '}setInvalid: true, // Maps invalid state with reactive form controls
+${' '}${' '}${' '}},
+${' '}${' '}}),
+${' '}],
+${' '}providers: [],
+${' '}bootstrap: [AppComponent],
+${' '}// To enable the usage of Web Components inside the Angular templates.
+${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+`}
+/>
+
+**app.component.html**
+
+Add the `bal-app` to your `app.component.html` root element. Within this component we are able to use the defined css classes.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-app class="has-sticky-footer">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+`}
+/>
+
+### Shared Modules
+
+We recommend to import the `BaloiseDesignSystemModule` also in you `SharedModule` to provide the components and the value accessors.
+
+<Code
+  language="typescript"
+  noPreview
+  code={`
+const sharedModules = [CommonModule, FormsModule, ReactiveFormsModule, BaloiseDesignSystemModule]
+
+@NgModule({
+declarations: [],
+imports: [...sharedModules],
+exports: [...sharedModules],
+})
+export class SharedModule {}
+`}
+/>
+
+## Standalone
+
+Import the `BaloiseDesignSystemModule.forRoot()` into your `app.config.ts`.
+
+**app.config.ts**
+
+<Code
+  language="typescript"
+  noPreview
+  code={`
+import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+import { provideRouter } from '@angular/router'
+
+import { routes } from './app.routes'
+
+import { BaloiseDesignSystemModule } from '../generated/src'
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(
+      BaloiseDesignSystemModule.forRoot({
+        forms: {
+          setInvalid: true, // Maps invalid state with reactive form controls
+        },
+      }),
+    ),
+  ],
+}
+`}
+/>
+
+**app.component.ts**
+
+To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
+
+<Code
+  language="typescript"
+  noPreview
+  code={`
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { RouterOutlet } from '@angular/router'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+@Component({
+${' '}selector: 'app-root',
+${' '}standalone: true,
+${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
+${' '}imports: [
+${' '}${' '}CommonModule,
+${' '}${' '}RouterOutlet,
+${' '}${' '}BaloiseDesignSystemModule,
+${' '}],
+})
+export class AppComponent { }
+`}
+/>
+
+**app.component.html**
+
+Add the `bal-app` to your `app.component.html` root element. Within this component we are able to use the defined css classes.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-app class="has-sticky-footer">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+`}
+/>
+
+</AngularFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  -------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+### Node Modules
+
+This is the recommended setup for HTML5 applications or server-side-rendering application, because it is
+under version control with the help of npm.
+
+```
+npm install @baloise/design-system-components --save
+```
+
+After that we create a `index.html` file and add the following 2 references to your `<head></head>`.
+
+Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloise Design System</title>
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
+    <script
+      type="module"
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+    ></script>
+  </head>
+  <body>
+    <bal-app>
+      <main class="container mt-normal">
+        <bal-heading>Hello World</bal-heading>
+        <bal-button>Button</bal-button>
+      </main>
+    </bal-app>
+  </body>
+</html>
+```
+
+### CDN
+
+As part of our design system, we offer [CDN](https://www.jsdelivr.com/) (Content Delivery Network) integration.
+
+While we provide CDN integration as part of our design system, it is essential to note that it is not recommended for use in production applications.
+The reason for this recommendation is that we rely on a third-party service to host and distribute the assets through the CDN.
+
+<InfoQuote>
+**TIP**
+
+To avoid potential breaking changes, it is recommended to use a specific version directly rather than relying on the latest version.
+
+Like => `https://cdn.jsdelivr.net/npm/@baloise/design-system-css@10/css/baloise-design-system.css`
+
+</InfoQuote>
+
+Add the following 4 references to your `<head></head>`
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css" />
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+></script>
+<script
+  nomodule
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+></script>
+```
+
+Here is how you can integrate it into your project.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CDN Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+    ></script>
+  </head>
+  <body>
+    <bal-app class="has-sticky-footer">
+      <header>
+        <bal-navbar>
+          <bal-navbar-brand href="/" target="_blank">Design System</bal-navbar-brand>
+        </bal-navbar>
+      </header>
+      <bal-stage color="green" size="small">
+        <bal-stage-body>
+          <bal-heading>Welcome to the</bal-heading>
+          <bal-heading subtitle>Baloise Design System</bal-heading>
+        </bal-stage-body>
+      </bal-stage>
+      <main class="container mt-xx-large">
+        <p>
+          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          implementations and design artifacts to build any number of web applications.
+        </p>
+        <bal-button href="https://baloise-design-system.vercel.app" target="_blank">
+          Check out the Documentation</bal-button
+        >
+      </main>
+      <bal-footer>
+        <!-- Footer content -->
+      </bal-footer>
+    </bal-app>
+  </body>
+</html>
+```
+
+Here you can try it online.
+
+<bal-button target="_blank" href="https://codesandbox.io/s/baloise-design-system-cdn-qn7ffg?file=/index.html">Try Online</bal-button>
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* REACT  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+### Installation
+
+Install the Design System and his dependencies.
+
+```
+npm install @baloise/design-system-components-react
+```
+
+## Import Styles
+
+Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
+fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
+imported as either **SASS** or **CSS** files.
+
+For **application components**, we recommend using
+`@baloise/design-system-css/sass/mixins` to gain access to SASS mixins, such as breakpoints.
+
+The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
+However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/design-system-css/sass/baloise-design-system`
+, which has all style definitions.
+
+<Code
+  language="css"
+  noPreview
+  code={`
+// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
+`}
+/>
+
+### Integrate Design System
+
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
+
+```typescript
+import './App.scss'
+import {
+  useBaloiseDesignSystem,
+  BalApp,
+  BalHeading,
+  BalButton,
+  BalFooter,
+} from '@baloise/design-system-components-react'
+
+function App() {
+  useBaloiseDesignSystem()
+
+  return (
+    <BalApp className="has-sticky-footer">
+      <header></header>
+      <main className="container">
+        <BalHeading>Hello World!</BalHeading>
+        <BalButton>Button</BalButton>
+      </main>
+      <BalFooter></BalFooter>
+    </BalApp>
+  )
+}
+
+export default App
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* VUE  --------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<VueFramework>
+
+## Prerequisite
+
+Follow the instructions of the official Vite page [Scaffolding Your First Vite Project](https://vitejs.dev/guide/)
+
+## Installation
+
+The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfills and defines the components.
+Moreover, it adds the controllers to your vue instance.
+
+To install the Baloise Design System run the following command.
+
+```
+npm install @baloise/design-system-components-vue --save
+```
+
+## Import Styles
+
+Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
+fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
+imported as either **SASS** or **CSS** files.
+
+For **application components**, we recommend using
+`@baloise/design-system-css/sass/mixins` to gain access to SASS mixins, such as breakpoints.
+
+The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
+However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/design-system-css/sass/baloise-design-system`
+, which has all style definitions.
+
+<Code
+  language="css"
+  noPreview
+  code={`
+// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
+`}
+/>
+
+### Use Plugin
+
+Inside the `main.ts` file add the created `main.scss` and import the `BaloiseDesignSystem` plugin.
+
+```typescript
+import './main.scss'
+import { createBaloiseDesignSystem } from '@baloise/design-system-components-vue'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+  .use(router)
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+      },
+    }),
+  )
+  .mount('#app')
+```
+
+### HTML Structure
+
+Add the `BalApp` to your root element (App.vue). Within this component we are able to use the defined css classes.
+
+```html
+<script setup lang="ts">
+  import { BalApp, BalFooter, BalHeading, BalButton } from '@baloise/design-system-components-vue'
+</script>
+
+<template>
+  <BalApp class="has-sticky-footer">
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <BalHeading>Hello World!</BalHeading>
+      <BalButton>Button</BalButton>
+      <!-- Page content -->
+    </main>
+    <BalFooter>
+      <div class="container">
+        <!-- Footer content -->
+        Footer
+      </div>
+    </BalFooter>
+  </BalApp>
+</template>
+```
+
+</VueFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* FOOTER  ------------------------------------------ */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<Footer>
+  <LinkCards>
+    <LinkCard pageTitle={'Font Installation'} description={'TODO'} />
+    <LinkCard pageTitle={'Favicons Installation'} description={'TODO'} />
+    <LinkCard
+      pageTitle={'Development/Component'}
+      description={
+        'By using the standardized web platform APIs and Web Components we achieved that the components of the Baloise Design System can be used across any framework or no framework at all'
+      }
+    />
+    <LinkCard
+      pageTitle={'Development/Form'}
+      description={
+        'The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system'
+      }
+    />
+    <LinkCard
+      pageTitle={'Development/Internationalization'}
+      description={'The Internationalization API of the browser provides the Design System number and date formats'}
+    />
+    <LinkCard
+      pageTitle={'Development/Theming'}
+      description={
+        "The Baloise Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Baloise applications has never been simpler"
+      }
+    />
+    <LinkCard
+      pageTitle={'Development/Testing'}
+      description={'The Baloise Design System provides a collection of utility functions to test the web-components'}
+    />
+  </LinkCards>
+</Footer>

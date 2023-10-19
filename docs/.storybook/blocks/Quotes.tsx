@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const InfoQuote = ({ children }) => {
-  return <div className='sb-unstyled is-flex fg-normal has-background-primary-1 has-border-left-primary is-size-small has-text-primary my-x-large p-normal has-radius-top-right-normal has-radius-bottom-right-normal'>
+  return <div className='sb-unstyled is-flex fg-normal has-background-grey-2 has-border-left-primary is-size-small has-text-primary my-x-large p-normal has-radius-top-right-normal has-radius-bottom-right-normal'>
     <bal-icon color="primary" name="info" style={{marginTop: '2px'}}></bal-icon>
     <span>{children}</span>
   </div>
