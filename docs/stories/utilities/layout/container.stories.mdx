@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssLayoutContainer } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssLayoutContainer, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Layout/Container"
@@ -45,3 +45,16 @@ Tailored container size designed for form wizard applications or pages.
 </div>
 `}
 />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Layout"
+      description="The layout defines the skeleton of your page"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

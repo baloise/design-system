@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssTypographySize } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssTypographySize, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Typography/Font Size"
@@ -51,5 +51,15 @@ The two display sizes are designed for large-scale website layouts.
 <h1 class="subtitle is-size-xxxx-large">Display 2</h1>
 `} />
 
-
-
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is our corporate typeface. Its clear appearance underlines our modern and future-oriented brand expression"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

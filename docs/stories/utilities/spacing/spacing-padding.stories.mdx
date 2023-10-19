@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssSpacingPadding, CssResponsiveTable } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssSpacingPadding,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Spacing/Padding"
@@ -80,3 +89,16 @@ The same padding value can also be defined at the top and bottom sides using sho
 </div>
 `}
 />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Spacing"
+      description="Global spacings help us design experiences that scale with consistency, rhythm, and focus"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

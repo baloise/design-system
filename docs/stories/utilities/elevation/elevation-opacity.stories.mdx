@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssElevationOpacity } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssElevationOpacity, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Elevation/Opacity"
@@ -31,3 +31,16 @@ import { Banner, Lead, Code, CssElevationOpacity } from '../../../.storybook/blo
 </div>
 `}
 />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

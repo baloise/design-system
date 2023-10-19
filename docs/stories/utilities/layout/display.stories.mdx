@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssLayoutDisplay, CssResponsiveTable } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssLayoutDisplay,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Layout/Display"
@@ -126,3 +135,16 @@ Simply append a responsive breakpoint keyword with a dash, like `is-hidden-table
 <div class="has-background-purple-5 p-small mb-small is-hidden-widescreen-only">is-hidden-widescreen-only</div>
 `}
 />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Layout"
+      description="The layout defines the skeleton of your page"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

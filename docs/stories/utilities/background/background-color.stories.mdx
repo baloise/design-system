@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssBackgroundColors } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssBackgroundColors, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Background/Background Colors"
@@ -24,20 +24,35 @@ Every color of the [Design Tokens]() can be used like that.
 
 ## Basic
 
-<Code language="html" code={`
+<Code
+  language="html"
+  code={`
 <div class="has-background-green p-normal">Green background</div>
-`} />
+`}
+/>
 
 ## Inverted Colors
 
 For every color, an inverted variant is defined to ensure optimal readability when combining background and font colors.
 
-<Code language="html" code={`
+<Code
+  language="html"
+  code={`
 <div class="has-background-primary p-normal">
   <p class="has-text-primary-inverted">Hello World</p>
 </div>
-`} />
+`}
+/>
 
-
-
-
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Colors"
+      description="With our colors, we create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Baloise we are"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

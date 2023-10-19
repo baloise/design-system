@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssTypographyColors } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssTypographyColors, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Typography/Text Colors"
@@ -40,12 +40,28 @@ The classes `has-text-xxx` defines the font-color. For more colors have a look a
 
 ## Inverted Colors
 
-<Code language="html" code={`
+<Code
+  language="html"
+  code={`
 <div class="has-background-green-6 p-normal">
     <span class="has-text-green-6-inverted">My Colored Text</span>
 </div>
-`} />
+`}
+/>
 
-
-
-
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is our corporate typeface. Its clear appearance underlines our modern and future-oriented brand expression"
+    />
+    <LinkCard
+      pageTitle="Foundation/Colors"
+      description="With our colors, we create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Baloise we are"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>

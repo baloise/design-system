@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssTypographyWeight } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssTypographyWeight, Footer, LinkCard, LinkCards} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Typography/Font Weight"
@@ -42,4 +42,17 @@ Onyl the **title** font families offer a light style option.
 <Code language="html" code={`
 <h1 class="has-text-weight-light title">Light - Title</h1>
 `} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is our corporate typeface. Its clear appearance underlines our modern and future-oriented brand expression"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>
 

@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssBorderRadius } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Border/Border Radius"
@@ -26,3 +26,16 @@ import { Banner, Lead, Code, CssBorderRadius } from '../../../.storybook/blocks'
 <div class="has-border-primary has-radius-large p-small mb-small">Large</div>
 <div class="has-border-primary has-radius-rounded p-small mb-small">Rounded</div>
 `} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Border & Radius"
+      description="Clarification of how borders and border-radius are utilized"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+  </LinkCards>
+</Footer>
