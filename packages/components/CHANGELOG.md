@@ -1,5 +1,15 @@
 # @baloise/design-system-components
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.3
+  - @baloise/design-system-fonts@14.0.3
+  - @baloise/design-system-icons@14.0.3
+  - @baloise/design-system-tokens@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes
