@@ -72,11 +72,3 @@ jobs:
           target_branch: production
           message: ':bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: ./.github/workflows/actions/docs
-        if: steps.changesets.outputs.published == 'true'
-        with:
-          docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
-          docker_password: ${{ secrets.DOCKERHUB_TOKEN }}
-          incubator_github_user: ${{ secrets.INCUBATOR_GITHUB_USER }}
-          incubator_github_token: ${{ secrets.INCUBATOR_GITHUB_TOKEN }}
