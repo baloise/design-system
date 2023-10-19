@@ -1,5 +1,12 @@
 # e2e-tests
 
+## 13.6.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-components@14.0.3
+
 ## 13.6.7
 
 ### Patch Changes

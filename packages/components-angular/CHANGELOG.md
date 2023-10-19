@@ -1,5 +1,14 @@
 # @baloise/design-system-components-angular
 
+## 14.0.3
+
+### Patch Changes
+
+- [#1077](https://github.com/baloise/design-system/pull/1077) - Utilize an Angular EventEmitter for output instead of RX.JS fromEvent, as it tends to trigger events twice
+
+- Updated dependencies []:
+  - @baloise/design-system-components@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes
