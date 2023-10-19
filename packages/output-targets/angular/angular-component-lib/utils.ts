@@ -29,7 +29,7 @@ export const proxyMethods = (Cmp: any, methods: string[]) => {
 }
 
 export const proxyOutputs = (instance: any, _el: any, events: string[]) => {
-  events.forEach((eventName) => (instance[eventName] = new EventEmitter()));
+  events.forEach(eventName => (instance[eventName] = new EventEmitter()))
 }
 
 export const defineCustomElement = (tagName: string, customElement: any) => {
