@@ -1,5 +1,5 @@
 import { Meta, Description, Unstyled } from '@storybook/blocks'
-import { ButtonCard, Banner, Lead, InfoQuote } from '../.storybook/blocks'
+import { ButtonCard, Banner, Lead, InfoQuote, Footer, LinkCard, LinkCards } from '../.storybook/blocks'
 
 <Meta
   title="Support"
@@ -88,3 +88,19 @@ Maintainers are members of the community who are committed to the success of ind
     </ButtonCard>
   </div>
 </Unstyled>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Foundation/Overview'}
+      label={'Foundation'}
+      description={'Design tokens, typography, colors and more'}
+    />
+    <LinkCard
+      pageTitle={'Development/Overview'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular, React or Vue.js'}
+    />
+    <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
+  </LinkCards>
+</Footer>

@@ -9,6 +9,9 @@ import {
   ColorCard,
   ColorCardRow,
   TokensSpacing,
+  Footer,
+  LinkCard,
+  LinkCards,
 } from '../../.storybook/blocks'
 
 <Meta
@@ -73,12 +76,12 @@ import Card1 from '../assets/images/foundations/spacing/card-1.svg'
 import Card2 from '../assets/images/foundations/spacing/card-2.svg'
 
 <br />
-<div class="columns">
-  <div class="column is-6">
+<div className="columns">
+  <div className="column is-6">
     <img loading="lazy" src={Card1} />
     <p>Inner sections space is 8px</p>
   </div>
-  <div class="column is-6">
+  <div className="column is-6">
     <img loading="lazy" src={Card2} />
     <p>Sections have a space of 24px</p>
   </div>
@@ -100,3 +103,16 @@ import ContentPage2 from '../assets/images/foundations/spacing/content-page-2.sv
 <ImageCanvas size="large">
   <img loading="lazy" src={ContentPage2} />
 </ImageCanvas>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="CSS Utilities/Spacing/Marging"
+      description="Determines the space around an element"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Spacing/Padding"
+      description="Determines the space between the content and its border"
+    />
+  </LinkCards>
+</Footer>

@@ -3,7 +3,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const TokensSpacingSizes = ({ overview }) => {
   const spacing = tokens.spacing as any
-  const sizes = []
+  const sizes = [] as any
   const validSizes = [
     'xxxxx-large',
     'xxxx-large',
@@ -26,7 +26,7 @@ export const TokensSpacingSizes = ({ overview }) => {
     }
   }
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '100px' }}>Example</th>
@@ -36,16 +36,16 @@ export const TokensSpacingSizes = ({ overview }) => {
       </thead>
       <tbody>
         {sizes.map(c => (
-          <tr>
+          <tr key={c.name}>
             <td style={{ verticalAlign: 'top' }}>
-              <div class={`pt-${c.name} mt-x-small has-background-green`}></div>
+              <div className={`pt-${c.name} mt-x-small has-background-green`}></div>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
-              <p class="m-none is-size-small">{c.value.description}</p>
+              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
+              <p className="m-none is-size-small">{c.value.description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <span class={`has-text-weight-bold is-size-small`}>
+              <span className={`has-text-weight-bold is-size-small`}>
                 {parseFloat(c.value.desktop.replace('rem')) * 16}px
               </span>
             </td>

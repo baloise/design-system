@@ -3,7 +3,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const TokensColors = ({ overview }) => {
   const color = tokens.color as any
-  const colors = []
+  const colors = [] as any
   const validColors = [
     'primary',
     'black',
@@ -26,7 +26,7 @@ export const TokensColors = ({ overview }) => {
   }
 
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '200px' }}>Example</th>
@@ -35,24 +35,24 @@ export const TokensColors = ({ overview }) => {
         </tr>
       </thead>
       {colors.map(c => (
-        <tbody>
+        <tbody key={c.name}>
           <tr>
             <td style={{ verticalAlign: 'top' }}>
-              <div class={`has-background-${c.name} p-x-small mb-x-small has-radius-normal`}>
-                <p class={`title is-size-large has-text-${c.name}-inverted`}>Aa</p>
-                <p class={`mt-none mb-xx-small is-size-small has-text-${c.name}-inverted`}>{c.value.hex}</p>
-                <p class={`m-none is-size-small has-text-${c.name}-inverted`}>{hexToRgbA(c.value.hex)}</p>
+              <div className={`has-background-${c.name} p-x-small mb-x-small has-radius-normal`}>
+                <p className={`title is-size-large has-text-${c.name}-inverted`}>Aa</p>
+                <p className={`mt-none mb-xx-small is-size-small has-text-${c.name}-inverted`}>{c.value.hex}</p>
+                <p className={`m-none is-size-small has-text-${c.name}-inverted`}>{hexToRgbA(c.value.hex)}</p>
               </div>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-xx-small">{c.name}</p>
-              <p class="m-none is-size-small">{c.value.description}</p>
+              <p className="has-text-weight-bold is-size-large mt-none mb-xx-small">{c.name}</p>
+              <p className="m-none is-size-small">{c.value.description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-color-{c.name})
               </p>
-              <p class="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal">
+              <p className="m-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal">
                 ${c.name}
               </p>
             </td>
@@ -60,28 +60,28 @@ export const TokensColors = ({ overview }) => {
           {c.name !== 'black' && c.name !== 'white' ? (
             <tr>
               <td colSpan={3}>
-                <p class="has-text-weight-bold is-size-normal">Shades</p>
-                <span class="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+                <p className="has-text-weight-bold is-size-normal">Shades</p>
+                <span className="is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                   var(--bal-color-{c.name}-x)
                 </span>
-                <div class="is-flex fg-x-small mt-x-small">
-                  <div class={`has-background-${c.name}-1 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-1-inverted has-text-weight-bold`}>1</span>
+                <div className="is-flex fg-x-small mt-x-small">
+                  <div className={`has-background-${c.name}-1 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-1-inverted has-text-weight-bold`}>1</span>
                   </div>
-                  <div class={`has-background-${c.name}-2 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-2-inverted has-text-weight-bold`}>2</span>
+                  <div className={`has-background-${c.name}-2 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-2-inverted has-text-weight-bold`}>2</span>
                   </div>
-                  <div class={`has-background-${c.name}-3 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-3-inverted has-text-weight-bold`}>3</span>
+                  <div className={`has-background-${c.name}-3 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-3-inverted has-text-weight-bold`}>3</span>
                   </div>
-                  <div class={`has-background-${c.name}-4 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-4-inverted has-text-weight-bold`}>4</span>
+                  <div className={`has-background-${c.name}-4 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-4-inverted has-text-weight-bold`}>4</span>
                   </div>
-                  <div class={`has-background-${c.name}-5 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-5-inverted has-text-weight-bold`}>5</span>
+                  <div className={`has-background-${c.name}-5 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-5-inverted has-text-weight-bold`}>5</span>
                   </div>
-                  <div class={`has-background-${c.name}-6 has-radius-normal p-x-small is-flex-grow-1`}>
-                    <span class={`has-text-${c.name}-6-inverted has-text-weight-bold`}>6</span>
+                  <div className={`has-background-${c.name}-6 has-radius-normal p-x-small is-flex-grow-1`}>
+                    <span className={`has-text-${c.name}-6-inverted has-text-weight-bold`}>6</span>
                   </div>
                 </div>
               </td>
@@ -91,7 +91,7 @@ export const TokensColors = ({ overview }) => {
           )}
 
           <tr>
-            <td colSpan={3} class="pb-large"></td>
+            <td colSpan={3} className="pb-large"></td>
           </tr>
         </tbody>
       ))}

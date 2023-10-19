@@ -3,7 +3,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const TokensShadow = ({ overview }) => {
   const boxShadows = tokens.shadow.box as any
-  const shadowTokens = []
+  const shadowTokens = [] as any
   for (const k in boxShadows) {
     shadowTokens.push({
       name: k,
@@ -11,7 +11,7 @@ export const TokensShadow = ({ overview }) => {
     })
   }
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '120px' }}>Example</th>
@@ -22,24 +22,24 @@ export const TokensShadow = ({ overview }) => {
       </thead>
       <tbody>
         {shadowTokens.map(c => (
-          <tr>
+          <tr key={c.name}>
             <td style={{ verticalAlign: 'top' }}>
               <div
                 style={{ height: '48px', width: '80px' }}
-                class={`has-shadow${`-${c.name}`} mt-x-small has-background-purple-2`}
+                className={`has-shadow${`-${c.name}`} mt-x-small has-background-purple-2`}
               ></div>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
-              <p class="m-none is-size-small">{c.value.description}</p>
+              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
+              <p className="m-none is-size-small">{c.value.description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-shadow{`-${c.name}`})
               </p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
+              <p className="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
             </td>
           </tr>
         ))}

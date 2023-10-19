@@ -242,30 +242,71 @@ a > code {
  ***************************************/
 
 .my-welcome-state {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  margin-top: -1rem;
+  margin-left: -3rem;
+  width: 100vw;
 }
 
-.my-welcome-state .bal-stage-body {
-  padding-top: 3rem !important;
+.my-welcome-state > div {
+  padding: 1rem 4rem 4rem 3rem;
+  max-width: 992px;
 }
 
-.my-welcome-state .container {
+@media screen and (min-width: 1024px), print {
+  .my-welcome-state > div {
+    padding: 2rem 4rem 5rem 3rem;
+  }
+}
+
+
+.my-welcome-state-shape {
+  position: relative;
+  max-width: 992px;
+  padding: 0 !important;
   margin: 0 !important;
-  max-width: 1088px !important;
 }
 
-.my-welcome-guides {
-  margin-top: 480px !important;
+.my-welcome-state-shape > div {
+  position: absolute;
+  bottom: -22px;
+  right: 2.5rem;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.my-welcome-state .bal-logo > div {
-  height: 48px !important;
-  width: 237px !important;
+@media screen and (min-width: 769px), print {
+  .my-welcome-state-shape > div {
+    bottom: -40px;
+    right: 1.5rem;
+  }
 }
 
+@media screen and (min-width: 1024px), print {
+  .my-welcome-state-shape > div {
+    bottom: -66px;
+    right: 0rem;
+  }
+}
+
+.my-welcome-guide {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 769px), print {
+  .my-welcome-guide {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px), print {
+  .my-welcome-guide {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+}
 
 /***************************************
  * SHADOW UTILS
@@ -311,7 +352,14 @@ a.sbdocs-a.text-decoration-none {
   box-shadow: none !important;
 }
 
-.doc-code .docblock-source > div:last-child button {
+.doc-code-no-preview .docblock-source {
+  border-radius: 4px !important;
+  background: var(--bal-color-primary-6);
+  box-shadow: none !important;
+}
+
+.doc-code .docblock-source > div:last-child button,
+.doc-code-no-preview .docblock-source > div:last-child button {
   background: var(--bal-color-primary-5) !important;
 }
 
@@ -359,6 +407,24 @@ a.sbdocs-a.text-decoration-none {
   max-height: 440px;
 }
 
+.doc-link-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.doc-link-cards > a {
+  flex: none;
+  width: 100%;
+}
+
+@media screen and (min-width: 769px), print {
+  .doc-link-cards > a {
+    width: calc(50% - 0.5rem);
+  }
+}
 /***************************************
  * SUPPORT
  ***************************************/

@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { ButtonCard, Banner, Lead, InfoQuote } from '../../.storybook/blocks'
+import { ButtonCard, Banner, Lead, InfoQuote, Footer, LinkCards, LinkCard } from '../../.storybook/blocks'
 
 <Meta
   title="Foundation/Elevation"
@@ -35,3 +35,20 @@ stage component.
 ## Z-Index
 
 > **WIP** Coming soon
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Elevation/Opacity"
+      description="Specifies the level of transparency for an element"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Elevation/Shadow"
+      description="Determines the box-shadow or text-shadow effect applied to an element"
+    />
+  </LinkCards>
+</Footer>

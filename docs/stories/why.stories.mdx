@@ -1,5 +1,5 @@
 import { Meta, Description, Unstyled } from '@storybook/addon-docs'
-import { PackageTable, Banner, Lead } from '../.storybook/blocks'
+import { PackageTable, Banner, Lead, Footer, LinkCard, LinkCards } from '../.storybook/blocks'
 import ArchitectureImage from './assets/images/architecture/architecture.svg'
 
 <Meta
@@ -320,3 +320,20 @@ Storybook is a user interface development environment and playground for UI comp
     </tr>
   </tbody>
 </table>
+
+<Footer>
+   <LinkCards>
+        <LinkCard
+          pageTitle={'Foundation/Overview'}
+          label={'Foundation'}
+          description={'Design tokens, typography, colors and more'}
+        />
+        <LinkCard
+          pageTitle={'Development/Overview'}
+          label={'Development'}
+          description={'Getting Started with HTML, Angular, React or Vue.js'}
+        />
+        <LinkCard pageTitle={'Changelog'} description={"What's new?"} />
+        <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
+      </LinkCards>
+</Footer>

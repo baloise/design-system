@@ -1,0 +1,165 @@
+import { Meta, Description, DocsContainer, Anchor } from '@storybook/addon-docs'
+
+import NewDocImage from '../../public/assets/images/new-doc.png'
+
+<Meta
+  title="Welcome"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+    docs: {
+      container: ({ context }) => {
+        return (
+          <DocsContainer context={context}>
+            <div className="my-welcome-state">
+              <bal-doc-app>
+                <bal-stage color="red" shape size="small">
+                  <bal-stage-body>
+                    <bal-logo color="white" animated color="blue"></bal-logo>
+                    <bal-heading subtitle space="all" class="mt-medium">
+                      design system
+                    </bal-heading>
+                    <bal-text size="lead" class="mt-medium">
+                      The Baloise Design System consists of UI components and a clearly defined visual style, released
+                      as both code implementations and design artifacts to build any number of web applications.
+                    </bal-text>
+                    <bal-button-group class="mt-medium">
+                      <bal-doc-code-sandbox framework="html" label="Try Online" logo primary></bal-doc-code-sandbox>
+                      <bal-doc-code-sandbox framework="angular" label="Try Online" logo primary></bal-doc-code-sandbox>
+                      <bal-doc-code-sandbox framework="react" label="Try Online" logo primary></bal-doc-code-sandbox>
+                      <a
+                        class="button is-info"
+                        style={{ width: 'auto' }}
+                        href="?path=/docs/development-getting-started--page"
+                      >
+                        Getting Started
+                      </a>
+                      <bal-button
+                        color="info"
+                        icon="github"
+                        href="https://github.com/baloise/design-system"
+                        target="_blank"
+                      >
+                        Follow on GitHub
+                      </bal-button>
+                    </bal-button-group>
+                  </bal-stage-body>
+                </bal-stage>
+              </bal-doc-app>
+            </div>
+            <div className="my-welcome-guides">
+              <h2>Getting Started</h2>
+              <bal-list border>
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/design-system--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>What is a Design System?</bal-list-item-title>
+                      <bal-list-item-subtitle>Purpose, advantages and architecture</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/foundation-overview--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Foundations</bal-list-item-title>
+                      <bal-list-item-subtitle>Design tokens, typography, colors and more</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/development-getting-started--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Development</bal-list-item-title>
+                      <bal-list-item-subtitle>
+                        Getting Started with HTML, Angular, React or Vue.js
+                      </bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/changelog--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Changelog</bal-list-item-title>
+                      <bal-list-item-subtitle>What's new?</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/support--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Support</bal-list-item-title>
+                      <bal-list-item-subtitle>Ask a question, report a bug or request a feature</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+                {/* ----------- DIVIDER ----------- */}
+                <div class="bal-list__item">
+                  <a class="bal-list__item__trigger" href="?path=/docs/contributing--page">
+                    <bal-list-item-content>
+                      <bal-list-item-title>Contributing</bal-list-item-title>
+                      <bal-list-item-subtitle>Be part of the Design System Community</bal-list-item-subtitle>
+                    </bal-list-item-content>
+                    <bal-list-item-icon right>
+                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                    </bal-list-item-icon>
+                  </a>
+                </div>
+              </bal-list>
+            </div>
+            <div className="my-welcome-content">
+              <h2>Latest News</h2>
+              <div className="columns is-multiline">
+                <div class="column">
+                  <bal-card fullheight class="p-none" color="green-2">
+                    <bal-card-content>
+                      <bal-text size="small" class="mb-x-small">
+                        02.10.2023
+                      </bal-text>
+                      <bal-heading space="bottom" level="h3">
+                        Upgrade to v14
+                      </bal-heading>
+                      <bal-text space="none">
+                        In version 14, we've introduced z-index values as design tokens. Consequently, adjustments were
+                        made to each component. If you've been using custom z-index values in your app, please be aware
+                        that this could potentially result in broken layouts. After upgrading the design system in your
+                        app, please take a moment to check if any layouts are affected. If necessary, make adjustments
+                        to the z-index accordingly.
+                      </bal-text>
+                      <a
+                        class="button is-primary mt-normal"
+                        style={{ width: 'auto' }}
+                        href="?path=/docs/development-upgrade-guides-updating-to-v14--page"
+                      >
+                        Upgrade Guide
+                      </a>
+                    </bal-card-content>
+                  </bal-card>
+                </div>
+              </div>
+            </div>
+          </DocsContainer>
+        )
+      },
+    },
+  }}
+/>

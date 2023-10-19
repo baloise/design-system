@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { Banner, Lead, Code } from '../../.storybook/blocks'
+import { Banner, Lead, Code, Footer, LinkCard, LinkCards } from '../../.storybook/blocks'
 
 <Meta
   title="Foundation/Layout"
@@ -45,3 +45,19 @@ The footer component automatically grabs the necessary links from our CMS so tha
 `}
 />
 
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Components/App"
+      description="App is a container element for an Baloise Design System application"
+    />
+    <LinkCard
+      pageTitle="Components/Navbar"
+      description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns"
+    />
+    <LinkCard
+      pageTitle="Components/Footer"
+      description="Footer for the Baloise Applications. The footer runs pure in blue or with a decorated track line below"
+    />
+  </LinkCards>
+</Footer>

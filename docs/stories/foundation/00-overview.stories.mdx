@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { ButtonCard, Banner, Lead, InfoQuote } from '../../.storybook/blocks'
+import { ButtonCard, Banner, Lead, Footer } from '../../.storybook/blocks'
 
 <Meta
   title="Foundation/Overview"
@@ -22,164 +22,73 @@ import { ButtonCard, Banner, Lead, InfoQuote } from '../../.storybook/blocks'
   Fonts and CSS-Framework.
 </Lead>
 
-<br />
-
 import Border from '../assets/images/foundations/border.svg'
 import BrandAssets from '../assets/images/foundations/brand-assets.svg'
 import Colors from '../assets/images/foundations/colors.svg'
 import Elevation from '../assets/images/foundations/elevation.svg'
-import Forms from '../assets/images/foundations/form.svg'
+// import Forms from '../assets/images/foundations/form.svg'
 import Grid from '../assets/images/foundations/grid.svg'
 import Icons from '../assets/images/foundations/icons.svg'
 import Layout from '../assets/images/foundations/layout.svg'
 import Spacings from '../assets/images/foundations/spacings.svg'
 import Tokens from '../assets/images/foundations/tokens.svg'
 import Typography from '../assets/images/foundations/typography.svg'
-import Templates from '../assets/images/foundations/templates.svg'
-import Radius from '../assets/images/foundations/radius.svg'
-import Shadow from '../assets/images/foundations/shadow.svg'
+// import Templates from '../assets/images/foundations/templates.svg'
+// import Radius from '../assets/images/foundations/radius.svg'
+// import Shadow from '../assets/images/foundations/shadow.svg'
 
-<section class="sb-unstyled mb-large">
-  <div class="columns is-multiline">
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-green-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Border} alt="Border" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-border-radius-overview--page"
-        >
-          Border & Radius
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-yellow-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={BrandAssets} alt="BrandAssets" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-brand-assets-overview--page"
-        >
-          Brand Assets
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-grey-2 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Colors} alt="Colors" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-colors-overview--page"
-        >
-          Colors
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-red-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Elevation} alt="Elevation" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-elevation-overview--page"
-        >
-          Elevation
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-green-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Grid} alt="Grid" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-grid-overview--page"
-        >
-          Grid
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-purple-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Icons} alt="Icons" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/story/foundation-icons-overview--page"
-        >
-          Icons
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-red-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Layout} alt="Layout" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-layout-overview--page"
-        >
-          Layout
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-yellow-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Spacings} alt="Spacings" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-spacing-overview--page"
-        >
-          Spacings
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-green-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Tokens} alt="Tokens" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/docs/foundation-design-tokens-overview--page"
-        >
-          Design Tokens
-        </a>
-      </div>
-    </div>
-    <div class="column is-one-third">
-      <div class="has-radius-large has-shadow-normal p-normal is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
-        <div class="has-background-purple-1 has-radius-large p-x-small is-fullwidth is-flex is-align-items-center is-justify-content-center">
-          <img src={Typography} alt="Typography" />
-        </div>
-        <a
-          class="button is-info mt-normal is-fullwidth"
-          style={{ width: 'auto' }}
-          href="?path=/story/foundation-typography-overview--page"
-        >
-          Typography
-        </a>
-      </div>
-    </div>
+<div className="sb-unstyled columns is-multiline">
+  <div className="column is-4">
+    <ButtonCard color="green" label="Border & Radius" pageTitle="Foundation/Border & Radius">
+      <img src={Border} alt="Border & Radius" />
+    </ButtonCard>
   </div>
-</section>
+  <div className="column is-4">
+    <ButtonCard color="yellow" label="Brand Assets" pageTitle="Foundation/Brand Assets">
+      <img src={BrandAssets} alt="Brand Assets" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="grey" label="Colors" pageTitle="Foundation/Colors">
+      <img src={Colors} alt="Colors" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="red" label="Elevation" pageTitle="Foundation/Elevation">
+      <img src={Elevation} alt="Elevation" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="green" label="Grid" pageTitle="Foundation/Grid">
+      <img src={Grid} alt="Grid" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="purple" label="Icons" pageTitle="Foundation/Icons">
+      <img src={Icons} alt="Icons" />
+    </ButtonCard>
+  </div>
+    <div className="column is-4">
+    <ButtonCard color="red" label="Layout" pageTitle="Foundation/Layout">
+      <img src={Layout} alt="Layout" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="yellow" label="Spacing" pageTitle="Foundation/Spacing">
+      <img src={Spacings} alt="Spacing" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="green" label="Tokens" pageTitle="Foundation/Design Tokens">
+      <img src={Tokens} alt="Design Tokens" />
+    </ButtonCard>
+  </div>
+  <div className="column is-4">
+    <ButtonCard color="purple" label="Typography" pageTitle="Foundation/Typography">
+      <img src={Typography} alt="Typography" />
+    </ButtonCard>
+  </div>
+</div>
+
+<Footer />
+

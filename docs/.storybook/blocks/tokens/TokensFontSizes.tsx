@@ -3,7 +3,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const TokensFontSizes = ({ overview }) => {
   const typography = tokens.typography as any
-  const sizes = []
+  const sizes = [] as any
   const validSizes = [
     'xxxxx-large',
     'xxxx-large',
@@ -25,7 +25,7 @@ export const TokensFontSizes = ({ overview }) => {
     }
   }
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '130px' }}>Example</th>
@@ -38,38 +38,38 @@ export const TokensFontSizes = ({ overview }) => {
       </thead>
       <tbody>
         {sizes.map(c => (
-          <tr>
+          <tr key={c.name}>
             <td style={{ verticalAlign: 'top' }}>
-              <span class={`title is-size-${c.name}`}>Aa</span>
+              <span className={`title is-size-${c.name}`}>Aa</span>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-x-small">
-                {c.name} <span class="is-size-medium">({c.value.figmaName})</span>
+              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">
+                {c.name} <span className="is-size-medium">({c.value.figmaName})</span>
               </p>
-              <p class="m-none is-size-small">{c.value.description}</p>
+              <p className="m-none is-size-small">{c.value.description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-size-{c.name})
               </p>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-line-height-{c.name})
               </p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <span class={`has-text-weight-bold is-size-small`}>{c.value.mobile.fontSize}</span>
+              <span className={`has-text-weight-bold is-size-small`}>{c.value.mobile.fontSize}</span>
               <br />
-              <span class={`is-size-small`}>{c.value.mobile.lineHeight}</span>
+              <span className={`is-size-small`}>{c.value.mobile.lineHeight}</span>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <span class={`has-text-weight-bold is-size-small`}>{c.value.tablet.fontSize}</span>
+              <span className={`has-text-weight-bold is-size-small`}>{c.value.tablet.fontSize}</span>
               <br />
-              <span class={`is-size-small`}>{c.value.tablet.lineHeight}</span>
+              <span className={`is-size-small`}>{c.value.tablet.lineHeight}</span>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <span class={`has-text-weight-bold is-size-small`}>{c.value.desktop.fontSize}</span>
+              <span className={`has-text-weight-bold is-size-small`}>{c.value.desktop.fontSize}</span>
               <br />
-              <span class={`is-size-small`}>{c.value.desktop.lineHeight}</span>
+              <span className={`is-size-small`}>{c.value.desktop.lineHeight}</span>
             </td>
           </tr>
         ))}

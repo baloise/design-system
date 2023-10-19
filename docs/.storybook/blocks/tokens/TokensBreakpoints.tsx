@@ -11,7 +11,7 @@ export const TokensBreakpoints = ({ overview }) => {
     })
   }
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th>Description</th>
@@ -20,18 +20,18 @@ export const TokensBreakpoints = ({ overview }) => {
         </tr>
       </thead>
       <tbody>
-        {sizes.map(c => (
-          <tr>
+        {sizes.map((c: any) => (
+          <tr key={c.name}>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
+              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-breakpoint-{c.name})
               </p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class={`has-text-weight-bold is-size-small py-xx-small`}>{c.value}</p>
+              <p className={`has-text-weight-bold is-size-small py-xx-small`}>{c.value}</p>
             </td>
           </tr>
         ))}

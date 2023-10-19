@@ -1,5 +1,5 @@
 import { Meta, Markdown, Unstyled } from '@storybook/addon-docs'
-import { ButtonCard, Banner, Lead, InfoQuote } from '../.storybook/blocks'
+import { ButtonCard, Banner, Lead, InfoQuote, Footer, LinkCard, LinkCards } from '../.storybook/blocks'
 
 <Meta
   title="Contributing"
@@ -106,3 +106,18 @@ Maintainers are members of the community who are committed to the success of ind
 ## Workflow
 
 The Baloise Design System typically use a [fork and pull request workflow](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for contributions
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Foundation/Overview'}
+      label={'Foundation'}
+      description={'Design tokens, typography, colors and more'}
+    />
+    <LinkCard
+      pageTitle={'Development/Overview'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular, React or Vue.js'}
+    />
+  </LinkCards>
+</Footer>

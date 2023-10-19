@@ -13,7 +13,7 @@ export const TokensBorderRadius = ({ overview }) => {
     }
   }
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '120px' }}>Example</th>
@@ -23,25 +23,25 @@ export const TokensBorderRadius = ({ overview }) => {
         </tr>
       </thead>
       <tbody>
-        {sizes.map(c => (
-          <tr>
+        {sizes.map((c: any) => (
+          <tr key={c.name}>
             <td style={{ verticalAlign: 'top' }}>
               <div
                 style={{ height: '48px', width: '80px' }}
-                class={`has-radius${`-${c.name}`} mt-x-small has-background-purple`}
+                className={`has-radius${`-${c.name}`} mt-x-small has-background-purple`}
               ></div>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-normal mt-none mb-x-small">{c.name}</p>
-              <p class="m-none is-size-small">{c.value.description}</p>
+              <p className="has-text-weight-bold is-size-normal mt-none mb-x-small">{c.name}</p>
+              <p className="m-none is-size-small">{c.value.description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-radius{`-${c.name}`})
               </p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
+              <p className="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
             </td>
           </tr>
         ))}

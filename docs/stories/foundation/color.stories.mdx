@@ -9,6 +9,9 @@ import {
   ColorCards,
   ColorCard,
   ColorCardRow,
+  Footer,
+  LinkCard,
+  LinkCards,
 } from '../../.storybook/blocks'
 
 <Meta
@@ -56,13 +59,13 @@ However, the white color represents the default. The other colors should be used
 
 <ColorCards>
   <ColorCard background color="white" />
-    <ColorCard background color="grey-1" />
-    <ColorCard background color="grey-3" />
-    <ColorCard background color="primary" />
-    <ColorCard background color="green" />
-    <ColorCard background color="purple" />
-    <ColorCard background color="red" />
-    <ColorCard background color="yellow" />
+  <ColorCard background color="grey-1" />
+  <ColorCard background color="grey-3" />
+  <ColorCard background color="primary" />
+  <ColorCard background color="green" />
+  <ColorCard background color="purple" />
+  <ColorCard background color="red" />
+  <ColorCard background color="yellow" />
 </ColorCards>
 
 ### Primary colors
@@ -106,44 +109,44 @@ import ColorCombinations2 from '../assets/images/foundations/colors/ColorCombina
 import ColorCombinations3 from '../assets/images/foundations/colors/ColorCombinations_3.png'
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">Same Color Spectrum within an Element</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">Same Color Spectrum within an Element</h4>
     <p>
       In a specific component, we must use the same color spectrum: E.g. if we have a green icon we must use a green
       background. N.B. when using icons, Tint 1 or White must be used as background to ensure enough contrast ratio.
     </p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={ColorCombinations} />
   </div>
 </div>
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">Embrace Variations</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">Embrace Variations</h4>
     <p>
       Within a page, we want to celebrate color variations and flexibility in our brand. We should alternate the colors
       and avoid to repeat the same color more than once. In case you need more than 4 colors, please repeat the first
       color you used and continue with the same logic for the other colors.{' '}
     </p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={ColorCombinations2} />
   </div>
 </div>
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">It's a Match!</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">It's a Match!</h4>
     <p>
       When using the Baloise Shape and its coloured background, always find the right image that matches the same color
       spectrum.
     </p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={ColorCombinations3} />
   </div>
 </div>
@@ -155,16 +158,16 @@ import ColorCombinations5 from '../assets/images/foundations/colors/ColorCombina
 import ColorCombinations6 from '../assets/images/foundations/colors/ColorCombinations_6.png'
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
+<div className="sb-unstyled columns">
+  <div className="column is-4">
     <img src={ColorCombinations4} />
     <p>Do not change Buttons color. Buttons are always blue</p>
   </div>
-  <div class="column is-4">
+  <div className="column is-4">
     <img src={ColorCombinations5} />
     <p>Do not choose a picture that doesn't match the background and Shape color</p>
   </div>
-  <div class="column is-4">
+  <div className="column is-4">
     <img src={ColorCombinations6} />
     <p>Do not use Tint 2, 3, 4, 5 or 6 as a background when using icons</p>
   </div>
@@ -179,9 +182,9 @@ import Backgrounds2 from '../assets/images/foundations/colors/ColorBackgrounds_2
 import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3.png'
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">Eye-Catcher</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">Eye-Catcher</h4>
     <p>
       To bring attention and highlight a specific section
       <ul>
@@ -193,15 +196,15 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
       </ul>
     </p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={Backgrounds1} />
   </div>
 </div>
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">Elegant and Minimal</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">Elegant and Minimal</h4>
     <p>
       To bring clarity and consistency
       <ul>
@@ -212,18 +215,18 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
       </ul>
     </p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={Backgrounds2} />
   </div>
 </div>
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
-    <h4 class="title is-size-medium m-none">Informative</h4>
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <h4 className="title is-size-medium m-none">Informative</h4>
     <p>To highlight informative sections such as footer, meta navigation or cookie banner, we use the Baloise Blue</p>
   </div>
-  <div class="column is-8">
+  <div className="column is-8">
     <img src={Backgrounds3} />
   </div>
 </div>
@@ -235,17 +238,38 @@ import Backgrounds5 from '../assets/images/foundations/colors/ColorBackgrounds_5
 import Backgrounds6 from '../assets/images/foundations/colors/ColorBackgrounds_6.png'
 
 <br />
-<div class="sb-unstyled columns">
-  <div class="column is-4">
+<div className="sb-unstyled columns">
+  <div className="column is-4">
     <img src={Backgrounds4} />
     <p>Do not mix colored card surface and icons with different colors</p>
   </div>
-  <div class="column is-4">
+  <div className="column is-4">
     <img src={Backgrounds5} />
     <p>Do not repeat the same color more than once on a page</p>
   </div>
-  <div class="column is-4">
+  <div className="column is-4">
     <img src={Backgrounds6} />
     <p>Do not use Tint 4, 5 or 6 as background</p>
   </div>
 </div>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="We use design tokens to replace hard-coded values in order to ensure a better consistency"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Background/Background Colors"
+      description="Select from a range of colors for the background of an element"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Typography/Text Colors"
+      description=" Diverse color palettes available for the text of an element"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Border/Border Colors"
+      description="Diverse color palettes available for element borders"
+    />
+  </LinkCards>
+</Footer>

@@ -10,7 +10,7 @@ export const TokensFontColors = ({ overview }) => {
   const colorTokens = tokens.color as any
 
   return (
-    <table class="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '130px' }}>Example</th>
@@ -20,26 +20,26 @@ export const TokensFontColors = ({ overview }) => {
       </thead>
       <tbody>
         {colors.map((c: string, i: number) => (
-          <tr>
+          <tr key={c}>
             <td
               style={{
                 verticalAlign: 'top',
                 background: c === 'white' ? 'var(--bal-color-primary)' : 'transparent',
               }}
             >
-              <span class={`title is-size-xxx-large has-text-${c}`}>Aa</span>
+              <span className={`title is-size-xxx-large has-text-${c}`}>Aa</span>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="has-text-weight-bold is-size-large mt-none mb-x-small">
-                {c} <span class="is-size-medium">({values[i]})</span>
+              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">
+                {c} <span className="is-size-medium">({values[i]})</span>
               </p>
-              <p class="m-none is-size-small">{colorTokens[values[i]].description}</p>
+              <p className="m-none is-size-small">{colorTokens[values[i]].description}</p>
             </td>
             <td style={{ verticalAlign: 'top' }}>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-color-text-{c})
               </p>
-              <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                 var(--bal-color-{values[i]})
               </p>
             </td>
