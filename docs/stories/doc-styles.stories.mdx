@@ -1,5 +1,5 @@
 import { Meta, Description, Unstyled, Markdown } from '@storybook/addon-docs'
-import { Banner, Lead, ButtonCard, InfoQuote, WarningQuote, Button, ButtonLink } from '../.storybook/blocks'
+import { Banner, Lead, ButtonCard, InfoQuote, Code, WarningQuote, Button, ButtonLink } from '../.storybook/blocks'
 
 <Meta
   title="Doc Style Guide"
@@ -11,6 +11,143 @@ import { Banner, Lead, ButtonCard, InfoQuote, WarningQuote, Button, ButtonLink }
 />
 
 <Banner label="Doc Style Guide" section="Root" />
+
+<Code language="ts" noPreview code={`
+const value = 1
+const value = 'string'
+const value = true
+const gugus = document
+
+const func = (param: string) => {
+  console.log('1234', param)
+  gugus.scrollToTop()
+  document.scrollToTop()
+}
+
+function func2(param: string) {
+  console.log('1234', param)
+}
+
+class MyClass {
+  private prop = 2
+
+  constructor(public param2: number){
+
+  }
+
+  async myMethod(){
+
+  }
+}
+`} />
+
+```ts
+const value = 1
+const value = 'string'
+const value = true
+const gugus = document
+
+const func = (param: string) => {
+  console.log('1234', param)
+  gugus.scrollToTop()
+  document.scrollToTop()
+}
+
+function func2(param: string) {
+  console.log('1234', param)
+}
+
+class MyClass {
+  private prop = 2
+
+  constructor(public param2: number){
+
+  }
+
+  async myMethod(){
+
+  }
+}
+```
+
+<Code
+  language="css"
+  noPreview
+  code={`
+.div {
+  color: #123123
+}
+`}
+/>
+
+```css
+.div {
+  color: #123123;
+  background: var(--color);
+}
+```
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloise Design System</title>
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
+    <script
+      type="module"
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+    ></script>
+  </head>
+  <body>
+    <bal-app>
+      <main class="container mt-normal">
+        <bal-heading>Hello World</bal-heading>
+        <bal-button>Button</bal-button>
+      </main>
+    </bal-app>
+  </body>
+</html>
+`}
+/>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloise Design System</title>
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
+    <script
+      type="module"
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+    ></script>
+  </head>
+  <body>
+    <bal-app>
+      <main class="container mt-normal">
+        <bal-heading>Hello World</bal-heading>
+        <bal-button>Button</bal-button>
+      </main>
+    </bal-app>
+  </body>
+</html>
+```
 
 <Lead>
   **Lead** Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

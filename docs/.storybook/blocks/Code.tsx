@@ -1,7 +1,12 @@
 import React from 'react'
 import { Source } from '@storybook/addon-docs'
 
-export const Code = ({ code, preview, language, border = false, noPreview = false }) => {
+export const Code = ({ code, preview, language, border = false, noPreview = undefined }) => {
+
+  if (!['html'].includes((language || 'html').toLowerCase()) && noPreview === undefined) {
+    noPreview = true as any
+  }
+
   return (
     <section className={`sb-unstyled  ${noPreview === true ? 'doc-code-no-preview' : 'doc-code'}`}>
       <div

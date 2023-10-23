@@ -1,0 +1,143 @@
+/* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+diff+scss */
+code[class*=language-],
+pre[class*=language-] {
+  color: var(--bal-color-grey-1) !important;
+  background: 0 0;
+  text-shadow: 0 1px rgba(0, 0, 0, .3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none
+}
+
+pre[class*=language-] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: .3em
+}
+
+:not(pre) > code[class*=language-],
+pre[class*=language-] {
+  background: var(--bal-color-primary-6)
+}
+
+:not(pre) > code[class*=language-] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal
+}
+
+.docblock-source {
+  border-radius: 4px !important;
+  background: var(--bal-color-primary-6) !important;
+  box-shadow: none !important;
+  color: var(--bal-color-grey-1) !important;
+}
+
+.docblock-source > div {
+  background: var(--bal-color-primary-6) !important;
+}
+
+.docblock-source > div:last-child button {
+  background: var(--bal-color-primary-5) !important;
+  border-radius: 4px !important;
+  color: var(--bal-color-grey-1) !important;
+  border-top: 1px solid rgba(255,255,255,.1);
+  border-left: 1px solid rgba(255,255,255,.1);
+  margin-left: -1px;
+}
+
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+  color: var(--bal-color-grey-5) !important;
+}
+
+.token.punctuation {
+  color: var(--bal-color-grey-1) !important;
+}
+
+.token.keyword {
+  color: var(--bal-color-yellow-2) !important;
+}
+
+.token.constant {
+  color: var(--bal-color-red-2) !important;
+}
+
+.token.class-name,
+.token.class-name.maybe-class-name {
+  color: var(--bal-color-red-3) !important;
+}
+
+.token.function {
+  color: var(--bal-color-light-blue-3) !important;
+}
+
+.token.keyword.module {
+  color: var(--bal-color-purple-3) !important;
+}
+
+.token.number {
+  color: var(--bal-color-purple-5) !important;
+}
+
+.token.boolean {
+  color: var(--bal-color-purple-5) !important;
+}
+
+.token.operator {
+  color: var(--bal-color-purple-4) !important;
+}
+
+.token.string {
+  color: var(--bal-color-green-3) !important;
+}
+
+.token.builtin {
+  color: var(--bal-color-light-blue-2) !important;
+}
+
+.token.console.class-name,
+.token.dom.variable {
+  color: var(--bal-color-grey-1) !important
+}
+
+.language-html .token.tag.punctuation,
+.language-html .token.punctuation {
+  color: var(--bal-color-grey-1) !important;
+}
+
+.language-html .token.tag {
+  color: var(--bal-color-red-3) !important;
+}
+
+.language-html .token.attr-name {
+  color: var(--bal-color-yellow-2) !important;
+}
+
+.language-html .token.attr-value {
+  color: var(--bal-color-green-3) !important;
+}
+
+.language-css .token.selector {
+  color: var(--bal-color-yellow-3) !important;
+}
+
+.language-css .token.property {
+  color: var(--bal-color-light-blue-2) !important;
+}

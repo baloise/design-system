@@ -1,0 +1,664 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Component" />
+
+<Banner label="Component" section="Development" color="red" />
+
+<Lead>
+  By using the standardized web platform APIs and Web Components we achieved that the components of the Baloise Design
+  System can be used across any framework or no framework at all.
+</Lead>
+
+## Component Usage
+
+The code is designed to improve the performance of the application by lazy loading each component to the browser
+only when it is needed. Additionally, sub-components will be automatically resolved and loaded as well. To ensure
+that the Design System is initialized correctly, it is crucial that the application is wrapped in the bal-app component
+
+
+
+<AngularFramework>
+
+**app.module.ts**
+
+<Code
+  language="typescript"
+  code={`
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular';
+
+@NgModule({
+...
+imports: [
+BaloiseDesignSystemModule.forRoot(),
+],
+...
+})
+export class AppModule {}
+`}
+/>
+
+**app.component.html**
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-app>
+  <main class="container">
+    <bal-heading>Hello World</bal-heading>
+  <main>
+</bal-app>
+`}
+/>
+
+</AngularFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  -------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-app>
+  <main class="container">
+    <bal-heading>Hello World</bal-heading>
+  <main>
+</bal-app>
+`}
+/>
+
+### When is the component ready
+
+The [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) interface provides methods for registering custom elements and
+querying registered elements. To get an instance of it, use the window.customElements property.
+
+The [whenDefined](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined) method of the CustomElementRegistry interface returns a Promise that
+resolves when the named element is defined.
+
+<Code
+  language="js"
+  noPreview
+  code={`
+window.customElements.whenDefined('bal-button').then(() => {
+  console.log('Baloise Design System Button is defined!')
+})
+`}
+/>
+
+The `whenDefined()` tells when the component is added to the browser.
+Additionally to know when the component has fully rendered ou could use `componentOnReady()` that our components provide.
+
+<Code
+  language="js"
+  noPreview
+  code={`
+await customElements.whenDefined('bal-button')
+await document.querySelector('bal-button').componentOnReady()
+`}
+/>
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* React  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+Import the components that are used inside the template and that is it.
+
+**App.tsx**
+
+```tsx
+import React from "react";
+import { BalApp, BalHeading } from "@baloise/design-system-components-react";
+
+function App() {
+  return (
+    <BalApp>
+      <main class="container">
+        <BalHeading>Hello World</BalHeading>
+      <main>
+    </BalApp>
+  );
+}
+
+export default App;
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Vue  --------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<VueFramework>
+
+Import the components that are used inside the template and that is it.
+
+**App.vue**
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<script setup lang="ts">
+  import { BalApp, BalHeading } from '@baloise/design-system-components-vue'
+</script>
+
+<template>
+  <BalApp>
+    <main class="container">
+      <BalHeading>Hello World</BalHeading>
+    <main>
+  </BalApp>
+</template>
+`}
+/>
+
+</VueFramework>
+
+{/* ############################################################################################ */}
+{/* Properties */}
+{/* ############################################################################################ */}
+
+## Properties
+
+Properties are custom attributes/properties exposed publicly on an HTML element. They allow developers
+to pass data to a component to render or otherwise use. Like to set a value for a input or change the
+color of a button.
+
+To demonstrate how to interact with properties we try to change the color property of the button component.
+
+<Code
+  language="html"
+  code={`
+<!-- with color info -->
+<bal-button color="info">My info button</bal-button>
+`}
+/>
+
+If the property is of type `boolean` it is enough to just set the property without a value:
+
+<Code
+  language="html"
+  code={`
+<!-- disabled button -->
+<bal-button disabled>My disabled button</bal-button>
+`}
+/>
+
+<AngularFramework>
+
+### Bind properties
+
+**app.component.ts**
+
+<Code
+  language="typescript"
+  code={`
+import { Component } from '@angular/core'
+
+@Component({
+selector: 'app-root',
+templateUrl: './app.component.html',
+})
+export class AppComponent {
+buttonColor = 'info'
+}
+`}
+/>
+
+**app.component.html**
+
+<Code
+  language="html"
+  code={`
+<bal-button color="info">My info button</bal-button>
+
+<!-- To bind a value use the [] around the prop -->
+
+<bal-button [color]="buttonColor">My info button</bal-button>
+`}
+/>
+
+</AngularFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  -------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+### Bind properties
+
+```html
+<bal-button color="info">My info button</bal-button>
+<bal-button id="my-info-button">My info button</bal-button>
+
+<script>
+  const buttonElement = document.querySelector('#my-info-button')
+  buttonElement.color = 'info'
+</script>
+```
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* React  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+### Bind properties
+
+```tsx
+import React from "react";
+import { BalButton } from "@baloise/design-system-components-react";
+
+function App() {
+  const [color, setColor] = useState('info');
+
+  return (
+    <BalButton color='info'>My info button</BalButton>
+    <BalButton color={color}>My info button</BalButton>
+  );
+}
+
+export default App;
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Vue  --------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<VueFramework>
+
+### Bind properties
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { BalButton } from '@baloise/design-system-components-vue'
+
+const buttonColor = ref('info')
+
+</script>
+
+<template>
+  <BalButton color="info">My info button</BalButton>
+
+  <!-- To bind a value use the : before the prop -->
+
+  <BalButton :color="buttonColor">My info button</BalButton>
+</template>
+`}
+/>
+
+</VueFramework>
+
+{/* ############################################################################################ */}
+{/* Events */}
+{/* ############################################################################################ */}
+
+## Events
+
+The most of the Baloise Design System components can emit data and events using the Custom events.
+
+To demonstrate how to interact with events we try to listen to the input event of an input component.
+
+<Code
+  language="html"
+  code={`
+<!-- simple text input -->
+<bal-input placeholder="Tell us your name"></bal-input>
+`}
+/>
+
+<AngularFramework>
+
+In Angular the events are written like that `(balEventName)="yourComponentHandler($event.detail)"`.
+
+`$event.detail` returns the main value of the event.
+
+**app.component.html**
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-input placeholder="Tell us your name" [value]="myName" (balInput)="updateName($event.detail)"></bal-input>
+<bal-text>My name is {{ myName }}</bal-text>
+`}
+/>
+
+**app.component.ts**
+
+<Code
+  language="ts"
+  noPreview
+  code={`
+import { Component } from '@angular/core'
+
+@Component({
+selector: 'app-event',
+templateUrl: './event.component.html',
+})
+export class EventComponent {
+myName?: string
+
+updateName(value: BalEvents.BalInputInputDetail) {
+this.myName = value
+}
+}
+`}
+/>
+
+</AngularFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  -------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+Since our components are using [dom events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+we can easily listen to them with `addEventListener`.
+
+```html
+<bal-input id="my-input" placeholder="Tell us your name"></bal-input>
+<bal-text id="my-name"></bal-text>
+
+<script>
+  const myInput = document.getElementById('my-input')
+  const myName = document.getElementById('my-name')
+
+  myInput.addEventListener('balInput', event => {
+    myName.textNode = event.detail
+  })
+</script>
+```
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* React  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
+`$event.detail` returns the main value of the event.
+
+```tsx
+import { useState } from 'react'
+import { BalInput, BalText } from '@baloise/design-system-components-react'
+
+function EventComponent() {
+  const [myName, setMyName] = useState<string | undefined>()
+
+  return (
+    <div>
+      <BalInput placeholder="Tell us your name" value={myName} onBalInput={e => setMyName(e.detail)}></BalInput>
+      <BalText>My name is {myName}</BalText>
+    </div>
+  )
+}
+
+export default EventComponent
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Vue  --------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<VueFramework>
+
+In Vue the the events are written with the `@` simple similar to Angular.
+`$event` returns the main value of the event.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<script setup lang="ts">
+import { ref } from 'vue'
+import { BalInput, BalText } from '@baloise/design-system-components-vue'
+
+const myName = ref<string | undefined>()
+
+function updateName(value?: string) {
+${' '}${' '}myName.value = value
+}
+
+</script>
+
+<template>
+  <BalInput placeholder="Tell us your name" :value="myName" @balInput="updateName($event)"></BalInput>
+  <BalText>My name is {{ myName }}</BalText>
+</template>
+`}
+/>
+
+</VueFramework>
+
+{/* ############################################################################################ */}
+{/* Methods */}
+{/* ############################################################################################ */}
+
+## Methods
+
+Some of the Baloise Design System components offering methods to setFocus or returning native HTML elements.
+
+To demonstrate the usage of the methods we try to set the value of the bal-select to tennis.
+
+<Code
+  language="html"
+  code={`
+  <bal-select placeholder="Choose your hobby">
+    <bal-select-option label="Tennis" value="tennis">
+      Tennis
+    </bal-select-option>
+    <bal-select-option label="Soccer" value="soccer">
+      Soccer
+    </bal-select-option>
+    <bal-select-option label="Other" value="other">
+      Other
+    </bal-select-option>
+  </bal-select>
+`}
+/>
+
+<AngularFramework>
+
+To create a reference to a component use the property decorator [@ViewChild](https://angular.io/api/core/ViewChild).
+Mark the component in the template with `#yourReferenceName` and link it to the `@ViewChild` in the component class.
+To access the method of the component use the reference directly.
+
+**app.component.html**
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<bal-select #mySelect placeholder="Choose your hobby">
+  <bal-select-option label="Tennis" value="tennis">Tennis</bal-select-option>
+  <bal-select-option label="Soccer" value="soccer">Soccer</bal-select-option>
+  <bal-select-option label="Other" value="other">Other</bal-select-option>
+</bal-select>
+<bal-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</bal-button>
+`}
+/>
+
+**app.component.ts**
+
+<Code
+  language="ts"
+  code={`
+import { Component, ViewChild } from '@angular/core'
+import type { Components } from '@baloise/design-system-components'
+import { ProxyComponent } from '@baloise/design-system-components-angular'
+
+@Component({
+selector: 'app-method',
+templateUrl: './method.component.html',
+})
+export class MethodComponent {
+@ViewChild('mySelect') mySelect!: ProxyComponent<Components.BalSelect>
+
+chooseTennis(): void {
+this.mySelect.el.select('tennis')
+}
+}
+`}
+/>
+
+</AngularFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  -------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+```js
+;(async () => {
+  await customElements.whenDefined('bal-select')
+  const todoListElement = document.querySelector('bal-select')
+  await todoListElement.select('tennis')
+})()
+```
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* React  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+```tsx
+import { BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-react'
+import { useRef } from 'react'
+
+function MethodComponent() {
+  const selectRef = useRef<HTMLBalSelectElement>(null)
+
+  function chooseTennis() {
+    selectRef.current?.select('tennis')
+  }
+
+  return (
+    <div>
+      <BalSelect ref={selectRef} placeholder="Choose your hobby">
+        <BalSelectOption label="Tennis" value="tennis">
+          Tennis
+        </BalSelectOption>
+        <BalSelectOption label="Soccer" value="soccer">
+          Soccer
+        </BalSelectOption>
+        <BalSelectOption label="Other" value="other">
+          Other
+        </BalSelectOption>
+      </BalSelect>
+      <BalButton class="mt-normal" onClick={() => chooseTennis()}>
+        Choose Tennis
+      </BalButton>
+    </div>
+  )
+}
+
+export default MethodComponent
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Vue  --------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<VueFramework>
+
+To access the components use the [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) of Vue.js.
+First define the reference and than mark it with the property/attribute `ref`.
+After that the methods of the components can be used directly.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-vue'
+  import { Components } from '@baloise/design-system-components'
+
+  const mySelect = ref<ProxyComponent<Components.BalSelect>>()
+
+  function chooseTennis() {
+    mySelect.value?.$el.select('tennis')
+  }
+</script>
+
+<template>
+  <BalSelect ref="mySelect" placeholder="Choose your hobby">
+    <BalSelectOption label="Tennis" value="tennis">Tennis</BalSelectOption>
+    <BalSelectOption label="Soccer" value="soccer">Soccer</BalSelectOption>
+    <BalSelectOption label="Other" value="other">Other</BalSelectOption>
+  </BalSelect>
+  <BalButton class="mt-normal" @click="chooseTennis()">Choose Tennis</BalButton>
+</template>
+`}
+/>
+
+</VueFramework>

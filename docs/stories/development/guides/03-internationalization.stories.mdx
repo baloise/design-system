@@ -1,0 +1,264 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Internationalization" />
+
+<Banner label="Internationalization" section="Development" color="red" />
+
+<Lead>
+  The [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+  of the browser provides the Design System number and date formats.
+</Lead>
+
+## Regions & Languages
+
+The following **regions** and **languages** are supported:
+
+<Markdown>
+  {`
+| Region | Languages      | Interface               |
+| ------ | -------------- | ----------------------- |
+| CH     | de, fr, it, en | \`BalSwissLanguage\`      |
+| BE     | fr, nl         | \`BalBelgiumLanguage\`    |
+| DE     | de             | \`BalGermanLanguage\`     |
+| LU     | fr, de, en     | \`BalLuxembourgLanguage\` |
+`}
+</Markdown>
+
+Additionally an **allowedLanguages** should be passed to the configuration.
+It is used to display the language selection for the user.
+
+{/* ############################################################################################ */}
+{/* Initialize */}
+{/* ############################################################################################ */}
+
+## Initialize
+
+The initialize of the Design System config defines the default values.
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Angular  ----------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+In the Angular framework define them with the module.
+
+<Code language="typescript" code={`
+import { BrowserModule } from '@angular/platform-browser'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+${' '}declarations: [AppComponent],
+${' '}imports: [
+${' '}${' '}BrowserModule,
+${' '}${' '}BaloiseDesignSystemModule.forRoot({
+${' '}${' '}${' '}defaults: {
+${' '}${' '}${' '}${' '}region: 'DE',
+${' '}${' '}${' '}${' '}language: 'de',
+${' '}${' '}${' '}${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
+${' '}${' '}${' '}},
+${' '}${' '}}),
+${' '}],
+${' '}providers: [],
+${' '}bootstrap: [AppComponent],
+${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+`} />
+
+</AngularFramework>
+
+<HTMLFramework>
+
+<Code language="ts" code={`
+import { initialize } from '@baloise/design-system-components'
+
+initialize({
+${' '}region: 'CH',
+${' '}language: 'de',
+${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
+})
+`} />
+
+</HTMLFramework>
+
+<ReactFramework>
+
+Import the `useBaloiseDesignSystem` function and pass the default values of the config.
+
+<Code language="ts" code={`
+import { useBaloiseDesignSystem } from '@baloise/design-system-components-react'
+
+useBaloiseDesignSystem({
+${' '}defaults: {
+${' '}${' '}region: 'BE',
+${' '}${' '}language: 'fr',
+${' '}${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
+${' '}},
+})
+`} />
+
+</ReactFramework>
+
+<VueFramework>
+
+<Code language="ts" code={`
+import './main.scss'
+import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+${' '}.use(router)
+${' '}.use(BaloiseDesignSystem, {
+${' '}defaults: {
+${' '}region: 'LU',
+${' '}language: 'fr',
+${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
+${' '}},
+${' '}})
+${' '}.mount('#app')
+`} />
+
+</VueFramework>
+
+{/* ############################################################################################ */}
+{/* Change */}
+{/* ############################################################################################ */}
+
+## Change
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Angular  ----------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
+
+<Code language="typescript" code={`
+import { Component, OnInit } from '@angular/core'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
+
+@Component({
+${' '}selector: 'app-app-tab-a',
+${' '}templateUrl: './app-tab-a.component.html',
+${' '}styleUrls: ['./app-tab-a.component.scss'],
+})
+export class AppTabAComponent {
+${' '}changeLang(lang: BalSwissLanguage) {
+${' '}${' '}updateBalLanguage(lang)
+${' '}}
+}
+`} />
+
+</AngularFramework>
+
+<NotAngularFramework>
+
+To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
+
+<Code language="typescript" code={`
+import {
+  updateBalAllowedLanguages,
+  updateBalLanguage,
+  updateBalRegion,
+} from '@baloise/design-system-components'
+
+updateBalLanguage('de')
+updateBalRegion('CH')
+updateBalAllowedLanguages(['fr', 'it'])
+`} />
+
+The config can be accessed with `useConfig`. Both variants have the same effect.
+
+<Code language="typescript" code={`
+import { useConfig } from '@baloise/design-system-components'
+
+const config = useConfig()
+config.language = 'de'
+config.region = 'CH'
+config.allowedLanguages = ['de', 'fr', 'it', 'en']
+`} />
+
+</NotAngularFramework>
+
+{/* ############################################################################################ */}
+{/* Subscribe */}
+{/* ############################################################################################ */}
+
+## Subscribe
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Angular  ----------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
+
+<Code language="typescript" code={`
+import { Component, OnInit } from '@angular/core'
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+
+@Component({
+${' '}selector: 'app-sample',
+${' '}templateUrl: './sample.component.html',
+${' '}styleUrls: ['./sample.component.scss'],
+})
+export class SampleComponent implements OnInit {
+${' '}constructor(private yourLangService: YourLangService) {}
+
+${' '}ngOnInit(): void {
+${' '}${' '}// IMPORTANT: register your config update callback in the ngOnInit instead of the constructor
+${' '}${' '}onBalConfigChange((config: BalConfigState) => {
+${' '}${' '}${' '}// when the language is changed, e.g. in the footer, you probably want to update it in your translations service
+${' '}${' '}${' '}this.yourLangService.changeLanguage(config.language)
+${' '}${' '}})
+${' '}}
+}
+`} />
+
+</AngularFramework>
+
+<NotAngularFramework>
+
+To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
+
+<Code language="typescript" code={`
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+
+onBalConfigChange((config: BalConfigState) => {
+// do something with the updated config here
+})
+`} />
+
+</NotAngularFramework>

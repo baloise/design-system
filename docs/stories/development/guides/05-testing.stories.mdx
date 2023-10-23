@@ -1,0 +1,373 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Testing" />
+
+<Banner label="Testing" section="Development" color="red" />
+
+<Lead>
+  The Baloise Design System offers a comprehensive list of utility functions designed specifically for testing web
+  components.
+</Lead>
+
+Due to the asynchronous execution of these web components, it becomes essential to ensure proper
+synchronization within tests. This involves implementing wait mechanisms to harmonize the testing process with the
+asynchronous nature of the components' behavior.
+
+## Unit Testing
+
+For creating effective unit tests, we highly recommend employing the following tools:
+
+- [Karma + Jasmin](https://angular.io/guide/testing) (only Angular)
+- [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/overview)
+
+These tools offer robust capabilities for testing your components, ensuring their
+functionality and behavior are thoroughly validated. By leveraging Karma with Jasmine
+or utilizing Cypress Component Testing, you empower your testing efforts with
+comprehensive frameworks that enhance the quality and reliability of your codebase.
+
+<AngularFramework>
+
+### Karma + Jasmin
+
+This also serves as the default testing toolkit within the Angular framework.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
+import { BrowserModule, By } from '@angular/platform-browser'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { waitForDesignSystem } from '@baloise/design-system-components'
+import { AppComponent } from './app.component'
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents()
+  })
+  it('should render input value', async () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.detectChanges()
+
+    // waits until the Design System has been initialized and the async
+    // web components have been rendered
+    await waitForDesignSystem()
+
+    const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
+    expect(input.nativeElement.value).toContain('My Value')
+  })
+})
+```
+
+Use the `waitForDesignSystem` utility function to ensure seamless synchronization,
+waiting until the web component tree has been completely rendered.
+
+For post-user interaction synchronization, use the utility function `waitForComponent`.
+This function facilitates waiting until the component's state aligns with the desired condition.
+
+<Code
+  language="ts"
+  code={`
+button.click()
+await fixture.whenStable()
+await waitForComponent(fixture.nativeElement)
+
+// now we can do the assertions
+expect(component.onEditButtonClick).toHaveBeenCalled()
+`}
+/>
+
+</AngularFramework>
+
+### Utilities
+
+The Design System offers a set of utilities designed to facilitate the creation of robust unit tests.
+Each of these functions returns a promise that can be conveniently resolved using the `await` keyword.
+
+<Code
+  language="ts"
+  code={`
+await waitForDesignSystem()
+`}
+/>
+
+<Markdown>
+  {`
+| Util                                             | Description                                                                                                                                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \`waitForDesignSystem(config?: BalConfig \| any)\` | waits until the Design System has initialized and disables all animations. Moreover, it waits unit all components are ready and the first print is done. |
+| \`waitForComponent(el: HTMLElement)\`              | Waits until the component and his nested components has rendered.                                                                                        |
+| \`waitAfterFramePaint()\`                          | Waits until the browser has updated the DOM                                                                                                              |
+| \`waitAfterIdleCallback()\`                        | Waits until the browser goes in idle mode.                                                                                                               |
+`}
+</Markdown>
+
+## Cypress E2E Testing
+
+Discover an collection of custom Cypress commands tailored for the components.
+Additionally, essential Cypress commands like <b>should</b> or <b>click</b> have been refined to seamlessly interact with the components.
+
+- [Component Testing](https://docs.cypress.io/guides/component-testing/overview)
+- [End-to-End Testing](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test)
+
+### Prerequisites
+
+To get started with Cypress, follow the steps outlined in the [Cypress Getting Started Guide](https://docs.cypress.io/guides/getting-started/installing-cypress).
+This guide will provide you with detailed instructions on how to install and set up Cypress
+for your testing needs. It covers topics such as installation, project setup, and running your first test. Happy testing!
+
+### Configure
+
+#### Cypress
+
+To effectively interact with web components, it's essential to [configure Cypress](https://docs.cypress.io/guides/references/configuration#Options) to accommodate shadow DOM.
+This involves modifying the `cypress.config.ts` file and including the `includeShadowDom` option, setting it to `true`.
+
+Follow these steps to configure Cypress for shadow DOM support:
+
+1. Open the `cypress.config.ts` file in your project.
+
+2. Add the following option to enable shadow DOM support:
+
+<Code
+  language="ts"
+  code={`
+{
+  // Other configuration options...
+  includeShadowDom: true,
+  // More configuration options...
+}
+`}
+/>
+
+3. Save the file.
+
+This configuration adjustment ensures that Cypress can properly interact with and test web components that utilize shadow DOM.
+
+With this setting in place, you'll be able to seamlessly navigate and test web components that leverage shadow DOM for encapsulation and styling.
+
+Remember that shadow DOM support enhances the accuracy and effectiveness of your tests when dealing with modern web components.
+
+#### Testing Library
+
+Begin by installing our testing library.
+
+<Code
+  language="bash"
+  code={`
+npm add -D @baloise/design-system-testing
+`}
+/>
+
+Navigate to the file `cypress/support/commands.ts` and import the testing library.
+This action will grant you access to a suite of custom Cypress commands tailored to our framework.
+
+```ts
+/// <reference types="cypress" />
+
+import '@baloise/design-system-testing/dist/add-custom-commands'
+import '@baloise/design-system-testing/dist/add-override-commands'
+```
+
+- The file "add-custom-commands" introduces fresh commands to augment the existing list of Cypress commands.
+- The "add-override-commands" file refines the functionality of existing commands, ensuring optimal support for web components within the design system.
+
+### Component Testing
+
+Open the "component-index.html" file and integrate the `bal-app` component.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Components App</title>
+  </head>
+  <body>
+    <bal-app data-cy-root></bal-app>
+  </body>
+</html>
+```
+
+#### Usage
+
+A simple component has been developed, utilizing the CSS framework and its corresponding components.
+
+```html
+<div class="p-large">
+  <h1 class="title">Native Title</h1>
+  <bal-heading>Component Title</bal-heading>
+</div>
+```
+
+Lets create our first test `hello.component.cy.ts`.
+
+```html
+<div class="p-large">
+  <h1 class="title">Native Title</h1>
+  <bal-heading>Component Title</bal-heading>
+</div>
+```
+
+```typescript
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { HelloComponent } from 'src/app/hello/hello.component'
+
+describe('hello.component.cy.ts', () => {
+  it('playground', () => {
+    // mount the angular component and import the needed
+    // Design System modules
+    cy.mount(HelloComponent, {
+      imports: [BaloiseDesignSystemModule.forRoot()],
+    })
+    // lets wait until the Design System has loaded the custom font, ¨
+    // disabled the animations and the web-components have rendered
+    cy.waitForDesignSystem()
+
+    cy.get('bal-heading').contains('Component Title')
+  })
+})
+```
+
+### End-to-End Testing
+
+### Usage
+
+Comprehensive documentation for each component's commands is provided on the respective components page.
+
+```typescript
+import { byTestId, selectors } from '@baloise/design-system-testing'
+
+describe('Accordion', () => {
+  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
+
+  it('should ...', () => {
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show more')
+    cy.get(accordion).balAccordionIsClosed()
+    cy.get(accordion).click().balAccordionIsOpen()
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show less')
+    cy.get(accordion).find(selectors.accordion.content).contains('My Content')
+    cy.get(accordion).click().balAccordionIsClosed()
+  })
+})
+```
+
+### Selectors
+
+For optimal testing practices, we suggest assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
+
+```html
+<bal-button data-testid="my-button"></bal-button>
+```
+
+Construct the correct selector using the helper function byTestId, like [data-testid="my-button"].
+This selector can then be used directly with the Cypress commands.
+
+```typescript
+import { byTestId } from '@baloise/design-system-testing'
+
+describe('Button', () => {
+  it('should ...', () => {
+    cy.getByTestId('button-id').click()
+  })
+
+  // or with the selector function
+
+  it('should ...', () => {
+    const button = byTestId('button-id')
+    cy.get(button).click()
+  })
+})
+```
+
+### Component Selectors (WIP)
+
+Each component internally defines specific `data-testid` selectors.
+
+```typescript
+import { selectors } from '@baloise/design-system-testing'
+
+describe('Accordion', () => {
+  it('should ...', () => {
+    cy.getByTestId('accordion').find(selectors.accordion.trigger).contains('Show more')
+    cy.getByTestId('accordion').find(selectors.accordion.content).contains('My Content')
+  })
+})
+```
+
+### Component Commands
+
+#### getByTestId
+
+Retrieves the element or component using the `data-testid` attribute and internally triggers the `waitForComponents` command for complete loading.
+
+```typescript
+cy.getByTestId('button')
+```
+
+#### getByRole
+
+The `getByRole` custom Cypress command simplifies the process of selecting elements by their ARIA role attribute.
+This command is especially useful for targeting interactive components based on their role in the accessibility tree.
+
+```typescript
+cy.getByRole('button', { name: 'Button Label' }).click()
+```
+
+#### getByPlaceholder
+
+The `getByPlaceholder` custom Cypress command provides a convenient way to select an element by its placeholder attribute. This is particularly
+useful when you want to interact with input elements based on their placeholder text.
+
+```typescript
+cy.getByPlaceholder('Enter your username').type('myusername')
+```
+
+#### waitForDesignSystem
+
+Delays execution until the custom font is loaded, the Design System is initialized, web-components
+are prepared, and the initial browser print action is satisfied.
+Furthermore, it deactivates all animations, promoting a more stable and efficient testing environment.
+
+```typescript
+cy.waitForDesignSystem()
+```
+
+#### waitForComponents
+
+Awaits complete loading of the web component.
+
+```typescript
+cy.get('button').waitForComponents()
+```
+
+#### Viewport / Platform
+
+The `platform` commands allows to switch between the breakpoints of the Design System
+
+```typescript
+cy.platform('mobile')
+cy.platform('tablet')
+cy.platform('desktop')
+```
