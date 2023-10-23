@@ -13,7 +13,6 @@ export class DrawerVariantRenderer extends AbstractVariantRenderer implements Po
       component.containerEl.style.setProperty('inset', `auto 0px 0px 0px`)
       component.containerEl.style.setProperty('bottom', `${this.offset}px`)
       component.backdropEl.style.setProperty('bottom', `${this.offset}px`)
-      component.containerEl.classList.add('container')
 
       this.showBackdropElement(component, this.backdrop)
       this.showContainerElement(component)
@@ -34,7 +33,6 @@ export class DrawerVariantRenderer extends AbstractVariantRenderer implements Po
       this.hideContainerElement(component)
 
       component.containerEl.style.removeProperty('inset')
-      component.containerEl.classList.remove('container')
       component.containerEl.style.removeProperty('bottom')
       component.backdropEl.style.removeProperty('bottom')
       return true

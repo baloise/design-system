@@ -26,8 +26,12 @@ export class BalBreakpointSubject extends Subject<BalBreakpointObserver> {
   override attach(observer: BalBreakpointObserver): void {
     super.attach(observer)
     balBreakpoints.detect()
-    this.state = balBreakpoints.toObject()
-    this.notify()
+    const newState = balBreakpoints.toObject()
+
+    if (!this.isEqual(newState)) {
+      this.state = newState
+      this.debouncedNotify()
+    }
   }
 
   isEqual(newState: BalBreakpoints): boolean {

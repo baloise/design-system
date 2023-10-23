@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-react",
-  "version": "14.0.1",
+  "version": "14.0.3",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

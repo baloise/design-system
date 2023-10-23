@@ -1,5 +1,35 @@
 # @baloise/design-system-components
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.3
+  - @baloise/design-system-fonts@14.0.3
+  - @baloise/design-system-icons@14.0.3
+  - @baloise/design-system-tokens@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- [#1055](https://github.com/baloise/design-system/pull/1055) - Adjust the opacity of the modal backdrop color, changing it from 0.8 to 0.6.
+
+- [#1072](https://github.com/baloise/design-system/pull/1072) - The arrow position in the navigation popover has been adjusted, and the CSS utility class 'container' has been removed from the navigation component.
+
+- [#1047](https://github.com/baloise/design-system/pull/1047) - Resize the tags within the input group to align with those of bal-select.
+
+- [#1054](https://github.com/baloise/design-system/pull/1054) - Modify the badge width for extended content length.
+
+- [#1074](https://github.com/baloise/design-system/pull/1074) - The BreakpointService will now only respond to state changes, thereby mitigating the Angular error `NG0101: ApplicationRef.tick is called recursively`. Furthermore, the injection of ngControl has been set as optional to prevent the NullInjector Warning.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.2
+  - @baloise/design-system-fonts@14.0.2
+  - @baloise/design-system-icons@14.0.2
+  - @baloise/design-system-tokens@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

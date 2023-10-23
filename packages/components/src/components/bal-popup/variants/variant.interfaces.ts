@@ -25,11 +25,13 @@ export interface PopupComponentInterface {
   balWillAnimate: EventEmitter<BalEvents.BalPopupWillAnimateDetail>
   balDidAnimate: EventEmitter<BalEvents.BalPopupDidAnimateDetail>
   el: HTMLElement
+  componentWidth?: number
   backdropEl?: HTMLDivElement
   containerEl?: HTMLDivElement
   arrowEl?: HTMLDivElement
   trigger?: Element
   lastTrigger?: Element
+  setMinWidth(value: number): any
   getValue(trigger: Element | HTMLElement, attributeName: string, componentValue: any): any
   getNumberValue(trigger: Element | HTMLElement, attributeName: string, componentValue: number): number
   getBooleanValue(trigger: Element | HTMLElement, attributeName: string, componentValue: boolean): boolean
