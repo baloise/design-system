@@ -7,7 +7,7 @@ export const StoryHeading = ({ of, children, hidden }) => {
   const id = (children || story.id).toString().trim().toLowerCase()
 
   return <Unstyled>
-    <h2 id={id} className='sb-unstyled title has-text-primary is-size-xxx-large' style={{
+    <h2 id={id} className='sb-unstyled is-family-title has-text-primary has-text-weight-bold is-size-xxx-large' style={{
       marginBottom: hidden === true ? '0': '.5rem',
       marginTop: hidden === true ? '0': '4rem',
       paddingBottom: hidden === true ? '0': '4px',
