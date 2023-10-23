@@ -201,7 +201,7 @@ blockquote > p {
  * CODE
  ***************************************/
 
-code {
+code:not(.language-diff) {
   background-color: var(--bal-color-primary-1)  !important;
   border: 1px solid var(--bal-color-primary-1)  !important;
   color: var(--bal-color-primary) !important;
