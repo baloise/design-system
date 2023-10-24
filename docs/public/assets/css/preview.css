@@ -47,77 +47,74 @@
 
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1 {
-  font-size: 2rem;
-  line-height: 1.5;
+  color: var(--bal-color-primary);
+  font-size: var(--bal-size-xxx-large);
+  line-height: 1.3;
   margin-top: 2.5rem !important;
 }
 
 @media screen and (min-width: 769px) {
   .sbdocs-content > h1,
   .sbdocs-content > div:not(.sb-unstyled) > h1 {
-    font-size: 3rem;
-    line-height: 1.5;
+    font-size: var(--bal-size-desktop-xxx-large);
     margin-top: 3rem !important;
   }
 }
 
 .sbdocs-content > h2,
 .sbdocs-content > div:not(.sb-unstyled) > h2 {
-  font-size: 1.75rem;
-  line-height: 1.5;
+  font-size: var(--bal-size-xx-large);
+  line-height: 1.3;
   margin-top: 3rem !important;
 }
 
 @media screen and (min-width: 769px) {
   .sbdocs-content > h2,
   .sbdocs-content > div:not(.sb-unstyled) > h2 {
-    font-size: 2.5rem;
-    line-height: 1.5;
+    font-size: var(--bal-size-desktop-xx-large);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h3,
 .sbdocs-content > div:not(.sb-unstyled) > h3 {
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: var(--bal-size-x-large);
+  line-height: 1.3;
   margin-top: 2rem !important;
 }
 
 @media screen and (min-width: 769px) {
   .sbdocs-content > h3,
   .sbdocs-content > div:not(.sb-unstyled) > h3 {
-    font-size: 2rem;
-    line-height: 1.5;
+    font-size: var(--bal-size-desktop-x-large);
     margin-top: 4rem !important;
   }
 }
 
 .sbdocs-content > h4,
 .sbdocs-content > div:not(.sb-unstyled) > h4 {
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: var(--bal-size-large);
+  line-height: 1.3;
   margin-top: 1.5rem !important;
 }
 
 @media screen and (min-width: 769px) {
   .sbdocs-content > h4,
   .sbdocs-content > div:not(.sb-unstyled) > h4 {
-    font-size: 1.5rem;
-    line-height: 1.5;
+    font-size: var(--bal-size-desktop-large);
     margin-top: 2rem !important;
   }
 }
 
 .sbdocs-content > h5,
 .sbdocs-content > div:not(.sb-unstyled) > h5 {
-  font-size: 1.125rem;
+  font-size: var(--bal-size-desktop-medium);
   line-height: 1.5;
 }
 
 .sbdocs-content > h6,
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
-  font-size: 1rem;
+  font-size: var(--bal-size-normal);
   line-height: 1.5;
 }
 
@@ -126,7 +123,7 @@
   font-family: 'BaloiseCreateText';
   font-weight: 400;
   color: var(--bal-color-primary);
-  font-size: 1rem;
+  font-size: var(--bal-size-normal);
   line-height: 1.5;
 }
 
