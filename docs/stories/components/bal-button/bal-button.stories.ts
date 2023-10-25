@@ -26,10 +26,46 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const Secondary = Story({
+export const Basic = Story({
   args: {
-    // place props here
+    icon: 'plus',
   },
+})
+
+export const ButtonVariants = Story({
+  ...withRender(
+    () => `<bal-button-group direction="column" position="center">
+    <bal-button>Primary</bal-button>
+    <bal-button color="secondary">Secondary</bal-button>
+    <bal-button color="tertiary">Tertiary</bal-button>
+    <bal-button color="tertiary-purple">Tertiary Purple</bal-button>
+    <bal-button color="tertiary-red">Tertiary Red</bal-button>
+    <bal-button color="tertiary-yellow">Tertiary Yellow</bal-button>
+    <bal-button color="tertiary-green">Tertiary Green</bal-button>
+    <bal-button color="link">Link</bal-button>
+  </bal-button-group>`,
+  ),
+})
+
+export const ButtonStates = Story({
+  ...withRender(
+    () => `<bal-button-group>
+    <bal-button loading>Loading</bal-button>
+    <bal-button disabled>Disabled</bal-button>
+  </bal-button-group>`,
+  ),
+})
+
+export const AlertButtons = Story({
+  args: {
+    icon: 'plus',
+  },
+  ...withRender(
+    () => `<bal-button-group>
+    <bal-button v-bind="args" color="info-light">Info</bal-button>
+    <bal-button v-bind="args" color="success">Success</bal-button>
+    <bal-button v-bind="args" color="warning">Warning</bal-button>
+    <bal-button v-bind="args" color="danger">Danger</bal-button>
+  </bal-button-group>`,
+  ),
 })
