@@ -324,10 +324,7 @@ export class NumberInput
       suffix = ` ${suffix}`
     }
 
-    let thousandSeparator = getThousandSeparator()
-    if (thousandSeparator === '’') {
-      thousandSeparator = "'"
-    }
+    const thousandSeparator = getThousandSeparator()
 
     let decimalSeparator = getDecimalSeparator()
     if (decimalSeparator === ',') {
