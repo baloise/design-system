@@ -1,5 +1,19 @@
 # @baloise/design-system-components-angular
 
+## 14.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`7fa23203a`](https://github.com/baloise/design-system/commit/7fa23203a843a16302642eb231ea4669660d7992)]:
+  - @baloise/design-system-components@14.0.5
+
+## 14.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`98516afba`](https://github.com/baloise/design-system/commit/98516afbab13c8526177086e79a2f29e1b7c35b8)]:
+  - @baloise/design-system-components@14.0.4
+
 ## 14.0.3
 
 ### Patch Changes
@@ -26,6 +40,10 @@
   - @baloise/design-system-components@14.0.1
 
 ## 14.0.0
+
+### Major Changes
+
+- Reverted component outputs type from RX.JS `fromEvent(...)` to Angular's `EventEmitter`, as it was causing event duplication.
 
 ### Patch Changes
 
