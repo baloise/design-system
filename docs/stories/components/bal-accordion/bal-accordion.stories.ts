@@ -8,12 +8,12 @@ import {
   withComponentControls,
   StoryFactory,
   lorem1,
-} from '../../../utils'
+} from '../../utils'
 
 type Args = JSX.BalAccordion & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Containment/Accordion',
+  title: 'Components/Accordion',
   args: {
     ...withDefaultContent(lorem1),
   },

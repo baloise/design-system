@@ -1,11 +1,11 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../../utils'
+import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalBadge & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Data Display/Badge',
+  title: 'Components/Badge',
   args: {
     ...withDefaultContent('42'),
   },

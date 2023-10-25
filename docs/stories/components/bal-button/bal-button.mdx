@@ -9,7 +9,9 @@ import * as ButtonStories from './bal-button.stories'
 
 <Banner of={ButtonStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Buttons** provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button
+  functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific
+  way.</Lead>
 
 <Canvas of={ButtonStories.Basic} sourceState="shown" />
 
@@ -18,17 +20,65 @@ import * as ButtonStories from './bal-button.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ButtonStories.Secondary}></StoryHeading>
+<StoryHeading of={ButtonStories.Variants}></StoryHeading>
 
-<Canvas of={ButtonStories.Secondary} sourceState="shown" />
+Buttons are available in four main levels: **primary**, **secondary**, **tertiary**, and **link**. The primary level is specifically designed for prominent call-to-action elements.
+Tertiary buttons can be customized with branding colors to align with the overall theme. However, it's important to note that themed tertiary buttons
+are not suitable for use on non-white backgrounds.
+
+<Canvas of={ButtonStories.Variants} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.States}></StoryHeading>
+
+<Canvas of={ButtonStories.States} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.AlertButtons}></StoryHeading>
+
+<Canvas of={ButtonStories.AlertButtons} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.SquareButtons}></StoryHeading>
+
+<Canvas of={ButtonStories.SquareButtons} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.ButtonGroup}></StoryHeading>
+
+<Canvas of={ButtonStories.ButtonGroup} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.Link}></StoryHeading>
+
+<Canvas of={ButtonStories.Link} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.NativeButton}></StoryHeading>
+
+<Canvas of={ButtonStories.NativeButton} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ButtonStories.NativeLink}></StoryHeading>
+
+<Canvas of={ButtonStories.NativeLink} sourceState="shown" />
 
 ## Component API
 
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import buttonGroupApi from './bal-button-group/api.md?raw'
+
+<Markdown>{buttonGroupApi}</Markdown>
 
 ## Integration
 

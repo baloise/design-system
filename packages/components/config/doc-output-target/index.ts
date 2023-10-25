@@ -132,7 +132,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       ...themingLines,
       '',
     ]
-    writeFileSync(path.join(DOC_PATH, 'stories/development/guides/theming/theming.md'), contentTheming.join(NEWLINE))
+    writeFileSync(path.join(DOC_PATH, 'stories/development/00-guides/theming/theming.md'), contentTheming.join(NEWLINE))
 
     /**
      * Create contributors page
