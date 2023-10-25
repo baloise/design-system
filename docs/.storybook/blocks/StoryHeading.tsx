@@ -7,12 +7,12 @@ export const StoryHeading = ({ of, children, hidden }) => {
   const id = (children || story.id).toString().trim().toLowerCase()
 
   return <Unstyled>
-    <h2 id={id} className='sb-unstyled is-family-title has-text-primary has-text-weight-bold is-size-xxx-large' style={{
+    <h2 id={id} className='sb-unstyled is-family-title has-text-primary has-text-weight-bold is-size-xx-large' style={{
       marginBottom: hidden === true ? '0': '.5rem',
       marginTop: hidden === true ? '0': '4rem',
       paddingBottom: hidden === true ? '0': '4px',
       borderBottom: hidden === true ? '0': '1px solid hsla(203, 50%, 30%, 0.15)',
-      lineHeight: hidden === true ? '0' : 'var(--bal-line-height-desktop-xxx-large)',
+      lineHeight: hidden === true ? '0' : '1.3',
       visibility: hidden === true ? 'hidden' : 'visible'
     }}>
       <a aria-hidden="true" href={`#${id}`} tabIndex={-1} target="_self" style={{
