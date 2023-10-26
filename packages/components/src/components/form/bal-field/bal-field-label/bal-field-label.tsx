@@ -49,7 +49,13 @@ export class FieldLabel {
   @Prop() readonly?: boolean = undefined
 
   /**
-   * If `true` the component gets a invalid style.
+   * Defines the size of the font. Default is like a heading 5 and small is used
+   * with the form fields.
+   */
+  @Prop() size: BalProps.BalFieldLabelSize = 'small'
+
+  /**
+   * Defines the font weight of the label.
    */
   @Prop() weight: BalProps.BalFieldLabelWeight = 'bold'
 
@@ -83,7 +89,7 @@ export class FieldLabel {
       <Host class="bal-field-label">
         <bal-label
           multiline
-          size="small"
+          size={this.size}
           htmlFor={this.htmlFor}
           required={this.required}
           valid={this.valid}
