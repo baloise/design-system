@@ -1135,11 +1135,15 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size": BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight": BalProps.BalFieldLabelWeight;
     }
@@ -1724,6 +1728,9 @@ export namespace Components {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight": BalProps.BalLabelWeight;
     }
     interface BalList {
@@ -5905,11 +5912,15 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size"?: BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight"?: BalProps.BalFieldLabelWeight;
     }
@@ -6525,6 +6536,9 @@ declare namespace LocalJSX {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight"?: BalProps.BalLabelWeight;
     }
     interface BalList {
