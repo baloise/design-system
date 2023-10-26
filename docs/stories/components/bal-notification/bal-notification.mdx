@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as NotificationStories from './bal-notification.stories'
 
 <Meta of={NotificationStories} />
@@ -9,18 +9,11 @@ import * as NotificationStories from './bal-notification.stories'
 
 <Banner of={NotificationStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Notification** is used for alerts or to highlight certain content for the user.</Lead>
 
 <Canvas of={NotificationStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={NotificationStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={NotificationStories.Secondary}></StoryHeading>
-
-<Canvas of={NotificationStories.Secondary} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +36,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

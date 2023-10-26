@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as ShapeStories from './bal-shape.stories'
 
 <Meta of={ShapeStories} />
@@ -9,18 +9,11 @@ import * as ShapeStories from './bal-shape.stories'
 
 <Banner of={ShapeStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>Baloise Shape with variable color, size and rotation.</Lead>
 
 <Canvas of={ShapeStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={ShapeStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={ShapeStories.Secondary}></StoryHeading>
-
-<Canvas of={ShapeStories.Secondary} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +36,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
