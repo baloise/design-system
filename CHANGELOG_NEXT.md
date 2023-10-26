@@ -455,7 +455,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.16.0](https://github.com/baloise/design-system/compare/v10.15.9...v10.16.0) (2022-08-10)
 
-
 ### Features
 
 * **nav mobile:** added the case when the main item is a link ([8c9366f](https://github.com/baloise/design-system/commit/8c9366f43489b238bb8c8fe4c1434b55a0ce0e9a))
