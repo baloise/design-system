@@ -435,6 +435,11 @@ a.sbdocs-a.text-decoration-none {
     width: calc(50% - 0.5rem);
   }
 }
+
+div.has-visible-overflow div[scale="1"] {
+  transform: none;
+}
+
 /***************************************
  * SUPPORT
  ***************************************/
@@ -675,17 +680,7 @@ pre.my-diff-source code {
   padding: 0 !important;
 }
 
-div.has-visible-overflow,
-div.has-visible-overflow.sbdocs-preview,
-div.has-visible-overflow > .docs-story,
-div.has-visible-overflow > .docs-story > div:first-child {
-  overflow: visible !important;
-  z-index: 10 !important;
-}
 
-div.has-visible-overflow > .docs-story > div:nth-child(2) {
-  bottom: 10px;
-}
 
 .sbdocs a.bal-list__item__trigger {
   text-decoration: none !important;

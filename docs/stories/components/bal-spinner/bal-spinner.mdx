@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as SpinnerStories from './bal-spinner.stories'
@@ -9,7 +8,7 @@ import * as SpinnerStories from './bal-spinner.stories'
 
 <Banner of={SpinnerStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Spinner** is a animated graphic that lets the user know content is being loaded.</Lead>
 
 <Canvas of={SpinnerStories.Basic} sourceState="shown" />
 
@@ -18,9 +17,13 @@ import * as SpinnerStories from './bal-spinner.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={SpinnerStories.Secondary}></StoryHeading>
+<StoryHeading of={SpinnerStories.LoadingButton}></StoryHeading>
 
-<Canvas of={SpinnerStories.Secondary} sourceState="shown" />
+<Canvas of={SpinnerStories.LoadingButton} sourceState="hidden" />
+
+<StoryHeading of={SpinnerStories.LoadingCard}></StoryHeading>
+
+<Canvas of={SpinnerStories.LoadingCard} sourceState="hidden" />
 
 {/* ------------------------------------------------------ */}
 
