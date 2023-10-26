@@ -28,8 +28,8 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   ...withRender(
     ({ content }) => `<bal-notification>
-    <span>${content}</span>
-  </bal-notification>`,
+  <span>${content}</span>
+</bal-notification>`,
   ),
   args: {
     content:

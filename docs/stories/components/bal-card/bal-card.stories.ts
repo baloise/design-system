@@ -40,29 +40,29 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   ...withRender(
     ({ content }) => `<bal-card>
-    <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
-    <bal-card-title>BaloiseCombi</bal-card-title>
-    <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-    <bal-card-content>${content}</bal-card-content>
-    <bal-card-actions position="right">
-      <bal-button color="info">Secondary Action</bal-button>
-      <bal-button>Main Action</bal-button>
-    </bal-card-actions>
-  </bal-card>`,
+  <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>${content}</bal-card-content>
+  <bal-card-actions position="right">
+    <bal-button color="info">Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-card-actions>
+</bal-card>`,
   ),
 })
 
 export const FlatCard = Story({
   ...withRender(
     ({ content }) => `<bal-card border="true" flat="true">
-    <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
-    <bal-card-title>BaloiseCombi</bal-card-title>
-    <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-    <bal-card-content>${content}</bal-card-content>
-    <bal-card-actions position="right">
-        <bal-button color="info">Secondary Action</bal-button>
-        <bal-button>Main Action</bal-button>
-    </bal-card-actions>
+  <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>${content}</bal-card-content>
+  <bal-card-actions position="right">
+      <bal-button color="info">Secondary Action</bal-button>
+      <bal-button>Main Action</bal-button>
+  </bal-card-actions>
 </bal-card>`,
   ),
 })
@@ -70,218 +70,218 @@ export const FlatCard = Story({
 export const CardTitle = Story({
   ...withRender(
     ({ content }) => `<bal-card>
-    <bal-card-title>
-      BaloiseCombi
-      <bal-tag-group>
-        <bal-tag size="small" color="yellow">My Tag 1</bal-tag>
-        <bal-tag size="small" color="green">My Tag 2</bal-tag>
-      </bal-tag-group>
-      <bal-button-group position="right">
-        <bal-button>Button 1</bal-button>
-        <bal-button>Button 2</bal-button>
-      </bal-button-group>
-    </bal-card-title>
-    <bal-card-content>${content}</bal-card-content>
-    <bal-card-actions position="right">
-      <bal-button color="info" outlined="true">Secondary Action</bal-button>
-      <bal-button>Main Action</bal-button>
-    </bal-card-actions>
-  </bal-card>`,
+  <bal-card-title>
+    BaloiseCombi
+    <bal-tag-group>
+      <bal-tag size="small" color="yellow">My Tag 1</bal-tag>
+      <bal-tag size="small" color="green">My Tag 2</bal-tag>
+    </bal-tag-group>
+    <bal-button-group position="right">
+      <bal-button>Button 1</bal-button>
+      <bal-button>Button 2</bal-button>
+    </bal-button-group>
+  </bal-card-title>
+  <bal-card-content>${content}</bal-card-content>
+  <bal-card-actions position="right">
+    <bal-button color="info" outlined="true">Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-card-actions>
+</bal-card>`,
   ),
 })
 
 export const TeaserCards = Story({
   ...withRender(
     () => `<div class="columns">
-    <div class="column is-one-third">
-      <bal-card color="purple-light" fullheight="true">
-        <bal-card-content>
-          <bal-stack layout="vertical" align="center" space="large">
-            <bal-icon svg='${svgPigPurple}' color="auto" size="xx-large"></bal-icon>
-            <bal-content align="center">
-              <bal-heading level="x-large">Teaser Card</bal-heading>
-              <bal-text>The item component can easily be combined with the card component to achieve a nice
-              teaser layout.</bal-text>
-            </bal-content>
-            <bal-button>Button</bal-button>
-          </bal-stack>
-        </bal-card-content>
-      </bal-card>
-    </div>
-    <div class="column is-one-third">
-      <bal-card color="yellow-light" fullheight="true">
-        <bal-card-content>
-          <bal-stack layout="vertical" align="center" space="large">
-            <bal-icon svg='${svgPigYellow}' color="auto" size="xx-large"></bal-icon>
-            <bal-content align="center">
-              <bal-heading level="x-large">Auto Height</bal-heading>
-              <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
-            </bal-content>
-            <bal-button>Button</bal-button>
-          </bal-stack>
-        </bal-card-content>
-      </bal-card>
-    </div>
-    <div class="column is-one-third">
-      <bal-card color="red-light" fullheight="true">
-        <bal-card-content>
-          <bal-stack layout="vertical" align="center" space="large">
-            <bal-icon svg='${svgPigRed}' color="auto" size="xx-large"></bal-icon>
-            <bal-content align="center">
-              <bal-heading level="x-large">Item Component</bal-heading>
-              <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-            </bal-content>
-            <bal-button>Button</bal-button>
-          </bal-stack>
-        </bal-card-content>
-      </bal-card>
-    </div>
-  </div>`,
+  <div class="column is-one-third">
+    <bal-card color="purple-light" fullheight="true">
+      <bal-card-content>
+        <bal-stack layout="vertical" align="center" space="large">
+          <bal-icon svg='${svgPigPurple}' color="auto" size="xx-large"></bal-icon>
+          <bal-content align="center">
+            <bal-heading level="x-large">Teaser Card</bal-heading>
+            <bal-text>The item component can easily be combined with the card component to achieve a nice
+            teaser layout.</bal-text>
+          </bal-content>
+          <bal-button>Button</bal-button>
+        </bal-stack>
+      </bal-card-content>
+    </bal-card>
+  </div>
+  <div class="column is-one-third">
+    <bal-card color="yellow-light" fullheight="true">
+      <bal-card-content>
+        <bal-stack layout="vertical" align="center" space="large">
+          <bal-icon svg='${svgPigYellow}' color="auto" size="xx-large"></bal-icon>
+          <bal-content align="center">
+            <bal-heading level="x-large">Auto Height</bal-heading>
+            <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
+          </bal-content>
+          <bal-button>Button</bal-button>
+        </bal-stack>
+      </bal-card-content>
+    </bal-card>
+  </div>
+  <div class="column is-one-third">
+    <bal-card color="red-light" fullheight="true">
+      <bal-card-content>
+        <bal-stack layout="vertical" align="center" space="large">
+          <bal-icon svg='${svgPigRed}' color="auto" size="xx-large"></bal-icon>
+          <bal-content align="center">
+            <bal-heading level="x-large">Item Component</bal-heading>
+            <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
+          </bal-content>
+          <bal-button>Button</bal-button>
+        </bal-stack>
+      </bal-card-content>
+    </bal-card>
+  </div>
+</div>`,
   ),
 })
 
 export const CardVariations = Story({
   ...withRender(
     ({ content }) => `<div class="container">
-    <div class="columns is-multiline">
-      <div class="column is-half">
-        <bal-card fullHeight="true" clickable="true">
-          <bal-card-content>
-            <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-              <img class="mb-normal" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-              <bal-heading level="h4" space="bottom">Clickable Card</bal-heading>
-            </div>
-          </bal-card-content>
-        </bal-card>
-      </div>
-      <div class="column is-half">
-        <bal-card fullHeight="true" color="purple" flat="true">
-          <bal-card-content>
-            <div class="is-flex is-justify-content-start is-flex-direction-column">
-              <bal-heading level="h4" space="bottom">Info Card</bal-heading>
-              <bal-text class="mb-normal">${content}</bal-text>
-              <bal-button-group position="center" class="mt-auto">
-                <bal-button expanded="true">Button</bal-button>
-              </bal-button-group>
-            </div>
-          </bal-card-content>
-        </bal-card>
-      </div>
-      <div class="column is-half">
-        <bal-card fullHeight="true">
-          <bal-card-content>
-            <div class="is-flex is-justify-content-start is-flex-direction-column">
-              <div class="is-flex">
-                <bal-heading class="is-flex-grow-1" level="h4" space="none">List Card</bal-heading>
-                <a class="is-link">Show All</a>
-              </div>
-              <bal-list border="true" size="large" class="mb-normal">
-                <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
-                  <bal-list-item-content>
-                      <bal-list-item-title>External Link</bal-list-item-title>
-                      <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-                  </bal-list-item-content>
-                  <bal-list-item-icon right="true">
-                      <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-                  </bal-list-item-icon>
-                </bal-list-item>
-                <bal-list-item disabled="true" clickable="true" href="http://www.baloise.com" target="_blank">
-                  <bal-list-item-content>
-                    <bal-list-item-title>Disabled Link</bal-list-item-title>
-                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-                  </bal-list-item-content>
-                  <bal-list-item-icon right="true">
-                    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
-                  </bal-list-item-icon>
-                </bal-list-item>
-              </bal-list>
-              <bal-button-group position="center" class="mt-auto">
-                <bal-button expanded="true" outlined="true" color="info">Button</bal-button>
-              </bal-button-group>
-            </div>
-          </bal-card-content>
-        </bal-card>
-      </div>
-      <div class="column is-half">
-        <bal-card fullHeight="true">
-          <bal-card-content>
-            <div class="is-flex is-justify-content-start is-flex-direction-column">
-              <bal-heading level="h4" space="bottom">Action Card</bal-heading>
-              <bal-input-group>
-                <bal-icon size="small" name="search"></bal-icon>
-                <bal-input placeholder="Placeholder"></bal-input>
-              </bal-input-group>
-              <bal-button-group position="center" class="mt-auto">
-                <bal-button expanded="true" outlined="true" color="info" class="mt-normal">Search</bal-button>
-              </bal-button-group>
-            </div>
-          </bal-card-content>
-        </bal-card>
-      </div>
+  <div class="columns is-multiline">
+    <div class="column is-half">
+      <bal-card fullHeight="true" clickable="true">
+        <bal-card-content>
+          <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+            <img class="mb-normal" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
+            <bal-heading level="h4" space="bottom">Clickable Card</bal-heading>
+          </div>
+        </bal-card-content>
+      </bal-card>
     </div>
-  </div>`,
+    <div class="column is-half">
+      <bal-card fullHeight="true" color="purple" flat="true">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <bal-heading level="h4" space="bottom">Info Card</bal-heading>
+            <bal-text class="mb-normal">${content}</bal-text>
+            <bal-button-group position="center" class="mt-auto">
+              <bal-button expanded="true">Button</bal-button>
+            </bal-button-group>
+          </div>
+        </bal-card-content>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+      <bal-card fullHeight="true">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <div class="is-flex">
+              <bal-heading class="is-flex-grow-1" level="h4" space="none">List Card</bal-heading>
+              <a class="is-link">Show All</a>
+            </div>
+            <bal-list border="true" size="large" class="mb-normal">
+              <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
+                <bal-list-item-content>
+                    <bal-list-item-title>External Link</bal-list-item-title>
+                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                </bal-list-item-content>
+                <bal-list-item-icon right="true">
+                    <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                </bal-list-item-icon>
+              </bal-list-item>
+              <bal-list-item disabled="true" clickable="true" href="http://www.baloise.com" target="_blank">
+                <bal-list-item-content>
+                  <bal-list-item-title>Disabled Link</bal-list-item-title>
+                  <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                </bal-list-item-content>
+                <bal-list-item-icon right="true">
+                  <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+                </bal-list-item-icon>
+              </bal-list-item>
+            </bal-list>
+            <bal-button-group position="center" class="mt-auto">
+              <bal-button expanded="true" outlined="true" color="info">Button</bal-button>
+            </bal-button-group>
+          </div>
+        </bal-card-content>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+      <bal-card fullHeight="true">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <bal-heading level="h4" space="bottom">Action Card</bal-heading>
+            <bal-input-group>
+              <bal-icon size="small" name="search"></bal-icon>
+              <bal-input placeholder="Placeholder"></bal-input>
+            </bal-input-group>
+            <bal-button-group position="center" class="mt-auto">
+              <bal-button expanded="true" outlined="true" color="info" class="mt-normal">Search</bal-button>
+            </bal-button-group>
+          </div>
+        </bal-card-content>
+      </bal-card>
+    </div>
+  </div>
+</div>`,
   ),
 })
 
 export const AccordionCard = Story({
   ...withRender(
     ({ content }) => `<bal-card>
-    <bal-card-title>BaloiseCombi</bal-card-title>
-    <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-    <bal-accordion card="true">
-      <p class="py-normal">${content}</p>
-    </bal-accordion>
-    </bal-card>`,
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-accordion card="true">
+    <p class="py-normal">${content}</p>
+  </bal-accordion>
+</bal-card>`,
   ),
 })
 
 export const SummaryCard = Story({
   ...withRender(
     () => `<bal-card>
-    <bal-card-content class="has-text-weight-bold has-text-blue">Insured vehicle</bal-card-content>
-    <bal-card-title>Cupra Ateca</bal-card-title>
-    <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-    <bal-card-content>
-      <bal-data horizontal="true">
-        <bal-data-item>
-          <bal-data-label>Tony</bal-data-label>
-          <bal-data-value>Stark</bal-data-value>
-        </bal-data-item>
-        <bal-data-item>
-          <bal-data-label>Steve</bal-data-label>
-          <bal-data-value>Rogers</bal-data-value>
-        </bal-data-item>
-        <bal-data-item>
-          <bal-data-label>Stephen</bal-data-label>
-          <bal-data-value>Strange</bal-data-value>
-        </bal-data-item>
-      </bal-data>
-    </bal-card-content>
-    <bal-card-button icon="edit">Edit</bal-card-button>
-    </bal-card>`,
+  <bal-card-content class="has-text-weight-bold has-text-blue">Insured vehicle</bal-card-content>
+  <bal-card-title>Cupra Ateca</bal-card-title>
+  <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
+  <bal-card-content>
+    <bal-data horizontal="true">
+      <bal-data-item>
+        <bal-data-label>Tony</bal-data-label>
+        <bal-data-value>Stark</bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Steve</bal-data-label>
+        <bal-data-value>Rogers</bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Stephen</bal-data-label>
+        <bal-data-value>Strange</bal-data-value>
+      </bal-data-item>
+    </bal-data>
+  </bal-card-content>
+  <bal-card-button icon="edit">Edit</bal-card-button>
+</bal-card>`,
   ),
 })
 
 export const ServiceCard = Story({
   ...withRender(
     ({ content }) => `<bal-card>
-    <bal-card-content>
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <img style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-        <div class="is-flex-grow-1 px-x-small">
-          <bal-heading title="true" level="h4" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
-          <bal-heading subtitle="true" level="h5" space="none" class="is-hidden-desktop">+ CHF 11.30</bal-heading>
-          <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-        </div>
-        <bal-checkbox value="true" interface="switch"></bal-checkbox>
+  <bal-card-content>
+    <div class="is-flex is-justify-content-center is-align-items-center">
+      <img style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
+      <div class="is-flex-grow-1 px-x-small">
+        <bal-heading title="true" level="h4" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
+        <bal-heading subtitle="true" level="h5" space="none" class="is-hidden-desktop">+ CHF 11.30</bal-heading>
+        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
       </div>
-      <p class="mt-x-small has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-    </bal-card-content>
-    <bal-accordion card="true" open-label="Show more" close-label="Show less">
-    <p class="py-normal has-text-blue-light-text">
-      ${content}
-    </p>
-    </bal-accordion>
-  </bal-card>`,
+      <bal-checkbox value="true" interface="switch"></bal-checkbox>
+    </div>
+    <p class="mt-x-small has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+  </bal-card-content>
+  <bal-accordion card="true" open-label="Show more" close-label="Show less">
+  <p class="py-normal has-text-blue-light-text">
+    ${content}
+  </p>
+  </bal-accordion>
+</bal-card>`,
   ),
 })
