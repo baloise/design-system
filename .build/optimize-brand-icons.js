@@ -12,7 +12,6 @@ const upperFirst = require('lodash.upperfirst')
 const file = require('./utils/file')
 const log = require('./utils/log')
 const { NEWLINE } = require('./utils/constants')
-const tokens = require('../packages/tokens/dist/tokens')
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/brand-icons");
