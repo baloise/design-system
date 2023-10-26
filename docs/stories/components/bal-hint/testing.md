@@ -6,7 +6,22 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```typescript
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Hint', () => {
+  const hint = byTestId('my-hint') // [data-testid="my-hint"]
+  it('should ...', () => {
+    cy.get(hint).click().balHintFindOverlay().should('be.visible')
+
+    cy.get(hint).click().balHintFindOverlay().contains('Spider-Man')
+
+    cy.get(hint).balHintFindCloseButton().contains('Close').click()
+
+    cy.get(hint).balHintFindOverlay().should('not.be.visible')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
