@@ -1,20 +1,19 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
-type Args = JSX.BalProgressBar & { content: string }
+type Args = JSX.BalProgressBar
 
 const meta: Meta<Args> = {
-  title: 'Components/ProgressBar',
+  title: 'Components/Feedback/ProgressBar',
   args: {
-    ...withDefaultContent(),
+    background: 'grey',
+    value: 50,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-progress-bar' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-progress-bar ${props(args)}>${content}</bal-progress-bar>`),
+  ...withRender(({ ...args }) => `<bal-progress-bar ${props(args)}></bal-progress-bar>`),
 }
 
 export default meta
@@ -27,9 +26,3 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
-})

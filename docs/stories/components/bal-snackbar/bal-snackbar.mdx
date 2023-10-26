@@ -1,6 +1,13 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  AngularFramework,
+  NotAngularFramework,
+} from '../../../.storybook/blocks'
 import * as SnackbarStories from './bal-snackbar.stories'
 
 <Meta of={SnackbarStories} />
@@ -9,18 +16,18 @@ import * as SnackbarStories from './bal-snackbar.stories'
 
 <Banner of={SnackbarStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Snackbar** is used to inform the user with a simple text message and a action.</Lead>
 
-<Canvas of={SnackbarStories.Basic} sourceState="shown" />
+<Canvas of={SnackbarStories.Basic} sourceState="none" />
 
 <PlaygroundBar of={SnackbarStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={SnackbarStories.Secondary}></StoryHeading>
+<StoryHeading of={SnackbarStories.Colors}></StoryHeading>
 
-<Canvas of={SnackbarStories.Secondary} sourceState="shown" />
+<Canvas of={SnackbarStories.Colors} sourceState="closed" />
 
 {/* ------------------------------------------------------ */}
 
@@ -34,7 +41,45 @@ import api from './api.md?raw'
 
 import integration from '../../snippets/integration.md?raw'
 
-<Markdown>{integration}</Markdown>
+<AngularFramework>
+
+Use the `BalSnackbarService` to create new notices.
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalSnackbarService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  mySnackbar?: HTMLBalSnackbarElement
+
+  constructor(public snackbar: BalSnackbarService) {}
+
+  onButtonClick() {
+    this.mySnackbar = this.snackbar.create({
+      subject: 'Subject',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      icon: 'info-circle',
+    })
+  }
+
+  async onSecondButtonClick() {
+    await this.mySnackbar.close()
+  }
+}
+```
+
+
+</AngularFramework>
+
+<NotAngularFramework>
+  <Markdown>{integration}</Markdown>
+</NotAngularFramework>
 
 import theming from './theming.md?raw'
 
