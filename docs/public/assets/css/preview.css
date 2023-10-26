@@ -439,6 +439,22 @@ a.sbdocs-a.text-decoration-none {
  * SUPPORT
  ***************************************/
 
+div.has-visible-overflow div[scale="1"] {
+  transform: none;
+}
+
+div.has-visible-overflow,
+div.has-visible-overflow.sbdocs-preview,
+div.has-visible-overflow > .docs-story,
+div.has-visible-overflow > .docs-story > div:first-child {
+  overflow: visible !important;
+  z-index: 10 !important;
+}
+
+div.has-visible-overflow > .docs-story > div:nth-child(2) {
+  bottom: 10px;
+}
+
 .support {
   display: flex;
   gap: 1rem;
