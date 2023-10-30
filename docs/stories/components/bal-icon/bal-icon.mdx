@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote } from '../../../.storybook/blocks'
 import * as IconStories from './bal-icon.stories'
 
 <Meta of={IconStories} />
@@ -9,18 +9,56 @@ import * as IconStories from './bal-icon.stories'
 
 <Banner of={IconStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>Our icons are clear, minimal and consistent across all our digital platforms. They are used to represent ideas,
+  objects or actions. They also communicate messages at a glance, draw attention to important information and are used
+  to provide interactivity for the user.</Lead>
 
 <Canvas of={IconStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={IconStories.Basic}></PlaygroundBar>
 
+## Usage
+
+There are three ways in which the Baloise Design System offers support for icons:
+
+1. Standardized [Design System icons](?path=/docs/foundation-icons-overview--page#overview).
+2. Custom SVG icons [passed into the component](?path=/docs/components-icon--basic#svg).
+3. Custom SVG added to the [Design System config](?path=/docs/foundation-icons-development--page#import-during-initialization) during the initialization phase.
+
+<InfoQuote>
+**TIP**
+
+The bal-icon is based on the [icons foundation](?path=/docs/foundation-icons-development--page) so check this out for adding more icons to your set.
+
+Not all the icons are provided by default and need to be added separate. [How to add Icons](?path=/docs/foundation-icons-development--page#usage)
+</InfoQuote>
+
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={IconStories.Secondary}></StoryHeading>
+<StoryHeading of={IconStories.SVG}></StoryHeading>
 
-<Canvas of={IconStories.Secondary} sourceState="shown" />
+Custom SVG images can be added with the property `svg` and set color to `auto` to use the colors of the imported SVG image.
+
+<Canvas of={IconStories.SVG} sourceState="shown" />
+
+<InfoQuote>
+**TIP**
+
+In the [icon foundation development](?path=/docs/foundation-icons-development--page#import-into-the-component) page is a more detail usage guide.
+</InfoQuote>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={IconStories.Sizes}></StoryHeading>
+
+<Canvas of={IconStories.Sizes} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={IconStories.Colors}></StoryHeading>
+
+<Canvas of={IconStories.Colors} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +81,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
