@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-25T09:25:42",
+  "timestamp": "2023-10-30T14:33:28",
   "compiler": {
     "name": "@stencil/core",
     "version": "3.2.2",
@@ -7775,6 +7775,43 @@
           "required": false
         },
         {
+          "name": "size",
+          "type": "\"\" | \"large\" | \"small\" | \"x-large\" | \"xx-large\" | \"xxx-large\"",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Defines the size of the font. Default is like a heading 5 and small is used\nwith the form fields.",
+          "docsTags": [],
+          "default": "'small'",
+          "values": [
+            {
+              "type": "\"\""
+            },
+            {
+              "value": "large",
+              "type": "string"
+            },
+            {
+              "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
+              "type": "string"
+            },
+            {
+              "value": "xxx-large",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "valid",
           "type": "boolean | undefined",
           "mutable": false,
@@ -7800,7 +7837,7 @@
           "mutable": false,
           "attr": "weight",
           "reflectToAttr": false,
-          "docs": "If `true` the component gets a invalid style.",
+          "docs": "Defines the font weight of the label.",
           "docsTags": [],
           "default": "'bold'",
           "values": [
@@ -11711,7 +11748,7 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"small\"",
+          "type": "\"\" | \"large\" | \"small\" | \"x-large\" | \"xx-large\" | \"xxx-large\"",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
@@ -11728,6 +11765,18 @@
             },
             {
               "value": "small",
+              "type": "string"
+            },
+            {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
+              "type": "string"
+            },
+            {
+              "value": "xxx-large",
               "type": "string"
             }
           ],
@@ -11752,6 +11801,28 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "weight",
+          "type": "\"bold\" | \"regular\"",
+          "mutable": false,
+          "attr": "weight",
+          "reflectToAttr": false,
+          "docs": "Defines the font weight of the label.",
+          "docsTags": [],
+          "default": "'bold'",
+          "values": [
+            {
+              "value": "bold",
+              "type": "string"
+            },
+            {
+              "value": "regular",
+              "type": "string"
+            }
+          ],
+          "optional": false,
           "required": false
         }
       ],
@@ -16348,6 +16419,25 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "pattern",
+          "type": "string | undefined",
+          "mutable": false,
+          "attr": "pattern",
+          "reflectToAttr": false,
+          "docs": "A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `\"text\"`, `\"search\"`, `\"tel\"`, `\"url\"`, `\"email\"`, `\"date\"`, or `\"password\"`, otherwise it is ignored. When the type attribute is `\"date\"`, `pattern` will only be used in browsers that do not support the `\"date\"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
