@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-30T14:33:28",
+  "timestamp": "2023-10-31T15:13:46",
   "compiler": {
     "name": "@stencil/core",
     "version": "3.2.2",
@@ -9362,7 +9362,7 @@
         },
         {
           "name": "size",
-          "type": "\"\" | \"large\" | \"medium\" | \"small\" | \"x-small\" | \"xsmall\"",
+          "type": "\"\" | \"large\" | \"medium\" | \"small\" | \"x-large\" | \"x-small\" | \"xsmall\" | \"xx-large\"",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": false,
@@ -9386,11 +9386,19 @@
               "type": "string"
             },
             {
+              "value": "x-large",
+              "type": "string"
+            },
+            {
               "value": "x-small",
               "type": "string"
             },
             {
               "value": "xsmall",
+              "type": "string"
+            },
+            {
+              "value": "xx-large",
               "type": "string"
             }
           ],
