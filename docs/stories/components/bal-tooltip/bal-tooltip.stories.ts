@@ -1,4 +1,3 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
@@ -26,10 +25,11 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
+export const Basic = Story({
+  ...withRender(
+    () => `<div>
+  <bal-button id="my-tooltip">Hover over me</bal-button>
+  <bal-tooltip label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
+</div>`,
+  ),
 })
