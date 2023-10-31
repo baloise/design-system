@@ -20,9 +20,34 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
     this.popoverId = item.popupId
     this.ariaLabel = item.ariaLabel
     this.htmlTitle = item.htmlTitle
+    this.href = item.href || ''
+    this.target = item.target || '_self'
+  }
+
+  get isLink() {
+    return !!this.href
   }
 
   renderAtMetaBar() {
+    if (this.isLink) {
+      return (
+        <bal-button
+          id={this.value}
+          color="light"
+          size="small"
+          icon={this.icon}
+          square={!this.label || this.label.length < 3}
+          aria-label={this.ariaLabel}
+          title={this.htmlTitle}
+          inverted={true}
+          href={this.href}
+          target={this.target}
+        >
+          {this.label}
+        </bal-button>
+      )
+    }
+
     return (
       <bal-button
         id={this.value}
@@ -50,6 +75,23 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
 
   renderAtTouchTopMetaBar() {
     if (this.touchPlacement === 'top') {
+      if (this.isLink) {
+        return (
+          <bal-button
+            id={this.value}
+            color="light"
+            icon={this.icon}
+            square={!!this.icon || !this.label || this.label.length < 3}
+            aria-label={this.ariaLabel}
+            title={this.htmlTitle}
+            href={this.href}
+            target={this.target}
+          >
+            {this.icon ? '' : this.label}
+          </bal-button>
+        )
+      }
+
       return (
         <bal-button
           id={this.value}
@@ -73,6 +115,24 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
 
   renderAtTouchBottomMetaBar() {
     if (this.touchPlacement === 'bottom') {
+      if (this.isLink) {
+        return (
+          <bal-button
+            id={this.value}
+            color="info"
+            inverted={false}
+            icon={this.icon}
+            square={!this.label || this.label.length < 3}
+            aria-label={this.ariaLabel}
+            title={this.htmlTitle}
+            href={this.href}
+            target={this.target}
+          >
+            {this.label}
+          </bal-button>
+        )
+      }
+
       return (
         <bal-button
           id={this.value}
