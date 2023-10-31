@@ -23,7 +23,7 @@ describe('bal-nav - long', () => {
   context('long-texts', () => {
     it('mobile', () => {
       cy.visit('/components/bal-nav/test/bal-nav-long.visual.html').platform('mobile').waitForDesignSystem()
-      cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(2).click()
+      cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click()
       cy.compareSnapshot(`nav-long-mobile-open`, compareSnapshotOptions('mobile', 0, 0))
     })
 

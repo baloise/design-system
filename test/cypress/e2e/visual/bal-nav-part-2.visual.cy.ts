@@ -23,7 +23,7 @@ describe('bal-nav - touch', () => {
 
       it('open menu', () => {
         cy.scrollTo('top')
-        cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(2).click()
+        cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click()
         cy.wait(400)
         cy.compareSnapshot(`nav-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
       })
