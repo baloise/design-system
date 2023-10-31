@@ -76,3 +76,50 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
     </a>
   )
 }
+
+export const GridCards = ({ children }) => {
+  return (
+    <div className="sb-unstyled columns is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
+      {children}
+    </div>
+  )
+}
+
+export const GridCard = ({ children, color, pageTitle, svg, label, description }) => {
+  return (
+    <div className="column is-6">
+      <div className="is-fullheight">
+        <a
+          onClick={() => navigate({ title: pageTitle })}
+          className={`is-flex fg-normal is-justify-content-center is-align-items-center has-background-${color}-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable`}
+        >
+          {svg ? (
+            <div style={{ minWidth: '80px' }}>
+              <img src={svg} style={{ width: '80px' }} />
+            </div>
+          ) : (
+            ''
+          )}
+          {svg ? (
+            <div className="is-flex-1 is-fullheight">
+              <h2 className="title is-size-large mb-xx-small">{label}</h2>
+              <span className="is-fullheight">{description}</span>
+            </div>
+          ) : (
+            <div className="is-flex-1 is-fullheight">
+              <h2 className="title is-size-medium mb-xx-small">{label}</h2>
+              <small className="is-fullheight">{description}</small>
+            </div>
+          )}
+          {!svg ? (
+            <div>
+              <bal-icon name="nav-go-right"></bal-icon>
+            </div>
+          ) : (
+            ''
+          )}
+        </a>
+      </div>
+    </div>
+  )
+}

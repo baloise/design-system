@@ -34,7 +34,7 @@ export const CodeSandbox = ({ of }) => {
 
   if (loading) {
     return (
-      <button className="sb-unstyled button is-primary is-disabled" disabled>
+      <button className="sb-unstyled button is-info is-disabled" disabled>
         <div className="is-flex fg-xx-small">
           <svg width="24px" height="24px" viewBox="0 0 256 296" version="1.1" preserveAspectRatio="xMidYMid">
             <g>
@@ -53,7 +53,7 @@ export const CodeSandbox = ({ of }) => {
   return (
     <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" className="sb-unstyled">
       <input type="hidden" name="parameters" value={parameters} />
-      <button className="button is-primary">
+      <button className="button is-info">
         <div className="is-flex fg-xx-small">
           <svg width="24px" height="24px" viewBox="0 0 256 296" version="1.1" preserveAspectRatio="xMidYMid">
             <g>
