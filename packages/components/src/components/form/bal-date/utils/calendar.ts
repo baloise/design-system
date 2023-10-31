@@ -14,6 +14,8 @@ export function getDaysInMonth(year: number, month: number): number | undefined 
 export interface ListItem {
   value: number
   label: string
+  today?: boolean
+  selected?: boolean
   disabled?: boolean
 }
 
@@ -122,13 +124,18 @@ export function validateLanguage(language: string): keyof I18n<any> {
 }
 
 // Function to generate the year list for the selection
-export function generateYears(minYear: number, maxYear: number): ListItem[] {
+export function generateYears(currentYear: number, minYear: number, maxYear: number): ListItem[] {
   const list: ListItem[] = []
+  const today = new Date()
+  const todayYear = today.getFullYear()
+
   for (let year = minYear; year <= maxYear; year++) {
     list.push({
       value: year,
       label: `${year}`,
       disabled: false,
+      today: todayYear === year,
+      selected: currentYear === year,
     })
   }
   return list
@@ -138,18 +145,24 @@ export function generateYears(minYear: number, maxYear: number): ListItem[] {
 export function generateMonths(
   language: keyof I18n<any>,
   currentYear?: number,
+  selectedDate?: string,
   min?: string,
   max?: string,
 ): ListItem[] {
   const locale = validateLanguage(language)
   const months = BalDate.infoMonths({ format: 'long', locale })
+  const selected = BalDate.fromISO(selectedDate)
+
+  const today = new Date()
+  const todayYear = today.getFullYear()
+  const todayMonth = today.getMonth() + 1
 
   let minMonth = 0
   if (min && currentYear !== undefined) {
     const minDate = BalDate.fromISO(min)
     if (minDate.isValid) {
       if (currentYear > (minDate.year as number)) {
-        minMonth = 12
+        minMonth = 0 // all months are allowed
       } else {
         minMonth = minDate.month || minMonth
       }
@@ -161,18 +174,24 @@ export function generateMonths(
     const maxDate = BalDate.fromISO(max)
     if (maxDate.isValid) {
       if (currentYear < (maxDate.year as number)) {
-        maxMonth = 0
+        maxMonth = 12 // all months are allowed
       } else {
         maxMonth = maxDate.month || maxMonth
       }
     }
   }
 
-  return months.map((label, index) => ({
-    label,
-    value: index + 1,
-    disabled: index < minMonth - 1 || index > maxMonth - 1,
-  }))
+  return months.map((label, index) => {
+    const value = index + 1
+
+    return {
+      label,
+      value,
+      today: value === todayMonth && currentYear === todayYear,
+      selected: value === selected.month && currentYear === selected.year,
+      disabled: value < minMonth || value > maxMonth,
+    }
+  })
 }
 
 // Function to generate the weekday header row with the label and the content

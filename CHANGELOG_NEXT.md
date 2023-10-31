@@ -728,7 +728,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.19.0](https://github.com/baloise/design-system/compare/v10.18.0...v10.19.0) (2022-08-24)
 
-
 ### Features
 
 * **form:** add new form component with scroll to first invalid field ([5330361](https://github.com/baloise/design-system/commit/53303611462dcf67a769a54fea5940b1be9b711a))

@@ -7,8 +7,6 @@ export interface CalendarListProps {
   list: ListItem[]
   isVisible: boolean
   girdHeight: number
-  todayValue: number
-  selectedValue: number
   ref?: (el?: HTMLUListElement) => void
   onSelect: (item: ListItem) => void
 }
@@ -18,8 +16,6 @@ export const CalendarList: FunctionalComponent<CalendarListProps> = ({
   isVisible,
   girdHeight,
   list,
-  todayValue,
-  selectedValue,
   onSelect,
   ref,
 }) => {
@@ -45,14 +41,8 @@ export const CalendarList: FunctionalComponent<CalendarListProps> = ({
           <button
             class={{
               ...blockBodyList.element('item').class(),
-              ...blockBodyList
-                .element('item')
-                .modifier('today')
-                .class(item.value === todayValue),
-              ...blockBodyList
-                .element('item')
-                .modifier('selected')
-                .class(item.value === selectedValue),
+              ...blockBodyList.element('item').modifier('today').class(item.today),
+              ...blockBodyList.element('item').modifier('selected').class(item.selected),
               ...blockBodyList.element('item').modifier('disabled').class(item.disabled),
             }}
             tabIndex={-1}
