@@ -1,4 +1,4 @@
-describe('bal-heading', () => {
+describe('bal-label', () => {
   beforeEach(() => cy.visit('/components/typography/bal-label/test/bal-label.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
@@ -21,5 +21,10 @@ describe('bal-heading', () => {
 
     cy.platform('mobile')
     cy.compareSnapshot('label-variants-mobile')
+  })
+
+  it('custom size', () => {
+    cy.platform('desktop')
+    cy.compareSnapshot('field')
   })
 })

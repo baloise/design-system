@@ -1,20 +1,43 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { withRender, withComponentControls, StoryFactory, ListenerFactory } from '../../utils'
 
-type Args = JSX.BalToast & { content: string }
+type Args = JSX.BalToast
+
+const listener = ListenerFactory()
 
 const meta: Meta<Args> = {
-  title: 'Components/Toast',
+  title: 'Components/Feedback/Toast',
   args: {
-    ...withDefaultContent(),
+    color: 'info',
+    message: 'Hello World',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-toast' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-toast ${props(args)}>${content}</bal-toast>`),
+  render: (args, context) => {
+    const section: HTMLElement = document.createElement('section')
+
+    section.innerHTML = `<bal-button>Trigger Toast</bal-button>`
+
+    listener.addEventListener('click', context, (event: UIEvent) => {
+      const button = (event.target as any).closest('bal-button')
+      if (button) {
+        const label = button.innerText.trim()
+
+        if (label === 'Trigger Toast' && window) {
+          const toastController = (window as any).BaloiseDesignSystem.toastController
+          toastController.create({
+            color: args.color,
+            message: args.message,
+            duration: 2000,
+          })
+        }
+      }
+    })
+
+    return section
+  },
 }
 
 export default meta
@@ -28,8 +51,16 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const Secondary = Story({
+export const Colors = Story({
   args: {
     // place props here
   },
+  ...withRender(
+    ({ ...args }) => `
+<bal-toast color="info">Info - ${args.message}</bal-toast>
+<bal-toast color="success">Success - ${args.message}</bal-toast>
+<bal-toast color="warning">Warning - ${args.message}</bal-toast>
+<bal-toast color="danger">Danger - ${args.message}</bal-toast>
+`,
+  ),
 })

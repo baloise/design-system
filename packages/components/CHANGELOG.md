@@ -1,5 +1,43 @@
 # @baloise/design-system-components
 
+## 14.1.0
+
+### Minor Changes
+
+- [#1090](https://github.com/baloise/design-system/pull/1090) - Adjust the font size of `bal-field-label` and explore an expanded range of size variations for `bal-label`, offering increased flexibility in styling options.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.1.0
+  - @baloise/design-system-fonts@14.1.0
+  - @baloise/design-system-icons@14.1.0
+  - @baloise/design-system-tokens@14.1.0
+
+## 14.0.5
+
+### Patch Changes
+
+- [#1084](https://github.com/baloise/design-system/pull/1084) - The number input pattern regex no longer returns a pattern mismatch. Additionally, the pattern attribute can be overridden.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.5
+  - @baloise/design-system-fonts@14.0.5
+  - @baloise/design-system-icons@14.0.5
+  - @baloise/design-system-tokens@14.0.5
+
+## 14.0.4
+
+### Patch Changes
+
+- [#1082](https://github.com/baloise/design-system/pull/1082) - The number input pattern regex no longer returns a pattern mismatch. Additionally, the pattern attribute can be overridden.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.4
+  - @baloise/design-system-fonts@14.0.4
+  - @baloise/design-system-icons@14.0.4
+  - @baloise/design-system-tokens@14.0.4
+
 ## 14.0.3
 
 ### Patch Changes

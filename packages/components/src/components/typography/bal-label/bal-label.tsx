@@ -94,7 +94,6 @@ export class BalLabel
   @Prop() size: BalProps.BalLabelSize = ''
 
   /**
-   * @internal
    * Defines the font weight of the label.
    */
   @Prop() weight: BalProps.BalLabelWeight = 'bold'
@@ -151,6 +150,9 @@ export class BalLabel
     const regular = this.weight === 'regular'
     const small = this.size === 'small'
     const large = this.size === 'large'
+    const xLarge = this.size === 'x-large'
+    const xxLarge = this.size === 'xx-large'
+    const xxxLarge = this.size === 'xxx-large'
 
     const id = this.ariaForm.labelId || this.inputId
     const htmlFor = this.htmlFor || this.ariaForm.controlId
@@ -170,6 +172,9 @@ export class BalLabel
             ...block.element('native').modifier('regular').class(regular),
             ...block.element('native').modifier('small').class(small),
             ...block.element('native').modifier('large').class(large),
+            ...block.element('native').modifier('x-large').class(xLarge),
+            ...block.element('native').modifier('xx-large').class(xxLarge),
+            ...block.element('native').modifier('xxx-large').class(xxxLarge),
             ...block.element('native').modifier('hovered').class(this.hovered),
             ...block.element('native').modifier('pressed').class(this.pressed),
           }}

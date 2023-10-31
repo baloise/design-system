@@ -14,6 +14,8 @@ CHANGELOG.md
 packages/components/src/stories/contributors.md
 packages/components/src/components.d.ts
 packages/icons/src/icons.ts
+packages/brand-icons/src/index.ts
+packages/brand-icons/src/icons.ts
 packages/*/README.md
 packages/output-targets/*/README.md
 
@@ -50,3 +52,6 @@ packages/components-vue/src/proxies.ts
 packages/icons/src/index.ts
 packages/maps/src/markers.ts
 packages/tokens/.tmp
+
+docs/public/assets/images/brand-icons
+docs/public/assets/images/icons

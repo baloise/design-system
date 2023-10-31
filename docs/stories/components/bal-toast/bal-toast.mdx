@@ -1,6 +1,12 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  AngularFramework,
+  NotAngularFramework,
+} from '../../../.storybook/blocks'
 import * as ToastStories from './bal-toast.stories'
 
 <Meta of={ToastStories} />
@@ -9,18 +15,18 @@ import * as ToastStories from './bal-toast.stories'
 
 <Banner of={ToastStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Toasts** are used to inform the user with a simple text message.</Lead>
 
-<Canvas of={ToastStories.Basic} sourceState="shown" />
+<Canvas of={ToastStories.Basic} sourceState="none" />
 
 <PlaygroundBar of={ToastStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={ToastStories.Secondary}></StoryHeading>
+<StoryHeading of={ToastStories.Colors}></StoryHeading>
 
-<Canvas of={ToastStories.Secondary} sourceState="shown" />
+<Canvas of={ToastStories.Colors} sourceState="closed" />
 
 {/* ------------------------------------------------------ */}
 
@@ -34,7 +40,40 @@ import api from './api.md?raw'
 
 import integration from '../../snippets/integration.md?raw'
 
-<Markdown>{integration}</Markdown>
+<AngularFramework>
+
+Use the `BalToastService` to create new notices.
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalToastService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  myToast?: HTMLBalToastElement
+
+  constructor(public toast: BalToastService) {}
+
+  onButtonClick() {
+    this.myToast = this.toast.create({ message: 'Welcome' })
+  }
+
+  async onSecondButtonClick() {
+    await this.myToast.close()
+  }
+}
+```
+
+</AngularFramework>
+
+<NotAngularFramework>
+  <Markdown>{integration}</Markdown>
+</NotAngularFramework>
 
 import theming from './theming.md?raw'
 

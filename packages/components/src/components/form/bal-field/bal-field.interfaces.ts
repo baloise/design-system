@@ -5,6 +5,7 @@
 
 namespace BalProps {
   export type BalFieldLabelWeight = 'bold' | 'regular'
+  export type BalFieldLabelSize = '' | 'small' | 'large' | 'x-large' | 'xx-large' | 'xxx-large'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 }
 

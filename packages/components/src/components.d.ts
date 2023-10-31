@@ -1135,11 +1135,15 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size": BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight": BalProps.BalFieldLabelWeight;
     }
@@ -1724,6 +1728,9 @@ export namespace Components {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight": BalProps.BalLabelWeight;
     }
     interface BalList {
@@ -2289,6 +2296,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -5901,11 +5912,15 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size"?: BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight"?: BalProps.BalFieldLabelWeight;
     }
@@ -6521,6 +6536,9 @@ declare namespace LocalJSX {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight"?: BalProps.BalLabelWeight;
     }
     interface BalList {
@@ -7119,6 +7137,10 @@ declare namespace LocalJSX {
           * Emitted when a keyboard key has pressed.
          */
         "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
+        /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */

@@ -77,7 +77,7 @@ export class NumberInput
   @State() region: BalRegion = defaultConfig.region
   @State() ariaForm: BalAriaForm = defaultBalAriaForm
   @State() nativeInputValue = ''
-  @State() inputPattern = this.pattern
+  @State() inputPattern = this.createPattern()
 
   log!: LogInstance
 
@@ -110,6 +110,11 @@ export class NumberInput
    * Adds a suffix the the input-value after blur.
    */
   @Prop() suffix?: string
+
+  /**
+   * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+   */
+  @Prop() pattern?: string
 
   /**
    * Instructional text that shows before the input has a value.
@@ -258,7 +263,7 @@ export class NumberInput
     this.language = state.language
     this.region = state.region
 
-    this.inputPattern = this.pattern
+    this.inputPattern = this.createPattern()
 
     if (this.nativeInput) {
       if (this.focused) {
@@ -309,23 +314,24 @@ export class NumberInput
    * ------------------------------------------------------
    */
 
-  private get pattern() {
+  private createPattern() {
+    if (this.pattern) {
+      return this.pattern
+    }
+
     let suffix = this.suffix || ''
     if (suffix !== '') {
       suffix = ` ${suffix}`
     }
 
-    let thousandSeparator = getThousandSeparator()
-    if (thousandSeparator === '’') {
-      thousandSeparator = "'"
-    }
+    const thousandSeparator = getThousandSeparator()
 
     let decimalSeparator = getDecimalSeparator()
     if (decimalSeparator === ',') {
       decimalSeparator = '\\,'
     }
 
-    return `^-?([1-9]\d{0,2}(?:${thousandSeparator}\d{3})*|\d+)(?:\\${decimalSeparator}\d{${this.decimal}})?$`
+    return `-?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
   }
 
   private get lastValueGetter(): string {

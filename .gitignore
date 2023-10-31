@@ -127,6 +127,7 @@ packages/components-angular/src/directives/
 
 packages/tokens/src/tokens.ts
 packages/icons/src/icons.json
+packages/brand-icons/src/icons.json
 packages/maps/src/markers.json
 packages/css/css/
 packages/css/assets/fonts/
@@ -149,3 +150,5 @@ docs/public/assets/css/design-system-table.css
 docs/public/assets/images/map-markers
 docs/public/build/
 docs/stories/components/**/api.md
+docs/public/assets/images/brand-icons
+docs/public/assets/images/icons

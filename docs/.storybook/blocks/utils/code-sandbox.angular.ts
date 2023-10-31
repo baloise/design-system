@@ -13,7 +13,6 @@ interface AngularProject {
 export const PLACEHOLDER_IMPORT = '/** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */'
 
 export const buildAngularParameters = async (project: AngularProject): Promise<string> => {
-  console.log('buildAngularParameters-------------------------------')
   const [
     src_app_app_component_fullscreen_html,
     src_app_app_component_project_html,
