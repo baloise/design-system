@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as CarouselStories from './bal-carousel.stories'
 
 <Meta of={CarouselStories} />
@@ -20,31 +20,31 @@ import * as CarouselStories from './bal-carousel.stories'
 
 <StoryHeading of={CarouselStories.ImageSlider}></StoryHeading>
 
-<Canvas of={CarouselStories.ImageSlider} sourceState="shown" />
+<Canvas of={CarouselStories.ImageSlider} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CarouselStories.ProductSlider}></StoryHeading>
 
-<Canvas of={CarouselStories.ProductSlider} sourceState="shown" />
+<Canvas of={CarouselStories.ProductSlider} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CarouselStories.CardSlider}></StoryHeading>
 
-<Canvas of={CarouselStories.CardSlider} sourceState="shown" />
+<Canvas of={CarouselStories.CardSlider} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CarouselStories.ResponsiveSlider}></StoryHeading>
 
-<Canvas of={CarouselStories.ResponsiveSlider} sourceState="shown" />
+<Canvas of={CarouselStories.ResponsiveSlider} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CarouselStories.TeaserSlider}></StoryHeading>
 
-<Canvas of={CarouselStories.TeaserSlider} sourceState="shown" />
+<Canvas of={CarouselStories.TeaserSlider} />
 
 {/* ------------------------------------------------------ */}
 
@@ -53,6 +53,10 @@ import * as CarouselStories from './bal-carousel.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import balCarouselItemApi from './bal-carousel-item/api.md?raw'
+
+<Markdown>{balCarouselItemApi}</Markdown>
 
 ## Integration
 
@@ -67,3 +71,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

@@ -5,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalTooltip & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Tooltip',
+  title: 'Components/Data Display/Tooltip',
   args: {
     ...withDefaultContent(),
   },

@@ -7,7 +7,7 @@ import { tableHtml } from './bal-table.templates'
 type Args = JSX.BalTable & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Table',
+  title: 'Components/Data Display/Table',
   args: {
     ...withDefaultContent(),
   },
@@ -33,8 +33,8 @@ export const Basic = Story({
   ...withRender(() => table),
 })
 
-export const Secondary = Story({
+export const AgGrid = Story({
   args: {
-    // place props here
+    content: 'Add here AgGrid story!',
   },
 })

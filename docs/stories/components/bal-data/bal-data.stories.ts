@@ -5,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalData & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Data',
+  title: 'Components/Data Display/Data',
   args: {
     ...withDefaultContent(),
   },

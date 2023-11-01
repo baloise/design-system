@@ -13,7 +13,7 @@ import {
 type Args = JSX.BalList & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/List',
+  title: 'Components/Data Display/List',
   args: {
     ...withDefaultContent(lorem1),
   },

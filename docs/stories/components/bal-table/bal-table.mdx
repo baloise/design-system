@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote } from '../../../.storybook/blocks'
 import * as TableStories from './bal-table.stories'
 
 <Meta of={TableStories} />
@@ -9,7 +9,7 @@ import * as TableStories from './bal-table.stories'
 
 <Banner of={TableStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Table** is only css and html provided by the bulma framework.</Lead>
 
 <Canvas of={TableStories.Basic} sourceState="shown" />
 
@@ -18,11 +18,138 @@ import * as TableStories from './bal-table.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TableStories.Secondary}></StoryHeading>
+<StoryHeading of={TableStories.AgGrid}></StoryHeading>
 
-<Canvas of={TableStories.Secondary} sourceState="shown" />
+<Canvas of={TableStories.AgGrid} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
+
+#### Installation
+
+To use the AG-Grid install the following packages:
+
+```
+npm install --save @baloise/design-system-components-table ag-grid-community
+```
+
+To get the Baloise style import the following stylesheets:
+
+```scss
+@import 'ag-grid-community/styles/ag-grid';
+@import 'ag-grid-community/styles/ag-theme-alpine';
+@import '@baloise/design-system-components-table/css/design-system-table';
+```
+
+<InfoQuote>
+**TIP**
+
+If you do now use `bal-table` as the AG-Grid container,
+please set the class `ag-theme-alpine` to the AG-Grid element to get the Baloise styles.
+</InfoQuote>
+
+- for [Javascript](https://www.ag-grid.com/javascript-data-grid/getting-started/)
+- for [Angular](https://www.ag-grid.com/angular-data-grid/getting-started/)
+- for [React](https://www.ag-grid.com/react-data-grid/getting-started/)
+- for [Vue](https://www.ag-grid.com/vue-data-grid/getting-started/)
+
+#### Custom Renderer
+
+The package provides three render functions to use components of the Design System inside the AG-Grid.
+
+##### BalTableButtonRenderer
+
+Renders a button into the grid.
+
+```typescript
+import { BalTableButtonRenderer } from '@baloise/design-system-components-table'
+
+...
+{
+  field: 'button',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableButtonRenderer({
+    expanded: true,
+    icon: 'github',
+  }),
+},
+...
+```
+
+The `BalTableButtonRenderer` takes the option object `BalTableButtonRendererOptions` as a parameter.
+
+```typescript
+interface BalTableButtonRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+  loading?: (params: ICellRendererParams) => boolean
+  href?: (params: ICellRendererParams) => string
+  icon?: string
+  iconRight?: boolean
+  square?: boolean
+  expanded?: boolean
+  outlined?: boolean
+  link?: boolean
+  target?: '_blank' | ' _parent' | '_self' | '_top'
+}
+```
+
+##### BalTableTagRenderer
+
+Renders a tag element into the grid.
+
+```typescript
+import { BalTableTagRenderer } from '@baloise/design-system-components-table'
+
+...
+{
+  field: 'tag',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableTagRenderer({
+    color: params => (params.value === 'Invalid' ? 'danger' : 'success'),
+  }),
+},
+...
+```
+
+The `BalTableTagRenderer` takes the option object `BalTableTagRendererOptions` as a parameter.
+
+```typescript
+interface BalTableTagRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+}
+```
+
+##### BalTableTextRenderer
+
+Renders a text into the grid.
+
+```typescript
+import { BalTableTextRenderer } from '@baloise/design-system-components-table'
+
+...
+{
+  field: 'textWithIcon',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableTextRenderer({
+    icon: params => 'github',
+    iconColor: params => 'primary',
+  }),
+},
+...
+```
+
+The `BalTableTextRenderer` takes the option object `BalTableTextRendererOptions` as a parameter.
+
+```typescript
+interface BalTableTextRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+  icon?: (params: ICellRendererParams) => string
+  iconColor?: (params: ICellRendererParams) => ColorTypes
+  iconRight?: (params: ICellRendererParams) => boolean
+}
+```
 
 ## Component API
 
@@ -43,3 +170,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

@@ -5,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalBadge & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Badge',
+  title: 'Components/Data Display/Badge',
   args: {
     ...withDefaultContent('42'),
   },

@@ -1,11 +1,12 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/design-system-brand-icons'
 
 type Args = JSX.BalCarousel & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Carousel',
+  title: 'Components/Data Display/Carousel',
   args: {
     ...withDefaultContent(),
   },
@@ -69,40 +70,39 @@ export const ImageSlider = Story({
   args: {
     interface: 'image',
     controls: 'dots',
+    content: '',
   },
 })
 
 export const ProductSlider = Story({
   ...withRender(
     ({ ...args }) => `
-    <img src="car.svg" alt="car">
-    <img src="https://fastly.picsum.photos/id/235/1280/720.jpg?hmac=MBlYf-BNbNbdxmF-qCtt9eNsT1SKJy_1JCHeLDRHYEw" alt="car">
-    <bal-carousel ${props(args)}>
-    <bal-carousel-item color="green" label="Auto" src="car.svg"></bal-carousel-item>
-    <bal-carousel-item color="yellow" label="Haushalt" src="/assets/images/brand/lamp.svg"></bal-carousel-item>
-    <bal-carousel-item color="purple" label="Hypothek" src="/assets/images/brand/home.svg"></bal-carousel-item>
-    <bal-carousel-item color="red" label="Pensionsplanung" src="/assets/images/brand/bars.svg"></bal-carousel-item>
-    <bal-carousel-item color="green" label="Anlegen" src="/assets/images/brand/plant.svg"></bal-carousel-item>
-    <bal-carousel-item color="yellow" label="Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung" src="/assets/images/brand/pie.svg"></bal-carousel-item>
-    <bal-carousel-item color="purple" label="E-Banking" src="/assets/images/brand/notebook.svg"></bal-carousel-item>
-    <bal-carousel-item color="red" label="Sparen" src="/assets/images/brand/pig.svg"></bal-carousel-item>
-    <bal-carousel-item color="green" label="YouGo" src="/assets/images/brand/diamond.svg"></bal-carousel-item>
-    <bal-carousel-item color="yellow" label="Alle Gegenstände" src="/assets/images/brand/items.svg"></bal-carousel-item>
-    <bal-carousel-item color="purple" label="Motorrad & Roller" src="/assets/images/brand/roller.svg"></bal-carousel-item>
+    <bal-carousel ${props(args)} items-per-view="auto">
+    <bal-carousel-item color="green" label="Auto" src="/assets/images/brand-icons/car-green.svg"></bal-carousel-item>
+    <bal-carousel-item color="yellow" label="Haushalt" src="/assets/images/brand-icons/lamp-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item color="purple" label="Hypothek" src="/assets/images/brand-icons/building-purple.svg"></bal-carousel-item>
+    <bal-carousel-item color="red" label="Pensionsplanung" src="/assets/images/brand-icons/bar-chart-purple.svg"></bal-carousel-item>
+    <bal-carousel-item color="green" label="Anlegen" src="/assets/images/brand-icons/sustainability-green.svg"></bal-carousel-item>
+    <bal-carousel-item color="yellow" label="Finanzplanung Finanzplanung Finanzplanung Finanzplanung Finanzplanung" src="/assets/images/brand-icons/pie-chart-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item color="purple" label="E-Banking" src="/assets/images/brand-icons/laptop-purple.svg"></bal-carousel-item>
+    <bal-carousel-item color="red" label="Sparen" src="/assets/images/brand-icons/piggy-bank-red.svg"></bal-carousel-item>
+    <bal-carousel-item color="green" label="YouGo" src="/assets/images/brand-icons/diamond-green.svg"></bal-carousel-item>
+    <bal-carousel-item color="yellow" label="Alle Gegenstände" src="/assets/images/brand-icons/luggage-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item color="purple" label="Motorrad & Roller" src="/assets/images/brand-icons/scooter-purple.svg"></bal-carousel-item>
   </bal-carousel>`,
   ),
   args: {
     interface: 'product',
     steps: 2,
-    itemsPerView: 'auto',
     controls: 'large',
+    content: '',
   },
 })
 
 export const CardSlider = Story({
   ...withRender(
     ({ ...args }) => `<div class="container">
-    <bal-carousel ${props(args)}>
+    <bal-carousel ${props(args)} controls-sticky="true" scroll-y="true">
       <bal-carousel-item label="ECO">
         <bal-card style="width: 100%">
           <bal-card-title>Title ECO</bal-card-title>
@@ -127,15 +127,14 @@ export const CardSlider = Story({
   args: {
     interface: 'card',
     controls: 'tabs',
-    controlsSticky: true,
-    scrollY: true,
+    content: '',
   },
 })
 
 export const ResponsiveSlider = Story({
   ...withRender(
     ({ ...args }) => `<div class="container">
-    <bal-carousel ${props(args)}>
+    <bal-carousel ${props(args)} items-per-view="auto">
       <bal-carousel-item>
         <div class="px-x-small">Liverpool</div>
       </bal-carousel-item>
@@ -197,26 +196,31 @@ export const ResponsiveSlider = Story({
   </div>`,
   ),
   args: {
-    itemsPerView: 'auto',
     controls: 'small',
     steps: 3,
+    content: '',
   },
 })
 
 export const TeaserSlider = Story({
   ...withRender(
-    ({ ...args }) => `<bal-carousel ${props(args)}>
-    <bal-carousel-item src="/assets/images/brand/car.svg"></bal-carousel-item>
-    <bal-carousel-item src="/assets/images/brand/lamp.svg"></bal-carousel-item>
-    <bal-carousel-item src="/assets/images/brand/home.svg"></bal-carousel-item>
-    <bal-carousel-item src="/assets/images/brand/bars.svg"></bal-carousel-item>
-    <bal-carousel-item src="/assets/images/brand/plant.svg"></bal-carousel-item>
+    ({ ...args }) => `<bal-carousel ${props(args)} items-per-view="4" controls-overflow="true">
+    <bal-carousel-item src="/assets/images/brand-icons/car-green.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/lamp-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/building-purple.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/bar-chart-purple.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/sustainability-green.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/pie-chart-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/laptop-purple.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/piggy-bank-red.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/diamond-green.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/luggage-tangerine.svg"></bal-carousel-item>
+    <bal-carousel-item src="/assets/images/brand-icons/scooter-purple.svg"></bal-carousel-item>
   </bal-carousel>`,
   ),
   args: {
     steps: 1,
-    itemsPerView: 3,
-    controlsOverflow: true,
     controls: 'large',
+    content: '',
   },
 })

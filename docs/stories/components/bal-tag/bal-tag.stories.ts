@@ -13,7 +13,7 @@ import {
 type Args = JSX.BalTag & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Tag',
+  title: 'Components/Data Display/Tag',
   args: {
     ...withDefaultContent(),
     color: undefined,
