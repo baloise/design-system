@@ -6,9 +6,9 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalLogo & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Logo',
+  title: 'Components/Layout/Logo',
   args: {
-    ...withDefaultContent(),
+    ...withDefaultContent(''),
   },
   argTypes: {
     ...withContent(),
@@ -26,10 +26,15 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const Secondary = Story({
+export const Basic = Story({
   args: {
-    // place props here
+    color: 'blue',
+  },
+})
+
+export const Animated = Story({
+  args: {
+    color: 'blue',
+    animated: true,
   },
 })

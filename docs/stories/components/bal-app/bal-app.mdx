@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as AppStories from './bal-app.stories'
 
 <Meta of={AppStories} />
@@ -9,7 +9,9 @@ import * as AppStories from './bal-app.stories'
 
 <Banner of={AppStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**App** is a container element for an Baloise Design System application. There should only be one{' '}
+  <code>bal-app</code> element per project. An app can have many Design System components. The overlay components get
+  appended to the <code>bal-app</code> when they are presented.</Lead>
 
 <Canvas of={AppStories.Basic} sourceState="shown" />
 
@@ -18,9 +20,13 @@ import * as AppStories from './bal-app.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={AppStories.Secondary}></StoryHeading>
+<StoryHeading of={AppStories.FormWizard}></StoryHeading>
 
-<Canvas of={AppStories.Secondary} sourceState="shown" />
+For forms with multiple steps we recommended to use the following app structure.
+
+Also have a look at the [mobile variant](../?path=/story/components-layout-app--form-wizard-mobile).
+
+<Canvas of={AppStories.FormWizard} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +49,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

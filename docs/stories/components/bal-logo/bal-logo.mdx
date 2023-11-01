@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as LogoStories from './bal-logo.stories'
 
 <Meta of={LogoStories} />
@@ -9,7 +9,9 @@ import * as LogoStories from './bal-logo.stories'
 
 <Banner of={LogoStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>All the **Logos** of the Baloise Group are legally protected brands and may not be altered in any way.</Lead>
+
+- [Baloise Logos](https://www.baloise.com/en/home/about-us/who-we-are/images-logos.html)
 
 <Canvas of={LogoStories.Basic} sourceState="shown" />
 
@@ -18,9 +20,9 @@ import * as LogoStories from './bal-logo.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={LogoStories.Secondary}></StoryHeading>
+<StoryHeading of={LogoStories.Animated}></StoryHeading>
 
-<Canvas of={LogoStories.Secondary} sourceState="shown" />
+<Canvas of={LogoStories.Animated} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +45,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
