@@ -1327,6 +1327,7 @@ export namespace Components {
          */
         "closeLabel"?: string;
         "configChanged": (state: BalConfigState) => Promise<void>;
+        "demo": boolean;
         /**
           * Closes the hint box.
          */
@@ -1881,6 +1882,7 @@ export namespace Components {
         "cssClass"?: string | string[];
         "dataTestId"?: string;
         "delegate"?: BalProps.FrameworkDelegate;
+        "demo": boolean;
         /**
           * Closes the presented modal with the modal controller
          */
@@ -2505,6 +2507,7 @@ export namespace Components {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo": boolean;
         /**
           * Closes the popup
          */
@@ -3451,6 +3454,7 @@ export namespace Components {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo": boolean;
         "dismiss": () => Promise<boolean>;
         /**
           * Offset form trigger to tooltip.
@@ -6108,6 +6112,7 @@ declare namespace LocalJSX {
           * Text for the close button.
          */
         "closeLabel"?: string;
+        "demo"?: boolean;
         /**
           * Disables the close button for tablet and desktop
          */
@@ -6695,6 +6700,7 @@ declare namespace LocalJSX {
         "cssClass"?: string | string[];
         "dataTestId"?: string;
         "delegate"?: BalProps.FrameworkDelegate;
+        "demo"?: boolean;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -7330,6 +7336,7 @@ declare namespace LocalJSX {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo"?: boolean;
         /**
           * Label or title of the popup element
          */
@@ -8296,6 +8303,7 @@ declare namespace LocalJSX {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo"?: boolean;
         /**
           * Offset form trigger to tooltip.
          */

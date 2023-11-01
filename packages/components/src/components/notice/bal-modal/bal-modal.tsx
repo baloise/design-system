@@ -5,6 +5,7 @@ import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../utils/helpers'
 import { getClassMap } from '../../../utils/css-classes'
 import { BalScrollHandler } from '../../../utils/scroll'
+import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-modal',
@@ -77,6 +78,11 @@ export class Modal implements OverlayInterface {
   @Prop() backdropDismiss = true
 
   /**
+   * @internal
+   */
+  @Prop() demo = false
+
+  /**
    * Emitted after the modal has presented.
    */
   @Event({ eventName: 'balModalDidPresent' }) didPresent!: EventEmitter<BalEvents.BalModalDidPresentDetail>
@@ -101,6 +107,10 @@ export class Modal implements OverlayInterface {
   connectedCallback() {
     this.bodyScrollHandler.connect()
     prepareOverlay(this)
+
+    if (balBrowser.hasDocument && this.demo) {
+      this.open()
+    }
   }
 
   disconnectedCallback() {
@@ -269,7 +279,9 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
-    this.bodyScrollHandler.disable()
+    if (!this.demo) {
+      this.bodyScrollHandler.disable()
+    }
   }
 
   private unsetModalActiveOnBody() {
