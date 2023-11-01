@@ -1,0 +1,624 @@
+import { Meta, Canvas } from '@storybook/addon-docs'
+import {
+  ButtonCard,
+  Banner,
+  Lead,
+  InfoQuote,
+  ScssSource,
+  GridCards,
+  GridCard,
+  GridComponents,
+  GridComponent,
+} from '../../.storybook/blocks'
+
+<Meta
+  title="Components/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Components" color="red" puzzle />
+
+<Lead>CSS utility classes streamline component styling with pre-defined styles applied directly to HTML elements.</Lead>
+
+## Date Display
+
+<GridComponents>
+  <GridComponent
+    scale="2"
+    label="Badge"
+    pageTitle="Components/Data Display/Badge"
+    description="Badge indicates a not visited or read action. It can only be used in combination with other components like BalButton, BalCard or BalTabs."
+  >
+    <bal-stack>
+      <bal-badge>42</bal-badge>
+      <bal-badge color="success" icon="check"></bal-badge>
+    </bal-stack>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    label="Carousel"
+    fullwidth
+    pageTitle="Components/Data Display/Carousel"
+    description="The carousel component combines all the slide use cases."
+  >
+    <bal-card>
+      <bal-card-content>
+        <bal-carousel controls="large" interface="product" items-per-view="auto" steps="2">
+          <bal-carousel-item
+            color="green"
+            label="Car"
+            src="/assets/images/brand-icons/car-green.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="yellow"
+            label="Home"
+            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="purple"
+            label="Holiday"
+            src="/assets/images/brand-icons/holiday-palms-purple.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="red"
+            label="Insurances"
+            src="/assets/images/brand-icons/insurances-red.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="green"
+            label="Car"
+            src="/assets/images/brand-icons/car-green.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="yellow"
+            label="Home"
+            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="purple"
+            label="Holiday"
+            src="/assets/images/brand-icons/holiday-palms-purple.svg"
+          ></bal-carousel-item>
+          <bal-carousel-item
+            color="red"
+            label="Insurances"
+            src="/assets/images/brand-icons/insurances-red.svg"
+          ></bal-carousel-item>
+        </bal-carousel>
+      </bal-card-content>
+    </bal-card>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Data"
+    fullwidth
+    pageTitle="Components/Data Display/Data"
+    description="Data component display readonly form data."
+  >
+    <bal-card>
+      <bal-card-content>
+        <bal-data border>
+          <bal-data-item>
+            <bal-data-label>Name</bal-data-label>
+            <bal-data-value>Apple pie</bal-data-value>
+          </bal-data-item>
+          <bal-data-item>
+            <bal-data-label>Category</bal-data-label>
+            <bal-data-value editable>Cake</bal-data-value>
+          </bal-data-item>
+        </bal-data>
+      </bal-card-content>
+    </bal-card>
+  </GridComponent>
+  <GridComponent
+    scale="0.7"
+    label="Hint"
+    fullwidth
+    fullheight
+    fullscreen
+    pageTitle="Components/Data Display/Hint"
+    description="Hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the bal-data or bal-field component."
+  >
+    <bal-hint demo style={{ marginLeft: '30%', marginTop: '10%' }}>
+      <bal-hint-title>Apple pie</bal-hint-title>
+      <bal-hint-text>
+        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+      </bal-hint-text>
+    </bal-hint>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Icon"
+    fullwidth
+    pageTitle="Components/Data Display/Icon"
+    description="Icons are used to represent ideas, objects or actions."
+  >
+    <bal-stack>
+      <bal-icon name="edit" size="small"></bal-icon>
+      <bal-icon name="edit"></bal-icon>
+      <bal-icon name="edit" size="medium"></bal-icon>
+      <bal-icon name="edit" size="large"></bal-icon>
+      <bal-icon name="edit" size="x-large"></bal-icon>
+      <bal-icon name="edit" size="xx-large"></bal-icon>
+    </bal-stack>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="List"
+    fullwidth
+    pageTitle="Components/Data Display/List"
+    description="List present content in a way that makes it easy to identify a specific item in a collection."
+  >
+    <bal-card>
+      <bal-card-content>
+        <bal-list border background="color">
+          <bal-list-item clickable href="www.baloise.com" target="_blank">
+            <bal-list-item-content>
+              <bal-list-item-title>Apples</bal-list-item-title>
+            </bal-list-item-content>
+            <bal-list-item-icon right>
+              <bal-icon name="nav-go-right" size="x-small"></bal-icon>
+            </bal-list-item-icon>
+          </bal-list-item>
+          <bal-list-item clickable href="www.baloise.com" target="_blank">
+            <bal-list-item-content>
+              <bal-list-item-title>Mango</bal-list-item-title>
+              <bal-list-item-subtitle>Mangos are tropical stone fruits.</bal-list-item-subtitle>
+            </bal-list-item-content>
+            <bal-list-item-icon right>
+              <bal-icon name="link" size="x-small"></bal-icon>
+            </bal-list-item-icon>
+          </bal-list-item>
+        </bal-list>
+      </bal-card-content>
+    </bal-card>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    label="Popup"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Data Display/Popup"
+    description="Tag highlights a label for quick recognition."
+  >
+    <div class="is-flex is-justify-content-center is-align-items-center">
+      <bal-button bal-popup="my-popup" color="secondary">
+        Apple pie
+      </bal-button>
+      <bal-popup id="my-popup" label="Apple pie" offset="16" demo>
+        Apple pie, a quintessential dessert, with a flaky, golden crust.
+      </bal-popup>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.6"
+    label="Table"
+    fullwidth
+    pageTitle="Components/Data Display/Table"
+    description="A table is used to organize and present data, in a structured and accessible format for easy reference."
+  >
+    <bal-card>
+      <bal-card-content>
+        <table class="table is-fullwidth is-striped p-none">
+          <thead>
+            <th>Selected</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <bal-checkbox id="checkbox1"></bal-checkbox>
+              </td>
+              <td>Apple pie</td>
+              <td>
+                <bal-tag color="green">Ready</bal-tag>
+              </td>
+              <td class="has-buttons">
+                <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <bal-checkbox id="checkbox2"></bal-checkbox>
+              </td>
+              <td>Mango</td>
+              <td>
+                <bal-tag size="" color="red">
+                  Out of stock
+                </bal-tag>
+              </td>
+              <td class="has-buttons">
+                <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <bal-checkbox id="checkbox3"></bal-checkbox>
+              </td>
+              <td>Banana</td>
+              <td>
+                <bal-tag size="" color="yellow">
+                  In production
+                </bal-tag>
+              </td>
+              <td class="has-buttons">
+                <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </bal-card-content>
+    </bal-card>
+  </GridComponent>
+  <GridComponent
+    scale="1.2"
+    label="Tag"
+    pageTitle="Components/Data Display/Tag"
+    description="Tag highlights a label for quick recognition."
+  >
+    <bal-stack>
+      <bal-tag color="primary">Blueberry</bal-tag>
+      <bal-tag closable color="red">
+        Apple
+      </bal-tag>
+    </bal-stack>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Tooltip"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Data Display/Tooltip"
+    description="Tag highlights a label for quick recognition."
+  >
+    <bal-button color="secondary" id="basic-tooltip">
+      Apple Pie
+    </bal-button>
+    <bal-tooltip reference="basic-tooltip" demo>
+      Apple pie is a dessert
+    </bal-tooltip>
+  </GridComponent>
+</GridComponents>
+
+## Feedback
+
+<GridComponents>
+  <GridComponent
+    scale="0.5"
+    label="Modal"
+    fullwidth
+    fullheight
+    fullscreen
+    pageTitle="Components/Feedback/Modal"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <bal-modal demo>
+      <bal-modal-header>Apple pie</bal-modal-header>
+      <bal-modal-body>
+        <p>
+          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+        </p>
+        <bal-button-group position="right" reverse>
+          <bal-button color="text">No</bal-button>
+          <bal-button color="primary">Yes, please</bal-button>
+        </bal-button-group>
+      </bal-modal-body>
+    </bal-modal>
+  </GridComponent>
+  <GridComponent
+    scale="5"
+    fullwidth
+    fullscreen
+    label="Progessbar"
+    pageTitle="Components/Feedback/Progessbar"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <bal-progress-bar background="grey" value="50"></bal-progress-bar>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    label="Snackbar"
+    fullwidth
+    fullheight
+    pageTitle="Components/Feedback/Snackbar"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
+      <bal-snackbar subject="Apple Pie" action="Yes, please">
+        Want some more apple pie slices?
+      </bal-snackbar>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1.5"
+    label="Spinner"
+    pageTitle="Components/Feedback/Spinner"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <bal-spinner></bal-spinner>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    label="Toast"
+    pageTitle="Components/Feedback/Toast"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <div style={{ marginTop: '-180px' }}>
+      <bal-toast>
+        <strong>Alert</strong> Apple pie is ready
+      </bal-toast>
+    </div>
+  </GridComponent>
+</GridComponents>
+
+## Form
+
+<GridComponents>
+  <GridComponent
+    scale="1"
+    label="Checkbox"
+    pageTitle="Components/Form/Checkbox"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <div class="has-text-centered">
+      <bal-checkbox-group vertical style={{ width: '120px' }}>
+        <bal-checkbox label="Apple" />
+        <bal-checkbox label="Mango" checked />
+      </bal-checkbox-group>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Date"
+    pageTitle="Components/Form/Date"
+    description="Date Component is a datepicker designed to simplify the process of date selection."
+  >
+    <div class="has-text-centered">
+      <bal-date value="2023-10-21"></bal-date>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Field"
+    pageTitle="Components/Form/Field"
+    description="Field wraps a form field like input. It provides a clear style structure of each control."
+  >
+    <bal-field>
+      <bal-field-label required>Label</bal-field-label>
+      <bal-field-control>
+        <div class="has-background-red-2 has-radius-normal" style={{ width: '200px', height: '48px' }}></div>
+        {/* <bal-input placeholder="Placeholder"></bal-input> */}
+      </bal-field-control>
+      <bal-field-message color="hint">Field Message</bal-field-message>
+    </bal-field>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="File Upload"
+    pageTitle="Components/Form/File Upload"
+    description="File Upload is all in one component. It supports drag&drop and the normal file upload dialog of the browser."
+  >
+    <bal-file-upload label="Choose or drop a file..."></bal-file-upload>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    fullheight
+    fullwidth
+    center
+    label="Form"
+    pageTitle="Components/Form/Form"
+    description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
+  >
+    <form>
+      <bal-card>
+        <bal-card-content>
+          <bal-form-grid>
+            <bal-form-col size="half">
+              <bal-field required>
+                <bal-field-label>Firstname</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="firstname" placeholder="Enter your firstname" value="" autocomplete="on"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+            <bal-form-col size="half">
+              <bal-field required>
+                <bal-field-label>Lastname</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="lastname" placeholder="Enter your lastname" value="" autocomplete="on"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+            <bal-form-col size="half">
+              <bal-field required>
+                <bal-field-label>Street</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="street" placeholder="Enter your street" autocomplete="on"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+            <bal-form-col size="half">
+              <bal-field required>
+                <bal-field-label>City</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="city" placeholder="Basel" autocomplete="on"></bal-input>
+                </bal-field-control>
+              </bal-field>
+            </bal-form-col>
+          </bal-form-grid>
+        </bal-card-content>
+        <bal-card-actions position="left">
+          <bal-button element-type="submit" color="primary">
+            Submit
+          </bal-button>
+        </bal-card-actions>
+      </bal-card>
+    </form>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    fullheight
+    fullwidth
+    center
+    label="Form Grid"
+    pageTitle="Components/Form/Form Grid"
+    description="Form Grid components help to structure form controls in a simple grid. On mobile all controls have the the full width."
+  >
+    <bal-form-grid>
+      <bal-form-col>
+        <div class="has-background-red-2 has-radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="half">
+        <div class="has-background-red-2 has-radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="half">
+        <div class="has-background-red-2 has-radius-normalmb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-third">
+        <div class="has-background-red-2 has-radius-normalmb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-third">
+        <div class="has-background-red-2 has-radius-normalmb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-third">
+        <div class="has-background-red-2 has-radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-quarter">
+        <div class="has-background-red-2 has-radius-normalmb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-quarter">
+        <div class="has-background-red-2 has-radius-normalmb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-quarter">
+        <div class="has-background-red-2 has-radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+      <bal-form-col size="one-quarter">
+        <div class="has-background-red-2 has-radius-normal mb-small" style={{ width: '100%', height: '48px' }}></div>
+      </bal-form-col>
+    </bal-form-grid>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input"
+    pageTitle="Components/Form/Input"
+    description="Input component is a wrapper to the HTML input element."
+  >
+    <bal-input placeholder="Placeholder" type="text"></bal-input>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input Group"
+    pageTitle="Components/Form/Input Group"
+    description="Input Group can combine various components to one field control."
+  >
+    <bal-stack layout="vertical">
+      <bal-input-group class="mb-normal">
+        <bal-icon name="call"></bal-icon>
+        <bal-select style={{ maxWidth: '106px' }} value="DE">
+          <bal-select-option label="DE" value="DE">
+            DE
+          </bal-select-option>
+          <bal-select-option label="FR" value="FR">
+            FR
+          </bal-select-option>
+          <bal-select-option label="IT" value="IT">
+            IT
+          </bal-select-option>
+        </bal-select>
+        <bal-input placeholder="79 123 45 67"></bal-input>
+      </bal-input-group>
+      <bal-input-group class="mb-normal">
+        <bal-tag size="small" closable>
+          Tag
+        </bal-tag>
+        <bal-tag size="small" closable>
+          Tag
+        </bal-tag>
+        <bal-input placeholder="Enter text here"></bal-input>
+        <bal-icon name="date"></bal-icon>
+      </bal-input-group>
+    </bal-stack>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input Slider"
+    pageTitle="Components/Form/Input Slider"
+    description="Input Slider component lets users select from a range of values by moving the slider thumb."
+  >
+    <bal-input-slider has-ticks max="100" min="0" step="20" value="20"></bal-input-slider>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input Stepper"
+    pageTitle="Components/Form/Input Stepper"
+    description="Input Stepper can be used to ask the user an amount of limited amounts like the amount of children."
+  >
+    <bal-input-stepper></bal-input-stepper>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Number Input"
+    pageTitle="Components/Form/Number Input"
+    description="Number Input only allows to enter valid numbers."
+  >
+    <bal-number-input decimal="2" suffix="CHF" value="1234.45"></bal-number-input>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Radio"
+    pageTitle="Components/Form/Radio"
+    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+  >
+    <div class="has-text-centered">
+      <bal-radio-group vertical style={{ width: '120px' }} value="2">
+        <bal-radio label="Apple" value="1" />
+        <bal-radio label="Mango" value="2" />
+      </bal-radio-group>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Select"
+    pageTitle="Components/Form/Select"
+    description="Select allows the user to choose one or multiple option from a list."
+  >
+    <bal-select value="Apple">
+      <bal-select-option value="Apple" label="Apple">
+        Apple
+      </bal-select-option>
+      <bal-select-option value="Banana" label="Banana">
+        Banana
+      </bal-select-option>
+      <bal-select-option value="Mango" label="Mango">
+        Mango
+      </bal-select-option>
+    </bal-select>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Textarea"
+    pageTitle="Components/Form/Textarea"
+    description="Textarea allows a user to write and edit large texts."
+  >
+    <bal-textarea placeholder="Enter a comment" style={{ width: '227px' }}></bal-textarea>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Time Input"
+    pageTitle="Components/Form/Time Input"
+    description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
+  >
+    <bal-time-input style={{ width: '227px' }}></bal-time-input>
+  </GridComponent>
+</GridComponents>

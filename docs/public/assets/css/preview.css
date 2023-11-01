@@ -183,6 +183,7 @@ blockquote {
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
+  background: #f9f3ff !important;
   border-left: 2px solid #9f52cc !important;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
