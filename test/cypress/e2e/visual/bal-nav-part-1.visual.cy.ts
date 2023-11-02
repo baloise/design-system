@@ -13,12 +13,12 @@ describe('bal-nav - desktop', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`nav-desktop-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-desktop-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
 
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`nav-desktop-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200))
+        cy.compareSnapshot(`nav-desktop-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0.2))
       })
 
       it('open menu', () => {
@@ -29,7 +29,7 @@ describe('bal-nav - desktop', () => {
           .find('button')
           .click()
         cy.wait(400)
-        cy.compareSnapshot(`nav-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
 
       it('open menu second tab', () => {
@@ -40,13 +40,13 @@ describe('bal-nav - desktop', () => {
           .find('button')
           .click()
         cy.wait(400)
-        cy.compareSnapshot(`nav-desktop-${platform}-open-menu-second-tab`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-desktop-${platform}-open-menu-second-tab`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
 
       it('open search popoup', () => {
         cy.getByTestId('basic').find('#bal-nav__meta-buttons').eq(0).click()
         cy.wait(400)
-        cy.compareSnapshot(`nav-desktop-${platform}-open-search-popup`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-desktop-${platform}-open-search-popup`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
     })
   }

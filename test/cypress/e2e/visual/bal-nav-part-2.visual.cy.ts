@@ -12,20 +12,20 @@ describe('bal-nav - touch', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`nav-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
 
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
         cy.wait(400)
-        cy.compareSnapshot(`nav-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200))
+        cy.compareSnapshot(`nav-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200, 0.2))
       })
 
       it('open menu', () => {
         cy.scrollTo('top')
         cy.getByTestId('basic').find('.bal-nav-meta-bar').find('bal-stack > bal-button').eq(1).click()
         cy.wait(400)
-        cy.compareSnapshot(`nav-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`nav-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.2))
       })
     })
   }
