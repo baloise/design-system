@@ -29,5 +29,9 @@ export const getComputedWidth = (element: HTMLElement): number => {
 
   const computedStyle = window.getComputedStyle(element)
 
-  return convert(computedStyle.getPropertyValue('width'))
+  const width = convert(computedStyle.getPropertyValue('width'))
+  const paddingLeft = convert(computedStyle.getPropertyValue('padding-left'))
+  const paddingRight = convert(computedStyle.getPropertyValue('padding-left'))
+
+  return width + paddingLeft + paddingRight
 }
