@@ -14,7 +14,6 @@ import { BEM } from '../../utils/bem'
 import { preventDefault } from '../form/bal-select/utils/utils'
 import { BalScrollHandler } from '../../utils/scroll'
 import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
-import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-hint',
@@ -28,7 +27,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
   private popoverElement!: HTMLBalPopoverElement
   private slotWrapperEl?: HTMLDivElement
   private hintContentEl?: HTMLDivElement
-  private docIntervalTimer?: NodeJS.Timer
 
   private bodyScrollHandler = new BalScrollHandler()
 
@@ -45,22 +43,8 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
    */
   @Prop() small = false
 
-  /**
-   * @internal
-   */
-  @Prop() demo = false
-
   connectedCallback() {
     this.bodyScrollHandler.connect()
-
-    if (balBrowser.hasDocument && this.demo) {
-      this.docIntervalTimer = setInterval(() => {
-        this.toggle()
-        if (this.demo === false) {
-          clearInterval(this.docIntervalTimer)
-        }
-      }, 2000)
-    }
   }
 
   componentDidRender() {
@@ -69,7 +53,6 @@ export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpoin
 
   disconnectedCallback() {
     this.bodyScrollHandler.disconnect()
-    clearInterval(this.docIntervalTimer)
   }
 
   @ListenToBreakpoints()
