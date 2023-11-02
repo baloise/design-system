@@ -16,7 +16,7 @@ import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
-import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
+import { computePosition, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
 
 @Component({
   tag: 'bal-tooltip',
@@ -201,7 +201,6 @@ export class Tooltip implements ComponentInterface, Loggable {
       computePosition(this.trigger, this.containerEl, {
         placement: this.placement,
         middleware: [
-          shift(),
           flip(),
           offset(8),
           arrow({

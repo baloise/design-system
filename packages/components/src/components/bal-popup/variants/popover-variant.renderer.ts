@@ -1,4 +1,4 @@
-import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
+import { computePosition, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
 import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
 import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
@@ -63,10 +63,11 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
       const referenceRect = this.triggerEl?.getBoundingClientRect()
       const triggerRect = component.trigger?.getBoundingClientRect()
 
+      console.log('this.triggerEl', this.triggerEl)
+      console.log('component.containerEl', component.containerEl)
       computePosition(this.triggerEl, component.containerEl, {
         placement: this.placement,
         middleware: [
-          shift(),
           flip(),
           offset(this.arrow ? 16 : this.offset),
           arrow({
