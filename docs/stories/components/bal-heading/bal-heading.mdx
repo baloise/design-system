@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as HeadingStories from './bal-heading.stories'
 
 <Meta of={HeadingStories} />
@@ -9,7 +9,7 @@ import * as HeadingStories from './bal-heading.stories'
 
 <Banner of={HeadingStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Heading** provides some additional helpers.</Lead>
 
 <Canvas of={HeadingStories.Basic} sourceState="shown" />
 
@@ -18,9 +18,42 @@ import * as HeadingStories from './bal-heading.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HeadingStories.Secondary}></StoryHeading>
+<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
 
-<Canvas of={HeadingStories.Secondary} sourceState="shown" />
+<Canvas of={HeadingStories.Subtitle} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Levels}></StoryHeading>
+
+<Canvas of={HeadingStories.Levels} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Colors}></StoryHeading>
+
+<Canvas of={HeadingStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
+
+<Canvas of={HeadingStories.Spacing} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.AutoLevel}></StoryHeading>
+
+In some place in your app the heading requires a line break.
+With `auto-level` we can define the min visual level the heading can be to shrink it dynamically.
+
+<Canvas of={HeadingStories.AutoLevel} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.CSSUtilities}></StoryHeading>
+
+<Canvas of={HeadingStories.CSSUtilities} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +76,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

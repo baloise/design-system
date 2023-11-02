@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as LabelStories from './bal-label.stories'
 
 <Meta of={LabelStories} />
@@ -9,7 +9,7 @@ import * as LabelStories from './bal-label.stories'
 
 <Banner of={LabelStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Label** component represents a caption for a form control component.</Lead>
 
 <Canvas of={LabelStories.Basic} sourceState="shown" />
 
@@ -18,9 +18,38 @@ import * as LabelStories from './bal-label.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={LabelStories.Secondary}></StoryHeading>
+<StoryHeading of={LabelStories.RequiredAndOptional}></StoryHeading>
 
-<Canvas of={LabelStories.Secondary} sourceState="shown" />
+If the `required` is set to `false` the optional suffix will be added. The suffix is available for all
+the supported languages.
+
+<Canvas of={LabelStories.RequiredAndOptional} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.States}></StoryHeading>
+
+Two states are supported for the label component to match the form control states.
+
+<Canvas of={LabelStories.States} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Sizes}></StoryHeading>
+
+The size `small` is the default for form control labels.
+
+For advanced form controls like `bal-radio-button` or `bal-checkbox-button` we use the other two sizes.
+
+<Canvas of={LabelStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.FieldLabel}></StoryHeading>
+
+The label component is used in the [bal-field component](?path=/docs/components-form-field--basic).
+
+<Canvas of={LabelStories.FieldLabel} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +72,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
