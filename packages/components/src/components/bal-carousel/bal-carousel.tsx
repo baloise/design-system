@@ -294,16 +294,17 @@ export class Carousel
     if (items.length > index && index >= 0) {
       const data = await this.getAllItemData()
       const gapSize = this.interface === 'product' ? 16 : 0
+      const additionalCardWidth = this.interface === 'card' ? 80 : 0
 
       return {
         el: items[index],
         data: data[index],
         transformNext: items
           .filter((_, n) => n < index + 1)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + 80, 0),
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + additionalCardWidth, 0),
         transformActive: items
           .filter((_, n) => n < index)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + 80, 0),
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + additionalCardWidth, 0),
         isFirst: index === 0,
         isLast: index === items.length - 1,
         total: items.length,
