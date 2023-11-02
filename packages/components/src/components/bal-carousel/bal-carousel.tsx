@@ -300,10 +300,10 @@ export class Carousel
         data: data[index],
         transformNext: items
           .filter((_, n) => n < index + 1)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + 80, 0),
         transformActive: items
           .filter((_, n) => n < index)
-          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize, 0),
+          .reduce((acc, item) => acc + getComputedWidth(item) + gapSize + 80, 0),
         isFirst: index === 0,
         isLast: index === items.length - 1,
         total: items.length,
