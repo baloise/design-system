@@ -7,6 +7,7 @@ describe('bal-carousel', () => {
     cy.getByTestId('image').compareSnapshot('carousel-image-desktop')
     cy.getByTestId('product').compareSnapshot('carousel-product-desktop')
     cy.getByTestId('card').compareSnapshot('carousel-card-desktop')
+    cy.getByTestId('card-with-value').compareSnapshot('carousel-card-with-value-desktop')
     cy.getByTestId('responsive').compareSnapshot('carousel-responsive-desktop')
 
     cy.platform('tablet')
@@ -14,6 +15,7 @@ describe('bal-carousel', () => {
     cy.getByTestId('image').compareSnapshot('carousel-image-tablet')
     cy.getByTestId('product').compareSnapshot('carousel-product-tablet')
     cy.getByTestId('card').compareSnapshot('carousel-card-tablet')
+    cy.getByTestId('card-with-value').compareSnapshot('carousel-card-with-value-tablet')
     cy.getByTestId('responsive').compareSnapshot('carousel-responsive-tablet')
 
     cy.platform('mobile')
@@ -21,6 +23,7 @@ describe('bal-carousel', () => {
     cy.getByTestId('image').compareSnapshot('carousel-image-mobile')
     cy.getByTestId('product').compareSnapshot('carousel-product-mobile')
     cy.getByTestId('card').compareSnapshot('carousel-card-mobile')
+    cy.getByTestId('card-with-value').compareSnapshot('carousel-card-with-value-mobile')
     cy.getByTestId('responsive').compareSnapshot('carousel-responsive-mobile')
   })
 })
