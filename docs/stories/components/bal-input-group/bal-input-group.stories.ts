@@ -27,14 +27,14 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    () => `<bal-input-group class="mb-normal">
-  <bal-input placeholder="Enter text here"></bal-input>
+    ({ ...args }) => `<bal-input-group class="mb-normal">
+  <bal-input ${props(args)}></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>
 
 <bal-input-group class="mb-normal">
   <bal-icon name="date"></bal-icon>
-  <bal-input placeholder="Enter text here"></bal-input>
+  <bal-input ${props(args)}></bal-input>
 </bal-input-group>
 
 <bal-input-group class="mb-normal">
@@ -49,7 +49,7 @@ export const Basic = Story({
 
 <bal-input-group class="mb-normal">
   <bal-icon name="date"></bal-icon>
-  <bal-input placeholder="Enter text here"></bal-input>
+  <bal-input ${props(args)}></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>
 
@@ -57,8 +57,11 @@ export const Basic = Story({
   <bal-tag closable>Tag</bal-tag>
   <bal-tag closable>Tag</bal-tag>
   <bal-tag closable>Tag</bal-tag>
-  <bal-input placeholder="Enter text here"></bal-input>
+  <bal-input ${props(args)}></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>`,
   ),
+  args: {
+    placeholder: 'Enter text here',
+  },
 })

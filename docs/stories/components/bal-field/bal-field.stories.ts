@@ -27,26 +27,35 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    () => `<bal-field>
+    ({ ...args }) => `<bal-field>
   <bal-field-label required="true">Firstname</bal-field-label>
   <bal-field-control>
-      <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+      <bal-input ${props(args)}></bal-input>
   </bal-field-control>
   <bal-field-message color="hint">Field Message</bal-field-message>
 </bal-field>`,
   ),
+  args: {
+    placeholder: 'Enter your firstname',
+    name: 'firstName',
+    id: 'bal-input-1',
+  },
 })
 
 export const Addons = Story({
   ...withRender(
-    () => `<bal-field>
+    ({ ...args }) => `<bal-field>
   <bal-field-label required="true">Search</bal-field-label>
   <bal-field-control>
-      <bal-input name="search" placeholder="Search..."></bal-input>
+      <bal-input ${props(args)}></bal-input>
       <bal-button color="info">Search</bal-button>
   </bal-field-control>
 </bal-field>`,
   ),
+  args: {
+    placeholder: 'Search...',
+    name: 'search',
+  },
 })
 
 export const WithGrid = Story({

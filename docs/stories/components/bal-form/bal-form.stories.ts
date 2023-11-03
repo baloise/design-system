@@ -27,13 +27,13 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
   ...withRender(
-    () => `<bal-form ref="form">
+    ({ ...args }) => `<bal-form ref="form">
   <bal-form-grid>
       <bal-form-col>
           <bal-field invalid="true">
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -41,7 +41,7 @@ export const Basic = Story({
           <bal-field>
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -49,7 +49,7 @@ export const Basic = Story({
           <bal-field invalid="true">
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -57,7 +57,7 @@ export const Basic = Story({
           <bal-field>
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -65,7 +65,7 @@ export const Basic = Story({
           <bal-field invalid="true">
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -73,7 +73,7 @@ export const Basic = Story({
           <bal-field>
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -81,7 +81,7 @@ export const Basic = Story({
           <bal-field invalid="true">
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -89,7 +89,7 @@ export const Basic = Story({
           <bal-field>
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -97,7 +97,7 @@ export const Basic = Story({
           <bal-field invalid="true">
               <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-input ${props(args)}></bal-input>
               </bal-field-control>
           </bal-field>
       </bal-form-col>
@@ -109,6 +109,9 @@ export const Basic = Story({
   </bal-form-grid>
 </bal-form>`,
   ),
+  args: {
+    placeholder: 'Placeholder',
+  },
 })
 
 export const Secondary = Story({

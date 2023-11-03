@@ -28,7 +28,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   ...withRender(({ content, ...args }) => `<bal-date ${props(args)}>${content}</bal-date>`),
   args: {
-    placeholder: 'Placeholder',
+    placeholder: 'Pick a date',
     content: '',
   },
 })
@@ -44,7 +44,7 @@ export const FieldControl = Story({
 </bal-field>`,
   ),
   args: {
-    placeholder: 'Placeholder',
+    placeholder: 'Pick a date',
   },
 })
 
@@ -59,7 +59,7 @@ export const ManualInput = Story({
 </bal-field>`,
   ),
   args: {
-    placeholder: 'Placeholder',
+    placeholder: 'Pick a date',
   },
 })
 
@@ -74,7 +74,7 @@ export const MinAndMax = Story({
 </bal-field>`,
   ),
   args: {
-    placeholder: 'Placeholder',
+    placeholder: 'Pick a date',
     min: '2022-02-06',
     max: '2022-03-12',
   },

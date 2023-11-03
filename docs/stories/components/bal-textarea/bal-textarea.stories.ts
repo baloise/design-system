@@ -33,57 +33,67 @@ export const Basic = Story({
 
 export const FieldControl = Story({
   ...withRender(
-    () => `<bal-field>
+    ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
-      <bal-textarea placeholder="Enter a comment"></bal-textarea>
+      <bal-textarea ${props(args)}></bal-textarea>
   </bal-field-control>
   <bal-field-message color="hint">Field Message</bal-field-message>
 </bal-field>`,
   ),
+  args: {
+    placeholder: 'Enter a comment',
+  },
 })
 
 export const InvalidTextarea = Story({
   ...withRender(
-    () => `<bal-field invalid="true">
+    ({ ...args }) => `<bal-field invalid="true">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-        <bal-textarea invalid="true" value="Value"></bal-textarea>
+        <bal-textarea ${props(args)}></bal-textarea>
     </bal-field-control>
     <bal-field-message color="danger">Field Message</bal-field-message>
 </bal-field>`,
   ),
+  args: {
+    invalid: true,
+    value: 'Value',
+  },
 })
 
 export const NativeTextarea = Story({
   ...withRender(
-    () => `<div class="field">
+    ({ ...args }) => `<div class="field">
   <label class="label">Name</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Text input"></textarea>
+    <textarea class="textarea" ${props(args)}></textarea>
   </div>
   <p class="help">This username is available</p>
 </div>
 <div class="field">
   <label class="label is-disabled">Name</label>
   <div class="control">
-    <textarea class="textarea is-disabled" disabled="true" type="text" placeholder="Text input" /></textarea>
+    <textarea class="textarea is-disabled" disabled="true" type="text" ${props(args)} /></textarea>
   </div>
   <p class="help is-disabled">This username is available</p>
 </div>
 <div class="field">
   <label class="label is-success">Name</label>
   <div class="control">
-    <textarea class="textarea is-success" type="text" placeholder="Text input" /></textarea>
+    <textarea class="textarea is-success" type="text" ${props(args)} /></textarea>
   </div>
   <p class="help is-success">This username is available</p>
 </div>
 <div class="field">
   <label class="label is-danger">Name</label>
   <div class="control">
-    <textarea class="textarea is-danger" type="text" placeholder="Text input" /></textarea>
+    <textarea class="textarea is-danger" type="text" ${props(args)} /></textarea>
   </div>
   <p class="help is-danger">This username is available</p>
 </div>`,
   ),
+  args: {
+    placeholder: 'Text input',
+  },
 })
