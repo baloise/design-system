@@ -5,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalNotification & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Notification',
+  title: 'Components/Containment/Notification',
   args: {
     ...withDefaultContent(),
   },

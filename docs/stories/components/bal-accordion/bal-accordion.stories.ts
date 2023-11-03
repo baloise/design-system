@@ -13,7 +13,7 @@ import {
 type Args = JSX.BalAccordion & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Accordion',
+  title: 'Components/Containment/Accordion',
   args: {
     ...withDefaultContent(lorem1),
   },

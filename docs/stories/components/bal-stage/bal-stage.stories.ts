@@ -13,7 +13,7 @@ import {
 type Args = JSX.BalStage & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Stage',
+  title: 'Components/Containment/Stage',
   args: {
     ...withDefaultContent(lorem1),
   },

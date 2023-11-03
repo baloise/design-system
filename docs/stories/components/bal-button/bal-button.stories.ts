@@ -5,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalButton & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Button',
+  title: 'Components/Containment/Button',
   args: {
     ...withDefaultContent(),
   },

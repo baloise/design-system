@@ -13,7 +13,7 @@ import {
 type Args = JSX.BalCard & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Card',
+  title: 'Components/Containment/Card',
   args: {
     ...withDefaultContent(lorem1),
   },

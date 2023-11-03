@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalSheet & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Sheet',
+  title: 'Components/Containment/Sheet',
   args: {
     ...withDefaultContent(),
   },

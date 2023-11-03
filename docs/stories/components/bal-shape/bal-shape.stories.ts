@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalShape & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Shape',
+  title: 'Components/Layout/Shape',
   args: {
     ...withDefaultContent(),
   },
