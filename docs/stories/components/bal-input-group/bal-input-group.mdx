@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as InputGroupStories from './bal-input-group.stories'
 
 <Meta of={InputGroupStories} />
@@ -9,20 +9,11 @@ import * as InputGroupStories from './bal-input-group.stories'
 
 <Banner of={InputGroupStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Input Group** can combine various components to one field control.</Lead>
 
 <Canvas of={InputGroupStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={InputGroupStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={InputGroupStories.Secondary}></StoryHeading>
-
-<Canvas of={InputGroupStories.Secondary} sourceState="shown" />
-
-{/* ------------------------------------------------------ */}
 
 ## Component API
 
@@ -43,3 +34,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

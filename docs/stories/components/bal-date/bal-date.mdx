@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer } from '../../../.storybook/blocks'
 import * as DateStories from './bal-date.stories'
 
 <Meta of={DateStories} />
@@ -9,18 +9,55 @@ import * as DateStories from './bal-date.stories'
 
 <Banner of={DateStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>The **Date Component** is a versatile and user-friendly datepicker designed to simplify the process of date
+  selection and input within your web applications. Whether you're building a simple form, a dynamic dashboard, or a
+  comprehensive booking system, our datepicker offers a seamless way to handle date-related interactions.</Lead>
 
-<Canvas of={DateStories.Basic} sourceState="shown" />
+<InfoQuote>
+**TIP**
+
+**Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
+</InfoQuote>
+
+<Canvas of={DateStories.Basic} sourceState="shown" className="has-visible-overflow" />
 
 <PlaygroundBar of={DateStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={DateStories.Secondary}></StoryHeading>
+<StoryHeading of={DateStories.FieldControl}></StoryHeading>
 
-<Canvas of={DateStories.Secondary} sourceState="shown" />
+Elevate your user experience even further by seamlessly merging the component with the `bal-field` components.
+This not only facilitates the addition of labels, validation messages, and other crucial elements but also ensures
+that required accessibility features are seamlessly integrated. This approach guarantees an inclusive and user-friendly interface for all.
+
+<Canvas of={DateStories.FieldControl} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.ManualInput}></StoryHeading>
+
+Explore another practical application of the component where the datepicker's popup is triggered solely by clicking on an icon.
+This specialized use case is particularly valuable when dealing with well-known dates such as birthdays. By implementing this approach,
+you streamline the user experience, making it convenient to quickly input or verify specific dates without the need for an
+extensive calendar interface.
+
+<Canvas of={DateStories.ManualInput} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DateStories.MinAndMax}></StoryHeading>
+
+Utilize the `min` and `max` props to establish a flexible range of available dates within the datepicker component.
+By setting the min prop, you can specify the earliest permissible date that users can select. Conversely, with
+the max prop, you can determine the latest date that can be chosen.
+
+These props are invaluable when you need to restrict date selection within a specific timeframe, such as
+when scheduling appointments or bookings. By configuring the min and max props, you ensure that users can
+only choose dates that fall within the designated range, offering a tailored and controlled date selection experience.
+
+<Canvas of={DateStories.MinAndMax} className="has-visible-overflow" />
 
 {/* ------------------------------------------------------ */}
 
@@ -34,6 +71,21 @@ import api from './api.md?raw'
 
 import integration from '../../snippets/integration.md?raw'
 
+Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+`1996-12-19`. The format does not have to be specific to an exact datetime.
+For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+
+```typescript
+import { BalDate } from '@baloise/design-system-components'
+
+const dateDisabled = document.getElementById('date-disabled')
+dateDisabled.value = BalDate.fromAnyFormat(new Date()).toISODate()
+// or
+dateDisabled.value = BalDate.fromAnyFormat(new Date(2020, 0, 13)).toISODate()
+// or
+dateDisabled.value = BalDate.fromISO('2020-01-13').toISODate()
+```
+
 <Markdown>{integration}</Markdown>
 
 import theming from './theming.md?raw'
@@ -43,3 +95,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

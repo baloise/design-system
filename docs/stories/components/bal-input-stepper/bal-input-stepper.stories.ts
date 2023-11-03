@@ -6,9 +6,9 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalInputStepper & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/InputStepper',
+  title: 'Components/Form/InputStepper',
   args: {
-    ...withDefaultContent(),
+    ...withDefaultContent(''),
   },
   argTypes: {
     ...withContent(),
@@ -27,9 +27,3 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
-})

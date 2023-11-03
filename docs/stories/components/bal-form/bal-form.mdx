@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as FormStories from './bal-form.stories'
 
 <Meta of={FormStories} />
@@ -9,7 +9,7 @@ import * as FormStories from './bal-form.stories'
 
 <Banner of={FormStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead> The `bal-form` wraps the form section. It helps to scroll to the first invalid field after a failed submit.</Lead>
 
 <Canvas of={FormStories.Basic} sourceState="shown" />
 
@@ -20,7 +20,7 @@ import * as FormStories from './bal-form.stories'
 
 <StoryHeading of={FormStories.Secondary}></StoryHeading>
 
-<Canvas of={FormStories.Secondary} sourceState="shown" />
+<Canvas of={FormStories.Secondary} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +43,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

@@ -6,7 +6,41 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```typescript
+describe('Select', () => {
+  const select = byTestId('my-select') // [data-testid="my-select"]
 
+  it('should ...', () => {
+    cy.get(select)
+      .click() // opens the select
+      .select('1995')
+      .should('have.value', '1995')
+    cy.get(select).balSelectFindOptions().should('have.length', 6)
+    cy.get(select).balSelectShouldHaveOptions(['1995', '1996', '1997', '1998', '1999', '2000'])
+  })
+})
+
+describe('typeahead', () => {
+  const typeahead = byTestId('my-typeahead') // [data-testid="my-typeahead"]
+
+  it('should clear select and search for the Black Widow', () => {
+    cy.get(typeahead).clear().type('Black{enter}').should('have.value', 'Black Widow')
+  })
+})
+
+describe('multiple', () => {
+  const multiple = byTestId('my-multiple') // [data-testid="my-multiple"]
+
+  it('should ', () => {
+    cy.get(multiple)
+      .click()
+      .select(['Black Widow', 'Black Panter'])
+      .should('have.value', ['Black Widow', 'Black Panter'])
+    cy.get(multiple).balSelectFindOptions().first().click()
+    cy.get(page.multiple).balSelectFindChips().first().contains('Iron Man').click() // clicks the chip to remove the selection
+  })
+})
+```
 
 <!-- END: human documentation -->
 

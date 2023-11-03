@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as FileUploadStories from './bal-file-upload.stories'
 
 <Meta of={FileUploadStories} />
@@ -9,7 +9,7 @@ import * as FileUploadStories from './bal-file-upload.stories'
 
 <Banner of={FileUploadStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**File Upload** is all in one component. It supports drag&drop and the normal file upload dialog of the browser.</Lead>
 
 <Canvas of={FileUploadStories.Basic} sourceState="shown" />
 
@@ -18,9 +18,9 @@ import * as FileUploadStories from './bal-file-upload.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={FileUploadStories.Secondary}></StoryHeading>
+<StoryHeading of={FileUploadStories.NativeFileUpload}></StoryHeading>
 
-<Canvas of={FileUploadStories.Secondary} sourceState="shown" />
+<Canvas of={FileUploadStories.NativeFileUpload} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +43,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

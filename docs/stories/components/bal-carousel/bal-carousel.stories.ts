@@ -1,7 +1,6 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
-import { balBrandIconCarCrashWithAnimalGreen } from '@baloise/design-system-brand-icons'
 
 type Args = JSX.BalCarousel & { content: string }
 

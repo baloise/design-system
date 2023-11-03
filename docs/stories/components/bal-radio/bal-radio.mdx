@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as RadioStories from './bal-radio.stories'
 
 <Meta of={RadioStories} />
@@ -9,18 +9,77 @@ import * as RadioStories from './bal-radio.stories'
 
 <Banner of={RadioStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Radio** input is normally displayed in a radio group. The user can only select one option from a number of choices.</Lead>
 
 <Canvas of={RadioStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={RadioStories.Basic}></PlaygroundBar>
 
+<br />
+
+We introduced a new way of adding a options to the bal-radio-group
+by introducing the `options` property in which options can be passed using a Javascript.
+
+```html
+<bal-radio-group [options]="options"></bal-radio-group>
+```
+
+```typescript
+import { newBalRadioOption } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-example-component',
+  templateUrl: './example-component.component.html',
+})
+export class ExampleComponent {
+  options = [
+    newBalRadioOption({ label: 'Label 1', value: '1' }),
+    newBalRadioOption({
+      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+      value: '2',
+    }),
+  ]
+}
+```
+
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={RadioStories.Secondary}></StoryHeading>
+<StoryHeading of={RadioStories.FieldControl}></StoryHeading>
 
-<Canvas of={RadioStories.Secondary} sourceState="shown" />
+<Canvas of={RadioStories.FieldControl} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.Vertical}></StoryHeading>
+
+<Canvas of={RadioStories.Vertical} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.SelectButtons}></StoryHeading>
+
+<Canvas of={RadioStories.SelectButtons} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.RadioButton}></StoryHeading>
+
+The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic) and [content component](?path=/docs/components-layout-content--basic).
+
+The states invalid and disabled are also supported.
+
+<Canvas of={RadioStories.RadioButton} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RadioStories.RadioButtonGrid}></StoryHeading>
+
+The radio buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+
+By default on mobile we only support one item per line. To overwrite this use the prop `columns-mobile`.
+
+<Canvas of={RadioStories.RadioButtonGrid} />
 
 {/* ------------------------------------------------------ */}
 
@@ -29,6 +88,14 @@ import * as RadioStories from './bal-radio.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import balRadioGroupApi from './bal-radio-group/api.md?raw'
+
+<Markdown>{balRadioGroupApi}</Markdown>
+
+import balRadioButtonApi from './bal-radio-button/api.md?raw'
+
+<Markdown>{balRadioButtonApi}</Markdown>
 
 ## Integration
 
@@ -43,3 +110,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

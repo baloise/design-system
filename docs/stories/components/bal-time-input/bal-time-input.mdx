@@ -1,7 +1,8 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as TimeInputStories from './bal-time-input.stories'
+import { balBrandIconCarRed } from '@baloise/design-system-brand-icons'
 
 <Meta of={TimeInputStories} />
 
@@ -9,7 +10,7 @@ import * as TimeInputStories from './bal-time-input.stories'
 
 <Banner of={TimeInputStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Time Input** allows to enter valid numbers for their specific index. The time value will be formatted accordingly.</Lead>
 
 <Canvas of={TimeInputStories.Basic} sourceState="shown" />
 
@@ -18,9 +19,11 @@ import * as TimeInputStories from './bal-time-input.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TimeInputStories.Secondary}></StoryHeading>
+<StoryHeading of={TimeInputStories.FieldControl}></StoryHeading>
 
-<Canvas of={TimeInputStories.Secondary} sourceState="shown" />
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas of={TimeInputStories.FieldControl} />
 
 {/* ------------------------------------------------------ */}
 
@@ -36,6 +39,24 @@ import integration from '../../snippets/integration.md?raw'
 
 <Markdown>{integration}</Markdown>
 
+## Tutorials and Templates
+
+A list of tutorials how to use or create this component and templates to see how it can
+be combined with other components.
+
+<bal-doc-link-list one-column>
+  <a href="?path=/story/implementation-form--page">
+    <bal-doc-link-list-item image="/assets/images/icons/document.svg" subject="Form Tutorial">
+      Documentation how to build forms and how to use the components.
+    </bal-doc-link-list-item>
+  </a>
+  <a href="?path=/story/design-common-templates--contact-form">
+    <bal-doc-link-list-item image="/assets/images/icons/account.svg" subject="Template Contact Form">
+      A template with to illustrate the structure of a form.
+    </bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
 import theming from './theming.md?raw'
 
 <Markdown>{theming}</Markdown>
@@ -43,3 +64,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
