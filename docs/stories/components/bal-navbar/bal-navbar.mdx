@@ -9,7 +9,7 @@ import * as NavbarStories from './bal-navbar.stories'
 
 <Banner of={NavbarStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>A responsive horizontal Navbar that can support logos, buttons, and dropdowns.</Lead>
 
 <Canvas of={NavbarStories.Basic} sourceState="shown" />
 
@@ -18,17 +18,33 @@ import * as NavbarStories from './bal-navbar.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NavbarStories.Secondary}></StoryHeading>
+<StoryHeading of={NavbarStories.Simple}></StoryHeading>
 
-<Canvas of={NavbarStories.Secondary} sourceState="shown" />
+The simple header is designed for the calculator applications or other simple applications, which do not have a tab page routing.
+
+<Canvas of={NavbarStories.Simple} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NavbarStories.Light}></StoryHeading>
+
+<Canvas of={NavbarStories.Light} sourceState="closed" />
 
 {/* ------------------------------------------------------ */}
 
 ## Component API
 
 import api from './api.md?raw'
+import navbarBrand from './bal-navbar-brand/api.md?raw'
+import navbarMenu from './bal-navbar-menu/api.md?raw'
+import navbarMenuStart from './bal-navbar-menu-start/api.md?raw'
+import navbarMenuEnd from './bal-navbar-menu-end/api.md?raw'
 
 <Markdown>{api}</Markdown>
+<Markdown>{navbarBrand}</Markdown>
+<Markdown>{navbarMenu}</Markdown>
+<Markdown>{navbarMenuStart}</Markdown>
+<Markdown>{navbarMenuEnd}</Markdown>
 
 ## Integration
 

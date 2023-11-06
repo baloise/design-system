@@ -3,38 +3,51 @@ import { global } from '@storybook/global'
 import { useOf } from '@storybook/blocks'
 
 import { buildAngularParameters } from './utils/code-sandbox.angular'
-
-const labels = {
-  angular: 'Angular',
-  html: 'HTML & JS',
-  react: 'React',
-  vue: 'Vue.js',
-}
+import { buildReactParameters } from './utils/code-sandbox.react'
+import { buildHtmlParameters } from './utils/code-sandbox.html'
 
 export const CodeSandbox = ({ of }) => {
   const framework = global['__STORYBOOK_PREVIEW__'].storyStore.globals.globals.framework
   let template = ''
+  let exampleFiles = {}
 
   if (of) {
     const resolvedOf = useOf(of || 'story', ['story', 'meta'])
     template = resolvedOf.story.originalStoryFn({ ...resolvedOf.story.initialArgs }).innerHTML
+    exampleFiles = resolvedOf.story.parameters.balCodeSandbox
   }
 
   const [parameters, setParameters] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    buildAngularParameters({ template }).then(newParameters => {
-      setParameters(newParameters)
-      setLoading(false)
-    })
+    if (framework === 'react') {
+      buildReactParameters({ template, exampleFiles }).then(newParameters => {
+        setParameters(newParameters)
+        setLoading(false)
+      })
+    } else if (framework === 'html') {
+      buildHtmlParameters({ template, exampleFiles }).then(newParameters => {
+        setParameters(newParameters)
+        setLoading(false)
+      })
+    } else {
+      buildAngularParameters({ template, exampleFiles }).then(newParameters => {
+        setParameters(newParameters)
+        setLoading(false)
+      })
+    }
   })
 
-  const label = template === '' ? 'Try Online' : `${labels[framework] || 'Angular'} Code Sandbox`
+  const label = template === '' ? 'Try Online' : `Code Sandbox`
+
+  if (framework === 'vue' || (of && framework !== 'angular')) {
+    return ''
+  }
 
   if (loading) {
     return (
-      <button className="sb-unstyled button is-primary is-disabled" disabled>
+      <button className="sb-unstyled button is-info is-disabled" disabled>
         <div className="is-flex fg-xx-small">
           <svg width="24px" height="24px" viewBox="0 0 256 296" version="1.1" preserveAspectRatio="xMidYMid">
             <g>
@@ -53,7 +66,7 @@ export const CodeSandbox = ({ of }) => {
   return (
     <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" className="sb-unstyled">
       <input type="hidden" name="parameters" value={parameters} />
-      <button className="button is-primary">
+      <button className="button is-info">
         <div className="is-flex fg-xx-small">
           <svg width="24px" height="24px" viewBox="0 0 256 296" version="1.1" preserveAspectRatio="xMidYMid">
             <g>

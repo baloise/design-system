@@ -183,6 +183,7 @@ blockquote {
   line-height: var(--bal-line-height-small) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
+  background: #f9f3ff !important;
   border-left: 2px solid #9f52cc !important;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -198,7 +199,7 @@ blockquote > p {
  * CODE
  ***************************************/
 
-code:not(.language-diff) {
+code:not(.language-diff, .language-scss) {
   background-color: var(--bal-color-primary-1)  !important;
   border: 1px solid var(--bal-color-primary-1)  !important;
   color: var(--bal-color-primary) !important;
@@ -299,7 +300,7 @@ a > code {
   }
 }
 
-.my-welcome-guide {
+/* .my-welcome-guide {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -316,7 +317,7 @@ a > code {
     padding-top: 5rem;
     padding-bottom: 2rem;
   }
-}
+} */
 
 /***************************************
  * SHADOW UTILS
@@ -485,6 +486,21 @@ div.has-visible-overflow div[scale="1"] {
   font-weight: 400;
   color: var(--bal-color-primary);
 }
+
+/***************************************
+ * HOME
+ ***************************************/
+ .home-stage {
+  display: block;
+  margin-top: 2rem;
+ }
+
+.home-stage .bal-logo > div {
+  height: 48px !important;
+  width: 237px !important;
+}
+
+
 
 /*
 

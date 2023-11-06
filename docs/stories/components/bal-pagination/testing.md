@@ -6,7 +6,19 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Pagination', () => {
+  const pagination = byTestId('my-pagination') // [data-testid="my-pagination"]
+  it('should ...', () => {
+    cy.get(pagination).balPaginationFindPages().first().contains('1')
+    cy.get(pagination).balPaginationFindCurrentPage().contains('2')
+    cy.get(pagination).balPaginationFindNextButton().click()
+    cy.get(pagination).balPaginationFindCurrentPage().contains('3')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
@@ -14,12 +26,12 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command                           | Description                                               | Signature                                          |
-| --------------------------------- | --------------------------------------------------------- | -------------------------------------------------- |
-| `balPaginationFindPages`          | Returns all the page buttons.                             | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command                           | Description                                               | Signature                                 |
+| --------------------------------- | --------------------------------------------------------- | ----------------------------------------- |
+| `balPaginationFindPages`          | Returns all the page buttons.                             | (options?: Partial\<Loggable>): Chainable |
+| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | (options?: Partial\<Loggable>): Chainable |
+| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | (options?: Partial\<Loggable>): Chainable |
+| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors

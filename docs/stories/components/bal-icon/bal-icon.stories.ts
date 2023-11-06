@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalIcon & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Data View/Icon',
+  title: 'Components/Data Display/Icon',
   args: {
     ...withDefaultContent(),
   },

@@ -17,22 +17,29 @@ export const startObserving = (domNode, callback) => {
   return observer
 }
 
+export const useContentLoaded = callback => {
+  const doc = document
+
+  if (doc) {
+    doc.addEventListener('DOMContentLoaded', () => callback())
+  } else {
+    setTimeout(() => callback(), 32)
+  }
+}
+
 export const ListenerFactory = () => {
   const listeners = [] as any[]
 
   const addEventListener = (type: string, context, listener: (event: UIEvent) => void) => {
     const root = getRootElement(context)
 
-    console.warn('listeners', listeners)
     while (listeners.length > 0) {
-      console.warn('removeEventListener')
       root?.removeEventListener(type as any, listeners.pop() as any)
     }
 
     root?.addEventListener(type as any, listener)
     listeners.push(listener)
     startObserving(root, () => {
-      console.error('removeEventListener')
       root?.removeEventListener(type as any, listener)
     })
   }

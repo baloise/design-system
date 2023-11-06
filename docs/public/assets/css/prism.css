@@ -1,11 +1,9 @@
-/* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+diff+scss */
 code[class*=language-],
 pre[class*=language-] {
   color: var(--bal-color-grey-1) !important;
   background: 0 0;
   text-shadow: 0 1px rgba(0, 0, 0, .3);
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
   font-size: 1em;
   text-align: left;
   white-space: pre;
@@ -20,6 +18,10 @@ pre[class*=language-] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none
+}
+
+.docblock-source .token, pre.prismjs {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
 }
 
 pre[class*=language-] {
@@ -128,6 +130,10 @@ pre[class*=language-] {
   color: var(--bal-color-grey-1) !important
 }
 
+.token.atrule.rule {
+  color: var(--bal-color-purple-4) !important;
+}
+
 .language-html .token.tag.punctuation,
 .language-html .token.punctuation {
   color: var(--bal-color-grey-1) !important;
@@ -145,10 +151,12 @@ pre[class*=language-] {
   color: var(--bal-color-green-3) !important;
 }
 
+.language-scss .token.selector,
 .language-css .token.selector {
   color: var(--bal-color-yellow-3) !important;
 }
 
+.language-scss .token.property,
 .language-css .token.property {
   color: var(--bal-color-light-blue-2) !important;
 }
@@ -174,3 +182,37 @@ pre[class*=language-] {
 .language-diff .token.deleted {
   color: var(--bal-color-red-4) !important;
 }
+
+.language-scss {
+  text-shadow: none !important;
+}
+
+.language-scss .token.comment {
+  color: var(--bal-color-grey-5) !important;
+}
+
+.language-scss .token.keyword {
+  color: var(--bal-color-purple-4) !important;
+}
+
+.language-scss .token.string {
+  color: var(--bal-color-green-3) !important;
+}
+
+/* .language-scss code {
+  background-color: transparent !important;
+  border: none !important;
+  color: inherit !important;
+}
+
+.language-scss .token.unchanged {
+  color: var(--bal-color-grey-4) !important;
+}
+
+.language-scss .token.inserted {
+  color: var(--bal-color-green-4) !important;
+}
+
+.language-scss .token.deleted {
+  color: var(--bal-color-red-4) !important;
+} */

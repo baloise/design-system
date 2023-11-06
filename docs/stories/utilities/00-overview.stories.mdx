@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { ButtonCard, Banner, Lead, InfoQuote } from '../../.storybook/blocks'
+import { ButtonCard, Banner, Lead, InfoQuote, ScssSource, GridCards, GridCard, Footer } from '../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Overview"
@@ -7,12 +7,271 @@ import { ButtonCard, Banner, Lead, InfoQuote } from '../../.storybook/blocks'
     previewTabs: {
       canvas: { hidden: true },
     },
-    docs: {
-      toc: {
-        disable: true,
-      },
-    },
   }}
 />
 
-TODO
+<Banner label="CSS Utilities" color="yellow" puzzle />
+
+<Lead>CSS utility classes streamline component styling with pre-defined styles applied directly to HTML elements.</Lead>
+
+## Backgrounds
+
+<GridCards>
+  <GridCard
+    label="Background Colors"
+    pageTitle="CSS Utilities/Background/Background Colors"
+    color="yellow"
+    description="Select from a range of colors for the background of an element."
+  />
+</GridCards>
+
+## Borders
+
+<GridCards>
+  <GridCard
+    label="Border Colors"
+    pageTitle="CSS Utilities/Border/Border Colors"
+    color="yellow"
+    description="Diverse color palettes available for element borders."
+  />
+  <GridCard
+    label="Border Radius"
+    pageTitle="CSS Utilities/Border/Border Radius"
+    color="yellow"
+    description="Defines the radius of an element's corners."
+  />
+</GridCards>
+
+## Elevation
+
+<GridCards>
+  <GridCard
+    label="Opacity"
+    pageTitle="CSS Utilities/Elevation/Opacity"
+    color="yellow"
+    description="Specifies the level of transparency for an element."
+  />
+  <GridCard
+    label="Shadow"
+    pageTitle="CSS Utilities/Elevation/Shadow"
+    color="yellow"
+    description="Determines the box-shadow or text-shadow effect applied to an element."
+  />
+</GridCards>
+
+## Flexbox
+
+<GridCards>
+  <GridCard
+    label="Align Content"
+    pageTitle="CSS Utilities/Flexbox/Align Content"
+    color="yellow"
+    description="Determines how flex lines are distributed between and around items."
+  />
+  <GridCard
+    label="Align Items"
+    pageTitle="CSS Utilities/Flexbox/Align Items"
+    color="yellow"
+    description="Specifies alignment along the cross axis."
+  />
+  <GridCard
+    label="Align Self"
+    pageTitle="CSS Utilities/Flexbox/Align Self"
+    color="yellow"
+    description="Specifies the alignment for a specific element along the cross axis."
+  />
+  <GridCard
+    label="Flex Direction"
+    pageTitle="CSS Utilities/Flexbox/Flex Direction"
+    color="yellow"
+    description="Determines the direction of flexible items."
+  />
+  <GridCard
+    label="Flex"
+    pageTitle="CSS Utilities/Flexbox/Flex"
+    color="yellow"
+    description="A shorthand property for setting flex-grow, flex-shrink, and flex-basis simultaneously."
+  />
+  <GridCard
+    label="Gap"
+    pageTitle="CSS Utilities/Flexbox/Gap"
+    color="yellow"
+    description="Specifies the gap size between rows and columns. It is a shorthand for column-gap and row-gap."
+  />
+  <GridCard
+    label="Justify Content"
+    pageTitle="CSS Utilities/Flexbox/Justify Content"
+    color="yellow"
+    description="Specifies alignment along the main axis."
+  />
+  <GridCard
+    label="Flex Wrap"
+    pageTitle="CSS Utilities/Flexbox/Flex Wrap"
+    color="yellow"
+    description="Determines whether flexible items should wrap or not."
+  />
+</GridCards>
+
+## Grid
+
+<GridCards>
+  <GridCard
+    label="Grid System"
+    pageTitle="CSS Utilities/Grid/Grid System"
+    color="yellow"
+    description="Determines how flex lines are distributed between and around items."
+  />
+</GridCards>
+
+## Layout
+
+<GridCards>
+  <GridCard
+    label="Container"
+    pageTitle="CSS Utilities/Layout/Container"
+    color="yellow"
+    description="A straightforward container for horizontally centering your content."
+  />
+  <GridCard
+    label="Display"
+    pageTitle="CSS Utilities/Layout/Display"
+    color="yellow"
+    description="Specifies the display behavior of an element on a page."
+  />
+</GridCards>
+
+## Mixins
+
+<GridCards>
+  <GridCard
+    label="Breakpoints"
+    pageTitle="CSS Utilities/Mixins/Breakpoints"
+    color="yellow"
+    description="To create a responsive layout you can either structure your app with the Sass mixins."
+  />
+</GridCards>
+
+## Spacing
+
+<GridCards>
+  <GridCard
+    label="Margin"
+    pageTitle="CSS Utilities/Spacing/Margin"
+    color="yellow"
+    description="Determines the space around an element."
+  />
+  <GridCard
+    label="Padding"
+    pageTitle="CSS Utilities/Spacing/Padding"
+    color="yellow"
+    description="Determines the space between the content and its border."
+  />
+</GridCards>
+
+## Typography
+
+<GridCards>
+  <GridCard
+    label="Text Colors"
+    pageTitle="CSS Utilities/Typography/Text Colors"
+    color="yellow"
+    description="Diverse color palettes available for the text of an element."
+  />
+  <GridCard
+    label="Font Family"
+    pageTitle="CSS Utilities/Typography/Font Family"
+    color="yellow"
+    description="Specifies font family for headings and paragraphs."
+  />
+  <GridCard
+    label="Font Size"
+    pageTitle="CSS Utilities/Typography/Font Size"
+    color="yellow"
+    description="Specifies the font size of an element."
+  />
+  <GridCard
+    label="Text Align"
+    pageTitle="CSS Utilities/Typography/Text Align"
+    color="yellow"
+    description="Determines the alignment of text within an element."
+  />
+  <GridCard
+    label="Text Transform"
+    pageTitle="CSS Utilities/Typography/Text Transform"
+    color="yellow"
+    description="Determines the transformation applied to text within an element."
+  />
+  <GridCard
+    label="Font Weight"
+    pageTitle="CSS Utilities/Typography/Font Weight"
+    color="yellow"
+    description="Defines the font weight of an element."
+  />
+  <GridCard
+    label="White Space"
+    pageTitle="CSS Utilities/Typography/White Space"
+    color="yellow"
+    description="Determines if a word should wrap based on white space or not."
+  />
+</GridCards>
+
+## Installation
+
+Introducing CSS utility classes meticulously crafted around our [design tokens](?path=/docs/foundation-design-tokens--documentation),
+seamlessly integrated into the `@baloise/design-system-css` package. These classes are accessible in
+both **CSS** and **SCSS** formats, ensuring versatile usage.
+
+The `@baloise/design-system-css` is included in the component package, so if that is already installed skip the next step.
+
+```bash
+npm add @baloise/design-system-css
+```
+
+The CSS utility package is designed in a modular fashion, allowing for selective imports based on the specific needs of the application.
+
+```css
+// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-css/css/normalize';
+@import '@baloise/design-system-css/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-css/sass/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-css/css/core';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';
+```
+
+## Component styling
+
+Import `@baloise/design-system-css/sass/mixins` into your component's style imports to gain access to a comprehensive collection of design tokens and Sass mixins.
+
+<ScssSource code={`// SASS mixins and variables
+@import '@baloise/design-system-css/sass/mixins';
+
+.my-component {
+${' '}${' '}background: var(--bal-color-green);
+}
+
+@include desktop() {
+${' '}${' '}// add your custom styles here
+${' '}${' '}.my-component {
+${' '}${' '}${' '}${' '}background: var(--bal-color-red);
+${' '}${' '}}
+}`} />
+
+<Footer />

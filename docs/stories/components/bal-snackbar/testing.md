@@ -6,7 +6,15 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Snackbar', () => {
+  it('should ...', () => {
+    cy.balSnackbarFind().first().contains('Hi I am a default Snack!')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
@@ -14,9 +22,9 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command           | Description                    | Signature                                          |
-| ----------------- | ------------------------------ | -------------------------------------------------- |
-| `balSnackbarFind` | Returns the visible snackbars. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command           | Description                    | Signature                                 |
+| ----------------- | ------------------------------ | ----------------------------------------- |
+| `balSnackbarFind` | Returns the visible snackbars. | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors

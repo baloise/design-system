@@ -172,6 +172,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   }
 
   /**
+   * @internal
+   */
+  @Prop() demo = false
+
+  /**
    * Emitted when the accordion has opened or closed
    */
   @Event() balChange!: EventEmitter<BalEvents.BalPopupChangeDetail>
@@ -194,6 +199,10 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
     if (this.initialActive === true && this.presented !== true) {
+      this.present()
+    }
+
+    if (this.demo) {
       this.present()
     }
   }
