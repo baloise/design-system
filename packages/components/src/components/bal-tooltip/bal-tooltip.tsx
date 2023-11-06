@@ -16,7 +16,7 @@ import { BEM } from '../../utils/bem'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { showContainerElement, showArrowElement, hideContainerElement, hideArrowElement } from './bal-tooltip.util'
-import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
+import { computePosition, offset, arrow, flip, autoUpdate, shift } from '@floating-ui/dom'
 
 @Component({
   tag: 'bal-tooltip',
@@ -156,9 +156,20 @@ export class Tooltip implements ComponentInterface, Loggable {
       this.trigger.classList.add('bal-tooltip-trigger')
       this.presented = true
 
-      this.cleanup = autoUpdate(this.trigger, this.containerEl, () => {
-        this.update()
-      })
+      this.cleanup = autoUpdate(
+        this.trigger,
+        this.containerEl,
+        () => {
+          this.update()
+        },
+        {
+          ancestorScroll: true,
+          ancestorResize: true,
+          elementResize: false,
+          layoutShift: true,
+          animationFrame: true,
+        },
+      )
 
       this.balDidAnimate.emit()
 
@@ -198,10 +209,16 @@ export class Tooltip implements ComponentInterface, Loggable {
   async update(): Promise<boolean> {
     if (this.trigger && this.containerEl && this.arrowEl) {
       this.balWillAnimate.emit()
+
+      let isInFrame = false
+      if (balBrowser.hasWindow) {
+        isInFrame = !!window.frameElement
+      }
+
       computePosition(this.trigger, this.containerEl, {
         placement: this.placement,
         middleware: [
-          shift(),
+          isInFrame ? undefined : shift(),
           flip(),
           offset(8),
           arrow({
