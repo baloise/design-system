@@ -114,7 +114,7 @@ export const Basic = Story({
   },
 })
 
-export const Secondary = Story({
+export const Autocomplete = Story({
   ...withRender(
     () => `<form action="https://www.w3schools.com/action_page.php" target="_blank">
   <bal-card>

@@ -458,6 +458,7 @@ div.has-visible-overflow > .docs-story > div:first-child {
 
 div.has-visible-overflow > .docs-story > div:nth-child(2) {
   bottom: 10px;
+  z-index: 10 !important;
 }
 
 .support {
