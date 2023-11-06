@@ -33,7 +33,7 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
       .split('(\n      ')
       .join('(')
 
-    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `\`${signature}\``])
+    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `${signature}`])
   })
 
   content.push(...table.toMarkdown())

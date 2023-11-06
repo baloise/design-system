@@ -17,6 +17,16 @@ export const startObserving = (domNode, callback) => {
   return observer
 }
 
+export const useContentLoaded = callback => {
+  const doc = document
+
+  if (doc) {
+    doc.addEventListener('DOMContentLoaded', () => callback())
+  } else {
+    setTimeout(() => callback(), 32)
+  }
+}
+
 export const ListenerFactory = () => {
   const listeners = [] as any[]
 

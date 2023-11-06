@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as PaginationStories from './bal-pagination.stories'
@@ -9,7 +8,11 @@ import * as PaginationStories from './bal-pagination.stories'
 
 <Banner of={PaginationStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>
+  Pagination allows you to divide large amounts of content into smaller chunks across multiple pages. Generally,
+  pagination is used if there are more than 25 items displayed in one view. The default number displayed will vary
+  depending on the context.
+</Lead>
 
 <Canvas of={PaginationStories.Basic} sourceState="shown" />
 
@@ -18,9 +21,15 @@ import * as PaginationStories from './bal-pagination.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={PaginationStories.Secondary}></StoryHeading>
+<StoryHeading of={PaginationStories.SmallPagination}></StoryHeading>
 
-<Canvas of={PaginationStories.Secondary} sourceState="shown" />
+<Canvas of={PaginationStories.SmallPagination} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={PaginationStories.SmallPaginationWithDots}></StoryHeading>
+
+<Canvas of={PaginationStories.SmallPaginationWithDots} sourceState="closed" />
 
 {/* ------------------------------------------------------ */}
 

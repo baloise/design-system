@@ -6,7 +6,19 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Tabs', () => {
+  const tabs = byTestId('my-tabs') // [data-testid="my-tabs"]
+  const steps = byTestId('my-steps') // [data-testid="my-steps"]
+  it('should ...', () => {
+    cy.get(tabs).select('Tab B').should('have.value', 'Tab B')
+    cy.get(tabs).balTabsFindActionButton().contains('Action')
+    cy.get(steps).balTabsFindItems().first().balTabItemShouldHaveState('done')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
@@ -23,11 +35,9 @@ A list of the custom commands for this specific component.
 | `balTabItemShouldHaveState` | Assert that the tab item has the given state. | `(state: 'done' \| 'failed' \| 'active' \| 'disabled', options?: Partial<Loggable>): Chainable<JQuery>` |
 | `balTabItemShouldBeActive`  | Assert that the tab item is active or not.    | `(active?: boolean, options?: Partial<Loggable>): Chainable<JQuery>`                                    |
 
-
 ### Selectors
 
 | Selector         | Element         |
 | ---------------- | --------------- |
 | `tabs.item`      | Tab item.       |
 | `tabs.itemLabel` | Tab item label. |
-

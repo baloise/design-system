@@ -6,7 +6,17 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Steps', () => {
+  const steps = byTestId('my-steps') // [data-testid="my-steps"]
+  it('should ...', () => {
+    cy.get(steps).select('Step Label B').should('have.value', 'Step Label B')
+    cy.get(steps).balStepsFindItems().first().balStepItemShouldHaveState('done')
+  })
+})
+```
 
 <!-- END: human documentation -->
 

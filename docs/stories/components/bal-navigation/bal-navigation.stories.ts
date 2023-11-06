@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalNavigation & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Navigation',
+  title: 'Components/Deprecated/Navigation',
   args: {
     ...withDefaultContent(),
   },

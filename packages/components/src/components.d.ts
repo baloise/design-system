@@ -1327,7 +1327,6 @@ export namespace Components {
          */
         "closeLabel"?: string;
         "configChanged": (state: BalConfigState) => Promise<void>;
-        "demo": boolean;
         /**
           * Closes the hint box.
          */
@@ -6112,7 +6111,6 @@ declare namespace LocalJSX {
           * Text for the close button.
          */
         "closeLabel"?: string;
-        "demo"?: boolean;
         /**
           * Disables the close button for tablet and desktop
          */

@@ -1,20 +1,20 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
-type Args = JSX.BalPagination & { content: string }
+type Args = JSX.BalPagination
 
 const meta: Meta<Args> = {
-  title: 'Components/Pagination',
+  title: 'Components/Navigation/Pagination',
   args: {
-    ...withDefaultContent(),
+    pageRange: 3,
+    totalPages: 20,
+    value: 2,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-pagination' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-pagination ${props(args)}>${content}</bal-pagination>`),
+  ...withRender(({ ...args }) => `<bal-pagination ${props(args)}></bal-pagination>`),
 }
 
 export default meta
@@ -28,8 +28,16 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const Secondary = Story({
+export const SmallPagination = Story({
   args: {
-    // place props here
+    interface: 'small',
+    totalPages: 20,
+  },
+})
+
+export const SmallPaginationWithDots = Story({
+  args: {
+    interface: 'small',
+    totalPages: 3,
   },
 })

@@ -1,4 +1,3 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
 import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
 import * as StepsStories from './bal-steps.stories'
@@ -9,28 +8,37 @@ import * as StepsStories from './bal-steps.stories'
 
 <Banner of={StepsStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>Steps are used to structure the information in sub section on the same page.</Lead>
 
 <Canvas of={StepsStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={StepsStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={StepsStories.Secondary}></StoryHeading>
-
-<Canvas of={StepsStories.Secondary} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
 ## Component API
 
 import api from './api.md?raw'
+import apiStepItem from './bal-step-item/api.md?raw'
 
 <Markdown>{api}</Markdown>
+<Markdown>{apiStepItem}</Markdown>
 
 ## Integration
+
+The step option can be passed in with the property too. For that we provide a util function `newBalStepOption`.
+
+```ts
+import { newBalStepOption } form '@baloise/design-system-components'
+
+const options = [
+  newBalStepOption({ label: "My Label 1", value: "1" }),
+  newBalStepOption({ label: "My Label 2", value: "2" }),
+]
+
+// next pass the option array to the component ...
+
+```
 
 import integration from '../../snippets/integration.md?raw'
 

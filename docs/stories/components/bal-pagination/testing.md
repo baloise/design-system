@@ -6,7 +6,19 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Pagination', () => {
+  const pagination = byTestId('my-pagination') // [data-testid="my-pagination"]
+  it('should ...', () => {
+    cy.get(pagination).balPaginationFindPages().first().contains('1')
+    cy.get(pagination).balPaginationFindCurrentPage().contains('2')
+    cy.get(pagination).balPaginationFindNextButton().click()
+    cy.get(pagination).balPaginationFindCurrentPage().contains('3')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
