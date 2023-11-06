@@ -14,9 +14,9 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command            | Description                              | Signature                                          |
-| ------------------ | ---------------------------------------- | -------------------------------------------------- |
-| `balFieldFindHint` | Returns the hint component of the label. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command            | Description                              | Signature                                        |
+| ------------------ | ---------------------------------------- | ------------------------------------------------ |
+| `balFieldFindHint` | Returns the hint component of the label. | (options?: Partial<Loggable>): Chainable<JQuery> |
 
 
 ### Selectors

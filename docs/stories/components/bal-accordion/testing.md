@@ -14,10 +14,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command                | Description                         | Signature                                          |
-| ---------------------- | ----------------------------------- | -------------------------------------------------- |
-| `balAccordionIsOpen`   | Asserts if the accordion is open.   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balAccordionIsClosed` | Asserts if the accordion is closed. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command                | Description                         | Signature                                        |
+| ---------------------- | ----------------------------------- | ------------------------------------------------ |
+| `balAccordionIsOpen`   | Asserts if the accordion is open.   | (options?: Partial<Loggable>): Chainable<JQuery> |
+| `balAccordionIsClosed` | Asserts if the accordion is closed. | (options?: Partial<Loggable>): Chainable<JQuery> |
 
 
 ### Selectors

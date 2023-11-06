@@ -26,12 +26,12 @@ describe('Pagination', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                           | Description                                               | Signature                                          |
-| --------------------------------- | --------------------------------------------------------- | -------------------------------------------------- |
-| `balPaginationFindPages`          | Returns all the page buttons.                             | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command                           | Description                                               | Signature                                        |
+| --------------------------------- | --------------------------------------------------------- | ------------------------------------------------ |
+| `balPaginationFindPages`          | Returns all the page buttons.                             | (options?: Partial<Loggable>): Chainable<JQuery> |
+| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | (options?: Partial<Loggable>): Chainable<JQuery> |
+| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | (options?: Partial<Loggable>): Chainable<JQuery> |
+| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | (options?: Partial<Loggable>): Chainable<JQuery> |
 
 
 ### Selectors
