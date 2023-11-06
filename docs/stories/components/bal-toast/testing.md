@@ -6,7 +6,15 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Toast', () => {
+  it('should ...', () => {
+    cy.balToastFind().first().contains('Hi I am a default Toast! Hi I am a default Toast!')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
@@ -14,9 +22,9 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command        | Description                 | Signature                                          |
-| -------------- | --------------------------- | -------------------------------------------------- |
-| `balToastFind` | Returns the visible toasts. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command        | Description                 | Signature                                 |
+| -------------- | --------------------------- | ----------------------------------------- |
+| `balToastFind` | Returns the visible toasts. | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors

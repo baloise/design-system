@@ -6,7 +6,20 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```ts
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Modal', () => {
+  const modal = byTestId('my-modal') // [data-testid="my-modal"]
+  const openModalButton = byTestId('my-open-modal')
+  const closeModalButton = byTestId('my-close-modal')
+  it('should ...', () => {
+    cy.get(openModalButton).click()
+    cy.get(modal).balModalIsOpen()
+    cy.get(modal).find('bal-modal-header').contains('Modal Title')
+  })
+})
+```
 
 <!-- END: human documentation -->
 
@@ -14,12 +27,12 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command            | Description                                                                                         | Signature                                          |
-| ------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `balModalFindOpen` | Finds the open modal and returns it.                                                                | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balModalIsOpen`   | Assert if the modal is open.                                                                        | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-| `balModalClose`    | Closes the selected modal.                                                                          | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| Command            | Description                                                                                         | Signature                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `balModalFindOpen` | Finds the open modal and returns it.                                                                | (options?: Partial\<Loggable>): Chainable |
+| `balModalIsOpen`   | Assert if the modal is open.                                                                        | (options?: Partial\<Loggable>): Chainable |
+| `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | (options?: Partial\<Loggable>): Chainable |
+| `balModalClose`    | Closes the selected modal.                                                                          | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors

@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas, Markdown } from '@storybook/addon-docs'
-import { Banner, Lead, Code, Breakpoints, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, Breakpoints, Footer, ScssSource, LinkCards, LinkCard } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Mixins/Breakpoints"
@@ -10,24 +10,19 @@ import { Banner, Lead, Code, Breakpoints, Footer, LinkCards, LinkCard } from '..
   }}
 />
 
-<Banner label="Breakpoints" section="CSS Utilities" color="green" />
+<Banner label="Breakpoints" section="CSS Utilities" color="yellow" puzzle />
 
 <Lead>To create a responsive layout you can either structure your app with the Sass mixins.</Lead>
 
 Use the scss mixins in your application the following:
 
-<Code
-  language="css"
-  noPreview={true}
-  code={`
-@import '@baloise/design-system-css/sass/mixins';
+<ScssSource code={`@import '@baloise/design-system-css/sass/mixins';
 
 @include desktop() {
 // add your custom styles here
 // from the desktop breakpoint on
 }
-`}
-/>
+`} />
 
 The file `design-system-css/sass/mixins` provides all design tokens as CSS-Variable and SASS mixins.
 
@@ -43,19 +38,15 @@ The file `design-system-css/sass/mixins` provides all design tokens as CSS-Varia
 `}
 </Markdown>
 
-<Code
-  language="scss"
-  noPreview={true}
-  code={`
-.bal-element {
+<ScssSource code={`.bal-element {
   color: lime;
 }
 
 @include from(var(--bal-breakpoint-tablet)) {
-// add your custom styles here
-${' '}.bal-element {
-${' '}${' '}color: blue;
-${' '}}
+${' '}${' '}// add your custom styles here
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: blue;
+${' '}${' '}}
 }
 `}
 />
@@ -70,24 +61,21 @@ The named mixins have the breakpoint already declared on work with the standard.
 
 Always define mobile first and afterwards the style changes for the different breakpoints.
 
-<Code
-  language="scss"
-  noPreview={true}
-  code={`
+<ScssSource code={`
 .bal-element {
   color: lime;
 }
 
 @include tablet() {
-${' '}.bal-element {
-${' '}${' '}color: red;
-${' '}}
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: red;
+${' '}${' '}}
 }
 
 @include desktop() {
-${' '}.bal-element {
-${' '}${' '}color: blue;
-${' '}}
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: blue;
+${' '}${' '}}
 }
 `}
 />

@@ -13,10 +13,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@baloise/design-system-tokens": "14.1.0",
+    "@baloise/design-system-brand-icons": "14.1.0",
     "@baloise/design-system-components": "14.1.0",
     "@baloise/design-system-css": "14.1.0",
     "@baloise/design-system-icons": "14.1.0",
-    "@baloise/design-system-brand-icons": "14.1.0"
+    "@baloise/design-system-tokens": "14.1.0",
+    "lodash.kebabcase": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/lodash.kebabcase": "^4.1.8"
   }
 }

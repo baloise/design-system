@@ -3,7 +3,7 @@ import { LinkCard, LinkCards } from '../'
 
 export const WelcomeGuide = ({ children }) => {
   return (
-    <div className="sb-unstyled my-welcome-guide">
+    <div className="sb-unstyled my-welcome-guide my-large">
       <LinkCards>
         <LinkCard
           pageTitle={'Design System'}
@@ -11,9 +11,9 @@ export const WelcomeGuide = ({ children }) => {
           description={'Purpose, advantages and architecture'}
         />
         <LinkCard
-          pageTitle={'Foundation/Overview'}
-          label={'Foundation'}
-          description={'Design tokens, typography, colors and more'}
+          pageTitle={'Foundation/Iconography'}
+          label={'Iconography'}
+          description={'Introducing a collection of up to 100 vector graphics'}
         />
         <LinkCard
           pageTitle={'Development/Getting Started'}

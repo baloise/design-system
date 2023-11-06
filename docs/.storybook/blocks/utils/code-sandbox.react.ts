@@ -2,8 +2,9 @@ import { getParameters } from 'codesandbox/lib/api/define'
 import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface ReactProject {
-  component: string
-  fullscreen: boolean
+  template: string
+  fullscreen?: boolean
+  exampleFiles?: any
 }
 
 export const buildReactParameters = async (project: ReactProject): Promise<string> => {
@@ -27,25 +28,28 @@ export const buildReactParameters = async (project: ReactProject): Promise<strin
     'react/tsconfig.json',
   ])
 
-  const isTryOnlineProject = !project.component
+  const isTryOnlineProject = !project.template
 
   const reactApp = isTryOnlineProject ? src_app_project_tsx : project.fullscreen ? src_app_fullscreen_tsx : src_app_tsx
 
-  let exampleFiles = {}
+  let exampleFiles = project.exampleFiles
+
   if (!isTryOnlineProject) {
-    const example_component = project.component
-      ? parseMarkdown(project.component)
+    const example_component = project.template
+      ? parseMarkdown(project.template)
       : `import React from 'react';
 
 export default function Example() {
   return <h1 className="title is-size-xxx-large">Hello World</h1>;
 }
 `
-    exampleFiles = {
-      'src/Example.tsx': {
-        isBinary: false,
-        content: example_component,
-      },
+    if (exampleFiles === undefined) {
+      exampleFiles = {
+        'src/Example.tsx': {
+          isBinary: false,
+          content: example_component,
+        },
+      }
     }
   }
 
@@ -75,7 +79,7 @@ export default function Example() {
         isBinary: false,
         content: reactApp,
       },
-      ...exampleFiles,
+      ...(exampleFiles || {}),
     },
   })
 }

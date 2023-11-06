@@ -33,7 +33,11 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
       .split('(\n      ')
       .join('(')
 
-    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `\`${signature}\``])
+    table.addRow([
+      `\`${command.name}\``,
+      command.description.join(SPACE),
+      `${signature.replace('Chainable<JQuery>', 'Chainable').replace('<Loggable', `\\<Loggable`)}`,
+    ])
   })
 
   content.push(...table.toMarkdown())

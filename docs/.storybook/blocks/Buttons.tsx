@@ -76,3 +76,122 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
     </a>
   )
 }
+
+export const GridComponents = ({ children }) => {
+  return (
+    <bal-doc-app>
+      <div className="sb-unstyled columns is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem', userSelect: 'none' }}>
+        {children}
+      </div>
+    </bal-doc-app>
+  )
+}
+
+export const GridComponent = ({
+  children,
+  color,
+  center,
+  pageTitle,
+  label,
+  description,
+  scale = '1',
+  position = 'center',
+  fullwidth,
+  fullheight,
+  fullscreen,
+}) => {
+  const flexPosition =
+    position === 'top'
+      ? 'is-justify-content-center is-align-items-start'
+      : position === 'bottom-end'
+      ? 'is-justify-content-flex-end is-align-items-flex-end'
+      : 'is-justify-content-center is-align-items-center'
+
+  return (
+    <div className="column is-6">
+      <div className="is-fullheight">
+        <a
+          onClick={() => navigate({ title: pageTitle })}
+          className={`is-flex is-flex-direction-column fg-normal is-justify-content-center is-align-items-center has-background-white p-normal is-fullheight has-radius-normal has-shadow-normal doc-shadow-large-hover is-clickable`}
+        >
+          <div
+            className={`has-background-red-1 has-radius-normal is-fullwidth is-flex ${flexPosition} ${
+              fullscreen ? '' : 'p-small'
+            }`}
+            style={{ height: '200px', minHeight: '200px', maxWidth: '200%', overflow: 'hidden', position: 'relative' }}
+          >
+            <div
+              style={{ position: 'absolute', background: 'transparent', height: '200px', width: '100%', zIndex: 2000 }}
+            ></div>
+            <div
+              style={{
+                scale: scale || '1',
+                position: 'relative',
+                minWidth: fullwidth ? `calc(100% * ${1 / parseFloat(scale)})` : 'auto',
+                minHeight: fullheight ? `${200 / parseFloat(scale)}px` : 'auto',
+                display: center ? 'flex' : 'block',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {children}
+            </div>
+          </div>
+          <div className="is-flex-1 is-fullheight is-fullwidth">
+            <h2 className="title is-size-medium mb-xx-small" id={label}>
+              {label}
+            </h2>
+            <small className="is-fullheight">{description}</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+export const GridCards = ({ children }) => {
+  return (
+    <div className="sb-unstyled columns is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
+      {children}
+    </div>
+  )
+}
+
+export const GridCard = ({ children, color, pageTitle, svg, label, description }) => {
+  return (
+    <div className="column is-6">
+      <div className="is-fullheight">
+        <a
+          onClick={() => navigate({ title: pageTitle })}
+          className={`is-flex fg-normal is-justify-content-center is-align-items-center has-background-${color}-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable`}
+        >
+          {svg ? (
+            <div style={{ minWidth: '80px' }}>
+              <img src={svg} style={{ width: '80px' }} />
+            </div>
+          ) : (
+            ''
+          )}
+          {svg ? (
+            <div className="is-flex-1 is-fullheight">
+              <h2 className="title is-size-large mb-xx-small">{label}</h2>
+              <span className="is-fullheight">{description}</span>
+            </div>
+          ) : (
+            <div className="is-flex-1 is-fullheight">
+              <h2 className="title is-size-medium mb-xx-small">{label}</h2>
+              <small className="is-fullheight">{description}</small>
+            </div>
+          )}
+          {!svg ? (
+            <div>
+              <bal-icon name="nav-go-right"></bal-icon>
+            </div>
+          ) : (
+            ''
+          )}
+        </a>
+      </div>
+    </div>
+  )
+}

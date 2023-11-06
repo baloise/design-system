@@ -3,8 +3,8 @@ import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface HtmlProject {
   template: string
-  component: string
-  fullscreen: boolean
+  exampleFiles?: any
+  fullscreen?: boolean
 }
 
 export const buildHtmlParameters = async (project: HtmlProject): Promise<string> => {
@@ -29,8 +29,8 @@ ${content}
   let example_component = example_ts
   let example_template = index_html
 
-  if (project.component) {
-    example_component = parseMarkdown(project.component)
+  if (project.template) {
+    example_component = parseMarkdown(project.template)
   }
 
   if (project.template) {

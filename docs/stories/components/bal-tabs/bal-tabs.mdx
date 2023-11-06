@@ -9,7 +9,7 @@ import * as TabsStories from './bal-tabs.stories'
 
 <Banner of={TabsStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>Tabs are used to structure the information in sub section on the same page.</Lead>
 
 <Canvas of={TabsStories.Basic} sourceState="shown" />
 
@@ -18,17 +18,27 @@ import * as TabsStories from './bal-tabs.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TabsStories.Secondary}></StoryHeading>
+<StoryHeading of={TabsStories.Vertical}></StoryHeading>
 
-<Canvas of={TabsStories.Secondary} sourceState="shown" />
+<Canvas of={TabsStories.Vertical} sourceState="closed" />
 
 {/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Mobile}></StoryHeading>
+
+<Canvas of={TabsStories.Mobile} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
 
 ## Component API
 
 import api from './api.md?raw'
+import apiTabItem from './bal-tab-item/api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+<Markdown>{apiTabItem}</Markdown>
 
 ## Integration
 
