@@ -112,7 +112,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
 ## [10.24.3](https://github.com/baloise/design-system/compare/v10.24.2...v10.24.3) (2022-10-05)
 
 **Note:** Version bump only for package root
