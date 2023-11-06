@@ -8,7 +8,7 @@ describe('bal-nav - touch', () => {
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem()
+        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
       })
 
       it('closed menu on top', () => {

@@ -9,7 +9,7 @@ describe('bal-nav - desktop', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.visit('/components/bal-nav/test/bal-nav.visual.html').platform(platform).waitForDesignSystem().wait(400)
+        cy.platform(platform).visit('/components/bal-nav/test/bal-nav.visual.html').waitForDesignSystem().wait(400)
       })
 
       it('closed menu on top', () => {
