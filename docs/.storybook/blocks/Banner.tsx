@@ -9,18 +9,24 @@ import PuzzleRed from '../../stories/assets/images/home/puzzle-red-dark.svg'
 export const Banner = ({ of, children, color, label, section, puzzle }) => {
   let title = label
   let subtitle = section
+  let isDeprecated = false
 
   if (of) {
     const resolvedOf = useOf(of || 'story', ['meta'])
     const metaTitle = resolvedOf.preparedMeta.title
     const metaTitles = metaTitle.split('/')
+    isDeprecated = metaTitles.includes('Deprecated')
     title = label || metaTitles[metaTitles.length - 1]
-    subtitle = section || metaTitles[metaTitles.length - 2]
+    subtitle = section || metaTitles.slice(0, -1).join(' / ')
   }
 
   const definedColor = (subtitle || '').includes('Components') ? 'red' : color || 'primary'
-  const definedPuzzle  = (subtitle || '').includes('Components') ? true : puzzle
-  const background = definedColor === 'primary' ? 'has-background-primary' : `has-background-${definedColor}-2`
+  const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
+  const background = isDeprecated
+    ? 'has-background-grey'
+    : definedColor === 'primary'
+    ? 'has-background-primary'
+    : `has-background-${definedColor}-2`
   const text = `has-text-${definedColor}-inverted`
   let className = `sb-unstyled has-radius-bottom-large pt-large pb-medium px-medium ${background} ${text}`
 
@@ -46,8 +52,8 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
       <div className="is-flex fg-normal">
         <div className="is-flex-1">
           <span className="subtitle is-size-large mb-none">{subtitle}</span>
-          <h1 className={`title is-size-xxxx-large ${text}`} style={{ marginTop: '-0.5rem' }}>
-            {title}
+          <h1 className={`title is-size-xxxx-large ${text} is-flex is-align-items-center fg-small`} style={{ marginTop: '-0.5rem' }}>
+            {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''} {title}
           </h1>
           {children}
         </div>

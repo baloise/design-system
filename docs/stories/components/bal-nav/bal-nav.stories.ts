@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { withComponentControls, StoryFactory, getRootElement, useEffect } from '../../utils'
+import { withComponentControls, StoryFactory, getRootElement, useContentLoaded } from '../../utils'
 import { buttonLinkItems, logoLinkItem, optionLinkItems } from './bal-nav.data'
 
 type Args = JSX.BalNav & { content: string }
@@ -17,7 +17,7 @@ const meta: Meta<Args> = {
   render: (args, context) => {
     const section: HTMLElement = document.createElement('section')
 
-    useEffect(() => {
+    useContentLoaded(() => {
       const rootEl = getRootElement(context)
       const navEl = rootEl?.querySelector('bal-nav') as any
 
