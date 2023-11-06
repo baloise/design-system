@@ -3,11 +3,8 @@ import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface AngularProject {
   template: string
-  // component: string
-  // name2: string
-  // template2: string
-  // component2: string
-  // fullscreen: boolean
+  exampleFiles?: any
+  fullscreen?: boolean
 }
 
 export const PLACEHOLDER_IMPORT = '/** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */'
@@ -48,9 +45,9 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
   ])
 
   const isTryOnlineProject = !project.template
-
-  let exampleFiles = {}
+  let exampleFiles = project.exampleFiles
   let secondComponent = {}
+
   if (!isTryOnlineProject) {
     const example_component_html = project.template
       ? parseMarkdown(project.template)
@@ -58,33 +55,22 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
 
     const new_example_component_ts = src_app_example_component_ts
 
-    exampleFiles = {
-      'src/app/example.component.ts': {
-        isBinary: false,
-        content: new_example_component_ts,
-      },
-      'src/app/example.component.html': {
-        isBinary: false,
-        content: example_component_html,
-      },
-      'src/app/example.component.css': {
-        isBinary: false,
-        content: '',
-      },
+    if (exampleFiles === undefined) {
+      exampleFiles = {
+        'src/app/example.component.ts': {
+          isBinary: false,
+          content: new_example_component_ts,
+        },
+        'src/app/example.component.html': {
+          isBinary: false,
+          content: example_component_html,
+        },
+        'src/app/example.component.css': {
+          isBinary: false,
+          content: '',
+        },
+      }
     }
-
-    // if (project.name2 !== undefined) {
-    //   secondComponent = {
-    //     [`src/app/${project.name2}.component.ts`]: {
-    //       isBinary: false,
-    //       content: parseMarkdown(project.component2),
-    //     },
-    //     [`src/app/${project.name2}.component.html`]: {
-    //       isBinary: false,
-    //       content: parseMarkdown(project.template2),
-    //     },
-    //   }
-    // }
   }
 
   return getParameters({
@@ -105,6 +91,8 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
         isBinary: false,
         content: isTryOnlineProject
           ? src_app_app_component_project_html
+          : project.fullscreen
+          ? src_app_app_component_fullscreen_html
           : src_app_app_component_html,
       },
       'src/app/app.component.ts': {
@@ -135,7 +123,7 @@ export const buildAngularParameters = async (project: AngularProject): Promise<s
         isBinary: false,
         content: src_zone_flags_ts,
       },
-      ...exampleFiles,
+      ...(exampleFiles || {}),
       ...secondComponent,
     },
   })

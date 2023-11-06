@@ -14,10 +14,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command            | Description                       | Signature                                        |
-| ------------------ | --------------------------------- | ------------------------------------------------ |
-| `balPopupIsOpen`   | Asserts if the popover is open.   | (options?: Partial<Loggable>): Chainable<JQuery> |
-| `balPopupIsClosed` | Asserts if the popover is closed. | (options?: Partial<Loggable>): Chainable<JQuery> |
+| Command            | Description                       | Signature                                 |
+| ------------------ | --------------------------------- | ----------------------------------------- |
+| `balPopupIsOpen`   | Asserts if the popover is open.   | (options?: Partial\<Loggable>): Chainable |
+| `balPopupIsClosed` | Asserts if the popover is closed. | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors

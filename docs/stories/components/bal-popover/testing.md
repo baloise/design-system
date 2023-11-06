@@ -14,13 +14,13 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 A list of the custom commands for this specific component.
 
-| Command                     | Description                                               | Signature                                                                                                                    |
-| --------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `balPopoverToggle`          | Opens and closes the popover.                             | (options?: Partial<Loggable>): Chainable<JQuery>                                                                             |
-| `balPopoverIsOpen`          | Asserts if the popover is open.                           | (options?: Partial<Loggable>): Chainable<JQuery>                                                                             |
-| `balPopoverIsClosed`        | Asserts if the popover is closed.                         | (options?: Partial<Loggable>): Chainable<JQuery>                                                                             |
-| `balPopoverTriggerContains` | Asserts if the trigger button contains the given content. | (content: string \| number \| RegExp, options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable<JQuery> |
-| `balPopoverContentContains` | Asserts if the popover menu contains the given content.   | (content: string \| number \| RegExp, options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable<JQuery> |
+| Command                     | Description                                               | Signature                                                                                                             |
+| --------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `balPopoverToggle`          | Opens and closes the popover.                             | (options?: Partial\<Loggable>): Chainable                                                                             |
+| `balPopoverIsOpen`          | Asserts if the popover is open.                           | (options?: Partial\<Loggable>): Chainable                                                                             |
+| `balPopoverIsClosed`        | Asserts if the popover is closed.                         | (options?: Partial\<Loggable>): Chainable                                                                             |
+| `balPopoverTriggerContains` | Asserts if the trigger button contains the given content. | (content: string \| number \| RegExp, options?: Partial\<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable |
+| `balPopoverContentContains` | Asserts if the popover menu contains the given content.   | (content: string \| number \| RegExp, options?: Partial\<Loggable & Timeoutable & CaseMatchable & Shadow>): Chainable |
 
 
 ### Selectors

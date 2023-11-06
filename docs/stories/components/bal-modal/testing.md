@@ -27,12 +27,12 @@ describe('Modal', () => {
 
 A list of the custom commands for this specific component.
 
-| Command            | Description                                                                                         | Signature                                        |
-| ------------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `balModalFindOpen` | Finds the open modal and returns it.                                                                | (options?: Partial<Loggable>): Chainable<JQuery> |
-| `balModalIsOpen`   | Assert if the modal is open.                                                                        | (options?: Partial<Loggable>): Chainable<JQuery> |
-| `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | (options?: Partial<Loggable>): Chainable<JQuery> |
-| `balModalClose`    | Closes the selected modal.                                                                          | (options?: Partial<Loggable>): Chainable<JQuery> |
+| Command            | Description                                                                                         | Signature                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `balModalFindOpen` | Finds the open modal and returns it.                                                                | (options?: Partial\<Loggable>): Chainable |
+| `balModalIsOpen`   | Assert if the modal is open.                                                                        | (options?: Partial\<Loggable>): Chainable |
+| `balModalIsClosed` | Assert if the modal is closed. Only works for modals, which are not created with the modal service. | (options?: Partial\<Loggable>): Chainable |
+| `balModalClose`    | Closes the selected modal.                                                                          | (options?: Partial\<Loggable>): Chainable |
 
 
 ### Selectors
