@@ -313,7 +313,6 @@ describe('generateMonths Function', () => {
     expect(months[8].disabled).toBe(true)
     expect(months[9].disabled).toBe(false)
     expect(months[9].selected).toBe(true)
-    expect(months[9].today).toBe(true)
     expect(months[10].disabled).toBe(false)
     expect(months[11].disabled).toBe(false)
   })

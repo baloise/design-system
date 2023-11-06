@@ -1,4 +1,4 @@
-import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
+import { computePosition, offset, arrow, flip, shift, autoUpdate } from '@floating-ui/dom'
 import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
 import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
@@ -47,9 +47,20 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
           component.setMinWidth(this.triggerEl.clientWidth)
         }
 
-        this.cleanup = autoUpdate(this.triggerEl, component.containerEl, () => {
-          this.update(component)
-        })
+        this.cleanup = autoUpdate(
+          this.triggerEl,
+          component.containerEl,
+          () => {
+            this.update(component)
+          },
+          {
+            ancestorScroll: true,
+            ancestorResize: true,
+            elementResize: false,
+            layoutShift: true,
+            animationFrame: true,
+          },
+        )
 
         return true
       }
@@ -63,10 +74,15 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
       const referenceRect = this.triggerEl?.getBoundingClientRect()
       const triggerRect = component.trigger?.getBoundingClientRect()
 
+      let isInFrame = false
+      if (balBrowser.hasWindow) {
+        isInFrame = !!window.frameElement
+      }
+
       computePosition(this.triggerEl, component.containerEl, {
         placement: this.placement,
         middleware: [
-          shift(),
+          isInFrame ? undefined : shift(),
           flip(),
           offset(this.arrow ? 16 : this.offset),
           arrow({

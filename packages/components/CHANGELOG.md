@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 14.2.1
+
+### Patch Changes
+
+- [#1100](https://github.com/baloise/design-system/pull/1100) - Correct sliding width issue in card carousel for consistent display
+
+- [#1099](https://github.com/baloise/design-system/pull/1099) - Adjusted shifting of the tooltip and popup component. Moreover, adjust scroll position for touch navigation.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.2.1
+  - @baloise/design-system-fonts@14.2.1
+  - @baloise/design-system-icons@14.2.1
+  - @baloise/design-system-tokens@14.2.1
+
 ## 14.2.0
 
 ### Minor Changes
