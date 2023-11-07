@@ -27,9 +27,3 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
-
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
-})
