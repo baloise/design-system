@@ -101,7 +101,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package root
 
-
 ## [10.24.5](https://github.com/baloise/design-system/compare/v10.24.4...v10.24.5) (2022-10-05)
 
 **Note:** Version bump only for package root
@@ -110,7 +109,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [10.24.4](https://github.com/baloise/design-system/compare/v10.24.3...v10.24.4) (2022-10-05)
 
 **Note:** Version bump only for package root
-
 
 
 
@@ -727,7 +725,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav overlay:** updated stories ([e28348b](https://github.com/baloise/design-system/commit/e28348b491599df5004a32a244a89a5e6dadca7b))
 
 ## [10.19.0](https://github.com/baloise/design-system/compare/v10.18.0...v10.19.0) (2022-08-24)
-
 
 ### Features
 

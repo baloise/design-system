@@ -237,7 +237,7 @@ describe('generateMonths Function', () => {
     expect(months[0].disabled).toBe(false)
   })
   test('should generate the correct months in english with min', () => {
-    const months = generateMonths('it', 2023, '2023-03-12')
+    const months = generateMonths('it', 2023, '2023-03-12', '2023-03-12')
 
     expect(months.length).toBe(12)
 
@@ -245,23 +245,28 @@ describe('generateMonths Function', () => {
     expect(months[0].label).toBe('gennaio')
     expect(months[0].disabled).toBe(true)
     expect(months[1].disabled).toBe(true)
+    expect(months[2].selected).toBe(true)
     expect(months[2].disabled).toBe(false)
     expect(months[3].disabled).toBe(false)
   })
   test('should generate the correct months in english with max', () => {
-    const months = generateMonths('it', 2023, undefined, '2023-03-12')
+    const months = generateMonths('it', 2023, undefined, undefined, '2023-03-12')
 
     expect(months.length).toBe(12)
 
     expect(months[0].value).toBe(1)
     expect(months[0].label).toBe('gennaio')
     expect(months[0].disabled).toBe(false)
+    expect(months[0].selected).toBe(false)
     expect(months[1].disabled).toBe(false)
+    expect(months[1].selected).toBe(false)
     expect(months[2].disabled).toBe(false)
+    expect(months[2].selected).toBe(false)
+    expect(months[3].selected).toBe(false)
     expect(months[3].disabled).toBe(true)
   })
-  test('should generate the correct months in english with min & max', () => {
-    const months = generateMonths('it', 2023, '2023-03-12', '2023-05-12')
+  test('should generate the correct months in italian with min & max', () => {
+    const months = generateMonths('it', 2023, undefined, '2023-03-12', '2023-05-12')
 
     expect(months.length).toBe(12)
 
@@ -274,30 +279,93 @@ describe('generateMonths Function', () => {
     expect(months[4].disabled).toBe(false)
     expect(months[5].disabled).toBe(true)
   })
+  test('should generate the correct months before min date', () => {
+    const months = generateMonths('en', 2023, undefined, '2023-08-08')
+
+    expect(months[0].disabled).toBe(true)
+    expect(months[6].disabled).toBe(true)
+    expect(months[7].value).toBe(8)
+    expect(months[7].disabled).toBe(false)
+    expect(months[8].disabled).toBe(false)
+    expect(months[10].disabled).toBe(false)
+  })
+  test('should generate the correct months before max date', () => {
+    const months = generateMonths('en', 2023, undefined, undefined, '2023-08-08')
+
+    expect(months[0].disabled).toBe(false)
+    expect(months[6].disabled).toBe(false)
+    expect(months[7].value).toBe(8)
+    expect(months[7].disabled).toBe(false)
+    expect(months[8].disabled).toBe(true)
+    expect(months[10].disabled).toBe(true)
+  })
   test('should generate the correct months in english with min & max with a different year', () => {
-    const months = generateMonths('it', 2022, '2023-03-12', '2023-05-12')
+    const months = generateMonths('en', 2023, '2023-10-31', '2023-10-31', '2024-02-29')
 
-    expect(months.length).toBe(12)
-
-    expect(months[0].value).toBe(1)
-    expect(months[0].label).toBe('gennaio')
     expect(months[0].disabled).toBe(true)
     expect(months[1].disabled).toBe(true)
     expect(months[2].disabled).toBe(true)
     expect(months[3].disabled).toBe(true)
     expect(months[4].disabled).toBe(true)
     expect(months[5].disabled).toBe(true)
+    expect(months[6].disabled).toBe(true)
+    expect(months[7].disabled).toBe(true)
+    expect(months[8].disabled).toBe(true)
+    expect(months[9].disabled).toBe(false)
+    expect(months[9].selected).toBe(true)
+    expect(months[10].disabled).toBe(false)
+    expect(months[11].disabled).toBe(false)
+  })
+  test('should generate the correct months in english with min & max with a different year', () => {
+    const months = generateMonths('en', 2024, '2023-10-31', '2023-10-31', '2024-02-29')
+
+    expect(months.length).toBe(12)
+    expect(months[0].disabled).toBe(false)
+    expect(months[1].disabled).toBe(false)
+    expect(months[2].disabled).toBe(true)
+    expect(months[3].disabled).toBe(true)
+    expect(months[4].disabled).toBe(true)
+    expect(months[5].disabled).toBe(true)
+    expect(months[6].disabled).toBe(true)
+    expect(months[7].disabled).toBe(true)
+    expect(months[8].disabled).toBe(true)
+    expect(months[9].disabled).toBe(true)
+    expect(months[9].selected).toBe(false)
+    expect(months[10].disabled).toBe(true)
+    expect(months[11].disabled).toBe(true)
   })
 })
 
 describe('generateYears Function', () => {
-  test('should generate the correct months in german short and long', () => {
-    const years = generateYears(2023, 2023)
+  test('should generate the years of 2023', () => {
+    const years = generateYears(2023, 2023, 2023)
 
     expect(years.length).toBe(1)
 
     expect(years[0].value).toBe(2023)
     expect(years[0].label).toBe('2023')
+    expect(years[0].selected).toBe(true)
     expect(years[0].disabled).toBe(false)
+  })
+
+  test('should generate the years 2023, 2022, 2024', () => {
+    const years = generateYears(2023, 2022, 2024)
+
+    expect(years.length).toBe(3)
+
+    expect(years[0].value).toBe(2022)
+    expect(years[0].label).toBe('2022')
+    expect(years[0].selected).toBe(false)
+    expect(years[0].disabled).toBe(false)
+
+    expect(years[1].value).toBe(2023)
+    expect(years[1].label).toBe('2023')
+    expect(years[1].selected).toBe(true)
+    expect(years[1].disabled).toBe(false)
+
+    expect(years[2].value).toBe(2024)
+    expect(years[2].label).toBe('2024')
+    expect(years[2].selected).toBe(false)
+    expect(years[2].disabled).toBe(false)
   })
 })

@@ -1,5 +1,49 @@
 # @baloise/design-system-components
 
+## 14.2.1
+
+### Patch Changes
+
+- [#1100](https://github.com/baloise/design-system/pull/1100) - Correct sliding width issue in card carousel for consistent display
+
+- [#1099](https://github.com/baloise/design-system/pull/1099) - Adjusted shifting of the tooltip and popup component. Moreover, adjust scroll position for touch navigation.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.2.1
+  - @baloise/design-system-fonts@14.2.1
+  - @baloise/design-system-icons@14.2.1
+  - @baloise/design-system-tokens@14.2.1
+
+## 14.2.0
+
+### Minor Changes
+
+- [#1094](https://github.com/baloise/design-system/pull/1094) - Meta links can also be created by simply passing the `href` and `target` attributes along with the `buttons` component property.
+
+  ```ts
+  [
+    {
+      icon: 'web',
+      touchPlacement: 'bottom',
+      ariaLabel: 'Baloise',
+      htmlTitle: 'Baloise',
+      href: 'http://www.baloise.ch',
+      target: '_blank'
+    },
+    ...
+  ]
+  ```
+
+### Patch Changes
+
+- [#1095](https://github.com/baloise/design-system/pull/1095) - The month list in the `date picker` now accurately displays the current month, ensuring precise date selection, and effectively manages disabled states within specified date ranges.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.2.0
+  - @baloise/design-system-fonts@14.2.0
+  - @baloise/design-system-icons@14.2.0
+  - @baloise/design-system-tokens@14.2.0
+
 ## 14.1.0
 
 ### Minor Changes

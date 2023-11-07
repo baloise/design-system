@@ -330,7 +330,6 @@ export class Tabs
    */
   @Method()
   async closeAccordion() {
-    console.log('in collapseAccordionGlobal')
     if (this.isAccordionOpen) {
       this.collapseAccordion()
     }

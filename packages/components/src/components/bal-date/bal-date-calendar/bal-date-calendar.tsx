@@ -120,8 +120,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Watch('min')
   @Watch('max')
   rangePropChanged() {
-    this.months = generateMonths(this.language, this.year, this.min, this.max)
-    this.years = generateYears(this.minYear, this.maxYear)
+    this.months = generateMonths(this.language, this.year, this.selectedDate, this.min, this.max)
+    this.years = generateYears(this.year, this.minYear, this.maxYear)
   }
 
   /**
@@ -137,7 +137,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Watch('minYearProp')
   @Watch('maxYearProp')
   yearRangePropChanged() {
-    this.years = generateYears(this.minYear, this.maxYear)
+    this.years = generateYears(this.year, this.minYear, this.maxYear)
   }
 
   /**
@@ -165,8 +165,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   @Method()
   @ListenToConfig()
   async configChanged(state: BalConfigState): Promise<void> {
-    this.years = generateYears(this.minYear, this.maxYear)
-    this.months = generateMonths(state.language, this.year, this.min, this.max)
+    this.years = generateYears(this.year, this.minYear, this.maxYear)
+    this.months = generateMonths(state.language, this.year, this.selectedDate, this.min, this.max)
     this.weekdays = generateWeekDays(state.language)
     this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: this.language })
     this.language = state.language
@@ -284,6 +284,8 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
   }
 
   private onClickSelectMonthAndYear = async () => {
+    this.months = generateMonths(this.language, this.year, this.selectedDate, this.min, this.max)
+
     if (this.isCalendarVisible === true) {
       this.isCalendarVisible = false
       this.isYearListVisible = true
@@ -311,6 +313,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.isYearListVisible = false
     this.isMonthListVisible = true
     this.generateGridByMonthAndYear(this.month, newYear)
+    this.months = generateMonths(this.language, newYear, this.selectedDate, this.min, this.max)
   }
 
   private onClickMonth = (newMonth: number): void => {
@@ -326,9 +329,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
    */
 
   render() {
-    const today = new Date()
-    const todayYear = today.getFullYear()
-    const todayMonth = today.getMonth() + 1
     const girdHeight = this.gridEl?.clientHeight || 0
 
     const block = BEM.block('date-calendar')
@@ -370,8 +370,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             name="year"
             isVisible={this.isYearListVisible}
             girdHeight={girdHeight}
-            todayValue={todayYear}
-            selectedValue={this.year}
             list={this.years}
             ref={el => (this.yearListEl = el)}
             onSelect={item => this.onClickYear(item.value)}
@@ -380,8 +378,6 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
             name="month"
             isVisible={this.isMonthListVisible}
             girdHeight={girdHeight}
-            todayValue={todayMonth}
-            selectedValue={this.month}
             list={this.months}
             onSelect={item => this.onClickMonth(item.value)}
           ></CalendarList>

@@ -325,7 +325,12 @@ export class NavMetaBar
   }
 
   private onPopupOpen = (triggers: HTMLBalButtonElement[]) => {
-    this.bodyScrollHandler.disable()
+    if (this.isTouch) {
+      if (balBrowser.hasWindow && window.scrollY > 0) {
+        window.scrollTo(0, 0)
+      }
+    }
+
     triggers.forEach(trigger => {
       if (trigger.classList.contains('bal-nav__popup--desktop')) {
         trigger.inverted = false
@@ -335,6 +340,8 @@ export class NavMetaBar
         trigger.color = 'primary'
       }
     })
+
+    this.bodyScrollHandler.disable()
   }
 
   private onPopupClose = (triggers: HTMLBalButtonElement[]) => {
