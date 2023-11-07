@@ -19,10 +19,6 @@ export const config: Config = {
       type: 'docs-json',
       file: './.tmp/components.json',
     },
-    {
-      type: 'docs-json',
-      file: './public/assets/data/components.json',
-    },
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),
@@ -51,7 +47,6 @@ export const config: Config = {
         },
         { src: '../../css/css/baloise-design-system.css', dest: 'assets/baloise-design-system.css', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
-        // { src: '../public/assets/images', dest: 'assets/images', warn: true },
       ],
     },
   ],

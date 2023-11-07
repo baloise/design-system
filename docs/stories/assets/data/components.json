@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-07T08:44:15",
+  "timestamp": "2023-11-07T10:04:09",
   "compiler": {
     "name": "@stencil/core",
     "version": "3.2.2",
@@ -1350,7 +1350,6 @@
         "bal-carousel",
         "bal-data-value",
         "bal-datepicker",
-        "bal-doc-code-sandbox",
         "bal-hint",
         "bal-input-stepper",
         "bal-nav",
@@ -1385,9 +1384,6 @@
           "bal-button"
         ],
         "bal-datepicker": [
-          "bal-button"
-        ],
-        "bal-doc-code-sandbox": [
           "bal-button"
         ],
         "bal-hint": [
@@ -1811,16 +1807,12 @@
       "parts": [],
       "dependents": [
         "bal-carousel",
-        "bal-doc-download",
         "bal-file-upload",
         "bal-navigation-menu-list"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-carousel": [
-          "bal-card"
-        ],
-        "bal-doc-download": [
           "bal-card"
         ],
         "bal-file-upload": [
@@ -2069,15 +2061,11 @@
       "parts": [],
       "dependents": [
         "bal-carousel",
-        "bal-doc-download",
         "bal-navigation-menu-list"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-carousel": [
-          "bal-card-content"
-        ],
-        "bal-doc-download": [
           "bal-card-content"
         ],
         "bal-navigation-menu-list": [
@@ -5847,1475 +5835,11 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "bal-doc-banner",
-        "bal-doc-code-sandbox",
-        "bal-doc-lead",
-        "bal-doc-tokens-border",
-        "bal-doc-tokens-border-colors",
-        "bal-doc-tokens-breakpoints",
-        "bal-doc-tokens-colors",
-        "bal-doc-tokens-containers",
-        "bal-doc-tokens-font",
-        "bal-doc-tokens-font-colors",
-        "bal-doc-tokens-font-sizes",
-        "bal-doc-tokens-font-weight",
-        "bal-doc-tokens-radius",
-        "bal-doc-tokens-shadow",
-        "bal-doc-tokens-spacing",
-        "bal-doc-tokens-spacing-sizes",
-        "bal-doc-tokens-text-shadow",
-        "bal-doc-tokens-z-index"
-      ],
+      "dependents": [],
       "dependencies": [
         "bal-app"
       ],
       "dependencyGraph": {
-        "bal-doc-app": [
-          "bal-app"
-        ],
-        "bal-doc-banner": [
-          "bal-doc-app"
-        ],
-        "bal-doc-code-sandbox": [
-          "bal-doc-app"
-        ],
-        "bal-doc-lead": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-border": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-border-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-breakpoints": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-containers": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-font": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-font-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-font-sizes": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-font-weight": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-radius": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-shadow": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-spacing": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-spacing-sizes": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-text-shadow": [
-          "bal-doc-app"
-        ],
-        "bal-doc-tokens-z-index": [
-          "bal-doc-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-banner/bal-doc-banner.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-banner",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "'primary'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "shadowDom",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "shadow-dom",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "subtitle",
-          "type": "string",
-          "mutable": false,
-          "attr": "subtitle",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "'Component'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app",
-        "bal-heading",
-        "bal-tag"
-      ],
-      "dependencyGraph": {
-        "bal-doc-banner": [
-          "bal-doc-app",
-          "bal-heading",
-          "bal-tag"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ],
-        "bal-tag": [
-          "bal-close"
-        ],
-        "bal-close": [
-          "bal-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-code-sandbox/bal-doc-code-sandbox.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-code-sandbox",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "component",
-          "type": "string",
-          "mutable": false,
-          "attr": "component",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "component2",
-          "type": "string",
-          "mutable": false,
-          "attr": "component-2",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "framework",
-          "type": "\"angular\" | \"html\" | \"react\" | \"vue\"",
-          "mutable": false,
-          "attr": "framework",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "angular",
-              "type": "string"
-            },
-            {
-              "value": "html",
-              "type": "string"
-            },
-            {
-              "value": "react",
-              "type": "string"
-            },
-            {
-              "value": "vue",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "fullscreen",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "fullscreen",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "logo",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "logo",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "modules",
-          "type": "string",
-          "mutable": false,
-          "attr": "modules",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "name2",
-          "type": "string",
-          "mutable": false,
-          "attr": "name-2",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "primary",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "primary",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "template",
-          "type": "string",
-          "mutable": false,
-          "attr": "template",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "template2",
-          "type": "string",
-          "mutable": false,
-          "attr": "template-2",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "visible",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "visible",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app",
-        "bal-button"
-      ],
-      "dependencyGraph": {
-        "bal-doc-code-sandbox": [
-          "bal-doc-app",
-          "bal-button"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ],
-        "bal-button": [
-          "bal-spinner",
-          "bal-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-color/bal-doc-color.tsx",
-      "encapsulation": "scoped",
-      "tag": "bal-doc-color",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "background",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "background",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "mutable": false,
-          "attr": "description",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "inverted",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "inverted",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "mutable": false,
-          "attr": "subject",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [
-        "bal-doc-shades",
-        "bal-doc-support-color"
-      ],
-      "dependencies": [
-        "bal-text"
-      ],
-      "dependencyGraph": {
-        "bal-doc-color": [
-          "bal-text"
-        ],
-        "bal-doc-shades": [
-          "bal-doc-color"
-        ],
-        "bal-doc-support-color": [
-          "bal-doc-color"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-download/bal-doc-download.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-download",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "iconLeft",
-          "type": "string",
-          "mutable": false,
-          "attr": "icon-left",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "'document'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "iconRight",
-          "type": "string",
-          "mutable": false,
-          "attr": "icon-right",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "'download'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "link",
-          "type": "string",
-          "mutable": false,
-          "attr": "link",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "mutable": false,
-          "attr": "subject",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "subtitle",
-          "type": "string",
-          "mutable": false,
-          "attr": "subtitle",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-card",
-        "bal-card-content",
-        "bal-list",
-        "bal-list-item",
-        "bal-list-item-icon",
-        "bal-icon",
-        "bal-list-item-content",
-        "bal-list-item-title",
-        "bal-list-item-subtitle"
-      ],
-      "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-card",
-          "bal-card-content",
-          "bal-list",
-          "bal-list-item",
-          "bal-list-item-icon",
-          "bal-icon",
-          "bal-list-item-content",
-          "bal-list-item-title",
-          "bal-list-item-subtitle"
-        ],
-        "bal-list-item-title": [
-          "bal-heading"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-github/bal-doc-github.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-github",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "link",
-          "type": "string",
-          "mutable": false,
-          "attr": "link",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-icons/bal-doc-icons.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-icons",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "icons",
-          "type": "string",
-          "mutable": false,
-          "attr": "icons",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-icon"
-      ],
-      "dependencyGraph": {
-        "bal-doc-icons": [
-          "bal-icon"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-image/bal-doc-image.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-image",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "src",
-          "type": "string",
-          "mutable": false,
-          "attr": "src",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "mutable": false,
-          "attr": "text",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-lead/bal-doc-lead.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-lead",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-lead": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-link-list/bal-doc-link-list.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-link-list",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "oneColumn",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "one-column",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-link-list-item/bal-doc-link-list-item.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-link-list-item",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "image",
-          "type": "string",
-          "mutable": false,
-          "attr": "image",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "mutable": false,
-          "attr": "subject",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "template",
-          "type": "\"\" | \"angular\" | \"html5\" | \"react\" | \"vue\"",
-          "mutable": false,
-          "attr": "template",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "\"\""
-            },
-            {
-              "value": "angular",
-              "type": "string"
-            },
-            {
-              "value": "html5",
-              "type": "string"
-            },
-            {
-              "value": "react",
-              "type": "string"
-            },
-            {
-              "value": "vue",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-preview/bal-doc-preview.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-preview",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-shades/bal-doc-shades.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-shades",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-color"
-      ],
-      "dependencyGraph": {
-        "bal-doc-shades": [
-          "bal-doc-color"
-        ],
-        "bal-doc-color": [
-          "bal-text"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-support-color/bal-doc-support-color.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-support-color",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-color"
-      ],
-      "dependencyGraph": {
-        "bal-doc-support-color": [
-          "bal-doc-color"
-        ],
-        "bal-doc-color": [
-          "bal-text"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-border.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-border",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-border": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-border-colors.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-border-colors",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "overview",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "overview",
-          "reflectToAttr": false,
-          "docs": "",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-border-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-breakpoints.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-breakpoints",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-breakpoints": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-colors.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-colors",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-containers.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-containers",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-containers": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-font.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-font",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-font": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-font-colors.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-font-colors",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-font-colors": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-font-sizes.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-font-sizes",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-font-sizes": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-font-weight.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-font-weight",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-font-weight": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-border-radius.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-radius",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-radius": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-shadow.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-shadow",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-shadow": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-spacing.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-spacing",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-spacing": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-spacing-sizes.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-spacing-sizes",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-spacing-sizes": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-text-shadow.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-text-shadow",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-text-shadow": [
-          "bal-doc-app"
-        ],
-        "bal-doc-app": [
-          "bal-app"
-        ]
-      }
-    },
-    {
-      "filePath": "./src/components/docs/bal-doc-tokens/bal-doc-tokens-z-index.tsx",
-      "encapsulation": "none",
-      "tag": "bal-doc-tokens-z-index",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [],
-      "methods": [],
-      "events": [],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "bal-doc-app"
-      ],
-      "dependencyGraph": {
-        "bal-doc-tokens-z-index": [
-          "bal-doc-app"
-        ],
         "bal-doc-app": [
           "bal-app"
         ]
@@ -9031,7 +7555,6 @@
       "parts": [],
       "dependents": [
         "bal-card-title",
-        "bal-doc-banner",
         "bal-list-item-title",
         "bal-modal-header",
         "bal-navigation-menu-list",
@@ -9042,9 +7565,6 @@
       "dependencies": [],
       "dependencyGraph": {
         "bal-card-title": [
-          "bal-heading"
-        ],
-        "bal-doc-banner": [
           "bal-heading"
         ],
         "bal-list-item-title": [
@@ -9454,8 +7974,6 @@
         "bal-date",
         "bal-date-calendar",
         "bal-datepicker",
-        "bal-doc-download",
-        "bal-doc-icons",
         "bal-field-control",
         "bal-file-upload",
         "bal-footer",
@@ -9491,12 +8009,6 @@
           "bal-icon"
         ],
         "bal-datepicker": [
-          "bal-icon"
-        ],
-        "bal-doc-download": [
-          "bal-icon"
-        ],
-        "bal-doc-icons": [
           "bal-icon"
         ],
         "bal-field-control": [
@@ -11968,16 +10480,12 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload",
         "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-list"
-        ],
         "bal-file-upload": [
           "bal-list"
         ],
@@ -12227,16 +10735,12 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload",
         "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-list-item"
-        ],
         "bal-file-upload": [
           "bal-list-item"
         ],
@@ -12468,16 +10972,12 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload",
         "bal-nav",
         "bal-navigation"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-list-item-content"
-        ],
         "bal-file-upload": [
           "bal-list-item-content"
         ],
@@ -12522,15 +11022,11 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload",
         "bal-list-item-accordion-head"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-list-item-icon"
-        ],
         "bal-file-upload": [
           "bal-list-item-icon"
         ],
@@ -12554,14 +11050,10 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "bal-doc-download": [
-          "bal-list-item-subtitle"
-        ],
         "bal-file-upload": [
           "bal-list-item-subtitle"
         ]
@@ -12741,7 +11233,6 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-download",
         "bal-file-upload",
         "bal-nav",
         "bal-navigation"
@@ -12752,9 +11243,6 @@
       "dependencyGraph": {
         "bal-list-item-title": [
           "bal-heading"
-        ],
-        "bal-doc-download": [
-          "bal-list-item-title"
         ],
         "bal-file-upload": [
           "bal-list-item-title"
@@ -22288,7 +20776,6 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "bal-doc-banner",
         "bal-select"
       ],
       "dependencies": [
@@ -22300,9 +20787,6 @@
         ],
         "bal-close": [
           "bal-icon"
-        ],
-        "bal-doc-banner": [
-          "bal-tag"
         ],
         "bal-select": [
           "bal-tag"
@@ -22617,16 +21101,12 @@
       "parts": [],
       "dependents": [
         "bal-card-subtitle",
-        "bal-doc-color",
         "bal-input-stepper",
         "bal-pagination"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "bal-card-subtitle": [
-          "bal-text"
-        ],
-        "bal-doc-color": [
           "bal-text"
         ],
         "bal-input-stepper": [
