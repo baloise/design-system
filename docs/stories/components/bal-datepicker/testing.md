@@ -6,7 +6,26 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- START: human documentation -->
 
+```typescript
+import { byTestId } from '@baloise/design-system-testing'
 
+describe('Datepicker', () => {
+  const datepicker = byTestId('my-datepicker') // [data-testid="my-datepicker"]
+
+  it('should open and close the datepicker', () => {
+    cy.get(datepicker).balDatepickerToggle().balDatepickerIsOpen().balDatepickerToggle().balDatepickerIsClosed()
+  })
+
+  it('should pick the date in datepicker', () => {
+    cy.get(datepicker).balDatepickerToggle().balDatepickerPick(now())
+  })
+
+  it('should type and assert the date in the datepicker', () => {
+    cy.get(datepicker).type('20.02.2021').should('have.value', '20.02.2021')
+    cy.get(datepicker).clear().type('03.03.2021').should('not.have.value', '20.02.2021')
+  })
+})
+```
 
 <!-- END: human documentation -->
 

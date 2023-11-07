@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, WarningQuote, Footer } from '../../../.storybook/blocks'
 import * as PopoverStories from './bal-popover.stories'
 
 <Meta of={PopoverStories} />
@@ -9,26 +9,23 @@ import * as PopoverStories from './bal-popover.stories'
 
 <Banner of={PopoverStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Popover** shows and hides content close to the trigger element.</Lead>
 
-<Canvas of={PopoverStories.Basic} sourceState="shown" />
-
-<PlaygroundBar of={PopoverStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={PopoverStories.Secondary}></StoryHeading>
-
-<Canvas of={PopoverStories.Secondary} sourceState="shown" />
-
-{/* ------------------------------------------------------ */}
+<WarningQuote>
+  **Deprecation Warning!** <br />
+  Please use the new components [Popup](?path=/docs/components-data-display-popup--documentation) and [Tooltip](?path=/docs/components-data-display-tooltip--documentation), because this component is marked
+  as deprecated and will be removed with the next major releases.
+</WarningQuote>
 
 ## Component API
 
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import balPopoverContentApi from './bal-popover-content/api.md?raw'
+
+<Markdown>{balPopoverContentApi}</Markdown>
 
 ## Integration
 
@@ -43,3 +40,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
