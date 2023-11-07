@@ -1,0 +1,163 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-divder.vars'
+
+.bal-divider
+  margin: 0
+  display: block
+  border-radius: var(--bal-divider-radius)
+  //
+  // color
+  &--color-primary
+    background: var(--bal-divider-background-primary)
+  &--color-primary-light
+    background: var(--bal-divider-background-primary-light)
+  &--color-primary-dark
+    background: var(--bal-divider-background-primary-dark)
+  &--color-grey-light
+    background: var(--bal-divider-background-grey-light)
+  &--color-grey
+    background: var(--bal-divider-background-grey)
+  &--color-grey-dark
+    background: var(--bal-divider-background-grey-dark)
+  &--color-warning
+    background: var(--bal-divider-background-warning)
+  &--color-success
+    background: var(--bal-divider-background-success)
+  &--color-danger
+    background: var(--bal-divider-background-danger)
+  &--color-danger-dark
+    background: var(--bal-divider-background-danger-dark)
+  &--color-danger-darker
+    background: var(--bal-divider-background-danger-darker)
+  &--color-white
+    background: var(--bal-divider-background-white)
+  &--color-light-blue
+    background: var(--bal-divider-background-light-blue)
+  //
+  // direction
+  &--layout-horizontal
+    flex: 1 0 100%
+    width: 100%
+    min-height: var(--bal-divider-border-width)
+    height: var(--bal-divider-border-width)
+  &--layout-vertical
+    height: auto
+    flex-shrink: 0
+    align-self: stretch
+    width: var(--bal-divider-border-width)
+  //
+  // horizontal spaces
+  &--space-none
+    margin: 0
+  &--space-xx-small
+    margin: var(--bal-space-xx-small) 0
+    +tablet
+      margin: var(--bal-space-tablet-xx-small) 0
+    +desktop
+      margin: var(--bal-space-desktop-xx-small) 0
+  &--space-x-small
+    margin: var(--bal-space-x-small) 0
+    +tablet
+      margin: var(--bal-space-tablet-x-small) 0
+    +desktop
+      margin: var(--bal-space-desktop-x-small) 0
+  &--space-small
+    margin: var(--bal-space-small) 0
+    +tablet
+      margin: var(--bal-space-tablet-small) 0
+    +desktop
+      margin: var(--bal-space-desktop-small) 0
+  &--space-normal
+    margin: var(--bal-space-normal) 0
+    +tablet
+      margin: var(--bal-space-tablet-normal) 0
+    +desktop
+      margin: var(--bal-space-desktop-normal) 0
+  &--space-medium
+    margin: var(--bal-space-medium) 0
+    +tablet
+      margin: var(--bal-space-tablet-medium) 0
+    +desktop
+      margin: var(--bal-space-desktop-medium) 0
+  &--space-large
+    margin: var(--bal-space-large) 0
+    +tablet
+      margin: var(--bal-space-tablet-large) 0
+    +desktop
+      margin: var(--bal-space-desktop-large) 0
+  &--space-x-large
+    margin: var(--bal-space-x-large) 0
+    +tablet
+      margin: var(--bal-space-tablet-x-large) 0
+    +desktop
+      margin: var(--bal-space-desktop-x-large) 0
+  &--space-xx-large
+    margin: var(--bal-space-xx-large) 0
+    +tablet
+      margin: var(--bal-space-tablet-xx-large) 0
+    +desktop
+      margin: var(--bal-space-desktop-xx-large) 0
+  &--space-xxx-large
+    margin: var(--bal-space-xxx-large) 0
+    +tablet
+      margin: var(--bal-space-tablet-xxx-large) 0
+    +desktop
+      margin: var(--bal-space-desktop-xxx-large) 0
+  //
+  // vertical spaces
+  &--layout-vertical#{&}--space-none
+    margin: 0
+  &--layout-vertical#{&}--space-xx-small
+    margin: 0 var(--bal-space-xx-small)
+    +tablet
+      margin: 0 var(--bal-space-tablet-xx-small)
+    +desktop
+      margin: 0 var(--bal-space-desktop-xx-small)
+  &--layout-vertical#{&}--space-x-small
+    margin: 0 var(--bal-space-x-small)
+    +tablet
+      margin: 0 var(--bal-space-tablet-x-small)
+    +desktop
+      margin: 0 var(--bal-space-desktop-x-small)
+  &--layout-vertical#{&}--space-small
+    margin: 0 var(--bal-space-small)
+    +tablet
+      margin: 0 var(--bal-space-tablet-small)
+    +desktop
+      margin: 0 var(--bal-space-desktop-small)
+  &--layout-vertical#{&}--space-normal
+    margin: 0 var(--bal-space-normal)
+    +tablet
+      margin: 0 var(--bal-space-tablet-normal)
+    +desktop
+      margin: 0 var(--bal-space-desktop-normal)
+  &--layout-vertical#{&}--space-medium
+    margin: 0 var(--bal-space-medium)
+    +tablet
+      margin: 0 var(--bal-space-tablet-medium)
+    +desktop
+      margin: 0 var(--bal-space-desktop-medium)
+  &--layout-vertical#{&}--space-large
+    margin: 0 var(--bal-space-large)
+    +tablet
+      margin: 0 var(--bal-space-tablet-large)
+    +desktop
+      margin: 0 var(--bal-space-desktop-large)
+  &--layout-vertical#{&}--space-x-large
+    margin: 0 var(--bal-space-x-large)
+    +tablet
+      margin: 0 var(--bal-space-tablet-x-large)
+    +desktop
+      margin: 0 var(--bal-space-desktop-x-large)
+  &--layout-vertical#{&}--space-xx-large
+    margin: 0 var(--bal-space-xx-large)
+    +tablet
+      margin: 0 var(--bal-space-tablet-xx-large)
+    +desktop
+      margin: 0 var(--bal-space-desktop-xx-large)
+  &--layout-vertical#{&}--space-xxx-large
+    margin: 0 var(--bal-space-xxx-large)
+    +tablet
+      margin: 0 var(--bal-space-tablet-xxx-large)
+    +desktop
+      margin: 0 var(--bal-space-desktop-xxx-large)

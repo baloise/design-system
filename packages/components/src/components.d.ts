@@ -637,6 +637,22 @@ export namespace Components {
          */
         "size": BalProps.BalCloseSize;
     }
+    interface BalContent {
+        /**
+          * Defines the text positioning like center, end or default to start.
+         */
+        "align": BalProps.BalContentAlignment;
+        "alignment": BalProps.BalStackAlignment;
+        "direction": BalProps.BalStackDirection;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout": BalProps.BalContentLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space": BalProps.BalContentSpace;
+    }
     interface BalData {
         /**
           * If `true` a bottom border is added to the data-item.
@@ -916,6 +932,20 @@ export namespace Components {
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "color": BalProps.BalDividerColor;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout": BalProps.BalDividerLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space": BalProps.BalDividerSpace;
     }
     interface BalDocApp {
         /**
@@ -2783,6 +2813,46 @@ export namespace Components {
          */
         "small": boolean;
     }
+    interface BalStack {
+        /**
+          * Defines the text positioning like center, right or default to start.
+         */
+        "align": BalProps.BalStackAlignment;
+        "alignment": BalProps.BalStackAlignment;
+        "direction": BalProps.BalStackDirection;
+        /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent": boolean;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "layout": BalProps.BalStackLayout;
+        /**
+          * Defines the horizontal padding left and right of the stack element.
+         */
+        "px": BalProps.BalStackPadding;
+        /**
+          * Defines the vertical padding top and bottom of the stack element.
+         */
+        "py": BalProps.BalStackPadding;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "space": BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
+        /**
+          * Defines if the child elements will wrap to the next line if there is not enough space left
+         */
+        "useWrap": boolean;
+    }
     interface BalStage {
         /**
           * Defines the background color of the stage section
@@ -3612,6 +3682,12 @@ declare global {
         prototype: HTMLBalCloseElement;
         new (): HTMLBalCloseElement;
     };
+    interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
+    }
+    var HTMLBalContentElement: {
+        prototype: HTMLBalContentElement;
+        new (): HTMLBalContentElement;
+    };
     interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
     }
     var HTMLBalDataElement: {
@@ -3659,6 +3735,12 @@ declare global {
     var HTMLBalDatepickerElement: {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
+    };
+    interface HTMLBalDividerElement extends Components.BalDivider, HTMLStencilElement {
+    }
+    var HTMLBalDividerElement: {
+        prototype: HTMLBalDividerElement;
+        new (): HTMLBalDividerElement;
     };
     interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
     }
@@ -4140,6 +4222,12 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStackElement extends Components.BalStack, HTMLStencilElement {
+    }
+    var HTMLBalStackElement: {
+        prototype: HTMLBalStackElement;
+        new (): HTMLBalStackElement;
+    };
     interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
     }
     var HTMLBalStageElement: {
@@ -4269,6 +4357,7 @@ declare global {
         "bal-checkbox-button": HTMLBalCheckboxButtonElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
+        "bal-content": HTMLBalContentElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
@@ -4277,6 +4366,7 @@ declare global {
         "bal-date-calendar": HTMLBalDateCalendarElement;
         "bal-date-calendar-cell": HTMLBalDateCalendarCellElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
@@ -4357,6 +4447,7 @@ declare global {
         "bal-sheet": HTMLBalSheetElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-stack": HTMLBalStackElement;
         "bal-stage": HTMLBalStageElement;
         "bal-stage-back-link": HTMLBalStageBackLinkElement;
         "bal-stage-body": HTMLBalStageBodyElement;
@@ -5014,6 +5105,22 @@ declare namespace LocalJSX {
          */
         "size"?: BalProps.BalCloseSize;
     }
+    interface BalContent {
+        /**
+          * Defines the text positioning like center, end or default to start.
+         */
+        "align"?: BalProps.BalContentAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
+        "direction"?: BalProps.BalStackDirection;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout"?: BalProps.BalContentLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space"?: BalProps.BalContentSpace;
+    }
     interface BalData {
         /**
           * If `true` a bottom border is added to the data-item.
@@ -5313,6 +5420,20 @@ declare namespace LocalJSX {
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string;
+    }
+    interface BalDivider {
+        /**
+          * Defines the color of the separator line.
+         */
+        "color"?: BalProps.BalDividerColor;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "layout"?: BalProps.BalDividerLayout;
+        /**
+          * Defines the space between the child elements. Default is xx-small.
+         */
+        "space"?: BalProps.BalDividerSpace;
     }
     interface BalDocApp {
         /**
@@ -7246,6 +7367,46 @@ declare namespace LocalJSX {
          */
         "small"?: boolean;
     }
+    interface BalStack {
+        /**
+          * Defines the text positioning like center, right or default to start.
+         */
+        "align"?: BalProps.BalStackAlignment;
+        "alignment"?: BalProps.BalStackAlignment;
+        "direction"?: BalProps.BalStackDirection;
+        /**
+          * Defines the width of the stack to be exactly the with of the content.
+         */
+        "fitContent"?: boolean;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "layout"?: BalProps.BalStackLayout;
+        /**
+          * Defines the horizontal padding left and right of the stack element.
+         */
+        "px"?: BalProps.BalStackPadding;
+        /**
+          * Defines the vertical padding top and bottom of the stack element.
+         */
+        "py"?: BalProps.BalStackPadding;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "space"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceColumn"?: BalProps.BalStackSpace;
+        /**
+          * Defines the space between the child elements. Default is normal.
+         */
+        "spaceRow"?: BalProps.BalStackSpace;
+        /**
+          * Defines if the child elements will wrap to the next line if there is not enough space left
+         */
+        "useWrap"?: boolean;
+    }
     interface BalStage {
         /**
           * Defines the background color of the stage section
@@ -7801,6 +7962,7 @@ declare namespace LocalJSX {
         "bal-checkbox-button": BalCheckboxButton;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
+        "bal-content": BalContent;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
@@ -7809,6 +7971,7 @@ declare namespace LocalJSX {
         "bal-date-calendar": BalDateCalendar;
         "bal-date-calendar-cell": BalDateCalendarCell;
         "bal-datepicker": BalDatepicker;
+        "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
@@ -7889,6 +8052,7 @@ declare namespace LocalJSX {
         "bal-sheet": BalSheet;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
+        "bal-stack": BalStack;
         "bal-stage": BalStage;
         "bal-stage-back-link": BalStageBackLink;
         "bal-stage-body": BalStageBody;
@@ -7933,6 +8097,7 @@ declare module "@stencil/core" {
             "bal-checkbox-button": LocalJSX.BalCheckboxButton & JSXBase.HTMLAttributes<HTMLBalCheckboxButtonElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
+            "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
@@ -7941,6 +8106,7 @@ declare module "@stencil/core" {
             "bal-date-calendar": LocalJSX.BalDateCalendar & JSXBase.HTMLAttributes<HTMLBalDateCalendarElement>;
             "bal-date-calendar-cell": LocalJSX.BalDateCalendarCell & JSXBase.HTMLAttributes<HTMLBalDateCalendarCellElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
@@ -8021,6 +8187,7 @@ declare module "@stencil/core" {
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
             "bal-stage-back-link": LocalJSX.BalStageBackLink & JSXBase.HTMLAttributes<HTMLBalStageBackLinkElement>;
             "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
