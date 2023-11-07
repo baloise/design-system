@@ -15,6 +15,7 @@ describe('Radio', () => {
     cy.get(radioGroup).find('bal-radio').first().check().should('be.checked')
   })
 })
+```
 
 <!-- END: human documentation -->
 
