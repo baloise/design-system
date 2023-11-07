@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as DividerStories from './bal-divider.stories'
 
 <Meta of={DividerStories} />
@@ -9,7 +9,8 @@ import * as DividerStories from './bal-divider.stories'
 
 <Banner of={DividerStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>A **divider** is a slender line that serves to group content within stacks and layouts. The divider separates and
+  differentiate sections of content or groups of menu items.</Lead>
 
 <Canvas of={DividerStories.Basic} sourceState="shown" />
 
@@ -18,9 +19,11 @@ import * as DividerStories from './bal-divider.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={DividerStories.Secondary}></StoryHeading>
+<StoryHeading of={DividerStories.LayoutVertical}></StoryHeading>
 
-<Canvas of={DividerStories.Secondary} sourceState="shown" />
+Change the layout of the divider to vertical to use them in a horizontal stack component.
+
+<Canvas of={DividerStories.LayoutVertical} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +46,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

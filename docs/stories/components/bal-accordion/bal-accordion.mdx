@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard, InfoQuote } from '../../../.storybook/blocks'
 import * as AccordionStories from './bal-accordion.stories'
 
 <Meta of={AccordionStories} />
@@ -9,18 +9,44 @@ import * as AccordionStories from './bal-accordion.stories'
 
 <Banner of={AccordionStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Accordions** put users in control of showing or hiding content. Accordions also help us organize information to
+  keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help
+  users find content they need. The component can be used standalone, in combination or inside [BalCard](?path=/docs/components-card--basic).</Lead>
+<br />
+The accordion is build on 3 child components:
+
+- `bal-accordion-summary` defines the visible header of the accordion and can also act as a trigger.
+- `bal-accordion-trigger` shows and hides the details of the accordion.
+- `bal-accordion-details` is the content to be hidden by default.
 
 <Canvas of={AccordionStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={AccordionStories.Basic}></PlaygroundBar>
 
+<InfoQuote>
+**TIP**
+
+Check out the layout components [bal-stack](?path=/docs/components-layout-stack--basic) and [bal-content](?path=/docs/components-layout-content--basic) of the above example.
+</InfoQuote>
+
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={AccordionStories.Secondary}></StoryHeading>
+<StoryHeading of={AccordionStories.ButtonAccordion}></StoryHeading>
 
-<Canvas of={AccordionStories.Secondary} sourceState="shown" />
+To change the label use the properties `open-label` & `close-label`. The icon can be changed with the properties `open-icon` and `close-icon`.
+
+<Canvas of={AccordionStories.ButtonAccordion} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.OldVersion}></StoryHeading>
+
+The old version was created / designed in the previous style guide. We learned that we need a more flexible solution,
+therefore we restructured the accordion.
+We keep the old version intact, but highly recommend to use the new version above.
+
+<Canvas of={AccordionStories.OldVersion} />
 
 {/* ------------------------------------------------------ */}
 
@@ -29,6 +55,14 @@ import * as AccordionStories from './bal-accordion.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import accordionSummaryApi from './bal-accordion-summary/api.md?raw'
+
+<Markdown>{accordionSummaryApi}</Markdown>
+
+import accordionTriggerApi from './bal-accordion-trigger/api.md?raw'
+
+<Markdown>{accordionTriggerApi}</Markdown>
 
 ## Integration
 
@@ -43,3 +77,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as FormGridStories from './bal-form-grid.stories'
 
 <Meta of={FormGridStories} />
@@ -9,7 +9,10 @@ import * as FormGridStories from './bal-form-grid.stories'
 
 <Banner of={FormGridStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Form Grid** components help to structure form controls in a simple grid. On mobile all controls have the the full width.</Lead>
+
+Use the `bal-form-grid` component as a container to wrap the inner fields. Each `bal-form-field` can then be wrapped in a `bal-from-col` to place
+it into the form grid. The `bal-from-col` uses by default 100% width of the grid, but can be changed with the prop `size`.
 
 <Canvas of={FormGridStories.Basic} sourceState="shown" />
 
@@ -18,9 +21,9 @@ import * as FormGridStories from './bal-form-grid.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={FormGridStories.Secondary}></StoryHeading>
+<StoryHeading of={FormGridStories.FormStructure}></StoryHeading>
 
-<Canvas of={FormGridStories.Secondary} sourceState="shown" />
+<Canvas of={FormGridStories.FormStructure} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +46,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

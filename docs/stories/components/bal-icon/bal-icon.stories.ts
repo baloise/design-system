@@ -41,7 +41,7 @@ export const UiIcons = Story({
     content: '',
   },
   ...withRender(
-    ({ content, ...args }) =>
+    () =>
       `<div class="is-flex fg-medium is-flex-wrap-wrap">
       ${[
         'caret-down',
@@ -120,40 +120,3 @@ export const BrandIcons = Story({
       `<bal-icon ${props(args)} svg='${balBrandIconCarCrashWithAnimalGreen}'>${content}</bal-icon>`,
   ),
 })
-
-// export const Sizes = Story({
-//   args: {
-//     name: 'info-circle',
-//     size: 'large',
-//     content: '',
-//   },
-//   ...withRender(
-//     () => `<div>
-//   <bal-icon name="date" size="x-small"></bal-icon>
-//   <bal-icon name="date" size="small"></bal-icon>
-//   <bal-icon name="date"></bal-icon>
-//   <bal-icon name="date" size="medium"></bal-icon>
-//   <bal-icon name="date" size="large"></bal-icon>
-//   <bal-icon name="date" size="x-large"></bal-icon>
-//   <bal-icon name="date" size="xx-large"></bal-icon>
-// </div>`,
-//   ),
-// })
-
-// export const Colors = Story({
-//   args: {
-//     name: 'info-circle',
-//     size: 'large',
-//     color: 'primary',
-//     content: '',
-//   },
-//   ...withRender(
-//     () => `<div>
-//   <bal-icon color="primary" name="github"></bal-icon>
-//   <bal-icon color="grey" name="github"></bal-icon>
-//   <bal-icon color="success" name="github"></bal-icon>
-//   <bal-icon color="warning" name="github"></bal-icon>
-//   <bal-icon color="danger" name="github"></bal-icon>
-// </div>`,
-//   ),
-// })

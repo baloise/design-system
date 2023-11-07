@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as DataStories from './bal-data.stories'
 
 <Meta of={DataStories} />
@@ -9,7 +9,7 @@ import * as DataStories from './bal-data.stories'
 
 <Banner of={DataStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Data** component display readonly form data.</Lead>
 
 <Canvas of={DataStories.Basic} sourceState="shown" />
 
@@ -18,9 +18,15 @@ import * as DataStories from './bal-data.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={DataStories.Secondary}></StoryHeading>
+<StoryHeading of={DataStories.Horizontal}></StoryHeading>
 
-<Canvas of={DataStories.Secondary} sourceState="shown" />
+<Canvas of={DataStories.Horizontal} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.DataTypes}></StoryHeading>
+
+<Canvas of={DataStories.DataTypes} />
 
 {/* ------------------------------------------------------ */}
 
@@ -29,6 +35,18 @@ import * as DataStories from './bal-data.stories'
 import api from './api.md?raw'
 
 <Markdown>{api}</Markdown>
+
+import balDataItemApi from './bal-data-item/api.md?raw'
+
+<Markdown>{balDataItemApi}</Markdown>
+
+import balDataLabelApi from './bal-data-label/api.md?raw'
+
+<Markdown>{balDataLabelApi}</Markdown>
+
+import balDataValueApi from './bal-data-value/api.md?raw'
+
+<Markdown>{balDataValueApi}</Markdown>
 
 ## Integration
 
@@ -43,3 +61,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

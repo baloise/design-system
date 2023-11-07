@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as SheetStories from './bal-sheet.stories'
 
 <Meta of={SheetStories} />
@@ -9,18 +9,11 @@ import * as SheetStories from './bal-sheet.stories'
 
 <Banner of={SheetStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Sheet** component is used to show content over the whole page at the bottom. The element is sticky.</Lead>
 
-<Canvas of={SheetStories.Basic} sourceState="shown" />
+<Canvas of={SheetStories.Basic} sourceState="shown" className="has-visible-overflow" />
 
 <PlaygroundBar of={SheetStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={SheetStories.Secondary}></StoryHeading>
-
-<Canvas of={SheetStories.Secondary} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +36,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

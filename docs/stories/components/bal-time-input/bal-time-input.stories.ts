@@ -1,4 +1,3 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
@@ -6,9 +5,9 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalTimeInput & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/TimeInput',
+  title: 'Components/Form/TimeInput',
   args: {
-    ...withDefaultContent(),
+    ...withDefaultContent(''),
   },
   argTypes: {
     ...withContent(),
@@ -28,8 +27,14 @@ const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story()
 
-export const Secondary = Story({
-  args: {
-    // place props here
-  },
+export const FieldControl = Story({
+  ...withRender(
+    () => `<bal-field>
+  <bal-field-label>Label</bal-field-label>
+  <bal-field-control>
+      <bal-time-input></bal-time-input>
+  </bal-field-control>
+  <bal-field-message color="hint">Field Message</bal-field-message>
+</bal-field>`,
+  ),
 })

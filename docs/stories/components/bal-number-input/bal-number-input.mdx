@@ -1,6 +1,5 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer } from '../../../.storybook/blocks'
 import * as NumberInputStories from './bal-number-input.stories'
 
 <Meta of={NumberInputStories} />
@@ -9,7 +8,17 @@ import * as NumberInputStories from './bal-number-input.stories'
 
 <Banner of={NumberInputStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>
+  **Number Input** only allows to enter valid numbers. With decimal property you can set how many decimal places you
+  want and number will be formatted accordingly.
+</Lead>
+
+<InfoQuote>
+**TIP**
+
+**Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
+
+</InfoQuote>
 
 <Canvas of={NumberInputStories.Basic} sourceState="shown" />
 
@@ -18,9 +27,15 @@ import * as NumberInputStories from './bal-number-input.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={NumberInputStories.Secondary}></StoryHeading>
+<StoryHeading of={NumberInputStories.FieldControl}></StoryHeading>
 
-<Canvas of={NumberInputStories.Secondary} sourceState="shown" />
+<Canvas of={NumberInputStories.FieldControl} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NumberInputStories.Currency}></StoryHeading>
+
+<Canvas of={NumberInputStories.Currency} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +58,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

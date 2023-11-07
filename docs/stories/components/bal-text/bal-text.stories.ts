@@ -1,4 +1,3 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
@@ -6,7 +5,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalText & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Text',
+  title: 'Components/Typography/Text',
   args: {
     ...withDefaultContent(),
   },
@@ -26,10 +25,26 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
-
-export const Secondary = Story({
+export const Basic = Story({
   args: {
-    // place props here
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    color: '',
+    size: '',
+    bold: false,
+    paragraph: false,
+    noWrap: false,
+  },
+})
+
+export const NoWrap = Story({
+  args: {
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    color: '',
+    size: '',
+    bold: false,
+    paragraph: false,
+    noWrap: true,
   },
 })

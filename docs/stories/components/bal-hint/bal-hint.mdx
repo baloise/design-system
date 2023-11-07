@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as HintStories from './bal-hint.stories'
 
 <Meta of={HintStories} />
@@ -9,18 +9,25 @@ import * as HintStories from './bal-hint.stories'
 
 <Banner of={HintStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Hint** hides content with some additional description and shows it by clicking the icon. It can easily combined
+  with the [bal-data](?path=/docs/components-data--basic) or [bal-field](?path=/docs/components-field--basic) component.</Lead>
 
-<Canvas of={HintStories.Basic} sourceState="shown" />
+<Canvas of={HintStories.Basic} sourceState="shown" className="has-visible-overflow" />
 
 <PlaygroundBar of={HintStories.Basic}></PlaygroundBar>
 
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={HintStories.Secondary}></StoryHeading>
+<StoryHeading of={HintStories.TooltipHint}></StoryHeading>
 
-<Canvas of={HintStories.Secondary} sourceState="shown" />
+<Canvas of={HintStories.TooltipHint} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.FieldHint}></StoryHeading>
+
+<Canvas of={HintStories.FieldHint} className="has-visible-overflow" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +50,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,6 +1,5 @@
-
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as InputStepperStories from './bal-input-stepper.stories'
 
 <Meta of={InputStepperStories} />
@@ -9,20 +8,11 @@ import * as InputStepperStories from './bal-input-stepper.stories'
 
 <Banner of={InputStepperStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Input Stepper** can be used to ask the user an amount of limited amounts like the amount of children.</Lead>
 
 <Canvas of={InputStepperStories.Basic} sourceState="shown" />
 
 <PlaygroundBar of={InputStepperStories.Basic}></PlaygroundBar>
-
-{/* STORIES */}
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={InputStepperStories.Secondary}></StoryHeading>
-
-<Canvas of={InputStepperStories.Secondary} sourceState="shown" />
-
-{/* ------------------------------------------------------ */}
 
 ## Component API
 
@@ -43,3 +33,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

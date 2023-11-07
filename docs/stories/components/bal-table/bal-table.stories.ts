@@ -2,11 +2,12 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { tableHtml } from './bal-table.templates'
 
 type Args = JSX.BalTable & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Table',
+  title: 'Components/Data Display/Table',
   args: {
     ...withDefaultContent(),
   },
@@ -17,6 +18,8 @@ const meta: Meta<Args> = {
   ...withRender(({ content, ...args }) => `<bal-table ${props(args)}>${content}</bal-table>`),
 }
 
+const table = tableHtml
+
 export default meta
 
 /**
@@ -26,10 +29,12 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story()
+export const Basic = Story({
+  ...withRender(() => table),
+})
 
-export const Secondary = Story({
+export const AgGrid = Story({
   args: {
-    // place props here
+    content: 'Add here AgGrid story!',
   },
 })

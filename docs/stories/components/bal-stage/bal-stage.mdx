@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as StageStories from './bal-stage.stories'
 
 <Meta of={StageStories} />
@@ -9,7 +9,8 @@ import * as StageStories from './bal-stage.stories'
 
 <Banner of={StageStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Stage** is an imposing banner to showcase something. The stage component allows you to add a full width banner to
+  your webpage, which can optionally cover the full height of the page as well.</Lead>
 
 <Canvas of={StageStories.Basic} sourceState="shown" />
 
@@ -18,9 +19,21 @@ import * as StageStories from './bal-stage.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={StageStories.Secondary}></StoryHeading>
+<StoryHeading of={StageStories.SmallStage}></StoryHeading>
 
-<Canvas of={StageStories.Secondary} sourceState="shown" />
+<Canvas of={StageStories.SmallStage} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StageStories.LargeStage}></StoryHeading>
+
+<Canvas of={StageStories.LargeStage} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StageStories.StageWithImage}></StoryHeading>
+
+<Canvas of={StageStories.StageWithImage} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +56,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

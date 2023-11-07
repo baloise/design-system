@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as TextStories from './bal-text.stories'
 
 <Meta of={TextStories} />
@@ -9,7 +9,7 @@ import * as TextStories from './bal-text.stories'
 
 <Banner of={TextStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>**Text** is a fundamental component used to display and present textual content.</Lead>
 
 <Canvas of={TextStories.Basic} sourceState="shown" />
 
@@ -18,9 +18,11 @@ import * as TextStories from './bal-text.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TextStories.Secondary}></StoryHeading>
+<StoryHeading of={TextStories.NoWrap}></StoryHeading>
 
-<Canvas of={TextStories.Secondary} sourceState="shown" />
+If the text is longer than the container with the property `no-wrap` the text will be cut.
+
+<Canvas of={TextStories.NoWrap} sourceState="shown" />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +45,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />

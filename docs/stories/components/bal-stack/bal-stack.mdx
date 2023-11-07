@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer } from '../../../.storybook/blocks'
 import * as StackStories from './bal-stack.stories'
 
 <Meta of={StackStories} />
@@ -9,7 +9,15 @@ import * as StackStories from './bal-stack.stories'
 
 <Banner of={StackStories} />
 
-<Lead>**TODO** Place a lead text here.</Lead>
+<Lead>The **Stack** element is responsible for arranging its direct descendants in a vertical or horizontal direction,
+  while also allowing for the inclusion of optional spacing between each child.</Lead>
+
+<InfoQuote>
+**TIP**
+
+The **Stack** component deals with layouts in one dimension, whereas the [Grid](?path=/docs/foundation-grid-development--breakpoints-css-utility) manages layouts in two dimensions.
+By default, the **Stack** component stacks children vertically in a column.
+</InfoQuote>
 
 <Canvas of={StackStories.Basic} sourceState="shown" />
 
@@ -18,9 +26,54 @@ import * as StackStories from './bal-stack.stories'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={StackStories.Secondary}></StoryHeading>
+<StoryHeading of={StackStories.Direction}></StoryHeading>
 
-<Canvas of={StackStories.Secondary} sourceState="shown" />
+The default arrangement for Stack is a vertical column. Nevertheless, the direction prop allows items to be positioned horizontally in a row as well.
+
+<Canvas of={StackStories.Direction} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Alignment}></StoryHeading>
+
+With the direction `column` the children of the stack can be aligned to `start` (default), `center` or `end`.
+
+<Canvas of={StackStories.Alignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Space}></StoryHeading>
+
+There various space sizes of the space between the stack children.
+
+<Canvas of={StackStories.Space} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.Padding}></StoryHeading>
+
+There various padding sizes of the stack element.
+
+<Canvas of={StackStories.Padding} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.TeaserCards}></StoryHeading>
+
+The stack component can easily be combined with the [card component](?path=/docs/components-card--basic) to achieve a nice
+teaser layout.
+
+<Canvas of={StackStories.TeaserCards} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StackStories.StackedTabs}></StoryHeading>
+
+
+The [bal-tabs](?path=/docs/components-navigation-tabs--basic) can be used with the stack as well and for example be combined with a [bal-button](?path=/docs/components-button--basic).
+Just set the property `no-wrap` to the [bal-button](?path=/docs/components-button--basic) so it will no break on multiple lines.
+
+<Canvas of={StackStories.StackedTabs} />
 
 {/* ------------------------------------------------------ */}
 
@@ -43,3 +96,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
