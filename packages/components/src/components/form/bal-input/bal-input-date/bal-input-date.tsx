@@ -248,6 +248,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
           aria-disabled={this.disabled ? 'true' : null}
+          name={this.name}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
