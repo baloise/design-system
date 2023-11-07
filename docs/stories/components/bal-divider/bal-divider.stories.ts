@@ -28,14 +28,15 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 
 export const LayoutVertical = Story({
+  args: {
+    layout: 'vertical',
+    color: 'primary',
+  },
   ...withRender(
-    () => `<bal-stack>
+    ({ ...args }) => `<bal-stack>
   <bal-text>Left</bal-text>
-  <bal-divider layout="vertical" color="primary"></bal-divider>
+  <bal-divider ${props(args)}></bal-divider>
   <bal-text>Right</bal-text>
 </bal-stack>`,
   ),
-  args: {
-    // place props here
-  },
 })

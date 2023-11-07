@@ -8,12 +8,19 @@ const meta: Meta<Args> = {
   title: 'Components/Data Display/Tooltip',
   args: {
     ...withDefaultContent(),
+    label: 'Tooltip Label',
+    reference: 'my-tooltip',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-tooltip' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-tooltip ${props(args)}>${content}</bal-tooltip>`),
+  ...withRender(
+    ({ ...args }) => `<div>
+  <bal-button id="my-tooltip">Hover over me</bal-button>
+  <bal-tooltip ${props(args)}>Tooltip content</bal-tooltip>
+</div>`,
+  ),
 }
 
 export default meta
@@ -25,11 +32,4 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `<div>
-  <bal-button id="my-tooltip">Hover over me</bal-button>
-  <bal-tooltip label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
-</div>`,
-  ),
-})
+export const Basic = Story()

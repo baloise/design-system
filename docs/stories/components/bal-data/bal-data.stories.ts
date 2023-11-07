@@ -8,24 +8,13 @@ const meta: Meta<Args> = {
   title: 'Components/Data Display/Data',
   args: {
     ...withDefaultContent(),
+    border: true,
+    horizontal: false,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-data' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-data ${props(args)}>${content}</bal-data>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     ({ ...args }) => `<bal-card>
   <bal-card-content>
@@ -38,12 +27,18 @@ export const Basic = Story({
   </bal-card-content>
 </bal-card>`,
   ),
-  args: {
-    border: true,
-    horizontal: false,
-    content: '',
-  },
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const Horizontal = Story({
   ...withRender(
@@ -69,7 +64,6 @@ export const Horizontal = Story({
   args: {
     border: false,
     horizontal: true,
-    content: '',
   },
 })
 
@@ -127,7 +121,5 @@ export const DataTypes = Story({
   ),
   args: {
     border: true,
-    horizontal: false,
-    content: '',
   },
 })

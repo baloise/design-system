@@ -8,24 +8,12 @@ const meta: Meta<Args> = {
   title: 'Components/Form/InputGroup',
   args: {
     ...withDefaultContent(),
+    placeholder: 'Enter text here',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-input-group' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-input-group ${props(args)}>${content}</bal-input-group>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     ({ ...args }) => `<bal-input-group class="mb-normal">
   <bal-input ${props(args)}></bal-input>
@@ -61,7 +49,15 @@ export const Basic = Story({
   <bal-icon name="date"></bal-icon>
 </bal-input-group>`,
   ),
-  args: {
-    placeholder: 'Enter text here',
-  },
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()

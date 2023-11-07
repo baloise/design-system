@@ -29,9 +29,7 @@ export const Basic = Story()
 
 export const WithIcon = Story({
   args: {
-    content: '',
     color: 'success',
-    size: '',
     icon: 'check',
   },
 })
@@ -61,7 +59,6 @@ export const Sizes = Story({
 export const CardBadge = Story({
   args: {
     color: 'danger',
-    size: '',
     position: 'card',
   },
   ...withRender(
@@ -78,7 +75,6 @@ export const CardBadge = Story({
 export const ButtonBadge = Story({
   args: {
     color: 'danger',
-    size: '',
     position: 'button',
   },
   ...withRender(
@@ -92,7 +88,6 @@ export const ButtonBadge = Story({
 export const TabsBadge = Story({
   args: {
     color: 'danger',
-    size: '',
     position: 'tabs',
   },
   ...withRender(

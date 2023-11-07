@@ -32,6 +32,9 @@ export const Basic = Story({
 })
 
 export const FieldControl = Story({
+  args: {
+    placeholder: 'Enter a number',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
@@ -41,12 +44,14 @@ export const FieldControl = Story({
   <bal-field-message color="hint">Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a number',
-  },
 })
 
 export const Currency = Story({
+  args: {
+    decimal: '2',
+    suffix: 'CHF',
+    value: '1234.45',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -56,9 +61,4 @@ export const Currency = Story({
     <bal-field-message color="hint">Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    decimal: '2',
-    suffix: 'CHF',
-    value: '1234.45',
-  },
 })

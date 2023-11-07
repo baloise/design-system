@@ -8,12 +8,23 @@ const meta: Meta<Args> = {
   title: 'Components/Form/Field',
   args: {
     ...withDefaultContent(''),
+    placeholder: 'Enter your firstname',
+    name: 'firstName',
+    id: 'bal-input-1',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-field' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-field ${props(args)}>${content}</bal-field>`),
+  ...withRender(
+    ({ ...args }) => `<bal-field>
+  <bal-field-label required="true">Firstname</bal-field-label>
+  <bal-field-control>
+      <bal-input ${props(args)}></bal-input>
+  </bal-field-control>
+  <bal-field-message color="hint">Field Message</bal-field-message>
+</bal-field>`,
+  ),
 }
 
 export default meta
@@ -25,24 +36,13 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ ...args }) => `<bal-field>
-  <bal-field-label required="true">Firstname</bal-field-label>
-  <bal-field-control>
-      <bal-input ${props(args)}></bal-input>
-  </bal-field-control>
-  <bal-field-message color="hint">Field Message</bal-field-message>
-</bal-field>`,
-  ),
-  args: {
-    placeholder: 'Enter your firstname',
-    name: 'firstName',
-    id: 'bal-input-1',
-  },
-})
+export const Basic = Story()
 
 export const Addons = Story({
+  args: {
+    placeholder: 'Search...',
+    name: 'search',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label required="true">Search</bal-field-label>
@@ -52,10 +52,6 @@ export const Addons = Story({
   </bal-field-control>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Search...',
-    name: 'search',
-  },
 })
 
 export const WithGrid = Story({

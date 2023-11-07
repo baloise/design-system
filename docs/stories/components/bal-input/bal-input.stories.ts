@@ -28,14 +28,15 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   args: {
     placeholder: 'Enter a text',
-    disabled: false,
-    readonly: false,
-    invalid: false,
     type: 'text',
   },
 })
 
 export const TextInput = Story({
+  args: {
+    placeholder: 'Enter a text',
+    type: 'text',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
@@ -45,13 +46,14 @@ export const TextInput = Story({
   <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a text',
-    type: 'text',
-  },
 })
 
 export const InvalidInput = Story({
+  args: {
+    placeholder: 'Enter a text',
+    type: 'text',
+    invalid: true,
+  },
   ...withRender(
     ({ ...args }) => `<bal-field invalid="true">
     <bal-field-label>Label</bal-field-label>
@@ -61,14 +63,13 @@ export const InvalidInput = Story({
     <bal-field-message invalid="true">Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a text',
-    type: 'text',
-    invalid: 'true',
-  },
 })
 
 export const ContractNumberInput = Story({
+  args: {
+    placeholder: 'Enter only numbers which will be formatted',
+    type: 'text',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -78,13 +79,13 @@ export const ContractNumberInput = Story({
     <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
+})
+
+export const ClaimNumberInput = Story({
   args: {
     placeholder: 'Enter only numbers which will be formatted',
     type: 'text',
   },
-})
-
-export const ClaimNumberInput = Story({
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -94,13 +95,13 @@ export const ClaimNumberInput = Story({
     <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
+})
+
+export const OfferNumberInput = Story({
   args: {
     placeholder: 'Enter only numbers which will be formatted',
     type: 'text',
   },
-})
-
-export const OfferNumberInput = Story({
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -110,13 +111,14 @@ export const OfferNumberInput = Story({
     <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter only numbers which will be formatted',
-    type: 'text',
-  },
 })
 
 export const PostalCodeInput = Story({
+  args: {
+    placeholder: 'Enter a text"',
+    type: 'text',
+    value: '4000',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -126,14 +128,14 @@ export const PostalCodeInput = Story({
     <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a text"',
-    type: 'text',
-    value: '4000',
-  },
 })
 
 export const SimplePhoneNumberInput = Story({
+  args: {
+    placeholder: 'Enter a text"',
+    type: 'tel',
+    value: '4004166555443300',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
@@ -143,14 +145,13 @@ export const SimplePhoneNumberInput = Story({
     <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a text"',
-    type: 'tel',
-    value: '4004166555443300',
-  },
 })
 
 export const NativeInput = Story({
+  args: {
+    placeholder: 'Text input"',
+    type: 'tel',
+  },
   ...withRender(
     ({ ...args }) => `<div class="field">
   <label class="label">Name</label>
@@ -181,13 +182,13 @@ export const NativeInput = Story({
   <p class="help is-danger">This username is available</p>
 </div>`,
   ),
-  args: {
-    placeholder: 'Text input"',
-    type: 'tel',
-  },
 })
 
 export const InputDate = Story({
+  args: {
+    autocomplete: 'bday',
+    name: 'bday',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
     <bal-field-label for="bday">Birthday</bal-field-label>
@@ -196,8 +197,4 @@ export const InputDate = Story({
     </bal-field-control>
 </bal-field>`,
   ),
-  args: {
-    autocomplete: 'bday',
-    name: 'bday',
-  },
 })

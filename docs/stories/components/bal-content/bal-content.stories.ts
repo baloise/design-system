@@ -13,7 +13,12 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-content' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-content ${props(args)}>${content}</bal-content>`),
+  ...withRender(
+    () => `<bal-content>
+  <bal-label>The Content Component</bal-label>
+  <bal-text>Content helps to align text nodes inside a section.</bal-text>
+</bal-content>`,
+  ),
 }
 
 export default meta
@@ -25,19 +30,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ ...args }) => `<bal-content ${props(args)}>
-  <bal-label>The Content Component</bal-label>
-  <bal-text>Content helps to align text nodes inside a section.</bal-text>
-</bal-content>`,
-  ),
-  args: {
-    layout: '',
-    align: '',
-    space: '',
-  },
-})
+export const Basic = Story()
 
 export const Alignment = Story({
   ...withRender(
@@ -47,9 +40,7 @@ export const Alignment = Story({
 </bal-content>`,
   ),
   args: {
-    layout: '',
     align: 'center',
-    space: '',
   },
 })
 
@@ -62,7 +53,6 @@ export const Layout = Story({
   ),
   args: {
     layout: 'horizontal',
-    align: '',
     space: 'normal',
   },
 })

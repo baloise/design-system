@@ -16,7 +16,16 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-stack' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-stack ${props(args)}>${content}</bal-stack>`),
+  ...withRender(
+    () => `<bal-stack>
+  <bal-icon name="date" size="medium"></bal-icon>
+  <bal-content>
+    <bal-label>My Item</bal-label>
+    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
+  </bal-content>
+  <bal-button>Button</bal-button>
+</bal-stack>`,
+  ),
 }
 
 export default meta
@@ -28,25 +37,12 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ ...args }) => `<bal-stack ${props(args)}>
-  <bal-icon name="date" size="medium"></bal-icon>
-  <bal-content>
-    <bal-label>My Item</bal-label>
-    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
-  </bal-content>
-  <bal-button>Button</bal-button>
-</bal-stack>`,
-  ),
-  args: {
-    layout: '',
-    align: '',
-    space: '',
-  },
-})
+export const Basic = Story()
 
 export const Direction = Story({
+  args: {
+    layout: 'vertical',
+  },
   ...withRender(
     ({ ...args }) => `<bal-stack ${props(args)}>
   <bal-icon name="date" size="medium"></bal-icon>
@@ -57,14 +53,14 @@ export const Direction = Story({
   <bal-button>Button</bal-button>
 </bal-stack>`,
   ),
-  args: {
-    layout: 'vertical',
-    align: '',
-    space: '',
-  },
 })
 
 export const Alignment = Story({
+  args: {
+    layout: 'vertical',
+    align: 'center',
+    space: 'large',
+  },
   ...withRender(
     ({ ...args }) => `<bal-stack ${props(args)}>
   <bal-icon name="date" size="medium"></bal-icon>
@@ -75,11 +71,6 @@ export const Alignment = Story({
   <bal-button>Button</bal-button>
 </bal-stack>`,
   ),
-  args: {
-    layout: 'vertical',
-    align: 'center',
-    space: 'large',
-  },
 })
 
 export const Space = Story({
@@ -152,12 +143,17 @@ export const Padding = Story({
 })
 
 export const TeaserCards = Story({
+  args: {
+    layout: 'vertical',
+    align: 'center',
+    space: 'large',
+  },
   ...withRender(
-    () => `<div class="columns">
+    ({ ...args }) => `<div class="columns">
   <div class="column is-one-third">
     <bal-card color="purple-light" fullheight>
       <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
+        <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
           <bal-content align="center">
             <bal-heading level="x-large">Teaser Card</bal-heading>
@@ -172,7 +168,7 @@ export const TeaserCards = Story({
   <div class="column is-one-third">
     <bal-card color="yellow-light" fullheight>
       <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
+        <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
           <bal-content align="center">
             <bal-heading level="x-large">Auto Height</bal-heading>
@@ -186,7 +182,7 @@ export const TeaserCards = Story({
   <div class="column is-one-third">
     <bal-card color="red-light" fullheight>
       <bal-card-content>
-        <bal-stack layout="vertical" align="center" space="large">
+        <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>
           <bal-content align="center">
             <bal-heading level="x-large">Item Component</bal-heading>
@@ -202,6 +198,10 @@ export const TeaserCards = Story({
 })
 
 export const StackedTabs = Story({
+  args: {
+    align: 'center',
+    space: 'normal',
+  },
   ...withRender(
     ({ ...args }) => `<bal-stack ${props(args)}>
   <bal-tabs value="tab-a">
@@ -216,9 +216,4 @@ export const StackedTabs = Story({
   <bal-button no-wrap>Click me!</bal-button>
 </bal-stack>`,
   ),
-  args: {
-    layout: '',
-    align: 'center',
-    space: 'normal',
-  },
 })

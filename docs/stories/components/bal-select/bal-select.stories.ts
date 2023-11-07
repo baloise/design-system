@@ -8,12 +8,22 @@ const meta: Meta<Args> = {
   title: 'Components/Form/Select',
   args: {
     ...withDefaultContent(''),
+    value: 'v2000',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-select' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-select ${props(args)}>${content}</bal-select>`),
+  ...withRender(
+    ({ ...args }) => `<bal-select ${props(args)}>
+    <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+    <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+    <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+    <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+    <bal-select-option value="v1999" label="1999 Option with long text Option with long text">1999 Option with long text Option with long text</bal-select-option>
+    <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+</bal-select>`,
+  ),
 }
 
 export default meta
@@ -25,25 +35,17 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `<bal-select value="v2000">
-    <bal-select-option value="v1995" label="1995">1995</bal-select-option>
-    <bal-select-option value="v1996" label="1996">1996</bal-select-option>
-    <bal-select-option value="v1997" label="1997">1997</bal-select-option>
-    <bal-select-option value="v1998" label="1998">1998</bal-select-option>
-    <bal-select-option value="v1999" label="1999 Option with long text Option with long text">1999 Option with long text Option with long text</bal-select-option>
-    <bal-select-option value="v2000" label="2000">2000</bal-select-option>
-</bal-select>`,
-  ),
-})
+export const Basic = Story()
 
 export const FieldControl = Story({
+  args: {
+    value: 'v2000',
+  },
   ...withRender(
-    () => `<bal-field>
+    ({ ...args }) => `<bal-field>
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-        <bal-select value="v2000">
+        <bal-select ${props(args)}>
             <bal-select-option value="v1995" label="1995">1995</bal-select-option>
             <bal-select-option value="v1996" label="1996">1996</bal-select-option>
             <bal-select-option value="v1997" label="1997">1997</bal-select-option>
@@ -58,8 +60,15 @@ export const FieldControl = Story({
 })
 
 export const Typeahead = Story({
+  args: {
+    noDataLabel: 'No option available',
+    placeholder: 'Try finding your hero',
+    typeahead: true,
+    value: undefined,
+    content: undefined,
+  },
   ...withRender(
-    () => `<bal-select no-data-label="No option available" placeholder="Try finding your hero" typeahead="true">
+    ({ ...args }) => `<bal-select ${props(args)}>
     <bal-select-option value="BlackWidow" label="Black Widow">
         <b style="display: block">Black Widow</b>
         <span class="is-size-small">S.H.I.E.L.D.</span>
@@ -89,8 +98,15 @@ export const Typeahead = Story({
 })
 
 export const TypeaheadRemote = Story({
+  args: {
+    noDataLabel: 'No option available',
+    placeholder: 'Try finding your hero',
+    typeahead: true,
+    value: undefined,
+    content: undefined,
+  },
   ...withRender(
-    () => `<bal-select no-data-label="No option available" placeholder="Try finding your hero" typeahead>
+    ({ ...args }) => `<bal-select ${props(args)}>
     <bal-select-option value="BlackWidow" label="Black Widow">
         <b style="display: block">Black Widow</b>
         <span class="is-size-small">S.H.I.E.L.D.</span>
@@ -120,8 +136,14 @@ export const TypeaheadRemote = Story({
 })
 
 export const MultiSelect = Story({
+  args: {
+    value: 'SpiderMan,IronMan',
+    placeholder: 'Try finding your hero',
+    multiple: true,
+    content: undefined,
+  },
   ...withRender(
-    () => `<bal-select multiple="true" placeholder="Try finding your hero" value="SpiderMan,IronMan">
+    ({ ...args }) => `<bal-select ${props(args)}>
     <bal-select-option value="BlackWidow" label="Black Widow">
         <b style="display: block">Black Widow</b>
         <span class="is-size-small">S.H.I.E.L.D.</span>

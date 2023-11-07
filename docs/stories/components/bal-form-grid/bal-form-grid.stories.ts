@@ -13,19 +13,6 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-form-grid' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-form-grid ${props(args)}>${content}</bal-form-grid>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     () => `<bal-form-grid>
   <bal-form-col><bal-input placeholder="fullwidth" /></bal-form-col>
@@ -44,7 +31,18 @@ export const Basic = Story({
   <bal-form-col size="one-quarter"><bal-input placeholder="one-quarter" /></bal-form-col>
 </bal-form-grid>`,
   ),
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const FormStructure = Story({
   ...withRender(

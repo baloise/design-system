@@ -8,6 +8,7 @@ const meta: Meta<Args> = {
   title: 'Components/Form/Date',
   args: {
     ...withDefaultContent(''),
+    placeholder: 'Pick a date',
   },
   argTypes: {
     ...withContent(),
@@ -25,15 +26,12 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(({ content, ...args }) => `<bal-date ${props(args)}>${content}</bal-date>`),
-  args: {
-    placeholder: 'Pick a date',
-    content: '',
-  },
-})
+export const Basic = Story()
 
 export const FieldControl = Story({
+  args: {
+    placeholder: 'Pick a date',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
@@ -43,39 +41,38 @@ export const FieldControl = Story({
   <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Pick a date',
-  },
 })
 
 export const ManualInput = Story({
+  args: {
+    placeholder: 'Pick a date',
+    triggerIcon: true,
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
-    <bal-date ${props(args)} trigger-icon="true"></bal-date>
+    <bal-date ${props(args)}></bal-date>
   </bal-field-control>
   <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Pick a date',
-  },
 })
 
 export const MinAndMax = Story({
-  ...withRender(
-    ({ ...args }) => `<bal-field>
-  <bal-field-label>Label</bal-field-label>
-  <bal-field-control>
-    <bal-date ${props(args)} default-date="2022-02-07"></bal-date>
-  </bal-field-control>
-  <bal-field-message>Field Message</bal-field-message>
-</bal-field>`,
-  ),
   args: {
     placeholder: 'Pick a date',
     min: '2022-02-06',
     max: '2022-03-12',
+    defaultDate: '2022-02-07',
   },
+  ...withRender(
+    ({ ...args }) => `<bal-field>
+  <bal-field-label>Label</bal-field-label>
+  <bal-field-control>
+    <bal-date ${props(args)}></bal-date>
+  </bal-field-control>
+  <bal-field-message>Field Message</bal-field-message>
+</bal-field>`,
+  ),
 })

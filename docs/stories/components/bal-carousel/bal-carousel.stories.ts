@@ -13,19 +13,6 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-carousel' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-carousel ${props(args)}>${content}</bal-carousel>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     () => `<bal-carousel>
   <bal-carousel-item>
@@ -48,7 +35,18 @@ export const Basic = Story({
   </bal-carousel-item>
 </bal-carousel>`,
   ),
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const ImageSlider = Story({
   ...withRender(
@@ -69,7 +67,6 @@ export const ImageSlider = Story({
   args: {
     interface: 'image',
     controls: 'dots',
-    content: '',
   },
 })
 
@@ -94,7 +91,6 @@ export const ProductSlider = Story({
     interface: 'product',
     steps: 2,
     controls: 'large',
-    content: '',
   },
 })
 
@@ -126,7 +122,6 @@ export const CardSlider = Story({
   args: {
     interface: 'card',
     controls: 'tabs',
-    content: '',
   },
 })
 
@@ -197,7 +192,6 @@ export const ResponsiveSlider = Story({
   args: {
     controls: 'small',
     steps: 3,
-    content: '',
   },
 })
 
@@ -220,6 +214,5 @@ export const TeaserSlider = Story({
   args: {
     steps: 1,
     controls: 'large',
-    content: '',
   },
 })
