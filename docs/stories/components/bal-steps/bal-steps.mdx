@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
 import * as StepsStories from './bal-steps.stories'
 
 <Meta of={StepsStories} />
@@ -28,7 +28,7 @@ import apiStepItem from './bal-step-item/api.md?raw'
 
 The step option can be passed in with the property too. For that we provide a util function `newBalStepOption`.
 
-```ts
+```typescript
 import { newBalStepOption } form '@baloise/design-system-components'
 
 const options = [
@@ -51,3 +51,5 @@ import theming from './theming.md?raw'
 import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
+
+<Footer />
