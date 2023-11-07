@@ -1,7 +1,14 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import {
+  props,
+  withRender,
+  withContent,
+  withDefaultContent,
+  withComponentControls,
+  StoryFactory,
+  newCodeSandboxFile,
+} from '../../utils'
 import { tableHtml } from './bal-table.templates'
 
 type Args = JSX.BalTable & { content: string }
@@ -33,8 +40,38 @@ export const Basic = Story({
   ...withRender(() => table),
 })
 
+import codeSandboxHtmlTemplate from './code-sandbox/example_component_html.md?raw'
+import codeSandboxTsTemplate from './code-sandbox/example_component_ts.md?raw'
+import angularPkg from '../../../public/assets/code/angular/package.json'
+import angularStyles from '../../../public/assets/code/angular/src/styles.scss?raw'
+
+angularPkg.dependencies['@baloise/design-system-components-table'] = 'latest'
+angularPkg.dependencies['ag-grid-community'] = 'latest'
+angularPkg.dependencies['ag-grid-angular'] = 'latest'
+
 export const AgGrid = Story({
+  parameters: {
+    balCodeSandbox: {
+      files: {
+        ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
+        ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
+        ...newCodeSandboxFile('example.component.css'),
+        'src/styles.scss': {
+          isBinary: false,
+          content: `${angularStyles}
+@import 'ag-grid-community/styles/ag-grid';
+@import 'ag-grid-community/styles/ag-theme-alpine';
+@import '@baloise/design-system-components-table/css/design-system-table';
+`,
+        },
+        'package.json': {
+          isBinary: false,
+          content: angularPkg,
+        },
+      },
+    },
+  },
   args: {
-    content: 'Add here AgGrid story!',
+    content: 'No Story available. Try the CodeSandbox button on the documentation page of the AG-Grid section.',
   },
 })

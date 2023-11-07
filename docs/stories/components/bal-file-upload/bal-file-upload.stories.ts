@@ -1,19 +1,49 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory, ListenerFactory } from '../../utils'
 
 type Args = JSX.BalFileUpload & { content: string }
+
+const listener = ListenerFactory()
 
 const meta: Meta<Args> = {
   title: 'Components/Form/FileUpload',
   args: {
-    ...withDefaultContent(),
+    accept: 'image/png,image/jpeg',
+    multiple: true,
+    hasFileList: true,
+    label: 'Choose or drop a file...',
+    maxBundleSize: 1000000,
+    maxFileSize: 1000000,
+    maxFiles: 3,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-file-upload' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-file-upload ${props(args)}>${content}</bal-file-upload>`),
+  render: (args, context) => {
+    const section: HTMLElement = document.createElement('section')
+
+    section.innerHTML = `<bal-field>
+    <bal-field-label required>Upload Label</bal-field-label>
+    <bal-field-control>
+        <bal-file-upload ${props(args)}></bal-file-upload>
+    </bal-field-control>
+    <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
+  </bal-field>`
+
+    listener.addEventListener('balRejectedFile', context, (event: any) => {
+      if (event && event.detail) {
+        const toastController = (window as any).BaloiseDesignSystem.toastController
+        toastController.create({
+          message: `${event.detail.file.name} => ${event.detail.reasons.join(', ')}`,
+          duration: 2000,
+          color: 'danger',
+        })
+      }
+    })
+
+    return section
+  },
 }
 
 export default meta
@@ -25,17 +55,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `<bal-field>
-  <bal-field-label required>Upload Label</bal-field-label>
-  <bal-field-control>
-      <bal-file-upload accept="image/png,image/jpeg" has-file-list label="Choose or drop a file..." max-bundle-size="1000000" max-file-size="1000000" max-files="3" multiple></bal-file-upload>
-  </bal-field-control>
-  <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
-</bal-field>`,
-  ),
-})
+export const Basic = Story({})
 
 export const NativeFileUpload = Story({
   ...withRender(

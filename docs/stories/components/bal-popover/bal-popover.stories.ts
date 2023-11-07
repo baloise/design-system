@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalPopover & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Popover',
+  title: 'Components/Deprecated/Popover',
   args: {
     ...withDefaultContent(),
   },

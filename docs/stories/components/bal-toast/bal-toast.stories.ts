@@ -13,9 +13,11 @@ const meta: Meta<Args> = {
   title: 'Components/Feedback/Toast',
   parameters: {
     balCodeSandbox: {
-      ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
-      ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
-      ...newCodeSandboxFile('example.component.css'),
+      files: {
+        ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
+        ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
+        ...newCodeSandboxFile('example.component.css'),
+      },
     },
   },
   args: {

@@ -14,7 +14,7 @@ export const CodeSandbox = ({ of }) => {
   if (of) {
     const resolvedOf = useOf(of || 'story', ['story', 'meta'])
     template = resolvedOf.story.originalStoryFn({ ...resolvedOf.story.initialArgs }).innerHTML
-    exampleFiles = resolvedOf.story.parameters.balCodeSandbox
+    exampleFiles = (resolvedOf.story.parameters.balCodeSandbox || {}).files
   }
 
   const [parameters, setParameters] = useState<any>(null)

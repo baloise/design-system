@@ -6,7 +6,7 @@ import { props, withRender, withContent, withDefaultContent, withComponentContro
 type Args = JSX.BalDatepicker & { content: string }
 
 const meta: Meta<Args> = {
-  title: 'Components/Datepicker',
+  title: 'Components/Deprecated/Datepicker',
   args: {
     ...withDefaultContent(),
   },

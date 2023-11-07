@@ -22,12 +22,14 @@ const meta: Meta<Args> = {
   title: 'Components/Feedback/Modal',
   parameters: {
     balCodeSandbox: {
-      ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
-      ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
-      ...newCodeSandboxFile('example.component.css'),
-      ...newCodeSandboxFile('modal.component.html', codeSandboxModalHtmlTemplate),
-      ...newCodeSandboxFile('modal.component.ts', codeSandboxModalTsTemplate),
-      ...newCodeSandboxFile('modal.component.css'),
+      files: {
+        ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
+        ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
+        ...newCodeSandboxFile('example.component.css'),
+        ...newCodeSandboxFile('modal.component.html', codeSandboxModalHtmlTemplate),
+        ...newCodeSandboxFile('modal.component.ts', codeSandboxModalTsTemplate),
+        ...newCodeSandboxFile('modal.component.css'),
+      },
     },
   },
   args: {

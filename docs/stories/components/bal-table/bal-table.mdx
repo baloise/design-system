@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, InfoQuote, CodeSandbox } from '../../../.storybook/blocks'
 import * as TableStories from './bal-table.stories'
 
 <Meta of={TableStories} />
@@ -11,7 +11,7 @@ import * as TableStories from './bal-table.stories'
 
 <Lead>**Table** is only css and html provided by the bulma framework.</Lead>
 
-<Canvas of={TableStories.Basic} sourceState="shown" />
+<Canvas of={TableStories.Basic} sourceState="closed" />
 
 <PlaygroundBar of={TableStories.Basic}></PlaygroundBar>
 
@@ -20,16 +20,18 @@ import * as TableStories from './bal-table.stories'
 
 <StoryHeading of={TableStories.AgGrid}></StoryHeading>
 
-<Canvas of={TableStories.AgGrid} sourceState="shown" />
+[AG Grid](https://www.ag-grid.com/) is a powerful and feature-rich JavaScript data grid library used for building interactive and performant tables in web applications.
+It provides a wide range of functionalities, including sorting, filtering, grouping, and advanced customization options, making it a popular choice for displaying and
+manipulating large sets of data in a user-friendly manner. AG Grid is widely used in enterprise applications and provides support for various frameworks like Angular, React, and Vue.js.
 
-{/* ------------------------------------------------------ */}
+<CodeSandbox of={TableStories.AgGrid} />
 
-#### Installation
+### Installation
 
 To use the AG-Grid install the following packages:
 
 ```
-npm install --save @baloise/design-system-components-table ag-grid-community
+npm install --save @baloise/design-system-components-table ag-grid-community ag-grid-angular
 ```
 
 To get the Baloise style import the following stylesheets:
