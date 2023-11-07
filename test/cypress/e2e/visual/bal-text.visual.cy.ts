@@ -1,5 +1,5 @@
 describe('bal-text', () => {
-  beforeEach(() => cy.visit('/components/typography/bal-text/test/bal-text.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-text/test/bal-text.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

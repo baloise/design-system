@@ -1,6 +1,6 @@
 describe('bal-textarea', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-textarea/test/bal-textarea.cy.html')
+    cy.visit('/components/bal-textarea/test/bal-textarea.cy.html')
     cy.waitForDesignSystem()
   })
 

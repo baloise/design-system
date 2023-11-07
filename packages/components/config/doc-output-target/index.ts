@@ -30,18 +30,10 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
 
         const componentFolderDepth = component.filePath?.split('/').length
-        const isNested = ['form', 'layout', 'notice', 'typography'].some(d => component.filePath?.includes(`/${d}/`))
-        const isRoot = isNested ? componentFolderDepth === 6 : componentFolderDepth === 5
-
-        // const [base] = storyPath.split('/docs/stories/components/')
-        // const normalizedPath = path.join(base, 'docs/stories/components', component.tag)
-        const normalizedPath = storyPath
-          .split('/')
-          .filter(p => !['form', 'layout', 'notice', 'typography'].includes(p))
-          .join('/')
+        const isRoot = componentFolderDepth === 5
 
         try {
-          mkdirSync(normalizedPath, { recursive: true })
+          mkdirSync(storyPath, { recursive: true })
         } catch (err) {
           console.error(err)
         }
@@ -61,7 +53,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         }
 
         try {
-          writeFileSync(path.join(normalizedPath, 'api.md'), content.join(NEWLINE))
+          writeFileSync(path.join(storyPath, 'api.md'), content.join(NEWLINE))
         } catch (err) {
           console.error(err)
         }
@@ -69,24 +61,17 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         if (isRoot) {
           // Testing
           try {
-            createTestingMarkdown(normalizedPath, component)
+            createTestingMarkdown(storyPath, component)
           } catch (err) {
             console.error(err)
           }
 
           // Theming
           try {
-            createThemingMarkdown(normalizedPath, component)
+            createThemingMarkdown(storyPath, component)
           } catch (err) {
             console.error(err)
           }
-
-          // // Story
-          // try {
-          //   createStory(normalizedPath, component)
-          // } catch (err) {
-          //   console.error(err)
-          // }
         }
       }
     }
