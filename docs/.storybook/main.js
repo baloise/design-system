@@ -18,16 +18,7 @@ const config = {
     './addons/version/index.js',
     './addons/framework/index.js',
     './addons/source/index.js',
-    // {
-    //   name: '@storybook/addon-docs',
-    //   options: {
-    //     mdxPluginOptions: {
-    //       mdxCompileOptions: {
-    //         remarkPlugins: [remarkGfm],
-    //       },
-    //     },
-    //   },
-    // },
+    './addons/title/index.js',
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-vite'),
