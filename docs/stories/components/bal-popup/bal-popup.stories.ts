@@ -8,12 +8,20 @@ const meta: Meta<Args> = {
   title: 'Components/Data Display/Popup',
   args: {
     ...withDefaultContent(),
+    label: 'Popup Label',
+    backdropDismiss: 'true',
+    content: '',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-popup' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-popup ${props(args)}>${content}</bal-popup>`),
+  ...withRender(
+    ({ ...args }) => `<div>
+  <bal-button bal-popup="my-popup">Click me</bal-button>
+  <bal-popup id="my-popup" ${props(args)}>Popup content</bal-popup>
+</div>`,
+  ),
 }
 
 export default meta
@@ -25,63 +33,52 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ ...args }) => `<div>
-  <bal-button bal-popup="my-popup">Click me</bal-button>
-  <bal-popup id="my-popup" ${props(args)} backdrop-dismiss="true">Popup content</bal-popup>
-</div>`,
-  ),
-  args: {
-    arrow: false,
-    backdrop: false,
-    backdropDismiss: false,
-    closable: false,
-    content: '',
-  },
-})
+export const Basic = Story()
 
 export const Popover = Story({
-  ...withRender(
-    ({ ...args }) => `<div>
-  <bal-button bal-popup="my-popup">Click me</bal-button>
-  <bal-popup id="my-popup" ${props(args)} backdrop-dismiss="true">Popup content</bal-popup>
-</div>`,
-  ),
   args: {
     arrow: true,
     backdrop: true,
     closable: true,
+    backdropDismiss: 'true',
   },
-})
-
-export const Fullscreen = Story({
   ...withRender(
     ({ ...args }) => `<div>
   <bal-button bal-popup="my-popup">Click me</bal-button>
-  <bal-popup id="my-popup" ${props(args)} backdrop-dismiss="true">Popup content</bal-popup>
+  <bal-popup id="my-popup" ${props(args)}>Popup content</bal-popup>
 </div>`,
   ),
+})
+
+export const Fullscreen = Story({
   args: {
     variant: 'fullscreen',
     closable: true,
     arrow: false,
     backdrop: false,
+    backdropDismiss: 'true',
   },
-})
-
-export const Drawer = Story({
   ...withRender(
     ({ ...args }) => `<div>
   <bal-button bal-popup="my-popup">Click me</bal-button>
-  <bal-popup id="my-popup" ${props(args)} backdrop-dismiss="true">Popup content</bal-popup>
+  <bal-popup id="my-popup" ${props(args)}>Popup content</bal-popup>
 </div>`,
   ),
+})
+
+export const Drawer = Story({
   args: {
     label: 'Popup Label',
     variant: 'drawer',
     backdrop: true,
     closable: true,
     arrow: false,
+    backdropDismiss: 'true',
   },
+  ...withRender(
+    ({ ...args }) => `<div>
+  <bal-button bal-popup="my-popup">Click me</bal-button>
+  <bal-popup id="my-popup" ${props(args)}>Popup content</bal-popup>
+</div>`,
+  ),
 })

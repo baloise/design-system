@@ -29,11 +29,6 @@ export const Basic = Story({
   args: {
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    color: '',
-    size: '',
-    bold: false,
-    paragraph: false,
-    noWrap: false,
   },
 })
 
@@ -41,10 +36,6 @@ export const NoWrap = Story({
   args: {
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    color: '',
-    size: '',
-    bold: false,
-    paragraph: false,
     noWrap: true,
   },
 })

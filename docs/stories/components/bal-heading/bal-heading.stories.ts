@@ -30,7 +30,6 @@ export const Basic = Story({
     level: 'h1',
     subtitle: false,
     space: 'bottom',
-    color: '',
     inverted: false,
   },
 })
@@ -41,7 +40,6 @@ export const Subtitle = Story({
     level: 'h3',
     subtitle: true,
     space: 'bottom',
-    color: '',
     inverted: false,
   },
 })
@@ -105,7 +103,6 @@ export const AutoLevel = Story({
     level: 'h1',
     subtitle: false,
     space: 'bottom',
-    color: '',
     inverted: false,
   },
 })

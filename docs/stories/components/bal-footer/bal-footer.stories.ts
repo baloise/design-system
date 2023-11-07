@@ -8,12 +8,19 @@ const meta: Meta<Args> = {
   title: 'Components/Layout/Footer',
   args: {
     ...withDefaultContent(),
+    content: 'Footer Content',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-footer' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-footer ${props(args)}>${content}</bal-footer>`),
+  ...withRender(
+    ({ content }) => `<bal-footer>
+  <div class="container">
+    <p>${content}</p>
+  </div>
+</bal-footer>`,
+  ),
 }
 
 export default meta
@@ -25,7 +32,16 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
+export const Basic = Story()
+
+export const FooterOfGermany = Story({
+  args: {
+    region: 'DE',
+    language: 'de',
+    content: '',
+    hideLanguageSelection: true,
+    showSocialMedia: true,
+  },
   ...withRender(
     ({ content, ...args }) => `<bal-footer ${props(args)}>
   <div class="container">
@@ -33,26 +49,4 @@ export const Basic = Story({
   </div>
 </bal-footer>`,
   ),
-  args: {
-    content: 'Footer Content',
-    hideLinks: false,
-    hideLanguageSelection: false,
-    showSocialMedia: false,
-  },
-})
-
-export const FooterOfGermany = Story({
-  ...withRender(
-    ({ content, ...args }) => `<bal-footer ${props(args)} hide-language-selection="true" show-social-media="true">
-  <div class="container">
-    <p>${content}</p>
-  </div>
-</bal-footer>`,
-  ),
-  args: {
-    hideLinks: false,
-    region: 'DE',
-    language: 'de',
-    content: '',
-  },
 })

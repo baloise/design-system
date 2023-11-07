@@ -1,4 +1,3 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
@@ -14,7 +13,16 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-hint' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-hint ${props(args)}>${content}</bal-hint>`),
+  ...withRender(
+    () => `<bal-hint class="mt-xx-large">
+  <bal-hint-title>Spider-Man</bal-hint-title>
+  <bal-hint-text>
+    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15
+    (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and
+    video game adaptations set in the Marvel Universe.
+  </bal-hint-text>
+</bal-hint>`,
+  ),
 }
 
 export default meta
@@ -26,22 +34,14 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    () => `<bal-hint class="mt-xx-large">
-  <bal-hint-title>Spider-Man</bal-hint-title>
-  <bal-hint-text>
-    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15
-    (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and
-    video game adaptations set in the Marvel Universe.
-  </bal-hint-text>
-</bal-hint>`,
-  ),
-})
+export const Basic = Story()
 
 export const TooltipHint = Story({
+  args: {
+    small: true,
+  },
   ...withRender(
-    () => `<bal-hint class="mt-large" small="true">
+    ({ ...args }) => `<bal-hint class="mt-large" ${props(args)}>
   <bal-hint-text>
     Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
   </bal-hint-text>

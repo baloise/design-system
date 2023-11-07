@@ -1,4 +1,3 @@
-
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
 import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
@@ -9,26 +8,14 @@ const meta: Meta<Args> = {
   title: 'Components/Containment/Sheet',
   args: {
     ...withDefaultContent(),
+    containerSize: 'compact',
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-sheet' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-sheet ${props(args)}>${content}</bal-sheet>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
-    ({ content }) => `<div>
+    ({ content, ...args }) => `<div>
   <div class="container is-compact mb-xx-small0">
     <bal-card>
       <bal-card-title>BaloiseCombi</bal-card-title>
@@ -41,7 +28,7 @@ export const Basic = Story({
     </bal-card>
   </div>
 
-  <bal-sheet container-size="compact">
+  <bal-sheet ${props(args)}>
     <bal-stack layout="vertical" space="small" class="is-hidden-tablet">
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
       <bal-button expanded color="info">Back</bal-button>
@@ -59,4 +46,15 @@ export const Basic = Story({
   </bal-sheet>
 </div>`,
   ),
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()

@@ -11,6 +11,7 @@ const meta: Meta<Args> = {
   title: 'Components/Form/Checkbox',
   args: {
     ...withDefaultContent(),
+    content: 'Label',
   },
   argTypes: {
     ...withContent(),
@@ -28,12 +29,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(({ content, ...args }) => `<bal-checkbox ${props(args)}>${content}</bal-checkbox>`),
-  args: {
-    content: 'Label',
-  },
-})
+export const Basic = Story()
 
 export const FieldControl = Story({
   ...withRender(

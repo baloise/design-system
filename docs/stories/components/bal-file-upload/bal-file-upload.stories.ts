@@ -55,7 +55,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({})
+export const Basic = Story()
 
 export const NativeFileUpload = Story({
   ...withRender(

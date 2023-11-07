@@ -21,7 +21,18 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-card' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-card ${props(args)}>${content}</bal-card>`),
+  ...withRender(
+    ({ content }) => `<bal-card>
+  <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>${content}</bal-card-content>
+  <bal-card-actions position="right">
+    <bal-button color="info">Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-card-actions>
+</bal-card>`,
+  ),
 }
 
 const svgPigRed = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path fill="#ffaca6" d="M30 24c.331 0 .654.031.974.076A9.388 9.388 0 0 0 31.446 22h.608C33.127 22 34 21.167 34 20.144V19a.5.5 0 0 0-1 0v1.144c0 .472-.425.856-.946.856H31.5c0-2.851-1.251-5.374-3.183-7.022-.055-.048-.109-.097-.166-.144a8.498 8.498 0 0 0-.567-.416 7.966 7.966 0 0 0-.367-.24c-.083-.05-.159-.112-.244-.16 0 .008-.002.015-.003.022-.159-.09-.313-.188-.478-.266a7.89 7.89 0 0 0-3.4-.774h-6.388A3.998 3.998 0 0 0 13 9.5v3.06l-.008.002c-.076.03-.144.073-.219.105-.24.104-.478.214-.707.34-.134.074-.261.158-.39.239-.17.107-.338.216-.5.335a8.617 8.617 0 0 0-.821.688c-.117.11-.234.218-.344.335-.141.149-.272.309-.403.469-.083.101-.177.193-.256.298h.01A9.148 9.148 0 0 0 7.988 18H7.25C6.56 18 6 18.56 6 19.25v3.5c0 .69.56 1.25 1.25 1.25h.738c.772 2.336 2.412 4.228 4.512 5.225a7.89 7.89 0 0 0 3.4.775h7.18c.488-3.387 3.401-6 6.92-6zm-16.875-5a1.125 1.125 0 1 1 0-2.25 1.125 1.125 0 0 1 0 2.25z"/><circle cx="13.125" cy="17.875" r="1.125" fill="none"/><path fill="#d9304c" d="M12.5 32.75a1.25 1.25 0 0 0 2.5 0v-2.803a7.916 7.916 0 0 1-2.5-.721v3.524z"/><path fill="#000d6e" d="M23.532 15.024h-6a.5.5 0 0 1 0-1h6a.5.5 0 0 1 0 1zM29.985 24.969a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-2.878 7.019c.459 0 .729-.252.837-.648l.644.262c-.171.544-.671 1.021-1.472 1.021-.914 0-1.607-.68-1.607-1.62 0-.945.693-1.625 1.612-1.625.806 0 1.301.495 1.467 1.021l-.644.261c-.108-.392-.383-.648-.842-.648-.536 0-.914.396-.914.991.001.588.379.985.919.985zm4.55.576h-.67v-1.297h-1.193v1.297h-.671v-3.129h.671v1.233h1.193v-1.233h.67v3.129zm2.667-1.855v.581h-1.242v1.273h-.671v-3.129h2.08v.581h-1.409v.693h1.242z"/></svg>`
@@ -37,24 +48,15 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ content }) => `<bal-card>
-  <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
-  <bal-card-title>BaloiseCombi</bal-card-title>
-  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-  <bal-card-content>${content}</bal-card-content>
-  <bal-card-actions position="right">
-    <bal-button color="info">Secondary Action</bal-button>
-    <bal-button>Main Action</bal-button>
-  </bal-card-actions>
-</bal-card>`,
-  ),
-})
+export const Basic = Story()
 
 export const FlatCard = Story({
+  args: {
+    border: true,
+    flat: true,
+  },
   ...withRender(
-    ({ content }) => `<bal-card border="true" flat="true">
+    ({ content, ...args }) => `<bal-card ${props(args)}>
   <bal-card-subtitle bold="true" color="blue">Your Product</bal-card-subtitle>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
@@ -91,10 +93,14 @@ export const CardTitle = Story({
 })
 
 export const TeaserCards = Story({
+  args: {
+    color: 'purple-light',
+    fullheight: true,
+  },
   ...withRender(
-    () => `<div class="columns">
+    ({ ...args }) => `<div class="columns">
   <div class="column is-one-third">
-    <bal-card color="purple-light" fullheight="true">
+    <bal-card ${props(args)}>
       <bal-card-content>
         <bal-stack layout="vertical" align="center" space="large">
           <bal-icon svg='${svgPigPurple}' color="auto" size="xx-large"></bal-icon>
@@ -141,11 +147,15 @@ export const TeaserCards = Story({
 })
 
 export const CardVariations = Story({
+  args: {
+    fullheight: true,
+    clickable: true,
+  },
   ...withRender(
-    ({ content }) => `<div class="container">
+    ({ content, ...args }) => `<div class="container">
   <div class="columns is-multiline">
     <div class="column is-half">
-      <bal-card fullHeight="true" clickable="true">
+      <bal-card ${props(args)}>
         <bal-card-content>
           <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
             <img class="mb-normal" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >

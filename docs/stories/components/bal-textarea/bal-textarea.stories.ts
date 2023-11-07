@@ -32,6 +32,9 @@ export const Basic = Story({
 })
 
 export const FieldControl = Story({
+  args: {
+    placeholder: 'Enter a comment',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
@@ -41,12 +44,13 @@ export const FieldControl = Story({
   <bal-field-message color="hint">Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    placeholder: 'Enter a comment',
-  },
 })
 
 export const InvalidTextarea = Story({
+  args: {
+    invalid: true,
+    value: 'Value',
+  },
   ...withRender(
     ({ ...args }) => `<bal-field invalid="true">
     <bal-field-label>Label</bal-field-label>
@@ -56,13 +60,12 @@ export const InvalidTextarea = Story({
     <bal-field-message color="danger">Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    invalid: true,
-    value: 'Value',
-  },
 })
 
 export const NativeTextarea = Story({
+  args: {
+    placeholder: 'Text input',
+  },
   ...withRender(
     ({ ...args }) => `<div class="field">
   <label class="label">Name</label>
@@ -93,7 +96,4 @@ export const NativeTextarea = Story({
   <p class="help is-danger">This username is available</p>
 </div>`,
   ),
-  args: {
-    placeholder: 'Text input',
-  },
 })

@@ -36,6 +36,13 @@ export const Basic = Story({
 })
 
 export const FieldControl = Story({
+  args: {
+    value: '20',
+    hasTicks: true,
+    step: 20,
+    min: 0,
+    max: 100,
+  },
   ...withRender(
     ({ ...args }) => `<bal-field>
   <bal-field-label>Label</bal-field-label>
@@ -45,11 +52,4 @@ export const FieldControl = Story({
   <bal-field-message>Field Message</bal-field-message>
 </bal-field>`,
   ),
-  args: {
-    value: '20',
-    hasTicks: true,
-    step: 20,
-    min: 0,
-    max: 100,
-  },
 })

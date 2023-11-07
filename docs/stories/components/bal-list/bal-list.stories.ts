@@ -16,24 +16,12 @@ const meta: Meta<Args> = {
   title: 'Components/Data Display/List',
   args: {
     ...withDefaultContent(lorem1),
+    border: true,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-list' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-list ${props(args)}>${content}</bal-list>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     ({ content, ...args }) => `
 <bal-list ${props(args)}>
@@ -69,11 +57,18 @@ export const Basic = Story({
 </bal-list>
   `,
   ),
-  args: {
-    border: true,
-    size: '',
-  },
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const NativeList = Story({
   ...withRender(
@@ -129,6 +124,9 @@ export const NativeList = Story({
 })
 
 export const LinkedList = Story({
+  args: {
+    border: true,
+  },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
@@ -161,12 +159,13 @@ export const LinkedList = Story({
 </bal-list>
   `,
   ),
-  args: {
-    border: true,
-  },
 })
 
 export const DownloadList = Story({
+  args: {
+    border: true,
+    size: 'large',
+  },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
@@ -237,13 +236,13 @@ export const DownloadList = Story({
 </bal-list>
   `,
   ),
-  args: {
-    border: true,
-    size: 'large',
-  },
 })
 
 export const AccordionList = Story({
+  args: {
+    border: true,
+    size: 'small',
+  },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
@@ -273,13 +272,13 @@ export const AccordionList = Story({
 </bal-list>
   `,
   ),
-  args: {
-    border: true,
-    size: 'small',
-  },
 })
 
 export const AccordionListNested = Story({
+  args: {
+    border: true,
+    accordionOneLevel: true,
+  },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
@@ -386,13 +385,12 @@ export const AccordionListNested = Story({
 </bal-list>
   `,
   ),
-  args: {
-    border: true,
-    accordionOneLevel: true,
-  },
 })
 
 export const AccordionListGrouped = Story({
+  args: {
+    border: true,
+  },
   ...withRender(
     ({ ...args }) => `
 <div class="columns">
@@ -447,7 +445,4 @@ export const AccordionListGrouped = Story({
 </div>
   `,
   ),
-  args: {
-    border: true,
-  },
 })

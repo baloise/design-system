@@ -22,21 +22,8 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-accordion' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-accordion ${props(args)}>${content}</bal-accordion>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
-    ({ content }) => `<bal-accordion v-bind="args">
+    ({ content }) => `<bal-accordion>
   <bal-accordion-summary>
     <bal-stack>
       <bal-icon svg='${balBrandIconCarGreen}' color="auto" size="large"></bal-icon>
@@ -57,14 +44,28 @@ export const Basic = Story({
   </bal-accordion-details>
 </bal-accordion>`,
   ),
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const ButtonAccordion = Story({
+  args: {
+    card: true,
+  },
   ...withRender(
-    ({ content }) => `<bal-card>
+    ({ content, ...args }) => `<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-  <bal-accordion card>
+  <bal-accordion ${props(args)}>
     <bal-accordion-details>
       <p class="py-medium">${content}</p>
     </bal-accordion-details>
@@ -77,10 +78,14 @@ export const ButtonAccordion = Story({
 })
 
 export const OldVersion = Story({
+  args: {
+    openIcon: 'edit',
+    openLabel: 'Bearbeiten',
+    closeLabel: 'Schliessen',
+    closeIcon: 'close',
+  },
   ...withRender(
-    ({
-      content,
-    }) => `<bal-accordion open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
+    ({ content, ...args }) => `<bal-accordion ${props(args)}>
   <p class="py-medium">${content}</p>
 </bal-accordion>`,
   ),

@@ -13,19 +13,6 @@ const meta: Meta<Args> = {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-app' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-app ${props(args)}>${content}</bal-app>`),
-}
-
-export default meta
-
-/**
- * STORIES
- * ------------------------------------------------------
- */
-
-const Story = StoryFactory<Args>(meta)
-
-export const Basic = Story({
   ...withRender(
     () => `<bal-app class="has-sticky-footer">
   <header>
@@ -44,7 +31,18 @@ export const Basic = Story({
   </bal-footer>
   </bal-app>`,
   ),
-})
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
 
 export const FormWizard = Story({
   ...withRender(

@@ -28,18 +28,11 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   args: {
     required: undefined,
-    invalid: false,
-    disabled: false,
-    size: '',
   },
 })
 
 export const RequiredAndOptional = Story({
   args: {
-    required: false,
-    invalid: false,
-    disabled: false,
-    size: '',
     content: 'Label (optional)',
   },
 })

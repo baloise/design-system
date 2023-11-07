@@ -16,12 +16,21 @@ const meta: Meta<Args> = {
   title: 'Components/Containment/Stage',
   args: {
     ...withDefaultContent(lorem1),
+    color: 'green',
+    shape: true,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-stage' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-stage ${props(args)}>${content}</bal-stage>`),
+  ...withRender(
+    ({ content, ...args }) => `<bal-stage ${props(args)}>
+  <bal-stage-body>
+    <bal-stage-back-link href="#" class="mb-medium">Back</bal-stage-back-link>
+    <bal-heading class="mb-x-small" space="none">${content}</bal-heading>
+    </bal-stage-body>
+</bal-stage>`,
+  ),
 }
 
 export default meta
@@ -33,21 +42,7 @@ export default meta
 
 const Story = StoryFactory<Args>(meta)
 
-export const Basic = Story({
-  ...withRender(
-    ({ content, ...args }) => `<bal-stage ${props(args)}>
-  <bal-stage-body>
-    <bal-stage-back-link href="#" class="mb-medium">Back</bal-stage-back-link>
-    <bal-heading class="mb-x-small" space="none">${content}</bal-heading>
-    </bal-stage-body>
-</bal-stage>`,
-  ),
-  args: {
-    size: '',
-    color: 'green',
-    shape: true,
-  },
-})
+export const Basic = Story()
 
 export const SmallStage = Story({
   ...withRender(
