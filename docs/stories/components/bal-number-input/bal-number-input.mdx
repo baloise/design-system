@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as NumberInputStories from './bal-number-input.stories'
 
 <Meta of={NumberInputStories} />
@@ -16,7 +16,7 @@ import * as NumberInputStories from './bal-number-input.stories'
 <InfoQuote>
 **TIP**
 
-**Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
+**Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--documentation).
 
 </InfoQuote>
 
@@ -59,4 +59,11 @@ import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

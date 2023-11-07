@@ -1,6 +1,6 @@
 
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as RadioStories from './bal-radio.stories'
 
 <Meta of={RadioStories} />
@@ -65,7 +65,7 @@ export class ExampleComponent {
 
 <StoryHeading of={RadioStories.RadioButton}></StoryHeading>
 
-The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic) and [content component](?path=/docs/components-layout-content--basic).
+The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
 
 The states invalid and disabled are also supported.
 
@@ -111,4 +111,11 @@ import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

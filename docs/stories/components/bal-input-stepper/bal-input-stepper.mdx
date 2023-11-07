@@ -1,5 +1,5 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
 import * as InputStepperStories from './bal-input-stepper.stories'
 
 <Meta of={InputStepperStories} />
@@ -34,4 +34,11 @@ import testing from './testing.md?raw'
 
 <Markdown>{testing}</Markdown>
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

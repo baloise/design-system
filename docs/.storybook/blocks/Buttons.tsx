@@ -4,7 +4,7 @@ import { navigate } from '@storybook/addon-links'
 export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle }) => {
   let linkObj = {}
   if (link) {
-    linkObj = { ...linkObj, link, target: target || '_blank' }
+    linkObj = { ...linkObj, href:link, target: target || '_blank' }
   }
 
   if (pageTitle) {
