@@ -43,7 +43,7 @@
   "dependencies": {
     "@baloise/design-system-components": "14.3.0",
     "cypress-file-upload": "~5.0.8",
-    "date-fns": "~2.29.3"
+    "date-fns": "~2.30.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }
