@@ -1,5 +1,29 @@
 # @baloise/design-system-components
 
+## 14.3.0
+
+### Minor Changes
+
+- [#1110](https://github.com/baloise/design-system/pull/1110) - A new `WhatsApp` icon has been added to the icons collection.
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The icon component now includes support for brand-icons. Additionally, we've removed the padded frame for large icons and bigger sizes, as brand-icons already come with their own frame. Furthermore, we've ensured that the available color list is now complete.
+
+### Patch Changes
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The sheet component now has a default white background to address the transparent overlay issue.
+
+- [#1109](https://github.com/baloise/design-system/pull/1109) - The number input component for the German region now supports decimal points with a comma separator.
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The design tokens for line-height values for x-small and small text has been adjusted to ensure compliance with accessibility (a11y) standards.
+
+- [#1104](https://github.com/baloise/design-system/pull/1104) - Assign the `name` attribute to the native input element of the `bal-date` component.
+
+- Updated dependencies [[`0613561fb`](https://github.com/baloise/design-system/commit/0613561fb2aeaf4557c1845b2cd9e42f7273542a), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0)]:
+  - @baloise/design-system-icons@14.3.0
+  - @baloise/design-system-tokens@14.3.0
+  - @baloise/design-system-css@14.3.0
+  - @baloise/design-system-fonts@14.3.0
+
 ## 14.2.1
 
 ### Patch Changes
