@@ -27,7 +27,7 @@ const filterVariableStatements = nodes => {
 }
 
 const filterVariableStatement = nodes => {
-  return filterDeclarationsAndStatements(nodes, 236)
+  return filterDeclarationsAndStatements(nodes, SyntaxKind.VariableStatement)
 }
 
 const filterVariableDeclaration = nodes => {
