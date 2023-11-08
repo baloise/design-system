@@ -478,6 +478,7 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
           ref={el => (this.referenceEl = el)}
         >
           <bal-input-date
+            name={this.name}
             required={this.required}
             placeholder={this.placeholder}
             value={this.value}
