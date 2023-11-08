@@ -29,7 +29,7 @@ The documentation explaining how to test can be found [here](?path=/docs/develop
 
 ## Getting Started
 
-The testing part runs against our component demo pages. Therefore, we need to start the server with `npm run lib:server` from the root directory.
+The testing part runs against our component demo pages. Therefore, start the server with `npm run lib:server` from the root directory.
 
 Then navigate with a second terminal into the component package:
 
@@ -89,9 +89,10 @@ declare namespace Cypress {
 
 Some of the cypress commands like `.type()` needed to be changed to match our components.
 
-In most cases we need to find the correct native element or change the selectors.
+In most cases find the correct native element or change the selectors.
 
-For each command we override, we create a new file like `type.command.ts`. Inside of this file we override the command, but the default return is the command itself. We only catch our special cases (components).
+For each overridden command, a new file is created, such as `type.command.ts`. Inside this file, the command is overridden,
+but the default return value remains the command itself. Special cases (components) are the only instances where are exceptions.
 
 ```typescript
 import { isInput, selectors, wrapRoot } from '../helpers'

@@ -21,7 +21,7 @@ import * as CheckboxStories from './bal-checkbox.stories'
 We introduced a new way of adding a options to the bal-checkbox-group
 by introducing the `options` property in which options can be passed using a Javascript.
 
-To use the `bal-checkbox-group` with options we also need to set `control` attribute to true.
+To use the `bal-checkbox-group` with options the `control` attribute is set to true.
 
 ```html
 <bal-checkbox-group control [options]="options"></bal-checkbox-group>
@@ -85,7 +85,7 @@ Switches are used to toggle between exactly two states (like on and off).
 
 <StoryHeading of={CheckboxStories.CheckboxButton}></StoryHeading>
 
-The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
+The content can be created flexibly by utilizing the [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
 
 The states invalid and disabled are also supported.
 
@@ -97,7 +97,7 @@ The states invalid and disabled are also supported.
 
 The checkbox buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
 
-By default on mobile we only support one item per line. To overwrite this use the prop `columns-mobile`.
+By default, on mobile devices, only one item per line is supported. To override this, use the `columns-mobile` prop.
 
 <Canvas of={CheckboxStories.CheckboxButtonGrid} />
 

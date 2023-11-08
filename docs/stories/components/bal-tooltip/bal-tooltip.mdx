@@ -36,7 +36,7 @@ It includes a label attribute, "Tooltip Label", for accessibility purposes and t
 
 ### Positioned tooltips
 
-The Tooltip offers a selection of 12 placement options, each without directional arrows. Instead, they utilize motion originating from the source element to indicate the intended direction.  
+The Tooltip offers a selection of 12 placement options, each without directional arrows. Instead, they utilize motion originating from the source element to indicate the intended direction.
 You can use the `placement` property to specify the position of the Tooltip. This property allows you to choose from a variety of options to determine where the Tooltip should appear in relation to its source element. Here's an example:
 
 ```html
@@ -46,7 +46,10 @@ You can use the `placement` property to specify the position of the Tooltip. Thi
 
 ### Angular
 
-Given that the component you provided must be created upon popover presentation and destroyed upon dismissal, internal content projection using `<ng-content>` is not feasible. Instead, we utilize `<ng-container>`, which requires an `<ng-template>` to be passed in. Therefore, when providing your component, it should be enclosed within an `<ng-template>`:
+To ensure proper creation and destruction of the provided component upon popover presentation and
+dismissal, using internal content projection with `<ng-content>` is not viable. Instead, use
+`<ng-container>`, which necessitates the inclusion of an `<ng-template>`. As a result, when supplying
+your component, it should be wrapped within an `<ng-template>`:
 
 ```html
 <bal-tooltip>

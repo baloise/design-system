@@ -32,7 +32,7 @@ asynchronous nature of the components' behavior.
 
 ## Unit Testing
 
-For creating effective unit tests, we highly recommend employing the following tools:
+To create effective unit tests, it is highly recommended to utilize the following tools:
 
 - [Karma + Jasmin](https://angular.io/guide/testing) (only Angular)
 - [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/overview)
@@ -91,7 +91,7 @@ button.click()
 await fixture.whenStable()
 await waitForComponent(fixture.nativeElement)
 
-// now we can do the assertions
+// do assertions here
 expect(component.onEditButtonClick).toHaveBeenCalled()
 `}
 />
@@ -275,7 +275,7 @@ describe('Accordion', () => {
 
 ### Selectors
 
-For optimal testing practices, we suggest assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
+For optimal testing practices assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
 
 ```html
 <bal-button data-testid="my-button"></bal-button>
