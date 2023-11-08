@@ -30,7 +30,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
 
         const componentFolderDepth = component.filePath?.split('/').length
-        const isRoot = componentFolderDepth === 5
+        const isRoot = componentFolderDepth === 4
 
         try {
           mkdirSync(storyPath, { recursive: true })
