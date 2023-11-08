@@ -37,7 +37,7 @@ export function toFixedNumber(value: string, decimalPoints = 0): string {
     value = `0${value}`
   }
 
-  const num = decimalPoints === 0 ? parseInt(value, 10) : parseFloat(value)
+  const num = decimalPoints === 0 ? parseInt(value, 10) : parseFloat(value.replace(getDecimalSeparator(), '.'))
   return isNaN(num) ? '' : num.toFixed(decimalPoints)
 }
 
