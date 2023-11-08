@@ -1,5 +1,5 @@
 describe('bal-radio', () => {
-  beforeEach(() => cy.visit('/components/form/bal-radio/test/bal-radio.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-radio/test/bal-radio.visual.html').waitForDesignSystem())
 
   testRadio('basic')
   testRadio('select-button')

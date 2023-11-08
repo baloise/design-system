@@ -1,5 +1,4 @@
 .build/
-.storybook/
 dist/
 dist-transpiled/
 temp/
@@ -53,3 +52,6 @@ packages/components-vue/src/proxies.ts
 packages/icons/src/index.ts
 packages/maps/src/markers.ts
 packages/tokens/.tmp
+
+docs/public/assets/images/brand-icons
+docs/public/assets/images/icons

@@ -1,0 +1,448 @@
+import { Meta, Title, IconGallery, IconItem } from '@storybook/blocks'
+import { ButtonCard, Banner, Lead, InfoQuote, IconOverview, Footer, LinkCard, LinkCards } from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Iconography"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Iconography" section="Foundation" color="purple" puzzle />
+
+<Lead>
+  Icons with a clear, minimal, and consistent design, swiftly communicate ideas, draw attention to key information, and
+  facilitate user interaction across all our digital platforms.
+</Lead>
+
+<InfoQuote>
+  If there is one missing please feel free to create a [GitHub
+  Issue](https://github.com/baloise/design-system/issues/new/choose).
+</InfoQuote>
+
+## UI Icons
+
+Introducing a collection of up to 100 vector graphics from the esteemed [Core Solid Pro](https://www.streamlinehq.com/icons/streamline-mini-bold)
+series by [Streamline](https://www.streamlinehq.com).
+
+These icons are presented in primary and white colors, with specific variations for disabled or invalid states.
+They seamlessly integrate into a wide range of UI elements including buttons, snackbars, navigations, tabs, and lists.
+
+All these icons are included in the package `@baloise/design-system-icons`.
+
+### Colors
+
+<bal-doc-app>
+  <table className="sb-unstyled table is-fullwidth">
+    <thead>
+      <tr>
+        <th>Examples</th>
+        <th>Description</th>
+        <th>Token</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="star-full" size="medium" color="primary"></bal-icon>
+            <bal-icon name="star-full" size="medium" color="primary-light"></bal-icon>
+            <bal-icon name="star-full" size="medium" color="primary-dark"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>primary</strong>
+          <br />
+          <small>
+            These are the primary colors of the icons. 2nd and 3rd are use for hover and active pseudo state.
+          </small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-primary)</code>
+            </pre>
+            <pre>
+              <code>var(--bal-icon-color-primary-light)</code>
+            </pre>
+            <pre>
+              <code>var(--bal-icon-color-primary-dark)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="has-background-primary p-small">
+            <bal-icon name="date" size="medium" color="white"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>white</strong>
+          <br />
+          <small>Inverted icon color for dark backgrounds.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-white)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="location" size="medium" color="light-blue"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>light-blue</strong>
+          <br />
+          <small>Use for the default hover color.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-primary)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="edit" size="medium" color="grey"></bal-icon>
+            <bal-icon name="edit" size="medium" color="grey-light"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>grey</strong>
+          <br />
+          <small>Disabled component should change the icon to a grey color too.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-grey)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-grey-light)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="check-circle" size="medium" color="success"></bal-icon>
+            <bal-icon name="check-circle" size="medium" color="success-dark"></bal-icon>
+            <bal-icon name="check-circle" size="medium" color="success-darker"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>success</strong>
+          <br />
+          <small>This color represents a valid state. 2nd is for hover and 3rd for pressed state.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-success)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-success-dark)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-success-darker)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="alert-triangle" size="medium" color="warning"></bal-icon>
+            <bal-icon name="alert-triangle" size="medium" color="warning-dark"></bal-icon>
+            <bal-icon name="alert-triangle" size="medium" color="warning-darker"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>warning</strong>
+          <br />
+          <small>This color is used to highlight a certain area. 2nd is for hover and 3rd for pressed state.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-warning)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-warning-dark)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-warning-darker)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal p-small">
+            <bal-icon name="close-circle" size="medium" color="danger"></bal-icon>
+            <bal-icon name="close-circle" size="medium" color="danger-dark"></bal-icon>
+            <bal-icon name="close-circle" size="medium" color="danger-darker"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>danger</strong>
+          <br />
+          <small>This color represents a invalid state. 2nd is for hover and 3rd for pressed state.</small>
+        </td>
+        <td>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-danker)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-danker-dark)</code>
+            </pre>
+          </small>
+          <small>
+            <pre>
+              <code>var(--bal-icon-color-danker-darker)</code>
+            </pre>
+          </small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</bal-doc-app>
+
+### Sizes
+
+<bal-doc-app>
+  <table className="sb-unstyled table is-fullwidth">
+    <thead>
+      <tr>
+        <th>Examples</th>
+        <th>Description</th>
+        <th>Icon-Size</th>
+        <th>Frame-Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <bal-icon name="caret-left" size="x-small"></bal-icon>
+            <bal-icon name="caret-down" size="x-small"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>x-small</strong>
+          <br />
+          <small>
+            The smallest size is reserved for back navigation, dropdowns and close symbols on compact components.
+          </small>
+        </td>
+        <td>10 x 10</td>
+        <td>12 x 12</td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <bal-icon name="search" size="small"></bal-icon>
+            <bal-icon name="account" size="small"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>small</strong>
+          <br />
+          <small>The small size serves as the default state for badges, small buttons, and similar elements.</small>
+        </td>
+        <td>12 x 12</td>
+        <td>14 x 14</td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <bal-icon name="edit"></bal-icon>
+            <bal-icon name="menu-bars"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>normal</strong>
+          <br />
+          <small>The default size for UI icons, utilized in buttons, tabs, and various other components.</small>
+        </td>
+        <td>16 x 16</td>
+        <td>18 x 18</td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <bal-icon name="close" size="medium"></bal-icon>
+            <bal-icon name="upload" size="medium"></bal-icon>
+          </div>
+        </td>
+        <td>
+          <strong>medium</strong>
+          <br />
+          <small>
+            The medium size is designed for larger components, such as a sizable close button or the file upload area.
+          </small>
+        </td>
+        <td>24 x 24</td>
+        <td>26 x 26</td>
+      </tr>
+    </tbody>
+  </table>
+</bal-doc-app>
+
+## Brand Icons
+
+The brand icons are the visual expression of Baloise brand's products, services, and tools.
+Each brand icon is available in the 4 different color combinations.
+
+All these icons are included in the package `@baloise/design-system-brand-icons`.
+
+### Colors
+
+Brand icons are available in four distinct color combinations: green, purple, red, and yellow.
+They can be seamlessly integrated with the lightest color option as a background.
+
+import BrandIconBanner from '../assets/images/BAL_Frontify_Digital_Icons_2.png'
+
+<img src={BrandIconBanner} style={{ maxWidth: '560px' }} />
+
+### Sizes
+
+<bal-doc-app>
+  <table className="sb-unstyled table is-fullwidth">
+    <thead>
+      <tr>
+        <th width="180px">Examples</th>
+        <th>Description</th>
+        <th width="100px">Icon-Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <img
+              src={`/assets/images/brand-icons/car-green.svg`}
+              alt="car"
+              style={{ minWidth: '40px', maxWidth: '40px' }}
+            />
+            <img
+              src={`/assets/images/brand-icons/chess-knight-purple.svg`}
+              alt="chess-knight"
+              style={{ minWidth: '40px', maxWidth: '40px' }}
+            />
+          </div>
+        </td>
+        <td>
+          <strong>large</strong>
+          <br />
+          <small>
+            The small size of brand icons is recommended for mobile resolutions, allowing for a more spacious
+            presentation of the accompanying description text.
+          </small>
+        </td>
+        <td>40 x 40</td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <img
+              src={`/assets/images/brand-icons/lamp-red.svg`}
+              alt="lamp"
+              style={{ minWidth: '80px', maxWidth: '80px' }}
+            />
+            <img
+              src={`/assets/images/brand-icons/bicycle-insurance-tangerine.svg`}
+              alt="bicycle-insurance"
+              style={{ minWidth: '80px', maxWidth: '80px' }}
+            />
+          </div>
+        </td>
+        <td>
+          <strong>x-large</strong>
+          <br />
+          <small>This is the default size for brand icons, suitable for mobile resolutions as well.</small>
+        </td>
+        <td>80 x 80</td>
+      </tr>
+      <tr>
+        <td>
+          <div className="is-flex fg-normal">
+            <img
+              src={`/assets/images/brand-icons/insurances-purple.svg`}
+              alt="insurances"
+              style={{ minWidth: '176px', maxWidth: '176px' }}
+            />
+          </div>
+        </td>
+        <td>
+          <strong>xx-large</strong>
+          <br />
+          <small>
+            The XX-Large size is ideal for teaser cards, while considering X-Large for mobile devices might be a better
+            fit.
+          </small>
+        </td>
+        <td>176 x 176</td>
+      </tr>
+    </tbody>
+  </table>
+</bal-doc-app>
+
+### Dont's
+
+import Backgrounds4 from '../assets/images/foundations/colors/ColorBackgrounds_4.png'
+import ColorCombinations6 from '../assets/images/foundations/colors/ColorCombinations_6.png'
+
+<br />
+<div className="sb-unstyled columns">
+  <div className="column is-4">
+    <img src={Backgrounds4} />
+    <p>Do not mix colored card surface and icons with different colors</p>
+  </div>
+  <div className="column is-4">
+    <img src={ColorCombinations6} />
+    <p>Do not use Tint 2, 3, 4, 5 or 6 as a background when using icons</p>
+  </div>
+</div>
+
+## Overview
+
+<br />
+
+<IconOverview />
+
+<br />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Components/Data Display/Icon"
+      description="The icons are clear, minimal and consistent across all our digital platforms"
+    />
+  </LinkCards>
+</Footer>

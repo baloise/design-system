@@ -1,6 +1,6 @@
 describe('bal-modal', () => {
   beforeEach(() => {
-    cy.visit('/components/notice/bal-modal/test/bal-modal.cy.html')
+    cy.visit('/components/bal-modal/test/bal-modal.cy.html')
     cy.waitForDesignSystem()
   })
 

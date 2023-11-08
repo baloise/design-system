@@ -15,7 +15,7 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
     return content
   }
 
-  content.push(`### Component Commands`)
+  content.push(`### Commands`)
   content.push('')
   content.push(`A list of the custom commands for this specific component.`)
   content.push('')
@@ -33,7 +33,11 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
       .split('(\n      ')
       .join('(')
 
-    table.addRow([`\`${command.name}\``, command.description.join(SPACE), `\`${signature}\``])
+    table.addRow([
+      `\`${command.name}\``,
+      command.description.join(SPACE),
+      `${signature.replace('Chainable<JQuery>', 'Chainable').replace('<Loggable', `\\<Loggable`)}`,
+    ])
   })
 
   content.push(...table.toMarkdown())

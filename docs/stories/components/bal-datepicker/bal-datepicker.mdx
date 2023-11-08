@@ -1,0 +1,55 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, WarningQuote, Footer } from '../../../.storybook/blocks'
+import * as DatepickerStories from './bal-datepicker.stories'
+
+<Meta of={DatepickerStories} />
+
+<StoryHeading of={DatepickerStories.Basic} hidden></StoryHeading>
+
+<Banner of={DatepickerStories} />
+
+<Lead>**Datepicker** allows manual date entry as well as open the popover content with a calendar to select a date.</Lead>
+
+<WarningQuote>
+  **Deprecation Warning!** <br />
+  Please use the [new component Date](?path=/docs/components-form-date--documentation), because this component is marked
+  as deprecated and will be removed with the next major releases.
+</WarningQuote>
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+`1996-12-19`. The format does not have to be specific to an exact datetime.
+For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+
+```typescript
+import { formatDateString, now } from '@baloise/web-app-utils'
+
+const datepickerDisabled = document.getElementById('datepicker-disabled')
+datepickerDisabled.value = formatDateString(now())
+// or
+datepickerDisabled.value = formatDateString(2020, 0, 13)
+// or
+datepickerDisabled.value = formatDateString(new Date(2020, 0, 13))
+```
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

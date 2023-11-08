@@ -1,0 +1,357 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as NavStories from './bal-nav.stories'
+
+<Meta of={NavStories} />
+
+<StoryHeading of={NavStories.Basic} hidden></StoryHeading>
+
+<Banner of={NavStories} />
+
+<Lead>Navigation component serves as a central hub for seamless user navigation within the applications.</Lead>
+
+## Anatomy
+
+import NavigationImage from '../../assets/images/navigation/navigation.png'
+
+<img src={NavigationImage} />
+
+<ol>
+  <li>
+    <b>Meta Tabs:</b> Provide a high-level overview of the application's key sections and feature action buttons for
+    quick access to common actions.
+  </li>
+  <li>
+    <b>Main Tabs:</b> Offer a detailed navigation structure, allowing users to explore specific sections and pages
+    within the application.
+  </li>
+  <li>
+    <b>Flyout:</b> Providing additional navigation options for a more comprehensive user experience.
+  </li>
+  <li>
+    <b>Action buttons:</b> Represent action buttons within the Meta Tabs section of the Navigation component
+  </li>
+  <li>
+    <b>Section links:</b> Used to define the section link items within the main part of the Navigation component.
+  </li>
+  <li>
+    <b>Service links:</b> Used to define the service section link items within the main part of the Navigation
+    component.
+  </li>
+</ol>
+
+## Meta Tabs
+
+The Meta Tabs provide a high-level overview of the application's key sections and feature action buttons for quick access to common actions.
+
+## Main Tabs
+
+On the other hand, the Main Tabs offer a detailed navigation structure, allowing users to explore specific sections and pages within the application.
+
+The Main Tabs also incorporate a Flyout menu, providing additional navigation options for a more comprehensive user experience.
+
+By leveraging these elements within the Navigation component, developers can create intuitive and efficient navigation experiences, empowering users to navigate through the application seamlessly.
+
+## Build up the structure
+
+```bash
+├── logo: BalNavLogoLink
+├── buttons: BalNavMetaButtons
+├── options: BalNavOptions
+  ├── BalNavMetaLinkItem[]
+    ├── overviewLink: BalNavLinkItem
+    └── mainLinkItems: BalNavMenuLinkItem[]
+      |── overviewLink: BalNavLinkItem
+      └── sectionLinkItems: BalNavSectionLinkItem[]
+        └── linkItems: BalNavLinkItem[]
+      |── serviceLinkItems: BalNavServiceLinkItem[]
+        |── color: String
+        └── linkItems: BalNavLinkItem[]
+```
+
+Navigation component accepts the following properties to provide the necessary data for rendering:
+
+### buttons
+
+<bal-tag>Type: BalNavMetaButton[]</bal-tag>
+
+The buttons property allows you to specify a list of BalNavMetaButton objects, which represent action buttons within the Meta Tabs section of the Navigation component.
+
+These buttons can be used to trigger various popups, such as login, search, language selector, and more.
+
+Each BalNavMetaButton object should include the following properties:
+
+<Markdown>
+{`
+| Property         | Type   | Description                                                                                      |
+| :--------------- | :----- | :----------------------------------------------------------------------------------------------- |
+| \`touchPlacement\` | String | The placement where buttons will be placed on touch devices. Options are 'top', 'bottom', 'none' |
+| \`icon\`           | String | The icon associated with the button.                                                             |
+| \`popupId\`        | String | The id of the popup to be displayed when the button is clicked.                                  |
+`}
+</Markdown>
+
+Example usage of the buttons property:
+
+```typescript
+const buttons = [
+  {
+    icon: 'call',
+    popupId: 'popup-call',
+    touchPlacement: 'bottom',
+    ariaLabel: '24h Kundenservice',
+    htmlTitle: '24h Kundenservice',
+  },
+  {
+    label: 'DE',
+    popupId: 'popup-locale',
+    touchPlacement: 'bottom',
+    ariaLabel: 'Sprache wählen',
+    htmlTitle: 'Sprache wählen',
+  },
+  {
+    icon: 'search',
+    popupId: 'popup-search',
+    ariaLabel: 'Suchen',
+    htmlTitle: 'Suchen',
+  },
+]
+```
+
+Example usage of the popup component which is displayed when action button is clicked:
+
+```html
+<div>
+  <bal-nav :logo="logo" :buttons="buttons" :options="options" content-width="440">
+    <bal-popup id="popup-call" label="24h Kundenservice">
+      <bal-stack layout="vertical">
+        <bal-button expanded>00800 24 800 800</bal-button>
+      </bal-stack>
+    </bal-popup>
+
+    <bal-popup id="popup-locale" label="Sprache wählen" content-width="440">
+      <bal-stack layout="vertical">
+        <bal-button expanded color="light">Deutsch</bal-button>
+        <bal-button expanded color="light">Francais</bal-button>
+        <bal-button expanded color="light">Italian</bal-button>
+        <bal-button expanded color="light">English</bal-button>
+      </bal-stack>
+    </bal-popup>
+  </bal-nav>
+</div>
+```
+
+### logo
+
+<bal-tag>Type: BalNavLogoLink</bal-tag>
+
+The logo property allows you to configure the logo within the Main Tabs section of the Navigation component. The BalNavLogoLink object represents the logo and its associated link.
+
+The BalNavLogoLink object should include the following properties:
+
+<Markdown>
+{`
+| Property    | Type                     | Description                                                                                                                                                                               |
+| :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \`ariaLabel\` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively. |
+| \`htmlTitle\` | String                   | The alternative text for the logo image, used for accessibility purposes.                                                                                                                 |
+| \`href\`      | String                   | The URL or path that the logo should link to when clicked.                                                                                                                                |
+| \`target\`    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self', '\_top'.                  |
+| \`clickable\` | boolean                  | Makes the element clickable.                                                                                                                                                              |
+| \`onClick\`   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                      |
+`}
+</Markdown>
+
+Example usage of the logo property:
+
+```typescript
+export const logoLinkItem = {
+  href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+  ariaLabel: 'Homepage',
+  htmlTitle: 'Homepage',
+}
+```
+
+### options
+
+<bal-tag>Type: BalNavOptions[]</bal-tag>
+
+The options property is used to construct the Navigation component. It expects a list of BalNavOptions objects.
+
+BalNavOptions object is a type BalNavMetaLinkItem.
+
+Each BalNavMetaLinkItem object should include the following properties:
+
+<Markdown>
+{`
+| Property        | Type                 | Description                                                                                                       |
+| :-------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| \`overviewLink\`  | BalNavLinkItem       | The overviewLink property is used in the Main Navigation Flyout section as an overview link                       |
+| \`mainLinkItems\` | BalNavMenuLinkItem[] | The mainLinkItems property is used to define the main link items within the main part of the Navigation component |
+`}
+</Markdown>
+
+### overviewLink
+
+<bal-tag>Type: BalNavLinkItem</bal-tag>
+
+The overviewLink property is used in the Main Navigation Flyout section as an overview link. It allows you to specify a URL or path to provide users with a high-level overview of the application or section.
+
+<Markdown>
+{`
+| Property    | Type                     | Description                                                                                                                                                                              |
+| :---------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \`label\`     | String                   | The label or text for the link item.                                                                                                                                                     |
+| \`value\`     | String                   | The value for the link item.                                                                                                                                                             |
+| \`active\`    | boolean                  | The active property is used to indicate the active state of a link within the Navigation component.                                                                                      |
+| \`htmlTitle\` | String                   | The alternative text for the link item, used for accessibility purposes.                                                                                                                 |
+| \`ariaLabel\` | String                   | This label is used to describe the component to assistive technologies, such as screen readers, enabling users with disabilities to navigate and interact with the component effectively |
+| \`href\`      | String                   | The URL or path that the link item should link to when clicked.                                                                                                                          |
+| \`target\`    | BalButtonTarget          | Specifies how the navigation link should be opened. It accepts one of the following values from the BalProps.BalButtonTarget: '\_blank', ' \_parent', '\_self','\_top'.                  |
+| \`clickable\` | boolean                  | Makes the element clickable.                                                                                                                                                             |
+| \`onClick\`   | (ev: MouseEvent) => void | Enables you to specify a custom click event handler.                                                                                                                                     |
+`}
+</Markdown>
+
+### mainLinkItems
+
+<bal-tag>Type: BalNavMenuLinkItem[]</bal-tag>
+
+The mainLinkItems property is used to define the main link items within the main part of the Navigation component. These link items represent the primary navigation options that are displayed prominently in the main section of the Navigation component.
+
+<Markdown>
+{`
+| Property           | Type                    | Description                                                                                            |
+| :----------------- | :---------------------- | :----------------------------------------------------------------------------------------------------- |
+| \`overviewLink\`     | BalNavLinkItem          | The overviewLink property is used in the Main Navigation Flyout section as an overview link            |
+| \`sectionLinkItems\` | BalNavSectionLinkItem[] | The sectionLinkItems property represents a list of section link items within the Navigation component. |
+| \`serviceLinkItems\` | BalNavServiceLinkItem[] | The serviceLinkItems property represents a list of service link items within the Navigation component. |
+`}
+</Markdown>
+
+### sectionLinkItems
+
+<bal-tag>Type: BalNavSectionLinkItem[]</bal-tag>
+
+The sectionLinkItems property is used to define the section link items within the main part of the Navigation component. These link items represent the navigation options for different sections or subsections within the main section of the Navigation component.
+
+<Markdown>
+{`
+| Property    | Type             | Description                                                                            |
+| :---------- | :--------------- | :------------------------------------------------------------------------------------- |
+| \`linkItems\` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
+`}
+</Markdown>
+
+### serviceLinkItems
+
+<bal-tag>Type: BalNavServiceLinkItem[]</bal-tag>
+
+The serviceLinkItems property is used to define the service section link items within the main part of the Navigation component. These link items represent navigation options specific to the service section of the application.
+
+<Markdown>
+{`
+| Property    | Type             | Description                                                                            |
+| :---------- | :--------------- | :------------------------------------------------------------------------------------- |
+| \`color\`     | color            | The color property is used to define the color of the service section.                 |
+| \`linkItems\` | BalNavLinkItem[] | The linkItems property represents a list of link items within the Navigation component |
+`}
+</Markdown>
+
+Example usage of the options property:
+
+```typescript
+export const optionLinkItems = [
+  {
+    value: 'privatkunden',
+    label: 'Privatkunden',
+    active: true,
+    mainLinkItems: [
+      {
+        value: 'Versichern',
+        label: 'Versichern',
+        active: true,
+        sectionLinkItems: [
+          {
+            value: 'Wohnen & Recht',
+            label: 'Wohnen & Recht',
+            href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+            active: true,
+            linkItems: [
+              {
+                value: 'Hausratversicherung',
+                label: 'Hausratversicherung',
+                clickable: true,
+                active: true,
+              },
+            ],
+          },
+        ],
+        serviceLinkItems: [
+          {
+            value: 'Services',
+            label: 'Services',
+            linkItems: [
+              {
+                value: 'Schaden melden',
+                label: 'Schaden melden',
+              },
+            ],
+          },
+        ],
+        overviewLink: {
+          value: 'Alle Versicherungslösungen ➞',
+          label: 'Alle Versicherungslösungen ➞',
+          href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
+        },
+      },
+    ],
+  },
+  ...
+]
+```
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balNavLinkApi from './bal-nav-link/api.md?raw'
+
+<Markdown>{balNavLinkApi}</Markdown>
+
+import balNavLinkGridColApi from './bal-nav-link-grid-col/api.md?raw'
+
+<Markdown>{balNavLinkGridColApi}</Markdown>
+
+import balNavLinkGroupApi from './bal-nav-link-group/api.md?raw'
+
+<Markdown>{balNavLinkGroupApi}</Markdown>
+
+import balNavMenuBarApi from './bal-nav-menu-bar/api.md?raw'
+
+<Markdown>{balNavMenuBarApi}</Markdown>
+
+import balNavMetaBarApi from './bal-nav-meta-bar/api.md?raw'
+
+<Markdown>{balNavMetaBarApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,0 +1,54 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import * as FileUploadStories from './bal-file-upload.stories'
+
+<Meta of={FileUploadStories} />
+
+<StoryHeading of={FileUploadStories.Basic} hidden></StoryHeading>
+
+<Banner of={FileUploadStories} />
+
+<Lead>**File Upload** is all in one component. It supports drag&drop and the normal file upload dialog of the browser.</Lead>
+
+<Canvas of={FileUploadStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FileUploadStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FileUploadStories.NativeFileUpload}></StoryHeading>
+
+<Canvas of={FileUploadStories.NativeFileUpload} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

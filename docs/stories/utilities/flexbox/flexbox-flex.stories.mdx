@@ -1,0 +1,102 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxFlex, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Flex"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Flex" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>A shorthand property for setting `flex-grow`, `flex-shrink`, and `flex-basis` simultaneously.</Lead>
+
+## Classes
+
+<CssFlexboxFlex />
+
+## Initial
+
+The flex-initial setting configures `flex-grow` to 0, `flex-shrink` to 1, and `flex-basis` to auto, which is the default browser behavior.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal mb-normal">
+    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Hello</div>
+    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Hello World</div>
+    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+</div>
+`}
+/>
+
+## Flex 1
+
+Establishes both `grow` and `shrink` factors to 1, enabling automatic expansion and contraction, while maintaining a `flex-basis` of 0.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal mb-normal">
+    <div class="has-background-green-2 has-radius-normal p-normal">Hello</div>
+    <div class="has-background-green-2 has-radius-normal p-normal">Hello World</div>
+    <div class="has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+</div>
+<div class="is-flex fg-normal">
+    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Hello</div>
+    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Hello World</div>
+    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+</div>
+`}
+/>
+
+## Auto
+
+By setting both `grow` and `shrink` factors to 1, the item will automatically expand and contract, while maintaining a `flex-basis` of auto.
+
+<Code
+  language="html"
+  code={`
+    <div class="is-flex fg-normal mb-normal">
+        <div class="has-background-green-2 has-radius-normal p-normal">Hello</div>
+        <div class="has-background-green-2 has-radius-normal p-normal">Hello World</div>
+        <div class="has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+    </div>
+    <div class="is-flex fg-normal">
+        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Hello</div>
+        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Hello World</div>
+        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+    </div>
+`}
+/>
+
+## None
+
+Equivalent to `0 0 auto`, indicating that the element neither expands nor contracts.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex fg-normal mb-normal">
+  <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+  <div class="is-flex-none has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+  <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

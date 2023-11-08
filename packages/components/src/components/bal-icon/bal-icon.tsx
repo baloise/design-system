@@ -145,12 +145,19 @@ export class Icon implements BalConfigObserver, BalElementStateInfo {
       'white',
       'blue',
       'grey',
-      'danger',
-      'warning',
-      'success',
       'grey-light',
+      'danger',
+      'danger-dark',
+      'danger-darker',
+      'warning',
+      'warning-dark',
+      'warning-darker',
+      'success',
+      'success-dark',
+      'success-darker',
       'primary',
       'primary-light',
+      'light-blue',
     ].includes(this.color)
       ? this.color
       : 'primary'

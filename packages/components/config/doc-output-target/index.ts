@@ -1,17 +1,19 @@
 import path from 'path'
 import { globSync } from 'glob'
 import { JsonDocs, JsonDocsStyle, OutputTargetDocsCustom } from '@stencil/core/internal'
-import { writeFileSync, existsSync, readFileSync } from 'fs'
+import { writeFileSync, mkdirSync, readFileSync } from 'fs'
 import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import contributors from '../../public/assets/data/contributors.json'
+import contributors from '../../.tmp/contributors.json'
 import { createTestingMarkdown } from './markdown-testing'
 import { createThemingMarkdown } from './markdown-theming'
 import { parseStyleDocs } from './markdonw-styles'
 import { MarkdownTable } from './docs-util'
+
+const DOC_PATH = path.join(__dirname, '../../../../docs')
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -20,42 +22,56 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
      * Create docs for each component
      */
     for (let index = 0; index < docs.components.length; index++) {
-      // Component API
       const component = docs.components[index]
-      const componentName = component.tag
+      const isDocs = component.filePath?.includes(`/docs/`)
 
-      const props = propsToMarkdown(component.props)
-      const events = eventsToMarkdown(component.events)
-      const methods = methodsToMarkdown(component.methods)
-      const slots = slotsToMarkdown(component.slots)
-      const componentApi = [...props, ...events, ...methods, ...slots]
-      const hasComponentApi = componentApi.length > 0
+      if (!isDocs) {
+        const componentName = component.tag
+        const storyPath = component.dirPath?.replace('packages/components/src', 'docs/stories') || ''
 
-      let content: string[] = []
+        const componentFolderDepth = component.filePath?.split('/').length
+        const isRoot = componentFolderDepth === 5
 
-      if (hasComponentApi) {
-        content = [`### ${componentName}`, SPACE, ...componentApi, SPACE]
-      }
-
-      try {
-        writeFileSync(component.readmePath || '', content.join(NEWLINE))
-      } catch (err) {
-        console.error(err)
-      }
-      const docsPath = path.join(component.dirPath || '', 'stories')
-      if (existsSync(docsPath)) {
-        // Testing
         try {
-          createTestingMarkdown(docsPath, component)
+          mkdirSync(storyPath, { recursive: true })
         } catch (err) {
           console.error(err)
         }
 
-        // Theming
+        // Component API
+        const props = propsToMarkdown(component.props)
+        const events = eventsToMarkdown(component.events)
+        const methods = methodsToMarkdown(component.methods)
+        const slots = slotsToMarkdown(component.slots)
+        const componentApi = [...props, ...events, ...methods, ...slots]
+        const hasComponentApi = componentApi.length > 0
+
+        let content: string[] = []
+
+        if (hasComponentApi) {
+          content = [`### ${componentName}`, SPACE, ...componentApi, SPACE]
+        }
+
         try {
-          createThemingMarkdown(docsPath, component)
+          writeFileSync(path.join(storyPath, 'api.md'), content.join(NEWLINE))
         } catch (err) {
           console.error(err)
+        }
+
+        if (isRoot) {
+          // Testing
+          try {
+            createTestingMarkdown(storyPath, component)
+          } catch (err) {
+            console.error(err)
+          }
+
+          // Theming
+          try {
+            createThemingMarkdown(storyPath, component)
+          } catch (err) {
+            console.error(err)
+          }
         }
       }
     }
@@ -101,26 +117,29 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       ...themingLines,
       '',
     ]
-    writeFileSync(
-      path.join(__dirname, '../../src/stories/development/guides/theming/theming.md'),
-      contentTheming.join(NEWLINE),
-    )
+    writeFileSync(path.join(DOC_PATH, 'stories/development/00-guides/theming/theming.md'), contentTheming.join(NEWLINE))
 
     /**
      * Create contributors page
      */
-
-    const avatar = contributor => `  <a href="${contributor.url}" class="avatar">
-    <h2>
-      <img src="${contributor.avatar}" alt="${contributor.name}" style="width: 64px;">
-    </h2>
-    <h4>${contributor.name}</h4>
+    const avatar =
+      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+  >
+    <span className='is-display-block is-size-xx-large has-text-centered'>
+      <img src="${contributor.avatar}" alt="${contributor.name}" />
+    </span>
+    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
   </a>`
 
-    const contributorsContent = [`<div class="avatars">`, ...contributors.map(c => avatar(c)), `</div>`, SPACE]
+    const contributorsContent = [
+      `<div className="sb-unstyled is-flex is-flex-wrap-wrap fg-normal">`,
+      ...contributors.map(c => avatar(c)),
+      `</div>`,
+      SPACE,
+    ]
 
     try {
-      writeFileSync(path.join(__dirname, '../../src/stories', 'contributors.md'), contributorsContent.join(NEWLINE))
+      writeFileSync(path.join(DOC_PATH, 'stories', 'contributors.md'), contributorsContent.join(NEWLINE))
     } catch (err) {
       console.error(err)
     }

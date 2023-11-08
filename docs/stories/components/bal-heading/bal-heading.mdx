@@ -1,0 +1,80 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as HeadingStories from './bal-heading.stories'
+
+<Meta of={HeadingStories} />
+
+<StoryHeading of={HeadingStories.Basic} hidden></StoryHeading>
+
+<Banner of={HeadingStories} />
+
+<Lead>**Heading** is a key component for displaying important titles and headers to organize and emphasize content.</Lead>
+
+<Canvas of={HeadingStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={HeadingStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Subtitle}></StoryHeading>
+
+<Canvas of={HeadingStories.Subtitle} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Levels}></StoryHeading>
+
+<Canvas of={HeadingStories.Levels} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Colors}></StoryHeading>
+
+<Canvas of={HeadingStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.Spacing}></StoryHeading>
+
+<Canvas of={HeadingStories.Spacing} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.AutoLevel}></StoryHeading>
+
+In some place in your app the heading requires a line break.
+Using `auto-level`, one can specify the minimum visual level at which the heading can dynamically shrink.
+
+<Canvas of={HeadingStories.AutoLevel} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HeadingStories.CSSUtilities}></StoryHeading>
+
+<Canvas of={HeadingStories.CSSUtilities} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

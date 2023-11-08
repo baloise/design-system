@@ -1,5 +1,5 @@
 describe('bal-label', () => {
-  beforeEach(() => cy.visit('/components/typography/bal-label/test/bal-label.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-label/test/bal-label.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

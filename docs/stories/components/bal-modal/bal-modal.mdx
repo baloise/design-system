@@ -1,0 +1,151 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import {
+  Banner,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  AngularFramework,
+  NotAngularFramework,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ModalStories from './bal-modal.stories'
+
+<Meta of={ModalStories} />
+
+<StoryHeading of={ModalStories.Basic} hidden></StoryHeading>
+
+<Banner of={ModalStories} />
+
+<Lead>
+  **Modal** is a dialog that appears on top of the app's body, and must be dismissed by the app before interaction can
+  resume.
+</Lead>
+
+<Canvas of={ModalStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={ModalStories.Basic}></PlaygroundBar>
+
+## Component API
+
+import api from './api.md?raw'
+import apiModalHeader from './bal-modal-header/api.md?raw'
+import apiModalBody from './bal-modal-body/api.md?raw'
+
+<Markdown>{api}</Markdown>
+<Markdown>{apiModalHeader}</Markdown>
+<Markdown>{apiModalBody}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<AngularFramework>
+
+The Angular proxy library offers a `ModalService` for simplified and dynamic creation.
+
+Create a html and a typescript file for your modal component like this.
+
+**modal.component.html**
+
+```html
+<bal-modal-header>Modal Title</bal-modal-header>
+<bal-modal-body>
+  <p>{{ firstName }}</p>
+  <p>{{ lastName }}</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
+  <bal-button-group position="right" class="mt-medium">
+    <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
+    <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
+  </bal-button-group>
+</bal-modal-body>
+```
+
+Using the `BalModalService`, it becomes possible to close the modal.
+
+**modal.component.ts**
+
+```typescript
+import { Component, Input } from '@angular/core'
+import { BalModalService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+})
+export class ModalComponent {
+  // Data passed in by componentProps
+  @Input() firstName!: string
+  @Input() lastName!: string
+
+  constructor(private modalService: BalModalService) {}
+
+  closeModal() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalService.dismiss({
+      dismissed: true,
+    })
+  }
+}
+```
+
+The `BalModalService` allows for the easy creation of a modal from the main component.
+
+**app.component.ts**
+
+```typescript
+import { Component } from '@angular/core'
+import { BalModalService } from '@baloise/design-system-components-angular'
+import { ModalComponent } from './modal.component'
+
+@Component({
+  selector: 'app-modal-page',
+  templateUrl: './modal-page.component.html',
+})
+export class ModalPageComponent {
+  modal!: HTMLBalModalElement
+
+  constructor(private modalService: BalModalService) {}
+
+  async openModal() {
+    this.modal = await this.modalService.create({
+      component: ModalComponent,
+      componentProps: {
+        firstName: 'Peter',
+        lastName: 'Parker',
+      },
+    })
+    await this.modal.present()
+
+    // Collect the data from the modal through the dismiss event
+    const { data } = await this.modal.onWillDismiss()
+
+    // React onDidDismiss
+    await this.modal.onDidDismiss()
+    someFunctionToDoOnDidDismissAction()
+  }
+
+  closeModal() {
+    this.modal.dismiss()
+  }
+}
+```
+
+</AngularFramework>
+
+<NotAngularFramework>
+  <Markdown>{integration}</Markdown>
+</NotAngularFramework>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

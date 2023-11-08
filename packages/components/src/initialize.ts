@@ -1,5 +1,5 @@
-import { balToastController } from './components/notice/bal-toast/bal-toast.controller'
-import { balSnackbarController } from './components/notice/bal-snackbar/bal-snackbar.controller'
+import { balToastController } from './components/bal-toast/bal-toast.controller'
+import { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
 import { BalConfig, BalMode, initialize, initStyleMode } from './utils/config'
 import { VERSION } from './utils/constants/version.constant'
 import { balBrowser } from './utils/browser'

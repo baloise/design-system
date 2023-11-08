@@ -1,6 +1,6 @@
 describe('bal-radio', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-radio/test/bal-radio.cy.html')
+    cy.visit('/components/bal-radio/test/bal-radio.cy.html')
     cy.waitForDesignSystem()
   })
 

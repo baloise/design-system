@@ -1,0 +1,141 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import * as CheckboxStories from './bal-checkbox.stories'
+
+<Meta of={CheckboxStories} />
+
+<StoryHeading of={CheckboxStories.Basic} hidden></StoryHeading>
+
+<Banner of={CheckboxStories} />
+
+<Lead>**Checkboxes** allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or
+  off.</Lead>
+
+<Canvas of={CheckboxStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={CheckboxStories.Basic}></PlaygroundBar>
+
+<br />
+
+Ther is a new way of adding a options to the bal-checkbox-group
+by introducing the `options` property in which options can be passed using a Javascript.
+
+To use the `bal-checkbox-group` with options the `control` attribute is set to true.
+
+```html
+<bal-checkbox-group control [options]="options"></bal-checkbox-group>
+```
+
+```typescript
+import { newBalCheckboxOption } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-example-component',
+  templateUrl: './example-component.component.html',
+})
+export class ExampleComponent {
+  options = [
+    newBalCheckboxOption({ value: '1', label: 'Label 1' }),
+    newBalCheckboxOption({
+      value: '2',
+      label: () => 'Label with <a class="is-link" href="http://baloise.com">Link</a>',
+    }),
+  ]
+}
+```
+
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.FieldControl}></StoryHeading>
+
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas of={CheckboxStories.FieldControl} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Switch}></StoryHeading>
+
+Switches are used to toggle between exactly two states (like on and off).
+
+<Canvas of={CheckboxStories.Switch} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.Group}></StoryHeading>
+
+<Canvas of={CheckboxStories.Group} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.VerticalGroup}></StoryHeading>
+
+<Canvas of={CheckboxStories.VerticalGroup} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.FilterButtons}></StoryHeading>
+
+<Canvas of={CheckboxStories.FilterButtons} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.CheckboxButton}></StoryHeading>
+
+The content can be created flexibly by utilizing the [stack component](?path=/docs/components-layout-stack--documentation) and [content component](?path=/docs/components-layout-content--documentation).
+
+The states invalid and disabled are also supported.
+
+<Canvas of={CheckboxStories.CheckboxButton} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CheckboxStories.CheckboxButtonGrid}></StoryHeading>
+
+The checkbox buttons are have a built in grid system. Just add the props `columns`, `columns-mobile` or `columns-tablet` to the `bal-radio-group`.
+
+By default, on mobile devices, only one item per line is supported. To override this, use the `columns-mobile` prop.
+
+<Canvas of={CheckboxStories.CheckboxButtonGrid} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balCheckboxGroupApi from './bal-checkbox-group/api.md?raw'
+
+<Markdown>{balCheckboxGroupApi}</Markdown>
+
+import balCheckboxButtonApi from './bal-checkbox-button/api.md?raw'
+
+<Markdown>{balCheckboxButtonApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

@@ -1,0 +1,99 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as CardStories from './bal-card.stories'
+
+<Meta of={CardStories} />
+
+<StoryHeading of={CardStories.Basic} hidden></StoryHeading>
+
+<Banner of={CardStories} />
+
+<Lead>**Cards** contain content and actions about a single subject and can be combined with other components.</Lead>
+
+<Canvas of={CardStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={CardStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.FlatCard}></StoryHeading>
+
+<Canvas of={CardStories.FlatCard} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.CardTitle}></StoryHeading>
+
+<Canvas of={CardStories.CardTitle}/>
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.TeaserCards}></StoryHeading>
+
+<Canvas of={CardStories.TeaserCards} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.CardVariations}></StoryHeading>
+
+<Canvas of={CardStories.CardVariations} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.AccordionCard}></StoryHeading>
+
+<Canvas of={CardStories.AccordionCard} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.SummaryCard}></StoryHeading>
+
+<Canvas of={CardStories.SummaryCard} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.ServiceCard}></StoryHeading>
+
+<Canvas of={CardStories.ServiceCard} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balCardTitleApi from './bal-card-title/api.md?raw'
+
+<Markdown>{balCardTitleApi}</Markdown>
+
+import balCardSubtitleApi from './bal-card-subtitle/api.md?raw'
+
+<Markdown>{balCardSubtitleApi}</Markdown>
+
+import balCardActionsApi from './bal-card-actions/api.md?raw'
+
+<Markdown>{balCardActionsApi}</Markdown>
+
+import balCardButtonApi from './bal-card-button/api.md?raw'
+
+<Markdown>{balCardButtonApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

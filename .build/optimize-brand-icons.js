@@ -100,7 +100,7 @@ const main = async () => {
 
   await file.save(path.join(PACKAGE, 'src/index.ts'), lines.join(NEWLINE))
   await file.save(
-    path.join(PACKAGE, 'src/icons.json'),
+    path.join(PACKAGE, 'src/brand-icons.json'),
     JSON.stringify([...contents.keys()]),
   )
 

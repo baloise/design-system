@@ -1,0 +1,23 @@
+{
+  "name": "docs-web",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "storybook dev -p 6006 --no-open",
+    "dev": "npm run start",
+    "storybook": "storybook build -o ../storybook --quiet --disable-telemetry"
+  },
+  "dependencies": {
+    "@baloise/design-system-brand-icons": "14.2.1",
+    "@baloise/design-system-components": "14.2.1",
+    "@baloise/design-system-css": "14.2.1",
+    "@baloise/design-system-icons": "14.2.1",
+    "@baloise/design-system-tokens": "14.2.1",
+    "lodash.kebabcase": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/lodash.kebabcase": "^4.1.8"
+  }
+}

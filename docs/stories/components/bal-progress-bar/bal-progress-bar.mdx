@@ -1,0 +1,40 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as ProgressBarStories from './bal-progress-bar.stories'
+
+<Meta of={ProgressBarStories} />
+
+<StoryHeading of={ProgressBarStories.Basic} hidden></StoryHeading>
+
+<Banner of={ProgressBarStories} />
+
+<Lead>**Progress bar** indicators are used to show the duration of a process or to indicate an unspecified waiting time.</Lead>
+
+<Canvas of={ProgressBarStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={ProgressBarStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />
