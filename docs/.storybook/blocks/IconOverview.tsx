@@ -23,30 +23,16 @@ export const IconOverview = ({ children }) => {
   const [collection, setCollection] = useState('ui-icons')
   const [color, setColor] = useState('primary')
   const [searchItem, setSearchItem] = useState('')
-  const [filteredIcons, setFilteredIcons] = useState(icons)
 
   const handleInputChange = e => {
     const searchTerm = e.target.value
     setSearchItem(searchTerm)
-    filterItems()
   }
 
   const handleCollectionClick = (selectedCollection, selectedColor) => {
     setCollection(selectedCollection)
     setColor(selectedColor)
-    filterItems()
   }
-
-  function filterItems() {
-    setFilteredIcons(
-      icons
-        .filter(icon => icon.collection === collection)
-        .filter(icon => icon.color === color)
-        .filter(icon => icon.name.toLowerCase().includes(searchItem.toLowerCase())),
-    )
-  }
-
-  useEffect(() => filterItems())
 
   return (
     <div className="sb-unstyled">
@@ -74,7 +60,7 @@ export const IconOverview = ({ children }) => {
             color === 'purple' ? 'has-background-purple-5 has-text-white' : 'has-background-purple-1'
           } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
         >
-          <small className='has-size-x-small is-block mb-x-small has-text-weight-regular'>Brand Icons</small>Purple
+          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Purple
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
@@ -82,7 +68,7 @@ export const IconOverview = ({ children }) => {
             color === 'green' ? 'has-background-green-5 has-text-white' : 'has-background-green-1'
           } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
         >
-          <small className='has-size-x-small is-block mb-x-small has-text-weight-regular'>Brand Icons</small>Green
+          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Green
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'red')}
@@ -90,7 +76,7 @@ export const IconOverview = ({ children }) => {
             color === 'red' ? 'has-background-red-5 has-text-white' : 'has-background-red-1'
           } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
         >
-          <small className='has-size-x-small is-block mb-x-small has-text-weight-regular'>Brand Icons</small>Red
+          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Red
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'yellow')}
@@ -98,37 +84,44 @@ export const IconOverview = ({ children }) => {
             color === 'yellow' ? 'has-background-yellow-5 has-text-white' : 'has-background-yellow-1'
           } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
         >
-          <small className='has-size-x-small is-block mb-x-small has-text-weight-regular'>Brand Icons</small>Yellow
+          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Yellow
         </button>
       </div>
       <div className="is-flex is-flex-wrap-wrap fg-xx-small mt-x-large">
-        {filteredIcons.map(icon => (
-          <div
-            key={`${icon.collection}__${icon.name}`}
-            className={`has-background-${icon.color}-1 has-radius-normal px-x-small pt-medium pb-normal is-flex is-justify-content-center is-align-items-center fg-small is-flex-direction-column has-text-centered`}
-            style={{ width: '138px' }}
-          >
-            {icon.collection === 'ui-icons' ? (
-              <div
-                style={{
-                  maskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                  WebkitMaskImage: `url(/assets/images/icons/${icon.name}.svg)`,
-                  backgroundColor: 'var(--bal-color-primary)',
-                  height: '32px',
-                  width: '32px',
-                }}
-              ></div>
-            ) : (
-              <img src={`/assets/images/brand-icons/${icon.name}.svg`} alt={icon.name} width={'64px'} />
-            )}
-            <span
-              className="is-size-x-small has-text-weight-bold is-flex is-justify-content-center is-align-items-center"
-              style={{ minHeight: '40px' }}
+        {icons
+          .filter(
+            icon =>
+              icon.collection === collection &&
+              icon.color === color &&
+              icon.name.toLowerCase().includes(searchItem.toLowerCase()),
+          )
+          .map(icon => (
+            <div
+              key={`${icon.collection}__${icon.name}`}
+              className={`has-background-${icon.color}-1 has-radius-normal px-x-small pt-medium pb-normal is-flex is-justify-content-center is-align-items-center fg-small is-flex-direction-column has-text-centered`}
+              style={{ width: '138px' }}
             >
-              {icon.name}
-            </span>
-          </div>
-        ))}
+              {icon.collection === 'ui-icons' ? (
+                <div
+                  style={{
+                    maskImage: `url(/assets/images/icons/${icon.name}.svg)`,
+                    WebkitMaskImage: `url(/assets/images/icons/${icon.name}.svg)`,
+                    backgroundColor: 'var(--bal-color-primary)',
+                    height: '32px',
+                    width: '32px',
+                  }}
+                ></div>
+              ) : (
+                <img src={`/assets/images/brand-icons/${icon.name}.svg`} alt={icon.name} width={'64px'} />
+              )}
+              <span
+                className="is-size-x-small has-text-weight-bold is-flex is-justify-content-center is-align-items-center"
+                style={{ minHeight: '40px' }}
+              >
+                {icon.name}
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   )
