@@ -19,6 +19,7 @@ const config = {
     './addons/framework/index.js',
     './addons/source/index.js',
     './addons/title/index.js',
+    './addons/cookie/index.js',
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-vite'),

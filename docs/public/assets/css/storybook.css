@@ -110,9 +110,62 @@ html {
 }
 
 /***************************************
- * One Trust
+ * Cookie Alert
  ***************************************/
 
- .ot-floating-button {
-  display: none !important;
+.my-cookie {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 26rem;
+  min-height: 3.5rem;
+  padding: 1.5rem;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+  box-shadow: 0 0 10px 0 rgba(0, 7, 57, 0.15);
+}
+
+.my-cookie strong {
+  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.my-cookie span {
+  font-size: 1rem;
+  display: block;
+}
+
+.my-cookie a {
+  color: #000d6e;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 2px;
+}
+
+.my-cookie button {
+  margin-top: 1.5rem;
+  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  background: transparent;
+  border: 2px solid #000d6e;
+  color: #000d6e;
+  min-height: 3rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.my-cookie button:hover {
+  background: #e5f1fe;
+  border-color: #0015aa;
+  color: #0015aa;
+}
+
+.my-cookie button:active {
+  background: #e5f1fe;
+  border-color: #000739;
+  color: #000739;
 }

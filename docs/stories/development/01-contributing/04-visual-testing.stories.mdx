@@ -25,7 +25,7 @@ Visual tests generate and compare browser snapshots to detect if any pixels have
 
 As a **prerequisite** please do a [dev setup](?path=/docs/development-contributing-dev-setup--page) first.
 
-Our visual tests are done with the library [cypress-visual-regression](https://www.npmjs.com/package/cypress-visual-regression).
+The visual tests are done with the library [cypress-visual-regression](https://www.npmjs.com/package/cypress-visual-regression).
 </Lead>
 
 ## Getting Started
@@ -85,10 +85,10 @@ Variations needs to be splitted in to sections like to have one section for vari
 ```
 
 - `bal-doc-app` components load the styles and initialize the Design System config object
-- `data-testid` we use this attribute to select components in our test files
+- `data-testid` attribute to select components in the test files
 - `<section>` each section should represent a component state to test visually
 - `class="has-background-primary"` use the css helper classes to create the correct environment
-- `<main class="container py-medium">` each app should have a container, wo we test that as well
+- `<main class="container py-medium">` each app should have a container
 
 #### Serve the test template file
 
@@ -107,7 +107,7 @@ Example => `bal-close.visual.html`
 
 ```typescript
 describe('bal-close', () => {
-  // before the test we navigate to the test template file
+  // before the test navigate to the test template file
   beforeEach(() => cy.visit('/components/bal-close/test/bal-close.visual.html').waitForDesignSystem())
 
   // just compare the screenshot of the element with the attribute data-testid="basic"
@@ -124,7 +124,7 @@ describe('bal-close', () => {
 
 #### Breakpoint testing
 
-To test the components on our various breakpoints we need to tell cypress on with platform it runs.
+To test the components on the various breakpoints tell cypress on with platform it runs.
 
 ```typescript
 describe('bal-close', () => {

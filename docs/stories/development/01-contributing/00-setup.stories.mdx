@@ -41,13 +41,13 @@ git clone https://github.com/baloise/design-system.git design-system
 cd design-system
 ```
 
-First we install all the dependencies of the packages. Then we make an initial build to have all the needed artifacts in place and afterwards we link the packages.
+First install all the dependencies of the packages. Then make an initial build to have all the needed artifacts in place and afterwards link the packages.
 
 ```bash
 npm install
 ```
 
-After the installation, we can start the documentation page locally. We use storybook also for the development.
+After the installation, start the documentation page locally. Use storybook also for the development.
 
 ```bash
 npm run build
@@ -61,7 +61,7 @@ The page is available under [http://localhost:6006](http://localhost:6006).
 
 ## Documentation
 
-To document our components we use the tool [Storybook](https://storybook.js.org/).
+To document the components use the tool [Storybook](https://storybook.js.org/).
 
 The documentation files are in a folder called `/stories` or have `.stories.` in the file name.
 
@@ -71,7 +71,7 @@ The Baloise Design System is divided into multiple NPM packages. Development for
 
 ### CI & CD
 
-For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-system/tree/main/.github/workflows). The following actions are in the folder `.github/workflows`:
+For the CI & CD tasks use [Github Actions](https://github.com/baloise/design-system/tree/main/.github/workflows). The following actions are in the folder `.github/workflows`:
 
 - `continuous.yml`
 
@@ -97,15 +97,15 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │
 ├── .husky                # git hook to lint commit messages
 ├── packages              # published npm packages
-├── public                # content of our public file server
+├── public                # content of the public file server
 ├── resources             # static resources for the documentation
 ├── .editorconfig         # ensures coding styles across the multiple IDEs
 ├── .eslintignore         # files to ignore during linting
 ├── .eslintrc.js          # config of the linter
 ├── .lintstagedrc         # run linters against staged git files
 ├── .prettierignore       # files to ignore during formatting
-├── .prettierrc           # config of our format tool
-├── commitlint.config.js  # config of our commit message linter
+├── .prettierrc           # config of the format tool
+├── commitlint.config.js  # config of the commit message linter
 ├── cspell.json           # language check for english
 ├── Dockerfile            # config for the documentation
 ├── registry              # bash script to replace the baloise registry with npm

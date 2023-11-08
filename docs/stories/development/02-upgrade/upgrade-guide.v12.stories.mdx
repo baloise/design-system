@@ -34,7 +34,7 @@ rather than strict instructions.
 
 ## Getting Started​
 
-Checkout our upgrade example project with Angular [GitHub](https://github.com/baloise/design-system-ng-migrations). There we migrated from v11 to v12 with the below mentioned breaking changes.
+Checkout the upgrade example project with Angular [GitHub](https://github.com/baloise/design-system-ng-migrations). There we migrated from v11 to v12 with the below mentioned breaking changes.
 
 <AngularFramework>
 
@@ -142,7 +142,7 @@ import * as balIcons from '@baloise/design-system-icons'
 
 #### Lazy Loading Component Styles
 
-To reduce the initial page load we now lazy load the component styles. This reduces our
+To reduce the initial page load we now lazy load the component styles. This reduces the
 global style file by 44%. Styles of the components are loaded, when they are used.
 
 If you customized the styles through the SASS variables, you need to change from lazy-loading to eager-loading the component styles.
@@ -348,7 +348,7 @@ To keep the same concept with the T-Shirt size we adjusted one token `var(--bal-
 
 #### Spacing
 
-We only support the spacing concept with T-Shirt sizes like `m-large` or `pt-x-small` instead of the numbers.
+The spacing concept is supported exclusively with T-Shirt sizes, such as `m-large` or `pt-x-small`, as opposed to numerical values.
 To reduce the initial payload we provide only one solution by default, otherwise set the SASS variable `$spacing-legacy-numbering` to still use the numbers.
 
 For migration below you find the mapping table and an example.

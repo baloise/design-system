@@ -32,6 +32,8 @@ const preview = {
           'Foundation',
           'Development',
           'CSS Utilities',
+          'Components',
+          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography']
         ],
       }
     },

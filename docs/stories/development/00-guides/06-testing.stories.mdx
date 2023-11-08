@@ -32,7 +32,7 @@ asynchronous nature of the components' behavior.
 
 ## Unit Testing
 
-For creating effective unit tests, we highly recommend employing the following tools:
+To create effective unit tests, it is highly recommended to utilize the following tools:
 
 - [Karma + Jasmin](https://angular.io/guide/testing) (only Angular)
 - [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/overview)
@@ -91,7 +91,7 @@ button.click()
 await fixture.whenStable()
 await waitForComponent(fixture.nativeElement)
 
-// now we can do the assertions
+// do assertions here
 expect(component.onEditButtonClick).toHaveBeenCalled()
 `}
 />
@@ -169,7 +169,7 @@ Remember that shadow DOM support enhances the accuracy and effectiveness of your
 
 #### Testing Library
 
-Begin by installing our testing library.
+Begin by installing the testing library.
 
 <Code
   language="bash"
@@ -179,7 +179,7 @@ npm add -D @baloise/design-system-testing
 />
 
 Navigate to the file `cypress/support/commands.ts` and import the testing library.
-This action will grant you access to a suite of custom Cypress commands tailored to our framework.
+This action will grant you access to a suite of custom Cypress commands tailored to the framework.
 
 ```ts
 /// <reference types="cypress" />
@@ -221,7 +221,7 @@ A simple component has been developed, utilizing the CSS framework and its corre
 </div>
 ```
 
-Lets create our first test `hello.component.cy.ts`.
+Lets create the first test `hello.component.cy.ts`.
 
 ```html
 <div class="p-large">
@@ -275,7 +275,7 @@ describe('Accordion', () => {
 
 ### Selectors
 
-For optimal testing practices, we suggest assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
+For optimal testing practices assigning specific test attributes, such as `data-testid`, to the elements you intend to test.
 
 ```html
 <bal-button data-testid="my-button"></bal-button>
