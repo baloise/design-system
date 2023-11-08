@@ -3,4 +3,4 @@
 '@baloise/design-system-components-angular': minor
 ---
 
-Angular proxy library requires v15 or higher
+Stencil version updated to v4 and Angular proxy library requires v15 or higher now.
