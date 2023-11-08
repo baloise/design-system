@@ -1,5 +1,11 @@
 # @baloise/design-system-tokens
 
+## 14.3.0
+
+### Patch Changes
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The design tokens for line-height values for x-small and small text has been adjusted to ensure compliance with accessibility (a11y) standards.
+
 ## 14.2.1
 
 ## 14.2.0

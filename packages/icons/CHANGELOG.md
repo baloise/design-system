@@ -1,5 +1,13 @@
 # @baloise/design-system-icons
 
+## 14.3.0
+
+### Minor Changes
+
+- [#1110](https://github.com/baloise/design-system/pull/1110) - A new `WhatsApp` icon has been added to the icons collection.
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The icon component now includes support for brand-icons. Additionally, we've removed the padded frame for large icons and bigger sizes, as brand-icons already come with their own frame. Furthermore, we've ensured that the available color list is now complete.
+
 ## 14.2.1
 
 ## 14.2.0
