@@ -64,6 +64,11 @@ export class Tooltip implements ComponentInterface, Loggable {
   @Prop() offset = 0
 
   /**
+   * @internal
+   */
+  @Prop() demo = false
+
+  /**
    * Internal active state
    */
   @State() presented = false
@@ -97,6 +102,12 @@ export class Tooltip implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
+  // componentDidRender() {
+  //   if (this.demo) {
+  //     this.present()
+  //   }
+  // }
+
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
 
@@ -118,6 +129,10 @@ export class Tooltip implements ComponentInterface, Loggable {
           this.triggerElement.addEventListener(event, () => this.dismiss())
         }
       })
+    }
+
+    if (this.demo) {
+      this.present()
     }
   }
 

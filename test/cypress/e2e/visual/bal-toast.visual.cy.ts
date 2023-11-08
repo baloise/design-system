@@ -1,5 +1,5 @@
 describe('bal-toast', () => {
-  beforeEach(() => cy.visit('/components/notice/bal-toast/test/bal-toast.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-toast/test/bal-toast.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

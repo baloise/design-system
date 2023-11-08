@@ -1,0 +1,56 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as StepsStories from './bal-steps.stories'
+
+<Meta of={StepsStories} />
+
+<StoryHeading of={StepsStories.Basic} hidden></StoryHeading>
+
+<Banner of={StepsStories} />
+
+<Lead>Steps are used to structure the information in sub section on the same page.</Lead>
+
+<Canvas of={StepsStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={StepsStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+import apiStepItem from './bal-step-item/api.md?raw'
+
+<Markdown>{api}</Markdown>
+<Markdown>{apiStepItem}</Markdown>
+
+## Integration
+
+The `step` option can also be specified using a property.
+To facilitate this, use the utility function called `newBalStepOption`.
+
+```typescript
+import { newBalStepOption } form '@baloise/design-system-components'
+
+const options = [
+  newBalStepOption({ label: "My Label 1", value: "1" }),
+  newBalStepOption({ label: "My Label 2", value: "2" }),
+]
+
+// next pass the option array to the component ...
+
+```
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

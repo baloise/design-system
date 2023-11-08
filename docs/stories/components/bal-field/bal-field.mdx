@@ -1,0 +1,76 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import * as FieldStories from './bal-field.stories'
+
+<Meta of={FieldStories} />
+
+<StoryHeading of={FieldStories.Basic} hidden></StoryHeading>
+
+<Banner of={FieldStories} />
+
+<Lead>**Field** wraps a form field like input. It provides a clear style structure of each control.</Lead>
+
+<Canvas of={FieldStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FieldStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FieldStories.Addons}></StoryHeading>
+
+<Canvas of={FieldStories.Addons} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FieldStories.WithGrid}></StoryHeading>
+
+<Canvas of={FieldStories.WithGrid} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balFieldControlApi from './bal-field-control/api.md?raw'
+
+<Markdown>{balFieldControlApi}</Markdown>
+
+import balFieldHintApi from './bal-field-hint/api.md?raw'
+
+<Markdown>{balFieldHintApi}</Markdown>
+
+import balFieldLabelApi from './bal-field-label/api.md?raw'
+
+<Markdown>{balFieldLabelApi}</Markdown>
+
+import balFieldMessageApi from './bal-field-message/api.md?raw'
+
+<Markdown>{balFieldMessageApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

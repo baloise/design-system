@@ -1,0 +1,75 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as CarouselStories from './bal-carousel.stories'
+
+<Meta of={CarouselStories} />
+
+<StoryHeading of={CarouselStories.Basic} hidden></StoryHeading>
+
+<Banner of={CarouselStories} />
+
+<Lead>The **carousel** component combines all the slide use cases.</Lead>
+
+<Canvas of={CarouselStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={CarouselStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.ImageSlider}></StoryHeading>
+
+<Canvas of={CarouselStories.ImageSlider} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.ProductSlider}></StoryHeading>
+
+<Canvas of={CarouselStories.ProductSlider} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.CardSlider}></StoryHeading>
+
+<Canvas of={CarouselStories.CardSlider} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.ResponsiveSlider}></StoryHeading>
+
+<Canvas of={CarouselStories.ResponsiveSlider} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.TeaserSlider}></StoryHeading>
+
+<Canvas of={CarouselStories.TeaserSlider} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balCarouselItemApi from './bal-carousel-item/api.md?raw'
+
+<Markdown>{balCarouselItemApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

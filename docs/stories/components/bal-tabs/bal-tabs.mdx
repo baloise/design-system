@@ -1,0 +1,57 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as TabsStories from './bal-tabs.stories'
+
+<Meta of={TabsStories} />
+
+<StoryHeading of={TabsStories.Basic} hidden></StoryHeading>
+
+<Banner of={TabsStories} />
+
+<Lead>Tabs are used to structure the information in sub section on the same page.</Lead>
+
+<Canvas of={TabsStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={TabsStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Vertical}></StoryHeading>
+
+<Canvas of={TabsStories.Vertical} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TabsStories.Mobile}></StoryHeading>
+
+<Canvas of={TabsStories.Mobile} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+
+## Component API
+
+import api from './api.md?raw'
+import apiTabItem from './bal-tab-item/api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+<Markdown>{apiTabItem}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

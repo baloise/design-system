@@ -1,0 +1,86 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard, CodeSandbox } from '../../../.storybook/blocks'
+import * as SelectStories from './bal-select.stories'
+
+<Meta of={SelectStories} />
+
+<StoryHeading of={SelectStories.Basic} hidden></StoryHeading>
+
+<Banner of={SelectStories} />
+
+<Lead>**Select** allows the user to choose one or multiple option from a list.</Lead>
+
+<Canvas of={SelectStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={SelectStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.FieldControl}></StoryHeading>
+
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas of={SelectStories.FieldControl} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.Typeahead}></StoryHeading>
+
+<Canvas of={SelectStories.Typeahead} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.TypeaheadRemote}></StoryHeading>
+
+A typeahead remote option allows external filtering and enables user search by typing in the input field.
+
+<CodeSandbox of={SelectStories.TypeaheadRemote} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.MultiSelect}></StoryHeading>
+
+<Canvas of={SelectStories.MultiSelect} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SelectStories.NativeSelect}></StoryHeading>
+
+<Canvas of={SelectStories.NativeSelect} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balSelectOptionApi from './bal-select-option/api.md?raw'
+
+<Markdown>{balSelectOptionApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

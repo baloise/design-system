@@ -1,5 +1,5 @@
 describe('bal-datepicker', () => {
-  beforeEach(() => cy.visit('/components/form/bal-datepicker/test/bal-datepicker.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-datepicker/test/bal-datepicker.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

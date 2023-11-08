@@ -1,0 +1,58 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssBackgroundColors, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Background/Background Colors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Background Colors" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Select from a range of colors for the background of an element.</Lead>
+
+## Classes
+
+Background colors can be set with the CSS class `has-background-***` for example `has-background-green`.
+
+Every color of the [Design Tokens](?path=/docs/foundation-design-tokens--documentation) can be used like that.
+
+<CssBackgroundColors />
+
+## Basic
+
+<Code
+  language="html"
+  code={`
+<div class="has-background-green p-normal">Green background</div>
+`}
+/>
+
+## Inverted Colors
+
+For every color, an inverted variant is defined to ensure optimal readability when combining background and font colors.
+
+<Code
+  language="html"
+  code={`
+<div class="has-background-primary p-normal">
+  <p class="has-text-primary-inverted">Hello World</p>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Colors"
+      description="The colors create a brand-specific look & feel. The multi-color approach represents the contemporary and inspiring Baloise we are."
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

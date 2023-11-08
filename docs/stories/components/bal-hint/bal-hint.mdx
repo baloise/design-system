@@ -1,0 +1,54 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as HintStories from './bal-hint.stories'
+
+<Meta of={HintStories} />
+
+<StoryHeading of={HintStories.Basic} hidden></StoryHeading>
+
+<Banner of={HintStories} />
+
+<Lead>**Hint** hides content with some additional description and shows it by clicking the icon. It can easily combined
+  with the [bal-data](?path=/docs/components-data-display-data--documentation) or [bal-field](?path=/docs/components-form-field--documentation) component.</Lead>
+
+<Canvas of={HintStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={HintStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.TooltipHint}></StoryHeading>
+
+<Canvas of={HintStories.TooltipHint} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={HintStories.FieldHint}></StoryHeading>
+
+<Canvas of={HintStories.FieldHint} className="has-visible-overflow" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

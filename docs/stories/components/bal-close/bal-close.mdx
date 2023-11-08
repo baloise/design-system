@@ -1,0 +1,40 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as CloseStories from './bal-close.stories'
+
+<Meta of={CloseStories} />
+
+<StoryHeading of={CloseStories.Basic} hidden></StoryHeading>
+
+<Banner of={CloseStories} />
+
+<Lead>Close is used as a close button for modals, toast and other components.</Lead>
+
+<Canvas of={CloseStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={CloseStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

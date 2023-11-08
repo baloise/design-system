@@ -1,0 +1,59 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyTextAlign, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Text Align"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Align" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the alignment of text within an element.</Lead>
+
+## Classes
+
+<CssTypographyTextAlign />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<p class="has-text-left">left</p>
+<p class="has-text-centered">centered</p>
+<p class="has-text-right">right</p>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `is-hidden-tablet`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
+
+<Code
+  language="html"
+  code={`
+<p class="has-text-right-mobile">mobile right</p>
+<p class="has-text-right-tablet">tablet right</p>
+<p class="has-text-right-desktop">desktop right</p>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

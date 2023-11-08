@@ -1,5 +1,5 @@
 describe('bal-date-calendar', () => {
-  beforeEach(() => cy.visit('/components/form/bal-date/test/bal-date-calendar.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-date/test/bal-date-calendar.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

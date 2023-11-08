@@ -2,8 +2,8 @@ import path from 'path'
 import { writeFileSync, existsSync, readFileSync } from 'fs'
 import { JsonDocsComponent } from '@stencil/core/internal'
 import { NEWLINE } from './constants'
-import testingCommands from '../../public/assets/data/commands.json'
-import testingSelectors from '../../public/assets/data/selectors.json'
+import testingCommands from '../../.tmp/commands.json'
+import testingSelectors from '../../.tmp/selectors.json'
 import { commandsToMarkdown } from './markdown-commands'
 import { selectorsToMarkdown } from './markdown-selectors'
 
@@ -49,9 +49,9 @@ export const createTestingMarkdown = (docsPath: string, component: JsonDocsCompo
   const content = [
     `## Testing`,
     '',
-    'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
+    'The Baloise Design System provides a collection of custom cypress commands for the components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with the components.',
     '',
-    '<a class="button is-primary" href="../?path=/docs/development-testing--page">Go to testing guide</a>',
+    '<a class="sb-unstyled button is-primary" href="../?path=/docs/development-testing--documentation">Go to testing guide</a>',
     '',
     '<!-- START: human documentation -->',
     '',

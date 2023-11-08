@@ -1,0 +1,123 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxJustifyContent, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Justify Content"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Justify Content" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies alignment along the main axis.</Lead>
+
+## Classes
+
+<CssFlexboxJustifyContent />
+
+## Start
+
+Elements are aligned to the start of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-start is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+
+## Center
+
+Elements are centered within the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-center is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+## End
+
+Elements are aligned to the end of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-end is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+## Space Between
+
+Elements are spaced evenly between them.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-space-between is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+## Space Around
+
+Elements are spaced evenly between and around them.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-space-around is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+## Space Evenly
+
+Elements are spaced evenly around them.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-justify-content-space-evenly is-flex-flex-wrap fg-normal">
+    <div class="has-background-green-3 has-radius-normal p-normal">1</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">2</div>
+    <div class="has-background-green-3 has-radius-normal p-normal">3</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

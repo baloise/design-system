@@ -1,6 +1,6 @@
 describe('bal-time-input', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-time-input/test/bal-time-input.cy.html')
+    cy.visit('/components/bal-time-input/test/bal-time-input.cy.html')
     cy.waitForDesignSystem()
   })
 

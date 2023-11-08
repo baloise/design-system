@@ -1,6 +1,6 @@
 describe('bal-input-slider', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-input-slider/test/bal-input-slider.cy.html')
+    cy.visit('/components/bal-input-slider/test/bal-input-slider.cy.html')
     cy.waitForDesignSystem()
   })
 

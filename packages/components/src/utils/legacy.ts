@@ -1,4 +1,4 @@
-import { newBalOptionValue, newBalSingleOptionValue } from '../components/form/bal-select/utils/bal-option.util'
+import { newBalOptionValue, newBalSingleOptionValue } from '../components/bal-select/utils/bal-option.util'
 import { BalBreakpoints, BalBreakpoint, balBreakpoints } from './breakpoints'
 import { balBrowser } from './browser'
 import { balDevice } from './device'
