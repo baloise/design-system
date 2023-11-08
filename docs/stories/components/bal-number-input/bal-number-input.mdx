@@ -1,5 +1,14 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks'
-import { Banner, Lead, PlaygroundBar, StoryHeading, InfoQuote, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  InfoQuote,
+  Footer,
+  LinkCards,
+  LinkCard,
+} from '../../../.storybook/blocks'
 import * as NumberInputStories from './bal-number-input.stories'
 
 <Meta of={NumberInputStories} />
@@ -64,6 +73,10 @@ import testing from './testing.md?raw'
     <LinkCard
       pageTitle="Development/Form"
       description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+    <LinkCard
+      pageTitle={'Development/Internationalization'}
+      description={'The Internationalization API of the browser provides the Design System number and date formats.'}
     />
   </LinkCards>
 </Footer>

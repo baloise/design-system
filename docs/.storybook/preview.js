@@ -1,5 +1,5 @@
 /** @type { import('@storybook/html').Decorator } */
-export const decorators = [(Story) => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`];
+export const decorators = [Story => `<bal-doc-app>${Story().outerHTML || Story()}</bal-doc-app>`]
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {
@@ -30,12 +30,25 @@ const preview = {
           'Changelog',
           'Support',
           'Foundation',
+          [
+            'Overview',
+            'Border & Radius',
+            'Brand Assets',
+            'Colors',
+            'Design Tokens',
+            'Elevation',
+            'Iconography',
+            'Grid',
+            'Layout',
+            'Spacing',
+            'Typography',
+          ],
           'Development',
           'CSS Utilities',
           'Components',
-          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography']
+          ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography'],
         ],
-      }
+      },
     },
     viewport: {
       viewports: {
