@@ -7,7 +7,8 @@ type Args = JSX.BalContent & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Layout/Content',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
+    content: undefined,
   },
   argTypes: {
     ...withContent(),

@@ -10,6 +10,7 @@ const meta: Meta<Args> = {
     ...withDefaultContent(),
     border: true,
     horizontal: false,
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
@@ -41,6 +42,9 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 
 export const Horizontal = Story({
+  args: {
+    horizontal: true,
+  },
   ...withRender(
     ({ ...args }) => `<bal-card class="p-medium">
     <bal-data ${props(args)}>
@@ -61,10 +65,6 @@ export const Horizontal = Story({
     </bal-data>
   </bal-card>`,
   ),
-  args: {
-    border: false,
-    horizontal: true,
-  },
 })
 
 export const DataTypes = Story({
@@ -78,11 +78,11 @@ export const DataTypes = Story({
         </bal-data-item>
         <bal-data-item>
           <bal-data-label>Multiline Label</bal-data-label>
-          <bal-data-value multiline>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
+          <bal-data-value multiline="true">A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
         </bal-data-item>
         <bal-data-item>
           <bal-data-label>List Value</bal-data-label>
-          <bal-data-value multiline>
+          <bal-data-value multiline="true">
             <ul class="is-list ml-normal">
               <li>Value 1</li>
               <li>Value 2</li>
@@ -95,7 +95,7 @@ export const DataTypes = Story({
         </bal-data-item>
         <bal-data-item>
         <bal-data-label>Editable Multiline</bal-data-label>
-        <bal-data-value multiline editable>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
+        <bal-data-value multiline="true" editable="true">A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
       </bal-data-item>
         <bal-data-item disabled>
           <bal-data-label>Disabled</bal-data-label>
@@ -119,7 +119,4 @@ export const DataTypes = Story({
     </bal-card-content>
   </bal-card>`,
   ),
-  args: {
-    border: true,
-  },
 })
