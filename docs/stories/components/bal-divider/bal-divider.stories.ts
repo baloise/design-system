@@ -7,13 +7,14 @@ type Args = JSX.BalDivider & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Layout/Divider',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-divider' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-divider ${props(args)}>${content}</bal-divider>`),
+  ...withRender(({ ...args }) => `<bal-divider ${props(args)}></bal-divider>`),
 }
 
 export default meta

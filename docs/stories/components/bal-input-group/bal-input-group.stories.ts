@@ -9,6 +9,7 @@ const meta: Meta<Args> = {
   args: {
     ...withDefaultContent(),
     placeholder: 'Enter text here',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
@@ -42,9 +43,9 @@ const meta: Meta<Args> = {
 </bal-input-group>
 
 <bal-input-group class="mb-normal">
-  <bal-tag closable>Tag</bal-tag>
-  <bal-tag closable>Tag</bal-tag>
-  <bal-tag closable>Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
   <bal-input ${props(args)}></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>`,

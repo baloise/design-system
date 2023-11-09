@@ -34,7 +34,7 @@ const meta: Meta<Args> = {
   },
   args: {
     ...withDefaultContent(`<p>Lorem ipsum dolor sit amet, consectetur adipiscing?</p>
-    <bal-button-group position="right" reverse>
+    <bal-button-group position="right" reverse="true">
       <bal-button color="text">Cancel</bal-button>
       <bal-button color="primary">Okay</bal-button>
     </bal-button-group>`),

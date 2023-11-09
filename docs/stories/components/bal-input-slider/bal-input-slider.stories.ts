@@ -7,13 +7,14 @@ type Args = JSX.BalInputSlider & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Form/InputSlider',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-input-slider' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-input-slider ${props(args)}>${content}</bal-input-slider>`),
+  ...withRender(({ ...args }) => `<bal-input-slider ${props(args)}></bal-input-slider>`),
 }
 
 export default meta

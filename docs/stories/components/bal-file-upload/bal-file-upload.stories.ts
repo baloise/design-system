@@ -24,7 +24,7 @@ const meta: Meta<Args> = {
     const section: HTMLElement = document.createElement('section')
 
     section.innerHTML = `<bal-field>
-    <bal-field-label required>Upload Label</bal-field-label>
+    <bal-field-label required="true">Upload Label</bal-field-label>
     <bal-field-control>
         <bal-file-upload ${props(args)}></bal-file-upload>
     </bal-field-control>

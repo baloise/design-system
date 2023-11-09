@@ -8,6 +8,8 @@ const meta: Meta<Args> = {
   title: 'Components/Data Display/Hint',
   args: {
     ...withDefaultContent(),
+    content: undefined,
+    small: true,
   },
   argTypes: {
     ...withContent(),
@@ -37,9 +39,6 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story()
 
 export const TooltipHint = Story({
-  args: {
-    small: true,
-  },
   ...withRender(
     ({ ...args }) => `<bal-hint class="mt-large" ${props(args)}>
   <bal-hint-text>

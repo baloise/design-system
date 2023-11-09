@@ -10,7 +10,7 @@ const meta: Meta<Args> = {
     ...withDefaultContent(),
     label: 'Popup Label',
     backdropDismiss: 'true',
-    content: '',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),

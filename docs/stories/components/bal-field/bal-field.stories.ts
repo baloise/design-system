@@ -11,6 +11,7 @@ const meta: Meta<Args> = {
     placeholder: 'Enter your firstname',
     name: 'firstName',
     id: 'bal-input-1',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),

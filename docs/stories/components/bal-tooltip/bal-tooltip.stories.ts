@@ -10,6 +10,7 @@ const meta: Meta<Args> = {
     ...withDefaultContent(),
     label: 'Tooltip Label',
     reference: 'my-tooltip',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),

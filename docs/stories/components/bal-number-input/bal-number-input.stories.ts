@@ -7,13 +7,14 @@ type Args = JSX.BalNumberInput & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Form/NumberInput',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-number-input' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-number-input ${props(args)}>${content}</bal-number-input>`),
+  ...withRender(({ ...args }) => `<bal-number-input ${props(args)}></bal-number-input>`),
 }
 
 export default meta

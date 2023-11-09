@@ -7,8 +7,9 @@ type Args = JSX.BalSelect & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Form/Select',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
     value: 'v2000',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
@@ -65,7 +66,6 @@ export const Typeahead = Story({
     placeholder: 'Try finding your hero',
     typeahead: true,
     value: undefined,
-    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `<bal-select ${props(args)}>
@@ -125,7 +125,6 @@ export const MultiSelect = Story({
     value: 'SpiderMan,IronMan',
     placeholder: 'Try finding your hero',
     multiple: true,
-    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `<bal-select ${props(args)}>

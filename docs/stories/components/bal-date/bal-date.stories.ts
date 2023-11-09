@@ -9,12 +9,13 @@ const meta: Meta<Args> = {
   args: {
     ...withDefaultContent(''),
     placeholder: 'Pick a date',
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-date' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-date ${props(args)}>${content}</bal-date>`),
+  ...withRender(({ ...args }) => `<bal-date ${props(args)}></bal-date>`),
 }
 
 export default meta

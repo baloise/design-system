@@ -7,13 +7,14 @@ type Args = JSX.BalTextarea & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Form/Textarea',
   args: {
-    ...withDefaultContent(''),
+    ...withDefaultContent(),
+    content: undefined,
   },
   argTypes: {
     ...withContent(),
     ...withComponentControls({ tag: 'bal-textarea' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-textarea ${props(args)}>${content}</bal-textarea>`),
+  ...withRender(({ ...args }) => `<bal-textarea ${props(args)}></bal-textarea>`),
 }
 
 export default meta

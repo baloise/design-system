@@ -18,9 +18,9 @@ const meta: Meta<Args> = {
     ({ ...args }) => `<bal-tabs ${props(args)}>
   <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-  <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
-  <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
+  <bal-tab-item bubble="true" value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+  <bal-tab-item value="tab-d" label="Tab D" hidden="true">Hidden Content of Tab D</bal-tab-item>
+  <bal-tab-item value="tab-e" label="Tab E" disabled="true">Content of Tab E</bal-tab-item>
   <bal-tab-item value="tab-link" label="Tab link" href="https://github.com/baloise/design-system" target="_blank">Content of Tab link</bal-tab-item>
 </bal-tabs>
   `,
@@ -52,8 +52,8 @@ export const Mobile = Story({
     ({ ...args }) => `<bal-tabs ${props(args)}>
   <bal-tab-item value="tab-a" label="Account" icon="account">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Calendar" icon="date">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Settings" icon="settings" bubble>Content of Tab C</bal-tab-item>
-  <bal-tab-item disabled value="tab-d" label="Support" icon="consultant">Content of Tab D</bal-tab-item>
+  <bal-tab-item value="tab-c" label="Settings" icon="settings" bubble="true">Content of Tab C</bal-tab-item>
+  <bal-tab-item disabled="true" value="tab-d" label="Support" icon="consultant">Content of Tab D</bal-tab-item>
 </bal-tabs>
   `,
   ),

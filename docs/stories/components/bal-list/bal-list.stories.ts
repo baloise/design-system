@@ -43,12 +43,12 @@ const meta: Meta<Args> = {
       <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
     </bal-list-item-content>
   </bal-list-item>
-  <bal-list-item clickable>
+  <bal-list-item clickable="true">
     <bal-list-item-content>
       <bal-list-item-title>Clickable item</bal-list-item-title>
     </bal-list-item-content>
   </bal-list-item>
-  <bal-list-item disabled>
+  <bal-list-item disabled="true">
     <bal-list-item-content>
       <bal-list-item-title>Disabled item</bal-list-item-title>
       <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
@@ -126,33 +126,34 @@ export const NativeList = Story({
 export const LinkedList = Story({
   args: {
     border: true,
+    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
-  <bal-list-item clickable href="www.baloise.com" target="_blank">
+  <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
     <bal-list-item-content>
       <bal-list-item-title>Internal Link</bal-list-item-title>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="nav-go-right" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
-  <bal-list-item clickable href="www.baloise.com" target="_blank">
+  <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
     <bal-list-item-content>
       <bal-list-item-title>External Link</bal-list-item-title>
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="link" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
-  <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
+  <bal-list-item disabled="true" clickable="true" href="http://www.baloise.com" target="_blank">
     <bal-list-item-content>
       <bal-list-item-title>Disabled Link</bal-list-item-title>
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="nav-go-right" size="x-small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
@@ -165,11 +166,12 @@ export const DownloadList = Story({
   args: {
     border: true,
     size: 'large',
+    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
-  <bal-list-item clickable>
+  <bal-list-item clickable="true">
     <bal-list-item-icon>
       <bal-icon name="file"></bal-icon>
     </bal-list-item-icon>
@@ -177,12 +179,12 @@ export const DownloadList = Story({
       <bal-list-item-title>Document</bal-list-item-title>
       <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="download" size="small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 
-  <bal-list-item clickable>
+  <bal-list-item clickable="true">
     <bal-list-item-icon>
       <bal-icon name="picture"></bal-icon>
     </bal-list-item-icon>
@@ -190,12 +192,12 @@ export const DownloadList = Story({
       <bal-list-item-title>Picture</bal-list-item-title>
       <bal-list-item-subtitle>PNG - 140KB</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="download" size="small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 
-  <bal-list-item clickable>
+  <bal-list-item clickable="true">
     <bal-list-item-icon>
       <bal-icon name="video"></bal-icon>
     </bal-list-item-icon>
@@ -203,12 +205,12 @@ export const DownloadList = Story({
       <bal-list-item-title>Video File</bal-list-item-title>
       <bal-list-item-subtitle>MP4 - 61MB</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="download" size="small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 
-  <bal-list-item clickable>
+  <bal-list-item clickable="true">
     <bal-list-item-icon>
       <bal-icon name="audio"></bal-icon>
     </bal-list-item-icon>
@@ -216,12 +218,12 @@ export const DownloadList = Story({
       <bal-list-item-title>Audio File</bal-list-item-title>
       <bal-list-item-subtitle>MP3 - 3MB</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="download" size="small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
 
-  <bal-list-item disabled>
+  <bal-list-item disabled="true">
     <bal-list-item-icon>
       <bal-icon name="file"></bal-icon>
     </bal-list-item-icon>
@@ -229,7 +231,7 @@ export const DownloadList = Story({
       <bal-list-item-title>Disabled Document</bal-list-item-title>
       <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
     </bal-list-item-content>
-    <bal-list-item-icon right>
+    <bal-list-item-icon right="true">
       <bal-icon name="download" size="small"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
@@ -242,6 +244,7 @@ export const AccordionList = Story({
   args: {
     border: true,
     size: 'small',
+    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `
@@ -257,7 +260,7 @@ export const AccordionList = Story({
     <bal-list-item-accordion-body content-space="normal">
     Die Versicherungssumme hängt von der Anzahl Zimmer sowie der Anzahl Personen im Haushalt ab. Ein weiterer wichtiger Punkt ist der Einrichtungsstandard. Geben Sie diese Informationen in unseren Prämienrechner ein. Anhand von Durchschnittswerten erhalten Sie dann einen Vorschlag für die passende Versicherungssumme. Oder nutzen Sie unser Formular «Ermittlung der Versicherungssumme für den Hausrat», um den genauen Betrag zu berechnen.    </bal-list-item-accordion-body>
   </bal-list-item>
-  <bal-list-item accordion>
+  <bal-list-item accordion="true">
     <bal-list-item-accordion-head>
       <bal-list-item-content>
         <bal-list-item-title>
@@ -278,11 +281,12 @@ export const AccordionListNested = Story({
   args: {
     border: true,
     accordionOneLevel: true,
+    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `
 <bal-list ${props(args)}>
-  <bal-list-item accordion>
+  <bal-list-item accordion="true">
     <bal-list-item-accordion-head icon="nav-go-down">
       <bal-list-item-content>
         <bal-list-item-title level="x-large">Switzerland</bal-list-item-title>
@@ -291,7 +295,7 @@ export const AccordionListNested = Story({
     <bal-list-item-accordion-body>
 
       <bal-list border size="small">
-        <bal-list-item accordion sub-accordion-item>
+        <bal-list-item accordion="true" sub-accordion-item="true">
           <bal-list-item-accordion-head icon="nav-go-down">
             <bal-list-item-content>
               <bal-list-item-title level="large">Basel</bal-list-item-title>
@@ -300,7 +304,7 @@ export const AccordionListNested = Story({
           <bal-list-item-accordion-body>
 
             <bal-list border size="small">
-              <bal-list-item accordion sub-accordion-item>
+              <bal-list-item accordion="true" sub-accordion-item="true">
                 <bal-list-item-accordion-head icon="nav-go-down">
                   <bal-list-item-content>
                     <bal-list-item-title>Aeschengraben</bal-list-item-title>
@@ -321,7 +325,7 @@ export const AccordionListNested = Story({
 
           </bal-list-item-accordion-body>
         </bal-list-item>
-        <bal-list-item accordion sub-accordion-item>
+        <bal-list-item accordion="true" sub-accordion-item="true">
           <bal-list-item-accordion-head icon="nav-go-down">
             <bal-list-item-content>
               <bal-list-item-title level="large">Zürich</bal-list-item-title>
@@ -330,7 +334,7 @@ export const AccordionListNested = Story({
           <bal-list-item-accordion-body>
 
             <bal-list border size="small">
-              <bal-list-item accordion sub-accordion-item>
+              <bal-list-item accordion="true" sub-accordion-item="true">
                 <bal-list-item-accordion-head icon="nav-go-down">
                   <bal-list-item-content>
                     <bal-list-item-title level="h5">Limmatplazt</bal-list-item-title>
@@ -355,7 +359,7 @@ export const AccordionListNested = Story({
     </bal-list-item-accordion-body>
   </bal-list-item>
 
-  <bal-list-item accordion>
+  <bal-list-item accordion="true">
     <bal-list-item-accordion-head icon="nav-go-down">
       <bal-list-item-content>
         <bal-list-item-title level="x-large">Belgium</bal-list-item-title>
@@ -363,7 +367,7 @@ export const AccordionListNested = Story({
     </bal-list-item-accordion-head>
     <bal-list-item-accordion-body>
       <bal-list border size="small">
-        <bal-list-item accordion sub-accordion-item>
+        <bal-list-item accordion="true" sub-accordion-item="true">
           <bal-list-item-accordion-head icon="nav-go-down">
             <bal-list-item-content>
               <bal-list-item-title level="large">Brüssel</bal-list-item-title>
@@ -390,13 +394,14 @@ export const AccordionListNested = Story({
 export const AccordionListGrouped = Story({
   args: {
     border: true,
+    content: undefined,
   },
   ...withRender(
     ({ ...args }) => `
 <div class="columns">
   <div class="column">
     <bal-list ${props(args)}>
-      <bal-list-item accordion>
+      <bal-list-item accordion="true">
         <bal-list-item-accordion-head>
           <bal-list-item-icon>
             <bal-icon name="account"></bal-icon>
@@ -418,7 +423,7 @@ export const AccordionListGrouped = Story({
       </div>
       <div class="column">
       <bal-list v-bind="args">
-      <bal-list-item accordion>
+      <bal-list-item accordion="true">
         <bal-list-item-accordion-head>
           <bal-list-item-icon>
             <bal-icon name="account"></bal-icon>
