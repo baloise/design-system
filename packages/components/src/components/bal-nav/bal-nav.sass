@@ -1,0 +1,221 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav.vars'
+
+=visually-hidden
+  position: absolute !important
+  height: 0.01em !important
+  width: 0.01em !important
+  padding: 0 !important
+  overflow: hidden !important
+  clip: rect(1px, 1px, 1px, 1px) !important
+  border: none !important
+  white-space: nowrap !important
+
+// Navigation
+// --------------------------------------------------
+
+.bal-nav
+  +unselectable
+  display: block
+  width: 100%
+
+// Flyout
+// --------------------------------------------------
+.bal-nav__flyout
+  background: var(--bal-color-white)
+  padding-top: 1rem
+  padding-bottom: 1rem
+  height: calc(var(--bal-app-height, 100%) - 4rem - 4rem)
+  overflow-y: auto
+  +desktop
+    display: none
+    visibility: hidden
+  //
+  // container adjustment
+  &__container
+    flex-grow: 1
+    margin: 0 auto
+    position: relative
+    width: auto
+    width: 100% !important
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+    &--fluid
+      max-width: var(--bal-container-size-fluid) !important
+    &--detail-page
+      max-width: var(--bal-container-size-detail-page) !important
+    &--compact
+      max-width: var(--bal-container-size-compact) !important
+    &--blog-page
+      max-width: var(--bal-container-size-blog-page) !important
+    +tablet
+      padding-left: var(--bal-container-space-tablet)
+      padding-right: var(--bal-container-space-tablet)
+    +desktop
+      padding-left: var(--bal-container-space-desktop)
+      padding-right: var(--bal-container-space-desktop)
+      max-width: var(--bal-container-size-normal)
+
+.bal-nav__flyout:not(.bal-nav__flyout--visible)
+  +visually-hidden
+
+.bal-nav .bal-nav-meta-bar,
+.bal-nav .bal-nav-menu-bar
+  z-index: auto !important
+
+// Touch Meta Border
+// --------------------------------------------------
+
+.bal-list__item__accordion-head:after
+  background: transparent !important
+
+// Touch Meta Bottom Bar Z-Index Fix
+// --------------------------------------------------
+
+.bal-nav-meta-bar-transform-touch
+  z-index: var(--bal-z-index-popup)
+  position: relative
+
+// Touch Meta Border
+// --------------------------------------------------
+
+.bal-nav__mobile-meta-item
+  display: flex
+  justify-content: space-between
+  align-items: center
+  text-align: start
+  width: 100%
+  min-height: 3rem
+  border: none
+  padding: 0
+  margin: 0
+  gap: var(--bal-space-normal)
+  background: transparent
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-x-large)
+  line-height: var(--bal-line-heigh-x-large)
+  cursor: pointer
+
+.bal-nav__mobile-menu-item
+  display: flex
+  justify-content: space-between
+  align-items: center
+  text-align: start
+  width: 100%
+  min-height: 3rem
+  border: none
+  margin: 0
+  padding: 0 0 0 1rem
+  gap: var(--bal-space-normal)
+  background: transparent
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-large)
+  line-height: var(--bal-line-heigh-large)
+  cursor: pointer
+
+.bal-nav__mobile-section-item,
+.bal-nav__mobile-service-item
+  display: flex
+  justify-content: space-between
+  align-items: center
+  text-align: start
+  width: 100%
+  min-height: 2rem
+  border: none
+  margin: 0
+  padding: 0 2rem 0 2rem
+  gap: var(--bal-space-normal)
+  background: transparent
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-heigh-normal)
+
+.bal-nav__mobile-links
+  display: flex
+  justify-content: space-between
+  align-items: center
+  text-align: start
+  width: 100%
+  min-height: 2rem
+  border: none
+  margin: 0
+  padding: 0 2rem 0 2rem
+  gap: var(--bal-space-normal)
+  background: transparent
+  font-family: var(--bal-font-family-text)
+  font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-heigh-normal)
+
+.bal-nav__mobile-meta-list,
+.bal-nav__mobile-meta-list > li,
+.bal-nav__mobile-menu-list,
+.bal-nav__mobile-menu-list > li,
+.bal-nav__mobile-section-list,
+.bal-nav__mobile-service-list,
+.bal-nav__mobile-section-list > li,
+.bal-nav__mobile-service-list > li,
+.bal-nav__mobile-links-list
+  display: flex
+  flex-direction: column
+
+.bal-nav__mobile-meta-list,
+.bal-nav__mobile-meta-list > li
+  gap: var(--bal-space-normal)
+
+.bal-nav__mobile-menu-list
+  gap: var(--bal-space-normal)
+
+.bal-nav__mobile-menu-list > li
+  gap: var(--bal-space-normal)
+
+.bal-nav__mobile-section-list,
+.bal-nav__mobile-service-list
+  gap: var(--bal-space-x-large)
+
+.bal-nav__mobile-section-list > li,
+.bal-nav__mobile-service-list > li
+  gap: var(--bal-space-xx-small)
+
+.bal-nav__mobile-links-list
+  gap: var(--bal-space-xx-small)
+
+.bal-nav__mobile-section-list
+  padding-top: 1rem
+
+.bal-nav__mobile-service-list
+  background: var(--bal-color-grey-3)
+  border-radius: var(--bal-radius-normal)
+  padding-top: 1rem
+  padding-bottom: 1rem
+
+.bal-nav__mobile-overview-link
+  font-family: var(--bal-font-family-text)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-x-small)
+  line-height: var(--bal-line-height-x-small)
+
+.bal-nav__mobile-overview-link--menu
+  padding: 0 0 0 1rem
+
+.bal-nav__line
+  background-color: var(--bal-color-border-grey-light)
+  height: var(--bal-border-width-normal)
+  border: none
+  display: block
+  border-radius: var(--bal-list-item-radius)
+  width: 100%
+  margin: 0
+  padding: 0
+
+.bal-nav__mobile-links--clickable,
+.bal-nav__mobile-section-item--clickable,
+.bal-nav__mobile-service-item--clickable
+  cursor: pointer
+
+.bal-nav__mobile-links--selected,
+.bal-nav__mobile-section-item--selected,
+.bal-nav__mobile-service-item--selected
+  text-decoration: underline

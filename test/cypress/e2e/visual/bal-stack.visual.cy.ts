@@ -1,6 +1,6 @@
 describe('bal-stack', () => {
   beforeEach(() =>
-    cy.visit('/components/layout/bal-stack/test/bal-stack.visual.html').platform('desktop').waitForDesignSystem(),
+    cy.visit('/components/bal-stack/test/bal-stack.visual.html').platform('desktop').waitForDesignSystem(),
   )
 
   it('basic component', () => {

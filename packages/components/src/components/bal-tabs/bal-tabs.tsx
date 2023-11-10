@@ -222,11 +222,16 @@ export class Tabs
     this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
-      const isAccordionOpen = this.value !== undefined && this.value.length > 0
-      if (isAccordionOpen) {
-        this.expandAccordion(true)
+      const inNavMenuBar = hasParent('bal-nav-menu-bar', this.el)
+      if (inNavMenuBar) {
+        this.isAccordionOpen = false
       } else {
-        this.collapseAccordion(true)
+        const isAccordionOpen = this.value !== undefined && this.value.length > 0
+        if (isAccordionOpen) {
+          this.expandAccordion(true)
+        } else {
+          this.collapseAccordion(true)
+        }
       }
     }
   }
@@ -317,6 +322,17 @@ export class Tabs
   @Method()
   async renderLine() {
     this.animateLine()
+  }
+
+  /**
+   * @internal
+   * Closes the accordion
+   */
+  @Method()
+  async closeAccordion() {
+    if (this.isAccordionOpen) {
+      this.collapseAccordion()
+    }
   }
 
   /**
@@ -471,6 +487,10 @@ export class Tabs
       this.currentRaf = raf(async () => {
         const target = this.getTargetElement(this.value)
         if (!target) {
+          return
+        }
+
+        if (target.getAttribute('target') === '_blank') {
           return
         }
 

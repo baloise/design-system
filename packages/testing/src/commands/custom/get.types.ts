@@ -43,7 +43,7 @@ declare namespace Cypress {
      */
     getByRole(
       role: 'button' | 'label',
-      options: GetByRoleOptions & Partial<Loggable & Timeoutable & Withinable & Shadow>,
+      options: Partial<GetByRoleOptions & Loggable & Timeoutable & Withinable & Shadow>,
     ): Chainable<JQuery>
   }
 }

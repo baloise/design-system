@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+
+  <body>
+    <bal-doc-app>
+      <header class="has-background-grey-2">
+        <bal-navbar>
+          <bal-navbar-brand href="/" target="_blank" animated="false">Default Theme </bal-navbar-brand>
+          <bal-navbar-menu>
+            <bal-navbar-menu-start>
+              <!-- Placeholder for flex -->
+            </bal-navbar-menu-start>
+            <bal-navbar-menu-end>
+              <bal-button color="primary" inverted icon="plus" class="mr-x-large">Create</bal-button>
+              <bal-button color="light" inverted icon="account">Hans Muster</bal-button>
+              <bal-button color="light" inverted icon="web">EN</bal-button>
+            </bal-navbar-menu-end>
+          </bal-navbar-menu>
+        </bal-navbar>
+        <bal-tabs border expanded fullwidth value="a">
+          <bal-tab-item value="a" label="Contracts"></bal-tab-item>
+          <bal-tab-item value="b" label="Guarantees"></bal-tab-item>
+        </bal-tabs>
+      </header>
+      <main class="container py-medium">
+        <bal-card class="my-normal">
+          <bal-card-content>
+            <bal-heading>Heading 1</bal-heading>
+            <bal-heading level="h2">Heading 2</bal-heading>
+            <bal-heading level="h3">Heading 3</bal-heading>
+            <bal-heading level="h4">Heading 4</bal-heading>
+            <bal-heading level="h5">Heading 5</bal-heading>
+            <bal-text>Text</bal-text>
+            <bal-text size="small">Text</bal-text>
+          </bal-card-content>
+        </bal-card>
+
+        <bal-card class="my-normal">
+          <bal-card-content>
+            <bal-button>Default Buttons</bal-button>
+            <bal-button square icon="plus"></bal-button>
+            <br />
+            <br />
+            <bal-button size="small">Small Buttons</bal-button>
+            <bal-button size="small" square icon="plus"></bal-button>
+          </bal-card-content>
+        </bal-card>
+
+        <bal-card class="my-normal">
+          <bal-card-content>
+            <bal-tag>Tag</bal-tag>
+            <bal-tag closable>Tag</bal-tag>
+            <br />
+            <br />
+            <bal-tag size="small">Tag</bal-tag>
+            <bal-tag size="small" closable>Tag</bal-tag>
+          </bal-card-content>
+        </bal-card>
+
+        <bal-card class="my-normal">
+          <bal-card-title>Card Title</bal-card-title>
+          <bal-card-subtitle>Subtitle</bal-card-subtitle>
+          <bal-card-content>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias magnam dolorum consectetur ea,
+              cupiditate nesciunt ratione ut sequi commodi, inventore, quis nobis accusantium atque corporis? Voluptate
+              labore deserunt sunt explicabo.
+            </p>
+            <bal-button-group>
+              <bal-button>Button</bal-button>
+              <bal-button>Button</bal-button>
+            </bal-button-group>
+          </bal-card-content>
+        </bal-card>
+
+        <bal-card class="my-normal">
+          <bal-card-title>Table</bal-card-title>
+          <bal-card-content>
+            <table class="table is-fullwidth is-striped is-hoverable p-none">
+              <thead>
+                <th>Selected</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <bal-checkbox flat inline id="checkbox1"></bal-checkbox>
+                  </td>
+                  <td>Tony Stark</td>
+                  <td><bal-tag size="small" color="green">Ready</bal-tag></td>
+                  <td class="has-buttons">
+                    <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                    <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <bal-checkbox flat inline id="checkbox2"></bal-checkbox>
+                  </td>
+                  <td>Steve Rogers</td>
+                  <td><bal-tag size="small" color="red">Injured</bal-tag></td>
+                  <td class="has-buttons">
+                    <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                    <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <bal-checkbox flat inline id="checkbox3"></bal-checkbox>
+                  </td>
+                  <td>Peter Parker</td>
+                  <td><bal-tag size="small" color="yellow">In school</bal-tag></td>
+                  <td class="has-buttons">
+                    <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                    <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <bal-checkbox flat inline id="checkbox4"></bal-checkbox>
+                  </td>
+                  <td>John Doe</td>
+                  <td><bal-tag size="small" color="purple">Unknown</bal-tag></td>
+                  <td class="has-buttons">
+                    <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                    <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <bal-pagination size="small" class="mt-small" align="end"></bal-pagination>
+          </bal-card-content>
+        </bal-card>
+
+        <bal-card class="my-normal">
+          <bal-card-title>Form</bal-card-title>
+          <bal-card-content>
+            <bal-form-grid>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-textarea placeholder="Placeholder"></bal-textarea>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-date value="2023-08-08"></bal-date>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-select value="1992">
+                      <bal-select-option label="1990" value="1990">1990</bal-select-option>
+                      <bal-select-option label="1991" value="1991">1991</bal-select-option>
+                      <bal-select-option label="1992" value="1992">1992</bal-select-option>
+                      <bal-select-option label="1993" value="1993">1993</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-select value="1992,1993" multiple>
+                      <bal-select-option label="1990" value="1990">1990</bal-select-option>
+                      <bal-select-option label="1991" value="1991">1991</bal-select-option>
+                      <bal-select-option label="1992" value="1992">1992</bal-select-option>
+                      <bal-select-option label="1993" value="1993">1993</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-radio-group value="1992">
+                      <bal-radio value="1990">1990</bal-radio>
+                      <bal-radio value="1991">1991</bal-radio>
+                      <bal-radio value="1992">1992</bal-radio>
+                      <bal-radio value="1993">1993</bal-radio>
+                    </bal-radio-group>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-checkbox-group>
+                      <bal-checkbox value="1990">1990</bal-checkbox>
+                      <bal-checkbox value="1991">1991</bal-checkbox>
+                      <bal-checkbox value="1992" checked>1992</bal-checkbox>
+                      <bal-checkbox value="1993">1993</bal-checkbox>
+                    </bal-checkbox-group>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-input-stepper></bal-input-stepper>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-number-input decimal="2" suffix="CHF" value="42.10"></bal-number-input>
+                  </bal-field-control>
+                  <bal-field-message>Message</bal-field-message>
+                </bal-field>
+              </bal-form-col>
+            </bal-form-grid>
+          </bal-card-content>
+        </bal-card>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

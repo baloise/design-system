@@ -1,6 +1,6 @@
 describe('bal-select', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-select/test/bal-select.cy.html')
+    cy.visit('/components/bal-select/test/bal-select.cy.html')
     cy.waitForDesignSystem()
   })
 

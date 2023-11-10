@@ -1,0 +1,411 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './radio-checkbox.mixins'
+@import './bal-radio-checkbox.vars'
+
+bal-radio .bal-radio-checkbox__label
+  &::before,
+  &::after
+    margin-top: 0px !important
+//
+//
+// radio & checkbox group
++block(radio-checkbox-group)
+  display: inline-block
+  position: relative
+  width: 100%
+  //
+  // inner group element
+  +element(inner)
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: stretch
+    flex-wrap: wrap
+    gap: var(--bal-space-normal)
+    //
+    // transform the radios into buttons
+    +modifier(select-button)
+      flex-direction: column
+      flex-wrap: wrap
+      flex: 1
+      gap: var(--bal-space-x-small)
+      +tablet
+        flex-direction: row
+    +modifier(expanded)
+      align-items: stretch
+      .bal-radio-checkbox
+        flex: 1
+        +mobile
+          width: 100%
+    &--select-button#{&}--vertical
+      gap: var(--bal-space-x-small)
+    //
+    // shows the radios verically
+    +modifier(vertical)
+      +radioGroupVertical
+      +tablet
+        align-items: flex-start
+    //
+    // only shows the radios verically on mobile
+    +modifier(vertical-mobile)
+      +mobile
+        +radioGroupVertical
+
+//
+//
+// radio & checkbox
++block(radio-checkbox)
+  position: relative
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  outline: none
+  min-width: 1.5rem
+  min-height: 3rem
+  //
+  // flat heigt without padding
+  +modifier(flat)
+    &:not(.bal-radio-checkbox--select-button)
+      min-height: 1.5rem
+  //
+  // hide native input
+  +element(input)
+    +hidden-input
+  //
+  // hide native input
+  +modifier(invisible)
+    +hidden-input
+  //
+  // set cursor
+  &:not(#{&}--disabled)
+    &,
+    input,
+    input + label,
+    input + label > span
+      cursor: pointer
+
+  &.bal-focused
+    &.bal-radio-checkbox--select-button
+      @extend %focus-shadow
+    .bal-radio-checkbox__input:not(.bal-radio-checkbox__input--select-button) + .bal-radio-checkbox__label::before
+      @extend %focus-shadow
+
+  //
+  // label of the radio with the icon and the text
+  +element(label)
+    +font-smoothing()
+    +margin('none')
+    +unselectable
+    line-height: 1.5rem
+    contain: layout style
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: left
+    min-height: 1.5rem
+    font-family: var(--bal-font-family-text)
+    //
+    // inner text span element
+    +element(text)
+      padding-left: 2rem
+      hyphens: auto
+      padding-top: 0.25rem
+      padding-bottom: 0.25rem
+      +modifier(hidden)
+        padding-left: 0
+        display: none
+      +modifier(flat)
+        padding-top: 0
+        padding-bottom: 0
+    +modifier(flat)
+      &:not(.bal-radio-checkbox--select-button)
+        &::before,
+        &::after
+          top: 0px !important
+    +modifier(hidden)
+      &::before,
+      &::after
+        top: 0px !important
+    //
+    // symbol
+    &::before,
+    &::after
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 0.25rem
+      height: 1.5rem
+      width: 1.5rem
+      background-color: transparent
+      background-position: center
+      background-repeat: no-repeat
+      background-size: 1.5rem 1.5rem
+    &::before
+      content: ''
+      border-style: var(--bal-form-field-control-border-style)
+      border-width: 2px
+    &::after
+      content: none
+    &--checked
+      &::after
+        content: ''
+    //
+    // radio styles
+    &--radio
+      &::before,
+      &::after
+        border-radius: 50%
+      &::after
+        left: 0
+        transform: scale(0.25)
+    //
+    // checkbox styles
+    &--checkbox
+      &::before
+        border-radius: var(--bal-form-field-control-radius)
+      &::after
+        border-top: 0
+        border-right-style: var(--bal-form-field-control-border-style)
+        border-right-width: 2px
+        border-bottom-style: var(--bal-form-field-control-border-style)
+        border-bottom-width: 2px
+        border-left: 0
+        border-radius: 1px
+        width: calc(0.5rem - 1px)
+        height: calc(0.875rem - 1px)
+        left: calc(0.5rem + 1px)
+        margin-top: 0.25rem
+        transform: rotate(45deg)
+  //
+  // Symbol colors main, inverted and background
+  +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary, --bal-color-primary-inverted, --bal-color-transparent)
+  &:hover,
+  &--hovered
+    +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5, --bal-color-primary-inverted, --bal-color-grey-2)
+  &:active,
+  &--pressed
+    +radioCheckboxSymbol(--bal-color-blue-6, --bal-color-blue-6, --bal-color-primary-inverted, --bal-color-grey-2)
+  &--invalid
+    +radioCheckboxSymbol(--bal-color-border-danger, --bal-color-border-danger, --bal-color-white, --bal-color-danger-1)
+    &:hover,
+    &.bal-radio-checkbox--hovered
+      +radioCheckboxSymbol(--bal-color-danger-5, --bal-color-danger-5, --bal-color-primary-inverted, --bal-color-danger-1)
+    &:active,
+    &.bal-radio-checkbox--pressed
+      +radioCheckboxSymbol(--bal-color-danger-6, --bal-color-danger-6, --bal-color-primary-inverted, --bal-color-danger-1)
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:active
+    +radioCheckboxSymbol(--bal-color-border-grey-dark, --bal-color-border-grey-dark, --bal-color-primary-inverted, --bal-color-grey-2)
+  //
+  // label colors
+  +radioCheckboxLabel(--bal-color-primary)
+  &:hover,
+  &--hovered
+    +radioCheckboxLabel(--bal-color-light-blue-5)
+  &:active,
+  &--pressed
+    +radioCheckboxLabel(--bal-color-blue-6)
+  &--invalid
+    +radioCheckboxLabel(--bal-color-border-danger)
+    &:hover,
+    &.bal-radio-checkbox--hovered
+      +radioCheckboxLabel(--bal-color-danger-5)
+    &:active,
+    &.bal-radio-checkbox--pressed
+      +radioCheckboxLabel(--bal-color-danger-6)
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:active,
+  &--disabled#{&}--hovered,
+  &--disabled#{&}--pressed
+    +radioCheckboxLabel(--bal-color-text-grey)
+  //
+  //
+  // inline display for tables
+  &--inline
+    display: inline
+  //
+  //
+  // select button styles
+  &--select-button
+    padding-left: 0.75rem
+    padding-right: 0.75rem
+    min-width: 3rem
+    border-width: 2px
+    border-style: var(--bal-form-field-control-border-style)
+    border-radius: var(--bal-form-field-control-radius)
+    // color styles
+    border-color: var(--bal-radio-checkbox-select-button-border-color)
+    &:hover
+      border-color: var(--bal-radio-checkbox-select-button-border-color-hover)
+      background: var(--bal-radio-checkbox-select-button-background-hover)
+    &:active
+      border-color: var(--bal-radio-checkbox-select-button-border-color-active)
+      background: var(--bal-radio-checkbox-select-button-background-active)
+    label
+      &::before
+        top: unset
+      &::after
+        top: unset
+        margin-top: -3px
+    .bal-radio-checkbox__label--flat
+      &::before
+        top: unset !important
+      &::after
+        margin-top: -3px
+        top: unset !important
+      .bal-radio-checkbox__label__text--flat
+        padding-top: 0.25rem
+        padding-bottom: 0.25rem
+  &--select-button#{&}--checked
+    background: var(--bal-radio-checkbox-select-button-background-checked)
+    .bal-radio-checkbox__label
+      .bal-radio-checkbox__label__text
+        .is-link
+          color: var(--bal-radio-checkbox-select-button-link-text-color-checked)
+    &:hover
+      background: var(--bal-radio-checkbox-select-button-background-checked-hover)
+    &:active
+      background: var(--bal-radio-checkbox-select-button-background-checked-active)
+    +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary-inverted, --bal-color-primary-inverted, --bal-color-transparent)
+    +radioCheckboxLabel(--bal-color-primary-inverted)
+    &:hover
+      +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5-inverted, --bal-color-light-blue-5-inverted, --bal-color-transparent)
+      +radioCheckboxLabel(--bal-color-light-blue-5-inverted)
+    &:active
+      +radioCheckboxSymbol(--bal-color-blue-6, --bal-color-blue-6-inverted, --bal-color-blue-6-inverted, --bal-color-transparent)
+      +radioCheckboxLabel(--bal-color-blue-6-inverted)
+  &--select-button#{&}--invalid
+    border-color: var(--bal-radio-checkbox-select-button-border-color-invalid)
+    background: var(--bal-radio-checkbox-select-button-background-invalid)
+    .bal-radio-checkbox__label
+      .bal-radio-checkbox__label__text
+        .is-link
+          color: var(--bal-form-field-label-danger-color)
+    &:hover
+      border-color: var(--bal-radio-checkbox-select-button-border-color-invalid-hover)
+      background: var(--bal-radio-checkbox-select-button-background-invalid-hover)
+    &:active
+      border-color: var(--bal-radio-checkbox-select-button-border-color-invalid-active)
+      background: var(--bal-radio-checkbox-select-button-background-invalid-active)
+  &--select-button#{&}--invalid#{&}--checked
+    border-color: var(--bal-radio-checkbox-select-button-border-color-invalid-checked)
+    background: var(--bal-radio-checkbox-select-button-background-invalid-checked)
+    &:hover
+      border-color: var(--bal-radio-checkbox-select-button-border-color-invalid-checked-hover)
+      background: var(--bal-radio-checkbox-select-button-background-invalid-checked-hover)
+    &:active
+      border-color: var(--bal-radio-checkbox-select-button-border-color-invalid-checked-active)
+      background: var(--bal-radio-checkbox-select-button-background-invalid-checked-active)
+    +radioCheckboxSymbol(--bal-color-border-danger, --bal-color-white, --bal-color-white, --bal-color-transparent)
+    &:hover
+      +radioCheckboxSymbol(--bal-color-danger-5, --bal-color-danger-5-inverted, --bal-color-danger-5-inverted, --bal-color-transparent)
+    &:active
+      +radioCheckboxSymbol(--bal-color-danger-6, --bal-color-danger-6-inverted, --bal-color-danger-6-inverted, --bal-color-transparent)
+  &--select-button#{&}--disabled,
+  &--select-button#{&}--disabled:hover,
+  &--select-button#{&}--disabled:active
+    border-color: var(--bal-radio-checkbox-select-button-border-color-disabled-hover-active)
+    background: var(--bal-radio-checkbox-select-button-background-disabled-hover-active)
+    .bal-radio-checkbox__label
+      .bal-radio-checkbox__label__text
+        .is-link
+          color: var(--bal-form-field-label-disabled-color)
+  &--select-button#{&}--disabled#{&}--checked,
+  &--select-button#{&}--disabled#{&}--checked:hover,
+  &--select-button#{&}--disabled#{&}--checked:active
+    border-color: var(--bal-radio-checkbox-select-button-border-color-disabled-checked-hover-active)
+    background: var(--bal-radio-checkbox-select-button-background-disabled-checked-hover-active)
+    +radioCheckboxSymbol(--bal-color-border-grey-dark, --bal-color-white, --bal-color-white, --bal-color-transparent)
+  //
+  //
+  // Switch styles
+  &--switch
+    min-width: 2.5rem
+    .bal-radio-checkbox__label
+      padding-left: 1rem
+    .bal-radio-checkbox__label::before
+      border-radius: 1.5rem
+      position: absolute
+      display: block
+      top: 0
+      left: 0
+      width: 2.5rem
+      height: 1.5rem
+      border: 1.6px solid transparent
+      content: ''
+      transition: left 0.25s ease-out, background 0.25s ease-out
+      margin-top: 0.25rem
+    .bal-radio-checkbox__label::after
+      border: none
+      margin: 0
+      border-radius: 50%
+      display: block
+      position: absolute
+      top: 0.25rem !important
+      left: 0.25rem
+      width: 1rem
+      height: 1rem
+      margin-top: 0.25rem
+      transform: translate3d(0, 0, 0)
+      transition: left 0.25s ease-out, background 0.25s ease-out
+      content: ''
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-before)
+    .bal-radio-checkbox__label::after
+      background: var(--bal-radio-checkbox-switch-label-background-after)
+    &:hover
+      .bal-radio-checkbox__label::after
+        background: var(--bal-radio-checkbox-switch-label-background-hover-after)
+    &:active
+      .bal-radio-checkbox__label::after
+        background: var(--bal-radio-checkbox-switch-label-background-active-after)
+  &--switch#{&}--checked
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-checked-before)
+    .bal-radio-checkbox__label::after
+      left: 1.25rem
+      background: var(--bal-radio-checkbox-switch-label-background-checked-after)
+    &:hover
+      .bal-radio-checkbox__label::before
+        background: var(--bal-radio-checkbox-switch-label-background-checked-hover-before)
+    &:active
+      .bal-radio-checkbox__label::before
+        background: var(--bal-radio-checkbox-switch-label-background-checked-active-before)
+  &--switch#{&}--invalid
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-invalid-before)
+    .bal-radio-checkbox__label::after
+      background: var(--bal-radio-checkbox-switch-label-background-invalid-after)
+    &:hover
+      .bal-radio-checkbox__label::after
+        background: var(--bal-radio-checkbox-switch-label-background-invalid-hover-after)
+    &:active
+      .bal-radio-checkbox__label::after
+        background: var(--bal-radio-checkbox-switch-label-background-invalid-active-after)
+  &--switch#{&}--invalid#{&}--checked
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-invalid-checked-before)
+    .bal-radio-checkbox__label::after
+      background: var(--bal-radio-checkbox-switch-label-background-invalid-checked-after)
+    &:hover
+      .bal-radio-checkbox__label::before
+        background: var(--bal-radio-checkbox-switch-label-background-invalid-checked-hover-before)
+    &:active
+      .bal-radio-checkbox__label::before
+        background: var(--bal-radio-checkbox-switch-label-background-invalid-checked-active-before)
+  &--switch#{&}--disabled,
+  &--switch#{&}--disabled:hover,
+  &--switch#{&}--disabled:active
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-disabled-hover-active-before)
+    .bal-radio-checkbox__label::after
+      background: var(--bal-radio-checkbox-switch-label-background-disabled-hover-active-after)
+  &--switch#{&}--disabled#{&}--checked,
+  &--switch#{&}--disabled#{&}--checked:hover,
+  &--switch#{&}--disabled#{&}--checked:active
+    .bal-radio-checkbox__label::before
+      background: var(--bal-radio-checkbox-switch-label-background-disabled-checked-hover-active-before)
+    .bal-radio-checkbox__label::after
+      background: var(--bal-radio-checkbox-switch-label-background-disabled-checked-hover-active-after)

@@ -1,0 +1,318 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  DiffSource,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v10" />
+
+<Banner label="Updating to v10" section="Development/Upgrade Guides" />
+
+<Lead>Updating from v1 to v10</Lead>
+
+<InfoQuote>
+
+The following workflow walks you through the upgrade steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+rather than strict instructions.
+
+</InfoQuote>
+
+## Upgrade from 9.x to 10.x
+
+### Grouped Checkboxes
+
+There is the need to [group checkboxes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-value).
+To do so the attributes `name` and `value` are used.
+
+- [GitHub Issue](https://github.com/baloise/design-system/issues/497)
+
+If the property `value` was used rename it as `checked`.
+
+```html
+<!-- - old -->
+<bal-checkbox value></bal-checkbox>
+<bal-checkbox value="true"></bal-checkbox>
+<bal-checkbox value="false"></bal-checkbox>
+
+<!-- - new -->
+<bal-checkbox checked></bal-checkbox>
+<bal-checkbox checked="true"></bal-checkbox>
+<bal-checkbox checked="false"></bal-checkbox>
+```
+
+> When the checkbox is used with reactive forms, ng-model or v-model there is no breaking change.
+
+<AngularFramework>
+
+### Angular Component Modules
+
+To goal is to have an Angular Module for each component set.
+This allows a smooth component by component upgrade path instead of having to do big bang upgrade.
+
+- [GitHub Issue](https://github.com/baloise/design-system/issues/486)
+
+Replace `BaloiseDesignSystemModule` with `BalCoreModule`. In addition, import all the component modules you need.
+
+<DiffSource
+  code={`@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+-    BaloiseDesignSystemModule.forRoot()
++    BalCoreModule.forRoot(),
++    BalButtonModule,
++    BalHeadingModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}`}
+/>
+
+</AngularFramework>
+
+## Upgrade from 8.x to 9.x
+
+### Tabs, Accordion and Popover
+
+The components `tabs`, `accordion` and `popover` now can be used with two-way bindings (ngModel or v-model).
+
+```html
+<!-- angular -->
+value = 'tab-a'
+<bal-tabs [(ngModel)]="value">...</bal-tabs>
+
+<!-- vue -->
+value = ref('tab-a')
+<bal-tabs v-model="value">...</bal-tabs>
+...
+```
+
+### Dropdown / Popover
+
+`bal-dropdown` has been renamed as bal-popover.
+
+### Hint
+
+Method `open` has been renamed as `present`.
+Method `close` has been renamed as `dismiss`.
+
+### Form fields
+
+All fields are set as expanded. All expanded attributes in the form section can be removed.
+
+### Modal
+
+The `bal-modal-footer` and `bal-modal-actions` have been removed due the adjustment of the scroll behavior.
+
+<DiffSource
+  code={` <bal-modal>
+  <bal-modal-header>Modal Title</bal-modal-header>
+  <bal-modal-body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
++    <bal-button-group position="right">
++      <bal-button color="link">Cancel</bal-button>
++      <bal-button color="primary">Okay</bal-button>
++    </bal-button-group>
+  </bal-modal-body>
+-  <bal-modal-footer>
+-    <bal-modal-actions>
+-      <bal-button color="link">Cancel</bal-button>
+-      <bal-button color="primary">Okay</bal-button>
+-    </bal-modal-actions>
+-  </bal-modal-footer>
+ </bal-modal>`}
+/>
+
+## Upgrade from 7.x to 8.x
+
+### Tabs
+
+The property `rounded` has been replaced with `interface="tabs-sub"`
+
+```html
+<!-- - old -->
+<bal-tabs interface="tabs" rounded>...</bal-tabs>
+
+<!-- + new -->
+<bal-tabs interface="tabs-sub">...</bal-tabs>
+...
+```
+
+## Upgrade from 6.x to 7.x
+
+### Unsupported Browsers
+
+The unsupported browsers has been moved to [@baloise/web-app-unsupported-browsers](https://github.com/baloise/web-app-utils/tree/master/packages/unsupported-browsers).
+Follow the installation instructions of the above package.
+
+## Upgrade from 5.x to 6.x
+
+### CSS helper classes
+
+- replace `has-border-radius` with `has-radius-normal`
+- replace `has-border-blue-dark` with `has-border-dark`
+- replace `has-border-blue-light` with `has-border-light`
+- replace `has-no-border` with `has-border-none`
+
+## Upgrade from 4.x to 5.x
+
+### App
+
+The props of component `bal-app` have been removed, in favour of the better integration with the proxy libraries.
+The props `background` and `hasStickyFooter` have been removed.
+
+```html
+<!-- - old -->
+<bal-app has-sticky-footer background></bal-app>
+
+<!-- + new -->
+<bal-app class="has-sticky-footer has-background"></bal-app>
+...
+```
+
+## Upgrade from 3.x to 4.x
+
+### Card
+
+The deprecated props `padded` and `padding` have been removed. Use the prop `spacing`.
+
+```html
+<!-- - old -->
+<bal-card padded></bal-card>
+<bal-card padding="form"></bal-card>
+
+<!-- + new -->
+<bal-card spacing="medium"></bal-card>
+...
+```
+
+```html
+<!-- - old -->
+<bal-card padding="pure"></bal-card>
+
+<!-- + new -->
+<bal-card spacing="none"></bal-card>
+...
+```
+
+### CSS helper classes
+
+- replace `has-no-margin` with `m-0`
+- replace `has-no-margin-top` with `mt-0`
+- replace `has-no-margin-bottom` with `mb-0`
+- replace `has-no-padding` with `p-0`
+- replace `has-no-padding-top` with `pt-0`
+- replace `has-no-padding-bottom` with `pb-0`
+- replace `has-margin-top` with `mt-4`
+- replace `has-large-margin-top` with `mt-7`
+- replace `has-margin-bottom` with `mb-4`
+- replace `has-large-margin-bottom` with `mb-7`
+- replace `has-padding-top` with `pt-4`
+- replace `has-large-padding-top` with `pt-7`
+- replace `has-padding-bottom` with `pb-4`
+- replace `has-large-padding-bottom` with `pb-7`
+- replace `is-padded` with `px-4`
+- replace `has-padding` with `px-4`
+- replace `has-large-padding` with `px-7`
+
+### Spacing
+
+responsive spacing helpers have been created the large ones have been removed.
+So `9-16` can be replaced with `8`.
+
+## Upgrade from 2.x to 3.x
+
+### Sticky footer
+
+If `no` you can just upgrade.
+However, if `yes` add the attribute `has-sticky-footer` to you `bal-app` component.
+
+```html
+<!-- - old -->
+<bal-app></bal-app>
+
+<!-- + new -->
+<bal-app has-sticky-footer></bal-app>
+...
+```
+
+## Upgrade from 1.x to 2.x
+
+### Preparations
+
+Did you use utility functions like?
+
+- `utils`
+- `filters/pipes`
+- `validations`
+
+If **No** you can easily migrate to the new version, but if **Yes** go to the installation guide.
+
+Those utility functions have been moved to [baloise/web-app-utils repo](https://github.com/baloise/web-app-utils).
+This was done to have all utility functions in one place and to reduce the complexity of the Design System.
+
+### Installation
+
+First you need to install the missing util packages. Therefore, follow the installation guide of the [baloise/web-app-utils documentation](https://github.com/baloise/web-app-utils).
+
+After the installation update the Design System to version 2.x and replace the import statements, which still use utility functions from the package `@baloise/design-system-components`.
+
+#### Example Utils
+
+```typescript
+// - old
+import { year, month, isoString } from '@baloise/design-system-components'
+
+// + new
+import { year, month, isoString } from '@baloise/web-app-utils'
+
+
+const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
+...
+```
+
+#### Example Validators
+
+```typescript
+import { Component } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
+
+// - old
+import { BalValidators } from '@baloise/design-system-components-angular'
+
+// + new
+import { BalValidators } from '@baloise/web-app-validators-angular'
+
+@Component({
+  selector: 'app-form-page',
+  templateUrl: './form-page.component.html',
+})
+export class FormPageComponent {
+  form = new FormGroup({
+    email: new FormControl(null, [BalValidators.isRequired(), BalValidators.isMinLength(4), BalValidators.isEmail()]),
+  })
+}
+...
+```
+
+<Footer />

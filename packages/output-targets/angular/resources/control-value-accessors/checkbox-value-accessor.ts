@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Inject, Injector, forwardRef } from '@angular/core'
+import { Directive, ElementRef, Inject, InjectFlags, Injector, forwardRef } from '@angular/core'
 import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms'
 
 import { ValueAccessor } from './value-accessor'
@@ -24,8 +24,8 @@ export class CheckboxValueAccessor extends ValueAccessor {
   }
 
   override ngOnInit(): void {
-    super.control = this.injector.get(NgControl) as any
-    super.config = this.injector.get(BalConfigToken) as BaloiseDesignSystemAngularConfig
+    super.control = this.injector.get(NgControl, undefined, InjectFlags.Optional) as any
+    super.config = this.injector.get(BalConfigToken, {}, InjectFlags.Optional) as BaloiseDesignSystemAngularConfig
     super.ngOnInit()
   }
 

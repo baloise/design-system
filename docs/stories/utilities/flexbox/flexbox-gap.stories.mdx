@@ -1,0 +1,50 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Gap"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Gap" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies the gap size between rows and columns. It is a shorthand for column-gap and row-gap.</Lead>
+
+## Classes
+
+<CssFlexboxGap />
+
+## Gap
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap fg-normal mb-normal">
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+</div>
+<div class="is-flex is-flex-wrap-wrap fg-xx-large">
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">1</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">2</div>
+  <div class="is-flex-1 has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center">3</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

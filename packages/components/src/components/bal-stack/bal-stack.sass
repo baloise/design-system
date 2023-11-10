@@ -1,0 +1,416 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-stack
+  display: flex
+  flex: 1
+  flex-direction: row
+  align-items: center
+  height: 100%
+  width: 100%
+  gap: 1rem
+  flex-wrap: nowrap
+  //
+  // wrap elements
+  &--use-wrap
+    flex-wrap: wrap
+  //
+  // fit-content
+  &--fit-content
+    flex: unset
+    width: fit-content
+  //
+  // layout direction
+  &--layout-horizontal
+    flex-direction: row
+    align-items: center
+  &--layout-vertical
+    flex-direction: column
+    align-items: flex-start
+  &--layout-horizontal-reverse
+    flex-direction: row
+    align-items: center
+  &--layout-vertical-reverse
+    flex-direction: column
+    align-items: flex-start
+  //
+  // alignment
+  &--align-top-start
+    align-items: flex-start
+    justify-content: flex-start
+  &--align-top-center
+    align-items: flex-start
+    justify-content: center
+  &--align-top-end
+    align-items: flex-start
+    justify-content: flex-end
+  &--align-start
+    align-items: center
+    justify-content: flex-start
+  &--align-center
+    align-items: center
+    justify-content: center
+  &--align-end
+    align-items: center
+    justify-content: flex-end
+  &--align-bottom-start
+    align-items: flex-end
+    justify-content: flex-start
+  &--align-bottom-center
+    align-items: flex-end
+    justify-content: center
+  &--align-bottom-end
+    align-items: flex-end
+    justify-content: flex-end
+  &--layout-vertical#{&}--align-top-start
+    align-items: flex-start
+    justify-content: flex-start
+  &--layout-vertical#{&}--align-top-center
+    align-items: center
+    justify-content: flex-start
+  &--layout-vertical#{&}--align-top-end
+    align-items: flex-end
+    justify-content: flex-start
+  &--layout-vertical#{&}--align-start
+    align-items: flex-start
+    justify-content: center
+  &--layout-vertical#{&}--align-center
+    align-items: center
+    justify-content: center
+  &--layout-vertical#{&}--align-end
+    align-items: flex-end
+    justify-content: center
+  &--layout-vertical#{&}--align-bottom-start
+    align-items: flex-start
+    justify-content: flex-end
+  &--layout-vertical#{&}--align-bottom-center
+    align-items: center
+    justify-content: flex-end
+  &--layout-vertical#{&}--align-bottom-end
+    align-items: flex-end
+    justify-content: flex-end
+  //
+  // horizontal padding
+  &--px-none
+    padding-left: 0
+    padding-right: 0
+  &--px-xx-small
+    padding-left: var(--bal-space-xx-small)
+    padding-right: var(--bal-space-xx-small)
+    +tablet
+      padding-left: var(--bal-space-tablet-xx-small)
+      padding-right: var(--bal-space-tablet-xx-small)
+    +desktop
+      padding-left: var(--bal-space-desktop-xx-small)
+      padding-right: var(--bal-space-desktop-xx-small)
+  &--px-x-small
+    padding-left: var(--bal-space-x-small)
+    padding-right: var(--bal-space-x-small)
+    +tablet
+      padding-left: var(--bal-space-tablet-x-small)
+      padding-right: var(--bal-space-tablet-x-small)
+    +desktop
+      padding-left: var(--bal-space-desktop-x-small)
+      padding-right: var(--bal-space-desktop-x-small)
+  &--px-small
+    padding-left: var(--bal-space-small)
+    padding-right: var(--bal-space-small)
+    +tablet
+      padding-left: var(--bal-space-tablet-small)
+      padding-right: var(--bal-space-tablet-small)
+    +desktop
+      padding-left: var(--bal-space-desktop-small)
+      padding-right: var(--bal-space-desktop-small)
+  &--px-normal
+    padding-left: var(--bal-space-normal)
+    padding-right: var(--bal-space-normal)
+    +tablet
+      padding-left: var(--bal-space-tablet-normal)
+      padding-right: var(--bal-space-tablet-normal)
+    +desktop
+      padding-left: var(--bal-space-desktop-normal)
+      padding-right: var(--bal-space-desktop-normal)
+  &--px-medium
+    padding-left: var(--bal-space-medium)
+    padding-right: var(--bal-space-medium)
+    +tablet
+      padding-left: var(--bal-space-tablet-medium)
+      padding-right: var(--bal-space-tablet-medium)
+    +desktop
+      padding-left: var(--bal-space-desktop-medium)
+      padding-right: var(--bal-space-desktop-medium)
+  &--px-large
+    padding-left: var(--bal-space-large)
+    padding-right: var(--bal-space-large)
+    +tablet
+      padding-left: var(--bal-space-tablet-large)
+      padding-right: var(--bal-space-tablet-large)
+    +desktop
+      padding-left: var(--bal-space-desktop-large)
+      padding-right: var(--bal-space-desktop-large)
+  &--px-x-large
+    padding-left: var(--bal-space-x-large)
+    padding-right: var(--bal-space-x-large)
+    +tablet
+      padding-left: var(--bal-space-tablet-x-large)
+      padding-right: var(--bal-space-tablet-x-large)
+    +desktop
+      padding-left: var(--bal-space-desktop-x-large)
+      padding-right: var(--bal-space-desktop-x-large)
+  &--px-xx-large
+    padding-left: var(--bal-space-xx-large)
+    padding-right: var(--bal-space-xx-large)
+    +tablet
+      padding-left: var(--bal-space-tablet-xx-large)
+      padding-right: var(--bal-space-tablet-xx-large)
+    +desktop
+      padding-left: var(--bal-space-desktop-xx-large)
+      padding-right: var(--bal-space-desktop-xx-large)
+  //
+  // vertical padding
+  &--py-none
+    padding-top: 0
+    padding-bottom: 0
+  &--py-xx-small
+    padding-top: var(--bal-space-xx-small)
+    padding-bottom: var(--bal-space-xx-small)
+    +tablet
+      padding-top: var(--bal-space-tablet-xx-small)
+      padding-bottom: var(--bal-space-tablet-xx-small)
+    +desktop
+      padding-top: var(--bal-space-desktop-xx-small)
+      padding-bottom: var(--bal-space-desktop-xx-small)
+  &--py-x-small
+    padding-top: var(--bal-space-x-small)
+    padding-bottom: var(--bal-space-x-small)
+    +tablet
+      padding-top: var(--bal-space-tablet-x-small)
+      padding-bottom: var(--bal-space-tablet-x-small)
+    +desktop
+      padding-top: var(--bal-space-desktop-x-small)
+      padding-bottom: var(--bal-space-desktop-x-small)
+  &--py-small
+    padding-top: var(--bal-space-small)
+    padding-bottom: var(--bal-space-small)
+    +tablet
+      padding-top: var(--bal-space-tablet-small)
+      padding-bottom: var(--bal-space-tablet-small)
+    +desktop
+      padding-top: var(--bal-space-desktop-small)
+      padding-bottom: var(--bal-space-desktop-small)
+  &--py-normal
+    padding-top: var(--bal-space-normal)
+    padding-bottom: var(--bal-space-normal)
+    +tablet
+      padding-top: var(--bal-space-tablet-normal)
+      padding-bottom: var(--bal-space-tablet-normal)
+    +desktop
+      padding-top: var(--bal-space-desktop-normal)
+      padding-bottom: var(--bal-space-desktop-normal)
+  &--py-medium
+    padding-top: var(--bal-space-medium)
+    padding-bottom: var(--bal-space-medium)
+    +tablet
+      padding-top: var(--bal-space-tablet-medium)
+      padding-bottom: var(--bal-space-tablet-medium)
+    +desktop
+      padding-top: var(--bal-space-desktop-medium)
+      padding-bottom: var(--bal-space-desktop-medium)
+  &--py-large
+    padding-top: var(--bal-space-large)
+    padding-bottom: var(--bal-space-large)
+    +tablet
+      padding-top: var(--bal-space-tablet-large)
+      padding-bottom: var(--bal-space-tablet-large)
+    +desktop
+      padding-top: var(--bal-space-desktop-large)
+      padding-bottom: var(--bal-space-desktop-large)
+  &--py-x-large
+    padding-top: var(--bal-space-x-large)
+    padding-bottom: var(--bal-space-x-large)
+    +tablet
+      padding-top: var(--bal-space-tablet-x-large)
+      padding-bottom: var(--bal-space-tablet-x-large)
+    +desktop
+      padding-top: var(--bal-space-desktop-x-large)
+      padding-bottom: var(--bal-space-desktop-x-large)
+  &--py-xx-large
+    padding-top: var(--bal-space-xx-large)
+    padding-bottom: var(--bal-space-xx-large)
+    +tablet
+      padding-top: var(--bal-space-tablet-xx-large)
+      padding-bottom: var(--bal-space-tablet-xx-large)
+    +desktop
+      padding-top: var(--bal-space-desktop-xx-large)
+      padding-bottom: var(--bal-space-desktop-xx-large)
+  //
+  // spaces
+  &--space-auto
+    justify-content: space-between
+  &--space-none
+    gap: 0
+    +tablet
+      gap: 0
+    +desktop
+      gap: 0
+  &--space-xx-small
+    gap: var(--bal-space-xx-small)
+    +tablet
+      gap: var(--bal-space-tablet-xx-small)
+    +desktop
+      gap: var(--bal-space-desktop-xx-small)
+  &--space-x-small
+    gap: var(--bal-space-x-small)
+    +tablet
+      gap: var(--bal-space-tablet-x-small)
+    +desktop
+      gap: var(--bal-space-desktop-x-small)
+  &--space-small
+    gap: var(--bal-space-small)
+    +tablet
+      gap: var(--bal-space-tablet-small)
+    +desktop
+      gap: var(--bal-space-desktop-small)
+  &--space-medium
+    gap: var(--bal-space-medium)
+    +tablet
+      gap: var(--bal-space-tablet-medium)
+    +desktop
+      gap: var(--bal-space-desktop-medium)
+  &--space-large
+    gap: var(--bal-space-large)
+    +tablet
+      gap: var(--bal-space-tablet-large)
+    +desktop
+      gap: var(--bal-space-desktop-large)
+  &--space-x-large
+    gap: var(--bal-space-x-large)
+    +tablet
+      gap: var(--bal-space-tablet-x-large)
+    +desktop
+      gap: var(--bal-space-desktop-x-large)
+  &--space-xx-large
+    gap: var(--bal-space-xx-large)
+    +tablet
+      gap: var(--bal-space-tablet-xx-large)
+    +desktop
+      gap: var(--bal-space-desktop-xx-large)
+  //
+  // Defines space between rows
+  &--space-row-auto
+    justify-content: space-between
+  &--space-row-none
+    row-gap: 0
+    +tablet
+      row-gap: 0
+    +desktop
+      row-gap: 0
+  &--space-row-xx-small
+    row-gap: var(--bal-space-xx-small)
+    +tablet
+      row-gap: var(--bal-space-tablet-xx-small)
+    +desktop
+      row-gap: var(--bal-space-desktop-xx-small)
+  &--space-row-x-small
+    row-gap: var(--bal-space-x-small)
+    +tablet
+      row-gap: var(--bal-space-tablet-x-small)
+    +desktop
+      row-gap: var(--bal-space-desktop-x-small)
+  &--space-row-small
+    row-gap: var(--bal-space-small)
+    +tablet
+      row-gap: var(--bal-space-tablet-small)
+    +desktop
+      row-gap: var(--bal-space-desktop-small)
+  &--space-row-medium
+    row-gap: var(--bal-space-medium)
+    +tablet
+      row-gap: var(--bal-space-tablet-medium)
+    +desktop
+      row-gap: var(--bal-space-desktop-medium)
+  &--space-row-large
+    row-gap: var(--bal-space-large)
+    +tablet
+      row-gap: var(--bal-space-tablet-large)
+    +desktop
+      row-gap: var(--bal-space-desktop-large)
+  &--space-row-x-large
+    row-gap: var(--bal-space-x-large)
+    +tablet
+      row-gap: var(--bal-space-tablet-x-large)
+    +desktop
+      row-gap: var(--bal-space-desktop-x-large)
+  &--space-row-xx-large
+    row-gap: var(--bal-space-xx-large)
+    +tablet
+      row-gap: var(--bal-space-tablet-xx-large)
+    +desktop
+      row-gap: var(--bal-space-desktop-xx-large)
+  //
+  // Defines space between rows
+  &--space-column-auto
+    justify-content: space-between
+  &--space-column-none
+    column-gap: 0
+    +tablet
+      column-gap: 0
+    +desktop
+      column-gap: 0
+  &--space-column-xx-small
+    column-gap: var(--bal-space-xx-small)
+    +tablet
+      column-gap: var(--bal-space-tablet-xx-small)
+    +desktop
+      column-gap: var(--bal-space-desktop-xx-small)
+  &--space-column-x-small
+    column-gap: var(--bal-space-x-small)
+    +tablet
+      column-gap: var(--bal-space-tablet-x-small)
+    +desktop
+      column-gap: var(--bal-space-desktop-x-small)
+  &--space-column-small
+    column-gap: var(--bal-space-small)
+    +tablet
+      column-gap: var(--bal-space-tablet-small)
+    +desktop
+      column-gap: var(--bal-space-desktop-small)
+  &--space-column-medium
+    column-gap: var(--bal-space-medium)
+    +tablet
+      column-gap: var(--bal-space-tablet-medium)
+    +desktop
+      column-gap: var(--bal-space-desktop-medium)
+  &--space-column-large
+    column-gap: var(--bal-space-large)
+    +tablet
+      column-gap: var(--bal-space-tablet-large)
+    +desktop
+      column-gap: var(--bal-space-desktop-large)
+  &--space-column-x-large
+    column-gap: var(--bal-space-x-large)
+    +tablet
+      column-gap: var(--bal-space-tablet-x-large)
+    +desktop
+      column-gap: var(--bal-space-desktop-x-large)
+  &--space-column-xx-large
+    column-gap: var(--bal-space-xx-large)
+    +tablet
+      column-gap: var(--bal-space-tablet-xx-large)
+    +desktop
+      column-gap: var(--bal-space-desktop-xx-large)
+
+//
+// custom position
+.bal-stack > bal-radio
+  margin-top: -0.25rem
+
+//
+// reset margin botton space
+.bal-stack > .bal-text,
+.bal-stack > .bal-heading,
+.bal-stack > .bal-heading:not(:last-child),
+.bal-stack > .title,
+.bal-stack > .subtitle,
+.bal-stack > .is-link,
+.bal-stack > p
+  margin: 0

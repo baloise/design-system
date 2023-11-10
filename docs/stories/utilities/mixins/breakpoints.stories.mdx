@@ -1,0 +1,94 @@
+import { Meta, Source, Canvas, Markdown } from '@storybook/addon-docs'
+import { Banner, Lead, Code, Breakpoints, Footer, ScssSource, LinkCards, LinkCard } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Mixins/Breakpoints"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Breakpoints" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>To create a responsive layout you can either structure your app with the Sass mixins.</Lead>
+
+Use the scss mixins in your application the following:
+
+<ScssSource code={`@import '@baloise/design-system-css/sass/mixins';
+
+@include desktop() {
+// add your custom styles here
+// from the desktop breakpoint on
+}
+`} />
+
+The file `design-system-css/sass/mixins` provides all design tokens as CSS-Variable and SASS mixins.
+
+### Basic SASS Mixins
+
+<Markdown>
+  {`
+| Mixin                                       | Description                                 |
+| ------------------------------------------- | ------------------------------------------- |
+| \`from($breakpoint)\`                         | Styles are applied from this breakpoint on. |
+| \`until($breakpoint)\`                        | Styles are applied until this breakpoint.   |
+| \`between($min-breakpoint, $max-breakpoint)\` | Only between the breakpoints.               |
+`}
+</Markdown>
+
+<ScssSource code={`.bal-element {
+  color: lime;
+}
+
+@include from(var(--bal-breakpoint-tablet)) {
+${' '}${' '}// add your custom styles here
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: blue;
+${' '}${' '}}
+}
+`}
+/>
+
+### Named SASS Mixins
+
+The named mixins have the breakpoint already declared on work with the standard.
+
+<Breakpoints />
+
+#### Usage
+
+Always define mobile first and afterwards the style changes for the different breakpoints.
+
+<ScssSource code={`
+.bal-element {
+  color: lime;
+}
+
+@include tablet() {
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: red;
+${' '}${' '}}
+}
+
+@include desktop() {
+${' '}${' '}.bal-element {
+${' '}${' '}${' '}${' '}color: blue;
+${' '}${' '}}
+}
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

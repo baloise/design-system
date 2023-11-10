@@ -5,7 +5,7 @@ describe('bal-radio-button', () => {
 
   function testRadioButton(platform: 'mobile' | 'tablet' | 'desktop') {
     beforeEach(() =>
-      cy.visit('/components/form/bal-radio/test/bal-radio-button.visual.html').platform(platform).waitForDesignSystem(),
+      cy.visit('/components/bal-radio/test/bal-radio-button.visual.html').platform(platform).waitForDesignSystem(),
     )
 
     it('basic component', () => {

@@ -1,0 +1,102 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Label
+// --------------------------------------------------
+
+.bal-label
+  display: inline
+  box-sizing: content-box
+  position: static
+  word-break: break-word
+  //
+  // native label html element
+  &__native
+    display: inline
+    hyphens: auto
+    white-space: pre
+    min-width: 0
+    font-family: var(--bal-form-field-label-font-family)
+    font-weight: var(--bal-form-field-label-font-weight)
+    font-size: var(--bal-size-normal)
+    line-height: var(--bal-line-height-normal)
+    &--multiline
+      white-space: normal
+    &--no-wrap
+      display: block
+      text-overflow: ellipsis
+      overflow: hidden
+      white-space: nowrap
+    //
+    // font sizes
+    &--small
+      font-family: var(--bal-font-family-text)
+      font-size: var(--bal-size-small)
+      line-height: var(--bal-line-height-small)
+      +tablet
+        font-size: var(--bal-size-tablet-small)
+        line-height: var(--bal-line-height-tablet-small)
+      +desktop
+        font-size: var(--bal-size-desktop-small)
+        line-height: var(--bal-line-height-desktop-small)
+    &--large
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-large)
+      line-height: var(--bal-line-height-large)
+      +tablet
+        font-size: var(--bal-size-tablet-large)
+        line-height: var(--bal-line-height-tablet-large)
+      +desktop
+        font-size: var(--bal-size-desktop-large)
+        line-height: var(--bal-line-height-desktop-large)
+    &--x-large
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-x-large)
+      line-height: var(--bal-line-height-x-large)
+      +tablet
+        font-size: var(--bal-size-tablet-x-large)
+        line-height: var(--bal-line-height-tablet-x-large)
+      +desktop
+        font-size: var(--bal-size-desktop-x-large)
+        line-height: var(--bal-line-height-desktop-x-large)
+    &--xx-large
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-xx-large)
+      line-height: var(--bal-line-height-xx-large)
+      +tablet
+        font-size: var(--bal-size-tablet-xx-large)
+        line-height: var(--bal-line-height-tablet-xx-large)
+      +desktop
+        font-size: var(--bal-size-desktop-xx-large)
+        line-height: var(--bal-line-height-desktop-xx-large)
+    &--xxx-large
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-xxx-large)
+      line-height: var(--bal-line-height-xxx-large)
+      +tablet
+        font-size: var(--bal-size-tablet-xxx-large)
+        line-height: var(--bal-line-height-tablet-xxx-large)
+      +desktop
+        font-size: var(--bal-size-desktop-xxx-large)
+        line-height: var(--bal-line-height-desktop-xxx-large)
+    //
+    // color styles
+    &--success
+      color: var(--bal-form-field-label-success-color)
+    &--danger
+      color: var(--bal-form-field-label-danger-color)
+    &--disabled
+      color: var(--bal-form-field-label-disabled-color) !important
+    //
+    // font weight
+    &--regular
+      font-weight: var(--bal-weight-regular)
+    //
+    // interactions
+    &--hovered
+      color: var(--bal-form-field-label-color-hover)
+    &--pressed
+      color: var(--bal-form-field-label-color-active)
+    &--danger#{&}--hovered
+      color: var(--bal-form-field-label-danger-color-hover)
+    &--danger#{&}--pressed
+      color: var(--bal-form-field-label-danger-color-active)

@@ -36,6 +36,11 @@ export class NavbarBrand {
   @Prop() logo?: string
 
   /**
+   * Size of the logo SVG
+   */
+  @Prop() logoSize: BalProps.BalLogoSize = ''
+
+  /**
    * Defines if the logo animation should be active
    */
   @Prop() animated = true
@@ -117,7 +122,7 @@ export class NavbarBrand {
     const logoTemplate = this.logo ? (
       <img loading="lazy" class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
     ) : (
-      <bal-logo animated={this.animated} color={'white'}></bal-logo>
+      <bal-logo animated={this.animated} color={'white'} size={this.logoSize}></bal-logo>
     )
 
     return (

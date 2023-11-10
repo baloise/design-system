@@ -7,6 +7,8 @@ yarn-error.log*
 package-lock.json-e
 report.html
 reg.json
+demo/
+hydrate/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -125,6 +127,7 @@ packages/components-angular/src/directives/
 
 packages/tokens/src/tokens.ts
 packages/icons/src/icons.json
+packages/brand-icons/src/icons.json
 packages/maps/src/markers.json
 packages/css/css/
 packages/css/assets/fonts/
@@ -139,3 +142,14 @@ test/cypress/videos
 ComponentsBuild.zip
 TestE2eBuild.zip
 TestNgE2eBuild.zip
+
+docs/public/assets/fonts/
+docs/public/assets/data/
+docs/public/assets/download/
+docs/public/assets/css/design-system-table.css
+docs/public/build/
+docs/stories/components/**/api.md
+docs/public/assets/images/map-markers
+docs/public/assets/images/brand-icons
+docs/public/assets/images/icons
+docs/stories/assets/data

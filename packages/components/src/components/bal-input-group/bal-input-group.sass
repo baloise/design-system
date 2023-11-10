@@ -1,0 +1,120 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-input-group.mixins'
+
++block(input-group)
+  +unselectable
+  position: relative
+  display: flex
+  width: 100%
+  align-items: center
+  min-height: 3rem
+  gap: 0.25rem
+  border: var(--bal-border-width-normal) solid var(--bal-color-border-grey)
+  border-radius: var(--bal-radius-normal)
+  background: var(--bal-color-white)
+
+  .input
+    min-height: 2.75rem
+    height: 2.75rem
+    border: none
+    border-radius: var(--bal-radius-none)
+    background: none !important
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: calc(0.5em - 0.313rem)
+    padding-top: calc(0.5em - 0.313rem)
+
+  .bal-select__control
+    border: none
+    min-height: 2.75rem
+
+  .bal-select__control__input
+    padding-left: 0 !important
+    padding-right: 0 !important
+
+  .bal-icon
+    min-width: 3rem
+
+  .bal-tag
+    .bal-icon
+      min-width: unset
+
+  & > *:first-child.bal-select .bal-select__control
+    padding-left: 0.625rem
+
+  & > *:first-child.bal-input
+    .input
+      padding-left: 0.625rem
+
+  & > *:last-child.bal-input
+    .input
+      padding-right: 0.625rem
+
+  & > *:first-child.bal-input-date
+    .input
+      padding-left: 0.625rem
+
+  & > *:last-child.bal-input-date
+    .input
+      padding-right: 0.625rem
+
+  & > *:first-child.input
+    padding-left: 0.625rem
+
+  & > *:last-child.input
+    padding-right: 0.625rem
+
+  & > *:last-child.bal-tag
+    margin-right: 0.625rem
+
+  & > *:first-child.bal-tag
+    margin-left: 0.625rem
+
+  &.is-hovered,
+  &:hover
+    &,
+    .input,
+    .bal-select__control
+      background: var(--bal-color-grey-1)
+
+  +modifier(is-danger)
+    &,
+    .input
+      border-color: var(--bal-color-border-danger)
+      background: var(--bal-color-danger-1)
+
+    svg
+      g,
+      path,
+      circle
+        fill: var(--bal-color-border-danger)
+
+  @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger))
+  @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success))
+  @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning))
+  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-grey-dark))
+
+  +modifier(is-disabled)
+
+    &,
+    .input
+      cursor: default
+      pointer-events: none
+      user-select: none
+      color: var(--bal-color-text-grey-dark)
+
+      ::placeholder
+        color: var(--bal-color-text-grey)
+
+    .tag
+      background-color: var(--bal-color-grey-5)
+
+      span
+        color: var(--bal-color-text-white)
+
+      .delete
+        display: none
+
+  &:not(.bal-input-group--is-disabled)
+    &:focus-within
+      border-color: var(--bal-color-primary)

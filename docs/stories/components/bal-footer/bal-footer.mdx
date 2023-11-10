@@ -1,0 +1,50 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as FooterStories from './bal-footer.stories'
+
+<Meta of={FooterStories} />
+
+<StoryHeading of={FooterStories.Basic} hidden></StoryHeading>
+
+<Banner of={FooterStories} />
+
+<Lead>**Footer** for the Baloise Applications. The footer runs pure in blue or with a decorated track line below.</Lead>
+
+<Canvas of={FooterStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FooterStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FooterStories.FooterOfGermany}></StoryHeading>
+
+At the moment only Switzerland and Germany are supported to load the footer links from the CMS.
+Change the property `region` to change the links.
+
+<Canvas of={FooterStories.FooterOfGermany} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

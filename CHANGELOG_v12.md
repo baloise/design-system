@@ -199,7 +199,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 ## 10.24.5 (2022-10-05)
 
 
-
 ## [11.0.18](https://github.com/baloise/design-system/compare/v11.0.17...v11.0.18) (2022-12-05)
 
 
@@ -353,7 +352,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * **icons:** add missing arrow icons ([d430cb4](https://github.com/baloise/design-system/commit/d430cb4d6b7ac3daf096b326799cd872b9bbfb9b))
 * **radio:** group elements sends focus and blur event. Closes [#623](https://github.com/baloise/design-system/issues/623) ([d044693](https://github.com/baloise/design-system/commit/d0446935804b88b765d2c1c0879519b2e909fbb7))
 * **select:** typeahead + remote accept initial value. Closes [#603](https://github.com/baloise/design-system/issues/603), [#819](https://github.com/baloise/design-system/issues/819) ([5f11bb9](https://github.com/baloise/design-system/commit/5f11bb9dd8a9d93b09f48bba5fed4280ee7d3078))
-
 
 ### Performance Improvements
 

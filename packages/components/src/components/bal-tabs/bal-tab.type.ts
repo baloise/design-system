@@ -5,6 +5,7 @@ export interface BalTabOption {
   value: string
   label: string
   href: string
+  tabPanelID?: string
   target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean

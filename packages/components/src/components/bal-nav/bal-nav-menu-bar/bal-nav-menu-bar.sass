@@ -1,0 +1,122 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-menu-bar.vars'
+
+// Nav Menu Bar
+// --------------------------------------------------
+
+.bal-nav-menu-bar
+  +unselectable
+  display: block
+  width: 100%
+  z-index: var(--bal-z-index-navigation)
+  //
+  // container adjustment
+  &__container
+    flex-grow: 1
+    margin: 0 auto
+    position: relative
+    width: auto
+    width: 100% !important
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+    &--fluid
+      max-width: var(--bal-container-size-fluid) !important
+    &--detail-page
+      max-width: var(--bal-container-size-detail-page) !important
+    &--compact
+      max-width: var(--bal-container-size-compact) !important
+    &--blog-page
+      max-width: var(--bal-container-size-blog-page) !important
+    +tablet
+      padding-left: var(--bal-container-space-tablet)
+      padding-right: var(--bal-container-space-tablet)
+    +desktop
+      padding-left: var(--bal-container-space-desktop)
+      padding-right: var(--bal-container-space-desktop)
+      max-width: var(--bal-container-size-normal)
+  //
+  // hidden
+  &--hidden-mobile
+    +mobile
+      display: hidden
+      visibility: hidden
+  &--hidden-tablet
+    +mobile
+      display: hidden
+      visibility: hidden
+    +tablet-only
+      display: hidden
+      visibility: hidden
+  //
+  // responsive
+  +widescreen
+    position: fixed
+    margin-top: 1rem
+  //
+  //
+  &--position-fixed-top
+    position: fixed
+
+// Inner
+// --------------------------------------------------
+
+.bal-nav-menu-bar__inner
+  background: var(--bal-nav-menu-bar-background)
+  box-shadow: var(--bal-nav-menu-bar-shadow)
+  +widescreen
+    background: transparent
+    box-shadow: none
+
+.bal-nav-menu-bar__inner > .bal-nav-menu-bar__container
+  min-height: 64px
+  +widescreen
+    background: var(--bal-nav-menu-bar-background)
+    border-radius: var(--bal-nav-menu-bar-radius)
+    box-shadow: var(--bal-nav-menu-bar-shadow)
+    min-height: 80px
+  +between(1440px, 1540px)
+    background: transparent
+    box-shadow: none
+    min-height: 80px
+    &::before
+      position: absolute
+      content: ''
+      height: 100%
+      top: 0
+      left: 1rem
+      right: 1rem
+      background: var(--bal-nav-menu-bar-background)
+      border-radius: var(--bal-nav-menu-bar-radius)
+      box-shadow: var(--bal-nav-menu-bar-shadow)
+
+// Troubleshooting
+// --------------------------------------------------
+
+.bal-nav-menu-bar .bal-nav__logo
+  align-self: flex-start
+  z-index: 1
+  height: auto
+  padding-top: .8em
+  +desktop
+    padding-top: 1rem
+  +widescreen
+    padding-top: 1.5rem
+
+// Space helpers for the content after the bar
+// --------------------------------------------------
+
+.bal-nav-menu-bar-body-padding
+  padding-top: 1rem
+  +widescreen
+    padding-top: 7rem
+
+.bal-nav-menu-bar-body-margin
+  margin-top: 1rem
+  +widescreen
+    margin-top: 7rem
+
+.bal-nav-menu-bar-fixed-body-padding
+  padding-top: 8rem
+
+.bal-nav-menu-bar-fixed-body-margin
+  margin-top: 8rem

@@ -9,6 +9,7 @@
   font-family: var(--bal-font-family-title)
   font-weight: var(--bal-weight-bold)
   font-size: var(--bal-size-normal)
+  line-height: var(--bal-body-line-height)
   text-align: center
   hyphens: auto
   white-space: nowrap
@@ -25,7 +26,7 @@
     color: var(--bal-tabs-tab-label-text-color-inverted-disabled)
   &--inverted
     font-weight: var(--bal-weight-regular)
-    letter-spacing: 0.059px
+    letter-spacing: 0.1085px
   &--inverted#{&}--active
     font-weight: var(--bal-weight-bold)
     letter-spacing: 0
@@ -33,8 +34,8 @@
   // alert bubble
   &__bubble
     position: absolute
-    right: -8px
-    top: -8px
+    right: -0.5rem
+    top: -0.5rem
   //
   // Vertical layout
   &--vertical

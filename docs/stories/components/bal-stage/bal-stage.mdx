@@ -1,0 +1,68 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as StageStories from './bal-stage.stories'
+
+<Meta of={StageStories} />
+
+<StoryHeading of={StageStories.Basic} hidden></StoryHeading>
+
+<Banner of={StageStories} />
+
+<Lead>**Stage** is an imposing banner to showcase something. The stage component allows you to add a full width banner to
+  your webpage, which can optionally cover the full height of the page as well.</Lead>
+
+<Canvas of={StageStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={StageStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StageStories.SmallStage}></StoryHeading>
+
+<Canvas of={StageStories.SmallStage} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StageStories.LargeStage}></StoryHeading>
+
+<Canvas of={StageStories.LargeStage} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={StageStories.StageWithImage}></StoryHeading>
+
+<Canvas of={StageStories.StageWithImage} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balStageImageApi from './bal-stage-image/api.md?raw'
+
+<Markdown>{balStageImageApi}</Markdown>
+
+import balStageBackLinkApi from './bal-stage-back-link/api.md?raw'
+
+<Markdown>{balStageBackLinkApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

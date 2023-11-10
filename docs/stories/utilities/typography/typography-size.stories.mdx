@@ -1,0 +1,65 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographySize, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Font Size"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Font Size" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies the font size of an element.</Lead>
+
+## Classes
+
+The font-size CSS utility classes are inherently **responsive**. This means that the size automatically adjusts itself based on breakpoints such as mobile, tablet, and desktop.
+
+<CssTypographySize />
+
+## Headings
+
+The default size for the `title` class is `is-size-xxx-large`, which corresponds to the size of a heading 1 element.
+
+<Code language="html" code={`
+<h1 class="title">Heading 1</h1>
+<h2 class="title is-size-xx-large">Heading 2</h2>
+<h3 class="title is-size-x-large">Heading 3</h3>
+<h4 class="title is-size-large">Heading 4</h4>
+<h5 class="title is-size-normal">Heading 5</h5>
+`} />
+
+## Texts
+
+The default size for the `p` element is `is-size-normal`.
+
+<Code language="html" code={`
+<p class="is-size-medium">Medium Paragraph - Lorem ipsum dolor sit.</p>
+<p>Paragraph - Lorem ipsum dolor sit.</p>
+<p class="is-size-small">Small Paragraph - Lorem ipsum dolor sit.</p>
+`} />
+
+## Display
+
+The two display sizes are designed for large-scale website layouts.
+
+<Code language="html" code={`
+<h1 class="title is-size-xxxxx-large">Display 1</h1>
+<h1 class="subtitle is-size-xxxx-large">Display 2</h1>
+`} />
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

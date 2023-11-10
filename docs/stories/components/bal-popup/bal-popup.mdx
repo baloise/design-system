@@ -1,0 +1,89 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as PopupStories from './bal-popup.stories'
+
+<Meta of={PopupStories} />
+
+<StoryHeading of={PopupStories.Basic} hidden></StoryHeading>
+
+<Banner of={PopupStories} />
+
+<Lead>A **Popup** serves the purpose of presenting additional content overlaying an existing element.</Lead>
+
+<Canvas of={PopupStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={PopupStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Usage
+
+To link the popup component to a trigger element, you need to assign an ID to your popup component and add the bal-popup attribute to the trigger element, as shown in the example below:
+
+```html
+<bal-button bal-popup="my-popup">Click me</bal-button>
+<bal-popup id="my-popup" label="Popup Label">Popup content</bal-popup>
+```
+
+Furthermore, most of the properties of the popup component can be set on the trigger element. Here's an HTML snippet demonstrating the usage:
+
+```html
+<bal-button bal-popup="my-popup" bal-popup-position="top" bal-popup-arrow>Click me</bal-button>
+<bal-popup id="my-popup" label="Popup Label">Popup content</bal-popup>
+```
+
+In this example, the bal-button element serves as the trigger element for the popup component.
+It includes the bal-popup attribute, which references the ID of the popup component, "my-popup". Additionally, it specifies the position of the popup using bal-popup-position="top" and enables the arrow indicator with bal-popup-arrow.
+
+The actual content of the popup is defined within the bal-popup element.
+It includes a label attribute, "Popup Label", for accessibility purposes and to show a heading.
+
+<span id="story--components-data-display-popup--popover" style={{ opacity: 0 }}></span>
+<span id="story--components-data-display-popup--fullscreen" style={{ opacity: 0 }}></span>
+<span id="story--components-data-display-popup--drawer" style={{ opacity: 0 }}></span>
+
+## Variants
+
+The popup component offers three variants: Popover, Fullscreen, and Drawer.
+
+- The **Popover** variant, which is the default, functions similarly to a tooltip but allows for displaying more extensive content.
+- The **Fullscreen** variant behaves like a modal, covering the entire window and is particularly useful for mobile solutions.
+- Lastly, the **Drawer** variant slides up from the bottom of the window.
+
+<bal-doc-app>
+  <bal-button-group class="mb-large" position="left">
+    <a class="button is-info" href="?path=/story/components-data-display-popup--popover">
+      <p style={{ margin: 0 }}>Popover</p>
+    </a>
+    <a class="button is-info" href="?path=/story/components-data-display-popup--fullscreen">
+      <p style={{ margin: 0 }}>Fullscreen</p>
+    </a>
+    <a class="button is-info" href="?path=/story/components-data-display-popup--drawer">
+      <p style={{ margin: 0 }}>Drawer</p>
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

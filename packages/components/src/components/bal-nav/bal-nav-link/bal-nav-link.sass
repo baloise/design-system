@@ -1,0 +1,71 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-link.vars'
+
+// Nav link
+// --------------------------------------------------
+
+.bal-nav-link
+  display: block
+  //
+  // Space to next nav link
+  &:not(:last-child)
+    margin-bottom: var(--bal-space-x-small)
+
+  &--variant-title:not(:last-child)
+    margin-bottom: var(--bal-space-normal) !important
+
+  &--variant-overview:not(:last-child)
+    margin-bottom: var(--bal-space-none) !important
+    +desktop
+      margin-bottom: var(--bal-space-normal) !important
+  //
+  // Link element can be span or a tag
+  &__native
+    display: inline
+    color: var(--bal-nav-link-text-color)
+    font-size: var(--bal-size-normal)
+    line-height: var(--bal-body-line-height)
+    font-family: var(--bal-font-family-text)
+    padding: 0
+    border: none
+    background: none
+    //
+    // Variants
+    &--variant-title
+      font-family: var(--bal-font-family-title)
+      font-size: var(--bal-size-normal)
+      font-weight: var(--bal-weight-bold)
+      text-decoration: none
+      margin-bottom: var(--bal-space-normal)
+      +desktop
+        font-size: var(--bal-size-xx-large)
+    &--variant-overview
+      font-size: var(--bal-size-small)
+      font-weight: var(--bal-weight-bold)
+    //
+    // Selected state, defines the current path like a breadcrumb
+    &--selected
+      text-decoration: var(--bal-link-text-decoration) !important
+      text-decoration-thickness: 1px !important
+      text-underline-offset: 2px !important
+
+// Native link element
+// --------------------------------------------------
+
+button.bal-nav-link__native,
+a.bal-nav-link__native
+  cursor: pointer
+  +hover
+    &:hover
+      text-decoration: var(--bal-link-text-decoration)
+      text-decoration-thickness: 1px
+      color: var(--bal-nav-link-text-color-hover)
+      text-underline-offset: 2px
+  &:focus-visible
+    @extend %focus-shadow
+    border-radius: var(--bal-radius-normal)
+  &:active
+    text-decoration: var(--bal-link-text-decoration)
+    text-decoration-thickness: 1px
+    color: var(--bal-nav-link-text-color-active)
+    text-underline-offset: 2px

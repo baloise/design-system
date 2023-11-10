@@ -1,0 +1,60 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-snackbar.vars'
+
++block(snackbar)
+  +unselectable
+  display: inline-flex
+  position: relative
+  flex-grow: 0 !important
+  width: 100%
+  +mobile
+    width: 18rem
+  +tablet
+    width: 18rem
+  +desktop
+    width: 27.5rem
+  justify-content: flex-end
+  +element(inner)
+    min-height: 3.5rem
+    border-radius: var(--bal-snackbar-radius)
+    font-size: var(--bal-snackbar-font-size)
+    font-family: var(--bal-snackbar-font-family)
+    background: var(--bal-snackbar-background)
+    color: var(--bal-snackbar-color)
+    hyphens: auto
+    +modifier(is-primary)
+      background: var(--bal-snackbar-background-primary)
+      color: var(--bal-snackbar-color-primary)
+    +modifier(is-info)
+      background: var(--bal-snackbar-background-info)
+      color: var(--bal-snackbar-color-info)
+    +modifier(is-danger)
+      background: var(--bal-snackbar-background-danger)
+      color: var(--bal-snackbar-color-danger)
+    +modifier(is-warning)
+      background: var(--bal-snackbar-background-warning)
+      color: var(--bal-snackbar-color-warning)
+    +modifier(is-success)
+      background: var(--bal-snackbar-background-success)
+      color: var(--bal-snackbar-color-success)
+    position: relative
+    display: inline-flex
+    flex-grow: 1
+    margin: 0.5rem 0 0 0
+    box-shadow: var(--bal-shadow-normal)
+    +padding('medium')
+    align-self: flex-end
+    flex-direction: column !important
+    row-gap: 1rem
+  +element(header)
+    display: flex
+    align-items: center
+    column-gap: .5rem
+  +element(footer)
+    justify-content: start
+    margin-top: .5rem
+  +element(close)
+    &.bal-close
+      position: absolute
+      right: 1.5rem
+      top: 1.5rem

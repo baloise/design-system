@@ -1,6 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { Attributes } from '../../interfaces'
-import { inheritAttributes } from '../../utils/attributes'
+import { Attributes, inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'bal-button',
@@ -184,6 +183,10 @@ export class Button implements ComponentInterface {
     this.balDidRender.emit()
   }
 
+  componentWillRender() {
+    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-hidden', 'tabindex'])
+  }
+
   private get isIconInverted() {
     return this.inverted
   }
@@ -308,6 +311,7 @@ export class Button implements ComponentInterface {
       >
         <TagType
           {...attrs}
+          {...this.inheritAttributes}
           type={this.elementType}
           class={this.buttonCssClass}
           part="native"
@@ -334,7 +338,7 @@ export class Button implements ComponentInterface {
               'has-no-wrap': this.noWrap,
               'is-small': this.size === 'small',
             }}
-            style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
+            style={{ opacity: this.loading ? '0' : '1' }}
             data-testid="bal-button-label"
           >
             <slot />
