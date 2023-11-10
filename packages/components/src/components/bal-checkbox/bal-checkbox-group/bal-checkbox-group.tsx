@@ -23,6 +23,8 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
+import { ListenToResize } from '../../../utils/resize'
+import { balBreakpoints } from '../../../utils/breakpoints'
 
 @Component({
   tag: 'bal-checkbox-group',
@@ -32,6 +34,8 @@ export class CheckboxGroup
 {
   private inputId = `bal-cg-${checkboxGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+  private maxCheckboxWidth = 0
+  private isComponentLoaded = false
 
   log!: LogInstance
 
@@ -208,6 +212,20 @@ export class CheckboxGroup
     this.onOptionChange()
   }
 
+  componentDidLoad(): void {
+    this.isComponentLoaded = true
+    if (this.interface === 'select-button' && this.vertical) {
+      this.setEqualWidthsForCheckboxes()
+    }
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
+    if (this.interface === 'select-button' && this.vertical && this.isComponentLoaded) {
+      this.setEqualWidthsForCheckboxes()
+    }
+  }
+
   /**
    * LISTENERS
    * ------------------------------------------------------
@@ -337,6 +355,28 @@ export class CheckboxGroup
     })
   }
 
+  private setEqualWidthsForCheckboxes(): void {
+    const group = this.getSelectButtons()
+    if (!balBreakpoints.isMobile) {
+      group?.forEach(checkbox => {
+        const checkboxWidth = checkbox.getBoundingClientRect().right - checkbox.getBoundingClientRect().left
+        this.maxCheckboxWidth = Math.max(this.maxCheckboxWidth, checkboxWidth)
+      })
+
+      group?.forEach(checkbox => {
+        if (checkbox.clientWidth <= this.maxCheckboxWidth) {
+          checkbox.style.width = this.maxCheckboxWidth + 'px'
+        }
+      })
+    } else {
+      group?.forEach(checkbox => {
+        if (checkbox.clientWidth <= this.maxCheckboxWidth) {
+          checkbox.style.width = 'unset'
+        }
+      })
+    }
+  }
+
   /**
    * GETTERS
    * ------------------------------------------------------
@@ -348,6 +388,10 @@ export class CheckboxGroup
 
   private getCheckboxButtons(): HTMLBalCheckboxButtonElement[] {
     return Array.from(this.el.querySelectorAll('bal-checkbox-button'))
+  }
+
+  private getSelectButtons() {
+    return this.el.querySelector('.bal-radio-checkbox-group__inner--vertical')?.querySelectorAll('bal-checkbox')
   }
 
   /**

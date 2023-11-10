@@ -21,6 +21,8 @@ import isFunction from 'lodash.isfunction'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BalMutationObserver, ListenToMutation } from '../../../utils/mutation'
 import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../../utils/form'
+import { ListenToResize } from '../../../utils/resize'
+import { balBreakpoints } from '../../../utils/breakpoints'
 import { BalFocusObserver, ListenToFocus } from '../../../utils/focus'
 
 @Component({
@@ -32,6 +34,8 @@ export class RadioGroup
   private inputId = `bal-rg-${radioGroupIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue?: any | null
+  private maxRadioWidth = 0
+  private isComponentLoaded = false
 
   log!: LogInstance
 
@@ -207,6 +211,20 @@ export class RadioGroup
     this.onOptionChange()
 
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentDidLoad(): void {
+    this.isComponentLoaded = true
+    if (this.interface === 'select-button' && this.vertical) {
+      this.setEqualWidthsForRadios()
+    }
+  }
+
+  @ListenToResize()
+  resizeListener(): void {
+    if (this.interface === 'select-button' && this.vertical && this.isComponentLoaded) {
+      this.setEqualWidthsForRadios()
+    }
   }
 
   /**
@@ -398,6 +416,28 @@ export class RadioGroup
     })
   }
 
+  private setEqualWidthsForRadios(): void {
+    const group = this.getSelectButtons()
+    if (!balBreakpoints.isMobile) {
+      group?.forEach(radio => {
+        const radioWidth = radio.getBoundingClientRect().right - radio.getBoundingClientRect().left
+        this.maxRadioWidth = Math.max(this.maxRadioWidth, radioWidth)
+      })
+
+      group?.forEach(radio => {
+        if (radio.clientWidth <= this.maxRadioWidth) {
+          radio.style.width = this.maxRadioWidth + 'px'
+        }
+      })
+    } else {
+      group?.forEach(radio => {
+        if (radio.clientWidth <= this.maxRadioWidth) {
+          radio.style.width = 'unset'
+        }
+      })
+    }
+  }
+
   /**
    * GETTERS
    * ------------------------------------------------------
@@ -409,6 +449,10 @@ export class RadioGroup
 
   private getRadioButtons(): HTMLBalRadioButtonElement[] {
     return Array.from(this.el.querySelectorAll('bal-radio-button'))
+  }
+
+  private getSelectButtons() {
+    return this.el.querySelector('.bal-radio-checkbox-group__inner--select-button')?.querySelectorAll('bal-radio')
   }
 
   /**
