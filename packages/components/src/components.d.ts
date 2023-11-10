@@ -4087,6 +4087,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputGroupDividerElement extends Components.BalInputGroupDivider, HTMLStencilElement {
+    }
+    var HTMLBalInputGroupDividerElement: {
+        prototype: HTMLBalInputGroupDividerElement;
+        new (): HTMLBalInputGroupDividerElement;
+    };
     interface HTMLBalInputSliderElementEventMap {
         "balInput": BalEvents.BalInputSliderInputDetail;
         "balBlur": BalEvents.BalInputSliderBlurDetail;
