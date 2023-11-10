@@ -61,8 +61,8 @@ const run = async () => {
 
   let selectors = typeFileContents.map((m, i) => parseTypes(m, typeFilePaths[i]))
 
-  await file.makeDir(path.join(PACKAGE, 'public/assets/data'))
-  await file.save(path.join(PACKAGE, 'public/assets/data/selectors.json'), JSON.stringify(selectors))
+  await file.makeDir(path.join(PACKAGE, '.tmp'))
+  await file.save(path.join(PACKAGE, '.tmp/selectors.json'), JSON.stringify(selectors))
 }
 
 run()

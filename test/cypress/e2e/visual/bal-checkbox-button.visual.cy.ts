@@ -6,7 +6,7 @@ describe('bal-checkbox-button', () => {
   function testCheckboxButton(platform: 'mobile' | 'tablet' | 'desktop') {
     beforeEach(() =>
       cy
-        .visit('/components/form/bal-checkbox/test/bal-checkbox-button.visual.html')
+        .visit('/components/bal-checkbox/test/bal-checkbox-button.visual.html')
         .platform(platform)
         .waitForDesignSystem(),
     )

@@ -17,7 +17,7 @@ import { BalBreakpointsService } from './util/breakpoints.service'
 import { BalOrientationService } from './util/orientation.service'
 import { BalConfigService } from './util/config.service'
 
-export const ConfigToken = new InjectionToken<any>('USERCONFIG')
+export const BalConfigToken = new InjectionToken<any>('USERCONFIG')
 
 const DECLARATIONS = [
   // generated proxies
@@ -52,14 +52,14 @@ export class BaloiseDesignSystemModule {
       ngModule: BaloiseDesignSystemModule,
       providers: [
         {
-          provide: ConfigToken,
+          provide: BalConfigToken,
           useValue: config,
         },
         {
           provide: APP_INITIALIZER,
           useFactory: appInitialize,
           multi: true,
-          deps: [ConfigToken, DOCUMENT, NgZone],
+          deps: [BalConfigToken, DOCUMENT, NgZone],
         },
       ],
     }

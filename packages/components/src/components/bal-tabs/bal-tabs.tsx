@@ -152,6 +152,11 @@ export class Tabs
   @Prop() inverted = false
 
   /**
+   * If `true` the tabs selected line is optional
+   */
+  @Prop() optionalTabSelection = false
+
+  /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
@@ -217,11 +222,16 @@ export class Tabs
     this.mutationObserverActive = this.options === undefined || this.options.length < 1
 
     if (this.accordion) {
-      const isAccordionOpen = this.value !== undefined && this.value.length > 0
-      if (isAccordionOpen) {
-        this.expandAccordion(true)
+      const inNavMenuBar = hasParent('bal-nav-menu-bar', this.el)
+      if (inNavMenuBar) {
+        this.isAccordionOpen = false
       } else {
-        this.collapseAccordion(true)
+        const isAccordionOpen = this.value !== undefined && this.value.length > 0
+        if (isAccordionOpen) {
+          this.expandAccordion(true)
+        } else {
+          this.collapseAccordion(true)
+        }
       }
     }
   }
@@ -315,6 +325,17 @@ export class Tabs
   }
 
   /**
+   * @internal
+   * Closes the accordion
+   */
+  @Method()
+  async closeAccordion() {
+    if (this.isAccordionOpen) {
+      this.collapseAccordion()
+    }
+  }
+
+  /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
@@ -334,6 +355,9 @@ export class Tabs
   private updateStore = (newStore: BalTabOption[]) => {
     if (!areArraysEqual(this.store, newStore)) {
       this.store = newStore
+    } else if (!this.optionalTabSelection && !this.accordion && this.value === undefined && this.store.length > 0) {
+      const firstStep = this.store[0]
+      this.value = firstStep.value
     }
   }
 
@@ -342,11 +366,6 @@ export class Tabs
     if (activeTabs.length > 0) {
       const firstActiveTab = activeTabs[0]
       this.value = firstActiveTab.value
-    } else {
-      if (!this.accordion && this.value === undefined && this.store.length > 0) {
-        const firstStep = this.store[0]
-        this.value = firstStep.value
-      }
     }
   }
 
@@ -468,6 +487,10 @@ export class Tabs
       this.currentRaf = raf(async () => {
         const target = this.getTargetElement(this.value)
         if (!target) {
+          return
+        }
+
+        if (target.getAttribute('target') === '_blank') {
           return
         }
 

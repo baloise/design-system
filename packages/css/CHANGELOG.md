@@ -1,5 +1,149 @@
 # @baloise/design-system-css
 
+## 14.3.0
+
+### Patch Changes
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The design tokens for line-height values for x-small and small text has been adjusted to ensure compliance with accessibility (a11y) standards.
+
+- Updated dependencies [[`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0)]:
+  - @baloise/design-system-tokens@14.3.0
+  - @baloise/design-system-fonts@14.3.0
+
+## 14.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.2.1
+  - @baloise/design-system-tokens@14.2.1
+
+## 14.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.2.0
+  - @baloise/design-system-tokens@14.2.0
+
+## 14.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.1.0
+  - @baloise/design-system-tokens@14.1.0
+
+## 14.0.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.5
+  - @baloise/design-system-tokens@14.0.5
+
+## 14.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.4
+  - @baloise/design-system-tokens@14.0.4
+
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.3
+  - @baloise/design-system-tokens@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.2
+  - @baloise/design-system-tokens@14.0.2
+
+## 14.0.1
+
+### Patch Changes
+
+- [`af2c20f52`](https://github.com/baloise/design-system/commit/af2c20f520d1978df0547be5767803ead6d66ed4) - Raise the z-index value of the toast to ensure it overlays a modal.
+
+- Updated dependencies [[`af2c20f52`](https://github.com/baloise/design-system/commit/af2c20f520d1978df0547be5767803ead6d66ed4)]:
+  - @baloise/design-system-tokens@14.0.1
+  - @baloise/design-system-fonts@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#940](https://github.com/baloise/design-system/pull/940) - Create z-index design tokens and adjust the components.
+
+In version 14, we've introduced `z-index` values as design tokens. Consequently, adjustments were made to each component.
+If you've been using **custom z-index values** in your app, please be aware that this could potentially result in broken layouts.
+
+After upgrading the design system in your app, please take a moment to check if any layouts are affected. If necessary, make adjustments to the z-index accordingly.
+
+| Name       | CSS-Variable               | Value     | Description                                                                                                          |
+| ---------- | -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| deep       | `--bal-z-index-deep`       | `-999999` | Deep z-index is used to stack something behind everything else.                                                      |
+| default    | `--bal-z-index-default`    | `1`       | The default z-index for components and elements inside components.                                                   |
+| masked     | `--bal-z-index-masked`     | `100`     | Default z-index for masked interface elements.                                                                       |
+| mask       | `--bal-z-index-mask`       | `200`     | Default z-index for masking interface elements.                                                                      |
+| sticky     | `--bal-z-index-sticky`     | `300`     | Default z-index for sticky interface elements.                                                                       |
+| navigation | `--bal-z-index-navigation` | `400`     | Default z-index for navigation.                                                                                      |
+| popup      | `--bal-z-index-popup`      | `1000`    | Default z-index for popups that stacks on top of all other elements.                                                 |
+| modal      | `--bal-z-index-modal`      | `1100`    | Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible. |
+| toast      | `--bal-z-index-toast`      | `1200`    | Default z-index for toast and snackbar messages.                                                                     |
+| tooltip    | `--bal-z-index-tooltip`    | `1300`    | Default z-index for tooltips.                                                                                        |
+
+Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs/foundation-elevation-design-tokens--page).
+
+### Minor Changes
+
+- [#1041](https://github.com/baloise/design-system/pull/1041) - Introduce a compact theme option for the dashboard or internal applications.
+
+  The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
+
+  To activate the compact theme, import the `theme-compact` stylesheet into the root App component or a global stylesheet.
+
+  It is recommended to import the `theme-compact` file at the end of your stylesheet, after the other imports from the Design System.
+
+  ```scss
+  @import '@baloise/design-system-css/css/theme-compact';
+
+  // or for SASS
+
+  @import '@baloise/design-system-css/sass/theme-compact';
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`01cfd5654`](https://github.com/baloise/design-system/commit/01cfd56549b2b602bb684c0b46d26d5262bd183b)]:
+  - @baloise/design-system-tokens@14.0.0
+  - @baloise/design-system-fonts@14.0.0
+
+## 13.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.7.1
+  - @baloise/design-system-tokens@13.7.1
+
+## 13.7.0
+
+### Patch Changes
+
+- [#1007](https://github.com/baloise/design-system/pull/1007) - Relocate sticky footer styles to the core CSS file and update 'bal-app' for Vue applications.
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@13.7.0
+  - @baloise/design-system-tokens@13.7.0
+
 ## 13.6.2
 
 ### Patch Changes

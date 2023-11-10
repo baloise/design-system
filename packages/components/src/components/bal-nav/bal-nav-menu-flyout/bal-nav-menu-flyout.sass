@@ -1,0 +1,70 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-nav-menu-flyout.vars'
+
+// Nav Menu Flyout
+// --------------------------------------------------
+
+.bal-nav-menu-flyout
+  position: relative
+  +unselectable
+  display: block
+  width: 100%
+  padding-bottom: 2.5rem
+  overflow-y: auto
+  max-height: calc(var(--bal-app-height, 100%) - 90px - 48px - 16px)
+  width: calc( 100% + 1rem + 1rem)
+  margin-left: -1rem
+  margin-right: -1rem
+  //
+  // container adjustment
+  &__container
+    flex-grow: 1
+    margin: 0 auto
+    position: relative
+    width: auto
+    width: 100% !important
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+    &--fluid
+      max-width: var(--bal-container-size-fluid) !important
+    &--detail-page
+      max-width: var(--bal-container-size-detail-page) !important
+    &--compact
+      max-width: var(--bal-container-size-compact) !important
+    &--blog-page
+      max-width: var(--bal-container-size-blog-page) !important
+    +tablet
+      padding-left: var(--bal-container-space-tablet)
+      padding-right: var(--bal-container-space-tablet)
+    +desktop
+      padding-left: var(--bal-container-space-desktop)
+      padding-right: var(--bal-container-space-desktop)
+      max-width: var(--bal-container-size-normal)
+
+  // Line
+  // --------------------------------------------------
+  .bal-nav-menu-flyout__line
+    position: sticky
+    width: 100%
+    left: 0
+    top: 0
+    height: 1px
+    background-color: var(--bal-color-grey)
+    margin-bottom: 2.5rem
+
+    // Line width on the specific device size
+    // --------------------------------------------------
+    +between(1440px, 1540px)
+      width: calc(100% - 2rem)
+      left: 1rem
+
+  +tablet
+    width: calc( 100% + 2.5rem + 2.5rem)
+    margin-left: -2.5rem
+    margin-right: -2.5rem
+  +desktop
+    width: calc( 100% + 3rem + 3rem)
+    margin-left: -3rem
+    margin-right: -3rem
+  +widescreen
+    max-height: calc(var(--bal-app-height, 100%) - 96px - 48px - 16px)

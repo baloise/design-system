@@ -1,0 +1,44 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyTextTransform, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Text Transform"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Text Transform" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the transformation applied to text within an element.</Lead>
+
+## Classes
+
+<CssTypographyTextTransform />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<p class="is-capitalized">capitalized - Lorem ipsum dolor sit amet</p>
+<p class="is-lowercase">lowercase -Lorem ipsum dolor sit amet</p>
+<p class="is-uppercase">uppercase - Lorem ipsum dolor sit amet</p>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>
+

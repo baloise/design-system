@@ -1,0 +1,145 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-date-calendar.vars'
+@import './bal-date-calendar.mixins'
+
+// Date Calendar
+// --------------------------------------------------
+
+:host
+  +unselectable
+  display: inline-block
+  background: var(--bal-color-white)
+  border-radius: var(--bal-radius-normal)
+
+// Navigation Row
+// --------------------------------------------------
+
+.bal-date-calendar__nav
+  display: flex
+  width: calc(100% - 1rem)
+  justify-content: space-between
+  align-items: center
+  padding: .5rem
+  gap: .5rem
+
+.bal-date-calendar__nav--start > button
+  display: flex
+  gap: .5rem
+
+.bal-date-calendar__nav--end
+  display: flex
+  gap: .5rem
+
+.bal-date-calendar__nav button
+  +calendar-button
+  min-height: 2rem
+  min-width: 2rem
+  padding: .25rem
+  border-radius: var(--bal-button-radius)
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+
+// Body
+// --------------------------------------------------
+
+.bal-date-calendar__body
+  display: block
+
+// Grid
+// --------------------------------------------------
+
+.bal-date-calendar__body__grid
+  width: fit-content
+  padding: .5rem
+  height: 0
+  padding-top: 0
+  padding-bottom: 0
+  visibility: hidden
+
+.bal-date-calendar__body__grid--visible
+  height: auto
+  padding-top: .5rem
+  padding-bottom: .5rem
+  visibility: visible
+
+.bal-date-calendar__body__grid__head
+  position: relative
+  display: grid
+  grid-template-columns: repeat(7, 1fr)
+  column-gap: .5rem
+  row-gap: .5rem
+  width: fit-content
+  &::after
+    position: absolute
+    content: ''
+    height: 2px
+    width: calc(100% + 1rem)
+    bottom: 0
+    left: -0.5rem
+    right: -0.5rem
+    background: var(--bal-color-border-grey)
+  span
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 2rem
+    width: 2rem
+    font-family: var(--bal-font-family-title)
+    font-weight: var(--bal-weight-bold)
+    font-size: var(--bal-size-normal)
+    line-height: var(--bal-line-height-normal)
+    hyphens: auto
+
+.bal-date-calendar__body__grid__body
+  display: grid
+  grid-template-columns: repeat(7, 1fr)
+  column-gap: .5rem
+  row-gap: .5rem
+  width: fit-content
+  padding-top: 0.5rem
+  & > .bal-date-calendar-cell
+    width: 2rem
+    height: 2rem
+    text-align: center
+    font-size: var(--bal-size-normal)
+    line-height: var(--bal-line-height-normal)
+    hyphens: auto
+  & > .bal-date-calendar-cell:first-child
+    grid-column: var(--bal-date-first-week-day)
+
+// Year List
+// --------------------------------------------------
+
+.bal-date-calendar__body__list
+  display: none
+  list-style: none
+  margin: 0
+  padding: 0
+  column-gap: .5rem
+  row-gap: .5rem
+  width: calc(100% - 1rem)
+  overflow-y: auto
+  max-height: 18rem
+  position: relative
+  padding: .5rem
+  border-top: 2px solid var(--bal-color-border-grey)
+  > & .bal-date-calendar__body__list__item
+    +calendar-button
+    width: 100%
+
+.bal-date-calendar__body__list--visible
+  display: grid
+
+.bal-date-calendar__body__list--year
+  grid-template-columns: repeat(4, 1fr)
+
+.bal-date-calendar__body__list--month
+  grid-template-columns: repeat(2, 1fr)
+
+// Calendar Cell
+// --------------------------------------------------
+
+.bal-date-calendar-cell
+  +calendar-button
+  width: 2rem
+  height: 2rem

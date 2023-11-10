@@ -1,0 +1,31 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import { PackageTable, Banner, Lead, Footer, LinkCard, LinkCards } from '../.storybook/blocks'
+
+<Meta title="Changelog" />
+
+<Banner label="Changelog" />
+
+<Lead>All notable changes to this project will be documented in dedicated changelog files.</Lead>
+
+## Packages
+
+Each package has its own changelog file.
+
+<PackageTable />
+
+## Previous Versions
+
+Previous version below 12.2.0 are document in a separate changelog file.
+
+- [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_v12.md)
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle={'Development/Getting Started'}
+      label={'Development'}
+      description={'Getting Started with HTML, Angular, React or Vue.js'}
+    />
+    <LinkCard pageTitle={'Contributing'} description={'Be part of the Design System Community'} />
+  </LinkCards>
+</Footer>

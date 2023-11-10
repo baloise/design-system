@@ -8,6 +8,8 @@ export default defineConfig({
   screenshotsFolder: './cypress/snapshots/actual',
   trashAssetsBeforeRuns: true,
 
+  includeShadowDom: true,
+
   viewportWidth: 1024,
   viewportHeight: 1280,
 

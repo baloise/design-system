@@ -1,6 +1,6 @@
 describe('bal-checkbox', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-checkbox/test/bal-checkbox.cy.html')
+    cy.visit('/components/bal-checkbox/test/bal-checkbox.cy.html')
     cy.waitForDesignSystem()
   })
 

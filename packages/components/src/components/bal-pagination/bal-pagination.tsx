@@ -14,6 +14,7 @@ import {
 } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import { generatePaginationControl } from './bal-pagination.util'
 import { BalConfigState } from '../../interfaces'
 import { BalLanguage, ListenToConfig, defaultConfig } from '../../utils/config'
 import { i18nControlLabel } from './bal-pagination.i18n'
@@ -29,6 +30,16 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @State() _value = 1
   @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
+
+  /**
+   * Align the buttons to start, center or end
+   */
+  @Prop() align: BalProps.BalPaginationAlignment = ''
+
+  /**
+   * Size of the buttons
+   */
+  @Prop() size: BalProps.BalPaginationSize = ''
 
   /**
    * Defines the layout of the pagination
@@ -128,52 +139,27 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     this.balChangeEventEmitter.emit(this._value)
   }
 
-  private getItems(pageRange = 1) {
-    const items = []
-    let rangeStart = this._value - pageRange
-    let rangeEnd = this._value + pageRange
-
-    if (this.interface === 'small') {
-      rangeStart = 1
-      rangeEnd = this.totalPages - 1
-    } else {
-      if (rangeEnd > this.totalPages) {
-        rangeEnd = this.totalPages
-        rangeStart = this.totalPages - pageRange * 2
-        rangeStart = rangeStart < 1 ? 1 : rangeStart
+  private getItems(pageRange = 2) {
+    const controls = generatePaginationControl(this._value, this.totalPages, pageRange)
+    return controls.map((control: any) => {
+      if (control.type === 'page') {
+        return this.renderPageElement(Number(control.label))
+      } else {
+        return this.renderEllipsisElement()
       }
-
-      if (rangeStart <= 1) {
-        rangeStart = 1
-        rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
-      }
-    }
-
-    if (rangeStart > 1) {
-      items.push(this.renderPageElement(1))
-      if (this.interface !== 'small') {
-        items.push(this.renderEllipsisElement())
-      }
-    }
-
-    for (let i = rangeStart; i <= rangeEnd; i++) {
-      items.push(this.renderPageElement(i))
-    }
-
-    if (rangeEnd < this.totalPages) {
-      if (this.interface !== 'small') {
-        items.push(this.renderEllipsisElement())
-      }
-      items.push(this.renderPageElement(this.totalPages))
-    }
-
-    return items
+    })
   }
 
   renderEllipsisElement() {
+    const more = BEM.block('pagination').element('nav').element('pagination-list').modifier('more')
+
     return (
       <li>
-        <div class="pagination-more">
+        <div
+          class={{
+            ...more.class(),
+          }}
+        >
           <bal-text bold heading inline space="none">
             &hellip;
           </bal-text>
@@ -207,6 +193,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
           color={isActive ? 'primary' : 'text'}
           onClick={() => this.selectPage(pageNumber)}
           data-testid="bal-pagination-page-number"
+          size={this.isMobile || this.size === 'small' ? 'small' : ''}
         >
           {pageNumber}
         </bal-button>
@@ -215,7 +202,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
   }
 
   render() {
-    const mobileItems = this.getItems()
+    const mobileItems = this.getItems(1)
     const tabletItems = this.getItems(this.pageRange)
 
     const block = BEM.block('pagination')
@@ -225,7 +212,7 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
     const buttonColor = isSmall ? 'link' : 'text'
-    const buttonSize = isSmall ? 'small' : ''
+    const buttonSize = isSmall || this.size === 'small' || this.isMobile ? 'small' : ''
     const flat = isSmall
 
     const leftControlTitle = i18nControlLabel[this.language].left
@@ -283,7 +270,8 @@ export class Pagination implements ComponentInterface, BalBreakpointObserver {
         <nav
           class={{
             ...elNav.class(),
-            ...elNav.modifier(`context-${this.interface}`).class(),
+            ...elNav.modifier(`context-${this.interface}`).class(this.interface !== ''),
+            ...elNav.modifier(`align-${this.align}`).class(this.align !== ''),
           }}
           role="navigation"
           aria-label="pagination"

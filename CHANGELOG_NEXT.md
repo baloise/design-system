@@ -101,7 +101,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package root
 
-
 ## [10.24.5](https://github.com/baloise/design-system/compare/v10.24.4...v10.24.5) (2022-10-05)
 
 **Note:** Version bump only for package root
@@ -112,14 +111,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package root
 
 
-
-
 ## [10.24.3](https://github.com/baloise/design-system/compare/v10.24.2...v10.24.3) (2022-10-05)
 
 **Note:** Version bump only for package root
-
-
-
 
 
 ## [10.24.2](https://github.com/baloise/design-system/compare/v10.24.1...v10.24.2) (2022-10-03)
@@ -129,18 +123,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * verify if window object exist when checking if current browser is Safari ([f726876](https://github.com/baloise/design-system/commit/f72687602750aba646b50f98914f095f53023fbb))
 * verify if window object exist when checking if current browser is Safari ([e3239d3](https://github.com/baloise/design-system/commit/e3239d3eaf704f477e1495e7fd9848bf13beed25))
 
-
 ## [10.24.1](https://github.com/baloise/design-system/compare/v10.24.0...v10.24.1) (2022-10-03)
-
 
 ### Bug Fixes
 
 * bind balBlur to onTouch in angular, fixes [#453](https://github.com/baloise/design-system/issues/453),[#623](https://github.com/baloise/design-system/issues/623) ([a02e597](https://github.com/baloise/design-system/commit/a02e597f69ee3102920b85d9b1d9736aac98f0c3))
 
-
-
 ## [10.24.0](https://github.com/baloise/design-system/compare/v10.23.3...v10.24.0) (2022-09-30)
-
 
 ### Features
 
@@ -183,7 +172,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.23.1](https://github.com/baloise/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
 
-
 ### Bug Fixes
 
 * **angular:** provide missing component modules ([774696f](https://github.com/baloise/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
@@ -193,7 +181,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
 * **stage:** stage position ([2839688](https://github.com/baloise/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
 * **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
-
 
 ## [10.23.0](https://github.com/baloise/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
 
@@ -262,7 +249,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * move css vars out of utilities ([83627b9](https://github.com/baloise/design-system/commit/83627b9e6699409301af90f37521a00734889cf1))
 * **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise/design-system/issues/472) ([d64edba](https://github.com/baloise/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
 * **toast:** adjust width for tablet and desktop ([d04f3a5](https://github.com/baloise/design-system/commit/d04f3a557c43a2e2d17f5a5c2a2a14a67d530612))
-
 
 ## [10.22.0](https://github.com/baloise/design-system/compare/v10.21.2...v10.22.0) (2022-09-19)
 
@@ -358,7 +344,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **toggle-scrolling:** toggle body scroll on desktop as well ([a61b774](https://github.com/baloise/design-system/commit/a61b774a86cffbac2f2aa37e28f8c2b1dbdf1306))
 
 ## [10.20.2](https://github.com/baloise/design-system/compare/v10.20.0...v10.20.2) (2022-09-02)
-
 
 ### Bug Fixes
 
@@ -466,7 +451,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.16.0](https://github.com/baloise/design-system/compare/v10.15.9...v10.16.0) (2022-08-10)
 
-
 ### Features
 
 * **nav mobile:** added the case when the main item is a link ([8c9366f](https://github.com/baloise/design-system/commit/8c9366f43489b238bb8c8fe4c1434b55a0ce0e9a))
@@ -568,7 +552,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **main nav desktop:** logged the sub levels for debugging purposes ([d80bc88](https://github.com/baloise/design-system/commit/d80bc883a389f4c9f390f42587de035bd38ead82))
 * **main nav desktop:** other test ([7cc4394](https://github.com/baloise/design-system/commit/7cc439496b2e5d3c37383853a25950f4dae74794))
 * **main nav desktop:** updated dependencies ([35973d0](https://github.com/baloise/design-system/commit/35973d002d0cdcfa49e393198a1baf1d8e609166))
-
 
 ### Bug Fixes
 
@@ -711,7 +694,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.20.2](https://github.com/baloise/design-system/compare/v10.20.1...v10.20.2) (2022-09-02)
 
-
 ### Bug Fixes
 
 * fix bal-input mask when deleting last character error popped up ([db14042](https://github.com/baloise/design-system/commit/db14042311dc516a2b752b41593ae4dcdb5fba09))
@@ -721,7 +703,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **toggle-scrolling:** test adjustements on global util ([2e173fc](https://github.com/baloise/design-system/commit/2e173fc37e84bf13b34400e0c7ab5170cc40ff72))
 
 ## [10.20.1](https://github.com/baloise/design-system/compare/v10.20.0...v10.20.1) (2022-09-01)
-
 
 ### Bug Fixes
 
@@ -742,7 +723,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav overlay:** updated stories ([e28348b](https://github.com/baloise/design-system/commit/e28348b491599df5004a32a244a89a5e6dadca7b))
 
 ## [10.19.0](https://github.com/baloise/design-system/compare/v10.18.0...v10.19.0) (2022-08-24)
-
 
 ### Features
 
@@ -772,7 +752,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
 * **tabs:** add hidden, spaceless and float ([1111288](https://github.com/baloise/design-system/commit/1111288f66f137e6ad68d2aeb8afce8e66d4dc75))
-
 
 ### Bug Fixes
 

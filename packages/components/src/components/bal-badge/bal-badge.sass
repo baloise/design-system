@@ -5,17 +5,20 @@
 // --------------------------------------------------
 .bal-badge
   +unselectable
-  display: flex
+  display: inline-flex
   justify-content: center
   align-items: center
-  width: 1.5rem
+  min-width: 1.5rem
   height: 1.5rem
   border-radius: var(--bal-badge-radius)
   background: var(--bal-badge-background)
+  padding: .25rem
   //
   // sizes
   &--size-small
-    width: .75rem
+    width: .75rem    
+    max-width: .75rem
+    min-width: .75rem
     height: .75rem
   &--size-large
     width: 2rem
@@ -43,11 +46,11 @@
     right: -0.5rem
     top: -0.5rem
   &--position-tabs
-    margin-top: -4px
+    margin-top: -0.25rem
     position: absolute
-    right: -26px
+    right: -1.625rem
     &.bal-badge--size-small
-      right: -16px
+      right: -1rem
 
 // Badge Label
 // --------------------------------------------------

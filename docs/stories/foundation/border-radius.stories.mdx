@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs'
+import {
+  ButtonCard,
+  LinkCards,
+  LinkCard,
+  Footer,
+  Banner,
+  Lead,
+  InfoQuote,
+  TokensBorderColors,
+} from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Border & Radius"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Border & Radius" section="Foundation" color="purple" puzzle />
+
+<Lead>Clarification of how borders and border-radius are utilized.</Lead>
+
+## Border
+
+Border as used for form controls, links, tabs and steps.
+For horizontal or vertical border lines the edges should use the rounded radius.
+
+### Width
+
+All the borders have the width of 2px.
+
+### Colors
+
+These colors are used to box elements prioritized with following different colors.
+They also can be used to give specific meanings like selection, success, error, etc.
+
+<TokensBorderColors overview />
+
+## Radius
+
+The radius follows a rule of multiple of 4. Scale creates a visual balance that makes it easier to understand the interface.
+
+The **Normal radius** is used for smaller elements:
+
+- Form controls
+- Clickable elements (e.g. Button)
+- Shapes
+
+The **Large radius** is used for all elements:
+
+- based on cards (e.g. Notification, Sheet etc.).
+- used as overlay (e.g. Modal, Toast, Snackbar etc.).
+
+The **Rounded radius** is only used in special cases (e.g. tags)
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Border/Border Colors"
+      description="Diverse color palettes available for element borders"
+    />
+    <LinkCard
+      pageTitle="CSS Utilities/Border/Border Radius"
+      description="Defines the radius of an element's corners"
+    />
+  </LinkCards>
+</Footer>
+

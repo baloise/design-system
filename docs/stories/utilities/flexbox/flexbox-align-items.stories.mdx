@@ -1,0 +1,107 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssFlexboxAlignItems, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Flexbox/Align Items"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Align Items" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies alignment along the cross axis.</Lead>
+
+## Classes
+
+<CssFlexboxAlignItems />
+
+## Start
+
+Elements are positioned at the beginning of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-start is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+## Center
+
+Elements are centered within the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-center is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+## End
+
+Elements are aligned to the end of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-end is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+## Stretch
+
+The elements are expanded to fill the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-stretch is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">1</div>
+    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">2</div>
+    <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-height: 4rem; min-width: 200px">3</div>
+</div>
+`}
+/>
+
+## Baseline
+
+Elements are aligned with the baseline of the container.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-baseline is-flex-wrap-wrap fg-normal" style="min-height: 200px">
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 50px">1</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 150px">2</div>
+  <div class="has-background-green-3 has-radius-normal is-flex is-justify-content-center is-align-items-center" style="min-width: 200px; min-height: 100px">3</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints and five container layouts"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

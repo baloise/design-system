@@ -1,6 +1,6 @@
 describe('bal-toast', () => {
   beforeEach(() => {
-    cy.visit('/components/notice/bal-toast/test/bal-toast.cy.html')
+    cy.visit('/components/bal-toast/test/bal-toast.cy.html')
     cy.waitForDesignSystem()
   })
 

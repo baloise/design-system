@@ -1,0 +1,54 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-toast.vars'
+
++block(toast)
+  +unselectable
+  display: inline-flex
+  position: relative
+  flex-grow: 0 !important
+  width: 100%
+  +element(inner)
+    min-height: 3.5rem
+    border-radius: var(--bal-toast-radius)
+    font-size: var(--bal-toast-font-size)
+    font-family: var(--bal-toast-font-family)
+    background: var(--bal-toast-background)
+    color: var(--bal-toast-color)
+    hyphens: auto
+    +modifier(is-primary)
+      background: var(--bal-toast-background-primary)
+      color: var(--bal-toast-color-primary)
+    +modifier(is-info)
+      background: var(--bal-toast-background-info)
+      color: var(--bal-toast-color-info)
+    +modifier(is-danger)
+      background: var(--bal-toast-background-danger)
+      color: var(--bal-toast-color-danger)
+    +modifier(is-warning)
+      background: var(--bal-toast-background-warning)
+      color: var(--bal-toast-color-warning)
+    +modifier(is-success)
+      background: var(--bal-toast-background-success)
+      color: var(--bal-toast-color-success)
+    position: relative
+    display: inline-flex
+    flex-grow: 1
+    margin: 0.5rem 0 0 0
+    box-shadow: var(--bal-shadow-normal)
+    +padding('normal')
+    // responsive
+    +tablet
+      max-width: 28.75rem
+      width: 28.75rem
+    +desktop
+      max-width: 30rem
+      width: 30rem
+  +element(label)
+    margin-right: 3rem
+    hyphens: auto
+
+.bal-toast__close.bal-close
+  position: absolute
+  top: 50%
+  right: 1rem
+  margin-top: -0.75rem

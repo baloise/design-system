@@ -418,17 +418,17 @@ const tokens = {
         description: 'Should only be used for label texts.',
         mobile: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.875rem',
-          lineHeight: '1.125rem',
+          lineHeight: '1.25rem',
           spacing: 'xx-small',
         },
       },
@@ -438,17 +438,17 @@ const tokens = {
         description: 'Should only be used for helper texts or validation messages of a form control.',
         mobile: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
         tablet: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
         desktop: {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.125rem',
           spacing: 'xx-small',
         },
       },
@@ -459,6 +459,7 @@ const tokens = {
       'black': 'black',
       'grey-dark': 'grey-6', // value of disabled inputs
       'grey': 'grey-5', // placeholder texts
+      'grey-light': 'grey-4', // disabled texts
       'light-blue': 'light-blue-5', // hover color
       'light-blue-light': 'light-blue-2', // inverted hover color
       'info-light': 'info-3', // inverted active color
@@ -482,6 +483,7 @@ const tokens = {
     width: '2px',
     colors: {
       'primary': 'primary-5',
+      'grey-light': 'grey-2',
       'grey': 'grey-3',
       'grey-dark': 'grey-4',
       'warning': 'warning-5',
@@ -503,6 +505,25 @@ const tokens = {
       duration: '300ms',
       easing: 'cubic-bezier(0.25, 0.8, 0.5, 1)',
     },
+  },
+  /**
+   * Z-index tokens
+   */
+  zIndex: {
+    deep: { value: '-999999', description: 'Deep z-index is used to stack something behind everything else.' },
+    default: { value: '1', description: 'The default z-index for components and elements inside components.' },
+    masked: { value: '100', description: 'Default z-index for masked interface elements.' },
+    mask: { value: '200', description: 'Default z-index for masking interface elements.' },
+    sticky: { value: '300', description: 'Default z-index for sticky interface elements.' },
+    navigation: { value: '400', description: 'Default z-index for navigation.' },
+    popup: { value: '1000', description: 'Default z-index for popups that stacks on top of all other elements.' },
+    modal: {
+      value: '1100',
+      description:
+        'Default z-index for modals that stacks on top of overlays and other elements, but still allows popups to be visible.',
+    },
+    toast: { value: '1200', description: 'Default z-index for toast and snackbar messages.' },
+    tooltip: { value: '1300', description: 'Default z-index for tooltips.' },
   },
 } as BaloiseDesignTokens
 

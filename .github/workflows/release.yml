@@ -72,6 +72,3 @@ jobs:
           target_branch: production
           message: ':bookmark: release: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: ./.github/workflows/actions/docs
-        if: steps.changesets.outputs.published == 'true'

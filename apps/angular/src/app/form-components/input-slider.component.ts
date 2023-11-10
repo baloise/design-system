@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Slider</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('slider')?.disabled"
-          [invalid]="form.get('slider')?.touched && form.get('slider')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Slider Label</bal-field-label>
           <bal-field-control>
             <bal-input-slider min="0" max="100" step="10" formControlName="slider"></bal-input-slider>

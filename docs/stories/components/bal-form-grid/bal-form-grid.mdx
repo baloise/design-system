@@ -1,0 +1,57 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import * as FormGridStories from './bal-form-grid.stories'
+
+<Meta of={FormGridStories} />
+
+<StoryHeading of={FormGridStories.Basic} hidden></StoryHeading>
+
+<Banner of={FormGridStories} />
+
+<Lead>**Form Grid** components help to structure form controls in a simple grid. On mobile all controls have the the full width.</Lead>
+
+Use the `bal-form-grid` component as a container to wrap the inner fields. Each `bal-form-field` can then be wrapped in a `bal-from-col` to place
+it into the form grid. The `bal-from-col` uses by default 100% width of the grid, but can be changed with the prop `size`.
+
+<Canvas of={FormGridStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={FormGridStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={FormGridStories.FormStructure}></StoryHeading>
+
+<Canvas of={FormGridStories.FormStructure} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import balFormColApi from './bal-form-col/api.md?raw'
+
+<Markdown>{balFormColApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
+    />
+  </LinkCards>
+</Footer>

@@ -1,0 +1,24 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-sheet.vars'
+
+.bal-sheet
+  display: block
+  position: fixed
+  bottom: var(--bal-sheet-position-bottom)
+  left: 0
+  right: 0
+  width: 100%
+  z-index: var(--bal-z-index-sticky)
+  font-weight: var(--bal-weight-regular)
+  font-family: var(--bal-font-family-text)
+  font-size: var(--bal-size-normal)
+
+.bal-sheet__container,
+.bal-sheet__container.container
+  .bal-sheet__container__inner
+    border-radius: var(--bal-sheet-radius)
+    background: var(--bal-sheet-background)
+    box-shadow: var(--bal-sheet-shadow)
+    padding: 1rem
+    +tablet
+      padding: 1rem 1.5rem

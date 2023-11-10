@@ -1,0 +1,99 @@
+@import '@baloise/design-system-css/sass/mixins'
+@import './bal-popup.vars'
+
+// Popup
+// --------------------------------------------------
+.bal-popup
+  position: static
+  display: inline
+  z-index: var(--bal-z-index-popup)
+
+// Popup Container
+// --------------------------------------------------
+.bal-popup__container
+  background: var(--bal-popup-container-background)
+  display: none
+  visibility: hidden
+  padding-top: var(--bal-popup-container-padding-top)
+  padding-bottom: var(--bal-popup-container-padding-bottom)
+  flex-grow: 1
+  margin: 0 auto
+  position: relative
+  width: auto
+  //
+  // variants
+  &--variant-popover
+    border-radius: var(--bal-popup-variant-popover-radius)
+    box-shadow: var(--bal-popup-variant-popover-shadow)
+    width: var(--bal-popup-variant-popover-max-width)
+    position: absolute
+    top: 0
+    left: 0
+  &--variant-fullscreen
+    position: fixed
+    margin: 0
+    width: 100%
+    min-width: 100%
+    max-width: 100% !important
+    min-height: var(--bal-app-height, 100%)
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+  &--variant-drawer
+    position: fixed
+    border-top-left-radius: var(--bal-popup-variant-drawer-radius)
+    border-top-right-radius: var(--bal-popup-variant-drawer-radius)
+    padding-left: var(--bal-container-space)
+    padding-right: var(--bal-container-space)
+    width: 100%
+
+// Popup Container Inner
+// --------------------------------------------------
+
+.bal-popup__inner
+  overflow-y: auto
+  max-height: calc(var(--bal-app-height, 100%) - 8rem)
+
+// Popup Head
+// --------------------------------------------------
+
+.bal-popup__inner__head
+  +unselectable
+
+// Popup Content
+// --------------------------------------------------
+
+.bal-popup__inner__content
+  width: 100%
+
+// Popup Arrow
+// --------------------------------------------------
+
+.bal-popup__arrow
+  +unselectable
+  position: absolute
+  width: 8px
+  height: 8px
+  background: var(--bal-popup-arrow-background)
+  transform: rotate(45deg)
+  display: none
+  visibility: hidden
+
+// Popup Backdrop
+// --------------------------------------------------
+
+.bal-popup__backdrop
+  +unselectable
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+  background-color: var(--bal-popup-backdrop-background)
+  width: 100vw
+  display: none
+  visibility: hidden
+
+.bal-popup-variant-popover-trigger,
+.bal-popup-permanent-trigger
+  z-index: calc(var(--bal-z-index-popup) + 1) !important
+  position: relative !important

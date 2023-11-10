@@ -12,11 +12,7 @@ import { UpdateControl } from '../app.component'
     <bal-card [formGroup]="form">
       <bal-card-title>Checkbox Buttons</bal-card-title>
       <bal-card-content>
-        <bal-field
-          required
-          [disabled]="form.get('checkboxButtons')?.disabled"
-          [invalid]="form.get('checkboxButtons')?.touched && form.get('checkboxButtons')?.invalid"
-        >
+        <bal-field required>
           <bal-field-label>Checkbox Buttons Label</bal-field-label>
           <bal-field-control>
             <bal-checkbox-group control formControlName="checkboxButtons" data-test="checkboxButtons">

@@ -1,0 +1,47 @@
+{
+  "name": "@baloise/design-system-brand-icons",
+  "version": "14.3.0",
+  "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/baloise/design-system/issues"
+  },
+  "homepage": "https://design.baloise.dev",
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)",
+    "Mladen Planinicic <mladen.planinicic@baloise.ch> (https://github.com/mladenplaninicic)",
+    "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
+  ],
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {
+    "docs": "npm run build",
+    "ng:build": "npm run build",
+    "build": "npm run build:icons && npm run build:bundle && npm run build:copy",
+    "build:icons": "node ../../.build/optimize-brand-icons.js",
+    "build:bundle": "rollup --config rollup.config.js",
+    "build:copy": "copyfiles --flat ./src/brand-icons.json ./dist && rimraf ./src/brand-icons.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/",
+    "src/",
+    "svg/"
+  ],
+  "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
+}

@@ -1,0 +1,282 @@
+import { Meta } from '@storybook/addon-docs'
+import {
+  ButtonCard,
+  Banner,
+  Lead,
+  InfoQuote,
+  TokensBorderColors,
+  ImageCanvas,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Brand Assets"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Brand Assets" section="Foundation" color="purple" puzzle />
+
+<Lead>
+  Brand assets within the design system encompass a curated collection of visual elements, meticulously crafted to
+  uphold and reinforce the brand's identity across all applications and platforms.
+</Lead>
+
+## Logo
+
+The Baloise logo only appears in blue (positive) and white (negative). In all digital touch points,
+the Baloise logo and shapes appear in their full dynamic and beauty. There are two logo animations available:
+a short version for website and application design, and an extended animation for all AV media applications.
+
+import Logo1 from '../assets/images/foundations/brand-assets/logo-1.png'
+import Logo2 from '../assets/images/foundations/brand-assets/logo-2.png'
+
+<ImageCanvas>
+  <img src={Logo1} />
+  <img src={Logo2} />
+</ImageCanvas>
+
+## Favicons
+
+To ensure logos remain clearly visible even on small touch points, the Baloise Shape, a expression of the logo,
+is displayed on a blue background. Additionally, colored backgrounds and a negative version of the logo are permissible.
+
+import FaviconColors from '../assets/images/foundations/brand-assets/favicon-colors.svg'
+import FaviconSizes from '../assets/images/foundations/brand-assets/favicon-sizes.svg'
+
+### Sizes
+
+<ImageCanvas>
+  <img src={FaviconSizes} />
+</ImageCanvas>
+
+### Colors
+
+There are 6 different colored favicons. The blue is the default / primary one.
+
+<ImageCanvas>
+  <img src={FaviconColors} />
+</ImageCanvas>
+
+### Download
+
+To start designing you'll need to download and install the custom favicons which is available below.
+
+<ButtonCard label="favicons.zip" description="The favicons files" link="/assets/download/favicons.zip">
+  <bal-icon name="download" size="medium" />
+</ButtonCard>
+
+## Shapes
+
+On digital touchpoint use the animated version of the Baloise Shapes to convey a modern and dynamic approach to the brand.
+
+import ShapeSizes from '../assets/images/foundations/brand-assets/shape-sizes.png'
+
+### Sizes
+
+There are 3 different shape sizes:
+
+- Desktop
+- Tablet
+- Mobile
+
+Each shape can be rotated in 90°, clockwise steps.
+
+<ImageCanvas>
+  <img src={ShapeSizes} />
+</ImageCanvas>
+
+import ShapeTypes from '../assets/images/foundations/brand-assets/shape-types.png'
+
+### Types
+
+We have 3 different type of shapes that can be randomly combined with one of the four Baloise primary colors (only
+use Tint 3 of each color). The type of shape can be selected randomly and is not attached to any color.
+
+<ImageCanvas>
+  <img src={ShapeTypes} />
+</ImageCanvas>
+
+import ShapePosition from '../assets/images/foundations/brand-assets/shape-position.png'
+
+### Position
+
+The Baloise Shape should be used in the header area and only once per page as a maximum.
+
+<ImageCanvas size="large">
+  <img src={ShapePosition} />
+</ImageCanvas>
+
+import ShapeColors from '../assets/images/foundations/brand-assets/shape-colors.png'
+
+### Colors
+
+ColorsShape color combinations are important to ensure a consistent appearance throughout the brand. Only use the
+combinations showed in the example.
+
+<ImageCanvas size="large">
+  <img src={ShapeColors} />
+</ImageCanvas>
+
+### Don'ts
+
+import ShapeDoNot1 from '../assets/images/foundations/brand-assets/shape-do-not-1.png'
+import ShapeDoNot2 from '../assets/images/foundations/brand-assets/shape-do-not-2.png'
+import ShapeDoNot3 from '../assets/images/foundations/brand-assets/shape-do-not-3.png'
+
+<br />
+<div className="columns">
+  <div className="column is-4">
+    <img src={ShapeDoNot1} />
+    <p>Do not mix different foreground and background colors</p>
+  </div>
+  <div className="column is-4">
+    <img src={ShapeDoNot2} />
+    <p>Don’t use the wrong shape size</p>
+  </div>
+  <div className="column is-4">
+    <img src={ShapeDoNot3} />
+    <p>Don’t use more than one shape per page</p>
+  </div>
+</div>
+
+## Maps
+
+To illustrate a map use Google Maps. The styles and markers are provided.
+
+import Maps from '../assets/images/foundations/brand-assets/maps.svg'
+
+<img src={Maps} />
+
+### Markers
+
+import MapsAgencyActive from '../assets/images/map-markers/agency-active.svg'
+import MapsAgency from '../assets/images/map-markers/agency.svg'
+import MapsBrokerActive from '../assets/images/map-markers/broker-active.svg'
+import MapsBroker from '../assets/images/map-markers/broker.svg'
+
+import MapsDefault from '../assets/images/map-markers/default.svg'
+import MapsDefaultHover from '../assets/images/map-markers/default_hover.svg'
+import MapsDefaultActive from '../assets/images/map-markers/default-active.svg'
+
+import MapsLocation from '../assets/images/map-markers/location.svg'
+import MapsSearchLocation from '../assets/images/map-markers/search-location.svg'
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img src={MapsLocation} />
+      </td>
+      <td>
+        <b>Location</b>
+      </td>
+      <td>To show the users location</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsSearchLocation} />
+      </td>
+      <td>
+        <b>Search Location</b>
+      </td>
+      <td>To mark locations, which are searched for</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsDefault} />
+      </td>
+      <td>
+        <b>Default Pin</b>
+      </td>
+      <td>To mark a certain location</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsDefaultHover} />
+      </td>
+      <td>
+        <b>Default Pin</b>
+      </td>
+      <td>To highlight the pin when the mouse is over</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsDefaultActive} />
+      </td>
+      <td>
+        <b>Default Pin</b>
+      </td>
+      <td>To highlight a certain location</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsAgency} />
+      </td>
+      <td>
+        <b>Agency</b>
+      </td>
+      <td>To mark a agency on the map</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsAgencyActive} />
+      </td>
+      <td>
+        <b>Agency</b>
+      </td>
+      <td>To highlight a agency on the map</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsBroker} />
+      </td>
+      <td>
+        <b>Broker</b>
+      </td>
+      <td>To mark a broker on the map</td>
+    </tr>
+    <tr>
+      <td>
+        <img src={MapsBrokerActive} />
+      </td>
+      <td>
+        <b>Broker</b>
+      </td>
+      <td>To highlight a broker on the map</td>
+    </tr>
+  </tbody>
+</table>
+
+### Download
+
+To start designing you'll need to download and install the custom favicons which is available below.
+
+<ButtonCard label="map-markers.zip" description="The map icons" link="/assets/download/map-markers.zip">
+  <bal-icon name="download" size="medium" />
+</ButtonCard>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+    <LinkCard
+      pageTitle={'Development/Assets'}
+      description={'Guides for installing the font locally, favions and Google maps styles.'}
+    />
+  </LinkCards>
+</Footer>

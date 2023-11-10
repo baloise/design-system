@@ -191,6 +191,12 @@ export const selectors = {
      */
     native: byTestId('bal-input'),
   },
+  dateInput: {
+    /**
+     * Native input element.
+     */
+    native: byTestId('bal-date-input'),
+  },
   numberInput: {
     /**
      * Native input element.
@@ -234,6 +240,24 @@ export const selectors = {
      * Popover content element.
      */
     content: byTestId('bal-popover-content'),
+  },
+  popup: {
+    /**
+     * Popup trigger.
+     */
+    trigger: '[bal-popup]',
+    /**
+     * Popup content element.
+     */
+    content: byTestId('bal-popup-content'),
+    /**
+     * Popup close button in the head.
+     */
+    close: byTestId('bal-popup-close'),
+    /**
+     * Popup label / heading element.
+     */
+    label: byTestId('bal-popup-label'),
   },
   textarea: {
     /**

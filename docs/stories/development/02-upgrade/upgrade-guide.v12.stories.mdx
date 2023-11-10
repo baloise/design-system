@@ -1,0 +1,454 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  DiffSource,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v12" />
+
+<Banner label="Updating to v12" section="Development/Upgrade Guides"  />
+
+<Lead>Updating from v11 to v12</Lead>
+
+<InfoQuote>
+
+The following workflow walks you through the upgrade steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+rather than strict instructions.
+
+</InfoQuote>
+
+## Getting Started​
+
+Checkout the upgrade example project with Angular [GitHub](https://github.com/baloise/design-system-ng-migrations). There we migrated from v11 to v12 with the below mentioned breaking changes.
+
+<AngularFramework>
+
+1. The Design System v12 supports Angular 12+. To upgrade to the most recent version of Angular, please consult the [Angular Update Guide](https://update.angular.io/).
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-angular@12
+```
+
+3. Load custom icons
+
+<DiffSource
+  code={`@NgModule({
+  imports: [
+    BalCoreModule.forRoot({
+      defaults: {
++       icons: { balIconAccount }, // just the icons you need
++       icons: { ...balIcons }, // or all the icons at once
+      },
+    }),
+  ],
+})
+export class AppModule {}`}
+/>
+
+</AngularFramework>
+
+<ReactFramework>
+
+1. The Design System v12 supports React 17+.
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-react@12
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+</ReactFramework>
+
+<VueFramework>
+
+1. The Design System v12 supports vue 3+.
+2. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components-vue@12
+```
+
+3. Load custom icons
+
+<DiffSource
+  code={`createApp(App)
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
++       icons: { balIconAccount }, // just the icons you need
++       icons: { ...balIcons }, // or all the icons at once
+      },
+    }),
+  )
+  .mount('#app')`}
+/>
+
+> **TIP** Do the same with the other Design System packages.
+
+</VueFramework>
+
+<HTMLFramework>
+
+1. Update to the latest version of Design System v12:
+
+```
+npm install @baloise/design-system-components@12
+```
+
+> **TIP** Do the same with the other Design System packages.
+
+</HTMLFramework>
+
+## Updating Your Code
+
+### Performance
+
+The main changes of the major version 12 is related to achieve better performance results.
+In most of the cases we reduced the initial page load or added lazy loading of certain resources.
+
+#### Load Custom Icons
+
+[How to use the bal-icon component](?path=/docs/components-icon--basic#import-into-the-component)
+
+Import the icons form the `@baloise/design-system-icons` package and pass them with
+the BalConfig during the initialization.
+
+First import all the icons you are using to keep the payload small.
+
+```typescript
+// Only import the icons you are using
+import { balIconAccount } from '@baloise/design-system-icons'
+
+// Or import all of them
+import * as balIcons from '@baloise/design-system-icons'
+```
+
+#### Lazy Loading Component Styles
+
+To reduce the initial page load we now lazy load the component styles. This reduces the
+global style file by 44%. Styles of the components are loaded, when they are used.
+
+If you customized the styles through the SASS variables, you need to change from lazy-loading to eager-loading the component styles.
+Therefore, add the prop `mode` to the `bal-app` component and import the `global.components` styles in your SASS file.
+
+The prop `mode="sass"` informs the Design System to not lazy-load the component styles.
+
+```html
+<bal-app mode="sass"> ...content </bal-app>
+```
+
+Next we need to load the missing SASS styles manually.
+
+<DiffSource
+  code={`$font-path: '~assets/fonts';\n
+@import '@baloise/design-system-components/src/styles/global';
++@import '@baloise/design-system-components/src/styles/global.components';\n
+// add custom styles below`}
+/>
+
+### Design Token Reduction
+
+#### Typography Size Aliases
+
+All the below listed alias are removed, so please use the green value on the right side instead.
+
+<Markdown>
+  {`
+| Size Alias | Value to use  |
+| :--------- | :------------ |
+| display    | \`xxxxx-large\` |
+| display-2  | \`xxxx-large\`  |
+| 1          | \`xxx-large\`   |
+| 2          | \`xx-large\`    |
+| 3          | \`x-large\`     |
+| 4          | \`large\`       |
+| 5          | \`medium\`      |
+| 6          | \`normal\`      |
+| 7          | \`small\`       |
+| 8          | \`x-small\`     |
+`}
+</Markdown>
+
+##### Example
+
+<DiffSource
+  code={`-<p class="is-size-4">Some Text</p>
++<p class="is-size-large">Some Text</p>`}
+/>
+
+<DiffSource
+  code={`-<h1 class="is-1">Some Text</h1>
++<h1 class="is-size-xxx-large">Some Text</h1>`}
+/>
+
+#### Color Aliases
+
+All the below listed alias are removed, so please use the green value on the right side instead.
+
+<Markdown>
+  {`
+| Color Alias       | Value to use    |
+| :---------------- | :-------------- |
+| primary-light     | \`primary-1\`     |
+| primary-dark      | \`primary-6\`     |
+| primary-light     | \`primary-1\`     |
+| grey-light        | \`grey-1\`        |
+| grey-dark         | \`grey-5\`        |
+| blue-light        | \`blue-1\`        |
+| blue-dark         | \`blue-6\`        |
+| primary-hover     | \`light-blue-5\`  |
+| primary-active    | \`primary-6\`     |
+| light-blue-dark   | \`light-blue-5\`  |
+| light-blue-hover  | \`light-blue-1\`  |
+| light-blue-active | \`light-blue-1\`  |
+| purple-light      | \`purple-1\`      |
+| purple-dark       | \`purple-6\`      |
+| green-light       | \`green-1\`       |
+| green-dark        | \`green-6\`       |
+| yellow-light      | \`yellow-1\`      |
+| yellow-dark       | \`yellow-6\`      |
+| red-light         | \`red-1\`         |
+| red-dark          | \`red-6\`         |
+| info-light        | \`info-1\`        |
+| info-dark         | \`info-6\`        |
+| success-light     | \`success-1\`     |
+| success-dark      | \`success-6\`     |
+| warning-light     | \`warning-1\`     |
+| warning-dark      | \`warning-6\`     |
+| danger-light      | \`danger-1\`      |
+| danger-dark       | \`danger-6\`      |
+| valid             | \`success-light\` |
+| invalid           | \`danger-light\`  |
+| disabled          | \`grey-2\`        |
+| background        | \`white\`         |
+| background-light  | \`grey-light\`    |
+`}
+</Markdown>
+
+##### Example - CSS Variable
+
+<DiffSource
+  code={`.some-class {
+-   background: var(--bal-color-primary-light)
++   background: var(--bal-color-primary-1)
+}`}
+/>
+
+##### Example - CSS Helper Class
+
+<DiffSource
+  code={`-<div class="has-background-primary-light">...</div>
++<div class="has-background-primary-1">...</div>`}
+/>
+
+#### Text-Color Aliases
+
+All the below listed alias are removed, so please use the green value on the right side instead.
+
+<Markdown>
+  {`
+| Color Alias | Value to use    |
+| :---------- | :-------------- |
+| hover       | \`light-blue\`    |
+| active      | \`primary-dark\`  |
+| hint        | \`primary-light\` |
+| valid       | \`success\`       |
+| invalid     | \`danger\`        |
+| normal      | \`primary\`       |
+| blue        | \`primary\`       |
+| blue-light  | \`primary-light\` |
+| blue-dark   | \`primary-dark\`  |
+`}
+</Markdown>
+
+##### Example - CSS Variable
+
+<DiffSource
+  code={`.some-class {
+-   border-color: var(--bal-color-text-hover)
++   border-color: var(--bal-color-text-light-blue)
+}`}
+/>
+
+##### Example - CSS Helper Class
+
+<DiffSource
+  code={`-<p class="has-text-hover">Some Text</p>
++<p class="has-text-light-blue">Some Text</p>`}
+/>
+
+#### Border-Color Aliases
+
+All the below listed alias are removed, so please use the green value on the right side instead.
+
+<Markdown>
+  {`
+| Color Alias | Value to use |
+| :---------- | :----------- |
+| active      | \`primary\`    |
+| hover       | \`grey-dark\`  |
+| disabled    | \`grey-dark\`  |
+| valid       | \`success\`    |
+| invalid     | \`danger\`     |
+`}
+</Markdown>
+
+##### Example - CSS Variable
+
+<DiffSource
+  code={`.some-class {
+-   border-color: var(--bal-color-border-active)
++   border-color: var(--bal-color-border-primary)
+}`}
+/>
+
+##### Example - CSS Helper Class
+
+<DiffSource
+  code={`-<div class="has-border-active">...</div>
++<div class="has-border-primary">...</div>`}
+/>
+
+### CSS-Helper Reduction
+
+#### Radius
+
+To keep the same concept with the T-Shirt size we adjusted one token `var(--bal-radius)` to `var(--bal-radius-normal)`
+
+<DiffSource
+  code={`-<div class="has-radius">...</div>
++<div class="has-radius-normal">...</div>`}
+/>
+
+#### Shadow
+
+To keep the same concept with the T-Shirt size we adjusted one token `var(--bal-shadow)` to `var(--bal-shadow-normal)`
+
+<DiffSource
+  code={`-<div class="has-shadow">...</div>
++<div class="has-shadow-normal">...</div>`}
+/>
+
+#### Spacing
+
+The spacing concept is supported exclusively with T-Shirt sizes, such as `m-large` or `pt-x-small`, as opposed to numerical values.
+To reduce the initial payload we provide only one solution by default, otherwise set the SASS variable `$spacing-legacy-numbering` to still use the numbers.
+
+For migration below you find the mapping table and an example.
+
+<Markdown>
+  {`
+| Number | Value to use |
+| :----- | :----------- |
+| 0      | \`none\`       |
+| 1      | \`xx-small\`   |
+| 2      | \`x-small\`    |
+| 3      | \`small\`      |
+| 4      | \`normal\`     |
+| 5      | \`medium\`     |
+| 6      | \`large\`      |
+| 7      | \`x-large\`    |
+| 8      | \`xx-large\`   |
+| 9      | \`xxx-large\`  |
+| 10     | \`xxxx-large\` |
+`}
+</Markdown>
+
+##### Example
+
+<DiffSource
+  code={`-<div class="mt-6">...</div>
++<div class="mt-large">...</div>`}
+/>
+
+##### Non-breaking
+
+To prevent breaking changes the size numbering can be reactivated by setting the SASS variable `$spacing-legacy-numbering` to true.
+However, this will increase the file size of your stylesheet.
+
+<DiffSource
+  code={`$font-path: '~assets/fonts';
++$spacing-legacy-numbering: true;\n
+@import 'node_modules/@baloise/design-system-components/src/styles/global';
+// add custom styles below`}
+/>
+
+### Separation of bal-number-input & bal-input
+
+In version 12 we decoupled bal-number-input from bal-input. The props `numberInput` and `decimal` are removed from the `bal-input` component.
+This leads to a smaller payload for the `bal-input` component.
+
+<DiffSource
+  code={`-<bal-input number-input decimal="2"></bal-input>
++<bal-number-input decimal="2"></bal-number-input>`}
+/>
+
+### Carousel
+
+The new component carousel replaces the `bal-slider`, `bal-product-slider` and `bal-image-slider` components.
+
+### Card Slider
+
+[Implementation detail](?path=/story/components-carousel--card-slider)
+
+<DiffSource
+  code={`-<bal-slider>
++<bal-carousel controls="tabs" controls-sticky interface="card" scroll-y>
+-   <bal-slider-item label="ECO">
++   <bal-carousel-item label="ECO">
+        <bal-card flat fullheight class="mt-2" color="red-light">
+          ...
+        </bal-card>
+-   </bal-slider-item>
++   </bal-carousel-item>
+    ...
+-</bal-slider>
++</bal-carousel>`}
+/>
+
+### Product Slider
+
+[Implementation detail](?path=/story/components-carousel--product-slider)
+
+<DiffSource
+  code={`-<bal-product-slider>
++<bal-carousel controls="large" interface="product" items-per-view="auto" steps="2">
+-    <bal-product-slider-item color="green" label="Auto" src="assets/images/brand/car.svg" />
++    <bal-carousel-item color="green" label="Auto" src="assets/images/brand/car.svg" />
+     ...
+-</bal-product-slider>
++</bal-carousel>`}
+/>
+
+### Image Slider
+
+[Implementation detail](?path=/story/components-carousel--image-slider)
+
+<DiffSource
+  code={`-<bal-image-slider aspect-ratio="16by9">
++<bal-carousel aspect-ratio="16by9" controls="dots" interface="image">
+-   <bal-image-slider-item src="https://fastly.picsum.photos/id/626/1280/720.jpg?hmac=pHWhzQeCr1Zq8_NquZJ51qZ0xXa4psCZpoeJbaUbkWM"></bal-image-slider-item>
++   <bal-carousel-item src="https://fastly.picsum.photos/id/626/1280/720.jpg?hmac=pHWhzQeCr1Zq8_NquZJ51qZ0xXa4psCZpoeJbaUbkWM"></bal-carousel-item>
+    ...
+-</bal-image-slider>
++</bal-carousel>`}
+/>
+
+<Footer />

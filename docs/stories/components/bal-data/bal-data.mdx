@@ -1,0 +1,65 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as DataStories from './bal-data.stories'
+
+<Meta of={DataStories} />
+
+<StoryHeading of={DataStories.Basic} hidden></StoryHeading>
+
+<Banner of={DataStories} />
+
+<Lead>**Data** component display readonly form data.</Lead>
+
+<Canvas of={DataStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={DataStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.Horizontal}></StoryHeading>
+
+<Canvas of={DataStories.Horizontal} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DataStories.DataTypes}></StoryHeading>
+
+<Canvas of={DataStories.DataTypes} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balDataItemApi from './bal-data-item/api.md?raw'
+
+<Markdown>{balDataItemApi}</Markdown>
+
+import balDataLabelApi from './bal-data-label/api.md?raw'
+
+<Markdown>{balDataLabelApi}</Markdown>
+
+import balDataValueApi from './bal-data-value/api.md?raw'
+
+<Markdown>{balDataValueApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

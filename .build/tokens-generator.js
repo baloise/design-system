@@ -36,6 +36,7 @@ async function main() {
   generateSpacings()
   generateAnimation()
   generateBorder()
+  generateZIndex()
 
   await file.save(path.join(SRC_PATH, 'tokens.ts'), toTs())
   await file.save(path.join(DIST_PATH, 'tokens.docs.json'), JSON.stringify(BaloiseDesignToken))
@@ -295,6 +296,13 @@ function generateAnimation() {
 function generateBorder() {
   const border = BaloiseDesignToken.border
   addToken(`border-width-normal`, `border-width-normal`, border.width)
+}
+
+function generateZIndex() {
+  const zIndex = BaloiseDesignToken.zIndex
+  for (const r in zIndex) {
+    addToken(`z-index-${r}`, `z-index-${r}`, zIndex[r].value)
+  }
 }
 
 main()

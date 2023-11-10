@@ -1,0 +1,67 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as ContentStories from './bal-content.stories'
+
+<Meta of={ContentStories} />
+
+<StoryHeading of={ContentStories.Basic} hidden></StoryHeading>
+
+<Banner of={ContentStories} />
+
+<Lead>**Content** helps to align text nodes inside a section.</Lead>
+
+<Canvas of={ContentStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={ContentStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.Alignment}></StoryHeading>
+
+The children of the content can be aligned `start` (default), `center` or `end`.
+
+<Canvas of={ContentStories.Alignment} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.Layout}></StoryHeading>
+
+Default layout direction is vertically, but can be changed by setting the property `layout` to `horizontal`.
+
+After that the content is rendered horizontally.
+
+<Canvas of={ContentStories.Layout} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ContentStories.Space}></StoryHeading>
+
+There are 4 sizes of the space between the content children.
+
+<Canvas of={ContentStories.Space} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

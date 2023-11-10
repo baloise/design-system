@@ -11,7 +11,7 @@ import {
 } from '@stencil/core'
 import { ListenToConfig, BalConfigObserver, BalConfigState } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { preventDefault } from '../form/bal-select/utils/utils'
+import { preventDefault } from '../bal-select/utils/utils'
 import { BalScrollHandler } from '../../utils/scroll'
 import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 

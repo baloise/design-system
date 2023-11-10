@@ -1,0 +1,50 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as DividerStories from './bal-divider.stories'
+
+<Meta of={DividerStories} />
+
+<StoryHeading of={DividerStories.Basic} hidden></StoryHeading>
+
+<Banner of={DividerStories} />
+
+<Lead>A **divider** is a slender line that serves to group content within stacks and layouts. The divider separates and
+  differentiate sections of content or groups of menu items.</Lead>
+
+<Canvas of={DividerStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={DividerStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DividerStories.LayoutVertical}></StoryHeading>
+
+Change the layout of the divider to vertical to use them in a horizontal stack component.
+
+<Canvas of={DividerStories.LayoutVertical} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

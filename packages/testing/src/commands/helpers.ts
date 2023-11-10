@@ -78,7 +78,6 @@ export const isAccordion: isElementType = el => isElement(el, 'BAL-ACCORDION')
 export const isButton: isElementType = el => isElement(el, 'BAL-BUTTON')
 export const isCheckbox: isElementType = el => isElement(el, 'BAL-CHECKBOX')
 export const isDatepicker: isElementType = el => isElement(el, 'BAL-DATEPICKER')
-export const isInput: isElementType = el => isElement(el, 'BAL-INPUT')
 export const isNumberInput: isElementType = el => isElement(el, 'BAL-NUMBER-INPUT')
 export const isModal: isElementType = el => isElement(el, 'BAL-MODAL')
 export const isRadioGroup: isElementType = el => isElement(el, 'BAL-RADIO-GROUP')
@@ -94,6 +93,8 @@ export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
 export const isHeading: isElementType = el => isElement(el, 'BAL-HEADING')
 export const isText: isElementType = el => isElement(el, 'BAL-TEXT')
 export const isInputStepper: isElementType = el => isElement(el, 'BAL-INPUT-STEPPER')
+export const isInput: isElementType = el => isElement(el, 'BAL-INPUT')
+export const isInputDate: isElementType = el => isElement(el, 'BAL-INPUT-DATE')
 
 /**
  * Executes a command on a child element and wraps back to the main element/component
@@ -154,4 +155,14 @@ export const testOnPlatforms = (platforms: Platforms[], fn: (platform: Platforms
       fn(platform)
     })
   }
+}
+
+export function checkAriaLabel(element: HTMLElement, label: string | undefined | null) {
+  if (label === undefined || label === null || label === '') {
+    return true
+  }
+  const ariaLabel = Cypress.$(element).attr('aria-label')
+  const title = Cypress.$(element).attr('title')
+  const text = Cypress.$(element).text().trim()
+  return text === label.trim() || ariaLabel === label.trim() || title === label.trim()
 }

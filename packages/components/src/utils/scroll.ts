@@ -43,7 +43,9 @@ export class BalScrollHandler {
   }
 
   disconnect() {
-    this.enable()
+    if (this.disabled) {
+      this.enable()
+    }
     this.target = undefined
     onscroll = null
     onkeydown = null

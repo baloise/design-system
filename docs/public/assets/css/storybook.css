@@ -1,0 +1,171 @@
+html {
+  font-size: 16px;
+  font-family: 'BaloiseCreateText';
+}
+
+.sbdocs-wrapper {
+  padding: 2rem 20px !important;
+}
+
+/***************************************
+ * SEARCH FIELD
+ ***************************************/
+
+.search-field input {
+  border-radius: 4px;
+  border-width: 2px;
+  font-size: 16px;
+  min-height: 32px;
+}
+
+.search-field svg {
+  top: 8px;
+  height: 16px;
+  width: 16px;
+}
+
+.search-field code {
+  top: 8px;
+}
+
+.search-field code + svg {
+  top: 8px;
+}
+
+/***************************************
+ * SIDEBAR ROOTs
+ ***************************************/
+
+.sidebar-subheading {
+  margin-top: 16px !important;
+  margin-bottom: 6px !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 18px !important;
+  min-height: 18px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.sidebar-subheading > button {
+  color: #000d6e;
+  font-family: 'BaloiseCreateHeadline';
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.sidebar-subheading > button > span {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid;
+  margin-right: 10px !important;
+}
+
+.sidebar-subheading > button.sidebar-subheading-action > svg {
+  height: 14px !important;
+  width: 14px !important;
+}
+
+/***************************************
+ * SIDEBAR ITEM
+ ***************************************/
+
+.sidebar-item,
+.sidebar-item > a {
+  color: #000d6e;
+  font-family: 'BaloiseCreateText';
+  font-weight: 400;
+  font-size: 16px !important;
+}
+
+.sidebar-item > span {
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid;
+  margin-right: 10px !important;
+}
+
+.sidebar-item > svg,
+.sidebar-item > a > svg {
+  height: 16px !important;
+  width: 16px !important;
+}
+
+.sidebar-item[data-nodetype="component"] svg {
+  color: #00b28f;
+}
+
+.sidebar-item[data-selected="false"][data-nodetype="document"] svg {
+  color: #9f52cc;
+}
+
+.sidebar-item[data-selected="false"][data-nodetype="story"] svg {
+  color: #fa9319;
+}
+
+.sidebar-item[data-selected="true"] svg {
+  color: #FFFFFF !important;
+}
+
+/***************************************
+ * Cookie Alert
+ ***************************************/
+
+.my-cookie {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 26rem;
+  min-height: 3.5rem;
+  padding: 1.5rem;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+  box-shadow: 0 0 10px 0 rgba(0, 7, 57, 0.15);
+}
+
+.my-cookie strong {
+  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.my-cookie span {
+  font-size: 1rem;
+  display: block;
+}
+
+.my-cookie a {
+  color: #000d6e;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 2px;
+}
+
+.my-cookie button {
+  margin-top: 1.5rem;
+  font-family: BaloiseCreateHeadline,Arial,sans-serif;
+  background: transparent;
+  border: 2px solid #000d6e;
+  color: #000d6e;
+  min-height: 3rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.my-cookie button:hover {
+  background: #e5f1fe;
+  border-color: #0015aa;
+  color: #0015aa;
+}
+
+.my-cookie button:active {
+  background: #e5f1fe;
+  border-color: #000739;
+  color: #000739;
+}

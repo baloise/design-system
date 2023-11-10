@@ -1,0 +1,83 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as BadgeStories from './bal-badge.stories'
+
+<Meta of={BadgeStories} />
+
+<StoryHeading of={BadgeStories.Basic} hidden></StoryHeading>
+
+<Banner of={BadgeStories} />
+
+<Lead>**Badge** indicates a not visited or read action. It can only be used in combination with other components like [BalButton](?path=/docs/components-containment-button--documentation), [BalCard](?path=/docs/components-containment-card--documentation) or [BalTabs](?path=/docs/components-navigation-tabs--documentation).</Lead>
+
+<Canvas of={BadgeStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={BadgeStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.WithIcon}></StoryHeading>
+
+<Canvas of={BadgeStories.WithIcon} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Colors}></StoryHeading>
+
+<Canvas of={BadgeStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.Sizes}></StoryHeading>
+
+<Canvas of={BadgeStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ListBadges}></StoryHeading>
+
+<Canvas of={BadgeStories.ListBadges} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.CardBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.CardBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.ButtonBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.ButtonBadge} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={BadgeStories.TabsBadge}></StoryHeading>
+
+<Canvas of={BadgeStories.TabsBadge} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

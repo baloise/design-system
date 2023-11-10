@@ -1,0 +1,46 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssElevationOpacity, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Elevation/Opacity"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Opacity" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies the level of transparency for an element.</Lead>
+
+## Classes
+
+<CssElevationOpacity />
+
+## Examples
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-align-items-center is-justify-content-center fg-normal">
+    <div class="has-opacity-30 is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">opacity-30</div>
+    <div class="has-opacity-40 is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">opacity-40</div>
+    <div class="has-opacity-80 is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">opacity-80</div>
+    <div class="has-opacity-100 is-flex is-align-items-center is-justify-content-center has-background-green-3 has-radius-normal p-normal">opacity-100</div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Elevation"
+      description="Elevation involves the strategic application of shadow and depth to elements, enhancing visual hierarchy and providing depth cues within the user interface"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

@@ -1,5 +1,5 @@
 describe('bal-input', () => {
-  beforeEach(() => cy.visit('/components/form/bal-input/test/bal-input.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-input/test/bal-input.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')
@@ -31,5 +31,10 @@ describe('bal-input', () => {
 
     cy.platform('mobile')
     cy.getByTestId('field').compareSnapshot('input-field-mobile')
+  })
+
+  it('input-date', () => {
+    cy.platform('desktop')
+    cy.getByTestId('input-date').compareSnapshot('input-date', 0.0)
   })
 })
