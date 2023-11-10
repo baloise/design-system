@@ -1,0 +1,44 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, WarningQuote, Footer } from '../../../.storybook/blocks'
+import * as PopoverStories from './bal-popover.stories'
+
+<Meta of={PopoverStories} />
+
+<StoryHeading of={PopoverStories.Basic} hidden></StoryHeading>
+
+<Banner of={PopoverStories} />
+
+<Lead>**Popover** shows and hides content close to the trigger element.</Lead>
+
+<WarningQuote>
+  **Deprecation Warning!** <br />
+  Please use the new components [Popup](?path=/docs/components-data-display-popup--documentation) and [Tooltip](?path=/docs/components-data-display-tooltip--documentation), because this component is marked
+  as deprecated and will be removed with the next major releases.
+</WarningQuote>
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import balPopoverContentApi from './bal-popover-content/api.md?raw'
+
+<Markdown>{balPopoverContentApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,0 +1,62 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssTypographyFamily, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Typography/Font Family"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Font Family" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Specifies font family for headings and paragraphs.</Lead>
+
+## Classes
+
+The classes `has-text-xxx` defines the font-color. For more colors have a look a the [Font Color Tokens]().
+
+<CssTypographyFamily />
+
+## Text Font Family
+
+The default font family is **BaloiseText**, which is available in both `regular` and `bold` weights.
+It defaults to using the primary color and has a font size of 1rem. Use the class `is-family-text` to overide a given font-family.
+
+<Code
+  language="html"
+  code={`
+<h1 class="title is-family-text">Text - Lorem ipsum dolor sit.</h1>
+<p>Text - Lorem ipsum dolor sit.</p>
+`}
+/>
+
+## Title Font Family
+
+For headings and titles, the **BaloiseHeadline** font family is available in both `light` and `bold` variants.
+By default, HTML heading tags and the classes `title` and `subtitle` automatically apply the title font family.
+To use a different font family, override it using the class `is-family-title`.
+
+<Code
+  language="html"
+  code={`
+<h1 class="title">Title - Lorem ipsum dolor sit.</h1>
+<h1 class="subtitle">Subtitle - Lorem ipsum dolor sit.</h1>
+<p class="is-family-title">Title - Lorem ipsum dolor sit.</p>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Typography"
+      description="Baloise Create is the corporate typeface. Its clear appearance underlines the modern and future-oriented brand expression."
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

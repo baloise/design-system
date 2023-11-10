@@ -54,13 +54,18 @@
           border-bottom-width: 0
   // Modifiers
   &.is-bordered
-    td,
     th
+      border-top-width: 1px
+      border-left-width: 1px
+      border-right-width: 1px
+      border-top-color: var(--bal-table-cell-border-color)
+      border-left-color: var(--bal-table-cell-border-color)
+      border-right-color: var(--bal-table-cell-border-color)
+    td
       border-width: 1px
     tr
       &:last-child
-        td,
-        th
+        td
           border-bottom-width: 1px
   &.is-fullwidth
     width: 100%

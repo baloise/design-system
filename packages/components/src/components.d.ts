@@ -8,27 +8,25 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
 import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
-import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
+import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 import { BalAriaForm } from "./utils/form";
-import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
-import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
-import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
 export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
-export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
+export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
 export { BalAriaForm } from "./utils/form";
-export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
-export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+export { OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
-export { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
+export { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -963,98 +961,6 @@ export namespace Components {
         "region"?: string;
         "stickyFooter": boolean;
     }
-    interface BalDocBanner {
-        "color": string;
-        "shadowDom": boolean;
-        "subtitle": string;
-    }
-    interface BalDocCodeSandbox {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen": boolean;
-        "label": string;
-        "logo": boolean;
-        "modules": string;
-        "name2": string;
-        "primary": boolean;
-        "template": string;
-        "template2": string;
-        "visible": boolean;
-    }
-    interface BalDocColor {
-        "background": boolean;
-        "color": string;
-        "description": string;
-        "inverted": boolean;
-        "subject": string;
-    }
-    interface BalDocDownload {
-        "iconLeft": string;
-        "iconRight": string;
-        "link": string;
-        "subject": string;
-        "subtitle": string;
-    }
-    interface BalDocGithub {
-        "link": string;
-    }
-    interface BalDocIcons {
-        "icons": string;
-    }
-    interface BalDocImage {
-        "src": string;
-        "text": string;
-    }
-    interface BalDocLead {
-    }
-    interface BalDocLinkList {
-        "oneColumn": boolean;
-    }
-    interface BalDocLinkListItem {
-        "image": string;
-        "subject": string;
-        "template": '' | 'html5' | 'angular' | 'vue' | 'react';
-    }
-    interface BalDocPreview {
-    }
-    interface BalDocShades {
-        "color": string;
-    }
-    interface BalDocSupportColor {
-        "color": string;
-    }
-    interface BalDocTokensBorder {
-    }
-    interface BalDocTokensBorderColors {
-        "overview": boolean;
-    }
-    interface BalDocTokensBreakpoints {
-    }
-    interface BalDocTokensColors {
-    }
-    interface BalDocTokensContainers {
-    }
-    interface BalDocTokensFont {
-    }
-    interface BalDocTokensFontColors {
-    }
-    interface BalDocTokensFontSizes {
-    }
-    interface BalDocTokensFontWeight {
-    }
-    interface BalDocTokensRadius {
-    }
-    interface BalDocTokensShadow {
-    }
-    interface BalDocTokensSpacing {
-    }
-    interface BalDocTokensSpacingSizes {
-    }
-    interface BalDocTokensTextShadow {
-    }
-    interface BalDocTokensZIndex {
-    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -1135,11 +1041,15 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size": BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight": BalProps.BalFieldLabelWeight;
     }
@@ -1726,6 +1636,9 @@ export namespace Components {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight": BalProps.BalLabelWeight;
     }
     interface BalList {
@@ -1876,6 +1789,7 @@ export namespace Components {
         "cssClass"?: string | string[];
         "dataTestId"?: string;
         "delegate"?: BalProps.FrameworkDelegate;
+        "demo": boolean;
         /**
           * Closes the presented modal with the modal controller
          */
@@ -2292,6 +2206,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
@@ -2496,6 +2414,7 @@ export namespace Components {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo": boolean;
         /**
           * Closes the popup
          */
@@ -2520,6 +2439,7 @@ export namespace Components {
           * Id of the reference element default is the trigger element.
          */
         "reference"?: string;
+        "setMinWidth": (value: number) => Promise<void>;
         /**
           * Triggers the popup
          */
@@ -3441,6 +3361,7 @@ export namespace Components {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo": boolean;
         "dismiss": () => Promise<boolean>;
         /**
           * Offset form trigger to tooltip.
@@ -3643,7 +3564,20 @@ export interface BalTooltipCustomEvent<T> extends CustomEvent<T> {
     target: HTMLBalTooltipElement;
 }
 declare global {
+    interface HTMLBalAccordionElementEventMap {
+        "balChange": BalEvents.BalAccordionChangeDetail;
+        "balWillAnimate": BalEvents.BalAccordionWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalAccordionDidAnimateDetail;
+    }
     interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalAccordionElementEventMap>(type: K, listener: (this: HTMLBalAccordionElement, ev: BalAccordionCustomEvent<HTMLBalAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalAccordionElement: {
         prototype: HTMLBalAccordionElement;
@@ -3667,7 +3601,18 @@ declare global {
         prototype: HTMLBalAccordionTriggerElement;
         new (): HTMLBalAccordionTriggerElement;
     };
+    interface HTMLBalAppElementEventMap {
+        "balAppLoad": BalEvents.BalAppLoadDetail;
+    }
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalAppElement: {
         prototype: HTMLBalAppElement;
@@ -3679,7 +3624,21 @@ declare global {
         prototype: HTMLBalBadgeElement;
         new (): HTMLBalBadgeElement;
     };
+    interface HTMLBalButtonElementEventMap {
+        "balNavigate": BalEvents.BalButtonNavigateDetail;
+        "balFocus": BalEvents.BalButtonFocusDetail;
+        "balBlur": BalEvents.BalButtonBlurDetail;
+        "balDidRender": BalEvents.BalButtonDidRenderDetail;
+    }
     interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalButtonElementEventMap>(type: K, listener: (this: HTMLBalButtonElement, ev: BalButtonCustomEvent<HTMLBalButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalButtonElement: {
         prototype: HTMLBalButtonElement;
@@ -3727,31 +3686,94 @@ declare global {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
     };
+    interface HTMLBalCarouselElementEventMap {
+        "balChange": BalEvents.BalCarouselChangeDetail;
+    }
     interface HTMLBalCarouselElement extends Components.BalCarousel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalCarouselElementEventMap>(type: K, listener: (this: HTMLBalCarouselElement, ev: BalCarouselCustomEvent<HTMLBalCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalCarouselElement: {
         prototype: HTMLBalCarouselElement;
         new (): HTMLBalCarouselElement;
     };
+    interface HTMLBalCarouselItemElementEventMap {
+        "balNavigate": BalEvents.BalCarouselItemNavigateDetail;
+        "balFocus": BalEvents.BalCarouselItemFocusDetail;
+        "balBlur": BalEvents.BalCarouselItemBlurDetail;
+    }
     interface HTMLBalCarouselItemElement extends Components.BalCarouselItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalCarouselItemElementEventMap>(type: K, listener: (this: HTMLBalCarouselItemElement, ev: BalCarouselItemCustomEvent<HTMLBalCarouselItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalCarouselItemElement: {
         prototype: HTMLBalCarouselItemElement;
         new (): HTMLBalCarouselItemElement;
     };
+    interface HTMLBalCheckboxElementEventMap {
+        "balFocus": BalEvents.BalCheckboxFocusDetail;
+        "balBlur": BalEvents.BalCheckboxBlurDetail;
+        "balChange": BalEvents.BalCheckboxChangeDetail;
+    }
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalCheckboxElementEventMap>(type: K, listener: (this: HTMLBalCheckboxElement, ev: BalCheckboxCustomEvent<HTMLBalCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalCheckboxElement: {
         prototype: HTMLBalCheckboxElement;
         new (): HTMLBalCheckboxElement;
     };
+    interface HTMLBalCheckboxButtonElementEventMap {
+        "balFocus": BalEvents.BalCheckboxButtonFocusDetail;
+        "balBlur": BalEvents.BalCheckboxButtonBlurDetail;
+        "balFormControlDidLoad": BalEvents.BalCheckboxButtonAriaLabelledByDetail;
+    }
     interface HTMLBalCheckboxButtonElement extends Components.BalCheckboxButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalCheckboxButtonElementEventMap>(type: K, listener: (this: HTMLBalCheckboxButtonElement, ev: BalCheckboxButtonCustomEvent<HTMLBalCheckboxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalCheckboxButtonElement: {
         prototype: HTMLBalCheckboxButtonElement;
         new (): HTMLBalCheckboxButtonElement;
     };
+    interface HTMLBalCheckboxGroupElementEventMap {
+        "balChange": BalEvents.BalCheckboxGroupChangeDetail;
+        "balFocus": BalEvents.BalCheckboxGroupFocusDetail;
+        "balBlur": BalEvents.BalCheckboxGroupBlurDetail;
+    }
     interface HTMLBalCheckboxGroupElement extends Components.BalCheckboxGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLBalCheckboxGroupElement, ev: BalCheckboxGroupCustomEvent<HTMLBalCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalCheckboxGroupElement: {
         prototype: HTMLBalCheckboxGroupElement;
@@ -3787,31 +3809,101 @@ declare global {
         prototype: HTMLBalDataLabelElement;
         new (): HTMLBalDataLabelElement;
     };
+    interface HTMLBalDataValueElementEventMap {
+        "balClick": BalEvents.BalDataValueClickDetail;
+        "balFocus": BalEvents.BalDataValueFocusDetail;
+        "balBlur": BalEvents.BalDataValueBlurDetail;
+    }
     interface HTMLBalDataValueElement extends Components.BalDataValue, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDataValueElementEventMap>(type: K, listener: (this: HTMLBalDataValueElement, ev: BalDataValueCustomEvent<HTMLBalDataValueElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalDataValueElement: {
         prototype: HTMLBalDataValueElement;
         new (): HTMLBalDataValueElement;
     };
+    interface HTMLBalDateElementEventMap {
+        "balInput": BalEvents.BalDateInputDetail;
+        "balChange": BalEvents.BalDateChangeDetail;
+        "balWillAnimate": BalEvents.BalDateWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalDateDidAnimateDetail;
+        "balBlur": BalEvents.BalDateBlurDetail;
+        "balFocus": BalEvents.BalDateFocusDetail;
+        "balInputClick": BalEvents.BalDateInputClickDetail;
+        "balIconClick": BalEvents.BalDateIconClickDetail;
+        "balPopoverPrepare": string;
+    }
     interface HTMLBalDateElement extends Components.BalDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDateElementEventMap>(type: K, listener: (this: HTMLBalDateElement, ev: BalDateCustomEvent<HTMLBalDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalDateElement: {
         prototype: HTMLBalDateElement;
         new (): HTMLBalDateElement;
     };
+    interface HTMLBalDateCalendarElementEventMap {
+        "balChange": BalEvents.BalDateCalendarChangeDetail;
+    }
     interface HTMLBalDateCalendarElement extends Components.BalDateCalendar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDateCalendarElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarElement, ev: BalDateCalendarCustomEvent<HTMLBalDateCalendarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalDateCalendarElement: {
         prototype: HTMLBalDateCalendarElement;
         new (): HTMLBalDateCalendarElement;
     };
+    interface HTMLBalDateCalendarCellElementEventMap {
+        "balSelectDay": BalEvents.BalDateCellSelectDetail;
+    }
     interface HTMLBalDateCalendarCellElement extends Components.BalDateCalendarCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDateCalendarCellElementEventMap>(type: K, listener: (this: HTMLBalDateCalendarCellElement, ev: BalDateCalendarCellCustomEvent<HTMLBalDateCalendarCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalDateCalendarCellElement: {
         prototype: HTMLBalDateCalendarCellElement;
         new (): HTMLBalDateCalendarCellElement;
     };
+    interface HTMLBalDatepickerElementEventMap {
+        "balChange": BalEvents.BalDatepickerChangeDetail;
+        "balInput": BalEvents.BalDatepickerInputDetail;
+        "balBlur": BalEvents.BalDatepickerBlurDetail;
+        "balFocus": BalEvents.BalDatepickerFocusDetail;
+        "balInputClick": BalEvents.BalDatepickerInputClickDetail;
+        "balIconClick": BalEvents.BalDatepickerIconClickDetail;
+    }
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalDatepickerElementEventMap>(type: K, listener: (this: HTMLBalDatepickerElement, ev: BalDatepickerCustomEvent<HTMLBalDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalDatepickerElement: {
         prototype: HTMLBalDatepickerElement;
@@ -3829,175 +3921,18 @@ declare global {
         prototype: HTMLBalDocAppElement;
         new (): HTMLBalDocAppElement;
     };
-    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
+    interface HTMLBalFieldElementEventMap {
+        "balFormControlDidLoad": BalEvents.BalFieldAriaLabelledByDetail;
     }
-    var HTMLBalDocBannerElement: {
-        prototype: HTMLBalDocBannerElement;
-        new (): HTMLBalDocBannerElement;
-    };
-    interface HTMLBalDocCodeSandboxElement extends Components.BalDocCodeSandbox, HTMLStencilElement {
-    }
-    var HTMLBalDocCodeSandboxElement: {
-        prototype: HTMLBalDocCodeSandboxElement;
-        new (): HTMLBalDocCodeSandboxElement;
-    };
-    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
-    }
-    var HTMLBalDocColorElement: {
-        prototype: HTMLBalDocColorElement;
-        new (): HTMLBalDocColorElement;
-    };
-    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
-    }
-    var HTMLBalDocDownloadElement: {
-        prototype: HTMLBalDocDownloadElement;
-        new (): HTMLBalDocDownloadElement;
-    };
-    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
-    }
-    var HTMLBalDocGithubElement: {
-        prototype: HTMLBalDocGithubElement;
-        new (): HTMLBalDocGithubElement;
-    };
-    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
-    }
-    var HTMLBalDocIconsElement: {
-        prototype: HTMLBalDocIconsElement;
-        new (): HTMLBalDocIconsElement;
-    };
-    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
-    }
-    var HTMLBalDocImageElement: {
-        prototype: HTMLBalDocImageElement;
-        new (): HTMLBalDocImageElement;
-    };
-    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
-    }
-    var HTMLBalDocLeadElement: {
-        prototype: HTMLBalDocLeadElement;
-        new (): HTMLBalDocLeadElement;
-    };
-    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
-    }
-    var HTMLBalDocLinkListElement: {
-        prototype: HTMLBalDocLinkListElement;
-        new (): HTMLBalDocLinkListElement;
-    };
-    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
-    }
-    var HTMLBalDocLinkListItemElement: {
-        prototype: HTMLBalDocLinkListItemElement;
-        new (): HTMLBalDocLinkListItemElement;
-    };
-    interface HTMLBalDocPreviewElement extends Components.BalDocPreview, HTMLStencilElement {
-    }
-    var HTMLBalDocPreviewElement: {
-        prototype: HTMLBalDocPreviewElement;
-        new (): HTMLBalDocPreviewElement;
-    };
-    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
-    }
-    var HTMLBalDocShadesElement: {
-        prototype: HTMLBalDocShadesElement;
-        new (): HTMLBalDocShadesElement;
-    };
-    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
-    }
-    var HTMLBalDocSupportColorElement: {
-        prototype: HTMLBalDocSupportColorElement;
-        new (): HTMLBalDocSupportColorElement;
-    };
-    interface HTMLBalDocTokensBorderElement extends Components.BalDocTokensBorder, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBorderElement: {
-        prototype: HTMLBalDocTokensBorderElement;
-        new (): HTMLBalDocTokensBorderElement;
-    };
-    interface HTMLBalDocTokensBorderColorsElement extends Components.BalDocTokensBorderColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBorderColorsElement: {
-        prototype: HTMLBalDocTokensBorderColorsElement;
-        new (): HTMLBalDocTokensBorderColorsElement;
-    };
-    interface HTMLBalDocTokensBreakpointsElement extends Components.BalDocTokensBreakpoints, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensBreakpointsElement: {
-        prototype: HTMLBalDocTokensBreakpointsElement;
-        new (): HTMLBalDocTokensBreakpointsElement;
-    };
-    interface HTMLBalDocTokensColorsElement extends Components.BalDocTokensColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensColorsElement: {
-        prototype: HTMLBalDocTokensColorsElement;
-        new (): HTMLBalDocTokensColorsElement;
-    };
-    interface HTMLBalDocTokensContainersElement extends Components.BalDocTokensContainers, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensContainersElement: {
-        prototype: HTMLBalDocTokensContainersElement;
-        new (): HTMLBalDocTokensContainersElement;
-    };
-    interface HTMLBalDocTokensFontElement extends Components.BalDocTokensFont, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontElement: {
-        prototype: HTMLBalDocTokensFontElement;
-        new (): HTMLBalDocTokensFontElement;
-    };
-    interface HTMLBalDocTokensFontColorsElement extends Components.BalDocTokensFontColors, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontColorsElement: {
-        prototype: HTMLBalDocTokensFontColorsElement;
-        new (): HTMLBalDocTokensFontColorsElement;
-    };
-    interface HTMLBalDocTokensFontSizesElement extends Components.BalDocTokensFontSizes, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontSizesElement: {
-        prototype: HTMLBalDocTokensFontSizesElement;
-        new (): HTMLBalDocTokensFontSizesElement;
-    };
-    interface HTMLBalDocTokensFontWeightElement extends Components.BalDocTokensFontWeight, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensFontWeightElement: {
-        prototype: HTMLBalDocTokensFontWeightElement;
-        new (): HTMLBalDocTokensFontWeightElement;
-    };
-    interface HTMLBalDocTokensRadiusElement extends Components.BalDocTokensRadius, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensRadiusElement: {
-        prototype: HTMLBalDocTokensRadiusElement;
-        new (): HTMLBalDocTokensRadiusElement;
-    };
-    interface HTMLBalDocTokensShadowElement extends Components.BalDocTokensShadow, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensShadowElement: {
-        prototype: HTMLBalDocTokensShadowElement;
-        new (): HTMLBalDocTokensShadowElement;
-    };
-    interface HTMLBalDocTokensSpacingElement extends Components.BalDocTokensSpacing, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensSpacingElement: {
-        prototype: HTMLBalDocTokensSpacingElement;
-        new (): HTMLBalDocTokensSpacingElement;
-    };
-    interface HTMLBalDocTokensSpacingSizesElement extends Components.BalDocTokensSpacingSizes, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensSpacingSizesElement: {
-        prototype: HTMLBalDocTokensSpacingSizesElement;
-        new (): HTMLBalDocTokensSpacingSizesElement;
-    };
-    interface HTMLBalDocTokensTextShadowElement extends Components.BalDocTokensTextShadow, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensTextShadowElement: {
-        prototype: HTMLBalDocTokensTextShadowElement;
-        new (): HTMLBalDocTokensTextShadowElement;
-    };
-    interface HTMLBalDocTokensZIndexElement extends Components.BalDocTokensZIndex, HTMLStencilElement {
-    }
-    var HTMLBalDocTokensZIndexElement: {
-        prototype: HTMLBalDocTokensZIndexElement;
-        new (): HTMLBalDocTokensZIndexElement;
-    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalFieldElementEventMap>(type: K, listener: (this: HTMLBalFieldElement, ev: BalFieldCustomEvent<HTMLBalFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalFieldElement: {
         prototype: HTMLBalFieldElement;
@@ -4027,7 +3962,24 @@ declare global {
         prototype: HTMLBalFieldMessageElement;
         new (): HTMLBalFieldMessageElement;
     };
+    interface HTMLBalFileUploadElementEventMap {
+        "balChange": BalEvents.BalFileUploadChangeDetail;
+        "balFilesAdded": BalEvents.BalFileUploadFilesAddedDetail;
+        "balFilesRemoved": BalEvents.BalFileUploadFilesRemovedDetail;
+        "balRejectedFile": BalEvents.BalFileUploadRejectedFileDetail;
+        "balInputClick": BalEvents.BalFileUploadInputClickDetail;
+        "balBlur": BalEvents.BalFileUploadBlurDetail;
+        "balFocus": BalEvents.BalFileUploadFocusDetail;
+    }
     interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalFileUploadElementEventMap>(type: K, listener: (this: HTMLBalFileUploadElement, ev: BalFileUploadCustomEvent<HTMLBalFileUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalFileUploadElement: {
         prototype: HTMLBalFileUploadElement;
@@ -4087,13 +4039,43 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
+    interface HTMLBalInputElementEventMap {
+        "balInput": BalEvents.BalInputInputDetail;
+        "balBlur": BalEvents.BalInputBlurDetail;
+        "balKeyPress": BalEvents.BalInputKeyPressDetail;
+        "balFocus": BalEvents.BalInputFocusDetail;
+        "balChange": BalEvents.BalInputChangeDetail;
+    }
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalInputElementEventMap>(type: K, listener: (this: HTMLBalInputElement, ev: BalInputCustomEvent<HTMLBalInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalInputElement: {
         prototype: HTMLBalInputElement;
         new (): HTMLBalInputElement;
     };
+    interface HTMLBalInputDateElementEventMap {
+        "balKeyPress": BalEvents.BalInputDateKeyPressDetail;
+        "balChange": BalEvents.BalInputDateChangeDetail;
+        "balInput": BalEvents.BalInputDateInputDetail;
+        "balBlur": BalEvents.BalInputDateBlurDetail;
+        "balFocus": BalEvents.BalInputDateFocusDetail;
+    }
     interface HTMLBalInputDateElement extends Components.BalInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalInputDateElementEventMap>(type: K, listener: (this: HTMLBalInputDateElement, ev: BalInputDateCustomEvent<HTMLBalInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalInputDateElement: {
         prototype: HTMLBalInputDateElement;
@@ -4105,19 +4087,44 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
-    interface HTMLBalInputGroupDividerElement extends Components.BalInputGroupDivider, HTMLStencilElement {
+    interface HTMLBalInputSliderElementEventMap {
+        "balInput": BalEvents.BalInputSliderInputDetail;
+        "balBlur": BalEvents.BalInputSliderBlurDetail;
+        "balKeyPress": BalEvents.BalInputSliderKeyPressDetail;
+        "balFocus": BalEvents.BalInputSliderFocusDetail;
+        "balChange": BalEvents.BalInputSliderChangeDetail;
     }
-    var HTMLBalInputGroupDividerElement: {
-        prototype: HTMLBalInputGroupDividerElement;
-        new (): HTMLBalInputGroupDividerElement;
-    };
     interface HTMLBalInputSliderElement extends Components.BalInputSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalInputSliderElementEventMap>(type: K, listener: (this: HTMLBalInputSliderElement, ev: BalInputSliderCustomEvent<HTMLBalInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalInputSliderElement: {
         prototype: HTMLBalInputSliderElement;
         new (): HTMLBalInputSliderElement;
     };
+    interface HTMLBalInputStepperElementEventMap {
+        "balChange": BalEvents.BalInputStepperChangeDetail;
+        "balInput": BalEvents.BalInputStepperInputDetail;
+        "balIncrease": BalEvents.BalInputStepperIncreaseDetail;
+        "balDecrease": BalEvents.BalInputStepperDecreaseDetail;
+        "balFocus": BalEvents.BalInputStepperFocusDetail;
+        "balBlur": BalEvents.BalInputStepperBlurDetail;
+    }
     interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalInputStepperElementEventMap>(type: K, listener: (this: HTMLBalInputStepperElement, ev: BalInputStepperCustomEvent<HTMLBalInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalInputStepperElement: {
         prototype: HTMLBalInputStepperElement;
@@ -4135,7 +4142,21 @@ declare global {
         prototype: HTMLBalListElement;
         new (): HTMLBalListElement;
     };
+    interface HTMLBalListItemElementEventMap {
+        "balNavigate": BalEvents.BalListItemNavigateDetail;
+        "balGroupStateChanged": BalEvents.BalListItemGroupStateChangedDetail;
+        "balWillAnimate": BalEvents.BalListItemWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalListItemDidAnimateDetail;
+    }
     interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalListItemElementEventMap>(type: K, listener: (this: HTMLBalListItemElement, ev: BalListItemCustomEvent<HTMLBalListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalListItemElement: {
         prototype: HTMLBalListItemElement;
@@ -4147,7 +4168,18 @@ declare global {
         prototype: HTMLBalListItemAccordionBodyElement;
         new (): HTMLBalListItemAccordionBodyElement;
     };
+    interface HTMLBalListItemAccordionHeadElementEventMap {
+        "balAccordionChange": BalEvents.BalListAccordionChangeDetail;
+    }
     interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalListItemAccordionHeadElementEventMap>(type: K, listener: (this: HTMLBalListItemAccordionHeadElement, ev: BalListItemAccordionHeadCustomEvent<HTMLBalListItemAccordionHeadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalListItemAccordionHeadElement: {
         prototype: HTMLBalListItemAccordionHeadElement;
@@ -4183,7 +4215,21 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
+    interface HTMLBalModalElementEventMap {
+        "balModalDidPresent": BalEvents.BalModalDidPresentDetail;
+        "balModalWillPresent": BalEvents.BalModalWillPresentDetail;
+        "balModalWillDismiss": BalEvents.BalModalWillDismissDetail;
+        "balModalDidDismiss": BalEvents.BalModalDidDismissDetail;
+    }
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalModalElementEventMap>(type: K, listener: (this: HTMLBalModalElement, ev: BalModalCustomEvent<HTMLBalModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalModalElement: {
         prototype: HTMLBalModalElement;
@@ -4201,7 +4247,18 @@ declare global {
         prototype: HTMLBalModalHeaderElement;
         new (): HTMLBalModalHeaderElement;
     };
+    interface HTMLBalNavElementEventMap {
+        "balNavItemClick": BalEvents.BalNavItemClickDetail;
+    }
     interface HTMLBalNavElement extends Components.BalNav, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavElementEventMap>(type: K, listener: (this: HTMLBalNavElement, ev: BalNavCustomEvent<HTMLBalNavElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavElement: {
         prototype: HTMLBalNavElement;
@@ -4255,7 +4312,20 @@ declare global {
         prototype: HTMLBalNavbarElement;
         new (): HTMLBalNavbarElement;
     };
+    interface HTMLBalNavbarBrandElementEventMap {
+        "balNavigate": BalEvents.BalNavbarBrandNavigationChangeDetail;
+        "balWillAnimate": BalEvents.BalNavbarMenuWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalNavbarMenuDidAnimateDetail;
+    }
     interface HTMLBalNavbarBrandElement extends Components.BalNavbarBrand, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavbarBrandElementEventMap>(type: K, listener: (this: HTMLBalNavbarBrandElement, ev: BalNavbarBrandCustomEvent<HTMLBalNavbarBrandElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavbarBrandElement: {
         prototype: HTMLBalNavbarBrandElement;
@@ -4285,25 +4355,69 @@ declare global {
         prototype: HTMLBalNavigationElement;
         new (): HTMLBalNavigationElement;
     };
+    interface HTMLBalNavigationLevelBlockElementEventMap {
+        "balClick": BalEvents.BalNavigationLevelBlockClickDetail;
+    }
     interface HTMLBalNavigationLevelBlockElement extends Components.BalNavigationLevelBlock, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavigationLevelBlockElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelBlockElement, ev: BalNavigationLevelBlockCustomEvent<HTMLBalNavigationLevelBlockElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavigationLevelBlockElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelBlockElement, ev: BalNavigationLevelBlockCustomEvent<HTMLBalNavigationLevelBlockElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavigationLevelBlockElement: {
         prototype: HTMLBalNavigationLevelBlockElement;
         new (): HTMLBalNavigationLevelBlockElement;
     };
+    interface HTMLBalNavigationLevelBlockItemElementEventMap {
+        "balClick": BalEvents.BalNavigationLevelBlockItemClickDetail;
+    }
     interface HTMLBalNavigationLevelBlockItemElement extends Components.BalNavigationLevelBlockItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavigationLevelBlockItemElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelBlockItemElement, ev: BalNavigationLevelBlockItemCustomEvent<HTMLBalNavigationLevelBlockItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavigationLevelBlockItemElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelBlockItemElement, ev: BalNavigationLevelBlockItemCustomEvent<HTMLBalNavigationLevelBlockItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavigationLevelBlockItemElement: {
         prototype: HTMLBalNavigationLevelBlockItemElement;
         new (): HTMLBalNavigationLevelBlockItemElement;
     };
+    interface HTMLBalNavigationLevelMainElementEventMap {
+        "balClick": BalEvents.BalNavigationLevelMainClickDetail;
+    }
     interface HTMLBalNavigationLevelMainElement extends Components.BalNavigationLevelMain, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavigationLevelMainElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelMainElement, ev: BalNavigationLevelMainCustomEvent<HTMLBalNavigationLevelMainElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavigationLevelMainElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelMainElement, ev: BalNavigationLevelMainCustomEvent<HTMLBalNavigationLevelMainElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavigationLevelMainElement: {
         prototype: HTMLBalNavigationLevelMainElement;
         new (): HTMLBalNavigationLevelMainElement;
     };
+    interface HTMLBalNavigationLevelMetaElementEventMap {
+        "balClick": BalEvents.BalNavigationLevelMetaClickDetail;
+    }
     interface HTMLBalNavigationLevelMetaElement extends Components.BalNavigationLevelMeta, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNavigationLevelMetaElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelMetaElement, ev: BalNavigationLevelMetaCustomEvent<HTMLBalNavigationLevelMetaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNavigationLevelMetaElementEventMap>(type: K, listener: (this: HTMLBalNavigationLevelMetaElement, ev: BalNavigationLevelMetaCustomEvent<HTMLBalNavigationLevelMetaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNavigationLevelMetaElement: {
         prototype: HTMLBalNavigationLevelMetaElement;
@@ -4387,19 +4501,59 @@ declare global {
         prototype: HTMLBalNotificationElement;
         new (): HTMLBalNotificationElement;
     };
+    interface HTMLBalNumberInputElementEventMap {
+        "balInput": BalEvents.BalNumberInputInputDetail;
+        "balChange": BalEvents.BalNumberInputChangeDetail;
+        "balBlur": BalEvents.BalNumberInputBlurDetail;
+        "balFocus": BalEvents.BalNumberInputFocusDetail;
+        "balKeyPress": BalEvents.BalNumberInputKeyPressDetail;
+    }
     interface HTMLBalNumberInputElement extends Components.BalNumberInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalNumberInputElementEventMap>(type: K, listener: (this: HTMLBalNumberInputElement, ev: BalNumberInputCustomEvent<HTMLBalNumberInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalNumberInputElement: {
         prototype: HTMLBalNumberInputElement;
         new (): HTMLBalNumberInputElement;
     };
+    interface HTMLBalPaginationElementEventMap {
+        "balChange": BalEvents.BalPaginationChangeDetail;
+    }
     interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalPaginationElementEventMap>(type: K, listener: (this: HTMLBalPaginationElement, ev: BalPaginationCustomEvent<HTMLBalPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalPaginationElement: {
         prototype: HTMLBalPaginationElement;
         new (): HTMLBalPaginationElement;
     };
+    interface HTMLBalPopoverElementEventMap {
+        "balChange": BalEvents.BalPopoverChangeDetail;
+        "balWillAnimate": BalEvents.BalPopoverWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalPopoverDidAnimateDetail;
+        "balPopoverPrepare": string;
+    }
     interface HTMLBalPopoverElement extends Components.BalPopover, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalPopoverElementEventMap>(type: K, listener: (this: HTMLBalPopoverElement, ev: BalPopoverCustomEvent<HTMLBalPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalPopoverElement: {
         prototype: HTMLBalPopoverElement;
@@ -4411,7 +4565,20 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalPopupElementEventMap {
+        "balChange": BalEvents.BalPopupChangeDetail;
+        "balWillAnimate": BalEvents.BalPopupWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalPopupDidAnimateDetail;
+    }
     interface HTMLBalPopupElement extends Components.BalPopup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalPopupElementEventMap>(type: K, listener: (this: HTMLBalPopupElement, ev: BalPopupCustomEvent<HTMLBalPopupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalPopupElement: {
         prototype: HTMLBalPopupElement;
@@ -4423,25 +4590,81 @@ declare global {
         prototype: HTMLBalProgressBarElement;
         new (): HTMLBalProgressBarElement;
     };
+    interface HTMLBalRadioElementEventMap {
+        "balFocus": BalEvents.BalRadioFocusDetail;
+        "balBlur": BalEvents.BalRadioBlurDetail;
+        "balChange": BalEvents.BalRadioChangeDetail;
+    }
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalRadioElementEventMap>(type: K, listener: (this: HTMLBalRadioElement, ev: BalRadioCustomEvent<HTMLBalRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalRadioElement: {
         prototype: HTMLBalRadioElement;
         new (): HTMLBalRadioElement;
     };
+    interface HTMLBalRadioButtonElementEventMap {
+        "balFocus": BalEvents.BalRadioButtonFocusDetail;
+        "balBlur": BalEvents.BalRadioButtonBlurDetail;
+        "balFormControlDidLoad": BalEvents.BalRadioButtonAriaLabelledByDetail;
+    }
     interface HTMLBalRadioButtonElement extends Components.BalRadioButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalRadioButtonElementEventMap>(type: K, listener: (this: HTMLBalRadioButtonElement, ev: BalRadioButtonCustomEvent<HTMLBalRadioButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalRadioButtonElement: {
         prototype: HTMLBalRadioButtonElement;
         new (): HTMLBalRadioButtonElement;
     };
+    interface HTMLBalRadioGroupElementEventMap {
+        "balChange": BalEvents.BalRadioGroupChangeDetail;
+        "balFocus": BalEvents.BalRadioGroupFocusDetail;
+        "balBlur": BalEvents.BalRadioGroupBlurDetail;
+    }
     interface HTMLBalRadioGroupElement extends Components.BalRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalRadioGroupElementEventMap>(type: K, listener: (this: HTMLBalRadioGroupElement, ev: BalRadioGroupCustomEvent<HTMLBalRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalRadioGroupElement: {
         prototype: HTMLBalRadioGroupElement;
         new (): HTMLBalRadioGroupElement;
     };
+    interface HTMLBalSelectElementEventMap {
+        "balChange": BalEvents.BalSelectChangeDetail;
+        "balInputClick": BalEvents.BalSelectInputClickDetail;
+        "balInput": BalEvents.BalSelectInputDetail;
+        "balBlur": BalEvents.BalSelectBlurDetail;
+        "balFocus": BalEvents.BalSelectFocusDetail;
+        "balCancel": BalEvents.BalSelectCancelDetail;
+        "balKeyPress": BalEvents.BalSelectKeyPressDetail;
+    }
     interface HTMLBalSelectElement extends Components.BalSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSelectElementEventMap>(type: K, listener: (this: HTMLBalSelectElement, ev: BalSelectCustomEvent<HTMLBalSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalSelectElement: {
         prototype: HTMLBalSelectElement;
@@ -4465,7 +4688,19 @@ declare global {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
     };
+    interface HTMLBalSnackbarElementEventMap {
+        "balClose": BalEvents.BalSnackbarCloseDetail;
+        "balAction": BalEvents.BalSnackbarActionDetail;
+    }
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalSnackbarElementEventMap>(type: K, listener: (this: HTMLBalSnackbarElement, ev: BalSnackbarCustomEvent<HTMLBalSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalSnackbarElement: {
         prototype: HTMLBalSnackbarElement;
@@ -4519,19 +4754,52 @@ declare global {
         prototype: HTMLBalStageImageElement;
         new (): HTMLBalStageImageElement;
     };
+    interface HTMLBalStepItemElementEventMap {
+        "balNavigate": BalEvents.BalStepItemNavigateDetail;
+    }
     interface HTMLBalStepItemElement extends Components.BalStepItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalStepItemElementEventMap>(type: K, listener: (this: HTMLBalStepItemElement, ev: BalStepItemCustomEvent<HTMLBalStepItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalStepItemElement: {
         prototype: HTMLBalStepItemElement;
         new (): HTMLBalStepItemElement;
     };
+    interface HTMLBalStepsElementEventMap {
+        "balChange": BalEvents.BalTabsChangeDetail;
+    }
     interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalStepsElementEventMap>(type: K, listener: (this: HTMLBalStepsElement, ev: BalStepsCustomEvent<HTMLBalStepsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalStepsElement: {
         prototype: HTMLBalStepsElement;
         new (): HTMLBalStepsElement;
     };
+    interface HTMLBalTabItemElementEventMap {
+        "balNavigate": BalEvents.BalTabItemNavigateDetail;
+    }
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTabItemElementEventMap>(type: K, listener: (this: HTMLBalTabItemElement, ev: BalTabItemCustomEvent<HTMLBalTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTabItemElement: {
         prototype: HTMLBalTabItemElement;
@@ -4543,13 +4811,37 @@ declare global {
         prototype: HTMLBalTableElement;
         new (): HTMLBalTableElement;
     };
+    interface HTMLBalTabsElementEventMap {
+        "balChange": BalEvents.BalTabsChangeDetail;
+        "balWillAnimate": BalEvents.BalTabsWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalTabsDidAnimateDetail;
+    }
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTabsElementEventMap>(type: K, listener: (this: HTMLBalTabsElement, ev: BalTabsCustomEvent<HTMLBalTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTabsElement: {
         prototype: HTMLBalTabsElement;
         new (): HTMLBalTabsElement;
     };
+    interface HTMLBalTagElementEventMap {
+        "balCloseClick": BalEvents.BalTagCloseClickDetail;
+    }
     interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTagElementEventMap>(type: K, listener: (this: HTMLBalTagElement, ev: BalTagCustomEvent<HTMLBalTagElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTagElement: {
         prototype: HTMLBalTagElement;
@@ -4567,25 +4859,79 @@ declare global {
         prototype: HTMLBalTextElement;
         new (): HTMLBalTextElement;
     };
+    interface HTMLBalTextareaElementEventMap {
+        "balChange": BalEvents.BalTextareaChangeDetail;
+        "balInput": BalEvents.BalTextareaInputDetail;
+        "balBlur": BalEvents.BalTextareaBlurDetail;
+        "balKeyPress": BalEvents.BalTextareaKeyPressDetail;
+        "balFocus": BalEvents.BalTextareaFocusDetail;
+    }
     interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTextareaElementEventMap>(type: K, listener: (this: HTMLBalTextareaElement, ev: BalTextareaCustomEvent<HTMLBalTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTextareaElement: {
         prototype: HTMLBalTextareaElement;
         new (): HTMLBalTextareaElement;
     };
+    interface HTMLBalTimeInputElementEventMap {
+        "balInput": BalEvents.BalTimeInputInputDetail;
+        "balChange": BalEvents.BalTimeInputChangeDetail;
+        "balBlur": BalEvents.BalTimeInputBlurDetail;
+        "balFocus": BalEvents.BalTimeInputFocusDetail;
+        "balKeyPress": BalEvents.BalTimeInputKeyPressDetail;
+        "balClick": BalEvents.BalTimeInputClickDetail;
+    }
     interface HTMLBalTimeInputElement extends Components.BalTimeInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTimeInputElementEventMap>(type: K, listener: (this: HTMLBalTimeInputElement, ev: BalTimeInputCustomEvent<HTMLBalTimeInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTimeInputElement: {
         prototype: HTMLBalTimeInputElement;
         new (): HTMLBalTimeInputElement;
     };
+    interface HTMLBalToastElementEventMap {
+        "balClose": BalEvents.BalToastCloseDetail;
+    }
     interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalToastElementEventMap>(type: K, listener: (this: HTMLBalToastElement, ev: BalToastCustomEvent<HTMLBalToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalToastElement: {
         prototype: HTMLBalToastElement;
         new (): HTMLBalToastElement;
     };
+    interface HTMLBalTooltipElementEventMap {
+        "balWillAnimate": BalEvents.BalTooltipWillAnimateDetail;
+        "balDidAnimate": BalEvents.BalTooltipDidAnimateDetail;
+    }
     interface HTMLBalTooltipElement extends Components.BalTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBalTooltipElementEventMap>(type: K, listener: (this: HTMLBalTooltipElement, ev: BalTooltipCustomEvent<HTMLBalTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalTooltipElement: {
         prototype: HTMLBalTooltipElement;
@@ -4623,34 +4969,6 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-divider": HTMLBalDividerElement;
         "bal-doc-app": HTMLBalDocAppElement;
-        "bal-doc-banner": HTMLBalDocBannerElement;
-        "bal-doc-code-sandbox": HTMLBalDocCodeSandboxElement;
-        "bal-doc-color": HTMLBalDocColorElement;
-        "bal-doc-download": HTMLBalDocDownloadElement;
-        "bal-doc-github": HTMLBalDocGithubElement;
-        "bal-doc-icons": HTMLBalDocIconsElement;
-        "bal-doc-image": HTMLBalDocImageElement;
-        "bal-doc-lead": HTMLBalDocLeadElement;
-        "bal-doc-link-list": HTMLBalDocLinkListElement;
-        "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
-        "bal-doc-preview": HTMLBalDocPreviewElement;
-        "bal-doc-shades": HTMLBalDocShadesElement;
-        "bal-doc-support-color": HTMLBalDocSupportColorElement;
-        "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
-        "bal-doc-tokens-border-colors": HTMLBalDocTokensBorderColorsElement;
-        "bal-doc-tokens-breakpoints": HTMLBalDocTokensBreakpointsElement;
-        "bal-doc-tokens-colors": HTMLBalDocTokensColorsElement;
-        "bal-doc-tokens-containers": HTMLBalDocTokensContainersElement;
-        "bal-doc-tokens-font": HTMLBalDocTokensFontElement;
-        "bal-doc-tokens-font-colors": HTMLBalDocTokensFontColorsElement;
-        "bal-doc-tokens-font-sizes": HTMLBalDocTokensFontSizesElement;
-        "bal-doc-tokens-font-weight": HTMLBalDocTokensFontWeightElement;
-        "bal-doc-tokens-radius": HTMLBalDocTokensRadiusElement;
-        "bal-doc-tokens-shadow": HTMLBalDocTokensShadowElement;
-        "bal-doc-tokens-spacing": HTMLBalDocTokensSpacingElement;
-        "bal-doc-tokens-spacing-sizes": HTMLBalDocTokensSpacingSizesElement;
-        "bal-doc-tokens-text-shadow": HTMLBalDocTokensTextShadowElement;
-        "bal-doc-tokens-z-index": HTMLBalDocTokensZIndexElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -5733,98 +6051,6 @@ declare namespace LocalJSX {
         "region"?: string;
         "stickyFooter"?: boolean;
     }
-    interface BalDocBanner {
-        "color"?: string;
-        "shadowDom"?: boolean;
-        "subtitle"?: string;
-    }
-    interface BalDocCodeSandbox {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen"?: boolean;
-        "label": string;
-        "logo"?: boolean;
-        "modules": string;
-        "name2": string;
-        "primary"?: boolean;
-        "template": string;
-        "template2": string;
-        "visible"?: boolean;
-    }
-    interface BalDocColor {
-        "background"?: boolean;
-        "color"?: string;
-        "description"?: string;
-        "inverted"?: boolean;
-        "subject"?: string;
-    }
-    interface BalDocDownload {
-        "iconLeft"?: string;
-        "iconRight"?: string;
-        "link"?: string;
-        "subject"?: string;
-        "subtitle"?: string;
-    }
-    interface BalDocGithub {
-        "link"?: string;
-    }
-    interface BalDocIcons {
-        "icons"?: string;
-    }
-    interface BalDocImage {
-        "src"?: string;
-        "text"?: string;
-    }
-    interface BalDocLead {
-    }
-    interface BalDocLinkList {
-        "oneColumn"?: boolean;
-    }
-    interface BalDocLinkListItem {
-        "image"?: string;
-        "subject"?: string;
-        "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
-    }
-    interface BalDocPreview {
-    }
-    interface BalDocShades {
-        "color"?: string;
-    }
-    interface BalDocSupportColor {
-        "color"?: string;
-    }
-    interface BalDocTokensBorder {
-    }
-    interface BalDocTokensBorderColors {
-        "overview"?: boolean;
-    }
-    interface BalDocTokensBreakpoints {
-    }
-    interface BalDocTokensColors {
-    }
-    interface BalDocTokensContainers {
-    }
-    interface BalDocTokensFont {
-    }
-    interface BalDocTokensFontColors {
-    }
-    interface BalDocTokensFontSizes {
-    }
-    interface BalDocTokensFontWeight {
-    }
-    interface BalDocTokensRadius {
-    }
-    interface BalDocTokensShadow {
-    }
-    interface BalDocTokensSpacing {
-    }
-    interface BalDocTokensSpacingSizes {
-    }
-    interface BalDocTokensTextShadow {
-    }
-    interface BalDocTokensZIndex {
-    }
     interface BalField {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -5909,11 +6135,15 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size"?: BalProps.BalFieldLabelSize;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * Defines the font weight of the label.
          */
         "weight"?: BalProps.BalFieldLabelWeight;
     }
@@ -6531,6 +6761,9 @@ declare namespace LocalJSX {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * Defines the font weight of the label.
+         */
         "weight"?: BalProps.BalLabelWeight;
     }
     interface BalList {
@@ -6687,6 +6920,7 @@ declare namespace LocalJSX {
         "cssClass"?: string | string[];
         "dataTestId"?: string;
         "delegate"?: BalProps.FrameworkDelegate;
+        "demo"?: boolean;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -7130,6 +7364,10 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: BalNumberInputCustomEvent<BalEvents.BalNumberInputKeyPressDetail>) => void;
         /**
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
@@ -7318,6 +7556,7 @@ declare namespace LocalJSX {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo"?: boolean;
         /**
           * Label or title of the popup element
          */
@@ -8284,6 +8523,7 @@ declare namespace LocalJSX {
           * Defines the width of the content
          */
         "contentWidth"?: number;
+        "demo"?: boolean;
         /**
           * Offset form trigger to tooltip.
          */
@@ -8337,34 +8577,6 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-divider": BalDivider;
         "bal-doc-app": BalDocApp;
-        "bal-doc-banner": BalDocBanner;
-        "bal-doc-code-sandbox": BalDocCodeSandbox;
-        "bal-doc-color": BalDocColor;
-        "bal-doc-download": BalDocDownload;
-        "bal-doc-github": BalDocGithub;
-        "bal-doc-icons": BalDocIcons;
-        "bal-doc-image": BalDocImage;
-        "bal-doc-lead": BalDocLead;
-        "bal-doc-link-list": BalDocLinkList;
-        "bal-doc-link-list-item": BalDocLinkListItem;
-        "bal-doc-preview": BalDocPreview;
-        "bal-doc-shades": BalDocShades;
-        "bal-doc-support-color": BalDocSupportColor;
-        "bal-doc-tokens-border": BalDocTokensBorder;
-        "bal-doc-tokens-border-colors": BalDocTokensBorderColors;
-        "bal-doc-tokens-breakpoints": BalDocTokensBreakpoints;
-        "bal-doc-tokens-colors": BalDocTokensColors;
-        "bal-doc-tokens-containers": BalDocTokensContainers;
-        "bal-doc-tokens-font": BalDocTokensFont;
-        "bal-doc-tokens-font-colors": BalDocTokensFontColors;
-        "bal-doc-tokens-font-sizes": BalDocTokensFontSizes;
-        "bal-doc-tokens-font-weight": BalDocTokensFontWeight;
-        "bal-doc-tokens-radius": BalDocTokensRadius;
-        "bal-doc-tokens-shadow": BalDocTokensShadow;
-        "bal-doc-tokens-spacing": BalDocTokensSpacing;
-        "bal-doc-tokens-spacing-sizes": BalDocTokensSpacingSizes;
-        "bal-doc-tokens-text-shadow": BalDocTokensTextShadow;
-        "bal-doc-tokens-z-index": BalDocTokensZIndex;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -8501,34 +8713,6 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-divider": LocalJSX.BalDivider & JSXBase.HTMLAttributes<HTMLBalDividerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
-            "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
-            "bal-doc-code-sandbox": LocalJSX.BalDocCodeSandbox & JSXBase.HTMLAttributes<HTMLBalDocCodeSandboxElement>;
-            "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
-            "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
-            "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
-            "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
-            "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
-            "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
-            "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
-            "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
-            "bal-doc-preview": LocalJSX.BalDocPreview & JSXBase.HTMLAttributes<HTMLBalDocPreviewElement>;
-            "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
-            "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
-            "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
-            "bal-doc-tokens-border-colors": LocalJSX.BalDocTokensBorderColors & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderColorsElement>;
-            "bal-doc-tokens-breakpoints": LocalJSX.BalDocTokensBreakpoints & JSXBase.HTMLAttributes<HTMLBalDocTokensBreakpointsElement>;
-            "bal-doc-tokens-colors": LocalJSX.BalDocTokensColors & JSXBase.HTMLAttributes<HTMLBalDocTokensColorsElement>;
-            "bal-doc-tokens-containers": LocalJSX.BalDocTokensContainers & JSXBase.HTMLAttributes<HTMLBalDocTokensContainersElement>;
-            "bal-doc-tokens-font": LocalJSX.BalDocTokensFont & JSXBase.HTMLAttributes<HTMLBalDocTokensFontElement>;
-            "bal-doc-tokens-font-colors": LocalJSX.BalDocTokensFontColors & JSXBase.HTMLAttributes<HTMLBalDocTokensFontColorsElement>;
-            "bal-doc-tokens-font-sizes": LocalJSX.BalDocTokensFontSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensFontSizesElement>;
-            "bal-doc-tokens-font-weight": LocalJSX.BalDocTokensFontWeight & JSXBase.HTMLAttributes<HTMLBalDocTokensFontWeightElement>;
-            "bal-doc-tokens-radius": LocalJSX.BalDocTokensRadius & JSXBase.HTMLAttributes<HTMLBalDocTokensRadiusElement>;
-            "bal-doc-tokens-shadow": LocalJSX.BalDocTokensShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensShadowElement>;
-            "bal-doc-tokens-spacing": LocalJSX.BalDocTokensSpacing & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingElement>;
-            "bal-doc-tokens-spacing-sizes": LocalJSX.BalDocTokensSpacingSizes & JSXBase.HTMLAttributes<HTMLBalDocTokensSpacingSizesElement>;
-            "bal-doc-tokens-text-shadow": LocalJSX.BalDocTokensTextShadow & JSXBase.HTMLAttributes<HTMLBalDocTokensTextShadowElement>;
-            "bal-doc-tokens-z-index": LocalJSX.BalDocTokensZIndex & JSXBase.HTMLAttributes<HTMLBalDocTokensZIndexElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

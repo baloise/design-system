@@ -1,5 +1,5 @@
 describe('bal-heading', () => {
-  beforeEach(() => cy.visit('/components/typography/bal-heading/test/bal-heading.visual.html').waitForDesignSystem())
+  beforeEach(() => cy.visit('/components/bal-heading/test/bal-heading.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

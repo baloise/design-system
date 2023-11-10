@@ -1,5 +1,141 @@
 # @baloise/design-system-components
 
+## 14.3.0
+
+### Minor Changes
+
+- [#1110](https://github.com/baloise/design-system/pull/1110) - A new `WhatsApp` icon has been added to the icons collection.
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The icon component now includes support for brand-icons. Additionally, we've removed the padded frame for large icons and bigger sizes, as brand-icons already come with their own frame. Furthermore, we've ensured that the available color list is now complete.
+
+### Patch Changes
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The sheet component now has a default white background to address the transparent overlay issue.
+
+- [#1109](https://github.com/baloise/design-system/pull/1109) - The number input component for the German region now supports decimal points with a comma separator.
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The design tokens for line-height values for x-small and small text has been adjusted to ensure compliance with accessibility (a11y) standards.
+
+- [#1104](https://github.com/baloise/design-system/pull/1104) - Assign the `name` attribute to the native input element of the `bal-date` component.
+
+- Updated dependencies [[`0613561fb`](https://github.com/baloise/design-system/commit/0613561fb2aeaf4557c1845b2cd9e42f7273542a), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0)]:
+  - @baloise/design-system-icons@14.3.0
+  - @baloise/design-system-tokens@14.3.0
+  - @baloise/design-system-css@14.3.0
+  - @baloise/design-system-fonts@14.3.0
+
+## 14.2.1
+
+### Patch Changes
+
+- [#1100](https://github.com/baloise/design-system/pull/1100) - Correct sliding width issue in card carousel for consistent display
+
+- [#1099](https://github.com/baloise/design-system/pull/1099) - Adjusted shifting of the tooltip and popup component. Moreover, adjust scroll position for touch navigation.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.2.1
+  - @baloise/design-system-fonts@14.2.1
+  - @baloise/design-system-icons@14.2.1
+  - @baloise/design-system-tokens@14.2.1
+
+## 14.2.0
+
+### Minor Changes
+
+- [#1094](https://github.com/baloise/design-system/pull/1094) - Meta links can also be created by simply passing the `href` and `target` attributes along with the `buttons` component property.
+
+  ```ts
+  [
+    {
+      icon: 'web',
+      touchPlacement: 'bottom',
+      ariaLabel: 'Baloise',
+      htmlTitle: 'Baloise',
+      href: 'http://www.baloise.ch',
+      target: '_blank'
+    },
+    ...
+  ]
+  ```
+
+### Patch Changes
+
+- [#1095](https://github.com/baloise/design-system/pull/1095) - The month list in the `date picker` now accurately displays the current month, ensuring precise date selection, and effectively manages disabled states within specified date ranges.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.2.0
+  - @baloise/design-system-fonts@14.2.0
+  - @baloise/design-system-icons@14.2.0
+  - @baloise/design-system-tokens@14.2.0
+
+## 14.1.0
+
+### Minor Changes
+
+- [#1090](https://github.com/baloise/design-system/pull/1090) - Adjust the font size of `bal-field-label` and explore an expanded range of size variations for `bal-label`, offering increased flexibility in styling options.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.1.0
+  - @baloise/design-system-fonts@14.1.0
+  - @baloise/design-system-icons@14.1.0
+  - @baloise/design-system-tokens@14.1.0
+
+## 14.0.5
+
+### Patch Changes
+
+- [#1084](https://github.com/baloise/design-system/pull/1084) - The number input pattern regex no longer returns a pattern mismatch. Additionally, the pattern attribute can be overridden.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.5
+  - @baloise/design-system-fonts@14.0.5
+  - @baloise/design-system-icons@14.0.5
+  - @baloise/design-system-tokens@14.0.5
+
+## 14.0.4
+
+### Patch Changes
+
+- [#1082](https://github.com/baloise/design-system/pull/1082) - The number input pattern regex no longer returns a pattern mismatch. Additionally, the pattern attribute can be overridden.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.4
+  - @baloise/design-system-fonts@14.0.4
+  - @baloise/design-system-icons@14.0.4
+  - @baloise/design-system-tokens@14.0.4
+
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.3
+  - @baloise/design-system-fonts@14.0.3
+  - @baloise/design-system-icons@14.0.3
+  - @baloise/design-system-tokens@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- [#1055](https://github.com/baloise/design-system/pull/1055) - Adjust the opacity of the modal backdrop color, changing it from 0.8 to 0.6.
+
+- [#1072](https://github.com/baloise/design-system/pull/1072) - The arrow position in the navigation popover has been adjusted, and the CSS utility class 'container' has been removed from the navigation component.
+
+- [#1047](https://github.com/baloise/design-system/pull/1047) - Resize the tags within the input group to align with those of bal-select.
+
+- [#1054](https://github.com/baloise/design-system/pull/1054) - Modify the badge width for extended content length.
+
+- [#1074](https://github.com/baloise/design-system/pull/1074) - The BreakpointService will now only respond to state changes, thereby mitigating the Angular error `NG0101: ApplicationRef.tick is called recursively`. Furthermore, the injection of ngControl has been set as optional to prevent the NullInjector Warning.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.0.2
+  - @baloise/design-system-fonts@14.0.2
+  - @baloise/design-system-icons@14.0.2
+  - @baloise/design-system-tokens@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

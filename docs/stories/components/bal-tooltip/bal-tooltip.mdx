@@ -1,0 +1,83 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as TooltipStories from './bal-tooltip.stories'
+
+<Meta of={TooltipStories} />
+
+<StoryHeading of={TooltipStories.Basic} hidden></StoryHeading>
+
+<Banner of={TooltipStories} />
+
+<Lead>**Tooltips** provide informative text that is displayed when users hover over, focus on, or tap an element,
+  offering additional context or details. When triggered, Tooltips present a textual label that identifies an element,
+  providing information about its purpose or function.</Lead>
+
+<Canvas of={TooltipStories.Basic} sourceState="shown" className="has-visible-overflow" />
+
+<PlaygroundBar of={TooltipStories.Basic}></PlaygroundBar>
+
+{/* ------------------------------------------------------ */}
+
+## Usage
+
+To link the tooltip component to a trigger element, you need to assign a `reference` to your tooltip component and add the `id` attribute to the trigger element, as shown in the example below:
+
+```html
+<bal-button id="my-tooltip">Click me</bal-button>
+<bal-tooltip label="tooltip Label" reference="my-tooltip">Tooltip content</bal-tooltip>
+```
+
+In this example, the bal-button element serves as the trigger element for the tooltip component.
+It includes the id attribute, which references the reference of the tooltip component, "my-tooltip".
+
+The actual content of the tooltip is defined within the bal-tooltip element.
+It includes a label attribute, "Tooltip Label", for accessibility purposes and to show a heading.
+
+### Positioned tooltips
+
+The Tooltip offers a selection of 12 placement options, each without directional arrows. Instead, they utilize motion originating from the source element to indicate the intended direction.
+You can use the `placement` property to specify the position of the Tooltip. This property allows you to choose from a variety of options to determine where the Tooltip should appear in relation to its source element. Here's an example:
+
+```html
+<bal-button id="my-tooltip">Click me</bal-button>
+<bal-tooltip label="tooltip Label" reference="my-tooltip" placement="right">Tooltip content</bal-tooltip>
+```
+
+### Angular
+
+To ensure proper creation and destruction of the provided component upon popover presentation and
+dismissal, using internal content projection with `<ng-content>` is not viable. Instead, use
+`<ng-container>`, which necessitates the inclusion of an `<ng-template>`. As a result, when supplying
+your component, it should be wrapped within an `<ng-template>`:
+
+```html
+<bal-tooltip>
+  <ng-template>
+    <app-tooltip-content></app-tooltip-content>
+  </ng-template>
+</bal-tooltip>
+```
+
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

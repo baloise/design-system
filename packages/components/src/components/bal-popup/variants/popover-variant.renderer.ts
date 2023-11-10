@@ -1,4 +1,4 @@
-import { computePosition, shift, offset, arrow, flip, autoUpdate } from '@floating-ui/dom'
+import { computePosition, offset, arrow, flip, shift, autoUpdate } from '@floating-ui/dom'
 import { balBrowser } from '../../../utils/browser'
 import { AbstractVariantRenderer } from './abstract-variant.renderer'
 import { PopupVariantRenderer, PopupComponentInterface } from './variant.interfaces'
@@ -42,9 +42,25 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
 
         this.triggerEl.classList.add('bal-popup-variant-popover-trigger')
 
-        this.cleanup = autoUpdate(this.triggerEl, component.containerEl, () => {
-          this.update(component)
-        })
+        const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
+        if (isNavMetaDesktopPopup) {
+          component.setMinWidth(this.triggerEl.clientWidth)
+        }
+
+        this.cleanup = autoUpdate(
+          this.triggerEl,
+          component.containerEl,
+          () => {
+            this.update(component)
+          },
+          {
+            ancestorScroll: true,
+            ancestorResize: true,
+            elementResize: false,
+            layoutShift: true,
+            animationFrame: true,
+          },
+        )
 
         return true
       }
@@ -55,19 +71,18 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
   async update(component: PopupComponentInterface): Promise<boolean> {
     if (this.triggerEl && component.trigger && component.containerEl && component.arrowEl) {
       const isNavMetaDesktopPopup = this.placement === 'bottom-end' && this.triggerEl !== component.trigger
-      let arrowX = 0
-      if (isNavMetaDesktopPopup) {
-        const referenceRect = this.triggerEl?.getBoundingClientRect()
-        const triggerRect = component.trigger?.getBoundingClientRect()
-        const diff = triggerRect.x - referenceRect.x
-        const width = 440 - referenceRect.width
-        arrowX = width + diff + triggerRect.width / 2 - 4
+      const referenceRect = this.triggerEl?.getBoundingClientRect()
+      const triggerRect = component.trigger?.getBoundingClientRect()
+
+      let isInFrame = false
+      if (balBrowser.hasWindow) {
+        isInFrame = !!window.frameElement
       }
 
       computePosition(this.triggerEl, component.containerEl, {
         placement: this.placement,
         middleware: [
-          shift(),
+          isInFrame ? undefined : shift(),
           flip(),
           offset(this.arrow ? 16 : this.offset),
           arrow({
@@ -95,10 +110,11 @@ export class PopoverVariantRenderer extends AbstractVariantRenderer implements P
             const arrowPosition = middlewareData.arrow
 
             if (isNavMetaDesktopPopup) {
+              const diff = referenceRect.right - triggerRect.right - 4
               Object.assign(component.arrowEl.style, {
-                left: `${arrowX}px`,
+                right: `${diff + triggerRect.width / 2}px`,
+                left: '',
                 top: y != null && arrowPosition.y != null ? `${arrowPosition.y}px` : '',
-                right: '',
                 bottom: '',
                 [staticSide]: `${-4}px`,
               })

@@ -1,0 +1,49 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as LogoStories from './bal-logo.stories'
+
+<Meta of={LogoStories} />
+
+<StoryHeading of={LogoStories.Basic} hidden></StoryHeading>
+
+<Banner of={LogoStories} />
+
+<Lead>All the **Logos** of the Baloise Group are legally protected brands and may not be altered in any way.</Lead>
+
+- [Baloise Logos](https://www.baloise.com/en/home/about-us/who-we-are/images-logos.html)
+
+<Canvas of={LogoStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={LogoStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LogoStories.Animated}></StoryHeading>
+
+<Canvas of={LogoStories.Animated} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

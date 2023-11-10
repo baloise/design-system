@@ -1,5 +1,61 @@
 # e2e-tests
 
+## 13.6.14
+
+### Patch Changes
+
+- Updated dependencies [[`0613561fb`](https://github.com/baloise/design-system/commit/0613561fb2aeaf4557c1845b2cd9e42f7273542a), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0), [`e1591fa36`](https://github.com/baloise/design-system/commit/e1591fa363f80ffec3440375a4dbad47ab84fc05), [`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0), [`c0e14f224`](https://github.com/baloise/design-system/commit/c0e14f224491aac3bc358ee6ee768378b240b543)]:
+  - @baloise/design-system-components@14.3.0
+
+## 13.6.13
+
+### Patch Changes
+
+- Updated dependencies [[`669c63fd7`](https://github.com/baloise/design-system/commit/669c63fd734137e886fc50dc0075631e8b0acc07), [`f11ad4c9b`](https://github.com/baloise/design-system/commit/f11ad4c9bd2f1fb3326a2a9c3254ca843858aacc)]:
+  - @baloise/design-system-components@14.2.1
+
+## 13.6.12
+
+### Patch Changes
+
+- Updated dependencies [[`9f52c53ee`](https://github.com/baloise/design-system/commit/9f52c53eec7f1564b92fc63c725c93b7b189eb35), [`0ce5f2097`](https://github.com/baloise/design-system/commit/0ce5f209782155cef68a8434918f91f76184b539)]:
+  - @baloise/design-system-components@14.2.0
+
+## 13.6.11
+
+### Patch Changes
+
+- Updated dependencies [[`7a41bbde8`](https://github.com/baloise/design-system/commit/7a41bbde86e2607db6a217c426e63d9736679bef)]:
+  - @baloise/design-system-components@14.1.0
+
+## 13.6.10
+
+### Patch Changes
+
+- Updated dependencies [[`7fa23203a`](https://github.com/baloise/design-system/commit/7fa23203a843a16302642eb231ea4669660d7992)]:
+  - @baloise/design-system-components@14.0.5
+
+## 13.6.9
+
+### Patch Changes
+
+- Updated dependencies [[`98516afba`](https://github.com/baloise/design-system/commit/98516afbab13c8526177086e79a2f29e1b7c35b8)]:
+  - @baloise/design-system-components@14.0.4
+
+## 13.6.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-components@14.0.3
+
+## 13.6.7
+
+### Patch Changes
+
+- Updated dependencies [[`a2d6b26bd`](https://github.com/baloise/design-system/commit/a2d6b26bd0ea2f2192c749ac02324de94b647a40), [`d2dac07a7`](https://github.com/baloise/design-system/commit/d2dac07a76297a05befd738f3f1f3e93c6164eb4), [`635c59b45`](https://github.com/baloise/design-system/commit/635c59b45114ff2ab0f1849bca37b05f3f16b517), [`2e49047cb`](https://github.com/baloise/design-system/commit/2e49047cbb541da0335e8122aec4c8f27e0b38e7), [`3a4b2d1b8`](https://github.com/baloise/design-system/commit/3a4b2d1b856db9bda05ec1487702933e221c3cd6)]:
+  - @baloise/design-system-components@14.0.2
+
 ## 13.6.6
 
 ### Patch Changes

@@ -1,0 +1,104 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssSpacingPadding,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Spacing/Padding"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Padding" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the space between the content and its border.</Lead>
+
+## Classes
+
+Spacing can be set with **padding** `p*` for all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+<CssSpacingPadding />
+
+## Single Side Padding
+
+Padding can be defined for a specific edge.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+  <div class="pt-normal has-background-red-2">
+      <div class="has-background-green-3 p-large">pt-normal</div>
+  </div>
+  <div class="pr-large has-background-red-2">
+      <div class="has-background-green-3 p-large">pr-large</div>
+  </div>
+  <div class="pb-small has-background-red-2">
+      <div class="has-background-green-3 p-large">pb-small</div>
+  </div>
+  <div class="pl-medium has-background-red-2">
+      <div class="has-background-green-3 p-large">pl-medium</div>
+  </div>
+</div>
+`}
+/>
+
+## Horizontal Padding
+
+Shorthand classes allow you to define the same padding value for both the left and right sides.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+    <div class="px-large has-background-red-2 has-radius-normal">
+        <div class="has-radius-normal has-background-green-3 font-bold p-normal">px-large</div>
+    </div>
+</div>
+`}
+/>
+
+## Vertical Padding
+
+The same padding value can also be defined at the top and bottom sides using shorthand classes.
+
+<Code
+  language="html"
+  code={`
+<div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center fg-large">
+    <div class="py-large has-background-red-2 has-radius-normal">
+        <div class="has-radius-normal has-background-green-3 font-bold p-normal">py-large</div>
+    </div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Spacing"
+      description="Global spacings help us design experiences that scale with consistency, rhythm, and focus"
+    />
+    <LinkCard
+      pageTitle="Foundation/Design Tokens"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

@@ -1,0 +1,87 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import {
+  Banner,
+  Lead,
+  PlaygroundBar,
+  StoryHeading,
+  AngularFramework,
+  NotAngularFramework,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as ToastStories from './bal-toast.stories'
+
+<Meta of={ToastStories} />
+
+<StoryHeading of={ToastStories.Basic} hidden></StoryHeading>
+
+<Banner of={ToastStories} />
+
+<Lead>**Toasts** are used to inform the user with a simple text message.</Lead>
+
+<Canvas of={ToastStories.Basic} sourceState="none" />
+
+<PlaygroundBar of={ToastStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToastStories.Colors}></StoryHeading>
+
+<Canvas of={ToastStories.Colors} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<AngularFramework>
+
+Use the `BalToastService` to create new notices.
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalToastService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  myToast?: HTMLBalToastElement
+
+  constructor(public toast: BalToastService) {}
+
+  onButtonClick() {
+    this.myToast = this.toast.create({ message: 'Welcome' })
+  }
+
+  async onSecondButtonClick() {
+    await this.myToast.close()
+  }
+}
+```
+
+</AngularFramework>
+
+<NotAngularFramework>
+  <Markdown>{integration}</Markdown>
+</NotAngularFramework>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,0 +1,77 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as LabelStories from './bal-label.stories'
+
+<Meta of={LabelStories} />
+
+<StoryHeading of={LabelStories.Basic} hidden></StoryHeading>
+
+<Banner of={LabelStories} />
+
+<Lead>**Label** component represents a caption for a form control component.</Lead>
+
+<Canvas of={LabelStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={LabelStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.RequiredAndOptional}></StoryHeading>
+
+If the `required` is set to `false` the optional suffix will be added. The suffix is available for all
+the supported languages.
+
+<Canvas of={LabelStories.RequiredAndOptional} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.States}></StoryHeading>
+
+Two states are supported for the label component to match the form control states.
+
+<Canvas of={LabelStories.States} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.Sizes}></StoryHeading>
+
+The size `small` is the default for form control labels.
+
+
+For advanced form controls such as bal-radio-button or bal-checkbox-button, the other two sizes are employed.
+
+<Canvas of={LabelStories.Sizes} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={LabelStories.FieldLabel}></StoryHeading>
+
+The label component is used in the [bal-field component](?path=/docs/components-form-field--documentation).
+
+<Canvas of={LabelStories.FieldLabel} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

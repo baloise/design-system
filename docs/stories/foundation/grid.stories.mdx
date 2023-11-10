@@ -1,0 +1,118 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  ButtonCard,
+  Banner,
+  Lead,
+  InfoQuote,
+  ImageCanvas,
+  ColorCards,
+  ColorCard,
+  ColorCardRow,
+  Footer,
+  LinkCards,
+  LinkCard,
+  Breakpoints,
+} from '../../.storybook/blocks'
+
+<Meta
+  title="Foundation/Grid"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Grid" section="Foundation" color="purple" puzzle />
+
+<Lead>
+  The Baloise Design System grid system is a fully responsive and 12 column layout system with six default breakpoints
+  and five container layouts.
+</Lead>
+
+import GridOverview from '../assets/images/foundations/grid/overview.svg'
+
+<br />
+
+<ImageCanvas size="large">
+  <img src={GridOverview} />
+</ImageCanvas>
+
+## Breakpoints
+
+Every webpage is accessed by different screen sizes and resolutions. To create a responsive webpage use the defined breakpoints.
+
+The are 6 breakpoints:
+
+<Markdown>
+  {`
+| Breakpoint          | min-width |
+| ------------------- | --------- |
+| **Mobile**          | 0px       |
+| **Tablet**          | 769px     |
+| **Desktop**         | 1024px    |
+| **High-Definition** | 1280px    |
+| **Widescreen**      | 1440px    |
+| **FullHD**          | 1920px    |
+`}
+</Markdown>
+
+### Breakpoint Ranges
+
+<Markdown>
+  {`
+| Breakpoint  | min-width          | Description                      |
+| ----------- | ------------------ | -------------------------------- |
+| **Touch**   | 0px to 1023px      | Combines mobile and tablet       |
+| **Desktop** | 1024px to infinity | Combines all desktop breakpoints |
+`}
+</Markdown>
+
+## Containers
+
+A container defines the max-width of a website content.
+
+import LayoutOverview from '../assets/images/foundations/layout/layout.svg'
+
+<ImageCanvas size="large">
+  <img src={LayoutOverview} />
+</ImageCanvas>
+
+<Markdown>
+  {`
+| Container   | Usage                                                       | max-width |
+| ----------- | ----------------------------------------------------------- | --------- |
+| **default** | Default container for the most use cases.                   | 1496px    |
+| **compact** | Should be used for sales funnels and small forms.           | 896px     |
+| **fluid**   | For large application to use the whole width of the screen. | 100%      |
+`}
+</Markdown>
+
+## Grid
+
+The designs align to a 8pt based grid, which is the base unit for all viewports (mobile, tablet and desktop).
+Exceptions using a 4pt based grid can be smaller components, such as icons.
+
+The Baloise Design System has decided for 8pt, as the most popular screen sizes are divisible by 8 on at least one axis -
+usually both ([8-pt-grid](https://spec.fm/specifics/8-pt-grid)). Base units help us to keep the designs consistent,
+make the collaboration of designers and developers more efficient, and work best for the most popular
+resolutions.
+
+### Columns
+
+The grid has maximum number of 12 columns.
+
+import Grid from '../assets/images/foundations/grid/grid.svg'
+
+<ImageCanvas size="large">
+  <img src={Grid} />
+</ImageCanvas>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="CSS Utilities/Grid/Grid System"
+      description="Determines how flex lines are distributed between and around items"
+    />
+  </LinkCards>
+</Footer>

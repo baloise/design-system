@@ -11,7 +11,7 @@ const format = (date: Date) => {
 
 describe('bal-datepicker', () => {
   beforeEach(() => {
-    cy.visit('/components/form/bal-datepicker/test/bal-datepicker.cy.html')
+    cy.visit('/components/bal-datepicker/test/bal-datepicker.cy.html')
     cy.waitForDesignSystem()
   })
 

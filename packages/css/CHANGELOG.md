@@ -1,5 +1,71 @@
 # @baloise/design-system-css
 
+## 14.3.0
+
+### Patch Changes
+
+- [#1073](https://github.com/baloise/design-system/pull/1073) - The design tokens for line-height values for x-small and small text has been adjusted to ensure compliance with accessibility (a11y) standards.
+
+- Updated dependencies [[`82ebf8d0c`](https://github.com/baloise/design-system/commit/82ebf8d0c7a15c03682f754d904c4bff151c72f0)]:
+  - @baloise/design-system-tokens@14.3.0
+  - @baloise/design-system-fonts@14.3.0
+
+## 14.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.2.1
+  - @baloise/design-system-tokens@14.2.1
+
+## 14.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.2.0
+  - @baloise/design-system-tokens@14.2.0
+
+## 14.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.1.0
+  - @baloise/design-system-tokens@14.1.0
+
+## 14.0.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.5
+  - @baloise/design-system-tokens@14.0.5
+
+## 14.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.4
+  - @baloise/design-system-tokens@14.0.4
+
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.3
+  - @baloise/design-system-tokens@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@14.0.2
+  - @baloise/design-system-tokens@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

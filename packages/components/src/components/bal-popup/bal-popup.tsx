@@ -59,6 +59,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   @State() activeVariant: BalProps.BalPopupVariant = 'popover'
   @State() trigger?: Element
   @State() lastTrigger?: Element
+  @State() minContainerWidth = 0
 
   log!: LogInstance
 
@@ -171,6 +172,11 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   }
 
   /**
+   * @internal
+   */
+  @Prop() demo = false
+
+  /**
    * Emitted when the accordion has opened or closed
    */
   @Event() balChange!: EventEmitter<BalEvents.BalPopupChangeDetail>
@@ -193,6 +199,10 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
   componentDidLoad(): void {
     this.contentWidthChanged(this.contentWidth, 0)
     if (this.initialActive === true && this.presented !== true) {
+      this.present()
+    }
+
+    if (this.demo) {
       this.present()
     }
   }
@@ -285,6 +295,17 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
       return this.dismiss()
     } else {
       return this.present()
+    }
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async setMinWidth(value: number): Promise<void> {
+    if (this.containerEl) {
+      this.containerEl.style.minWidth = `${value}px`
+      this.minContainerWidth = value
     }
   }
 
@@ -385,6 +406,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
     // present or dismiss active variant
     if (this.presented && this.lastTrigger !== this.trigger) {
       this._present()
+      this.lastTrigger = this.trigger
     } else {
       this.toggle()
     }
@@ -481,6 +503,7 @@ export class Popup implements ComponentInterface, PopupComponentInterface, Logga
             ...containerBlock.modifier(`variant-${this.activeVariant}`).class(),
           }}
           ref={containerEl => (this.containerEl = containerEl)}
+          style={{ minWidth: `${this.minContainerWidth}px` }}
         >
           <div
             class={{

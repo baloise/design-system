@@ -1,0 +1,63 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as NavbarStories from './bal-navbar.stories'
+
+<Meta of={NavbarStories} />
+
+<StoryHeading of={NavbarStories.Basic} hidden></StoryHeading>
+
+<Banner of={NavbarStories} />
+
+<Lead>A responsive horizontal Navbar that can support logos, buttons, and dropdowns.</Lead>
+
+<Canvas of={NavbarStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={NavbarStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NavbarStories.Simple}></StoryHeading>
+
+The simple header is designed for the calculator applications or other simple applications, which do not have a tab page routing.
+
+<Canvas of={NavbarStories.Simple} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={NavbarStories.Light}></StoryHeading>
+
+<Canvas of={NavbarStories.Light} sourceState="closed" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+import navbarBrand from './bal-navbar-brand/api.md?raw'
+import navbarMenu from './bal-navbar-menu/api.md?raw'
+import navbarMenuStart from './bal-navbar-menu-start/api.md?raw'
+import navbarMenuEnd from './bal-navbar-menu-end/api.md?raw'
+
+<Markdown>{api}</Markdown>
+<Markdown>{navbarBrand}</Markdown>
+<Markdown>{navbarMenu}</Markdown>
+<Markdown>{navbarMenuStart}</Markdown>
+<Markdown>{navbarMenuEnd}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

@@ -1,0 +1,49 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer } from '../../../.storybook/blocks'
+import * as TextStories from './bal-text.stories'
+
+<Meta of={TextStories} />
+
+<StoryHeading of={TextStories.Basic} hidden></StoryHeading>
+
+<Banner of={TextStories} />
+
+<Lead>**Text** is a fundamental component used to display and present textual content.</Lead>
+
+<Canvas of={TextStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={TextStories.Basic}></PlaygroundBar>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={TextStories.NoWrap}></StoryHeading>
+
+If the text is longer than the container with the property `no-wrap` the text will be cut.
+
+<Canvas of={TextStories.NoWrap} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />

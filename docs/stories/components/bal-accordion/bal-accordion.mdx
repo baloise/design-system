@@ -1,0 +1,81 @@
+
+import { Canvas, Meta, Markdown } from '@storybook/blocks'
+import { Banner, Lead, PlaygroundBar, StoryHeading, Footer, LinkCards, LinkCard, InfoQuote } from '../../../.storybook/blocks'
+import * as AccordionStories from './bal-accordion.stories'
+
+<Meta of={AccordionStories} />
+
+<StoryHeading of={AccordionStories.Basic} hidden></StoryHeading>
+
+<Banner of={AccordionStories} />
+
+<Lead>**Accordions** put users in control of showing or hiding content. Accordions also help us organize information to
+  keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help
+  users find content they need. The component can be used standalone, in combination or inside [BalCard](?path=/docs/components-containment-card--documentation).</Lead>
+<br />
+The accordion is build on 3 child components:
+
+- `bal-accordion-summary` defines the visible header of the accordion and can also act as a trigger.
+- `bal-accordion-trigger` shows and hides the details of the accordion.
+- `bal-accordion-details` is the content to be hidden by default.
+
+<Canvas of={AccordionStories.Basic} sourceState="shown" />
+
+<PlaygroundBar of={AccordionStories.Basic}></PlaygroundBar>
+
+<InfoQuote>
+**TIP**
+
+Check out the layout components [bal-stack](?path=/docs/components-layout-stack--basic) and [bal-content](?path=/docs/components-layout-content--basic) of the above example.
+</InfoQuote>
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.ButtonAccordion}></StoryHeading>
+
+To change the label use the properties `open-label` & `close-label`. The icon can be changed with the properties `open-icon` and `close-icon`.
+
+<Canvas of={AccordionStories.ButtonAccordion} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AccordionStories.OldVersion}></StoryHeading>
+
+The old version adhered to the previous style guide. It became evident that a more flexible solution
+was necessary, leading to a restructuring of the accordion.
+While the old version remains available, it is strongly recommended to use the updated version above.
+
+<Canvas of={AccordionStories.OldVersion} />
+
+{/* ------------------------------------------------------ */}
+
+## Component API
+
+import api from './api.md?raw'
+
+<Markdown>{api}</Markdown>
+
+import accordionSummaryApi from './bal-accordion-summary/api.md?raw'
+
+<Markdown>{accordionSummaryApi}</Markdown>
+
+import accordionTriggerApi from './bal-accordion-trigger/api.md?raw'
+
+<Markdown>{accordionTriggerApi}</Markdown>
+
+## Integration
+
+import integration from '../../snippets/integration.md?raw'
+
+<Markdown>{integration}</Markdown>
+
+import theming from './theming.md?raw'
+
+<Markdown>{theming}</Markdown>
+
+import testing from './testing.md?raw'
+
+<Markdown>{testing}</Markdown>
+
+<Footer />
