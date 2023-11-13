@@ -8,6 +8,10 @@
     "packages/*",
     "packages/output-targets/*"
   ],
+  "engines": {
+    "npm": ">=9.8.1 <10.0.0",
+    "node": ">=18.16.0 <19.0.0"
+  },
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -82,13 +86,13 @@
     "ng:test": "npm --prefix apps/angular run ng:test"
   },
   "devDependencies": {
-    "@angular/cli": "~13.3.10",
-    "@angular/common": "~13.3.12",
-    "@angular/compiler": "~13.3.12",
-    "@angular/compiler-cli": "~13.3.12",
-    "@angular/core": "~13.3.12",
-    "@angular/forms": "~13.3.12",
-    "@angular/platform-browser": "~13.3.12",
+    "@angular/cli": "~15.0.0",
+    "@angular/common": "~15.0.0",
+    "@angular/compiler": "~15.0.0",
+    "@angular/compiler-cli": "~15.0.0",
+    "@angular/core": "~15.0.0",
+    "@angular/forms": "~15.0.0",
+    "@angular/platform-browser": "~15.0.0",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
     "@changesets/get-github-info": "^0.5.2",
@@ -158,7 +162,7 @@
     "lint-staged": "~13.2.1",
     "lodash.camelcase": "~4.3.0",
     "lodash.upperfirst": "~4.3.1",
-    "ng-packagr": "~13.3.1",
+    "ng-packagr": "~15.0.0",
     "param-case": "~3.0.4",
     "pascal-case": "~3.1.2",
     "postcss": "^8.4.31",
@@ -179,14 +183,11 @@
     "svgo": "~2.8.0",
     "tslib": "~2.4.1",
     "turbo": "~1.10.16",
-    "typescript": "~4.6.4",
+    "typescript": "~4.8.0",
     "vite": "~4.5.0",
     "vitest": "~0.34.6",
     "vue": "~3.3.8",
     "workbox-build": "~4.3.1",
     "zone.js": "~0.11.4"
-  },
-  "dependencies": {
-    "immer": "^10.0.3"
   }
 }
