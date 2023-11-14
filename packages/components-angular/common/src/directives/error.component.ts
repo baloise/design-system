@@ -1,5 +1,5 @@
 import {
-  Component,
+  Directive,
   Host,
   HostBinding,
   Inject,
@@ -11,18 +11,11 @@ import {
   SkipSelf,
 } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
+import { BaloiseDesignSystemAngularConfig } from '../config'
+import { BalConfigToken } from '../token'
 
-@Component({
+@Directive({
   selector: 'bal-ng-error',
-  template: `<ng-content *ngIf="hasError"></ng-content>`,
-  styles: [
-    `
-      :host {
-        display: inline-block;
-      }
-    `,
-  ],
 })
 export class BalNgErrorComponent implements OnChanges, OnInit {
   control?: AbstractControl | null
@@ -34,12 +27,14 @@ export class BalNgErrorComponent implements OnChanges, OnInit {
   @Input()
   controlName?: string
 
+  // constructor(protected controlContainer: ControlContainer, protected injector: Injector) {}
+
   constructor(
     @Optional()
     @Host()
     @SkipSelf()
-    private controlContainer: ControlContainer,
-    @Inject(Injector) private injector: Injector,
+    protected controlContainer: ControlContainer,
+    @Inject(Injector) protected injector: Injector,
   ) {}
 
   ngOnInit(): void {

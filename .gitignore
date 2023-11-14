@@ -101,6 +101,9 @@ cypress/videos
 # Vercel
 .vercel/
 
+# Angular
+.angular/
+
 # Design System
 packages/components/loader/
 packages/components/lib/
@@ -123,7 +126,10 @@ packages/components-vue/src/vue-component-lib/
 packages/components-react/src/components.ts
 packages/components-react/src/react-component-lib/
 
-packages/components-angular/src/directives/
+packages/components-angular/src/generated/
+packages/components-angular/common/src/generated/
+packages/components-angular/standalone/src/generated/
+packages/components-angular/legacy/src/generated/
 
 packages/tokens/src/tokens.ts
 packages/icons/src/icons.json

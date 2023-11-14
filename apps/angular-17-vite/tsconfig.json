@@ -1,0 +1,37 @@
+/* To learn more about this file see: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@baloise/design-system-components-angular/common": ["src/generated/components-angular/common/src"],
+      "@baloise/design-system-components-angular/standalone": ["src/generated/components-angular/standalone/src"],
+      "@baloise/design-system-components-angular/legacy": ["src/generated/components-angular/legacy/src"],
+      "@baloise/design-system-components-angular": ["src/generated/components-angular/src"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "_enabledBlockTypes": ["if", "for"]
+  }
+}

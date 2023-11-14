@@ -10,17 +10,18 @@
     "types": ["@baloise/design-system-components"],
     "paths": {
       "@baloise/design-system-components/loader": ["../components/loader"],
-      "@baloise/design-system-components": ["../components"]
+      "@baloise/design-system-components": ["../components"],
+      "@baloise/design-system-components-angular/common": ["common/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "fullTemplateTypeCheck": false,
+    "enableResourceInlining": true,
     "compilationMode": "partial"
   },
   "exclude": ["node_modules", "src/schematics"],
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "common/src/index.ts"]
 }

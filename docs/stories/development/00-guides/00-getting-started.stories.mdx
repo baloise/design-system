@@ -230,11 +230,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(
-      BaloiseDesignSystemModule.forRoot({
-        forms: {
-          setInvalid: true, // Maps invalid state with reactive form controls
-        },
-      }),
+      BaloiseDesignSystemModule.forRoot(),
     ),
   ],
 }

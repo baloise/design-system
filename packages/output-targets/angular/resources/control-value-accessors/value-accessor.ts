@@ -89,7 +89,7 @@ export class ValueAccessor implements ControlValueAccessor {
   }
 
   setInvalidState() {
-    if (this.config?.forms?.setInvalid === true) {
+    if (this.config?.forms?.setInvalid !== false) {
       const invalidateOn = this.config?.forms?.invalidateOn || 'touched'
       const invalid = this.control[invalidateOn] && this.control.invalid
       this.el.nativeElement.invalid = invalid

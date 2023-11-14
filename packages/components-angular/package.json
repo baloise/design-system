@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "npm run clean && npm run build:compile && npm run clean:package",
-    "build:compile": "ng-packagr -p ng-package.json -c ./tsconfig.json",
+    "build:compile": "ng-packagr -p ng-package.json -c tsconfig.json",
     "ng:build": "npm run build",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"

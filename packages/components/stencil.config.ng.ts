@@ -1,12 +1,17 @@
 import { Config } from '@stencil/core'
 
 import { StencilBaseConfig } from './config/stencil.basic.config'
-import { AngularGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator, AngularStandaloneGenerator, AngularLegacyGenerator } from './config/stencil.bindings.angular'
 
 export const config: Config = {
   ...StencilBaseConfig,
   extras: {
     initializeNextTick: true,
   },
-  outputTargets: [...(StencilBaseConfig.outputTargets as any), AngularGenerator()],
+  outputTargets: [
+    ...(StencilBaseConfig.outputTargets as any),
+    AngularGenerator(),
+    AngularStandaloneGenerator(),
+    AngularLegacyGenerator(),
+  ],
 }
