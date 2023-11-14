@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core'
+import type { EventEmitter } from '@stencil/core'
 import { BalConfigState } from '../../config'
 
 export interface MaskAttributes {

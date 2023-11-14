@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalFocusObserver } from './focus.interfaces'
 import { BalFocusSubject } from './focus.subject'
 

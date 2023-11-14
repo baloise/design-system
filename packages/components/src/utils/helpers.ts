@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core'
+import type { EventEmitter } from '@stencil/core'
 import { balBrowser } from './browser'
 import { BalConfig } from './config'
 import {

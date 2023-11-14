@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalMutationObserver, MutationObserverOptions } from './mutation.interfaces'
 import { BalMutationSubject } from './mutation.subject'
 

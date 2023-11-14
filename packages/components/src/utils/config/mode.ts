@@ -1,4 +1,4 @@
-import { setMode } from '@stencil/core'
+import { setMode } from '@stencil/core' // TODO: remove this
 import { BalMode } from './config.types'
 
 export const initStyleMode = (mode: BalMode) => {

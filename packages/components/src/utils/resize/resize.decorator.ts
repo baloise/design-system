@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalResizeSubject } from './resize.subject'
 import { BalResizeObserver } from './resize.interfaces'
 

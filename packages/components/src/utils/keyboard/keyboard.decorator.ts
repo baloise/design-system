@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalKeyboardObserver } from './keyboard.interfaces'
 import { BalKeyboardSubject } from './keyboard.subject'
 

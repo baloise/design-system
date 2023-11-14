@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core'
+import type { EventEmitter } from '@stencil/core'
 
 export interface FormInput<Value> {
   el: HTMLElement

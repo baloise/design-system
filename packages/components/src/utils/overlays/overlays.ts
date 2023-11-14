@@ -1,4 +1,4 @@
-import { HTMLStencilElement } from '@stencil/core/internal'
+import type { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
 import { addEventListener, removeEventListener } from '../helpers'
 

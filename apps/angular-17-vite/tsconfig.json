@@ -21,10 +21,10 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@baloise/design-system-components-angular/common": ["src/generated/components-angular/common/src"],
-      "@baloise/design-system-components-angular/standalone": ["src/generated/components-angular/standalone/src"],
-      "@baloise/design-system-components-angular/legacy": ["src/generated/components-angular/legacy/src"],
-      "@baloise/design-system-components-angular": ["src/generated/components-angular/src"]
+      "@baloise/design-system-components-angular/common": ["src/generated/common/src"],
+      "@baloise/design-system-components-angular/standalone": ["src/generated/standalone/src"],
+      "@baloise/design-system-components-angular/legacy": ["src/generated/legacy/src"],
+      "@baloise/design-system-components-angular": ["src/generated/src"]
     }
   },
   "angularCompilerOptions": {

@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { balBreakpointSubject } from './breakpoints.subject'
 import { BalBreakpointObserver } from './breakpoints.interfaces'
 

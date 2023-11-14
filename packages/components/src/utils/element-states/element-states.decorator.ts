@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalElementStateSubject } from './element-states.subject'
 import { BalElementStateObserver } from './element-states.interfaces'
 

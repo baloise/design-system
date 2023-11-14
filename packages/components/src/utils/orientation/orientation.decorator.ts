@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { balOrientationSubject } from './orientation.subject'
 import { BalOrientationObserver } from './orientation.interfaces'
 

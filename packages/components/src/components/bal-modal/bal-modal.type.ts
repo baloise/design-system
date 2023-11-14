@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core'
+import type { EventEmitter } from '@stencil/core'
 
 export type ComponentProps = { [key: string]: any }
 // eslint-disable-next-line

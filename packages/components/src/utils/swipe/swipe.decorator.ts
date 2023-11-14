@@ -1,4 +1,4 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
 import { BalSwipeSubject } from './swipe.subject'
 import { BalSwipeObserver } from './swipe.interfaces'
 
