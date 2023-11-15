@@ -23,5 +23,4 @@ export { TextValueAccessor } from './generated/text-value-accessor'
 export { BalNgErrorComponent } from './directives/error.component'
 export { BalAutoFocus } from './directives/focus.directive'
 
-export { BaloiseDesignSystemModule } from './core.module'
-export { BaloiseDesignSystemFormModule } from './form.module'
+export { provideBaloiseDesignSystem } from './provide'

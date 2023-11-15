@@ -33,7 +33,7 @@ class Browser {
    * Is true when the window object is defined
    */
   public get hasWindow(): boolean {
-    return typeof window !== 'undefined'
+    return typeof (window as any) !== 'undefined'
   }
 
   /**

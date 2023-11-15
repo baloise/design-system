@@ -8,12 +8,19 @@ export function ListenToSwipe(options: { mobileOnly: boolean } = { mobileOnly: f
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
-    const { connectedCallback, disconnectedCallback } = target
+    const { connectedCallback, componentDidLoad, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      this._balSwipeSubject = new BalSwipeSubject(options)
-      this._balSwipeSubject.attach(this)
+      if (!this._balSwipeSubject) {
+        this._balSwipeSubject = new BalSwipeSubject(options)
+      }
+
       return connectedCallback && connectedCallback.call(this)
+    }
+
+    target.componentDidLoad = function () {
+      this._balSwipeSubject.attach(this)
+      return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {

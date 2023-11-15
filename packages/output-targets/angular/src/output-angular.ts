@@ -21,7 +21,9 @@ export async function angularDirectiveProxyOutput(
   await Promise.all([
     compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
     copyResources(config, outputTarget),
-    generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
+    outputTarget.outputType !== 'standalone'
+      ? generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget)
+      : Promise.resolve(),
     generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
   ])
 }
@@ -64,7 +66,7 @@ export function generateProxies(
   imports.push(`/* tslint:disable */`)
   imports.push(`/* auto-generated angular directive proxies */`)
   imports.push(
-    `import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';  `,
+    `import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`,
   )
   imports.push(`import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';`)
 
@@ -75,12 +77,15 @@ export function generateProxies(
         const tagNameAsPascal = dashToPascalCase(component.tagName)
         return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
           !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
-        )}/dist/components/${component.tagName}';`
+        )}/components/${component.tagName}';`
+        // return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
+        //   !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
+        // )}/dist/components/${component.tagName}';`
       }),
     ]
   }
 
-  imports.push(`\n`)
+  imports.push(``)
 
   const typeImports = !outputTarget.componentCorePackage
     ? `import { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`

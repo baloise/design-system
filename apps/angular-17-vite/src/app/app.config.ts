@@ -6,13 +6,12 @@
  * found in the LICENSE file at https://angular.dev/license
  */
 
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+import { ApplicationConfig } from '@angular/core'
 
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular/standalone'
+import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
 
-// import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular/legacy'
 // import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [importProvidersFrom(BaloiseDesignSystemModule.forRoot())],
+  providers: [provideBaloiseDesignSystem()],
 }

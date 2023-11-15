@@ -1,10 +1,10 @@
-import { initialize, useBalConfig } from '../config'
+import { initializeConfig, useBalConfig } from '../config'
 import { BalDate } from './date'
 
 describe('balDate', () => {
   let date = BalDate.fromISO('2001-02-01')
   beforeEach(() => {
-    initialize()
+    initializeConfig()
     date = BalDate.fromISO('2001-02-01')
   })
   describe('static', () => {

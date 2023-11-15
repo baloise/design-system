@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER, ModuleWithProviders } from '@angular/core'
+import { NgModule, APP_INITIALIZER, ModuleWithProviders, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
 import {
   AngularDelegate,
@@ -62,7 +62,7 @@ export class BaloiseDesignSystemModule {
           provide: APP_INITIALIZER,
           useFactory: appInitialize,
           multi: true,
-          deps: [BalConfigToken, DOCUMENT],
+          deps: [BalConfigToken, DOCUMENT, NgZone],
         },
       ],
     }

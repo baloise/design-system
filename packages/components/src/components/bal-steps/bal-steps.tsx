@@ -12,9 +12,7 @@ import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoi
 
 @Component({
   tag: 'bal-steps',
-  styleUrls: {
-    css: 'bal-steps.sass',
-  },
+  styleUrl: 'bal-steps.sass',
 })
 export class Steps implements Loggable, BalMutationObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement

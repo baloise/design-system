@@ -7,9 +7,7 @@ import { i18nBalClose } from './bal-close.i18n'
 
 @Component({
   tag: 'bal-close',
-  styleUrls: {
-    css: 'bal-close.sass',
-  },
+  styleUrl: 'bal-close.sass',
 })
 export class Close implements ComponentInterface, BalConfigObserver {
   private inheritedAttributes: { [k: string]: any } = {}

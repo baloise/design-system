@@ -12,11 +12,11 @@ export const appConfig: ApplicationConfig = {
       BaloiseDesignSystemModule.forRoot({
         defaults: {
           logger: {
-            components: ['bal-input-date'],
+            components: ['bal-checkbox-group'],
             lifecycle: false,
             custom: false,
             render: false,
-            event: true,
+            event: false,
           },
         },
       }),

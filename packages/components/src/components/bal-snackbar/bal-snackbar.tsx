@@ -2,9 +2,7 @@ import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter }
 
 @Component({
   tag: 'bal-snackbar',
-  styleUrls: {
-    css: 'bal-snackbar.sass',
-  },
+  styleUrl: 'bal-snackbar.sass',
 })
 export class Snackbar {
   @Element() element!: HTMLElement

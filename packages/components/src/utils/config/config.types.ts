@@ -25,6 +25,11 @@ export interface BalConfig {
   fallbackLanguage?: BalLanguage
   logger?: BalLogger
   animated?: boolean
+  _jmp?: (c: any) => any
+  _raf?: (c: any) => number
+  _ael?: (el: any, eventName: string, listener: any, options: any) => void
+  _rel?: (el: any, eventName: string, listener: any, options: any) => void
+  _ce?: (eventName: string, opts?: any) => any
 }
 
 export interface BalConfigState {
@@ -35,6 +40,17 @@ export interface BalConfigState {
   fallbackLanguage: BalLanguage
   logger: BalLogger
   animated: boolean
+  // _jmp?: (c: any) => any
+  // _raf?: (c: any) => number
+  // _ael?: (el: any, eventName: string, listener: any, options: any) => void
+  // _rel?: (el: any, eventName: string, listener: any, options: any) => void
+  // _ce?: (eventName: string, opts?: any) => any
 }
 
-export type BalMode = 'css' | 'sass' | 'all'
+export interface BalPlatformConfig {
+  jmp?: (c: any) => any
+  raf?: (c: any) => number
+  ael?: (el: any, eventName: string, listener: any, options: any) => void
+  rel?: (el: any, eventName: string, listener: any, options: any) => void
+  ce?: (eventName: string, opts?: any) => any
+}

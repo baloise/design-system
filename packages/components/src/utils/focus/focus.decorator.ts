@@ -8,15 +8,20 @@ export function ListenToFocus() {
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
-    const { connectedCallback, disconnectedCallback } = target
+    const { connectedCallback, componentDidLoad, disconnectedCallback } = target
 
     target.connectedCallback = function () {
       if (!this._balFocusSubject) {
         this._balFocusSubject = new BalFocusSubject()
-        this._balFocusSubject.attach(this)
       }
 
       return connectedCallback && connectedCallback.call(this)
+    }
+
+    target.componentDidLoad = function () {
+      this._balFocusSubject.attach(this)
+
+      return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {

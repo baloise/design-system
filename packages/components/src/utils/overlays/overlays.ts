@@ -50,7 +50,7 @@ export const connectListeners = (doc: Document) => {
     lastId = 1
 
     // handle ESC to close overlay
-    doc.addEventListener('keyup', ev => {
+    addEventListener(doc, 'keyup', (ev: { key: string }) => {
       if (ev.key === 'Escape') {
         const lastOverlay = getOverlay(doc)
         if (lastOverlay) {

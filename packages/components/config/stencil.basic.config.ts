@@ -40,9 +40,24 @@ export const StencilBaseConfig: Config = {
       esmLoaderPath: '../loader',
     },
     {
+      type: 'dist-hydrate-script',
+    },
+    {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
+    },
+    {
+      type: 'dist-custom-elements',
+      dir: 'components',
+      copy: [
+        {
+          src: '../config/custom-elements',
+          dest: 'components',
+          warn: true,
+        },
+      ],
+      includeGlobalScripts: false,
     },
     VueGenerator('../', '../../test/generated/components/index.ts', []),
   ],

@@ -8,12 +8,12 @@ export function ListenToResize() {
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
-    const { connectedCallback, disconnectedCallback } = target
+    const { componentDidLoad, disconnectedCallback } = target
 
-    target.connectedCallback = function () {
+    target.componentDidLoad = function () {
       this._balResizeSubject = new BalResizeSubject()
       this._balResizeSubject.attach(this)
-      return connectedCallback && connectedCallback.call(this)
+      return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {

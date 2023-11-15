@@ -8,12 +8,19 @@ export function ListenToElementStates() {
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
-    const { connectedCallback, disconnectedCallback } = target
+    const { connectedCallback, componentDidLoad, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      this._balElementStateSubject = new BalElementStateSubject()
-      this._balElementStateSubject.attach(this)
+      if (!this._balElementStateSubject) {
+        this._balElementStateSubject = new BalElementStateSubject()
+      }
+
       return connectedCallback && connectedCallback.call(this)
+    }
+
+    target.componentDidLoad = function () {
+      this._balElementStateSubject.attach(this)
+      return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {

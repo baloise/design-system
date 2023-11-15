@@ -8,12 +8,12 @@ export function ListenToKeyboard() {
     _propertyKey: string,
     _descriptor: PropertyDescriptor,
   ) {
-    const { connectedCallback, disconnectedCallback } = target
+    const { componentDidLoad, disconnectedCallback } = target
 
-    target.connectedCallback = function () {
+    target.componentDidLoad = function () {
       this._balKeyboardSubject = new BalKeyboardSubject()
       this._balKeyboardSubject.attach(this)
-      return connectedCallback && connectedCallback.call(this)
+      return componentDidLoad && componentDidLoad.call(this)
     }
 
     target.disconnectedCallback = function () {

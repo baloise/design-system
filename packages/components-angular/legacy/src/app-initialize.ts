@@ -1,5 +1,5 @@
 import { NgZone } from '@angular/core'
-import { initialize } from '@baloise/design-system-components'
+import { initializeBaloiseDesignSystem } from '@baloise/design-system-components'
 import { applyPolyfills, defineCustomElements } from '@baloise/design-system-components/loader'
 import { raf } from '@baloise/design-system-components-angular/common'
 
@@ -9,7 +9,7 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
   return (): any => {
     const win: Window | undefined = doc.defaultView as any
     if (win && typeof (window as any) !== 'undefined') {
-      initialize(config.defaults)
+      initializeBaloiseDesignSystem(config.defaults, win)
 
       const aelFn =
         '__zone_symbol__addEventListener' in (doc.body as any) ? '__zone_symbol__addEventListener' : 'addEventListener'

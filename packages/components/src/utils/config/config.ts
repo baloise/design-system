@@ -54,6 +54,12 @@ export class Config {
     animated: true,
   }
 
+  public _jmp?: (c: any) => any
+  public _raf?: (c: any) => number
+  public _ael?: (el: any, eventName: string, listener: any, options: any) => void
+  public _rel?: (el: any, eventName: string, listener: any, options: any) => void
+  public _ce?: (eventName: string, opts?: any) => any
+
   get locale(): string {
     return `${this._config.language}-${this._config.region}`
   }

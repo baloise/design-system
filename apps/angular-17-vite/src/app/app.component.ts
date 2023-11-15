@@ -12,7 +12,6 @@ import {
   BalInput,
   BalButton,
   BalToastService,
-  BaloiseDesignSystemFormModule,
 } from '@baloise/design-system-components-angular/standalone'
 
 // import { BaloiseDesignSystemModule, BalToastService } from '@baloise/design-system-components-angular/legacy'
@@ -25,7 +24,6 @@ import {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BaloiseDesignSystemFormModule,
     BalApp,
     BalTag,
     BalField,

@@ -36,11 +36,10 @@
   "collection": "dist/collection/collection-manifest.json",
   "types": "dist/types/interfaces.d.ts",
   "files": [
+    "components/",
     "dist/",
-    "loader/",
-    "src/styles/",
-    "src/components/**/*.sass",
-    "src/components/**/*.scss"
+    "hydrate/",
+    "loader/"
   ],
   "scripts": {
     "==================== START =========================": "================================",

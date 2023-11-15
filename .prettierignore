@@ -28,6 +28,7 @@ packages/components/src/components/**/readme.md
 packages/components/src/components/**/testing.md
 packages/components/src/components/**/theming.md
 packages/components/src/stories/development/guides/theming/theming.md
+packages/components/components
 
 packages/components/public/assets/fonts/
 packages/components/public/assets/data/

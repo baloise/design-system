@@ -17,9 +17,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-file-upload',
-  styleUrls: {
-    css: 'bal-file-upload.sass',
-  },
+  styleUrl: 'bal-file-upload.sass',
 })
 export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Element() el!: HTMLElement

@@ -5,9 +5,7 @@ import { BalConfigObserver, BalConfigState } from '../../utils/config'
 
 @Component({
   tag: 'bal-progress-bar',
-  styleUrls: {
-    css: 'bal-progress-bar.sass',
-  },
+  styleUrl: 'bal-progress-bar.sass',
 })
 export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() el!: HTMLElement

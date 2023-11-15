@@ -1,4 +1,4 @@
-import { initialize } from '../../config'
+import { initializeConfig } from '../../config'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
 import { MaskBlock } from './mask-block'
 import { MaskBlockList } from './mask-block-list'
@@ -13,7 +13,7 @@ describe('MaskBlockList', () => {
   ]
 
   beforeEach(() => {
-    initialize()
+    initializeConfig()
   })
 
   test('should get list', () => {

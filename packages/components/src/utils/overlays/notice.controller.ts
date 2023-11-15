@@ -1,5 +1,6 @@
 import type { HTMLStencilElement } from '@stencil/core/internal'
 import { balBrowser } from '../browser'
+import { addEventListener } from '../helpers'
 
 export interface BalNoticeOptions {
   message: string
@@ -33,7 +34,7 @@ export abstract class BalNoticeController {
       if (clone === undefined) {
         const el: HTMLNoticeElement = document.createElement(this.options.tag) as unknown as HTMLNoticeElement
         Object.assign(el, options)
-        el.addEventListener('balClose', ev => {
+        addEventListener(el, 'balClose', (ev: any) => {
           this.removeFromQueue((<any>ev).detail)
         })
         this.preQueue.push(el)

@@ -217,11 +217,13 @@ export class CheckboxGroup
 
   @ListenToFocus()
   focusInListener(ev: FocusEvent): void {
+    console.warn('=> focusInListener')
     this.balFocus.emit(ev)
   }
 
   @ListenToFocus()
   focusOutListener(ev: FocusEvent): void {
+    console.error('<= focusOutListener')
     this.balBlur.emit(ev)
   }
 

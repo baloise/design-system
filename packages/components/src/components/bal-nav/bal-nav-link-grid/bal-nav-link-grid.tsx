@@ -4,9 +4,7 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-nav-link-grid',
-  styleUrls: {
-    css: 'bal-nav-link-grid.sass',
-  },
+  styleUrl: 'bal-nav-link-grid.sass',
 })
 export class NavigationLinkGrid implements ComponentInterface, Loggable {
   log!: LogInstance

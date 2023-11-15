@@ -70,13 +70,7 @@ export const defaultConfig: BalConfigState = {
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
 
-export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
-  if (!balBrowser.hasWindow) {
-    return
-  }
-
-  win = window
-
+export const initializeConfig = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   config.reset({
@@ -93,4 +87,4 @@ export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem.config = config
 }
 
-export default initialize
+export default initializeConfig

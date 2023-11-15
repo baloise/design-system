@@ -4,9 +4,7 @@ import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-nav-link',
-  styleUrls: {
-    css: 'bal-nav-link.sass',
-  },
+  styleUrl: 'bal-nav-link.sass',
 })
 export class NavigationLink implements ComponentInterface, Loggable {
   log!: LogInstance

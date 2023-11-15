@@ -5,9 +5,7 @@ import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-nav-meta-bar',
-  styleUrls: {
-    css: 'bal-nav-meta-bar.sass',
-  },
+  styleUrl: 'bal-nav-meta-bar.sass',
 })
 export class NavMetaBar implements ComponentInterface, Loggable {
   private navMetaBarId = `bal-nav-meta-bar-${NavMetaBarIds++}`

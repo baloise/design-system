@@ -3,9 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-stage',
-  styleUrls: {
-    css: 'bal-stage.sass',
-  },
+  styleUrl: 'bal-stage.sass',
 })
 export class Stage implements ComponentInterface {
   /**

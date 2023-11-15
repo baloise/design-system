@@ -3,9 +3,7 @@ import { Attributes, inheritAttributes } from '../../utils/attributes'
 
 @Component({
   tag: 'bal-button',
-  styleUrls: {
-    css: 'bal-button.sass',
-  },
+  styleUrl: 'bal-button.sass',
 })
 export class Button implements ComponentInterface {
   private inheritAttributes: Attributes = {}

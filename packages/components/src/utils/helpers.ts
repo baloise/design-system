@@ -1,6 +1,6 @@
 import type { EventEmitter } from '@stencil/core'
 import { balBrowser } from './browser'
-import { BalConfig } from './config'
+import { BalConfig, useBalConfig } from './config'
 import {
   balIconCaretDown,
   balIconCaretLeft,
@@ -156,8 +156,8 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
   }
 
   if (el) {
-    el.addEventListener('webkitTransitionEnd', onTransitionEnd, opts)
-    el.addEventListener('transitionend', onTransitionEnd, opts)
+    addEventListener(el, 'webkitTransitionEnd', onTransitionEnd, opts)
+    addEventListener(el, 'transitionend', onTransitionEnd, opts)
     animationTimeout = setTimeout(onTransitionEnd, expectedDuration + ANIMATION_FALLBACK_TIMEOUT)
 
     unRegTrans = () => {
@@ -165,8 +165,8 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
         clearTimeout(animationTimeout)
         animationTimeout = undefined
       }
-      el.removeEventListener('webkitTransitionEnd', onTransitionEnd, opts)
-      el.removeEventListener('transitionend', onTransitionEnd, opts)
+      removeEventListener(el, 'webkitTransitionEnd', onTransitionEnd, opts)
+      removeEventListener(el, 'transitionend', onTransitionEnd, opts)
     }
   }
 
@@ -174,10 +174,34 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const ael = config._ael
+      if (ael) {
+        return ael(el, eventName, callback, opts)
+      } else if (config._ael) {
+        return config._ael(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.addEventListener(eventName, callback, opts)
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const rel = config._rel
+      if (rel) {
+        return rel(el, eventName, callback, opts)
+      } else if (config._rel) {
+        return config._rel(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.removeEventListener(eventName, callback, opts)
 }
 

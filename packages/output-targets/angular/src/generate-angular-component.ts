@@ -23,19 +23,12 @@ export const createComponentDefinition =
     // Generate Angular @Directive
     const directiveOpts = [
       `selector: \'${cmpMeta.tagName}\'`,
-      `template: '<ng-content></ng-content>'`,
       `changeDetection: ChangeDetectionStrategy.OnPush`,
+      `template: '<ng-content></ng-content>'`,
     ]
 
     if (outputTargetType === 'standalone') {
       directiveOpts.push(`standalone: true`)
-
-      // const valueAccessorConfig = valueAccessorConfigs.find(valueAccessorConfig =>
-      //   valueAccessorConfig.elementSelectors.includes(cmpMeta.tagName),
-      // )
-      // if (valueAccessorConfig) {
-      //   directiveOpts.push(`imports: [BaloiseDesignSystemModule]`)
-      // }
     }
     if (inputs.length > 0) {
       directiveOpts.push(`inputs: ['${inputs.join(`', '`)}']`)
@@ -109,6 +102,10 @@ function getProxyCmp(
 
   if (outputTargetType === 'standalone' || outputTargetType === 'module') {
     proxMeta.push(`defineCustomElementFn: define${tagNameAsPascal}`)
+  }
+
+  if (proxMeta.length === 0) {
+    return ''
   }
 
   return `@ProxyCmp({\n  ${proxMeta.join(',\n  ')}\n})`
