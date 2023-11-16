@@ -2,8 +2,10 @@ import { EventEmitter } from '@stencil/core'
 import { balBrowser } from './browser'
 import { BalConfig } from './config'
 import {
+  balIconCaretUp,
   balIconCaretDown,
   balIconCaretLeft,
+  balIconCaretRight,
   balIconCheck,
   balIconClose,
   balIconDate,
@@ -227,8 +229,10 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       balIconNavGoRight,
       balIconNavGoDown,
       balIconNavGoUp,
-      balIconCaretLeft,
+      balIconCaretUp,
       balIconCaretDown,
+      balIconCaretLeft,
+      balIconCaretRight,
       balIconCheck,
       balIconDate,
       balIconDocument,

@@ -1,8 +1,7 @@
-import { Directive, ElementRef, Inject, InjectFlags, Injector, forwardRef } from '@angular/core'
-import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms'
+import { Directive, ElementRef, Injector, forwardRef } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 
 import { ValueAccessor } from './value-accessor'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
@@ -19,18 +18,12 @@ import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
   ],
 })
 export class BooleanValueAccessor extends ValueAccessor {
-  constructor(el: ElementRef, @Inject(Injector) protected injector: Injector) {
-    super(el)
-  }
-
-  override ngOnInit(): void {
-    super.control = this.injector.get(NgControl, undefined, InjectFlags.Optional) as any
-    super.config = this.injector.get(BalConfigToken, {}, InjectFlags.Optional) as BaloiseDesignSystemAngularConfig
-    super.ngOnInit()
+  constructor(injector: Injector, el: ElementRef) {
+    super(injector, el)
   }
 
   override writeValue(value: any) {
-    this.el.nativeElement.checked = this.lastValue = value == null ? false : value
-    this.invalidSubject.next()
+    this.elementRef.nativeElement.checked = this.lastValue = value == null ? false : value
+    this.onStatusChange()
   }
 }
