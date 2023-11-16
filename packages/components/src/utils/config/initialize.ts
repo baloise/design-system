@@ -13,8 +13,6 @@ import {
   balIconNavGoRight,
   balIconNavGoDown,
   balIconNavGoUp,
-  balIconCaretLeft,
-  balIconCaretDown,
   balIconCheck,
   balIconDate,
   balIconDocument,
@@ -28,6 +26,9 @@ import {
   balIconXing,
   balIconYoutube,
   balIconWeb,
+  balIconCaretDown,
+  balIconCaretLeft,
+  balIconCaretRight,
   balIconCaretUp,
 } from '../constants/icons.constant'
 
@@ -62,6 +63,7 @@ export const defaultConfig: BalConfigState = {
     balIconYoutube,
     balIconWeb,
     balIconCaretUp,
+    balIconCaretRight,
   },
   fallbackLanguage: 'de',
   logger: defaultLoggerConfig,

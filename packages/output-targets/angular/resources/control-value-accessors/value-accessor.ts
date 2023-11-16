@@ -1,103 +1,147 @@
-import { Directive, ElementRef, HostListener } from '@angular/core'
-import { ControlValueAccessor, FormControl } from '@angular/forms'
-import { ReplaySubject, Subject, takeUntil } from 'rxjs'
-import { BaloiseDesignSystemAngularConfig } from '..'
+import { AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy } from '@angular/core'
+import { ControlValueAccessor, NgControl } from '@angular/forms'
+import { Subscription } from 'rxjs'
+
+import { BalConfigToken, BaloiseDesignSystemAngularConfig, raf } from '..'
 
 @Directive()
-export class ValueAccessor implements ControlValueAccessor {
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1)
-  protected invalidSubject = new Subject<void>()
-
+export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
   private onChange: (value: any) => void = () => {
     /**/
   }
-
   private onTouched: () => void = () => {
     /**/
   }
 
   protected lastValue: any
+  private statusChanges?: Subscription
 
-  public control!: FormControl
-  public config!: BaloiseDesignSystemAngularConfig
+  constructor(protected injector: Injector, protected elementRef: ElementRef) {}
 
-  constructor(protected el: ElementRef) {}
-
-  ngOnInit(): void {
-    this.invalidSubject.pipe(takeUntil(this.destroyed$)).subscribe({
-      next: () => {
-        this.setInvalidState()
-      },
-    })
+  writeValue(value: any): void {
+    this.elementRef.nativeElement.value = this.lastValue = value === null ? '' : value
+    this.onStatusChange()
   }
 
-  ngOnDestroy() {
-    this.destroyed$.next(true)
-    this.destroyed$.complete()
-  }
-
-  writeValue(value: any) {
-    this.el.nativeElement.value = this.lastValue = value == null ? '' : value
-    this.invalidSubject.next()
-  }
-
-  handleChangeEvent(event: CustomEvent<any>) {
-    if (this.el.nativeElement === event.target) {
-      const value = event.detail
+  handleChangeEvent(ev: CustomEvent<any>): void {
+    const el = ev.target as HTMLElement
+    const value = ev.detail as any
+    if (el === this.elementRef.nativeElement) {
       if (value !== this.lastValue) {
         this.lastValue = value
         this.onChange(value)
       }
+      this.onStatusChange()
     }
   }
 
   @HostListener('balBlur', ['$event.target'])
-  handleBlurEvent(el: any) {
-    if (el === this.el.nativeElement) {
+  _handleBlurEvent(el: any): void {
+    if (el === this.elementRef.nativeElement) {
       this.onTouched()
     }
   }
 
-  registerOnChange(fn: (value: any) => void) {
-    this.onChange = value => {
+  registerOnChange(fn: (value: any) => void): void {
+    this.onChange = (value: any) => {
       fn(value)
-      this.invalidSubject.next()
+      this.onStatusChange()
     }
   }
 
   registerOnTouched(fn: () => void) {
     this.onTouched = () => {
       fn()
-      this.invalidSubject.next()
+      this.onStatusChange()
     }
   }
 
-  setDisabledState(isDisabled: boolean) {
-    this.el.nativeElement.disabled = isDisabled
+  setDisabledState(isDisabled: boolean): void {
+    this.elementRef.nativeElement.disabled = isDisabled
 
-    const field = this.getField()
-    if (field) {
-      field.disabled = isDisabled
+    const fieldComponent = findFieldComponent(this.elementRef)
+    if (fieldComponent) {
+      fieldComponent.disabled = isDisabled
     }
   }
 
-  getField(): any | undefined {
-    if (this.el && this.el.nativeElement) {
-      return this.el.nativeElement.closest('bal-field') || undefined
+  setInvalidState(isInvalid: boolean): void {
+    this.elementRef.nativeElement.invalid = isInvalid
+
+    const fieldComponent = findFieldComponent(this.elementRef)
+    if (fieldComponent) {
+      fieldComponent.invalid = isInvalid
     }
-    return undefined
   }
 
-  setInvalidState() {
-    if (this.config?.forms?.setInvalid === true) {
-      const invalidateOn = this.config?.forms?.invalidateOn || 'touched'
-      const invalid = this.control[invalidateOn] && this.control.invalid
-      this.el.nativeElement.invalid = invalid
-
-      const field = this.getField()
-      if (field) {
-        field.invalid = invalid
+  onStatusChange() {
+    raf(() => {
+      let ngControl
+      try {
+        ngControl = this.injector.get<NgControl>(NgControl)
+      } catch {
+        /* No FormControl or ngModel binding */
       }
+
+      if (!ngControl) {
+        return
+      }
+
+      let config
+      try {
+        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalConfigToken)
+      } catch {
+        /* No config */
+      }
+
+      if (!config) {
+        return
+      }
+
+      const { dirty, touched, invalid } = ngControl
+
+      if (config.forms?.setInvalid !== false) {
+        const invalidateOn = config.forms?.invalidateOn || 'touched'
+        const isTouched = touched === true
+        const isDirty = dirty === true
+        const isInvalid = invalid === true
+        const isReadyToValidate = invalidateOn === 'touched' ? isTouched : isDirty
+
+        this.setInvalidState(isReadyToValidate && isInvalid)
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    if (this.statusChanges) {
+      this.statusChanges.unsubscribe()
     }
   }
+
+  ngAfterViewInit(): void {
+    let ngControl
+    try {
+      ngControl = this.injector.get<NgControl>(NgControl)
+    } catch {
+      /* No FormControl or ngModel binding */
+    }
+
+    if (!ngControl) {
+      return
+    }
+
+    // Listen for changes in validity, disabled, or pending states
+    if (ngControl.statusChanges) {
+      this.statusChanges = ngControl.statusChanges.subscribe(() => {
+        this.onStatusChange()
+      })
+    }
+  }
+}
+
+export const findFieldComponent = (element: ElementRef): { disabled: boolean; invalid: boolean } | undefined => {
+  if (element && element.nativeElement) {
+    return element.nativeElement.closest('bal-field') || undefined
+  }
+  return undefined
 }

@@ -10,3 +10,5 @@ export interface BaloiseDesignSystemAngularConfig {
     invalidateOn?: 'touched' | 'dirty'
   }
 }
+
+export const raf = (fn: () => void) => fn()
