@@ -17,9 +17,7 @@ import { ListenToBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpoi
 
 @Component({
   tag: 'bal-hint',
-  styleUrls: {
-    css: 'bal-hint.sass',
-  },
+  styleUrl: 'bal-hint.sass',
 })
 export class Hint implements ComponentInterface, BalConfigObserver, BalBreakpointObserver {
   @Element() element!: HTMLElement

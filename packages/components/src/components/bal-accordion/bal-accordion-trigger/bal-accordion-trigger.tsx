@@ -6,9 +6,7 @@ import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-accordion-trigger',
-  styleUrls: {
-    css: 'bal-accordion-trigger.sass',
-  },
+  styleUrl: 'bal-accordion-trigger.sass',
 })
 export class AccordionTrigger implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-trigger-${accordionTriggerIds++}`

@@ -38,9 +38,7 @@ import { BalResizeObserver, ListenToResize } from '../../utils/resize'
 
 @Component({
   tag: 'bal-tabs',
-  styleUrls: {
-    css: 'bal-tabs.sass',
-  },
+  styleUrl: 'bal-tabs.sass',
 })
 export class Tabs
   implements

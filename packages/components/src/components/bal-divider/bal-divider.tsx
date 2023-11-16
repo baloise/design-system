@@ -4,9 +4,7 @@ import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-divider',
-  styleUrls: {
-    css: './bal-divider.sass',
-  },
+  styleUrl: './bal-divider.sass',
 })
 export class BalDivider implements ComponentInterface, Loggable {
   log!: LogInstance
