@@ -254,16 +254,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
         }}
       >
         <input
-          type="date"
-          class={{ ...native.class() }}
-          name={this.name}
-          min={this.min}
-          max={this.max}
-          value={this.value}
-          tabindex={-1}
-          aria-hidden="true"
-        ></input>
-        <input
           class={{
             'input': true,
             'is-disabled': this.disabled || this.readonly,
@@ -293,6 +283,16 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           onBlur={event => this.maskAdapter.bindBlur(event)}
           onPaste={event => this.maskAdapter.bindPaste(event)}
         />
+        <input
+          type="date"
+          class={{ ...native.class() }}
+          name={this.name}
+          min={this.min}
+          max={this.max}
+          value={this.value}
+          tabindex={-1}
+          aria-hidden="true"
+        ></input>
       </Host>
     )
   }
