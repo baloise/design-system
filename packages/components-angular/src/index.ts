@@ -17,6 +17,7 @@ export { BalModalService } from './overlays/modal.service'
 export { BalBreakpointsService } from './util/breakpoints.service'
 export { BalOrientationService } from './util/orientation.service'
 export { BalConfigService } from './util/config.service'
+export { raf } from './util/util'
 
 // PACKAGE MODULE
 export type { BaloiseDesignSystemAngularConfig } from './app-initialize'
