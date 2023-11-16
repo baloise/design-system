@@ -41,11 +41,13 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           size="small"
           icon={this.icon}
           square={!this.label || this.label.length < 3}
-          aria-label={this.ariaLabel}
-          title={this.htmlTitle}
           inverted={true}
           href={this.href}
           target={this.target}
+          aria={{
+            title: this.htmlTitle,
+            label: this.label,
+          }}
         >
           {this.label}
         </bal-button>
@@ -60,8 +62,10 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
         size="small"
         icon={this.icon}
         square={!this.label || this.label.length < 3}
-        aria-label={this.ariaLabel}
-        title={this.htmlTitle}
+        aria={{
+          title: this.htmlTitle,
+          label: this.label,
+        }}
         inverted={true}
         bal-popup={this.popoverId}
         bal-popup-variant="popover"
@@ -86,10 +90,12 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             color="light"
             icon={this.icon}
             square={!!this.icon || !this.label || this.label.length < 3}
-            aria-label={this.ariaLabel}
-            title={this.htmlTitle}
             href={this.href}
             target={this.target}
+            aria={{
+              title: this.htmlTitle,
+              label: this.label,
+            }}
           >
             {this.icon ? '' : this.label}
           </bal-button>
@@ -104,8 +110,10 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           icon={this.icon}
           square={!!this.icon || !this.label || this.label.length < 3}
           inverted={false}
-          aria-label={this.ariaLabel}
-          title={this.htmlTitle}
+          aria={{
+            title: this.htmlTitle,
+            label: this.label,
+          }}
           bal-popup={this.popoverId}
           bal-popup-variant="fullscreen"
           bal-popup-closable="true"
@@ -127,8 +135,10 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
             inverted={false}
             icon={this.icon}
             square={!this.label || this.label.length < 3}
-            aria-label={this.ariaLabel}
-            title={this.htmlTitle}
+            aria={{
+              title: this.htmlTitle,
+              label: this.label,
+            }}
             href={this.href}
             target={this.target}
           >
@@ -145,8 +155,10 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
           square={!this.label || this.label.length < 3}
           color="info"
           inverted={false}
-          aria-label={this.ariaLabel}
-          title={this.htmlTitle}
+          aria={{
+            title: this.htmlTitle,
+            label: this.label,
+          }}
           bal-popup={this.popoverId}
           bal-popup-variant="drawer"
           bal-popup-closable="true"
