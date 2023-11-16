@@ -1,6 +1,5 @@
-import { Directive, ElementRef, Inject, InjectFlags, Injector, OnInit, forwardRef } from '@angular/core'
-import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
+import { Directive, ElementRef, Injector, forwardRef } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 import { ValueAccessor } from './value-accessor'
 
 @Directive({
@@ -17,14 +16,8 @@ import { ValueAccessor } from './value-accessor'
     },
   ],
 })
-export class TextValueAccessor extends ValueAccessor implements OnInit {
-  constructor(el: ElementRef, @Inject(Injector) protected injector: Injector) {
-    super(el)
-  }
-
-  override ngOnInit(): void {
-    super.control = this.injector.get(NgControl, undefined, InjectFlags.Optional) as any
-    super.config = this.injector.get(BalConfigToken, {}, InjectFlags.Optional) as BaloiseDesignSystemAngularConfig
-    super.ngOnInit()
+export class TextValueAccessor extends ValueAccessor {
+  constructor(injector: Injector, el: ElementRef) {
+    super(injector, el)
   }
 }
