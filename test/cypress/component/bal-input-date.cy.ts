@@ -48,7 +48,7 @@ describe('bal-input-date.cy.ts', () => {
     cy.get('bal-input-date').find('input').should('have.value', '20.02.1988')
   })
 
-  it.only('should only call balInput and no balChange, because the input has still the focus', () => {
+  it('should only call balInput and no balChange, because the input has still the focus', () => {
     cy.get('bal-input-date').find('input').should('have.value', '')
     cy.get('bal-input-date').find('input').focus().type('1.1.23').blur({ force: true })
     cy.get('bal-input-date').find('input').should('have.value', '01.01.2023')
@@ -65,14 +65,14 @@ describe('bal-input-date.cy.ts', () => {
 
     cy.get('bal-input-date').find('input').should('have.value', '01.01.JJJJ')
     cy.get('@balChange').should('not.have.been.called')
-    cy.get('@balInput').should('have.been.callCount', 7)
+    cy.get('@balInput').should('have.been.callCount', 6)
   })
 
   it('should fire balChange and no balInput, because only the value of the web component is changed', () => {
     cy.get('bal-input-date').invoke('attr', 'value', '88')
 
     cy.get('@balChange').should('not.have.been.called')
-    cy.get('@balInput').should('have.been.callCount', 2)
+    cy.get('@balInput').should('have.been.callCount', 0)
   })
 
   it('should fire a click event', () => {
