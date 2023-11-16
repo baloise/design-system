@@ -1,7 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Method } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
-import { BalConfigObserver, BalConfigState } from '../../utils/config'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
+import type { BalConfigObserver, BalConfigState } from '../../utils/config'
 
 @Component({
   tag: 'bal-progress-bar',
@@ -12,6 +12,7 @@ export class ProgressBar implements ComponentInterface, BalConfigObserver, BalBr
 
   private animated = true
   private lineEl?: HTMLDivElement
+  private isTouch = balBreakpoints.isTouch // need this part to improve a none side effect import
 
   /**
    * PUBLIC PROPERTY API
