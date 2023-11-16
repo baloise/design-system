@@ -3,9 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 @Component({
   tag: 'bal-card',
-  styleUrls: {
-    css: 'bal-card.sass',
-  },
+  styleUrl: 'bal-card.sass',
 })
 export class BalCard {
   /**

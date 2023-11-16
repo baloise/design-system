@@ -1,17 +1,7 @@
-import {
-  Component,
-  Host,
-  HostBinding,
-  Inject,
-  Injector,
-  Input,
-  OnChanges,
-  OnInit,
-  Optional,
-  SkipSelf,
-} from '@angular/core'
+import { AfterViewInit, Component, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
 import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
+import { raf } from '../util/util'
 
 @Component({
   selector: 'bal-ng-error',
@@ -24,69 +14,77 @@ import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
     `,
   ],
 })
-export class BalNgErrorComponent implements OnChanges, OnInit {
-  control?: AbstractControl | null
-  config!: BaloiseDesignSystemAngularConfig
-
+export class BalNgErrorComponent implements AfterViewInit {
+  /**
+   * The name of form validator to show.
+   */
   @Input() error?: string
 
+  /**
+   * The name of the form control, which is registered in the form group.
+   */
   @HostBinding('attr.controlname')
   @Input()
   controlName?: string
 
-  constructor(
-    @Optional()
-    @Host()
-    @SkipSelf()
-    private controlContainer: ControlContainer,
-    @Inject(Injector) private injector: Injector,
-  ) {}
+  constructor(@Inject(Injector) protected injector: Injector) {}
 
-  ngOnInit(): void {
-    this.config = this.injector.get(BalConfigToken) as BaloiseDesignSystemAngularConfig
-  }
+  private controlContainer?: ControlContainer
+  private control?: AbstractControl | null
+  private config?: BaloiseDesignSystemAngularConfig
+  private invalidateOn: 'dirty' | 'touched' = 'touched'
 
-  get hasError(): boolean {
-    if (
-      this.control === undefined ||
-      this.control === null ||
-      this.controlName === undefined ||
-      this.controlName === null
-    ) {
-      return false
-    } else {
-      const invalidateOn = this.config?.forms?.invalidateOn || 'touched'
-      if (!this.control[invalidateOn]) {
-        return false
+  ngAfterViewInit(): void {
+    raf(() => {
+      try {
+        this.controlContainer = this.injector.get<ControlContainer>(ControlContainer)
+      } catch {
+        /* No ControlContainer provided */
       }
 
-      if (this.error === undefined || this.error === null) {
-        return this.control.invalid
-      } else {
-        const errors = this.controlContainer.control?.get(this.controlName)?.errors
-        if (errors) {
-          const keys = Object.keys(errors).filter(k => k !== 'errorType')
-          if (keys.length > 0) {
-            const isFirstKeyOurError = keys[0] === this.error
-            return isFirstKeyOurError
-          }
-        }
+      if (!this.controlContainer) {
+        return
       }
-    }
 
-    return false
-  }
+      try {
+        this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalConfigToken)
+      } catch {
+        /* No config provided */
+      }
 
-  ngOnChanges() {
-    if (this.controlContainer) {
-      if (this.controlName !== null && this.controlName !== undefined) {
+      this.invalidateOn = this.config?.forms?.invalidateOn || this.invalidateOn
+
+      if (this.controlName) {
         this.control = this.controlContainer.control?.get(this.controlName)
-        if (this.control === undefined || this.control === null) {
+        if (!this.control) {
           console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
         }
       } else {
         console.warn('[BalNgErrorComponent] Please provide a controlName')
       }
+    })
+  }
+
+  get hasError(): boolean {
+    if (this.controlName && this.controlContainer && this.config && this.control) {
+      if (!this.control[this.invalidateOn]) {
+        return false
+      }
+
+      if (!this.error) {
+        return this.control.invalid
+      }
+
+      if (this.control.errors) {
+        const validationErrorKeys = Object.keys(this.control.errors).filter(k => k !== 'errorType')
+        const hasValidationErrors = validationErrorKeys.length > 0
+
+        if (hasValidationErrors) {
+          return validationErrorKeys[0] === this.error // isFirstKeyOurError
+        }
+      }
     }
+
+    return false
   }
 }

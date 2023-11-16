@@ -31,9 +31,7 @@ import { focusableQueryString } from '../../utils/focus-visible'
 
 @Component({
   tag: 'bal-popup',
-  styleUrls: {
-    css: 'bal-popup.sass',
-  },
+  styleUrl: 'bal-popup.sass',
 })
 export class Popup implements ComponentInterface, PopupComponentInterface, Loggable {
   private popupId = `bal-pu-${popupIds++}`

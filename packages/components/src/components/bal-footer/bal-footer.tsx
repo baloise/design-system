@@ -15,9 +15,7 @@ import { rIC } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-footer',
-  styleUrls: {
-    css: 'bal-footer.sass',
-  },
+  styleUrl: 'bal-footer.sass',
 })
 export class Footer implements BalConfigObserver, Loggable {
   @State() links: FooterLink[] = []

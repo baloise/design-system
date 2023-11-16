@@ -21,9 +21,7 @@ import { BalElementStateListener } from '../../../utils/element-states/element-s
 
 @Component({
   tag: 'bal-checkbox-button',
-  styleUrls: {
-    css: './bal-checkbox-button.sass',
-  },
+  styleUrl: './bal-checkbox-button.sass',
 })
 export class BalCheckboxButton implements ComponentInterface, Loggable, BalElementStateObserver {
   @Element() el!: HTMLElement

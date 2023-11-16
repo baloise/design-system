@@ -43,9 +43,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 @Component({
   tag: 'bal-time-input',
-  styleUrls: {
-    css: 'bal-time-input.sass',
-  },
+  styleUrl: 'bal-time-input.sass',
 })
 export class TimeInput
   implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, BalAriaFormLinking, Loggable
