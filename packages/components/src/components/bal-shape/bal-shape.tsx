@@ -4,9 +4,7 @@ import { BaloiseDesignToken } from '@baloise/design-system-tokens'
 
 @Component({
   tag: 'bal-shape',
-  styleUrls: {
-    css: 'bal-shape.sass',
-  },
+  styleUrl: 'bal-shape.sass',
 })
 export class Shape implements ComponentInterface {
   @Element() el!: HTMLElement

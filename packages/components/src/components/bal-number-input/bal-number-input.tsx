@@ -55,9 +55,7 @@ import isNaN from 'lodash.isnan'
 
 @Component({
   tag: 'bal-number-input',
-  styleUrls: {
-    css: 'bal-number-input.sass',
-  },
+  styleUrl: 'bal-number-input.sass',
 })
 export class NumberInput
   implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable

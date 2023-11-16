@@ -8,7 +8,4 @@ namespace BalEvents {
     detail: T
     target: HTMLBalAppElement
   }
-
-  export type BalAppLoadDetail = boolean
-  export type BalAppLoad = BalAppCustomEvent<BalAppLoadDetail>
 }

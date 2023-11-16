@@ -8,9 +8,7 @@ type SpinnerAnimationFunction = (el: HTMLElement, color: string) => AnimationIte
 
 @Component({
   tag: 'bal-spinner',
-  styleUrls: {
-    css: 'bal-spinner.sass',
-  },
+  styleUrl: 'bal-spinner.sass',
 })
 export class Spinner implements ComponentInterface, Loggable {
   private animationItem!: AnimationItem
