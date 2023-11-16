@@ -36,5 +36,3 @@ export interface BalConfigState {
   logger: BalLogger
   animated: boolean
 }
-
-export type BalMode = 'css' | 'sass' | 'all'

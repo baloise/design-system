@@ -6,9 +6,7 @@ import { BalAriaFormLinking, defaultBalAriaForm } from '../../utils/form'
 
 @Component({
   tag: 'bal-field',
-  styleUrls: {
-    css: 'bal-field.sass',
-  },
+  styleUrl: 'bal-field.sass',
 })
 export class Field implements ComponentInterface, BalMutationObserver {
   @Element() el!: HTMLElement

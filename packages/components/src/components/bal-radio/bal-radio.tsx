@@ -24,9 +24,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-radio',
-  styleUrls: {
-    css: '../bal-checkbox/radio-checkbox.sass',
-  },
+  styleUrl: '../bal-checkbox/radio-checkbox.sass',
 })
 export class Radio implements ComponentInterface, BalElementStateInfo, Loggable, BalAriaFormLinking {
   private inputId = `bal-rb-${radioIds++}`

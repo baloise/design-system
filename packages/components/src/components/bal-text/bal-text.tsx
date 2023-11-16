@@ -4,9 +4,7 @@ import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
-  styleUrls: {
-    css: 'bal-text.sass',
-  },
+  styleUrl: 'bal-text.sass',
 })
 export class Text implements ComponentInterface, BalElementStateInfo {
   /**
