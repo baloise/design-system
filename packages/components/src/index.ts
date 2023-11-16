@@ -12,6 +12,7 @@ export {
   updateBalRegion,
   onBalConfigChange,
   useBalConfig,
+  setupConfig,
   BalConfig,
   BalConfigState,
   BalConfigObserver,

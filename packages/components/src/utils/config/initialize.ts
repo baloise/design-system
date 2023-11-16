@@ -1,5 +1,6 @@
 import { balBrowser } from '../browser'
 import { config, configFromSession } from './config'
+
 import { BalConfig } from './config.types'
 
 export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
