@@ -5,7 +5,6 @@ import { BalFocusInfo } from './focus.interfaces'
 
 export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, BalFocusInfo> {
   connect(el: HTMLElement): void {
-    console.log('connect', this.el)
     super.connect(el)
     if (this.el) {
       addEventListener(this.el, 'focusin', this.onFocusin as any)
@@ -14,7 +13,6 @@ export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, Bal
   }
 
   disconnect(): void {
-    console.log('disconnect', this.el)
     super.disconnect()
     if (this.el) {
       removeEventListener(this.el, 'focusin', this.onFocusin as any)
@@ -23,12 +21,10 @@ export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, Bal
   }
 
   private onFocusin = (ev: FocusEvent) => {
-    console.log('onFocusin')
     this.notify({ ev, isFocusIn: true, isFocusOut: false })
   }
 
   private onFocusout = async (ev: FocusEvent) => {
-    console.log('onFocusout', this, this.el)
     await waitAfterIdleCallback()
 
     if (balBrowser.hasDocument && this.el) {

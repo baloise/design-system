@@ -6,20 +6,5 @@ import { routes } from './app.routes'
 import { BaloiseDesignSystemModule } from '../generated/src'
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    importProvidersFrom(
-      BaloiseDesignSystemModule.forRoot({
-        defaults: {
-          logger: {
-            components: ['bal-checkbox-group'],
-            lifecycle: false,
-            custom: false,
-            render: false,
-            event: false,
-          },
-        },
-      }),
-    ),
-  ],
+  providers: [provideRouter(routes), importProvidersFrom(BaloiseDesignSystemModule.forRoot())],
 }

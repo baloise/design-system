@@ -2,12 +2,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { CommonModule } from '@angular/common'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { UpdateControl } from '../app.component'
-import { BalCardBundle, BalFormBundle, BalLayoutBundle } from '@baloise/design-system-components-angular/standalone'
+import {
+  BalCardBundle,
+  BalFormBundle,
+  BalLabel,
+  BalLayoutBundle,
+} from '@baloise/design-system-components-angular/standalone'
 
 @Component({
   selector: 'app-checkbox-buttons',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ...BalLayoutBundle, ...BalFormBundle, ...BalCardBundle],
+  imports: [CommonModule, ReactiveFormsModule, ...BalLayoutBundle, ...BalFormBundle, ...BalCardBundle, BalLabel],
   template: `
     <bal-card [formGroup]="form">
       <bal-card-title>Checkbox Buttons</bal-card-title>

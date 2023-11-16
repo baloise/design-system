@@ -1,13 +1,12 @@
-import { Directive, ElementRef, Inject, Injector, forwardRef } from '@angular/core'
-import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
+import { Directive, ElementRef, Injector, forwardRef } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 import { ValueAccessor } from './value-accessor'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
   selector: '<VALUE_ACCESSOR_SELECTORS>',
   host: {
-    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event)',
+    '(<VALUE_ACCESSOR_EVENT>)': 'handleValueChange($event)',
   },
   providers: [
     {
