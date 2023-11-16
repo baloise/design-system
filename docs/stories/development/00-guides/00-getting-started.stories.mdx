@@ -137,34 +137,26 @@ For each angular sub module you need to import the `BaloiseDesignSystemModule` t
 
 **app.module.ts**
 
-<Code
-  language="typescript"
-  noPreview
-  code={`
+```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
-${' '}declarations: [AppComponent],
-${' '}imports: [
-${' '}${' '}BrowserModule,
-${' '}${' '}// Provide all components and value accessors to the app module.
-${' '}${' '}BaloiseDesignSystemModule.forRoot({
-${' '}${' '}${' '}forms: {
-${' '}${' '}${' '}${' '}setInvalid: true, // Maps invalid state with reactive form controls
-${' '}${' '}${' '}},
-${' '}${' '}}),
-${' '}],
-${' '}providers: [],
-${' '}bootstrap: [AppComponent],
-${' '}// To enable the usage of Web Components inside the Angular templates.
-${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    // Provide all components and value accessors to the app module.
+    BaloiseDesignSystemModule.forRoot(),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  // To enable the usage of Web Components inside the Angular templates.
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
-`}
-/>
+```
 
 **app.component.html**
 
@@ -215,10 +207,7 @@ Import the `BaloiseDesignSystemModule.forRoot()` into your `app.config.ts`.
 
 **app.config.ts**
 
-<Code
-  language="typescript"
-  noPreview
-  code={`
+```typescript
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 import { provideRouter } from '@angular/router'
 
@@ -227,19 +216,9 @@ import { routes } from './app.routes'
 import { BaloiseDesignSystemModule } from '../generated/src'
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    importProvidersFrom(
-      BaloiseDesignSystemModule.forRoot({
-        forms: {
-          setInvalid: true, // Maps invalid state with reactive form controls
-        },
-      }),
-    ),
-  ],
+  providers: [provideRouter(routes), importProvidersFrom(BaloiseDesignSystemModule.forRoot())],
 }
-`}
-/>
+```
 
 **app.component.ts**
 
@@ -665,7 +644,10 @@ Add the `BalApp` to your root element (App.vue).
 
 <Footer>
   <LinkCards>
-    <LinkCard pageTitle={'Development/Assets'} description={'Guides for installing the font locally, favions and Google maps styles.'} />
+    <LinkCard
+      pageTitle={'Development/Assets'}
+      description={'Guides for installing the font locally, favions and Google maps styles.'}
+    />
     <LinkCard
       pageTitle={'Development/Component'}
       description={
