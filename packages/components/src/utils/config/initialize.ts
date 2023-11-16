@@ -22,3 +22,4 @@ export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
 }
 
 export default setupConfig
+
