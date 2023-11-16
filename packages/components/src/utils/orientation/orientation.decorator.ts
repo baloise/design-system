@@ -1,6 +1,6 @@
-import { ComponentInterface } from '@stencil/core'
+import type { ComponentInterface } from '@stencil/core'
+import type { BalOrientationObserver } from './orientation.interfaces'
 import { balOrientationSubject } from './orientation.subject'
-import { BalOrientationObserver } from './orientation.interfaces'
 
 export function ListenToOrientation() {
   return function (
