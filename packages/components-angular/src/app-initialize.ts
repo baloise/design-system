@@ -1,5 +1,4 @@
 import { NgZone } from '@angular/core'
-
 import { BalConfig, BalPlatformConfig, initialize } from '@baloise/design-system-components'
 import { applyPolyfills, defineCustomElements } from '@baloise/design-system-components/loader'
 import { raf } from '@baloise/design-system-components-angular/common'
