@@ -52,7 +52,7 @@ export const AngularStandaloneGenerator = () =>
     directivesProxyFile: '../components-angular/standalone/src/generated/proxies.ts',
     directivesArrayFile: '../components-angular/standalone/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
-    excludeComponents: [...docComponents],
+    excludeComponents: [...docComponents, 'bal-input'],
     outputType: 'standalone',
   })
 

@@ -15,6 +15,8 @@ export {
 } from '@baloise/design-system-components-angular/common'
 
 export * from './generated/proxies'
+export * from './components'
+export * from './bundles'
 export { BooleanValueAccessor } from './generated/boolean-value-accessor'
 export { NumericValueAccessor } from './generated/number-value-accessor'
 export { SelectValueAccessor } from './generated/select-value-accessor'

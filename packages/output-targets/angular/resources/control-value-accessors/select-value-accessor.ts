@@ -18,13 +18,7 @@ import { ValueAccessor } from './value-accessor'
   ],
 })
 export class SelectValueAccessor extends ValueAccessor {
-  constructor(el: ElementRef, @Inject(Injector) protected injector: Injector) {
-    super(el)
-  }
-
-  override ngOnInit(): void {
-    super.control = this.injector.get(NgControl, undefined, { optional: true }) as any
-    super.config = this.injector.get(BalConfigToken, {}, { optional: true }) as BaloiseDesignSystemAngularConfig
-    super.ngOnInit()
+  constructor(injector: Injector, el: ElementRef) {
+    super(injector, el)
   }
 }

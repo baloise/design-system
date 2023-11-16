@@ -1,8 +1,7 @@
-import { Directive, ElementRef, Inject, Injector, forwardRef } from '@angular/core'
-import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms'
+import { Directive, ElementRef, Injector, forwardRef } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 
 import { ValueAccessor } from './value-accessor'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
@@ -19,13 +18,7 @@ import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
   ],
 })
 export class RadioValueAccessor extends ValueAccessor {
-  constructor(el: ElementRef, @Inject(Injector) protected injector: Injector) {
-    super(el)
-  }
-
-  override ngOnInit(): void {
-    super.control = this.injector.get(NgControl, undefined, { optional: true }) as any
-    super.config = this.injector.get(BalConfigToken, {}, { optional: true }) as BaloiseDesignSystemAngularConfig
-    super.ngOnInit()
+  constructor(injector: Injector, el: ElementRef) {
+    super(injector, el)
   }
 }
