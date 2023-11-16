@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, EventEmitter, Prop, Method, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
 import { updateBalAnimated } from '../../utils/config'
