@@ -1,5 +1,11 @@
 # @baloise/design-system-output-target-angular
 
+## 14.4.0
+
+### Minor Changes
+
+- [#1116](https://github.com/baloise/design-system/pull/1116) - Stencil version updated to v4 and Angular proxy library requires v15 or higher now.
+
 ## 14.3.0
 
 ## 14.2.1
