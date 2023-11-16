@@ -44,3 +44,4 @@ export interface BalPlatformConfig {
   rel?: (el: any, eventName: string, listener: any, options: any) => void
   ce?: (eventName: string, opts?: any) => any
 }
+
