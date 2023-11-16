@@ -1,5 +1,16 @@
 # @baloise/design-system-components-angular
 
+## 14.4.0
+
+### Minor Changes
+
+- [#1116](https://github.com/baloise/design-system/pull/1116) - Stencil version updated to v4 and Angular proxy library requires v15 or higher now.
+
+### Patch Changes
+
+- Updated dependencies [[`c6f299450`](https://github.com/baloise/design-system/commit/c6f2994503144b73b733dfb89ca8bf3f8d494a85), [`c6f299450`](https://github.com/baloise/design-system/commit/c6f2994503144b73b733dfb89ca8bf3f8d494a85), [`2a59b375f`](https://github.com/baloise/design-system/commit/2a59b375f15de5dbf0179004bd95dde9786fd1fc), [`bab18b4da`](https://github.com/baloise/design-system/commit/bab18b4dab90fbc914255e84c73a9e0f181560cb), [`c6f299450`](https://github.com/baloise/design-system/commit/c6f2994503144b73b733dfb89ca8bf3f8d494a85)]:
+  - @baloise/design-system-components@14.4.0
+
 ## 14.3.0
 
 ### Patch Changes
