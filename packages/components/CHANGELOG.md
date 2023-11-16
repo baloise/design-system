@@ -1,5 +1,25 @@
 # @baloise/design-system-components
 
+## 14.4.0
+
+### Patch Changes
+
+- [#1125](https://github.com/baloise/design-system/pull/1125) - The meta buttons within the `nav` component now support both the ARIA label and title attributes, enhancing accessibility (a11y).
+
+- [#1125](https://github.com/baloise/design-system/pull/1125) - The accordion functionality in the `nav` component now opens and closes at the touch breakpoint when the library was minified.
+
+- [#1124](https://github.com/baloise/design-system/pull/1124) - Resolve day label formatting to prevent line breaks and update month names on language change.
+
+- [#1120](https://github.com/baloise/design-system/pull/1120) - Resolve carousel product slider color inconsistency during hover on yellow product
+
+- [#1125](https://github.com/baloise/design-system/pull/1125) - With form submission, the date value will be automatically formatted into ISO standard.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.4.0
+  - @baloise/design-system-fonts@14.4.0
+  - @baloise/design-system-icons@14.4.0
+  - @baloise/design-system-tokens@14.4.0
+
 ## 14.3.0
 
 ### Minor Changes

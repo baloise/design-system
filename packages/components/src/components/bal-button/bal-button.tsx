@@ -295,7 +295,8 @@ export class Button implements ComponentInterface {
 
     const ariaAttributes = {
       'title': this.aria?.title || this.inheritAttributes['title'],
-      'aria-label': this.aria?.label || this.inheritAttributes['aria-label'],
+      'aria-label':
+        this.aria?.label || this.inheritAttributes['aria-label'] || this.aria?.title || this.inheritAttributes['title'],
       'aria-controls': this.aria?.controls || this.inheritAttributes['aria-controls'],
     }
 

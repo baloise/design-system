@@ -168,7 +168,7 @@ export class DateCalendar implements ComponentInterface, Loggable, BalConfigObse
     this.years = generateYears(this.year, this.minYear, this.maxYear)
     this.months = generateMonths(state.language, this.year, this.selectedDate, this.min, this.max)
     this.weekdays = generateWeekDays(state.language)
-    this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: this.language })
+    this.monthFullNames = BalDate.infoMonths({ format: 'long', locale: state.language })
     this.language = state.language
   }
 
