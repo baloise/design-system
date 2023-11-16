@@ -13,8 +13,10 @@ import {
   balIconNavGoRight,
   balIconNavGoDown,
   balIconNavGoUp,
-  balIconCaretLeft,
+  balIconCaretUp,
   balIconCaretDown,
+  balIconCaretLeft,
+  balIconCaretRight,
   balIconCheck,
   balIconDate,
   balIconDocument,
@@ -28,7 +30,6 @@ import {
   balIconXing,
   balIconYoutube,
   balIconWeb,
-  balIconCaretUp,
 } from '../constants/icons.constant'
 
 export const defaultConfig: BalConfigState = {
