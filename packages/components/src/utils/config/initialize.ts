@@ -1,76 +1,6 @@
 import { balBrowser } from '../browser'
-import { defaultLoggerConfig } from '../log'
 import { config, configFromSession } from './config'
-import { BalConfig, BalConfigState } from './config.types'
-import {
-  balIconClose,
-  balIconInfoCircle,
-  balIconPlus,
-  balIconMinus,
-  balIconEdit,
-  balIconTrash,
-  balIconNavGoLeft,
-  balIconNavGoRight,
-  balIconNavGoDown,
-  balIconNavGoUp,
-  balIconCheck,
-  balIconDate,
-  balIconDocument,
-  balIconUpload,
-  balIconMenuBars,
-  balIconFacebook,
-  balIconInstagram,
-  balIconLinkedin,
-  balIconTwitter,
-  balIconX,
-  balIconXing,
-  balIconYoutube,
-  balIconWeb,
-  balIconCaretDown,
-  balIconCaretLeft,
-  balIconCaretRight,
-  balIconCaretUp,
-} from '../constants/icons.constant'
-
-export const defaultConfig: BalConfigState = {
-  region: 'CH',
-  language: 'de',
-  allowedLanguages: ['de', 'fr', 'it', 'en'],
-  icons: {
-    balIconClose,
-    balIconInfoCircle,
-    balIconPlus,
-    balIconMinus,
-    balIconEdit,
-    balIconTrash,
-    balIconNavGoLeft,
-    balIconNavGoRight,
-    balIconNavGoDown,
-    balIconNavGoUp,
-    balIconCaretLeft,
-    balIconCaretDown,
-    balIconCheck,
-    balIconDate,
-    balIconDocument,
-    balIconUpload,
-    balIconMenuBars,
-    balIconFacebook,
-    balIconInstagram,
-    balIconLinkedin,
-    balIconTwitter,
-    balIconX,
-    balIconXing,
-    balIconYoutube,
-    balIconWeb,
-    balIconCaretUp,
-    balIconCaretRight,
-  },
-  fallbackLanguage: 'de',
-  logger: defaultLoggerConfig,
-  animated: true,
-}
-
-export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
+import { BalConfig } from './config.types'
 
 export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   if (!balBrowser.hasWindow) {
@@ -82,11 +12,9 @@ export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   config.reset({
-    ...defaultConfig,
     ...configFromSession(win),
     ...userConfig,
     icons: {
-      ...defaultConfig.icons,
       ...configFromSession(win).icons,
       ...userConfig.icons,
     },
