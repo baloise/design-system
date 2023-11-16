@@ -13,9 +13,7 @@ import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-heading',
-  styleUrls: {
-    css: 'bal-heading.sass',
-  },
+  styleUrl: 'bal-heading.sass',
 })
 export class Heading implements ComponentInterface {
   private headingEl?: HTMLElement

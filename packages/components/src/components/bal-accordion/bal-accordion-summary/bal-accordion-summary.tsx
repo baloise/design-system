@@ -6,9 +6,7 @@ import { AccordionState } from '../../../interfaces'
 
 @Component({
   tag: 'bal-accordion-summary',
-  styleUrls: {
-    css: 'bal-accordion-summary.sass',
-  },
+  styleUrl: 'bal-accordion-summary.sass',
 })
 export class AccordionSummary implements ComponentInterface, Loggable {
   private componentId = `bal-accordion-summary-${accordionSummaryIds++}`

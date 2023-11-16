@@ -3,9 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-table',
-  styleUrls: {
-    css: 'bal-table.sass',
-  },
+  styleUrl: 'bal-table.sass',
 })
 export class Table implements ComponentInterface {
   @Element() el!: HTMLElement

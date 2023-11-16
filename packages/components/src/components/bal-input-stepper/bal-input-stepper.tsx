@@ -32,9 +32,7 @@ import { LogInstance, Loggable, Logger } from '../../utils/log'
 
 @Component({
   tag: 'bal-input-stepper',
-  styleUrls: {
-    css: 'bal-input-stepper.sass',
-  },
+  styleUrl: 'bal-input-stepper.sass',
 })
 export class InputStepper
   implements ComponentInterface, BalConfigObserver, FormInput<number | undefined>, BalAriaFormLinking, Loggable
