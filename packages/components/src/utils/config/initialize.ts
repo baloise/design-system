@@ -2,12 +2,10 @@ import { balBrowser } from '../browser'
 import { config, configFromSession } from './config'
 import { BalConfig } from './config.types'
 
-export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
-  if (!balBrowser.hasWindow) {
-    return
+export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
+  if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
+    win = window as any
   }
-
-  win = window
 
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
@@ -23,4 +21,4 @@ export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem.config = config
 }
 
-export default initialize
+export default setupConfig

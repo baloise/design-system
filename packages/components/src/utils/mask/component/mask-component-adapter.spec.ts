@@ -1,4 +1,4 @@
-import { initialize } from '../../config'
+import { setupConfig } from '../../config'
 import { MaskComponentMock } from '../__test__/mask-component.mock'
 import { MaskMock } from '../__test__/mask.mock'
 import { MaskComponentAdapter } from './mask-component-adapter'
@@ -10,7 +10,7 @@ describe('MaskComponentAdapter', () => {
   let adapter = new MaskComponentAdapter(mask)
 
   beforeEach(() => {
-    initialize()
+    setupConfig()
     mask = new MaskMock()
     mask.minLength = 10
     mask.maxLength = 10

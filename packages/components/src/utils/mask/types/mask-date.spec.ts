@@ -1,4 +1,4 @@
-import { initialize } from '../../config'
+import { setupConfig } from '../../config'
 import { MaskComponentMock } from '../__test__/mask-component.mock'
 import { MaskClipboardContext, MaskClipboardContextEvent, MaskFocusContext, MaskFocusContextEvent } from '../context'
 import { DateMask } from './mask-date'
@@ -8,7 +8,7 @@ describe('MaskComponentAdapter', () => {
   let component = new MaskComponentMock()
 
   beforeEach(() => {
-    initialize()
+    setupConfig()
     mask = new DateMask()
     component = new MaskComponentMock()
   })

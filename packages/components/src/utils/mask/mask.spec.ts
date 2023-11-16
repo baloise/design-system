@@ -1,4 +1,4 @@
-import { initialize } from '../config'
+import { setupConfig } from '../config'
 import { NUMBER_KEYS } from '../constants/keys.constant'
 import { MaskComponentMock } from './__test__/mask-component.mock'
 import { MaskBlock } from './blocks'
@@ -36,7 +36,7 @@ describe('MaskComponentAdapter', () => {
   let component = new MaskComponentMock()
 
   beforeEach(() => {
-    initialize()
+    setupConfig()
     mask = new MyMask()
     component = new MaskComponentMock()
   })

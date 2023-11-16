@@ -12,7 +12,6 @@ export {
   updateBalRegion,
   onBalConfigChange,
   useBalConfig,
-  initialize,
   BalConfig,
   BalConfigState,
   BalConfigObserver,
@@ -23,6 +22,7 @@ export {
   BalLuxembourgInternationalLanguage,
   BalGermanLanguage,
   BalIcons,
+  BalPlatformConfig,
 } from './utils/config'
 
 /**
@@ -55,7 +55,7 @@ export * from './components/bal-label/bal-label.i18n'
 /**
  * Utils
  */
-export { initializeBaloiseDesignSystem } from './initialize'
+export { initialize } from './initialize'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/bal-checkbox/utils/bal-checkbox.util'
