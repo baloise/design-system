@@ -21,6 +21,10 @@ export class NavMenuLinkItem extends NavLinkItem implements BalProps.BalNavMenuL
     this.overviewLink = item.overviewLink ? new NavLinkItem(item.overviewLink, observer) : undefined
   }
 
+  get type(): string {
+    return 'NavMenuLinkItem'
+  }
+
   override renderTouch(
     context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>,
   ) {

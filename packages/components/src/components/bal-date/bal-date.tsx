@@ -482,6 +482,8 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
             required={this.required}
             placeholder={this.placeholder}
             value={this.value}
+            min={this.min}
+            max={this.max}
             invalid={this.invalid}
             readonly={this.readonly}
             disabled={this.disabled}

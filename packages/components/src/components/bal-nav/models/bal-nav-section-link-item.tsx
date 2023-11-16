@@ -18,6 +18,10 @@ export class NavSectionLinkItem extends NavLinkItem implements BalProps.BalNavSe
     this.linkItems = (item.linkItems || []).map(item => new NavLinkItem(item, observer))
   }
 
+  get type(): string {
+    return 'NavSectionLinkItem'
+  }
+
   override renderTouch(
     _context?: Partial<{ onClick: () => void; activeMetaLinkValue: string; activeMenuLinkValue: string }>,
   ) {

@@ -129,6 +129,19 @@ export abstract class AbstractMask implements Mask {
   }
 
   /**
+   * UTILS
+   * ------------------------------------------------------
+   */
+
+  public toParsedValue(inputValue?: string) {
+    return this.onParseValue(inputValue)
+  }
+
+  public toFormattedValue(inputValue?: string) {
+    return this.onFormatValue(inputValue)
+  }
+
+  /**
    * FIRE EVENT METHODS
    * ------------------------------------------------------
    */

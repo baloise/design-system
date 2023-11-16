@@ -87,6 +87,26 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   @Prop() clickable = false
 
   /**
+   * The minimum datetime allowed. Value must be a date string
+   * following the
+   * [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+   * such as `1996-12-19`. The format does not have to be specific to an exact
+   * datetime. For example, the minimum could just be the year, such as `1994`.
+   * Defaults to the beginning of the year, 100 years ago from today.
+   */
+  @Prop({ mutable: true }) min?: string
+
+  /**
+   * The maximum datetime allowed. Value must be a date string
+   * following the
+   * [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+   * `1996-12-19`. The format does not have to be specific to an exact
+   * datetime. For example, the maximum could just be the year, such as `1994`.
+   * Defaults to the end of this year.
+   */
+  @Prop({ mutable: true }) max?: string
+
+  /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
   @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
@@ -224,6 +244,7 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
 
   render() {
     const block = BEM.block('input-date')
+    const native = block.element('native')
 
     return (
       <Host
@@ -248,7 +269,6 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           aria-describedby={this.ariaForm.messageId}
           aria-invalid={this.invalid === true ? 'true' : 'false'}
           aria-disabled={this.disabled ? 'true' : null}
-          name={this.name}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -263,6 +283,16 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
           onBlur={event => this.maskAdapter.bindBlur(event)}
           onPaste={event => this.maskAdapter.bindPaste(event)}
         />
+        <input
+          type="date"
+          class={{ ...native.class() }}
+          name={this.name}
+          min={this.min}
+          max={this.max}
+          value={this.value}
+          tabindex={-1}
+          aria-hidden="true"
+        ></input>
       </Host>
     )
   }
