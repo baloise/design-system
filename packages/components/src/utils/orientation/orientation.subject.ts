@@ -29,4 +29,4 @@ export class BalOrientationSubject extends Subject<BalOrientationObserver> {
   }
 }
 
-export const balOrientationSubject = new BalOrientationSubject()
+export const balOrientationSubject = /*@__PURE__*/ new BalOrientationSubject()

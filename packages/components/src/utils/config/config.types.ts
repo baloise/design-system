@@ -36,3 +36,11 @@ export interface BalConfigState {
   logger: BalLogger
   animated: boolean
 }
+
+export interface BalPlatformConfig {
+  jmp?: (c: any) => any
+  raf?: (c: any) => number
+  ael?: (el: any, eventName: string, listener: any, options: any) => void
+  rel?: (el: any, eventName: string, listener: any, options: any) => void
+  ce?: (eventName: string, opts?: any) => any
+}
