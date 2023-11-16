@@ -8,9 +8,7 @@ import { balBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-navigation',
-  styleUrls: {
-    css: 'bal-navigation.sass',
-  },
+  styleUrl: 'bal-navigation.sass',
 })
 export class Navigation implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLElement

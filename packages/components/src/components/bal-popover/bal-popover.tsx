@@ -26,9 +26,7 @@ export interface PopoverPresentOptions {
 
 @Component({
   tag: 'bal-popover',
-  styleUrls: {
-    css: 'bal-popover.sass',
-  },
+  styleUrl: 'bal-popover.sass',
 })
 export class Popover implements ComponentInterface, Loggable, BalBreakpointObserver {
   private popoverId = `bal-po-${PopoverIds++}`

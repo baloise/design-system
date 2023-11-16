@@ -20,9 +20,7 @@ import { AccordionState } from '../../interfaces'
 
 @Component({
   tag: 'bal-accordion',
-  styleUrls: {
-    css: 'bal-accordion.sass',
-  },
+  styleUrl: 'bal-accordion.sass',
 })
 export class Accordion implements ComponentInterface, BalConfigObserver, Loggable {
   private componentId = `bal-accordion-${accordionIds++}`

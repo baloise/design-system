@@ -3,9 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-list',
-  styleUrls: {
-    css: 'bal-list.sass',
-  },
+  styleUrl: 'bal-list.sass',
 })
 export class List {
   @Element() el!: HTMLElement

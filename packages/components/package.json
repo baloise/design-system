@@ -37,10 +37,7 @@
   "types": "dist/types/interfaces.d.ts",
   "files": [
     "dist/",
-    "loader/",
-    "src/styles/",
-    "src/components/**/*.sass",
-    "src/components/**/*.scss"
+    "loader/"
   ],
   "scripts": {
     "==================== START =========================": "================================",
@@ -68,7 +65,7 @@
     "@baloise/web-app-utils": "3.11.2",
     "@floating-ui/dom": "^1.5.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~4.7.1",
+    "@stencil/core": "~4.7.2",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "date-fns": "~2.30.0",
