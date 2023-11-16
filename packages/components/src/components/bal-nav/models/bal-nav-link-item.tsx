@@ -40,12 +40,12 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
     }
   }
 
-  get isLink(): boolean {
-    return this.href !== undefined && this.href !== null && this.href !== ''
+  get type(): string {
+    return 'NavLinkItem'
   }
 
-  get type(): string {
-    return this.constructor.name
+  get isLink(): boolean {
+    return this.href !== undefined && this.href !== null && this.href !== ''
   }
 
   toJson(): BalEvents.BalNavClickedItem {

@@ -12,4 +12,6 @@ export class MaskMock implements Mask {
   firePaste = vi.fn()
   fireClick = vi.fn()
   fireValueChanged = vi.fn()
+  toParsedValue = vi.fn()
+  toFormattedValue = vi.fn()
 }

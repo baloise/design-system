@@ -24,6 +24,10 @@ export class NavMetaButton extends NavLinkItem implements BalProps.BalNavMetaBut
     this.target = item.target || '_self'
   }
 
+  get type(): string {
+    return 'NavMetaButton'
+  }
+
   get isLink() {
     return !!this.href
   }
