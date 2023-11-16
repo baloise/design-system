@@ -73,9 +73,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-datepicker',
-  styleUrls: {
-    css: 'bal-datepicker.sass',
-  },
+  styleUrl: 'bal-datepicker.sass',
 })
 export class Datepicker
   implements

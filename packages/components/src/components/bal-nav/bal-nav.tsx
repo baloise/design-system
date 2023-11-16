@@ -36,9 +36,7 @@ import { waitAfterIdleCallback, waitForComponent } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-nav',
-  styleUrls: {
-    css: 'bal-nav.sass',
-  },
+  styleUrl: 'bal-nav.sass',
 })
 export class NavMetaBar
   implements

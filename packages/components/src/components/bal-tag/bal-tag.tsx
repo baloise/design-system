@@ -4,9 +4,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-tag',
-  styleUrls: {
-    css: 'bal-tag.sass',
-  },
+  styleUrl: 'bal-tag.sass',
 })
 export class Tag {
   @Element() el!: HTMLElement
