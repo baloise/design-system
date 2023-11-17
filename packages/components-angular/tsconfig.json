@@ -10,7 +10,8 @@
     "types": ["@baloise/design-system-components"],
     "paths": {
       "@baloise/design-system-components/loader": ["../components/loader"],
-      "@baloise/design-system-components": ["../components"]
+      "@baloise/design-system-components": ["../components"],
+      "@baloise/design-system-components-angular/common": ["common/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

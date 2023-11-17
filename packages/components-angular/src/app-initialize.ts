@@ -1,16 +1,9 @@
 import { NgZone } from '@angular/core'
-import { BalConfig, BalPlatformConfig, initialize } from '@baloise/design-system-components'
+import { BalPlatformConfig, initialize } from '@baloise/design-system-components'
 import { applyPolyfills, defineCustomElements } from '@baloise/design-system-components/loader'
-import { raf } from './util/util'
 
-export interface BaloiseDesignSystemAngularConfig {
-  applyPolyfills?: boolean
-  defaults?: BalConfig
-  forms?: {
-    setInvalid?: boolean
-    invalidateOn?: 'touched' | 'dirty'
-  }
-}
+import { raf } from '@baloise/design-system-components-angular/common'
+import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Document, zone: NgZone) => {
   return async (): Promise<void> => {

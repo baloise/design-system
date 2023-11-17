@@ -1,18 +1,23 @@
-import { AfterViewInit, Component, HostBinding, Inject, Injector, Input } from '@angular/core'
+import { AfterViewInit, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
-import { BalConfigToken, BaloiseDesignSystemAngularConfig } from '../index'
-import { raf } from '../util/util'
+import { BaloiseDesignSystemAngularConfig } from '../config'
+import { raf } from '../utils'
+import { BalConfigToken } from '../token'
 
-@Component({
+// @Component({
+//   selector: 'bal-ng-error',
+//   template: `<ng-content *ngIf="hasError"></ng-content>`,
+//   styles: [
+//     `
+//       :host {
+//         display: inline-block;
+//       }
+//     `,
+//   ],
+// })
+
+@Directive({
   selector: 'bal-ng-error',
-  template: `<ng-content *ngIf="hasError"></ng-content>`,
-  styles: [
-    `
-      :host {
-        display: inline-block;
-      }
-    `,
-  ],
 })
 export class BalNgErrorComponent implements AfterViewInit {
   /**
