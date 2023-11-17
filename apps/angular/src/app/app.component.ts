@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { RouterOutlet } from '@angular/router'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { BaloiseDesignSystemModule } from 'src/generated/src'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
@@ -30,7 +30,6 @@ export interface UpdateControl {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
-    RouterOutlet,
     ReactiveFormsModule,
     BaloiseDesignSystemModule,
     InputComponent,
@@ -77,8 +76,6 @@ export interface UpdateControl {
           </div>
 
           <pre data-test="result">{{ myForm.value | json }}</pre>
-
-          <router-outlet></router-outlet>
         </form>
       </main>
     </bal-app>

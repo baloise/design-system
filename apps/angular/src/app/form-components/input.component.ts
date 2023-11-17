@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BaloiseDesignSystemModule } from 'src/generated/src'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
 import { UpdateControl } from '../app.component'
 
 @Component({
