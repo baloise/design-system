@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { BalModalService, BaloiseDesignSystemModule } from 'v16/src/generated/src'
+import { BalModalService, BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'

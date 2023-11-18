@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BaloiseDesignSystemModule } from 'v16/src/generated/src'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { UpdateControl } from '../app.component'
 

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalModalService, BaloiseDesignSystemModule } from 'v16/src/generated/src'
+import { BalModalService, BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 @Component({
   selector: 'app-modal',
