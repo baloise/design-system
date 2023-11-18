@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BalModalService, BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
@@ -17,6 +17,7 @@ import { RadioComponent } from './form-components/radio.component'
 import { RadioButtonsComponent } from './form-components/radio-buttons.component'
 import { DateComponent } from './form-components/date.component'
 import { InputDateComponent } from './form-components/input-date.component'
+import { ModalComponent } from './modal.component'
 
 export interface UpdateControl {
   name: string
@@ -75,12 +76,17 @@ export interface UpdateControl {
           </div>
 
           <pre data-test="result">{{ myForm.value | json }}</pre>
+          <pre data-test="result-modal">{{ modalData | json }}</pre>
         </form>
+        <bal-button (click)="openModal()">Open Modal</bal-button>
       </main>
     </bal-app>
   `,
 })
 export class AppComponent {
+  modalData!: any
+  modal!: HTMLBalModalElement
+
   myForm = new FormGroup({
     input: new FormControl('Init Value', [Validators.required]),
     textarea: new FormControl('Init Value', [Validators.required]),
@@ -101,6 +107,8 @@ export class AppComponent {
     radioButtons: new FormControl('Kiwi', [Validators.required]),
   })
 
+  constructor(private modalService: BalModalService) {}
+
   updateValue(option: UpdateControl) {
     const control = this.myForm.get(option.name)
     if (control) {
@@ -110,5 +118,27 @@ export class AppComponent {
 
   onSubmit() {
     console.warn(this.myForm.value)
+  }
+
+  async openModal() {
+    this.modal = await this.modalService.create({
+      component: ModalComponent,
+      componentProps: {
+        firstName: 'Peter',
+        lastName: 'Parker',
+      },
+    })
+    await this.modal.present()
+
+    // Collect the data from the modal through the dismiss event
+    const { data } = await this.modal.onWillDismiss()
+    this.modalData = data
+
+    // React onDidDismiss
+    await this.modal.onDidDismiss()
+  }
+
+  closeModal() {
+    this.modal.dismiss()
   }
 }
