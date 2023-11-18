@@ -13,6 +13,12 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: test-ng-v16-e2e
+        output: apps/angular/v16/TestNgv16E2eBuild.zip
+        paths: apps/angular/v16/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: test-e2e
         output: test/TestE2eBuild.zip
         paths: test/generated

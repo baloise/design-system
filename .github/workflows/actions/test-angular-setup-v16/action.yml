@@ -19,6 +19,6 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
-        name: test-ng-e2e
+        name: test-ng-v16-e2e
         path: ./apps/angular/v16/dist
-        filename: TestNgE2eBuild.zip
+        filename: TestNgv16E2eBuild.zip

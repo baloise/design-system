@@ -16,6 +16,6 @@ runs:
       uses: actions/upload-artifact@v3
       if: failure()
       with:
-        name: cypress-snapshots-angular
+        name: cypress-snapshots-angular-v16
         path: apps/angular/v16/cypress/snapshots
 
