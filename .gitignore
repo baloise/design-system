@@ -123,8 +123,6 @@ packages/components-vue/src/vue-component-lib/
 packages/components-react/src/components.ts
 packages/components-react/src/react-component-lib/
 
-packages/components-angular/src/directives/
-
 packages/tokens/src/tokens.ts
 packages/icons/src/icons.json
 packages/brand-icons/src/icons.json
