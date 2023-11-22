@@ -7,6 +7,12 @@ runs:
       run: npm pkg delete scripts.prepare
       shell: bash
 
+    - name: Download Components Pack
+      uses: actions/download-artifact@v3
+      with:
+        name: baloise-design-system-components
+        path: ./
+
     - name: Install Dependencies
       run: npm ci
       working-directory: ./apps/angular/v16
@@ -16,9 +22,3 @@ runs:
       run: npm run cy:install
       working-directory: ./apps/angular/v16
       shell: bash
-
-    - uses: ./.github/workflows/actions/download-archive
-      with:
-        name: test-ng-v16-e2e
-        path: ./apps/angular/v16/dist
-        filename: TestNgv16E2eBuild.zip
