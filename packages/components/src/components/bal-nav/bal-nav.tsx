@@ -15,7 +15,7 @@ import {
 import { BEM } from '../../utils/bem'
 import { LogInstance, Loggable, Logger } from '../../utils/log'
 import { BalMutationObserver, ListenToMutation } from '../../utils/mutation'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../utils/breakpoints'
 import { NavMetaLinkItem } from './models/bal-nav-meta-link-item'
 import { NavMetaButton } from './models/bal-nav-meta-button'
 import { BalScrollHandler } from '../../utils/scroll'
@@ -58,8 +58,8 @@ export class NavMetaBar
 
   log!: LogInstance
 
-  @State() isTouch = false
-  @State() isDesktop = true
+  @State() isTouch = balBreakpoints.isTouch
+  @State() isDesktop = balBreakpoints.isDesktop
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isFlyoutActive = false

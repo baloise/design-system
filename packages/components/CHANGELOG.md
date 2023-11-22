@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 14.5.0
+
+### Patch Changes
+
+- [#1155](https://github.com/baloise/design-system/pull/1155) - The desktop variant of the `nav` component now features a 1rem gap between its link columns.
+
+- [#1151](https://github.com/baloise/design-system/pull/1151) - The `nav` component detects the device breakpoint during its construction phase.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.5.0
+  - @baloise/design-system-fonts@14.5.0
+  - @baloise/design-system-icons@14.5.0
+  - @baloise/design-system-tokens@14.5.0
+
 ## 14.4.0
 
 ### Patch Changes
