@@ -11,11 +11,15 @@ runs:
       run: npm run ci:build
       shell: bash
 
-    - uses: ./.github/workflows/actions/upload-archive
+    - name: Pack Components
+      run: npm pack ./packages/components
+      shell: bash
+
+    - name: Upload Pack Components
+      uses: actions/upload-artifact@v3
       with:
-        name: test-ng-v16-e2e
-        output: apps/angular/v16/TestNgv16E2eBuild.zip
-        paths: apps/angular/v16/dist
+        name: baloise-design-system-components
+        path: baloise-design-system-components-*.tgz
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
