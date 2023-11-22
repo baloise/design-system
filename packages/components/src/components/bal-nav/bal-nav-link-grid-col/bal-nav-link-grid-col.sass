@@ -19,12 +19,16 @@
     padding-right: var(--bal-space-large)
   //
   // Non static columns
+  &.bal-nav-link-grid-col--is-static
+    padding-left: 0
+  //
+  // Non static columns
   &:not(.bal-nav-link-grid-col--is-static)
     .bal-nav-link-grid-col__inner
       +widescreen
         display: flex
         flex-wrap: wrap
-        gap: var(--bal-space-normal)
+        gap: var(--bal-space-large)
       //
       // Link group
       .bal-nav-link-group
@@ -34,4 +38,4 @@
           padding-left: 0
           padding-right: 0
         +widescreen
-          width: calc(50% - calc(var(--bal-space-normal) / 2))
+          width: calc(50% - calc(var(--bal-space-large) / 2))
