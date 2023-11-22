@@ -1,6 +1,5 @@
 #!/bin/bash
 
-rm -f *.tgz
 rm -f angular.json
 rm -f cypress.config.ts
 rm -f README.md

@@ -4,9 +4,9 @@
   "version": "0.0.13",
   "scripts": {
     "ng": "ng",
-    "postinstall": "npm run clean && npm run sync",
     "sync": "sh scripts/sync.sh",
     "clean": "sh scripts/clean.sh",
+    "postinstall": "sh scripts/postinstall.sh",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
