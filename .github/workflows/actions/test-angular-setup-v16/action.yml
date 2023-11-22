@@ -11,7 +11,7 @@ runs:
       uses: actions/download-artifact@v3
       with:
         name: baloise-design-system-components
-        path: ./
+        path: ./apps/angular/v16
 
     - name: Install Dependencies
       run: npm ci
