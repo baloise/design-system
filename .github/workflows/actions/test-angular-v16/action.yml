@@ -8,7 +8,7 @@ runs:
       with:
         start: npm run cy:start
         wait-on: 'http://localhost:4200'
-        working-directory: apps/angular/v16
+        working-directory: apps/angular/build/v16
         install: false
         browser: chrome
 
@@ -17,5 +17,5 @@ runs:
       if: failure()
       with:
         name: cypress-snapshots-angular-v16
-        path: apps/angular/v16/cypress/snapshots
+        path: apps/angular/build/v16/cypress/snapshots
 
