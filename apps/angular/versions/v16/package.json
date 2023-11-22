@@ -1,11 +1,11 @@
 {
-  "name": "apps-angular",
+  "name": "apps-angular-v16",
   "private": true,
   "version": "0.0.13",
   "scripts": {
     "ng": "ng",
-    "start": "./build.sh && ng serve",
-    "build": "./build.sh && ng build",
+    "start": "./build.sh v16 && ng serve",
+    "build": "./build.sh v16 && ng build",
     "ng:build": "./build.sh",
     "watch": "ng build --watch --configuration development",
     "ng:test": "ng test",
