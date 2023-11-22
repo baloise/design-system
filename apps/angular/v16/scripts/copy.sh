@@ -9,4 +9,4 @@ mkdir -p src/generated
 cp -R ../../../packages/components-angular/common src/generated/common
 cp -R ../../../packages/components-angular/src src/generated/src
 
-echo "Angular project is synced"
+echo "=> Angular project is copied"

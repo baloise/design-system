@@ -33,3 +33,8 @@ runs:
       run: npm run cy:install
       working-directory: ./apps/angular/v16
       shell: bash
+
+    - name: Build Angular App
+      run: npm run build
+      working-directory: ./apps/angular/v16
+      shell: bash
