@@ -13,7 +13,7 @@ BUILD_DIR="build"
 FULL_BASE_DIR="${APPS_DIR}/${BASE_DIR}/."
 
 FULL_APP_DIR="${APPS_DIR}/versions/v16/."
-BUILD_APP_16_DIR="${APPS_DIR}/${BUILD_DIR}/versions/v16/"
+BUILD_APP_16_DIR="${APPS_DIR}/${BUILD_DIR}/v16/"
 
 # Make the build directory if it does not already exist.
 mkdir -p $BUILD_APP_16_DIR
