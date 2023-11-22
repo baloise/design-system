@@ -11,15 +11,17 @@ runs:
       run: npm run ci:build
       shell: bash
 
-    - name: Pack Components
-      run: npm pack ./packages/components
-      shell: bash
-
-    - name: Upload Pack Components
-      uses: actions/upload-artifact@v3
+    - uses: ./.github/workflows/actions/upload-archive
       with:
-        name: baloise-design-system-components
-        path: baloise-design-system-components-*.tgz
+        name: components-dist
+        output: packages/components/ComponentsDist.zip
+        paths: packages/components/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-loader
+        output: packages/components/ComponentsLoader.zip
+        paths: packages/components/loader
 
     - uses: ./.github/workflows/actions/upload-archive
       with:

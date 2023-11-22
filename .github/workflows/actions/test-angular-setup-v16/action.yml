@@ -7,14 +7,25 @@ runs:
       run: npm pkg delete scripts.prepare
       shell: bash
 
-    - name: Download Components Pack
-      uses: actions/download-artifact@v3
+    - uses: ./.github/workflows/actions/download-archive
       with:
-        name: baloise-design-system-components
-        path: ./apps/angular/v16
+        name: components-dist
+        path: ./packages/components
+        filename: ComponentsDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-loader
+        path: ./packages/components
+        filename: ComponentsLoader.zip
 
     - name: Install Dependencies
-      run: npm install
+      run: npm ci
+      working-directory: ./apps/angular/v16
+      shell: bash
+
+    - name: Post Install
+      run: npm run postinstall
       working-directory: ./apps/angular/v16
       shell: bash
 
