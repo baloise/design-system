@@ -21,6 +21,12 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
+        name: icons-dist
+        path: packages/icons
+        filename: IconsDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
         name: css-dist
         path: packages/css
         filename: CssDist.zip

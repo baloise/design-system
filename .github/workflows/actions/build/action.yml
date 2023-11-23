@@ -25,6 +25,12 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: icons-dist
+        output: packages/icons/IconsDist.zip
+        paths: packages/icons/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: components-dist
         output: packages/components/ComponentsDist.zip
         paths: packages/components/dist
