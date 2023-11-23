@@ -1,5 +1,12 @@
 # @baloise/design-system-testing
 
+## 14.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`2cb0abbaf`](https://github.com/baloise/design-system/commit/2cb0abbafc6cc344ffce9928b0341c0762c1e49b)]:
+  - @baloise/design-system-components@14.5.1
+
 ## 14.5.0
 
 ### Patch Changes

@@ -1,5 +1,7 @@
 # @baloise/design-system-brand-icons
 
+## 14.5.1
+
 ## 14.5.0
 
 ### Minor Changes
