@@ -1,12 +1,9 @@
-// SASS mixins and variables
-@import '@baloise/design-system-css/sass/mixins';
-
 // Resets CSS for all browser
 @import '@baloise/design-system-css/css/normalize';
 @import '@baloise/design-system-css/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/sass/font';
+@import '@baloise/design-system-css/css/font';
 
 // Core CSS, always required
 @import '@baloise/design-system-css/css/core';
