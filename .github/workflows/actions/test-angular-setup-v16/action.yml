@@ -19,11 +19,11 @@ runs:
         path: packages/tokens
         filename: TokensDist.zip
 
-    - uses: ./.github/workflows/actions/download-archive
-      with:
-        name: icons-dist
-        path: packages/icons
-        filename: IconsDist.zip
+    # - uses: ./.github/workflows/actions/download-archive
+    #   with:
+    #     name: icons-dist
+    #     path: packages/icons
+    #     filename: IconsDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:

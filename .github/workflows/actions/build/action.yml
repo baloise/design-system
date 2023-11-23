@@ -23,11 +23,11 @@ runs:
         output: packages/css/CssDist.zip
         paths: packages/css/css
 
-    - uses: ./.github/workflows/actions/upload-archive
-      with:
-        name: icons-dist
-        output: packages/icons/IconsDist.zip
-        paths: packages/icons/dist
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   with:
+    #     name: icons-dist
+    #     output: packages/icons/IconsDist.zip
+    #     paths: packages/icons/dist
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
