@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 14.5.1
+
+### Patch Changes
+
+- [#1157](https://github.com/baloise/design-system/pull/1157) - `nav` link items are consistently aligned to the left.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.5.1
+  - @baloise/design-system-fonts@14.5.1
+  - @baloise/design-system-icons@14.5.1
+  - @baloise/design-system-tokens@14.5.1
+
 ## 14.5.0
 
 ### Patch Changes
