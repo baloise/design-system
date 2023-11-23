@@ -25,6 +25,12 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: components-angular
+        output: packages/components/src/ComponentsAngular.zip
+        paths: packages/components-angular/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: test-e2e
         output: test/TestE2eBuild.zip
         paths: test/generated

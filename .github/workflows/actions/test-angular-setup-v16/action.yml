@@ -19,6 +19,12 @@ runs:
         path: ./packages/components
         filename: ComponentsLoader.zip
 
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-angular
+        path: ./packages/components-angular/src
+        filename: ComponentsAngular.zip
+
     - name: Install Dependencies
       run: npm ci
       working-directory: ./apps/angular/v16
