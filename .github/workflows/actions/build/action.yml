@@ -13,6 +13,18 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: tokens-dist
+        output: packages/tokens/TokensDist.zip
+        paths: packages/tokens/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: css-dist
+        output: packages/css/CssDist.zip
+        paths: packages/css/css
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: components-dist
         output: packages/components/ComponentsDist.zip
         paths: packages/components/dist

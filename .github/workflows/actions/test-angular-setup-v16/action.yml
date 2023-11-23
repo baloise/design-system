@@ -14,6 +14,18 @@ runs:
         filename: ComponentsDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
+        with:
+          name: tokens-dist
+          path: packages/tokens
+          filename: TokensDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: css-dist
+        path: packages/css
+        filename: CssDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
       with:
         name: components-loader
         path: ./packages/components
