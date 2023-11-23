@@ -1,11 +1,10 @@
 {
   "name": "apps-angular-16",
   "private": true,
-  "version": "0.0.13",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "link": "bash scripts/link.sh",
-    "sync": "bash scripts/sync.sh",
     "clean": "bash scripts/clean.sh",
     "copy": "bash scripts/copy.sh",
     "postinstall": "npm run clean && npm run copy && npm run link",
