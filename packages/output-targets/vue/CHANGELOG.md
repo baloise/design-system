@@ -1,5 +1,7 @@
 # @baloise/design-system-output-target-vue
 
+## 14.5.1
+
 ## 14.5.0
 
 ## 14.4.0
