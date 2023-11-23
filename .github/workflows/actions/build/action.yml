@@ -13,9 +13,45 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
-        name: test-ng-v16-e2e
-        output: apps/angular/v16/TestNgv16E2eBuild.zip
-        paths: apps/angular/v16/dist
+        name: tokens-dist
+        output: packages/tokens/TokensDist.zip
+        paths: packages/tokens/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: css-dist
+        output: packages/css/CssDist.zip
+        paths: packages/css/css
+
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   with:
+    #     name: icons-dist
+    #     output: packages/icons/IconsDist.zip
+    #     paths: packages/icons/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-dist
+        output: packages/components/ComponentsDist.zip
+        paths: packages/components/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-loader
+        output: packages/components/ComponentsLoader.zip
+        paths: packages/components/loader
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular
+        output: packages/components/src/ComponentsAngular.zip
+        paths: packages/components-angular/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: testing-dist
+        output: packages/testing/TestingDist.zip
+        paths: packages/testing/dist
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
