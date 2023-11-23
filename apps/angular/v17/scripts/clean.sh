@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -f *.tgz
 rm -f angular.json
 rm -f cypress.config.ts
 rm -f README.md
@@ -10,4 +11,4 @@ rm -f web-server.js
 rm -rf cypress
 rm -rf src
 
-echo "Angular project is cleand"
+echo "=> Angular project is clean"
