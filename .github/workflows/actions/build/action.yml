@@ -43,6 +43,12 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: testing-dist
+        output: packages/testing/TestingDist.zip
+        paths: packages/testing/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: test-e2e
         output: test/TestE2eBuild.zip
         paths: test/generated

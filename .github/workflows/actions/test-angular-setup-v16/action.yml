@@ -14,10 +14,10 @@ runs:
         filename: ComponentsDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
-        with:
-          name: tokens-dist
-          path: packages/tokens
-          filename: TokensDist.zip
+      with:
+        name: tokens-dist
+        path: packages/tokens
+        filename: TokensDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:
@@ -36,6 +36,12 @@ runs:
         name: components-angular
         path: ./packages/components-angular/src
         filename: ComponentsAngular.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: testing-dist
+        path: ./packages/testing
+        filename: TestingDist.zip
 
     - name: Install Dependencies
       run: npm ci
