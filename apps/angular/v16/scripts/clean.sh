@@ -8,6 +8,9 @@ rm -f tsconfig.app.json
 rm -f tsconfig.spec.json
 rm -f web-server.js
 
+rm -rf .angular
+rm -rf node_modules
+rm -rf dist
 rm -rf cypress
 rm -rf src
 
