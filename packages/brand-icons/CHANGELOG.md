@@ -1,5 +1,25 @@
 # @baloise/design-system-brand-icons
 
+## 14.5.1
+
+## 14.5.0
+
+### Minor Changes
+
+- [#1153](https://github.com/baloise/design-system/pull/1153) - Fresh brand icons have been introduced.
+
+  - car-headlights-right
+  - car-stormy-weather
+  - cigarette-smoke
+  - damage-parked-car
+  - environment
+  - funnel
+  - handgrenade
+  - magnifying-glass
+  - photovoltaic
+  - pistol
+  - trolley-bus
+
 ## 14.4.0
 
 ## 14.3.0

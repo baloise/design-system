@@ -465,7 +465,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-mobile:** fix styles, apply hover mixin and active modifier ([6e08a0e](https://github.com/baloise/design-system/commit/6e08a0e77a241923390ee86113e12d355d96510d))
 * **nav-mobile:** remove comment ([9e62218](https://github.com/baloise/design-system/commit/9e622187f8189df012ad00f820ac3ff0adb8f984))
 
-
 ### Bug Fixes
 
 * **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
