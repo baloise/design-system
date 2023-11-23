@@ -1,5 +1,8 @@
-name: 'Test Angular v16'
-description: 'Test Angular v16'
+name: 'Test Angular'
+description: 'Test Angular'
+inputs:
+  app:
+    description: 'The specific test application'
 runs:
   using: 'composite'
   steps:
@@ -8,7 +11,7 @@ runs:
       with:
         start: npm run cy:start
         wait-on: 'http://localhost:4200'
-        working-directory: apps/angular/v16
+        working-directory: apps/angular/${{ inputs.app }}
         install: false
         browser: chrome
 
@@ -16,6 +19,6 @@ runs:
       uses: actions/upload-artifact@v3
       if: failure()
       with:
-        name: cypress-snapshots-angular-v16
-        path: apps/angular/v16/cypress/snapshots
+        name: cypress-snapshots-angular-${{ inputs.app }}
+        path: apps/angular/${{ inputs.app }}/cypress/snapshots
 

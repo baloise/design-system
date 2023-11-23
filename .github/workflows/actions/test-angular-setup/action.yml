@@ -1,5 +1,8 @@
-name: 'Angular Setup v16'
-description: 'Angular Setup v16'
+name: 'Angular Setup'
+description: 'Angular Setup'
+inputs:
+  app:
+    description: 'The specific test application'
 runs:
   using: 'composite'
   steps:
@@ -45,20 +48,20 @@ runs:
 
     - name: Install Dependencies
       run: npm ci
-      working-directory: ./apps/angular/v16
+      working-directory: ./apps/angular/${{ inputs.app }}
       shell: bash
 
     - name: Post Install
       run: npm run postinstall
-      working-directory: ./apps/angular/v16
+      working-directory: ./apps/angular/${{ inputs.app }}
       shell: bash
 
     - name: Install Cypress
       run: npm run cy:install
-      working-directory: ./apps/angular/v16
+      working-directory: ./apps/angular/${{ inputs.app }}
       shell: bash
 
     - name: Build Angular App
       run: npm run build
-      working-directory: ./apps/angular/v16
+      working-directory: ./apps/angular/${{ inputs.app }}
       shell: bash
