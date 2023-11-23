@@ -57,18 +57,5 @@
   "typings": "dist/index.d.ts",
   "metadata": "dist/baloise-design-system-components-angular.metadata.json",
   "sideEffects": false,
-  "es2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    },
-    ".": {
-      "types": "./dist/index.d.ts",
-      "esm2020": "./dist/esm2020/baloise-design-system-components-angular.mjs",
-      "es2020": "./dist/fesm2020/baloise-design-system-components-angular.mjs",
-      "es2015": "./dist/fesm2015/baloise-design-system-components-angular.mjs",
-      "node": "./dist/fesm2015/baloise-design-system-components-angular.mjs",
-      "default": "./dist/fesm2020/baloise-design-system-components-angular.mjs"
-    }
-  }
+  "es2020": "dist/fesm2020/baloise-design-system-components-angular.mjs"
 }
