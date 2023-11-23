@@ -128,7 +128,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        apps: [v16]
+        apps: [v16,v17]
     needs: [build]
     steps:
       - uses: actions/checkout@v3
