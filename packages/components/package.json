@@ -37,7 +37,9 @@
   "types": "dist/types/interfaces.d.ts",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "components/",
+    "hydrate/"
   ],
   "scripts": {
     "==================== START =========================": "================================",
