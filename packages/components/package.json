@@ -36,7 +36,9 @@
   "collection": "dist/collection/collection-manifest.json",
   "types": "dist/types/interfaces.d.ts",
   "files": [
+    "components/",
     "dist/",
+    "hydrate/",
     "loader/"
   ],
   "scripts": {

@@ -56,7 +56,7 @@ export * from './components/bal-label/bal-label.i18n'
 /**
  * Utils
  */
-export { initialize } from './initialize'
+export { initializeBaloiseDesignSystem } from './initialize'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 export { newBalCheckboxOption } from './components/bal-checkbox/utils/bal-checkbox.util'

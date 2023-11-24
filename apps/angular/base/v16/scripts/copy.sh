@@ -7,6 +7,6 @@ mkdir -p src/generated
 
 # Copy angular proxy library to version space
 cp -R ../../../packages/components-angular/common src/generated/common
-cp -R ../../../packages/components-angular/src src/generated/src
+cp -R ../../../packages/components-angular/legacy src/generated/legacy
 
 echo "=> Angular project is copied"

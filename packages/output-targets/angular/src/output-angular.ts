@@ -1,7 +1,7 @@
 import path from 'path'
 import type { CompilerCtx, ComponentCompilerMeta, Config } from '@stencil/core/internal'
 import type { OutputTargetAngular, PackageJSON } from './types'
-import { relativeImport, normalizePath, sortBy, readPackageJson } from './utils'
+import { relativeImport, normalizePath, sortBy, readPackageJson, dashToPascalCase } from './utils'
 import { createComponentDefinition } from './generate-angular-component'
 import { generateAngularDirectivesFile } from './generate-angular-directives-file'
 import generateValueAccessors from './generate-value-accessors'
@@ -21,7 +21,9 @@ export async function angularDirectiveProxyOutput(
   await Promise.all([
     compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
     copyResources(config, outputTarget),
-    generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
+    outputTarget.outputType !== 'standalone'
+      ? generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget)
+      : Promise.resolve(),
     generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
   ])
 }
@@ -60,19 +62,43 @@ export function generateProxies(
   const dtsFilePath = path.join(rootDir, distTypesDir, GENERATED_DTS)
   const componentsTypeFile = relativeImport(outputTarget.directivesProxyFile, dtsFilePath, '.d.ts')
 
-  const imports = `/* tslint:disable */
-/* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';\n`
+  let imports = []
+  imports.push(`/* tslint:disable */`)
+  imports.push(`/* auto-generated angular directive proxies */`)
+  imports.push(
+    `import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`,
+  )
+  imports.push(`import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';`)
+
+  if (outputTarget.outputType === 'standalone' || outputTarget.outputType === 'module') {
+    imports = [
+      ...imports,
+      ...components.map(component => {
+        const tagNameAsPascal = dashToPascalCase(component.tagName)
+        return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
+          !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
+        )}/components/${component.tagName}';`
+        // return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
+        //   !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
+        // )}/dist/components/${component.tagName}';`
+      }),
+    ]
+  }
+
+  imports.push(``)
 
   const typeImports = !outputTarget.componentCorePackage
     ? `import { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
     : `import { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}';`
 
   const final: string[] = [
-    imports,
+    imports.join('\n'),
     typeImports,
-    components.map(createComponentDefinition(outputTarget.componentCorePackage!, distTypesDir, rootDir)).join('\n'),
+    components
+      .map(
+        createComponentDefinition(outputTarget.componentCorePackage!, distTypesDir, rootDir, outputTarget.outputType),
+      )
+      .join('\n'),
   ]
 
   return final.join('\n') + '\n'

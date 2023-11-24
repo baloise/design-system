@@ -43,4 +43,25 @@ export const AngularGenerator = () =>
     directivesArrayFile: '../components-angular/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [...docComponents],
+    outputType: 'module',
   })
+
+export const AngularLegacyGenerator = () =>
+  angularOutputTarget({
+    componentCorePackage: '@baloise/design-system-components',
+    directivesProxyFile: '../components-angular/legacy/src/generated/proxies.ts',
+    directivesArrayFile: '../components-angular/legacy/src/generated/proxies-list.ts',
+    valueAccessorConfigs: angularValueAccessorBindings,
+    excludeComponents: [...docComponents],
+    outputType: 'legacy',
+  })
+
+// export const AngularStandaloneGenerator = () =>
+// angularOutputTarget({
+//   componentCorePackage: '@baloise/design-system-components',
+//   directivesProxyFile: '../components-angular/standalone/src/generated/proxies.ts',
+//   directivesArrayFile: '../components-angular/standalone/src/generated/proxies-list.ts',
+//   valueAccessorConfigs: angularValueAccessorBindings,
+//   excludeComponents: [...docComponents, 'bal-input'],
+//   outputType: 'standalone',
+// })

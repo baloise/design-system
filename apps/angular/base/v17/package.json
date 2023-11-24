@@ -5,9 +5,7 @@
   "scripts": {
     "ng": "ng",
     "link": "bash scripts/link.sh",
-    "clean": "bash scripts/clean.sh",
     "copy": "bash scripts/copy.sh",
-    "postinstall": "npm run clean && npm run copy && npm run link",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

@@ -26,7 +26,7 @@
     ],
     "paths": {
       "@baloise/design-system-components-angular/common": ["src/generated/common/src"],
-      "@baloise/design-system-components-angular": ["src/generated/src"]
+      "@baloise/design-system-components-angular/legacy": ["src/generated/legacy/src"]
     }
   },
   "angularCompilerOptions": {
