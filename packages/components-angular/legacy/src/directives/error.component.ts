@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Injector, Inject } from '@angular/core'
 
 import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-system-components-angular/common'
 
@@ -13,4 +13,8 @@ import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-
     `,
   ],
 })
-export class BalNgErrorComponent extends BalNgErrorComponentBase {}
+export class BalNgErrorComponent extends BalNgErrorComponentBase {
+  constructor(@Inject(Injector) injector: Injector) {
+    super(injector)
+  }
+}

@@ -22,6 +22,7 @@ cp -R $FULL_APP_DIR $BUILD_APP_DIR
 
 pushd $BUILD_APP_DIR
 npm run copy
+npm ci
 npm run link
 popd
 

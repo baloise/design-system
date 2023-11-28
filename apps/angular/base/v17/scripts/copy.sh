@@ -1,6 +1,3 @@
-# Copy base angular app with cypress test into version space
-cp -R -n ../base/. ./.
-
 # Clean generated files and create folder
 rm -rf src/generated
 mkdir -p src/generated
