@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { BalModalService, BaloiseDesignSystemModule } from '../design-system'
+import { BalModalService, balImports } from '../design-system'
 import { InputComponent } from './form-components/input.component'
 import { TextareaComponent } from './form-components/textarea.component'
 import { NumberInputComponent } from './form-components/number-input.component'
@@ -31,7 +31,7 @@ export interface UpdateControl {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BaloiseDesignSystemModule,
+    ...balImports,
     InputComponent,
     TextareaComponent,
     NumberInputComponent,

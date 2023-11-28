@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { BaloiseDesignSystemModule } from '../../design-system'
+import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-number-input',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BaloiseDesignSystemModule],
+  imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">
       <bal-card-title>Number Input</bal-card-title>

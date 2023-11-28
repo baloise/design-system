@@ -1,13 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { BaloiseDesignSystemModule } from '../../design-system'
+import { balImports } from '../../design-system'
 import { UpdateControl } from '../app.component'
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BaloiseDesignSystemModule],
+  imports: [CommonModule, ReactiveFormsModule, ...balImports],
   template: `
     <bal-card [formGroup]="form">
       <bal-card-title>{{ label }}</bal-card-title>
