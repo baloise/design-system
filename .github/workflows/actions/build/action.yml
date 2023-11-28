@@ -56,8 +56,8 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: components-angular-legacy
-        output: packages/components-angular/legacy/ComponentsAngularLegacy.zip
-        paths: packages/components-angular/legacy/generated
+        output: packages/components-angular/legacy/src/ComponentsAngularLegacy.zip
+        paths: packages/components-angular/legacy/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
