@@ -10,6 +10,10 @@ runs:
       run: npm pkg delete scripts.prepare
       shell: bash
 
+    - name: Install Dependencies
+      run: npm ci
+      shell: bash
+
     - uses: ./.github/workflows/actions/download-archive
       with:
         name: tokens-dist
