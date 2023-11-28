@@ -50,7 +50,7 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: components-angular
-        output: packages/components/src/ComponentsAngular.zip
+        output: packages/components-angular/src/ComponentsAngular.zip
         paths: packages/components-angular/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
