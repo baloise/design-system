@@ -1,5 +1,5 @@
 import { balBrowser } from '../browser'
-import { isDescendant, waitAfterIdleCallback } from '../helpers'
+import { addEventListener, removeEventListener, isDescendant, waitAfterIdleCallback } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalFocusInfo } from './focus.interfaces'
 
@@ -7,16 +7,16 @@ export class BalFocusListener<TObserver> extends ListenerAbstract<TObserver, Bal
   connect(el: HTMLElement): void {
     super.connect(el)
     if (this.el) {
-      this.el.addEventListener('focusin', this.onFocusin as any)
-      this.el.addEventListener('focusout', this.onFocusout as any)
+      addEventListener(this.el, 'focusin', this.onFocusin as any)
+      addEventListener(this.el, 'focusout', this.onFocusout as any)
     }
   }
 
   disconnect(): void {
     super.disconnect()
     if (this.el) {
-      this.el.removeEventListener('focusin', this.onFocusin as any)
-      this.el.removeEventListener('focusout', this.onFocusout as any)
+      removeEventListener(this.el, 'focusin', this.onFocusin as any)
+      removeEventListener(this.el, 'focusout', this.onFocusout as any)
     }
   }
 

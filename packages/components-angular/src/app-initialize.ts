@@ -1,6 +1,5 @@
 import { NgZone } from '@angular/core'
 import { BalPlatformConfig, initializeBaloiseDesignSystem } from '@baloise/design-system-components'
-import { applyPolyfills } from '@baloise/design-system-components/loader'
 
 import { raf } from '@baloise/design-system-components-angular/common'
 import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'
@@ -29,10 +28,6 @@ export const appInitialize = (config: BaloiseDesignSystemAngularConfig, doc: Doc
       }
 
       initializeBaloiseDesignSystem(config.defaults, platformConfig, win)
-
-      if (config.applyPolyfills) {
-        await applyPolyfills()
-      }
     }
   }
 }

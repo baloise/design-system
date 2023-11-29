@@ -56,9 +56,9 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from 'component-library';
 
-import { applyPolyfills, defineCustomElements } from 'component-library/dist/loader';
+import { defineCustomElements } from 'component-library/dist/loader';
 
-applyPolyfills().then(() => defineCustomElements());
+defineCustomElements();
 
 `,
     )
@@ -89,7 +89,7 @@ defineCustomElements();
     )
   })
 
-  it('should not include defineCustomElements or applyPolyfills if both are false in the outputTarget', () => {
+  it('should not include defineCustomElements if both are false in the outputTarget', () => {
     const outputTarget: OutputTargetReact = {
       componentCorePackage: 'component-library',
       proxiesFile: '../component-library-react/src/proxies.ts',

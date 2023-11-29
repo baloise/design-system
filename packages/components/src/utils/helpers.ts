@@ -1,6 +1,6 @@
 import { EventEmitter } from '@stencil/core'
 import { balBrowser } from './browser'
-import { BalConfig } from './config'
+import { BalConfig, useBalConfig } from './config'
 import {
   balIconCaretUp,
   balIconCaretDown,
@@ -176,10 +176,34 @@ const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const ael = config._ael
+      if (ael) {
+        return ael(el, eventName, callback, opts)
+      } else if (config._ael) {
+        return config._ael(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.addEventListener(eventName, callback, opts)
 }
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
+  if (balBrowser.hasWindow) {
+    const config = useBalConfig()
+    if (config) {
+      const rel = config._rel
+      if (rel) {
+        return rel(el, eventName, callback, opts)
+      } else if (config._rel) {
+        return config._rel(el, eventName, callback, opts)
+      }
+    }
+  }
+
   return el.removeEventListener(eventName, callback, opts)
 }
 

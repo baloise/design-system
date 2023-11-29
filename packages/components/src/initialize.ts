@@ -19,7 +19,13 @@ export const initializeBaloiseDesignSystem = (
   if (platformConfig) {
     setPlatformHelpers(platformConfig)
   }
-  setupConfig(userConfig, win)
+  setupConfig(
+    {
+      ...userConfig,
+      ...platformConfig,
+    },
+    win,
+  )
 
   win.BaloiseDesignSystem.toastController = balToastController
   win.BaloiseDesignSystem.snackbarController = balSnackbarController
