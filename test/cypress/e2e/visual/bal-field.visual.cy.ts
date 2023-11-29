@@ -10,6 +10,8 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-desktop')
     cy.getByTestId('valid').compareSnapshot('field-valid-desktop')
     cy.getByTestId('label-long').compareSnapshot('label-long-desktop')
+    cy.getByTestId('horizontal-alignment').compareSnapshot('horizontal-alignment-desktop')
+    cy.getByTestId('horizontal-alignment-with-hint').compareSnapshot('horizontal-alignment-with-hint-desktop')
 
     cy.platform('tablet')
     cy.getByTestId('basic').compareSnapshot('field-basic-tablet')
@@ -19,6 +21,8 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-tablet')
     cy.getByTestId('valid').compareSnapshot('field-valid-tablet')
     cy.getByTestId('label-long').compareSnapshot('label-long-tablet')
+    cy.getByTestId('horizontal-alignment').compareSnapshot('horizontal-alignment-tablet')
+    cy.getByTestId('horizontal-alignment-with-hint').compareSnapshot('horizontal-alignment-with-hint-tablet')
 
     cy.platform('mobile')
     cy.getByTestId('basic').compareSnapshot('field-basic-mobile')
@@ -28,5 +32,7 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-mobile')
     cy.getByTestId('valid').compareSnapshot('field-valid-mobile')
     cy.getByTestId('label-long').compareSnapshot('label-long-mobile')
+    cy.getByTestId('horizontal-alignment').compareSnapshot('horizontal-alignment-mobile')
+    cy.getByTestId('horizontal-alignment-with-hint').compareSnapshot('horizontal-alignment-with-hint-mobile')
   })
 })

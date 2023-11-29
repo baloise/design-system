@@ -13,7 +13,7 @@
     <bal-doc-app>
       <main class="container py-medium">
         <section data-testid="basic">
-          <bal-field horizontal-alignment>
+          <bal-field>
             <bal-field-label>Firstname</bal-field-label>
             <bal-field-control>
               <bal-input placeholder="Basic"></bal-input>
@@ -22,7 +22,7 @@
           </bal-field>
         </section>
         <br />
-        <!-- <section data-testid="disabled">
+        <section data-testid="disabled">
           <bal-field disabled>
             <bal-field-label>Firstname</bal-field-label>
             <bal-field-control>
@@ -80,7 +80,27 @@
             </bal-field-control>
             <bal-field-message color="hint">Field Message</bal-field-message>
           </bal-field>
-        </section> -->
+        </section>
+        <section data-testid="horizontal-alignment">
+          <bal-field horizontal-alignment>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="horizontal-alignment-with-hint">
+          <bal-field expanded="true" class="mt-x-large" horizontal-alignment>
+            <bal-field-label>Firstname</bal-field-label>
+            <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+            <bal-field-control>
+              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="danger">Required Field</bal-field-message>
+          </bal-field>
+        </section>
       </main>
     </bal-doc-app>
   </body>
