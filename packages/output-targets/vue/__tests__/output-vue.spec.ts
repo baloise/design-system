@@ -10,36 +10,10 @@ describe('generateProxies', () => {
   const rootDir = ''
   const config = { outputTargets: [] }
 
-  it('should include both polyfills and definCustomElements when both are true in the outputTarget', () => {
+  it('should include definCustomElements when both are true in the outputTarget', () => {
     const outputTarget: OutputTargetVue = {
       componentCorePackage: 'component-library',
       proxiesFile: '../component-library-vue/src/proxies.ts',
-      includePolyfills: true,
-      includeDefineCustomElements: true,
-    }
-
-    const finalText = generateProxies(config, components, pkgData, outputTarget, rootDir)
-    expect(finalText).toEqual(
-      `/* eslint-disable */
-/* tslint:disable */
-/* auto-generated vue proxies */
-import { defineContainer } from './vue-component-lib/utils';
-
-import type { JSX } from 'component-library';
-
-import { defineCustomElements } from 'component-library/dist/loader';
-
-defineCustomElements();
-
-`,
-    )
-  })
-
-  it('should include only defineCustomElements when includePolyfills is false in the outputTarget', () => {
-    const outputTarget: OutputTargetVue = {
-      componentCorePackage: 'component-library',
-      proxiesFile: '../component-library-vue/src/proxies.ts',
-      includePolyfills: false,
       includeDefineCustomElements: true,
     }
 
@@ -64,7 +38,6 @@ defineCustomElements();
     const outputTarget: OutputTargetVue = {
       componentCorePackage: 'component-library',
       proxiesFile: '../component-library-vue/src/proxies.ts',
-      includePolyfills: false,
       includeDefineCustomElements: false,
     }
 

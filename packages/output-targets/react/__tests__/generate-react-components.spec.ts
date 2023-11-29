@@ -39,36 +39,10 @@ describe('generateProxies', () => {
   const rootDir = ''
   const config: Config = { outputTargets: [] }
 
-  it('should include both polyfills and defineCustomElements when both are true in the outputTarget', () => {
+  it('should include only defineCustomElements', () => {
     const outputTarget: OutputTargetReact = {
       componentCorePackage: 'component-library',
       proxiesFile: '../component-library-react/src/proxies.ts',
-      includePolyfills: true,
-      includeDefineCustomElements: true,
-    }
-
-    const finalText = generateProxies(config, components, pkgData, outputTarget, rootDir)
-    expect(finalText).toEqual(
-      `/* eslint-disable */
-/* tslint:disable */
-/* auto-generated react proxies */
-import { createReactComponent } from './react-component-lib';
-
-import type { JSX } from 'component-library';
-
-import { defineCustomElements } from 'component-library/dist/loader';
-
-defineCustomElements();
-
-`,
-    )
-  })
-
-  it('should include only defineCustomElements when includePolyfills is false in the outputTarget', () => {
-    const outputTarget: OutputTargetReact = {
-      componentCorePackage: 'component-library',
-      proxiesFile: '../component-library-react/src/proxies.ts',
-      includePolyfills: false,
       includeDefineCustomElements: true,
     }
 
@@ -93,7 +67,6 @@ defineCustomElements();
     const outputTarget: OutputTargetReact = {
       componentCorePackage: 'component-library',
       proxiesFile: '../component-library-react/src/proxies.ts',
-      includePolyfills: false,
       includeDefineCustomElements: false,
     }
 

@@ -65,10 +65,7 @@ import { defineContainer } from './vue-component-lib/utils';\n`
     })
 
     sourceImports = cmpImports.join('\n')
-  } else if (outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
-    sourceImports = `import { ${APPLY_POLYFILLS}, ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
-    registerCustomElements = `${APPLY_POLYFILLS}().then(() => ${REGISTER_CUSTOM_ELEMENTS}());`
-  } else if (!outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
+  } else if (outputTarget.includeDefineCustomElements) {
     sourceImports = `import { ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
     registerCustomElements = `${REGISTER_CUSTOM_ELEMENTS}();`
   }
