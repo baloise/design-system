@@ -57,5 +57,34 @@
   "typings": "dist/index.d.ts",
   "metadata": "dist/baloise-design-system-components-angular.metadata.json",
   "sideEffects": false,
-  "es2020": "dist/fesm2020/baloise-design-system-components-angular.mjs"
+  "es2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "esm2020": "./dist/esm2020/baloise-design-system-components-angular.mjs",
+      "es2020": "./dist/fesm2020/baloise-design-system-components-angular.mjs",
+      "es2015": "./dist/fesm2015/baloise-design-system-components-angular.mjs",
+      "node": "./dist/fesm2015/baloise-design-system-components-angular.mjs",
+      "default": "./dist/fesm2020/baloise-design-system-components-angular.mjs"
+    },
+    "./common": {
+      "types": "./dist/common/index.d.ts",
+      "esm2020": "./dist/esm2020/common/baloise-design-system-components-angular-common.mjs",
+      "es2020": "./dist/fesm2020/baloise-design-system-components-angular-common.mjs",
+      "es2015": "./dist/fesm2015/baloise-design-system-components-angular-common.mjs",
+      "node": "./dist/fesm2015/baloise-design-system-components-angular-common.mjs",
+      "default": "./dist/fesm2020/baloise-design-system-components-angular-common.mjs"
+    },
+    "./legacy": {
+      "types": "./dist/legacy/index.d.ts",
+      "esm2020": "./dist/esm2020/legacy/baloise-design-system-components-angular-legacy.mjs",
+      "es2020": "./dist/fesm2020/baloise-design-system-components-angular-legacy.mjs",
+      "es2015": "./dist/fesm2015/baloise-design-system-components-angular-legacy.mjs",
+      "node": "./dist/fesm2015/baloise-design-system-components-angular-legacy.mjs",
+      "default": "./dist/fesm2020/baloise-design-system-components-angular-legacy.mjs"
+    }
+  }
 }
