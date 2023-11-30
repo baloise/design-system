@@ -156,11 +156,19 @@ docs/stories/assets/data
 
 apps/angular/v16/
 apps/angular/v17/
+apps/angular/v17-standalone/
 
 packages/components-angular/common/directives
 packages/components-angular/common/providers
 packages/components-angular/common/utils
 packages/components-angular/common/index.d.ts
+
+packages/components-angular/standalone/components
+packages/components-angular/standalone/directives
+packages/components-angular/standalone/app-initialize.d.ts
+packages/components-angular/standalone/bundles.d.ts
+packages/components-angular/standalone/index.d.ts
+packages/components-angular/standalone/provide.d.ts
 
 packages/components-angular/legacy/directives
 packages/components-angular/legacy/providers

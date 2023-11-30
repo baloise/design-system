@@ -5,6 +5,9 @@ import { balBrowser } from '../../../utils/browser'
 import { BalLogger } from '../../../utils/log'
 import globalScript from '../../../global'
 
+/**
+ * @internal
+ */
 @Component({
   tag: 'bal-doc-app',
   styleUrl: 'bal-doc-app.sass',

@@ -22,10 +22,12 @@ describe('normalizeOutputTarget', () => {
   it('should return defaults for excludeComponents and valueAccessorConfig', () => {
     const results: OutputTargetAngular = normalizeOutputTarget(config, {
       directivesProxyFile: '/component-library-angular/src/components.ts',
+      directivesMetaFile: '/component-library-angular/src/meta.ts',
     })
 
     expect(results).toEqual({
       directivesProxyFile: '/component-library-angular/src/components.ts',
+      directivesMetaFile: '/component-library-angular/src/meta.ts',
       excludeComponents: [],
       valueAccessorConfig: [],
     } as OutputTargetAngular)
