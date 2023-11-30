@@ -27,13 +27,6 @@
     "stenciljs"
   ],
   "license": "Apache-2.0",
-  "scripts": {
-    "build": "npm run clean && npm run build:compile && npm run clean:package",
-    "build:compile": "ng-packagr -p ng-package.json -c ./tsconfig.json",
-    "ng:build": "npm run build",
-    "clean": "rimraf dist",
-    "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"
-  },
   "dependencies": {
     "@baloise/design-system-components": "14.5.1",
     "tslib": "^2.2.0"
@@ -51,13 +44,11 @@
     "dist/"
   ],
   "module": "dist/fesm2015/baloise-design-system-components-angular.mjs",
-  "esm2020": "dist/esm2020/baloise-design-system-components-angular.mjs",
-  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.mjs",
-  "fesm2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
-  "typings": "dist/index.d.ts",
-  "metadata": "dist/baloise-design-system-components-angular.metadata.json",
-  "sideEffects": false,
   "es2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
+  "esm2020": "dist/esm2020/baloise-design-system-components-angular.mjs",
+  "fesm2020": "dist/fesm2020/baloise-design-system-components-angular.mjs",
+  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.mjs",
+  "typings": "dist/index.d.ts",
   "exports": {
     "./package.json": {
       "default": "./package.json"
@@ -86,5 +77,11 @@
       "node": "./dist/fesm2015/baloise-design-system-components-angular-legacy.mjs",
       "default": "./dist/fesm2020/baloise-design-system-components-angular-legacy.mjs"
     }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "node build.mjs",
+    "ng:build": "npm run build",
+    "ng:package": "ng-packagr -p ng-package.json -c ./tsconfig.json"
   }
 }
