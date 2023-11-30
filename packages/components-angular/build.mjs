@@ -71,7 +71,7 @@ const run = async () => {
     pkgJson.exports['./legacy'].default = pkgJson.exports['./legacy'].default.replace('./', './dist/')
 
     // Update package.json without exports
-    await writeFile(pkgPath, JSON.stringify(pkgJson, undefined, 2))
+    await writeFile(pkgPath, JSON.stringify(pkgJson, undefined, 2) + `\n`)
 
     // Clean generated dist folder
     shell.rm([
