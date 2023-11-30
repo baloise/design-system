@@ -8,7 +8,7 @@ import type {
   BalOrientationSubject,
 } from '@baloise/design-system-components/components'
 
-import { BalTokenDevice, BalTokenOrientationSubject } from '../token'
+import { BalTokenDevice, BalTokenOrientationSubject } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',

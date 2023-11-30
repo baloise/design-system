@@ -9,7 +9,7 @@ import type {
   BalBreakpointsUtil,
 } from '@baloise/design-system-components/components'
 
-import { BalTokenBreakpointSubject, BalTokenBreakpoints } from '../token'
+import { BalTokenBreakpointSubject, BalTokenBreakpoints } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',

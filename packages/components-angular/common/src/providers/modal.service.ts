@@ -4,7 +4,7 @@ import type { BalModalController, ModalOptions } from '@baloise/design-system-co
 
 import { AngularDelegate } from './angular-delegate'
 import { OverlayBaseController } from './overlay'
-import { BalTokenModal } from '../token'
+import { BalTokenModal } from '../utils/token'
 
 @Injectable()
 export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {

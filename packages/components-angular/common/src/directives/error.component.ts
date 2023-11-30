@@ -1,9 +1,9 @@
 import { AfterViewInit, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
 
-import { BaloiseDesignSystemAngularConfig } from '../config'
-import { raf } from '../utils'
-import { BalTokenConfig } from '../token'
+import type { BaloiseDesignSystemAngularConfig } from '../utils/config'
+import { raf } from '../utils/utils'
+import { BalTokenConfig } from '../utils/token'
 
 // @Component({
 //   selector: 'bal-ng-error',

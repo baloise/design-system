@@ -9,7 +9,7 @@ import type {
   BalRegion,
 } from '@baloise/design-system-components/components'
 
-import { BalTokenConfig } from '../token'
+import { BalTokenConfig } from '../utils/token'
 
 interface ConfigUtils {
   defaultConfig: any

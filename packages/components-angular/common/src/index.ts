@@ -1,5 +1,5 @@
-export type { BaloiseDesignSystemAngularConfig } from './config'
-export type { ProxyComponent } from './utils'
+export type { BaloiseDesignSystemAngularConfig } from './utils/config'
+export type { ProxyComponent } from './utils/utils'
 
 export { AngularDelegate } from './providers/angular-delegate'
 export { BalBreakpointsService } from './providers/breakpoints.service'
@@ -22,6 +22,6 @@ export {
   BalTokenBreakpointSubject,
   BalTokenDevice,
   BalTokenOrientationSubject,
-} from './token'
+} from './utils/token'
 
-export { raf, parseCustomEvent, element } from './utils'
+export { raf, parseCustomEvent, element } from './utils/utils'

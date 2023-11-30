@@ -5,7 +5,7 @@ import type {
   BalSnackbarOptions,
   Components,
 } from '@baloise/design-system-components/components'
-import { BalTokenSnackbar } from '../token'
+import { BalTokenSnackbar } from '../utils/token'
 
 @Injectable({
   providedIn: 'root',

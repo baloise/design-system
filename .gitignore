@@ -156,3 +156,22 @@ docs/stories/assets/data
 
 apps/angular/v16/
 apps/angular/v17/
+
+packages/components-angular/common/directives
+packages/components-angular/common/providers
+packages/components-angular/common/utils
+packages/components-angular/common/index.d.ts
+
+packages/components-angular/legacy/directives
+packages/components-angular/legacy/providers
+packages/components-angular/legacy/app-initialize.d.ts
+packages/components-angular/legacy/index.d.ts
+packages/components-angular/legacy/module.d.ts
+
+packages/components-angular/directives
+packages/components-angular/esm2020
+packages/components-angular/fesm2015
+packages/components-angular/fesm2020
+packages/components-angular/app-initialize.d.ts
+packages/components-angular/index.d.ts
+packages/components-angular/module.d.ts
