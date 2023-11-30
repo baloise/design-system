@@ -8,10 +8,18 @@ export {
   BalOrientationService,
   BalSnackbarService,
   BalToastService,
-  BalConfigToken,
   raf,
   parseCustomEvent,
   element,
+  BalTokenUserConfig,
+  BalTokenConfig,
+  BalTokenToast,
+  BalTokenSnackbar,
+  BalTokenModal,
+  BalTokenBreakpoints,
+  BalTokenBreakpointSubject,
+  BalTokenDevice,
+  BalTokenOrientationSubject,
 } from '@baloise/design-system-components-angular/common'
 
 export * from './generated/proxies'

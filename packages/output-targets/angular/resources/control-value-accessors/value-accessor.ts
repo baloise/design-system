@@ -2,7 +2,8 @@ import { AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy
 import { ControlValueAccessor, NgControl } from '@angular/forms'
 import { Subscription } from 'rxjs'
 
-import { BalConfigToken, BaloiseDesignSystemAngularConfig, raf } from '..'
+import type { BaloiseDesignSystemAngularConfig } from '..'
+import { BalTokenUserConfig, raf } from '..'
 
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
@@ -23,7 +24,20 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
     this.onStatusChange()
   }
 
-  handleChangeEvent(ev: CustomEvent<any>): void {
+  /**
+   * Notifies the ControlValueAccessor of a change in the value of the control.
+   *
+   * This is called by each of the ValueAccessor directives when we want to update
+   * the status and validity of the form control. For example with text components this
+   * is called when the ionInput event is fired. For select components this is called
+   * when the ionChange event is fired.
+   *
+   * This also updates the Ionic form status classes on the element.
+   *
+   * @param el The component element.
+   * @param value The new value of the control.
+   */
+  handleValueChange(ev: CustomEvent<any>): void {
     const el = ev.target as HTMLElement
     const value = ev.detail as any
     if (el === this.elementRef.nativeElement) {
@@ -89,7 +103,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 
       let config
       try {
-        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalConfigToken)
+        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenUserConfig)
       } catch {
         /* No config */
       }

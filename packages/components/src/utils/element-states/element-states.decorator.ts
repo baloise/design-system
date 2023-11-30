@@ -11,13 +11,20 @@ export function ListenToElementStates() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      this._balElementStateSubject = new BalElementStateSubject()
-      this._balElementStateSubject.attach(this)
+      if (!this._balElementStateSubject) {
+        this._balElementStateSubject = new BalElementStateSubject()
+        this._balElementStateSubject.attach(this)
+      }
+
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      this._balElementStateSubject.detach()
+      if (this._balElementStateSubject) {
+        this._balElementStateSubject.detach()
+        this._balElementStateSubject = undefined
+      }
+
       return disconnectedCallback && disconnectedCallback.call(this)
     }
   }

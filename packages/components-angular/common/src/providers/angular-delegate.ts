@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, NgZone, ViewContainerRef } from '@angular/core'
-import { FrameworkDelegate } from '@baloise/design-system-components'
+import type { FrameworkDelegate } from '@baloise/design-system-components/components'
 
 @Injectable()
 export class AngularDelegate {

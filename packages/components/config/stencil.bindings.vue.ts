@@ -33,7 +33,6 @@ export const VueGenerator = (
 ): any =>
   vueOutputTarget({
     includeImportCustomElements: true,
-    includePolyfills: false,
     includeDefineCustomElements: false,
     proxiesFile,
     componentCorePackage,

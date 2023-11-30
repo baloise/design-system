@@ -1,0 +1,51 @@
+{
+  "name": "apps-angular",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "link": "bash scripts/link.sh",
+    "copy": "bash scripts/copy.sh",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "ng:test": "ng test",
+    "e2e": "concurrently --names \"🧪_TEST__,🖥️__SERVER\" -c \"green,magenta\" \"npm:e2e:test\" \"npm:e2e:server\"",
+    "e2e:test": "npm run cy:open",
+    "e2e:server": "npm run start",
+    "cy:install": "cypress install",
+    "cy:open": "cypress open --browser chrome",
+    "cy:start": "node ./web-server.js"
+  },
+  "dependencies": {
+    "@angular/animations": "^16.1.0",
+    "@angular/common": "^16.1.0",
+    "@angular/compiler": "^16.1.0",
+    "@angular/core": "^16.1.0",
+    "@angular/forms": "^16.1.0",
+    "@angular/platform-browser": "^16.1.0",
+    "@angular/platform-browser-dynamic": "^16.1.0",
+    "@baloise/design-system-css": "14.5.1",
+    "@baloise/design-system-components": "14.5.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.1.6",
+    "@angular/cli": "~16.1.6",
+    "@angular/compiler-cli": "^16.1.0",
+    "@baloise/design-system-testing": "14.4.0",
+    "@types/jasmine": "~4.3.0",
+    "compression": "^1.7.4",
+    "cypress": "~12.17.3",
+    "jasmine-core": "~4.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "serve-index": "~1.9.1",
+    "typescript": "~5.1.3"
+  }
+}

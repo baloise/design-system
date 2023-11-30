@@ -23,11 +23,11 @@ runs:
         output: packages/css/CssDist.zip
         paths: packages/css/css
 
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: icons-dist
-    #     output: packages/icons/IconsDist.zip
-    #     paths: packages/icons/dist
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: icons-dist
+        output: packages/icons/IconsDist.zip
+        paths: packages/icons/dist
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
@@ -43,9 +43,21 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: components-components
+        output: packages/components/ComponentsComponents.zip
+        paths: packages/components/components
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: components-angular
-        output: packages/components/src/ComponentsAngular.zip
+        output: packages/components-angular/src/ComponentsAngular.zip
         paths: packages/components-angular/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular-legacy
+        output: packages/components-angular/legacy/src/ComponentsAngularLegacy.zip
+        paths: packages/components-angular/legacy/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
       with:

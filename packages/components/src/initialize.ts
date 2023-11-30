@@ -1,4 +1,5 @@
-import { setPlatformHelpers } from '@stencil/core'
+import { setPlatformHelpers } from '@stencil/core/internal'
+
 import { balToastController } from './components/bal-toast/bal-toast.controller'
 import { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
 import { BalConfig, BalPlatformConfig, setupConfig } from './utils/config'
@@ -19,7 +20,13 @@ export const initializeBaloiseDesignSystem = (
   if (platformConfig) {
     setPlatformHelpers(platformConfig)
   }
-  setupConfig(userConfig, win)
+  setupConfig(
+    {
+      ...userConfig,
+      ...platformConfig,
+    },
+    win,
+  )
 
   win.BaloiseDesignSystem.toastController = balToastController
   win.BaloiseDesignSystem.snackbarController = balSnackbarController

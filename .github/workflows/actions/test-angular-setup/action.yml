@@ -10,17 +10,21 @@ runs:
       run: npm pkg delete scripts.prepare
       shell: bash
 
-    - uses: ./.github/workflows/actions/download-archive
-      with:
-        name: components-dist
-        path: ./packages/components
-        filename: ComponentsDist.zip
+    - name: Install Dependencies
+      run: npm ci
+      shell: bash
 
     - uses: ./.github/workflows/actions/download-archive
       with:
         name: tokens-dist
         path: packages/tokens
         filename: TokensDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: icons-dist
+        path: packages/icons
+        filename: IconsDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:
@@ -36,9 +40,27 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
+        name: components-dist
+        path: ./packages/components
+        filename: ComponentsDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-components
+        path: ./packages/components
+        filename: ComponentsComponents.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
         name: components-angular
         path: ./packages/components-angular/src
         filename: ComponentsAngular.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-angular-legacy
+        path: ./packages/components-angular/legacy/src
+        filename: ComponentsAngularLegacy.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:
@@ -46,14 +68,9 @@ runs:
         path: ./packages/testing
         filename: TestingDist.zip
 
-    - name: Install Dependencies
-      run: npm ci
-      working-directory: ./apps/angular/${{ inputs.app }}
-      shell: bash
-
-    - name: Post Install
-      run: npm run postinstall
-      working-directory: ./apps/angular/${{ inputs.app }}
+    - name: Setup App
+      run: bash build.sh ${{ inputs.app }}
+      working-directory: ./apps/angular
       shell: bash
 
     - name: Install Cypress

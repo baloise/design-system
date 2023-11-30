@@ -154,17 +154,5 @@ docs/public/assets/images/brand-icons
 docs/public/assets/images/icons
 docs/stories/assets/data
 
-apps/angular/v16/*
-!apps/angular/v16/scripts
-!apps/angular/v16/package.json
-!apps/angular/v16/package-lock.json
-!apps/angular/v16/tsconfig.json
-!apps/angular/v16/build.sh
-
-apps/angular/v17/*
-!apps/angular/v17/scripts
-!apps/angular/v17/package.json
-!apps/angular/v17/package-lock.json
-!apps/angular/v17/tsconfig.json
-!apps/angular/v17/build.sh
-
+apps/angular/v16/
+apps/angular/v17/

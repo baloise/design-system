@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core'
 
 import { StencilBaseConfig } from './config/stencil.basic.config'
-import { AngularGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator, AngularLegacyGenerator } from './config/stencil.bindings.angular'
 import { VueGenerator } from './config/stencil.bindings.vue'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
@@ -21,6 +21,7 @@ export const config: Config = {
     },
     VueGenerator(),
     AngularGenerator(),
+    AngularLegacyGenerator(),
     ReactGenerator(),
     /**
      * Documentation outputs

@@ -20,9 +20,7 @@ export const StencilBaseConfig: Config = {
   enableCache: true,
   buildEs5: 'prod',
   globalScript: 'src/global.ts',
-  watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
-  invisiblePrehydration: true,
   plugins: [
     sass({
       outputStyle: 'compressed',

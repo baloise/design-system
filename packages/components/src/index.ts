@@ -77,9 +77,21 @@ export {
 export { scrollToFirstInvalidField } from './utils/form'
 export { BalScrollHandler } from './utils/scroll'
 export { balBrowser } from './utils/browser'
-export { balDevice } from './utils/device'
-export { balBreakpoints, BalBreakpointObserver, BalBreakpoints, balBreakpointSubject } from './utils/breakpoints'
-export { BalOrientationObserver, BalOrientationInfo, balOrientationSubject } from './utils/orientation'
+export { balDevice, BalDevice } from './utils/device'
+export {
+  balBreakpoints,
+  balBreakpointSubject,
+  BalBreakpointObserver,
+  BalBreakpoints,
+  BalBreakpointSubject,
+  BalBreakpointsUtil,
+} from './utils/breakpoints'
+export {
+  BalOrientationObserver,
+  BalOrientationInfo,
+  balOrientationSubject,
+  BalOrientationSubject,
+} from './utils/orientation'
 export { BalSwipeObserver, BalSwipeInfo, BalSwipeSubject } from './utils/swipe'
 export { BalDate } from './utils/date'
 

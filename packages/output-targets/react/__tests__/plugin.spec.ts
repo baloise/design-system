@@ -19,7 +19,7 @@ describe('normalizeOutputTarget', () => {
     }).toThrow(new Error('proxiesFile is required'))
   })
 
-  it('should return defaults for excludedComponents, includePolyfills, and includeDefineCustomElements', () => {
+  it('should return defaults for excludedComponents, and includeDefineCustomElements', () => {
     const results: OutputTargetReact = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-react/src/components.ts',
     })
@@ -27,30 +27,25 @@ describe('normalizeOutputTarget', () => {
     expect(results).toEqual({
       proxiesFile: '../component-library-react/src/components.ts',
       excludeComponents: [],
-      includePolyfills: true,
       includeDefineCustomElements: true,
     } as OutputTargetReact)
   })
 
-  it('Polyfills and DefinCustomElements should be false when set that way', () => {
+  it('DefineCustomElements should be false when set that way', () => {
     const results: OutputTargetReact = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-react/src/components.ts',
-      includePolyfills: false,
       includeDefineCustomElements: false,
     })
 
     expect(results.includeDefineCustomElements).toEqual(false)
-    expect(results.includeDefineCustomElements).toEqual(false)
   })
 
-  it('Polyfills and DefinCustomElements should be true when set that way', () => {
+  it('DefineCustomElements should be true when set that way', () => {
     const results: OutputTargetReact = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-react/src/components.ts',
-      includePolyfills: true,
       includeDefineCustomElements: true,
     })
 
-    expect(results.includeDefineCustomElements).toEqual(true)
     expect(results.includeDefineCustomElements).toEqual(true)
   })
 })

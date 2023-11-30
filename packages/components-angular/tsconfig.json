@@ -11,7 +11,8 @@
     "paths": {
       "@baloise/design-system-components/loader": ["../components/loader"],
       "@baloise/design-system-components": ["../components"],
-      "@baloise/design-system-components-angular/common": ["common/src/index.ts"]
+      "@baloise/design-system-components-angular/common": ["common/src/index.ts"],
+      "@baloise/design-system-components-angular/legacy": ["legacy/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

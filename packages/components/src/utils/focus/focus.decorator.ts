@@ -22,6 +22,7 @@ export function ListenToFocus() {
     target.disconnectedCallback = function () {
       if (this._balFocusSubject) {
         this._balFocusSubject.detach()
+        this._balFocusSubject = undefined
       }
 
       return disconnectedCallback && disconnectedCallback.call(this)

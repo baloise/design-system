@@ -1,8 +1,9 @@
 import { AfterViewInit, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
+
 import { BaloiseDesignSystemAngularConfig } from '../config'
 import { raf } from '../utils'
-import { BalConfigToken } from '../token'
+import { BalTokenConfig } from '../token'
 
 // @Component({
 //   selector: 'bal-ng-error',
@@ -52,7 +53,7 @@ export class BalNgErrorComponent implements AfterViewInit {
       }
 
       try {
-        this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalConfigToken)
+        this.config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenConfig)
       } catch {
         /* No config provided */
       }

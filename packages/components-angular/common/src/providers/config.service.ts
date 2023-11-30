@@ -1,50 +1,56 @@
-import { Injectable, OnDestroy } from '@angular/core'
-import {
+import { Inject, Injectable, OnDestroy } from '@angular/core'
+import { BehaviorSubject } from 'rxjs'
+
+import type {
   BalConfigObserver,
   BalConfigState,
   BalIcons,
   BalLanguage,
   BalRegion,
-  attachToConfig,
-  defaultConfig,
-  detachFromConfig,
-  updateBalAllowedLanguages,
-  updateBalAnimated,
-  updateBalIcons,
-  updateBalLanguage,
-  updateBalRegion,
-} from '@baloise/design-system-components'
-import { BehaviorSubject } from 'rxjs'
+} from '@baloise/design-system-components/components'
+
+import { BalTokenConfig } from '../token'
+
+interface ConfigUtils {
+  defaultConfig: any
+  attachToConfig: (observer: BalConfigObserver) => void
+  detachFromConfig: (observer: BalConfigObserver) => void
+  updateBalAllowedLanguages: (allowedLanguages: BalLanguage[]) => void
+  updateBalAnimated: (animated: boolean) => void
+  updateBalIcons: (icons: BalIcons) => void
+  updateBalLanguage: (language: BalLanguage) => void
+  updateBalRegion: (region: BalRegion) => void
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalConfigService implements BalConfigObserver, OnDestroy {
-  private subject = new BehaviorSubject(defaultConfig)
+  private subject = new BehaviorSubject({})
   public state$ = this.subject.asObservable()
 
-  constructor() {
-    attachToConfig(this)
+  constructor(@Inject(BalTokenConfig) private config: ConfigUtils) {
+    this.config.attachToConfig(this)
   }
 
   setLanguage(language: BalLanguage) {
-    updateBalLanguage(language)
+    this.config.updateBalLanguage(language)
   }
 
   setRegion(region: BalRegion) {
-    updateBalRegion(region)
+    this.config.updateBalRegion(region)
   }
 
   setAnimated(animated: boolean) {
-    updateBalAnimated(animated)
+    this.config.updateBalAnimated(animated)
   }
 
   setIcons(icons: BalIcons) {
-    updateBalIcons(icons)
+    this.config.updateBalIcons(icons)
   }
 
   setAllowedLanguages(languages: BalLanguage[]) {
-    updateBalAllowedLanguages(languages)
+    this.config.updateBalAllowedLanguages(languages)
   }
 
   configChanged(state: BalConfigState): void {
@@ -52,6 +58,6 @@ export class BalConfigService implements BalConfigObserver, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    detachFromConfig(this)
+    this.config.detachFromConfig(this)
   }
 }
