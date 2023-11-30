@@ -2,7 +2,8 @@ import { AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy
 import { ControlValueAccessor, NgControl } from '@angular/forms'
 import { Subscription } from 'rxjs'
 
-import { BalConfigToken, BaloiseDesignSystemAngularConfig, raf } from '..'
+import type { BaloiseDesignSystemAngularConfig } from '..'
+import { BalTokenUserConfig, raf } from '..'
 
 @Directive()
 export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDestroy {
@@ -102,7 +103,7 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
 
       let config
       try {
-        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalConfigToken)
+        config = this.injector.get<BaloiseDesignSystemAngularConfig>(BalTokenUserConfig)
       } catch {
         /* No config */
       }

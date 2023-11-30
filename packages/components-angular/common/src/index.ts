@@ -12,5 +12,16 @@ export { BalToastService } from './providers/toast.service'
 export { BalNgErrorComponent } from './directives/error.component'
 export { BalAutoFocus } from './directives/focus.directive'
 
-export { BalConfigToken } from './token'
+export {
+  BalTokenUserConfig,
+  BalTokenConfig,
+  BalTokenToast,
+  BalTokenSnackbar,
+  BalTokenModal,
+  BalTokenBreakpoints,
+  BalTokenBreakpointSubject,
+  BalTokenDevice,
+  BalTokenOrientationSubject,
+} from './token'
+
 export { raf, parseCustomEvent, element } from './utils'

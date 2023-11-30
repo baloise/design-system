@@ -78,9 +78,6 @@ export function generateProxies(
         return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
           !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
         )}/components/${component.tagName}';`
-        // return `import { defineCustomElement as define${tagNameAsPascal} } from '${normalizePath(
-        //   !outputTarget.componentCorePackage ? componentsTypeFile : outputTarget.componentCorePackage,
-        // )}/dist/components/${component.tagName}';`
       }),
     ]
   }
@@ -88,8 +85,10 @@ export function generateProxies(
   imports.push(``)
 
   const typeImports = !outputTarget.componentCorePackage
-    ? `import { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
-    : `import { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}';`
+    ? `import type { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';`
+    : `import type { ${IMPORT_TYPES} } from '${normalizePath(outputTarget.componentCorePackage)}${
+        outputTarget.outputType !== 'legacy' ? '/components' : ''
+      }';`
 
   const final: string[] = [
     imports.join('\n'),

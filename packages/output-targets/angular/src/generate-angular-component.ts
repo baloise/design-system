@@ -50,7 +50,9 @@ export const createComponentDefinition =
       .filter((item, pos, self) => self.indexOf(item) === pos)
       .join(', ')
     if (outputsTypes.length > 0) {
-      outputsTypes = `import { ${outputsTypes} } from '${componentCorePackage}';`
+      outputsTypes = `import type { ${outputsTypes} } from '${componentCorePackage}${
+        outputTargetType !== 'legacy' ? '/components' : ''
+      }';`
     }
 
     const lines = [

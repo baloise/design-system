@@ -1,28 +1,37 @@
-import { ApplicationRef, Injectable } from '@angular/core'
+import { ApplicationRef, Inject, Injectable } from '@angular/core'
 import { BehaviorSubject, Observable, map } from 'rxjs'
-import {
-  balOrientationSubject,
+
+import type {
+  BalDevice,
   BalOrientationInfo,
-  balDevice,
   BalOrientationObserver,
-} from '@baloise/design-system-components'
+  BalOrientationSubject,
+} from '@baloise/design-system-components/components'
+
+import { BalTokenDevice, BalTokenOrientationSubject } from '../token'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalOrientationService implements BalOrientationObserver {
-  private _orientation$ = new BehaviorSubject<BalOrientationInfo>(balDevice.orientation.toObject())
+  private _orientation$!: BehaviorSubject<BalOrientationInfo>
 
   state$: Observable<BalOrientationInfo>
   portrait$: Observable<boolean>
   landscape$: Observable<boolean>
 
-  constructor(private app: ApplicationRef) {
+  constructor(
+    private app: ApplicationRef,
+    @Inject(BalTokenDevice) private device: BalDevice,
+    @Inject(BalTokenOrientationSubject) private orientationSubject: BalOrientationSubject,
+  ) {
+    this._orientation$ = new BehaviorSubject<BalOrientationInfo>(device.orientation.toObject())
+
     this.state$ = this._orientation$.asObservable()
     this.portrait$ = this._orientation$.asObservable().pipe(map(orientation => orientation.portrait))
     this.landscape$ = this._orientation$.asObservable().pipe(map(orientation => orientation.landscape))
 
-    balOrientationSubject.attach(this)
+    this.orientationSubject.attach(this)
   }
 
   orientationListener(info: BalOrientationInfo): void {
@@ -31,13 +40,13 @@ export class BalOrientationService implements BalOrientationObserver {
   }
 
   ngOnDestroy() {
-    balOrientationSubject.detach(this)
+    this.orientationSubject.detach(this)
   }
 
   get value(): BalOrientationInfo {
     if (this._orientation$) {
       return this._orientation$.getValue()
     }
-    return balDevice.orientation.toObject()
+    return this.device.orientation.toObject()
   }
 }

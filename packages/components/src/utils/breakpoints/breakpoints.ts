@@ -4,7 +4,7 @@ import { BREAKPOINTS_MAP } from './breakpoints.map'
 
 export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
 
-export class BreakpointsClass {
+export class BalBreakpointsUtil {
   private win?: any
   private breakpoints: BalBreakpoint[] = []
 
@@ -105,4 +105,4 @@ export class BreakpointsClass {
   }
 }
 
-export const balBreakpoints = /*@__PURE__*/ new BreakpointsClass()
+export const balBreakpoints = /*@__PURE__*/ new BalBreakpointsUtil()

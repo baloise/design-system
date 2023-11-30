@@ -22,7 +22,7 @@ describe('generateProxies', () => {
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components, FileUploadRejectedFile } from 'component-library';
+import type { Components, FileUploadRejectedFile } from 'component-library/components';
 
 `,
     )
@@ -40,7 +40,7 @@ import { Components, FileUploadRejectedFile } from 'component-library';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components, FileUploadRejectedFile } from '../../angular/dist/types/components';
+import type { Components, FileUploadRejectedFile } from '../../angular/dist/types/components';
 
 `,
     )

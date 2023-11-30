@@ -1,5 +1,7 @@
 import { NgZone } from '@angular/core'
-import { BalPlatformConfig, initializeBaloiseDesignSystem } from '@baloise/design-system-components'
+
+import type { BalPlatformConfig } from '@baloise/design-system-components/components'
+import { initializeBaloiseDesignSystem } from '@baloise/design-system-components/components'
 
 import { raf } from '@baloise/design-system-components-angular/common'
 import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'

@@ -1,15 +1,23 @@
-import { Injectable } from '@angular/core'
-import { balSnackbarController, BalSnackbarOptions, Components } from '@baloise/design-system-components'
+import { Inject, Injectable } from '@angular/core'
+
+import type {
+  BalSnackbarController,
+  BalSnackbarOptions,
+  Components,
+} from '@baloise/design-system-components/components'
+import { BalTokenSnackbar } from '../token'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalSnackbarService {
+  constructor(@Inject(BalTokenSnackbar) private ctrl: BalSnackbarController) {}
+
   create(options: BalSnackbarOptions): Components.BalSnackbar {
-    return balSnackbarController.create(options)
+    return this.ctrl.create(options)
   }
 
   async dismissAll(): Promise<void> {
-    return balSnackbarController.dismissAll()
+    return this.ctrl.dismissAll()
   }
 }

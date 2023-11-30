@@ -1,4 +1,4 @@
-import { BalConfig } from '@baloise/design-system-components'
+import type { BalConfig } from '@baloise/design-system-components/components'
 
 export interface BaloiseDesignSystemAngularConfig {
   defaults?: BalConfig

@@ -1,5 +1,7 @@
-import { NgModule, APP_INITIALIZER, NgZone, ModuleWithProviders } from '@angular/core'
+import { NgModule, APP_INITIALIZER, ModuleWithProviders, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
+
+import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'
 import {
   AngularDelegate,
   BalBreakpointsService,
@@ -8,8 +10,35 @@ import {
   BalOrientationService,
   BalSnackbarService,
   BalToastService,
-  BalConfigToken,
+  BalTokenBreakpointSubject,
+  BalTokenBreakpoints,
+  BalTokenConfig,
+  BalTokenModal,
+  BalTokenSnackbar,
+  BalTokenToast,
+  BalTokenUserConfig,
+  BalTokenDevice,
+  BalTokenOrientationSubject,
 } from '@baloise/design-system-components-angular/common'
+
+import {
+  balBreakpointSubject,
+  balBreakpoints,
+  balModalController,
+  balSnackbarController,
+  balToastController,
+  attachToConfig,
+  defaultConfig,
+  detachFromConfig,
+  updateBalAllowedLanguages,
+  updateBalAnimated,
+  updateBalIcons,
+  updateBalLanguage,
+  updateBalRegion,
+  balDevice,
+  balOrientationSubject,
+} from '@baloise/design-system-components'
+
 import { appInitialize } from './app-initialize'
 import { DIRECTIVES } from './generated/proxies-list'
 import { BooleanValueAccessor } from './generated/boolean-value-accessor'
@@ -20,9 +49,7 @@ import { TextValueAccessor } from './generated/text-value-accessor'
 import { BalNgErrorComponent } from './directives/error.component'
 import { BalAutoFocus } from './directives/focus.directive'
 
-import type { BaloiseDesignSystemAngularConfig } from '@baloise/design-system-components-angular/common'
-
-const DECLARATIONS: any[] = [
+const DECLARATIONS = [
   // generated proxies
   ...DIRECTIVES,
   // ngModel accessors
@@ -38,6 +65,7 @@ const DECLARATIONS: any[] = [
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
+  imports: [CommonModule],
   providers: [
     AngularDelegate,
     BalModalService,
@@ -47,7 +75,6 @@ const DECLARATIONS: any[] = [
     BalOrientationService,
     BalConfigService,
   ],
-  imports: [CommonModule],
 })
 export class BaloiseDesignSystemModule {
   static forRoot(config: BaloiseDesignSystemAngularConfig = {}): ModuleWithProviders<BaloiseDesignSystemModule> {
@@ -55,14 +82,55 @@ export class BaloiseDesignSystemModule {
       ngModule: BaloiseDesignSystemModule,
       providers: [
         {
-          provide: BalConfigToken,
+          provide: BalTokenUserConfig,
           useValue: config,
+        },
+        {
+          provide: BalTokenConfig,
+          useValue: {
+            attachToConfig,
+            defaultConfig,
+            detachFromConfig,
+            updateBalAllowedLanguages,
+            updateBalAnimated,
+            updateBalIcons,
+            updateBalLanguage,
+            updateBalRegion,
+          },
+        },
+        {
+          provide: BalTokenToast,
+          useValue: balToastController,
+        },
+        {
+          provide: BalTokenSnackbar,
+          useValue: balSnackbarController,
+        },
+        {
+          provide: BalTokenModal,
+          useValue: balModalController,
+        },
+        {
+          provide: BalTokenBreakpoints,
+          useValue: balBreakpoints,
+        },
+        {
+          provide: BalTokenBreakpointSubject,
+          useValue: balBreakpointSubject,
+        },
+        {
+          provide: BalTokenDevice,
+          useValue: balDevice,
+        },
+        {
+          provide: BalTokenOrientationSubject,
+          useValue: balOrientationSubject,
         },
         {
           provide: APP_INITIALIZER,
           useFactory: appInitialize,
           multi: true,
-          deps: [BalConfigToken, DOCUMENT, NgZone],
+          deps: [BalTokenUserConfig, DOCUMENT, NgZone],
         },
       ],
     }

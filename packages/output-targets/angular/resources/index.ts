@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core'
 
-export const BalConfigToken = new InjectionToken<any>('USERCONFIG')
+export const BalTokenUserConfig = new InjectionToken<any>('BalTokenUserConfig')
 
 export interface BaloiseDesignSystemAngularConfig {
   defaults?: any

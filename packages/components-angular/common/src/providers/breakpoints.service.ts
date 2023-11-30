@@ -1,18 +1,21 @@
-import { ApplicationRef, Injectable } from '@angular/core'
-import {
-  BalBreakpointObserver,
-  BalBreakpoints,
-  balBreakpointSubject,
-  balBreakpoints,
-} from '@baloise/design-system-components'
+import { ApplicationRef, Inject, Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
+
+import type {
+  BalBreakpointObserver,
+  BalBreakpoints,
+  BalBreakpointSubject,
+  BalBreakpointsUtil,
+} from '@baloise/design-system-components/components'
+
+import { BalTokenBreakpointSubject, BalTokenBreakpoints } from '../token'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalBreakpointsService implements BalBreakpointObserver {
-  private _breakpoints$ = new BehaviorSubject<BalBreakpoints>(balBreakpoints.toObject())
+  private _breakpoints$!: BehaviorSubject<BalBreakpoints>
 
   state$: Observable<BalBreakpoints>
   mobile$: Observable<boolean>
@@ -23,7 +26,13 @@ export class BalBreakpointsService implements BalBreakpointObserver {
   widescreen$: Observable<boolean>
   fullhd$: Observable<boolean>
 
-  constructor(private app: ApplicationRef) {
+  constructor(
+    private app: ApplicationRef,
+    @Inject(BalTokenBreakpoints) private breakpoints: BalBreakpointsUtil,
+    @Inject(BalTokenBreakpointSubject) private breakpointSubject: BalBreakpointSubject,
+  ) {
+    this._breakpoints$ = new BehaviorSubject<BalBreakpoints>(this.breakpoints.toObject())
+
     this.state$ = this._breakpoints$.asObservable()
     this.mobile$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.mobile))
     this.tablet$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.tablet))
@@ -33,7 +42,7 @@ export class BalBreakpointsService implements BalBreakpointObserver {
     this.widescreen$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.widescreen))
     this.fullhd$ = this._breakpoints$.asObservable().pipe(map(breakpoints => breakpoints.fullhd))
 
-    balBreakpointSubject.attach(this)
+    this.breakpointSubject.attach(this)
   }
 
   breakpointListener(breakpoints: BalBreakpoints): void {
@@ -42,13 +51,13 @@ export class BalBreakpointsService implements BalBreakpointObserver {
   }
 
   ngOnDestroy() {
-    balBreakpointSubject.detach(this)
+    this.breakpointSubject.detach(this)
   }
 
   get value(): BalBreakpoints {
     if (this._breakpoints$) {
       return this._breakpoints$.getValue()
     }
-    return balBreakpoints.toObject()
+    return this.breakpoints.toObject()
   }
 }
