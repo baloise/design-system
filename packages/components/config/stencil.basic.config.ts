@@ -2,7 +2,7 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { resolve } from 'path'
-import { VueGenerator } from './stencil.bindings.vue'
+import { VueTestGenerator } from './stencil.bindings.vue'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 
@@ -32,7 +32,7 @@ export const StencilBaseConfig: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
-    VueGenerator('../', '../../test/generated/components/index.ts', []),
+    VueTestGenerator('../', '../../test/generated/components/index.ts'),
   ],
   bundles: [
     { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },

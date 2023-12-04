@@ -6,6 +6,7 @@ export interface OutputTargetVue {
   loaderDir?: string
   includeDefineCustomElements?: boolean
   includeImportCustomElements?: boolean
+  includeInternalComponents?: boolean
   customElementsDir?: string
 }
 

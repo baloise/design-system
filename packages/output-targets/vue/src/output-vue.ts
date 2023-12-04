@@ -10,7 +10,11 @@ export async function vueProxyOutput(
   outputTarget: OutputTargetVue,
   components: ComponentCompilerMeta[],
 ) {
-  const filteredComponents = getFilteredComponents(outputTarget.excludeComponents, components)
+  const filteredComponents = getFilteredComponents(
+    outputTarget.excludeComponents,
+    components,
+    outputTarget.includeInternalComponents,
+  )
   const rootDir = config.rootDir as string
   const pkgData = await readPackageJson(rootDir)
 
@@ -19,9 +23,14 @@ export async function vueProxyOutput(
   await copyResources(config, outputTarget)
 }
 
-function getFilteredComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
+function getFilteredComponents(
+  excludeComponents: string[] = [],
+  cmps: ComponentCompilerMeta[],
+  includeInternalComponents = false,
+) {
   return sortBy<ComponentCompilerMeta>(cmps, (cmp: ComponentCompilerMeta) => cmp.tagName).filter(
-    (c: ComponentCompilerMeta) => !excludeComponents.includes(c.tagName) && !c.internal,
+    (c: ComponentCompilerMeta) =>
+      !excludeComponents.includes(c.tagName) && includeInternalComponents ? true : !c.internal,
   )
 }
 
