@@ -81,8 +81,8 @@
             <bal-field-message color="hint">Field Message</bal-field-message>
           </bal-field>
         </section>
-        <section data-testid="horizontal-alignment">
-          <bal-field horizontal-alignment>
+        <section data-testid="horizontal">
+          <bal-field horizontal>
             <bal-field-label>Firstname</bal-field-label>
             <bal-field-control>
               <bal-input placeholder="Basic"></bal-input>
@@ -91,8 +91,18 @@
           </bal-field>
         </section>
         <br />
-        <section data-testid="horizontal-alignment-with-hint">
-          <bal-field expanded="true" class="mt-x-large" horizontal-alignment>
+        <section data-testid="horizontal-long-label">
+          <bal-field horizontal>
+            <bal-field-label>Firstname (The name given to you at birth or the name you commonly use in official documents, such as your legal first name. Please ensure accuracy for administrative purposes.)</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <br />
+        <section data-testid="horizontal-with-hint">
+          <bal-field expanded="true" class="mt-x-large" horizontal>
             <bal-field-label>Firstname</bal-field-label>
             <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
             <bal-field-control>

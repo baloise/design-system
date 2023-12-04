@@ -969,7 +969,7 @@ export namespace Components {
         /**
           * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
          */
-        "horizontalAlignment"?: boolean;
+        "horizontal"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
@@ -6068,7 +6068,7 @@ declare namespace LocalJSX {
         /**
           * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
          */
-        "horizontalAlignment"?: boolean;
+        "horizontal"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
