@@ -56,8 +56,8 @@ runs:
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: components-angular-standalone
-        output: packages/components-angular/src/ComponentsAngularStandalone.zip
-        paths: packages/components-angular/src/standalone/src/generated
+        output: packages/components-angular/standalone/src/ComponentsAngularStandalone.zip
+        paths: packages/components-angular/standalone/src/generated
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
