@@ -277,7 +277,9 @@ export abstract class AbstractMask implements Mask {
       //
       // hit a range of chars
     } else {
-      context.preventDefault()
+      if (!context.isTabKey) {
+        context.preventDefault()
+      }
 
       if (context.isBackspaceKey || context.isDeleteKey) {
         this.resetInputValueWithMask(context)
