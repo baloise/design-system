@@ -1,7 +1,7 @@
-import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
+import { BalComponentBundle, provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
 
 export { BalModalService } from '@baloise/design-system-components-angular/standalone'
 
-export const balImports = []
+export const balImports = [BalComponentBundle]
 
 export const balProviders = [provideBaloiseDesignSystem()]

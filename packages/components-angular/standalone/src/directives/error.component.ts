@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common'
 import { Component, Inject, Injector } from '@angular/core'
 
 import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-system-components-angular/common'
