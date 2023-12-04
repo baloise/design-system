@@ -33,12 +33,13 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 <InfoQuote>
   **Recommendations**
 
-- Use **SCSS** as stylesheet format.
-- Use the package [@ngx-translate](https://github.com/ngx-translate/core) for the translations.
+- Use **SCSS** as stylesheet format to be able to breakpoint mixins and more.
+- For the translations use [\{TRANSLOCO\}](https://ngneat.github.io/transloco/).
+- For a reactive store use [Elf](https://ngneat.github.io/elf/).
 
 </InfoQuote>
 
-### Setting up Zone.js
+### Zone.js
 
 Configuring zone.js is essential for enhancing the performance of the web components.
 
@@ -95,10 +96,7 @@ The following suggestion for importing files is recommended for greater flexibil
 However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/design-system-css/sass/baloise-design-system`
 , which has all style definitions.
 
-<Code
-  language="css"
-  noPreview
-  code={`
+```css
 // SASS mixins and variables
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -107,7 +105,7 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/sass/font';
+@import '@baloise/design-system-css/css/font';
 
 // Core CSS, always required
 @import '@baloise/design-system-css/css/core';
@@ -126,10 +124,64 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/shadow';
 @import '@baloise/design-system-css/css/spacing';
 @import '@baloise/design-system-css/css/typography';
-`}
-/>
+```
 
-## Module Based Application
+## Standalone
+
+Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
+
+**app.config.ts**
+
+```typescript
+import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+
+import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideBaloiseDesignSystem()],
+}
+```
+
+**app.component.ts**
+
+To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular component.
+In each app component, import the necessary Baloise Design System components or a bundled set.
+
+```typescript
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, ...BalLayoutBundle, BalHeading, BalButton],
+})
+export class AppComponent {}
+```
+
+**app.component.html**
+
+Add the `bal-app` to your `app.component.html` root element.
+
+```html
+<bal-app class="has-sticky-footer">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+```
+
+## Module Based
 
 Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
@@ -198,77 +250,6 @@ imports: [...sharedModules],
 exports: [...sharedModules],
 })
 export class SharedModule {}
-`}
-/>
-
-## Standalone
-
-Import the `BaloiseDesignSystemModule.forRoot()` into your `app.config.ts`.
-
-**app.config.ts**
-
-```typescript
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'
-import { provideRouter } from '@angular/router'
-
-import { routes } from './app.routes'
-
-import { BaloiseDesignSystemModule } from '../generated/src'
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), importProvidersFrom(BaloiseDesignSystemModule.forRoot())],
-}
-```
-
-**app.component.ts**
-
-To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-For each angular sub module you need to import the `BaloiseDesignSystemModule` to provide the components and the value accessors.
-
-<Code
-  language="typescript"
-  noPreview
-  code={`
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterOutlet } from '@angular/router'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
-
-@Component({
-${' '}selector: 'app-root',
-${' '}standalone: true,
-${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
-${' '}imports: [
-${' '}${' '}CommonModule,
-${' '}${' '}RouterOutlet,
-${' '}${' '}BaloiseDesignSystemModule,
-${' '}],
-})
-export class AppComponent { }
-`}
-/>
-
-**app.component.html**
-
-Add the `bal-app` to your `app.component.html` root element.
-
-<Code
-  language="html"
-  noPreview
-  code={`
-<bal-app class="has-sticky-footer">
-  <header>
-    <!-- Header content -->
-  </header>
-  <main class="container">
-    <!-- Your application content -->
-    <bal-heading>Hello World!</bal-heading>
-    <bal-button>Button</bal-button>
-  </main>
-  <bal-footer>
-    <!-- Footer content -->
-  </bal-footer>
-</bal-app>
 `}
 />
 
