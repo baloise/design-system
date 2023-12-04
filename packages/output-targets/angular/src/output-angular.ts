@@ -18,18 +18,28 @@ export async function angularDirectiveProxyOutput(
 
   const finalText = generateProxies(filteredComponents, pkgData, outputTarget, config.rootDir as string)
 
+  let finalExcludedMeta = ''
+  if (outputTarget.outputType === 'standalone') {
+    const excludedComponents = getExcludedComponents(outputTarget.excludeComponents, components)
+    finalExcludedMeta = generateMeta(excludedComponents, pkgData, outputTarget, config.rootDir as string)
+  }
+
   await Promise.all([
     compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
     copyResources(config, outputTarget),
-    outputTarget.outputType !== 'standalone'
-      ? generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget)
-      : Promise.resolve(),
+    outputTarget.outputType === 'standalone'
+      ? compilerCtx.fs.writeFile(outputTarget.directivesMetaFile, finalExcludedMeta)
+      : generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
     generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
   ])
 }
 
 function getFilteredComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
   return sortBy(cmps, cmp => cmp.tagName).filter(c => !excludeComponents.includes(c.tagName) && !c.internal)
+}
+
+function getExcludedComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
+  return sortBy(cmps, cmp => cmp.tagName).filter(c => excludeComponents.includes(c.tagName) && !c.internal)
 }
 
 async function copyResources(config: Config, outputTarget: OutputTargetAngular) {
@@ -99,6 +109,39 @@ export function generateProxies(
       )
       .join('\n'),
   ]
+
+  return final.join('\n') + '\n'
+}
+
+function generateMeta(
+  components: ComponentCompilerMeta[],
+  _pkgData: PackageJSON,
+  _outputTarget: OutputTargetAngular,
+  _rootDir: string,
+) {
+  const imports = []
+  imports.push(`/* tslint:disable */`)
+  imports.push(`/* auto-generated angular directive proxies */`)
+
+  function createComponentMeta(cmpMeta: ComponentCompilerMeta) {
+    const tagNameAsPascal = dashToPascalCase(cmpMeta.tagName)
+
+    // Collect component meta
+    const inputs = [
+      ...cmpMeta.properties.filter(prop => !prop.internal).map(prop => prop.name),
+      ...cmpMeta.virtualProperties.map(prop => prop.name),
+    ].sort()
+    const outputs = cmpMeta.events.filter(ev => !ev.internal).map(prop => prop)
+    const methods = cmpMeta.methods.filter(method => !method.internal).map(prop => prop.name)
+
+    const lines = []
+    lines.push(`export const ${tagNameAsPascal}Inputs = ['${inputs.join(`', '`)}']`)
+    lines.push(`export const ${tagNameAsPascal}Outputs = ['${outputs.map(output => output.name).join(`', '`)}']`)
+    lines.push(`export const ${tagNameAsPascal}Methods = ['${methods.join(`', '`)}']`)
+    return lines.join('\n')
+  }
+
+  const final: string[] = [imports.join('\n'), components.map(cmp => createComponentMeta(cmp)).join('\n')]
 
   return final.join('\n') + '\n'
 }

@@ -29,12 +29,13 @@ const run = async () => {
 
     // Copy outputs
     shell.cp('-rfn', 'dist/common', '.')
+    shell.cp('-rfn', 'dist/standalone', '.')
     shell.cp('-rfn', 'dist/legacy', '.')
     shell.cp('-rfn', 'dist/directives', '.')
+    shell.cp('-rfn', 'dist/generated', '.')
     shell.cp('-rfn', 'dist/esm2020', '.')
     shell.cp('-rfn', 'dist/fesm2015', '.')
     shell.cp('-rfn', 'dist/fesm2020', '.')
-    shell.cp('-rfn', 'dist/generated', '.')
     shell.cp('-fn', 'dist/app-initialize.d.ts', '.')
     shell.cp('-fn', 'dist/index.d.ts', '.')
     shell.cp('-fn', 'dist/module.d.ts', '.')

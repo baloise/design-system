@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core'
 
 import { StencilBaseConfig } from './config/stencil.basic.config'
-import { AngularGenerator, AngularLegacyGenerator } from './config/stencil.bindings.angular'
+import { AngularGenerator, AngularLegacyGenerator, AngularStandaloneGenerator } from './config/stencil.bindings.angular'
 import { VueGenerator } from './config/stencil.bindings.vue'
 import { ReactGenerator } from './config/stencil.bindings.react'
 
@@ -12,6 +12,31 @@ export const config: Config = {
   },
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
+    {
+      type: 'docs-vscode',
+      file: 'dist/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+    },
+    {
+      type: 'dist-hydrate-script',
+    },
+    {
+      type: 'dist-custom-elements',
+      includeGlobalScripts: false,
+      generateTypeDeclarations: false,
+    },
+    {
+      type: 'dist-custom-elements',
+      dir: 'components',
+      copy: [
+        {
+          src: '../config/custom-elements',
+          dest: 'components',
+          warn: true,
+        },
+      ],
+      includeGlobalScripts: false,
+    },
     /**
      * Library outputs
      */
@@ -21,12 +46,9 @@ export const config: Config = {
     },
     VueGenerator(),
     AngularGenerator(),
+    AngularStandaloneGenerator(),
     AngularLegacyGenerator(),
     ReactGenerator(),
-    /**
-     * Documentation outputs
-     */
-    // CustomDocumentationGenerator,
     /**
      * Copy assets for E2E testing
      */

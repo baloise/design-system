@@ -37,9 +37,16 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
   if (outputTarget.directivesProxyFile == null) {
     throw new Error('directivesProxyFile is required')
   }
+  if (outputTarget.directivesMetaFile == null) {
+    throw new Error('directivesMetaFile is required')
+  }
 
   if (outputTarget.directivesProxyFile && !path.isAbsolute(outputTarget.directivesProxyFile)) {
     results.directivesProxyFile = normalizePath(path.join(config.rootDir, outputTarget.directivesProxyFile))
+  }
+
+  if (outputTarget.directivesMetaFile && !path.isAbsolute(outputTarget.directivesMetaFile)) {
+    results.directivesMetaFile = normalizePath(path.join(config.rootDir, outputTarget.directivesMetaFile))
   }
 
   if (outputTarget.directivesArrayFile && !path.isAbsolute(outputTarget.directivesArrayFile)) {

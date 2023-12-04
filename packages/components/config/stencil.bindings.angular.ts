@@ -39,6 +39,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const AngularGenerator = () =>
   angularOutputTarget({
     componentCorePackage: '@baloise/design-system-components',
+    directivesMetaFile: '../components-angular/src/generated/meta.ts',
     directivesProxyFile: '../components-angular/src/generated/proxies.ts',
     directivesArrayFile: '../components-angular/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
@@ -46,22 +47,40 @@ export const AngularGenerator = () =>
     outputType: 'module',
   })
 
+export const AngularStandaloneGenerator = () =>
+  angularOutputTarget({
+    componentCorePackage: '@baloise/design-system-components',
+    directivesMetaFile: '../components-angular/standalone/src/generated/meta.ts',
+    directivesProxyFile: '../components-angular/standalone/src/generated/proxies.ts',
+    directivesArrayFile: '../components-angular/standalone/src/generated/proxies-list.ts',
+    valueAccessorConfigs: angularValueAccessorBindings,
+    excludeComponents: [
+      ...docComponents,
+      'bal-checkbox-group',
+      'bal-checkbox',
+      'bal-date',
+      'bal-datepicker',
+      'bal-file-upload',
+      'bal-input-date',
+      'bal-input-slider',
+      'bal-input-stepper',
+      'bal-input',
+      'bal-number-input',
+      'bal-radio-group',
+      'bal-select',
+      'bal-textarea',
+      'bal-time-input',
+    ],
+    outputType: 'standalone',
+  })
+
 export const AngularLegacyGenerator = () =>
   angularOutputTarget({
     componentCorePackage: '@baloise/design-system-components',
+    directivesMetaFile: '../components-angular/legacy/src/generated/meta.ts',
     directivesProxyFile: '../components-angular/legacy/src/generated/proxies.ts',
     directivesArrayFile: '../components-angular/legacy/src/generated/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [...docComponents],
     outputType: 'legacy',
   })
-
-// export const AngularStandaloneGenerator = () =>
-// angularOutputTarget({
-//   componentCorePackage: '@baloise/design-system-components',
-//   directivesProxyFile: '../components-angular/standalone/src/generated/proxies.ts',
-//   directivesArrayFile: '../components-angular/standalone/src/generated/proxies-list.ts',
-//   valueAccessorConfigs: angularValueAccessorBindings,
-//   excludeComponents: [...docComponents, 'bal-input'],
-//   outputType: 'standalone',
-// })

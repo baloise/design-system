@@ -65,10 +65,10 @@
     "@baloise/design-system-icons": "14.5.1",
     "@baloise/design-system-tokens": "14.5.1",
     "@baloise/web-app-utils": "3.11.2",
-    "@floating-ui/dom": "^1.5.1",
+    "@floating-ui/dom": "~1.5.1",
     "@popperjs/core": "~2.11.4",
-    "@stencil/core": "~4.7.2",
-    "@types/luxon": "^3.3.5",
+    "@stencil/core": "~4.8.0",
+    "@types/luxon": "~3.3.5",
     "big.js": "~6.2.1",
     "contactjs": "2.1.7",
     "date-fns": "~2.30.0",
@@ -76,7 +76,7 @@
     "lodash.camelcase": "~4.3.0",
     "lodash.capitalize": "~4.2.1",
     "lodash.isempty": "~4.4.0",
-    "lodash.isfunction": "^3.0.9",
+    "lodash.isfunction": "~3.0.9",
     "lodash.isnan": "~3.0.2",
     "lodash.isnil": "~4.0.0",
     "lodash.isstring": "~4.0.1",
@@ -85,8 +85,8 @@
     "lodash.upperfirst": "~4.3.1",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.12.2",
-    "luxon": "^3.4.3",
-    "tslib": "^2.1.0"
+    "luxon": "~3.4.3",
+    "tslib": "~2.1.0"
   },
   "devDependencies": {
     "@baloise/design-system-output-target-angular": "14.5.1",

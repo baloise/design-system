@@ -11,14 +11,20 @@ const run = async () => {
     // Remove distribution output folder
     shell.rm('-rf', 'dist')
 
+    shell.rm('-rf', 'common/**/*.d.ts')
+    shell.rm('-rf', 'standalone/**/*.d.ts')
+    shell.rm('-rf', 'legacy/**/*.d.ts')
+
     shell.rm('-rf', 'common/directives')
     shell.rm('-rf', 'common/providers')
     shell.rm('-rf', 'common/utils')
-    shell.rm('-rf', 'common/*.d.ts')
+
+    shell.rm('-rf', 'standalone/components')
+    shell.rm('-rf', 'standalone/directives')
+    shell.rm('-rf', 'standalone/generated')
 
     shell.rm('-rf', 'legacy/directives')
     shell.rm('-rf', 'legacy/generated')
-    shell.rm('-rf', 'legacy/*.d.ts')
 
     shell.rm('-rf', 'directives')
     shell.rm('-rf', 'esm2020')

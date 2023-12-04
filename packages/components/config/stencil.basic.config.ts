@@ -2,7 +2,7 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { resolve } from 'path'
-import { VueGenerator } from './stencil.bindings.vue'
+import { VueTestGenerator } from './stencil.bindings.vue'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 
@@ -29,35 +29,10 @@ export const StencilBaseConfig: Config = {
   ],
   outputTargets: [
     {
-      type: 'docs-vscode',
-      file: 'dist/html.html-data.json',
-      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-    },
-    {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
-    {
-      type: 'dist-hydrate-script',
-    },
-    {
-      type: 'dist-custom-elements',
-      includeGlobalScripts: false,
-      generateTypeDeclarations: false,
-    },
-    {
-      type: 'dist-custom-elements',
-      dir: 'components',
-      copy: [
-        {
-          src: '../config/custom-elements',
-          dest: 'components',
-          warn: true,
-        },
-      ],
-      includeGlobalScripts: false,
-    },
-    VueGenerator('../', '../../test/generated/components/index.ts', []),
+    VueTestGenerator('../', '../../test/generated/components/index.ts'),
   ],
   bundles: [
     { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
