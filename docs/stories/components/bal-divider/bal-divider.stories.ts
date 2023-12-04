@@ -1,17 +1,12 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalDivider & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Layout/Divider',
-  args: {
-    ...withDefaultContent(),
-    content: undefined,
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-divider' }),
   },
   ...withRender(({ ...args }) => `<bal-divider ${props(args)}></bal-divider>`),

@@ -1,18 +1,15 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalHint & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Data Display/Hint',
   args: {
-    ...withDefaultContent(),
-    content: undefined,
     small: true,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-hint' }),
   },
   ...withRender(

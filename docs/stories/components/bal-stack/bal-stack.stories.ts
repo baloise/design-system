@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 import { balBrandIconPiggyBankPurple } from '@baloise/design-system-brand-icons'
 import { balBrandIconInvestSaveChfRed } from '@baloise/design-system-brand-icons'
 import { balBrandIconSafeSavingChildTangerine } from '@baloise/design-system-brand-icons'
@@ -9,12 +9,7 @@ type Args = JSX.BalStack & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Layout/Stack',
-  args: {
-    ...withDefaultContent(),
-    content: undefined,
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-stack' }),
   },
   ...withRender(

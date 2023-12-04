@@ -1,17 +1,12 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalNumberInput & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/NumberInput',
-  args: {
-    ...withDefaultContent(),
-    content: undefined,
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-number-input' }),
   },
   ...withRender(({ ...args }) => `<bal-number-input ${props(args)}></bal-number-input>`),
