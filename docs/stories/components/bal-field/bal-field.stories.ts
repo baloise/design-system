@@ -144,6 +144,16 @@ export const WithGrid = Story({
                 </bal-form-col>
 
                 <bal-form-col>
+                    <bal-field horizontal>
+                        <bal-field-label>Email Address</bal-field-label>
+                        <bal-field-control>
+                            <bal-input placeholder="Enter your email address"></bal-input>
+                        </bal-field-control>
+                        <bal-field-message color="hint">Enter a valid email address</bal-field-message>
+                    </bal-field>
+                </bal-form-col>
+
+                <bal-form-col>
                     <bal-field>
                         <bal-field-control>
                             <bal-checkbox>Checkbox</bal-checkbox>
