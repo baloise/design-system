@@ -58,6 +58,12 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
+        name: components-angular-standalone
+        path: ./packages/components-angular/standalone/src
+        filename: ComponentsAngularStandalone.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
         name: components-angular-legacy
         path: ./packages/components-angular/legacy/src
         filename: ComponentsAngularLegacy.zip

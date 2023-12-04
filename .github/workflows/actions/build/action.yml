@@ -55,6 +55,12 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
+        name: components-angular-standalone
+        output: packages/components-angular/src/ComponentsAngularStandalone.zip
+        paths: packages/components-angular/src/standalone/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
         name: components-angular-legacy
         output: packages/components-angular/legacy/src/ComponentsAngularLegacy.zip
         paths: packages/components-angular/legacy/src/generated
