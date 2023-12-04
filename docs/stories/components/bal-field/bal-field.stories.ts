@@ -144,16 +144,6 @@ export const WithGrid = Story({
                 </bal-form-col>
 
                 <bal-form-col>
-                    <bal-field horizontal>
-                        <bal-field-label>Email Address</bal-field-label>
-                        <bal-field-control>
-                            <bal-input placeholder="Enter your email address"></bal-input>
-                        </bal-field-control>
-                        <bal-field-message color="hint">Enter a valid email address</bal-field-message>
-                    </bal-field>
-                </bal-form-col>
-
-                <bal-form-col>
                     <bal-field>
                         <bal-field-control>
                             <bal-checkbox>Checkbox</bal-checkbox>
@@ -177,5 +167,24 @@ export const WithGrid = Story({
         <bal-button color="text">Cancel</bal-button>
     </bal-card-actions>
 </bal-card>`,
+  ),
+})
+
+export const Horizontal = Story({
+  args: {
+    placeholder: 'Enter your email address',
+  },
+  ...withRender(
+    ({ ...args }) => `<bal-field horizontal>
+    <bal-field-label
+      >Email address</bal-field-label
+    >
+    <bal-field-control>
+      <bal-input ${props(args)}></bal-input>
+    </bal-field-control>
+    <bal-field-message color="hint"
+      >Enter a valid email address.</bal-field-message
+    >
+  </bal-field>`,
   ),
 })
