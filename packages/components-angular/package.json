@@ -47,6 +47,43 @@
   "fesm2015": "fesm2015/baloise-design-system-components-angular.mjs",
   "typings": "index.d.ts",
   "sideEffects": false,
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/baloise-design-system-components-angular.mjs",
+      "es2020": "./fesm2020/baloise-design-system-components-angular.mjs",
+      "es2015": "./fesm2015/baloise-design-system-components-angular.mjs",
+      "node": "./fesm2015/baloise-design-system-components-angular.mjs",
+      "default": "./fesm2020/baloise-design-system-components-angular.mjs"
+    },
+    "./common": {
+      "types": "./common/index.d.ts",
+      "esm2020": "./esm2020/common/baloise-design-system-components-angular-common.mjs",
+      "es2020": "./fesm2020/baloise-design-system-components-angular-common.mjs",
+      "es2015": "./fesm2015/baloise-design-system-components-angular-common.mjs",
+      "node": "./fesm2015/baloise-design-system-components-angular-common.mjs",
+      "default": "./fesm2020/baloise-design-system-components-angular-common.mjs"
+    },
+    "./legacy": {
+      "types": "./legacy/index.d.ts",
+      "esm2020": "./esm2020/legacy/baloise-design-system-components-angular-legacy.mjs",
+      "es2020": "./fesm2020/baloise-design-system-components-angular-legacy.mjs",
+      "es2015": "./fesm2015/baloise-design-system-components-angular-legacy.mjs",
+      "node": "./fesm2015/baloise-design-system-components-angular-legacy.mjs",
+      "default": "./fesm2020/baloise-design-system-components-angular-legacy.mjs"
+    },
+    "./standalone": {
+      "types": "./standalone/index.d.ts",
+      "esm2020": "./esm2020/standalone/baloise-design-system-components-angular-standalone.mjs",
+      "es2020": "./fesm2020/baloise-design-system-components-angular-standalone.mjs",
+      "es2015": "./fesm2015/baloise-design-system-components-angular-standalone.mjs",
+      "node": "./fesm2015/baloise-design-system-components-angular-standalone.mjs",
+      "default": "./fesm2020/baloise-design-system-components-angular-standalone.mjs"
+    }
+  },
   "scripts": {
     "clean": "node scripts/clean.mjs",
     "build": "npm run clean && node scripts/build.mjs",
