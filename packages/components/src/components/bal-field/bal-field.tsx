@@ -201,7 +201,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
           'bal-field': true,
           'field': true,
           'bal-field--invalid': this.invalid === true,
-          'bal-field--horizontal-aligned': this.horizontal === true,
+          'bal-field--horizontal': this.horizontal === true,
         }}
       >
         <slot></slot>
