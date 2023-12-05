@@ -78,6 +78,21 @@ import 'zone.js' // Included with Angular CLI.
 3. In the `angular.json` file at the path `projects.architect.build.options.polyfills` change value to `["src/polyfills.ts"]`.
 4. List the `src/polyfills.ts` as a file in the `tsconfig.app.json`.
 
+### Angular Config
+
+With Angular Version 17, Stencil no longer handles the lazy loading of the Baloise Design System.
+Angular and Vite will now take care of this process. Consequently, there will be an initial increase in the bundle size.
+
+Open the `angular.json` file and make the following adjustment to `architect.build.configurations.production.budgets`:
+
+```json
+{
+  "type": "initial",
+  "maximumWarning": "3mb",
+  "maximumError": "5mb"
+}
+```
+
 ## Installation
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.

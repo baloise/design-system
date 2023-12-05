@@ -89,17 +89,24 @@ import {
   BalText,
 } from './generated/proxies'
 
-export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger]
+export const BalAccordionBundle = [BalAccordion, BalAccordionDetails, BalAccordionSummary, BalAccordionTrigger] as const
 
-export const BalButtonBundle = [BalButton, BalButtonGroup]
+export const BalButtonBundle = [BalButton, BalButtonGroup] as const
 
-export const BalCardBundle = [BalCard, BalCardContent, BalCardTitle, BalCardActions, BalCardSubtitle, BalCardButton]
+export const BalCardBundle = [
+  BalCard,
+  BalCardContent,
+  BalCardTitle,
+  BalCardActions,
+  BalCardSubtitle,
+  BalCardButton,
+] as const
 
-export const BalDataBundle = [BalData, BalDataItem, BalDataLabel, BalDataValue]
+export const BalDataBundle = [BalData, BalDataItem, BalDataLabel, BalDataValue] as const
 
-export const BalHintBundle = [BalHint, BalHintText, BalHintTitle]
+export const BalHintBundle = [BalHint, BalHintText, BalHintTitle] as const
 
-export const BalCarouselBundle = [BalCarousel, BalCarouselItem]
+export const BalCarouselBundle = [BalCarousel, BalCarouselItem] as const
 
 export const BalListBundle = [
   BalList,
@@ -110,29 +117,43 @@ export const BalListBundle = [
   BalListItemIcon,
   BalListItemTitle,
   BalListItemSubtitle,
-]
+] as const
 
-export const BalNavbarBundle = [BalNavbar, BalNavbarBrand, BalNavbarMenu, BalNavbarMenuStart, BalNavbarMenuEnd]
+export const BalNavbarBundle = [BalNavbar, BalNavbarBrand, BalNavbarMenu, BalNavbarMenuStart, BalNavbarMenuEnd] as const
 
-export const BalStageBundle = [BalStage, BalStageBackLink, BalStageBody, BalStageFoot, BalStageHead, BalStageImage]
+export const BalStageBundle = [
+  BalStage,
+  BalStageBackLink,
+  BalStageBody,
+  BalStageFoot,
+  BalStageHead,
+  BalStageImage,
+] as const
 
-export const BalTagBundle = [BalTag, BalTagGroup]
+export const BalTagBundle = [BalTag, BalTagGroup] as const
 
-export const BalTabsBundle = [BalTabs, BalTabItem]
+export const BalTabsBundle = [BalTabs, BalTabItem] as const
 
-export const BalStepsBundle = [BalSteps, BalStepItem]
+export const BalStepsBundle = [BalSteps, BalStepItem] as const
 
-export const BalModalBundle = [BalModal, BalModalBody, BalModalHeader]
+export const BalModalBundle = [BalModal, BalModalBody, BalModalHeader] as const
 
-export const BalSelectBundle = [BalSelectOption, BalSelect]
+export const BalSelectBundle = [BalSelectOption, BalSelect] as const
 
-export const BalCheckboxBundle = [BalCheckbox, BalCheckboxGroup, BalCheckboxButton]
+export const BalCheckboxBundle = [BalCheckbox, BalCheckboxGroup, BalCheckboxButton] as const
 
-export const BalRadioBundle = [BalRadio, BalRadioButton, BalRadioGroup]
+export const BalRadioBundle = [BalRadio, BalRadioButton, BalRadioGroup] as const
 
-export const BalFormGridBundle = [BalFormGrid, BalFormCol]
+export const BalFormGridBundle = [BalFormGrid, BalFormCol] as const
 
-export const BalFieldBundle = [BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalFieldControl, BalFieldHint]
+export const BalFieldBundle = [
+  BalField,
+  BalFieldLabel,
+  BalFieldControl,
+  BalFieldMessage,
+  BalFieldControl,
+  BalFieldHint,
+] as const
 
 /* Component Sections */
 
@@ -159,11 +180,11 @@ export const BalFormBundle = [
   ...BalSelectBundle,
   BalTextarea,
   BalTimeInput,
-]
+] as const
 
-export const BalLayoutBundle = [BalStack, BalContent, BalLogo, BalShape, BalApp, BalDivider, BalFooter]
+export const BalLayoutBundle = [BalStack, BalContent, BalLogo, BalShape, BalApp, BalDivider, BalFooter] as const
 
-export const BalTypographyBundle = [BalHeading, BalText, BalLabel]
+export const BalTypographyBundle = [BalHeading, BalText, BalLabel] as const
 
 export const BalComponentBundle = [
   BalAccordion,
@@ -252,4 +273,4 @@ export const BalComponentBundle = [
   BalSelect,
   BalTextarea,
   BalTimeInput,
-]
+] as const
