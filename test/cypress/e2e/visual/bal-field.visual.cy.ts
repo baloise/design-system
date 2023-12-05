@@ -30,3 +30,24 @@ describe('bal-field', () => {
     cy.getByTestId('label-long').compareSnapshot('label-long-mobile')
   })
 })
+
+describe('bal-field-horizontal', () => {
+  beforeEach(() => cy.visit('/components/bal-field/test/bal-field-horizontal.visual.html').waitForDesignSystem())
+
+  it('basic component', () => {
+    cy.platform('desktop')
+    cy.getByTestId('horizontal').compareSnapshot('horizontal-desktop')
+    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-desktop')
+    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-desktop')
+
+    cy.platform('tablet')
+    cy.getByTestId('horizontal').compareSnapshot('horizontal-tablet')
+    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-tablet')
+    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-tablet')
+
+    cy.platform('mobile')
+    cy.getByTestId('horizontal').compareSnapshot('horizontal-mobile')
+    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-mobile')
+    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-mobile')
+  })
+})

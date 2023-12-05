@@ -42,6 +42,11 @@ export class Field implements ComponentInterface, BalMutationObserver {
   }
 
   /**
+   * If true, label and input are aligned horizontally within the field component, with the message positioned in a new line below.
+   */
+  @Prop() horizontal?: boolean = false
+
+  /**
    * If `true` the component gets a invalid red style.
    */
   @Prop() invalid?: boolean = undefined
@@ -194,6 +199,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
           'bal-field': true,
           'field': true,
           'bal-field--invalid': this.invalid === true,
+          'bal-field--horizontal': this.horizontal === true,
         }}
       >
         <slot></slot>

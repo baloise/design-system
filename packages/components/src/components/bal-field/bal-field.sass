@@ -1,4 +1,5 @@
 @import '@baloise/design-system-css/sass/mixins'
+@import './bal-field.vars'
 
 +blocks(field, field-label, field-control, field-message, field-hint)
   display: block
@@ -43,3 +44,36 @@
 
 .bal-field-control + .bal-field-message
   margin-top: -1.5rem !important
+
+.bal-field--horizontal
+  display: flex
+  flex-wrap: wrap
+  column-gap: var(--bal-field-label-column-gap)
+  align-items: center
+
+  .bal-field-label
+    display: flex
+    align-items: center
+    min-width: var(--bal-field-label-horizontal-width)
+    max-width: var(--bal-field-label-horizontal-width)
+    justify-content: end
+    margin-bottom: 0
+  
+  .bal-field-control
+    flex: 1
+    padding-bottom: 0
+    align-self: flex-end
+
+  .bal-field-message
+    flex-basis: 100%
+    margin-top: 0 !important
+    margin-left: calc(var(--bal-field-label-horizontal-width) + var(--bal-field-label-column-gap))
+
+  .bal-field-hint
+    margin-left: 0
+
+    .bal-hint
+      top: 0
+
+  .bal-field-hint ~ .bal-field-message 
+    margin-left: calc(var(--bal-field-label-horizontal-width) + (var(--bal-field-label-column-gap) * 2) + 1.125rem)
