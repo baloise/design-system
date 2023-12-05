@@ -34,7 +34,22 @@ CSS Variables enable a value to be stored in a single location and referenced in
 They also facilitate dynamic CSS modification at runtime, a task that previously necessitated a CSS preprocessor.
 Thanks to CSS variables, it is simpler than ever to replace Baloise Design System components to align with a brand or theme.
 
-## Global Theming
+## Compact theme
+
+The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
+
+To activate the compact theme, import the theme-compact stylesheet into the root App component or a global stylesheet.
+
+It is recommended to import the theme-compact file at the end of your stylesheet, after the other imports from the Design System.
+
+<Code
+  language="js"
+  code={`
+@import '@baloise/design-system-css/css/theme-compact';
+`}
+/>
+
+## Custom theme
 
 In an application, CSS variables can be established globally within the `:root` selector.
 
@@ -48,7 +63,7 @@ In an application, CSS variables can be established globally within the `:root` 
 `}
 />
 
-## Component Theming
+### By Component
 
 To assign a CSS variable for a specific component, incorporate the variable within its selector.
 
@@ -74,7 +89,7 @@ Change the background on an badge with the .my-badge class
 `}
 />
 
-## Variables set via JavaScript​
+### By JavaScript​
 
 Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty) in JavaScript, CSS variables can also be altered:
 

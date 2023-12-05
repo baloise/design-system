@@ -167,3 +167,22 @@ export const WithGrid = Story({
 </bal-card>`,
   ),
 })
+
+export const Horizontal = Story({
+  args: {
+    placeholder: 'Enter your email address',
+  },
+  ...withRender(
+    ({ ...args }) => `<bal-field horizontal>
+    <bal-field-label
+      >Email address</bal-field-label
+    >
+    <bal-field-control>
+      <bal-input ${props(args)}></bal-input>
+    </bal-field-control>
+    <bal-field-message color="hint"
+      >Enter a valid email address.</bal-field-message
+    >
+  </bal-field>`,
+  ),
+})
