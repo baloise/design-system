@@ -13,7 +13,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounce, deepReady, isDescendant, rIC } from '../../utils/helpers'
+import { debounce, deepReady, isDescendant, rIC, waitAfterIdleCallback } from '../../utils/helpers'
 import {
   areArraysEqual,
   isArrowDownKey,
@@ -390,12 +390,10 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    */
   @Method()
   async setFocus() {
-    clearTimeout(this.setFocusTimer)
-    this.setFocusTimer = setTimeout(() => {
-      if (this.inputElement && !this.disabled) {
-        this.inputElement.focus()
-      }
-    })
+    if (this.inputElement && !this.disabled) {
+      await waitAfterIdleCallback()
+      this.inputElement.focus()
+    }
   }
 
   /**
@@ -520,8 +518,6 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
       this.validateAfterBlur()
     }
   }
-
-  private setFocusTimer?: NodeJS.Timer
 
   /**
    * GETTERS
