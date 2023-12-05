@@ -10,9 +10,6 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-desktop')
     cy.getByTestId('valid').compareSnapshot('field-valid-desktop')
     cy.getByTestId('label-long').compareSnapshot('label-long-desktop')
-    cy.getByTestId('horizontal').compareSnapshot('horizontal-desktop')
-    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-desktop')
-    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-desktop')
 
     cy.platform('tablet')
     cy.getByTestId('basic').compareSnapshot('field-basic-tablet')
@@ -22,9 +19,6 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-tablet')
     cy.getByTestId('valid').compareSnapshot('field-valid-tablet')
     cy.getByTestId('label-long').compareSnapshot('label-long-tablet')
-    cy.getByTestId('horizontal').compareSnapshot('horizontal-tablet')
-    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-tablet')
-    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-tablet')
 
     cy.platform('mobile')
     cy.getByTestId('basic').compareSnapshot('field-basic-mobile')
@@ -34,6 +28,24 @@ describe('bal-field', () => {
     cy.getByTestId('required').compareSnapshot('field-required-mobile')
     cy.getByTestId('valid').compareSnapshot('field-valid-mobile')
     cy.getByTestId('label-long').compareSnapshot('label-long-mobile')
+  })
+})
+
+describe('bal-field-horizontal', () => {
+  beforeEach(() => cy.visit('/components/bal-field/test/bal-field-horizontal.visual.html').waitForDesignSystem())
+
+  it('basic component', () => {
+    cy.platform('desktop')
+    cy.getByTestId('horizontal').compareSnapshot('horizontal-desktop')
+    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-desktop')
+    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-desktop')
+
+    cy.platform('tablet')
+    cy.getByTestId('horizontal').compareSnapshot('horizontal-tablet')
+    cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-tablet')
+    cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-tablet')
+
+    cy.platform('mobile')
     cy.getByTestId('horizontal').compareSnapshot('horizontal-mobile')
     cy.getByTestId('horizontal-long-label').compareSnapshot('horizontal-long-label-mobile')
     cy.getByTestId('horizontal-with-hint').compareSnapshot('horizontal-with-hint-mobile')
