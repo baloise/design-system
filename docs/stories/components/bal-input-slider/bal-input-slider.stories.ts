@@ -1,19 +1,15 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalInputSlider & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/InputSlider',
-  args: {
-    ...withDefaultContent(''),
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-input-slider' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-input-slider ${props(args)}>${content}</bal-input-slider>`),
+  ...withRender(({ ...args }) => `<bal-input-slider ${props(args)}></bal-input-slider>`),
 }
 
 export default meta

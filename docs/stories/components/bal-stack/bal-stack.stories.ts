@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 import { balBrandIconPiggyBankPurple } from '@baloise/design-system-brand-icons'
 import { balBrandIconInvestSaveChfRed } from '@baloise/design-system-brand-icons'
 import { balBrandIconSafeSavingChildTangerine } from '@baloise/design-system-brand-icons'
@@ -9,11 +9,7 @@ type Args = JSX.BalStack & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Layout/Stack',
-  args: {
-    ...withDefaultContent(''),
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-stack' }),
   },
   ...withRender(
@@ -151,7 +147,7 @@ export const TeaserCards = Story({
   ...withRender(
     ({ ...args }) => `<div class="columns">
   <div class="column is-one-third">
-    <bal-card color="purple-light" fullheight>
+    <bal-card color="purple-light" fullheight="true">
       <bal-card-content>
         <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconPiggyBankPurple}' color="auto" size="xx-large"></bal-icon>
@@ -166,7 +162,7 @@ export const TeaserCards = Story({
     </bal-card>
   </div>
   <div class="column is-one-third">
-    <bal-card color="yellow-light" fullheight>
+    <bal-card color="yellow-light" fullheight="true">
       <bal-card-content>
         <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconSafeSavingChildTangerine}' color="auto" size="xx-large"></bal-icon>
@@ -180,7 +176,7 @@ export const TeaserCards = Story({
     </bal-card>
   </div>
   <div class="column is-one-third">
-    <bal-card color="red-light" fullheight>
+    <bal-card color="red-light" fullheight="true">
       <bal-card-content>
         <bal-stack ${props(args)}>
           <bal-icon svg='${balBrandIconInvestSaveChfRed}' color="auto" size="xx-large"></bal-icon>

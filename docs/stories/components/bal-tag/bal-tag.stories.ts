@@ -74,14 +74,14 @@ export const Colors = Story({
 </bal-tag-group>
 <br>
 <bal-tag-group>
-  <bal-tag color="purple" light>Purple</bal-tag>
-  <bal-tag color="red" light>Red</bal-tag>
-  <bal-tag color="yellow" light>Yellow</bal-tag>
-  <bal-tag color="green" light>Green</bal-tag>
+  <bal-tag color="purple" light="true">Purple</bal-tag>
+  <bal-tag color="red" light="true">Red</bal-tag>
+  <bal-tag color="yellow" light="true">Yellow</bal-tag>
+  <bal-tag color="green" light="true">Green</bal-tag>
 </bal-tag-group>
 <br>
 <bal-tag-group>
-  <bal-tag disabled>Disabled</bal-tag>
+  <bal-tag disabled="true">Disabled</bal-tag>
 </bal-tag-group>
     `,
   ),

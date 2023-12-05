@@ -186,7 +186,7 @@ export const FormStructure = Story({
                     <bal-field>
                         <bal-field-label>Multiple Select</bal-field-label>
                         <bal-field-control>
-                            <bal-select multiple="true" typeahead placeholder="Placeholder" value="AG,SO">
+                            <bal-select multiple="true" typeahead="true" placeholder="Placeholder" value="AG,SO">
                                 <bal-select-option value="AG" label="Argau">Argau</bal-select-option>
                                 <bal-select-option value="BS" label="Basel">Basel</bal-select-option>
                                 <bal-select-option value="BL" label="Basel-Land">Basel-Land</bal-select-option>
