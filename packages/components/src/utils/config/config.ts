@@ -1,58 +1,20 @@
 import { balBrowser } from '../browser'
-import { BalLogger, defaultLoggerConfig } from '../log'
+import { BalLogger } from '../log'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalIcons, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
-import {
-  balIconClose,
-  balIconInfoCircle,
-  balIconPlus,
-  balIconMinus,
-  balIconEdit,
-  balIconTrash,
-  balIconNavGoLeft,
-  balIconNavGoRight,
-  balIconNavGoDown,
-  balIconNavGoUp,
-  balIconCaretLeft,
-  balIconCaretDown,
-  balIconCheck,
-  balIconDate,
-  balIconDocument,
-  balIconUpload,
-  balIconMenuBars,
-} from '../constants/icons.constant'
+import { defaultConfig } from './config.default'
 
 export class Config {
   private _componentObservers: BalConfigObserver[] = []
   private _observers: BalConfigObserver[] = []
-  private _config: BalConfigState = {
-    region: 'CH',
-    language: 'de',
-    allowedLanguages: ['de', 'fr', 'it', 'en'],
-    icons: {
-      balIconClose,
-      balIconInfoCircle,
-      balIconPlus,
-      balIconMinus,
-      balIconEdit,
-      balIconTrash,
-      balIconNavGoLeft,
-      balIconNavGoRight,
-      balIconNavGoDown,
-      balIconNavGoUp,
-      balIconCaretLeft,
-      balIconCaretDown,
-      balIconCheck,
-      balIconDate,
-      balIconDocument,
-      balIconUpload,
-      balIconMenuBars,
-    },
-    fallbackLanguage: 'de',
-    logger: defaultLoggerConfig,
-    animated: true,
-  }
+  private _config: BalConfigState = defaultConfig
+
+  public _jmp?: (c: any) => any
+  public _raf?: (c: any) => number
+  public _ael?: (el: any, eventName: string, listener: any, options: any) => void
+  public _rel?: (el: any, eventName: string, listener: any, options: any) => void
+  public _ce?: (eventName: string, opts?: any) => any
 
   get locale(): string {
     return `${this._config.language}-${this._config.region}`

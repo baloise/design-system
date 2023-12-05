@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BalConfigState, BalMode } from "./utils/config";
+import { BalConfigState } from "./utils/config";
 import { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
@@ -17,7 +17,7 @@ import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/bal-radio/bal-radio.type";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-export { BalConfigState, BalMode } from "./utils/config";
+export { BalConfigState } from "./utils/config";
 export { AccordionState, BalAriaForm as BalAriaForm1, BalConfigState as BalConfigState1 } from "./interfaces";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/bal-checkbox/bal-checkbox.type";
@@ -125,10 +125,6 @@ export namespace Components {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated": boolean;
-        /**
-          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
-         */
-        "mode": BalMode;
         "ready": boolean;
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
     }
@@ -3393,10 +3389,6 @@ export interface BalAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalAccordionElement;
 }
-export interface BalAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalAppElement;
-}
 export interface BalButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalButtonElement;
@@ -3611,18 +3603,7 @@ declare global {
         prototype: HTMLBalAccordionTriggerElement;
         new (): HTMLBalAccordionTriggerElement;
     };
-    interface HTMLBalAppElementEventMap {
-        "balAppLoad": BalEvents.BalAppLoadDetail;
-    }
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBalAppElementEventMap>(type: K, listener: (this: HTMLBalAppElement, ev: BalAppCustomEvent<HTMLBalAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBalAppElement: {
         prototype: HTMLBalAppElement;
@@ -5173,11 +5154,6 @@ declare namespace LocalJSX {
           * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
          */
         "animated"?: boolean;
-        /**
-          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
-         */
-        "mode"?: BalMode;
-        "onBalAppLoad"?: (event: BalAppCustomEvent<BalEvents.BalAppLoadDetail>) => void;
         "ready"?: boolean;
     }
     interface BalBadge {

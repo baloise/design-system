@@ -13,18 +13,66 @@ runs:
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
-        name: test-ng-e2e
-        output: apps/angular/TestNgE2eBuild.zip
-        paths: apps/angular/dist
+        name: tokens-dist
+        output: packages/tokens/TokensDist.zip
+        paths: packages/tokens/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: css-dist
+        output: packages/css/CssDist.zip
+        paths: packages/css/css
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: icons-dist
+        output: packages/icons/IconsDist.zip
+        paths: packages/icons/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-dist
+        output: packages/components/ComponentsDist.zip
+        paths: packages/components/dist
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-loader
+        output: packages/components/ComponentsLoader.zip
+        paths: packages/components/loader
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-components
+        output: packages/components/ComponentsComponents.zip
+        paths: packages/components/components
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular
+        output: packages/components-angular/src/ComponentsAngular.zip
+        paths: packages/components-angular/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular-standalone
+        output: packages/components-angular/standalone/src/ComponentsAngularStandalone.zip
+        paths: packages/components-angular/standalone/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: components-angular-legacy
+        output: packages/components-angular/legacy/src/ComponentsAngularLegacy.zip
+        paths: packages/components-angular/legacy/src/generated
+
+    - uses: ./.github/workflows/actions/upload-archive
+      with:
+        name: testing-dist
+        output: packages/testing/TestingDist.zip
+        paths: packages/testing/dist
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
         name: test-e2e
         output: test/TestE2eBuild.zip
         paths: test/generated
-
-    # - uses: ./.github/workflows/actions/upload-archive
-    #   with:
-    #     name: components
-    #     output: packages/components/ComponentsBuild.zip
-    #     paths: packages/components/dist packages/components/loader packages/components/src/components.d.ts

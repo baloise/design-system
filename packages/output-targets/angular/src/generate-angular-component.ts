@@ -2,8 +2,13 @@ import { dashToPascalCase } from './utils'
 import type { ComponentCompilerMeta } from '@stencil/core/internal'
 
 export const createComponentDefinition =
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-  (componentCorePackage: string, _distTypesDir: string, _rootDir: string) => (cmpMeta: ComponentCompilerMeta) => {
+  (
+    componentCorePackage: string,
+    _distTypesDir: string,
+    _rootDir: string,
+    outputTargetType: 'legacy' | 'standalone' | 'module',
+  ) =>
+  (cmpMeta: ComponentCompilerMeta) => {
     // Collect component meta
     const inputs = [
       ...cmpMeta.properties.filter(prop => !prop.internal).map(prop => prop.name),
@@ -21,6 +26,10 @@ export const createComponentDefinition =
       `changeDetection: ChangeDetectionStrategy.OnPush`,
       `template: '<ng-content></ng-content>'`,
     ]
+
+    if (outputTargetType === 'standalone') {
+      directiveOpts.push(`standalone: true`)
+    }
     if (inputs.length > 0) {
       directiveOpts.push(`inputs: ['${inputs.join(`', '`)}']`)
     }
@@ -41,14 +50,16 @@ export const createComponentDefinition =
       .filter((item, pos, self) => self.indexOf(item) === pos)
       .join(', ')
     if (outputsTypes.length > 0) {
-      outputsTypes = `import { ${outputsTypes} } from '${componentCorePackage}';`
+      outputsTypes = `import type { ${outputsTypes} } from '${componentCorePackage}${
+        outputTargetType !== 'legacy' ? '/components' : ''
+      }';`
     }
 
     const lines = [
       `
 ${outputsTypes}
 export declare interface ${tagNameAsPascal} extends Components.${tagNameAsPascal} {}
-${getProxyCmp(inputs, methods)}
+${getProxyCmp(tagNameAsPascal, outputTargetType, inputs, methods)}
 @Component({
   ${directiveOpts.join(',\n  ')}
 })
@@ -78,17 +89,26 @@ export class ${tagNameAsPascal} {`,
     return lines.join('\n')
   }
 
-function getProxyCmp(inputs: string[], methods: string[]): string {
+function getProxyCmp(
+  tagNameAsPascal: string,
+  outputTargetType: 'legacy' | 'standalone' | 'module',
+  inputs: string[],
+  methods: string[],
+): string {
   const hasInputs = inputs.length > 0
   const hasMethods = methods.length > 0
   const proxMeta: string[] = []
 
-  if (!hasInputs && !hasMethods) {
-    return ''
-  }
-
   if (hasInputs) proxMeta.push(`inputs: ['${inputs.join(`', '`)}']`)
   if (hasMethods) proxMeta.push(`methods: ['${methods.join(`', '`)}']`)
+
+  if (outputTargetType === 'standalone' || outputTargetType === 'module') {
+    proxMeta.push(`defineCustomElementFn: define${tagNameAsPascal}`)
+  }
+
+  if (proxMeta.length === 0) {
+    return ''
+  }
 
   return `@ProxyCmp({\n  ${proxMeta.join(',\n  ')}\n})`
 }

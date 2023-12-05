@@ -1,4 +1,5 @@
 import { balBrowser } from '../browser'
+import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalElementStateInfo } from './element-states.interfaces'
 
@@ -17,24 +18,24 @@ export class BalElementStateListener<TObserver> extends ListenerAbstract<TObserv
   connect(el: HTMLElement): void {
     super.connect(el)
 
-    el.addEventListener('mouseenter', this.onMouseEnter, BalElementStateListener.EventListenerOptions)
-    el.addEventListener('mouseleave', this.onMouseLeave, BalElementStateListener.EventListenerOptions)
-    el.addEventListener('pointerdown', this.onPointerDown, BalElementStateListener.EventListenerOptions)
+    addEventListener(this.el, 'mouseenter', this.onMouseEnter, BalElementStateListener.EventListenerOptions)
+    addEventListener(this.el, 'mouseleave', this.onMouseLeave, BalElementStateListener.EventListenerOptions)
+    addEventListener(this.el, 'pointerdown', this.onPointerDown, BalElementStateListener.EventListenerOptions)
 
     if (balBrowser.hasDocument) {
-      document.addEventListener('pointerup', this.onPointerUp, BalElementStateListener.EventListenerOptions)
+      addEventListener(document, 'pointerup', this.onPointerUp, BalElementStateListener.EventListenerOptions)
     }
   }
 
   disconnect(): void {
     super.disconnect()
     if (this.el) {
-      this.el.removeEventListener('mouseenter', this.onMouseEnter)
-      this.el.removeEventListener('mouseleave', this.onMouseLeave)
-      this.el.removeEventListener('pointerdown', this.onPointerDown)
+      removeEventListener(this.el, 'mouseenter', this.onMouseEnter)
+      removeEventListener(this.el, 'mouseleave', this.onMouseLeave)
+      removeEventListener(this.el, 'pointerdown', this.onPointerDown)
 
       if (balBrowser.hasDocument) {
-        document.removeEventListener('pointerup', this.onPointerUp)
+        removeEventListener(document, 'pointerup', this.onPointerUp)
       }
     }
   }

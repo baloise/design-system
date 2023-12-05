@@ -24,7 +24,6 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
     ...outputTarget,
     excludeComponents: outputTarget.excludeComponents || [],
     componentModels: outputTarget.componentModels || [],
-    includePolyfills: outputTarget.includePolyfills ?? true,
     includeDefineCustomElements: outputTarget.includeDefineCustomElements ?? true,
   }
 
@@ -37,12 +36,6 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
   if (outputTarget.includeDefineCustomElements && outputTarget.includeImportCustomElements) {
     throw new Error(
       'includeDefineCustomElements cannot be used at the same time as includeImportCustomElements since includeDefineCustomElements is used for lazy loading components. Set `includeDefineCustomElements: false` in your Vue output target config to resolve this.',
-    )
-  }
-
-  if (outputTarget.includeImportCustomElements && outputTarget.includePolyfills) {
-    throw new Error(
-      'includePolyfills cannot be used at the same time as includeImportCustomElements. Set `includePolyfills: false` in your Vue output target config to resolve this.',
     )
   }
 

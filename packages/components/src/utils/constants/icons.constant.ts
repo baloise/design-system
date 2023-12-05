@@ -49,6 +49,8 @@ export const balIconCheck = /*#__PURE__*/ '<svg xmlns="http://www.w3.org/2000/sv
 
 export const balIconCaretUp = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M9.794,6.607,5.884,2.49A1.255,1.255,0,0,0,4.1,2.5l-3.9,4.1A.75.75,0,1,0,1.294,7.641L4.819,3.928a.249.249,0,0,1,.362,0L8.706,7.641A.75.75,0,1,0,9.794,6.607Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
 
+export const balIconCaretRight = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M7.5,4.1l-4.1-3.9A.75.75,0,1,0,2.36,1.294L6.072,4.819a.249.249,0,0,1,0,.362L2.36,8.706A.75.75,0,0,0,3.393,9.794L7.51,5.884A1.256,1.256,0,0,0,7.5,4.1Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
+
 export const balIconCaretLeft = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M7.124,10a.749.749,0,0,1-.517-.206L2.5,5.9A1.257,1.257,0,0,1,2.49,4.116L6.607.206A.75.75,0,1,1,7.64,1.294L3.928,4.819a.249.249,0,0,0,0,.362L7.64,8.706A.75.75,0,0,1,7.124,10Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';
 
 export const balIconCaretDown = /*#__PURE__*/ '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/></svg>';

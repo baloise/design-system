@@ -4,20 +4,25 @@ import { angularDirectiveProxyOutput } from './output-angular'
 import type { OutputTargetAngular } from './types'
 import path from 'path'
 
-export const angularOutputTarget = (outputTarget: OutputTargetAngular): OutputTargetCustom => ({
-  type: 'custom',
-  name: 'angular-library',
-  validate(config) {
-    return normalizeOutputTarget(config, outputTarget)
-  },
-  async generator(config, compilerCtx, buildCtx) {
-    const timespan = buildCtx.createTimeSpan(`generate angular proxies started`, true)
+export const angularOutputTarget = (outputTarget: OutputTargetAngular): OutputTargetCustom => {
+  return {
+    type: 'custom',
+    name: 'angular-library-' + outputTarget.outputType || 'module',
+    validate(config) {
+      return normalizeOutputTarget(config, outputTarget)
+    },
+    async generator(config, compilerCtx, buildCtx) {
+      const timespan = buildCtx.createTimeSpan(
+        `generate angular ${outputTarget.outputType || 'module'} proxies started`,
+        true,
+      )
 
-    await angularDirectiveProxyOutput(compilerCtx, outputTarget, buildCtx.components, config)
+      await angularDirectiveProxyOutput(compilerCtx, outputTarget, buildCtx.components, config)
 
-    timespan.finish(`generate angular proxies finished`)
-  },
-})
+      timespan.finish(`generate angular ${outputTarget.outputType || 'module'} proxies finished`)
+    },
+  }
+}
 
 export function normalizeOutputTarget(config: Config, outputTarget: any) {
   const results: OutputTargetAngular = {
@@ -32,9 +37,16 @@ export function normalizeOutputTarget(config: Config, outputTarget: any) {
   if (outputTarget.directivesProxyFile == null) {
     throw new Error('directivesProxyFile is required')
   }
+  if (outputTarget.directivesMetaFile == null) {
+    throw new Error('directivesMetaFile is required')
+  }
 
   if (outputTarget.directivesProxyFile && !path.isAbsolute(outputTarget.directivesProxyFile)) {
     results.directivesProxyFile = normalizePath(path.join(config.rootDir, outputTarget.directivesProxyFile))
+  }
+
+  if (outputTarget.directivesMetaFile && !path.isAbsolute(outputTarget.directivesMetaFile)) {
+    results.directivesMetaFile = normalizePath(path.join(config.rootDir, outputTarget.directivesMetaFile))
   }
 
   if (outputTarget.directivesArrayFile && !path.isAbsolute(outputTarget.directivesArrayFile)) {

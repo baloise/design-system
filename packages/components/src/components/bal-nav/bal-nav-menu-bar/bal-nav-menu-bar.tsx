@@ -4,9 +4,7 @@ import { LogInstance, Loggable, Logger } from '../../../utils/log'
 
 @Component({
   tag: 'bal-nav-menu-bar',
-  styleUrls: {
-    css: 'bal-nav-menu-bar.sass',
-  },
+  styleUrl: 'bal-nav-menu-bar.sass',
 })
 export class NavMenuBar implements ComponentInterface, Loggable {
   private navMenuBarId = `bal-nav-menu-bar-${NavMenuBarIds++}`

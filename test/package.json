@@ -1,6 +1,6 @@
 {
   "name": "e2e-tests",
-  "version": "13.6.18",
+  "version": "13.6.19",
   "private": true,
   "description": "Cypress E2E Tests",
   "scripts": {
@@ -13,16 +13,16 @@
     "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
-    "@baloise/design-system-components": "14.6.0"
+    "@baloise/design-system-components": "15.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "~4.4.0",
     "axe-core": "~4.8.2",
-    "compression": "^1.7.4",
+    "compression": "~1.7.4",
     "cypress": "~12.17.3",
     "cypress-axe": "~1.5.0",
     "cypress-file-upload": "~5.0.8",
-    "cypress-split": "^1.15.5",
+    "cypress-split": "~1.15.5",
     "cypress-visual-regression": "~3.0.0",
     "date-fns": "~2.30.0",
     "express": "~4.18.2",

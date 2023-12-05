@@ -1,4 +1,3 @@
-import { tr } from 'date-fns/locale'
 import { BalDatepicker } from '../support/utils'
 import { format, now } from '@baloise/web-app-utils'
 

@@ -1,90 +1,19 @@
 import { balBrowser } from '../browser'
-import { defaultLoggerConfig } from '../log'
 import { config, configFromSession } from './config'
-import { BalConfig, BalConfigState } from './config.types'
-import {
-  balIconClose,
-  balIconInfoCircle,
-  balIconPlus,
-  balIconMinus,
-  balIconEdit,
-  balIconTrash,
-  balIconNavGoLeft,
-  balIconNavGoRight,
-  balIconNavGoDown,
-  balIconNavGoUp,
-  balIconCaretLeft,
-  balIconCaretDown,
-  balIconCheck,
-  balIconDate,
-  balIconDocument,
-  balIconUpload,
-  balIconMenuBars,
-  balIconFacebook,
-  balIconInstagram,
-  balIconLinkedin,
-  balIconTwitter,
-  balIconX,
-  balIconXing,
-  balIconYoutube,
-  balIconWeb,
-  balIconCaretUp,
-} from '../constants/icons.constant'
 
-export const defaultConfig: BalConfigState = {
-  region: 'CH',
-  language: 'de',
-  allowedLanguages: ['de', 'fr', 'it', 'en'],
-  icons: {
-    balIconClose,
-    balIconInfoCircle,
-    balIconPlus,
-    balIconMinus,
-    balIconEdit,
-    balIconTrash,
-    balIconNavGoLeft,
-    balIconNavGoRight,
-    balIconNavGoDown,
-    balIconNavGoUp,
-    balIconCaretLeft,
-    balIconCaretDown,
-    balIconCheck,
-    balIconDate,
-    balIconDocument,
-    balIconUpload,
-    balIconMenuBars,
-    balIconFacebook,
-    balIconInstagram,
-    balIconLinkedin,
-    balIconTwitter,
-    balIconX,
-    balIconXing,
-    balIconYoutube,
-    balIconWeb,
-    balIconCaretUp,
-  },
-  fallbackLanguage: 'de',
-  logger: defaultLoggerConfig,
-  animated: true,
-}
+import { BalConfig } from './config.types'
 
-export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
-
-export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
-  if (!balBrowser.hasWindow) {
-    return
+export const setupConfig = (userConfig: BalConfig = {}, win = {} as any) => {
+  if (Object.keys(win).length === 0 && balBrowser.hasWindow) {
+    win = window as any
   }
-
-  win = window
 
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   config.reset({
-    ...defaultConfig,
     ...configFromSession(win),
     ...userConfig,
     icons: {
-      ...defaultConfig.icons,
       ...configFromSession(win).icons,
       ...userConfig.icons,
     },
@@ -93,4 +22,4 @@ export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   win.BaloiseDesignSystem.config = config
 }
 
-export default initialize
+export default setupConfig

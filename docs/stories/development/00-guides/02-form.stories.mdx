@@ -106,22 +106,7 @@ specific validators.
 
 </InfoQuote>
 
-1. The Design System works with Angular to visually indicate to the user when they have entered incorrect information by setting
-the invalid form field to red. This is achieved by listening to the form control state, specifically when it is both invalid and touched.
-
-<Code
-  language="ts"
-  noPreview
-  code={`
-BaloiseDesignSystemModule.forRoot({
-  forms: {
-    setInvalid: true,
-  },
-}),
-`}
-/>
-
-2. Angular package offers `balAutoFocus` directive which brings focus to the element.
+1. Angular package offers `balAutoFocus` directive which brings focus to the element.
 Usage can be seen in the following code in bal-field.
 In order for it to work please import `BalSharedModule` in each Angular module that uses it.
 
@@ -146,7 +131,7 @@ In order for it to work please import `BalSharedModule` in each Angular module t
 `}
 />
 
-3. In the component class wen can define the validators for the form control.
+2. In the component class wen can define the validators for the form control.
 
 <Code
   language="ts"

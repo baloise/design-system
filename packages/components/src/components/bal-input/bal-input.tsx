@@ -48,9 +48,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-input',
-  styleUrls: {
-    css: 'bal-input.sass',
-  },
+  styleUrl: 'bal-input.sass',
 })
 export class Input implements ComponentInterface, FormInput<string | undefined>, Loggable, BalAriaFormLinking {
   private inputId = `bal-input-${InputIds++}`

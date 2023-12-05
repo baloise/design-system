@@ -1,10 +1,10 @@
+import type { BalBreakpoints } from './breakpoints.interfaces'
 import { balBrowser } from '../browser'
-import { BalBreakpoints } from './breakpoints.interfaces'
 import { BREAKPOINTS_MAP } from './breakpoints.map'
 
 export type BalBreakpoint = keyof typeof BREAKPOINTS_MAP
 
-class BreakpointsClass {
+export class BalBreakpointsUtil {
   private win?: any
   private breakpoints: BalBreakpoint[] = []
 
@@ -105,4 +105,4 @@ class BreakpointsClass {
   }
 }
 
-export const balBreakpoints = new BreakpointsClass()
+export const balBreakpoints = /*@__PURE__*/ new BalBreakpointsUtil()

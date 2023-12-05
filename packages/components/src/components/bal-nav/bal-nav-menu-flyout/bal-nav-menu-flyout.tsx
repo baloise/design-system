@@ -6,9 +6,7 @@ import { BalScrollHandler } from '../../../utils/scroll'
 
 @Component({
   tag: 'bal-nav-menu-flyout',
-  styleUrls: {
-    css: 'bal-nav-menu-flyout.sass',
-  },
+  styleUrl: 'bal-nav-menu-flyout.sass',
 })
 export class NavMenuFlyout implements ComponentInterface, Loggable, BalResizeObserver {
   private navMenuFlyoutId = `bal-nav-menu-flyout-${NavMenuFlyOutIds++}`

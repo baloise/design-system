@@ -1,4 +1,4 @@
-import { debounce } from '../helpers'
+import { addEventListener, removeEventListener, debounce } from '../helpers'
 import { BalWindowResizeHandler } from './window-resize.handler'
 import { ListenerAbstract } from '../types/listener'
 
@@ -9,14 +9,14 @@ export class BalWindowResizeListener extends ListenerAbstract {
   connect(): void {
     super.connect()
     if (this.el) {
-      this.el.addEventListener('resize', this.debouncedNotify, { passive: true })
+      addEventListener(this.el, 'resize', this.debouncedNotify, { passive: true })
     }
   }
 
   disconnect(): void {
     super.disconnect()
     if (this.el) {
-      this.el.removeEventListener('resize', this.debouncedNotify)
+      removeEventListener(this.el, 'resize', this.debouncedNotify)
     }
   }
 

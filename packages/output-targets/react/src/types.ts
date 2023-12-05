@@ -7,7 +7,6 @@ export interface OutputTargetReact {
   proxiesFile: string
   excludeComponents?: string[]
   loaderDir?: string
-  includePolyfills?: boolean
   includeDefineCustomElements?: boolean
   includeImportCustomElements?: boolean
   customElementsDir?: string

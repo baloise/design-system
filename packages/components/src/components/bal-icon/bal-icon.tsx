@@ -7,9 +7,7 @@ import { BalElementStateInfo } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-icon',
-  styleUrls: {
-    css: 'bal-icon.sass',
-  },
+  styleUrl: 'bal-icon.sass',
 })
 export class Icon implements BalConfigObserver, BalElementStateInfo {
   @State() icons: BalIcons = defaultConfig.icons

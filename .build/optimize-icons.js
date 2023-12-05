@@ -123,8 +123,10 @@ const main = async () => {
     'balIconNavGoRight',
     'balIconNavGoDown',
     'balIconNavGoUp',
-    'balIconCaretLeft',
+    'balIconCaretUp',
+    'balIconCaretRight',
     'balIconCaretDown',
+    'balIconCaretLeft',
     'balIconCheck',
     'balIconDate',
     'balIconDocument',
@@ -140,7 +142,6 @@ const main = async () => {
     'balIconX',
     'balIconYoutube',
     'balIconWeb',
-    'balIconCaretUp',
   ]
 
   contents.forEach((value, key) => {

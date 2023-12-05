@@ -1,10 +1,10 @@
-import { initialize } from '../../config'
+import { setupConfig } from '../../config'
 import { NUMBER_KEYS } from '../../constants/keys.constant'
 import { MaskBlock } from './mask-block'
 
 describe('MaskBlock', () => {
   beforeEach(() => {
-    initialize()
+    setupConfig()
   })
 
   test('should have default values', () => {

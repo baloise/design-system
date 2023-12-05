@@ -21,9 +21,7 @@ import { i18nControlLabel } from './bal-pagination.i18n'
 
 @Component({
   tag: 'bal-pagination',
-  styleUrls: {
-    css: 'bal-pagination.sass',
-  },
+  styleUrl: 'bal-pagination.sass',
 })
 export class Pagination implements ComponentInterface, BalBreakpointObserver {
   @Element() el!: HTMLBalPaginationElement

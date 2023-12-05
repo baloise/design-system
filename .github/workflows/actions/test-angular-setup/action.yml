@@ -1,5 +1,8 @@
 name: 'Angular Setup'
 description: 'Angular Setup'
+inputs:
+  app:
+    description: 'The specific test application'
 runs:
   using: 'composite'
   steps:
@@ -9,22 +12,79 @@ runs:
 
     - name: Install Dependencies
       run: npm ci
+      shell: bash
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: tokens-dist
+        path: packages/tokens
+        filename: TokensDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: icons-dist
+        path: packages/icons
+        filename: IconsDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: css-dist
+        path: packages/css
+        filename: CssDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-loader
+        path: ./packages/components
+        filename: ComponentsLoader.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-dist
+        path: ./packages/components
+        filename: ComponentsDist.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-components
+        path: ./packages/components
+        filename: ComponentsComponents.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-angular
+        path: ./packages/components-angular/src
+        filename: ComponentsAngular.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-angular-standalone
+        path: ./packages/components-angular/standalone/src
+        filename: ComponentsAngularStandalone.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: components-angular-legacy
+        path: ./packages/components-angular/legacy/src
+        filename: ComponentsAngularLegacy.zip
+
+    - uses: ./.github/workflows/actions/download-archive
+      with:
+        name: testing-dist
+        path: ./packages/testing
+        filename: TestingDist.zip
+
+    - name: Setup App
+      run: bash build.sh ${{ inputs.app }}
       working-directory: ./apps/angular
       shell: bash
 
     - name: Install Cypress
       run: npm run cy:install
-      working-directory: ./apps/angular
+      working-directory: ./apps/angular/${{ inputs.app }}
       shell: bash
 
-    - uses: ./.github/workflows/actions/download-archive
-      with:
-        name: test-ng-e2e
-        path: ./apps/angular/dist
-        filename: TestNgE2eBuild.zip
-
-    # - uses: ./.github/workflows/actions/download-archive
-    #   with:
-    #     name: components
-    #     path: ./packages/components
-    #     filename: ComponentsBuild.zip
+    - name: Build Angular App
+      run: npm run build
+      working-directory: ./apps/angular/${{ inputs.app }}
+      shell: bash

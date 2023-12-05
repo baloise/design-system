@@ -125,6 +125,10 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       TURBO_REMOTE_ONLY: true
       HUSKY: 0
+    strategy:
+      fail-fast: false
+      matrix:
+        apps: [v16,v17,v17-standalone]
     needs: [build]
     steps:
       - uses: actions/checkout@v3
@@ -132,7 +136,11 @@ jobs:
           fetch-depth: 2
       - uses: ./.github/workflows/actions/setup
       - uses: ./.github/workflows/actions/test-angular-setup
+        with:
+          app: ${{ matrix.apps }}
       - uses: ./.github/workflows/actions/test-angular
+        with:
+          app: ${{ matrix.apps }}
 
   test-e2e:
     name: 🧪 E2E Tests

@@ -3,9 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-input-group',
-  styleUrls: {
-    css: 'bal-input-group.sass',
-  },
+  styleUrl: 'bal-input-group.sass',
 })
 export class InputGroup implements ComponentInterface {
   @Element() el!: HTMLElement
