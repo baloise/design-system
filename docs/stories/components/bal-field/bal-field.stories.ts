@@ -1,19 +1,17 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalField & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/Field',
   args: {
-    ...withDefaultContent(''),
     placeholder: 'Enter your firstname',
     name: 'firstName',
     id: 'bal-input-1',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-field' }),
   },
   ...withRender(

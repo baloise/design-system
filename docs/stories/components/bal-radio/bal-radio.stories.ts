@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 import { balBrandIconCarGreen } from '@baloise/design-system-brand-icons'
 import { balBrandIconCarRed } from '@baloise/design-system-brand-icons'
 import { balBrandIconCarPurple } from '@baloise/design-system-brand-icons'
@@ -10,12 +10,9 @@ type Args = JSX.BalRadio & { content: string }
 const meta: Meta<Args> = {
   title: 'Components/Form/Radio',
   args: {
-    ...withDefaultContent(''),
     name: 'radio-example',
-    content: undefined,
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-radio' }),
   },
   ...withRender(

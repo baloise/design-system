@@ -11,10 +11,10 @@ export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverab
         <bal-checkbox id="checkbox1"></bal-checkbox>
       </td>
       <td>Tony Stark</td>
-      <td><bal-tag size="" color="green">Ready</bal-tag></td>
+      <td><bal-tag color="green">Ready</bal-tag></td>
       <td class="has-buttons">
-        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="edit" square="true" outlined="true"></bal-button>
+        <bal-button color="info" size="small" icon="trash" square="true" outlined="true"></bal-button>
       </td>
     </tr>
     <tr>
@@ -24,8 +24,8 @@ export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverab
       <td>Steve Rogers</td>
       <td><bal-tag size="" color="red">Injured</bal-tag></td>
       <td class="has-buttons">
-        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="edit" square="true" outlined="true"></bal-button>
+        <bal-button color="info" size="small" icon="trash" square="true" outlined="true"></bal-button>
       </td>
     </tr>
     <tr>
@@ -35,8 +35,8 @@ export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverab
       <td>Peter Parker</td>
       <td><bal-tag size="" color="yellow">In school</bal-tag></td>
       <td class="has-buttons">
-        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="edit" square="true" outlined="true"></bal-button>
+        <bal-button color="info" size="small" icon="trash" square="true" outlined="true"></bal-button>
       </td>
     </tr>
     <tr>
@@ -46,8 +46,8 @@ export const tableHtml = `<table class="table is-fullwidth is-striped is-hoverab
       <td>John Doe</td>
       <td><bal-tag size="" color="purple">Unknown</bal-tag></td>
       <td class="has-buttons">
-        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="edit" square="true" outlined="true"></bal-button>
+        <bal-button color="info" size="small" icon="trash" square="true" outlined="true"></bal-button>
       </td>
     </tr>
   </tbody>

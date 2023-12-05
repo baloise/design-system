@@ -1,19 +1,15 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalInput & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/Input',
-  args: {
-    ...withDefaultContent(''),
-  },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-input' }),
   },
-  ...withRender(({ content, ...args }) => `<bal-input ${props(args)}>${content}</bal-input>`),
+  ...withRender(({ ...args }) => `<bal-input ${props(args)}></bal-input>`),
 }
 
 export default meta
@@ -115,7 +111,7 @@ export const OfferNumberInput = Story({
 
 export const PostalCodeInput = Story({
   args: {
-    placeholder: 'Enter a text"',
+    placeholder: 'Enter a text',
     type: 'text',
     value: '4000',
   },
@@ -132,7 +128,7 @@ export const PostalCodeInput = Story({
 
 export const SimplePhoneNumberInput = Story({
   args: {
-    placeholder: 'Enter a text"',
+    placeholder: 'Enter a text',
     type: 'tel',
     value: '4004166555443300',
   },
@@ -149,7 +145,7 @@ export const SimplePhoneNumberInput = Story({
 
 export const NativeInput = Story({
   args: {
-    placeholder: 'Text input"',
+    placeholder: 'Text input',
     type: 'tel',
   },
   ...withRender(
