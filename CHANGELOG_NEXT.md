@@ -617,7 +617,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## 10.15.2 (2022-07-05)
 
 
-
 ## [10.21.2](https://github.com/baloise/design-system/compare/v10.21.1...v10.21.2) (2022-09-16)
 
 **Note:** Version bump only for package root

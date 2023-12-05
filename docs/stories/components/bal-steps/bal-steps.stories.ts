@@ -14,12 +14,12 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     ({ ...args }) => `<bal-steps ${props(args)}>
-  <bal-step-item value="step-a" label="Done" done>Content of Step A</bal-step-item>
-  <bal-step-item value="step-b" label="Failed" failed>Content of Step B</bal-step-item>
+  <bal-step-item value="step-a" label="Done" done="true">Content of Step A</bal-step-item>
+  <bal-step-item value="step-b" label="Failed" failed="true">Content of Step B</bal-step-item>
   <bal-step-item value="step-c" label="Active">Content of Step C</bal-step-item>
   <bal-step-item value="step-d" label="Default">Content of Step D</bal-step-item>
-  <bal-step-item value="step-e" label="Disabled" disabled>Content of Step E</bal-step-item>
-  <bal-step-item value="step-f" label="Hidden" hidden>Content of Step F</bal-step-item>
+  <bal-step-item value="step-e" label="Disabled" disabled="true">Content of Step E</bal-step-item>
+  <bal-step-item value="step-f" label="Hidden" hidden="true">Content of Step F</bal-step-item>
 </bal-steps>`,
   ),
 }

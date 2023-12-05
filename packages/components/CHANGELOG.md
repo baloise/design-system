@@ -1,5 +1,35 @@
 # @baloise/design-system-components
 
+## 14.6.0
+
+### Minor Changes
+
+- [#1169](https://github.com/baloise/design-system/pull/1169) - Introduce 'horizontal' prop for aligning label and input side by side in Field component, with message displayed below.
+
+  ```html
+  <bal-field horizontal>
+    <bal-field-label>Firstname</bal-field-label>
+    <bal-field-control>
+      <bal-input placeholder="Basic"></bal-input>
+    </bal-field-control>
+    <bal-field-message color="hint">Field Message</bal-field-message>
+  </bal-field>
+  ```
+
+### Patch Changes
+
+- [#1171](https://github.com/baloise/design-system/pull/1171) - Fix tab navigation functionality for the `bal-input-date` component when a value is set.
+
+- [#1168](https://github.com/baloise/design-system/pull/1168) - Resolve logo animation issue by updating Lottie import
+
+- [#1177](https://github.com/baloise/design-system/pull/1177) - Replace timeout with 'await waitAfterIdleCallback()' in inputSetFocus.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@14.6.0
+  - @baloise/design-system-fonts@14.6.0
+  - @baloise/design-system-icons@14.6.0
+  - @baloise/design-system-tokens@14.6.0
+
 ## 14.5.1
 
 ### Patch Changes

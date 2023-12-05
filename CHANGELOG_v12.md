@@ -549,4 +549,3 @@ Follow the migration guide [Migration from 10.x to 11.x](https://design.baloise.
 - Rebranded components
 - New breakpoint high-definition
 - bal-input pattern
-

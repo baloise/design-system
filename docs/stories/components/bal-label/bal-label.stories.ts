@@ -41,10 +41,10 @@ export const States = Story({
   ...withRender(
     () => `<div>
   <div>
-    <bal-label invalid>Invalid Label</bal-label>
+    <bal-label invalid="true">Invalid Label</bal-label>
   </div>
   <div>
-    <bal-label disabled>Disabled Label</bal-label>
+    <bal-label disabled="true">Disabled Label</bal-label>
   </div>
 </div>`,
   ),
@@ -69,7 +69,7 @@ export const Sizes = Story({
 export const FieldLabel = Story({
   ...withRender(
     () => `<bal-field>
-    <bal-field-label required>Field Label</bal-field-label>
+    <bal-field-label required="true">Field Label</bal-field-label>
     <bal-field-control>
       <bal-input name="my-input" placeholder="Placeholder"></bal-input>
     </bal-field-control>

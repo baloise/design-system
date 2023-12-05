@@ -1,17 +1,15 @@
 import type { JSX } from '@baloise/design-system-components'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withContent, withDefaultContent, withComponentControls, StoryFactory } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalInputGroup & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/InputGroup',
   args: {
-    ...withDefaultContent(),
     placeholder: 'Enter text here',
   },
   argTypes: {
-    ...withContent(),
     ...withComponentControls({ tag: 'bal-input-group' }),
   },
   ...withRender(
@@ -42,9 +40,9 @@ const meta: Meta<Args> = {
 </bal-input-group>
 
 <bal-input-group class="mb-normal">
-  <bal-tag closable>Tag</bal-tag>
-  <bal-tag closable>Tag</bal-tag>
-  <bal-tag closable>Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
+  <bal-tag closable="true">Tag</bal-tag>
   <bal-input ${props(args)}></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>`,
