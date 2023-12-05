@@ -1,5 +1,19 @@
 # @baloise/design-system-components
 
+## 15.0.0
+
+### Major Changes
+
+- [#1127](https://github.com/baloise/design-system/pull/1127) - Removed the deprecated option of component styles with SASS. Instead, for customizing the component design, use CSS Variables.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.0.0
+  - @baloise/design-system-fonts@15.0.0
+  - @baloise/design-system-icons@15.0.0
+  - @baloise/design-system-tokens@15.0.0
+
 ## 14.6.0
 
 ### Minor Changes

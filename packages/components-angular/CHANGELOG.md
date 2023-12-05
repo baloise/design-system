@@ -1,5 +1,76 @@
 # @baloise/design-system-components-angular
 
+## 15.0.0
+
+### Major Changes
+
+- [#1127](https://github.com/baloise/design-system/pull/1127) - Now by default the Baloise Design System will mark a form control as invalid when it's been touched and is indeed invalid.
+  To disable this feature, set setInvalid to false in the design system configuration.
+
+  ```ts
+  BaloiseDesignSystemModule.forRoot({
+    defaults: { ... },
+    forms: {
+      setInvalid: false, // to deactivate it
+    },
+  })
+  ```
+
+- [#1127](https://github.com/baloise/design-system/pull/1127) - The option to `applyPolyfills` for outdated browsers such as IE11 and legacy Edge has been deprecated, as the current design system no longer provides support for these versions.
+
+### Minor Changes
+
+- [#1127](https://github.com/baloise/design-system/pull/1127) - All components are now available as standalone elements for Angular v17.
+
+  Use the `provideBaloiseDesignSystem` provider within the app.config.ts file, where Angular providers are typically defined.
+
+  **app.config.ts**
+
+  ```ts
+  import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+
+  import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone'
+
+  export const appConfig: ApplicationConfig = {
+    providers: [provideBaloiseDesignSystem()],
+  }
+  ```
+
+  In each app component, import the necessary Baloise Design System components or a bundled set.
+
+  **app.component.ts**
+
+  ```ts
+  import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
+  import { CommonModule } from '@angular/common'
+  import { BalApp, BalButton } from '@baloise/design-system-components-angular/standalone'
+
+  export interface UpdateControl {
+    name: string
+    value: any
+  }
+
+  @Component({
+    selector: 'app-root',
+    standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [CommonModule, BalApp, BalButton],
+    template: `
+      <bal-app>
+        <main class="container py-normal">
+          <bal-button>My Button</bal-button>
+        </main>
+      </bal-app>
+    `,
+  })
+  export class AppComponent {}
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`eb99be527`](https://github.com/baloise/design-system/commit/eb99be527b27b61c39e0477fd74f64109a6f9609)]:
+  - @baloise/design-system-components@15.0.0
+
 ## 14.6.0
 
 ### Patch Changes

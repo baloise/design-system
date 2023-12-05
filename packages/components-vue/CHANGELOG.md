@@ -1,5 +1,16 @@
 # @baloise/design-system-components-vue
 
+## 15.0.0
+
+### Major Changes
+
+- [#1127](https://github.com/baloise/design-system/pull/1127) - The option to `applyPolyfills` for outdated browsers such as IE11 and legacy Edge has been deprecated, as the current design system no longer provides support for these versions.
+
+### Patch Changes
+
+- Updated dependencies [[`eb99be527`](https://github.com/baloise/design-system/commit/eb99be527b27b61c39e0477fd74f64109a6f9609)]:
+  - @baloise/design-system-components@15.0.0
+
 ## 14.6.0
 
 ### Patch Changes
