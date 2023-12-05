@@ -1,12 +1,14 @@
 import { Component, h, Host, Element, Prop, State, ComponentInterface } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
-import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints } from '../../../utils/breakpoints'
+import { BalBreakpointObserver, BalBreakpoints, ListenToBreakpoints, balBreakpoints } from '../../../utils/breakpoints'
 import { balBrowser } from '../../../utils/browser'
 
 @Component({
   tag: 'bal-popover-content',
 })
 export class PopoverContent implements ComponentInterface, BalBreakpointObserver {
+  private isTouch = balBreakpoints.isTouch // need this part to improve a none side effect import
+
   @Element() el!: HTMLElement
 
   /**

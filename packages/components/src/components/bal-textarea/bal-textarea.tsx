@@ -32,9 +32,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-textarea',
-  styleUrls: {
-    css: 'bal-textarea.sass',
-  },
+  styleUrl: 'bal-textarea.sass',
 })
 export class Textarea implements ComponentInterface, FormInput<string | undefined>, BalAriaFormLinking {
   private inputId = `bal-textarea-${TextareaIds++}`

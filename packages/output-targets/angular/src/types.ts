@@ -1,8 +1,10 @@
 export interface OutputTargetAngular {
   componentCorePackage?: string
   directivesProxyFile: string
+  directivesMetaFile: string
   directivesArrayFile?: string
   directivesUtilsFile?: string
+  outputType: 'legacy' | 'standalone' | 'module'
   valueAccessorConfigs?: ValueAccessorConfig[]
   excludeComponents?: string[]
   componentGroups?: { [key: string]: ComponentGroup }

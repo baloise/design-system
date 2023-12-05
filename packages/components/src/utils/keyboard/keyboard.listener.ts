@@ -1,4 +1,5 @@
 import { FOCUS_KEYS } from '../focus-visible'
+import { addEventListener, removeEventListener } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { BalKeyboardInfo } from './keyboard.interfaces'
 
@@ -7,17 +8,17 @@ export class BalKeyboardListener<TObserver> extends ListenerAbstract<TObserver, 
 
   connect(el: HTMLElement): void {
     super.connect(el)
-    el.addEventListener('keydown', this.onKeydown)
-    el.addEventListener('touchstart', this.onPointerDown)
-    el.addEventListener('mousedown', this.onPointerDown)
+    addEventListener(this.el, 'keydown', this.onKeydown)
+    addEventListener(this.el, 'touchstart', this.onPointerDown)
+    addEventListener(this.el, 'mousedown', this.onPointerDown)
   }
 
   disconnect(): void {
     super.disconnect()
     if (this.el) {
-      this.el.removeEventListener('keydown', this.onKeydown as any)
-      this.el.removeEventListener('touchstart', this.onPointerDown)
-      this.el.removeEventListener('mousedown', this.onPointerDown)
+      removeEventListener(this.el, 'keydown', this.onKeydown as any)
+      removeEventListener(this.el, 'touchstart', this.onPointerDown)
+      removeEventListener(this.el, 'mousedown', this.onPointerDown)
     }
   }
 

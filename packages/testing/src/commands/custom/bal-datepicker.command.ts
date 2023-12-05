@@ -1,5 +1,7 @@
-import { getYear, getMonth } from 'date-fns'
 import { log, wrapOptions } from '../helpers'
+
+const getYear = (date: Date) => date.getFullYear()
+const getMonth = (date: Date) => date.getMonth()
 
 const formatDateString = (date: Date) => {
   const day = `${date.getDate()}`

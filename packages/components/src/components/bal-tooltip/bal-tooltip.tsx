@@ -20,9 +20,7 @@ import { computePosition, offset, arrow, flip, autoUpdate, shift } from '@floati
 
 @Component({
   tag: 'bal-tooltip',
-  styleUrls: {
-    css: 'bal-tooltip.sass',
-  },
+  styleUrl: 'bal-tooltip.sass',
   shadow: true,
 })
 export class Tooltip implements ComponentInterface, Loggable {

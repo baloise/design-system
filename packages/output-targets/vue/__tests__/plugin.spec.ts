@@ -19,7 +19,7 @@ describe('normalizeOutputTarget', () => {
     }).toThrow(new Error('proxiesFile is required'))
   })
 
-  it('should return defaults for excludedComponents, includePolyfills, and includeDefineCustomElements', () => {
+  it('should return defaults for excludedComponents and includeDefineCustomElements', () => {
     const results: OutputTargetVue = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-vue/src/components.ts',
     })
@@ -28,30 +28,25 @@ describe('normalizeOutputTarget', () => {
       proxiesFile: '../component-library-vue/src/components.ts',
       excludeComponents: [],
       componentModels: [],
-      includePolyfills: true,
       includeDefineCustomElements: true,
     } as OutputTargetVue)
   })
 
-  it('Polyfills and DefinCustomElements should be false when set that way', () => {
+  it('DefineCustomElements should be false when set that way', () => {
     const results: OutputTargetVue = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-vue/src/components.ts',
-      includePolyfills: false,
       includeDefineCustomElements: false,
     })
 
     expect(results.includeDefineCustomElements).toEqual(false)
-    expect(results.includeDefineCustomElements).toEqual(false)
   })
 
-  it('Polyfills and DefinCustomElements should be true when set that way', () => {
+  it('DefineCustomElements should be true when set that way', () => {
     const results: OutputTargetVue = normalizeOutputTarget(config, {
       proxiesFile: '../component-library-vue/src/components.ts',
-      includePolyfills: true,
       includeDefineCustomElements: true,
     })
 
-    expect(results.includeDefineCustomElements).toEqual(true)
     expect(results.includeDefineCustomElements).toEqual(true)
   })
 })

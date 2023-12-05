@@ -11,13 +11,20 @@ export function ListenToResize() {
     const { connectedCallback, disconnectedCallback } = target
 
     target.connectedCallback = function () {
-      this._balResizeSubject = new BalResizeSubject()
-      this._balResizeSubject.attach(this)
+      if (!this._balResizeSubject) {
+        this._balResizeSubject = new BalResizeSubject()
+        this._balResizeSubject.attach(this)
+      }
+
       return connectedCallback && connectedCallback.call(this)
     }
 
     target.disconnectedCallback = function () {
-      this._balResizeSubject.detach()
+      if (this._balResizeSubject) {
+        this._balResizeSubject.detach()
+        this._balResizeSubject = undefined
+      }
+
       return disconnectedCallback && disconnectedCallback.call(this)
     }
   }

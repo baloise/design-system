@@ -101,10 +101,7 @@ import { createReactComponent } from './react-component-lib';\n`
     })
 
     sourceImports = cmpImports.join('\n')
-  } else if (outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
-    sourceImports = `import { ${APPLY_POLYFILLS}, ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
-    registerCustomElements = `${APPLY_POLYFILLS}().then(() => ${REGISTER_CUSTOM_ELEMENTS}());`
-  } else if (!outputTarget.includePolyfills && outputTarget.includeDefineCustomElements) {
+  } else if (outputTarget.includeDefineCustomElements) {
     sourceImports = `import { ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`
     registerCustomElements = `${REGISTER_CUSTOM_ELEMENTS}();`
   }
@@ -195,5 +192,4 @@ export function getPathToCorePackageLoader(config: Config, outputTarget: OutputT
 export const GENERATED_DTS = 'components.d.ts'
 const IMPORT_TYPES = 'JSX'
 const REGISTER_CUSTOM_ELEMENTS = 'defineCustomElements'
-const APPLY_POLYFILLS = 'applyPolyfills'
 const DEFAULT_LOADER_DIR = '/dist/loader'

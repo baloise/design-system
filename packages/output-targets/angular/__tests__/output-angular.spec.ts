@@ -12,6 +12,7 @@ describe('generateProxies', () => {
   it('should use types from the component-library when it is provided to the config', () => {
     const outputTarget: OutputTargetAngular = {
       componentCorePackage: 'component-library',
+      directivesMetaFile: '../component-library-angular/src/meta.ts',
       directivesProxyFile: '../component-library-angular/src/proxies.ts',
     }
 
@@ -22,7 +23,7 @@ describe('generateProxies', () => {
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components, FileUploadRejectedFile } from 'component-library';
+import type { Components, FileUploadRejectedFile } from 'component-library/components';
 
 `,
     )
@@ -30,6 +31,7 @@ import { Components, FileUploadRejectedFile } from 'component-library';
 
   it('should use a relative path to types when a component-library is not provided', () => {
     const outputTarget: OutputTargetAngular = {
+      directivesMetaFile: '../component-library-angular/src/meta.ts',
       directivesProxyFile: '../component-library-angular/src/proxies.ts',
     }
 
@@ -40,7 +42,7 @@ import { Components, FileUploadRejectedFile } from 'component-library';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components, FileUploadRejectedFile } from '../../angular/dist/types/components';
+import type { Components, FileUploadRejectedFile } from '../../angular/dist/types/components';
 
 `,
     )

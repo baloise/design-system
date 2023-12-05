@@ -15,9 +15,9 @@
     "@baloise/design-system-css": "14.6.0",
     "@baloise/design-system-icons": "14.6.0",
     "@baloise/design-system-tokens": "14.6.0",
-    "lodash.kebabcase": "^4.1.1"
+    "lodash.kebabcase": "~4.1.1"
   },
   "devDependencies": {
-    "@types/lodash.kebabcase": "^4.1.8"
+    "@types/lodash.kebabcase": "~4.1.8"
   }
 }

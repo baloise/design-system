@@ -9,9 +9,7 @@ type LogoAnimationFunction = (el: HTMLElement, color: 'blue' | 'white') => Anima
 
 @Component({
   tag: 'bal-logo',
-  styleUrls: {
-    css: 'bal-logo.sass',
-  },
+  styleUrl: 'bal-logo.sass',
 })
 export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver {
   private animationItem!: AnimationItem

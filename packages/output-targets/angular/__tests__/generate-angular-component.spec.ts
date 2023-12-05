@@ -136,7 +136,7 @@ export class MyComponent {
     } as any)
 
     expect(finalText).toEqual(`
-import { BalTabOption } from 'component-library';
+import type { BalTabOption } from 'component-library/components';
 export declare interface MyComponent extends Components.MyComponent {}
 
 @Component({

@@ -1,15 +1,13 @@
-import { Component, Host, h, Event, EventEmitter, Prop, Method, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Method, Element } from '@stencil/core'
 import { balBrowser } from '../../utils/browser'
 import { balDevice } from '../../utils/device'
-import { BalMode, initStyleMode, updateBalAnimated } from '../../utils/config'
+import { updateBalAnimated } from '../../utils/config'
 import { debounce, rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-app',
-  styleUrls: {
-    css: 'bal-app.sass',
-  },
+  styleUrl: 'bal-app.sass',
 })
 export class App implements Loggable {
   private focusVisible?: any
@@ -25,12 +23,6 @@ export class App implements Loggable {
   }
 
   /**
-   * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles
-   * and with `sass` the component styles needs to be imported with the file `components.sass`.
-   */
-  @Prop({ reflect: true }) mode: BalMode = 'css'
-
-  /**
    * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true }) animated = true
@@ -40,14 +32,7 @@ export class App implements Loggable {
    */
   @Prop({ reflect: true, mutable: true }) ready = false
 
-  /**
-   * @internal
-   * Tells if the components are ready
-   */
-  @Event({ bubbles: true, composed: true }) balAppLoad!: EventEmitter<BalEvents.BalAppLoadDetail>
-
   connectedCallback() {
-    initStyleMode(this.mode)
     updateBalAnimated(this.animated)
 
     if (balBrowser.hasWindow) {
@@ -58,7 +43,6 @@ export class App implements Loggable {
 
   componentDidLoad() {
     rIC(async () => {
-      this.balAppLoad.emit(true)
       this.ready = true
       import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
     })

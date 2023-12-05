@@ -3,9 +3,7 @@ import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-badge',
-  styleUrls: {
-    css: 'bal-badge.sass',
-  },
+  styleUrl: 'bal-badge.sass',
 })
 export class Badge implements ComponentInterface {
   @Element() el!: HTMLElement

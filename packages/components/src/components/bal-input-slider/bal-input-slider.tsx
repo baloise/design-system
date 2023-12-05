@@ -7,9 +7,7 @@ import { BalAriaForm, BalAriaFormLinking, defaultBalAriaForm } from '../../utils
 
 @Component({
   tag: 'bal-input-slider',
-  styleUrls: {
-    css: 'bal-input-slider.sass',
-  },
+  styleUrl: 'bal-input-slider.sass',
 })
 export class InputSlider implements BalAriaFormLinking {
   @Element() el!: HTMLElement
