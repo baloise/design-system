@@ -1,4 +1,43 @@
 import { spawn } from 'node:child_process'
+import { glob } from 'glob'
+import fs from 'fs'
+import path from 'path'
+
+export const NEWLINE = '\n'
+
+export const scan = async filePath => {
+  // glop always returns and works with forward slashes
+  return glob(filePath.replace(/\\/g, '\/'))
+}
+
+export const readFile = async filePath => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        return reject(err)
+      }
+      resolve(data)
+    })
+  })
+}
+
+export const writeFile = async (filePath, data) => {
+  return new Promise((resolve, reject) => {
+    var dirname = path.dirname(filePath)
+    fs.mkdir(dirname, { recursive: true }, mkdirError => {
+      if (mkdirError) {
+        return reject(mkdirError)
+      }
+
+      fs.writeFile(filePath, data, err => {
+        if (err) {
+          return reject(err)
+        }
+        resolve()
+      })
+    })
+  })
+}
 
 export const exec = (command, args = []) => {
   return new Promise((resolve, reject) => {

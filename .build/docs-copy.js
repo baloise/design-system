@@ -28,10 +28,10 @@ async function main() {
   await copyToPublic(path.join(PACKAGES_FONTS, 'lib'), 'assets/fonts')
 
   // download
-  await copyToPublic(path.join(PACKAGES_FONTS, 'dist/fonts.zip'), 'assets/download/fonts.zip')
-  await copyToPublic(path.join(PACKAGES_FAVICONS, 'dist/favicons.zip'), 'assets/download/favicons.zip')
-  await copyToPublic(path.join(PACKAGES_MAPS, 'dist/map-markers.zip'), 'assets/download/map-markers.zip')
-  await copyToPublic(path.join(PACKAGES_ICONS, 'dist/icons.zip'), 'assets/download/icons.zip')
+  // await copyToPublic(path.join(PACKAGES_FONTS, 'dist/fonts.zip'), 'assets/download/fonts.zip')
+  // await copyToPublic(path.join(PACKAGES_FAVICONS, 'dist/favicons.zip'), 'assets/download/favicons.zip')
+  // await copyToPublic(path.join(PACKAGES_MAPS, 'dist/map-markers.zip'), 'assets/download/map-markers.zip')
+  // await copyToPublic(path.join(PACKAGES_ICONS, 'dist/icons.zip'), 'assets/download/icons.zip')
 
   // images
   await copyToAsset(path.join(PACKAGES_MAPS, 'markers'), 'assets/images/map-markers')
