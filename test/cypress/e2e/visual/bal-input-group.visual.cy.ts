@@ -30,11 +30,13 @@ describe('bal-input-group', () => {
     cy.getByTestId('phone').compareSnapshot('input-group-phone')
     cy.getByTestId('phone-disabled').compareSnapshot('input-group-phone-disabled')
     cy.getByTestId('phone-invalid').compareSnapshot('input-group-phone-invalid')
+    cy.getByTestId('divider').compareSnapshot('input-group-divider')
 
     cy.platform('mobile')
     cy.getByTestId('phone').compareSnapshot('input-group-phone-mobile')
     cy.getByTestId('phone-disabled').compareSnapshot('input-group-phone-disabled-mobile')
     cy.getByTestId('phone-invalid').compareSnapshot('input-group-phone-invalid-mobile')
+    cy.getByTestId('divider').compareSnapshot('input-group-divider-mobile')
   })
 
   it('tags component', () => {
