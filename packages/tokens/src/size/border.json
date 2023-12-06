@@ -1,0 +1,17 @@
+{
+  "size": {
+    "border": {
+      "width": {
+        "small": {
+          "value": "0.063"
+        },
+        "normal": {
+          "value": "0.125"
+        },
+        "large": {
+          "value": "0.25"
+        }
+      }
+    }
+  }
+}

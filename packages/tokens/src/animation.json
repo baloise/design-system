@@ -1,0 +1,12 @@
+{
+  "animation": {
+    "transition": {
+      "duration": { "value": "300ms" },
+      "easing": {
+        "value": "cubic-bezier(0.25, 0.8, 0.5, 1)",
+        "keepFormat": true,
+        "noFigmaImport": true
+      }
+    }
+  }
+}

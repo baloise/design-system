@@ -1,5 +1,6 @@
-@import '@baloise/design-system-tokens/dist/tokens.sass'
-@import '@baloise/design-system-tokens/dist/tokens.legacy.sass'
+@import '@baloise/design-system-tokens/dist/tokens.scss'
+@import '@baloise/design-system-tokens/dist/deprecated/tokens.scss'
+@import '../src/core/legacy/tokens.legacy'
 
 @import "../src/mixins/_all"
 @import '../src/generated/typography.legacy.helpers'
@@ -59,10 +60,10 @@ $code-background: $grey-1 !default
 $pre: $text !default
 $pre-background: $grey-1 !default
 
-$size-large: $size-x-large !default
-$size-medium: $size-large !default
-$size-normal: $size-normal !default
-$size-small: $size-small !default
+$size-large: $bal-text-size-x-large !default
+$size-medium: $bal-text-size-large !default
+$size-normal: $bal-text-size-normal !default
+$size-small: $bal-text-size-small !default
 
 $text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15), 0px 4px 12px rgba(0, 0, 0, 0.25), 0px 0px 80px rgba(0, 0, 0, 0.5)
 $button-shadow: $text-shadow
@@ -103,7 +104,7 @@ $pre-code-font-size: 1em !default
 // -------------------------------------------------
 $title-color: $text-strong !default
 $title-family: $font-family-title !default
-$title-size: $size-x-large !default
+$title-size: $bal-text-size-x-large !default
 $title-weight: $weight-bold !default
 $title-line-height: 1.125 !default
 $title-strong-color: inherit !default

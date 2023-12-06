@@ -1,0 +1,28 @@
+{
+  "opacity": {
+    "0": {
+      "value": "0",
+      "noFigmaImport": true
+    },
+    "50": {
+      "value": "0.5",
+      "noFigmaImport": true
+    },
+    "60": {
+      "value": "0.6",
+      "noFigmaImport": true
+    },
+    "100": {
+      "value": "1",
+      "noFigmaImport": true
+    },
+    "overlay": {
+      "value": "{opacity.60}",
+      "noFigmaImport": true
+    },
+    "disabled": {
+      "value": "{opacity.50}",
+      "noFigmaImport": true
+    }
+  }
+}

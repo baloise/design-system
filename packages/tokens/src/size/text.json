@@ -1,0 +1,171 @@
+{
+  "size": {
+    "text": {
+      "weight": {
+        "bold": { "value": "700", "keepFormat": true, "noFigmaImport": true },
+        "regular": {
+          "value": "400",
+          "keepFormat": true,
+          "noFigmaImport": true
+        },
+        "light": { "value": "300", "keepFormat": true, "noFigmaImport": true }
+      },
+      "size": {
+        "x-small": {
+          "mobile": {
+            "value": "0.75rem",
+            "comment": "Should only be used for helper texts or validation messages of a form control.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "{size.text.size.x-small.mobile}",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.x-small.mobile}",
+            "noFigmaImport": true
+          }
+        },
+        "small": {
+          "mobile": {
+            "value": "0.875rem",
+            "comment": "Should only be used for label texts.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "{size.text.size.small.mobile}",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.small.mobile}",
+            "noFigmaImport": true
+          }
+        },
+        "normal": {
+          "mobile": {
+            "value": "1rem",
+            "comment": "Should only be used for label texts.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "{size.text.size.normal.mobile}",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.normal.mobile}",
+            "noFigmaImport": true
+          }
+        },
+        "medium": {
+          "mobile": {
+            "value": "1rem",
+            "comment": "Should only be used in a 2/3 grid column to improve readability.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "1.125rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.medium.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "large": {
+          "mobile": {
+            "value": "1.125rem",
+            "comment": "Should only be used for standard card titles and headings of level 4 or for lead text/paragraphs after a heading.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "1.25rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.large.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "x-large": {
+          "mobile": {
+            "value": "1.25rem",
+            "comment": "Should only be used for form titles, quick link navigation's and headings of level 3.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "1.5rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.x-large.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "xx-large": {
+          "mobile": {
+            "value": "1.5rem",
+            "comment": "Should only be used for content titles and headings of level 2.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "2rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.xx-large.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "xxx-large": {
+          "mobile": {
+            "value": "1.75rem",
+            "comment": "Should only be used for stage titles and headings of level 1.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "2.5rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.xxx-large.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "xxxx-large": {
+          "mobile": {
+            "value": "2rem",
+            "comment": "Should only be uses to illustrate large stage areas.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "3rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.xxxx-large.tablet}",
+            "noFigmaImport": true
+          }
+        },
+        "xxxxx-large": {
+          "mobile": {
+            "value": "3rem",
+            "comment": "Should only be uses to illustrate large stage areas.",
+            "noFigmaImport": true
+          },
+          "tablet": {
+            "value": "5rem",
+            "noFigmaImport": true
+          },
+          "desktop": {
+            "value": "{size.text.size.xxxxx-large.tablet}",
+            "noFigmaImport": true
+          }
+        }
+      },
+      "line-height": {
+        "title": { "value": "1.3", "keepFormat": true, "noFigmaImport": true },
+        "text": { "value": "1.5", "keepFormat": true, "noFigmaImport": true }
+      }
+    }
+  }
+}

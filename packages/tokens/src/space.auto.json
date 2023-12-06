@@ -1,0 +1,19 @@
+{
+  "space": {
+    "auto": {
+      "value": "auto",
+      "keepFormat": true,
+      "noFigmaImport": true
+    },
+    "auto-tablet": {
+      "value": "{space.auto}",
+      "keepFormat": true,
+      "noFigmaImport": true
+    },
+    "auto-desktop": {
+      "value": "{space.auto}",
+      "keepFormat": true,
+      "noFigmaImport": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "size": {
+    "container": {
+      "max-width": {
+        "value": "1400px"
+      },
+      "size": {
+        "detail-page": { "value": "744px" },
+        "compact": { "value": "896px" },
+        "normal": { "value": "1496px" },
+        "fluid": { "value": "100%" }
+      },
+      "space": {
+        "mobile": { "value": "1" },
+        "tablet": { "value": "2.5" },
+        "desktop": { "value": "3" }
+      }
+    }
+  }
+}

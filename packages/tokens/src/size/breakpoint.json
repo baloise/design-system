@@ -1,0 +1,21 @@
+{
+  "size": {
+    "breakpoint": {
+      "tablet": {
+        "value": "769px"
+      },
+      "desktop": {
+        "value": "1024px"
+      },
+      "high-definition": {
+        "value": "1280px"
+      },
+      "widescreen": {
+        "value": "1440px"
+      },
+      "fullhd": {
+        "value": "1920px"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "color": {
+    "primary": { "value": "{color.base.primary.5}", "noFigmaImport": true },
+    "grey": { "value": "{color.base.grey.3}", "noFigmaImport": true },
+    "light-blue": { "value": "{color.base.light-blue.1}", "noFigmaImport": true },
+    "purple": { "value": "{color.base.purple.3}", "noFigmaImport": true },
+    "green": { "value": "{color.base.green.3}", "noFigmaImport": true },
+    "yellow": { "value": "{color.base.yellow.3}", "noFigmaImport": true },
+    "red": { "value": "{color.base.red.3}", "noFigmaImport": true },
+    "info": { "value": "{color.base.info.3}", "noFigmaImport": true },
+    "success": { "value": "{color.base.success.3}", "noFigmaImport": true },
+    "warning": { "value": "{color.base.warning.3}", "noFigmaImport": true },
+    "danger": { "value": "{color.base.danger.3}", "noFigmaImport": true },
+    "primary-inverted": { "value": "{color.base.primary.5-inverted}", "noFigmaImport": true },
+    "grey-inverted": { "value": "{color.base.grey.3-inverted}", "noFigmaImport": true },
+    "light-blue-inverted": { "value": "{color.base.light-blue.1-inverted}", "noFigmaImport": true },
+    "purple-inverted": { "value": "{color.base.purple.3-inverted}", "noFigmaImport": true },
+    "green-inverted": { "value": "{color.base.green.3-inverted}", "noFigmaImport": true },
+    "yellow-inverted": { "value": "{color.base.yellow.3-inverted}", "noFigmaImport": true },
+    "red-inverted": { "value": "{color.base.red.3-inverted}", "noFigmaImport": true },
+    "info-inverted": { "value": "{color.base.info.3-inverted}", "noFigmaImport": true },
+    "success-inverted": { "value": "{color.base.success.3-inverted}", "noFigmaImport": true },
+    "warning-inverted": { "value": "{color.base.warning.3-inverted}", "noFigmaImport": true },
+    "danger-inverted": { "value": "{color.base.danger.3-inverted}", "noFigmaImport": true }
+  }
+}

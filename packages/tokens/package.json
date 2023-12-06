@@ -28,12 +28,10 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "generate": "node ./scripts/generate.mjs",
     "docs": "npm run build",
-    "ng:build": "npm run build",
-    "build": "npm run rollup:pre && npm run build:tokens && npm run rollup:post",
-    "build:tokens": "node ../../.build/tokens-generator.js",
-    "rollup:pre": "rollup --config rollup.config.js",
-    "rollup:post": "rollup --config rollup.config.tokens.js"
+    "ng:build": "npm run build"
   },
   "main": "dist/tokens.js",
   "module": "dist/tokens.esm.js",

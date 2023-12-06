@@ -1,0 +1,18 @@
+{
+  "size": {
+    "radius": {
+      "none": {
+        "value": "0"
+      },
+      "normal": {
+        "value": "0.25"
+      },
+      "large": {
+        "value": "0.75"
+      },
+      "rounded": {
+        "value": "9999px"
+      }
+    }
+  }
+}
