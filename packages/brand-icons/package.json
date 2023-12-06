@@ -30,10 +30,7 @@
   "scripts": {
     "docs": "npm run build",
     "ng:build": "npm run build",
-    "build": "npm run build:icons && npm run build:bundle && npm run build:copy",
-    "build:icons": "node ../../.build/optimize-brand-icons.js",
-    "build:bundle": "rollup --config rollup.config.js",
-    "build:copy": "copyfiles --flat ./src/brand-icons.json ./dist && rimraf ./src/brand-icons.json"
+    "build": "node scripts/build.mjs"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
 
 const run = async () => {
-  const log = logger('image building')
+  const log = logger('icons build')
   log.start()
 
   try {
@@ -51,8 +51,9 @@ async function optimizeSvg() {
 
   // Generate JS output
   const lines = ['/* eslint-disable prettier/prettier */', '// generated file', '']
+  const regex = /[\r\n]+/g // remove all line breaks
   contents.forEach((value, key) => {
-    lines.push(`export const balIcon${upperFirst(camelCase(key))} = /*#__PURE__*/ '${value}';`)
+    lines.push(`export const balIcon${upperFirst(camelCase(key))} = /*#__PURE__*/ '${value.replace(regex, '')}';`)
     lines.push(``)
   })
 
