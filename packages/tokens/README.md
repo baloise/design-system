@@ -36,3 +36,175 @@ Check out the [documentation](https://design.baloise.dev).
 | [Maps](https://design.baloise.dev)                 | ![npm](https://img.shields.io/npm/v/@baloise/design-system-maps)                | Google Maps styles and icons.                                          |
 | [Fonts](https://design.baloise.dev)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                          |
 | [Testing](https://design.baloise.dev)            | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overridden commands for each component. |
+
+
+"x-small": {
+  "mobile": {
+    "value": "{size.text.size.x-small.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.x-small.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.x-small.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"small": {
+  "mobile": {
+    "value": "{size.text.size.small.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.small.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.small.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"normal": {
+  "mobile": {
+    "value": "{size.text.size.normal.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.normal.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.normal.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"medium": {
+  "mobile": {
+    "value": "{size.text.size.medium.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.medium.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.medium.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"large": {
+  "mobile": {
+    "value": "{size.text.size.large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"x-large": {
+  "mobile": {
+    "value": "{size.text.size.x-large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.x-large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.x-large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"xx-large": {
+  "mobile": {
+    "value": "{size.text.size.xx-large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.xx-large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.xx-large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"xxx-large": {
+  "mobile": {
+    "value": "{size.text.size.xxx-large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.xxx-large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.xxx-large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"xxxx-large": {
+  "mobile": {
+    "value": "{size.text.size.xxxx-large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.xxxx-large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.xxxx-large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+},
+"xxxxx-large": {
+  "mobile": {
+    "value": "{size.text.size.xxxxx-large.mobile}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "tablet": {
+    "value": "{size.text.size.xxxxx-large.tablet}",
+    "deprecated": true,
+    "noFigmaImport": true
+  },
+  "desktop": {
+    "value": "{size.text.size.xxxxx-large.desktop}",
+    "deprecated": true,
+    "noFigmaImport": true
+  }
+}
