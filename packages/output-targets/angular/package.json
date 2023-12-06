@@ -11,8 +11,7 @@
     "angular-component-lib/"
   ],
   "scripts": {
-    "build": "npm run build:bundle",
-    "build:bundle": "rollup --config rollup.config.js",
+    "build": "node scripts/build.mjs",
     "ng:build": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest run",

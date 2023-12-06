@@ -28,10 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:bundle && npm run build:web-types && npm run build:vetur",
-    "build:bundle": "rollup --config rollup.config.js",
-    "build:web-types": "node ../../.build/vue-web-types.js",
-    "build:vetur": "node ../.././.build/vue-vetur.js"
+    "build": "node scripts/build.mjs"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
