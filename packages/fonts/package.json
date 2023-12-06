@@ -27,14 +27,8 @@
     "stenciljs"
   ],
   "license": "Apache-2.0",
-  "scripts": {
-    "docs": "npm run docs:clean && npm run docs:archive",
-    "docs:clean": "rimraf ./dist",
-    "docs:archive": "node ../../.build/archive-font.js"
-  },
   "main": "./css/fonts.css",
   "files": [
-    "dist/",
     "css/",
     "scss/",
     "lib/"
