@@ -46,15 +46,13 @@
     "serve": "stencil build --dev --serve --watch",
     "dev": "stencil build --watch",
     "==================== BUILD =========================": "================================",
-    "build": "node scripts/pre-build.mjs && stencil build --es5 && node scripts/post-build.mjs",
+    "build": "node scripts/pre-build.mjs && stencil build && node scripts/post-build.mjs",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "cy:build": "stencil build",
-    "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run build"
+    "cy:build": "stencil build"
   },
   "dependencies": {
     "@baloise/design-system-css": "15.0.0",

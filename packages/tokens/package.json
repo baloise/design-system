@@ -29,8 +29,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "node ./scripts/build.mjs",
-    "generate": "node ./scripts/generate.mjs",
-    "docs": "npm run build"
+    "generate": "node ./scripts/generate.mjs"
   },
   "main": "dist/tokens.js",
   "module": "dist/tokens.esm.js",

@@ -10,7 +10,6 @@
     "vue-component-lib/"
   ],
   "scripts": {
-    "docs": "npm run build",
     "build": "node scripts/build.mjs",
     "test": "vitest run",
     "test:watch": "vitest run",
