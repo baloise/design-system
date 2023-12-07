@@ -4,10 +4,10 @@ import path from 'path'
 import { done, logger, readFile } from '../../../.build/utils/index.mjs'
 import { adjustInterfacesReference } from './interfaces.mjs'
 import { createTagList } from './tags.mjs'
+import { createTestingDocs } from './commands.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
-const __root = path.join(__dirname, '../../')
 
 const run = async () => {
   const log = logger('components post build')
@@ -18,6 +18,7 @@ const run = async () => {
     await adjustGlobalVar()
     await setVersion()
     await createTagList()
+    await createTestingDocs()
     log.succeed()
   } catch (error) {
     log.fail(error)

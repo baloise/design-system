@@ -5,7 +5,6 @@ import {
   exec,
   done,
   logger,
-  scan,
   readFile,
   makeDir,
   writeFile,
@@ -18,6 +17,7 @@ import {
 } from '../../../.build/utils/index.mjs'
 import { adjustInterfacesReference } from './interfaces.mjs'
 import { createTagList } from './tags.mjs'
+import { createTestingDocs } from './commands.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
@@ -42,16 +42,7 @@ const run = async () => {
   }
 }
 
-// This script reads the defined filter functions and creates
-// a JSON file with all the meta information for documentation
-// and code generations.
-async function createTestingDocs() {
-  const pathToTypes = path.join(__dirname, '../testing/src/commands/**/bal-**.types.ts')
-  const typeFilePaths = await scan(pathToTypes)
-  const typeFileContents = await Promise.all(typeFilePaths.map(f => readFile(f)))
-  const commands = typeFileContents.map((m, i) => parseTestingType(m, typeFilePaths[i])).flat()
-  await writeFile(path.join(__dirname, '.tmp/commands.json'), JSON.stringify(commands, undefined, 2))
-}
+
 
 function parseTestingType(fileContent, filePath) {
   const sourceFile = createSourceFile(fileContent)
