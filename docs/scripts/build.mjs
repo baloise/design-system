@@ -2,19 +2,21 @@ import { createWriteStream, existsSync, mkdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 import archiver from 'archiver'
 import path from 'path'
-import { done, logger } from '../../.build/utils/index.mjs'
+import { done, logger, copy } from '../../.build/utils/index.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const __root = path.join(__dirname, '../../packages')
-const __docs = path.join(__dirname, '../public/assets/download')
+const __docs_public = path.join(__dirname, '../public')
+const __docs_assets = path.join(__dirname, '../stories/assets')
+const __docs_downloads = path.join(__dirname, '../public/assets/download')
 
 const run = async () => {
   const log = logger('doc generating')
   log.start()
 
-  if (!existsSync(__docs)) {
-    mkdirSync(__docs)
+  if (!existsSync(__docs_downloads)) {
+    mkdirSync(__docs_downloads)
   }
 
   try {
@@ -24,6 +26,7 @@ const run = async () => {
     await archiveMapMarkers()
     await archiveFavicons()
     await archiveFigmaTokens()
+    await copyResources()
     log.succeed()
   } catch (error) {
     log.fail(error)
@@ -34,7 +37,7 @@ const run = async () => {
 
 function archiveFont() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'fonts.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'fonts.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -48,7 +51,7 @@ function archiveFont() {
 
 function archiveIcons() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'icons.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'icons.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -62,7 +65,7 @@ function archiveIcons() {
 
 function archiveBrandIcons() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'brand-icons.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'brand-icons.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -76,7 +79,7 @@ function archiveBrandIcons() {
 
 function archiveMapMarkers() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'map-markers.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'map-markers.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -90,7 +93,7 @@ function archiveMapMarkers() {
 
 function archiveFavicons() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'favicons.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'favicons.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -109,7 +112,7 @@ function archiveFavicons() {
 
 function archiveFigmaTokens() {
   return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs, 'figma-tokens.zip'))
+    const output = createWriteStream(path.join(__docs_downloads, 'figma-tokens.zip'))
     output.on('close', () => resolve())
     output.on('error', err => reject(err.message))
 
@@ -119,6 +122,36 @@ function archiveFigmaTokens() {
     archive.glob('*.json', { cwd: path.join(__root, 'tokens', 'dist/figma') })
     archive.finalize()
   })
+}
+
+async function copyToPublic(src, target) {
+  await copy(src, path.join(__docs_public, target))
+}
+
+async function copyToAsset(src, target) {
+  await copy(src, path.join(__docs_assets, target))
+}
+
+async function copyResources() {
+  await copyToAsset(path.join(__root, 'maps/markers'), 'images/map-markers')
+  await copyToAsset(path.join(__root, 'icons/dist/icons.json'), 'data/icons.json')
+  await copyToAsset(path.join(__root, 'brand-icons/dist/brand-icons.json'), 'data/brand-icons.json')
+  await copyToAsset(path.join(__root, 'components/.tmp/commands.json'), 'data/commands.json')
+  await copyToAsset(path.join(__root, 'components/.tmp/components.json'), 'data/components.json')
+  await copyToAsset(path.join(__root, 'components/.tmp/components.d.ts'), 'data/components.d.ts')
+  await copyToAsset(path.join(__root, 'components/.tmp/contributors.json'), 'data/contributors.json')
+  await copyToAsset(path.join(__root, 'components/.tmp/selectors.json'), 'data/selectors.json')
+  await copyToAsset(path.join(__dirname, '../../.build/data/tags.json'), 'data/tags.json')
+  await copyToPublic(
+    path.join(__root, 'components-table/css/design-system-table.css'),
+    'assets/css/design-system-table.css',
+  )
+  await copyToPublic(
+    path.join(__root, 'css/css/baloise-design-system.min.css'),
+    'assets/css/baloise-design-system.min.css',
+  )
+  await copyToPublic(path.join(__root, 'icons/svg'), 'assets/images/icons')
+  await copyToPublic(path.join(__root, 'brand-icons/svg'), 'assets/images/brand-icons')
 }
 
 run()

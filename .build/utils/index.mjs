@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process'
 import { glob } from 'glob'
 import fs from 'fs'
+import fse from 'fs-extra'
 import path from 'path'
 
 export const NEWLINE = '\n'
@@ -51,6 +52,10 @@ export const writeFile = async (filePath, data) => {
       })
     })
   })
+}
+
+export const copy = async (srcDir, destDir) => {
+  return fse.copy(srcDir, destDir)
 }
 
 export const exec = (command, args = []) => {

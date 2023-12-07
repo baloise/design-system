@@ -17,6 +17,7 @@ import {
   parseSelectorComment,
 } from '../../../.build/utils/index.mjs'
 import { adjustInterfacesReference } from './interfaces.mjs'
+import { createTagList } from './tags.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
@@ -32,6 +33,7 @@ const run = async () => {
     await createContributorList()
     await exec('npm', ['run', 'docs:build'])
     await adjustInterfacesReference()
+    await createTagList()
     log.succeed()
   } catch (error) {
     log.fail(error)
