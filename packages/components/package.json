@@ -43,19 +43,18 @@
   ],
   "scripts": {
     "==================== START =========================": "================================",
-    "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
-    "dev": "stencil build --config stencil.config.docs.ts --watch",
+    "serve": "stencil build --dev --serve --watch",
+    "dev": "stencil build --watch",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --es5 && node scripts/build.mjs",
+    "build": "node scripts/pre-build.mjs && stencil build --es5 && node scripts/post-build.mjs",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "cy:build": "stencil build --config stencil.config.e2e.ts",
+    "cy:build": "stencil build",
     "==================== DOCUMENTATION =================": "================================",
-    "docs": "node scripts/docs.mjs",
-    "docs:build": "stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json"
+    "docs": "npm run build"
   },
   "dependencies": {
     "@baloise/design-system-css": "15.0.0",
