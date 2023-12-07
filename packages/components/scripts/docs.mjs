@@ -42,25 +42,6 @@ const run = async () => {
   }
 }
 
-
-
-function parseTestingType(fileContent, filePath) {
-  const sourceFile = createSourceFile(fileContent)
-  const moduleDeclarationNode = filterModuleDeclaration(sourceFile.statements)
-  const interfaceDeclarationNode = filterInterfaceDeclaration(moduleDeclarationNode.body.statements)
-  const commands = []
-  interfaceDeclarationNode.members.forEach(commandNode => {
-    commands.push({
-      name: commandNode.name.escapedText,
-      description: parseFunctionComment(commandNode, sourceFile),
-      signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
-      path: filePath,
-      component: filePath.split('/').pop().replace('.types.ts', ''),
-    })
-  })
-  return commands
-}
-
 // This script reads the defined filter functions and creates
 // a JSON file with all the meta information for documentation
 // and code generations.
