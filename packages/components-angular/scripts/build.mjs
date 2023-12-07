@@ -2,7 +2,7 @@ import shell from 'shelljs'
 import { join } from 'path'
 import { readFile, writeFile } from 'fs/promises'
 
-import { exec, start, fail, succeed, done } from '../../../.build/utils/index.mjs'
+import { exec, start, fail, succeed, done } from '../../../scripts/utils.mjs'
 
 const run = async () => {
   start('Building Angular Package')

@@ -11,7 +11,7 @@ import {
   createSourceFile,
   filterVariableStatement,
   parseSelectorComment,
-} from '../../../.build/utils/index.mjs'
+} from '../../../scripts/utils.mjs'
 import { adjustInterfacesReference } from './interfaces.mjs'
 import { createTagList } from './tags.mjs'
 import { createTestingDocs } from './commands.mjs'

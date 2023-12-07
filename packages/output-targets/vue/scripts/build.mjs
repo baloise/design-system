@@ -1,5 +1,5 @@
 import shell from 'shelljs'
-import { exec, done, logger } from '../../../../.build/utils/index.mjs'
+import { exec, done, logger } from '../../../../scripts/utils.mjs'
 
 const run = async () => {
   const log = logger('vue output')

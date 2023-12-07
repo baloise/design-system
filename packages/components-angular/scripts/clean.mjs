@@ -2,7 +2,7 @@ import shell from 'shelljs'
 import { join } from 'path'
 import { readFile, writeFile } from 'fs/promises'
 
-import { start, fail, succeed, done } from '../../../.build/utils/index.mjs'
+import { start, fail, succeed, done } from '../../../scripts/utils.mjs'
 
 const run = async () => {
   start('Cleaning Angular Package')

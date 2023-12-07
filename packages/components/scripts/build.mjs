@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import replace from 'replace-in-file'
 import path from 'path'
-import { done, logger, readFile } from '../../../.build/utils/index.mjs'
+import { done, logger, readFile } from '../../../scripts/utils.mjs'
 import { adjustInterfacesReference } from './interfaces.mjs'
 import { createTagList } from './tags.mjs'
 import { createTestingDocs } from './commands.mjs'

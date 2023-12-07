@@ -5,7 +5,7 @@
   "description": "Cypress E2E Tests",
   "scripts": {
     "postinstall": "npm run cy:install",
-    "build": "./build.sh",
+    "build": "node scripts/build.mjs",
     "start": "node ./web-server.js",
     "cy:install": "cypress install",
     "cy:open": "cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",

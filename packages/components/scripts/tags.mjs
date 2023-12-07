@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { readFile, writeFile } from '../../../.build/utils/index.mjs'
+import { readFile, writeFile } from '../../../scripts/utils.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
@@ -21,5 +21,5 @@ export async function createTagList() {
       }
       return acc
     }, [])
-  await writeFile(path.join(__root, '.build/data/tags.json'), JSON.stringify(componentTags, undefined, 2))
+  await writeFile(path.join(__root, 'resources/data/tags.json'), JSON.stringify(componentTags, undefined, 2))
 }

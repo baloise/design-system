@@ -8,15 +8,15 @@ export const NEWLINE = '\n'
 
 export const scan = async filePath => {
   // glop always returns and works with forward slashes
-  return glob(filePath.replace(/\\/g, '\/'))
+  return glob(filePath.replace(/\\/g, '/'))
 }
 
 export const makeDir = async filePath => {
   return new Promise((resolve, reject) => {
-    if(fs.existsSync(filePath)){
+    if (fs.existsSync(filePath)) {
       return resolve()
     }
-    fs.mkdir(filePath, (err) => {
+    fs.mkdir(filePath, err => {
       if (err) {
         return reject(err)
       }
@@ -60,37 +60,33 @@ export const copy = async (srcDir, destDir) => {
 
 export const exec = (command, args = []) => {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args);
+    const child = spawn(command, args)
     let outputError = []
     let output = []
 
-    child.on('error', (error) => reject(error.message));
-    child.on('exit', (code) => {
-      if(code > 0){
-        reject([
-          ...output,
-          '--------------------------------------',
-          ...outputError
-        ].join('\n'))
-      }else {
+    child.on('error', error => reject(error.message))
+    child.on('exit', code => {
+      if (code > 0) {
+        reject([...output, '--------------------------------------', ...outputError].join('\n'))
+      } else {
         resolve(code)
       }
-    });
+    })
 
-    child.stdout.on('data', (data) => {
+    child.stdout.on('data', data => {
       output.push(`${data}`.trimEnd())
-    });
+    })
 
-    child.stderr.on('data', (data) => {
+    child.stderr.on('data', data => {
       outputError.push(`${data}`.trimEnd())
-    });
+    })
   })
 }
 
-export const exit = () => process.exit(1);
-export const done = () => process.exit(0);
+export const exit = () => process.exit(1)
+export const done = () => process.exit(0)
 
-export const log = (message, ...args) => console.log(message, ...args);
+export const log = (message, ...args) => console.log(message, ...args)
 export const start = message => log('⏳ ', `${message}...`)
 export const succeed = message => log('✅ ', message)
 export const fail = (message, error) => {
@@ -101,7 +97,7 @@ export const fail = (message, error) => {
   exit()
 }
 
-export const logger = (subject) => {
+export const logger = subject => {
   let startTime = new Date()
 
   return {
@@ -127,7 +123,10 @@ export const logger = (subject) => {
         console.error(message)
       }
       exit()
-    }
+    },
+    list: message => {
+      console.log(' ❯', message)
+    },
   }
 }
 

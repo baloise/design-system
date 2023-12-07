@@ -4,7 +4,7 @@ import svgo from 'svgo'
 import path from 'path'
 import camelCase from 'lodash.camelcase'
 import upperFirst from 'lodash.upperfirst'
-import { done, logger, scan, readFile, writeFile, NEWLINE, exec } from '../../../.build/utils/index.mjs'
+import { done, logger, scan, readFile, writeFile, NEWLINE, exec } from '../../../scripts/utils.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')

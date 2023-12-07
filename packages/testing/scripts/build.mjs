@@ -1,5 +1,5 @@
 import shell from 'shelljs'
-import { done, logger, exec } from '../../../.build/utils/index.mjs'
+import { done, logger, exec } from '../../../scripts/utils.mjs'
 
 const run = async () => {
   const log = logger('testing build')

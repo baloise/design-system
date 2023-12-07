@@ -6,7 +6,7 @@
 
 const path = require('path')
 const file = require('./utils/file.js')
-const BaloiseDesignToken = require('./data/tokens.js').BaloiseDesignToken
+const BaloiseDesignToken = require('../resources/data/tokens.js').BaloiseDesignToken
 
 const DIRNAME = path.normalize(__dirname);
 const PACKAGE = path.join(DIRNAME, "../packages/css");

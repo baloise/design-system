@@ -8,7 +8,7 @@ import {
   filterModuleDeclaration,
   filterInterfaceDeclaration,
   parseFunctionComment,
-} from '../../../.build/utils/index.mjs'
+} from '../../../scripts/utils.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.join(path.dirname(__filename), '..')
