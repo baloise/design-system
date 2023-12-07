@@ -13,13 +13,13 @@ const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
 
 if (IS_BAL_DS_RELEASE) {
   console.log('')
-  console.log('Build is set to release')
+  console.log('🚀 Build is set to release 🚀')
   console.log('')
 }
 
 if (IS_BAL_DOCUMENTATION) {
   console.log('')
-  console.log('Build is set to documentation')
+  console.log('📝 Build is set to documentation 📝')
   console.log('')
 }
 
@@ -51,39 +51,39 @@ export const config: Config = {
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
     },
-    {
-      type: 'dist-custom-elements',
-      dir: 'components',
-      copy: [
-        {
-          src: '../config/custom-elements',
-          dest: 'components',
-          warn: true,
+    IS_BAL_DOCUMENTATION
+      ? {}
+      : {
+          type: 'dist-custom-elements',
+          dir: 'components',
+          copy: [
+            {
+              src: '../config/custom-elements',
+              dest: 'components',
+              warn: true,
+            },
+          ],
+          includeGlobalScripts: false,
         },
-      ],
-      includeGlobalScripts: false,
-    },
-    {
-      type: 'dist-hydrate-script',
-    },
+    IS_BAL_DOCUMENTATION
+      ? {}
+      : {
+          type: 'dist-hydrate-script',
+        },
     /**
      * Documentation outputs
      */
     CustomDocumentationGenerator,
-    // {
-    //   type: 'www',
-    //   dir: '../../docs/public',
-    //   serviceWorker: false,
-    //   empty: false,
-    // },
     /**
      * JSON Outputs
      */
-    {
-      type: 'docs-vscode',
-      file: 'dist/html.html-data.json',
-      sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-    },
+    IS_BAL_DOCUMENTATION
+      ? {}
+      : {
+          type: 'docs-vscode',
+          file: 'dist/html.html-data.json',
+          sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+        },
     {
       type: 'docs-json',
       file: './.tmp/components.json',
@@ -91,15 +91,15 @@ export const config: Config = {
     /**
      * Proxy Library outputs
      */
-    VueGenerator(),
-    AngularGenerator(),
-    AngularStandaloneGenerator(),
-    AngularLegacyGenerator(),
-    ReactGenerator(),
+    IS_BAL_DOCUMENTATION ? {} : VueGenerator(),
+    IS_BAL_DOCUMENTATION ? {} : AngularGenerator(),
+    IS_BAL_DOCUMENTATION ? {} : AngularStandaloneGenerator(),
+    IS_BAL_DOCUMENTATION ? {} : AngularLegacyGenerator(),
+    IS_BAL_DOCUMENTATION ? {} : ReactGenerator(),
     /**
      * Copy assets for E2E testing
      */
-    VueTestGenerator('../', '../../test/generated/components/index.ts'),
+    IS_BAL_DOCUMENTATION ? {} : VueTestGenerator('../', '../../test/generated/components/index.ts'),
     {
       type: 'www',
       dir: 'www',
