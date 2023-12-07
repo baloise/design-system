@@ -30,8 +30,7 @@
   "scripts": {
     "build": "node ./scripts/build.mjs",
     "generate": "node ./scripts/generate.mjs",
-    "docs": "npm run build",
-    "ng:build": "npm run build"
+    "docs": "npm run build"
   },
   "main": "dist/tokens.js",
   "module": "dist/tokens.esm.js",

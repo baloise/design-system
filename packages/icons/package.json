@@ -29,7 +29,6 @@
   "license": "Apache-2.0",
   "scripts": {
     "docs": "npm run build",
-    "ng:build": "npm run build",
     "build": "node ./scripts/build.mjs"
   },
   "main": "./dist/index.js",

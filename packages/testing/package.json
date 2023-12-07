@@ -35,8 +35,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "ng:build": "npm run build"
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "@baloise/design-system-components": "15.0.0",

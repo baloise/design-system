@@ -10,6 +10,20 @@ export const scan = async filePath => {
   return glob(filePath.replace(/\\/g, '\/'))
 }
 
+export const makeDir = async filePath => {
+  return new Promise((resolve, reject) => {
+    if(fs.existsSync(filePath)){
+      return resolve()
+    }
+    fs.mkdir(filePath, (err) => {
+      if (err) {
+        return reject(err)
+      }
+      resolve()
+    })
+  })
+}
+
 export const readFile = async filePath => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -110,4 +124,37 @@ export const logger = (subject) => {
       exit()
     }
   }
+}
+
+import ts from 'typescript'
+
+export const createSourceFile = content => ts.createSourceFile('x.ts', content, ts.ScriptTarget.Latest)
+
+const filterByKind = kind => list => list.filter(item => item.kind === kind)
+const firstByKind = kind => list => filterByKind(kind)(list)[0]
+
+export const filterModuleDeclaration = firstByKind(ts.SyntaxKind.ModuleDeclaration)
+export const filterInterfaceDeclaration = firstByKind(ts.SyntaxKind.InterfaceDeclaration)
+export const filterVariableStatement = filterByKind(ts.SyntaxKind.VariableStatement)
+
+export const parseFunctionComment = (node, sourceFile) =>
+  node
+    .getFullText(sourceFile)
+    .replace(node.getText(sourceFile), '')
+    .split('\n')
+    .map(l => l.trim())
+    .filter(l => l)
+    .filter(l => l !== '/**' && l !== '*/')
+    .map(l => (l.startsWith('*') ? l.substring(2) : l))
+
+export const parseSelectorComment = (node, sourceFile) => {
+  const pattern = /[a-zA-Z]/
+  return node
+    .getFullText(sourceFile)
+    .split('\n')
+    .map(l => l.trim())
+    .filter(l => l)
+    .filter(l => pattern.test(l))
+    .map(l => (l.startsWith('*') ? l.substring(2) : l))
+    .map(l => l.split(':')[0])
 }

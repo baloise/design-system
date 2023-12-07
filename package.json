@@ -51,7 +51,6 @@
     "build:force": "turbo run build --force && npm run build:post",
     "build:post": "node .build/version.js && node .build/create-tags-list.js",
     "build:serve": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-css",
-    "ng:build": "turbo run ng:build",
     "release": "npm run build:force && changeset publish",
     "==================== TEST =====================": "================================",
     "test": "turbo run test",

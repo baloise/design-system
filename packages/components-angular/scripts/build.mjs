@@ -9,7 +9,7 @@ const run = async () => {
 
   try {
     // Create angular package
-    await exec('npm', ['run', 'ng:package'])
+    await exec('ng-packagr', ['-p', 'ng-package.json', '-c', './tsconfig.json'])
 
     // Read angular project package.json file
     const pkgPath = join(process.cwd(), 'package.json')

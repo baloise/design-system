@@ -34,23 +34,6 @@
         "**/assets/fonts/**"
       ]
     },
-    "ng:build": {
-      "outputMode": "new-only",
-      "dependsOn": ["^ng:build"],
-      "outputs": [
-        "dist/**",
-        "loader/**",
-        "wwww/**",
-        ".tmp/**",
-        "css/baloise-design-system.css",
-        "css/design-system-table.css",
-        "**/components/**/readme.md",
-        "**/generated/**",
-        "**/assets/data/**",
-        "**/assets/download/**",
-        "**/assets/fonts/**"
-      ]
-    },
     "registry": {
       "outputMode": "new-only",
       "dependsOn": ["^registry"],

@@ -46,9 +46,7 @@
     "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
     "dev": "stencil build --config stencil.config.docs.ts --watch",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --es5 && npm run build:post",
-    "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
-    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
+    "build": "stencil build --es5 && node scripts/build.mjs",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
@@ -56,8 +54,8 @@
     "test:coverage": "vitest run --coverage",
     "cy:build": "stencil build --config stencil.config.e2e.ts",
     "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && node ../../.build/interfaces.js",
-    "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js"
+    "docs": "node scripts/docs.mjs",
+    "docs:build": "stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json"
   },
   "dependencies": {
     "@baloise/design-system-css": "15.0.0",

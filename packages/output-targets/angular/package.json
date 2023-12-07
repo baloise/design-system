@@ -12,7 +12,6 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "ng:build": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:coverage": "vitest run --coverage"
