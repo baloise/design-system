@@ -56,6 +56,21 @@ export const config: Config = {
       generateTypeDeclarations: false,
     },
     {
+      type: 'dist-custom-elements',
+      dir: 'components',
+      copy: [
+        {
+          src: '../config/custom-elements',
+          dest: 'components',
+          warn: true,
+        },
+      ],
+      includeGlobalScripts: false,
+    },
+    {
+      type: 'dist-hydrate-script',
+    },
+    {
       type: 'www',
       dir: 'www',
       serviceWorker: false,
@@ -81,21 +96,6 @@ export const config: Config = {
      */
     ...(!IS_BAL_DOCUMENTATION
       ? [
-          {
-            type: 'dist-custom-elements',
-            dir: 'components',
-            copy: [
-              {
-                src: '../config/custom-elements',
-                dest: 'components',
-                warn: true,
-              },
-            ],
-            includeGlobalScripts: false,
-          },
-          {
-            type: 'dist-hydrate-script',
-          },
           {
             type: 'docs-vscode',
             file: 'dist/html.html-data.json',
