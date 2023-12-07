@@ -8,6 +8,8 @@
         "dist/**",
         "loader/**",
         "wwww/**",
+        "components/components/**",
+        "components/hydrate/**",
         ".tmp/**",
         "css/baloise-design-system.css",
         "css/design-system-table.css",
