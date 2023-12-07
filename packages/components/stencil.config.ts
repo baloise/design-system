@@ -9,10 +9,17 @@ import { ReactGenerator } from './config/stencil.bindings.react'
 import { CustomDocumentationGenerator } from './config/doc-output-target'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
+const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
 
 if (IS_BAL_DS_RELEASE) {
   console.log('')
   console.log('Build is set to release')
+  console.log('')
+}
+
+if (IS_BAL_DOCUMENTATION) {
+  console.log('')
+  console.log('Build is set to documentation')
   console.log('')
 }
 
