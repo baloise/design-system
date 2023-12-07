@@ -5,7 +5,7 @@ import { readFile, writeFile } from 'fs/promises'
 import { exec, start, fail, succeed, done } from '../../../scripts/utils.mjs'
 
 const run = async () => {
-  start('Building Angular Package')
+  start('angular components build')
 
   try {
     // Create angular package

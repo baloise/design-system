@@ -5,7 +5,7 @@ import { readFile, writeFile } from 'fs/promises'
 import { start, fail, succeed, done } from '../../../scripts/utils.mjs'
 
 const run = async () => {
-  start('Cleaning Angular Package')
+  start('angular components clean')
 
   try {
     // Remove distribution output folder
