@@ -142,6 +142,7 @@ async function copyResources() {
   await copyToAsset(path.join(__root, 'components/.tmp/contributors.json'), 'data/contributors.json')
   await copyToAsset(path.join(__root, 'components/.tmp/selectors.json'), 'data/selectors.json')
   await copyToAsset(path.join(__dirname, '../../resources/data/tags.json'), 'data/tags.json')
+  await copyToPublic(path.join(__root, 'components/www/build'), 'build')
   await copyToPublic(
     path.join(__root, 'components-table/css/design-system-table.css'),
     'assets/css/design-system-table.css',
