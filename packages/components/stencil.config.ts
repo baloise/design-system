@@ -43,6 +43,10 @@ export const config: Config = {
   },
   outputTargets: [
     {
+      type: 'docs-json',
+      file: './.tmp/components.json',
+    },
+    {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
@@ -51,55 +55,6 @@ export const config: Config = {
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
     },
-    IS_BAL_DOCUMENTATION
-      ? {}
-      : {
-          type: 'dist-custom-elements',
-          dir: 'components',
-          copy: [
-            {
-              src: '../config/custom-elements',
-              dest: 'components',
-              warn: true,
-            },
-          ],
-          includeGlobalScripts: false,
-        },
-    IS_BAL_DOCUMENTATION
-      ? {}
-      : {
-          type: 'dist-hydrate-script',
-        },
-    /**
-     * Documentation outputs
-     */
-    CustomDocumentationGenerator,
-    /**
-     * JSON Outputs
-     */
-    IS_BAL_DOCUMENTATION
-      ? {}
-      : {
-          type: 'docs-vscode',
-          file: 'dist/html.html-data.json',
-          sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
-        },
-    {
-      type: 'docs-json',
-      file: './.tmp/components.json',
-    },
-    /**
-     * Proxy Library outputs
-     */
-    IS_BAL_DOCUMENTATION ? {} : VueGenerator(),
-    IS_BAL_DOCUMENTATION ? {} : AngularGenerator(),
-    IS_BAL_DOCUMENTATION ? {} : AngularStandaloneGenerator(),
-    IS_BAL_DOCUMENTATION ? {} : AngularLegacyGenerator(),
-    IS_BAL_DOCUMENTATION ? {} : ReactGenerator(),
-    /**
-     * Copy assets for E2E testing
-     */
-    IS_BAL_DOCUMENTATION ? {} : VueTestGenerator('../', '../../test/generated/components/index.ts'),
     {
       type: 'www',
       dir: 'www',
@@ -120,6 +75,40 @@ export const config: Config = {
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
+    CustomDocumentationGenerator,
+    /**
+     * Skip those outputs for documentation releases on vercel
+     */
+    ...(!IS_BAL_DOCUMENTATION
+      ? [
+          {
+            type: 'dist-custom-elements',
+            dir: 'components',
+            copy: [
+              {
+                src: '../config/custom-elements',
+                dest: 'components',
+                warn: true,
+              },
+            ],
+            includeGlobalScripts: false,
+          },
+          {
+            type: 'dist-hydrate-script',
+          },
+          {
+            type: 'docs-vscode',
+            file: 'dist/html.html-data.json',
+            sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
+          },
+          VueGenerator(),
+          VueTestGenerator('../', '../../test/generated/components/index.ts'),
+          AngularGenerator(),
+          AngularStandaloneGenerator(),
+          AngularLegacyGenerator(),
+          ReactGenerator(),
+        ]
+      : []),
   ],
   bundles: [
     { components: ['bal-accordion', 'bal-accordion-summary', 'bal-accordion-trigger', 'bal-accordion-details'] },
