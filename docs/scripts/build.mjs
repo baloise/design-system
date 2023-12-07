@@ -152,6 +152,7 @@ async function copyResources() {
   )
   await copyToPublic(path.join(__root, 'icons/svg'), 'assets/images/icons')
   await copyToPublic(path.join(__root, 'brand-icons/svg'), 'assets/images/brand-icons')
+  await copyToPublic(path.join(__root, 'fonts/lib'), 'assets/fonts')
 }
 
 run()
