@@ -32,6 +32,11 @@ export const StencilBaseConfig: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    {
+      type: 'dist-custom-elements',
+      includeGlobalScripts: false,
+      generateTypeDeclarations: false,
+    },
     VueTestGenerator('../', '../../test/generated/components/index.ts'),
   ],
   bundles: [

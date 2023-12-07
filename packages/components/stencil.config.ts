@@ -22,11 +22,6 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
-      includeGlobalScripts: false,
-      generateTypeDeclarations: false,
-    },
-    {
-      type: 'dist-custom-elements',
       dir: 'components',
       copy: [
         {
