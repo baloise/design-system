@@ -63,7 +63,7 @@
     "==================== DOCUMENTATION ============": "================================",
     "docs:start": "npm --prefix docs run start",
     "docs:serve": "http-server storybook -p 8080",
-    "storybook": "turbo run build --force --filter=@baloise/design-system-tokens --filter=@baloise/design-system-maps --filter=@baloise/design-system-icons --filter=@baloise/design-system-brand-icons --filter=@baloise/design-system-favicons --filter=@baloise/design-system-css && npm --prefix packages/components run build && npm --prefix docs run build && npm --prefix docs run storybook",
+    "storybook": "turbo run build --force --filter=@baloise/design-system-tokens --filter=@baloise/design-system-maps --filter=@baloise/design-system-icons --filter=@baloise/design-system-brand-icons --filter=@baloise/design-system-favicons --filter=@baloise/design-system-css --filter=@baloise/design-system-output-target-* && npm --prefix packages/components run build && npm --prefix docs run build && npm --prefix docs run storybook",
     "==================== INSTALLATION / SETUP =====": "================================",
     "precommit": "lint-staged --allow-empty",
     "cy:install": "npm --prefix test run install",
