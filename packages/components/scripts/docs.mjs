@@ -9,9 +9,6 @@ import {
   makeDir,
   writeFile,
   createSourceFile,
-  filterModuleDeclaration,
-  filterInterfaceDeclaration,
-  parseFunctionComment,
   filterVariableStatement,
   parseSelectorComment,
 } from '../../../.build/utils/index.mjs'
