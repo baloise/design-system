@@ -28,13 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "docs": "npm run build && npm run build:archive",
-    "ng:build": "npm run build",
-    "build": "npm run build:icons && npm run build:bundle && npm run build:copy",
-    "build:icons": "node ../../.build/optimize-icons.js",
-    "build:bundle": "rollup --config rollup.config.js",
-    "build:archive": "node ../../.build/archive-icons.js",
-    "build:copy": "copyfiles --flat ./src/icons.json ./dist && rimraf ./src/icons.json"
+    "build": "node ./scripts/build.mjs"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

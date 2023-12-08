@@ -86,8 +86,6 @@
   },
   "scripts": {
     "clean": "node scripts/clean.mjs",
-    "build": "npm run clean && node scripts/build.mjs",
-    "ng:build": "npm run build",
-    "ng:package": "ng-packagr -p ng-package.json -c ./tsconfig.json"
+    "build": "npm run clean && node scripts/build.mjs"
   }
 }

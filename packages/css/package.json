@@ -28,8 +28,6 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "docs": "npm run build",
-    "ng:build": "npm run build",
     "build": "npm run build:clean && npm run build:utils && npm run build:sass && npm run build:prefix && npm run build:minify",
     "build:clean": "rimraf scss/generated && rimraf css",
     "build:utils": "node ../../.build/generate-css-utils.js",

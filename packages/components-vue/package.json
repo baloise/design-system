@@ -28,10 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:bundle && npm run build:web-types && npm run build:vetur",
-    "build:bundle": "rollup --config rollup.config.js",
-    "build:web-types": "node ../../.build/vue-web-types.js",
-    "build:vetur": "node ../.././.build/vue-vetur.js"
+    "build": "node scripts/build.mjs"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
@@ -45,10 +42,5 @@
   "peerDependencies": {
     "vue": ">=3.0.5"
   },
-  "vetur": {
-    "tags": "dist/vetur/tags.json",
-    "attributes": "dist/vetur/attributes.json"
-  },
-  "web-types": "dist/web-types.json",
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

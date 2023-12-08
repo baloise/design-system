@@ -29,16 +29,13 @@
   "license": "Apache-2.0",
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/",
     "src/"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile",
-    "build:compile": "tsc src/*.ts --outDir dist --target es5 --declaration --moduleResolution node --skipLibCheck",
-    "build:clean": "rimraf dist",
-    "ng:build": "npm run build"
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "@baloise/design-system-components": "15.0.0",

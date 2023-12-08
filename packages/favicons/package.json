@@ -27,16 +27,7 @@
     "stenciljs"
   ],
   "license": "Apache-2.0",
-  "scripts": {
-    "docs": "npm run docs:clean && npm run docs:archive",
-    "docs:clean": "rimraf ./dist",
-    "docs:archive": "node ../../.build/archive-favicons.js"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/",
     "icons/"
   ],
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"

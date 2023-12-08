@@ -2,43 +2,14 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
+      "outputMode": "new-only",
       "dependsOn": ["^build"],
       "outputs": [
         "dist/**",
         "loader/**",
         "wwww/**",
-        ".tmp/**",
-        "css/baloise-design-system.css",
-        "css/design-system-table.css",
-        "**/components/**/readme.md",
-        "**/generated/**",
-        "**/assets/data/**",
-        "**/assets/download/**",
-        "**/assets/fonts/**"
-      ]
-    },
-    "docs": {
-      "dependsOn": ["^docs"],
-      "outputs": [
-        "dist/**",
-        "loader/**",
-        "wwww/**",
-        ".tmp/**",
-        "css/baloise-design-system.css",
-        "css/design-system-table.css",
-        "**/components/**/readme.md",
-        "**/generated/**",
-        "**/assets/data/**",
-        "**/assets/download/**",
-        "**/assets/fonts/**"
-      ]
-    },
-    "ng:build": {
-      "dependsOn": ["^ng:build"],
-      "outputs": [
-        "dist/**",
-        "loader/**",
-        "wwww/**",
+        "components/components/**",
+        "components/hydrate/**",
         ".tmp/**",
         "css/baloise-design-system.css",
         "css/design-system-table.css",
@@ -50,10 +21,12 @@
       ]
     },
     "registry": {
+      "outputMode": "new-only",
       "dependsOn": ["^registry"],
       "inputs": ["package.json", "package-lock.json"]
     },
     "test": {
+      "outputMode": "new-only",
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "*.spec.ts", "*.spec.js"]
     }
   }
