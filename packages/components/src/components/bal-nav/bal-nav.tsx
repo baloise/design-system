@@ -270,7 +270,9 @@ export class NavMetaBar
 
     const elementToScroll = this.el.querySelector(`#${item.id}`)
     if (elementToScroll) {
-      elementToScroll.scrollIntoView()
+      elementToScroll.scrollIntoView({
+        behavior: 'smooth',
+      })
 
       // location.href = '#'
       // location.href = `#${item.id}`
@@ -601,7 +603,7 @@ export class NavMetaBar
           })
         }
       >
-        <bal-logo></bal-logo>
+        <bal-logo animated></bal-logo>
       </Link>
     )
   }

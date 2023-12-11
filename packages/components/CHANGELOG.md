@@ -1,5 +1,21 @@
 # @baloise/design-system-components
 
+## 15.0.1
+
+### Patch Changes
+
+- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the animation issue affecting the `bal-logo`, `bal-spinner`, and `bal-nav` component.
+
+- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the scrolling behavior of the `bal-nav` component on Safari browsers for touch devices.
+
+- [#1235](https://github.com/baloise/design-system/pull/1235) - Enhance the functionality of the `bal-nav` accordion on touch devices to ensure that when a link is activated, it behaves as an accordion.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.0.1
+  - @baloise/design-system-fonts@15.0.1
+  - @baloise/design-system-icons@15.0.1
+  - @baloise/design-system-tokens@15.0.1
+
 ## 15.0.0
 
 ### Major Changes
