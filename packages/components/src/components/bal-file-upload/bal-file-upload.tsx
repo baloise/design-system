@@ -289,9 +289,9 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
     }
 
     if (validatedFiles.validFiles.length > 0) {
-      this.balFilesAdded.emit(validatedFiles.validFiles)
       this.files = [...this.files, ...validatedFiles.validFiles]
       this.balChange.emit(this.files)
+      this.balFilesAdded.emit(validatedFiles.validFiles)
     }
 
     this.updateFileInput()
