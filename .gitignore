@@ -183,3 +183,6 @@ packages/components-angular/fesm2020
 packages/components-angular/app-initialize.d.ts
 packages/components-angular/index.d.ts
 packages/components-angular/module.d.ts
+
+packages/styles/css
+packages/styles/docs

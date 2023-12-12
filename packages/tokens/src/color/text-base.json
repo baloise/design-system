@@ -7,6 +7,25 @@
       "white": { "value": "{color.base.white}" },
       "white-hovered": { "value": "{color.base.light-blue.2}" },
       "white-pressed": { "value": "{color.base.info.4}" },
+
+      "disabled": { "value": "{color.text.grey-light}" },
+      "hovered": { "value": "{color.text.light-blue}" },
+      "pressed": { "value": "{color.text.primary-dark}" },
+      "danger-hovered": { "value": "{color.base.danger.5}" },
+      "danger-pressed": { "value": "{color.base.danger.6}" },
+      "inverted": {
+        "default": { "value": "{color.text.white}" },
+        "disabled": { "value": "{color.text.primary-light}" },
+        "hovered": { "value": "{color.text.light-blue-light}" },
+        "pressed": { "value": "{color.text.info-light}" }
+      },
+      "input": {
+        "default": { "value": "{color.text.primary}" },
+        "disabled": { "value": "{color.text.grey-dark}" },
+        "placeholder": { "value": "{color.text.grey}" },
+        "information": { "value": "{color.text.primary-light}" }
+      },
+
       "primary-light": { "value": "{color.base.primary.3}" },
       "primary-dark": { "value": "{color.base.primary.6}" },
       "light-blue": { "value": "{color.base.light-blue.5}" },
@@ -21,75 +40,7 @@
       "danger": { "value": "{color.base.danger.4}" },
       "danger-dark": { "value": "{color.base.danger.5}", "noFigmaImport": true },
       "danger-darker": { "value": "{color.base.danger.6}", "noFigmaImport": true },
-      "black": { "value": "{color.base.black}", "noFigmaImport": true },
-      "white-inverted": {
-        "value": "{color.base.white-inverted}",
-        "noFigmaImport": true
-      },
-      "black-inverted": {
-        "value": "{color.base.black-inverted}",
-        "noFigmaImport": true
-      },
-      "primary-inverted": {
-        "value": "{color.base.primary.5-inverted}",
-        "noFigmaImport": true
-      },
-      "primary-light-inverted": {
-        "value": "{color.base.primary.3-inverted}",
-        "noFigmaImport": true
-      },
-      "primary-dark-inverted": {
-        "value": "{color.base.primary.6-inverted}",
-        "noFigmaImport": true
-      },
-      "light-blue-inverted": {
-        "value": "{color.base.light-blue.5-inverted}",
-        "noFigmaImport": true
-      },
-      "light-blue-light-inverted": {
-        "value": "{color.base.light-blue.2-inverted}",
-        "noFigmaImport": true
-      },
-      "grey-inverted": {
-        "value": "{color.base.grey.5-inverted}",
-        "noFigmaImport": true
-      },
-      "grey-light-inverted": {
-        "value": "{color.base.grey.4-inverted}",
-        "noFigmaImport": true
-      },
-      "grey-dark-inverted": {
-        "value": "{color.base.grey.6-inverted}",
-        "noFigmaImport": true
-      },
-      "info-inverted": {
-        "value": "{color.base.info.4-inverted}",
-        "noFigmaImport": true
-      },
-      "info-light-inverted": {
-        "value": "{color.base.info.3-inverted}",
-        "noFigmaImport": true
-      },
-      "warning-inverted": {
-        "value": "{color.base.warning.5-inverted}",
-        "noFigmaImport": true
-      },
-      "success-inverted": {
-        "value": "{color.base.success.4-inverted}",
-        "noFigmaImport": true
-      },
-      "danger-inverted": {
-        "value": "{color.base.danger.4-inverted}",
-        "noFigmaImport": true
-      },
-      "danger-dark-inverted": {
-        "value": "{color.base.danger.5-inverted}",
-        "noFigmaImport": true
-      },
-      "danger-darker-inverted": {
-        "value": "{color.base.danger.6-inverted}",
-        "noFigmaImport": true
-      }
+      "black": { "value": "{color.base.black}", "noFigmaImport": true }
     }
   }
 }

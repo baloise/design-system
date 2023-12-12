@@ -54,16 +54,33 @@ module.exports = {
           format: 'css/variables',
           destination: 'deprecated/tokens.css',
           filter: 'bal/only-deprecated',
+          options: {
+            outputReferences: true,
+          },
         },
         {
           format: 'css/variables',
           destination: 'deprecated/tokens.css.scss',
           filter: 'bal/only-deprecated',
+          options: {
+            outputReferences: true,
+          },
         },
         {
           format: 'json',
           destination: 'tokens.docs.json',
           filter: 'bal/without-deprecated',
+          options: {
+            outputReferences: true,
+          },
+        },
+        {
+          format: 'json',
+          destination: 'deprecated/tokens.docs.json',
+          filter: 'bal/only-deprecated',
+          options: {
+            outputReferences: true,
+          },
         },
       ],
     },
