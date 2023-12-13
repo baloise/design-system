@@ -13,22 +13,6 @@
       "noFigmaImport": true
     }
   },
-  "text": {
-    "shadow": {
-      "none": {
-        "value": "{shadow.none}",
-        "deprecated": true,
-        "keepFormat": true,
-        "noFigmaImport": true
-      },
-      "normal": {
-        "value": "{shadow.text}",
-        "deprecated": true,
-        "keepFormat": true,
-        "noFigmaImport": true
-      }
-    }
-  },
   "color": {
     "transparent": {
       "value": "transparent",
@@ -36,19 +20,8 @@
       "deprecated": true,
       "noFigmaImport": true
     },
-    "transparent-inverted": {
-      "value": "{color.base.primary.5}",
-      "keepFormat": true,
-      "deprecated": true,
-      "noFigmaImport": true
-    },
     "blue": {
       "value": "{color.base.blue.5}",
-      "noFigmaImport": true,
-      "deprecated": true
-    },
-    "blue-inverted": {
-      "value": "{color.base.blue.5-inverted}",
       "noFigmaImport": true,
       "deprecated": true
     },
@@ -59,37 +32,7 @@
         "3": { "value": "#656ea8", "noFigmaImport": true, "deprecated": true },
         "4": { "value": "#293485", "noFigmaImport": true, "deprecated": true },
         "5": { "value": "#000d6e", "noFigmaImport": true, "deprecated": true },
-        "6": { "value": "#000739", "noFigmaImport": true, "deprecated": true },
-        "1-inverted": {
-          "value": "{color.base.primary.5}",
-          "noFigmaImport": true,
-          "deprecated": true
-        },
-        "2-inverted": {
-          "value": "{color.base.primary.5}",
-          "noFigmaImport": true,
-          "deprecated": true
-        },
-        "3-inverted": {
-          "value": "{color.base.primary.5}",
-          "noFigmaImport": true,
-          "deprecated": true
-        },
-        "4-inverted": {
-          "value": "{color.base.white}",
-          "noFigmaImport": true,
-          "deprecated": true
-        },
-        "5-inverted": {
-          "value": "{color.base.white}",
-          "noFigmaImport": true,
-          "deprecated": true
-        },
-        "6-inverted": {
-          "value": "{color.base.white}",
-          "noFigmaImport": true,
-          "deprecated": true
-        }
+        "6": { "value": "#000739", "noFigmaImport": true, "deprecated": true }
       }
     },
     "border": {

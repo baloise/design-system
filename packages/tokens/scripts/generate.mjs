@@ -26,16 +26,13 @@ StyleDictionary.registerTransform({
 
     let tokenName = token.name
 
-    if (isColorVariable) {
-      console.log(tokenName, isKebabCase, token)
-    }
-
     if (isKebabCase) {
       if (isSizeVariable) {
         tokenName = tokenName.replace('bal-size', 'bal')
       }
       if (isColorVariable) {
         tokenName = tokenName.replace('bal-color-base', 'bal-color')
+        tokenName = tokenName.replace('bal-color-alias', 'bal-color')
       }
       if (endsWithMobile) {
         tokenName = tokenName.replace('-mobile', '')
@@ -49,6 +46,7 @@ StyleDictionary.registerTransform({
       }
       if (isColorVariable) {
         tokenName = tokenName.replace('balColorBase', 'balColor').replace('BalColorBase', 'BalColor')
+        tokenName = tokenName.replace('balColorAlias', 'balColor').replace('BalColorAlias', 'BalColor')
       }
       if (endsWithMobile) {
         tokenName = tokenName.replace('Mobile', '')
