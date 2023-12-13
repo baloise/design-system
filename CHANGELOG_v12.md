@@ -28,7 +28,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **popover:** reduce rendering by using componentWillLoad ([a99648f](https://github.com/baloise/design-system/commit/a99648fcc35f0683785266f87c6d2b66ba6950b9))
 
-
 ## [12.0.0](https://github.com/baloise/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
 
 Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-system.vercel.app/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
