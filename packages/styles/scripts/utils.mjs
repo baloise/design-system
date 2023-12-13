@@ -356,7 +356,7 @@ ${visualTest.join(NEWLINE)}
     </bal-doc-app>
   </body>
 </html>
-    `,
+`,
   }
 }
 
