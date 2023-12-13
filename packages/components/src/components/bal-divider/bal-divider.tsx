@@ -36,6 +36,16 @@ export class BalDivider implements ComponentInterface, Loggable {
   @Prop() color: BalProps.BalDividerColor = 'grey'
 
   /**
+   * If `true` the component gets a invalid red style.
+   */
+  @Prop() invalid?: boolean = undefined
+
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled?: boolean = undefined
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -45,6 +55,8 @@ export class BalDivider implements ComponentInterface, Loggable {
     const layout = !!this.layout
     const space = !!this.space
     const color = !!this.color
+    const invalid = !!this.invalid
+    const disabled = !!this.disabled
 
     return (
       <Host
@@ -54,6 +66,8 @@ export class BalDivider implements ComponentInterface, Loggable {
           ...block.modifier(`layout-${this.layout}`).class(layout),
           ...block.modifier(`space-${this.space}`).class(space),
           ...block.modifier(`color-${this.color}`).class(color),
+          ...block.modifier(`invalid`).class(invalid),
+          ...block.modifier(`disabled`).class(disabled),
         }}
       >
         <slot></slot>

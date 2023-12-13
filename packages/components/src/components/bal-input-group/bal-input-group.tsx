@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Watch } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -7,6 +7,8 @@ import { BEM } from '../../utils/bem'
 })
 export class InputGroup implements ComponentInterface {
   @Element() el!: HTMLElement
+
+  private inputGroupElements = ['bal-divider']
 
   /**
    * If `true` the component gets a invalid style.
@@ -22,6 +24,29 @@ export class InputGroup implements ComponentInterface {
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop() readonly = false
+
+  @Watch('invalid')
+  invalidHandler() {
+    this.updateProps([...this.inputGroupElements], 'invalid')
+  }
+
+  @Watch('disabled')
+  disabledHandler() {
+    this.updateProps([...this.inputGroupElements], 'disabled')
+  }
+
+  private updateProps(selectors: string[], key: string) {
+    const value = (this as any)[key]
+    if (value !== undefined) {
+      this.notifyComponents<any>(selectors, input => (input[key] = value))
+    }
+  }
+
+  private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
+    const components = this.el.querySelectorAll<Element>(selectors.join(', '))
+    components.forEach(c => callback(c as any))
+    console.log('updateProps ', components)
+  }
 
   render() {
     const block = BEM.block('input-group')

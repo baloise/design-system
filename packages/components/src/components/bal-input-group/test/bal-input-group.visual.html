@@ -108,6 +108,52 @@
           </bal-input-group>
         </section>
 
+        <section data-testid="divider-disabled">
+          <bal-input-group disabled>
+            <bal-icon name="call"></bal-icon>
+            <bal-divider layout="vertical" disabled></bal-divider>
+            <bal-select style="max-width: 106px" value="DE" disabled>
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-divider layout="vertical" disabled></bal-divider>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
+
+        <section data-testid="divider-invalid">
+          <bal-input-group invalid>
+            <bal-icon name="call"></bal-icon>
+            <bal-divider layout="vertical" invalid></bal-divider>
+            <bal-select style="max-width: 106px" value="DE" invalid>
+              <bal-select-option label="DE" value="DE">DE</bal-select-option>
+              <bal-select-option label="FR" value="FR">FR</bal-select-option>
+              <bal-select-option label="IT" value="IT">IT</bal-select-option>
+            </bal-select>
+            <bal-divider layout="vertical" invalid></bal-divider>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-input-group>
+        </section>
+
+        <bal-field class="column is-full py-none" invalid>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-control>
+            <bal-input-group>
+              <bal-icon name="call"></bal-icon>
+              <bal-divider layout="vertical"></bal-divider>
+              <bal-select style="max-width: 106px" value="DE">
+                <bal-select-option label="DE" value="DE">DE</bal-select-option>
+                <bal-select-option label="FR" value="FR">FR</bal-select-option>
+                <bal-select-option label="IT" value="IT">IT</bal-select-option>
+              </bal-select>
+              <bal-divider layout="vertical"></bal-divider>
+              <bal-input placeholder="Placeholder"></bal-input>
+            </bal-input-group>
+          </bal-field-control>
+          <bal-field-message>Required Field</bal-field-message>
+        </bal-field>
+
         <section data-testid="tags">
           <bal-input-group>
             <bal-tag closable>Tag</bal-tag>

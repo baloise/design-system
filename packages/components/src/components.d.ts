@@ -935,6 +935,14 @@ export namespace Components {
          */
         "color": BalProps.BalDividerColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
         "layout": BalProps.BalDividerLayout;
@@ -6013,6 +6021,14 @@ declare namespace LocalJSX {
           * Defines the color of the separator line.
          */
         "color"?: BalProps.BalDividerColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
         /**
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
          */
