@@ -3,19 +3,32 @@ import * as utils from './utils.mjs'
 export const generateTypography = async () => {
   const textColors = await generateTextColors()
   const fontFamily = await generateFontFamily()
+  const fontFamilyLineHeight = await generateLineHeightFontFamily()
   const fontSize = await generateFontSize()
-  const textAlign = await generateTextAlign()
-  const textTransform = await generateTextTransform()
+  const textAlign = generateTextAlign()
+  const textTransform = generateTextTransform()
   const fontWeight = await generateFontWeight()
-  const whiteSpace = await generateWhiteSpace()
+  const whiteSpace = generateWhiteSpace()
+  const lineHeight = await generateLineHeight()
+  const textOverflow = await generateTextOverflow()
 
   return utils.save(
     'typography',
     utils.merge({
-      docs: [textColors.docs, fontFamily.docs, textAlign.docs, textTransform.docs, fontWeight.docs, whiteSpace.docs],
+      docs: [
+        textColors.docs,
+        fontFamily.docs,
+        textAlign.docs,
+        textTransform.docs,
+        fontWeight.docs,
+        whiteSpace.docs,
+        lineHeight.docs,
+        textOverflow.docs,
+      ],
       rules: [
         textColors.rules,
         fontFamily.rules,
+        fontFamilyLineHeight.rules,
         fontSize.rules,
         fontSize.rulesTablet,
         fontSize.rulesDesktop,
@@ -23,9 +36,42 @@ export const generateTypography = async () => {
         textTransform.rules,
         fontWeight.rules,
         whiteSpace.rules,
+        lineHeight.rules,
+        textOverflow.rules,
       ],
     }),
   )
+}
+
+const generateLineHeight = async () => {
+  return utils.staticClassByToken({
+    token: 'size.text.line-height',
+    property: 'line-height',
+    responsive: false,
+    replace: 'text-',
+  })
+}
+
+const generateLineHeightFontFamily = async () => {
+  return utils.staticClass({
+    property: 'line-height',
+    responsive: false,
+    important: false,
+    values: {
+      'font-family-title': 'var(--bal-text-line-height-title)',
+      'font-family-text': 'var(--bal-text-line-height-text)',
+    },
+  })
+}
+
+const generateTextOverflow = async () => {
+  return utils.staticClass({
+    property: 'text-overflow',
+    values: {
+      'text-overflow-clip': 'clip',
+      'text-overflow-ellipsis': 'ellipsis',
+    },
+  })
 }
 
 const generateTextColors = async () => {
@@ -40,14 +86,11 @@ const generateTextColors = async () => {
 }
 
 const generateFontFamily = async () => {
-  const tokens = await utils.getTokens({ token: 'font.family' })
-  const values = utils.toProps({ tokens })
-  const property = 'font-family'
-
-  const docs = utils.jsonClass({ property, values })
-  const rules = utils.styleClass({ property, values, important: true })
-
-  return { rules, docs }
+  return utils.staticClassByToken({
+    token: 'font.family',
+    property: 'font-family',
+    responsive: false,
+  })
 }
 
 const generateFontSizeRule = ({ keys, property, prefix, breakpoint }) => {
@@ -71,55 +114,41 @@ const generateFontSize = async () => {
   return { rules, rulesTablet, rulesDesktop }
 }
 
-const generateTextAlign = async () => {
-  const property = 'text-align'
-  const values = {
-    'text-align-center': 'center',
-    'text-align-left': 'left',
-    'text-align-right': 'right',
-    'text-align-justified': 'justified',
-  }
-
-  const docs = utils.jsonClass({ property, values })
-  const rules = utils.styleClass({ property, values, important: true, responsive: true })
-
-  return { rules, docs }
+const generateTextAlign = () => {
+  return utils.staticClass({
+    property: 'text-align',
+    values: {
+      'text-align-center': 'center',
+      'text-align-left': 'left',
+      'text-align-right': 'right',
+      'text-align-justified': 'justified',
+    },
+  })
 }
 
-const generateTextTransform = async () => {
-  const property = 'text-transform'
-  const values = {
-    lowercase: 'lowercase',
-    uppercase: 'uppercase',
-    capitalize: 'capitalize',
-  }
-
-  const docs = utils.jsonClass({ property, values })
-  const rules = utils.styleClass({ property, values, important: true })
-
-  return { rules, docs }
+const generateTextTransform = () => {
+  return utils.staticClass({
+    property: 'text-transform',
+    responsive: false,
+    values: {
+      lowercase: 'lowercase',
+      uppercase: 'uppercase',
+      capitalize: 'capitalize',
+    },
+  })
 }
 
 const generateFontWeight = async () => {
-  const tokens = await utils.getTokens({ token: 'size.text.weight' })
-  const values = utils.toProps({ tokens })
-  const property = 'font-weight'
-
-  const docs = utils.jsonClass({ property, values })
-  const rules = utils.styleClass({ property, values, important: true })
-
-  return { rules, docs }
+  return utils.staticClassByToken({ token: 'size.text.weight', property: 'font-weight', responsive: false })
 }
 
-const generateWhiteSpace = async () => {
-  const property = 'white-space'
-  const values = {
-    'white-space-normal': 'normal',
-    'white-space-nowrap': 'nowrap',
-  }
-
-  const docs = utils.jsonClass({ property, values })
-  const rules = utils.styleClass({ property, values, important: true })
-
-  return { rules, docs }
+const generateWhiteSpace = () => {
+  return utils.staticClass({
+    property: 'white-space',
+    responsive: false,
+    values: {
+      'white-space-normal': 'normal',
+      'white-space-nowrap': 'nowrap',
+    },
+  })
 }

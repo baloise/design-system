@@ -1,0 +1,112 @@
+
+.select
+  display: inline-block
+  max-width: 100%
+  width: 100%
+  position: relative
+  vertical-align: top
+  &:not(.is-multiple)
+    height: 3rem
+  &:not(.is-multiple):not(.is-loading)
+    &::after
+      border: 3px solid var(--bal-form-field-icon-color)
+      border-radius: 2px
+      border-right: 0
+      border-top: 0
+      content: " "
+      display: block
+      height: 0.625em
+      margin-top: -0.4rem
+      pointer-events: none
+      position: absolute
+      top: 50%
+      transform: rotate(-45deg)
+      transform-origin: center
+      width: 0.625em
+
+      +ltr-position(1.125em)
+      z-index: 4
+  select
+    @extend %input
+    cursor: pointer
+    display: block
+    font-size: 1em
+    max-width: 100%
+    width: 100%
+    outline: none
+    border-radius: var(--bal-form-field-control-radius)
+    &::-ms-expand
+      display: none
+    &[disabled]:hover,
+    fieldset[disabled] &:hover
+      border-color: var(--bal-form-field-control-disabled-border-color)
+    &:not([multiple])
+      +ltr-property("padding", 2.5em)
+    &[multiple]
+      height: auto
+      padding: 0
+      option
+        padding: 0.5em 1em
+  // States
+  &:not(.is-multiple):not(.is-loading):hover
+    &::after
+      border-color: var(--bal-form-field-label-color-hover)
+  &:not(.is-multiple):not(.is-loading):active
+    &::after
+      border-color: var(--bal-form-field-label-color-active)
+  // Modifiers
+  &.is-disabled
+    &::after
+      border-color: var(--bal-form-field-control-disabled-border-color) !important
+  &.is-success
+    select
+      border-color: var(--bal-form-field-control-success-border-color)
+      background: var(--bal-form-field-control-success-background)
+      &.bal-focused,
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active
+        border-color: var(--bal-form-field-control-success-border-color-active)
+    &::after
+      border-color: var(--bal-form-field-control-success-border-color) !important
+    &:focus::after,
+    &:active::after,
+    &:focus-within::after
+      border-color: var(--bal-form-field-control-success-border-color-active) !important
+  &.is-danger
+    select
+      border-color: var(--bal-form-field-control-danger-border-color)
+      background: var(--bal-form-field-control-danger-background)
+      &.bal-focused,
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active
+        border-color: var(--bal-form-field-control-danger-border-color-active)
+    &::after
+      border-color: var(--bal-form-field-control-danger-border-color) !important
+    &:focus::after,
+    &:active::after,
+    &:focus-within::after
+      border-color: var(--bal-form-field-control-danger-border-color-active) !important
+  &.is-warning
+    select
+      border-color: var(--bal-color-border-warning)
+      background: var(--bal-color-warning-1)
+      &.bal-focused,
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active
+        border-color: var(--bal-color-border-primary)
+    &::after
+      border-color: var(--bal-color-border-warning) !important
+    &:focus::after,
+    &:active::after,
+    &:focus-within::after
+      border-color: var(--bal-color-border-primary) !important
+  &.is-fullwidth
+    width: 100%
+    select
+      width: 100%

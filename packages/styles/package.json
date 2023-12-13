@@ -28,12 +28,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:clean && npm run build:utils && npm run build:sass && npm run build:prefix && npm run build:minify",
-    "build:clean": "rimraf scss/generated && rimraf css",
-    "build:utils": "node ../../.build/generate-css-utils.js",
-    "build:sass": "sass --load-path=../../node_modules --embed-sources ./sass:./css",
-    "build:prefix": "postcss ./css/*.css --use autoprefixer -d ./css/",
-    "build:minify": "cleancss -O1 'specialComments:off' --batch --batch-suffix '.min' css/*.css",
+    "build": "node scripts/build.mjs",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat ../fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1",

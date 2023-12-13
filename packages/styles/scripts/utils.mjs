@@ -363,6 +363,27 @@ ${visualTest.join(NEWLINE)}
 export const save = async (fileName, { json, rules, deprecated, visualTest }) => {
   await writeFile(path.join(__dirname, 'docs', `${fileName}.json`), json)
   await writeFile(path.join(__dirname, 'src/generated', `${fileName}.sass`), rules)
-  await writeFile(path.join(__dirname, 'src/generated/deprecated', `${fileName}.sass`), deprecated)
+  // await writeFile(path.join(__dirname, 'src/generated/deprecated', `${fileName}.sass`), deprecated)
   await writeFile(path.join(__visual_tests, `${fileName}.html`), visualTest)
+}
+
+export const staticClass = ({ property, values, important = true, responsive = true, states = false }) => {
+  const docs = jsonClass({ property, values })
+  const rules = styleClass({ property, values, important, responsive, states })
+  return { rules, docs }
+}
+
+export const staticClassByToken = async ({
+  token,
+  property,
+  important = true,
+  responsive = true,
+  states = false,
+  replace,
+}) => {
+  const tokens = await getTokens({ token })
+  const values = toProps({ tokens, replace })
+  const docs = jsonClass({ property, values })
+  const rules = styleClass({ property, values, important, responsive, states })
+  return { rules, docs }
 }

@@ -1,0 +1,117 @@
+@import './mixins'
+
+html
+  background-color: var(--bal-body-background)
+  font-size: var(--bal-body-font-size)
+  min-width: 300px
+  overflow-x: hidden
+  overflow-y: scroll
+  text-rendering: optimizeLegibility
+  text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  -webkit-overflow-scrolling: auto
+
+*:focus
+  -webkit-tap-highlight-color: transparent
+  outline: none
+  -ms-touch-action: manipulation
+  touch-action: manipulation
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section
+  display: block
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea
+  font-family: var(--bal-body-font-family)
+
+button
+  color: var(--bal-body-color)
+
+body
+  color: var(--bal-body-color)
+  font-size: var(--bal-body-font-size)
+  font-weight: var(--bal-body-font-weight)
+  line-height: var(--bal-body-line-height)
+  -webkit-overflow-scrolling: auto
+
+a
+  cursor: pointer
+  text-decoration: none
+  hyphens: auto
+  margin: 0
+  word-break: break-word
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  strong,
+  &:any-link
+    color: currentColor
+  &:hover,
+  &:any-link:hover
+    color: var(--bal-link-hover-color)
+  &:active,
+  &:any-link:active
+    color: var(--bal-link-active-color)
+
+p
+  hyphens: auto
+  margin: 0
+  word-break: break-word
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  strong
+    color: currentColor
+  &:not(:last-child)
+    margin-bottom: var(--bal-space-normal)
+    +tablet
+      margin-bottom: var(--bal-space-tablet-normal)
+    +desktop
+      margin-bottom: var(--bal-space-desktop-normal)
+
+hr
+  background-color: var(--bal-divider-background)
+  border: none
+  display: block
+  height: var(--bal-border-width-normal)
+  margin-top: var(--bal-space-xx-large)
+  margin-bottom: var(--bal-space-xx-large)
+  +tablet
+    margin-top: var(--bal-space-tablet-xx-large)
+    margin-bottom: var(--bal-space-tablet-xx-large)
+  +desktop
+    margin-top: var(--bal-space-desktop-xx-large)
+    margin-bottom: var(--bal-space-desktop-xx-large)
+
+img
+  height: auto
+  max-width: 100%
+
+input[type="checkbox"],
+input[type="radio"]
+  vertical-align: baseline
+
+small
+  font-size: var(--bal-small-font-size)
+
+span
+  font-style: inherit
+  font-weight: inherit
+
+b,
+strong
+  color: inherit
+  font-weight: var(--bal-strong-font-weight)
+
+fieldset
+  border: none

@@ -1,0 +1,26 @@
+=control
+  -moz-appearance: none !important
+  -webkit-appearance: none !important
+  align-items: center
+  border-width: var(--bal-border-width-normal)
+  border-color: var(--bal-color-border-grey)
+  border-radius: var(--bal-radius-normal)
+  box-shadow: none
+  display: inline-flex
+  font-size: var(--bal-size-normal)
+  min-height: 3rem
+  height: 3rem
+  line-height: 1.5
+  padding-left: calc(0.75em - var(--bal-border-width-normal))
+  padding-right: calc(0.75em - var(--bal-border-width-normal))
+  position: relative
+  vertical-align: top
+  // States
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    outline: none
+  &[disabled],
+  fieldset[disabled] &
+    cursor: default

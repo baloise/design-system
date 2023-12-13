@@ -1,107 +1,79 @@
 import * as utils from './utils.mjs'
 
 export const generateFlex = async () => {
-  const valuesAlignContent = {
-    'align-content-start': 'flex-start',
-    'align-content-end': 'flex-end',
-    'align-content-center': 'center',
-    'align-content-space-between': 'space-between',
-    'align-content-space-around': 'space-around',
-    'align-content-space-evenly': 'space-evenly',
-  }
-  const docsAlignContent = utils.jsonClass({ property: 'align-content', values: valuesAlignContent })
-  const rulesAlignContent = utils.styleClass({
+  const alignContent = utils.staticClass({
     property: 'align-content',
-    values: valuesAlignContent,
-    important: true,
-    responsive: true,
+    values: {
+      'align-content-start': 'flex-start',
+      'align-content-end': 'flex-end',
+      'align-content-center': 'center',
+      'align-content-space-between': 'space-between',
+      'align-content-space-around': 'space-around',
+      'align-content-space-evenly': 'space-evenly',
+    },
   })
 
-  const valuesJustifyContent = {
-    'justify-content-start': 'flex-start',
-    'justify-content-end': 'flex-end',
-    'justify-content-center': 'center',
-    'justify-content-space-between': 'space-between',
-    'justify-content-space-around': 'space-around',
-    'justify-content-space-evenly': 'space-evenly',
-  }
-  const docsJustifyContent = utils.jsonClass({ property: 'justify-content', values: valuesJustifyContent })
-  const rulesJustifyContent = utils.styleClass({
+  const justifyContent = utils.staticClass({
     property: 'justify-content',
-    values: valuesJustifyContent,
-    important: true,
-    responsive: true,
+    values: {
+      'justify-content-start': 'flex-start',
+      'justify-content-end': 'flex-end',
+      'justify-content-center': 'center',
+      'justify-content-space-between': 'space-between',
+      'justify-content-space-around': 'space-around',
+      'justify-content-space-evenly': 'space-evenly',
+    },
   })
 
-  const valuesAlignItems = {
-    'align-items-start': 'flex-start',
-    'align-items-end': 'flex-end',
-    'align-items-center': 'center',
-    'align-items-stretch': 'stretch',
-    'align-items-baseline': 'baseline',
-  }
-  const docsAlignItems = utils.jsonClass({ property: 'align-items', values: valuesAlignItems })
-  const rulesAlignItems = utils.styleClass({
+  const alignItems = utils.staticClass({
     property: 'align-items',
-    values: valuesAlignItems,
-    important: true,
-    responsive: true,
+    values: {
+      'align-items-start': 'flex-start',
+      'align-items-end': 'flex-end',
+      'align-items-center': 'center',
+      'align-items-stretch': 'stretch',
+      'align-items-baseline': 'baseline',
+    },
   })
 
-  const valuesAlignSelf = {
-    'align-self-start': 'flex-start',
-    'align-self-end': 'flex-end',
-    'align-self-center': 'center',
-    'align-self-stretch': 'stretch',
-    'align-self-baseline': 'baseline',
-  }
-  const docsAlignSelf = utils.jsonClass({ property: 'align-self', values: valuesAlignSelf })
-  const rulesAlignSelf = utils.styleClass({
+  const alignSelf = utils.staticClass({
     property: 'align-self',
-    values: valuesAlignSelf,
-    important: true,
-    responsive: true,
+    values: {
+      'align-self-start': 'flex-start',
+      'align-self-end': 'flex-end',
+      'align-self-center': 'center',
+      'align-self-stretch': 'stretch',
+      'align-self-baseline': 'baseline',
+    },
   })
 
-  const valuesFlexDirection = {
-    'flex-direction-row': 'row',
-    'flex-direction-row-reverse': 'row-reverse',
-    'flex-direction-column': 'column',
-    'flex-direction-column-reverse': 'column-reverse',
-  }
-  const docsFlexDirection = utils.jsonClass({ property: 'flex-direction', values: valuesFlexDirection })
-  const rulesFlexDirection = utils.styleClass({
+  const flexDirection = utils.staticClass({
     property: 'flex-direction',
-    values: valuesFlexDirection,
-    important: true,
-    responsive: true,
+    values: {
+      'flex-direction-row': 'row',
+      'flex-direction-row-reverse': 'row-reverse',
+      'flex-direction-column': 'column',
+      'flex-direction-column-reverse': 'column-reverse',
+    },
   })
 
-  const valuesFlex = {
-    'flex-1': '1 1 0%',
-    'flex-auto': '1 1 auto',
-    'flex-initial': '0 1 auto',
-    'flex-none': 'none',
-  }
-  const docsFlex = utils.jsonClass({ property: 'flex', values: valuesFlex })
-  const rulesFlex = utils.styleClass({
+  const flex = utils.staticClass({
     property: 'flex',
-    values: valuesFlex,
-    important: true,
-    responsive: true,
+    values: {
+      'flex-1': '1 1 0%',
+      'flex-auto': '1 1 auto',
+      'flex-initial': '0 1 auto',
+      'flex-none': 'none',
+    },
   })
 
-  const valuesFlexWrap = {
-    'flex-nowrap': 'nowrap',
-    'flex-wrap': 'wrap',
-    'flex-wrap-reverse': 'wrap-reverse',
-  }
-  const docsFlexWrap = utils.jsonClass({ property: 'flex', values: valuesFlexWrap })
-  const rulesFlexWrap = utils.styleClass({
-    property: 'flex-wrap',
-    values: valuesFlexWrap,
-    important: true,
-    responsive: true,
+  const flexWrap = utils.staticClass({
+    property: 'flex',
+    values: {
+      'flex-nowrap': 'nowrap',
+      'flex-wrap': 'wrap',
+      'flex-wrap-reverse': 'wrap-reverse',
+    },
   })
 
   const tokens = await utils.getTokens({ token: 'size.space' })
@@ -188,22 +160,22 @@ export const generateFlex = async () => {
     'flex',
     utils.merge({
       docs: [
-        docsAlignContent,
-        docsAlignItems,
-        docsAlignSelf,
-        docsFlexDirection,
-        docsFlex,
-        docsJustifyContent,
-        docsFlexWrap,
+        alignContent.docs,
+        alignItems.docs,
+        alignSelf.docs,
+        flexDirection.docs,
+        flex.docs,
+        justifyContent.docs,
+        flexWrap.docs,
       ],
       rules: [
-        rulesAlignContent,
-        rulesAlignItems,
-        rulesAlignSelf,
-        rulesFlexDirection,
-        rulesFlex,
-        rulesJustifyContent,
-        rulesFlexWrap,
+        alignContent.rules,
+        alignItems.rules,
+        alignSelf.rules,
+        flexDirection.rules,
+        flex.rules,
+        justifyContent.rules,
+        flexWrap.rules,
         rulesFlexGap,
         rulesFlexGapRow,
         rulesFlexGapColumn,

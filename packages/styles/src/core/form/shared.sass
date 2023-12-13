@@ -1,0 +1,33 @@
+=input
+  @extend %control
+  justify-content: flex-start
+  background-color: var(--bal-form-field-control-background)
+  border-color: var(--bal-form-field-control-border-color)
+  border-style: var(--bal-form-field-control-border-style)
+  border-radius: var(--bal-form-field-control-radius)
+  color: var(--bal-form-field-control-color)
+  +placeholder
+    color: var(--bal-form-field-control-placeholder-color)
+  +hover()
+    &:hover,
+    &.is-hovered
+      border-color: var(--bal-form-field-control-border-color-hover)
+      background-color: var(--bal-form-field-control-background-hover)
+  &.bal-focused,
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    border-color: var(--bal-form-field-control-border-color-active)
+    background-color: var(--bal-form-field-control-background-active)
+  &[disabled],
+  fieldset[disabled] &
+    background-color: var(--bal-form-field-control-disabled-background)
+    border-color: var(--bal-form-field-control-disabled-border-color)
+    box-shadow: none
+    color: var(--bal-form-field-control-disabled-color)
+    +placeholder
+      color: var(--bal-form-field-control-disabled-color)
+
+%input
+  +input
