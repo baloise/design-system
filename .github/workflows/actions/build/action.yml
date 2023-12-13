@@ -17,11 +17,17 @@ runs:
         output: packages/tokens/TokensDist.zip
         paths: packages/tokens/dist
 
+    # - uses: ./.github/workflows/actions/upload-archive
+    #   with:
+    #     name: css-dist
+    #     output: packages/css/CssDist.zip
+    #     paths: packages/css/css
+
     - uses: ./.github/workflows/actions/upload-archive
       with:
-        name: css-dist
-        output: packages/css/CssDist.zip
-        paths: packages/css/css
+        name: styles-dist
+        output: packages/styles/StylesDist.zip
+        paths: packages/styles/css
 
     - uses: ./.github/workflows/actions/upload-archive
       with:
