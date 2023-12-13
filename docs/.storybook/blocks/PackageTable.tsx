@@ -78,11 +78,11 @@ export const PackageTable = ({ children }) => {
     </tr>
     <tr>
       <td>
-        <a href="https://github.com/baloise/design-system/blob/main/packages/css/CHANGELOG.md">CSS</a>
+        <a href="https://github.com/baloise/design-system/blob/main/packages/styles/CHANGELOG.md">Styles</a>
       </td>
       <td>
-        <a href="https://www.npmjs.com/package/@baloise/design-system-css">
-          <img src="https://img.shields.io/npm/v/@baloise/design-system-css" alt="npm" />
+        <a href="https://www.npmjs.com/package/@baloise/design-system-styles">
+          <img src="https://img.shields.io/npm/v/@baloise/design-system-styles" alt="npm" />
         </a>
       </td>
       <td>Basic CSS styles with utility classes.</td>

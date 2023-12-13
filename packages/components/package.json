@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/baloise/design-system/issues"
   },
-  "homepage": "https://design.baloise.dev",
+  "homepage": "https://baloise-design-system.vercel.app",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
@@ -55,7 +55,7 @@
     "cy:build": "stencil build"
   },
   "dependencies": {
-    "@baloise/design-system-css": "15.0.0",
+    "@baloise/design-system-styles": "15.0.0",
     "@baloise/design-system-fonts": "15.0.0",
     "@baloise/design-system-icons": "15.0.0",
     "@baloise/design-system-tokens": "15.0.0",

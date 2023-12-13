@@ -27,6 +27,6 @@ npm link
 popd
 
 popd
-npm link @baloise/design-system-tokens @baloise/design-system-fonts @baloise/design-system-icons @baloise/design-system-css @baloise/design-system-components @baloise/design-system-testing
+npm link @baloise/design-system-tokens @baloise/design-system-fonts @baloise/design-system-icons @baloise/design-system-styles @baloise/design-system-components @baloise/design-system-testing
 
 echo "=> Angular project is linked with components"
