@@ -30,12 +30,6 @@
   +hover
     box-shadow: var(--bal-focus-shadow-inverted-inset) !important
 
-=placeholder
-  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
-  @each $placeholder in $placeholders
-    &:#{$placeholder}-placeholder
-      @content
-
 =font-smoothing
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
@@ -43,11 +37,6 @@
 =bottomSpacing($spacing: $block-spacing)
   &:not(:last-child)
     margin-bottom: $spacing
-
-=typography($font-size: 1rem, $line-height: 1.5rem, $spacing: $block-spacing)
-  font-size: $font-size
-  line-height: $line-height
-  +bottomSpacing($spacing)
 
 =ltr-position($spacing, $right: true)
   $normal: if($right, "right", "left")
@@ -67,39 +56,6 @@
 =disabled
   cursor: default !important
   pointer-events: none !important
-
-=center($width, $height: 0)
-  position: absolute
-  @if $height != 0
-    left: calc(50% - math.div(#{$width},2))
-    top: calc(50% - math.div(#{$height},2))
-  @else
-    left: calc(50% - math.div(#{$width},2))
-    top: calc(50% - math.div(#{$width},2))
-
-=property($prop, $top, $end: $top, $bottom: $top, $start: $end)
-  +property-horizontal($prop, $start, $end)
-  #{$prop}-top: $top
-  #{$prop}-bottom: $bottom
-
-=property-horizontal($prop, $start, $end: $start)
-  @if $start == 0 and $end == 0
-    #{$prop}-left: $start
-    #{$prop}-right: $end
-  @else
-    #{$prop}-left: $start
-    #{$prop}-right: $end
-    @at-root
-      @supports ((margin-inline-start: 0) or (-webkit-margin-start: 0))
-        &
-          @if $start != null
-            #{$prop}-left: unset
-          @if $end != null
-            #{$prop}-right: unset
-            -webkit-#{$prop}-start: $start
-            #{$prop}-inline-start: $start
-            -webkit-#{$prop}-end: $end
-            #{$prop}-inline-end: $end
 
 =reset
   -moz-appearance: none
@@ -137,75 +93,3 @@
   height: 1px
   clip: rect(1px, 1px, 1px, 1px)
   overflow: hidden
-
-=delete
-  +unselectable
-  -moz-appearance: none
-  -webkit-appearance: none
-  background-color: bulmaRgba($bal-color-primary, 0.2)
-  border: none
-  border-radius: $bal-radius-rounded
-  cursor: pointer
-  pointer-events: auto
-  display: inline-block
-  flex-grow: 0
-  flex-shrink: 0
-  font-size: 0
-  height: 1.25rem
-  max-height: 1.25rem
-  max-width: 1.25rem
-  min-height: 1.25rem
-  min-width: 1.25rem
-  outline: none
-  position: relative
-  vertical-align: top
-  width: 1.25rem
-  &::before,
-  &::after
-    background-color: $bal-color-white
-    content: ""
-    display: block
-    left: 50%
-    position: absolute
-    top: 50%
-    transform: translateX(-50%) translateY(-50%) rotate(45deg)
-    transform-origin: center center
-  &::before
-    height: 2px
-    width: 50%
-  &::after
-    height: 50%
-    width: 2px
-  &:hover,
-  &:focus
-    background-color: bulmaRgba($bal-color-primary, 0.3)
-  &:active
-    background-color: bulmaRgba($bal-color-primary, 0.4)
-  // Sizes
-  &.is-small
-    height: 1rem
-    max-height: 1rem
-    max-width: 1rem
-    min-height: 1rem
-    min-width: 1rem
-    width: 1rem
-  &.is-medium
-    height: 1.5rem
-    max-height: 1.5rem
-    max-width: 1.5rem
-    min-height: 1.5rem
-    min-width: 1.5rem
-    width: 1.5rem
-  &.is-large
-    height: 2rem
-    max-height: 2rem
-    max-width: 2rem
-    min-height: 2rem
-    min-width: 2rem
-    width: 2rem
-
-=text-shadow
-  text-shadow: var(--bal-text-shadow-normal)
-
-=button-shadow
-  box-shadow: var(--bal-text-shadow-normal)
