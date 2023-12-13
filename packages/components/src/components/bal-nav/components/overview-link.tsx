@@ -25,7 +25,7 @@ export const OverviewLink: FunctionalComponent<OverviewLinkProps> = ({ item, isM
       target={item.target}
       onClick={ev => onClick(ev)}
     >
-      {item.label}
+      {item.label} ➞
     </a>
   )
 }
