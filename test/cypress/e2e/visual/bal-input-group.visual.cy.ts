@@ -31,12 +31,18 @@ describe('bal-input-group', () => {
     cy.getByTestId('phone-disabled').compareSnapshot('input-group-phone-disabled')
     cy.getByTestId('phone-invalid').compareSnapshot('input-group-phone-invalid')
     cy.getByTestId('divider').compareSnapshot('input-group-divider')
+    cy.getByTestId('divider-disabled').compareSnapshot('input-group-divider-disabled')
+    cy.getByTestId('divider-invalid').compareSnapshot('input-group-divider-invalid')
+    cy.getByTestId('divider-field').compareSnapshot('input-group-divider-field')
 
     cy.platform('mobile')
     cy.getByTestId('phone').compareSnapshot('input-group-phone-mobile')
     cy.getByTestId('phone-disabled').compareSnapshot('input-group-phone-disabled-mobile')
     cy.getByTestId('phone-invalid').compareSnapshot('input-group-phone-invalid-mobile')
     cy.getByTestId('divider').compareSnapshot('input-group-divider-mobile')
+    cy.getByTestId('divider-disabled').compareSnapshot('input-group-divider-disabled-mobile')
+    cy.getByTestId('divider-invalid').compareSnapshot('input-group-divider-invalid-mobile')
+    cy.getByTestId('divider-field').compareSnapshot('input-group-divider-field-mobile')
   })
 
   it('tags component', () => {
