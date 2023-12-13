@@ -28,9 +28,9 @@ runs:
 
     - uses: ./.github/workflows/actions/download-archive
       with:
-        name: css-dist
-        path: packages/css
-        filename: CssDist.zip
+        name: styles-dist
+        path: packages/styles
+        filename: StylesDist.zip
 
     - uses: ./.github/workflows/actions/download-archive
       with:
