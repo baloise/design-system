@@ -31,6 +31,13 @@ packages/components/public/assets/data/
 packages/components/public/assets/download/
 packages/components/public/assets/css/design-system-table.css
 packages/components/vscode-data.json
+packages/components/components
+
+packages/components-angular/common/**/*.d.ts
+packages/components-angular/directives/**/*.d.ts
+packages/components-angular/standalone/**/*.d.ts
+packages/components-angular/legacy/**/*.d.ts
+packages/components-angular/src/**/*.d.ts
 
 packages/components-table/css
 packages/components-vue/src/proxies
