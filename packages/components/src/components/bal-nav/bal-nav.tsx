@@ -458,7 +458,7 @@ export class NavMetaBar
                     target={this.activeMenuLinkItem?.overviewLink?.target}
                     onClick={() => this.linkItemClickListener(this.activeMenuLinkItem?.overviewLink)}
                   >
-                    {this.activeMenuLinkItem?.overviewLink?.label}
+                    {this.activeMenuLinkItem?.overviewLink?.label} ➞
                   </bal-nav-link>
                   {this.renderGridLinks(this.activeMenuLinkItem)}
                 </bal-nav-menu-flyout>

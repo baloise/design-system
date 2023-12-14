@@ -1,5 +1,23 @@
 # @baloise/design-system-components
 
+## 15.0.2
+
+### Patch Changes
+
+- [#1240](https://github.com/baloise/design-system/pull/1240) - Adjust shadow value to normal for the components `bal-tooltip` & `bal-popup`.
+
+- [#1236](https://github.com/baloise/design-system/pull/1236) - Trigger the `balFilesAdded` event of the `bal-file-upload` component after files have been added.
+
+- [#1242](https://github.com/baloise/design-system/pull/1242) - Add missing `➞` sign to the overview links in the `bal-nav` component and adjust padding and height of the `bal-popup` component in fullscreen variant.
+
+- [#1239](https://github.com/baloise/design-system/pull/1239) - Reduce padding for the `bal-carousel` tab buttons to allow longer labels.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.0.2
+  - @baloise/design-system-fonts@15.0.2
+  - @baloise/design-system-icons@15.0.2
+  - @baloise/design-system-tokens@15.0.2
+
 ## 15.0.1
 
 ### Patch Changes
