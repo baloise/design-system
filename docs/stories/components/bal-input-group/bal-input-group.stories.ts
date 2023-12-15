@@ -6,27 +6,24 @@ type Args = JSX.BalInputGroup & { content: string }
 
 const meta: Meta<Args> = {
   title: 'Components/Form/InputGroup',
-  args: {
-    placeholder: 'Enter text here',
-  },
   argTypes: {
     ...withComponentControls({ tag: 'bal-input-group' }),
   },
   ...withRender(
-    ({ ...args }) => `<bal-input-group class="mb-normal">
-  <bal-input ${props(args)}></bal-input>
+    ({ ...args }) => `<bal-input-group class="mb-normal" ${props(args)}>
+  <bal-input placeholder="Enter text here"></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>
 
-<bal-input-group class="mb-normal">
+<bal-input-group class="mb-normal" ${props(args)}>
   <bal-icon name="date"></bal-icon>
-  <bal-input ${props(args)}></bal-input>
+  <bal-input placeholder="Enter text here"></bal-input>
 </bal-input-group>
 
-<bal-input-group class="mb-normal">
+<bal-input-group class="mb-normal" ${props(args)}>
   <bal-icon name="call"></bal-icon>
   <bal-divider layout="vertical"></bal-divider>
-  <bal-select style="max-width: 106px" value="DE">
+  <bal-select style="max-width: 106px" value="DE" ${props(args)}>
     <bal-select-option label="DE" value="DE">DE</bal-select-option>
     <bal-select-option label="FR" value="FR">FR</bal-select-option>
     <bal-select-option label="IT" value="IT">IT</bal-select-option>
@@ -35,17 +32,17 @@ const meta: Meta<Args> = {
   <bal-input placeholder="79 123 45 67"></bal-input>
 </bal-input-group>
 
-<bal-input-group class="mb-normal">
+<bal-input-group class="mb-normal" ${props(args)}>
   <bal-icon name="date"></bal-icon>
-  <bal-input ${props(args)}></bal-input>
+  <bal-input placeholder="Enter text here"></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>
 
-<bal-input-group class="mb-normal">
-  <bal-tag closable="true">Tag</bal-tag>
-  <bal-tag closable="true">Tag</bal-tag>
-  <bal-tag closable="true">Tag</bal-tag>
-  <bal-input ${props(args)}></bal-input>
+<bal-input-group class="mb-normal" ${props(args)}>
+  <bal-tag closable="true" ${props(args)}>Tag</bal-tag>
+  <bal-tag closable="true" ${props(args)}>Tag</bal-tag>
+  <bal-tag closable="true" ${props(args)}>Tag</bal-tag>
+  <bal-input placeholder="Enter text here"></bal-input>
   <bal-icon name="date"></bal-icon>
 </bal-input-group>`,
   ),

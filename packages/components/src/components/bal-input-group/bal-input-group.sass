@@ -116,6 +116,11 @@
       .delete
         display: none
 
-  &:not(.bal-input-group--is-disabled)
+  &:not(.bal-input-group--is-disabled):not(.bal-input-group--is-danger)
     &:focus-within
       border-color: var(--bal-color-primary)
+
+  &:not(.bal-input-group--is-disabled):not(.bal-input-group--is-danger)
+    &:focus-within
+      > .bal-divider
+          background: var(--bal-color-primary)
