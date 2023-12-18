@@ -2,6 +2,9 @@
   "size": {
     "border": {
       "width": {
+        "none": {
+          "value": "0"
+        },
         "small": {
           "value": "0.063"
         },

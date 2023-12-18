@@ -1,113 +1,114 @@
 import * as utils from './utils.mjs'
 
 export const generateBorder = async () => {
-  const { docsBorderWidth, rulesBorderWidth } = await generateBorderWidth({})
-  const { docsBorderWidth: docsBorderTopWidth, rulesBorderWidth: rulesBorderTopWidth } = await generateBorderWidth({
-    placement: 'top',
+  const borders = await generateBorderByColor()
+  const bordersTop = await generateBorderByColor({ placement: 'top' })
+  const bordersRight = await generateBorderByColor({ placement: 'right' })
+  const bordersBottom = await generateBorderByColor({ placement: 'bottom' })
+  const bordersLeft = await generateBorderByColor({ placement: 'left' })
+  const borderNone = await utils.staticClass({ property: 'border-width', values: { 'border-none': '0' } })
+  const borderNoneTop = await utils.staticClass({ property: 'border-top-width', values: { 'border-top-none': '0' } })
+  const borderNoneRight = await utils.staticClass({
+    property: 'border-right-width',
+    values: { 'border-right-none': '0' },
   })
-  const { docsBorderWidth: docsBorderBottomWidth, rulesBorderWidth: rulesBorderBottomWidth } =
-    await generateBorderWidth({
-      placement: 'bottom',
-    })
-  const { docsBorderWidth: docsBorderLeftWidth, rulesBorderWidth: rulesBorderLeftWidth } = await generateBorderWidth({
-    placement: 'left',
+  const borderNoneBottom = await utils.staticClass({
+    property: 'border-bottom-width',
+    values: { 'border-bottom-none': '0' },
   })
-  const { docsBorderWidth: docsBorderRightWidth, rulesBorderWidth: rulesBorderRightWidth } = await generateBorderWidth({
-    placement: 'right',
-  })
+  const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
 
-  const { docsBorderRadius, rulesBorderRadius } = await generateBorderRadius()
-  const { docsBorderColors, rulesBorderColors } = await generateBorderColors()
+  const borderWidth = await utils.staticClassByToken({ token: 'size.border.width', property: 'border-width' })
 
-  /**
-   * EXPORT
-   * ------------------------------------------------------------------------------------------
-   */
+  const borderRadius = await utils.staticClassByToken({ token: 'size.radius', property: 'border-radius' })
+
+  const borderRadiusTop = await utils.staticClassByToken({
+    token: 'size.radius',
+    property: ['border-top-left-radius', 'border-top-right-radius'],
+    replace: 'radius',
+    prefix: 'radius-top',
+  })
+  const borderRadiusLeft = await utils.staticClassByToken({
+    token: 'size.radius',
+    property: ['border-top-left-radius', 'border-bottom-left-radius'],
+    replace: 'radius',
+    prefix: 'radius-left',
+  })
+  const borderRadiusRight = await utils.staticClassByToken({
+    token: 'size.radius',
+    property: ['border-top-right-radius', 'border-bottom-right-radius'],
+    replace: 'radius',
+    prefix: 'radius-right',
+  })
+  const borderRadiusBottom = await utils.staticClassByToken({
+    token: 'size.radius',
+    property: ['border-bottom-left-radius', 'border-bottom-right-radius'],
+    replace: 'radius',
+    prefix: 'radius-bottom',
+  })
 
   return utils.save(
     'border',
     utils.merge({
       docs: [
-        docsBorderWidth,
-        docsBorderTopWidth,
-        docsBorderBottomWidth,
-        docsBorderLeftWidth,
-        docsBorderRightWidth,
-        docsBorderRadius,
-        docsBorderColors,
+        borderNone.docs,
+        borderNoneTop.docs,
+        borderNoneRight.docs,
+        borderNoneBottom.docs,
+        borderNoneLeft.docs,
+        borders.docs,
+        bordersTop.docs,
+        bordersRight.docs,
+        bordersBottom.docs,
+        bordersLeft.docs,
+        borderWidth.docs,
+        borderRadius.docs,
+        borderRadiusTop.docs,
+        borderRadiusLeft.docs,
+        borderRadiusRight.docs,
+        borderRadiusBottom.docs,
       ],
       rules: [
-        rulesBorderWidth,
-        rulesBorderTopWidth,
-        rulesBorderBottomWidth,
-        rulesBorderLeftWidth,
-        rulesBorderRightWidth,
-        rulesBorderRadius,
-        rulesBorderColors,
+        borderNone.rules,
+        borderNoneTop.rules,
+        borderNoneRight.rules,
+        borderNoneBottom.rules,
+        borderNoneLeft.rules,
+        borders.rules,
+        bordersTop.rules,
+        bordersRight.rules,
+        bordersBottom.rules,
+        bordersLeft.rules,
+        borderWidth.rules,
+        borderRadius.rules,
+        borderRadiusTop.rules,
+        borderRadiusLeft.rules,
+        borderRadiusRight.rules,
+        borderRadiusBottom.rules,
       ],
       visualTest: [],
     }),
   )
 }
 
-async function generateBorderWidth({ placement = '' }) {
-  const tokens = await utils.getTokens({ token: 'size.border.width' })
-  const values = {
-    [`border-${placement ? `${placement}-` : ''}none`]: 'none',
-    ...utils.toProps({ tokens, prefix: `border-${placement ? `${placement}-` : ''}`, replace: 'border-width-' }),
-  }
-  const property = `border-${placement ? `${placement}-` : ''}width`
-  const docsBorderWidth = utils.jsonClass({ property, values })
-  const rulesBorderWidth = utils.styleClass({
-    property,
-    values,
-    important: true,
-    responsive: true,
-    additionalValues: {
-      'border-style': 'solid',
-      'border-color': 'var(--bal-color-grey-3)',
-    },
-  })
-
-  return {
-    docsBorderWidth,
-    rulesBorderWidth,
-  }
-}
-
-async function generateBorderRadius() {
-  const tokens = await utils.getTokens({ token: 'size.radius' })
-  const values = utils.toProps({ tokens: tokens })
-  const property = 'border-radius'
-
-  const docsBorderRadius = utils.jsonClass({ property, values })
-  const rulesBorderRadius = utils.styleClass({ property, values, important: true })
-
-  return {
-    docsBorderRadius,
-    rulesBorderRadius,
-  }
-}
-
-async function generateBorderColors() {
+async function generateBorderByColor({ placement = '' } = {}) {
   const tokens = await utils.getTokens({ token: 'color.border' })
-  const values = utils.toProps({ tokens: tokens, replace: 'color-' })
-  const property = 'border-color'
-
-  const docsBorderColors = utils.jsonClass({ property, values })
-  const rulesBorderColors = utils.styleClass({
+  const formattedPlacement = placement ? `-${placement}` : ''
+  const values = {
+    [`border${formattedPlacement}`]: 'var(--bal-color-grey-3)',
+    ...utils.toProps({ tokens: tokens, replace: '-color-border', prefix: `border${formattedPlacement}` }),
+  }
+  const property = `border${formattedPlacement}-color`
+  const docs = utils.jsonClass({ property, values })
+  const rules = utils.styleClass({
     property,
     values,
     important: true,
     states: true,
     additionalValues: {
-      'border-width': 'var(--bal-border-width-normal)',
-      'border-style': 'solid',
+      [`border${formattedPlacement}-style`]: 'solid',
+      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal)',
     },
   })
-
-  return {
-    docsBorderColors,
-    rulesBorderColors,
-  }
+  return { docs, rules }
 }

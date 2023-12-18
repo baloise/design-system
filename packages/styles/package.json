@@ -37,16 +37,23 @@
     "test:watch": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
+  "bin": {
+    "bds-styles-migrate": "./bin/index.mjs"
+  },
   "main": "scss/baloise-design-system.sass",
   "style": "css/baloise-design-system.css",
   "files": [
+    "bin/",
     "css/",
     "sass/",
     "src/"
   ],
   "dependencies": {
     "@baloise/design-system-fonts": "15.0.0",
-    "@baloise/design-system-tokens": "15.0.0"
+    "@baloise/design-system-tokens": "15.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "prompts": "2.4.2",
+    "replace-in-file": "7.0.2"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"
 }

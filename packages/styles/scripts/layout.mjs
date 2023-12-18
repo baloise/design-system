@@ -11,6 +11,7 @@ export const generateLayout = async () => {
       'flex': 'flex',
       'inline-flex': 'inline-flex',
     },
+    breakpoints: utils.allBreakpoints,
   })
 
   const overflow = utils.staticClass({
@@ -87,10 +88,38 @@ export const generateLayout = async () => {
     property: 'z-index',
   })
 
+  const verticalAlign = utils.staticClass({
+    property: 'vertical-align',
+    values: {
+      'vertical-align-top': 'top',
+      'vertical-align-middle': 'middle',
+      'vertical-align-bottom': 'bottom',
+    },
+  })
+
+  // const visibility = utils.staticClass({
+  //   property: 'visibility',
+  //   values: {
+  //     'visibility-hidden': 'hidden',
+  //   },
+  //   breakpoints: utils.allBreakpoints,
+  // })
+
   return utils.save(
     'layout',
     utils.merge({
-      docs: [display.docs, overflow.docs, position.docs, top.docs, right.docs, bottom.docs, left.docs, zIndex.docs],
+      docs: [
+        display.docs,
+        overflow.docs,
+        position.docs,
+        top.docs,
+        right.docs,
+        bottom.docs,
+        left.docs,
+        zIndex.docs,
+        verticalAlign.docs,
+        // visibility.docs,
+      ],
       rules: [
         display.rules,
         overflow.rules,
@@ -100,6 +129,8 @@ export const generateLayout = async () => {
         bottom.rules,
         left.rules,
         zIndex.rules,
+        verticalAlign.rules,
+        // visibility.rules,
       ],
     }),
   )

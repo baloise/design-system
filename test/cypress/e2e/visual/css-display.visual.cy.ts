@@ -9,7 +9,6 @@ describe('css-display.visual', () => {
     cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-desktop')
     cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-desktop')
     cy.getByTestId('hidden').compareSnapshot('css-display-hidden-desktop')
-    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-desktop')
 
     cy.platform('tablet')
     cy.getByTestId('display-block').compareSnapshot('css-display-block-tablet')
@@ -18,7 +17,6 @@ describe('css-display.visual', () => {
     cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-tablet')
     cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-tablet')
     cy.getByTestId('hidden').compareSnapshot('css-display-hidden-tablet')
-    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-tablet')
 
     cy.platform('mobile')
     cy.getByTestId('display-block').compareSnapshot('css-display-block-mobile')
@@ -27,6 +25,5 @@ describe('css-display.visual', () => {
     cy.getByTestId('display-inline-block').compareSnapshot('css-display-inline-block-mobile')
     cy.getByTestId('display-inline-flex').compareSnapshot('css-display-inline-flex-mobile')
     cy.getByTestId('hidden').compareSnapshot('css-display-hidden-mobile')
-    cy.getByTestId('invisible').compareSnapshot('css-display-invisible-mobile')
   })
 })

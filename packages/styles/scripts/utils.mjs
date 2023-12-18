@@ -159,10 +159,10 @@ export const toCssVar = token => {
 
 export const toProp = ({ property, prefix, replace }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
-  const propName = `${propPrefix}${property.name.replace('bal-', '')}`.replace(replace, '').replace('--', '-')
+  const propName = propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '')
   const propValue = toCssVar(property)
   return {
-    [`${propName}`]: propValue,
+    [`${propName}`.replace(/--/g, '-')]: propValue,
   }
 }
 
@@ -367,9 +367,16 @@ export const save = async (fileName, { json, rules, deprecated, visualTest }) =>
   await writeFile(path.join(__visual_tests, `${fileName}.html`), visualTest)
 }
 
-export const staticClass = ({ property, values, important = true, responsive = true, states = false }) => {
+export const staticClass = ({
+  property,
+  values,
+  important = true,
+  responsive = true,
+  states = false,
+  breakpoints = minBreakpoints,
+}) => {
   const docs = jsonClass({ property, values })
-  const rules = styleClass({ property, values, important, responsive, states })
+  const rules = styleClass({ property, values, important, responsive, states, breakpoints })
   return { rules, docs }
 }
 
@@ -380,9 +387,10 @@ export const staticClassByToken = async ({
   responsive = true,
   states = false,
   replace,
+  prefix,
 }) => {
   const tokens = await getTokens({ token })
-  const values = toProps({ tokens, replace })
+  const values = toProps({ tokens, replace, prefix })
   const docs = jsonClass({ property, values })
   const rules = styleClass({ property, values, important, responsive, states })
   return { rules, docs }
