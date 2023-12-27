@@ -2,16 +2,20 @@
   "size": {
     "radius": {
       "none": {
-        "value": "0"
+        "value": "0",
+        "comment": "The none radius token is characterized by crisp, angular edges, providing a clean and sharp appearance to your design elements."
       },
       "normal": {
-        "value": "0.25"
+        "value": "0.25",
+        "comment": "The normal radius token strikes a balance between softness and structure."
       },
       "large": {
-        "value": "0.75"
+        "value": "0.75",
+        "comment": "The large radius token makes a bold visual statement by significantly rounding the corners of elements."
       },
       "rounded": {
-        "value": "9999px"
+        "value": "9999px",
+        "comment": "The rounded radius token embraces a curvier design language, introducing a high degree of softness and fluidity to your elements."
       }
     }
   }

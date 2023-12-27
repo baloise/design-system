@@ -3,34 +3,34 @@
     "border": {
       "default": { "value": "{color.base.grey.3}" },
 
-      "primary": { "value": "{color.base.primary.5}" },
+      "primary": { "value": "{color.base.primary.5}", "message": "Use for focused or selected state." },
       "primary-hovered": { "value": "{color.base.light-blue.5}" },
       "primary-pressed": { "value": "{color.base.primary.6}" },
 
-      "white": { "value": "{color.base.white}" },
-      "grey-light": { "value": "{color.base.grey.2}" },
-      "grey": { "value": "{color.base.grey.3}" },
-      "grey-dark": { "value": "{color.base.grey.4}" },
+      "white": { "value": "{color.base.white}", "message": "Default color on dark backgrounds." },
+      "grey-light": { "value": "{color.base.grey.2}", "message": "" },
+      "grey": { "value": "{color.base.grey.3}", "message": "Default border color for inactive state." },
+      "grey-dark": { "value": "{color.base.grey.4}", "message": "Use for disabled state." },
 
       "input": { "value": "{color.base.grey.3}" },
       "focused": { "value": "{color.base.primary.5}" },
 
-      "primary-light": { "value": "{color.base.primary.3}" },
-      "primary-dark": { "value": "{color.base.primary.6}" },
+      "primary-light": { "value": "{color.base.primary.3}", "message": "Disabled or secondary color on dark backgrounds." },
+      "primary-dark": { "value": "{color.base.primary.6}", "message": "Pressing hover color." },
 
       "info": { "value": "{color.base.info.4}" },
       "info-hovered": { "value": "{color.base.info.5}" },
       "info-pressed": { "value": "{color.base.info.6}" },
 
-      "success": { "value": "{color.base.success.4}" },
+      "success": { "value": "{color.base.success.4}", "message": "Use for valid state." },
       "success-hovered": { "value": "{color.base.success.5}" },
       "success-pressed": { "value": "{color.base.success.6}" },
 
-      "warning": { "value": "{color.base.warning.5}" },
+      "warning": { "value": "{color.base.warning.5}", "message": "Use for warning/hint state." },
       "warning-hovered": { "value": "{color.base.warning.5}" },
       "warning-pressed": { "value": "{color.base.warning.6}" },
 
-      "danger": { "value": "{color.base.danger.4}" },
+      "danger": { "value": "{color.base.danger.4}", "message": "Use for invalid state." },
       "danger-hovered": { "value": "{color.base.danger.5}" },
       "danger-pressed": { "value": "{color.base.danger.6}" },
 

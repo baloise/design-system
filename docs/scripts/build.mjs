@@ -136,6 +136,7 @@ async function copyResources() {
   await copyToAsset(path.join(__root, 'maps/markers'), 'images/map-markers')
   await copyToAsset(path.join(__root, 'icons/dist/icons.json'), 'data/icons.json')
   await copyToAsset(path.join(__root, 'brand-icons/dist/brand-icons.json'), 'data/brand-icons.json')
+  await copyToAsset(path.join(__root, 'tokens/dist/tokens.docs.json'), 'data/tokens.docs.json')
   await copyToAsset(path.join(__root, 'components/.tmp/commands.json'), 'data/commands.json')
   await copyToAsset(path.join(__root, 'components/.tmp/components.json'), 'data/components.json')
   await copyToAsset(path.join(__root, 'components/.tmp/components.d.ts'), 'data/components.d.ts')

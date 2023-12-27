@@ -1,7 +1,7 @@
 {
   "color": {
     "background": {
-      "primary": { "value": "{color.base.primary.5}" },
+      "primary": { "value": "{color.base.primary.5}", "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue." },
 
       "green-light": { "value": "{color.base.green.1}" },
       "green": { "value": "{color.base.green.3}" },
