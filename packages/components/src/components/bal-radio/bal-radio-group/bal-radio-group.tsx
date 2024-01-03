@@ -110,6 +110,9 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.invalid = value
       })
+      this.getRadioButtons().forEach(radio => {
+        radio.invalid = value
+      })
     }
   }
 
@@ -124,6 +127,9 @@ export class RadioGroup
       this.getRadios().forEach(radio => {
         radio.disabled = value
       })
+      this.getRadioButtons().forEach(radio => {
+        radio.disabled = value
+      })
     }
   }
 
@@ -136,6 +142,9 @@ export class RadioGroup
   readonlyChanged(value: boolean | undefined) {
     if (value !== undefined) {
       this.getRadios().forEach(radio => {
+        radio.readonly = value
+      })
+      this.getRadioButtons().forEach(radio => {
         radio.readonly = value
       })
     }
