@@ -1101,7 +1101,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.17.2](https://github.com/baloise/design-system/compare/v10.17.1...v10.17.2) (2022-08-11)
 
-
 ### Features
 
 * **nav desktop:** updated dependencies ([7b517a9](https://github.com/baloise/design-system/commit/7b517a950d3823b5c9134bef3dee036c031ffc99))
