@@ -303,7 +303,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * update @baloise/web-app-utils to solve safari 13 issues ([43c5b13](https://github.com/baloise/design-system/commit/43c5b132b4089346a132dbbda34c15b86860735a))
 * update web-app-utils ([c1dc7e3](https://github.com/baloise/design-system/commit/c1dc7e35250293a9f55fabbcb2ff33507e13b7f7))
 
-
 ### Performance Improvements
 
 * reduce web-app-utils imports ([7c3a21f](https://github.com/baloise/design-system/commit/7c3a21f3d995c3096c0ef23498936ddd6d9b9e3b))
