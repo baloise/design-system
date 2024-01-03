@@ -27,18 +27,15 @@ export class NavServiceLinkItem extends NavLinkItem implements BalProps.BalNavSe
     const hasItems = this.linkItems && this.linkItems.length > 0
 
     return (
-      <li>
-        <a
-          id={this.id}
-          class={{
-            ...block.element('mobile-service-item').class(),
-            ...block.element('mobile-service-item').modifier('selected').class(this.active),
-            ...block.element('mobile-service-item').modifier('clickable').class(this.clickable),
-          }}
-          href={this.href}
-          target={this.target}
-          onClick={ev => this.onClick(ev)}
-        >
+      <li
+        class={{
+          ...block.element('mobile-service-item').class(),
+          ...block.element('mobile-service-item').modifier(`color-${this.color}`).class(),
+          ...block.element('mobile-service-item').modifier('selected').class(this.active),
+          ...block.element('mobile-service-item').modifier('clickable').class(this.clickable),
+        }}
+      >
+        <a id={this.id} href={this.href} target={this.target} onClick={ev => this.onClick(ev)}>
           {this.label}
         </a>
         {hasItems ? (
