@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
+import { AfterViewInit, ChangeDetectorRef, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
 import { BehaviorSubject } from 'rxjs'
 
@@ -34,7 +34,10 @@ export class BalNgErrorComponent implements AfterViewInit {
   @Input()
   controlName?: string
 
-  constructor(@Inject(Injector) protected injector: Injector) {}
+  constructor(
+    @Inject(Injector) protected injector: Injector,
+    @Inject(ChangeDetectorRef) protected cd: ChangeDetectorRef,
+  ) {}
 
   private controlContainer?: ControlContainer
   private control?: AbstractControl | null
@@ -68,6 +71,7 @@ export class BalNgErrorComponent implements AfterViewInit {
           console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
         } else {
           this.ready.next(true)
+          this.cd.detectChanges()
         }
       } else {
         console.warn('[BalNgErrorComponent] Please provide a controlName')
