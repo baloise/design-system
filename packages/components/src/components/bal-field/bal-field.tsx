@@ -203,7 +203,7 @@ export class Field implements ComponentInterface, BalMutationObserver {
         }}
       >
         <slot></slot>
-        <span class="hidden">{/* Empty slot element to keep the order of the children */}</span>
+        <span class="bal-field-hidden">{/* Empty slot element to keep the order of the children */}</span>
       </Host>
     )
   }
