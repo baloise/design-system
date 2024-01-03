@@ -4,7 +4,7 @@ import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-
 
 @Component({
   selector: 'bal-ng-error',
-  template: `<ng-content *ngIf="hasError"></ng-content>`,
+  template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
   styles: [
     `
       :host {
