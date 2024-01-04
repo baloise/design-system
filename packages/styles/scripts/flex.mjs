@@ -68,7 +68,7 @@ export const generateFlex = async () => {
   })
 
   const flexWrap = utils.staticClass({
-    property: 'flex',
+    property: 'flex-wrap',
     values: {
       'flex-nowrap': 'nowrap',
       'flex-wrap': 'wrap',
