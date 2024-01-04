@@ -1,5 +1,13 @@
 # @baloise/design-system-css
 
+## 15.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @baloise/design-system-fonts@15.1.0
+  - @baloise/design-system-tokens@15.1.0
+
 ## 15.0.2
 
 ### Patch Changes

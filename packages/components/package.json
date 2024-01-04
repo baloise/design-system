@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "15.0.2",
+  "version": "15.1.0",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -60,10 +60,10 @@
     "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js"
   },
   "dependencies": {
-    "@baloise/design-system-css": "15.0.2",
-    "@baloise/design-system-fonts": "15.0.2",
-    "@baloise/design-system-icons": "15.0.2",
-    "@baloise/design-system-tokens": "15.0.2",
+    "@baloise/design-system-css": "15.1.0",
+    "@baloise/design-system-fonts": "15.1.0",
+    "@baloise/design-system-icons": "15.1.0",
+    "@baloise/design-system-tokens": "15.1.0",
     "@baloise/web-app-utils": "3.11.2",
     "@floating-ui/dom": "~1.5.1",
     "@popperjs/core": "~2.11.4",
@@ -89,9 +89,9 @@
     "tslib": "~2.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-output-target-angular": "15.0.2",
-    "@baloise/design-system-output-target-react": "15.0.2",
-    "@baloise/design-system-output-target-vue": "15.0.2"
+    "@baloise/design-system-output-target-angular": "15.1.0",
+    "@baloise/design-system-output-target-react": "15.1.0",
+    "@baloise/design-system-output-target-vue": "15.1.0"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6",
   "sideEffects": false
