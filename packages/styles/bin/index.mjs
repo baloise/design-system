@@ -166,16 +166,16 @@ const logger = subject => {
 const minBreakpoints = ['', 'mobile', 'tablet', 'desktop', 'widescreen']
 
 const allBreakpoints = [
+  'tablet-only',
+  'desktop-only',
+  'high-definition-only',
+  'widescreen-only',
   'mobile',
   'tablet',
-  'tablet-only',
   'touch',
   'desktop',
-  'desktop-only',
   'high-definition',
-  'high-definition-only',
   'widescreen',
-  'widescreen-only',
   'fullhd',
   '',
 ]
@@ -188,11 +188,11 @@ const allSpacingValues = [
   'small',
   'normal',
   'medium',
-  'large',
   'x-large',
   'xx-large',
   'xxx-large',
   'xxxx-large',
+  'large',
 ]
 
 // ================================================================================
@@ -531,19 +531,19 @@ const replacementsCore = {
 
 const replacementsDisplay = {
   from: [
+    ...breakpointClasses('inline-block').from,
+    ...breakpointClasses('inline-flex').from,
     ...breakpointClasses('block').from,
     ...breakpointClasses('flex').from,
     ...breakpointClasses('inline').from,
-    ...breakpointClasses('inline-block').from,
-    ...breakpointClasses('inline-flex').from,
     ...breakpointClasses('hidden').from,
   ],
   to: [
+    ...breakpointClasses('inline-block').to,
+    ...breakpointClasses('inline-flex').to,
     ...breakpointClasses('block').to,
     ...breakpointClasses('flex').to,
     ...breakpointClasses('inline').to,
-    ...breakpointClasses('inline-block').to,
-    ...breakpointClasses('inline-flex').to,
     ...breakpointClasses('hidden').to,
   ],
 }

@@ -129,83 +129,83 @@
       &.mobile\:is-offset-#{$i}
         +ltr-property("margin", percentage(math.div($i,12)), false)
   +tablet
-    &.col-narrow,
+    &.is-narrow,
     &.tablet\:is-narrow
       flex: none
       width: unset
-    &.col-full,
+    &.is-full,
     &.tablet\:is-full
       flex: none
       width: 100%
-    &.col-three-quarters,
+    &.is-three-quarters,
     &.tablet\:is-three-quarters
       flex: none
       width: 75%
-    &.col-two-thirds,
+    &.is-two-thirds,
     &.tablet\:is-two-thirds
       flex: none
       width: 66.6666%
-    &.col-half,
+    &.is-half,
     &.tablet\:is-half
       flex: none
       width: 50%
-    &.col-one-third,
+    &.is-one-third,
     &.tablet\:is-one-third
       flex: none
       width: 33.3333%
-    &.col-one-quarter,
+    &.is-one-quarter,
     &.tablet\:is-one-quarter
       flex: none
       width: 25%
-    &.col-one-fifth,
+    &.is-one-fifth,
     &.tablet\:is-one-fifth
       flex: none
       width: 20%
-    &.col-two-fifths,
+    &.is-two-fifths,
     &.tablet\:is-two-fifths
       flex: none
       width: 40%
-    &.col-three-fifths,
+    &.is-three-fifths,
     &.tablet\:is-three-fifths
       flex: none
       width: 60%
-    &.col-four-fifths,
+    &.is-four-fifths,
     &.tablet\:is-four-fifths
       flex: none
       width: 80%
-    &.col-offset-three-quarters,
+    &.is-offset-three-quarters,
     &.tablet\:is-offset-three-quarters
       +ltr-property("margin", 75%, false)
-    &.col-offset-two-thirds,
+    &.is-offset-two-thirds,
     &.tablet\:is-offset-two-thirds
       +ltr-property("margin", 66.6666%, false)
-    &.col-offset-half,
+    &.is-offset-half,
     &.tablet\:is-offset-half
       +ltr-property("margin", 50%, false)
-    &.col-offset-one-third,
+    &.is-offset-one-third,
     &.tablet\:is-offset-one-third
       +ltr-property("margin", 33.3333%, false)
-    &.col-offset-one-quarter,
+    &.is-offset-one-quarter,
     &.tablet\:is-offset-one-quarter
       +ltr-property("margin", 25%, false)
-    &.col-offset-one-fifth,
+    &.is-offset-one-fifth,
     &.tablet\:is-offset-one-fifth
       +ltr-property("margin", 20%, false)
-    &.col-offset-two-fifths,
+    &.is-offset-two-fifths,
     &.tablet\:is-offset-two-fifths
       +ltr-property("margin", 40%, false)
-    &.col-offset-three-fifths,
+    &.is-offset-three-fifths,
     &.tablet\:is-offset-three-fifths
       +ltr-property("margin", 60%, false)
-    &.col-offset-four-fifths,
+    &.is-offset-four-fifths,
     &.tablet\:is-offset-four-fifths
       +ltr-property("margin", 80%, false)
     @for $i from 0 through 12
-      &.col-#{$i},
+      &.is-#{$i},
       &.tablet\:is-#{$i}
         flex: none
         width: percentage(math.div($i,12))
-      &.col-offset-#{$i},
+      &.is-offset-#{$i},
       &.tablet\:is-offset-#{$i}
         +ltr-property("margin", percentage(math.div($i,12)), false)
   +touch
