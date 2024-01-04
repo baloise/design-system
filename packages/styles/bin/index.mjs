@@ -24,8 +24,8 @@ const main = async () => {
   log.start()
   log.info()
   const { filePath } = response
-  let files = path.join(process.cwd(), `${filePath}`)
-  const isFile = filePath.endsWith('.html')
+  let files = path.join(process.cwd(), `${filePath.trim()}`)
+  const isFile = filePath.trim().endsWith('.html')
   if (!isFile) {
     files = path.join(`${files}`, '**', '*.html')
   }
@@ -85,7 +85,7 @@ const main = async () => {
               return className
             })
 
-            content = content.replace(classes.join(' '), modifiedClasses.join(' '))
+            content = content.replace(`class="${classes.join(' ')}"`, `class="${modifiedClasses.join(' ')}"`)
             // $(element).attr('class', modifiedClasses.join(' '))
           })
 
@@ -500,7 +500,7 @@ const marginAndPadding = () => {
 // ================================================================================
 
 const replacementsGrid = {
-  from: [/columns/g, /column(?![^;]*;)/g],
+  from: [/(?<!-)columns/g, /(?<!-)\bcolumn\b/g],
   to: ['grid', 'col'],
 }
 
@@ -571,6 +571,8 @@ const replacementsFlex = {
     /is-flex-shrink-0/g,
     /is-flex-grow-1/g,
     /is-flex-shrink-1/g,
+    /justify-content-left/g,
+    /justify-content-right/g,
     ...spacingClasses('fg', 'gap').from,
   ],
   to: [
@@ -595,6 +597,8 @@ const replacementsFlex = {
     'flex-initial',
     'flex-1',
     'flex-1',
+    'justify-content-start',
+    'justify-content-end',
     ...spacingClasses('fg', 'gap').to,
   ],
 }
