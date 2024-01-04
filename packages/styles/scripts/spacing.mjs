@@ -83,7 +83,7 @@ function generateResponsiveSpace({ keys, property, prefix }) {
 
 function generateSpace({ keys, prefix, property, breakpoint = '' }) {
   const values = {
-    [`${prefix}-none`]: 'none',
+    [`${prefix}-none`]: '0',
     [`${prefix}-auto`]: 'auto',
   }
   for (const index in keys) {

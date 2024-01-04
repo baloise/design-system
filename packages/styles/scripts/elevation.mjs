@@ -29,9 +29,7 @@ const generateShadow = async () => {
   const tokens = await utils.getTokens({ token: 'shadow' })
   const values = utils.toProps({ tokens })
   const property = 'box-shadow'
-
   const docs = utils.jsonClass({ property, values })
-
   const rules = utils.styleClass({
     property,
     values,
