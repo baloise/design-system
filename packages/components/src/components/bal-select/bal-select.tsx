@@ -189,6 +189,11 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   @Prop() remote = false
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
   @Prop({ mutable: true }) value?: string | string[] = []

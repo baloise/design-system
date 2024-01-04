@@ -115,6 +115,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @Prop() required = false
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * @deprecated
    * Use non-submit instead
    */
