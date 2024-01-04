@@ -97,19 +97,19 @@
     </span>
     <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>sebaotlacan</span>
   </a>
-<a href="https://github.com/culmat" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
-  >
-    <span className='is-display-block is-size-xx-large has-text-centered'>
-      <img src="https://avatars.githubusercontent.com/u/638519?v=4" alt="culmat" />
-    </span>
-    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>culmat</span>
-  </a>
 <a href="https://github.com/max-voss" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
   >
     <span className='is-display-block is-size-xx-large has-text-centered'>
       <img src="https://avatars.githubusercontent.com/u/29964860?v=4" alt="max-voss" />
     </span>
     <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>max-voss</span>
+  </a>
+<a href="https://github.com/culmat" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+  >
+    <span className='is-display-block is-size-xx-large has-text-centered'>
+      <img src="https://avatars.githubusercontent.com/u/638519?v=4" alt="culmat" />
+    </span>
+    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>culmat</span>
   </a>
 <a href="https://github.com/didlika" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
   >
@@ -153,19 +153,19 @@
     </span>
     <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>m4rc0z</span>
   </a>
-<a href="https://github.com/clastzoo" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
-  >
-    <span className='is-display-block is-size-xx-large has-text-centered'>
-      <img src="https://avatars.githubusercontent.com/u/62377419?v=4" alt="clastzoo" />
-    </span>
-    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>clastzoo</span>
-  </a>
 <a href="https://github.com/NoraKurzbein" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
   >
     <span className='is-display-block is-size-xx-large has-text-centered'>
       <img src="https://avatars.githubusercontent.com/u/16286177?v=4" alt="NoraKurzbein" />
     </span>
     <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>NoraKurzbein</span>
+  </a>
+<a href="https://github.com/clastzoo" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+  >
+    <span className='is-display-block is-size-xx-large has-text-centered'>
+      <img src="https://avatars.githubusercontent.com/u/62377419?v=4" alt="clastzoo" />
+    </span>
+    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>clastzoo</span>
   </a>
 <a href="https://github.com/Flapmax" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
   >
