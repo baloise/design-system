@@ -483,7 +483,7 @@ export namespace Components {
          */
         "getOption": () => Promise<BalCheckboxOption>;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit instead
          */
         "hidden": boolean;
         "hovered": boolean;
@@ -515,6 +515,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit": boolean;
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -2488,7 +2492,7 @@ export namespace Components {
          */
         "getOption": () => Promise<BalRadioOption>;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit or invisible instead
          */
         "hidden": boolean;
         "hovered": boolean;
@@ -2516,6 +2520,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit": boolean;
         "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
@@ -2943,13 +2951,17 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalStepOption>;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden": boolean;
         /**
           * Link to path.
          */
         "href": string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible": boolean;
         /**
           * Label for the tab.
          */
@@ -3015,7 +3027,7 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden": boolean;
         /**
@@ -3026,6 +3038,10 @@ export namespace Components {
           * Tab icon not available for the steps.
          */
         "icon"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible": boolean;
         /**
           * Label for the tab.
          */
@@ -5532,7 +5548,7 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit instead
          */
         "hidden"?: boolean;
         "hovered"?: boolean;
@@ -5564,6 +5580,10 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit"?: boolean;
         /**
           * Emitted when the toggle loses focus.
          */
@@ -7613,7 +7633,7 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true`, the value will not be send with a form submit
+          * @deprecated Use non-submit or invisible instead
          */
         "hidden"?: boolean;
         "hovered"?: boolean;
@@ -7641,6 +7661,10 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "nonSubmit"?: boolean;
         /**
           * Emitted when the toggle loses focus.
          */
@@ -8088,13 +8112,17 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden"?: boolean;
         /**
           * Link to path.
          */
         "href"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible"?: boolean;
         /**
           * Label for the tab.
          */
@@ -8152,7 +8180,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the step is hidden.
+          * @deprecated Use invisible instead
          */
         "hidden"?: boolean;
         /**
@@ -8163,6 +8191,10 @@ declare namespace LocalJSX {
           * Tab icon not available for the steps.
          */
         "icon"?: string;
+        /**
+          * If `true` the step is hidden.
+         */
+        "invisible"?: boolean;
         /**
           * Label for the tab.
          */
