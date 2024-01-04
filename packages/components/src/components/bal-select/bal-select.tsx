@@ -1124,7 +1124,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                     <bal-checkbox
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
-                      hidden
+                      nonSubmit
                       flat
                       onBalChange={preventDefault}
                     ></bal-checkbox>

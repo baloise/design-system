@@ -486,7 +486,7 @@ export class RadioGroup
               disabled={option.disabled}
               readonly={option.readonly}
               required={option.required}
-              hidden={option.hidden}
+              nonSubmit={!!option.nonSubmit || !!option.hidden}
               invalid={option.invalid}
               innerHTML={option.html as string}
             ></bal-radio>

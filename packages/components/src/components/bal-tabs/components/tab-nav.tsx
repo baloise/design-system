@@ -51,7 +51,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
 }) => {
   const bemEl = BEM.block('tabs').element('nav')
 
-  const tabs = items.filter(tab => !tab.hidden)
+  const tabs = items.filter(tab => !tab.invisible)
   const isFullHeight = inNavbar && !isTouch
 
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (

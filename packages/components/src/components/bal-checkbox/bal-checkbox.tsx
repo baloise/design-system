@@ -10,6 +10,7 @@ import {
   Listen,
   State,
   ComponentInterface,
+  Watch,
 } from '@stencil/core'
 import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
 import { isDescendant } from '../../utils/helpers'
@@ -114,9 +115,19 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
   @Prop() required = false
 
   /**
-   * If `true`, the value will not be send with a form submit
+   * @deprecated
+   * Use non-submit instead
    */
   @Prop() hidden = false
+  @Watch('hidden')
+  hiddenWatcher(value: boolean) {
+    this.nonSubmit = value
+  }
+
+  /**
+   * If `true`, the value will not be send with a form submit
+   */
+  @Prop() nonSubmit = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -163,6 +174,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
 
     if (groupEl) {
       groupEl.addEventListener('balChange', () => this.updateState())
+    }
+
+    if (this.hidden) {
+      this.nonSubmit = this.hidden
     }
 
     this.initialValue = this.checked
@@ -306,9 +321,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
       disabled: this.disabled,
       readonly: this.readonly,
       required: this.required,
-      hidden: this.hidden,
+      nonSubmit: this.nonSubmit,
       invisible: this.invisible,
       invalid: this.invalid,
+      hidden: this.hidden, // deprecated
     }
   }
 
@@ -458,7 +474,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable, B
           name={this.name}
           value={this.value}
           checked={this.checked}
-          disabled={this.disabled || this.hidden}
+          disabled={this.disabled || this.nonSubmit || this.hidden}
           readonly={this.readonly}
           required={this.required}
           onFocus={this.onFocus}
