@@ -43,6 +43,7 @@ const main = async () => {
 
             const from = [
               ...replacementsBorder.from,
+              ...replacementsDeprecatedBorder.from,
               ...replacementsColors.from,
               ...replacementsBlueColors.from,
               ...replacementsCore.from,
@@ -58,6 +59,7 @@ const main = async () => {
             ]
             const to = [
               ...replacementsBorder.to,
+              ...replacementsDeprecatedBorder.to,
               ...replacementsColors.to,
               ...replacementsBlueColors.to,
               ...replacementsCore.to,
@@ -505,6 +507,11 @@ const replacementsGrid = {
 const replacementsBorder = {
   from: [/has-border/g, /has-radius/g],
   to: ['border', 'radius'],
+}
+
+const replacementsDeprecatedBorder = {
+  from: [/border-light-blue/g, /border-primary-dark/g],
+  to: ['border-primary-hovered', 'border-primary-pressed'],
 }
 
 const replacementsColors = {
