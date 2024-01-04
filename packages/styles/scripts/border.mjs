@@ -96,7 +96,7 @@ async function generateBorderByColor({ placement = '' } = {}) {
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
     [`border${formattedPlacement}`]: 'var(--bal-color-grey-3)',
-    ...utils.toProps({ tokens: tokens, replace: '-color-border', prefix: `border${formattedPlacement}` }),
+    ...utils.toProps({ tokens: tokens, replace: 'color-border-', prefix: `border${formattedPlacement}` }),
   }
   const property = `border${formattedPlacement}-color`
   const docs = utils.jsonClass({ property, values })

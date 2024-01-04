@@ -24,7 +24,11 @@ const main = async () => {
   log.start()
   log.info()
   const { filePath } = response
-  const files = path.join(process.cwd(), `${filePath}`, '**', '*.html')
+  let files = path.join(process.cwd(), `${filePath}`)
+  const isFile = filePath.endsWith('.html')
+  if (!isFile) {
+    files = path.join(`${files}`, '**', '*.html')
+  }
   console.log(files)
 
   try {
@@ -40,6 +44,7 @@ const main = async () => {
             const from = [
               ...replacementsBorder.from,
               ...replacementsColors.from,
+              ...replacementsBlueColors.from,
               ...replacementsCore.from,
               ...replacementsDisplay.from,
               ...replacementsFlex.from,
@@ -54,6 +59,7 @@ const main = async () => {
             const to = [
               ...replacementsBorder.to,
               ...replacementsColors.to,
+              ...replacementsBlueColors.to,
               ...replacementsCore.to,
               ...replacementsDisplay.to,
               ...replacementsFlex.to,
@@ -504,6 +510,11 @@ const replacementsBorder = {
 const replacementsColors = {
   from: [/has-background/g, ...invertedTextWhite.from, ...invertedTextPrimary.from],
   to: ['bg', ...invertedTextWhite.to, ...invertedTextPrimary.to],
+}
+
+const replacementsBlueColors = {
+  from: [/bg-blue/g],
+  to: ['bg-primary'],
 }
 
 const replacementsCore = {
