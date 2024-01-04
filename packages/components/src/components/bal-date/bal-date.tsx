@@ -162,6 +162,11 @@ export class Date implements ComponentInterface, Loggable, BalAriaFormLinking {
   }
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a keyboard input occurred.
    */
   @Event() balInput!: EventEmitter<BalEvents.BalDateInputDetail>
