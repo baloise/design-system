@@ -1,18 +1,4 @@
 {
-  "shadow": {
-    "normal": {
-      "value": "{shadow.overlay}",
-      "deprecated": true,
-      "keepFormat": true,
-      "noFigmaImport": true
-    },
-    "large": {
-      "value": "{shadow.raised}",
-      "deprecated": true,
-      "keepFormat": true,
-      "noFigmaImport": true
-    }
-  },
   "color": {
     "transparent": {
       "value": "transparent",
