@@ -127,6 +127,11 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
   @Prop() subTitle?: (file: File) => string
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Triggers when a file is added or removed.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalFileUploadChangeDetail>
@@ -289,9 +294,9 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
     }
 
     if (validatedFiles.validFiles.length > 0) {
-      this.balFilesAdded.emit(validatedFiles.validFiles)
       this.files = [...this.files, ...validatedFiles.validFiles]
       this.balChange.emit(this.files)
+      this.balFilesAdded.emit(validatedFiles.validFiles)
     }
 
     this.updateFileInput()

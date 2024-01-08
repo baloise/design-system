@@ -1,5 +1,6 @@
-import { AfterViewInit, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
+import { AfterViewInit, ChangeDetectorRef, Directive, HostBinding, Inject, Injector, Input } from '@angular/core'
 import { AbstractControl, ControlContainer } from '@angular/forms'
+import { BehaviorSubject } from 'rxjs'
 
 import type { BaloiseDesignSystemAngularConfig } from '../utils/config'
 import { raf } from '../utils/utils'
@@ -7,7 +8,7 @@ import { BalTokenConfig } from '../utils/token'
 
 // @Component({
 //   selector: 'bal-ng-error',
-//   template: `<ng-content *ngIf="hasError"></ng-content>`,
+//   template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
 //   styles: [
 //     `
 //       :host {
@@ -33,12 +34,16 @@ export class BalNgErrorComponent implements AfterViewInit {
   @Input()
   controlName?: string
 
-  constructor(@Inject(Injector) protected injector: Injector) {}
+  constructor(
+    @Inject(Injector) protected injector: Injector,
+    @Inject(ChangeDetectorRef) protected cd: ChangeDetectorRef,
+  ) {}
 
   private controlContainer?: ControlContainer
   private control?: AbstractControl | null
   private config?: BaloiseDesignSystemAngularConfig
   private invalidateOn: 'dirty' | 'touched' = 'touched'
+  ready = new BehaviorSubject(false)
 
   ngAfterViewInit(): void {
     raf(() => {
@@ -64,6 +69,9 @@ export class BalNgErrorComponent implements AfterViewInit {
         this.control = this.controlContainer.control?.get(this.controlName)
         if (!this.control) {
           console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
+        } else {
+          this.ready.next(true)
+          this.cd.detectChanges()
         }
       } else {
         console.warn('[BalNgErrorComponent] Please provide a controlName')

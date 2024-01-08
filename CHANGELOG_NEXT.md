@@ -399,7 +399,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
 * **tabs:** add hidden, spaceless and float ([1111288](https://github.com/baloise/design-system/commit/1111288f66f137e6ad68d2aeb8afce8e66d4dc75))
 
-
 ### Bug Fixes
 
 * **button:** adjust start height to 48px ([1b11e1b](https://github.com/baloise/design-system/commit/1b11e1b18bdccf2f73231fd32921b98b2ef8f395))
@@ -1101,7 +1100,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-mobile:** updated bal list story, update bem class for accordion parent ([8a1791a](https://github.com/baloise/design-system/commit/8a1791a75a5b91d96fd4e2125946ddbe2d7e8a1d))
 
 ## [10.17.2](https://github.com/baloise/design-system/compare/v10.17.1...v10.17.2) (2022-08-11)
-
 
 ### Features
 
