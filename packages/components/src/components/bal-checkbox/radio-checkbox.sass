@@ -178,25 +178,25 @@ bal-radio .bal-radio-checkbox__label
         transform: rotate(45deg)
   //
   // Symbol colors main, inverted and background
-  +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary, --bal-color-primary-inverted, --bal-color-transparent)
+  +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary, --bal-color-white, --bal-color-transparent)
   &:hover,
   &--hovered
-    +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5, --bal-color-primary-inverted, --bal-color-grey-2)
+    +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5, --bal-color-white, --bal-color-grey-2)
   &:active,
   &--pressed
-    +radioCheckboxSymbol(--bal-color-blue-6, --bal-color-blue-6, --bal-color-primary-inverted, --bal-color-grey-2)
+    +radioCheckboxSymbol(--bal-color-blue-6, --bal-color-blue-6, --bal-color-white, --bal-color-grey-2)
   &--invalid
     +radioCheckboxSymbol(--bal-color-border-danger, --bal-color-border-danger, --bal-color-white, --bal-color-danger-1)
     &:hover,
     &.bal-radio-checkbox--hovered
-      +radioCheckboxSymbol(--bal-color-danger-5, --bal-color-danger-5, --bal-color-primary-inverted, --bal-color-danger-1)
+      +radioCheckboxSymbol(--bal-color-danger-5, --bal-color-danger-5, --bal-color-white, --bal-color-danger-1)
     &:active,
     &.bal-radio-checkbox--pressed
-      +radioCheckboxSymbol(--bal-color-danger-6, --bal-color-danger-6, --bal-color-primary-inverted, --bal-color-danger-1)
+      +radioCheckboxSymbol(--bal-color-danger-6, --bal-color-danger-6, --bal-color-white, --bal-color-danger-1)
   &--disabled,
   &--disabled:hover,
   &--disabled:active
-    +radioCheckboxSymbol(--bal-color-border-grey-dark, --bal-color-border-grey-dark, --bal-color-primary-inverted, --bal-color-grey-2)
+    +radioCheckboxSymbol(--bal-color-border-grey-dark, --bal-color-border-grey-dark, --bal-color-white, --bal-color-grey-2)
   //
   // label colors
   +radioCheckboxLabel(--bal-color-primary)
@@ -268,8 +268,8 @@ bal-radio .bal-radio-checkbox__label
       background: var(--bal-radio-checkbox-select-button-background-checked-hover)
     &:active
       background: var(--bal-radio-checkbox-select-button-background-checked-active)
-    +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary-inverted, --bal-color-primary-inverted, --bal-color-transparent)
-    +radioCheckboxLabel(--bal-color-primary-inverted)
+    +radioCheckboxSymbol(--bal-color-primary, --bal-color-white, --bal-color-white, --bal-color-transparent)
+    +radioCheckboxLabel(--bal-color-white)
     &:hover
       +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5-inverted, --bal-color-light-blue-5-inverted, --bal-color-transparent)
       +radioCheckboxLabel(--bal-color-light-blue-5-inverted)

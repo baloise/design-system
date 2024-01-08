@@ -20,10 +20,10 @@
       "grey": { "value": "{color.base.grey.3}" },
       "disabled": { "value": "{color.base.grey.3}" },
 
-      "info": { "value": "{color.base.info.3}" },
-      "success": { "value": "{color.base.success.3}" },
-      "warning": { "value": "{color.base.warning.3}" },
-      "danger": { "value": "{color.base.danger.3}" }
+      "info": { "value": "{color.base.info.2}" },
+      "success": { "value": "{color.base.success.2}" },
+      "warning": { "value": "{color.base.warning.2}" },
+      "danger": { "value": "{color.base.danger.2}" }
     }
   }
 }
