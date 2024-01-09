@@ -49,9 +49,9 @@
     "src/"
   ],
   "dependencies": {
-    "@baloise/design-system-fonts": "15.0.0",
-    "@baloise/design-system-tokens": "15.0.0",
-    "cheerio": "^1.0.0-rc.12",
+    "@baloise/design-system-fonts": "15.1.0",
+    "@baloise/design-system-tokens": "15.1.0",
+    "cheerio": "1.0.0-rc.12",
     "prompts": "2.4.2",
     "replace-in-file": "7.0.2"
   },
