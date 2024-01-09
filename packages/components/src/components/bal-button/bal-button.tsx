@@ -203,7 +203,7 @@ export class Button implements ComponentInterface {
       'is-disabled': this.disabled,
       'is-loading': this.loading,
       'has-blur-shadow': this.shadow === true,
-      'has-radius-rounded': this.rounded === true,
+      'radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,
       'has-no-round-top-corners': this.topRounded === false,
@@ -325,7 +325,7 @@ export class Button implements ComponentInterface {
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
             {...this.leftIconAttrs}
-            class="icon-left"
+            class={this.square ? '' : 'icon-left'}
             name={this.icon}
             size={this.square ? this.size : 'small'}
             turn={this.iconTurn}
