@@ -10,7 +10,7 @@ pushd packages/fonts
 npm link
 popd
 
-pushd packages/css
+pushd packages/styles
 npm link
 popd
 
