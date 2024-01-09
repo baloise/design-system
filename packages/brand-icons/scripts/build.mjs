@@ -65,9 +65,21 @@ async function optimizeIcon(input) {
   const svg = await svgo.optimize(input, {
     plugins: [
       {
+        name: 'inlineStyles',
+        params: { onlyMatchedOnce: false },
+      },
+      'convertStyleToAttrs',
+      {
+        name: 'removeAttrs',
+        params: { attrs: 'class' },
+      },
+      {
         name: 'removeDimensions',
         params: { removeDimensions: true },
       },
+      'removeStyleElement',
+      'removeScriptElement',
+      'removeEmptyContainers',
       {
         name: 'addAttributesToSVGElement',
         params: {

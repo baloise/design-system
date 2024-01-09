@@ -11,9 +11,10 @@ interface Option {
   disabled?: boolean
   readonly?: boolean
   required?: boolean
-  hidden?: boolean
+  nonSubmit?: boolean
   invalid?: boolean
   interface?: BalProps.BalRadioInterface
+  hidden?: boolean // deprecated
 }
 
 export const newBalRadioOption = (option: Option): BalRadioOption => {
@@ -24,9 +25,10 @@ export const newBalRadioOption = (option: Option): BalRadioOption => {
     disabled: false,
     readonly: false,
     required: false,
-    hidden: false,
+    nonSubmit: false,
     invisible: false,
     invalid: false,
+    hidden: false, // deprecated
     ...option,
     label: '',
     html: option.label,

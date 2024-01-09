@@ -1,73 +1,58 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import { Clipboard } from '../Clipboard'
 
 export const TokensSpacing = ({ overview }) => {
-  const spacing = tokens.spacing as any
-  const sizes = [] as any
-  const validSizes = [
-    'xxxxx-large',
-    'xxxx-large',
-    'xxx-large',
-    'xx-large',
-    'x-large',
-    'large',
-    'medium',
-    'normal',
-    'small',
-    'x-small',
-    'xx-small',
-    'none',
-    'auto',
-  ].reverse()
-  for (const k in spacing) {
-    if (validSizes.includes(k)) {
-      sizes.push({
-        name: k,
-        value: spacing[k],
-      })
-    }
-  }
+  const list = tokens.size.space
+  const listTablet = tokens.size.space.tablet
+  const listDesktop = tokens.size.space.desktop
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th style={{ minWidth: '100px' }}>Example</th>
-          <th>Description</th>
-          <th style={{ minWidth: '240px' }}>Token</th>
-          <th style={{ minWidth: '90px' }}>Mobile</th>
-          <th style={{ minWidth: '90px' }}>Tablet</th>
-          <th style={{ minWidth: '90px' }}>Desktop</th>
+          <th style={{ width: '100%' }}>Token & Description</th>
+          <th style={{ minWidth: '280px' }}>Value (mobile / tablet / desktop)</th>
+          <th style={{ minWidth: '100px' }}></th>
         </tr>
       </thead>
-      <tbody>
-        {sizes.map(c => (
-          <tr key={c.name}>
-            <td style={{ verticalAlign: 'top' }}>
-              <div className={`pt-${c.name} mt-x-small has-background-green`}></div>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">
-                {c.name} <span className="is-size-medium">({c.value.legacy})</span>
-              </p>
-              <p className="m-none is-size-small">{c.value.description}</p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-space-{c.name})
-              </p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <span className={`has-text-weight-bold is-size-small`}>{c.value.mobile}</span>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <span className={`has-text-weight-bold is-size-small`}>{c.value.tablet}</span>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <span className={`has-text-weight-bold is-size-small`}>{c.value.desktop}</span>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+
+      {Object.keys(list)
+        .filter(key => list[key].value)
+        .map(key => {
+          const item = list[key]
+          const itemTablet = listTablet[key]
+          const itemDesktop = listDesktop[key]
+
+          return (
+            <tbody key={key}>
+              <tr>
+                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                  <Clipboard label={item.name} value={`var(--${item.name})`} />
+                </td>
+                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                  <p className={`mt-none mb-none is-size-small has-text-weight-bold py-xx-small`}>
+                    {item.value} / {itemTablet?.value || '0rem'} / {itemDesktop?.value || '0rem'}
+                  </p>
+                </td>
+                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                  <div
+                    className="has-radius-normal"
+                    style={{
+                      background: 'var(--bal-color-red)',
+                      width: `var(--${item.name})`,
+                      height: `var(--${item.name})`,
+                    }}
+                  ></div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={3} className="has-border-bottom-grey">
+                  <p className="m-none is-size-small mb-small">{item.comment}</p>
+                </td>
+              </tr>
+            </tbody>
+          )
+        })}
     </table>
   )
 }

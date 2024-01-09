@@ -23,6 +23,7 @@
 // --------------------------------------------------
 .bal-nav__flyout
   background: var(--bal-color-white)
+  scroll-padding-top: 1rem
   padding-top: 1rem
   padding-bottom: 1rem
   height: calc(var(--bal-app-height, 100%) - 4rem - 4rem)
@@ -116,7 +117,7 @@
   cursor: pointer
 
 .bal-nav__mobile-section-item,
-.bal-nav__mobile-service-item
+.bal-nav__mobile-service-item > a
   display: flex
   justify-content: space-between
   align-items: center
@@ -185,8 +186,7 @@
 .bal-nav__mobile-section-list
   padding-top: 1rem
 
-.bal-nav__mobile-service-list
-  background: var(--bal-color-grey-3)
+.bal-nav__mobile-service-list > li
   border-radius: var(--bal-radius-normal)
   padding-top: 1rem
   padding-bottom: 1rem
@@ -212,10 +212,21 @@
 
 .bal-nav__mobile-links--clickable,
 .bal-nav__mobile-section-item--clickable,
-.bal-nav__mobile-service-item--clickable
+.bal-nav__mobile-service-item--clickable > a
   cursor: pointer
 
 .bal-nav__mobile-links--selected,
 .bal-nav__mobile-section-item--selected,
-.bal-nav__mobile-service-item--selected
+.bal-nav__mobile-service-item--selected > a
   text-decoration: underline
+
+.bal-nav__mobile-service-item--color-grey
+  background: var(--bal-nav-service-background-grey)
+.bal-nav__mobile-service-item--color-purple
+  background: var(--bal-nav-service-background-purple)
+.bal-nav__mobile-service-item--color-red
+  background: var(--bal-nav-service-background-red)
+.bal-nav__mobile-service-item--color-yellow
+  background: var(--bal-nav-service-background-yellow)
+.bal-nav__mobile-service-item--color-green
+  background: var(--bal-nav-service-background-green)

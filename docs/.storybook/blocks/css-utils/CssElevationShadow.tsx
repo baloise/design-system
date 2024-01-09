@@ -3,8 +3,8 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const CssElevationShadow = ({}) => {
-  const objBox = tokens.shadow.box
-  const objText = tokens.shadow.text
+  const objBox = tokens.shadow
+  const objText = tokens.text.shadow
 
   const list = [
     {

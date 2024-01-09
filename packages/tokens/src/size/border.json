@@ -6,13 +6,16 @@
           "value": "0"
         },
         "small": {
-          "value": "0.063"
+          "value": "0.063",
+          "comment": "The small border size is crafted for subtle, refined delineation."
         },
         "normal": {
-          "value": "0.125"
+          "value": "0.125",
+          "comment": "The normal border size strikes a harmonious balance, offering a versatile choice for defining boundaries within your design."
         },
         "large": {
-          "value": "0.25"
+          "value": "0.25",
+          "comment": "The large border size makes a bold statement, creating strong visual contrasts and emphasizing key elements within your interface."
         }
       }
     }

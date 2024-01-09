@@ -36,8 +36,9 @@
     min-width: 100%
     max-width: 100% !important
     min-height: var(--bal-app-height, 100%)
-    padding-left: var(--bal-container-space)
-    padding-right: var(--bal-container-space)
+    .bal-popup__inner
+      padding-left: var(--bal-container-space)
+      padding-right: var(--bal-container-space)
   &--variant-drawer
     position: fixed
     border-top-left-radius: var(--bal-popup-variant-drawer-radius)
@@ -51,7 +52,7 @@
 
 .bal-popup__inner
   overflow-y: auto
-  max-height: calc(var(--bal-app-height, 100%) - 8rem)
+  max-height: calc(var(--bal-app-height, 100%) - 4rem)
 
 // Popup Head
 // --------------------------------------------------

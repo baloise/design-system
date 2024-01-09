@@ -1,5 +1,69 @@
 # @baloise/design-system-components
 
+## 15.1.0
+
+### Minor Changes
+
+- [#1271](https://github.com/baloise/design-system/pull/1271) - Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid.
+
+### Patch Changes
+
+- [#1266](https://github.com/baloise/design-system/pull/1266) - The term `hidden` is a reserved accessibility (a11y) value. Consequently, we found it necessary to rename our hidden properties for checkboxes, radio buttons, tabs, and steps.
+  The attribute remains in place for now, ensuring no breaking changes at this time.
+
+  The `hidden` property for the checkbox and radio has been updated and renamed to `non-submit.`
+  The `hidden` property for the tabs and steps has been updated and renamed to `invisible.`
+
+- [#1264](https://github.com/baloise/design-system/pull/1264) - The radio and checkbox group component now updates its children when there are changes in the disabled or invalid status.
+
+- [#1260](https://github.com/baloise/design-system/pull/1260) - The horizontal form field now lacks right padding, and the label is aligned to the right.
+
+- [#1265](https://github.com/baloise/design-system/pull/1265) - Corrected the z-index value for the carousel component with sticky controls.
+
+- [#1261](https://github.com/baloise/design-system/pull/1261) - The navigation component now provides enhanced support for colored service cards on mobile resolutions.
+
+- [#1269](https://github.com/baloise/design-system/pull/1269) - Enable vertical scrolling for the `carousel` with tab controls on mobile devices.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.1.0
+  - @baloise/design-system-fonts@15.1.0
+  - @baloise/design-system-icons@15.1.0
+  - @baloise/design-system-tokens@15.1.0
+
+## 15.0.2
+
+### Patch Changes
+
+- [#1240](https://github.com/baloise/design-system/pull/1240) - Adjust shadow value to normal for the components `bal-tooltip` & `bal-popup`.
+
+- [#1236](https://github.com/baloise/design-system/pull/1236) - Trigger the `balFilesAdded` event of the `bal-file-upload` component after files have been added.
+
+- [#1242](https://github.com/baloise/design-system/pull/1242) - Add missing `➞` sign to the overview links in the `bal-nav` component and adjust padding and height of the `bal-popup` component in fullscreen variant.
+
+- [#1239](https://github.com/baloise/design-system/pull/1239) - Reduce padding for the `bal-carousel` tab buttons to allow longer labels.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.0.2
+  - @baloise/design-system-fonts@15.0.2
+  - @baloise/design-system-icons@15.0.2
+  - @baloise/design-system-tokens@15.0.2
+
+## 15.0.1
+
+### Patch Changes
+
+- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the animation issue affecting the `bal-logo`, `bal-spinner`, and `bal-nav` component.
+
+- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the scrolling behavior of the `bal-nav` component on Safari browsers for touch devices.
+
+- [#1235](https://github.com/baloise/design-system/pull/1235) - Enhance the functionality of the `bal-nav` accordion on touch devices to ensure that when a link is activated, it behaves as an accordion.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.0.1
+  - @baloise/design-system-fonts@15.0.1
+  - @baloise/design-system-icons@15.0.1
+  - @baloise/design-system-tokens@15.0.1
+
 ## 15.0.0
 
 ### Major Changes

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Clipboard } from '../../Clipboard'
 
 export const CssPropertyTable = ({
   keyValue,
@@ -30,9 +31,9 @@ export const CssPropertyTable = ({
       <table className="table is-fullwidth has-background-grey-2">
         <thead
           className="doc-table-head has-background-grey-2 has-border-none"
-          style={{ position: 'sticky', top: '0', left: '0' }}
+          style={{ position: 'sticky', top: '0', left: '0', overflow: 'hidden', zIndex: 10 }}
         >
-          <tr style={{ position: 'sticky', top: '0', left: '0' }}>
+          <tr>
             <th className="pt-medium" style={{ minWidth: '220px' }}>
               Class
             </th>
@@ -46,14 +47,15 @@ export const CssPropertyTable = ({
           {keyValue.map(item => (
             <tr key={item.key}>
               <td>
-                <b>{`${prefix}${withoutProperty ? '' : `${property}-`}${item.key}`}</b>
+                <Clipboard label={`${prefix}${withoutProperty ? '' : `${property}-`}${item.key}`} />
               </td>
               <td>
-                <pre className="doc-table-pre">
-                  <code>
-                    {property || item.property}{(property || item.property) && item.value ? ': ' : ''}
-                    {item.value}
-                  </code>
+                <pre className="doc-table-pre is-size-small">
+                  {/* <code className='has-background-grey-2 has-border-none'> */}
+                  {property || item.property}
+                  {(property || item.property) && item.value ? ': ' : ''}
+                  {item.value}
+                  {/* </code> */}
                 </pre>
               </td>
               {responsive ? <td>{item.valueMobile}</td> : ''}

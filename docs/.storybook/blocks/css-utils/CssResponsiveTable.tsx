@@ -2,8 +2,8 @@ import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
-export const CssResponsiveTable = ({ }) => {
-  const obj = tokens.breakpoint
+export const CssResponsiveTable = ({}) => {
+  const obj = tokens.size.breakpoint
 
   const list = [
     {
@@ -12,28 +12,28 @@ export const CssResponsiveTable = ({ }) => {
     },
     {
       key: '-tablet',
-      value: `from ${obj.tablet}`,
+      value: `from ${obj.tablet.value}`,
     },
     {
       key: '-tablet-only',
-      value: `from ${obj.tablet} to ${obj.desktop}`,
+      value: `from ${obj.tablet.value} to ${obj.desktop.value}`,
     },
     {
       key: '-touch',
-      value: `to ${obj.desktop}`,
+      value: `to ${obj.desktop.value}`,
     },
     {
       key: '-desktop',
-      value: `from ${obj.desktop}`,
+      value: `from ${obj.desktop.value}`,
     },
     // {
     //   key: '-high-definition',
     //   value: `from ${obj['high-definition']}`,
     // },
-    // {
-    //   key: '-widescreen',
-    //   value: `from ${obj.widescreen}`,
-    // },
+    {
+      key: '-widescreen',
+      value: `from ${obj.widescreen.value}`,
+    },
     // {
     //   key: '-fullhd',
     //   value: `from ${obj.fullhd}`,

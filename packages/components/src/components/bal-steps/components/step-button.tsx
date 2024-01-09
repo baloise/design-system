@@ -14,7 +14,7 @@ export interface StepButtonProps {
 export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobile, clickable, onSelectTab }) => {
   const bemEl = BEM.block('steps').element('nav').element('item')
 
-  if (item.hidden) {
+  if (item.invisible) {
     return
   }
 
@@ -29,7 +29,7 @@ export const StepButton: FunctionalComponent<StepButtonProps> = ({ item, isMobil
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('clickable').class(clickable),
         ...bemEl.modifier('passed').class(item.passed),
-        'bal-focusable': !item.disabled && !item.hidden,
+        'bal-focusable': !item.disabled && !item.invisible,
       }}
       data-label={item.label}
       data-value={item.value}

@@ -9,11 +9,12 @@ export interface BalStepOption {
   active: boolean
   disabled: boolean
   done: boolean
-  hidden: boolean
+  invisible: boolean
   failed: boolean
   prevent: boolean
   passed?: boolean
   index?: number
   navigate?: EventEmitter<MouseEvent>
   trackingData?: Attributes
+  hidden?: boolean // deprecated use invisible instead
 }
