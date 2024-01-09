@@ -5,6 +5,11 @@
       "keepFormat": true,
       "noFigmaImport": true
     },
+    "small": {
+      "value": "0px 2px 5px 1px rgba(0, 7, 57, 0.12)",
+      "keepFormat": true,
+      "noFigmaImport": true
+    },
     "normal": {
       "value": "0 0 10px 0 rgba(0, 7, 57, 0.15)",
       "keepFormat": true,
