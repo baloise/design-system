@@ -1,18 +1,23 @@
 import React from 'react'
 
-export const Clipboard = ({ label, value }) => {
+export const Clipboard = ({ label, value = '' }) => {
+  if (!value) {
+    value = label
+  }
+
   function copy() {
-    navigator.clipboard.writeText(value)
+    navigator.clipboard.writeText(value || '')
   }
 
   return (
     <button
-      className="button is-light is-size-small py-xx-small px-x-small m-none is-size-small"
+      className={`clipboard-button is-size-small py-xx-small px-x-small m-none is-size-small has-radius-normal`}
       onClick={copy}
-      title="Copy to clipboard"
       style={{ minHeight: '24px' }}
     >
-      {label}
+      <pre>
+        <code>{label}</code>
+      </pre>
     </button>
   )
 }

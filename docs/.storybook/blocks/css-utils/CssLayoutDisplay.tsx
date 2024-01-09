@@ -1,11 +1,6 @@
 import React from 'react'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const CssLayoutDisplay = ({}) => {
-  const obj = tokens.breakpoint
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
-
   const list = [
     {
       key: 'hidden',

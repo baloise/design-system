@@ -3,59 +3,59 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 
 export const CssSpacingPadding = ({}) => {
-  const obj = tokens.spacing
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
+  const obj = tokens.size.space
+  const keys = Object.keys(obj).filter(k => obj[k] && obj[k].value)
+
 
   const list = [
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `-${key}`,
       property: 'padding',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `x-${key}`,
       property: 'padding-left, padding-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `y-${key}`,
       property: 'padding-top, padding-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `t-${key}`,
       property: 'padding-top',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `r-${key}`,
       property: 'padding-right',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `b-${key}`,
       property: 'padding-bottom',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
-    ...keys.map((key, index) => ({
+    ...keys.map(key => ({
       key: `l-${key}`,
       property: 'padding-left',
-      valueMobile: values[index].mobile,
-      valueTablet: values[index].tablet,
-      valueDesktop: values[index].desktop,
+      valueMobile: obj[key].value,
+      valueTablet: obj.tablet[key]?.value || obj[key].value,
+      valueDesktop: obj.desktop[key]?.value || obj.tablet[key]?.value || obj[key].value,
     })),
   ]
 

@@ -27,14 +27,6 @@
     "100": {
       "value": "1",
       "noFigmaImport": true
-    },
-    "overlay": {
-      "value": "{opacity.60}",
-      "noFigmaImport": true
-    },
-    "disabled": {
-      "value": "{opacity.50}",
-      "noFigmaImport": true
     }
   }
 }

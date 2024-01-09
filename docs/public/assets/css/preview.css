@@ -524,3 +524,49 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .ot-floating-button {
   display: none !important;
 }
+
+.doc-css-util-table button.is-light{
+  background: var(--bal-color-primary-1);
+}
+
+.clipboard-button {
+  position: relative;
+  border: none;
+  background-color: var(--bal-color-primary-1);
+  cursor: pointer;
+}
+
+.clipboard-button::after {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100px;
+  font-size: 0.625rem;
+  background-color: var(--bal-color-primary-6) !important;
+  color: var(--bal-color-white) !important;
+  border-radius: 4px;
+  padding: 0 4px;
+  z-index: 100;
+  font-family: var(--bal-font-family-text);
+}
+
+.clipboard-button:hover::after {
+  content: "Copy to Clipboard";
+}
+
+.clipboard-button > pre > code {
+  border: none !important;
+  background-color: var(--bal-color-primary-1) !important;
+}
+
+.clipboard-button:hover,
+.clipboard-button:hover > pre > code {
+  background-color: #d7dae6 !important;
+}
+
+.clipboard-button:active,
+.clipboard-button:active > pre > code {
+  background-color: #ced0d8 !important;
+  color: var(--bal-color-primary-6) !important;
+}

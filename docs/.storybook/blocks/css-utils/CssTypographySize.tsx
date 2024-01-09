@@ -1,76 +1,22 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import { CssTable } from './helpers/CssTable'
 
 export const CssTypographySize = ({}) => {
-  const obj = tokens.typography.sizes
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
-
-  const list = keys.map((key, index) => ({
-    key,
-    value: values[index],
-  }))
-
-  return (
-    <section
-      className="sb-unstyled pb-medium my-x-large has-background-grey-2 has-radius-normal px-medium"
-      style={{
-        maxHeight: '30rem',
-        overflow: 'auto',
-      }}
-    >
-      <table className="table is-fullwidth has-background-grey-2">
-        <thead
-          className="doc-table-head has-background-grey-2 has-border-none"
-          style={{ position: 'sticky', top: '0', left: '0' }}
-        >
-          <tr style={{ position: 'sticky', top: '0', left: '0' }}>
-            <th className="pt-medium">Class</th>
-            <th className="pt-medium">Property</th>
-            <th className="pt-medium">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map(item => (
-            <tr key={item.key}>
-              <td>
-                <b>is-size-{item.key}</b>
-              </td>
-              <td>
-                <div className="is-flex is-justify-content-space-between fg-small mb-x-small">
-                  Mobile:{' '}
-                  <pre className="doc-table-pre">
-                    <code>font-size: var(--bal-size-{item.key})</code>
-                  </pre>
-                </div>
-                <div className="is-flex is-justify-content-space-between fg-small mb-x-small">
-                  Tablet:{' '}
-                  <pre className="doc-table-pre">
-                    <code>font-size: var(--bal-size-tablet-{item.key})</code>
-                  </pre>
-                </div>
-                <div className="is-flex is-justify-content-space-between fg-small">
-                  Desktop:{' '}
-                  <pre className="doc-table-pre">
-                    <code>font-size: var(--bal-size-desktop-{item.key})</code>
-                  </pre>
-                </div>
-              </td>
-              <td>
-                <pre className="doc-table-pre mb-x-small">
-                  <code>{item.value.mobile.fontSize}</code>
-                </pre>
-                <pre className="doc-table-pre mb-x-small">
-                <code>{item.value.tablet.fontSize}</code>
-                </pre>
-                <pre className="doc-table-pre">
-                <code>{item.value.desktop.fontSize}</code>
-                </pre>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
-  )
+  return CssTable({
+    tokens: {
+      'x-small': tokens.size.text.size['x-small'].desktop,
+      'small': tokens.size.text.size['small'].desktop,
+      'normal': tokens.size.text.size['normal'].desktop,
+      'medium': tokens.size.text.size['medium'].desktop,
+      'large': tokens.size.text.size['large'].desktop,
+      'x-large': tokens.size.text.size['x-large'].desktop,
+      'xx-large': tokens.size.text.size['xx-large'].desktop,
+      'xxx-large': tokens.size.text.size['xxx-large'].desktop,
+      'xxxx-large': tokens.size.text.size['xxxx-large'].desktop,
+      'xxxxx-large': tokens.size.text.size['xxxxx-large'].desktop,
+    },
+    css: 'is-size',
+    example: item => <div className={`is-size-${item.key} has-text-weight-bold has-text-centered p-xx-small`}>Aa</div>,
+  })
 }
