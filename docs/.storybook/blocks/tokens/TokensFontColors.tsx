@@ -1,51 +1,62 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import { Clipboard } from '../Clipboard'
 
 export const TokensFontColors = ({ overview }) => {
-  const typography = tokens.typography as any
-  const colorMap = typography.colors as any
-  const colors = Object.keys(colorMap) as any
-  const values = Object.values(colorMap) as any
+  const list = tokens.color.text
 
-  const colorTokens = tokens.color as any
+  function render(key, item, preKey = '') {
+    return (
+      <tbody key={preKey + key}>
+        <tr>
+          <td style={{ verticalAlign: 'top' }} className="has-border-none">
+            <Clipboard label={item.name} value={`var(--${item.name})`} />
+          </td>
+          <td style={{ verticalAlign: 'top' }} className="has-border-none">
+            <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+          </td>
+          <td style={{ verticalAlign: 'top' }} className="has-border-none">
+            <div
+              className={`has-radius-normal has-text-weight-bold is-size-x-large is-flex is-justify-content-center is-align-items-center ${
+                key === 'white' || preKey === 'inverted-' ? 'has-background-primary' : ''
+              }`}
+              style={{ width: '48px', height: '48px', color: `var(--${item.name})` }}
+            >
+              Aa
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colSpan={3} className={'has-border-bottom-grey'}>
+            <p className="m-none is-size-small mb-small">{item.comment}</p>
+          </td>
+        </tr>
+      </tbody>
+    )
+  }
 
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th style={{ minWidth: '130px' }}>Example</th>
-          <th>Description</th>
-          <th style={{ minWidth: '200px' }}>Token</th>
+          <th style={{ width: '100%' }}>Token & Description</th>
+          <th style={{ minWidth: '100px' }}>Value</th>
+          <th style={{ minWidth: '100px' }}></th>
         </tr>
       </thead>
-      <tbody>
-        {colors.map((c: string, i: number) => (
-          <tr key={c}>
-            <td
-              style={{
-                verticalAlign: 'top',
-                background: c === 'white' ? 'var(--bal-color-primary)' : 'transparent',
-              }}
-            >
-              <span className={`title is-size-xxx-large has-text-${c}`}>Aa</span>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="has-text-weight-bold is-size-large mt-none mb-x-small">
-                {c} <span className="is-size-medium">({values[i]})</span>
-              </p>
-              <p className="m-none is-size-small">{colorTokens[values[i]].description}</p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-color-text-{c})
-              </p>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-color-{values[i]})
-              </p>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+
+      {Object.keys(list).map(key => {
+        const item = list[key]
+        if (item.value) {
+          return render(key, item)
+        } else {
+          return Object.keys(item).map(subKey => {
+            const subItem = item[subKey]
+
+            return render(subKey, subItem, `${key}-`)
+          })
+        }
+      })}
     </table>
   )
 }

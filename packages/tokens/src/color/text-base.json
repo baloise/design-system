@@ -3,13 +3,13 @@
     "text": {
       "primary": {
         "value": "{color.base.primary.5}",
-        "message": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
+        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
       },
       "primary-hovered": { "value": "{color.base.light-blue.5}" },
       "primary-pressed": { "value": "{color.base.primary.6}" },
       "white": {
         "value": "{color.base.white}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
       },
       "white-hovered": { "value": "{color.base.light-blue.2}" },
       "white-pressed": { "value": "{color.base.info.4}" },
@@ -34,65 +34,65 @@
 
       "primary-light": {
         "value": "{color.base.primary.3}",
-        "message": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
+        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
       },
       "primary-dark": {
         "value": "{color.base.primary.6}",
-        "message": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
+        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
       },
       "light-blue": {
         "value": "{color.base.light-blue.5}",
-        "message": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
+        "comment": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
       },
       "light-blue-light": {
         "value": "{color.base.light-blue.2}",
-        "message": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
+        "comment": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
       },
       "grey": {
         "value": "{color.base.grey.5}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
       },
       "grey-light": {
         "value": "{color.base.grey.4}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
       },
       "grey-dark": {
         "value": "{color.base.grey.6}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
       },
       "info": {
         "value": "{color.base.info.4}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette."
+        "comment": "To draw attention to important information or actions we used our Alert colors palette."
       },
       "info-light": {
         "value": "{color.base.info.3}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette."
+        "comment": "To draw attention to important information or actions we used our Alert colors palette."
       },
       "warning": {
         "value": "{color.base.warning.5}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette."
+        "comment": "To draw attention to important information or actions we used our Alert colors palette."
       },
       "success": {
         "value": "{color.base.success.4}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette."
+        "comment": "To draw attention to important information or actions we used our Alert colors palette."
       },
       "danger": {
         "value": "{color.base.danger.4}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette."
+        "comment": "To draw attention to important information or actions we used our Alert colors palette."
       },
       "danger-dark": {
         "value": "{color.base.danger.5}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
         "noFigmaImport": true
       },
       "danger-darker": {
         "value": "{color.base.danger.6}",
-        "message": "To draw attention to important information or actions we used our Alert colors palette.",
+        "comment": "To draw attention to important information or actions we used our Alert colors palette.",
         "noFigmaImport": true
       },
       "black": {
         "value": "{color.base.black}",
-        "message": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
+        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
         "noFigmaImport": true
       }
     }

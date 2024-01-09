@@ -44,6 +44,7 @@ const preview = {
             'Typography',
           ],
           'Development',
+          'Tokens',
           'CSS Utilities',
           'Components',
           ['Overview', 'Containment', 'Data Display', 'Feedback', 'Form', 'Layout', 'Navigation', 'Typography'],

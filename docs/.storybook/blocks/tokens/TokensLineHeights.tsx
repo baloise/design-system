@@ -2,8 +2,8 @@ import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 import { Clipboard } from '../Clipboard'
 
-export const TokensBorder = ({ overview }) => {
-  const list = tokens.size.border.width
+export const TokensLineHeights = ({ overview }) => {
+  const list = tokens.size.text['line-height']
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>

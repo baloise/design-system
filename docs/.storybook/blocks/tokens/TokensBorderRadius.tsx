@@ -1,51 +1,49 @@
 import React from 'react'
 import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
+import { Clipboard } from '../Clipboard'
 
 export const TokensBorderRadius = ({ overview }) => {
-  const radius = tokens.radius as any
-  const sizes = []
-  for (const k in radius) {
-    if (radius[k].deprecated !== true) {
-      sizes.push({
-        name: k,
-        value: radius[k],
-      })
-    }
-  }
+  const list = tokens.size.radius
   return (
     <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th style={{ minWidth: '120px' }}>Example</th>
-          <th>Name</th>
-          <th style={{ minWidth: '230px' }}>Token</th>
-          <th style={{ minWidth: '80px' }}>Value</th>
+          <th style={{ width: '100%' }}>Token & Description</th>
+          <th style={{ minWidth: '100px' }}>Value</th>
+          <th style={{ minWidth: '100px' }}></th>
         </tr>
       </thead>
-      <tbody>
-        {sizes.map((c: any) => (
-          <tr key={c.name}>
-            <td style={{ verticalAlign: 'top' }}>
-              <div
-                style={{ height: '48px', width: '80px' }}
-                className={`has-radius${`-${c.name}`} mt-x-small has-background-purple`}
-              ></div>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="has-text-weight-bold is-size-normal mt-none mb-x-small">{c.name}</p>
-              <p className="m-none is-size-small">{c.value.description}</p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                var(--bal-radius{`-${c.name}`})
-              </p>
-            </td>
-            <td style={{ verticalAlign: 'top' }}>
-              <p className="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
-            </td>
-          </tr>
-        ))}
-      </tbody>
+
+      {Object.keys(list).map(key => {
+        const item = list[key]
+        return (
+          <tbody key={key}>
+            <tr>
+              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <Clipboard label={item.name} value={`var(--${item.name})`} />
+              </td>
+              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+              </td>
+              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <div
+                  style={{
+                    background: 'var(--bal-color-purple)',
+                    height: '48px',
+                    width: '48px',
+                    borderRadius: `var(--${item.name})`,
+                  }}
+                ></div>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={3} className="has-border-bottom-grey">
+                <p className="m-none is-size-small mb-small">{item.comment}</p>
+              </td>
+            </tr>
+          </tbody>
+        )
+      })}
     </table>
   )
 }

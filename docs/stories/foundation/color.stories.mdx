@@ -1,11 +1,7 @@
 import { Meta } from '@storybook/addon-docs'
 import {
-  ButtonCard,
   Banner,
   Lead,
-  InfoQuote,
-  TokensBorderColors,
-  ImageCanvas,
   ColorCards,
   ColorCard,
   ColorCardRow,
@@ -41,7 +37,7 @@ We are dedicated to adhering to the Web Content Accessibility Guidelines AA stan
 Blue dictates the visual appearance of Baloise and is present on every site. The Logo, text, buttons and links are blue.
 
 <ColorCards>
-  <ColorCard background color="primary" />
+  <ColorCard background color="alias.primary" />
 </ColorCards>
 
 ### Typography Color
@@ -49,8 +45,8 @@ Blue dictates the visual appearance of Baloise and is present on every site. The
 The main color for text is the core blue color and for dark backgrounds the inverted core color white.
 
 <ColorCards>
-  <ColorCard background color="primary" />
-  <ColorCard background color="white" />
+  <ColorCard background color="alias.primary" />
+  <ColorCard background color="base.white" />
 </ColorCards>
 
 ### Backgrounds
@@ -59,46 +55,49 @@ There are eight colors which can be used for backgrounds.
 However, the white color represents the default. The other colors should be used only if the context allows.
 
 <ColorCards>
-  <ColorCard background color="white" />
-  <ColorCard background color="grey-1" />
-  <ColorCard background color="grey-3" />
-  <ColorCard background color="primary" />
-  <ColorCard background color="green" />
-  <ColorCard background color="purple" />
-  <ColorCard background color="red" />
-  <ColorCard background color="yellow" />
+  <ColorCard background color="base.white" />
+  <ColorCard background color="base.grey.1" />
+  <ColorCard background color="base.grey.3" />
+  <ColorCard background color="alias.primary" />
+</ColorCards>
+
+<ColorCards>
+  <ColorCard background color="alias.green" />
+  <ColorCard background color="alias.purple" />
+  <ColorCard background color="alias.red" />
+  <ColorCard background color="alias.yellow" />
 </ColorCards>
 
 ### Primary colors
 
 The primary colors play the main role in the brand identity. A vibrant set of fresh shades is the center point of the color palette. They are used to provide accessibility, simplicity, and consistency throughout all brand communications. They are used for Baloise Shapes, Illustrations, background colors and to highlight design elements.
 
-<ColorCardRow color="green" />
-<ColorCardRow color="purple" />
-<ColorCardRow color="red" />
-<ColorCardRow color="yellow" />
+<ColorCardRow color="base.green" />
+<ColorCardRow color="base.purple" />
+<ColorCardRow color="base.red" />
+<ColorCardRow color="base.yellow" />
 
 ### Neutral colors
 
 Neutral colors are typically employed for text, borders, and subtle backgrounds when one does not want to draw too much attention to a specific design element.
 
-<ColorCardRow color="grey" />
+<ColorCardRow color="base.grey" />
 
 ### Functional Colors
 
 These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations.
 
-<ColorCardRow color="blue" />
-<ColorCardRow color="light-blue" />
+<ColorCardRow color="base.primary" />
+<ColorCardRow color="base.light-blue" />
 
 ### Alert colors
 
 To draw attention to important information or actions, the Alert colors palette is utilized.
 
-<ColorCardRow color="info" />
-<ColorCardRow color="success" />
-<ColorCardRow color="warning" />
-<ColorCardRow color="danger" />
+<ColorCardRow color="base.info" />
+<ColorCardRow color="base.success" />
+<ColorCardRow color="base.warning" />
+<ColorCardRow color="base.danger" />
 
 ## Color Combinations
 
@@ -113,26 +112,27 @@ import ColorCombinations3 from '../assets/images/foundations/colors/ColorCombina
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">Same Color Spectrum within an Element</h4>
-    <p>
+    <span>
       In a specific component, the same color spectrum must be applied. For example, if a green icon is used, a green
       background is required. Note that when using icons, either Tint 1 or White should be used as a background to
       ensure an adequate contrast ratio.
-    </p>
+    </span>
   </div>
   <div className="column is-8">
     <img src={ColorCombinations} />
   </div>
 </div>
 
+
 <br />
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">Embrace Variations</h4>
-    <p>
+    <span>
       Within a page, it is encouraged to embrace color variations and brand flexibility. Colors should be alternated,
       and repetition of the same color should be avoided. If more than four colors are needed, please reintroduce the
       first color used and continue with the same approach for the additional colors.
-    </p>
+    </span>
   </div>
   <div className="column is-8">
     <img src={ColorCombinations2} />
@@ -143,10 +143,10 @@ import ColorCombinations3 from '../assets/images/foundations/colors/ColorCombina
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">It's a Match!</h4>
-    <p>
+    <span>
       When using the Baloise Shape and its coloured background, always find the right image that matches the same color
       spectrum.
-    </p>
+    </span>
   </div>
   <div className="column is-8">
     <img src={ColorCombinations3} />
@@ -163,15 +163,15 @@ import ColorCombinations6 from '../assets/images/foundations/colors/ColorCombina
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <img src={ColorCombinations4} />
-    <p>Do not change Buttons color. Buttons are always blue</p>
+    <span>Do not change Buttons color. Buttons are always blue</span>
   </div>
   <div className="column is-4">
     <img src={ColorCombinations5} />
-    <p>Do not choose a picture that doesn't match the background and Shape color</p>
+    <span>Do not choose a picture that doesn't match the background and Shape color</span>
   </div>
   <div className="column is-4">
     <img src={ColorCombinations6} />
-    <p>Do not use Tint 2, 3, 4, 5 or 6 as a background when using icons</p>
+    <span>Do not use Tint 2, 3, 4, 5 or 6 as a background when using icons</span>
   </div>
 </div>
 
@@ -187,7 +187,7 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">Eye-Catcher</h4>
-    <p>
+    <span>
       To bring attention and highlight a specific section
       <ul>
         <li>It is possible to use one of the four primary color: Purple, Red, Green and Yellow</li>
@@ -196,7 +196,7 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
           Tint 1, 2 or 3 as background color
         </li>
       </ul>
-    </p>
+    </span>
   </div>
   <div className="column is-8">
     <img src={Backgrounds1} />
@@ -207,7 +207,7 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">Elegant and Minimal</h4>
-    <p>
+    <span>
       To bring clarity and consistency
       <ul>
         <li>Use White as standard background</li>
@@ -215,7 +215,7 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
           To increase the contrast when showing for example white cards, you can use the Neutral Grey 1 as background
         </li>
       </ul>
-    </p>
+    </span>
   </div>
   <div className="column is-8">
     <img src={Backgrounds2} />
@@ -226,7 +226,7 @@ import Backgrounds3 from '../assets/images/foundations/colors/ColorBackgrounds_3
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <h4 className="title is-size-medium m-none">Informative</h4>
-    <p>To highlight informative sections such as footer, meta navigation or cookie banner use the Baloise Blue (Primary)</p>
+    <span>To highlight informative sections such as footer, meta navigation or cookie banner use the Baloise Blue (Primary)</span>
   </div>
   <div className="column is-8">
     <img src={Backgrounds3} />
@@ -243,22 +243,22 @@ import Backgrounds6 from '../assets/images/foundations/colors/ColorBackgrounds_6
 <div className="sb-unstyled columns">
   <div className="column is-4">
     <img src={Backgrounds4} />
-    <p>Do not mix colored card surface and icons with different colors</p>
+    <span>Do not mix colored card surface and icons with different colors</span>
   </div>
   <div className="column is-4">
     <img src={Backgrounds5} />
-    <p>Do not repeat the same color more than once on a page</p>
+    <span>Do not repeat the same color more than once on a page</span>
   </div>
   <div className="column is-4">
     <img src={Backgrounds6} />
-    <p>Do not use Tint 4, 5 or 6 as background</p>
+    <span>Do not use Tint 4, 5 or 6 as background</span>
   </div>
 </div>
 
 <Footer>
   <LinkCards>
     <LinkCard
-      pageTitle="Foundation/Design Tokens"
+      pageTitle="Tokens/Overview"
       description="Design tokens serve as the definitive source for naming and storing design choices."
     />
     <LinkCard

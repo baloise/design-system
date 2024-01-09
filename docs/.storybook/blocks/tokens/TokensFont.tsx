@@ -1,4 +1,5 @@
 import React from 'react'
+import { Clipboard } from '../Clipboard'
 
 export const TokensFont = ({ overview }) => {
   return (
@@ -24,9 +25,7 @@ export const TokensFont = ({ overview }) => {
             <p className="m-none is-size-small">Should only be used for headings and buttons</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-              var(--bal-font-family-title)
-            </p>
+            <Clipboard label={'bal-font-family-title'} value={`var(--bal-font-family-title)`} />
           </td>
         </tr>
         <tr>
@@ -42,9 +41,7 @@ export const TokensFont = ({ overview }) => {
             <p className="m-none is-size-small">Should only be used for body texts and form controls</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-              var(--bal-font-family-text)
-            </p>
+            <Clipboard label={'bal-font-family-text'} value={`var(--bal-font-family-text)`} />
           </td>
         </tr>
       </tbody>

@@ -146,6 +146,7 @@ TestNgE2eBuild.zip
 docs/public/assets/fonts/
 docs/public/assets/data/
 docs/public/assets/download/
+docs/public/assets/css/baloise-design-system.min.css
 docs/public/assets/css/design-system-table.css
 docs/public/build/
 docs/stories/components/**/api.md
