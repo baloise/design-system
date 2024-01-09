@@ -36,14 +36,14 @@ export class NavigationMenu {
           <div style={{ overflow: 'hidden' }}>
             <div
               class={{
-                'columns is-multiline': true,
+                'grid is-multiline': true,
                 ...navMenuEl.element('wrapper').class(),
               }}
             >
               {this.elements.some(subLevel => subLevel.color === 'white') && (
                 <div
                   class={{
-                    'bal-nav__menu__white-list__wrapper column is-full is-6-desktop is-two-thirds-widescreen': true,
+                    'bal-nav__menu__white-list__wrapper col is-full is-6-desktop is-two-thirds-widescreen': true,
                   }}
                 >
                   <div class={{ ...navMenuEl.element('white-list').class() }}>
@@ -86,7 +86,7 @@ export class NavigationMenu {
               ) && (
                 <div
                   class={{
-                    'column is-full is-6-desktop is-one-third-widescreen': true,
+                    'col is-full is-6-desktop is-one-third-widescreen': true,
                     ...navMenuEl.element('grey-list').class(),
                   }}
                 >

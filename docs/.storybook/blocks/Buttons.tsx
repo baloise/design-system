@@ -80,7 +80,7 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
 export const GridComponents = ({ children }) => {
   return (
     <bal-doc-app>
-      <div className="sb-unstyled columns is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem', userSelect: 'none' }}>
+      <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem', userSelect: 'none' }}>
         {children}
       </div>
     </bal-doc-app>
@@ -151,7 +151,7 @@ export const GridComponent = ({
 
 export const GridCards = ({ children }) => {
   return (
-    <div className="sb-unstyled columns is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
+    <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem' }}>
       {children}
     </div>
   )

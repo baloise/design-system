@@ -167,9 +167,9 @@ export class CheckboxGroup
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: BalProps.BalCheckboxGroupColumns = 1
+  @Prop() grid: BalProps.BalCheckboxGroupColumns = 1
 
-  @Watch('columns')
+  @Watch('grid')
   columnsChanged(value: BalProps.BalCheckboxGroupColumns) {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
   }
@@ -232,7 +232,7 @@ export class CheckboxGroup
       this.readonlyChanged(this.readonly)
     }
 
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -263,7 +263,7 @@ export class CheckboxGroup
       this.disabledChanged(this.disabled)
       this.readonlyChanged(this.readonly)
     }
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()

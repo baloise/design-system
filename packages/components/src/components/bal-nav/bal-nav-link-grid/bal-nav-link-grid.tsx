@@ -26,7 +26,7 @@ export class NavigationLinkGrid implements ComponentInterface, Loggable {
       <Host
         class={{
           ...block.class(),
-          'columns is-multiline': true,
+          'grid is-multiline': true,
         }}
       >
         <slot></slot>

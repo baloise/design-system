@@ -4,8 +4,8 @@ import React from 'react';
 export const WelcomeNews = ({children}) => {
   return <div className='my-welcome-content mt-xx-large mb-large sb-unstyled'>
     <h2 className='title'>Latest News</h2>
-    <div className="columns is-multiline">
-      <div className="column">
+    <div className="grid is-multiline">
+      <div className="col">
         <bal-card fullheight flat class="p-none" color="purple-2">
           <bal-card-content>
             <bal-text size="small" space="none">

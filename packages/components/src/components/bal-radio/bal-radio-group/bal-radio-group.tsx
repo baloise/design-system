@@ -153,9 +153,9 @@ export class RadioGroup
   /**
    * Defines the column size like the grid.
    */
-  @Prop() columns: BalProps.BalRadioGroupColumns = 1
+  @Prop() grid: BalProps.BalRadioGroupColumns = 1
 
-  @Watch('columns')
+  @Watch('grid')
   columnsChanged(value: BalProps.BalRadioGroupColumns) {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
   }
@@ -215,7 +215,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
@@ -248,7 +248,7 @@ export class RadioGroup
     this.disabledChanged(this.disabled)
     this.readonlyChanged(this.readonly)
     this.invalidChanged(this.invalid)
-    this.columnsChanged(this.columns)
+    this.columnsChanged(this.grid)
     this.columnsTabletChanged(this.columnsTablet)
     this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()

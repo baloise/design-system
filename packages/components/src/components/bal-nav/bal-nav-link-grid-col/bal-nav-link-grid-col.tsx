@@ -39,7 +39,7 @@ export class NavigationLinkGridCol implements ComponentInterface, Loggable {
         class={{
           ...block.class(),
           ...block.modifier('is-static').class(this.staticCol),
-          'column is-full is-6-desktop is-half-desktop': true,
+          'col is-full is-6-desktop is-half-desktop': true,
           [`${widescreenPositionClass}`]: true,
         }}
       >

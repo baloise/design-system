@@ -114,8 +114,8 @@ In order for it to work please import `BalSharedModule` in each Angular module t
   language="html"
   noPreview
   code={`
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-none">
-  <bal-field class="column is-full py-none" required>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid is-multiline mt-none">
+  <bal-field class="col is-full py-none" required>
     <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
       <bal-input name="email" placeholder="Enter your email" formControlName="email" balAutoFocus></bal-input>
@@ -126,7 +126,7 @@ In order for it to work please import `BalSharedModule` in each Angular module t
       <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
     </bal-field-message>
   </bal-field>
-  <bal-field class="column is-half py-none">...</bal-field>
+  <bal-field class="col is-half py-none">...</bal-field>
 </form>
 `}
 />
