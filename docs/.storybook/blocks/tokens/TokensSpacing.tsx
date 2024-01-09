@@ -30,7 +30,7 @@ export const TokensSpacing = ({ overview }) => {
                   <Clipboard label={item.name} value={`var(--${item.name})`} />
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                  <p className={`mt-none mb-none is-size-small has-text-weight-bold py-xx-small`}>
+                  <p className={`mt-none mb-none text-small has-text-weight-bold py-xx-small`}>
                     {item.value} / {itemTablet?.value || '0rem'} / {itemDesktop?.value || '0rem'}
                   </p>
                 </td>
@@ -47,7 +47,7 @@ export const TokensSpacing = ({ overview }) => {
               </tr>
               <tr>
                 <td colSpan={3} className="has-border-bottom-grey">
-                  <p className="m-none is-size-small mb-small">{item.comment}</p>
+                  <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
               </tr>
             </tbody>

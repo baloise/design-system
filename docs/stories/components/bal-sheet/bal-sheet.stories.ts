@@ -36,7 +36,7 @@ const meta: Meta<Args> = {
     <bal-stack class="is-hidden-mobile">
       <bal-heading level="p" visual-level="h4">1'234 CHF</bal-heading>
       <bal-content>
-        <p class="has-text-blue-light-text is-size-small m-none is-flex-grow-1">${content}</p>
+        <p class="has-text-blue-light-text text-small m-none is-flex-grow-1">${content}</p>
       </bal-content>
       <bal-button-group>
         <bal-button color="info">Back</bal-button>

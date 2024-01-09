@@ -51,8 +51,8 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
     >
       <div className="is-flex fg-normal">
         <div className="is-flex-1">
-          <span className="subtitle is-size-large mb-none">{subtitle}</span>
-          <h1 className={`title is-size-xxxx-large ${text} is-flex is-align-items-center fg-small`} style={{ marginTop: '-0.5rem' }}>
+          <span className="subtitle text-large mb-none">{subtitle}</span>
+          <h1 className={`title text-xxxx-large ${text} is-flex is-align-items-center fg-small`} style={{ marginTop: '-0.5rem' }}>
             {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''} {title}
           </h1>
           {children}

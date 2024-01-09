@@ -40,7 +40,7 @@ export const buildReactParameters = async (project: ReactProject): Promise<strin
       : `import React from 'react';
 
 export default function Example() {
-  return <h1 className="title is-size-xxx-large">Hello World</h1>;
+  return <h1 className="title text-xxx-large">Hello World</h1>;
 }
 `
     if (exampleFiles === undefined) {

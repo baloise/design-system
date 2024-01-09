@@ -228,7 +228,7 @@ const meta: Meta<Args> = {
         </bal-stage-body>
     </bal-stage>
     <div class="container">
-        <h2 class="title is-size-xx-large mb-normal mt-large">Heading</h2>
+        <h2 class="title text-xx-large mb-normal mt-large">Heading</h2>
         <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
             sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
@@ -246,7 +246,7 @@ const meta: Meta<Args> = {
         </p>
         <bal-card class="mt-xxxx-large" color="green">
             <bal-card-content>
-                <h2 class="title is-size-xx-large mb-normal">Heading</h2>
+                <h2 class="title text-xx-large mb-normal">Heading</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
                     sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies

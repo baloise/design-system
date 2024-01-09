@@ -22,14 +22,14 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
       style={{ flex: 1 }}
       className={`sb-unstyled mb-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal has-radius-normal is-size-large has-text-primary`}
+      } p-normal has-radius-normal text-large has-text-primary`}
     >
-      <span className="is-flex is-justify-content-center is-size-xx-large has-text-centered">
+      <span className="is-flex is-justify-content-center text-xx-large has-text-centered">
         {icon}
         {children}
       </span>
-      <span className="is-block title is-size-medium has-text-centered mb-none">{label}</span>
-      <span className="is-block is-size-small has-text-centered">{description}</span>
+      <span className="is-block title text-medium has-text-centered mb-none">{label}</span>
+      <span className="is-block text-small has-text-centered">{description}</span>
     </a>
   )
 }
@@ -46,13 +46,13 @@ export const LinkCard = ({ children, color, icon, label, description, pageTitle 
       }}
       className={`sb-unstyled mb-none doc-button-card doc-shadow-hover is-flex is-flex-1 is-flex-direction-row has-background-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal has-radius-normal is-size-large has-text-primary fg-normal`}
+      } p-normal has-radius-normal text-large has-text-primary fg-normal`}
     >
       <div className="is-flex-1 is-flex is-flex-direction-column is-justify-content-center is-align-items-start">
-        <span className="is-block title is-size-normal mb-none">{label || pageTitle}</span>
-        <span className="is-block is-size-small">{description}</span>
+        <span className="is-block title text-normal mb-none">{label || pageTitle}</span>
+        <span className="is-block text-small">{description}</span>
       </div>
-      <span className="is-flex is-justify-content-center is-align-items-center is-size-xx-large has-text-centered">
+      <span className="is-flex is-justify-content-center is-align-items-center text-xx-large has-text-centered">
         <bal-icon name="nav-go-right"></bal-icon>
       </span>
     </a>
@@ -138,7 +138,7 @@ export const GridComponent = ({
             </div>
           </div>
           <div className="is-flex-1 is-fullheight is-fullwidth">
-            <h2 className="title is-size-medium mb-xx-small" id={label}>
+            <h2 className="title text-medium mb-xx-small" id={label}>
               {label}
             </h2>
             <small className="is-fullheight">{description}</small>
@@ -174,12 +174,12 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
           )}
           {svg ? (
             <div className="is-flex-1 is-fullheight">
-              <h2 className="title is-size-large mb-xx-small">{label}</h2>
+              <h2 className="title text-large mb-xx-small">{label}</h2>
               <span className="is-fullheight">{description}</span>
             </div>
           ) : (
             <div className="is-flex-1 is-fullheight">
-              <h2 className="title is-size-medium mb-xx-small">{label}</h2>
+              <h2 className="title text-medium mb-xx-small">{label}</h2>
               <small className="is-fullheight">{description}</small>
             </div>
           )}

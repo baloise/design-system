@@ -11,7 +11,7 @@ export const ColorCard = ({ background, color, small = false }) => {
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal has-text-centered has-radius-top-large title is-size-x-large m-none`}
+        className={`px-small py-normal has-text-centered has-radius-top-large title text-x-large m-none`}
         style={{
           minHeight: '64px',
           background: `var(--${colorVariable.name})`,
@@ -21,8 +21,8 @@ export const ColorCard = ({ background, color, small = false }) => {
         {background ? 'A-a' : ''}
       </div>
       <div className={`has-radius-bottom-large p-small has-text-centered`}>
-        <div className="title is-size-normal has-text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
-        <div className="is-size-small has-text-primary">{colorVariable.value}</div>
+        <div className="title text-normal has-text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
+        <div className="text-small has-text-primary">{colorVariable.value}</div>
       </div>
     </div>
   )

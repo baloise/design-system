@@ -25,7 +25,7 @@ export const TokensFontSize = ({ overview }) => {
                 <Clipboard label={`bal-size-${key}`} value={`var(--bal-size-${key})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-none is-size-small has-text-weight-bold py-xx-small`}>
+                <p className={`mt-none mb-none text-small has-text-weight-bold py-xx-small`}>
                   {item?.mobile?.value || '0rem'} / {item?.tablet?.value || '0rem'} / {item?.desktop?.value || '0rem'}
                 </p>
               </td>
@@ -39,7 +39,7 @@ export const TokensFontSize = ({ overview }) => {
             </tr>
             <tr>
               <td colSpan={3} className={'has-border-bottom-grey'}>
-                <p className="m-none is-size-small mb-small">{item.mobile.comment}</p>
+                <p className="m-none text-small mb-small">{item.mobile.comment}</p>
               </td>
             </tr>
           </tbody>

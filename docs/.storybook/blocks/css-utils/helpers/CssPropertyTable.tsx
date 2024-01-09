@@ -50,7 +50,7 @@ export const CssPropertyTable = ({
                 <Clipboard label={`${prefix}${withoutProperty ? '' : `${property}-`}${item.key}`} />
               </td>
               <td>
-                <pre className="doc-table-pre is-size-small">
+                <pre className="doc-table-pre text-small">
                   {/* <code className='has-background-grey-2 has-border-none'> */}
                   {property || item.property}
                   {(property || item.property) && item.value ? ': ' : ''}

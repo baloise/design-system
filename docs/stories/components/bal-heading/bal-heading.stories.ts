@@ -55,11 +55,11 @@ export const Levels = Story({
     <bal-heading level="h5">Heading 5</bal-heading>
   </div>
   <div class="column is-half has-background-yellow-2">
-    <h1 class="title is-size-xxx-large">Heading 1</h1>
-    <h2 class="title is-size-xx-large">Heading 2</h2>
-    <h3 class="title is-size-x-large">Heading 3</h3>
-    <h4 class="title is-size-large">Heading 4</h4>
-    <h5 class="title is-size-normal">Heading 5</h5>
+    <h1 class="title text-xxx-large">Heading 1</h1>
+    <h2 class="title text-xx-large">Heading 2</h2>
+    <h3 class="title text-x-large">Heading 3</h3>
+    <h4 class="title text-large">Heading 4</h4>
+    <h5 class="title text-normal">Heading 5</h5>
   </div>
 </div>`,
   ),
@@ -110,11 +110,11 @@ export const AutoLevel = Story({
 export const CSSUtilities = Story({
   ...withRender(
     () => `<div>
-    <h1 class="title is-size-xxx-large">Heading 1</h1>
-    <h2 class="title is-size-xx-large">Heading 2</h2>
-    <h3 class="title is-size-x-large">Heading 3</h3>
-    <h4 class="title is-size-large">Heading 4</h4>
-    <h5 class="title is-size-normal">Heading 5</h5>
+    <h1 class="title text-xxx-large">Heading 1</h1>
+    <h2 class="title text-xx-large">Heading 2</h2>
+    <h3 class="title text-x-large">Heading 3</h3>
+    <h4 class="title text-large">Heading 4</h4>
+    <h5 class="title text-normal">Heading 5</h5>
   </div>`,
   ),
 })

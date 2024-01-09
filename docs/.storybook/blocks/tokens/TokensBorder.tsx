@@ -23,7 +23,7 @@ export const TokensBorder = ({ overview }) => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
                 <div style={{ background: 'var(--bal-color-red)', height: '48px', width: `var(--${item.name})` }}></div>
@@ -31,7 +31,7 @@ export const TokensBorder = ({ overview }) => {
             </tr>
             <tr>
               <td colSpan={3} className="has-border-bottom-grey">
-                <p className="m-none is-size-small mb-small">{item.comment}</p>
+                <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>
           </tbody>

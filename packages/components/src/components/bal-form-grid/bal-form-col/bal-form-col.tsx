@@ -12,7 +12,7 @@ export class FormCol implements ComponentInterface {
     return (
       <Host
         class={{
-          'column': true,
+          'col': true,
           'py-none': true,
           'is-12-touch': true,
           'is-12': this.size === 'fullwidth' || this.size === undefined,

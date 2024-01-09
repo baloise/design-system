@@ -23,12 +23,12 @@ export const TokensContainersSize = ({ overview }) => {
               <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>
               <td colSpan={3} className="has-border-bottom-grey">
-                <p className="m-none is-size-small mb-small">{item.comment}</p>
+                <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>
           </tbody>
@@ -56,17 +56,17 @@ export const TokensContainersSpace = ({ overview }) => {
             <tr>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
                 <p className="has-text-weight-bold m-none">{key}</p>
-                <p className="is-inline-block mt-xx-small mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+                <p className="is-inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                   var(--{item.name})
                 </p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>
               <td colSpan={3} className="has-border-bottom-grey">
-                <p className="m-none is-size-small mb-small">{item.comment}</p>
+                <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>
           </tbody>

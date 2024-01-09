@@ -9,8 +9,8 @@ export const WelcomeStage = ({ children }) => {
         <div className="mt-small">
           <bal-logo animated={true}></bal-logo>
         </div>
-        <h1 className="subtitle is-size-xx-large mt-x-small">Design System</h1>
-        <p className="is-size-medium my-large">
+        <h1 className="subtitle text-xx-large mt-x-small">Design System</h1>
+        <p className="text-medium my-large">
           The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
           implementations and design artifacts to build any number of web applications.
         </p>

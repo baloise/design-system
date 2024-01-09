@@ -123,12 +123,12 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
      * Create contributors page
      */
     const avatar =
-      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal is-size-large has-text-primary"
+      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal text-large has-text-primary"
   >
-    <span className='is-display-block is-size-xx-large has-text-centered'>
+    <span className='is-display-block text-xx-large has-text-centered'>
       <img src="${contributor.avatar}" alt="${contributor.name}" />
     </span>
-    <span className='is-display-block title is-size-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
+    <span className='is-display-block title text-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
   </a>`
 
     const contributorsContent = [

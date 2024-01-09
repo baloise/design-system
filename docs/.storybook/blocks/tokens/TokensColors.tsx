@@ -30,7 +30,7 @@ export const TokensColors = ({ overview }) => {
                   <Clipboard label={item.name} value={`var(--${item.name})`}/>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                  <p className={`mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+                  <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="has-border-none">
                   <div
@@ -41,14 +41,14 @@ export const TokensColors = ({ overview }) => {
               </tr>
               <tr>
                 <td colSpan={3} className={subItems.value ? 'has-border-bottom-grey' : 'has-border-none'}>
-                  <p className="m-none is-size-small mb-small">{item.comment}</p>
+                  <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
               </tr>
               {!subItems.value ? (
                 <tr>
                   <td colSpan={3} className="has-border-bottom-grey">
                     <p className="has-text-weight-bold mb-none">Shades</p>
-                    <p className="is-inline-block mt-none is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+                    <p className="is-inline-block mt-none text-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       {item.name}-x
                     </p>
                     <div className="is-flex fg-normal">
