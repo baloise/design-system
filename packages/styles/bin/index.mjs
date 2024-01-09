@@ -604,8 +604,8 @@ const replacementsFlex = {
 }
 
 const replacementsOpacity = {
-  from: [/has-opacity/g],
-  to: ['opacity'],
+  from: [/has-opacity-1/g, /has-opacity/g],
+  to: ['opacity-100', 'opacity'],
 }
 
 const replacementsRadius = {
