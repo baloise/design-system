@@ -16,8 +16,6 @@ const main = async () => {
     name: 'filePath',
     message: 'Where are your html template files located?',
     initial: path.join('src', 'app'),
-    // initial: '__tests__/templates',
-    // initial: '../components/src/test',
   })
 
   log.info()
@@ -43,9 +41,7 @@ const main = async () => {
 
             const from = [
               ...replacementsBorder.from,
-              ...replacementsDeprecatedBorder.from,
               ...replacementsColors.from,
-              ...replacementsBlueColors.from,
               ...replacementsCore.from,
               ...replacementsFlex.from,
               ...replacementsDisplay.from,
@@ -59,9 +55,7 @@ const main = async () => {
             ]
             const to = [
               ...replacementsBorder.to,
-              ...replacementsDeprecatedBorder.to,
               ...replacementsColors.to,
-              ...replacementsBlueColors.to,
               ...replacementsCore.to,
               ...replacementsFlex.to,
               ...replacementsDisplay.to,
@@ -86,7 +80,6 @@ const main = async () => {
             })
 
             content = content.replace(`class="${classes.join(' ')}"`, `class="${modifiedClasses.join(' ')}"`)
-            // $(element).attr('class', modifiedClasses.join(' '))
           })
 
           return content
@@ -498,30 +491,86 @@ const marginAndPadding = () => {
 // ================================================================================
 // REPLACEMENTS
 // ================================================================================
+const ColSizes = [
+  'is-narrow',
+  'is-full',
+  'is-three-quarters',
+  'is-two-thirds',
+  'is-half',
+  'is-one-third',
+  'is-one-quarter',
+  'is-one-fifth',
+  'is-two-fifths',
+  'is-three-fifths',
+  'is-four-fifths',
+  'is-offset-three-quarters',
+  'is-offset-two-thirds',
+  'is-offset-half',
+  'is-offset-one-third',
+  'is-offset-one-quarter',
+  'is-offset-one-fifth',
+  'is-offset-two-fifths',
+  'is-offset-three-fifths',
+  'is-offset-four-fifths',
+  'is-0',
+  'is-offset-0',
+  'is-1',
+  'is-offset-1',
+  'is-2',
+  'is-offset-2',
+  'is-3',
+  'is-offset-3',
+  'is-4',
+  'is-offset-4',
+  'is-5',
+  'is-offset-5',
+  'is-6',
+  'is-offset-6',
+  'is-7',
+  'is-offset-7',
+  'is-8',
+  'is-offset-8',
+  'is-8',
+  'is-offset-9',
+  'is-10',
+  'is-offset-10',
+  'is-11',
+  'is-offset-11',
+  'is-12',
+  'is-offset-12',
+]
 
 const replacementsGrid = {
-  from: [/(?<!-)columns/g, /(?<!-)\bcolumn\b/g],
-  to: ['grid', 'col'],
+  from: [
+    /(?<!-)columns/g,
+    /(?<!-)\bcolumn\b/g,
+    ...ColSizes.map(className => new RegExp(`${className}-mobile`, 'g')),
+    ...ColSizes.map(className => new RegExp(`${className}-tablet`, 'g')),
+    ...ColSizes.map(className => new RegExp(`${className}-touch`, 'g')),
+    ...ColSizes.map(className => new RegExp(`${className}-desktop`, 'g')),
+    ...ColSizes.map(className => new RegExp(`${className}-widescreen`, 'g')),
+    ...ColSizes.map(className => new RegExp(`${className}-fullhd`, 'g')),
+  ],
+  to: [
+    'grid',
+    'col',
+    ...ColSizes.map(className => `mobile:${className}`, 'g'),
+    ...ColSizes.map(className => `tablet:${className}`, 'g'),
+    ...ColSizes.map(className => `touch:${className}`, 'g'),
+    ...ColSizes.map(className => `desktop:${className}`, 'g'),
+    ...ColSizes.map(className => `widescreen:${className}`, 'g'),
+    ...ColSizes.map(className => `fullhd:${className}`, 'g'),
+  ],
 }
 
 const replacementsBorder = {
-  from: [/has-border/g, /has-radius/g],
-  to: ['border', 'radius'],
-}
-
-const replacementsDeprecatedBorder = {
-  from: [/border-light-blue/g, /border-primary-dark/g],
-  to: ['border-primary-hovered', 'border-primary-pressed'],
+  from: [/has-border-light-blue/g, /has-border-primary-dark/g, /has-border/g, /has-radius/g],
+  to: ['border-primary-hovered', 'border-primary-pressed', 'border', 'radius'],
 }
 
 const replacementsColors = {
-  from: [/has-background/g, ...invertedTextWhite.from, ...invertedTextPrimary.from],
-  to: ['bg', ...invertedTextWhite.to, ...invertedTextPrimary.to],
-}
-
-const replacementsBlueColors = {
-  from: [/bg-blue/g],
-  to: ['bg-primary'],
+  from: [/has-background-blue/g, /has-background/g, ...invertedTextWhite.from, ...invertedTextPrimary.from],
+  to: ['bg-primary', 'bg', ...invertedTextWhite.to, ...invertedTextPrimary.to],
 }
 
 const replacementsCore = {
@@ -555,6 +604,8 @@ const replacementsFlex = {
     /is-flex-wrap-wrap-reverse/g,
     /is-flex-wrap-wrap/g,
     /is-justify-content-flex/g,
+    /is-justify-content-left/g,
+    /is-justify-content-right/g,
     /is-justify-content/g,
     /is-align-content-flex/g,
     /is-align-content/g,
@@ -571,8 +622,6 @@ const replacementsFlex = {
     /is-flex-shrink-0/g,
     /is-flex-grow-1/g,
     /is-flex-shrink-1/g,
-    /justify-content-left/g,
-    /justify-content-right/g,
     ...spacingClasses('fg', 'gap').from,
   ],
   to: [
@@ -581,6 +630,8 @@ const replacementsFlex = {
     'flex-wrap-reverse',
     'flex-wrap',
     'justify-content',
+    'justify-content-start',
+    'justify-content-end',
     'justify-content',
     'align-content',
     'align-content',
@@ -597,8 +648,6 @@ const replacementsFlex = {
     'flex-initial',
     'flex-1',
     'flex-1',
-    'justify-content-start',
-    'justify-content-end',
     ...spacingClasses('fg', 'gap').to,
   ],
 }
