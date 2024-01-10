@@ -32,7 +32,7 @@ export class NavigationLinkGridCol implements ComponentInterface, Loggable {
   render() {
     const block = BEM.block('nav-link-grid-col')
     const innerEl = block.element('inner')
-    const widescreenPositionClass = this.staticCol ? 'is-one-third-widescreen' : 'is-two-thirds-widescreen'
+    const widescreenPositionClass = this.staticCol ? 'widescreen:is-one-third' : 'widescreen:is-two-thirds'
 
     return (
       <Host
