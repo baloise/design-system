@@ -148,16 +148,6 @@ export const config: Config = {
     {
       components: ['bal-navbar', 'bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
     },
-    {
-      components: [
-        'bal-navigation',
-        'bal-navigation-level-block',
-        'bal-navigation-level-block-item',
-        'bal-navigation-level-main',
-        'bal-navigation-level-meta',
-        'bal-navigation-levels',
-      ],
-    },
     { components: ['bal-pagination'] },
     { components: ['bal-popover', 'bal-popover-content'] },
     { components: ['bal-shape'] },

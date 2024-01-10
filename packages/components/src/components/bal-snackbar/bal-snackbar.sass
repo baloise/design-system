@@ -42,10 +42,14 @@
     flex-grow: 1
     margin: 0.5rem 0 0 0
     box-shadow: var(--bal-shadow-normal)
-    padding: var(--bal-space-medium)
     align-self: flex-end
     flex-direction: column !important
     row-gap: 1rem
+    padding: var(--bal-space-medium)
+    +tablet
+      padding: var(--bal-space-tablet-medium)
+    +desktop
+      padding: var(--bal-space-desktop-medium)
   +element(header)
     display: flex
     align-items: center

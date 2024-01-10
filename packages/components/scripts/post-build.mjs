@@ -76,7 +76,6 @@ export async function createTagList() {
   const componentTags = json.components
     .map(component => component.tag)
     .filter(tag => !tag.startsWith('bal-doc'))
-    .filter(tag => !tag.startsWith('bal-navigation'))
     .reduce((acc, newTag) => {
       const hasComponent = acc.some(tag => newTag.startsWith(tag))
       if (!hasComponent && newTag !== 'bal-tab-item' && newTag !== 'bal-notices') {
