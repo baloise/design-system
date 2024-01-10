@@ -1,5 +1,5 @@
 describe('css-color.visual', () => {
-  beforeEach(() => cy.visit('/test/css-color.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-color.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.getByTestId('basic').compareSnapshot('css-background-color-basic')

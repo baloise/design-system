@@ -1,5 +1,5 @@
 describe('css-border.visual', () => {
-  beforeEach(() => cy.visit('/test/css-border.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-border.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.getByTestId('border-none').compareSnapshot('css-border-none')

@@ -1,5 +1,5 @@
 describe('css-spacing.visual', () => {
-  beforeEach(() => cy.visit('/test/css-spacing.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-spacing.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.platform('desktop')

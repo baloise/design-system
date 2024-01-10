@@ -1,5 +1,5 @@
 describe('css-flex.visual', () => {
-  beforeEach(() => cy.visit('/test/css-flex.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-flex.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.platform('desktop')

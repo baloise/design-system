@@ -1,5 +1,5 @@
 describe('css-inheritance.visual', () => {
-  beforeEach(() => cy.visit('/test/css-inheritance.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-inheritance.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.getByTestId('colors').compareSnapshot('css-inheritance-colors')
