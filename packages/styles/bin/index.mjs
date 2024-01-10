@@ -27,7 +27,6 @@ const main = async () => {
   if (!isFile) {
     files = path.join(`${files}`, '**', '*.html')
   }
-  console.log(files)
 
   try {
     const results = [
