@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system-old.css" />
+    <style>
+      section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex !important;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      section > div {
+        padding: 1rem;
+      }
+
+      section > div > div {
+        margin: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <section data-testid="display-block">
+        <div class="has-border-primary is-block">
+          <div class="has-border-primary">Block 1</div>
+          <div class="has-border-primary">Block 2</div>
+        </div>
+        <div class="has-border-primary is-block-mobile">
+          <div class="has-border-primary">Block mobile 1</div>
+          <div class="has-border-primary">Block mobile 2</div>
+        </div>
+        <div class="has-border-primary is-block-tablet">
+          <div class="has-border-primary">Block tablet 1</div>
+          <div class="has-border-primary">Block tablet 2</div>
+        </div>
+        <div class="has-border-primary is-block-desktop">
+          <div class="has-border-primary">Block desktop 1</div>
+          <div class="has-border-primary">Block desktop 2</div>
+        </div>
+      </section>
+      <section data-testid="display-flex">
+        <div class="has-border-primary is-flex">
+          <div class="has-border-primary">Flex 1</div>
+          <div class="has-border-primary">Flex 2</div>
+        </div>
+        <div class="has-border-primary is-flex-mobile">
+          <div class="has-border-primary">Flex mobile 1</div>
+          <div class="has-border-primary">Flex mobile 2</div>
+        </div>
+        <div class="has-border-primary is-flex-tablet">
+          <div class="has-border-primary">Flex tablet 1</div>
+          <div class="has-border-primary">Flex tablet 2</div>
+        </div>
+        <div class="has-border-primary is-flex-desktop">
+          <div class="has-border-primary">Flex desktop 1</div>
+          <div class="has-border-primary">Flex desktop 2</div>
+        </div>
+      </section>
+      <section data-testid="display-inline">
+        <div class="has-border-primary is-inline">
+          <div class="has-border-primary">Inline 1</div>
+          <div class="has-border-primary">Inline 2</div>
+        </div>
+        <div class="has-border-primary is-inline-mobile">
+          <div class="has-border-primary">Inline mobile 1</div>
+          <div class="has-border-primary">Inline mobile 2</div>
+        </div>
+        <div class="has-border-primary is-inline-tablet">
+          <div class="has-border-primary">Inline tablet 1</div>
+          <div class="has-border-primary">Inline tablet 2</div>
+        </div>
+        <div class="has-border-primary is-inline-desktop">
+          <div class="has-border-primary">Inline desktop 1</div>
+          <div class="has-border-primary">Inline desktop 2</div>
+        </div>
+      </section>
+      <section data-testid="display-inline-block">
+        <div class="has-border-primary is-inline-block">
+          <div class="has-border-primary">Inline block 1</div>
+          <div class="has-border-primary">Inline block 2</div>
+        </div>
+        <div class="has-border-primary is-inline-block-mobile">
+          <div class="has-border-primary">Inline block mobile 1</div>
+          <div class="has-border-primary">Inline block mobile 2</div>
+        </div>
+        <div class="has-border-primary is-inline-block-tablet">
+          <div class="has-border-primary">Inline block tablet 1</div>
+          <div class="has-border-primary">Inline block tablet 2</div>
+        </div>
+        <div class="has-border-primary is-inline-block-desktop">
+          <div class="has-border-primary">Inline block desktop 1</div>
+          <div class="has-border-primary">Inline block desktop 2</div>
+        </div>
+      </section>
+      <section data-testid="display-inline-flex">
+        <div class="has-border-primary is-inline-flex">
+          <div class="has-border-primary">Inline flex 1</div>
+          <div class="has-border-primary">Inline flex 2</div>
+        </div>
+        <div class="has-border-primary is-inline-flex-mobile">
+          <div class="has-border-primary">Inline flex mobile 1</div>
+          <div class="has-border-primary">Inline flex mobile 2</div>
+        </div>
+        <div class="has-border-primary is-inline-flex-tablet">
+          <div class="has-border-primary">Inline flex tablet 1</div>
+          <div class="has-border-primary">Inline flex tablet 2</div>
+        </div>
+        <div class="has-border-primary is-inline-flex-desktop">
+          <div class="has-border-primary">Inline flex desktop 1</div>
+          <div class="has-border-primary">Inline flex desktop 2</div>
+        </div>
+      </section>
+      <section data-testid="hidden">
+        <div class="has-border-primary is-hidden">Hidden</div>
+        <div class="has-border-primary is-hidden-mobile">Hidden mobile</div>
+        <div class="has-border-primary is-hidden-tablet">Hidden tablet</div>
+        <div class="has-border-primary is-hidden-tablet-only">Hidden tablet only</div>
+        <div class="has-border-primary is-hidden-touch">Hidden touch</div>
+        <div class="has-border-primary is-hidden-desktop">Hidden desktop</div>
+        <div class="has-border-primary is-hidden-desktop-only">Hidden desktop only</div>
+        <div class="has-border-primary is-hidden-high-definition">Hidden high definition</div>
+        <div class="has-border-primary is-hidden-high-definition-only">Hidden high definition only</div>
+        <div class="has-border-primary is-hidden-widescreen">Hidden widescreen</div>
+        <div class="has-border-primary is-hidden-widescreen-only">Hidden widescreen only</div>
+        <div class="has-border-primary is-hidden-fullhd">Hidden fullhd</div>
+      </section>
+      <section data-testid="invisible">
+        <div class="has-border-primary is-invisible">Invisible</div>
+        <div class="has-border-primary is-invisible-mobile">Invisible mobile</div>
+        <div class="has-border-primary is-invisible-tablet">Invisible tablet</div>
+        <div class="has-border-primary is-invisible-tablet-only">Invisible tablet only</div>
+        <div class="has-border-primary is-invisible-touch">Invisible touch</div>
+        <div class="has-border-primary is-invisible-desktop">Invisible desktop</div>
+        <div class="has-border-primary is-invisible-desktop-only">Invisible desktop only</div>
+        <div class="has-border-primary is-invisible-high-definition">Invisible high definition</div>
+        <div class="has-border-primary is-invisible-high-definition-only">Invisible high definition only</div>
+        <div class="has-border-primary is-invisible-widescreen">Invisible widescreen</div>
+        <div class="has-border-primary is-invisible-widescreen-only">Invisible widescreen only</div>
+        <div class="has-border-primary is-invisible-fullhd">Invisible fullhd</div>
+      </section>
+    </main>
+  </body>
+</html>
