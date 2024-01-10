@@ -50,6 +50,7 @@ packages/components-angular/src/directives/proxies-list.ts
 packages/components-angular/src/directives/proxies.module.ts
 packages/components-angular/esm2020
 packages/components-angular/fesm2015
+packages/components-angular/fesm2020
 packages/components-angular/**/*d.ts
 
 packages/components/src/utils/constants/icons.constant.ts
