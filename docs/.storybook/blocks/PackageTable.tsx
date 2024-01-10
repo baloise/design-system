@@ -4,7 +4,7 @@
 import React from 'react';
 
 export const PackageTable = ({ children }) => {
-  return <table className="sb-unstyled table is-fullwidth is-striped mt-large">
+  return <table className="sb-unstyled table w-full is-striped mt-large">
   <thead>
     <tr>
       <th>Package</th>

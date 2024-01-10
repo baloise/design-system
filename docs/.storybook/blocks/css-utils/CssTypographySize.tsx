@@ -16,7 +16,7 @@ export const CssTypographySize = ({}) => {
       'xxxx-large': tokens.size.text.size['xxxx-large'].desktop,
       'xxxxx-large': tokens.size.text.size['xxxxx-large'].desktop,
     },
-    css: 'is-size',
-    example: item => <div className={`is-size-${item.key} has-text-weight-bold has-text-centered p-xx-small`}>Aa</div>,
+    css: 'text',
+    example: item => <div className={`text-${item.key} text-weight-bold text-align-center p-xx-small`}>Aa</div>,
   })
 }

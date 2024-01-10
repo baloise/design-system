@@ -5,7 +5,7 @@ import { CssTable } from './helpers/CssTable'
 export const CssElevationOpacity = ({}) => {
   return CssTable({
     tokens: tokens.opacity,
-    css: 'has-opacity',
-    example: item => <div className={`has-background-green has-opacity-${item.key} p-small`}></div>,
+    css: 'opacity',
+    example: item => <div className={`bg-green opacity-${item.key} p-small`}></div>,
   })
 }

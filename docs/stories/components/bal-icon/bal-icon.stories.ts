@@ -42,7 +42,7 @@ export const UiIcons = Story({
   },
   ...withRender(
     () =>
-      `<div class="is-flex fg-medium is-flex-wrap-wrap">
+      `<div class="flex gap-medium flex-wrap">
       ${[
         'caret-down',
         'caret-left',
@@ -72,7 +72,7 @@ export const UiIcons = Story({
         'youtube',
       ]
         .map(
-          item => `<div class="is-flex fg-small is-flex-wrap-wrap is-align-items-center" style="min-width: 180px">
+          item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 180px">
       <bal-icon name="${item}"></bal-icon>
       <span>${item}</span>
     </div>`,

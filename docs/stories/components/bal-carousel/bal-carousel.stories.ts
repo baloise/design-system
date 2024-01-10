@@ -16,22 +16,22 @@ const meta: Meta<Args> = {
   ...withRender(
     () => `<bal-carousel>
   <bal-carousel-item>
-    <div class="has-background-green-1 p-normal is-fullwidth">Slide 1</div>
+    <div class="background-green-1 p-normal w-full">Slide 1</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-2 p-normal is-fullwidth">Slide 2</div>
+    <div class="bg-green-2 p-normal w-full">Slide 2</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-3 p-normal is-fullwidth">Slide 3</div>
+    <div class="bg-green-3 p-normal w-full">Slide 3</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-4 p-normal is-fullwidth">Slide 4</div>
+    <div class="bg-green-4 p-normal w-full">Slide 4</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-5 p-normal is-fullwidth has-text-white">Slide 5</div>
+    <div class="bg-green-5 p-normal w-full text-white">Slide 5</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="has-background-green-6 p-normal is-fullwidth has-text-white">Slide 6</div>
+    <div class="bg-green-6 p-normal w-full text-white">Slide 6</div>
   </bal-carousel-item>
 </bal-carousel>`,
   ),

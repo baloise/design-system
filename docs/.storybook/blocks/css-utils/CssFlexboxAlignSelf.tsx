@@ -25,5 +25,5 @@ export const CssFlexboxAlignSelf = ({}) => {
     },
   ]
 
-  return <CssPropertyTable keyValue={list} property={'align-self'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} property={'align-self'} prefix={''} />
 }

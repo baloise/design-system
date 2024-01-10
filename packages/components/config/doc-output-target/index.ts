@@ -123,16 +123,16 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
      * Create contributors page
      */
     const avatar =
-      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-purple-1 p-normal has-radius-normal text-large has-text-primary"
+      contributor => `<a href="${contributor.url}" target='_blank' style="flex: 1;" className="sb-unstyled text-decoration-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-purple-1 p-normal radius-normal text-large text-primary"
   >
-    <span className='is-display-block text-xx-large has-text-centered'>
+    <span className='block text-xx-large text-align-center'>
       <img src="${contributor.avatar}" alt="${contributor.name}" />
     </span>
-    <span className='is-display-block title text-medium has-text-centered mb-none text-decoration-none'>${contributor.name}</span>
+    <span className='block title text-medium text-align-center mb-none text-decoration-none'>${contributor.name}</span>
   </a>`
 
     const contributorsContent = [
-      `<div className="sb-unstyled is-flex is-flex-wrap-wrap fg-normal">`,
+      `<div className="sb-unstyled flex flex-wrap gap-normal">`,
       ...contributors.map(c => avatar(c)),
       `</div>`,
       SPACE,

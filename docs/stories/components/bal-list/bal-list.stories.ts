@@ -74,48 +74,48 @@ export const NativeList = Story({
   ...withRender(
     () => `
 <div>
-  <ul class="is-list">
+  <ul class="list">
     <li>List Item 1</li>
     <li>List Item 2</li>
   </ul>
-  <ul class="is-list has-bullet-circle">
+  <ul class="list has-bullet-circle">
     <li>Green Circle List Item 1</li>
     <li>Green Circle List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-circle has-bullet-purple">
+  <ul class="list has-bullet-circle has-bullet-purple">
     <li>Purple Circle List Item 1</li>
     <li>Purple Circle List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-circle has-bullet-red">
+  <ul class="list has-bullet-circle has-bullet-red">
     <li>Red Circle List Item 1</li>
     <li>Red Circle List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-circle has-bullet-yellow">
+  <ul class="list has-bullet-circle has-bullet-yellow">
     <li>Yellow Circle List Item 1</li>
     <li>Yellow Circle List Item 3</li>
   </ul>
-  <ol class="is-list">
+  <ol class="list">
     <li>Numbered List Item 1</li>
     <li>Numbered List Item 2</li>
   </ol>
-  <ul class="is-list has-bullet-check">
+  <ul class="list has-bullet-check">
     <li>Checked List Item 1</li>
     <li>Checked List Item 2</li>
   </ul>
-  <ul class="is-list has-bullet-close">
-    <li class="has-opacity-50">Close List Item 1</li>
-    <li class="has-opacity-50">Close List Item 2</li>
+  <ul class="list has-bullet-close">
+    <li class="opacity-50">Close List Item 1</li>
+    <li class="opacity-50">Close List Item 2</li>
   </ul>
-  <ul class="is-list has-bullets">
+  <ul class="list has-bullets">
     <li class="has-bullet-check">Checked List Item 1</li>
     <li class="has-bullet-check has-bullet-green">Green Checked List Item 1</li>
-    <li class="has-bullet-close has-opacity-50">Close List Item 2</li>
-    <li class="has-bullet-close has-opacity-50 has-bullet-red">Red Close List Item 2</li>
+    <li class="has-bullet-close opacity-50">Close List Item 2</li>
+    <li class="has-bullet-close opacity-50 has-bullet-red">Red Close List Item 2</li>
   </ul>
-  <div class="has-background-blue p-x-small">
-    <ul class="is-list has-bullets is-inverted">
+  <div class="bg-blue p-x-small">
+    <ul class="list has-bullets is-inverted">
       <li class="has-bullet-check">Inverted checked List Item 1</li>
-      <li class="has-bullet-close has-opacity-50">Inverted close List Item 2</li>
+      <li class="has-bullet-close opacity-50">Inverted close List Item 2</li>
     </ul>
   </div>
 </div>

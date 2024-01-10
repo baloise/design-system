@@ -7,6 +7,6 @@ export const CssFlexboxGap = ({}) => {
   return CssTable({
     tokens: { auto: tokens.space.auto, ...tokens.size.space, tablet: {}, desktop: {} },
     css: 'fg',
-    example: item => <div className={`has-background-${item.key} p-small`}></div>,
+    example: item => <div className={`bg-${item.key} p-small`}></div>,
   })
 }

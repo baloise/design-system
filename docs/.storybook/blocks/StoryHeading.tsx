@@ -7,7 +7,7 @@ export const StoryHeading = ({ of, children, hidden }) => {
   const id = (children || story.id).toString().trim().toLowerCase()
 
   return <Unstyled>
-    <h2 id={id} className='sb-unstyled is-family-title has-text-primary has-text-weight-bold text-xx-large' style={{
+    <h2 id={id} className='sb-unstyled font-family-title text-primary text-weight-bold text-xx-large' style={{
       marginBottom: hidden === true ? '0': '.5rem',
       marginTop: hidden === true ? '0': '4rem',
       paddingBottom: hidden === true ? '0': '4px',
@@ -30,24 +30,3 @@ export const StoryHeading = ({ of, children, hidden }) => {
     </h2>
   </Unstyled>
 };
-
-// export const Heading3 = ({ of, children }) => {
-//   const { story } = useOf(of || 'story', ['story']);
-//   const id = (children || story.id).toString().trim().toLowerCase()
-
-//   return <Unstyled><h3 id={id} className='sb-unstyled title has-text-primary text-x-large'>{children || story.name}</h3></Unstyled>
-// };
-
-// export const Heading4 = ({ of, children }) => {
-//   const { story } = useOf(of || 'story', ['story']);
-//   const id = (children || story.id).toString().trim().toLowerCase()
-
-//   return <Unstyled><h4 id={id} className='sb-unstyled title has-text-primary text-large'>{children || story.name}</h4></Unstyled>
-// };
-
-// export const Heading5 = ({ of, children }) => {
-//   const { story } = useOf(of || 'story', ['story']);
-//   const id = (children || story.id).toString().trim().toLowerCase()
-
-//   return <Unstyled><h5 id={id} className='sb-unstyled title has-text-primary text-medium'>{children || story.name}</h5></Unstyled>
-// };

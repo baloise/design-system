@@ -21,24 +21,24 @@ export const TokensFontSize = ({ overview }) => {
         return (
           <tbody key={key}>
             <tr>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
                 <Clipboard label={`bal-size-${key}`} value={`var(--bal-size-${key})`} />
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-none text-small has-text-weight-bold py-xx-small`}>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className={`mt-none mb-none text-small text-weight-bold py-xx-small`}>
                   {item?.mobile?.value || '0rem'} / {item?.tablet?.value || '0rem'} / {item?.desktop?.value || '0rem'}
                 </p>
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`is-family-title has-radius-normal has-text-primary has-text-weight-bold is-flex is-justify-content-center is-align-items-center is-size-${key}`}
+                  className={`font-family-title radius-normal text-primary text-weight-bold flex justify-content-center align-items-center text-${key}`}
                 >
                   Aa
                 </div>
               </td>
             </tr>
             <tr>
-              <td colSpan={3} className={'has-border-bottom-grey'}>
+              <td colSpan={3} className={'border-bottom-grey'}>
                 <p className="m-none text-small mb-small">{item.mobile.comment}</p>
               </td>
             </tr>

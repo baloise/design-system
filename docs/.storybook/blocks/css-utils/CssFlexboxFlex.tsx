@@ -21,5 +21,5 @@ export const CssFlexboxFlex = ({}) => {
     },
   ]
 
-  return <CssPropertyTable keyValue={list} property={'flex'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} property={'flex'} prefix={''} />
 }

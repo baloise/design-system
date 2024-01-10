@@ -34,5 +34,5 @@ export const CssElevationShadow = ({}) => {
     },
   ]
 
-  return <CssPropertyTable keyValue={list} withoutProperty={true} prefix={'has-'} />
+  return <CssPropertyTable keyValue={list} withoutProperty={true} prefix={''} />
 }

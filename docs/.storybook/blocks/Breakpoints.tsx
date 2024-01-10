@@ -7,14 +7,14 @@ export const Pixel = ({ children }) => (
 )
 
 export const Block = ({ label = '' }) => (
-  <div className={`p-small has-radius-normal has-background-${label ? 'green' : 'grey'}-2`}>
-    <span className="has-text-weight-bold">{label || '-'}</span>
+  <div className={`p-small radius-normal bg-${label ? 'green' : 'grey'}-2`}>
+    <span className="text-weight-bold">{label || '-'}</span>
   </div>
 )
 
 export const Breakpoints = ({ children }) => {
   return (
-    <table className="sb-unstyled table is-fullwidth is-bordered my-large">
+    <table className="sb-unstyled table w-full is-bordered my-large">
       <thead>
         <tr>
           <th style={{ width: '16.6%' }}>

@@ -29,5 +29,5 @@ export const CssFlexboxJustifyContent = ({}) => {
     },
   ]
 
-  return <CssPropertyTable keyValue={list} property={'justify-content'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} property={'justify-content'} prefix={''} />
 }

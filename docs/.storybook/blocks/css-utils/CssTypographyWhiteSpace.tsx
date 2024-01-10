@@ -7,5 +7,5 @@ export const CssTypographyWhiteSpace = ({}) => {
     { key: 'nowrap', value: 'nowrap' },
   ]
 
-  return <CssPropertyTable keyValue={list} property={'white-space'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} property={'white-space'} prefix={''} />
 }

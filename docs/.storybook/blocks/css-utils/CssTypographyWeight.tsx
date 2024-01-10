@@ -5,7 +5,7 @@ import { CssTable } from './helpers/CssTable'
 export const CssTypographyWeight = ({}) => {
   return CssTable({
     tokens: tokens.size.text.weight,
-    css: 'has-text-weight',
-    example: item => <div className={`has-text-weight-${item.key} p-small`}></div>,
+    css: 'text-weight',
+    example: item => <div className={`text-weight-${item.key} p-small`}></div>,
   })
 }

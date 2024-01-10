@@ -5,7 +5,7 @@ import { CssTable } from './helpers/CssTable'
 export const CssTypographyFamily = ({}) => {
   return CssTable({
     tokens: tokens.font.family,
-    css: 'is-family',
-    example: item =>  <div className={`is-family-${item.key} has-text-weight-bold has-text-centered p-xx-small`}>Aa</div>,
+    css: 'font-family',
+    example: item =>  <div className={`font-family-${item.key} text-weight-bold text-align-center p-xx-small`}>Aa</div>,
   })
 }

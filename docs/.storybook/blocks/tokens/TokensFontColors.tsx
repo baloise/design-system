@@ -9,16 +9,16 @@ export const TokensFontColors = ({ overview }) => {
     return (
       <tbody key={preKey + key}>
         <tr>
-          <td style={{ verticalAlign: 'top' }} className="has-border-none">
+          <td style={{ verticalAlign: 'top' }} className="border-none">
             <Clipboard label={item.name} value={`var(--${item.name})`} />
           </td>
-          <td style={{ verticalAlign: 'top' }} className="has-border-none">
-            <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+          <td style={{ verticalAlign: 'top' }} className="border-none">
+            <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
           </td>
-          <td style={{ verticalAlign: 'top' }} className="has-border-none">
+          <td style={{ verticalAlign: 'top' }} className="border-none">
             <div
-              className={`has-radius-normal has-text-weight-bold text-x-large is-flex is-justify-content-center is-align-items-center ${
-                key === 'white' || preKey === 'inverted-' ? 'has-background-primary' : ''
+              className={`radius-normal text-weight-bold text-x-large flex justify-content-center align-items-center ${
+                key === 'white' || preKey === 'inverted-' ? 'bg-primary' : ''
               }`}
               style={{ width: '48px', height: '48px', color: `var(--${item.name})` }}
             >
@@ -27,7 +27,7 @@ export const TokensFontColors = ({ overview }) => {
           </td>
         </tr>
         <tr>
-          <td colSpan={3} className={'has-border-bottom-grey'}>
+          <td colSpan={3} className={'border-bottom-grey'}>
             <p className="m-none text-small mb-small">{item.comment}</p>
           </td>
         </tr>

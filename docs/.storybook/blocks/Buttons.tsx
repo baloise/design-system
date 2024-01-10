@@ -4,7 +4,7 @@ import { navigate } from '@storybook/addon-links'
 export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle }) => {
   let linkObj = {}
   if (link) {
-    linkObj = { ...linkObj, href:link, target: target || '_blank' }
+    linkObj = { ...linkObj, href: link, target: target || '_blank' }
   }
 
   if (pageTitle) {
@@ -20,16 +20,16 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
     <a
       {...linkObj}
       style={{ flex: 1 }}
-      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover is-flex is-flex-grow-1 is-flex-direction-column has-background-${
+      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-grow-1 flex-direction-column bg-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal has-radius-normal text-large has-text-primary`}
+      } p-normal radius-normal text-large text-primary`}
     >
-      <span className="is-flex is-justify-content-center text-xx-large has-text-centered">
+      <span className="flex justify-content-center text-xx-large text-align-center">
         {icon}
         {children}
       </span>
-      <span className="is-block title text-medium has-text-centered mb-none">{label}</span>
-      <span className="is-block text-small has-text-centered">{description}</span>
+      <span className="block title text-medium text-align-center mb-none">{label}</span>
+      <span className="block text-small text-align-center">{description}</span>
     </a>
   )
 }
@@ -44,15 +44,15 @@ export const LinkCard = ({ children, color, icon, label, description, pageTitle 
       onClick={() => {
         navigate({ title: pageTitle })
       }}
-      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover is-flex is-flex-1 is-flex-direction-row has-background-${
+      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-direction-row bg-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
-      } p-normal has-radius-normal text-large has-text-primary fg-normal`}
+      } p-normal radius-normal text-large text-primary gap-normal`}
     >
-      <div className="is-flex-1 is-flex is-flex-direction-column is-justify-content-center is-align-items-start">
-        <span className="is-block title text-normal mb-none">{label || pageTitle}</span>
-        <span className="is-block text-small">{description}</span>
+      <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+        <span className="block title text-normal mb-none">{label || pageTitle}</span>
+        <span className="block text-small">{description}</span>
       </div>
-      <span className="is-flex is-justify-content-center is-align-items-center text-xx-large has-text-centered">
+      <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
         <bal-icon name="nav-go-right"></bal-icon>
       </span>
     </a>
@@ -80,7 +80,10 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
 export const GridComponents = ({ children }) => {
   return (
     <bal-doc-app>
-      <div className="sb-unstyled grid is-multiline mt-normal" style={{ '--bal-column-gap': '.5rem', userSelect: 'none' }}>
+      <div
+        className="sb-unstyled grid is-multiline mt-normal"
+        style={{ '--bal-column-gap': '.5rem', 'userSelect': 'none' }}
+      >
         {children}
       </div>
     </bal-doc-app>
@@ -102,22 +105,20 @@ export const GridComponent = ({
 }) => {
   const flexPosition =
     position === 'top'
-      ? 'is-justify-content-center is-align-items-start'
+      ? 'justify-content-center align-items-start'
       : position === 'bottom-end'
-      ? 'is-justify-content-flex-end is-align-items-flex-end'
-      : 'is-justify-content-center is-align-items-center'
+      ? 'justify-content-flex-end align-items-flex-end'
+      : 'justify-content-center align-items-center'
 
   return (
-    <div className="column is-6">
-      <div className="is-fullheight">
+    <div className="col is-6">
+      <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`is-flex is-flex-direction-column fg-normal is-justify-content-center is-align-items-center has-background-white p-normal is-fullheight has-radius-normal has-shadow-normal doc-shadow-large-hover is-clickable`}
+          className={`flex flex-direction-column gap-normal justify-content-center align-items-center bg-white p-normal h-full radius-normal shadow-normal doc-shadow-large-hover cursor-pointer`}
         >
           <div
-            className={`has-background-red-1 has-radius-normal is-fullwidth is-flex ${flexPosition} ${
-              fullscreen ? '' : 'p-small'
-            }`}
+            className={`bg-red-1 radius-normal w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
             style={{ height: '200px', minHeight: '200px', maxWidth: '200%', overflow: 'hidden', position: 'relative' }}
           >
             <div
@@ -137,11 +138,11 @@ export const GridComponent = ({
               {children}
             </div>
           </div>
-          <div className="is-flex-1 is-fullheight is-fullwidth">
+          <div className="flex-1 h-full w-full">
             <h2 className="title text-medium mb-xx-small" id={label}>
               {label}
             </h2>
-            <small className="is-fullheight">{description}</small>
+            <small className="h-full">{description}</small>
           </div>
         </a>
       </div>
@@ -159,11 +160,11 @@ export const GridCards = ({ children }) => {
 
 export const GridCard = ({ children, color, pageTitle, svg, label, description }) => {
   return (
-    <div className="column is-6">
-      <div className="is-fullheight">
+    <div className="col is-6">
+      <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`is-flex fg-normal is-justify-content-center is-align-items-center has-background-${color}-1 p-normal is-fullheight has-radius-normal doc-shadow-hover is-clickable`}
+          className={`flex gap-normal justify-content-center align-items-center bg-${color}-1 p-normal h-full radius-normal doc-shadow-hover cursor-pointer`}
         >
           {svg ? (
             <div style={{ minWidth: '80px' }}>
@@ -173,14 +174,14 @@ export const GridCard = ({ children, color, pageTitle, svg, label, description }
             ''
           )}
           {svg ? (
-            <div className="is-flex-1 is-fullheight">
+            <div className="flex-1 h-full">
               <h2 className="title text-large mb-xx-small">{label}</h2>
-              <span className="is-fullheight">{description}</span>
+              <span className="h-full">{description}</span>
             </div>
           ) : (
-            <div className="is-flex-1 is-fullheight">
+            <div className="flex-1 h-full">
               <h2 className="title text-medium mb-xx-small">{label}</h2>
-              <small className="is-fullheight">{description}</small>
+              <small className="h-full">{description}</small>
             </div>
           )}
           {!svg ? (

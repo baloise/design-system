@@ -79,7 +79,7 @@ export const Simple = Story({
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
         <bal-button bal-popover-trigger="true" color="light" inverted="true"  icon="web">
-          <span class="is-hidden-mobile">DE</span>
+          <span class="hidden-mobile">DE</span>
         </bal-button>
         <bal-popover-content>
           <bal-list border>
@@ -102,7 +102,7 @@ export const Simple = Story({
         </bal-popover-content>
       </bal-popover>
       <bal-button href="tel://00800 24 800 800" color="light" inverted="true" icon="call">
-        <span class="is-hidden-mobile">Call us</span>
+        <span class="hidden-mobile">Call us</span>
       </bal-button>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
@@ -122,7 +122,7 @@ export const Light = Story({
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
         <bal-button bal-popover-trigger="true" color="light" icon="web">
-          <span class="is-hidden-mobile">DE</span>
+          <span class="hidden-mobile">DE</span>
         </bal-button>
         <bal-popover-content>
           <bal-list border="true">

@@ -26,17 +26,17 @@ export const TokensSpacing = ({ overview }) => {
           return (
             <tbody key={key}>
               <tr>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <td style={{ verticalAlign: 'top' }} className="border-none">
                   <Clipboard label={item.name} value={`var(--${item.name})`} />
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                  <p className={`mt-none mb-none text-small has-text-weight-bold py-xx-small`}>
+                <td style={{ verticalAlign: 'top' }} className="border-none">
+                  <p className={`mt-none mb-none text-small text-weight-bold py-xx-small`}>
                     {item.value} / {itemTablet?.value || '0rem'} / {itemDesktop?.value || '0rem'}
                   </p>
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
-                    className="has-radius-normal"
+                    className="radius-normal"
                     style={{
                       background: 'var(--bal-color-red)',
                       width: `var(--${item.name})`,
@@ -46,7 +46,7 @@ export const TokensSpacing = ({ overview }) => {
                 </td>
               </tr>
               <tr>
-                <td colSpan={3} className="has-border-bottom-grey">
+                <td colSpan={3} className="border-bottom-grey">
                   <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
               </tr>

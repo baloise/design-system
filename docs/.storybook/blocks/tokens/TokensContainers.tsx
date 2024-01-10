@@ -19,15 +19,15 @@ export const TokensContainersSize = ({ overview }) => {
         return (
           <tbody key={key}>
             <tr>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
               <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>
-              <td colSpan={3} className="has-border-bottom-grey">
+              <td colSpan={3} className="border-bottom-grey">
                 <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>
@@ -54,18 +54,18 @@ export const TokensContainersSpace = ({ overview }) => {
         return (
           <tbody key={key}>
             <tr>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className="has-text-weight-bold m-none">{key}</p>
-                <p className="is-inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className="text-weight-bold m-none">{key}</p>
+                <p className="inline-block mt-xx-small mb-x-small text-small py-xx-small px-x-small bg-grey-2 radius-normal text-weight-bold">
                   var(--{item.name})
                 </p>
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
             </tr>
             <tr>
-              <td colSpan={3} className="has-border-bottom-grey">
+              <td colSpan={3} className="border-bottom-grey">
                 <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>

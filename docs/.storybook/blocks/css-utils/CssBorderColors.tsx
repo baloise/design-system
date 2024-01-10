@@ -5,8 +5,7 @@ import { CssTable } from './helpers/CssTable'
 export const CssBorderColors = ({}) => {
   return CssTable({
     tokens: tokens.color.border,
-    // list,
-    css: 'has-border',
-    example: item => <div className={`has-border-${item.key} p-small`}></div>,
+    css: 'border',
+    example: item => <div className={`border-${item.key} p-small`}></div>,
   })
 }

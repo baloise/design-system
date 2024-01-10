@@ -37,7 +37,7 @@ export const LoadingCard = Story({
   },
   ...withRender(
     () => `<bal-card>
-    <bal-card-content class="is-flex is-align-items-center is-flex-direction-column is-justify-content-center">
+    <bal-card-content class="flex align-items-center flex-direction-column justify-content-center">
         <bal-spinner class="my-medium"></bal-spinner>
         <bal-heading level="h5" space="all">Please wait...</bal-heading>
     </bal-card-content>

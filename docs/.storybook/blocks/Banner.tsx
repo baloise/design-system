@@ -22,13 +22,9 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
 
   const definedColor = (subtitle || '').includes('Components') ? 'red' : color || 'primary'
   const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
-  const background = isDeprecated
-    ? 'has-background-grey'
-    : definedColor === 'primary'
-    ? 'has-background-primary'
-    : `has-background-${definedColor}-2`
-  const text = `has-text-${definedColor}-inverted`
-  let className = `sb-unstyled has-radius-bottom-large pt-large pb-medium px-medium ${background} ${text}`
+  const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
+  const text = background === 'primary' ? 'text-white' : 'text-primary'
+  let className = `sb-unstyled radius-bottom-large pt-large pb-medium px-medium ${background} ${text}`
 
   const puzzles = {
     green: PuzzleGreen,
@@ -49,11 +45,15 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
         position: 'relative',
       }}
     >
-      <div className="is-flex fg-normal">
-        <div className="is-flex-1">
+      <div className="flex gap-normal">
+        <div className="flex-1">
           <span className="subtitle text-large mb-none">{subtitle}</span>
-          <h1 className={`title text-xxxx-large ${text} is-flex is-align-items-center fg-small`} style={{ marginTop: '-0.5rem' }}>
-            {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''} {title}
+          <h1
+            className={`title text-xxxx-large ${text} flex align-items-center gap-small`}
+            style={{ marginTop: '-0.5rem' }}
+          >
+            {isDeprecated ? <bal-icon color="warning-dark" name="alert-triangle" inline size="large"></bal-icon> : ''}{' '}
+            {title}
           </h1>
           {children}
         </div>

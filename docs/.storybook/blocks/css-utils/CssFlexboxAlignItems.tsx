@@ -25,5 +25,5 @@ export const CssFlexboxAlignItems = ({}) => {
     },
   ]
 
-  return <CssPropertyTable keyValue={list} property={'align-items'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} property={'align-items'} prefix={''} />
 }

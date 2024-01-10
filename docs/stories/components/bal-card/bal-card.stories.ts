@@ -98,8 +98,8 @@ export const TeaserCards = Story({
     fullheight: true,
   },
   ...withRender(
-    ({ ...args }) => `<div class="columns">
-  <div class="column is-one-third">
+    ({ ...args }) => `<div class="grid">
+  <div class="col is-one-third">
     <bal-card ${props(args)}>
       <bal-card-content>
         <bal-stack layout="vertical" align="center" space="large">
@@ -114,7 +114,7 @@ export const TeaserCards = Story({
       </bal-card-content>
     </bal-card>
   </div>
-  <div class="column is-one-third">
+  <div class="col is-one-third">
     <bal-card color="yellow-light" fullheight="true">
       <bal-card-content>
         <bal-stack layout="vertical" align="center" space="large">
@@ -128,7 +128,7 @@ export const TeaserCards = Story({
       </bal-card-content>
     </bal-card>
   </div>
-  <div class="column is-one-third">
+  <div class="col is-one-third">
     <bal-card color="red-light" fullheight="true">
       <bal-card-content>
         <bal-stack layout="vertical" align="center" space="large">
@@ -153,21 +153,21 @@ export const CardVariations = Story({
   },
   ...withRender(
     ({ content, ...args }) => `<div class="container">
-  <div class="columns is-multiline">
-    <div class="column is-half">
+  <div class="grid is-multiline">
+    <div class="col is-half">
       <bal-card ${props(args)}>
         <bal-card-content>
-          <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+          <div class="flex align-items-center justify-content-start flex-direction-column">
             <img class="mb-normal" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
             <bal-heading level="h4" space="bottom">Clickable Card</bal-heading>
           </div>
         </bal-card-content>
       </bal-card>
     </div>
-    <div class="column is-half">
+    <div class="col is-half">
       <bal-card fullHeight="true" color="purple" flat="true">
         <bal-card-content>
-          <div class="is-flex is-justify-content-start is-flex-direction-column">
+          <div class="flex justify-content-start flex-direction-column">
             <bal-heading level="h4" space="bottom">Info Card</bal-heading>
             <bal-text class="mb-normal">${content}</bal-text>
             <bal-button-group position="center" class="mt-auto">
@@ -177,13 +177,13 @@ export const CardVariations = Story({
         </bal-card-content>
       </bal-card>
     </div>
-    <div class="column is-half">
+    <div class="col is-half">
       <bal-card fullHeight="true">
         <bal-card-content>
-          <div class="is-flex is-justify-content-start is-flex-direction-column">
-            <div class="is-flex">
-              <bal-heading class="is-flex-grow-1" level="h4" space="none">List Card</bal-heading>
-              <a class="is-link">Show All</a>
+          <div class="flex justify-content-start flex-direction-column">
+            <div class="flex">
+              <bal-heading class="flex-grow-1" level="h4" space="none">List Card</bal-heading>
+              <a class="link">Show All</a>
             </div>
             <bal-list border="true" size="large" class="mb-normal">
               <bal-list-item clickable="true" href="www.baloise.com" target="_blank">
@@ -212,10 +212,10 @@ export const CardVariations = Story({
         </bal-card-content>
       </bal-card>
     </div>
-    <div class="column is-half">
+    <div class="col is-half">
       <bal-card fullHeight="true">
         <bal-card-content>
-          <div class="is-flex is-justify-content-start is-flex-direction-column">
+          <div class="flex justify-content-start flex-direction-column">
             <bal-heading level="h4" space="bottom">Action Card</bal-heading>
             <bal-input-group>
               <bal-icon size="small" name="search"></bal-icon>
@@ -248,7 +248,7 @@ export const AccordionCard = Story({
 export const SummaryCard = Story({
   ...withRender(
     () => `<bal-card>
-  <bal-card-content class="has-text-weight-bold has-text-blue">Insured vehicle</bal-card-content>
+  <bal-card-content class="text-weight-bold text-primary">Insured vehicle</bal-card-content>
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
   <bal-card-content>
@@ -276,19 +276,19 @@ export const ServiceCard = Story({
   ...withRender(
     ({ content }) => `<bal-card>
   <bal-card-content>
-    <div class="is-flex is-justify-content-center is-align-items-center">
+    <div class="flex justify-content-center align-items-center">
       <img style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-      <div class="is-flex-grow-1 px-x-small">
-        <bal-heading title="true" level="h4" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
-        <bal-heading subtitle="true" level="h5" space="none" class="is-hidden-desktop">+ CHF 11.30</bal-heading>
-        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+      <div class="flex-grow-1 px-x-small">
+        <bal-heading title="true" level="h4" space="none">Baustein Parkschaden <small class="hidden-touch">(+ CHF 11.30)</small></bal-heading>
+        <bal-heading subtitle="true" level="h5" space="none" class="hidden-desktop">+ CHF 11.30</bal-heading>
+        <p class="text-primary-light-text hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
       </div>
       <bal-checkbox value="true" interface="switch"></bal-checkbox>
     </div>
-    <p class="mt-x-small has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+    <p class="mt-x-small text-primary-light-text hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
   </bal-card-content>
   <bal-accordion card="true" open-label="Show more" close-label="Show less">
-  <p class="py-normal has-text-blue-light-text">
+  <p class="py-normal text-primary-light-text">
     ${content}
   </p>
   </bal-accordion>

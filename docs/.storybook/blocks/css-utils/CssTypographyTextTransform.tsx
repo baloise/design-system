@@ -8,5 +8,5 @@ export const CssTypographyTextTransform = ({}) => {
     { key: 'uppercase', value: 'uppercase' },
   ]
 
-  return <CssPropertyTable keyValue={list} withoutProperty={true} property={'text-transform'} prefix={'is-'} />
+  return <CssPropertyTable keyValue={list} withoutProperty={true} property={'text-transform'} prefix={''} />
 }

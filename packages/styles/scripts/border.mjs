@@ -106,8 +106,8 @@ async function generateBorderByColor({ placement = '' } = {}) {
     important: true,
     states: true,
     additionalValues: {
+      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal) !important',
       [`border${formattedPlacement}-style`]: 'solid',
-      [`border${formattedPlacement}-width`]: 'var(--bal-border-width-normal)',
     },
   })
   return { docs, rules }

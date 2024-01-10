@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import uiIcons from '../../stories/assets/data/icons.json'
 import brandIcons from '../../stories/assets/data/brand-icons.json'
 
@@ -45,49 +45,49 @@ export const IconOverview = ({ children }) => {
           onChange={handleInputChange}
         />
       </div>
-      <div className="is-flex fg-normal my-normal">
+      <div className="flex gap-normal my-normal">
         <button
           onClick={_ => handleCollectionClick('ui-icons', 'primary')}
           className={`${
-            color === 'primary' ? 'has-background-primary has-text-white' : 'has-background-primary-1'
-          } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
+            color === 'primary' ? 'bg-primary text-white' : 'bg-primary-1'
+          } flex-1 border-none radius-normal text-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
           UI Icons
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'purple')}
           className={`${
-            color === 'purple' ? 'has-background-purple-5 has-text-white' : 'has-background-purple-1'
-          } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
+            color === 'purple' ? 'bg-purple-5 text-white' : 'bg-purple-1'
+          } flex-1 border-none radius-normal text-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
-          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Purple
+          <small className="text-x-small block mb-x-small text-weight-regular">Brand Icons</small>Purple
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
           className={`${
-            color === 'green' ? 'has-background-green-5 has-text-white' : 'has-background-green-1'
-          } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
+            color === 'green' ? 'bg-green-5 text-white' : 'background-green-1'
+          } flex-1 border-none radius-normal text-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
-          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Green
+          <small className="text-x-small block mb-x-small text-weight-regular">Brand Icons</small>Green
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'red')}
           className={`${
-            color === 'red' ? 'has-background-red-5 has-text-white' : 'has-background-red-1'
-          } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
+            color === 'red' ? 'bg-red-5 text-white' : 'bg-red-1'
+          } flex-1 border-none radius-normal text-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
-          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Red
+          <small className="text-x-small block mb-x-small text-weight-regular">Brand Icons</small>Red
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'yellow')}
           className={`${
-            color === 'yellow' ? 'has-background-yellow-5 has-text-white' : 'has-background-yellow-1'
-          } is-flex-1 has-border-none has-radius-normal has-text-weight-bold py-small px-normal is-clickable doc-shadow-hover`}
+            color === 'yellow' ? 'bg-yellow-5 text-white' : 'bg-yellow-1'
+          } flex-1 border-none radius-normal text-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
         >
-          <small className="has-size-x-small is-block mb-x-small has-text-weight-regular">Brand Icons</small>Yellow
+          <small className="text-x-small block mb-x-small text-weight-regular">Brand Icons</small>Yellow
         </button>
       </div>
-      <div className="is-flex is-flex-wrap-wrap fg-xx-small mt-x-large">
+      <div className="flex flex-wrap gap-xx-small mt-x-large">
         {icons
           .filter(
             icon =>
@@ -98,7 +98,7 @@ export const IconOverview = ({ children }) => {
           .map(icon => (
             <div
               key={`${icon.collection}__${icon.name}`}
-              className={`has-background-${icon.color}-1 has-radius-normal px-x-small pt-medium pb-normal is-flex is-justify-content-center is-align-items-center fg-small is-flex-direction-column has-text-centered`}
+              className={`bg-${icon.color}-1 radius-normal px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
               style={{ width: '138px' }}
             >
               {icon.collection === 'ui-icons' ? (
@@ -115,7 +115,7 @@ export const IconOverview = ({ children }) => {
                 <img src={`/assets/images/brand-icons/${icon.name}.svg`} alt={icon.name} width={'64px'} />
               )}
               <span
-                className="is-size-x-small has-text-weight-bold is-flex is-justify-content-center is-align-items-center"
+                className="text-x-small text-weight-bold flex justify-content-center align-items-center"
                 style={{ minHeight: '40px' }}
               >
                 {icon.name}

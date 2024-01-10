@@ -120,7 +120,7 @@ export const FilterButtons = Story({
                 Label
             </bal-checkbox>
             <bal-checkbox>
-                Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it
+                Random text with a <a class="link" target="_blank" href="http://baloise.ch">Link</a> in it
             </bal-checkbox>
         </bal-checkbox-group>
     </bal-field-control>

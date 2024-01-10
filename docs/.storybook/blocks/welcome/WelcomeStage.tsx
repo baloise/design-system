@@ -4,7 +4,7 @@ import { navigate } from '@storybook/addon-links'
 
 export const WelcomeStage = ({ children }) => {
   return (
-    <div className="sb-unstyled my-welcome-state has-background-purple">
+    <div className="sb-unstyled my-welcome-state bg-purple">
       <div>
         <div className="mt-small">
           <bal-logo animated={true}></bal-logo>
@@ -15,7 +15,7 @@ export const WelcomeStage = ({ children }) => {
           implementations and design artifacts to build any number of web applications.
         </p>
         <div>
-          <div className="is-flex fg-normal is-flex-wrap-wrap">
+          <div className="flex gap-normal flex-wrap">
             <CodeSandbox />
             <a
               className="button is-info"

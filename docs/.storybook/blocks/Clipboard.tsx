@@ -11,7 +11,7 @@ export const Clipboard = ({ label, value = '' }) => {
 
   return (
     <button
-      className={`clipboard-button text-small py-xx-small px-x-small m-none text-small has-radius-normal`}
+      className={`clipboard-button text-small py-xx-small px-x-small m-none text-small radius-normal`}
       onClick={copy}
       style={{ minHeight: '24px' }}
     >

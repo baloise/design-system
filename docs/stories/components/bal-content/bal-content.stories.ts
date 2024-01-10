@@ -56,21 +56,21 @@ export const Layout = Story({
 export const Space = Story({
   ...withRender(
     () => `<div>
-  <bal-content class="has-background-red-2">
-    <bal-label class="has-background-green-2">Default Space</bal-label>
-    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
+  <bal-content class="bg-red-2">
+    <bal-label class="bg-green-2">Default Space</bal-label>
+    <bal-text class="bg-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
-  <bal-content space="x-small" class="has-background-red-2 mt-medium">
-    <bal-label class="has-background-green-2">X Small Space</bal-label>
-    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
+  <bal-content space="x-small" class="bg-red-2 mt-medium">
+    <bal-label class="bg-green-2">X Small Space</bal-label>
+    <bal-text class="bg-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
-  <bal-content space="small" class="has-background-red-2 mt-medium">
-    <bal-label class="has-background-green-2">Small Space</bal-label>
-    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
+  <bal-content space="small" class="bg-red-2 mt-medium">
+    <bal-label class="bg-green-2">Small Space</bal-label>
+    <bal-text class="bg-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
-  <bal-content space="normal" class="has-background-red-2 mt-medium">
-    <bal-label class="has-background-green-2">Normal Space</bal-label>
-    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
+  <bal-content space="normal" class="bg-red-2 mt-medium">
+    <bal-label class="bg-green-2">Normal Space</bal-label>
+    <bal-text class="bg-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
 </div>`,
   ),

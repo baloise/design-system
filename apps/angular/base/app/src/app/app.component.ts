@@ -49,7 +49,7 @@ export interface UpdateControl {
     InputDateComponent,
   ],
   template: `
-    <bal-app class="has-sticky-footer">
+    <bal-app class="sticky-footer">
       <main class="container py-normal">
         <form class="is-flex fg-normal is-flex-direction-column" [formGroup]="myForm" (ngSubmit)="onSubmit()">
           <app-input [form]="myForm" (updateControl)="updateValue($event)"></app-input>

@@ -29,14 +29,14 @@ const meta: Meta<Args> = {
   </div>
 
   <bal-sheet ${props(args)}>
-    <bal-stack layout="vertical" space="small" class="is-hidden-tablet">
+    <bal-stack layout="vertical" space="small" class="hidden-tablet">
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
       <bal-button expanded color="info">Back</bal-button>
     </bal-stack>
-    <bal-stack class="is-hidden-mobile">
+    <bal-stack class="hidden-mobile">
       <bal-heading level="p" visual-level="h4">1'234 CHF</bal-heading>
       <bal-content>
-        <p class="has-text-blue-light-text text-small m-none is-flex-grow-1">${content}</p>
+        <p class="text-primary-light-text text-small m-none flex-grow-1">${content}</p>
       </bal-content>
       <bal-button-group>
         <bal-button color="info">Back</bal-button>

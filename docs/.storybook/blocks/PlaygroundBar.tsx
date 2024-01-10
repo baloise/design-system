@@ -8,7 +8,7 @@ export const PlaygroundBar = ({ of, children }) => {
 
   return (
     <Unstyled>
-      <div className="is-flex fg-normal is-justify-content-center">
+      <div className="flex gap-normal justify-content-center">
         <a
           className="button"
           onClick={() => {

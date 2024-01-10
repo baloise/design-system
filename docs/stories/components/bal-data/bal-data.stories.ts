@@ -80,7 +80,7 @@ export const DataTypes = Story({
         <bal-data-item>
           <bal-data-label>List Value</bal-data-label>
           <bal-data-value multiline="true">
-            <ul class="is-list ml-normal">
+            <ul class="list ml-normal">
               <li>Value 1</li>
               <li>Value 2</li>
             </ul>

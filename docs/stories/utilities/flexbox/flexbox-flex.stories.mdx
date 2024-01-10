@@ -25,10 +25,10 @@ The flex-initial setting configures `flex-grow` to 0, `flex-shrink` to 1, and `f
 <Code
   language="html"
   code={`
-<div class="is-flex fg-normal mb-normal">
-    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Hello</div>
-    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Hello World</div>
-    <div class="is-flex-initial has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+<div class="flex gap-normal mb-normal">
+    <div class="flex-initial bg-green-2 radius-normal p-normal">Hello</div>
+    <div class="flex-initial bg-green-2 radius-normal p-normal">Hello World</div>
+    <div class="flex-initial bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 </div>
 `}
 />
@@ -40,15 +40,15 @@ Establishes both `grow` and `shrink` factors to 1, enabling automatic expansion 
 <Code
   language="html"
   code={`
-<div class="is-flex fg-normal mb-normal">
-    <div class="has-background-green-2 has-radius-normal p-normal">Hello</div>
-    <div class="has-background-green-2 has-radius-normal p-normal">Hello World</div>
-    <div class="has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+<div class="flex gap-normal mb-normal">
+    <div class="bg-green-2 radius-normal p-normal">Hello</div>
+    <div class="bg-green-2 radius-normal p-normal">Hello World</div>
+    <div class="bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
 </div>
-<div class="is-flex fg-normal">
-    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Hello</div>
-    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Hello World</div>
-    <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+<div class="flex gap-normal">
+    <div class="flex-1 bg-green-2 radius-normal p-normal">Hello</div>
+    <div class="flex-1 bg-green-2 radius-normal p-normal">Hello World</div>
+    <div class="flex-1 bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
 </div>
 `}
 />
@@ -60,15 +60,15 @@ By setting both `grow` and `shrink` factors to 1, the item will automatically ex
 <Code
   language="html"
   code={`
-    <div class="is-flex fg-normal mb-normal">
-        <div class="has-background-green-2 has-radius-normal p-normal">Hello</div>
-        <div class="has-background-green-2 has-radius-normal p-normal">Hello World</div>
-        <div class="has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+    <div class="flex gap-normal mb-normal">
+        <div class="bg-green-2 radius-normal p-normal">Hello</div>
+        <div class="bg-green-2 radius-normal p-normal">Hello World</div>
+        <div class="bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
     </div>
-    <div class="is-flex fg-normal">
-        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Hello</div>
-        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Hello World</div>
-        <div class="is-flex-auto has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+    <div class="flex gap-normal">
+        <div class="flex-auto bg-green-2 radius-normal p-normal">Hello</div>
+        <div class="flex-auto bg-green-2 radius-normal p-normal">Hello World</div>
+        <div class="flex-auto bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
     </div>
 `}
 />
@@ -80,10 +80,10 @@ Equivalent to `0 0 auto`, indicating that the element neither expands nor contra
 <Code
   language="html"
   code={`
-<div class="is-flex fg-normal mb-normal">
-  <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
-  <div class="is-flex-none has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
-  <div class="is-flex-1 has-background-green-2 has-radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+<div class="flex gap-normal mb-normal">
+  <div class="flex-1 bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+  <div class="flex-none bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
+  <div class="flex-1 bg-green-2 radius-normal p-normal">Lorem ipsum dolor sit amet</div>
 </div>
 `}
 />

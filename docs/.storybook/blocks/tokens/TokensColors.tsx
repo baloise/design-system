@@ -26,64 +26,64 @@ export const TokensColors = ({ overview }) => {
           return (
             <tbody key={key}>
               <tr>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <td style={{ verticalAlign: 'top' }} className="border-none">
                   <Clipboard label={item.name} value={`var(--${item.name})`}/>
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                  <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+                <td style={{ verticalAlign: 'top' }} className="border-none">
+                  <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
                 </td>
-                <td style={{ verticalAlign: 'top' }} className="has-border-none">
+                <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
-                    className="has-radius-normal"
+                    className="radius-normal"
                     style={{ width: '48px', height: '48px', background: `var(--${item.name})` }}
                   ></div>
                 </td>
               </tr>
               <tr>
-                <td colSpan={3} className={subItems.value ? 'has-border-bottom-grey' : 'has-border-none'}>
+                <td colSpan={3} className={subItems.value ? 'border-bottom-grey' : 'border-none'}>
                   <p className="m-none text-small mb-small">{item.comment}</p>
                 </td>
               </tr>
               {!subItems.value ? (
                 <tr>
-                  <td colSpan={3} className="has-border-bottom-grey">
-                    <p className="has-text-weight-bold mb-none">Shades</p>
-                    <p className="is-inline-block mt-none text-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
+                  <td colSpan={3} className="border-bottom-grey">
+                    <p className="text-weight-bold mb-none">Shades</p>
+                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-2 radius-normal text-weight-bold">
                       {item.name}-x
                     </p>
-                    <div className="is-flex fg-normal">
+                    <div className="flex gap-normal">
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold"
+                        className="radius-normal p-small text-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-1)` }}
                       >
                         1
                       </div>
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold"
+                        className="radius-normal p-small text-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-2)` }}
                       >
                         2
                       </div>
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold"
+                        className="radius-normal p-small text-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-3)` }}
                       >
                         3
                       </div>
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold has-text-white"
+                        className="radius-normal p-small text-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-4)` }}
                       >
                         4
                       </div>
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold has-text-white"
+                        className="radius-normal p-small text-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-5)` }}
                       >
                         5
                       </div>
                       <div
-                        className="has-radius-normal p-small has-text-weight-bold has-text-white"
+                        className="radius-normal p-small text-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-6)` }}
                       >
                         6

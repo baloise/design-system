@@ -7,11 +7,11 @@ export const ColorCard = ({ background, color, small = false }) => {
   const colorVariable = colorPath.reduce((acc, val) => acc[val] || {}, colors)
   return (
     <div
-      className="sb-unstyled has-radius-large has-background-white has-shadow-normal is-flex-1"
+      className="sb-unstyled radius-large bg-white shadow-normal flex-1"
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal has-text-centered has-radius-top-large title text-x-large m-none`}
+        className={`px-small py-normal text-align-center radius-top-large title text-x-large m-none`}
         style={{
           minHeight: '64px',
           background: `var(--${colorVariable.name})`,
@@ -20,16 +20,16 @@ export const ColorCard = ({ background, color, small = false }) => {
       >
         {background ? 'A-a' : ''}
       </div>
-      <div className={`has-radius-bottom-large p-small has-text-centered`}>
-        <div className="title text-normal has-text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
-        <div className="text-small has-text-primary">{colorVariable.value}</div>
+      <div className={`radius-bottom-large p-small text-align-center`}>
+        <div className="title text-normal text-primary">{colorVariable.name.replace('bal-color-', '')}</div>
+        <div className="text-small text-primary">{colorVariable.value}</div>
       </div>
     </div>
   )
 }
 
 export const ColorCards = ({ children }) => {
-  return <div className="is-flex is-justify-content-center is-flex-wrap-wrap fg-small my-normal">{children}</div>
+  return <div className="flex justify-content-center flex-wrap gap-small my-normal">{children}</div>
 }
 
 export const ColorCardRow = ({ children, color }) => {

@@ -19,15 +19,15 @@ export const TokensShadow = ({ overview }) => {
         return (
           <tbody key={key}>
             <tr>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
-                <p className={`mt-none mb-x-small text-small has-text-weight-bold py-xx-small`}>{item.value}</p>
+              <td style={{ verticalAlign: 'top' }} className="border-none">
+                <p className={`mt-none mb-x-small text-small text-weight-bold py-xx-small`}>{item.value}</p>
               </td>
-              <td style={{ verticalAlign: 'top' }} className="has-border-none">
+              <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className="has-radius-normal"
+                  className="radius-normal"
                   style={{
                     background: 'var(--bal-color-grey)',
                     height: '48px',
@@ -38,7 +38,7 @@ export const TokensShadow = ({ overview }) => {
               </td>
             </tr>
             <tr>
-              <td colSpan={3} className="has-border-bottom-grey">
+              <td colSpan={3} className="border-bottom-grey">
                 <p className="m-none text-small mb-small">{item.comment}</p>
               </td>
             </tr>

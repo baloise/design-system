@@ -23,23 +23,23 @@ import { Banner, Lead, Code, CssTypographyTextAlign, Footer, LinkCard, LinkCards
 <Code
   language="html"
   code={`
-<p class="has-text-left">left</p>
-<p class="has-text-centered">centered</p>
-<p class="has-text-right">right</p>
+<p class="text-align-left">left</p>
+<p class="text-align-center">centered</p>
+<p class="text-align-right">right</p>
 `}
 />
 
 ## Responsive
 
 Tailored responsive options are at your disposal for customizations according to screen size.
-Simply append a responsive breakpoint keyword with a dash, like `is-hidden-tablet`, to apply the corresponding responsive class.
+Simply append a responsive breakpoint keyword with a dash, like `hidden-tablet`, to apply the corresponding responsive class.
 
 <Code
   language="html"
   code={`
-<p class="has-text-right-mobile">mobile right</p>
-<p class="has-text-right-tablet">tablet right</p>
-<p class="has-text-right-desktop">desktop right</p>
+<p class="mobile:text-align-right">mobile right</p>
+<p class="tablet:text-align-right">tablet right</p>
+<p class="desktop:text-align-right">desktop right</p>
 `}
 />
 

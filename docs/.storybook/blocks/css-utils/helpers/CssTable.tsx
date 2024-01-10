@@ -12,15 +12,15 @@ export const CssTable = ({ tokens, css, example }: { tokens: any; css: string; e
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large has-background-grey-2 has-radius-normal px-medium"
+      className="sb-unstyled pb-medium my-x-large bg-grey-2 radius-normal px-medium"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
       }}
     >
-      <table className="table is-fullwidth has-background-grey-2">
+      <table className="table w-full bg-grey-2">
         <thead
-          className="doc-table-head has-background-grey-2 has-border-none"
+          className="doc-table-head bg-grey-2 border-none"
           style={{ position: 'sticky', top: '0', left: '0', zIndex: '10' }}
         >
           <tr>

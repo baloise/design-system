@@ -9,5 +9,5 @@ export const CssTypographyTextAlign = ({}) => {
     { key: 'text-right', value: 'right' },
   ]
 
-  return <CssPropertyTable keyValue={list} withoutProperty={true} property={'text-align'} prefix={'has-'} />
+  return <CssPropertyTable keyValue={list} withoutProperty={true} property={'text-align'} prefix={''} />
 }
