@@ -99,7 +99,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 * update @baloise/web-app-utils to solve safari 13 issues ([04f0da0](https://github.com/baloise/design-system/commit/04f0da0b696a3eac6686f43458e1c2c41753d386))
 * update @baloise/web-app-utils to solve safari 13 issues ([43c5b13](https://github.com/baloise/design-system/commit/43c5b132b4089346a132dbbda34c15b86860735a))
 
-
 ### Performance Improvements
 
 * exclude unused tokens and splitted helpers form base style ([4e4710e](https://github.com/baloise/design-system/commit/4e4710e28cb77e2cb25bddab3cbfc8a91207d81e))
