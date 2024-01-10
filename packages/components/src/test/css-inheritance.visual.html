@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
+    <link rel="stylesheet" href="/assets/baloise-design-system.css" />
     <style>
       section {
         margin-top: 2rem;
@@ -44,30 +43,28 @@
   </head>
 
   <body>
-    <bal-doc-app>
-      <main class="container">
-        <section data-testid="colors" class="colors">
-          <div class="bg-blue"></div>
-          <div class="bg-blue"></div>
-          <div class="bg-blue"></div>
-          <div class="bg-blue"></div>
-        </section>
-        <section data-testid="border" class="border">
-          <div class="border-none">Primary</div>
-        </section>
-        <section data-testid="display" class="display">
-          <div class="flex">
-            <div class="border-success">Flex 1</div>
-            <div class="border-success">Flex 2</div>
-          </div>
-        </section>
-        <section data-testid="opacity" class="opacity">
-          <div class="bg-success opacity-50">50</div>
-        </section>
-        <section data-testid="shadow" class="shadow">
-          <h4 class="title text-large text-shadow-normal-normal">Shadow Title 4</h4>
-        </section>
-      </main>
-    </bal-doc-app>
+    <main class="container">
+      <section data-testid="colors" class="colors">
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+        <div class="bg-primary"></div>
+      </section>
+      <section data-testid="border" class="border">
+        <div class="border-none">Primary</div>
+      </section>
+      <section data-testid="display" class="display">
+        <div class="flex">
+          <div class="border-success">Flex 1</div>
+          <div class="border-success">Flex 2</div>
+        </div>
+      </section>
+      <section data-testid="opacity" class="opacity">
+        <div class="bg-success opacity-50">50</div>
+      </section>
+      <section data-testid="shadow" class="shadow">
+        <h4 class="title text-large text-shadow-normal-normal">Shadow Title 4</h4>
+      </section>
+    </main>
   </body>
 </html>
