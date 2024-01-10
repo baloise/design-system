@@ -3,7 +3,7 @@ import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssTypographyTextTransform = ({}) => {
   const list = [
-    { key: 'capitalized', value: 'capitalized' },
+    { key: 'capitalize', value: 'capitalize' },
     { key: 'lowercase', value: 'lowercase' },
     { key: 'uppercase', value: 'uppercase' },
   ]

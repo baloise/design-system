@@ -6,7 +6,7 @@ import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
 export const CssFlexboxGap = ({}) => {
   return CssTable({
     tokens: { auto: tokens.space.auto, ...tokens.size.space, tablet: {}, desktop: {} },
-    css: 'fg',
+    css: 'gap',
     example: item => <div className={`bg-${item.key} p-small`}></div>,
   })
 }

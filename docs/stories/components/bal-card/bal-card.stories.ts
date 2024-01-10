@@ -182,7 +182,7 @@ export const CardVariations = Story({
         <bal-card-content>
           <div class="flex justify-content-start flex-direction-column">
             <div class="flex">
-              <bal-heading class="flex-grow-1" level="h4" space="none">List Card</bal-heading>
+              <bal-heading class="flex-1" level="h4" space="none">List Card</bal-heading>
               <a class="link">Show All</a>
             </div>
             <bal-list border="true" size="large" class="mb-normal">
@@ -278,7 +278,7 @@ export const ServiceCard = Story({
   <bal-card-content>
     <div class="flex justify-content-center align-items-center">
       <img style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-      <div class="flex-grow-1 px-x-small">
+      <div class="flex-1 px-x-small">
         <bal-heading title="true" level="h4" space="none">Baustein Parkschaden <small class="hidden-touch">(+ CHF 11.30)</small></bal-heading>
         <bal-heading subtitle="true" level="h5" space="none" class="hidden-desktop">+ CHF 11.30</bal-heading>
         <p class="text-primary-light-text hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>

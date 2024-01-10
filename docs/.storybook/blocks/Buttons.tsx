@@ -20,7 +20,7 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
     <a
       {...linkObj}
       style={{ flex: 1 }}
-      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-grow-1 flex-direction-column bg-${
+      className={`sb-unstyled mb-none doc-button-card doc-shadow-hover flex flex-1 flex-direction-column bg-${
         color ? (color === 'grey' ? 'grey-3' : `${color}-2`) : 'primary-1'
       } p-normal radius-normal text-large text-primary`}
     >
