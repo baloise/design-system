@@ -21,7 +21,7 @@ describe('css-flex.visual', () => {
 })
 
 describe('deprecated-css-flex.visual', () => {
-  beforeEach(() => cy.visit('/test/deprecated-css-flex.visual.html').platform('desktop'))
+  beforeEach(() => cy.visit('/test/deprecated/css-flex.visual.html').platform('desktop'))
 
   it('basic', () => {
     cy.platform('desktop')
