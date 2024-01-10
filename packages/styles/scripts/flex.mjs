@@ -7,6 +7,7 @@ export const generateFlex = async () => {
       'align-content-start': 'flex-start',
       'align-content-end': 'flex-end',
       'align-content-center': 'center',
+      'align-content-baseline': 'baseline',
       'align-content-space-between': 'space-between',
       'align-content-space-around': 'space-around',
       'align-content-space-evenly': 'space-evenly',
