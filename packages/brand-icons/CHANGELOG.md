@@ -1,5 +1,7 @@
 # @baloise/design-system-brand-icons
 
+## 15.1.1
+
 ## 15.1.0
 
 ### Patch Changes
