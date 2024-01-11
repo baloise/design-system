@@ -1,5 +1,13 @@
 # @baloise/design-system-components-table
 
+## 15.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`78fff0887`](https://github.com/baloise/design-system/commit/78fff0887478700e31f4f052a61d520ffbddb0fb)]:
+  - @baloise/design-system-components@15.1.1
+  - @baloise/design-system-css@15.1.1
+
 ## 15.1.0
 
 ### Patch Changes
