@@ -1,5 +1,16 @@
 # docs-web
 
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [[`78fff0887`](https://github.com/baloise/design-system/commit/78fff0887478700e31f4f052a61d520ffbddb0fb)]:
+  - @baloise/design-system-components@15.1.1
+  - @baloise/design-system-brand-icons@15.1.1
+  - @baloise/design-system-css@15.1.1
+  - @baloise/design-system-icons@15.1.1
+  - @baloise/design-system-tokens@15.1.1
+
 ## 0.0.10
 
 ### Patch Changes

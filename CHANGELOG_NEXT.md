@@ -317,7 +317,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add animated logo, [#359](https://github.com/baloise/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
 
-
 ### Bug Fixes
 
 * **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))

@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 15.1.1
+
+### Patch Changes
+
+- [#1275](https://github.com/baloise/design-system/pull/1275) - In the navigation component the arrow symbol for overview links will only be rendered if the link is valid
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.1.1
+  - @baloise/design-system-fonts@15.1.1
+  - @baloise/design-system-icons@15.1.1
+  - @baloise/design-system-tokens@15.1.1
+
 ## 15.1.0
 
 ### Minor Changes
