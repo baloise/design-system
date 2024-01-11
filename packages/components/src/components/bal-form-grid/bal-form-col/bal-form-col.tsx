@@ -1,21 +1,31 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { BalConfigObserver, BalConfigState } from '../../../interfaces'
+import { ListenToConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-form-col',
 })
-export class FormCol implements ComponentInterface {
+export class FormCol implements ComponentInterface, BalConfigObserver {
+  private colClass = 'col'
+
   @Element() el!: HTMLElement
 
-  @Prop() size: BalProps.BalFormColSize = 'fullwidth'
+  @Prop() size: BalProps.BalFormColSize = 'full'
+
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.colClass = state.cssUtilities === 'styles' ? 'col' : 'column'
+  }
 
   render() {
     return (
       <Host
         class={{
-          'col': true,
+          [`${this.colClass}`]: true,
           'py-none': true,
-          'is-12-touch': true,
-          'is-12': this.size === 'fullwidth' || this.size === undefined,
+          'touch:is-12': this.colClass === 'col',
+          'is-12-touch': this.colClass !== 'col',
+          'is-12': this.size === 'full' || this.size === 'fullwidth' || this.size === undefined,
           'is-6': this.size === 'half',
           'is-4': this.size === 'one-third',
           'is-8': this.size === 'two-thirds',

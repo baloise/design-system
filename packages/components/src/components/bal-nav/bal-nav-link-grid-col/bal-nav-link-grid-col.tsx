@@ -1,12 +1,15 @@
 import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { LogInstance, Loggable, Logger } from '../../../utils/log'
 import { BEM } from '../../../utils/bem'
+import { BalConfigObserver, BalConfigState } from '../../../interfaces'
+import { ListenToConfig, defaultConfig } from '../../../utils/config'
 
 @Component({
   tag: 'bal-nav-link-grid-col',
   styleUrl: 'bal-nav-link-grid-col.sass',
 })
-export class NavigationLinkGridCol implements ComponentInterface, Loggable {
+export class NavigationLinkGridCol implements ComponentInterface, Loggable, BalConfigObserver {
+  private cssUtilities = defaultConfig.cssUtilities
   log!: LogInstance
 
   @Logger('bal-nav-link-grid-col')
@@ -24,6 +27,11 @@ export class NavigationLinkGridCol implements ComponentInterface, Loggable {
    */
   @Prop() staticCol: BalProps.BalNavLinkGridCol = false
 
+  @ListenToConfig()
+  configChanged(state: BalConfigState): void {
+    this.cssUtilities = state.cssUtilities
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -32,14 +40,22 @@ export class NavigationLinkGridCol implements ComponentInterface, Loggable {
   render() {
     const block = BEM.block('nav-link-grid-col')
     const innerEl = block.element('inner')
-    const widescreenPositionClass = this.staticCol ? 'widescreen:is-one-third' : 'widescreen:is-two-thirds'
+    const widescreenPositionClass =
+      this.cssUtilities === 'styles'
+        ? this.staticCol
+          ? 'widescreen:is-one-third'
+          : 'widescreen:is-two-thirds'
+        : this.staticCol
+        ? 'is-one-third-widescreen'
+        : 'is-two-thirds-widescreen'
 
     return (
       <Host
         class={{
           ...block.class(),
           ...block.modifier('is-static').class(this.staticCol),
-          'col is-full desktop:is-6 desktop:is-half': true,
+          'col is-full desktop:is-6 desktop:is-half': this.cssUtilities === 'styles',
+          'column is-full is-6-desktop is-half-desktop': this.cssUtilities !== 'styles',
           [`${widescreenPositionClass}`]: true,
         }}
       >

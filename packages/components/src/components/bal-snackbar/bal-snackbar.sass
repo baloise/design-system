@@ -54,7 +54,17 @@
     display: flex
     align-items: center
     column-gap: .5rem
+    & > span
+      font-size: var(--bal-text-size-small)
+      line-height: var(--bal-line-height-small)
+      +tablet
+        font-size: var(--bal-text-size-small-tablet)
+        line-height: var(--bal-line-height-tablet-small)
+      +desktop
+        font-size: var(--bal-text-size-small-desktop)
+        line-height: var(--bal-line-height-desktop-small)
   +element(footer)
+    display: inline-flex
     justify-content: start
     margin-top: .5rem
   +element(close)

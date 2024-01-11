@@ -572,6 +572,10 @@ export namespace Components {
          */
         "autoInvalidOff": boolean;
         /**
+          * Defines the column size like the grid.
+         */
+        "columns": BalProps.BalCheckboxGroupColumns;
+        /**
           * Defines the column size for mobile and bigger like the grid.
          */
         "columnsMobile": BalProps.BalCheckboxGroupColumns;
@@ -595,10 +599,6 @@ export namespace Components {
           * Find the options properties by its value
          */
         "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid": BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the layout of the checkbox button
          */
@@ -5333,6 +5333,10 @@ declare namespace LocalJSX {
          */
         "autoInvalidOff"?: boolean;
         /**
+          * Defines the column size like the grid.
+         */
+        "columns"?: BalProps.BalCheckboxGroupColumns;
+        /**
           * Defines the column size for mobile and bigger like the grid.
          */
         "columnsMobile"?: BalProps.BalCheckboxGroupColumns;
@@ -5352,10 +5356,6 @@ declare namespace LocalJSX {
           * Uses the whole width
          */
         "expanded"?: boolean;
-        /**
-          * Defines the column size like the grid.
-         */
-        "grid"?: BalProps.BalCheckboxGroupColumns;
         /**
           * Defines the layout of the checkbox button
          */

@@ -25,6 +25,7 @@ export interface BalConfig {
   fallbackLanguage?: BalLanguage
   logger?: BalLogger
   animated?: boolean
+  cssUtilities?: 'styles' | 'css'
   _jmp?: (c: any) => any
   _raf?: (c: any) => number
   _ael?: (el: any, eventName: string, listener: any, options: any) => void
@@ -40,6 +41,7 @@ export interface BalConfigState {
   fallbackLanguage: BalLanguage
   logger: BalLogger
   animated: boolean
+  cssUtilities: 'styles' | 'css'
 }
 
 export interface BalPlatformConfig {

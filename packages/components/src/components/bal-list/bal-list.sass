@@ -75,6 +75,14 @@
 
 .bal-list__item__subtitle
   color: var(--bal-list-item-subtile-color)
+  font-size: var(--bal-text-size-small)
+  line-height: var(--bal-line-height-small)
+  +tablet
+    font-size: var(--bal-text-size-small-tablet)
+    line-height: var(--bal-line-height-tablet-small)
+  +desktop
+    font-size: var(--bal-text-size-small-desktop)
+    line-height: var(--bal-line-height-desktop-small)
 
 .bal-list__item:not(.bal-list__item__accordion-head),
 .bal-list__item:not(.bal-list__item__accordion-head) > a,
@@ -168,8 +176,8 @@
         svg g,
         svg path,
         svg circle
-          +desktop()
-            fill: var(--bal-list-accordion-head-background-active) !important
+        +desktop()
+          fill: var(--bal-list-accordion-head-background-active) !important
 
     &:focus-visible
       box-shadow: var(--bal-focus-shadow) !important
@@ -220,8 +228,8 @@
         svg g,
         svg path,
         svg circle
-          +desktop()
-            fill: var(--bal-list-accordion-head-on-dark-background-active) !important
+        +desktop()
+          fill: var(--bal-list-accordion-head-on-dark-background-active) !important
 
     &:focus-visible
       box-shadow: var(--bal-focus-shadow-inverted) !important

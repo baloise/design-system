@@ -4,5 +4,12 @@
 /// <reference path="../../interfaces.d.ts" />
 
 namespace BalProps {
-  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
+  export type BalFormColSize =
+    | 'full'
+    | 'fullwidth'
+    | 'half'
+    | 'one-third'
+    | 'two-thirds'
+    | 'one-quarter'
+    | 'three-quarters'
 }

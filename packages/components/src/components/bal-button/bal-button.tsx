@@ -202,12 +202,8 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'is-rounded': this.rounded === true,
       'has-blur-shadow': this.shadow === true,
-      'radius-rounded': this.rounded === true,
-      'has-round-top-corners': this.topRounded === true,
-      'has-round-bottom-corners': this.bottomRounded === true,
-      'has-no-round-top-corners': this.topRounded === false,
-      'has-no-round-bottom-corners': this.bottomRounded === false,
     }
   }
 
