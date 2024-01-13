@@ -1,4 +1,4 @@
-import { Source, apply, move, template, url } from '@angular-devkit/schematics';
+import { Source, apply, move, template, url } from '@angular-devkit/schematics'
 
 export function createPolyfillsFile(): Source {
   return apply(url(`./files/polyfills`), [
@@ -6,6 +6,5 @@ export function createPolyfillsFile(): Source {
       ts: 'ts',
     }),
     move('/', 'src'),
-  ]);
+  ])
 }
-

@@ -1,4 +1,4 @@
-import { Source, apply, move, template, url } from '@angular-devkit/schematics';
+import { Source, apply, move, template, url } from '@angular-devkit/schematics'
 
 export function createI18nFile(): Source {
   return apply(url(`./files/i18n.initialize`), [
@@ -6,5 +6,5 @@ export function createI18nFile(): Source {
       ts: 'ts',
     }),
     move('/', 'src/app'),
-  ]);
+  ])
 }

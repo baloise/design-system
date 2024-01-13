@@ -1,12 +1,12 @@
-import { SchematicsException, Tree } from '@angular-devkit/schematics';
+import { SchematicsException, Tree } from '@angular-devkit/schematics'
 
 export const addStyles = (host: Tree) => {
-  const filePath = `src/styles.scss`;
-  const configBuffer = host.read(filePath);
+  const filePath = `src/styles.scss`
+  const configBuffer = host.read(filePath)
   if (configBuffer === null) {
-    throw new SchematicsException(`Could not find (${filePath})`);
+    throw new SchematicsException(`Could not find (${filePath})`)
   }
-  const content = configBuffer.toString();
+  const content = configBuffer.toString()
 
   if (!content.includes('@baloise/design-system-css/css/core')) {
     const newContent =
@@ -36,7 +36,7 @@ export const addStyles = (host: Tree) => {
   @import '@baloise/design-system-css/css/shadow';
   @import '@baloise/design-system-css/css/spacing';
   @import '@baloise/design-system-css/css/typography';
-`;
-    host.overwrite(filePath, newContent);
+`
+    host.overwrite(filePath, newContent)
   }
-};
+}

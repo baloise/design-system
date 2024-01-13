@@ -1,39 +1,31 @@
-import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { SchemaOptions } from '../schema';
+import { SchematicsException, Tree } from '@angular-devkit/schematics'
+import { SchemaOptions } from '../schema'
 
 export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
-  const prefix = options.project || 'app';
+  const prefix = options.project || 'app'
 
-  const appTemplatePath = `src/app/app.component.html`;
-  const appComponentPath = `src/app/app.component.ts`;
-  const appStylesPath = `src/app/app.component.css`;
-  const appStylesSassPath = `src/app/app.component.scss`;
+  const appTemplatePath = `src/app/app.component.html`
+  const appComponentPath = `src/app/app.component.ts`
+  const appStylesPath = `src/app/app.component.css`
+  const appStylesSassPath = `src/app/app.component.scss`
 
-  const isInlineTemplate = !host.exists(appTemplatePath);
-  const hasCssStyles = host.exists(appStylesPath);
-  const hasSassStyles = host.exists(appStylesSassPath);
-  const hasStyles = hasCssStyles || hasSassStyles;
-  const styleTemplate = hasStyles
-    ? `styleUrl: './app.component.${hasCssStyles ? 'css' : 'scss'}',`
-    : '';
+  const isInlineTemplate = !host.exists(appTemplatePath)
+  const hasCssStyles = host.exists(appStylesPath)
+  const hasSassStyles = host.exists(appStylesSassPath)
+  const hasStyles = hasCssStyles || hasSassStyles
+  const styleTemplate = hasStyles ? `styleUrl: './app.component.${hasCssStyles ? 'css' : 'scss'}',` : ''
 
-  const appComponentBuffer = host.read(appComponentPath);
+  const appComponentBuffer = host.read(appComponentPath)
   if (appComponentBuffer) {
-    const appComponentContent = appComponentBuffer.toString();
-    const isOnPush = appComponentContent.includes(
-      'ChangeDetectionStrategy.OnPush'
-    );
-    const onPushTemplate = isOnPush
-      ? `changeDetection: ChangeDetectionStrategy.OnPush,`
-      : '';
+    const appComponentContent = appComponentBuffer.toString()
+    const isOnPush = appComponentContent.includes('ChangeDetectionStrategy.OnPush')
+    const onPushTemplate = isOnPush ? `changeDetection: ChangeDetectionStrategy.OnPush,` : ''
 
     if (isInlineTemplate) {
       host.overwrite(
         appComponentPath,
         `
-        import { Component, CUSTOM_ELEMENTS_SCHEMA${
-          isOnPush ? ', ChangeDetectionStrategy' : ''
-        } } from '@angular/core'
+        import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
         import { CommonModule } from '@angular/common'
         import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
       
@@ -58,15 +50,13 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
           </bal-app>\`,
         })
         export class AppComponent {}
-        `
-      );
+        `,
+      )
     } else {
       host.overwrite(
         appComponentPath,
         `
-    import { Component, CUSTOM_ELEMENTS_SCHEMA${
-      isOnPush ? ', ChangeDetectionStrategy' : ''
-    } } from '@angular/core'
+    import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
     import { CommonModule } from '@angular/common'
     import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
   
@@ -79,8 +69,8 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
       ${styleTemplate}
     })
     export class AppComponent {}
-    `
-      );
+    `,
+      )
 
       host.overwrite(
         appTemplatePath,
@@ -96,10 +86,10 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
     <bal-footer>
       <!-- Footer content -->
     </bal-footer>
-    </bal-app>`
-      );
+    </bal-app>`,
+      )
     }
   } else {
-    throw new SchematicsException(`Could not find (${appComponentPath})`);
+    throw new SchematicsException(`Could not find (${appComponentPath})`)
   }
-};
+}
