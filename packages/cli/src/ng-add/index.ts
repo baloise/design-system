@@ -1,5 +1,5 @@
 import { Rule, SchematicContext, Tree, chain, mergeWith } from '@angular-devkit/schematics'
-import { addDependency, addRootProvider } from '@schematics/angular/utility/index'
+import { addDependency, addRootProvider } from '@schematics/angular/utility'
 
 import { SchemaOptions } from './schema'
 import { createPolyfillsFile } from './generators/polyfills.gen'

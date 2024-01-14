@@ -42,10 +42,6 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 
 ## Installation
 
-Lets install the schematics to configure and add the design system to an Angular project.
-
-<Code language="bash" noPreview code={`npm install @baloise/design-system-components-schematics`} />
-
 <InfoQuote>
 If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Baloise Design System.
 
@@ -61,12 +57,16 @@ nx g @ngneat/transloco:ng-add
 
 </InfoQuote>
 
+Lets install the schematics to configure and add the design system to an Angular project.
+
+<Code language="bash" noPreview code={`npm install @baloise/design-system-cli`} />
+
 Install the library using Angular CLI:
 
 ```bash
-ng add @baloise/design-system-schematics:ng-add
+ng add @baloise/design-system-cli:ng-add
 # On an nx workspace
-nx g @baloise/design-system-schematics:ng-add
+nx g @baloise/design-system-cli:ng-add
 ```
 
 ## Manual Installation
