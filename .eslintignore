@@ -45,3 +45,6 @@ packages/components-vue/src/proxies.ts
 packages/components-vue/.build/template/utils.ts
 
 packages/components-angular/**/*.d.ts
+packages/components-angular/esm2020
+packages/components-angular/fesm2015
+packages/components-angular/fesm2020
