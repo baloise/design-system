@@ -131,6 +131,11 @@ export class InputDate implements ComponentInterface, Loggable, BalConfigObserve
   }
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a keyboard key has pressed.
    */
   @Event() balKeyPress!: EventEmitter<BalEvents.BalInputDateKeyPressDetail>
