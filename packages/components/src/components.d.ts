@@ -148,10 +148,6 @@ export namespace Components {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
-         */
-        "bottomRounded": undefined | boolean;
-        /**
           * The color to use from your application's color palette.
          */
         "color": BalProps.BalButtonColor;
@@ -239,10 +235,6 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": BalProps.BalButtonTarget;
-        /**
-          * If `true` the top corners get rounded
-         */
-        "topRounded": undefined | boolean;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -4883,10 +4875,6 @@ declare namespace LocalJSX {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
-         */
-        "bottomRounded"?: undefined | boolean;
-        /**
           * The color to use from your application's color palette.
          */
         "color"?: BalProps.BalButtonColor;
@@ -4990,10 +4978,6 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: BalProps.BalButtonTarget;
-        /**
-          * If `true` the top corners get rounded
-         */
-        "topRounded"?: undefined | boolean;
         /**
           * The value of the button, which is submitted with the form data.
          */

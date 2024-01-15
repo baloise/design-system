@@ -101,16 +101,6 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
-   * If `true` the top corners get rounded
-   */
-  @Prop() topRounded: undefined | boolean = undefined
-
-  /**
-   * If `true` the bottom corners get rounded
-   */
-  @Prop() bottomRounded: undefined | boolean = undefined
-
-  /**
    * Name of the left button icon
    */
   @Prop() icon = ''
