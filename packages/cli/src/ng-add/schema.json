@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "bds-ng-add",
+  "title": "Adds Baloise Design System to a project",
+  "type": "object",
+  "properties": {
+    "i18n": {
+      "description": "If the user is working with transloco.",
+      "x-prompt": "Are you working with transloco internationalization library?",
+      "type": "boolean",
+      "default": false
+    },
+    "region": {
+      "description": "The region of the of internationalization",
+      "x-prompt": "For which region is the app developed",
+      "type": "string",
+      "default": "CH",
+      "enum": ["CH", "DE", "BE", "LU"]
+    },
+    "project": {
+      "description": "The project name.",
+      "type": "string",
+      "$default": {
+        "$source": "projectName"
+      }
+    }
+  },
+  "required": []
+}

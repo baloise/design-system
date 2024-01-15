@@ -1,10 +1,10 @@
-import { Component, Injector, Inject } from '@angular/core'
+import { Component, Injector, Inject, ChangeDetectorRef } from '@angular/core'
 
 import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-system-components-angular/common'
 
 @Component({
   selector: 'bal-ng-error',
-  template: `<ng-content *ngIf="hasError"></ng-content>`,
+  template: `<ng-content *ngIf="(ready | async) && hasError"></ng-content>`,
   styles: [
     `
       :host {
@@ -14,7 +14,7 @@ import { BalNgErrorComponent as BalNgErrorComponentBase } from '@baloise/design-
   ],
 })
 export class BalNgErrorComponent extends BalNgErrorComponentBase {
-  constructor(@Inject(Injector) injector: Injector) {
-    super(injector)
+  constructor(@Inject(Injector) injector: Injector, @Inject(ChangeDetectorRef) cd: ChangeDetectorRef) {
+    super(injector, cd)
   }
 }

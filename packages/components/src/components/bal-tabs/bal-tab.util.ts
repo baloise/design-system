@@ -8,9 +8,10 @@ interface Option {
   active?: boolean
   disabled?: boolean
   done?: boolean
-  hidden?: boolean
+  invisible?: boolean
   failed?: boolean
   prevent?: boolean
+  hidden?: boolean // deprecated
 }
 
 export const newBalTabOption = (option: Option): BalTabOption => {
@@ -21,6 +22,7 @@ export const newBalTabOption = (option: Option): BalTabOption => {
     active: false,
     disabled: false,
     hidden: false,
+    invisible: false,
     prevent: false,
     navigate: undefined as any,
     ...option,
