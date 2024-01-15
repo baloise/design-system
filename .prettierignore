@@ -23,6 +23,7 @@ packages/output-targets/*/README.md
 packages/tokens/src/tokens.ts
 packages/components/loader/
 packages/components/www/
+packages/components/components/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
