@@ -23,6 +23,7 @@ packages/output-targets/*/README.md
 packages/tokens/src/tokens.ts
 packages/components/loader/
 packages/components/www/
+packages/components/components/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
@@ -51,8 +52,7 @@ packages/components-angular/src/directives/proxies.module.ts
 packages/components-angular/esm2020
 packages/components-angular/fesm2015
 packages/components-angular/fesm2020
-packages/components-angular/**/*d.ts
-
+packages/components-angular/**/*.d.ts
 packages/components/src/utils/constants/icons.constant.ts
 packages/css/css
 packages/components/components

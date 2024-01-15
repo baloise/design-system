@@ -22,15 +22,15 @@ Check out the [documentation](https://baloise-design-system.vercel.app) or direc
 
 ## Packages
 
-| Package                                                        | Status                                                                         | Description                                                             |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Package                                                 | Status                                                                         | Description                                                             |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | [Components](https://baloise-design-system.vercel.app)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.              |
 | [Components Angular](https://baloise-design-system.vercel.app) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
 | [Components Vue](https://baloise-design-system.vercel.app)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                    |
 | [Components React](https://baloise-design-system.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)   | React component proxies based on the the core package.                  |
 | [Components Table](https://baloise-design-system.vercel.app)   | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)   | Integration library for AG-Grid with styles and renderer functions      |
 | [Tokens](https://baloise-design-system.vercel.app)             | ![npm](https://img.shields.io/npm/v/@baloise/design-system-tokens)             | Design Tokens like color and spacing.                                   |
-| [Styles](https://baloise-design-system.vercel.app)             | ![npm](https://img.shields.io/npm/v/@baloise/design-system-styles)             | Basic CSS styles with utility classes.                                  |
+| [CSS](https://baloise-design-system.vercel.app)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-css)                | Basic CSS styles with utility classes.                                  |
 | [Icons](https://baloise-design-system.vercel.app)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                         |
 | [Favicons](https://baloise-design-system.vercel.app)           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-favicons)           | Favicons of the design system.                                          |
 | [Maps](https://baloise-design-system.vercel.app)               | ![npm](https://img.shields.io/npm/v/@baloise/design-system-maps)               | Google Maps styles and icons.                                           |
