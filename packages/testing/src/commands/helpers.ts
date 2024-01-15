@@ -16,9 +16,9 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
-export const rIC = (callback: () => void) => {
+export const rIC = (callback: () => void, timeout = 5000) => {
   if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback, { timeout: 1000 })
+    ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
   }
@@ -28,8 +28,8 @@ export const waitAfterFramePaint = () => {
   return new Promise(resolve => raf(() => runHighPrioritizedTask(resolve)))
 }
 
-export const waitAfterIdleCallback = () => {
-  return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve)))
+export const waitAfterIdleCallback = (timeout?: number) => {
+  return new Promise(resolve => rIC(() => runHighPrioritizedTask(resolve), timeout))
 }
 
 export const raf = (h: any) => {
