@@ -174,7 +174,13 @@ export class Button implements ComponentInterface {
   }
 
   componentWillLoad() {
-    this.inheritAttributes = inheritAttributes(this.el, ['title', 'aria-label', 'aria-controls', 'aria-hidden', 'tabindex'])
+    this.inheritAttributes = inheritAttributes(this.el, [
+      'title',
+      'aria-label',
+      'aria-controls',
+      'aria-hidden',
+      'tabindex',
+    ])
   }
 
   componentDidRender() {
