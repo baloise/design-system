@@ -51,6 +51,7 @@ const main = async () => {
               ...replacementsSpacing.from,
               ...replacementsTypography.from,
               ...replacementsZIndex.from,
+              ...replacementsSizing.from,
             ]
             const to = [
               ...replacementsBorder.to,
@@ -65,6 +66,7 @@ const main = async () => {
               ...replacementsSpacing.to,
               ...replacementsTypography.to,
               ...replacementsZIndex.to,
+              ...replacementsSizing.to,
             ]
 
             const modifiedClasses = classes.map(className => {
@@ -707,6 +709,11 @@ const replacementsTypography = {
 const replacementsZIndex = {
   from: [/has-z-index/g],
   to: ['z-index'],
+}
+
+const replacementsSizing = {
+  from: [/is-fullheight/g, /is-fullwidth/g],
+  to: ['h-full', 'w-full'],
 }
 
 main()
