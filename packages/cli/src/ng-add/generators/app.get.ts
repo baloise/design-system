@@ -24,57 +24,17 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
     if (isInlineTemplate) {
       host.overwrite(
         appComponentPath,
-        `
-        import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
-        import { CommonModule } from '@angular/common'
-        import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
-      
-        @Component({
-          selector: '${prefix}-root',
-          standalone: true,${onPushTemplate}
-          schemas: [CUSTOM_ELEMENTS_SCHEMA],
-          imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
-          ${styleTemplate}
-          template: \` <bal-app class="has-sticky-footer">
-            <header>
-              <!-- Header content -->
-            </header>
-            <main class="container">
-              <!-- Your application content -->
-              <bal-heading>Hello World!</bal-heading>
-              <bal-button>Button</bal-button>
-            </main>
-            <bal-footer>
-              <!-- Footer content -->
-            </bal-footer>
-          </bal-app>\`,
-        })
-        export class AppComponent {}
-        `,
-      )
-    } else {
-      host.overwrite(
-        appComponentPath,
-        `
-    import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
-    import { CommonModule } from '@angular/common'
-    import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
-  
-    @Component({
-      selector: '${prefix}-root',
-      standalone: true,${onPushTemplate}
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
-      templateUrl: './app.component.html',
-      ${styleTemplate}
-    })
-    export class AppComponent {}
-    `,
-      )
+        `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
 
-      host.overwrite(
-        appTemplatePath,
-        `<bal-app class="has-sticky-footer">
+@Component({
+  selector: '${prefix}-root',
+  standalone: true,${onPushTemplate}
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
+  ${styleTemplate}
+  template: \` <bal-app class="has-sticky-footer">
     <header>
       <!-- Header content -->
     </header>
@@ -86,7 +46,45 @@ export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
     <bal-footer>
       <!-- Footer content -->
     </bal-footer>
-    </bal-app>`,
+  </bal-app>\`,
+})
+export class AppComponent {}
+`,
+      )
+    } else {
+      host.overwrite(
+        appComponentPath,
+        `import { Component, CUSTOM_ELEMENTS_SCHEMA${isOnPush ? ', ChangeDetectionStrategy' : ''} } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { BalLayoutBundle, BalHeading, BalButton } from '@baloise/design-system-components-angular/standalone'
+
+@Component({
+  selector: '${prefix}-root',
+  standalone: true,${onPushTemplate}
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, BalLayoutBundle, BalHeading, BalButton],
+  templateUrl: './app.component.html',
+  ${styleTemplate}
+})
+export class AppComponent {}
+`,
+      )
+
+      host.overwrite(
+        appTemplatePath,
+        `<bal-app class="has-sticky-footer">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>`,
       )
     }
   } else {

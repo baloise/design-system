@@ -23,7 +23,7 @@ export default function (options: SchemaOptions): Rule {
 
     actions.push(
       addRootProvider(options.project, ({ code, external }) => {
-        return code`,
+        return code`
     ${external('provideBaloiseDesignSystem', '@baloise/design-system-components-angular/standalone')}({
       defaults: {
         region: '${options.region}',
@@ -36,7 +36,7 @@ export default function (options: SchemaOptions): Rule {
       actions.push(mergeWith(createI18nFile()))
       actions.push(
         addRootProvider(options.project, ({ code, external }) => {
-          return code`,
+          return code`
     {
       provide: ${external('APP_INITIALIZER', '@angular/core')},
       useFactory: ${external('initializeI18n', './i18n.initialize')},
