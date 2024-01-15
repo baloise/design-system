@@ -66,6 +66,7 @@ export class DataValue {
             ...buttonEl.class(),
           }}
           data-testid="bal-data-value-button"
+          title="myLabel"
           square
           outlined
           color="text"
