@@ -18,7 +18,7 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
 
 export const rIC = (callback: () => void) => {
   if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback, { timeout: 4000 })
+    ;(window as any).requestIdleCallback(callback, { timeout: 1000 })
   } else {
     setTimeout(callback, 32)
   }

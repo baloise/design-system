@@ -28,7 +28,7 @@ declare const requestAnimationFrame: any
 
 export const rIC = (callback: () => void) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback, { timeout: 4000 })
+    ;(window as any).requestIdleCallback(callback, { timeout: 1000 })
   } else {
     setTimeout(callback, 32)
   }
