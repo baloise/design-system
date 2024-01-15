@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/baloise/design-system/issues"
   },
-  "homepage": "https://design.baloise.dev",
+  "homepage": "https://baloise-design-system.vercel.app",
   "contributors": [
     "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
     "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
@@ -25,6 +25,9 @@
     "Andreas Stebler <andreas.stebler@baloise.ch> (https://github.com/Clastzoo)"
   ],
   "license": "Apache-2.0",
+  "bin": {
+    "bds-migrate-to-styles": "./bin/index.mjs"
+  },
   "schematics": "./src/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^17.0.10",

@@ -37,9 +37,6 @@
     "test:watch": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
-  "bin": {
-    "bds-styles-migrate": "./bin/index.mjs"
-  },
   "main": "scss/baloise-design-system.sass",
   "style": "css/baloise-design-system.css",
   "files": [
@@ -49,8 +46,8 @@
     "src/"
   ],
   "dependencies": {
-    "@baloise/design-system-fonts": "15.1.0",
-    "@baloise/design-system-tokens": "15.1.0",
+    "@baloise/design-system-fonts": "15.1.1",
+    "@baloise/design-system-tokens": "15.1.1",
     "cheerio": "1.0.0-rc.12",
     "prompts": "2.4.2",
     "replace-in-file": "7.0.2"
