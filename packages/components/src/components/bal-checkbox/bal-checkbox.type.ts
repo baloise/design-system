@@ -12,6 +12,7 @@ export interface BalCheckboxOption {
   disabled: boolean
   readonly: boolean
   required: boolean
-  hidden: boolean
+  nonSubmit: boolean
   invalid: boolean
+  hidden: boolean // deprecated
 }

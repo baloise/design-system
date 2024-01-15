@@ -224,6 +224,11 @@ export class Datepicker
   @Prop({ attribute: 'allowed-dates' }) allowedDates: BalProps.BalDatepickerCallback | undefined = undefined
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when a option got selected.
    */
   @Event() balChange!: EventEmitter<BalEvents.BalDatepickerChangeDetail>
