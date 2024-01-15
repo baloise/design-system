@@ -22,7 +22,7 @@ const meta: Meta<Args> = {
     <div class="bg-green-2 p-normal w-full">Slide 2</div>
   </bal-carousel-item>
   <bal-carousel-item>
-    <div class="bg-green-3 p-normal w-full">Slide 3</div>
+    <div class="bg-green p-normal w-full">Slide 3</div>
   </bal-carousel-item>
   <bal-carousel-item>
     <div class="bg-green-4 p-normal w-full">Slide 4</div>

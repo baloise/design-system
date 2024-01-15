@@ -57,7 +57,7 @@ export const FormWizard = Story({
       <bal-progress-bar value="75"></bal-progress-bar>
     </header>
     <main>
-      <div class="bg-green-3" style="height: 16rem"></div>
+      <div class="bg-green" style="height: 16rem"></div>
       <div class="container is-compact" style="margin-top: -12rem">
         <bal-card>
           <bal-card-title>How did the damage occur?</bal-card-title>
@@ -87,7 +87,7 @@ export const FormWizard = Story({
 export const FormWizardMobile = Story({
   ...withRender(
     () => `<bal-app class="sticky-footer">
-    <header class="bg-green-3">
+    <header class="bg-green">
       <bal-stack py="small" space="large" class="container">
         <bal-content>
           <bal-heading level="h1" visual-level="h3" auto-level="h5">What happened?</bal-heading>
