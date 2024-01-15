@@ -1,7 +1,15 @@
 import React from 'react'
 import { Clipboard } from '../../Clipboard'
 
-export const CssTable = ({ tokens, css, example }: { tokens: any; css: string; example?: any }) => {
+export const CssTable = ({
+  tokens,
+  css,
+  example,
+}: {
+  tokens: any
+  css: string
+  example?: (item: { key: string; name: string; value: string }) => any
+}) => {
   const keys = Object.keys(tokens).filter(k => tokens[k] && tokens[k].value)
 
   const list = keys.map(key => ({

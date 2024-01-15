@@ -36,6 +36,36 @@ import { Banner, Lead, Code, CssFlexboxGap, Footer, LinkCard, LinkCards } from '
 `}
 />
 
+## Column Gap
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap column-gap-x-small mb-normal bg-red-2">
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">3</div>
+</div>
+<div class="flex flex-wrap column-gap-large mb-normal bg-red-2 mt-normal">
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">2</div>
+  <div class="flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">3</div>
+</div>
+`}
+/>
+
+## Row Gap
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap row-gap-large mb-normal bg-red-2">
+  <div class="min-w-full flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">1</div>
+  <div class="min-w-full flex-1 bg-green-3 radius-normal flex justify-content-center align-items-center">2</div>
+</div>
+`}
+/>
+
 <Footer>
   <LinkCards>
     <LinkCard

@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssSizingWidth, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Sizing/Width"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Width" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>Determines the box-shadow or text-shadow effect applied to an element.</Lead>
+
+## Classes
+
+<CssSizingWidth />
+
+<Code
+  language="html"
+  code={`
+<div class="flex flex-wrap align-items-center justify-content-center">
+    <div class="radius-normal bg-yellow-2 w-12rem p-small m-small">
+        <div class="w-full radius-normal bg-yellow-4 p-small flex align-items-center justify-content-center">w-full</div>
+    </div>
+    <div class="radius-normal bg-yellow-2 w-12rem p-small m-small">
+        <div class="w-auto radius-normal bg-yellow-4 p-small flex align-items-center justify-content-center">w-auto</div>
+    </div>
+    <div class="radius-normal bg-yellow-2 w-12rem p-small m-small">
+        <div class="w-min radius-normal bg-yellow-4 p-small flex align-items-center justify-content-center">w-min</div>
+    </div>
+    <div class="radius-normal bg-yellow-2 w-12rem p-small m-small">
+        <div class="w-max radius-normal bg-yellow-4 p-small flex align-items-center justify-content-center">w-max</div>
+    </div>
+</div>
+`}
+/>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>
