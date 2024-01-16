@@ -1,6 +1,6 @@
 describe('bal-label', () => {
   context('a11y', () => {
-    beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-label/test/bal-label.cy.html'))
+    beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-label/test/bal-label.a11y.html'))
 
     describe('have the AA standard', () => {
       it('basic', () => {
