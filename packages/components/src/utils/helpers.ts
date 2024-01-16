@@ -26,9 +26,9 @@ import {
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
-export const rIC = (callback: () => void) => {
+export const rIC = (callback: () => void, timeout = 5000) => {
   if (balBrowser.hasWindow && 'requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(callback, { timeout: 1000 })
+    ;(window as any).requestIdleCallback(callback, { timeout })
   } else {
     setTimeout(callback, 32)
   }
