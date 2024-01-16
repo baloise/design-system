@@ -684,10 +684,10 @@ const replacementsTypography = {
     /is-uppercase/g,
     /is-family-text/g,
     /is-family-title/g,
+    ...textAlignment.from,
+    ...textSizeLegacy.from,
     /has-text/g,
     /is-size/g,
-    ...textSizeLegacy.from,
-    ...textAlignment.from,
   ],
   to: [
     'text-weight',
@@ -699,10 +699,10 @@ const replacementsTypography = {
     'uppercase',
     'font-family-text',
     'font-family-title',
-    'text',
-    'text',
-    ...textSizeLegacy.to,
     ...textAlignment.to,
+    ...textSizeLegacy.to,
+    'text',
+    'text',
   ],
 }
 
