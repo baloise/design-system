@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The Baloise Design-System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "scripts": {
     "build": "tsc -p tsconfig.json"
