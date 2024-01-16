@@ -39,7 +39,6 @@ const main = async () => {
             const classes = $(element).attr('class').split(' ')
 
             const from = [
-              ''
               ...replacementsBorder.from,
               ...replacementsColors.from,
               ...replacementsCore.from,
