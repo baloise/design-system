@@ -28,6 +28,10 @@
   "bin": {
     "bds-migrate-to-styles": "./bin/index.mjs"
   },
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "schematics": "./src/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^17.0.10",

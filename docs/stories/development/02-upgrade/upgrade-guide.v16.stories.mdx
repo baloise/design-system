@@ -1,0 +1,231 @@
+import { Meta, Markdown } from '@storybook/addon-docs'
+import {
+  PackageTable,
+  Banner,
+  Lead,
+  Footer,
+  LinkCard,
+  LinkCards,
+  CodeSandbox,
+  InfoQuote,
+  WarningQuote,
+  Code,
+  AngularFramework,
+  NotAngularFramework,
+  HTMLFramework,
+  ReactFramework,
+  VueFramework,
+  DiffSource,
+} from '../../../.storybook/blocks'
+
+<Meta title="Development/Upgrade Guides/Updating to v16" />
+
+<Banner label="Updating to v16" section="Development/Upgrade Guides" />
+
+<Lead>
+Updating from v15 to v16
+
+The objective of this breaking change is to standardize the design tokens, facilitating their export to platforms such as
+Figma and others. With the introduction of these new design tokens, we can automatically generate CSS utility classes.
+This enhancement extends functionality, particularly in responsive design and pseudo-states.
+
+As part of this change, we are introducing a new package called `@baloise/design-system-styles`.
+
+</Lead>
+
+<InfoQuote>
+
+The following workflow walks you through the upgrade steps.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance
+rather than strict instructions.
+
+</InfoQuote>
+
+<AngularFramework>
+
+<br />
+
+**Lets start:**
+
+```bash
+npm add -E @baloise/design-system-components-angular@16
+```
+
+If there are more `@baloise/design-system` dependencies in the projects `package.json` file upgrade them as well.
+
+</AngularFramework>
+
+## CSS Utilities
+
+### Non Breaking Upgrade
+
+First update the `@baloise` packages to v16.
+
+The deprecated package `@baloise/design-system-styles` is still available. However in the version v16 not automatically installed.
+
+<AngularFramework>
+
+<DiffSource
+  code={`import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideBaloiseDesignSystem({
+      defaults: {
+        region: 'CH',
++       cssUtilities: 'css',
+      }
+    })]
+};
+`}
+/>
+
+</AngularFramework>
+
+<HTMLFramework>
+
+<DiffSource
+  code={`import { initialize } from '@baloise/design-system-components'
+
+initialize({
+
+- cssUtilities: 'css',
+  })
+  `}
+  />
+
+Or directly over the window.
+
+```js
+window.BaloiseDesignSystem.config.cssUtilities = 'css'
+```
+
+</HTMLFramework>
+
+<ReactFramework>
+
+<DiffSource
+  code={`import './App.scss'
+import {
+  useBaloiseDesignSystem,
+  ...
+} from '@baloise/design-system-components-react'
+
+function App() {
+useBaloiseDesignSystem({
+defaults: {
+
+-     cssUtilities: 'css',
+      }
+
+  })
+
+  return (
+
+  <BalApp className="has-sticky-footer">...</BalApp>) }
+
+export default App
+`}
+/>
+
+</ReactFramework>
+
+<VueFramework>
+
+<DiffSource
+  code={`import './main.scss'
+import { createBaloiseDesignSystem } from '@baloise/design-system-components-vue'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+.use(router)
+.use(
+createBaloiseDesignSystem({
+defaults: {
+region: 'CH',
+
+-       cssUtilities: 'css',
+        },
+      }),
+  )
+  .mount('#app')
+  `}
+  />
+
+</VueFramework>
+
+### Migrate to Styles
+
+1. Change the import from `@baloise/design-system-css` to `@baloise/design-system-styles`.
+
+<AngularFramework>
+- Check the `styles.scss` file and change the paths.
+
+```css
+// SASS mixins and variables
+@import '@baloise/design-system-styles/sass/mixins';
+
+// Resets CSS for all browser
+@import '@baloise/design-system-styles/css/normalize';
+@import '@baloise/design-system-styles/css/structure';
+
+// Custom font faces
+@import '@baloise/design-system-styles/css/font';
+
+// Core CSS, always required
+@import '@baloise/design-system-styles/css/core';
+
+// CSS utilities classes (optional)
+@import '@baloise/design-system-styles/css/utilities/background';
+@import '@baloise/design-system-styles/css/utilities/border';
+@import '@baloise/design-system-styles/css/utilities/elevation';
+@import '@baloise/design-system-styles/css/utilities/flex';
+@import '@baloise/design-system-styles/css/utilities/grid';
+@import '@baloise/design-system-styles/css/utilities/interaction';
+@import '@baloise/design-system-styles/css/utilities/layout';
+@import '@baloise/design-system-styles/css/utilities/sizing';
+@import '@baloise/design-system-styles/css/utilities/spacing';
+@import '@baloise/design-system-styles/css/utilities/typography';
+```
+
+- Check the component style files if the `mixins` are used and change the path.¬
+
+```css
+@import '@baloise/design-system-styles/sass/mixins';
+```
+</AngularFramework>
+
+2. Install the CLI to help with the migration.
+
+```bash
+npm add -D -E @baloise/design-system-cli@16
+```
+
+3. Run the migration cli to rename the changed CSS utility classes.
+
+```bash
+
+```
+
+## Components
+
+### Button
+
+Properties `topRounded` and `bottomRounded` has been removed, due to not match the design criterias.
+
+### Navigation
+
+Component `bal-navigation` has been removed and replaced with `bal-nav` to improve performance and SEO.
+
+## Need Help Upgrading?​
+
+If you need help upgrading, please create a [GitHub Upgrade Issue](https://github.com/baloise/design-system/issues/new/choose).
+
+<Footer />

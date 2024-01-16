@@ -8,22 +8,22 @@ export const addStyles = (host: Tree) => {
   }
   const content = configBuffer.toString()
 
-  if (!content.includes('@baloise/design-system-css/css/core')) {
+  if (!content.includes('@baloise/design-system-styles/css/core')) {
     const newContent =
       content +
       `
 // SASS mixins and variables
-@import '@baloise/design-system-css/sass/mixins';
+@import '@baloise/design-system-styles/sass/mixins';
 
 // Resets CSS for all browser
-@import '@baloise/design-system-css/css/normalize';
-@import '@baloise/design-system-css/css/structure';
+@import '@baloise/design-system-styles/css/normalize';
+@import '@baloise/design-system-styles/css/structure';
 
 // Custom font faces
-@import '@baloise/design-system-css/css/font';
+@import '@baloise/design-system-styles/css/font';
 
 // Core CSS, always required
-@import '@baloise/design-system-css/css/core';
+@import '@baloise/design-system-styles/css/core';
 
 // CSS utilities classes (optional)
 @import '@baloise/design-system-styles/css/utilities/background';

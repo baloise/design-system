@@ -23,7 +23,7 @@ export const Banner = ({ of, children, color, label, section, puzzle }) => {
   const definedColor = (subtitle || '').includes('Components') ? 'red' : color || 'primary'
   const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
   const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
-  const text = background === 'primary' ? 'text-white' : 'text-primary'
+  const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
   let className = `sb-unstyled radius-bottom-large pt-large pb-medium px-medium ${background} ${text}`
 
   const puzzles = {

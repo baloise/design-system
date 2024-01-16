@@ -40,7 +40,6 @@
   "main": "scss/baloise-design-system.sass",
   "style": "css/baloise-design-system.css",
   "files": [
-    "bin/",
     "css/",
     "sass/",
     "src/"

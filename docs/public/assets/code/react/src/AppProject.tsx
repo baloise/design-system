@@ -15,7 +15,7 @@ export default function App() {
   useBaloiseDesignSystem();
 
   return (
-    <BalApp className="sticky-footer">
+    <BalApp className="has-sticky-footer">
       <header>
         <BalNavbar>
           <BalNavbarBrand href="/" target="_blank">

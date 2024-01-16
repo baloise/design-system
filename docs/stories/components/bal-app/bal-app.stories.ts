@@ -14,7 +14,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag: 'bal-app' }),
   },
   ...withRender(
-    () => `<bal-app class="sticky-footer">
+    () => `<bal-app class="has-sticky-footer">
   <header>
     <bal-navbar>
       <bal-navbar-brand>App Title</bal-navbar-brand>
@@ -46,7 +46,7 @@ export const Basic = Story()
 
 export const FormWizard = Story({
   ...withRender(
-    () => `<bal-app class="sticky-footer">
+    () => `<bal-app class="has-sticky-footer">
     <header class="bg-white">
       <bal-stack py="small" space="large" class="container">
         <bal-logo></bal-logo>
@@ -86,7 +86,7 @@ export const FormWizard = Story({
 
 export const FormWizardMobile = Story({
   ...withRender(
-    () => `<bal-app class="sticky-footer">
+    () => `<bal-app class="has-sticky-footer">
     <header class="bg-green">
       <bal-stack py="small" space="large" class="container">
         <bal-content>
