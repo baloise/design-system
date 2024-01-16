@@ -80,11 +80,14 @@ export class ValueAccessor implements ControlValueAccessor, AfterViewInit, OnDes
   }
 
   setInvalidState(isInvalid: boolean): void {
-    this.elementRef.nativeElement.invalid = isInvalid
+    const nativeElement = this.elementRef.nativeElement
+    if (nativeElement.autoInvalidOff !== true) {
+      nativeElement.invalid = isInvalid
 
-    const fieldComponent = findFieldComponent(this.elementRef)
-    if (fieldComponent) {
-      fieldComponent.invalid = isInvalid
+      const fieldComponent = findFieldComponent(this.elementRef)
+      if (fieldComponent) {
+        fieldComponent.invalid = isInvalid
+      }
     }
   }
 

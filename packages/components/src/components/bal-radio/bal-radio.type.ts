@@ -11,7 +11,8 @@ export interface BalRadioOption {
   disabled: boolean
   readonly: boolean
   required: boolean
-  hidden: boolean
+  nonSubmit: boolean
   invisible: boolean
   invalid: boolean
+  hidden: boolean // deprecated
 }
