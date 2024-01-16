@@ -1,5 +1,14 @@
 # @baloise/design-system-testing
 
+## 15.2.0
+
+### Patch Changes
+
+- [#1279](https://github.com/baloise/design-system/pull/1279) - Added a timeout of 5s to the waitAfterIdleCallback command
+
+- Updated dependencies [[`93d8edc3d`](https://github.com/baloise/design-system/commit/93d8edc3dc9b531d5cc33f7cc6223838505528e9)]:
+  - @baloise/design-system-components@15.2.0
+
 ## 15.1.1
 
 ### Patch Changes

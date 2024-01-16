@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 15.2.0
+
+### Patch Changes
+
+- [#1282](https://github.com/baloise/design-system/pull/1282) - The date component rerenders the calendar grid when min or max property was changed.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.2.0
+  - @baloise/design-system-fonts@15.2.0
+  - @baloise/design-system-icons@15.2.0
+  - @baloise/design-system-tokens@15.2.0
+
 ## 15.1.1
 
 ### Patch Changes
@@ -338,7 +350,7 @@ After upgrading the design system in your app, please take a moment to check if 
 | toast      | `--bal-z-index-toast`      | `1200`    | Default z-index for toast and snackbar messages.                                                                     |
 | tooltip    | `--bal-z-index-tooltip`    | `1300`    | Default z-index for tooltips.                                                                                        |
 
-Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs/foundation-elevation-design-tokens--page).
+Have a look at the [Z-Index documentation](https://baloise-design-system.vercel.app?path=/docs/foundation-elevation-design-tokens--page).
 
 ### Minor Changes
 

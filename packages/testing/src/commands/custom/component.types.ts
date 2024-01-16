@@ -13,7 +13,7 @@ declare namespace Cypress {
     /**
      * Waits until the component is fully loaded.
      */
-    waitForComponents(options?: Partial<Loggable>): Chainable<JQuery>
+    waitForComponents(options?: Partial<Loggable & Timeoutable>): Chainable<JQuery>
     /**
      * Gets component and waits until it is ready
      */
