@@ -10,7 +10,7 @@ export class BalModalController {
   tag = 'bal-modal'
   create(options: ModalOptions): Promise<HTMLBalModalElement> {
     /* tslint:disable-next-line */
-    if (typeof customElements !== 'undefined' && balBrowser.hasWindow) {
+    if (balBrowser.hasWindow && typeof customElements !== 'undefined') {
       return customElements.whenDefined(this.tag).then(() => {
         const element = document.createElement(this.tag) as HTMLBalModalElement
 
