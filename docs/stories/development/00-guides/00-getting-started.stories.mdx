@@ -36,8 +36,42 @@ If you do not have an Angular app yet create one with the [Angular CLI](https://
 - Use **SCSS** as stylesheet format to be able to breakpoint mixins and more.
 - For the translations use [\{TRANSLOCO\}](https://ngneat.github.io/transloco/).
 - For a reactive store use [Elf](https://ngneat.github.io/elf/).
+- Smart build system [Nx](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial).
 
 </InfoQuote>
+
+## Installation
+
+<InfoQuote>
+If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Baloise Design System.
+
+<Code language="bash" noPreview code={`npm install @ngneat/transloco`} />
+
+Configure project:
+
+```bash
+ng add @ngneat/transloco
+# On an nx workspace
+nx g @ngneat/transloco:ng-add
+```
+
+</InfoQuote>
+
+Lets install the schematics to configure and add the design system to an Angular project.
+
+<Code language="bash" noPreview code={`npm install @baloise/design-system-cli`} />
+
+Install the library using Angular CLI:
+
+```bash
+ng add @baloise/design-system-cli:ng-add
+# On an nx workspace
+nx g @baloise/design-system-cli:ng-add
+```
+
+## Manual Installation
+
+Continue here for the manual instalation guide without schematics.
 
 ### Zone.js
 
@@ -93,13 +127,13 @@ Open the `angular.json` file and make the following adjustment to `architect.bui
 }
 ```
 
-## Installation
+### Installation
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
 
 <Code language="bash" noPreview code={`npm install @baloise/design-system-components-angular`} />
 
-## Import Styles
+### Import Styles
 
 Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
 fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
@@ -141,7 +175,7 @@ However, if the application requires all styles regardless of payload size, simp
 @import '@baloise/design-system-css/css/typography';
 ```
 
-## Standalone
+### Standalone
 
 Use the `provideBaloiseDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
 
@@ -196,7 +230,7 @@ Add the `bal-app` to your `app.component.html` root element.
 </bal-app>
 ```
 
-## Module Based
+### Module Based
 
 Import the `BaloiseDesignSystemModule.forRoot()` into your angular root module.
 To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
@@ -249,7 +283,7 @@ Add the `bal-app` to your `app.component.html` root element.
 `}
 />
 
-### Shared Modules
+#### Shared Modules
 
 It is recommended to import the `BaloiseDesignSystemModule` in your `SharedModule` to provide access to the components and value accessors.
 

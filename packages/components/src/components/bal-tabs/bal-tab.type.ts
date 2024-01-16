@@ -9,7 +9,7 @@ export interface BalTabOption {
   target: BalProps.BalButtonTarget
   active: boolean
   disabled: boolean
-  hidden: boolean
+  invisible: boolean
   bubble: boolean | string
   prevent: boolean
   icon?: string
@@ -18,6 +18,7 @@ export interface BalTabOption {
   context?: BalProps.BalTabsContext
   navigate?: EventEmitter<MouseEvent>
   trackingData?: Attributes
+  hidden?: boolean // deprecated use invisible instead
 }
 
 export interface TabLineProps {

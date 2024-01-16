@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "aliases": ["init"],
+      "schema": "./ng-add/schema.json",
+      "factory": "./ng-add/index",
+      "description": "Add Baloise Design System"
+    }
+  }
+}

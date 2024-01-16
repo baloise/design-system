@@ -140,6 +140,11 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop({ mutable: true }) value?: string = ''
 
   /**
+   * If `true`, in Angular reactive forms the control will not be set invalid
+   */
+  @Prop({ reflect: true }) autoInvalidOff = false
+
+  /**
    * Emitted when the input value has changed..
    */
   @Event() balChange!: EventEmitter<BalEvents.BalTextareaChangeDetail>

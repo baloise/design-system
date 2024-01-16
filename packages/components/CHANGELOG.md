@@ -1,5 +1,47 @@
 # @baloise/design-system-components
 
+## 15.1.1
+
+### Patch Changes
+
+- [#1275](https://github.com/baloise/design-system/pull/1275) - In the navigation component the arrow symbol for overview links will only be rendered if the link is valid
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.1.1
+  - @baloise/design-system-fonts@15.1.1
+  - @baloise/design-system-icons@15.1.1
+  - @baloise/design-system-tokens@15.1.1
+
+## 15.1.0
+
+### Minor Changes
+
+- [#1271](https://github.com/baloise/design-system/pull/1271) - Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid.
+
+### Patch Changes
+
+- [#1266](https://github.com/baloise/design-system/pull/1266) - The term `hidden` is a reserved accessibility (a11y) value. Consequently, we found it necessary to rename our hidden properties for checkboxes, radio buttons, tabs, and steps.
+  The attribute remains in place for now, ensuring no breaking changes at this time.
+
+  The `hidden` property for the checkbox and radio has been updated and renamed to `non-submit.`
+  The `hidden` property for the tabs and steps has been updated and renamed to `invisible.`
+
+- [#1264](https://github.com/baloise/design-system/pull/1264) - The radio and checkbox group component now updates its children when there are changes in the disabled or invalid status.
+
+- [#1260](https://github.com/baloise/design-system/pull/1260) - The horizontal form field now lacks right padding, and the label is aligned to the right.
+
+- [#1265](https://github.com/baloise/design-system/pull/1265) - Corrected the z-index value for the carousel component with sticky controls.
+
+- [#1261](https://github.com/baloise/design-system/pull/1261) - The navigation component now provides enhanced support for colored service cards on mobile resolutions.
+
+- [#1269](https://github.com/baloise/design-system/pull/1269) - Enable vertical scrolling for the `carousel` with tab controls on mobile devices.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.1.0
+  - @baloise/design-system-fonts@15.1.0
+  - @baloise/design-system-icons@15.1.0
+  - @baloise/design-system-tokens@15.1.0
+
 ## 15.0.2
 
 ### Patch Changes
@@ -296,7 +338,7 @@ After upgrading the design system in your app, please take a moment to check if 
 | toast      | `--bal-z-index-toast`      | `1200`    | Default z-index for toast and snackbar messages.                                                                     |
 | tooltip    | `--bal-z-index-tooltip`    | `1300`    | Default z-index for tooltips.                                                                                        |
 
-Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs/foundation-elevation-design-tokens--page).
+Have a look at the [Z-Index documentation](https://baloise-design-system.vercel.app?path=/docs/foundation-elevation-design-tokens--page).
 
 ### Minor Changes
 
