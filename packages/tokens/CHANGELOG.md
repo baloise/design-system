@@ -1,5 +1,7 @@
 # @baloise/design-system-tokens
 
+## 15.2.0
+
 ## 15.1.1
 
 ## 15.1.0

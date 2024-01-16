@@ -1,5 +1,12 @@
 # e2e-tests
 
+## 13.6.24
+
+### Patch Changes
+
+- Updated dependencies [[`93d8edc3d`](https://github.com/baloise/design-system/commit/93d8edc3dc9b531d5cc33f7cc6223838505528e9)]:
+  - @baloise/design-system-components@15.2.0
+
 ## 13.6.23
 
 ### Patch Changes
