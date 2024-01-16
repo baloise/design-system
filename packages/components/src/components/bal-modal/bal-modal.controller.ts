@@ -13,6 +13,7 @@ export class BalModalController {
     if (typeof customElements !== 'undefined' && balBrowser.hasWindow) {
       return customElements.whenDefined(this.tag).then(() => {
         const element = document.createElement(this.tag) as HTMLBalModalElement
+
         // convert the passed in overlay options into props
         // that get passed down into the new overlay
         Object.assign(element, options)
