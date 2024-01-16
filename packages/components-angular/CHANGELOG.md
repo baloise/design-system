@@ -100,6 +100,10 @@
   export class AppComponent {}
   ```
 
+#### Webpack builder
+
+For projects based on the builder `@angular-devkit/build-angular:browser` use the `@baloise/design-system-components-angular/legacy`.
+
 ### Patch Changes
 
 - Updated dependencies [[`eb99be527`](https://github.com/baloise/design-system/commit/eb99be527b27b61c39e0477fd74f64109a6f9609)]:
