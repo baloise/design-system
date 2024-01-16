@@ -78,14 +78,14 @@ export const PackageTable = ({ children }) => {
     </tr>
     <tr>
       <td>
-        <a href="https://github.com/baloise/design-system/blob/main/packages/styles/CHANGELOG.md">Styles</a>
+        <a href="https://github.com/baloise/design-system/blob/main/packages/cli/CHANGELOG.md">CLI</a>
       </td>
       <td>
-        <a href="https://www.npmjs.com/package/@baloise/design-system-styles">
-          <img src="https://img.shields.io/npm/v/@baloise/design-system-styles" alt="npm" />
+        <a href="https://www.npmjs.com/package/@baloise/design-system-cli">
+          <img src="https://img.shields.io/npm/v/@baloise/design-system-cli" alt="npm" />
         </a>
       </td>
-      <td>Basic CSS styles with utility classes.</td>
+      <td>CLI to scaffold an angular project or migration helpers.</td>
     </tr>
     <tr>
       <td>
@@ -130,6 +130,17 @@ export const PackageTable = ({ children }) => {
         </a>
       </td>
       <td>Google Maps styles and icons.</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://github.com/baloise/design-system/blob/main/packages/styles/CHANGELOG.md">Styles</a>
+      </td>
+      <td>
+        <a href="https://www.npmjs.com/package/@baloise/design-system-styles">
+          <img src="https://img.shields.io/npm/v/@baloise/design-system-styles" alt="npm" />
+        </a>
+      </td>
+      <td>Basic CSS styles with utility classes.</td>
     </tr>
     <tr>
       <td>

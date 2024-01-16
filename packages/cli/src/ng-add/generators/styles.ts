@@ -26,16 +26,16 @@ export const addStyles = (host: Tree) => {
 @import '@baloise/design-system-css/css/core';
 
 // CSS utilities classes (optional)
-@import '@baloise/design-system-css/css/border';
-@import '@baloise/design-system-css/css/color';
-@import '@baloise/design-system-css/css/display';
-@import '@baloise/design-system-css/css/flex';
-@import '@baloise/design-system-css/css/grid';
-@import '@baloise/design-system-css/css/opacity';
-@import '@baloise/design-system-css/css/radius';
-@import '@baloise/design-system-css/css/shadow';
-@import '@baloise/design-system-css/css/spacing';
-@import '@baloise/design-system-css/css/typography';
+@import '@baloise/design-system-styles/css/utilities/background';
+@import '@baloise/design-system-styles/css/utilities/border';
+@import '@baloise/design-system-styles/css/utilities/elevation';
+@import '@baloise/design-system-styles/css/utilities/flex';
+@import '@baloise/design-system-styles/css/utilities/grid';
+@import '@baloise/design-system-styles/css/utilities/interaction';
+@import '@baloise/design-system-styles/css/utilities/layout';
+@import '@baloise/design-system-styles/css/utilities/sizing';
+@import '@baloise/design-system-styles/css/utilities/spacing';
+@import '@baloise/design-system-styles/css/utilities/typography';
 `
     host.overwrite(filePath, newContent)
   }
