@@ -38,6 +38,27 @@ rather than strict instructions.
 
 </InfoQuote>
 
+<AngularFramework>
+
+## Angular Builder
+
+Check your Angular builder at `projects.angular.architect.build.builder` in the `angular.json` file. This defines
+which Baloise Design System Components library the project requires. See table below.
+
+<Markdown>
+  {`
+| Builder                                         | Package                                                      |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| \`@angular-devkit/build-angular:browser\`         | \`@baloise/design-system-components-angular/legacy\`           |
+| \`@angular-devkit/build-angular:browser-esbuild\` | \`@baloise/design-system-components-angular\` or \`/standalone\` |
+| \`@angular-devkit/build-angular:application\`     | \`@baloise/design-system-components-angular\` or \`/standalone\` |
+`}
+</Markdown>
+
+Update the imports in the project accordingly.
+
+</AngularFramework>
+
 ## Component Sass
 
 Removed the deprecated option of component styles with SASS. Instead, for customizing the component design, use CSS Variables.
