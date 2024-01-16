@@ -105,10 +105,8 @@ export const getAppRoot = (doc: Document) => {
  */
 export const componentOnReady = (el: any, callback: any) => {
   if (el.componentOnReady !== null && el.componentOnReady !== undefined) {
-    console.log('componentOnReady')
     el.componentOnReady().then((resolvedEl: any) => callback(resolvedEl))
   } else {
-    console.log('raf')
     raf(() => callback(el))
   }
 }
