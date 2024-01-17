@@ -28,17 +28,22 @@ const readSVG = async (name, filePath) => {
   try {
     const svg = await svgo.optimize(svgContent, {
       plugins: [
-        // {
-        //   name: 'removeAttrs',
-        //   params: { attrs: '(stroke|fill)' },
-        // },
-        // {
-        //   name: 'removeStyleElement'
-        // },
+        {
+          name: 'inlineStyles',
+          params: { onlyMatchedOnce: false },
+        },
+        "convertStyleToAttrs",
+        {
+          name: 'removeAttrs',
+          params: { attrs: 'class' },
+        },
         {
           name: 'removeDimensions',
           params: { removeDimensions: true },
         },
+        "removeStyleElement",
+        "removeScriptElement",
+        "removeEmptyContainers",
         {
           name: 'addAttributesToSVGElement',
           params: {

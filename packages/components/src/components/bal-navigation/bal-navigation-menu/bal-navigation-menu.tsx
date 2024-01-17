@@ -28,7 +28,7 @@ export class NavigationMenu {
             }}
           >
             <a href={this.linkHref} target={this.target} {...this.tracking}>
-              {this.linkName} ➞
+              {this.linkName} {this.linkName ? '➞' : ''}
             </a>
           </div>
         )}
