@@ -185,23 +185,21 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
 
         `// Deprecated styles will be removed with the next breaking version (optional)`,
         new RegExp(`@import '@baloise/design-system-css/(sass|css)/legacy';`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/grid`, 'g'), // included in core
 
         new RegExp(`@baloise/design-system-css/(sass|css)/display`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/flex`, 'g'),
-        new RegExp(`@baloise/design-system-css/(sass|css)/grid`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/spacing`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/typography`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/color`, 'g'),
-
         new RegExp(`@baloise/design-system-css/(sass|css)/border`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/radius`, 'g'),
-
         new RegExp(`@baloise/design-system-css/(sass|css)/opacity`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/shadow`, 'g'),
       ],
       to: [
-        '@baloise/design-system-styles/sass/baloise-design-system',
-        '@baloise/design-system-styles/sass/baloise-design-system',
+        '@baloise/design-system-styles/sass/all',
+        '@baloise/design-system-styles/sass/all',
 
         '@baloise/design-system-styles/sass/mixins',
         '@baloise/design-system-styles/css/normalize',
@@ -210,9 +208,9 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
         '@baloise/design-system-styles/css/core',
         '',
         '',
+        '',
         '@baloise/design-system-styles/css/utilities/layout',
         '@baloise/design-system-styles/css/utilities/flex',
-        '',
         '@baloise/design-system-styles/css/utilities/spacing',
         '@baloise/design-system-styles/css/utilities/typography',
         '@baloise/design-system-styles/css/utilities/background',

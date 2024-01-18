@@ -12,7 +12,7 @@ export const addStyles = (host: Tree) => {
     const newContent =
       content +
       `
-// SASS mixins and variables
+// SASS mixins and SASS variables
 @import '@baloise/design-system-styles/sass/mixins';
 
 // Resets CSS for all browser
@@ -22,7 +22,7 @@ export const addStyles = (host: Tree) => {
 // Custom font faces
 @import '@baloise/design-system-styles/css/font';
 
-// Core CSS, always required
+// Core CSS with CSS variables, always required
 @import '@baloise/design-system-styles/css/core';
 
 // CSS utilities classes (optional)

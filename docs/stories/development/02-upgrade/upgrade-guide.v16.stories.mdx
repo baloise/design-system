@@ -16,6 +16,7 @@ import {
   ReactFramework,
   VueFramework,
   DiffSource,
+  CssTypographyColors,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Upgrade Guides/Updating to v16" />
@@ -23,6 +24,7 @@ import {
 <Banner label="Updating to v16" section="Development/Upgrade Guides" />
 
 <Lead>
+
 Updating from v15 to v16
 
 The objective of this breaking change is to standardize the design tokens, facilitating their export to platforms such as
@@ -61,115 +63,87 @@ If there are more `@baloise/design-system` dependencies in the projects `package
 
 First update the `@baloise` packages to v16.
 
-The deprecated package `@baloise/design-system-styles` is still available. However in the version v16 not automatically installed.
+The deprecated package `@baloise/design-system-css` needs to be installed.
 
-<AngularFramework>
-
-<DiffSource
-  code={`import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import { provideBaloiseDesignSystem } from '@baloise/design-system-components-angular/standalone';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    provideBaloiseDesignSystem({
-      defaults: {
-        region: 'CH',
-+       cssUtilities: 'css',
-      }
-    })]
-};
-`}
-/>
-
-</AngularFramework>
-
-<HTMLFramework>
-
-<DiffSource
-  code={`import { initialize } from '@baloise/design-system-components'
-
-initialize({
-
-- cssUtilities: 'css',
-  })
-  `}
-  />
-
-Or directly over the window.
-
-```js
-window.BaloiseDesignSystem.config.cssUtilities = 'css'
+```bash
+npm add -E @baloise/design-system-components-css@16
 ```
 
-</HTMLFramework>
-
-<ReactFramework>
+Replace the required stylesheets from the `css` package with the new ones from the `styles` package and keep the deprecated CSS utilities classes.
 
 <DiffSource
-  code={`import './App.scss'
-import {
-  useBaloiseDesignSystem,
-  ...
-} from '@baloise/design-system-components-react'
+  code={`- @import '@baloise/design-system-css/sass/mixins';
+- @import '@baloise/design-system-css/css/normalize';
+- @import '@baloise/design-system-css/css/structure';
+- @import '@baloise/design-system-css/css/font';
+- @import '@baloise/design-system-css/css/core';
 
-function App() {
-useBaloiseDesignSystem({
-defaults: {
+\+ @import '@baloise/design-system-styles/sass/mixins';
+\+ @import '@baloise/design-system-styles/css/normalize';
+\+ @import '@baloise/design-system-styles/css/structure';
+\+ @import '@baloise/design-system-styles/css/font';
+\+ @import '@baloise/design-system-styles/css/core';
 
--     cssUtilities: 'css',
-      }
+// Deprecated styles will be removed with the next breaking version (optional)
+@import '@baloise/design-system-css/sass/legacy';
 
-  })
-
-  return (
-
-  <BalApp className="has-sticky-footer">...</BalApp>) }
-
-export default App
-`}
+// CSS utilities classes (optional)
+@import '@baloise/design-system-css/css/border';
+@import '@baloise/design-system-css/css/color';
+@import '@baloise/design-system-css/css/display';
+@import '@baloise/design-system-css/css/interaction';
+@import '@baloise/design-system-css/css/flex';
+@import '@baloise/design-system-css/css/grid';
+@import '@baloise/design-system-css/css/opacity';
+@import '@baloise/design-system-css/css/radius';
+@import '@baloise/design-system-css/css/shadow';
+@import '@baloise/design-system-css/css/sizing';
+@import '@baloise/design-system-css/css/spacing';
+@import '@baloise/design-system-css/css/typography';`}
 />
 
-</ReactFramework>
+<InfoQuote>
 
-<VueFramework>
+- If the stylesheet `baloise-design-system` was used the please split into the following files.
+- It is recommanded to migrate `legacy` sass file.
 
-<DiffSource
-  code={`import './main.scss'
-import { createBaloiseDesignSystem } from '@baloise/design-system-components-vue'
+</InfoQuote>
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+### Migrate with CLI
 
-createApp(App)
-.use(router)
-.use(
-createBaloiseDesignSystem({
-defaults: {
-region: 'CH',
+Before running the CLI to migrate to new styles package make sure the git stage is empty, because
+then it is easier to see all the changes of the CLI.
 
--       cssUtilities: 'css',
-        },
-      }),
-  )
-  .mount('#app')
-  `}
-  />
+1. Install the CLI to help with the migration.
 
-</VueFramework>
+```bash
+npm add -D -E @baloise/design-system-cli@16
+```
 
-### Migrate to Styles
+2. Run the migration cli to rename the changed CSS utility classes.
+
+```bash
+npx bds-migrate-to-styles
+```
+
+The CLI updates the global stylesheet, component stylesheets, HTML files and Angular inline templates.
+
+### Migrate Manual
 
 1. Change the import from `@baloise/design-system-css` to `@baloise/design-system-styles`.
 
 <AngularFramework>
 - Check the `styles.scss` file and change the paths.
 
+<DiffSource
+  code={`- @import '@baloise/design-system-css/sass/baloise-design-system';
++ @import '@baloise/design-system-styles/sass/all';`}
+/>
+
+or ...
+
 ```css
-// SASS mixins and variables
+// SASS mixins and SASS variables
 @import '@baloise/design-system-styles/sass/mixins';
 
 // Resets CSS for all browser
@@ -179,7 +153,7 @@ region: 'CH',
 // Custom font faces
 @import '@baloise/design-system-styles/css/font';
 
-// Core CSS, always required
+// Core CSS with CSS variables, always required
 @import '@baloise/design-system-styles/css/core';
 
 // CSS utilities classes (optional)
@@ -194,24 +168,291 @@ region: 'CH',
 @import '@baloise/design-system-styles/css/utilities/typography';
 ```
 
-- Check the component style files if the `mixins` are used and change the path.¬
+- Check the component style files if the `mixins` are used and change the path.
 
 ```css
 @import '@baloise/design-system-styles/sass/mixins';
 ```
+
+2. Go through all the HTML files and replace the old CSS utility class with the new one.
+
+#### Inverted Colors
+
+Inverted Colors are deprecated due to a large payload size for a small usage.
+Therefor use mainly `primary` color for light backgrounds and `white` color for dark backgrounds.
+
+#### Responsive markers
+
+The name of the breakpoints are still the same only the syntax has changed.
+
+`<breakpoint>:<css-class>`
+
+<DiffSource
+  code={`- p-normal-desktop
++ desktop:p-normal`}
+/>
+
+#### Background
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-background-blue\` | \`bg-primary\`  |
+| \`has-background-\*\` | \`bg-\*\`  |
+`}
+</Markdown>
+
+#### Border Colors
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-border-light-blue\`  | \`border-primary-hovered\`   |
+| \`has-border-primary-dark\`  | \`border-primary-pressed\`   |
+| \`has-border-\*\`  | \`border-\*\`   |
+`}
+</Markdown>
+
+#### Border Radius
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-radius-\*\`  | \`radius-\*\`   |
+`}
+</Markdown>
+
+#### Elevation
+
+##### Opacity
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-opacity-1\`  | \`opacity-100\`   |
+| \`has-opacity-\*\`  | \`opacity-\*\`   |
+`}
+</Markdown>
+
+##### Shadow
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-shadow-\*\`  | \`shadow-\*\`   |
+| \`has-text-shadow\`  | \`text-shadow-normal\`   |
+| \`has-button-shadow\`  | \`text-shadow-normal\`   |
+`}
+</Markdown>
+
+#### Flex
+
+Every flex CSS utility class has lost his `is-` prefix.
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`fg-\*\`  | \`gap-\*\`   |
+| \`is-flex-wrap-nowrap\`  | \`flex-nowrap\`   |
+| \`is-flex-wrap-wrap\`  | \`flex-wrap\`   |
+| \`is-flex-wrap-reverse\`  | \`flex-wrap-reverse\`   |
+| \`is-justify-content-flex\` | \`justify-content\` |
+| \`is-justify-content-left\` | \`justify-content-start\` |
+| \`is-justify-content-right\` | \`justify-content-end\` |
+| \`is-justify-content\` | \`justify-content\` |
+| \`is-align-content-flex\` | \`align-content\` |
+| \`is-align-content\` | \`align-content\` |
+| \`is-align-items-flex\` | \`align-items\` |
+| \`is-align-items-self\` | \`align-items\` |
+| \`is-align-items\` | \`align-items\` |
+| \`is-align-self-flex\` | \`align-self\` |
+| \`is-align-self\` | \`align-self\` |
+| \`is-flex-grow-\*\` | \`flex-\*\` |
+| \`is-flex-shrink-\*\` | \`flex-\*\` |
+| \`is-flex-\*\` | \`flex-\*\` |
+`}
+</Markdown>
+
+#### Grid
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`columns\` | \`grid\` |
+| \`column\` | \`col\` |
+`}
+</Markdown>
+
+The responsive markers have changed to.
+
+<DiffSource
+  code={`- is-half-desktop
++ desktop:is-half`}
+/>
+
+#### Interaction
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-clickable\` | \`cursor-pointer\` |
+`}
+</Markdown>
+
+#### Layout
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-vertical-align\*\` | \`vertical-align\*\` |
+| \`is-inline-block\` | \`inline-block\` |
+| \`is-inline-flex\` | \`inline-flex\` |
+| \`is-inline\` | \`inline\` |
+| \`is-block\` | \`block\` |
+| \`is-flex\` | \`flex\` |
+| \`is-hidden\` | \`hidden\` |
+`}
+</Markdown>
+
+#### Spacing
+
+The spacing helpers have not been renamed only the responsive markers.
+
+<DiffSource
+  code={`- p-normal-desktop
++ desktop:p-normal`}
+/>
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-marginless\` | \`m-none\` |
+| \`is-paddingless\` | \`p-none\` |
+`}
+</Markdown>
+
+#### Sizing
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-fullheight\` | \`h-full\` |
+| \`is-fullwidth\` | \`w-full\` |
+`}
+</Markdown>
+
+#### Typography
+
+##### Font Sizes
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-size-display\`     | \`text-xxxxx-large\`  |
+| \`is-size-display-2\` | \`text-xxxx-large\` |
+| \`is-size-1\` | \`text-xxx-large\` |
+| \`is-size-2\` | \`text-xx-large\` |
+| \`is-size-3\` | \`text-x-large\` |
+| \`is-size-4\` | \`text-large\` |
+| \`is-size-5\` | \`text-medium\` |
+| \`is-size-6\` | \`text-normal\` |
+| \`is-size-7\` | \`text-small\` |
+| \`is-size-8\` | \`text-x-small\` |
+| \`is-size-\*\` | \`text-\*\` |
+`}
+</Markdown>
+
+##### Text Color
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-\*\` | \`text-\*\` |
+`}
+</Markdown>
+
+##### Text Alignments
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-centered\`     | \`text-align-center\`  |
+| \`has-text-justified\`     | \`text-align-justify\`  |
+| \`has-text-left\`     | \`text-align-left\`  |
+| \`has-text-right\`     | \`text-align-right\`  |
+`}
+</Markdown>
+
+##### Font Family
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-family-title\` | \`font-family-title\` |
+| \`is-family-text\` | \`font-family-text\` |
+`}
+</Markdown>
+
+##### Font Weight
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-text-weight\` | \`text-weight\` |
+`}
+</Markdown>
+
+##### White Space
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-white-space-normal\` | \`white-space-normal\` |
+| \`has-no-wrap\` | \`white-space-nowrap\` |
+| \`is-white-space-nowrap\` | \`white-space-nowrap\` |
+`}
+</Markdown>
+
+##### Text Transform
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`is-capitalized\` | \`capitalize\` |
+| \`is-lowercase\` | \`lowercase\` |
+| \`is-uppercase\` | \`uppercase\` |
+`}
+</Markdown>
+
+#### Z-Index
+
+<Markdown>
+  {`
+| CSS (DEPRECATED)        | Stypes (NEW) |
+| ----------------------- | ------------ |
+| \`has-z-index\*\` | \`z-index\*\` |
+`}
+</Markdown>
+
 </AngularFramework>
-
-2. Install the CLI to help with the migration.
-
-```bash
-npm add -D -E @baloise/design-system-cli@16
-```
-
-3. Run the migration cli to rename the changed CSS utility classes.
-
-```bash
-
-```
 
 ## Components
 
