@@ -222,7 +222,7 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
     })
     printResult({ result, log })
     let lines = (await fsp.readFile(files, 'utf-8')).split(/\r?\n/)
-    lines.push(`@import '@baloise/design-system-styles/css/utilities/interactions';`)
+    lines.push(`@import '@baloise/design-system-styles/css/utilities/interaction';`)
     lines.push(`@import '@baloise/design-system-styles/css/utilities/sizing';`)
     lines = lines.reduce((acc, line) => {
       if (line.length === 0) {
