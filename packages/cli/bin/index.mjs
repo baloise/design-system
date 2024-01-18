@@ -3,7 +3,7 @@
 import prompts from 'prompts'
 import replace from 'replace-in-file'
 import path from 'path'
-import fs, { link } from 'fs'
+import fs from 'fs'
 import fsp from 'fs/promises'
 import { tsquery } from '@phenomnomnominal/tsquery'
 import { load } from 'cheerio'
@@ -147,7 +147,7 @@ const main = async () => {
   }
 
   log.succeed()
-  return
+  return done()
 }
 
 async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, filePath }) {
@@ -224,7 +224,7 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
     })
     printResult({ result, log })
     let lines = (await fsp.readFile(files, 'utf-8')).split(/\r?\n/)
-    lines = lines.reduce((acc, line, index) => {
+    lines = lines.reduce((acc, line) => {
       if (line.length === 0) {
         if (acc[acc.length - 1].length === 0) {
           return acc
@@ -941,6 +941,9 @@ const replacementsDisplay = {
     ...breakpointClasses('flex').from,
     ...breakpointClasses('inline').from,
     ...breakpointClasses('hidden').from,
+    /is-vertical-align-top/g,
+    /is-vertical-align-middle/g,
+    /is-vertical-align-bottom/g,
   ],
   to: [
     ...breakpointClasses('inline-block').to,
@@ -949,6 +952,9 @@ const replacementsDisplay = {
     ...breakpointClasses('flex').to,
     ...breakpointClasses('inline').to,
     ...breakpointClasses('hidden').to,
+    'vertical-align-top',
+    'vertical-align-middle',
+    'vertical-align-bottom',
   ],
 }
 

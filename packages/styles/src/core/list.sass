@@ -1,5 +1,7 @@
 ol.list,
-ul.list
+ul.list,
+ol.is-list,
+ul.is-list
   margin-bottom: 1.5rem
   margin-left: 2rem
   +desktop
@@ -78,6 +80,6 @@ ul.list
     li.has-bullet-close::before
       background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzM4ODU0XzM0MjU5OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEuNzA3MTEgMC4yOTI4OTNDMS4zMTY1OCAtMC4wOTc2MzEgMC42ODM0MTcgLTAuMDk3NjMxIDAuMjkyODkzIDAuMjkyODkzQy0wLjA5NzYzMSAwLjY4MzQxNyAtMC4wOTc2MzEgMS4zMTY1OCAwLjI5Mjg5MyAxLjcwNzExTDUuNTg1NzkgN0wwLjI5Mjg5MyAxMi4yOTI5Qy0wLjA5NzYzMSAxMi42ODM0IC0wLjA5NzYzMSAxMy4zMTY2IDAuMjkyODkzIDEzLjcwNzFDMC42ODM0MTcgMTQuMDk3NiAxLjMxNjU4IDE0LjA5NzYgMS43MDcxMSAxMy43MDcxTDcgOC40MTQyMUwxMi4yOTI5IDEzLjcwNzFDMTIuNjgzNCAxNC4wOTc2IDEzLjMxNjYgMTQuMDk3NiAxMy43MDcxIDEzLjcwNzFDMTQuMDk3NiAxMy4zMTY2IDE0LjA5NzYgMTIuNjgzNCAxMy43MDcxIDEyLjI5MjlMOC40MTQyMSA3TDEzLjcwNzEgMS43MDcxMUMxNC4wOTc2IDEuMzE2NTggMTQuMDk3NiAwLjY4MzQxNyAxMy43MDcxIDAuMjkyODkzQzEzLjMxNjYgLTAuMDk3NjMxIDEyLjY4MzQgLTAuMDk3NjMxIDEyLjI5MjkgMC4yOTI4OTNMNyA1LjU4NTc5TDEuNzA3MTEgMC4yOTI4OTNaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzM4ODU0XzM0MjU5OSI+CjxyZWN0IHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K) no-repeat left top
 
-
-ul.list:not(.has-bullet-circle):not(.has-bullet-check) li
+ul.list:not(.has-bullet-circle):not(.has-bullet-check) li,
+ul.is-list:not(.has-bullet-circle):not(.has-bullet-check) li
   list-style: disc

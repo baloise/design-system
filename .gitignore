@@ -185,5 +185,6 @@ packages/components-angular/app-initialize.d.ts
 packages/components-angular/index.d.ts
 packages/components-angular/module.d.ts
 
+packages/css/css
 packages/styles/css
 packages/styles/docs
