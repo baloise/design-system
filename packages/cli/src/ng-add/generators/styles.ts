@@ -30,7 +30,6 @@ export const addStyles = (host: Tree) => {
 @import '@baloise/design-system-styles/css/utilities/border';
 @import '@baloise/design-system-styles/css/utilities/elevation';
 @import '@baloise/design-system-styles/css/utilities/flex';
-@import '@baloise/design-system-styles/css/utilities/grid';
 @import '@baloise/design-system-styles/css/utilities/interaction';
 @import '@baloise/design-system-styles/css/utilities/layout';
 @import '@baloise/design-system-styles/css/utilities/sizing';

@@ -3,27 +3,298 @@
 import prompts from 'prompts'
 import replace from 'replace-in-file'
 import path from 'path'
+import fs, { link } from 'fs'
+import fsp from 'fs/promises'
+import { tsquery } from '@phenomnomnominal/tsquery'
 import { load } from 'cheerio'
+import { glob } from 'glob'
 
 // ================================================================================
 // MAIN
 // ================================================================================
 const main = async () => {
   const log = logger('Styles Migration')
-
-  const response = await prompts({
-    type: 'text',
-    name: 'filePath',
-    message: 'Where are your html template files located?',
-    initial: path.join('src', 'app'),
-  })
+  const response = await prompts([
+    {
+      type: 'multiselect',
+      name: 'targets',
+      message: 'What do you want to migrate',
+      choices: [
+        {
+          title: 'HTML Template Files (*.html)',
+          value: 'HTML',
+          selected: true,
+        },
+        {
+          title: 'Global stylesheet',
+          value: 'GLOBAL_STYLES',
+          selected: true,
+        },
+        {
+          title: 'Inline Templates (Angular - *.ts)',
+          value: 'INLINE',
+          selected: true,
+        },
+        {
+          title: 'Mixins import (Angular - *.scss)',
+          value: 'SCSS',
+          selected: true,
+        },
+      ],
+      instructions: false,
+    },
+    {
+      type: (_prev, { targets }) =>
+        targets.includes('HTML') || targets.includes('INLINE') || targets.includes('SCSS') ? 'text' : null,
+      name: 'pathToComponentFiles',
+      message: 'Where are your html template files located?',
+      initial: path.join('src', 'app'),
+    },
+    {
+      type: (_prev, { targets }) => (targets.includes('GLOBAL_STYLES') ? 'text' : null),
+      name: 'pathGlobalStylesheet',
+      message: 'Where is your global stylesheet located, with the imports?',
+      initial: path.join('src', 'styles.scss'),
+    },
+    {
+      type: (_prev, { targets }) =>
+        targets.includes('GLOBAL_STYLES') || targets.includes('HTML') || targets.includes('INLINE')
+          ? 'multiselect'
+          : null,
+      name: 'utils',
+      message: 'Which css utilities do you want to migrate?',
+      choices: [
+        { value: 'border & radius', selected: true },
+        { value: 'color', selected: true },
+        { value: 'display', selected: true },
+        { value: 'flex', selected: true },
+        { value: 'opacity & shadow', selected: true },
+        { value: 'spacing', selected: true },
+        { value: 'typography', selected: true },
+      ],
+      instructions: false,
+    },
+  ])
 
   log.info()
   log.start()
   log.info()
-  const { filePath } = response
-  let files = path.join(process.cwd(), `${filePath.trim()}`)
+
+  const { targets, utils, pathGlobalStylesheet, pathToComponentFiles } = response
+
+  const filePath = path.join(process.cwd(), `${(pathToComponentFiles || 'src/app').trim()}`)
+  const globalStyleSheetPath = path.join(process.cwd(), `${(pathGlobalStylesheet || 'src/styles.scss').trim()}`)
+
+  const isDirectory = await isDirectoryFn({ filePath })
+  const directoryPath = isDirectory ? filePath : path.dirname(filePath)
+
+  let isFile = false
+  if ((targets.includes('HTML') || targets.includes('SCSS') || targets.includes('INLINE')) && !isDirectory) {
+    try {
+      isFile = await isFileFn({ filePath })
+    } catch (error) {
+      log.fail(`Could not find directory or file at ${filePath}`, error)
+      return exit()
+    }
+  }
+
+  let doesGlobalStylesheetExist = false
+  if (targets.includes('GLOBAL_STYLES')) {
+    try {
+      doesGlobalStylesheetExist = await isFileFn({
+        filePath: globalStyleSheetPath,
+      })
+    } catch (error) {
+      log.info(`Could not find global stylesheet at ${globalStyleSheetPath}`, error)
+    }
+  }
+
+  const extension = path.extname(filePath)
+  const context = {
+    log,
+    isDirectory,
+    directoryPath,
+    isFile,
+    filePath,
+    extension,
+    utils,
+    targets,
+    globalStyleSheetPath,
+  }
+
+  if (targets.includes('SCSS') && (isDirectory || (isFile && extension === '.scss'))) {
+    await migrateComponentStylesSheet(context)
+  }
+
+  if (
+    targets.includes('GLOBAL_STYLES') &&
+    doesGlobalStylesheetExist &&
+    path.extname(globalStyleSheetPath) === '.scss'
+  ) {
+    await migrateGlobalStyleSheet(context)
+  }
+
+  if (targets.includes('INLINE') || targets.includes('HTML')) {
+    const utilReplacers = filterReplacers(context)
+
+    if (targets.includes('INLINE')) {
+      await migrateInlineTemplates({ ...context, utilReplacers })
+    }
+
+    if (targets.includes('HTML')) {
+      await migrateHtmlFiles({ ...context, utilReplacers })
+    }
+  }
+
+  log.succeed()
+  return
+}
+
+async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, filePath }) {
+  const files = isDirectory ? path.join(directoryPath, '**', '*.scss') : filePath
+  try {
+    const result = await replace({
+      files,
+      from: [new RegExp(`@baloise/design-system-css/sass/mixins`, 'g')],
+      to: ['@baloise/design-system-styles/sass/mixins'],
+    })
+    printResult({ result, log })
+  } catch (error) {
+    log.info()
+    log.fail(error)
+    return Promise.reject()
+  } finally {
+    return Promise.resolve()
+  }
+}
+
+async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
+  const files = globalStyleSheetPath
+  try {
+    const result = await replace({
+      files,
+      from: [
+        new RegExp(`@baloise/design-system-css/(sass|css)/baloise-design-system.sass`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/baloise-design-system`, 'g'),
+
+        new RegExp(`@baloise/design-system-css/sass/mixins`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/normalize`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/structure`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/font`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/core`, 'g'),
+
+        `// Deprecated styles will be removed with the next breaking version (optional)`,
+        new RegExp(`@import '@baloise/design-system-css/(sass|css)/legacy';`, 'g'),
+
+        new RegExp(`@baloise/design-system-css/(sass|css)/display`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/flex`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/grid`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/spacing`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/typography`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/color`, 'g'),
+
+        new RegExp(`@baloise/design-system-css/(sass|css)/border`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/radius`, 'g'),
+
+        new RegExp(`@baloise/design-system-css/(sass|css)/opacity`, 'g'),
+        new RegExp(`@baloise/design-system-css/(sass|css)/shadow`, 'g'),
+      ],
+      to: [
+        '@baloise/design-system-styles/sass/baloise-design-system',
+        '@baloise/design-system-styles/sass/baloise-design-system',
+
+        '@baloise/design-system-styles/sass/mixins',
+        '@baloise/design-system-styles/css/normalize',
+        '@baloise/design-system-styles/css/structure',
+        '@baloise/design-system-styles/css/font',
+        '@baloise/design-system-styles/css/core',
+        '',
+        '',
+        '@baloise/design-system-styles/css/utilities/layout',
+        '@baloise/design-system-styles/css/utilities/flex',
+        '',
+        '@baloise/design-system-styles/css/utilities/spacing',
+        '@baloise/design-system-styles/css/utilities/typography',
+        '@baloise/design-system-styles/css/utilities/background',
+        '@baloise/design-system-styles/css/utilities/border',
+        '@baloise/design-system-styles/css/utilities/border',
+        '@baloise/design-system-styles/css/utilities/elevation',
+        '@baloise/design-system-styles/css/utilities/elevation',
+      ],
+    })
+    printResult({ result, log })
+    let lines = (await fsp.readFile(files, 'utf-8')).split(/\r?\n/)
+    lines = lines.reduce((acc, line, index) => {
+      if (line.length === 0) {
+        if (acc[acc.length - 1].length === 0) {
+          return acc
+        }
+        return [...acc, line]
+      }
+      return acc.indexOf(line) >= 0 ? acc : [...acc, line]
+    }, [])
+    await fsp.writeFile(files, lines.join('\r\n'))
+  } catch (error) {
+    log.info()
+    log.fail(error)
+    return Promise.reject()
+  } finally {
+    return Promise.resolve()
+  }
+}
+
+async function migrateInlineTemplates({ filePath, log, utilReplacers }) {
+  // check if path is directly one file
+  const isFile = filePath.endsWith('.ts')
+  let pathToFiles = filePath
+  if (!isFile) {
+    pathToFiles = path.join(filePath, '**', '*.ts')
+  }
+
+  const files = await glob(pathToFiles)
+  const inlineTemplateFiles = []
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index]
+    const content = await fsp.readFile(file, 'utf-8')
+    if (content.includes('@Component') && content.includes('template: `')) {
+      inlineTemplateFiles.push(file)
+    }
+  }
+
+  for (let index = 0; index < inlineTemplateFiles.length; index++) {
+    const file = inlineTemplateFiles[index]
+    const content = await fsp.readFile(file, 'utf-8')
+    let newContent = content
+    tsquery.replace(content, 'PropertyAssignment', node => {
+      if (node.name.getText() === 'template') {
+        const originalTemplate = node.getChildAt(2).getFullText().trim().slice(1, -1)
+
+        const template = replaceHtml({
+          template: originalTemplate,
+          from: utilReplacers.from,
+          to: utilReplacers.to,
+        })
+
+        if (template !== originalTemplate) {
+          newContent = newContent.replace(originalTemplate, template)
+        }
+      }
+
+      // return undefined does not replace anything
+      return undefined
+    })
+
+    if (content !== newContent) {
+      await fsp.writeFile(file, newContent)
+      log.list(file.replace(process.cwd(), ''))
+    }
+  }
+}
+
+async function migrateHtmlFiles({ filePath, log, utilReplacers }) {
+  // check if path is directly one file
   const isFile = filePath.trim().endsWith('.html')
+  let files = filePath
   if (!isFile) {
     files = path.join(`${files}`, '**', '*.html')
   }
@@ -38,41 +309,10 @@ const main = async () => {
           $('[class]').each((index, element) => {
             const classes = $(element).attr('class').split(' ')
 
-            const from = [
-              ...replacementsBorder.from,
-              ...replacementsColors.from,
-              ...replacementsCore.from,
-              ...replacementsFlex.from,
-              ...replacementsDisplay.from,
-              ...replacementsGrid.from,
-              ...replacementsOpacity.from,
-              ...replacementsRadius.from,
-              ...replacementsShadow.from,
-              ...replacementsSpacing.from,
-              ...replacementsTypography.from,
-              ...replacementsZIndex.from,
-              ...replacementsSizing.from,
-            ]
-            const to = [
-              ...replacementsBorder.to,
-              ...replacementsColors.to,
-              ...replacementsCore.to,
-              ...replacementsFlex.to,
-              ...replacementsDisplay.to,
-              ...replacementsGrid.to,
-              ...replacementsOpacity.to,
-              ...replacementsRadius.to,
-              ...replacementsShadow.to,
-              ...replacementsSpacing.to,
-              ...replacementsTypography.to,
-              ...replacementsZIndex.to,
-              ...replacementsSizing.to,
-            ]
-
             const modifiedClasses = classes.map(className => {
-              for (let index = 0; index < from.length; index++) {
-                const oldClassName = from[index]
-                const replacement = to[index]
+              for (let index = 0; index < utilReplacers.from.length; index++) {
+                const oldClassName = utilReplacers.from[index]
+                const replacement = utilReplacers.to[index]
                 if (className.match(escapeRegex(oldClassName))) {
                   return className.replace(oldClassName, replacement)
                 }
@@ -91,28 +331,142 @@ const main = async () => {
     let changedFiles = results
       .flat()
       .filter(result => result.hasChanged)
-      .map(result => result.file.replace(path.join(process.cwd(), `${filePath}`), ''))
+      .map(result => result.file.replace(process.cwd(), ''))
 
     changedFiles = changedFiles.filter((item, index) => changedFiles.indexOf(item) === index)
 
     if (changedFiles.length > 0) {
       changedFiles.forEach(file => log.list(file))
     } else {
-      log.list('No files found to migrate')
+      log.info('No files found to migrate')
     }
     log.info()
-    log.succeed()
   } catch (error) {
     log.info()
-    return log.fail(error)
+    log.fail(error)
+    return Promise.reject()
   } finally {
-    return done()
+    return Promise.resolve()
   }
 }
 
 // ================================================================================
 // UTILITIES
 // ================================================================================
+
+function filterReplacers({ utils }) {
+  const from = []
+  const to = []
+
+  if (utils.includes('border & radius')) {
+    from.push(replacementsBorder.from)
+    from.push(replacementsRadius.from)
+    to.push(replacementsBorder.to)
+    to.push(replacementsRadius.to)
+  }
+
+  if (utils.includes('color')) {
+    from.push(replacementsColors.from)
+    to.push(replacementsColors.to)
+  }
+
+  if (utils.includes('flex')) {
+    from.push(replacementsFlex.from)
+    to.push(replacementsFlex.to)
+  }
+
+  if (utils.includes('display')) {
+    from.push(replacementsDisplay.from)
+    to.push(replacementsDisplay.to)
+  }
+
+  from.push(replacementsGrid.from)
+  to.push(replacementsGrid.to)
+
+  if (utils.includes('opacity & shadow')) {
+    from.push(replacementsOpacity.from)
+    to.push(replacementsOpacity.to)
+    from.push(replacementsShadow.from)
+    to.push(replacementsShadow.to)
+  }
+
+  if (utils.includes('spacing')) {
+    from.push(replacementsSpacing.from)
+    to.push(replacementsSpacing.to)
+  }
+
+  if (utils.includes('typography')) {
+    from.push(replacementsTypography.from)
+    to.push(replacementsTypography.to)
+  }
+
+  from.push(replacementsCore.from)
+  to.push(replacementsCore.to)
+  from.push(replacementsZIndex.from)
+  to.push(replacementsZIndex.to)
+  from.push(replacementsSizing.from)
+  to.push(replacementsSizing.to)
+
+  return { from: from.flat(), to: to.flat() }
+}
+
+function replaceHtml({ template, from, to }) {
+  const $ = load(template)
+  let newTemplate = template
+  $('[class]').each((index, element) => {
+    const classes = $(element).attr('class').split(' ')
+
+    const modifiedClasses = classes.map(className => {
+      for (let index = 0; index < from.length; index++) {
+        const oldClassName = from[index]
+        const replacement = to[index]
+        if (className.match(escapeRegex(oldClassName))) {
+          return className.replace(oldClassName, replacement)
+        }
+      }
+      return className
+    })
+
+    newTemplate = newTemplate.replace(`class="${classes.join(' ')}"`, `class="${modifiedClasses.join(' ')}"`)
+  })
+
+  return newTemplate
+}
+
+function printResult({ result, log }) {
+  // filter for only change files and return the path
+  let changedFiles = result
+    .flat()
+    .filter(result => result.hasChanged)
+    .map(result => result.file.replace(process.cwd(), ''))
+
+  // remove duplications
+  changedFiles = changedFiles.filter((item, index) => changedFiles.indexOf(item) === index)
+
+  if (changedFiles.length > 0) {
+    changedFiles.forEach(file => log.list(file))
+  } else {
+    log.info('No files found to migrate')
+  }
+}
+
+async function isDirectoryFn({ filePath }) {
+  try {
+    const isDirectory = fs.lstatSync(filePath).isDirectory()
+    return Promise.resolve(isDirectory)
+  } catch (error) {
+    return Promise.resolve(false)
+  }
+}
+
+async function isFileFn({ filePath }) {
+  try {
+    const isFile = fs.lstatSync(filePath).isFile()
+    return Promise.resolve(isFile)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
 
 function escapeRegex(string) {
   if (typeof string === 'string') {
@@ -152,7 +506,7 @@ const logger = subject => {
       exit()
     },
     list: message => {
-      console.log('❯', message)
+      console.log('\x1b[90mUPDATE\x1b[0m', message)
     },
   }
 }
