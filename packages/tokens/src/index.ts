@@ -467,7 +467,7 @@ const tokens = {
       'primary-light': 'primary-3', // inverted disabled
       'success': 'success-4',
       'info': 'info-4',
-      'warning': 'warning-5',
+      'warning': 'danger-4',
       'danger': 'danger-4',
       'danger-dark': 'danger-5', // hover color
       'danger-darker': 'danger-6', // active color
