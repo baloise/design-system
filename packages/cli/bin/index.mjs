@@ -184,8 +184,8 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
         new RegExp(`@baloise/design-system-css/(sass|css)/core`, 'g'),
 
         `// Deprecated styles will be removed with the next breaking version (optional)`,
-        new RegExp(`@import '@baloise/design-system-css/(sass|css)/legacy';`, 'g'),
-        new RegExp(`@baloise/design-system-css/(sass|css)/grid`, 'g'), // included in core
+        new RegExp(`@import '@baloise/design-system-css/(sass|css)/legacy';`, 'g'), // deprecated
+        new RegExp(`@import '@baloise/design-system-css/(sass|css)/grid';`, 'g'), // included in core
 
         new RegExp(`@baloise/design-system-css/(sass|css)/display`, 'g'),
         new RegExp(`@baloise/design-system-css/(sass|css)/flex`, 'g'),
@@ -222,6 +222,8 @@ async function migrateGlobalStyleSheet({ globalStyleSheetPath, log }) {
     })
     printResult({ result, log })
     let lines = (await fsp.readFile(files, 'utf-8')).split(/\r?\n/)
+    lines.push(`@import '@baloise/design-system-styles/css/utilities/interactions';`)
+    lines.push(`@import '@baloise/design-system-styles/css/utilities/sizing';`)
     lines = lines.reduce((acc, line) => {
       if (line.length === 0) {
         if (acc[acc.length - 1].length === 0) {
@@ -1012,8 +1014,8 @@ const replacementsFlex = {
 }
 
 const replacementsOpacity = {
-  from: [/has-opacity-1/g, /has-opacity/g],
-  to: ['opacity-100', 'opacity'],
+  from: [/has-opacity-100/g, /has-opacity-10/g, /has-opacity-1/g, /has-opacity/g],
+  to: ['opacity-100', 'opacity-10', 'opacity-100', 'opacity'],
 }
 
 const replacementsRadius = {

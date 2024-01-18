@@ -27,13 +27,30 @@ import {
 
 Updating from v15 to v16
 
+</Lead>
+
 The objective of this breaking change is to standardize the design tokens, facilitating their export to platforms such as
 Figma and others. With the introduction of these new design tokens, we can automatically generate CSS utility classes.
-This enhancement extends functionality, particularly in responsive design and pseudo-states.
+This enhancement extends functionality, particularly in responsive design and pseudo-states. Moreover, the renaming (or removing of prefixes like `is-*` or `has-*`) of
+the classes should improve the readability too.
+
+<DiffSource
+  code={`- has-shadow-normal
++ shadow-normal
+// or
+- fg-large
++ gap-large
+// or
+- pt-large-desktop
++ desktop:pt-large
+`}
+/>
+
+For this specific migration a new CLI was created to help upgrading to the new `styles` package.
+
+The previous documentation of version `15.x.x` can be found [here](https://baloise-design-system-v15.vercel.app).
 
 As part of this change, we are introducing a new package called `@baloise/design-system-styles`.
-
-</Lead>
 
 <InfoQuote>
 
