@@ -2,14 +2,15 @@ import { SchematicsException, Tree } from '@angular-devkit/schematics'
 import { SchemaOptions } from '../schema'
 
 export const updateAppComponent = (host: Tree, options: SchemaOptions) => {
-  const prefix = options.project || 'app'
-
   const appTemplatePath = `src/app/app.component.html`
   const appComponentPath = `src/app/app.component.ts`
   const appStylesPath = `src/app/app.component.css`
   const appStylesSassPath = `src/app/app.component.scss`
 
   const isInlineTemplate = !host.exists(appTemplatePath)
+  const tempContent = host.readText(isInlineTemplate ? appComponentPath : appTemplatePath)
+  const prefix = tempContent.includes('app-root') ? 'app' : options.project
+
   const hasCssStyles = host.exists(appStylesPath)
   const hasSassStyles = host.exists(appStylesSassPath)
   const hasStyles = hasCssStyles || hasSassStyles

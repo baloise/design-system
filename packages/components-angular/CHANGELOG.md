@@ -1,5 +1,12 @@
 # @baloise/design-system-components-angular
 
+## 15.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`93d8edc3d`](https://github.com/baloise/design-system/commit/93d8edc3dc9b531d5cc33f7cc6223838505528e9)]:
+  - @baloise/design-system-components@15.2.0
+
 ## 15.1.1
 
 ### Patch Changes
@@ -99,6 +106,10 @@
   })
   export class AppComponent {}
   ```
+
+#### Webpack builder
+
+For projects based on the builder `@angular-devkit/build-angular:browser` use the `@baloise/design-system-components-angular/legacy`.
 
 ### Patch Changes
 

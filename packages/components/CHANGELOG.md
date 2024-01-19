@@ -1,5 +1,17 @@
 # @baloise/design-system-components
 
+## 15.2.0
+
+### Patch Changes
+
+- [#1282](https://github.com/baloise/design-system/pull/1282) - The date component rerenders the calendar grid when min or max property was changed.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.2.0
+  - @baloise/design-system-fonts@15.2.0
+  - @baloise/design-system-icons@15.2.0
+  - @baloise/design-system-tokens@15.2.0
+
 ## 15.1.1
 
 ### Patch Changes
