@@ -31,8 +31,9 @@ Updating from v15 to v16
 
 The objective of this breaking change is to standardize the design tokens, facilitating their export to platforms such as
 Figma and others. With the introduction of these new design tokens, we can automatically generate CSS utility classes.
-This enhancement extends functionality, particularly in responsive design and pseudo-states. Moreover, the renaming (or removing of prefixes like `is-*` or `has-*`) of
-the classes should improve the readability too.
+This enhancement extends functionality, particularly in responsive design and pseudo-states.
+
+The renaming (or removing of prefixes like `is-*` or `has-*`) of the classes should improve the readability too.
 
 <DiffSource
   code={`- has-shadow-normal
@@ -41,10 +42,22 @@ the classes should improve the readability too.
 - fg-large
 + gap-large
 // or
+- columns
++ grid
+// or
 - pt-large-desktop
 + desktop:pt-large
 `}
 />
+
+For example the previous class `has-text-centered` was not near the css values and that made it hard to understand.
+Therefore, the new class names are closer / identical with the css values.
+
+```css
+.text-align-center {
+  text-align: center;
+}
+```
 
 For this specific migration a new CLI was created to help upgrading to the new `styles` package.
 
@@ -108,13 +121,13 @@ Replace the required stylesheets from the `css` package with the new ones from t
 @import '@baloise/design-system-css/css/border';
 @import '@baloise/design-system-css/css/color';
 @import '@baloise/design-system-css/css/display';
-@import '@baloise/design-system-css/css/interaction';
++ @import '@baloise/design-system-css/css/interaction';
 @import '@baloise/design-system-css/css/flex';
 @import '@baloise/design-system-css/css/grid';
 @import '@baloise/design-system-css/css/opacity';
 @import '@baloise/design-system-css/css/radius';
 @import '@baloise/design-system-css/css/shadow';
-@import '@baloise/design-system-css/css/sizing';
++ @import '@baloise/design-system-css/css/sizing';
 @import '@baloise/design-system-css/css/spacing';
 @import '@baloise/design-system-css/css/typography';`}
 />

@@ -98,6 +98,7 @@ export const generateFlex = async () => {
     valuesColumnGap[`column-gap-${key}`] = `var(--bal-space-${key})`
   }
   const rulesFlexGap = utils.styleClass({ property: 'gap', values: valuesGap, important: true })
+  const rulesFlexGapDocs = utils.jsonClass({ property: 'gap', values: valuesGap })
   const rulesFlexGapRow = utils.styleClass({ property: 'row-gap', values: valuesRowGap, important: true })
   const rulesFlexGapColumn = utils.styleClass({ property: 'column-gap', values: valuesColumnGap, important: true })
 
@@ -168,6 +169,7 @@ export const generateFlex = async () => {
         flex.docs,
         justifyContent.docs,
         flexWrap.docs,
+        rulesFlexGapDocs,
       ],
       rules: [
         alignContent.rules,

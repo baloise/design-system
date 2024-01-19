@@ -6,7 +6,10 @@ export const generateBorder = async () => {
   const bordersRight = await generateBorderByColor({ placement: 'right' })
   const bordersBottom = await generateBorderByColor({ placement: 'bottom' })
   const bordersLeft = await generateBorderByColor({ placement: 'left' })
+
   const borderNone = await utils.staticClass({ property: 'border-width', values: { 'border-none': '0' } })
+  const borderWidth = await utils.staticClassByToken({ token: 'size.border.width', property: 'border-width' })
+
   const borderNoneTop = await utils.staticClass({ property: 'border-top-width', values: { 'border-top-none': '0' } })
   const borderNoneRight = await utils.staticClass({
     property: 'border-right-width',
@@ -17,8 +20,6 @@ export const generateBorder = async () => {
     values: { 'border-bottom-none': '0' },
   })
   const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
-
-  const borderWidth = await utils.staticClassByToken({ token: 'size.border.width', property: 'border-width' })
 
   const borderRadius = await utils.staticClassByToken({ token: 'size.radius', property: 'border-radius' })
 
@@ -69,11 +70,6 @@ export const generateBorder = async () => {
         borderRadiusBottom.docs,
       ],
       rules: [
-        borderNone.rules,
-        borderNoneTop.rules,
-        borderNoneRight.rules,
-        borderNoneBottom.rules,
-        borderNoneLeft.rules,
         borders.rules,
         bordersTop.rules,
         bordersRight.rules,
@@ -85,6 +81,11 @@ export const generateBorder = async () => {
         borderRadiusLeft.rules,
         borderRadiusRight.rules,
         borderRadiusBottom.rules,
+        borderNone.rules,
+        borderNoneTop.rules,
+        borderNoneRight.rules,
+        borderNoneBottom.rules,
+        borderNoneLeft.rules,
       ],
       visualTest: [],
     }),
@@ -96,7 +97,12 @@ async function generateBorderByColor({ placement = '' } = {}) {
   const formattedPlacement = placement ? `-${placement}` : ''
   const values = {
     [`border${formattedPlacement}`]: 'var(--bal-color-grey-3)',
-    ...utils.toProps({ tokens: tokens, replace: 'color-border-', prefix: `border${formattedPlacement}` }),
+    ...utils.toProps({
+      tokens: tokens,
+      replace: 'color-border-',
+      replace2: 'color-border',
+      prefix: `border${formattedPlacement}`,
+    }),
   }
   const property = `border${formattedPlacement}-color`
   const docs = utils.jsonClass({ property, values })

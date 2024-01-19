@@ -1,0 +1,36 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs'
+import { Banner, Lead, Code, CssLayoutVerticalAlign, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta
+  title="CSS Utilities/Layout/Vertical Align"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Vertical Align" section="CSS Utilities" color="yellow" puzzle />
+
+<Lead>
+  Establishes the vertical alignment of an inline, inline-block, or table-cell box.
+</Lead>
+
+## Classes
+
+<CssLayoutVerticalAlign />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:vertical-align-top`, to apply the corresponding responsive class.
+
+<Footer>
+  <LinkCards>
+    <LinkCard pageTitle="Foundation/Layout" description="The layout defines the skeleton of your page" />
+    <LinkCard
+      pageTitle="Tokens/Overview"
+      description="Design tokens serve as the definitive source for naming and storing design choices."
+    />
+  </LinkCards>
+</Footer>

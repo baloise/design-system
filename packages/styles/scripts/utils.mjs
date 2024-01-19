@@ -101,7 +101,9 @@ export const jsonClass = ({ property = '', values = {} }) => {
     [property]: keys.map(key => {
       return {
         class: key,
-        properties: `${property}: ${values[key]};`,
+        css: `${property}: ${values[key]};`,
+        property: property,
+        value: values[key],
       }
     }),
   }
@@ -157,16 +159,25 @@ export const toCssVar = token => {
   return `var(--${toCssVarName(token.name, token)})`
 }
 
-export const toProp = ({ property, prefix, replace }) => {
+const removeLeadingTrailingDashes = inputString => {
+  // Remove leading dashes
+  let stringWithoutLeadingDashes = inputString.replace(/^[-]+/, '')
+  // Remove trailing dashes
+  return stringWithoutLeadingDashes.replace(/[-]+$/, '')
+}
+
+export const toProp = ({ property, prefix, replace, replace2 }) => {
   const propPrefix = `${prefix ? prefix + '-' : ''}`
-  const propName = propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '')
+  const propName = removeLeadingTrailingDashes(
+    propPrefix + `${property.name.replace('bal-', '')}`.replace(replace, '').replace(replace2, ''),
+  )
   const propValue = toCssVar(property)
   return {
     [`${propName}`.replace(/--/g, '-')]: propValue,
   }
 }
 
-export const toProps = ({ tokens, prefix, replace }) => {
+export const toProps = ({ tokens, prefix, replace, replace2 }) => {
   let props = {}
   for (const key in tokens) {
     const property = tokens[key]
@@ -174,12 +185,12 @@ export const toProps = ({ tokens, prefix, replace }) => {
     if (!property.value) {
       props = {
         ...props,
-        ...toProps({ tokens: property, prefix, replace }),
+        ...toProps({ tokens: property, prefix, replace, replace2 }),
       }
     } else {
       props = {
         ...props,
-        ...toProp({ property, prefix, replace }),
+        ...toProp({ property, prefix, replace, replace2 }),
       }
     }
   }

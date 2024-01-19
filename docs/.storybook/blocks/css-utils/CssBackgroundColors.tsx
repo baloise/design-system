@@ -1,11 +1,5 @@
 import React from 'react'
-import tokens from '@baloise/design-system-tokens/dist/tokens.docs.json'
-import { CssTable } from './helpers/CssTable'
+import { CssUtilitiesTable } from './helpers/CssPropertyTable'
+import json from '../../../../packages/styles/docs/background.json'
 
-export const CssBackgroundColors = ({}) => {
-  return CssTable({
-    tokens: tokens.color.background,
-    css: 'bg',
-    example: item => <div className={`bg-${item.key} p-small`}></div>,
-  })
-}
+export const CssBackgroundColors = () => <CssUtilitiesTable list={json} search="background" example={item => <div className={`${item.class} p-small`}></div>} />
