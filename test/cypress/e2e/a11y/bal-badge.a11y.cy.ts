@@ -1,4 +1,4 @@
-describe('bal-logo', () => {
+describe('bal-badge', () => {
   context('a11y', () => {
     beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-badge/test/bal-badge.a11y.html'))
 
