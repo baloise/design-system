@@ -48,6 +48,19 @@ import { Banner, Lead, Code, CssBorderColors, Footer, LinkCard, LinkCards } from
 `}
 />
 
+## Pseudo States
+
+States such as Focus, Hover, and Active can be utilized by applying the respective prefixes: **focus:**, **hover:**, and **active:**.
+
+<Code
+  language="html"
+  code={`
+<div class="border-primary hover:border-primary-hovered active:border-primary-pressed cursor-pointer">
+  <p class="p-normal">Hover and click me!</p>
+</div>
+`}
+/>
+
 <Footer>
   <LinkCards>
     <LinkCard

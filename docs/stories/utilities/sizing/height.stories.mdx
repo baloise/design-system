@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssSizingHeight, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssSizingHeight, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Sizing/Height"
@@ -48,6 +48,11 @@ import { Banner, Lead, Code, CssSizingHeight, Footer, LinkCard, LinkCards } from
 />
 
 ## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:h-full`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Code
   language="html"

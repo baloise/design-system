@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssBorderRadius, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Border/Border Radius"
@@ -26,6 +26,13 @@ import { Banner, Lead, Code, CssBorderRadius, Footer, LinkCard, LinkCards } from
 <div class="border-primary radius-large p-small mb-small">Large</div>
 <div class="border-primary radius-rounded p-small mb-small">Rounded</div>
 `} />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:radius-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>

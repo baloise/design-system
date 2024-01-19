@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxAlignItems, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssFlexboxAlignItems, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Align Items"
@@ -92,6 +92,13 @@ Elements are aligned with the baseline of the container.
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-items-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>

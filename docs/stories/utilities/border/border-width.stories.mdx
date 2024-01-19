@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssBorderWidth, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssBorderWidth, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Border/Border Width"
@@ -29,6 +29,13 @@ import { Banner, Lead, Code, CssBorderWidth, Footer, LinkCard, LinkCards } from 
 <div class="border-primary border-width-large p-small mb-small">Large</div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:border-width-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>

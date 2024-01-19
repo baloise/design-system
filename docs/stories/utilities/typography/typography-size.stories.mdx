@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssTypographySize, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, CssTypographySize, CssResponsiveTable, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Typography/Font Size"
@@ -50,6 +50,13 @@ The two display sizes are designed for large-scale website layouts.
 <h1 class="title text-xxxxx-large">Display 1</h1>
 <h1 class="subtitle text-xxxx-large">Display 2</h1>
 `} />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:text-large`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>

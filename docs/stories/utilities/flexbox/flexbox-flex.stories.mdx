@@ -1,5 +1,14 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs'
-import { Banner, Lead, Code, CssFlexboxFlex, Footer, LinkCard, LinkCards } from '../../../.storybook/blocks'
+import {
+  Banner,
+  Lead,
+  Code,
+  CssFlexboxFlex,
+  CssResponsiveTable,
+  Footer,
+  LinkCard,
+  LinkCards,
+} from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Flexbox/Flex"
@@ -87,6 +96,13 @@ Equivalent to `0 0 auto`, indicating that the element neither expands nor contra
 </div>
 `}
 />
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:flex-1`, to apply the corresponding responsive class.
+
+<CssResponsiveTable />
 
 <Footer>
   <LinkCards>
