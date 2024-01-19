@@ -23,6 +23,9 @@
 +block(field-message)
   line-height: var(--bal-line-height-normal)
 
++block(field-hidden)
+  +hide-element
+
 +block(field-control)
   display: flex
   align-items: center
@@ -57,8 +60,9 @@
     min-width: var(--bal-field-label-horizontal-width)
     max-width: var(--bal-field-label-horizontal-width)
     justify-content: end
+    text-align: right
     margin-bottom: 0
-  
+
   .bal-field-control
     flex: 1
     padding-bottom: 0
@@ -75,5 +79,5 @@
     .bal-hint
       top: 0
 
-  .bal-field-hint ~ .bal-field-message 
+  .bal-field-hint ~ .bal-field-message
     margin-left: calc(var(--bal-field-label-horizontal-width) + (var(--bal-field-label-column-gap) * 2) + 1.125rem)

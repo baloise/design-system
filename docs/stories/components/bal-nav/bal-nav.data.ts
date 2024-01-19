@@ -271,8 +271,8 @@ export const optionLinkItems = [
           },
         ],
         overviewLink: {
-          value: 'Alle Versicherungslösungen ➞',
-          label: 'Alle Versicherungslösungen ➞',
+          value: 'Alle Versicherungslösungen',
+          label: 'Alle Versicherungslösungen',
           href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
         },
       },
@@ -493,8 +493,8 @@ export const optionLinkItems = [
       },
     ],
     overviewLink: {
-      value: 'Privatkunden ➞',
-      label: 'Privatkunden ➞',
+      value: 'Privatkunden',
+      label: 'Privatkunden',
       href: 'http://localhost:3334/components/bal-nav/test/bal-nav.visual.html',
     },
   },

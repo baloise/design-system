@@ -1,5 +1,32 @@
 # @baloise/design-system-components-angular
 
+## 15.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`93d8edc3d`](https://github.com/baloise/design-system/commit/93d8edc3dc9b531d5cc33f7cc6223838505528e9)]:
+  - @baloise/design-system-components@15.2.0
+
+## 15.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`78fff0887`](https://github.com/baloise/design-system/commit/78fff0887478700e31f4f052a61d520ffbddb0fb)]:
+  - @baloise/design-system-components@15.1.1
+
+## 15.1.0
+
+### Minor Changes
+
+- [#1271](https://github.com/baloise/design-system/pull/1271) - Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid.
+
+### Patch Changes
+
+- [#1263](https://github.com/baloise/design-system/pull/1263) - The Angular component `bal-ng-error` is now more synchronized with Angular lifecycles, ensuring improved visibility and hiding of validation messages.
+
+- Updated dependencies [[`32562d2fd`](https://github.com/baloise/design-system/commit/32562d2fd9c3ddeb0be252c370af8dbdd54b2370), [`d27fe77dd`](https://github.com/baloise/design-system/commit/d27fe77dd9c24c9da4a4ac7dd2be1a90ae4033cd), [`b4daf458f`](https://github.com/baloise/design-system/commit/b4daf458fc2e051c500db538b7cbecbeb9352c7b), [`a692194ed`](https://github.com/baloise/design-system/commit/a692194ed7085cb97fd4bc1f25f38f276327d277), [`e56e2490f`](https://github.com/baloise/design-system/commit/e56e2490f45ba1d707401d0121489c0869eebe7b), [`9e72ae085`](https://github.com/baloise/design-system/commit/9e72ae085e52b55c53552a427737818b14b0f187), [`9bdbbc238`](https://github.com/baloise/design-system/commit/9bdbbc23817260977e226d85db1cb527a5bad273)]:
+  - @baloise/design-system-components@15.1.0
+
 ## 15.0.2
 
 ### Patch Changes
@@ -79,6 +106,10 @@
   })
   export class AppComponent {}
   ```
+
+#### Webpack builder
+
+For projects based on the builder `@angular-devkit/build-angular:browser` use the `@baloise/design-system-components-angular/legacy`.
 
 ### Patch Changes
 

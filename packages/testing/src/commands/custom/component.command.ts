@@ -52,7 +52,7 @@ Cypress.Commands.add(
   {
     prevSubject: 'optional',
   },
-  (subject, options?: Partial<Cypress.Loggable>) => {
+  (subject, options?: Partial<Cypress.Timeoutable & Cypress.Loggable>) => {
     cy.document({ log: false }).then(document => document.fonts.ready)
 
     log('waitForComponents', '', subject, options)
@@ -61,7 +61,7 @@ Cypress.Commands.add(
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
       .then(() => waitAfterFramePaint())
-      .then(() => waitAfterIdleCallback())
+      .then(() => waitAfterIdleCallback(o.timeout))
       .wrap(subject, o) as any
   },
 )

@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" focusable="false" aria-hidden="true"><defs><style>.cls-1 {
-        fill: #000d6e;
-      }
-
-      .cls-2 {
-        fill: #1b5951;
-      }
-
-      .cls-3 {
-        fill: #94e3d4;
-      }</style></defs><polygon class="cls-2" points="598.64 594.73 481.36 594.73 122.73 164.43 122.73 125.6 957.27 125.6 957.27 164.37 598.64 594.73"/><polygon class="cls-3" points="122.73 164.43 187.3 242.61 892.12 242.61 957.27 164.43 122.73 164.43"/><polygon class="cls-2" points="598.64 876.21 481.36 954.4 481.36 594.73 598.64 594.73 598.64 876.21"/><rect class="cls-1" x="481.21" y="594.5" width="117.58" height="34.41"/></svg>
+<?xml version="1.0" encoding="UTF-8"?><svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" focusable="false" aria-hidden="true"><polygon points="598.64 594.73 481.36 594.73 122.73 164.43 122.73 125.6 957.27 125.6 957.27 164.37 598.64 594.73" fill="#1b5951"/><polygon points="122.73 164.43 187.3 242.61 892.12 242.61 957.27 164.43 122.73 164.43" fill="#94e3d4"/><polygon points="598.64 876.21 481.36 954.4 481.36 594.73 598.64 594.73 598.64 876.21" fill="#1b5951"/><rect x="481.21" y="594.5" width="117.58" height="34.41" fill="#000d6e"/></svg>

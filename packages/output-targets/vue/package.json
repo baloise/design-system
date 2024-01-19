@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-vue",
-  "version": "15.0.2",
+  "version": "15.2.0",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
