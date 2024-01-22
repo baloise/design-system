@@ -36,7 +36,7 @@ export default function App() {
           artifacts to build any number of web applications.
         </p>
         <BalButton
-          href="https://baloise-design-system.vercel.app"
+          href="https://design.baloise.dev"
           target="_blank"
         >
           Check out the Documentation
