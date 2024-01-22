@@ -201,7 +201,6 @@ export class Field implements ComponentInterface, BalMutationObserver {
 
   @ListenToMutation({ subtree: false, waitAfterFramePrint: true })
   mutationListener(): void {
-    console.log('mutationListener')
     this.triggerAllHandlers()
     this.syncAriaAttributes()
   }
