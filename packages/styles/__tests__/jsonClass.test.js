@@ -14,11 +14,15 @@ describe('jsonClass', () => {
       display: [
         {
           class: 'block',
-          properties: 'display: block;',
+          css: 'display: block;',
+          property: 'display',
+          value: 'block',
         },
         {
           class: 'is-inline',
-          properties: 'display: inline;',
+          css: 'display: inline;',
+          property: 'display',
+          value: 'inline',
         },
       ],
     })
