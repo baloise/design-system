@@ -113,28 +113,63 @@ export class Field implements ComponentInterface, BalMutationObserver {
     await this.syncAriaAttributes()
   }
 
+  private isDirectChild = (el: HTMLElement): boolean => {
+    if (!el) {
+      return false
+    }
+
+    const parent = el.parentElement
+    if (!parent) {
+      return false
+    }
+    if (parent.nodeName.toLowerCase() === 'bal-field' && parent !== this.el) {
+      return false
+    }
+    if (parent === this.el) {
+      return true
+    }
+    return this.isDirectChild(parent)
+  }
+
+  private findDirectChild = (selectors: string): BalAriaFormLinking | undefined => {
+    const element = this.el.querySelector<any>(selectors)
+    const isDirectChild = this.isDirectChild(element)
+    if (isDirectChild) {
+      return element
+    }
+    return undefined
+  }
+
+  private findDirectChildren = (selectors: string[]): BalAriaFormLinking[] => {
+    return selectors
+      .map(selector => {
+        return Array.from(this.el.querySelectorAll<any>(selector)).filter(this.isDirectChild)
+      })
+      .flat()
+  }
+
   async syncAriaAttributes(): Promise<void> {
     await deepReady(this.el)
     await waitAfterFramePaint()
 
-    const label: BalAriaFormLinking = this.el.querySelector<any>('bal-field-label bal-label')
-    const message: BalAriaFormLinking = this.el.querySelector<any>('bal-field-message')
-    const controls: BalAriaFormLinking[] = [
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-select')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-date')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-checkbox-group')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-radio-group')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-number-input')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-time-input')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-datepicker')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-slider')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-input-stepper')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-textarea')),
-      ...Array.from(this.el.querySelectorAll<any>('bal-field-control bal-file-upload')),
-    ]
+    const label = this.findDirectChild('bal-field-label bal-label')
+    const message = this.findDirectChild('bal-field-message')
+    const controls = this.findDirectChildren([
+      'bal-field-control bal-input',
+      'bal-field-control bal-select',
+      'bal-field-control bal-input-date',
+      'bal-field-control bal-checkbox',
+      'bal-field-control bal-radio',
+      'bal-field-control bal-checkbox-group',
+      'bal-field-control bal-radio-group',
+      'bal-field-control bal-number-input',
+      'bal-field-control bal-time-input',
+      'bal-field-control bal-datepicker',
+      'bal-field-control bal-input-slider',
+      'bal-field-control bal-input-stepper',
+      'bal-field-control bal-textarea',
+      'bal-field-control bal-file-upload',
+    ])
 
     const ariaForm = defaultBalAriaForm
 
@@ -164,8 +199,9 @@ export class Field implements ComponentInterface, BalMutationObserver {
 
   mutationObserverActive = true
 
-  @ListenToMutation({ subtree: false })
+  @ListenToMutation({ subtree: false, waitAfterFramePrint: true })
   mutationListener(): void {
+    console.log('mutationListener')
     this.triggerAllHandlers()
     this.syncAriaAttributes()
   }
