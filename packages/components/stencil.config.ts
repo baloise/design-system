@@ -67,9 +67,9 @@ export const config: Config = {
       ],
       includeGlobalScripts: false,
     },
-    {
-      type: 'dist-hydrate-script',
-    },
+    // {
+    //   type: 'dist-hydrate-script',
+    // },
     {
       type: 'www',
       dir: 'www',

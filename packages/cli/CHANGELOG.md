@@ -1,5 +1,7 @@
 # @baloise/design-system-cli
 
+## 15.2.1
+
 ## 15.2.0
 
 ### Minor Changes

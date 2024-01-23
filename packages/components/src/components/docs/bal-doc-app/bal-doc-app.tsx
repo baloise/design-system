@@ -44,7 +44,9 @@ export class DocApp implements ComponentInterface {
       custom: this.logCustom,
     }
     if (balBrowser.hasWindow) {
-      ;(window as any).BaloiseDesignSystem.config.logger = logConfig
+      if (this.logComponents) {
+        ;(window as any).BaloiseDesignSystem.config.logger = logConfig
+      }
       if (this.region) {
         ;(window as any).BaloiseDesignSystem.config.region = this.region
       }
