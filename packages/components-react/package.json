@@ -12,7 +12,7 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rollup --config rollup.config.js"
+    "build": "node scripts/build.mjs"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
