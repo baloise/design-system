@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://baloise-design-system.vercel.app",
+  "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/design-system-components": "15.2.0",

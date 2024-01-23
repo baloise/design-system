@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://baloise-design-system.vercel.app",
+  "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "scripts": {
     "build": "npm run build:bundle && npm run build:web-types && npm run build:vetur",
