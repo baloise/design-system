@@ -69,7 +69,7 @@ export const exec = (command, args = []) => {
       if (code > 0) {
         reject([...output, '--------------------------------------', ...outputError].join('\n'))
       } else {
-        resolve(code)
+        resolve({ code, output })
       }
     })
 
