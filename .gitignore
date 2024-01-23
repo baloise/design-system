@@ -201,3 +201,5 @@ packages/tokens/CHANGELOG.md
 packages/output-targets/angular/CHANGELOG.md
 packages/output-targets/react/CHANGELOG.md
 packages/output-targets/vue/CHANGELOG.md
+docs/CHANGELOG.md
+test/CHANGELOG.md
