@@ -16,9 +16,10 @@ const run = async () => {
     await makeDir(__generated)
     shell.rm('-rf', 'generated/www')
     shell.rm('-rf', 'generated/dist')
+    shell.rm('-f', 'generated/components.json')
     await copy(path.join(__root, 'packages/components/www'), path.join(__generated, 'www'))
     await copy(path.join(__root, 'packages/components/dist'), path.join(__generated, 'dist'))
-    await copy(path.join(__root, 'packages/components/.tmp'), path.join(__generated, 'dist'))
+    await copy(path.join(__root, 'packages/components/.tmp/components.json'), path.join(__generated, 'components.json'))
     await writeFile(path.join(__generated, 'index.d.ts'), `export * from './dist/types';`)
     log.succeed()
   } catch (error) {
