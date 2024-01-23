@@ -1,5 +1,7 @@
 # @baloise/design-system-tokens
 
+## 15.2.1
+
 ## 15.2.0
 
 ## 15.1.1
@@ -70,7 +72,7 @@ After upgrading the design system in your app, please take a moment to check if 
 | toast      | `--bal-z-index-toast`      | `1200`    | Default z-index for toast and snackbar messages.                                                                     |
 | tooltip    | `--bal-z-index-tooltip`    | `1300`    | Default z-index for tooltips.                                                                                        |
 
-Have a look at the [Z-Index documentation](https://baloise-design-system.vercel.app?path=/docs/foundation-elevation-design-tokens--page).
+Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs/foundation-elevation-design-tokens--page).
 
 ## 13.7.1
 
@@ -146,18 +148,18 @@ Have a look at the [Z-Index documentation](https://baloise-design-system.vercel.
 
   New components:
 
-  - [bal-content](https://baloise-design-system.vercel.app/?path=/docs/components-layout-content--basic)
-  - [bal-stack](https://baloise-design-system.vercel.app/?path=/docs/components-layout-stack--basic)
+  - [bal-content](https://design.baloise.dev/?path=/docs/components-layout-content--basic)
+  - [bal-stack](https://design.baloise.dev/?path=/docs/components-layout-stack--basic)
 
   New radio and checkbox style:
 
-  - [bal-checkbox button](https://baloise-design-system.vercel.app/?path=/docs/components-form-checkbox--basic#checkbox-button)
-  - [bal-radio button](https://baloise-design-system.vercel.app/?path=/docs/components-form-radio--basic#radio-button)
+  - [bal-checkbox button](https://design.baloise.dev/?path=/docs/components-form-checkbox--basic#checkbox-button)
+  - [bal-radio button](https://design.baloise.dev/?path=/docs/components-form-radio--basic#radio-button)
 
   Updated bal-icon component. New colors, sizes are added and state properties invalid and disabled. Moreover, the color `auto` can
   be used to leave the color as it is.
 
-  Check out the updated [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-icon--basic) for the bal-icon.
+  Check out the updated [documentation](https://design.baloise.dev/?path=/docs/components-icon--basic) for the bal-icon.
 
 ## 12.11.0
 
