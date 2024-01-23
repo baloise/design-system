@@ -25,7 +25,7 @@ const run = async () => {
     await archiveBrandIcons()
     await archiveMapMarkers()
     await archiveFavicons()
-    await archiveFigmaTokens()
+    // await archiveFigmaTokens()
     await copyResources()
     log.succeed()
   } catch (error) {
@@ -110,19 +110,19 @@ function archiveFavicons() {
   })
 }
 
-function archiveFigmaTokens() {
-  return new Promise((resolve, reject) => {
-    const output = createWriteStream(path.join(__docs_downloads, 'figma-tokens.zip'))
-    output.on('close', () => resolve())
-    output.on('error', err => reject(err.message))
+// function archiveFigmaTokens() {
+//   return new Promise((resolve, reject) => {
+//     const output = createWriteStream(path.join(__docs_downloads, 'figma-tokens.zip'))
+//     output.on('close', () => resolve())
+//     output.on('error', err => reject(err.message))
 
-    const archive = archiver('zip', { zlib: { level: 9 } })
-    archive.on('error', err => reject(err.message))
-    archive.pipe(output)
-    archive.glob('*.json', { cwd: path.join(__root, 'tokens', 'dist/figma') })
-    archive.finalize()
-  })
-}
+//     const archive = archiver('zip', { zlib: { level: 9 } })
+//     archive.on('error', err => reject(err.message))
+//     archive.pipe(output)
+//     archive.glob('*.json', { cwd: path.join(__root, 'tokens', 'dist/figma') })
+//     archive.finalize()
+//   })
+// }
 
 async function copyToPublic(src, target) {
   await copy(src, path.join(__docs_public, target))
@@ -142,14 +142,14 @@ async function copyResources() {
   await copyToAsset(path.join(__root, 'components/.tmp/contributors.json'), 'data/contributors.json')
   await copyToAsset(path.join(__root, 'components/.tmp/selectors.json'), 'data/selectors.json')
   await copyToAsset(path.join(__dirname, '../../resources/data/tags.json'), 'data/tags.json')
-  await copyToAsset(path.join(__root, 'styles/docs'), 'data/styles')
+  // await copyToAsset(path.join(__root, 'styles/docs'), 'data/styles')
   await copyToPublic(path.join(__root, 'components/www/build'), 'build')
   await copyToPublic(
     path.join(__root, 'components-table/css/design-system-table.css'),
     'assets/css/design-system-table.css',
   )
   await copyToPublic(
-    path.join(__root, 'styles/css/baloise-design-system.min.css'),
+    path.join(__root, 'css/css/baloise-design-system.min.css'),
     'assets/css/baloise-design-system.min.css',
   )
   await copyToPublic(path.join(__root, 'icons/svg'), 'assets/images/icons')
