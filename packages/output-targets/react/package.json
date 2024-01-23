@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-output-target-react",
-  "version": "15.0.0",
+  "version": "15.2.1",
   "private": true,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -10,14 +10,13 @@
     "react-component-lib/"
   ],
   "scripts": {
-    "build": "npm run build:bundle",
-    "build:bundle": "rollup --config rollup.config.js",
+    "build": "node scripts/build.mjs",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
   "peerDependencies": {
-    "@stencil/core": "~4.8.0",
+    "@stencil/core": "~4.8.1",
     "react": "~18.2.0",
     "react-dom": "~18.2.0"
   },

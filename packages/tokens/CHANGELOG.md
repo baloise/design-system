@@ -1,5 +1,17 @@
 # @baloise/design-system-tokens
 
+## 15.2.1
+
+## 15.2.0
+
+## 15.1.1
+
+## 15.1.0
+
+## 15.0.2
+
+## 15.0.1
+
 ## 15.0.0
 
 ## 14.6.0
@@ -136,18 +148,18 @@ Have a look at the [Z-Index documentation](https://design.baloise.dev?path=/docs
 
   New components:
 
-  - [bal-content](https://baloise-design-system.vercel.app/?path=/docs/components-layout-content--basic)
-  - [bal-stack](https://baloise-design-system.vercel.app/?path=/docs/components-layout-stack--basic)
+  - [bal-content](https://design.baloise.dev/?path=/docs/components-layout-content--basic)
+  - [bal-stack](https://design.baloise.dev/?path=/docs/components-layout-stack--basic)
 
   New radio and checkbox style:
 
-  - [bal-checkbox button](https://baloise-design-system.vercel.app/?path=/docs/components-form-checkbox--basic#checkbox-button)
-  - [bal-radio button](https://baloise-design-system.vercel.app/?path=/docs/components-form-radio--basic#radio-button)
+  - [bal-checkbox button](https://design.baloise.dev/?path=/docs/components-form-checkbox--basic#checkbox-button)
+  - [bal-radio button](https://design.baloise.dev/?path=/docs/components-form-radio--basic#radio-button)
 
   Updated bal-icon component. New colors, sizes are added and state properties invalid and disabled. Moreover, the color `auto` can
   be used to leave the color as it is.
 
-  Check out the updated [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-icon--basic) for the bal-icon.
+  Check out the updated [documentation](https://design.baloise.dev/?path=/docs/components-icon--basic) for the bal-icon.
 
 ## 12.11.0
 

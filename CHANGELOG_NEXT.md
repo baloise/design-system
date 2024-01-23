@@ -317,7 +317,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add animated logo, [#359](https://github.com/baloise/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
 
-
 ### Bug Fixes
 
 * **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
@@ -398,7 +397,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
 * **tabs:** add hidden, spaceless and float ([1111288](https://github.com/baloise/design-system/commit/1111288f66f137e6ad68d2aeb8afce8e66d4dc75))
-
 
 ### Bug Fixes
 
@@ -1101,7 +1099,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-mobile:** updated bal list story, update bem class for accordion parent ([8a1791a](https://github.com/baloise/design-system/commit/8a1791a75a5b91d96fd4e2125946ddbe2d7e8a1d))
 
 ## [10.17.2](https://github.com/baloise/design-system/compare/v10.17.1...v10.17.2) (2022-08-11)
-
 
 ### Features
 

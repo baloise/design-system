@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-// generated file by .build/optimize-icons.js
+// generated file
 
 export const balMapMarkerSearchLocation = /*#__PURE__*/ 'data:image/svg+xml;utf-8, <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.35" width="56" height="56" rx="28" style="fill:rgba(225, 217, 255, 1.00)"/><rect x="8" y="8" width="40" height="40" rx="20" style="fill:rgba(225, 217, 255, 1.00);stroke:rgba(108, 34, 115, 1.00)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/></svg>';
 

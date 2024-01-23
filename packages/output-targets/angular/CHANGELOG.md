@@ -1,5 +1,21 @@
 # @baloise/design-system-output-target-angular
 
+## 15.2.1
+
+## 15.2.0
+
+## 15.1.1
+
+## 15.1.0
+
+### Minor Changes
+
+- [#1271](https://github.com/baloise/design-system/pull/1271) - Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid.
+
+## 15.0.2
+
+## 15.0.1
+
 ## 15.0.0
 
 ## 14.6.0

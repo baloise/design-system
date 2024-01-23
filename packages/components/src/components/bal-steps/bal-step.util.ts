@@ -8,9 +8,10 @@ interface Option {
   active?: boolean
   disabled?: boolean
   done?: boolean
-  hidden?: boolean
+  invisible?: boolean
   failed?: boolean
   prevent?: boolean
+  hidden?: boolean // deprecated use invisible instead
 }
 
 export const newBalStepOption = (option: Option): BalStepOption => {
@@ -20,7 +21,7 @@ export const newBalStepOption = (option: Option): BalStepOption => {
     active: false,
     disabled: false,
     done: false,
-    hidden: false,
+    invisible: !!option.hidden || !!option.invisible,
     failed: false,
     prevent: false,
     ...option,

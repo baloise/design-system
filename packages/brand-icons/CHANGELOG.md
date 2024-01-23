@@ -1,5 +1,21 @@
 # @baloise/design-system-brand-icons
 
+## 15.2.1
+
+## 15.2.0
+
+## 15.1.1
+
+## 15.1.0
+
+### Patch Changes
+
+- [#1262](https://github.com/baloise/design-system/pull/1262) - Merges styles from `<style>` elements to the style attribute of matching elements.
+
+## 15.0.2
+
+## 15.0.1
+
 ## 15.0.0
 
 ## 14.6.0
