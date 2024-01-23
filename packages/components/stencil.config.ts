@@ -90,12 +90,12 @@ export const config: Config = {
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
+    CustomDocumentationGenerator,
     /**
      * Skip those outputs for documentation releases on vercel
      */
     ...(!IS_BAL_DOCUMENTATION
       ? [
-          CustomDocumentationGenerator,
           {
             type: 'docs-vscode',
             file: 'dist/html.html-data.json',
