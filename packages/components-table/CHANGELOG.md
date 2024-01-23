@@ -1,5 +1,13 @@
 # @baloise/design-system-components-table
 
+## 15.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`5b133aadc`](https://github.com/baloise/design-system/commit/5b133aadc4157025620cc53fc9d8bb3ba8769621), [`e619596df`](https://github.com/baloise/design-system/commit/e619596dfa0926737df2a9177da2a8b4a6ceeee1), [`5b133aadc`](https://github.com/baloise/design-system/commit/5b133aadc4157025620cc53fc9d8bb3ba8769621)]:
+  - @baloise/design-system-components@15.2.1
+  - @baloise/design-system-css@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes
@@ -294,7 +302,7 @@
 
 - [#806](https://github.com/baloise/design-system/pull/806) [`95f127928`](https://github.com/baloise/design-system/commit/95f12792866f62a40ade705316587d475c4aa37c) Thanks [@hirsch88](https://github.com/hirsch88)! - upgrade to `AG-Grid` v29. Breaking changes are the theming that changed from SASS variables to CSS variables.
   Moreover, our styles are just an extension to the `AG-Grid` styles.
-  Therefor please import them before the Baloise styles also check out our [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-table--basic#aggrid)
+  Therefor please import them before the Baloise styles also check out our [documentation](https://design.baloise.dev/?path=/docs/components-table--basic#aggrid)
 
   **before**
 

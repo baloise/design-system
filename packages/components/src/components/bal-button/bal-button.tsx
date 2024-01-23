@@ -101,11 +101,13 @@ export class Button implements ComponentInterface {
   @Prop() rounded = false
 
   /**
+   * @deprecated
    * If `true` the top corners get rounded
    */
   @Prop() topRounded: undefined | boolean = undefined
 
   /**
+   * @deprecated
    * If `true` the bottom corners get rounded
    */
   @Prop() bottomRounded: undefined | boolean = undefined
@@ -204,8 +206,8 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'is-rounded': this.rounded === true,
       'has-blur-shadow': this.shadow === true,
-      'has-radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,
       'has-no-round-top-corners': this.topRounded === false,
@@ -327,7 +329,7 @@ export class Button implements ComponentInterface {
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} deactivated={!this.loading} />
           <bal-icon
             {...this.leftIconAttrs}
-            class="icon-left"
+            class={this.square ? '' : 'icon-left'}
             name={this.icon}
             size={this.square ? this.size : 'small'}
             turn={this.iconTurn}
