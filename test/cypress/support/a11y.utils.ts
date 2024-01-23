@@ -1,6 +1,6 @@
 import * as data from '../../../packages/components/.tmp/components.json'
 
-export function findColorValuesByTag(tag: string, propName: string) {
+export function findPropertyValuesByTag(tag: string, propName: string) {
   const component = data.components.find(comp => comp.tag === tag)
 
   if (component) {

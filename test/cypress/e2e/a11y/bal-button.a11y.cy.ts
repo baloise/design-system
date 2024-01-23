@@ -1,4 +1,4 @@
-import { findColorValuesByTag } from '../../support/a11y.utils'
+import { findPropertyValuesByTag } from '../../support/a11y.utils'
 
 describe('bal-button', () => {
   context('a11y', () => {
@@ -27,7 +27,7 @@ describe('bal-button', () => {
 })
 
 function testColorA11y() {
-  const colors = findColorValuesByTag('bal-button', 'color')
+  const colors = findPropertyValuesByTag('bal-button', 'color')
   for (let index = 0; index < colors.length; index++) {
     const color = colors[index]
     it(`color ${color}`, () => {
@@ -37,7 +37,7 @@ function testColorA11y() {
 }
 
 function testSizeA11y() {
-  const sizes = findColorValuesByTag('bal-button', 'size')
+  const sizes = findPropertyValuesByTag('bal-button', 'size')
   for (let index = 0; index < sizes.length; index++) {
     const size = sizes[index]
     it(`size ${size}`, () => {
