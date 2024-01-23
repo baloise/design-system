@@ -57,10 +57,10 @@ const buildLogger = (tag: string) => {
           lifecycleName === 'connectedCallback'
             ? '🟢'
             : lifecycleName === 'disconnectedCallback'
-            ? '🔴'
-            : lifecycleName === 'componentDidLoad'
-            ? '🏁'
-            : ' ➡️'
+              ? '🔴'
+              : lifecycleName === 'componentDidLoad'
+                ? '🏁'
+                : ' ➡️'
         } [${tag}] - (${lifecycleName})`,
         ...optionalParams,
       ),
