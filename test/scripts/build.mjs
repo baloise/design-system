@@ -18,6 +18,7 @@ const run = async () => {
     shell.rm('-rf', 'generated/dist')
     await copy(path.join(__root, 'packages/components/www'), path.join(__generated, 'www'))
     await copy(path.join(__root, 'packages/components/dist'), path.join(__generated, 'dist'))
+    await copy(path.join(__root, 'packages/components/.tmp'), path.join(__generated, 'dist'))
     await writeFile(path.join(__generated, 'index.d.ts'), `export * from './dist/types';`)
     log.succeed()
   } catch (error) {

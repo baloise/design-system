@@ -1,4 +1,4 @@
-import * as data from '../../../packages/components/.tmp/components.json'
+import * as data from '../../generated/dist/components.json'
 
 export function findPropertyValuesByTag(tag: string, propName: string) {
   const component = data.components.find(comp => comp.tag === tag)
