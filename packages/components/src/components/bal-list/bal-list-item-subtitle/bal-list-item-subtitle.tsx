@@ -9,9 +9,7 @@ export class ListItemSubtitle {
   render() {
     return (
       <Host class="bal-list__item__subtitle">
-        <p class="is-size-small">
-          <slot></slot>
-        </p>
+        <slot></slot>
       </Host>
     )
   }
