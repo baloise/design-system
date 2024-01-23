@@ -12,11 +12,7 @@
   "homepage": "https://design.baloise.dev",
   "license": "Apache-2.0",
   "scripts": {
-    "docs": "npm run build && npm run build:archive",
-    "build": "npm run build:markers && npm run build:bundle",
-    "build:bundle": "rollup --config rollup.config.js",
-    "build:markers": "node ../../.build/optimize-map-markers.js",
-    "build:archive": "node ../../.build/archive-maps.js"
+    "build": "node scripts/build.mjs"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

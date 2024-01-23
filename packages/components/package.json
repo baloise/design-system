@@ -22,26 +22,20 @@
   "files": [
     "components/",
     "dist/",
-    "hydrate/",
     "loader/"
   ],
   "scripts": {
     "==================== START =========================": "================================",
-    "serve": "stencil build --config stencil.config.e2e.ts --dev --serve --watch",
-    "dev": "stencil build --config stencil.config.docs.ts --watch",
+    "serve": "stencil build --dev --serve --watch",
+    "dev": "stencil build --watch",
     "==================== BUILD =========================": "================================",
-    "build": "stencil build --es5 && npm run build:post",
-    "build:post": "node ../../.build/interfaces.js && node ../../.build/globals.js",
-    "ng:build": "stencil build --config stencil.config.ng.ts --prod && npm run build:post",
+    "build": "node scripts/pre-build.mjs && stencil build && node scripts/post-build.mjs",
     "==================== UNIT TEST =====================": "================================",
     "test": "vitest run",
     "test:watch": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "cy:build": "stencil build --config stencil.config.e2e.ts",
-    "==================== DOCUMENTATION =================": "================================",
-    "docs": "npm run docs:pre && stencil build --config stencil.config.docs.ts --es5 --docs-json dist/docs.json && node ../../.build/interfaces.js",
-    "docs:pre": "node ../../.build/docs-testing.js && node ../../.build/docs-selectors.js && node ../../.build/docs-contributors.js"
+    "cy:build": "stencil build"
   },
   "dependencies": {
     "@baloise/design-system-css": "15.2.1",

@@ -19,10 +19,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile",
-    "build:compile": "tsc src/*.ts --outDir dist --target es5 --declaration --moduleResolution node --skipLibCheck",
-    "build:clean": "rimraf dist",
-    "ng:build": "npm run build"
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "@baloise/design-system-components": "15.2.1",

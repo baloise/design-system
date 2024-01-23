@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Lets update the registry"
+sed -i -e "s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g" package-lock.json
+echo "Done!"
