@@ -8,6 +8,10 @@ export function findColorValuesByTag(tag: string, propName: string) {
 
     if (propFound) {
       return propFound.values.filter(a => a.value !== undefined).map(a => a.value)
+    } else {
+      return []
     }
+  } else {
+    return []
   }
 }
