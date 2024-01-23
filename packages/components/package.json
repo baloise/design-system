@@ -22,7 +22,6 @@
   "files": [
     "components/",
     "dist/",
-    "hydrate/",
     "loader/"
   ],
   "scripts": {
