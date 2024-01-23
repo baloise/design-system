@@ -1,5 +1,21 @@
 # @baloise/design-system-components
 
+## 15.2.1
+
+### Patch Changes
+
+- [#1298](https://github.com/baloise/design-system/pull/1298) - Disabled years or months in the selection list cannot be selected anymore.
+
+- [#1299](https://github.com/baloise/design-system/pull/1299) - Field component links A11y information only for direct controls, labels and messages.
+
+- [#1298](https://github.com/baloise/design-system/pull/1298) - Carousel movement for large controls variant on mobile is optimized.
+
+- Updated dependencies []:
+  - @baloise/design-system-css@15.2.1
+  - @baloise/design-system-fonts@15.2.1
+  - @baloise/design-system-icons@15.2.1
+  - @baloise/design-system-tokens@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes
