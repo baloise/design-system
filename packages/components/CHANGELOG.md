@@ -4,87 +4,72 @@
 
 ### Patch Changes
 
-- [#1298](https://github.com/baloise/design-system/pull/1298) - Disabled years or months in the selection list cannot be selected anymore.
-
-- [#1299](https://github.com/baloise/design-system/pull/1299) - Field component links A11y information only for direct controls, labels and messages.
-
-- [#1298](https://github.com/baloise/design-system/pull/1298) - Carousel movement for large controls variant on mobile is optimized.
+- **date**: disabled years or months in the selection list cannot be selected anymore. ([#1298](https://github.com/baloise/design-system/pull/1298))
+- **field**: links A11y information only for direct controls, labels and messages. ([#1299](https://github.com/baloise/design-system/pull/1299))
+- **carousel**: movement for large controls variant on mobile is optimized. ([#1298](https://github.com/baloise/design-system/pull/1298))
 
 ## 15.2.0
 
 ### Minor Changes
 
-- [#1277](https://github.com/baloise/design-system/pull/1277) - Add an Angular schematic to seamlessly integrate the design system into your existing project.
+- **angular**: schematic to seamlessly integrate the design system into your existing project. ([#1277](https://github.com/baloise/design-system/pull/1277))
 
 ### Patch Changes
 
-- [#1282](https://github.com/baloise/design-system/pull/1282) - The date component rerenders the calendar grid when min or max property was changed.
+- **date**: rerenders the calendar grid when min or max property was changed. ([#1282](https://github.com/baloise/design-system/pull/1282))
 
 ## 15.1.1
 
 ### Patch Changes
 
-- [#1275](https://github.com/baloise/design-system/pull/1275) - In the navigation component the arrow symbol for overview links will only be rendered if the link is valid
+- **nav**: only renders the arrow symbol if link is valid ([#1275](https://github.com/baloise/design-system/pull/1275))
 
 ## 15.1.0
 
 ### Minor Changes
 
-- [#1271](https://github.com/baloise/design-system/pull/1271) - Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid.
+- **forms**: Introduce a new property `auto-invalid-off` to exclude a form control in Angular reactive forms from being visibly set as invalid. ([#1271](https://github.com/baloise/design-system/pull/1271))
 
 ### Patch Changes
 
-- [#1266](https://github.com/baloise/design-system/pull/1266) - The term `hidden` is a reserved accessibility (a11y) value. Consequently, we found it necessary to rename our hidden properties for checkboxes, radio buttons, tabs, and steps.
+- **a11y**: The term `hidden` is a reserved accessibility (a11y) value. Consequently, we found it necessary to rename our hidden properties for checkboxes, radio buttons, tabs, and steps. ([#1266](https://github.com/baloise/design-system/pull/1266))
   The attribute remains in place for now, ensuring no breaking changes at this time.
 
   The `hidden` property for the checkbox and radio has been updated and renamed to `non-submit.`
   The `hidden` property for the tabs and steps has been updated and renamed to `invisible.`
 
-- [#1264](https://github.com/baloise/design-system/pull/1264) - The radio and checkbox group component now updates its children when there are changes in the disabled or invalid status.
-
-- [#1260](https://github.com/baloise/design-system/pull/1260) - The horizontal form field now lacks right padding, and the label is aligned to the right.
-
-- [#1265](https://github.com/baloise/design-system/pull/1265) - Corrected the z-index value for the carousel component with sticky controls.
-
-- [#1261](https://github.com/baloise/design-system/pull/1261) - The navigation component now provides enhanced support for colored service cards on mobile resolutions.
-
-- [#1269](https://github.com/baloise/design-system/pull/1269) - Enable vertical scrolling for the `carousel` with tab controls on mobile devices.
-
-- [#1263](https://github.com/baloise/design-system/pull/1263) - The Angular component `bal-ng-error` is now more synchronized with Angular lifecycles, ensuring improved visibility and hiding of validation messages.
-
-- [#1262](https://github.com/baloise/design-system/pull/1262) - Merges styles from `<style>` elements to the style attribute of matching elements.
+- **radio-group & checkbox-group**: component now updates its children when there are changes in the disabled or invalid status. ([#1264](https://github.com/baloise/design-system/pull/1264) )
+- **field**: in horizontal layout now lacks right padding, and the label is aligned to the right. ([#1260](https://github.com/baloise/design-system/pull/1260))
+- **carousel**: corrected the z-index value for sticky controls. ([#1265](https://github.com/baloise/design-system/pull/1265))
+- **nav**: now provides enhanced support for colored service cards on mobile resolutions. ([#1261](https://github.com/baloise/design-system/pull/1261) )
+- **carousel**: has vertical scrolling with tab controls on mobile devices. ([#1269](https://github.com/baloise/design-system/pull/1269))
+- **ng-error**: is now more synchronized with Angular lifecycles, ensuring improved visibility and hiding of validation messages. ([#1263](https://github.com/baloise/design-system/pull/1263))
+- **brand-icons**: Merges styles from `<style>` elements to the style attribute of matching elements. ([#1262](https://github.com/baloise/design-system/pull/1262))
 
 ## 15.0.2
 
 ### Patch Changes
 
-- [#1240](https://github.com/baloise/design-system/pull/1240) - Adjust shadow value to normal for the components `bal-tooltip` & `bal-popup`.
-
-- [#1236](https://github.com/baloise/design-system/pull/1236) - Trigger the `balFilesAdded` event of the `bal-file-upload` component after files have been added.
-
-- [#1242](https://github.com/baloise/design-system/pull/1242) - Add missing `➞` sign to the overview links in the `bal-nav` component and adjust padding and height of the `bal-popup` component in fullscreen variant.
-
-- [#1239](https://github.com/baloise/design-system/pull/1239) - Reduce padding for the `bal-carousel` tab buttons to allow longer labels.
+- **tooltip & popup**: Adjust shadow value to normal. ([#1240](https://github.com/baloise/design-system/pull/1240))
+- **file-upload**: Trigger the `balFilesAdded` event after files have been added. ([#1236](https://github.com/baloise/design-system/pull/1236))
+- **nav**: Add missing `➞` sign to the overview links in the `bal-nav` component and adjust padding and height of the `bal-popup` component in fullscreen variant. ([#1242](https://github.com/baloise/design-system/pull/1242))
+- **carousel**: Reduce padding tab buttons to allow longer labels. ([#1239](https://github.com/baloise/design-system/pull/1239))
 
 ## 15.0.1
 
 ### Patch Changes
 
-- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the animation issue affecting the `bal-logo`, `bal-spinner`, and `bal-nav` component.
-
-- [#1233](https://github.com/baloise/design-system/pull/1233) - Fix the scrolling behavior of the `bal-nav` component on Safari browsers for touch devices.
-
-- [#1235](https://github.com/baloise/design-system/pull/1235) - Enhance the functionality of the `bal-nav` accordion on touch devices to ensure that when a link is activated, it behaves as an accordion.
+- **logo, spinner & nav**: Fix animation issue. ([#1233](https://github.com/baloise/design-system/pull/1233))
+- **nav**: Fix the scrolling behavior of the `bal-nav` component on Safari browsers for touch devices. ([#1233](https://github.com/baloise/design-system/pull/1233))
+- **nav**: Enhance the functionality of the `bal-nav` accordion on touch devices to ensure that when a link is activated, it behaves as an accordion. ([#1235](https://github.com/baloise/design-system/pull/1235))
 
 ## 15.0.0
 
 ### Major Changes
 
-- [#1127](https://github.com/baloise/design-system/pull/1127) - Removed the deprecated option of component styles with SASS. Instead, for customizing the component design, use CSS Variables.
-
-- [#1127](https://github.com/baloise/design-system/pull/1127) - The option to `applyPolyfills` for outdated browsers such as IE11 and legacy Edge has been deprecated, as the current design system no longer provides support for these versions.
-
-- [#1127](https://github.com/baloise/design-system/pull/1127) - Now by default the Baloise Design System will mark a form control as invalid when it's been touched and is indeed invalid.
+- **styles**: Removed the deprecated option of component styles with SASS. Instead, for customizing the component design, use CSS Variables. ([#1127](https://github.com/baloise/design-system/pull/1127))
+- **angular**: The option to `applyPolyfills` for outdated browsers such as IE11 and legacy Edge has been deprecated, as the current design system no longer provides support for these versions. ([#1127](https://github.com/baloise/design-system/pull/1127))
+- **angular**: Now by default the Baloise Design System will mark a form control as invalid when it's been touched and is indeed invalid. ([#1127](https://github.com/baloise/design-system/pull/1127))
   To disable this feature, set setInvalid to false in the design system configuration.
 
   ```ts
@@ -98,7 +83,7 @@
 
 ### Minor Changes
 
-- [#1127](https://github.com/baloise/design-system/pull/1127) - All components are now available as standalone elements for Angular v17.
+- **components** are now available as standalone elements for Angular v17. [#1127](https://github.com/baloise/design-system/pull/1127)
 
   Use the `provideBaloiseDesignSystem` provider within the app.config.ts file, where Angular providers are typically defined.
 
