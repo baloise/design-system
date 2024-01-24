@@ -49,16 +49,6 @@ export class StepItem {
   @Prop({ reflect: true }) done = false
 
   /**
-   * @deprecated
-   * Use invisible instead
-   */
-  @Prop() hidden = false
-  @Watch('hidden')
-  hiddenWatcher(value: boolean) {
-    this.invisible = value
-  }
-
-  /**
    * If `true` the step is hidden.
    */
   @Prop({ reflect: true }) invisible = false
@@ -77,12 +67,6 @@ export class StepItem {
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<BalEvents.BalStepItemNavigateDetail>
-
-  connectedCallback() {
-    if (this.hidden) {
-      this.invisible = this.hidden
-    }
-  }
 
   componentWillLoad() {
     this.inheritAttributes = inheritTrackingAttributes(this.el)
