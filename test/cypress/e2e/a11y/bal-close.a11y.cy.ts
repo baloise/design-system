@@ -1,3 +1,5 @@
+import { findPropertyValuesByTag } from '../../support/a11y.utils'
+
 describe('bal-close', () => {
   context('a11y', () => {
     beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-close/test/bal-close.a11y.html'))
@@ -11,12 +13,13 @@ describe('bal-close', () => {
         cy.getByTestId('inverted').testA11y()
       })
 
-      testSizeA11y(['xsmall', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'])
+      testSizeA11y()
     })
   })
 })
 
-function testSizeA11y(sizes: BalProps.BalCloseSize[]) {
+function testSizeA11y() {
+  const sizes = findPropertyValuesByTag('bal-close', 'size')
   for (let index = 0; index < sizes.length; index++) {
     const size = sizes[index]
     it(`size ${size}`, () => {
