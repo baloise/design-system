@@ -42,9 +42,9 @@ export default function (options: SchemaOptions): Rule {
       useFactory: ${external('initializeI18n', './i18n.initialize')},
       multi: true,
       deps: [${external('TranslocoService', '@ngneat/transloco')}, ${external(
-            'BalConfigService',
-            '@baloise/design-system-components-angular/standalone',
-          )}],
+        'BalConfigService',
+        '@baloise/design-system-components-angular/standalone',
+      )}],
     }`
         }),
       )

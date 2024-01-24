@@ -152,7 +152,7 @@ export namespace Components {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
+          * @deprecated If `true` the bottom corners get rounded
          */
         "bottomRounded": undefined | boolean;
         /**
@@ -244,7 +244,7 @@ export namespace Components {
          */
         "target": BalProps.BalButtonTarget;
         /**
-          * If `true` the top corners get rounded
+          * @deprecated If `true` the top corners get rounded
          */
         "topRounded": undefined | boolean;
         /**
@@ -5256,7 +5256,7 @@ declare namespace LocalJSX {
          */
         "aria"?: BalProps.BalButtonAria;
         /**
-          * If `true` the bottom corners get rounded
+          * @deprecated If `true` the bottom corners get rounded
          */
         "bottomRounded"?: undefined | boolean;
         /**
@@ -5364,7 +5364,7 @@ declare namespace LocalJSX {
          */
         "target"?: BalProps.BalButtonTarget;
         /**
-          * If `true` the top corners get rounded
+          * @deprecated If `true` the top corners get rounded
          */
         "topRounded"?: undefined | boolean;
         /**

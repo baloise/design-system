@@ -7,7 +7,7 @@ import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter }
 export class Snackbar {
   @Element() element!: HTMLElement
 
-  private timer!: NodeJS.Timer
+  private timer!: NodeJS.Timeout
   private snackbarId = `bal-snackbar-${snackbarIds++}`
 
   @State() animationClass = 'fadeInDown'
@@ -127,7 +127,7 @@ export class Snackbar {
       <Host id={this.snackbarId} class="bal-snackbar">
         <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType}`}>
           <div class="bal-snackbar__header">
-            <span class="icon-text is-size-small">
+            <span class="icon-text">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
                 <bal-icon name={this.icon} color={'primary'}></bal-icon>
               </span>
@@ -145,17 +145,21 @@ export class Snackbar {
             data-testid="bal-snackbar-close"
             onClick={() => this.close()}
           ></bal-close>
-          <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
-            <bal-button
-              color="info"
-              href={this.href}
-              target={this.target}
-              onClick={() => this.onActionHandler()}
-              data-testid="bal-snackbar-action"
-            >
-              {this.action}
-            </bal-button>
-          </div>
+          {this.action ? (
+            <div class="bal-snackbar__footer">
+              <bal-button
+                color="info"
+                href={this.href}
+                target={this.target}
+                onClick={() => this.onActionHandler()}
+                data-testid="bal-snackbar-action"
+              >
+                {this.action}
+              </bal-button>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </Host>
     )

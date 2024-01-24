@@ -41,7 +41,12 @@ const accessorProvider = {
 export class BalDatepicker extends ValueAccessor {
   protected el: HTMLElement
 
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone, injector: Injector) {
+  constructor(
+    c: ChangeDetectorRef,
+    r: ElementRef,
+    protected z: NgZone,
+    injector: Injector,
+  ) {
     super(injector, r)
     c.detach()
     this.el = r.nativeElement

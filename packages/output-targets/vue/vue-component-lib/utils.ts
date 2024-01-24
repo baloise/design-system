@@ -1,7 +1,7 @@
 import { defineComponent, getCurrentInstance, h, inject, ref } from 'vue'
 import type { Ref } from 'vue'
 
-export interface InputProps extends Object {
+export interface InputProps {
   modelValue?: string | boolean
   dataTestid?: string
   dataTestId?: string
