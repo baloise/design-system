@@ -15,7 +15,7 @@ describe('bal-steps.cy.ts', () => {
           newBalStepOption({ label: 'Active', value: '3' }),
           newBalStepOption({ label: 'Default', value: '4' }),
           newBalStepOption({ label: 'Disabled', value: '5', disabled: true }),
-          newBalStepOption({ label: 'Hidden', value: '6', hidden: true }),
+          newBalStepOption({ label: 'Hidden', value: '6', invisible: true }),
         ],
       },
     })

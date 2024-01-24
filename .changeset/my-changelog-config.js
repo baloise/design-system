@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, '__esModule', { value: true });
+Object.defineProperty(exports, '__esModule', { value: true })
 
-var dotenv = require('dotenv');
-var getGithubInfo = require('@changesets/get-github-info');
+var dotenv = require('dotenv')
+var getGithubInfo = require('@changesets/get-github-info')
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -11,130 +11,138 @@ function _defineProperty(obj, key, value) {
       value: value,
       enumerable: true,
       configurable: true,
-      writable: true
-    });
+      writable: true,
+    })
   } else {
-    obj[key] = value;
+    obj[key] = value
   }
 
-  return obj;
+  return obj
 }
 
 function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
+  var keys = Object.keys(object)
 
   if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
+    var symbols = Object.getOwnPropertySymbols(object)
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable
+      })
+    keys.push.apply(keys, symbols)
   }
 
-  return keys;
+  return keys
 }
 
 function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
+    var source = arguments[i] != null ? arguments[i] : {}
 
     if (i % 2) {
       ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
+        _defineProperty(target, key, source[key])
+      })
     } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
     } else {
       ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key))
+      })
     }
   }
 
-  return target;
+  return target
 }
 
-dotenv.config();
+dotenv.config()
 const changelogFunctions = {
   getDependencyReleaseLine: async (changesets, dependenciesUpdated, options) => {
-    if (!options.repo) {
-      throw new Error('Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]');
-    }
+    return ''
+    // if (!options.repo) {
+    //   throw new Error('Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]');
+    // }
 
-    if (dependenciesUpdated.length === 0) return "";
-    const changesetLink = `- Updated dependencies [${(await Promise.all(changesets.map(async cs => {
-      if (cs.commit) {
-        let {
-          links
-        } = await getGithubInfo.getInfo({
-          repo: options.repo,
-          commit: cs.commit
-        });
-        return links.commit;
-      }
-    }))).filter(_ => _).join(", ")}]:`;
-    const updatedDepenenciesList = dependenciesUpdated.map(dependency => `  - ${dependency.name}@${dependency.newVersion}`);
-    return [changesetLink, ...updatedDepenenciesList].join("\n");
+    // if (dependenciesUpdated.length === 0) return "";
+    // const changesetLink = `- Updated dependencies [${(await Promise.all(changesets.map(async cs => {
+    //   if (cs.commit) {
+    //     let {
+    //       links
+    //     } = await getGithubInfo.getInfo({
+    //       repo: options.repo,
+    //       commit: cs.commit
+    //     });
+    //     return links.commit;
+    //   }
+    // }))).filter(_ => _).join(", ")}]:`;
+    // const updatedDepenenciesList = dependenciesUpdated.map(dependency => `  - ${dependency.name}@${dependency.newVersion}`);
+    // return [changesetLink, ...updatedDepenenciesList].join("\n");
   },
   getReleaseLine: async (changeset, type, options) => {
     if (!options || !options.repo) {
-      throw new Error('Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]');
+      throw new Error(
+        'Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]',
+      )
     }
 
-    let prFromSummary;
-    let commitFromSummary;
-    let usersFromSummary = [];
-    const replacedChangelog = changeset.summary.replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
-      let num = Number(pr);
-      if (!isNaN(num)) prFromSummary = num;
-      return "";
-    }).replace(/^\s*commit:\s*([^\s]+)/im, (_, commit) => {
-      commitFromSummary = commit;
-      return "";
-    }).replace(/^\s*(?:author|user):\s*@?([^\s]+)/gim, (_, user) => {
-      usersFromSummary.push(user);
-      return "";
-    }).trim();
-    const [firstLine, ...futureLines] = replacedChangelog.split("\n").map(l => l.trimRight());
+    let prFromSummary
+    let commitFromSummary
+    let usersFromSummary = []
+    const replacedChangelog = changeset.summary
+      .replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
+        let num = Number(pr)
+        if (!isNaN(num)) prFromSummary = num
+        return ''
+      })
+      .replace(/^\s*commit:\s*([^\s]+)/im, (_, commit) => {
+        commitFromSummary = commit
+        return ''
+      })
+      .replace(/^\s*(?:author|user):\s*@?([^\s]+)/gim, (_, user) => {
+        usersFromSummary.push(user)
+        return ''
+      })
+      .trim()
+    const [firstLine, ...futureLines] = replacedChangelog.split('\n').map(l => l.trimRight())
     const links = await (async () => {
       if (prFromSummary !== undefined) {
-        let {
-          links
-        } = await getGithubInfo.getInfoFromPullRequest({
+        let { links } = await getGithubInfo.getInfoFromPullRequest({
           repo: options.repo,
-          pull: prFromSummary
-        });
+          pull: prFromSummary,
+        })
 
         if (commitFromSummary) {
-          links = _objectSpread2(_objectSpread2({}, links), {}, {
-            commit: `[\`${commitFromSummary}\`](https://github.com/${options.repo}/commit/${commitFromSummary})`
-          });
+          links = _objectSpread2(
+            _objectSpread2({}, links),
+            {},
+            {
+              commit: `[\`${commitFromSummary}\`](https://github.com/${options.repo}/commit/${commitFromSummary})`,
+            },
+          )
         }
 
-        return links;
+        return links
       }
 
-      const commitToFetchFrom = commitFromSummary || changeset.commit;
+      const commitToFetchFrom = commitFromSummary || changeset.commit
 
       if (commitToFetchFrom) {
-        let {
-          links
-        } = await getGithubInfo.getInfo({
+        let { links } = await getGithubInfo.getInfo({
           repo: options.repo,
-          commit: commitToFetchFrom
-        });
-        return links;
+          commit: commitToFetchFrom,
+        })
+        return links
       }
 
       return {
         commit: null,
         pull: null,
-        user: null
-      };
-    })();
-    const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`;
-    return `\n\n-${prefix ? `${prefix} -` : ""} ${firstLine}\n${futureLines.map(l => `  ${l}`).join("\n")}`;
-  }
-};
+        user: null,
+      }
+    })()
+    const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`
+    return `\n\n-${prefix ? `${prefix} -` : ''} ${firstLine}\n${futureLines.map(l => `  ${l}`).join('\n')}`
+  },
+}
 
-exports.default = changelogFunctions;
+exports.default = changelogFunctions
