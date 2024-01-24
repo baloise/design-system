@@ -212,6 +212,7 @@ packages/output-targets/react/CHANGELOG.md
 packages/output-targets/vue/CHANGELOG.md
 docs/CHANGELOG.md
 test/CHANGELOG.md
+apps/angular/CHANGELOG.md
 
 packages/brand-icons/README.md
 packages/cli/README.md
