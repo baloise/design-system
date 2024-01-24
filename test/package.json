@@ -9,7 +9,7 @@
     "build": "node scripts/build.mjs",
     "start": "node ./web-server.js",
     "cy:install": "cypress install",
-    "cy:open": "cypress open --browser chrome --env type=actual --config screenshotsFolder=cypress/snapshots/actual",
+    "cy:open": "cypress open --browser chrome --env type=regression --config screenshotsFolder=cypress/snapshots/actual",
     "cy:start": "npm run start",
     "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
