@@ -30,7 +30,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [12.0.0](https://github.com/baloise/design-system/compare/v11.0.18...v12.0.0) (2022-12-12)
 
-Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-system.vercel.app/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
+Follow the migration guide [Migration from 11.x to 12.x](https://design.baloise.dev/?path=/story/development-migration-migration-from-11-x-to-12-x--page)
 
 ### ⚠ BREAKING CHANGES
 
@@ -540,11 +540,10 @@ There are 2 other changelogs for previous states of the Design System
 
 # [11.0.0](https://github.com/baloise/design-system/compare/v10.24.10...v11.0.0) (2022-10-17)
 
-Follow the migration guide [Migration from 10.x to 11.x](https://baloise-design-system.vercel.app/?path=/docs/development-upgrade-guides-updating-to-v11--page)
+Follow the migration guide [Migration from 10.x to 11.x](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v11--page)
 
 ### ⚠ BREAKING CHANGES
 
 - Rebranded components
 - New breakpoint high-definition
 - bal-input pattern
-
