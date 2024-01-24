@@ -1,0 +1,54 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/assets/baloise-design-system.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container">
+        <bal-heading>Basic</bal-heading>
+        <section>
+          <bal-field>
+            <bal-field-label required="true">Firstname</bal-field-label>
+            <bal-field-control>
+              <bal-input placeholder="Enter your firstname" name="basic" data-testid="basic"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Firstname Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section>
+          <bal-field>
+            <bal-field-label required="true">Lastname</bal-field-label>
+            <bal-field-control>
+              <bal-input value="Doe" name="with-value" data-testid="with-value"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Lastname Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section>
+          <bal-field>
+            <bal-field-label required="true">Phone Number</bal-field-label>
+            <bal-field-control>
+              <bal-input value="+41000000000" name="invalid" invalid data-testid="invalid"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Phone Number Field Message</bal-field-message>
+          </bal-field>
+        </section>
+        <section>
+          <bal-field>
+            <bal-field-label required="true">Address</bal-field-label>
+            <bal-field-control>
+              <bal-input value="Obstgartenstrasse" name="disabled" disabled data-testid="disabled"></bal-input>
+            </bal-field-control>
+            <bal-field-message color="hint">Address Field Message</bal-field-message>
+          </bal-field>
+        </section>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>
