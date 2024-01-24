@@ -7,7 +7,7 @@ import { Component, Host, h, Prop, Method, Element, Event, EventEmitter } from '
 export class Toast {
   @Element() element!: HTMLBalToastElement
 
-  timer!: NodeJS.Timer
+  timer!: NodeJS.Timeout
   toastId = `bal-toast-${toastIds++}`
 
   /**

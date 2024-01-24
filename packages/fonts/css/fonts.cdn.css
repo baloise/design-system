@@ -3,7 +3,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
+  src:
+    local('BaloiseCreateHeadline'),
+    local('BaloiseCreateHeadline-bold'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-bold.woff2')
       format('woff2'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-bold.woff') format('woff');
@@ -14,7 +16,9 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-light'),
+  src:
+    local('BaloiseCreateHeadline'),
+    local('BaloiseCreateHeadline-light'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-light.woff2')
       format('woff2'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateHeadline-light.woff') format('woff');
@@ -25,7 +29,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-bold'),
+  src:
+    local('BaloiseCreateText'),
+    local('BaloiseCreateText-bold'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-bold.woff2') format('woff2'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-bold.woff') format('woff');
 }
@@ -35,7 +41,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
+  src:
+    local('BaloiseCreateText'),
+    local('BaloiseCreateText-regular'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-regular.woff2') format('woff2'),
     url('https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/BaloiseCreateText-regular.woff') format('woff');
 }
