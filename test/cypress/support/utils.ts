@@ -6,4 +6,4 @@ export { newBalTabOption } from '../../../packages/components/src/components/bal
 export { newBalStepOption } from '../../../packages/components/src/components/bal-steps/bal-step.util'
 export { i18nBalDate } from '../../../packages/components/src/components/bal-date/bal-date.i18n'
 
-export * from '../../generated/components'
+export * from '../../generated/vue-components'
