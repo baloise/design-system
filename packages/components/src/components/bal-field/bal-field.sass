@@ -7,8 +7,10 @@
   font-family: var(--bal-font-family-text)
 
 +block(field-label)
-  display: inline-block
-  margin-bottom: .25rem
+  display: inline
+
+.bal-field-label ~ .bal-field-control
+  margin-top: .25rem
 
 +block(field-hint)
   display: inline-block
@@ -59,7 +61,7 @@
     align-items: center
     min-width: var(--bal-field-label-horizontal-width)
     max-width: var(--bal-field-label-horizontal-width)
-    justify-content: end
+    justify-content: flex-end
     text-align: right
     margin-bottom: 0
 
@@ -81,3 +83,6 @@
 
   .bal-field-hint ~ .bal-field-message
     margin-left: calc(var(--bal-field-label-horizontal-width) + (var(--bal-field-label-column-gap) * 2) + 1.125rem)
+
+  .bal-field-label ~ .bal-field-control
+    margin-top: 0

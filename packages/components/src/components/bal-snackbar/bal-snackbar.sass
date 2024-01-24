@@ -42,16 +42,30 @@
     flex-grow: 1
     margin: 0.5rem 0 0 0
     box-shadow: var(--bal-shadow-normal)
-    +padding('medium')
     align-self: flex-end
     flex-direction: column !important
     row-gap: 1rem
+    padding: var(--bal-space-medium)
+    +tablet
+      padding: var(--bal-space-tablet-medium)
+    +desktop
+      padding: var(--bal-space-desktop-medium)
   +element(header)
     display: flex
     align-items: center
     column-gap: .5rem
+    & > span
+      font-size: var(--bal-text-size-small)
+      line-height: var(--bal-line-height-small)
+      +tablet
+        font-size: var(--bal-text-size-small-tablet)
+        line-height: var(--bal-line-height-tablet-small)
+      +desktop
+        font-size: var(--bal-text-size-small-desktop)
+        line-height: var(--bal-line-height-desktop-small)
   +element(footer)
-    justify-content: start
+    display: inline-flex
+    justify-content: flex-start
     margin-top: .5rem
   +element(close)
     &.bal-close

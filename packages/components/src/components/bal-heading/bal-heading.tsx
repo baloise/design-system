@@ -174,7 +174,7 @@ export class Heading implements ComponentInterface {
             ...bemTextEl.modifier('subtitle').class(this.subtitle),
             ...bemTextEl.modifier('shadow').class(this.shadow),
             ...bemTextEl.modifier(`color-${fontColor}`).class(),
-            [`is-size-${this.autoFontSize}`]: true,
+            ...bemTextEl.modifier(`size-${this.autoFontSize}`).class(),
           }}
           ref={(headingEl: any) => (this.headingEl = headingEl)}
           data-testid="bal-heading"
