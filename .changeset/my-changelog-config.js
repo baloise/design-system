@@ -141,7 +141,9 @@ const changelogFunctions = {
       }
     })()
     const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`
-    return `\n\n-${prefix ? `${prefix} -` : ''} ${firstLine}\n${futureLines.map(l => `  ${l}`).join('\n')}`
+    return `\n- ${firstLine} ${prefix ? `(${prefix})` : ''}\n${futureLines.map(l => `  ${l}`).join('\n')}${
+      futureLines && futureLines.length > 0 ? '\n' : ''
+    }`
   },
 }
 

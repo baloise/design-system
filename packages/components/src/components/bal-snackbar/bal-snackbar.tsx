@@ -7,7 +7,7 @@ import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter }
 export class Snackbar {
   @Element() element!: HTMLElement
 
-  private timer!: NodeJS.Timer
+  private timer!: NodeJS.Timeout
   private snackbarId = `bal-snackbar-${snackbarIds++}`
 
   @State() animationClass = 'fadeInDown'

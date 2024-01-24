@@ -17,11 +17,9 @@
 import './commands'
 
 import 'cypress-file-upload'
+import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
 
-import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
-const compareSnapshotCommandAsAny = compareSnapshotCommand as any
-
-compareSnapshotCommandAsAny({
+addCompareSnapshotCommand({
   capture: 'fullPage',
   errorThreshold: 0.15,
 })
