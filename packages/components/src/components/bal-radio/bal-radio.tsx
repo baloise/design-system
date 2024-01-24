@@ -158,10 +158,6 @@ export class Radio implements ComponentInterface, BalElementStateInfo, Loggable,
       radioGroup.addEventListener('balInput', this.updateState)
     }
 
-    if (this.hidden) {
-      this.nonSubmit = this.hidden
-    }
-
     this.el.addEventListener('keydown', this.onKeydown)
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)

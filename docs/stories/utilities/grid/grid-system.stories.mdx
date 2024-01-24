@@ -1,5 +1,5 @@
 import { Meta, Source, Canvas, Markdown } from '@storybook/addon-docs'
-import { Banner, Lead, Code, Footer, LinkCards, LinkCard } from '../../../.storybook/blocks'
+import { Banner, Lead, Code, Footer, LinkCards, LinkCard, CssResponsiveTable } from '../../../.storybook/blocks'
 
 <Meta
   title="CSS Utilities/Grid/Grid System"
@@ -198,36 +198,6 @@ This can be avoided with setting the CSS class `is-gapless`.
 `}
 />
 
-## Breakpoint
-
-The grid can be responsive and have different sizes on the breakpoints.
-
-<Code
-  language="html"
-  code={`
-<div class="grid is-mobile">
-    <div class="col mobile:is-three-quarters tablet:is-two-thirds desktop:is-half widescreen:is-one-third fullhd:is-one-quarter">
-      <div class="bg-green p-small radius-normal">
-        is-three-quarters-mobile<br>
-        is-two-thirds-tablet<br>
-        is-half-desktop<br>
-        is-one-third-widescreen<br>
-        is-one-quarter-fullhd
-      </div>
-    </div>
-    <div class="col">
-      <div class="bg-green p-small radius-normal">auto</div>
-    </div>
-    <div class="col">
-      <div class="bg-green p-small radius-normal">auto</div>
-    </div>
-    <div class="col">
-      <div class="bg-green p-small radius-normal">auto</div>
-    </div>
-  </div>
-`}
-/>
-
 ## Vertical Alignment
 
 To center the grid of the grid vertically set `is-vcentered` CSS class.
@@ -280,6 +250,39 @@ To stretch the inner element of a column use the CSS class `h-full`.
     </div>
     <div class="col is-half">
       <div class="bg-green-2 p-small radius-normal h-full">Stretches to the full height of the row</div>
+    </div>
+  </div>
+`}
+/>
+
+## Responsive
+
+Tailored responsive options are at your disposal for customizations according to screen size.
+Simply append a responsive breakpoint keyword with a dash, like `tablet:align-content-start`, to apply the corresponding responsive class.
+
+<CssResponsiveTable all />
+
+<Code
+  language="html"
+  code={`
+<div class="grid is-mobile">
+    <div class="col mobile:is-three-quarters tablet:is-two-thirds desktop:is-half widescreen:is-one-third fullhd:is-one-quarter">
+      <div class="bg-green p-small radius-normal">
+        is-three-quarters-mobile<br>
+        is-two-thirds-tablet<br>
+        is-half-desktop<br>
+        is-one-third-widescreen<br>
+        is-one-quarter-fullhd
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
+    </div>
+    <div class="col">
+      <div class="bg-green p-small radius-normal">auto</div>
     </div>
   </div>
 `}
