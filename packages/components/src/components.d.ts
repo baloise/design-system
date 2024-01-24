@@ -474,10 +474,6 @@ export namespace Components {
           * Options of the tab like label, value etc.
          */
         "getOption": () => Promise<BalCheckboxOption>;
-        /**
-          * @deprecated Use non-submit instead
-         */
-        "hidden": boolean;
         "hovered": boolean;
         /**
           * If `true` the control is displayed as inline
@@ -2322,10 +2318,6 @@ export namespace Components {
           * Options of the tab like label, value etc.
          */
         "getOption": () => Promise<BalRadioOption>;
-        /**
-          * @deprecated Use non-submit or invisible instead
-         */
-        "hidden": boolean;
         "hovered": boolean;
         /**
           * Defines the layout of the radio button
@@ -2790,10 +2782,6 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalStepOption>;
         /**
-          * @deprecated Use invisible instead
-         */
-        "hidden": boolean;
-        /**
           * Link to path.
          */
         "href": string;
@@ -2865,10 +2853,6 @@ export namespace Components {
           * Options of the tab like label, value etc.
          */
         "getOptions": () => Promise<BalTabOption>;
-        /**
-          * @deprecated Use invisible instead
-         */
-        "hidden": boolean;
         /**
           * Link to path.
          */
@@ -5218,10 +5202,6 @@ declare namespace LocalJSX {
           * If `true` the control is no padding
          */
         "flat"?: boolean;
-        /**
-          * @deprecated Use non-submit instead
-         */
-        "hidden"?: boolean;
         "hovered"?: boolean;
         /**
           * If `true` the control is displayed as inline
@@ -7143,10 +7123,6 @@ declare namespace LocalJSX {
           * If `true` the control is no padding
          */
         "flat"?: boolean;
-        /**
-          * @deprecated Use non-submit or invisible instead
-         */
-        "hidden"?: boolean;
         "hovered"?: boolean;
         /**
           * Defines the layout of the radio button
@@ -7631,10 +7607,6 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
-          * @deprecated Use invisible instead
-         */
-        "hidden"?: boolean;
-        /**
           * Link to path.
          */
         "href"?: string;
@@ -7698,10 +7670,6 @@ declare namespace LocalJSX {
           * If `true` the tab is disabled.
          */
         "disabled"?: boolean;
-        /**
-          * @deprecated Use invisible instead
-         */
-        "hidden"?: boolean;
         /**
           * Link to path.
          */
