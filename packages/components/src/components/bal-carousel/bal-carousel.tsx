@@ -44,7 +44,7 @@ export class Carousel
   private carouselId = `bal-carousel-${CarouselIds++}`
 
   @State() isLastSlideVisible = true
-  @State() areControlsHidden = !balBreakpoints.isMobile
+  @State() isMobile = balBreakpoints.isMobile
   @State() language: BalLanguage = defaultConfig.language
 
   @Element() el!: HTMLElement
@@ -156,7 +156,7 @@ export class Carousel
 
   @ListenToBreakpoints()
   breakpointListener(breakpoints: BalBreakpoints): void {
-    this.areControlsHidden = !breakpoints.mobile
+    this.isMobile = breakpoints.mobile
     this.itemsChanged()
   }
 
@@ -260,7 +260,7 @@ export class Carousel
 
             let transformValue = noNeedForSlide ? 0 : isLastSlideVisible ? maxAmount : amount
 
-            if (!isFirst && !noNeedForSlide && (hasSmallControls || hasLargeControls)) {
+            if (!isFirst && !noNeedForSlide && (hasSmallControls || (hasLargeControls && !this.isMobile))) {
               transformValue = transformValue - (isLastSlideVisible ? 0 : hasLargeControls ? 56 : 48)
             }
 
@@ -463,7 +463,7 @@ export class Carousel
             isFirst={this.isFirst()}
             isLast={this.isLast()}
             inverted={this.inverted}
-            areControlsHidden={this.areControlsHidden}
+            areControlsHidden={!this.isMobile}
             leftControlTitle={leftControlTitle}
             rightControlTitle={rightControlTitle}
             onNextClick={() => this.onNextButtonClick()}

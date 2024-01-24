@@ -76,7 +76,7 @@ export const inputHandleFocus = <Value>(component: FormInput<Value>, ev: FocusEv
 export const inputHandleReset = <Value>(
   component: FormInput<Value>,
   defaultValue: Value | undefined = undefined,
-  timer: NodeJS.Timer | undefined,
+  timer: NodeJS.Timeout | undefined,
 ) => {
   component.value = defaultValue
   component.inputValue = component.value

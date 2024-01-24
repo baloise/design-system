@@ -25,30 +25,24 @@ export const vueComponentModels: any[] = [
   },
 ]
 
-export const VueGenerator = (
-  componentCorePackage = '@baloise/design-system-components',
-  proxiesFile = '../components-vue/src/generated/proxies.ts',
-): any =>
+export const VueGenerator = (): any =>
   vueOutputTarget({
     includeImportCustomElements: true,
     includeDefineCustomElements: false,
     includeInternalComponents: false,
-    proxiesFile,
-    componentCorePackage,
+    proxiesFile: '../components-vue/src/generated/proxies.ts',
+    componentCorePackage: '@baloise/design-system-components',
     componentModels: vueComponentModels,
-    customElementsDir: 'dist/components',
+    customElementsDir: 'components',
   })
 
-export const VueTestGenerator = (
-  componentCorePackage = '@baloise/design-system-components',
-  proxiesFile = '../components-vue/src/generated/proxies.ts',
-): any =>
+export const VueTestGenerator = (): any =>
   vueOutputTarget({
     includeImportCustomElements: true,
     includeDefineCustomElements: false,
     includeInternalComponents: true,
-    proxiesFile,
-    componentCorePackage,
+    proxiesFile: '../../test/generated/vue-components/index.ts',
+    componentCorePackage: '../',
     componentModels: vueComponentModels,
-    customElementsDir: 'dist/components',
+    customElementsDir: 'components',
   })

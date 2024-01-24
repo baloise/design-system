@@ -39,13 +39,12 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind locale change and submit changes', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskLocaleContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-          locale: 'en-CH',
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskLocaleContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+        locale: 'en-CH',
+      } as any
+    })
 
     mask.fireI18nChange.mockImplementation((context: any) => context.locale)
 
@@ -57,14 +56,13 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind value changes', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskValueChangedContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-          newValue: 'new',
-          oldValue: 'old',
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskValueChangedContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+        newValue: 'new',
+        oldValue: 'old',
+      } as any
+    })
 
     mask.fireValueChanged.mockImplementation((context: any) => context.newValue)
 
@@ -76,13 +74,12 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind key down events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-          key: 'p',
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+        key: 'p',
+      } as any
+    })
 
     mask.fireKeyDown.mockImplementation((context: any) => context.key)
 
@@ -94,12 +91,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind key down events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskKeyboardContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     component.disabled = true
     adapter.bindKeyDown({ key: 'p' } as any)
@@ -110,12 +106,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind focus events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     mask.fireFocus.mockImplementation((context: any) => context.key)
 
@@ -127,12 +122,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind focus events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     component.disabled = true
     adapter.bindFocus({} as any)
@@ -144,12 +138,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind blur events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     mask.fireBlur.mockImplementation((context: any) => context.key)
 
@@ -162,12 +155,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind blur events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskFocusContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     component.disabled = true
     component.focused = true
@@ -180,12 +172,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind paste events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     mask.firePaste.mockImplementation((context: any) => context.key)
 
@@ -196,12 +187,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind paste events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskClipboardContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     component.disabled = true
     adapter.bindPaste({} as any)
@@ -212,12 +202,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should bind click events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     mask.fireClick.mockImplementation((context: any) => context.key)
 
@@ -228,12 +217,11 @@ describe('MaskComponentAdapter', () => {
 
   test('should not bind click events', () => {
     const submitSpy = vi.fn()
-    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(
-      () =>
-        ({
-          submit: submitSpy,
-        } as any),
-    )
+    vi.spyOn(exports, 'MaskMouseContext').mockImplementation(() => {
+      return {
+        submit: submitSpy,
+      } as any
+    })
 
     component.disabled = true
     adapter.bindClick({} as any)

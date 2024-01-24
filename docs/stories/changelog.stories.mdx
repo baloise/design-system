@@ -1,23 +1,38 @@
 import { Meta, Markdown } from '@storybook/addon-docs'
-import { PackageTable, Banner, Lead, Footer, LinkCard, LinkCards } from '../.storybook/blocks'
+import { PackageTable, Banner, Lead, Footer, LinkCard, LinkCards, InfoQuote } from '../.storybook/blocks'
 
 <Meta title="Changelog" />
 
 <Banner label="Changelog" />
 
-<Lead>All notable changes to this project will be documented in dedicated changelog files.</Lead>
+<Lead>
+  All notable changes to this project will be documented in dedicated [changelog
+  files](https://github.com/baloise/design-system/blob/main/CHANGELOG.md).
+</Lead>
 
-## Packages
+<a className="button is-primary mt-normal sb-unstyled" href="https://github.com/baloise/design-system/blob/main/CHANGELOG.md" target="_blank">
+  Open Changelog
+</a>
 
-Each package has its own changelog file.
+<br />
 
-<PackageTable />
+<InfoQuote>
 
-## Previous Versions
+[Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_OLD.md) below 15.0.0 are document in
+a separate changelog file.
 
-Previous version below 12.2.0 are document in a separate changelog file.
+</InfoQuote>
 
-- [Previous versions](https://github.com/baloise/design-system/blob/main/CHANGELOG_v12.md)
+<br />
+
+#### Upgrade Guides
+
+- [Upgrade from 14.x to 15.x](?path=/docs/development-upgrade-guides-updating-to-v15--documentation)
+- [Upgrade from 13.x to 14.x](?path=/docs/development-upgrade-guides-updating-to-v14--documentation)
+- [Upgrade from 12.x to 13.x](?path=/docs/development-upgrade-guides-updating-to-v13--documentation)
+- [Upgrade from 11.x to 12.x](?path=/docs/development-upgrade-guides-updating-to-v12--documentation)
+- [Upgrade from 10.x to 11.x](?path=/docs/development-upgrade-guides-updating-to-v11--documentation)
+- [Upgrade from 9.x to 10.x](?path=/docs/development-upgrade-guides-updating-to-v10--documentation)
 
 <Footer>
   <LinkCards>
