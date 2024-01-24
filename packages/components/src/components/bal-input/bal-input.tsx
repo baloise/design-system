@@ -258,7 +258,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
     inputListenOnClick(this, ev)
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

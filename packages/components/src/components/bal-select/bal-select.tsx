@@ -322,7 +322,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     }
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {
@@ -477,7 +477,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
    * ------------------------------------------------------
    */
 
-  private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timer
+  private waitForOptionsAndThenUpdateRawValuesTimer?: NodeJS.Timeout
   private async waitForOptionsAndThenUpdateRawValues() {
     clearTimeout(this.waitForOptionsAndThenUpdateRawValuesTimer)
     await deepReady(this.el)
@@ -572,7 +572,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
   /********************************************************
    * FOCUS
    ********************************************************/
-  private updateFocusTimer?: NodeJS.Timer
+  private updateFocusTimer?: NodeJS.Timeout
   private updateFocus() {
     if (this.focusIndex < -1) {
       this.focusIndex = -1
@@ -798,7 +798,7 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
     return Promise.resolve()
   }
 
-  private updateInputValueTimer?: NodeJS.Timer
+  private updateInputValueTimer?: NodeJS.Timeout
   private updateInputValue(value: string): Promise<void> {
     return new Promise(resolve => {
       if (this.updateInputValueTimer) {
