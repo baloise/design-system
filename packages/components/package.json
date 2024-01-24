@@ -26,8 +26,8 @@
   ],
   "scripts": {
     "==================== START =========================": "================================",
-    "serve": "stencil build --dev --serve --watch",
-    "dev": "stencil build --watch",
+    "serve": "BAL_DEVELOPMENT=true stencil build --dev --serve --watch",
+    "dev": "BAL_DOCUMENTATION=true stencil build --watch",
     "==================== BUILD =========================": "================================",
     "build": "node scripts/pre-build.mjs && stencil build && node scripts/post-build.mjs",
     "==================== UNIT TEST =====================": "================================",
