@@ -13,8 +13,8 @@
   },
   "scripts": {
     "==================== CI =======================": "================================",
-    "ci:format": "npx prettier@2.8.8 --check ./packages",
-    "ci:spell": "npx cspell@6.31.1 \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress",
+    "ci:format": "npx prettier@3.2.4 --check ./packages",
+    "ci:spell": "npx cspell@8.3.2 \"packages/components/src/**/*.{md,mdx,tsx}\" --no-progress",
     "ci:build": "turbo run build --filter=@baloise/design-system-* --filter=e2e-tests --force",
     "ci:build:e2e": "turbo run build --filter=@baloise/design-system-tokens --filter=@baloise/design-system-fonts --filter=@baloise/design-system-icons --filter=@baloise/design-system-styles --filter=@baloise/design-system-output-target-vue && npm --prefix packages/components run cy:build && npm --prefix packages/testing run build && npm --prefix test run build",
     "==================== START ====================": "================================",
