@@ -7,7 +7,7 @@ import {
   BalStack,
   BalContent,
   BalLabel,
-} from '../../generated/components'
+} from '../support/utils'
 
 defineProps({
   active: Boolean,
