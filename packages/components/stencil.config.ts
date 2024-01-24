@@ -10,6 +10,7 @@ import { CustomDocumentationGenerator } from './config/doc-output-target'
 
 const IS_BAL_DS_RELEASE = process.env.BAL_DS_RELEASE === 'true'
 const IS_BAL_DOCUMENTATION = process.env.BAL_DOCUMENTATION === 'true'
+const IS_BAL_DEVELOPMENT = process.env.BAL_DEVELOPMENT === 'true'
 
 if (IS_BAL_DS_RELEASE) {
   console.log('')
@@ -20,6 +21,12 @@ if (IS_BAL_DS_RELEASE) {
 if (IS_BAL_DOCUMENTATION) {
   console.log('')
   console.log('📝 Build is set to documentation 📝')
+  console.log('')
+}
+
+if (IS_BAL_DEVELOPMENT) {
+  console.log('')
+  console.log('👷 Build is set to development 👷')
   console.log('')
 }
 
@@ -50,26 +57,26 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
-    {
-      type: 'dist-custom-elements',
-      includeGlobalScripts: false,
-      generateTypeDeclarations: false,
-    },
-    {
-      type: 'dist-custom-elements',
-      dir: 'components',
-      copy: [
-        {
-          src: '../config/custom-elements',
-          dest: 'components',
-          warn: true,
-        },
-      ],
-      includeGlobalScripts: false,
-    },
-    // {
-    //   type: 'dist-hydrate-script',
-    // },
+    ...(!IS_BAL_DEVELOPMENT
+      ? [
+          CustomDocumentationGenerator,
+          {
+            type: 'dist-custom-elements',
+            dir: 'components',
+            copy: [
+              {
+                src: '../config/custom-elements',
+                dest: 'components',
+                warn: true,
+              },
+            ],
+            includeGlobalScripts: false,
+          },
+          // {
+          //   type: 'dist-hydrate-script',
+          // },
+        ]
+      : []),
     {
       type: 'www',
       dir: 'www',
@@ -91,7 +98,6 @@ export const config: Config = {
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
-    CustomDocumentationGenerator,
     /**
      * Skip those outputs for documentation releases on vercel
      */
@@ -103,7 +109,7 @@ export const config: Config = {
             sourceCodeBaseUrl: 'https://github.com/baloise/design-system',
           },
           VueGenerator(),
-          VueTestGenerator('../', '../../test/generated/components/index.ts'),
+          VueTestGenerator(),
           AngularGenerator(),
           AngularStandaloneGenerator(),
           AngularLegacyGenerator(),

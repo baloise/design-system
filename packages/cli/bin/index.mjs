@@ -495,7 +495,7 @@ const logger = subject => {
       const seconds = parseFloat(duration / 1000).toFixed(2)
       log('✅ ', `\x1b[32m${subject} \x1b[90mfinished in ${seconds}sec\x1b[0m`, message || '')
     },
-    fail: (message, ...args) => {
+    fail: message => {
       const endTime = new Date()
       const duration = endTime - startTime
       const seconds = parseFloat(duration / 1000).toFixed(2)
@@ -511,7 +511,7 @@ const logger = subject => {
   }
 }
 
-const minBreakpoints = ['', 'mobile', 'tablet', 'desktop', 'widescreen']
+// const minBreakpoints = ['', 'mobile', 'tablet', 'desktop', 'widescreen']
 
 const allBreakpoints = [
   'tablet-only',

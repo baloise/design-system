@@ -21,7 +21,7 @@
     "@angular/core": ">=15.0.0",
     "@angular/forms": ">=15.0.0",
     "@angular/platform-browser": ">=15.0.0",
-    "@stencil/core": "~4.8.1",
+    "@stencil/core": "4.11.0",
     "zone.js": ">=0.11.4"
   },
   "gitHead": "4157249628694f5811f322e0a547989ca9a9c6a6"

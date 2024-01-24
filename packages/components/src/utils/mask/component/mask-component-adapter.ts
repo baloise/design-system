@@ -12,7 +12,7 @@ import { MaskAttributes, MaskComponent, MaskComponentAdapterType } from './mask-
 
 export class MaskComponentAdapter implements MaskComponentAdapterType {
   private component!: MaskComponent
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   constructor(private mask: Mask) {}
 

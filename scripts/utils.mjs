@@ -69,7 +69,7 @@ export const exec = (command, args = []) => {
       if (code > 0) {
         reject([...output, '--------------------------------------', ...outputError].join('\n'))
       } else {
-        resolve(code)
+        resolve({ code, output })
       }
     })
 
@@ -90,8 +90,10 @@ export const log = (message, ...args) => console.log(message, ...args)
 export const start = message => log('⏳ ', `${message}...`)
 export const succeed = message => log('✅ ', message)
 export const fail = (message, error) => {
+  console.log()
   log('❌ ', message)
   if (error) {
+    console.log()
     console.error(error)
   }
   exit()
@@ -118,8 +120,10 @@ export const logger = subject => {
       const endTime = new Date()
       const duration = endTime - startTime
       const seconds = parseFloat(duration / 1000).toFixed(2)
+      console.log()
       log('❌ ', `\x1b[31m${subject} \x1b[90mfailed after ${seconds}sec\x1b[0m`)
       if (message) {
+        console.log()
         console.error(message)
       }
       exit()
