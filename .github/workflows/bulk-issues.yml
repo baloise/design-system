@@ -29,4 +29,4 @@ jobs:
         run: npm ci
 
       - name: Install Cypress
-        run: node .build/bulk-issue.js issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/bulk-issue.mjs issue=${{ inputs.issueNumber }} token=${{ secrets.GITHUB_TOKEN }}
