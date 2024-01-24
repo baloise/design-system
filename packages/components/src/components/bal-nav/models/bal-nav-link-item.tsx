@@ -15,10 +15,7 @@ export class NavLinkItem implements BalProps.BalNavLinkItem {
   onClick: (ev: MouseEvent) => void
   onAccordionClick: (ev: MouseEvent) => void
 
-  constructor(
-    item: BalProps.BalNavLinkItem,
-    private observer: NavLinkItemObserver,
-  ) {
+  constructor(item: BalProps.BalNavLinkItem, private observer: NavLinkItemObserver) {
     this.label = item.label
     this.id = `nav-link-item-${NavLinkItemIDs++}`
     this.value = item.value || this.id

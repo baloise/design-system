@@ -1085,10 +1085,10 @@ export class Select implements ComponentInterface, Loggable, BalAriaFormLinking 
                   this.disabled || this.readonly
                     ? 'grey-light'
                     : this.inverted
-                      ? 'white'
-                      : this.invalid
-                        ? 'danger'
-                        : 'primary'
+                    ? 'white'
+                    : this.invalid
+                    ? 'danger'
+                    : 'primary'
                 }
                 turn={this.isPopoverOpen}
                 onClick={ev => this.handleInputClick(ev, true)}

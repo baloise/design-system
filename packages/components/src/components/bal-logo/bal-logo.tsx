@@ -202,8 +202,8 @@ export class Logo implements ComponentInterface, Loggable, BalBreakpointObserver
     const LogoElement = this.isAnimated
       ? AnimatedLogo
       : (this.isTouch && this.size === '') || this.size === 'small'
-        ? SmallLogo
-        : LargeLogo
+      ? SmallLogo
+      : LargeLogo
 
     return (
       <Host
