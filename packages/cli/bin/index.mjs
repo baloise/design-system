@@ -23,22 +23,22 @@ const main = async () => {
         {
           title: 'html templates (*.html)',
           value: 'HTML',
-          selected: false,
+          selected: true,
         },
         {
           title: 'Global stylesheet',
           value: 'GLOBAL_STYLES',
-          selected: false,
+          selected: true,
         },
         {
           title: 'inline templates (angular - *.ts)',
           value: 'INLINE',
-          selected: false,
+          selected: true,
         },
         {
           title: 'mixin imports (angular - *.scss)',
           value: 'SCSS',
-          selected: false,
+          selected: true,
         },
         {
           title: 'css variables (*.scss)',
@@ -59,7 +59,7 @@ const main = async () => {
       type: (_prev, { targets }) => (targets.includes('CSS_VARIABLES') ? 'text' : null),
       name: 'pathToStylesheets',
       message: 'Where are your scss style files located?',
-      initial: path.join('test'),
+      initial: path.join('src'),
     },
     {
       type: (_prev, { targets }) => (targets.includes('GLOBAL_STYLES') ? 'text' : null),
