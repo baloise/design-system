@@ -10,7 +10,6 @@ import {
   Listen,
   State,
   ComponentInterface,
-  Watch,
 } from '@stencil/core'
 import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../utils/form-input'
 import { isDescendant } from '../../utils/helpers'

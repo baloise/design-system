@@ -10,7 +10,6 @@ import {
   ComponentInterface,
   State,
   Listen,
-  Watch,
 } from '@stencil/core'
 import { isDescendant } from '../../utils/helpers'
 import { BEM } from '../../utils/bem'

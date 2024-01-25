@@ -79,7 +79,9 @@
     "border": {
       "width": {
         "none": {
-          "value": "0", "deprecated": true, "noFigmaImport": true
+          "value": "0",
+          "deprecated": true,
+          "noFigmaImport": true
         }
       }
     },
@@ -211,16 +213,16 @@
     }
   },
   "space": {
-    "auto":{ "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
-    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+    "auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   },
   "radius": {
-    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   },
   "shadow": {
-    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   },
   "text-shadow-": {
-    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   }
 }
