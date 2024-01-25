@@ -21,23 +21,28 @@ const main = async () => {
       message: 'What do you want to migrate',
       choices: [
         {
-          title: 'HTML Template Files (*.html)',
+          title: 'html templates (*.html)',
           value: 'HTML',
-          selected: true,
+          selected: false,
         },
         {
           title: 'Global stylesheet',
           value: 'GLOBAL_STYLES',
-          selected: true,
+          selected: false,
         },
         {
-          title: 'Inline Templates (Angular - *.ts)',
+          title: 'inline templates (angular - *.ts)',
           value: 'INLINE',
-          selected: true,
+          selected: false,
         },
         {
-          title: 'Mixins import (Angular - *.scss)',
+          title: 'mixin imports (angular - *.scss)',
           value: 'SCSS',
+          selected: false,
+        },
+        {
+          title: 'css variables (*.scss)',
+          value: 'CSS_VARIABLES',
           selected: true,
         },
       ],
@@ -49,6 +54,12 @@ const main = async () => {
       name: 'pathToComponentFiles',
       message: 'Where are your html template files located?',
       initial: path.join('src', 'app'),
+    },
+    {
+      type: (_prev, { targets }) => (targets.includes('CSS_VARIABLES') ? 'text' : null),
+      name: 'pathToStylesheets',
+      message: 'Where are your scss style files located?',
+      initial: path.join('test'),
     },
     {
       type: (_prev, { targets }) => (targets.includes('GLOBAL_STYLES') ? 'text' : null),
@@ -80,7 +91,7 @@ const main = async () => {
   log.start()
   log.info()
 
-  const { targets, utils, pathGlobalStylesheet, pathToComponentFiles } = response
+  const { targets, utils, pathGlobalStylesheet, pathToComponentFiles, pathToStylesheets } = response
 
   const filePath = path.join(process.cwd(), `${(pathToComponentFiles || 'src/app').trim()}`)
   const globalStyleSheetPath = path.join(process.cwd(), `${(pathGlobalStylesheet || 'src/styles.scss').trim()}`)
@@ -146,17 +157,58 @@ const main = async () => {
     }
   }
 
+  if (targets.includes('CSS_VARIABLES')) {
+    const stylePath = path.join(process.cwd(), `${(pathToStylesheets || 'src').trim()}`)
+    const isDirectoryStyle = await isDirectoryFn({ filePath: stylePath })
+    const directoryPathStyle = isDirectoryStyle ? stylePath : path.dirname(stylePath)
+    await migrateCSSVariables({
+      ...context,
+      filePath: stylePath,
+      isDirectory: isDirectoryStyle,
+      directoryPath: directoryPathStyle,
+    })
+  }
+
   log.succeed()
   return done()
 }
 
 async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, filePath }) {
   const files = isDirectory ? path.join(directoryPath, '**', '*.scss') : filePath
+
   try {
     const result = await replace({
       files,
       from: [new RegExp(`@baloise/design-system-css/sass/mixins`, 'g')],
       to: ['@baloise/design-system-styles/sass/mixins'],
+    })
+    printResult({ result, log })
+  } catch (error) {
+    log.info()
+    log.fail(error)
+    return Promise.reject()
+  } finally {
+    return Promise.resolve()
+  }
+}
+
+async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }) {
+  const files = isDirectory ? path.join(directoryPath, '**', '*.scss') : filePath
+  try {
+    const result = await replace({
+      files,
+      from: [
+        ...replacementsCSSVariablesColors.from,
+        ...replacementsCSSVariablesVarious.from,
+        ...replacementsCSSVariablesSpace.from,
+        ...replacementsCSSVariablesTextSize.from,
+      ],
+      to: [
+        ...replacementsCSSVariablesColors.to,
+        ...replacementsCSSVariablesVarious.to,
+        ...replacementsCSSVariablesSpace.to,
+        ...replacementsCSSVariablesTextSize.to,
+      ],
     })
     printResult({ result, log })
   } catch (error) {
@@ -475,6 +527,16 @@ function escapeRegex(string) {
   return string
 }
 
+const breakpointClasses = className => ({
+  from: allBreakpoints.map(b => new RegExp(`is-${className}${b ? `-${b}` : ''}`, 'g')),
+  to: allBreakpoints.map(b => `${b ? `${b}:` : ''}${className}`),
+})
+
+const spacingClasses = (oldClassName, newClassName) => ({
+  from: allSpacingValues.map(s => new RegExp(`${oldClassName}${s ? `-${s}` : ''}`, 'g')),
+  to: allSpacingValues.map(s => `${newClassName}${s ? `-${s}` : ''}`),
+})
+
 const exit = () => process.exit(1)
 const done = () => process.exit(0)
 const log = (message, ...args) => console.log(message, ...args)
@@ -536,15 +598,15 @@ const allSpacingValues = [
   'small',
   'normal',
   'medium',
-  'x-large',
-  'xx-large',
-  'xxx-large',
   'xxxx-large',
+  'xxx-large',
+  'xx-large',
+  'x-large',
   'large',
 ]
 
 // ================================================================================
-// MAPPINGS
+// MAPPINGS & REPLACEMENTS
 // ================================================================================
 
 const invertedTextWhite = {
@@ -737,8 +799,8 @@ const invertedTextPrimary = {
 
 const textSizeLegacy = {
   from: [
-    /is-size-display/g,
     /is-size-display-2/g,
+    /is-size-display/g,
     /is-size-1/g,
     /is-size-2/g,
     /is-size-3/g,
@@ -749,8 +811,8 @@ const textSizeLegacy = {
     /is-size-8/g,
   ],
   to: [
-    'text-xxxxx-large',
     'text-xxxx-large',
+    'text-xxxxx-large',
     'text-xxx-large',
     'text-xx-large',
     'text-x-large',
@@ -801,16 +863,6 @@ const textAlignment = {
   ],
 }
 
-const breakpointClasses = className => ({
-  from: allBreakpoints.map(b => new RegExp(`is-${className}${b ? `-${b}` : ''}`, 'g')),
-  to: allBreakpoints.map(b => `${b ? `${b}:` : ''}${className}`),
-})
-
-const spacingClasses = (oldClassName, newClassName) => ({
-  from: allSpacingValues.map(s => new RegExp(`${oldClassName}${s ? `-${s}` : ''}`, 'g')),
-  to: allSpacingValues.map(s => `${newClassName}${s ? `-${s}` : ''}`),
-})
-
 const marginAndPadding = () => {
   const props = ['m', 'p']
   const orientation = ['', '', 'x', 'y', 't', 'r', 'b', 'l']
@@ -843,9 +895,6 @@ const marginAndPadding = () => {
   }
 }
 
-// ================================================================================
-// REPLACEMENTS
-// ================================================================================
 const ColSizes = [
   'is-narrow',
   'is-full',
@@ -867,6 +916,12 @@ const ColSizes = [
   'is-offset-two-fifths',
   'is-offset-three-fifths',
   'is-offset-four-fifths',
+  'is-10',
+  'is-offset-10',
+  'is-11',
+  'is-offset-11',
+  'is-12',
+  'is-offset-12',
   'is-0',
   'is-offset-0',
   'is-1',
@@ -887,12 +942,6 @@ const ColSizes = [
   'is-offset-8',
   'is-8',
   'is-offset-9',
-  'is-10',
-  'is-offset-10',
-  'is-11',
-  'is-offset-11',
-  'is-12',
-  'is-offset-12',
 ]
 
 const replacementsGrid = {
@@ -1074,6 +1123,188 @@ const replacementsZIndex = {
 const replacementsSizing = {
   from: [/is-fullheight/g, /is-fullwidth/g],
   to: ['h-full', 'w-full'],
+}
+
+const replacementsCSSVariablesColors = {
+  from: [
+    /var\(--bal-color-border-white\)/g,
+    /var\(--bal-color-border-grey\)/g,
+    /var\(--bal-color-border-grey-light\)/g,
+    /var\(--bal-color-border-grey-dark\)/g,
+    /var\(--bal-color-border-primary-light\)/g,
+    /var\(--bal-color-border-primary-dark\)/g,
+    /var\(--bal-color-border-light-blue\)/g,
+    /var\(--bal-color-border-danger-dark\)/g,
+    /var\(--bal-color-border-danger-darker\)/g,
+    /var\(--bal-color-blue-1\)/g,
+    /var\(--bal-color-blue-2\)/g,
+    /var\(--bal-color-blue-3\)/g,
+    /var\(--bal-color-blue-4\)/g,
+    /var\(--bal-color-blue-5\)/g,
+    /var\(--bal-color-blue-6\)/g,
+    /var\(--bal-color-blue\)/g,
+    /var\(--bal-color-transparent\)/g,
+  ],
+  to: [
+    'var(--bal-color-border-inverted)',
+    'var(--bal-color-border)',
+    'var(--bal-color-border-divider)',
+    'var(--bal-color-border-disabled)',
+    'var(-bal-color-border-secondary)',
+    'var(-bal-color-border-primary-pressed)',
+    'var(-bal-color-border-primary-hovered',
+    'var(--bal-color-border-danger-hovered)',
+    'var(--bal-color-border-danger-pressed)',
+    'var(--bal-color-primary-1)',
+    'var(--bal-color-primary-2)',
+    'var(--bal-color-primary-3)',
+    'var(--bal-color-primary-4)',
+    'var(--bal-color-primary-5)',
+    'var(--bal-color-primary-6)',
+    'var(--bal-color-primary)',
+    'transparent',
+  ],
+}
+
+const replacementsCSSVariablesVarious = {
+  from: [
+    /var\(--bal-border-width-none\)/g,
+    /var\(--bal-container-max-width\)/g,
+    /var\(--bal-weight-bold\)/g,
+    /var\(--bal-weight-regular:\)/g,
+    /var\(--bal-weight-light\)/g,
+    /var\(--bal-radius-none\)/g,
+    /var\(--bal-shadow-none\)/g,
+    /var\(--bal-text-shadow-none\)/g,
+  ],
+  to: [
+    '0',
+    'var(--bal-container-size-normal)',
+    'var(--bal-text-weight-bold)',
+    'var(--bal-text-weight-regular)',
+    'var(--bal-text-weight-light)',
+    '0',
+    'none',
+    'none',
+  ],
+}
+
+const replacementsCSSVariablesSpace = {
+  from: [
+    /var\(--bal-space-auto\)/g,
+    /var\(--bal-space-none\)/g,
+    /var\(--bal-space-tablet-xx-small\)/g,
+    /var\(--bal-space-tablet-x-small\)/g,
+    /var\(--bal-space-tablet-small\)/g,
+    /var\(--bal-space-tablet-normal\)/g,
+    /var\(--bal-space-tablet-medium\)/g,
+    /var\(--bal-space-tablet-large\)/g,
+    /var\(--bal-space-tablet-x-large\)/g,
+    /var\(--bal-space-tablet-xx-large\)/g,
+    /var\(--bal-space-tablet-xxx-large\)/g,
+    /var\(--bal-space-tablet-xxxx-large\)/g,
+    /var\(--bal-space-desktop-xx-small\)/g,
+    /var\(--bal-space-desktop-x-small\)/g,
+    /var\(--bal-space-desktop-small\)/g,
+    /var\(--bal-space-desktop-normal\)/g,
+    /var\(--bal-space-desktop-medium\)/g,
+    /var\(--bal-space-desktop-large\)/g,
+    /var\(--bal-space-desktop-x-large\)/g,
+    /var\(--bal-space-desktop-xx-large\)/g,
+    /var\(--bal-space-desktop-xxx-large\)/g,
+    /var\(--bal-space-desktop-xxxx-large\)/g,
+  ],
+  to: [
+    'auto',
+    'none',
+    'var(--bal-space-xx-small-tablet)',
+    'var(--bal-space-x-small-tablet)',
+    'var(--bal-space-small-tablet)',
+    'var(--bal-space-normal-tablet)',
+    'var(--bal-space-medium-tablet)',
+    'var(--bal-space-large-tablet)',
+    'var(--bal-space-x-large-tablet)',
+    'var(--bal-space-xx-large-tablet)',
+    'var(--bal-space-xxx-large-tablet)',
+    'var(--bal-space-xxxx-large-tablet)',
+    'var(--bal-space-xx-small-desktop)',
+    'var(--bal-space-x-small-desktop)',
+    'var(--bal-space-small-desktop)',
+    'var(--bal-space-normal-desktop)',
+    'var(--bal-space-medium-desktop)',
+    'var(--bal-space-large-desktop)',
+    'var(--bal-space-x-large-desktop)',
+    'var(--bal-space-xx-large-desktop)',
+    'var(--bal-space-xxx-large-desktop)',
+    'var(--bal-space-xxxx-large-desktop)',
+  ],
+}
+
+const replacementsCSSVariablesTextSize = {
+  from: [
+    /var\(--bal-size-x-small\)/g,
+    /var\(--bal-size-small\)/g,
+    /var\(--bal-size-normal\)/g,
+    /var\(--bal-size-medium\)/g,
+    /var\(--bal-size-xxxxx-large\)/g,
+    /var\(--bal-size-xxxx-large\)/g,
+    /var\(--bal-size-xxx-large\)/g,
+    /var\(--bal-size-xx-large\)/g,
+    /var\(--bal-size-x-large\)/g,
+    /var\(--bal-size-large\)/g,
+    /var\(--bal-size-tablet-x-small\)/g,
+    /var\(--bal-size-tablet-small\)/g,
+    /var\(--bal-size-tablet-normal\)/g,
+    /var\(--bal-size-tablet-medium\)/g,
+    /var\(--bal-size-tablet-xxxxx-large\)/g,
+    /var\(--bal-size-tablet-xxxx-large\)/g,
+    /var\(--bal-size-tablet-xxx-large\)/g,
+    /var\(--bal-size-tablet-xx-large\)/g,
+    /var\(--bal-size-tablet-x-large\)/g,
+    /var\(--bal-size-tablet-large\)/g,
+    /var\(--bal-size-desktop-x-small\)/g,
+    /var\(--bal-size-desktop-small\)/g,
+    /var\(--bal-size-desktop-normal\)/g,
+    /var\(--bal-size-desktop-medium\)/g,
+    /var\(--bal-size-desktop-xxxxx-large\)/g,
+    /var\(--bal-size-desktop-xxxx-large\)/g,
+    /var\(--bal-size-desktop-xxx-large\)/g,
+    /var\(--bal-size-desktop-xx-large\)/g,
+    /var\(--bal-size-desktop-x-large\)/g,
+    /var\(--bal-size-desktop-large\)/g,
+  ],
+  to: [
+    'var(--bal-text-size-x-small)',
+    'var(--bal-text-size-small)',
+    'var(--bal-text-size-normal)',
+    'var(--bal-text-size-medium)',
+    'var(--bal-text-size-xxxxx-large)',
+    'var(--bal-text-size-xxxx-large)',
+    'var(--bal-text-size-xxx-large)',
+    'var(--bal-text-size-xx-large)',
+    'var(--bal-text-size-x-large)',
+    'var(--bal-text-size-large)',
+    'var(--bal-text-size-x-small-tablet)',
+    'var(--bal-text-size-small-tablet)',
+    'var(--bal-text-size-normal-tablet)',
+    'var(--bal-text-size-medium-tablet)',
+    'var(--bal-text-size-xxxxx-large-tablet)',
+    'var(--bal-text-size-xxxx-large-tablet)',
+    'var(--bal-text-size-xxx-large-tablet)',
+    'var(--bal-text-size-xx-large-tablet)',
+    'var(--bal-text-size-x-large-tablet)',
+    'var(--bal-text-size-large-tablet)',
+    'var(--bal-text-size-x-small-desktop)',
+    'var(--bal-text-size-small-desktop)',
+    'var(--bal-text-size-normal-desktop)',
+    'var(--bal-text-size-medium-desktop)',
+    'var(--bal-text-size-xxxxx-large-desktop)',
+    'var(--bal-text-size-xxxx-large-desktop)',
+    'var(--bal-text-size-xxx-large-desktop)',
+    'var(--bal-text-size-xx-large-desktop)',
+    'var(--bal-text-size-x-large-desktop)',
+    'var(--bal-text-size-large-desktop)',
+  ],
 }
 
 main()

@@ -3,6 +3,7 @@
     "border": {
       "default": { "value": "{color.base.grey.3}" },
       "primary": { "value": "{color.base.primary.5}", "comment": "Use for focused or selected state." },
+      "secondary": { "value": "{color.base.primary.3}", "comment": "Disabled or secondary color on dark backgrounds" },
       "divider": { "value": "{color.base.grey.2}", "comment": "Can be use for a divider" },
 
       "info": { "value": "{color.base.info.4}" },
