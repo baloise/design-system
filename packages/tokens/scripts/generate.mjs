@@ -11,20 +11,6 @@ const __dirname = path.dirname(__filename)
 // EXTEND CONFIG
 const StyleDictionary = StyleDictionaryCore.extend(path.join(__dirname, '../config.js'))
 
-// const { minifyDictionary } = StyleDictionary.formatHelpers
-
-// const formatter = ({ dictionary }) => {
-//   return JSON.stringify(minifyDictionary(dictionary.tokens), null, 2)
-// }
-
-// // Avoid nested collision warnings
-// formatter.nested = true
-
-// styleDictionary.registerFormat({
-//   name: 'custom/json/nested',
-//   formatter: formatter,
-// })
-
 // REGISTER THE CUSTOM FILTERS
 StyleDictionary.registerTransform({
   type: `name`,

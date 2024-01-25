@@ -69,15 +69,11 @@
       }
     },
     "text": {
-      "white": { "value": "{color.base.white}", "noFigmaImport": true, "deprecated": true },
-      "grey-dark": { "value": "{color.base.grey.6}", "noFigmaImport": true, "deprecated": true },
-      "grey": { "value": "{color.base.grey.5}", "noFigmaImport": true, "deprecated": true },
       "grey-light": { "value": "{color.base.grey.4}", "noFigmaImport": true, "deprecated": true },
       "light-blue": { "value": "{color.base.light-blue.5}", "noFigmaImport": true, "deprecated": true },
       "light-blue-light": { "value": "{color.base.light-blue.2}", "noFigmaImport": true, "deprecated": true },
       "info-light": { "value": "{color.base.info.3}", "noFigmaImport": true, "deprecated": true },
       "primary-dark": { "value": "{color.base.primary.6}", "noFigmaImport": true, "deprecated": true },
-      "primary-light": { "value": "{color.base.primary.3}", "noFigmaImport": true, "deprecated": true },
       "danger-light": { "value": "{color.base.danger.5}", "noFigmaImport": true, "deprecated": true },
       "danger-dark": { "value": "{color.base.danger.6}", "noFigmaImport": true, "deprecated": true }
     }

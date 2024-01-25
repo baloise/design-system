@@ -1,14 +1,29 @@
 {
   "color": {
     "text": {
-      "primary": { "value": "{color.base.primary.5}" },
-      "secondary": { "value": "{color.base.primary.3}" },
-      "disabled": { "value": "{color.base.grey.5}" },
-
-      "white": { "value": "{color.base.white}" },
+      "primary": {
+        "value": "{color.base.primary.5}",
+        "comment": "Main font color for all headings and paragraphs."
+      },
+      "primary-light": {
+        "value": "{color.base.primary.3}",
+        "comment": "Secondary font color for help messages."
+      },
+      "white": {
+        "value": "{color.base.white}",
+        "comment": "Main font color for all headings and paragraphs on a dark background."
+      },
       "black": { "value": "{color.base.black}" },
+      "grey-dark": {
+        "value": "{color.base.grey.6}",
+        "comment": "Font color for disabled elements"
+      },
+      "grey": {
+        "value": "{color.base.grey.5}",
+        "comment": "Font color for placeholders"
+      },
 
-      "info": { "value": "{color.base.info.5}" },
+      "info": { "value": "{color.base.info.4}" },
       "warning": { "value": "{color.base.warning.5}" },
       "success": { "value": "{color.base.success.5}" },
       "danger": { "value": "{color.base.danger.4}" },
@@ -19,18 +34,11 @@
       "danger-hovered": { "value": "{color.base.danger.5}" },
       "danger-pressed": { "value": "{color.base.danger.6}" },
 
-      "input": {
-        "default": { "value": "{color.text.primary}" },
-        "disabled": { "value": "{color.base.grey.6}" },
-        "placeholder": { "value": "{color.base.grey.5}" },
-        "information": { "value": "{color.base.primary.3}" }
-      },
-
       "inverted": {
         "default": { "value": "{color.base.white}" },
         "disabled": { "value": "{color.base.primary.3}" },
         "hovered": { "value": "{color.base.light-blue.2}" },
-        "pressed": { "value": "{color.base.info.4}" }
+        "pressed": { "value": "{color.base.info.3}" }
       }
     }
   }
