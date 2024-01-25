@@ -193,7 +193,7 @@ async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, fi
 }
 
 async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }) {
-  const files = isDirectory ? path.join(directoryPath, '**', '*.scss') : filePath
+  const files = isDirectory ? path.join(directoryPath, '**', '*.sass') : filePath
   try {
     const result = await replace({
       files,
@@ -1128,9 +1128,9 @@ const replacementsSizing = {
 const replacementsCSSVariablesColors = {
   from: [
     /var\(--bal-color-border-white\)/g,
-    /var\(--bal-color-border-grey\)/g,
     /var\(--bal-color-border-grey-light\)/g,
     /var\(--bal-color-border-grey-dark\)/g,
+    /var\(--bal-color-border-grey\)/g,
     /var\(--bal-color-border-primary-light\)/g,
     /var\(--bal-color-border-primary-dark\)/g,
     /var\(--bal-color-border-light-blue\)/g,
@@ -1147,12 +1147,12 @@ const replacementsCSSVariablesColors = {
   ],
   to: [
     'var(--bal-color-border-inverted)',
-    'var(--bal-color-border)',
     'var(--bal-color-border-divider)',
     'var(--bal-color-border-disabled)',
-    'var(-bal-color-border-secondary)',
-    'var(-bal-color-border-primary-pressed)',
-    'var(-bal-color-border-primary-hovered',
+    'var(--bal-color-border)',
+    'var(--bal-color-border-secondary)',
+    'var(--bal-color-border-primary-pressed)',
+    'var(--bal-color-border-primary-hovered)',
     'var(--bal-color-border-danger-hovered)',
     'var(--bal-color-border-danger-pressed)',
     'var(--bal-color-primary-1)',

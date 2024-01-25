@@ -9,7 +9,7 @@
   align-items: center
   min-height: 3rem
   gap: 0.25rem
-  border: var(--bal-border-width-normal) solid var(--bal-color-border-grey)
+  border: var(--bal-border-width-normal) solid var(--bal-color-border)
   border-radius: var(--bal-radius-normal)
   background: var(--bal-color-white)
 
@@ -17,7 +17,7 @@
     min-height: 2.75rem
     height: 2.75rem
     border: none
-    border-radius: var(--bal-radius-none)
+    border-radius: 0
     background: none !important
     padding-left: 0
     padding-right: 0
@@ -92,7 +92,7 @@
   @include inputGroupTheme('danger', var(--bal-color-danger-1), var(--bal-color-border-danger))
   @include inputGroupTheme('success', var(--bal-color-success-1), var(--bal-color-border-success))
   @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-border-warning))
-  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-grey-dark))
+  @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-border-disabled))
 
   +modifier(is-disabled)
 

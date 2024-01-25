@@ -15,7 +15,7 @@
     margin-bottom: var(--bal-space-normal) !important
 
   &--variant-overview:not(:last-child)
-    margin-bottom: var(--bal-space-none) !important
+    margin-bottom: none !important
     +desktop
       margin-bottom: var(--bal-space-normal) !important
   //
@@ -23,7 +23,7 @@
   &__native
     display: inline
     color: var(--bal-nav-link-text-color)
-    font-size: var(--bal-size-normal)
+    font-size: var(--bal-text-size-normal)
     line-height: var(--bal-body-line-height)
     font-family: var(--bal-font-family-text)
     text-align: left
@@ -34,15 +34,15 @@
     // Variants
     &--variant-title
       font-family: var(--bal-font-family-title)
-      font-size: var(--bal-size-normal)
-      font-weight: var(--bal-weight-bold)
+      font-size: var(--bal-text-size-normal)
+      font-weight: var(--bal-text-weight-bold)
       text-decoration: none
       margin-bottom: var(--bal-space-normal)
       +desktop
-        font-size: var(--bal-size-xx-large)
+        font-size: var(--bal-text-size-xx-large)
     &--variant-overview
-      font-size: var(--bal-size-small)
-      font-weight: var(--bal-weight-bold)
+      font-size: var(--bal-text-size-small)
+      font-weight: var(--bal-text-weight-bold)
     //
     // Selected state, defines the current path like a breadcrumb
     &--selected

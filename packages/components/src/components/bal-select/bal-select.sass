@@ -35,7 +35,7 @@
     font-family: var(--bal-font-family-text)
     color: var(--bal-select-control-text-color)
     outline: none
-    box-shadow: var(--bal-shadow-none)
+    box-shadow: none
     padding-right: 1rem
     min-height: 3rem
     +modifier(focused)
@@ -62,7 +62,7 @@
     +modifier(inverted-footer)
       border: none
       background-color: var(--bal-select-control-input-inverted-footer-background) !important
-      padding-right: var(--bal-space-none)
+      padding-right: none
       &:hover
         background-color: var(--bal-select-control-input-inverted-footer-background-hover) !important
 
@@ -107,7 +107,7 @@
       outline: none !important
       outline-width: 0 !important
       height: calc(3rem - 0.25rem) !important
-      box-shadow: var(--bal-shadow-none) !important
+      box-shadow: none !important
       background: var(--bal-select-control-input-multiple-background)
       flex: 1
       min-height: calc(3rem - 0.25rem) !important
@@ -146,7 +146,7 @@
     +modifier(selected)
       background: var(--bal-select-control-input-option-background-selected)
       .bal-select__option__content__label
-        font-weight: var(--bal-weight-bold)
+        font-weight: var(--bal-text-weight-bold)
     +modifier(focused)
       background: var(--bal-select-control-input-option-background-focused)
     &:hover

@@ -13,7 +13,7 @@
   border: none
   background: transparent
   text-align: center
-  font-size: var(--bal-size-normal)
+  font-size: var(--bal-text-size-normal)
   line-height: var(--bal-line-height-normal)
   hyphens: auto
   outline: none
@@ -25,7 +25,7 @@
       background: var(--bal-color-light-blue-2)
   &--today:not(&--selected):not(&--disabled)
     color: var(--bal-color-light-blue-3)
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-text-weight-bold)
     +hover
       &:hover
         color: var(--bal-color-text-primary)
@@ -34,7 +34,7 @@
   &--selected
     background: var(--bal-color-primary)
     color: var(--bal-color-text-white)
-    font-weight: var(--bal-weight-bold)
+    font-weight: var(--bal-text-weight-bold)
   &--disabled
     cursor: default
     background: transparent
