@@ -5,6 +5,10 @@
       "secondary": { "value": "{color.base.primary.3}" },
       "disabled": { "value": "{color.base.grey.5}" },
 
+      "white": { "value": "{color.base.white}" },
+      "black": { "value": "{color.base.black}" },
+
+      "info": { "value": "{color.base.info.5}" },
       "warning": { "value": "{color.base.warning.5}" },
       "success": { "value": "{color.base.success.5}" },
       "danger": { "value": "{color.base.danger.4}" },
@@ -15,18 +19,18 @@
       "danger-hovered": { "value": "{color.base.danger.5}" },
       "danger-pressed": { "value": "{color.base.danger.6}" },
 
-      "inverted": {
-        "default": { "value": "{color.base.white}" },
-        "disabled": { "value": "{color.base.primary.3}" },
-        "hovered": { "value": "{color.base.light-blue.2}" },
-        "pressed": { "value": "{color.base.info.4}" }
-      },
-
       "input": {
         "default": { "value": "{color.text.primary}" },
         "disabled": { "value": "{color.base.grey.6}" },
         "placeholder": { "value": "{color.base.grey.5}" },
         "information": { "value": "{color.base.primary.3}" }
+      },
+
+      "inverted": {
+        "default": { "value": "{color.base.white}" },
+        "disabled": { "value": "{color.base.primary.3}" },
+        "hovered": { "value": "{color.base.light-blue.2}" },
+        "pressed": { "value": "{color.base.info.4}" }
       }
     }
   }

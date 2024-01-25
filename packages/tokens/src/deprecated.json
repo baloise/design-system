@@ -70,7 +70,6 @@
     },
     "text": {
       "white": { "value": "{color.base.white}", "noFigmaImport": true, "deprecated": true },
-      "black": { "value": "{color.base.black}", "noFigmaImport": true, "deprecated": true },
       "grey-dark": { "value": "{color.base.grey.6}", "noFigmaImport": true, "deprecated": true },
       "grey": { "value": "{color.base.grey.5}", "noFigmaImport": true, "deprecated": true },
       "grey-light": { "value": "{color.base.grey.4}", "noFigmaImport": true, "deprecated": true },
