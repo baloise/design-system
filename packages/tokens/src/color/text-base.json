@@ -1,99 +1,32 @@
 {
   "color": {
     "text": {
-      "primary": {
-        "value": "{color.base.primary.5}",
-        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
-      },
+      "primary": { "value": "{color.base.primary.5}" },
+      "secondary": { "value": "{color.base.primary.3}" },
+      "disabled": { "value": "{color.base.grey.5}" },
+
+      "warning": { "value": "{color.base.warning.5}" },
+      "success": { "value": "{color.base.success.5}" },
+      "danger": { "value": "{color.base.danger.4}" },
+
       "primary-hovered": { "value": "{color.base.light-blue.5}" },
       "primary-pressed": { "value": "{color.base.primary.6}" },
-      "white": {
-        "value": "{color.base.white}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
-      },
-      "white-hovered": { "value": "{color.base.light-blue.2}" },
-      "white-pressed": { "value": "{color.base.info.4}" },
 
-      "disabled": { "value": "{color.text.grey-light}" },
-      "hovered": { "value": "{color.text.light-blue}" },
-      "pressed": { "value": "{color.text.primary-dark}" },
       "danger-hovered": { "value": "{color.base.danger.5}" },
       "danger-pressed": { "value": "{color.base.danger.6}" },
+
       "inverted": {
-        "default": { "value": "{color.text.white}" },
-        "disabled": { "value": "{color.text.primary-light}" },
-        "hovered": { "value": "{color.text.light-blue-light}" },
-        "pressed": { "value": "{color.text.info-light}" }
-      },
-      "input": {
-        "default": { "value": "{color.text.primary}" },
-        "disabled": { "value": "{color.text.grey-dark}" },
-        "placeholder": { "value": "{color.text.grey}" },
-        "information": { "value": "{color.text.primary-light}" }
+        "default": { "value": "{color.base.white}" },
+        "disabled": { "value": "{color.base.primary.3}" },
+        "hovered": { "value": "{color.base.light-blue.2}" },
+        "pressed": { "value": "{color.base.info.4}" }
       },
 
-      "primary-light": {
-        "value": "{color.base.primary.3}",
-        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
-      },
-      "primary-dark": {
-        "value": "{color.base.primary.6}",
-        "comment": "Blue is our accent color and it is present on every touchpoint. Our logo, text, buttons and links are blue."
-      },
-      "light-blue": {
-        "value": "{color.base.light-blue.5}",
-        "comment": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
-      },
-      "light-blue-light": {
-        "value": "{color.base.light-blue.2}",
-        "comment": "These colors are a functional extension of the accent color and are meant to be used only for specific cases and situations."
-      },
-      "grey": {
-        "value": "{color.base.grey.5}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
-      },
-      "grey-light": {
-        "value": "{color.base.grey.4}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
-      },
-      "grey-dark": {
-        "value": "{color.base.grey.6}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element."
-      },
-      "info": {
-        "value": "{color.base.info.4}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette."
-      },
-      "info-light": {
-        "value": "{color.base.info.3}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette."
-      },
-      "warning": {
-        "value": "{color.base.warning.5}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette."
-      },
-      "success": {
-        "value": "{color.base.success.4}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette."
-      },
-      "danger": {
-        "value": "{color.base.danger.4}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette."
-      },
-      "danger-dark": {
-        "value": "{color.base.danger.5}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
-        "noFigmaImport": true
-      },
-      "danger-darker": {
-        "value": "{color.base.danger.6}",
-        "comment": "To draw attention to important information or actions we used our Alert colors palette.",
-        "noFigmaImport": true
-      },
-      "black": {
-        "value": "{color.base.black}",
-        "comment": "Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.",
-        "noFigmaImport": true
+      "input": {
+        "default": { "value": "{color.text.primary}" },
+        "disabled": { "value": "{color.base.grey.6}" },
+        "placeholder": { "value": "{color.base.grey.5}" },
+        "information": { "value": "{color.base.primary.3}" }
       }
     }
   }

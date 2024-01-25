@@ -140,7 +140,7 @@ const main = async () => {
   if (
     targets.includes('GLOBAL_STYLES') &&
     doesGlobalStylesheetExist &&
-    path.extname(globalStyleSheetPath) === '.scss'
+    (path.extname(globalStyleSheetPath) === '.scss' || path.extname(globalStyleSheetPath) === '.sass')
   ) {
     await migrateGlobalStyleSheet(context)
   }
@@ -174,7 +174,13 @@ const main = async () => {
 }
 
 async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, filePath }) {
-  const files = isDirectory ? path.join(directoryPath, '**', '*.scss') : filePath
+  const files = []
+  if (isDirectory) {
+    files.push(path.join(directoryPath, '**', '*.sass'))
+    files.push(path.join(directoryPath, '**', '*.scss'))
+  } else {
+    files.push(filePath)
+  }
 
   try {
     const result = await replace({
@@ -193,7 +199,14 @@ async function migrateComponentStylesSheet({ log, isDirectory, directoryPath, fi
 }
 
 async function migrateCSSVariables({ log, isDirectory, directoryPath, filePath }) {
-  const files = isDirectory ? path.join(directoryPath, '**', '*.sass') : filePath
+  const files = []
+  if (isDirectory) {
+    files.push(path.join(directoryPath, '**', '*.sass'))
+    files.push(path.join(directoryPath, '**', '*.scss'))
+  } else {
+    files.push(filePath)
+  }
+
   try {
     const result = await replace({
       files,

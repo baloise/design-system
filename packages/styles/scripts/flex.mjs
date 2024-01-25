@@ -107,9 +107,9 @@ export const generateFlex = async () => {
   const valuesColumnGapTablet = {}
   for (const index in keys) {
     const key = keys[index]
-    valuesGapTablet[`gap-${key}`] = `var(--bal-space-tablet-${key})`
-    valuesRowGapTablet[`row-gap-${key}`] = `var(--bal-space-tablet-${key})`
-    valuesColumnGapTablet[`column-gap-${key}`] = `var(--bal-space-tablet-${key})`
+    valuesGapTablet[`gap-${key}`] = `var(--bal-space-${key}-tablet)`
+    valuesRowGapTablet[`row-gap-${key}`] = `var(--bal-space-${key}-tablet)`
+    valuesColumnGapTablet[`column-gap-${key}`] = `var(--bal-space-${key}-tablet)`
   }
   const rulesFlexGapTablet = utils.styleClass({
     property: 'gap',
@@ -135,9 +135,9 @@ export const generateFlex = async () => {
   const valuesColumnGapDesktop = {}
   for (const index in keys) {
     const key = keys[index]
-    valuesGapDesktop[`gap-${key}`] = `var(--bal-space-desktop-${key})`
-    valuesRowGapDesktop[`row-gap-${key}`] = `var(--bal-space-desktop-${key})`
-    valuesColumnGapDesktop[`column-gap-${key}`] = `var(--bal-space-desktop-${key})`
+    valuesGapDesktop[`gap-${key}`] = `var(--bal-space-${key}-desktop)`
+    valuesRowGapDesktop[`row-gap-${key}`] = `var(--bal-space-${key}-desktop)`
+    valuesColumnGapDesktop[`column-gap-${key}`] = `var(--bal-space-${key}-desktop)`
   }
   const rulesFlexGapDesktop = utils.styleClass({
     property: 'gap',

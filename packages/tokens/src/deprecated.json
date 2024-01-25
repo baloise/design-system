@@ -24,37 +24,31 @@
     "border": {
       "white": {
         "value": "{color.base.white}",
-        "comment": "Default color on dark backgrounds.",
         "noFigmaImport": true,
         "deprecated": true
       },
       "grey": {
         "value": "{color.base.grey.3}",
-        "comment": "Default border color for inactive state.",
         "noFigmaImport": true,
         "deprecated": true
       },
       "grey-light": {
         "value": "{color.base.grey.2}",
-        "comment": "Can be use for a divider",
         "noFigmaImport": true,
         "deprecated": true
       },
       "grey-dark": {
         "value": "{color.base.grey.4}",
-        "comment": "Use for disabled state.",
         "noFigmaImport": true,
         "deprecated": true
       },
       "primary-light": {
         "value": "{color.base.primary.3}",
-        "comment": "Disabled or secondary color on dark backgrounds.",
         "noFigmaImport": true,
         "deprecated": true
       },
       "primary-dark": {
         "value": "{color.base.primary.6}",
-        "comment": "Pressing color.",
         "noFigmaImport": true,
         "deprecated": true
       },
@@ -73,6 +67,20 @@
         "noFigmaImport": true,
         "deprecated": true
       }
+    },
+    "text": {
+      "white": { "value": "{color.base.white}", "noFigmaImport": true, "deprecated": true },
+      "black": { "value": "{color.base.black}", "noFigmaImport": true, "deprecated": true },
+      "grey-dark": { "value": "{color.base.grey.6}", "noFigmaImport": true, "deprecated": true },
+      "grey": { "value": "{color.base.grey.5}", "noFigmaImport": true, "deprecated": true },
+      "grey-light": { "value": "{color.base.grey.4}", "noFigmaImport": true, "deprecated": true },
+      "light-blue": { "value": "{color.base.light-blue.5}", "noFigmaImport": true, "deprecated": true },
+      "light-blue-light": { "value": "{color.base.light-blue.2}", "noFigmaImport": true, "deprecated": true },
+      "info-light": { "value": "{color.base.info.3}", "noFigmaImport": true, "deprecated": true },
+      "primary-dark": { "value": "{color.base.primary.6}", "noFigmaImport": true, "deprecated": true },
+      "primary-light": { "value": "{color.base.primary.3}", "noFigmaImport": true, "deprecated": true },
+      "danger-light": { "value": "{color.base.danger.5}", "noFigmaImport": true, "deprecated": true },
+      "danger-dark": { "value": "{color.base.danger.6}", "noFigmaImport": true, "deprecated": true }
     }
   },
   "size": {
