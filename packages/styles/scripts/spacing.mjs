@@ -88,7 +88,7 @@ function generateSpace({ keys, prefix, property, breakpoint = '' }) {
   }
   for (const index in keys) {
     const key = keys[index]
-    values[`${prefix}-${key}`] = `var(--bal-space-${breakpoint ? `${breakpoint}-` : ''}${key})`
+    values[`${prefix}-${key}`] = `var(--bal-space-${key}${breakpoint ? `-${breakpoint}` : ''})`
   }
   const rules = utils.styleClass({ property, values, breakpoint, important: true })
 

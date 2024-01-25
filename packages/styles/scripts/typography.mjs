@@ -18,6 +18,10 @@ export const generateTypography = async () => {
       docs: [
         textColors.docs,
         fontFamily.docs,
+        fontFamilyLineHeight.rules,
+        fontSize.rules,
+        fontSize.rulesTablet,
+        fontSize.rulesDesktop,
         textAlign.docs,
         textTransform.docs,
         fontWeight.docs,

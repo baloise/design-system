@@ -22,8 +22,39 @@
       }
     },
     "border": {
+      "white": {
+        "value": "{color.base.white}",
+        "comment": "Default color on dark backgrounds.",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "grey": {
+        "value": "{color.base.grey.3}",
+        "comment": "Default border color for inactive state.",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "grey-light": {
+        "value": "{color.base.grey.2}",
+        "comment": "Can be use for a divider",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "grey-dark": {
+        "value": "{color.base.grey.4}",
+        "comment": "Use for disabled state.",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
+      "primary-light": {
+        "value": "{color.base.primary.3}",
+        "comment": "Disabled or secondary color on dark backgrounds.",
+        "noFigmaImport": true,
+        "deprecated": true
+      },
       "primary-dark": {
         "value": "{color.base.primary.6}",
+        "comment": "Pressing color.",
         "noFigmaImport": true,
         "deprecated": true
       },
@@ -44,33 +75,22 @@
       }
     }
   },
-  "space": {
-    "tablet-auto": {
-      "value": "{space.auto}",
-      "keepFormat": true,
-      "deprecated": true,
-      "noFigmaImport": true
-    },
-    "desktop-auto": {
-      "value": "{space.auto}",
-      "keepFormat": true,
-      "deprecated": true,
-      "noFigmaImport": true
-    },
-    "tablet-none": {
-      "value": "{size.space.none}",
-      "keepFormat": true,
-      "deprecated": true,
-      "noFigmaImport": true
-    },
-    "desktop-none": {
-      "value": "{size.space.none}",
-      "keepFormat": true,
-      "deprecated": true,
-      "noFigmaImport": true
-    }
-  },
   "size": {
+    "border": {
+      "width": {
+        "none": {
+          "value": "0", "deprecated": true, "noFigmaImport": true
+        }
+      }
+    },
+    "container": {
+      "max-width": {
+        "value": "{size.container.size.normal}",
+        "keepFormat": true,
+        "deprecated": true,
+        "noFigmaImport": true
+      }
+    },
     "weight": {
       "bold": {
         "value": "{size.text.weight.bold}",
@@ -162,6 +182,45 @@
         "xxxx-large": { "value": "3.5", "deprecated": true, "noFigmaImport": true },
         "xxxxx-large": { "value": "6", "deprecated": true, "noFigmaImport": true }
       }
+    },
+    "space": {
+      "tablet": {
+        "xx-small": { "value": "{size.space.xx-small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "x-small": { "value": "{size.space.x-small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.space.small.tablet}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.space.normal.tablet}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.space.medium.tablet}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.space.large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.space.x-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.space.xx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.space.xxx-large.tablet}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.space.xxxx-large.tablet}", "deprecated": true, "noFigmaImport": true }
+      },
+      "desktop": {
+        "xx-small": { "value": "{size.space.xx-small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "x-small": { "value": "{size.space.x-small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "small": { "value": "{size.space.small.desktop}", "deprecated": true, "noFigmaImport": true },
+        "normal": { "value": "{size.space.normal.desktop}", "deprecated": true, "noFigmaImport": true },
+        "medium": { "value": "{size.space.medium.desktop}", "deprecated": true, "noFigmaImport": true },
+        "large": { "value": "{size.space.large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "x-large": { "value": "{size.space.x-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xx-large": { "value": "{size.space.xx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxx-large": { "value": "{size.space.xxx-large.desktop}", "deprecated": true, "noFigmaImport": true },
+        "xxxx-large": { "value": "{size.space.xxxx-large.desktop}", "deprecated": true, "noFigmaImport": true }
+      }
     }
+  },
+  "space": {
+    "auto":{ "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "radius": {
+    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "shadow": {
+    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+  },
+  "text-shadow-": {
+    "none":{ "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   }
 }

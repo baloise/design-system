@@ -20,9 +20,9 @@
         }
       },
       "space": {
-        "mobile": { "value": "1" },
-        "tablet": { "value": "2.5" },
-        "desktop": { "value": "3" }
+        "mobile": { "value": "{size.space.normal.mobile}" },
+        "tablet": { "value": "{size.space.x-large.tablet}" },
+        "desktop": { "value": "{size.space.x-large.desktop}" }
       }
     }
   }

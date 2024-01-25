@@ -32,7 +32,10 @@ const generateShadow = async () => {
   const docs = utils.jsonClass({ property, values })
   const rules = utils.styleClass({
     property,
-    values,
+    values: {
+      ['shadow-none']: 'none',
+      ...values,
+    },
     important: true,
     responsive: true,
     states: true,

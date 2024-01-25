@@ -12,6 +12,7 @@ export const generateBackgroundColors = async () => {
     values: {
       ...props,
       ...propsBase,
+      ['bg-transparent']: 'transparent',
     },
   })
 
@@ -20,6 +21,7 @@ export const generateBackgroundColors = async () => {
     values: {
       ...props,
       ...propsBase,
+      ['bg-transparent']: 'transparent',
     },
     important: true,
     responsive: false,
@@ -27,6 +29,7 @@ export const generateBackgroundColors = async () => {
     breakpoints: utils.minBreakpoints,
   })
 
+  // inverted styles
   const rulesPrimary = utils.styleClass({
     property: 'color',
     values: {

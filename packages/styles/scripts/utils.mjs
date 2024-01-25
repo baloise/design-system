@@ -399,10 +399,11 @@ export const staticClassByToken = async ({
   states = false,
   replace,
   prefix,
+  values,
 }) => {
   const tokens = await getTokens({ token })
-  const values = toProps({ tokens, replace, prefix })
-  const docs = jsonClass({ property, values })
-  const rules = styleClass({ property, values, important, responsive, states })
+  const props = toProps({ tokens, replace, prefix })
+  const docs = jsonClass({ property, values: { ...values, ...props } })
+  const rules = styleClass({ property, values: { ...values, ...props }, important, responsive, states })
   return { rules, docs }
 }

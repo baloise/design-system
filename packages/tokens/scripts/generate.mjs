@@ -11,6 +11,20 @@ const __dirname = path.dirname(__filename)
 // EXTEND CONFIG
 const StyleDictionary = StyleDictionaryCore.extend(path.join(__dirname, '../config.js'))
 
+// const { minifyDictionary } = StyleDictionary.formatHelpers
+
+// const formatter = ({ dictionary }) => {
+//   return JSON.stringify(minifyDictionary(dictionary.tokens), null, 2)
+// }
+
+// // Avoid nested collision warnings
+// formatter.nested = true
+
+// styleDictionary.registerFormat({
+//   name: 'custom/json/nested',
+//   formatter: formatter,
+// })
+
 // REGISTER THE CUSTOM FILTERS
 StyleDictionary.registerTransform({
   type: `name`,
@@ -100,48 +114,52 @@ StyleDictionary.registerTransform({
   },
 })
 
+const FigmaFormatter = ({ dictionary, _platform, _options, _file }) => {
+  const tokens = {}
+
+  const formatValue = value => {
+    if (value.startsWith('{')) {
+      const path = value.substring(1, value.length - 1)
+      return `{${path
+        .split('.')
+        .map((p, i) => (i === 0 ? p : upperFirst(camelCase(p))))
+        .join('.')}}`
+    }
+    return value
+  }
+
+  dictionary.allTokens.map(token => {
+    let value = token.value
+
+    let hasPixelOrPercentage = /px$|%$/.test(token.original.value)
+    let isAlias = token.original.value.startsWith('{')
+    let keepFormat = token.keepFormat
+    let noFigmaImport = token.noFigmaImport
+
+    if (noFigmaImport !== true) {
+      if (hasPixelOrPercentage || keepFormat) {
+        value = token.original.value
+      } else if (isAlias) {
+        value = formatValue(token.original.value)
+      }
+
+      setWith(
+        tokens,
+        token.path.map((p, i) => (i === 0 ? p : upperFirst(camelCase(p)))),
+        { value, group: token.attributes.category },
+        Object,
+      )
+    }
+  })
+
+  return JSON.stringify(tokens, null, 2)
+}
+
+FigmaFormatter.nested = true
+
 StyleDictionary.registerFormat({
   name: 'bal/figma',
-  formatter: function ({ dictionary, _platform, _options, _file }) {
-    const tokens = {}
-
-    const formatValue = value => {
-      if (value.startsWith('{')) {
-        const path = value.substring(1, value.length - 1)
-        return `{${path
-          .split('.')
-          .map((p, i) => (i === 0 ? p : upperFirst(camelCase(p))))
-          .join('.')}}`
-      }
-      return value
-    }
-
-    dictionary.allTokens.map(token => {
-      let value = token.value
-
-      let hasPixelOrPercentage = /px$|%$/.test(token.original.value)
-      let isAlias = token.original.value.startsWith('{')
-      let keepFormat = token.keepFormat
-      let noFigmaImport = token.noFigmaImport
-
-      if (noFigmaImport !== true) {
-        if (hasPixelOrPercentage || keepFormat) {
-          value = token.original.value
-        } else if (isAlias) {
-          value = formatValue(token.original.value)
-        }
-
-        setWith(
-          tokens,
-          token.path.map((p, i) => (i === 0 ? p : upperFirst(camelCase(p)))),
-          { value, group: token.attributes.category },
-          Object,
-        )
-      }
-    })
-
-    return JSON.stringify(tokens, null, 2)
-  },
+  formatter: FigmaFormatter,
 })
 
 // FINALLY, BUILD ALL THE PLATFORMS

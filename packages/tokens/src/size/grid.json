@@ -2,7 +2,7 @@
   "size": {
     "column": {
       "gap": {
-        "value": "{size.space.normal}",
+        "value": "{size.space.normal.mobile}",
         "noFigmaImport": true
       }
     }

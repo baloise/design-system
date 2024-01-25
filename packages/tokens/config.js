@@ -55,7 +55,7 @@ module.exports = {
           destination: 'deprecated/tokens.css',
           filter: 'bal/only-deprecated',
           options: {
-            outputReferences: true,
+            outputReferences: false,
           },
         },
         {
@@ -63,7 +63,7 @@ module.exports = {
           destination: 'deprecated/tokens.css.scss',
           filter: 'bal/only-deprecated',
           options: {
-            outputReferences: true,
+            outputReferences: false,
           },
         },
         {
@@ -79,7 +79,7 @@ module.exports = {
           destination: 'deprecated/tokens.docs.json',
           filter: 'bal/only-deprecated',
           options: {
-            outputReferences: true,
+            outputReferences: false,
           },
         },
       ],

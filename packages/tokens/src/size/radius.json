@@ -1,10 +1,6 @@
 {
   "size": {
     "radius": {
-      "none": {
-        "value": "0",
-        "comment": "The none radius token is characterized by crisp, angular edges, providing a clean and sharp appearance to your design elements."
-      },
       "normal": {
         "value": "0.25",
         "comment": "The normal radius token strikes a balance between softness and structure."

@@ -1,72 +1,125 @@
 {
   "size": {
     "space": {
-      "none": {
-        "value": "0"
-      },
       "xx-small": {
-        "value": "0.25",
-        "comment": "Minimum space between two elements"
+        "mobile": {
+          "value": "0.25",
+          "comment": "Minimum space between two elements"
+        },
+        "tablet": {
+          "value": "{size.space.xx-small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.xx-small.mobile}"
+        }
       },
       "x-small": {
-        "value": "0.5",
-        "comment": "Space between text and icons or headings and content or clickable elements"
+        "mobile": {
+          "value": "0.5",
+          "comment": "Space between text and icons or headings and content or clickable elements"
+        },
+        "tablet": {
+          "value": "{size.space.x-small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.x-small.mobile}"
+        }
       },
       "small": {
-        "value": "0.75",
-        "comment": ""
+        "mobile": {
+          "value": "0.75",
+          "comment": ""
+        },
+        "tablet": {
+          "value": "{size.space.small.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.small.mobile}"
+        }
       },
       "normal": {
-        "value": "1",
-        "comment": "Space between large headings and content."
+        "mobile": {
+          "value": "1",
+          "comment": "Space between large headings and content."
+        },
+        "tablet": {
+          "value": "{size.space.normal.mobile}"
+        },
+        "desktop": {
+          "value": "{size.space.normal.mobile}"
+        }
       },
       "medium": {
-        "value": "1.25",
-        "comment": "Inner padding of cards"
+        "mobile": {
+          "value": "1.25",
+          "comment": "Inner padding of cards"
+        },
+        "tablet": {
+          "value": "{size.space.medium.mobile}"
+        },
+        "desktop": {
+          "value": "1.5"
+        }
       },
       "large": {
-        "value": "1.5",
-        "comment": "Space between cards"
+        "mobile": {
+          "value": "1.5",
+          "comment": "Space between cards"
+        },
+        "tablet": {
+          "value": "{size.space.large.mobile}"
+        },
+        "desktop": {
+          "value": "2"
+        }
       },
       "x-large": {
-        "value": "2",
-        "comment": "Space between heading and card"
+        "mobile": {
+          "value": "2",
+          "comment": "Space between heading and card"
+        },
+        "tablet": {
+          "value": "2.5"
+        },
+        "desktop": {
+          "value": "3"
+        }
       },
       "xx-large": {
-        "value": "3",
-        "comment": ""
+        "mobile": {
+          "value": "3",
+          "comment": ""
+        },
+        "tablet": {
+          "value": "3.5"
+        },
+        "desktop": {
+          "value": "4"
+        }
       },
       "xxx-large": {
-        "value": "3.5",
-        "comment": "Footer bottom padding"
+        "mobile": {
+          "value": "3.5",
+          "comment": "Footer bottom padding"
+        },
+        "tablet": {
+          "value": "4.5"
+        },
+        "desktop": {
+          "value": "6"
+        }
       },
       "xxxx-large": {
-        "value": "4",
-        "comment": "Space between sections"
-      },
-      "tablet": {
-        "xx-small": { "value": "{size.space.xx-small}" },
-        "x-small": { "value": "{size.space.x-small}" },
-        "small": { "value": "{size.space.small}" },
-        "normal": { "value": "{size.space.normal}" },
-        "medium": { "value": "{size.space.medium}" },
-        "large": { "value": "{size.space.large}" },
-        "x-large": { "value": "2.5" },
-        "xx-large": { "value": "3.5" },
-        "xxx-large": { "value": "4.5" },
-        "xxxx-large": { "value": "6" }
-      },
-      "desktop": {
-        "xx-small": { "value": "{size.space.xx-small}" },
-        "x-small": { "value": "{size.space.x-small}" },
-        "small": { "value": "{size.space.small}" },
-        "normal": { "value": "{size.space.normal}" },
-        "medium": { "value": "1.5" },
-        "large": { "value": "2" },
-        "x-large": { "value": "3" },
-        "xx-large": { "value": "4" },
-        "xxx-large": { "value": "6" },
-        "xxxx-large": { "value": "8" }
+        "mobile": {
+          "value": "4",
+          "comment": "Space between sections"
+        },
+        "tablet": {
+          "value": "6"
+        },
+        "desktop": {
+          "value": "8"
+        }
       }
     }
   }

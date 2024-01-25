@@ -21,31 +21,49 @@ export const generateBorder = async () => {
   })
   const borderNoneLeft = await utils.staticClass({ property: 'border-left-width', values: { 'border-left-none': '0' } })
 
-  const borderRadius = await utils.staticClassByToken({ token: 'size.radius', property: 'border-radius' })
+  const borderRadius = await utils.staticClassByToken({
+    token: 'size.radius',
+    property: 'border-radius',
+    values: {
+      ['radius-none']: 'none',
+    },
+  })
 
   const borderRadiusTop = await utils.staticClassByToken({
     token: 'size.radius',
     property: ['border-top-left-radius', 'border-top-right-radius'],
     replace: 'radius',
     prefix: 'radius-top',
+    values: {
+      ['radius-top-none']: 'none',
+    },
   })
   const borderRadiusLeft = await utils.staticClassByToken({
     token: 'size.radius',
     property: ['border-top-left-radius', 'border-bottom-left-radius'],
     replace: 'radius',
     prefix: 'radius-left',
+    values: {
+      ['radius-left-none']: 'none',
+    },
   })
   const borderRadiusRight = await utils.staticClassByToken({
     token: 'size.radius',
     property: ['border-top-right-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-right',
+    values: {
+      ['radius-right-none']: 'none',
+    },
   })
   const borderRadiusBottom = await utils.staticClassByToken({
     token: 'size.radius',
     property: ['border-bottom-left-radius', 'border-bottom-right-radius'],
     replace: 'radius',
     prefix: 'radius-bottom',
+    values: {
+      ['radius-bottom-none']: 'none',
+    },
   })
 
   return utils.save(
