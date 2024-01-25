@@ -1,8 +1,10 @@
+import { deepReady, waitAfterFramePaint } from '../helpers'
 import { ListenerAbstract } from '../types/listener'
 import { MutationObserverOptions } from './mutation.interfaces'
 
 export class BalMutationListener extends ListenerAbstract {
   private tags: string[] = []
+  private waitAfterFramePrint = false
   private mutationObserver: MutationObserver | undefined = undefined
   private mutationObserverInit: MutationObserverInit = {
     childList: true,
@@ -13,6 +15,7 @@ export class BalMutationListener extends ListenerAbstract {
 
   constructor(options: Partial<MutationObserverOptions>) {
     super()
+    this.waitAfterFramePrint = options.waitAfterFramePrint || this.waitAfterFramePrint
     this.tags = (options.tags || []).map(t => t.toUpperCase())
     this.mutationObserverInit = {
       childList: options.childList === false ? false : true,
@@ -22,10 +25,14 @@ export class BalMutationListener extends ListenerAbstract {
     }
   }
 
-  connect(el: HTMLElement): void {
+  async connect(el: HTMLElement) {
     super.connect(el)
     if (typeof MutationObserver === 'undefined') {
       return
+    }
+    if (this.waitAfterFramePrint) {
+      await deepReady(el)
+      await waitAfterFramePaint()
     }
     this.destroyMutationObserver()
     this.mutationObserver = new MutationObserver(this.mutationCallback)

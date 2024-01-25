@@ -193,7 +193,7 @@ export class FileUpload implements FormInput<File[]>, BalAriaFormLinking {
    * ------------------------------------------------------
    */
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

@@ -45,8 +45,13 @@ export const CalendarList: FunctionalComponent<CalendarListProps> = ({
               ...blockBodyList.element('item').modifier('selected').class(item.selected),
               ...blockBodyList.element('item').modifier('disabled').class(item.disabled),
             }}
+            disabled={item.disabled}
             tabIndex={-1}
-            onClick={() => onSelect(item)}
+            onClick={() => {
+              if (!item.disabled) {
+                onSelect(item)
+              }
+            }}
           >
             {item.label}
           </button>

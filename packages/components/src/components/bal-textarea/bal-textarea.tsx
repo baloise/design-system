@@ -174,7 +174,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     inputListenOnClick(this, ev)
   }
 
-  private resetHandlerTimer?: NodeJS.Timer
+  private resetHandlerTimer?: NodeJS.Timeout
 
   @Listen('reset', { capture: true, target: 'document' })
   resetHandler(ev: UIEvent) {

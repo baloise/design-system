@@ -11,7 +11,7 @@ runs:
         working-directory: test
         install: false
         browser: chrome
-        env: type=actual
+        env: type=regression
       env:
         SPLIT: ${{ strategy.job-total }}
         SPLIT_INDEX: ${{ strategy.job-index }}

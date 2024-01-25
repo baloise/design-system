@@ -1,31 +1,34 @@
 import { defineConfig } from 'cypress'
-import getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
+import { configureVisualRegression } from 'cypress-visual-regression'
 import cypressSplit from 'cypress-split'
 
 export default defineConfig({
   video: false,
-  screenshotOnRunFailure: true,
-  screenshotsFolder: './cypress/snapshots/actual',
-  trashAssetsBeforeRuns: true,
 
+  trashAssetsBeforeRuns: true,
   includeShadowDom: true,
 
   viewportWidth: 1024,
   viewportHeight: 1280,
 
-  env: {
-    failSilently: false,
-  },
-
-  includeShadowDom: true,
-
   e2e: {
     baseUrl: 'http://localhost:3333/',
+    screenshotOnRunFailure: true,
+    screenshotsFolder: 'cypress/snapshots/actual',
+    env: {
+      visualRegression: {
+        type: 'regression',
+        baseDirectory: 'cypress/snapshots/base/visual',
+        diffDirectory: 'cypress/snapshots/diff',
+        generateDiff: 'always',
+        failSilently: true,
+      },
+    },
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
       cypressSplit(on, config)
-      getCompareSnapshotsPlugin(on, config)
+      configureVisualRegression(on, config)
       return config
     },
   },
