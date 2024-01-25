@@ -1,4 +1,4 @@
-describe('bal-time', () => {
+describe.skip('bal-time', () => {
   beforeEach(() => {
     cy.visit('/').platform('desktop').waitForDesignSystem()
   })

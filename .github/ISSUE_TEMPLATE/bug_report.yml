@@ -67,7 +67,7 @@ body:
     id: reproduction-url
     attributes:
       label: Code Reproduction URL
-      description: Please recreate this problem in an empty Baloise Design System starter application or CodeSandBox and share the repository link. Give our [Getting Started Guide](https://baloise-design-system.vercel.app/?path=/docs/development-getting-started--page) a try to rapidly set up a starter application.
+      description: Please recreate this problem in an empty Baloise Design System starter application or CodeSandBox and share the repository link. Give our [Getting Started Guide](https://design.baloise.dev/?path=/docs/development-getting-started--page) a try to rapidly set up a starter application.
       placeholder: https://codesandbox.io/...
   - type: textarea
     id: additional-information

@@ -190,7 +190,7 @@ export class Popover implements ComponentInterface, Loggable, BalBreakpointObser
     }
   }
 
-  componentDidRenderTimer?: NodeJS.Timer
+  componentDidRenderTimer?: NodeJS.Timeout
   componentDidRender() {
     if (this.popperInstance) {
       this.popperInstance.setOptions((options: any) => ({

@@ -62,6 +62,9 @@
     text-overflow: ellipsis
     overflow: hidden
     white-space: nowrap
+  // Rounded
+  &.is-rounded
+    border-radius: var(--bal-radius-rounded)
   // Shadow
   &.has-blur-shadow:not(&.is-link)
     box-shadow: var(--bal-text-shadow-normal)
@@ -84,7 +87,7 @@
     width: 3rem
     padding: 0
     .icon-left
-      +margin('none')
+      margin: none
   &.is-flat
     padding: 0
     min-height: 1.5rem

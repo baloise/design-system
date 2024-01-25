@@ -1,44 +1,4 @@
-@import "../src/core/core.vars"
 @import '../src/mixins/_all'
-
 @import '@baloise/design-system-tokens/dist/tokens.css.sass'
 
-@import "../src/core/vars/_all"
-@import "../src/core/form/_all"
-@import "../src/core/layout/_all"
-
-// Utils
-// --------------------------------------------------
-// Componens are still using thos util classes
-
-.is-clickable
-  cursor: pointer !important
-  pointer-events: all !important
-
-.is-fullwidth
-  width: 100%
-
-.is-fullheight
-  height: 100%
-
-.is-vertical-align-top
-  vertical-align: top
-
-.is-vertical-align-middle
-  vertical-align: middle
-
-.is-vertical-align-bottom
-  vertical-align: bottom
-
-// Sticky Footer
-// --------------------------------------------------
-
-.has-sticky-footer
-  min-height: 100vh
-  display: flex
-  flex-direction: column
-  main
-    padding-bottom: 2.5rem
-  .bal-footer,
-  footer.footer
-    margin-top: auto
+@import "../src/core/_all"
