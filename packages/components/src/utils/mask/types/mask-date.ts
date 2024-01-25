@@ -9,6 +9,7 @@ import { I18n, I18nKeys } from '../../../interfaces'
 export class DateMask extends AbstractMask {
   public maxLength = 10
   public minLength = 10
+  public inputMode: BalProps.BalInputInputMode = 'decimal'
 
   private dayMask: I18n<string> = {
     de: 'T',
