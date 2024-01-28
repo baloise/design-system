@@ -11,7 +11,7 @@
     "cy:install": "cypress install",
     "cy:open": "cypress open --browser chrome --env type=regression --config screenshotsFolder=cypress/snapshots/actual",
     "cy:start": "npm run start",
-    "cy:visual:report": "reg-cli cypress/snapshots/actual/visual cypress/snapshots/base/visual cypress/snapshots/diff/visual -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
+    "cy:visual:report": "reg-cli cypress/snapshots/actual cypress/snapshots/base/visual cypress/snapshots/diff -R cypress/snapshots/report.html --ignoreChange --matchingThreshold 0.15"
   },
   "dependencies": {
     "@baloise/design-system-components": "15.2.1"
