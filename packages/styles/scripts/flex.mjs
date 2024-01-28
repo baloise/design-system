@@ -80,15 +80,15 @@ export const generateFlex = async () => {
   const tokens = await utils.getTokens({ token: 'size.space' })
   const keys = utils.filterTokenKeys({ tokens, ignore: ['tablet', 'desktop', 'none'] })
   const valuesGap = {
-    'gap-none': 'none',
+    'gap-none': '0',
     'gap-auto': 'auto',
   }
   const valuesRowGap = {
-    'row-gap-none': 'none',
+    'row-gap-none': '0',
     'row-gap-auto': 'auto',
   }
   const valuesColumnGap = {
-    'column-gap-none': 'none',
+    'column-gap-none': '0',
     'column-gap-auto': 'auto',
   }
   for (const index in keys) {
