@@ -3,17 +3,21 @@
     "border": {
       "default": { "value": "{color.base.grey.3}" },
       "primary": { "value": "{color.base.primary.5}", "comment": "Use for focused or selected state." },
-      "secondary": { "value": "{color.base.primary.3}", "comment": "Disabled or secondary color on dark backgrounds" },
-      "divider": { "value": "{color.base.grey.2}", "comment": "Can be use for a divider" },
+      "primary-light": {
+        "value": "{color.base.primary.3}",
+        "comment": "Disabled or secondary color on dark backgrounds"
+      },
+
+      "grey-light": { "value": "{color.base.grey.2}", "comment": "Default input color or can be use for a divider" },
+      "grey": { "value": "{color.base.grey.3}" },
+      "grey-dark": { "value": "{color.base.grey.4}", "comment": "Use for disabled state." },
+
+      "white": { "value": "{color.base.white}", "comment": "Default color on dark backgrounds." },
 
       "info": { "value": "{color.base.info.4}" },
       "success": { "value": "{color.base.success.4}", "comment": "Use for valid state." },
       "warning": { "value": "{color.base.warning.5}", "comment": "Use for warning/hint state." },
       "danger": { "value": "{color.base.danger.4}", "comment": "Use for invalid state." },
-
-      "input": { "value": "{color.base.grey.3}", "comment": "Default input color." },
-      "focused": { "value": "{color.border.primary}", "comment": "Focused input color." },
-      "disabled": { "value": "{color.base.grey.4}", "comment": "Use for disabled state." },
 
       "info-hovered": { "value": "{color.base.info.5}" },
       "info-pressed": { "value": "{color.base.info.6}" },
@@ -44,7 +48,7 @@
 
       "inverted": {
         "default": { "value": "{color.base.white}", "comment": "Default color on dark backgrounds." },
-        "disabled": { "value": "{color.base.primary.3}", "comment": "Use for disabled state." },
+        "disabled": { "value": "{color.base.primary.3}", "comment": "Disabled." },
         "primary": { "value": "{color.base.primary.4}" },
         "primary-hovered": { "value": "{color.base.light-blue.2}" },
         "primary-pressed": { "value": "{color.base.light-blue.4}" }

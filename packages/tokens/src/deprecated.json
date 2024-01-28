@@ -22,31 +22,6 @@
       }
     },
     "border": {
-      "white": {
-        "value": "{color.base.white}",
-        "noFigmaImport": true,
-        "deprecated": true
-      },
-      "grey": {
-        "value": "{color.base.grey.3}",
-        "noFigmaImport": true,
-        "deprecated": true
-      },
-      "grey-light": {
-        "value": "{color.base.grey.2}",
-        "noFigmaImport": true,
-        "deprecated": true
-      },
-      "grey-dark": {
-        "value": "{color.base.grey.4}",
-        "noFigmaImport": true,
-        "deprecated": true
-      },
-      "primary-light": {
-        "value": "{color.base.primary.3}",
-        "noFigmaImport": true,
-        "deprecated": true
-      },
       "primary-dark": {
         "value": "{color.base.primary.6}",
         "noFigmaImport": true,
@@ -98,19 +73,19 @@
     },
     "weight": {
       "bold": {
-        "value": "{size.text.weight.bold}",
+        "value": "{size.font.weight.bold}",
         "keepFormat": true,
         "deprecated": true,
         "noFigmaImport": true
       },
       "regular": {
-        "value": "{size.text.weight.regular}",
+        "value": "{size.font.weight.regular}",
         "keepFormat": true,
         "deprecated": true,
         "noFigmaImport": true
       },
       "light": {
-        "value": "{size.text.weight.light}",
+        "value": "{size.font.weight.light}",
         "keepFormat": true,
         "deprecated": true,
         "noFigmaImport": true
@@ -217,7 +192,11 @@
   },
   "space": {
     "auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
-    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
+    "tablet-auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "desktop-auto": { "value": "auto", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "tablet-none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true },
+    "desktop-none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }
   },
   "radius": {
     "none": { "value": "none", "deprecated": true, "noFigmaImport": true, "keepFormat": true }

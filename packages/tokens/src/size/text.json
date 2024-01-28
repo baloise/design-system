@@ -1,6 +1,6 @@
 {
   "size": {
-    "text": {
+    "font": {
       "weight": {
         "bold": { "value": "700", "keepFormat": true, "noFigmaImport": true },
         "regular": {
@@ -9,7 +9,9 @@
           "noFigmaImport": true
         },
         "light": { "value": "300", "keepFormat": true, "noFigmaImport": true }
-      },
+      }
+    },
+    "text": {
       "size": {
         "x-small": {
           "mobile": {
