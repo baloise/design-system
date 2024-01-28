@@ -25,7 +25,7 @@
 
       "info": { "value": "{color.base.info.4}" },
       "warning": { "value": "{color.base.warning.5}" },
-      "success": { "value": "{color.base.success.5}" },
+      "success": { "value": "{color.base.success.4}" },
       "danger": { "value": "{color.base.danger.4}" },
 
       "primary-hovered": { "value": "{color.base.light-blue.5}" },
