@@ -1140,13 +1140,8 @@ const replacementsSizing = {
 
 const replacementsCSSVariablesColors = {
   from: [
-    /var\(--bal-color-border-white\)/g,
-    /var\(--bal-color-border-grey-light\)/g,
-    /var\(--bal-color-border-grey-dark\)/g,
-    /var\(--bal-color-border-grey\)/g,
-    /var\(--bal-color-border-primary-light\)/g,
-    /var\(--bal-color-border-primary-dark\)/g,
     /var\(--bal-color-border-light-blue\)/g,
+    /var\(--bal-color-border-primary-dark\)/g,
     /var\(--bal-color-border-danger-dark\)/g,
     /var\(--bal-color-border-danger-darker\)/g,
     /var\(--bal-color-blue-1\)/g,
@@ -1159,13 +1154,8 @@ const replacementsCSSVariablesColors = {
     /var\(--bal-color-transparent\)/g,
   ],
   to: [
-    'var(--bal-color-border-inverted)',
-    'var(--bal-color-border-divider)',
-    'var(--bal-color-border-disabled)',
-    'var(--bal-color-border)',
-    'var(--bal-color-border-secondary)',
-    'var(--bal-color-border-primary-pressed)',
     'var(--bal-color-border-primary-hovered)',
+    'var(--bal-color-border-primary-pressed)',
     'var(--bal-color-border-danger-hovered)',
     'var(--bal-color-border-danger-pressed)',
     'var(--bal-color-primary-1)',
@@ -1193,9 +1183,9 @@ const replacementsCSSVariablesVarious = {
   to: [
     '0',
     'var(--bal-container-size-normal)',
-    'var(--bal-text-weight-bold)',
-    'var(--bal-text-weight-regular)',
-    'var(--bal-text-weight-light)',
+    'var(--bal-font-weight-bold)',
+    'var(--bal-font-weight-regular)',
+    'var(--bal-font-weight-light)',
     '0',
     'none',
     'none',
