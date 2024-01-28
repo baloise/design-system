@@ -21,7 +21,7 @@ export default defineConfig({
         baseDirectory: 'cypress/snapshots/base/visual',
         diffDirectory: 'cypress/snapshots/diff',
         generateDiff: 'always',
-        failSilently: true,
+        failSilently: false,
       },
     },
     // We've imported your old cypress plugins here.
