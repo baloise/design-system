@@ -1,5 +1,4 @@
 import { Platforms } from '../../support/utils'
-import { compareSnapshotOptions } from './snapshot-util'
 
 describe('bal-navigation', () => {
   testNavigationOnDesktop('widescreen')
@@ -19,16 +18,16 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`navigation-desktop-${platform}-closed-top`, 0.2)
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-desktop-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200))
+        cy.compareSnapshot(`navigation-desktop-${platform}-closed-bottom`, 0.2)
       })
       it('open menu', () => {
         cy.contains('Versichern').click()
         cy.wait(400)
-        cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`navigation-desktop-${platform}-open`, 0.2)
       })
     })
   }
@@ -40,16 +39,16 @@ describe('bal-navigation', () => {
       })
 
       it('closed menu on top', () => {
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-top`, 0.2)
       })
       it('closed menu on bottom', () => {
         cy.scrollTo('bottom')
-        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, compareSnapshotOptions(platform, 0, 200))
+        cy.compareSnapshot(`navigation-touch-${platform}-closed-bottom`, 0.2)
       })
       it('open menu', () => {
         cy.scrollTo('top')
         cy.getByTestId('navigation-burger').click()
-        cy.compareSnapshot(`navigation-touch-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`navigation-touch-${platform}-open`, 0.2)
       })
     })
   }
@@ -69,7 +68,7 @@ describe('bal-navigation-colors', () => {
       it('open menu', () => {
         cy.contains('Versichern').click()
         cy.wait(400)
-        cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0))
+        cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, 0.2)
       })
     })
   }
